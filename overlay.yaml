@@ -730,10 +730,6 @@ actions:
     update:
       items:
         type: string
-  # Fixes from lint report https://go.speakeasy.com/Hy8sbBN
-  # Add null value
-  - target: $.paths['/v1/access-groups'].post.requestBody.content['application/json'].properties['projects']['properties']['role'].enum
-    update: [null]
   # The fixes below are from test performed with using the SDK - https://www.notion.so/vercel/Vercel-SDK-Edits-104e06b059c48085ad11f9288118b604
   - target: $.paths['/v4/aliases'].get.responses['200'].content['application/json'].schema.properties['aliases'].items.properties.deletedAt
     update:

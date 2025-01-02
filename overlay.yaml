@@ -1372,6 +1372,21 @@ actions:
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.id
     update:
       example: "chk_1a2b3c4d5e6f7g8h9i0j"     
+  - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.name
+    update:
+      example: "Performance Check"     
+  - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.path
+    update:
+      example: "/api/users"       
+  - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.status
+    update:
+      example: "completed"   
+  - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.conclusion
+    update:
+      example: "succeeded"    
+  - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.in=='query')].schema
+    update:
+      example: "`ag_1a2b3c4d5e6f7g8h9i0j` or `My Group Name`"                 
   # Update response schemas for various HTTP status codes across all paths and operations
   - target: $["paths"][*][*]["responses"]["400"]
     update:

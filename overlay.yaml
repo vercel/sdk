@@ -1384,7 +1384,7 @@ actions:
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.conclusion
     update:
       example: "succeeded"    
-  - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.in=='query')].schema
+  - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.name=='idOrName')].schema
     update:
       example: "`ag_1a2b3c4d5e6f7g8h9i0j` or `My Group Name`"                 
   # Update response schemas for various HTTP status codes across all paths and operations

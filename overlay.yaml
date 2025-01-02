@@ -1384,9 +1384,21 @@ actions:
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.conclusion
     update:
       example: "succeeded"    
-  - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.name=='idOrName')].schema
+  - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.name=='idOrName')]
     update:
-      example: "`ag_1a2b3c4d5e6f7g8h9i0j` or `My Group Name`"                 
+      examples:
+        id:
+          summary: Access group ID
+          value: "ag_1a2b3c4d5e6f7g8h9i0j"
+        name:
+          summary: Access group name
+          value: "My Access Group"       
+  - target: $["paths"][*][*]["parameters"][?(@.name=='teamId')].schema
+    update:
+      example: "team_1a2b3c4d5e6f7g8h9i0j1k2l"                   
+  - target: $["paths"][*][*]["parameters"][?(@.name=='slug')].schema
+    update:
+      example: "my-team-url-slug"       
   # Update response schemas for various HTTP status codes across all paths and operations
   - target: $["paths"][*][*]["responses"]["400"]
     update:

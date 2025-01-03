@@ -1399,16 +1399,33 @@ actions:
   - target: $["paths"][*][*]["parameters"][?(@.name=='slug')].schema
     update:
       example: "my-team-url-slug"       
-  - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToAdd:
+  - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToAdd
     update:
       example:
         - "usr_1a2b3c4d5e6f7g8h9i0j"
         - "usr_2b3c4d5e6f7g8h9i0j1k"  
-  - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToRemove:
+  - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToRemove
     update:
       example:
         - "usr_1a2b3c4d5e6f7g8h9i0j"
-        - "usr_2b3c4d5e6f7g8h9i0j1k"               
+        - "usr_2b3c4d5e6f7g8h9i0j1k"  
+  - target: $.paths['/v1/access-groups'].post.requestBody.content["application/json"].schema.properties.membersToAdd      
+    update:
+      example:
+        - "usr_1a2b3c4d5e6f7g8h9i0j"
+        - "usr_2b3c4d5e6f7g8h9i0j1k"                  
+  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='accessGroupIdOrName')]  
+    update:
+      examples:
+        id:
+          summary: Access group ID
+          value: "ag_1a2b3c4d5e6f7g8h9i0j"
+        name:
+          summary: Access group name
+          value: "My Access Group" 
+  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='projectId')]  
+    update:
+      example: "prj_ndlgr43fadlPyCtREAqxxdyFK"          
   # Update response schemas for various HTTP status codes across all paths and operations
   - target: $["paths"][*][*]["responses"]["400"]
     update:

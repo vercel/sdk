@@ -1425,7 +1425,12 @@ actions:
           value: "My Access Group" 
   - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='projectId')]  
     update:
-      example: "prj_ndlgr43fadlPyCtREAqxxdyFK"          
+      example: "prj_ndlgr43fadlPyCtREAqxxdyFK" 
+  - target: $.paths['/v8/artifacts'].post.requestBody.content["application/json"].schema.properties.hashes      
+    update:
+      example:
+        - "12HKQaOmR5t5Uy6vdcQsNIiZgHGB"
+        - "34HKQaOmR5t5Uy6vasdasdasdasd"                
   # Update response schemas for various HTTP status codes across all paths and operations
   - target: $["paths"][*][*]["responses"]["400"]
     update:

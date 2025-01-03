@@ -41,6 +41,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.updateProjectDataCache({
     projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       disabled: true,
     },
@@ -70,6 +72,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsUpdateProjectDataCache(vercel, {
     projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       disabled: true,
     },
@@ -127,6 +131,8 @@ async function run() {
   const result = await vercel.projects.getProjects({
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -154,6 +160,8 @@ async function run() {
   const res = await projectsGetProjects(vercel, {
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -205,6 +213,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.projects.createProject({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },
@@ -233,6 +243,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await projectsCreateProject(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },
@@ -288,6 +300,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.updateProject({
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },
@@ -317,6 +331,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsUpdateProject(vercel, {
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },
@@ -372,6 +388,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.projects.deleteProject({
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -397,6 +415,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsDeleteProject(vercel, {
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -452,6 +472,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -482,6 +504,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -535,6 +559,8 @@ async function run() {
   const result = await vercel.projects.getProjectDomain({
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -562,6 +588,8 @@ async function run() {
   const res = await projectsGetProjectDomain(vercel, {
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -615,6 +643,8 @@ async function run() {
   const result = await vercel.projects.updateProjectDomain({
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       gitBranch: null,
       redirect: "foobar.com",
@@ -647,6 +677,8 @@ async function run() {
   const res = await projectsUpdateProjectDomain(vercel, {
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       gitBranch: null,
       redirect: "foobar.com",
@@ -705,6 +737,8 @@ async function run() {
   const result = await vercel.projects.removeProjectDomain({
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -732,6 +766,8 @@ async function run() {
   const res = await projectsRemoveProjectDomain(vercel, {
     idOrName: "<value>",
     domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -785,6 +821,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.addProjectDomain({
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "www.example.com",
       gitBranch: null,
@@ -817,6 +855,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsAddProjectDomain(vercel, {
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "www.example.com",
       gitBranch: null,
@@ -876,6 +916,8 @@ async function run() {
   const result = await vercel.projects.verifyProjectDomain({
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -903,6 +945,8 @@ async function run() {
   const res = await projectsVerifyProjectDomain(vercel, {
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -958,6 +1002,8 @@ async function run() {
     gitBranch: "feature-1",
     decrypt: "true",
     source: "vercel-cli:pull",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -987,6 +1033,8 @@ async function run() {
     gitBranch: "feature-1",
     decrypt: "true",
     source: "vercel-cli:pull",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1040,6 +1088,8 @@ async function run() {
   const result = await vercel.projects.getProjectEnv({
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1067,6 +1117,8 @@ async function run() {
   const res = await projectsGetProjectEnv(vercel, {
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1120,6 +1172,8 @@ async function run() {
   const result = await vercel.projects.createProjectEnv({
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     upsert: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       key: "API_URL",
       value: "https://api.vercel.com",
@@ -1157,6 +1211,8 @@ async function run() {
   const res = await projectsCreateProjectEnv(vercel, {
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     upsert: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       key: "API_URL",
       value: "https://api.vercel.com",
@@ -1220,6 +1276,8 @@ async function run() {
   const result = await vercel.projects.removeProjectEnv({
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1247,6 +1305,8 @@ async function run() {
   const res = await projectsRemoveProjectEnv(vercel, {
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1301,6 +1361,8 @@ async function run() {
   const result = await vercel.projects.editProjectEnv({
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       key: "GITHUB_APP_ID",
       target: [
@@ -1341,6 +1403,8 @@ async function run() {
   const res = await projectsEditProjectEnv(vercel, {
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       key: "GITHUB_APP_ID",
       target: [
@@ -1406,6 +1470,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.updateProjectProtectionBypass({
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -1433,6 +1499,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsUpdateProjectProtectionBypass(vercel, {
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -1488,6 +1556,8 @@ async function run() {
   await vercel.projects.requestPromote({
     projectId: "<id>",
     deploymentId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -1514,6 +1584,8 @@ async function run() {
   const res = await projectsRequestPromote(vercel, {
     projectId: "<id>",
     deploymentId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1568,6 +1640,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1597,6 +1671,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

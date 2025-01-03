@@ -9,7 +9,7 @@ let value: BillingPlan = {
   id: "<id>",
   type: "prepayment",
   name: "<value>",
-  description: "awkwardly loosely than",
+  description: "bloom redound grounded about mature minority oh",
 };
 ```
 

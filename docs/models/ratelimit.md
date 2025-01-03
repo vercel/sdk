@@ -7,9 +7,9 @@
 
 ```typescript
 const value: models.RateLimit1 = {
-  algo: "token_bucket",
-  window: 804.67,
-  limit: 5421.87,
+  algo: "fixed_window",
+  window: 6379.69,
+  limit: 6037.83,
   keys: [
     "<value>",
   ],

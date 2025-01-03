@@ -7,7 +7,7 @@ import { CreateDeploymentCrons } from "@vercel/sdk/models/createdeploymentop.js"
 
 let value: CreateDeploymentCrons = {
   schedule: "<value>",
-  path: "/usr/X11R6",
+  path: "/opt",
 };
 ```
 

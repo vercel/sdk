@@ -8,14 +8,14 @@ import { CreateConfigurableLogDrainResponseBody } from "@vercel/sdk/models/creat
 let value: CreateConfigurableLogDrainResponseBody = {
   id: "<id>",
   deliveryFormat: "json",
-  url: "https://untrue-handful.biz/",
+  url: "https://general-digestive.biz",
   name: "<value>",
   ownerId: "<id>",
-  createdAt: 9895.25,
-  deletedAt: 6444.16,
-  updatedAt: 3659.98,
+  createdAt: 3184.03,
+  deletedAt: 7289.48,
+  updatedAt: 5691.96,
   environments: [
-    "production",
+    "preview",
   ],
 };
 ```

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Vercel API",
-    "description": "Vercel combines the best developer experience with an obsessive focus on end-user performance. Our platform enables frontend teams to do their best work.",
+    "title": "Vercel SDK",
+    "description": "The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a type-safe Typescript SDK that allows you to access the resources and methods of the Vercel REST API. Learn how to [install it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a Vercel access token.",
     "contact": {
       "email": "support@vercel.com",
       "name": "Vercel Support",
@@ -138,6 +138,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "id": {
+                "summary": "Access group ID",
+                "value": "ag_1a2b3c4d5e6f7g8h9i0j"
+              },
+              "name": {
+                "summary": "Access group name",
+                "value": "My Access Group"
+              }
             }
           },
           {
@@ -145,7 +155,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -153,7 +164,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -281,7 +293,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -289,7 +302,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -343,14 +357,22 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "example": [
+                      "usr_1a2b3c4d5e6f7g8h9i0j",
+                      "usr_2b3c4d5e6f7g8h9i0j1k"
+                    ]
                   },
                   "membersToRemove": {
                     "description": "List of members to remove from the access group.",
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "example": [
+                      "usr_1a2b3c4d5e6f7g8h9i0j",
+                      "usr_2b3c4d5e6f7g8h9i0j1k"
+                    ]
                   }
                 }
               }
@@ -419,7 +441,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -427,7 +450,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -603,7 +627,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -611,7 +636,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -846,7 +872,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -854,7 +881,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -961,7 +989,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -969,7 +998,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -1025,7 +1055,11 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "example": [
+                      "usr_1a2b3c4d5e6f7g8h9i0j",
+                      "usr_2b3c4d5e6f7g8h9i0j1k"
+                    ]
                   }
                 }
               }
@@ -1199,7 +1233,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1207,7 +1242,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -1315,7 +1351,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1323,7 +1360,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -1457,6 +1495,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "id": {
+                "summary": "Access group ID",
+                "value": "ag_1a2b3c4d5e6f7g8h9i0j"
+              },
+              "name": {
+                "summary": "Access group name",
+                "value": "My Access Group"
+              }
             }
           },
           {
@@ -1465,14 +1513,16 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "prj_ndlgr43fadlPyCtREAqxxdyFK"
           },
           {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1480,7 +1530,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -1579,6 +1630,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "id": {
+                "summary": "Access group ID",
+                "value": "ag_1a2b3c4d5e6f7g8h9i0j"
+              },
+              "name": {
+                "summary": "Access group name",
+                "value": "My Access Group"
+              }
             }
           },
           {
@@ -1587,14 +1648,16 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "prj_ndlgr43fadlPyCtREAqxxdyFK"
           },
           {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1602,7 +1665,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -1686,6 +1750,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "id": {
+                "summary": "Access group ID",
+                "value": "ag_1a2b3c4d5e6f7g8h9i0j"
+              },
+              "name": {
+                "summary": "Access group name",
+                "value": "My Access Group"
+              }
             }
           },
           {
@@ -1694,14 +1768,16 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "prj_ndlgr43fadlPyCtREAqxxdyFK"
           },
           {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1709,7 +1785,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -1787,7 +1864,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1795,7 +1873,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -1921,7 +2000,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -1929,7 +2009,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -2075,7 +2156,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -2083,7 +2165,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -2200,7 +2283,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -2208,7 +2292,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -2282,7 +2367,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -2290,7 +2376,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -2393,7 +2480,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -2401,7 +2489,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -2419,7 +2508,11 @@
                       "type": "string"
                     },
                     "description": "artifact hashes",
-                    "type": "array"
+                    "type": "array",
+                    "example": [
+                      "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+                      "34HKQaOmR5t5Uy6vasdasdasdasd"
+                    ]
                   }
                 }
               }
@@ -2449,13 +2542,16 @@
                 "schema": {
                   "properties": {
                     "id": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "chk_1a2b3c4d5e6f7g8h9i0j"
                     },
                     "name": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Performance Check"
                     },
                     "path": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "/api/users"
                     },
                     "status": {
                       "type": "string",
@@ -2463,7 +2559,8 @@
                         "registered",
                         "running",
                         "completed"
-                      ]
+                      ],
+                      "example": "completed"
                     },
                     "conclusion": {
                       "type": "string",
@@ -2474,7 +2571,8 @@
                         "succeeded",
                         "skipped",
                         "stale"
-                      ]
+                      ],
+                      "example": "succeeded"
                     },
                     "blocking": {
                       "type": "boolean"
@@ -2698,7 +2796,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -2706,7 +2805,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -3028,7 +3128,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -3036,7 +3137,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -3322,7 +3424,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -3330,7 +3433,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -3617,7 +3721,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -3625,7 +3730,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -3917,7 +4023,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -3925,7 +4032,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -7343,7 +7451,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -7351,7 +7460,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -7548,7 +7658,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -7556,7 +7667,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -7797,6 +7909,106 @@
                             "status",
                             "startedAt"
                           ],
+                          "type": "object"
+                        },
+                        "images": {
+                          "properties": {
+                            "sizes": {
+                              "items": {
+                                "type": "number"
+                              },
+                              "type": "array"
+                            },
+                            "qualities": {
+                              "items": {
+                                "type": "number"
+                              },
+                              "type": "array"
+                            },
+                            "domains": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "remotePatterns": {
+                              "items": {
+                                "properties": {
+                                  "protocol": {
+                                    "type": "string",
+                                    "enum": [
+                                      "http",
+                                      "https"
+                                    ],
+                                    "description": "Must be `http` or `https`."
+                                  },
+                                  "hostname": {
+                                    "type": "string",
+                                    "description": "Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains."
+                                  },
+                                  "port": {
+                                    "type": "string",
+                                    "description": "Can be literal port such as `8080` or empty string meaning no port."
+                                  },
+                                  "pathname": {
+                                    "type": "string",
+                                    "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                                  },
+                                  "search": {
+                                    "type": "string",
+                                    "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                                  }
+                                },
+                                "required": [
+                                  "hostname"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "localPatterns": {
+                              "items": {
+                                "properties": {
+                                  "pathname": {
+                                    "type": "string",
+                                    "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                                  },
+                                  "search": {
+                                    "type": "string",
+                                    "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "minimumCacheTTL": {
+                              "type": "number"
+                            },
+                            "formats": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "image/avif",
+                                  "image/webp"
+                                ]
+                              },
+                              "type": "array"
+                            },
+                            "dangerouslyAllowSVG": {
+                              "type": "boolean"
+                            },
+                            "contentSecurityPolicy": {
+                              "type": "string"
+                            },
+                            "contentDispositionType": {
+                              "type": "string",
+                              "enum": [
+                                "inline",
+                                "attachment"
+                              ]
+                            }
+                          },
                           "type": "object"
                         },
                         "alias": {
@@ -9916,7 +10128,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -9924,7 +10137,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -10163,6 +10377,106 @@
                         "status",
                         "startedAt"
                       ],
+                      "type": "object"
+                    },
+                    "images": {
+                      "properties": {
+                        "sizes": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "type": "array"
+                        },
+                        "qualities": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "type": "array"
+                        },
+                        "domains": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "remotePatterns": {
+                          "items": {
+                            "properties": {
+                              "protocol": {
+                                "type": "string",
+                                "enum": [
+                                  "http",
+                                  "https"
+                                ],
+                                "description": "Must be `http` or `https`."
+                              },
+                              "hostname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains."
+                              },
+                              "port": {
+                                "type": "string",
+                                "description": "Can be literal port such as `8080` or empty string meaning no port."
+                              },
+                              "pathname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                              },
+                              "search": {
+                                "type": "string",
+                                "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                              }
+                            },
+                            "required": [
+                              "hostname"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "localPatterns": {
+                          "items": {
+                            "properties": {
+                              "pathname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                              },
+                              "search": {
+                                "type": "string",
+                                "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "minimumCacheTTL": {
+                          "type": "number"
+                        },
+                        "formats": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "image/avif",
+                              "image/webp"
+                            ]
+                          },
+                          "type": "array"
+                        },
+                        "dangerouslyAllowSVG": {
+                          "type": "boolean"
+                        },
+                        "contentSecurityPolicy": {
+                          "type": "string"
+                        },
+                        "contentDispositionType": {
+                          "type": "string",
+                          "enum": [
+                            "inline",
+                            "attachment"
+                          ]
+                        }
+                      },
                       "type": "object"
                     },
                     "alias": {
@@ -11565,7 +11879,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -11573,7 +11888,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -11585,7 +11901,8 @@
                 "properties": {
                   "deploymentId": {
                     "description": "An deployment id for an existing deployment to redeploy",
-                    "type": "string"
+                    "type": "string",
+                    "example": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6"
                   },
                   "files": {
                     "description": "A list of objects with the files to be deployed",
@@ -11690,7 +12007,8 @@
                       {
                         "properties": {
                           "ref": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "main"
                           },
                           "repoId": {
                             "oneOf": [
@@ -11700,10 +12018,12 @@
                               {
                                 "type": "string"
                               }
-                            ]
+                            ],
+                            "example": 123456789
                           },
                           "sha": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
                           "type": {
                             "enum": [
@@ -11722,16 +12042,20 @@
                       {
                         "properties": {
                           "org": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "vercel"
                           },
                           "ref": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "main"
                           },
                           "repo": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "next.js"
                           },
                           "sha": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
                           "type": {
                             "enum": [
@@ -11758,13 +12082,16 @@
                               {
                                 "type": "string"
                               }
-                            ]
+                            ],
+                            "example": 987654321
                           },
                           "ref": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "main"
                           },
                           "sha": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
                           "type": {
                             "enum": [
@@ -11783,13 +12110,16 @@
                       {
                         "properties": {
                           "ref": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "main"
                           },
                           "repoUuid": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "123e4567-e89b-12d3-a456-426614174000"
                           },
                           "sha": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
                           "type": {
                             "enum": [
@@ -11798,7 +12128,8 @@
                             "type": "string"
                           },
                           "workspaceUuid": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "987e6543-e21b-12d3-a456-426614174000"
                           }
                         },
                         "required": [
@@ -11811,16 +12142,20 @@
                       {
                         "properties": {
                           "owner": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "bitbucket_user"
                           },
                           "ref": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "main"
                           },
                           "sha": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
                           },
                           "slug": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "my-awesome-project"
                           },
                           "type": {
                             "enum": [
@@ -11874,7 +12209,8 @@
                         "description": "The build command for this project. When `null` is used this value will be automatically detected",
                         "maxLength": 256,
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "example": "next build"
                       },
                       "commandForIgnoringBuildStep": {
                         "maxLength": 256,
@@ -11944,7 +12280,8 @@
                         "description": "The install command for this project. When `null` is used this value will be automatically detected",
                         "maxLength": 256,
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "example": "pnpm install"
                       },
                       "nodeVersion": {
                         "description": "Override the Node.js version that should be used for this deployment",
@@ -12246,6 +12583,106 @@
                         "status",
                         "startedAt"
                       ],
+                      "type": "object"
+                    },
+                    "images": {
+                      "properties": {
+                        "sizes": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "type": "array"
+                        },
+                        "qualities": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "type": "array"
+                        },
+                        "domains": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "remotePatterns": {
+                          "items": {
+                            "properties": {
+                              "protocol": {
+                                "type": "string",
+                                "enum": [
+                                  "http",
+                                  "https"
+                                ],
+                                "description": "Must be `http` or `https`."
+                              },
+                              "hostname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains."
+                              },
+                              "port": {
+                                "type": "string",
+                                "description": "Can be literal port such as `8080` or empty string meaning no port."
+                              },
+                              "pathname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                              },
+                              "search": {
+                                "type": "string",
+                                "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                              }
+                            },
+                            "required": [
+                              "hostname"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "localPatterns": {
+                          "items": {
+                            "properties": {
+                              "pathname": {
+                                "type": "string",
+                                "description": "Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments."
+                              },
+                              "search": {
+                                "type": "string",
+                                "description": "Can be literal query string such as `?v=1` or empty string meaning no query string."
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "minimumCacheTTL": {
+                          "type": "number"
+                        },
+                        "formats": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "image/avif",
+                              "image/webp"
+                            ]
+                          },
+                          "type": "array"
+                        },
+                        "dangerouslyAllowSVG": {
+                          "type": "boolean"
+                        },
+                        "contentSecurityPolicy": {
+                          "type": "string"
+                        },
+                        "contentDispositionType": {
+                          "type": "string",
+                          "enum": [
+                            "inline",
+                            "attachment"
+                          ]
+                        }
+                      },
                       "type": "object"
                     },
                     "alias": {
@@ -13629,7 +14066,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -13637,7 +14075,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -13784,7 +14223,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -13792,7 +14232,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -13970,7 +14411,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -13978,7 +14420,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -14257,7 +14700,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -14265,7 +14709,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -14377,7 +14822,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -14385,7 +14831,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -15027,7 +15474,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15035,7 +15483,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -15239,7 +15688,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15247,7 +15697,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -15325,7 +15776,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15333,7 +15785,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -15431,7 +15884,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15439,7 +15893,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           },
           {
@@ -15563,7 +16018,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15571,7 +16027,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -15813,7 +16270,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -15821,7 +16279,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -16077,7 +16536,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16085,7 +16545,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -16314,7 +16775,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16322,7 +16784,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -16545,7 +17008,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16553,7 +17017,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -16697,7 +17162,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16705,7 +17171,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -16840,7 +17307,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16848,7 +17316,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -16981,7 +17450,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -16989,7 +17459,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -17204,7 +17675,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17212,7 +17684,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -17362,7 +17835,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17370,7 +17844,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -17455,7 +17930,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17463,7 +17939,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -17540,7 +18017,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17548,7 +18026,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -17650,7 +18129,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17658,7 +18138,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -17898,7 +18379,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -17906,7 +18388,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -17992,7 +18475,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18000,7 +18484,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -18085,7 +18570,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18093,7 +18579,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -18178,7 +18665,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18186,7 +18674,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -18262,7 +18751,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18270,7 +18760,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -18338,7 +18829,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18346,7 +18838,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -18452,7 +18945,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18460,7 +18954,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -18550,7 +19045,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18558,7 +19054,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -18874,7 +19371,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -18882,7 +19380,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -19038,7 +19537,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -19046,7 +19546,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -19178,7 +19679,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -19186,7 +19688,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -21087,7 +21590,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -21095,7 +21599,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -21567,7 +22072,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -21575,7 +22081,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -21643,7 +22150,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -21651,7 +22159,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -21945,7 +22454,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -21953,7 +22463,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -22147,7 +22658,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -22155,7 +22667,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -22317,7 +22830,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -22325,7 +22839,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -22671,7 +23186,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -22679,7 +23195,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -22885,7 +23402,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -22893,7 +23411,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -22958,7 +23477,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -22966,7 +23486,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -23166,7 +23687,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -23174,7 +23696,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -23361,7 +23884,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -23369,7 +23893,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -23700,7 +24225,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -23708,7 +24234,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -23786,7 +24313,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -23794,7 +24322,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -23943,7 +24472,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -23951,7 +24481,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -27471,7 +28002,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -27479,7 +28011,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -27730,10 +28263,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -30304,11 +30837,11 @@
                         "jobStatus": {
                           "type": "string",
                           "enum": [
+                            "pending",
+                            "in-progress",
                             "succeeded",
                             "failed",
-                            "skipped",
-                            "pending",
-                            "in-progress"
+                            "skipped"
                           ]
                         },
                         "requestedAt": {
@@ -30879,7 +31412,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -30887,7 +31421,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -34547,7 +35082,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -34555,7 +35091,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -34804,10 +35341,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -37378,11 +37915,11 @@
                         "jobStatus": {
                           "type": "string",
                           "enum": [
-                            "pending",
-                            "in-progress",
                             "succeeded",
                             "failed",
-                            "skipped"
+                            "skipped",
+                            "pending",
+                            "in-progress"
                           ]
                         },
                         "requestedAt": {
@@ -37965,7 +38502,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -37973,7 +38511,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -38394,7 +38933,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -38402,7 +38942,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -38690,7 +39231,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -38698,7 +39240,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -38854,7 +39397,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -38862,7 +39406,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -39020,7 +39565,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -39028,7 +39574,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -39156,7 +39703,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -39164,7 +39712,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -39316,7 +39865,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -39324,7 +39874,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -39436,34 +39987,6 @@
                     "verified": {
                       "type": "boolean",
                       "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
-                    },
-                    "verification": {
-                      "items": {
-                        "properties": {
-                          "type": {
-                            "type": "string"
-                          },
-                          "domain": {
-                            "type": "string"
-                          },
-                          "value": {
-                            "type": "string"
-                          },
-                          "reason": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "domain",
-                          "value",
-                          "reason"
-                        ],
-                        "type": "object",
-                        "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
-                      },
-                      "type": "array",
-                      "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
                     }
                   },
                   "required": [
@@ -39528,7 +40051,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -39536,7 +40060,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -39586,10 +40111,10 @@
                           "type": "string",
                           "enum": [
                             "system",
-                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive"
+                            "sensitive",
+                            "secret"
                           ]
                         },
                         "sunsetSecretId": {
@@ -39998,10 +40523,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
-                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive"
+                                  "sensitive",
+                                  "secret"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -40420,10 +40945,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
-                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive"
+                                  "sensitive",
+                                  "secret"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -40891,7 +41416,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -40899,7 +41425,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -42196,7 +42723,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -42204,7 +42732,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -42261,10 +42790,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
-                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive"
+                                "sensitive",
+                                "secret"
                               ]
                             },
                             "sunsetSecretId": {
@@ -42664,10 +43193,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
-                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive"
+                                  "sensitive",
+                                  "secret"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -43203,7 +43732,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -43211,7 +43741,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -43425,10 +43956,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -43841,10 +44372,10 @@
                           "type": "string",
                           "enum": [
                             "system",
-                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive"
+                            "sensitive",
+                            "secret"
                           ]
                         },
                         "sunsetSecretId": {
@@ -44252,10 +44783,10 @@
                           "type": "string",
                           "enum": [
                             "system",
-                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive"
+                            "sensitive",
+                            "secret"
                           ]
                         },
                         "sunsetSecretId": {
@@ -44700,7 +45231,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -44708,7 +45240,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -44756,10 +45289,10 @@
                           "type": "string",
                           "enum": [
                             "system",
-                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive"
+                            "sensitive",
+                            "secret"
                           ]
                         },
                         "sunsetSecretId": {
@@ -45195,7 +45728,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -45203,7 +45737,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -45377,7 +45912,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -45385,7 +45921,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -45494,7 +46031,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -45502,7 +46040,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -45659,7 +46198,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -45667,7 +46207,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -45746,7 +46287,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -45754,7 +46296,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -46425,7 +46968,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -46433,7 +46977,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -47049,7 +47594,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -47057,7 +47603,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -47878,6 +48425,7 @@
         ],
         "responses": {
           "200": {
+            "description": "If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack",
             "content": {
               "application/json": {
                 "schema": {
@@ -48494,7 +49042,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -48502,7 +49051,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           },
           {
@@ -48943,7 +49493,8 @@
             "in": "path",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ]
@@ -49081,7 +49632,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ],
@@ -49330,7 +49882,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ],
@@ -49604,7 +50157,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ]
@@ -49703,7 +50257,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ],
@@ -49813,7 +50368,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ],
@@ -49982,7 +50538,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The unique team identifier"
+              "description": "The unique team identifier",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ]
@@ -50051,7 +50608,8 @@
             "in": "path",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             },
             "required": true
           },
@@ -50060,7 +50618,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -50127,7 +50686,8 @@
             "in": "path",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             },
             "required": true
           },
@@ -50136,7 +50696,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -50607,7 +51168,8 @@
             "in": "path",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             },
             "required": true
           },
@@ -50616,7 +51178,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -50744,7 +51307,7 @@
             "schema": {
               "type": "string",
               "description": "The Team identifier to perform the request on behalf of.",
-              "example": "team_LLHUOMOoDlqOp8wPE4kFo9pE"
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ]
@@ -50865,7 +51428,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -50873,7 +51437,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -51184,7 +51749,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -51192,7 +51758,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -51581,7 +52148,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -51589,7 +52157,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -52143,7 +52712,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -52151,7 +52721,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -52357,7 +52928,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -52365,7 +52937,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -52421,7 +52994,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -52429,7 +53003,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -52829,7 +53404,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -52837,7 +53413,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53199,7 +53776,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53207,7 +53785,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53302,7 +53881,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53310,7 +53890,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53547,7 +54128,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53555,7 +54137,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53672,7 +54255,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53680,7 +54264,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -53807,7 +54392,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53815,7 +54401,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53890,7 +54477,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -53898,7 +54486,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -53997,7 +54586,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -54005,7 +54595,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -54110,7 +54701,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -54118,7 +54710,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -54234,7 +54827,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -54242,7 +54836,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -54334,7 +54929,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -54342,7 +54938,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -54988,7 +55585,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -54996,7 +55594,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -55110,7 +55709,8 @@
             "in": "query",
             "name": "teamId",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           },
           {
@@ -55118,7 +55718,8 @@
             "in": "query",
             "name": "slug",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]

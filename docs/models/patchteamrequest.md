@@ -6,7 +6,8 @@
 import { PatchTeamRequest } from "@vercel/sdk/models/patchteamop.js";
 
 let value: PatchTeamRequest = {
-  teamId: "<id>",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
   requestBody: {
     description:
       "Our mission is to make cloud computing accessible to everyone",
@@ -32,8 +33,8 @@ let value: PatchTeamRequest = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `teamId`                                                         | *string*                                                         | :heavy_check_mark:                                               | The Team identifier to perform the request on behalf of.         |
-| `slug`                                                           | *string*                                                         | :heavy_minus_sign:                                               | The Team slug to perform the request on behalf of.               |
-| `requestBody`                                                    | [models.PatchTeamRequestBody](../models/patchteamrequestbody.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `teamId`                                                         | *string*                                                         | :heavy_check_mark:                                               | The Team identifier to perform the request on behalf of.         | team_1a2b3c4d5e6f7g8h9i0j1k2l                                    |
+| `slug`                                                           | *string*                                                         | :heavy_minus_sign:                                               | The Team slug to perform the request on behalf of.               | my-team-url-slug                                                 |
+| `requestBody`                                                    | [models.PatchTeamRequestBody](../models/patchteamrequestbody.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |

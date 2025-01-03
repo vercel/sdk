@@ -6,7 +6,7 @@
 import { UpdateProjectDataCacheMitigate } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: UpdateProjectDataCacheMitigate = {
-  action: "challenge",
+  action: "log",
   ruleId: "<id>",
 };
 ```

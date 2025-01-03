@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectAction } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectAction = "bypass";
+let value: UpdateProjectAction = "redirect";
 ```
 
 ## Values

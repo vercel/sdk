@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateRecordDnsType } from "@vercel/sdk/models/updaterecordop.js";
 
-let value: UpdateRecordDnsType = "record";
+let value: UpdateRecordDnsType = "record-sys";
 ```
 
 ## Values

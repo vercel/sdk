@@ -29,6 +29,8 @@ async function run() {
     limit: "20",
     since: "1609499532000",
     until: "1612264332000",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -58,6 +60,8 @@ async function run() {
     limit: "20",
     since: "1609499532000",
     until: "1612264332000",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -111,6 +115,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.dns.createRecord({
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       type: "CNAME",
       ttl: 60,
@@ -147,6 +153,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await dnsCreateRecord(vercel, {
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       type: "CNAME",
       ttl: 60,
@@ -210,6 +218,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.dns.updateRecord({
     recordId: "rec_2qn7pzrx89yxy34vezpd31y9",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example-1",
       value: "google.com",
@@ -253,6 +263,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await dnsUpdateRecord(vercel, {
     recordId: "rec_2qn7pzrx89yxy34vezpd31y9",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example-1",
       value: "google.com",
@@ -324,6 +336,8 @@ async function run() {
   const result = await vercel.dns.removeRecord({
     domain: "example.com",
     recordId: "rec_V0fra8eEgQwEpFhYG2vTzC3K",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -351,6 +365,8 @@ async function run() {
   const res = await dnsRemoveRecord(vercel, {
     domain: "example.com",
     recordId: "rec_V0fra8eEgQwEpFhYG2vTzC3K",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

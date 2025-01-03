@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CreateDeploymentGitSource1 = {
   type: "github",
-  repoId: 7747.48,
+  repoId: "<id>",
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.CreateDeploymentGitSource2 = {
 ```typescript
 const value: models.GitSource3 = {
   type: "gitlab",
-  projectId: 6147.70,
+  projectId: "<id>",
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.CreateDeploymentGitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://aged-flint.net/",
+  gitUrl: "https://fruitful-masterpiece.org",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.CreateDeploymentGitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 8661.35,
+  repoId: 4004.49,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.CreateDeploymentGitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 9608.13,
+  projectId: 6658.71,
 };
 ```
 

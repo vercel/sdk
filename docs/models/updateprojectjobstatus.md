@@ -11,5 +11,5 @@ let value: UpdateProjectJobStatus = "in-progress";
 ## Values
 
 ```typescript
-"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
+"succeeded" | "failed" | "skipped" | "pending" | "in-progress"
 ```

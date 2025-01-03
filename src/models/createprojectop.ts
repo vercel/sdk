@@ -335,10 +335,10 @@ export type CreateProjectProjectsTarget = Array<string> | CreateProjectTarget2;
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -1358,11 +1358,11 @@ export type CreateProjectPermissions = {
 export type CreateProjectLastRollbackTarget = {};
 
 export const CreateProjectJobStatus = {
+  Pending: "pending",
+  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
-  Pending: "pending",
-  InProgress: "in-progress",
 } as const;
 export type CreateProjectJobStatus = ClosedEnum<typeof CreateProjectJobStatus>;
 

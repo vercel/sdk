@@ -8,8 +8,8 @@ import { CreateProjectLastAliasRequest } from "@vercel/sdk/models/createprojecto
 let value: CreateProjectLastAliasRequest = {
   fromDeploymentId: "<id>",
   toDeploymentId: "<id>",
-  jobStatus: "in-progress",
-  requestedAt: 7592.82,
+  jobStatus: "succeeded",
+  requestedAt: 6817.40,
   type: "promote",
 };
 ```

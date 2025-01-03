@@ -10,7 +10,7 @@ import { Lambdas } from "@vercel/sdk/models/createdeploymentop.js";
 let value: Lambdas = {
   output: [
     {
-      path: "/usr",
+      path: "/usr/obj",
       functionName: "<value>",
     },
   ],

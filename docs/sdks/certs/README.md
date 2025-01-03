@@ -26,6 +26,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.certs.getCertById({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -52,6 +54,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await certsGetCertById(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -105,6 +109,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.certs.removeCert({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -131,6 +137,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await certsRemoveCert(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -183,6 +191,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.certs.issueCert({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -209,6 +219,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await certsIssueCert(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -262,6 +274,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.certs.uploadCert({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       ca: "<value>",
       key: "<key>",
@@ -292,6 +306,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await certsUploadCert(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       ca: "<value>",
       key: "<key>",

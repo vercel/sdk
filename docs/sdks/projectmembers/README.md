@@ -28,6 +28,8 @@ async function run() {
     limit: 20,
     since: 1540095775951,
     until: 1540095775951,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -57,6 +59,8 @@ async function run() {
     limit: 20,
     since: 1540095775951,
     until: 1540095775951,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -109,6 +113,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projectMembers.addProjectMember({
     idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       uid: "ndlgr43fadlPyCtREAqxxdyFK",
       username: "example",
@@ -141,6 +147,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectMembersAddProjectMember(vercel, {
     idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       uid: "ndlgr43fadlPyCtREAqxxdyFK",
       username: "example",
@@ -200,6 +208,8 @@ async function run() {
   const result = await vercel.projectMembers.removeProjectMember({
     idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     uid: "ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -227,6 +237,8 @@ async function run() {
   const res = await projectMembersRemoveProjectMember(vercel, {
     idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     uid: "ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

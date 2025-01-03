@@ -5,7 +5,7 @@
 ```typescript
 import { CreateCheckStatus } from "@vercel/sdk/models/createcheckop.js";
 
-let value: CreateCheckStatus = "registered";
+let value: CreateCheckStatus = "completed";
 ```
 
 ## Values

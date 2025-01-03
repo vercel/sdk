@@ -24,8 +24,8 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "host",
-            op: "lte",
+            type: "geo_country",
+            op: "neq",
           },
         ],
       },
@@ -48,8 +48,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "ja4_digest",
-            op: "suf",
+            type: "geo_continent",
+            op: "gte",
           },
         ],
       },
@@ -74,7 +74,7 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 170.30,
+  value: 2355.67,
 };
 ```
 
@@ -83,7 +83,7 @@ const value: models.UpdateFirewallConfigRequestBody5 = {
 ```typescript
 const value: models.RequestBody6 = {
   action: "crs.update",
-  id: "rce",
+  id: "sqli",
   value: {
     active: false,
     action: "log",
@@ -105,9 +105,9 @@ const value: models.RequestBody7 = {
 const value: models.RequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "responsible-coast.info",
-    ip: "b0d5:28c0:cbb9:cad8:df0b:8eaf:f4ec:5adf",
-    action: "challenge",
+    hostname: "well-off-distinction.com",
+    ip: "66.193.187.171",
+    action: "deny",
   },
 };
 ```
@@ -119,9 +119,9 @@ const value: models.RequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "cruel-extension.biz",
-    ip: "ae4c:fbeb:6664:dca8:e4c1:4dec:dfaa:c2fb",
-    action: "deny",
+    hostname: "total-vanadyl.name",
+    ip: "b666:4dca:8e4c:14de:cdfa:ac2f:b3f7:ddb2",
+    action: "bypass",
   },
 };
 ```

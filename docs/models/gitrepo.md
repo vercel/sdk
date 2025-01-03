@@ -8,14 +8,14 @@
 ```typescript
 const value: models.GitRepo1 = {
   namespace: "<value>",
-  projectId: 2871.53,
+  projectId: 5802.38,
   type: "gitlab",
-  url: "https://neat-redesign.org",
-  path: "/lost+found",
+  url: "https://wealthy-analogy.com",
+  path: "/usr/libdata",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 
@@ -25,10 +25,10 @@ const value: models.GitRepo1 = {
 const value: models.GitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 6599.71,
+  repoId: 5161.24,
   type: "github",
-  repoOwnerId: 5802.38,
-  path: "/usr/libexec",
+  repoOwnerId: 2198.61,
+  path: "/lost+found",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -45,11 +45,11 @@ const value: models.GitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/boot",
+  path: "/bin",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 

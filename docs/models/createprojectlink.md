@@ -12,7 +12,7 @@ const value: models.CreateProjectLink1 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://scornful-paintwork.info/",
+      url: "https://quarrelsome-quit.name",
     },
   ],
 };
@@ -27,7 +27,7 @@ const value: models.CreateProjectLink2 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://pleasing-begonia.net/",
+      url: "https://impressive-haircut.biz/",
     },
   ],
 };
@@ -42,7 +42,7 @@ const value: models.CreateProjectLink3 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://severe-loyalty.com",
+      url: "https://short-cake.name/",
     },
   ],
 };

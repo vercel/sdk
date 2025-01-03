@@ -11,6 +11,8 @@ let value: GetAliasRequest = {
   projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
   since: 1540095775941,
   until: 1540095775951,
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
 };
 ```
 
@@ -23,5 +25,5 @@ let value: GetAliasRequest = {
 | `projectId`                                                           | *string*                                                              | :heavy_minus_sign:                                                    | Get the alias only if it is assigned to the provided project ID       | prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB                                      |
 | `since`                                                               | *number*                                                              | :heavy_minus_sign:                                                    | Get the alias only if it was created after this JavaScript timestamp  | 1540095775941                                                         |
 | `until`                                                               | *number*                                                              | :heavy_minus_sign:                                                    | Get the alias only if it was created before this JavaScript timestamp | 1540095775951                                                         |
-| `teamId`                                                              | *string*                                                              | :heavy_minus_sign:                                                    | The Team identifier to perform the request on behalf of.              |                                                                       |
-| `slug`                                                                | *string*                                                              | :heavy_minus_sign:                                                    | The Team slug to perform the request on behalf of.                    |                                                                       |
+| `teamId`                                                              | *string*                                                              | :heavy_minus_sign:                                                    | The Team identifier to perform the request on behalf of.              | team_1a2b3c4d5e6f7g8h9i0j1k2l                                         |
+| `slug`                                                                | *string*                                                              | :heavy_minus_sign:                                                    | The Team slug to perform the request on behalf of.                    | my-team-url-slug                                                      |

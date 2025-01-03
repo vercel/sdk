@@ -25,7 +25,7 @@ const value: models.GetDeploymentRoutes2 = {
 const value: models.GetDeploymentRoutes3 = {
   src: "<value>",
   continue: false,
-  middleware: 3442.89,
+  middleware: 5024.53,
 };
 ```
 

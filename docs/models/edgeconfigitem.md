@@ -9,10 +9,10 @@ import { EdgeConfigItem } from "@vercel/sdk/models/edgeconfigitem.js";
 
 let value: EdgeConfigItem = {
   key: "<key>",
-  value: "<value>",
+  value: {},
   edgeConfigId: "<id>",
-  createdAt: 3466.08,
-  updatedAt: 5065.32,
+  createdAt: 1017.70,
+  updatedAt: 6730.10,
 };
 ```
 

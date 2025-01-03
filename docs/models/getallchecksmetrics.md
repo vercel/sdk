@@ -7,19 +7,19 @@ import { GetAllChecksMetrics } from "@vercel/sdk/models/getallchecksop.js";
 
 let value: GetAllChecksMetrics = {
   fcp: {
-    value: 1187.28,
+    value: 5232.48,
     source: "web-vitals",
   },
   lcp: {
-    value: 3179.83,
+    value: 939.41,
     source: "web-vitals",
   },
   cls: {
-    value: 4142.63,
+    value: 5759.46,
     source: "web-vitals",
   },
   tbt: {
-    value: 641.47,
+    value: 9292.96,
     source: "web-vitals",
   },
 };

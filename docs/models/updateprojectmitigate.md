@@ -6,7 +6,7 @@
 import { UpdateProjectMitigate } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectMitigate = {
-  action: "log",
+  action: "redirect",
   ruleId: "<id>",
 };
 ```

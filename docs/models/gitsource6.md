@@ -11,7 +11,7 @@ let value: GitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://close-airman.org",
+  gitUrl: "https://candid-chainstay.biz/",
 };
 ```
 

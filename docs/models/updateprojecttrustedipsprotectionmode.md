@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectTrustedIpsProtectionMode } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectTrustedIpsProtectionMode = "additional";
+let value: UpdateProjectTrustedIpsProtectionMode = "exclusive";
 ```
 
 ## Values

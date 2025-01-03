@@ -36,7 +36,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.edgeConfig.getEdgeConfigs({});
+  const result = await vercel.edgeConfig.getEdgeConfigs({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -60,7 +63,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await edgeConfigGetEdgeConfigs(vercel, {});
+  const res = await edgeConfigGetEdgeConfigs(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -111,6 +117,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.edgeConfig.createEdgeConfig({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       slug: "<value>",
     },
@@ -139,6 +147,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await edgeConfigCreateEdgeConfig(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       slug: "<value>",
     },
@@ -194,6 +204,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.getEdgeConfig({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -220,6 +232,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigGetEdgeConfig(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -273,6 +287,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.updateEdgeConfig({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       slug: "<value>",
     },
@@ -302,6 +318,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigUpdateEdgeConfig(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       slug: "<value>",
     },
@@ -358,6 +376,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.edgeConfig.deleteEdgeConfig({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -383,6 +403,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigDeleteEdgeConfig(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -435,6 +457,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigItems({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -461,6 +485,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigGetEdgeConfigItems(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -514,6 +540,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigSchema({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -540,6 +568,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigGetEdgeConfigSchema(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -593,6 +623,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.patchEdgeConfigSchema({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       definition: "<value>",
     },
@@ -622,6 +654,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigPatchEdgeConfigSchema(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       definition: "<value>",
     },
@@ -678,6 +712,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.edgeConfig.deleteEdgeConfigSchema({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -703,6 +739,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigDeleteEdgeConfigSchema(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -756,6 +794,8 @@ async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigItem({
     edgeConfigId: "<id>",
     edgeConfigItemKey: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -783,6 +823,8 @@ async function run() {
   const res = await edgeConfigGetEdgeConfigItem(vercel, {
     edgeConfigId: "<id>",
     edgeConfigItemKey: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -836,6 +878,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigTokens({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -862,6 +906,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigGetEdgeConfigTokens(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -915,6 +961,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.edgeConfig.deleteEdgeConfigTokens({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       tokens: [
         "<value>",
@@ -945,6 +993,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigDeleteEdgeConfigTokens(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       tokens: [
         "<value>",
@@ -1003,6 +1053,8 @@ async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigToken({
     edgeConfigId: "<id>",
     token: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1030,6 +1082,8 @@ async function run() {
   const res = await edgeConfigGetEdgeConfigToken(vercel, {
     edgeConfigId: "<id>",
     token: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1083,6 +1137,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.createEdgeConfigToken({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       label: "<value>",
     },
@@ -1112,6 +1168,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigCreateEdgeConfigToken(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       label: "<value>",
     },
@@ -1169,6 +1227,8 @@ async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigBackup({
     edgeConfigId: "<id>",
     edgeConfigBackupVersionId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1196,6 +1256,8 @@ async function run() {
   const res = await edgeConfigGetEdgeConfigBackup(vercel, {
     edgeConfigId: "<id>",
     edgeConfigBackupVersionId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -1249,6 +1311,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.edgeConfig.getEdgeConfigBackups({
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -1275,6 +1339,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await edgeConfigGetEdgeConfigBackups(vercel, {
     edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

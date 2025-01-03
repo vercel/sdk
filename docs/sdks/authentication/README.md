@@ -177,6 +177,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.authentication.createAuthToken({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "<value>",
     },
@@ -205,6 +207,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await authenticationCreateAuthToken(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "<value>",
     },

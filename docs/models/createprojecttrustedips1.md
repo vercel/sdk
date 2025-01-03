@@ -6,7 +6,7 @@
 import { CreateProjectTrustedIps1 } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectTrustedIps1 = {
-  deploymentType: "all",
+  deploymentType: "production",
   addresses: [
     {
       value: "<value>",

@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodyMitigate } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodyMitigate = {
-  action: "redirect",
+  action: "log",
 };
 ```
 

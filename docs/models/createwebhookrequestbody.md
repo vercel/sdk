@@ -6,9 +6,9 @@
 import { CreateWebhookRequestBody } from "@vercel/sdk/models/createwebhookop.js";
 
 let value: CreateWebhookRequestBody = {
-  url: "https://quick-witted-bowler.biz/",
+  url: "https://zesty-expense.com/",
   events: [
-    "integration-configuration-scope-change-confirmed",
+    "integration-configuration.removed",
   ],
 };
 ```

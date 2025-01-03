@@ -6,8 +6,8 @@
 import { RequestBodyConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBodyConditions = {
-  type: "geo_as_number",
-  op: "neq",
+  type: "ip_address",
+  op: "pre",
 };
 ```
 

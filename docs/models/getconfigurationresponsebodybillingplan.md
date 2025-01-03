@@ -9,7 +9,7 @@ let value: GetConfigurationResponseBodyBillingPlan = {
   id: "<id>",
   type: "subscription",
   name: "<value>",
-  description: "epic likewise gah boohoo concerning regularly stupendous anti",
+  description: "bar successfully best",
 };
 ```
 

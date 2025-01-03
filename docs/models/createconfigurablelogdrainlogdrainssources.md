@@ -5,7 +5,7 @@
 ```typescript
 import { CreateConfigurableLogDrainLogDrainsSources } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
 
-let value: CreateConfigurableLogDrainLogDrainsSources = "edge";
+let value: CreateConfigurableLogDrainLogDrainsSources = "firewall";
 ```
 
 ## Values

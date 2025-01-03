@@ -6,34 +6,36 @@
 import { CreateCheckResponseBody } from "@vercel/sdk/models/createcheckop.js";
 
 let value: CreateCheckResponseBody = {
-  id: "<id>",
-  name: "<value>",
+  id: "chk_1a2b3c4d5e6f7g8h9i0j",
+  name: "Performance Check",
+  path: "/api/users",
   status: "completed",
+  conclusion: "succeeded",
   blocking: false,
   integrationId: "<id>",
   deploymentId: "<id>",
-  createdAt: 4686.51,
-  updatedAt: 9767.61,
+  createdAt: 2961.40,
+  updatedAt: 1187.28,
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `name`                                                             | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `path`                                                             | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `status`                                                           | [models.CreateCheckStatus](../models/createcheckstatus.md)         | :heavy_check_mark:                                                 | N/A                                                                |
-| `conclusion`                                                       | [models.CreateCheckConclusion](../models/createcheckconclusion.md) | :heavy_minus_sign:                                                 | N/A                                                                |
-| `blocking`                                                         | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
-| `output`                                                           | [models.CreateCheckOutput](../models/createcheckoutput.md)         | :heavy_minus_sign:                                                 | N/A                                                                |
-| `detailsUrl`                                                       | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `integrationId`                                                    | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `deploymentId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `externalId`                                                       | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `createdAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `updatedAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `startedAt`                                                        | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `completedAt`                                                      | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `rerequestable`                                                    | *boolean*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | chk_1a2b3c4d5e6f7g8h9i0j                                           |
+| `name`                                                             | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | Performance Check                                                  |
+| `path`                                                             | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                | /api/users                                                         |
+| `status`                                                           | [models.CreateCheckStatus](../models/createcheckstatus.md)         | :heavy_check_mark:                                                 | N/A                                                                | completed                                                          |
+| `conclusion`                                                       | [models.CreateCheckConclusion](../models/createcheckconclusion.md) | :heavy_minus_sign:                                                 | N/A                                                                | succeeded                                                          |
+| `blocking`                                                         | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `output`                                                           | [models.CreateCheckOutput](../models/createcheckoutput.md)         | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `detailsUrl`                                                       | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `integrationId`                                                    | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `deploymentId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `externalId`                                                       | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `createdAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `updatedAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `startedAt`                                                        | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `completedAt`                                                      | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
+| `rerequestable`                                                    | *boolean*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |

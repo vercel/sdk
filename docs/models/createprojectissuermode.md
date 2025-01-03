@@ -7,7 +7,7 @@
 ```typescript
 import { CreateProjectIssuerMode } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectIssuerMode = "global";
+let value: CreateProjectIssuerMode = "team";
 ```
 
 ## Values

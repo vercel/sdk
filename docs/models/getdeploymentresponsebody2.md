@@ -9,27 +9,27 @@ import { GetDeploymentResponseBody2 } from "@vercel/sdk/models/getdeploymentop.j
 
 let value: GetDeploymentResponseBody2 = {
   aliasAssigned: false,
-  bootedAt: 5063.43,
-  buildingAt: 3498.98,
+  bootedAt: 6339.87,
+  buildingAt: 2305.71,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "READY",
+  status: "BUILDING",
   id: "<id>",
   type: "LAMBDAS",
-  createdAt: 245.77,
+  createdAt: 8002.56,
   name: "<value>",
-  readyState: "INITIALIZING",
+  readyState: "CANCELED",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://filthy-self-confidence.org/",
-  version: 3165.50,
+  url: "https://supportive-brook.name/",
+  version: 7510.32,
 };
 ```
 

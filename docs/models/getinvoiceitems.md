@@ -8,8 +8,8 @@ import { GetInvoiceItems } from "@vercel/sdk/models/getinvoiceop.js";
 let value: GetInvoiceItems = {
   billingPlanId: "<id>",
   name: "<value>",
-  price: "930.29",
-  quantity: 6155.97,
+  price: "327.69",
+  quantity: 9371.23,
   units: "<value>",
   total: "<value>",
 };

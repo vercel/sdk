@@ -16,39 +16,41 @@ let value: GetDeploymentResponseBody1 = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://important-blowgun.com",
+  inspectorUrl: "https://messy-vista.info",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 2781.17,
-  buildingAt: 1693.13,
+  bootedAt: 7879.16,
+  buildingAt: 5552.94,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "CANCELED",
+  status: "ERROR",
   id: "<id>",
   type: "LAMBDAS",
-  createdAt: 1512.30,
+  createdAt: 9554.66,
   name: "<value>",
-  readyState: "READY",
+  readyState: "INITIALIZING",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://official-laughter.org",
-  version: 3638.45,
+  url: "https://inferior-scale.net/",
+  version: 9163.40,
   projectId: "<id>",
-  plan: "hobby",
+  plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [
     {
-      handle: "hit",
+      src: "<value>",
+      continue: false,
+      middleware: 4598.75,
     },
   ],
 };
@@ -70,6 +72,7 @@ let value: GetDeploymentResponseBody1 = {
 | `projectSettings`                                                                                                                                                                                                           | [models.ResponseBodyProjectSettings](../models/responsebodyprojectsettings.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `readyStateReason`                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `integrations`                                                                                                                                                                                                              | [models.ResponseBodyIntegrations](../models/responsebodyintegrations.md)                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
+| `images`                                                                                                                                                                                                                    | [models.ResponseBodyImages](../models/responsebodyimages.md)                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `alias`                                                                                                                                                                                                                     | *string*[]                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `aliasAssigned`                                                                                                                                                                                                             | *boolean*                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `bootedAt`                                                                                                                                                                                                                  | *number*                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |

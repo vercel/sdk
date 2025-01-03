@@ -17,8 +17,8 @@ let value: UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "method",
-            op: "sub",
+            type: "scheme",
+            op: "re",
           },
         ],
       },

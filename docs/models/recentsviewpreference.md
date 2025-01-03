@@ -5,7 +5,7 @@
 ```typescript
 import { RecentsViewPreference } from "@vercel/sdk/models/authuser.js";
 
-let value: RecentsViewPreference = "open";
+let value: RecentsViewPreference = "closed";
 ```
 
 ## Values

@@ -116,7 +116,9 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -154,6 +156,8 @@ async function run() {
     since: 1540095775941,
     until: 1540095775951,
     state: "BUILDING,READY",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -178,6 +182,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.updateProject({
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },
@@ -592,6 +598,8 @@ async function run() {
     xArtifactClientInteractive: 0,
     xArtifactTag: "Tc0BmHvJYMIYJ62/zx87YqO0Flxk+5Ovip25NY825CQ=",
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: await openAsBlob("example.file"),
   });
 
@@ -619,7 +627,9 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   }, {
     retries: {
       strategy: "backoff",
@@ -661,7 +671,9 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -702,7 +714,9 @@ async function run() {
   let result;
   try {
     result = await vercel.accessGroups.readAccessGroup({
-      idOrName: "<value>",
+      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+      slug: "my-team-url-slug",
     });
 
     // Handle the result
@@ -773,7 +787,9 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result

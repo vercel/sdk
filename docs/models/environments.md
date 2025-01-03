@@ -5,7 +5,7 @@
 ```typescript
 import { Environments } from "@vercel/sdk/models/createlogdrainop.js";
 
-let value: Environments = "preview";
+let value: Environments = "production";
 ```
 
 ## Values

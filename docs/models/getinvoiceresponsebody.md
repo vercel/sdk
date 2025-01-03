@@ -16,8 +16,8 @@ let value: GetInvoiceResponseBody = {
     {
       billingPlanId: "<id>",
       name: "<value>",
-      price: "917.99",
-      quantity: 4545.90,
+      price: "862.85",
+      quantity: 8167.26,
       units: "<value>",
       total: "<value>",
     },
@@ -25,7 +25,7 @@ let value: GetInvoiceResponseBody = {
   total: "<value>",
   created: "<value>",
   updated: "<value>",
-  state: "scheduled",
+  state: "notpaid",
   test: false,
 };
 ```

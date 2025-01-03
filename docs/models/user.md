@@ -9,8 +9,8 @@
 const value: models.AuthUser = {
   createdAt: 1630748523395,
   softBlock: {
-    blockedAt: 1095.70,
-    reason: "ENTERPRISE_TRIAL_ENDED",
+    blockedAt: 3539.04,
+    reason: "SUBSCRIPTION_CANCELED",
   },
   billing: {},
   resourceConfig: {},

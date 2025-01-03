@@ -5,7 +5,7 @@
 ```typescript
 import { Events } from "@vercel/sdk/models/createwebhookop.js";
 
-let value: Events = "deployment.error";
+let value: Events = "deployment.integration.action.cancel";
 ```
 
 ## Values

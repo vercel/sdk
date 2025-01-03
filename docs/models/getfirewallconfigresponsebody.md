@@ -1,5 +1,7 @@
 # GetFirewallConfigResponseBody
 
+If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack
+
 ## Example Usage
 
 ```typescript
@@ -9,17 +11,17 @@ let value: GetFirewallConfigResponseBody = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 7733.32,
-  updatedAt: "<value>",
+  version: 9651.16,
+  updatedAt: "1735899418915",
   firewallEnabled: false,
   crs: {
     sd: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     ma: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     lfi: {
       active: false,
@@ -27,11 +29,11 @@ let value: GetFirewallConfigResponseBody = {
     },
     rfi: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     rce: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     php: {
       active: false,
@@ -43,15 +45,15 @@ let value: GetFirewallConfigResponseBody = {
     },
     xss: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     sqli: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     sf: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     java: {
       active: false,
@@ -67,8 +69,8 @@ let value: GetFirewallConfigResponseBody = {
         {
           conditions: [
             {
-              type: "region",
-              op: "eq",
+              type: "geo_city",
+              op: "gte",
             },
           ],
         },
@@ -79,9 +81,9 @@ let value: GetFirewallConfigResponseBody = {
   ips: [
     {
       id: "<id>",
-      hostname: "lanky-sundae.info",
-      ip: "156.254.209.158",
-      action: "bypass",
+      hostname: "unwritten-silk.info",
+      ip: "ac1b:9eab:391f:eb8c:6b6a:5fe1:0f46:4eeb",
+      action: "challenge",
     },
   ],
   changes: [

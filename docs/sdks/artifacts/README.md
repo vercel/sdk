@@ -29,6 +29,8 @@ async function run() {
   await vercel.artifacts.recordEvents({
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: [
       {
         sessionId: "<id>",
@@ -64,6 +66,8 @@ async function run() {
   const res = await artifactsRecordEvents(vercel, {
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: [
       {
         sessionId: "<id>",
@@ -122,7 +126,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.artifacts.status({});
+  const result = await vercel.artifacts.status({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -146,7 +153,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await artifactsStatus(vercel, {});
+  const res = await artifactsStatus(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -204,6 +214,8 @@ async function run() {
     xArtifactClientInteractive: 0,
     xArtifactTag: "Tc0BmHvJYMIYJ62/zx87YqO0Flxk+5Ovip25NY825CQ=",
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: await openAsBlob("example.file"),
   });
 
@@ -237,6 +249,8 @@ async function run() {
     xArtifactClientInteractive: 0,
     xArtifactTag: "Tc0BmHvJYMIYJ62/zx87YqO0Flxk+5Ovip25NY825CQ=",
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: await openAsBlob("example.file"),
   });
 
@@ -292,6 +306,8 @@ async function run() {
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -320,6 +336,8 @@ async function run() {
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -373,6 +391,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.artifacts.artifactExists({
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -398,6 +418,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await artifactsArtifactExists(vercel, {
     hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -449,11 +471,12 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.artifacts.artifactQuery({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       hashes: [
-        "<value>",
-        "<value>",
-        "<value>",
+        "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+        "34HKQaOmR5t5Uy6vasdasdasdasd",
       ],
     },
   });
@@ -481,11 +504,12 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await artifactsArtifactQuery(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       hashes: [
-        "<value>",
-        "<value>",
-        "<value>",
+        "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+        "34HKQaOmR5t5Uy6vasdasdasdasd",
       ],
     },
   });

@@ -8,8 +8,8 @@ Period for the billing cycle.
 import { Period } from "@vercel/sdk/models/submitbillingdataop.js";
 
 let value: Period = {
-  start: new Date("2023-08-20T03:18:40.071Z"),
-  end: new Date("2024-12-09T08:09:09.462Z"),
+  start: new Date("2024-09-04T22:28:02.223Z"),
+  end: new Date("2025-08-16T05:08:02.805Z"),
 };
 ```
 

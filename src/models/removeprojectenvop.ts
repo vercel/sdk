@@ -51,10 +51,10 @@ export type RemoveProjectEnvResponseBodyProjectsResponseTarget =
 
 export const RemoveProjectEnvResponseBodyProjectsResponseType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type RemoveProjectEnvResponseBodyProjectsResponseType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsResponseType
@@ -404,10 +404,10 @@ export type RemoveProjectEnvResponseBodyProjectsTarget =
 
 export const RemoveProjectEnvResponseBodyProjectsType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type RemoveProjectEnvResponseBodyProjectsType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyProjectsType
@@ -756,10 +756,10 @@ export type RemoveProjectEnvResponseBodyTarget =
 
 export const RemoveProjectEnvResponseBodyType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type RemoveProjectEnvResponseBodyType = ClosedEnum<
   typeof RemoveProjectEnvResponseBodyType

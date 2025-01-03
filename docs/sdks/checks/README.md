@@ -27,6 +27,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.checks.createCheck({
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "Performance Check",
       path: "/",
@@ -61,6 +63,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await checksCreateCheck(vercel, {
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "Performance Check",
       path: "/",
@@ -122,6 +126,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.checks.getAllChecks({
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -148,6 +154,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await checksGetAllChecks(vercel, {
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -202,6 +210,8 @@ async function run() {
   const result = await vercel.checks.getCheck({
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -229,6 +239,8 @@ async function run() {
   const res = await checksGetCheck(vercel, {
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -283,6 +295,8 @@ async function run() {
   const result = await vercel.checks.updateCheck({
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "Performance Check",
       path: "/",
@@ -345,6 +359,8 @@ async function run() {
   const res = await checksUpdateCheck(vercel, {
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "Performance Check",
       path: "/",
@@ -434,6 +450,8 @@ async function run() {
   const result = await vercel.checks.rerequestCheck({
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -461,6 +479,8 @@ async function run() {
   const res = await checksRerequestCheck(vercel, {
     deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
     checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

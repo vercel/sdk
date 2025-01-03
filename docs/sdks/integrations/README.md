@@ -27,6 +27,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.integrations.getConfigurations({
     view: "account",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -53,6 +55,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await integrationsGetConfigurations(vercel, {
     view: "account",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -105,6 +109,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.integrations.getConfiguration({
     id: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -131,6 +137,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await integrationsGetConfiguration(vercel, {
     id: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -184,6 +192,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.integrations.deleteConfiguration({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -209,6 +219,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await integrationsDeleteConfiguration(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -339,6 +351,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.integrations.searchRepo({
     host: "ghes-test.now.systems",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -365,6 +379,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await integrationsSearchRepo(vercel, {
     host: "ghes-test.now.systems",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

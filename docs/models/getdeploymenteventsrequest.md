@@ -16,6 +16,8 @@ let value: GetDeploymentEventsRequest = {
   statusCode: "5xx",
   delimiter: 1,
   builds: 1,
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
 };
 ```
 
@@ -33,5 +35,5 @@ let value: GetDeploymentEventsRequest = {
 | `statusCode`                                                                   | *models.StatusCode*                                                            | :heavy_minus_sign:                                                             | HTTP status code range to filter events by.                                    | 5xx                                                                            |
 | `delimiter`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            | 1                                                                              |
 | `builds`                                                                       | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            | 1                                                                              |
-| `teamId`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | The Team identifier to perform the request on behalf of.                       |                                                                                |
-| `slug`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | The Team slug to perform the request on behalf of.                             |                                                                                |
+| `teamId`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | The Team identifier to perform the request on behalf of.                       | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                  |
+| `slug`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | The Team slug to perform the request on behalf of.                             | my-team-url-slug                                                               |

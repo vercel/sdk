@@ -5,7 +5,7 @@
 ```typescript
 import { GetDeploymentsFramework } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsFramework = "nuxtjs";
+let value: GetDeploymentsFramework = "gridsome";
 ```
 
 ## Values

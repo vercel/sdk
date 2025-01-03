@@ -10,7 +10,7 @@ import { ResponseBodyLambdas } from "@vercel/sdk/models/getdeploymentop.js";
 let value: ResponseBodyLambdas = {
   output: [
     {
-      path: "/var",
+      path: "/etc/defaults",
       functionName: "<value>",
     },
   ],

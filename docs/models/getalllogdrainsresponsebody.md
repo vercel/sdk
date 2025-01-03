@@ -8,14 +8,14 @@ import { GetAllLogDrainsResponseBody } from "@vercel/sdk/models/getalllogdrainso
 let value: GetAllLogDrainsResponseBody = {
   id: "<id>",
   deliveryFormat: "ndjson",
-  url: "https://lined-soybean.biz/",
+  url: "https://splendid-procurement.org/",
   name: "<value>",
   ownerId: "<id>",
-  createdAt: 4266.91,
-  deletedAt: 6104.90,
-  updatedAt: 5456.29,
+  createdAt: 2172.76,
+  deletedAt: 1149.24,
+  updatedAt: 7240.73,
   environments: [
-    "preview",
+    "production",
   ],
 };
 ```

@@ -7,7 +7,7 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodyType } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodyType = "host";
+let value: UpdateFirewallConfigRequestBodyType = "user_agent";
 ```
 
 ## Values

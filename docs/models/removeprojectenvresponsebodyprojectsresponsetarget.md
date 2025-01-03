@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.RemoveProjectEnvTargetProjectsResponse1[] = [
-  "preview",
+  "development",
 ];
 ```
 

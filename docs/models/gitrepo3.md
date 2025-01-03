@@ -11,7 +11,7 @@ let value: GitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/opt/bin",
+  path: "/dev",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,

@@ -11,7 +11,7 @@ let value: GetProjectsLink2 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://animated-velocity.info",
+      url: "https://buzzing-underneath.org",
     },
   ],
 };

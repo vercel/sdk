@@ -8,7 +8,7 @@ import { PutFirewallConfigConditionGroup } from "@vercel/sdk/models/putfirewallc
 let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "geo_country_region",
+      type: "target_path",
       op: "gte",
     },
   ],

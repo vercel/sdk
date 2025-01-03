@@ -14,14 +14,14 @@ const value: models.SearchRepoResponseBody1 = {};
 ```typescript
 const value: models.SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "github",
-    namespaceId: 492.85,
+    provider: "bitbucket",
+    namespaceId: 7399.37,
   },
   repos: [
     {
-      id: 2528.54,
-      provider: "bitbucket",
-      url: "https://fake-request.name/",
+      id: 9682.12,
+      provider: "github-custom-host",
+      url: "https://helpful-gray.biz",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
@@ -29,10 +29,10 @@ const value: models.SearchRepoResponseBody2 = {
         id: "<id>",
         name: "<value>",
       },
-      ownerType: "user",
+      ownerType: "team",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 3755.49,
+      updatedAt: 2925.71,
     },
   ],
 };

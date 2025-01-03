@@ -27,16 +27,6 @@ export type VerifyProjectDomainRequest = {
 };
 
 /**
- * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
- */
-export type VerifyProjectDomainVerification = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
-
-/**
  * The project domain was verified successfully
  *
  * @remarks
@@ -56,10 +46,6 @@ export type VerifyProjectDomainResponseBody = {
    * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
    */
   verified: boolean;
-  /**
-   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-   */
-  verification?: Array<VerifyProjectDomainVerification> | undefined;
 };
 
 /** @internal */
@@ -126,71 +112,6 @@ export function verifyProjectDomainRequestFromJSON(
 }
 
 /** @internal */
-export const VerifyProjectDomainVerification$inboundSchema: z.ZodType<
-  VerifyProjectDomainVerification,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-/** @internal */
-export type VerifyProjectDomainVerification$Outbound = {
-  type: string;
-  domain: string;
-  value: string;
-  reason: string;
-};
-
-/** @internal */
-export const VerifyProjectDomainVerification$outboundSchema: z.ZodType<
-  VerifyProjectDomainVerification$Outbound,
-  z.ZodTypeDef,
-  VerifyProjectDomainVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifyProjectDomainVerification$ {
-  /** @deprecated use `VerifyProjectDomainVerification$inboundSchema` instead. */
-  export const inboundSchema = VerifyProjectDomainVerification$inboundSchema;
-  /** @deprecated use `VerifyProjectDomainVerification$outboundSchema` instead. */
-  export const outboundSchema = VerifyProjectDomainVerification$outboundSchema;
-  /** @deprecated use `VerifyProjectDomainVerification$Outbound` instead. */
-  export type Outbound = VerifyProjectDomainVerification$Outbound;
-}
-
-export function verifyProjectDomainVerificationToJSON(
-  verifyProjectDomainVerification: VerifyProjectDomainVerification,
-): string {
-  return JSON.stringify(
-    VerifyProjectDomainVerification$outboundSchema.parse(
-      verifyProjectDomainVerification,
-    ),
-  );
-}
-
-export function verifyProjectDomainVerificationFromJSON(
-  jsonString: string,
-): SafeParseResult<VerifyProjectDomainVerification, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VerifyProjectDomainVerification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VerifyProjectDomainVerification' from JSON`,
-  );
-}
-
-/** @internal */
 export const VerifyProjectDomainResponseBody$inboundSchema: z.ZodType<
   VerifyProjectDomainResponseBody,
   z.ZodTypeDef,
@@ -206,9 +127,6 @@ export const VerifyProjectDomainResponseBody$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => VerifyProjectDomainVerification$inboundSchema),
-  ).optional(),
 });
 
 /** @internal */
@@ -223,7 +141,6 @@ export type VerifyProjectDomainResponseBody$Outbound = {
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
   verified: boolean;
-  verification?: Array<VerifyProjectDomainVerification$Outbound> | undefined;
 };
 
 /** @internal */
@@ -242,9 +159,6 @@ export const VerifyProjectDomainResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => VerifyProjectDomainVerification$outboundSchema),
-  ).optional(),
 });
 
 /**

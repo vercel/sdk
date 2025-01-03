@@ -7,21 +7,21 @@ import { UpdateProjectTargets } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectTargets = {
   id: "<id>",
-  createdAt: 5173.26,
+  createdAt: 2168.70,
   createdIn: "<value>",
   creator: {
-    email: "Stephanie3@yahoo.com",
+    email: "Ally.Bradtke82@hotmail.com",
     uid: "<id>",
-    username: "Curt.Baumbach",
+    username: "Camille.Schulist22",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "hobby",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "ERROR",
+  readyState: "INITIALIZING",
   type: "LAMBDAS",
-  url: "https://gracious-silk.com/",
+  url: "https://secret-fisherman.net/",
   userId: "<id>",
 };
 ```

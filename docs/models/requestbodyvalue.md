@@ -12,8 +12,8 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "path",
-          op: "gt",
+          type: "ip_address",
+          op: "sub",
         },
       ],
     },

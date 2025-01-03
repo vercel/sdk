@@ -6,9 +6,9 @@
 import { UpdateProjectCrons } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectCrons = {
-  enabledAt: 7699.67,
-  disabledAt: 3574.25,
-  updatedAt: 6216.65,
+  enabledAt: 7452.33,
+  disabledAt: 5269.07,
+  updatedAt: 4876.76,
   deploymentId: "<id>",
   definitions: [
     {

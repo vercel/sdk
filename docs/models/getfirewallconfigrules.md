@@ -13,8 +13,8 @@ let value: GetFirewallConfigRules = {
     {
       conditions: [
         {
-          type: "scheme",
-          op: "eq",
+          type: "geo_city",
+          op: "lte",
         },
       ],
     },

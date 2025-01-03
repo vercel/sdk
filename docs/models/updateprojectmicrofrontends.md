@@ -6,7 +6,7 @@
 import { UpdateProjectMicrofrontends } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectMicrofrontends = {
-  updatedAt: 6211.69,
+  updatedAt: 593.83,
   groupIds: [
     "<value>",
   ],

@@ -10,8 +10,8 @@ let value: Usage = {
   name: "<value>",
   type: "total",
   units: "<value>",
-  dayValue: 5025.09,
-  periodValue: 283.63,
+  dayValue: 8618.23,
+  periodValue: 8443.27,
 };
 ```
 

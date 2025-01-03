@@ -6,10 +6,10 @@
 import { RateLimitNotice } from "@vercel/sdk/models/ratelimitnotice.js";
 
 let value: RateLimitNotice = {
-  remaining: 227741,
-  reset: 446793,
-  resetMs: 836991,
-  total: 221824,
+  remaining: 413086,
+  reset: 710059,
+  resetMs: 789870,
+  total: 317260,
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { BlockedDueToOverageType } from "@vercel/sdk/models/authuser.js";
 
-let value: BlockedDueToOverageType = "storageRedisTotalCommands";
+let value: BlockedDueToOverageType = "buildMinute";
 ```
 
 ## Values

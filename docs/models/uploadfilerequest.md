@@ -5,16 +5,19 @@
 ```typescript
 import { UploadFileRequest } from "@vercel/sdk/models/uploadfileop.js";
 
-let value: UploadFileRequest = {};
+let value: UploadFileRequest = {
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
+};
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `contentLength`                                          | *number*                                                 | :heavy_minus_sign:                                       | The file size in bytes                                   |
-| `xVercelDigest`                                          | *string*                                                 | :heavy_minus_sign:                                       | The file SHA1 used to check the integrity                |
-| `xNowDigest`                                             | *string*                                                 | :heavy_minus_sign:                                       | The file SHA1 used to check the integrity                |
-| `xNowSize`                                               | *number*                                                 | :heavy_minus_sign:                                       | The file size as an alternative to `Content-Length`      |
-| `teamId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | The Team identifier to perform the request on behalf of. |
-| `slug`                                                   | *string*                                                 | :heavy_minus_sign:                                       | The Team slug to perform the request on behalf of.       |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `contentLength`                                          | *number*                                                 | :heavy_minus_sign:                                       | The file size in bytes                                   |                                                          |
+| `xVercelDigest`                                          | *string*                                                 | :heavy_minus_sign:                                       | The file SHA1 used to check the integrity                |                                                          |
+| `xNowDigest`                                             | *string*                                                 | :heavy_minus_sign:                                       | The file SHA1 used to check the integrity                |                                                          |
+| `xNowSize`                                               | *number*                                                 | :heavy_minus_sign:                                       | The file size as an alternative to `Content-Length`      |                                                          |
+| `teamId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | The Team identifier to perform the request on behalf of. | team_1a2b3c4d5e6f7g8h9i0j1k2l                            |
+| `slug`                                                   | *string*                                                 | :heavy_minus_sign:                                       | The Team slug to perform the request on behalf of.       | my-team-url-slug                                         |

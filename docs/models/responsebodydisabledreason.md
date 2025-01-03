@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyDisabledReason } from "@vercel/sdk/models/getconfigurationsop.js";
 
-let value: ResponseBodyDisabledReason = "original-owner-role-downgraded";
+let value: ResponseBodyDisabledReason = "original-owner-left-the-team";
 ```
 
 ## Values

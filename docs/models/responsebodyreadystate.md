@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyReadyState } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyReadyState = "INITIALIZING";
+let value: ResponseBodyReadyState = "ERROR";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { GetAllLogDrainsDisabledReason } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDisabledReason = "feature-not-available";
+let value: GetAllLogDrainsDisabledReason = "disabled-by-admin";
 ```
 
 ## Values

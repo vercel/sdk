@@ -6,6 +6,8 @@
 import { CreateLogDrainRequest } from "@vercel/sdk/models/createlogdrainop.js";
 
 let value: CreateLogDrainRequest = {
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
   requestBody: {
     name: "My first log drain",
     secret: "a1Xsfd325fXcs",
@@ -17,8 +19,8 @@ let value: CreateLogDrainRequest = {
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `teamId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | The Team identifier to perform the request on behalf of.                   |
-| `slug`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | The Team slug to perform the request on behalf of.                         |
-| `requestBody`                                                              | [models.CreateLogDrainRequestBody](../models/createlogdrainrequestbody.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `teamId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | The Team identifier to perform the request on behalf of.                   | team_1a2b3c4d5e6f7g8h9i0j1k2l                                              |
+| `slug`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | The Team slug to perform the request on behalf of.                         | my-team-url-slug                                                           |
+| `requestBody`                                                              | [models.CreateLogDrainRequestBody](../models/createlogdrainrequestbody.md) | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |

@@ -8,7 +8,7 @@ Deployment Target or Targets in which the ENV variable will be used
 ### `models.Target1`
 
 ```typescript
-const value: models.Target1 = "production";
+const value: models.Target1 = "development";
 ```
 
 ### `models.Target2[]`

@@ -6,7 +6,7 @@
 import { Ten } from "@vercel/sdk/models/createrecordop.js";
 
 let value: Ten = {
-  type: "CAA",
+  type: "HTTPS",
   ttl: 60,
   https: {
     priority: 10,

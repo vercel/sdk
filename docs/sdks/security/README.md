@@ -25,6 +25,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.security.updateAttackChallengeMode({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       projectId: "<id>",
       attackModeEnabled: true,
@@ -54,6 +56,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await securityUpdateAttackChallengeMode(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       projectId: "<id>",
       attackModeEnabled: true,
@@ -111,6 +115,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.security.putFirewallConfig({
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       firewallEnabled: true,
     },
@@ -140,6 +146,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await securityPutFirewallConfig(vercel, {
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       firewallEnabled: true,
     },
@@ -196,6 +204,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.security.updateFirewallConfig({
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       action: "ip.remove",
       id: "<id>",
@@ -226,6 +236,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await securityUpdateFirewallConfig(vercel, {
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       action: "ip.remove",
       id: "<id>",
@@ -283,6 +295,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.security.getFirewallConfig({
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     configVersion: "<value>",
   });
 
@@ -310,6 +324,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await securityGetFirewallConfig(vercel, {
     projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     configVersion: "<value>",
   });
 

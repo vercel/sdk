@@ -25,6 +25,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.webhooks.createWebhook({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       url: "https://woeful-yin.biz",
       events: [
@@ -56,6 +58,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await webhooksCreateWebhook(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       url: "https://woeful-yin.biz",
       events: [
@@ -112,7 +116,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.webhooks.getWebhooks({});
+  const result = await vercel.webhooks.getWebhooks({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -136,7 +143,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await webhooksGetWebhooks(vercel, {});
+  const res = await webhooksGetWebhooks(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -188,6 +198,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.webhooks.getWebhook({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -214,6 +226,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await webhooksGetWebhook(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -266,6 +280,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.webhooks.deleteWebhook({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -291,6 +307,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await webhooksDeleteWebhook(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

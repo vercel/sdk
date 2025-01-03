@@ -8,13 +8,13 @@ Restricts access to deployments based on the incoming request IP address
 import { TrustedIps } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: TrustedIps = {
-  deploymentType: "production",
+  deploymentType: "all",
   addresses: [
     {
       value: "<value>",
     },
   ],
-  protectionMode: "additional",
+  protectionMode: "exclusive",
 };
 ```
 

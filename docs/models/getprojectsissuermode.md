@@ -7,7 +7,7 @@
 ```typescript
 import { GetProjectsIssuerMode } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsIssuerMode = "global";
+let value: GetProjectsIssuerMode = "team";
 ```
 
 ## Values

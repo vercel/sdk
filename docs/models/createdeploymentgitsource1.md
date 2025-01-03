@@ -7,7 +7,7 @@ import { CreateDeploymentGitSource1 } from "@vercel/sdk/models/createdeploymento
 
 let value: CreateDeploymentGitSource1 = {
   type: "github",
-  repoId: 8830.78,
+  repoId: 9608.13,
 };
 ```
 

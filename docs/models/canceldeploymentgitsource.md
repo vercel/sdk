@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CancelDeploymentGitSource1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 3966.10,
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://complete-corporation.net/",
+  gitUrl: "https://frequent-kettledrum.name/",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 495.00,
+  repoId: 4610.50,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 1018.55,
+  projectId: 9351.61,
 };
 ```
 

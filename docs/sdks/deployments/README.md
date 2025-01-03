@@ -40,6 +40,8 @@ async function run() {
     statusCode: "5xx",
     delimiter: 1,
     builds: 1,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -74,6 +76,8 @@ async function run() {
     statusCode: "5xx",
     delimiter: 1,
     builds: 1,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -126,6 +130,8 @@ async function run() {
   const result = await vercel.deployments.getDeployment({
     idOrUrl: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
     withGitRepoInfo: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -153,6 +159,8 @@ async function run() {
   const res = await deploymentsGetDeployment(vercel, {
     idOrUrl: "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ",
     withGitRepoInfo: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -204,6 +212,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.deployments.createDeployment({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       files: [
         {
@@ -252,6 +262,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await deploymentsCreateDeployment(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       files: [
         {
@@ -328,6 +340,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.deployments.cancelDeployment({
     id: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -354,6 +368,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await deploymentsCancelDeployment(vercel, {
     id: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -405,7 +421,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.deployments.uploadFile({});
+  const result = await vercel.deployments.uploadFile({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -429,7 +448,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await deploymentsUploadFile(vercel, {});
+  const res = await deploymentsUploadFile(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -481,6 +503,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.deployments.listDeploymentFiles({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -507,6 +531,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await deploymentsListDeploymentFiles(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -561,6 +587,8 @@ async function run() {
   await vercel.deployments.getDeploymentFileContents({
     id: "<id>",
     fileId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -587,6 +615,8 @@ async function run() {
   const res = await deploymentsGetDeploymentFileContents(vercel, {
     id: "<id>",
     fileId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -648,6 +678,8 @@ async function run() {
     since: 1540095775941,
     until: 1540095775951,
     state: "BUILDING,READY",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -683,6 +715,8 @@ async function run() {
     since: 1540095775941,
     until: 1540095775951,
     state: "BUILDING,READY",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -737,6 +771,8 @@ async function run() {
   const result = await vercel.deployments.deleteDeployment({
     id: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
     url: "https://files-orcin-xi.vercel.app/",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -764,6 +800,8 @@ async function run() {
   const res = await deploymentsDeleteDeployment(vercel, {
     id: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
     url: "https://files-orcin-xi.vercel.app/",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

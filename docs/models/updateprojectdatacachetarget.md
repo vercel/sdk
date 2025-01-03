@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.UpdateProjectDataCacheTarget1[] = [
-  "production",
+  "preview",
 ];
 ```
 

@@ -117,7 +117,7 @@ export function resolveSecurity(
   ...options: SecurityInput[][]
 ): SecurityState | null {
   const state: SecurityState = {
-    basic: { username: "", password: "" },
+    basic: {},
     headers: {},
     queryParams: {},
     cookies: {},

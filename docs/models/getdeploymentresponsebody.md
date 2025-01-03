@@ -18,41 +18,41 @@ const value: models.GetDeploymentResponseBody1 = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://pastel-cardboard.info",
+  inspectorUrl: "https://well-off-waterspout.org",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 7815.82,
-  buildingAt: 6937.47,
+  bootedAt: 3590.97,
+  buildingAt: 8877.01,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "CANCELED",
+  status: "INITIALIZING",
   id: "<id>",
   type: "LAMBDAS",
-  createdAt: 2593.77,
+  createdAt: 4299.97,
   name: "<value>",
-  readyState: "READY",
+  readyState: "QUEUED",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://only-valuable.org/",
-  version: 8615.91,
+  url: "https://meager-scholarship.net",
+  version: 7935.67,
   projectId: "<id>",
-  plan: "enterprise",
+  plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [
     {
       src: "<value>",
       continue: false,
-      middleware: 6386.09,
+      middleware: 5488.46,
     },
   ],
 };
@@ -63,27 +63,27 @@ const value: models.GetDeploymentResponseBody1 = {
 ```typescript
 const value: models.GetDeploymentResponseBody2 = {
   aliasAssigned: false,
-  bootedAt: 4299.97,
-  buildingAt: 357.43,
+  bootedAt: 4733.26,
+  buildingAt: 6751.26,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "READY",
+  status: "QUEUED",
   id: "<id>",
   type: "LAMBDAS",
-  createdAt: 5021.06,
+  createdAt: 1023.17,
   name: "<value>",
-  readyState: "READY",
+  readyState: "BUILDING",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://staid-eternity.net",
-  version: 5488.46,
+  url: "https://cool-final.com",
+  version: 3312.69,
 };
 ```
 

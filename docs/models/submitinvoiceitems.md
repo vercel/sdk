@@ -8,8 +8,8 @@ import { SubmitInvoiceItems } from "@vercel/sdk/models/submitinvoiceop.js";
 let value: SubmitInvoiceItems = {
   billingPlanId: "<id>",
   name: "<value>",
-  price: "844.45",
-  quantity: 4301.81,
+  price: "81.99",
+  quantity: 2096.03,
   units: "<value>",
   total: "<value>",
 };

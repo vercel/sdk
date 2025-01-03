@@ -570,6 +570,79 @@ export type ResponseBodyIntegrations = {
   skippedBy?: string | undefined;
 };
 
+/**
+ * Must be `http` or `https`.
+ */
+export const ResponseBodyProtocol = {
+  Http: "http",
+  Https: "https",
+} as const;
+/**
+ * Must be `http` or `https`.
+ */
+export type ResponseBodyProtocol = ClosedEnum<typeof ResponseBodyProtocol>;
+
+export type ResponseBodyRemotePatterns = {
+  /**
+   * Must be `http` or `https`.
+   */
+  protocol?: ResponseBodyProtocol | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains.
+   */
+  hostname: string;
+  /**
+   * Can be literal port such as `8080` or empty string meaning no port.
+   */
+  port?: string | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export type ResponseBodyLocalPatterns = {
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export const ResponseBodyFormats = {
+  ImageAvif: "image/avif",
+  ImageWebp: "image/webp",
+} as const;
+export type ResponseBodyFormats = ClosedEnum<typeof ResponseBodyFormats>;
+
+export const ResponseBodyContentDispositionType = {
+  Inline: "inline",
+  Attachment: "attachment",
+} as const;
+export type ResponseBodyContentDispositionType = ClosedEnum<
+  typeof ResponseBodyContentDispositionType
+>;
+
+export type ResponseBodyImages = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<ResponseBodyRemotePatterns> | undefined;
+  localPatterns?: Array<ResponseBodyLocalPatterns> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<ResponseBodyFormats> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: ResponseBodyContentDispositionType | undefined;
+};
+
 export type ResponseBodyCreator = {
   uid: string;
   username?: string | undefined;
@@ -1222,6 +1295,7 @@ export type GetDeploymentResponseBody1 = {
   projectSettings: ResponseBodyProjectSettings;
   readyStateReason?: string | undefined;
   integrations?: ResponseBodyIntegrations | undefined;
+  images?: ResponseBodyImages | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -4114,6 +4188,282 @@ export function responseBodyIntegrationsFromJSON(
     jsonString,
     (x) => ResponseBodyIntegrations$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyIntegrations' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyProtocol$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyProtocol
+> = z.nativeEnum(ResponseBodyProtocol);
+
+/** @internal */
+export const ResponseBodyProtocol$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyProtocol
+> = ResponseBodyProtocol$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyProtocol$ {
+  /** @deprecated use `ResponseBodyProtocol$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyProtocol$inboundSchema;
+  /** @deprecated use `ResponseBodyProtocol$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyProtocol$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyRemotePatterns$inboundSchema: z.ZodType<
+  ResponseBodyRemotePatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  protocol: ResponseBodyProtocol$inboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type ResponseBodyRemotePatterns$Outbound = {
+  protocol?: string | undefined;
+  hostname: string;
+  port?: string | undefined;
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyRemotePatterns$outboundSchema: z.ZodType<
+  ResponseBodyRemotePatterns$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyRemotePatterns
+> = z.object({
+  protocol: ResponseBodyProtocol$outboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyRemotePatterns$ {
+  /** @deprecated use `ResponseBodyRemotePatterns$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyRemotePatterns$inboundSchema;
+  /** @deprecated use `ResponseBodyRemotePatterns$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyRemotePatterns$outboundSchema;
+  /** @deprecated use `ResponseBodyRemotePatterns$Outbound` instead. */
+  export type Outbound = ResponseBodyRemotePatterns$Outbound;
+}
+
+export function responseBodyRemotePatternsToJSON(
+  responseBodyRemotePatterns: ResponseBodyRemotePatterns,
+): string {
+  return JSON.stringify(
+    ResponseBodyRemotePatterns$outboundSchema.parse(responseBodyRemotePatterns),
+  );
+}
+
+export function responseBodyRemotePatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRemotePatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRemotePatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRemotePatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyLocalPatterns$inboundSchema: z.ZodType<
+  ResponseBodyLocalPatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type ResponseBodyLocalPatterns$Outbound = {
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyLocalPatterns$outboundSchema: z.ZodType<
+  ResponseBodyLocalPatterns$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLocalPatterns
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyLocalPatterns$ {
+  /** @deprecated use `ResponseBodyLocalPatterns$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyLocalPatterns$inboundSchema;
+  /** @deprecated use `ResponseBodyLocalPatterns$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyLocalPatterns$outboundSchema;
+  /** @deprecated use `ResponseBodyLocalPatterns$Outbound` instead. */
+  export type Outbound = ResponseBodyLocalPatterns$Outbound;
+}
+
+export function responseBodyLocalPatternsToJSON(
+  responseBodyLocalPatterns: ResponseBodyLocalPatterns,
+): string {
+  return JSON.stringify(
+    ResponseBodyLocalPatterns$outboundSchema.parse(responseBodyLocalPatterns),
+  );
+}
+
+export function responseBodyLocalPatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLocalPatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLocalPatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLocalPatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyFormats$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFormats
+> = z.nativeEnum(ResponseBodyFormats);
+
+/** @internal */
+export const ResponseBodyFormats$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFormats
+> = ResponseBodyFormats$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyFormats$ {
+  /** @deprecated use `ResponseBodyFormats$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyFormats$inboundSchema;
+  /** @deprecated use `ResponseBodyFormats$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyFormats$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyContentDispositionType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyContentDispositionType
+> = z.nativeEnum(ResponseBodyContentDispositionType);
+
+/** @internal */
+export const ResponseBodyContentDispositionType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyContentDispositionType
+> = ResponseBodyContentDispositionType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyContentDispositionType$ {
+  /** @deprecated use `ResponseBodyContentDispositionType$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyContentDispositionType$inboundSchema;
+  /** @deprecated use `ResponseBodyContentDispositionType$outboundSchema` instead. */
+  export const outboundSchema =
+    ResponseBodyContentDispositionType$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyImages$inboundSchema: z.ZodType<
+  ResponseBodyImages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sizes: z.array(z.number()).optional(),
+  qualities: z.array(z.number()).optional(),
+  domains: z.array(z.string()).optional(),
+  remotePatterns: z.array(
+    z.lazy(() => ResponseBodyRemotePatterns$inboundSchema),
+  ).optional(),
+  localPatterns: z.array(z.lazy(() => ResponseBodyLocalPatterns$inboundSchema))
+    .optional(),
+  minimumCacheTTL: z.number().optional(),
+  formats: z.array(ResponseBodyFormats$inboundSchema).optional(),
+  dangerouslyAllowSVG: z.boolean().optional(),
+  contentSecurityPolicy: z.string().optional(),
+  contentDispositionType: ResponseBodyContentDispositionType$inboundSchema
+    .optional(),
+});
+
+/** @internal */
+export type ResponseBodyImages$Outbound = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<ResponseBodyRemotePatterns$Outbound> | undefined;
+  localPatterns?: Array<ResponseBodyLocalPatterns$Outbound> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<string> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyImages$outboundSchema: z.ZodType<
+  ResponseBodyImages$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyImages
+> = z.object({
+  sizes: z.array(z.number()).optional(),
+  qualities: z.array(z.number()).optional(),
+  domains: z.array(z.string()).optional(),
+  remotePatterns: z.array(
+    z.lazy(() => ResponseBodyRemotePatterns$outboundSchema),
+  ).optional(),
+  localPatterns: z.array(z.lazy(() => ResponseBodyLocalPatterns$outboundSchema))
+    .optional(),
+  minimumCacheTTL: z.number().optional(),
+  formats: z.array(ResponseBodyFormats$outboundSchema).optional(),
+  dangerouslyAllowSVG: z.boolean().optional(),
+  contentSecurityPolicy: z.string().optional(),
+  contentDispositionType: ResponseBodyContentDispositionType$outboundSchema
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyImages$ {
+  /** @deprecated use `ResponseBodyImages$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyImages$inboundSchema;
+  /** @deprecated use `ResponseBodyImages$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyImages$outboundSchema;
+  /** @deprecated use `ResponseBodyImages$Outbound` instead. */
+  export type Outbound = ResponseBodyImages$Outbound;
+}
+
+export function responseBodyImagesToJSON(
+  responseBodyImages: ResponseBodyImages,
+): string {
+  return JSON.stringify(
+    ResponseBodyImages$outboundSchema.parse(responseBodyImages),
+  );
+}
+
+export function responseBodyImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyImages' from JSON`,
   );
 }
 
@@ -8047,6 +8397,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   projectSettings: z.lazy(() => ResponseBodyProjectSettings$inboundSchema),
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => ResponseBodyIntegrations$inboundSchema).optional(),
+  images: z.lazy(() => ResponseBodyImages$inboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),
@@ -8168,6 +8519,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   projectSettings: ResponseBodyProjectSettings$Outbound;
   readyStateReason?: string | undefined;
   integrations?: ResponseBodyIntegrations$Outbound | undefined;
+  images?: ResponseBodyImages$Outbound | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -8290,6 +8642,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => ResponseBodyIntegrations$outboundSchema)
     .optional(),
+  images: z.lazy(() => ResponseBodyImages$outboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),

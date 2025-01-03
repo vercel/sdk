@@ -38,7 +38,7 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   // Handle the result
@@ -68,7 +68,7 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   if (!res.ok) {
@@ -121,7 +121,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.teams.inviteUserToTeam({
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
@@ -162,7 +162,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await teamsInviteUserToTeam(vercel, {
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
@@ -230,7 +230,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.teams.requestAccessToTeam({
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       joinedFrom: {
         origin: "github",
@@ -266,7 +266,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await teamsRequestAccessToTeam(vercel, {
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       joinedFrom: {
         origin: "github",
@@ -330,7 +330,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.teams.getTeamAccessRequest({
     userId: "<id>",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   // Handle the result
@@ -357,7 +357,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await teamsGetTeamAccessRequest(vercel, {
     userId: "<id>",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   if (!res.ok) {
@@ -410,7 +410,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.teams.joinTeam({
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       inviteCode: "fisdh38aejkeivn34nslfore9vjtn4ls",
     },
@@ -439,7 +439,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await teamsJoinTeam(vercel, {
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       inviteCode: "fisdh38aejkeivn34nslfore9vjtn4ls",
     },
@@ -496,7 +496,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.teams.updateTeamMember({
     uid: "ndfasllgPyCtREAqxxdyFKb",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
       role: "[\"MEMBER\",\"VIEWER\"]",
@@ -533,7 +533,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await teamsUpdateTeamMember(vercel, {
     uid: "ndfasllgPyCtREAqxxdyFKb",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
       role: "[\"MEMBER\",\"VIEWER\"]",
@@ -598,7 +598,7 @@ async function run() {
   const result = await vercel.teams.removeTeamMember({
     uid: "ndlgr43fadlPyCtREAqxxdyFK",
     newDefaultTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   // Handle the result
@@ -626,7 +626,7 @@ async function run() {
   const res = await teamsRemoveTeamMember(vercel, {
     uid: "ndlgr43fadlPyCtREAqxxdyFK",
     newDefaultTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   if (!res.ok) {
@@ -679,7 +679,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.teams.getTeam({
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -705,7 +706,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await teamsGetTeam(vercel, {
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -758,7 +760,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.teams.patchTeam({
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       description: "Our mission is to make cloud computing accessible to everyone",
       emailDomain: "example.com",
@@ -803,7 +806,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await teamsPatchTeam(vercel, {
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       description: "Our mission is to make cloud computing accessible to everyone",
       emailDomain: "example.com",
@@ -1038,7 +1042,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.teams.deleteTeam({
     newDefaultTeamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -1066,7 +1071,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await teamsDeleteTeam(vercel, {
     newDefaultTeamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-    teamId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {},
   });
 
@@ -1121,7 +1127,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.teams.deleteTeamInviteCode({
     inviteId: "2wn2hudbr4chb1ecywo9dvzo7g9sscs6mzcz8htdde0txyom4l",
-    teamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   // Handle the result
@@ -1148,7 +1154,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await teamsDeleteTeamInviteCode(vercel, {
     inviteId: "2wn2hudbr4chb1ecywo9dvzo7g9sscs6mzcz8htdde0txyom4l",
-    teamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   if (!res.ok) {

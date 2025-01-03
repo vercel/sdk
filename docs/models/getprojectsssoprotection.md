@@ -6,7 +6,7 @@
 import { GetProjectsSsoProtection } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsSsoProtection = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
+  deploymentType: "preview",
 };
 ```
 

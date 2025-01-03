@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments1 = {
   type: "github",
-  repoId: 9253.95,
+  repoId: 2763.37,
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.GetDeploymentGitSourceDeployments2 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments3 = {
   type: "gitlab",
-  projectId: 4230.54,
+  projectId: "<id>",
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GetDeploymentGitSourceDeployments6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://hidden-printer.name/",
+  gitUrl: "https://noteworthy-pigsty.biz/",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GetDeploymentGitSourceDeployments7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 9279.76,
+  repoId: 194.62,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 8668.61,
+  projectId: 3992.22,
 };
 ```
 

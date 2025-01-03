@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsAction } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsAction = "log";
+let value: GetProjectsAction = "redirect";
 ```
 
 ## Values

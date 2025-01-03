@@ -9,7 +9,7 @@ import {
 
 let value:
   PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction =
-    "log";
+    "deny";
 ```
 
 ## Values

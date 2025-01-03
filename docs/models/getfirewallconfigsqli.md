@@ -9,7 +9,7 @@ import { GetFirewallConfigSqli } from "@vercel/sdk/models/getfirewallconfigop.js
 
 let value: GetFirewallConfigSqli = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

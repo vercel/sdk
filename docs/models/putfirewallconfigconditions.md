@@ -6,8 +6,8 @@
 import { PutFirewallConfigConditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigConditions = {
-  type: "geo_country",
-  op: "neq",
+  type: "geo_city",
+  op: "gt",
 };
 ```
 

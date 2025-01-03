@@ -6,6 +6,8 @@
 import { CreateAuthTokenRequest } from "@vercel/sdk/models/createauthtokenop.js";
 
 let value: CreateAuthTokenRequest = {
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  slug: "my-team-url-slug",
   requestBody: {
     name: "<value>",
   },
@@ -14,8 +16,8 @@ let value: CreateAuthTokenRequest = {
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `teamId`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | The Team identifier to perform the request on behalf of.                     |
-| `slug`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | The Team slug to perform the request on behalf of.                           |
-| `requestBody`                                                                | [models.CreateAuthTokenRequestBody](../models/createauthtokenrequestbody.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `teamId`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | The Team identifier to perform the request on behalf of.                     | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                |
+| `slug`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | The Team slug to perform the request on behalf of.                           | my-team-url-slug                                                             |
+| `requestBody`                                                                | [models.CreateAuthTokenRequestBody](../models/createauthtokenrequestbody.md) | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |

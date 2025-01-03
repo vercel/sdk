@@ -1,0 +1,24 @@
+# ResponseBodyImages
+
+## Example Usage
+
+```typescript
+import { ResponseBodyImages } from "@vercel/sdk/models/getdeploymentop.js";
+
+let value: ResponseBodyImages = {};
+```
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `sizes`                                                                                      | *number*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `qualities`                                                                                  | *number*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `domains`                                                                                    | *string*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `remotePatterns`                                                                             | [models.ResponseBodyRemotePatterns](../models/responsebodyremotepatterns.md)[]               | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `localPatterns`                                                                              | [models.ResponseBodyLocalPatterns](../models/responsebodylocalpatterns.md)[]                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `minimumCacheTTL`                                                                            | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `formats`                                                                                    | [models.ResponseBodyFormats](../models/responsebodyformats.md)[]                             | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `dangerouslyAllowSVG`                                                                        | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `contentSecurityPolicy`                                                                      | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `contentDispositionType`                                                                     | [models.ResponseBodyContentDispositionType](../models/responsebodycontentdispositiontype.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |

@@ -8,7 +8,7 @@ import { RequestBody } from "@vercel/sdk/models/recordeventsop.js";
 let value: RequestBody = {
   sessionId: "<id>",
   source: "LOCAL",
-  event: "MISS",
+  event: "HIT",
   hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
   duration: 400,
 };

@@ -9,8 +9,9 @@ Defines the Git Repository source to be deployed. This property can not be used 
 
 ```typescript
 const value: models.GitSource1 = {
-  ref: "<value>",
-  repoId: 3203.26,
+  ref: "main",
+  repoId: 123456789,
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "github",
 };
 ```
@@ -19,9 +20,10 @@ const value: models.GitSource1 = {
 
 ```typescript
 const value: models.GitSource2 = {
-  org: "<value>",
-  ref: "<value>",
-  repo: "<value>",
+  org: "vercel",
+  ref: "main",
+  repo: "next.js",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "github",
 };
 ```
@@ -30,8 +32,9 @@ const value: models.GitSource2 = {
 
 ```typescript
 const value: models.Three = {
-  projectId: "<id>",
-  ref: "<value>",
+  projectId: 987654321,
+  ref: "main",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "gitlab",
 };
 ```
@@ -40,9 +43,11 @@ const value: models.Three = {
 
 ```typescript
 const value: models.Four = {
-  ref: "<value>",
-  repoUuid: "<id>",
+  ref: "main",
+  repoUuid: "123e4567-e89b-12d3-a456-426614174000",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
   type: "bitbucket",
+  workspaceUuid: "987e6543-e21b-12d3-a456-426614174000",
 };
 ```
 
@@ -50,9 +55,10 @@ const value: models.Four = {
 
 ```typescript
 const value: models.Five = {
-  owner: "<value>",
-  ref: "<value>",
-  slug: "<value>",
+  owner: "bitbucket_user",
+  ref: "main",
+  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+  slug: "my-awesome-project",
   type: "bitbucket",
 };
 ```

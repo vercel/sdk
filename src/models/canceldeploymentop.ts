@@ -136,6 +136,83 @@ export type CancelDeploymentIntegrations = {
   skippedBy?: string | undefined;
 };
 
+/**
+ * Must be `http` or `https`.
+ */
+export const CancelDeploymentProtocol = {
+  Http: "http",
+  Https: "https",
+} as const;
+/**
+ * Must be `http` or `https`.
+ */
+export type CancelDeploymentProtocol = ClosedEnum<
+  typeof CancelDeploymentProtocol
+>;
+
+export type CancelDeploymentRemotePatterns = {
+  /**
+   * Must be `http` or `https`.
+   */
+  protocol?: CancelDeploymentProtocol | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains.
+   */
+  hostname: string;
+  /**
+   * Can be literal port such as `8080` or empty string meaning no port.
+   */
+  port?: string | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export type CancelDeploymentLocalPatterns = {
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export const CancelDeploymentFormats = {
+  ImageAvif: "image/avif",
+  ImageWebp: "image/webp",
+} as const;
+export type CancelDeploymentFormats = ClosedEnum<
+  typeof CancelDeploymentFormats
+>;
+
+export const CancelDeploymentContentDispositionType = {
+  Inline: "inline",
+  Attachment: "attachment",
+} as const;
+export type CancelDeploymentContentDispositionType = ClosedEnum<
+  typeof CancelDeploymentContentDispositionType
+>;
+
+export type CancelDeploymentImages = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<CancelDeploymentRemotePatterns> | undefined;
+  localPatterns?: Array<CancelDeploymentLocalPatterns> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<CancelDeploymentFormats> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: CancelDeploymentContentDispositionType | undefined;
+};
+
 export type CancelDeploymentCreator = {
   uid: string;
   username?: string | undefined;
@@ -793,6 +870,7 @@ export type CancelDeploymentResponseBody = {
   projectSettings: CancelDeploymentProjectSettings;
   readyStateReason?: string | undefined;
   integrations?: CancelDeploymentIntegrations | undefined;
+  images?: CancelDeploymentImages | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -1442,6 +1520,290 @@ export function cancelDeploymentIntegrationsFromJSON(
     jsonString,
     (x) => CancelDeploymentIntegrations$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CancelDeploymentIntegrations' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentProtocol$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentProtocol
+> = z.nativeEnum(CancelDeploymentProtocol);
+
+/** @internal */
+export const CancelDeploymentProtocol$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentProtocol
+> = CancelDeploymentProtocol$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentProtocol$ {
+  /** @deprecated use `CancelDeploymentProtocol$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentProtocol$inboundSchema;
+  /** @deprecated use `CancelDeploymentProtocol$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentProtocol$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentRemotePatterns$inboundSchema: z.ZodType<
+  CancelDeploymentRemotePatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  protocol: CancelDeploymentProtocol$inboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type CancelDeploymentRemotePatterns$Outbound = {
+  protocol?: string | undefined;
+  hostname: string;
+  port?: string | undefined;
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentRemotePatterns$outboundSchema: z.ZodType<
+  CancelDeploymentRemotePatterns$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentRemotePatterns
+> = z.object({
+  protocol: CancelDeploymentProtocol$outboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentRemotePatterns$ {
+  /** @deprecated use `CancelDeploymentRemotePatterns$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRemotePatterns$inboundSchema;
+  /** @deprecated use `CancelDeploymentRemotePatterns$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRemotePatterns$outboundSchema;
+  /** @deprecated use `CancelDeploymentRemotePatterns$Outbound` instead. */
+  export type Outbound = CancelDeploymentRemotePatterns$Outbound;
+}
+
+export function cancelDeploymentRemotePatternsToJSON(
+  cancelDeploymentRemotePatterns: CancelDeploymentRemotePatterns,
+): string {
+  return JSON.stringify(
+    CancelDeploymentRemotePatterns$outboundSchema.parse(
+      cancelDeploymentRemotePatterns,
+    ),
+  );
+}
+
+export function cancelDeploymentRemotePatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentRemotePatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentRemotePatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRemotePatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentLocalPatterns$inboundSchema: z.ZodType<
+  CancelDeploymentLocalPatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type CancelDeploymentLocalPatterns$Outbound = {
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentLocalPatterns$outboundSchema: z.ZodType<
+  CancelDeploymentLocalPatterns$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentLocalPatterns
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentLocalPatterns$ {
+  /** @deprecated use `CancelDeploymentLocalPatterns$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentLocalPatterns$inboundSchema;
+  /** @deprecated use `CancelDeploymentLocalPatterns$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentLocalPatterns$outboundSchema;
+  /** @deprecated use `CancelDeploymentLocalPatterns$Outbound` instead. */
+  export type Outbound = CancelDeploymentLocalPatterns$Outbound;
+}
+
+export function cancelDeploymentLocalPatternsToJSON(
+  cancelDeploymentLocalPatterns: CancelDeploymentLocalPatterns,
+): string {
+  return JSON.stringify(
+    CancelDeploymentLocalPatterns$outboundSchema.parse(
+      cancelDeploymentLocalPatterns,
+    ),
+  );
+}
+
+export function cancelDeploymentLocalPatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentLocalPatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentLocalPatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentLocalPatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentFormats$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFormats
+> = z.nativeEnum(CancelDeploymentFormats);
+
+/** @internal */
+export const CancelDeploymentFormats$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFormats
+> = CancelDeploymentFormats$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentFormats$ {
+  /** @deprecated use `CancelDeploymentFormats$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentFormats$inboundSchema;
+  /** @deprecated use `CancelDeploymentFormats$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentFormats$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentContentDispositionType$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentContentDispositionType> = z.nativeEnum(
+    CancelDeploymentContentDispositionType,
+  );
+
+/** @internal */
+export const CancelDeploymentContentDispositionType$outboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentContentDispositionType> =
+    CancelDeploymentContentDispositionType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentContentDispositionType$ {
+  /** @deprecated use `CancelDeploymentContentDispositionType$inboundSchema` instead. */
+  export const inboundSchema =
+    CancelDeploymentContentDispositionType$inboundSchema;
+  /** @deprecated use `CancelDeploymentContentDispositionType$outboundSchema` instead. */
+  export const outboundSchema =
+    CancelDeploymentContentDispositionType$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentImages$inboundSchema: z.ZodType<
+  CancelDeploymentImages,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sizes: z.array(z.number()).optional(),
+  qualities: z.array(z.number()).optional(),
+  domains: z.array(z.string()).optional(),
+  remotePatterns: z.array(
+    z.lazy(() => CancelDeploymentRemotePatterns$inboundSchema),
+  ).optional(),
+  localPatterns: z.array(
+    z.lazy(() => CancelDeploymentLocalPatterns$inboundSchema),
+  ).optional(),
+  minimumCacheTTL: z.number().optional(),
+  formats: z.array(CancelDeploymentFormats$inboundSchema).optional(),
+  dangerouslyAllowSVG: z.boolean().optional(),
+  contentSecurityPolicy: z.string().optional(),
+  contentDispositionType: CancelDeploymentContentDispositionType$inboundSchema
+    .optional(),
+});
+
+/** @internal */
+export type CancelDeploymentImages$Outbound = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<CancelDeploymentRemotePatterns$Outbound> | undefined;
+  localPatterns?: Array<CancelDeploymentLocalPatterns$Outbound> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<string> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: string | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentImages$outboundSchema: z.ZodType<
+  CancelDeploymentImages$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentImages
+> = z.object({
+  sizes: z.array(z.number()).optional(),
+  qualities: z.array(z.number()).optional(),
+  domains: z.array(z.string()).optional(),
+  remotePatterns: z.array(
+    z.lazy(() => CancelDeploymentRemotePatterns$outboundSchema),
+  ).optional(),
+  localPatterns: z.array(
+    z.lazy(() => CancelDeploymentLocalPatterns$outboundSchema),
+  ).optional(),
+  minimumCacheTTL: z.number().optional(),
+  formats: z.array(CancelDeploymentFormats$outboundSchema).optional(),
+  dangerouslyAllowSVG: z.boolean().optional(),
+  contentSecurityPolicy: z.string().optional(),
+  contentDispositionType: CancelDeploymentContentDispositionType$outboundSchema
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentImages$ {
+  /** @deprecated use `CancelDeploymentImages$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentImages$inboundSchema;
+  /** @deprecated use `CancelDeploymentImages$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentImages$outboundSchema;
+  /** @deprecated use `CancelDeploymentImages$Outbound` instead. */
+  export type Outbound = CancelDeploymentImages$Outbound;
+}
+
+export function cancelDeploymentImagesToJSON(
+  cancelDeploymentImages: CancelDeploymentImages,
+): string {
+  return JSON.stringify(
+    CancelDeploymentImages$outboundSchema.parse(cancelDeploymentImages),
+  );
+}
+
+export function cancelDeploymentImagesFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentImages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentImages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentImages' from JSON`,
   );
 }
 
@@ -5278,6 +5640,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => CancelDeploymentIntegrations$inboundSchema)
     .optional(),
+  images: z.lazy(() => CancelDeploymentImages$inboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),
@@ -5399,6 +5762,7 @@ export type CancelDeploymentResponseBody$Outbound = {
   projectSettings: CancelDeploymentProjectSettings$Outbound;
   readyStateReason?: string | undefined;
   integrations?: CancelDeploymentIntegrations$Outbound | undefined;
+  images?: CancelDeploymentImages$Outbound | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -5519,6 +5883,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => CancelDeploymentIntegrations$outboundSchema)
     .optional(),
+  images: z.lazy(() => CancelDeploymentImages$outboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),

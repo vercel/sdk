@@ -13,7 +13,7 @@ const value: string = "<value>";
 
 ```typescript
 const value: models.CreateProjectEnvValue2[] = [
-  "production",
+  "development",
 ];
 ```
 

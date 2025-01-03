@@ -12,8 +12,8 @@ let value: UpdateFirewallConfigRequestBodyValue = {
     {
       conditions: [
         {
-          type: "target_path",
-          op: "inc",
+          type: "protocol",
+          op: "lte",
         },
       ],
     },

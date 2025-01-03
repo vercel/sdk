@@ -31,6 +31,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.domains.buyDomain({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example.com",
       expectedPrice: 10,
@@ -71,6 +73,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await domainsBuyDomain(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example.com",
       expectedPrice: 10,
@@ -140,6 +144,8 @@ async function run() {
   const result = await vercel.domains.checkDomainPrice({
     name: "example.com",
     type: "new",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -167,6 +173,8 @@ async function run() {
   const res = await domainsCheckDomainPrice(vercel, {
     name: "example.com",
     type: "new",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -219,6 +227,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domains.checkDomainStatus({
     name: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -245,6 +255,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsCheckDomainStatus(vercel, {
     name: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -296,6 +308,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.domains.getDomainTransfer({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     domain: "example.com",
   });
 
@@ -322,6 +336,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await domainsGetDomainTransfer(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     domain: "example.com",
   });
 
@@ -375,6 +391,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domains.getDomainConfig({
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -401,6 +419,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsGetDomainConfig(vercel, {
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -453,6 +473,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domains.getDomain({
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -479,6 +501,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsGetDomain(vercel, {
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -534,6 +558,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -562,6 +588,8 @@ async function run() {
     limit: 20,
     since: 1609499532000,
     until: 1612264332000,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -613,6 +641,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.domains.createOrTransferDomain({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example.com",
       method: "transfer-in",
@@ -644,6 +674,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await domainsCreateOrTransferDomain(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "example.com",
       method: "transfer-in",
@@ -703,6 +735,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domains.patchDomain({
     domain: "tight-secrecy.info",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       op: "update",
     },
@@ -732,6 +766,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsPatchDomain(vercel, {
     domain: "tight-secrecy.info",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       op: "update",
     },
@@ -788,6 +824,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domains.deleteDomain({
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -814,6 +852,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsDeleteDomain(vercel, {
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

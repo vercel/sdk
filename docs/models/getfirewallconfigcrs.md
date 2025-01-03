@@ -14,7 +14,7 @@ let value: GetFirewallConfigCrs = {
   },
   ma: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   lfi: {
     active: false,
@@ -22,7 +22,7 @@ let value: GetFirewallConfigCrs = {
   },
   rfi: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   rce: {
     active: false,
@@ -30,7 +30,7 @@ let value: GetFirewallConfigCrs = {
   },
   php: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   gen: {
     active: false,
@@ -46,7 +46,7 @@ let value: GetFirewallConfigCrs = {
   },
   sf: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   java: {
     active: false,

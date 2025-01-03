@@ -11,9 +11,9 @@ let value: RequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "vain-wafer.info",
-    ip: "74.198.69.97",
-    action: "challenge",
+    hostname: "submissive-requirement.biz",
+    ip: "47.48.111.189",
+    action: "log",
   },
 };
 ```

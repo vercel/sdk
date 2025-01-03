@@ -507,6 +507,77 @@ export type Integrations = {
   skippedBy?: string | undefined;
 };
 
+/**
+ * Must be `http` or `https`.
+ */
+export const Protocol = {
+  Http: "http",
+  Https: "https",
+} as const;
+/**
+ * Must be `http` or `https`.
+ */
+export type Protocol = ClosedEnum<typeof Protocol>;
+
+export type RemotePatterns = {
+  /**
+   * Must be `http` or `https`.
+   */
+  protocol?: Protocol | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains.
+   */
+  hostname: string;
+  /**
+   * Can be literal port such as `8080` or empty string meaning no port.
+   */
+  port?: string | undefined;
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export type LocalPatterns = {
+  /**
+   * Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments.
+   */
+  pathname?: string | undefined;
+  /**
+   * Can be literal query string such as `?v=1` or empty string meaning no query string.
+   */
+  search?: string | undefined;
+};
+
+export const Formats = {
+  ImageAvif: "image/avif",
+  ImageWebp: "image/webp",
+} as const;
+export type Formats = ClosedEnum<typeof Formats>;
+
+export const ContentDispositionType = {
+  Inline: "inline",
+  Attachment: "attachment",
+} as const;
+export type ContentDispositionType = ClosedEnum<typeof ContentDispositionType>;
+
+export type Images = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<RemotePatterns> | undefined;
+  localPatterns?: Array<LocalPatterns> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<Formats> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: ContentDispositionType | undefined;
+};
+
 export type Creator = {
   uid: string;
   username?: string | undefined;
@@ -1132,6 +1203,7 @@ export type CreateDeploymentResponseBody = {
   projectSettings: CreateDeploymentProjectSettings;
   readyStateReason?: string | undefined;
   integrations?: Integrations | undefined;
+  images?: Images | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -2842,6 +2914,257 @@ export function integrationsFromJSON(
     jsonString,
     (x) => Integrations$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Integrations' from JSON`,
+  );
+}
+
+/** @internal */
+export const Protocol$inboundSchema: z.ZodNativeEnum<typeof Protocol> = z
+  .nativeEnum(Protocol);
+
+/** @internal */
+export const Protocol$outboundSchema: z.ZodNativeEnum<typeof Protocol> =
+  Protocol$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Protocol$ {
+  /** @deprecated use `Protocol$inboundSchema` instead. */
+  export const inboundSchema = Protocol$inboundSchema;
+  /** @deprecated use `Protocol$outboundSchema` instead. */
+  export const outboundSchema = Protocol$outboundSchema;
+}
+
+/** @internal */
+export const RemotePatterns$inboundSchema: z.ZodType<
+  RemotePatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  protocol: Protocol$inboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type RemotePatterns$Outbound = {
+  protocol?: string | undefined;
+  hostname: string;
+  port?: string | undefined;
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const RemotePatterns$outboundSchema: z.ZodType<
+  RemotePatterns$Outbound,
+  z.ZodTypeDef,
+  RemotePatterns
+> = z.object({
+  protocol: Protocol$outboundSchema.optional(),
+  hostname: z.string(),
+  port: z.string().optional(),
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemotePatterns$ {
+  /** @deprecated use `RemotePatterns$inboundSchema` instead. */
+  export const inboundSchema = RemotePatterns$inboundSchema;
+  /** @deprecated use `RemotePatterns$outboundSchema` instead. */
+  export const outboundSchema = RemotePatterns$outboundSchema;
+  /** @deprecated use `RemotePatterns$Outbound` instead. */
+  export type Outbound = RemotePatterns$Outbound;
+}
+
+export function remotePatternsToJSON(remotePatterns: RemotePatterns): string {
+  return JSON.stringify(RemotePatterns$outboundSchema.parse(remotePatterns));
+}
+
+export function remotePatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<RemotePatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemotePatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemotePatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const LocalPatterns$inboundSchema: z.ZodType<
+  LocalPatterns,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/** @internal */
+export type LocalPatterns$Outbound = {
+  pathname?: string | undefined;
+  search?: string | undefined;
+};
+
+/** @internal */
+export const LocalPatterns$outboundSchema: z.ZodType<
+  LocalPatterns$Outbound,
+  z.ZodTypeDef,
+  LocalPatterns
+> = z.object({
+  pathname: z.string().optional(),
+  search: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LocalPatterns$ {
+  /** @deprecated use `LocalPatterns$inboundSchema` instead. */
+  export const inboundSchema = LocalPatterns$inboundSchema;
+  /** @deprecated use `LocalPatterns$outboundSchema` instead. */
+  export const outboundSchema = LocalPatterns$outboundSchema;
+  /** @deprecated use `LocalPatterns$Outbound` instead. */
+  export type Outbound = LocalPatterns$Outbound;
+}
+
+export function localPatternsToJSON(localPatterns: LocalPatterns): string {
+  return JSON.stringify(LocalPatterns$outboundSchema.parse(localPatterns));
+}
+
+export function localPatternsFromJSON(
+  jsonString: string,
+): SafeParseResult<LocalPatterns, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LocalPatterns$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalPatterns' from JSON`,
+  );
+}
+
+/** @internal */
+export const Formats$inboundSchema: z.ZodNativeEnum<typeof Formats> = z
+  .nativeEnum(Formats);
+
+/** @internal */
+export const Formats$outboundSchema: z.ZodNativeEnum<typeof Formats> =
+  Formats$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Formats$ {
+  /** @deprecated use `Formats$inboundSchema` instead. */
+  export const inboundSchema = Formats$inboundSchema;
+  /** @deprecated use `Formats$outboundSchema` instead. */
+  export const outboundSchema = Formats$outboundSchema;
+}
+
+/** @internal */
+export const ContentDispositionType$inboundSchema: z.ZodNativeEnum<
+  typeof ContentDispositionType
+> = z.nativeEnum(ContentDispositionType);
+
+/** @internal */
+export const ContentDispositionType$outboundSchema: z.ZodNativeEnum<
+  typeof ContentDispositionType
+> = ContentDispositionType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentDispositionType$ {
+  /** @deprecated use `ContentDispositionType$inboundSchema` instead. */
+  export const inboundSchema = ContentDispositionType$inboundSchema;
+  /** @deprecated use `ContentDispositionType$outboundSchema` instead. */
+  export const outboundSchema = ContentDispositionType$outboundSchema;
+}
+
+/** @internal */
+export const Images$inboundSchema: z.ZodType<Images, z.ZodTypeDef, unknown> = z
+  .object({
+    sizes: z.array(z.number()).optional(),
+    qualities: z.array(z.number()).optional(),
+    domains: z.array(z.string()).optional(),
+    remotePatterns: z.array(z.lazy(() => RemotePatterns$inboundSchema))
+      .optional(),
+    localPatterns: z.array(z.lazy(() => LocalPatterns$inboundSchema))
+      .optional(),
+    minimumCacheTTL: z.number().optional(),
+    formats: z.array(Formats$inboundSchema).optional(),
+    dangerouslyAllowSVG: z.boolean().optional(),
+    contentSecurityPolicy: z.string().optional(),
+    contentDispositionType: ContentDispositionType$inboundSchema.optional(),
+  });
+
+/** @internal */
+export type Images$Outbound = {
+  sizes?: Array<number> | undefined;
+  qualities?: Array<number> | undefined;
+  domains?: Array<string> | undefined;
+  remotePatterns?: Array<RemotePatterns$Outbound> | undefined;
+  localPatterns?: Array<LocalPatterns$Outbound> | undefined;
+  minimumCacheTTL?: number | undefined;
+  formats?: Array<string> | undefined;
+  dangerouslyAllowSVG?: boolean | undefined;
+  contentSecurityPolicy?: string | undefined;
+  contentDispositionType?: string | undefined;
+};
+
+/** @internal */
+export const Images$outboundSchema: z.ZodType<
+  Images$Outbound,
+  z.ZodTypeDef,
+  Images
+> = z.object({
+  sizes: z.array(z.number()).optional(),
+  qualities: z.array(z.number()).optional(),
+  domains: z.array(z.string()).optional(),
+  remotePatterns: z.array(z.lazy(() => RemotePatterns$outboundSchema))
+    .optional(),
+  localPatterns: z.array(z.lazy(() => LocalPatterns$outboundSchema)).optional(),
+  minimumCacheTTL: z.number().optional(),
+  formats: z.array(Formats$outboundSchema).optional(),
+  dangerouslyAllowSVG: z.boolean().optional(),
+  contentSecurityPolicy: z.string().optional(),
+  contentDispositionType: ContentDispositionType$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Images$ {
+  /** @deprecated use `Images$inboundSchema` instead. */
+  export const inboundSchema = Images$inboundSchema;
+  /** @deprecated use `Images$outboundSchema` instead. */
+  export const outboundSchema = Images$outboundSchema;
+  /** @deprecated use `Images$Outbound` instead. */
+  export type Outbound = Images$Outbound;
+}
+
+export function imagesToJSON(images: Images): string {
+  return JSON.stringify(Images$outboundSchema.parse(images));
+}
+
+export function imagesFromJSON(
+  jsonString: string,
+): SafeParseResult<Images, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Images$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Images' from JSON`,
   );
 }
 
@@ -6453,6 +6776,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   projectSettings: z.lazy(() => CreateDeploymentProjectSettings$inboundSchema),
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => Integrations$inboundSchema).optional(),
+  images: z.lazy(() => Images$inboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),
@@ -6568,6 +6892,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   projectSettings: CreateDeploymentProjectSettings$Outbound;
   readyStateReason?: string | undefined;
   integrations?: Integrations$Outbound | undefined;
+  images?: Images$Outbound | undefined;
   alias?: Array<string> | undefined;
   aliasAssigned: boolean;
   bootedAt: number;
@@ -6674,6 +6999,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   projectSettings: z.lazy(() => CreateDeploymentProjectSettings$outboundSchema),
   readyStateReason: z.string().optional(),
   integrations: z.lazy(() => Integrations$outboundSchema).optional(),
+  images: z.lazy(() => Images$outboundSchema).optional(),
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.boolean(),
   bootedAt: z.number(),

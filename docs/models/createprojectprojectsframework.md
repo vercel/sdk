@@ -5,7 +5,7 @@
 ```typescript
 import { CreateProjectProjectsFramework } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectProjectsFramework = "vue";
+let value: CreateProjectProjectsFramework = "create-react-app";
 ```
 
 ## Values

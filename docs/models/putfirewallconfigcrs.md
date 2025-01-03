@@ -22,23 +22,23 @@ let value: PutFirewallConfigCrs = {
   },
   rfi: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   rce: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   php: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   gen: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   xss: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   sqli: {
     active: false,
@@ -50,7 +50,7 @@ let value: PutFirewallConfigCrs = {
   },
   java: {
     active: false,
-    action: "deny",
+    action: "log",
   },
 };
 ```

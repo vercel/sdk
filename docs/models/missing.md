@@ -6,7 +6,7 @@
 import { Missing } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Missing = {
-  type: "initial_request_path",
+  type: "header",
 };
 ```
 

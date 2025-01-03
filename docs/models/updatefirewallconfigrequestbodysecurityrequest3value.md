@@ -20,6 +20,6 @@ const value: string[] = [
 ### `number`
 
 ```typescript
-const value: number = 2774.18;
+const value: number = 4265.71;
 ```
 

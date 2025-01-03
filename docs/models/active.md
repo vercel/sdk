@@ -9,21 +9,21 @@ let value: Active = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 8948.70,
-  updatedAt: "<value>",
+  version: 1902.61,
+  updatedAt: "1735916182190",
   firewallEnabled: false,
   crs: {
     sd: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     ma: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     lfi: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     rfi: {
       active: false,
@@ -31,19 +31,19 @@ let value: Active = {
     },
     rce: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     php: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     gen: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     xss: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     sqli: {
       active: false,
@@ -67,8 +67,8 @@ let value: Active = {
         {
           conditions: [
             {
-              type: "target_path",
-              op: "gte",
+              type: "header",
+              op: "inc",
             },
           ],
         },
@@ -79,8 +79,8 @@ let value: Active = {
   ips: [
     {
       id: "<id>",
-      hostname: "outlying-tennis.com",
-      ip: "b07f:af97:ccfb:e92c:d9eb:dcc2:f5fb:a5f2",
+      hostname: "intent-cd.com",
+      ip: "123.64.224.83",
       action: "bypass",
     },
   ],

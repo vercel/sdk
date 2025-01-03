@@ -9,7 +9,7 @@ import { PutFirewallConfigJava } from "@vercel/sdk/models/putfirewallconfigop.js
 
 let value: PutFirewallConfigJava = {
   active: false,
-  action: "deny",
+  action: "log",
 };
 ```
 

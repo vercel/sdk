@@ -16,41 +16,39 @@ let value: CancelDeploymentResponseBody = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://aggressive-pantyhose.info",
+  inspectorUrl: "https://multicolored-sesame.info",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 8980.88,
-  buildingAt: 3214.73,
+  bootedAt: 3538.19,
+  buildingAt: 3782.68,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "INITIALIZING",
+  status: "QUEUED",
   id: "<id>",
-  createdAt: 5147.67,
+  createdAt: 3594.53,
   name: "<value>",
   meta: {
     "key": "<value>",
   },
-  readyState: "BUILDING",
+  readyState: "CANCELED",
   regions: [
     "<value>",
   ],
   type: "LAMBDAS",
-  url: "https://sweet-backbone.biz",
-  version: 380.45,
+  url: "https://amused-corporation.com",
+  version: 423.64,
   createdIn: "<value>",
   ownerId: "<id>",
-  plan: "hobby",
+  plan: "pro",
   projectId: "<id>",
   routes: [
     {
-      src: "<value>",
-      continue: false,
-      middleware: 9642.00,
+      handle: "resource",
     },
   ],
 };
@@ -72,6 +70,7 @@ let value: CancelDeploymentResponseBody = {
 | `projectSettings`                                                                                                                                                                                                           | [models.CancelDeploymentProjectSettings](../models/canceldeploymentprojectsettings.md)                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `readyStateReason`                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `integrations`                                                                                                                                                                                                              | [models.CancelDeploymentIntegrations](../models/canceldeploymentintegrations.md)                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
+| `images`                                                                                                                                                                                                                    | [models.CancelDeploymentImages](../models/canceldeploymentimages.md)                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `alias`                                                                                                                                                                                                                     | *string*[]                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `aliasAssigned`                                                                                                                                                                                                             | *boolean*                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `bootedAt`                                                                                                                                                                                                                  | *number*                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |

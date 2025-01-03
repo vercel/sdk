@@ -6,20 +6,20 @@
 import { Repos } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: Repos = {
-  id: 3502.02,
+  id: "<id>",
   provider: "github-custom-host",
-  url: "https://sunny-glider.name/",
+  url: "https://raw-spring.info",
   name: "<value>",
   slug: "<value>",
   namespace: "<value>",
   owner: {
-    id: 15.95,
+    id: "<id>",
     name: "<value>",
   },
   ownerType: "user",
   private: false,
   defaultBranch: "<value>",
-  updatedAt: 7791.11,
+  updatedAt: 8048.23,
 };
 ```
 

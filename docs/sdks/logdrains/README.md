@@ -27,7 +27,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.logDrains.getIntegrationLogDrains({});
+  const result = await vercel.logDrains.getIntegrationLogDrains({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -51,7 +54,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await logDrainsGetIntegrationLogDrains(vercel, {});
+  const res = await logDrainsGetIntegrationLogDrains(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -102,6 +108,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.logDrains.createLogDrain({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My first log drain",
       secret: "a1Xsfd325fXcs",
@@ -133,6 +141,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await logDrainsCreateLogDrain(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My first log drain",
       secret: "a1Xsfd325fXcs",
@@ -191,6 +201,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.logDrains.deleteIntegrationLogDrain({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -216,6 +228,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await logDrainsDeleteIntegrationLogDrain(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -268,6 +282,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.logDrains.getConfigurableLogDrain({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -294,6 +310,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await logDrainsGetConfigurableLogDrain(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -347,6 +365,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.logDrains.deleteConfigurableLogDrain({
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -372,6 +392,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await logDrainsDeleteConfigurableLogDrain(vercel, {
     id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -422,7 +444,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.logDrains.getAllLogDrains({});
+  const result = await vercel.logDrains.getAllLogDrains({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   // Handle the result
   console.log(result);
@@ -446,7 +471,10 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await logDrainsGetAllLogDrains(vercel, {});
+  const res = await logDrainsGetAllLogDrains(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -497,6 +525,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.logDrains.createConfigurableLogDrain({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       deliveryFormat: "json",
       url: "https://sugary-technician.name",
@@ -529,6 +559,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await logDrainsCreateConfigurableLogDrain(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       deliveryFormat: "json",
       url: "https://sugary-technician.name",

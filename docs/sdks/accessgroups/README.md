@@ -32,7 +32,9 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -58,7 +60,9 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await accessGroupsReadAccessGroup(vercel, {
-    idOrName: "<value>",
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -112,6 +116,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.accessGroups.updateAccessGroup({
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
       projects: [
@@ -147,6 +153,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await accessGroupsUpdateAccessGroup(vercel, {
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
       projects: [
@@ -209,6 +217,8 @@ const vercel = new Vercel({
 async function run() {
   await vercel.accessGroups.deleteAccessGroup({
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -234,6 +244,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await accessGroupsDeleteAccessGroup(vercel, {
     idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -287,6 +299,8 @@ async function run() {
   const result = await vercel.accessGroups.listAccessGroupMembers({
     idOrName: "ag_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -314,6 +328,8 @@ async function run() {
   const res = await accessGroupsListAccessGroupMembers(vercel, {
     idOrName: "ag_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -371,6 +387,8 @@ async function run() {
     membersLimit: 20,
     projectsLimit: 20,
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -401,6 +419,8 @@ async function run() {
     membersLimit: 20,
     projectsLimit: 20,
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -453,6 +473,8 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.createAccessGroup({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
       projects: [
@@ -487,6 +509,8 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await accessGroupsCreateAccessGroup(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
       projects: [
@@ -550,6 +574,8 @@ async function run() {
   const result = await vercel.accessGroups.listAccessGroupProjects({
     idOrName: "ag_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -577,6 +603,8 @@ async function run() {
   const res = await accessGroupsListAccessGroupProjects(vercel, {
     idOrName: "ag_pavWOn1iLObbXLRiwVvzmPrTWyTf",
     limit: 20,
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -630,6 +658,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.accessGroups.createAccessGroupProject({
     accessGroupIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
       role: "ADMIN",
@@ -660,6 +690,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await accessGroupsCreateAccessGroupProject(vercel, {
     accessGroupIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
       role: "ADMIN",
@@ -716,8 +748,10 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.readAccessGroupProject({
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -743,8 +777,10 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await accessGroupsReadAccessGroupProject(vercel, {
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {
@@ -797,8 +833,10 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.accessGroups.updateAccessGroupProject({
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       role: "ADMIN",
     },
@@ -827,8 +865,10 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await accessGroupsUpdateAccessGroupProject(vercel, {
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       role: "ADMIN",
     },
@@ -884,8 +924,10 @@ const vercel = new Vercel({
 
 async function run() {
   await vercel.accessGroups.deleteAccessGroupProject({
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
 
@@ -910,8 +952,10 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await accessGroupsDeleteAccessGroupProject(vercel, {
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

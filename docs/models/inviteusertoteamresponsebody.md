@@ -21,8 +21,8 @@ const value: models.InviteUserToTeamResponseBody1 = {
 ```typescript
 const value: models.InviteUserToTeamResponseBody2 = {
   uid: "<id>",
-  username: "Gino30",
-  role: "MEMBER",
+  username: "Marge_Green-Greenfelder79",
+  role: "BILLING",
 };
 ```
 

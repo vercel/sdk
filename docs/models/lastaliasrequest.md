@@ -8,8 +8,8 @@ import { LastAliasRequest } from "@vercel/sdk/models/updateprojectdatacacheop.js
 let value: LastAliasRequest = {
   fromDeploymentId: "<id>",
   toDeploymentId: "<id>",
-  jobStatus: "skipped",
-  requestedAt: 9619.36,
+  jobStatus: "pending",
+  requestedAt: 7851.53,
   type: "promote",
 };
 ```

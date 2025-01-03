@@ -6,7 +6,7 @@
 ### `models.Items1`
 
 ```typescript
-const value: models.Items1 = "<value>";
+const value: models.Items1 = false;
 ```
 
 ### `models.Items2[]`

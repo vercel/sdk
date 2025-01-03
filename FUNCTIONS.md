@@ -32,6 +32,8 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsUpdateProject(vercel, {
     idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
     requestBody: {
       name: "a-project-name",
     },

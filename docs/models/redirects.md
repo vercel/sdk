@@ -7,7 +7,7 @@ Excludes redirect project domains when \"false\". Includes redirect project doma
 ```typescript
 import { Redirects } from "@vercel/sdk/models/getprojectdomainsop.js";
 
-let value: Redirects = "true";
+let value: Redirects = "false";
 ```
 
 ## Values

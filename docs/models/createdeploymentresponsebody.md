@@ -16,40 +16,42 @@ let value: CreateDeploymentResponseBody = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://mindless-dash.biz/",
+  inspectorUrl: "https://naughty-parsnip.info",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 7018.40,
-  buildingAt: 301.93,
+  bootedAt: 1011.07,
+  buildingAt: 3183.79,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "READY",
+  status: "ERROR",
   type: "LAMBDAS",
-  createdAt: 4444.79,
+  createdAt: 5561.33,
   name: "<value>",
   id: "<id>",
-  version: 5023.93,
+  version: 3180.29,
   meta: {
     "key": "<value>",
   },
-  readyState: "BUILDING",
+  readyState: "READY",
   regions: [
     "<value>",
   ],
-  url: "https://grown-brief.biz",
+  url: "https://political-ocelot.org",
   projectId: "<id>",
   ownerId: "<id>",
   routes: [
     {
       src: "<value>",
+      continue: false,
+      middleware: 7650.70,
     },
   ],
-  plan: "enterprise",
+  plan: "pro",
   createdIn: "<value>",
 };
 ```
@@ -70,6 +72,7 @@ let value: CreateDeploymentResponseBody = {
 | `projectSettings`                                                                                                                                                                                                           | [models.CreateDeploymentProjectSettings](../models/createdeploymentprojectsettings.md)                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `readyStateReason`                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `integrations`                                                                                                                                                                                                              | [models.Integrations](../models/integrations.md)                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
+| `images`                                                                                                                                                                                                                    | [models.Images](../models/images.md)                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `alias`                                                                                                                                                                                                                     | *string*[]                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `aliasAssigned`                                                                                                                                                                                                             | *boolean*                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |
 | `bootedAt`                                                                                                                                                                                                                  | *number*                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                         |

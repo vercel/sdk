@@ -12,8 +12,8 @@ let value: Rules = {
     {
       conditions: [
         {
-          type: "rate_limit_api_id",
-          op: "re",
+          type: "scheme",
+          op: "sub",
         },
       ],
     },

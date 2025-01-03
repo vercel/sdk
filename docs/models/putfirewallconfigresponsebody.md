@@ -10,13 +10,13 @@ let value: PutFirewallConfigResponseBody = {
     ownerId: "<id>",
     projectKey: "<value>",
     id: "<id>",
-    version: 8453.74,
-    updatedAt: "<value>",
+    version: 9747.87,
+    updatedAt: "1735869468194",
     firewallEnabled: false,
     crs: {
       sd: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       ma: {
         active: false,
@@ -24,15 +24,15 @@ let value: PutFirewallConfigResponseBody = {
       },
       lfi: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       rfi: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       rce: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       php: {
         active: false,
@@ -44,7 +44,7 @@ let value: PutFirewallConfigResponseBody = {
       },
       xss: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       sqli: {
         active: false,
@@ -56,7 +56,7 @@ let value: PutFirewallConfigResponseBody = {
       },
       java: {
         active: false,
-        action: "log",
+        action: "deny",
       },
     },
     rules: [
@@ -68,8 +68,8 @@ let value: PutFirewallConfigResponseBody = {
           {
             conditions: [
               {
-                type: "environment",
-                op: "lte",
+                type: "raw_path",
+                op: "eq",
               },
             ],
           },
@@ -80,9 +80,9 @@ let value: PutFirewallConfigResponseBody = {
     ips: [
       {
         id: "<id>",
-        hostname: "buttery-fun.org",
-        ip: "42.160.159.214",
-        action: "bypass",
+        hostname: "hateful-t-shirt.biz",
+        ip: "241.186.132.198",
+        action: "deny",
       },
     ],
     changes: [

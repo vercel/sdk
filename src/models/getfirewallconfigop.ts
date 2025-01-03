@@ -456,6 +456,9 @@ export type GetFirewallConfigManagedRules = {
   verifiedBotsBypass?: VerifiedBotsBypass | undefined;
 };
 
+/**
+ * If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack
+ */
 export type GetFirewallConfigResponseBody = {
   ownerId: string;
   projectKey: string;

@@ -6,7 +6,7 @@
 import { UpdateProjectDataCacheProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: UpdateProjectDataCacheProjectsResponse200ApplicationJSONType =
-  "endsWith";
+  "equals";
 ```
 
 ## Values

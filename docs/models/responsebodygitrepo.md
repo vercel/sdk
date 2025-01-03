@@ -8,10 +8,10 @@
 ```typescript
 const value: models.GetDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 9926.67,
+  projectId: 1165.59,
   type: "gitlab",
-  url: "https://warmhearted-developing.info/",
-  path: "/usr/libdata",
+  url: "https://accomplished-hippodrome.name/",
+  path: "/opt/lib",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -25,14 +25,14 @@ const value: models.GetDeploymentGitRepo1 = {
 const value: models.GetDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 5663.12,
+  repoId: 626.89,
   type: "github",
-  repoOwnerId: 1858.17,
-  path: "/etc/defaults",
+  repoOwnerId: 2781.17,
+  path: "/etc/ppp",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 
@@ -45,11 +45,11 @@ const value: models.GetDeploymentGitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/opt",
+  path: "/etc/periodic",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 

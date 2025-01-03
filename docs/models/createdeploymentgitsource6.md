@@ -11,7 +11,7 @@ let value: CreateDeploymentGitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://soggy-prohibition.com",
+  gitUrl: "https://young-obesity.com",
 };
 ```
 

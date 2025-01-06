@@ -124,8 +124,6 @@ actions:
         schema:
           type: string
           description: The unique team identifier
-  - target: $["paths"]["/v2/teams/{teamId}"]["get"]["parameters"][0]
-    remove: true
   - target: $["paths"]["/v2/teams/{teamId}"]["get"]["parameters"][?(@.name == 'teamId')]["required"]
     update: true
   - target: $["paths"]["/v1/teams/{teamId}/invites/{inviteId}"]["delete"]["parameters"]

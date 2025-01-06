@@ -8,14 +8,11 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetTeamRequest = {
+  slug?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId: string;
-  /**
-   * The Team slug to perform the request on behalf of.
-   */
-  slug?: string | undefined;
 };
 
 /** @internal */
@@ -24,14 +21,14 @@ export const GetTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
   slug: z.string().optional(),
+  teamId: z.string(),
 });
 
 /** @internal */
 export type GetTeamRequest$Outbound = {
-  teamId: string;
   slug?: string | undefined;
+  teamId: string;
 };
 
 /** @internal */
@@ -40,8 +37,8 @@ export const GetTeamRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTeamRequest
 > = z.object({
-  teamId: z.string(),
   slug: z.string().optional(),
+  teamId: z.string(),
 });
 
 /**

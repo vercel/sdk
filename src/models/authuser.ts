@@ -38,6 +38,7 @@ export const BlockedDueToOverageType = {
   EdgeMiddlewareInvocations: "edgeMiddlewareInvocations",
   EdgeRequestAdditionalCpuDuration: "edgeRequestAdditionalCpuDuration",
   EdgeRequest: "edgeRequest",
+  ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
   FunctionDuration: "functionDuration",

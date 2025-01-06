@@ -44,7 +44,16 @@ export type CheckDomainPriceRequest = {
 /**
  * Successful response which returns the price of the domain and the period.
  */
-export type CheckDomainPriceResponseBody = {};
+export type CheckDomainPriceResponseBody = {
+  /**
+   * The domain price in USD.
+   */
+  price: number;
+  /**
+   * The number of years the domain could be held before paying again.
+   */
+  period: number;
+};
 
 /** @internal */
 export const QueryParamType$inboundSchema: z.ZodNativeEnum<
@@ -135,17 +144,26 @@ export const CheckDomainPriceResponseBody$inboundSchema: z.ZodType<
   CheckDomainPriceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  price: z.number(),
+  period: z.number(),
+});
 
 /** @internal */
-export type CheckDomainPriceResponseBody$Outbound = {};
+export type CheckDomainPriceResponseBody$Outbound = {
+  price: number;
+  period: number;
+};
 
 /** @internal */
 export const CheckDomainPriceResponseBody$outboundSchema: z.ZodType<
   CheckDomainPriceResponseBody$Outbound,
   z.ZodTypeDef,
   CheckDomainPriceResponseBody
-> = z.object({});
+> = z.object({
+  price: z.number(),
+  period: z.number(),
+});
 
 /**
  * @internal

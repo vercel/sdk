@@ -17,6 +17,7 @@ let value: GetDeploymentsResponseBody = {
       name: "docs",
       url: "docs-9jaeg38me.vercel.app",
       created: 1609492210000,
+      defaultRoute: "/docs",
       deleted: 1609492210000,
       undeleted: 1609492210000,
       softDeletedByRetention: true,

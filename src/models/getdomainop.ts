@@ -70,7 +70,6 @@ export type GetDomainDomain = {
    */
   creator: GetDomainCreator;
   teamId: string | null;
-  userId: string;
   /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
    */
@@ -111,6 +110,7 @@ export type GetDomainDomain = {
    * If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
    */
   transferStartedAt?: number | undefined;
+  userId: string;
 };
 
 /**
@@ -278,7 +278,6 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
   teamId: z.nullable(z.string()),
-  userId: z.string(),
   boughtAt: z.nullable(z.number()),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
@@ -289,6 +288,7 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   serviceType: ServiceType$inboundSchema,
   transferredAt: z.nullable(z.number()).optional(),
   transferStartedAt: z.number().optional(),
+  userId: z.string(),
 });
 
 /** @internal */
@@ -300,7 +300,6 @@ export type GetDomainDomain$Outbound = {
   customNameservers?: Array<string> | undefined;
   creator: GetDomainCreator$Outbound;
   teamId: string | null;
-  userId: string;
   boughtAt: number | null;
   createdAt: number;
   expiresAt: number | null;
@@ -311,6 +310,7 @@ export type GetDomainDomain$Outbound = {
   serviceType: string;
   transferredAt?: number | null | undefined;
   transferStartedAt?: number | undefined;
+  userId: string;
 };
 
 /** @internal */
@@ -326,7 +326,6 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$outboundSchema),
   teamId: z.nullable(z.string()),
-  userId: z.string(),
   boughtAt: z.nullable(z.number()),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
@@ -337,6 +336,7 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   serviceType: ServiceType$outboundSchema,
   transferredAt: z.nullable(z.number()).optional(),
   transferStartedAt: z.number().optional(),
+  userId: z.string(),
 });
 
 /**

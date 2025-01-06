@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 197e1b3e71481df542d00fe90e09e782
+  docChecksum: 53b3a2c569506446ace146aa7cf48d28
   docVersion: 0.0.1
-  speakeasyVersion: 1.460.6
-  generationVersion: 2.484.4
-  releaseVersion: 1.2.1
-  configChecksum: 0e20c0a7fc7915461e9b03812bc4ccb9
+  speakeasyVersion: 1.463.1
+  generationVersion: 2.486.6
+  releaseVersion: 1.2.2
+  configChecksum: f8999a74e1a63f3c167f0ca6e1c8db53
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -3951,7 +3951,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "userId": "<id>", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "name": "example.com", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882}}
+          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "name": "example.com", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>"}}
         "400":
           application/json: {}
         "401":

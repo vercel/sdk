@@ -118,10 +118,10 @@ export type CancelDeploymentProjectSettings = {
 };
 
 export const CancelDeploymentDeploymentsStatus = {
-  Pending: "pending",
-  Ready: "ready",
   Error: "error",
   Skipped: "skipped",
+  Pending: "pending",
+  Ready: "ready",
   Timeout: "timeout",
 } as const;
 export type CancelDeploymentDeploymentsStatus = ClosedEnum<

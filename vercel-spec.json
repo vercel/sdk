@@ -11863,33 +11863,12 @@
             }
           },
           {
-            "name": "forceNew",
-            "description": "Forces a new deployment even if there is a previous similar deployment",
-            "in": "query",
-            "schema": {
-              "description": "Forces a new deployment even if there is a previous similar deployment",
-              "enum": [
-                "0",
-                "1"
-              ]
-            }
-          },
-          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
             "schema": {
               "type": "string",
               "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
             }
           }
         ],
@@ -12559,10 +12538,10 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "pending",
-                            "ready",
                             "error",
                             "skipped",
+                            "pending",
+                            "ready",
                             "timeout"
                           ]
                         },
@@ -14348,6 +14327,22 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "properties": {
+                    "price": {
+                      "type": "number",
+                      "description": "The domain price in USD.",
+                      "example": 20
+                    },
+                    "period": {
+                      "type": "number",
+                      "description": "The number of years the domain could be held before paying again.",
+                      "example": 1
+                    }
+                  },
+                  "required": [
+                    "price",
+                    "period"
+                  ],
                   "type": "object",
                   "description": "Successful response which returns the price of the domain and the period."
                 }
@@ -16133,9 +16128,6 @@
                           "nullable": true,
                           "type": "string"
                         },
-                        "userId": {
-                          "type": "string"
-                        },
                         "boughtAt": {
                           "nullable": true,
                           "type": "number",
@@ -16193,6 +16185,9 @@
                           "type": "number",
                           "description": "If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.",
                           "example": 1613602938882
+                        },
+                        "userId": {
+                          "type": "string"
                         }
                       },
                       "required": [
@@ -16202,13 +16197,13 @@
                         "intendedNameservers",
                         "creator",
                         "teamId",
-                        "userId",
                         "boughtAt",
                         "createdAt",
                         "expiresAt",
                         "id",
                         "name",
-                        "serviceType"
+                        "serviceType",
+                        "userId"
                       ],
                       "type": "object"
                     }
@@ -18106,14 +18101,6 @@
             "schema": {
               "type": "string",
               "pattern": "^ecfg_"
-            }
-          },
-          {
-            "name": "edgeConfigId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -30837,11 +30824,11 @@
                         "jobStatus": {
                           "type": "string",
                           "enum": [
-                            "pending",
-                            "in-progress",
                             "succeeded",
                             "failed",
-                            "skipped"
+                            "skipped",
+                            "pending",
+                            "in-progress"
                           ]
                         },
                         "requestedAt": {
@@ -50612,15 +50599,6 @@
               "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             },
             "required": true
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
           }
         ]
       },
@@ -53675,8 +53653,7 @@
                     "deploymentId",
                     "projectId",
                     "uid"
-                  ],
-                  "type": "object"
+                  ]
                 }
               }
             }
@@ -54990,6 +54967,11 @@
                             "description": "Timestamp of when the deployment got created.",
                             "example": 1609492210000
                           },
+                          "defaultRoute": {
+                            "type": "string",
+                            "description": "The default route that should be used for screenshots and links if configured with microfrontends.",
+                            "example": "/docs"
+                          },
                           "deleted": {
                             "type": "number",
                             "description": "Timestamp of when the deployment got deleted.",
@@ -56186,6 +56168,7 @@
                   "edgeMiddlewareInvocations",
                   "edgeRequestAdditionalCpuDuration",
                   "edgeRequest",
+                  "elasticConcurrencyBuildSlots",
                   "fastDataTransfer",
                   "fastOriginTransfer",
                   "functionDuration",

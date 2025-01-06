@@ -9,7 +9,6 @@ let value: CreateDeploymentRequestBody = {
   deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
   files: [
     {
-      data: "<value>",
       file: "folder/file.js",
     },
   ],
@@ -23,11 +22,10 @@ let value: CreateDeploymentRequestBody = {
     dirty: true,
   },
   gitSource: {
-    owner: "bitbucket_user",
     ref: "main",
+    repoId: 123456789,
     sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-    slug: "my-awesome-project",
-    type: "bitbucket",
+    type: "github",
   },
   meta: {
     "foo": "bar",

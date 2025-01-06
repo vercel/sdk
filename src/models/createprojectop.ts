@@ -1358,11 +1358,11 @@ export type CreateProjectPermissions = {
 export type CreateProjectLastRollbackTarget = {};
 
 export const CreateProjectJobStatus = {
-  Pending: "pending",
-  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
+  Pending: "pending",
+  InProgress: "in-progress",
 } as const;
 export type CreateProjectJobStatus = ClosedEnum<typeof CreateProjectJobStatus>;
 

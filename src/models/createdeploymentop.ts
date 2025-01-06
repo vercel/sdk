@@ -30,18 +30,6 @@ export type SkipAutoDetectionConfirmation = ClosedEnum<
 >;
 
 /**
- * Forces a new deployment even if there is a previous similar deployment
- */
-export const ForceNew = {
-  Zero: "0",
-  One: "1",
-} as const;
-/**
- * Forces a new deployment even if there is a previous similar deployment
- */
-export type ForceNew = ClosedEnum<typeof ForceNew>;
-
-/**
  * Used in the case you want to reference a file that was already uploaded
  */
 export type UploadedFile = {
@@ -387,17 +375,9 @@ export type CreateDeploymentRequest = {
    */
   skipAutoDetectionConfirmation?: SkipAutoDetectionConfirmation | undefined;
   /**
-   * Forces a new deployment even if there is a previous similar deployment
-   */
-  forceNew?: ForceNew | undefined;
-  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
-  /**
-   * The Team slug to perform the request on behalf of.
-   */
-  slug?: string | undefined;
   requestBody: CreateDeploymentRequestBody;
 };
 
@@ -1315,25 +1295,6 @@ export namespace SkipAutoDetectionConfirmation$ {
   export const inboundSchema = SkipAutoDetectionConfirmation$inboundSchema;
   /** @deprecated use `SkipAutoDetectionConfirmation$outboundSchema` instead. */
   export const outboundSchema = SkipAutoDetectionConfirmation$outboundSchema;
-}
-
-/** @internal */
-export const ForceNew$inboundSchema: z.ZodNativeEnum<typeof ForceNew> = z
-  .nativeEnum(ForceNew);
-
-/** @internal */
-export const ForceNew$outboundSchema: z.ZodNativeEnum<typeof ForceNew> =
-  ForceNew$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ForceNew$ {
-  /** @deprecated use `ForceNew$inboundSchema` instead. */
-  export const inboundSchema = ForceNew$inboundSchema;
-  /** @deprecated use `ForceNew$outboundSchema` instead. */
-  export const outboundSchema = ForceNew$outboundSchema;
 }
 
 /** @internal */
@@ -2390,9 +2351,7 @@ export const CreateDeploymentRequest$inboundSchema: z.ZodType<
 > = z.object({
   skipAutoDetectionConfirmation: SkipAutoDetectionConfirmation$inboundSchema
     .optional(),
-  forceNew: ForceNew$inboundSchema.optional(),
   teamId: z.string().optional(),
-  slug: z.string().optional(),
   RequestBody: z.lazy(() => CreateDeploymentRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -2403,9 +2362,7 @@ export const CreateDeploymentRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateDeploymentRequest$Outbound = {
   skipAutoDetectionConfirmation?: string | undefined;
-  forceNew?: string | undefined;
   teamId?: string | undefined;
-  slug?: string | undefined;
   RequestBody: CreateDeploymentRequestBody$Outbound;
 };
 
@@ -2417,9 +2374,7 @@ export const CreateDeploymentRequest$outboundSchema: z.ZodType<
 > = z.object({
   skipAutoDetectionConfirmation: SkipAutoDetectionConfirmation$outboundSchema
     .optional(),
-  forceNew: ForceNew$outboundSchema.optional(),
   teamId: z.string().optional(),
-  slug: z.string().optional(),
   requestBody: z.lazy(() => CreateDeploymentRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

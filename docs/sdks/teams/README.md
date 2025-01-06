@@ -680,7 +680,6 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.teams.getTeam({
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -707,7 +706,6 @@ const vercel = new VercelCore({
 async function run() {
   const res = await teamsGetTeam(vercel, {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
   });
 
   if (!res.ok) {

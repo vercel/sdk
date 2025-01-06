@@ -29,7 +29,6 @@ let value: GetDomainResponseBody = {
       id: "ZspSRT4ljIEEmMHgoDwKWDei",
     },
     teamId: "<id>",
-    userId: "<id>",
     boughtAt: 1613602938882,
     createdAt: 1613602938882,
     expiresAt: 1613602938882,
@@ -40,6 +39,7 @@ let value: GetDomainResponseBody = {
     serviceType: "zeit.world",
     transferredAt: 1613602938882,
     transferStartedAt: 1613602938882,
+    userId: "<id>",
   },
 };
 ```

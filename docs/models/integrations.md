@@ -7,7 +7,7 @@ import { Integrations } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Integrations = {
   status: "ready",
-  startedAt: 9378.64,
+  startedAt: 6775.08,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { CreateDeploymentOutput } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentOutput = {
-  path: "/etc/ppp",
+  path: "/opt/include",
   functionName: "<value>",
 };
 ```

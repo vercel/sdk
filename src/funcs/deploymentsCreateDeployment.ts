@@ -77,9 +77,7 @@ export async function deploymentsCreateDeployment(
   const path = pathToFunc("/v13/deployments")();
 
   const query = encodeFormQuery({
-    "forceNew": payload.forceNew,
     "skipAutoDetectionConfirmation": payload.skipAutoDetectionConfirmation,
-    "slug": payload.slug,
     "teamId": payload.teamId,
   });
 

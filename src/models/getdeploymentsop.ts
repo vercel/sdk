@@ -377,6 +377,10 @@ export type Deployments = {
    */
   created: number;
   /**
+   * The default route that should be used for screenshots and links if configured with microfrontends.
+   */
+  defaultRoute?: string | undefined;
+  /**
    * Timestamp of when the deployment got deleted.
    */
   deleted?: number | undefined;
@@ -1342,6 +1346,7 @@ export const Deployments$inboundSchema: z.ZodType<
   name: z.string(),
   url: z.string(),
   created: z.number(),
+  defaultRoute: z.string().optional(),
   deleted: z.number().optional(),
   undeleted: z.number().optional(),
   softDeletedByRetention: z.boolean().optional(),
@@ -1380,6 +1385,7 @@ export type Deployments$Outbound = {
   name: string;
   url: string;
   created: number;
+  defaultRoute?: string | undefined;
   deleted?: number | undefined;
   undeleted?: number | undefined;
   softDeletedByRetention?: boolean | undefined;
@@ -1419,6 +1425,7 @@ export const Deployments$outboundSchema: z.ZodType<
   name: z.string(),
   url: z.string(),
   created: z.number(),
+  defaultRoute: z.string().optional(),
   deleted: z.number().optional(),
   undeleted: z.number().optional(),
   softDeletedByRetention: z.boolean().optional(),

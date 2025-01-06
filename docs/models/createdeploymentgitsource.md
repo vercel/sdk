@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CreateDeploymentGitSource1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 651.21,
 };
 ```
 

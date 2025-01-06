@@ -44,10 +44,6 @@ actions:
         description: Update the fields of a project using either its name or id.
         position: 2
   # Fixing lint and TS issues from source
-  - target: $["paths"]["/v13/deployments"]["post"]["parameters"][0]
-    remove: true
-  - target: $["paths"]["/v13/deployments"]["post"]["parameters"][2]
-    remove: true
   - target: $["paths"]["/v1/domains/{domain}/registry"]["get"]["parameters"]
     update:
       - name: domain

@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: Modify operations in https://openapi.vercel.sh/ to enable test generation
+  version: 0.0.1
+actions:
+  # Disable tests that are currently failing
+  - target: $.paths['/v4/domains/{domain}/records'].get
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v3/domains/{domain}'].patch
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v1/edge-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}'].get
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v1/integrations/configurations'].get
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v1/projects/{idOrName}/members'].get
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v9/projects/{idOrName}/env'].get
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v9/projects/{idOrName}/env/{id}'].patch
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v1/teams/{teamId}/members'].post
+    update:
+      x-speakeasy-test: false
+  - target: $.paths['/v2/user'].get
+    update:
+      x-speakeasy-test: false

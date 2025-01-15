@@ -584,35 +584,35 @@ actions:
       description: Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.ma
     update:
-      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.      
+      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.lfi
     update:
-      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.   
+      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.rfi
     update:
-      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.    
+      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.rce
     update:
-      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.          
+      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.php
     update:
       description: PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.gen
     update:
-      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.    
+      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.xss
     update:
-      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.  
+      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.sqli
     update:
-      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases. 
+      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.sf
     update:
-      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.    
+      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.active.properties.crs.properties.java
     update:
-      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.    
-  # Update CRS object descriptions for /v1/security/firewall/config put requestBody    
+      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
+  # Update CRS object descriptions for /v1/security/firewall/config put requestBody
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs
     update:
       description: Custom Ruleset
@@ -621,35 +621,35 @@ actions:
       description: Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.ma
     update:
-      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.      
+      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.lfi
     update:
-      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.   
+      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.rfi
     update:
-      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.    
+      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.rce
     update:
-      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.          
+      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.php
     update:
       description: PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.gen
     update:
-      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.    
+      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.xss
     update:
-      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.  
+      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.sqli
     update:
-      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases. 
+      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.sf
     update:
-      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.    
+      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.crs.properties.java
     update:
-      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.  
-  # Update CRS object descriptions for /v1/security/firewall/config/{configVersion} get responses 200    
+      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
+  # Update CRS object descriptions for /v1/security/firewall/config/{configVersion} get responses 200
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs
     update:
       description: Custom Ruleset
@@ -658,66 +658,66 @@ actions:
       description: Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.ma
     update:
-      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.      
+      description: Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.lfi
     update:
-      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.   
+      description: Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.rfi
     update:
-      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.    
+      description: Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.rce
     update:
-      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.          
+      description: Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.php
     update:
       description: PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.gen
     update:
-      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.    
+      description: Generic Attack - Provide broad protection from various undefined or novel attack vectors.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.xss
     update:
-      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.  
+      description: XSS Attack - Prevent injection of malicious scripts into trusted webpages.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.sqli
     update:
-      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases. 
+      description: SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.sf
     update:
-      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.          
+      description: Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.crs.properties.java
     update:
-      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.     
+      description: Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
   # Link to parameter reference in parameter type descriptions for /v1/security/firewall
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.type
     update:
-      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."  
+      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.type
     update:
-      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."  
+      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.type
     update:
-      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic." 
+      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
   - target: $.paths['/v1/security/firewall/config'].patch.requestBody.content['application/json'].schema.oneOf[1].properties.value.properties.conditionGroup.items.properties.conditions.items.properties.type
     update:
-      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."  
+      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
   - target: $.paths['/v1/security/firewall/config'].patch.requestBody.content['application/json'].schema.oneOf[2].properties.value.properties.conditionGroup.items.properties.conditions.items.properties.type
     update:
-      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."    
+      description: "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
   # Link to operator reference in operator descriptions for /v1/security/firewall
   - target: $.paths['/v1/security/firewall/config/{configVersion}'].get.responses.200.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.op
     update:
-      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"       
+      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"
   - target: $.paths['/v1/security/firewall/config'].put.responses.200.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.op
     update:
-      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."  
+      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."
   - target: $.paths['/v1/security/firewall/config'].put.requestBody.content['application/json'].schema.properties.rules.items.properties.conditionGroup.items.properties.conditions.items.properties.op
     update:
-      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value." 
+      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."
   - target: $.paths['/v1/security/firewall/config'].patch.requestBody.content['application/json'].schema.oneOf[1].properties.value.properties.conditionGroup.items.properties.conditions.items.properties.op
     update:
-      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."  
+      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."
   - target: $.paths['/v1/security/firewall/config'].patch.requestBody.content['application/json'].schema.oneOf[2].properties.value.properties.conditionGroup.items.properties.conditions.items.properties.op
     update:
-      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"                                                                       
+      description: "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"
   - target: $.paths['/v1/teams/{teamId}/members/{uid}'].patch.requestBody.content['application/json'].schema.properties['joinedFrom'].properties['ssoUserId'].type
     remove: true
   - target: $.paths['/v1/teams/{teamId}/members/{uid}'].patch.requestBody.content['application/json'].schema.properties['joinedFrom'].properties['ssoUserId']
@@ -742,10 +742,10 @@ actions:
       nullable: true
   - target: $.paths['/v4/aliases/{idOrAlias}'].get.responses['200'].content['application/json'].schema.properties.deletedAt
     update:
-      nullable: true    
+      nullable: true
   - target: $.paths['/v4/aliases/{idOrAlias}'].get.responses['200'].content['application/json'].schema.properties.updatedAt
     update:
-      nullable: true         
+      nullable: true
   - target: $.paths['/v1/log-drains'].get.responses['200'].content['application/json'].schema.items.properties['createdFrom']['enum']
     update:
       - integration
@@ -828,217 +828,232 @@ actions:
   - target: $["paths"]["/v1/webhooks"]["post"]["responses"]["200"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
-        - budget.reached,
-        - budget.reset,
-        - domain.created,
-        - deployment.created,
-        - deployment.error,
-        - deployment.canceled,
-        - deployment.succeeded,
-        - deployment.ready,
-        - deployment.check-rerequested,
-        - deployment.promoted,
-        - deployment.integration.action.start,
-        - deployment.integration.action.cancel,
-        - deployment.integration.action.cleanup,
-        - edge-config.created,
-        - edge-config.deleted,
-        - edge-config.items.updated,
-        - firewall.attack,
-        - integration-configuration.permission-upgraded,
-        - integration-configuration.removed,
-        - integration-configuration.scope-change-confirmed,
-        - project.created,
-        - project.removed,
-        - deployment-checks-completed-legacy,
-        - deployment-ready-legacy,
-        - deployment-prepared-legacy,
-        - deployment-error-legacy,
-        - deployment-check-rerequested-legacy,
-        - deployment-canceled-legacy,
-        - project-created-legacy,
-        - project-removed-legacy,
-        - domain-created-legacy,
-        - deployment-legacy,
-        - integration-configuration-permission-updated-legacy,
-        - integration-configuration-removed-legacy,
-        - integration-configuration-scope-change-confirmed-legacy,
-        - marketplace.invoice.created,
-        - marketplace.invoice.paid,
-        - marketplace.invoice.notpaid,
-        - marketplace.invoice.refunded,
+        - budget.reached
+        - budget.reset
+        - domain.created
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
+        - edge-config.created
+        - edge-config.deleted
+        - edge-config.items.updated
+        - firewall.attack
+        - integration-configuration.permission-upgraded
+        - integration-configuration.removed
+        - integration-configuration.scope-change-confirmed
+        - integration-resource.project-connected
+        - integration-resource.project-disconnected
+        - project.created
+        - project.removed
+        - deployment-checks-completed-legacy
+        - deployment-ready-legacy
+        - deployment-prepared-legacy
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
+        - project-created-legacy
+        - project-removed-legacy
+        - domain-created-legacy
+        - deployment-legacy
+        - integration-configuration-permission-updated-legacy
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
         - test-webhook
   - target: $["paths"]["/v1/webhooks"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
-        - budget.reached,
-        - budget.reset,
-        - domain.created,
-        - deployment.created,
-        - deployment.error,
-        - deployment.canceled,
-        - deployment.succeeded,
-        - deployment.ready,
-        - deployment.check-rerequested,
-        - deployment.promoted,
-        - deployment.integration.action.start,
-        - deployment.integration.action.cancel,
-        - deployment.integration.action.cleanup,
-        - edge-config.created,
-        - edge-config.deleted,
-        - edge-config.items.updated,
-        - firewall.attack,
-        - integration-configuration.permission-upgraded,
-        - integration-configuration.removed,
-        - integration-configuration.scope-change-confirmed,
-        - project.created,
-        - project.removed,
-        - deployment-checks-completed-legacy,
-        - deployment-ready-legacy,
-        - deployment-prepared-legacy,
-        - deployment-error-legacy,
-        - deployment-check-rerequested-legacy,
-        - deployment-canceled-legacy,
-        - project-created-legacy,
-        - project-removed-legacy,
-        - domain-created-legacy,
-        - deployment-legacy,
-        - integration-configuration-permission-updated-legacy,
-        - integration-configuration-removed-legacy,
-        - integration-configuration-scope-change-confirmed-legacy,
-        - marketplace.invoice.created,
-        - marketplace.invoice.paid,
-        - marketplace.invoice.notpaid,
-        - marketplace.invoice.refunded,
+        - budget.reached
+        - budget.reset
+        - domain.created
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
+        - edge-config.created
+        - edge-config.deleted
+        - edge-config.items.updated
+        - firewall.attack
+        - integration-configuration.permission-upgraded
+        - integration-configuration.removed
+        - integration-configuration.scope-change-confirmed
+        - integration-resource.project-connected
+        - integration-resource.project-disconnected
+        - project.created
+        - project.removed
+        - deployment-checks-completed-legacy
+        - deployment-ready-legacy
+        - deployment-prepared-legacy
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
+        - project-created-legacy
+        - project-removed-legacy
+        - domain-created-legacy
+        - deployment-legacy
+        - integration-configuration-permission-updated-legacy
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
         - test-webhook
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][0]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
-        - budget.reached,
-        - budget.reset,
-        - domain.created,
-        - deployment.created,
-        - deployment.error,
-        - deployment.canceled,
-        - deployment.succeeded,
-        - deployment.ready,
-        - deployment.check-rerequested,
-        - deployment.promoted,
-        - deployment.integration.action.start,
-        - deployment.integration.action.cancel,
-        - deployment.integration.action.cleanup,
-        - edge-config.created,
-        - edge-config.deleted,
-        - edge-config.items.updated,
-        - firewall.attack,
-        - integration-configuration.permission-upgraded,
-        - integration-configuration.removed,
-        - integration-configuration.scope-change-confirmed,
-        - project.created,
-        - project.removed,
-        - deployment-checks-completed-legacy,
-        - deployment-ready-legacy,
-        - deployment-prepared-legacy,
-        - deployment-error-legacy,
-        - deployment-check-rerequested-legacy,
-        - deployment-canceled-legacy,
-        - project-created-legacy,
-        - project-removed-legacy,
-        - domain-created-legacy,
-        - deployment-legacy,
-        - integration-configuration-permission-updated-legacy,
-        - integration-configuration-removed-legacy,
-        - integration-configuration-scope-change-confirmed-legacy,
-        - marketplace.invoice.created,
-        - marketplace.invoice.paid,
-        - marketplace.invoice.notpaid,
-        - marketplace.invoice.refunded,
+        - budget.reached
+        - budget.reset
+        - domain.created
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
+        - edge-config.created
+        - edge-config.deleted
+        - edge-config.items.updated
+        - firewall.attack
+        - integration-configuration.permission-upgraded
+        - integration-configuration.removed
+        - integration-configuration.scope-change-confirmed
+        - integration-resource.project-connected
+        - integration-resource.project-disconnected
+        - project.created
+        - project.removed
+        - deployment-checks-completed-legacy
+        - deployment-ready-legacy
+        - deployment-prepared-legacy
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
+        - project-created-legacy
+        - project-removed-legacy
+        - domain-created-legacy
+        - deployment-legacy
+        - integration-configuration-permission-updated-legacy
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
         - test-webhook
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][1]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
-        - budget.reached,
-        - budget.reset,
-        - domain.created,
-        - deployment.created,
-        - deployment.error,
-        - deployment.canceled,
-        - deployment.succeeded,
-        - deployment.ready,
-        - deployment.check-rerequested,
-        - deployment.promoted,
-        - deployment.integration.action.start,
-        - deployment.integration.action.cancel,
-        - deployment.integration.action.cleanup,
-        - edge-config.created,
-        - edge-config.deleted,
-        - edge-config.items.updated,
-        - firewall.attack,
-        - integration-configuration.permission-upgraded,
-        - integration-configuration.removed,
-        - integration-configuration.scope-change-confirmed,
-        - project.created,
-        - project.removed,
-        - deployment-checks-completed-legacy,
-        - deployment-ready-legacy,
-        - deployment-prepared-legacy,
-        - deployment-error-legacy,
-        - deployment-check-rerequested-legacy,
-        - deployment-canceled-legacy,
-        - project-created-legacy,
-        - project-removed-legacy,
-        - domain-created-legacy,
-        - deployment-legacy,
-        - integration-configuration-permission-updated-legacy,
-        - integration-configuration-removed-legacy,
-        - integration-configuration-scope-change-confirmed-legacy,
-        - marketplace.invoice.created,
-        - marketplace.invoice.paid,
-        - marketplace.invoice.notpaid,
-        - marketplace.invoice.refunded,
+        - budget.reached
+        - budget.reset
+        - domain.created
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
+        - edge-config.created
+        - edge-config.deleted
+        - edge-config.items.updated
+        - firewall.attack
+        - integration-configuration.permission-upgraded
+        - integration-configuration.removed
+        - integration-configuration.scope-change-confirmed
+        - integration-resource.project-connected
+        - integration-resource.project-disconnected
+        - project.created
+        - project.removed
+        - deployment-checks-completed-legacy
+        - deployment-ready-legacy
+        - deployment-prepared-legacy
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
+        - project-created-legacy
+        - project-removed-legacy
+        - domain-created-legacy
+        - deployment-legacy
+        - integration-configuration-permission-updated-legacy
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
         - test-webhook
   - target: $["paths"]["/v1/webhooks/{id}"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
-        - budget.reached,
-        - budget.reset,
-        - domain.created,
-        - deployment.created,
-        - deployment.error,
-        - deployment.canceled,
-        - deployment.succeeded,
-        - deployment.ready,
-        - deployment.check-rerequested,
-        - deployment.promoted,
-        - deployment.integration.action.start,
-        - deployment.integration.action.cancel,
-        - deployment.integration.action.cleanup,
-        - edge-config.created,
-        - edge-config.deleted,
-        - edge-config.items.updated,
-        - firewall.attack,
-        - integration-configuration.permission-upgraded,
-        - integration-configuration.removed,
-        - integration-configuration.scope-change-confirmed,
-        - project.created,
-        - project.removed,
-        - deployment-checks-completed-legacy,
-        - deployment-ready-legacy,
-        - deployment-prepared-legacy,
-        - deployment-error-legacy,
-        - deployment-check-rerequested-legacy,
-        - deployment-canceled-legacy,
-        - project-created-legacy,
-        - project-removed-legacy,
-        - domain-created-legacy,
-        - deployment-legacy,
-        - integration-configuration-permission-updated-legacy,
-        - integration-configuration-removed-legacy,
-        - integration-configuration-scope-change-confirmed-legacy,
-        - marketplace.invoice.created,
-        - marketplace.invoice.paid,
-        - marketplace.invoice.notpaid,
-        - marketplace.invoice.refunded,
+        - budget.reached
+        - budget.reset
+        - domain.created
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
+        - edge-config.created
+        - edge-config.deleted
+        - edge-config.items.updated
+        - firewall.attack
+        - integration-configuration.permission-upgraded
+        - integration-configuration.removed
+        - integration-configuration.scope-change-confirmed
+        - integration-resource.project-connected
+        - integration-resource.project-disconnected
+        - project.created
+        - project.removed
+        - deployment-checks-completed-legacy
+        - deployment-ready-legacy
+        - deployment-prepared-legacy
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
+        - project-created-legacy
+        - project-removed-legacy
+        - domain-created-legacy
+        - deployment-legacy
+        - integration-configuration-permission-updated-legacy
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
         - test-webhook
   # Make requestbody required
   - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody
@@ -1046,124 +1061,124 @@ actions:
       required: true
   - target: $.paths['/v1/access-groups'].post.requestBody
     update:
-      required: true    
+      required: true
   - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects'].post.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'].patch.requestBody
     update:
-      required: true      
+      required: true
   - target: $.paths['/v8/artifacts/events'].post.requestBody
     update:
-      required: true       
+      required: true
   - target: $.paths['/v8/artifacts/{hash}'].put.requestBody
     update:
-      required: true       
+      required: true
   - target: $.paths['/v8/artifacts'].post.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.requestBody
     update:
-      required: true   
+      required: true
   - target: $.paths['/v1/deployments/{deploymentId}/checks/{checkId}'].patch.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v1/data-cache/projects/{projectId}'].patch.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v13/deployments'].post.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v5/domains/buy'].post.requestBody
     update:
-      required: true      
+      required: true
   - target: $.paths['/v2/domains/{domain}/records'].post.requestBody
     update:
-      required: true    
+      required: true
   - target: $.paths['/v1/domains/records/{recordId}'].patch.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v5/domains'].post.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v3/domains/{domain}'].patch.requestBody
     update:
-      required: true   
+      required: true
   - target: $.paths['/v1/edge-config'].post.requestBody
     update:
-      required: true        
+      required: true
   - target: $.paths['/v1/edge-config/{edgeConfigId}'].put.requestBody
     update:
-      required: true   
+      required: true
   - target: $.paths['/v1/edge-config/{edgeConfigId}/schema'].post.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/edge-config/{edgeConfigId}/tokens'].delete.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v1/edge-config/{edgeConfigId}/token'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v1/installations/{integrationConfigurationId}/events'].post.requestBody
     update:
-      required: true      
+      required: true
   - target: $.paths['/v1/installations/{integrationConfigurationId}/billing'].post.requestBody
     update:
-      required: true     
+      required: true
   - target: $.paths['/v1/installations/{integrationConfigurationId}/billing/invoices'].post.requestBody
     update:
-      required: true      
+      required: true
   - target: $.paths['/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v1/installations/{integrationConfigurationId}/products/{integrationProductIdOrSlug}/resources/{resourceId}/secrets'].put.requestBody
     update:
-      required: true   
+      required: true
   - target: $.paths['/v1/integrations/sso/token'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v2/integrations/log-drains'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v1/log-drains'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v1/projects/{idOrName}/members'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v10/projects'].post.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v9/projects/{idOrName}'].patch.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v9/projects/{idOrName}/domains/{domain}'].patch.requestBody
     update:
-      required: true  
+      required: true
   - target: $.paths['/v10/projects/{idOrName}/domains'].post.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v10/projects/{idOrName}/env'].post.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v9/projects/{idOrName}/env/{id}'].patch.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/projects/{idOrName}/protection-bypass'].patch.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/security/attack-mode'].post.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/security/firewall/config'].put.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/security/firewall/config'].patch.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/teams/{teamId}/members'].post.requestBody
     update:
-      required: true 
+      required: true
   - target: $.paths['/v1/teams/{teamId}/request'].post.requestBody
     update:
       required: true
@@ -1203,19 +1218,19 @@ actions:
   # Add appropriate examples for properties
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.id
     update:
-      example: "chk_1a2b3c4d5e6f7g8h9i0j"     
+      example: "chk_1a2b3c4d5e6f7g8h9i0j"
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.name
     update:
-      example: "Performance Check"     
+      example: "Performance Check"
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.path
     update:
-      example: "/api/users"       
+      example: "/api/users"
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.status
     update:
-      example: "completed"   
+      example: "completed"
   - target: $.paths['/v1/deployments/{deploymentId}/checks'].post.responses.200.content["application/json"].schema.properties.conclusion
     update:
-      example: "succeeded"    
+      example: "succeeded"
   - target: $.paths['/v1/access-groups/{idOrName}'].get.parameters[?(@.name=='idOrName')]
     update:
       examples:
@@ -1224,29 +1239,29 @@ actions:
           value: "ag_1a2b3c4d5e6f7g8h9i0j"
         name:
           summary: Access group name
-          value: "My Access Group"       
+          value: "My Access Group"
   - target: $["paths"][*][*]["parameters"][?(@.name=='teamId')].schema
     update:
-      example: "team_1a2b3c4d5e6f7g8h9i0j1k2l"                   
+      example: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
   - target: $["paths"][*][*]["parameters"][?(@.name=='slug')].schema
     update:
-      example: "my-team-url-slug"       
+      example: "my-team-url-slug"
   - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToAdd
     update:
       example:
         - "usr_1a2b3c4d5e6f7g8h9i0j"
-        - "usr_2b3c4d5e6f7g8h9i0j1k"  
+        - "usr_2b3c4d5e6f7g8h9i0j1k"
   - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody.content["application/json"].schema.properties.membersToRemove
     update:
       example:
         - "usr_1a2b3c4d5e6f7g8h9i0j"
-        - "usr_2b3c4d5e6f7g8h9i0j1k"  
-  - target: $.paths['/v1/access-groups'].post.requestBody.content["application/json"].schema.properties.membersToAdd      
+        - "usr_2b3c4d5e6f7g8h9i0j1k"
+  - target: $.paths['/v1/access-groups'].post.requestBody.content["application/json"].schema.properties.membersToAdd
     update:
       example:
         - "usr_1a2b3c4d5e6f7g8h9i0j"
-        - "usr_2b3c4d5e6f7g8h9i0j1k"                  
-  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='accessGroupIdOrName')]  
+        - "usr_2b3c4d5e6f7g8h9i0j1k"
+  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='accessGroupIdOrName')]
     update:
       examples:
         id:
@@ -1254,80 +1269,82 @@ actions:
           value: "ag_1a2b3c4d5e6f7g8h9i0j"
         name:
           summary: Access group name
-          value: "My Access Group" 
-  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='projectId')]  
+          value: "My Access Group"
+  - target: $.paths['/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}'][*]["parameters"][?(@.name=='projectId')]
     update:
-      example: "prj_ndlgr43fadlPyCtREAqxxdyFK" 
-  - target: $.paths['/v8/artifacts'].post.requestBody.content["application/json"].schema.properties.hashes      
+      example: "prj_ndlgr43fadlPyCtREAqxxdyFK"
+  - target: $.paths['/v8/artifacts'].post.requestBody.content["application/json"].schema.properties.hashes
     update:
       example:
         - "12HKQaOmR5t5Uy6vdcQsNIiZgHGB"
-        - "34HKQaOmR5t5Uy6vasdasdasdasd"  
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.deploymentId      
+        - "34HKQaOmR5t5Uy6vasdasdasdasd"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.deploymentId
     update:
-      example: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6"    
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..ref   
+      example: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..ref
     update:
-      example: "main"  
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repoId     
+      example: "main"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repoId
     update:
-      example: 123456789     
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..sha      
+      example: 123456789
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..sha
     update:
-      example: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"  
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..org    
+      example: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..org
     update:
-      example: "vercel"   
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repo    
+      example: "vercel"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repo
     update:
-      example: "next.js"  
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..projectId      
+      example: "next.js"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..projectId
     update:
-      example: 987654321  
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repoUuid      
+      example: 987654321
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..repoUuid
     update:
-      example: "123e4567-e89b-12d3-a456-426614174000"    
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..workspaceUuid     
+      example: "123e4567-e89b-12d3-a456-426614174000"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..workspaceUuid
     update:
-      example: "987e6543-e21b-12d3-a456-426614174000"       
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..owner     
+      example: "987e6543-e21b-12d3-a456-426614174000"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..owner
     update:
-      example: "bitbucket_user"    
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..slug     
+      example: "bitbucket_user"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.gitSource.anyOf..slug
     update:
-      example: "my-awesome-project"        
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.projectSettings.properties.buildCommand      
+      example: "my-awesome-project"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.projectSettings.properties.buildCommand
     update:
-      example: "next build"      
-  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.projectSettings.properties.installCommand      
+      example: "next build"
+  - target: $.paths['/v13/deployments'].post.requestBody.content["application/json"].schema.properties.projectSettings.properties.installCommand
     update:
-      example: "pnpm install"                                                  
+      example: "pnpm install"
+  - target: $.paths['/v1/projects/{idOrName}/custom-environments/{environmentSlugOrId}'].delete.requestBody.content["application/json"].schema.required
+    remove: true
   # Update response schemas for various HTTP status codes across all paths and operations
   - target: $["paths"][*][*]["responses"]["400"]
     update:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/VercelBadRequestError"  # Reference to the Bad Request error schema
+            $ref: "#/components/schemas/VercelBadRequestError" # Reference to the Bad Request error schema
   - target: $["paths"][*][*]["responses"]["401"]
     update:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/VercelForbiddenError"  # Reference to the Forbidden error schema
+            $ref: "#/components/schemas/VercelForbiddenError" # Reference to the Forbidden error schema
   - target: $["paths"][*][*]["responses"]["404"]
     update:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/VercelNotFoundError"  # Reference to the Not Found error schema
-  - target: $["paths"][*][*]["responses"]["429"] 
+            $ref: "#/components/schemas/VercelNotFoundError" # Reference to the Not Found error schema
+  - target: $["paths"][*][*]["responses"]["429"]
     update:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/VercelRateLimitError"  # Reference to the Rate Limit error schema
-# Define custom error schemas under the components section
+            $ref: "#/components/schemas/VercelRateLimitError" # Reference to the Rate Limit error schema
+  # Define custom error schemas under the components section
   - target: $["components"]["schemas"]
     update:
       VercelBaseError:
@@ -1336,51 +1353,51 @@ actions:
         properties:
           code:
             type: string
-            const: bad_request  # Fixed value for the error code
+            const: bad_request # Fixed value for the error code
           message:
-            type: string  # Human-readable error message
+            type: string # Human-readable error message
       VercelForbiddenError:
         type: object
         required: [error]
         properties:
           error:
             allOf:
-              - $ref: "#/components/schemas/VercelBaseError"  # Inherits from VercelBaseError
+              - $ref: "#/components/schemas/VercelBaseError" # Inherits from VercelBaseError
               - type: object
                 required: [code]
                 properties:
                   code:
                     type: string
-                    const: forbidden  # Specific error code for forbidden access
+                    const: forbidden # Specific error code for forbidden access
       VercelNotFoundError:
         type: object
         required: [error]
         properties:
           error:
             allOf:
-              - $ref: "#/components/schemas/VercelBaseError"  # Inherits from VercelBaseError
+              - $ref: "#/components/schemas/VercelBaseError" # Inherits from VercelBaseError
               - type: object
                 required: [code]
                 properties:
                   code:
                     type: string
-                    const: not_found  # Specific error code for not found
+                    const: not_found # Specific error code for not found
                   message:
                     type: string
-                    const: "The item you requested was not found"                    
+                    const: "The item you requested was not found"
       VercelBadRequestError:
         type: object
         required: [error]
         properties:
           error:
             allOf:
-              - $ref: "#/components/schemas/VercelBaseError"  # Inherits from VercelBaseError
+              - $ref: "#/components/schemas/VercelBaseError" # Inherits from VercelBaseError
               - type: object
                 required: [code]
                 properties:
                   code:
                     type: string
-                    const: bad_request  # Specific error code for bad requests
+                    const: bad_request # Specific error code for bad requests
                   message:
                     type: string
                     const: "One of the provided values in the request query, body or headers is invalid"
@@ -1390,28 +1407,28 @@ actions:
         properties:
           error:
             allOf:
-              - $ref: "#/components/schemas/VercelBaseError"  # Inherits from VercelBaseError
+              - $ref: "#/components/schemas/VercelBaseError" # Inherits from VercelBaseError
               - type: object
                 required: [code]
                 properties:
                   code:
                     type: string
-                    const: rate_limited  # Specific error code for rate limiting
+                    const: rate_limited # Specific error code for rate limiting
                   limit:
-                    $ref: "#/components/schemas/RateLimitNotice"  # Reference to rate limit details
+                    $ref: "#/components/schemas/RateLimitNotice" # Reference to rate limit details
       RateLimitNotice:
         type: object
         required: [remaining, reset, resetMs, total]
         properties:
           remaining:
             type: integer
-            minimum: 0  # Number of remaining allowed requests
+            minimum: 0 # Number of remaining allowed requests
           reset:
             type: integer
-            minimum: 0  # Timestamp when the rate limit resets
+            minimum: 0 # Timestamp when the rate limit resets
           resetMs:
             type: integer
-            minimum: 0  # Reset time in milliseconds
+            minimum: 0 # Reset time in milliseconds
           total:
             type: integer
-            minimum: 0  # Total number of allowed requests                                     
+            minimum: 0 # Total number of allowed requests

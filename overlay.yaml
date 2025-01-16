@@ -1055,6 +1055,9 @@ actions:
         - marketplace.invoice.refunded
         - observability.anomaly
         - test-webhook
+  # Remove blank required array
+  - target: $.paths['/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}'].delete.requestBody["content"]["application/json"]["schema"].required
+    remove: true         
   # Make requestbody required
   - target: $.paths['/v1/access-groups/{idOrName}'].post.requestBody
     update:

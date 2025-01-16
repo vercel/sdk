@@ -965,7 +965,7 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       tokens: [
-        "<value>",
+
       ],
     },
   });
@@ -997,7 +997,7 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       tokens: [
-        "<value>",
+  
       ],
     },
   });

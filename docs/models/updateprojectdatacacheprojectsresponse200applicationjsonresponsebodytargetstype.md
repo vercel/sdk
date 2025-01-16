@@ -7,7 +7,7 @@ import { UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTar
 
 let value:
   UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTargetsType =
-    "endsWith";
+    "equals";
 ```
 
 ## Values

@@ -6,8 +6,8 @@
 import { Conditions } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Conditions = {
-  type: "environment",
-  op: "lte",
+  type: "cookie",
+  op: "gte",
 };
 ```
 

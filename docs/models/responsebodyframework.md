@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyFramework } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyFramework = "svelte";
+let value: ResponseBodyFramework = "parcel";
 ```
 
 ## Values

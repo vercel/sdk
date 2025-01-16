@@ -7,25 +7,25 @@ import { SearchRepoResponseBody2 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "gitlab",
-    namespaceId: "<id>",
+    provider: "github-custom-host",
+    namespaceId: 2925.71,
   },
   repos: [
     {
-      id: 6651.83,
-      provider: "github",
-      url: "https://glaring-napkin.info/",
+      id: "<id>",
+      provider: "gitlab",
+      url: "https://lined-soybean.biz/",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
       owner: {
-        id: 8196.90,
+        id: "<id>",
         name: "<value>",
       },
-      ownerType: "user",
+      ownerType: "team",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 1342.67,
+      updatedAt: 5456.29,
     },
   ],
 };

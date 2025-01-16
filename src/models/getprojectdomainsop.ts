@@ -88,6 +88,10 @@ export type GetProjectDomainsRequest = {
    */
   target?: QueryParamTarget | undefined;
   /**
+   * The unique custom environment identifier within the project
+   */
+  customEnvironmentId?: string | undefined;
+  /**
    * Filters domains based on specific branch.
    */
   gitBranch?: string | undefined;
@@ -277,6 +281,7 @@ export const GetProjectDomainsRequest$inboundSchema: z.ZodType<
   idOrName: z.string(),
   production: Production$inboundSchema.default("false"),
   target: QueryParamTarget$inboundSchema.optional(),
+  customEnvironmentId: z.string().optional(),
   gitBranch: z.string().optional(),
   redirects: Redirects$inboundSchema.default("true"),
   redirect: z.string().optional(),
@@ -294,6 +299,7 @@ export type GetProjectDomainsRequest$Outbound = {
   idOrName: string;
   production: string;
   target?: string | undefined;
+  customEnvironmentId?: string | undefined;
   gitBranch?: string | undefined;
   redirects: string;
   redirect?: string | undefined;
@@ -315,6 +321,7 @@ export const GetProjectDomainsRequest$outboundSchema: z.ZodType<
   idOrName: z.string(),
   production: Production$outboundSchema.default("false"),
   target: QueryParamTarget$outboundSchema.optional(),
+  customEnvironmentId: z.string().optional(),
   gitBranch: z.string().optional(),
   redirects: Redirects$outboundSchema.default("true"),
   redirect: z.string().optional(),

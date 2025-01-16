@@ -6,8 +6,8 @@
 import { CreateAccessGroupResponseBody } from "@vercel/sdk/models/createaccessgroupop.js";
 
 let value: CreateAccessGroupResponseBody = {
-  membersCount: 187.90,
-  projectsCount: 6176.35,
+  membersCount: 6169.34,
+  projectsCount: 9437.49,
   name: "my-access-group",
   createdAt: "1588720733602",
   teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",

@@ -5,7 +5,7 @@
 ```typescript
 import { GetWebhooksResponseBodyFramework } from "@vercel/sdk/models/getwebhooksop.js";
 
-let value: GetWebhooksResponseBodyFramework = "parcel";
+let value: GetWebhooksResponseBodyFramework = "svelte";
 ```
 
 ## Values

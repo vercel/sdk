@@ -37,6 +37,29 @@ export type GetConfigurationsRequest = {
   slug?: string | undefined;
 };
 
+export const TagIds = {
+  TagAi: "tag_ai",
+  TagAnalytics: "tag_analytics",
+  TagAuthentication: "tag_authentication",
+  TagCms: "tag_cms",
+  TagCodeRepository: "tag_code_repository",
+  TagCommerce: "tag_commerce",
+  TagDatabases: "tag_databases",
+  TagDevTools: "tag_dev_tools",
+  TagExperiments: "tag_experiments",
+  TagLogging: "tag_logging",
+  TagMessaging: "tag_messaging",
+  TagMonitoring: "tag_monitoring",
+  TagObservability: "tag_observability",
+  TagPerformance: "tag_performance",
+  TagProductivity: "tag_productivity",
+  TagSearching: "tag_searching",
+  TagSecurity: "tag_security",
+  TagTesting: "tag_testing",
+  TagVideo: "tag_video",
+} as const;
+export type TagIds = ClosedEnum<typeof TagIds>;
+
 export type Integration = {
   name: string;
   icon: string;
@@ -44,6 +67,7 @@ export type Integration = {
   isLegacy: boolean;
   flags?: Array<string> | undefined;
   assignedBetaLabelAt?: number | undefined;
+  tagIds?: Array<TagIds> | undefined;
 };
 
 /**
@@ -496,6 +520,25 @@ export function getConfigurationsRequestFromJSON(
 }
 
 /** @internal */
+export const TagIds$inboundSchema: z.ZodNativeEnum<typeof TagIds> = z
+  .nativeEnum(TagIds);
+
+/** @internal */
+export const TagIds$outboundSchema: z.ZodNativeEnum<typeof TagIds> =
+  TagIds$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TagIds$ {
+  /** @deprecated use `TagIds$inboundSchema` instead. */
+  export const inboundSchema = TagIds$inboundSchema;
+  /** @deprecated use `TagIds$outboundSchema` instead. */
+  export const outboundSchema = TagIds$outboundSchema;
+}
+
+/** @internal */
 export const Integration$inboundSchema: z.ZodType<
   Integration,
   z.ZodTypeDef,
@@ -507,6 +550,7 @@ export const Integration$inboundSchema: z.ZodType<
   isLegacy: z.boolean(),
   flags: z.array(z.string()).optional(),
   assignedBetaLabelAt: z.number().optional(),
+  tagIds: z.array(TagIds$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -517,6 +561,7 @@ export type Integration$Outbound = {
   isLegacy: boolean;
   flags?: Array<string> | undefined;
   assignedBetaLabelAt?: number | undefined;
+  tagIds?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -531,6 +576,7 @@ export const Integration$outboundSchema: z.ZodType<
   isLegacy: z.boolean(),
   flags: z.array(z.string()).optional(),
   assignedBetaLabelAt: z.number().optional(),
+  tagIds: z.array(TagIds$outboundSchema).optional(),
 });
 
 /**

@@ -7,7 +7,7 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodySecurityType } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodySecurityType = "target_path";
+let value: UpdateFirewallConfigRequestBodySecurityType = "ja4_digest";
 ```
 
 ## Values

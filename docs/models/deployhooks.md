@@ -9,7 +9,7 @@ let value: DeployHooks = {
   id: "<id>",
   name: "<value>",
   ref: "<value>",
-  url: "https://fake-backburn.info/",
+  url: "https://rubbery-gift.biz/",
 };
 ```
 

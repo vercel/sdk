@@ -7,7 +7,7 @@
 ```typescript
 import { Op } from "@vercel/sdk/models/putfirewallconfigop.js";
 
-let value: Op = "suf";
+let value: Op = "inc";
 ```
 
 ## Values

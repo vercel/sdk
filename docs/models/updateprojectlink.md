@@ -12,7 +12,7 @@ const value: models.UpdateProjectLink1 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://key-merit.name/",
+      url: "https://poor-kiss.org",
     },
   ],
 };
@@ -27,7 +27,7 @@ const value: models.UpdateProjectLink2 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://tricky-order.info/",
+      url: "https://important-heartbeat.net",
     },
   ],
 };
@@ -42,7 +42,7 @@ const value: models.UpdateProjectLink3 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://stunning-follower.biz/",
+      url: "https://each-bakeware.org/",
     },
   ],
 };

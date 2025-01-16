@@ -5,7 +5,7 @@
 ```typescript
 import { CreateConfigurableLogDrainDisabledReason } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
 
-let value: CreateConfigurableLogDrainDisabledReason = "disabled-by-owner";
+let value: CreateConfigurableLogDrainDisabledReason = "feature-not-available";
 ```
 
 ## Values

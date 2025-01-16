@@ -5,7 +5,7 @@
 ```typescript
 import { StatusStatus } from "@vercel/sdk/models/statusop.js";
 
-let value: StatusStatus = "disabled";
+let value: StatusStatus = "paused";
 ```
 
 ## Values

@@ -43,7 +43,7 @@ const value: models.GetDeploymentResponseBody1 = {
     "<value>",
   ],
   url: "https://meager-scholarship.net",
-  version: 7935.67,
+  version: 7935.68,
   projectId: "<id>",
   plan: "pro",
   createdIn: "<value>",
@@ -73,7 +73,7 @@ const value: models.GetDeploymentResponseBody2 = {
   status: "QUEUED",
   id: "<id>",
   type: "LAMBDAS",
-  createdAt: 1023.17,
+  createdAt: 1023.16,
   name: "<value>",
   readyState: "BUILDING",
   meta: {

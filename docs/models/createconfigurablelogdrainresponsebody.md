@@ -7,13 +7,13 @@ import { CreateConfigurableLogDrainResponseBody } from "@vercel/sdk/models/creat
 
 let value: CreateConfigurableLogDrainResponseBody = {
   id: "<id>",
-  deliveryFormat: "json",
-  url: "https://general-digestive.biz",
+  deliveryFormat: "syslog",
+  url: "https://upbeat-aftermath.name",
   name: "<value>",
   ownerId: "<id>",
-  createdAt: 3184.03,
-  deletedAt: 7289.48,
-  updatedAt: 5691.96,
+  createdAt: 2946.5,
+  deletedAt: 8490.29,
+  updatedAt: 6328.5,
   environments: [
     "preview",
   ],

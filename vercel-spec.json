@@ -32,6 +32,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,6 +111,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -122,6 +124,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -184,6 +187,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -258,6 +262,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -270,6 +275,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -394,7 +400,9 @@
           "access-groups"
         ],
         "responses": {
-          "200": {},
+          "200": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -406,6 +414,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -418,6 +427,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -472,6 +482,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -556,6 +567,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -568,6 +580,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -658,6 +671,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -780,6 +794,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -792,6 +807,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -901,6 +917,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -962,6 +979,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -974,6 +992,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1084,6 +1103,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1172,6 +1192,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1184,6 +1205,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1264,6 +1286,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1316,6 +1339,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1328,6 +1352,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1415,6 +1440,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1467,6 +1493,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1479,6 +1506,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1550,6 +1578,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1602,6 +1631,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1614,6 +1644,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1710,7 +1741,9 @@
           "access-groups"
         ],
         "responses": {
-          "200": {},
+          "200": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -1722,6 +1755,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1734,6 +1768,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1820,6 +1855,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1947,6 +1983,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1970,6 +2007,7 @@
             }
           },
           "400": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -1979,6 +2017,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2066,6 +2105,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2180,7 +2220,8 @@
             }
           },
           "required": true
-        }
+        },
+        "x-speakeasy-test": false
       },
       "get": {
         "description": "Downloads a cache artifact indentified by its `hash` specified on the request path. The artifact is downloaded as an octet-stream. The client should verify the content-length header and response body.",
@@ -2218,6 +2259,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2325,6 +2367,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2398,6 +2441,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2459,6 +2503,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2537,6 +2582,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2757,6 +2803,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -2873,6 +2920,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3089,6 +3137,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3159,6 +3208,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3374,6 +3424,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3453,6 +3504,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3668,6 +3720,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3954,6 +4007,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -3973,6 +4027,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -4054,6 +4109,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -5365,6 +5421,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "functionDefaultRegion": {
+                          "type": "string"
+                        },
                         "functionDefaultTimeout": {
                           "type": "number"
                         },
@@ -5375,6 +5434,9 @@
                             "standard",
                             "performance"
                           ]
+                        },
+                        "functionZeroConfigFailover": {
+                          "type": "boolean"
                         },
                         "allowServerlessConcurrency": {
                           "type": "boolean"
@@ -7413,6 +7475,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -7425,6 +7488,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -7509,6 +7573,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -7520,7 +7585,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -11822,6 +11889,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -11837,6 +11905,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -11899,6 +11968,10 @@
               "schema": {
                 "additionalProperties": false,
                 "properties": {
+                  "customEnvironmentSlugOrId": {
+                    "description": "Deploy to a custom environment, which will override the default environment",
+                    "type": "string"
+                  },
                   "deploymentId": {
                     "description": "An deployment id for an existing deployment to redeploy",
                     "type": "string",
@@ -12366,6 +12439,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14028,6 +14102,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14040,6 +14115,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14097,6 +14173,7 @@
         ],
         "responses": {
           "201": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14141,6 +14218,7 @@
             }
           },
           "202": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14195,6 +14273,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14206,8 +14285,11 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "409": {},
+          "409": {
+            "description": ""
+          },
           "429": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14381,6 +14463,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14420,6 +14503,95 @@
                 "redemption"
               ],
               "example": "new"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v4/domains/status": {
+      "get": {
+        "description": "Check if a domain name is available for purchase.",
+        "operationId": "checkDomainStatus",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Check a Domain Availability",
+        "tags": [
+          "domains"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response checking if a Domain's name is available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "available": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "available"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "The name of the domain for which we would like to check the status.",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "description": "The name of the domain for which we would like to check the status.",
+              "type": "string",
+              "example": "example.com"
             }
           },
           {
@@ -14647,6 +14819,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14659,6 +14832,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14729,7 +14903,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       }
     },
     "/v2/domains/{domain}/records": {
@@ -14796,6 +14971,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14811,6 +14987,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -14819,7 +14996,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -15371,6 +15550,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15448,6 +15628,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15463,6 +15644,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15471,7 +15653,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -15564,19 +15748,23 @@
                     "properties": {
                       "target": {
                         "type": "string",
+                        "description": "",
                         "example": "example2.com.",
                         "maxLength": 255,
                         "nullable": true
                       },
                       "weight": {
+                        "description": "",
                         "type": "integer",
                         "nullable": true
                       },
                       "port": {
+                        "description": "",
                         "type": "integer",
                         "nullable": true
                       },
                       "priority": {
+                        "description": "",
                         "type": "integer",
                         "nullable": true
                       }
@@ -15592,16 +15780,19 @@
                     ],
                     "properties": {
                       "priority": {
+                        "description": "",
                         "type": "integer",
                         "nullable": true
                       },
                       "target": {
                         "type": "string",
+                        "description": "",
                         "example": "example2.com.",
                         "maxLength": 255,
                         "nullable": true
                       },
                       "params": {
+                        "description": "",
                         "type": "string",
                         "nullable": true
                       }
@@ -15659,6 +15850,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15671,6 +15863,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15720,94 +15913,6 @@
         ]
       }
     },
-    "/v4/domains/status": {
-      "get": {
-        "description": "Check if a domain name is available for purchase.",
-        "operationId": "checkDomainStatus",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Check a Domain Availability",
-        "tags": [
-          "domains"
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response checking if a Domain's name is available.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "available": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "available"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "description": "The name of the domain for which we would like to check the status.",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "description": "The name of the domain for which we would like to check the status.",
-              "type": "string",
-              "example": "example.com"
-            }
-          },
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ]
-      }
-    },
     "/v1/domains/{domain}/registry": {
       "get": {
         "description": "Fetch domain transfer availability or transfer status if a transfer is in progress.",
@@ -15823,6 +15928,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15873,6 +15979,7 @@
             }
           },
           "400": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15882,6 +15989,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15940,6 +16048,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -15991,6 +16100,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16002,7 +16112,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -16248,6 +16360,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16260,6 +16373,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16503,6 +16617,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16514,7 +16629,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -16581,6 +16698,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16759,6 +16877,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16774,6 +16893,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16782,8 +16902,12 @@
               }
             }
           },
-          "409": {},
-          "500": {}
+          "409": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -16925,6 +17049,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -16988,6 +17113,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17000,6 +17126,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17008,7 +17135,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -17062,6 +17191,7 @@
                           "type": "string"
                         },
                         "maxItems": 4,
+                        "minItems": 0,
                         "type": "array",
                         "uniqueItems": true
                       },
@@ -17091,7 +17221,8 @@
             }
           },
           "required": true
-        }
+        },
+        "x-speakeasy-test": false
       }
     },
     "/v6/domains/{domain}": {
@@ -17139,6 +17270,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17151,6 +17283,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17159,7 +17292,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -17305,6 +17440,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17352,6 +17488,7 @@
         ],
         "responses": {
           "201": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17445,6 +17582,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17656,6 +17794,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17668,6 +17807,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17720,6 +17860,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17813,6 +17954,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17828,6 +17970,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17899,7 +18042,9 @@
           "edge-config"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -17911,6 +18056,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17923,6 +18069,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -17997,6 +18144,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18009,6 +18157,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18062,6 +18211,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18089,6 +18239,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18104,6 +18255,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18112,7 +18264,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -18352,6 +18506,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18364,6 +18519,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18416,6 +18572,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18437,6 +18594,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18452,6 +18610,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18528,7 +18687,9 @@
           "edge-config"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -18540,6 +18701,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18555,6 +18717,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18629,6 +18792,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18641,6 +18805,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18724,6 +18889,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18736,6 +18902,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18787,7 +18954,9 @@
           "edge-config"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
@@ -18799,6 +18968,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18814,6 +18984,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18910,6 +19081,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18922,6 +19094,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -18984,6 +19157,7 @@
         ],
         "responses": {
           "201": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19015,6 +19189,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19030,6 +19205,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19104,6 +19280,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19336,6 +19513,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19348,6 +19526,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19392,7 +19571,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       }
     },
     "/v1/edge-config/{edgeConfigId}/backups": {
@@ -19410,6 +19590,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19484,6 +19665,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19496,6 +19678,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19609,6 +19792,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19718,6 +19902,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19764,6 +19949,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19803,6 +19989,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19838,6 +20025,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19850,6 +20038,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -19893,7 +20082,9 @@
           "marketplace"
         ],
         "responses": {
-          "201": {},
+          "201": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
@@ -19905,6 +20096,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20007,7 +20199,9 @@
           "marketplace"
         ],
         "responses": {
-          "201": {},
+          "201": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
@@ -20019,6 +20213,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20335,6 +20530,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20368,6 +20564,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20570,6 +20767,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20742,6 +20940,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20754,6 +20953,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20797,7 +20997,9 @@
           "marketplace"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
@@ -20809,6 +21011,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20821,6 +21024,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20885,19 +21089,21 @@
     },
     "/v1/installations/{integrationConfigurationId}/products/{integrationProductIdOrSlug}/resources/{resourceId}/secrets": {
       "put": {
-        "description": "This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.\u003cbr/\u003e \u003cbr/\u003e Use cases for this endpoint:\u003cbr/\u003e \u003cbr/\u003e - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.\u003cbr/\u003e",
+        "description": "This endpoint is deprecated and replaced with the endpoint [Update Resource Secrets](#update-resource-secrets). \u003cbr/\u003e This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.\u003cbr/\u003e \u003cbr/\u003e Use cases for this endpoint:\u003cbr/\u003e \u003cbr/\u003e - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.\u003cbr/\u003e",
         "operationId": "update-resource-secrets",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Update Resource Secrets",
+        "summary": "Update Resource Secrets (Deprecated)",
         "tags": [
           "marketplace"
         ],
         "responses": {
-          "201": {},
+          "201": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
@@ -20909,6 +21115,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20921,6 +21128,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -20993,6 +21201,114 @@
             }
           },
           "required": true
+        }
+      }
+    },
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets": {
+      "put": {
+        "description": "This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.\u003cbr/\u003e \u003cbr/\u003e Use cases for this endpoint:\u003cbr/\u003e \u003cbr/\u003e - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.\u003cbr/\u003e",
+        "operationId": "update-resource-secrets-by-id",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update Resource Secrets",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "secrets"
+                ],
+                "properties": {
+                  "secrets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "value"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "prefix": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
         }
       }
     },
@@ -21277,6 +21593,33 @@
                               },
                               "assignedBetaLabelAt": {
                                 "type": "number"
+                              },
+                              "tagIds": {
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "tag_ai",
+                                    "tag_analytics",
+                                    "tag_authentication",
+                                    "tag_cms",
+                                    "tag_code_repository",
+                                    "tag_commerce",
+                                    "tag_databases",
+                                    "tag_dev_tools",
+                                    "tag_experiments",
+                                    "tag_logging",
+                                    "tag_messaging",
+                                    "tag_monitoring",
+                                    "tag_observability",
+                                    "tag_performance",
+                                    "tag_productivity",
+                                    "tag_searching",
+                                    "tag_security",
+                                    "tag_testing",
+                                    "tag_video"
+                                  ]
+                                },
+                                "type": "array"
                               }
                             },
                             "required": [
@@ -21546,6 +21889,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -21611,7 +21955,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       }
     },
     "/v1/integrations/configuration/{id}": {
@@ -22041,6 +22386,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22122,6 +22468,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22186,6 +22533,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22221,6 +22569,7 @@
             }
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22229,8 +22578,11 @@
               }
             }
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -22435,6 +22787,7 @@
             }
           },
           "400": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22444,6 +22797,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22648,6 +23002,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22800,6 +23155,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22869,6 +23225,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22930,6 +23287,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -22983,6 +23341,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23225,6 +23584,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23375,6 +23735,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23387,6 +23748,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23438,7 +23800,9 @@
           "logDrains"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -23450,6 +23814,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23462,6 +23827,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23516,6 +23882,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23669,6 +24036,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23724,6 +24092,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -23874,6 +24243,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -24159,6 +24529,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -24246,7 +24617,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       },
       "post": {
         "description": "Adds a new member to the project.",
@@ -24291,6 +24663,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -24302,7 +24675,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -24413,6 +24788,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -24440,6 +24816,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -25828,6 +26205,9 @@
                           },
                           "resourceConfig": {
                             "properties": {
+                              "functionDefaultRegion": {
+                                "type": "string"
+                              },
                               "functionDefaultTimeout": {
                                 "type": "number"
                               },
@@ -25838,6 +26218,9 @@
                                   "standard",
                                   "performance"
                                 ]
+                              },
+                              "functionZeroConfigFailover": {
+                                "type": "boolean"
                               },
                               "allowServerlessConcurrency": {
                                 "type": "boolean"
@@ -27889,6 +28272,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -29348,6 +29732,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "functionDefaultRegion": {
+                          "type": "string"
+                        },
                         "functionDefaultTimeout": {
                           "type": "number"
                         },
@@ -29358,6 +29745,9 @@
                             "standard",
                             "performance"
                           ]
+                        },
+                        "functionZeroConfigFailover": {
+                          "type": "boolean"
                         },
                         "allowServerlessConcurrency": {
                           "type": "boolean"
@@ -31396,6 +31786,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -33007,6 +33398,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "functionDefaultRegion": {
+                          "type": "string"
+                        },
                         "functionDefaultTimeout": {
                           "type": "number"
                         },
@@ -33017,6 +33411,9 @@
                             "standard",
                             "performance"
                           ]
+                        },
+                        "functionZeroConfigFailover": {
+                          "type": "boolean"
                         },
                         "allowServerlessConcurrency": {
                           "type": "boolean"
@@ -35055,6 +35452,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -36426,6 +36824,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "functionDefaultRegion": {
+                          "type": "string"
+                        },
                         "functionDefaultTimeout": {
                           "type": "number"
                         },
@@ -36436,6 +36837,9 @@
                             "standard",
                             "performance"
                           ]
+                        },
+                        "functionZeroConfigFailover": {
+                          "type": "boolean"
                         },
                         "allowServerlessConcurrency": {
                           "type": "boolean"
@@ -38474,6 +38878,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -38482,7 +38887,9 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -38911,6 +39318,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -38922,7 +39330,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -38955,6 +39365,584 @@
             }
           }
         ]
+      }
+    },
+    "/v1/projects/{idOrName}/custom-environments": {
+      "post": {
+        "description": "Creates a custom environment for the current project. Cannot be named 'Production' or 'Preview'.",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create a custom environment for the current project.",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "description": "The slug of the custom environment to create.",
+                    "type": "string",
+                    "maxLength": 32,
+                    "errorMessage": "Slug must be 32 characters or less."
+                  },
+                  "description": {
+                    "description": "Description of the custom environment. This is optional.",
+                    "type": "string",
+                    "maxLength": 256,
+                    "errorMessage": "Description must be 256 characters or less."
+                  },
+                  "branchMatcher": {
+                    "required": [
+                      "type",
+                      "pattern"
+                    ],
+                    "description": "How we want to determine a matching branch. This is optional.",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Type of matcher. One of \\\"equals\\\", \\\"startsWith\\\", or \\\"endsWith\\\".",
+                        "enum": [
+                          "equals",
+                          "startsWith",
+                          "endsWith"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Git branch name or portion thereof.",
+                        "type": "string",
+                        "maxLength": 100,
+                        "errorMessage": "Branch matcher pattern must be 100 characters or less."
+                      }
+                    }
+                  },
+                  "copyEnvVarsFrom": {
+                    "description": "Where to copy environment variables from. This is optional.",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v9/projects/{idOrName}/custom-environments": {
+      "get": {
+        "description": "Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Retrieve custom environments",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "environments": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "environments"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "gitBranch",
+            "description": "Fetch custom environments for a specific git branch",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Fetch custom environments for a specific git branch",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}": {
+      "get": {
+        "description": "Retrieve a custom environment for the project. Must not be named 'Production' or 'Preview'.",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Retrieve a custom environment",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "environmentSlugOrId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique custom environment identifier within the project",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Update a custom environment for the project. Must not be named 'Production' or 'Preview'.",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update a custom environment",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "environmentSlugOrId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique custom environment identifier within the project",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "description": "The slug of the custom environment.",
+                    "type": "string",
+                    "maxLength": 32,
+                    "errorMessage": "Slug must be 32 characters or less."
+                  },
+                  "description": {
+                    "description": "Description of the custom environment. This is optional.",
+                    "type": "string",
+                    "maxLength": 256,
+                    "errorMessage": "Description must be 256 characters or less."
+                  },
+                  "branchMatcher": {
+                    "required": [
+                      "type",
+                      "pattern"
+                    ],
+                    "description": "How we want to determine a matching branch. This is optional.",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Type of matcher. One of \\\"equals\\\", \\\"startsWith\\\", or \\\"endsWith\\\".",
+                        "enum": [
+                          "equals",
+                          "startsWith",
+                          "endsWith"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Git branch name or portion thereof.",
+                        "type": "string",
+                        "maxLength": 100,
+                        "errorMessage": "Branch matcher pattern must be 100 characters or less."
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove a custom environment for the project. Must not be named 'Production' or 'Preview'.",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Remove a custom environment",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "environmentSlugOrId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique custom environment identifier within the project",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deleteUnassignedEnvironmentVariables": {
+                    "description": "Delete Environment Variables that are not assigned to any environments.",
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v9/projects/{idOrName}/domains": {
@@ -39084,6 +40072,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39137,6 +40126,17 @@
                 "preview"
               ],
               "type": "string"
+            }
+          },
+          {
+            "name": "customEnvironmentId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "The unique custom environment identifier within the project",
+              "type": "string",
+              "example": "env_123abc4567"
             }
           },
           {
@@ -39270,6 +40270,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39366,6 +40367,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39531,6 +40533,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39660,6 +40663,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39672,6 +40676,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -39839,6 +40844,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -40019,6 +41025,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -41356,6 +42363,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -41420,6 +42428,28 @@
             }
           },
           {
+            "name": "customEnvironmentId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique custom environment identifier within the project",
+              "example": "env_123abc4567"
+            }
+          },
+          {
+            "name": "customEnvironmentSlug",
+            "description": "The custom environment slug (name) within the project",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The custom environment slug (name) within the project",
+              "example": "my-custom-env"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -41437,7 +42467,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       }
     },
     "/v1/projects/{idOrName}/env/{id}": {
@@ -41455,6 +42486,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -42692,6 +43724,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -43694,6 +44727,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45187,6 +46221,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45199,6 +46234,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45232,6 +46268,17 @@
               "description": "The unique environment variable identifier",
               "type": "string",
               "example": "XMbOEya1gUUO1ir4"
+            }
+          },
+          {
+            "name": "customEnvironmentId",
+            "description": "The unique custom environment identifier within the project",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique custom environment identifier within the project",
+              "example": "env_123abc4567"
             }
           },
           {
@@ -45693,6 +46740,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45818,7 +46866,8 @@
             }
           },
           "required": true
-        }
+        },
+        "x-speakeasy-test": false
       }
     },
     "/v1/projects/{idOrName}/protection-bypass": {
@@ -45836,6 +46885,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45882,6 +46932,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45894,6 +46945,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -45902,7 +46954,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -45992,7 +47046,9 @@
           "projects"
         ],
         "responses": {
-          "201": {},
+          "201": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -46004,6 +47060,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46015,7 +47072,9 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -46070,6 +47129,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46127,6 +47187,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46139,6 +47200,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46237,6 +47299,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46268,6 +47331,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46280,6 +47344,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46352,6 +47417,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46939,6 +48005,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46947,11 +48014,14 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -46960,7 +48030,9 @@
               }
             }
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -47546,6 +48618,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -47565,6 +48638,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -47573,11 +48647,14 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -47586,7 +48663,9 @@
               }
             }
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -49015,6 +50094,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49027,6 +50107,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49075,6 +50156,675 @@
         ]
       }
     },
+    "/v1/security/firewall/bypass": {
+      "get": {
+        "description": "Retrieve the system bypass rules configured for the specified project",
+        "operationId": "getBypassIp",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Read System Bypass",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "OwnerId": {
+                                "type": "string"
+                              },
+                              "Id": {
+                                "type": "string"
+                              },
+                              "Domain": {
+                                "type": "string"
+                              },
+                              "Ip": {
+                                "type": "string"
+                              },
+                              "ProjectId": {
+                                "type": "string"
+                              },
+                              "IsProjectRule": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "OwnerId",
+                              "Id",
+                              "Domain",
+                              "Ip",
+                              "ProjectId",
+                              "IsProjectRule"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "result",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "OwnerId": {
+                                "type": "string"
+                              },
+                              "Id": {
+                                "type": "string"
+                              },
+                              "Domain": {
+                                "type": "string"
+                              },
+                              "Ip": {
+                                "type": "string"
+                              },
+                              "Action": {
+                                "type": "string",
+                                "enum": [
+                                  "block",
+                                  "bypass"
+                                ]
+                              },
+                              "ProjectId": {
+                                "type": "string"
+                              },
+                              "IsProjectRule": {
+                                "type": "boolean"
+                              },
+                              "Note": {
+                                "type": "string"
+                              },
+                              "CreatedAt": {
+                                "type": "string"
+                              },
+                              "ActorId": {
+                                "type": "string"
+                              },
+                              "UpdatedAt": {
+                                "type": "string"
+                              },
+                              "UpdatedAtHour": {
+                                "type": "string"
+                              },
+                              "DeletedAt": {
+                                "type": "string"
+                              },
+                              "ExpiresAt": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "OwnerId",
+                              "Id",
+                              "Domain",
+                              "Ip",
+                              "CreatedAt",
+                              "UpdatedAt",
+                              "UpdatedAtHour"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "properties": {
+                            "OwnerId": {
+                              "type": "string"
+                            },
+                            "Id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "OwnerId",
+                            "Id"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 10,
+              "maximum": 128
+            }
+          },
+          {
+            "name": "sourceIp",
+            "description": "Filter by source IP",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Filter by source IP",
+              "type": "string",
+              "maxLength": 49
+            }
+          },
+          {
+            "name": "domain",
+            "description": "Filter by domain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Filter by domain",
+              "type": "string",
+              "pattern": "([a-z]+[a-z.]+)$",
+              "maxLength": 2544
+            }
+          },
+          {
+            "name": "projectScope",
+            "description": "Filter by project scoped rules",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Filter by project scoped rules",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "offset",
+            "description": "Used for pagination. Retrieves results after the provided id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Used for pagination. Retrieves results after the provided id",
+              "type": "string",
+              "maxLength": 2560
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Create new system bypass rules",
+        "operationId": "addBypassIp",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create System Bypass Rule",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "ok": {
+                          "type": "boolean"
+                        },
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "OwnerId": {
+                                "type": "string"
+                              },
+                              "Id": {
+                                "type": "string"
+                              },
+                              "Domain": {
+                                "type": "string"
+                              },
+                              "Ip": {
+                                "type": "string"
+                              },
+                              "ProjectId": {
+                                "type": "string"
+                              },
+                              "IsProjectRule": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "OwnerId",
+                              "Id",
+                              "Domain",
+                              "ProjectId",
+                              "IsProjectRule"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "ok",
+                        "result",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "ok": {
+                          "type": "boolean"
+                        },
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "OwnerId": {
+                                "type": "string"
+                              },
+                              "Id": {
+                                "type": "string"
+                              },
+                              "Domain": {
+                                "type": "string"
+                              },
+                              "Ip": {
+                                "type": "string"
+                              },
+                              "Action": {
+                                "type": "string",
+                                "enum": [
+                                  "block",
+                                  "bypass"
+                                ]
+                              },
+                              "ProjectId": {
+                                "type": "string"
+                              },
+                              "IsProjectRule": {
+                                "type": "boolean"
+                              },
+                              "Note": {
+                                "type": "string"
+                              },
+                              "CreatedAt": {
+                                "type": "string"
+                              },
+                              "ActorId": {
+                                "type": "string"
+                              },
+                              "UpdatedAt": {
+                                "type": "string"
+                              },
+                              "UpdatedAtHour": {
+                                "type": "string"
+                              },
+                              "DeletedAt": {
+                                "type": "string"
+                              },
+                              "ExpiresAt": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "OwnerId",
+                              "Id",
+                              "Domain",
+                              "Ip",
+                              "CreatedAt",
+                              "UpdatedAt",
+                              "UpdatedAtHour"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "ok"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "oneOf": [
+                  {
+                    "required": [
+                      "domain"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "projectScope"
+                    ]
+                  }
+                ],
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "pattern": "([a-z]+[a-z.]+)$",
+                    "maxLength": 2544
+                  },
+                  "projectScope": {
+                    "type": "boolean"
+                  },
+                  "sourceIp": {
+                    "type": "string"
+                  },
+                  "allSources": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove system bypass rules",
+        "operationId": "removeBypassIp",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Remove System Bypass Rule",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "oneOf": [
+                  {
+                    "required": [
+                      "domain"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "projectScope"
+                    ]
+                  }
+                ],
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "pattern": "([a-z]+[a-z.]+)$",
+                    "maxLength": 2544
+                  },
+                  "projectScope": {
+                    "type": "boolean"
+                  },
+                  "sourceIp": {
+                    "type": "string"
+                  },
+                  "allSources": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/teams/{teamId}/members": {
       "get": {
         "description": "Get a paginated list of team members for the provided team.",
@@ -49090,6 +50840,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49151,6 +50902,14 @@
                             ],
                             "description": "Role of this user in the team.",
                             "example": "OWNER"
+                          },
+                          "additionalRoles": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "Permissions that this user has in addition to their role.",
+                            "example": "['createProjects']"
                           },
                           "uid": {
                             "type": "string",
@@ -49389,6 +51148,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49610,6 +51370,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49631,7 +51392,9 @@
               }
             }
           },
-          "503": {}
+          "503": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -49713,7 +51476,8 @@
             }
           },
           "required": true
-        }
+        },
+        "x-speakeasy-test": false
       }
     },
     "/v1/teams/{teamId}/request": {
@@ -49860,6 +51624,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -49881,7 +51646,9 @@
               }
             }
           },
-          "503": {}
+          "503": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -50127,6 +51894,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50236,6 +52004,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50244,11 +52013,14 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50342,7 +52114,9 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -50356,7 +52130,9 @@
               }
             }
           },
-          "500": {}
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -50494,6 +52270,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50515,7 +52292,9 @@
               }
             }
           },
-          "503": {}
+          "503": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -50588,6 +52367,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50645,6 +52425,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50664,6 +52445,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -50672,7 +52454,9 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource.\nNot authorized to update the team. Must be an OWNER."
           },
@@ -50718,6 +52502,7 @@
                   "avatar": {
                     "type": "string",
                     "format": "regex",
+                    "regex": "^[0-9a-f]{40}$",
                     "description": "The hash value of an uploaded image."
                   },
                   "description": {
@@ -50729,6 +52514,7 @@
                   "emailDomain": {
                     "type": "string",
                     "format": "regex",
+                    "regex": "\\\\b((?=[a-z0-9-]{1,63}\\\\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\\\\.)+[a-z]{2,63}\\\\b",
                     "example": "example.com",
                     "nullable": true
                   },
@@ -50901,6 +52687,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51002,6 +52789,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51014,6 +52802,7 @@
             "description": "You do not have permission to access this resource."
           }
         },
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -51134,6 +52923,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51142,7 +52932,9 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource.\nThe authenticated user can't access the team"
           },
@@ -51156,7 +52948,9 @@
               }
             }
           },
-          "409": {}
+          "409": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -51272,6 +53066,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51377,6 +53172,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51491,8 +53287,11 @@
               }
             }
           },
-          "302": {},
+          "302": {
+            "description": ""
+          },
           "400": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51502,6 +53301,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51513,8 +53313,12 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "409": {}
-        }
+          "409": {
+            "description": ""
+          }
+        },
+        "parameters": [],
+        "x-speakeasy-test": false
       }
     },
     "/v1/user": {
@@ -51572,6 +53376,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51580,11 +53385,14 @@
               }
             }
           },
-          "402": {},
+          "402": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           }
         },
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -51638,6 +53446,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51665,6 +53474,7 @@
             }
           },
           "400": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51674,6 +53484,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51685,7 +53496,8 @@
           "403": {
             "description": "You do not have permission to access this resource."
           }
-        }
+        },
+        "parameters": []
       }
     },
     "/v3/user/tokens": {
@@ -51738,6 +53550,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51838,6 +53651,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51921,6 +53735,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -51973,6 +53788,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52005,6 +53821,8 @@
                           "integration-configuration.permission-upgraded",
                           "integration-configuration.removed",
                           "integration-configuration.scope-change-confirmed",
+                          "integration-resource.project-connected",
+                          "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
                           "deployment-checks-completed",
@@ -52030,45 +53848,48 @@
                         "description": "The webhooks events",
                         "example": "deployment.created",
                         "x-speakeasy-enums": [
-                          "budget.reached,",
-                          "budget.reset,",
-                          "domain.created,",
-                          "deployment.created,",
-                          "deployment.error,",
-                          "deployment.canceled,",
-                          "deployment.succeeded,",
-                          "deployment.ready,",
-                          "deployment.check-rerequested,",
-                          "deployment.promoted,",
-                          "deployment.integration.action.start,",
-                          "deployment.integration.action.cancel,",
-                          "deployment.integration.action.cleanup,",
-                          "edge-config.created,",
-                          "edge-config.deleted,",
-                          "edge-config.items.updated,",
-                          "firewall.attack,",
-                          "integration-configuration.permission-upgraded,",
-                          "integration-configuration.removed,",
-                          "integration-configuration.scope-change-confirmed,",
-                          "project.created,",
-                          "project.removed,",
-                          "deployment-checks-completed-legacy,",
-                          "deployment-ready-legacy,",
-                          "deployment-prepared-legacy,",
-                          "deployment-error-legacy,",
-                          "deployment-check-rerequested-legacy,",
-                          "deployment-canceled-legacy,",
-                          "project-created-legacy,",
-                          "project-removed-legacy,",
-                          "domain-created-legacy,",
-                          "deployment-legacy,",
-                          "integration-configuration-permission-updated-legacy,",
-                          "integration-configuration-removed-legacy,",
-                          "integration-configuration-scope-change-confirmed-legacy,",
-                          "marketplace.invoice.created,",
-                          "marketplace.invoice.paid,",
-                          "marketplace.invoice.notpaid,",
-                          "marketplace.invoice.refunded,",
+                          "budget.reached",
+                          "budget.reset",
+                          "domain.created",
+                          "deployment.created",
+                          "deployment.error",
+                          "deployment.canceled",
+                          "deployment.succeeded",
+                          "deployment.ready",
+                          "deployment.check-rerequested",
+                          "deployment.promoted",
+                          "deployment.integration.action.start",
+                          "deployment.integration.action.cancel",
+                          "deployment.integration.action.cleanup",
+                          "edge-config.created",
+                          "edge-config.deleted",
+                          "edge-config.items.updated",
+                          "firewall.attack",
+                          "integration-configuration.permission-upgraded",
+                          "integration-configuration.removed",
+                          "integration-configuration.scope-change-confirmed",
+                          "integration-resource.project-connected",
+                          "integration-resource.project-disconnected",
+                          "project.created",
+                          "project.removed",
+                          "deployment-checks-completed-legacy",
+                          "deployment-ready-legacy",
+                          "deployment-prepared-legacy",
+                          "deployment-error-legacy",
+                          "deployment-check-rerequested-legacy",
+                          "deployment-canceled-legacy",
+                          "project-created-legacy",
+                          "project-removed-legacy",
+                          "domain-created-legacy",
+                          "deployment-legacy",
+                          "integration-configuration-permission-updated-legacy",
+                          "integration-configuration-removed-legacy",
+                          "integration-configuration-scope-change-confirmed-legacy",
+                          "marketplace.invoice.created",
+                          "marketplace.invoice.paid",
+                          "marketplace.invoice.notpaid",
+                          "marketplace.invoice.refunded",
+                          "observability.anomaly",
                           "test-webhook"
                         ]
                       },
@@ -52137,6 +53958,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52211,6 +54033,8 @@
                         "integration-configuration.permission-upgraded",
                         "integration-configuration.removed",
                         "integration-configuration.scope-change-confirmed",
+                        "integration-resource.project-connected",
+                        "integration-resource.project-disconnected",
                         "project.created",
                         "project.removed",
                         "deployment-checks-completed",
@@ -52234,45 +54058,48 @@
                         "test-webhook"
                       ],
                       "x-speakeasy-enums": [
-                        "budget.reached,",
-                        "budget.reset,",
-                        "domain.created,",
-                        "deployment.created,",
-                        "deployment.error,",
-                        "deployment.canceled,",
-                        "deployment.succeeded,",
-                        "deployment.ready,",
-                        "deployment.check-rerequested,",
-                        "deployment.promoted,",
-                        "deployment.integration.action.start,",
-                        "deployment.integration.action.cancel,",
-                        "deployment.integration.action.cleanup,",
-                        "edge-config.created,",
-                        "edge-config.deleted,",
-                        "edge-config.items.updated,",
-                        "firewall.attack,",
-                        "integration-configuration.permission-upgraded,",
-                        "integration-configuration.removed,",
-                        "integration-configuration.scope-change-confirmed,",
-                        "project.created,",
-                        "project.removed,",
-                        "deployment-checks-completed-legacy,",
-                        "deployment-ready-legacy,",
-                        "deployment-prepared-legacy,",
-                        "deployment-error-legacy,",
-                        "deployment-check-rerequested-legacy,",
-                        "deployment-canceled-legacy,",
-                        "project-created-legacy,",
-                        "project-removed-legacy,",
-                        "domain-created-legacy,",
-                        "deployment-legacy,",
-                        "integration-configuration-permission-updated-legacy,",
-                        "integration-configuration-removed-legacy,",
-                        "integration-configuration-scope-change-confirmed-legacy,",
-                        "marketplace.invoice.created,",
-                        "marketplace.invoice.paid,",
-                        "marketplace.invoice.notpaid,",
-                        "marketplace.invoice.refunded,",
+                        "budget.reached",
+                        "budget.reset",
+                        "domain.created",
+                        "deployment.created",
+                        "deployment.error",
+                        "deployment.canceled",
+                        "deployment.succeeded",
+                        "deployment.ready",
+                        "deployment.check-rerequested",
+                        "deployment.promoted",
+                        "deployment.integration.action.start",
+                        "deployment.integration.action.cancel",
+                        "deployment.integration.action.cleanup",
+                        "edge-config.created",
+                        "edge-config.deleted",
+                        "edge-config.items.updated",
+                        "firewall.attack",
+                        "integration-configuration.permission-upgraded",
+                        "integration-configuration.removed",
+                        "integration-configuration.scope-change-confirmed",
+                        "integration-resource.project-connected",
+                        "integration-resource.project-disconnected",
+                        "project.created",
+                        "project.removed",
+                        "deployment-checks-completed-legacy",
+                        "deployment-ready-legacy",
+                        "deployment-prepared-legacy",
+                        "deployment-error-legacy",
+                        "deployment-check-rerequested-legacy",
+                        "deployment-canceled-legacy",
+                        "project-created-legacy",
+                        "project-removed-legacy",
+                        "domain-created-legacy",
+                        "deployment-legacy",
+                        "integration-configuration-permission-updated-legacy",
+                        "integration-configuration-removed-legacy",
+                        "integration-configuration-scope-change-confirmed-legacy",
+                        "marketplace.invoice.created",
+                        "marketplace.invoice.paid",
+                        "marketplace.invoice.notpaid",
+                        "marketplace.invoice.refunded",
+                        "observability.anomaly",
                         "test-webhook"
                       ]
                     }
@@ -52307,6 +54134,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52411,6 +54239,8 @@
                                 "integration-configuration.permission-upgraded",
                                 "integration-configuration.removed",
                                 "integration-configuration.scope-change-confirmed",
+                                "integration-resource.project-connected",
+                                "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
                                 "deployment-checks-completed",
@@ -52436,45 +54266,48 @@
                               "description": "The webhooks events",
                               "example": "deployment.created",
                               "x-speakeasy-enums": [
-                                "budget.reached,",
-                                "budget.reset,",
-                                "domain.created,",
-                                "deployment.created,",
-                                "deployment.error,",
-                                "deployment.canceled,",
-                                "deployment.succeeded,",
-                                "deployment.ready,",
-                                "deployment.check-rerequested,",
-                                "deployment.promoted,",
-                                "deployment.integration.action.start,",
-                                "deployment.integration.action.cancel,",
-                                "deployment.integration.action.cleanup,",
-                                "edge-config.created,",
-                                "edge-config.deleted,",
-                                "edge-config.items.updated,",
-                                "firewall.attack,",
-                                "integration-configuration.permission-upgraded,",
-                                "integration-configuration.removed,",
-                                "integration-configuration.scope-change-confirmed,",
-                                "project.created,",
-                                "project.removed,",
-                                "deployment-checks-completed-legacy,",
-                                "deployment-ready-legacy,",
-                                "deployment-prepared-legacy,",
-                                "deployment-error-legacy,",
-                                "deployment-check-rerequested-legacy,",
-                                "deployment-canceled-legacy,",
-                                "project-created-legacy,",
-                                "project-removed-legacy,",
-                                "domain-created-legacy,",
-                                "deployment-legacy,",
-                                "integration-configuration-permission-updated-legacy,",
-                                "integration-configuration-removed-legacy,",
-                                "integration-configuration-scope-change-confirmed-legacy,",
-                                "marketplace.invoice.created,",
-                                "marketplace.invoice.paid,",
-                                "marketplace.invoice.notpaid,",
-                                "marketplace.invoice.refunded,",
+                                "budget.reached",
+                                "budget.reset",
+                                "domain.created",
+                                "deployment.created",
+                                "deployment.error",
+                                "deployment.canceled",
+                                "deployment.succeeded",
+                                "deployment.ready",
+                                "deployment.check-rerequested",
+                                "deployment.promoted",
+                                "deployment.integration.action.start",
+                                "deployment.integration.action.cancel",
+                                "deployment.integration.action.cleanup",
+                                "edge-config.created",
+                                "edge-config.deleted",
+                                "edge-config.items.updated",
+                                "firewall.attack",
+                                "integration-configuration.permission-upgraded",
+                                "integration-configuration.removed",
+                                "integration-configuration.scope-change-confirmed",
+                                "integration-resource.project-connected",
+                                "integration-resource.project-disconnected",
+                                "project.created",
+                                "project.removed",
+                                "deployment-checks-completed-legacy",
+                                "deployment-ready-legacy",
+                                "deployment-prepared-legacy",
+                                "deployment-error-legacy",
+                                "deployment-check-rerequested-legacy",
+                                "deployment-canceled-legacy",
+                                "project-created-legacy",
+                                "project-removed-legacy",
+                                "domain-created-legacy",
+                                "deployment-legacy",
+                                "integration-configuration-permission-updated-legacy",
+                                "integration-configuration-removed-legacy",
+                                "integration-configuration-scope-change-confirmed-legacy",
+                                "marketplace.invoice.created",
+                                "marketplace.invoice.paid",
+                                "marketplace.invoice.notpaid",
+                                "marketplace.invoice.refunded",
+                                "observability.anomaly",
                                 "test-webhook"
                               ]
                             },
@@ -52558,6 +54391,8 @@
                                 "integration-configuration.permission-upgraded",
                                 "integration-configuration.removed",
                                 "integration-configuration.scope-change-confirmed",
+                                "integration-resource.project-connected",
+                                "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
                                 "deployment-checks-completed",
@@ -52583,45 +54418,48 @@
                               "description": "The webhooks events",
                               "example": "deployment.created",
                               "x-speakeasy-enums": [
-                                "budget.reached,",
-                                "budget.reset,",
-                                "domain.created,",
-                                "deployment.created,",
-                                "deployment.error,",
-                                "deployment.canceled,",
-                                "deployment.succeeded,",
-                                "deployment.ready,",
-                                "deployment.check-rerequested,",
-                                "deployment.promoted,",
-                                "deployment.integration.action.start,",
-                                "deployment.integration.action.cancel,",
-                                "deployment.integration.action.cleanup,",
-                                "edge-config.created,",
-                                "edge-config.deleted,",
-                                "edge-config.items.updated,",
-                                "firewall.attack,",
-                                "integration-configuration.permission-upgraded,",
-                                "integration-configuration.removed,",
-                                "integration-configuration.scope-change-confirmed,",
-                                "project.created,",
-                                "project.removed,",
-                                "deployment-checks-completed-legacy,",
-                                "deployment-ready-legacy,",
-                                "deployment-prepared-legacy,",
-                                "deployment-error-legacy,",
-                                "deployment-check-rerequested-legacy,",
-                                "deployment-canceled-legacy,",
-                                "project-created-legacy,",
-                                "project-removed-legacy,",
-                                "domain-created-legacy,",
-                                "deployment-legacy,",
-                                "integration-configuration-permission-updated-legacy,",
-                                "integration-configuration-removed-legacy,",
-                                "integration-configuration-scope-change-confirmed-legacy,",
-                                "marketplace.invoice.created,",
-                                "marketplace.invoice.paid,",
-                                "marketplace.invoice.notpaid,",
-                                "marketplace.invoice.refunded,",
+                                "budget.reached",
+                                "budget.reset",
+                                "domain.created",
+                                "deployment.created",
+                                "deployment.error",
+                                "deployment.canceled",
+                                "deployment.succeeded",
+                                "deployment.ready",
+                                "deployment.check-rerequested",
+                                "deployment.promoted",
+                                "deployment.integration.action.start",
+                                "deployment.integration.action.cancel",
+                                "deployment.integration.action.cleanup",
+                                "edge-config.created",
+                                "edge-config.deleted",
+                                "edge-config.items.updated",
+                                "firewall.attack",
+                                "integration-configuration.permission-upgraded",
+                                "integration-configuration.removed",
+                                "integration-configuration.scope-change-confirmed",
+                                "integration-resource.project-connected",
+                                "integration-resource.project-disconnected",
+                                "project.created",
+                                "project.removed",
+                                "deployment-checks-completed-legacy",
+                                "deployment-ready-legacy",
+                                "deployment-prepared-legacy",
+                                "deployment-error-legacy",
+                                "deployment-check-rerequested-legacy",
+                                "deployment-canceled-legacy",
+                                "project-created-legacy",
+                                "project-removed-legacy",
+                                "domain-created-legacy",
+                                "deployment-legacy",
+                                "integration-configuration-permission-updated-legacy",
+                                "integration-configuration-removed-legacy",
+                                "integration-configuration-scope-change-confirmed-legacy",
+                                "marketplace.invoice.created",
+                                "marketplace.invoice.paid",
+                                "marketplace.invoice.notpaid",
+                                "marketplace.invoice.refunded",
+                                "observability.anomaly",
                                 "test-webhook"
                               ]
                             },
@@ -52693,6 +54531,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52750,6 +54589,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52778,6 +54618,8 @@
                           "integration-configuration.permission-upgraded",
                           "integration-configuration.removed",
                           "integration-configuration.scope-change-confirmed",
+                          "integration-resource.project-connected",
+                          "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
                           "deployment-checks-completed",
@@ -52803,45 +54645,48 @@
                         "description": "The webhooks events",
                         "example": "deployment.created",
                         "x-speakeasy-enums": [
-                          "budget.reached,",
-                          "budget.reset,",
-                          "domain.created,",
-                          "deployment.created,",
-                          "deployment.error,",
-                          "deployment.canceled,",
-                          "deployment.succeeded,",
-                          "deployment.ready,",
-                          "deployment.check-rerequested,",
-                          "deployment.promoted,",
-                          "deployment.integration.action.start,",
-                          "deployment.integration.action.cancel,",
-                          "deployment.integration.action.cleanup,",
-                          "edge-config.created,",
-                          "edge-config.deleted,",
-                          "edge-config.items.updated,",
-                          "firewall.attack,",
-                          "integration-configuration.permission-upgraded,",
-                          "integration-configuration.removed,",
-                          "integration-configuration.scope-change-confirmed,",
-                          "project.created,",
-                          "project.removed,",
-                          "deployment-checks-completed-legacy,",
-                          "deployment-ready-legacy,",
-                          "deployment-prepared-legacy,",
-                          "deployment-error-legacy,",
-                          "deployment-check-rerequested-legacy,",
-                          "deployment-canceled-legacy,",
-                          "project-created-legacy,",
-                          "project-removed-legacy,",
-                          "domain-created-legacy,",
-                          "deployment-legacy,",
-                          "integration-configuration-permission-updated-legacy,",
-                          "integration-configuration-removed-legacy,",
-                          "integration-configuration-scope-change-confirmed-legacy,",
-                          "marketplace.invoice.created,",
-                          "marketplace.invoice.paid,",
-                          "marketplace.invoice.notpaid,",
-                          "marketplace.invoice.refunded,",
+                          "budget.reached",
+                          "budget.reset",
+                          "domain.created",
+                          "deployment.created",
+                          "deployment.error",
+                          "deployment.canceled",
+                          "deployment.succeeded",
+                          "deployment.ready",
+                          "deployment.check-rerequested",
+                          "deployment.promoted",
+                          "deployment.integration.action.start",
+                          "deployment.integration.action.cancel",
+                          "deployment.integration.action.cleanup",
+                          "edge-config.created",
+                          "edge-config.deleted",
+                          "edge-config.items.updated",
+                          "firewall.attack",
+                          "integration-configuration.permission-upgraded",
+                          "integration-configuration.removed",
+                          "integration-configuration.scope-change-confirmed",
+                          "integration-resource.project-connected",
+                          "integration-resource.project-disconnected",
+                          "project.created",
+                          "project.removed",
+                          "deployment-checks-completed-legacy",
+                          "deployment-ready-legacy",
+                          "deployment-prepared-legacy",
+                          "deployment-error-legacy",
+                          "deployment-check-rerequested-legacy",
+                          "deployment-canceled-legacy",
+                          "project-created-legacy",
+                          "project-removed-legacy",
+                          "domain-created-legacy",
+                          "deployment-legacy",
+                          "integration-configuration-permission-updated-legacy",
+                          "integration-configuration-removed-legacy",
+                          "integration-configuration-scope-change-confirmed-legacy",
+                          "marketplace.invoice.created",
+                          "marketplace.invoice.paid",
+                          "marketplace.invoice.notpaid",
+                          "marketplace.invoice.refunded",
+                          "observability.anomaly",
                           "test-webhook"
                         ]
                       },
@@ -52909,6 +54754,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -52963,7 +54809,9 @@
           "webhooks"
         ],
         "responses": {
-          "204": {},
+          "204": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -52975,6 +54823,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -53302,6 +55151,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -53314,6 +55164,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -53698,6 +55549,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -53844,6 +55696,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54095,6 +55948,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54212,6 +56066,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54315,6 +56170,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54361,6 +56217,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54373,6 +56230,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54427,6 +56285,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54446,6 +56305,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54458,6 +56318,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54514,6 +56375,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54560,6 +56422,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54575,6 +56438,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54583,8 +56447,12 @@
               }
             }
           },
-          "449": {},
-          "500": {}
+          "449": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -54640,6 +56508,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54686,6 +56555,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54795,6 +56665,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54874,6 +56745,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -54966,6 +56838,7 @@
         ],
         "responses": {
           "200": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -55457,6 +57330,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -55469,6 +57343,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -55477,7 +57352,9 @@
               }
             }
           },
-          "422": {}
+          "422": {
+            "description": ""
+          }
         },
         "parameters": [
           {
@@ -55670,6 +57547,7 @@
             }
           },
           "401": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -56048,6 +57926,16 @@
                   "CONTRIBUTOR"
                 ]
               },
+              "additionalRoles": {
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "CreateProject",
+                    "FullProductionDeployment"
+                  ]
+                },
+                "type": "array"
+              },
               "teamId": {
                 "type": "string"
               },
@@ -56331,6 +58219,7 @@
                   "type": "string"
                 },
                 "viewPreference": {
+                  "nullable": true,
                   "type": "string",
                   "enum": [
                     "list",
@@ -56338,6 +58227,7 @@
                   ]
                 },
                 "favoritesViewPreference": {
+                  "nullable": true,
                   "type": "string",
                   "enum": [
                     "open",
@@ -56345,6 +58235,7 @@
                   ]
                 },
                 "recentsViewPreference": {
+                  "nullable": true,
                   "type": "string",
                   "enum": [
                     "open",
@@ -56384,6 +58275,7 @@
             ]
           },
           "importFlowGitProvider": {
+            "nullable": true,
             "type": "string",
             "enum": [
               "github",
@@ -56617,15 +58509,14 @@
           "defaultTeamId": {
             "nullable": true,
             "type": "string",
-            "description": "The user's default team. Only applies if the user's `version` is `'northstar'`."
+            "description": "The user's default team."
           },
           "version": {
-            "nullable": true,
             "type": "string",
             "enum": [
               "northstar"
             ],
-            "description": "The user's version. Will either be unset or `northstar`."
+            "description": "The user's version. Will always be `northstar`."
           }
         },
         "required": [
@@ -56682,15 +58573,14 @@
           "defaultTeamId": {
             "nullable": true,
             "type": "string",
-            "description": "The user's default team. Only applies if the user's `version` is `'northstar'`."
+            "description": "The user's default team."
           },
           "version": {
-            "nullable": true,
             "type": "string",
             "enum": [
               "northstar"
             ],
-            "description": "The user's version. Will either be unset or `northstar`."
+            "description": "The user's version. Will always be `northstar`."
           }
         },
         "required": [

@@ -15,7 +15,7 @@ let value: GetRecordsResponseBody2 = {
       value: "<value>",
       creator: "<value>",
       created: 8488.33,
-      updated: 8048.78,
+      updated: 8048.79,
       createdAt: 9983.55,
       updatedAt: 8473.08,
     },

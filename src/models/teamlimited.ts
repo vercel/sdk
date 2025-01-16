@@ -88,6 +88,12 @@ export const Role = {
 } as const;
 export type Role = ClosedEnum<typeof Role>;
 
+export const AdditionalRoles = {
+  CreateProject: "CreateProject",
+  FullProductionDeployment: "FullProductionDeployment",
+} as const;
+export type AdditionalRoles = ClosedEnum<typeof AdditionalRoles>;
+
 export const Origin = {
   Link: "link",
   Saml: "saml",
@@ -129,6 +135,7 @@ export type Membership = {
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: Role;
+  additionalRoles?: Array<AdditionalRoles> | undefined;
   teamId?: string | undefined;
   createdAt: number;
   created: number;
@@ -419,6 +426,27 @@ export namespace Role$ {
 }
 
 /** @internal */
+export const AdditionalRoles$inboundSchema: z.ZodNativeEnum<
+  typeof AdditionalRoles
+> = z.nativeEnum(AdditionalRoles);
+
+/** @internal */
+export const AdditionalRoles$outboundSchema: z.ZodNativeEnum<
+  typeof AdditionalRoles
+> = AdditionalRoles$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AdditionalRoles$ {
+  /** @deprecated use `AdditionalRoles$inboundSchema` instead. */
+  export const inboundSchema = AdditionalRoles$inboundSchema;
+  /** @deprecated use `AdditionalRoles$outboundSchema` instead. */
+  export const outboundSchema = AdditionalRoles$outboundSchema;
+}
+
+/** @internal */
 export const Origin$inboundSchema: z.ZodNativeEnum<typeof Origin> = z
   .nativeEnum(Origin);
 
@@ -573,6 +601,7 @@ export const Membership$inboundSchema: z.ZodType<
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$inboundSchema,
+  additionalRoles: z.array(AdditionalRoles$inboundSchema).optional(),
   teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
@@ -587,6 +616,7 @@ export type Membership$Outbound = {
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: string;
+  additionalRoles?: Array<string> | undefined;
   teamId?: string | undefined;
   createdAt: number;
   created: number;
@@ -605,6 +635,7 @@ export const Membership$outboundSchema: z.ZodType<
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$outboundSchema,
+  additionalRoles: z.array(AdditionalRoles$outboundSchema).optional(),
   teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),

@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.FilterProjectEnvsTargetProjects1[] = [
-  "production",
+  "preview",
 ];
 ```
 
 ### `models.FilterProjectEnvsTargetProjectsResponse2`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjectsResponse2 = "production";
+const value: models.FilterProjectEnvsTargetProjectsResponse2 = "development";
 ```
 

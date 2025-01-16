@@ -6,6 +6,7 @@ import * as z from "zod";
 import { VercelCore } from "../core.js";
 import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -75,7 +76,7 @@ export async function artifactsRecordEvents(
     "teamId": payload.teamId,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
     "x-artifact-client-ci": encodeSimple(
@@ -88,7 +89,7 @@ export async function artifactsRecordEvents(
       payload["x-artifact-client-interactive"],
       { explode: false, charEncoding: "none" },
     ),
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
@@ -152,7 +153,8 @@ export async function artifactsRecordEvents(
     M.nil(200, z.void()),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, "4XX", "5XX"]),
+    M.fail([402, 403, "4XX"]),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

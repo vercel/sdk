@@ -4,6 +4,7 @@
 
 import { VercelCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -55,9 +56,9 @@ export async function userGetAuthUser(
 > {
   const path = pathToFunc("/v2/user")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
@@ -120,7 +121,8 @@ export async function userGetAuthUser(
     M.nil(302, GetAuthUserResponseBody$inboundSchema.optional()),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, 409, "4XX", "5XX"]),
+    M.fail([403, 409, "4XX"]),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

@@ -7,21 +7,21 @@ import { GetProjectsLatestDeployments } from "@vercel/sdk/models/getprojectsop.j
 
 let value: GetProjectsLatestDeployments = {
   id: "<id>",
-  createdAt: 9040.44,
+  createdAt: 7567.79,
   createdIn: "<value>",
   creator: {
-    email: "Maximus_Roob24@hotmail.com",
+    email: "Dax_Schinner@yahoo.com",
     uid: "<id>",
-    username: "Peyton45",
+    username: "Ruthie82",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "enterprise",
+  plan: "hobby",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "READY",
+  readyState: "BUILDING",
   type: "LAMBDAS",
-  url: "https://submissive-coal.name",
+  url: "https://impeccable-barge.info",
   userId: "<id>",
 };
 ```

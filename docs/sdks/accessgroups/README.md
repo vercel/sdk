@@ -121,10 +121,7 @@ async function run() {
     requestBody: {
       name: "My access group",
       projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
+
       ],
     },
   });
@@ -158,10 +155,7 @@ async function run() {
     requestBody: {
       name: "My access group",
       projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
+  
       ],
     },
   });
@@ -478,10 +472,7 @@ async function run() {
     requestBody: {
       name: "My access group",
       projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
+
       ],
     },
   });
@@ -514,10 +505,7 @@ async function run() {
     requestBody: {
       name: "My access group",
       projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
+  
       ],
     },
   });

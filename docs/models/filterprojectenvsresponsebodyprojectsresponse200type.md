@@ -5,7 +5,7 @@
 ```typescript
 import { FilterProjectEnvsResponseBodyProjectsResponse200Type } from "@vercel/sdk/models/filterprojectenvsop.js";
 
-let value: FilterProjectEnvsResponseBodyProjectsResponse200Type = "sensitive";
+let value: FilterProjectEnvsResponseBodyProjectsResponse200Type = "system";
 ```
 
 ## Values

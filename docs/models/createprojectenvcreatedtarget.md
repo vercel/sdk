@@ -14,6 +14,6 @@ const value: string[] = [
 ### `models.CreateProjectEnvTargetProjects2`
 
 ```typescript
-const value: models.CreateProjectEnvTargetProjects2 = "preview";
+const value: models.CreateProjectEnvTargetProjects2 = "development";
 ```
 

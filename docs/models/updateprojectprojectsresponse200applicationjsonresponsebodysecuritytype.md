@@ -7,7 +7,7 @@ import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 
 let value:
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
-    "header";
+    "query";
 ```
 
 ## Values

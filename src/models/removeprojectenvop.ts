@@ -18,6 +18,10 @@ export type RemoveProjectEnvRequest = {
    */
   id: string;
   /**
+   * The unique custom environment identifier within the project
+   */
+  customEnvironmentId?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -1085,6 +1089,7 @@ export const RemoveProjectEnvRequest$inboundSchema: z.ZodType<
 > = z.object({
   idOrName: z.string(),
   id: z.string(),
+  customEnvironmentId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -1093,6 +1098,7 @@ export const RemoveProjectEnvRequest$inboundSchema: z.ZodType<
 export type RemoveProjectEnvRequest$Outbound = {
   idOrName: string;
   id: string;
+  customEnvironmentId?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -1105,6 +1111,7 @@ export const RemoveProjectEnvRequest$outboundSchema: z.ZodType<
 > = z.object({
   idOrName: z.string(),
   id: z.string(),
+  customEnvironmentId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

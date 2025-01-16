@@ -509,7 +509,7 @@ export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONType =
     typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONType
   >;
 
-export type BranchMatcher = {
+export type UpdateProjectDataCacheProjectsBranchMatcher = {
   type: UpdateProjectDataCacheProjectsResponse200ApplicationJSONType;
   pattern: string;
 };
@@ -602,7 +602,7 @@ export type LatestDeployments = {
   aliasError?: UpdateProjectDataCacheProjectsAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: BranchMatcher | undefined;
+  branchMatcher?: UpdateProjectDataCacheProjectsBranchMatcher | undefined;
   buildingAt?: number | undefined;
   builds?: Array<UpdateProjectDataCacheProjectsBuilds> | undefined;
   checksConclusion?: UpdateProjectDataCacheProjectsChecksConclusion | undefined;
@@ -790,8 +790,10 @@ export type FunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export type UpdateProjectDataCacheResourceConfig = {
+  functionDefaultRegion?: string | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
   allowServerlessConcurrency?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
 };
@@ -3972,57 +3974,74 @@ export namespace UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$ {
 }
 
 /** @internal */
-export const BranchMatcher$inboundSchema: z.ZodType<
-  BranchMatcher,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type:
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$inboundSchema,
-  pattern: z.string(),
-});
+export const UpdateProjectDataCacheProjectsBranchMatcher$inboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheProjectsBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$inboundSchema,
+    pattern: z.string(),
+  });
 
 /** @internal */
-export type BranchMatcher$Outbound = {
+export type UpdateProjectDataCacheProjectsBranchMatcher$Outbound = {
   type: string;
   pattern: string;
 };
 
 /** @internal */
-export const BranchMatcher$outboundSchema: z.ZodType<
-  BranchMatcher$Outbound,
-  z.ZodTypeDef,
-  BranchMatcher
-> = z.object({
-  type:
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$outboundSchema,
-  pattern: z.string(),
-});
+export const UpdateProjectDataCacheProjectsBranchMatcher$outboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheProjectsBranchMatcher$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectDataCacheProjectsBranchMatcher
+  > = z.object({
+    type:
+      UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$outboundSchema,
+    pattern: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BranchMatcher$ {
-  /** @deprecated use `BranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = BranchMatcher$inboundSchema;
-  /** @deprecated use `BranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = BranchMatcher$outboundSchema;
-  /** @deprecated use `BranchMatcher$Outbound` instead. */
-  export type Outbound = BranchMatcher$Outbound;
+export namespace UpdateProjectDataCacheProjectsBranchMatcher$ {
+  /** @deprecated use `UpdateProjectDataCacheProjectsBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheProjectsBranchMatcher$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheProjectsBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheProjectsBranchMatcher$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheProjectsBranchMatcher$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheProjectsBranchMatcher$Outbound;
 }
 
-export function branchMatcherToJSON(branchMatcher: BranchMatcher): string {
-  return JSON.stringify(BranchMatcher$outboundSchema.parse(branchMatcher));
+export function updateProjectDataCacheProjectsBranchMatcherToJSON(
+  updateProjectDataCacheProjectsBranchMatcher:
+    UpdateProjectDataCacheProjectsBranchMatcher,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheProjectsBranchMatcher$outboundSchema.parse(
+      updateProjectDataCacheProjectsBranchMatcher,
+    ),
+  );
 }
 
-export function branchMatcherFromJSON(
+export function updateProjectDataCacheProjectsBranchMatcherFromJSON(
   jsonString: string,
-): SafeParseResult<BranchMatcher, SDKValidationError> {
+): SafeParseResult<
+  UpdateProjectDataCacheProjectsBranchMatcher,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => BranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BranchMatcher' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheProjectsBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheProjectsBranchMatcher' from JSON`,
   );
 }
 
@@ -4412,7 +4431,9 @@ export const LatestDeployments$inboundSchema: z.ZodType<
   ).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => BranchMatcher$inboundSchema).optional(),
+  branchMatcher: z.lazy(() =>
+    UpdateProjectDataCacheProjectsBranchMatcher$inboundSchema
+  ).optional(),
   buildingAt: z.number().optional(),
   builds: z.array(
     z.lazy(() => UpdateProjectDataCacheProjectsBuilds$inboundSchema),
@@ -4464,7 +4485,9 @@ export type LatestDeployments$Outbound = {
     | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: BranchMatcher$Outbound | undefined;
+  branchMatcher?:
+    | UpdateProjectDataCacheProjectsBranchMatcher$Outbound
+    | undefined;
   buildingAt?: number | undefined;
   builds?: Array<UpdateProjectDataCacheProjectsBuilds$Outbound> | undefined;
   checksConclusion?: string | undefined;
@@ -4512,7 +4535,9 @@ export const LatestDeployments$outboundSchema: z.ZodType<
   ).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => BranchMatcher$outboundSchema).optional(),
+  branchMatcher: z.lazy(() =>
+    UpdateProjectDataCacheProjectsBranchMatcher$outboundSchema
+  ).optional(),
   buildingAt: z.number().optional(),
   builds: z.array(
     z.lazy(() => UpdateProjectDataCacheProjectsBuilds$outboundSchema),
@@ -5421,16 +5446,20 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  functionDefaultRegion: z.string().optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
   allowServerlessConcurrency: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type UpdateProjectDataCacheResourceConfig$Outbound = {
+  functionDefaultRegion?: string | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
   allowServerlessConcurrency?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
 };
@@ -5441,9 +5470,11 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDataCacheResourceConfig
 > = z.object({
+  functionDefaultRegion: z.string().optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: FunctionDefaultMemoryType$outboundSchema
     .optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
   allowServerlessConcurrency: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
 });

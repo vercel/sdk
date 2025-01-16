@@ -5,7 +5,7 @@
 ```typescript
 import { CreateProjectChecksConclusion } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectChecksConclusion = "canceled";
+let value: CreateProjectChecksConclusion = "succeeded";
 ```
 
 ## Values

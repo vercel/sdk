@@ -7,7 +7,7 @@ The result of the check being run
 ```typescript
 import { Conclusion } from "@vercel/sdk/models/updatecheckop.js";
 
-let value: Conclusion = "succeeded";
+let value: Conclusion = "failed";
 ```
 
 ## Values

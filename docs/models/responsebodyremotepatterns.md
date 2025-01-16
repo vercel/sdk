@@ -6,7 +6,7 @@
 import { ResponseBodyRemotePatterns } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyRemotePatterns = {
-  hostname: "jam-packed-section.org",
+  hostname: "steel-traditionalism.biz",
 };
 ```
 

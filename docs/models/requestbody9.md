@@ -11,8 +11,8 @@ let value: RequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "submissive-requirement.biz",
-    ip: "47.48.111.189",
+    hostname: "stupendous-singing.net",
+    ip: "126.47.48.111",
     action: "log",
   },
 };

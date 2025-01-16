@@ -13,6 +13,7 @@ import { Deployments } from "./deployments.js";
 import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
 import { EdgeConfig } from "./edgeconfig.js";
+import { Environment } from "./environment.js";
 import { Integrations } from "./integrations.js";
 import { LogDrains } from "./logdrains.js";
 import { Marketplace } from "./marketplace.js";
@@ -92,6 +93,11 @@ export class Vercel extends ClientSDK {
   private _projectMembers?: ProjectMembers;
   get projectMembers(): ProjectMembers {
     return (this._projectMembers ??= new ProjectMembers(this._options));
+  }
+
+  private _environment?: Environment;
+  get environment(): Environment {
+    return (this._environment ??= new Environment(this._options));
   }
 
   private _security?: Security;

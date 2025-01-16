@@ -5,7 +5,7 @@
 ```typescript
 import { Provider } from "@vercel/sdk/models/gitnamespacesop.js";
 
-let value: Provider = "github";
+let value: Provider = "github-custom-host";
 ```
 
 ## Values

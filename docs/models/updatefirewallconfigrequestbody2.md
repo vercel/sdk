@@ -16,8 +16,8 @@ let value: UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "protocol",
-            op: "sub",
+            type: "geo_continent",
+            op: "ninc",
           },
         ],
       },

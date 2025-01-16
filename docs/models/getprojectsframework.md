@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsFramework } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsFramework = "create-react-app";
+let value: GetProjectsFramework = "nuxtjs";
 ```
 
 ## Values

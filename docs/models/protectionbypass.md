@@ -6,7 +6,7 @@
 import { ProtectionBypass } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: ProtectionBypass = {
-  createdAt: 5864.10,
+  createdAt: 8765.06,
   createdBy: "<value>",
   scope: "automation-bypass",
 };

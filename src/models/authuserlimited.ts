@@ -9,13 +9,13 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The user's version. Will either be unset or `northstar`.
+ * The user's version. Will always be `northstar`.
  */
 export const AuthUserLimitedVersion = {
   Northstar: "northstar",
 } as const;
 /**
- * The user's version. Will either be unset or `northstar`.
+ * The user's version. Will always be `northstar`.
  */
 export type AuthUserLimitedVersion = ClosedEnum<typeof AuthUserLimitedVersion>;
 
@@ -48,13 +48,13 @@ export type AuthUserLimited = {
    */
   avatar: string | null;
   /**
-   * The user's default team. Only applies if the user's `version` is `'northstar'`.
+   * The user's default team.
    */
   defaultTeamId: string | null;
   /**
-   * The user's version. Will either be unset or `northstar`.
+   * The user's version. Will always be `northstar`.
    */
-  version: AuthUserLimitedVersion | null;
+  version: AuthUserLimitedVersion;
 };
 
 /** @internal */
@@ -91,7 +91,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: z.nullable(AuthUserLimitedVersion$inboundSchema),
+  version: AuthUserLimitedVersion$inboundSchema,
 });
 
 /** @internal */
@@ -103,7 +103,7 @@ export type AuthUserLimited$Outbound = {
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
-  version: string | null;
+  version: string;
 };
 
 /** @internal */
@@ -119,7 +119,7 @@ export const AuthUserLimited$outboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: z.nullable(AuthUserLimitedVersion$outboundSchema),
+  version: AuthUserLimitedVersion$outboundSchema,
 });
 
 /**

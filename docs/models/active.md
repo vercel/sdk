@@ -9,8 +9,8 @@ let value: Active = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 1902.61,
-  updatedAt: "1736204728913",
+  version: 3371.49,
+  updatedAt: "1736994841682",
   firewallEnabled: false,
   crs: {
     sd: {
@@ -23,7 +23,7 @@ let value: Active = {
     },
     lfi: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     rfi: {
       active: false,
@@ -31,11 +31,11 @@ let value: Active = {
     },
     rce: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     php: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     gen: {
       active: false,
@@ -43,7 +43,7 @@ let value: Active = {
     },
     xss: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     sqli: {
       active: false,
@@ -67,8 +67,8 @@ let value: Active = {
         {
           conditions: [
             {
-              type: "header",
-              op: "inc",
+              type: "ja3_digest",
+              op: "eq",
             },
           ],
         },
@@ -79,9 +79,9 @@ let value: Active = {
   ips: [
     {
       id: "<id>",
-      hostname: "intent-cd.com",
-      ip: "123.64.224.83",
-      action: "bypass",
+      hostname: "far-off-hope.com",
+      ip: "57.123.64.224",
+      action: "log",
     },
   ],
   changes: [

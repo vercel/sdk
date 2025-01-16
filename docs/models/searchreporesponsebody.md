@@ -15,24 +15,24 @@ const value: models.SearchRepoResponseBody1 = {};
 const value: models.SearchRepoResponseBody2 = {
   gitAccount: {
     provider: "bitbucket",
-    namespaceId: 7399.37,
+    namespaceId: 7399.46,
   },
   repos: [
     {
-      id: 9682.12,
+      id: 4144.38,
       provider: "github-custom-host",
-      url: "https://helpful-gray.biz",
+      url: "https://dependable-descendant.biz/",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
       owner: {
-        id: "<id>",
+        id: 5358.83,
         name: "<value>",
       },
       ownerType: "team",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 2925.71,
+      updatedAt: 8204.62,
     },
   ],
 };

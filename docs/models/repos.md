@@ -6,9 +6,9 @@
 import { Repos } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: Repos = {
-  id: "<id>",
-  provider: "github-custom-host",
-  url: "https://raw-spring.info",
+  id: 5749.9,
+  provider: "gitlab",
+  url: "https://wiggly-encouragement.net",
   name: "<value>",
   slug: "<value>",
   namespace: "<value>",
@@ -19,7 +19,7 @@ let value: Repos = {
   ownerType: "user",
   private: false,
   defaultBranch: "<value>",
-  updatedAt: 8048.23,
+  updatedAt: 2305.94,
 };
 ```
 

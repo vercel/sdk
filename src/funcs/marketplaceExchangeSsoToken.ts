@@ -5,6 +5,7 @@
 import { VercelCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { pathToFunc } from "../lib/url.js";
@@ -70,10 +71,10 @@ export async function marketplaceExchangeSsoToken(
 
   const path = pathToFunc("/v1/integrations/sso/token")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const context = {
     operationID: "exchange-sso-token",
@@ -131,7 +132,8 @@ export async function marketplaceExchangeSsoToken(
     M.json(200, ExchangeSsoTokenResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.fail(["4XX", 500, "5XX"]),
+    M.fail([500, "5XX"]),
+    M.fail("4XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

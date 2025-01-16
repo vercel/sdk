@@ -9,7 +9,7 @@ import { Lfi } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Lfi = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

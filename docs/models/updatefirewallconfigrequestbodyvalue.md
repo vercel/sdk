@@ -12,8 +12,8 @@ let value: UpdateFirewallConfigRequestBodyValue = {
     {
       conditions: [
         {
-          type: "protocol",
-          op: "lte",
+          type: "header",
+          op: "ninc",
         },
       ],
     },

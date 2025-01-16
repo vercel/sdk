@@ -336,6 +336,10 @@ export type Target = ClosedEnum<typeof Target>;
 
 export type CreateDeploymentRequestBody = {
   /**
+   * Deploy to a custom environment, which will override the default environment
+   */
+  customEnvironmentSlugOrId?: string | undefined;
+  /**
    * An deployment id for an existing deployment to redeploy
    */
   deploymentId?: string | undefined;
@@ -2274,6 +2278,7 @@ export const CreateDeploymentRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  customEnvironmentSlugOrId: z.string().optional(),
   deploymentId: z.string().optional(),
   files: z.array(
     z.union([
@@ -2300,6 +2305,7 @@ export const CreateDeploymentRequestBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateDeploymentRequestBody$Outbound = {
+  customEnvironmentSlugOrId?: string | undefined;
   deploymentId?: string | undefined;
   files?: Array<InlinedFile$Outbound | UploadedFile$Outbound> | undefined;
   gitMetadata?: GitMetadata$Outbound | undefined;
@@ -2325,6 +2331,7 @@ export const CreateDeploymentRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentRequestBody
 > = z.object({
+  customEnvironmentSlugOrId: z.string().optional(),
   deploymentId: z.string().optional(),
   files: z.array(
     z.union([

@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.RemoveProjectEnvTarget1[] = [
-  "production",
+  "preview",
 ];
 ```
 
 ### `models.RemoveProjectEnvTarget2`
 
 ```typescript
-const value: models.RemoveProjectEnvTarget2 = "preview";
+const value: models.RemoveProjectEnvTarget2 = "production";
 ```
 

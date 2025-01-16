@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CancelDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 6428.03,
+  projectId: 6428.04,
   type: "gitlab",
   url: "https://unrealistic-feather.info/",
   path: "/proc",
@@ -25,9 +25,9 @@ const value: models.CancelDeploymentGitRepo1 = {
 const value: models.CancelDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 7128.92,
+  repoId: 7128.93,
   type: "github",
-  repoOwnerId: 8304.76,
+  repoOwnerId: 8304.77,
   path: "/boot/defaults",
   defaultBranch: "<value>",
   name: "<value>",

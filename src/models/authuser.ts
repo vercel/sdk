@@ -188,9 +188,9 @@ export type RecentsViewPreference = ClosedEnum<typeof RecentsViewPreference>;
  */
 export type ActiveDashboardViews = {
   scopeId: string;
-  viewPreference?: ViewPreference | undefined;
-  favoritesViewPreference?: FavoritesViewPreference | undefined;
-  recentsViewPreference?: RecentsViewPreference | undefined;
+  viewPreference?: ViewPreference | null | undefined;
+  favoritesViewPreference?: FavoritesViewPreference | null | undefined;
+  recentsViewPreference?: RecentsViewPreference | null | undefined;
 };
 
 export type ImportFlowGitNamespace = string | number;
@@ -303,13 +303,13 @@ export type NorthstarMigration = {
 };
 
 /**
- * The user's version. Will either be unset or `northstar`.
+ * The user's version. Will always be `northstar`.
  */
 export const Version = {
   Northstar: "northstar",
 } as const;
 /**
- * The user's version. Will either be unset or `northstar`.
+ * The user's version. Will always be `northstar`.
  */
 export type Version = ClosedEnum<typeof Version>;
 
@@ -343,7 +343,7 @@ export type AuthUser = {
   activeDashboardViews?: Array<ActiveDashboardViews> | undefined;
   importFlowGitNamespace?: string | number | null | undefined;
   importFlowGitNamespaceId?: string | number | null | undefined;
-  importFlowGitProvider?: ImportFlowGitProvider | undefined;
+  importFlowGitProvider?: ImportFlowGitProvider | null | undefined;
   preferredScopesAndGitNamespaces?:
     | Array<PreferredScopesAndGitNamespaces>
     | undefined;
@@ -393,13 +393,13 @@ export type AuthUser = {
    */
   avatar: string | null;
   /**
-   * The user's default team. Only applies if the user's `version` is `'northstar'`.
+   * The user's default team.
    */
   defaultTeamId: string | null;
   /**
-   * The user's version. Will either be unset or `northstar`.
+   * The user's version. Will always be `northstar`.
    */
-  version: Version | null;
+  version: Version;
 };
 
 /** @internal */
@@ -713,17 +713,19 @@ export const ActiveDashboardViews$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   scopeId: z.string(),
-  viewPreference: ViewPreference$inboundSchema.optional(),
-  favoritesViewPreference: FavoritesViewPreference$inboundSchema.optional(),
-  recentsViewPreference: RecentsViewPreference$inboundSchema.optional(),
+  viewPreference: z.nullable(ViewPreference$inboundSchema).optional(),
+  favoritesViewPreference: z.nullable(FavoritesViewPreference$inboundSchema)
+    .optional(),
+  recentsViewPreference: z.nullable(RecentsViewPreference$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
 export type ActiveDashboardViews$Outbound = {
   scopeId: string;
-  viewPreference?: string | undefined;
-  favoritesViewPreference?: string | undefined;
-  recentsViewPreference?: string | undefined;
+  viewPreference?: string | null | undefined;
+  favoritesViewPreference?: string | null | undefined;
+  recentsViewPreference?: string | null | undefined;
 };
 
 /** @internal */
@@ -733,9 +735,11 @@ export const ActiveDashboardViews$outboundSchema: z.ZodType<
   ActiveDashboardViews
 > = z.object({
   scopeId: z.string(),
-  viewPreference: ViewPreference$outboundSchema.optional(),
-  favoritesViewPreference: FavoritesViewPreference$outboundSchema.optional(),
-  recentsViewPreference: RecentsViewPreference$outboundSchema.optional(),
+  viewPreference: z.nullable(ViewPreference$outboundSchema).optional(),
+  favoritesViewPreference: z.nullable(FavoritesViewPreference$outboundSchema)
+    .optional(),
+  recentsViewPreference: z.nullable(RecentsViewPreference$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -1563,7 +1567,8 @@ export const AuthUser$inboundSchema: z.ZodType<
     .optional(),
   importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
     .optional(),
-  importFlowGitProvider: ImportFlowGitProvider$inboundSchema.optional(),
+  importFlowGitProvider: z.nullable(ImportFlowGitProvider$inboundSchema)
+    .optional(),
   preferredScopesAndGitNamespaces: z.array(
     z.lazy(() => PreferredScopesAndGitNamespaces$inboundSchema),
   ).optional(),
@@ -1583,7 +1588,7 @@ export const AuthUser$inboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: z.nullable(Version$inboundSchema),
+  version: Version$inboundSchema,
 });
 
 /** @internal */
@@ -1596,7 +1601,7 @@ export type AuthUser$Outbound = {
   activeDashboardViews?: Array<ActiveDashboardViews$Outbound> | undefined;
   importFlowGitNamespace?: string | number | null | undefined;
   importFlowGitNamespaceId?: string | number | null | undefined;
-  importFlowGitProvider?: string | undefined;
+  importFlowGitProvider?: string | null | undefined;
   preferredScopesAndGitNamespaces?:
     | Array<PreferredScopesAndGitNamespaces$Outbound>
     | undefined;
@@ -1613,7 +1618,7 @@ export type AuthUser$Outbound = {
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
-  version: string | null;
+  version: string;
 };
 
 /** @internal */
@@ -1634,7 +1639,8 @@ export const AuthUser$outboundSchema: z.ZodType<
     .optional(),
   importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
     .optional(),
-  importFlowGitProvider: ImportFlowGitProvider$outboundSchema.optional(),
+  importFlowGitProvider: z.nullable(ImportFlowGitProvider$outboundSchema)
+    .optional(),
   preferredScopesAndGitNamespaces: z.array(
     z.lazy(() => PreferredScopesAndGitNamespaces$outboundSchema),
   ).optional(),
@@ -1658,7 +1664,7 @@ export const AuthUser$outboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: z.nullable(Version$outboundSchema),
+  version: Version$outboundSchema,
 });
 
 /**

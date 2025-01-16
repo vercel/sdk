@@ -14,7 +14,7 @@ let value: RecordEventsRequest = {
     {
       sessionId: "<id>",
       source: "LOCAL",
-      event: "MISS",
+      event: "HIT",
       hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
       duration: 400,
     },

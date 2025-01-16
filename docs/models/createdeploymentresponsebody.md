@@ -33,7 +33,7 @@ let value: CreateDeploymentResponseBody = {
   createdAt: 5561.33,
   name: "<value>",
   id: "<id>",
-  version: 3180.29,
+  version: 3180.28,
   meta: {
     "key": "<value>",
   },
@@ -48,7 +48,7 @@ let value: CreateDeploymentResponseBody = {
     {
       src: "<value>",
       continue: false,
-      middleware: 7650.70,
+      middleware: 7650.7,
     },
   ],
   plan: "pro",

@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CancelDeploymentGitSource1 = {
   type: "github",
-  repoId: 3966.10,
+  repoId: 3966.1,
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4610.50,
+  repoId: 4610.5,
 };
 ```
 

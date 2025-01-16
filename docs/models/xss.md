@@ -9,7 +9,7 @@ import { Xss } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Xss = {
   active: false,
-  action: "deny",
+  action: "log",
 };
 ```
 

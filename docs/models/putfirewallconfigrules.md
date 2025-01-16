@@ -13,8 +13,8 @@ let value: PutFirewallConfigRules = {
     {
       conditions: [
         {
-          type: "geo_country",
-          op: "sub",
+          type: "raw_path",
+          op: "lte",
         },
       ],
     },

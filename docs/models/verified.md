@@ -7,7 +7,7 @@ Filters domains based on their verification status.
 ```typescript
 import { Verified } from "@vercel/sdk/models/getprojectdomainsop.js";
 
-let value: Verified = "false";
+let value: Verified = "true";
 ```
 
 ## Values

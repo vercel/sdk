@@ -68,7 +68,7 @@ const value: models.CreateDeploymentGitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4004.49,
+  repoId: 4004.48,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.CreateDeploymentGitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 6658.71,
+  projectId: 6658.72,
 };
 ```
 

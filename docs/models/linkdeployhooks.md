@@ -9,7 +9,7 @@ let value: LinkDeployHooks = {
   id: "<id>",
   name: "<value>",
   ref: "<value>",
-  url: "https://general-guacamole.biz",
+  url: "https://wealthy-redesign.info/",
 };
 ```
 

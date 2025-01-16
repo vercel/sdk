@@ -10,9 +10,9 @@ import { RequestBody8 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 let value: RequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "bustling-peony.com",
-    ip: "174.210.38.193",
-    action: "log",
+    hostname: "incomparable-boyfriend.name",
+    ip: "124.174.210.38",
+    action: "bypass",
   },
 };
 ```

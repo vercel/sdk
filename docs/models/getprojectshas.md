@@ -6,7 +6,7 @@
 import { GetProjectsHas } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsHas = {
-  type: "initial_request_path",
+  type: "header",
 };
 ```
 

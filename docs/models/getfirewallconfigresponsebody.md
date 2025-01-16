@@ -11,17 +11,17 @@ let value: GetFirewallConfigResponseBody = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 9651.16,
-  updatedAt: "1736187965656",
+  version: 1585.15,
+  updatedAt: "1737013786563",
   firewallEnabled: false,
   crs: {
     sd: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     ma: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     lfi: {
       active: false,
@@ -29,7 +29,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     rfi: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     rce: {
       active: false,
@@ -37,15 +37,15 @@ let value: GetFirewallConfigResponseBody = {
     },
     php: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     gen: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     xss: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     sqli: {
       active: false,
@@ -57,7 +57,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     java: {
       active: false,
-      action: "log",
+      action: "deny",
     },
   },
   rules: [
@@ -69,8 +69,8 @@ let value: GetFirewallConfigResponseBody = {
         {
           conditions: [
             {
-              type: "geo_city",
-              op: "gte",
+              type: "rate_limit_api_id",
+              op: "lt",
             },
           ],
         },
@@ -81,8 +81,8 @@ let value: GetFirewallConfigResponseBody = {
   ips: [
     {
       id: "<id>",
-      hostname: "unwritten-silk.info",
-      ip: "ac1b:9eab:391f:eb8c:6b6a:5fe1:0f46:4eeb",
+      hostname: "black-adaptation.org",
+      ip: "80.53.237.166",
       action: "challenge",
     },
   ],

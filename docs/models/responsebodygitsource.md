@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSource1 = {
   type: "github",
-  repoId: 1081.66,
+  repoId: "<id>",
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GetDeploymentGitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://rich-brochure.info/",
+  gitUrl: "https://carefree-grouper.biz",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GetDeploymentGitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 2766.50,
+  repoId: 5063.43,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GetDeploymentGitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 5063.43,
+  projectId: 3498.98,
 };
 ```
 

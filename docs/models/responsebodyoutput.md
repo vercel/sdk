@@ -6,7 +6,7 @@
 import { ResponseBodyOutput } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyOutput = {
-  path: "/srv",
+  path: "/var/yp",
   functionName: "<value>",
 };
 ```

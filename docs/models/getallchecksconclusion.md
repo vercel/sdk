@@ -5,7 +5,7 @@
 ```typescript
 import { GetAllChecksConclusion } from "@vercel/sdk/models/getallchecksop.js";
 
-let value: GetAllChecksConclusion = "failed";
+let value: GetAllChecksConclusion = "skipped";
 ```
 
 ## Values

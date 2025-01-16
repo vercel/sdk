@@ -48,6 +48,14 @@ export type FilterProjectEnvsRequest = {
    */
   source?: string | undefined;
   /**
+   * The unique custom environment identifier within the project
+   */
+  customEnvironmentId?: string | undefined;
+  /**
+   * The custom environment slug (name) within the project
+   */
+  customEnvironmentSlug?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -1141,6 +1149,8 @@ export const FilterProjectEnvsRequest$inboundSchema: z.ZodType<
   gitBranch: z.string().optional(),
   decrypt: Decrypt$inboundSchema.optional(),
   source: z.string().optional(),
+  customEnvironmentId: z.string().optional(),
+  customEnvironmentSlug: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -1151,6 +1161,8 @@ export type FilterProjectEnvsRequest$Outbound = {
   gitBranch?: string | undefined;
   decrypt?: string | undefined;
   source?: string | undefined;
+  customEnvironmentId?: string | undefined;
+  customEnvironmentSlug?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -1165,6 +1177,8 @@ export const FilterProjectEnvsRequest$outboundSchema: z.ZodType<
   gitBranch: z.string().optional(),
   decrypt: Decrypt$outboundSchema.optional(),
   source: z.string().optional(),
+  customEnvironmentId: z.string().optional(),
+  customEnvironmentSlug: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

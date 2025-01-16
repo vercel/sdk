@@ -25,7 +25,7 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
         conditions: [
           {
             type: "geo_country",
-            op: "neq",
+            op: "gt",
           },
         ],
       },
@@ -48,8 +48,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "geo_continent",
-            op: "gte",
+            type: "query",
+            op: "sub",
           },
         ],
       },
@@ -74,7 +74,7 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 2355.67,
+  value: 8513.24,
 };
 ```
 
@@ -83,7 +83,7 @@ const value: models.UpdateFirewallConfigRequestBody5 = {
 ```typescript
 const value: models.RequestBody6 = {
   action: "crs.update",
-  id: "sqli",
+  id: "lfi",
   value: {
     active: false,
     action: "log",
@@ -105,9 +105,9 @@ const value: models.RequestBody7 = {
 const value: models.RequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "well-off-distinction.com",
-    ip: "66.193.187.171",
-    action: "deny",
+    hostname: "pricey-valuable.biz",
+    ip: "79.66.193.187",
+    action: "log",
   },
 };
 ```
@@ -119,9 +119,9 @@ const value: models.RequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "total-vanadyl.name",
-    ip: "b666:4dca:8e4c:14de:cdfa:ac2f:b3f7:ddb2",
-    action: "bypass",
+    hostname: "edible-straw.org",
+    ip: "eb66:64dc:a8e4:c14d:ecdf:aac2:fb3f:7ddb",
+    action: "deny",
   },
 };
 ```

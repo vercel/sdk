@@ -12,8 +12,8 @@ let value: Rules = {
     {
       conditions: [
         {
-          type: "scheme",
-          op: "sub",
+          type: "ja4_digest",
+          op: "ninc",
         },
       ],
     },

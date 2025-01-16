@@ -12,8 +12,8 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "ip_address",
-          op: "sub",
+          type: "geo_city",
+          op: "inc",
         },
       ],
     },

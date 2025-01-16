@@ -8,8 +8,8 @@ import { ConditionGroup } from "@vercel/sdk/models/putfirewallconfigop.js";
 let value: ConditionGroup = {
   conditions: [
     {
-      type: "rate_limit_api_id",
-      op: "sub",
+      type: "user_agent",
+      op: "ninc",
     },
   ],
 };

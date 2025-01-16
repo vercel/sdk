@@ -5,7 +5,7 @@
 ```typescript
 import { Handle } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: Handle = "finalize";
+let value: Handle = "init";
 ```
 
 ## Values

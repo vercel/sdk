@@ -1,6 +1,6 @@
 # Version
 
-The user's version. Will either be unset or `northstar`.
+The user's version. Will always be `northstar`.
 
 ## Example Usage
 

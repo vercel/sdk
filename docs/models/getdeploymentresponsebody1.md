@@ -41,7 +41,7 @@ let value: GetDeploymentResponseBody1 = {
     "<value>",
   ],
   url: "https://inferior-scale.net/",
-  version: 9163.40,
+  version: 9163.41,
   projectId: "<id>",
   plan: "pro",
   createdIn: "<value>",

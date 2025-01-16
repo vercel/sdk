@@ -12,7 +12,8 @@
 * [submitInvoice](#submitinvoice) - Submit Invoice
 * [getInvoice](#getinvoice) - Get Invoice
 * [updateInvoice](#updateinvoice) - Invoice Actions
-* [updateResourceSecrets](#updateresourcesecrets) - Update Resource Secrets
+* [updateResourceSecrets](#updateresourcesecrets) - Update Resource Secrets (Deprecated)
+* [updateResourceSecretsById](#updateresourcesecretsbyid) - Update Resource Secrets
 * [exchangeSsoToken](#exchangessotoken) - SSO Token Exchange
 
 ## getAccountInfo
@@ -288,8 +289,8 @@ async function run() {
           {
             billingPlanId: "<id>",
             name: "<value>",
-            price: "330.95",
-            quantity: 5852.75,
+            price: "161.25",
+            quantity: 8824.47,
             units: "<value>",
             total: "<value>",
           },
@@ -354,16 +355,18 @@ async function run() {
         start: new Date("2022-06-25T19:04:50.518Z"),
         end: new Date("2023-10-18T01:18:36.230Z"),
       },
-      billing: [
-        {
-          billingPlanId: "<id>",
-          name: "<value>",
-          price: "495.99",
-          quantity: 8962.85,
-          units: "<value>",
-          total: "<value>",
-        },
-      ],
+      billing: {
+        items: [
+          {
+            billingPlanId: "<id>",
+            name: "<value>",
+            price: "161.25",
+            quantity: 8824.47,
+            units: "<value>",
+            total: "<value>",
+          },
+        ],
+      },
       usage: [
         {
           resourceId: "<id>",
@@ -726,7 +729,7 @@ run();
 
 ## updateResourceSecrets
 
-This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/>
+This endpoint is deprecated and replaced with the endpoint [Update Resource Secrets](#update-resource-secrets). <br/> This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/>
 
 ### Example Usage
 
@@ -744,10 +747,7 @@ async function run() {
     resourceId: "<id>",
     requestBody: {
       secrets: [
-        {
-          name: "<value>",
-          value: "<value>",
-        },
+
       ],
     },
   });
@@ -779,10 +779,7 @@ async function run() {
     resourceId: "<id>",
     requestBody: {
       secrets: [
-        {
-          name: "<value>",
-          value: "<value>",
-        },
+  
       ],
     },
   });
@@ -804,6 +801,85 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [models.UpdateResourceSecretsRequest](../../models/updateresourcesecretsrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.VercelBadRequestError | 400                          | application/json             |
+| models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## updateResourceSecretsById
+
+This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/>
+
+### Example Usage
+
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  await vercel.marketplace.updateResourceSecretsById({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { marketplaceUpdateResourceSecretsById } from "@vercel/sdk/funcs/marketplaceUpdateResourceSecretsById.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceUpdateResourceSecretsById(vercel, {
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateResourceSecretsByIdRequest](../../models/updateresourcesecretsbyidrequest.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

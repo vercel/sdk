@@ -10,6 +10,9 @@ let value: GetTeamMembersMembers = {
   confirmed: true,
   email: "jane.doe@example.com",
   role: "OWNER",
+  additionalRoles: [
+    "['createProjects']",
+  ],
   uid: "zTuNVUXEAvvnNN3IaqinkyMw",
   username: "jane-doe",
   name: "Jane Doe",
@@ -29,6 +32,7 @@ let value: GetTeamMembersMembers = {
 | `gitlab`                                                                           | [models.GetTeamMembersGitlab](../models/getteammembersgitlab.md)                   | :heavy_minus_sign:                                                                 | Information about the GitLab account of this user.                                 |                                                                                    |
 | `bitbucket`                                                                        | [models.GetTeamMembersBitbucket](../models/getteammembersbitbucket.md)             | :heavy_minus_sign:                                                                 | Information about the Bitbucket account of this user.                              |                                                                                    |
 | `role`                                                                             | [models.GetTeamMembersRole](../models/getteammembersrole.md)                       | :heavy_check_mark:                                                                 | Role of this user in the team.                                                     | OWNER                                                                              |
+| `additionalRoles`                                                                  | *string*[]                                                                         | :heavy_minus_sign:                                                                 | Permissions that this user has in addition to their role.                          | ['createProjects']                                                                 |
 | `uid`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | The ID of this user.                                                               | zTuNVUXEAvvnNN3IaqinkyMw                                                           |
 | `username`                                                                         | *string*                                                                           | :heavy_check_mark:                                                                 | The unique username of this user.                                                  | jane-doe                                                                           |
 | `name`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | The name of this user.                                                             | Jane Doe                                                                           |

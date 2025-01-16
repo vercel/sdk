@@ -27,7 +27,7 @@ const value: models.GitRepo2 = {
   repo: "<value>",
   repoId: 5161.24,
   type: "github",
-  repoOwnerId: 2198.61,
+  repoOwnerId: 2198.6,
   path: "/lost+found",
   defaultBranch: "<value>",
   name: "<value>",

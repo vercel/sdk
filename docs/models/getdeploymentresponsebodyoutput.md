@@ -6,7 +6,7 @@
 import { GetDeploymentResponseBodyOutput } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentResponseBodyOutput = {
-  path: "/var/spool",
+  path: "/System",
   functionName: "<value>",
 };
 ```

@@ -14,7 +14,7 @@ let value: ResponseBodyRecords = {
   creator: "<value>",
   created: 738.26,
   updated: 4909.66,
-  createdAt: 7175.60,
+  createdAt: 7175.6,
   updatedAt: 7381.52,
 };
 ```

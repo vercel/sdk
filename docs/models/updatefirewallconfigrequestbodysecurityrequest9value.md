@@ -6,9 +6,9 @@
 import { UpdateFirewallConfigRequestBodySecurityRequest9Value } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequest9Value = {
-  hostname: "close-dependency.com",
-  ip: "97.242.67.120",
-  action: "bypass",
+  hostname: "legal-cardboard.biz",
+  ip: "92.97.242.67",
+  action: "challenge",
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { CreateProjectDeploymentType } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectDeploymentType = "preview";
+let value: CreateProjectDeploymentType = "all";
 ```
 
 ## Values

@@ -6,7 +6,7 @@
 import { RequestBodyMitigate } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBodyMitigate = {
-  action: "rate_limit",
+  action: "log",
 };
 ```
 

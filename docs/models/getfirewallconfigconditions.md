@@ -7,7 +7,7 @@ import { GetFirewallConfigConditions } from "@vercel/sdk/models/getfirewallconfi
 
 let value: GetFirewallConfigConditions = {
   type: "raw_path",
-  op: "suf",
+  op: "pre",
 };
 ```
 

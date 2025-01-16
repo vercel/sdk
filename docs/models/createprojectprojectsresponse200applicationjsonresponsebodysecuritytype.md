@@ -7,7 +7,7 @@ import { CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 
 let value:
   CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
-    "scheme";
+    "ip_address";
 ```
 
 ## Values

@@ -12,7 +12,7 @@ let value: GetEdgeConfigBackupResponseBody2 = {
     email: "Haylee16@yahoo.com",
   },
   id: "<id>",
-  lastModified: 7710.77,
+  lastModified: 7710.78,
   backup: {
     digest: "<value>",
     items: {},

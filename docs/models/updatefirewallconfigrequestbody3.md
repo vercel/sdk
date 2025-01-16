@@ -17,8 +17,8 @@ let value: UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "scheme",
-            op: "re",
+            type: "rate_limit_api_id",
+            op: "pre",
           },
         ],
       },

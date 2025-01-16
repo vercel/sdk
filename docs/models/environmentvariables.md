@@ -8,7 +8,7 @@ import { EnvironmentVariables } from "@vercel/sdk/models/createprojectop.js";
 let value: EnvironmentVariables = {
   key: "<key>",
   target: [
-    "production",
+    "preview",
   ],
   value: "<value>",
 };

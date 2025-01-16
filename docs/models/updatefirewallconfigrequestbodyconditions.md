@@ -6,8 +6,8 @@
 import { UpdateFirewallConfigRequestBodyConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodyConditions = {
-  type: "ja4_digest",
-  op: "ex",
+  type: "region",
+  op: "lt",
 };
 ```
 

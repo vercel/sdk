@@ -7,21 +7,21 @@ import { LatestDeployments } from "@vercel/sdk/models/updateprojectdatacacheop.j
 
 let value: LatestDeployments = {
   id: "<id>",
-  createdAt: 6974.29,
+  createdAt: 9755.22,
   createdIn: "<value>",
   creator: {
-    email: "Mireya_Wolf@yahoo.com",
+    email: "Adolf.Renner52@hotmail.com",
     uid: "<id>",
-    username: "Morgan.Lebsack19",
+    username: "Cody34",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "hobby",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "ERROR",
+  readyState: "BUILDING",
   type: "LAMBDAS",
-  url: "https://velvety-presume.com/",
+  url: "https://poor-minority.biz/",
   userId: "<id>",
 };
 ```
@@ -36,7 +36,7 @@ let value: LatestDeployments = {
 | `aliasError`                                                                                                         | [models.UpdateProjectDataCacheProjectsAliasError](../models/updateprojectdatacacheprojectsaliaserror.md)             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
 | `aliasFinal`                                                                                                         | *string*                                                                                                             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
 | `automaticAliases`                                                                                                   | *string*[]                                                                                                           | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
-| `branchMatcher`                                                                                                      | [models.BranchMatcher](../models/branchmatcher.md)                                                                   | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
+| `branchMatcher`                                                                                                      | [models.UpdateProjectDataCacheProjectsBranchMatcher](../models/updateprojectdatacacheprojectsbranchmatcher.md)       | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
 | `buildingAt`                                                                                                         | *number*                                                                                                             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
 | `builds`                                                                                                             | [models.UpdateProjectDataCacheProjectsBuilds](../models/updateprojectdatacacheprojectsbuilds.md)[]                   | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |
 | `checksConclusion`                                                                                                   | [models.UpdateProjectDataCacheProjectsChecksConclusion](../models/updateprojectdatacacheprojectschecksconclusion.md) | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |                                                                                                                      |

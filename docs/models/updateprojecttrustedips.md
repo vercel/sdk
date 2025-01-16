@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.UpdateProjectTrustedIps1 = {
-  deploymentType: "all",
+  deploymentType: "preview",
   addresses: [
     {
       value: "<value>",

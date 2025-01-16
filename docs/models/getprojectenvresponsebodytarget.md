@@ -14,6 +14,6 @@ const value: models.GetProjectEnvTarget1[] = [
 ### `models.GetProjectEnvTarget2`
 
 ```typescript
-const value: models.GetProjectEnvTarget2 = "preview";
+const value: models.GetProjectEnvTarget2 = "production";
 ```
 

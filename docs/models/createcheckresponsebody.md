@@ -14,8 +14,8 @@ let value: CreateCheckResponseBody = {
   blocking: false,
   integrationId: "<id>",
   deploymentId: "<id>",
-  createdAt: 2961.40,
-  updatedAt: 1187.28,
+  createdAt: 4142.63,
+  updatedAt: 641.47,
 };
 ```
 

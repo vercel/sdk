@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 53b3a2c569506446ace146aa7cf48d28
+  docChecksum: 02b8b3922a054ba10bca24dac8f57fff
   docVersion: 0.0.1
-  speakeasyVersion: 1.463.1
-  generationVersion: 2.486.6
-  releaseVersion: 1.2.2
-  configChecksum: f8999a74e1a63f3c167f0ca6e1c8db53
+  speakeasyVersion: 1.468.9
+  generationVersion: 2.493.21
+  releaseVersion: 1.3.0
+  configChecksum: 4bfbd2ede6ba5f3a1dda550c898c7e66
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.12
+    core: 3.18.16
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -22,15 +22,17 @@ features:
     enumUnions: 0.1.0
     enums: 2.82.1
     envVarSecurityUsage: 0.1.2
-    examples: 2.81.4
+    examples: 2.81.5
     globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
+    mockServer: 0.1.0
     nullables: 0.1.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
+    tests: 0.11.4
     unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
@@ -52,6 +54,17 @@ generatedFiles:
   - docs/models/action1.md
   - docs/models/active.md
   - docs/models/activedashboardviews.md
+  - docs/models/addbypassiprequest.md
+  - docs/models/addbypassiprequestbody.md
+  - docs/models/addbypassiprequestbody1.md
+  - docs/models/addbypassiprequestbody2.md
+  - docs/models/addbypassipresponsebody.md
+  - docs/models/addbypassipresponsebody1.md
+  - docs/models/addbypassipresponsebody2.md
+  - docs/models/addbypassipresponsebodyaction.md
+  - docs/models/addbypassipresponsebodyresult.md
+  - docs/models/addbypassipresponsebodysecurityresult.md
+  - docs/models/additionalroles.md
   - docs/models/addprojectdomainredirectstatuscode.md
   - docs/models/addprojectdomainrequest.md
   - docs/models/addprojectdomainrequestbody.md
@@ -621,6 +634,9 @@ generatedFiles:
   - docs/models/deleteteamrequest.md
   - docs/models/deleteteamrequestbody.md
   - docs/models/deleteteamresponsebody.md
+  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
+  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridrequestbody.md
+  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
   - docs/models/deletewebhookrequest.md
   - docs/models/deliveryformat.md
   - docs/models/deployhooks.md
@@ -876,6 +892,12 @@ generatedFiles:
   - docs/models/getauthtokenrequest.md
   - docs/models/getauthtokenresponsebody.md
   - docs/models/getauthuserresponsebody.md
+  - docs/models/getbypassiprequest.md
+  - docs/models/getbypassipresponsebody.md
+  - docs/models/getbypassipresponsebody1.md
+  - docs/models/getbypassipresponsebody2.md
+  - docs/models/getbypassipresponsebodypagination.md
+  - docs/models/getbypassipresponsebodyresult.md
   - docs/models/getcertbyidrequest.md
   - docs/models/getcertbyidresponsebody.md
   - docs/models/getcheckchecksresponse200applicationjsonsource.md
@@ -1438,6 +1460,11 @@ generatedFiles:
   - docs/models/getteamrequest.md
   - docs/models/getteamsrequest.md
   - docs/models/getteamsresponsebody.md
+  - docs/models/getv9projectsidornamecustomenvironmentsenvironments.md
+  - docs/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
+  - docs/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
+  - docs/models/getv9projectsidornamecustomenvironmentsrequest.md
+  - docs/models/getv9projectsidornamecustomenvironmentsresponsebody.md
   - docs/models/getwebhookevents.md
   - docs/models/getwebhookrequest.md
   - docs/models/getwebhookresponsebody.md
@@ -1631,11 +1658,20 @@ generatedFiles:
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
   - docs/models/patchteamsaml.md
+  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridbranchmatcher.md
+  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
+  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridrequestbody.md
+  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
+  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridtype.md
   - docs/models/paths.md
   - docs/models/period.md
   - docs/models/permissions.md
   - docs/models/php.md
   - docs/models/plan.md
+  - docs/models/postv1projectsidornamecustomenvironmentsrequest.md
+  - docs/models/postv1projectsidornamecustomenvironmentsrequestbody.md
+  - docs/models/postv1projectsidornamecustomenvironmentsresponsebody.md
+  - docs/models/postv1projectsidornamecustomenvironmentstype.md
   - docs/models/preferredscopesandgitnamespaces.md
   - docs/models/production.md
   - docs/models/project.md
@@ -1747,6 +1783,11 @@ generatedFiles:
   - docs/models/redirectstatuscode.md
   - docs/models/remotecaching.md
   - docs/models/remotepatterns.md
+  - docs/models/removebypassiprequest.md
+  - docs/models/removebypassiprequestbody.md
+  - docs/models/removebypassiprequestbody1.md
+  - docs/models/removebypassiprequestbody2.md
+  - docs/models/removebypassipresponsebody.md
   - docs/models/removecertrequest.md
   - docs/models/removecertresponsebody.md
   - docs/models/removeprojectdomainrequest.md
@@ -1919,6 +1960,7 @@ generatedFiles:
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
   - docs/models/responsebody3.md
+  - docs/models/responsebodyaction.md
   - docs/models/responsebodyaliasassignedat.md
   - docs/models/responsebodyaliaserror.md
   - docs/models/responsebodyaliases.md
@@ -1972,6 +2014,7 @@ generatedFiles:
   - docs/models/responsebodyreadysubstate.md
   - docs/models/responsebodyrecords.md
   - docs/models/responsebodyremotepatterns.md
+  - docs/models/responsebodyresult.md
   - docs/models/responsebodyrole.md
   - docs/models/responsebodyroutes.md
   - docs/models/responsebodyscope.md
@@ -2048,6 +2091,7 @@ generatedFiles:
   - docs/models/submitinvoicerequest.md
   - docs/models/submitinvoicerequestbody.md
   - docs/models/submitinvoiceresponsebody.md
+  - docs/models/tagids.md
   - docs/models/target.md
   - docs/models/target1.md
   - docs/models/target2.md
@@ -2255,6 +2299,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachepaths.md
   - docs/models/updateprojectdatacacheplan.md
   - docs/models/updateprojectdatacacheprojectsaliaserror.md
+  - docs/models/updateprojectdatacacheprojectsbranchmatcher.md
   - docs/models/updateprojectdatacacheprojectsbuilds.md
   - docs/models/updateprojectdatacacheprojectschecksconclusion.md
   - docs/models/updateprojectdatacacheprojectschecksstate.md
@@ -2400,6 +2445,9 @@ generatedFiles:
   - docs/models/updaterecordrequestbody.md
   - docs/models/updaterecordresponsebody.md
   - docs/models/updaterecordtype.md
+  - docs/models/updateresourcesecretsbyidrequest.md
+  - docs/models/updateresourcesecretsbyidrequestbody.md
+  - docs/models/updateresourcesecretsbyidsecrets.md
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
   - docs/models/updateteammemberjoinedfrom.md
@@ -2450,6 +2498,7 @@ generatedFiles:
   - docs/sdks/dns/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/edgeconfig/README.md
+  - docs/sdks/environment/README.md
   - docs/sdks/integrations/README.md
   - docs/sdks/logdrains/README.md
   - docs/sdks/marketplace/README.md
@@ -2462,6 +2511,378 @@ generatedFiles:
   - docs/sdks/webhooks/README.md
   - jsr.json
   - package.json
+  - src/__tests__/accessgroups.test.ts
+  - src/__tests__/aliases.test.ts
+  - src/__tests__/artifacts.test.ts
+  - src/__tests__/assertions.ts
+  - src/__tests__/authentication.test.ts
+  - src/__tests__/certs.test.ts
+  - src/__tests__/checks.test.ts
+  - src/__tests__/deployments.test.ts
+  - src/__tests__/dns.test.ts
+  - src/__tests__/domains.test.ts
+  - src/__tests__/edgeconfig.test.ts
+  - src/__tests__/environment.test.ts
+  - src/__tests__/files.ts
+  - src/__tests__/integrations.test.ts
+  - src/__tests__/logdrains.test.ts
+  - src/__tests__/marketplace.test.ts
+  - src/__tests__/mockserver/Dockerfile
+  - src/__tests__/mockserver/Makefile
+  - src/__tests__/mockserver/README.md
+  - src/__tests__/mockserver/go.mod
+  - src/__tests__/mockserver/go.sum
+  - src/__tests__/mockserver/internal/handler/assert/contenttype.go
+  - src/__tests__/mockserver/internal/handler/assert/header.go
+  - src/__tests__/mockserver/internal/handler/assert/parameter.go
+  - src/__tests__/mockserver/internal/handler/assert/pointer.go
+  - src/__tests__/mockserver/internal/handler/assert/security.go
+  - src/__tests__/mockserver/internal/handler/doc.go
+  - src/__tests__/mockserver/internal/handler/generated_handler.go
+  - src/__tests__/mockserver/internal/handler/generated_handlers.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev13deploymentsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsaccessgroupidornameprojectsprojectid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsidorname.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidschema.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidtokens.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1logdrainsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamemembersuid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1securityfirewallbypass.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1teamsteamid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1teamsteamidinvitesinviteid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1teamsteamidmembersuid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1user.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1webhooksid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev2aliasesaliasid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev2domainsdomainrecordsrecordid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev3usertokenstokenid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev6domainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev7certsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidorname.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsaccessgroupidornameprojectsprojectid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsidorname.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsidornamemembers.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsidornameprojects.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidchecks.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidcheckscheckid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1domainsdomainregistry.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfig.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidbackups.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigiditemedgeconfigitemkey.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigiditems.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidschema.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidtokens.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidtokentoken.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidaccount.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1integrationsgitnamespaces.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1integrationssearchrepo.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrainsid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallbypass.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallconfigconfigversion.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1teamsteamidrequestuserid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1webhooks.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1webhooksid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv2deploymentsidaliases.go
+  - src/__tests__/mockserver/internal/handler/pathgetv2integrationslogdrains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv2teams.go
+  - src/__tests__/mockserver/internal/handler/pathgetv2teamsteamid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv2teamsteamidmembers.go
+  - src/__tests__/mockserver/internal/handler/pathgetv3deploymentsidorurlevents.go
+  - src/__tests__/mockserver/internal/handler/pathgetv3events.go
+  - src/__tests__/mockserver/internal/handler/pathgetv4aliases.go
+  - src/__tests__/mockserver/internal/handler/pathgetv4aliasesidoralias.go
+  - src/__tests__/mockserver/internal/handler/pathgetv4domainsprice.go
+  - src/__tests__/mockserver/internal/handler/pathgetv4domainsstatus.go
+  - src/__tests__/mockserver/internal/handler/pathgetv5domains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv5domainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathgetv5usertokens.go
+  - src/__tests__/mockserver/internal/handler/pathgetv5usertokenstokenid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv6deployments.go
+  - src/__tests__/mockserver/internal/handler/pathgetv6deploymentsidfiles.go
+  - src/__tests__/mockserver/internal/handler/pathgetv6domainsdomainconfig.go
+  - src/__tests__/mockserver/internal/handler/pathgetv7certsid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv7deploymentsidfilesfileid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv8artifactshash.go
+  - src/__tests__/mockserver/internal/handler/pathgetv8artifactsstatus.go
+  - src/__tests__/mockserver/internal/handler/pathgetv9projects.go
+  - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironments.go
+  - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1datacacheprojectsprojectid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidcheckscheckid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1domainsrecordsrecordid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1projectsidornameprotectionbypass.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1securityfirewallconfig.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1teamsteamidmembersuid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv2teamsteamid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidorname.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamedomainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathpostv10projects.go
+  - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornamedomains.go
+  - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornameenv.go
+  - src/__tests__/mockserver/internal/handler/pathpostv10projectsprojectidpromotedeploymentid.go
+  - src/__tests__/mockserver/internal/handler/pathpostv13deployments.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1accessgroups.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1accessgroupsaccessgroupidornameprojects.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1accessgroupsidorname.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1deploymentsdeploymentidchecks.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1deploymentsdeploymentidcheckscheckidrerequest.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfig.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidschema.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidtoken.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbilling.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbillinginvoices.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbillinginvoicesinvoiceidactions.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidevents.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1logdrains.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamecustomenvironments.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1securityattackmode.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1securityfirewallbypass.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1teams.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1teamsteamidmembersteamsjoin.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1teamsteamidrequest.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1webhooks.go
+  - src/__tests__/mockserver/internal/handler/pathpostv2deploymentsidaliases.go
+  - src/__tests__/mockserver/internal/handler/pathpostv2domainsdomainrecords.go
+  - src/__tests__/mockserver/internal/handler/pathpostv2files.go
+  - src/__tests__/mockserver/internal/handler/pathpostv2integrationslogdrains.go
+  - src/__tests__/mockserver/internal/handler/pathpostv3usertokens.go
+  - src/__tests__/mockserver/internal/handler/pathpostv5domains.go
+  - src/__tests__/mockserver/internal/handler/pathpostv5domainsbuy.go
+  - src/__tests__/mockserver/internal/handler/pathpostv7certs.go
+  - src/__tests__/mockserver/internal/handler/pathpostv8artifacts.go
+  - src/__tests__/mockserver/internal/handler/pathpostv8artifactsevents.go
+  - src/__tests__/mockserver/internal/handler/pathpostv9projectsidornamedomainsdomainverify.go
+  - src/__tests__/mockserver/internal/handler/pathputv1edgeconfigedgeconfigid.go
+  - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidproductsintegrationproductidorslugresourcesresourceidsecrets.go
+  - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidsecrets.go
+  - src/__tests__/mockserver/internal/handler/pathputv1securityfirewallconfig.go
+  - src/__tests__/mockserver/internal/handler/pathputv7certs.go
+  - src/__tests__/mockserver/internal/handler/values/files.go
+  - src/__tests__/mockserver/internal/logging/doc.go
+  - src/__tests__/mockserver/internal/logging/formats.go
+  - src/__tests__/mockserver/internal/logging/http_file.go
+  - src/__tests__/mockserver/internal/logging/http_logger.go
+  - src/__tests__/mockserver/internal/logging/levels.go
+  - src/__tests__/mockserver/internal/logging/logger.go
+  - src/__tests__/mockserver/internal/logging/oas_operation.go
+  - src/__tests__/mockserver/internal/logging/oas_operation_call.go
+  - src/__tests__/mockserver/internal/sdk/models/components/aclaction.go
+  - src/__tests__/mockserver/internal/sdk/models/components/authtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/components/authuser.go
+  - src/__tests__/mockserver/internal/sdk/models/components/authuserlimited.go
+  - src/__tests__/mockserver/internal/sdk/models/components/edgeconfigitem.go
+  - src/__tests__/mockserver/internal/sdk/models/components/edgeconfigitemvalue.go
+  - src/__tests__/mockserver/internal/sdk/models/components/edgeconfigtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/components/filetree.go
+  - src/__tests__/mockserver/internal/sdk/models/components/flagjsonvalue.go
+  - src/__tests__/mockserver/internal/sdk/models/components/httpmetadata.go
+  - src/__tests__/mockserver/internal/sdk/models/components/pagination.go
+  - src/__tests__/mockserver/internal/sdk/models/components/ratelimitnotice.go
+  - src/__tests__/mockserver/internal/sdk/models/components/security.go
+  - src/__tests__/mockserver/internal/sdk/models/components/teamlimited.go
+  - src/__tests__/mockserver/internal/sdk/models/components/userevent.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/addbypassip.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/addprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/addprojectmember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/artifactexists.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/artifactquery.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/assignalias.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/buydomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/canceldeployment.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/checkdomainprice.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/checkdomainstatus.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroup.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroupproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createauthtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createconfigurablelogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createdeployment.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfigtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createevent.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createlogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createortransferdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createprojectenv.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createrecord.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createwebhook.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroup.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroupproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletealias.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteauthtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfigurablelogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfiguration.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletedeployment.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletedomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigschema.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletewebhook.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/downloadartifact.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/editprojectenv.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/exchangessotoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/filterprojectenvs.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getaccountinfo.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getalias.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getallchecks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getalllogdrains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getauthtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getauthuser.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getbypassip.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getcertbyid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurablelogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getconfiguration.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurations.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdeployment.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdeploymentevents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdeploymentfilecontents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdeployments.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdomainconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdomains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdomaintransfer.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigbackup.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigbackups.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigitem.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigitems.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigs.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigschema.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigtokens.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getfirewallconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getintegrationlogdrains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getinvoice.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getmember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectdomains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectenv.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectmembers.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getteamaccessrequest.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getteammembers.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getteams.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironments.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getwebhook.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getwebhooks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/gitnamespaces.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/inviteusertoteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/issuecert.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/jointeam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listaccessgroupmembers.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listaccessgroupprojects.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listaccessgroups.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listaliases.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listauthtokens.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listdeploymentaliases.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listdeploymentfiles.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listpromotealiases.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/listuserevents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/postv1projectsidornamecustomenvironments.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroup.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroupproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/recordevents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removebypassip.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removecert.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectenv.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectmember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removerecord.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removeteammember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/requestaccesstoteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/requestdelete.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/requestpromote.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/rerequestcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/searchrepo.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/status.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/submitbillingdata.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/submitinvoice.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroup.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroupproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateattackchallengemode.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatecheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatefirewallconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateinvoice.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateprojectdatacache.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateprojectprotectionbypass.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updaterecord.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateresourcesecrets.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateresourcesecretsbyid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateteammember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/uploadartifact.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/uploadcert.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/uploadfile.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/verifyprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/vercelbadrequesterror.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/vercelforbiddenerror.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/vercelnotfounderror.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/vercelratelimiterror.go
+  - src/__tests__/mockserver/internal/sdk/types/bigint.go
+  - src/__tests__/mockserver/internal/sdk/types/date.go
+  - src/__tests__/mockserver/internal/sdk/types/datetime.go
+  - src/__tests__/mockserver/internal/sdk/types/decimal.go
+  - src/__tests__/mockserver/internal/sdk/types/pointers.go
+  - src/__tests__/mockserver/internal/sdk/utils/json.go
+  - src/__tests__/mockserver/internal/sdk/utils/reflect.go
+  - src/__tests__/mockserver/internal/sdk/utils/sort.go
+  - src/__tests__/mockserver/internal/server/doc.go
+  - src/__tests__/mockserver/internal/server/generated_handlers.go
+  - src/__tests__/mockserver/internal/server/internal_handlers.go
+  - src/__tests__/mockserver/internal/server/server.go
+  - src/__tests__/mockserver/internal/server/server_option.go
+  - src/__tests__/mockserver/internal/server/templates/log/index.html.tmpl
+  - src/__tests__/mockserver/internal/server/templates/log/operation.html.tmpl
+  - src/__tests__/mockserver/internal/server/templates/log/style.css.tmpl
+  - src/__tests__/mockserver/internal/tracking/requesttracker.go
+  - src/__tests__/mockserver/main.go
+  - src/__tests__/projectmembers.test.ts
+  - src/__tests__/projects.test.ts
+  - src/__tests__/security.test.ts
+  - src/__tests__/teams.test.ts
+  - src/__tests__/testclient.ts
+  - src/__tests__/user.test.ts
+  - src/__tests__/webhooks.test.ts
   - src/core.ts
   - src/funcs/accessGroupsCreateAccessGroup.ts
   - src/funcs/accessGroupsCreateAccessGroupProject.ts
@@ -2538,6 +2959,11 @@ generatedFiles:
   - src/funcs/edgeConfigGetEdgeConfigs.ts
   - src/funcs/edgeConfigPatchEdgeConfigSchema.ts
   - src/funcs/edgeConfigUpdateEdgeConfig.ts
+  - src/funcs/environmentDeleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
+  - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
+  - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
+  - src/funcs/environmentPatchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
+  - src/funcs/environmentPostV1ProjectsIdOrNameCustomEnvironments.ts
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
@@ -2559,6 +2985,7 @@ generatedFiles:
   - src/funcs/marketplaceSubmitInvoice.ts
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
+  - src/funcs/marketplaceUpdateResourceSecretsById.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
   - src/funcs/projectMembersRemoveProjectMember.ts
@@ -2581,8 +3008,11 @@ generatedFiles:
   - src/funcs/projectsUpdateProjectDomain.ts
   - src/funcs/projectsUpdateProjectProtectionBypass.ts
   - src/funcs/projectsVerifyProjectDomain.ts
+  - src/funcs/securityAddBypassIp.ts
+  - src/funcs/securityGetBypassIp.ts
   - src/funcs/securityGetFirewallConfig.ts
   - src/funcs/securityPutFirewallConfig.ts
+  - src/funcs/securityRemoveBypassIp.ts
   - src/funcs/securityUpdateAttackChallengeMode.ts
   - src/funcs/securityUpdateFirewallConfig.ts
   - src/funcs/teamsCreateTeam.ts
@@ -2624,6 +3054,7 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/models/aclaction.ts
+  - src/models/addbypassipop.ts
   - src/models/addprojectdomainop.ts
   - src/models/addprojectmemberop.ts
   - src/models/artifactexistsop.ts
@@ -2667,6 +3098,7 @@ generatedFiles:
   - src/models/deleteprojectop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
+  - src/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
   - src/models/deletewebhookop.ts
   - src/models/downloadartifactop.ts
   - src/models/edgeconfigitem.ts
@@ -2683,6 +3115,7 @@ generatedFiles:
   - src/models/getalllogdrainsop.ts
   - src/models/getauthtokenop.ts
   - src/models/getauthuserop.ts
+  - src/models/getbypassipop.ts
   - src/models/getcertbyidop.ts
   - src/models/getcheckop.ts
   - src/models/getconfigurablelogdrainop.ts
@@ -2719,6 +3152,8 @@ generatedFiles:
   - src/models/getteammembersop.ts
   - src/models/getteamop.ts
   - src/models/getteamsop.ts
+  - src/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
+  - src/models/getv9projectsidornamecustomenvironmentsop.ts
   - src/models/getwebhookop.ts
   - src/models/getwebhooksop.ts
   - src/models/gitnamespacesop.ts
@@ -2739,11 +3174,14 @@ generatedFiles:
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchteamop.ts
+  - src/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
+  - src/models/postv1projectsidornamecustomenvironmentsop.ts
   - src/models/putfirewallconfigop.ts
   - src/models/ratelimitnotice.ts
   - src/models/readaccessgroupop.ts
   - src/models/readaccessgroupprojectop.ts
   - src/models/recordeventsop.ts
+  - src/models/removebypassipop.ts
   - src/models/removecertop.ts
   - src/models/removeprojectdomainop.ts
   - src/models/removeprojectenvop.ts
@@ -2774,6 +3212,7 @@ generatedFiles:
   - src/models/updateprojectop.ts
   - src/models/updateprojectprotectionbypassop.ts
   - src/models/updaterecordop.ts
+  - src/models/updateresourcesecretsbyidop.ts
   - src/models/updateresourcesecretsop.ts
   - src/models/updateteammemberop.ts
   - src/models/uploadartifactop.ts
@@ -2795,6 +3234,7 @@ generatedFiles:
   - src/sdk/dns.ts
   - src/sdk/domains.ts
   - src/sdk/edgeconfig.ts
+  - src/sdk/environment.ts
   - src/sdk/integrations.ts
   - src/sdk/logdrains.ts
   - src/sdk/marketplace.ts
@@ -3231,6 +3671,8 @@ examples:
           x-artifact-client-ci: "VERCEL"
           x-artifact-client-interactive: 0
           x-artifact-tag: "Tc0BmHvJYMIYJ62/zx87YqO0Flxk+5Ovip25NY825CQ="
+      requestBody:
+        application/octet-stream: "x-file: example.file"
       responses:
         "202":
           application/json: {"urls": ["https://api.vercel.com/v2/now/artifact/12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}
@@ -3256,7 +3698,8 @@ examples:
           application/json: {"error": {"message": "<value>"}}
         "404":
           application/json: {}
-        "200": {}
+        "200":
+          application/json: "x-file: example.file"
   artifactExists:
     speakeasy-default-artifact-exists:
       parameters:
@@ -3282,7 +3725,7 @@ examples:
         application/json: {"hashes": ["12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "34HKQaOmR5t5Uy6vasdasdasdasd"]}
       responses:
         "200":
-          application/json: {"key": {"error": {"message": "<value>"}}, "key1": {"error": {"message": "<value>"}}, "key2": {"error": {"message": "<value>"}}}
+          application/json: {"key": {"error": {"message": "<value>"}}, "key1": {"size": 9698.01, "taskDurationMs": 1946.74}, "key2": {"size": 1135.95, "taskDurationMs": 5348.41}}
         "400":
           application/json: {}
         "401":
@@ -3391,7 +3834,7 @@ examples:
         application/json: {"disabled": true}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": "7135.80", "disabledAt": "2989.85", "updatedAt": "6226.22", "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": "5719.60", "createdIn": "<value>", "creator": {"email": "Braeden15@gmail.com", "uid": "<id>", "username": "Teresa84"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://unknown-gift.biz", "userId": "<id>"}, {"id": "<id>", "createdAt": "7644.50", "createdIn": "<value>", "creator": {"email": "Erich.Mann@hotmail.com", "uid": "<id>", "username": "Genoveva89"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://slimy-tuba.name", "userId": "<id>"}, {"id": "<id>", "createdAt": "2357.62", "createdIn": "<value>", "creator": {"email": "Garret.Ferry81@gmail.com", "uid": "<id>", "username": "Vivianne.Gutkowski"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://astonishing-cinema.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "10.x", "targets": {}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": "7135.80", "disabledAt": "2989.85", "updatedAt": "6226.22", "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": "5719.60", "createdIn": "<value>", "creator": {"email": "Braeden15@gmail.com", "uid": "<id>", "username": "Teresa84"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://unknown-gift.biz", "userId": "<id>"}, {"id": "<id>", "createdAt": "7644.50", "createdIn": "<value>", "creator": {"email": "Erich.Mann@hotmail.com", "uid": "<id>", "username": "Genoveva89"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://slimy-tuba.name", "userId": "<id>"}, {"id": "<id>", "createdAt": "2357.62", "createdIn": "<value>", "creator": {"email": "Garret.Ferry81@gmail.com", "uid": "<id>", "username": "Vivianne.Gutkowski"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://astonishing-cinema.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "10.x"}
         "400":
           application/json: {}
         "401":
@@ -3470,6 +3913,7 @@ examples:
           until: 1612264332000
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+          customEnvironmentId: "env_123abc4567"
       responses:
         "200":
           application/json: {"domains": [{"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": true}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
@@ -3573,9 +4017,11 @@ examples:
           source: "vercel-cli:pull"
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+          customEnvironmentId: "env_123abc4567"
+          customEnvironmentSlug: "my-custom-env"
       responses:
         "200":
-          application/json: {"pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"envs": [{}, {}, {}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {}
         "401":
@@ -3609,7 +4055,7 @@ examples:
         application/json: {"key": "API_URL", "value": "https://api.vercel.com", "type": "plain", "target": ["preview"], "gitBranch": "feature-1", "comment": "database connection string for production"}
       responses:
         "201":
-          application/json: {"failed": [{"error": {"code": "<value>", "message": "<value>"}}]}
+          application/json: {"created": [{}], "failed": [{"error": {"code": "<value>", "message": "<value>"}}]}
         "400":
           application/json: {}
         "401":
@@ -3623,6 +4069,7 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+          customEnvironmentId: "env_123abc4567"
       responses:
         "200":
           application/json: [{"type": "sensitive", "key": "<key>", "value": "<value>"}, {"type": "plain", "key": "<key>", "value": "<value>"}, {"type": "encrypted", "key": "<key>", "value": "<value>"}]
@@ -3658,6 +4105,8 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
@@ -3734,7 +4183,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"aliasAssigned": false, "bootedAt": "2317.28", "buildingAt": "458.06", "buildSkipped": true, "creator": {"uid": "<id>"}, "public": true, "status": "ERROR", "id": "<id>", "type": "LAMBDAS", "createdAt": "3161.76", "name": "<value>", "readyState": "READY", "meta": {"key": "<value>", "key1": "<value>"}, "regions": [], "url": "https://disloyal-backburn.info", "version": "1604.95"}
+          application/json: {"aliasAssigned": false, "bootedAt": 2317.28, "buildingAt": 458.05, "buildSkipped": true, "creator": {"uid": "<id>"}, "public": true, "status": "ERROR", "id": "<id>", "type": "LAMBDAS", "createdAt": 3161.76, "name": "<value>", "readyState": "READY", "meta": {"key": "<value>", "key1": "<value>"}, "regions": [], "url": "https://disloyal-backburn.info", "version": 1604.95}
         "400":
           application/json: {}
         "404":
@@ -3749,7 +4198,7 @@ examples:
         application/json: {"files": [{"file": "folder/file.js"}, {"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project"}
       responses:
         "200":
-          application/json: {"build": {"env": []}, "env": ["<value>", "<value>", "<value>"], "inspectorUrl": "https://grave-dredger.com", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "aliasAssigned": false, "bootedAt": "4336.60", "buildingAt": "7030.55", "buildSkipped": true, "creator": {"uid": "<id>"}, "public": false, "status": "QUEUED", "type": "LAMBDAS", "createdAt": "5133.44", "name": "<value>", "id": "<id>", "version": "1218.01", "meta": {"key": "<value>", "key1": "<value>"}, "readyState": "INITIALIZING", "regions": [], "url": "https://apprehensive-perp.info/", "projectId": "<id>", "ownerId": "<id>", "routes": [{"src": "<value>"}, {"src": "<value>"}], "plan": "pro", "createdIn": "<value>"}
+          application/json: {"build": {"env": []}, "env": ["<value>", "<value>", "<value>"], "inspectorUrl": "https://grave-dredger.com", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": "4336.60", "buildingAt": "7030.55", "buildSkipped": true, "creator": {"uid": "<id>"}, "public": false, "status": "QUEUED", "type": "LAMBDAS", "createdAt": "5133.44", "name": "<value>", "id": "<id>", "version": "1218.01", "meta": {"key": "<value>", "key1": "<value>"}, "readyState": "INITIALIZING", "regions": [], "url": "https://apprehensive-perp.info/", "projectId": "<id>", "ownerId": "<id>", "routes": [{"src": "<value>"}, {"src": "<value>"}], "plan": "pro", "createdIn": "<value>"}
         "400":
           application/json: {}
         "401":
@@ -3766,7 +4215,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://concrete-gerbil.org", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": true, "aliasAssigned": false, "bootedAt": "8528.74", "buildingAt": "7590.78", "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "id": "<id>", "createdAt": "3071.53", "name": "<value>", "meta": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "readyState": "QUEUED", "regions": ["<value>"], "type": "LAMBDAS", "url": "https://timely-reboot.name", "version": "6067.47", "createdIn": "<value>", "ownerId": "<id>", "plan": "pro", "projectId": "<id>", "routes": [{"handle": "resource"}, {"src": "<value>", "continue": false, "middleware": "6618.11"}]}
+          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://concrete-gerbil.org", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": true, "projectSettings": {}, "aliasAssigned": false, "bootedAt": "8528.74", "buildingAt": "7590.78", "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "id": "<id>", "createdAt": "3071.53", "name": "<value>", "meta": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "readyState": "QUEUED", "regions": ["<value>"], "type": "LAMBDAS", "url": "https://timely-reboot.name", "version": "6067.47", "createdIn": "<value>", "ownerId": "<id>", "plan": "pro", "projectId": "<id>", "routes": [{"handle": "resource"}, {"src": "<value>", "continue": false, "middleware": 6618.12}]}
         "400":
           application/json: {}
         "401":
@@ -4040,7 +4489,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"records": [{"id": "<id>", "slug": "<value>", "name": "<value>", "type": "CAA", "value": "<value>", "creator": "<value>", "created": "625.21", "updated": "9085.95", "createdAt": "5625.17", "updatedAt": "391.36"}, {"id": "<id>", "slug": "<value>", "name": "<value>", "type": "TXT", "value": "<value>", "creator": "<value>", "created": "8810.32", "updated": "5188.16", "createdAt": "6202.53", "updatedAt": "4008.09"}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"records": [{"id": "<id>", "slug": "<value>", "name": "<value>", "type": "CAA", "value": "<value>", "creator": "<value>", "created": 625.21, "updated": 9085.95, "createdAt": 5625.17, "updatedAt": 391.36}, {"id": "<id>", "slug": "<value>", "name": "<value>", "type": "TXT", "value": "<value>", "creator": "<value>", "created": 8810.32, "updated": 5188.16, "createdAt": 6202.54, "updatedAt": 4008.09}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {}
         "401":
@@ -4350,7 +4799,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}, "id": "<id>", "lastModified": "1520.01", "backup": {"digest": "<value>", "items": {"key": {"updatedAt": "1577.81", "value": "<value>", "createdAt": "970.45"}}, "slug": "<value>", "updatedAt": "952.14"}}
+          application/json: {"user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}, "id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}}
         "400":
           application/json: {}
         "401":
@@ -4397,13 +4846,15 @@ examples:
     speakeasy-default-get-auth-user:
       responses:
         "200":
-          application/json: {"user": {"createdAt": 1630748523395, "softBlock": {"blockedAt": "7708.70", "reason": "UNPAID_INVOICE"}, "stagingPrefix": "<value>", "hasTrialAvailable": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": "<id>", "version": "northstar"}}
+          application/json: {"user": {"createdAt": 1630748523395, "softBlock": {"blockedAt": 7708.7, "reason": "UNPAID_INVOICE"}, "billing": {}, "resourceConfig": {}, "stagingPrefix": "<value>", "hasTrialAvailable": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": "<id>", "version": "northstar"}}
         "400":
           application/json: {}
         "401":
           application/json: {"error": {"message": "<value>"}}
   requestDelete:
     speakeasy-default-request-delete:
+      requestBody:
+        application/json: {}
       responses:
         "202":
           application/json: {"id": "<id>", "email": "Lamont82@gmail.com", "message": "Verification email sent"}
@@ -4456,7 +4907,7 @@ examples:
         path:
           integrationConfigurationId: "<id>"
       requestBody:
-        application/json: {"timestamp": "2024-09-29T02:38:01.476Z", "eod": "2022-12-28T23:46:57.523Z", "period": {"start": "2022-06-25T19:04:50.518Z", "end": "2023-10-18T01:18:36.230Z"}, "billing": {"items": [{"billingPlanId": "<id>", "name": "<value>", "price": "161.25", "quantity": "8824.47", "units": "<value>", "total": "<value>"}]}, "usage": [{"resourceId": "<id>", "name": "<value>", "type": "rate", "units": "<value>", "dayValue": "9439.21", "periodValue": "6958.71"}, {"resourceId": "<id>", "name": "<value>", "type": "total", "units": "<value>", "dayValue": "9892.22", "periodValue": "4749.62"}, {"resourceId": "<id>", "name": "<value>", "type": "rate", "units": "<value>", "dayValue": "7119.53", "periodValue": "6310.47"}]}
+        application/json: {"timestamp": "2024-09-29T02:38:01.476Z", "eod": "2022-12-28T23:46:57.523Z", "period": {"start": "2022-06-25T19:04:50.518Z", "end": "2023-10-18T01:18:36.230Z"}, "billing": {"items": [{"billingPlanId": "<id>", "name": "<value>", "price": "161.25", "quantity": 8824.47, "units": "<value>", "total": "<value>"}]}, "usage": [{"resourceId": "<id>", "name": "<value>", "type": "rate", "units": "<value>", "dayValue": "9439.21", "periodValue": "6958.71"}, {"resourceId": "<id>", "name": "<value>", "type": "total", "units": "<value>", "dayValue": "9892.22", "periodValue": "4749.62"}, {"resourceId": "<id>", "name": "<value>", "type": "rate", "units": "<value>", "dayValue": "7119.53", "periodValue": "6310.47"}]}
       responses:
         "400":
           application/json: {}
@@ -4837,7 +5288,7 @@ examples:
         application/json: {"firewallEnabled": true}
       responses:
         "200":
-          application/json: {"active": {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": "4570.86", "updatedAt": "<value>", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "deny"}, "ma": {"active": false, "action": "log"}, "lfi": {"active": false, "action": "log"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": false, "action": "deny"}, "php": {"active": true, "action": "deny"}, "gen": {"active": false, "action": "deny"}, "xss": {"active": false, "action": "deny"}, "sqli": {"active": true, "action": "log"}, "sf": {"active": true, "action": "deny"}, "java": {"active": true, "action": "log"}}, "rules": [{"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "suf"}, {"type": "geo_as_number", "op": "pre"}, {"type": "ja3_digest", "op": "inc"}]}, {"conditions": [{"type": "geo_as_number", "op": "neq"}, {"type": "protocol", "op": "sub"}, {"type": "ja3_digest", "op": "suf"}]}, {"conditions": [{"type": "region", "op": "neq"}]}]}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": []}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "scheme", "op": "neq"}]}, {"conditions": []}, {"conditions": [{"type": "header", "op": "inc"}, {"type": "query", "op": "eq"}]}]}], "ips": [], "changes": []}}
+          application/json: {"active": {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": "4570.86", "updatedAt": "<value>", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "deny"}, "ma": {"active": false, "action": "log"}, "lfi": {"active": false, "action": "log"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": false, "action": "deny"}, "php": {"active": true, "action": "deny"}, "gen": {"active": false, "action": "deny"}, "xss": {"active": false, "action": "deny"}, "sqli": {"active": true, "action": "log"}, "sf": {"active": true, "action": "deny"}, "java": {"active": true, "action": "log"}}, "rules": [{"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "suf"}, {"type": "geo_as_number", "op": "pre"}, {"type": "ja3_digest", "op": "inc"}]}, {"conditions": [{"type": "geo_as_number", "op": "neq"}, {"type": "protocol", "op": "sub"}, {"type": "ja3_digest", "op": "suf"}]}, {"conditions": [{"type": "region", "op": "neq"}]}], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "scheme", "op": "neq"}]}, {"conditions": []}, {"conditions": [{"type": "header", "op": "inc"}, {"type": "query", "op": "eq"}]}], "action": {}}], "ips": [], "changes": []}}
         "400":
           application/json: {}
         "401":
@@ -4873,7 +5324,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": "228.91", "updatedAt": "<value>", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "deny"}, "ma": {"active": true, "action": "log"}, "lfi": {"active": false, "action": "log"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": true, "action": "deny"}, "php": {"active": false, "action": "log"}, "gen": {"active": false, "action": "log"}, "xss": {"active": true, "action": "deny"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "deny"}, "java": {"active": true, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "eq"}]}, {"conditions": [{"type": "geo_city", "op": "ex"}, {"type": "ja4_digest", "op": "nex"}, {"type": "ip_address", "op": "lte"}]}]}], "ips": [{"id": "<id>", "hostname": "puny-goat.org", "ip": "0.147.40.42", "action": "challenge"}], "changes": []}
+          application/json: {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": "228.91", "updatedAt": "<value>", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "deny"}, "ma": {"active": true, "action": "log"}, "lfi": {"active": false, "action": "log"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": true, "action": "deny"}, "php": {"active": false, "action": "log"}, "gen": {"active": false, "action": "log"}, "xss": {"active": true, "action": "deny"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "deny"}, "java": {"active": true, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "eq"}]}, {"conditions": [{"type": "geo_city", "op": "ex"}, {"type": "ja4_digest", "op": "nex"}, {"type": "ip_address", "op": "lte"}]}], "action": {}}], "ips": [{"id": "<id>", "hostname": "puny-goat.org", "ip": "0.147.40.42", "action": "challenge"}], "changes": []}
         "400":
           application/json: {}
         "401":
@@ -4924,7 +5375,7 @@ examples:
         application/json: {"joinedFrom": {"origin": "github", "commitId": "f498d25d8bd654b578716203be73084b31130cd7", "repoId": "67753070", "repoPath": "jane-doe/example", "gitUserId": 103053343, "gitUserLogin": "jane-doe"}}
       responses:
         "200":
-          application/json: {"teamSlug": "<value>", "teamName": "<value>"}
+          application/json: {"teamSlug": "<value>", "teamName": "<value>", "github": {}, "gitlab": {}, "bitbucket": {}}
         "400":
           application/json: {}
         "401":
@@ -4939,7 +5390,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
-          application/json: {"teamSlug": "my-team", "teamName": "My Team", "confirmed": false, "joinedFrom": {"origin": "import"}, "accessRequestedAt": 1588720733602}
+          application/json: {"teamSlug": "my-team", "teamName": "My Team", "confirmed": false, "joinedFrom": {"origin": "import"}, "accessRequestedAt": 1588720733602, "github": {}, "gitlab": {}, "bitbucket": {}}
         "400":
           application/json: {}
         "401":
@@ -5050,7 +5501,7 @@ examples:
         application/json: {"slug": "a-random-team", "name": "A Random Team"}
       responses:
         "200":
-          application/json: {"id": "team_nLlpyC6RE1qxqglFKbrMxlud", "slug": "<value>"}
+          application/json: {"id": "team_nLlpyC6RE1qxqglFKbrMxlud", "slug": "<value>", "billing": {}}
         "400":
           application/json: {}
         "401":
@@ -5063,6 +5514,8 @@ examples:
         query:
           newDefaultTeamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE"
           slug: "my-team-url-slug"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"id": "team_LLHUOMOoDlqOp8wPE4kFo9pE", "newDefaultTeamIdError": true}
@@ -5279,6 +5732,8 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {"id": "<id>", "createdAt": "1842.08", "expiresAt": "8685.41", "autoRenew": true, "cns": []}
@@ -5303,4 +5758,286 @@ examples:
           application/json: {}
         "401":
           application/json: {"error": {"message": "<value>"}}
-generatedTests: {}
+  update-resource-secrets-by-id:
+    speakeasy-default-update-resource-secrets-by-id:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  post_/v1/projects/{idOrName}/custom-environments:
+    speakeasy-default-post-/v1-/projects/{id-or-name}/custom-environments:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "201":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  get_/v9/projects/{idOrName}/custom-environments:
+    speakeasy-default-get-/v9-/projects/{id-or-name}/custom-environments:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"environments": []}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}:
+    speakeasy-default-get-/v9-/projects/{id-or-name}/custom-environments/{environment-slug-or-id}:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  patch_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}:
+    speakeasy-default-patch-/v9-/projects/{id-or-name}/custom-environments/{environment-slug-or-id}:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}:
+    speakeasy-default-delete-/v9-/projects/{id-or-name}/custom-environments/{environment-slug-or-id}:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  getBypassIp:
+    speakeasy-default-get-bypass-ip:
+      parameters:
+        query:
+          projectId: "<id>"
+          limit: 10
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "sneaky-intervention.info", "Ip": "124.153.161.35", "ProjectId": "<id>", "IsProjectRule": false}], "pagination": "<value>"}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  addBypassIp:
+    speakeasy-default-add-bypass-ip:
+      parameters:
+        query:
+          projectId: "<id>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"ok": false, "result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "jubilant-outrun.name", "ProjectId": "<id>", "IsProjectRule": true}], "pagination": "<value>"}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  removeBypassIp:
+    speakeasy-default-remove-bypass-ip:
+      parameters:
+        query:
+          projectId: "<id>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"ok": true}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+generatedTests:
+  readAccessGroup: "2025-01-16T21:59:36Z"
+  updateAccessGroup: "2025-01-16T21:59:36Z"
+  deleteAccessGroup: "2025-01-16T21:59:36Z"
+  listAccessGroupMembers: "2025-01-16T21:59:36Z"
+  listAccessGroups: "2025-01-16T21:59:36Z"
+  createAccessGroup: "2025-01-16T21:59:36Z"
+  listAccessGroupProjects: "2025-01-16T21:59:36Z"
+  createAccessGroupProject: "2025-01-16T21:59:36Z"
+  readAccessGroupProject: "2025-01-16T21:59:36Z"
+  updateAccessGroupProject: "2025-01-16T21:59:36Z"
+  deleteAccessGroupProject: "2025-01-16T21:59:36Z"
+  recordEvents: "2025-01-16T21:59:36Z"
+  status: "2025-01-16T21:59:36Z"
+  downloadArtifact: "2025-01-16T21:59:36Z"
+  artifactExists: "2025-01-16T21:59:36Z"
+  artifactQuery: "2025-01-16T21:59:36Z"
+  createCheck: "2025-01-16T21:59:36Z"
+  getAllChecks: "2025-01-16T21:59:36Z"
+  getCheck: "2025-01-16T21:59:36Z"
+  updateCheck: "2025-01-16T21:59:36Z"
+  rerequestCheck: "2025-01-16T21:59:36Z"
+  updateProjectDataCache: "2025-01-16T21:59:36Z"
+  getProjects: "2025-01-16T21:59:36Z"
+  createProject: "2025-01-16T21:59:36Z"
+  updateProject: "2025-01-16T21:59:36Z"
+  deleteProject: "2025-01-16T21:59:36Z"
+  getProjectDomains: "2025-01-16T21:59:36Z"
+  getProjectDomain: "2025-01-16T21:59:36Z"
+  updateProjectDomain: "2025-01-16T21:59:36Z"
+  removeProjectDomain: "2025-01-16T21:59:36Z"
+  addProjectDomain: "2025-01-16T21:59:36Z"
+  verifyProjectDomain: "2025-01-16T21:59:36Z"
+  getProjectEnv: "2025-01-16T21:59:36Z"
+  createProjectEnv: "2025-01-16T21:59:36Z"
+  removeProjectEnv: "2025-01-16T21:59:36Z"
+  updateProjectProtectionBypass: "2025-01-16T21:59:36Z"
+  requestPromote: "2025-01-16T21:59:36Z"
+  listPromoteAliases: "2025-01-16T21:59:36Z"
+  getDeploymentEvents: "2025-01-16T21:59:36Z"
+  getDeployment: "2025-01-16T21:59:36Z"
+  createDeployment: "2025-01-16T21:59:36Z"
+  cancelDeployment: "2025-01-16T21:59:36Z"
+  uploadFile: "2025-01-16T21:59:36Z"
+  listDeploymentFiles: "2025-01-16T21:59:36Z"
+  getDeploymentFileContents: "2025-01-16T21:59:36Z"
+  getDeployments: "2025-01-16T21:59:36Z"
+  deleteDeployment: "2025-01-16T21:59:36Z"
+  buyDomain: "2025-01-16T21:59:36Z"
+  checkDomainPrice: "2025-01-16T21:59:36Z"
+  checkDomainStatus: "2025-01-16T21:59:36Z"
+  getDomainTransfer: "2025-01-16T21:59:36Z"
+  getDomainConfig: "2025-01-16T21:59:36Z"
+  getDomain: "2025-01-16T21:59:36Z"
+  getDomains: "2025-01-16T21:59:36Z"
+  createOrTransferDomain: "2025-01-16T21:59:36Z"
+  deleteDomain: "2025-01-16T21:59:36Z"
+  createRecord: "2025-01-16T21:59:36Z"
+  updateRecord: "2025-01-16T21:59:36Z"
+  removeRecord: "2025-01-16T21:59:36Z"
+  getEdgeConfigs: "2025-01-16T21:59:36Z"
+  createEdgeConfig: "2025-01-16T21:59:36Z"
+  getEdgeConfig: "2025-01-16T21:59:36Z"
+  updateEdgeConfig: "2025-01-16T21:59:36Z"
+  deleteEdgeConfig: "2025-01-16T21:59:36Z"
+  getEdgeConfigItems: "2025-01-16T21:59:36Z"
+  getEdgeConfigSchema: "2025-01-16T21:59:36Z"
+  patchEdgeConfigSchema: "2025-01-16T21:59:36Z"
+  deleteEdgeConfigSchema: "2025-01-16T21:59:36Z"
+  getEdgeConfigItem: "2025-01-16T21:59:36Z"
+  getEdgeConfigTokens: "2025-01-16T21:59:36Z"
+  deleteEdgeConfigTokens: "2025-01-16T21:59:36Z"
+  getEdgeConfigToken: "2025-01-16T21:59:36Z"
+  createEdgeConfigToken: "2025-01-16T21:59:36Z"
+  getEdgeConfigBackups: "2025-01-16T21:59:36Z"
+  listUserEvents: "2025-01-16T21:59:36Z"
+  requestDelete: "2025-01-16T21:59:36Z"
+  get-account-info: "2025-01-16T21:59:36Z"
+  get-member: "2025-01-16T21:59:36Z"
+  create-event: "2025-01-16T21:59:36Z"
+  submit-billing-data: "2025-01-16T21:59:36Z"
+  submit-invoice: "2025-01-16T21:59:36Z"
+  get-invoice: "2025-01-16T21:59:36Z"
+  update-invoice: "2025-01-16T21:59:36Z"
+  update-resource-secrets: "2025-01-16T21:59:36Z"
+  update-resource-secrets-by-id: "2025-01-16T21:59:36Z"
+  exchange-sso-token: "2025-01-16T21:59:36Z"
+  getConfiguration: "2025-01-16T21:59:36Z"
+  deleteConfiguration: "2025-01-16T21:59:36Z"
+  gitNamespaces: "2025-01-16T21:59:36Z"
+  searchRepo: "2025-01-16T21:59:36Z"
+  listAuthTokens: "2025-01-16T21:59:36Z"
+  createAuthToken: "2025-01-16T21:59:36Z"
+  getAuthToken: "2025-01-16T21:59:36Z"
+  deleteAuthToken: "2025-01-16T21:59:36Z"
+  getIntegrationLogDrains: "2025-01-16T21:59:36Z"
+  createLogDrain: "2025-01-16T21:59:36Z"
+  deleteIntegrationLogDrain: "2025-01-16T21:59:36Z"
+  getConfigurableLogDrain: "2025-01-16T21:59:36Z"
+  deleteConfigurableLogDrain: "2025-01-16T21:59:36Z"
+  getAllLogDrains: "2025-01-16T21:59:36Z"
+  createConfigurableLogDrain: "2025-01-16T21:59:36Z"
+  addProjectMember: "2025-01-16T21:59:36Z"
+  removeProjectMember: "2025-01-16T21:59:36Z"
+  post_/v1/projects/{idOrName}/custom-environments: "2025-01-16T21:59:36Z"
+  get_/v9/projects/{idOrName}/custom-environments: "2025-01-16T21:59:36Z"
+  get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
+  patch_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
+  delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
+  updateAttackChallengeMode: "2025-01-16T21:59:36Z"
+  putFirewallConfig: "2025-01-16T21:59:36Z"
+  updateFirewallConfig: "2025-01-16T21:59:36Z"
+  getFirewallConfig: "2025-01-16T21:59:36Z"
+  getBypassIp: "2025-01-16T21:59:36Z"
+  addBypassIp: "2025-01-16T21:59:36Z"
+  removeBypassIp: "2025-01-16T21:59:36Z"
+  getTeamMembers: "2025-01-16T21:59:36Z"
+  requestAccessToTeam: "2025-01-16T21:59:36Z"
+  getTeamAccessRequest: "2025-01-16T21:59:36Z"
+  joinTeam: "2025-01-16T21:59:36Z"
+  updateTeamMember: "2025-01-16T21:59:36Z"
+  removeTeamMember: "2025-01-16T21:59:36Z"
+  getTeam: "2025-01-16T21:59:36Z"
+  patchTeam: "2025-01-16T21:59:36Z"
+  getTeams: "2025-01-16T21:59:36Z"
+  createTeam: "2025-01-16T21:59:36Z"
+  deleteTeam: "2025-01-16T21:59:36Z"
+  deleteTeamInviteCode: "2025-01-16T21:59:36Z"
+  createWebhook: "2025-01-16T21:59:36Z"
+  getWebhooks: "2025-01-16T21:59:36Z"
+  getWebhook: "2025-01-16T21:59:36Z"
+  deleteWebhook: "2025-01-16T21:59:36Z"
+  listAliases: "2025-01-16T21:59:36Z"
+  getAlias: "2025-01-16T21:59:36Z"
+  deleteAlias: "2025-01-16T21:59:36Z"
+  listDeploymentAliases: "2025-01-16T21:59:36Z"
+  assignAlias: "2025-01-16T21:59:36Z"
+  getCertById: "2025-01-16T21:59:36Z"
+  removeCert: "2025-01-16T21:59:36Z"
+  issueCert: "2025-01-16T21:59:36Z"
+  uploadCert: "2025-01-16T21:59:36Z"

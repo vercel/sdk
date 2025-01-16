@@ -9,10 +9,10 @@ import { RequestBody6 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody6 = {
   action: "crs.update",
-  id: "gen",
+  id: "ma",
   value: {
     active: false,
-    action: "deny",
+    action: "log",
   },
 };
 ```

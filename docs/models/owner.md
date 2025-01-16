@@ -6,7 +6,7 @@
 import { Owner } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: Owner = {
-  id: 5323.36,
+  id: 4884.42,
   name: "<value>",
 };
 ```

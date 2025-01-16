@@ -14,7 +14,7 @@ let value: Records = {
   creator: "<value>",
   created: 4810.42,
   updated: 2982.46,
-  createdAt: 8625.59,
+  createdAt: 8625.6,
   updatedAt: 5862.77,
 };
 ```

@@ -10,8 +10,8 @@ let value: PutFirewallConfigResponseBody = {
     ownerId: "<id>",
     projectKey: "<value>",
     id: "<id>",
-    version: 9747.87,
-    updatedAt: "1736158014918",
+    version: 9246.23,
+    updatedAt: "1737062624025",
     firewallEnabled: false,
     crs: {
       sd: {
@@ -24,11 +24,11 @@ let value: PutFirewallConfigResponseBody = {
       },
       lfi: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       rfi: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       rce: {
         active: false,
@@ -40,7 +40,7 @@ let value: PutFirewallConfigResponseBody = {
       },
       gen: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       xss: {
         active: false,
@@ -48,7 +48,7 @@ let value: PutFirewallConfigResponseBody = {
       },
       sqli: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       sf: {
         active: false,
@@ -68,8 +68,8 @@ let value: PutFirewallConfigResponseBody = {
           {
             conditions: [
               {
-                type: "raw_path",
-                op: "eq",
+                type: "cookie",
+                op: "suf",
               },
             ],
           },
@@ -80,9 +80,9 @@ let value: PutFirewallConfigResponseBody = {
     ips: [
       {
         id: "<id>",
-        hostname: "hateful-t-shirt.biz",
-        ip: "241.186.132.198",
-        action: "deny",
+        hostname: "calculating-fort.org",
+        ip: "95.241.186.132",
+        action: "bypass",
       },
     ],
     changes: [

@@ -7,7 +7,7 @@ Must be `http` or `https`.
 ```typescript
 import { ResponseBodyProtocol } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyProtocol = "https";
+let value: ResponseBodyProtocol = "http";
 ```
 
 ## Values

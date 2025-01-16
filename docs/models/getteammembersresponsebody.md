@@ -12,6 +12,9 @@ let value: GetTeamMembersResponseBody = {
       confirmed: true,
       email: "jane.doe@example.com",
       role: "OWNER",
+      additionalRoles: [
+        "['createProjects']",
+      ],
       uid: "zTuNVUXEAvvnNN3IaqinkyMw",
       username: "jane-doe",
       name: "Jane Doe",

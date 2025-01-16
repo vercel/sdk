@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectDataCacheReadyState } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheReadyState = "CANCELED";
+let value: UpdateProjectDataCacheReadyState = "READY";
 ```
 
 ## Values

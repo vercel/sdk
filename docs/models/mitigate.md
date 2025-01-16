@@ -6,7 +6,7 @@
 import { Mitigate } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Mitigate = {
-  action: "deny",
+  action: "challenge",
 };
 ```
 

@@ -5,8 +5,7 @@
 ```typescript
 import { GetConfigurationsResponseBodyDisabledReason } from "@vercel/sdk/models/getconfigurationsop.js";
 
-let value: GetConfigurationsResponseBodyDisabledReason =
-  "feature-not-available";
+let value: GetConfigurationsResponseBodyDisabledReason = "disabled-by-admin";
 ```
 
 ## Values

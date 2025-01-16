@@ -15,7 +15,7 @@ const value: models.Target1 = "development";
 
 ```typescript
 const value: models.Target2[] = [
-  "development",
+  "preview",
 ];
 ```
 

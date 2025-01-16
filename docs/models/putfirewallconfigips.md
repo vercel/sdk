@@ -7,9 +7,9 @@ import { PutFirewallConfigIps } from "@vercel/sdk/models/putfirewallconfigop.js"
 
 let value: PutFirewallConfigIps = {
   id: "<id>",
-  hostname: "insidious-ferret.net",
-  ip: "fbe9:2cd9:ebdc:c2f5:fba5:f2fc:b96b:d6b5",
-  action: "log",
+  hostname: "worldly-hexagon.biz",
+  ip: "cfbe:92cd:9ebd:cc2f:5fba:5f2f:cb96:bd6b",
+  action: "deny",
 };
 ```
 

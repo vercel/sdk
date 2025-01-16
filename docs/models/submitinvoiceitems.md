@@ -9,7 +9,7 @@ let value: SubmitInvoiceItems = {
   billingPlanId: "<id>",
   name: "<value>",
   price: "81.99",
-  quantity: 2096.03,
+  quantity: 2096.02,
   units: "<value>",
   total: "<value>",
 };

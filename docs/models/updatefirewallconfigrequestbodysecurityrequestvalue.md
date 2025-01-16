@@ -6,8 +6,8 @@
 import { UpdateFirewallConfigRequestBodySecurityRequestValue } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequestValue = {
-  hostname: "sweet-alligator.name",
-  ip: "f0b4:1cab:0805:4476:f7d3:a1a0:be0e:b7d6",
+  hostname: "unfortunate-sonar.com",
+  ip: "df0b:41ca:b080:5447:6f7d:3a1a:0be0:eb7d",
   action: "challenge",
 };
 ```

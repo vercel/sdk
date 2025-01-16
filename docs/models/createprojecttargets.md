@@ -7,21 +7,21 @@ import { CreateProjectTargets } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectTargets = {
   id: "<id>",
-  createdAt: 7734.56,
+  createdAt: 4329.84,
   createdIn: "<value>",
   creator: {
-    email: "Candice34@yahoo.com",
+    email: "Fay2@yahoo.com",
     uid: "<id>",
-    username: "Nettie39",
+    username: "Gladys_Pollich",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "hobby",
+  plan: "enterprise",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "CANCELED",
+  readyState: "INITIALIZING",
   type: "LAMBDAS",
-  url: "https://hefty-knight.info",
+  url: "https://faraway-kielbasa.net/",
   userId: "<id>",
 };
 ```

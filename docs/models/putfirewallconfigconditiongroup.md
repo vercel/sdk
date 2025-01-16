@@ -8,8 +8,8 @@ import { PutFirewallConfigConditionGroup } from "@vercel/sdk/models/putfirewallc
 let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "target_path",
-      op: "gte",
+      type: "scheme",
+      op: "pre",
     },
   ],
 };

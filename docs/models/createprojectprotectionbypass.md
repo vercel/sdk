@@ -6,7 +6,7 @@
 import { CreateProjectProtectionBypass } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectProtectionBypass = {
-  createdAt: 5243.80,
+  createdAt: 9707.32,
   createdBy: "<value>",
   scope: "automation-bypass",
 };

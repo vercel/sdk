@@ -30,7 +30,7 @@ async function run() {
     requestBody: {
       url: "https://woeful-yin.biz",
       events: [
-        "deployment-checks-completed",
+
       ],
     },
   });
@@ -63,7 +63,7 @@ async function run() {
     requestBody: {
       url: "https://woeful-yin.biz",
       events: [
-        "test-webhook",
+  
       ],
     },
   });

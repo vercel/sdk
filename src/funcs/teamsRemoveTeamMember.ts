@@ -5,6 +5,7 @@
 import { VercelCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -91,9 +92,9 @@ export async function teamsRemoveTeamMember(
     "newDefaultTeamId": payload.newDefaultTeamId,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
@@ -158,8 +159,9 @@ export async function teamsRemoveTeamMember(
     M.json(200, RemoveTeamMemberResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, "4XX", 503, "5XX"]),
+    M.fail([403, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([503, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

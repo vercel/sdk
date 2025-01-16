@@ -8,8 +8,8 @@ import { UpdateFirewallConfigRequestBodyConditionGroup } from "@vercel/sdk/model
 let value: UpdateFirewallConfigRequestBodyConditionGroup = {
   conditions: [
     {
-      type: "path",
-      op: "gt",
+      type: "cookie",
+      op: "eq",
     },
   ],
 };

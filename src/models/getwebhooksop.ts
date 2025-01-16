@@ -46,6 +46,9 @@ export const GetWebhooksResponseBodyEvents = {
   IntegrationConfigurationRemoved: "integration-configuration.removed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration.scope-change-confirmed",
+  IntegrationResourceProjectConnected: "integration-resource.project-connected",
+  IntegrationResourceProjectDisconnected:
+    "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
   DeploymentChecksCompletedLegacy: "deployment-checks-completed",
@@ -67,8 +70,8 @@ export const GetWebhooksResponseBodyEvents = {
   MarketplaceInvoicePaid: "marketplace.invoice.paid",
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
-  TestWebhook: "observability.anomaly",
-  undefined: "test-webhook",
+  ObservabilityAnomaly: "observability.anomaly",
+  TestWebhook: "test-webhook",
 } as const;
 /**
  * The webhooks events
@@ -192,6 +195,9 @@ export const ResponseBodyEvents = {
   IntegrationConfigurationRemoved: "integration-configuration.removed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration.scope-change-confirmed",
+  IntegrationResourceProjectConnected: "integration-resource.project-connected",
+  IntegrationResourceProjectDisconnected:
+    "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
   DeploymentChecksCompletedLegacy: "deployment-checks-completed",
@@ -213,8 +219,8 @@ export const ResponseBodyEvents = {
   MarketplaceInvoicePaid: "marketplace.invoice.paid",
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
-  TestWebhook: "observability.anomaly",
-  undefined: "test-webhook",
+  ObservabilityAnomaly: "observability.anomaly",
+  TestWebhook: "test-webhook",
 } as const;
 /**
  * The webhooks events

@@ -9,7 +9,7 @@ let value: ResponseBodyBillingPlan = {
   id: "<id>",
   type: "subscription",
   name: "<value>",
-  description: "unhappy yum finally drat after sheepishly bah um",
+  description: "rusty so after awkwardly loosely than providence",
 };
 ```
 

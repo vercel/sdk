@@ -1,21 +1,21 @@
-speakeasyVersion: 1.463.1
+speakeasyVersion: 1.468.9
 sources:
     vercel-OAS:
         sourceNamespace: vercel-oas
-        sourceRevisionDigest: sha256:97cbbce568f6b86d68c6fd972b584dd0ec7e1bbed47d7ebf2bed95aa7ae06d5b
-        sourceBlobDigest: sha256:90ecea7dfccdc0744d8c11d16c531a9e8a8e37506f566a9f76f743994271ec20
+        sourceRevisionDigest: sha256:b1ecf899bc6cff72ea74ea064a0b814d710d7ff80a108d704b742bb9a2708510
+        sourceBlobDigest: sha256:c61c89a9d086211005600c757a3ff13d67dada7d5a37cb477654683c11be03f7
         tags:
             - latest
-            - speakeasy-sdk-regen-1736200310
+            - speakeasy-sdk-regen-1737064716
             - 0.0.1
 targets:
     vercel:
         source: vercel-OAS
         sourceNamespace: vercel-oas
-        sourceRevisionDigest: sha256:97cbbce568f6b86d68c6fd972b584dd0ec7e1bbed47d7ebf2bed95aa7ae06d5b
-        sourceBlobDigest: sha256:90ecea7dfccdc0744d8c11d16c531a9e8a8e37506f566a9f76f743994271ec20
+        sourceRevisionDigest: sha256:b1ecf899bc6cff72ea74ea064a0b814d710d7ff80a108d704b742bb9a2708510
+        sourceBlobDigest: sha256:c61c89a9d086211005600c757a3ff13d67dada7d5a37cb477654683c11be03f7
         codeSamplesNamespace: vercel-oas-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:21a1dd643d957187fe51196844c5714a6b5ff12d1eac1fc36703af94c34c0075
+        codeSamplesRevisionDigest: sha256:edfc4e8aaddfbbc37fd302f67a39491f591cba2a04c8e6a7a604b372b8980380
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -25,6 +25,7 @@ workflow:
                 - location: https://openapi.vercel.sh/
             overlays:
                 - location: overlay.yaml
+                - location: tests-overlay.yaml
             output: vercel-spec.json
             ruleset: vercelRestAPIRuleset
             registry:
@@ -40,3 +41,5 @@ workflow:
                 registry:
                     location: registry.speakeasyapi.dev/vercel/vercel-docs/vercel-oas-typescript-code-samples
                 blocking: false
+            testing:
+                enabled: true

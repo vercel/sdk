@@ -309,6 +309,14 @@ run();
 * [getEdgeConfigBackup](docs/sdks/edgeconfig/README.md#getedgeconfigbackup) - Get Edge Config backup
 * [getEdgeConfigBackups](docs/sdks/edgeconfig/README.md#getedgeconfigbackups) - Get Edge Config backups
 
+### [environment](docs/sdks/environment/README.md)
+
+* [postV1ProjectsIdOrNameCustomEnvironments](docs/sdks/environment/README.md#postv1projectsidornamecustomenvironments) - Create a custom environment for the current project.
+* [getV9ProjectsIdOrNameCustomEnvironments](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
+* [getV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironmentsenvironmentslugorid) - Retrieve a custom environment
+* [patchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#patchv9projectsidornamecustomenvironmentsenvironmentslugorid) - Update a custom environment
+* [deleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#deletev9projectsidornamecustomenvironmentsenvironmentslugorid) - Remove a custom environment
+
 ### [integrations](docs/sdks/integrations/README.md)
 
 * [getConfigurations](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
@@ -336,7 +344,8 @@ run();
 * [submitInvoice](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 * [updateInvoice](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
-* [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets
+* [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
+* [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 
 ### [projectMembers](docs/sdks/projectmembers/README.md)
@@ -373,6 +382,9 @@ run();
 * [putFirewallConfig](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 * [updateFirewallConfig](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 * [getFirewallConfig](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
+* [getBypassIp](docs/sdks/security/README.md#getbypassip) - Read System Bypass
+* [addBypassIp](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
+* [removeBypassIp](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 
 ### [teams](docs/sdks/teams/README.md)
 
@@ -497,6 +509,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`edgeConfigGetEdgeConfigTokens`](docs/sdks/edgeconfig/README.md#getedgeconfigtokens) - Get all tokens of an Edge Config
 - [`edgeConfigPatchEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
 - [`edgeConfigUpdateEdgeConfig`](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
+- [`environmentDeleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#deletev9projectsidornamecustomenvironmentsenvironmentslugorid) - Remove a custom environment
+- [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
+- [`environmentGetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironmentsenvironmentslugorid) - Retrieve a custom environment
+- [`environmentPatchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#patchv9projectsidornamecustomenvironmentsenvironmentslugorid) - Update a custom environment
+- [`environmentPostV1ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#postv1projectsidornamecustomenvironments) - Create a custom environment for the current project.
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
@@ -517,7 +534,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
-- [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets
+- [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
+- [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -540,8 +558,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
+- [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
+- [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 - [`securityGetFirewallConfig`](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
 - [`securityPutFirewallConfig`](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
+- [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 - [`securityUpdateFirewallConfig`](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 - [`teamsCreateTeam`](docs/sdks/teams/README.md#createteam) - Create a Team

@@ -468,6 +468,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.projects.getProjectDomains({
     idOrName: "<value>",
+    customEnvironmentId: "env_123abc4567",
     redirect: "example.com",
     limit: 20,
     since: 1609499532000,
@@ -500,6 +501,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await projectsGetProjectDomains(vercel, {
     idOrName: "<value>",
+    customEnvironmentId: "env_123abc4567",
     redirect: "example.com",
     limit: 20,
     since: 1609499532000,
@@ -1002,6 +1004,8 @@ async function run() {
     gitBranch: "feature-1",
     decrypt: "true",
     source: "vercel-cli:pull",
+    customEnvironmentId: "env_123abc4567",
+    customEnvironmentSlug: "my-custom-env",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -1033,6 +1037,8 @@ async function run() {
     gitBranch: "feature-1",
     decrypt: "true",
     source: "vercel-cli:pull",
+    customEnvironmentId: "env_123abc4567",
+    customEnvironmentSlug: "my-custom-env",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -1276,6 +1282,7 @@ async function run() {
   const result = await vercel.projects.removeProjectEnv({
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    customEnvironmentId: "env_123abc4567",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -1305,6 +1312,7 @@ async function run() {
   const res = await projectsRemoveProjectEnv(vercel, {
     idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
     id: "XMbOEya1gUUO1ir4",
+    customEnvironmentId: "env_123abc4567",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });

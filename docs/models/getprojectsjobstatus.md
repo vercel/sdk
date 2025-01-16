@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsJobStatus } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsJobStatus = "pending";
+let value: GetProjectsJobStatus = "in-progress";
 ```
 
 ## Values

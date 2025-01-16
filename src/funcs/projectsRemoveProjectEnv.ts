@@ -5,6 +5,7 @@
 import { VercelCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -88,13 +89,14 @@ export async function projectsRemoveProjectEnv(
   const path = pathToFunc("/v9/projects/{idOrName}/env/{id}")(pathParams);
 
   const query = encodeFormQuery({
+    "customEnvironmentId": payload.customEnvironmentId,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.bearerToken);
   const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
@@ -159,8 +161,9 @@ export async function projectsRemoveProjectEnv(
     M.json(200, RemoveProjectEnvResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, 409, "4XX", "5XX"]),
+    M.fail([403, 409, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

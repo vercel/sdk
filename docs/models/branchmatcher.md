@@ -1,9 +1,11 @@
 # BranchMatcher
 
+How we want to determine a matching branch. This is optional.
+
 ## Example Usage
 
 ```typescript
-import { BranchMatcher } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { BranchMatcher } from "@vercel/sdk/models/postv1projectsidornamecustomenvironmentsop.js";
 
 let value: BranchMatcher = {
   type: "startsWith",
@@ -13,7 +15,7 @@ let value: BranchMatcher = {
 
 ## Fields
 
-| Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                                                           | [models.UpdateProjectDataCacheProjectsResponse200ApplicationJSONType](../models/updateprojectdatacacheprojectsresponse200applicationjsontype.md) | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
-| `pattern`                                                                                                                                        | *string*                                                                                                                                         | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                           | [models.PostV1ProjectsIdOrNameCustomEnvironmentsType](../models/postv1projectsidornamecustomenvironmentstype.md) | :heavy_check_mark:                                                                                               | Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".                                             |
+| `pattern`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | Git branch name or portion thereof.                                                                              |

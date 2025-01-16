@@ -823,8 +823,10 @@ export type GetProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export type GetProjectsResourceConfig = {
+  functionDefaultRegion?: string | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: GetProjectsFunctionDefaultMemoryType | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
   allowServerlessConcurrency?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
 };
@@ -5521,17 +5523,21 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  functionDefaultRegion: z.string().optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$inboundSchema
     .optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
   allowServerlessConcurrency: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsResourceConfig$Outbound = {
+  functionDefaultRegion?: string | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
   allowServerlessConcurrency?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
 };
@@ -5542,9 +5548,11 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsResourceConfig
 > = z.object({
+  functionDefaultRegion: z.string().optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$outboundSchema
     .optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
   allowServerlessConcurrency: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
 });

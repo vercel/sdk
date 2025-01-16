@@ -5,7 +5,7 @@
 ```typescript
 import { Id } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: Id = "gen";
+let value: Id = "xss";
 ```
 
 ## Values

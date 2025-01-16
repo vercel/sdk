@@ -5,7 +5,7 @@
 ```typescript
 import { PutFirewallConfigSecurityRequestRequestBodyIpsAction } from "@vercel/sdk/models/putfirewallconfigop.js";
 
-let value: PutFirewallConfigSecurityRequestRequestBodyIpsAction = "bypass";
+let value: PutFirewallConfigSecurityRequestRequestBodyIpsAction = "deny";
 ```
 
 ## Values

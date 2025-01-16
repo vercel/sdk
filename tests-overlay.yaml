@@ -31,3 +31,6 @@ actions:
   - target: $.paths['/v2/user'].get
     update:
       x-speakeasy-test: false
+  - target: $.paths['/v8/artifacts/{hash}'].put
+    update:
+      x-speakeasy-test: false      

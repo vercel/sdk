@@ -3,6 +3,7 @@
  */
 
 import { securityAddBypassIp } from "../funcs/securityAddBypassIp.js";
+import { securityGetActiveAttackStatus } from "../funcs/securityGetActiveAttackStatus.js";
 import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
 import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
@@ -14,6 +15,10 @@ import {
   AddBypassIpRequest,
   AddBypassIpResponseBody,
 } from "../models/addbypassipop.js";
+import {
+  GetActiveAttackStatusRequest,
+  GetActiveAttackStatusResponseBody,
+} from "../models/getactiveattackstatusop.js";
 import {
   GetBypassIpRequest,
   GetBypassIpResponseBody,
@@ -103,6 +108,23 @@ export class Security extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetFirewallConfigResponseBody> {
     return unwrapAsync(securityGetFirewallConfig(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Read active attack data
+   *
+   * @remarks
+   * Retrieve active attack data within the last 24h window
+   */
+  async getActiveAttackStatus(
+    request: GetActiveAttackStatusRequest,
+    options?: RequestOptions,
+  ): Promise<GetActiveAttackStatusResponseBody> {
+    return unwrapAsync(securityGetActiveAttackStatus(
       this,
       request,
       options,

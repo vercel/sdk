@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.RemoveBypassIpRequestBody1 = {
-  domain: "friendly-circumference.org",
+  domain: "willing-follower.com",
 };
 ```
 

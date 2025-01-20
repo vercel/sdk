@@ -18,7 +18,7 @@ generation:
   tests:
     generateNewTests: true
 typescript:
-  version: 1.3.0
+  version: 1.3.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

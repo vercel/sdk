@@ -790,7 +790,8 @@ export type FunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export type UpdateProjectDataCacheResourceConfig = {
-  functionDefaultRegion?: string | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegion?: string | null | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
@@ -5446,7 +5447,8 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  functionDefaultRegion: z.string().optional(),
+  fluid: z.boolean().optional(),
+  functionDefaultRegion: z.nullable(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
@@ -5456,7 +5458,8 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateProjectDataCacheResourceConfig$Outbound = {
-  functionDefaultRegion?: string | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegion?: string | null | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
@@ -5470,7 +5473,8 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDataCacheResourceConfig
 > = z.object({
-  functionDefaultRegion: z.string().optional(),
+  fluid: z.boolean().optional(),
+  functionDefaultRegion: z.nullable(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: FunctionDefaultMemoryType$outboundSchema
     .optional(),

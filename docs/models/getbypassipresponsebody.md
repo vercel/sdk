@@ -11,8 +11,8 @@ const value: models.GetBypassIpResponseBody1 = {
     {
       ownerId: "<id>",
       id: "<id>",
-      domain: "dramatic-coast.org",
-      ip: "45.255.79.31",
+      domain: "unsung-hyphenation.com",
+      ip: "b4d7:5b64:d368:64a7:2b27:d8db:3ec2:afd2",
       projectId: "<id>",
       isProjectRule: false,
     },

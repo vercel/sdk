@@ -635,3 +635,38 @@ test("Projects List Promote Aliases", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({});
 });
+
+test("Projects Create Project Transfer Request", async () => {
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: createTestHTTPClient("createProjectTransferRequest"),
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.createProjectTransferRequest({
+    idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({});
+});
+
+test("Projects Accept Project Transfer Request", async () => {
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: createTestHTTPClient("acceptProjectTransferRequest"),
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.acceptProjectTransferRequest({
+    code: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      newProjectName: "a-project-name",
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({});
+});

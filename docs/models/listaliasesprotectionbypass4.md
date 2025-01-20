@@ -8,8 +8,8 @@ The protection bypass for the alias
 import { ListAliasesProtectionBypass4 } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: ListAliasesProtectionBypass4 = {
-  createdAt: 3727.37,
-  lastUpdatedAt: 9358,
+  createdAt: 4929.22,
+  lastUpdatedAt: 2048.77,
   lastUpdatedBy: "<value>",
   scope: "email_invite",
 };

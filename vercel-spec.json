@@ -5421,7 +5421,11 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "fluid": {
+                          "type": "boolean"
+                        },
                         "functionDefaultRegion": {
+                          "nullable": true,
                           "type": "string"
                         },
                         "functionDefaultTimeout": {
@@ -26205,7 +26209,11 @@
                           },
                           "resourceConfig": {
                             "properties": {
+                              "fluid": {
+                                "type": "boolean"
+                              },
                               "functionDefaultRegion": {
+                                "nullable": true,
                                 "type": "string"
                               },
                               "functionDefaultTimeout": {
@@ -29732,7 +29740,11 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "fluid": {
+                          "type": "boolean"
+                        },
                         "functionDefaultRegion": {
+                          "nullable": true,
                           "type": "string"
                         },
                         "functionDefaultTimeout": {
@@ -33398,7 +33410,11 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "fluid": {
+                          "type": "boolean"
+                        },
                         "functionDefaultRegion": {
+                          "nullable": true,
                           "type": "string"
                         },
                         "functionDefaultTimeout": {
@@ -36824,7 +36840,11 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "fluid": {
+                          "type": "boolean"
+                        },
                         "functionDefaultRegion": {
+                          "nullable": true,
                           "type": "string"
                         },
                         "functionDefaultTimeout": {
@@ -40909,6 +40929,10 @@
                     "maxLength": 250,
                     "type": "string",
                     "nullable": true
+                  },
+                  "customEnvironmentId": {
+                    "description": "The unique custom environment identifier within the project",
+                    "type": "string"
                   },
                   "redirect": {
                     "description": "Target destination domain for redirect",
@@ -46870,6 +46894,213 @@
         "x-speakeasy-test": false
       }
     },
+    "/projects/{idOrName}/transfer-request": {
+      "post": {
+        "description": "Initiates a project transfer request from one team to another. \u003cbr/\u003e Returns a `code` that remains valid for 24 hours and can be used to accept the transfer request by another team using the `PUT /projects/transfer-request/:code` endpoint. \u003cbr/\u003e Users can also accept the project transfer request using the claim URL: `https://vercel.com/claim-deployment?code=\u003ccode\u003e\u0026returnUrl=\u003creturnUrl\u003e`. \u003cbr/\u003e The `code` parameter specifies the project transfer request code generated using this endpoint. \u003cbr/\u003e The `returnUrl` parameter redirects users to a specific page of the application if the claim URL is invalid or expired.",
+        "operationId": "createProjectTransferRequest",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create project transfer request",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "The project transfer request has been initiated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The ID or name of the project to transfer.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID or name of the project to transfer."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/projects/transfer-request/{code}": {
+      "put": {
+        "description": "Accept a project transfer request initated by another team. \u003cbr/\u003e The `code` is generated using the `POST /projects/:idOrName/transfer-request` endpoint.",
+        "operationId": "acceptProjectTransferRequest",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Accept project transfer request",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "202": {
+            "description": "The project has been transferred successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "description": "The code of the project transfer request.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The code of the project transfer request."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "newProjectName": {
+                    "description": "The desired name for the project",
+                    "example": "a-project-name",
+                    "type": "string",
+                    "maxLength": 100,
+                    "pattern": "^(?!.*---)[a-z0-9-_.]+$"
+                  },
+                  "paidFeatures": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "concurrentBuilds": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "passwordProtection": {
+                        "type": "boolean",
+                        "nullable": true
+                      },
+                      "previewDeploymentSuffix": {
+                        "type": "boolean",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/projects/{idOrName}/protection-bypass": {
       "patch": {
         "description": "Update the deployment protection automation bypass for a project",
@@ -50151,6 +50382,197 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/security/firewall/attack-status": {
+      "get": {
+        "description": "Retrieve active attack data within the last 24h window",
+        "operationId": "getActiveAttackStatus",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Read active attack data",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "anomalies": {
+                          "items": {
+                            "properties": {
+                              "ownerId": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "startTime": {
+                                "type": "number"
+                              },
+                              "endTime": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "atMinute": {
+                                "type": "number"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "affectedHostMap": {
+                                "additionalProperties": {
+                                  "properties": {
+                                    "anomalyAlerts": {
+                                      "additionalProperties": {
+                                        "properties": {
+                                          "at_minute": {
+                                            "type": "string"
+                                          },
+                                          "zscore": {
+                                            "type": "number"
+                                          },
+                                          "total_requests_minute": {
+                                            "type": "number"
+                                          },
+                                          "avg_requests": {
+                                            "type": "number"
+                                          },
+                                          "stddev_requests": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "at_minute",
+                                          "zscore",
+                                          "total_requests_minute",
+                                          "avg_requests",
+                                          "stddev_requests"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "object"
+                                    },
+                                    "ddosAlerts": {
+                                      "additionalProperties": {
+                                        "properties": {
+                                          "atMinute": {
+                                            "type": "string"
+                                          },
+                                          "totalReqs": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "atMinute",
+                                          "totalReqs"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "object"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "required": [
+                              "ownerId",
+                              "projectId",
+                              "startTime",
+                              "endTime",
+                              "atMinute",
+                              "affectedHostMap"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "anomalies"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -58090,6 +58512,9 @@
                   "fastOriginTransfer",
                   "functionDuration",
                   "functionInvocation",
+                  "imageOptimizationCacheRead",
+                  "imageOptimizationCacheWrite",
+                  "imageOptimizationTransformation",
                   "logDrainsVolume",
                   "monitoringMetric",
                   "observabilityEvent",

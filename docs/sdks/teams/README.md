@@ -505,6 +505,10 @@ async function run() {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
           role: "ADMIN",
         },
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
       ],
     },
   });
@@ -538,6 +542,10 @@ async function run() {
       confirmed: true,
       role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
           role: "ADMIN",

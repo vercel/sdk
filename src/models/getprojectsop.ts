@@ -823,7 +823,8 @@ export type GetProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export type GetProjectsResourceConfig = {
-  functionDefaultRegion?: string | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegion?: string | null | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: GetProjectsFunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
@@ -5523,7 +5524,8 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  functionDefaultRegion: z.string().optional(),
+  fluid: z.boolean().optional(),
+  functionDefaultRegion: z.nullable(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$inboundSchema
     .optional(),
@@ -5534,7 +5536,8 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetProjectsResourceConfig$Outbound = {
-  functionDefaultRegion?: string | undefined;
+  fluid?: boolean | undefined;
+  functionDefaultRegion?: string | null | undefined;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
@@ -5548,7 +5551,8 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsResourceConfig
 > = z.object({
-  functionDefaultRegion: z.string().optional(),
+  fluid: z.boolean().optional(),
+  functionDefaultRegion: z.nullable(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$outboundSchema
     .optional(),

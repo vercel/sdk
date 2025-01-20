@@ -10,8 +10,8 @@ let value: ListAccessGroupProjectsResponseBody = {
     {
       projectId: "<id>",
       role: "PROJECT_VIEWER",
-      createdAt: "1726678029864",
-      updatedAt: "1736996571521",
+      createdAt: "1727015326913",
+      updatedAt: "1737333868570",
       project: {},
     },
   ],

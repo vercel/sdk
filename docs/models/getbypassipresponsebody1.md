@@ -10,8 +10,8 @@ let value: GetBypassIpResponseBody1 = {
     {
       ownerId: "<id>",
       id: "<id>",
-      domain: "perky-mouser.name",
-      ip: "2135:dd5a:a9ba:a3bc:3ad4:a1ea:729e:26ce",
+      domain: "fuzzy-cassava.info",
+      ip: "237.34.23.23",
       projectId: "<id>",
       isProjectRule: false,
     },

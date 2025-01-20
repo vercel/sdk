@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.AddBypassIpRequestBody1 = {
-  domain: "concerned-bookend.com",
+  domain: "shiny-story.info",
 };
 ```
 

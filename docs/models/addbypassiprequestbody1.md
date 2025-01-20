@@ -6,7 +6,7 @@
 import { AddBypassIpRequestBody1 } from "@vercel/sdk/models/addbypassipop.js";
 
 let value: AddBypassIpRequestBody1 = {
-  domain: "leading-hovercraft.org",
+  domain: "fruitful-populist.com",
 };
 ```
 

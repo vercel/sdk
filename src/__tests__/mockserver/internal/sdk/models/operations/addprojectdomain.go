@@ -46,6 +46,8 @@ type AddProjectDomainRequestBody struct {
 	Name string `json:"name"`
 	// Git branch to link the project domain
 	GitBranch *string `json:"gitBranch,omitempty"`
+	// The unique custom environment identifier within the project
+	CustomEnvironmentID *string `json:"customEnvironmentId,omitempty"`
 	// Target destination domain for redirect
 	Redirect *string `json:"redirect,omitempty"`
 	// Status code for domain redirect
@@ -64,6 +66,13 @@ func (o *AddProjectDomainRequestBody) GetGitBranch() *string {
 		return nil
 	}
 	return o.GitBranch
+}
+
+func (o *AddProjectDomainRequestBody) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
 }
 
 func (o *AddProjectDomainRequestBody) GetRedirect() *string {

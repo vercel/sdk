@@ -5214,3 +5214,92 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: certs
+  - workflowId: createProjectTransferRequest
+    steps:
+      - stepId: test
+        operationId: createProjectTransferRequest
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: projects
+  - workflowId: acceptProjectTransferRequest
+    steps:
+      - stepId: test
+        operationId: acceptProjectTransferRequest
+        parameters:
+          - name: code
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            newProjectName: a-project-name
+        successCriteria:
+          - condition: $statusCode == 202
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: projects
+  - workflowId: getActiveAttackStatus
+    steps:
+      - stepId: test
+        operationId: getActiveAttackStatus
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "anomalies": [
+                  {
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "startTime": 9556.58,
+                    "endTime": 3001.16,
+                    "atMinute": 5447.77,
+                    "affectedHostMap": {}
+                  },
+                  {
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "startTime": 7786.06,
+                    "endTime": 9758.22,
+                    "atMinute": 7118.69,
+                    "affectedHostMap": {}
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: security

@@ -3335,12 +3335,20 @@ func (e *FunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
 }
 
 type ResourceConfig struct {
+	Fluid                      *bool                      `json:"fluid,omitempty"`
 	FunctionDefaultRegion      *string                    `json:"functionDefaultRegion,omitempty"`
 	FunctionDefaultTimeout     *float64                   `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *FunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                      `json:"functionZeroConfigFailover,omitempty"`
 	AllowServerlessConcurrency *bool                      `json:"allowServerlessConcurrency,omitempty"`
 	ElasticConcurrencyEnabled  *bool                      `json:"elasticConcurrencyEnabled,omitempty"`
+}
+
+func (o *ResourceConfig) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
 }
 
 func (o *ResourceConfig) GetFunctionDefaultRegion() *string {

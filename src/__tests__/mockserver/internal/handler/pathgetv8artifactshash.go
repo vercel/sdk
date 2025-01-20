@@ -4,6 +4,7 @@ package handler
 
 import (
 	"fmt"
+	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/handler/values"
 	"mockserver/internal/logging"
@@ -29,14 +30,17 @@ func pathGetV8ArtifactsHash(dir *logging.HTTPFileDirectory, rt *tracking.Request
 
 func testDownloadArtifactDownloadArtifact0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}

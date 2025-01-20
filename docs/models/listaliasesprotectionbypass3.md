@@ -8,7 +8,7 @@ The protection bypass for the alias
 import { ListAliasesProtectionBypass3 } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: ListAliasesProtectionBypass3 = {
-  createdAt: 3319.27,
+  createdAt: 8100.04,
   createdBy: "<value>",
   scope: "alias-protection-override",
 };

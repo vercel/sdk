@@ -5,7 +5,7 @@
 ```typescript
 import { ProtectionBypassAccess } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: ProtectionBypassAccess = "requested";
+let value: ProtectionBypassAccess = "granted";
 ```
 
 ## Values

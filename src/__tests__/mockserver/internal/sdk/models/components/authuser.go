@@ -73,6 +73,9 @@ const (
 	BlockedDueToOverageTypeFastOriginTransfer                      BlockedDueToOverageType = "fastOriginTransfer"
 	BlockedDueToOverageTypeFunctionDuration                        BlockedDueToOverageType = "functionDuration"
 	BlockedDueToOverageTypeFunctionInvocation                      BlockedDueToOverageType = "functionInvocation"
+	BlockedDueToOverageTypeImageOptimizationCacheRead              BlockedDueToOverageType = "imageOptimizationCacheRead"
+	BlockedDueToOverageTypeImageOptimizationCacheWrite             BlockedDueToOverageType = "imageOptimizationCacheWrite"
+	BlockedDueToOverageTypeImageOptimizationTransformation         BlockedDueToOverageType = "imageOptimizationTransformation"
 	BlockedDueToOverageTypeLogDrainsVolume                         BlockedDueToOverageType = "logDrainsVolume"
 	BlockedDueToOverageTypeMonitoringMetric                        BlockedDueToOverageType = "monitoringMetric"
 	BlockedDueToOverageTypeObservabilityEvent                      BlockedDueToOverageType = "observabilityEvent"
@@ -147,6 +150,12 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "functionDuration":
 		fallthrough
 	case "functionInvocation":
+		fallthrough
+	case "imageOptimizationCacheRead":
+		fallthrough
+	case "imageOptimizationCacheWrite":
+		fallthrough
+	case "imageOptimizationTransformation":
 		fallthrough
 	case "logDrainsVolume":
 		fallthrough

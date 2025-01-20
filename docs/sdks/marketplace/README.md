@@ -278,19 +278,35 @@ async function run() {
   await vercel.marketplace.submitBillingData({
     integrationConfigurationId: "<id>",
     requestBody: {
-      timestamp: new Date("2024-09-29T02:38:01.476Z"),
-      eod: new Date("2022-12-28T23:46:57.523Z"),
+      timestamp: new Date("2025-09-29T02:38:01.476Z"),
+      eod: new Date("2023-12-28T23:46:57.523Z"),
       period: {
-        start: new Date("2022-06-25T19:04:50.518Z"),
-        end: new Date("2023-10-18T01:18:36.230Z"),
+        start: new Date("2023-06-25T19:04:50.518Z"),
+        end: new Date("2024-10-17T01:18:36.230Z"),
       },
       billing: {
         items: [
           {
             billingPlanId: "<id>",
             name: "<value>",
-            price: "161.25",
-            quantity: 8824.47,
+            price: "511.92",
+            quantity: 328.54,
+            units: "<value>",
+            total: "<value>",
+          },
+          {
+            billingPlanId: "<id>",
+            name: "<value>",
+            price: "4.49",
+            quantity: 3113.17,
+            units: "<value>",
+            total: "<value>",
+          },
+          {
+            billingPlanId: "<id>",
+            name: "<value>",
+            price: "896.30",
+            quantity: 8536.32,
             units: "<value>",
             total: "<value>",
           },
@@ -302,7 +318,7 @@ async function run() {
           name: "<value>",
           type: "rate",
           units: "<value>",
-          dayValue: 9439.21,
+          dayValue: 9439.22,
           periodValue: 6958.71,
         },
         {
@@ -349,19 +365,35 @@ async function run() {
   const res = await marketplaceSubmitBillingData(vercel, {
     integrationConfigurationId: "<id>",
     requestBody: {
-      timestamp: new Date("2024-09-29T02:38:01.476Z"),
-      eod: new Date("2022-12-28T23:46:57.523Z"),
+      timestamp: new Date("2025-09-29T02:38:01.476Z"),
+      eod: new Date("2023-12-28T23:46:57.523Z"),
       period: {
-        start: new Date("2022-06-25T19:04:50.518Z"),
-        end: new Date("2023-10-18T01:18:36.230Z"),
+        start: new Date("2023-06-25T19:04:50.518Z"),
+        end: new Date("2024-10-17T01:18:36.230Z"),
       },
       billing: {
         items: [
           {
             billingPlanId: "<id>",
             name: "<value>",
-            price: "161.25",
-            quantity: 8824.47,
+            price: "511.92",
+            quantity: 328.54,
+            units: "<value>",
+            total: "<value>",
+          },
+          {
+            billingPlanId: "<id>",
+            name: "<value>",
+            price: "4.49",
+            quantity: 3113.17,
+            units: "<value>",
+            total: "<value>",
+          },
+          {
+            billingPlanId: "<id>",
+            name: "<value>",
+            price: "896.30",
+            quantity: 8536.32,
             units: "<value>",
             total: "<value>",
           },
@@ -373,7 +405,7 @@ async function run() {
           name: "<value>",
           type: "rate",
           units: "<value>",
-          dayValue: 9439.21,
+          dayValue: 9439.22,
           periodValue: 6958.71,
         },
         {
@@ -446,10 +478,10 @@ async function run() {
   const result = await vercel.marketplace.submitInvoice({
     integrationConfigurationId: "<id>",
     requestBody: {
-      invoiceDate: new Date("2022-06-05T08:54:16.353Z"),
+      invoiceDate: new Date("2023-06-05T08:54:16.353Z"),
       period: {
-        start: new Date("2022-07-26T14:15:15.601Z"),
-        end: new Date("2024-10-08T09:35:48.520Z"),
+        start: new Date("2023-07-26T14:15:15.601Z"),
+        end: new Date("2025-10-08T09:35:48.520Z"),
       },
       items: [
         {
@@ -464,7 +496,7 @@ async function run() {
           billingPlanId: "<id>",
           name: "<value>",
           price: "84.05",
-          quantity: 9130.94,
+          quantity: 9130.95,
           units: "<value>",
           total: "<value>",
         },
@@ -497,10 +529,10 @@ async function run() {
   const res = await marketplaceSubmitInvoice(vercel, {
     integrationConfigurationId: "<id>",
     requestBody: {
-      invoiceDate: new Date("2022-06-05T08:54:16.353Z"),
+      invoiceDate: new Date("2023-06-05T08:54:16.353Z"),
       period: {
-        start: new Date("2022-07-26T14:15:15.601Z"),
-        end: new Date("2024-10-08T09:35:48.520Z"),
+        start: new Date("2023-07-26T14:15:15.601Z"),
+        end: new Date("2025-10-08T09:35:48.520Z"),
       },
       items: [
         {
@@ -515,7 +547,7 @@ async function run() {
           billingPlanId: "<id>",
           name: "<value>",
           price: "84.05",
-          quantity: 9130.94,
+          quantity: 9130.95,
           units: "<value>",
           total: "<value>",
         },

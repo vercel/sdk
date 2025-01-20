@@ -8,8 +8,8 @@ The protection bypass for the alias
 import { ListAliasesProtectionBypass2 } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: ListAliasesProtectionBypass2 = {
-  createdAt: 4008.4,
-  lastUpdatedAt: 7903.41,
+  createdAt: 1395.05,
+  lastUpdatedAt: 8048.94,
   lastUpdatedBy: "<value>",
   access: "granted",
   scope: "user",

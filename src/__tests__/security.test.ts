@@ -399,3 +399,38 @@ test("Security Remove Bypass Ip", async () => {
     ok: true,
   });
 });
+
+test("Security Get Active Attack Status", async () => {
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: createTestHTTPClient("getActiveAttackStatus"),
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.security.getActiveAttackStatus({
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    anomalies: [
+      {
+        ownerId: "<id>",
+        projectId: "<id>",
+        startTime: 9556.58,
+        endTime: 3001.16,
+        atMinute: 5447.77,
+        affectedHostMap: {},
+      },
+      {
+        ownerId: "<id>",
+        projectId: "<id>",
+        startTime: 7786.06,
+        endTime: 9758.22,
+        atMinute: 7118.69,
+        affectedHostMap: {},
+      },
+    ],
+  });
+});

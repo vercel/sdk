@@ -3907,12 +3907,20 @@ func (e *CreateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) erro
 }
 
 type CreateProjectResourceConfig struct {
+	Fluid                      *bool                                   `json:"fluid,omitempty"`
 	FunctionDefaultRegion      *string                                 `json:"functionDefaultRegion,omitempty"`
 	FunctionDefaultTimeout     *float64                                `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *CreateProjectFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                   `json:"functionZeroConfigFailover,omitempty"`
 	AllowServerlessConcurrency *bool                                   `json:"allowServerlessConcurrency,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                   `json:"elasticConcurrencyEnabled,omitempty"`
+}
+
+func (o *CreateProjectResourceConfig) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
 }
 
 func (o *CreateProjectResourceConfig) GetFunctionDefaultRegion() *string {

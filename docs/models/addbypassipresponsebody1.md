@@ -11,7 +11,7 @@ let value: AddBypassIpResponseBody1 = {
     {
       ownerId: "<id>",
       id: "<id>",
-      domain: "jagged-duster.com",
+      domain: "rusty-status.biz",
       projectId: "<id>",
       isProjectRule: false,
     },

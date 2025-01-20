@@ -4,6 +4,7 @@ package handler
 
 import (
 	"fmt"
+	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
@@ -34,14 +35,17 @@ func pathGetV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.HTTP
 
 func testReadAccessGroupProjectReadAccessGroupProject0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -70,14 +74,17 @@ func testReadAccessGroupProjectReadAccessGroupProject0(w http.ResponseWriter, re
 
 func testReadAccessGroupProjectReadAccessGroupProjectId0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -106,14 +113,17 @@ func testReadAccessGroupProjectReadAccessGroupProjectId0(w http.ResponseWriter, 
 
 func testReadAccessGroupProjectReadAccessGroupProjectName0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}

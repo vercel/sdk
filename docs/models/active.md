@@ -10,7 +10,7 @@ let value: Active = {
   projectKey: "<value>",
   id: "<id>",
   version: 3371.49,
-  updatedAt: "1736994841682",
+  updatedAt: "1737332138721",
   firewallEnabled: false,
   crs: {
     sd: {

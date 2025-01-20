@@ -8,8 +8,8 @@ import { ResponseBodyResult } from "@vercel/sdk/models/getbypassipop.js";
 let value: ResponseBodyResult = {
   ownerId: "<id>",
   id: "<id>",
-  domain: "kaleidoscopic-vibration.net",
-  ip: "e8cf:ee66:eb4c:a79c:aa09:7db1:3eac:fa2f",
+  domain: "cruel-developing.name",
+  ip: "5aa9:baa3:bc3a:d4a1:ea72:9e26:ce43:d63f",
   projectId: "<id>",
   isProjectRule: false,
 };

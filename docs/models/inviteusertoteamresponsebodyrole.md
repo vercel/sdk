@@ -5,7 +5,7 @@
 ```typescript
 import { InviteUserToTeamResponseBodyRole } from "@vercel/sdk/models/inviteusertoteamop.js";
 
-let value: InviteUserToTeamResponseBodyRole = "DEVELOPER";
+let value: InviteUserToTeamResponseBodyRole = "OWNER";
 ```
 
 ## Values

@@ -22,5 +22,6 @@ targets:
             registry:
                 location: registry.speakeasyapi.dev/vercel/vercel-docs/vercel-oas-typescript-code-samples
             blocking: false
-        testing:
-            enabled: true
+        # disabling for now - let's make it a separate GH action so we don't stop cancel the generation
+        # testing:
+            # enabled: true

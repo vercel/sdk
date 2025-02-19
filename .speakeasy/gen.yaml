@@ -54,3 +54,4 @@ typescript:
   responseFormat: flat
   templateVersion: v2
   useIndexModules: false
+  enableMCPServer: false

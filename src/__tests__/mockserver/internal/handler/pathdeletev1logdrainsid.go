@@ -22,7 +22,7 @@ func pathDeleteV1LogDrainsID(dir *logging.HTTPFileDirectory, rt *tracking.Reques
 		case "deleteConfigurableLogDrain[0]":
 			dir.HandlerFunc("deleteConfigurableLogDrain", testDeleteConfigurableLogDrainDeleteConfigurableLogDrain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

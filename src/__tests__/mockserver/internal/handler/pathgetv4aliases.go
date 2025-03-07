@@ -26,7 +26,7 @@ func pathGetV4Aliases(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracke
 		case "listAliases[0]":
 			dir.HandlerFunc("listAliases", testListAliasesListAliases0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -48,7 +48,7 @@ func testListAliasesListAliases0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	respBody := &operations.ListAliasesResponseBody{
-		Aliases: []operations.Aliases{},
+		Aliases: []operations.ListAliasesAliases{},
 		Pagination: components.Pagination{
 			Count: 20,
 			Next:  types.Float64(1540095775951),

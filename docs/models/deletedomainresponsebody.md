@@ -8,12 +8,12 @@ Successful response removing a domain.
 import { DeleteDomainResponseBody } from "@vercel/sdk/models/deletedomainop.js";
 
 let value: DeleteDomainResponseBody = {
-  uid: "rec_V0fra8eEgQwEpFhYG2vTzC3K",
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            | Example                                |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `uid`                                  | *string*                               | :heavy_check_mark:                     | The id of the newly created DNS record | rec_V0fra8eEgQwEpFhYG2vTzC3K           |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `uid`              | *string*           | :heavy_check_mark: | N/A                |

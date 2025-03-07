@@ -5,23 +5,68 @@ Custom Ruleset
 ## Example Usage
 
 ```typescript
-import { Crs } from "@vercel/sdk/models/putfirewallconfigop.js";
+import { Crs } from "@vercel/sdk/models/getfirewallconfigop.js";
 
-let value: Crs = {};
+let value: Crs = {
+  sd: {
+    active: false,
+    action: "deny",
+  },
+  ma: {
+    active: false,
+    action: "log",
+  },
+  lfi: {
+    active: false,
+    action: "deny",
+  },
+  rfi: {
+    active: false,
+    action: "log",
+  },
+  rce: {
+    active: false,
+    action: "log",
+  },
+  php: {
+    active: false,
+    action: "log",
+  },
+  gen: {
+    active: false,
+    action: "deny",
+  },
+  xss: {
+    active: false,
+    action: "deny",
+  },
+  sqli: {
+    active: false,
+    action: "log",
+  },
+  sf: {
+    active: false,
+    action: "log",
+  },
+  java: {
+    active: false,
+    action: "deny",
+  },
+};
 ```
 
 ## Fields
 
 | Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `sd`                                                                                                      | [models.Sd](../models/sd.md)                                                                              | :heavy_minus_sign:                                                                                        | Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.             |
-| `ma`                                                                                                      | [models.Ma](../models/ma.md)                                                                              | :heavy_minus_sign:                                                                                        | Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.         |
-| `lfi`                                                                                                     | [models.Lfi](../models/lfi.md)                                                                            | :heavy_minus_sign:                                                                                        | Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.        |
-| `rfi`                                                                                                     | [models.Rfi](../models/rfi.md)                                                                            | :heavy_minus_sign:                                                                                        | Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.                 |
-| `rce`                                                                                                     | [models.Rce](../models/rce.md)                                                                            | :heavy_minus_sign:                                                                                        | Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.                   |
-| `php`                                                                                                     | [models.Php](../models/php.md)                                                                            | :heavy_minus_sign:                                                                                        | PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.                          |
-| `gen`                                                                                                     | [models.Gen](../models/gen.md)                                                                            | :heavy_minus_sign:                                                                                        | Generic Attack - Provide broad protection from various undefined or novel attack vectors.                 |
-| `xss`                                                                                                     | [models.Xss](../models/xss.md)                                                                            | :heavy_minus_sign:                                                                                        | XSS Attack - Prevent injection of malicious scripts into trusted webpages.                                |
-| `sqli`                                                                                                    | [models.Sqli](../models/sqli.md)                                                                          | :heavy_minus_sign:                                                                                        | SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.                 |
-| `sf`                                                                                                      | [models.Sf](../models/sf.md)                                                                              | :heavy_minus_sign:                                                                                        | Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs. |
-| `java`                                                                                                    | [models.Java](../models/java.md)                                                                          | :heavy_minus_sign:                                                                                        | Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.             |
+| `sd`                                                                                                      | [models.Sd](../models/sd.md)                                                                              | :heavy_check_mark:                                                                                        | Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.             |
+| `ma`                                                                                                      | [models.Ma](../models/ma.md)                                                                              | :heavy_check_mark:                                                                                        | Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.         |
+| `lfi`                                                                                                     | [models.Lfi](../models/lfi.md)                                                                            | :heavy_check_mark:                                                                                        | Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.        |
+| `rfi`                                                                                                     | [models.Rfi](../models/rfi.md)                                                                            | :heavy_check_mark:                                                                                        | Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.                 |
+| `rce`                                                                                                     | [models.Rce](../models/rce.md)                                                                            | :heavy_check_mark:                                                                                        | Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.                   |
+| `php`                                                                                                     | [models.Php](../models/php.md)                                                                            | :heavy_check_mark:                                                                                        | PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.                          |
+| `gen`                                                                                                     | [models.Gen](../models/gen.md)                                                                            | :heavy_check_mark:                                                                                        | Generic Attack - Provide broad protection from various undefined or novel attack vectors.                 |
+| `xss`                                                                                                     | [models.Xss](../models/xss.md)                                                                            | :heavy_check_mark:                                                                                        | XSS Attack - Prevent injection of malicious scripts into trusted webpages.                                |
+| `sqli`                                                                                                    | [models.Sqli](../models/sqli.md)                                                                          | :heavy_check_mark:                                                                                        | SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.                 |
+| `sf`                                                                                                      | [models.Sf](../models/sf.md)                                                                              | :heavy_check_mark:                                                                                        | Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs. |
+| `java`                                                                                                    | [models.Java](../models/java.md)                                                                          | :heavy_check_mark:                                                                                        | Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.             |

@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Domains Buy Domain", async () => {
+  const testHttpClient = createTestHTTPClient("buyDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("buyDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -49,9 +51,11 @@ test("Domains Buy Domain", async () => {
 });
 
 test("Domains Check Domain Price", async () => {
+  const testHttpClient = createTestHTTPClient("checkDomainPrice");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("checkDomainPrice"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -69,9 +73,11 @@ test("Domains Check Domain Price", async () => {
 });
 
 test("Domains Check Domain Status", async () => {
+  const testHttpClient = createTestHTTPClient("checkDomainStatus");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("checkDomainStatus"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -87,9 +93,11 @@ test("Domains Check Domain Status", async () => {
 });
 
 test("Domains Get Domain Transfer", async () => {
+  const testHttpClient = createTestHTTPClient("getDomainTransfer");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDomainTransfer"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -108,9 +116,11 @@ test("Domains Get Domain Transfer", async () => {
 });
 
 test("Domains Get Domain Config", async () => {
+  const testHttpClient = createTestHTTPClient("getDomainConfig");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDomainConfig"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -126,9 +136,11 @@ test("Domains Get Domain Config", async () => {
 });
 
 test("Domains Get Domain", async () => {
+  const testHttpClient = createTestHTTPClient("getDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -176,9 +188,11 @@ test("Domains Get Domain", async () => {
 });
 
 test("Domains Get Domains", async () => {
+  const testHttpClient = createTestHTTPClient("getDomains");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDomains"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -234,9 +248,11 @@ test("Domains Get Domains", async () => {
 });
 
 test("Domains Create Or Transfer Domain", async () => {
+  const testHttpClient = createTestHTTPClient("createOrTransferDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createOrTransferDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -288,9 +304,11 @@ test("Domains Create Or Transfer Domain", async () => {
 });
 
 test("Domains Delete Domain", async () => {
+  const testHttpClient = createTestHTTPClient("deleteDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

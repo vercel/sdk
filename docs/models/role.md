@@ -5,11 +5,11 @@
 ```typescript
 import { Role } from "@vercel/sdk/models/teamlimited.js";
 
-let value: Role = "CONTRIBUTOR";
+let value: Role = "VIEWER";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
 ```

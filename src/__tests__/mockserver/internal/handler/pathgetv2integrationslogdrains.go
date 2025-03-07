@@ -24,7 +24,7 @@ func pathGetV2IntegrationsLogDrains(dir *logging.HTTPFileDirectory, rt *tracking
 		case "getIntegrationLogDrains[0]":
 			dir.HandlerFunc("getIntegrationLogDrains", testGetIntegrationLogDrainsGetIntegrationLogDrains0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

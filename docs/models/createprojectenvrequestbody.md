@@ -15,6 +15,9 @@ const value: models.CreateProjectEnvRequestBody1 = {
   ],
   gitBranch: "feature-1",
   comment: "database connection string for production",
+  customEnvironmentIds: [
+    "env_1234567890",
+  ],
 };
 ```
 
@@ -31,6 +34,9 @@ const value: models.CreateProjectEnvRequestBody2[] = [
     ],
     gitBranch: "feature-1",
     comment: "database connection string for production",
+    customEnvironmentIds: [
+      "env_1234567890",
+    ],
   },
 ];
 ```

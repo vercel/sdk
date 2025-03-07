@@ -57,7 +57,7 @@ const value: models.GetDeploymentGitSourceDeployments6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://noteworthy-pigsty.biz/",
+  gitUrl: "https://accomplished-hippodrome.name/",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GetDeploymentGitSourceDeployments7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 194.62,
+  repoId: 4016.88,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 3992.22,
+  projectId: 857.94,
 };
 ```
 

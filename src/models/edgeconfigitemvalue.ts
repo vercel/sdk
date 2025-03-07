@@ -8,8 +8,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type EdgeConfigItemValue = string | number | boolean | {
-  [k: string]: EdgeConfigItemValue;
-} | Array<EdgeConfigItemValue>;
+  [k: string]: EdgeConfigItemValue | null;
+} | Array<EdgeConfigItemValue | null>;
 
 /** @internal */
 export const EdgeConfigItemValue$inboundSchema: z.ZodType<
@@ -20,14 +20,14 @@ export const EdgeConfigItemValue$inboundSchema: z.ZodType<
   z.string(),
   z.number(),
   z.boolean(),
-  z.record(z.lazy(() => EdgeConfigItemValue$inboundSchema)),
-  z.array(z.lazy(() => EdgeConfigItemValue$inboundSchema)),
+  z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
+  z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
 ]);
 
 /** @internal */
 export type EdgeConfigItemValue$Outbound = string | number | boolean | {
-  [k: string]: EdgeConfigItemValue$Outbound;
-} | Array<EdgeConfigItemValue$Outbound>;
+  [k: string]: EdgeConfigItemValue$Outbound | null;
+} | Array<EdgeConfigItemValue$Outbound | null>;
 
 /** @internal */
 export const EdgeConfigItemValue$outboundSchema: z.ZodType<
@@ -38,8 +38,8 @@ export const EdgeConfigItemValue$outboundSchema: z.ZodType<
   z.string(),
   z.number(),
   z.boolean(),
-  z.record(z.lazy(() => EdgeConfigItemValue$outboundSchema)),
-  z.array(z.lazy(() => EdgeConfigItemValue$outboundSchema)),
+  z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
+  z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
 ]);
 
 /**

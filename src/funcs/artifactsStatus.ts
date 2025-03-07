@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Check the status of Remote Caching for this principal. Returns a JSON-encoded status indicating if Remote Caching is enabled, disabled, or disabled due to usage limits.
  */
-export async function artifactsStatus(
+export function artifactsStatus(
   client: VercelCore,
   request: StatusRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     StatusResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function artifactsStatus(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: StatusRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      StatusResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => StatusRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -86,6 +115,7 @@ export async function artifactsStatus(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "status",
     oAuth2Scopes: [],
 
@@ -109,7 +139,7 @@ export async function artifactsStatus(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -120,7 +150,7 @@ export async function artifactsStatus(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -147,8 +177,8 @@ export async function artifactsStatus(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

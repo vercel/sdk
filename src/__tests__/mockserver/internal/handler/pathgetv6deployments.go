@@ -26,7 +26,7 @@ func pathGetV6Deployments(dir *logging.HTTPFileDirectory, rt *tracking.RequestTr
 		case "getDeployments[0]":
 			dir.HandlerFunc("getDeployments", testGetDeploymentsGetDeployments0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

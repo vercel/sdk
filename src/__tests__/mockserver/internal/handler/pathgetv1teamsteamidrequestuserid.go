@@ -24,7 +24,7 @@ func pathGetV1TeamsTeamIDRequestUserID(dir *logging.HTTPFileDirectory, rt *track
 		case "getTeamAccessRequest[0]":
 			dir.HandlerFunc("getTeamAccessRequest", testGetTeamAccessRequestGetTeamAccessRequest0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

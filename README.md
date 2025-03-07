@@ -79,6 +79,56 @@ yarn add @vercel/sdk zod
 > [!NOTE]
 > This package is published as an ES Module (ESM) only. For applications using
 > CommonJS, use `await import("@vercel/sdk")` to import and use this package.
+
+### Model Context Protocol (MCP) Server
+
+This SDK is also an installable MCP server where the various SDK methods are
+exposed as tools that can be invoked by AI applications.
+
+> Node.js v20 or greater is required to run the MCP server.
+
+<details>
+<summary>Claude installation steps</summary>
+
+Add the following server definition to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "Vercel": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@vercel/sdk",
+        "--",
+        "mcp", "start",
+        "--bearer-token", "..."
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor installation steps</summary>
+
+Go to `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
+
+- Name: Vercel
+- Type: `command`
+- Command:
+```sh
+npx -y --package @vercel/sdk -- mcp start --bearer-token ... 
+```
+
+</details>
+
+For a full list of server arguments, run:
+
+```sh
+npx -y --package @vercel/sdk -- mcp start --help
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -220,11 +270,15 @@ run();
 
 ### [aliases](docs/sdks/aliases/README.md)
 
+* [listDeploymentAliases](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
+* [assignAlias](docs/sdks/aliases/README.md#assignalias) - Assign an Alias
 * [listAliases](docs/sdks/aliases/README.md#listaliases) - List aliases
 * [getAlias](docs/sdks/aliases/README.md#getalias) - Get an Alias
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
-* [listDeploymentAliases](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
-* [assignAlias](docs/sdks/aliases/README.md#assignalias) - Assign an Alias
+
+### [apiExperimentation](docs/sdks/apiexperimentation/README.md)
+
+* [getV1ExperimentationItems](docs/sdks/apiexperimentation/README.md#getv1experimentationitems) - Query experimentation items
 
 ### [artifacts](docs/sdks/artifacts/README.md)
 
@@ -261,6 +315,7 @@ run();
 ### [deployments](docs/sdks/deployments/README.md)
 
 * [getDeploymentEvents](docs/sdks/deployments/README.md#getdeploymentevents) - Get deployment events
+* [updateIntegrationDeploymentAction](docs/sdks/deployments/README.md#updateintegrationdeploymentaction) - Update deployment integration action
 * [getDeployment](docs/sdks/deployments/README.md#getdeployment) - Get a deployment by ID or URL
 * [createDeployment](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 * [cancelDeployment](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
@@ -311,14 +366,15 @@ run();
 
 ### [environment](docs/sdks/environment/README.md)
 
-* [postV1ProjectsIdOrNameCustomEnvironments](docs/sdks/environment/README.md#postv1projectsidornamecustomenvironments) - Create a custom environment for the current project.
+* [createCustomEnvironment](docs/sdks/environment/README.md#createcustomenvironment) - Create a custom environment for the current project.
 * [getV9ProjectsIdOrNameCustomEnvironments](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
-* [getV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironmentsenvironmentslugorid) - Retrieve a custom environment
-* [patchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#patchv9projectsidornamecustomenvironmentsenvironmentslugorid) - Update a custom environment
-* [deleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId](docs/sdks/environment/README.md#deletev9projectsidornamecustomenvironmentsenvironmentslugorid) - Remove a custom environment
+* [getCustomEnvironment](docs/sdks/environment/README.md#getcustomenvironment) - Retrieve a custom environment
+* [updateCustomEnvironment](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
+* [removeCustomEnvironment](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 
 ### [integrations](docs/sdks/integrations/README.md)
 
+* [updateIntegrationDeploymentAction](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
 * [getConfigurations](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 * [getConfiguration](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 * [deleteConfiguration](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -327,13 +383,13 @@ run();
 
 ### [logDrains](docs/sdks/logdrains/README.md)
 
-* [getIntegrationLogDrains](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
-* [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
-* [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
 * [getConfigurableLogDrain](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
 * [deleteConfigurableLogDrain](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
 * [getAllLogDrains](docs/sdks/logdrains/README.md#getalllogdrains) - Retrieves a list of all the Log Drains
 * [createConfigurableLogDrain](docs/sdks/logdrains/README.md#createconfigurablelogdrain) - Creates a Configurable Log Drain
+* [getIntegrationLogDrains](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
+* [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
+* [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
 
 ### [marketplace](docs/sdks/marketplace/README.md)
 
@@ -344,9 +400,16 @@ run();
 * [submitInvoice](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 * [updateInvoice](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
+* [submitPrepaymentBalances](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
 * [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 * [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
+* [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
+* [postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems](docs/sdks/marketplace/README.md#postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems) - Create one or multiple experimentation items
+* [patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](docs/sdks/marketplace/README.md#patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Patch an existing experimentation item
+* [deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](docs/sdks/marketplace/README.md#deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Delete an existing experimentation item
+* [headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
+* [putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Push data into a user-provided Edge Config
 
 ### [projectMembers](docs/sdks/projectmembers/README.md)
 
@@ -368,8 +431,8 @@ run();
 * [addProjectDomain](docs/sdks/projects/README.md#addprojectdomain) - Add a domain to a project
 * [verifyProjectDomain](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
 * [filterProjectEnvs](docs/sdks/projects/README.md#filterprojectenvs) - Retrieve the environment variables of a project by id or name
-* [getProjectEnv](docs/sdks/projects/README.md#getprojectenv) - Retrieve the decrypted value of an environment variable of a project by id
 * [createProjectEnv](docs/sdks/projects/README.md#createprojectenv) - Create one or more environment variables
+* [getProjectEnv](docs/sdks/projects/README.md#getprojectenv) - Retrieve the decrypted value of an environment variable of a project by id
 * [removeProjectEnv](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable
 * [editProjectEnv](docs/sdks/projects/README.md#editprojectenv) - Edit an environment variable
 * [createProjectTransferRequest](docs/sdks/projects/README.md#createprojecttransferrequest) - Create project transfer request
@@ -381,7 +444,6 @@ run();
 ### [security](docs/sdks/security/README.md)
 
 * [updateAttackChallengeMode](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
-* [putFirewallConfig](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 * [updateFirewallConfig](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 * [getFirewallConfig](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
 * [getActiveAttackStatus](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
@@ -453,6 +515,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`aliasesGetAlias`](docs/sdks/aliases/README.md#getalias) - Get an Alias
 - [`aliasesListAliases`](docs/sdks/aliases/README.md#listaliases) - List aliases
 - [`aliasesListDeploymentAliases`](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
+- [`apiExperimentationGetV1ExperimentationItems`](docs/sdks/apiexperimentation/README.md#getv1experimentationitems) - Query experimentation items
 - [`artifactsArtifactExists`](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 - [`artifactsArtifactQuery`](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
 - [`artifactsDownloadArtifact`](docs/sdks/artifacts/README.md#downloadartifact) - Download a cache artifact
@@ -481,6 +544,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`deploymentsGetDeploymentFileContents`](docs/sdks/deployments/README.md#getdeploymentfilecontents) - Get Deployment File Contents
 - [`deploymentsGetDeployments`](docs/sdks/deployments/README.md#getdeployments) - List deployments
 - [`deploymentsListDeploymentFiles`](docs/sdks/deployments/README.md#listdeploymentfiles) - List Deployment Files
+- [`deploymentsUpdateIntegrationDeploymentAction`](docs/sdks/deployments/README.md#updateintegrationdeploymentaction) - Update deployment integration action
 - [`deploymentsUploadFile`](docs/sdks/deployments/README.md#uploadfile) - Upload Deployment Files
 - [`dnsCreateRecord`](docs/sdks/dns/README.md#createrecord) - Create a DNS record
 - [`dnsGetRecords`](docs/sdks/dns/README.md#getrecords) - List existing DNS records
@@ -512,16 +576,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`edgeConfigGetEdgeConfigTokens`](docs/sdks/edgeconfig/README.md#getedgeconfigtokens) - Get all tokens of an Edge Config
 - [`edgeConfigPatchEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
 - [`edgeConfigUpdateEdgeConfig`](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
-- [`environmentDeleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#deletev9projectsidornamecustomenvironmentsenvironmentslugorid) - Remove a custom environment
+- [`environmentCreateCustomEnvironment`](docs/sdks/environment/README.md#createcustomenvironment) - Create a custom environment for the current project.
+- [`environmentGetCustomEnvironment`](docs/sdks/environment/README.md#getcustomenvironment) - Retrieve a custom environment
 - [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
-- [`environmentGetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironmentsenvironmentslugorid) - Retrieve a custom environment
-- [`environmentPatchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId`](docs/sdks/environment/README.md#patchv9projectsidornamecustomenvironmentsenvironmentslugorid) - Update a custom environment
-- [`environmentPostV1ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#postv1projectsidornamecustomenvironments) - Create a custom environment for the current project.
+- [`environmentRemoveCustomEnvironment`](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
+- [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 - [`integrationsGitNamespaces`](docs/sdks/integrations/README.md#gitnamespaces) - List git namespaces by provider
 - [`integrationsSearchRepo`](docs/sdks/integrations/README.md#searchrepo) - List git repositories linked to namespace by provider
+- [`integrationsUpdateIntegrationDeploymentAction`](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
 - [`logDrainsCreateConfigurableLogDrain`](docs/sdks/logdrains/README.md#createconfigurablelogdrain) - Creates a Configurable Log Drain
 - [`logDrainsCreateLogDrain`](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
 - [`logDrainsDeleteConfigurableLogDrain`](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
@@ -530,12 +595,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`logDrainsGetConfigurableLogDrain`](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
 - [`logDrainsGetIntegrationLogDrains`](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 - [`marketplaceCreateEvent`](docs/sdks/marketplace/README.md#createevent) - Create Event
+- [`marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId`](docs/sdks/marketplace/README.md#deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Delete an existing experimentation item
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
+- [`marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
+- [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
+- [`marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId`](docs/sdks/marketplace/README.md#patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Patch an existing experimentation item
+- [`marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems`](docs/sdks/marketplace/README.md#postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems) - Create one or multiple experimentation items
+- [`marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Push data into a user-provided Edge Config
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
+- [`marketplaceSubmitPrepaymentBalances`](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
@@ -567,7 +639,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 - [`securityGetFirewallConfig`](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
-- [`securityPutFirewallConfig`](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 - [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 - [`securityUpdateFirewallConfig`](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
@@ -803,7 +874,7 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

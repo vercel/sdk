@@ -37,6 +37,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -45,11 +46,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.
  */
-export async function teamsInviteUserToTeam(
+export function teamsInviteUserToTeam(
   client: VercelCore,
   request: InviteUserToTeamRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     InviteUserToTeamResponseBody,
     | VercelBadRequestError
@@ -64,13 +65,42 @@ export async function teamsInviteUserToTeam(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: InviteUserToTeamRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      InviteUserToTeamResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => InviteUserToTeamRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -94,6 +124,7 @@ export async function teamsInviteUserToTeam(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "inviteUserToTeam",
     oAuth2Scopes: [],
 
@@ -116,7 +147,7 @@ export async function teamsInviteUserToTeam(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -127,7 +158,7 @@ export async function teamsInviteUserToTeam(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -151,13 +182,13 @@ export async function teamsInviteUserToTeam(
     M.json(200, InviteUserToTeamResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([403, "4XX"]),
     M.fail([503, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

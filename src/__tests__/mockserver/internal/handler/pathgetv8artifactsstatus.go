@@ -24,7 +24,7 @@ func pathGetV8ArtifactsStatus(dir *logging.HTTPFileDirectory, rt *tracking.Reque
 		case "status[0]":
 			dir.HandlerFunc("status", testStatusStatus0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

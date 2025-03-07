@@ -25,7 +25,7 @@ func pathGetV13DeploymentsIDOrURL(dir *logging.HTTPFileDirectory, rt *tracking.R
 		case "getDeployment[0]":
 			dir.HandlerFunc("getDeployment", testGetDeploymentGetDeployment0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -58,9 +58,9 @@ func testGetDeploymentGetDeployment0(w http.ResponseWriter, req *http.Request) {
 			Public:     true,
 			Status:     operations.GetDeploymentResponseBodyStatusError,
 			ID:         "<id>",
+			Name:       "<value>",
 			Type:       operations.GetDeploymentResponseBodyTypeLambdas,
 			CreatedAt:  3161.76,
-			Name:       "<value>",
 			ReadyState: operations.GetDeploymentResponseBodyReadyStateReady,
 			Meta: map[string]string{
 				"key":  "<value>",

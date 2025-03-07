@@ -3,17 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { Rules } from "@vercel/sdk/models/putfirewallconfigop.js";
+import { Rules } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Rules = {
+  id: "<id>",
   name: "<value>",
   active: false,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "ja4_digest",
-          op: "ninc",
+          type: "geo_as_number",
+          op: "neq",
         },
       ],
     },
@@ -24,11 +25,11 @@ let value: Rules = {
 
 ## Fields
 
-| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                 | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `name`                                                                                                                               | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `description`                                                                                                                        | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `active`                                                                                                                             | *boolean*                                                                                                                            | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `conditionGroup`                                                                                                                     | [models.ConditionGroup](../models/conditiongroup.md)[]                                                                               | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `action`                                                                                                                             | [models.PutFirewallConfigSecurityRequestRequestBodyRulesAction](../models/putfirewallconfigsecurityrequestrequestbodyrulesaction.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `name`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `description`                                                                            | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `active`                                                                                 | *boolean*                                                                                | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `conditionGroup`                                                                         | [models.GetFirewallConfigConditionGroup](../models/getfirewallconfigconditiongroup.md)[] | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `action`                                                                                 | [models.GetFirewallConfigAction](../models/getfirewallconfigaction.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

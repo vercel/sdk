@@ -24,7 +24,7 @@ func pathGetV4DomainsPrice(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 		case "checkDomainPrice[0]":
 			dir.HandlerFunc("checkDomainPrice", testCheckDomainPriceCheckDomainPrice0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

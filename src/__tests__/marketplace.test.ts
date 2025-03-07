@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Marketplace Get Account Info", async () => {
+  const testHttpClient = createTestHTTPClient("get-account-info");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("get-account-info"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -26,9 +28,11 @@ test("Marketplace Get Account Info", async () => {
 });
 
 test("Marketplace Get Member", async () => {
+  const testHttpClient = createTestHTTPClient("get-member");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("get-member"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -44,9 +48,11 @@ test("Marketplace Get Member", async () => {
 });
 
 test("Marketplace Create Event", async () => {
+  const testHttpClient = createTestHTTPClient("create-event");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("create-event"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -61,9 +67,11 @@ test("Marketplace Create Event", async () => {
 });
 
 test("Marketplace Submit Billing Data", async () => {
+  const testHttpClient = createTestHTTPClient("submit-billing-data");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("submit-billing-data"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -119,9 +127,11 @@ test("Marketplace Submit Billing Data", async () => {
 });
 
 test("Marketplace Submit Invoice", async () => {
+  const testHttpClient = createTestHTTPClient("submit-invoice");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("submit-invoice"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -158,9 +168,11 @@ test("Marketplace Submit Invoice", async () => {
 });
 
 test("Marketplace Get Invoice", async () => {
+  const testHttpClient = createTestHTTPClient("get-invoice");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("get-invoice"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -195,9 +207,11 @@ test("Marketplace Get Invoice", async () => {
 });
 
 test("Marketplace Update Invoice", async () => {
+  const testHttpClient = createTestHTTPClient("update-invoice");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("update-invoice"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -213,9 +227,11 @@ test("Marketplace Update Invoice", async () => {
 });
 
 test("Marketplace Update Resource Secrets", async () => {
+  const testHttpClient = createTestHTTPClient("update-resource-secrets");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("update-resource-secrets"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -230,9 +246,11 @@ test("Marketplace Update Resource Secrets", async () => {
 });
 
 test("Marketplace Update Resource Secrets By Id", async () => {
+  const testHttpClient = createTestHTTPClient("update-resource-secrets-by-id");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("update-resource-secrets-by-id"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -243,9 +261,11 @@ test("Marketplace Update Resource Secrets By Id", async () => {
 });
 
 test("Marketplace Exchange Sso Token", async () => {
+  const testHttpClient = createTestHTTPClient("exchange-sso-token");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("exchange-sso-token"),
+    httpClient: testHttpClient,
   });
 
   const result = await vercel.marketplace.exchangeSsoToken({
@@ -258,5 +278,152 @@ test("Marketplace Exchange Sso Token", async () => {
     idToken: "<value>",
     accessToken: "<value>",
     tokenType: "<value>",
+  });
+});
+
+test("Marketplace Submit Prepayment Balances", async () => {
+  const testHttpClient = createTestHTTPClient("submit-prepayment-balances");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.marketplace.submitPrepaymentBalances({
+    integrationConfigurationId: "<id>",
+  });
+});
+
+test("Marketplace Import Resource", async () => {
+  const testHttpClient = createTestHTTPClient("import-resource");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.importResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+  });
+});
+
+test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.marketplace
+    .postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+      },
+    );
+});
+
+test("Marketplace Patch /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.marketplace
+    .patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+        itemId: "<id>",
+      },
+    );
+});
+
+test("Marketplace Delete /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.marketplace
+    .deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+        itemId: "<id>",
+      },
+    );
+});
+
+test("Marketplace Head /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace
+    .headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+      },
+    );
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    items: {},
+    updatedAt: 6086.93,
+    digest: "<value>",
+  });
+});
+
+test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace
+    .putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+      },
+    );
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    items: {},
+    updatedAt: 6820.68,
+    digest: "<value>",
   });
 });

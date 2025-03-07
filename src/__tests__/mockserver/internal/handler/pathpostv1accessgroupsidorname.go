@@ -24,7 +24,7 @@ func pathPostV1AccessGroupsIDOrName(dir *logging.HTTPFileDirectory, rt *tracking
 		case "updateAccessGroup[0]":
 			dir.HandlerFunc("updateAccessGroup", testUpdateAccessGroupUpdateAccessGroup0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

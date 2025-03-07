@@ -10,8 +10,9 @@ let value: CreateOrTransferDomainRequest = {
   slug: "my-team-url-slug",
   requestBody: {
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    authCode: "fdhfr820ad#@FAdlj$$",
+    expectedPrice: 8,
   },
 };
 ```

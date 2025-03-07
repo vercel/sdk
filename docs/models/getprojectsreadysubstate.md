@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsReadySubstate } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsReadySubstate = "STAGED";
+let value: GetProjectsReadySubstate = "PROMOTED";
 ```
 
 ## Values

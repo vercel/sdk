@@ -28,7 +28,7 @@ func pathPatchV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.HT
 		case "updateAccessGroupProject-name[0]":
 			dir.HandlerFunc("updateAccessGroupProject", testUpdateAccessGroupProjectUpdateAccessGroupProjectName0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -11,14 +11,26 @@ export type GetAccountInfoRequest = {
   integrationConfigurationId: string;
 };
 
+/**
+ * The best contact for the integration, which can change as team members and their roles change.
+ */
 export type Contact = {
   email: string;
   name?: string | undefined;
 };
 
 export type GetAccountInfoResponseBody = {
+  /**
+   * The name of the team the installation is tied to.
+   */
   name?: string | undefined;
+  /**
+   * A URL linking to the installation in the Vercel Dashboard.
+   */
   url: string;
+  /**
+   * The best contact for the integration, which can change as team members and their roles change.
+   */
   contact: Contact | null;
 };
 

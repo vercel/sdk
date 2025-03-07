@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Integrations Get Configuration", async () => {
+  const testHttpClient = createTestHTTPClient("getConfiguration");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getConfiguration"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -45,9 +47,11 @@ test("Integrations Get Configuration", async () => {
 });
 
 test("Integrations Delete Configuration", async () => {
+  const testHttpClient = createTestHTTPClient("deleteConfiguration");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteConfiguration"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -59,9 +63,11 @@ test("Integrations Delete Configuration", async () => {
 });
 
 test("Integrations Git Namespaces", async () => {
+  const testHttpClient = createTestHTTPClient("gitNamespaces");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("gitNamespaces"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -86,9 +92,11 @@ test("Integrations Git Namespaces", async () => {
 });
 
 test("Integrations Search Repo", async () => {
+  const testHttpClient = createTestHTTPClient("searchRepo");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("searchRepo"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

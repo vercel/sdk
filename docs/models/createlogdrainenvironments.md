@@ -1,7 +1,5 @@
 # CreateLogDrainEnvironments
 
-The environment of log drain
-
 ## Example Usage
 
 ```typescript
@@ -13,5 +11,5 @@ let value: CreateLogDrainEnvironments = "production";
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

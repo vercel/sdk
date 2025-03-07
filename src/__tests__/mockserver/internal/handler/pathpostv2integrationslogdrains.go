@@ -25,7 +25,7 @@ func pathPostV2IntegrationsLogDrains(dir *logging.HTTPFileDirectory, rt *trackin
 		case "createLogDrain[0]":
 			dir.HandlerFunc("createLogDrain", testCreateLogDrainCreateLogDrain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -56,7 +56,7 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 		ConfigurationID: types.String("icfg_cuwj0AdCdH3BwWT4LPijCC7t"),
 		CreatedAt:       1558531915505,
 		ID:              "ld_nBuA7zCID8g4QZ8g",
-		DeliveryFormat:  operations.CreateLogDrainDeliveryFormatJSON.ToPointer(),
+		DeliveryFormat:  operations.CreateLogDrainLogDrainsDeliveryFormatJSON.ToPointer(),
 		Name:            "My first log drain",
 		OwnerID:         "kr1PsOIzqEL5Xg6M4VZcZosf",
 		ProjectID:       types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"),
@@ -64,8 +64,8 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 			"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 		},
 		URL: "https://example.com/log-drain",
-		Sources: []operations.CreateLogDrainSources{
-			operations.CreateLogDrainSourcesExternal,
+		Sources: []operations.CreateLogDrainLogDrainsSources{
+			operations.CreateLogDrainLogDrainsSourcesExternal,
 		},
 		CreatedFrom: operations.CreateLogDrainCreatedFromIntegration.ToPointer(),
 		Headers: map[string]string{
@@ -101,8 +101,8 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 			"29": "\"",
 			"30": "}",
 		},
-		Environments: []operations.CreateLogDrainEnvironments{
-			operations.CreateLogDrainEnvironmentsProduction,
+		Environments: []operations.CreateLogDrainLogDrainsEnvironments{
+			operations.CreateLogDrainLogDrainsEnvironmentsProduction,
 		},
 		Branch:       types.String("feature/*"),
 		SamplingRate: types.Float64(0.5),

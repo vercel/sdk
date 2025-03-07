@@ -24,7 +24,7 @@ func pathPostV1Teams(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker
 		case "createTeam[0]":
 			dir.HandlerFunc("createTeam", testCreateTeamCreateTeam0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

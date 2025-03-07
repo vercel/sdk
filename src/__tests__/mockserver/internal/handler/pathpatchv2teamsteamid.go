@@ -23,7 +23,7 @@ func pathPatchV2TeamsTeamID(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "patchTeam[0]":
 			dir.HandlerFunc("patchTeam", testPatchTeamPatchTeam0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

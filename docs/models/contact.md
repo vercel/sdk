@@ -1,12 +1,14 @@
 # Contact
 
+The best contact for the integration, which can change as team members and their roles change.
+
 ## Example Usage
 
 ```typescript
 import { Contact } from "@vercel/sdk/models/getaccountinfoop.js";
 
 let value: Contact = {
-  email: "Dahlia_Considine66@yahoo.com",
+  email: "Zoey96@hotmail.com",
 };
 ```
 

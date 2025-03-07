@@ -25,7 +25,7 @@ func pathGetV1Webhooks(dir *logging.HTTPFileDirectory, rt *tracking.RequestTrack
 		case "getWebhooks[0]":
 			dir.HandlerFunc("getWebhooks", testGetWebhooksGetWebhooks0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

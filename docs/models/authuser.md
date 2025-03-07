@@ -10,8 +10,8 @@ import { AuthUser } from "@vercel/sdk/models/authuser.js";
 let value: AuthUser = {
   createdAt: 1630748523395,
   softBlock: {
-    blockedAt: 3883.33,
-    reason: "SUBSCRIPTION_CANCELED",
+    blockedAt: 5008.28,
+    reason: "SUBSCRIPTION_EXPIRED",
   },
   billing: {},
   resourceConfig: {},

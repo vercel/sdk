@@ -8,7 +8,7 @@ import { Discounts } from "@vercel/sdk/models/submitbillingdataop.js";
 let value: Discounts = {
   billingPlanId: "<id>",
   name: "<value>",
-  amount: "824.27",
+  amount: "731.93",
 };
 ```
 

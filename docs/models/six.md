@@ -7,7 +7,7 @@ import { Six } from "@vercel/sdk/models/createrecordop.js";
 
 let value: Six = {
   name: "subdomain",
-  type: "CAA",
+  type: "NS",
   ttl: 60,
   value: "10 mail.example.com.",
   mxPriority: 10,

@@ -5,7 +5,7 @@
 ```typescript
 import { CreateDeploymentSource } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentSource = "redeploy";
+let value: CreateDeploymentSource = "cli";
 ```
 
 ## Values

@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Creates and returns a new authentication token for the currently authenticated User. The `bearerToken` property is only provided once, in the response body, so be sure to save it on the client for use with API requests.
  */
-export async function authenticationCreateAuthToken(
+export function authenticationCreateAuthToken(
   client: VercelCore,
   request: CreateAuthTokenRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     CreateAuthTokenResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function authenticationCreateAuthToken(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: CreateAuthTokenRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      CreateAuthTokenResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => CreateAuthTokenRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -87,6 +116,7 @@ export async function authenticationCreateAuthToken(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createAuthToken",
     oAuth2Scopes: [],
 
@@ -110,7 +140,7 @@ export async function authenticationCreateAuthToken(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -121,7 +151,7 @@ export async function authenticationCreateAuthToken(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -148,8 +178,8 @@ export async function authenticationCreateAuthToken(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

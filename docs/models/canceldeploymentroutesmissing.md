@@ -16,7 +16,7 @@ const value: models.CancelDeploymentMissing1 = {
 
 ```typescript
 const value: models.CancelDeploymentMissing2 = {
-  type: "query",
+  type: "cookie",
   key: "<key>",
 };
 ```

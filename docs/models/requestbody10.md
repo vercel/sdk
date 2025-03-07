@@ -1,6 +1,6 @@
 # RequestBody10
 
-Remove an IP Blocking rule
+Remove an IPBlocking rule
 
 ## Example Usage
 

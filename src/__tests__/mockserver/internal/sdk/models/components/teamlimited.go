@@ -146,6 +146,7 @@ const (
 	RoleOwner       Role = "OWNER"
 	RoleMember      Role = "MEMBER"
 	RoleDeveloper   Role = "DEVELOPER"
+	RoleSecurity    Role = "SECURITY"
 	RoleBilling     Role = "BILLING"
 	RoleViewer      Role = "VIEWER"
 	RoleContributor Role = "CONTRIBUTOR"
@@ -166,6 +167,8 @@ func (e *Role) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
+	case "SECURITY":
+		fallthrough
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
@@ -178,17 +181,59 @@ func (e *Role) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type AdditionalRoles string
+type TeamRoles string
 
 const (
-	AdditionalRolesCreateProject            AdditionalRoles = "CreateProject"
-	AdditionalRolesFullProductionDeployment AdditionalRoles = "FullProductionDeployment"
+	TeamRolesOwner       TeamRoles = "OWNER"
+	TeamRolesMember      TeamRoles = "MEMBER"
+	TeamRolesDeveloper   TeamRoles = "DEVELOPER"
+	TeamRolesSecurity    TeamRoles = "SECURITY"
+	TeamRolesBilling     TeamRoles = "BILLING"
+	TeamRolesViewer      TeamRoles = "VIEWER"
+	TeamRolesContributor TeamRoles = "CONTRIBUTOR"
 )
 
-func (e AdditionalRoles) ToPointer() *AdditionalRoles {
+func (e TeamRoles) ToPointer() *TeamRoles {
 	return &e
 }
-func (e *AdditionalRoles) UnmarshalJSON(data []byte) error {
+func (e *TeamRoles) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = TeamRoles(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamRoles: %v", v)
+	}
+}
+
+type TeamPermissions string
+
+const (
+	TeamPermissionsCreateProject            TeamPermissions = "CreateProject"
+	TeamPermissionsFullProductionDeployment TeamPermissions = "FullProductionDeployment"
+	TeamPermissionsUsageViewer              TeamPermissions = "UsageViewer"
+)
+
+func (e TeamPermissions) ToPointer() *TeamPermissions {
+	return &e
+}
+func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -197,10 +242,12 @@ func (e *AdditionalRoles) UnmarshalJSON(data []byte) error {
 	case "CreateProject":
 		fallthrough
 	case "FullProductionDeployment":
-		*e = AdditionalRoles(v)
+		fallthrough
+	case "UsageViewer":
+		*e = TeamPermissions(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AdditionalRoles: %v", v)
+		return fmt.Errorf("invalid value for TeamPermissions: %v", v)
 	}
 }
 
@@ -419,7 +466,8 @@ type Membership struct {
 	ConfirmedAt       float64           `json:"confirmedAt"`
 	AccessRequestedAt *float64          `json:"accessRequestedAt,omitempty"`
 	Role              Role              `json:"role"`
-	AdditionalRoles   []AdditionalRoles `json:"additionalRoles,omitempty"`
+	TeamRoles         []TeamRoles       `json:"teamRoles,omitempty"`
+	TeamPermissions   []TeamPermissions `json:"teamPermissions,omitempty"`
 	TeamID            *string           `json:"teamId,omitempty"`
 	CreatedAt         float64           `json:"createdAt"`
 	Created           float64           `json:"created"`
@@ -468,11 +516,18 @@ func (o *Membership) GetRole() Role {
 	return o.Role
 }
 
-func (o *Membership) GetAdditionalRoles() []AdditionalRoles {
+func (o *Membership) GetTeamRoles() []TeamRoles {
 	if o == nil {
 		return nil
 	}
-	return o.AdditionalRoles
+	return o.TeamRoles
+}
+
+func (o *Membership) GetTeamPermissions() []TeamPermissions {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *Membership) GetTeamID() *string {

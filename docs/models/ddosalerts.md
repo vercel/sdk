@@ -7,7 +7,7 @@ import { DdosAlerts } from "@vercel/sdk/models/getactiveattackstatusop.js";
 
 let value: DdosAlerts = {
   atMinute: "<value>",
-  totalReqs: 1992.28,
+  totalReqs: 3618.01,
 };
 ```
 

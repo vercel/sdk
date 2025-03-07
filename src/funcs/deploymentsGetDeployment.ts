@@ -33,6 +33,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.
  */
-export async function deploymentsGetDeployment(
+export function deploymentsGetDeployment(
   client: VercelCore,
   request: GetDeploymentRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     GetDeploymentResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function deploymentsGetDeployment(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: GetDeploymentRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      GetDeploymentResponseBody,
+      | VercelBadRequestError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => GetDeploymentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -94,6 +123,7 @@ export async function deploymentsGetDeployment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getDeployment",
     oAuth2Scopes: [],
 
@@ -117,7 +147,7 @@ export async function deploymentsGetDeployment(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -128,7 +158,7 @@ export async function deploymentsGetDeployment(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -150,13 +180,13 @@ export async function deploymentsGetDeployment(
   >(
     M.json(200, GetDeploymentResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.fail([403, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([403, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

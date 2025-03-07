@@ -5,7 +5,7 @@
 ```typescript
 import { GetDeploymentResponseBodyDeploymentsStatus } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentResponseBodyDeploymentsStatus = "error";
+let value: GetDeploymentResponseBodyDeploymentsStatus = "skipped";
 ```
 
 ## Values

@@ -24,7 +24,7 @@ func pathPostV5DomainsBuy(dir *logging.HTTPFileDirectory, rt *tracking.RequestTr
 		case "buyDomain[0]":
 			dir.HandlerFunc("buyDomain", testBuyDomainBuyDomain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

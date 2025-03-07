@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Dns Create Record", async () => {
+  const testHttpClient = createTestHTTPClient("createRecord");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createRecord"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -35,9 +37,11 @@ test("Dns Create Record", async () => {
 });
 
 test("Dns Update Record", async () => {
+  const testHttpClient = createTestHTTPClient("updateRecord");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateRecord"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -76,9 +80,11 @@ test("Dns Update Record", async () => {
 });
 
 test("Dns Remove Record", async () => {
+  const testHttpClient = createTestHTTPClient("removeRecord");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeRecord"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

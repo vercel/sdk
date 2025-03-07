@@ -6,27 +6,27 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type Secrets struct {
+type UpdateResourceSecretsSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
 }
 
-func (o *Secrets) GetName() string {
+func (o *UpdateResourceSecretsSecrets) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Secrets) GetValue() string {
+func (o *UpdateResourceSecretsSecrets) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *Secrets) GetPrefix() *string {
+func (o *UpdateResourceSecretsSecrets) GetPrefix() *string {
 	if o == nil {
 		return nil
 	}
@@ -34,14 +34,23 @@ func (o *Secrets) GetPrefix() *string {
 }
 
 type UpdateResourceSecretsRequestBody struct {
-	Secrets []Secrets `json:"secrets"`
+	Secrets []UpdateResourceSecretsSecrets `json:"secrets"`
+	// If true, will only update the provided secrets
+	Partial *bool `json:"partial,omitempty"`
 }
 
-func (o *UpdateResourceSecretsRequestBody) GetSecrets() []Secrets {
+func (o *UpdateResourceSecretsRequestBody) GetSecrets() []UpdateResourceSecretsSecrets {
 	if o == nil {
-		return []Secrets{}
+		return []UpdateResourceSecretsSecrets{}
 	}
 	return o.Secrets
+}
+
+func (o *UpdateResourceSecretsRequestBody) GetPartial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Partial
 }
 
 type UpdateResourceSecretsRequest struct {

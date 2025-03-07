@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [getDeploymentEvents](#getdeploymentevents) - Get deployment events
+* [updateIntegrationDeploymentAction](#updateintegrationdeploymentaction) - Update deployment integration action
 * [getDeployment](#getdeployment) - Get a deployment by ID or URL
 * [createDeployment](#createdeployment) - Create a new deployment
 * [cancelDeployment](#canceldeployment) - Cancel a deployment
@@ -31,7 +32,6 @@ const vercel = new Vercel({
 async function run() {
   await vercel.deployments.getDeploymentEvents({
     idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-    direction: "backward",
     follow: 1,
     limit: 100,
     name: "bld_cotnkcr76",
@@ -67,7 +67,6 @@ const vercel = new VercelCore({
 async function run() {
   const res = await deploymentsGetDeploymentEvents(vercel, {
     idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-    direction: "backward",
     follow: 1,
     limit: 100,
     name: "bld_cotnkcr76",
@@ -97,6 +96,88 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [models.GetDeploymentEventsRequest](../../models/getdeploymenteventsrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.VercelBadRequestError | 400                          | application/json             |
+| models.VercelForbiddenError  | 401                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## updateIntegrationDeploymentAction
+
+Updates the deployment integration action for the specified integration installation
+
+### Example Usage
+
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  await vercel.deployments.updateIntegrationDeploymentAction({
+    deploymentId: "<id>",
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+    action: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { deploymentsUpdateIntegrationDeploymentAction } from "@vercel/sdk/funcs/deploymentsUpdateIntegrationDeploymentAction.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await deploymentsUpdateIntegrationDeploymentAction(vercel, {
+    deploymentId: "<id>",
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+    action: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateIntegrationDeploymentActionRequest](../../models/updateintegrationdeploymentactionrequest.md)                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -247,6 +328,7 @@ async function run() {
         buildCommand: "next build",
         installCommand: "pnpm install",
       },
+      target: "production",
     },
   });
 
@@ -308,6 +390,7 @@ async function run() {
         buildCommand: "next build",
         installCommand: "pnpm install",
       },
+      target: "production",
     },
   });
 
@@ -511,7 +594,7 @@ run();
 
 ## listDeploymentFiles
 
-Allows to retrieve the file structure of a deployment by supplying the deployment unique identifier.
+Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will have a file tree that can be retrievable.
 
 ### Example Usage
 

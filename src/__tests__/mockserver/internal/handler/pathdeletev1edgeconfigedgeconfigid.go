@@ -22,7 +22,7 @@ func pathDeleteV1EdgeConfigEdgeConfigID(dir *logging.HTTPFileDirectory, rt *trac
 		case "deleteEdgeConfig[0]":
 			dir.HandlerFunc("deleteEdgeConfig", testDeleteEdgeConfigDeleteEdgeConfig0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

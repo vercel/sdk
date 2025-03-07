@@ -7,7 +7,7 @@ import { GetDeploymentGitSourceDeployments3 } from "@vercel/sdk/models/getdeploy
 
 let value: GetDeploymentGitSourceDeployments3 = {
   type: "gitlab",
-  projectId: 9279.77,
+  projectId: "<id>",
 };
 ```
 

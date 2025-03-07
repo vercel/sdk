@@ -12,9 +12,9 @@ let value: GetProjectsResponseBody = {
     {
       accountId: "<id>",
       crons: {
-        enabledAt: 6964.83,
-        disabledAt: 8136.79,
-        updatedAt: 5098.07,
+        enabledAt: 9805.81,
+        disabledAt: 8717.86,
+        updatedAt: 5027.21,
         deploymentId: "<id>",
         definitions: [
           {
@@ -29,44 +29,54 @@ let value: GetProjectsResponseBody = {
       latestDeployments: [
         {
           id: "<id>",
-          createdAt: 3339.65,
+          createdAt: 9223.48,
           createdIn: "<value>",
           creator: {
-            email: "Avis_Leannon9@hotmail.com",
+            email: "Theresia_Wisoky3@yahoo.com",
             uid: "<id>",
-            username: "Halle13",
+            username: "Gillian44",
           },
           deploymentHostname: "<value>",
           name: "<value>",
-          plan: "hobby",
+          plan: "pro",
           previewCommentsEnabled: false,
           private: false,
           readyState: "QUEUED",
           type: "LAMBDAS",
-          url: "https://nautical-traditionalism.net",
+          url: "https://blushing-possession.biz/",
           userId: "<id>",
         },
       ],
       name: "<value>",
-      nodeVersion: "8.10.x",
+      nodeVersion: "22.x",
+      resourceConfig: {
+        functionDefaultRegions: [
+          "<value>",
+        ],
+      },
+      defaultResourceConfig: {
+        functionDefaultRegions: [
+          "<value>",
+        ],
+      },
       targets: {
         "key": {
           id: "<id>",
-          createdAt: 9197.83,
+          createdAt: 599.44,
           createdIn: "<value>",
           creator: {
-            email: "Chandler16@gmail.com",
+            email: "Sydney_Treutel52@gmail.com",
             uid: "<id>",
-            username: "Isabelle_Cronin44",
+            username: "Zoe.Kovacek97",
           },
           deploymentHostname: "<value>",
           name: "<value>",
-          plan: "hobby",
+          plan: "pro",
           previewCommentsEnabled: false,
           private: false,
-          readyState: "ERROR",
+          readyState: "READY",
           type: "LAMBDAS",
-          url: "https://bare-bar.org/",
+          url: "https://phony-intervention.biz/",
           userId: "<id>",
         },
       },

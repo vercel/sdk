@@ -6,9 +6,9 @@
 import { UpdateFirewallConfigRequestBodySecurityRequestValue } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequestValue = {
-  hostname: "unfortunate-sonar.com",
-  ip: "df0b:41ca:b080:5447:6f7d:3a1a:0be0:eb7d",
-  action: "challenge",
+  hostname: "lined-soybean.biz",
+  ip: "156.139.249.174",
+  action: "log",
 };
 ```
 
@@ -19,4 +19,4 @@ let value: UpdateFirewallConfigRequestBodySecurityRequestValue = {
 | `hostname`                                                                                                                                   | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
 | `ip`                                                                                                                                         | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
 | `notes`                                                                                                                                      | *string*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
-| `action`                                                                                                                                     | [models.UpdateFirewallConfigRequestBodySecurityRequest8ValueAction](../models/updatefirewallconfigrequestbodysecurityrequest8valueaction.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
+| `action`                                                                                                                                     | [models.UpdateFirewallConfigRequestBodySecurityRequest9ValueAction](../models/updatefirewallconfigrequestbodysecurityrequest9valueaction.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |

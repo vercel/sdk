@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Lists all members of a project.
  */
-export async function projectMembersGetProjectMembers(
+export function projectMembersGetProjectMembers(
   client: VercelCore,
   request: GetProjectMembersRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     GetProjectMembersResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function projectMembersGetProjectMembers(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: GetProjectMembersRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      GetProjectMembersResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => GetProjectMembersRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -97,6 +126,7 @@ export async function projectMembersGetProjectMembers(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getProjectMembers",
     oAuth2Scopes: [],
 
@@ -120,7 +150,7 @@ export async function projectMembersGetProjectMembers(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -131,7 +161,7 @@ export async function projectMembersGetProjectMembers(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -158,8 +188,8 @@ export async function projectMembersGetProjectMembers(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

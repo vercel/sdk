@@ -5,8 +5,7 @@
 ```typescript
 import { GetConfigurationResponseBodyDisabledReason } from "@vercel/sdk/models/getconfigurationop.js";
 
-let value: GetConfigurationResponseBodyDisabledReason =
-  "original-owner-role-downgraded";
+let value: GetConfigurationResponseBodyDisabledReason = "disabled-by-owner";
 ```
 
 ## Values

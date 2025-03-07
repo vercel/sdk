@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AccessGroups } from "./accessgroups.js";
 import { Aliases } from "./aliases.js";
+import { ApiExperimentation } from "./apiexperimentation.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
 import { Certs } from "./certs.js";
@@ -50,6 +51,11 @@ export class Vercel extends ClientSDK {
     return (this._deployments ??= new Deployments(this._options));
   }
 
+  private _integrations?: Integrations;
+  get integrations(): Integrations {
+    return (this._integrations ??= new Integrations(this._options));
+  }
+
   private _domains?: Domains;
   get domains(): Domains {
     return (this._domains ??= new Domains(this._options));
@@ -58,6 +64,11 @@ export class Vercel extends ClientSDK {
   private _dns?: Dns;
   get dns(): Dns {
     return (this._dns ??= new Dns(this._options));
+  }
+
+  private _logDrains?: LogDrains;
+  get logDrains(): LogDrains {
+    return (this._logDrains ??= new LogDrains(this._options));
   }
 
   private _edgeConfig?: EdgeConfig;
@@ -75,19 +86,14 @@ export class Vercel extends ClientSDK {
     return (this._marketplace ??= new Marketplace(this._options));
   }
 
-  private _integrations?: Integrations;
-  get integrations(): Integrations {
-    return (this._integrations ??= new Integrations(this._options));
-  }
-
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
   }
 
-  private _logDrains?: LogDrains;
-  get logDrains(): LogDrains {
-    return (this._logDrains ??= new LogDrains(this._options));
+  private _apiExperimentation?: ApiExperimentation;
+  get apiExperimentation(): ApiExperimentation {
+    return (this._apiExperimentation ??= new ApiExperimentation(this._options));
   }
 
   private _projectMembers?: ProjectMembers;

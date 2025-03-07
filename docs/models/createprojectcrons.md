@@ -6,9 +6,9 @@
 import { CreateProjectCrons } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectCrons = {
-  enabledAt: 632.07,
-  disabledAt: 6072.49,
-  updatedAt: 4776.46,
+  enabledAt: 3518.93,
+  disabledAt: 7214.07,
+  updatedAt: 6375.83,
   deploymentId: "<id>",
   definitions: [
     {

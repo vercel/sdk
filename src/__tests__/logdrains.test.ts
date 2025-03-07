@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Logdrains Get Integration Log Drains", async () => {
+  const testHttpClient = createTestHTTPClient("getIntegrationLogDrains");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getIntegrationLogDrains"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -22,9 +24,11 @@ test("Logdrains Get Integration Log Drains", async () => {
 });
 
 test("Logdrains Create Log Drain", async () => {
+  const testHttpClient = createTestHTTPClient("createLogDrain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createLogDrain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -98,9 +102,11 @@ test("Logdrains Create Log Drain", async () => {
 });
 
 test("Logdrains Delete Integration Log Drain", async () => {
+  const testHttpClient = createTestHTTPClient("deleteIntegrationLogDrain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteIntegrationLogDrain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -112,9 +118,11 @@ test("Logdrains Delete Integration Log Drain", async () => {
 });
 
 test("Logdrains Get Configurable Log Drain", async () => {
+  const testHttpClient = createTestHTTPClient("getConfigurableLogDrain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getConfigurableLogDrain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -125,26 +133,28 @@ test("Logdrains Get Configurable Log Drain", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    id: "<id>",
-    deliveryFormat: "json",
-    url: "https://pleasant-beret.com/",
-    name: "<value>",
-    ownerId: "<id>",
-    createdAt: 9979.70,
-    deletedAt: 2589.89,
-    updatedAt: 1929.64,
     environments: [
       "production",
       "production",
     ],
+    id: "<id>",
+    createdAt: 9979.70,
+    deletedAt: 2589.89,
+    updatedAt: 1929.64,
+    url: "https://pleasant-beret.com/",
+    name: "<value>",
+    ownerId: "<id>",
+    deliveryFormat: "json",
     secret: "<value>",
   });
 });
 
 test("Logdrains Delete Configurable Log Drain", async () => {
+  const testHttpClient = createTestHTTPClient("deleteConfigurableLogDrain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteConfigurableLogDrain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -156,9 +166,11 @@ test("Logdrains Delete Configurable Log Drain", async () => {
 });
 
 test("Logdrains Get All Log Drains", async () => {
+  const testHttpClient = createTestHTTPClient("getAllLogDrains");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getAllLogDrains"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -169,25 +181,27 @@ test("Logdrains Get All Log Drains", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual([
     {
-      id: "<id>",
-      deliveryFormat: "json",
-      url: "https://perfumed-director.net/",
-      name: "<value>",
-      ownerId: "<id>",
-      createdAt: 5878.41,
-      deletedAt: 1366.34,
-      updatedAt: 8559.11,
       environments: [
         "production",
       ],
+      id: "<id>",
+      createdAt: 5878.41,
+      deletedAt: 1366.34,
+      updatedAt: 8559.11,
+      url: "https://perfumed-director.net/",
+      name: "<value>",
+      ownerId: "<id>",
+      deliveryFormat: "json",
     },
   ]);
 });
 
 test("Logdrains Create Configurable Log Drain", async () => {
+  const testHttpClient = createTestHTTPClient("createConfigurableLogDrain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createConfigurableLogDrain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -204,17 +218,17 @@ test("Logdrains Create Configurable Log Drain", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    id: "<id>",
-    deliveryFormat: "json",
-    url: "https://close-dividend.biz",
-    name: "<value>",
-    ownerId: "<id>",
-    createdAt: 911.21,
-    deletedAt: 5254.68,
-    updatedAt: 3248.86,
     environments: [
       "preview",
       "production",
     ],
+    id: "<id>",
+    createdAt: 911.21,
+    deletedAt: 5254.68,
+    updatedAt: 3248.86,
+    url: "https://close-dividend.biz",
+    name: "<value>",
+    ownerId: "<id>",
+    deliveryFormat: "json",
   });
 });

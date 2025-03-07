@@ -5,7 +5,7 @@
 ```typescript
 import { CreateDeploymentHasType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentHasType = "query";
+let value: CreateDeploymentHasType = "cookie";
 ```
 
 ## Values

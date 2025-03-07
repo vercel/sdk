@@ -26,7 +26,7 @@ func pathDeleteV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.H
 		case "deleteAccessGroupProject[0]":
 			dir.HandlerFunc("deleteAccessGroupProject", testDeleteAccessGroupProjectDeleteAccessGroupProject0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

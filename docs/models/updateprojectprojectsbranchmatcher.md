@@ -6,7 +6,7 @@
 import { UpdateProjectProjectsBranchMatcher } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectProjectsBranchMatcher = {
-  type: "equals",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

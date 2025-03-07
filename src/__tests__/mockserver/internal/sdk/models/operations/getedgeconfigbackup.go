@@ -89,35 +89,35 @@ func (o *ResponseBodyUser) GetAvatar() *string {
 	return o.Avatar
 }
 
-type GetEdgeConfigBackupResponseBodyItems struct {
+type ResponseBodyItems struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetUpdatedAt() float64 {
+func (o *ResponseBodyItems) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
+func (o *ResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetDescription() *string {
+func (o *ResponseBodyItems) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetCreatedAt() float64 {
+func (o *ResponseBodyItems) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -125,8 +125,8 @@ func (o *GetEdgeConfigBackupResponseBodyItems) GetCreatedAt() float64 {
 }
 
 type ResponseBodyBackup struct {
-	Digest string                                          `json:"digest"`
-	Items  map[string]GetEdgeConfigBackupResponseBodyItems `json:"items"`
+	Digest string                       `json:"digest"`
+	Items  map[string]ResponseBodyItems `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
@@ -139,9 +139,9 @@ func (o *ResponseBodyBackup) GetDigest() string {
 	return o.Digest
 }
 
-func (o *ResponseBodyBackup) GetItems() map[string]GetEdgeConfigBackupResponseBodyItems {
+func (o *ResponseBodyBackup) GetItems() map[string]ResponseBodyItems {
 	if o == nil {
-		return map[string]GetEdgeConfigBackupResponseBodyItems{}
+		return map[string]ResponseBodyItems{}
 	}
 	return o.Items
 }
@@ -238,35 +238,35 @@ func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() ResponseBodyMetadata {
 	return o.Metadata
 }
 
-type ResponseBodyItems struct {
+type GetEdgeConfigBackupResponseBodyItems struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *ResponseBodyItems) GetUpdatedAt() float64 {
+func (o *GetEdgeConfigBackupResponseBodyItems) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *ResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
+func (o *GetEdgeConfigBackupResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *ResponseBodyItems) GetDescription() *string {
+func (o *GetEdgeConfigBackupResponseBodyItems) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ResponseBodyItems) GetCreatedAt() float64 {
+func (o *GetEdgeConfigBackupResponseBodyItems) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -274,8 +274,8 @@ func (o *ResponseBodyItems) GetCreatedAt() float64 {
 }
 
 type Backup struct {
-	Digest string                       `json:"digest"`
-	Items  map[string]ResponseBodyItems `json:"items"`
+	Digest string                                          `json:"digest"`
+	Items  map[string]GetEdgeConfigBackupResponseBodyItems `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
@@ -288,9 +288,9 @@ func (o *Backup) GetDigest() string {
 	return o.Digest
 }
 
-func (o *Backup) GetItems() map[string]ResponseBodyItems {
+func (o *Backup) GetItems() map[string]GetEdgeConfigBackupResponseBodyItems {
 	if o == nil {
-		return map[string]ResponseBodyItems{}
+		return map[string]GetEdgeConfigBackupResponseBodyItems{}
 	}
 	return o.Items
 }

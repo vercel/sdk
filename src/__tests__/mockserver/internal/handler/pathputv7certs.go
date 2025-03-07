@@ -24,7 +24,7 @@ func pathPutV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker)
 		case "uploadCert[0]":
 			dir.HandlerFunc("uploadCert", testUploadCertUploadCert0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

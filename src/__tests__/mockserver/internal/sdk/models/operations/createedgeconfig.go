@@ -10,336 +10,9 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Two5 struct {
-}
-
-type Items2Type string
-
-const (
-	Items2TypeStr     Items2Type = "str"
-	Items2TypeNumber  Items2Type = "number"
-	Items2TypeBoolean Items2Type = "boolean"
-	Items2TypeAny     Items2Type = "any"
-	Items2TypeTwo5    Items2Type = "2_5"
-)
-
-type Items2 struct {
-	Str     *string
-	Number  *float64
-	Boolean *bool
-	Any     any
-	Two5    *Two5
-
-	Type Items2Type
-}
-
-func CreateItems2Str(str string) Items2 {
-	typ := Items2TypeStr
-
-	return Items2{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateItems2Number(number float64) Items2 {
-	typ := Items2TypeNumber
-
-	return Items2{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateItems2Boolean(boolean bool) Items2 {
-	typ := Items2TypeBoolean
-
-	return Items2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func CreateItems2Any(any any) Items2 {
-	typ := Items2TypeAny
-
-	return Items2{
-		Any:  any,
-		Type: typ,
-	}
-}
-
-func CreateItems2Two5(two5 Two5) Items2 {
-	typ := Items2TypeTwo5
-
-	return Items2{
-		Two5: &two5,
-		Type: typ,
-	}
-}
-
-func (u *Items2) UnmarshalJSON(data []byte) error {
-
-	var two5 Two5 = Two5{}
-	if err := utils.UnmarshalJSON(data, &two5, "", true, true); err == nil {
-		u.Two5 = &two5
-		u.Type = Items2TypeTwo5
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = Items2TypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
-		u.Number = &number
-		u.Type = Items2TypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = &boolean
-		u.Type = Items2TypeBoolean
-		return nil
-	}
-
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
-		u.Type = Items2TypeAny
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Items2", string(data))
-}
-
-func (u Items2) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	if u.Any != nil {
-		return utils.MarshalJSON(u.Any, "", true)
-	}
-
-	if u.Two5 != nil {
-		return utils.MarshalJSON(u.Two5, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Items2: all fields are null")
-}
-
-type One5 struct {
-}
-
-type Items1Type string
-
-const (
-	Items1TypeStr     Items1Type = "str"
-	Items1TypeNumber  Items1Type = "number"
-	Items1TypeBoolean Items1Type = "boolean"
-	Items1TypeAny     Items1Type = "any"
-	Items1TypeOne5    Items1Type = "1_5"
-)
-
-type Items1 struct {
-	Str     *string
-	Number  *float64
-	Boolean *bool
-	Any     any
-	One5    *One5
-
-	Type Items1Type
-}
-
-func CreateItems1Str(str string) Items1 {
-	typ := Items1TypeStr
-
-	return Items1{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateItems1Number(number float64) Items1 {
-	typ := Items1TypeNumber
-
-	return Items1{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateItems1Boolean(boolean bool) Items1 {
-	typ := Items1TypeBoolean
-
-	return Items1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func CreateItems1Any(any any) Items1 {
-	typ := Items1TypeAny
-
-	return Items1{
-		Any:  any,
-		Type: typ,
-	}
-}
-
-func CreateItems1One5(one5 One5) Items1 {
-	typ := Items1TypeOne5
-
-	return Items1{
-		One5: &one5,
-		Type: typ,
-	}
-}
-
-func (u *Items1) UnmarshalJSON(data []byte) error {
-
-	var one5 One5 = One5{}
-	if err := utils.UnmarshalJSON(data, &one5, "", true, true); err == nil {
-		u.One5 = &one5
-		u.Type = Items1TypeOne5
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = Items1TypeStr
-		return nil
-	}
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
-		u.Number = &number
-		u.Type = Items1TypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = &boolean
-		u.Type = Items1TypeBoolean
-		return nil
-	}
-
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
-		u.Type = Items1TypeAny
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Items1", string(data))
-}
-
-func (u Items1) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	if u.Any != nil {
-		return utils.MarshalJSON(u.Any, "", true)
-	}
-
-	if u.One5 != nil {
-		return utils.MarshalJSON(u.One5, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Items1: all fields are null")
-}
-
-type ItemsType string
-
-const (
-	ItemsTypeItems1        ItemsType = "items_1"
-	ItemsTypeArrayOfItems2 ItemsType = "arrayOfItems2"
-)
-
-type Items struct {
-	Items1        *Items1
-	ArrayOfItems2 []Items2
-
-	Type ItemsType
-}
-
-func CreateItemsItems1(items1 Items1) Items {
-	typ := ItemsTypeItems1
-
-	return Items{
-		Items1: &items1,
-		Type:   typ,
-	}
-}
-
-func CreateItemsArrayOfItems2(arrayOfItems2 []Items2) Items {
-	typ := ItemsTypeArrayOfItems2
-
-	return Items{
-		ArrayOfItems2: arrayOfItems2,
-		Type:          typ,
-	}
-}
-
-func (u *Items) UnmarshalJSON(data []byte) error {
-
-	var items1 Items1 = Items1{}
-	if err := utils.UnmarshalJSON(data, &items1, "", true, true); err == nil {
-		u.Items1 = &items1
-		u.Type = ItemsTypeItems1
-		return nil
-	}
-
-	var arrayOfItems2 []Items2 = []Items2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfItems2, "", true, true); err == nil {
-		u.ArrayOfItems2 = arrayOfItems2
-		u.Type = ItemsTypeArrayOfItems2
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Items", string(data))
-}
-
-func (u Items) MarshalJSON() ([]byte, error) {
-	if u.Items1 != nil {
-		return utils.MarshalJSON(u.Items1, "", true)
-	}
-
-	if u.ArrayOfItems2 != nil {
-		return utils.MarshalJSON(u.ArrayOfItems2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Items: all fields are null")
-}
-
 type CreateEdgeConfigRequestBody struct {
-	Slug  string           `json:"slug"`
-	Items map[string]Items `json:"items,omitempty"`
+	Slug  string         `json:"slug"`
+	Items map[string]any `json:"items,omitempty"`
 }
 
 func (o *CreateEdgeConfigRequestBody) GetSlug() string {
@@ -349,7 +22,7 @@ func (o *CreateEdgeConfigRequestBody) GetSlug() string {
 	return o.Slug
 }
 
-func (o *CreateEdgeConfigRequestBody) GetItems() map[string]Items {
+func (o *CreateEdgeConfigRequestBody) GetItems() map[string]any {
 	if o == nil {
 		return nil
 	}
@@ -416,46 +89,151 @@ func (o *CreateEdgeConfigTransfer) GetDoneAt() *float64 {
 type CreateEdgeConfigSchema struct {
 }
 
-type CreateEdgeConfigType string
+type CreateEdgeConfigPurposeType string
 
 const (
-	CreateEdgeConfigTypeFlags CreateEdgeConfigType = "flags"
+	CreateEdgeConfigPurposeTypeExperimentation CreateEdgeConfigPurposeType = "experimentation"
 )
 
-func (e CreateEdgeConfigType) ToPointer() *CreateEdgeConfigType {
+func (e CreateEdgeConfigPurposeType) ToPointer() *CreateEdgeConfigPurposeType {
 	return &e
 }
-func (e *CreateEdgeConfigType) UnmarshalJSON(data []byte) error {
+func (e *CreateEdgeConfigPurposeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "experimentation":
+		*e = CreateEdgeConfigPurposeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateEdgeConfigPurposeType: %v", v)
+	}
+}
+
+type Purpose2 struct {
+	Type       CreateEdgeConfigPurposeType `json:"type"`
+	ResourceID string                      `json:"resourceId"`
+}
+
+func (o *Purpose2) GetType() CreateEdgeConfigPurposeType {
+	if o == nil {
+		return CreateEdgeConfigPurposeType("")
+	}
+	return o.Type
+}
+
+func (o *Purpose2) GetResourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ResourceID
+}
+
+type PurposeType string
+
+const (
+	PurposeTypeFlags PurposeType = "flags"
+)
+
+func (e PurposeType) ToPointer() *PurposeType {
+	return &e
+}
+func (e *PurposeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags":
-		*e = CreateEdgeConfigType(v)
+		*e = PurposeType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateEdgeConfigType: %v", v)
+		return fmt.Errorf("invalid value for PurposeType: %v", v)
 	}
 }
 
-type CreateEdgeConfigPurpose struct {
-	Type      CreateEdgeConfigType `json:"type"`
-	ProjectID string               `json:"projectId"`
+type Purpose1 struct {
+	Type      PurposeType `json:"type"`
+	ProjectID string      `json:"projectId"`
 }
 
-func (o *CreateEdgeConfigPurpose) GetType() CreateEdgeConfigType {
+func (o *Purpose1) GetType() PurposeType {
 	if o == nil {
-		return CreateEdgeConfigType("")
+		return PurposeType("")
 	}
 	return o.Type
 }
 
-func (o *CreateEdgeConfigPurpose) GetProjectID() string {
+func (o *Purpose1) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
+}
+
+type CreateEdgeConfigPurposeUnionType string
+
+const (
+	CreateEdgeConfigPurposeUnionTypePurpose1 CreateEdgeConfigPurposeUnionType = "purpose_1"
+	CreateEdgeConfigPurposeUnionTypePurpose2 CreateEdgeConfigPurposeUnionType = "purpose_2"
+)
+
+type CreateEdgeConfigPurpose struct {
+	Purpose1 *Purpose1
+	Purpose2 *Purpose2
+
+	Type CreateEdgeConfigPurposeUnionType
+}
+
+func CreateCreateEdgeConfigPurposePurpose1(purpose1 Purpose1) CreateEdgeConfigPurpose {
+	typ := CreateEdgeConfigPurposeUnionTypePurpose1
+
+	return CreateEdgeConfigPurpose{
+		Purpose1: &purpose1,
+		Type:     typ,
+	}
+}
+
+func CreateCreateEdgeConfigPurposePurpose2(purpose2 Purpose2) CreateEdgeConfigPurpose {
+	typ := CreateEdgeConfigPurposeUnionTypePurpose2
+
+	return CreateEdgeConfigPurpose{
+		Purpose2: &purpose2,
+		Type:     typ,
+	}
+}
+
+func (u *CreateEdgeConfigPurpose) UnmarshalJSON(data []byte) error {
+
+	var purpose1 Purpose1 = Purpose1{}
+	if err := utils.UnmarshalJSON(data, &purpose1, "", true, true); err == nil {
+		u.Purpose1 = &purpose1
+		u.Type = CreateEdgeConfigPurposeUnionTypePurpose1
+		return nil
+	}
+
+	var purpose2 Purpose2 = Purpose2{}
+	if err := utils.UnmarshalJSON(data, &purpose2, "", true, true); err == nil {
+		u.Purpose2 = &purpose2
+		u.Type = CreateEdgeConfigPurposeUnionTypePurpose2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateEdgeConfigPurpose", string(data))
+}
+
+func (u CreateEdgeConfigPurpose) MarshalJSON() ([]byte, error) {
+	if u.Purpose1 != nil {
+		return utils.MarshalJSON(u.Purpose1, "", true)
+	}
+
+	if u.Purpose2 != nil {
+		return utils.MarshalJSON(u.Purpose2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateEdgeConfigPurpose: all fields are null")
 }
 
 // CreateEdgeConfigResponseBody - An Edge Config

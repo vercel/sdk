@@ -25,7 +25,7 @@ func pathGetV1AccessGroups(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 		case "listAccessGroups[0]":
 			dir.HandlerFunc("listAccessGroups", testListAccessGroupsListAccessGroups0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

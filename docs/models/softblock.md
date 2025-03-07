@@ -8,8 +8,8 @@ When the User account has been "soft blocked", this property will contain the da
 import { SoftBlock } from "@vercel/sdk/models/authuser.js";
 
 let value: SoftBlock = {
-  blockedAt: 2552.64,
-  reason: "BLOCKED_FOR_PLATFORM_ABUSE",
+  blockedAt: 9574.89,
+  reason: "FAIR_USE_LIMITS_EXCEEDED",
 };
 ```
 

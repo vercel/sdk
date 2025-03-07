@@ -27,6 +27,7 @@ const (
 	Roles1Owner       Roles1 = "OWNER"
 	Roles1Member      Roles1 = "MEMBER"
 	Roles1Developer   Roles1 = "DEVELOPER"
+	Roles1Security    Roles1 = "SECURITY"
 	Roles1Billing     Roles1 = "BILLING"
 	Roles1Viewer      Roles1 = "VIEWER"
 	Roles1Contributor Roles1 = "CONTRIBUTOR"
@@ -46,6 +47,8 @@ func (e *Roles1) UnmarshalJSON(data []byte) error {
 	case "MEMBER":
 		fallthrough
 	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough

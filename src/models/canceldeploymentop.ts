@@ -43,6 +43,7 @@ export const CancelDeploymentFramework = {
   Nextjs: "nextjs",
   Gatsby: "gatsby",
   Remix: "remix",
+  ReactRouter: "react-router",
   Astro: "astro",
   Hexo: "hexo",
   Eleventy: "eleventy",
@@ -854,6 +855,35 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends1
   | CancelDeploymentMicrofrontends2;
 
+export const CancelDeploymentFunctionType = {
+  Fluid: "fluid",
+  Standard: "standard",
+} as const;
+export type CancelDeploymentFunctionType = ClosedEnum<
+  typeof CancelDeploymentFunctionType
+>;
+
+export const CancelDeploymentFunctionMemoryType = {
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+  Performance: "performance",
+} as const;
+export type CancelDeploymentFunctionMemoryType = ClosedEnum<
+  typeof CancelDeploymentFunctionMemoryType
+>;
+
+/**
+ * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+ */
+export type CancelDeploymentConfig = {
+  version?: number | undefined;
+  functionType: CancelDeploymentFunctionType;
+  functionMemoryType: CancelDeploymentFunctionMemoryType;
+  functionTimeout: number | null;
+  secureComputePrimaryRegion: string | null;
+  secureComputeFallbackRegion: string | null;
+};
+
 /**
  * The private deployment representation of a Deployment.
  */
@@ -978,6 +1008,10 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentMicrofrontends1
     | CancelDeploymentMicrofrontends2
     | undefined;
+  /**
+   * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+   */
+  config?: CancelDeploymentConfig | undefined;
 };
 
 /** @internal */
@@ -5621,6 +5655,118 @@ export function cancelDeploymentMicrofrontendsFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentFunctionType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFunctionType
+> = z.nativeEnum(CancelDeploymentFunctionType);
+
+/** @internal */
+export const CancelDeploymentFunctionType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFunctionType
+> = CancelDeploymentFunctionType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentFunctionType$ {
+  /** @deprecated use `CancelDeploymentFunctionType$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentFunctionType$inboundSchema;
+  /** @deprecated use `CancelDeploymentFunctionType$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentFunctionType$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentFunctionMemoryType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFunctionMemoryType
+> = z.nativeEnum(CancelDeploymentFunctionMemoryType);
+
+/** @internal */
+export const CancelDeploymentFunctionMemoryType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentFunctionMemoryType
+> = CancelDeploymentFunctionMemoryType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentFunctionMemoryType$ {
+  /** @deprecated use `CancelDeploymentFunctionMemoryType$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentFunctionMemoryType$inboundSchema;
+  /** @deprecated use `CancelDeploymentFunctionMemoryType$outboundSchema` instead. */
+  export const outboundSchema =
+    CancelDeploymentFunctionMemoryType$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentConfig$inboundSchema: z.ZodType<
+  CancelDeploymentConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  version: z.number().optional(),
+  functionType: CancelDeploymentFunctionType$inboundSchema,
+  functionMemoryType: CancelDeploymentFunctionMemoryType$inboundSchema,
+  functionTimeout: z.nullable(z.number()),
+  secureComputePrimaryRegion: z.nullable(z.string()),
+  secureComputeFallbackRegion: z.nullable(z.string()),
+});
+
+/** @internal */
+export type CancelDeploymentConfig$Outbound = {
+  version?: number | undefined;
+  functionType: string;
+  functionMemoryType: string;
+  functionTimeout: number | null;
+  secureComputePrimaryRegion: string | null;
+  secureComputeFallbackRegion: string | null;
+};
+
+/** @internal */
+export const CancelDeploymentConfig$outboundSchema: z.ZodType<
+  CancelDeploymentConfig$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentConfig
+> = z.object({
+  version: z.number().optional(),
+  functionType: CancelDeploymentFunctionType$outboundSchema,
+  functionMemoryType: CancelDeploymentFunctionMemoryType$outboundSchema,
+  functionTimeout: z.nullable(z.number()),
+  secureComputePrimaryRegion: z.nullable(z.string()),
+  secureComputeFallbackRegion: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentConfig$ {
+  /** @deprecated use `CancelDeploymentConfig$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentConfig$inboundSchema;
+  /** @deprecated use `CancelDeploymentConfig$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentConfig$outboundSchema;
+  /** @deprecated use `CancelDeploymentConfig$Outbound` instead. */
+  export type Outbound = CancelDeploymentConfig$Outbound;
+}
+
+export function cancelDeploymentConfigToJSON(
+  cancelDeploymentConfig: CancelDeploymentConfig,
+): string {
+  return JSON.stringify(
+    CancelDeploymentConfig$outboundSchema.parse(cancelDeploymentConfig),
+  );
+}
+
+export function cancelDeploymentConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   CancelDeploymentResponseBody,
   z.ZodTypeDef,
@@ -5746,6 +5892,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
     z.lazy(() => CancelDeploymentMicrofrontends2$inboundSchema),
   ]).optional(),
+  config: z.lazy(() => CancelDeploymentConfig$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -5861,6 +6008,7 @@ export type CancelDeploymentResponseBody$Outbound = {
     | CancelDeploymentMicrofrontends1$Outbound
     | CancelDeploymentMicrofrontends2$Outbound
     | undefined;
+  config?: CancelDeploymentConfig$Outbound | undefined;
 };
 
 /** @internal */
@@ -5990,6 +6138,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentMicrofrontends1$outboundSchema),
     z.lazy(() => CancelDeploymentMicrofrontends2$outboundSchema),
   ]).optional(),
+  config: z.lazy(() => CancelDeploymentConfig$outboundSchema).optional(),
 });
 
 /**

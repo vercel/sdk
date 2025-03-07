@@ -42,7 +42,6 @@ const value: models.GetConfigurationsResponseBody2[] = [
     integration: {
       name: "<value>",
       icon: "<value>",
-      category: "<value>",
       isLegacy: false,
     },
     completedAt: 1558531915505,

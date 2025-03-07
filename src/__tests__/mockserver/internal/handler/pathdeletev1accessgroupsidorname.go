@@ -22,7 +22,7 @@ func pathDeleteV1AccessGroupsIDOrName(dir *logging.HTTPFileDirectory, rt *tracki
 		case "deleteAccessGroup[0]":
 			dir.HandlerFunc("deleteAccessGroup", testDeleteAccessGroupDeleteAccessGroup0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

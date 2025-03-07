@@ -25,7 +25,7 @@ func pathGetV1ProjectsIDOrNameEnvID(dir *logging.HTTPFileDirectory, rt *tracking
 		case "getProjectEnv[0]":
 			dir.HandlerFunc("getProjectEnv", testGetProjectEnvGetProjectEnv0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

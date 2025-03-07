@@ -25,7 +25,7 @@ func pathGetV1IntegrationsConfigurationID(dir *logging.HTTPFileDirectory, rt *tr
 		case "getConfiguration[0]":
 			dir.HandlerFunc("getConfiguration", testGetConfigurationGetConfiguration0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

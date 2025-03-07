@@ -32,6 +32,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -40,11 +41,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Records an artifacts cache usage event. The body of this request is an array of cache usage events. The supported event types are `HIT` and `MISS`. The source is either `LOCAL` the cache event was on the users filesystem cache or `REMOTE` if the cache event is for a remote cache. When the event is a `HIT` the request also accepts a number `duration` which is the time taken to generate the artifact in the cache.
  */
-export async function artifactsRecordEvents(
+export function artifactsRecordEvents(
   client: VercelCore,
   request: RecordEventsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     void,
     | VercelBadRequestError
@@ -58,13 +59,41 @@ export async function artifactsRecordEvents(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: RecordEventsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      void,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => RecordEventsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -96,6 +125,7 @@ export async function artifactsRecordEvents(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "recordEvents",
     oAuth2Scopes: [],
 
@@ -119,7 +149,7 @@ export async function artifactsRecordEvents(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -130,7 +160,7 @@ export async function artifactsRecordEvents(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -157,8 +187,8 @@ export async function artifactsRecordEvents(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

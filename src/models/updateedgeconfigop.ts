@@ -37,15 +37,33 @@ export type UpdateEdgeConfigTransfer = {
 
 export type UpdateEdgeConfigSchema = {};
 
-export const UpdateEdgeConfigType = {
+export const UpdateEdgeConfigPurposeEdgeConfigType = {
+  Experimentation: "experimentation",
+} as const;
+export type UpdateEdgeConfigPurposeEdgeConfigType = ClosedEnum<
+  typeof UpdateEdgeConfigPurposeEdgeConfigType
+>;
+
+export type UpdateEdgeConfigPurpose2 = {
+  type: UpdateEdgeConfigPurposeEdgeConfigType;
+  resourceId: string;
+};
+
+export const UpdateEdgeConfigPurposeType = {
   Flags: "flags",
 } as const;
-export type UpdateEdgeConfigType = ClosedEnum<typeof UpdateEdgeConfigType>;
+export type UpdateEdgeConfigPurposeType = ClosedEnum<
+  typeof UpdateEdgeConfigPurposeType
+>;
 
-export type UpdateEdgeConfigPurpose = {
-  type: UpdateEdgeConfigType;
+export type UpdateEdgeConfigPurpose1 = {
+  type: UpdateEdgeConfigPurposeType;
   projectId: string;
 };
+
+export type UpdateEdgeConfigPurpose =
+  | UpdateEdgeConfigPurpose1
+  | UpdateEdgeConfigPurpose2;
 
 /**
  * An Edge Config
@@ -65,7 +83,7 @@ export type UpdateEdgeConfigResponseBody = {
    */
   transfer?: UpdateEdgeConfigTransfer | undefined;
   schema?: UpdateEdgeConfigSchema | undefined;
-  purpose?: UpdateEdgeConfigPurpose | undefined;
+  purpose?: UpdateEdgeConfigPurpose1 | UpdateEdgeConfigPurpose2 | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -306,24 +324,162 @@ export function updateEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
-export const UpdateEdgeConfigType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateEdgeConfigType
-> = z.nativeEnum(UpdateEdgeConfigType);
+export const UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateEdgeConfigPurposeEdgeConfigType> = z.nativeEnum(
+    UpdateEdgeConfigPurposeEdgeConfigType,
+  );
 
 /** @internal */
-export const UpdateEdgeConfigType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateEdgeConfigType
-> = UpdateEdgeConfigType$inboundSchema;
+export const UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateEdgeConfigPurposeEdgeConfigType> =
+    UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateEdgeConfigType$ {
-  /** @deprecated use `UpdateEdgeConfigType$inboundSchema` instead. */
-  export const inboundSchema = UpdateEdgeConfigType$inboundSchema;
-  /** @deprecated use `UpdateEdgeConfigType$outboundSchema` instead. */
-  export const outboundSchema = UpdateEdgeConfigType$outboundSchema;
+export namespace UpdateEdgeConfigPurposeEdgeConfigType$ {
+  /** @deprecated use `UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema;
+}
+
+/** @internal */
+export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
+  UpdateEdgeConfigPurpose2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema,
+  resourceId: z.string(),
+});
+
+/** @internal */
+export type UpdateEdgeConfigPurpose2$Outbound = {
+  type: string;
+  resourceId: string;
+};
+
+/** @internal */
+export const UpdateEdgeConfigPurpose2$outboundSchema: z.ZodType<
+  UpdateEdgeConfigPurpose2$Outbound,
+  z.ZodTypeDef,
+  UpdateEdgeConfigPurpose2
+> = z.object({
+  type: UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema,
+  resourceId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateEdgeConfigPurpose2$ {
+  /** @deprecated use `UpdateEdgeConfigPurpose2$inboundSchema` instead. */
+  export const inboundSchema = UpdateEdgeConfigPurpose2$inboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurpose2$outboundSchema` instead. */
+  export const outboundSchema = UpdateEdgeConfigPurpose2$outboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurpose2$Outbound` instead. */
+  export type Outbound = UpdateEdgeConfigPurpose2$Outbound;
+}
+
+export function updateEdgeConfigPurpose2ToJSON(
+  updateEdgeConfigPurpose2: UpdateEdgeConfigPurpose2,
+): string {
+  return JSON.stringify(
+    UpdateEdgeConfigPurpose2$outboundSchema.parse(updateEdgeConfigPurpose2),
+  );
+}
+
+export function updateEdgeConfigPurpose2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateEdgeConfigPurpose2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateEdgeConfigPurpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateEdgeConfigPurpose2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateEdgeConfigPurposeType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateEdgeConfigPurposeType
+> = z.nativeEnum(UpdateEdgeConfigPurposeType);
+
+/** @internal */
+export const UpdateEdgeConfigPurposeType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateEdgeConfigPurposeType
+> = UpdateEdgeConfigPurposeType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateEdgeConfigPurposeType$ {
+  /** @deprecated use `UpdateEdgeConfigPurposeType$inboundSchema` instead. */
+  export const inboundSchema = UpdateEdgeConfigPurposeType$inboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurposeType$outboundSchema` instead. */
+  export const outboundSchema = UpdateEdgeConfigPurposeType$outboundSchema;
+}
+
+/** @internal */
+export const UpdateEdgeConfigPurpose1$inboundSchema: z.ZodType<
+  UpdateEdgeConfigPurpose1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateEdgeConfigPurposeType$inboundSchema,
+  projectId: z.string(),
+});
+
+/** @internal */
+export type UpdateEdgeConfigPurpose1$Outbound = {
+  type: string;
+  projectId: string;
+};
+
+/** @internal */
+export const UpdateEdgeConfigPurpose1$outboundSchema: z.ZodType<
+  UpdateEdgeConfigPurpose1$Outbound,
+  z.ZodTypeDef,
+  UpdateEdgeConfigPurpose1
+> = z.object({
+  type: UpdateEdgeConfigPurposeType$outboundSchema,
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateEdgeConfigPurpose1$ {
+  /** @deprecated use `UpdateEdgeConfigPurpose1$inboundSchema` instead. */
+  export const inboundSchema = UpdateEdgeConfigPurpose1$inboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurpose1$outboundSchema` instead. */
+  export const outboundSchema = UpdateEdgeConfigPurpose1$outboundSchema;
+  /** @deprecated use `UpdateEdgeConfigPurpose1$Outbound` instead. */
+  export type Outbound = UpdateEdgeConfigPurpose1$Outbound;
+}
+
+export function updateEdgeConfigPurpose1ToJSON(
+  updateEdgeConfigPurpose1: UpdateEdgeConfigPurpose1,
+): string {
+  return JSON.stringify(
+    UpdateEdgeConfigPurpose1$outboundSchema.parse(updateEdgeConfigPurpose1),
+  );
+}
+
+export function updateEdgeConfigPurpose1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateEdgeConfigPurpose1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateEdgeConfigPurpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateEdgeConfigPurpose1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -331,26 +487,25 @@ export const UpdateEdgeConfigPurpose$inboundSchema: z.ZodType<
   UpdateEdgeConfigPurpose,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: UpdateEdgeConfigType$inboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
+  z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
+]);
 
 /** @internal */
-export type UpdateEdgeConfigPurpose$Outbound = {
-  type: string;
-  projectId: string;
-};
+export type UpdateEdgeConfigPurpose$Outbound =
+  | UpdateEdgeConfigPurpose1$Outbound
+  | UpdateEdgeConfigPurpose2$Outbound;
 
 /** @internal */
 export const UpdateEdgeConfigPurpose$outboundSchema: z.ZodType<
   UpdateEdgeConfigPurpose$Outbound,
   z.ZodTypeDef,
   UpdateEdgeConfigPurpose
-> = z.object({
-  type: UpdateEdgeConfigType$outboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => UpdateEdgeConfigPurpose1$outboundSchema),
+  z.lazy(() => UpdateEdgeConfigPurpose2$outboundSchema),
+]);
 
 /**
  * @internal
@@ -397,7 +552,10 @@ export const UpdateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => UpdateEdgeConfigTransfer$inboundSchema).optional(),
   schema: z.lazy(() => UpdateEdgeConfigSchema$inboundSchema).optional(),
-  purpose: z.lazy(() => UpdateEdgeConfigPurpose$inboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
+    z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });
@@ -412,7 +570,10 @@ export type UpdateEdgeConfigResponseBody$Outbound = {
   digest?: string | undefined;
   transfer?: UpdateEdgeConfigTransfer$Outbound | undefined;
   schema?: UpdateEdgeConfigSchema$Outbound | undefined;
-  purpose?: UpdateEdgeConfigPurpose$Outbound | undefined;
+  purpose?:
+    | UpdateEdgeConfigPurpose1$Outbound
+    | UpdateEdgeConfigPurpose2$Outbound
+    | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -431,7 +592,10 @@ export const UpdateEdgeConfigResponseBody$outboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => UpdateEdgeConfigTransfer$outboundSchema).optional(),
   schema: z.lazy(() => UpdateEdgeConfigSchema$outboundSchema).optional(),
-  purpose: z.lazy(() => UpdateEdgeConfigPurpose$outboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => UpdateEdgeConfigPurpose1$outboundSchema),
+    z.lazy(() => UpdateEdgeConfigPurpose2$outboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });

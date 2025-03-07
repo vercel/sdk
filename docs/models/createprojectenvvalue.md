@@ -9,11 +9,11 @@
 const value: string = "<value>";
 ```
 
-### `models.CreateProjectEnvValue2[]`
+### `models.Value2[]`
 
 ```typescript
-const value: models.CreateProjectEnvValue2[] = [
-  "preview",
+const value: models.Value2[] = [
+  "production",
 ];
 ```
 

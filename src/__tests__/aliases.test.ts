@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Aliases List Aliases", async () => {
+  const testHttpClient = createTestHTTPClient("listAliases");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listAliases"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -36,9 +38,11 @@ test("Aliases List Aliases", async () => {
 });
 
 test("Aliases Get Alias", async () => {
+  const testHttpClient = createTestHTTPClient("getAlias");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getAlias"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -75,9 +79,11 @@ test("Aliases Get Alias", async () => {
 });
 
 test("Aliases Delete Alias", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAlias");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAlias"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -93,9 +99,11 @@ test("Aliases Delete Alias", async () => {
 });
 
 test("Aliases List Deployment Aliases", async () => {
+  const testHttpClient = createTestHTTPClient("listDeploymentAliases");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listDeploymentAliases"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -111,9 +119,11 @@ test("Aliases List Deployment Aliases", async () => {
 });
 
 test("Aliases Assign Alias", async () => {
+  const testHttpClient = createTestHTTPClient("assignAlias");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("assignAlias"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

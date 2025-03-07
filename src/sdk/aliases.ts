@@ -29,6 +29,40 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Aliases extends ClientSDK {
   /**
+   * List Deployment Aliases
+   *
+   * @remarks
+   * Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.
+   */
+  async listDeploymentAliases(
+    request: ListDeploymentAliasesRequest,
+    options?: RequestOptions,
+  ): Promise<ListDeploymentAliasesResponseBody> {
+    return unwrapAsync(aliasesListDeploymentAliases(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Assign an Alias
+   *
+   * @remarks
+   * Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
+   */
+  async assignAlias(
+    request: AssignAliasRequest,
+    options?: RequestOptions,
+  ): Promise<AssignAliasResponseBody> {
+    return unwrapAsync(aliasesAssignAlias(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List aliases
    *
    * @remarks
@@ -73,40 +107,6 @@ export class Aliases extends ClientSDK {
     options?: RequestOptions,
   ): Promise<DeleteAliasResponseBody> {
     return unwrapAsync(aliasesDeleteAlias(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List Deployment Aliases
-   *
-   * @remarks
-   * Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.
-   */
-  async listDeploymentAliases(
-    request: ListDeploymentAliasesRequest,
-    options?: RequestOptions,
-  ): Promise<ListDeploymentAliasesResponseBody> {
-    return unwrapAsync(aliasesListDeploymentAliases(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Assign an Alias
-   *
-   * @remarks
-   * Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
-   */
-  async assignAlias(
-    request: AssignAliasRequest,
-    options?: RequestOptions,
-  ): Promise<AssignAliasResponseBody> {
-    return unwrapAsync(aliasesAssignAlias(
       this,
       request,
       options,

@@ -24,7 +24,7 @@ func pathDeleteV9ProjectsIDOrNameDomainsDomain(dir *logging.HTTPFileDirectory, r
 		case "removeProjectDomain[0]":
 			dir.HandlerFunc("removeProjectDomain", testRemoveProjectDomainRemoveProjectDomain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -9,7 +9,7 @@ let value: GetDomainTransferResponseBody = {
   transferable: false,
   transferPolicy: "not-supported",
   reason: "<value>",
-  status: "completed",
+  status: "pending_admin",
 };
 ```
 

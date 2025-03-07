@@ -5,7 +5,7 @@
 ```typescript
 import { Tier } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: Tier = "standard";
+let value: Tier = "critical";
 ```
 
 ## Values

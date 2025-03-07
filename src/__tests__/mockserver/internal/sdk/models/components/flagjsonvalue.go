@@ -22,8 +22,8 @@ type FlagJSONValue struct {
 	Str                  *string
 	Number               *float64
 	Boolean              *bool
-	ArrayOfFlagJSONValue []FlagJSONValue
-	MapOfFlagJSONValue   map[string]FlagJSONValue
+	ArrayOfFlagJSONValue []*FlagJSONValue
+	MapOfFlagJSONValue   map[string]*FlagJSONValue
 
 	Type FlagJSONValueType
 }
@@ -55,7 +55,7 @@ func CreateFlagJSONValueBoolean(boolean bool) FlagJSONValue {
 	}
 }
 
-func CreateFlagJSONValueArrayOfFlagJSONValue(arrayOfFlagJSONValue []FlagJSONValue) FlagJSONValue {
+func CreateFlagJSONValueArrayOfFlagJSONValue(arrayOfFlagJSONValue []*FlagJSONValue) FlagJSONValue {
 	typ := FlagJSONValueTypeArrayOfFlagJSONValue
 
 	return FlagJSONValue{
@@ -64,7 +64,7 @@ func CreateFlagJSONValueArrayOfFlagJSONValue(arrayOfFlagJSONValue []FlagJSONValu
 	}
 }
 
-func CreateFlagJSONValueMapOfFlagJSONValue(mapOfFlagJSONValue map[string]FlagJSONValue) FlagJSONValue {
+func CreateFlagJSONValueMapOfFlagJSONValue(mapOfFlagJSONValue map[string]*FlagJSONValue) FlagJSONValue {
 	typ := FlagJSONValueTypeMapOfFlagJSONValue
 
 	return FlagJSONValue{
@@ -96,14 +96,14 @@ func (u *FlagJSONValue) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var arrayOfFlagJSONValue []FlagJSONValue = []FlagJSONValue{}
+	var arrayOfFlagJSONValue []*FlagJSONValue = []*FlagJSONValue{}
 	if err := utils.UnmarshalJSON(data, &arrayOfFlagJSONValue, "", true, true); err == nil {
 		u.ArrayOfFlagJSONValue = arrayOfFlagJSONValue
 		u.Type = FlagJSONValueTypeArrayOfFlagJSONValue
 		return nil
 	}
 
-	var mapOfFlagJSONValue map[string]FlagJSONValue = map[string]FlagJSONValue{}
+	var mapOfFlagJSONValue map[string]*FlagJSONValue = map[string]*FlagJSONValue{}
 	if err := utils.UnmarshalJSON(data, &mapOfFlagJSONValue, "", true, true); err == nil {
 		u.MapOfFlagJSONValue = mapOfFlagJSONValue
 		u.Type = FlagJSONValueTypeMapOfFlagJSONValue

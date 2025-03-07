@@ -164,7 +164,7 @@ func (u ResponseBody) MarshalJSON() ([]byte, error) {
 
 type ArtifactQueryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   map[string]ResponseBody
+	Object   map[string]*ResponseBody
 }
 
 func (o *ArtifactQueryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -174,7 +174,7 @@ func (o *ArtifactQueryResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ArtifactQueryResponse) GetObject() map[string]ResponseBody {
+func (o *ArtifactQueryResponse) GetObject() map[string]*ResponseBody {
 	if o == nil {
 		return nil
 	}

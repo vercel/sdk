@@ -1,4 +1,4 @@
-# Speakeasy Mock Server
+# Mock Server
 
 A generated HTTP mock server based on your OpenAPI Specification (OAS). Use this mock server for integration and contract testing.
 

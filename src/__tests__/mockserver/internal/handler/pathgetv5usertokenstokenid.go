@@ -26,7 +26,7 @@ func pathGetV5UserTokensTokenID(dir *logging.HTTPFileDirectory, rt *tracking.Req
 		case "getAuthToken[0]":
 			dir.HandlerFunc("getAuthToken", testGetAuthTokenGetAuthToken0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

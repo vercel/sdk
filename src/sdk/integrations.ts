@@ -7,6 +7,7 @@ import { integrationsGetConfiguration } from "../funcs/integrationsGetConfigurat
 import { integrationsGetConfigurations } from "../funcs/integrationsGetConfigurations.js";
 import { integrationsGitNamespaces } from "../funcs/integrationsGitNamespaces.js";
 import { integrationsSearchRepo } from "../funcs/integrationsSearchRepo.js";
+import { integrationsUpdateIntegrationDeploymentAction } from "../funcs/integrationsUpdateIntegrationDeploymentAction.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { DeleteConfigurationRequest } from "../models/deleteconfigurationop.js";
 import {
@@ -25,9 +26,27 @@ import {
   SearchRepoRequest,
   SearchRepoResponseBody,
 } from "../models/searchrepoop.js";
+import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Integrations extends ClientSDK {
+  /**
+   * Update deployment integration action
+   *
+   * @remarks
+   * Updates the deployment integration action for the specified integration installation
+   */
+  async updateIntegrationDeploymentAction(
+    request: UpdateIntegrationDeploymentActionRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(integrationsUpdateIntegrationDeploymentAction(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Get configurations for the authenticated user or team
    *

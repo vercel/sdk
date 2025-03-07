@@ -143,6 +143,7 @@ const (
 	ResponseBodyTeamRoleOwner       ResponseBodyTeamRole = "OWNER"
 	ResponseBodyTeamRoleMember      ResponseBodyTeamRole = "MEMBER"
 	ResponseBodyTeamRoleDeveloper   ResponseBodyTeamRole = "DEVELOPER"
+	ResponseBodyTeamRoleSecurity    ResponseBodyTeamRole = "SECURITY"
 	ResponseBodyTeamRoleBilling     ResponseBodyTeamRole = "BILLING"
 	ResponseBodyTeamRoleViewer      ResponseBodyTeamRole = "VIEWER"
 	ResponseBodyTeamRoleContributor ResponseBodyTeamRole = "CONTRIBUTOR"
@@ -162,6 +163,8 @@ func (e *ResponseBodyTeamRole) UnmarshalJSON(data []byte) error {
 	case "MEMBER":
 		fallthrough
 	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough

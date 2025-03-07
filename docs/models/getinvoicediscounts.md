@@ -8,7 +8,7 @@ import { GetInvoiceDiscounts } from "@vercel/sdk/models/getinvoiceop.js";
 let value: GetInvoiceDiscounts = {
   billingPlanId: "<id>",
   name: "<value>",
-  amount: "118.02",
+  amount: "0.07",
 };
 ```
 

@@ -1,19 +1,23 @@
 # UpdateEdgeConfigPurpose
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateEdgeConfigPurpose1`
 
 ```typescript
-import { UpdateEdgeConfigPurpose } from "@vercel/sdk/models/updateedgeconfigop.js";
-
-let value: UpdateEdgeConfigPurpose = {
+const value: models.UpdateEdgeConfigPurpose1 = {
   type: "flags",
   projectId: "<id>",
 };
 ```
 
-## Fields
+### `models.UpdateEdgeConfigPurpose2`
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | [models.UpdateEdgeConfigType](../models/updateedgeconfigtype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+```typescript
+const value: models.UpdateEdgeConfigPurpose2 = {
+  type: "experimentation",
+  resourceId: "<id>",
+};
+```
+

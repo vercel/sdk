@@ -8,10 +8,10 @@
 ```typescript
 const value: models.CancelDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 6428.04,
+  projectId: 5559.38,
   type: "gitlab",
-  url: "https://unrealistic-feather.info/",
-  path: "/proc",
+  url: "https://somber-thongs.com",
+  path: "/sbin",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -25,14 +25,14 @@ const value: models.CancelDeploymentGitRepo1 = {
 const value: models.CancelDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 7128.93,
+  repoId: 9231.59,
   type: "github",
-  repoOwnerId: 8304.77,
-  path: "/boot/defaults",
+  repoOwnerId: 1050.94,
+  path: "/var/tmp",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 
@@ -45,11 +45,11 @@ const value: models.CancelDeploymentGitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/boot",
+  path: "/dev",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 

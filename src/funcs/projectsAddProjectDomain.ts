@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Add a domain to the project by passing its domain name and by specifying the project by either passing the project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request will return `verified = false`, and the domain will need to be verified according to the `verification` challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project, the request will fail with a `400` status code.
  */
-export async function projectsAddProjectDomain(
+export function projectsAddProjectDomain(
   client: VercelCore,
   request: AddProjectDomainRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     AddProjectDomainResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function projectsAddProjectDomain(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: AddProjectDomainRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      AddProjectDomainResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => AddProjectDomainRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -94,6 +123,7 @@ export async function projectsAddProjectDomain(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "addProjectDomain",
     oAuth2Scopes: [],
 
@@ -117,7 +147,7 @@ export async function projectsAddProjectDomain(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -128,7 +158,7 @@ export async function projectsAddProjectDomain(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -155,8 +185,8 @@ export async function projectsAddProjectDomain(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

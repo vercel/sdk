@@ -21,15 +21,15 @@ func pathDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID(dir *logg
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}[0]":
-			dir.HandlerFunc("delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}", testDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID0)(w, req)
+		case "removeCustomEnvironment[0]":
+			dir.HandlerFunc("removeCustomEnvironment", testRemoveCustomEnvironmentRemoveCustomEnvironment0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID0(w http.ResponseWriter, req *http.Request) {
+func testRemoveCustomEnvironmentRemoveCustomEnvironment0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -50,7 +50,7 @@ func testDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDDeleteV9Pr
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.DeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDResponseBody{}
+	respBody := &operations.RemoveCustomEnvironmentResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

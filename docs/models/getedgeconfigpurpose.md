@@ -1,19 +1,23 @@
 # GetEdgeConfigPurpose
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetEdgeConfigPurpose1`
 
 ```typescript
-import { GetEdgeConfigPurpose } from "@vercel/sdk/models/getedgeconfigop.js";
-
-let value: GetEdgeConfigPurpose = {
+const value: models.GetEdgeConfigPurpose1 = {
   type: "flags",
   projectId: "<id>",
 };
 ```
 
-## Fields
+### `models.GetEdgeConfigPurpose2`
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `type`                                                     | [models.GetEdgeConfigType](../models/getedgeconfigtype.md) | :heavy_check_mark:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+```typescript
+const value: models.GetEdgeConfigPurpose2 = {
+  type: "experimentation",
+  resourceId: "<id>",
+};
+```
+

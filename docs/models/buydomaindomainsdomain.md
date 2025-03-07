@@ -11,7 +11,7 @@ let value: BuyDomainDomainsDomain = {
     "<value>",
   ],
   verified: false,
-  created: 1979.82,
+  created: 7780.39,
   pending: false,
 };
 ```

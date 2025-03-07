@@ -5303,3 +5303,313 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: security
+  - workflowId: filterProjectEnvs
+    steps:
+      - stepId: test
+        operationId: filterProjectEnvs
+        parameters:
+          - name: idOrName
+            in: path
+            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+          - name: gitBranch
+            in: query
+            value: feature-1
+          - name: decrypt
+            in: query
+            value: "true"
+          - name: source
+            in: query
+            value: vercel-cli:pull
+          - name: customEnvironmentId
+            in: query
+            value: env_123abc4567
+          - name: customEnvironmentSlug
+            in: query
+            value: my-custom-env
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "envs": [
+                  {},
+                  {},
+                  {}
+                ],
+                "pagination": {
+                  "count": 20,
+                  "next": 1540095775951,
+                  "prev": 1540095775951
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: projects
+  - workflowId: update-integration-deployment-action
+    steps:
+      - stepId: test
+        operationId: update-integration-deployment-action
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: action
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 202
+    x-speakeasy-test-group: deployments
+  - workflowId: submit-prepayment-balances
+    steps:
+      - stepId: test
+        operationId: submit-prepayment-balances
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 201
+    x-speakeasy-test-group: marketplace
+  - workflowId: import-resource
+    steps:
+      - stepId: test
+        operationId: import-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "name": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+  - workflowId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
+    steps:
+      - stepId: test
+        operationId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+    steps:
+      - stepId: test
+        operationId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: itemId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+    steps:
+      - stepId: test
+        operationId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: itemId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+    steps:
+      - stepId: test
+        operationId: head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": {
+                  "key": [],
+                  "key1": true
+                },
+                "updatedAt": 6086.93,
+                "digest": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+  - workflowId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+    steps:
+      - stepId: test
+        operationId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": {
+                  "key": true
+                },
+                "updatedAt": 6820.68,
+                "digest": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+  - workflowId: get_/v1/experimentation/items
+    steps:
+      - stepId: test
+        operationId: get_/v1/experimentation/items
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": []
+              }
+            type: simple
+    x-speakeasy-test-group: api-experimentation
+  - workflowId: createCustomEnvironment
+    steps:
+      - stepId: test
+        operationId: createCustomEnvironment
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: environment
+  - workflowId: getCustomEnvironment
+    steps:
+      - stepId: test
+        operationId: getCustomEnvironment
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: environmentSlugOrId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: environment
+  - workflowId: updateCustomEnvironment
+    steps:
+      - stepId: test
+        operationId: updateCustomEnvironment
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: environmentSlugOrId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: environment
+  - workflowId: removeCustomEnvironment
+    steps:
+      - stepId: test
+        operationId: removeCustomEnvironment
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: environmentSlugOrId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: environment

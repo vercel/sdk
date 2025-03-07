@@ -10,14 +10,14 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * Period for the billing cycle.
+ * Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
  */
 export type Period = {
   start: Date;
   end: Date;
 };
 
-export type BillingItems = {
+export type Items = {
   /**
    * Partner's billing plan ID.
    */
@@ -92,7 +92,7 @@ export type Discounts = {
 };
 
 export type Billing2 = {
-  items: Array<BillingItems>;
+  items: Array<Items>;
   discounts?: Array<Discounts> | undefined;
 };
 
@@ -161,7 +161,7 @@ export type Usage = {
   /**
    * Partner's resource ID.
    */
-  resourceId: string;
+  resourceId?: string | undefined;
   /**
    * Metric name.
    */
@@ -189,10 +189,16 @@ export type Usage = {
 };
 
 export type SubmitBillingDataRequestBody = {
+  /**
+   * Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept.
+   */
   timestamp: Date;
+  /**
+   * End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
+   */
   eod: Date;
   /**
-   * Period for the billing cycle.
+   * Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
    */
   period: Period;
   /**
@@ -258,27 +264,24 @@ export function periodFromJSON(
 }
 
 /** @internal */
-export const BillingItems$inboundSchema: z.ZodType<
-  BillingItems,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
-});
+export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
+  .object({
+    billingPlanId: z.string(),
+    resourceId: z.string().optional(),
+    start: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    end: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    price: z.string(),
+    quantity: z.number(),
+    units: z.string(),
+    total: z.string(),
+  });
 
 /** @internal */
-export type BillingItems$Outbound = {
+export type Items$Outbound = {
   billingPlanId: string;
   resourceId?: string | undefined;
   start?: string | undefined;
@@ -292,10 +295,10 @@ export type BillingItems$Outbound = {
 };
 
 /** @internal */
-export const BillingItems$outboundSchema: z.ZodType<
-  BillingItems$Outbound,
+export const Items$outboundSchema: z.ZodType<
+  Items$Outbound,
   z.ZodTypeDef,
-  BillingItems
+  Items
 > = z.object({
   billingPlanId: z.string(),
   resourceId: z.string().optional(),
@@ -313,26 +316,26 @@ export const BillingItems$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BillingItems$ {
-  /** @deprecated use `BillingItems$inboundSchema` instead. */
-  export const inboundSchema = BillingItems$inboundSchema;
-  /** @deprecated use `BillingItems$outboundSchema` instead. */
-  export const outboundSchema = BillingItems$outboundSchema;
-  /** @deprecated use `BillingItems$Outbound` instead. */
-  export type Outbound = BillingItems$Outbound;
+export namespace Items$ {
+  /** @deprecated use `Items$inboundSchema` instead. */
+  export const inboundSchema = Items$inboundSchema;
+  /** @deprecated use `Items$outboundSchema` instead. */
+  export const outboundSchema = Items$outboundSchema;
+  /** @deprecated use `Items$Outbound` instead. */
+  export type Outbound = Items$Outbound;
 }
 
-export function billingItemsToJSON(billingItems: BillingItems): string {
-  return JSON.stringify(BillingItems$outboundSchema.parse(billingItems));
+export function itemsToJSON(items: Items): string {
+  return JSON.stringify(Items$outboundSchema.parse(items));
 }
 
-export function billingItemsFromJSON(
+export function itemsFromJSON(
   jsonString: string,
-): SafeParseResult<BillingItems, SDKValidationError> {
+): SafeParseResult<Items, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BillingItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BillingItems' from JSON`,
+    (x) => Items$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Items' from JSON`,
   );
 }
 
@@ -412,13 +415,13 @@ export const Billing2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(z.lazy(() => BillingItems$inboundSchema)),
+  items: z.array(z.lazy(() => Items$inboundSchema)),
   discounts: z.array(z.lazy(() => Discounts$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type Billing2$Outbound = {
-  items: Array<BillingItems$Outbound>;
+  items: Array<Items$Outbound>;
   discounts?: Array<Discounts$Outbound> | undefined;
 };
 
@@ -428,7 +431,7 @@ export const Billing2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Billing2
 > = z.object({
-  items: z.array(z.lazy(() => BillingItems$outboundSchema)),
+  items: z.array(z.lazy(() => Items$outboundSchema)),
   discounts: z.array(z.lazy(() => Discounts$outboundSchema)).optional(),
 });
 
@@ -618,7 +621,7 @@ export namespace SubmitBillingDataType$ {
 /** @internal */
 export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
   .object({
-    resourceId: z.string(),
+    resourceId: z.string().optional(),
     name: z.string(),
     type: SubmitBillingDataType$inboundSchema,
     units: z.string(),
@@ -629,7 +632,7 @@ export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Usage$Outbound = {
-  resourceId: string;
+  resourceId?: string | undefined;
   name: string;
   type: string;
   units: string;
@@ -644,7 +647,7 @@ export const Usage$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Usage
 > = z.object({
-  resourceId: z.string(),
+  resourceId: z.string().optional(),
   name: z.string(),
   type: SubmitBillingDataType$outboundSchema,
   units: z.string(),

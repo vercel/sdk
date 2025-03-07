@@ -34,6 +34,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -42,11 +43,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using an OAuth2 token, the list is limited to log drains created by the authenticated integration.
  */
-export async function logDrainsGetIntegrationLogDrains(
+export function logDrainsGetIntegrationLogDrains(
   client: VercelCore,
   request: GetIntegrationLogDrainsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     Array<GetIntegrationLogDrainsResponseBody>,
     | VercelBadRequestError
@@ -60,13 +61,41 @@ export async function logDrainsGetIntegrationLogDrains(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: GetIntegrationLogDrainsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      Array<GetIntegrationLogDrainsResponseBody>,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => GetIntegrationLogDrainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -87,6 +116,7 @@ export async function logDrainsGetIntegrationLogDrains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getIntegrationLogDrains",
     oAuth2Scopes: [],
 
@@ -110,7 +140,7 @@ export async function logDrainsGetIntegrationLogDrains(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -121,7 +151,7 @@ export async function logDrainsGetIntegrationLogDrains(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -148,8 +178,8 @@ export async function logDrainsGetIntegrationLogDrains(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

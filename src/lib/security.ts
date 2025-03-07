@@ -3,7 +3,6 @@
  */
 
 import { Security } from "../models/security.js";
-
 type OAuth2PasswordFlow = {
   username: string;
   password?: string | undefined;

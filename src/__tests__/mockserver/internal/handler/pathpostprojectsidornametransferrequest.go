@@ -24,7 +24,7 @@ func pathPostProjectsIDOrNameTransferRequest(dir *logging.HTTPFileDirectory, rt 
 		case "createProjectTransferRequest[0]":
 			dir.HandlerFunc("createProjectTransferRequest", testCreateProjectTransferRequestCreateProjectTransferRequest0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -45,7 +45,9 @@ func testCreateProjectTransferRequestCreateProjectTransferRequest0(w http.Respon
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateProjectTransferRequestResponseBody{}
+	respBody := &operations.CreateProjectTransferRequestResponseBody{
+		Code: "f99cc49a-602e-4786-a748-762dfb205880",
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

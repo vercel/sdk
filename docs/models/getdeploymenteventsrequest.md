@@ -7,7 +7,6 @@ import { GetDeploymentEventsRequest } from "@vercel/sdk/models/getdeploymenteven
 
 let value: GetDeploymentEventsRequest = {
   idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-  direction: "backward",
   follow: 1,
   limit: 100,
   name: "bld_cotnkcr76",

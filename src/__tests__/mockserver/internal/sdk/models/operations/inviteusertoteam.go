@@ -17,6 +17,7 @@ const (
 	InviteUserToTeamRoleOwner       InviteUserToTeamRole = "OWNER"
 	InviteUserToTeamRoleMember      InviteUserToTeamRole = "MEMBER"
 	InviteUserToTeamRoleDeveloper   InviteUserToTeamRole = "DEVELOPER"
+	InviteUserToTeamRoleSecurity    InviteUserToTeamRole = "SECURITY"
 	InviteUserToTeamRoleBilling     InviteUserToTeamRole = "BILLING"
 	InviteUserToTeamRoleViewer      InviteUserToTeamRole = "VIEWER"
 	InviteUserToTeamRoleContributor InviteUserToTeamRole = "CONTRIBUTOR"
@@ -36,6 +37,8 @@ func (e *InviteUserToTeamRole) UnmarshalJSON(data []byte) error {
 	case "MEMBER":
 		fallthrough
 	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough
@@ -174,6 +177,7 @@ const (
 	InviteUserToTeamResponseBodyRoleOwner       InviteUserToTeamResponseBodyRole = "OWNER"
 	InviteUserToTeamResponseBodyRoleMember      InviteUserToTeamResponseBodyRole = "MEMBER"
 	InviteUserToTeamResponseBodyRoleDeveloper   InviteUserToTeamResponseBodyRole = "DEVELOPER"
+	InviteUserToTeamResponseBodyRoleSecurity    InviteUserToTeamResponseBodyRole = "SECURITY"
 	InviteUserToTeamResponseBodyRoleBilling     InviteUserToTeamResponseBodyRole = "BILLING"
 	InviteUserToTeamResponseBodyRoleViewer      InviteUserToTeamResponseBodyRole = "VIEWER"
 	InviteUserToTeamResponseBodyRoleContributor InviteUserToTeamResponseBodyRole = "CONTRIBUTOR"
@@ -194,6 +198,8 @@ func (e *InviteUserToTeamResponseBodyRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
+	case "SECURITY":
+		fallthrough
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
@@ -206,10 +212,82 @@ func (e *InviteUserToTeamResponseBodyRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type ResponseBodyTeamRoles string
+
+const (
+	ResponseBodyTeamRolesOwner       ResponseBodyTeamRoles = "OWNER"
+	ResponseBodyTeamRolesMember      ResponseBodyTeamRoles = "MEMBER"
+	ResponseBodyTeamRolesDeveloper   ResponseBodyTeamRoles = "DEVELOPER"
+	ResponseBodyTeamRolesSecurity    ResponseBodyTeamRoles = "SECURITY"
+	ResponseBodyTeamRolesBilling     ResponseBodyTeamRoles = "BILLING"
+	ResponseBodyTeamRolesViewer      ResponseBodyTeamRoles = "VIEWER"
+	ResponseBodyTeamRolesContributor ResponseBodyTeamRoles = "CONTRIBUTOR"
+)
+
+func (e ResponseBodyTeamRoles) ToPointer() *ResponseBodyTeamRoles {
+	return &e
+}
+func (e *ResponseBodyTeamRoles) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = ResponseBodyTeamRoles(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ResponseBodyTeamRoles: %v", v)
+	}
+}
+
+type ResponseBodyTeamPermissions string
+
+const (
+	ResponseBodyTeamPermissionsCreateProject            ResponseBodyTeamPermissions = "CreateProject"
+	ResponseBodyTeamPermissionsFullProductionDeployment ResponseBodyTeamPermissions = "FullProductionDeployment"
+	ResponseBodyTeamPermissionsUsageViewer              ResponseBodyTeamPermissions = "UsageViewer"
+)
+
+func (e ResponseBodyTeamPermissions) ToPointer() *ResponseBodyTeamPermissions {
+	return &e
+}
+func (e *ResponseBodyTeamPermissions) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		*e = ResponseBodyTeamPermissions(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ResponseBodyTeamPermissions: %v", v)
+	}
+}
+
 type InviteUserToTeamResponseBody2 struct {
-	UID      string                           `json:"uid"`
-	Username string                           `json:"username"`
-	Role     InviteUserToTeamResponseBodyRole `json:"role"`
+	UID             string                           `json:"uid"`
+	Username        string                           `json:"username"`
+	Role            InviteUserToTeamResponseBodyRole `json:"role"`
+	TeamRoles       []ResponseBodyTeamRoles          `json:"teamRoles,omitempty"`
+	TeamPermissions []ResponseBodyTeamPermissions    `json:"teamPermissions,omitempty"`
 }
 
 func (o *InviteUserToTeamResponseBody2) GetUID() string {
@@ -233,6 +311,20 @@ func (o *InviteUserToTeamResponseBody2) GetRole() InviteUserToTeamResponseBodyRo
 	return o.Role
 }
 
+func (o *InviteUserToTeamResponseBody2) GetTeamRoles() []ResponseBodyTeamRoles {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *InviteUserToTeamResponseBody2) GetTeamPermissions() []ResponseBodyTeamPermissions {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
+}
+
 // ResponseBodyRole - The role used for the invitation
 type ResponseBodyRole string
 
@@ -240,6 +332,7 @@ const (
 	ResponseBodyRoleOwner       ResponseBodyRole = "OWNER"
 	ResponseBodyRoleMember      ResponseBodyRole = "MEMBER"
 	ResponseBodyRoleDeveloper   ResponseBodyRole = "DEVELOPER"
+	ResponseBodyRoleSecurity    ResponseBodyRole = "SECURITY"
 	ResponseBodyRoleBilling     ResponseBodyRole = "BILLING"
 	ResponseBodyRoleViewer      ResponseBodyRole = "VIEWER"
 	ResponseBodyRoleContributor ResponseBodyRole = "CONTRIBUTOR"
@@ -260,6 +353,8 @@ func (e *ResponseBodyRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
+	case "SECURITY":
+		fallthrough
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
@@ -269,6 +364,78 @@ func (e *ResponseBodyRole) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for ResponseBodyRole: %v", v)
+	}
+}
+
+// TeamRoles - The team roles of the user
+type TeamRoles string
+
+const (
+	TeamRolesOwner       TeamRoles = "OWNER"
+	TeamRolesMember      TeamRoles = "MEMBER"
+	TeamRolesDeveloper   TeamRoles = "DEVELOPER"
+	TeamRolesSecurity    TeamRoles = "SECURITY"
+	TeamRolesBilling     TeamRoles = "BILLING"
+	TeamRolesViewer      TeamRoles = "VIEWER"
+	TeamRolesContributor TeamRoles = "CONTRIBUTOR"
+)
+
+func (e TeamRoles) ToPointer() *TeamRoles {
+	return &e
+}
+func (e *TeamRoles) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = TeamRoles(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamRoles: %v", v)
+	}
+}
+
+// TeamPermissions - The team permissions of the user
+type TeamPermissions string
+
+const (
+	TeamPermissionsCreateProject            TeamPermissions = "CreateProject"
+	TeamPermissionsFullProductionDeployment TeamPermissions = "FullProductionDeployment"
+	TeamPermissionsUsageViewer              TeamPermissions = "UsageViewer"
+)
+
+func (e TeamPermissions) ToPointer() *TeamPermissions {
+	return &e
+}
+func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		*e = TeamPermissions(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamPermissions: %v", v)
 	}
 }
 
@@ -282,6 +449,10 @@ type InviteUserToTeamResponseBody1 struct {
 	Email *string `json:"email,omitempty"`
 	// The role used for the invitation
 	Role ResponseBodyRole `json:"role"`
+	// The team roles of the user
+	TeamRoles []TeamRoles `json:"teamRoles,omitempty"`
+	// The team permissions of the user
+	TeamPermissions []TeamPermissions `json:"teamPermissions,omitempty"`
 }
 
 func (o *InviteUserToTeamResponseBody1) GetUID() string {
@@ -310,6 +481,20 @@ func (o *InviteUserToTeamResponseBody1) GetRole() ResponseBodyRole {
 		return ResponseBodyRole("")
 	}
 	return o.Role
+}
+
+func (o *InviteUserToTeamResponseBody1) GetTeamRoles() []TeamRoles {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *InviteUserToTeamResponseBody1) GetTeamPermissions() []TeamPermissions {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 type InviteUserToTeamResponseBodyType string

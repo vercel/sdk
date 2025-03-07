@@ -24,7 +24,7 @@ func pathGetV1EdgeConfigEdgeConfigIDBackups(dir *logging.HTTPFileDirectory, rt *
 		case "getEdgeConfigBackups[0]":
 			dir.HandlerFunc("getEdgeConfigBackups", testGetEdgeConfigBackupsGetEdgeConfigBackups0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

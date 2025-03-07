@@ -24,7 +24,7 @@ func pathPutProjectsTransferRequestCode(dir *logging.HTTPFileDirectory, rt *trac
 		case "acceptProjectTransferRequest[0]":
 			dir.HandlerFunc("acceptProjectTransferRequest", testAcceptProjectTransferRequestAcceptProjectTransferRequest0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

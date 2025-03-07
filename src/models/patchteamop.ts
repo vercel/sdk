@@ -17,6 +17,7 @@ export const Roles1 = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
+  Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",

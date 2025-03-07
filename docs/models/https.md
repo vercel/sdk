@@ -6,7 +6,7 @@
 import { Https } from "@vercel/sdk/models/updaterecordop.js";
 
 let value: Https = {
-  priority: 919171,
+  priority: 206451,
   target: "example2.com.",
 };
 ```

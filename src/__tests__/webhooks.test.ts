@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Webhooks Create Webhook", async () => {
+  const testHttpClient = createTestHTTPClient("createWebhook");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createWebhook"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -39,9 +41,11 @@ test("Webhooks Create Webhook", async () => {
 });
 
 test("Webhooks Get Webhooks", async () => {
+  const testHttpClient = createTestHTTPClient("getWebhooks");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getWebhooks"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -120,9 +124,11 @@ test("Webhooks Get Webhooks", async () => {
 });
 
 test("Webhooks Get Webhook", async () => {
+  const testHttpClient = createTestHTTPClient("getWebhook");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getWebhook"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -148,9 +154,11 @@ test("Webhooks Get Webhook", async () => {
 });
 
 test("Webhooks Delete Webhook", async () => {
+  const testHttpClient = createTestHTTPClient("deleteWebhook");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteWebhook"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

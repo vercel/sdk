@@ -3,20 +3,20 @@
 
 ## Supported Types
 
-### `models.Microfrontends1`
+### `models.CreateDeploymentMicrofrontends1`
 
 ```typescript
-const value: models.Microfrontends1 = {
+const value: models.CreateDeploymentMicrofrontends1 = {
   groupIds: [
     "<value>",
   ],
 };
 ```
 
-### `models.Microfrontends2`
+### `models.CreateDeploymentMicrofrontends2`
 
 ```typescript
-const value: models.Microfrontends2 = {
+const value: models.CreateDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   groupIds: [
     "<value>",

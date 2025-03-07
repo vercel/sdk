@@ -24,8 +24,8 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "geo_country",
-            op: "gt",
+            type: "scheme",
+            op: "gte",
           },
         ],
       },
@@ -48,8 +48,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "query",
-            op: "sub",
+            type: "path",
+            op: "inc",
           },
         ],
       },
@@ -74,7 +74,7 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 8513.24,
+  value: 2569.75,
 };
 ```
 
@@ -105,9 +105,9 @@ const value: models.RequestBody7 = {
 const value: models.RequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "pricey-valuable.biz",
-    ip: "79.66.193.187",
-    action: "log",
+    hostname: "posh-hunger.com",
+    ip: "f40b:eec6:7da2:562a:ee10:67bf:8ffa:d17e",
+    action: "deny",
   },
 };
 ```
@@ -119,9 +119,9 @@ const value: models.RequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "edible-straw.org",
-    ip: "eb66:64dc:a8e4:c14d:ecdf:aac2:fb3f:7ddb",
-    action: "deny",
+    hostname: "tense-possession.info",
+    ip: "bfb2:b8f6:57cd:36c9:9cea:fbb6:ecd1:eb07",
+    action: "log",
   },
 };
 ```
@@ -140,9 +140,22 @@ const value: models.RequestBody10 = {
 ```typescript
 const value: models.Eleven = {
   action: "managedRules.update",
-  id: "owasp",
+  id: "<id>",
   value: {
     active: false,
+  },
+};
+```
+
+### `models.Twelve`
+
+```typescript
+const value: models.Twelve = {
+  id: "<id>",
+  value: {
+    "key": {
+      active: false,
+    },
   },
 };
 ```

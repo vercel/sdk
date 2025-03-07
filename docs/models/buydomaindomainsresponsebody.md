@@ -12,7 +12,7 @@ let value: BuyDomainDomainsResponseBody = {
       "<value>",
     ],
     verified: false,
-    created: 455.1,
+    created: 8453.65,
     pending: false,
   },
 };

@@ -24,7 +24,7 @@ func pathPostV1InstallationsIntegrationConfigurationIDBillingInvoices(dir *loggi
 		case "submit-invoice[0]":
 			dir.HandlerFunc("submit-invoice", testSubmitInvoiceSubmitInvoice0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

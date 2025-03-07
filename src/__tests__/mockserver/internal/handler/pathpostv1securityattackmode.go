@@ -24,7 +24,7 @@ func pathPostV1SecurityAttackMode(dir *logging.HTTPFileDirectory, rt *tracking.R
 		case "updateAttackChallengeMode[0]":
 			dir.HandlerFunc("updateAttackChallengeMode", testUpdateAttackChallengeModeUpdateAttackChallengeMode0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

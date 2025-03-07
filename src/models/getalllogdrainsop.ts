@@ -10,6 +10,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllLogDrainsRequest = {
   projectId?: string | undefined;
+  projectIdOrName?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -19,15 +20,6 @@ export type GetAllLogDrainsRequest = {
    */
   slug?: string | undefined;
 };
-
-export const GetAllLogDrainsDeliveryFormat = {
-  Json: "json",
-  Ndjson: "ndjson",
-  Syslog: "syslog",
-} as const;
-export type GetAllLogDrainsDeliveryFormat = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryFormat
->;
 
 export const GetAllLogDrainsSources = {
   Build: "build",
@@ -72,21 +64,19 @@ export type GetAllLogDrainsCreatedFrom = ClosedEnum<
   typeof GetAllLogDrainsCreatedFrom
 >;
 
+export const GetAllLogDrainsDeliveryFormat = {
+  Json: "json",
+  Ndjson: "ndjson",
+  Syslog: "syslog",
+} as const;
+export type GetAllLogDrainsDeliveryFormat = ClosedEnum<
+  typeof GetAllLogDrainsDeliveryFormat
+>;
+
 export type GetAllLogDrainsResponseBody = {
-  id: string;
-  deliveryFormat: GetAllLogDrainsDeliveryFormat;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
   sources?: Array<GetAllLogDrainsSources> | undefined;
-  headers?: { [k: string]: string } | undefined;
   environments: Array<GetAllLogDrainsEnvironments>;
   status?: GetAllLogDrainsStatus | undefined;
   disabledAt?: number | undefined;
@@ -95,8 +85,19 @@ export type GetAllLogDrainsResponseBody = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
-  secret?: string | undefined;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
   createdFrom?: GetAllLogDrainsCreatedFrom | undefined;
+  deliveryFormat: GetAllLogDrainsDeliveryFormat;
+  secret?: string | undefined;
 };
 
 /** @internal */
@@ -106,6 +107,7 @@ export const GetAllLogDrainsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectId: z.string().optional(),
+  projectIdOrName: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -113,6 +115,7 @@ export const GetAllLogDrainsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetAllLogDrainsRequest$Outbound = {
   projectId?: string | undefined;
+  projectIdOrName?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -124,6 +127,7 @@ export const GetAllLogDrainsRequest$outboundSchema: z.ZodType<
   GetAllLogDrainsRequest
 > = z.object({
   projectId: z.string().optional(),
+  projectIdOrName: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -157,27 +161,6 @@ export function getAllLogDrainsRequestFromJSON(
     (x) => GetAllLogDrainsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAllLogDrainsRequest' from JSON`,
   );
-}
-
-/** @internal */
-export const GetAllLogDrainsDeliveryFormat$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDeliveryFormat
-> = z.nativeEnum(GetAllLogDrainsDeliveryFormat);
-
-/** @internal */
-export const GetAllLogDrainsDeliveryFormat$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDeliveryFormat
-> = GetAllLogDrainsDeliveryFormat$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllLogDrainsDeliveryFormat$ {
-  /** @deprecated use `GetAllLogDrainsDeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema = GetAllLogDrainsDeliveryFormat$inboundSchema;
-  /** @deprecated use `GetAllLogDrainsDeliveryFormat$outboundSchema` instead. */
-  export const outboundSchema = GetAllLogDrainsDeliveryFormat$outboundSchema;
 }
 
 /** @internal */
@@ -286,25 +269,35 @@ export namespace GetAllLogDrainsCreatedFrom$ {
 }
 
 /** @internal */
+export const GetAllLogDrainsDeliveryFormat$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDeliveryFormat
+> = z.nativeEnum(GetAllLogDrainsDeliveryFormat);
+
+/** @internal */
+export const GetAllLogDrainsDeliveryFormat$outboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDeliveryFormat
+> = GetAllLogDrainsDeliveryFormat$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAllLogDrainsDeliveryFormat$ {
+  /** @deprecated use `GetAllLogDrainsDeliveryFormat$inboundSchema` instead. */
+  export const inboundSchema = GetAllLogDrainsDeliveryFormat$inboundSchema;
+  /** @deprecated use `GetAllLogDrainsDeliveryFormat$outboundSchema` instead. */
+  export const outboundSchema = GetAllLogDrainsDeliveryFormat$outboundSchema;
+}
+
+/** @internal */
 export const GetAllLogDrainsResponseBody$inboundSchema: z.ZodType<
   GetAllLogDrainsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  deliveryFormat: GetAllLogDrainsDeliveryFormat$inboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
   sources: z.array(GetAllLogDrainsSources$inboundSchema).optional(),
-  headers: z.record(z.string()).optional(),
   environments: z.array(GetAllLogDrainsEnvironments$inboundSchema),
   status: GetAllLogDrainsStatus$inboundSchema.optional(),
   disabledAt: z.number().optional(),
@@ -313,26 +306,26 @@ export const GetAllLogDrainsResponseBody$inboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
-  secret: z.string().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
   createdFrom: GetAllLogDrainsCreatedFrom$inboundSchema.optional(),
+  deliveryFormat: GetAllLogDrainsDeliveryFormat$inboundSchema,
+  secret: z.string().optional(),
 });
 
 /** @internal */
 export type GetAllLogDrainsResponseBody$Outbound = {
-  id: string;
-  deliveryFormat: string;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
   sources?: Array<string> | undefined;
-  headers?: { [k: string]: string } | undefined;
   environments: Array<string>;
   status?: string | undefined;
   disabledAt?: number | undefined;
@@ -341,8 +334,19 @@ export type GetAllLogDrainsResponseBody$Outbound = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
-  secret?: string | undefined;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
   createdFrom?: string | undefined;
+  deliveryFormat: string;
+  secret?: string | undefined;
 };
 
 /** @internal */
@@ -351,20 +355,9 @@ export const GetAllLogDrainsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsResponseBody
 > = z.object({
-  id: z.string(),
-  deliveryFormat: GetAllLogDrainsDeliveryFormat$outboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
   sources: z.array(GetAllLogDrainsSources$outboundSchema).optional(),
-  headers: z.record(z.string()).optional(),
   environments: z.array(GetAllLogDrainsEnvironments$outboundSchema),
   status: GetAllLogDrainsStatus$outboundSchema.optional(),
   disabledAt: z.number().optional(),
@@ -373,8 +366,19 @@ export const GetAllLogDrainsResponseBody$outboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
-  secret: z.string().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
   createdFrom: GetAllLogDrainsCreatedFrom$outboundSchema.optional(),
+  deliveryFormat: GetAllLogDrainsDeliveryFormat$outboundSchema,
+  secret: z.string().optional(),
 });
 
 /**

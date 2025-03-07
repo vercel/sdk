@@ -111,25 +111,26 @@ func (o *GetConfigurationsRequest) GetSlug() *string {
 type TagIds string
 
 const (
-	TagIdsTagAi             TagIds = "tag_ai"
-	TagIdsTagAnalytics      TagIds = "tag_analytics"
-	TagIdsTagAuthentication TagIds = "tag_authentication"
-	TagIdsTagCms            TagIds = "tag_cms"
-	TagIdsTagCodeRepository TagIds = "tag_code_repository"
-	TagIdsTagCommerce       TagIds = "tag_commerce"
-	TagIdsTagDatabases      TagIds = "tag_databases"
-	TagIdsTagDevTools       TagIds = "tag_dev_tools"
-	TagIdsTagExperiments    TagIds = "tag_experiments"
-	TagIdsTagLogging        TagIds = "tag_logging"
-	TagIdsTagMessaging      TagIds = "tag_messaging"
-	TagIdsTagMonitoring     TagIds = "tag_monitoring"
-	TagIdsTagObservability  TagIds = "tag_observability"
-	TagIdsTagPerformance    TagIds = "tag_performance"
-	TagIdsTagProductivity   TagIds = "tag_productivity"
-	TagIdsTagSearching      TagIds = "tag_searching"
-	TagIdsTagSecurity       TagIds = "tag_security"
-	TagIdsTagTesting        TagIds = "tag_testing"
-	TagIdsTagVideo          TagIds = "tag_video"
+	TagIdsTagAi              TagIds = "tag_ai"
+	TagIdsTagAnalytics       TagIds = "tag_analytics"
+	TagIdsTagAuthentication  TagIds = "tag_authentication"
+	TagIdsTagCms             TagIds = "tag_cms"
+	TagIdsTagCodeRepository  TagIds = "tag_code_repository"
+	TagIdsTagCommerce        TagIds = "tag_commerce"
+	TagIdsTagDatabases       TagIds = "tag_databases"
+	TagIdsTagDevTools        TagIds = "tag_dev_tools"
+	TagIdsTagExperimentation TagIds = "tag_experimentation"
+	TagIdsTagFlags           TagIds = "tag_flags"
+	TagIdsTagLogging         TagIds = "tag_logging"
+	TagIdsTagMessaging       TagIds = "tag_messaging"
+	TagIdsTagMonitoring      TagIds = "tag_monitoring"
+	TagIdsTagObservability   TagIds = "tag_observability"
+	TagIdsTagPerformance     TagIds = "tag_performance"
+	TagIdsTagProductivity    TagIds = "tag_productivity"
+	TagIdsTagSearching       TagIds = "tag_searching"
+	TagIdsTagSecurity        TagIds = "tag_security"
+	TagIdsTagTesting         TagIds = "tag_testing"
+	TagIdsTagVideo           TagIds = "tag_video"
 )
 
 func (e TagIds) ToPointer() *TagIds {
@@ -157,7 +158,9 @@ func (e *TagIds) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "tag_dev_tools":
 		fallthrough
-	case "tag_experiments":
+	case "tag_experimentation":
+		fallthrough
+	case "tag_flags":
 		fallthrough
 	case "tag_logging":
 		fallthrough
@@ -188,7 +191,6 @@ func (e *TagIds) UnmarshalJSON(data []byte) error {
 type Integration struct {
 	Name                string   `json:"name"`
 	Icon                string   `json:"icon"`
-	Category            string   `json:"category"`
 	IsLegacy            bool     `json:"isLegacy"`
 	Flags               []string `json:"flags,omitempty"`
 	AssignedBetaLabelAt *float64 `json:"assignedBetaLabelAt,omitempty"`
@@ -207,13 +209,6 @@ func (o *Integration) GetIcon() string {
 		return ""
 	}
 	return o.Icon
-}
-
-func (o *Integration) GetCategory() string {
-	if o == nil {
-		return ""
-	}
-	return o.Category
 }
 
 func (o *Integration) GetIsLegacy() bool {
@@ -297,21 +292,21 @@ func (e *GetConfigurationsResponseBodyIntegrationsType) UnmarshalJSON(data []byt
 	}
 }
 
-type ResponseBodyDisabledReason string
+type GetConfigurationsResponseBodyDisabledReason string
 
 const (
-	ResponseBodyDisabledReasonDisabledByOwner             ResponseBodyDisabledReason = "disabled-by-owner"
-	ResponseBodyDisabledReasonFeatureNotAvailable         ResponseBodyDisabledReason = "feature-not-available"
-	ResponseBodyDisabledReasonDisabledByAdmin             ResponseBodyDisabledReason = "disabled-by-admin"
-	ResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    ResponseBodyDisabledReason = "original-owner-left-the-team"
-	ResponseBodyDisabledReasonAccountPlanDowngrade        ResponseBodyDisabledReason = "account-plan-downgrade"
-	ResponseBodyDisabledReasonOriginalOwnerRoleDowngraded ResponseBodyDisabledReason = "original-owner-role-downgraded"
+	GetConfigurationsResponseBodyDisabledReasonDisabledByOwner             GetConfigurationsResponseBodyDisabledReason = "disabled-by-owner"
+	GetConfigurationsResponseBodyDisabledReasonFeatureNotAvailable         GetConfigurationsResponseBodyDisabledReason = "feature-not-available"
+	GetConfigurationsResponseBodyDisabledReasonDisabledByAdmin             GetConfigurationsResponseBodyDisabledReason = "disabled-by-admin"
+	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    GetConfigurationsResponseBodyDisabledReason = "original-owner-left-the-team"
+	GetConfigurationsResponseBodyDisabledReasonAccountPlanDowngrade        GetConfigurationsResponseBodyDisabledReason = "account-plan-downgrade"
+	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerRoleDowngraded GetConfigurationsResponseBodyDisabledReason = "original-owner-role-downgraded"
 )
 
-func (e ResponseBodyDisabledReason) ToPointer() *ResponseBodyDisabledReason {
+func (e GetConfigurationsResponseBodyDisabledReason) ToPointer() *GetConfigurationsResponseBodyDisabledReason {
 	return &e
 }
-func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -328,10 +323,10 @@ func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = ResponseBodyDisabledReason(v)
+		*e = GetConfigurationsResponseBodyDisabledReason(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyDisabledReason: %v", v)
 	}
 }
 
@@ -360,214 +355,6 @@ func (e *GetConfigurationsResponseBodyInstallationType) UnmarshalJSON(data []byt
 	default:
 		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyInstallationType: %v", v)
 	}
-}
-
-type GetConfigurationsResponseBodyIntegrationsResponse200Type string
-
-const (
-	GetConfigurationsResponseBodyIntegrationsResponse200TypePrepayment   GetConfigurationsResponseBodyIntegrationsResponse200Type = "prepayment"
-	GetConfigurationsResponseBodyIntegrationsResponse200TypeSubscription GetConfigurationsResponseBodyIntegrationsResponse200Type = "subscription"
-)
-
-func (e GetConfigurationsResponseBodyIntegrationsResponse200Type) ToPointer() *GetConfigurationsResponseBodyIntegrationsResponse200Type {
-	return &e
-}
-func (e *GetConfigurationsResponseBodyIntegrationsResponse200Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "prepayment":
-		fallthrough
-	case "subscription":
-		*e = GetConfigurationsResponseBodyIntegrationsResponse200Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyIntegrationsResponse200Type: %v", v)
-	}
-}
-
-type GetConfigurationsResponseBodyScope string
-
-const (
-	GetConfigurationsResponseBodyScopeInstallation GetConfigurationsResponseBodyScope = "installation"
-	GetConfigurationsResponseBodyScopeResource     GetConfigurationsResponseBodyScope = "resource"
-)
-
-func (e GetConfigurationsResponseBodyScope) ToPointer() *GetConfigurationsResponseBodyScope {
-	return &e
-}
-func (e *GetConfigurationsResponseBodyScope) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "installation":
-		fallthrough
-	case "resource":
-		*e = GetConfigurationsResponseBodyScope(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyScope: %v", v)
-	}
-}
-
-type ResponseBodyDetails struct {
-	Label string  `json:"label"`
-	Value *string `json:"value,omitempty"`
-}
-
-func (o *ResponseBodyDetails) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *ResponseBodyDetails) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type ResponseBodyHeightlightedDetails struct {
-	Label string  `json:"label"`
-	Value *string `json:"value,omitempty"`
-}
-
-func (o *ResponseBodyHeightlightedDetails) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *ResponseBodyHeightlightedDetails) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type ResponseBodyQuote struct {
-	Line   string `json:"line"`
-	Amount string `json:"amount"`
-}
-
-func (o *ResponseBodyQuote) GetLine() string {
-	if o == nil {
-		return ""
-	}
-	return o.Line
-}
-
-func (o *ResponseBodyQuote) GetAmount() string {
-	if o == nil {
-		return ""
-	}
-	return o.Amount
-}
-
-type ResponseBodyBillingPlan struct {
-	ID                     string                                                   `json:"id"`
-	Type                   GetConfigurationsResponseBodyIntegrationsResponse200Type `json:"type"`
-	Name                   string                                                   `json:"name"`
-	Scope                  *GetConfigurationsResponseBodyScope                      `json:"scope,omitempty"`
-	Description            string                                                   `json:"description"`
-	PaymentMethodRequired  *bool                                                    `json:"paymentMethodRequired,omitempty"`
-	PreauthorizationAmount *float64                                                 `json:"preauthorizationAmount,omitempty"`
-	Cost                   *string                                                  `json:"cost,omitempty"`
-	Details                []ResponseBodyDetails                                    `json:"details,omitempty"`
-	HeightlightedDetails   []ResponseBodyHeightlightedDetails                       `json:"heightlightedDetails,omitempty"`
-	Quote                  []ResponseBodyQuote                                      `json:"quote,omitempty"`
-	EffectiveDate          *string                                                  `json:"effectiveDate,omitempty"`
-}
-
-func (o *ResponseBodyBillingPlan) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *ResponseBodyBillingPlan) GetType() GetConfigurationsResponseBodyIntegrationsResponse200Type {
-	if o == nil {
-		return GetConfigurationsResponseBodyIntegrationsResponse200Type("")
-	}
-	return o.Type
-}
-
-func (o *ResponseBodyBillingPlan) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *ResponseBodyBillingPlan) GetScope() *GetConfigurationsResponseBodyScope {
-	if o == nil {
-		return nil
-	}
-	return o.Scope
-}
-
-func (o *ResponseBodyBillingPlan) GetDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.Description
-}
-
-func (o *ResponseBodyBillingPlan) GetPaymentMethodRequired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PaymentMethodRequired
-}
-
-func (o *ResponseBodyBillingPlan) GetPreauthorizationAmount() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PreauthorizationAmount
-}
-
-func (o *ResponseBodyBillingPlan) GetCost() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cost
-}
-
-func (o *ResponseBodyBillingPlan) GetDetails() []ResponseBodyDetails {
-	if o == nil {
-		return nil
-	}
-	return o.Details
-}
-
-func (o *ResponseBodyBillingPlan) GetHeightlightedDetails() []ResponseBodyHeightlightedDetails {
-	if o == nil {
-		return nil
-	}
-	return o.HeightlightedDetails
-}
-
-func (o *ResponseBodyBillingPlan) GetQuote() []ResponseBodyQuote {
-	if o == nil {
-		return nil
-	}
-	return o.Quote
-}
-
-func (o *ResponseBodyBillingPlan) GetEffectiveDate() *string {
-	if o == nil {
-		return nil
-	}
-	return o.EffectiveDate
 }
 
 type GetConfigurationsResponseBody2 struct {
@@ -602,14 +389,10 @@ type GetConfigurationsResponseBody2 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                    `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *ResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                                     `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationsResponseBodyDisabledReason `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsResponseBodyInstallationType `json:"installationType,omitempty"`
-	BillingPlan      *ResponseBodyBillingPlan                       `json:"billingPlan,omitempty"`
-	BillingTotal     *string                                        `json:"billingTotal,omitempty"`
-	PeriodStart      *string                                        `json:"periodStart,omitempty"`
-	PeriodEnd        *string                                        `json:"periodEnd,omitempty"`
 }
 
 func (o *GetConfigurationsResponseBody2) GetIntegration() Integration {
@@ -731,7 +514,7 @@ func (o *GetConfigurationsResponseBody2) GetDeleteRequestedAt() *float64 {
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetDisabledReason() *ResponseBodyDisabledReason {
+func (o *GetConfigurationsResponseBody2) GetDisabledReason() *GetConfigurationsResponseBodyDisabledReason {
 	if o == nil {
 		return nil
 	}
@@ -743,34 +526,6 @@ func (o *GetConfigurationsResponseBody2) GetInstallationType() *GetConfiguration
 		return nil
 	}
 	return o.InstallationType
-}
-
-func (o *GetConfigurationsResponseBody2) GetBillingPlan() *ResponseBodyBillingPlan {
-	if o == nil {
-		return nil
-	}
-	return o.BillingPlan
-}
-
-func (o *GetConfigurationsResponseBody2) GetBillingTotal() *string {
-	if o == nil {
-		return nil
-	}
-	return o.BillingTotal
-}
-
-func (o *GetConfigurationsResponseBody2) GetPeriodStart() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PeriodStart
-}
-
-func (o *GetConfigurationsResponseBody2) GetPeriodEnd() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PeriodEnd
 }
 
 // GetConfigurationsResponseBodySource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -826,21 +581,21 @@ func (e *GetConfigurationsResponseBodyType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetConfigurationsResponseBodyDisabledReason string
+type ResponseBodyDisabledReason string
 
 const (
-	GetConfigurationsResponseBodyDisabledReasonDisabledByOwner             GetConfigurationsResponseBodyDisabledReason = "disabled-by-owner"
-	GetConfigurationsResponseBodyDisabledReasonFeatureNotAvailable         GetConfigurationsResponseBodyDisabledReason = "feature-not-available"
-	GetConfigurationsResponseBodyDisabledReasonDisabledByAdmin             GetConfigurationsResponseBodyDisabledReason = "disabled-by-admin"
-	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    GetConfigurationsResponseBodyDisabledReason = "original-owner-left-the-team"
-	GetConfigurationsResponseBodyDisabledReasonAccountPlanDowngrade        GetConfigurationsResponseBodyDisabledReason = "account-plan-downgrade"
-	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerRoleDowngraded GetConfigurationsResponseBodyDisabledReason = "original-owner-role-downgraded"
+	ResponseBodyDisabledReasonDisabledByOwner             ResponseBodyDisabledReason = "disabled-by-owner"
+	ResponseBodyDisabledReasonFeatureNotAvailable         ResponseBodyDisabledReason = "feature-not-available"
+	ResponseBodyDisabledReasonDisabledByAdmin             ResponseBodyDisabledReason = "disabled-by-admin"
+	ResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    ResponseBodyDisabledReason = "original-owner-left-the-team"
+	ResponseBodyDisabledReasonAccountPlanDowngrade        ResponseBodyDisabledReason = "account-plan-downgrade"
+	ResponseBodyDisabledReasonOriginalOwnerRoleDowngraded ResponseBodyDisabledReason = "original-owner-role-downgraded"
 )
 
-func (e GetConfigurationsResponseBodyDisabledReason) ToPointer() *GetConfigurationsResponseBodyDisabledReason {
+func (e ResponseBodyDisabledReason) ToPointer() *ResponseBodyDisabledReason {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -857,10 +612,10 @@ func (e *GetConfigurationsResponseBodyDisabledReason) UnmarshalJSON(data []byte)
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = GetConfigurationsResponseBodyDisabledReason(v)
+		*e = ResponseBodyDisabledReason(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for ResponseBodyDisabledReason: %v", v)
 	}
 }
 
@@ -889,214 +644,6 @@ func (e *ResponseBodyInstallationType) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for ResponseBodyInstallationType: %v", v)
 	}
-}
-
-type GetConfigurationsResponseBodyIntegrationsResponseType string
-
-const (
-	GetConfigurationsResponseBodyIntegrationsResponseTypePrepayment   GetConfigurationsResponseBodyIntegrationsResponseType = "prepayment"
-	GetConfigurationsResponseBodyIntegrationsResponseTypeSubscription GetConfigurationsResponseBodyIntegrationsResponseType = "subscription"
-)
-
-func (e GetConfigurationsResponseBodyIntegrationsResponseType) ToPointer() *GetConfigurationsResponseBodyIntegrationsResponseType {
-	return &e
-}
-func (e *GetConfigurationsResponseBodyIntegrationsResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "prepayment":
-		fallthrough
-	case "subscription":
-		*e = GetConfigurationsResponseBodyIntegrationsResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyIntegrationsResponseType: %v", v)
-	}
-}
-
-type ResponseBodyScope string
-
-const (
-	ResponseBodyScopeInstallation ResponseBodyScope = "installation"
-	ResponseBodyScopeResource     ResponseBodyScope = "resource"
-)
-
-func (e ResponseBodyScope) ToPointer() *ResponseBodyScope {
-	return &e
-}
-func (e *ResponseBodyScope) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "installation":
-		fallthrough
-	case "resource":
-		*e = ResponseBodyScope(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ResponseBodyScope: %v", v)
-	}
-}
-
-type Details struct {
-	Label string  `json:"label"`
-	Value *string `json:"value,omitempty"`
-}
-
-func (o *Details) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *Details) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type HeightlightedDetails struct {
-	Label string  `json:"label"`
-	Value *string `json:"value,omitempty"`
-}
-
-func (o *HeightlightedDetails) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-func (o *HeightlightedDetails) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type Quote struct {
-	Line   string `json:"line"`
-	Amount string `json:"amount"`
-}
-
-func (o *Quote) GetLine() string {
-	if o == nil {
-		return ""
-	}
-	return o.Line
-}
-
-func (o *Quote) GetAmount() string {
-	if o == nil {
-		return ""
-	}
-	return o.Amount
-}
-
-type BillingPlan struct {
-	ID                     string                                                `json:"id"`
-	Type                   GetConfigurationsResponseBodyIntegrationsResponseType `json:"type"`
-	Name                   string                                                `json:"name"`
-	Scope                  *ResponseBodyScope                                    `json:"scope,omitempty"`
-	Description            string                                                `json:"description"`
-	PaymentMethodRequired  *bool                                                 `json:"paymentMethodRequired,omitempty"`
-	PreauthorizationAmount *float64                                              `json:"preauthorizationAmount,omitempty"`
-	Cost                   *string                                               `json:"cost,omitempty"`
-	Details                []Details                                             `json:"details,omitempty"`
-	HeightlightedDetails   []HeightlightedDetails                                `json:"heightlightedDetails,omitempty"`
-	Quote                  []Quote                                               `json:"quote,omitempty"`
-	EffectiveDate          *string                                               `json:"effectiveDate,omitempty"`
-}
-
-func (o *BillingPlan) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *BillingPlan) GetType() GetConfigurationsResponseBodyIntegrationsResponseType {
-	if o == nil {
-		return GetConfigurationsResponseBodyIntegrationsResponseType("")
-	}
-	return o.Type
-}
-
-func (o *BillingPlan) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *BillingPlan) GetScope() *ResponseBodyScope {
-	if o == nil {
-		return nil
-	}
-	return o.Scope
-}
-
-func (o *BillingPlan) GetDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.Description
-}
-
-func (o *BillingPlan) GetPaymentMethodRequired() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PaymentMethodRequired
-}
-
-func (o *BillingPlan) GetPreauthorizationAmount() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PreauthorizationAmount
-}
-
-func (o *BillingPlan) GetCost() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Cost
-}
-
-func (o *BillingPlan) GetDetails() []Details {
-	if o == nil {
-		return nil
-	}
-	return o.Details
-}
-
-func (o *BillingPlan) GetHeightlightedDetails() []HeightlightedDetails {
-	if o == nil {
-		return nil
-	}
-	return o.HeightlightedDetails
-}
-
-func (o *BillingPlan) GetQuote() []Quote {
-	if o == nil {
-		return nil
-	}
-	return o.Quote
-}
-
-func (o *BillingPlan) GetEffectiveDate() *string {
-	if o == nil {
-		return nil
-	}
-	return o.EffectiveDate
 }
 
 // GetConfigurationsResponseBody1 - The list of configurations for the authenticated user
@@ -1131,14 +678,10 @@ type GetConfigurationsResponseBody1 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                                     `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationsResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                    `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *ResponseBodyDisabledReason `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *ResponseBodyInstallationType `json:"installationType,omitempty"`
-	BillingPlan      *BillingPlan                  `json:"billingPlan,omitempty"`
-	BillingTotal     *string                       `json:"billingTotal,omitempty"`
-	PeriodStart      *string                       `json:"periodStart,omitempty"`
-	PeriodEnd        *string                       `json:"periodEnd,omitempty"`
 }
 
 func (o *GetConfigurationsResponseBody1) GetCompletedAt() *float64 {
@@ -1253,7 +796,7 @@ func (o *GetConfigurationsResponseBody1) GetDeleteRequestedAt() *float64 {
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetDisabledReason() *GetConfigurationsResponseBodyDisabledReason {
+func (o *GetConfigurationsResponseBody1) GetDisabledReason() *ResponseBodyDisabledReason {
 	if o == nil {
 		return nil
 	}
@@ -1265,34 +808,6 @@ func (o *GetConfigurationsResponseBody1) GetInstallationType() *ResponseBodyInst
 		return nil
 	}
 	return o.InstallationType
-}
-
-func (o *GetConfigurationsResponseBody1) GetBillingPlan() *BillingPlan {
-	if o == nil {
-		return nil
-	}
-	return o.BillingPlan
-}
-
-func (o *GetConfigurationsResponseBody1) GetBillingTotal() *string {
-	if o == nil {
-		return nil
-	}
-	return o.BillingTotal
-}
-
-func (o *GetConfigurationsResponseBody1) GetPeriodStart() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PeriodStart
-}
-
-func (o *GetConfigurationsResponseBody1) GetPeriodEnd() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PeriodEnd
 }
 
 type GetConfigurationsResponseBodyUnionType string

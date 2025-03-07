@@ -3,17 +3,37 @@
  */
 
 import { marketplaceCreateEvent } from "../funcs/marketplaceCreateEvent.js";
+import {
+  marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
+} from "../funcs/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
 import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
+import {
+  marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+} from "../funcs/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
+import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
+import {
+  marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
+} from "../funcs/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
+import {
+  marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems,
+} from "../funcs/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.js";
+import {
+  marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+} from "../funcs/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
+import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
 import { marketplaceUpdateInvoice } from "../funcs/marketplaceUpdateInvoice.js";
 import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateResourceSecrets.js";
 import { marketplaceUpdateResourceSecretsById } from "../funcs/marketplaceUpdateResourceSecretsById.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CreateEventRequest } from "../models/createeventop.js";
+import {
+  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+} from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
 import {
   ExchangeSsoTokenRequestBody,
   ExchangeSsoTokenResponseBody,
@@ -30,11 +50,30 @@ import {
   GetMemberRequest,
   GetMemberResponseBody,
 } from "../models/getmemberop.js";
+import {
+  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+import {
+  ImportResourceRequest,
+  ImportResourceResponseBody,
+} from "../models/importresourceop.js";
+import {
+  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+} from "../models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+import {
+  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+} from "../models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.js";
+import {
+  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
 import { SubmitBillingDataRequest } from "../models/submitbillingdataop.js";
 import {
   SubmitInvoiceRequest,
   SubmitInvoiceResponseBody,
 } from "../models/submitinvoiceop.js";
+import { SubmitPrepaymentBalancesRequest } from "../models/submitprepaymentbalancesop.js";
 import { UpdateInvoiceRequest } from "../models/updateinvoiceop.js";
 import { UpdateResourceSecretsByIdRequest } from "../models/updateresourcesecretsbyidop.js";
 import { UpdateResourceSecretsRequest } from "../models/updateresourcesecretsop.js";
@@ -79,7 +118,7 @@ export class Marketplace extends ClientSDK {
    * Create Event
    *
    * @remarks
-   * Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state. <br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner. <br/> <br/> Use cases: <br/> <br/> - The user renames a database in the partner’s application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel’s datastores. <br/>
+   * Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner’s application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel’s datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/>
    */
   async createEvent(
     request: CreateEventRequest,
@@ -161,6 +200,23 @@ export class Marketplace extends ClientSDK {
   }
 
   /**
+   * Submit Prepayment Balances
+   *
+   * @remarks
+   * Sends the prepayment balances. The partner should do this at least once a day and ideally once per hour. <br/> Use the `credentials.access_token` we provided in the [Upsert Installation](#upsert-installation) body to authorize this request.
+   */
+  async submitPrepaymentBalances(
+    request: SubmitPrepaymentBalancesRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(marketplaceSubmitPrepaymentBalances(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update Resource Secrets (Deprecated)
    *
    * @remarks
@@ -195,6 +251,23 @@ export class Marketplace extends ClientSDK {
   }
 
   /**
+   * Import Resource
+   *
+   * @remarks
+   * This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.
+   */
+  async importResource(
+    request: ImportResourceRequest,
+    options?: RequestOptions,
+  ): Promise<ImportResourceResponseBody> {
+    return unwrapAsync(marketplaceImportResource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * SSO Token Exchange
    *
    * @remarks
@@ -209,5 +282,110 @@ export class Marketplace extends ClientSDK {
       request,
       options,
     ));
+  }
+
+  /**
+   * Create one or multiple experimentation items
+   *
+   * @remarks
+   * Create one or multiple experimentation items
+   */
+  async postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
+    request:
+      PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Patch an existing experimentation item
+   *
+   * @remarks
+   * Patch an existing experimentation item
+   */
+  async patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+    request:
+      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Delete an existing experimentation item
+   *
+   * @remarks
+   * Delete an existing experimentation item
+   */
+  async deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+    request:
+      DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Get the data of a user-provided Edge Config
+   *
+   * @remarks
+   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+   */
+  async headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+    request:
+      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    options?: RequestOptions,
+  ): Promise<
+    | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | undefined
+  > {
+    return unwrapAsync(
+      marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Push data into a user-provided Edge Config
+   *
+   * @remarks
+   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
+   */
+  async putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+    request:
+      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+  > {
+    return unwrapAsync(
+      marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

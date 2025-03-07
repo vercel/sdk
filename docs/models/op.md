@@ -5,9 +5,9 @@
 ## Example Usage
 
 ```typescript
-import { Op } from "@vercel/sdk/models/putfirewallconfigop.js";
+import { Op } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: Op = "inc";
+let value: Op = "lte";
 ```
 
 ## Values

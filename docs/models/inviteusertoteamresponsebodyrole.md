@@ -5,11 +5,11 @@
 ```typescript
 import { InviteUserToTeamResponseBodyRole } from "@vercel/sdk/models/inviteusertoteamop.js";
 
-let value: InviteUserToTeamResponseBodyRole = "OWNER";
+let value: InviteUserToTeamResponseBodyRole = "DEVELOPER";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
 ```

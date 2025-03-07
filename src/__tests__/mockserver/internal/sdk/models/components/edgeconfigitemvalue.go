@@ -22,8 +22,8 @@ type EdgeConfigItemValue struct {
 	Str                        *string
 	Number                     *float64
 	Boolean                    *bool
-	MapOfEdgeConfigItemValue   map[string]EdgeConfigItemValue
-	ArrayOfEdgeConfigItemValue []EdgeConfigItemValue
+	MapOfEdgeConfigItemValue   map[string]*EdgeConfigItemValue
+	ArrayOfEdgeConfigItemValue []*EdgeConfigItemValue
 
 	Type EdgeConfigItemValueType
 }
@@ -55,7 +55,7 @@ func CreateEdgeConfigItemValueBoolean(boolean bool) EdgeConfigItemValue {
 	}
 }
 
-func CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(mapOfEdgeConfigItemValue map[string]EdgeConfigItemValue) EdgeConfigItemValue {
+func CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(mapOfEdgeConfigItemValue map[string]*EdgeConfigItemValue) EdgeConfigItemValue {
 	typ := EdgeConfigItemValueTypeMapOfEdgeConfigItemValue
 
 	return EdgeConfigItemValue{
@@ -64,7 +64,7 @@ func CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(mapOfEdgeConfigItemValue 
 	}
 }
 
-func CreateEdgeConfigItemValueArrayOfEdgeConfigItemValue(arrayOfEdgeConfigItemValue []EdgeConfigItemValue) EdgeConfigItemValue {
+func CreateEdgeConfigItemValueArrayOfEdgeConfigItemValue(arrayOfEdgeConfigItemValue []*EdgeConfigItemValue) EdgeConfigItemValue {
 	typ := EdgeConfigItemValueTypeArrayOfEdgeConfigItemValue
 
 	return EdgeConfigItemValue{
@@ -96,14 +96,14 @@ func (u *EdgeConfigItemValue) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var mapOfEdgeConfigItemValue map[string]EdgeConfigItemValue = map[string]EdgeConfigItemValue{}
+	var mapOfEdgeConfigItemValue map[string]*EdgeConfigItemValue = map[string]*EdgeConfigItemValue{}
 	if err := utils.UnmarshalJSON(data, &mapOfEdgeConfigItemValue, "", true, true); err == nil {
 		u.MapOfEdgeConfigItemValue = mapOfEdgeConfigItemValue
 		u.Type = EdgeConfigItemValueTypeMapOfEdgeConfigItemValue
 		return nil
 	}
 
-	var arrayOfEdgeConfigItemValue []EdgeConfigItemValue = []EdgeConfigItemValue{}
+	var arrayOfEdgeConfigItemValue []*EdgeConfigItemValue = []*EdgeConfigItemValue{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEdgeConfigItemValue, "", true, true); err == nil {
 		u.ArrayOfEdgeConfigItemValue = arrayOfEdgeConfigItemValue
 		u.Type = EdgeConfigItemValueTypeArrayOfEdgeConfigItemValue

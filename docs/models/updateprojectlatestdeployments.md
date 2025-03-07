@@ -7,21 +7,21 @@ import { UpdateProjectLatestDeployments } from "@vercel/sdk/models/updateproject
 
 let value: UpdateProjectLatestDeployments = {
   id: "<id>",
-  createdAt: 5156.38,
+  createdAt: 4330.77,
   createdIn: "<value>",
   creator: {
-    email: "Myriam_Powlowski71@hotmail.com",
+    email: "Taya57@yahoo.com",
     uid: "<id>",
-    username: "Jayne_Herzog92",
+    username: "Pete14",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "enterprise",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "QUEUED",
+  readyState: "INITIALIZING",
   type: "LAMBDAS",
-  url: "https://crazy-discourse.org",
+  url: "https://odd-omelet.info/",
   userId: "<id>",
 };
 ```

@@ -90,6 +90,7 @@ export const GetTeamMembersRole = {
   Viewer: "VIEWER",
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
+  Security: "SECURITY",
 } as const;
 /**
  * Role of this user in the team.
@@ -178,10 +179,6 @@ export type GetTeamMembersMembers = {
    */
   role: GetTeamMembersRole;
   /**
-   * Permissions that this user has in addition to their role.
-   */
-  additionalRoles?: Array<string> | undefined;
-  /**
    * The ID of this user.
    */
   uid: string;
@@ -218,6 +215,7 @@ export const GetTeamMembersTeamsRole = {
   Viewer: "VIEWER",
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
+  Security: "SECURITY",
 } as const;
 export type GetTeamMembersTeamsRole = ClosedEnum<
   typeof GetTeamMembersTeamsRole
@@ -792,7 +790,6 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   gitlab: z.lazy(() => GetTeamMembersGitlab$inboundSchema).optional(),
   bitbucket: z.lazy(() => GetTeamMembersBitbucket$inboundSchema).optional(),
   role: GetTeamMembersRole$inboundSchema,
-  additionalRoles: z.array(z.string()).optional(),
   uid: z.string(),
   username: z.string(),
   name: z.string().optional(),
@@ -812,7 +809,6 @@ export type GetTeamMembersMembers$Outbound = {
   gitlab?: GetTeamMembersGitlab$Outbound | undefined;
   bitbucket?: GetTeamMembersBitbucket$Outbound | undefined;
   role: string;
-  additionalRoles?: Array<string> | undefined;
   uid: string;
   username: string;
   name?: string | undefined;
@@ -835,7 +831,6 @@ export const GetTeamMembersMembers$outboundSchema: z.ZodType<
   gitlab: z.lazy(() => GetTeamMembersGitlab$outboundSchema).optional(),
   bitbucket: z.lazy(() => GetTeamMembersBitbucket$outboundSchema).optional(),
   role: GetTeamMembersRole$outboundSchema,
-  additionalRoles: z.array(z.string()).optional(),
   uid: z.string(),
   username: z.string(),
   name: z.string().optional(),

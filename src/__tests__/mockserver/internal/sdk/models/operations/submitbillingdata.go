@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// Period for the billing cycle.
+// Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
 type Period struct {
 	Start time.Time `json:"start"`
 	End   time.Time `json:"end"`
@@ -42,7 +42,7 @@ func (o *Period) GetEnd() time.Time {
 	return o.End
 }
 
-type BillingItems struct {
+type Items struct {
 	// Partner's billing plan ID.
 	BillingPlanID string `json:"billingPlanId"`
 	// Partner's resource ID.
@@ -65,81 +65,81 @@ type BillingItems struct {
 	Total string `json:"total"`
 }
 
-func (b BillingItems) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
+func (i Items) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
 }
 
-func (b *BillingItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+func (i *Items) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BillingItems) GetBillingPlanID() string {
+func (o *Items) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *BillingItems) GetResourceID() *string {
+func (o *Items) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *BillingItems) GetStart() *time.Time {
+func (o *Items) GetStart() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *BillingItems) GetEnd() *time.Time {
+func (o *Items) GetEnd() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *BillingItems) GetName() string {
+func (o *Items) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *BillingItems) GetDetails() *string {
+func (o *Items) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *BillingItems) GetPrice() string {
+func (o *Items) GetPrice() string {
 	if o == nil {
 		return ""
 	}
 	return o.Price
 }
 
-func (o *BillingItems) GetQuantity() float64 {
+func (o *Items) GetQuantity() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Quantity
 }
 
-func (o *BillingItems) GetUnits() string {
+func (o *Items) GetUnits() string {
 	if o == nil {
 		return ""
 	}
 	return o.Units
 }
 
-func (o *BillingItems) GetTotal() string {
+func (o *Items) GetTotal() string {
 	if o == nil {
 		return ""
 	}
@@ -224,13 +224,13 @@ func (o *Discounts) GetAmount() string {
 }
 
 type Billing2 struct {
-	Items     []BillingItems `json:"items"`
-	Discounts []Discounts    `json:"discounts,omitempty"`
+	Items     []Items     `json:"items"`
+	Discounts []Discounts `json:"discounts,omitempty"`
 }
 
-func (o *Billing2) GetItems() []BillingItems {
+func (o *Billing2) GetItems() []Items {
 	if o == nil {
-		return []BillingItems{}
+		return []Items{}
 	}
 	return o.Items
 }
@@ -442,7 +442,7 @@ func (e *SubmitBillingDataType) UnmarshalJSON(data []byte) error {
 
 type Usage struct {
 	// Partner's resource ID.
-	ResourceID string `json:"resourceId"`
+	ResourceID *string `json:"resourceId,omitempty"`
 	// Metric name.
 	Name string `json:"name"`
 	// \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
@@ -457,9 +457,9 @@ type Usage struct {
 	PlanValue *float64 `json:"planValue,omitempty"`
 }
 
-func (o *Usage) GetResourceID() string {
+func (o *Usage) GetResourceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.ResourceID
 }
@@ -507,9 +507,11 @@ func (o *Usage) GetPlanValue() *float64 {
 }
 
 type SubmitBillingDataRequestBody struct {
+	// Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept.
 	Timestamp time.Time `json:"timestamp"`
-	Eod       time.Time `json:"eod"`
-	// Period for the billing cycle.
+	// End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
+	Eod time.Time `json:"eod"`
+	// Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
 	Period Period `json:"period"`
 	// Billing data (interim invoicing data).
 	Billing Billing `json:"billing"`

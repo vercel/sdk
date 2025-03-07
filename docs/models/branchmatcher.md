@@ -5,17 +5,17 @@ How we want to determine a matching branch. This is optional.
 ## Example Usage
 
 ```typescript
-import { BranchMatcher } from "@vercel/sdk/models/postv1projectsidornamecustomenvironmentsop.js";
+import { BranchMatcher } from "@vercel/sdk/models/createcustomenvironmentop.js";
 
 let value: BranchMatcher = {
-  type: "startsWith",
+  type: "equals",
   pattern: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | [models.PostV1ProjectsIdOrNameCustomEnvironmentsType](../models/postv1projectsidornamecustomenvironmentstype.md) | :heavy_check_mark:                                                                                               | Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".                                             |
-| `pattern`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | Git branch name or portion thereof.                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `type`                                                                         | [models.CreateCustomEnvironmentType](../models/createcustomenvironmenttype.md) | :heavy_check_mark:                                                             | Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".           |
+| `pattern`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | Git branch name or portion thereof.                                            |

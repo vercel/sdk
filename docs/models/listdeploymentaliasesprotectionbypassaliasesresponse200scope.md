@@ -6,11 +6,11 @@
 import { ListDeploymentAliasesProtectionBypassAliasesResponse200Scope } from "@vercel/sdk/models/listdeploymentaliasesop.js";
 
 let value: ListDeploymentAliasesProtectionBypassAliasesResponse200Scope =
-  "email_invite";
+  "shareable-link";
 ```
 
 ## Values
 
 ```typescript
-"email_invite"
+"shareable-link"
 ```

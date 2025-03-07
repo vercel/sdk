@@ -10,7 +10,7 @@ Successful response showing the uid of the newly created DNS record.
 ```typescript
 const value: models.CreateRecordResponseBody1 = {
   uid: "<id>",
-  updated: 4526.53,
+  updated: 1548.4,
 };
 ```
 

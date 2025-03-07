@@ -232,6 +232,7 @@ export const GetDeploymentsFramework = {
   Nextjs: "nextjs",
   Gatsby: "gatsby",
   Remix: "remix",
+  ReactRouter: "react-router",
   Astro: "astro",
   Hexo: "hexo",
   Eleventy: "eleventy",

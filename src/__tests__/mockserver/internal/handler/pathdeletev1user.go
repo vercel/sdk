@@ -24,7 +24,7 @@ func pathDeleteV1User(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracke
 		case "requestDelete[0]":
 			dir.HandlerFunc("requestDelete", testRequestDeleteRequestDelete0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

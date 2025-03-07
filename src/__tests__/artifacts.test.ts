@@ -8,9 +8,11 @@ import { filesToByteArray, streamToByteArray } from "./files.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Artifacts Record Events", async () => {
+  const testHttpClient = createTestHTTPClient("recordEvents");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("recordEvents"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -32,9 +34,11 @@ test("Artifacts Record Events", async () => {
 });
 
 test("Artifacts Status", async () => {
+  const testHttpClient = createTestHTTPClient("status");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("status"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -49,9 +53,11 @@ test("Artifacts Status", async () => {
 });
 
 test("Artifacts Download Artifact", async () => {
+  const testHttpClient = createTestHTTPClient("downloadArtifact");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("downloadArtifact"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -69,9 +75,11 @@ test("Artifacts Download Artifact", async () => {
 });
 
 test("Artifacts Artifact Exists", async () => {
+  const testHttpClient = createTestHTTPClient("artifactExists");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("artifactExists"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -83,9 +91,11 @@ test("Artifacts Artifact Exists", async () => {
 });
 
 test("Artifacts Artifact Query", async () => {
+  const testHttpClient = createTestHTTPClient("artifactQuery");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("artifactQuery"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

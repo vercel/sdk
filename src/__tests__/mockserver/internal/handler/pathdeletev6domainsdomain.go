@@ -24,7 +24,7 @@ func pathDeleteV6DomainsDomain(dir *logging.HTTPFileDirectory, rt *tracking.Requ
 		case "deleteDomain[0]":
 			dir.HandlerFunc("deleteDomain", testDeleteDomainDeleteDomain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

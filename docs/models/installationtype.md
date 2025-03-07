@@ -5,7 +5,7 @@
 ```typescript
 import { InstallationType } from "@vercel/sdk/models/getconfigurationsop.js";
 
-let value: InstallationType = "external";
+let value: InstallationType = "marketplace";
 ```
 
 ## Values

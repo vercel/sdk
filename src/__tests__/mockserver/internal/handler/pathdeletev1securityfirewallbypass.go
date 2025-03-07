@@ -24,7 +24,7 @@ func pathDeleteV1SecurityFirewallBypass(dir *logging.HTTPFileDirectory, rt *trac
 		case "removeBypassIp[0]":
 			dir.HandlerFunc("removeBypassIp", testRemoveBypassIPRemoveBypassIp0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -13,6 +13,12 @@ const value: models.InviteUserToTeamResponseBody1 = {
   username: "john-doe",
   email: "john@user.co",
   role: "MEMBER",
+  teamRoles: [
+    "MEMBER",
+  ],
+  teamPermissions: [
+    "CreateProject",
+  ],
 };
 ```
 
@@ -21,7 +27,7 @@ const value: models.InviteUserToTeamResponseBody1 = {
 ```typescript
 const value: models.InviteUserToTeamResponseBody2 = {
   uid: "<id>",
-  username: "Rex.Harris80",
+  username: "Ottis79",
   role: "OWNER",
 };
 ```

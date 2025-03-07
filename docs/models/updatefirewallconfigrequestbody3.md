@@ -17,8 +17,8 @@ let value: UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "rate_limit_api_id",
-            op: "pre",
+            type: "user_agent",
+            op: "lte",
           },
         ],
       },
@@ -34,4 +34,4 @@ let value: UpdateFirewallConfigRequestBody3 = {
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `action`                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityAction](../models/updatefirewallconfigrequestbodysecurityaction.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `id`                                                                                                               | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `value`                                                                                                            | [models.UpdateFirewallConfigRequestBodyValue](../models/updatefirewallconfigrequestbodyvalue.md)                   | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `value`                                                                                                            | [models.RequestBodyValue](../models/requestbodyvalue.md)                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

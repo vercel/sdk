@@ -1406,10 +1406,10 @@ func (u *GetProjectsContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getProjectsContentHint9 GetProjectsContentHint9 = GetProjectsContentHint9{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHint9, "", true, true); err == nil {
-		u.GetProjectsContentHint9 = &getProjectsContentHint9
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint9
+	var getProjectsContentHint11 GetProjectsContentHint11 = GetProjectsContentHint11{}
+	if err := utils.UnmarshalJSON(data, &getProjectsContentHint11, "", true, true); err == nil {
+		u.GetProjectsContentHint11 = &getProjectsContentHint11
+		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint11
 		return nil
 	}
 
@@ -1448,10 +1448,10 @@ func (u *GetProjectsContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getProjectsContentHint8 GetProjectsContentHint8 = GetProjectsContentHint8{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHint8, "", true, true); err == nil {
-		u.GetProjectsContentHint8 = &getProjectsContentHint8
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint8
+	var getProjectsContentHint9 GetProjectsContentHint9 = GetProjectsContentHint9{}
+	if err := utils.UnmarshalJSON(data, &getProjectsContentHint9, "", true, true); err == nil {
+		u.GetProjectsContentHint9 = &getProjectsContentHint9
+		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint9
 		return nil
 	}
 
@@ -1469,10 +1469,10 @@ func (u *GetProjectsContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getProjectsContentHint11 GetProjectsContentHint11 = GetProjectsContentHint11{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHint11, "", true, true); err == nil {
-		u.GetProjectsContentHint11 = &getProjectsContentHint11
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint11
+	var getProjectsContentHint8 GetProjectsContentHint8 = GetProjectsContentHint8{}
+	if err := utils.UnmarshalJSON(data, &getProjectsContentHint8, "", true, true); err == nil {
+		u.GetProjectsContentHint8 = &getProjectsContentHint8
+		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHint8
 		return nil
 	}
 
@@ -1791,6 +1791,7 @@ const (
 	GetProjectsFrameworkNextjs         GetProjectsFramework = "nextjs"
 	GetProjectsFrameworkGatsby         GetProjectsFramework = "gatsby"
 	GetProjectsFrameworkRemix          GetProjectsFramework = "remix"
+	GetProjectsFrameworkReactRouter    GetProjectsFramework = "react-router"
 	GetProjectsFrameworkAstro          GetProjectsFramework = "astro"
 	GetProjectsFrameworkHexo           GetProjectsFramework = "hexo"
 	GetProjectsFrameworkEleventy       GetProjectsFramework = "eleventy"
@@ -1850,6 +1851,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough
@@ -3284,7 +3287,34 @@ func (u GetProjectsLink) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetProjectsLink: all fields are null")
 }
 
-type GetProjectsMicrofrontends struct {
+type GetProjectsMicrofrontends2 struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	GroupIds  []any   `json:"groupIds"`
+	Enabled   bool    `json:"enabled"`
+}
+
+func (o *GetProjectsMicrofrontends2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsMicrofrontends2) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *GetProjectsMicrofrontends2) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type GetProjectsMicrofrontends1 struct {
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
@@ -3295,41 +3325,113 @@ type GetProjectsMicrofrontends struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
-func (o *GetProjectsMicrofrontends) GetUpdatedAt() float64 {
+func (o *GetProjectsMicrofrontends1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetProjectsMicrofrontends) GetGroupIds() []string {
+func (o *GetProjectsMicrofrontends1) GetGroupIds() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.GroupIds
 }
 
-func (o *GetProjectsMicrofrontends) GetEnabled() bool {
+func (o *GetProjectsMicrofrontends1) GetEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.Enabled
 }
 
-func (o *GetProjectsMicrofrontends) GetIsDefaultApp() *bool {
+func (o *GetProjectsMicrofrontends1) GetIsDefaultApp() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsDefaultApp
 }
 
-func (o *GetProjectsMicrofrontends) GetDefaultRoute() *string {
+func (o *GetProjectsMicrofrontends1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultRoute
+}
+
+func (o *GetProjectsMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+type GetProjectsMicrofrontendsType string
+
+const (
+	GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends1 GetProjectsMicrofrontendsType = "getProjects_microfrontends_1"
+	GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends2 GetProjectsMicrofrontendsType = "getProjects_microfrontends_2"
+)
+
+type GetProjectsMicrofrontends struct {
+	GetProjectsMicrofrontends1 *GetProjectsMicrofrontends1
+	GetProjectsMicrofrontends2 *GetProjectsMicrofrontends2
+
+	Type GetProjectsMicrofrontendsType
+}
+
+func CreateGetProjectsMicrofrontendsGetProjectsMicrofrontends1(getProjectsMicrofrontends1 GetProjectsMicrofrontends1) GetProjectsMicrofrontends {
+	typ := GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends1
+
+	return GetProjectsMicrofrontends{
+		GetProjectsMicrofrontends1: &getProjectsMicrofrontends1,
+		Type:                       typ,
+	}
+}
+
+func CreateGetProjectsMicrofrontendsGetProjectsMicrofrontends2(getProjectsMicrofrontends2 GetProjectsMicrofrontends2) GetProjectsMicrofrontends {
+	typ := GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends2
+
+	return GetProjectsMicrofrontends{
+		GetProjectsMicrofrontends2: &getProjectsMicrofrontends2,
+		Type:                       typ,
+	}
+}
+
+func (u *GetProjectsMicrofrontends) UnmarshalJSON(data []byte) error {
+
+	var getProjectsMicrofrontends2 GetProjectsMicrofrontends2 = GetProjectsMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &getProjectsMicrofrontends2, "", true, true); err == nil {
+		u.GetProjectsMicrofrontends2 = &getProjectsMicrofrontends2
+		u.Type = GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends2
+		return nil
+	}
+
+	var getProjectsMicrofrontends1 GetProjectsMicrofrontends1 = GetProjectsMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &getProjectsMicrofrontends1, "", true, true); err == nil {
+		u.GetProjectsMicrofrontends1 = &getProjectsMicrofrontends1
+		u.Type = GetProjectsMicrofrontendsTypeGetProjectsMicrofrontends1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsMicrofrontends", string(data))
+}
+
+func (u GetProjectsMicrofrontends) MarshalJSON() ([]byte, error) {
+	if u.GetProjectsMicrofrontends1 != nil {
+		return utils.MarshalJSON(u.GetProjectsMicrofrontends1, "", true)
+	}
+
+	if u.GetProjectsMicrofrontends2 != nil {
+		return utils.MarshalJSON(u.GetProjectsMicrofrontends2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsMicrofrontends: all fields are null")
 }
 
 type GetProjectsNodeVersion string
@@ -3432,11 +3534,10 @@ func (e *GetProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error 
 
 type GetProjectsResourceConfig struct {
 	Fluid                      *bool                                 `json:"fluid,omitempty"`
-	FunctionDefaultRegion      *string                               `json:"functionDefaultRegion,omitempty"`
+	FunctionDefaultRegions     []string                              `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                              `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *GetProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                 `json:"functionZeroConfigFailover,omitempty"`
-	AllowServerlessConcurrency *bool                                 `json:"allowServerlessConcurrency,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                 `json:"elasticConcurrencyEnabled,omitempty"`
 }
 
@@ -3447,11 +3548,11 @@ func (o *GetProjectsResourceConfig) GetFluid() *bool {
 	return o.Fluid
 }
 
-func (o *GetProjectsResourceConfig) GetFunctionDefaultRegion() *string {
+func (o *GetProjectsResourceConfig) GetFunctionDefaultRegions() []string {
 	if o == nil {
-		return nil
+		return []string{}
 	}
-	return o.FunctionDefaultRegion
+	return o.FunctionDefaultRegions
 }
 
 func (o *GetProjectsResourceConfig) GetFunctionDefaultTimeout() *float64 {
@@ -3475,14 +3576,130 @@ func (o *GetProjectsResourceConfig) GetFunctionZeroConfigFailover() *bool {
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *GetProjectsResourceConfig) GetAllowServerlessConcurrency() *bool {
+func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.AllowServerlessConcurrency
+	return o.ElasticConcurrencyEnabled
 }
 
-func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
+// GetProjectsStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+type GetProjectsStages struct {
+	// The percentage of traffic to serve to the new deployment
+	TargetPercentage float64 `json:"targetPercentage"`
+}
+
+func (o *GetProjectsStages) GetTargetPercentage() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TargetPercentage
+}
+
+type GetProjectsRollingRelease struct {
+	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+	Target string `json:"target"`
+	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%.
+	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
+	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+	Stages []GetProjectsStages `json:"stages,omitempty"`
+}
+
+func (o *GetProjectsRollingRelease) GetTarget() string {
+	if o == nil {
+		return ""
+	}
+	return o.Target
+}
+
+func (o *GetProjectsRollingRelease) GetMinutesToRelease() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinutesToRelease
+}
+
+func (o *GetProjectsRollingRelease) GetStages() []GetProjectsStages {
+	if o == nil {
+		return nil
+	}
+	return o.Stages
+}
+
+type GetProjectsProjectsFunctionDefaultMemoryType string
+
+const (
+	GetProjectsProjectsFunctionDefaultMemoryTypeStandardLegacy GetProjectsProjectsFunctionDefaultMemoryType = "standard_legacy"
+	GetProjectsProjectsFunctionDefaultMemoryTypeStandard       GetProjectsProjectsFunctionDefaultMemoryType = "standard"
+	GetProjectsProjectsFunctionDefaultMemoryTypePerformance    GetProjectsProjectsFunctionDefaultMemoryType = "performance"
+)
+
+func (e GetProjectsProjectsFunctionDefaultMemoryType) ToPointer() *GetProjectsProjectsFunctionDefaultMemoryType {
+	return &e
+}
+func (e *GetProjectsProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard_legacy":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "performance":
+		*e = GetProjectsProjectsFunctionDefaultMemoryType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsProjectsFunctionDefaultMemoryType: %v", v)
+	}
+}
+
+type GetProjectsDefaultResourceConfig struct {
+	Fluid                      *bool                                         `json:"fluid,omitempty"`
+	FunctionDefaultRegions     []string                                      `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout     *float64                                      `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType  *GetProjectsProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover *bool                                         `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                         `json:"elasticConcurrencyEnabled,omitempty"`
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetFunctionDefaultMemoryType() *GetProjectsProjectsFunctionDefaultMemoryType {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
@@ -4274,6 +4491,11 @@ func (o *GetProjectsTargets) GetWithCache() *bool {
 }
 
 type GetProjectsPermissions struct {
+	User                                     []components.ACLAction `json:"user,omitempty"`
+	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
+	UserSudo                                 []components.ACLAction `json:"userSudo,omitempty"`
+	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
+	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
 	AnalyticsSampling                        []components.ACLAction `json:"analyticsSampling,omitempty"`
@@ -4308,8 +4530,10 @@ type GetProjectsPermissions struct {
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
 	SensitiveEnvironmentVariablePolicy       []components.ACLAction `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
 	FileUpload                               []components.ACLAction `json:"fileUpload,omitempty"`
+	FlagsExplorerSubscription                []components.ACLAction `json:"flagsExplorerSubscription,omitempty"`
 	GitRepository                            []components.ACLAction `json:"gitRepository,omitempty"`
 	IPBlocking                               []components.ACLAction `json:"ipBlocking,omitempty"`
+	ImageOptimizationNewPrice                []components.ACLAction `json:"imageOptimizationNewPrice,omitempty"`
 	Integration                              []components.ACLAction `json:"integration,omitempty"`
 	IntegrationAccount                       []components.ACLAction `json:"integrationAccount,omitempty"`
 	IntegrationConfiguration                 []components.ACLAction `json:"integrationConfiguration,omitempty"`
@@ -4317,6 +4541,7 @@ type GetProjectsPermissions struct {
 	IntegrationConfigurationProjects         []components.ACLAction `json:"integrationConfigurationProjects,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
 	IntegrationConfigurationRole             []components.ACLAction `json:"integrationConfigurationRole,omitempty"`
+	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
 	IntegrationResource                      []components.ACLAction `json:"integrationResource,omitempty"`
 	IntegrationEvent                         []components.ACLAction `json:"integrationEvent,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
@@ -4324,7 +4549,10 @@ type GetProjectsPermissions struct {
 	MarketplaceInstallationMember            []components.ACLAction `json:"marketplaceInstallationMember,omitempty"`
 	MarketplaceBillingData                   []components.ACLAction `json:"marketplaceBillingData,omitempty"`
 	MarketplaceInvoice                       []components.ACLAction `json:"marketplaceInvoice,omitempty"`
+	MarketplaceExperimentationItem           []components.ACLAction `json:"marketplaceExperimentationItem,omitempty"`
+	MarketplaceExperimentationEdgeConfigData []components.ACLAction `json:"marketplaceExperimentationEdgeConfigData,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
+	Drain                                    []components.ACLAction `json:"drain,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
 	Monitoring                               []components.ACLAction `json:"Monitoring,omitempty"`
 	MonitoringSettings                       []components.ACLAction `json:"monitoringSettings,omitempty"`
@@ -4344,7 +4572,6 @@ type GetProjectsPermissions struct {
 	NotificationUsageAlert                   []components.ACLAction `json:"notificationUsageAlert,omitempty"`
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
-	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -4385,11 +4612,8 @@ type GetProjectsPermissions struct {
 	Token                                    []components.ACLAction `json:"token,omitempty"`
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
-	User                                     []components.ACLAction `json:"user,omitempty"`
-	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	VpcPeeringConnection                     []components.ACLAction `json:"vpcPeeringConnection,omitempty"`
 	WebAnalyticsPlan                         []components.ACLAction `json:"webAnalyticsPlan,omitempty"`
-	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
 	EdgeConfig                               []components.ACLAction `json:"edgeConfig,omitempty"`
 	EdgeConfigItem                           []components.ACLAction `json:"edgeConfigItem,omitempty"`
 	EdgeConfigSchema                         []components.ACLAction `json:"edgeConfigSchema,omitempty"`
@@ -4448,6 +4672,7 @@ type GetProjectsPermissions struct {
 	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
 	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
@@ -4456,6 +4681,41 @@ type GetProjectsPermissions struct {
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
+}
+
+func (o *GetProjectsPermissions) GetUser() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}
+
+func (o *GetProjectsPermissions) GetUserConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.UserConnection
+}
+
+func (o *GetProjectsPermissions) GetUserSudo() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.UserSudo
+}
+
+func (o *GetProjectsPermissions) GetWebAuthn() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAuthn
+}
+
+func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2Connection
 }
 
 func (o *GetProjectsPermissions) GetAccessGroup() []components.ACLAction {
@@ -4696,6 +4956,13 @@ func (o *GetProjectsPermissions) GetFileUpload() []components.ACLAction {
 	return o.FileUpload
 }
 
+func (o *GetProjectsPermissions) GetFlagsExplorerSubscription() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerSubscription
+}
+
 func (o *GetProjectsPermissions) GetGitRepository() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -4708,6 +4975,13 @@ func (o *GetProjectsPermissions) GetIPBlocking() []components.ACLAction {
 		return nil
 	}
 	return o.IPBlocking
+}
+
+func (o *GetProjectsPermissions) GetImageOptimizationNewPrice() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationNewPrice
 }
 
 func (o *GetProjectsPermissions) GetIntegration() []components.ACLAction {
@@ -4759,6 +5033,13 @@ func (o *GetProjectsPermissions) GetIntegrationConfigurationRole() []components.
 	return o.IntegrationConfigurationRole
 }
 
+func (o *GetProjectsPermissions) GetIntegrationSSOSession() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationSSOSession
+}
+
 func (o *GetProjectsPermissions) GetIntegrationResource() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -4808,11 +5089,32 @@ func (o *GetProjectsPermissions) GetMarketplaceInvoice() []components.ACLAction 
 	return o.MarketplaceInvoice
 }
 
+func (o *GetProjectsPermissions) GetMarketplaceExperimentationItem() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceExperimentationItem
+}
+
+func (o *GetProjectsPermissions) GetMarketplaceExperimentationEdgeConfigData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceExperimentationEdgeConfigData
+}
+
 func (o *GetProjectsPermissions) GetJobGlobal() []components.ACLAction {
 	if o == nil {
 		return nil
 	}
 	return o.JobGlobal
+}
+
+func (o *GetProjectsPermissions) GetDrain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Drain
 }
 
 func (o *GetProjectsPermissions) GetLogDrain() []components.ACLAction {
@@ -4946,13 +5248,6 @@ func (o *GetProjectsPermissions) GetNotificationStatementOfReasons() []component
 		return nil
 	}
 	return o.NotificationStatementOfReasons
-}
-
-func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Oauth2Connection
 }
 
 func (o *GetProjectsPermissions) GetObservabilityConfiguration() []components.ACLAction {
@@ -5235,20 +5530,6 @@ func (o *GetProjectsPermissions) GetUsageCycle() []components.ACLAction {
 	return o.UsageCycle
 }
 
-func (o *GetProjectsPermissions) GetUser() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.User
-}
-
-func (o *GetProjectsPermissions) GetUserConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.UserConnection
-}
-
 func (o *GetProjectsPermissions) GetVpcPeeringConnection() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5261,13 +5542,6 @@ func (o *GetProjectsPermissions) GetWebAnalyticsPlan() []components.ACLAction {
 		return nil
 	}
 	return o.WebAnalyticsPlan
-}
-
-func (o *GetProjectsPermissions) GetWebAuthn() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAuthn
 }
 
 func (o *GetProjectsPermissions) GetEdgeConfig() []components.ACLAction {
@@ -5674,6 +5948,13 @@ func (o *GetProjectsPermissions) GetProjectDeploymentExpiration() []components.A
 		return nil
 	}
 	return o.ProjectDeploymentExpiration
+}
+
+func (o *GetProjectsPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
 }
 
 func (o *GetProjectsPermissions) GetProjectTier() []components.ACLAction {
@@ -6118,6 +6399,45 @@ func (o *GetProjectsGitComments) GetOnCommit() bool {
 		return false
 	}
 	return o.OnCommit
+}
+
+// GetProjectsCreateDeployments - Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+type GetProjectsCreateDeployments string
+
+const (
+	GetProjectsCreateDeploymentsEnabled  GetProjectsCreateDeployments = "enabled"
+	GetProjectsCreateDeploymentsDisabled GetProjectsCreateDeployments = "disabled"
+)
+
+func (e GetProjectsCreateDeployments) ToPointer() *GetProjectsCreateDeployments {
+	return &e
+}
+func (e *GetProjectsCreateDeployments) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = GetProjectsCreateDeployments(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsCreateDeployments: %v", v)
+	}
+}
+
+type GetProjectsGitProviderOptions struct {
+	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+	CreateDeployments GetProjectsCreateDeployments `json:"createDeployments"`
+}
+
+func (o *GetProjectsGitProviderOptions) GetCreateDeployments() GetProjectsCreateDeployments {
+	if o == nil {
+		return GetProjectsCreateDeployments("")
+	}
+	return o.CreateDeployments
 }
 
 type GetProjectsWebAnalytics struct {
@@ -6817,21 +7137,21 @@ func (e *GetProjectsHandle) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetProjectsAction string
+type GetProjectsProjectsAction string
 
 const (
-	GetProjectsActionDeny      GetProjectsAction = "deny"
-	GetProjectsActionChallenge GetProjectsAction = "challenge"
-	GetProjectsActionLog       GetProjectsAction = "log"
-	GetProjectsActionBypass    GetProjectsAction = "bypass"
-	GetProjectsActionRateLimit GetProjectsAction = "rate_limit"
-	GetProjectsActionRedirect  GetProjectsAction = "redirect"
+	GetProjectsProjectsActionDeny      GetProjectsProjectsAction = "deny"
+	GetProjectsProjectsActionChallenge GetProjectsProjectsAction = "challenge"
+	GetProjectsProjectsActionLog       GetProjectsProjectsAction = "log"
+	GetProjectsProjectsActionBypass    GetProjectsProjectsAction = "bypass"
+	GetProjectsProjectsActionRateLimit GetProjectsProjectsAction = "rate_limit"
+	GetProjectsProjectsActionRedirect  GetProjectsProjectsAction = "redirect"
 )
 
-func (e GetProjectsAction) ToPointer() *GetProjectsAction {
+func (e GetProjectsProjectsAction) ToPointer() *GetProjectsProjectsAction {
 	return &e
 }
-func (e *GetProjectsAction) UnmarshalJSON(data []byte) error {
+func (e *GetProjectsProjectsAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6848,10 +7168,10 @@ func (e *GetProjectsAction) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = GetProjectsAction(v)
+		*e = GetProjectsProjectsAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectsAction: %v", v)
+		return fmt.Errorf("invalid value for GetProjectsProjectsAction: %v", v)
 	}
 }
 
@@ -6917,15 +7237,15 @@ func (o *GetProjectsErl) GetKeys() []string {
 }
 
 type GetProjectsMitigate struct {
-	Action GetProjectsAction `json:"action"`
-	RuleID string            `json:"rule_id"`
-	TTL    *float64          `json:"ttl,omitempty"`
-	Erl    *GetProjectsErl   `json:"erl,omitempty"`
+	Action GetProjectsProjectsAction `json:"action"`
+	RuleID string                    `json:"rule_id"`
+	TTL    *float64                  `json:"ttl,omitempty"`
+	Erl    *GetProjectsErl           `json:"erl,omitempty"`
 }
 
-func (o *GetProjectsMitigate) GetAction() GetProjectsAction {
+func (o *GetProjectsMitigate) GetAction() GetProjectsProjectsAction {
 	if o == nil {
-		return GetProjectsAction("")
+		return GetProjectsProjectsAction("")
 	}
 	return o.Action
 }
@@ -7010,18 +7330,67 @@ func (o *GetProjectsFirewallRoutes) GetMitigate() *GetProjectsMitigate {
 	return o.Mitigate
 }
 
+type GetProjectsAction string
+
+const (
+	GetProjectsActionDeny      GetProjectsAction = "deny"
+	GetProjectsActionChallenge GetProjectsAction = "challenge"
+	GetProjectsActionLog       GetProjectsAction = "log"
+)
+
+func (e GetProjectsAction) ToPointer() *GetProjectsAction {
+	return &e
+}
+func (e *GetProjectsAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "log":
+		*e = GetProjectsAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsAction: %v", v)
+	}
+}
+
+type GetProjectsManagedRules struct {
+	Active bool               `json:"active"`
+	Action *GetProjectsAction `json:"action,omitempty"`
+}
+
+func (o *GetProjectsManagedRules) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetProjectsManagedRules) GetAction() *GetProjectsAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type GetProjectsSecurity struct {
-	AttackModeEnabled      *bool                       `json:"attackModeEnabled,omitempty"`
-	AttackModeUpdatedAt    *float64                    `json:"attackModeUpdatedAt,omitempty"`
-	FirewallEnabled        *bool                       `json:"firewallEnabled,omitempty"`
-	FirewallUpdatedAt      *float64                    `json:"firewallUpdatedAt,omitempty"`
-	AttackModeActiveUntil  *float64                    `json:"attackModeActiveUntil,omitempty"`
-	FirewallConfigVersion  *float64                    `json:"firewallConfigVersion,omitempty"`
-	FirewallRoutes         []GetProjectsFirewallRoutes `json:"firewallRoutes,omitempty"`
-	FirewallSeawallEnabled *bool                       `json:"firewallSeawallEnabled,omitempty"`
-	Ja3Enabled             *bool                       `json:"ja3Enabled,omitempty"`
-	Ja4Enabled             *bool                       `json:"ja4Enabled,omitempty"`
-	FirewallBypassIps      []string                    `json:"firewallBypassIps,omitempty"`
+	AttackModeEnabled      *bool                              `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                           `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                              `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                           `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  *float64                           `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                           `json:"firewallConfigVersion,omitempty"`
+	FirewallRoutes         []GetProjectsFirewallRoutes        `json:"firewallRoutes,omitempty"`
+	FirewallSeawallEnabled *bool                              `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                              `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                              `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                           `json:"firewallBypassIps,omitempty"`
+	ManagedRules           map[string]GetProjectsManagedRules `json:"managedRules,omitempty"`
 }
 
 func (o *GetProjectsSecurity) GetAttackModeEnabled() *bool {
@@ -7099,6 +7468,13 @@ func (o *GetProjectsSecurity) GetFirewallBypassIps() []string {
 		return nil
 	}
 	return o.FirewallBypassIps
+}
+
+func (o *GetProjectsSecurity) GetManagedRules() map[string]GetProjectsManagedRules {
+	if o == nil {
+		return nil
+	}
+	return o.ManagedRules
 }
 
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -7214,7 +7590,9 @@ type GetProjectsProjects struct {
 	PasswordProtection                   *GetProjectsPasswordProtection         `json:"passwordProtection,omitempty"`
 	ProductionDeploymentsFastLane        *bool                                  `json:"productionDeploymentsFastLane,omitempty"`
 	PublicSource                         *bool                                  `json:"publicSource,omitempty"`
-	ResourceConfig                       *GetProjectsResourceConfig             `json:"resourceConfig,omitempty"`
+	ResourceConfig                       GetProjectsResourceConfig              `json:"resourceConfig"`
+	RollingRelease                       *GetProjectsRollingRelease             `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                GetProjectsDefaultResourceConfig       `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                `json:"rootDirectory,omitempty"`
 	ServerlessFunctionRegion             *string                                `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                  `json:"serverlessFunctionZeroConfigFailover,omitempty"`
@@ -7224,7 +7602,7 @@ type GetProjectsProjects struct {
 	SourceFilesOutsideRootDirectory      *bool                                  `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                  `json:"enableAffectedProjectsDeployments,omitempty"`
 	SsoProtection                        *GetProjectsSsoProtection              `json:"ssoProtection,omitempty"`
-	Targets                              map[string]GetProjectsTargets          `json:"targets,omitempty"`
+	Targets                              map[string]*GetProjectsTargets         `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                               `json:"transferCompletedAt,omitempty"`
 	TransferStartedAt                    *float64                               `json:"transferStartedAt,omitempty"`
 	TransferToAccountID                  *string                                `json:"transferToAccountId,omitempty"`
@@ -7236,11 +7614,11 @@ type GetProjectsProjects struct {
 	Permissions                          *GetProjectsPermissions                `json:"permissions,omitempty"`
 	LastRollbackTarget                   *GetProjectsLastRollbackTarget         `json:"lastRollbackTarget,omitempty"`
 	LastAliasRequest                     *GetProjectsLastAliasRequest           `json:"lastAliasRequest,omitempty"`
-	HasFloatingAliases                   *bool                                  `json:"hasFloatingAliases,omitempty"`
 	ProtectionBypass                     map[string]GetProjectsProtectionBypass `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                  `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           *GetProjectsTrustedIps                 `json:"trustedIps,omitempty"`
 	GitComments                          *GetProjectsGitComments                `json:"gitComments,omitempty"`
+	GitProviderOptions                   *GetProjectsGitProviderOptions         `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                  `json:"paused,omitempty"`
 	ConcurrencyBucketName                *string                                `json:"concurrencyBucketName,omitempty"`
 	WebAnalytics                         *GetProjectsWebAnalytics               `json:"webAnalytics,omitempty"`
@@ -7501,11 +7879,25 @@ func (o *GetProjectsProjects) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *GetProjectsProjects) GetResourceConfig() *GetProjectsResourceConfig {
+func (o *GetProjectsProjects) GetResourceConfig() GetProjectsResourceConfig {
+	if o == nil {
+		return GetProjectsResourceConfig{}
+	}
+	return o.ResourceConfig
+}
+
+func (o *GetProjectsProjects) GetRollingRelease() *GetProjectsRollingRelease {
 	if o == nil {
 		return nil
 	}
-	return o.ResourceConfig
+	return o.RollingRelease
+}
+
+func (o *GetProjectsProjects) GetDefaultResourceConfig() GetProjectsDefaultResourceConfig {
+	if o == nil {
+		return GetProjectsDefaultResourceConfig{}
+	}
+	return o.DefaultResourceConfig
 }
 
 func (o *GetProjectsProjects) GetRootDirectory() *string {
@@ -7571,7 +7963,7 @@ func (o *GetProjectsProjects) GetSsoProtection() *GetProjectsSsoProtection {
 	return o.SsoProtection
 }
 
-func (o *GetProjectsProjects) GetTargets() map[string]GetProjectsTargets {
+func (o *GetProjectsProjects) GetTargets() map[string]*GetProjectsTargets {
 	if o == nil {
 		return nil
 	}
@@ -7655,13 +8047,6 @@ func (o *GetProjectsProjects) GetLastAliasRequest() *GetProjectsLastAliasRequest
 	return o.LastAliasRequest
 }
 
-func (o *GetProjectsProjects) GetHasFloatingAliases() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasFloatingAliases
-}
-
 func (o *GetProjectsProjects) GetProtectionBypass() map[string]GetProjectsProtectionBypass {
 	if o == nil {
 		return nil
@@ -7688,6 +8073,13 @@ func (o *GetProjectsProjects) GetGitComments() *GetProjectsGitComments {
 		return nil
 	}
 	return o.GitComments
+}
+
+func (o *GetProjectsProjects) GetGitProviderOptions() *GetProjectsGitProviderOptions {
+	if o == nil {
+		return nil
+	}
+	return o.GitProviderOptions
 }
 
 func (o *GetProjectsProjects) GetPaused() *bool {

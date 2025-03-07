@@ -24,7 +24,7 @@ func pathGetV1DomainsDomainRegistry(dir *logging.HTTPFileDirectory, rt *tracking
 		case "getDomainTransfer[0]":
 			dir.HandlerFunc("getDomainTransfer", testGetDomainTransferGetDomainTransfer0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

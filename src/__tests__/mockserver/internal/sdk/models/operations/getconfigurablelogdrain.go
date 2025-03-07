@@ -37,35 +37,6 @@ func (o *GetConfigurableLogDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetConfigurableLogDrainDeliveryFormat string
-
-const (
-	GetConfigurableLogDrainDeliveryFormatJSON   GetConfigurableLogDrainDeliveryFormat = "json"
-	GetConfigurableLogDrainDeliveryFormatNdjson GetConfigurableLogDrainDeliveryFormat = "ndjson"
-	GetConfigurableLogDrainDeliveryFormatSyslog GetConfigurableLogDrainDeliveryFormat = "syslog"
-)
-
-func (e GetConfigurableLogDrainDeliveryFormat) ToPointer() *GetConfigurableLogDrainDeliveryFormat {
-	return &e
-}
-func (e *GetConfigurableLogDrainDeliveryFormat) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "json":
-		fallthrough
-	case "ndjson":
-		fallthrough
-	case "syslog":
-		*e = GetConfigurableLogDrainDeliveryFormat(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurableLogDrainDeliveryFormat: %v", v)
-	}
-}
-
 type GetConfigurableLogDrainSources string
 
 const (
@@ -191,44 +162,65 @@ func (e *DisabledReason) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetConfigurableLogDrainCreatedFrom string
+type CreatedFrom string
 
 const (
-	GetConfigurableLogDrainCreatedFromSelfServed GetConfigurableLogDrainCreatedFrom = "self-served"
+	CreatedFromSelfServed  CreatedFrom = "self-served"
+	CreatedFromIntegration CreatedFrom = "integration"
 )
 
-func (e GetConfigurableLogDrainCreatedFrom) ToPointer() *GetConfigurableLogDrainCreatedFrom {
+func (e CreatedFrom) ToPointer() *CreatedFrom {
 	return &e
 }
-func (e *GetConfigurableLogDrainCreatedFrom) UnmarshalJSON(data []byte) error {
+func (e *CreatedFrom) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "self-served":
-		*e = GetConfigurableLogDrainCreatedFrom(v)
+		fallthrough
+	case "integration":
+		*e = CreatedFrom(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurableLogDrainCreatedFrom: %v", v)
+		return fmt.Errorf("invalid value for CreatedFrom: %v", v)
+	}
+}
+
+type GetConfigurableLogDrainDeliveryFormat string
+
+const (
+	GetConfigurableLogDrainDeliveryFormatJSON   GetConfigurableLogDrainDeliveryFormat = "json"
+	GetConfigurableLogDrainDeliveryFormatNdjson GetConfigurableLogDrainDeliveryFormat = "ndjson"
+	GetConfigurableLogDrainDeliveryFormatSyslog GetConfigurableLogDrainDeliveryFormat = "syslog"
+)
+
+func (e GetConfigurableLogDrainDeliveryFormat) ToPointer() *GetConfigurableLogDrainDeliveryFormat {
+	return &e
+}
+func (e *GetConfigurableLogDrainDeliveryFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		fallthrough
+	case "ndjson":
+		fallthrough
+	case "syslog":
+		*e = GetConfigurableLogDrainDeliveryFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurableLogDrainDeliveryFormat: %v", v)
 	}
 }
 
 type GetConfigurableLogDrainResponseBody struct {
-	ID                  string                                `json:"id"`
-	DeliveryFormat      GetConfigurableLogDrainDeliveryFormat `json:"deliveryFormat"`
-	URL                 string                                `json:"url"`
-	Name                string                                `json:"name"`
 	ClientID            *string                               `json:"clientId,omitempty"`
 	ConfigurationID     *string                               `json:"configurationId,omitempty"`
-	TeamID              *string                               `json:"teamId,omitempty"`
-	OwnerID             string                                `json:"ownerId"`
-	ProjectIds          []string                              `json:"projectIds,omitempty"`
-	CreatedAt           float64                               `json:"createdAt"`
-	DeletedAt           *float64                              `json:"deletedAt"`
-	UpdatedAt           float64                               `json:"updatedAt"`
 	Sources             []GetConfigurableLogDrainSources      `json:"sources,omitempty"`
-	Headers             map[string]string                     `json:"headers,omitempty"`
 	Environments        []GetConfigurableLogDrainEnvironments `json:"environments"`
 	Status              *GetConfigurableLogDrainStatus        `json:"status,omitempty"`
 	DisabledAt          *float64                              `json:"disabledAt,omitempty"`
@@ -237,36 +229,19 @@ type GetConfigurableLogDrainResponseBody struct {
 	FirstErrorTimestamp *float64                              `json:"firstErrorTimestamp,omitempty"`
 	SamplingRate        *float64                              `json:"samplingRate,omitempty"`
 	HideIPAddresses     *bool                                 `json:"hideIpAddresses,omitempty"`
+	ID                  string                                `json:"id"`
+	CreatedAt           float64                               `json:"createdAt"`
+	DeletedAt           *float64                              `json:"deletedAt"`
+	UpdatedAt           float64                               `json:"updatedAt"`
+	URL                 string                                `json:"url"`
+	Headers             map[string]string                     `json:"headers,omitempty"`
+	ProjectIds          []string                              `json:"projectIds,omitempty"`
+	Name                string                                `json:"name"`
+	TeamID              *string                               `json:"teamId,omitempty"`
+	OwnerID             string                                `json:"ownerId"`
+	CreatedFrom         *CreatedFrom                          `json:"createdFrom,omitempty"`
+	DeliveryFormat      GetConfigurableLogDrainDeliveryFormat `json:"deliveryFormat"`
 	Secret              string                                `json:"secret"`
-	CreatedFrom         *GetConfigurableLogDrainCreatedFrom   `json:"createdFrom,omitempty"`
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetDeliveryFormat() GetConfigurableLogDrainDeliveryFormat {
-	if o == nil {
-		return GetConfigurableLogDrainDeliveryFormat("")
-	}
-	return o.DeliveryFormat
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetConfigurableLogDrainResponseBody) GetClientID() *string {
@@ -283,60 +258,11 @@ func (o *GetConfigurableLogDrainResponseBody) GetConfigurationID() *string {
 	return o.ConfigurationID
 }
 
-func (o *GetConfigurableLogDrainResponseBody) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetProjectIds() []string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIds
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetDeletedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DeletedAt
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
 func (o *GetConfigurableLogDrainResponseBody) GetSources() []GetConfigurableLogDrainSources {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetHeaders() map[string]string {
-	if o == nil {
-		return nil
-	}
-	return o.Headers
 }
 
 func (o *GetConfigurableLogDrainResponseBody) GetEnvironments() []GetConfigurableLogDrainEnvironments {
@@ -395,18 +321,95 @@ func (o *GetConfigurableLogDrainResponseBody) GetHideIPAddresses() *bool {
 	return o.HideIPAddresses
 }
 
+func (o *GetConfigurableLogDrainResponseBody) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetProjectIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIds
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetCreatedFrom() *CreatedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedFrom
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetDeliveryFormat() GetConfigurableLogDrainDeliveryFormat {
+	if o == nil {
+		return GetConfigurableLogDrainDeliveryFormat("")
+	}
+	return o.DeliveryFormat
+}
+
 func (o *GetConfigurableLogDrainResponseBody) GetSecret() string {
 	if o == nil {
 		return ""
 	}
 	return o.Secret
-}
-
-func (o *GetConfigurableLogDrainResponseBody) GetCreatedFrom() *GetConfigurableLogDrainCreatedFrom {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedFrom
 }
 
 type GetConfigurableLogDrainResponse struct {

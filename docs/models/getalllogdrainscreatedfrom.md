@@ -5,7 +5,7 @@
 ```typescript
 import { GetAllLogDrainsCreatedFrom } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsCreatedFrom = "integration";
+let value: GetAllLogDrainsCreatedFrom = "self-served";
 ```
 
 ## Values

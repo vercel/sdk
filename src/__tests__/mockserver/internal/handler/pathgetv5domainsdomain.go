@@ -25,7 +25,7 @@ func pathGetV5DomainsDomain(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "getDomain[0]":
 			dir.HandlerFunc("getDomain", testGetDomainGetDomain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

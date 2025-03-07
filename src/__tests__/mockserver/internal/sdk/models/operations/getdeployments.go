@@ -539,6 +539,7 @@ const (
 	GetDeploymentsFrameworkNextjs         GetDeploymentsFramework = "nextjs"
 	GetDeploymentsFrameworkGatsby         GetDeploymentsFramework = "gatsby"
 	GetDeploymentsFrameworkRemix          GetDeploymentsFramework = "remix"
+	GetDeploymentsFrameworkReactRouter    GetDeploymentsFramework = "react-router"
 	GetDeploymentsFrameworkAstro          GetDeploymentsFramework = "astro"
 	GetDeploymentsFrameworkHexo           GetDeploymentsFramework = "hexo"
 	GetDeploymentsFrameworkEleventy       GetDeploymentsFramework = "eleventy"
@@ -598,6 +599,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough

@@ -22,7 +22,7 @@ func pathPutV1InstallationsIntegrationConfigurationIDProductsIntegrationProductI
 		case "update-resource-secrets[0]":
 			dir.HandlerFunc("update-resource-secrets", testUpdateResourceSecretsUpdateResourceSecrets0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

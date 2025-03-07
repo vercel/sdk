@@ -1,20 +1,21 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: d0c435c7d090e03c6c03abe3f5476c0f
+  docChecksum: 9e6a3a52fea8656fb8d5827f00bc690a
   docVersion: 0.0.1
-  speakeasyVersion: 1.469.11
-  generationVersion: 2.493.32
-  releaseVersion: 1.3.1
-  configChecksum: ed78c8e9b104cd0d90bea729a1536d68
+  speakeasyVersion: 1.513.4
+  generationVersion: 2.545.4
+  releaseVersion: 1.4.0
+  configChecksum: 6a538dff094772259a0de520cd046039
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
+    additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.16
+    core: 3.21.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -23,23 +24,23 @@ features:
     enums: 2.82.1
     envVarSecurityUsage: 0.1.2
     examples: 2.81.5
-    globalSecurity: 2.82.12
+    globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
+    mcpServer: 0.6.0
     mockServer: 0.1.0
-    nullables: 0.1.0
+    nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.11.5
+    tests: 0.16.0
     unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
-  - .eslintrc.cjs
   - .gitattributes
   - .npmignore
   - FUNCTIONS.md
@@ -55,7 +56,6 @@ generatedFiles:
   - docs/models/aclaction.md
   - docs/models/action.md
   - docs/models/action1.md
-  - docs/models/active.md
   - docs/models/activedashboardviews.md
   - docs/models/addbypassiprequest.md
   - docs/models/addbypassiprequestbody.md
@@ -67,7 +67,6 @@ generatedFiles:
   - docs/models/addbypassipresponsebodyaction.md
   - docs/models/addbypassipresponsebodyresult.md
   - docs/models/addbypassipresponsebodysecurityresult.md
-  - docs/models/additionalroles.md
   - docs/models/addprojectdomainredirectstatuscode.md
   - docs/models/addprojectdomainrequest.md
   - docs/models/addprojectdomainrequestbody.md
@@ -101,6 +100,7 @@ generatedFiles:
   - docs/models/assignaliasresponsebody.md
   - docs/models/attribution.md
   - docs/models/authtoken.md
+  - docs/models/authtokenscopes1origin.md
   - docs/models/authtokenscopesorigin.md
   - docs/models/authtokenscopestype.md
   - docs/models/authuser.md
@@ -108,10 +108,10 @@ generatedFiles:
   - docs/models/authuserlimitedversion.md
   - docs/models/backup.md
   - docs/models/backups.md
+  - docs/models/balances.md
   - docs/models/billing.md
   - docs/models/billing1.md
   - docs/models/billing2.md
-  - docs/models/billingitems.md
   - docs/models/billingplan.md
   - docs/models/bitbucket.md
   - docs/models/blockedduetooveragetype.md
@@ -132,6 +132,7 @@ generatedFiles:
   - docs/models/canceldeploymentbuilds.md
   - docs/models/canceldeploymentchecksconclusion.md
   - docs/models/canceldeploymentchecksstate.md
+  - docs/models/canceldeploymentconfig.md
   - docs/models/canceldeploymentcontentdispositiontype.md
   - docs/models/canceldeploymentcreator.md
   - docs/models/canceldeploymentcrons.md
@@ -146,7 +147,9 @@ generatedFiles:
   - docs/models/canceldeploymentflagsdefinitions.md
   - docs/models/canceldeploymentformats.md
   - docs/models/canceldeploymentframework.md
+  - docs/models/canceldeploymentfunctionmemorytype.md
   - docs/models/canceldeploymentfunctions.md
+  - docs/models/canceldeploymentfunctiontype.md
   - docs/models/canceldeploymentgitrepo.md
   - docs/models/canceldeploymentgitrepo1.md
   - docs/models/canceldeploymentgitrepo2.md
@@ -214,6 +217,7 @@ generatedFiles:
   - docs/models/canceldeploymentteam.md
   - docs/models/canceldeploymenttype.md
   - docs/models/canceldeploymentwebanalytics.md
+  - docs/models/category.md
   - docs/models/changes.md
   - docs/models/checkdomainpricerequest.md
   - docs/models/checkdomainpriceresponsebody.md
@@ -227,6 +231,7 @@ generatedFiles:
   - docs/models/conclusion.md
   - docs/models/conditiongroup.md
   - docs/models/conditions.md
+  - docs/models/config.md
   - docs/models/configuredby.md
   - docs/models/connection.md
   - docs/models/contact.md
@@ -282,14 +287,15 @@ generatedFiles:
   - docs/models/createconfigurablelogdraindeliveryformat.md
   - docs/models/createconfigurablelogdraindisabledreason.md
   - docs/models/createconfigurablelogdrainenvironments.md
-  - docs/models/createconfigurablelogdrainlogdrainsdeliveryformat.md
-  - docs/models/createconfigurablelogdrainlogdrainsenvironments.md
-  - docs/models/createconfigurablelogdrainlogdrainssources.md
   - docs/models/createconfigurablelogdrainrequest.md
   - docs/models/createconfigurablelogdrainrequestbody.md
   - docs/models/createconfigurablelogdrainresponsebody.md
   - docs/models/createconfigurablelogdrainsources.md
   - docs/models/createconfigurablelogdrainstatus.md
+  - docs/models/createcustomenvironmentrequest.md
+  - docs/models/createcustomenvironmentrequestbody.md
+  - docs/models/createcustomenvironmentresponsebody.md
+  - docs/models/createcustomenvironmenttype.md
   - docs/models/created.md
   - docs/models/created1.md
   - docs/models/created2.md
@@ -322,6 +328,8 @@ generatedFiles:
   - docs/models/createdeploymentgitsourcetype.md
   - docs/models/createdeploymenthastype.md
   - docs/models/createdeploymentmicrofrontends.md
+  - docs/models/createdeploymentmicrofrontends1.md
+  - docs/models/createdeploymentmicrofrontends2.md
   - docs/models/createdeploymentmissingtype.md
   - docs/models/createdeploymentoutput.md
   - docs/models/createdeploymentprojectsettings.md
@@ -329,6 +337,7 @@ generatedFiles:
   - docs/models/createdeploymentrequest.md
   - docs/models/createdeploymentrequestbody.md
   - docs/models/createdeploymentresponsebody.md
+  - docs/models/createdeployments.md
   - docs/models/createdeploymentsource.md
   - docs/models/createdeploymentspeedinsights.md
   - docs/models/createdeploymentstatus.md
@@ -340,6 +349,7 @@ generatedFiles:
   - docs/models/createdtarget.md
   - docs/models/createdtype.md
   - docs/models/createedgeconfigpurpose.md
+  - docs/models/createedgeconfigpurposetype.md
   - docs/models/createedgeconfigrequest.md
   - docs/models/createedgeconfigrequestbody.md
   - docs/models/createedgeconfigresponsebody.md
@@ -348,7 +358,6 @@ generatedFiles:
   - docs/models/createedgeconfigtokenrequestbody.md
   - docs/models/createedgeconfigtokenresponsebody.md
   - docs/models/createedgeconfigtransfer.md
-  - docs/models/createedgeconfigtype.md
   - docs/models/createeventevent.md
   - docs/models/createeventeventtype.md
   - docs/models/createeventrequest.md
@@ -356,6 +365,9 @@ generatedFiles:
   - docs/models/createlogdraincreatedfrom.md
   - docs/models/createlogdraindeliveryformat.md
   - docs/models/createlogdrainenvironments.md
+  - docs/models/createlogdrainlogdrainsdeliveryformat.md
+  - docs/models/createlogdrainlogdrainsenvironments.md
+  - docs/models/createlogdrainlogdrainssources.md
   - docs/models/createlogdrainrequest.md
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
@@ -404,10 +416,12 @@ generatedFiles:
   - docs/models/createprojectcontenthintprojectsresponsetype.md
   - docs/models/createprojectcontenthintprojectstype.md
   - docs/models/createprojectcontenthinttype.md
+  - docs/models/createprojectcreatedeployments.md
   - docs/models/createprojectcreator.md
   - docs/models/createprojectcrons.md
   - docs/models/createprojectcustomenvironments.md
   - docs/models/createprojectdatacache.md
+  - docs/models/createprojectdefaultresourceconfig.md
   - docs/models/createprojectdefinitions.md
   - docs/models/createprojectdeploymentexpiration.md
   - docs/models/createprojectdeploymenttype.md
@@ -497,12 +511,12 @@ generatedFiles:
   - docs/models/createprojectenvtargetprojects2.md
   - docs/models/createprojectenvtargetprojectsresponse2.md
   - docs/models/createprojectenvvalue.md
-  - docs/models/createprojectenvvalue2.md
   - docs/models/createprojecterl.md
   - docs/models/createprojectfirewallroutes.md
   - docs/models/createprojectframework.md
   - docs/models/createprojectfunctiondefaultmemorytype.md
   - docs/models/createprojectgitcomments.md
+  - docs/models/createprojectgitprovideroptions.md
   - docs/models/createprojecthandle.md
   - docs/models/createprojecthas.md
   - docs/models/createprojectinternalcontenthint.md
@@ -522,7 +536,10 @@ generatedFiles:
   - docs/models/createprojectlinkprojectsresponsetype.md
   - docs/models/createprojectlinkprojectstype.md
   - docs/models/createprojectlinktype.md
+  - docs/models/createprojectmanagedrules.md
   - docs/models/createprojectmicrofrontends.md
+  - docs/models/createprojectmicrofrontends1.md
+  - docs/models/createprojectmicrofrontends2.md
   - docs/models/createprojectmissing.md
   - docs/models/createprojectmitigate.md
   - docs/models/createprojectnodeversion.md
@@ -533,6 +550,7 @@ generatedFiles:
   - docs/models/createprojectpaths.md
   - docs/models/createprojectpermissions.md
   - docs/models/createprojectplan.md
+  - docs/models/createprojectprojectsaction.md
   - docs/models/createprojectprojectsaliasassigned.md
   - docs/models/createprojectprojectsaliaserror.md
   - docs/models/createprojectprojectsbranchmatcher.md
@@ -541,6 +559,7 @@ generatedFiles:
   - docs/models/createprojectprojectschecksstate.md
   - docs/models/createprojectprojectscreator.md
   - docs/models/createprojectprojectsframework.md
+  - docs/models/createprojectprojectsfunctiondefaultmemorytype.md
   - docs/models/createprojectprojectsoidctokenclaims.md
   - docs/models/createprojectprojectsplan.md
   - docs/models/createprojectprojectsreadystate.md
@@ -554,7 +573,6 @@ generatedFiles:
   - docs/models/createprojectprojectsresponse200applicationjsontype.md
   - docs/models/createprojectprojectsresponse200type.md
   - docs/models/createprojectprojectsresponsetype.md
-  - docs/models/createprojectprojectstarget.md
   - docs/models/createprojectprojectstype.md
   - docs/models/createprojectprojectsvalue.md
   - docs/models/createprojectprotectionbypass.md
@@ -564,13 +582,16 @@ generatedFiles:
   - docs/models/createprojectrequestbody.md
   - docs/models/createprojectresourceconfig.md
   - docs/models/createprojectresponsebody.md
+  - docs/models/createprojectrollingrelease.md
   - docs/models/createprojectscope.md
   - docs/models/createprojectsecurity.md
   - docs/models/createprojectspeedinsights.md
   - docs/models/createprojectsrc.md
   - docs/models/createprojectsrc2.md
   - docs/models/createprojectssoprotection.md
+  - docs/models/createprojectstages.md
   - docs/models/createprojecttarget.md
+  - docs/models/createprojecttarget1.md
   - docs/models/createprojecttarget2.md
   - docs/models/createprojecttargets.md
   - docs/models/createprojecttier.md
@@ -617,6 +638,7 @@ generatedFiles:
   - docs/models/datacache.md
   - docs/models/ddosalerts.md
   - docs/models/decrypt.md
+  - docs/models/defaultresourceconfig.md
   - docs/models/definitions.md
   - docs/models/deleteaccessgroupprojectrequest.md
   - docs/models/deleteaccessgrouprequest.md
@@ -643,9 +665,7 @@ generatedFiles:
   - docs/models/deleteteamrequest.md
   - docs/models/deleteteamrequestbody.md
   - docs/models/deleteteamresponsebody.md
-  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
-  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridrequestbody.md
-  - docs/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
+  - docs/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/deletewebhookrequest.md
   - docs/models/deliveryformat.md
   - docs/models/deployhooks.md
@@ -653,7 +673,6 @@ generatedFiles:
   - docs/models/deploymentexpiration.md
   - docs/models/deployments.md
   - docs/models/deploymenttype.md
-  - docs/models/details.md
   - docs/models/direction.md
   - docs/models/directory.md
   - docs/models/disabledreason.md
@@ -729,6 +748,8 @@ generatedFiles:
   - docs/models/exchangessotokenresponsebody.md
   - docs/models/failed.md
   - docs/models/favoriteprojectsandspaces.md
+  - docs/models/favoriteprojectsandspaces1.md
+  - docs/models/favoriteprojectsandspaces2.md
   - docs/models/favoritesviewpreference.md
   - docs/models/fcp.md
   - docs/models/featureblocks.md
@@ -847,6 +868,7 @@ generatedFiles:
   - docs/models/filterprojectenvstarget2.md
   - docs/models/filterprojectenvstargetprojects1.md
   - docs/models/filterprojectenvstargetprojects2.md
+  - docs/models/filterprojectenvstargetprojectsresponse1.md
   - docs/models/filterprojectenvstargetprojectsresponse2.md
   - docs/models/firewallroutes.md
   - docs/models/five.md
@@ -862,7 +884,9 @@ generatedFiles:
   - docs/models/fourteen.md
   - docs/models/framework.md
   - docs/models/functiondefaultmemorytype.md
+  - docs/models/functionmemorytype.md
   - docs/models/functions.md
+  - docs/models/functiontype.md
   - docs/models/gen.md
   - docs/models/generate.md
   - docs/models/getaccountinforequest.md
@@ -909,6 +933,7 @@ generatedFiles:
   - docs/models/getbypassipresponsebody.md
   - docs/models/getbypassipresponsebody1.md
   - docs/models/getbypassipresponsebody2.md
+  - docs/models/getbypassipresponsebodyaction.md
   - docs/models/getbypassipresponsebodypagination.md
   - docs/models/getbypassipresponsebodyresult.md
   - docs/models/getcertbyidrequest.md
@@ -929,7 +954,6 @@ generatedFiles:
   - docs/models/getcheckstatus.md
   - docs/models/getchecktbt.md
   - docs/models/getcheckvirtualexperiencescore.md
-  - docs/models/getconfigurablelogdraincreatedfrom.md
   - docs/models/getconfigurablelogdraindeliveryformat.md
   - docs/models/getconfigurablelogdrainenvironments.md
   - docs/models/getconfigurablelogdrainrequest.md
@@ -940,18 +964,12 @@ generatedFiles:
   - docs/models/getconfigurationresponsebody.md
   - docs/models/getconfigurationresponsebody1.md
   - docs/models/getconfigurationresponsebody2.md
-  - docs/models/getconfigurationresponsebodybillingplan.md
-  - docs/models/getconfigurationresponsebodydetails.md
   - docs/models/getconfigurationresponsebodydisabledreason.md
-  - docs/models/getconfigurationresponsebodyheightlighteddetails.md
   - docs/models/getconfigurationresponsebodyinstallationtype.md
   - docs/models/getconfigurationresponsebodyintegrationsdisabledreason.md
   - docs/models/getconfigurationresponsebodyintegrationsinstallationtype.md
-  - docs/models/getconfigurationresponsebodyintegrationsresponsetype.md
   - docs/models/getconfigurationresponsebodyintegrationssource.md
   - docs/models/getconfigurationresponsebodyintegrationstype.md
-  - docs/models/getconfigurationresponsebodyquote.md
-  - docs/models/getconfigurationresponsebodyscope.md
   - docs/models/getconfigurationresponsebodysource.md
   - docs/models/getconfigurationresponsebodytype.md
   - docs/models/getconfigurationsrequest.md
@@ -960,13 +978,12 @@ generatedFiles:
   - docs/models/getconfigurationsresponsebody2.md
   - docs/models/getconfigurationsresponsebodydisabledreason.md
   - docs/models/getconfigurationsresponsebodyinstallationtype.md
-  - docs/models/getconfigurationsresponsebodyintegrationsresponse200type.md
-  - docs/models/getconfigurationsresponsebodyintegrationsresponsetype.md
   - docs/models/getconfigurationsresponsebodyintegrationssource.md
   - docs/models/getconfigurationsresponsebodyintegrationstype.md
-  - docs/models/getconfigurationsresponsebodyscope.md
   - docs/models/getconfigurationsresponsebodysource.md
   - docs/models/getconfigurationsresponsebodytype.md
+  - docs/models/getcustomenvironmentrequest.md
+  - docs/models/getcustomenvironmentresponsebody.md
   - docs/models/getdeploymentcustomenvironment1.md
   - docs/models/getdeploymentcustomenvironment2.md
   - docs/models/getdeploymentcustomenvironmentdeployments1.md
@@ -1115,6 +1132,10 @@ generatedFiles:
   - docs/models/getedgeconfigitemrequest.md
   - docs/models/getedgeconfigitemsrequest.md
   - docs/models/getedgeconfigpurpose.md
+  - docs/models/getedgeconfigpurpose1.md
+  - docs/models/getedgeconfigpurpose2.md
+  - docs/models/getedgeconfigpurposeedgeconfigtype.md
+  - docs/models/getedgeconfigpurposetype.md
   - docs/models/getedgeconfigrequest.md
   - docs/models/getedgeconfigresponsebody.md
   - docs/models/getedgeconfigschema.md
@@ -1126,36 +1147,23 @@ generatedFiles:
   - docs/models/getedgeconfigtokenrequest.md
   - docs/models/getedgeconfigtokensrequest.md
   - docs/models/getedgeconfigtransfer.md
-  - docs/models/getedgeconfigtype.md
   - docs/models/getfirewallconfigaction.md
   - docs/models/getfirewallconfigalgo.md
   - docs/models/getfirewallconfigconditiongroup.md
   - docs/models/getfirewallconfigconditions.md
-  - docs/models/getfirewallconfigcrs.md
-  - docs/models/getfirewallconfiggen.md
-  - docs/models/getfirewallconfigips.md
-  - docs/models/getfirewallconfigjava.md
-  - docs/models/getfirewallconfiglfi.md
-  - docs/models/getfirewallconfigma.md
-  - docs/models/getfirewallconfigmanagedrules.md
   - docs/models/getfirewallconfigmitigate.md
   - docs/models/getfirewallconfigop.md
-  - docs/models/getfirewallconfigowasp.md
-  - docs/models/getfirewallconfigphp.md
   - docs/models/getfirewallconfigratelimit.md
-  - docs/models/getfirewallconfigrce.md
   - docs/models/getfirewallconfigredirect.md
   - docs/models/getfirewallconfigrequest.md
   - docs/models/getfirewallconfigresponsebody.md
-  - docs/models/getfirewallconfigrfi.md
-  - docs/models/getfirewallconfigrules.md
-  - docs/models/getfirewallconfigsd.md
   - docs/models/getfirewallconfigsecurityaction.md
   - docs/models/getfirewallconfigsecurityresponse200action.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsjavaaction.md
+  - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrslfiaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsmaaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrssdaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrssfaction.md
@@ -1164,11 +1172,9 @@ generatedFiles:
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesactionaction.md
   - docs/models/getfirewallconfigsecurityresponseaction.md
-  - docs/models/getfirewallconfigsf.md
-  - docs/models/getfirewallconfigsqli.md
   - docs/models/getfirewallconfigtype.md
   - docs/models/getfirewallconfigvalue.md
-  - docs/models/getfirewallconfigxss.md
+  - docs/models/getintegrationlogdrainscreatedfrom.md
   - docs/models/getintegrationlogdrainsdeliveryformat.md
   - docs/models/getintegrationlogdrainsenvironments.md
   - docs/models/getintegrationlogdrainsrequest.md
@@ -1349,10 +1355,12 @@ generatedFiles:
   - docs/models/getprojectscontenthintprojectsresponsetype.md
   - docs/models/getprojectscontenthintprojectstype.md
   - docs/models/getprojectscontenthinttype.md
+  - docs/models/getprojectscreatedeployments.md
   - docs/models/getprojectscreator.md
   - docs/models/getprojectscrons.md
   - docs/models/getprojectscustomenvironments.md
   - docs/models/getprojectsdatacache.md
+  - docs/models/getprojectsdefaultresourceconfig.md
   - docs/models/getprojectsdefinitions.md
   - docs/models/getprojectsdeploymentexpiration.md
   - docs/models/getprojectsdeploymenttype.md
@@ -1362,6 +1370,7 @@ generatedFiles:
   - docs/models/getprojectsframework.md
   - docs/models/getprojectsfunctiondefaultmemorytype.md
   - docs/models/getprojectsgitcomments.md
+  - docs/models/getprojectsgitprovideroptions.md
   - docs/models/getprojectshandle.md
   - docs/models/getprojectshas.md
   - docs/models/getprojectsinternalcontenthint.md
@@ -1381,7 +1390,10 @@ generatedFiles:
   - docs/models/getprojectslinkprojectsresponsetype.md
   - docs/models/getprojectslinkprojectstype.md
   - docs/models/getprojectslinktype.md
+  - docs/models/getprojectsmanagedrules.md
   - docs/models/getprojectsmicrofrontends.md
+  - docs/models/getprojectsmicrofrontends1.md
+  - docs/models/getprojectsmicrofrontends2.md
   - docs/models/getprojectsmissing.md
   - docs/models/getprojectsmitigate.md
   - docs/models/getprojectsnodeversion.md
@@ -1393,6 +1405,7 @@ generatedFiles:
   - docs/models/getprojectspermissions.md
   - docs/models/getprojectsplan.md
   - docs/models/getprojectsprojects.md
+  - docs/models/getprojectsprojectsaction.md
   - docs/models/getprojectsprojectsaliasassigned.md
   - docs/models/getprojectsprojectsaliaserror.md
   - docs/models/getprojectsprojectsbranchmatcher.md
@@ -1400,6 +1413,7 @@ generatedFiles:
   - docs/models/getprojectsprojectschecksconclusion.md
   - docs/models/getprojectsprojectschecksstate.md
   - docs/models/getprojectsprojectscreator.md
+  - docs/models/getprojectsprojectsfunctiondefaultmemorytype.md
   - docs/models/getprojectsprojectsoidctokenclaims.md
   - docs/models/getprojectsprojectsplan.md
   - docs/models/getprojectsprojectsreadystate.md
@@ -1419,12 +1433,14 @@ generatedFiles:
   - docs/models/getprojectsrequest.md
   - docs/models/getprojectsresourceconfig.md
   - docs/models/getprojectsresponsebody.md
+  - docs/models/getprojectsrollingrelease.md
   - docs/models/getprojectsscope.md
   - docs/models/getprojectssecurity.md
   - docs/models/getprojectsspeedinsights.md
   - docs/models/getprojectssrc.md
   - docs/models/getprojectssrc2.md
   - docs/models/getprojectsssoprotection.md
+  - docs/models/getprojectsstages.md
   - docs/models/getprojectstarget.md
   - docs/models/getprojectstarget1.md
   - docs/models/getprojectstarget2.md
@@ -1473,9 +1489,11 @@ generatedFiles:
   - docs/models/getteamrequest.md
   - docs/models/getteamsrequest.md
   - docs/models/getteamsresponsebody.md
+  - docs/models/getv1experimentationitemscategory.md
+  - docs/models/getv1experimentationitemsitems.md
+  - docs/models/getv1experimentationitemsrequest.md
+  - docs/models/getv1experimentationitemsresponsebody.md
   - docs/models/getv9projectsidornamecustomenvironmentsenvironments.md
-  - docs/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
-  - docs/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
   - docs/models/getv9projectsidornamecustomenvironmentsrequest.md
   - docs/models/getv9projectsidornamecustomenvironmentsresponsebody.md
   - docs/models/getwebhookevents.md
@@ -1497,6 +1515,7 @@ generatedFiles:
   - docs/models/gitnamespacesid.md
   - docs/models/gitnamespacesrequest.md
   - docs/models/gitnamespacesresponsebody.md
+  - docs/models/gitprovideroptions.md
   - docs/models/gitrepo.md
   - docs/models/gitrepo1.md
   - docs/models/gitrepo2.md
@@ -1523,13 +1542,20 @@ generatedFiles:
   - docs/models/has1.md
   - docs/models/has2.md
   - docs/models/hastype.md
-  - docs/models/heightlighteddetails.md
+  - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
+  - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
   - docs/models/https.md
   - docs/models/id.md
   - docs/models/images.md
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
   - docs/models/importflowgitprovider.md
+  - docs/models/importresourcerequest.md
+  - docs/models/importresourcerequestbody.md
+  - docs/models/importresourceresponsebody.md
+  - docs/models/importresourcesecrets.md
+  - docs/models/importresourcestatus.md
+  - docs/models/importresourcetype.md
   - docs/models/inlinedfile.md
   - docs/models/installationtype.md
   - docs/models/integration.md
@@ -1542,6 +1568,8 @@ generatedFiles:
   - docs/models/inviteusertoteamresponsebody1.md
   - docs/models/inviteusertoteamresponsebody2.md
   - docs/models/inviteusertoteamresponsebodyrole.md
+  - docs/models/inviteusertoteamresponsebodyteampermissions.md
+  - docs/models/inviteusertoteamresponsebodyteamroles.md
   - docs/models/inviteusertoteamrole.md
   - docs/models/inviteusertoteamteamsrole.md
   - docs/models/ipbuckets.md
@@ -1551,8 +1579,6 @@ generatedFiles:
   - docs/models/issuecertresponsebody.md
   - docs/models/issuermode.md
   - docs/models/items.md
-  - docs/models/items1.md
-  - docs/models/items2.md
   - docs/models/java.md
   - docs/models/jobstatus.md
   - docs/models/joinedfrom.md
@@ -1564,6 +1590,7 @@ generatedFiles:
   - docs/models/lastrollbacktarget.md
   - docs/models/latestdeployments.md
   - docs/models/lcp.md
+  - docs/models/level.md
   - docs/models/lfi.md
   - docs/models/link.md
   - docs/models/link1.md
@@ -1584,6 +1611,7 @@ generatedFiles:
   - docs/models/listaccessgroupsresponsebody.md
   - docs/models/listaccessgroupsresponsebody1.md
   - docs/models/listaccessgroupsresponsebody2.md
+  - docs/models/listaliasesaliases.md
   - docs/models/listaliasescreator.md
   - docs/models/listaliasesdeployment.md
   - docs/models/listaliasesprotectionbypass.md
@@ -1598,7 +1626,6 @@ generatedFiles:
   - docs/models/listaliasesrequest.md
   - docs/models/listaliasesresponsebody.md
   - docs/models/listauthtokensresponsebody.md
-  - docs/models/listdeploymentaliasesaliases.md
   - docs/models/listdeploymentaliasesprotectionbypass.md
   - docs/models/listdeploymentaliasesprotectionbypass1.md
   - docs/models/listdeploymentaliasesprotectionbypass2.md
@@ -1639,10 +1666,10 @@ generatedFiles:
   - docs/models/nine.md
   - docs/models/nodeversion.md
   - docs/models/northstarmigration.md
+  - docs/models/notification.md
   - docs/models/oidctokenclaims.md
   - docs/models/oidctokenconfig.md
   - docs/models/one.md
-  - docs/models/one5.md
   - docs/models/onetarget.md
   - docs/models/onetype.md
   - docs/models/op.md
@@ -1650,8 +1677,9 @@ generatedFiles:
   - docs/models/optionsallowlist.md
   - docs/models/order.md
   - docs/models/origin.md
+  - docs/models/outcomes.md
+  - docs/models/outcomes1.md
   - docs/models/output.md
-  - docs/models/owasp.md
   - docs/models/owner.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
@@ -1672,20 +1700,17 @@ generatedFiles:
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
   - docs/models/patchteamsaml.md
-  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridbranchmatcher.md
-  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridrequest.md
-  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridrequestbody.md
-  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridresponsebody.md
-  - docs/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridtype.md
+  - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidcategory.md
+  - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
+  - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequestbody.md
   - docs/models/paths.md
   - docs/models/period.md
   - docs/models/permissions.md
   - docs/models/php.md
   - docs/models/plan.md
-  - docs/models/postv1projectsidornamecustomenvironmentsrequest.md
-  - docs/models/postv1projectsidornamecustomenvironmentsrequestbody.md
-  - docs/models/postv1projectsidornamecustomenvironmentsresponsebody.md
-  - docs/models/postv1projectsidornamecustomenvironmentstype.md
+  - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitems.md
+  - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequest.md
+  - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequestbody.md
   - docs/models/preferredscopesandgitnamespaces.md
   - docs/models/production.md
   - docs/models/project.md
@@ -1705,72 +1730,16 @@ generatedFiles:
   - docs/models/protocol.md
   - docs/models/provider.md
   - docs/models/purpose.md
-  - docs/models/putfirewallconfigaction.md
-  - docs/models/putfirewallconfigalgo.md
-  - docs/models/putfirewallconfigchanges.md
-  - docs/models/putfirewallconfigconditiongroup.md
-  - docs/models/putfirewallconfigconditions.md
-  - docs/models/putfirewallconfigcrs.md
-  - docs/models/putfirewallconfiggen.md
-  - docs/models/putfirewallconfigips.md
-  - docs/models/putfirewallconfigjava.md
-  - docs/models/putfirewallconfiglfi.md
-  - docs/models/putfirewallconfigma.md
-  - docs/models/putfirewallconfigmanagedrules.md
-  - docs/models/putfirewallconfigmitigate.md
-  - docs/models/putfirewallconfigop.md
-  - docs/models/putfirewallconfigowasp.md
-  - docs/models/putfirewallconfigphp.md
-  - docs/models/putfirewallconfigratelimit.md
-  - docs/models/putfirewallconfigrce.md
-  - docs/models/putfirewallconfigredirect.md
-  - docs/models/putfirewallconfigrequest.md
-  - docs/models/putfirewallconfigrequestbody.md
-  - docs/models/putfirewallconfigresponsebody.md
-  - docs/models/putfirewallconfigrfi.md
-  - docs/models/putfirewallconfigrules.md
-  - docs/models/putfirewallconfigsd.md
-  - docs/models/putfirewallconfigsecurityaction.md
-  - docs/models/putfirewallconfigsecurityrequestaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodyaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsgenaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsjavaaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsphpaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrssfaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrssqliaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsxssaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodyipsaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodyrulesaction.md
-  - docs/models/putfirewallconfigsecurityrequestrequestbodyrulesactionaction.md
-  - docs/models/putfirewallconfigsecurityresponse200action.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiveaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsgenaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsjavaaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsmaaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssdaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssfaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssqliaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsxssaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesactionaction.md
-  - docs/models/putfirewallconfigsecurityresponseaction.md
-  - docs/models/putfirewallconfigsecuritytype.md
-  - docs/models/putfirewallconfigsecurityvalue.md
-  - docs/models/putfirewallconfigsf.md
-  - docs/models/putfirewallconfigsqli.md
-  - docs/models/putfirewallconfigtype.md
-  - docs/models/putfirewallconfigvalue.md
-  - docs/models/putfirewallconfigverifiedbotsbypass.md
-  - docs/models/putfirewallconfigxss.md
+  - docs/models/purpose1.md
+  - docs/models/purpose2.md
+  - docs/models/purposetype.md
+  - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
+  - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequestbody.md
+  - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
   - docs/models/queryparamprovider.md
   - docs/models/queryparamrole.md
   - docs/models/queryparamtarget.md
   - docs/models/queryparamtype.md
-  - docs/models/quote.md
   - docs/models/ratelimit.md
   - docs/models/ratelimit1.md
   - docs/models/ratelimitaction.md
@@ -1804,6 +1773,9 @@ generatedFiles:
   - docs/models/removebypassipresponsebody.md
   - docs/models/removecertrequest.md
   - docs/models/removecertresponsebody.md
+  - docs/models/removecustomenvironmentrequest.md
+  - docs/models/removecustomenvironmentrequestbody.md
+  - docs/models/removecustomenvironmentresponsebody.md
   - docs/models/removeprojectdomainrequest.md
   - docs/models/removeprojectdomainresponsebody.md
   - docs/models/removeprojectenvcontenthint1.md
@@ -1954,7 +1926,6 @@ generatedFiles:
   - docs/models/requestbodyconditiongroup.md
   - docs/models/requestbodyconditions.md
   - docs/models/requestbodyhttps.md
-  - docs/models/requestbodyid.md
   - docs/models/requestbodymitigate.md
   - docs/models/requestbodyop.md
   - docs/models/requestbodyratelimit.md
@@ -1980,17 +1951,16 @@ generatedFiles:
   - docs/models/responsebodyaliases.md
   - docs/models/responsebodyaliaswarning.md
   - docs/models/responsebodybackup.md
-  - docs/models/responsebodybillingplan.md
   - docs/models/responsebodybuild.md
   - docs/models/responsebodybuilds.md
   - docs/models/responsebodychecksconclusion.md
   - docs/models/responsebodychecksstate.md
+  - docs/models/responsebodyconfig.md
   - docs/models/responsebodycontentdispositiontype.md
   - docs/models/responsebodycontenthint.md
   - docs/models/responsebodycreator.md
   - docs/models/responsebodycrons.md
   - docs/models/responsebodycustomenvironment.md
-  - docs/models/responsebodydetails.md
   - docs/models/responsebodydisabledreason.md
   - docs/models/responsebodyenvs.md
   - docs/models/responsebodyerror.md
@@ -1998,10 +1968,11 @@ generatedFiles:
   - docs/models/responsebodyflags.md
   - docs/models/responsebodyformats.md
   - docs/models/responsebodyframework.md
+  - docs/models/responsebodyfunctionmemorytype.md
   - docs/models/responsebodyfunctions.md
+  - docs/models/responsebodyfunctiontype.md
   - docs/models/responsebodygitrepo.md
   - docs/models/responsebodygitsource.md
-  - docs/models/responsebodyheightlighteddetails.md
   - docs/models/responsebodyid.md
   - docs/models/responsebodyimages.md
   - docs/models/responsebodyinstallationtype.md
@@ -2023,7 +1994,6 @@ generatedFiles:
   - docs/models/responsebodyprojectsettings.md
   - docs/models/responsebodyprotocol.md
   - docs/models/responsebodyprovider.md
-  - docs/models/responsebodyquote.md
   - docs/models/responsebodyreadystate.md
   - docs/models/responsebodyreadysubstate.md
   - docs/models/responsebodyrecords.md
@@ -2031,13 +2001,14 @@ generatedFiles:
   - docs/models/responsebodyresult.md
   - docs/models/responsebodyrole.md
   - docs/models/responsebodyroutes.md
-  - docs/models/responsebodyscope.md
   - docs/models/responsebodysource.md
   - docs/models/responsebodyspeedinsights.md
   - docs/models/responsebodystatus.md
   - docs/models/responsebodytarget.md
   - docs/models/responsebodyteam.md
+  - docs/models/responsebodyteampermissions.md
   - docs/models/responsebodyteamrole.md
+  - docs/models/responsebodyteamroles.md
   - docs/models/responsebodytype.md
   - docs/models/responsebodyuser.md
   - docs/models/responsebodywebanalytics.md
@@ -2048,6 +2019,7 @@ generatedFiles:
   - docs/models/roles.md
   - docs/models/roles1.md
   - docs/models/roles2.md
+  - docs/models/rollingrelease.md
   - docs/models/routes.md
   - docs/models/routes1.md
   - docs/models/routes2.md
@@ -2061,8 +2033,6 @@ generatedFiles:
   - docs/models/schema.md
   - docs/models/scope.md
   - docs/models/scopes.md
-  - docs/models/scopes1.md
-  - docs/models/scopes2.md
   - docs/models/scopesorigin.md
   - docs/models/scopestype.md
   - docs/models/sd.md
@@ -2088,6 +2058,7 @@ generatedFiles:
   - docs/models/src2.md
   - docs/models/srv.md
   - docs/models/ssoprotection.md
+  - docs/models/stages.md
   - docs/models/state.md
   - docs/models/status.md
   - docs/models/statuscode.md
@@ -2105,6 +2076,9 @@ generatedFiles:
   - docs/models/submitinvoicerequest.md
   - docs/models/submitinvoicerequestbody.md
   - docs/models/submitinvoiceresponsebody.md
+  - docs/models/submitprepaymentbalancesrequest.md
+  - docs/models/submitprepaymentbalancesrequestbody.md
+  - docs/models/sudo.md
   - docs/models/tagids.md
   - docs/models/target.md
   - docs/models/target1.md
@@ -2113,7 +2087,9 @@ generatedFiles:
   - docs/models/tbt.md
   - docs/models/team.md
   - docs/models/teamlimited.md
+  - docs/models/teampermissions.md
   - docs/models/teamrole.md
+  - docs/models/teamroles.md
   - docs/models/teams.md
   - docs/models/ten.md
   - docs/models/test.md
@@ -2132,7 +2108,6 @@ generatedFiles:
   - docs/models/two.md
   - docs/models/two1.md
   - docs/models/two2.md
-  - docs/models/two5.md
   - docs/models/twotarget.md
   - docs/models/twotype.md
   - docs/models/type.md
@@ -2171,22 +2146,26 @@ generatedFiles:
   - docs/models/updatecheckstatus.md
   - docs/models/updatechecktbt.md
   - docs/models/updatecheckvirtualexperiencescore.md
+  - docs/models/updatecustomenvironmentbranchmatcher.md
+  - docs/models/updatecustomenvironmentrequest.md
+  - docs/models/updatecustomenvironmentrequestbody.md
+  - docs/models/updatecustomenvironmentresponsebody.md
+  - docs/models/updatecustomenvironmenttype.md
   - docs/models/updateedgeconfigpurpose.md
+  - docs/models/updateedgeconfigpurpose1.md
+  - docs/models/updateedgeconfigpurpose2.md
+  - docs/models/updateedgeconfigpurposeedgeconfigtype.md
+  - docs/models/updateedgeconfigpurposetype.md
   - docs/models/updateedgeconfigrequest.md
   - docs/models/updateedgeconfigrequestbody.md
   - docs/models/updateedgeconfigresponsebody.md
   - docs/models/updateedgeconfigschema.md
   - docs/models/updateedgeconfigtransfer.md
-  - docs/models/updateedgeconfigtype.md
   - docs/models/updatefirewallconfigaction1.md
-  - docs/models/updatefirewallconfigactionsecurity1.md
   - docs/models/updatefirewallconfigratelimit1.md
   - docs/models/updatefirewallconfigratelimitaction.md
   - docs/models/updatefirewallconfigratelimitalgo.md
-  - docs/models/updatefirewallconfigratelimitsecurity1.md
-  - docs/models/updatefirewallconfigratelimitsecurityaction.md
   - docs/models/updatefirewallconfigredirect1.md
-  - docs/models/updatefirewallconfigredirectsecurity1.md
   - docs/models/updatefirewallconfigrequest.md
   - docs/models/updatefirewallconfigrequestbody.md
   - docs/models/updatefirewallconfigrequestbody1.md
@@ -2195,16 +2174,13 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequestbody4.md
   - docs/models/updatefirewallconfigrequestbody5.md
   - docs/models/updatefirewallconfigrequestbodyaction.md
-  - docs/models/updatefirewallconfigrequestbodyconditiongroup.md
-  - docs/models/updatefirewallconfigrequestbodyconditions.md
-  - docs/models/updatefirewallconfigrequestbodymitigate.md
-  - docs/models/updatefirewallconfigrequestbodyop.md
-  - docs/models/updatefirewallconfigrequestbodyratelimit.md
-  - docs/models/updatefirewallconfigrequestbodyredirect.md
   - docs/models/updatefirewallconfigrequestbodysecurityaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest10action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest11action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest11value.md
+  - docs/models/updatefirewallconfigrequestbodysecurityrequest11valueaction.md
+  - docs/models/updatefirewallconfigrequestbodysecurityrequest12action.md
+  - docs/models/updatefirewallconfigrequestbodysecurityrequest12value.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest2action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest2value.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest2valueaction.md
@@ -2218,7 +2194,6 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequestbodysecurityrequest8action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest8valueaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest9action.md
-  - docs/models/updatefirewallconfigrequestbodysecurityrequest9value.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest9valueaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequestaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequestvalue.md
@@ -2227,6 +2202,9 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequestbodytype.md
   - docs/models/updatefirewallconfigrequestbodyvalue.md
   - docs/models/updatefirewallconfigresponsebody.md
+  - docs/models/updateintegrationdeploymentactionrequest.md
+  - docs/models/updateintegrationdeploymentactionrequestbody.md
+  - docs/models/updateintegrationdeploymentactionstatus.md
   - docs/models/updateinvoicerequest.md
   - docs/models/updateinvoicerequestbody.md
   - docs/models/updateprojectaction.md
@@ -2269,12 +2247,12 @@ generatedFiles:
   - docs/models/updateprojectcontenthintprojectsresponsetype.md
   - docs/models/updateprojectcontenthintprojectstype.md
   - docs/models/updateprojectcontenthinttype.md
+  - docs/models/updateprojectcreatedeployments.md
   - docs/models/updateprojectcreator.md
   - docs/models/updateprojectcrons.md
   - docs/models/updateprojectcustomenvironments.md
   - docs/models/updateprojectdatacache.md
   - docs/models/updateprojectdatacacheaction.md
-  - docs/models/updateprojectdatacachealgo.md
   - docs/models/updateprojectdatacachealiasassigned.md
   - docs/models/updateprojectdatacachealiaserror.md
   - docs/models/updateprojectdatacachebranchmatcher.md
@@ -2282,6 +2260,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachechecksconclusion.md
   - docs/models/updateprojectdatacachechecksstate.md
   - docs/models/updateprojectdatacachecontenthint11.md
+  - docs/models/updateprojectdatacachecontenthint12.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv10type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv11type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv12type.md
@@ -2300,10 +2279,12 @@ generatedFiles:
   - docs/models/updateprojectdatacachedatacache.md
   - docs/models/updateprojectdatacachedeploymenttype.md
   - docs/models/updateprojectdatacacheframework.md
+  - docs/models/updateprojectdatacachefunctiondefaultmemorytype.md
   - docs/models/updateprojectdatacacheissuermode.md
   - docs/models/updateprojectdatacachelinkdeployhooks.md
   - docs/models/updateprojectdatacachelinkprojectstype.md
   - docs/models/updateprojectdatacachelinktype.md
+  - docs/models/updateprojectdatacachemanagedrules.md
   - docs/models/updateprojectdatacachemitigate.md
   - docs/models/updateprojectdatacachenodeversion.md
   - docs/models/updateprojectdatacacheoidctokenclaims.md
@@ -2312,6 +2293,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachepasswordprotection.md
   - docs/models/updateprojectdatacachepaths.md
   - docs/models/updateprojectdatacacheplan.md
+  - docs/models/updateprojectdatacacheprojectsaction.md
   - docs/models/updateprojectdatacacheprojectsaliaserror.md
   - docs/models/updateprojectdatacacheprojectsbranchmatcher.md
   - docs/models/updateprojectdatacacheprojectsbuilds.md
@@ -2351,6 +2333,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachevalue2.md
   - docs/models/updateprojectdatacachevalueprojects2.md
   - docs/models/updateprojectdatacachewebanalytics.md
+  - docs/models/updateprojectdefaultresourceconfig.md
   - docs/models/updateprojectdefinitions.md
   - docs/models/updateprojectdeploymentexpiration.md
   - docs/models/updateprojectdeploymenttype.md
@@ -2364,6 +2347,7 @@ generatedFiles:
   - docs/models/updateprojectframework.md
   - docs/models/updateprojectfunctiondefaultmemorytype.md
   - docs/models/updateprojectgitcomments.md
+  - docs/models/updateprojectgitprovideroptions.md
   - docs/models/updateprojecthandle.md
   - docs/models/updateprojecthas.md
   - docs/models/updateprojectinternalcontenthint.md
@@ -2383,7 +2367,10 @@ generatedFiles:
   - docs/models/updateprojectlinkprojectsresponsetype.md
   - docs/models/updateprojectlinkprojectstype.md
   - docs/models/updateprojectlinktype.md
+  - docs/models/updateprojectmanagedrules.md
   - docs/models/updateprojectmicrofrontends.md
+  - docs/models/updateprojectmicrofrontends1.md
+  - docs/models/updateprojectmicrofrontends2.md
   - docs/models/updateprojectmissing.md
   - docs/models/updateprojectmitigate.md
   - docs/models/updateprojectnodeversion.md
@@ -2394,6 +2381,7 @@ generatedFiles:
   - docs/models/updateprojectpaths.md
   - docs/models/updateprojectpermissions.md
   - docs/models/updateprojectplan.md
+  - docs/models/updateprojectprojectsaction.md
   - docs/models/updateprojectprojectsaliasassigned.md
   - docs/models/updateprojectprojectsaliaserror.md
   - docs/models/updateprojectprojectsbranchmatcher.md
@@ -2403,6 +2391,7 @@ generatedFiles:
   - docs/models/updateprojectprojectscreator.md
   - docs/models/updateprojectprojectsdeploymenttype.md
   - docs/models/updateprojectprojectsframework.md
+  - docs/models/updateprojectprojectsfunctiondefaultmemorytype.md
   - docs/models/updateprojectprojectsissuermode.md
   - docs/models/updateprojectprojectsnodeversion.md
   - docs/models/updateprojectprojectsoidctokenclaims.md
@@ -2432,12 +2421,14 @@ generatedFiles:
   - docs/models/updateprojectrequestbody.md
   - docs/models/updateprojectresourceconfig.md
   - docs/models/updateprojectresponsebody.md
+  - docs/models/updateprojectrollingrelease.md
   - docs/models/updateprojectscope.md
   - docs/models/updateprojectsecurity.md
   - docs/models/updateprojectspeedinsights.md
   - docs/models/updateprojectsrc.md
   - docs/models/updateprojectsrc2.md
   - docs/models/updateprojectssoprotection.md
+  - docs/models/updateprojectstages.md
   - docs/models/updateprojecttarget.md
   - docs/models/updateprojecttarget2.md
   - docs/models/updateprojecttargets.md
@@ -2464,6 +2455,7 @@ generatedFiles:
   - docs/models/updateresourcesecretsbyidsecrets.md
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
+  - docs/models/updateresourcesecretssecrets.md
   - docs/models/updateteammemberjoinedfrom.md
   - docs/models/updateteammemberprojects.md
   - docs/models/updateteammemberrequest.md
@@ -2484,6 +2476,8 @@ generatedFiles:
   - docs/models/user.md
   - docs/models/userevent.md
   - docs/models/utm.md
+  - docs/models/value.md
+  - docs/models/value2.md
   - docs/models/vercelbadrequesterror.md
   - docs/models/vercelforbiddenerror.md
   - docs/models/vercelforbiddenerrorerror.md
@@ -2493,7 +2487,6 @@ generatedFiles:
   - docs/models/vercelratelimiterrorerror.md
   - docs/models/verification.md
   - docs/models/verified.md
-  - docs/models/verifiedbotsbypass.md
   - docs/models/verifyprojectdomainrequest.md
   - docs/models/verifyprojectdomainresponsebody.md
   - docs/models/version.md
@@ -2504,6 +2497,7 @@ generatedFiles:
   - docs/models/xss.md
   - docs/sdks/accessgroups/README.md
   - docs/sdks/aliases/README.md
+  - docs/sdks/apiexperimentation/README.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/certs/README.md
@@ -2523,10 +2517,12 @@ generatedFiles:
   - docs/sdks/user/README.md
   - docs/sdks/vercel/README.md
   - docs/sdks/webhooks/README.md
+  - eslint.config.mjs
   - jsr.json
   - package.json
   - src/__tests__/accessgroups.test.ts
   - src/__tests__/aliases.test.ts
+  - src/__tests__/apiexperimentation.test.ts
   - src/__tests__/artifacts.test.ts
   - src/__tests__/assertions.ts
   - src/__tests__/authentication.test.ts
@@ -2560,6 +2556,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidtokens.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1logdrainsid.go
@@ -2579,6 +2576,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv10projects.go
+  - src/__tests__/mockserver/internal/handler/pathgetv10projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsaccessgroupidornameprojectsprojectid.go
@@ -2596,6 +2595,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidtokens.go
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidtokentoken.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1experimentationitems.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidaccount.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
@@ -2634,17 +2634,19 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv7deploymentsidfilesfileid.go
   - src/__tests__/mockserver/internal/handler/pathgetv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathgetv8artifactsstatus.go
-  - src/__tests__/mockserver/internal/handler/pathgetv9projects.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathheadv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1datacacheprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidcheckscheckid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidintegrationsintegrationconfigurationidresourcesresourceidactionsaction.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1domainsrecordsrecordid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1projectsidornameprotectionbypass.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1securityfirewallconfig.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1teamsteamidmembersuid.go
@@ -2653,10 +2655,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathpostprojectsidornametransferrequest.go
-  - src/__tests__/mockserver/internal/handler/pathpostv10projects.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsprojectidpromotedeploymentid.go
+  - src/__tests__/mockserver/internal/handler/pathpostv11projects.go
   - src/__tests__/mockserver/internal/handler/pathpostv13deployments.go
   - src/__tests__/mockserver/internal/handler/pathpostv1accessgroups.go
   - src/__tests__/mockserver/internal/handler/pathpostv1accessgroupsaccessgroupidornameprojects.go
@@ -2667,12 +2669,13 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidtoken.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbilling.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbillingbalance.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbillinginvoices.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidbillinginvoicesinvoiceidactions.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidevents.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
   - src/__tests__/mockserver/internal/handler/pathpostv1logdrains.go
-  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
   - src/__tests__/mockserver/internal/handler/pathpostv1securityattackmode.go
   - src/__tests__/mockserver/internal/handler/pathpostv1securityfirewallbypass.go
@@ -2690,12 +2693,14 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv7certs.go
   - src/__tests__/mockserver/internal/handler/pathpostv8artifacts.go
   - src/__tests__/mockserver/internal/handler/pathpostv8artifactsevents.go
+  - src/__tests__/mockserver/internal/handler/pathpostv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/handler/pathpostv9projectsidornamedomainsdomainverify.go
   - src/__tests__/mockserver/internal/handler/pathputprojectstransferrequestcode.go
   - src/__tests__/mockserver/internal/handler/pathputv1edgeconfigedgeconfigid.go
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidproductsintegrationproductidorslugresourcesresourceidsecrets.go
+  - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceid.go
+  - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidsecrets.go
-  - src/__tests__/mockserver/internal/handler/pathputv1securityfirewallconfig.go
   - src/__tests__/mockserver/internal/handler/pathputv7certs.go
   - src/__tests__/mockserver/internal/handler/values/files.go
   - src/__tests__/mockserver/internal/logging/doc.go
@@ -2737,6 +2742,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createauthtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createcheck.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createconfigurablelogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createcustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createdeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfigtoken.go
@@ -2764,7 +2770,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/deletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletewebhook.go
   - src/__tests__/mockserver/internal/sdk/models/operations/downloadartifact.go
   - src/__tests__/mockserver/internal/sdk/models/operations/editprojectenv.go
@@ -2783,6 +2789,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfiguration.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurations.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getcustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getdeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getdeploymentevents.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getdeploymentfilecontents.go
@@ -2814,11 +2821,13 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getteamaccessrequest.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteammembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteams.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getv1experimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironments.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhook.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhooks.go
   - src/__tests__/mockserver/internal/sdk/models/operations/gitnamespaces.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/importresource.go
   - src/__tests__/mockserver/internal/sdk/models/operations/inviteusertoteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/issuecert.go
   - src/__tests__/mockserver/internal/sdk/models/operations/jointeam.go
@@ -2834,14 +2843,15 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/patchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/postv1projectsidornamecustomenvironments.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/recordevents.go
   - src/__tests__/mockserver/internal/sdk/models/operations/removebypassip.go
   - src/__tests__/mockserver/internal/sdk/models/operations/removecert.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/removecustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectenv.go
   - src/__tests__/mockserver/internal/sdk/models/operations/removeprojectmember.go
@@ -2855,12 +2865,15 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/status.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitbillingdata.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitinvoice.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/submitprepaymentbalances.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateattackchallengemode.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updatecheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatecustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updatefirewallconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updateintegrationdeploymentaction.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateinvoice.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateprojectdatacache.go
@@ -2920,6 +2933,7 @@ generatedFiles:
   - src/funcs/aliasesGetAlias.ts
   - src/funcs/aliasesListAliases.ts
   - src/funcs/aliasesListDeploymentAliases.ts
+  - src/funcs/apiExperimentationGetV1ExperimentationItems.ts
   - src/funcs/artifactsArtifactExists.ts
   - src/funcs/artifactsArtifactQuery.ts
   - src/funcs/artifactsDownloadArtifact.ts
@@ -2948,6 +2962,7 @@ generatedFiles:
   - src/funcs/deploymentsGetDeploymentFileContents.ts
   - src/funcs/deploymentsGetDeployments.ts
   - src/funcs/deploymentsListDeploymentFiles.ts
+  - src/funcs/deploymentsUpdateIntegrationDeploymentAction.ts
   - src/funcs/deploymentsUploadFile.ts
   - src/funcs/dnsCreateRecord.ts
   - src/funcs/dnsGetRecords.ts
@@ -2979,16 +2994,17 @@ generatedFiles:
   - src/funcs/edgeConfigGetEdgeConfigs.ts
   - src/funcs/edgeConfigPatchEdgeConfigSchema.ts
   - src/funcs/edgeConfigUpdateEdgeConfig.ts
-  - src/funcs/environmentDeleteV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
+  - src/funcs/environmentCreateCustomEnvironment.ts
+  - src/funcs/environmentGetCustomEnvironment.ts
   - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
-  - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
-  - src/funcs/environmentPatchV9ProjectsIdOrNameCustomEnvironmentsEnvironmentSlugOrId.ts
-  - src/funcs/environmentPostV1ProjectsIdOrNameCustomEnvironments.ts
+  - src/funcs/environmentRemoveCustomEnvironment.ts
+  - src/funcs/environmentUpdateCustomEnvironment.ts
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
   - src/funcs/integrationsGitNamespaces.ts
   - src/funcs/integrationsSearchRepo.ts
+  - src/funcs/integrationsUpdateIntegrationDeploymentAction.ts
   - src/funcs/logDrainsCreateConfigurableLogDrain.ts
   - src/funcs/logDrainsCreateLogDrain.ts
   - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
@@ -2997,12 +3013,19 @@ generatedFiles:
   - src/funcs/logDrainsGetConfigurableLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
   - src/funcs/marketplaceCreateEvent.ts
+  - src/funcs/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
   - src/funcs/marketplaceExchangeSsoToken.ts
   - src/funcs/marketplaceGetAccountInfo.ts
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
+  - src/funcs/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
+  - src/funcs/marketplaceImportResource.ts
+  - src/funcs/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
+  - src/funcs/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.ts
+  - src/funcs/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
   - src/funcs/marketplaceSubmitBillingData.ts
   - src/funcs/marketplaceSubmitInvoice.ts
+  - src/funcs/marketplaceSubmitPrepaymentBalances.ts
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
@@ -3034,7 +3057,6 @@ generatedFiles:
   - src/funcs/securityGetActiveAttackStatus.ts
   - src/funcs/securityGetBypassIp.ts
   - src/funcs/securityGetFirewallConfig.ts
-  - src/funcs/securityPutFirewallConfig.ts
   - src/funcs/securityRemoveBypassIp.ts
   - src/funcs/securityUpdateAttackChallengeMode.ts
   - src/funcs/securityUpdateFirewallConfig.ts
@@ -3076,6 +3098,181 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/mcp-server/build.mts
+  - src/mcp-server/cli.ts
+  - src/mcp-server/cli/start/command.ts
+  - src/mcp-server/cli/start/impl.ts
+  - src/mcp-server/console-logger.ts
+  - src/mcp-server/extensions.ts
+  - src/mcp-server/mcp-server.ts
+  - src/mcp-server/resources.ts
+  - src/mcp-server/scopes.ts
+  - src/mcp-server/server.ts
+  - src/mcp-server/shared.ts
+  - src/mcp-server/tools.ts
+  - src/mcp-server/tools/accessGroupsCreateAccessGroup.ts
+  - src/mcp-server/tools/accessGroupsCreateAccessGroupProject.ts
+  - src/mcp-server/tools/accessGroupsDeleteAccessGroup.ts
+  - src/mcp-server/tools/accessGroupsDeleteAccessGroupProject.ts
+  - src/mcp-server/tools/accessGroupsListAccessGroupMembers.ts
+  - src/mcp-server/tools/accessGroupsListAccessGroupProjects.ts
+  - src/mcp-server/tools/accessGroupsListAccessGroups.ts
+  - src/mcp-server/tools/accessGroupsReadAccessGroup.ts
+  - src/mcp-server/tools/accessGroupsReadAccessGroupProject.ts
+  - src/mcp-server/tools/accessGroupsUpdateAccessGroup.ts
+  - src/mcp-server/tools/accessGroupsUpdateAccessGroupProject.ts
+  - src/mcp-server/tools/aliasesAssignAlias.ts
+  - src/mcp-server/tools/aliasesDeleteAlias.ts
+  - src/mcp-server/tools/aliasesGetAlias.ts
+  - src/mcp-server/tools/aliasesListAliases.ts
+  - src/mcp-server/tools/aliasesListDeploymentAliases.ts
+  - src/mcp-server/tools/apiExperimentationGetV1ExperimentationItems.ts
+  - src/mcp-server/tools/artifactsArtifactExists.ts
+  - src/mcp-server/tools/artifactsArtifactQuery.ts
+  - src/mcp-server/tools/artifactsDownloadArtifact.ts
+  - src/mcp-server/tools/artifactsRecordEvents.ts
+  - src/mcp-server/tools/artifactsStatus.ts
+  - src/mcp-server/tools/artifactsUploadArtifact.ts
+  - src/mcp-server/tools/authenticationCreateAuthToken.ts
+  - src/mcp-server/tools/authenticationDeleteAuthToken.ts
+  - src/mcp-server/tools/authenticationExchangeSsoToken.ts
+  - src/mcp-server/tools/authenticationGetAuthToken.ts
+  - src/mcp-server/tools/authenticationListAuthTokens.ts
+  - src/mcp-server/tools/certsGetCertById.ts
+  - src/mcp-server/tools/certsIssueCert.ts
+  - src/mcp-server/tools/certsRemoveCert.ts
+  - src/mcp-server/tools/certsUploadCert.ts
+  - src/mcp-server/tools/checksCreateCheck.ts
+  - src/mcp-server/tools/checksGetAllChecks.ts
+  - src/mcp-server/tools/checksGetCheck.ts
+  - src/mcp-server/tools/checksRerequestCheck.ts
+  - src/mcp-server/tools/checksUpdateCheck.ts
+  - src/mcp-server/tools/deploymentsCancelDeployment.ts
+  - src/mcp-server/tools/deploymentsCreateDeployment.ts
+  - src/mcp-server/tools/deploymentsDeleteDeployment.ts
+  - src/mcp-server/tools/deploymentsGetDeployment.ts
+  - src/mcp-server/tools/deploymentsGetDeploymentEvents.ts
+  - src/mcp-server/tools/deploymentsGetDeploymentFileContents.ts
+  - src/mcp-server/tools/deploymentsGetDeployments.ts
+  - src/mcp-server/tools/deploymentsListDeploymentFiles.ts
+  - src/mcp-server/tools/deploymentsUpdateIntegrationDeploymentAction.ts
+  - src/mcp-server/tools/deploymentsUploadFile.ts
+  - src/mcp-server/tools/dnsCreateRecord.ts
+  - src/mcp-server/tools/dnsGetRecords.ts
+  - src/mcp-server/tools/dnsRemoveRecord.ts
+  - src/mcp-server/tools/dnsUpdateRecord.ts
+  - src/mcp-server/tools/domainsBuyDomain.ts
+  - src/mcp-server/tools/domainsCheckDomainPrice.ts
+  - src/mcp-server/tools/domainsCheckDomainStatus.ts
+  - src/mcp-server/tools/domainsCreateOrTransferDomain.ts
+  - src/mcp-server/tools/domainsDeleteDomain.ts
+  - src/mcp-server/tools/domainsGetDomain.ts
+  - src/mcp-server/tools/domainsGetDomainConfig.ts
+  - src/mcp-server/tools/domainsGetDomainTransfer.ts
+  - src/mcp-server/tools/domainsGetDomains.ts
+  - src/mcp-server/tools/domainsPatchDomain.ts
+  - src/mcp-server/tools/edgeConfigCreateEdgeConfig.ts
+  - src/mcp-server/tools/edgeConfigCreateEdgeConfigToken.ts
+  - src/mcp-server/tools/edgeConfigDeleteEdgeConfig.ts
+  - src/mcp-server/tools/edgeConfigDeleteEdgeConfigSchema.ts
+  - src/mcp-server/tools/edgeConfigDeleteEdgeConfigTokens.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfig.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigBackup.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigBackups.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigItem.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigItems.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigSchema.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigToken.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigTokens.ts
+  - src/mcp-server/tools/edgeConfigGetEdgeConfigs.ts
+  - src/mcp-server/tools/edgeConfigPatchEdgeConfigSchema.ts
+  - src/mcp-server/tools/edgeConfigUpdateEdgeConfig.ts
+  - src/mcp-server/tools/environmentCreateCustomEnvironment.ts
+  - src/mcp-server/tools/environmentGetCustomEnvironment.ts
+  - src/mcp-server/tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
+  - src/mcp-server/tools/environmentRemoveCustomEnvironment.ts
+  - src/mcp-server/tools/environmentUpdateCustomEnvironment.ts
+  - src/mcp-server/tools/integrationsDeleteConfiguration.ts
+  - src/mcp-server/tools/integrationsGetConfiguration.ts
+  - src/mcp-server/tools/integrationsGetConfigurations.ts
+  - src/mcp-server/tools/integrationsGitNamespaces.ts
+  - src/mcp-server/tools/integrationsSearchRepo.ts
+  - src/mcp-server/tools/integrationsUpdateIntegrationDeploymentAction.ts
+  - src/mcp-server/tools/logDrainsCreateConfigurableLogDrain.ts
+  - src/mcp-server/tools/logDrainsCreateLogDrain.ts
+  - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
+  - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
+  - src/mcp-server/tools/logDrainsGetAllLogDrains.ts
+  - src/mcp-server/tools/logDrainsGetConfigurableLogDrain.ts
+  - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
+  - src/mcp-server/tools/marketplaceCreateEvent.ts
+  - src/mcp-server/tools/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
+  - src/mcp-server/tools/marketplaceExchangeSsoToken.ts
+  - src/mcp-server/tools/marketplaceGetAccountInfo.ts
+  - src/mcp-server/tools/marketplaceGetInvoice.ts
+  - src/mcp-server/tools/marketplaceGetMember.ts
+  - src/mcp-server/tools/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
+  - src/mcp-server/tools/marketplaceImportResource.ts
+  - src/mcp-server/tools/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
+  - src/mcp-server/tools/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.ts
+  - src/mcp-server/tools/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
+  - src/mcp-server/tools/marketplaceSubmitBillingData.ts
+  - src/mcp-server/tools/marketplaceSubmitInvoice.ts
+  - src/mcp-server/tools/marketplaceSubmitPrepaymentBalances.ts
+  - src/mcp-server/tools/marketplaceUpdateInvoice.ts
+  - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
+  - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
+  - src/mcp-server/tools/projectMembersAddProjectMember.ts
+  - src/mcp-server/tools/projectMembersGetProjectMembers.ts
+  - src/mcp-server/tools/projectMembersRemoveProjectMember.ts
+  - src/mcp-server/tools/projectsAcceptProjectTransferRequest.ts
+  - src/mcp-server/tools/projectsAddProjectDomain.ts
+  - src/mcp-server/tools/projectsCreateProject.ts
+  - src/mcp-server/tools/projectsCreateProjectEnv.ts
+  - src/mcp-server/tools/projectsCreateProjectTransferRequest.ts
+  - src/mcp-server/tools/projectsDeleteProject.ts
+  - src/mcp-server/tools/projectsEditProjectEnv.ts
+  - src/mcp-server/tools/projectsFilterProjectEnvs.ts
+  - src/mcp-server/tools/projectsGetProjectDomain.ts
+  - src/mcp-server/tools/projectsGetProjectDomains.ts
+  - src/mcp-server/tools/projectsGetProjectEnv.ts
+  - src/mcp-server/tools/projectsGetProjects.ts
+  - src/mcp-server/tools/projectsListPromoteAliases.ts
+  - src/mcp-server/tools/projectsRemoveProjectDomain.ts
+  - src/mcp-server/tools/projectsRemoveProjectEnv.ts
+  - src/mcp-server/tools/projectsRequestPromote.ts
+  - src/mcp-server/tools/projectsUpdateProject.ts
+  - src/mcp-server/tools/projectsUpdateProjectDataCache.ts
+  - src/mcp-server/tools/projectsUpdateProjectDomain.ts
+  - src/mcp-server/tools/projectsUpdateProjectProtectionBypass.ts
+  - src/mcp-server/tools/projectsVerifyProjectDomain.ts
+  - src/mcp-server/tools/securityAddBypassIp.ts
+  - src/mcp-server/tools/securityGetActiveAttackStatus.ts
+  - src/mcp-server/tools/securityGetBypassIp.ts
+  - src/mcp-server/tools/securityGetFirewallConfig.ts
+  - src/mcp-server/tools/securityRemoveBypassIp.ts
+  - src/mcp-server/tools/securityUpdateAttackChallengeMode.ts
+  - src/mcp-server/tools/securityUpdateFirewallConfig.ts
+  - src/mcp-server/tools/teamsCreateTeam.ts
+  - src/mcp-server/tools/teamsDeleteTeam.ts
+  - src/mcp-server/tools/teamsDeleteTeamInviteCode.ts
+  - src/mcp-server/tools/teamsGetTeam.ts
+  - src/mcp-server/tools/teamsGetTeamAccessRequest.ts
+  - src/mcp-server/tools/teamsGetTeamMembers.ts
+  - src/mcp-server/tools/teamsGetTeams.ts
+  - src/mcp-server/tools/teamsInviteUserToTeam.ts
+  - src/mcp-server/tools/teamsJoinTeam.ts
+  - src/mcp-server/tools/teamsPatchTeam.ts
+  - src/mcp-server/tools/teamsRemoveTeamMember.ts
+  - src/mcp-server/tools/teamsRequestAccessToTeam.ts
+  - src/mcp-server/tools/teamsUpdateTeamMember.ts
+  - src/mcp-server/tools/userGetAuthUser.ts
+  - src/mcp-server/tools/userListUserEvents.ts
+  - src/mcp-server/tools/userRequestDelete.ts
+  - src/mcp-server/tools/webhooksCreateWebhook.ts
+  - src/mcp-server/tools/webhooksDeleteWebhook.ts
+  - src/mcp-server/tools/webhooksGetWebhook.ts
+  - src/mcp-server/tools/webhooksGetWebhooks.ts
   - src/models/acceptprojecttransferrequestop.ts
   - src/models/aclaction.ts
   - src/models/addbypassipop.ts
@@ -3096,6 +3293,7 @@ generatedFiles:
   - src/models/createauthtokenop.ts
   - src/models/createcheckop.ts
   - src/models/createconfigurablelogdrainop.ts
+  - src/models/createcustomenvironmentop.ts
   - src/models/createdeploymentop.ts
   - src/models/createedgeconfigop.ts
   - src/models/createedgeconfigtokenop.ts
@@ -3123,7 +3321,7 @@ generatedFiles:
   - src/models/deleteprojectop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
-  - src/models/deletev9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
+  - src/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/deletewebhookop.ts
   - src/models/downloadartifactop.ts
   - src/models/edgeconfigitem.ts
@@ -3147,6 +3345,7 @@ generatedFiles:
   - src/models/getconfigurablelogdrainop.ts
   - src/models/getconfigurationop.ts
   - src/models/getconfigurationsop.ts
+  - src/models/getcustomenvironmentop.ts
   - src/models/getdeploymenteventsop.ts
   - src/models/getdeploymentfilecontentsop.ts
   - src/models/getdeploymentop.ts
@@ -3178,12 +3377,14 @@ generatedFiles:
   - src/models/getteammembersop.ts
   - src/models/getteamop.ts
   - src/models/getteamsop.ts
-  - src/models/getv9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
+  - src/models/getv1experimentationitemsop.ts
   - src/models/getv9projectsidornamecustomenvironmentsop.ts
   - src/models/getwebhookop.ts
   - src/models/getwebhooksop.ts
   - src/models/gitnamespacesop.ts
+  - src/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
   - src/models/httpclienterrors.ts
+  - src/models/importresourceop.ts
   - src/models/inviteusertoteamop.ts
   - src/models/issuecertop.ts
   - src/models/jointeamop.ts
@@ -3200,15 +3401,16 @@ generatedFiles:
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchteamop.ts
-  - src/models/patchv9projectsidornamecustomenvironmentsenvironmentslugoridop.ts
-  - src/models/postv1projectsidornamecustomenvironmentsop.ts
-  - src/models/putfirewallconfigop.ts
+  - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
+  - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
+  - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
   - src/models/ratelimitnotice.ts
   - src/models/readaccessgroupop.ts
   - src/models/readaccessgroupprojectop.ts
   - src/models/recordeventsop.ts
   - src/models/removebypassipop.ts
   - src/models/removecertop.ts
+  - src/models/removecustomenvironmentop.ts
   - src/models/removeprojectdomainop.ts
   - src/models/removeprojectenvop.ts
   - src/models/removeprojectmemberop.ts
@@ -3225,13 +3427,16 @@ generatedFiles:
   - src/models/statusop.ts
   - src/models/submitbillingdataop.ts
   - src/models/submitinvoiceop.ts
+  - src/models/submitprepaymentbalancesop.ts
   - src/models/teamlimited.ts
   - src/models/updateaccessgroupop.ts
   - src/models/updateaccessgroupprojectop.ts
   - src/models/updateattackchallengemodeop.ts
   - src/models/updatecheckop.ts
+  - src/models/updatecustomenvironmentop.ts
   - src/models/updateedgeconfigop.ts
   - src/models/updatefirewallconfigop.ts
+  - src/models/updateintegrationdeploymentactionop.ts
   - src/models/updateinvoiceop.ts
   - src/models/updateprojectdatacacheop.ts
   - src/models/updateprojectdomainop.ts
@@ -3252,6 +3457,7 @@ generatedFiles:
   - src/models/verifyprojectdomainop.ts
   - src/sdk/accessgroups.ts
   - src/sdk/aliases.ts
+  - src/sdk/apiexperimentation.ts
   - src/sdk/artifacts.ts
   - src/sdk/authentication.ts
   - src/sdk/certs.ts
@@ -3271,6 +3477,7 @@ generatedFiles:
   - src/sdk/teams.ts
   - src/sdk/user.ts
   - src/sdk/webhooks.ts
+  - src/types/async.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -3325,7 +3532,7 @@ examples:
         application/json: {"name": "My access group", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}], "membersToAdd": ["usr_1a2b3c4d5e6f7g8h9i0j", "usr_2b3c4d5e6f7g8h9i0j1k"], "membersToRemove": ["usr_1a2b3c4d5e6f7g8h9i0j", "usr_2b3c4d5e6f7g8h9i0j1k"]}
       responses:
         "200":
-          application/json: {"name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2}
+          application/json: {"name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2, "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {}}
         "401":
@@ -3395,7 +3602,7 @@ examples:
         application/json: {"name": "My access group", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}], "membersToAdd": ["usr_1a2b3c4d5e6f7g8h9i0j", "usr_2b3c4d5e6f7g8h9i0j1k"]}
       responses:
         "200":
-          application/json: {"membersCount": 591.78, "projectsCount": 3787.91, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50"}
+          application/json: {"membersCount": 591.78, "projectsCount": 3787.91, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {}}
         "401":
@@ -3801,7 +4008,7 @@ examples:
         application/json: {"disabled": true}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 7135.8, "disabledAt": 2989.85, "updatedAt": 6226.23, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5719.6, "createdIn": "<value>", "creator": {"email": "Braeden15@gmail.com", "uid": "<id>", "username": "Teresa84"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://unknown-gift.biz", "userId": "<id>"}, {"id": "<id>", "createdAt": 7644.5, "createdIn": "<value>", "creator": {"email": "Erich.Mann@hotmail.com", "uid": "<id>", "username": "Genoveva89"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://slimy-tuba.name", "userId": "<id>"}, {"id": "<id>", "createdAt": 2357.62, "createdIn": "<value>", "creator": {"email": "Garret.Ferry81@gmail.com", "uid": "<id>", "username": "Vivianne.Gutkowski"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://astonishing-cinema.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "10.x", "targets": {"key": {"id": "<id>", "createdAt": 290.31, "createdIn": "<value>", "creator": {"email": "Belle_Mraz@gmail.com", "uid": "<id>", "username": "Chaz80"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": true, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://beloved-bourgeoisie.name", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 7135.8, "disabledAt": 2989.85, "updatedAt": 6226.23, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5719.6, "createdIn": "<value>", "creator": {"email": "Braeden15@gmail.com", "uid": "<id>", "username": "Teresa84"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://unknown-gift.biz", "userId": "<id>"}, {"id": "<id>", "createdAt": 7644.5, "createdIn": "<value>", "creator": {"email": "Erich.Mann@hotmail.com", "uid": "<id>", "username": "Genoveva89"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://slimy-tuba.name", "userId": "<id>"}, {"id": "<id>", "createdAt": 2357.62, "createdIn": "<value>", "creator": {"email": "Garret.Ferry81@gmail.com", "uid": "<id>", "username": "Vivianne.Gutkowski"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://astonishing-cinema.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "10.x", "resourceConfig": {"functionDefaultRegions": ["<value>", "<value>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value>"]}, "targets": {"key": {"id": "<id>", "createdAt": 290.31, "createdIn": "<value>", "creator": {"email": "Belle_Mraz@gmail.com", "uid": "<id>", "username": "Chaz80"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": true, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://beloved-bourgeoisie.name", "userId": "<id>"}}}
         "400":
           application/json: {"error": {}}
         "401":
@@ -3833,7 +4040,7 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 5535.6, "disabledAt": 7749.32, "updatedAt": 4248.44, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 3954.07, "createdIn": "<value>", "creator": {"email": "Junior46@yahoo.com", "uid": "<id>", "username": "Rick.Fritsch"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://potable-bid.biz", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "targets": {"key": {"id": "<id>", "createdAt": 1667.88, "createdIn": "<value>", "creator": {"email": "Mustafa49@yahoo.com", "uid": "<id>", "username": "Roberta.Cormier"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://formal-breastplate.org", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 4264.97, "createdIn": "<value>", "creator": {"email": "Abbigail54@gmail.com", "uid": "<id>", "username": "Jean77"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://black-and-white-disappointment.com/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 5535.6, "disabledAt": 7749.32, "updatedAt": 4248.44, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 3954.07, "createdIn": "<value>", "creator": {"email": "Junior46@yahoo.com", "uid": "<id>", "username": "Rick.Fritsch"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://potable-bid.biz", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": ["<value>", "<value>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value>", "<value>", "<value>"]}, "targets": {"key": {"id": "<id>", "createdAt": 1667.88, "createdIn": "<value>", "creator": {"email": "Mustafa49@yahoo.com", "uid": "<id>", "username": "Roberta.Cormier"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://formal-breastplate.org", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 4264.97, "createdIn": "<value>", "creator": {"email": "Abbigail54@gmail.com", "uid": "<id>", "username": "Jean77"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://black-and-white-disappointment.com/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {}}
         "401":
@@ -3850,11 +4057,13 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 6482.23, "disabledAt": 3040.87, "updatedAt": 9398.86, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 7688.55, "createdIn": "<value>", "creator": {"email": "Alfredo_Murazik@yahoo.com", "uid": "<id>", "username": "Kiera28"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://close-premise.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 3847.37, "createdIn": "<value>", "creator": {"email": "Zachery.Johns68@yahoo.com", "uid": "<id>", "username": "Nicole_Reynolds"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://unsightly-newsstand.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5770.49, "createdIn": "<value>", "creator": {"email": "Jose37@yahoo.com", "uid": "<id>", "username": "Jana.Conroy"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://pricey-dish.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "20.x", "targets": {"key": {"id": "<id>", "createdAt": 3083.74, "createdIn": "<value>", "creator": {"email": "Maeve.Hodkiewicz@hotmail.com", "uid": "<id>", "username": "Burley71"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://linear-minor.biz/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 2845.85, "createdIn": "<value>", "creator": {"email": "Keshawn_Considine71@hotmail.com", "uid": "<id>", "username": "Jorge.Herzog9"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://tedious-runway.net", "userId": "<id>"}, "key2": {"id": "<id>", "createdAt": 9504.23, "createdIn": "<value>", "creator": {"email": "Jayde_Kunze@hotmail.com", "uid": "<id>", "username": "Abner88"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "READY", "type": "LAMBDAS", "url": "https://orderly-typeface.org/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 6482.23, "disabledAt": 3040.87, "updatedAt": 9398.86, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 7688.55, "createdIn": "<value>", "creator": {"email": "Alfredo_Murazik@yahoo.com", "uid": "<id>", "username": "Kiera28"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://close-premise.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 3847.37, "createdIn": "<value>", "creator": {"email": "Zachery.Johns68@yahoo.com", "uid": "<id>", "username": "Nicole_Reynolds"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://unsightly-newsstand.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5770.49, "createdIn": "<value>", "creator": {"email": "Jose37@yahoo.com", "uid": "<id>", "username": "Jana.Conroy"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://pricey-dish.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "20.x", "resourceConfig": {"functionDefaultRegions": ["<value>", "<value>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3083.74, "createdIn": "<value>", "creator": {"email": "Maeve.Hodkiewicz@hotmail.com", "uid": "<id>", "username": "Burley71"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://linear-minor.biz/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 2845.85, "createdIn": "<value>", "creator": {"email": "Keshawn_Considine71@hotmail.com", "uid": "<id>", "username": "Jorge.Herzog9"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://tedious-runway.net", "userId": "<id>"}, "key2": {"id": "<id>", "createdAt": 9504.23, "createdIn": "<value>", "creator": {"email": "Jayde_Kunze@hotmail.com", "uid": "<id>", "username": "Abner88"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "READY", "type": "LAMBDAS", "url": "https://orderly-typeface.org/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {}}
         "401":
           application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
   deleteProject:
     speakeasy-default-delete-project:
       parameters:
@@ -4022,7 +4231,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"key": "API_URL", "value": "https://api.vercel.com", "type": "plain", "target": ["preview"], "gitBranch": "feature-1", "comment": "database connection string for production"}
+        application/json: {"key": "API_URL", "value": "https://api.vercel.com", "type": "plain", "target": ["preview"], "gitBranch": "feature-1", "comment": "database connection string for production", "customEnvironmentIds": ["env_1234567890"]}
       responses:
         "201":
           application/json: {"created": [{}], "failed": [{"error": {"code": "<value>", "message": "<value>"}}]}
@@ -4187,7 +4396,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"aliasAssigned": false, "bootedAt": 2317.28, "buildingAt": 458.05, "buildSkipped": true, "creator": {"uid": "<id>"}, "public": true, "status": "ERROR", "id": "<id>", "type": "LAMBDAS", "createdAt": 3161.76, "name": "<value>", "readyState": "READY", "meta": {"key": "<value>", "key1": "<value>"}, "regions": [], "url": "https://disloyal-backburn.info", "version": 1604.95}
+          application/json: {"aliasAssigned": false, "bootedAt": 2317.28, "buildingAt": 458.05, "buildSkipped": true, "creator": {"uid": "<id>"}, "public": true, "status": "ERROR", "id": "<id>", "name": "<value>", "type": "LAMBDAS", "createdAt": 3161.76, "readyState": "READY", "meta": {"key": "<value>", "key1": "<value>"}, "regions": [], "url": "https://disloyal-backburn.info", "version": 1604.95}
         "400":
           application/json: {"error": {}}
         "404":
@@ -4199,10 +4408,10 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}, {"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"ref": "main", "repoId": 123456789, "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}}
+        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}, {"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"ref": "main", "repoId": 123456789, "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://firm-casket.name/", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": true, "bootedAt": 7030.55, "buildingAt": 2916.6, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "type": "LAMBDAS", "createdAt": 1218, "name": "<value>", "id": "<id>", "version": 5856.16, "meta": {"key": "<value>", "key1": "<value>"}, "readyState": "CANCELED", "regions": ["<value>"], "url": "https://quiet-formation.name/", "projectId": "<id>", "ownerId": "<id>", "routes": [], "plan": "pro", "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://firm-casket.name/", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": true, "bootedAt": 7030.55, "buildingAt": 2916.6, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "type": "LAMBDAS", "name": "<value>", "createdAt": 1218, "id": "<id>", "version": 5856.16, "meta": {"key": "<value>", "key1": "<value>"}, "readyState": "CANCELED", "regions": ["<value>"], "url": "https://quiet-formation.name/", "plan": "pro", "projectId": "<id>", "ownerId": "<id>", "routes": [], "createdIn": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -4803,7 +5012,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}, "id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}}
+          application/json: {"id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}, "user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5010,7 +5219,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"integration": {"name": "<value>", "icon": "<value>", "category": "<value>", "isLegacy": true}, "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}, {"integration": {"name": "<value>", "icon": "<value>", "category": "<value>", "isLegacy": false}, "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}]
+          application/json: [{"completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}, {"completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}]
         "400":
           application/json: {"error": {}}
         "401":
@@ -5131,7 +5340,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["static"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
+          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
         "400":
           application/json: {"error": {}}
         "401":
@@ -5176,7 +5385,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "<id>", "deliveryFormat": "json", "url": "https://pleasant-beret.com/", "name": "<value>", "ownerId": "<id>", "createdAt": 9979.71, "deletedAt": 2589.89, "updatedAt": 1929.63, "environments": ["production", "production"], "secret": "<value>"}
+          application/json: {"environments": ["production", "production"], "id": "<id>", "createdAt": 9979.71, "deletedAt": 2589.89, "updatedAt": 1929.63, "url": "https://pleasant-beret.com/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "json", "secret": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5206,7 +5415,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"id": "<id>", "deliveryFormat": "json", "url": "https://perfumed-director.net/", "name": "<value>", "ownerId": "<id>", "createdAt": 5878.41, "deletedAt": 1366.34, "updatedAt": 8559.12, "environments": ["production"]}, {"id": "<id>", "deliveryFormat": "ndjson", "url": "https://true-extent.biz/", "name": "<value>", "ownerId": "<id>", "createdAt": 1082.43, "deletedAt": 3716.75, "updatedAt": 2593.51, "environments": ["preview"]}]
+          application/json: [{"environments": ["production"], "id": "<id>", "createdAt": 5878.41, "deletedAt": 1366.34, "updatedAt": 8559.12, "url": "https://perfumed-director.net/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "json"}, {"environments": ["preview"], "id": "<id>", "createdAt": 1082.43, "deletedAt": 3716.75, "updatedAt": 2593.51, "url": "https://true-extent.biz/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "ndjson"}]
         "400":
           application/json: {"error": {}}
         "401":
@@ -5221,7 +5430,7 @@ examples:
         application/json: {"deliveryFormat": "json", "url": "https://sugary-technician.name", "sources": ["external"]}
       responses:
         "200":
-          application/json: {"id": "<id>", "deliveryFormat": "json", "url": "https://close-dividend.biz", "name": "<value>", "ownerId": "<id>", "createdAt": 911.21, "deletedAt": 5254.68, "updatedAt": 3248.86, "environments": ["preview", "production"]}
+          application/json: {"environments": ["preview", "production"], "id": "<id>", "createdAt": 911.21, "deletedAt": 5254.68, "updatedAt": 3248.86, "url": "https://close-dividend.biz", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "json"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5454,7 +5663,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "sneaky-intervention.info", "Ip": "124.153.161.35", "ProjectId": "<id>", "IsProjectRule": false}], "pagination": "<value>"}
+          application/json: {"result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "sneaky-intervention.info", "Ip": "124.153.161.35", "CreatedAt": "1727696376548", "UpdatedAt": "1741352208179", "UpdatedAtHour": "<value>"}], "pagination": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5505,7 +5714,7 @@ examples:
           role: "OWNER"
       responses:
         "200":
-          application/json: {"members": [{"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "confirmed": true, "email": "jane.doe@example.com", "role": "OWNER", "additionalRoles": ["['createProjects']"], "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "accessRequestedAt": 1588820733602}, {"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "confirmed": true, "email": "jane.doe@example.com", "role": "OWNER", "additionalRoles": ["['createProjects']"], "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "accessRequestedAt": 1588820733602}], "pagination": {"hasNext": true, "count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"members": [{"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "confirmed": true, "email": "jane.doe@example.com", "role": "OWNER", "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "accessRequestedAt": 1588820733602}, {"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "confirmed": true, "email": "jane.doe@example.com", "role": "OWNER", "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "accessRequestedAt": 1588820733602}], "pagination": {"hasNext": true, "count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5521,7 +5730,7 @@ examples:
         application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "email": "john@example.com", "role": "VIEWER", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
       responses:
         "200":
-          application/json: {"uid": "<id>", "username": "Patrick_Dickinson83", "role": "OWNER"}
+          application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "username": "john-doe", "email": "john@user.co", "role": "MEMBER", "teamRoles": ["MEMBER"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5920,6 +6129,189 @@ examples:
           application/json: {"error": {}}
         "401":
           application/json: {"error": {"message": "<value>"}}
+  update-integration-deployment-action:
+    speakeasy-default-update-integration-deployment-action:
+      parameters:
+        path:
+          deploymentId: "<id>"
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+          action: "<value>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  submit-prepayment-balances:
+    speakeasy-default-submit-prepayment-balances:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  import-resource:
+    speakeasy-default-import-resource:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "200":
+          application/json: {"name": "<value>"}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items:
+    speakeasy-default-post-/v1-/installations/{integration-configuration-id}/resources/{resource-id}/experimentation/items:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}:
+    ? speakeasy-default-patch-/v1-/installations/{integration-configuration-id}/resources/{resource-id}/experimentation/items/{item-id}
+    : parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+          itemId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}:
+    ? speakeasy-default-delete-/v1-/installations/{integration-configuration-id}/resources/{resource-id}/experimentation/items/{item-id}
+    : parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+          itemId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config:
+    speakeasy-default-head-/v1-/installations/{integration-configuration-id}/resources/{resource-id}/experimentation/edge-config:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "200":
+          application/json: {"items": {"key": [], "key1": true}, "updatedAt": 6086.93, "digest": "<value>"}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config:
+    speakeasy-default-put-/v1-/installations/{integration-configuration-id}/resources/{resource-id}/experimentation/edge-config:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "200":
+          application/json: {"items": {"key": true}, "updatedAt": 6820.68, "digest": "<value>"}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  get_/v1/experimentation/items:
+    speakeasy-default-get-/v1-/experimentation/items:
+      responses:
+        "200":
+          application/json: {"items": []}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  createCustomEnvironment:
+    speakeasy-default-create-custom-environment:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "201":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  getCustomEnvironment:
+    speakeasy-default-get-custom-environment:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+        "404":
+          application/json: {"error": {}}
+  updateCustomEnvironment:
+    speakeasy-default-update-custom-environment:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
+  removeCustomEnvironment:
+    speakeasy-default-remove-custom-environment:
+      parameters:
+        path:
+          idOrName: "<value>"
+          environmentSlugOrId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"error": {}}
+        "401":
+          application/json: {"error": {"message": "<value>"}}
 examplesVersion: 1.0.0
 generatedTests:
   readAccessGroup: "2025-01-16T21:59:36Z"
@@ -6065,3 +6457,17 @@ generatedTests:
   createProjectTransferRequest: "2025-01-20T19:41:12Z"
   acceptProjectTransferRequest: "2025-01-20T19:41:12Z"
   getActiveAttackStatus: "2025-01-20T19:41:12Z"
+  filterProjectEnvs: "2025-03-07T23:50:38Z"
+  update-integration-deployment-action: "2025-03-07T23:50:38Z"
+  submit-prepayment-balances: "2025-03-07T23:50:38Z"
+  import-resource: "2025-03-07T23:50:38Z"
+  post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items: "2025-03-07T23:50:38Z"
+  patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-03-07T23:50:38Z"
+  delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-03-07T23:50:38Z"
+  head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config: "2025-03-07T23:50:38Z"
+  put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config: "2025-03-07T23:50:38Z"
+  get_/v1/experimentation/items: "2025-03-07T23:50:38Z"
+  createCustomEnvironment: "2025-03-07T23:50:38Z"
+  getCustomEnvironment: "2025-03-07T23:50:38Z"
+  updateCustomEnvironment: "2025-03-07T23:50:38Z"
+  removeCustomEnvironment: "2025-03-07T23:50:38Z"

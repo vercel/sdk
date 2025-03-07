@@ -88,6 +88,8 @@ type Two2 struct {
 	GitBranch *string `json:"gitBranch,omitempty"`
 	// A comment to add context on what this environment variable is for
 	Comment *string `json:"comment,omitempty"`
+	// The custom environment IDs associated with the environment variable
+	CustomEnvironmentIds []string `json:"customEnvironmentIds"`
 }
 
 func (o *Two2) GetKey() string {
@@ -130,6 +132,13 @@ func (o *Two2) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *Two2) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.CustomEnvironmentIds
 }
 
 // TwoType - The type of environment variable
@@ -210,6 +219,8 @@ type Two1 struct {
 	GitBranch *string `json:"gitBranch,omitempty"`
 	// A comment to add context on what this environment variable is for
 	Comment *string `json:"comment,omitempty"`
+	// The custom environment IDs associated with the environment variable
+	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *Two1) GetKey() string {
@@ -252,6 +263,13 @@ func (o *Two1) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *Two1) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentIds
 }
 
 type CreateProjectEnvRequestBody2Type string
@@ -395,6 +413,8 @@ type CreateProjectEnv12 struct {
 	GitBranch *string `json:"gitBranch,omitempty"`
 	// A comment to add context on what this environment variable is for
 	Comment *string `json:"comment,omitempty"`
+	// The custom environment IDs associated with the environment variable
+	CustomEnvironmentIds []string `json:"customEnvironmentIds"`
 }
 
 func (o *CreateProjectEnv12) GetKey() string {
@@ -437,6 +457,13 @@ func (o *CreateProjectEnv12) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *CreateProjectEnv12) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.CustomEnvironmentIds
 }
 
 // OneType - The type of environment variable
@@ -517,6 +544,8 @@ type CreateProjectEnv11 struct {
 	GitBranch *string `json:"gitBranch,omitempty"`
 	// A comment to add context on what this environment variable is for
 	Comment *string `json:"comment,omitempty"`
+	// The custom environment IDs associated with the environment variable
+	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *CreateProjectEnv11) GetKey() string {
@@ -559,6 +588,13 @@ func (o *CreateProjectEnv11) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *CreateProjectEnv11) GetCustomEnvironmentIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentIds
 }
 
 type CreateProjectEnvRequestBody1Type string
@@ -1699,10 +1735,10 @@ func (u *CreateProjectEnvCreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHintProjects9 CreateProjectEnvContentHintProjects9 = CreateProjectEnvContentHintProjects9{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects9, "", true, true); err == nil {
-		u.CreateProjectEnvContentHintProjects9 = &createProjectEnvContentHintProjects9
-		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects9
+	var createProjectEnvContentHintProjects11 CreateProjectEnvContentHintProjects11 = CreateProjectEnvContentHintProjects11{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects11, "", true, true); err == nil {
+		u.CreateProjectEnvContentHintProjects11 = &createProjectEnvContentHintProjects11
+		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects11
 		return nil
 	}
 
@@ -1741,10 +1777,10 @@ func (u *CreateProjectEnvCreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHintProjects8 CreateProjectEnvContentHintProjects8 = CreateProjectEnvContentHintProjects8{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects8, "", true, true); err == nil {
-		u.CreateProjectEnvContentHintProjects8 = &createProjectEnvContentHintProjects8
-		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects8
+	var createProjectEnvContentHintProjects9 CreateProjectEnvContentHintProjects9 = CreateProjectEnvContentHintProjects9{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects9, "", true, true); err == nil {
+		u.CreateProjectEnvContentHintProjects9 = &createProjectEnvContentHintProjects9
+		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects9
 		return nil
 	}
 
@@ -1762,10 +1798,10 @@ func (u *CreateProjectEnvCreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHintProjects11 CreateProjectEnvContentHintProjects11 = CreateProjectEnvContentHintProjects11{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects11, "", true, true); err == nil {
-		u.CreateProjectEnvContentHintProjects11 = &createProjectEnvContentHintProjects11
-		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects11
+	var createProjectEnvContentHintProjects8 CreateProjectEnvContentHintProjects8 = CreateProjectEnvContentHintProjects8{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHintProjects8, "", true, true); err == nil {
+		u.CreateProjectEnvContentHintProjects8 = &createProjectEnvContentHintProjects8
+		u.Type = CreateProjectEnvCreatedContentHintTypeCreateProjectEnvContentHintProjects8
 		return nil
 	}
 
@@ -3076,10 +3112,10 @@ func (u *CreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHint9 CreateProjectEnvContentHint9 = CreateProjectEnvContentHint9{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint9, "", true, true); err == nil {
-		u.CreateProjectEnvContentHint9 = &createProjectEnvContentHint9
-		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint9
+	var createProjectEnvContentHint11 CreateProjectEnvContentHint11 = CreateProjectEnvContentHint11{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint11, "", true, true); err == nil {
+		u.CreateProjectEnvContentHint11 = &createProjectEnvContentHint11
+		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint11
 		return nil
 	}
 
@@ -3118,10 +3154,10 @@ func (u *CreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHint8 CreateProjectEnvContentHint8 = CreateProjectEnvContentHint8{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint8, "", true, true); err == nil {
-		u.CreateProjectEnvContentHint8 = &createProjectEnvContentHint8
-		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint8
+	var createProjectEnvContentHint9 CreateProjectEnvContentHint9 = CreateProjectEnvContentHint9{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint9, "", true, true); err == nil {
+		u.CreateProjectEnvContentHint9 = &createProjectEnvContentHint9
+		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint9
 		return nil
 	}
 
@@ -3139,10 +3175,10 @@ func (u *CreatedContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createProjectEnvContentHint11 CreateProjectEnvContentHint11 = CreateProjectEnvContentHint11{}
-	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint11, "", true, true); err == nil {
-		u.CreateProjectEnvContentHint11 = &createProjectEnvContentHint11
-		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint11
+	var createProjectEnvContentHint8 CreateProjectEnvContentHint8 = CreateProjectEnvContentHint8{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvContentHint8, "", true, true); err == nil {
+		u.CreateProjectEnvContentHint8 = &createProjectEnvContentHint8
+		u.Type = CreatedContentHintTypeCreateProjectEnvContentHint8
 		return nil
 	}
 
@@ -3522,18 +3558,18 @@ func (u Created) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Created: all fields are null")
 }
 
-type CreateProjectEnvValue2 string
+type Value2 string
 
 const (
-	CreateProjectEnvValue2Production  CreateProjectEnvValue2 = "production"
-	CreateProjectEnvValue2Preview     CreateProjectEnvValue2 = "preview"
-	CreateProjectEnvValue2Development CreateProjectEnvValue2 = "development"
+	Value2Production  Value2 = "production"
+	Value2Preview     Value2 = "preview"
+	Value2Development Value2 = "development"
 )
 
-func (e CreateProjectEnvValue2) ToPointer() *CreateProjectEnvValue2 {
+func (e Value2) ToPointer() *Value2 {
 	return &e
 }
-func (e *CreateProjectEnvValue2) UnmarshalJSON(data []byte) error {
+func (e *Value2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3544,23 +3580,23 @@ func (e *CreateProjectEnvValue2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = CreateProjectEnvValue2(v)
+		*e = Value2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateProjectEnvValue2: %v", v)
+		return fmt.Errorf("invalid value for Value2: %v", v)
 	}
 }
 
 type CreateProjectEnvValueType string
 
 const (
-	CreateProjectEnvValueTypeStr                           CreateProjectEnvValueType = "str"
-	CreateProjectEnvValueTypeArrayOfCreateProjectEnvValue2 CreateProjectEnvValueType = "arrayOfCreateProjectEnvValue2"
+	CreateProjectEnvValueTypeStr           CreateProjectEnvValueType = "str"
+	CreateProjectEnvValueTypeArrayOfValue2 CreateProjectEnvValueType = "arrayOfValue2"
 )
 
 type CreateProjectEnvValue struct {
-	Str                           *string
-	ArrayOfCreateProjectEnvValue2 []CreateProjectEnvValue2
+	Str           *string
+	ArrayOfValue2 []Value2
 
 	Type CreateProjectEnvValueType
 }
@@ -3574,12 +3610,12 @@ func CreateCreateProjectEnvValueStr(str string) CreateProjectEnvValue {
 	}
 }
 
-func CreateCreateProjectEnvValueArrayOfCreateProjectEnvValue2(arrayOfCreateProjectEnvValue2 []CreateProjectEnvValue2) CreateProjectEnvValue {
-	typ := CreateProjectEnvValueTypeArrayOfCreateProjectEnvValue2
+func CreateCreateProjectEnvValueArrayOfValue2(arrayOfValue2 []Value2) CreateProjectEnvValue {
+	typ := CreateProjectEnvValueTypeArrayOfValue2
 
 	return CreateProjectEnvValue{
-		ArrayOfCreateProjectEnvValue2: arrayOfCreateProjectEnvValue2,
-		Type:                          typ,
+		ArrayOfValue2: arrayOfValue2,
+		Type:          typ,
 	}
 }
 
@@ -3592,10 +3628,10 @@ func (u *CreateProjectEnvValue) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var arrayOfCreateProjectEnvValue2 []CreateProjectEnvValue2 = []CreateProjectEnvValue2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectEnvValue2, "", true, true); err == nil {
-		u.ArrayOfCreateProjectEnvValue2 = arrayOfCreateProjectEnvValue2
-		u.Type = CreateProjectEnvValueTypeArrayOfCreateProjectEnvValue2
+	var arrayOfValue2 []Value2 = []Value2{}
+	if err := utils.UnmarshalJSON(data, &arrayOfValue2, "", true, true); err == nil {
+		u.ArrayOfValue2 = arrayOfValue2
+		u.Type = CreateProjectEnvValueTypeArrayOfValue2
 		return nil
 	}
 
@@ -3607,8 +3643,8 @@ func (u CreateProjectEnvValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfCreateProjectEnvValue2 != nil {
-		return utils.MarshalJSON(u.ArrayOfCreateProjectEnvValue2, "", true)
+	if u.ArrayOfValue2 != nil {
+		return utils.MarshalJSON(u.ArrayOfValue2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectEnvValue: all fields are null")

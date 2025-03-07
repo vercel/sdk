@@ -29,6 +29,7 @@ typescript:
   compileCommand:
     - pnpm
     - install
+    - --no-frozen-lockfile
     - --filter
     - '@vercel/sdk'
   defaultErrorName: SDKError

@@ -31,6 +31,7 @@ typescript:
     - install
     - --filter
     - '@vercel/sdk'
+    - --no-frozen-lockfile
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableReactQuery: false

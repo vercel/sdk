@@ -29,9 +29,9 @@ typescript:
   compileCommand:
     - pnpm
     - install
+    - --no-frozen-lockfile
     - --filter
     - '@vercel/sdk'
-    - --no-frozen-lockfile
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableReactQuery: false

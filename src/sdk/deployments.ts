@@ -10,6 +10,7 @@ import { deploymentsGetDeploymentEvents } from "../funcs/deploymentsGetDeploymen
 import { deploymentsGetDeploymentFileContents } from "../funcs/deploymentsGetDeploymentFileContents.js";
 import { deploymentsGetDeployments } from "../funcs/deploymentsGetDeployments.js";
 import { deploymentsListDeploymentFiles } from "../funcs/deploymentsListDeploymentFiles.js";
+import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymentsUpdateIntegrationDeploymentAction.js";
 import { deploymentsUploadFile } from "../funcs/deploymentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -36,6 +37,7 @@ import {
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
+import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,
   UploadFileResponseBody,
@@ -54,6 +56,23 @@ export class Deployments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(deploymentsGetDeploymentEvents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update deployment integration action
+   *
+   * @remarks
+   * Updates the deployment integration action for the specified integration installation
+   */
+  async updateIntegrationDeploymentAction(
+    request: UpdateIntegrationDeploymentActionRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(deploymentsUpdateIntegrationDeploymentAction(
       this,
       request,
       options,
@@ -132,7 +151,7 @@ export class Deployments extends ClientSDK {
    * List Deployment Files
    *
    * @remarks
-   * Allows to retrieve the file structure of a deployment by supplying the deployment unique identifier.
+   * Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will have a file tree that can be retrievable.
    */
   async listDeploymentFiles(
     request: ListDeploymentFilesRequest,

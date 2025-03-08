@@ -7,8 +7,8 @@ import { UpdateFirewallConfigRateLimit1 } from "@vercel/sdk/models/updatefirewal
 
 let value: UpdateFirewallConfigRateLimit1 = {
   algo: "token_bucket",
-  window: 7420.1,
-  limit: 8971.46,
+  window: 192.32,
+  limit: 5698.72,
   keys: [
     "<value>",
   ],
@@ -17,10 +17,10 @@ let value: UpdateFirewallConfigRateLimit1 = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `algo`                                             | [models.RateLimitAlgo](../models/ratelimitalgo.md) | :heavy_check_mark:                                 | N/A                                                |
-| `window`                                           | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `limit`                                            | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `keys`                                             | *string*[]                                         | :heavy_check_mark:                                 | N/A                                                |
-| `action`                                           | *models.UpdateFirewallConfigRateLimitAction*       | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `algo`                                                                                     | [models.UpdateFirewallConfigRateLimitAlgo](../models/updatefirewallconfigratelimitalgo.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `window`                                                                                   | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `limit`                                                                                    | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `keys`                                                                                     | *string*[]                                                                                 | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `action`                                                                                   | *models.UpdateFirewallConfigRateLimitAction*                                               | :heavy_minus_sign:                                                                         | N/A                                                                                        |

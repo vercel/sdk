@@ -25,7 +25,7 @@ func pathPostV1IntegrationsSsoToken(dir *logging.HTTPFileDirectory, rt *tracking
 		case "exchange-sso-token[0]":
 			dir.HandlerFunc("exchange-sso-token", testExchangeSsoTokenExchangeSsoToken0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

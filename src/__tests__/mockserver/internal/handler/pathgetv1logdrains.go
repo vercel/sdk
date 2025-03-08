@@ -25,7 +25,7 @@ func pathGetV1LogDrains(dir *logging.HTTPFileDirectory, rt *tracking.RequestTrac
 		case "getAllLogDrains[0]":
 			dir.HandlerFunc("getAllLogDrains", testGetAllLogDrainsGetAllLogDrains0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -48,17 +48,17 @@ func testGetAllLogDrainsGetAllLogDrains0(w http.ResponseWriter, req *http.Reques
 	}
 	respBody := []operations.GetAllLogDrainsResponseBody{
 		operations.GetAllLogDrainsResponseBody{
-			ID:             "<id>",
-			DeliveryFormat: operations.GetAllLogDrainsDeliveryFormatJSON,
-			URL:            "https://perfumed-director.net/",
-			Name:           "<value>",
-			OwnerID:        "<id>",
-			CreatedAt:      5878.41,
-			DeletedAt:      types.Float64(1366.34),
-			UpdatedAt:      8559.11,
 			Environments: []operations.GetAllLogDrainsEnvironments{
 				operations.GetAllLogDrainsEnvironmentsProduction,
 			},
+			ID:             "<id>",
+			CreatedAt:      5878.41,
+			DeletedAt:      types.Float64(1366.34),
+			UpdatedAt:      8559.11,
+			URL:            "https://perfumed-director.net/",
+			Name:           "<value>",
+			OwnerID:        "<id>",
+			DeliveryFormat: operations.GetAllLogDrainsDeliveryFormatJSON,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

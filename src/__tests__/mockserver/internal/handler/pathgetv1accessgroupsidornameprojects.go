@@ -25,7 +25,7 @@ func pathGetV1AccessGroupsIDOrNameProjects(dir *logging.HTTPFileDirectory, rt *t
 		case "listAccessGroupProjects[0]":
 			dir.HandlerFunc("listAccessGroupProjects", testListAccessGroupProjectsListAccessGroupProjects0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

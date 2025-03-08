@@ -16,6 +16,10 @@ export type UpdateResourceSecretsByIdSecrets = {
 
 export type UpdateResourceSecretsByIdRequestBody = {
   secrets: Array<UpdateResourceSecretsByIdSecrets>;
+  /**
+   * If true, will only update the provided secrets
+   */
+  partial?: boolean | undefined;
 };
 
 export type UpdateResourceSecretsByIdRequest = {
@@ -95,11 +99,13 @@ export const UpdateResourceSecretsByIdRequestBody$inboundSchema: z.ZodType<
   secrets: z.array(
     z.lazy(() => UpdateResourceSecretsByIdSecrets$inboundSchema),
   ),
+  partial: z.boolean().optional(),
 });
 
 /** @internal */
 export type UpdateResourceSecretsByIdRequestBody$Outbound = {
   secrets: Array<UpdateResourceSecretsByIdSecrets$Outbound>;
+  partial?: boolean | undefined;
 };
 
 /** @internal */
@@ -111,6 +117,7 @@ export const UpdateResourceSecretsByIdRequestBody$outboundSchema: z.ZodType<
   secrets: z.array(
     z.lazy(() => UpdateResourceSecretsByIdSecrets$outboundSchema),
   ),
+  partial: z.boolean().optional(),
 });
 
 /**

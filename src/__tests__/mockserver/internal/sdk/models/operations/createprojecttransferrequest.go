@@ -38,6 +38,15 @@ func (o *CreateProjectTransferRequestRequest) GetSlug() *string {
 
 // CreateProjectTransferRequestResponseBody - The project transfer request has been initiated successfully.
 type CreateProjectTransferRequestResponseBody struct {
+	// Code that can be used to accept the project transfer request.
+	Code string `json:"code"`
+}
+
+func (o *CreateProjectTransferRequestResponseBody) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }
 
 type CreateProjectTransferRequestResponse struct {

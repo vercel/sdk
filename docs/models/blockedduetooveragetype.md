@@ -5,11 +5,11 @@
 ```typescript
 import { BlockedDueToOverageType } from "@vercel/sdk/models/authuser.js";
 
-let value: BlockedDueToOverageType = "buildMinute";
+let value: BlockedDueToOverageType = "objectDataTransfer";
 ```
 
 ## Values
 
 ```typescript
-"analyticsUsage" | "artifacts" | "bandwidth" | "blobStores" | "blobTotalAdvancedRequests" | "blobTotalAvgSizeInBytes" | "blobTotalGetResponseObjectSizeInBytes" | "blobTotalSimpleRequests" | "buildMinute" | "dataCacheRead" | "dataCacheRevalidation" | "dataCacheWrite" | "edgeConfigRead" | "edgeConfigWrite" | "edgeFunctionExecutionUnits" | "edgeMiddlewareInvocations" | "edgeRequestAdditionalCpuDuration" | "edgeRequest" | "elasticConcurrencyBuildSlots" | "fastDataTransfer" | "fastOriginTransfer" | "functionDuration" | "functionInvocation" | "imageOptimizationCacheRead" | "imageOptimizationCacheWrite" | "imageOptimizationTransformation" | "logDrainsVolume" | "monitoringMetric" | "observabilityEvent" | "postgresComputeTime" | "postgresDataStorage" | "postgresDataTransfer" | "postgresDatabase" | "postgresWrittenData" | "serverlessFunctionExecution" | "sourceImages" | "storageRedisTotalBandwidthInBytes" | "storageRedisTotalCommands" | "storageRedisTotalDailyAvgStorageInBytes" | "storageRedisTotalDatabases" | "wafOwaspExcessBytes" | "wafOwaspRequests" | "wafRateLimitRequest" | "webAnalyticsEvent"
+"aiCredits" | "analyticsUsage" | "artifacts" | "bandwidth" | "blobTotalAdvancedRequests" | "blobTotalAvgSizeInBytes" | "blobTotalGetResponseObjectSizeInBytes" | "blobTotalSimpleRequests" | "dataCacheRead" | "dataCacheWrite" | "edgeConfigRead" | "edgeConfigWrite" | "edgeFunctionExecutionUnits" | "edgeMiddlewareInvocations" | "edgeRequestAdditionalCpuDuration" | "edgeRequest" | "elasticConcurrencyBuildSlots" | "fastDataTransfer" | "fastOriginTransfer" | "functionDuration" | "functionInvocation" | "imageOptimizationCacheRead" | "imageOptimizationCacheWrite" | "imageOptimizationTransformation" | "logDrainsVolume" | "monitoringMetric" | "objectDataTransfer" | "observabilityEvent" | "postgresComputeTime" | "postgresDataStorage" | "postgresDataTransfer" | "postgresDatabase" | "postgresWrittenData" | "serverlessFunctionExecution" | "sourceImages" | "storageRedisTotalBandwidthInBytes" | "storageRedisTotalCommands" | "storageRedisTotalDailyAvgStorageInBytes" | "storageRedisTotalDatabases" | "wafOwaspExcessBytes" | "wafOwaspRequests" | "wafRateLimitRequest" | "webAnalyticsEvent"
 ```

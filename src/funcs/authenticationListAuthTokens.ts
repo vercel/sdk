@@ -29,6 +29,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -37,10 +38,10 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve a list of the current User's authentication tokens.
  */
-export async function authenticationListAuthTokens(
+export function authenticationListAuthTokens(
   client: VercelCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     ListAuthTokensResponseBody,
     | VercelBadRequestError
@@ -54,6 +55,32 @@ export async function authenticationListAuthTokens(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      ListAuthTokensResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const path = pathToFunc("/v5/user/tokens")();
 
   const headers = new Headers(compactMap({
@@ -65,6 +92,7 @@ export async function authenticationListAuthTokens(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "listAuthTokens",
     oAuth2Scopes: [],
 
@@ -86,7 +114,7 @@ export async function authenticationListAuthTokens(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -97,7 +125,7 @@ export async function authenticationListAuthTokens(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -124,8 +152,8 @@ export async function authenticationListAuthTokens(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

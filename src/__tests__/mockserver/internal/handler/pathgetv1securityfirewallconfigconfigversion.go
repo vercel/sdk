@@ -24,7 +24,7 @@ func pathGetV1SecurityFirewallConfigConfigVersion(dir *logging.HTTPFileDirectory
 		case "getFirewallConfig[0]":
 			dir.HandlerFunc("getFirewallConfig", testGetFirewallConfigGetFirewallConfig0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -52,54 +52,54 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 		Version:         228.91,
 		UpdatedAt:       "<value>",
 		FirewallEnabled: true,
-		Crs: operations.GetFirewallConfigCrs{
-			Sd: operations.GetFirewallConfigSd{
+		Crs: operations.Crs{
+			Sd: operations.Sd{
 				Active: false,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdActionDeny,
 			},
-			Ma: operations.GetFirewallConfigMa{
+			Ma: operations.Ma{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaActionLog,
 			},
-			Lfi: operations.GetFirewallConfigLfi{
+			Lfi: operations.Lfi{
 				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponseActionLog,
+				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiActionLog,
 			},
-			Rfi: operations.GetFirewallConfigRfi{
+			Rfi: operations.Rfi{
 				Active: false,
 				Action: operations.GetFirewallConfigSecurityResponse200ActionDeny,
 			},
-			Rce: operations.GetFirewallConfigRce{
+			Rce: operations.Rce{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONActionDeny,
 			},
-			Php: operations.GetFirewallConfigPhp{
+			Php: operations.Php{
 				Active: false,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionLog,
 			},
-			Gen: operations.GetFirewallConfigGen{
+			Gen: operations.Gen{
 				Active: false,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsActionLog,
 			},
-			XSS: operations.GetFirewallConfigXSS{
+			XSS: operations.XSS{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSActionDeny,
 			},
-			Sqli: operations.GetFirewallConfigSqli{
+			Sqli: operations.Sqli{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliActionDeny,
 			},
-			Sf: operations.GetFirewallConfigSf{
+			Sf: operations.Sf{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfActionDeny,
 			},
-			Java: operations.GetFirewallConfigJava{
+			Java: operations.Java{
 				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaActionDeny,
 			},
 		},
-		Rules: []operations.GetFirewallConfigRules{
-			operations.GetFirewallConfigRules{
+		Rules: []operations.Rules{
+			operations.Rules{
 				ID:     "<id>",
 				Name:   "<value>",
 				Active: true,
@@ -132,8 +132,8 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 				Action: operations.GetFirewallConfigAction{},
 			},
 		},
-		Ips: []operations.GetFirewallConfigIps{
-			operations.GetFirewallConfigIps{
+		Ips: []operations.Ips{
+			operations.Ips{
 				ID:       "<id>",
 				Hostname: "puny-goat.org",
 				IP:       "0.147.40.42",

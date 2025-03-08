@@ -22,7 +22,7 @@ func pathPostV8ArtifactsEvents(dir *logging.HTTPFileDirectory, rt *tracking.Requ
 		case "recordEvents[0]":
 			dir.HandlerFunc("recordEvents", testRecordEventsRecordEvents0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

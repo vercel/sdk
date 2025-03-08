@@ -1,17 +1,15 @@
 # CreateConfigurableLogDrainDeliveryFormat
 
-The delivery log format
-
 ## Example Usage
 
 ```typescript
 import { CreateConfigurableLogDrainDeliveryFormat } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
 
-let value: CreateConfigurableLogDrainDeliveryFormat = "json";
+let value: CreateConfigurableLogDrainDeliveryFormat = "ndjson";
 ```
 
 ## Values
 
 ```typescript
-"json" | "ndjson"
+"json" | "ndjson" | "syslog"
 ```

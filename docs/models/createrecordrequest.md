@@ -13,7 +13,7 @@ let value: CreateRecordRequest = {
     name: "subdomain",
     type: "A",
     ttl: 60,
-    value: "2001:DB8::42",
+    value: "0 issue \\"letsencrypt.org\\"",
     comment: "used to verify ownership of domain",
   },
 };

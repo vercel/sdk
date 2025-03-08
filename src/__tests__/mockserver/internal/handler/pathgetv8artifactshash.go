@@ -23,7 +23,7 @@ func pathGetV8ArtifactsHash(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "downloadArtifact[0]":
 			dir.HandlerFunc("downloadArtifact", testDownloadArtifactDownloadArtifact0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

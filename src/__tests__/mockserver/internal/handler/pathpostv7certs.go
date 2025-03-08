@@ -24,7 +24,7 @@ func pathPostV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker
 		case "issueCert[0]":
 			dir.HandlerFunc("issueCert", testIssueCertIssueCert0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

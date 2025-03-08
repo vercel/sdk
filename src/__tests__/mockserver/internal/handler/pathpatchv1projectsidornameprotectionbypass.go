@@ -24,7 +24,7 @@ func pathPatchV1ProjectsIDOrNameProtectionBypass(dir *logging.HTTPFileDirectory,
 		case "updateProjectProtectionBypass[0]":
 			dir.HandlerFunc("updateProjectProtectionBypass", testUpdateProjectProtectionBypassUpdateProjectProtectionBypass0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

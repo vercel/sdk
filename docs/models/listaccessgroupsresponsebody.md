@@ -23,6 +23,13 @@ const value: models.ListAccessGroupsResponseBody2 = {
       accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
       membersCount: 5,
       projectsCount: 2,
+      teamRoles: [
+        "DEVELOPER",
+        "BILLING",
+      ],
+      teamPermissions: [
+        "CreateProject",
+      ],
     },
   ],
   pagination: {

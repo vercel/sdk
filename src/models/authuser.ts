@@ -19,18 +19,16 @@ export const Reason = {
 export type Reason = ClosedEnum<typeof Reason>;
 
 export const BlockedDueToOverageType = {
+  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
-  BlobStores: "blobStores",
   BlobTotalAdvancedRequests: "blobTotalAdvancedRequests",
   BlobTotalAvgSizeInBytes: "blobTotalAvgSizeInBytes",
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
-  BuildMinute: "buildMinute",
   DataCacheRead: "dataCacheRead",
-  DataCacheRevalidation: "dataCacheRevalidation",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
   EdgeConfigWrite: "edgeConfigWrite",
@@ -48,6 +46,7 @@ export const BlockedDueToOverageType = {
   ImageOptimizationTransformation: "imageOptimizationTransformation",
   LogDrainsVolume: "logDrainsVolume",
   MonitoringMetric: "monitoringMetric",
+  ObjectDataTransfer: "objectDataTransfer",
   ObservabilityEvent: "observabilityEvent",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
@@ -88,10 +87,6 @@ export type Billing = {};
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
 export type ResourceConfig = {
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
-  blobStores?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -144,6 +139,10 @@ export type ResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   postgresDatabases?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  blobStores?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -230,22 +229,26 @@ export type DismissedToasts = {
 /**
  * A list of projects and spaces across teams that a user has marked as a favorite.
  */
-export type Two = {
+export type FavoriteProjectsAndSpaces2 = {
   spaceId: string;
   scopeSlug: string;
   scopeId: string;
+  teamId?: string | undefined;
 };
 
 /**
  * A list of projects and spaces across teams that a user has marked as a favorite.
  */
-export type One = {
+export type FavoriteProjectsAndSpaces1 = {
   projectId: string;
   scopeSlug: string;
   scopeId: string;
+  teamId?: string | undefined;
 };
 
-export type FavoriteProjectsAndSpaces = One | Two;
+export type FavoriteProjectsAndSpaces =
+  | FavoriteProjectsAndSpaces1
+  | FavoriteProjectsAndSpaces2;
 
 /**
  * remote caching settings
@@ -357,7 +360,9 @@ export type AuthUser = {
   /**
    * A list of projects and spaces across teams that a user has marked as a favorite.
    */
-  favoriteProjectsAndSpaces?: Array<One | Two> | undefined;
+  favoriteProjectsAndSpaces?:
+    | Array<FavoriteProjectsAndSpaces1 | FavoriteProjectsAndSpaces2>
+    | undefined;
   /**
    * Whether the user has a trial available for a paid plan subscription.
    */
@@ -548,7 +553,6 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blobStores: z.number().optional(),
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
   awsAccountType: z.string().optional(),
@@ -562,6 +566,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   serverlessFunctionDefaultMaxExecutionTime: z.number().optional(),
   kvDatabases: z.number().optional(),
   postgresDatabases: z.number().optional(),
+  blobStores: z.number().optional(),
   integrationStores: z.number().optional(),
   cronJobs: z.number().optional(),
   cronJobsPerProject: z.number().optional(),
@@ -571,7 +576,6 @@ export const ResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ResourceConfig$Outbound = {
-  blobStores?: number | undefined;
   nodeType?: string | undefined;
   concurrentBuilds?: number | undefined;
   awsAccountType?: string | undefined;
@@ -585,6 +589,7 @@ export type ResourceConfig$Outbound = {
   serverlessFunctionDefaultMaxExecutionTime?: number | undefined;
   kvDatabases?: number | undefined;
   postgresDatabases?: number | undefined;
+  blobStores?: number | undefined;
   integrationStores?: number | undefined;
   cronJobs?: number | undefined;
   cronJobsPerProject?: number | undefined;
@@ -598,7 +603,6 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResourceConfig
 > = z.object({
-  blobStores: z.number().optional(),
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
   awsAccountType: z.string().optional(),
@@ -612,6 +616,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   serverlessFunctionDefaultMaxExecutionTime: z.number().optional(),
   kvDatabases: z.number().optional(),
   postgresDatabases: z.number().optional(),
+  blobStores: z.number().optional(),
   integrationStores: z.number().optional(),
   cronJobs: z.number().optional(),
   cronJobsPerProject: z.number().optional(),
@@ -1105,102 +1110,128 @@ export function dismissedToastsFromJSON(
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    spaceId: z.string(),
-    scopeSlug: z.string(),
-    scopeId: z.string(),
-  });
+export const FavoriteProjectsAndSpaces2$inboundSchema: z.ZodType<
+  FavoriteProjectsAndSpaces2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  spaceId: z.string(),
+  scopeSlug: z.string(),
+  scopeId: z.string(),
+  teamId: z.string().optional(),
+});
 
 /** @internal */
-export type Two$Outbound = {
+export type FavoriteProjectsAndSpaces2$Outbound = {
   spaceId: string;
   scopeSlug: string;
   scopeId: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({
-    spaceId: z.string(),
-    scopeSlug: z.string(),
-    scopeId: z.string(),
-  });
+export const FavoriteProjectsAndSpaces2$outboundSchema: z.ZodType<
+  FavoriteProjectsAndSpaces2$Outbound,
+  z.ZodTypeDef,
+  FavoriteProjectsAndSpaces2
+> = z.object({
+  spaceId: z.string(),
+  scopeSlug: z.string(),
+  scopeId: z.string(),
+  teamId: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-  /** @deprecated use `Two$Outbound` instead. */
-  export type Outbound = Two$Outbound;
+export namespace FavoriteProjectsAndSpaces2$ {
+  /** @deprecated use `FavoriteProjectsAndSpaces2$inboundSchema` instead. */
+  export const inboundSchema = FavoriteProjectsAndSpaces2$inboundSchema;
+  /** @deprecated use `FavoriteProjectsAndSpaces2$outboundSchema` instead. */
+  export const outboundSchema = FavoriteProjectsAndSpaces2$outboundSchema;
+  /** @deprecated use `FavoriteProjectsAndSpaces2$Outbound` instead. */
+  export type Outbound = FavoriteProjectsAndSpaces2$Outbound;
 }
 
-export function twoToJSON(two: Two): string {
-  return JSON.stringify(Two$outboundSchema.parse(two));
+export function favoriteProjectsAndSpaces2ToJSON(
+  favoriteProjectsAndSpaces2: FavoriteProjectsAndSpaces2,
+): string {
+  return JSON.stringify(
+    FavoriteProjectsAndSpaces2$outboundSchema.parse(favoriteProjectsAndSpaces2),
+  );
 }
 
-export function twoFromJSON(
+export function favoriteProjectsAndSpaces2FromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<FavoriteProjectsAndSpaces2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) => FavoriteProjectsAndSpaces2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FavoriteProjectsAndSpaces2' from JSON`,
   );
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    projectId: z.string(),
-    scopeSlug: z.string(),
-    scopeId: z.string(),
-  });
+export const FavoriteProjectsAndSpaces1$inboundSchema: z.ZodType<
+  FavoriteProjectsAndSpaces1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.string(),
+  scopeSlug: z.string(),
+  scopeId: z.string(),
+  teamId: z.string().optional(),
+});
 
 /** @internal */
-export type One$Outbound = {
+export type FavoriteProjectsAndSpaces1$Outbound = {
   projectId: string;
   scopeSlug: string;
   scopeId: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({
-    projectId: z.string(),
-    scopeSlug: z.string(),
-    scopeId: z.string(),
-  });
+export const FavoriteProjectsAndSpaces1$outboundSchema: z.ZodType<
+  FavoriteProjectsAndSpaces1$Outbound,
+  z.ZodTypeDef,
+  FavoriteProjectsAndSpaces1
+> = z.object({
+  projectId: z.string(),
+  scopeSlug: z.string(),
+  scopeId: z.string(),
+  teamId: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
+export namespace FavoriteProjectsAndSpaces1$ {
+  /** @deprecated use `FavoriteProjectsAndSpaces1$inboundSchema` instead. */
+  export const inboundSchema = FavoriteProjectsAndSpaces1$inboundSchema;
+  /** @deprecated use `FavoriteProjectsAndSpaces1$outboundSchema` instead. */
+  export const outboundSchema = FavoriteProjectsAndSpaces1$outboundSchema;
+  /** @deprecated use `FavoriteProjectsAndSpaces1$Outbound` instead. */
+  export type Outbound = FavoriteProjectsAndSpaces1$Outbound;
 }
 
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
+export function favoriteProjectsAndSpaces1ToJSON(
+  favoriteProjectsAndSpaces1: FavoriteProjectsAndSpaces1,
+): string {
+  return JSON.stringify(
+    FavoriteProjectsAndSpaces1$outboundSchema.parse(favoriteProjectsAndSpaces1),
+  );
 }
 
-export function oneFromJSON(
+export function favoriteProjectsAndSpaces1FromJSON(
   jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
+): SafeParseResult<FavoriteProjectsAndSpaces1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
+    (x) => FavoriteProjectsAndSpaces1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FavoriteProjectsAndSpaces1' from JSON`,
   );
 }
 
@@ -1209,10 +1240,15 @@ export const FavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
   FavoriteProjectsAndSpaces,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+> = z.union([
+  z.lazy(() => FavoriteProjectsAndSpaces1$inboundSchema),
+  z.lazy(() => FavoriteProjectsAndSpaces2$inboundSchema),
+]);
 
 /** @internal */
-export type FavoriteProjectsAndSpaces$Outbound = One$Outbound | Two$Outbound;
+export type FavoriteProjectsAndSpaces$Outbound =
+  | FavoriteProjectsAndSpaces1$Outbound
+  | FavoriteProjectsAndSpaces2$Outbound;
 
 /** @internal */
 export const FavoriteProjectsAndSpaces$outboundSchema: z.ZodType<
@@ -1220,8 +1256,8 @@ export const FavoriteProjectsAndSpaces$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FavoriteProjectsAndSpaces
 > = z.union([
-  z.lazy(() => One$outboundSchema),
-  z.lazy(() => Two$outboundSchema),
+  z.lazy(() => FavoriteProjectsAndSpaces1$outboundSchema),
+  z.lazy(() => FavoriteProjectsAndSpaces2$outboundSchema),
 ]);
 
 /**
@@ -1578,7 +1614,10 @@ export const AuthUser$inboundSchema: z.ZodType<
   dismissedToasts: z.array(z.lazy(() => DismissedToasts$inboundSchema))
     .optional(),
   favoriteProjectsAndSpaces: z.array(
-    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
+    z.union([
+      z.lazy(() => FavoriteProjectsAndSpaces1$inboundSchema),
+      z.lazy(() => FavoriteProjectsAndSpaces2$inboundSchema),
+    ]),
   ).optional(),
   hasTrialAvailable: z.boolean(),
   remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
@@ -1609,7 +1648,11 @@ export type AuthUser$Outbound = {
     | Array<PreferredScopesAndGitNamespaces$Outbound>
     | undefined;
   dismissedToasts?: Array<DismissedToasts$Outbound> | undefined;
-  favoriteProjectsAndSpaces?: Array<One$Outbound | Two$Outbound> | undefined;
+  favoriteProjectsAndSpaces?:
+    | Array<
+      FavoriteProjectsAndSpaces1$Outbound | FavoriteProjectsAndSpaces2$Outbound
+    >
+    | undefined;
   hasTrialAvailable: boolean;
   remoteCaching?: RemoteCaching$Outbound | undefined;
   dataCache?: DataCache$Outbound | undefined;
@@ -1651,8 +1694,8 @@ export const AuthUser$outboundSchema: z.ZodType<
     .optional(),
   favoriteProjectsAndSpaces: z.array(
     z.union([
-      z.lazy(() => One$outboundSchema),
-      z.lazy(() => Two$outboundSchema),
+      z.lazy(() => FavoriteProjectsAndSpaces1$outboundSchema),
+      z.lazy(() => FavoriteProjectsAndSpaces2$outboundSchema),
     ]),
   ).optional(),
   hasTrialAvailable: z.boolean(),

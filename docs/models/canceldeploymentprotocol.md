@@ -7,7 +7,7 @@ Must be `http` or `https`.
 ```typescript
 import { CancelDeploymentProtocol } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentProtocol = "http";
+let value: CancelDeploymentProtocol = "https";
 ```
 
 ## Values

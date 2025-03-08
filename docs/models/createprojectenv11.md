@@ -14,6 +14,9 @@ let value: CreateProjectEnv11 = {
   ],
   gitBranch: "feature-1",
   comment: "database connection string for production",
+  customEnvironmentIds: [
+    "env_1234567890",
+  ],
 };
 ```
 
@@ -27,3 +30,4 @@ let value: CreateProjectEnv11 = {
 | `target`                                                                          | [models.OneTarget](../models/onetarget.md)[]                                      | :heavy_check_mark:                                                                | The target environment of the environment variable                                | [<br/>"preview"<br/>]                                                             |
 | `gitBranch`                                                                       | *string*                                                                          | :heavy_minus_sign:                                                                | If defined, the git branch of the environment variable (must have target=preview) | feature-1                                                                         |
 | `comment`                                                                         | *string*                                                                          | :heavy_minus_sign:                                                                | A comment to add context on what this environment variable is for                 | database connection string for production                                         |
+| `customEnvironmentIds`                                                            | *string*[]                                                                        | :heavy_minus_sign:                                                                | The custom environment IDs associated with the environment variable               |                                                                                   |

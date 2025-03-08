@@ -25,7 +25,7 @@ func pathPatchV9ProjectsIDOrName(dir *logging.HTTPFileDirectory, rt *tracking.Re
 		case "updateProject[0]":
 			dir.HandlerFunc("updateProject", testUpdateProjectUpdateProject0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -115,8 +115,18 @@ func testUpdateProjectUpdateProject0(w http.ResponseWriter, req *http.Request) {
 		},
 		Name:        "<value>",
 		NodeVersion: operations.UpdateProjectProjectsNodeVersionFourteenX,
-		Targets: map[string]operations.UpdateProjectTargets{
-			"key": operations.UpdateProjectTargets{
+		ResourceConfig: operations.UpdateProjectResourceConfig{
+			FunctionDefaultRegions: []string{
+				"<value>",
+			},
+		},
+		DefaultResourceConfig: operations.UpdateProjectDefaultResourceConfig{
+			FunctionDefaultRegions: []string{
+				"<value>",
+			},
+		},
+		Targets: map[string]*operations.UpdateProjectTargets{
+			"key": &operations.UpdateProjectTargets{
 				ID:        "<id>",
 				CreatedAt: 5163.13,
 				CreatedIn: "<value>",

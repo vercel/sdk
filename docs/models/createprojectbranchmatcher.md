@@ -6,7 +6,7 @@
 import { CreateProjectBranchMatcher } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectBranchMatcher = {
-  type: "endsWith",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

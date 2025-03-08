@@ -5,7 +5,7 @@
 ```typescript
 import { RemoveProjectEnvResponseBodyProjectsType } from "@vercel/sdk/models/removeprojectenvop.js";
 
-let value: RemoveProjectEnvResponseBodyProjectsType = "sensitive";
+let value: RemoveProjectEnvResponseBodyProjectsType = "encrypted";
 ```
 
 ## Values

@@ -24,7 +24,7 @@ func pathDeleteV1TeamsTeamIDInvitesInviteID(dir *logging.HTTPFileDirectory, rt *
 		case "deleteTeamInviteCode[0]":
 			dir.HandlerFunc("deleteTeamInviteCode", testDeleteTeamInviteCodeDeleteTeamInviteCode0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

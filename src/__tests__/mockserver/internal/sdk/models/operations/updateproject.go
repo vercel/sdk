@@ -18,6 +18,7 @@ const (
 	UpdateProjectFrameworkNextjs         UpdateProjectFramework = "nextjs"
 	UpdateProjectFrameworkGatsby         UpdateProjectFramework = "gatsby"
 	UpdateProjectFrameworkRemix          UpdateProjectFramework = "remix"
+	UpdateProjectFrameworkReactRouter    UpdateProjectFramework = "react-router"
 	UpdateProjectFrameworkAstro          UpdateProjectFramework = "astro"
 	UpdateProjectFrameworkHexo           UpdateProjectFramework = "hexo"
 	UpdateProjectFrameworkEleventy       UpdateProjectFramework = "eleventy"
@@ -77,6 +78,8 @@ func (e *UpdateProjectFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough
@@ -1185,10 +1188,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1202,13 +1205,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -2054,10 +2057,10 @@ func (u *UpdateProjectContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateProjectContentHint9 UpdateProjectContentHint9 = UpdateProjectContentHint9{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint9, "", true, true); err == nil {
-		u.UpdateProjectContentHint9 = &updateProjectContentHint9
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint9
+	var updateProjectContentHint11 UpdateProjectContentHint11 = UpdateProjectContentHint11{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHint11, "", true, true); err == nil {
+		u.UpdateProjectContentHint11 = &updateProjectContentHint11
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint11
 		return nil
 	}
 
@@ -2096,10 +2099,10 @@ func (u *UpdateProjectContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateProjectContentHint8 UpdateProjectContentHint8 = UpdateProjectContentHint8{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint8, "", true, true); err == nil {
-		u.UpdateProjectContentHint8 = &updateProjectContentHint8
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint8
+	var updateProjectContentHint9 UpdateProjectContentHint9 = UpdateProjectContentHint9{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHint9, "", true, true); err == nil {
+		u.UpdateProjectContentHint9 = &updateProjectContentHint9
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint9
 		return nil
 	}
 
@@ -2117,10 +2120,10 @@ func (u *UpdateProjectContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateProjectContentHint11 UpdateProjectContentHint11 = UpdateProjectContentHint11{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint11, "", true, true); err == nil {
-		u.UpdateProjectContentHint11 = &updateProjectContentHint11
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint11
+	var updateProjectContentHint8 UpdateProjectContentHint8 = UpdateProjectContentHint8{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHint8, "", true, true); err == nil {
+		u.UpdateProjectContentHint8 = &updateProjectContentHint8
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint8
 		return nil
 	}
 
@@ -2439,6 +2442,7 @@ const (
 	UpdateProjectProjectsFrameworkNextjs         UpdateProjectProjectsFramework = "nextjs"
 	UpdateProjectProjectsFrameworkGatsby         UpdateProjectProjectsFramework = "gatsby"
 	UpdateProjectProjectsFrameworkRemix          UpdateProjectProjectsFramework = "remix"
+	UpdateProjectProjectsFrameworkReactRouter    UpdateProjectProjectsFramework = "react-router"
 	UpdateProjectProjectsFrameworkAstro          UpdateProjectProjectsFramework = "astro"
 	UpdateProjectProjectsFrameworkHexo           UpdateProjectProjectsFramework = "hexo"
 	UpdateProjectProjectsFrameworkEleventy       UpdateProjectProjectsFramework = "eleventy"
@@ -2498,6 +2502,8 @@ func (e *UpdateProjectProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough
@@ -3932,7 +3938,34 @@ func (u UpdateProjectLink) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateProjectLink: all fields are null")
 }
 
-type UpdateProjectMicrofrontends struct {
+type UpdateProjectMicrofrontends2 struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	GroupIds  []any   `json:"groupIds"`
+	Enabled   bool    `json:"enabled"`
+}
+
+func (o *UpdateProjectMicrofrontends2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectMicrofrontends2) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *UpdateProjectMicrofrontends2) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type UpdateProjectMicrofrontends1 struct {
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
@@ -3943,41 +3976,113 @@ type UpdateProjectMicrofrontends struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
-func (o *UpdateProjectMicrofrontends) GetUpdatedAt() float64 {
+func (o *UpdateProjectMicrofrontends1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *UpdateProjectMicrofrontends) GetGroupIds() []string {
+func (o *UpdateProjectMicrofrontends1) GetGroupIds() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.GroupIds
 }
 
-func (o *UpdateProjectMicrofrontends) GetEnabled() bool {
+func (o *UpdateProjectMicrofrontends1) GetEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.Enabled
 }
 
-func (o *UpdateProjectMicrofrontends) GetIsDefaultApp() *bool {
+func (o *UpdateProjectMicrofrontends1) GetIsDefaultApp() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsDefaultApp
 }
 
-func (o *UpdateProjectMicrofrontends) GetDefaultRoute() *string {
+func (o *UpdateProjectMicrofrontends1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultRoute
+}
+
+func (o *UpdateProjectMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+type UpdateProjectMicrofrontendsType string
+
+const (
+	UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1 UpdateProjectMicrofrontendsType = "updateProject_microfrontends_1"
+	UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2 UpdateProjectMicrofrontendsType = "updateProject_microfrontends_2"
+)
+
+type UpdateProjectMicrofrontends struct {
+	UpdateProjectMicrofrontends1 *UpdateProjectMicrofrontends1
+	UpdateProjectMicrofrontends2 *UpdateProjectMicrofrontends2
+
+	Type UpdateProjectMicrofrontendsType
+}
+
+func CreateUpdateProjectMicrofrontendsUpdateProjectMicrofrontends1(updateProjectMicrofrontends1 UpdateProjectMicrofrontends1) UpdateProjectMicrofrontends {
+	typ := UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1
+
+	return UpdateProjectMicrofrontends{
+		UpdateProjectMicrofrontends1: &updateProjectMicrofrontends1,
+		Type:                         typ,
+	}
+}
+
+func CreateUpdateProjectMicrofrontendsUpdateProjectMicrofrontends2(updateProjectMicrofrontends2 UpdateProjectMicrofrontends2) UpdateProjectMicrofrontends {
+	typ := UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2
+
+	return UpdateProjectMicrofrontends{
+		UpdateProjectMicrofrontends2: &updateProjectMicrofrontends2,
+		Type:                         typ,
+	}
+}
+
+func (u *UpdateProjectMicrofrontends) UnmarshalJSON(data []byte) error {
+
+	var updateProjectMicrofrontends2 UpdateProjectMicrofrontends2 = UpdateProjectMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends2, "", true, true); err == nil {
+		u.UpdateProjectMicrofrontends2 = &updateProjectMicrofrontends2
+		u.Type = UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2
+		return nil
+	}
+
+	var updateProjectMicrofrontends1 UpdateProjectMicrofrontends1 = UpdateProjectMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends1, "", true, true); err == nil {
+		u.UpdateProjectMicrofrontends1 = &updateProjectMicrofrontends1
+		u.Type = UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectMicrofrontends", string(data))
+}
+
+func (u UpdateProjectMicrofrontends) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectMicrofrontends1 != nil {
+		return utils.MarshalJSON(u.UpdateProjectMicrofrontends1, "", true)
+	}
+
+	if u.UpdateProjectMicrofrontends2 != nil {
+		return utils.MarshalJSON(u.UpdateProjectMicrofrontends2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateProjectMicrofrontends: all fields are null")
 }
 
 type UpdateProjectProjectsNodeVersion string
@@ -4080,11 +4185,10 @@ func (e *UpdateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) erro
 
 type UpdateProjectResourceConfig struct {
 	Fluid                      *bool                                   `json:"fluid,omitempty"`
-	FunctionDefaultRegion      *string                                 `json:"functionDefaultRegion,omitempty"`
+	FunctionDefaultRegions     []string                                `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *UpdateProjectFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                   `json:"functionZeroConfigFailover,omitempty"`
-	AllowServerlessConcurrency *bool                                   `json:"allowServerlessConcurrency,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                   `json:"elasticConcurrencyEnabled,omitempty"`
 }
 
@@ -4095,11 +4199,11 @@ func (o *UpdateProjectResourceConfig) GetFluid() *bool {
 	return o.Fluid
 }
 
-func (o *UpdateProjectResourceConfig) GetFunctionDefaultRegion() *string {
+func (o *UpdateProjectResourceConfig) GetFunctionDefaultRegions() []string {
 	if o == nil {
-		return nil
+		return []string{}
 	}
-	return o.FunctionDefaultRegion
+	return o.FunctionDefaultRegions
 }
 
 func (o *UpdateProjectResourceConfig) GetFunctionDefaultTimeout() *float64 {
@@ -4123,14 +4227,130 @@ func (o *UpdateProjectResourceConfig) GetFunctionZeroConfigFailover() *bool {
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *UpdateProjectResourceConfig) GetAllowServerlessConcurrency() *bool {
+func (o *UpdateProjectResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.AllowServerlessConcurrency
+	return o.ElasticConcurrencyEnabled
 }
 
-func (o *UpdateProjectResourceConfig) GetElasticConcurrencyEnabled() *bool {
+// UpdateProjectStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+type UpdateProjectStages struct {
+	// The percentage of traffic to serve to the new deployment
+	TargetPercentage float64 `json:"targetPercentage"`
+}
+
+func (o *UpdateProjectStages) GetTargetPercentage() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TargetPercentage
+}
+
+type UpdateProjectRollingRelease struct {
+	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+	Target string `json:"target"`
+	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%.
+	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
+	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+	Stages []UpdateProjectStages `json:"stages,omitempty"`
+}
+
+func (o *UpdateProjectRollingRelease) GetTarget() string {
+	if o == nil {
+		return ""
+	}
+	return o.Target
+}
+
+func (o *UpdateProjectRollingRelease) GetMinutesToRelease() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinutesToRelease
+}
+
+func (o *UpdateProjectRollingRelease) GetStages() []UpdateProjectStages {
+	if o == nil {
+		return nil
+	}
+	return o.Stages
+}
+
+type UpdateProjectProjectsFunctionDefaultMemoryType string
+
+const (
+	UpdateProjectProjectsFunctionDefaultMemoryTypeStandardLegacy UpdateProjectProjectsFunctionDefaultMemoryType = "standard_legacy"
+	UpdateProjectProjectsFunctionDefaultMemoryTypeStandard       UpdateProjectProjectsFunctionDefaultMemoryType = "standard"
+	UpdateProjectProjectsFunctionDefaultMemoryTypePerformance    UpdateProjectProjectsFunctionDefaultMemoryType = "performance"
+)
+
+func (e UpdateProjectProjectsFunctionDefaultMemoryType) ToPointer() *UpdateProjectProjectsFunctionDefaultMemoryType {
+	return &e
+}
+func (e *UpdateProjectProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard_legacy":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "performance":
+		*e = UpdateProjectProjectsFunctionDefaultMemoryType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectProjectsFunctionDefaultMemoryType: %v", v)
+	}
+}
+
+type UpdateProjectDefaultResourceConfig struct {
+	Fluid                      *bool                                           `json:"fluid,omitempty"`
+	FunctionDefaultRegions     []string                                        `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout     *float64                                        `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType  *UpdateProjectProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover *bool                                           `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                           `json:"elasticConcurrencyEnabled,omitempty"`
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectProjectsFunctionDefaultMemoryType {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
@@ -4922,6 +5142,11 @@ func (o *UpdateProjectTargets) GetWithCache() *bool {
 }
 
 type UpdateProjectPermissions struct {
+	User                                     []components.ACLAction `json:"user,omitempty"`
+	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
+	UserSudo                                 []components.ACLAction `json:"userSudo,omitempty"`
+	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
+	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
 	AnalyticsSampling                        []components.ACLAction `json:"analyticsSampling,omitempty"`
@@ -4956,8 +5181,10 @@ type UpdateProjectPermissions struct {
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
 	SensitiveEnvironmentVariablePolicy       []components.ACLAction `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
 	FileUpload                               []components.ACLAction `json:"fileUpload,omitempty"`
+	FlagsExplorerSubscription                []components.ACLAction `json:"flagsExplorerSubscription,omitempty"`
 	GitRepository                            []components.ACLAction `json:"gitRepository,omitempty"`
 	IPBlocking                               []components.ACLAction `json:"ipBlocking,omitempty"`
+	ImageOptimizationNewPrice                []components.ACLAction `json:"imageOptimizationNewPrice,omitempty"`
 	Integration                              []components.ACLAction `json:"integration,omitempty"`
 	IntegrationAccount                       []components.ACLAction `json:"integrationAccount,omitempty"`
 	IntegrationConfiguration                 []components.ACLAction `json:"integrationConfiguration,omitempty"`
@@ -4965,6 +5192,7 @@ type UpdateProjectPermissions struct {
 	IntegrationConfigurationProjects         []components.ACLAction `json:"integrationConfigurationProjects,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
 	IntegrationConfigurationRole             []components.ACLAction `json:"integrationConfigurationRole,omitempty"`
+	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
 	IntegrationResource                      []components.ACLAction `json:"integrationResource,omitempty"`
 	IntegrationEvent                         []components.ACLAction `json:"integrationEvent,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
@@ -4972,7 +5200,10 @@ type UpdateProjectPermissions struct {
 	MarketplaceInstallationMember            []components.ACLAction `json:"marketplaceInstallationMember,omitempty"`
 	MarketplaceBillingData                   []components.ACLAction `json:"marketplaceBillingData,omitempty"`
 	MarketplaceInvoice                       []components.ACLAction `json:"marketplaceInvoice,omitempty"`
+	MarketplaceExperimentationItem           []components.ACLAction `json:"marketplaceExperimentationItem,omitempty"`
+	MarketplaceExperimentationEdgeConfigData []components.ACLAction `json:"marketplaceExperimentationEdgeConfigData,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
+	Drain                                    []components.ACLAction `json:"drain,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
 	Monitoring                               []components.ACLAction `json:"Monitoring,omitempty"`
 	MonitoringSettings                       []components.ACLAction `json:"monitoringSettings,omitempty"`
@@ -4992,7 +5223,6 @@ type UpdateProjectPermissions struct {
 	NotificationUsageAlert                   []components.ACLAction `json:"notificationUsageAlert,omitempty"`
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
-	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -5033,11 +5263,8 @@ type UpdateProjectPermissions struct {
 	Token                                    []components.ACLAction `json:"token,omitempty"`
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
-	User                                     []components.ACLAction `json:"user,omitempty"`
-	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	VpcPeeringConnection                     []components.ACLAction `json:"vpcPeeringConnection,omitempty"`
 	WebAnalyticsPlan                         []components.ACLAction `json:"webAnalyticsPlan,omitempty"`
-	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
 	EdgeConfig                               []components.ACLAction `json:"edgeConfig,omitempty"`
 	EdgeConfigItem                           []components.ACLAction `json:"edgeConfigItem,omitempty"`
 	EdgeConfigSchema                         []components.ACLAction `json:"edgeConfigSchema,omitempty"`
@@ -5096,6 +5323,7 @@ type UpdateProjectPermissions struct {
 	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
 	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
@@ -5104,6 +5332,41 @@ type UpdateProjectPermissions struct {
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
+}
+
+func (o *UpdateProjectPermissions) GetUser() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}
+
+func (o *UpdateProjectPermissions) GetUserConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.UserConnection
+}
+
+func (o *UpdateProjectPermissions) GetUserSudo() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.UserSudo
+}
+
+func (o *UpdateProjectPermissions) GetWebAuthn() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAuthn
+}
+
+func (o *UpdateProjectPermissions) GetOauth2Connection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2Connection
 }
 
 func (o *UpdateProjectPermissions) GetAccessGroup() []components.ACLAction {
@@ -5344,6 +5607,13 @@ func (o *UpdateProjectPermissions) GetFileUpload() []components.ACLAction {
 	return o.FileUpload
 }
 
+func (o *UpdateProjectPermissions) GetFlagsExplorerSubscription() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerSubscription
+}
+
 func (o *UpdateProjectPermissions) GetGitRepository() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5356,6 +5626,13 @@ func (o *UpdateProjectPermissions) GetIPBlocking() []components.ACLAction {
 		return nil
 	}
 	return o.IPBlocking
+}
+
+func (o *UpdateProjectPermissions) GetImageOptimizationNewPrice() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationNewPrice
 }
 
 func (o *UpdateProjectPermissions) GetIntegration() []components.ACLAction {
@@ -5407,6 +5684,13 @@ func (o *UpdateProjectPermissions) GetIntegrationConfigurationRole() []component
 	return o.IntegrationConfigurationRole
 }
 
+func (o *UpdateProjectPermissions) GetIntegrationSSOSession() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationSSOSession
+}
+
 func (o *UpdateProjectPermissions) GetIntegrationResource() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5456,11 +5740,32 @@ func (o *UpdateProjectPermissions) GetMarketplaceInvoice() []components.ACLActio
 	return o.MarketplaceInvoice
 }
 
+func (o *UpdateProjectPermissions) GetMarketplaceExperimentationItem() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceExperimentationItem
+}
+
+func (o *UpdateProjectPermissions) GetMarketplaceExperimentationEdgeConfigData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceExperimentationEdgeConfigData
+}
+
 func (o *UpdateProjectPermissions) GetJobGlobal() []components.ACLAction {
 	if o == nil {
 		return nil
 	}
 	return o.JobGlobal
+}
+
+func (o *UpdateProjectPermissions) GetDrain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Drain
 }
 
 func (o *UpdateProjectPermissions) GetLogDrain() []components.ACLAction {
@@ -5594,13 +5899,6 @@ func (o *UpdateProjectPermissions) GetNotificationStatementOfReasons() []compone
 		return nil
 	}
 	return o.NotificationStatementOfReasons
-}
-
-func (o *UpdateProjectPermissions) GetOauth2Connection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Oauth2Connection
 }
 
 func (o *UpdateProjectPermissions) GetObservabilityConfiguration() []components.ACLAction {
@@ -5883,20 +6181,6 @@ func (o *UpdateProjectPermissions) GetUsageCycle() []components.ACLAction {
 	return o.UsageCycle
 }
 
-func (o *UpdateProjectPermissions) GetUser() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.User
-}
-
-func (o *UpdateProjectPermissions) GetUserConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.UserConnection
-}
-
 func (o *UpdateProjectPermissions) GetVpcPeeringConnection() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5909,13 +6193,6 @@ func (o *UpdateProjectPermissions) GetWebAnalyticsPlan() []components.ACLAction 
 		return nil
 	}
 	return o.WebAnalyticsPlan
-}
-
-func (o *UpdateProjectPermissions) GetWebAuthn() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAuthn
 }
 
 func (o *UpdateProjectPermissions) GetEdgeConfig() []components.ACLAction {
@@ -6322,6 +6599,13 @@ func (o *UpdateProjectPermissions) GetProjectDeploymentExpiration() []components
 		return nil
 	}
 	return o.ProjectDeploymentExpiration
+}
+
+func (o *UpdateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
 }
 
 func (o *UpdateProjectPermissions) GetProjectTier() []components.ACLAction {
@@ -6766,6 +7050,45 @@ func (o *UpdateProjectGitComments) GetOnCommit() bool {
 		return false
 	}
 	return o.OnCommit
+}
+
+// UpdateProjectCreateDeployments - Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+type UpdateProjectCreateDeployments string
+
+const (
+	UpdateProjectCreateDeploymentsEnabled  UpdateProjectCreateDeployments = "enabled"
+	UpdateProjectCreateDeploymentsDisabled UpdateProjectCreateDeployments = "disabled"
+)
+
+func (e UpdateProjectCreateDeployments) ToPointer() *UpdateProjectCreateDeployments {
+	return &e
+}
+func (e *UpdateProjectCreateDeployments) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = UpdateProjectCreateDeployments(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectCreateDeployments: %v", v)
+	}
+}
+
+type UpdateProjectGitProviderOptions struct {
+	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+	CreateDeployments UpdateProjectCreateDeployments `json:"createDeployments"`
+}
+
+func (o *UpdateProjectGitProviderOptions) GetCreateDeployments() UpdateProjectCreateDeployments {
+	if o == nil {
+		return UpdateProjectCreateDeployments("")
+	}
+	return o.CreateDeployments
 }
 
 type UpdateProjectWebAnalytics struct {
@@ -7465,21 +7788,21 @@ func (e *UpdateProjectHandle) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectAction string
+type UpdateProjectProjectsAction string
 
 const (
-	UpdateProjectActionDeny      UpdateProjectAction = "deny"
-	UpdateProjectActionChallenge UpdateProjectAction = "challenge"
-	UpdateProjectActionLog       UpdateProjectAction = "log"
-	UpdateProjectActionBypass    UpdateProjectAction = "bypass"
-	UpdateProjectActionRateLimit UpdateProjectAction = "rate_limit"
-	UpdateProjectActionRedirect  UpdateProjectAction = "redirect"
+	UpdateProjectProjectsActionDeny      UpdateProjectProjectsAction = "deny"
+	UpdateProjectProjectsActionChallenge UpdateProjectProjectsAction = "challenge"
+	UpdateProjectProjectsActionLog       UpdateProjectProjectsAction = "log"
+	UpdateProjectProjectsActionBypass    UpdateProjectProjectsAction = "bypass"
+	UpdateProjectProjectsActionRateLimit UpdateProjectProjectsAction = "rate_limit"
+	UpdateProjectProjectsActionRedirect  UpdateProjectProjectsAction = "redirect"
 )
 
-func (e UpdateProjectAction) ToPointer() *UpdateProjectAction {
+func (e UpdateProjectProjectsAction) ToPointer() *UpdateProjectProjectsAction {
 	return &e
 }
-func (e *UpdateProjectAction) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectProjectsAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7496,10 +7819,10 @@ func (e *UpdateProjectAction) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = UpdateProjectAction(v)
+		*e = UpdateProjectProjectsAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectAction: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectProjectsAction: %v", v)
 	}
 }
 
@@ -7565,15 +7888,15 @@ func (o *UpdateProjectErl) GetKeys() []string {
 }
 
 type UpdateProjectMitigate struct {
-	Action UpdateProjectAction `json:"action"`
-	RuleID string              `json:"rule_id"`
-	TTL    *float64            `json:"ttl,omitempty"`
-	Erl    *UpdateProjectErl   `json:"erl,omitempty"`
+	Action UpdateProjectProjectsAction `json:"action"`
+	RuleID string                      `json:"rule_id"`
+	TTL    *float64                    `json:"ttl,omitempty"`
+	Erl    *UpdateProjectErl           `json:"erl,omitempty"`
 }
 
-func (o *UpdateProjectMitigate) GetAction() UpdateProjectAction {
+func (o *UpdateProjectMitigate) GetAction() UpdateProjectProjectsAction {
 	if o == nil {
-		return UpdateProjectAction("")
+		return UpdateProjectProjectsAction("")
 	}
 	return o.Action
 }
@@ -7658,18 +7981,67 @@ func (o *UpdateProjectFirewallRoutes) GetMitigate() *UpdateProjectMitigate {
 	return o.Mitigate
 }
 
+type UpdateProjectAction string
+
+const (
+	UpdateProjectActionDeny      UpdateProjectAction = "deny"
+	UpdateProjectActionChallenge UpdateProjectAction = "challenge"
+	UpdateProjectActionLog       UpdateProjectAction = "log"
+)
+
+func (e UpdateProjectAction) ToPointer() *UpdateProjectAction {
+	return &e
+}
+func (e *UpdateProjectAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "log":
+		*e = UpdateProjectAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectAction: %v", v)
+	}
+}
+
+type UpdateProjectManagedRules struct {
+	Active bool                 `json:"active"`
+	Action *UpdateProjectAction `json:"action,omitempty"`
+}
+
+func (o *UpdateProjectManagedRules) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateProjectManagedRules) GetAction() *UpdateProjectAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type UpdateProjectSecurity struct {
-	AttackModeEnabled      *bool                         `json:"attackModeEnabled,omitempty"`
-	AttackModeUpdatedAt    *float64                      `json:"attackModeUpdatedAt,omitempty"`
-	FirewallEnabled        *bool                         `json:"firewallEnabled,omitempty"`
-	FirewallUpdatedAt      *float64                      `json:"firewallUpdatedAt,omitempty"`
-	AttackModeActiveUntil  *float64                      `json:"attackModeActiveUntil,omitempty"`
-	FirewallConfigVersion  *float64                      `json:"firewallConfigVersion,omitempty"`
-	FirewallRoutes         []UpdateProjectFirewallRoutes `json:"firewallRoutes,omitempty"`
-	FirewallSeawallEnabled *bool                         `json:"firewallSeawallEnabled,omitempty"`
-	Ja3Enabled             *bool                         `json:"ja3Enabled,omitempty"`
-	Ja4Enabled             *bool                         `json:"ja4Enabled,omitempty"`
-	FirewallBypassIps      []string                      `json:"firewallBypassIps,omitempty"`
+	AttackModeEnabled      *bool                                `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                             `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                                `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                             `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  *float64                             `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                             `json:"firewallConfigVersion,omitempty"`
+	FirewallRoutes         []UpdateProjectFirewallRoutes        `json:"firewallRoutes,omitempty"`
+	FirewallSeawallEnabled *bool                                `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                                `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                                `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                             `json:"firewallBypassIps,omitempty"`
+	ManagedRules           map[string]UpdateProjectManagedRules `json:"managedRules,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -7747,6 +8119,13 @@ func (o *UpdateProjectSecurity) GetFirewallBypassIps() []string {
 		return nil
 	}
 	return o.FirewallBypassIps
+}
+
+func (o *UpdateProjectSecurity) GetManagedRules() map[string]UpdateProjectManagedRules {
+	if o == nil {
+		return nil
+	}
+	return o.ManagedRules
 }
 
 // UpdateProjectProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -7863,7 +8242,9 @@ type UpdateProjectResponseBody struct {
 	PasswordProtection                   *UpdateProjectPasswordProtection         `json:"passwordProtection,omitempty"`
 	ProductionDeploymentsFastLane        *bool                                    `json:"productionDeploymentsFastLane,omitempty"`
 	PublicSource                         *bool                                    `json:"publicSource,omitempty"`
-	ResourceConfig                       *UpdateProjectResourceConfig             `json:"resourceConfig,omitempty"`
+	ResourceConfig                       UpdateProjectResourceConfig              `json:"resourceConfig"`
+	RollingRelease                       *UpdateProjectRollingRelease             `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                UpdateProjectDefaultResourceConfig       `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                  `json:"rootDirectory,omitempty"`
 	ServerlessFunctionRegion             *string                                  `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                    `json:"serverlessFunctionZeroConfigFailover,omitempty"`
@@ -7873,7 +8254,7 @@ type UpdateProjectResponseBody struct {
 	SourceFilesOutsideRootDirectory      *bool                                    `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                    `json:"enableAffectedProjectsDeployments,omitempty"`
 	SsoProtection                        *UpdateProjectSsoProtection              `json:"ssoProtection,omitempty"`
-	Targets                              map[string]UpdateProjectTargets          `json:"targets,omitempty"`
+	Targets                              map[string]*UpdateProjectTargets         `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                                 `json:"transferCompletedAt,omitempty"`
 	TransferStartedAt                    *float64                                 `json:"transferStartedAt,omitempty"`
 	TransferToAccountID                  *string                                  `json:"transferToAccountId,omitempty"`
@@ -7885,11 +8266,11 @@ type UpdateProjectResponseBody struct {
 	Permissions                          *UpdateProjectPermissions                `json:"permissions,omitempty"`
 	LastRollbackTarget                   *UpdateProjectLastRollbackTarget         `json:"lastRollbackTarget,omitempty"`
 	LastAliasRequest                     *UpdateProjectLastAliasRequest           `json:"lastAliasRequest,omitempty"`
-	HasFloatingAliases                   *bool                                    `json:"hasFloatingAliases,omitempty"`
 	ProtectionBypass                     map[string]UpdateProjectProtectionBypass `json:"protectionBypass,omitempty"`
 	HasActiveBranches                    *bool                                    `json:"hasActiveBranches,omitempty"`
 	TrustedIps                           *UpdateProjectTrustedIps                 `json:"trustedIps,omitempty"`
 	GitComments                          *UpdateProjectGitComments                `json:"gitComments,omitempty"`
+	GitProviderOptions                   *UpdateProjectGitProviderOptions         `json:"gitProviderOptions,omitempty"`
 	Paused                               *bool                                    `json:"paused,omitempty"`
 	ConcurrencyBucketName                *string                                  `json:"concurrencyBucketName,omitempty"`
 	WebAnalytics                         *UpdateProjectWebAnalytics               `json:"webAnalytics,omitempty"`
@@ -8150,11 +8531,25 @@ func (o *UpdateProjectResponseBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *UpdateProjectResponseBody) GetResourceConfig() *UpdateProjectResourceConfig {
+func (o *UpdateProjectResponseBody) GetResourceConfig() UpdateProjectResourceConfig {
+	if o == nil {
+		return UpdateProjectResourceConfig{}
+	}
+	return o.ResourceConfig
+}
+
+func (o *UpdateProjectResponseBody) GetRollingRelease() *UpdateProjectRollingRelease {
 	if o == nil {
 		return nil
 	}
-	return o.ResourceConfig
+	return o.RollingRelease
+}
+
+func (o *UpdateProjectResponseBody) GetDefaultResourceConfig() UpdateProjectDefaultResourceConfig {
+	if o == nil {
+		return UpdateProjectDefaultResourceConfig{}
+	}
+	return o.DefaultResourceConfig
 }
 
 func (o *UpdateProjectResponseBody) GetRootDirectory() *string {
@@ -8220,7 +8615,7 @@ func (o *UpdateProjectResponseBody) GetSsoProtection() *UpdateProjectSsoProtecti
 	return o.SsoProtection
 }
 
-func (o *UpdateProjectResponseBody) GetTargets() map[string]UpdateProjectTargets {
+func (o *UpdateProjectResponseBody) GetTargets() map[string]*UpdateProjectTargets {
 	if o == nil {
 		return nil
 	}
@@ -8304,13 +8699,6 @@ func (o *UpdateProjectResponseBody) GetLastAliasRequest() *UpdateProjectLastAlia
 	return o.LastAliasRequest
 }
 
-func (o *UpdateProjectResponseBody) GetHasFloatingAliases() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasFloatingAliases
-}
-
 func (o *UpdateProjectResponseBody) GetProtectionBypass() map[string]UpdateProjectProtectionBypass {
 	if o == nil {
 		return nil
@@ -8337,6 +8725,13 @@ func (o *UpdateProjectResponseBody) GetGitComments() *UpdateProjectGitComments {
 		return nil
 	}
 	return o.GitComments
+}
+
+func (o *UpdateProjectResponseBody) GetGitProviderOptions() *UpdateProjectGitProviderOptions {
+	if o == nil {
+		return nil
+	}
+	return o.GitProviderOptions
 }
 
 func (o *UpdateProjectResponseBody) GetPaused() *bool {

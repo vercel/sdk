@@ -25,7 +25,7 @@ func pathPostV2DomainsDomainRecords(dir *logging.HTTPFileDirectory, rt *tracking
 		case "createRecord[0]":
 			dir.HandlerFunc("createRecord", testCreateRecordCreateRecord0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

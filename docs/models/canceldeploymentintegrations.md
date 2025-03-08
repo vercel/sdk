@@ -6,8 +6,8 @@
 import { CancelDeploymentIntegrations } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentIntegrations = {
-  status: "timeout",
-  startedAt: 9121.51,
+  status: "ready",
+  startedAt: 5265.84,
 };
 ```
 

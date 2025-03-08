@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Checks Create Check", async () => {
+  const testHttpClient = createTestHTTPClient("createCheck");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createCheck"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -40,9 +42,11 @@ test("Checks Create Check", async () => {
 });
 
 test("Checks Get All Checks", async () => {
+  const testHttpClient = createTestHTTPClient("getAllChecks");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getAllChecks"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -68,9 +72,11 @@ test("Checks Get All Checks", async () => {
 });
 
 test("Checks Get Check", async () => {
+  const testHttpClient = createTestHTTPClient("getCheck");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getCheck"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -94,9 +100,11 @@ test("Checks Get Check", async () => {
 });
 
 test("Checks Update Check", async () => {
+  const testHttpClient = createTestHTTPClient("updateCheck");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateCheck"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -155,9 +163,11 @@ test("Checks Update Check", async () => {
 });
 
 test("Checks Rerequest Check", async () => {
+  const testHttpClient = createTestHTTPClient("rerequestCheck");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("rerequestCheck"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Certs Get Cert By Id", async () => {
+  const testHttpClient = createTestHTTPClient("getCertById");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getCertById"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -31,9 +33,11 @@ test("Certs Get Cert By Id", async () => {
 });
 
 test("Certs Remove Cert", async () => {
+  const testHttpClient = createTestHTTPClient("removeCert");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeCert"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -47,9 +51,11 @@ test("Certs Remove Cert", async () => {
 });
 
 test("Certs Issue Cert", async () => {
+  const testHttpClient = createTestHTTPClient("issueCert");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("issueCert"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -69,9 +75,11 @@ test("Certs Issue Cert", async () => {
 });
 
 test("Certs Upload Cert", async () => {
+  const testHttpClient = createTestHTTPClient("uploadCert");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("uploadCert"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

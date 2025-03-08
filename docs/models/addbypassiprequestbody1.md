@@ -6,16 +6,17 @@
 import { AddBypassIpRequestBody1 } from "@vercel/sdk/models/addbypassipop.js";
 
 let value: AddBypassIpRequestBody1 = {
-  domain: "fruitful-populist.com",
+  domain: "different-tennis.org",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `projectScope`     | *boolean*          | :heavy_minus_sign: | N/A                |
-| `sourceIp`         | *string*           | :heavy_minus_sign: | N/A                |
-| `allSources`       | *boolean*          | :heavy_minus_sign: | N/A                |
-| `note`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `domain`                                                         | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectScope`                                                   | *boolean*                                                        | :heavy_minus_sign:                                               | If the specified bypass will apply to all domains for a project. |
+| `sourceIp`                                                       | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `allSources`                                                     | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `ttl`                                                            | *number*                                                         | :heavy_minus_sign:                                               | Time to live in milliseconds                                     |
+| `note`                                                           | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |

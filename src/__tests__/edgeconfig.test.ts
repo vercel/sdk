@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Edge Config Get Edge Configs", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigs");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigs"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -27,9 +29,11 @@ test("Edge Config Get Edge Configs", async () => {
 });
 
 test("Edge Config Create Edge Config", async () => {
+  const testHttpClient = createTestHTTPClient("createEdgeConfig");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createEdgeConfig"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -48,9 +52,11 @@ test("Edge Config Create Edge Config", async () => {
 });
 
 test("Edge Config Get Edge Config", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfig");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfig"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -67,9 +73,11 @@ test("Edge Config Get Edge Config", async () => {
 });
 
 test("Edge Config Update Edge Config", async () => {
+  const testHttpClient = createTestHTTPClient("updateEdgeConfig");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateEdgeConfig"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -89,9 +97,11 @@ test("Edge Config Update Edge Config", async () => {
 });
 
 test("Edge Config Delete Edge Config", async () => {
+  const testHttpClient = createTestHTTPClient("deleteEdgeConfig");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteEdgeConfig"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -103,9 +113,11 @@ test("Edge Config Delete Edge Config", async () => {
 });
 
 test("Edge Config Get Edge Config Items", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigItems");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigItems"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -125,9 +137,11 @@ test("Edge Config Get Edge Config Items", async () => {
 });
 
 test("Edge Config Get Edge Config Schema", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigSchema");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigSchema"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -141,9 +155,11 @@ test("Edge Config Get Edge Config Schema", async () => {
 });
 
 test("Edge Config Patch Edge Config Schema", async () => {
+  const testHttpClient = createTestHTTPClient("patchEdgeConfigSchema");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("patchEdgeConfigSchema"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -160,9 +176,11 @@ test("Edge Config Patch Edge Config Schema", async () => {
 });
 
 test("Edge Config Delete Edge Config Schema", async () => {
+  const testHttpClient = createTestHTTPClient("deleteEdgeConfigSchema");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteEdgeConfigSchema"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -174,9 +192,11 @@ test("Edge Config Delete Edge Config Schema", async () => {
 });
 
 test("Edge Config Get Edge Config Item", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigItem");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigItem"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -197,9 +217,11 @@ test("Edge Config Get Edge Config Item", async () => {
 });
 
 test("Edge Config Get Edge Config Tokens", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigTokens");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigTokens"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -219,9 +241,11 @@ test("Edge Config Get Edge Config Tokens", async () => {
 });
 
 test("Edge Config Delete Edge Config Tokens", async () => {
+  const testHttpClient = createTestHTTPClient("deleteEdgeConfigTokens");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteEdgeConfigTokens"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -236,9 +260,11 @@ test("Edge Config Delete Edge Config Tokens", async () => {
 });
 
 test("Edge Config Get Edge Config Token", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigToken");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigToken"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -259,9 +285,11 @@ test("Edge Config Get Edge Config Token", async () => {
 });
 
 test("Edge Config Create Edge Config Token", async () => {
+  const testHttpClient = createTestHTTPClient("createEdgeConfigToken");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createEdgeConfigToken"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -281,9 +309,11 @@ test("Edge Config Create Edge Config Token", async () => {
 });
 
 test("Edge Config Get Edge Config Backups", async () => {
+  const testHttpClient = createTestHTTPClient("getEdgeConfigBackups");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getEdgeConfigBackups"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

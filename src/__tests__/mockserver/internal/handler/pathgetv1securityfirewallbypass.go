@@ -25,7 +25,7 @@ func pathGetV1SecurityFirewallBypass(dir *logging.HTTPFileDirectory, rt *trackin
 		case "getBypassIp[0]":
 			dir.HandlerFunc("getBypassIp", testGetBypassIPGetBypassIp0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -46,20 +46,8 @@ func testGetBypassIPGetBypassIp0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetBypassIPResponseBodyGetBypassIPResponseBody1(
-		operations.GetBypassIPResponseBody1{
-			Result: []operations.ResponseBodyResult{
-				operations.ResponseBodyResult{
-					OwnerID:       "<id>",
-					ID:            "<id>",
-					Domain:        "sneaky-intervention.info",
-					IP:            "124.153.161.35",
-					ProjectID:     "<id>",
-					IsProjectRule: false,
-				},
-			},
-			Pagination: types.String("<value>"),
-		},
+	respBody := types.Pointer(operations.CreateGetBypassIPResponseBodyGetBypassIPResponseBody2(
+		operations.GetBypassIPResponseBody2{},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

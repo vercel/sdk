@@ -22,7 +22,7 @@ func pathPostV10ProjectsProjectIDPromoteDeploymentID(dir *logging.HTTPFileDirect
 		case "requestPromote[0]":
 			dir.HandlerFunc("requestPromote", testRequestPromoteRequestPromote0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

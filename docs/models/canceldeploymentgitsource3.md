@@ -7,7 +7,7 @@ import { CancelDeploymentGitSource3 } from "@vercel/sdk/models/canceldeploymento
 
 let value: CancelDeploymentGitSource3 = {
   type: "gitlab",
-  projectId: "<id>",
+  projectId: 1404.39,
 };
 ```
 

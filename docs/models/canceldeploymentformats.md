@@ -5,7 +5,7 @@
 ```typescript
 import { CancelDeploymentFormats } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentFormats = "image/avif";
+let value: CancelDeploymentFormats = "image/webp";
 ```
 
 ## Values

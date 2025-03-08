@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -24,7 +25,7 @@ func pathPostV8Artifacts(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		case "artifactQuery[0]":
 			dir.HandlerFunc("artifactQuery", testArtifactQueryArtifactQuery0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -50,26 +51,26 @@ func testArtifactQueryArtifactQuery0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := map[string]operations.ResponseBody{
-		"key": operations.CreateResponseBodyResponseBody2(
+	respBody := map[string]*operations.ResponseBody{
+		"key": types.Pointer(operations.CreateResponseBodyResponseBody2(
 			operations.ResponseBody2{
 				Error: operations.Error{
 					Message: "<value>",
 				},
 			},
-		),
-		"key1": operations.CreateResponseBodyResponseBody1(
+		)),
+		"key1": types.Pointer(operations.CreateResponseBodyResponseBody1(
 			operations.ResponseBody1{
 				Size:           9698.01,
 				TaskDurationMs: 1946.74,
 			},
-		),
-		"key2": operations.CreateResponseBodyResponseBody1(
+		)),
+		"key2": types.Pointer(operations.CreateResponseBodyResponseBody1(
 			operations.ResponseBody1{
 				Size:           1135.95,
 				TaskDurationMs: 5348.41,
 			},
-		),
+		)),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

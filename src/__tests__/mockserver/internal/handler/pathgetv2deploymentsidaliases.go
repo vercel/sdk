@@ -24,7 +24,7 @@ func pathGetV2DeploymentsIDAliases(dir *logging.HTTPFileDirectory, rt *tracking.
 		case "listDeploymentAliases[0]":
 			dir.HandlerFunc("listDeploymentAliases", testListDeploymentAliasesListDeploymentAliases0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -46,7 +46,7 @@ func testListDeploymentAliasesListDeploymentAliases0(w http.ResponseWriter, req 
 		return
 	}
 	respBody := &operations.ListDeploymentAliasesResponseBody{
-		Aliases: []operations.ListDeploymentAliasesAliases{},
+		Aliases: []operations.Aliases{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -9,7 +9,9 @@ let value: CreateEventRequest = {
   integrationConfigurationId: "<id>",
   requestBody: {
     event: {
-      type: "installation.updated",
+      type: "resource.updated",
+      productId: "<id>",
+      resourceId: "<id>",
     },
   },
 };

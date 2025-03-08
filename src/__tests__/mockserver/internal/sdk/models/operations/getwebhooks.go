@@ -262,6 +262,7 @@ const (
 	GetWebhooksResponseBodyFrameworkNextjs         GetWebhooksResponseBodyFramework = "nextjs"
 	GetWebhooksResponseBodyFrameworkGatsby         GetWebhooksResponseBodyFramework = "gatsby"
 	GetWebhooksResponseBodyFrameworkRemix          GetWebhooksResponseBodyFramework = "remix"
+	GetWebhooksResponseBodyFrameworkReactRouter    GetWebhooksResponseBodyFramework = "react-router"
 	GetWebhooksResponseBodyFrameworkAstro          GetWebhooksResponseBodyFramework = "astro"
 	GetWebhooksResponseBodyFrameworkHexo           GetWebhooksResponseBodyFramework = "hexo"
 	GetWebhooksResponseBodyFrameworkEleventy       GetWebhooksResponseBodyFramework = "eleventy"
@@ -321,6 +322,8 @@ func (e *GetWebhooksResponseBodyFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough

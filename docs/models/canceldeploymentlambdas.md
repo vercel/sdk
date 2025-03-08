@@ -10,7 +10,7 @@ import { CancelDeploymentLambdas } from "@vercel/sdk/models/canceldeploymentop.j
 let value: CancelDeploymentLambdas = {
   output: [
     {
-      path: "/Library",
+      path: "/usr",
       functionName: "<value>",
     },
   ],

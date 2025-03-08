@@ -22,7 +22,7 @@ func pathHeadV8ArtifactsHash(dir *logging.HTTPFileDirectory, rt *tracking.Reques
 		case "artifactExists[0]":
 			dir.HandlerFunc("artifactExists", testArtifactExistsArtifactExists0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

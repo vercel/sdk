@@ -11,8 +11,8 @@ let value: GetFirewallConfigResponseBody = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 1585.15,
-  updatedAt: "1737351083592",
+  version: 9747.88,
+  updatedAt: "1741343933844",
   firewallEnabled: false,
   crs: {
     sd: {
@@ -21,7 +21,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     ma: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     lfi: {
       active: false,
@@ -29,7 +29,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     rfi: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     rce: {
       active: false,
@@ -37,11 +37,11 @@ let value: GetFirewallConfigResponseBody = {
     },
     php: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     gen: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     xss: {
       active: false,
@@ -53,7 +53,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     sf: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     java: {
       active: false,
@@ -69,8 +69,8 @@ let value: GetFirewallConfigResponseBody = {
         {
           conditions: [
             {
-              type: "rate_limit_api_id",
-              op: "lt",
+              type: "raw_path",
+              op: "eq",
             },
           ],
         },
@@ -81,9 +81,9 @@ let value: GetFirewallConfigResponseBody = {
   ips: [
     {
       id: "<id>",
-      hostname: "black-adaptation.org",
-      ip: "80.53.237.166",
-      action: "challenge",
+      hostname: "hateful-t-shirt.biz",
+      ip: "241.186.132.198",
+      action: "deny",
     },
   ],
   changes: [
@@ -94,16 +94,16 @@ let value: GetFirewallConfigResponseBody = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ownerId`                                                                          | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `projectKey`                                                                       | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `version`                                                                          | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `updatedAt`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `firewallEnabled`                                                                  | *boolean*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `crs`                                                                              | [models.GetFirewallConfigCrs](../models/getfirewallconfigcrs.md)                   | :heavy_check_mark:                                                                 | Custom Ruleset                                                                     |
-| `rules`                                                                            | [models.GetFirewallConfigRules](../models/getfirewallconfigrules.md)[]             | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `ips`                                                                              | [models.GetFirewallConfigIps](../models/getfirewallconfigips.md)[]                 | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `changes`                                                                          | [models.Changes](../models/changes.md)[]                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `managedRules`                                                                     | [models.GetFirewallConfigManagedRules](../models/getfirewallconfigmanagedrules.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `ownerId`                                                        | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectKey`                                                     | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `version`                                                        | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `updatedAt`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `firewallEnabled`                                                | *boolean*                                                        | :heavy_check_mark:                                               | N/A                                                              |
+| `crs`                                                            | [models.Crs](../models/crs.md)                                   | :heavy_check_mark:                                               | Custom Ruleset                                                   |
+| `rules`                                                          | [models.Rules](../models/rules.md)[]                             | :heavy_check_mark:                                               | N/A                                                              |
+| `ips`                                                            | [models.Ips](../models/ips.md)[]                                 | :heavy_check_mark:                                               | N/A                                                              |
+| `changes`                                                        | [models.Changes](../models/changes.md)[]                         | :heavy_check_mark:                                               | N/A                                                              |
+| `managedRules`                                                   | Record<string, [models.ManagedRules](../models/managedrules.md)> | :heavy_minus_sign:                                               | N/A                                                              |

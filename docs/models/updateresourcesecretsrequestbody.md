@@ -17,6 +17,7 @@ let value: UpdateResourceSecretsRequestBody = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `secrets`                                | [models.Secrets](../models/secrets.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `secrets`                                                                          | [models.UpdateResourceSecretsSecrets](../models/updateresourcesecretssecrets.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `partial`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | If true, will only update the provided secrets                                     |

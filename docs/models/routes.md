@@ -15,7 +15,7 @@ const value: models.Routes1 = {
 
 ```typescript
 const value: models.Routes2 = {
-  handle: "filesystem",
+  handle: "hit",
 };
 ```
 
@@ -25,7 +25,7 @@ const value: models.Routes2 = {
 const value: models.Routes3 = {
   src: "<value>",
   continue: false,
-  middleware: 3032.92,
+  middleware: 2012.66,
 };
 ```
 

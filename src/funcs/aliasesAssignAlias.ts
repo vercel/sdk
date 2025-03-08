@@ -37,6 +37,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -45,11 +46,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
  */
-export async function aliasesAssignAlias(
+export function aliasesAssignAlias(
   client: VercelCore,
   request: AssignAliasRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     AssignAliasResponseBody,
     | VercelBadRequestError
@@ -64,13 +65,42 @@ export async function aliasesAssignAlias(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: AssignAliasRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      AssignAliasResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => AssignAliasRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -99,6 +129,7 @@ export async function aliasesAssignAlias(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "assignAlias",
     oAuth2Scopes: [],
 
@@ -122,7 +153,7 @@ export async function aliasesAssignAlias(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -133,7 +164,7 @@ export async function aliasesAssignAlias(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -157,13 +188,13 @@ export async function aliasesAssignAlias(
     M.json(200, AssignAliasResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, 409, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([402, 403, 409, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

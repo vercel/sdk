@@ -74,6 +74,7 @@ export const ResponseBodyTeamRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
+  Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",

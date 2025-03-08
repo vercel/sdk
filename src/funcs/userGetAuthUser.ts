@@ -29,6 +29,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -37,12 +38,12 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieves information related to the currently authenticated User.
  */
-export async function userGetAuthUser(
+export function userGetAuthUser(
   client: VercelCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
-    GetAuthUserResponseBody | undefined,
+    GetAuthUserResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
     | SDKError
@@ -53,6 +54,32 @@ export async function userGetAuthUser(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      GetAuthUserResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/v2/user")();
 
@@ -65,6 +92,7 @@ export async function userGetAuthUser(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getAuthUser",
     oAuth2Scopes: [],
 
@@ -86,7 +114,7 @@ export async function userGetAuthUser(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -97,7 +125,7 @@ export async function userGetAuthUser(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -106,7 +134,7 @@ export async function userGetAuthUser(
   };
 
   const [result] = await M.match<
-    GetAuthUserResponseBody | undefined,
+    GetAuthUserResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
     | SDKError
@@ -117,16 +145,15 @@ export async function userGetAuthUser(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, GetAuthUserResponseBody$inboundSchema.optional()),
-    M.nil(302, GetAuthUserResponseBody$inboundSchema.optional()),
+    M.json(200, GetAuthUserResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
     M.fail([403, 409, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

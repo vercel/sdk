@@ -24,7 +24,7 @@ func pathPatchV1DomainsRecordsRecordID(dir *logging.HTTPFileDirectory, rt *track
 		case "updateRecord[0]":
 			dir.HandlerFunc("updateRecord", testUpdateRecordUpdateRecord0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

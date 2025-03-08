@@ -160,54 +160,6 @@ export type GetConfigurationResponseBody2 = {
   canConfigureOpenTelemetry?: boolean | undefined;
 };
 
-export const GetConfigurationResponseBodyIntegrationsResponseType = {
-  Prepayment: "prepayment",
-  Subscription: "subscription",
-} as const;
-export type GetConfigurationResponseBodyIntegrationsResponseType = ClosedEnum<
-  typeof GetConfigurationResponseBodyIntegrationsResponseType
->;
-
-export const GetConfigurationResponseBodyScope = {
-  Installation: "installation",
-  Resource: "resource",
-} as const;
-export type GetConfigurationResponseBodyScope = ClosedEnum<
-  typeof GetConfigurationResponseBodyScope
->;
-
-export type GetConfigurationResponseBodyDetails = {
-  label: string;
-  value?: string | undefined;
-};
-
-export type GetConfigurationResponseBodyHeightlightedDetails = {
-  label: string;
-  value?: string | undefined;
-};
-
-export type GetConfigurationResponseBodyQuote = {
-  line: string;
-  amount: string;
-};
-
-export type GetConfigurationResponseBodyBillingPlan = {
-  id: string;
-  type: GetConfigurationResponseBodyIntegrationsResponseType;
-  name: string;
-  scope?: GetConfigurationResponseBodyScope | undefined;
-  description: string;
-  paymentMethodRequired?: boolean | undefined;
-  preauthorizationAmount?: number | undefined;
-  cost?: string | undefined;
-  details?: Array<GetConfigurationResponseBodyDetails> | undefined;
-  heightlightedDetails?:
-    | Array<GetConfigurationResponseBodyHeightlightedDetails>
-    | undefined;
-  quote?: Array<GetConfigurationResponseBodyQuote> | undefined;
-  effectiveDate?: string | undefined;
-};
-
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
  */
@@ -260,10 +212,6 @@ export type GetConfigurationResponseBodyInstallationType = ClosedEnum<
  * The configuration with the provided id
  */
 export type GetConfigurationResponseBody1 = {
-  billingPlan?: GetConfigurationResponseBodyBillingPlan | undefined;
-  billingTotal?: string | undefined;
-  periodStart?: string | undefined;
-  periodEnd?: string | undefined;
   /**
    * A timestamp that tells you when the configuration was installed successfully
    */
@@ -336,8 +284,8 @@ export type GetConfigurationResponseBody1 = {
  * The configuration with the provided id
  */
 export type GetConfigurationResponseBody =
-  | GetConfigurationResponseBody2
-  | GetConfigurationResponseBody1;
+  | GetConfigurationResponseBody1
+  | GetConfigurationResponseBody2;
 
 /** @internal */
 export const GetConfigurationRequest$inboundSchema: z.ZodType<
@@ -640,358 +588,6 @@ export function getConfigurationResponseBody2FromJSON(
 }
 
 /** @internal */
-export const GetConfigurationResponseBodyIntegrationsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsResponseType> =
-    z.nativeEnum(GetConfigurationResponseBodyIntegrationsResponseType);
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsResponseType> =
-    GetConfigurationResponseBodyIntegrationsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyIntegrationsResponseType$ {
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyIntegrationsResponseType$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyIntegrationsResponseType$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodyScope
-> = z.nativeEnum(GetConfigurationResponseBodyScope);
-
-/** @internal */
-export const GetConfigurationResponseBodyScope$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodyScope
-> = GetConfigurationResponseBodyScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyScope$ {
-  /** @deprecated use `GetConfigurationResponseBodyScope$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationResponseBodyScope$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyScope$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyScope$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyDetails$inboundSchema: z.ZodType<
-  GetConfigurationResponseBodyDetails,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type GetConfigurationResponseBodyDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const GetConfigurationResponseBodyDetails$outboundSchema: z.ZodType<
-  GetConfigurationResponseBodyDetails$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationResponseBodyDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyDetails$ {
-  /** @deprecated use `GetConfigurationResponseBodyDetails$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyDetails$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyDetails$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyDetails$outboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyDetails$Outbound` instead. */
-  export type Outbound = GetConfigurationResponseBodyDetails$Outbound;
-}
-
-export function getConfigurationResponseBodyDetailsToJSON(
-  getConfigurationResponseBodyDetails: GetConfigurationResponseBodyDetails,
-): string {
-  return JSON.stringify(
-    GetConfigurationResponseBodyDetails$outboundSchema.parse(
-      getConfigurationResponseBodyDetails,
-    ),
-  );
-}
-
-export function getConfigurationResponseBodyDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationResponseBodyDetails, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationResponseBodyDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationResponseBodyDetails' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyHeightlightedDetails$inboundSchema:
-  z.ZodType<
-    GetConfigurationResponseBodyHeightlightedDetails,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    label: z.string(),
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type GetConfigurationResponseBodyHeightlightedDetails$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const GetConfigurationResponseBodyHeightlightedDetails$outboundSchema:
-  z.ZodType<
-    GetConfigurationResponseBodyHeightlightedDetails$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationResponseBodyHeightlightedDetails
-  > = z.object({
-    label: z.string(),
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyHeightlightedDetails$ {
-  /** @deprecated use `GetConfigurationResponseBodyHeightlightedDetails$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyHeightlightedDetails$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyHeightlightedDetails$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyHeightlightedDetails$outboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyHeightlightedDetails$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationResponseBodyHeightlightedDetails$Outbound;
-}
-
-export function getConfigurationResponseBodyHeightlightedDetailsToJSON(
-  getConfigurationResponseBodyHeightlightedDetails:
-    GetConfigurationResponseBodyHeightlightedDetails,
-): string {
-  return JSON.stringify(
-    GetConfigurationResponseBodyHeightlightedDetails$outboundSchema.parse(
-      getConfigurationResponseBodyHeightlightedDetails,
-    ),
-  );
-}
-
-export function getConfigurationResponseBodyHeightlightedDetailsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationResponseBodyHeightlightedDetails,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationResponseBodyHeightlightedDetails$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationResponseBodyHeightlightedDetails' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyQuote$inboundSchema: z.ZodType<
-  GetConfigurationResponseBodyQuote,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  line: z.string(),
-  amount: z.string(),
-});
-
-/** @internal */
-export type GetConfigurationResponseBodyQuote$Outbound = {
-  line: string;
-  amount: string;
-};
-
-/** @internal */
-export const GetConfigurationResponseBodyQuote$outboundSchema: z.ZodType<
-  GetConfigurationResponseBodyQuote$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationResponseBodyQuote
-> = z.object({
-  line: z.string(),
-  amount: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyQuote$ {
-  /** @deprecated use `GetConfigurationResponseBodyQuote$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationResponseBodyQuote$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyQuote$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyQuote$outboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyQuote$Outbound` instead. */
-  export type Outbound = GetConfigurationResponseBodyQuote$Outbound;
-}
-
-export function getConfigurationResponseBodyQuoteToJSON(
-  getConfigurationResponseBodyQuote: GetConfigurationResponseBodyQuote,
-): string {
-  return JSON.stringify(
-    GetConfigurationResponseBodyQuote$outboundSchema.parse(
-      getConfigurationResponseBodyQuote,
-    ),
-  );
-}
-
-export function getConfigurationResponseBodyQuoteFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationResponseBodyQuote, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConfigurationResponseBodyQuote$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationResponseBodyQuote' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyBillingPlan$inboundSchema: z.ZodType<
-  GetConfigurationResponseBodyBillingPlan,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  type: GetConfigurationResponseBodyIntegrationsResponseType$inboundSchema,
-  name: z.string(),
-  scope: GetConfigurationResponseBodyScope$inboundSchema.optional(),
-  description: z.string(),
-  paymentMethodRequired: z.boolean().optional(),
-  preauthorizationAmount: z.number().optional(),
-  cost: z.string().optional(),
-  details: z.array(
-    z.lazy(() => GetConfigurationResponseBodyDetails$inboundSchema),
-  ).optional(),
-  heightlightedDetails: z.array(
-    z.lazy(() =>
-      GetConfigurationResponseBodyHeightlightedDetails$inboundSchema
-    ),
-  ).optional(),
-  quote: z.array(z.lazy(() => GetConfigurationResponseBodyQuote$inboundSchema))
-    .optional(),
-  effectiveDate: z.string().optional(),
-});
-
-/** @internal */
-export type GetConfigurationResponseBodyBillingPlan$Outbound = {
-  id: string;
-  type: string;
-  name: string;
-  scope?: string | undefined;
-  description: string;
-  paymentMethodRequired?: boolean | undefined;
-  preauthorizationAmount?: number | undefined;
-  cost?: string | undefined;
-  details?: Array<GetConfigurationResponseBodyDetails$Outbound> | undefined;
-  heightlightedDetails?:
-    | Array<GetConfigurationResponseBodyHeightlightedDetails$Outbound>
-    | undefined;
-  quote?: Array<GetConfigurationResponseBodyQuote$Outbound> | undefined;
-  effectiveDate?: string | undefined;
-};
-
-/** @internal */
-export const GetConfigurationResponseBodyBillingPlan$outboundSchema: z.ZodType<
-  GetConfigurationResponseBodyBillingPlan$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationResponseBodyBillingPlan
-> = z.object({
-  id: z.string(),
-  type: GetConfigurationResponseBodyIntegrationsResponseType$outboundSchema,
-  name: z.string(),
-  scope: GetConfigurationResponseBodyScope$outboundSchema.optional(),
-  description: z.string(),
-  paymentMethodRequired: z.boolean().optional(),
-  preauthorizationAmount: z.number().optional(),
-  cost: z.string().optional(),
-  details: z.array(
-    z.lazy(() => GetConfigurationResponseBodyDetails$outboundSchema),
-  ).optional(),
-  heightlightedDetails: z.array(
-    z.lazy(() =>
-      GetConfigurationResponseBodyHeightlightedDetails$outboundSchema
-    ),
-  ).optional(),
-  quote: z.array(z.lazy(() => GetConfigurationResponseBodyQuote$outboundSchema))
-    .optional(),
-  effectiveDate: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyBillingPlan$ {
-  /** @deprecated use `GetConfigurationResponseBodyBillingPlan$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyBillingPlan$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyBillingPlan$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyBillingPlan$outboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyBillingPlan$Outbound` instead. */
-  export type Outbound = GetConfigurationResponseBodyBillingPlan$Outbound;
-}
-
-export function getConfigurationResponseBodyBillingPlanToJSON(
-  getConfigurationResponseBodyBillingPlan:
-    GetConfigurationResponseBodyBillingPlan,
-): string {
-  return JSON.stringify(
-    GetConfigurationResponseBodyBillingPlan$outboundSchema.parse(
-      getConfigurationResponseBodyBillingPlan,
-    ),
-  );
-}
-
-export function getConfigurationResponseBodyBillingPlanFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationResponseBodyBillingPlan,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationResponseBodyBillingPlan$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationResponseBodyBillingPlan' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationResponseBodySource$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodySource
 > = z.nativeEnum(GetConfigurationResponseBodySource);
@@ -1086,12 +682,6 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlan: z.lazy(() =>
-    GetConfigurationResponseBodyBillingPlan$inboundSchema
-  ).optional(),
-  billingTotal: z.string().optional(),
-  periodStart: z.string().optional(),
-  periodEnd: z.string().optional(),
   completedAt: z.number().optional(),
   createdAt: z.number(),
   id: z.string(),
@@ -1116,10 +706,6 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetConfigurationResponseBody1$Outbound = {
-  billingPlan?: GetConfigurationResponseBodyBillingPlan$Outbound | undefined;
-  billingTotal?: string | undefined;
-  periodStart?: string | undefined;
-  periodEnd?: string | undefined;
   completedAt?: number | undefined;
   createdAt: number;
   id: string;
@@ -1146,12 +732,6 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationResponseBody1
 > = z.object({
-  billingPlan: z.lazy(() =>
-    GetConfigurationResponseBodyBillingPlan$outboundSchema
-  ).optional(),
-  billingTotal: z.string().optional(),
-  periodStart: z.string().optional(),
-  periodEnd: z.string().optional(),
   completedAt: z.number().optional(),
   createdAt: z.number(),
   id: z.string(),
@@ -1213,14 +793,14 @@ export const GetConfigurationResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
   z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
+  z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type GetConfigurationResponseBody$Outbound =
-  | GetConfigurationResponseBody2$Outbound
-  | GetConfigurationResponseBody1$Outbound;
+  | GetConfigurationResponseBody1$Outbound
+  | GetConfigurationResponseBody2$Outbound;
 
 /** @internal */
 export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
@@ -1228,8 +808,8 @@ export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationResponseBody
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
   z.lazy(() => GetConfigurationResponseBody1$outboundSchema),
+  z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
 ]);
 
 /**

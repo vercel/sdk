@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectProjectsReadyState } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProjectsReadyState = "ERROR";
+let value: UpdateProjectProjectsReadyState = "QUEUED";
 ```
 
 ## Values

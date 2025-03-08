@@ -31,15 +31,33 @@ export type GetEdgeConfigTransfer = {
 
 export type GetEdgeConfigSchema = {};
 
-export const GetEdgeConfigType = {
+export const GetEdgeConfigPurposeEdgeConfigType = {
+  Experimentation: "experimentation",
+} as const;
+export type GetEdgeConfigPurposeEdgeConfigType = ClosedEnum<
+  typeof GetEdgeConfigPurposeEdgeConfigType
+>;
+
+export type GetEdgeConfigPurpose2 = {
+  type: GetEdgeConfigPurposeEdgeConfigType;
+  resourceId: string;
+};
+
+export const GetEdgeConfigPurposeType = {
   Flags: "flags",
 } as const;
-export type GetEdgeConfigType = ClosedEnum<typeof GetEdgeConfigType>;
+export type GetEdgeConfigPurposeType = ClosedEnum<
+  typeof GetEdgeConfigPurposeType
+>;
 
-export type GetEdgeConfigPurpose = {
-  type: GetEdgeConfigType;
+export type GetEdgeConfigPurpose1 = {
+  type: GetEdgeConfigPurposeType;
   projectId: string;
 };
+
+export type GetEdgeConfigPurpose =
+  | GetEdgeConfigPurpose1
+  | GetEdgeConfigPurpose2;
 
 /**
  * The EdgeConfig.
@@ -59,7 +77,7 @@ export type GetEdgeConfigResponseBody = {
    */
   transfer?: GetEdgeConfigTransfer | undefined;
   schema?: GetEdgeConfigSchema | undefined;
-  purpose?: GetEdgeConfigPurpose | undefined;
+  purpose?: GetEdgeConfigPurpose1 | GetEdgeConfigPurpose2 | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -233,24 +251,160 @@ export function getEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
-export const GetEdgeConfigType$inboundSchema: z.ZodNativeEnum<
-  typeof GetEdgeConfigType
-> = z.nativeEnum(GetEdgeConfigType);
+export const GetEdgeConfigPurposeEdgeConfigType$inboundSchema: z.ZodNativeEnum<
+  typeof GetEdgeConfigPurposeEdgeConfigType
+> = z.nativeEnum(GetEdgeConfigPurposeEdgeConfigType);
 
 /** @internal */
-export const GetEdgeConfigType$outboundSchema: z.ZodNativeEnum<
-  typeof GetEdgeConfigType
-> = GetEdgeConfigType$inboundSchema;
+export const GetEdgeConfigPurposeEdgeConfigType$outboundSchema: z.ZodNativeEnum<
+  typeof GetEdgeConfigPurposeEdgeConfigType
+> = GetEdgeConfigPurposeEdgeConfigType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetEdgeConfigType$ {
-  /** @deprecated use `GetEdgeConfigType$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigType$inboundSchema;
-  /** @deprecated use `GetEdgeConfigType$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigType$outboundSchema;
+export namespace GetEdgeConfigPurposeEdgeConfigType$ {
+  /** @deprecated use `GetEdgeConfigPurposeEdgeConfigType$inboundSchema` instead. */
+  export const inboundSchema = GetEdgeConfigPurposeEdgeConfigType$inboundSchema;
+  /** @deprecated use `GetEdgeConfigPurposeEdgeConfigType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetEdgeConfigPurposeEdgeConfigType$outboundSchema;
+}
+
+/** @internal */
+export const GetEdgeConfigPurpose2$inboundSchema: z.ZodType<
+  GetEdgeConfigPurpose2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetEdgeConfigPurposeEdgeConfigType$inboundSchema,
+  resourceId: z.string(),
+});
+
+/** @internal */
+export type GetEdgeConfigPurpose2$Outbound = {
+  type: string;
+  resourceId: string;
+};
+
+/** @internal */
+export const GetEdgeConfigPurpose2$outboundSchema: z.ZodType<
+  GetEdgeConfigPurpose2$Outbound,
+  z.ZodTypeDef,
+  GetEdgeConfigPurpose2
+> = z.object({
+  type: GetEdgeConfigPurposeEdgeConfigType$outboundSchema,
+  resourceId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetEdgeConfigPurpose2$ {
+  /** @deprecated use `GetEdgeConfigPurpose2$inboundSchema` instead. */
+  export const inboundSchema = GetEdgeConfigPurpose2$inboundSchema;
+  /** @deprecated use `GetEdgeConfigPurpose2$outboundSchema` instead. */
+  export const outboundSchema = GetEdgeConfigPurpose2$outboundSchema;
+  /** @deprecated use `GetEdgeConfigPurpose2$Outbound` instead. */
+  export type Outbound = GetEdgeConfigPurpose2$Outbound;
+}
+
+export function getEdgeConfigPurpose2ToJSON(
+  getEdgeConfigPurpose2: GetEdgeConfigPurpose2,
+): string {
+  return JSON.stringify(
+    GetEdgeConfigPurpose2$outboundSchema.parse(getEdgeConfigPurpose2),
+  );
+}
+
+export function getEdgeConfigPurpose2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetEdgeConfigPurpose2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEdgeConfigPurpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEdgeConfigPurpose2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetEdgeConfigPurposeType$inboundSchema: z.ZodNativeEnum<
+  typeof GetEdgeConfigPurposeType
+> = z.nativeEnum(GetEdgeConfigPurposeType);
+
+/** @internal */
+export const GetEdgeConfigPurposeType$outboundSchema: z.ZodNativeEnum<
+  typeof GetEdgeConfigPurposeType
+> = GetEdgeConfigPurposeType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetEdgeConfigPurposeType$ {
+  /** @deprecated use `GetEdgeConfigPurposeType$inboundSchema` instead. */
+  export const inboundSchema = GetEdgeConfigPurposeType$inboundSchema;
+  /** @deprecated use `GetEdgeConfigPurposeType$outboundSchema` instead. */
+  export const outboundSchema = GetEdgeConfigPurposeType$outboundSchema;
+}
+
+/** @internal */
+export const GetEdgeConfigPurpose1$inboundSchema: z.ZodType<
+  GetEdgeConfigPurpose1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetEdgeConfigPurposeType$inboundSchema,
+  projectId: z.string(),
+});
+
+/** @internal */
+export type GetEdgeConfigPurpose1$Outbound = {
+  type: string;
+  projectId: string;
+};
+
+/** @internal */
+export const GetEdgeConfigPurpose1$outboundSchema: z.ZodType<
+  GetEdgeConfigPurpose1$Outbound,
+  z.ZodTypeDef,
+  GetEdgeConfigPurpose1
+> = z.object({
+  type: GetEdgeConfigPurposeType$outboundSchema,
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetEdgeConfigPurpose1$ {
+  /** @deprecated use `GetEdgeConfigPurpose1$inboundSchema` instead. */
+  export const inboundSchema = GetEdgeConfigPurpose1$inboundSchema;
+  /** @deprecated use `GetEdgeConfigPurpose1$outboundSchema` instead. */
+  export const outboundSchema = GetEdgeConfigPurpose1$outboundSchema;
+  /** @deprecated use `GetEdgeConfigPurpose1$Outbound` instead. */
+  export type Outbound = GetEdgeConfigPurpose1$Outbound;
+}
+
+export function getEdgeConfigPurpose1ToJSON(
+  getEdgeConfigPurpose1: GetEdgeConfigPurpose1,
+): string {
+  return JSON.stringify(
+    GetEdgeConfigPurpose1$outboundSchema.parse(getEdgeConfigPurpose1),
+  );
+}
+
+export function getEdgeConfigPurpose1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetEdgeConfigPurpose1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEdgeConfigPurpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEdgeConfigPurpose1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -258,26 +412,25 @@ export const GetEdgeConfigPurpose$inboundSchema: z.ZodType<
   GetEdgeConfigPurpose,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GetEdgeConfigType$inboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => GetEdgeConfigPurpose1$inboundSchema),
+  z.lazy(() => GetEdgeConfigPurpose2$inboundSchema),
+]);
 
 /** @internal */
-export type GetEdgeConfigPurpose$Outbound = {
-  type: string;
-  projectId: string;
-};
+export type GetEdgeConfigPurpose$Outbound =
+  | GetEdgeConfigPurpose1$Outbound
+  | GetEdgeConfigPurpose2$Outbound;
 
 /** @internal */
 export const GetEdgeConfigPurpose$outboundSchema: z.ZodType<
   GetEdgeConfigPurpose$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigPurpose
-> = z.object({
-  type: GetEdgeConfigType$outboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => GetEdgeConfigPurpose1$outboundSchema),
+  z.lazy(() => GetEdgeConfigPurpose2$outboundSchema),
+]);
 
 /**
  * @internal
@@ -324,7 +477,10 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => GetEdgeConfigTransfer$inboundSchema).optional(),
   schema: z.lazy(() => GetEdgeConfigSchema$inboundSchema).optional(),
-  purpose: z.lazy(() => GetEdgeConfigPurpose$inboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => GetEdgeConfigPurpose1$inboundSchema),
+    z.lazy(() => GetEdgeConfigPurpose2$inboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });
@@ -339,7 +495,10 @@ export type GetEdgeConfigResponseBody$Outbound = {
   digest?: string | undefined;
   transfer?: GetEdgeConfigTransfer$Outbound | undefined;
   schema?: GetEdgeConfigSchema$Outbound | undefined;
-  purpose?: GetEdgeConfigPurpose$Outbound | undefined;
+  purpose?:
+    | GetEdgeConfigPurpose1$Outbound
+    | GetEdgeConfigPurpose2$Outbound
+    | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -358,7 +517,10 @@ export const GetEdgeConfigResponseBody$outboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => GetEdgeConfigTransfer$outboundSchema).optional(),
   schema: z.lazy(() => GetEdgeConfigSchema$outboundSchema).optional(),
-  purpose: z.lazy(() => GetEdgeConfigPurpose$outboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => GetEdgeConfigPurpose1$outboundSchema),
+    z.lazy(() => GetEdgeConfigPurpose2$outboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });

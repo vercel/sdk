@@ -118,7 +118,7 @@ export class Artifacts extends ClientSDK {
   async artifactQuery(
     request: ArtifactQueryRequest,
     options?: RequestOptions,
-  ): Promise<{ [k: string]: ResponseBody }> {
+  ): Promise<{ [k: string]: ResponseBody | null }> {
     return unwrapAsync(artifactsArtifactQuery(
       this,
       request,

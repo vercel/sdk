@@ -1695,9 +1695,9 @@ type GetDeploymentResponseBody2 struct {
 	CustomEnvironment       *ResponseBodyCustomEnvironment       `json:"customEnvironment,omitempty"`
 	AliasWarning            *ResponseBodyAliasWarning            `json:"aliasWarning,omitempty"`
 	ID                      string                               `json:"id"`
+	Name                    string                               `json:"name"`
 	Type                    GetDeploymentResponseBodyType        `json:"type"`
 	CreatedAt               float64                              `json:"createdAt"`
-	Name                    string                               `json:"name"`
 	ReadyState              GetDeploymentResponseBodyReadyState  `json:"readyState"`
 	AliasError              *GetDeploymentResponseBodyAliasError `json:"aliasError,omitempty"`
 	AliasFinal              *string                              `json:"aliasFinal,omitempty"`
@@ -1866,6 +1866,13 @@ func (o *GetDeploymentResponseBody2) GetID() string {
 	return o.ID
 }
 
+func (o *GetDeploymentResponseBody2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 func (o *GetDeploymentResponseBody2) GetType() GetDeploymentResponseBodyType {
 	if o == nil {
 		return GetDeploymentResponseBodyType("")
@@ -1878,13 +1885,6 @@ func (o *GetDeploymentResponseBody2) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetDeploymentResponseBody2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetDeploymentResponseBody2) GetReadyState() GetDeploymentResponseBodyReadyState {
@@ -2174,6 +2174,7 @@ const (
 	ResponseBodyFrameworkNextjs         ResponseBodyFramework = "nextjs"
 	ResponseBodyFrameworkGatsby         ResponseBodyFramework = "gatsby"
 	ResponseBodyFrameworkRemix          ResponseBodyFramework = "remix"
+	ResponseBodyFrameworkReactRouter    ResponseBodyFramework = "react-router"
 	ResponseBodyFrameworkAstro          ResponseBodyFramework = "astro"
 	ResponseBodyFrameworkHexo           ResponseBodyFramework = "hexo"
 	ResponseBodyFrameworkEleventy       ResponseBodyFramework = "eleventy"
@@ -2233,6 +2234,8 @@ func (e *ResponseBodyFramework) UnmarshalJSON(data []byte) error {
 	case "gatsby":
 		fallthrough
 	case "remix":
+		fallthrough
+	case "react-router":
 		fallthrough
 	case "astro":
 		fallthrough
@@ -5927,6 +5930,113 @@ func (u ResponseBodyMicrofrontends) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ResponseBodyMicrofrontends: all fields are null")
 }
 
+type ResponseBodyFunctionType string
+
+const (
+	ResponseBodyFunctionTypeFluid    ResponseBodyFunctionType = "fluid"
+	ResponseBodyFunctionTypeStandard ResponseBodyFunctionType = "standard"
+)
+
+func (e ResponseBodyFunctionType) ToPointer() *ResponseBodyFunctionType {
+	return &e
+}
+func (e *ResponseBodyFunctionType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fluid":
+		fallthrough
+	case "standard":
+		*e = ResponseBodyFunctionType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ResponseBodyFunctionType: %v", v)
+	}
+}
+
+type ResponseBodyFunctionMemoryType string
+
+const (
+	ResponseBodyFunctionMemoryTypeStandard       ResponseBodyFunctionMemoryType = "standard"
+	ResponseBodyFunctionMemoryTypeStandardLegacy ResponseBodyFunctionMemoryType = "standard_legacy"
+	ResponseBodyFunctionMemoryTypePerformance    ResponseBodyFunctionMemoryType = "performance"
+)
+
+func (e ResponseBodyFunctionMemoryType) ToPointer() *ResponseBodyFunctionMemoryType {
+	return &e
+}
+func (e *ResponseBodyFunctionMemoryType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "standard_legacy":
+		fallthrough
+	case "performance":
+		*e = ResponseBodyFunctionMemoryType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ResponseBodyFunctionMemoryType: %v", v)
+	}
+}
+
+// ResponseBodyConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+type ResponseBodyConfig struct {
+	Version                     *float64                       `json:"version,omitempty"`
+	FunctionType                ResponseBodyFunctionType       `json:"functionType"`
+	FunctionMemoryType          ResponseBodyFunctionMemoryType `json:"functionMemoryType"`
+	FunctionTimeout             *float64                       `json:"functionTimeout"`
+	SecureComputePrimaryRegion  *string                        `json:"secureComputePrimaryRegion"`
+	SecureComputeFallbackRegion *string                        `json:"secureComputeFallbackRegion"`
+}
+
+func (o *ResponseBodyConfig) GetVersion() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}
+
+func (o *ResponseBodyConfig) GetFunctionType() ResponseBodyFunctionType {
+	if o == nil {
+		return ResponseBodyFunctionType("")
+	}
+	return o.FunctionType
+}
+
+func (o *ResponseBodyConfig) GetFunctionMemoryType() ResponseBodyFunctionMemoryType {
+	if o == nil {
+		return ResponseBodyFunctionMemoryType("")
+	}
+	return o.FunctionMemoryType
+}
+
+func (o *ResponseBodyConfig) GetFunctionTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionTimeout
+}
+
+func (o *ResponseBodyConfig) GetSecureComputePrimaryRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecureComputePrimaryRegion
+}
+
+func (o *ResponseBodyConfig) GetSecureComputeFallbackRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecureComputeFallbackRegion
+}
+
 // GetDeploymentResponseBody1 - The deployment including both public and private information
 type GetDeploymentResponseBody1 struct {
 	AliasAssignedAt           *ResponseBodyAliasAssignedAt                `json:"aliasAssignedAt,omitempty"`
@@ -5961,9 +6071,9 @@ type GetDeploymentResponseBody1 struct {
 	CustomEnvironment         *GetDeploymentResponseBodyCustomEnvironment `json:"customEnvironment,omitempty"`
 	AliasWarning              *GetDeploymentResponseBodyAliasWarning      `json:"aliasWarning,omitempty"`
 	ID                        string                                      `json:"id"`
+	Name                      string                                      `json:"name"`
 	Type                      ResponseBodyType                            `json:"type"`
 	CreatedAt                 float64                                     `json:"createdAt"`
-	Name                      string                                      `json:"name"`
 	ReadyState                ResponseBodyReadyState                      `json:"readyState"`
 	AliasError                *ResponseBodyAliasError                     `json:"aliasError,omitempty"`
 	AliasFinal                *string                                     `json:"aliasFinal,omitempty"`
@@ -6012,6 +6122,8 @@ type GetDeploymentResponseBody1 struct {
 	GitRepo                       *ResponseBodyGitRepo        `json:"gitRepo,omitempty"`
 	Flags                         *ResponseBodyFlags          `json:"flags,omitempty"`
 	Microfrontends                *ResponseBodyMicrofrontends `json:"microfrontends,omitempty"`
+	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+	Config *ResponseBodyConfig `json:"config,omitempty"`
 }
 
 func (o *GetDeploymentResponseBody1) GetAliasAssignedAt() *ResponseBodyAliasAssignedAt {
@@ -6238,6 +6350,13 @@ func (o *GetDeploymentResponseBody1) GetID() string {
 	return o.ID
 }
 
+func (o *GetDeploymentResponseBody1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 func (o *GetDeploymentResponseBody1) GetType() ResponseBodyType {
 	if o == nil {
 		return ResponseBodyType("")
@@ -6250,13 +6369,6 @@ func (o *GetDeploymentResponseBody1) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetDeploymentResponseBody1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetDeploymentResponseBody1) GetReadyState() ResponseBodyReadyState {
@@ -6558,6 +6670,13 @@ func (o *GetDeploymentResponseBody1) GetMicrofrontends() *ResponseBodyMicrofront
 		return nil
 	}
 	return o.Microfrontends
+}
+
+func (o *GetDeploymentResponseBody1) GetConfig() *ResponseBodyConfig {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type GetDeploymentResponseBodyUnionType string

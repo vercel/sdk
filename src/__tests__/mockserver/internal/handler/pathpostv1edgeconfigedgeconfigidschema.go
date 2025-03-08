@@ -24,7 +24,7 @@ func pathPostV1EdgeConfigEdgeConfigIDSchema(dir *logging.HTTPFileDirectory, rt *
 		case "patchEdgeConfigSchema[0]":
 			dir.HandlerFunc("patchEdgeConfigSchema", testPatchEdgeConfigSchemaPatchEdgeConfigSchema0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

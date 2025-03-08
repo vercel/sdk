@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Projectmembers Add Project Member", async () => {
+  const testHttpClient = createTestHTTPClient("addProjectMember");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("addProjectMember"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -31,9 +33,11 @@ test("Projectmembers Add Project Member", async () => {
 });
 
 test("Projectmembers Remove Project Member", async () => {
+  const testHttpClient = createTestHTTPClient("removeProjectMember");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeProjectMember"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

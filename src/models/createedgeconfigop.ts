@@ -9,33 +9,9 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Two5 = {};
-
-export type Items2 = Two5 | string | number | boolean | any;
-
-export type One5 = {};
-
-export type Items1 = One5 | string | number | boolean | any;
-
-export type Items =
-  | One5
-  | string
-  | number
-  | boolean
-  | any
-  | Array<Two5 | string | number | boolean | any>;
-
 export type CreateEdgeConfigRequestBody = {
   slug: string;
-  items?: {
-    [k: string]:
-      | One5
-      | string
-      | number
-      | boolean
-      | any
-      | Array<Two5 | string | number | boolean | any>;
-  } | undefined;
+  items?: { [k: string]: any } | undefined;
 };
 
 export type CreateEdgeConfigRequest = {
@@ -61,15 +37,29 @@ export type CreateEdgeConfigTransfer = {
 
 export type CreateEdgeConfigSchema = {};
 
-export const CreateEdgeConfigType = {
+export const CreateEdgeConfigPurposeType = {
+  Experimentation: "experimentation",
+} as const;
+export type CreateEdgeConfigPurposeType = ClosedEnum<
+  typeof CreateEdgeConfigPurposeType
+>;
+
+export type Purpose2 = {
+  type: CreateEdgeConfigPurposeType;
+  resourceId: string;
+};
+
+export const PurposeType = {
   Flags: "flags",
 } as const;
-export type CreateEdgeConfigType = ClosedEnum<typeof CreateEdgeConfigType>;
+export type PurposeType = ClosedEnum<typeof PurposeType>;
 
-export type CreateEdgeConfigPurpose = {
-  type: CreateEdgeConfigType;
+export type Purpose1 = {
+  type: PurposeType;
   projectId: string;
 };
+
+export type CreateEdgeConfigPurpose = Purpose1 | Purpose2;
 
 /**
  * An Edge Config
@@ -89,273 +79,10 @@ export type CreateEdgeConfigResponseBody = {
    */
   transfer?: CreateEdgeConfigTransfer | undefined;
   schema?: CreateEdgeConfigSchema | undefined;
-  purpose?: CreateEdgeConfigPurpose | undefined;
+  purpose?: Purpose1 | Purpose2 | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
-
-/** @internal */
-export const Two5$inboundSchema: z.ZodType<Two5, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type Two5$Outbound = {};
-
-/** @internal */
-export const Two5$outboundSchema: z.ZodType<Two5$Outbound, z.ZodTypeDef, Two5> =
-  z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two5$ {
-  /** @deprecated use `Two5$inboundSchema` instead. */
-  export const inboundSchema = Two5$inboundSchema;
-  /** @deprecated use `Two5$outboundSchema` instead. */
-  export const outboundSchema = Two5$outboundSchema;
-  /** @deprecated use `Two5$Outbound` instead. */
-  export type Outbound = Two5$Outbound;
-}
-
-export function two5ToJSON(two5: Two5): string {
-  return JSON.stringify(Two5$outboundSchema.parse(two5));
-}
-
-export function two5FromJSON(
-  jsonString: string,
-): SafeParseResult<Two5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Two5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two5' from JSON`,
-  );
-}
-
-/** @internal */
-export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Two5$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.any(),
-  ]);
-
-/** @internal */
-export type Items2$Outbound = Two5$Outbound | string | number | boolean | any;
-
-/** @internal */
-export const Items2$outboundSchema: z.ZodType<
-  Items2$Outbound,
-  z.ZodTypeDef,
-  Items2
-> = z.union([
-  z.lazy(() => Two5$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.any(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Items2$ {
-  /** @deprecated use `Items2$inboundSchema` instead. */
-  export const inboundSchema = Items2$inboundSchema;
-  /** @deprecated use `Items2$outboundSchema` instead. */
-  export const outboundSchema = Items2$outboundSchema;
-  /** @deprecated use `Items2$Outbound` instead. */
-  export type Outbound = Items2$Outbound;
-}
-
-export function items2ToJSON(items2: Items2): string {
-  return JSON.stringify(Items2$outboundSchema.parse(items2));
-}
-
-export function items2FromJSON(
-  jsonString: string,
-): SafeParseResult<Items2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Items2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items2' from JSON`,
-  );
-}
-
-/** @internal */
-export const One5$inboundSchema: z.ZodType<One5, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type One5$Outbound = {};
-
-/** @internal */
-export const One5$outboundSchema: z.ZodType<One5$Outbound, z.ZodTypeDef, One5> =
-  z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One5$ {
-  /** @deprecated use `One5$inboundSchema` instead. */
-  export const inboundSchema = One5$inboundSchema;
-  /** @deprecated use `One5$outboundSchema` instead. */
-  export const outboundSchema = One5$outboundSchema;
-  /** @deprecated use `One5$Outbound` instead. */
-  export type Outbound = One5$Outbound;
-}
-
-export function one5ToJSON(one5: One5): string {
-  return JSON.stringify(One5$outboundSchema.parse(one5));
-}
-
-export function one5FromJSON(
-  jsonString: string,
-): SafeParseResult<One5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => One5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One5' from JSON`,
-  );
-}
-
-/** @internal */
-export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => One5$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.any(),
-  ]);
-
-/** @internal */
-export type Items1$Outbound = One5$Outbound | string | number | boolean | any;
-
-/** @internal */
-export const Items1$outboundSchema: z.ZodType<
-  Items1$Outbound,
-  z.ZodTypeDef,
-  Items1
-> = z.union([
-  z.lazy(() => One5$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.any(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Items1$ {
-  /** @deprecated use `Items1$inboundSchema` instead. */
-  export const inboundSchema = Items1$inboundSchema;
-  /** @deprecated use `Items1$outboundSchema` instead. */
-  export const outboundSchema = Items1$outboundSchema;
-  /** @deprecated use `Items1$Outbound` instead. */
-  export type Outbound = Items1$Outbound;
-}
-
-export function items1ToJSON(items1: Items1): string {
-  return JSON.stringify(Items1$outboundSchema.parse(items1));
-}
-
-export function items1FromJSON(
-  jsonString: string,
-): SafeParseResult<Items1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Items1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
-  .union([
-    z.union([
-      z.lazy(() => One5$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.any(),
-    ]),
-    z.array(
-      z.union([
-        z.lazy(() => Two5$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.any(),
-      ]),
-    ),
-  ]);
-
-/** @internal */
-export type Items$Outbound =
-  | One5$Outbound
-  | string
-  | number
-  | boolean
-  | any
-  | Array<Two5$Outbound | string | number | boolean | any>;
-
-/** @internal */
-export const Items$outboundSchema: z.ZodType<
-  Items$Outbound,
-  z.ZodTypeDef,
-  Items
-> = z.union([
-  z.union([
-    z.lazy(() => One5$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.any(),
-  ]),
-  z.array(
-    z.union([
-      z.lazy(() => Two5$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.any(),
-    ]),
-  ),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Items$ {
-  /** @deprecated use `Items$inboundSchema` instead. */
-  export const inboundSchema = Items$inboundSchema;
-  /** @deprecated use `Items$outboundSchema` instead. */
-  export const outboundSchema = Items$outboundSchema;
-  /** @deprecated use `Items$Outbound` instead. */
-  export type Outbound = Items$Outbound;
-}
-
-export function itemsToJSON(items: Items): string {
-  return JSON.stringify(Items$outboundSchema.parse(items));
-}
-
-export function itemsFromJSON(
-  jsonString: string,
-): SafeParseResult<Items, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Items$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items' from JSON`,
-  );
-}
 
 /** @internal */
 export const CreateEdgeConfigRequestBody$inboundSchema: z.ZodType<
@@ -364,40 +91,13 @@ export const CreateEdgeConfigRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   slug: z.string(),
-  items: z.record(
-    z.union([
-      z.union([
-        z.lazy(() => One5$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.any(),
-      ]),
-      z.array(
-        z.union([
-          z.lazy(() => Two5$inboundSchema),
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.any(),
-        ]),
-      ),
-    ]),
-  ).optional(),
+  items: z.record(z.any()).optional(),
 });
 
 /** @internal */
 export type CreateEdgeConfigRequestBody$Outbound = {
   slug: string;
-  items?: {
-    [k: string]:
-      | One5$Outbound
-      | string
-      | number
-      | boolean
-      | any
-      | Array<Two5$Outbound | string | number | boolean | any>;
-  } | undefined;
+  items?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -407,26 +107,7 @@ export const CreateEdgeConfigRequestBody$outboundSchema: z.ZodType<
   CreateEdgeConfigRequestBody
 > = z.object({
   slug: z.string(),
-  items: z.record(
-    z.union([
-      z.union([
-        z.lazy(() => One5$outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.any(),
-      ]),
-      z.array(
-        z.union([
-          z.lazy(() => Two5$outboundSchema),
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.any(),
-        ]),
-      ),
-    ]),
-  ).optional(),
+  items: z.record(z.any()).optional(),
 });
 
 /**
@@ -639,24 +320,149 @@ export function createEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
-export const CreateEdgeConfigType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateEdgeConfigType
-> = z.nativeEnum(CreateEdgeConfigType);
+export const CreateEdgeConfigPurposeType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateEdgeConfigPurposeType
+> = z.nativeEnum(CreateEdgeConfigPurposeType);
 
 /** @internal */
-export const CreateEdgeConfigType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateEdgeConfigType
-> = CreateEdgeConfigType$inboundSchema;
+export const CreateEdgeConfigPurposeType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateEdgeConfigPurposeType
+> = CreateEdgeConfigPurposeType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateEdgeConfigType$ {
-  /** @deprecated use `CreateEdgeConfigType$inboundSchema` instead. */
-  export const inboundSchema = CreateEdgeConfigType$inboundSchema;
-  /** @deprecated use `CreateEdgeConfigType$outboundSchema` instead. */
-  export const outboundSchema = CreateEdgeConfigType$outboundSchema;
+export namespace CreateEdgeConfigPurposeType$ {
+  /** @deprecated use `CreateEdgeConfigPurposeType$inboundSchema` instead. */
+  export const inboundSchema = CreateEdgeConfigPurposeType$inboundSchema;
+  /** @deprecated use `CreateEdgeConfigPurposeType$outboundSchema` instead. */
+  export const outboundSchema = CreateEdgeConfigPurposeType$outboundSchema;
+}
+
+/** @internal */
+export const Purpose2$inboundSchema: z.ZodType<
+  Purpose2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateEdgeConfigPurposeType$inboundSchema,
+  resourceId: z.string(),
+});
+
+/** @internal */
+export type Purpose2$Outbound = {
+  type: string;
+  resourceId: string;
+};
+
+/** @internal */
+export const Purpose2$outboundSchema: z.ZodType<
+  Purpose2$Outbound,
+  z.ZodTypeDef,
+  Purpose2
+> = z.object({
+  type: CreateEdgeConfigPurposeType$outboundSchema,
+  resourceId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Purpose2$ {
+  /** @deprecated use `Purpose2$inboundSchema` instead. */
+  export const inboundSchema = Purpose2$inboundSchema;
+  /** @deprecated use `Purpose2$outboundSchema` instead. */
+  export const outboundSchema = Purpose2$outboundSchema;
+  /** @deprecated use `Purpose2$Outbound` instead. */
+  export type Outbound = Purpose2$Outbound;
+}
+
+export function purpose2ToJSON(purpose2: Purpose2): string {
+  return JSON.stringify(Purpose2$outboundSchema.parse(purpose2));
+}
+
+export function purpose2FromJSON(
+  jsonString: string,
+): SafeParseResult<Purpose2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Purpose2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PurposeType$inboundSchema: z.ZodNativeEnum<typeof PurposeType> = z
+  .nativeEnum(PurposeType);
+
+/** @internal */
+export const PurposeType$outboundSchema: z.ZodNativeEnum<typeof PurposeType> =
+  PurposeType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PurposeType$ {
+  /** @deprecated use `PurposeType$inboundSchema` instead. */
+  export const inboundSchema = PurposeType$inboundSchema;
+  /** @deprecated use `PurposeType$outboundSchema` instead. */
+  export const outboundSchema = PurposeType$outboundSchema;
+}
+
+/** @internal */
+export const Purpose1$inboundSchema: z.ZodType<
+  Purpose1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: PurposeType$inboundSchema,
+  projectId: z.string(),
+});
+
+/** @internal */
+export type Purpose1$Outbound = {
+  type: string;
+  projectId: string;
+};
+
+/** @internal */
+export const Purpose1$outboundSchema: z.ZodType<
+  Purpose1$Outbound,
+  z.ZodTypeDef,
+  Purpose1
+> = z.object({
+  type: PurposeType$outboundSchema,
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Purpose1$ {
+  /** @deprecated use `Purpose1$inboundSchema` instead. */
+  export const inboundSchema = Purpose1$inboundSchema;
+  /** @deprecated use `Purpose1$outboundSchema` instead. */
+  export const outboundSchema = Purpose1$outboundSchema;
+  /** @deprecated use `Purpose1$Outbound` instead. */
+  export type Outbound = Purpose1$Outbound;
+}
+
+export function purpose1ToJSON(purpose1: Purpose1): string {
+  return JSON.stringify(Purpose1$outboundSchema.parse(purpose1));
+}
+
+export function purpose1FromJSON(
+  jsonString: string,
+): SafeParseResult<Purpose1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Purpose1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Purpose1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -664,26 +470,25 @@ export const CreateEdgeConfigPurpose$inboundSchema: z.ZodType<
   CreateEdgeConfigPurpose,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: CreateEdgeConfigType$inboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => Purpose1$inboundSchema),
+  z.lazy(() => Purpose2$inboundSchema),
+]);
 
 /** @internal */
-export type CreateEdgeConfigPurpose$Outbound = {
-  type: string;
-  projectId: string;
-};
+export type CreateEdgeConfigPurpose$Outbound =
+  | Purpose1$Outbound
+  | Purpose2$Outbound;
 
 /** @internal */
 export const CreateEdgeConfigPurpose$outboundSchema: z.ZodType<
   CreateEdgeConfigPurpose$Outbound,
   z.ZodTypeDef,
   CreateEdgeConfigPurpose
-> = z.object({
-  type: CreateEdgeConfigType$outboundSchema,
-  projectId: z.string(),
-});
+> = z.union([
+  z.lazy(() => Purpose1$outboundSchema),
+  z.lazy(() => Purpose2$outboundSchema),
+]);
 
 /**
  * @internal
@@ -730,7 +535,10 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => CreateEdgeConfigTransfer$inboundSchema).optional(),
   schema: z.lazy(() => CreateEdgeConfigSchema$inboundSchema).optional(),
-  purpose: z.lazy(() => CreateEdgeConfigPurpose$inboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => Purpose1$inboundSchema),
+    z.lazy(() => Purpose2$inboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });
@@ -745,7 +553,7 @@ export type CreateEdgeConfigResponseBody$Outbound = {
   digest?: string | undefined;
   transfer?: CreateEdgeConfigTransfer$Outbound | undefined;
   schema?: CreateEdgeConfigSchema$Outbound | undefined;
-  purpose?: CreateEdgeConfigPurpose$Outbound | undefined;
+  purpose?: Purpose1$Outbound | Purpose2$Outbound | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -764,7 +572,10 @@ export const CreateEdgeConfigResponseBody$outboundSchema: z.ZodType<
   digest: z.string().optional(),
   transfer: z.lazy(() => CreateEdgeConfigTransfer$outboundSchema).optional(),
   schema: z.lazy(() => CreateEdgeConfigSchema$outboundSchema).optional(),
-  purpose: z.lazy(() => CreateEdgeConfigPurpose$outboundSchema).optional(),
+  purpose: z.union([
+    z.lazy(() => Purpose1$outboundSchema),
+    z.lazy(() => Purpose2$outboundSchema),
+  ]).optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });

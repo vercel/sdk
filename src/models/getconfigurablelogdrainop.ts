@@ -20,15 +20,6 @@ export type GetConfigurableLogDrainRequest = {
   slug?: string | undefined;
 };
 
-export const GetConfigurableLogDrainDeliveryFormat = {
-  Json: "json",
-  Ndjson: "ndjson",
-  Syslog: "syslog",
-} as const;
-export type GetConfigurableLogDrainDeliveryFormat = ClosedEnum<
-  typeof GetConfigurableLogDrainDeliveryFormat
->;
-
 export const GetConfigurableLogDrainSources = {
   Build: "build",
   Edge: "edge",
@@ -66,28 +57,25 @@ export const DisabledReason = {
 } as const;
 export type DisabledReason = ClosedEnum<typeof DisabledReason>;
 
-export const GetConfigurableLogDrainCreatedFrom = {
+export const CreatedFrom = {
   SelfServed: "self-served",
+  Integration: "integration",
 } as const;
-export type GetConfigurableLogDrainCreatedFrom = ClosedEnum<
-  typeof GetConfigurableLogDrainCreatedFrom
+export type CreatedFrom = ClosedEnum<typeof CreatedFrom>;
+
+export const GetConfigurableLogDrainDeliveryFormat = {
+  Json: "json",
+  Ndjson: "ndjson",
+  Syslog: "syslog",
+} as const;
+export type GetConfigurableLogDrainDeliveryFormat = ClosedEnum<
+  typeof GetConfigurableLogDrainDeliveryFormat
 >;
 
 export type GetConfigurableLogDrainResponseBody = {
-  id: string;
-  deliveryFormat: GetConfigurableLogDrainDeliveryFormat;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
   sources?: Array<GetConfigurableLogDrainSources> | undefined;
-  headers?: { [k: string]: string } | undefined;
   environments: Array<GetConfigurableLogDrainEnvironments>;
   status?: GetConfigurableLogDrainStatus | undefined;
   disabledAt?: number | undefined;
@@ -96,8 +84,19 @@ export type GetConfigurableLogDrainResponseBody = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  createdFrom?: CreatedFrom | undefined;
+  deliveryFormat: GetConfigurableLogDrainDeliveryFormat;
   secret: string;
-  createdFrom?: GetConfigurableLogDrainCreatedFrom | undefined;
 };
 
 /** @internal */
@@ -160,30 +159,6 @@ export function getConfigurableLogDrainRequestFromJSON(
     (x) => GetConfigurableLogDrainRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetConfigurableLogDrainRequest' from JSON`,
   );
-}
-
-/** @internal */
-export const GetConfigurableLogDrainDeliveryFormat$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurableLogDrainDeliveryFormat> = z.nativeEnum(
-    GetConfigurableLogDrainDeliveryFormat,
-  );
-
-/** @internal */
-export const GetConfigurableLogDrainDeliveryFormat$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurableLogDrainDeliveryFormat> =
-    GetConfigurableLogDrainDeliveryFormat$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurableLogDrainDeliveryFormat$ {
-  /** @deprecated use `GetConfigurableLogDrainDeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurableLogDrainDeliveryFormat$inboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainDeliveryFormat$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurableLogDrainDeliveryFormat$outboundSchema;
 }
 
 /** @internal */
@@ -273,25 +248,46 @@ export namespace DisabledReason$ {
 }
 
 /** @internal */
-export const GetConfigurableLogDrainCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurableLogDrainCreatedFrom
-> = z.nativeEnum(GetConfigurableLogDrainCreatedFrom);
+export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
+  .nativeEnum(CreatedFrom);
 
 /** @internal */
-export const GetConfigurableLogDrainCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurableLogDrainCreatedFrom
-> = GetConfigurableLogDrainCreatedFrom$inboundSchema;
+export const CreatedFrom$outboundSchema: z.ZodNativeEnum<typeof CreatedFrom> =
+  CreatedFrom$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetConfigurableLogDrainCreatedFrom$ {
-  /** @deprecated use `GetConfigurableLogDrainCreatedFrom$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurableLogDrainCreatedFrom$inboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainCreatedFrom$outboundSchema` instead. */
+export namespace CreatedFrom$ {
+  /** @deprecated use `CreatedFrom$inboundSchema` instead. */
+  export const inboundSchema = CreatedFrom$inboundSchema;
+  /** @deprecated use `CreatedFrom$outboundSchema` instead. */
+  export const outboundSchema = CreatedFrom$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurableLogDrainDeliveryFormat$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurableLogDrainDeliveryFormat> = z.nativeEnum(
+    GetConfigurableLogDrainDeliveryFormat,
+  );
+
+/** @internal */
+export const GetConfigurableLogDrainDeliveryFormat$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurableLogDrainDeliveryFormat> =
+    GetConfigurableLogDrainDeliveryFormat$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurableLogDrainDeliveryFormat$ {
+  /** @deprecated use `GetConfigurableLogDrainDeliveryFormat$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurableLogDrainDeliveryFormat$inboundSchema;
+  /** @deprecated use `GetConfigurableLogDrainDeliveryFormat$outboundSchema` instead. */
   export const outboundSchema =
-    GetConfigurableLogDrainCreatedFrom$outboundSchema;
+    GetConfigurableLogDrainDeliveryFormat$outboundSchema;
 }
 
 /** @internal */
@@ -300,20 +296,9 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  deliveryFormat: GetConfigurableLogDrainDeliveryFormat$inboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
   sources: z.array(GetConfigurableLogDrainSources$inboundSchema).optional(),
-  headers: z.record(z.string()).optional(),
   environments: z.array(GetConfigurableLogDrainEnvironments$inboundSchema),
   status: GetConfigurableLogDrainStatus$inboundSchema.optional(),
   disabledAt: z.number().optional(),
@@ -322,26 +307,26 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  createdFrom: CreatedFrom$inboundSchema.optional(),
+  deliveryFormat: GetConfigurableLogDrainDeliveryFormat$inboundSchema,
   secret: z.string(),
-  createdFrom: GetConfigurableLogDrainCreatedFrom$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetConfigurableLogDrainResponseBody$Outbound = {
-  id: string;
-  deliveryFormat: string;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
   sources?: Array<string> | undefined;
-  headers?: { [k: string]: string } | undefined;
   environments: Array<string>;
   status?: string | undefined;
   disabledAt?: number | undefined;
@@ -350,8 +335,19 @@ export type GetConfigurableLogDrainResponseBody$Outbound = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
-  secret: string;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
   createdFrom?: string | undefined;
+  deliveryFormat: string;
+  secret: string;
 };
 
 /** @internal */
@@ -360,20 +356,9 @@ export const GetConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurableLogDrainResponseBody
 > = z.object({
-  id: z.string(),
-  deliveryFormat: GetConfigurableLogDrainDeliveryFormat$outboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
   sources: z.array(GetConfigurableLogDrainSources$outboundSchema).optional(),
-  headers: z.record(z.string()).optional(),
   environments: z.array(GetConfigurableLogDrainEnvironments$outboundSchema),
   status: GetConfigurableLogDrainStatus$outboundSchema.optional(),
   disabledAt: z.number().optional(),
@@ -382,8 +367,19 @@ export const GetConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  createdFrom: CreatedFrom$outboundSchema.optional(),
+  deliveryFormat: GetConfigurableLogDrainDeliveryFormat$outboundSchema,
   secret: z.string(),
-  createdFrom: GetConfigurableLogDrainCreatedFrom$outboundSchema.optional(),
 });
 
 /**

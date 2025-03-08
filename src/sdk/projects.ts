@@ -310,23 +310,6 @@ export class Projects extends ClientSDK {
   }
 
   /**
-   * Retrieve the decrypted value of an environment variable of a project by id
-   *
-   * @remarks
-   * Retrieve the environment variable for a given project.
-   */
-  async getProjectEnv(
-    request: GetProjectEnvRequest,
-    options?: RequestOptions,
-  ): Promise<GetProjectEnvResponseBody> {
-    return unwrapAsync(projectsGetProjectEnv(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Create one or more environment variables
    *
    * @remarks
@@ -337,6 +320,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateProjectEnvResponseBody> {
     return unwrapAsync(projectsCreateProjectEnv(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve the decrypted value of an environment variable of a project by id
+   *
+   * @remarks
+   * Retrieve the environment variable for a given project.
+   */
+  async getProjectEnv(
+    request: GetProjectEnvRequest,
+    options?: RequestOptions,
+  ): Promise<GetProjectEnvResponseBody> {
+    return unwrapAsync(projectsGetProjectEnv(
       this,
       request,
       options,

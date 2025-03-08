@@ -37,7 +37,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSd
 /**
  * Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
  */
-export type GetFirewallConfigSd = {
+export type Sd = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction;
@@ -56,26 +56,29 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMa
 /**
  * Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
  */
-export type GetFirewallConfigMa = {
+export type Ma = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction;
 };
 
-export const GetFirewallConfigSecurityResponseAction = {
-  Deny: "deny",
-  Log: "log",
-} as const;
-export type GetFirewallConfigSecurityResponseAction = ClosedEnum<
-  typeof GetFirewallConfigSecurityResponseAction
->;
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction =
+  {
+    Deny: "deny",
+    Log: "log",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
+  >;
 
 /**
  * Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
  */
-export type GetFirewallConfigLfi = {
+export type Lfi = {
   active: boolean;
-  action: GetFirewallConfigSecurityResponseAction;
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction;
 };
 
 export const GetFirewallConfigSecurityResponse200Action = {
@@ -89,7 +92,7 @@ export type GetFirewallConfigSecurityResponse200Action = ClosedEnum<
 /**
  * Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
  */
-export type GetFirewallConfigRfi = {
+export type Rfi = {
   active: boolean;
   action: GetFirewallConfigSecurityResponse200Action;
 };
@@ -104,7 +107,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONAction =
 /**
  * Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
  */
-export type GetFirewallConfigRce = {
+export type Rce = {
   active: boolean;
   action: GetFirewallConfigSecurityResponse200ApplicationJSONAction;
 };
@@ -122,7 +125,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActio
 /**
  * PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
  */
-export type GetFirewallConfigPhp = {
+export type Php = {
   active: boolean;
   action: GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction;
 };
@@ -140,7 +143,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAc
 /**
  * Generic Attack - Provide broad protection from various undefined or novel attack vectors.
  */
-export type GetFirewallConfigGen = {
+export type Gen = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction;
@@ -159,7 +162,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXs
 /**
  * XSS Attack - Prevent injection of malicious scripts into trusted webpages.
  */
-export type GetFirewallConfigXss = {
+export type Xss = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction;
@@ -178,7 +181,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSq
 /**
  * SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
  */
-export type GetFirewallConfigSqli = {
+export type Sqli = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction;
@@ -197,7 +200,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSf
 /**
  * Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
  */
-export type GetFirewallConfigSf = {
+export type Sf = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction;
@@ -216,7 +219,7 @@ export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJa
 /**
  * Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
  */
-export type GetFirewallConfigJava = {
+export type Java = {
   active: boolean;
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction;
@@ -225,51 +228,51 @@ export type GetFirewallConfigJava = {
 /**
  * Custom Ruleset
  */
-export type GetFirewallConfigCrs = {
+export type Crs = {
   /**
    * Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
    */
-  sd: GetFirewallConfigSd;
+  sd: Sd;
   /**
    * Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
    */
-  ma: GetFirewallConfigMa;
+  ma: Ma;
   /**
    * Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
    */
-  lfi: GetFirewallConfigLfi;
+  lfi: Lfi;
   /**
    * Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
    */
-  rfi: GetFirewallConfigRfi;
+  rfi: Rfi;
   /**
    * Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
    */
-  rce: GetFirewallConfigRce;
+  rce: Rce;
   /**
    * PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
    */
-  php: GetFirewallConfigPhp;
+  php: Php;
   /**
    * Generic Attack - Provide broad protection from various undefined or novel attack vectors.
    */
-  gen: GetFirewallConfigGen;
+  gen: Gen;
   /**
    * XSS Attack - Prevent injection of malicious scripts into trusted webpages.
    */
-  xss: GetFirewallConfigXss;
+  xss: Xss;
   /**
    * SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
    */
-  sqli: GetFirewallConfigSqli;
+  sqli: Sqli;
   /**
    * Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
    */
-  sf: GetFirewallConfigSf;
+  sf: Sf;
   /**
    * Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
    */
-  java: GetFirewallConfigJava;
+  java: Java;
 };
 
 /**
@@ -402,13 +405,14 @@ export type GetFirewallConfigMitigate = {
   rateLimit?: GetFirewallConfigRateLimit | null | undefined;
   redirect?: GetFirewallConfigRedirect | null | undefined;
   actionDuration?: string | null | undefined;
+  bypassSystem?: boolean | null | undefined;
 };
 
 export type GetFirewallConfigAction = {
   mitigate?: GetFirewallConfigMitigate | undefined;
 };
 
-export type GetFirewallConfigRules = {
+export type Rules = {
   id: string;
   name: string;
   description?: string | undefined;
@@ -427,7 +431,7 @@ export type GetFirewallConfigSecurityAction = ClosedEnum<
   typeof GetFirewallConfigSecurityAction
 >;
 
-export type GetFirewallConfigIps = {
+export type Ips = {
   id: string;
   hostname: string;
   ip: string;
@@ -437,23 +441,21 @@ export type GetFirewallConfigIps = {
 
 export type Changes = {};
 
-export type GetFirewallConfigOwasp = {
+export const GetFirewallConfigSecurityResponseAction = {
+  Deny: "deny",
+  Log: "log",
+  Challenge: "challenge",
+} as const;
+export type GetFirewallConfigSecurityResponseAction = ClosedEnum<
+  typeof GetFirewallConfigSecurityResponseAction
+>;
+
+export type ManagedRules = {
   active: boolean;
+  action?: GetFirewallConfigSecurityResponseAction | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
-};
-
-export type VerifiedBotsBypass = {
-  active: boolean;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
-
-export type GetFirewallConfigManagedRules = {
-  owasp?: GetFirewallConfigOwasp | undefined;
-  verifiedBotsBypass?: VerifiedBotsBypass | undefined;
 };
 
 /**
@@ -469,11 +471,11 @@ export type GetFirewallConfigResponseBody = {
   /**
    * Custom Ruleset
    */
-  crs: GetFirewallConfigCrs;
-  rules: Array<GetFirewallConfigRules>;
-  ips: Array<GetFirewallConfigIps>;
+  crs: Crs;
+  rules: Array<Rules>;
+  ips: Array<Ips>;
   changes: Array<Changes>;
-  managedRules?: GetFirewallConfigManagedRules | undefined;
+  managedRules?: { [k: string]: ManagedRules } | undefined;
 };
 
 /** @internal */
@@ -568,61 +570,50 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigSd$inboundSchema: z.ZodType<
-  GetFirewallConfigSd,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
+export const Sd$inboundSchema: z.ZodType<Sd, z.ZodTypeDef, unknown> = z.object({
   active: z.boolean(),
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
 });
 
 /** @internal */
-export type GetFirewallConfigSd$Outbound = {
+export type Sd$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigSd$outboundSchema: z.ZodType<
-  GetFirewallConfigSd$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSd
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$outboundSchema,
-});
+export const Sd$outboundSchema: z.ZodType<Sd$Outbound, z.ZodTypeDef, Sd> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSd$ {
-  /** @deprecated use `GetFirewallConfigSd$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigSd$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSd$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigSd$outboundSchema;
-  /** @deprecated use `GetFirewallConfigSd$Outbound` instead. */
-  export type Outbound = GetFirewallConfigSd$Outbound;
+export namespace Sd$ {
+  /** @deprecated use `Sd$inboundSchema` instead. */
+  export const inboundSchema = Sd$inboundSchema;
+  /** @deprecated use `Sd$outboundSchema` instead. */
+  export const outboundSchema = Sd$outboundSchema;
+  /** @deprecated use `Sd$Outbound` instead. */
+  export type Outbound = Sd$Outbound;
 }
 
-export function getFirewallConfigSdToJSON(
-  getFirewallConfigSd: GetFirewallConfigSd,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSd$outboundSchema.parse(getFirewallConfigSd),
-  );
+export function sdToJSON(sd: Sd): string {
+  return JSON.stringify(Sd$outboundSchema.parse(sd));
 }
 
-export function getFirewallConfigSdFromJSON(
+export function sdFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigSd, SDKValidationError> {
+): SafeParseResult<Sd, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigSd$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigSd' from JSON`,
+    (x) => Sd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sd' from JSON`,
   );
 }
 
@@ -655,141 +646,127 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigMa$inboundSchema: z.ZodType<
-  GetFirewallConfigMa,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
+export const Ma$inboundSchema: z.ZodType<Ma, z.ZodTypeDef, unknown> = z.object({
   active: z.boolean(),
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction$inboundSchema,
 });
 
 /** @internal */
-export type GetFirewallConfigMa$Outbound = {
+export type Ma$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigMa$outboundSchema: z.ZodType<
-  GetFirewallConfigMa$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigMa
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction$outboundSchema,
-});
+export const Ma$outboundSchema: z.ZodType<Ma$Outbound, z.ZodTypeDef, Ma> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigMa$ {
-  /** @deprecated use `GetFirewallConfigMa$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigMa$inboundSchema;
-  /** @deprecated use `GetFirewallConfigMa$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigMa$outboundSchema;
-  /** @deprecated use `GetFirewallConfigMa$Outbound` instead. */
-  export type Outbound = GetFirewallConfigMa$Outbound;
+export namespace Ma$ {
+  /** @deprecated use `Ma$inboundSchema` instead. */
+  export const inboundSchema = Ma$inboundSchema;
+  /** @deprecated use `Ma$outboundSchema` instead. */
+  export const outboundSchema = Ma$outboundSchema;
+  /** @deprecated use `Ma$Outbound` instead. */
+  export type Outbound = Ma$Outbound;
 }
 
-export function getFirewallConfigMaToJSON(
-  getFirewallConfigMa: GetFirewallConfigMa,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigMa$outboundSchema.parse(getFirewallConfigMa),
-  );
+export function maToJSON(ma: Ma): string {
+  return JSON.stringify(Ma$outboundSchema.parse(ma));
 }
 
-export function getFirewallConfigMaFromJSON(
+export function maFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigMa, SDKValidationError> {
+): SafeParseResult<Ma, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigMa$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigMa' from JSON`,
+    (x) => Ma$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Ma' from JSON`,
   );
 }
 
 /** @internal */
-export const GetFirewallConfigSecurityResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> = z
-    .nativeEnum(GetFirewallConfigSecurityResponseAction);
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction,
+  );
 
 /** @internal */
-export const GetFirewallConfigSecurityResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> =
-    GetFirewallConfigSecurityResponseAction$inboundSchema;
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
+  > =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSecurityResponseAction$ {
-  /** @deprecated use `GetFirewallConfigSecurityResponseAction$inboundSchema` instead. */
+export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema` instead. */
   export const inboundSchema =
-    GetFirewallConfigSecurityResponseAction$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSecurityResponseAction$outboundSchema` instead. */
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema` instead. */
   export const outboundSchema =
-    GetFirewallConfigSecurityResponseAction$outboundSchema;
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema;
 }
 
 /** @internal */
-export const GetFirewallConfigLfi$inboundSchema: z.ZodType<
-  GetFirewallConfigLfi,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponseAction$inboundSchema,
-});
+export const Lfi$inboundSchema: z.ZodType<Lfi, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigLfi$Outbound = {
+export type Lfi$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigLfi$outboundSchema: z.ZodType<
-  GetFirewallConfigLfi$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigLfi
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponseAction$outboundSchema,
-});
+export const Lfi$outboundSchema: z.ZodType<Lfi$Outbound, z.ZodTypeDef, Lfi> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigLfi$ {
-  /** @deprecated use `GetFirewallConfigLfi$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigLfi$inboundSchema;
-  /** @deprecated use `GetFirewallConfigLfi$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigLfi$outboundSchema;
-  /** @deprecated use `GetFirewallConfigLfi$Outbound` instead. */
-  export type Outbound = GetFirewallConfigLfi$Outbound;
+export namespace Lfi$ {
+  /** @deprecated use `Lfi$inboundSchema` instead. */
+  export const inboundSchema = Lfi$inboundSchema;
+  /** @deprecated use `Lfi$outboundSchema` instead. */
+  export const outboundSchema = Lfi$outboundSchema;
+  /** @deprecated use `Lfi$Outbound` instead. */
+  export type Outbound = Lfi$Outbound;
 }
 
-export function getFirewallConfigLfiToJSON(
-  getFirewallConfigLfi: GetFirewallConfigLfi,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigLfi$outboundSchema.parse(getFirewallConfigLfi),
-  );
+export function lfiToJSON(lfi: Lfi): string {
+  return JSON.stringify(Lfi$outboundSchema.parse(lfi));
 }
 
-export function getFirewallConfigLfiFromJSON(
+export function lfiFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigLfi, SDKValidationError> {
+): SafeParseResult<Lfi, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigLfi$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigLfi' from JSON`,
+    (x) => Lfi$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lfi' from JSON`,
   );
 }
 
@@ -817,59 +794,49 @@ export namespace GetFirewallConfigSecurityResponse200Action$ {
 }
 
 /** @internal */
-export const GetFirewallConfigRfi$inboundSchema: z.ZodType<
-  GetFirewallConfigRfi,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponse200Action$inboundSchema,
-});
+export const Rfi$inboundSchema: z.ZodType<Rfi, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action: GetFirewallConfigSecurityResponse200Action$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigRfi$Outbound = {
+export type Rfi$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigRfi$outboundSchema: z.ZodType<
-  GetFirewallConfigRfi$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRfi
-> = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponse200Action$outboundSchema,
-});
+export const Rfi$outboundSchema: z.ZodType<Rfi$Outbound, z.ZodTypeDef, Rfi> = z
+  .object({
+    active: z.boolean(),
+    action: GetFirewallConfigSecurityResponse200Action$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigRfi$ {
-  /** @deprecated use `GetFirewallConfigRfi$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigRfi$inboundSchema;
-  /** @deprecated use `GetFirewallConfigRfi$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigRfi$outboundSchema;
-  /** @deprecated use `GetFirewallConfigRfi$Outbound` instead. */
-  export type Outbound = GetFirewallConfigRfi$Outbound;
+export namespace Rfi$ {
+  /** @deprecated use `Rfi$inboundSchema` instead. */
+  export const inboundSchema = Rfi$inboundSchema;
+  /** @deprecated use `Rfi$outboundSchema` instead. */
+  export const outboundSchema = Rfi$outboundSchema;
+  /** @deprecated use `Rfi$Outbound` instead. */
+  export type Outbound = Rfi$Outbound;
 }
 
-export function getFirewallConfigRfiToJSON(
-  getFirewallConfigRfi: GetFirewallConfigRfi,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRfi$outboundSchema.parse(getFirewallConfigRfi),
-  );
+export function rfiToJSON(rfi: Rfi): string {
+  return JSON.stringify(Rfi$outboundSchema.parse(rfi));
 }
 
-export function getFirewallConfigRfiFromJSON(
+export function rfiFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigRfi, SDKValidationError> {
+): SafeParseResult<Rfi, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigRfi$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigRfi' from JSON`,
+    (x) => Rfi$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rfi' from JSON`,
   );
 }
 
@@ -899,61 +866,51 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONAction$ {
 }
 
 /** @internal */
-export const GetFirewallConfigRce$inboundSchema: z.ZodType<
-  GetFirewallConfigRce,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema,
-});
+export const Rce$inboundSchema: z.ZodType<Rce, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigRce$Outbound = {
+export type Rce$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigRce$outboundSchema: z.ZodType<
-  GetFirewallConfigRce$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigRce
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema,
-});
+export const Rce$outboundSchema: z.ZodType<Rce$Outbound, z.ZodTypeDef, Rce> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigRce$ {
-  /** @deprecated use `GetFirewallConfigRce$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigRce$inboundSchema;
-  /** @deprecated use `GetFirewallConfigRce$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigRce$outboundSchema;
-  /** @deprecated use `GetFirewallConfigRce$Outbound` instead. */
-  export type Outbound = GetFirewallConfigRce$Outbound;
+export namespace Rce$ {
+  /** @deprecated use `Rce$inboundSchema` instead. */
+  export const inboundSchema = Rce$inboundSchema;
+  /** @deprecated use `Rce$outboundSchema` instead. */
+  export const outboundSchema = Rce$outboundSchema;
+  /** @deprecated use `Rce$Outbound` instead. */
+  export type Outbound = Rce$Outbound;
 }
 
-export function getFirewallConfigRceToJSON(
-  getFirewallConfigRce: GetFirewallConfigRce,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRce$outboundSchema.parse(getFirewallConfigRce),
-  );
+export function rceToJSON(rce: Rce): string {
+  return JSON.stringify(Rce$outboundSchema.parse(rce));
 }
 
-export function getFirewallConfigRceFromJSON(
+export function rceFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigRce, SDKValidationError> {
+): SafeParseResult<Rce, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigRce$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigRce' from JSON`,
+    (x) => Rce$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rce' from JSON`,
   );
 }
 
@@ -986,61 +943,51 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigPhp$inboundSchema: z.ZodType<
-  GetFirewallConfigPhp,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-});
+export const Php$inboundSchema: z.ZodType<Php, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigPhp$Outbound = {
+export type Php$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigPhp$outboundSchema: z.ZodType<
-  GetFirewallConfigPhp$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigPhp
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$outboundSchema,
-});
+export const Php$outboundSchema: z.ZodType<Php$Outbound, z.ZodTypeDef, Php> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigPhp$ {
-  /** @deprecated use `GetFirewallConfigPhp$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigPhp$inboundSchema;
-  /** @deprecated use `GetFirewallConfigPhp$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigPhp$outboundSchema;
-  /** @deprecated use `GetFirewallConfigPhp$Outbound` instead. */
-  export type Outbound = GetFirewallConfigPhp$Outbound;
+export namespace Php$ {
+  /** @deprecated use `Php$inboundSchema` instead. */
+  export const inboundSchema = Php$inboundSchema;
+  /** @deprecated use `Php$outboundSchema` instead. */
+  export const outboundSchema = Php$outboundSchema;
+  /** @deprecated use `Php$Outbound` instead. */
+  export type Outbound = Php$Outbound;
 }
 
-export function getFirewallConfigPhpToJSON(
-  getFirewallConfigPhp: GetFirewallConfigPhp,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigPhp$outboundSchema.parse(getFirewallConfigPhp),
-  );
+export function phpToJSON(php: Php): string {
+  return JSON.stringify(Php$outboundSchema.parse(php));
 }
 
-export function getFirewallConfigPhpFromJSON(
+export function phpFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigPhp, SDKValidationError> {
+): SafeParseResult<Php, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigPhp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigPhp' from JSON`,
+    (x) => Php$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Php' from JSON`,
   );
 }
 
@@ -1073,61 +1020,51 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigGen$inboundSchema: z.ZodType<
-  GetFirewallConfigGen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
-});
+export const Gen$inboundSchema: z.ZodType<Gen, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigGen$Outbound = {
+export type Gen$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigGen$outboundSchema: z.ZodType<
-  GetFirewallConfigGen$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigGen
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$outboundSchema,
-});
+export const Gen$outboundSchema: z.ZodType<Gen$Outbound, z.ZodTypeDef, Gen> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigGen$ {
-  /** @deprecated use `GetFirewallConfigGen$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigGen$inboundSchema;
-  /** @deprecated use `GetFirewallConfigGen$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigGen$outboundSchema;
-  /** @deprecated use `GetFirewallConfigGen$Outbound` instead. */
-  export type Outbound = GetFirewallConfigGen$Outbound;
+export namespace Gen$ {
+  /** @deprecated use `Gen$inboundSchema` instead. */
+  export const inboundSchema = Gen$inboundSchema;
+  /** @deprecated use `Gen$outboundSchema` instead. */
+  export const outboundSchema = Gen$outboundSchema;
+  /** @deprecated use `Gen$Outbound` instead. */
+  export type Outbound = Gen$Outbound;
 }
 
-export function getFirewallConfigGenToJSON(
-  getFirewallConfigGen: GetFirewallConfigGen,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigGen$outboundSchema.parse(getFirewallConfigGen),
-  );
+export function genToJSON(gen: Gen): string {
+  return JSON.stringify(Gen$outboundSchema.parse(gen));
 }
 
-export function getFirewallConfigGenFromJSON(
+export function genFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigGen, SDKValidationError> {
+): SafeParseResult<Gen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigGen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigGen' from JSON`,
+    (x) => Gen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Gen' from JSON`,
   );
 }
 
@@ -1160,61 +1097,51 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigXss$inboundSchema: z.ZodType<
-  GetFirewallConfigXss,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
-});
+export const Xss$inboundSchema: z.ZodType<Xss, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigXss$Outbound = {
+export type Xss$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigXss$outboundSchema: z.ZodType<
-  GetFirewallConfigXss$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigXss
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$outboundSchema,
-});
+export const Xss$outboundSchema: z.ZodType<Xss$Outbound, z.ZodTypeDef, Xss> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigXss$ {
-  /** @deprecated use `GetFirewallConfigXss$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigXss$inboundSchema;
-  /** @deprecated use `GetFirewallConfigXss$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigXss$outboundSchema;
-  /** @deprecated use `GetFirewallConfigXss$Outbound` instead. */
-  export type Outbound = GetFirewallConfigXss$Outbound;
+export namespace Xss$ {
+  /** @deprecated use `Xss$inboundSchema` instead. */
+  export const inboundSchema = Xss$inboundSchema;
+  /** @deprecated use `Xss$outboundSchema` instead. */
+  export const outboundSchema = Xss$outboundSchema;
+  /** @deprecated use `Xss$Outbound` instead. */
+  export type Outbound = Xss$Outbound;
 }
 
-export function getFirewallConfigXssToJSON(
-  getFirewallConfigXss: GetFirewallConfigXss,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigXss$outboundSchema.parse(getFirewallConfigXss),
-  );
+export function xssToJSON(xss: Xss): string {
+  return JSON.stringify(Xss$outboundSchema.parse(xss));
 }
 
-export function getFirewallConfigXssFromJSON(
+export function xssFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigXss, SDKValidationError> {
+): SafeParseResult<Xss, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigXss$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigXss' from JSON`,
+    (x) => Xss$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Xss' from JSON`,
   );
 }
 
@@ -1247,61 +1174,51 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigSqli$inboundSchema: z.ZodType<
-  GetFirewallConfigSqli,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
-});
+export const Sqli$inboundSchema: z.ZodType<Sqli, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigSqli$Outbound = {
+export type Sqli$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigSqli$outboundSchema: z.ZodType<
-  GetFirewallConfigSqli$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSqli
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$outboundSchema,
-});
+export const Sqli$outboundSchema: z.ZodType<Sqli$Outbound, z.ZodTypeDef, Sqli> =
+  z.object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSqli$ {
-  /** @deprecated use `GetFirewallConfigSqli$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigSqli$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSqli$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigSqli$outboundSchema;
-  /** @deprecated use `GetFirewallConfigSqli$Outbound` instead. */
-  export type Outbound = GetFirewallConfigSqli$Outbound;
+export namespace Sqli$ {
+  /** @deprecated use `Sqli$inboundSchema` instead. */
+  export const inboundSchema = Sqli$inboundSchema;
+  /** @deprecated use `Sqli$outboundSchema` instead. */
+  export const outboundSchema = Sqli$outboundSchema;
+  /** @deprecated use `Sqli$Outbound` instead. */
+  export type Outbound = Sqli$Outbound;
 }
 
-export function getFirewallConfigSqliToJSON(
-  getFirewallConfigSqli: GetFirewallConfigSqli,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSqli$outboundSchema.parse(getFirewallConfigSqli),
-  );
+export function sqliToJSON(sqli: Sqli): string {
+  return JSON.stringify(Sqli$outboundSchema.parse(sqli));
 }
 
-export function getFirewallConfigSqliFromJSON(
+export function sqliFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigSqli, SDKValidationError> {
+): SafeParseResult<Sqli, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigSqli$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigSqli' from JSON`,
+    (x) => Sqli$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sqli' from JSON`,
   );
 }
 
@@ -1334,61 +1251,50 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigSf$inboundSchema: z.ZodType<
-  GetFirewallConfigSf,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
+export const Sf$inboundSchema: z.ZodType<Sf, z.ZodTypeDef, unknown> = z.object({
   active: z.boolean(),
   action:
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
 });
 
 /** @internal */
-export type GetFirewallConfigSf$Outbound = {
+export type Sf$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigSf$outboundSchema: z.ZodType<
-  GetFirewallConfigSf$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigSf
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$outboundSchema,
-});
+export const Sf$outboundSchema: z.ZodType<Sf$Outbound, z.ZodTypeDef, Sf> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSf$ {
-  /** @deprecated use `GetFirewallConfigSf$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigSf$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSf$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigSf$outboundSchema;
-  /** @deprecated use `GetFirewallConfigSf$Outbound` instead. */
-  export type Outbound = GetFirewallConfigSf$Outbound;
+export namespace Sf$ {
+  /** @deprecated use `Sf$inboundSchema` instead. */
+  export const inboundSchema = Sf$inboundSchema;
+  /** @deprecated use `Sf$outboundSchema` instead. */
+  export const outboundSchema = Sf$outboundSchema;
+  /** @deprecated use `Sf$Outbound` instead. */
+  export type Outbound = Sf$Outbound;
 }
 
-export function getFirewallConfigSfToJSON(
-  getFirewallConfigSf: GetFirewallConfigSf,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigSf$outboundSchema.parse(getFirewallConfigSf),
-  );
+export function sfToJSON(sf: Sf): string {
+  return JSON.stringify(Sf$outboundSchema.parse(sf));
 }
 
-export function getFirewallConfigSfFromJSON(
+export function sfFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigSf, SDKValidationError> {
+): SafeParseResult<Sf, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigSf$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigSf' from JSON`,
+    (x) => Sf$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sf' from JSON`,
   );
 }
 
@@ -1421,145 +1327,125 @@ export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBody
 }
 
 /** @internal */
-export const GetFirewallConfigJava$inboundSchema: z.ZodType<
-  GetFirewallConfigJava,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema,
-});
+export const Java$inboundSchema: z.ZodType<Java, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigJava$Outbound = {
+export type Java$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const GetFirewallConfigJava$outboundSchema: z.ZodType<
-  GetFirewallConfigJava$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigJava
-> = z.object({
-  active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$outboundSchema,
-});
+export const Java$outboundSchema: z.ZodType<Java$Outbound, z.ZodTypeDef, Java> =
+  z.object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigJava$ {
-  /** @deprecated use `GetFirewallConfigJava$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigJava$inboundSchema;
-  /** @deprecated use `GetFirewallConfigJava$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigJava$outboundSchema;
-  /** @deprecated use `GetFirewallConfigJava$Outbound` instead. */
-  export type Outbound = GetFirewallConfigJava$Outbound;
+export namespace Java$ {
+  /** @deprecated use `Java$inboundSchema` instead. */
+  export const inboundSchema = Java$inboundSchema;
+  /** @deprecated use `Java$outboundSchema` instead. */
+  export const outboundSchema = Java$outboundSchema;
+  /** @deprecated use `Java$Outbound` instead. */
+  export type Outbound = Java$Outbound;
 }
 
-export function getFirewallConfigJavaToJSON(
-  getFirewallConfigJava: GetFirewallConfigJava,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigJava$outboundSchema.parse(getFirewallConfigJava),
-  );
+export function javaToJSON(java: Java): string {
+  return JSON.stringify(Java$outboundSchema.parse(java));
 }
 
-export function getFirewallConfigJavaFromJSON(
+export function javaFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigJava, SDKValidationError> {
+): SafeParseResult<Java, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigJava$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigJava' from JSON`,
+    (x) => Java$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Java' from JSON`,
   );
 }
 
 /** @internal */
-export const GetFirewallConfigCrs$inboundSchema: z.ZodType<
-  GetFirewallConfigCrs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sd: z.lazy(() => GetFirewallConfigSd$inboundSchema),
-  ma: z.lazy(() => GetFirewallConfigMa$inboundSchema),
-  lfi: z.lazy(() => GetFirewallConfigLfi$inboundSchema),
-  rfi: z.lazy(() => GetFirewallConfigRfi$inboundSchema),
-  rce: z.lazy(() => GetFirewallConfigRce$inboundSchema),
-  php: z.lazy(() => GetFirewallConfigPhp$inboundSchema),
-  gen: z.lazy(() => GetFirewallConfigGen$inboundSchema),
-  xss: z.lazy(() => GetFirewallConfigXss$inboundSchema),
-  sqli: z.lazy(() => GetFirewallConfigSqli$inboundSchema),
-  sf: z.lazy(() => GetFirewallConfigSf$inboundSchema),
-  java: z.lazy(() => GetFirewallConfigJava$inboundSchema),
-});
+export const Crs$inboundSchema: z.ZodType<Crs, z.ZodTypeDef, unknown> = z
+  .object({
+    sd: z.lazy(() => Sd$inboundSchema),
+    ma: z.lazy(() => Ma$inboundSchema),
+    lfi: z.lazy(() => Lfi$inboundSchema),
+    rfi: z.lazy(() => Rfi$inboundSchema),
+    rce: z.lazy(() => Rce$inboundSchema),
+    php: z.lazy(() => Php$inboundSchema),
+    gen: z.lazy(() => Gen$inboundSchema),
+    xss: z.lazy(() => Xss$inboundSchema),
+    sqli: z.lazy(() => Sqli$inboundSchema),
+    sf: z.lazy(() => Sf$inboundSchema),
+    java: z.lazy(() => Java$inboundSchema),
+  });
 
 /** @internal */
-export type GetFirewallConfigCrs$Outbound = {
-  sd: GetFirewallConfigSd$Outbound;
-  ma: GetFirewallConfigMa$Outbound;
-  lfi: GetFirewallConfigLfi$Outbound;
-  rfi: GetFirewallConfigRfi$Outbound;
-  rce: GetFirewallConfigRce$Outbound;
-  php: GetFirewallConfigPhp$Outbound;
-  gen: GetFirewallConfigGen$Outbound;
-  xss: GetFirewallConfigXss$Outbound;
-  sqli: GetFirewallConfigSqli$Outbound;
-  sf: GetFirewallConfigSf$Outbound;
-  java: GetFirewallConfigJava$Outbound;
+export type Crs$Outbound = {
+  sd: Sd$Outbound;
+  ma: Ma$Outbound;
+  lfi: Lfi$Outbound;
+  rfi: Rfi$Outbound;
+  rce: Rce$Outbound;
+  php: Php$Outbound;
+  gen: Gen$Outbound;
+  xss: Xss$Outbound;
+  sqli: Sqli$Outbound;
+  sf: Sf$Outbound;
+  java: Java$Outbound;
 };
 
 /** @internal */
-export const GetFirewallConfigCrs$outboundSchema: z.ZodType<
-  GetFirewallConfigCrs$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigCrs
-> = z.object({
-  sd: z.lazy(() => GetFirewallConfigSd$outboundSchema),
-  ma: z.lazy(() => GetFirewallConfigMa$outboundSchema),
-  lfi: z.lazy(() => GetFirewallConfigLfi$outboundSchema),
-  rfi: z.lazy(() => GetFirewallConfigRfi$outboundSchema),
-  rce: z.lazy(() => GetFirewallConfigRce$outboundSchema),
-  php: z.lazy(() => GetFirewallConfigPhp$outboundSchema),
-  gen: z.lazy(() => GetFirewallConfigGen$outboundSchema),
-  xss: z.lazy(() => GetFirewallConfigXss$outboundSchema),
-  sqli: z.lazy(() => GetFirewallConfigSqli$outboundSchema),
-  sf: z.lazy(() => GetFirewallConfigSf$outboundSchema),
-  java: z.lazy(() => GetFirewallConfigJava$outboundSchema),
-});
+export const Crs$outboundSchema: z.ZodType<Crs$Outbound, z.ZodTypeDef, Crs> = z
+  .object({
+    sd: z.lazy(() => Sd$outboundSchema),
+    ma: z.lazy(() => Ma$outboundSchema),
+    lfi: z.lazy(() => Lfi$outboundSchema),
+    rfi: z.lazy(() => Rfi$outboundSchema),
+    rce: z.lazy(() => Rce$outboundSchema),
+    php: z.lazy(() => Php$outboundSchema),
+    gen: z.lazy(() => Gen$outboundSchema),
+    xss: z.lazy(() => Xss$outboundSchema),
+    sqli: z.lazy(() => Sqli$outboundSchema),
+    sf: z.lazy(() => Sf$outboundSchema),
+    java: z.lazy(() => Java$outboundSchema),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigCrs$ {
-  /** @deprecated use `GetFirewallConfigCrs$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigCrs$inboundSchema;
-  /** @deprecated use `GetFirewallConfigCrs$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigCrs$outboundSchema;
-  /** @deprecated use `GetFirewallConfigCrs$Outbound` instead. */
-  export type Outbound = GetFirewallConfigCrs$Outbound;
+export namespace Crs$ {
+  /** @deprecated use `Crs$inboundSchema` instead. */
+  export const inboundSchema = Crs$inboundSchema;
+  /** @deprecated use `Crs$outboundSchema` instead. */
+  export const outboundSchema = Crs$outboundSchema;
+  /** @deprecated use `Crs$Outbound` instead. */
+  export type Outbound = Crs$Outbound;
 }
 
-export function getFirewallConfigCrsToJSON(
-  getFirewallConfigCrs: GetFirewallConfigCrs,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigCrs$outboundSchema.parse(getFirewallConfigCrs),
-  );
+export function crsToJSON(crs: Crs): string {
+  return JSON.stringify(Crs$outboundSchema.parse(crs));
 }
 
-export function getFirewallConfigCrsFromJSON(
+export function crsFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigCrs, SDKValidationError> {
+): SafeParseResult<Crs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigCrs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigCrs' from JSON`,
+    (x) => Crs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Crs' from JSON`,
   );
 }
 
@@ -1994,6 +1880,7 @@ export const GetFirewallConfigMitigate$inboundSchema: z.ZodType<
   redirect: z.nullable(z.lazy(() => GetFirewallConfigRedirect$inboundSchema))
     .optional(),
   actionDuration: z.nullable(z.string()).optional(),
+  bypassSystem: z.nullable(z.boolean()).optional(),
 });
 
 /** @internal */
@@ -2002,6 +1889,7 @@ export type GetFirewallConfigMitigate$Outbound = {
   rateLimit?: GetFirewallConfigRateLimit$Outbound | null | undefined;
   redirect?: GetFirewallConfigRedirect$Outbound | null | undefined;
   actionDuration?: string | null | undefined;
+  bypassSystem?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -2017,6 +1905,7 @@ export const GetFirewallConfigMitigate$outboundSchema: z.ZodType<
   redirect: z.nullable(z.lazy(() => GetFirewallConfigRedirect$outboundSchema))
     .optional(),
   actionDuration: z.nullable(z.string()).optional(),
+  bypassSystem: z.nullable(z.boolean()).optional(),
 });
 
 /**
@@ -2105,23 +1994,20 @@ export function getFirewallConfigActionFromJSON(
 }
 
 /** @internal */
-export const GetFirewallConfigRules$inboundSchema: z.ZodType<
-  GetFirewallConfigRules,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => GetFirewallConfigConditionGroup$inboundSchema),
-  ),
-  action: z.lazy(() => GetFirewallConfigAction$inboundSchema),
-});
+export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string().optional(),
+    active: z.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() => GetFirewallConfigConditionGroup$inboundSchema),
+    ),
+    action: z.lazy(() => GetFirewallConfigAction$inboundSchema),
+  });
 
 /** @internal */
-export type GetFirewallConfigRules$Outbound = {
+export type Rules$Outbound = {
   id: string;
   name: string;
   description?: string | undefined;
@@ -2131,10 +2017,10 @@ export type GetFirewallConfigRules$Outbound = {
 };
 
 /** @internal */
-export const GetFirewallConfigRules$outboundSchema: z.ZodType<
-  GetFirewallConfigRules$Outbound,
+export const Rules$outboundSchema: z.ZodType<
+  Rules$Outbound,
   z.ZodTypeDef,
-  GetFirewallConfigRules
+  Rules
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -2150,30 +2036,26 @@ export const GetFirewallConfigRules$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigRules$ {
-  /** @deprecated use `GetFirewallConfigRules$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigRules$inboundSchema;
-  /** @deprecated use `GetFirewallConfigRules$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigRules$outboundSchema;
-  /** @deprecated use `GetFirewallConfigRules$Outbound` instead. */
-  export type Outbound = GetFirewallConfigRules$Outbound;
+export namespace Rules$ {
+  /** @deprecated use `Rules$inboundSchema` instead. */
+  export const inboundSchema = Rules$inboundSchema;
+  /** @deprecated use `Rules$outboundSchema` instead. */
+  export const outboundSchema = Rules$outboundSchema;
+  /** @deprecated use `Rules$Outbound` instead. */
+  export type Outbound = Rules$Outbound;
 }
 
-export function getFirewallConfigRulesToJSON(
-  getFirewallConfigRules: GetFirewallConfigRules,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigRules$outboundSchema.parse(getFirewallConfigRules),
-  );
+export function rulesToJSON(rules: Rules): string {
+  return JSON.stringify(Rules$outboundSchema.parse(rules));
 }
 
-export function getFirewallConfigRulesFromJSON(
+export function rulesFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigRules, SDKValidationError> {
+): SafeParseResult<Rules, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigRules' from JSON`,
+    (x) => Rules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rules' from JSON`,
   );
 }
 
@@ -2199,20 +2081,17 @@ export namespace GetFirewallConfigSecurityAction$ {
 }
 
 /** @internal */
-export const GetFirewallConfigIps$inboundSchema: z.ZodType<
-  GetFirewallConfigIps,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  hostname: z.string(),
-  ip: z.string(),
-  notes: z.string().optional(),
-  action: GetFirewallConfigSecurityAction$inboundSchema,
-});
+export const Ips$inboundSchema: z.ZodType<Ips, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    hostname: z.string(),
+    ip: z.string(),
+    notes: z.string().optional(),
+    action: GetFirewallConfigSecurityAction$inboundSchema,
+  });
 
 /** @internal */
-export type GetFirewallConfigIps$Outbound = {
+export type Ips$Outbound = {
   id: string;
   hostname: string;
   ip: string;
@@ -2221,46 +2100,39 @@ export type GetFirewallConfigIps$Outbound = {
 };
 
 /** @internal */
-export const GetFirewallConfigIps$outboundSchema: z.ZodType<
-  GetFirewallConfigIps$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigIps
-> = z.object({
-  id: z.string(),
-  hostname: z.string(),
-  ip: z.string(),
-  notes: z.string().optional(),
-  action: GetFirewallConfigSecurityAction$outboundSchema,
-});
+export const Ips$outboundSchema: z.ZodType<Ips$Outbound, z.ZodTypeDef, Ips> = z
+  .object({
+    id: z.string(),
+    hostname: z.string(),
+    ip: z.string(),
+    notes: z.string().optional(),
+    action: GetFirewallConfigSecurityAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigIps$ {
-  /** @deprecated use `GetFirewallConfigIps$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigIps$inboundSchema;
-  /** @deprecated use `GetFirewallConfigIps$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigIps$outboundSchema;
-  /** @deprecated use `GetFirewallConfigIps$Outbound` instead. */
-  export type Outbound = GetFirewallConfigIps$Outbound;
+export namespace Ips$ {
+  /** @deprecated use `Ips$inboundSchema` instead. */
+  export const inboundSchema = Ips$inboundSchema;
+  /** @deprecated use `Ips$outboundSchema` instead. */
+  export const outboundSchema = Ips$outboundSchema;
+  /** @deprecated use `Ips$Outbound` instead. */
+  export type Outbound = Ips$Outbound;
 }
 
-export function getFirewallConfigIpsToJSON(
-  getFirewallConfigIps: GetFirewallConfigIps,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigIps$outboundSchema.parse(getFirewallConfigIps),
-  );
+export function ipsToJSON(ips: Ips): string {
+  return JSON.stringify(Ips$outboundSchema.parse(ips));
 }
 
-export function getFirewallConfigIpsFromJSON(
+export function ipsFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigIps, SDKValidationError> {
+): SafeParseResult<Ips, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigIps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigIps' from JSON`,
+    (x) => Ips$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Ips' from JSON`,
   );
 }
 
@@ -2306,32 +2178,58 @@ export function changesFromJSON(
 }
 
 /** @internal */
-export const GetFirewallConfigOwasp$inboundSchema: z.ZodType<
-  GetFirewallConfigOwasp,
+export const GetFirewallConfigSecurityResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> = z
+    .nativeEnum(GetFirewallConfigSecurityResponseAction);
+
+/** @internal */
+export const GetFirewallConfigSecurityResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> =
+    GetFirewallConfigSecurityResponseAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetFirewallConfigSecurityResponseAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponseAction$inboundSchema` instead. */
+  export const inboundSchema =
+    GetFirewallConfigSecurityResponseAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponseAction$outboundSchema` instead. */
+  export const outboundSchema =
+    GetFirewallConfigSecurityResponseAction$outboundSchema;
+}
+
+/** @internal */
+export const ManagedRules$inboundSchema: z.ZodType<
+  ManagedRules,
   z.ZodTypeDef,
   unknown
 > = z.object({
   active: z.boolean(),
+  action: GetFirewallConfigSecurityResponseAction$inboundSchema.optional(),
   updatedAt: z.string().optional(),
   userId: z.string().optional(),
   username: z.string().optional(),
 });
 
 /** @internal */
-export type GetFirewallConfigOwasp$Outbound = {
+export type ManagedRules$Outbound = {
   active: boolean;
+  action?: string | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
 };
 
 /** @internal */
-export const GetFirewallConfigOwasp$outboundSchema: z.ZodType<
-  GetFirewallConfigOwasp$Outbound,
+export const ManagedRules$outboundSchema: z.ZodType<
+  ManagedRules$Outbound,
   z.ZodTypeDef,
-  GetFirewallConfigOwasp
+  ManagedRules
 > = z.object({
   active: z.boolean(),
+  action: GetFirewallConfigSecurityResponseAction$outboundSchema.optional(),
   updatedAt: z.string().optional(),
   userId: z.string().optional(),
   username: z.string().optional(),
@@ -2341,153 +2239,26 @@ export const GetFirewallConfigOwasp$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigOwasp$ {
-  /** @deprecated use `GetFirewallConfigOwasp$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigOwasp$inboundSchema;
-  /** @deprecated use `GetFirewallConfigOwasp$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigOwasp$outboundSchema;
-  /** @deprecated use `GetFirewallConfigOwasp$Outbound` instead. */
-  export type Outbound = GetFirewallConfigOwasp$Outbound;
+export namespace ManagedRules$ {
+  /** @deprecated use `ManagedRules$inboundSchema` instead. */
+  export const inboundSchema = ManagedRules$inboundSchema;
+  /** @deprecated use `ManagedRules$outboundSchema` instead. */
+  export const outboundSchema = ManagedRules$outboundSchema;
+  /** @deprecated use `ManagedRules$Outbound` instead. */
+  export type Outbound = ManagedRules$Outbound;
 }
 
-export function getFirewallConfigOwaspToJSON(
-  getFirewallConfigOwasp: GetFirewallConfigOwasp,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigOwasp$outboundSchema.parse(getFirewallConfigOwasp),
-  );
+export function managedRulesToJSON(managedRules: ManagedRules): string {
+  return JSON.stringify(ManagedRules$outboundSchema.parse(managedRules));
 }
 
-export function getFirewallConfigOwaspFromJSON(
+export function managedRulesFromJSON(
   jsonString: string,
-): SafeParseResult<GetFirewallConfigOwasp, SDKValidationError> {
+): SafeParseResult<ManagedRules, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetFirewallConfigOwasp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigOwasp' from JSON`,
-  );
-}
-
-/** @internal */
-export const VerifiedBotsBypass$inboundSchema: z.ZodType<
-  VerifiedBotsBypass,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-/** @internal */
-export type VerifiedBotsBypass$Outbound = {
-  active: boolean;
-  updatedAt?: string | undefined;
-  userId?: string | undefined;
-  username?: string | undefined;
-};
-
-/** @internal */
-export const VerifiedBotsBypass$outboundSchema: z.ZodType<
-  VerifiedBotsBypass$Outbound,
-  z.ZodTypeDef,
-  VerifiedBotsBypass
-> = z.object({
-  active: z.boolean(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifiedBotsBypass$ {
-  /** @deprecated use `VerifiedBotsBypass$inboundSchema` instead. */
-  export const inboundSchema = VerifiedBotsBypass$inboundSchema;
-  /** @deprecated use `VerifiedBotsBypass$outboundSchema` instead. */
-  export const outboundSchema = VerifiedBotsBypass$outboundSchema;
-  /** @deprecated use `VerifiedBotsBypass$Outbound` instead. */
-  export type Outbound = VerifiedBotsBypass$Outbound;
-}
-
-export function verifiedBotsBypassToJSON(
-  verifiedBotsBypass: VerifiedBotsBypass,
-): string {
-  return JSON.stringify(
-    VerifiedBotsBypass$outboundSchema.parse(verifiedBotsBypass),
-  );
-}
-
-export function verifiedBotsBypassFromJSON(
-  jsonString: string,
-): SafeParseResult<VerifiedBotsBypass, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VerifiedBotsBypass$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VerifiedBotsBypass' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
-  GetFirewallConfigManagedRules,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  owasp: z.lazy(() => GetFirewallConfigOwasp$inboundSchema).optional(),
-  verifiedBotsBypass: z.lazy(() => VerifiedBotsBypass$inboundSchema).optional(),
-});
-
-/** @internal */
-export type GetFirewallConfigManagedRules$Outbound = {
-  owasp?: GetFirewallConfigOwasp$Outbound | undefined;
-  verifiedBotsBypass?: VerifiedBotsBypass$Outbound | undefined;
-};
-
-/** @internal */
-export const GetFirewallConfigManagedRules$outboundSchema: z.ZodType<
-  GetFirewallConfigManagedRules$Outbound,
-  z.ZodTypeDef,
-  GetFirewallConfigManagedRules
-> = z.object({
-  owasp: z.lazy(() => GetFirewallConfigOwasp$outboundSchema).optional(),
-  verifiedBotsBypass: z.lazy(() => VerifiedBotsBypass$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetFirewallConfigManagedRules$ {
-  /** @deprecated use `GetFirewallConfigManagedRules$inboundSchema` instead. */
-  export const inboundSchema = GetFirewallConfigManagedRules$inboundSchema;
-  /** @deprecated use `GetFirewallConfigManagedRules$outboundSchema` instead. */
-  export const outboundSchema = GetFirewallConfigManagedRules$outboundSchema;
-  /** @deprecated use `GetFirewallConfigManagedRules$Outbound` instead. */
-  export type Outbound = GetFirewallConfigManagedRules$Outbound;
-}
-
-export function getFirewallConfigManagedRulesToJSON(
-  getFirewallConfigManagedRules: GetFirewallConfigManagedRules,
-): string {
-  return JSON.stringify(
-    GetFirewallConfigManagedRules$outboundSchema.parse(
-      getFirewallConfigManagedRules,
-    ),
-  );
-}
-
-export function getFirewallConfigManagedRulesFromJSON(
-  jsonString: string,
-): SafeParseResult<GetFirewallConfigManagedRules, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetFirewallConfigManagedRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetFirewallConfigManagedRules' from JSON`,
+    (x) => ManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ManagedRules' from JSON`,
   );
 }
 
@@ -2503,12 +2274,11 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   version: z.number(),
   updatedAt: z.string(),
   firewallEnabled: z.boolean(),
-  crs: z.lazy(() => GetFirewallConfigCrs$inboundSchema),
-  rules: z.array(z.lazy(() => GetFirewallConfigRules$inboundSchema)),
-  ips: z.array(z.lazy(() => GetFirewallConfigIps$inboundSchema)),
+  crs: z.lazy(() => Crs$inboundSchema),
+  rules: z.array(z.lazy(() => Rules$inboundSchema)),
+  ips: z.array(z.lazy(() => Ips$inboundSchema)),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
-  managedRules: z.lazy(() => GetFirewallConfigManagedRules$inboundSchema)
-    .optional(),
+  managedRules: z.record(z.lazy(() => ManagedRules$inboundSchema)).optional(),
 });
 
 /** @internal */
@@ -2519,11 +2289,11 @@ export type GetFirewallConfigResponseBody$Outbound = {
   version: number;
   updatedAt: string;
   firewallEnabled: boolean;
-  crs: GetFirewallConfigCrs$Outbound;
-  rules: Array<GetFirewallConfigRules$Outbound>;
-  ips: Array<GetFirewallConfigIps$Outbound>;
+  crs: Crs$Outbound;
+  rules: Array<Rules$Outbound>;
+  ips: Array<Ips$Outbound>;
   changes: Array<Changes$Outbound>;
-  managedRules?: GetFirewallConfigManagedRules$Outbound | undefined;
+  managedRules?: { [k: string]: ManagedRules$Outbound } | undefined;
 };
 
 /** @internal */
@@ -2538,12 +2308,11 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   version: z.number(),
   updatedAt: z.string(),
   firewallEnabled: z.boolean(),
-  crs: z.lazy(() => GetFirewallConfigCrs$outboundSchema),
-  rules: z.array(z.lazy(() => GetFirewallConfigRules$outboundSchema)),
-  ips: z.array(z.lazy(() => GetFirewallConfigIps$outboundSchema)),
+  crs: z.lazy(() => Crs$outboundSchema),
+  rules: z.array(z.lazy(() => Rules$outboundSchema)),
+  ips: z.array(z.lazy(() => Ips$outboundSchema)),
   changes: z.array(z.lazy(() => Changes$outboundSchema)),
-  managedRules: z.lazy(() => GetFirewallConfigManagedRules$outboundSchema)
-    .optional(),
+  managedRules: z.record(z.lazy(() => ManagedRules$outboundSchema)).optional(),
 });
 
 /**

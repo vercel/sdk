@@ -6,8 +6,8 @@
 import { ResponseBodyIntegrations } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyIntegrations = {
-  status: "error",
-  startedAt: 5905.85,
+  status: "pending",
+  startedAt: 8152.25,
 };
 ```
 

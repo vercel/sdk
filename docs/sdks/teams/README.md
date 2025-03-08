@@ -125,7 +125,6 @@ async function run() {
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
-      role: "VIEWER",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -166,7 +165,6 @@ async function run() {
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
-      role: "VIEWER",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -499,7 +497,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
-      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -540,7 +537,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
-      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",

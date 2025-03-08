@@ -410,9 +410,9 @@ export type GetDeploymentResponseBody2 = {
     | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
   id: string;
+  name: string;
   type: GetDeploymentResponseBodyType;
   createdAt: number;
-  name: string;
   readyState: GetDeploymentResponseBodyReadyState;
   aliasError?: GetDeploymentResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -479,6 +479,7 @@ export const ResponseBodyFramework = {
   Nextjs: "nextjs",
   Gatsby: "gatsby",
   Remix: "remix",
+  ReactRouter: "react-router",
   Astro: "astro",
   Hexo: "hexo",
   Eleventy: "eleventy",
@@ -1279,6 +1280,35 @@ export type ResponseBodyMicrofrontends =
   | GetDeploymentMicrofrontends1
   | GetDeploymentMicrofrontends2;
 
+export const ResponseBodyFunctionType = {
+  Fluid: "fluid",
+  Standard: "standard",
+} as const;
+export type ResponseBodyFunctionType = ClosedEnum<
+  typeof ResponseBodyFunctionType
+>;
+
+export const ResponseBodyFunctionMemoryType = {
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+  Performance: "performance",
+} as const;
+export type ResponseBodyFunctionMemoryType = ClosedEnum<
+  typeof ResponseBodyFunctionMemoryType
+>;
+
+/**
+ * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+ */
+export type ResponseBodyConfig = {
+  version?: number | undefined;
+  functionType: ResponseBodyFunctionType;
+  functionMemoryType: ResponseBodyFunctionMemoryType;
+  functionTimeout: number | null;
+  secureComputePrimaryRegion: string | null;
+  secureComputeFallbackRegion: string | null;
+};
+
 /**
  * The deployment including both public and private information
  */
@@ -1318,9 +1348,9 @@ export type GetDeploymentResponseBody1 = {
     | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
   id: string;
+  name: string;
   type: ResponseBodyType;
   createdAt: number;
-  name: string;
   readyState: ResponseBodyReadyState;
   aliasError?: ResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -1399,6 +1429,10 @@ export type GetDeploymentResponseBody1 = {
     | GetDeploymentMicrofrontends1
     | GetDeploymentMicrofrontends2
     | undefined;
+  /**
+   * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
+   */
+  config?: ResponseBodyConfig | undefined;
 };
 
 /**
@@ -3481,9 +3515,9 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   aliasWarning: z.nullable(z.lazy(() => ResponseBodyAliasWarning$inboundSchema))
     .optional(),
   id: z.string(),
+  name: z.string(),
   type: GetDeploymentResponseBodyType$inboundSchema,
   createdAt: z.number(),
-  name: z.string(),
   readyState: GetDeploymentResponseBodyReadyState$inboundSchema,
   aliasError: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasError$inboundSchema),
@@ -3556,9 +3590,9 @@ export type GetDeploymentResponseBody2$Outbound = {
     | undefined;
   aliasWarning?: ResponseBodyAliasWarning$Outbound | null | undefined;
   id: string;
+  name: string;
   type: string;
   createdAt: number;
-  name: string;
   readyState: string;
   aliasError?: GetDeploymentResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -3632,9 +3666,9 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
     z.lazy(() => ResponseBodyAliasWarning$outboundSchema),
   ).optional(),
   id: z.string(),
+  name: z.string(),
   type: GetDeploymentResponseBodyType$outboundSchema,
   createdAt: z.number(),
-  name: z.string(),
   readyState: GetDeploymentResponseBodyReadyState$outboundSchema,
   aliasError: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasError$outboundSchema),
@@ -8380,6 +8414,117 @@ export function responseBodyMicrofrontendsFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyFunctionType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionType
+> = z.nativeEnum(ResponseBodyFunctionType);
+
+/** @internal */
+export const ResponseBodyFunctionType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionType
+> = ResponseBodyFunctionType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyFunctionType$ {
+  /** @deprecated use `ResponseBodyFunctionType$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyFunctionType$inboundSchema;
+  /** @deprecated use `ResponseBodyFunctionType$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyFunctionType$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyFunctionMemoryType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionMemoryType
+> = z.nativeEnum(ResponseBodyFunctionMemoryType);
+
+/** @internal */
+export const ResponseBodyFunctionMemoryType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyFunctionMemoryType
+> = ResponseBodyFunctionMemoryType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyFunctionMemoryType$ {
+  /** @deprecated use `ResponseBodyFunctionMemoryType$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyFunctionMemoryType$inboundSchema;
+  /** @deprecated use `ResponseBodyFunctionMemoryType$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyFunctionMemoryType$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyConfig$inboundSchema: z.ZodType<
+  ResponseBodyConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  version: z.number().optional(),
+  functionType: ResponseBodyFunctionType$inboundSchema,
+  functionMemoryType: ResponseBodyFunctionMemoryType$inboundSchema,
+  functionTimeout: z.nullable(z.number()),
+  secureComputePrimaryRegion: z.nullable(z.string()),
+  secureComputeFallbackRegion: z.nullable(z.string()),
+});
+
+/** @internal */
+export type ResponseBodyConfig$Outbound = {
+  version?: number | undefined;
+  functionType: string;
+  functionMemoryType: string;
+  functionTimeout: number | null;
+  secureComputePrimaryRegion: string | null;
+  secureComputeFallbackRegion: string | null;
+};
+
+/** @internal */
+export const ResponseBodyConfig$outboundSchema: z.ZodType<
+  ResponseBodyConfig$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyConfig
+> = z.object({
+  version: z.number().optional(),
+  functionType: ResponseBodyFunctionType$outboundSchema,
+  functionMemoryType: ResponseBodyFunctionMemoryType$outboundSchema,
+  functionTimeout: z.nullable(z.number()),
+  secureComputePrimaryRegion: z.nullable(z.string()),
+  secureComputeFallbackRegion: z.nullable(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyConfig$ {
+  /** @deprecated use `ResponseBodyConfig$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyConfig$inboundSchema;
+  /** @deprecated use `ResponseBodyConfig$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyConfig$outboundSchema;
+  /** @deprecated use `ResponseBodyConfig$Outbound` instead. */
+  export type Outbound = ResponseBodyConfig$Outbound;
+}
+
+export function responseBodyConfigToJSON(
+  responseBodyConfig: ResponseBodyConfig,
+): string {
+  return JSON.stringify(
+    ResponseBodyConfig$outboundSchema.parse(responseBodyConfig),
+  );
+}
+
+export function responseBodyConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   GetDeploymentResponseBody1,
   z.ZodTypeDef,
@@ -8423,9 +8568,9 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$inboundSchema),
   ).optional(),
   id: z.string(),
+  name: z.string(),
   type: ResponseBodyType$inboundSchema,
   createdAt: z.number(),
-  name: z.string(),
   readyState: ResponseBodyReadyState$inboundSchema,
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$inboundSchema))
     .optional(),
@@ -8503,6 +8648,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
     z.lazy(() => GetDeploymentMicrofrontends2$inboundSchema),
   ]).optional(),
+  config: z.lazy(() => ResponseBodyConfig$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -8545,9 +8691,9 @@ export type GetDeploymentResponseBody1$Outbound = {
     | null
     | undefined;
   id: string;
+  name: string;
   type: string;
   createdAt: number;
-  name: string;
   readyState: string;
   aliasError?: ResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -8621,6 +8767,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | GetDeploymentMicrofrontends1$Outbound
     | GetDeploymentMicrofrontends2$Outbound
     | undefined;
+  config?: ResponseBodyConfig$Outbound | undefined;
 };
 
 /** @internal */
@@ -8669,9 +8816,9 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$outboundSchema),
   ).optional(),
   id: z.string(),
+  name: z.string(),
   type: ResponseBodyType$outboundSchema,
   createdAt: z.number(),
-  name: z.string(),
   readyState: ResponseBodyReadyState$outboundSchema,
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$outboundSchema))
     .optional(),
@@ -8749,6 +8896,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentMicrofrontends1$outboundSchema),
     z.lazy(() => GetDeploymentMicrofrontends2$outboundSchema),
   ]).optional(),
+  config: z.lazy(() => ResponseBodyConfig$outboundSchema).optional(),
 });
 
 /**

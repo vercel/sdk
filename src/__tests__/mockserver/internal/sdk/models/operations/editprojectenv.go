@@ -85,7 +85,8 @@ type EditProjectEnvRequestBody struct {
 	// The type of environment variable
 	Type *EditProjectEnvType `json:"type,omitempty"`
 	// The value of the environment variable
-	Value                *string  `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
+	// The custom environments that the environment variable should be synced to
 	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
 	// A comment to add context on what this env var is for
 	Comment *string `json:"comment,omitempty"`
@@ -1155,10 +1156,10 @@ func (u *EditProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var editProjectEnvContentHint9 EditProjectEnvContentHint9 = EditProjectEnvContentHint9{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint9, "", true, true); err == nil {
-		u.EditProjectEnvContentHint9 = &editProjectEnvContentHint9
-		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint9
+	var editProjectEnvContentHint11 EditProjectEnvContentHint11 = EditProjectEnvContentHint11{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint11, "", true, true); err == nil {
+		u.EditProjectEnvContentHint11 = &editProjectEnvContentHint11
+		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint11
 		return nil
 	}
 
@@ -1197,10 +1198,10 @@ func (u *EditProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var editProjectEnvContentHint8 EditProjectEnvContentHint8 = EditProjectEnvContentHint8{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint8, "", true, true); err == nil {
-		u.EditProjectEnvContentHint8 = &editProjectEnvContentHint8
-		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint8
+	var editProjectEnvContentHint9 EditProjectEnvContentHint9 = EditProjectEnvContentHint9{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint9, "", true, true); err == nil {
+		u.EditProjectEnvContentHint9 = &editProjectEnvContentHint9
+		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint9
 		return nil
 	}
 
@@ -1218,10 +1219,10 @@ func (u *EditProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var editProjectEnvContentHint11 EditProjectEnvContentHint11 = EditProjectEnvContentHint11{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint11, "", true, true); err == nil {
-		u.EditProjectEnvContentHint11 = &editProjectEnvContentHint11
-		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint11
+	var editProjectEnvContentHint8 EditProjectEnvContentHint8 = EditProjectEnvContentHint8{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHint8, "", true, true); err == nil {
+		u.EditProjectEnvContentHint8 = &editProjectEnvContentHint8
+		u.Type = EditProjectEnvResponseBodyContentHintTypeEditProjectEnvContentHint8
 		return nil
 	}
 

@@ -6,7 +6,7 @@
 import { RemoveBypassIpRequestBody1 } from "@vercel/sdk/models/removebypassipop.js";
 
 let value: RemoveBypassIpRequestBody1 = {
-  domain: "rotating-guidance.biz",
+  domain: "boring-lady.com",
 };
 ```
 

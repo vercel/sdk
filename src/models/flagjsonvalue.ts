@@ -7,9 +7,12 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type FlagJSONValue = string | number | boolean | Array<FlagJSONValue> | {
-  [k: string]: FlagJSONValue;
-};
+export type FlagJSONValue =
+  | string
+  | number
+  | boolean
+  | Array<FlagJSONValue | null>
+  | { [k: string]: FlagJSONValue | null };
 
 /** @internal */
 export const FlagJSONValue$inboundSchema: z.ZodType<
@@ -20,8 +23,8 @@ export const FlagJSONValue$inboundSchema: z.ZodType<
   z.string(),
   z.number(),
   z.boolean(),
-  z.array(z.lazy(() => FlagJSONValue$inboundSchema)),
-  z.record(z.lazy(() => FlagJSONValue$inboundSchema)),
+  z.array(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
+  z.record(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
 ]);
 
 /** @internal */
@@ -29,8 +32,8 @@ export type FlagJSONValue$Outbound =
   | string
   | number
   | boolean
-  | Array<FlagJSONValue$Outbound>
-  | { [k: string]: FlagJSONValue$Outbound };
+  | Array<FlagJSONValue$Outbound | null>
+  | { [k: string]: FlagJSONValue$Outbound | null };
 
 /** @internal */
 export const FlagJSONValue$outboundSchema: z.ZodType<
@@ -41,8 +44,8 @@ export const FlagJSONValue$outboundSchema: z.ZodType<
   z.string(),
   z.number(),
   z.boolean(),
-  z.array(z.lazy(() => FlagJSONValue$outboundSchema)),
-  z.record(z.lazy(() => FlagJSONValue$outboundSchema)),
+  z.array(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
+  z.record(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
 ]);
 
 /**

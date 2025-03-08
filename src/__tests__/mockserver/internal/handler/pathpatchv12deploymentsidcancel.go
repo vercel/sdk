@@ -25,7 +25,7 @@ func pathPatchV12DeploymentsIDCancel(dir *logging.HTTPFileDirectory, rt *trackin
 		case "cancelDeployment[0]":
 			dir.HandlerFunc("cancelDeployment", testCancelDeploymentCancelDeployment0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

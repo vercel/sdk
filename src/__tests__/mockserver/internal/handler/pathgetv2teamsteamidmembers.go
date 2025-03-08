@@ -25,7 +25,7 @@ func pathGetV2TeamsTeamIDMembers(dir *logging.HTTPFileDirectory, rt *tracking.Re
 		case "getTeamMembers[0]":
 			dir.HandlerFunc("getTeamMembers", testGetTeamMembersGetTeamMembers0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

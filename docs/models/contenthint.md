@@ -102,10 +102,10 @@ const value: models.UpdateProjectDataCacheContentHint11 = {
 };
 ```
 
-### `models.Twelve`
+### `models.UpdateProjectDataCacheContentHint12`
 
 ```typescript
-const value: models.Twelve = {
+const value: models.UpdateProjectDataCacheContentHint12 = {
   type: "postgres-database",
   storeId: "<id>",
 };

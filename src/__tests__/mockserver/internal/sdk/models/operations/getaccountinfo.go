@@ -17,6 +17,7 @@ func (o *GetAccountInfoRequest) GetIntegrationConfigurationID() string {
 	return o.IntegrationConfigurationID
 }
 
+// Contact - The best contact for the integration, which can change as team members and their roles change.
 type Contact struct {
 	Email string  `json:"email"`
 	Name  *string `json:"name,omitempty"`
@@ -37,8 +38,11 @@ func (o *Contact) GetName() *string {
 }
 
 type GetAccountInfoResponseBody struct {
-	Name    *string  `json:"name,omitempty"`
-	URL     string   `json:"url"`
+	// The name of the team the installation is tied to.
+	Name *string `json:"name,omitempty"`
+	// A URL linking to the installation in the Vercel Dashboard.
+	URL string `json:"url"`
+	// The best contact for the integration, which can change as team members and their roles change.
 	Contact *Contact `json:"contact"`
 }
 

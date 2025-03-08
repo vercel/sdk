@@ -24,7 +24,7 @@ func pathPatchV1DeploymentsDeploymentIDChecksCheckID(dir *logging.HTTPFileDirect
 		case "updateCheck[0]":
 			dir.HandlerFunc("updateCheck", testUpdateCheckUpdateCheck0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -3,17 +3,17 @@
 
 ## Supported Types
 
-### `models.FilterProjectEnvsTargetProjects1[]`
+### `models.FilterProjectEnvsTargetProjectsResponse1[]`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjects1[] = [
-  "preview",
+const value: models.FilterProjectEnvsTargetProjectsResponse1[] = [
+  "development",
 ];
 ```
 
 ### `models.FilterProjectEnvsTargetProjectsResponse2`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjectsResponse2 = "development";
+const value: models.FilterProjectEnvsTargetProjectsResponse2 = "preview";
 ```
 

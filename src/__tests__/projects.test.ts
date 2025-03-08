@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Projects Update Project Data Cache", async () => {
+  const testHttpClient = createTestHTTPClient("updateProjectDataCache");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateProjectDataCache"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -110,13 +112,25 @@ test("Projects Update Project Data Cache", async () => {
     ],
     name: "<value>",
     nodeVersion: "10.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
   });
 });
 
 test("Projects Get Projects", async () => {
+  const testHttpClient = createTestHTTPClient("getProjects");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getProjects"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -138,9 +152,11 @@ test("Projects Get Projects", async () => {
 });
 
 test("Projects Create Project", async () => {
+  const testHttpClient = createTestHTTPClient("createProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -197,6 +213,16 @@ test("Projects Create Project", async () => {
     ],
     name: "<value>",
     nodeVersion: "22.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
     targets: {
       "key": {
         id: "<id>",
@@ -222,9 +248,11 @@ test("Projects Create Project", async () => {
 });
 
 test("Projects Update Project", async () => {
+  const testHttpClient = createTestHTTPClient("updateProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -301,6 +329,16 @@ test("Projects Update Project", async () => {
     ],
     name: "<value>",
     nodeVersion: "14.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [
+        "<value>",
+      ],
+    },
     targets: {
       "key": {
         id: "<id>",
@@ -326,9 +364,11 @@ test("Projects Update Project", async () => {
 });
 
 test("Projects Delete Project", async () => {
+  const testHttpClient = createTestHTTPClient("deleteProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -340,9 +380,11 @@ test("Projects Delete Project", async () => {
 });
 
 test("Projects Get Project Domains", async () => {
+  const testHttpClient = createTestHTTPClient("getProjectDomains");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getProjectDomains"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -375,9 +417,11 @@ test("Projects Get Project Domains", async () => {
 });
 
 test("Projects Get Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("getProjectDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getProjectDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -397,9 +441,11 @@ test("Projects Get Project Domain", async () => {
 });
 
 test("Projects Update Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("updateProjectDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateProjectDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -424,9 +470,11 @@ test("Projects Update Project Domain", async () => {
 });
 
 test("Projects Remove Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("removeProjectDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeProjectDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -441,9 +489,11 @@ test("Projects Remove Project Domain", async () => {
 });
 
 test("Projects Add Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("addProjectDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("addProjectDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -468,9 +518,11 @@ test("Projects Add Project Domain", async () => {
 });
 
 test("Projects Verify Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("verifyProjectDomain");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("verifyProjectDomain"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -490,9 +542,11 @@ test("Projects Verify Project Domain", async () => {
 });
 
 test("Projects Get Project Env", async () => {
+  const testHttpClient = createTestHTTPClient("getProjectEnv");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getProjectEnv"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -511,9 +565,11 @@ test("Projects Get Project Env", async () => {
 });
 
 test("Projects Create Project Env", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectEnv");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createProjectEnv"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -532,6 +588,9 @@ test("Projects Create Project Env", async () => {
         ],
         gitBranch: "feature-1",
         comment: "database connection string for production",
+        customEnvironmentIds: [
+          "env_1234567890",
+        ],
       },
     ],
   });
@@ -552,9 +611,11 @@ test("Projects Create Project Env", async () => {
 });
 
 test("Projects Remove Project Env", async () => {
+  const testHttpClient = createTestHTTPClient("removeProjectEnv");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeProjectEnv"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -586,9 +647,11 @@ test("Projects Remove Project Env", async () => {
 });
 
 test("Projects Update Project Protection Bypass", async () => {
+  const testHttpClient = createTestHTTPClient("updateProjectProtectionBypass");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateProjectProtectionBypass"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -603,9 +666,11 @@ test("Projects Update Project Protection Bypass", async () => {
 });
 
 test("Projects Request Promote", async () => {
+  const testHttpClient = createTestHTTPClient("requestPromote");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("requestPromote"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -618,9 +683,11 @@ test("Projects Request Promote", async () => {
 });
 
 test("Projects List Promote Aliases", async () => {
+  const testHttpClient = createTestHTTPClient("listPromoteAliases");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listPromoteAliases"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -637,9 +704,11 @@ test("Projects List Promote Aliases", async () => {
 });
 
 test("Projects Create Project Transfer Request", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectTransferRequest");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createProjectTransferRequest"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -649,13 +718,17 @@ test("Projects Create Project Transfer Request", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    code: "f99cc49a-602e-4786-a748-762dfb205880",
+  });
 });
 
 test("Projects Accept Project Transfer Request", async () => {
+  const testHttpClient = createTestHTTPClient("acceptProjectTransferRequest");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("acceptProjectTransferRequest"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -669,4 +742,38 @@ test("Projects Accept Project Transfer Request", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({});
+});
+
+test("Projects Filter Project Envs", async () => {
+  const testHttpClient = createTestHTTPClient("filterProjectEnvs");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.filterProjectEnvs({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    gitBranch: "feature-1",
+    decrypt: "true",
+    source: "vercel-cli:pull",
+    customEnvironmentId: "env_123abc4567",
+    customEnvironmentSlug: "my-custom-env",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    envs: [
+      {},
+      {},
+      {},
+    ],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
+    },
+  });
 });

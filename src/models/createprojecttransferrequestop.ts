@@ -25,7 +25,12 @@ export type CreateProjectTransferRequestRequest = {
 /**
  * The project transfer request has been initiated successfully.
  */
-export type CreateProjectTransferRequestResponseBody = {};
+export type CreateProjectTransferRequestResponseBody = {
+  /**
+   * Code that can be used to accept the project transfer request.
+   */
+  code: string;
+};
 
 /** @internal */
 export const CreateProjectTransferRequestRequest$inboundSchema: z.ZodType<
@@ -97,17 +102,23 @@ export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   CreateProjectTransferRequestResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  code: z.string(),
+});
 
 /** @internal */
-export type CreateProjectTransferRequestResponseBody$Outbound = {};
+export type CreateProjectTransferRequestResponseBody$Outbound = {
+  code: string;
+};
 
 /** @internal */
 export const CreateProjectTransferRequestResponseBody$outboundSchema: z.ZodType<
   CreateProjectTransferRequestResponseBody$Outbound,
   z.ZodTypeDef,
   CreateProjectTransferRequestResponseBody
-> = z.object({});
+> = z.object({
+  code: z.string(),
+});
 
 /**
  * @internal

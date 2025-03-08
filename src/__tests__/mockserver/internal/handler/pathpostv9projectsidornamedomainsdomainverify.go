@@ -24,7 +24,7 @@ func pathPostV9ProjectsIDOrNameDomainsDomainVerify(dir *logging.HTTPFileDirector
 		case "verifyProjectDomain[0]":
 			dir.HandlerFunc("verifyProjectDomain", testVerifyProjectDomainVerifyProjectDomain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

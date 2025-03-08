@@ -24,7 +24,7 @@ func pathDeleteV1TeamsTeamIDMembersUID(dir *logging.HTTPFileDirectory, rt *track
 		case "removeTeamMember[0]":
 			dir.HandlerFunc("removeTeamMember", testRemoveTeamMemberRemoveTeamMember0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

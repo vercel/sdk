@@ -50,17 +50,15 @@ func (e *Reason) UnmarshalJSON(data []byte) error {
 type BlockedDueToOverageType string
 
 const (
+	BlockedDueToOverageTypeAiCredits                               BlockedDueToOverageType = "aiCredits"
 	BlockedDueToOverageTypeAnalyticsUsage                          BlockedDueToOverageType = "analyticsUsage"
 	BlockedDueToOverageTypeArtifacts                               BlockedDueToOverageType = "artifacts"
 	BlockedDueToOverageTypeBandwidth                               BlockedDueToOverageType = "bandwidth"
-	BlockedDueToOverageTypeBlobStores                              BlockedDueToOverageType = "blobStores"
 	BlockedDueToOverageTypeBlobTotalAdvancedRequests               BlockedDueToOverageType = "blobTotalAdvancedRequests"
 	BlockedDueToOverageTypeBlobTotalAvgSizeInBytes                 BlockedDueToOverageType = "blobTotalAvgSizeInBytes"
 	BlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes   BlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
 	BlockedDueToOverageTypeBlobTotalSimpleRequests                 BlockedDueToOverageType = "blobTotalSimpleRequests"
-	BlockedDueToOverageTypeBuildMinute                             BlockedDueToOverageType = "buildMinute"
 	BlockedDueToOverageTypeDataCacheRead                           BlockedDueToOverageType = "dataCacheRead"
-	BlockedDueToOverageTypeDataCacheRevalidation                   BlockedDueToOverageType = "dataCacheRevalidation"
 	BlockedDueToOverageTypeDataCacheWrite                          BlockedDueToOverageType = "dataCacheWrite"
 	BlockedDueToOverageTypeEdgeConfigRead                          BlockedDueToOverageType = "edgeConfigRead"
 	BlockedDueToOverageTypeEdgeConfigWrite                         BlockedDueToOverageType = "edgeConfigWrite"
@@ -78,6 +76,7 @@ const (
 	BlockedDueToOverageTypeImageOptimizationTransformation         BlockedDueToOverageType = "imageOptimizationTransformation"
 	BlockedDueToOverageTypeLogDrainsVolume                         BlockedDueToOverageType = "logDrainsVolume"
 	BlockedDueToOverageTypeMonitoringMetric                        BlockedDueToOverageType = "monitoringMetric"
+	BlockedDueToOverageTypeObjectDataTransfer                      BlockedDueToOverageType = "objectDataTransfer"
 	BlockedDueToOverageTypeObservabilityEvent                      BlockedDueToOverageType = "observabilityEvent"
 	BlockedDueToOverageTypePostgresComputeTime                     BlockedDueToOverageType = "postgresComputeTime"
 	BlockedDueToOverageTypePostgresDataStorage                     BlockedDueToOverageType = "postgresDataStorage"
@@ -105,13 +104,13 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "aiCredits":
+		fallthrough
 	case "analyticsUsage":
 		fallthrough
 	case "artifacts":
 		fallthrough
 	case "bandwidth":
-		fallthrough
-	case "blobStores":
 		fallthrough
 	case "blobTotalAdvancedRequests":
 		fallthrough
@@ -121,11 +120,7 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "blobTotalSimpleRequests":
 		fallthrough
-	case "buildMinute":
-		fallthrough
 	case "dataCacheRead":
-		fallthrough
-	case "dataCacheRevalidation":
 		fallthrough
 	case "dataCacheWrite":
 		fallthrough
@@ -160,6 +155,8 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "logDrainsVolume":
 		fallthrough
 	case "monitoringMetric":
+		fallthrough
+	case "objectDataTransfer":
 		fallthrough
 	case "observabilityEvent":
 		fallthrough
@@ -234,8 +231,6 @@ type Billing struct {
 // ResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	BlobStores *float64 `json:"blobStores,omitempty"`
-	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	NodeType *string `json:"nodeType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
@@ -262,6 +257,8 @@ type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	PostgresDatabases *float64 `json:"postgresDatabases,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	BlobStores *float64 `json:"blobStores,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IntegrationStores *float64 `json:"integrationStores,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	CronJobs *float64 `json:"cronJobs,omitempty"`
@@ -271,13 +268,6 @@ type ResourceConfig struct {
 	MicrofrontendGroupsPerTeam *float64 `json:"microfrontendGroupsPerTeam,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	MicrofrontendProjectsPerGroup *float64 `json:"microfrontendProjectsPerGroup,omitempty"`
-}
-
-func (o *ResourceConfig) GetBlobStores() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.BlobStores
 }
 
 func (o *ResourceConfig) GetNodeType() *string {
@@ -369,6 +359,13 @@ func (o *ResourceConfig) GetPostgresDatabases() *float64 {
 		return nil
 	}
 	return o.PostgresDatabases
+}
+
+func (o *ResourceConfig) GetBlobStores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlobStores
 }
 
 func (o *ResourceConfig) GetIntegrationStores() *float64 {
@@ -796,107 +793,123 @@ func (o *DismissedToasts) GetDismissals() []Dismissals {
 	return o.Dismissals
 }
 
-// Two - A list of projects and spaces across teams that a user has marked as a favorite.
-type Two struct {
-	SpaceID   string `json:"spaceId"`
-	ScopeSlug string `json:"scopeSlug"`
-	ScopeID   string `json:"scopeId"`
+// FavoriteProjectsAndSpaces2 - A list of projects and spaces across teams that a user has marked as a favorite.
+type FavoriteProjectsAndSpaces2 struct {
+	SpaceID   string  `json:"spaceId"`
+	ScopeSlug string  `json:"scopeSlug"`
+	ScopeID   string  `json:"scopeId"`
+	TeamID    *string `json:"teamId,omitempty"`
 }
 
-func (o *Two) GetSpaceID() string {
+func (o *FavoriteProjectsAndSpaces2) GetSpaceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SpaceID
 }
 
-func (o *Two) GetScopeSlug() string {
+func (o *FavoriteProjectsAndSpaces2) GetScopeSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeSlug
 }
 
-func (o *Two) GetScopeID() string {
+func (o *FavoriteProjectsAndSpaces2) GetScopeID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeID
 }
 
-// One - A list of projects and spaces across teams that a user has marked as a favorite.
-type One struct {
-	ProjectID string `json:"projectId"`
-	ScopeSlug string `json:"scopeSlug"`
-	ScopeID   string `json:"scopeId"`
+func (o *FavoriteProjectsAndSpaces2) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
-func (o *One) GetProjectID() string {
+// FavoriteProjectsAndSpaces1 - A list of projects and spaces across teams that a user has marked as a favorite.
+type FavoriteProjectsAndSpaces1 struct {
+	ProjectID string  `json:"projectId"`
+	ScopeSlug string  `json:"scopeSlug"`
+	ScopeID   string  `json:"scopeId"`
+	TeamID    *string `json:"teamId,omitempty"`
+}
+
+func (o *FavoriteProjectsAndSpaces1) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *One) GetScopeSlug() string {
+func (o *FavoriteProjectsAndSpaces1) GetScopeSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeSlug
 }
 
-func (o *One) GetScopeID() string {
+func (o *FavoriteProjectsAndSpaces1) GetScopeID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeID
 }
 
+func (o *FavoriteProjectsAndSpaces1) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
 type FavoriteProjectsAndSpacesType string
 
 const (
-	FavoriteProjectsAndSpacesTypeOne FavoriteProjectsAndSpacesType = "1"
-	FavoriteProjectsAndSpacesTypeTwo FavoriteProjectsAndSpacesType = "2"
+	FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1 FavoriteProjectsAndSpacesType = "favoriteProjectsAndSpaces_1"
+	FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2 FavoriteProjectsAndSpacesType = "favoriteProjectsAndSpaces_2"
 )
 
 type FavoriteProjectsAndSpaces struct {
-	One *One
-	Two *Two
+	FavoriteProjectsAndSpaces1 *FavoriteProjectsAndSpaces1
+	FavoriteProjectsAndSpaces2 *FavoriteProjectsAndSpaces2
 
 	Type FavoriteProjectsAndSpacesType
 }
 
-func CreateFavoriteProjectsAndSpacesOne(one One) FavoriteProjectsAndSpaces {
-	typ := FavoriteProjectsAndSpacesTypeOne
+func CreateFavoriteProjectsAndSpacesFavoriteProjectsAndSpaces1(favoriteProjectsAndSpaces1 FavoriteProjectsAndSpaces1) FavoriteProjectsAndSpaces {
+	typ := FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1
 
 	return FavoriteProjectsAndSpaces{
-		One:  &one,
-		Type: typ,
+		FavoriteProjectsAndSpaces1: &favoriteProjectsAndSpaces1,
+		Type:                       typ,
 	}
 }
 
-func CreateFavoriteProjectsAndSpacesTwo(two Two) FavoriteProjectsAndSpaces {
-	typ := FavoriteProjectsAndSpacesTypeTwo
+func CreateFavoriteProjectsAndSpacesFavoriteProjectsAndSpaces2(favoriteProjectsAndSpaces2 FavoriteProjectsAndSpaces2) FavoriteProjectsAndSpaces {
+	typ := FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2
 
 	return FavoriteProjectsAndSpaces{
-		Two:  &two,
-		Type: typ,
+		FavoriteProjectsAndSpaces2: &favoriteProjectsAndSpaces2,
+		Type:                       typ,
 	}
 }
 
 func (u *FavoriteProjectsAndSpaces) UnmarshalJSON(data []byte) error {
 
-	var one One = One{}
-	if err := utils.UnmarshalJSON(data, &one, "", true, true); err == nil {
-		u.One = &one
-		u.Type = FavoriteProjectsAndSpacesTypeOne
+	var favoriteProjectsAndSpaces1 FavoriteProjectsAndSpaces1 = FavoriteProjectsAndSpaces1{}
+	if err := utils.UnmarshalJSON(data, &favoriteProjectsAndSpaces1, "", true, true); err == nil {
+		u.FavoriteProjectsAndSpaces1 = &favoriteProjectsAndSpaces1
+		u.Type = FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1
 		return nil
 	}
 
-	var two Two = Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
-		u.Two = &two
-		u.Type = FavoriteProjectsAndSpacesTypeTwo
+	var favoriteProjectsAndSpaces2 FavoriteProjectsAndSpaces2 = FavoriteProjectsAndSpaces2{}
+	if err := utils.UnmarshalJSON(data, &favoriteProjectsAndSpaces2, "", true, true); err == nil {
+		u.FavoriteProjectsAndSpaces2 = &favoriteProjectsAndSpaces2
+		u.Type = FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2
 		return nil
 	}
 
@@ -904,12 +917,12 @@ func (u *FavoriteProjectsAndSpaces) UnmarshalJSON(data []byte) error {
 }
 
 func (u FavoriteProjectsAndSpaces) MarshalJSON() ([]byte, error) {
-	if u.One != nil {
-		return utils.MarshalJSON(u.One, "", true)
+	if u.FavoriteProjectsAndSpaces1 != nil {
+		return utils.MarshalJSON(u.FavoriteProjectsAndSpaces1, "", true)
 	}
 
-	if u.Two != nil {
-		return utils.MarshalJSON(u.Two, "", true)
+	if u.FavoriteProjectsAndSpaces2 != nil {
+		return utils.MarshalJSON(u.FavoriteProjectsAndSpaces2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type FavoriteProjectsAndSpaces: all fields are null")

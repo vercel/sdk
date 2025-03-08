@@ -5,11 +5,11 @@
 ```typescript
 import { TeamRole } from "@vercel/sdk/models/listaccessgroupmembersop.js";
 
-let value: TeamRole = "BILLING";
+let value: TeamRole = "SECURITY";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
 ```

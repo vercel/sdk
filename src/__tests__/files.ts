@@ -9,7 +9,7 @@ import { Readable } from "node:stream";
 export function filesToStream(filePath: string): ReadableStream<Uint8Array> {
   return Readable.toWeb(
     createReadStream(filePath),
-  ) as ReadableStream<Uint8Array>;
+  ) as unknown as ReadableStream<Uint8Array>;
 }
 
 export async function filesToByteArray(filePath: string): Promise<Uint8Array> {

@@ -7,7 +7,7 @@ Must be `http` or `https`.
 ```typescript
 import { Protocol } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: Protocol = "https";
+let value: Protocol = "http";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { Events } from "@vercel/sdk/models/createwebhookop.js";
 
-let value: Events = "edge-config.created";
+let value: Events = "deployment-check-rerequested";
 ```
 
 ## Values

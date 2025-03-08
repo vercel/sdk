@@ -25,7 +25,7 @@ func pathPostV1SecurityFirewallBypass(dir *logging.HTTPFileDirectory, rt *tracki
 		case "addBypassIp[0]":
 			dir.HandlerFunc("addBypassIp", testAddBypassIPAddBypassIp0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

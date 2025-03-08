@@ -11,11 +11,14 @@ import (
 )
 
 type AddBypassIPRequestBody2 struct {
-	Domain       *string `json:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	// If the specified bypass will apply to all domains for a project.
 	ProjectScope bool    `json:"projectScope"`
 	SourceIP     *string `json:"sourceIp,omitempty"`
 	AllSources   *bool   `json:"allSources,omitempty"`
-	Note         *string `json:"note,omitempty"`
+	// Time to live in milliseconds
+	TTL  *float64 `json:"ttl,omitempty"`
+	Note *string  `json:"note,omitempty"`
 }
 
 func (o *AddBypassIPRequestBody2) GetDomain() *string {
@@ -46,6 +49,13 @@ func (o *AddBypassIPRequestBody2) GetAllSources() *bool {
 	return o.AllSources
 }
 
+func (o *AddBypassIPRequestBody2) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
+}
+
 func (o *AddBypassIPRequestBody2) GetNote() *string {
 	if o == nil {
 		return nil
@@ -54,11 +64,14 @@ func (o *AddBypassIPRequestBody2) GetNote() *string {
 }
 
 type AddBypassIPRequestBody1 struct {
-	Domain       string  `json:"domain"`
+	Domain string `json:"domain"`
+	// If the specified bypass will apply to all domains for a project.
 	ProjectScope *bool   `json:"projectScope,omitempty"`
 	SourceIP     *string `json:"sourceIp,omitempty"`
 	AllSources   *bool   `json:"allSources,omitempty"`
-	Note         *string `json:"note,omitempty"`
+	// Time to live in milliseconds
+	TTL  *float64 `json:"ttl,omitempty"`
+	Note *string  `json:"note,omitempty"`
 }
 
 func (o *AddBypassIPRequestBody1) GetDomain() string {
@@ -87,6 +100,13 @@ func (o *AddBypassIPRequestBody1) GetAllSources() *bool {
 		return nil
 	}
 	return o.AllSources
+}
+
+func (o *AddBypassIPRequestBody1) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
 }
 
 func (o *AddBypassIPRequestBody1) GetNote() *string {

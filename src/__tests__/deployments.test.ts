@@ -7,15 +7,16 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Deployments Get Deployment Events", async () => {
+  const testHttpClient = createTestHTTPClient("getDeploymentEvents");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDeploymentEvents"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   await vercel.deployments.getDeploymentEvents({
     idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-    direction: "backward",
     follow: 1,
     limit: 100,
     name: "bld_cotnkcr76",
@@ -30,9 +31,11 @@ test("Deployments Get Deployment Events", async () => {
 });
 
 test("Deployments Get Deployment", async () => {
+  const testHttpClient = createTestHTTPClient("getDeployment");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDeployment"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -54,9 +57,9 @@ test("Deployments Get Deployment", async () => {
     public: true,
     status: "ERROR",
     id: "<id>",
+    name: "<value>",
     type: "LAMBDAS",
     createdAt: 3161.76,
-    name: "<value>",
     readyState: "READY",
     meta: {
       "key": "<value>",
@@ -69,9 +72,11 @@ test("Deployments Get Deployment", async () => {
 });
 
 test("Deployments Create Deployment", async () => {
+  const testHttpClient = createTestHTTPClient("createDeployment");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createDeployment"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -127,8 +132,8 @@ test("Deployments Create Deployment", async () => {
     public: false,
     status: "QUEUED",
     type: "LAMBDAS",
-    createdAt: 5133.44,
     name: "<value>",
+    createdAt: 5133.44,
     id: "<id>",
     version: 1218.01,
     meta: {
@@ -138,6 +143,7 @@ test("Deployments Create Deployment", async () => {
     readyState: "INITIALIZING",
     regions: [],
     url: "https://apprehensive-perp.info/",
+    plan: "pro",
     projectId: "<id>",
     ownerId: "<id>",
     routes: [
@@ -148,15 +154,16 @@ test("Deployments Create Deployment", async () => {
         src: "<value>",
       },
     ],
-    plan: "pro",
     createdIn: "<value>",
   });
 });
 
 test("Deployments Cancel Deployment", async () => {
+  const testHttpClient = createTestHTTPClient("cancelDeployment");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("cancelDeployment"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -224,9 +231,11 @@ test("Deployments Cancel Deployment", async () => {
 });
 
 test("Deployments Upload File", async () => {
+  const testHttpClient = createTestHTTPClient("uploadFile");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("uploadFile"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -239,9 +248,11 @@ test("Deployments Upload File", async () => {
 });
 
 test("Deployments List Deployment Files", async () => {
+  const testHttpClient = createTestHTTPClient("listDeploymentFiles");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listDeploymentFiles"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -255,9 +266,11 @@ test("Deployments List Deployment Files", async () => {
 });
 
 test("Deployments Get Deployment File Contents", async () => {
+  const testHttpClient = createTestHTTPClient("getDeploymentFileContents");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDeploymentFileContents"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -270,9 +283,11 @@ test("Deployments Get Deployment File Contents", async () => {
 });
 
 test("Deployments Get Deployments", async () => {
+  const testHttpClient = createTestHTTPClient("getDeployments");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getDeployments"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -355,9 +370,11 @@ test("Deployments Get Deployments", async () => {
 });
 
 test("Deployments Delete Deployment", async () => {
+  const testHttpClient = createTestHTTPClient("deleteDeployment");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteDeployment"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -371,5 +388,24 @@ test("Deployments Delete Deployment", async () => {
   expect(result).toEqual({
     uid: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
     state: "DELETED",
+  });
+});
+
+test("Deployments Update Integration Deployment Action", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "update-integration-deployment-action",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.deployments.updateIntegrationDeploymentAction({
+    deploymentId: "<id>",
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+    action: "<value>",
   });
 });

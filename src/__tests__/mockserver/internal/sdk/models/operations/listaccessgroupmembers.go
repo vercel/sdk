@@ -71,6 +71,7 @@ const (
 	TeamRoleOwner       TeamRole = "OWNER"
 	TeamRoleMember      TeamRole = "MEMBER"
 	TeamRoleDeveloper   TeamRole = "DEVELOPER"
+	TeamRoleSecurity    TeamRole = "SECURITY"
 	TeamRoleBilling     TeamRole = "BILLING"
 	TeamRoleViewer      TeamRole = "VIEWER"
 	TeamRoleContributor TeamRole = "CONTRIBUTOR"
@@ -90,6 +91,8 @@ func (e *TeamRole) UnmarshalJSON(data []byte) error {
 	case "MEMBER":
 		fallthrough
 	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough

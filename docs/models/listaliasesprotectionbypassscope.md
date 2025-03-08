@@ -5,11 +5,11 @@
 ```typescript
 import { ListAliasesProtectionBypassScope } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: ListAliasesProtectionBypassScope = "user";
+let value: ListAliasesProtectionBypassScope = "shareable-link";
 ```
 
 ## Values
 
 ```typescript
-"user"
+"shareable-link"
 ```

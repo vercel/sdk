@@ -25,7 +25,7 @@ func pathPostV13Deployments(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "createDeployment[0]":
 			dir.HandlerFunc("createDeployment", testCreateDeploymentCreateDeployment0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -74,8 +74,8 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 		Public:    false,
 		Status:    operations.CreateDeploymentStatusQueued,
 		Type:      operations.CreateDeploymentTypeLambdas,
-		CreatedAt: 5133.44,
 		Name:      "<value>",
+		CreatedAt: 5133.44,
 		ID:        "<id>",
 		Version:   1218.01,
 		Meta: map[string]string{
@@ -85,6 +85,7 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 		ReadyState: operations.ReadyStateInitializing,
 		Regions:    []string{},
 		URL:        "https://apprehensive-perp.info/",
+		Plan:       operations.PlanPro,
 		ProjectID:  "<id>",
 		OwnerID:    "<id>",
 		Routes: []operations.Routes{
@@ -99,7 +100,6 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 				},
 			),
 		},
-		Plan:      operations.PlanPro,
 		CreatedIn: "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

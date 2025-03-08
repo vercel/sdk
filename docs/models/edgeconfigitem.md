@@ -11,8 +11,8 @@ let value: EdgeConfigItem = {
   key: "<key>",
   value: {},
   edgeConfigId: "<id>",
-  createdAt: 1017.7,
-  updatedAt: 6730.1,
+  createdAt: 9559.62,
+  updatedAt: 9582.8,
 };
 ```
 

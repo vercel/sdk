@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve the domains associated with a given project by passing either the project `id` or `name` in the URL.
  */
-export async function projectsGetProjectDomains(
+export function projectsGetProjectDomains(
   client: VercelCore,
   request: GetProjectDomainsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     GetProjectDomainsResponseBody,
     | VercelBadRequestError
@@ -59,13 +60,41 @@ export async function projectsGetProjectDomains(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: GetProjectDomainsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      GetProjectDomainsResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => GetProjectDomainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -104,6 +133,7 @@ export async function projectsGetProjectDomains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "getProjectDomains",
     oAuth2Scopes: [],
 
@@ -127,7 +157,7 @@ export async function projectsGetProjectDomains(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -138,7 +168,7 @@ export async function projectsGetProjectDomains(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -165,8 +195,8 @@ export async function projectsGetProjectDomains(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

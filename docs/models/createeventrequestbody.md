@@ -7,9 +7,7 @@ import { CreateEventRequestBody } from "@vercel/sdk/models/createeventop.js";
 
 let value: CreateEventRequestBody = {
   event: {
-    type: "resource.updated",
-    productId: "<id>",
-    resourceId: "<id>",
+    type: "installation.updated",
   },
 };
 ```

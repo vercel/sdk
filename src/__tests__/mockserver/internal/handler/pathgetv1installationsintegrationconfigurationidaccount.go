@@ -24,7 +24,7 @@ func pathGetV1InstallationsIntegrationConfigurationIDAccount(dir *logging.HTTPFi
 		case "get-account-info[0]":
 			dir.HandlerFunc("get-account-info", testGetAccountInfoGetAccountInfo0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

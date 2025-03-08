@@ -22,7 +22,7 @@ func pathDeleteV1IntegrationsLogDrainsID(dir *logging.HTTPFileDirectory, rt *tra
 		case "deleteIntegrationLogDrain[0]":
 			dir.HandlerFunc("deleteIntegrationLogDrain", testDeleteIntegrationLogDrainDeleteIntegrationLogDrain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

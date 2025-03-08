@@ -37,6 +37,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -45,11 +46,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Process updates to modify the existing firewall config for a project
  */
-export async function securityUpdateFirewallConfig(
+export function securityUpdateFirewallConfig(
   client: VercelCore,
   request: UpdateFirewallConfigRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     UpdateFirewallConfigResponseBody,
     | VercelBadRequestError
@@ -64,13 +65,42 @@ export async function securityUpdateFirewallConfig(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: UpdateFirewallConfigRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      UpdateFirewallConfigResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => UpdateFirewallConfigRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -93,6 +123,7 @@ export async function securityUpdateFirewallConfig(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateFirewallConfig",
     oAuth2Scopes: [],
 
@@ -116,7 +147,7 @@ export async function securityUpdateFirewallConfig(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -127,7 +158,7 @@ export async function securityUpdateFirewallConfig(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -151,13 +182,13 @@ export async function securityUpdateFirewallConfig(
     M.json(200, UpdateFirewallConfigResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([402, 403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

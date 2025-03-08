@@ -6,7 +6,7 @@
 import { Eight } from "@vercel/sdk/models/createrecordop.js";
 
 let value: Eight = {
-  type: "CAA",
+  type: "AAAA",
   ttl: 60,
   value: "hello",
   comment: "used to verify ownership of domain",

@@ -26,7 +26,7 @@ func pathGetV9ProjectsIDOrNameDomains(dir *logging.HTTPFileDirectory, rt *tracki
 		case "getProjectDomains[0]":
 			dir.HandlerFunc("getProjectDomains", testGetProjectDomainsGetProjectDomains0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

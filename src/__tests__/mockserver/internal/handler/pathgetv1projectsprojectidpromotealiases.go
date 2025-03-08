@@ -25,7 +25,7 @@ func pathGetV1ProjectsProjectIDPromoteAliases(dir *logging.HTTPFileDirectory, rt
 		case "listPromoteAliases[0]":
 			dir.HandlerFunc("listPromoteAliases", testListPromoteAliasesListPromoteAliases0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

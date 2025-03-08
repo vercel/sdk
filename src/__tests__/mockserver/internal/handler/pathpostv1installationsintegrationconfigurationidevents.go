@@ -22,7 +22,7 @@ func pathPostV1InstallationsIntegrationConfigurationIDEvents(dir *logging.HTTPFi
 		case "create-event[0]":
 			dir.HandlerFunc("create-event", testCreateEventCreateEvent0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

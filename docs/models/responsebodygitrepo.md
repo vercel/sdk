@@ -8,10 +8,10 @@
 ```typescript
 const value: models.GetDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 1165.58,
+  projectId: 357.42,
   type: "gitlab",
-  url: "https://accomplished-hippodrome.name/",
-  path: "/opt/lib",
+  url: "https://meager-scholarship.net",
+  path: "/usr/local/bin",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -25,10 +25,10 @@ const value: models.GetDeploymentGitRepo1 = {
 const value: models.GetDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 626.88,
+  repoId: 8007.99,
   type: "github",
-  repoOwnerId: 2781.16,
-  path: "/etc/ppp",
+  repoOwnerId: 5488.46,
+  path: "/private/tmp",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -45,11 +45,11 @@ const value: models.GetDeploymentGitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/etc/periodic",
+  path: "/bin",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 

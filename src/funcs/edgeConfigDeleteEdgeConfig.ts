@@ -36,6 +36,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -44,11 +45,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Delete an Edge Config by id.
  */
-export async function edgeConfigDeleteEdgeConfig(
+export function edgeConfigDeleteEdgeConfig(
   client: VercelCore,
   request: DeleteEdgeConfigRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     void,
     | VercelBadRequestError
@@ -63,13 +64,42 @@ export async function edgeConfigDeleteEdgeConfig(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: DeleteEdgeConfigRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      void,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => DeleteEdgeConfigRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -97,6 +127,7 @@ export async function edgeConfigDeleteEdgeConfig(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "deleteEdgeConfig",
     oAuth2Scopes: [],
 
@@ -120,7 +151,7 @@ export async function edgeConfigDeleteEdgeConfig(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -131,7 +162,7 @@ export async function edgeConfigDeleteEdgeConfig(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -155,13 +186,13 @@ export async function edgeConfigDeleteEdgeConfig(
     M.nil(204, z.void()),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([403, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

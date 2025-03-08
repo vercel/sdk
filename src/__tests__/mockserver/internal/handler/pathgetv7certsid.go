@@ -24,7 +24,7 @@ func pathGetV7CertsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracke
 		case "getCertById[0]":
 			dir.HandlerFunc("getCertById", testGetCertByIDGetCertById0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

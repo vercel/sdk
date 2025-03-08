@@ -8,10 +8,10 @@ import { ListAccessGroupMembersResponseBody } from "@vercel/sdk/models/listacces
 let value: ListAccessGroupMembersResponseBody = {
   members: [
     {
-      email: "Sarah_Schmidt-Koepp@hotmail.com",
+      email: "Wilford_Koepp@hotmail.com",
       uid: "<id>",
       username: "Buck26",
-      teamRole: "DEVELOPER",
+      teamRole: "SECURITY",
     },
   ],
   pagination: {

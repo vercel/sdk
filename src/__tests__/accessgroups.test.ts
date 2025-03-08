@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Access Groups Read Access Group", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroup");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroup"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -30,9 +32,11 @@ test("Access Groups Read Access Group", async () => {
 });
 
 test("Access Groups Read Access Group Id", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroup-id");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroup-id"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -55,9 +59,11 @@ test("Access Groups Read Access Group Id", async () => {
 });
 
 test("Access Groups Read Access Group Name", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroup-name");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroup-name"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -80,9 +86,11 @@ test("Access Groups Read Access Group Name", async () => {
 });
 
 test("Access Groups Update Access Group", async () => {
+  const testHttpClient = createTestHTTPClient("updateAccessGroup");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateAccessGroup"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -108,9 +116,11 @@ test("Access Groups Update Access Group", async () => {
 });
 
 test("Access Groups Delete Access Group", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAccessGroup");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAccessGroup"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -122,9 +132,11 @@ test("Access Groups Delete Access Group", async () => {
 });
 
 test("Access Groups List Access Group Members", async () => {
+  const testHttpClient = createTestHTTPClient("listAccessGroupMembers");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listAccessGroupMembers"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -152,9 +164,11 @@ test("Access Groups List Access Group Members", async () => {
 });
 
 test("Access Groups List Access Groups", async () => {
+  const testHttpClient = createTestHTTPClient("listAccessGroups");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listAccessGroups"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -172,9 +186,11 @@ test("Access Groups List Access Groups", async () => {
 });
 
 test("Access Groups Create Access Group", async () => {
+  const testHttpClient = createTestHTTPClient("createAccessGroup");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createAccessGroup"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -199,9 +215,11 @@ test("Access Groups Create Access Group", async () => {
 });
 
 test("Access Groups List Access Group Projects", async () => {
+  const testHttpClient = createTestHTTPClient("listAccessGroupProjects");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listAccessGroupProjects"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -222,9 +240,11 @@ test("Access Groups List Access Group Projects", async () => {
 });
 
 test("Access Groups Create Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("createAccessGroupProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createAccessGroupProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -249,9 +269,11 @@ test("Access Groups Create Access Group Project", async () => {
 });
 
 test("Access Groups Read Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroupProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroupProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -271,9 +293,11 @@ test("Access Groups Read Access Group Project", async () => {
 });
 
 test("Access Groups Read Access Group Project Id", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroupProject-id");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroupProject-id"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -295,9 +319,11 @@ test("Access Groups Read Access Group Project Id", async () => {
 });
 
 test("Access Groups Read Access Group Project Name", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroupProject-name");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("readAccessGroupProject-name"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -319,9 +345,11 @@ test("Access Groups Read Access Group Project Name", async () => {
 });
 
 test("Access Groups Update Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("updateAccessGroupProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateAccessGroupProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -344,9 +372,11 @@ test("Access Groups Update Access Group Project", async () => {
 });
 
 test("Access Groups Update Access Group Project Id", async () => {
+  const testHttpClient = createTestHTTPClient("updateAccessGroupProject-id");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateAccessGroupProject-id"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -371,9 +401,11 @@ test("Access Groups Update Access Group Project Id", async () => {
 });
 
 test("Access Groups Update Access Group Project Name", async () => {
+  const testHttpClient = createTestHTTPClient("updateAccessGroupProject-name");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateAccessGroupProject-name"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -398,9 +430,11 @@ test("Access Groups Update Access Group Project Name", async () => {
 });
 
 test("Access Groups Delete Access Group Project Id", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAccessGroupProject-id");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAccessGroupProject-id"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -413,9 +447,11 @@ test("Access Groups Delete Access Group Project Id", async () => {
 });
 
 test("Access Groups Delete Access Group Project Name", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAccessGroupProject-name");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAccessGroupProject-name"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -428,9 +464,11 @@ test("Access Groups Delete Access Group Project Name", async () => {
 });
 
 test("Access Groups Delete Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAccessGroupProject");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAccessGroupProject"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

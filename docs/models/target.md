@@ -1,17 +1,21 @@
 # Target
 
-Either not defined, `staging`, or `production`. If `staging`, a staging alias in the format `<project>-<team>.vercel.app` will be assigned. If `production`, any aliases defined in `alias` will be assigned. If omitted, the target will be `preview`
+Deployment Target or Targets in which the ENV variable will be used
 
-## Example Usage
 
-```typescript
-import { Target } from "@vercel/sdk/models/createdeploymentop.js";
+## Supported Types
 
-let value: Target = "production";
-```
-
-## Values
+### `models.Target1`
 
 ```typescript
-"staging" | "production"
+const value: models.Target1 = "preview";
 ```
+
+### `models.Target2[]`
+
+```typescript
+const value: models.Target2[] = [
+  "preview",
+];
+```
+

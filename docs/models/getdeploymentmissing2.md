@@ -6,7 +6,7 @@
 import { GetDeploymentMissing2 } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentMissing2 = {
-  type: "query",
+  type: "cookie",
   key: "<key>",
 };
 ```

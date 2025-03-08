@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Teams Get Team Members", async () => {
+  const testHttpClient = createTestHTTPClient("getTeamMembers");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getTeamMembers"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -56,9 +58,11 @@ test("Teams Get Team Members", async () => {
 });
 
 test("Teams Request Access To Team", async () => {
+  const testHttpClient = createTestHTTPClient("requestAccessToTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("requestAccessToTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -86,9 +90,11 @@ test("Teams Request Access To Team", async () => {
 });
 
 test("Teams Get Team Access Request", async () => {
+  const testHttpClient = createTestHTTPClient("getTeamAccessRequest");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getTeamAccessRequest"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -112,9 +118,11 @@ test("Teams Get Team Access Request", async () => {
 });
 
 test("Teams Join Team", async () => {
+  const testHttpClient = createTestHTTPClient("joinTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("joinTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -134,9 +142,11 @@ test("Teams Join Team", async () => {
 });
 
 test("Teams Update Team Member", async () => {
+  const testHttpClient = createTestHTTPClient("updateTeamMember");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("updateTeamMember"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -145,7 +155,6 @@ test("Teams Update Team Member", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
-      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -161,9 +170,11 @@ test("Teams Update Team Member", async () => {
 });
 
 test("Teams Remove Team Member", async () => {
+  const testHttpClient = createTestHTTPClient("removeTeamMember");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("removeTeamMember"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -179,9 +190,11 @@ test("Teams Remove Team Member", async () => {
 });
 
 test("Teams Get Team", async () => {
+  const testHttpClient = createTestHTTPClient("getTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -194,9 +207,11 @@ test("Teams Get Team", async () => {
 });
 
 test("Teams Patch Team", async () => {
+  const testHttpClient = createTestHTTPClient("patchTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("patchTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -229,9 +244,11 @@ test("Teams Patch Team", async () => {
 });
 
 test("Teams Get Teams", async () => {
+  const testHttpClient = createTestHTTPClient("getTeams");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getTeams"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -255,9 +272,11 @@ test("Teams Get Teams", async () => {
 });
 
 test("Teams Create Team", async () => {
+  const testHttpClient = createTestHTTPClient("createTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -274,9 +293,11 @@ test("Teams Create Team", async () => {
 });
 
 test("Teams Delete Team", async () => {
+  const testHttpClient = createTestHTTPClient("deleteTeam");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteTeam"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -294,9 +315,11 @@ test("Teams Delete Team", async () => {
 });
 
 test("Teams Delete Team Invite Code", async () => {
+  const testHttpClient = createTestHTTPClient("deleteTeamInviteCode");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteTeamInviteCode"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

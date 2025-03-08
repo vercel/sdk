@@ -9,7 +9,8 @@ import (
 )
 
 type GetAllLogDrainsRequest struct {
-	ProjectID *string `queryParam:"style=form,explode=true,name=projectId"`
+	ProjectID       *string `queryParam:"style=form,explode=true,name=projectId"`
+	ProjectIDOrName *string `queryParam:"style=form,explode=true,name=projectIdOrName"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -21,6 +22,13 @@ func (o *GetAllLogDrainsRequest) GetProjectID() *string {
 		return nil
 	}
 	return o.ProjectID
+}
+
+func (o *GetAllLogDrainsRequest) GetProjectIDOrName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIDOrName
 }
 
 func (o *GetAllLogDrainsRequest) GetTeamID() *string {
@@ -35,35 +43,6 @@ func (o *GetAllLogDrainsRequest) GetSlug() *string {
 		return nil
 	}
 	return o.Slug
-}
-
-type GetAllLogDrainsDeliveryFormat string
-
-const (
-	GetAllLogDrainsDeliveryFormatJSON   GetAllLogDrainsDeliveryFormat = "json"
-	GetAllLogDrainsDeliveryFormatNdjson GetAllLogDrainsDeliveryFormat = "ndjson"
-	GetAllLogDrainsDeliveryFormatSyslog GetAllLogDrainsDeliveryFormat = "syslog"
-)
-
-func (e GetAllLogDrainsDeliveryFormat) ToPointer() *GetAllLogDrainsDeliveryFormat {
-	return &e
-}
-func (e *GetAllLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "json":
-		fallthrough
-	case "ndjson":
-		fallthrough
-	case "syslog":
-		*e = GetAllLogDrainsDeliveryFormat(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsDeliveryFormat: %v", v)
-	}
 }
 
 type GetAllLogDrainsSources string
@@ -217,21 +196,39 @@ func (e *GetAllLogDrainsCreatedFrom) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsDeliveryFormat string
+
+const (
+	GetAllLogDrainsDeliveryFormatJSON   GetAllLogDrainsDeliveryFormat = "json"
+	GetAllLogDrainsDeliveryFormatNdjson GetAllLogDrainsDeliveryFormat = "ndjson"
+	GetAllLogDrainsDeliveryFormatSyslog GetAllLogDrainsDeliveryFormat = "syslog"
+)
+
+func (e GetAllLogDrainsDeliveryFormat) ToPointer() *GetAllLogDrainsDeliveryFormat {
+	return &e
+}
+func (e *GetAllLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		fallthrough
+	case "ndjson":
+		fallthrough
+	case "syslog":
+		*e = GetAllLogDrainsDeliveryFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsDeliveryFormat: %v", v)
+	}
+}
+
 type GetAllLogDrainsResponseBody struct {
-	ID                  string                         `json:"id"`
-	DeliveryFormat      GetAllLogDrainsDeliveryFormat  `json:"deliveryFormat"`
-	URL                 string                         `json:"url"`
-	Name                string                         `json:"name"`
 	ClientID            *string                        `json:"clientId,omitempty"`
 	ConfigurationID     *string                        `json:"configurationId,omitempty"`
-	TeamID              *string                        `json:"teamId,omitempty"`
-	OwnerID             string                         `json:"ownerId"`
-	ProjectIds          []string                       `json:"projectIds,omitempty"`
-	CreatedAt           float64                        `json:"createdAt"`
-	DeletedAt           *float64                       `json:"deletedAt"`
-	UpdatedAt           float64                        `json:"updatedAt"`
 	Sources             []GetAllLogDrainsSources       `json:"sources,omitempty"`
-	Headers             map[string]string              `json:"headers,omitempty"`
 	Environments        []GetAllLogDrainsEnvironments  `json:"environments"`
 	Status              *GetAllLogDrainsStatus         `json:"status,omitempty"`
 	DisabledAt          *float64                       `json:"disabledAt,omitempty"`
@@ -240,36 +237,19 @@ type GetAllLogDrainsResponseBody struct {
 	FirstErrorTimestamp *float64                       `json:"firstErrorTimestamp,omitempty"`
 	SamplingRate        *float64                       `json:"samplingRate,omitempty"`
 	HideIPAddresses     *bool                          `json:"hideIpAddresses,omitempty"`
-	Secret              *string                        `json:"secret,omitempty"`
+	ID                  string                         `json:"id"`
+	CreatedAt           float64                        `json:"createdAt"`
+	DeletedAt           *float64                       `json:"deletedAt"`
+	UpdatedAt           float64                        `json:"updatedAt"`
+	URL                 string                         `json:"url"`
+	Headers             map[string]string              `json:"headers,omitempty"`
+	ProjectIds          []string                       `json:"projectIds,omitempty"`
+	Name                string                         `json:"name"`
+	TeamID              *string                        `json:"teamId,omitempty"`
+	OwnerID             string                         `json:"ownerId"`
 	CreatedFrom         *GetAllLogDrainsCreatedFrom    `json:"createdFrom,omitempty"`
-}
-
-func (o *GetAllLogDrainsResponseBody) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *GetAllLogDrainsResponseBody) GetDeliveryFormat() GetAllLogDrainsDeliveryFormat {
-	if o == nil {
-		return GetAllLogDrainsDeliveryFormat("")
-	}
-	return o.DeliveryFormat
-}
-
-func (o *GetAllLogDrainsResponseBody) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-func (o *GetAllLogDrainsResponseBody) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
+	DeliveryFormat      GetAllLogDrainsDeliveryFormat  `json:"deliveryFormat"`
+	Secret              *string                        `json:"secret,omitempty"`
 }
 
 func (o *GetAllLogDrainsResponseBody) GetClientID() *string {
@@ -286,60 +266,11 @@ func (o *GetAllLogDrainsResponseBody) GetConfigurationID() *string {
 	return o.ConfigurationID
 }
 
-func (o *GetAllLogDrainsResponseBody) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *GetAllLogDrainsResponseBody) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *GetAllLogDrainsResponseBody) GetProjectIds() []string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIds
-}
-
-func (o *GetAllLogDrainsResponseBody) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *GetAllLogDrainsResponseBody) GetDeletedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DeletedAt
-}
-
-func (o *GetAllLogDrainsResponseBody) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
 func (o *GetAllLogDrainsResponseBody) GetSources() []GetAllLogDrainsSources {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
-}
-
-func (o *GetAllLogDrainsResponseBody) GetHeaders() map[string]string {
-	if o == nil {
-		return nil
-	}
-	return o.Headers
 }
 
 func (o *GetAllLogDrainsResponseBody) GetEnvironments() []GetAllLogDrainsEnvironments {
@@ -398,11 +329,74 @@ func (o *GetAllLogDrainsResponseBody) GetHideIPAddresses() *bool {
 	return o.HideIPAddresses
 }
 
-func (o *GetAllLogDrainsResponseBody) GetSecret() *string {
+func (o *GetAllLogDrainsResponseBody) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetAllLogDrainsResponseBody) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAllLogDrainsResponseBody) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Secret
+	return o.DeletedAt
+}
+
+func (o *GetAllLogDrainsResponseBody) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetAllLogDrainsResponseBody) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *GetAllLogDrainsResponseBody) GetHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetAllLogDrainsResponseBody) GetProjectIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIds
+}
+
+func (o *GetAllLogDrainsResponseBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetAllLogDrainsResponseBody) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetAllLogDrainsResponseBody) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
 }
 
 func (o *GetAllLogDrainsResponseBody) GetCreatedFrom() *GetAllLogDrainsCreatedFrom {
@@ -410,6 +404,20 @@ func (o *GetAllLogDrainsResponseBody) GetCreatedFrom() *GetAllLogDrainsCreatedFr
 		return nil
 	}
 	return o.CreatedFrom
+}
+
+func (o *GetAllLogDrainsResponseBody) GetDeliveryFormat() GetAllLogDrainsDeliveryFormat {
+	if o == nil {
+		return GetAllLogDrainsDeliveryFormat("")
+	}
+	return o.DeliveryFormat
+}
+
+func (o *GetAllLogDrainsResponseBody) GetSecret() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Secret
 }
 
 type GetAllLogDrainsResponse struct {

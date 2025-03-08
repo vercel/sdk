@@ -24,7 +24,7 @@ func pathPatchV1TeamsTeamIDMembersUID(dir *logging.HTTPFileDirectory, rt *tracki
 		case "updateTeamMember[0]":
 			dir.HandlerFunc("updateTeamMember", testUpdateTeamMemberUpdateTeamMember0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

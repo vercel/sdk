@@ -5,7 +5,7 @@
 ```typescript
 import { Result } from "@vercel/sdk/models/submitinvoiceop.js";
 
-let value: Result = "paid";
+let value: Result = "notpaid";
 ```
 
 ## Values

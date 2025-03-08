@@ -6,7 +6,7 @@
 import { GetConfigurationResponseBodyIntegrationsDisabledReason } from "@vercel/sdk/models/getconfigurationop.js";
 
 let value: GetConfigurationResponseBodyIntegrationsDisabledReason =
-  "disabled-by-admin";
+  "feature-not-available";
 ```
 
 ## Values

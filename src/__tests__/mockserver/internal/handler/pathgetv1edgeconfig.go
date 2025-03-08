@@ -24,7 +24,7 @@ func pathGetV1EdgeConfig(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		case "getEdgeConfigs[0]":
 			dir.HandlerFunc("getEdgeConfigs", testGetEdgeConfigsGetEdgeConfigs0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -25,7 +25,7 @@ func pathPatchV1DataCacheProjectsProjectID(dir *logging.HTTPFileDirectory, rt *t
 		case "updateProjectDataCache[0]":
 			dir.HandlerFunc("updateProjectDataCache", testUpdateProjectDataCacheUpdateProjectDataCache0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -139,6 +139,16 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 		},
 		Name:        "<value>",
 		NodeVersion: operations.UpdateProjectDataCacheNodeVersionTenX,
+		ResourceConfig: operations.ResourceConfig{
+			FunctionDefaultRegions: []string{
+				"<value>",
+			},
+		},
+		DefaultResourceConfig: operations.DefaultResourceConfig{
+			FunctionDefaultRegions: []string{
+				"<value>",
+			},
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

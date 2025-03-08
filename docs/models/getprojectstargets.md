@@ -7,21 +7,21 @@ import { GetProjectsTargets } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsTargets = {
   id: "<id>",
-  createdAt: 9509.53,
+  createdAt: 3044.68,
   createdIn: "<value>",
   creator: {
-    email: "Mary_Renner@gmail.com",
+    email: "David86@hotmail.com",
     uid: "<id>",
-    username: "Garland.Ferry44",
+    username: "Nettie_Wisoky45",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "hobby",
+  plan: "pro",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "ERROR",
+  readyState: "BUILDING",
   type: "LAMBDAS",
-  url: "https://watery-overcoat.org",
+  url: "https://competent-newsstand.info/",
   userId: "<id>",
 };
 ```

@@ -80,6 +80,14 @@ export type CreateAccessGroupResponseBody = {
    * ID of the access group.
    */
   accessGroupId: string;
+  /**
+   * Roles that the team has in the access group.
+   */
+  teamRoles?: Array<string> | undefined;
+  /**
+   * Permissions that the team has in the access group.
+   */
+  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -305,6 +313,8 @@ export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   teamId: z.string(),
   updatedAt: z.string(),
   accessGroupId: z.string(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
 });
 
 /** @internal */
@@ -316,6 +326,8 @@ export type CreateAccessGroupResponseBody$Outbound = {
   teamId: string;
   updatedAt: string;
   accessGroupId: string;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -331,6 +343,8 @@ export const CreateAccessGroupResponseBody$outboundSchema: z.ZodType<
   teamId: z.string(),
   updatedAt: z.string(),
   accessGroupId: z.string(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
 });
 
 /**

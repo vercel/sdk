@@ -29,6 +29,7 @@ import {
   VercelBadRequestError,
   VercelBadRequestError$inboundSchema,
 } from "../models/vercelbadrequesterror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -37,11 +38,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
  */
-export async function integrationsSearchRepo(
+export function integrationsSearchRepo(
   client: VercelCore,
   request: SearchRepoRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     SearchRepoResponseBody,
     | VercelBadRequestError
@@ -54,13 +55,40 @@ export async function integrationsSearchRepo(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: SearchRepoRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      SearchRepoResponseBody,
+      | VercelBadRequestError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => SearchRepoRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -86,6 +114,7 @@ export async function integrationsSearchRepo(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "searchRepo",
     oAuth2Scopes: [],
 
@@ -109,7 +138,7 @@ export async function integrationsSearchRepo(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -120,7 +149,7 @@ export async function integrationsSearchRepo(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -145,8 +174,8 @@ export async function integrationsSearchRepo(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -170,6 +170,7 @@ const (
 	GetTeamMembersRoleViewer      GetTeamMembersRole = "VIEWER"
 	GetTeamMembersRoleBilling     GetTeamMembersRole = "BILLING"
 	GetTeamMembersRoleContributor GetTeamMembersRole = "CONTRIBUTOR"
+	GetTeamMembersRoleSecurity    GetTeamMembersRole = "SECURITY"
 )
 
 func (e GetTeamMembersRole) ToPointer() *GetTeamMembersRole {
@@ -192,6 +193,8 @@ func (e *GetTeamMembersRole) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "CONTRIBUTOR":
+		fallthrough
+	case "SECURITY":
 		*e = GetTeamMembersRole(v)
 		return nil
 	default:
@@ -479,8 +482,6 @@ type GetTeamMembersMembers struct {
 	Bitbucket *GetTeamMembersBitbucket `json:"bitbucket,omitempty"`
 	// Role of this user in the team.
 	Role GetTeamMembersRole `json:"role"`
-	// Permissions that this user has in addition to their role.
-	AdditionalRoles []string `json:"additionalRoles,omitempty"`
 	// The ID of this user.
 	UID string `json:"uid"`
 	// The unique username of this user.
@@ -546,13 +547,6 @@ func (o *GetTeamMembersMembers) GetRole() GetTeamMembersRole {
 	return o.Role
 }
 
-func (o *GetTeamMembersMembers) GetAdditionalRoles() []string {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalRoles
-}
-
 func (o *GetTeamMembersMembers) GetUID() string {
 	if o == nil {
 		return ""
@@ -611,6 +605,7 @@ const (
 	GetTeamMembersTeamsRoleViewer      GetTeamMembersTeamsRole = "VIEWER"
 	GetTeamMembersTeamsRoleBilling     GetTeamMembersTeamsRole = "BILLING"
 	GetTeamMembersTeamsRoleContributor GetTeamMembersTeamsRole = "CONTRIBUTOR"
+	GetTeamMembersTeamsRoleSecurity    GetTeamMembersTeamsRole = "SECURITY"
 )
 
 func (e GetTeamMembersTeamsRole) ToPointer() *GetTeamMembersTeamsRole {
@@ -633,6 +628,8 @@ func (e *GetTeamMembersTeamsRole) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "CONTRIBUTOR":
+		fallthrough
+	case "SECURITY":
 		*e = GetTeamMembersTeamsRole(v)
 		return nil
 	default:

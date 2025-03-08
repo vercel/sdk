@@ -18,41 +18,39 @@ const value: models.GetDeploymentResponseBody1 = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://well-off-waterspout.org",
+  inspectorUrl: "https://soggy-prohibition.com",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 3590.97,
-  buildingAt: 8877.01,
+  bootedAt: 3962.23,
+  buildingAt: 1674.35,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "INITIALIZING",
+  status: "READY",
   id: "<id>",
-  type: "LAMBDAS",
-  createdAt: 4299.97,
   name: "<value>",
-  readyState: "QUEUED",
+  type: "LAMBDAS",
+  createdAt: 7005.29,
+  readyState: "CANCELED",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://meager-scholarship.net",
-  version: 7935.68,
+  url: "https://sorrowful-yarmulke.name",
+  version: 371.29,
   projectId: "<id>",
   plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [
     {
-      src: "<value>",
-      continue: false,
-      middleware: 5488.46,
+      handle: "rewrite",
     },
   ],
 };
@@ -63,8 +61,8 @@ const value: models.GetDeploymentResponseBody1 = {
 ```typescript
 const value: models.GetDeploymentResponseBody2 = {
   aliasAssigned: false,
-  bootedAt: 4733.26,
-  buildingAt: 6751.26,
+  bootedAt: 8661.35,
+  buildingAt: 9608.13,
   buildSkipped: false,
   creator: {
     uid: "<id>",
@@ -72,18 +70,18 @@ const value: models.GetDeploymentResponseBody2 = {
   public: false,
   status: "QUEUED",
   id: "<id>",
-  type: "LAMBDAS",
-  createdAt: 1023.16,
   name: "<value>",
-  readyState: "BUILDING",
+  type: "LAMBDAS",
+  createdAt: 445.71,
+  readyState: "CANCELED",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://cool-final.com",
-  version: 3312.69,
+  url: "https://nocturnal-whack.info/",
+  version: 6658.72,
 };
 ```
 

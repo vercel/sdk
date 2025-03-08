@@ -6,11 +6,11 @@
 import { ListDeploymentAliasesProtectionBypassAliasesResponseScope } from "@vercel/sdk/models/listdeploymentaliasesop.js";
 
 let value: ListDeploymentAliasesProtectionBypassAliasesResponseScope =
-  "alias-protection-override";
+  "email_invite";
 ```
 
 ## Values
 
 ```typescript
-"alias-protection-override"
+"email_invite"
 ```

@@ -28,7 +28,7 @@ func pathGetV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.HTTP
 		case "readAccessGroupProject-name[0]":
 			dir.HandlerFunc("readAccessGroupProject", testReadAccessGroupProjectReadAccessGroupProjectName0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

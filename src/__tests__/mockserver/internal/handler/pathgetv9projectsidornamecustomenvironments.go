@@ -24,7 +24,7 @@ func pathGetV9ProjectsIDOrNameCustomEnvironments(dir *logging.HTTPFileDirectory,
 		case "get_/v9/projects/{idOrName}/custom-environments[0]":
 			dir.HandlerFunc("get_/v9/projects/{idOrName}/custom-environments", testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvironments0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

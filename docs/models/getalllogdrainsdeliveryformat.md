@@ -5,7 +5,7 @@
 ```typescript
 import { GetAllLogDrainsDeliveryFormat } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDeliveryFormat = "ndjson";
+let value: GetAllLogDrainsDeliveryFormat = "json";
 ```
 
 ## Values

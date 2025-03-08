@@ -24,7 +24,7 @@ func pathDeleteV2DomainsDomainRecordsRecordID(dir *logging.HTTPFileDirectory, rt
 		case "removeRecord[0]":
 			dir.HandlerFunc("removeRecord", testRemoveRecordRemoveRecord0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

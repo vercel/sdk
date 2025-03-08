@@ -16,8 +16,8 @@ let value: UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "geo_continent",
-            op: "ninc",
+            type: "path",
+            op: "lte",
           },
         ],
       },
@@ -33,4 +33,4 @@ let value: UpdateFirewallConfigRequestBody2 = {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `action`                                                                                           | [models.UpdateFirewallConfigRequestBodyAction](../models/updatefirewallconfigrequestbodyaction.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `id`                                                                                               | *any*                                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `value`                                                                                            | [models.RequestBodyValue](../models/requestbodyvalue.md)                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `value`                                                                                            | [models.Value](../models/value.md)                                                                 | :heavy_check_mark:                                                                                 | N/A                                                                                                |

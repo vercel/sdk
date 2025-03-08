@@ -8,14 +8,18 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Secrets = {
+export type UpdateResourceSecretsSecrets = {
   name: string;
   value: string;
   prefix?: string | undefined;
 };
 
 export type UpdateResourceSecretsRequestBody = {
-  secrets: Array<Secrets>;
+  secrets: Array<UpdateResourceSecretsSecrets>;
+  /**
+   * If true, will only update the provided secrets
+   */
+  partial?: boolean | undefined;
 };
 
 export type UpdateResourceSecretsRequest = {
@@ -26,25 +30,28 @@ export type UpdateResourceSecretsRequest = {
 };
 
 /** @internal */
-export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
-  z.object({
-    name: z.string(),
-    value: z.string(),
-    prefix: z.string().optional(),
-  });
+export const UpdateResourceSecretsSecrets$inboundSchema: z.ZodType<
+  UpdateResourceSecretsSecrets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  value: z.string(),
+  prefix: z.string().optional(),
+});
 
 /** @internal */
-export type Secrets$Outbound = {
+export type UpdateResourceSecretsSecrets$Outbound = {
   name: string;
   value: string;
   prefix?: string | undefined;
 };
 
 /** @internal */
-export const Secrets$outboundSchema: z.ZodType<
-  Secrets$Outbound,
+export const UpdateResourceSecretsSecrets$outboundSchema: z.ZodType<
+  UpdateResourceSecretsSecrets$Outbound,
   z.ZodTypeDef,
-  Secrets
+  UpdateResourceSecretsSecrets
 > = z.object({
   name: z.string(),
   value: z.string(),
@@ -55,26 +62,32 @@ export const Secrets$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Secrets$ {
-  /** @deprecated use `Secrets$inboundSchema` instead. */
-  export const inboundSchema = Secrets$inboundSchema;
-  /** @deprecated use `Secrets$outboundSchema` instead. */
-  export const outboundSchema = Secrets$outboundSchema;
-  /** @deprecated use `Secrets$Outbound` instead. */
-  export type Outbound = Secrets$Outbound;
+export namespace UpdateResourceSecretsSecrets$ {
+  /** @deprecated use `UpdateResourceSecretsSecrets$inboundSchema` instead. */
+  export const inboundSchema = UpdateResourceSecretsSecrets$inboundSchema;
+  /** @deprecated use `UpdateResourceSecretsSecrets$outboundSchema` instead. */
+  export const outboundSchema = UpdateResourceSecretsSecrets$outboundSchema;
+  /** @deprecated use `UpdateResourceSecretsSecrets$Outbound` instead. */
+  export type Outbound = UpdateResourceSecretsSecrets$Outbound;
 }
 
-export function secretsToJSON(secrets: Secrets): string {
-  return JSON.stringify(Secrets$outboundSchema.parse(secrets));
+export function updateResourceSecretsSecretsToJSON(
+  updateResourceSecretsSecrets: UpdateResourceSecretsSecrets,
+): string {
+  return JSON.stringify(
+    UpdateResourceSecretsSecrets$outboundSchema.parse(
+      updateResourceSecretsSecrets,
+    ),
+  );
 }
 
-export function secretsFromJSON(
+export function updateResourceSecretsSecretsFromJSON(
   jsonString: string,
-): SafeParseResult<Secrets, SDKValidationError> {
+): SafeParseResult<UpdateResourceSecretsSecrets, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Secrets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Secrets' from JSON`,
+    (x) => UpdateResourceSecretsSecrets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateResourceSecretsSecrets' from JSON`,
   );
 }
 
@@ -84,12 +97,14 @@ export const UpdateResourceSecretsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  secrets: z.array(z.lazy(() => Secrets$inboundSchema)),
+  secrets: z.array(z.lazy(() => UpdateResourceSecretsSecrets$inboundSchema)),
+  partial: z.boolean().optional(),
 });
 
 /** @internal */
 export type UpdateResourceSecretsRequestBody$Outbound = {
-  secrets: Array<Secrets$Outbound>;
+  secrets: Array<UpdateResourceSecretsSecrets$Outbound>;
+  partial?: boolean | undefined;
 };
 
 /** @internal */
@@ -98,7 +113,8 @@ export const UpdateResourceSecretsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateResourceSecretsRequestBody
 > = z.object({
-  secrets: z.array(z.lazy(() => Secrets$outboundSchema)),
+  secrets: z.array(z.lazy(() => UpdateResourceSecretsSecrets$outboundSchema)),
+  partial: z.boolean().optional(),
 });
 
 /**

@@ -173,6 +173,10 @@ type UpdateAccessGroupResponseBody struct {
 	MembersCount float64 `json:"membersCount"`
 	// Number of projects in the access group.
 	ProjectsCount float64 `json:"projectsCount"`
+	// Roles that the team has in the access group.
+	TeamRoles []string `json:"teamRoles,omitempty"`
+	// Permissions that the team has in the access group.
+	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
 func (o *UpdateAccessGroupResponseBody) GetEntitlements() []UpdateAccessGroupEntitlements {
@@ -229,6 +233,20 @@ func (o *UpdateAccessGroupResponseBody) GetProjectsCount() float64 {
 		return 0.0
 	}
 	return o.ProjectsCount
+}
+
+func (o *UpdateAccessGroupResponseBody) GetTeamRoles() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *UpdateAccessGroupResponseBody) GetTeamPermissions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 type UpdateAccessGroupResponse struct {

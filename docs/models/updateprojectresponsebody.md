@@ -10,9 +10,9 @@ import { UpdateProjectResponseBody } from "@vercel/sdk/models/updateprojectop.js
 let value: UpdateProjectResponseBody = {
   accountId: "<id>",
   crons: {
-    enabledAt: 5910.65,
-    disabledAt: 9217.19,
-    updatedAt: 8052.64,
+    enabledAt: 209.5,
+    disabledAt: 4116.15,
+    updatedAt: 4894.59,
     deploymentId: "<id>",
     definitions: [
       {
@@ -27,44 +27,54 @@ let value: UpdateProjectResponseBody = {
   latestDeployments: [
     {
       id: "<id>",
-      createdAt: 7239.42,
+      createdAt: 2436.78,
       createdIn: "<value>",
       creator: {
-        email: "Theodore21@yahoo.com",
+        email: "Nichole94@yahoo.com",
         uid: "<id>",
-        username: "Adolfo_Fay73",
-      },
-      deploymentHostname: "<value>",
-      name: "<value>",
-      plan: "enterprise",
-      previewCommentsEnabled: false,
-      private: false,
-      readyState: "CANCELED",
-      type: "LAMBDAS",
-      url: "https://remarkable-mozzarella.com/",
-      userId: "<id>",
-    },
-  ],
-  name: "<value>",
-  nodeVersion: "16.x",
-  targets: {
-    "key": {
-      id: "<id>",
-      createdAt: 7087.71,
-      createdIn: "<value>",
-      creator: {
-        email: "Shane.Bartell@gmail.com",
-        uid: "<id>",
-        username: "Benton.Koch",
+        username: "Rosetta_Denesik",
       },
       deploymentHostname: "<value>",
       name: "<value>",
       plan: "pro",
       previewCommentsEnabled: false,
       private: false,
-      readyState: "QUEUED",
+      readyState: "CANCELED",
       type: "LAMBDAS",
-      url: "https://esteemed-oil.name",
+      url: "https://self-assured-following.biz",
+      userId: "<id>",
+    },
+  ],
+  name: "<value>",
+  nodeVersion: "18.x",
+  resourceConfig: {
+    functionDefaultRegions: [
+      "<value>",
+    ],
+  },
+  defaultResourceConfig: {
+    functionDefaultRegions: [
+      "<value>",
+    ],
+  },
+  targets: {
+    "key": {
+      id: "<id>",
+      createdAt: 1272.94,
+      createdIn: "<value>",
+      creator: {
+        email: "Bryana_Murazik@yahoo.com",
+        uid: "<id>",
+        username: "Mack_Krajcik26",
+      },
+      deploymentHostname: "<value>",
+      name: "<value>",
+      plan: "enterprise",
+      previewCommentsEnabled: false,
+      private: false,
+      readyState: "ERROR",
+      type: "LAMBDAS",
+      url: "https://entire-experience.net",
       userId: "<id>",
     },
   },
@@ -102,7 +112,7 @@ let value: UpdateProjectResponseBody = {
 | `ipBuckets`                                                                                        | [models.UpdateProjectIpBuckets](../models/updateprojectipbuckets.md)[]                             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `latestDeployments`                                                                                | [models.UpdateProjectLatestDeployments](../models/updateprojectlatestdeployments.md)[]             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `link`                                                                                             | *models.UpdateProjectLink*                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `microfrontends`                                                                                   | [models.UpdateProjectMicrofrontends](../models/updateprojectmicrofrontends.md)                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `microfrontends`                                                                                   | *models.UpdateProjectMicrofrontends*                                                               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `name`                                                                                             | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `nodeVersion`                                                                                      | [models.UpdateProjectProjectsNodeVersion](../models/updateprojectprojectsnodeversion.md)           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `optionsAllowlist`                                                                                 | [models.UpdateProjectOptionsAllowlist](../models/updateprojectoptionsallowlist.md)                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
@@ -111,7 +121,9 @@ let value: UpdateProjectResponseBody = {
 | `passwordProtection`                                                                               | [models.UpdateProjectPasswordProtection](../models/updateprojectpasswordprotection.md)             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `productionDeploymentsFastLane`                                                                    | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `publicSource`                                                                                     | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `resourceConfig`                                                                                   | [models.UpdateProjectResourceConfig](../models/updateprojectresourceconfig.md)                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `resourceConfig`                                                                                   | [models.UpdateProjectResourceConfig](../models/updateprojectresourceconfig.md)                     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `rollingRelease`                                                                                   | [models.UpdateProjectRollingRelease](../models/updateprojectrollingrelease.md)                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `defaultResourceConfig`                                                                            | [models.UpdateProjectDefaultResourceConfig](../models/updateprojectdefaultresourceconfig.md)       | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `rootDirectory`                                                                                    | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `serverlessFunctionRegion`                                                                         | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `serverlessFunctionZeroConfigFailover`                                                             | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
@@ -133,11 +145,11 @@ let value: UpdateProjectResponseBody = {
 | `permissions`                                                                                      | [models.UpdateProjectPermissions](../models/updateprojectpermissions.md)                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `lastRollbackTarget`                                                                               | [models.UpdateProjectLastRollbackTarget](../models/updateprojectlastrollbacktarget.md)             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `lastAliasRequest`                                                                                 | [models.UpdateProjectLastAliasRequest](../models/updateprojectlastaliasrequest.md)                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `hasFloatingAliases`                                                                               | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `protectionBypass`                                                                                 | Record<string, [models.UpdateProjectProtectionBypass](../models/updateprojectprotectionbypass.md)> | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `hasActiveBranches`                                                                                | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `trustedIps`                                                                                       | *models.UpdateProjectTrustedIps*                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `gitComments`                                                                                      | [models.UpdateProjectGitComments](../models/updateprojectgitcomments.md)                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `gitProviderOptions`                                                                               | [models.UpdateProjectGitProviderOptions](../models/updateprojectgitprovideroptions.md)             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `paused`                                                                                           | *boolean*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `concurrencyBucketName`                                                                            | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `webAnalytics`                                                                                     | [models.UpdateProjectWebAnalytics](../models/updateprojectwebanalytics.md)                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

@@ -143,18 +143,18 @@ func (e *FilterProjectEnvsTargetProjectsResponse2) UnmarshalJSON(data []byte) er
 	}
 }
 
-type FilterProjectEnvsTargetProjects1 string
+type FilterProjectEnvsTargetProjectsResponse1 string
 
 const (
-	FilterProjectEnvsTargetProjects1Production  FilterProjectEnvsTargetProjects1 = "production"
-	FilterProjectEnvsTargetProjects1Preview     FilterProjectEnvsTargetProjects1 = "preview"
-	FilterProjectEnvsTargetProjects1Development FilterProjectEnvsTargetProjects1 = "development"
+	FilterProjectEnvsTargetProjectsResponse1Production  FilterProjectEnvsTargetProjectsResponse1 = "production"
+	FilterProjectEnvsTargetProjectsResponse1Preview     FilterProjectEnvsTargetProjectsResponse1 = "preview"
+	FilterProjectEnvsTargetProjectsResponse1Development FilterProjectEnvsTargetProjectsResponse1 = "development"
 )
 
-func (e FilterProjectEnvsTargetProjects1) ToPointer() *FilterProjectEnvsTargetProjects1 {
+func (e FilterProjectEnvsTargetProjectsResponse1) ToPointer() *FilterProjectEnvsTargetProjectsResponse1 {
 	return &e
 }
-func (e *FilterProjectEnvsTargetProjects1) UnmarshalJSON(data []byte) error {
+func (e *FilterProjectEnvsTargetProjectsResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -165,33 +165,33 @@ func (e *FilterProjectEnvsTargetProjects1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = FilterProjectEnvsTargetProjects1(v)
+		*e = FilterProjectEnvsTargetProjectsResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FilterProjectEnvsTargetProjects1: %v", v)
+		return fmt.Errorf("invalid value for FilterProjectEnvsTargetProjectsResponse1: %v", v)
 	}
 }
 
 type FilterProjectEnvsResponseBodyProjectsResponseTargetType string
 
 const (
-	FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjects1  FilterProjectEnvsResponseBodyProjectsResponseTargetType = "arrayOfFilterProjectEnvsTargetProjects1"
-	FilterProjectEnvsResponseBodyProjectsResponseTargetTypeFilterProjectEnvsTargetProjectsResponse2 FilterProjectEnvsResponseBodyProjectsResponseTargetType = "filterProjectEnvs_target_projects_response_2"
+	FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjectsResponse1 FilterProjectEnvsResponseBodyProjectsResponseTargetType = "arrayOfFilterProjectEnvsTargetProjectsResponse1"
+	FilterProjectEnvsResponseBodyProjectsResponseTargetTypeFilterProjectEnvsTargetProjectsResponse2        FilterProjectEnvsResponseBodyProjectsResponseTargetType = "filterProjectEnvs_target_projects_response_2"
 )
 
 type FilterProjectEnvsResponseBodyProjectsResponseTarget struct {
-	ArrayOfFilterProjectEnvsTargetProjects1  []FilterProjectEnvsTargetProjects1
-	FilterProjectEnvsTargetProjectsResponse2 *FilterProjectEnvsTargetProjectsResponse2
+	ArrayOfFilterProjectEnvsTargetProjectsResponse1 []FilterProjectEnvsTargetProjectsResponse1
+	FilterProjectEnvsTargetProjectsResponse2        *FilterProjectEnvsTargetProjectsResponse2
 
 	Type FilterProjectEnvsResponseBodyProjectsResponseTargetType
 }
 
-func CreateFilterProjectEnvsResponseBodyProjectsResponseTargetArrayOfFilterProjectEnvsTargetProjects1(arrayOfFilterProjectEnvsTargetProjects1 []FilterProjectEnvsTargetProjects1) FilterProjectEnvsResponseBodyProjectsResponseTarget {
-	typ := FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjects1
+func CreateFilterProjectEnvsResponseBodyProjectsResponseTargetArrayOfFilterProjectEnvsTargetProjectsResponse1(arrayOfFilterProjectEnvsTargetProjectsResponse1 []FilterProjectEnvsTargetProjectsResponse1) FilterProjectEnvsResponseBodyProjectsResponseTarget {
+	typ := FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjectsResponse1
 
 	return FilterProjectEnvsResponseBodyProjectsResponseTarget{
-		ArrayOfFilterProjectEnvsTargetProjects1: arrayOfFilterProjectEnvsTargetProjects1,
-		Type:                                    typ,
+		ArrayOfFilterProjectEnvsTargetProjectsResponse1: arrayOfFilterProjectEnvsTargetProjectsResponse1,
+		Type: typ,
 	}
 }
 
@@ -206,10 +206,10 @@ func CreateFilterProjectEnvsResponseBodyProjectsResponseTargetFilterProjectEnvsT
 
 func (u *FilterProjectEnvsResponseBodyProjectsResponseTarget) UnmarshalJSON(data []byte) error {
 
-	var arrayOfFilterProjectEnvsTargetProjects1 []FilterProjectEnvsTargetProjects1 = []FilterProjectEnvsTargetProjects1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetProjects1, "", true, true); err == nil {
-		u.ArrayOfFilterProjectEnvsTargetProjects1 = arrayOfFilterProjectEnvsTargetProjects1
-		u.Type = FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjects1
+	var arrayOfFilterProjectEnvsTargetProjectsResponse1 []FilterProjectEnvsTargetProjectsResponse1 = []FilterProjectEnvsTargetProjectsResponse1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetProjectsResponse1, "", true, true); err == nil {
+		u.ArrayOfFilterProjectEnvsTargetProjectsResponse1 = arrayOfFilterProjectEnvsTargetProjectsResponse1
+		u.Type = FilterProjectEnvsResponseBodyProjectsResponseTargetTypeArrayOfFilterProjectEnvsTargetProjectsResponse1
 		return nil
 	}
 
@@ -224,8 +224,8 @@ func (u *FilterProjectEnvsResponseBodyProjectsResponseTarget) UnmarshalJSON(data
 }
 
 func (u FilterProjectEnvsResponseBodyProjectsResponseTarget) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfFilterProjectEnvsTargetProjects1 != nil {
-		return utils.MarshalJSON(u.ArrayOfFilterProjectEnvsTargetProjects1, "", true)
+	if u.ArrayOfFilterProjectEnvsTargetProjectsResponse1 != nil {
+		return utils.MarshalJSON(u.ArrayOfFilterProjectEnvsTargetProjectsResponse1, "", true)
 	}
 
 	if u.FilterProjectEnvsTargetProjectsResponse2 != nil {
@@ -1108,10 +1108,10 @@ func (u *FilterProjectEnvsResponseBodyProjectsContentHint) UnmarshalJSON(data []
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjectsResponse9 FilterProjectEnvsContentHintProjectsResponse9 = FilterProjectEnvsContentHintProjectsResponse9{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse9, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjectsResponse9 = &filterProjectEnvsContentHintProjectsResponse9
-		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse9
+	var filterProjectEnvsContentHintProjectsResponse11 FilterProjectEnvsContentHintProjectsResponse11 = FilterProjectEnvsContentHintProjectsResponse11{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse11, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjectsResponse11 = &filterProjectEnvsContentHintProjectsResponse11
+		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse11
 		return nil
 	}
 
@@ -1150,10 +1150,10 @@ func (u *FilterProjectEnvsResponseBodyProjectsContentHint) UnmarshalJSON(data []
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjectsResponse8 FilterProjectEnvsContentHintProjectsResponse8 = FilterProjectEnvsContentHintProjectsResponse8{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse8, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjectsResponse8 = &filterProjectEnvsContentHintProjectsResponse8
-		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse8
+	var filterProjectEnvsContentHintProjectsResponse9 FilterProjectEnvsContentHintProjectsResponse9 = FilterProjectEnvsContentHintProjectsResponse9{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse9, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjectsResponse9 = &filterProjectEnvsContentHintProjectsResponse9
+		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse9
 		return nil
 	}
 
@@ -1171,10 +1171,10 @@ func (u *FilterProjectEnvsResponseBodyProjectsContentHint) UnmarshalJSON(data []
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjectsResponse11 FilterProjectEnvsContentHintProjectsResponse11 = FilterProjectEnvsContentHintProjectsResponse11{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse11, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjectsResponse11 = &filterProjectEnvsContentHintProjectsResponse11
-		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse11
+	var filterProjectEnvsContentHintProjectsResponse8 FilterProjectEnvsContentHintProjectsResponse8 = FilterProjectEnvsContentHintProjectsResponse8{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjectsResponse8, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjectsResponse8 = &filterProjectEnvsContentHintProjectsResponse8
+		u.Type = FilterProjectEnvsResponseBodyProjectsContentHintTypeFilterProjectEnvsContentHintProjectsResponse8
 		return nil
 	}
 
@@ -1532,18 +1532,18 @@ func (e *FilterProjectEnvsTargetProjects2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type FilterProjectEnvsTarget1 string
+type FilterProjectEnvsTargetProjects1 string
 
 const (
-	FilterProjectEnvsTarget1Production  FilterProjectEnvsTarget1 = "production"
-	FilterProjectEnvsTarget1Preview     FilterProjectEnvsTarget1 = "preview"
-	FilterProjectEnvsTarget1Development FilterProjectEnvsTarget1 = "development"
+	FilterProjectEnvsTargetProjects1Production  FilterProjectEnvsTargetProjects1 = "production"
+	FilterProjectEnvsTargetProjects1Preview     FilterProjectEnvsTargetProjects1 = "preview"
+	FilterProjectEnvsTargetProjects1Development FilterProjectEnvsTargetProjects1 = "development"
 )
 
-func (e FilterProjectEnvsTarget1) ToPointer() *FilterProjectEnvsTarget1 {
+func (e FilterProjectEnvsTargetProjects1) ToPointer() *FilterProjectEnvsTargetProjects1 {
 	return &e
 }
-func (e *FilterProjectEnvsTarget1) UnmarshalJSON(data []byte) error {
+func (e *FilterProjectEnvsTargetProjects1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1554,33 +1554,33 @@ func (e *FilterProjectEnvsTarget1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = FilterProjectEnvsTarget1(v)
+		*e = FilterProjectEnvsTargetProjects1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FilterProjectEnvsTarget1: %v", v)
+		return fmt.Errorf("invalid value for FilterProjectEnvsTargetProjects1: %v", v)
 	}
 }
 
 type FilterProjectEnvsResponseBodyProjectsTargetType string
 
 const (
-	FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTarget1  FilterProjectEnvsResponseBodyProjectsTargetType = "arrayOfFilterProjectEnvsTarget1"
-	FilterProjectEnvsResponseBodyProjectsTargetTypeFilterProjectEnvsTargetProjects2 FilterProjectEnvsResponseBodyProjectsTargetType = "filterProjectEnvs_target_projects_2"
+	FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTargetProjects1 FilterProjectEnvsResponseBodyProjectsTargetType = "arrayOfFilterProjectEnvsTargetProjects1"
+	FilterProjectEnvsResponseBodyProjectsTargetTypeFilterProjectEnvsTargetProjects2        FilterProjectEnvsResponseBodyProjectsTargetType = "filterProjectEnvs_target_projects_2"
 )
 
 type FilterProjectEnvsResponseBodyProjectsTarget struct {
-	ArrayOfFilterProjectEnvsTarget1  []FilterProjectEnvsTarget1
-	FilterProjectEnvsTargetProjects2 *FilterProjectEnvsTargetProjects2
+	ArrayOfFilterProjectEnvsTargetProjects1 []FilterProjectEnvsTargetProjects1
+	FilterProjectEnvsTargetProjects2        *FilterProjectEnvsTargetProjects2
 
 	Type FilterProjectEnvsResponseBodyProjectsTargetType
 }
 
-func CreateFilterProjectEnvsResponseBodyProjectsTargetArrayOfFilterProjectEnvsTarget1(arrayOfFilterProjectEnvsTarget1 []FilterProjectEnvsTarget1) FilterProjectEnvsResponseBodyProjectsTarget {
-	typ := FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTarget1
+func CreateFilterProjectEnvsResponseBodyProjectsTargetArrayOfFilterProjectEnvsTargetProjects1(arrayOfFilterProjectEnvsTargetProjects1 []FilterProjectEnvsTargetProjects1) FilterProjectEnvsResponseBodyProjectsTarget {
+	typ := FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTargetProjects1
 
 	return FilterProjectEnvsResponseBodyProjectsTarget{
-		ArrayOfFilterProjectEnvsTarget1: arrayOfFilterProjectEnvsTarget1,
-		Type:                            typ,
+		ArrayOfFilterProjectEnvsTargetProjects1: arrayOfFilterProjectEnvsTargetProjects1,
+		Type:                                    typ,
 	}
 }
 
@@ -1595,10 +1595,10 @@ func CreateFilterProjectEnvsResponseBodyProjectsTargetFilterProjectEnvsTargetPro
 
 func (u *FilterProjectEnvsResponseBodyProjectsTarget) UnmarshalJSON(data []byte) error {
 
-	var arrayOfFilterProjectEnvsTarget1 []FilterProjectEnvsTarget1 = []FilterProjectEnvsTarget1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTarget1, "", true, true); err == nil {
-		u.ArrayOfFilterProjectEnvsTarget1 = arrayOfFilterProjectEnvsTarget1
-		u.Type = FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTarget1
+	var arrayOfFilterProjectEnvsTargetProjects1 []FilterProjectEnvsTargetProjects1 = []FilterProjectEnvsTargetProjects1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetProjects1, "", true, true); err == nil {
+		u.ArrayOfFilterProjectEnvsTargetProjects1 = arrayOfFilterProjectEnvsTargetProjects1
+		u.Type = FilterProjectEnvsResponseBodyProjectsTargetTypeArrayOfFilterProjectEnvsTargetProjects1
 		return nil
 	}
 
@@ -1613,8 +1613,8 @@ func (u *FilterProjectEnvsResponseBodyProjectsTarget) UnmarshalJSON(data []byte)
 }
 
 func (u FilterProjectEnvsResponseBodyProjectsTarget) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfFilterProjectEnvsTarget1 != nil {
-		return utils.MarshalJSON(u.ArrayOfFilterProjectEnvsTarget1, "", true)
+	if u.ArrayOfFilterProjectEnvsTargetProjects1 != nil {
+		return utils.MarshalJSON(u.ArrayOfFilterProjectEnvsTargetProjects1, "", true)
 	}
 
 	if u.FilterProjectEnvsTargetProjects2 != nil {
@@ -2497,10 +2497,10 @@ func (u *FilterProjectEnvsResponseBodyContentHint) UnmarshalJSON(data []byte) er
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjects9 FilterProjectEnvsContentHintProjects9 = FilterProjectEnvsContentHintProjects9{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects9, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjects9 = &filterProjectEnvsContentHintProjects9
-		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects9
+	var filterProjectEnvsContentHintProjects11 FilterProjectEnvsContentHintProjects11 = FilterProjectEnvsContentHintProjects11{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects11, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjects11 = &filterProjectEnvsContentHintProjects11
+		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects11
 		return nil
 	}
 
@@ -2539,10 +2539,10 @@ func (u *FilterProjectEnvsResponseBodyContentHint) UnmarshalJSON(data []byte) er
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjects8 FilterProjectEnvsContentHintProjects8 = FilterProjectEnvsContentHintProjects8{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects8, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjects8 = &filterProjectEnvsContentHintProjects8
-		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects8
+	var filterProjectEnvsContentHintProjects9 FilterProjectEnvsContentHintProjects9 = FilterProjectEnvsContentHintProjects9{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects9, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjects9 = &filterProjectEnvsContentHintProjects9
+		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects9
 		return nil
 	}
 
@@ -2560,10 +2560,10 @@ func (u *FilterProjectEnvsResponseBodyContentHint) UnmarshalJSON(data []byte) er
 		return nil
 	}
 
-	var filterProjectEnvsContentHintProjects11 FilterProjectEnvsContentHintProjects11 = FilterProjectEnvsContentHintProjects11{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects11, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintProjects11 = &filterProjectEnvsContentHintProjects11
-		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects11
+	var filterProjectEnvsContentHintProjects8 FilterProjectEnvsContentHintProjects8 = FilterProjectEnvsContentHintProjects8{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintProjects8, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHintProjects8 = &filterProjectEnvsContentHintProjects8
+		u.Type = FilterProjectEnvsResponseBodyContentHintTypeFilterProjectEnvsContentHintProjects8
 		return nil
 	}
 
@@ -2929,26 +2929,55 @@ func (e *FilterProjectEnvsTarget2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type FilterProjectEnvsTarget1 string
+
+const (
+	FilterProjectEnvsTarget1Production  FilterProjectEnvsTarget1 = "production"
+	FilterProjectEnvsTarget1Preview     FilterProjectEnvsTarget1 = "preview"
+	FilterProjectEnvsTarget1Development FilterProjectEnvsTarget1 = "development"
+)
+
+func (e FilterProjectEnvsTarget1) ToPointer() *FilterProjectEnvsTarget1 {
+	return &e
+}
+func (e *FilterProjectEnvsTarget1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = FilterProjectEnvsTarget1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FilterProjectEnvsTarget1: %v", v)
+	}
+}
+
 type FilterProjectEnvsResponseBodyTargetType string
 
 const (
-	FilterProjectEnvsResponseBodyTargetTypeArrayOfStr               FilterProjectEnvsResponseBodyTargetType = "arrayOfStr"
-	FilterProjectEnvsResponseBodyTargetTypeFilterProjectEnvsTarget2 FilterProjectEnvsResponseBodyTargetType = "filterProjectEnvs_target_2"
+	FilterProjectEnvsResponseBodyTargetTypeArrayOfFilterProjectEnvsTarget1 FilterProjectEnvsResponseBodyTargetType = "arrayOfFilterProjectEnvsTarget1"
+	FilterProjectEnvsResponseBodyTargetTypeFilterProjectEnvsTarget2        FilterProjectEnvsResponseBodyTargetType = "filterProjectEnvs_target_2"
 )
 
 type FilterProjectEnvsResponseBodyTarget struct {
-	ArrayOfStr               []string
-	FilterProjectEnvsTarget2 *FilterProjectEnvsTarget2
+	ArrayOfFilterProjectEnvsTarget1 []FilterProjectEnvsTarget1
+	FilterProjectEnvsTarget2        *FilterProjectEnvsTarget2
 
 	Type FilterProjectEnvsResponseBodyTargetType
 }
 
-func CreateFilterProjectEnvsResponseBodyTargetArrayOfStr(arrayOfStr []string) FilterProjectEnvsResponseBodyTarget {
-	typ := FilterProjectEnvsResponseBodyTargetTypeArrayOfStr
+func CreateFilterProjectEnvsResponseBodyTargetArrayOfFilterProjectEnvsTarget1(arrayOfFilterProjectEnvsTarget1 []FilterProjectEnvsTarget1) FilterProjectEnvsResponseBodyTarget {
+	typ := FilterProjectEnvsResponseBodyTargetTypeArrayOfFilterProjectEnvsTarget1
 
 	return FilterProjectEnvsResponseBodyTarget{
-		ArrayOfStr: arrayOfStr,
-		Type:       typ,
+		ArrayOfFilterProjectEnvsTarget1: arrayOfFilterProjectEnvsTarget1,
+		Type:                            typ,
 	}
 }
 
@@ -2963,10 +2992,10 @@ func CreateFilterProjectEnvsResponseBodyTargetFilterProjectEnvsTarget2(filterPro
 
 func (u *FilterProjectEnvsResponseBodyTarget) UnmarshalJSON(data []byte) error {
 
-	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
-		u.ArrayOfStr = arrayOfStr
-		u.Type = FilterProjectEnvsResponseBodyTargetTypeArrayOfStr
+	var arrayOfFilterProjectEnvsTarget1 []FilterProjectEnvsTarget1 = []FilterProjectEnvsTarget1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTarget1, "", true, true); err == nil {
+		u.ArrayOfFilterProjectEnvsTarget1 = arrayOfFilterProjectEnvsTarget1
+		u.Type = FilterProjectEnvsResponseBodyTargetTypeArrayOfFilterProjectEnvsTarget1
 		return nil
 	}
 
@@ -2981,8 +3010,8 @@ func (u *FilterProjectEnvsResponseBodyTarget) UnmarshalJSON(data []byte) error {
 }
 
 func (u FilterProjectEnvsResponseBodyTarget) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfStr != nil {
-		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	if u.ArrayOfFilterProjectEnvsTarget1 != nil {
+		return utils.MarshalJSON(u.ArrayOfFilterProjectEnvsTarget1, "", true)
 	}
 
 	if u.FilterProjectEnvsTarget2 != nil {
@@ -3865,10 +3894,10 @@ func (u *ResponseBodyContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var filterProjectEnvsContentHint9 FilterProjectEnvsContentHint9 = FilterProjectEnvsContentHint9{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint9, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHint9 = &filterProjectEnvsContentHint9
-		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint9
+	var filterProjectEnvsContentHint11 FilterProjectEnvsContentHint11 = FilterProjectEnvsContentHint11{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint11, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHint11 = &filterProjectEnvsContentHint11
+		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint11
 		return nil
 	}
 
@@ -3907,10 +3936,10 @@ func (u *ResponseBodyContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var filterProjectEnvsContentHint8 FilterProjectEnvsContentHint8 = FilterProjectEnvsContentHint8{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint8, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHint8 = &filterProjectEnvsContentHint8
-		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint8
+	var filterProjectEnvsContentHint9 FilterProjectEnvsContentHint9 = FilterProjectEnvsContentHint9{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint9, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHint9 = &filterProjectEnvsContentHint9
+		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint9
 		return nil
 	}
 
@@ -3928,10 +3957,10 @@ func (u *ResponseBodyContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var filterProjectEnvsContentHint11 FilterProjectEnvsContentHint11 = FilterProjectEnvsContentHint11{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint11, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHint11 = &filterProjectEnvsContentHint11
-		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint11
+	var filterProjectEnvsContentHint8 FilterProjectEnvsContentHint8 = FilterProjectEnvsContentHint8{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHint8, "", true, true); err == nil {
+		u.FilterProjectEnvsContentHint8 = &filterProjectEnvsContentHint8
+		u.Type = ResponseBodyContentHintTypeFilterProjectEnvsContentHint8
 		return nil
 	}
 

@@ -24,7 +24,7 @@ func pathGetV1InstallationsIntegrationConfigurationIDBillingInvoicesInvoiceID(di
 		case "get-invoice[0]":
 			dir.HandlerFunc("get-invoice", testGetInvoiceGetInvoice0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

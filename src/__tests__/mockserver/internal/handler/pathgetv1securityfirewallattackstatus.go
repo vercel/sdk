@@ -25,7 +25,7 @@ func pathGetV1SecurityFirewallAttackStatus(dir *logging.HTTPFileDirectory, rt *t
 		case "getActiveAttackStatus[0]":
 			dir.HandlerFunc("getActiveAttackStatus", testGetActiveAttackStatusGetActiveAttackStatus0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

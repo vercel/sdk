@@ -24,7 +24,7 @@ func pathPatchV1SecurityFirewallConfig(dir *logging.HTTPFileDirectory, rt *track
 		case "updateFirewallConfig[0]":
 			dir.HandlerFunc("updateFirewallConfig", testUpdateFirewallConfigUpdateFirewallConfig0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

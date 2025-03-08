@@ -37,6 +37,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -45,11 +46,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Updates an existing DNS record for a domain name.
  */
-export async function dnsUpdateRecord(
+export function dnsUpdateRecord(
   client: VercelCore,
   request: UpdateRecordRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     UpdateRecordResponseBody,
     | VercelBadRequestError
@@ -64,13 +65,42 @@ export async function dnsUpdateRecord(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: UpdateRecordRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      UpdateRecordResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => UpdateRecordRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -99,6 +129,7 @@ export async function dnsUpdateRecord(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateRecord",
     oAuth2Scopes: [],
 
@@ -122,7 +153,7 @@ export async function dnsUpdateRecord(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -133,7 +164,7 @@ export async function dnsUpdateRecord(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -157,13 +188,13 @@ export async function dnsUpdateRecord(
     M.json(200, UpdateRecordResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, 409, "4XX"]),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
+    M.fail([402, 403, 409, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -7,7 +7,7 @@ import { InviteUserToTeamResponseBody2 } from "@vercel/sdk/models/inviteusertote
 
 let value: InviteUserToTeamResponseBody2 = {
   uid: "<id>",
-  username: "Freddie_Goodwin79",
+  username: "Josiah.Towne44",
   role: "MEMBER",
 };
 ```
@@ -19,3 +19,5 @@ let value: InviteUserToTeamResponseBody2 = {
 | `uid`                                                                                    | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `username`                                                                               | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `role`                                                                                   | [models.InviteUserToTeamResponseBodyRole](../models/inviteusertoteamresponsebodyrole.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `teamRoles`                                                                              | [models.ResponseBodyTeamRoles](../models/responsebodyteamroles.md)[]                     | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `teamPermissions`                                                                        | [models.ResponseBodyTeamPermissions](../models/responsebodyteampermissions.md)[]         | :heavy_minus_sign:                                                                       | N/A                                                                                      |

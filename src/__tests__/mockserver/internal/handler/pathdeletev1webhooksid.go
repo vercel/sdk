@@ -22,7 +22,7 @@ func pathDeleteV1WebhooksID(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "deleteWebhook[0]":
 			dir.HandlerFunc("deleteWebhook", testDeleteWebhookDeleteWebhook0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

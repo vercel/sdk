@@ -20,6 +20,6 @@ let value: ListDeploymentAliasesResponseBody = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `aliases`                                                                          | [models.ListDeploymentAliasesAliases](../models/listdeploymentaliasesaliases.md)[] | :heavy_check_mark:                                                                 | A list of the aliases assigned to the deployment                                   |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `aliases`                                        | [models.Aliases](../models/aliases.md)[]         | :heavy_check_mark:                               | A list of the aliases assigned to the deployment |

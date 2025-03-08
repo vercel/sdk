@@ -22,7 +22,7 @@ func pathPostV1InstallationsIntegrationConfigurationIDBilling(dir *logging.HTTPF
 		case "submit-billing-data[0]":
 			dir.HandlerFunc("submit-billing-data", testSubmitBillingDataSubmitBillingData0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -16,7 +16,7 @@ const value: models.Missing1 = {
 
 ```typescript
 const value: models.Missing2 = {
-  type: "query",
+  type: "header",
   key: "<key>",
 };
 ```

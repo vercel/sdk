@@ -8,13 +8,13 @@ import { SearchRepoResponseBody2 } from "@vercel/sdk/models/searchrepoop.js";
 let value: SearchRepoResponseBody2 = {
   gitAccount: {
     provider: "github-custom-host",
-    namespaceId: 2925.71,
+    namespaceId: 9906.52,
   },
   repos: [
     {
       id: "<id>",
       provider: "gitlab",
-      url: "https://lined-soybean.biz/",
+      url: "https://putrid-solution.net/",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
@@ -22,10 +22,10 @@ let value: SearchRepoResponseBody2 = {
         id: "<id>",
         name: "<value>",
       },
-      ownerType: "team",
+      ownerType: "user",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 5456.29,
+      updatedAt: 3931.22,
     },
   ],
 };

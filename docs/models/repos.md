@@ -6,9 +6,9 @@
 import { Repos } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: Repos = {
-  id: 5749.9,
-  provider: "gitlab",
-  url: "https://wiggly-encouragement.net",
+  id: "<id>",
+  provider: "github",
+  url: "https://kooky-pronoun.org",
   name: "<value>",
   slug: "<value>",
   namespace: "<value>",
@@ -16,10 +16,10 @@ let value: Repos = {
     id: "<id>",
     name: "<value>",
   },
-  ownerType: "user",
+  ownerType: "team",
   private: false,
   defaultBranch: "<value>",
-  updatedAt: 2305.94,
+  updatedAt: 4116.26,
 };
 ```
 

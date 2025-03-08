@@ -130,6 +130,10 @@ type CreateAccessGroupResponseBody struct {
 	UpdatedAt string `json:"updatedAt"`
 	// ID of the access group.
 	AccessGroupID string `json:"accessGroupId"`
+	// Roles that the team has in the access group.
+	TeamRoles []string `json:"teamRoles,omitempty"`
+	// Permissions that the team has in the access group.
+	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
 func (o *CreateAccessGroupResponseBody) GetMembersCount() float64 {
@@ -179,6 +183,20 @@ func (o *CreateAccessGroupResponseBody) GetAccessGroupID() string {
 		return ""
 	}
 	return o.AccessGroupID
+}
+
+func (o *CreateAccessGroupResponseBody) GetTeamRoles() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *CreateAccessGroupResponseBody) GetTeamPermissions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 type CreateAccessGroupResponse struct {

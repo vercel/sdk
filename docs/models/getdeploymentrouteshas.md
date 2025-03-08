@@ -16,7 +16,7 @@ const value: models.GetDeploymentHas1 = {
 
 ```typescript
 const value: models.GetDeploymentHas2 = {
-  type: "header",
+  type: "cookie",
   key: "<key>",
 };
 ```

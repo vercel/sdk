@@ -12,18 +12,16 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * The delivery log format
  */
-export const CreateConfigurableLogDrainDeliveryFormat = {
+export const DeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
 } as const;
 /**
  * The delivery log format
  */
-export type CreateConfigurableLogDrainDeliveryFormat = ClosedEnum<
-  typeof CreateConfigurableLogDrainDeliveryFormat
->;
+export type DeliveryFormat = ClosedEnum<typeof DeliveryFormat>;
 
-export const CreateConfigurableLogDrainSources = {
+export const Sources = {
   Static: "static",
   Lambda: "lambda",
   Build: "build",
@@ -31,23 +29,19 @@ export const CreateConfigurableLogDrainSources = {
   External: "external",
   Firewall: "firewall",
 } as const;
-export type CreateConfigurableLogDrainSources = ClosedEnum<
-  typeof CreateConfigurableLogDrainSources
->;
+export type Sources = ClosedEnum<typeof Sources>;
 
-export const CreateConfigurableLogDrainEnvironments = {
+export const Environments = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type CreateConfigurableLogDrainEnvironments = ClosedEnum<
-  typeof CreateConfigurableLogDrainEnvironments
->;
+export type Environments = ClosedEnum<typeof Environments>;
 
 export type CreateConfigurableLogDrainRequestBody = {
   /**
    * The delivery log format
    */
-  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat;
+  deliveryFormat: DeliveryFormat;
   /**
    * The log drain url
    */
@@ -57,8 +51,8 @@ export type CreateConfigurableLogDrainRequestBody = {
    */
   headers?: { [k: string]: string } | undefined;
   projectIds?: Array<string> | undefined;
-  sources: Array<CreateConfigurableLogDrainSources>;
-  environments?: Array<CreateConfigurableLogDrainEnvironments> | undefined;
+  sources: Array<Sources>;
+  environments?: Array<Environments> | undefined;
   /**
    * Custom secret of log drain
    */
@@ -85,16 +79,7 @@ export type CreateConfigurableLogDrainRequest = {
   requestBody: CreateConfigurableLogDrainRequestBody;
 };
 
-export const CreateConfigurableLogDrainLogDrainsDeliveryFormat = {
-  Json: "json",
-  Ndjson: "ndjson",
-  Syslog: "syslog",
-} as const;
-export type CreateConfigurableLogDrainLogDrainsDeliveryFormat = ClosedEnum<
-  typeof CreateConfigurableLogDrainLogDrainsDeliveryFormat
->;
-
-export const CreateConfigurableLogDrainLogDrainsSources = {
+export const CreateConfigurableLogDrainSources = {
   Build: "build",
   Edge: "edge",
   Lambda: "lambda",
@@ -102,16 +87,16 @@ export const CreateConfigurableLogDrainLogDrainsSources = {
   External: "external",
   Firewall: "firewall",
 } as const;
-export type CreateConfigurableLogDrainLogDrainsSources = ClosedEnum<
-  typeof CreateConfigurableLogDrainLogDrainsSources
+export type CreateConfigurableLogDrainSources = ClosedEnum<
+  typeof CreateConfigurableLogDrainSources
 >;
 
-export const CreateConfigurableLogDrainLogDrainsEnvironments = {
+export const CreateConfigurableLogDrainEnvironments = {
   Production: "production",
   Preview: "preview",
 } as const;
-export type CreateConfigurableLogDrainLogDrainsEnvironments = ClosedEnum<
-  typeof CreateConfigurableLogDrainLogDrainsEnvironments
+export type CreateConfigurableLogDrainEnvironments = ClosedEnum<
+  typeof CreateConfigurableLogDrainEnvironments
 >;
 
 export const CreateConfigurableLogDrainStatus = {
@@ -135,9 +120,19 @@ export type CreateConfigurableLogDrainDisabledReason = ClosedEnum<
 
 export const CreateConfigurableLogDrainCreatedFrom = {
   SelfServed: "self-served",
+  Integration: "integration",
 } as const;
 export type CreateConfigurableLogDrainCreatedFrom = ClosedEnum<
   typeof CreateConfigurableLogDrainCreatedFrom
+>;
+
+export const CreateConfigurableLogDrainDeliveryFormat = {
+  Json: "json",
+  Ndjson: "ndjson",
+  Syslog: "syslog",
+} as const;
+export type CreateConfigurableLogDrainDeliveryFormat = ClosedEnum<
+  typeof CreateConfigurableLogDrainDeliveryFormat
 >;
 
 export type CreateConfigurableLogDrainResponseBody = {
@@ -145,21 +140,10 @@ export type CreateConfigurableLogDrainResponseBody = {
    * The secret to validate the log-drain payload
    */
   secret?: string | undefined;
-  id: string;
-  deliveryFormat: CreateConfigurableLogDrainLogDrainsDeliveryFormat;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
-  sources?: Array<CreateConfigurableLogDrainLogDrainsSources> | undefined;
-  headers?: { [k: string]: string } | undefined;
-  environments: Array<CreateConfigurableLogDrainLogDrainsEnvironments>;
+  sources?: Array<CreateConfigurableLogDrainSources> | undefined;
+  environments: Array<CreateConfigurableLogDrainEnvironments>;
   status?: CreateConfigurableLogDrainStatus | undefined;
   disabledAt?: number | undefined;
   disabledReason?: CreateConfigurableLogDrainDisabledReason | undefined;
@@ -167,76 +151,77 @@ export type CreateConfigurableLogDrainResponseBody = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
   createdFrom?: CreateConfigurableLogDrainCreatedFrom | undefined;
+  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat;
 };
 
 /** @internal */
-export const CreateConfigurableLogDrainDeliveryFormat$inboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainDeliveryFormat> = z
-    .nativeEnum(CreateConfigurableLogDrainDeliveryFormat);
+export const DeliveryFormat$inboundSchema: z.ZodNativeEnum<
+  typeof DeliveryFormat
+> = z.nativeEnum(DeliveryFormat);
 
 /** @internal */
-export const CreateConfigurableLogDrainDeliveryFormat$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainDeliveryFormat> =
-    CreateConfigurableLogDrainDeliveryFormat$inboundSchema;
+export const DeliveryFormat$outboundSchema: z.ZodNativeEnum<
+  typeof DeliveryFormat
+> = DeliveryFormat$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateConfigurableLogDrainDeliveryFormat$ {
-  /** @deprecated use `CreateConfigurableLogDrainDeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainDeliveryFormat$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainDeliveryFormat$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainDeliveryFormat$outboundSchema;
+export namespace DeliveryFormat$ {
+  /** @deprecated use `DeliveryFormat$inboundSchema` instead. */
+  export const inboundSchema = DeliveryFormat$inboundSchema;
+  /** @deprecated use `DeliveryFormat$outboundSchema` instead. */
+  export const outboundSchema = DeliveryFormat$outboundSchema;
 }
 
 /** @internal */
-export const CreateConfigurableLogDrainSources$inboundSchema: z.ZodNativeEnum<
-  typeof CreateConfigurableLogDrainSources
-> = z.nativeEnum(CreateConfigurableLogDrainSources);
+export const Sources$inboundSchema: z.ZodNativeEnum<typeof Sources> = z
+  .nativeEnum(Sources);
 
 /** @internal */
-export const CreateConfigurableLogDrainSources$outboundSchema: z.ZodNativeEnum<
-  typeof CreateConfigurableLogDrainSources
-> = CreateConfigurableLogDrainSources$inboundSchema;
+export const Sources$outboundSchema: z.ZodNativeEnum<typeof Sources> =
+  Sources$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateConfigurableLogDrainSources$ {
-  /** @deprecated use `CreateConfigurableLogDrainSources$inboundSchema` instead. */
-  export const inboundSchema = CreateConfigurableLogDrainSources$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainSources$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainSources$outboundSchema;
+export namespace Sources$ {
+  /** @deprecated use `Sources$inboundSchema` instead. */
+  export const inboundSchema = Sources$inboundSchema;
+  /** @deprecated use `Sources$outboundSchema` instead. */
+  export const outboundSchema = Sources$outboundSchema;
 }
 
 /** @internal */
-export const CreateConfigurableLogDrainEnvironments$inboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> = z.nativeEnum(
-    CreateConfigurableLogDrainEnvironments,
-  );
+export const Environments$inboundSchema: z.ZodNativeEnum<typeof Environments> =
+  z.nativeEnum(Environments);
 
 /** @internal */
-export const CreateConfigurableLogDrainEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> =
-    CreateConfigurableLogDrainEnvironments$inboundSchema;
+export const Environments$outboundSchema: z.ZodNativeEnum<typeof Environments> =
+  Environments$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateConfigurableLogDrainEnvironments$ {
-  /** @deprecated use `CreateConfigurableLogDrainEnvironments$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainEnvironments$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainEnvironments$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainEnvironments$outboundSchema;
+export namespace Environments$ {
+  /** @deprecated use `Environments$inboundSchema` instead. */
+  export const inboundSchema = Environments$inboundSchema;
+  /** @deprecated use `Environments$outboundSchema` instead. */
+  export const outboundSchema = Environments$outboundSchema;
 }
 
 /** @internal */
@@ -245,13 +230,12 @@ export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat$inboundSchema,
+  deliveryFormat: DeliveryFormat$inboundSchema,
   url: z.string(),
   headers: z.record(z.string()).optional(),
   projectIds: z.array(z.string()).optional(),
-  sources: z.array(CreateConfigurableLogDrainSources$inboundSchema),
-  environments: z.array(CreateConfigurableLogDrainEnvironments$inboundSchema)
-    .optional(),
+  sources: z.array(Sources$inboundSchema),
+  environments: z.array(Environments$inboundSchema).optional(),
   secret: z.string().optional(),
   samplingRate: z.number().optional(),
   name: z.string().optional(),
@@ -276,13 +260,12 @@ export const CreateConfigurableLogDrainRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateConfigurableLogDrainRequestBody
 > = z.object({
-  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat$outboundSchema,
+  deliveryFormat: DeliveryFormat$outboundSchema,
   url: z.string(),
   headers: z.record(z.string()).optional(),
   projectIds: z.array(z.string()).optional(),
-  sources: z.array(CreateConfigurableLogDrainSources$outboundSchema),
-  environments: z.array(CreateConfigurableLogDrainEnvironments$outboundSchema)
-    .optional(),
+  sources: z.array(Sources$outboundSchema),
+  environments: z.array(Environments$outboundSchema).optional(),
   secret: z.string().optional(),
   samplingRate: z.number().optional(),
   name: z.string().optional(),
@@ -400,72 +383,49 @@ export function createConfigurableLogDrainRequestFromJSON(
 }
 
 /** @internal */
-export const CreateConfigurableLogDrainLogDrainsDeliveryFormat$inboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsDeliveryFormat> = z
-    .nativeEnum(CreateConfigurableLogDrainLogDrainsDeliveryFormat);
+export const CreateConfigurableLogDrainSources$inboundSchema: z.ZodNativeEnum<
+  typeof CreateConfigurableLogDrainSources
+> = z.nativeEnum(CreateConfigurableLogDrainSources);
 
 /** @internal */
-export const CreateConfigurableLogDrainLogDrainsDeliveryFormat$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsDeliveryFormat> =
-    CreateConfigurableLogDrainLogDrainsDeliveryFormat$inboundSchema;
+export const CreateConfigurableLogDrainSources$outboundSchema: z.ZodNativeEnum<
+  typeof CreateConfigurableLogDrainSources
+> = CreateConfigurableLogDrainSources$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateConfigurableLogDrainLogDrainsDeliveryFormat$ {
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsDeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainLogDrainsDeliveryFormat$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsDeliveryFormat$outboundSchema` instead. */
+export namespace CreateConfigurableLogDrainSources$ {
+  /** @deprecated use `CreateConfigurableLogDrainSources$inboundSchema` instead. */
+  export const inboundSchema = CreateConfigurableLogDrainSources$inboundSchema;
+  /** @deprecated use `CreateConfigurableLogDrainSources$outboundSchema` instead. */
   export const outboundSchema =
-    CreateConfigurableLogDrainLogDrainsDeliveryFormat$outboundSchema;
+    CreateConfigurableLogDrainSources$outboundSchema;
 }
 
 /** @internal */
-export const CreateConfigurableLogDrainLogDrainsSources$inboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsSources> = z
-    .nativeEnum(CreateConfigurableLogDrainLogDrainsSources);
+export const CreateConfigurableLogDrainEnvironments$inboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> = z.nativeEnum(
+    CreateConfigurableLogDrainEnvironments,
+  );
 
 /** @internal */
-export const CreateConfigurableLogDrainLogDrainsSources$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsSources> =
-    CreateConfigurableLogDrainLogDrainsSources$inboundSchema;
+export const CreateConfigurableLogDrainEnvironments$outboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> =
+    CreateConfigurableLogDrainEnvironments$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateConfigurableLogDrainLogDrainsSources$ {
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsSources$inboundSchema` instead. */
+export namespace CreateConfigurableLogDrainEnvironments$ {
+  /** @deprecated use `CreateConfigurableLogDrainEnvironments$inboundSchema` instead. */
   export const inboundSchema =
-    CreateConfigurableLogDrainLogDrainsSources$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsSources$outboundSchema` instead. */
+    CreateConfigurableLogDrainEnvironments$inboundSchema;
+  /** @deprecated use `CreateConfigurableLogDrainEnvironments$outboundSchema` instead. */
   export const outboundSchema =
-    CreateConfigurableLogDrainLogDrainsSources$outboundSchema;
-}
-
-/** @internal */
-export const CreateConfigurableLogDrainLogDrainsEnvironments$inboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsEnvironments> = z
-    .nativeEnum(CreateConfigurableLogDrainLogDrainsEnvironments);
-
-/** @internal */
-export const CreateConfigurableLogDrainLogDrainsEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainLogDrainsEnvironments> =
-    CreateConfigurableLogDrainLogDrainsEnvironments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateConfigurableLogDrainLogDrainsEnvironments$ {
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsEnvironments$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainLogDrainsEnvironments$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainLogDrainsEnvironments$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainLogDrainsEnvironments$outboundSchema;
+    CreateConfigurableLogDrainEnvironments$outboundSchema;
 }
 
 /** @internal */
@@ -537,31 +497,39 @@ export namespace CreateConfigurableLogDrainCreatedFrom$ {
 }
 
 /** @internal */
+export const CreateConfigurableLogDrainDeliveryFormat$inboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainDeliveryFormat> = z
+    .nativeEnum(CreateConfigurableLogDrainDeliveryFormat);
+
+/** @internal */
+export const CreateConfigurableLogDrainDeliveryFormat$outboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainDeliveryFormat> =
+    CreateConfigurableLogDrainDeliveryFormat$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateConfigurableLogDrainDeliveryFormat$ {
+  /** @deprecated use `CreateConfigurableLogDrainDeliveryFormat$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateConfigurableLogDrainDeliveryFormat$inboundSchema;
+  /** @deprecated use `CreateConfigurableLogDrainDeliveryFormat$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateConfigurableLogDrainDeliveryFormat$outboundSchema;
+}
+
+/** @internal */
 export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   CreateConfigurableLogDrainResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   secret: z.string().optional(),
-  id: z.string(),
-  deliveryFormat:
-    CreateConfigurableLogDrainLogDrainsDeliveryFormat$inboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
-  sources: z.array(CreateConfigurableLogDrainLogDrainsSources$inboundSchema)
-    .optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(
-    CreateConfigurableLogDrainLogDrainsEnvironments$inboundSchema,
-  ),
+  sources: z.array(CreateConfigurableLogDrainSources$inboundSchema).optional(),
+  environments: z.array(CreateConfigurableLogDrainEnvironments$inboundSchema),
   status: CreateConfigurableLogDrainStatus$inboundSchema.optional(),
   disabledAt: z.number().optional(),
   disabledReason: CreateConfigurableLogDrainDisabledReason$inboundSchema
@@ -570,26 +538,26 @@ export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
   createdFrom: CreateConfigurableLogDrainCreatedFrom$inboundSchema.optional(),
+  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat$inboundSchema,
 });
 
 /** @internal */
 export type CreateConfigurableLogDrainResponseBody$Outbound = {
   secret?: string | undefined;
-  id: string;
-  deliveryFormat: string;
-  url: string;
-  name: string;
   clientId?: string | undefined;
   configurationId?: string | undefined;
-  teamId?: string | null | undefined;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  createdAt: number;
-  deletedAt: number | null;
-  updatedAt: number;
   sources?: Array<string> | undefined;
-  headers?: { [k: string]: string } | undefined;
   environments: Array<string>;
   status?: string | undefined;
   disabledAt?: number | undefined;
@@ -598,7 +566,18 @@ export type CreateConfigurableLogDrainResponseBody$Outbound = {
   firstErrorTimestamp?: number | undefined;
   samplingRate?: number | undefined;
   hideIpAddresses?: boolean | undefined;
+  id: string;
+  createdAt: number;
+  deletedAt: number | null;
+  updatedAt: number;
+  url: string;
+  headers?: { [k: string]: string } | undefined;
+  projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
   createdFrom?: string | undefined;
+  deliveryFormat: string;
 };
 
 /** @internal */
@@ -608,25 +587,10 @@ export const CreateConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   CreateConfigurableLogDrainResponseBody
 > = z.object({
   secret: z.string().optional(),
-  id: z.string(),
-  deliveryFormat:
-    CreateConfigurableLogDrainLogDrainsDeliveryFormat$outboundSchema,
-  url: z.string(),
-  name: z.string(),
   clientId: z.string().optional(),
   configurationId: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  deletedAt: z.nullable(z.number()),
-  updatedAt: z.number(),
-  sources: z.array(CreateConfigurableLogDrainLogDrainsSources$outboundSchema)
-    .optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(
-    CreateConfigurableLogDrainLogDrainsEnvironments$outboundSchema,
-  ),
+  sources: z.array(CreateConfigurableLogDrainSources$outboundSchema).optional(),
+  environments: z.array(CreateConfigurableLogDrainEnvironments$outboundSchema),
   status: CreateConfigurableLogDrainStatus$outboundSchema.optional(),
   disabledAt: z.number().optional(),
   disabledReason: CreateConfigurableLogDrainDisabledReason$outboundSchema
@@ -635,7 +599,18 @@ export const CreateConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   firstErrorTimestamp: z.number().optional(),
   samplingRate: z.number().optional(),
   hideIpAddresses: z.boolean().optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  deletedAt: z.nullable(z.number()),
+  updatedAt: z.number(),
+  url: z.string(),
+  headers: z.record(z.string()).optional(),
+  projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
   createdFrom: CreateConfigurableLogDrainCreatedFrom$outboundSchema.optional(),
+  deliveryFormat: CreateConfigurableLogDrainDeliveryFormat$outboundSchema,
 });
 
 /**

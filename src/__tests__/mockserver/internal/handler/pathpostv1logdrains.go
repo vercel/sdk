@@ -25,7 +25,7 @@ func pathPostV1LogDrains(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		case "createConfigurableLogDrain[0]":
 			dir.HandlerFunc("createConfigurableLogDrain", testCreateConfigurableLogDrainCreateConfigurableLogDrain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -52,18 +52,18 @@ func testCreateConfigurableLogDrainCreateConfigurableLogDrain0(w http.ResponseWr
 		return
 	}
 	respBody := &operations.CreateConfigurableLogDrainResponseBody{
+		Environments: []operations.CreateConfigurableLogDrainEnvironments{
+			operations.CreateConfigurableLogDrainEnvironmentsPreview,
+			operations.CreateConfigurableLogDrainEnvironmentsProduction,
+		},
 		ID:             "<id>",
-		DeliveryFormat: operations.CreateConfigurableLogDrainLogDrainsDeliveryFormatJSON,
-		URL:            "https://close-dividend.biz",
-		Name:           "<value>",
-		OwnerID:        "<id>",
 		CreatedAt:      911.21,
 		DeletedAt:      types.Float64(5254.68),
 		UpdatedAt:      3248.86,
-		Environments: []operations.CreateConfigurableLogDrainLogDrainsEnvironments{
-			operations.CreateConfigurableLogDrainLogDrainsEnvironmentsPreview,
-			operations.CreateConfigurableLogDrainLogDrainsEnvironmentsProduction,
-		},
+		URL:            "https://close-dividend.biz",
+		Name:           "<value>",
+		OwnerID:        "<id>",
+		DeliveryFormat: operations.CreateConfigurableLogDrainDeliveryFormatJSON,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

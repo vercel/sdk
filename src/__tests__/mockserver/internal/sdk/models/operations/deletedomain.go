@@ -38,7 +38,6 @@ func (o *DeleteDomainRequest) GetSlug() *string {
 
 // DeleteDomainResponseBody - Successful response removing a domain.
 type DeleteDomainResponseBody struct {
-	// The id of the newly created DNS record
 	UID string `json:"uid"`
 }
 

@@ -25,7 +25,7 @@ func pathGetV1LogDrainsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTr
 		case "getConfigurableLogDrain[0]":
 			dir.HandlerFunc("getConfigurableLogDrain", testGetConfigurableLogDrainGetConfigurableLogDrain0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -47,19 +47,19 @@ func testGetConfigurableLogDrainGetConfigurableLogDrain0(w http.ResponseWriter, 
 		return
 	}
 	respBody := &operations.GetConfigurableLogDrainResponseBody{
-		ID:             "<id>",
-		DeliveryFormat: operations.GetConfigurableLogDrainDeliveryFormatJSON,
-		URL:            "https://pleasant-beret.com/",
-		Name:           "<value>",
-		OwnerID:        "<id>",
-		CreatedAt:      9979.70,
-		DeletedAt:      types.Float64(2589.89),
-		UpdatedAt:      1929.64,
 		Environments: []operations.GetConfigurableLogDrainEnvironments{
 			operations.GetConfigurableLogDrainEnvironmentsProduction,
 			operations.GetConfigurableLogDrainEnvironmentsProduction,
 		},
-		Secret: "<value>",
+		ID:             "<id>",
+		CreatedAt:      9979.70,
+		DeletedAt:      types.Float64(2589.89),
+		UpdatedAt:      1929.64,
+		URL:            "https://pleasant-beret.com/",
+		Name:           "<value>",
+		OwnerID:        "<id>",
+		DeliveryFormat: operations.GetConfigurableLogDrainDeliveryFormatJSON,
+		Secret:         "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

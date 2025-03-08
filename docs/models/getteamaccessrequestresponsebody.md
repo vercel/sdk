@@ -12,7 +12,7 @@ let value: GetTeamAccessRequestResponseBody = {
   teamName: "My Team",
   confirmed: false,
   joinedFrom: {
-    origin: "mail",
+    origin: "dsync",
   },
   accessRequestedAt: 1588720733602,
   github: {},

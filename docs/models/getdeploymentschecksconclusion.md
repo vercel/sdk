@@ -7,7 +7,7 @@ Conclusion for checks
 ```typescript
 import { GetDeploymentsChecksConclusion } from "@vercel/sdk/models/getdeploymentsop.js";
 
-let value: GetDeploymentsChecksConclusion = "canceled";
+let value: GetDeploymentsChecksConclusion = "skipped";
 ```
 
 ## Values

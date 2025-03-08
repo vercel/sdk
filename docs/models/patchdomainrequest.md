@@ -6,11 +6,11 @@
 import { PatchDomainRequest } from "@vercel/sdk/models/patchdomainop.js";
 
 let value: PatchDomainRequest = {
-  domain: "normal-horde.org",
+  domain: "whirlwind-section.com",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
   requestBody: {
-    op: "update",
+    op: "move-out",
   },
 };
 ```

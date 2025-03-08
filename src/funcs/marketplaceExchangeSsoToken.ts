@@ -32,6 +32,7 @@ import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
 } from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -40,11 +41,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. This is used to verify the identity of the user during the [**Open in Provider** flow](https://vercel.com/docs/integrations/marketplace-flows#open-in-provider-button-flow). Providers should not persist the returned `id_token` in a database since the token will expire.
  */
-export async function marketplaceExchangeSsoToken(
+export function marketplaceExchangeSsoToken(
   client: VercelCore,
   request: ExchangeSsoTokenRequestBody,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     ExchangeSsoTokenResponseBody,
     | VercelBadRequestError
@@ -58,13 +59,41 @@ export async function marketplaceExchangeSsoToken(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: ExchangeSsoTokenRequestBody,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      ExchangeSsoTokenResponseBody,
+      | VercelBadRequestError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => ExchangeSsoTokenRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
@@ -77,6 +106,7 @@ export async function marketplaceExchangeSsoToken(
   }));
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "exchange-sso-token",
     oAuth2Scopes: [],
 
@@ -98,7 +128,7 @@ export async function marketplaceExchangeSsoToken(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -109,7 +139,7 @@ export async function marketplaceExchangeSsoToken(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -132,12 +162,12 @@ export async function marketplaceExchangeSsoToken(
     M.json(200, ExchangeSsoTokenResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.fail([500, "5XX"]),
     M.fail("4XX"),
+    M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

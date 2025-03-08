@@ -1,23 +1,25 @@
 # One
 
-A list of projects and spaces across teams that a user has marked as a favorite.
+The access scopes granted to the token.
 
 ## Example Usage
 
 ```typescript
-import { One } from "@vercel/sdk/models/authuser.js";
+import { One } from "@vercel/sdk/models/authtoken.js";
 
 let value: One = {
-  projectId: "<id>",
-  scopeSlug: "<value>",
-  scopeId: "<id>",
+  type: "user",
+  origin: "sms",
+  createdAt: 5749.9,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scopeSlug`        | *string*           | :heavy_check_mark: | N/A                |
-| `scopeId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `type`                                                         | [models.AuthTokenScopesType](../models/authtokenscopestype.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `sudo`                                                         | [models.Sudo](../models/sudo.md)                               | :heavy_minus_sign:                                             | N/A                                                            |
+| `origin`                                                       | [models.ScopesOrigin](../models/scopesorigin.md)               | :heavy_check_mark:                                             | N/A                                                            |
+| `createdAt`                                                    | *number*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `expiresAt`                                                    | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

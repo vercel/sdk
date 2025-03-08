@@ -33,6 +33,7 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,11 +42,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Allows to create a new project with the provided configuration. It only requires the project `name` but more configuration can be provided to override the defaults.
  */
-export async function projectsCreateProject(
+export function projectsCreateProject(
   client: VercelCore,
   request: CreateProjectRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     CreateProjectResponseBody,
     | VercelBadRequestError
@@ -59,18 +60,46 @@ export async function projectsCreateProject(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: CreateProjectRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      CreateProjectResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => CreateProjectRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
-  const path = pathToFunc("/v10/projects")();
+  const path = pathToFunc("/v11/projects")();
 
   const query = encodeFormQuery({
     "slug": payload.slug,
@@ -87,6 +116,7 @@ export async function projectsCreateProject(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "createProject",
     oAuth2Scopes: [],
 
@@ -110,7 +140,7 @@ export async function projectsCreateProject(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -121,7 +151,7 @@ export async function projectsCreateProject(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -148,8 +178,8 @@ export async function projectsCreateProject(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

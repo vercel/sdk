@@ -26,9 +26,6 @@ export type DeleteDomainRequest = {
  * Successful response removing a domain.
  */
 export type DeleteDomainResponseBody = {
-  /**
-   * The id of the newly created DNS record
-   */
   uid: string;
 };
 

@@ -33,6 +33,11 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import {
+  VercelNotFoundError,
+  VercelNotFoundError$inboundSchema,
+} from "../models/vercelnotfounderror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -41,15 +46,16 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update the fields of a project using either its `name` or `id`.
  */
-export async function projectsUpdateProject(
+export function projectsUpdateProject(
   client: VercelCore,
   request: UpdateProjectRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     UpdateProjectResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
+    | VercelNotFoundError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,13 +65,42 @@ export async function projectsUpdateProject(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: VercelCore,
+  request: UpdateProjectRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      UpdateProjectResponseBody,
+      | VercelBadRequestError
+      | VercelForbiddenError
+      | VercelNotFoundError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => UpdateProjectRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
@@ -94,6 +129,7 @@ export async function projectsUpdateProject(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateProject",
     oAuth2Scopes: [],
 
@@ -117,18 +153,18 @@ export async function projectsUpdateProject(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "402", "403", "409", "428", "4XX", "5XX"],
+    errorCodes: ["400", "401", "402", "403", "404", "409", "428", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -140,6 +176,7 @@ export async function projectsUpdateProject(
     UpdateProjectResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
+    | VercelNotFoundError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -151,12 +188,13 @@ export async function projectsUpdateProject(
     M.json(200, UpdateProjectResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
+    M.jsonErr(404, VercelNotFoundError$inboundSchema),
     M.fail([402, 403, 409, 428, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

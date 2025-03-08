@@ -21,15 +21,15 @@ func pathGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID(dir *logging
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}[0]":
-			dir.HandlerFunc("get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}", testGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID0)(w, req)
+		case "getCustomEnvironment[0]":
+			dir.HandlerFunc("getCustomEnvironment", testGetCustomEnvironmentGetCustomEnvironment0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID0(w http.ResponseWriter, req *http.Request) {
+func testGetCustomEnvironmentGetCustomEnvironment0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -45,7 +45,7 @@ func testGetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDGetV9Projects
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrIDResponseBody{}
+	respBody := &operations.GetCustomEnvironmentResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

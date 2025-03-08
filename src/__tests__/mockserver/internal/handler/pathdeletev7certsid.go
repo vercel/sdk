@@ -24,7 +24,7 @@ func pathDeleteV7CertsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		case "removeCert[0]":
 			dir.HandlerFunc("removeCert", testRemoveCertRemoveCert0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

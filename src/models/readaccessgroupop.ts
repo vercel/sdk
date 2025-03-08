@@ -58,6 +58,14 @@ export type ReadAccessGroupResponseBody = {
    * Number of projects in the access group.
    */
   projectsCount: number;
+  /**
+   * Roles that the team has in the access group.
+   */
+  teamRoles?: Array<string> | undefined;
+  /**
+   * Permissions that the team has in the access group.
+   */
+  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -156,6 +164,8 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   accessGroupId: z.string(),
   membersCount: z.number(),
   projectsCount: z.number(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
 });
 
 /** @internal */
@@ -169,6 +179,8 @@ export type ReadAccessGroupResponseBody$Outbound = {
   accessGroupId: string;
   membersCount: number;
   projectsCount: number;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -186,6 +198,8 @@ export const ReadAccessGroupResponseBody$outboundSchema: z.ZodType<
   accessGroupId: z.string(),
   membersCount: z.number(),
   projectsCount: z.number(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
 });
 
 /**

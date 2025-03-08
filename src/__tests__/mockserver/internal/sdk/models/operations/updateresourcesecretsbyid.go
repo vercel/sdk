@@ -35,6 +35,8 @@ func (o *UpdateResourceSecretsByIDSecrets) GetPrefix() *string {
 
 type UpdateResourceSecretsByIDRequestBody struct {
 	Secrets []UpdateResourceSecretsByIDSecrets `json:"secrets"`
+	// If true, will only update the provided secrets
+	Partial *bool `json:"partial,omitempty"`
 }
 
 func (o *UpdateResourceSecretsByIDRequestBody) GetSecrets() []UpdateResourceSecretsByIDSecrets {
@@ -42,6 +44,13 @@ func (o *UpdateResourceSecretsByIDRequestBody) GetSecrets() []UpdateResourceSecr
 		return []UpdateResourceSecretsByIDSecrets{}
 	}
 	return o.Secrets
+}
+
+func (o *UpdateResourceSecretsByIDRequestBody) GetPartial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Partial
 }
 
 type UpdateResourceSecretsByIDRequest struct {

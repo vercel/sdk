@@ -5,7 +5,7 @@
 ```typescript
 import { State } from "@vercel/sdk/models/getinvoiceop.js";
 
-let value: State = "pending";
+let value: State = "scheduled";
 ```
 
 ## Values

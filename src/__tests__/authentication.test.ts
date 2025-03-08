@@ -7,9 +7,11 @@ import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Authentication List Auth Tokens", async () => {
+  const testHttpClient = createTestHTTPClient("listAuthTokens");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("listAuthTokens"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -63,9 +65,11 @@ test("Authentication List Auth Tokens", async () => {
 });
 
 test("Authentication Create Auth Token", async () => {
+  const testHttpClient = createTestHTTPClient("createAuthToken");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("createAuthToken"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -92,9 +96,11 @@ test("Authentication Create Auth Token", async () => {
 });
 
 test("Authentication Get Auth Token", async () => {
+  const testHttpClient = createTestHTTPClient("getAuthToken");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("getAuthToken"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
@@ -116,9 +122,11 @@ test("Authentication Get Auth Token", async () => {
 });
 
 test("Authentication Delete Auth Token", async () => {
+  const testHttpClient = createTestHTTPClient("deleteAuthToken");
+
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: createTestHTTPClient("deleteAuthToken"),
+    httpClient: testHttpClient,
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 

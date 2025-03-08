@@ -1052,10 +1052,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsResponseContentHint) UnmarshalJSON(
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjectsResponse9 RemoveProjectEnvContentHintProjectsResponse9 = RemoveProjectEnvContentHintProjectsResponse9{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse9, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjectsResponse9 = &removeProjectEnvContentHintProjectsResponse9
-		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse9
+	var removeProjectEnvContentHintProjectsResponse11 RemoveProjectEnvContentHintProjectsResponse11 = RemoveProjectEnvContentHintProjectsResponse11{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse11, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjectsResponse11 = &removeProjectEnvContentHintProjectsResponse11
+		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse11
 		return nil
 	}
 
@@ -1094,10 +1094,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsResponseContentHint) UnmarshalJSON(
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjectsResponse8 RemoveProjectEnvContentHintProjectsResponse8 = RemoveProjectEnvContentHintProjectsResponse8{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse8, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjectsResponse8 = &removeProjectEnvContentHintProjectsResponse8
-		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse8
+	var removeProjectEnvContentHintProjectsResponse9 RemoveProjectEnvContentHintProjectsResponse9 = RemoveProjectEnvContentHintProjectsResponse9{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse9, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjectsResponse9 = &removeProjectEnvContentHintProjectsResponse9
+		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse9
 		return nil
 	}
 
@@ -1115,10 +1115,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsResponseContentHint) UnmarshalJSON(
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjectsResponse11 RemoveProjectEnvContentHintProjectsResponse11 = RemoveProjectEnvContentHintProjectsResponse11{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse11, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjectsResponse11 = &removeProjectEnvContentHintProjectsResponse11
-		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse11
+	var removeProjectEnvContentHintProjectsResponse8 RemoveProjectEnvContentHintProjectsResponse8 = RemoveProjectEnvContentHintProjectsResponse8{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjectsResponse8, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjectsResponse8 = &removeProjectEnvContentHintProjectsResponse8
+		u.Type = RemoveProjectEnvResponseBodyProjectsResponseContentHintTypeRemoveProjectEnvContentHintProjectsResponse8
 		return nil
 	}
 
@@ -2421,10 +2421,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsContentHint) UnmarshalJSON(data []b
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjects9 RemoveProjectEnvContentHintProjects9 = RemoveProjectEnvContentHintProjects9{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects9, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjects9 = &removeProjectEnvContentHintProjects9
-		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects9
+	var removeProjectEnvContentHintProjects11 RemoveProjectEnvContentHintProjects11 = RemoveProjectEnvContentHintProjects11{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects11, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjects11 = &removeProjectEnvContentHintProjects11
+		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects11
 		return nil
 	}
 
@@ -2463,10 +2463,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsContentHint) UnmarshalJSON(data []b
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjects8 RemoveProjectEnvContentHintProjects8 = RemoveProjectEnvContentHintProjects8{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects8, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjects8 = &removeProjectEnvContentHintProjects8
-		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects8
+	var removeProjectEnvContentHintProjects9 RemoveProjectEnvContentHintProjects9 = RemoveProjectEnvContentHintProjects9{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects9, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjects9 = &removeProjectEnvContentHintProjects9
+		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects9
 		return nil
 	}
 
@@ -2484,10 +2484,10 @@ func (u *RemoveProjectEnvResponseBodyProjectsContentHint) UnmarshalJSON(data []b
 		return nil
 	}
 
-	var removeProjectEnvContentHintProjects11 RemoveProjectEnvContentHintProjects11 = RemoveProjectEnvContentHintProjects11{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects11, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintProjects11 = &removeProjectEnvContentHintProjects11
-		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects11
+	var removeProjectEnvContentHintProjects8 RemoveProjectEnvContentHintProjects8 = RemoveProjectEnvContentHintProjects8{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintProjects8, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHintProjects8 = &removeProjectEnvContentHintProjects8
+		u.Type = RemoveProjectEnvResponseBodyProjectsContentHintTypeRemoveProjectEnvContentHintProjects8
 		return nil
 	}
 
@@ -3798,10 +3798,10 @@ func (u *RemoveProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
-	var removeProjectEnvContentHint9 RemoveProjectEnvContentHint9 = RemoveProjectEnvContentHint9{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint9, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHint9 = &removeProjectEnvContentHint9
-		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint9
+	var removeProjectEnvContentHint11 RemoveProjectEnvContentHint11 = RemoveProjectEnvContentHint11{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint11, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHint11 = &removeProjectEnvContentHint11
+		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint11
 		return nil
 	}
 
@@ -3840,10 +3840,10 @@ func (u *RemoveProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
-	var removeProjectEnvContentHint8 RemoveProjectEnvContentHint8 = RemoveProjectEnvContentHint8{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint8, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHint8 = &removeProjectEnvContentHint8
-		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint8
+	var removeProjectEnvContentHint9 RemoveProjectEnvContentHint9 = RemoveProjectEnvContentHint9{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint9, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHint9 = &removeProjectEnvContentHint9
+		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint9
 		return nil
 	}
 
@@ -3861,10 +3861,10 @@ func (u *RemoveProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
-	var removeProjectEnvContentHint11 RemoveProjectEnvContentHint11 = RemoveProjectEnvContentHint11{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint11, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHint11 = &removeProjectEnvContentHint11
-		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint11
+	var removeProjectEnvContentHint8 RemoveProjectEnvContentHint8 = RemoveProjectEnvContentHint8{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHint8, "", true, true); err == nil {
+		u.RemoveProjectEnvContentHint8 = &removeProjectEnvContentHint8
+		u.Type = RemoveProjectEnvResponseBodyContentHintTypeRemoveProjectEnvContentHint8
 		return nil
 	}
 

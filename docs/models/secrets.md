@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Secrets } from "@vercel/sdk/models/updateresourcesecretsop.js";
+import { Secrets } from "@vercel/sdk/models/updateintegrationdeploymentactionop.js";
 
 let value: Secrets = {
   name: "<value>",
@@ -17,4 +17,3 @@ let value: Secrets = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `prefix`           | *string*           | :heavy_minus_sign: | N/A                |

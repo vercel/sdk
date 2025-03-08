@@ -52,6 +52,9 @@ export type EditProjectEnvRequestBody = {
    * The value of the environment variable
    */
   value?: string | undefined;
+  /**
+   * The custom environments that the environment variable should be synced to
+   */
   customEnvironmentIds?: Array<string> | undefined;
   /**
    * A comment to add context on what this env var is for

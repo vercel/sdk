@@ -1435,3 +1435,23 @@ actions:
           total:
             type: integer
             minimum: 0 # Total number of allowed requests
+  - target: >-
+      $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items"]["post"]
+    update:
+      x-speakeasy-name-override: createInstallationIntegrationConfiguration
+  - target: >-
+      $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}"]["patch"]
+    update:
+      x-speakeasy-name-override: updateInstallationIntegrationConfiguration
+  - target: >-
+      $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteInstallationIntegrationConfiguration
+  - target: >-
+      $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config"]["head"]
+    update:
+      x-speakeasy-name-override: createInstallationIntegrationEdgeConfig
+  - target: >-
+      $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config"]["put"]
+    update:
+      x-speakeasy-name-override: updateInstallationIntegratioEdgeConfig

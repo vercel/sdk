@@ -1454,4 +1454,4 @@ actions:
   - target: >-
       $["paths"]["/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config"]["put"]
     update:
-      x-speakeasy-name-override: updateInstallationIntegratioEdgeConfig
+      x-speakeasy-name-override: updateInstallationIntegrationEdgeConfig

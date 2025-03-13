@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$deploymentsGetDeployments: ToolDefinition<typeof args> = {
-  name: "deployments_get-deployments",
+  name: "deployments-get-deployments",
   description: `List deployments
 
 List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the \`url\` property will have a value of \`null\`.`,

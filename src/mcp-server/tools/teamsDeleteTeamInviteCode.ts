@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsDeleteTeamInviteCode: ToolDefinition<typeof args> = {
-  name: "teams_delete-team-invite-code",
+  name: "teams-delete-team-invite-code",
   description: `Delete a Team invite code
 
 Delete an active Team invite code.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$edgeConfigGetEdgeConfigs: ToolDefinition<typeof args> = {
-  name: "edge-config_get-edge-configs",
+  name: "edge-config-get-edge-configs",
   description: `Get Edge Configs
 
 Returns all Edge Configs.`,

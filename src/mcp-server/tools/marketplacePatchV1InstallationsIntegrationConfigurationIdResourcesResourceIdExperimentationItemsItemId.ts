@@ -18,7 +18,7 @@ const args = {
 export const tool$marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId:
   ToolDefinition<typeof args> = {
     name:
-      "marketplace_patch-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items-item-id",
+      "marketplace-patch-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items-item-id",
     description: `Patch an existing experimentation item
 
 Patch an existing experimentation item`,

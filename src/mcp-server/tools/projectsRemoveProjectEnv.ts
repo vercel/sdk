@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsRemoveProjectEnv: ToolDefinition<typeof args> = {
-  name: "projects_remove-project-env",
+  name: "projects-remove-project-env",
   description: `Remove an environment variable
 
 Delete a specific environment variable for a given project by passing the environment variable identifier and either passing the project \`id\` or \`name\` in the URL.`,

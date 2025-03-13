@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityUpdateFirewallConfig: ToolDefinition<typeof args> = {
-  name: "security_update-firewall-config",
+  name: "security-update-firewall-config",
   description: `Update Firewall Configuration
 
 Process updates to modify the existing firewall config for a project`,

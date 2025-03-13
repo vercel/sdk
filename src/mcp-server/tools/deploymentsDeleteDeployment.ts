@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$deploymentsDeleteDeployment: ToolDefinition<typeof args> = {
-  name: "deployments_delete-deployment",
+  name: "deployments-delete-deployment",
   description: `Delete a Deployment
 
 This API allows you to delete a deployment, either by supplying its \`id\` in the URL or the \`url\` of the deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.`,

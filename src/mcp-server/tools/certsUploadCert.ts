@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$certsUploadCert: ToolDefinition<typeof args> = {
-  name: "certs_upload-cert",
+  name: "certs-upload-cert",
   description: `Upload a cert
 
 Upload a cert`,

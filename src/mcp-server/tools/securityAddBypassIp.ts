@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityAddBypassIp: ToolDefinition<typeof args> = {
-  name: "security_add-bypass-ip",
+  name: "security-add-bypass-ip",
   description: `Create System Bypass Rule
 
 Create new system bypass rules`,

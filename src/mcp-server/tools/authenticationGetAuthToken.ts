@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$authenticationGetAuthToken: ToolDefinition<typeof args> = {
-  name: "authentication_get-auth-token",
+  name: "authentication-get-auth-token",
   description: `Get Auth Token Metadata
 
 Retrieve metadata about an authentication token belonging to the currently authenticated User.`,

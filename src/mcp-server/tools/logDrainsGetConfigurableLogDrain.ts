@@ -13,7 +13,7 @@ const args = {
 export const tool$logDrainsGetConfigurableLogDrain: ToolDefinition<
   typeof args
 > = {
-  name: "log-drains_get-configurable-log-drain",
+  name: "log-drains-get-configurable-log-drain",
   description: `Retrieves a Configurable Log Drain
 
 Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.`,

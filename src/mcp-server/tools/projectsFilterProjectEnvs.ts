@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsFilterProjectEnvs: ToolDefinition<typeof args> = {
-  name: "projects_filter-project-envs",
+  name: "projects-filter-project-envs",
   description: `Retrieve the environment variables of a project by id or name
 
 Retrieve the environment variables for a given project by passing either the project \`id\` or \`name\` in the URL.`,

@@ -13,7 +13,7 @@ const args = {
 export const tool$deploymentsGetDeploymentFileContents: ToolDefinition<
   typeof args
 > = {
-  name: "deployments_get-deployment-file-contents",
+  name: "deployments-get-deployment-file-contents",
   description: `Get Deployment File Contents
 
 Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier. The response body will contain a JSON response containing the contents of the file encoded as base64.`,

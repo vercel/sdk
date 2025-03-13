@@ -13,7 +13,7 @@ const args = {
 export const tool$deploymentsUpdateIntegrationDeploymentAction: ToolDefinition<
   typeof args
 > = {
-  name: "deployments_update-integration-deployment-action",
+  name: "deployments-update-integration-deployment-action",
   description: `Update deployment integration action
 
 Updates the deployment integration action for the specified integration installation`,

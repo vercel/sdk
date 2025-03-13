@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$checksGetCheck: ToolDefinition<typeof args> = {
-  name: "checks_get-check",
+  name: "checks-get-check",
   description: `Get a single check
 
 Return a detailed response for a single check.`,

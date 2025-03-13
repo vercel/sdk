@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceGetMember: ToolDefinition<typeof args> = {
-  name: "marketplace_get-member",
+  name: "marketplace-get-member",
   description: `Get Member Information
 
 Returns the member role and other information for a given member ID ("user_id" claim in the SSO OIDC token).`,

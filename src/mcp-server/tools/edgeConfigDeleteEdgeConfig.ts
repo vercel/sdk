@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$edgeConfigDeleteEdgeConfig: ToolDefinition<typeof args> = {
-  name: "edge-config_delete-edge-config",
+  name: "edge-config-delete-edge-config",
   description: `Delete an Edge Config
 
 Delete an Edge Config by id.`,

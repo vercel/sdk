@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$webhooksGetWebhooks: ToolDefinition<typeof args> = {
-  name: "webhooks_get-webhooks",
+  name: "webhooks-get-webhooks",
   description: `Get a list of webhooks
 
 Get a list of webhooks`,

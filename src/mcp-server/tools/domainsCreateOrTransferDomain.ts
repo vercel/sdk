@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsCreateOrTransferDomain: ToolDefinition<typeof args> = {
-  name: "domains_create-or-transfer-domain",
+  name: "domains-create-or-transfer-domain",
   description: `Register or transfer-in a new Domain
 
 This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.`,

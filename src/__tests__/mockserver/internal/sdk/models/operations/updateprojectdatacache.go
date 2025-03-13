@@ -3341,14 +3341,14 @@ func (u Microfrontends) MarshalJSON() ([]byte, error) {
 type UpdateProjectDataCacheNodeVersion string
 
 const (
-	UpdateProjectDataCacheNodeVersionTwentyTwoX UpdateProjectDataCacheNodeVersion = "22.x"
-	UpdateProjectDataCacheNodeVersionTwentyX    UpdateProjectDataCacheNodeVersion = "20.x"
-	UpdateProjectDataCacheNodeVersionEighteenX  UpdateProjectDataCacheNodeVersion = "18.x"
-	UpdateProjectDataCacheNodeVersionSixteenX   UpdateProjectDataCacheNodeVersion = "16.x"
-	UpdateProjectDataCacheNodeVersionFourteenX  UpdateProjectDataCacheNodeVersion = "14.x"
-	UpdateProjectDataCacheNodeVersionTwelveX    UpdateProjectDataCacheNodeVersion = "12.x"
-	UpdateProjectDataCacheNodeVersionTenX       UpdateProjectDataCacheNodeVersion = "10.x"
-	UpdateProjectDataCacheNodeVersionEight10X   UpdateProjectDataCacheNodeVersion = "8.10.x"
+	UpdateProjectDataCacheNodeVersionTwentyTwoDotX  UpdateProjectDataCacheNodeVersion = "22.x"
+	UpdateProjectDataCacheNodeVersionTwentyDotX     UpdateProjectDataCacheNodeVersion = "20.x"
+	UpdateProjectDataCacheNodeVersionEighteenDotX   UpdateProjectDataCacheNodeVersion = "18.x"
+	UpdateProjectDataCacheNodeVersionSixteenDotX    UpdateProjectDataCacheNodeVersion = "16.x"
+	UpdateProjectDataCacheNodeVersionFourteenDotX   UpdateProjectDataCacheNodeVersion = "14.x"
+	UpdateProjectDataCacheNodeVersionTwelveDotX     UpdateProjectDataCacheNodeVersion = "12.x"
+	UpdateProjectDataCacheNodeVersionTenDotX        UpdateProjectDataCacheNodeVersion = "10.x"
+	UpdateProjectDataCacheNodeVersionEightDot10DotX UpdateProjectDataCacheNodeVersion = "8.10.x"
 )
 
 func (e UpdateProjectDataCacheNodeVersion) ToPointer() *UpdateProjectDataCacheNodeVersion {

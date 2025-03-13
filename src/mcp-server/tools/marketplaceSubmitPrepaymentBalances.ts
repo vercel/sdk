@@ -13,7 +13,7 @@ const args = {
 export const tool$marketplaceSubmitPrepaymentBalances: ToolDefinition<
   typeof args
 > = {
-  name: "marketplace_submit-prepayment-balances",
+  name: "marketplace-submit-prepayment-balances",
   description: `Submit Prepayment Balances
 
 Sends the prepayment balances. The partner should do this at least once a day and ideally once per hour. <br/> Use the \`credentials.access_token\` we provided in the [Upsert Installation](#upsert-installation) body to authorize this request.`,

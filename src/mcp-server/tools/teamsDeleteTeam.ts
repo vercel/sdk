@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsDeleteTeam: ToolDefinition<typeof args> = {
-  name: "teams_delete-team",
+  name: "teams-delete-team",
   description: `Delete a Team
 
 Delete a team under your account. You need to send a \`DELETE\` request with the desired team \`id\`. An optional array of reasons for deletion may also be sent.`,

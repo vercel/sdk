@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsGetTeamMembers: ToolDefinition<typeof args> = {
-  name: "teams_get-team-members",
+  name: "teams-get-team-members",
   description: `List team members
 
 Get a paginated list of team members for the provided team.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsGetProjectEnv: ToolDefinition<typeof args> = {
-  name: "projects_get-project-env",
+  name: "projects-get-project-env",
   description:
     `Retrieve the decrypted value of an environment variable of a project by id
 

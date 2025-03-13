@@ -3437,14 +3437,14 @@ func (u GetProjectsMicrofrontends) MarshalJSON() ([]byte, error) {
 type GetProjectsNodeVersion string
 
 const (
-	GetProjectsNodeVersionTwentyTwoX GetProjectsNodeVersion = "22.x"
-	GetProjectsNodeVersionTwentyX    GetProjectsNodeVersion = "20.x"
-	GetProjectsNodeVersionEighteenX  GetProjectsNodeVersion = "18.x"
-	GetProjectsNodeVersionSixteenX   GetProjectsNodeVersion = "16.x"
-	GetProjectsNodeVersionFourteenX  GetProjectsNodeVersion = "14.x"
-	GetProjectsNodeVersionTwelveX    GetProjectsNodeVersion = "12.x"
-	GetProjectsNodeVersionTenX       GetProjectsNodeVersion = "10.x"
-	GetProjectsNodeVersionEight10X   GetProjectsNodeVersion = "8.10.x"
+	GetProjectsNodeVersionTwentyTwoDotX  GetProjectsNodeVersion = "22.x"
+	GetProjectsNodeVersionTwentyDotX     GetProjectsNodeVersion = "20.x"
+	GetProjectsNodeVersionEighteenDotX   GetProjectsNodeVersion = "18.x"
+	GetProjectsNodeVersionSixteenDotX    GetProjectsNodeVersion = "16.x"
+	GetProjectsNodeVersionFourteenDotX   GetProjectsNodeVersion = "14.x"
+	GetProjectsNodeVersionTwelveDotX     GetProjectsNodeVersion = "12.x"
+	GetProjectsNodeVersionTenDotX        GetProjectsNodeVersion = "10.x"
+	GetProjectsNodeVersionEightDot10DotX GetProjectsNodeVersion = "8.10.x"
 )
 
 func (e GetProjectsNodeVersion) ToPointer() *GetProjectsNodeVersion {

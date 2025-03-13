@@ -12,7 +12,7 @@ const args = {
 
 export const tool$projectMembersAddProjectMember: ToolDefinition<typeof args> =
   {
-    name: "project-members_add-project-member",
+    name: "project-members-add-project-member",
     description: `Adds a new member to a project.
 
 Adds a new member to the project.`,

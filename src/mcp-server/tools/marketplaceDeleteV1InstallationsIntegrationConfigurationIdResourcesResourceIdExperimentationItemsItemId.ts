@@ -18,7 +18,7 @@ const args = {
 export const tool$marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId:
   ToolDefinition<typeof args> = {
     name:
-      "marketplace_delete-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items-item-id",
+      "marketplace-delete-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items-item-id",
     description: `Delete an existing experimentation item
 
 Delete an existing experimentation item`,

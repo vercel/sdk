@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsUploadArtifact: ToolDefinition<typeof args> = {
-  name: "artifacts_upload-artifact",
+  name: "artifacts-upload-artifact",
   description: `Upload a cache artifact
 
 Uploads a cache artifact identified by the \`hash\` specified on the path. The cache artifact can then be downloaded with the provided \`hash\`.`,

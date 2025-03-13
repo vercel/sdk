@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$edgeConfigGetEdgeConfigToken: ToolDefinition<typeof args> = {
-  name: "edge-config_get-edge-config-token",
+  name: "edge-config-get-edge-config-token",
   description: `Get Edge Config token meta data
 
 Return meta data about an Edge Config token.`,

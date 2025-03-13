@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsVerifyProjectDomain: ToolDefinition<typeof args> = {
-  name: "projects_verify-project-domain",
+  name: "projects-verify-project-domain",
   description: `Verify project domain
 
 Attempts to verify a project domain with \`verified = false\` by checking the correctness of the project domain's \`verification\` challenge.`,

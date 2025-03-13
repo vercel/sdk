@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$certsIssueCert: ToolDefinition<typeof args> = {
-  name: "certs_issue-cert",
+  name: "certs-issue-cert",
   description: `Issue a new cert
 
 Issue a new cert`,

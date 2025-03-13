@@ -6,7 +6,7 @@ import { userGetAuthUser } from "../../funcs/userGetAuthUser.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$userGetAuthUser: ToolDefinition = {
-  name: "user_get-auth-user",
+  name: "user-get-auth-user",
   description: `Get the User
 
 Retrieves information related to the currently authenticated User.`,

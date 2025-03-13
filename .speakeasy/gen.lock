@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 9e6a3a52fea8656fb8d5827f00bc690a
+  docChecksum: d89a613f8fcee6e5dfd0a2ce260487cb
   docVersion: 0.0.1
-  speakeasyVersion: 1.513.4
-  generationVersion: 2.545.4
-  releaseVersion: 1.4.0
-  configChecksum: 6a538dff094772259a0de520cd046039
+  speakeasyVersion: 1.517.2
+  generationVersion: 2.548.5
+  releaseVersion: 1.5.0
+  configChecksum: 2cc178121340ffe4a6d7b02f79d2d84f
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.3
+    core: 3.21.4
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -28,7 +28,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.6.0
+    mcpServer: 0.7.0
     mockServer: 0.1.0
     nullables: 0.1.1
     responseFormat: 0.2.3
@@ -117,6 +117,7 @@ generatedFiles:
   - docs/models/blockedduetooveragetype.md
   - docs/models/branchmatcher.md
   - docs/models/build.md
+  - docs/models/buildentitlements.md
   - docs/models/builds.md
   - docs/models/buydomaindomain.md
   - docs/models/buydomaindomainsdomain.md
@@ -4613,7 +4614,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "name": "example.com", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>"}}
+          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "boughtAt": 1613602938882, "name": "example.com", "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>"}}
         "400":
           application/json: {"error": {}}
         "401":
@@ -6216,7 +6217,7 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": [], "key1": true}, "updatedAt": 6086.93, "digest": "<value>"}
+          application/json: {"items": {"key": {}, "key1": true}, "updatedAt": 6086.93, "digest": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":

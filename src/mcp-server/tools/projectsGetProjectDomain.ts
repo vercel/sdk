@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsGetProjectDomain: ToolDefinition<typeof args> = {
-  name: "projects_get-project-domain",
+  name: "projects-get-project-domain",
   description: `Get a project domain
 
 Get project domain by project id/name and domain name.`,

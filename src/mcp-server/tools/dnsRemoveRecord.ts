@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dnsRemoveRecord: ToolDefinition<typeof args> = {
-  name: "dns_remove-record",
+  name: "dns-remove-record",
   description: `Delete a DNS record
 
 Removes an existing DNS record from a domain name.`,

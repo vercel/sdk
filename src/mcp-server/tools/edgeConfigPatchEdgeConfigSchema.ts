@@ -12,7 +12,7 @@ const args = {
 
 export const tool$edgeConfigPatchEdgeConfigSchema: ToolDefinition<typeof args> =
   {
-    name: "edge-config_patch-edge-config-schema",
+    name: "edge-config-patch-edge-config-schema",
     description: `Update Edge Config schema
 
 Update an Edge Config's schema.`,

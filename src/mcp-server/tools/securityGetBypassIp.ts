@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityGetBypassIp: ToolDefinition<typeof args> = {
-  name: "security_get-bypass-ip",
+  name: "security-get-bypass-ip",
   description: `Read System Bypass
 
 Retrieve the system bypass rules configured for the specified project`,

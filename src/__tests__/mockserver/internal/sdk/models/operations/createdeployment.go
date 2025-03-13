@@ -1007,14 +1007,14 @@ func (e *Framework) UnmarshalJSON(data []byte) error {
 type NodeVersion string
 
 const (
-	NodeVersionTwentyTwoX NodeVersion = "22.x"
-	NodeVersionTwentyX    NodeVersion = "20.x"
-	NodeVersionEighteenX  NodeVersion = "18.x"
-	NodeVersionSixteenX   NodeVersion = "16.x"
-	NodeVersionFourteenX  NodeVersion = "14.x"
-	NodeVersionTwelveX    NodeVersion = "12.x"
-	NodeVersionTenX       NodeVersion = "10.x"
-	NodeVersionEight10X   NodeVersion = "8.10.x"
+	NodeVersionTwentyTwoDotX  NodeVersion = "22.x"
+	NodeVersionTwentyDotX     NodeVersion = "20.x"
+	NodeVersionEighteenDotX   NodeVersion = "18.x"
+	NodeVersionSixteenDotX    NodeVersion = "16.x"
+	NodeVersionFourteenDotX   NodeVersion = "14.x"
+	NodeVersionTwelveDotX     NodeVersion = "12.x"
+	NodeVersionTenDotX        NodeVersion = "10.x"
+	NodeVersionEightDot10DotX NodeVersion = "8.10.x"
 )
 
 func (e NodeVersion) ToPointer() *NodeVersion {

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsDeleteProject: ToolDefinition<typeof args> = {
-  name: "projects_delete-project",
+  name: "projects-delete-project",
   description: `Delete a Project
 
 Delete a specific project by passing either the project \`id\` or \`name\` in the URL.`,

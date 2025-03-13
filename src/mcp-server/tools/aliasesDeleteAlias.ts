@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aliasesDeleteAlias: ToolDefinition<typeof args> = {
-  name: "aliases_delete-alias",
+  name: "aliases-delete-alias",
   description: `Delete an Alias
 
 Delete an Alias with the specified ID.`,

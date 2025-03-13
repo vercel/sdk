@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsListPromoteAliases: ToolDefinition<typeof args> = {
-  name: "projects_list-promote-aliases",
+  name: "projects-list-promote-aliases",
   description: `Gets a list of aliases with status for the current promote
 
 Get a list of aliases related to the last promote request with their mapping status`,

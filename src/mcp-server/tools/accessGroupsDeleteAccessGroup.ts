@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accessGroupsDeleteAccessGroup: ToolDefinition<typeof args> = {
-  name: "access-groups_delete-access-group",
+  name: "access-groups-delete-access-group",
   description: `Deletes an access group
 
 Allows to delete an access group`,

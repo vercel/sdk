@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsGetTeams: ToolDefinition<typeof args> = {
-  name: "teams_get-teams",
+  name: "teams-get-teams",
   description: `List all teams
 
 Get a paginated list of all the Teams the authenticated User is a member of.`,

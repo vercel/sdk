@@ -18,7 +18,7 @@ const args = {
 export const tool$marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig:
   ToolDefinition<typeof args> = {
     name:
-      "marketplace_head-v1-installations-integration-configuration-id-resources-resource-id-experimentation-edge-config",
+      "marketplace-head-v1-installations-integration-configuration-id-resources-resource-id-experimentation-edge-config",
     description: `Get the data of a user-provided Edge Config
 
 When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.`,

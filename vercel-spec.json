@@ -16884,6 +16884,11 @@
                           "description": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
                           "example": 1613602938882
                         },
+                        "name": {
+                          "type": "string",
+                          "description": "The domain name.",
+                          "example": "example.com"
+                        },
                         "createdAt": {
                           "type": "number",
                           "description": "Timestamp in milliseconds when the domain was created in the registry.",
@@ -16899,11 +16904,6 @@
                           "type": "string",
                           "description": "The unique identifier of the domain.",
                           "example": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "The domain name.",
-                          "example": "example.com"
                         },
                         "orderedAt": {
                           "type": "number",
@@ -16948,10 +16948,10 @@
                         "creator",
                         "teamId",
                         "boughtAt",
+                        "name",
                         "createdAt",
                         "expiresAt",
                         "id",
-                        "name",
                         "serviceType",
                         "userId"
                       ],
@@ -30152,10 +30152,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -37650,10 +37650,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -61011,7 +61011,7 @@
                   "imageOptimizationTransformation",
                   "logDrainsVolume",
                   "monitoringMetric",
-                  "objectDataTransfer",
+                  "blobDataTransfer",
                   "observabilityEvent",
                   "postgresComputeTime",
                   "postgresDataStorage",
@@ -61051,6 +61051,16 @@
               },
               "concurrentBuilds": {
                 "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "buildEntitlements": {
+                "properties": {
+                  "enhancedBuilds": {
+                    "type": "boolean",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  }
+                },
+                "type": "object",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
               "awsAccountType": {

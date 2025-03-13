@@ -1215,11 +1215,11 @@ func CreateUpdateFirewallConfigRateLimitActionUpdateFirewallConfigAction1(update
 	}
 }
 
-func CreateUpdateFirewallConfigRateLimitActionAny(any any) UpdateFirewallConfigRateLimitAction {
+func CreateUpdateFirewallConfigRateLimitActionAny(anyT any) UpdateFirewallConfigRateLimitAction {
 	typ := UpdateFirewallConfigRateLimitActionTypeAny
 
 	return UpdateFirewallConfigRateLimitAction{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -1233,9 +1233,9 @@ func (u *UpdateFirewallConfigRateLimitAction) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = UpdateFirewallConfigRateLimitActionTypeAny
 		return nil
 	}
@@ -1321,11 +1321,11 @@ func CreateRequestBodyRateLimitUpdateFirewallConfigRateLimit1(updateFirewallConf
 	}
 }
 
-func CreateRequestBodyRateLimitAny(any any) RequestBodyRateLimit {
+func CreateRequestBodyRateLimitAny(anyT any) RequestBodyRateLimit {
 	typ := RequestBodyRateLimitTypeAny
 
 	return RequestBodyRateLimit{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -1339,9 +1339,9 @@ func (u *RequestBodyRateLimit) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = RequestBodyRateLimitTypeAny
 		return nil
 	}
@@ -1403,11 +1403,11 @@ func CreateRequestBodyRedirectUpdateFirewallConfigRedirect1(updateFirewallConfig
 	}
 }
 
-func CreateRequestBodyRedirectAny(any any) RequestBodyRedirect {
+func CreateRequestBodyRedirectAny(anyT any) RequestBodyRedirect {
 	typ := RequestBodyRedirectTypeAny
 
 	return RequestBodyRedirect{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -1421,9 +1421,9 @@ func (u *RequestBodyRedirect) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = RequestBodyRedirectTypeAny
 		return nil
 	}
@@ -2001,11 +2001,11 @@ func CreateRateLimitActionAction1(action1 Action1) RateLimitAction {
 	}
 }
 
-func CreateRateLimitActionAny(any any) RateLimitAction {
+func CreateRateLimitActionAny(anyT any) RateLimitAction {
 	typ := RateLimitActionTypeAny
 
 	return RateLimitAction{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -2019,9 +2019,9 @@ func (u *RateLimitAction) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = RateLimitActionTypeAny
 		return nil
 	}
@@ -2107,11 +2107,11 @@ func CreateRateLimitRateLimit1(rateLimit1 RateLimit1) RateLimit {
 	}
 }
 
-func CreateRateLimitAny(any any) RateLimit {
+func CreateRateLimitAny(anyT any) RateLimit {
 	typ := RateLimitTypeAny
 
 	return RateLimit{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -2125,9 +2125,9 @@ func (u *RateLimit) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = RateLimitTypeAny
 		return nil
 	}
@@ -2189,11 +2189,11 @@ func CreateRedirectRedirect1(redirect1 Redirect1) Redirect {
 	}
 }
 
-func CreateRedirectAny(any any) Redirect {
+func CreateRedirectAny(anyT any) Redirect {
 	typ := RedirectTypeAny
 
 	return Redirect{
-		Any:  any,
+		Any:  anyT,
 		Type: typ,
 	}
 }
@@ -2207,9 +2207,9 @@ func (u *Redirect) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var any any = nil
-	if err := utils.UnmarshalJSON(data, &any, "", true, true); err == nil {
-		u.Any = any
+	var anyVar any = nil
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+		u.Any = anyVar
 		u.Type = RedirectTypeAny
 		return nil
 	}

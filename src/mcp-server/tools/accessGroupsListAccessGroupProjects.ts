@@ -13,7 +13,7 @@ const args = {
 export const tool$accessGroupsListAccessGroupProjects: ToolDefinition<
   typeof args
 > = {
-  name: "access-groups_list-access-group-projects",
+  name: "access-groups-list-access-group-projects",
   description: `List projects of an access group
 
 List projects of an access group`,

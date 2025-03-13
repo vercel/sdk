@@ -18,7 +18,7 @@ const args = {
 export const tool$marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems:
   ToolDefinition<typeof args> = {
     name:
-      "marketplace_post-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items",
+      "marketplace-post-v1-installations-integration-configuration-id-resources-resource-id-experimentation-items",
     description: `Create one or multiple experimentation items
 
 Create one or multiple experimentation items`,

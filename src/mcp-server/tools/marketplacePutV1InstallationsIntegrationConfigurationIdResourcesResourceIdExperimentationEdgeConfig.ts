@@ -18,7 +18,7 @@ const args = {
 export const tool$marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig:
   ToolDefinition<typeof args> = {
     name:
-      "marketplace_put-v1-installations-integration-configuration-id-resources-resource-id-experimentation-edge-config",
+      "marketplace-put-v1-installations-integration-configuration-id-resources-resource-id-experimentation-edge-config",
     description: `Push data into a user-provided Edge Config
 
 When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.`,

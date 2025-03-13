@@ -13,7 +13,7 @@ const args = {
 export const tool$accessGroupsReadAccessGroupProject: ToolDefinition<
   typeof args
 > = {
-  name: "access-groups_read-access-group-project",
+  name: "access-groups-read-access-group-project",
   description: `Reads an access group project
 
 Allows reading an access group project`,

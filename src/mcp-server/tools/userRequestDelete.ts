@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$userRequestDelete: ToolDefinition<typeof args> = {
-  name: "user_request-delete",
+  name: "user-request-delete",
   description: `Delete User Account
 
 Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email. The email contains a link that the user needs to visit in order to proceed with the deletion process.`,

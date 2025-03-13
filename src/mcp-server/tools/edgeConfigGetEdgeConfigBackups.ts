@@ -12,7 +12,7 @@ const args = {
 
 export const tool$edgeConfigGetEdgeConfigBackups: ToolDefinition<typeof args> =
   {
-    name: "edge-config_get-edge-config-backups",
+    name: "edge-config-get-edge-config-backups",
     description: `Get Edge Config backups
 
 Returns backups of an Edge Config.`,

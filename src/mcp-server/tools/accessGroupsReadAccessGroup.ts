@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accessGroupsReadAccessGroup: ToolDefinition<typeof args> = {
-  name: "access-groups_read-access-group",
+  name: "access-groups-read-access-group",
   description: `Reads an access group
 
 Allows to read an access group`,

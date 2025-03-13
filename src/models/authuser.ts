@@ -46,7 +46,7 @@ export const BlockedDueToOverageType = {
   ImageOptimizationTransformation: "imageOptimizationTransformation",
   LogDrainsVolume: "logDrainsVolume",
   MonitoringMetric: "monitoringMetric",
-  ObjectDataTransfer: "objectDataTransfer",
+  BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
@@ -86,6 +86,16 @@ export type Billing = {};
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export type BuildEntitlements = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  enhancedBuilds?: boolean | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type ResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -95,6 +105,10 @@ export type ResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   concurrentBuilds?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  buildEntitlements?: BuildEntitlements | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -548,6 +562,60 @@ export function billingFromJSON(
 }
 
 /** @internal */
+export const BuildEntitlements$inboundSchema: z.ZodType<
+  BuildEntitlements,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enhancedBuilds: z.boolean().optional(),
+});
+
+/** @internal */
+export type BuildEntitlements$Outbound = {
+  enhancedBuilds?: boolean | undefined;
+};
+
+/** @internal */
+export const BuildEntitlements$outboundSchema: z.ZodType<
+  BuildEntitlements$Outbound,
+  z.ZodTypeDef,
+  BuildEntitlements
+> = z.object({
+  enhancedBuilds: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildEntitlements$ {
+  /** @deprecated use `BuildEntitlements$inboundSchema` instead. */
+  export const inboundSchema = BuildEntitlements$inboundSchema;
+  /** @deprecated use `BuildEntitlements$outboundSchema` instead. */
+  export const outboundSchema = BuildEntitlements$outboundSchema;
+  /** @deprecated use `BuildEntitlements$Outbound` instead. */
+  export type Outbound = BuildEntitlements$Outbound;
+}
+
+export function buildEntitlementsToJSON(
+  buildEntitlements: BuildEntitlements,
+): string {
+  return JSON.stringify(
+    BuildEntitlements$outboundSchema.parse(buildEntitlements),
+  );
+}
+
+export function buildEntitlementsFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildEntitlements, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildEntitlements' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResourceConfig$inboundSchema: z.ZodType<
   ResourceConfig,
   z.ZodTypeDef,
@@ -555,6 +623,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
+  buildEntitlements: z.lazy(() => BuildEntitlements$inboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),
@@ -578,6 +647,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
 export type ResourceConfig$Outbound = {
   nodeType?: string | undefined;
   concurrentBuilds?: number | undefined;
+  buildEntitlements?: BuildEntitlements$Outbound | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
   cfZoneName?: string | undefined;
@@ -605,6 +675,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
+  buildEntitlements: z.lazy(() => BuildEntitlements$outboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),

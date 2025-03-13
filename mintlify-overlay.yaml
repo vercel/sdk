@@ -1,0 +1,20 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Modify request body and responses that have property fields that fail mintlify linting
+  version: 0.0.1
+actions:
+  - target: $.paths..requestBody..["application/json"]..const
+    remove: true  
+  - target: $.paths..requestBody..["application/json"]..propertyNames
+    remove: true
+  - target: $.paths..requestBody..["application/json"]..errorMessage
+    remove: true     
+  - target: $.paths..requestBody..["application/json"]..["$schema"]
+    remove: true       
+  - target: $.paths..requestBody..["application/json"]..regex
+    remove: true
+  - target: $.components.schemas..properties..const
+    remove: true
+  - target: $.paths..requestBody..[?(@.required && length(@.required) == 0)].required
+    remove: true    

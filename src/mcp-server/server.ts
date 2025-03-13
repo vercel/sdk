@@ -108,29 +108,19 @@ import { tool$logDrainsGetAllLogDrains } from "./tools/logDrainsGetAllLogDrains.
 import { tool$logDrainsGetConfigurableLogDrain } from "./tools/logDrainsGetConfigurableLogDrain.js";
 import { tool$logDrainsGetIntegrationLogDrains } from "./tools/logDrainsGetIntegrationLogDrains.js";
 import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
-import {
-  tool$marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "./tools/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
+import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
+import { tool$marketplaceCreateInstallationIntegrationEdgeConfig } from "./tools/marketplaceCreateInstallationIntegrationEdgeConfig.js";
+import { tool$marketplaceDeleteInstallationIntegrationConfiguration } from "./tools/marketplaceDeleteInstallationIntegrationConfiguration.js";
 import { tool$marketplaceExchangeSsoToken } from "./tools/marketplaceExchangeSsoToken.js";
 import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInfo.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
-import {
-  tool$marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "./tools/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
-import {
-  tool$marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "./tools/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
-import {
-  tool$marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems,
-} from "./tools/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.js";
-import {
-  tool$marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "./tools/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
 import { tool$marketplaceSubmitPrepaymentBalances } from "./tools/marketplaceSubmitPrepaymentBalances.js";
+import { tool$marketplaceUpdateInstallationIntegrationConfiguration } from "./tools/marketplaceUpdateInstallationIntegrationConfiguration.js";
+import { tool$marketplaceUpdateInstallationIntegrationEdgeConfig } from "./tools/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
@@ -196,7 +186,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.4.0",
+    version: "1.5.0",
   });
 
   const client = new VercelCore({
@@ -336,21 +326,11 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceUpdateResourceSecretsById);
   tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
-  tool(
-    tool$marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems,
-  );
-  tool(
-    tool$marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-  );
-  tool(
-    tool$marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-  );
-  tool(
-    tool$marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-  );
-  tool(
-    tool$marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-  );
+  tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
+  tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
+  tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);
+  tool(tool$marketplaceCreateInstallationIntegrationEdgeConfig);
+  tool(tool$marketplaceUpdateInstallationIntegrationEdgeConfig);
   tool(tool$authenticationExchangeSsoToken);
   tool(tool$authenticationListAuthTokens);
   tool(tool$authenticationCreateAuthToken);

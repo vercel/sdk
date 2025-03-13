@@ -4,27 +4,18 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"mockserver/internal/sdk/utils"
 )
 
 type VercelForbiddenErrorError struct {
-	code    string `const:"forbidden" json:"code"`
+	Code    string `json:"code"`
 	Message string `json:"message"`
 }
 
-func (v VercelForbiddenErrorError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
-}
-
-func (v *VercelForbiddenErrorError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (o *VercelForbiddenErrorError) GetCode() string {
-	return "forbidden"
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }
 
 func (o *VercelForbiddenErrorError) GetMessage() string {

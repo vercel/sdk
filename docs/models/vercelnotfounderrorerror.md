@@ -5,7 +5,10 @@
 ```typescript
 import { VercelNotFoundErrorError } from "@vercel/sdk/models/vercelnotfounderror.js";
 
-let value: VercelNotFoundErrorError = {};
+let value: VercelNotFoundErrorError = {
+  code: "<value>",
+  message: "<value>",
+};
 ```
 
 ## Fields

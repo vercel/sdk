@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceUpdateInvoice: ToolDefinition<typeof args> = {
-  name: "marketplace_update-invoice",
+  name: "marketplace-update-invoice",
   description: `Invoice Actions
 
 This endpoint allows the partner to request a refund for an invoice to Vercel. The invoice is created using the [Submit Invoice API](#submit-invoice-api).`,

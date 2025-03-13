@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aliasesAssignAlias: ToolDefinition<typeof args> = {
-  name: "aliases_assign-alias",
+  name: "aliases-assign-alias",
   description: `Assign an Alias
 
 Creates a new alias for the deployment with the given deployment ID. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.`,

@@ -127,14 +127,14 @@ type GetDomainDomain struct {
 	TeamID  *string          `json:"teamId"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
 	BoughtAt *float64 `json:"boughtAt"`
+	// The domain name.
+	Name string `json:"name"`
 	// Timestamp in milliseconds when the domain was created in the registry.
 	CreatedAt float64 `json:"createdAt"`
 	// Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
 	ExpiresAt *float64 `json:"expiresAt"`
 	// The unique identifier of the domain.
 	ID string `json:"id"`
-	// The domain name.
-	Name string `json:"name"`
 	// Timestamp in milliseconds at which the domain was ordered.
 	OrderedAt *float64 `json:"orderedAt,omitempty"`
 	// Indicates whether the domain is set to automatically renew.
@@ -204,6 +204,13 @@ func (o *GetDomainDomain) GetBoughtAt() *float64 {
 	return o.BoughtAt
 }
 
+func (o *GetDomainDomain) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 func (o *GetDomainDomain) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -223,13 +230,6 @@ func (o *GetDomainDomain) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetDomainDomain) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetDomainDomain) GetOrderedAt() *float64 {

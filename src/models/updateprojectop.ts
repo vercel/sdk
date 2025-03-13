@@ -71,13 +71,13 @@ export const UpdateProjectFramework = {
 export type UpdateProjectFramework = ClosedEnum<typeof UpdateProjectFramework>;
 
 export const UpdateProjectNodeVersion = {
-  TwentyTwoX: "22.x",
-  TwentyX: "20.x",
-  EighteenX: "18.x",
-  SixteenX: "16.x",
-  FourteenX: "14.x",
-  TwelveX: "12.x",
-  TenX: "10.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
 } as const;
 export type UpdateProjectNodeVersion = ClosedEnum<
   typeof UpdateProjectNodeVersion
@@ -438,10 +438,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1084,14 +1084,14 @@ export type UpdateProjectMicrofrontends =
   | UpdateProjectMicrofrontends1;
 
 export const UpdateProjectProjectsNodeVersion = {
-  TwentyTwoX: "22.x",
-  TwentyX: "20.x",
-  EighteenX: "18.x",
-  SixteenX: "16.x",
-  FourteenX: "14.x",
-  TwelveX: "12.x",
-  TenX: "10.x",
-  Eight10X: "8.10.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
 } as const;
 export type UpdateProjectProjectsNodeVersion = ClosedEnum<
   typeof UpdateProjectProjectsNodeVersion

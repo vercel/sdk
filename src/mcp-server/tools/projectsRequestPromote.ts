@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsRequestPromote: ToolDefinition<typeof args> = {
-  name: "projects_request-promote",
+  name: "projects-request-promote",
   description: `Points all production domains for a project to the given deploy
 
 Allows users to promote a deployment to production. Note: This does NOT rebuild the deployment. If you need that, then call create-deployments endpoint.`,

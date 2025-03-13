@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$edgeConfigUpdateEdgeConfig: ToolDefinition<typeof args> = {
-  name: "edge-config_update-edge-config",
+  name: "edge-config-update-edge-config",
   description: `Update an Edge Config
 
 Updates an Edge Config.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsJoinTeam: ToolDefinition<typeof args> = {
-  name: "teams_join-team",
+  name: "teams-join-team",
   description: `Join a team
 
 Join a team with a provided invite code or team ID.`,

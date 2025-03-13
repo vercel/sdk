@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsRequestAccessToTeam: ToolDefinition<typeof args> = {
-  name: "teams_request-access-to-team",
+  name: "teams-request-access-to-team",
   description: `Request access to a team
 
 Request access to a team as a member. An owner has to approve the request. Only 10 users can request access to a team at the same time.`,

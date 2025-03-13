@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dnsGetRecords: ToolDefinition<typeof args> = {
-  name: "dns_get-records",
+  name: "dns-get-records",
   description: `List existing DNS records
 
 Retrieves a list of DNS records created for a domain name. By default it returns 20 records if no limit is provided. The rest can be retrieved using the pagination options.`,

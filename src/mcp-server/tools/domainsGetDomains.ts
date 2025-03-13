@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsGetDomains: ToolDefinition<typeof args> = {
-  name: "domains_get-domains",
+  name: "domains-get-domains",
   description: `List all the domains
 
 Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.`,

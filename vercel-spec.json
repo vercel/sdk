@@ -8130,8 +8130,7 @@
                           "type": "object",
                           "properties": {
                             "kind": {
-                              "type": "string",
-                              "const": "resource-secrets"
+                              "type": "string"
                             },
                             "secrets": {
                               "type": "array",
@@ -8163,7 +8162,6 @@
                     }
                   }
                 },
-                "required": [],
                 "additionalProperties": false
               }
             }
@@ -11083,24 +11081,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -11864,15 +11862,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -12105,8 +12103,8 @@
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -12216,8 +12214,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12269,8 +12267,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12323,8 +12321,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -16884,6 +16882,11 @@
                           "description": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
                           "example": 1613602938882
                         },
+                        "name": {
+                          "type": "string",
+                          "description": "The domain name.",
+                          "example": "example.com"
+                        },
                         "createdAt": {
                           "type": "number",
                           "description": "Timestamp in milliseconds when the domain was created in the registry.",
@@ -16899,11 +16902,6 @@
                           "type": "string",
                           "description": "The unique identifier of the domain.",
                           "example": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1"
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "The domain name.",
-                          "example": "example.com"
                         },
                         "orderedAt": {
                           "type": "number",
@@ -16948,10 +16946,10 @@
                         "creator",
                         "teamId",
                         "boughtAt",
+                        "name",
                         "createdAt",
                         "expiresAt",
                         "id",
-                        "name",
                         "serviceType",
                         "userId"
                       ],
@@ -25226,7 +25224,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-name-override": "createInstallationIntegrationConfiguration"
       }
     },
     "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}": {
@@ -25352,7 +25351,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-name-override": "updateInstallationIntegrationConfiguration"
       },
       "delete": {
         "description": "Delete an existing experimentation item",
@@ -25428,7 +25428,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "x-speakeasy-name-override": "deleteInstallationIntegrationConfiguration"
       }
     },
     "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config": {
@@ -25527,7 +25528,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "x-speakeasy-name-override": "createInstallationIntegrationEdgeConfig"
       },
       "put": {
         "description": "When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.",
@@ -25637,18 +25639,14 @@
                 "properties": {
                   "data": {
                     "type": "object",
-                    "propertyNames": {
-                      "maxLength": 256,
-                      "pattern": "^[\\\\w-]+$",
-                      "type": "string"
-                    },
                     "additionalProperties": {}
                   }
                 }
               }
             }
           }
-        }
+        },
+        "x-speakeasy-name-override": "updateInstallationIntegrationEdgeConfig"
       }
     },
     "/v1/projects/{idOrName}/members": {
@@ -30152,10 +30150,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -37650,10 +37648,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -41577,14 +41575,12 @@
                   "slug": {
                     "description": "The slug of the custom environment to create.",
                     "type": "string",
-                    "maxLength": 32,
-                    "errorMessage": "Slug must be 32 characters or less."
+                    "maxLength": 32
                   },
                   "description": {
                     "description": "Description of the custom environment. This is optional.",
                     "type": "string",
-                    "maxLength": 256,
-                    "errorMessage": "Description must be 256 characters or less."
+                    "maxLength": 256
                   },
                   "branchMatcher": {
                     "required": [
@@ -41605,8 +41601,7 @@
                       "pattern": {
                         "description": "Git branch name or portion thereof.",
                         "type": "string",
-                        "maxLength": 100,
-                        "errorMessage": "Branch matcher pattern must be 100 characters or less."
+                        "maxLength": 100
                       }
                     }
                   },
@@ -41920,14 +41915,12 @@
                   "slug": {
                     "description": "The slug of the custom environment.",
                     "type": "string",
-                    "maxLength": 32,
-                    "errorMessage": "Slug must be 32 characters or less."
+                    "maxLength": 32
                   },
                   "description": {
                     "description": "Description of the custom environment. This is optional.",
                     "type": "string",
-                    "maxLength": 256,
-                    "errorMessage": "Description must be 256 characters or less."
+                    "maxLength": 256
                   },
                   "branchMatcher": {
                     "required": [
@@ -41948,8 +41941,7 @@
                       "pattern": {
                         "description": "Git branch name or portion thereof.",
                         "type": "string",
-                        "maxLength": 100,
-                        "errorMessage": "Branch matcher pattern must be 100 characters or less."
+                        "maxLength": 100
                       }
                     },
                     "nullable": true
@@ -50992,8 +50984,7 @@
                 "required": [
                   "firewallEnabled"
                 ],
-                "additionalProperties": false,
-                "$schema": "http://json-schema.org/draft-07/schema#"
+                "additionalProperties": false
               }
             }
           },
@@ -51909,8 +51900,7 @@
                     "type": "object",
                     "properties": {
                       "action": {
-                        "type": "string",
-                        "const": "managedRuleGroup.update"
+                        "type": "string"
                       },
                       "id": {
                         "type": "string"
@@ -54017,7 +54007,9 @@
                             "enum": [
                               "CreateProject",
                               "FullProductionDeployment",
-                              "UsageViewer"
+                              "UsageViewer",
+                              "EnvVariableManager",
+                              "EnvironmentManager"
                             ],
                             "description": "The team permissions of the user",
                             "example": [
@@ -54080,7 +54072,9 @@
                             "enum": [
                               "CreateProject",
                               "FullProductionDeployment",
-                              "UsageViewer"
+                              "UsageViewer",
+                              "EnvVariableManager",
+                              "EnvironmentManager"
                             ]
                           },
                           "type": "array"
@@ -55247,7 +55241,6 @@
                   "avatar": {
                     "type": "string",
                     "format": "regex",
-                    "regex": "^[0-9a-f]{40}$",
                     "description": "The hash value of an uploaded image."
                   },
                   "description": {
@@ -55259,7 +55252,6 @@
                   "emailDomain": {
                     "type": "string",
                     "format": "regex",
-                    "regex": "\\\\b((?=[a-z0-9-]{1,63}\\\\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\\\\.)+[a-z]{2,63}\\\\b",
                     "example": "example.com",
                     "nullable": true
                   },
@@ -60693,7 +60685,9 @@
                   "enum": [
                     "CreateProject",
                     "FullProductionDeployment",
-                    "UsageViewer"
+                    "UsageViewer",
+                    "EnvVariableManager",
+                    "EnvironmentManager"
                   ]
                 },
                 "type": "array"
@@ -61011,7 +61005,7 @@
                   "imageOptimizationTransformation",
                   "logDrainsVolume",
                   "monitoringMetric",
-                  "objectDataTransfer",
+                  "blobDataTransfer",
                   "observabilityEvent",
                   "postgresComputeTime",
                   "postgresDataStorage",
@@ -61051,6 +61045,16 @@
               },
               "concurrentBuilds": {
                 "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "buildEntitlements": {
+                "properties": {
+                  "enhancedBuilds": {
+                    "type": "boolean",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  }
+                },
+                "type": "object",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
               "awsAccountType": {
@@ -61584,8 +61588,7 @@
         ],
         "properties": {
           "code": {
-            "type": "string",
-            "const": "bad_request"
+            "type": "string"
           },
           "message": {
             "type": "string"
@@ -61610,8 +61613,7 @@
                 ],
                 "properties": {
                   "code": {
-                    "type": "string",
-                    "const": "forbidden"
+                    "type": "string"
                   }
                 }
               }
@@ -61637,12 +61639,10 @@
                 ],
                 "properties": {
                   "code": {
-                    "type": "string",
-                    "const": "not_found"
+                    "type": "string"
                   },
                   "message": {
-                    "type": "string",
-                    "const": "The item you requested was not found"
+                    "type": "string"
                   }
                 }
               }
@@ -61668,12 +61668,10 @@
                 ],
                 "properties": {
                   "code": {
-                    "type": "string",
-                    "const": "bad_request"
+                    "type": "string"
                   },
                   "message": {
-                    "type": "string",
-                    "const": "One of the provided values in the request query, body or headers is invalid"
+                    "type": "string"
                   }
                 }
               }
@@ -61699,8 +61697,7 @@
                 ],
                 "properties": {
                   "code": {
-                    "type": "string",
-                    "const": "rate_limited"
+                    "type": "string"
                   },
                   "limit": {
                     "$ref": "#/components/schemas/RateLimitNotice"

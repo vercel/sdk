@@ -12,7 +12,7 @@ const args = {
 
 export const tool$edgeConfigCreateEdgeConfigToken: ToolDefinition<typeof args> =
   {
-    name: "edge-config_create-edge-config-token",
+    name: "edge-config-create-edge-config-token",
     description: `Create an Edge Config token
 
 Adds a token to an existing Edge Config.`,

@@ -13,7 +13,7 @@ const args = {
 export const tool$securityUpdateAttackChallengeMode: ToolDefinition<
   typeof args
 > = {
-  name: "security_update-attack-challenge-mode",
+  name: "security-update-attack-challenge-mode",
   description: `Update Attack Challenge mode
 
 Update the setting for determining if the project has Attack Challenge mode enabled.`,

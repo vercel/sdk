@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsCreateProject: ToolDefinition<typeof args> = {
-  name: "projects_create-project",
+  name: "projects-create-project",
   description: `Create a new project
 
 Allows to create a new project with the provided configuration. It only requires the project \`name\` but more configuration can be provided to override the defaults.`,

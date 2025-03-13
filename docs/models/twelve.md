@@ -8,6 +8,7 @@ Update a managed rule group
 import { Twelve } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: Twelve = {
+  action: "<value>",
   id: "<id>",
   value: {
     "key": {

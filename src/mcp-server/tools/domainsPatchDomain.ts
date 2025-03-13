@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsPatchDomain: ToolDefinition<typeof args> = {
-  name: "domains_patch-domain",
+  name: "domains-patch-domain",
   description: `Update or move apex domain
 
 Update or move apex domain.`,

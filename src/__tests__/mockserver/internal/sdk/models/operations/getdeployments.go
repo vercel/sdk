@@ -693,14 +693,14 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 type GetDeploymentsNodeVersion string
 
 const (
-	GetDeploymentsNodeVersionTwentyTwoX GetDeploymentsNodeVersion = "22.x"
-	GetDeploymentsNodeVersionTwentyX    GetDeploymentsNodeVersion = "20.x"
-	GetDeploymentsNodeVersionEighteenX  GetDeploymentsNodeVersion = "18.x"
-	GetDeploymentsNodeVersionSixteenX   GetDeploymentsNodeVersion = "16.x"
-	GetDeploymentsNodeVersionFourteenX  GetDeploymentsNodeVersion = "14.x"
-	GetDeploymentsNodeVersionTwelveX    GetDeploymentsNodeVersion = "12.x"
-	GetDeploymentsNodeVersionTenX       GetDeploymentsNodeVersion = "10.x"
-	GetDeploymentsNodeVersionEight10X   GetDeploymentsNodeVersion = "8.10.x"
+	GetDeploymentsNodeVersionTwentyTwoDotX  GetDeploymentsNodeVersion = "22.x"
+	GetDeploymentsNodeVersionTwentyDotX     GetDeploymentsNodeVersion = "20.x"
+	GetDeploymentsNodeVersionEighteenDotX   GetDeploymentsNodeVersion = "18.x"
+	GetDeploymentsNodeVersionSixteenDotX    GetDeploymentsNodeVersion = "16.x"
+	GetDeploymentsNodeVersionFourteenDotX   GetDeploymentsNodeVersion = "14.x"
+	GetDeploymentsNodeVersionTwelveDotX     GetDeploymentsNodeVersion = "12.x"
+	GetDeploymentsNodeVersionTenDotX        GetDeploymentsNodeVersion = "10.x"
+	GetDeploymentsNodeVersionEightDot10DotX GetDeploymentsNodeVersion = "8.10.x"
 )
 
 func (e GetDeploymentsNodeVersion) ToPointer() *GetDeploymentsNodeVersion {

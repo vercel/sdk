@@ -13,7 +13,7 @@ const args = {
 export const tool$projectMembersRemoveProjectMember: ToolDefinition<
   typeof args
 > = {
-  name: "project-members_remove-project-member",
+  name: "project-members-remove-project-member",
   description: `Remove a Project Member
 
 Remove a member from a specific project`,

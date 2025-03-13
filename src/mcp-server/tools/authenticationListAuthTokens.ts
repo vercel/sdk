@@ -6,7 +6,7 @@ import { authenticationListAuthTokens } from "../../funcs/authenticationListAuth
 import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$authenticationListAuthTokens: ToolDefinition = {
-  name: "authentication_list-auth-tokens",
+  name: "authentication-list-auth-tokens",
   description: `List Auth Tokens
 
 Retrieve a list of the current User's authentication tokens.`,

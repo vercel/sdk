@@ -8,8 +8,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type VercelNotFoundErrorError = {
-  code?: "not_found" | undefined;
-  message?: "The item you requested was not found" | undefined;
+  code: string;
+  message: string;
 };
 
 export type VercelNotFoundErrorData = {
@@ -41,14 +41,14 @@ export const VercelNotFoundErrorError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.literal("not_found").optional(),
-  message: z.literal("The item you requested was not found").optional(),
+  code: z.string(),
+  message: z.string(),
 });
 
 /** @internal */
 export type VercelNotFoundErrorError$Outbound = {
-  code: "not_found";
-  message: "The item you requested was not found";
+  code: string;
+  message: string;
 };
 
 /** @internal */
@@ -57,10 +57,8 @@ export const VercelNotFoundErrorError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   VercelNotFoundErrorError
 > = z.object({
-  code: z.literal("not_found").default("not_found" as const),
-  message: z.literal("The item you requested was not found").default(
-    "The item you requested was not found" as const,
-  ),
+  code: z.string(),
+  message: z.string(),
 });
 
 /**

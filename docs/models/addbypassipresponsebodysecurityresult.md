@@ -10,8 +10,8 @@ let value: AddBypassIpResponseBodySecurityResult = {
   id: "<id>",
   domain: "nice-avalanche.biz",
   ip: "ecdf:aac2:fb3f:7ddb:2c7f:dc7a:fba0:fc56",
-  createdAt: "1725644816398",
-  updatedAt: "1741311294007",
+  createdAt: "1726159807186",
+  updatedAt: "1741826284795",
   updatedAtHour: "<value>",
 };
 ```

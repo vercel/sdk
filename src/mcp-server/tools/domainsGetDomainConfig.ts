@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsGetDomainConfig: ToolDefinition<typeof args> = {
-  name: "domains_get-domain-config",
+  name: "domains-get-domain-config",
   description: `Get a Domain's configuration
 
 Get a Domain's configuration.`,

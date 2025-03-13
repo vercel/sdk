@@ -6,6 +6,7 @@
 import { VercelForbiddenErrorError } from "@vercel/sdk/models/vercelforbiddenerror.js";
 
 let value: VercelForbiddenErrorError = {
+  code: "<value>",
   message: "<value>",
 };
 ```

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsDeleteDomain: ToolDefinition<typeof args> = {
-  name: "domains_delete-domain",
+  name: "domains-delete-domain",
   description: `Remove a domain by name
 
 Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any associated aliases.`,

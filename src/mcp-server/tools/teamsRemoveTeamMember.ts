@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsRemoveTeamMember: ToolDefinition<typeof args> = {
-  name: "teams_remove-team-member",
+  name: "teams-remove-team-member",
   description: `Remove a Team Member
 
 Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$checksGetAllChecks: ToolDefinition<typeof args> = {
-  name: "checks_get-all-checks",
+  name: "checks-get-all-checks",
   description: `Retrieve a list of all checks
 
 List all of the checks created for a deployment.`,

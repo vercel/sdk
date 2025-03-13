@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceSubmitBillingData: ToolDefinition<typeof args> = {
-  name: "marketplace_submit-billing-data",
+  name: "marketplace-submit-billing-data",
   description: `Submit Billing Data
 
 Sends the billing and usage data. The partner should do this at least once a day and ideally once per hour. <br/> Use the \`credentials.access_token\` we provided in the [Upsert Installation](#upsert-installation) body to authorize this request.`,

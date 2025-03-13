@@ -5,11 +5,11 @@
 ```typescript
 import { TeamPermissions } from "@vercel/sdk/models/teamlimited.js";
 
-let value: TeamPermissions = "UsageViewer";
+let value: TeamPermissions = "EnvironmentManager";
 ```
 
 ## Values
 
 ```typescript
-"CreateProject" | "FullProductionDeployment" | "UsageViewer"
+"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager"
 ```

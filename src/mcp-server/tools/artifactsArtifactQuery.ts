@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsArtifactQuery: ToolDefinition<typeof args> = {
-  name: "artifacts_artifact-query",
+  name: "artifacts-artifact-query",
   description: `Query information about an artifact
 
 Query information about an array of artifacts.`,

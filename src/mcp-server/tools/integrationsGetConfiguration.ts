@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$integrationsGetConfiguration: ToolDefinition<typeof args> = {
-  name: "integrations_get-configuration",
+  name: "integrations-get-configuration",
   description: `Retrieve an integration configuration
 
 Allows to retrieve a the configuration with the provided id in case it exists. The authenticated user or team must be the owner of the config in order to access it.`,

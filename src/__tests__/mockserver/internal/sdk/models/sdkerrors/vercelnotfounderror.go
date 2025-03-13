@@ -4,31 +4,25 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"mockserver/internal/sdk/utils"
 )
 
 type VercelNotFoundErrorError struct {
-	code    string `const:"not_found" json:"code"`
-	message string `const:"The item you requested was not found" json:"message"`
-}
-
-func (v VercelNotFoundErrorError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
-}
-
-func (v *VercelNotFoundErrorError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	Code    string `json:"code"`
+	Message string `json:"message"`
 }
 
 func (o *VercelNotFoundErrorError) GetCode() string {
-	return "not_found"
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }
 
 func (o *VercelNotFoundErrorError) GetMessage() string {
-	return "The item you requested was not found"
+	if o == nil {
+		return ""
+	}
+	return o.Message
 }
 
 type VercelNotFoundError struct {

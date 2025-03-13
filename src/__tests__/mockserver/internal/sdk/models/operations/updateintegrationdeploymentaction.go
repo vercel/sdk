@@ -59,23 +59,15 @@ func (o *Secrets) GetValue() string {
 }
 
 type One struct {
-	kind    string    `const:"resource-secrets" json:"kind"`
+	Kind    string    `json:"kind"`
 	Secrets []Secrets `json:"secrets"`
 }
 
-func (o One) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
-}
-
-func (o *One) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (o *One) GetKind() string {
-	return "resource-secrets"
+	if o == nil {
+		return ""
+	}
+	return o.Kind
 }
 
 func (o *One) GetSecrets() []Secrets {

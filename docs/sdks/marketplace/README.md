@@ -17,11 +17,11 @@
 * [updateResourceSecretsById](#updateresourcesecretsbyid) - Update Resource Secrets
 * [importResource](#importresource) - Import Resource
 * [exchangeSsoToken](#exchangessotoken) - SSO Token Exchange
-* [postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems](#postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems) - Create one or multiple experimentation items
-* [patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](#patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Patch an existing experimentation item
-* [deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](#deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Delete an existing experimentation item
-* [headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](#headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
-* [putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](#putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Push data into a user-provided Edge Config
+* [createInstallationIntegrationConfiguration](#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
+* [updateInstallationIntegrationConfiguration](#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
+* [deleteInstallationIntegrationConfiguration](#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
+* [createInstallationIntegrationEdgeConfig](#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
+* [updateInstallationIntegrationEdgeConfig](#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
 ## getAccountInfo
 
@@ -1171,7 +1171,7 @@ run();
 | models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems
+## createInstallationIntegrationConfiguration
 
 Create one or multiple experimentation items
 
@@ -1185,7 +1185,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.marketplace.postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems({
+  await vercel.marketplace.createInstallationIntegrationConfiguration({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1202,9 +1202,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import {
-  marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems,
-} from "@vercel/sdk/funcs/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.js";
+import { marketplaceCreateInstallationIntegrationConfiguration } from "@vercel/sdk/funcs/marketplaceCreateInstallationIntegrationConfiguration.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1213,7 +1211,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(vercel, {
+  const res = await marketplaceCreateInstallationIntegrationConfiguration(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1252,7 +1250,7 @@ run();
 | models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId
+## updateInstallationIntegrationConfiguration
 
 Patch an existing experimentation item
 
@@ -1266,7 +1264,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.marketplace.patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId({
+  await vercel.marketplace.updateInstallationIntegrationConfiguration({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
     itemId: "<id>",
@@ -1284,9 +1282,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import {
-  marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "@vercel/sdk/funcs/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
+import { marketplaceUpdateInstallationIntegrationConfiguration } from "@vercel/sdk/funcs/marketplaceUpdateInstallationIntegrationConfiguration.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1295,7 +1291,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(vercel, {
+  const res = await marketplaceUpdateInstallationIntegrationConfiguration(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
     itemId: "<id>",
@@ -1335,7 +1331,7 @@ run();
 | models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId
+## deleteInstallationIntegrationConfiguration
 
 Delete an existing experimentation item
 
@@ -1349,7 +1345,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.marketplace.deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId({
+  await vercel.marketplace.deleteInstallationIntegrationConfiguration({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
     itemId: "<id>",
@@ -1367,9 +1363,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import {
-  marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "@vercel/sdk/funcs/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
+import { marketplaceDeleteInstallationIntegrationConfiguration } from "@vercel/sdk/funcs/marketplaceDeleteInstallationIntegrationConfiguration.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1378,7 +1372,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(vercel, {
+  const res = await marketplaceDeleteInstallationIntegrationConfiguration(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
     itemId: "<id>",
@@ -1418,7 +1412,7 @@ run();
 | models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig
+## createInstallationIntegrationEdgeConfig
 
 When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
 
@@ -1432,7 +1426,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.marketplace.headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig({
+  const result = await vercel.marketplace.createInstallationIntegrationEdgeConfig({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1450,9 +1444,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import {
-  marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "@vercel/sdk/funcs/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
+import { marketplaceCreateInstallationIntegrationEdgeConfig } from "@vercel/sdk/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1461,7 +1453,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(vercel, {
+  const res = await marketplaceCreateInstallationIntegrationEdgeConfig(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1501,7 +1493,7 @@ run();
 | models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig
+## updateInstallationIntegrationEdgeConfig
 
 When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
 
@@ -1515,7 +1507,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.marketplace.putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig({
+  const result = await vercel.marketplace.updateInstallationIntegrationEdgeConfig({
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
@@ -1533,9 +1525,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import {
-  marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "@vercel/sdk/funcs/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
+import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "@vercel/sdk/funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1544,7 +1534,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(vercel, {
+  const res = await marketplaceUpdateInstallationIntegrationEdgeConfig(vercel, {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });

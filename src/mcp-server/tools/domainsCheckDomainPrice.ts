@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsCheckDomainPrice: ToolDefinition<typeof args> = {
-  name: "domains_check-domain-price",
+  name: "domains-check-domain-price",
   description: `Check the price for a domain
 
 Check the price to purchase a domain and how long a single purchase period is.`,

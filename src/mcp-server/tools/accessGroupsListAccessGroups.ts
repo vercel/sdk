@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accessGroupsListAccessGroups: ToolDefinition<typeof args> = {
-  name: "access-groups_list-access-groups",
+  name: "access-groups-list-access-groups",
   description: `List access groups for a team, project or member
 
 List access groups`,

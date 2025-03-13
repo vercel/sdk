@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$authenticationDeleteAuthToken: ToolDefinition<typeof args> = {
-  name: "authentication_delete-auth-token",
+  name: "authentication-delete-auth-token",
   description: `Delete an authentication token
 
 Invalidate an authentication token, such that it will no longer be valid for future HTTP requests.`,

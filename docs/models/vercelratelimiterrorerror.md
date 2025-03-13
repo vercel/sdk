@@ -6,6 +6,7 @@
 import { VercelRateLimitErrorError } from "@vercel/sdk/models/vercelratelimiterror.js";
 
 let value: VercelRateLimitErrorError = {
+  code: "<value>",
   message: "<value>",
 };
 ```

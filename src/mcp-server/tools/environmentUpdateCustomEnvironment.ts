@@ -13,7 +13,7 @@ const args = {
 export const tool$environmentUpdateCustomEnvironment: ToolDefinition<
   typeof args
 > = {
-  name: "environment_update-custom-environment",
+  name: "environment-update-custom-environment",
   description: `Update a custom environment
 
 Update a custom environment for the project. Must not be named 'Production' or 'Preview'.`,

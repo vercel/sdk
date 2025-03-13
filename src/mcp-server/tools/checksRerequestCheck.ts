@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$checksRerequestCheck: ToolDefinition<typeof args> = {
-  name: "checks_rerequest-check",
+  name: "checks-rerequest-check",
   description: `Rerequest a check
 
 Rerequest a selected check that has failed.`,

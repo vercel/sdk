@@ -3,29 +3,19 @@
  */
 
 import { marketplaceCreateEvent } from "../funcs/marketplaceCreateEvent.js";
-import {
-  marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "../funcs/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
+import { marketplaceCreateInstallationIntegrationConfiguration } from "../funcs/marketplaceCreateInstallationIntegrationConfiguration.js";
+import { marketplaceCreateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceCreateInstallationIntegrationEdgeConfig.js";
+import { marketplaceDeleteInstallationIntegrationConfiguration } from "../funcs/marketplaceDeleteInstallationIntegrationConfiguration.js";
 import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
-import {
-  marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "../funcs/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
-import {
-  marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId,
-} from "../funcs/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.js";
-import {
-  marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems,
-} from "../funcs/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.js";
-import {
-  marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "../funcs/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
 import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
+import { marketplaceUpdateInstallationIntegrationConfiguration } from "../funcs/marketplaceUpdateInstallationIntegrationConfiguration.js";
+import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import { marketplaceUpdateInvoice } from "../funcs/marketplaceUpdateInvoice.js";
 import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateResourceSecrets.js";
 import { marketplaceUpdateResourceSecretsById } from "../funcs/marketplaceUpdateResourceSecretsById.js";
@@ -290,18 +280,16 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * Create one or multiple experimentation items
    */
-  async postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
+  async createInstallationIntegrationConfiguration(
     request:
       PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
     options?: RequestOptions,
   ): Promise<void> {
-    return unwrapAsync(
-      marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
-        this,
-        request,
-        options,
-      ),
-    );
+    return unwrapAsync(marketplaceCreateInstallationIntegrationConfiguration(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**
@@ -310,18 +298,16 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * Patch an existing experimentation item
    */
-  async patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+  async updateInstallationIntegrationConfiguration(
     request:
       PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
     options?: RequestOptions,
   ): Promise<void> {
-    return unwrapAsync(
-      marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
-        this,
-        request,
-        options,
-      ),
-    );
+    return unwrapAsync(marketplaceUpdateInstallationIntegrationConfiguration(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**
@@ -330,18 +316,16 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * Delete an existing experimentation item
    */
-  async deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+  async deleteInstallationIntegrationConfiguration(
     request:
       DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
     options?: RequestOptions,
   ): Promise<void> {
-    return unwrapAsync(
-      marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
-        this,
-        request,
-        options,
-      ),
-    );
+    return unwrapAsync(marketplaceDeleteInstallationIntegrationConfiguration(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**
@@ -350,7 +334,7 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
    */
-  async headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+  async createInstallationIntegrationEdgeConfig(
     request:
       HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
     options?: RequestOptions,
@@ -358,13 +342,11 @@ export class Marketplace extends ClientSDK {
     | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
     | undefined
   > {
-    return unwrapAsync(
-      marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
-        this,
-        request,
-        options,
-      ),
-    );
+    return unwrapAsync(marketplaceCreateInstallationIntegrationEdgeConfig(
+      this,
+      request,
+      options,
+    ));
   }
 
   /**
@@ -373,19 +355,17 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.
    */
-  async putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+  async updateInstallationIntegrationEdgeConfig(
     request:
       PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
     options?: RequestOptions,
   ): Promise<
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
   > {
-    return unwrapAsync(
-      marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
-        this,
-        request,
-        options,
-      ),
-    );
+    return unwrapAsync(marketplaceUpdateInstallationIntegrationEdgeConfig(
+      this,
+      request,
+      options,
+    ));
   }
 }

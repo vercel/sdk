@@ -5,7 +5,10 @@
 ```typescript
 import { ErrorT } from "@vercel/sdk/models/vercelbadrequesterror.js";
 
-let value: ErrorT = {};
+let value: ErrorT = {
+  code: "<value>",
+  message: "<value>",
+};
 ```
 
 ## Fields

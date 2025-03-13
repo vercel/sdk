@@ -12,7 +12,7 @@ const args = {
 
 export const tool$deploymentsListDeploymentFiles: ToolDefinition<typeof args> =
   {
-    name: "deployments_list-deployment-files",
+    name: "deployments-list-deployment-files",
     description: `List Deployment Files
 
 Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique identifier. If the deployment was created with the Vercel CLI or the API directly with the \`files\` key, it will have a file tree that can be retrievable.`,

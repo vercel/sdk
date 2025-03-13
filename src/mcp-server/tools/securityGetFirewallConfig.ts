@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityGetFirewallConfig: ToolDefinition<typeof args> = {
-  name: "security_get-firewall-config",
+  name: "security-get-firewall-config",
   description: `Read Firewall Configuration
 
 Retrieve the specified firewall configuration for a project. The deployed configVersion will be \`active\``,

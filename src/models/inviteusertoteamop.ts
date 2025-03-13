@@ -101,6 +101,8 @@ export const ResponseBodyTeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
 } as const;
 export type ResponseBodyTeamPermissions = ClosedEnum<
   typeof ResponseBodyTeamPermissions
@@ -157,6 +159,8 @@ export const InviteUserToTeamResponseBodyTeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
 } as const;
 /**
  * The team permissions of the user

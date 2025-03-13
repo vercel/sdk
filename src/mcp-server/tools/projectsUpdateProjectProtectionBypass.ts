@@ -13,7 +13,7 @@ const args = {
 export const tool$projectsUpdateProjectProtectionBypass: ToolDefinition<
   typeof args
 > = {
-  name: "projects_update-project-protection-bypass",
+  name: "projects-update-project-protection-bypass",
   description: `Update Protection Bypass for Automation
 
 Update the deployment protection automation bypass for a project`,

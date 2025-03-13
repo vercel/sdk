@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsGetDomainTransfer: ToolDefinition<typeof args> = {
-  name: "domains_get-domain-transfer",
+  name: "domains-get-domain-transfer",
   description: `Get domain transfer info.
 
 Fetch domain transfer availability or transfer status if a transfer is in progress.`,

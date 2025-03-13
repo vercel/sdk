@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 9e6a3a52fea8656fb8d5827f00bc690a
+  docChecksum: 7b3de43085c64c859719ed2a063adc23
   docVersion: 0.0.1
-  speakeasyVersion: 1.513.4
-  generationVersion: 2.545.4
-  releaseVersion: 1.4.0
-  configChecksum: 6a538dff094772259a0de520cd046039
+  speakeasyVersion: 1.517.3
+  generationVersion: 2.548.6
+  releaseVersion: 1.5.0
+  configChecksum: 2cc178121340ffe4a6d7b02f79d2d84f
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.3
+    core: 3.21.4
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -28,8 +28,9 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.6.0
+    mcpServer: 0.7.0
     mockServer: 0.1.0
+    nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
@@ -117,6 +118,7 @@ generatedFiles:
   - docs/models/blockedduetooveragetype.md
   - docs/models/branchmatcher.md
   - docs/models/build.md
+  - docs/models/buildentitlements.md
   - docs/models/builds.md
   - docs/models/buydomaindomain.md
   - docs/models/buydomaindomainsdomain.md
@@ -3013,19 +3015,19 @@ generatedFiles:
   - src/funcs/logDrainsGetConfigurableLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
   - src/funcs/marketplaceCreateEvent.ts
-  - src/funcs/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
+  - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
+  - src/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.ts
+  - src/funcs/marketplaceDeleteInstallationIntegrationConfiguration.ts
   - src/funcs/marketplaceExchangeSsoToken.ts
   - src/funcs/marketplaceGetAccountInfo.ts
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
-  - src/funcs/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
   - src/funcs/marketplaceImportResource.ts
-  - src/funcs/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
-  - src/funcs/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.ts
-  - src/funcs/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
   - src/funcs/marketplaceSubmitBillingData.ts
   - src/funcs/marketplaceSubmitInvoice.ts
   - src/funcs/marketplaceSubmitPrepaymentBalances.ts
+  - src/funcs/marketplaceUpdateInstallationIntegrationConfiguration.ts
+  - src/funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.ts
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
@@ -3206,19 +3208,19 @@ generatedFiles:
   - src/mcp-server/tools/logDrainsGetConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
   - src/mcp-server/tools/marketplaceCreateEvent.ts
-  - src/mcp-server/tools/marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
+  - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
+  - src/mcp-server/tools/marketplaceCreateInstallationIntegrationEdgeConfig.ts
+  - src/mcp-server/tools/marketplaceDeleteInstallationIntegrationConfiguration.ts
   - src/mcp-server/tools/marketplaceExchangeSsoToken.ts
   - src/mcp-server/tools/marketplaceGetAccountInfo.ts
   - src/mcp-server/tools/marketplaceGetInvoice.ts
   - src/mcp-server/tools/marketplaceGetMember.ts
-  - src/mcp-server/tools/marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceImportResource.ts
-  - src/mcp-server/tools/marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId.ts
-  - src/mcp-server/tools/marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems.ts
-  - src/mcp-server/tools/marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceSubmitBillingData.ts
   - src/mcp-server/tools/marketplaceSubmitInvoice.ts
   - src/mcp-server/tools/marketplaceSubmitPrepaymentBalances.ts
+  - src/mcp-server/tools/marketplaceUpdateInstallationIntegrationConfiguration.ts
+  - src/mcp-server/tools/marketplaceUpdateInstallationIntegrationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceUpdateInvoice.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
@@ -3501,7 +3503,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     name:
@@ -3517,7 +3519,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateAccessGroup:
@@ -3536,7 +3538,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteAccessGroup:
@@ -3551,7 +3553,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   listAccessGroupMembers:
@@ -3569,7 +3571,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   listAccessGroups:
@@ -3589,7 +3591,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   createAccessGroup:
@@ -3606,7 +3608,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   listAccessGroupProjects:
@@ -3624,7 +3626,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   createAccessGroupProject:
@@ -3643,7 +3645,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   readAccessGroupProject:
@@ -3661,7 +3663,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     name:
@@ -3678,7 +3680,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     "":
@@ -3695,7 +3697,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateAccessGroupProject:
@@ -3715,7 +3717,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     name:
@@ -3734,7 +3736,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     "":
@@ -3753,7 +3755,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteAccessGroupProject:
@@ -3769,7 +3771,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     name:
@@ -3784,7 +3786,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
     "":
@@ -3799,7 +3801,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   recordEvents:
@@ -3817,7 +3819,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   status:
     speakeasy-default-status:
       parameters:
@@ -3830,7 +3832,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   uploadArtifact:
     speakeasy-default-upload-artifact:
       parameters:
@@ -3853,7 +3855,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   downloadArtifact:
     speakeasy-default-download-artifact:
       parameters:
@@ -3871,7 +3873,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   artifactExists:
@@ -3886,7 +3888,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   artifactQuery:
@@ -3903,7 +3905,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createCheck:
     speakeasy-default-create-check:
       parameters:
@@ -3920,7 +3922,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getAllChecks:
@@ -3937,7 +3939,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getCheck:
@@ -3955,7 +3957,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateCheck:
@@ -3975,7 +3977,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   rerequestCheck:
@@ -3993,7 +3995,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateProjectDataCache:
@@ -4012,7 +4014,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getProjects:
@@ -4029,7 +4031,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createProject:
     speakeasy-default-create-project:
       parameters:
@@ -4044,7 +4046,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   updateProject:
     speakeasy-default-update-project:
       parameters:
@@ -4061,7 +4063,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteProject:
@@ -4076,7 +4078,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getProjectDomains:
     speakeasy-default-get-project-domains:
       parameters:
@@ -4099,7 +4101,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getProjectDomain:
     speakeasy-default-get-project-domain:
       parameters:
@@ -4115,7 +4117,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   updateProjectDomain:
     speakeasy-default-update-project-domain:
       parameters:
@@ -4133,7 +4135,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   removeProjectDomain:
     speakeasy-default-remove-project-domain:
       parameters:
@@ -4149,7 +4151,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   addProjectDomain:
@@ -4168,7 +4170,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   verifyProjectDomain:
     speakeasy-default-verify-project-domain:
       parameters:
@@ -4184,7 +4186,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   filterProjectEnvs:
     speakeasy-default-filter-project-envs:
       parameters:
@@ -4204,7 +4206,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getProjectEnv:
     speakeasy-default-get-project-env:
       parameters:
@@ -4220,7 +4222,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createProjectEnv:
     speakeasy-default-create-project-env:
       parameters:
@@ -4238,7 +4240,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   removeProjectEnv:
     speakeasy-default-remove-project-env:
       parameters:
@@ -4255,7 +4257,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   editProjectEnv:
@@ -4275,7 +4277,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createProjectTransferRequest:
     speakeasy-default-create-project-transfer-request:
       parameters:
@@ -4290,7 +4292,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   acceptProjectTransferRequest:
     speakeasy-default-accept-project-transfer-request:
       parameters:
@@ -4307,7 +4309,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateProjectProtectionBypass:
@@ -4326,7 +4328,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   requestPromote:
@@ -4342,7 +4344,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   listPromoteAliases:
     speakeasy-default-list-promote-aliases:
       parameters:
@@ -4360,7 +4362,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getDeploymentEvents:
@@ -4384,7 +4386,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getDeployment:
     speakeasy-default-get-deployment:
       parameters:
@@ -4415,7 +4417,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   cancelDeployment:
@@ -4432,7 +4434,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   uploadFile:
@@ -4448,7 +4450,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   listDeploymentFiles:
     speakeasy-default-list-deployment-files:
       parameters:
@@ -4463,7 +4465,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getDeploymentFileContents:
@@ -4479,7 +4481,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getDeployments:
@@ -4504,7 +4506,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteDeployment:
@@ -4522,7 +4524,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   buyDomain:
@@ -4541,9 +4543,9 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "429":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   checkDomainPrice:
     speakeasy-default-check-domain-price:
       parameters:
@@ -4558,7 +4560,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   checkDomainStatus:
     speakeasy-default-check-domain-status:
       parameters:
@@ -4572,7 +4574,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getDomainTransfer:
     speakeasy-default-get-domain-transfer:
       parameters:
@@ -4587,7 +4589,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getDomainConfig:
     speakeasy-default-get-domain-config:
       parameters:
@@ -4602,7 +4604,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getDomain:
     speakeasy-default-get-domain:
       parameters:
@@ -4613,11 +4615,11 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "name": "example.com", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>"}}
+          application/json: {"domain": {"suffix": true, "verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "teamId": "<id>", "boughtAt": 1613602938882, "name": "example.com", "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>"}}
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getDomains:
@@ -4635,7 +4637,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createOrTransferDomain:
     speakeasy-default-create-or-transfer-domain:
       parameters:
@@ -4650,7 +4652,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   patchDomain:
@@ -4669,7 +4671,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteDomain:
@@ -4686,7 +4688,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getRecords:
@@ -4706,7 +4708,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   createRecord:
@@ -4725,7 +4727,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateRecord:
@@ -4744,7 +4746,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   removeRecord:
@@ -4762,7 +4764,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigs:
@@ -4777,7 +4779,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createEdgeConfig:
     speakeasy-default-create-edge-config:
       parameters:
@@ -4792,7 +4794,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getEdgeConfig:
     speakeasy-default-get-edge-config:
       parameters:
@@ -4807,7 +4809,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateEdgeConfig:
@@ -4826,7 +4828,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteEdgeConfig:
@@ -4841,7 +4843,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigItems:
@@ -4858,7 +4860,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigSchema:
@@ -4875,7 +4877,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   patchEdgeConfigSchema:
@@ -4894,7 +4896,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteEdgeConfigSchema:
@@ -4909,7 +4911,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigItem:
@@ -4927,7 +4929,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigTokens:
@@ -4944,7 +4946,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteEdgeConfigTokens:
@@ -4961,7 +4963,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigToken:
@@ -4979,7 +4981,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   createEdgeConfigToken:
@@ -4998,7 +5000,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigBackup:
@@ -5016,7 +5018,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getEdgeConfigBackups:
@@ -5033,7 +5035,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   listUserEvents:
@@ -5054,7 +5056,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getAuthUser:
     speakeasy-default-get-auth-user:
       responses:
@@ -5063,7 +5065,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   requestDelete:
     speakeasy-default-request-delete:
       requestBody:
@@ -5074,7 +5076,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get-account-info:
     speakeasy-default-get-account-info:
       parameters:
@@ -5086,7 +5088,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get-member:
     speakeasy-default-get-member:
       parameters:
@@ -5099,7 +5101,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   create-event:
@@ -5113,7 +5115,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   submit-billing-data:
     speakeasy-default-submit-billing-data:
       parameters:
@@ -5125,7 +5127,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   submit-invoice:
     speakeasy-default-submit-invoice:
       parameters:
@@ -5139,7 +5141,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get-invoice:
     speakeasy-default-get-invoice:
       parameters:
@@ -5152,7 +5154,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   update-invoice:
@@ -5167,7 +5169,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   update-resource-secrets:
@@ -5183,7 +5185,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   update-resource-secrets-by-id:
@@ -5196,7 +5198,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   exchange-sso-token:
@@ -5223,7 +5225,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getConfiguration:
     speakeasy-default-get-configuration:
       parameters:
@@ -5238,7 +5240,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteConfiguration:
@@ -5253,7 +5255,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   gitNamespaces:
@@ -5267,7 +5269,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   searchRepo:
     speakeasy-default-search-repo:
       parameters:
@@ -5288,7 +5290,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createAuthToken:
     speakeasy-default-create-auth-token:
       parameters:
@@ -5303,7 +5305,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getAuthToken:
     speakeasy-default-get-auth-token:
       parameters:
@@ -5315,7 +5317,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteAuthToken:
@@ -5329,7 +5331,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getIntegrationLogDrains:
@@ -5344,7 +5346,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createLogDrain:
     speakeasy-default-create-log-drain:
       parameters:
@@ -5359,7 +5361,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   deleteIntegrationLogDrain:
     speakeasy-default-delete-integration-log-drain:
       parameters:
@@ -5372,7 +5374,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getConfigurableLogDrain:
@@ -5389,7 +5391,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteConfigurableLogDrain:
@@ -5404,7 +5406,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getAllLogDrains:
@@ -5419,7 +5421,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createConfigurableLogDrain:
     speakeasy-default-create-configurable-log-drain:
       parameters:
@@ -5434,7 +5436,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getProjectMembers:
     speakeasy-default-get-project-members:
       parameters:
@@ -5452,7 +5454,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   addProjectMember:
     speakeasy-default-add-project-member:
       parameters:
@@ -5469,7 +5471,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   removeProjectMember:
     speakeasy-default-remove-project-member:
       parameters:
@@ -5485,7 +5487,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   post_/v1/projects/{idOrName}/custom-environments:
     speakeasy-default-post-/v1-/projects/{id-or-name}/custom-environments:
       parameters:
@@ -5515,7 +5517,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}:
     speakeasy-default-get-/v9-/projects/{id-or-name}/custom-environments/{environment-slug-or-id}:
       parameters:
@@ -5580,7 +5582,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   putFirewallConfig:
@@ -5616,7 +5618,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getFirewallConfig:
@@ -5634,7 +5636,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getActiveAttackStatus:
@@ -5650,7 +5652,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getBypassIp:
@@ -5667,7 +5669,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   addBypassIp:
@@ -5683,7 +5685,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   removeBypassIp:
@@ -5699,7 +5701,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getTeamMembers:
@@ -5718,7 +5720,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   inviteUserToTeam:
@@ -5734,7 +5736,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   requestAccessToTeam:
@@ -5750,7 +5752,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getTeamAccessRequest:
@@ -5765,7 +5767,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   joinTeam:
@@ -5781,7 +5783,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateTeamMember:
@@ -5798,7 +5800,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   removeTeamMember:
@@ -5815,7 +5817,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getTeam:
@@ -5831,7 +5833,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   patchTeam:
@@ -5849,7 +5851,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getTeams:
@@ -5865,7 +5867,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createTeam:
     speakeasy-default-create-team:
       requestBody:
@@ -5876,7 +5878,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   deleteTeam:
     speakeasy-default-delete-team:
       parameters:
@@ -5893,7 +5895,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteTeamInviteCode:
@@ -5908,7 +5910,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   createWebhook:
@@ -5925,7 +5927,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getWebhooks:
     speakeasy-default-get-webhooks:
       parameters:
@@ -5938,7 +5940,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getWebhook:
     speakeasy-default-get-webhook:
       parameters:
@@ -5953,7 +5955,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   deleteWebhook:
     speakeasy-default-delete-webhook:
       parameters:
@@ -5966,7 +5968,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   listAliases:
     speakeasy-default-list-aliases:
       parameters:
@@ -5986,7 +5988,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getAlias:
@@ -6007,7 +6009,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   deleteAlias:
@@ -6024,7 +6026,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   listDeploymentAliases:
@@ -6041,7 +6043,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   assignAlias:
@@ -6060,7 +6062,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   getCertById:
@@ -6077,7 +6079,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   removeCert:
@@ -6094,7 +6096,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   issueCert:
@@ -6111,7 +6113,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   uploadCert:
@@ -6128,7 +6130,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   update-integration-deployment-action:
     speakeasy-default-update-integration-deployment-action:
       parameters:
@@ -6141,7 +6143,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   submit-prepayment-balances:
     speakeasy-default-submit-prepayment-balances:
       parameters:
@@ -6151,7 +6153,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   import-resource:
     speakeasy-default-import-resource:
       parameters:
@@ -6164,7 +6166,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items:
@@ -6177,7 +6179,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}:
@@ -6191,7 +6193,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}:
@@ -6205,7 +6207,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config:
@@ -6216,11 +6218,11 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": [], "key1": true}, "updatedAt": 6086.93, "digest": "<value>"}
+          application/json: {"items": {"key": {}, "key1": true}, "updatedAt": 6086.93, "digest": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config:
@@ -6235,7 +6237,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   get_/v1/experimentation/items:
@@ -6246,7 +6248,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   createCustomEnvironment:
     speakeasy-default-create-custom-environment:
       parameters:
@@ -6261,7 +6263,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getCustomEnvironment:
     speakeasy-default-get-custom-environment:
       parameters:
@@ -6277,7 +6279,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {}}
   updateCustomEnvironment:
@@ -6295,7 +6297,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   removeCustomEnvironment:
     speakeasy-default-remove-custom-environment:
       parameters:
@@ -6311,7 +6313,7 @@ examples:
         "400":
           application/json: {"error": {}}
         "401":
-          application/json: {"error": {"message": "<value>"}}
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.0
 generatedTests:
   readAccessGroup: "2025-01-16T21:59:36Z"

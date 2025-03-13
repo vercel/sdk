@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$integrationsGetConfigurations: ToolDefinition<typeof args> = {
-  name: "integrations_get-configurations",
+  name: "integrations-get-configurations",
   description: `Get configurations for the authenticated user or team
 
 Allows to retrieve all configurations for an authenticated integration. When the \`project\` view is used, configurations generated for the authorization flow will be filtered out of the results.`,

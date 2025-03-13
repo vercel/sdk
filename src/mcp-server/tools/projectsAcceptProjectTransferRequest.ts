@@ -13,7 +13,7 @@ const args = {
 export const tool$projectsAcceptProjectTransferRequest: ToolDefinition<
   typeof args
 > = {
-  name: "projects_accept-project-transfer-request",
+  name: "projects-accept-project-transfer-request",
   description: `Accept project transfer request
 
 Accept a project transfer request initated by another team. <br/> The \`code\` is generated using the \`POST /projects/:idOrName/transfer-request\` endpoint.`,

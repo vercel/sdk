@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsAddProjectDomain: ToolDefinition<typeof args> = {
-  name: "projects_add-project-domain",
+  name: "projects-add-project-domain",
   description: `Add a domain to a project
 
 Add a domain to the project by passing its domain name and by specifying the project by either passing the project \`id\` or \`name\` in the URL. If the domain is not yet verified to be used on this project, the request will return \`verified = false\`, and the domain will need to be verified according to the \`verification\` challenge via \`POST /projects/:idOrName/domains/:domain/verify\`. If the domain already exists on the project, the request will fail with a \`400\` status code.`,

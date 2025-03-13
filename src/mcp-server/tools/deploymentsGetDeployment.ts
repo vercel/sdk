@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$deploymentsGetDeployment: ToolDefinition<typeof args> = {
-  name: "deployments_get-deployment",
+  name: "deployments-get-deployment",
   description: `Get a deployment by ID or URL
 
 Retrieves information for a deployment either by supplying its ID (\`id\` property) or Hostname (\`url\` property). Additional details will be included when the authenticated user or team is an owner of the deployment.`,

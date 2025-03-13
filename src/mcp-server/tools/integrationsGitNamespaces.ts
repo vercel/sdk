@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$integrationsGitNamespaces: ToolDefinition<typeof args> = {
-  name: "integrations_git-namespaces",
+  name: "integrations-git-namespaces",
   description: `List git namespaces by provider
 
 Lists git namespaces for a supported provider. Supported providers are \`github\`, \`gitlab\` and \`bitbucket\`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.`,

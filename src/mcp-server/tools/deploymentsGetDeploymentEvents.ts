@@ -12,7 +12,7 @@ const args = {
 
 export const tool$deploymentsGetDeploymentEvents: ToolDefinition<typeof args> =
   {
-    name: "deployments_get-deployment-events",
+    name: "deployments-get-deployment-events",
     description: `Get deployment events
 
 Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.`,

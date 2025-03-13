@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aliasesListDeploymentAliases: ToolDefinition<typeof args> = {
-  name: "aliases_list-deployment-aliases",
+  name: "aliases-list-deployment-aliases",
   description: `List Deployment Aliases
 
 Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aliasesGetAlias: ToolDefinition<typeof args> = {
-  name: "aliases_get-alias",
+  name: "aliases-get-alias",
   description: `Get an Alias
 
 Retrieves an Alias for the given host name or alias ID.`,

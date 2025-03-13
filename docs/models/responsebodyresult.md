@@ -10,8 +10,8 @@ let value: ResponseBodyResult = {
   id: "<id>",
   domain: "untrue-entry.info",
   ip: "168.7.124.174",
-  createdAt: "1735754014482",
-  updatedAt: "1741318021105",
+  createdAt: "1736269005270",
+  updatedAt: "1741833011893",
   updatedAtHour: "<value>",
 };
 ```

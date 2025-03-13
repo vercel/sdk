@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsRecordEvents: ToolDefinition<typeof args> = {
-  name: "artifacts_record-events",
+  name: "artifacts-record-events",
   description: `Record an artifacts cache usage event
 
 Records an artifacts cache usage event. The body of this request is an array of cache usage events. The supported event types are \`HIT\` and \`MISS\`. The source is either \`LOCAL\` the cache event was on the users filesystem cache or \`REMOTE\` if the cache event is for a remote cache. When the event is a \`HIT\` the request also accepts a number \`duration\` which is the time taken to generate the artifact in the cache.`,

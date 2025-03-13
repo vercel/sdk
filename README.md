@@ -405,11 +405,11 @@ run();
 * [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 * [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
-* [postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems](docs/sdks/marketplace/README.md#postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems) - Create one or multiple experimentation items
-* [patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](docs/sdks/marketplace/README.md#patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Patch an existing experimentation item
-* [deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId](docs/sdks/marketplace/README.md#deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Delete an existing experimentation item
-* [headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
-* [putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Push data into a user-provided Edge Config
+* [createInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
+* [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
+* [deleteInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
+* [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
+* [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
 ### [projectMembers](docs/sdks/projectmembers/README.md)
 
@@ -595,19 +595,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`logDrainsGetConfigurableLogDrain`](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
 - [`logDrainsGetIntegrationLogDrains`](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 - [`marketplaceCreateEvent`](docs/sdks/marketplace/README.md#createevent) - Create Event
-- [`marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId`](docs/sdks/marketplace/README.md#deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Delete an existing experimentation item
+- [`marketplaceCreateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
+- [`marketplaceCreateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
+- [`marketplaceDeleteInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
-- [`marketplaceHeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
-- [`marketplacePatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId`](docs/sdks/marketplace/README.md#patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid) - Patch an existing experimentation item
-- [`marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems`](docs/sdks/marketplace/README.md#postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems) - Create one or multiple experimentation items
-- [`marketplacePutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Push data into a user-provided Edge Config
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 - [`marketplaceSubmitPrepaymentBalances`](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
+- [`marketplaceUpdateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
+- [`marketplaceUpdateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets

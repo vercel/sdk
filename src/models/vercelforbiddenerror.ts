@@ -8,7 +8,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type VercelForbiddenErrorError = {
-  code?: "forbidden" | undefined;
+  code: string;
   message: string;
 };
 
@@ -41,13 +41,13 @@ export const VercelForbiddenErrorError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.literal("forbidden").optional(),
+  code: z.string(),
   message: z.string(),
 });
 
 /** @internal */
 export type VercelForbiddenErrorError$Outbound = {
-  code: "forbidden";
+  code: string;
   message: string;
 };
 
@@ -57,7 +57,7 @@ export const VercelForbiddenErrorError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   VercelForbiddenErrorError
 > = z.object({
-  code: z.literal("forbidden").default("forbidden" as const),
+  code: z.string(),
   message: z.string(),
 });
 

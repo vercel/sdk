@@ -27,7 +27,7 @@ export type UpdateFirewallConfigRequestBodySecurityRequest12Value = {
  * Update a managed rule group
  */
 export type Twelve = {
-  action?: "managedRuleGroup.update" | undefined;
+  action: string;
   id: string;
   value: { [k: string]: UpdateFirewallConfigRequestBodySecurityRequest12Value };
 };
@@ -721,7 +721,7 @@ export function updateFirewallConfigRequestBodySecurityRequest12ValueFromJSON(
 /** @internal */
 export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
   .object({
-    action: z.literal("managedRuleGroup.update").optional(),
+    action: z.string(),
     id: z.string(),
     value: z.record(
       z.lazy(() =>
@@ -732,7 +732,7 @@ export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Twelve$Outbound = {
-  action: "managedRuleGroup.update";
+  action: string;
   id: string;
   value: {
     [k: string]: UpdateFirewallConfigRequestBodySecurityRequest12Value$Outbound;
@@ -745,9 +745,7 @@ export const Twelve$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Twelve
 > = z.object({
-  action: z.literal("managedRuleGroup.update").default(
-    "managedRuleGroup.update" as const,
-  ),
+  action: z.string(),
   id: z.string(),
   value: z.record(
     z.lazy(() =>

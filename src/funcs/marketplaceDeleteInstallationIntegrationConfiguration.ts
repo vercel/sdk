@@ -4,7 +4,7 @@
 
 import * as z from "zod";
 import { VercelCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -12,16 +12,16 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema,
+} from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema,
-} from "../models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.js";
 import { SDKError } from "../models/sdkerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
@@ -40,15 +40,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create one or multiple experimentation items
+ * Delete an existing experimentation item
  *
  * @remarks
- * Create one or multiple experimentation items
+ * Delete an existing experimentation item
  */
-export function marketplacePostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
+export function marketplaceDeleteInstallationIntegrationConfiguration(
   client: VercelCore,
   request:
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -75,7 +75,7 @@ export function marketplacePostV1InstallationsIntegrationConfigurationIdResource
 async function $do(
   client: VercelCore,
   request:
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -98,7 +98,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema
+      DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -106,7 +106,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RequestBody, { explode: true });
+  const body = null;
 
   const pathParams = {
     integrationConfigurationId: encodeSimple(
@@ -114,6 +114,10 @@ async function $do(
       payload.integrationConfigurationId,
       { explode: false, charEncoding: "percent" },
     ),
+    itemId: encodeSimple("itemId", payload.itemId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
     resourceId: encodeSimple("resourceId", payload.resourceId, {
       explode: false,
       charEncoding: "percent",
@@ -121,11 +125,10 @@ async function $do(
   };
 
   const path = pathToFunc(
-    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
   )(pathParams);
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -136,7 +139,7 @@ async function $do(
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+      "delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -150,7 +153,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "DELETE",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

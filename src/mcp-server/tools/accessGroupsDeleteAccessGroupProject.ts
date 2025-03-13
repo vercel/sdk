@@ -13,7 +13,7 @@ const args = {
 export const tool$accessGroupsDeleteAccessGroupProject: ToolDefinition<
   typeof args
 > = {
-  name: "access-groups_delete-access-group-project",
+  name: "access-groups-delete-access-group-project",
   description: `Delete an access group project
 
 Allows deletion of an access group project`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceCreateEvent: ToolDefinition<typeof args> = {
-  name: "marketplace_create-event",
+  name: "marketplace-create-event",
   description: `Create Event
 
 Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use \`list-resources\` and other read APIs to get the new state.<br/> <br/> \`resource.updated\` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> \`installation.updated\` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner’s application. The partner should dispatch a \`resource.updated\` event to notify Vercel to update the resource in Vercel’s datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a \`resource.updated\` event to notify Vercel to update the resource's status in Vercel's datastores.<br/>`,

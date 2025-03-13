@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceGetInvoice: ToolDefinition<typeof args> = {
-  name: "marketplace_get-invoice",
+  name: "marketplace-get-invoice",
   description: `Get Invoice
 
 Get Invoice details and status for a given invoice ID.<br/> <br/> See Billing Events with Webhooks documentation on how to receive invoice events. This endpoint is used to retrieve the invoice details.`,

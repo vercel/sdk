@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$authenticationCreateAuthToken: ToolDefinition<typeof args> = {
-  name: "authentication_create-auth-token",
+  name: "authentication-create-auth-token",
   description: `Create an Auth Token
 
 Creates and returns a new authentication token for the currently authenticated User. The \`bearerToken\` property is only provided once, in the response body, so be sure to save it on the client for use with API requests.`,

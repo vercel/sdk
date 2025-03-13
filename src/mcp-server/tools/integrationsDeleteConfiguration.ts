@@ -12,7 +12,7 @@ const args = {
 
 export const tool$integrationsDeleteConfiguration: ToolDefinition<typeof args> =
   {
-    name: "integrations_delete-configuration",
+    name: "integrations-delete-configuration",
     description: `Delete an integration configuration
 
 Allows to remove the configuration with the \`id\` provided in the parameters. The configuration and all of its resources will be removed. This includes Webhooks, LogDrains and Project Env variables.`,

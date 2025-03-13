@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityGetActiveAttackStatus: ToolDefinition<typeof args> = {
-  name: "security_get-active-attack-status",
+  name: "security-get-active-attack-status",
   description: `Read active attack data
 
 Retrieve active attack data within the last 24h window`,

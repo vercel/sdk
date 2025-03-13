@@ -13,7 +13,7 @@ const args = {
 export const tool$edgeConfigDeleteEdgeConfigTokens: ToolDefinition<
   typeof args
 > = {
-  name: "edge-config_delete-edge-config-tokens",
+  name: "edge-config-delete-edge-config-tokens",
   description: `Delete one or more Edge Config tokens
 
 Deletes one or more tokens of an existing Edge Config.`,

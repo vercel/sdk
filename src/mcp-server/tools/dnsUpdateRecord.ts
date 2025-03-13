@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dnsUpdateRecord: ToolDefinition<typeof args> = {
-  name: "dns_update-record",
+  name: "dns-update-record",
   description: `Update an existing DNS record
 
 Updates an existing DNS record for a domain name.`,

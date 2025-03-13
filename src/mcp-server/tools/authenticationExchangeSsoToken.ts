@@ -12,7 +12,7 @@ const args = {
 
 export const tool$authenticationExchangeSsoToken: ToolDefinition<typeof args> =
   {
-    name: "authentication_exchange-sso-token",
+    name: "authentication-exchange-sso-token",
     description: `SSO Token Exchange
 
 During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization \`code\` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. This is used to verify the identity of the user during the [**Open in Provider** flow](https://vercel.com/docs/integrations/marketplace-flows#open-in-provider-button-flow). Providers should not persist the returned \`id_token\` in a database since the token will expire.`,

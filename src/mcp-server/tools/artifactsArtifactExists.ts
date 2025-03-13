@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsArtifactExists: ToolDefinition<typeof args> = {
-  name: "artifacts_artifact-exists",
+  name: "artifacts-artifact-exists",
   description: `Check if a cache artifact exists
 
 Check that a cache artifact with the given \`hash\` exists. This request returns response headers only and is equivalent to a \`GET\` request to this endpoint where the response contains no body.`,

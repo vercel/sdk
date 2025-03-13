@@ -5,28 +5,19 @@ package sdkerrors
 import (
 	"encoding/json"
 	"mockserver/internal/sdk/models/components"
-	"mockserver/internal/sdk/utils"
 )
 
 type VercelRateLimitErrorError struct {
-	code    string                      `const:"rate_limited" json:"code"`
+	Code    string                      `json:"code"`
 	Message string                      `json:"message"`
 	Limit   *components.RateLimitNotice `json:"limit,omitempty"`
 }
 
-func (v VercelRateLimitErrorError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
-}
-
-func (v *VercelRateLimitErrorError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (o *VercelRateLimitErrorError) GetCode() string {
-	return "rate_limited"
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }
 
 func (o *VercelRateLimitErrorError) GetMessage() string {

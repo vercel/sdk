@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsBuyDomain: ToolDefinition<typeof args> = {
-  name: "domains_buy-domain",
+  name: "domains-buy-domain",
   description: `Purchase a domain
 
 Allows to purchase the specified domain.`,

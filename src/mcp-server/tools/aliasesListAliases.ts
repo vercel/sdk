@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aliasesListAliases: ToolDefinition<typeof args> = {
-  name: "aliases_list-aliases",
+  name: "aliases-list-aliases",
   description: `List aliases
 
 Retrieves a list of aliases for the authenticated User or Team. When \`domain\` is provided, only aliases for that domain will be returned. When \`projectId\` is provided, it will only return the given project aliases.`,

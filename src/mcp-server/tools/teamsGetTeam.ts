@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsGetTeam: ToolDefinition<typeof args> = {
-  name: "teams_get-team",
+  name: "teams-get-team",
   description: `Get a Team
 
 Get information for the Team specified by the \`teamId\` parameter.`,

@@ -24,7 +24,7 @@ export type Secrets = {
 };
 
 export type Outcomes1 = {
-  kind?: "resource-secrets" | undefined;
+  kind: string;
   secrets: Array<Secrets>;
 };
 
@@ -123,13 +123,13 @@ export const Outcomes1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.literal("resource-secrets").optional(),
+  kind: z.string(),
   secrets: z.array(z.lazy(() => Secrets$inboundSchema)),
 });
 
 /** @internal */
 export type Outcomes1$Outbound = {
-  kind: "resource-secrets";
+  kind: string;
   secrets: Array<Secrets$Outbound>;
 };
 
@@ -139,7 +139,7 @@ export const Outcomes1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Outcomes1
 > = z.object({
-  kind: z.literal("resource-secrets").default("resource-secrets" as const),
+  kind: z.string(),
   secrets: z.array(z.lazy(() => Secrets$outboundSchema)),
 });
 

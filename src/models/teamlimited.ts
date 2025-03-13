@@ -104,6 +104,8 @@ export const TeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
 } as const;
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 

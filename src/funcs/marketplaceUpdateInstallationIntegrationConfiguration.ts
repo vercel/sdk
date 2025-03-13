@@ -4,7 +4,7 @@
 
 import * as z from "zod";
 import { VercelCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -12,16 +12,16 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema,
-} from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
-import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema,
+} from "../models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
 import { SDKError } from "../models/sdkerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
@@ -40,15 +40,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete an existing experimentation item
+ * Patch an existing experimentation item
  *
  * @remarks
- * Delete an existing experimentation item
+ * Patch an existing experimentation item
  */
-export function marketplaceDeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
+export function marketplaceUpdateInstallationIntegrationConfiguration(
   client: VercelCore,
   request:
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -75,7 +75,7 @@ export function marketplaceDeleteV1InstallationsIntegrationConfigurationIdResour
 async function $do(
   client: VercelCore,
   request:
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -98,7 +98,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema
+      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -106,7 +106,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
   const pathParams = {
     integrationConfigurationId: encodeSimple(
@@ -129,6 +129,7 @@ async function $do(
   )(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -139,7 +140,7 @@ async function $do(
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+      "patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -153,7 +154,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "DELETE",
+    method: "PATCH",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceImportResource: ToolDefinition<typeof args> = {
-  name: "marketplace_import-resource",
+  name: "marketplace-import-resource",
   description: `Import Resource
 
 This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.`,

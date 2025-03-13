@@ -13,5 +13,5 @@ let value: InviteUserToTeamResponseBodyTeamPermissions = "CreateProject";
 ## Values
 
 ```typescript
-"CreateProject" | "FullProductionDeployment" | "UsageViewer"
+"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager"
 ```

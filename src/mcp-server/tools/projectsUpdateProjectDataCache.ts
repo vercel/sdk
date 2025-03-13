@@ -12,7 +12,7 @@ const args = {
 
 export const tool$projectsUpdateProjectDataCache: ToolDefinition<typeof args> =
   {
-    name: "projects_update-project-data-cache",
+    name: "projects-update-project-data-cache",
     description: `Update the data cache feature
 
 Update the data cache feature on a project.`,

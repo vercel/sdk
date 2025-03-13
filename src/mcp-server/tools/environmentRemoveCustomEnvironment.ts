@@ -13,7 +13,7 @@ const args = {
 export const tool$environmentRemoveCustomEnvironment: ToolDefinition<
   typeof args
 > = {
-  name: "environment_remove-custom-environment",
+  name: "environment-remove-custom-environment",
   description: `Remove a custom environment
 
 Remove a custom environment for the project. Must not be named 'Production' or 'Preview'.`,

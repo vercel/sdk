@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsCreateProjectEnv: ToolDefinition<typeof args> = {
-  name: "projects_create-project-env",
+  name: "projects-create-project-env",
   description: `Create one or more environment variables
 
 Create one or more environment variables for a project by passing its \`key\`, \`value\`, \`type\` and \`target\` and by specifying the project by either passing the project \`id\` or \`name\` in the URL. If you include \`upsert=true\` as a query parameter, a new environment variable will not be created if it already exists but, the existing variable's value will be updated.`,

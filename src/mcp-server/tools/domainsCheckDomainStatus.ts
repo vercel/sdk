@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsCheckDomainStatus: ToolDefinition<typeof args> = {
-  name: "domains_check-domain-status",
+  name: "domains-check-domain-status",
   description: `Check a Domain Availability
 
 Check if a domain name is available for purchase.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsUpdateProject: ToolDefinition<typeof args> = {
-  name: "projects_update-project",
+  name: "projects-update-project",
   description: `Update an existing project
 
 Update the fields of a project using either its \`name\` or \`id\`.`,

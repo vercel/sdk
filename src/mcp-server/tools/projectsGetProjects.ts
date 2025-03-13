@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsGetProjects: ToolDefinition<typeof args> = {
-  name: "projects_get-projects",
+  name: "projects-get-projects",
   description: `Retrieve a list of projects
 
 Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the provided query parameters allow filtering the returned projects.`,

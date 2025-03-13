@@ -13,7 +13,7 @@ const args = {
 export const tool$edgeConfigDeleteEdgeConfigSchema: ToolDefinition<
   typeof args
 > = {
-  name: "edge-config_delete-edge-config-schema",
+  name: "edge-config-delete-edge-config-schema",
   description: `Delete an Edge Config's schema
 
 Deletes the schema of existing Edge Config.`,

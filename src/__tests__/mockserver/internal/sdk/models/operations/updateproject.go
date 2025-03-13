@@ -172,13 +172,13 @@ func (e *UpdateProjectFramework) UnmarshalJSON(data []byte) error {
 type UpdateProjectNodeVersion string
 
 const (
-	UpdateProjectNodeVersionTwentyTwoX UpdateProjectNodeVersion = "22.x"
-	UpdateProjectNodeVersionTwentyX    UpdateProjectNodeVersion = "20.x"
-	UpdateProjectNodeVersionEighteenX  UpdateProjectNodeVersion = "18.x"
-	UpdateProjectNodeVersionSixteenX   UpdateProjectNodeVersion = "16.x"
-	UpdateProjectNodeVersionFourteenX  UpdateProjectNodeVersion = "14.x"
-	UpdateProjectNodeVersionTwelveX    UpdateProjectNodeVersion = "12.x"
-	UpdateProjectNodeVersionTenX       UpdateProjectNodeVersion = "10.x"
+	UpdateProjectNodeVersionTwentyTwoDotX UpdateProjectNodeVersion = "22.x"
+	UpdateProjectNodeVersionTwentyDotX    UpdateProjectNodeVersion = "20.x"
+	UpdateProjectNodeVersionEighteenDotX  UpdateProjectNodeVersion = "18.x"
+	UpdateProjectNodeVersionSixteenDotX   UpdateProjectNodeVersion = "16.x"
+	UpdateProjectNodeVersionFourteenDotX  UpdateProjectNodeVersion = "14.x"
+	UpdateProjectNodeVersionTwelveDotX    UpdateProjectNodeVersion = "12.x"
+	UpdateProjectNodeVersionTenDotX       UpdateProjectNodeVersion = "10.x"
 )
 
 func (e UpdateProjectNodeVersion) ToPointer() *UpdateProjectNodeVersion {
@@ -1188,10 +1188,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1205,13 +1205,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -4088,14 +4088,14 @@ func (u UpdateProjectMicrofrontends) MarshalJSON() ([]byte, error) {
 type UpdateProjectProjectsNodeVersion string
 
 const (
-	UpdateProjectProjectsNodeVersionTwentyTwoX UpdateProjectProjectsNodeVersion = "22.x"
-	UpdateProjectProjectsNodeVersionTwentyX    UpdateProjectProjectsNodeVersion = "20.x"
-	UpdateProjectProjectsNodeVersionEighteenX  UpdateProjectProjectsNodeVersion = "18.x"
-	UpdateProjectProjectsNodeVersionSixteenX   UpdateProjectProjectsNodeVersion = "16.x"
-	UpdateProjectProjectsNodeVersionFourteenX  UpdateProjectProjectsNodeVersion = "14.x"
-	UpdateProjectProjectsNodeVersionTwelveX    UpdateProjectProjectsNodeVersion = "12.x"
-	UpdateProjectProjectsNodeVersionTenX       UpdateProjectProjectsNodeVersion = "10.x"
-	UpdateProjectProjectsNodeVersionEight10X   UpdateProjectProjectsNodeVersion = "8.10.x"
+	UpdateProjectProjectsNodeVersionTwentyTwoDotX  UpdateProjectProjectsNodeVersion = "22.x"
+	UpdateProjectProjectsNodeVersionTwentyDotX     UpdateProjectProjectsNodeVersion = "20.x"
+	UpdateProjectProjectsNodeVersionEighteenDotX   UpdateProjectProjectsNodeVersion = "18.x"
+	UpdateProjectProjectsNodeVersionSixteenDotX    UpdateProjectProjectsNodeVersion = "16.x"
+	UpdateProjectProjectsNodeVersionFourteenDotX   UpdateProjectProjectsNodeVersion = "14.x"
+	UpdateProjectProjectsNodeVersionTwelveDotX     UpdateProjectProjectsNodeVersion = "12.x"
+	UpdateProjectProjectsNodeVersionTenDotX        UpdateProjectProjectsNodeVersion = "10.x"
+	UpdateProjectProjectsNodeVersionEightDot10DotX UpdateProjectProjectsNodeVersion = "8.10.x"
 )
 
 func (e UpdateProjectProjectsNodeVersion) ToPointer() *UpdateProjectProjectsNodeVersion {

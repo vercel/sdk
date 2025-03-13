@@ -76,7 +76,7 @@ const (
 	BlockedDueToOverageTypeImageOptimizationTransformation         BlockedDueToOverageType = "imageOptimizationTransformation"
 	BlockedDueToOverageTypeLogDrainsVolume                         BlockedDueToOverageType = "logDrainsVolume"
 	BlockedDueToOverageTypeMonitoringMetric                        BlockedDueToOverageType = "monitoringMetric"
-	BlockedDueToOverageTypeObjectDataTransfer                      BlockedDueToOverageType = "objectDataTransfer"
+	BlockedDueToOverageTypeBlobDataTransfer                        BlockedDueToOverageType = "blobDataTransfer"
 	BlockedDueToOverageTypeObservabilityEvent                      BlockedDueToOverageType = "observabilityEvent"
 	BlockedDueToOverageTypePostgresComputeTime                     BlockedDueToOverageType = "postgresComputeTime"
 	BlockedDueToOverageTypePostgresDataStorage                     BlockedDueToOverageType = "postgresDataStorage"
@@ -156,7 +156,7 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "monitoringMetric":
 		fallthrough
-	case "objectDataTransfer":
+	case "blobDataTransfer":
 		fallthrough
 	case "observabilityEvent":
 		fallthrough
@@ -228,12 +228,27 @@ func (o *SoftBlock) GetBlockedDueToOverageType() *BlockedDueToOverageType {
 type Billing struct {
 }
 
+// BuildEntitlements - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type BuildEntitlements struct {
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
+}
+
+func (o *BuildEntitlements) GetEnhancedBuilds() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnhancedBuilds
+}
+
 // ResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	NodeType *string `json:"nodeType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	BuildEntitlements *BuildEntitlements `json:"buildEntitlements,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	AwsAccountType *string `json:"awsAccountType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -282,6 +297,13 @@ func (o *ResourceConfig) GetConcurrentBuilds() *float64 {
 		return nil
 	}
 	return o.ConcurrentBuilds
+}
+
+func (o *ResourceConfig) GetBuildEntitlements() *BuildEntitlements {
+	if o == nil {
+		return nil
+	}
+	return o.BuildEntitlements
 }
 
 func (o *ResourceConfig) GetAwsAccountType() *string {

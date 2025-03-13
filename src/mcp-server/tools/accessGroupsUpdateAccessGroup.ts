@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$accessGroupsUpdateAccessGroup: ToolDefinition<typeof args> = {
-  name: "access-groups_update-access-group",
+  name: "access-groups-update-access-group",
   description: `Update an access group
 
 Allows to update an access group metadata`,

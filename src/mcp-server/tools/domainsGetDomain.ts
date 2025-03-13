@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$domainsGetDomain: ToolDefinition<typeof args> = {
-  name: "domains_get-domain",
+  name: "domains-get-domain",
   description: `Get Information for a Single Domain
 
 Get information for a single domain in an account or team.`,

@@ -1045,10 +1045,10 @@ type CreateProjectProjectsResponseType string
 
 const (
 	CreateProjectProjectsResponseTypeSystem    CreateProjectProjectsResponseType = "system"
-	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 	CreateProjectProjectsResponseTypeEncrypted CreateProjectProjectsResponseType = "encrypted"
 	CreateProjectProjectsResponseTypePlain     CreateProjectProjectsResponseType = "plain"
 	CreateProjectProjectsResponseTypeSensitive CreateProjectProjectsResponseType = "sensitive"
+	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 )
 
 func (e CreateProjectProjectsResponseType) ToPointer() *CreateProjectProjectsResponseType {
@@ -1062,13 +1062,13 @@ func (e *CreateProjectProjectsResponseType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = CreateProjectProjectsResponseType(v)
 		return nil
 	default:
@@ -3945,14 +3945,14 @@ func (u CreateProjectMicrofrontends) MarshalJSON() ([]byte, error) {
 type CreateProjectNodeVersion string
 
 const (
-	CreateProjectNodeVersionTwentyTwoX CreateProjectNodeVersion = "22.x"
-	CreateProjectNodeVersionTwentyX    CreateProjectNodeVersion = "20.x"
-	CreateProjectNodeVersionEighteenX  CreateProjectNodeVersion = "18.x"
-	CreateProjectNodeVersionSixteenX   CreateProjectNodeVersion = "16.x"
-	CreateProjectNodeVersionFourteenX  CreateProjectNodeVersion = "14.x"
-	CreateProjectNodeVersionTwelveX    CreateProjectNodeVersion = "12.x"
-	CreateProjectNodeVersionTenX       CreateProjectNodeVersion = "10.x"
-	CreateProjectNodeVersionEight10X   CreateProjectNodeVersion = "8.10.x"
+	CreateProjectNodeVersionTwentyTwoDotX  CreateProjectNodeVersion = "22.x"
+	CreateProjectNodeVersionTwentyDotX     CreateProjectNodeVersion = "20.x"
+	CreateProjectNodeVersionEighteenDotX   CreateProjectNodeVersion = "18.x"
+	CreateProjectNodeVersionSixteenDotX    CreateProjectNodeVersion = "16.x"
+	CreateProjectNodeVersionFourteenDotX   CreateProjectNodeVersion = "14.x"
+	CreateProjectNodeVersionTwelveDotX     CreateProjectNodeVersion = "12.x"
+	CreateProjectNodeVersionTenDotX        CreateProjectNodeVersion = "10.x"
+	CreateProjectNodeVersionEightDot10DotX CreateProjectNodeVersion = "8.10.x"
 )
 
 func (e CreateProjectNodeVersion) ToPointer() *CreateProjectNodeVersion {

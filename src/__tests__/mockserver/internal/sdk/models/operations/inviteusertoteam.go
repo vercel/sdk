@@ -259,6 +259,8 @@ const (
 	ResponseBodyTeamPermissionsCreateProject            ResponseBodyTeamPermissions = "CreateProject"
 	ResponseBodyTeamPermissionsFullProductionDeployment ResponseBodyTeamPermissions = "FullProductionDeployment"
 	ResponseBodyTeamPermissionsUsageViewer              ResponseBodyTeamPermissions = "UsageViewer"
+	ResponseBodyTeamPermissionsEnvVariableManager       ResponseBodyTeamPermissions = "EnvVariableManager"
+	ResponseBodyTeamPermissionsEnvironmentManager       ResponseBodyTeamPermissions = "EnvironmentManager"
 )
 
 func (e ResponseBodyTeamPermissions) ToPointer() *ResponseBodyTeamPermissions {
@@ -275,6 +277,10 @@ func (e *ResponseBodyTeamPermissions) UnmarshalJSON(data []byte) error {
 	case "FullProductionDeployment":
 		fallthrough
 	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
 		*e = ResponseBodyTeamPermissions(v)
 		return nil
 	default:
@@ -416,6 +422,8 @@ const (
 	TeamPermissionsCreateProject            TeamPermissions = "CreateProject"
 	TeamPermissionsFullProductionDeployment TeamPermissions = "FullProductionDeployment"
 	TeamPermissionsUsageViewer              TeamPermissions = "UsageViewer"
+	TeamPermissionsEnvVariableManager       TeamPermissions = "EnvVariableManager"
+	TeamPermissionsEnvironmentManager       TeamPermissions = "EnvironmentManager"
 )
 
 func (e TeamPermissions) ToPointer() *TeamPermissions {
@@ -432,6 +440,10 @@ func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
 	case "FullProductionDeployment":
 		fallthrough
 	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
 		*e = TeamPermissions(v)
 		return nil
 	default:

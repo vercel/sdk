@@ -14,7 +14,7 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type VercelRateLimitErrorError = {
-  code?: "rate_limited" | undefined;
+  code: string;
   message: string;
   limit?: RateLimitNotice | undefined;
 };
@@ -48,14 +48,14 @@ export const VercelRateLimitErrorError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.literal("rate_limited").optional(),
+  code: z.string(),
   message: z.string(),
   limit: RateLimitNotice$inboundSchema.optional(),
 });
 
 /** @internal */
 export type VercelRateLimitErrorError$Outbound = {
-  code: "rate_limited";
+  code: string;
   message: string;
   limit?: RateLimitNotice$Outbound | undefined;
 };
@@ -66,7 +66,7 @@ export const VercelRateLimitErrorError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   VercelRateLimitErrorError
 > = z.object({
-  code: z.literal("rate_limited").default("rate_limited" as const),
+  code: z.string(),
   message: z.string(),
   limit: RateLimitNotice$outboundSchema.optional(),
 });

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$checksUpdateCheck: ToolDefinition<typeof args> = {
-  name: "checks_update-check",
+  name: "checks-update-check",
   description: `Update a check
 
 Update an existing check. This endpoint must be called with an OAuth2 or it will produce a 400 error.`,

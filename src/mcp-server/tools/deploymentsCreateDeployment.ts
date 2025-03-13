@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$deploymentsCreateDeployment: ToolDefinition<typeof args> = {
-  name: "deployments_create-deployment",
+  name: "deployments-create-deployment",
   description: `Create a new deployment
 
 Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.`,

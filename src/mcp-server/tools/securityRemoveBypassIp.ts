@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$securityRemoveBypassIp: ToolDefinition<typeof args> = {
-  name: "security_remove-bypass-ip",
+  name: "security-remove-bypass-ip",
   description: `Remove System Bypass Rule
 
 Remove system bypass rules`,

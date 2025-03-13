@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dnsCreateRecord: ToolDefinition<typeof args> = {
-  name: "dns_create-record",
+  name: "dns-create-record",
   description: `Create a DNS record
 
 Creates a DNS record for a domain.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$marketplaceGetAccountInfo: ToolDefinition<typeof args> = {
-  name: "marketplace_get-account-info",
+  name: "marketplace-get-account-info",
   description: `Get Account Information
 
 Fetches the best account or user’s contact info`,

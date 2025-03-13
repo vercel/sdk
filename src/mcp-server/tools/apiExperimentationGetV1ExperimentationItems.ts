@@ -13,7 +13,7 @@ const args = {
 export const tool$apiExperimentationGetV1ExperimentationItems: ToolDefinition<
   typeof args
 > = {
-  name: "api-experimentation_get-v1-experimentation-items",
+  name: "api-experimentation-get-v1-experimentation-items",
   description: `Query experimentation items`,
   args,
   tool: async (client, args, ctx) => {

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsPatchTeam: ToolDefinition<typeof args> = {
-  name: "teams_patch-team",
+  name: "teams-patch-team",
   description: `Update a Team
 
 Update the information of a Team specified by the \`teamId\` parameter. The request body should contain the information that will be updated on the Team.`,

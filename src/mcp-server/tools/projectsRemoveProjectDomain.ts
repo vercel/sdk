@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsRemoveProjectDomain: ToolDefinition<typeof args> = {
-  name: "projects_remove-project-domain",
+  name: "projects-remove-project-domain",
   description: `Remove a domain from a project
 
 Remove a domain from a project by passing the domain name and by specifying the project by either passing the project \`id\` or \`name\` in the URL.`,

@@ -7,6 +7,7 @@
 
 ```typescript
 const value: models.Outcomes1 = {
+  kind: "<value>",
   secrets: [
     {
       name: "<value>",

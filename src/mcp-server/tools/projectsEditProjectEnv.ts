@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsEditProjectEnv: ToolDefinition<typeof args> = {
-  name: "projects_edit-project-env",
+  name: "projects-edit-project-env",
   description: `Edit an environment variable
 
 Edit a specific environment variable for a given project by passing the environment variable identifier and either passing the project \`id\` or \`name\` in the URL.`,

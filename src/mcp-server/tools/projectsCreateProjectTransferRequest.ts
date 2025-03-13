@@ -13,7 +13,7 @@ const args = {
 export const tool$projectsCreateProjectTransferRequest: ToolDefinition<
   typeof args
 > = {
-  name: "projects_create-project-transfer-request",
+  name: "projects-create-project-transfer-request",
   description: `Create project transfer request
 
 Initiates a project transfer request from one team to another. <br/> Returns a \`code\` that remains valid for 24 hours and can be used to accept the transfer request by another team using the \`PUT /projects/transfer-request/:code\` endpoint. <br/> Users can also accept the project transfer request using the claim URL: \`https://vercel.com/claim-deployment?code=<code>&returnUrl=<returnUrl>\`. <br/> The \`code\` parameter specifies the project transfer request code generated using this endpoint. <br/> The \`returnUrl\` parameter redirects users to a specific page of the application if the claim URL is invalid or expired.`,

@@ -325,13 +325,10 @@ test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resourc
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  await vercel.marketplace
-    .postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItems(
-      {
-        integrationConfigurationId: "<id>",
-        resourceId: "<id>",
-      },
-    );
+  await vercel.marketplace.createInstallationIntegrationConfiguration({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
 });
 
 test("Marketplace Patch /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
@@ -345,14 +342,11 @@ test("Marketplace Patch /V1 /Installations/{integration Configuration Id}/resour
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  await vercel.marketplace
-    .patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
-      {
-        integrationConfigurationId: "<id>",
-        resourceId: "<id>",
-        itemId: "<id>",
-      },
-    );
+  await vercel.marketplace.updateInstallationIntegrationConfiguration({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+    itemId: "<id>",
+  });
 });
 
 test("Marketplace Delete /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
@@ -366,14 +360,11 @@ test("Marketplace Delete /V1 /Installations/{integration Configuration Id}/resou
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  await vercel.marketplace
-    .deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemId(
-      {
-        integrationConfigurationId: "<id>",
-        resourceId: "<id>",
-        itemId: "<id>",
-      },
-    );
+  await vercel.marketplace.deleteInstallationIntegrationConfiguration({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+    itemId: "<id>",
+  });
 });
 
 test("Marketplace Head /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
@@ -388,12 +379,10 @@ test("Marketplace Head /V1 /Installations/{integration Configuration Id}/resourc
   });
 
   const result = await vercel.marketplace
-    .headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
-      {
-        integrationConfigurationId: "<id>",
-        resourceId: "<id>",
-      },
-    );
+    .createInstallationIntegrationEdgeConfig({
+      integrationConfigurationId: "<id>",
+      resourceId: "<id>",
+    });
   expect(result).toBeDefined();
   expect(result).toEqual({
     items: {},
@@ -414,12 +403,10 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
   });
 
   const result = await vercel.marketplace
-    .putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
-      {
-        integrationConfigurationId: "<id>",
-        resourceId: "<id>",
-      },
-    );
+    .updateInstallationIntegrationEdgeConfig({
+      integrationConfigurationId: "<id>",
+      resourceId: "<id>",
+    });
   expect(result).toBeDefined();
   expect(result).toEqual({
     items: {},

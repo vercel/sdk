@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsCreateTeam: ToolDefinition<typeof args> = {
-  name: "teams_create-team",
+  name: "teams-create-team",
   description: `Create a Team
 
 Create a new Team under your account. You need to send a POST request with the desired Team slug, and optionally the Team name.`,

@@ -8,10 +8,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ErrorT = {
-  code?: "bad_request" | undefined;
-  message?:
-    | "One of the provided values in the request query, body or headers is invalid"
-    | undefined;
+  code: string;
+  message: string;
 };
 
 export type VercelBadRequestErrorData = {
@@ -40,17 +38,14 @@ export class VercelBadRequestError extends Error {
 /** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
-    code: z.literal("bad_request").optional(),
-    message: z.literal(
-      "One of the provided values in the request query, body or headers is invalid",
-    ).optional(),
+    code: z.string(),
+    message: z.string(),
   });
 
 /** @internal */
 export type ErrorT$Outbound = {
-  code: "bad_request";
-  message:
-    "One of the provided values in the request query, body or headers is invalid";
+  code: string;
+  message: string;
 };
 
 /** @internal */
@@ -59,12 +54,8 @@ export const ErrorT$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ErrorT
 > = z.object({
-  code: z.literal("bad_request").default("bad_request" as const),
-  message: z.literal(
-    "One of the provided values in the request query, body or headers is invalid",
-  ).default(
-    "One of the provided values in the request query, body or headers is invalid" as const,
-  ),
+  code: z.string(),
+  message: z.string(),
 });
 
 /**

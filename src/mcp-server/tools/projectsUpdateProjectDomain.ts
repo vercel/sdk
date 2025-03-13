@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$projectsUpdateProjectDomain: ToolDefinition<typeof args> = {
-  name: "projects_update-project-domain",
+  name: "projects-update-project-domain",
   description: `Update a project domain
 
 Update a project domain's configuration, including the name, git branch and redirect of the domain.`,

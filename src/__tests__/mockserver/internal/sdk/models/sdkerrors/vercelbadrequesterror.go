@@ -4,31 +4,25 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"mockserver/internal/sdk/utils"
 )
 
 type Error struct {
-	code    string `const:"bad_request" json:"code"`
-	message string `const:"One of the provided values in the request query, body or headers is invalid" json:"message"`
-}
-
-func (e Error) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
-}
-
-func (e *Error) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	Code    string `json:"code"`
+	Message string `json:"message"`
 }
 
 func (o *Error) GetCode() string {
-	return "bad_request"
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }
 
 func (o *Error) GetMessage() string {
-	return "One of the provided values in the request query, body or headers is invalid"
+	if o == nil {
+		return ""
+	}
+	return o.Message
 }
 
 type VercelBadRequestError struct {

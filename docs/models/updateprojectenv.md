@@ -6,7 +6,7 @@
 import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectEnv = {
-  type: "plain",
+  type: "sensitive",
   key: "<key>",
   value: "<value>",
 };

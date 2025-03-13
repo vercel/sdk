@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$deploymentsCancelDeployment: ToolDefinition<typeof args> = {
-  name: "deployments_cancel-deployment",
+  name: "deployments-cancel-deployment",
   description: `Cancel a deployment
 
 This endpoint allows you to cancel a deployment which is currently building, by supplying its \`id\` in the URL.`,

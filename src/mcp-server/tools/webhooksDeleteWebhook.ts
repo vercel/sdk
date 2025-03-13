@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$webhooksDeleteWebhook: ToolDefinition<typeof args> = {
-  name: "webhooks_delete-webhook",
+  name: "webhooks-delete-webhook",
   description: `Deletes a webhook
 
 Deletes a webhook`,

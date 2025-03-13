@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$teamsGetTeamAccessRequest: ToolDefinition<typeof args> = {
-  name: "teams_get-team-access-request",
+  name: "teams-get-team-access-request",
   description: `Get access request status
 
 Check the status of a join request. It'll respond with a 404 if the request has been declined. If no \`userId\` path segment was provided, this endpoint will instead return the status of the authenticated user.`,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$integrationsSearchRepo: ToolDefinition<typeof args> = {
-  name: "integrations_search-repo",
+  name: "integrations-search-repo",
   description: `List git repositories linked to namespace by provider
 
 Lists git repositories linked to a namespace \`id\` for a supported provider. A specific namespace \`id\` can be obtained via the \`git-namespaces\`  endpoint. Supported providers are \`github\`, \`gitlab\` and \`bitbucket\`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.`,

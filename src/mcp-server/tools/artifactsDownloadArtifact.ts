@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsDownloadArtifact: ToolDefinition<typeof args> = {
-  name: "artifacts_download-artifact",
+  name: "artifacts-download-artifact",
   description: `Download a cache artifact
 
 Downloads a cache artifact indentified by its \`hash\` specified on the request path. The artifact is downloaded as an octet-stream. The client should verify the content-length header and response body.`,

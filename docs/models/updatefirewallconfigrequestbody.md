@@ -151,6 +151,7 @@ const value: models.Eleven = {
 
 ```typescript
 const value: models.Twelve = {
+  action: "<value>",
   id: "<id>",
   value: {
     "key": {

@@ -75,6 +75,10 @@ export type GetDomainDomain = {
    */
   boughtAt: number | null;
   /**
+   * The domain name.
+   */
+  name: string;
+  /**
    * Timestamp in milliseconds when the domain was created in the registry.
    */
   createdAt: number;
@@ -86,10 +90,6 @@ export type GetDomainDomain = {
    * The unique identifier of the domain.
    */
   id: string;
-  /**
-   * The domain name.
-   */
-  name: string;
   /**
    * Timestamp in milliseconds at which the domain was ordered.
    */
@@ -279,10 +279,10 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
+  name: z.string(),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
   id: z.string(),
-  name: z.string(),
   orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
   serviceType: ServiceType$inboundSchema,
@@ -301,10 +301,10 @@ export type GetDomainDomain$Outbound = {
   creator: GetDomainCreator$Outbound;
   teamId: string | null;
   boughtAt: number | null;
+  name: string;
   createdAt: number;
   expiresAt: number | null;
   id: string;
-  name: string;
   orderedAt?: number | undefined;
   renew?: boolean | undefined;
   serviceType: string;
@@ -327,10 +327,10 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   creator: z.lazy(() => GetDomainCreator$outboundSchema),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
+  name: z.string(),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
   id: z.string(),
-  name: z.string(),
   orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
   serviceType: ServiceType$outboundSchema,

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$logDrainsGetAllLogDrains: ToolDefinition<typeof args> = {
-  name: "log-drains_get-all-log-drains",
+  name: "log-drains-get-all-log-drains",
   description: `Retrieves a list of all the Log Drains
 
 Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.`,

@@ -12,7 +12,7 @@ const args = {
 
 export const tool$environmentGetV9ProjectsIdOrNameCustomEnvironments:
   ToolDefinition<typeof args> = {
-    name: "environment_get-v9-projects-id-or-name-custom-environments",
+    name: "environment-get-v9-projects-id-or-name-custom-environments",
     description: `Retrieve custom environments
 
 Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.`,

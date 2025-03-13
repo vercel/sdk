@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$artifactsStatus: ToolDefinition<typeof args> = {
-  name: "artifacts_status",
+  name: "artifacts-status",
   description: `Get status of Remote Caching for this principal
 
 Check the status of Remote Caching for this principal. Returns a JSON-encoded status indicating if Remote Caching is enabled, disabled, or disabled due to usage limits.`,

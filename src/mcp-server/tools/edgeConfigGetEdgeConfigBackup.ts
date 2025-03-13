@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$edgeConfigGetEdgeConfigBackup: ToolDefinition<typeof args> = {
-  name: "edge-config_get-edge-config-backup",
+  name: "edge-config-get-edge-config-backup",
   description: `Get Edge Config backup
 
 Retrieves a specific version of an Edge Config from backup storage.`,

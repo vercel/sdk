@@ -5,7 +5,7 @@
 ```typescript
 import { Level } from "@vercel/sdk/models/importresourceop.js";
 
-let value: Level = "error";
+let value: Level = "warn";
 ```
 
 ## Values

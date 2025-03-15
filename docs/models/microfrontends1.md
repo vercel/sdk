@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { Microfrontends1 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Microfrontends1 } from "@vercel/sdk/models/userevent.js";
 
 let value: Microfrontends1 = {
-  updatedAt: 8726.51,
+  updatedAt: 5757.53,
   groupIds: [
     "<value>",
   ],

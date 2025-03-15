@@ -2,6 +2,18224 @@
 
 package components
 
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"mockserver/internal/sdk/utils"
+	"time"
+)
+
+// UserEventType - The type of entity.
+type UserEventType string
+
+const (
+	UserEventTypeFlag           UserEventType = "flag"
+	UserEventTypeFlagsSegment   UserEventType = "flags-segment"
+	UserEventTypeFlagsSettings  UserEventType = "flags-settings"
+	UserEventTypeAuthor         UserEventType = "author"
+	UserEventTypeBitbucketLogin UserEventType = "bitbucket_login"
+	UserEventTypeBold           UserEventType = "bold"
+	UserEventTypeDeploymentHost UserEventType = "deployment_host"
+	UserEventTypeDNSRecord      UserEventType = "dns_record"
+	UserEventTypeGitLink        UserEventType = "git_link"
+	UserEventTypeGithubLogin    UserEventType = "github_login"
+	UserEventTypeGitlabLogin    UserEventType = "gitlab_login"
+	UserEventTypeHookName       UserEventType = "hook_name"
+	UserEventTypeIntegration    UserEventType = "integration"
+	UserEventTypeEdgeConfig     UserEventType = "edge-config"
+	UserEventTypeLink           UserEventType = "link"
+	UserEventTypeProjectName    UserEventType = "project_name"
+	UserEventTypeScalingRules   UserEventType = "scaling_rules"
+	UserEventTypeEnvVarName     UserEventType = "env_var_name"
+	UserEventTypeTarget         UserEventType = "target"
+	UserEventTypeStore          UserEventType = "store"
+	UserEventTypeSystem         UserEventType = "system"
+)
+
+func (e UserEventType) ToPointer() *UserEventType {
+	return &e
+}
+func (e *UserEventType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flag":
+		fallthrough
+	case "flags-segment":
+		fallthrough
+	case "flags-settings":
+		fallthrough
+	case "author":
+		fallthrough
+	case "bitbucket_login":
+		fallthrough
+	case "bold":
+		fallthrough
+	case "deployment_host":
+		fallthrough
+	case "dns_record":
+		fallthrough
+	case "git_link":
+		fallthrough
+	case "github_login":
+		fallthrough
+	case "gitlab_login":
+		fallthrough
+	case "hook_name":
+		fallthrough
+	case "integration":
+		fallthrough
+	case "edge-config":
+		fallthrough
+	case "link":
+		fallthrough
+	case "project_name":
+		fallthrough
+	case "scaling_rules":
+		fallthrough
+	case "env_var_name":
+		fallthrough
+	case "target":
+		fallthrough
+	case "store":
+		fallthrough
+	case "system":
+		*e = UserEventType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventType: %v", v)
+	}
+}
+
+// Entities - A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links.
+type Entities struct {
+	// The type of entity.
+	Type UserEventType `json:"type"`
+	// The index of where the entity begins within the `text` (inclusive).
+	Start float64 `json:"start"`
+	// The index of where the entity ends within the `text` (non-inclusive).
+	End float64 `json:"end"`
+}
+
+func (o *Entities) GetType() UserEventType {
+	if o == nil {
+		return UserEventType("")
+	}
+	return o.Type
+}
+
+func (o *Entities) GetStart() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Start
+}
+
+func (o *Entities) GetEnd() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.End
+}
+
+// User - Metadata for the User who generated the event.
+type User struct {
+	Avatar   string  `json:"avatar"`
+	Email    string  `json:"email"`
+	Slug     *string `json:"slug,omitempty"`
+	UID      string  `json:"uid"`
+	Username string  `json:"username"`
+}
+
+func (o *User) GetAvatar() string {
+	if o == nil {
+		return ""
+	}
+	return o.Avatar
+}
+
+func (o *User) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *User) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *User) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *User) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+type GrantType string
+
+const (
+	GrantTypeAuthorizationCode                     GrantType = "authorization_code"
+	GrantTypeRefreshToken                          GrantType = "refresh_token"
+	GrantTypeUrnIetfParamsOauthGrantTypeDeviceCode GrantType = "urn:ietf:params:oauth:grant-type:device_code"
+	GrantTypeClientCredentials                     GrantType = "client_credentials"
+)
+
+func (e GrantType) ToPointer() *GrantType {
+	return &e
+}
+func (e *GrantType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "authorization_code":
+		fallthrough
+	case "refresh_token":
+		fallthrough
+	case "urn:ietf:params:oauth:grant-type:device_code":
+		fallthrough
+	case "client_credentials":
+		*e = GrantType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GrantType: %v", v)
+	}
+}
+
+type AuthMethod string
+
+const (
+	AuthMethodEmail     AuthMethod = "email"
+	AuthMethodSaml      AuthMethod = "saml"
+	AuthMethodGithub    AuthMethod = "github"
+	AuthMethodGitlab    AuthMethod = "gitlab"
+	AuthMethodBitbucket AuthMethod = "bitbucket"
+	AuthMethodManual    AuthMethod = "manual"
+	AuthMethodPasskey   AuthMethod = "passkey"
+	AuthMethodOtp       AuthMethod = "otp"
+	AuthMethodSms       AuthMethod = "sms"
+	AuthMethodInvite    AuthMethod = "invite"
+)
+
+func (e AuthMethod) ToPointer() *AuthMethod {
+	return &e
+}
+func (e *AuthMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		fallthrough
+	case "saml":
+		fallthrough
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "manual":
+		fallthrough
+	case "passkey":
+		fallthrough
+	case "otp":
+		fallthrough
+	case "sms":
+		fallthrough
+	case "invite":
+		*e = AuthMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthMethod: %v", v)
+	}
+}
+
+// OneHundredAndFortySeven - The payload of the event, if requested.
+type OneHundredAndFortySeven struct {
+	GrantType GrantType `json:"grantType"`
+	AppName   string    `json:"appName"`
+	// access_token TTL
+	AtTTL float64 `json:"atTTL"`
+	// refresh_token TTL
+	RtTTL      *float64   `json:"rtTTL,omitempty"`
+	Scope      string     `json:"scope"`
+	AuthMethod AuthMethod `json:"authMethod"`
+}
+
+func (o *OneHundredAndFortySeven) GetGrantType() GrantType {
+	if o == nil {
+		return GrantType("")
+	}
+	return o.GrantType
+}
+
+func (o *OneHundredAndFortySeven) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *OneHundredAndFortySeven) GetAtTTL() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.AtTTL
+}
+
+func (o *OneHundredAndFortySeven) GetRtTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RtTTL
+}
+
+func (o *OneHundredAndFortySeven) GetScope() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scope
+}
+
+func (o *OneHundredAndFortySeven) GetAuthMethod() AuthMethod {
+	if o == nil {
+		return AuthMethod("")
+	}
+	return o.AuthMethod
+}
+
+type UserEventPayload146Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload146Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload146Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload146Configuration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload146Configuration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload146Configuration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type UserEventPayloadPeering struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayloadPeering) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadPeering) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// OneHundredAndFortySix - The payload of the event, if requested.
+type OneHundredAndFortySix struct {
+	Team          UserEventPayload146Team          `json:"team"`
+	Configuration UserEventPayload146Configuration `json:"configuration"`
+	Peering       UserEventPayloadPeering          `json:"peering"`
+	NewName       *string                          `json:"newName,omitempty"`
+}
+
+func (o *OneHundredAndFortySix) GetTeam() UserEventPayload146Team {
+	if o == nil {
+		return UserEventPayload146Team{}
+	}
+	return o.Team
+}
+
+func (o *OneHundredAndFortySix) GetConfiguration() UserEventPayload146Configuration {
+	if o == nil {
+		return UserEventPayload146Configuration{}
+	}
+	return o.Configuration
+}
+
+func (o *OneHundredAndFortySix) GetPeering() UserEventPayloadPeering {
+	if o == nil {
+		return UserEventPayloadPeering{}
+	}
+	return o.Peering
+}
+
+func (o *OneHundredAndFortySix) GetNewName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NewName
+}
+
+type UserEventPayload145Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload145Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload145Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload145Configuration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload145Configuration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload145Configuration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type PayloadPeering struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *PayloadPeering) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadPeering) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// OneHundredAndFortyFive - The payload of the event, if requested.
+type OneHundredAndFortyFive struct {
+	Team          UserEventPayload145Team          `json:"team"`
+	Configuration UserEventPayload145Configuration `json:"configuration"`
+	Peering       PayloadPeering                   `json:"peering"`
+}
+
+func (o *OneHundredAndFortyFive) GetTeam() UserEventPayload145Team {
+	if o == nil {
+		return UserEventPayload145Team{}
+	}
+	return o.Team
+}
+
+func (o *OneHundredAndFortyFive) GetConfiguration() UserEventPayload145Configuration {
+	if o == nil {
+		return UserEventPayload145Configuration{}
+	}
+	return o.Configuration
+}
+
+func (o *OneHundredAndFortyFive) GetPeering() PayloadPeering {
+	if o == nil {
+		return PayloadPeering{}
+	}
+	return o.Peering
+}
+
+type UserEventPayload144Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload144Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload144Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload144Configuration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload144Configuration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload144Configuration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type Peering struct {
+	ID        string `json:"id"`
+	AccountID string `json:"accountId"`
+	Region    string `json:"region"`
+	VpcID     string `json:"vpcId"`
+}
+
+func (o *Peering) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Peering) GetAccountID() string {
+	if o == nil {
+		return ""
+	}
+	return o.AccountID
+}
+
+func (o *Peering) GetRegion() string {
+	if o == nil {
+		return ""
+	}
+	return o.Region
+}
+
+func (o *Peering) GetVpcID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VpcID
+}
+
+// OneHundredAndFortyFour - The payload of the event, if requested.
+type OneHundredAndFortyFour struct {
+	Team          UserEventPayload144Team          `json:"team"`
+	Configuration UserEventPayload144Configuration `json:"configuration"`
+	Peering       Peering                          `json:"peering"`
+}
+
+func (o *OneHundredAndFortyFour) GetTeam() UserEventPayload144Team {
+	if o == nil {
+		return UserEventPayload144Team{}
+	}
+	return o.Team
+}
+
+func (o *OneHundredAndFortyFour) GetConfiguration() UserEventPayload144Configuration {
+	if o == nil {
+		return UserEventPayload144Configuration{}
+	}
+	return o.Configuration
+}
+
+func (o *OneHundredAndFortyFour) GetPeering() Peering {
+	if o == nil {
+		return Peering{}
+	}
+	return o.Peering
+}
+
+// OneHundredAndFortyThree - The payload of the event, if requested.
+type OneHundredAndFortyThree struct {
+	AppName string `json:"appName"`
+}
+
+func (o *OneHundredAndFortyThree) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+// OneHundredAndFortyTwo - The payload of the event, if requested.
+type OneHundredAndFortyTwo struct {
+	AppName    string   `json:"appName"`
+	NextScopes []string `json:"nextScopes"`
+}
+
+func (o *OneHundredAndFortyTwo) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *OneHundredAndFortyTwo) GetNextScopes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.NextScopes
+}
+
+// OneHundredAndFortyOne - The payload of the event, if requested.
+type OneHundredAndFortyOne struct {
+	AppName string   `json:"appName"`
+	Scopes  []string `json:"scopes"`
+}
+
+func (o *OneHundredAndFortyOne) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *OneHundredAndFortyOne) GetScopes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Scopes
+}
+
+// OneHundredAndForty - The payload of the event, if requested.
+type OneHundredAndForty struct {
+	OldName string `json:"oldName"`
+	NewName string `json:"newName"`
+}
+
+func (o *OneHundredAndForty) GetOldName() string {
+	if o == nil {
+		return ""
+	}
+	return o.OldName
+}
+
+func (o *OneHundredAndForty) GetNewName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NewName
+}
+
+type Tier string
+
+const (
+	TierPro  Tier = "pro"
+	TierPlus Tier = "plus"
+)
+
+func (e Tier) ToPointer() *Tier {
+	return &e
+}
+func (e *Tier) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pro":
+		fallthrough
+	case "plus":
+		*e = Tier(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Tier: %v", v)
+	}
+}
+
+// OneHundredAndThirtyNine - The payload of the event, if requested.
+type OneHundredAndThirtyNine struct {
+	Tier Tier `json:"tier"`
+}
+
+func (o *OneHundredAndThirtyNine) GetTier() Tier {
+	if o == nil {
+		return Tier("")
+	}
+	return o.Tier
+}
+
+type ProjectWebAnalytics struct {
+	ID         string   `json:"id"`
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	CanceledAt *float64 `json:"canceledAt,omitempty"`
+	EnabledAt  *float64 `json:"enabledAt,omitempty"`
+	HasData    *bool    `json:"hasData,omitempty"`
+}
+
+func (o *ProjectWebAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ProjectWebAnalytics) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *ProjectWebAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *ProjectWebAnalytics) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *ProjectWebAnalytics) GetHasData() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasData
+}
+
+type PrevProjectWebAnalytics struct {
+	ID         string   `json:"id"`
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	CanceledAt *float64 `json:"canceledAt,omitempty"`
+	EnabledAt  *float64 `json:"enabledAt,omitempty"`
+	HasData    *bool    `json:"hasData,omitempty"`
+}
+
+func (o *PrevProjectWebAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PrevProjectWebAnalytics) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *PrevProjectWebAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *PrevProjectWebAnalytics) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *PrevProjectWebAnalytics) GetHasData() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasData
+}
+
+// OneHundredAndThirtyEight - The payload of the event, if requested.
+type OneHundredAndThirtyEight struct {
+	ProjectID               string                   `json:"projectId"`
+	ProjectName             string                   `json:"projectName"`
+	ProjectWebAnalytics     *ProjectWebAnalytics     `json:"projectWebAnalytics,omitempty"`
+	PrevProjectWebAnalytics *PrevProjectWebAnalytics `json:"prevProjectWebAnalytics,omitempty"`
+}
+
+func (o *OneHundredAndThirtyEight) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *OneHundredAndThirtyEight) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *OneHundredAndThirtyEight) GetProjectWebAnalytics() *ProjectWebAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectWebAnalytics
+}
+
+func (o *OneHundredAndThirtyEight) GetPrevProjectWebAnalytics() *PrevProjectWebAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.PrevProjectWebAnalytics
+}
+
+type Microfrontends2 struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	GroupIds  []any   `json:"groupIds"`
+	Enabled   bool    `json:"enabled"`
+}
+
+func (o *Microfrontends2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *Microfrontends2) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *Microfrontends2) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type Microfrontends1 struct {
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (o *Microfrontends1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *Microfrontends1) GetGroupIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.GroupIds
+}
+
+func (o *Microfrontends1) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *Microfrontends1) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *Microfrontends1) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
+func (o *Microfrontends1) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+type MicrofrontendsType string
+
+const (
+	MicrofrontendsTypeMicrofrontends1 MicrofrontendsType = "microfrontends_1"
+	MicrofrontendsTypeMicrofrontends2 MicrofrontendsType = "microfrontends_2"
+)
+
+type Microfrontends struct {
+	Microfrontends1 *Microfrontends1
+	Microfrontends2 *Microfrontends2
+
+	Type MicrofrontendsType
+}
+
+func CreateMicrofrontendsMicrofrontends1(microfrontends1 Microfrontends1) Microfrontends {
+	typ := MicrofrontendsTypeMicrofrontends1
+
+	return Microfrontends{
+		Microfrontends1: &microfrontends1,
+		Type:            typ,
+	}
+}
+
+func CreateMicrofrontendsMicrofrontends2(microfrontends2 Microfrontends2) Microfrontends {
+	typ := MicrofrontendsTypeMicrofrontends2
+
+	return Microfrontends{
+		Microfrontends2: &microfrontends2,
+		Type:            typ,
+	}
+}
+
+func (u *Microfrontends) UnmarshalJSON(data []byte) error {
+
+	var microfrontends2 Microfrontends2 = Microfrontends2{}
+	if err := utils.UnmarshalJSON(data, &microfrontends2, "", true, true); err == nil {
+		u.Microfrontends2 = &microfrontends2
+		u.Type = MicrofrontendsTypeMicrofrontends2
+		return nil
+	}
+
+	var microfrontends1 Microfrontends1 = Microfrontends1{}
+	if err := utils.UnmarshalJSON(data, &microfrontends1, "", true, true); err == nil {
+		u.Microfrontends1 = &microfrontends1
+		u.Type = MicrofrontendsTypeMicrofrontends1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Microfrontends", string(data))
+}
+
+func (u Microfrontends) MarshalJSON() ([]byte, error) {
+	if u.Microfrontends1 != nil {
+		return utils.MarshalJSON(u.Microfrontends1, "", true)
+	}
+
+	if u.Microfrontends2 != nil {
+		return utils.MarshalJSON(u.Microfrontends2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Microfrontends: all fields are null")
+}
+
+type UserEventPayload137Project struct {
+	ID             string          `json:"id"`
+	Name           string          `json:"name"`
+	Microfrontends *Microfrontends `json:"microfrontends,omitempty"`
+}
+
+func (o *UserEventPayload137Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload137Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UserEventPayload137Project) GetMicrofrontends() *Microfrontends {
+	if o == nil {
+		return nil
+	}
+	return o.Microfrontends
+}
+
+type UserEventMicrofrontends2 struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	GroupIds  []any   `json:"groupIds"`
+	Enabled   bool    `json:"enabled"`
+}
+
+func (o *UserEventMicrofrontends2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UserEventMicrofrontends2) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *UserEventMicrofrontends2) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type UserEventMicrofrontends1 struct {
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (o *UserEventMicrofrontends1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UserEventMicrofrontends1) GetGroupIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.GroupIds
+}
+
+func (o *UserEventMicrofrontends1) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *UserEventMicrofrontends1) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *UserEventMicrofrontends1) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
+func (o *UserEventMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+type PayloadMicrofrontendsType string
+
+const (
+	PayloadMicrofrontendsTypeUserEventMicrofrontends1 PayloadMicrofrontendsType = "UserEvent_microfrontends_1"
+	PayloadMicrofrontendsTypeUserEventMicrofrontends2 PayloadMicrofrontendsType = "UserEvent_microfrontends_2"
+)
+
+type PayloadMicrofrontends struct {
+	UserEventMicrofrontends1 *UserEventMicrofrontends1
+	UserEventMicrofrontends2 *UserEventMicrofrontends2
+
+	Type PayloadMicrofrontendsType
+}
+
+func CreatePayloadMicrofrontendsUserEventMicrofrontends1(userEventMicrofrontends1 UserEventMicrofrontends1) PayloadMicrofrontends {
+	typ := PayloadMicrofrontendsTypeUserEventMicrofrontends1
+
+	return PayloadMicrofrontends{
+		UserEventMicrofrontends1: &userEventMicrofrontends1,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadMicrofrontendsUserEventMicrofrontends2(userEventMicrofrontends2 UserEventMicrofrontends2) PayloadMicrofrontends {
+	typ := PayloadMicrofrontendsTypeUserEventMicrofrontends2
+
+	return PayloadMicrofrontends{
+		UserEventMicrofrontends2: &userEventMicrofrontends2,
+		Type:                     typ,
+	}
+}
+
+func (u *PayloadMicrofrontends) UnmarshalJSON(data []byte) error {
+
+	var userEventMicrofrontends2 UserEventMicrofrontends2 = UserEventMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &userEventMicrofrontends2, "", true, true); err == nil {
+		u.UserEventMicrofrontends2 = &userEventMicrofrontends2
+		u.Type = PayloadMicrofrontendsTypeUserEventMicrofrontends2
+		return nil
+	}
+
+	var userEventMicrofrontends1 UserEventMicrofrontends1 = UserEventMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &userEventMicrofrontends1, "", true, true); err == nil {
+		u.UserEventMicrofrontends1 = &userEventMicrofrontends1
+		u.Type = PayloadMicrofrontendsTypeUserEventMicrofrontends1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadMicrofrontends", string(data))
+}
+
+func (u PayloadMicrofrontends) MarshalJSON() ([]byte, error) {
+	if u.UserEventMicrofrontends1 != nil {
+		return utils.MarshalJSON(u.UserEventMicrofrontends1, "", true)
+	}
+
+	if u.UserEventMicrofrontends2 != nil {
+		return utils.MarshalJSON(u.UserEventMicrofrontends2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadMicrofrontends: all fields are null")
+}
+
+type UserEventPayload137PrevProject struct {
+	Microfrontends *PayloadMicrofrontends `json:"microfrontends,omitempty"`
+}
+
+func (o *UserEventPayload137PrevProject) GetMicrofrontends() *PayloadMicrofrontends {
+	if o == nil {
+		return nil
+	}
+	return o.Microfrontends
+}
+
+type PayloadPrev struct {
+	Project UserEventPayload137PrevProject `json:"project"`
+}
+
+func (o *PayloadPrev) GetProject() UserEventPayload137PrevProject {
+	if o == nil {
+		return UserEventPayload137PrevProject{}
+	}
+	return o.Project
+}
+
+type PayloadGroup struct {
+	ID   string `json:"id"`
+	Slug string `json:"slug"`
+	Name string `json:"name"`
+}
+
+func (o *PayloadGroup) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadGroup) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *PayloadGroup) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// OneHundredAndThirtySeven - The payload of the event, if requested.
+type OneHundredAndThirtySeven struct {
+	Project UserEventPayload137Project `json:"project"`
+	Prev    PayloadPrev                `json:"prev"`
+	Group   PayloadGroup               `json:"group"`
+}
+
+func (o *OneHundredAndThirtySeven) GetProject() UserEventPayload137Project {
+	if o == nil {
+		return UserEventPayload137Project{}
+	}
+	return o.Project
+}
+
+func (o *OneHundredAndThirtySeven) GetPrev() PayloadPrev {
+	if o == nil {
+		return PayloadPrev{}
+	}
+	return o.Prev
+}
+
+func (o *OneHundredAndThirtySeven) GetGroup() PayloadGroup {
+	if o == nil {
+		return PayloadGroup{}
+	}
+	return o.Group
+}
+
+type UserEventPayload136Project struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload136Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload136Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type Group struct {
+	ID   string `json:"id"`
+	Slug string `json:"slug"`
+	Name string `json:"name"`
+}
+
+func (o *Group) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Group) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *Group) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// OneHundredAndThirtySix - The payload of the event, if requested.
+type OneHundredAndThirtySix struct {
+	Project UserEventPayload136Project `json:"project"`
+	Group   Group                      `json:"group"`
+}
+
+func (o *OneHundredAndThirtySix) GetProject() UserEventPayload136Project {
+	if o == nil {
+		return UserEventPayload136Project{}
+	}
+	return o.Project
+}
+
+func (o *OneHundredAndThirtySix) GetGroup() Group {
+	if o == nil {
+		return Group{}
+	}
+	return o.Group
+}
+
+type Prev struct {
+	Name string `json:"name"`
+	Slug string `json:"slug"`
+}
+
+func (o *Prev) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Prev) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+// OneHundredAndThirtyFive - The payload of the event, if requested.
+type OneHundredAndThirtyFive struct {
+	ID   string `json:"id"`
+	Slug string `json:"slug"`
+	Name string `json:"name"`
+	Prev Prev   `json:"prev"`
+}
+
+func (o *OneHundredAndThirtyFive) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *OneHundredAndThirtyFive) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *OneHundredAndThirtyFive) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *OneHundredAndThirtyFive) GetPrev() Prev {
+	if o == nil {
+		return Prev{}
+	}
+	return o.Prev
+}
+
+// OneHundredAndThirtyFour - The payload of the event, if requested.
+type OneHundredAndThirtyFour struct {
+	ID   string `json:"id"`
+	Slug string `json:"slug"`
+	Name string `json:"name"`
+}
+
+func (o *OneHundredAndThirtyFour) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *OneHundredAndThirtyFour) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *OneHundredAndThirtyFour) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// OneHundredAndThirtyThree - The payload of the event, if requested.
+type OneHundredAndThirtyThree struct {
+	EdgeConfigID   string `json:"edgeConfigId"`
+	EdgeConfigSlug string `json:"edgeConfigSlug"`
+	// ids of deleted tokens
+	EdgeConfigTokenIds []string `json:"edgeConfigTokenIds"`
+}
+
+func (o *OneHundredAndThirtyThree) GetEdgeConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigID
+}
+
+func (o *OneHundredAndThirtyThree) GetEdgeConfigSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigSlug
+}
+
+func (o *OneHundredAndThirtyThree) GetEdgeConfigTokenIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.EdgeConfigTokenIds
+}
+
+// OneHundredAndThirtyTwo - The payload of the event, if requested.
+type OneHundredAndThirtyTwo struct {
+	EdgeConfigID      string `json:"edgeConfigId"`
+	EdgeConfigSlug    string `json:"edgeConfigSlug"`
+	EdgeConfigTokenID string `json:"edgeConfigTokenId"`
+	Label             string `json:"label"`
+}
+
+func (o *OneHundredAndThirtyTwo) GetEdgeConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigID
+}
+
+func (o *OneHundredAndThirtyTwo) GetEdgeConfigSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigSlug
+}
+
+func (o *OneHundredAndThirtyTwo) GetEdgeConfigTokenID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigTokenID
+}
+
+func (o *OneHundredAndThirtyTwo) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+// OneHundredAndThirtyOne - The payload of the event, if requested.
+type OneHundredAndThirtyOne struct {
+	EdgeConfigID     string `json:"edgeConfigId"`
+	EdgeConfigSlug   string `json:"edgeConfigSlug"`
+	EdgeConfigDigest string `json:"edgeConfigDigest"`
+}
+
+func (o *OneHundredAndThirtyOne) GetEdgeConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigID
+}
+
+func (o *OneHundredAndThirtyOne) GetEdgeConfigSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigSlug
+}
+
+func (o *OneHundredAndThirtyOne) GetEdgeConfigDigest() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigDigest
+}
+
+type UserEventPayload130Role string
+
+const (
+	UserEventPayload130RoleAdmin            UserEventPayload130Role = "ADMIN"
+	UserEventPayload130RoleProjectDeveloper UserEventPayload130Role = "PROJECT_DEVELOPER"
+	UserEventPayload130RoleProjectViewer    UserEventPayload130Role = "PROJECT_VIEWER"
+)
+
+func (e UserEventPayload130Role) ToPointer() *UserEventPayload130Role {
+	return &e
+}
+func (e *UserEventPayload130Role) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ADMIN":
+		fallthrough
+	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_VIEWER":
+		*e = UserEventPayload130Role(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload130Role: %v", v)
+	}
+}
+
+type UserEventPayload130Project struct {
+	Name            string                  `json:"name"`
+	Role            UserEventPayload130Role `json:"role"`
+	InvitedUserName string                  `json:"invitedUserName"`
+	ID              *string                 `json:"id,omitempty"`
+	InvitedUserID   *string                 `json:"invitedUserId,omitempty"`
+}
+
+func (o *UserEventPayload130Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UserEventPayload130Project) GetRole() UserEventPayload130Role {
+	if o == nil {
+		return UserEventPayload130Role("")
+	}
+	return o.Role
+}
+
+func (o *UserEventPayload130Project) GetInvitedUserName() string {
+	if o == nil {
+		return ""
+	}
+	return o.InvitedUserName
+}
+
+func (o *UserEventPayload130Project) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload130Project) GetInvitedUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvitedUserID
+}
+
+// OneHundredAndThirty - The payload of the event, if requested.
+type OneHundredAndThirty struct {
+	Project UserEventPayload130Project `json:"project"`
+}
+
+func (o *OneHundredAndThirty) GetProject() UserEventPayload130Project {
+	if o == nil {
+		return UserEventPayload130Project{}
+	}
+	return o.Project
+}
+
+type UserEventPayload129Project struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload129Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload129Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload129Role string
+
+const (
+	UserEventPayload129RoleAdmin            UserEventPayload129Role = "ADMIN"
+	UserEventPayload129RoleProjectDeveloper UserEventPayload129Role = "PROJECT_DEVELOPER"
+	UserEventPayload129RoleProjectViewer    UserEventPayload129Role = "PROJECT_VIEWER"
+)
+
+func (e UserEventPayload129Role) ToPointer() *UserEventPayload129Role {
+	return &e
+}
+func (e *UserEventPayload129Role) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ADMIN":
+		fallthrough
+	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_VIEWER":
+		*e = UserEventPayload129Role(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload129Role: %v", v)
+	}
+}
+
+type PreviousRole string
+
+const (
+	PreviousRoleAdmin            PreviousRole = "ADMIN"
+	PreviousRoleProjectDeveloper PreviousRole = "PROJECT_DEVELOPER"
+	PreviousRoleProjectViewer    PreviousRole = "PROJECT_VIEWER"
+)
+
+func (e PreviousRole) ToPointer() *PreviousRole {
+	return &e
+}
+func (e *PreviousRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ADMIN":
+		fallthrough
+	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_VIEWER":
+		*e = PreviousRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PreviousRole: %v", v)
+	}
+}
+
+type PayloadProjectMembership struct {
+	Role         *UserEventPayload129Role `json:"role,omitempty"`
+	UID          *string                  `json:"uid,omitempty"`
+	CreatedAt    *float64                 `json:"createdAt,omitempty"`
+	Username     *string                  `json:"username,omitempty"`
+	PreviousRole *PreviousRole            `json:"previousRole,omitempty"`
+}
+
+func (o *PayloadProjectMembership) GetRole() *UserEventPayload129Role {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *PayloadProjectMembership) GetUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+func (o *PayloadProjectMembership) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *PayloadProjectMembership) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+func (o *PayloadProjectMembership) GetPreviousRole() *PreviousRole {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousRole
+}
+
+// OneHundredAndTwentyNine - The payload of the event, if requested.
+type OneHundredAndTwentyNine struct {
+	Project           UserEventPayload129Project `json:"project"`
+	ProjectMembership PayloadProjectMembership   `json:"projectMembership"`
+}
+
+func (o *OneHundredAndTwentyNine) GetProject() UserEventPayload129Project {
+	if o == nil {
+		return UserEventPayload129Project{}
+	}
+	return o.Project
+}
+
+func (o *OneHundredAndTwentyNine) GetProjectMembership() PayloadProjectMembership {
+	if o == nil {
+		return PayloadProjectMembership{}
+	}
+	return o.ProjectMembership
+}
+
+type UserEventPayload128Project struct {
+	Name string  `json:"name"`
+	ID   *string `json:"id,omitempty"`
+}
+
+func (o *UserEventPayload128Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UserEventPayload128Project) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+type UserEventPayloadRole string
+
+const (
+	UserEventPayloadRoleAdmin            UserEventPayloadRole = "ADMIN"
+	UserEventPayloadRoleProjectDeveloper UserEventPayloadRole = "PROJECT_DEVELOPER"
+	UserEventPayloadRoleProjectViewer    UserEventPayloadRole = "PROJECT_VIEWER"
+)
+
+func (e UserEventPayloadRole) ToPointer() *UserEventPayloadRole {
+	return &e
+}
+func (e *UserEventPayloadRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ADMIN":
+		fallthrough
+	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_VIEWER":
+		*e = UserEventPayloadRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadRole: %v", v)
+	}
+}
+
+type RemovedMembership struct {
+	Role      *UserEventPayloadRole `json:"role,omitempty"`
+	UID       *string               `json:"uid,omitempty"`
+	CreatedAt *float64              `json:"createdAt,omitempty"`
+	Username  *string               `json:"username,omitempty"`
+}
+
+func (o *RemovedMembership) GetRole() *UserEventPayloadRole {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *RemovedMembership) GetUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+func (o *RemovedMembership) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *RemovedMembership) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// OneHundredAndTwentyEight - The payload of the event, if requested.
+type OneHundredAndTwentyEight struct {
+	Project           UserEventPayload128Project `json:"project"`
+	RemovedMembership RemovedMembership          `json:"removedMembership"`
+}
+
+func (o *OneHundredAndTwentyEight) GetProject() UserEventPayload128Project {
+	if o == nil {
+		return UserEventPayload128Project{}
+	}
+	return o.Project
+}
+
+func (o *OneHundredAndTwentyEight) GetRemovedMembership() RemovedMembership {
+	if o == nil {
+		return RemovedMembership{}
+	}
+	return o.RemovedMembership
+}
+
+type UserEventPayload127Project struct {
+	Name string  `json:"name"`
+	ID   *string `json:"id,omitempty"`
+}
+
+func (o *UserEventPayload127Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UserEventPayload127Project) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+type PayloadRole string
+
+const (
+	PayloadRoleAdmin            PayloadRole = "ADMIN"
+	PayloadRoleProjectDeveloper PayloadRole = "PROJECT_DEVELOPER"
+	PayloadRoleProjectViewer    PayloadRole = "PROJECT_VIEWER"
+)
+
+func (e PayloadRole) ToPointer() *PayloadRole {
+	return &e
+}
+func (e *PayloadRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ADMIN":
+		fallthrough
+	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_VIEWER":
+		*e = PayloadRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadRole: %v", v)
+	}
+}
+
+type ProjectMembership struct {
+	Role      *PayloadRole `json:"role,omitempty"`
+	UID       *string      `json:"uid,omitempty"`
+	CreatedAt *float64     `json:"createdAt,omitempty"`
+	Username  *string      `json:"username,omitempty"`
+}
+
+func (o *ProjectMembership) GetRole() *PayloadRole {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *ProjectMembership) GetUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+func (o *ProjectMembership) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *ProjectMembership) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// OneHundredAndTwentySeven - The payload of the event, if requested.
+type OneHundredAndTwentySeven struct {
+	Project           UserEventPayload127Project `json:"project"`
+	ProjectMembership *ProjectMembership         `json:"projectMembership"`
+}
+
+func (o *OneHundredAndTwentySeven) GetProject() UserEventPayload127Project {
+	if o == nil {
+		return UserEventPayload127Project{}
+	}
+	return o.Project
+}
+
+func (o *OneHundredAndTwentySeven) GetProjectMembership() *ProjectMembership {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMembership
+}
+
+// OneHundredAndTwentySix - The payload of the event, if requested.
+type OneHundredAndTwentySix struct {
+	PreviousProjectName string  `json:"previousProjectName"`
+	NewProjectName      string  `json:"newProjectName"`
+	OriginAccountName   string  `json:"originAccountName"`
+	TransferID          *string `json:"transferId,omitempty"`
+}
+
+func (o *OneHundredAndTwentySix) GetPreviousProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PreviousProjectName
+}
+
+func (o *OneHundredAndTwentySix) GetNewProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NewProjectName
+}
+
+func (o *OneHundredAndTwentySix) GetOriginAccountName() string {
+	if o == nil {
+		return ""
+	}
+	return o.OriginAccountName
+}
+
+func (o *OneHundredAndTwentySix) GetTransferID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransferID
+}
+
+// OneHundredAndTwentyFive - The payload of the event, if requested.
+type OneHundredAndTwentyFive struct {
+	PreviousProjectName    string  `json:"previousProjectName"`
+	NewProjectName         string  `json:"newProjectName"`
+	DestinationAccountName string  `json:"destinationAccountName"`
+	TransferID             *string `json:"transferId,omitempty"`
+}
+
+func (o *OneHundredAndTwentyFive) GetPreviousProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PreviousProjectName
+}
+
+func (o *OneHundredAndTwentyFive) GetNewProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NewProjectName
+}
+
+func (o *OneHundredAndTwentyFive) GetDestinationAccountName() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationAccountName
+}
+
+func (o *OneHundredAndTwentyFive) GetTransferID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransferID
+}
+
+// OneHundredAndTwentyFour - The payload of the event, if requested.
+type OneHundredAndTwentyFour struct {
+	ProjectName            string  `json:"projectName"`
+	DestinationAccountName *string `json:"destinationAccountName"`
+	TransferID             *string `json:"transferId,omitempty"`
+}
+
+func (o *OneHundredAndTwentyFour) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *OneHundredAndTwentyFour) GetDestinationAccountName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationAccountName
+}
+
+func (o *OneHundredAndTwentyFour) GetTransferID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransferID
+}
+
+// OneHundredAndTwentyThree - The payload of the event, if requested.
+type OneHundredAndTwentyThree struct {
+	ProjectID              string  `json:"projectId"`
+	ProjectName            string  `json:"projectName"`
+	OriginAccountName      string  `json:"originAccountName"`
+	DestinationAccountName string  `json:"destinationAccountName"`
+	DestinationAccountID   string  `json:"destinationAccountId"`
+	TransferID             *string `json:"transferId,omitempty"`
+}
+
+func (o *OneHundredAndTwentyThree) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *OneHundredAndTwentyThree) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *OneHundredAndTwentyThree) GetOriginAccountName() string {
+	if o == nil {
+		return ""
+	}
+	return o.OriginAccountName
+}
+
+func (o *OneHundredAndTwentyThree) GetDestinationAccountName() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationAccountName
+}
+
+func (o *OneHundredAndTwentyThree) GetDestinationAccountID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationAccountID
+}
+
+func (o *OneHundredAndTwentyThree) GetTransferID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransferID
+}
+
+// OneHundredAndTwentyTwo - The payload of the event, if requested.
+type OneHundredAndTwentyTwo struct {
+	RequestedTeamName string  `json:"requestedTeamName"`
+	RequestedUserName *string `json:"requestedUserName,omitempty"`
+	GitUsername       *string `json:"gitUsername,omitempty"`
+	GithubUsername    *string `json:"githubUsername,omitempty"`
+	GitlabUsername    *string `json:"gitlabUsername,omitempty"`
+	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
+}
+
+func (o *OneHundredAndTwentyTwo) GetRequestedTeamName() string {
+	if o == nil {
+		return ""
+	}
+	return o.RequestedTeamName
+}
+
+func (o *OneHundredAndTwentyTwo) GetRequestedUserName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestedUserName
+}
+
+func (o *OneHundredAndTwentyTwo) GetGitUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUsername
+}
+
+func (o *OneHundredAndTwentyTwo) GetGithubUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubUsername
+}
+
+func (o *OneHundredAndTwentyTwo) GetGitlabUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabUsername
+}
+
+func (o *OneHundredAndTwentyTwo) GetBitbucketUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BitbucketUsername
+}
+
+// OneHundredAndTwentyOne - The payload of the event, if requested.
+type OneHundredAndTwentyOne struct {
+	TeamName          string  `json:"teamName"`
+	Username          *string `json:"username,omitempty"`
+	GitUsername       *string `json:"gitUsername,omitempty"`
+	GithubUsername    *string `json:"githubUsername,omitempty"`
+	GitlabUsername    *string `json:"gitlabUsername,omitempty"`
+	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
+}
+
+func (o *OneHundredAndTwentyOne) GetTeamName() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamName
+}
+
+func (o *OneHundredAndTwentyOne) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+func (o *OneHundredAndTwentyOne) GetGitUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUsername
+}
+
+func (o *OneHundredAndTwentyOne) GetGithubUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubUsername
+}
+
+func (o *OneHundredAndTwentyOne) GetGitlabUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabUsername
+}
+
+func (o *OneHundredAndTwentyOne) GetBitbucketUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BitbucketUsername
+}
+
+// OneHundredAndTwenty - The payload of the event, if requested.
+type OneHundredAndTwenty struct {
+	TeamName          string  `json:"teamName"`
+	Username          *string `json:"username,omitempty"`
+	GitUsername       *string `json:"gitUsername,omitempty"`
+	GithubUsername    *string `json:"githubUsername,omitempty"`
+	GitlabUsername    *string `json:"gitlabUsername,omitempty"`
+	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
+	UpdatedUID        *string `json:"updatedUid,omitempty"`
+	TeamID            *string `json:"teamId,omitempty"`
+}
+
+func (o *OneHundredAndTwenty) GetTeamName() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamName
+}
+
+func (o *OneHundredAndTwenty) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+func (o *OneHundredAndTwenty) GetGitUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUsername
+}
+
+func (o *OneHundredAndTwenty) GetGithubUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubUsername
+}
+
+func (o *OneHundredAndTwenty) GetGitlabUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabUsername
+}
+
+func (o *OneHundredAndTwenty) GetBitbucketUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BitbucketUsername
+}
+
+func (o *OneHundredAndTwenty) GetUpdatedUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedUID
+}
+
+func (o *OneHundredAndTwenty) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+// OneHundredAndNineteen - The payload of the event, if requested.
+type OneHundredAndNineteen struct {
+	Price    *float64 `json:"price,omitempty"`
+	Currency *string  `json:"currency,omitempty"`
+}
+
+func (o *OneHundredAndNineteen) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *OneHundredAndNineteen) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+// OneHundredAndEighteen - The payload of the event, if requested.
+type OneHundredAndEighteen struct {
+	PreviewDeploymentSuffix         *string `json:"previewDeploymentSuffix,omitempty"`
+	PreviousPreviewDeploymentSuffix *string `json:"previousPreviewDeploymentSuffix,omitempty"`
+}
+
+func (o *OneHundredAndEighteen) GetPreviewDeploymentSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewDeploymentSuffix
+}
+
+func (o *OneHundredAndEighteen) GetPreviousPreviewDeploymentSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousPreviewDeploymentSuffix
+}
+
+// OneHundredAndSeventeen - The payload of the event, if requested.
+type OneHundredAndSeventeen struct {
+	Price    *float64 `json:"price,omitempty"`
+	Currency *string  `json:"currency,omitempty"`
+	Enabled  *bool    `json:"enabled,omitempty"`
+}
+
+func (o *OneHundredAndSeventeen) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *OneHundredAndSeventeen) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+func (o *OneHundredAndSeventeen) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+// OneHundredAndSixteen - The payload of the event, if requested.
+type OneHundredAndSixteen struct {
+	Username string `json:"username"`
+}
+
+func (o *OneHundredAndSixteen) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// OneHundredAndFifteen - The payload of the event, if requested.
+type OneHundredAndFifteen struct {
+	Email     string `json:"email"`
+	PrevEmail string `json:"prevEmail"`
+}
+
+func (o *OneHundredAndFifteen) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *OneHundredAndFifteen) GetPrevEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.PrevEmail
+}
+
+// OneHundredAndFourteen - The payload of the event, if requested.
+type OneHundredAndFourteen struct {
+	MfaEnabled bool `json:"mfaEnabled"`
+}
+
+func (o *OneHundredAndFourteen) GetMfaEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.MfaEnabled
+}
+
+// OneHundredAndThirteen - The payload of the event, if requested.
+type OneHundredAndThirteen struct {
+	Enabled      bool `json:"enabled"`
+	TotpVerified bool `json:"totpVerified"`
+}
+
+func (o *OneHundredAndThirteen) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *OneHundredAndThirteen) GetTotpVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.TotpVerified
+}
+
+type Previous struct {
+	Enabled      bool `json:"enabled"`
+	TotpVerified bool `json:"totpVerified"`
+}
+
+func (o *Previous) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *Previous) GetTotpVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.TotpVerified
+}
+
+type Next struct {
+	Enabled      bool `json:"enabled"`
+	TotpVerified bool `json:"totpVerified"`
+}
+
+func (o *Next) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *Next) GetTotpVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.TotpVerified
+}
+
+// OneHundredAndTwelve - The payload of the event, if requested.
+type OneHundredAndTwelve struct {
+	Previous Previous `json:"previous"`
+	Next     Next     `json:"next"`
+}
+
+func (o *OneHundredAndTwelve) GetPrevious() Previous {
+	if o == nil {
+		return Previous{}
+	}
+	return o.Previous
+}
+
+func (o *OneHundredAndTwelve) GetNext() Next {
+	if o == nil {
+		return Next{}
+	}
+	return o.Next
+}
+
+// PayloadRemoteCaching - Represents configuration for remote caching
+type PayloadRemoteCaching struct {
+	Enabled *bool `json:"enabled,omitempty"`
+}
+
+func (o *PayloadRemoteCaching) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+// OneHundredAndEleven - The payload of the event, if requested.
+type OneHundredAndEleven struct {
+	// Represents configuration for remote caching
+	RemoteCaching *PayloadRemoteCaching `json:"remoteCaching,omitempty"`
+}
+
+func (o *OneHundredAndEleven) GetRemoteCaching() *PayloadRemoteCaching {
+	if o == nil {
+		return nil
+	}
+	return o.RemoteCaching
+}
+
+// OneHundredAndTen - The payload of the event, if requested.
+type OneHundredAndTen struct {
+	Slug *string `json:"slug,omitempty"`
+}
+
+func (o *OneHundredAndTen) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+// OneHundredAndNine - The payload of the event, if requested.
+type OneHundredAndNine struct {
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *OneHundredAndNine) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type UserEventPayload108User struct {
+	ID       string `json:"id"`
+	Username string `json:"username"`
+}
+
+func (o *UserEventPayload108User) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload108User) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// OneHundredAndEight - The payload of the event, if requested.
+type OneHundredAndEight struct {
+	Entitlement        string                  `json:"entitlement"`
+	User               UserEventPayload108User `json:"user"`
+	PreviousCanceledAt *string                 `json:"previousCanceledAt,omitempty"`
+}
+
+func (o *OneHundredAndEight) GetEntitlement() string {
+	if o == nil {
+		return ""
+	}
+	return o.Entitlement
+}
+
+func (o *OneHundredAndEight) GetUser() UserEventPayload108User {
+	if o == nil {
+		return UserEventPayload108User{}
+	}
+	return o.User
+}
+
+func (o *OneHundredAndEight) GetPreviousCanceledAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousCanceledAt
+}
+
+type UserEventPayloadUser struct {
+	ID       string `json:"id"`
+	Username string `json:"username"`
+}
+
+func (o *UserEventPayloadUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// OneHundredAndSeven - The payload of the event, if requested.
+type OneHundredAndSeven struct {
+	Entitlement string               `json:"entitlement"`
+	User        UserEventPayloadUser `json:"user"`
+}
+
+func (o *OneHundredAndSeven) GetEntitlement() string {
+	if o == nil {
+		return ""
+	}
+	return o.Entitlement
+}
+
+func (o *OneHundredAndSeven) GetUser() UserEventPayloadUser {
+	if o == nil {
+		return UserEventPayloadUser{}
+	}
+	return o.User
+}
+
+type UpdatedUser struct {
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}
+
+func (o *UpdatedUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *UpdatedUser) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// OneHundredAndSix - The payload of the event, if requested.
+type OneHundredAndSix struct {
+	DirectoryType *string      `json:"directoryType,omitempty"`
+	UpdatedUser   *UpdatedUser `json:"updatedUser,omitempty"`
+	Role          *string      `json:"role,omitempty"`
+	PreviousRole  string       `json:"previousRole"`
+	UpdatedUID    *string      `json:"updatedUid,omitempty"`
+}
+
+func (o *OneHundredAndSix) GetDirectoryType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DirectoryType
+}
+
+func (o *OneHundredAndSix) GetUpdatedUser() *UpdatedUser {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedUser
+}
+
+func (o *OneHundredAndSix) GetRole() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *OneHundredAndSix) GetPreviousRole() string {
+	if o == nil {
+		return ""
+	}
+	return o.PreviousRole
+}
+
+func (o *OneHundredAndSix) GetUpdatedUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedUID
+}
+
+// OneHundredAndFive - The payload of the event, if requested.
+type OneHundredAndFive struct {
+	Role   *string `json:"role,omitempty"`
+	UID    string  `json:"uid"`
+	Origin *string `json:"origin,omitempty"`
+}
+
+func (o *OneHundredAndFive) GetRole() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *OneHundredAndFive) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *OneHundredAndFive) GetOrigin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Origin
+}
+
+type DeletedUser struct {
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}
+
+func (o *DeletedUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *DeletedUser) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// OneHundredAndFour - The payload of the event, if requested.
+type OneHundredAndFour struct {
+	DeletedUser       *DeletedUser `json:"deletedUser,omitempty"`
+	DeletedUID        *string      `json:"deletedUid,omitempty"`
+	GithubUsername    *string      `json:"githubUsername,omitempty"`
+	GitlabUsername    *string      `json:"gitlabUsername,omitempty"`
+	BitbucketUsername *string      `json:"bitbucketUsername,omitempty"`
+	DirectoryType     *string      `json:"directoryType,omitempty"`
+}
+
+func (o *OneHundredAndFour) GetDeletedUser() *DeletedUser {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedUser
+}
+
+func (o *OneHundredAndFour) GetDeletedUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedUID
+}
+
+func (o *OneHundredAndFour) GetGithubUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubUsername
+}
+
+func (o *OneHundredAndFour) GetGitlabUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabUsername
+}
+
+func (o *OneHundredAndFour) GetBitbucketUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BitbucketUsername
+}
+
+func (o *OneHundredAndFour) GetDirectoryType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DirectoryType
+}
+
+type InvitedUser struct {
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}
+
+func (o *InvitedUser) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *InvitedUser) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// OneHundredAndThree - The payload of the event, if requested.
+type OneHundredAndThree struct {
+	DirectoryType  *string      `json:"directoryType,omitempty"`
+	SsoType        *string      `json:"ssoType,omitempty"`
+	InvitedUser    *InvitedUser `json:"invitedUser,omitempty"`
+	InvitedEmail   *string      `json:"invitedEmail,omitempty"`
+	InvitationRole *string      `json:"invitationRole,omitempty"`
+	Entitlements   []string     `json:"entitlements,omitempty"`
+	InvitedUID     *string      `json:"invitedUid,omitempty"`
+}
+
+func (o *OneHundredAndThree) GetDirectoryType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DirectoryType
+}
+
+func (o *OneHundredAndThree) GetSsoType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoType
+}
+
+func (o *OneHundredAndThree) GetInvitedUser() *InvitedUser {
+	if o == nil {
+		return nil
+	}
+	return o.InvitedUser
+}
+
+func (o *OneHundredAndThree) GetInvitedEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvitedEmail
+}
+
+func (o *OneHundredAndThree) GetInvitationRole() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvitationRole
+}
+
+func (o *OneHundredAndThree) GetEntitlements() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Entitlements
+}
+
+func (o *OneHundredAndThree) GetInvitedUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvitedUID
+}
+
+type Reasons struct {
+	Slug        string `json:"slug"`
+	Description string `json:"description"`
+}
+
+func (o *Reasons) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *Reasons) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+// OneHundredAndTwo - The payload of the event, if requested.
+type OneHundredAndTwo struct {
+	Slug    string    `json:"slug"`
+	TeamID  string    `json:"teamId"`
+	By      string    `json:"by"`
+	Reasons []Reasons `json:"reasons,omitempty"`
+}
+
+func (o *OneHundredAndTwo) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *OneHundredAndTwo) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *OneHundredAndTwo) GetBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.By
+}
+
+func (o *OneHundredAndTwo) GetReasons() []Reasons {
+	if o == nil {
+		return nil
+	}
+	return o.Reasons
+}
+
+// OneHundredAndOne - The payload of the event, if requested.
+type OneHundredAndOne struct {
+	Slug string `json:"slug"`
+}
+
+func (o *OneHundredAndOne) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+type Store struct {
+	Name string `json:"name"`
+	ID   string `json:"id"`
+}
+
+func (o *Store) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Store) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+// OneHundred - The payload of the event, if requested.
+type OneHundred struct {
+	Store   Store   `json:"store"`
+	OwnerID *string `json:"ownerId,omitempty"`
+}
+
+func (o *OneHundred) GetStore() Store {
+	if o == nil {
+		return Store{}
+	}
+	return o.Store
+}
+
+func (o *OneHundred) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+type StoreType string
+
+const (
+	StoreTypeRedis    StoreType = "redis"
+	StoreTypePostgres StoreType = "postgres"
+)
+
+func (e StoreType) ToPointer() *StoreType {
+	return &e
+}
+func (e *StoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis":
+		fallthrough
+	case "postgres":
+		*e = StoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for StoreType: %v", v)
+	}
+}
+
+// NinetyNine - The payload of the event, if requested.
+type NinetyNine struct {
+	StoreType StoreType `json:"storeType"`
+}
+
+func (o *NinetyNine) GetStoreType() StoreType {
+	if o == nil {
+		return StoreType("")
+	}
+	return o.StoreType
+}
+
+type UserEventPayloadType string
+
+const (
+	UserEventPayloadTypeIntegration UserEventPayloadType = "integration"
+	UserEventPayloadTypeEdgeConfig  UserEventPayloadType = "edge-config"
+	UserEventPayloadTypeRedis       UserEventPayloadType = "redis"
+	UserEventPayloadTypePostgres    UserEventPayloadType = "postgres"
+	UserEventPayloadTypeBlob        UserEventPayloadType = "blob"
+)
+
+func (e UserEventPayloadType) ToPointer() *UserEventPayloadType {
+	return &e
+}
+func (e *UserEventPayloadType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		fallthrough
+	case "edge-config":
+		fallthrough
+	case "redis":
+		fallthrough
+	case "postgres":
+		fallthrough
+	case "blob":
+		*e = UserEventPayloadType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadType: %v", v)
+	}
+}
+
+// NinetyEight - The payload of the event, if requested.
+type NinetyEight struct {
+	ID                    string               `json:"id"`
+	Name                  *string              `json:"name,omitempty"`
+	ComputeUnitsMax       *float64             `json:"computeUnitsMax,omitempty"`
+	ComputeUnitsMin       *float64             `json:"computeUnitsMin,omitempty"`
+	SuspendTimeoutSeconds *float64             `json:"suspendTimeoutSeconds,omitempty"`
+	Type                  UserEventPayloadType `json:"type"`
+}
+
+func (o *NinetyEight) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *NinetyEight) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *NinetyEight) GetComputeUnitsMax() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ComputeUnitsMax
+}
+
+func (o *NinetyEight) GetComputeUnitsMin() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ComputeUnitsMin
+}
+
+func (o *NinetyEight) GetSuspendTimeoutSeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SuspendTimeoutSeconds
+}
+
+func (o *NinetyEight) GetType() UserEventPayloadType {
+	if o == nil {
+		return UserEventPayloadType("")
+	}
+	return o.Type
+}
+
+// UserEventPayload97Type - The budget type
+type UserEventPayload97Type string
+
+const (
+	UserEventPayload97TypeFixed UserEventPayload97Type = "fixed"
+)
+
+func (e UserEventPayload97Type) ToPointer() *UserEventPayload97Type {
+	return &e
+}
+func (e *UserEventPayload97Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		*e = UserEventPayload97Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload97Type: %v", v)
+	}
+}
+
+// PayloadPricingPlan - The acive pricing plan the team is billed with
+type PayloadPricingPlan string
+
+const (
+	PayloadPricingPlanLegacy    PayloadPricingPlan = "legacy"
+	PayloadPricingPlanUnbundled PayloadPricingPlan = "unbundled"
+)
+
+func (e PayloadPricingPlan) ToPointer() *PayloadPricingPlan {
+	return &e
+}
+func (e *PayloadPricingPlan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "legacy":
+		fallthrough
+	case "unbundled":
+		*e = PayloadPricingPlan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadPricingPlan: %v", v)
+	}
+}
+
+// BudgetItem - Represents a budget for tracking and notifying teams on their spending.
+type BudgetItem struct {
+	// The budget type
+	Type UserEventPayload97Type `json:"type"`
+	// Budget amount
+	FixedBudget float64 `json:"fixedBudget"`
+	// Array of the last 3 months of spend data
+	PreviousSpend []float64 `json:"previousSpend"`
+	// Array of 50, 75, 100 to keep track of notifications sent out
+	NotifiedAt []float64 `json:"notifiedAt"`
+	// Webhook id that corresponds to a webhook in Cosmos webhook collection
+	WebhookID *string `json:"webhookId,omitempty"`
+	// Keep track if the webhook has been called for the month
+	WebhookNotified *bool `json:"webhookNotified,omitempty"`
+	// Date time when budget is created
+	CreatedAt float64 `json:"createdAt"`
+	// Date time when budget is updated last
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// Is the budget currently active for a customer
+	IsActive bool `json:"isActive"`
+	// Should all projects be paused if budget is exceeded
+	PauseProjects *bool `json:"pauseProjects,omitempty"`
+	// The acive pricing plan the team is billed with
+	PricingPlan *PayloadPricingPlan `json:"pricingPlan,omitempty"`
+	// Partition key
+	TeamID string `json:"teamId"`
+	// Sort key that needs to be unique per teamId
+	ID string `json:"id"`
+}
+
+func (o *BudgetItem) GetType() UserEventPayload97Type {
+	if o == nil {
+		return UserEventPayload97Type("")
+	}
+	return o.Type
+}
+
+func (o *BudgetItem) GetFixedBudget() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.FixedBudget
+}
+
+func (o *BudgetItem) GetPreviousSpend() []float64 {
+	if o == nil {
+		return []float64{}
+	}
+	return o.PreviousSpend
+}
+
+func (o *BudgetItem) GetNotifiedAt() []float64 {
+	if o == nil {
+		return []float64{}
+	}
+	return o.NotifiedAt
+}
+
+func (o *BudgetItem) GetWebhookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
+func (o *BudgetItem) GetWebhookNotified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookNotified
+}
+
+func (o *BudgetItem) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *BudgetItem) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *BudgetItem) GetIsActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsActive
+}
+
+func (o *BudgetItem) GetPauseProjects() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PauseProjects
+}
+
+func (o *BudgetItem) GetPricingPlan() *PayloadPricingPlan {
+	if o == nil {
+		return nil
+	}
+	return o.PricingPlan
+}
+
+func (o *BudgetItem) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *BudgetItem) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+type PayloadBudget struct {
+	// Represents a budget for tracking and notifying teams on their spending.
+	BudgetItem BudgetItem `json:"budgetItem"`
+}
+
+func (o *PayloadBudget) GetBudgetItem() BudgetItem {
+	if o == nil {
+		return BudgetItem{}
+	}
+	return o.BudgetItem
+}
+
+// NinetySeven - The payload of the event, if requested.
+type NinetySeven struct {
+	Budget PayloadBudget `json:"budget"`
+}
+
+func (o *NinetySeven) GetBudget() PayloadBudget {
+	if o == nil {
+		return PayloadBudget{}
+	}
+	return o.Budget
+}
+
+// UserEventPayload96Type - The budget type
+type UserEventPayload96Type string
+
+const (
+	UserEventPayload96TypeFixed UserEventPayload96Type = "fixed"
+)
+
+func (e UserEventPayload96Type) ToPointer() *UserEventPayload96Type {
+	return &e
+}
+func (e *UserEventPayload96Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		*e = UserEventPayload96Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload96Type: %v", v)
+	}
+}
+
+// PricingPlan - The acive pricing plan the team is billed with
+type PricingPlan string
+
+const (
+	PricingPlanLegacy    PricingPlan = "legacy"
+	PricingPlanUnbundled PricingPlan = "unbundled"
+)
+
+func (e PricingPlan) ToPointer() *PricingPlan {
+	return &e
+}
+func (e *PricingPlan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "legacy":
+		fallthrough
+	case "unbundled":
+		*e = PricingPlan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PricingPlan: %v", v)
+	}
+}
+
+// Budget - Represents a budget for tracking and notifying teams on their spending.
+type Budget struct {
+	// The budget type
+	Type UserEventPayload96Type `json:"type"`
+	// Budget amount
+	FixedBudget float64 `json:"fixedBudget"`
+	// Array of the last 3 months of spend data
+	PreviousSpend []float64 `json:"previousSpend"`
+	// Array of 50, 75, 100 to keep track of notifications sent out
+	NotifiedAt []float64 `json:"notifiedAt"`
+	// Webhook id that corresponds to a webhook in Cosmos webhook collection
+	WebhookID *string `json:"webhookId,omitempty"`
+	// Keep track if the webhook has been called for the month
+	WebhookNotified *bool `json:"webhookNotified,omitempty"`
+	// Date time when budget is created
+	CreatedAt float64 `json:"createdAt"`
+	// Date time when budget is updated last
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// Is the budget currently active for a customer
+	IsActive bool `json:"isActive"`
+	// Should all projects be paused if budget is exceeded
+	PauseProjects *bool `json:"pauseProjects,omitempty"`
+	// The acive pricing plan the team is billed with
+	PricingPlan *PricingPlan `json:"pricingPlan,omitempty"`
+	// Partition key
+	TeamID string `json:"teamId"`
+	// Sort key that needs to be unique per teamId
+	ID string `json:"id"`
+}
+
+func (o *Budget) GetType() UserEventPayload96Type {
+	if o == nil {
+		return UserEventPayload96Type("")
+	}
+	return o.Type
+}
+
+func (o *Budget) GetFixedBudget() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.FixedBudget
+}
+
+func (o *Budget) GetPreviousSpend() []float64 {
+	if o == nil {
+		return []float64{}
+	}
+	return o.PreviousSpend
+}
+
+func (o *Budget) GetNotifiedAt() []float64 {
+	if o == nil {
+		return []float64{}
+	}
+	return o.NotifiedAt
+}
+
+func (o *Budget) GetWebhookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
+func (o *Budget) GetWebhookNotified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookNotified
+}
+
+func (o *Budget) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *Budget) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Budget) GetIsActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsActive
+}
+
+func (o *Budget) GetPauseProjects() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PauseProjects
+}
+
+func (o *Budget) GetPricingPlan() *PricingPlan {
+	if o == nil {
+		return nil
+	}
+	return o.PricingPlan
+}
+
+func (o *Budget) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Budget) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+// NinetySix - The payload of the event, if requested.
+type NinetySix struct {
+	// Represents a budget for tracking and notifying teams on their spending.
+	Budget Budget `json:"budget"`
+}
+
+func (o *NinetySix) GetBudget() Budget {
+	if o == nil {
+		return Budget{}
+	}
+	return o.Budget
+}
+
+// NinetyFive - The payload of the event, if requested.
+type NinetyFive struct {
+	WebhookURL *string `json:"webhookUrl,omitempty"`
+}
+
+func (o *NinetyFive) GetWebhookURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookURL
+}
+
+type ScalingRules struct {
+	Min float64 `json:"min"`
+	Max float64 `json:"max"`
+}
+
+func (o *ScalingRules) GetMin() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Min
+}
+
+func (o *ScalingRules) GetMax() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Max
+}
+
+// NinetyFour - The payload of the event, if requested.
+type NinetyFour struct {
+	ScalingRules map[string]ScalingRules `json:"scalingRules"`
+	Min          float64                 `json:"min"`
+	Max          float64                 `json:"max"`
+	URL          string                  `json:"url"`
+}
+
+func (o *NinetyFour) GetScalingRules() map[string]ScalingRules {
+	if o == nil {
+		return map[string]ScalingRules{}
+	}
+	return o.ScalingRules
+}
+
+func (o *NinetyFour) GetMin() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Min
+}
+
+func (o *NinetyFour) GetMax() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Max
+}
+
+func (o *NinetyFour) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+// NinetyThree - The payload of the event, if requested.
+type NinetyThree struct {
+	Bio string `json:"bio"`
+}
+
+func (o *NinetyThree) GetBio() string {
+	if o == nil {
+		return ""
+	}
+	return o.Bio
+}
+
+// NinetyTwo - The payload of the event, if requested.
+type NinetyTwo struct {
+	OldName string  `json:"oldName"`
+	NewName string  `json:"newName"`
+	UID     *string `json:"uid,omitempty"`
+}
+
+func (o *NinetyTwo) GetOldName() string {
+	if o == nil {
+		return ""
+	}
+	return o.OldName
+}
+
+func (o *NinetyTwo) GetNewName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NewName
+}
+
+func (o *NinetyTwo) GetUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+type Name2 struct {
+	Name string `json:"name"`
+}
+
+func (o *Name2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type NameType string
+
+const (
+	NameTypeStr   NameType = "str"
+	NameTypeName2 NameType = "name_2"
+)
+
+type Name struct {
+	Str   *string
+	Name2 *Name2
+
+	Type NameType
+}
+
+func CreateNameStr(str string) Name {
+	typ := NameTypeStr
+
+	return Name{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateNameName2(name2 Name2) Name {
+	typ := NameTypeName2
+
+	return Name{
+		Name2: &name2,
+		Type:  typ,
+	}
+}
+
+func (u *Name) UnmarshalJSON(data []byte) error {
+
+	var name2 Name2 = Name2{}
+	if err := utils.UnmarshalJSON(data, &name2, "", true, true); err == nil {
+		u.Name2 = &name2
+		u.Type = NameTypeName2
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = NameTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Name", string(data))
+}
+
+func (u Name) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Name2 != nil {
+		return utils.MarshalJSON(u.Name2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Name: all fields are null")
+}
+
+// NinetyOne - The payload of the event, if requested.
+type NinetyOne struct {
+	UID  string `json:"uid"`
+	Name Name   `json:"name"`
+}
+
+func (o *NinetyOne) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *NinetyOne) GetName() Name {
+	if o == nil {
+		return Name{}
+	}
+	return o.Name
+}
+
+type UserEventPayload90Team struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload90Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload90Team) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type PayloadPreviousRule struct {
+	Email string `json:"email"`
+}
+
+func (o *PayloadPreviousRule) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// Ninety - The payload of the event, if requested.
+type Ninety struct {
+	Team         UserEventPayload90Team `json:"team"`
+	PreviousRule PayloadPreviousRule    `json:"previousRule"`
+}
+
+func (o *Ninety) GetTeam() UserEventPayload90Team {
+	if o == nil {
+		return UserEventPayload90Team{}
+	}
+	return o.Team
+}
+
+func (o *Ninety) GetPreviousRule() PayloadPreviousRule {
+	if o == nil {
+		return PayloadPreviousRule{}
+	}
+	return o.PreviousRule
+}
+
+type UserEventPayload89Team struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload89Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload89Team) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type PreviousRule struct {
+	Email string `json:"email"`
+}
+
+func (o *PreviousRule) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+type NextRule struct {
+	Email string `json:"email"`
+}
+
+func (o *NextRule) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// EightyNine - The payload of the event, if requested.
+type EightyNine struct {
+	Team         UserEventPayload89Team `json:"team"`
+	PreviousRule *PreviousRule          `json:"previousRule,omitempty"`
+	NextRule     *NextRule              `json:"nextRule,omitempty"`
+}
+
+func (o *EightyNine) GetTeam() UserEventPayload89Team {
+	if o == nil {
+		return UserEventPayload89Team{}
+	}
+	return o.Team
+}
+
+func (o *EightyNine) GetPreviousRule() *PreviousRule {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousRule
+}
+
+func (o *EightyNine) GetNextRule() *NextRule {
+	if o == nil {
+		return nil
+	}
+	return o.NextRule
+}
+
+// EightyEight - The payload of the event, if requested.
+type EightyEight struct {
+	Email string `json:"email"`
+}
+
+func (o *EightyEight) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+// EightySeven - The payload of the event, if requested.
+type EightySeven struct {
+	Email    string `json:"email"`
+	Verified bool   `json:"verified"`
+}
+
+func (o *EightySeven) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *EightySeven) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+// EightySix - The payload of the event, if requested.
+type EightySix struct {
+	Instances float64 `json:"instances"`
+	URL       string  `json:"url"`
+}
+
+func (o *EightySix) GetInstances() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Instances
+}
+
+func (o *EightySix) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+// EightyFive - The payload of the event, if requested.
+type EightyFive struct {
+	GitProvider                string `json:"gitProvider"`
+	GitProviderGroupDescriptor string `json:"gitProviderGroupDescriptor"`
+	GitScope                   string `json:"gitScope"`
+}
+
+func (o *EightyFive) GetGitProvider() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitProvider
+}
+
+func (o *EightyFive) GetGitProviderGroupDescriptor() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitProviderGroupDescriptor
+}
+
+func (o *EightyFive) GetGitScope() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitScope
+}
+
+// EightyFour - The payload of the event, if requested.
+type EightyFour struct {
+	ProjectID string `json:"projectId"`
+}
+
+func (o *EightyFour) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+type UserEventPayload83Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload83Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload83Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type OldConnectConfigurations struct {
+}
+
+type NewConnectConfigurations struct {
+}
+
+type UserEventPayload83Project struct {
+	ID                       string                     `json:"id"`
+	Name                     *string                    `json:"name,omitempty"`
+	OldConnectConfigurations []OldConnectConfigurations `json:"oldConnectConfigurations"`
+	NewConnectConfigurations []NewConnectConfigurations `json:"newConnectConfigurations"`
+}
+
+func (o *UserEventPayload83Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload83Project) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UserEventPayload83Project) GetOldConnectConfigurations() []OldConnectConfigurations {
+	if o == nil {
+		return nil
+	}
+	return o.OldConnectConfigurations
+}
+
+func (o *UserEventPayload83Project) GetNewConnectConfigurations() []NewConnectConfigurations {
+	if o == nil {
+		return nil
+	}
+	return o.NewConnectConfigurations
+}
+
+// EightyThree - The payload of the event, if requested.
+type EightyThree struct {
+	Team    UserEventPayload83Team    `json:"team"`
+	Project UserEventPayload83Project `json:"project"`
+}
+
+func (o *EightyThree) GetTeam() UserEventPayload83Team {
+	if o == nil {
+		return UserEventPayload83Team{}
+	}
+	return o.Team
+}
+
+func (o *EightyThree) GetProject() UserEventPayload83Project {
+	if o == nil {
+		return UserEventPayload83Project{}
+	}
+	return o.Project
+}
+
+// EightyTwo - The payload of the event, if requested.
+type EightyTwo struct {
+	Name    string `json:"name"`
+	OwnerID string `json:"ownerId"`
+}
+
+func (o *EightyTwo) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *EightyTwo) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+type UserEventPayloadAction string
+
+const (
+	UserEventPayloadActionEnabled     UserEventPayloadAction = "enabled"
+	UserEventPayloadActionDisabled    UserEventPayloadAction = "disabled"
+	UserEventPayloadActionRegenerated UserEventPayloadAction = "regenerated"
+)
+
+func (e UserEventPayloadAction) ToPointer() *UserEventPayloadAction {
+	return &e
+}
+func (e *UserEventPayloadAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		fallthrough
+	case "regenerated":
+		*e = UserEventPayloadAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadAction: %v", v)
+	}
+}
+
+// EightyOne - The payload of the event, if requested.
+type EightyOne struct {
+	ProjectName string                 `json:"projectName"`
+	Action      UserEventPayloadAction `json:"action"`
+}
+
+func (o *EightyOne) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *EightyOne) GetAction() UserEventPayloadAction {
+	if o == nil {
+		return UserEventPayloadAction("")
+	}
+	return o.Action
+}
+
+type Paths struct {
+	Value string `json:"value"`
+}
+
+func (o *Paths) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type OptionsAllowlist struct {
+	Paths []Paths `json:"paths"`
+}
+
+func (o *OptionsAllowlist) GetPaths() []Paths {
+	if o == nil {
+		return []Paths{}
+	}
+	return o.Paths
+}
+
+type PayloadPaths struct {
+	Value string `json:"value"`
+}
+
+func (o *PayloadPaths) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type OldOptionsAllowlist struct {
+	Paths []PayloadPaths `json:"paths"`
+}
+
+func (o *OldOptionsAllowlist) GetPaths() []PayloadPaths {
+	if o == nil {
+		return []PayloadPaths{}
+	}
+	return o.Paths
+}
+
+// Eighty - The payload of the event, if requested.
+type Eighty struct {
+	ProjectName         string               `json:"projectName"`
+	OptionsAllowlist    *OptionsAllowlist    `json:"optionsAllowlist,omitempty"`
+	OldOptionsAllowlist *OldOptionsAllowlist `json:"oldOptionsAllowlist,omitempty"`
+}
+
+func (o *Eighty) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *Eighty) GetOptionsAllowlist() *OptionsAllowlist {
+	if o == nil {
+		return nil
+	}
+	return o.OptionsAllowlist
+}
+
+func (o *Eighty) GetOldOptionsAllowlist() *OldOptionsAllowlist {
+	if o == nil {
+		return nil
+	}
+	return o.OldOptionsAllowlist
+}
+
+type TrustedIps string
+
+const (
+	TrustedIpsAll                              TrustedIps = "all"
+	TrustedIpsPreview                          TrustedIps = "preview"
+	TrustedIpsProdDeploymentUrlsAndAllPreviews TrustedIps = "prod_deployment_urls_and_all_previews"
+	TrustedIpsProduction                       TrustedIps = "production"
+)
+
+func (e TrustedIps) ToPointer() *TrustedIps {
+	return &e
+}
+func (e *TrustedIps) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "production":
+		*e = TrustedIps(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TrustedIps: %v", v)
+	}
+}
+
+type OldTrustedIps string
+
+const (
+	OldTrustedIpsAll                              OldTrustedIps = "all"
+	OldTrustedIpsPreview                          OldTrustedIps = "preview"
+	OldTrustedIpsProdDeploymentUrlsAndAllPreviews OldTrustedIps = "prod_deployment_urls_and_all_previews"
+	OldTrustedIpsProduction                       OldTrustedIps = "production"
+)
+
+func (e OldTrustedIps) ToPointer() *OldTrustedIps {
+	return &e
+}
+func (e *OldTrustedIps) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "production":
+		*e = OldTrustedIps(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldTrustedIps: %v", v)
+	}
+}
+
+// SeventyNine - The payload of the event, if requested.
+type SeventyNine struct {
+	ProjectName      string         `json:"projectName"`
+	TrustedIps       *TrustedIps    `json:"trustedIps,omitempty"`
+	OldTrustedIps    *OldTrustedIps `json:"oldTrustedIps,omitempty"`
+	AddedAddresses   []string       `json:"addedAddresses,omitempty"`
+	RemovedAddresses []string       `json:"removedAddresses,omitempty"`
+}
+
+func (o *SeventyNine) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *SeventyNine) GetTrustedIps() *TrustedIps {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedIps
+}
+
+func (o *SeventyNine) GetOldTrustedIps() *OldTrustedIps {
+	if o == nil {
+		return nil
+	}
+	return o.OldTrustedIps
+}
+
+func (o *SeventyNine) GetAddedAddresses() []string {
+	if o == nil {
+		return nil
+	}
+	return o.AddedAddresses
+}
+
+func (o *SeventyNine) GetRemovedAddresses() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedAddresses
+}
+
+type PasswordProtection2 string
+
+const (
+	PasswordProtection2All                              PasswordProtection2 = "all"
+	PasswordProtection2Preview                          PasswordProtection2 = "preview"
+	PasswordProtection2ProdDeploymentUrlsAndAllPreviews PasswordProtection2 = "prod_deployment_urls_and_all_previews"
+)
+
+func (e PasswordProtection2) ToPointer() *PasswordProtection2 {
+	return &e
+}
+func (e *PasswordProtection2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = PasswordProtection2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PasswordProtection2: %v", v)
+	}
+}
+
+type PasswordProtectionDeploymentType string
+
+const (
+	PasswordProtectionDeploymentTypeAll                              PasswordProtectionDeploymentType = "all"
+	PasswordProtectionDeploymentTypePreview                          PasswordProtectionDeploymentType = "preview"
+	PasswordProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews PasswordProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+)
+
+func (e PasswordProtectionDeploymentType) ToPointer() *PasswordProtectionDeploymentType {
+	return &e
+}
+func (e *PasswordProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = PasswordProtectionDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PasswordProtectionDeploymentType: %v", v)
+	}
+}
+
+type PasswordProtection1 struct {
+	DeploymentType PasswordProtectionDeploymentType `json:"deploymentType"`
+}
+
+func (o *PasswordProtection1) GetDeploymentType() PasswordProtectionDeploymentType {
+	if o == nil {
+		return PasswordProtectionDeploymentType("")
+	}
+	return o.DeploymentType
+}
+
+type PasswordProtectionType string
+
+const (
+	PasswordProtectionTypePasswordProtection1 PasswordProtectionType = "passwordProtection_1"
+	PasswordProtectionTypePasswordProtection2 PasswordProtectionType = "passwordProtection_2"
+)
+
+type PasswordProtection struct {
+	PasswordProtection1 *PasswordProtection1
+	PasswordProtection2 *PasswordProtection2
+
+	Type PasswordProtectionType
+}
+
+func CreatePasswordProtectionPasswordProtection1(passwordProtection1 PasswordProtection1) PasswordProtection {
+	typ := PasswordProtectionTypePasswordProtection1
+
+	return PasswordProtection{
+		PasswordProtection1: &passwordProtection1,
+		Type:                typ,
+	}
+}
+
+func CreatePasswordProtectionPasswordProtection2(passwordProtection2 PasswordProtection2) PasswordProtection {
+	typ := PasswordProtectionTypePasswordProtection2
+
+	return PasswordProtection{
+		PasswordProtection2: &passwordProtection2,
+		Type:                typ,
+	}
+}
+
+func (u *PasswordProtection) UnmarshalJSON(data []byte) error {
+
+	var passwordProtection1 PasswordProtection1 = PasswordProtection1{}
+	if err := utils.UnmarshalJSON(data, &passwordProtection1, "", true, true); err == nil {
+		u.PasswordProtection1 = &passwordProtection1
+		u.Type = PasswordProtectionTypePasswordProtection1
+		return nil
+	}
+
+	var passwordProtection2 PasswordProtection2 = PasswordProtection2("")
+	if err := utils.UnmarshalJSON(data, &passwordProtection2, "", true, true); err == nil {
+		u.PasswordProtection2 = &passwordProtection2
+		u.Type = PasswordProtectionTypePasswordProtection2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PasswordProtection", string(data))
+}
+
+func (u PasswordProtection) MarshalJSON() ([]byte, error) {
+	if u.PasswordProtection1 != nil {
+		return utils.MarshalJSON(u.PasswordProtection1, "", true)
+	}
+
+	if u.PasswordProtection2 != nil {
+		return utils.MarshalJSON(u.PasswordProtection2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PasswordProtection: all fields are null")
+}
+
+type OldPasswordProtection2 string
+
+const (
+	OldPasswordProtection2All                              OldPasswordProtection2 = "all"
+	OldPasswordProtection2Preview                          OldPasswordProtection2 = "preview"
+	OldPasswordProtection2ProdDeploymentUrlsAndAllPreviews OldPasswordProtection2 = "prod_deployment_urls_and_all_previews"
+)
+
+func (e OldPasswordProtection2) ToPointer() *OldPasswordProtection2 {
+	return &e
+}
+func (e *OldPasswordProtection2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = OldPasswordProtection2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldPasswordProtection2: %v", v)
+	}
+}
+
+type OldPasswordProtectionDeploymentType string
+
+const (
+	OldPasswordProtectionDeploymentTypeAll                              OldPasswordProtectionDeploymentType = "all"
+	OldPasswordProtectionDeploymentTypePreview                          OldPasswordProtectionDeploymentType = "preview"
+	OldPasswordProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews OldPasswordProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+)
+
+func (e OldPasswordProtectionDeploymentType) ToPointer() *OldPasswordProtectionDeploymentType {
+	return &e
+}
+func (e *OldPasswordProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = OldPasswordProtectionDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldPasswordProtectionDeploymentType: %v", v)
+	}
+}
+
+type OldPasswordProtection1 struct {
+	DeploymentType OldPasswordProtectionDeploymentType `json:"deploymentType"`
+}
+
+func (o *OldPasswordProtection1) GetDeploymentType() OldPasswordProtectionDeploymentType {
+	if o == nil {
+		return OldPasswordProtectionDeploymentType("")
+	}
+	return o.DeploymentType
+}
+
+type OldPasswordProtectionType string
+
+const (
+	OldPasswordProtectionTypeOldPasswordProtection1 OldPasswordProtectionType = "oldPasswordProtection_1"
+	OldPasswordProtectionTypeOldPasswordProtection2 OldPasswordProtectionType = "oldPasswordProtection_2"
+)
+
+type OldPasswordProtection struct {
+	OldPasswordProtection1 *OldPasswordProtection1
+	OldPasswordProtection2 *OldPasswordProtection2
+
+	Type OldPasswordProtectionType
+}
+
+func CreateOldPasswordProtectionOldPasswordProtection1(oldPasswordProtection1 OldPasswordProtection1) OldPasswordProtection {
+	typ := OldPasswordProtectionTypeOldPasswordProtection1
+
+	return OldPasswordProtection{
+		OldPasswordProtection1: &oldPasswordProtection1,
+		Type:                   typ,
+	}
+}
+
+func CreateOldPasswordProtectionOldPasswordProtection2(oldPasswordProtection2 OldPasswordProtection2) OldPasswordProtection {
+	typ := OldPasswordProtectionTypeOldPasswordProtection2
+
+	return OldPasswordProtection{
+		OldPasswordProtection2: &oldPasswordProtection2,
+		Type:                   typ,
+	}
+}
+
+func (u *OldPasswordProtection) UnmarshalJSON(data []byte) error {
+
+	var oldPasswordProtection1 OldPasswordProtection1 = OldPasswordProtection1{}
+	if err := utils.UnmarshalJSON(data, &oldPasswordProtection1, "", true, true); err == nil {
+		u.OldPasswordProtection1 = &oldPasswordProtection1
+		u.Type = OldPasswordProtectionTypeOldPasswordProtection1
+		return nil
+	}
+
+	var oldPasswordProtection2 OldPasswordProtection2 = OldPasswordProtection2("")
+	if err := utils.UnmarshalJSON(data, &oldPasswordProtection2, "", true, true); err == nil {
+		u.OldPasswordProtection2 = &oldPasswordProtection2
+		u.Type = OldPasswordProtectionTypeOldPasswordProtection2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OldPasswordProtection", string(data))
+}
+
+func (u OldPasswordProtection) MarshalJSON() ([]byte, error) {
+	if u.OldPasswordProtection1 != nil {
+		return utils.MarshalJSON(u.OldPasswordProtection1, "", true)
+	}
+
+	if u.OldPasswordProtection2 != nil {
+		return utils.MarshalJSON(u.OldPasswordProtection2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type OldPasswordProtection: all fields are null")
+}
+
+// SeventyEight - The payload of the event, if requested.
+type SeventyEight struct {
+	ProjectName           string                 `json:"projectName"`
+	PasswordProtection    *PasswordProtection    `json:"passwordProtection"`
+	OldPasswordProtection *OldPasswordProtection `json:"oldPasswordProtection"`
+}
+
+func (o *SeventyEight) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *SeventyEight) GetPasswordProtection() *PasswordProtection {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *SeventyEight) GetOldPasswordProtection() *OldPasswordProtection {
+	if o == nil {
+		return nil
+	}
+	return o.OldPasswordProtection
+}
+
+type SsoProtection2 string
+
+const (
+	SsoProtection2All                              SsoProtection2 = "all"
+	SsoProtection2Preview                          SsoProtection2 = "preview"
+	SsoProtection2ProdDeploymentUrlsAndAllPreviews SsoProtection2 = "prod_deployment_urls_and_all_previews"
+)
+
+func (e SsoProtection2) ToPointer() *SsoProtection2 {
+	return &e
+}
+func (e *SsoProtection2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = SsoProtection2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SsoProtection2: %v", v)
+	}
+}
+
+type DeploymentType string
+
+const (
+	DeploymentTypeAll                              DeploymentType = "all"
+	DeploymentTypePreview                          DeploymentType = "preview"
+	DeploymentTypeProdDeploymentUrlsAndAllPreviews DeploymentType = "prod_deployment_urls_and_all_previews"
+)
+
+func (e DeploymentType) ToPointer() *DeploymentType {
+	return &e
+}
+func (e *DeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = DeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DeploymentType: %v", v)
+	}
+}
+
+type SsoProtection1 struct {
+	DeploymentType DeploymentType `json:"deploymentType"`
+}
+
+func (o *SsoProtection1) GetDeploymentType() DeploymentType {
+	if o == nil {
+		return DeploymentType("")
+	}
+	return o.DeploymentType
+}
+
+type SsoProtectionType string
+
+const (
+	SsoProtectionTypeSsoProtection1 SsoProtectionType = "ssoProtection_1"
+	SsoProtectionTypeSsoProtection2 SsoProtectionType = "ssoProtection_2"
+)
+
+type SsoProtection struct {
+	SsoProtection1 *SsoProtection1
+	SsoProtection2 *SsoProtection2
+
+	Type SsoProtectionType
+}
+
+func CreateSsoProtectionSsoProtection1(ssoProtection1 SsoProtection1) SsoProtection {
+	typ := SsoProtectionTypeSsoProtection1
+
+	return SsoProtection{
+		SsoProtection1: &ssoProtection1,
+		Type:           typ,
+	}
+}
+
+func CreateSsoProtectionSsoProtection2(ssoProtection2 SsoProtection2) SsoProtection {
+	typ := SsoProtectionTypeSsoProtection2
+
+	return SsoProtection{
+		SsoProtection2: &ssoProtection2,
+		Type:           typ,
+	}
+}
+
+func (u *SsoProtection) UnmarshalJSON(data []byte) error {
+
+	var ssoProtection1 SsoProtection1 = SsoProtection1{}
+	if err := utils.UnmarshalJSON(data, &ssoProtection1, "", true, true); err == nil {
+		u.SsoProtection1 = &ssoProtection1
+		u.Type = SsoProtectionTypeSsoProtection1
+		return nil
+	}
+
+	var ssoProtection2 SsoProtection2 = SsoProtection2("")
+	if err := utils.UnmarshalJSON(data, &ssoProtection2, "", true, true); err == nil {
+		u.SsoProtection2 = &ssoProtection2
+		u.Type = SsoProtectionTypeSsoProtection2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for SsoProtection", string(data))
+}
+
+func (u SsoProtection) MarshalJSON() ([]byte, error) {
+	if u.SsoProtection1 != nil {
+		return utils.MarshalJSON(u.SsoProtection1, "", true)
+	}
+
+	if u.SsoProtection2 != nil {
+		return utils.MarshalJSON(u.SsoProtection2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type SsoProtection: all fields are null")
+}
+
+type OldSsoProtection2 string
+
+const (
+	OldSsoProtection2All                              OldSsoProtection2 = "all"
+	OldSsoProtection2Preview                          OldSsoProtection2 = "preview"
+	OldSsoProtection2ProdDeploymentUrlsAndAllPreviews OldSsoProtection2 = "prod_deployment_urls_and_all_previews"
+)
+
+func (e OldSsoProtection2) ToPointer() *OldSsoProtection2 {
+	return &e
+}
+func (e *OldSsoProtection2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = OldSsoProtection2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldSsoProtection2: %v", v)
+	}
+}
+
+type OldSsoProtectionDeploymentType string
+
+const (
+	OldSsoProtectionDeploymentTypeAll                              OldSsoProtectionDeploymentType = "all"
+	OldSsoProtectionDeploymentTypePreview                          OldSsoProtectionDeploymentType = "preview"
+	OldSsoProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews OldSsoProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+)
+
+func (e OldSsoProtectionDeploymentType) ToPointer() *OldSsoProtectionDeploymentType {
+	return &e
+}
+func (e *OldSsoProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = OldSsoProtectionDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldSsoProtectionDeploymentType: %v", v)
+	}
+}
+
+type OldSsoProtection1 struct {
+	DeploymentType OldSsoProtectionDeploymentType `json:"deploymentType"`
+}
+
+func (o *OldSsoProtection1) GetDeploymentType() OldSsoProtectionDeploymentType {
+	if o == nil {
+		return OldSsoProtectionDeploymentType("")
+	}
+	return o.DeploymentType
+}
+
+type OldSsoProtectionType string
+
+const (
+	OldSsoProtectionTypeOldSsoProtection1 OldSsoProtectionType = "oldSsoProtection_1"
+	OldSsoProtectionTypeOldSsoProtection2 OldSsoProtectionType = "oldSsoProtection_2"
+)
+
+type OldSsoProtection struct {
+	OldSsoProtection1 *OldSsoProtection1
+	OldSsoProtection2 *OldSsoProtection2
+
+	Type OldSsoProtectionType
+}
+
+func CreateOldSsoProtectionOldSsoProtection1(oldSsoProtection1 OldSsoProtection1) OldSsoProtection {
+	typ := OldSsoProtectionTypeOldSsoProtection1
+
+	return OldSsoProtection{
+		OldSsoProtection1: &oldSsoProtection1,
+		Type:              typ,
+	}
+}
+
+func CreateOldSsoProtectionOldSsoProtection2(oldSsoProtection2 OldSsoProtection2) OldSsoProtection {
+	typ := OldSsoProtectionTypeOldSsoProtection2
+
+	return OldSsoProtection{
+		OldSsoProtection2: &oldSsoProtection2,
+		Type:              typ,
+	}
+}
+
+func (u *OldSsoProtection) UnmarshalJSON(data []byte) error {
+
+	var oldSsoProtection1 OldSsoProtection1 = OldSsoProtection1{}
+	if err := utils.UnmarshalJSON(data, &oldSsoProtection1, "", true, true); err == nil {
+		u.OldSsoProtection1 = &oldSsoProtection1
+		u.Type = OldSsoProtectionTypeOldSsoProtection1
+		return nil
+	}
+
+	var oldSsoProtection2 OldSsoProtection2 = OldSsoProtection2("")
+	if err := utils.UnmarshalJSON(data, &oldSsoProtection2, "", true, true); err == nil {
+		u.OldSsoProtection2 = &oldSsoProtection2
+		u.Type = OldSsoProtectionTypeOldSsoProtection2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OldSsoProtection", string(data))
+}
+
+func (u OldSsoProtection) MarshalJSON() ([]byte, error) {
+	if u.OldSsoProtection1 != nil {
+		return utils.MarshalJSON(u.OldSsoProtection1, "", true)
+	}
+
+	if u.OldSsoProtection2 != nil {
+		return utils.MarshalJSON(u.OldSsoProtection2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type OldSsoProtection: all fields are null")
+}
+
+// SeventySeven - The payload of the event, if requested.
+type SeventySeven struct {
+	ProjectName      string            `json:"projectName"`
+	SsoProtection    *SsoProtection    `json:"ssoProtection"`
+	OldSsoProtection *OldSsoProtection `json:"oldSsoProtection"`
+}
+
+func (o *SeventySeven) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *SeventySeven) GetSsoProtection() *SsoProtection {
+	if o == nil {
+		return nil
+	}
+	return o.SsoProtection
+}
+
+func (o *SeventySeven) GetOldSsoProtection() *OldSsoProtection {
+	if o == nil {
+		return nil
+	}
+	return o.OldSsoProtection
+}
+
+// SeventySix - The payload of the event, if requested.
+type SeventySix struct {
+	ProjectName *string `json:"projectName,omitempty"`
+	ProjectID   string  `json:"projectId"`
+}
+
+func (o *SeventySix) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *SeventySix) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// SeventyFive - The payload of the event, if requested.
+type SeventyFive struct {
+	ProjectName          *string        `json:"projectName,omitempty"`
+	ProjectID            string         `json:"projectId"`
+	ProjectAnalytics     map[string]any `json:"projectAnalytics,omitempty"`
+	PrevProjectAnalytics map[string]any `json:"prevProjectAnalytics,omitempty"`
+}
+
+func (o *SeventyFive) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *SeventyFive) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *SeventyFive) GetProjectAnalytics() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalytics
+}
+
+func (o *SeventyFive) GetPrevProjectAnalytics() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.PrevProjectAnalytics
+}
+
+type ProjectAnalytics struct {
+	ID                  string   `json:"id"`
+	CanceledAt          *float64 `json:"canceledAt,omitempty"`
+	DisabledAt          float64  `json:"disabledAt"`
+	EnabledAt           float64  `json:"enabledAt"`
+	PaidAt              *float64 `json:"paidAt,omitempty"`
+	SampleRatePercent   *float64 `json:"sampleRatePercent,omitempty"`
+	SpendLimitInDollars *float64 `json:"spendLimitInDollars,omitempty"`
+}
+
+func (o *ProjectAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ProjectAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *ProjectAnalytics) GetDisabledAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DisabledAt
+}
+
+func (o *ProjectAnalytics) GetEnabledAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EnabledAt
+}
+
+func (o *ProjectAnalytics) GetPaidAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PaidAt
+}
+
+func (o *ProjectAnalytics) GetSampleRatePercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SampleRatePercent
+}
+
+func (o *ProjectAnalytics) GetSpendLimitInDollars() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SpendLimitInDollars
+}
+
+type PrevProjectAnalytics struct {
+	ID                  string   `json:"id"`
+	CanceledAt          *float64 `json:"canceledAt,omitempty"`
+	DisabledAt          float64  `json:"disabledAt"`
+	EnabledAt           float64  `json:"enabledAt"`
+	PaidAt              *float64 `json:"paidAt,omitempty"`
+	SampleRatePercent   *float64 `json:"sampleRatePercent,omitempty"`
+	SpendLimitInDollars *float64 `json:"spendLimitInDollars,omitempty"`
+}
+
+func (o *PrevProjectAnalytics) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PrevProjectAnalytics) GetCanceledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CanceledAt
+}
+
+func (o *PrevProjectAnalytics) GetDisabledAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DisabledAt
+}
+
+func (o *PrevProjectAnalytics) GetEnabledAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EnabledAt
+}
+
+func (o *PrevProjectAnalytics) GetPaidAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PaidAt
+}
+
+func (o *PrevProjectAnalytics) GetSampleRatePercent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SampleRatePercent
+}
+
+func (o *PrevProjectAnalytics) GetSpendLimitInDollars() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SpendLimitInDollars
+}
+
+// SeventyFour - The payload of the event, if requested.
+type SeventyFour struct {
+	ProjectName          *string               `json:"projectName,omitempty"`
+	ProjectID            string                `json:"projectId"`
+	ProjectAnalytics     *ProjectAnalytics     `json:"projectAnalytics"`
+	PrevProjectAnalytics *PrevProjectAnalytics `json:"prevProjectAnalytics"`
+}
+
+func (o *SeventyFour) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *SeventyFour) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *SeventyFour) GetProjectAnalytics() *ProjectAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalytics
+}
+
+func (o *SeventyFour) GetPrevProjectAnalytics() *PrevProjectAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.PrevProjectAnalytics
+}
+
+type UserEventPayload73Role string
+
+const (
+	UserEventPayload73RoleOwner       UserEventPayload73Role = "OWNER"
+	UserEventPayload73RoleMember      UserEventPayload73Role = "MEMBER"
+	UserEventPayload73RoleDeveloper   UserEventPayload73Role = "DEVELOPER"
+	UserEventPayload73RoleSecurity    UserEventPayload73Role = "SECURITY"
+	UserEventPayload73RoleBilling     UserEventPayload73Role = "BILLING"
+	UserEventPayload73RoleViewer      UserEventPayload73Role = "VIEWER"
+	UserEventPayload73RoleContributor UserEventPayload73Role = "CONTRIBUTOR"
+)
+
+func (e UserEventPayload73Role) ToPointer() *UserEventPayload73Role {
+	return &e
+}
+func (e *UserEventPayload73Role) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = UserEventPayload73Role(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload73Role: %v", v)
+	}
+}
+
+type PayloadOrigin string
+
+const (
+	PayloadOriginTeams             PayloadOrigin = "teams"
+	PayloadOriginSaml              PayloadOrigin = "saml"
+	PayloadOriginLink              PayloadOrigin = "link"
+	PayloadOriginGithub            PayloadOrigin = "github"
+	PayloadOriginGitlab            PayloadOrigin = "gitlab"
+	PayloadOriginBitbucket         PayloadOrigin = "bitbucket"
+	PayloadOriginMail              PayloadOrigin = "mail"
+	PayloadOriginImport            PayloadOrigin = "import"
+	PayloadOriginDsync             PayloadOrigin = "dsync"
+	PayloadOriginFeedback          PayloadOrigin = "feedback"
+	PayloadOriginOrganizationTeams PayloadOrigin = "organization-teams"
+)
+
+func (e PayloadOrigin) ToPointer() *PayloadOrigin {
+	return &e
+}
+func (e *PayloadOrigin) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "teams":
+		fallthrough
+	case "saml":
+		fallthrough
+	case "link":
+		fallthrough
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "mail":
+		fallthrough
+	case "import":
+		fallthrough
+	case "dsync":
+		fallthrough
+	case "feedback":
+		fallthrough
+	case "organization-teams":
+		*e = PayloadOrigin(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadOrigin: %v", v)
+	}
+}
+
+type PayloadGitUserIDType string
+
+const (
+	PayloadGitUserIDTypeStr    PayloadGitUserIDType = "str"
+	PayloadGitUserIDTypeNumber PayloadGitUserIDType = "number"
+)
+
+type PayloadGitUserID struct {
+	Str    *string
+	Number *float64
+
+	Type PayloadGitUserIDType
+}
+
+func CreatePayloadGitUserIDStr(str string) PayloadGitUserID {
+	typ := PayloadGitUserIDTypeStr
+
+	return PayloadGitUserID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePayloadGitUserIDNumber(number float64) PayloadGitUserID {
+	typ := PayloadGitUserIDTypeNumber
+
+	return PayloadGitUserID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *PayloadGitUserID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = PayloadGitUserIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = PayloadGitUserIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadGitUserID", string(data))
+}
+
+func (u PayloadGitUserID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadGitUserID: all fields are null")
+}
+
+type PayloadJoinedFrom struct {
+	Origin           PayloadOrigin     `json:"origin"`
+	CommitID         *string           `json:"commitId,omitempty"`
+	RepoID           *string           `json:"repoId,omitempty"`
+	RepoPath         *string           `json:"repoPath,omitempty"`
+	GitUserID        *PayloadGitUserID `json:"gitUserId,omitempty"`
+	GitUserLogin     *string           `json:"gitUserLogin,omitempty"`
+	SsoUserID        *string           `json:"ssoUserId,omitempty"`
+	SsoConnectedAt   *float64          `json:"ssoConnectedAt,omitempty"`
+	IdpUserID        *string           `json:"idpUserId,omitempty"`
+	DsyncUserID      *string           `json:"dsyncUserId,omitempty"`
+	DsyncConnectedAt *float64          `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (o *PayloadJoinedFrom) GetOrigin() PayloadOrigin {
+	if o == nil {
+		return PayloadOrigin("")
+	}
+	return o.Origin
+}
+
+func (o *PayloadJoinedFrom) GetCommitID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CommitID
+}
+
+func (o *PayloadJoinedFrom) GetRepoID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *PayloadJoinedFrom) GetRepoPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoPath
+}
+
+func (o *PayloadJoinedFrom) GetGitUserID() *PayloadGitUserID {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *PayloadJoinedFrom) GetGitUserLogin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserLogin
+}
+
+func (o *PayloadJoinedFrom) GetSsoUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoUserID
+}
+
+func (o *PayloadJoinedFrom) GetSsoConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SsoConnectedAt
+}
+
+func (o *PayloadJoinedFrom) GetIdpUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdpUserID
+}
+
+func (o *PayloadJoinedFrom) GetDsyncUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncUserID
+}
+
+func (o *PayloadJoinedFrom) GetDsyncConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncConnectedAt
+}
+
+type RemovedUsers struct {
+	Role        UserEventPayload73Role `json:"role"`
+	Confirmed   bool                   `json:"confirmed"`
+	ConfirmedAt *float64               `json:"confirmedAt,omitempty"`
+	JoinedFrom  *PayloadJoinedFrom     `json:"joinedFrom,omitempty"`
+}
+
+func (o *RemovedUsers) GetRole() UserEventPayload73Role {
+	if o == nil {
+		return UserEventPayload73Role("")
+	}
+	return o.Role
+}
+
+func (o *RemovedUsers) GetConfirmed() bool {
+	if o == nil {
+		return false
+	}
+	return o.Confirmed
+}
+
+func (o *RemovedUsers) GetConfirmedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConfirmedAt
+}
+
+func (o *RemovedUsers) GetJoinedFrom() *PayloadJoinedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.JoinedFrom
+}
+
+// SeventyThree - The payload of the event, if requested.
+type SeventyThree struct {
+	Plan           string                  `json:"plan"`
+	RemovedUsers   map[string]RemovedUsers `json:"removedUsers,omitempty"`
+	PriorPlan      *string                 `json:"priorPlan,omitempty"`
+	IsDowngrade    *bool                   `json:"isDowngrade,omitempty"`
+	UserAgent      *string                 `json:"userAgent,omitempty"`
+	IsReactivate   *bool                   `json:"isReactivate,omitempty"`
+	IsTrialUpgrade *bool                   `json:"isTrialUpgrade,omitempty"`
+}
+
+func (o *SeventyThree) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
+}
+
+func (o *SeventyThree) GetRemovedUsers() map[string]RemovedUsers {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedUsers
+}
+
+func (o *SeventyThree) GetPriorPlan() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PriorPlan
+}
+
+func (o *SeventyThree) GetIsDowngrade() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDowngrade
+}
+
+func (o *SeventyThree) GetUserAgent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserAgent
+}
+
+func (o *SeventyThree) GetIsReactivate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsReactivate
+}
+
+func (o *SeventyThree) GetIsTrialUpgrade() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsTrialUpgrade
+}
+
+// SeventyTwo - The payload of the event, if requested.
+type SeventyTwo struct {
+	ProjectID      string `json:"projectId"`
+	ToDeploymentID string `json:"toDeploymentId"`
+	ProjectName    string `json:"projectName"`
+}
+
+func (o *SeventyTwo) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *SeventyTwo) GetToDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ToDeploymentID
+}
+
+func (o *SeventyTwo) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+// SeventyOne - The payload of the event, if requested.
+type SeventyOne struct {
+	DrainURL        *string `json:"drainUrl"`
+	IntegrationName *string `json:"integrationName,omitempty"`
+}
+
+func (o *SeventyOne) GetDrainURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DrainURL
+}
+
+func (o *SeventyOne) GetIntegrationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationName
+}
+
+// Seventy - The payload of the event, if requested.
+type Seventy struct {
+	LogDrainURL     string  `json:"logDrainUrl"`
+	IntegrationName *string `json:"integrationName,omitempty"`
+}
+
+func (o *Seventy) GetLogDrainURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.LogDrainURL
+}
+
+func (o *Seventy) GetIntegrationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationName
+}
+
+// SixtyNine - The payload of the event, if requested.
+type SixtyNine struct {
+	LogDrainURL     *string `json:"logDrainUrl"`
+	IntegrationName *string `json:"integrationName,omitempty"`
+}
+
+func (o *SixtyNine) GetLogDrainURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LogDrainURL
+}
+
+func (o *SixtyNine) GetIntegrationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationName
+}
+
+type PayloadName string
+
+const (
+	PayloadNameIphone  PayloadName = "iphone"
+	PayloadNameIpad    PayloadName = "ipad"
+	PayloadNameIpod    PayloadName = "ipod"
+	PayloadNameChrome  PayloadName = "chrome"
+	PayloadNameFirefox PayloadName = "firefox"
+	PayloadNameMozilla PayloadName = "mozilla"
+	PayloadNameUnknown PayloadName = "unknown"
+)
+
+func (e PayloadName) ToPointer() *PayloadName {
+	return &e
+}
+func (e *PayloadName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "iphone":
+		fallthrough
+	case "ipad":
+		fallthrough
+	case "ipod":
+		fallthrough
+	case "chrome":
+		fallthrough
+	case "firefox":
+		fallthrough
+	case "mozilla":
+		fallthrough
+	case "unknown":
+		*e = PayloadName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadName: %v", v)
+	}
+}
+
+type Browser struct {
+	Name PayloadName `json:"name"`
+}
+
+func (o *Browser) GetName() PayloadName {
+	if o == nil {
+		return PayloadName("")
+	}
+	return o.Name
+}
+
+type UserEventPayloadName string
+
+const (
+	UserEventPayloadNameUnknown UserEventPayloadName = "unknown"
+	UserEventPayloadNameDarwin  UserEventPayloadName = "darwin"
+	UserEventPayloadNameWin32   UserEventPayloadName = "win32"
+	UserEventPayloadNameWin     UserEventPayloadName = "win"
+	UserEventPayloadNameWindows UserEventPayloadName = "windows"
+	UserEventPayloadNameLinux   UserEventPayloadName = "linux"
+	UserEventPayloadNameFreebsd UserEventPayloadName = "freebsd"
+	UserEventPayloadNameSunos   UserEventPayloadName = "sunos"
+	UserEventPayloadNameMac     UserEventPayloadName = "mac"
+	UserEventPayloadNameIos     UserEventPayloadName = "ios"
+	UserEventPayloadNameAndroid UserEventPayloadName = "android"
+	UserEventPayloadNameMacOs   UserEventPayloadName = "Mac OS"
+	UserEventPayloadNameOsX     UserEventPayloadName = "OS X"
+)
+
+func (e UserEventPayloadName) ToPointer() *UserEventPayloadName {
+	return &e
+}
+func (e *UserEventPayloadName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unknown":
+		fallthrough
+	case "darwin":
+		fallthrough
+	case "win32":
+		fallthrough
+	case "win":
+		fallthrough
+	case "windows":
+		fallthrough
+	case "linux":
+		fallthrough
+	case "freebsd":
+		fallthrough
+	case "sunos":
+		fallthrough
+	case "mac":
+		fallthrough
+	case "ios":
+		fallthrough
+	case "android":
+		fallthrough
+	case "Mac OS":
+		fallthrough
+	case "OS X":
+		*e = UserEventPayloadName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadName: %v", v)
+	}
+}
+
+type Os struct {
+	Name UserEventPayloadName `json:"name"`
+}
+
+func (o *Os) GetName() UserEventPayloadName {
+	if o == nil {
+		return UserEventPayloadName("")
+	}
+	return o.Name
+}
+
+type UserAgent struct {
+	Browser Browser `json:"browser"`
+	Ua      string  `json:"ua"`
+	Program string  `json:"program"`
+	Os      Os      `json:"os"`
+}
+
+func (o *UserAgent) GetBrowser() Browser {
+	if o == nil {
+		return Browser{}
+	}
+	return o.Browser
+}
+
+func (o *UserAgent) GetUa() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ua
+}
+
+func (o *UserAgent) GetProgram() string {
+	if o == nil {
+		return ""
+	}
+	return o.Program
+}
+
+func (o *UserAgent) GetOs() Os {
+	if o == nil {
+		return Os{}
+	}
+	return o.Os
+}
+
+type Names struct {
+	En string `json:"en"`
+}
+
+func (o *Names) GetEn() string {
+	if o == nil {
+		return ""
+	}
+	return o.En
+}
+
+type City struct {
+	Names Names `json:"names"`
+}
+
+func (o *City) GetNames() Names {
+	if o == nil {
+		return Names{}
+	}
+	return o.Names
+}
+
+type PayloadNames struct {
+	En string `json:"en"`
+}
+
+func (o *PayloadNames) GetEn() string {
+	if o == nil {
+		return ""
+	}
+	return o.En
+}
+
+type Country struct {
+	Names PayloadNames `json:"names"`
+}
+
+func (o *Country) GetNames() PayloadNames {
+	if o == nil {
+		return PayloadNames{}
+	}
+	return o.Names
+}
+
+type UserEventPayloadNames struct {
+	En string `json:"en"`
+}
+
+func (o *UserEventPayloadNames) GetEn() string {
+	if o == nil {
+		return ""
+	}
+	return o.En
+}
+
+type MostSpecificSubdivision struct {
+	Names UserEventPayloadNames `json:"names"`
+}
+
+func (o *MostSpecificSubdivision) GetNames() UserEventPayloadNames {
+	if o == nil {
+		return UserEventPayloadNames{}
+	}
+	return o.Names
+}
+
+type Geolocation struct {
+	City                    *City                    `json:"city,omitempty"`
+	Country                 Country                  `json:"country"`
+	MostSpecificSubdivision *MostSpecificSubdivision `json:"most_specific_subdivision,omitempty"`
+	RegionName              *string                  `json:"regionName,omitempty"`
+}
+
+func (o *Geolocation) GetCity() *City {
+	if o == nil {
+		return nil
+	}
+	return o.City
+}
+
+func (o *Geolocation) GetCountry() Country {
+	if o == nil {
+		return Country{}
+	}
+	return o.Country
+}
+
+func (o *Geolocation) GetMostSpecificSubdivision() *MostSpecificSubdivision {
+	if o == nil {
+		return nil
+	}
+	return o.MostSpecificSubdivision
+}
+
+func (o *Geolocation) GetRegionName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RegionName
+}
+
+// SixtyEight - The payload of the event, if requested.
+type SixtyEight struct {
+	UserAgent    *UserAgent   `json:"userAgent,omitempty"`
+	Geolocation  *Geolocation `json:"geolocation,omitempty"`
+	ViaGithub    bool         `json:"viaGithub"`
+	ViaGitlab    bool         `json:"viaGitlab"`
+	ViaBitbucket bool         `json:"viaBitbucket"`
+	ViaSamlSso   bool         `json:"viaSamlSso"`
+	ViaPasskey   bool         `json:"viaPasskey"`
+	SsoType      *string      `json:"ssoType,omitempty"`
+	Env          *string      `json:"env,omitempty"`
+	Os           *string      `json:"os,omitempty"`
+	Username     *string      `json:"username,omitempty"`
+}
+
+func (o *SixtyEight) GetUserAgent() *UserAgent {
+	if o == nil {
+		return nil
+	}
+	return o.UserAgent
+}
+
+func (o *SixtyEight) GetGeolocation() *Geolocation {
+	if o == nil {
+		return nil
+	}
+	return o.Geolocation
+}
+
+func (o *SixtyEight) GetViaGithub() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaGithub
+}
+
+func (o *SixtyEight) GetViaGitlab() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaGitlab
+}
+
+func (o *SixtyEight) GetViaBitbucket() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaBitbucket
+}
+
+func (o *SixtyEight) GetViaSamlSso() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaSamlSso
+}
+
+func (o *SixtyEight) GetViaPasskey() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaPasskey
+}
+
+func (o *SixtyEight) GetSsoType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoType
+}
+
+func (o *SixtyEight) GetEnv() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *SixtyEight) GetOs() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Os
+}
+
+func (o *SixtyEight) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// SixtySeven - The payload of the event, if requested.
+type SixtySeven struct {
+	IntegrationID   string   `json:"integrationId"`
+	ConfigurationID string   `json:"configurationId"`
+	IntegrationSlug string   `json:"integrationSlug"`
+	IntegrationName string   `json:"integrationName"`
+	OwnerID         string   `json:"ownerId"`
+	ProjectIds      []string `json:"projectIds,omitempty"`
+	ConfirmedScopes []string `json:"confirmedScopes"`
+}
+
+func (o *SixtySeven) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *SixtySeven) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+func (o *SixtySeven) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *SixtySeven) GetIntegrationName() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationName
+}
+
+func (o *SixtySeven) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *SixtySeven) GetProjectIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIds
+}
+
+func (o *SixtySeven) GetConfirmedScopes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ConfirmedScopes
+}
+
+// SixtySix - The payload of the event, if requested.
+type SixtySix struct {
+	ProjectID        string  `json:"projectId"`
+	FromDeploymentID string  `json:"fromDeploymentId"`
+	ToDeploymentID   string  `json:"toDeploymentId"`
+	ProjectName      string  `json:"projectName"`
+	Reason           *string `json:"reason,omitempty"`
+}
+
+func (o *SixtySix) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *SixtySix) GetFromDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.FromDeploymentID
+}
+
+func (o *SixtySix) GetToDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ToDeploymentID
+}
+
+func (o *SixtySix) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *SixtySix) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
+// SixtyFive - The payload of the event, if requested.
+type SixtyFive struct {
+	IntegrationID   string   `json:"integrationId"`
+	ConfigurationID string   `json:"configurationId"`
+	IntegrationSlug string   `json:"integrationSlug"`
+	IntegrationName string   `json:"integrationName"`
+	OwnerID         string   `json:"ownerId"`
+	ProjectIds      []string `json:"projectIds,omitempty"`
+}
+
+func (o *SixtyFive) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *SixtyFive) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+func (o *SixtyFive) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *SixtyFive) GetIntegrationName() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationName
+}
+
+func (o *SixtyFive) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *SixtyFive) GetProjectIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIds
+}
+
+// SixtyFour - The payload of the event, if requested.
+type SixtyFour struct {
+	IntegrationID   string  `json:"integrationId"`
+	ConfigurationID string  `json:"configurationId"`
+	IntegrationSlug string  `json:"integrationSlug"`
+	IntegrationName string  `json:"integrationName"`
+	OwnerID         string  `json:"ownerId"`
+	BillingPlanID   string  `json:"billingPlanId"`
+	BillingPlanName *string `json:"billingPlanName,omitempty"`
+}
+
+func (o *SixtyFour) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *SixtyFour) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+func (o *SixtyFour) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *SixtyFour) GetIntegrationName() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationName
+}
+
+func (o *SixtyFour) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *SixtyFour) GetBillingPlanID() string {
+	if o == nil {
+		return ""
+	}
+	return o.BillingPlanID
+}
+
+func (o *SixtyFour) GetBillingPlanName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingPlanName
+}
+
+type Configurations struct {
+	IntegrationID   string  `json:"integrationId"`
+	ConfigurationID string  `json:"configurationId"`
+	IntegrationSlug string  `json:"integrationSlug"`
+	IntegrationName *string `json:"integrationName,omitempty"`
+}
+
+func (o *Configurations) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *Configurations) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+func (o *Configurations) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *Configurations) GetIntegrationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationName
+}
+
+// SixtyThree - The payload of the event, if requested.
+type SixtyThree struct {
+	Configurations []Configurations `json:"configurations"`
+	OwnerID        string           `json:"ownerId"`
+}
+
+func (o *SixtyThree) GetConfigurations() []Configurations {
+	if o == nil {
+		return []Configurations{}
+	}
+	return o.Configurations
+}
+
+func (o *SixtyThree) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+type UserEventPayload62Action string
+
+const (
+	UserEventPayload62ActionHardBlocked UserEventPayload62Action = "hard-blocked"
+	UserEventPayload62ActionSoftBlocked UserEventPayload62Action = "soft-blocked"
+	UserEventPayload62ActionUnblocked   UserEventPayload62Action = "unblocked"
+)
+
+func (e UserEventPayload62Action) ToPointer() *UserEventPayload62Action {
+	return &e
+}
+func (e *UserEventPayload62Action) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "hard-blocked":
+		fallthrough
+	case "soft-blocked":
+		fallthrough
+	case "unblocked":
+		*e = UserEventPayload62Action(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62Action: %v", v)
+	}
+}
+
+// BlockHistory - Since June 2023
+type BlockHistory struct {
+	Action     UserEventPayload62Action `json:"action"`
+	CreatedAt  float64                  `json:"createdAt"`
+	CaseID     *string                  `json:"caseId,omitempty"`
+	Reason     string                   `json:"reason"`
+	Actor      *string                  `json:"actor,omitempty"`
+	StatusCode *float64                 `json:"statusCode,omitempty"`
+	Comment    *string                  `json:"comment,omitempty"`
+}
+
+func (o *BlockHistory) GetAction() UserEventPayload62Action {
+	if o == nil {
+		return UserEventPayload62Action("")
+	}
+	return o.Action
+}
+
+func (o *BlockHistory) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *BlockHistory) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *BlockHistory) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *BlockHistory) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *BlockHistory) GetStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StatusCode
+}
+
+func (o *BlockHistory) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+// History - (scanner history). Since November 2021. First element is newest.
+type History struct {
+	Scanner string  `json:"scanner"`
+	Reason  string  `json:"reason"`
+	By      string  `json:"by"`
+	ByID    string  `json:"byId"`
+	At      float64 `json:"at"`
+}
+
+func (o *History) GetScanner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scanner
+}
+
+func (o *History) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *History) GetBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.By
+}
+
+func (o *History) GetByID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ByID
+}
+
+func (o *History) GetAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.At
+}
+
+type Abuse struct {
+	// Since June 2023
+	BlockHistory []BlockHistory `json:"blockHistory,omitempty"`
+	// Since March 2022. Helps abuse checks by tracking git auths. Format: `<platform>:<detail>:<value>`
+	GitAuthHistory []string `json:"gitAuthHistory,omitempty"`
+	// (scanner history). Since November 2021. First element is newest.
+	History []History `json:"history,omitempty"`
+	// Since September 2023. How often did this owner trigger an actual git lineage deploy block?
+	GitLineageBlocks *float64 `json:"gitLineageBlocks,omitempty"`
+	// Since September 2023. How often did this owner trigger a git lineage deploy block dry run?
+	GitLineageBlocksDry *float64 `json:"gitLineageBlocksDry,omitempty"`
+	// Since November 2021. Guides the abuse scanner in build container.
+	Scanner *string `json:"scanner,omitempty"`
+	// Since November 2021
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreationUserAgent   *string  `json:"creationUserAgent,omitempty"`
+	CreationIP          *string  `json:"creationIp,omitempty"`
+	RemovedPhoneNumbers *string  `json:"removedPhoneNumbers,omitempty"`
+}
+
+func (o *Abuse) GetBlockHistory() []BlockHistory {
+	if o == nil {
+		return nil
+	}
+	return o.BlockHistory
+}
+
+func (o *Abuse) GetGitAuthHistory() []string {
+	if o == nil {
+		return nil
+	}
+	return o.GitAuthHistory
+}
+
+func (o *Abuse) GetHistory() []History {
+	if o == nil {
+		return nil
+	}
+	return o.History
+}
+
+func (o *Abuse) GetGitLineageBlocks() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.GitLineageBlocks
+}
+
+func (o *Abuse) GetGitLineageBlocksDry() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.GitLineageBlocksDry
+}
+
+func (o *Abuse) GetScanner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Scanner
+}
+
+func (o *Abuse) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Abuse) GetCreationUserAgent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreationUserAgent
+}
+
+func (o *Abuse) GetCreationIP() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreationIP
+}
+
+func (o *Abuse) GetRemovedPhoneNumbers() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedPhoneNumbers
+}
+
+type Plan string
+
+const (
+	PlanPro        Plan = "pro"
+	PlanEnterprise Plan = "enterprise"
+	PlanHobby      Plan = "hobby"
+)
+
+func (e Plan) ToPointer() *Plan {
+	return &e
+}
+func (e *Plan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pro":
+		fallthrough
+	case "enterprise":
+		fallthrough
+	case "hobby":
+		*e = Plan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Plan: %v", v)
+	}
+}
+
+type PayloadBilling struct {
+	Plan Plan `json:"plan"`
+}
+
+func (o *PayloadBilling) GetPlan() Plan {
+	if o == nil {
+		return Plan("")
+	}
+	return o.Plan
+}
+
+type UserEventCredentialsType string
+
+const (
+	UserEventCredentialsTypeGithubOauthCustomHost UserEventCredentialsType = "github-oauth-custom-host"
+)
+
+func (e UserEventCredentialsType) ToPointer() *UserEventCredentialsType {
+	return &e
+}
+func (e *UserEventCredentialsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-oauth-custom-host":
+		*e = UserEventCredentialsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventCredentialsType: %v", v)
+	}
+}
+
+type Credentials2 struct {
+	Type UserEventCredentialsType `json:"type"`
+	Host string                   `json:"host"`
+	ID   string                   `json:"id"`
+}
+
+func (o *Credentials2) GetType() UserEventCredentialsType {
+	if o == nil {
+		return UserEventCredentialsType("")
+	}
+	return o.Type
+}
+
+func (o *Credentials2) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *Credentials2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+type CredentialsType string
+
+const (
+	CredentialsTypeGitlab      CredentialsType = "gitlab"
+	CredentialsTypeBitbucket   CredentialsType = "bitbucket"
+	CredentialsTypeGithubOauth CredentialsType = "github-oauth"
+	CredentialsTypeGithubApp   CredentialsType = "github-app"
+)
+
+func (e CredentialsType) ToPointer() *CredentialsType {
+	return &e
+}
+func (e *CredentialsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "github-oauth":
+		fallthrough
+	case "github-app":
+		*e = CredentialsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CredentialsType: %v", v)
+	}
+}
+
+type Credentials1 struct {
+	Type CredentialsType `json:"type"`
+	ID   string          `json:"id"`
+}
+
+func (o *Credentials1) GetType() CredentialsType {
+	if o == nil {
+		return CredentialsType("")
+	}
+	return o.Type
+}
+
+func (o *Credentials1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+type CredentialsUnionType string
+
+const (
+	CredentialsUnionTypeCredentials1 CredentialsUnionType = "credentials_1"
+	CredentialsUnionTypeCredentials2 CredentialsUnionType = "credentials_2"
+)
+
+type Credentials struct {
+	Credentials1 *Credentials1
+	Credentials2 *Credentials2
+
+	Type CredentialsUnionType
+}
+
+func CreateCredentialsCredentials1(credentials1 Credentials1) Credentials {
+	typ := CredentialsUnionTypeCredentials1
+
+	return Credentials{
+		Credentials1: &credentials1,
+		Type:         typ,
+	}
+}
+
+func CreateCredentialsCredentials2(credentials2 Credentials2) Credentials {
+	typ := CredentialsUnionTypeCredentials2
+
+	return Credentials{
+		Credentials2: &credentials2,
+		Type:         typ,
+	}
+}
+
+func (u *Credentials) UnmarshalJSON(data []byte) error {
+
+	var credentials1 Credentials1 = Credentials1{}
+	if err := utils.UnmarshalJSON(data, &credentials1, "", true, true); err == nil {
+		u.Credentials1 = &credentials1
+		u.Type = CredentialsUnionTypeCredentials1
+		return nil
+	}
+
+	var credentials2 Credentials2 = Credentials2{}
+	if err := utils.UnmarshalJSON(data, &credentials2, "", true, true); err == nil {
+		u.Credentials2 = &credentials2
+		u.Type = CredentialsUnionTypeCredentials2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Credentials", string(data))
+}
+
+func (u Credentials) MarshalJSON() ([]byte, error) {
+	if u.Credentials1 != nil {
+		return utils.MarshalJSON(u.Credentials1, "", true)
+	}
+
+	if u.Credentials2 != nil {
+		return utils.MarshalJSON(u.Credentials2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Credentials: all fields are null")
+}
+
+type PayloadDataCache struct {
+	ExcessBillingEnabled *bool `json:"excessBillingEnabled,omitempty"`
+}
+
+func (o *PayloadDataCache) GetExcessBillingEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ExcessBillingEnabled
+}
+
+type PayloadDismissals struct {
+	ScopeID   string  `json:"scopeId"`
+	CreatedAt float64 `json:"createdAt"`
+}
+
+func (o *PayloadDismissals) GetScopeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeID
+}
+
+func (o *PayloadDismissals) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+type PayloadDismissedToasts struct {
+	Name       string              `json:"name"`
+	Dismissals []PayloadDismissals `json:"dismissals"`
+}
+
+func (o *PayloadDismissedToasts) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PayloadDismissedToasts) GetDismissals() []PayloadDismissals {
+	if o == nil {
+		return []PayloadDismissals{}
+	}
+	return o.Dismissals
+}
+
+type UserEventFavoriteProjectsAndSpaces2 struct {
+	SpaceID   string  `json:"spaceId"`
+	ScopeSlug string  `json:"scopeSlug"`
+	ScopeID   string  `json:"scopeId"`
+	TeamID    *string `json:"teamId,omitempty"`
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces2) GetSpaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SpaceID
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces2) GetScopeSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeSlug
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces2) GetScopeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeID
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces2) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+type UserEventFavoriteProjectsAndSpaces1 struct {
+	ProjectID string  `json:"projectId"`
+	ScopeSlug string  `json:"scopeSlug"`
+	ScopeID   string  `json:"scopeId"`
+	TeamID    *string `json:"teamId,omitempty"`
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces1) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces1) GetScopeSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeSlug
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces1) GetScopeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeID
+}
+
+func (o *UserEventFavoriteProjectsAndSpaces1) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+type PayloadFavoriteProjectsAndSpacesType string
+
+const (
+	PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1 PayloadFavoriteProjectsAndSpacesType = "UserEvent_favoriteProjectsAndSpaces_1"
+	PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2 PayloadFavoriteProjectsAndSpacesType = "UserEvent_favoriteProjectsAndSpaces_2"
+)
+
+type PayloadFavoriteProjectsAndSpaces struct {
+	UserEventFavoriteProjectsAndSpaces1 *UserEventFavoriteProjectsAndSpaces1
+	UserEventFavoriteProjectsAndSpaces2 *UserEventFavoriteProjectsAndSpaces2
+
+	Type PayloadFavoriteProjectsAndSpacesType
+}
+
+func CreatePayloadFavoriteProjectsAndSpacesUserEventFavoriteProjectsAndSpaces1(userEventFavoriteProjectsAndSpaces1 UserEventFavoriteProjectsAndSpaces1) PayloadFavoriteProjectsAndSpaces {
+	typ := PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1
+
+	return PayloadFavoriteProjectsAndSpaces{
+		UserEventFavoriteProjectsAndSpaces1: &userEventFavoriteProjectsAndSpaces1,
+		Type:                                typ,
+	}
+}
+
+func CreatePayloadFavoriteProjectsAndSpacesUserEventFavoriteProjectsAndSpaces2(userEventFavoriteProjectsAndSpaces2 UserEventFavoriteProjectsAndSpaces2) PayloadFavoriteProjectsAndSpaces {
+	typ := PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2
+
+	return PayloadFavoriteProjectsAndSpaces{
+		UserEventFavoriteProjectsAndSpaces2: &userEventFavoriteProjectsAndSpaces2,
+		Type:                                typ,
+	}
+}
+
+func (u *PayloadFavoriteProjectsAndSpaces) UnmarshalJSON(data []byte) error {
+
+	var userEventFavoriteProjectsAndSpaces1 UserEventFavoriteProjectsAndSpaces1 = UserEventFavoriteProjectsAndSpaces1{}
+	if err := utils.UnmarshalJSON(data, &userEventFavoriteProjectsAndSpaces1, "", true, true); err == nil {
+		u.UserEventFavoriteProjectsAndSpaces1 = &userEventFavoriteProjectsAndSpaces1
+		u.Type = PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1
+		return nil
+	}
+
+	var userEventFavoriteProjectsAndSpaces2 UserEventFavoriteProjectsAndSpaces2 = UserEventFavoriteProjectsAndSpaces2{}
+	if err := utils.UnmarshalJSON(data, &userEventFavoriteProjectsAndSpaces2, "", true, true); err == nil {
+		u.UserEventFavoriteProjectsAndSpaces2 = &userEventFavoriteProjectsAndSpaces2
+		u.Type = PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadFavoriteProjectsAndSpaces", string(data))
+}
+
+func (u PayloadFavoriteProjectsAndSpaces) MarshalJSON() ([]byte, error) {
+	if u.UserEventFavoriteProjectsAndSpaces1 != nil {
+		return utils.MarshalJSON(u.UserEventFavoriteProjectsAndSpaces1, "", true)
+	}
+
+	if u.UserEventFavoriteProjectsAndSpaces2 != nil {
+		return utils.MarshalJSON(u.UserEventFavoriteProjectsAndSpaces2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadFavoriteProjectsAndSpaces: all fields are null")
+}
+
+type PayloadImportFlowGitNamespaceType string
+
+const (
+	PayloadImportFlowGitNamespaceTypeStr    PayloadImportFlowGitNamespaceType = "str"
+	PayloadImportFlowGitNamespaceTypeNumber PayloadImportFlowGitNamespaceType = "number"
+)
+
+type PayloadImportFlowGitNamespace struct {
+	Str    *string
+	Number *float64
+
+	Type PayloadImportFlowGitNamespaceType
+}
+
+func CreatePayloadImportFlowGitNamespaceStr(str string) PayloadImportFlowGitNamespace {
+	typ := PayloadImportFlowGitNamespaceTypeStr
+
+	return PayloadImportFlowGitNamespace{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePayloadImportFlowGitNamespaceNumber(number float64) PayloadImportFlowGitNamespace {
+	typ := PayloadImportFlowGitNamespaceTypeNumber
+
+	return PayloadImportFlowGitNamespace{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *PayloadImportFlowGitNamespace) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = PayloadImportFlowGitNamespaceTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = PayloadImportFlowGitNamespaceTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadImportFlowGitNamespace", string(data))
+}
+
+func (u PayloadImportFlowGitNamespace) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadImportFlowGitNamespace: all fields are null")
+}
+
+type PayloadImportFlowGitNamespaceIDType string
+
+const (
+	PayloadImportFlowGitNamespaceIDTypeStr    PayloadImportFlowGitNamespaceIDType = "str"
+	PayloadImportFlowGitNamespaceIDTypeNumber PayloadImportFlowGitNamespaceIDType = "number"
+)
+
+type PayloadImportFlowGitNamespaceID struct {
+	Str    *string
+	Number *float64
+
+	Type PayloadImportFlowGitNamespaceIDType
+}
+
+func CreatePayloadImportFlowGitNamespaceIDStr(str string) PayloadImportFlowGitNamespaceID {
+	typ := PayloadImportFlowGitNamespaceIDTypeStr
+
+	return PayloadImportFlowGitNamespaceID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePayloadImportFlowGitNamespaceIDNumber(number float64) PayloadImportFlowGitNamespaceID {
+	typ := PayloadImportFlowGitNamespaceIDTypeNumber
+
+	return PayloadImportFlowGitNamespaceID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *PayloadImportFlowGitNamespaceID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = PayloadImportFlowGitNamespaceIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = PayloadImportFlowGitNamespaceIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadImportFlowGitNamespaceID", string(data))
+}
+
+func (u PayloadImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadImportFlowGitNamespaceID: all fields are null")
+}
+
+type PayloadImportFlowGitProvider string
+
+const (
+	PayloadImportFlowGitProviderGithub    PayloadImportFlowGitProvider = "github"
+	PayloadImportFlowGitProviderGitlab    PayloadImportFlowGitProvider = "gitlab"
+	PayloadImportFlowGitProviderBitbucket PayloadImportFlowGitProvider = "bitbucket"
+)
+
+func (e PayloadImportFlowGitProvider) ToPointer() *PayloadImportFlowGitProvider {
+	return &e
+}
+func (e *PayloadImportFlowGitProvider) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		*e = PayloadImportFlowGitProvider(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadImportFlowGitProvider: %v", v)
+	}
+}
+
+type PayloadGitNamespaceIDType string
+
+const (
+	PayloadGitNamespaceIDTypeStr    PayloadGitNamespaceIDType = "str"
+	PayloadGitNamespaceIDTypeNumber PayloadGitNamespaceIDType = "number"
+)
+
+type PayloadGitNamespaceID struct {
+	Str    *string
+	Number *float64
+
+	Type PayloadGitNamespaceIDType
+}
+
+func CreatePayloadGitNamespaceIDStr(str string) PayloadGitNamespaceID {
+	typ := PayloadGitNamespaceIDTypeStr
+
+	return PayloadGitNamespaceID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePayloadGitNamespaceIDNumber(number float64) PayloadGitNamespaceID {
+	typ := PayloadGitNamespaceIDTypeNumber
+
+	return PayloadGitNamespaceID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *PayloadGitNamespaceID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = PayloadGitNamespaceIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = PayloadGitNamespaceIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadGitNamespaceID", string(data))
+}
+
+func (u PayloadGitNamespaceID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadGitNamespaceID: all fields are null")
+}
+
+type PayloadPreferredScopesAndGitNamespaces struct {
+	ScopeID        string                 `json:"scopeId"`
+	GitNamespaceID *PayloadGitNamespaceID `json:"gitNamespaceId"`
+}
+
+func (o *PayloadPreferredScopesAndGitNamespaces) GetScopeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeID
+}
+
+func (o *PayloadPreferredScopesAndGitNamespaces) GetGitNamespaceID() *PayloadGitNamespaceID {
+	if o == nil {
+		return nil
+	}
+	return o.GitNamespaceID
+}
+
+type PreventAutoBlockingType string
+
+const (
+	PreventAutoBlockingTypeNumber  PreventAutoBlockingType = "number"
+	PreventAutoBlockingTypeBoolean PreventAutoBlockingType = "boolean"
+)
+
+type PreventAutoBlocking struct {
+	Number  *float64
+	Boolean *bool
+
+	Type PreventAutoBlockingType
+}
+
+func CreatePreventAutoBlockingNumber(number float64) PreventAutoBlocking {
+	typ := PreventAutoBlockingTypeNumber
+
+	return PreventAutoBlocking{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreatePreventAutoBlockingBoolean(boolean bool) PreventAutoBlocking {
+	typ := PreventAutoBlockingTypeBoolean
+
+	return PreventAutoBlocking{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *PreventAutoBlocking) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = PreventAutoBlockingTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+		u.Boolean = &boolean
+		u.Type = PreventAutoBlockingTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PreventAutoBlocking", string(data))
+}
+
+func (u PreventAutoBlocking) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PreventAutoBlocking: all fields are null")
+}
+
+// UserEventPayloadRemoteCaching - Represents configuration for remote caching
+type UserEventPayloadRemoteCaching struct {
+	Enabled *bool `json:"enabled,omitempty"`
+}
+
+func (o *UserEventPayloadRemoteCaching) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+type PayloadBuildEntitlements struct {
+	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
+}
+
+func (o *PayloadBuildEntitlements) GetEnhancedBuilds() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnhancedBuilds
+}
+
+type PayloadResourceConfig struct {
+	NodeType                                  *string                   `json:"nodeType,omitempty"`
+	ConcurrentBuilds                          *float64                  `json:"concurrentBuilds,omitempty"`
+	BuildEntitlements                         *PayloadBuildEntitlements `json:"buildEntitlements,omitempty"`
+	AwsAccountType                            *string                   `json:"awsAccountType,omitempty"`
+	AwsAccountIds                             []string                  `json:"awsAccountIds,omitempty"`
+	CfZoneName                                *string                   `json:"cfZoneName,omitempty"`
+	ImageOptimizationType                     *string                   `json:"imageOptimizationType,omitempty"`
+	EdgeConfigs                               *float64                  `json:"edgeConfigs,omitempty"`
+	EdgeConfigSize                            *float64                  `json:"edgeConfigSize,omitempty"`
+	EdgeFunctionMaxSizeBytes                  *float64                  `json:"edgeFunctionMaxSizeBytes,omitempty"`
+	EdgeFunctionExecutionTimeoutMs            *float64                  `json:"edgeFunctionExecutionTimeoutMs,omitempty"`
+	ServerlessFunctionDefaultMaxExecutionTime *float64                  `json:"serverlessFunctionDefaultMaxExecutionTime,omitempty"`
+	ServerlessFunctionMaxMemorySize           *float64                  `json:"serverlessFunctionMaxMemorySize,omitempty"`
+	KvDatabases                               *float64                  `json:"kvDatabases,omitempty"`
+	PostgresDatabases                         *float64                  `json:"postgresDatabases,omitempty"`
+	BlobStores                                *float64                  `json:"blobStores,omitempty"`
+	IntegrationStores                         *float64                  `json:"integrationStores,omitempty"`
+	CronJobs                                  *float64                  `json:"cronJobs,omitempty"`
+	CronJobsPerProject                        *float64                  `json:"cronJobsPerProject,omitempty"`
+	MicrofrontendGroupsPerTeam                *float64                  `json:"microfrontendGroupsPerTeam,omitempty"`
+	MicrofrontendProjectsPerGroup             *float64                  `json:"microfrontendProjectsPerGroup,omitempty"`
+}
+
+func (o *PayloadResourceConfig) GetNodeType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeType
+}
+
+func (o *PayloadResourceConfig) GetConcurrentBuilds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConcurrentBuilds
+}
+
+func (o *PayloadResourceConfig) GetBuildEntitlements() *PayloadBuildEntitlements {
+	if o == nil {
+		return nil
+	}
+	return o.BuildEntitlements
+}
+
+func (o *PayloadResourceConfig) GetAwsAccountType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AwsAccountType
+}
+
+func (o *PayloadResourceConfig) GetAwsAccountIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.AwsAccountIds
+}
+
+func (o *PayloadResourceConfig) GetCfZoneName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CfZoneName
+}
+
+func (o *PayloadResourceConfig) GetImageOptimizationType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationType
+}
+
+func (o *PayloadResourceConfig) GetEdgeConfigs() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigs
+}
+
+func (o *PayloadResourceConfig) GetEdgeConfigSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigSize
+}
+
+func (o *PayloadResourceConfig) GetEdgeFunctionMaxSizeBytes() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeFunctionMaxSizeBytes
+}
+
+func (o *PayloadResourceConfig) GetEdgeFunctionExecutionTimeoutMs() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeFunctionExecutionTimeoutMs
+}
+
+func (o *PayloadResourceConfig) GetServerlessFunctionDefaultMaxExecutionTime() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ServerlessFunctionDefaultMaxExecutionTime
+}
+
+func (o *PayloadResourceConfig) GetServerlessFunctionMaxMemorySize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ServerlessFunctionMaxMemorySize
+}
+
+func (o *PayloadResourceConfig) GetKvDatabases() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.KvDatabases
+}
+
+func (o *PayloadResourceConfig) GetPostgresDatabases() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresDatabases
+}
+
+func (o *PayloadResourceConfig) GetBlobStores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlobStores
+}
+
+func (o *PayloadResourceConfig) GetIntegrationStores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationStores
+}
+
+func (o *PayloadResourceConfig) GetCronJobs() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CronJobs
+}
+
+func (o *PayloadResourceConfig) GetCronJobsPerProject() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CronJobsPerProject
+}
+
+func (o *PayloadResourceConfig) GetMicrofrontendGroupsPerTeam() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendGroupsPerTeam
+}
+
+func (o *PayloadResourceConfig) GetMicrofrontendProjectsPerGroup() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendProjectsPerGroup
+}
+
+type ResourceLimits struct {
+	Max      float64 `json:"max"`
+	Duration float64 `json:"duration"`
+}
+
+func (o *ResourceLimits) GetMax() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Max
+}
+
+func (o *ResourceLimits) GetDuration() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Duration
+}
+
+type PayloadViewPreference string
+
+const (
+	PayloadViewPreferenceCards PayloadViewPreference = "cards"
+	PayloadViewPreferenceList  PayloadViewPreference = "list"
+)
+
+func (e PayloadViewPreference) ToPointer() *PayloadViewPreference {
+	return &e
+}
+func (e *PayloadViewPreference) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cards":
+		fallthrough
+	case "list":
+		*e = PayloadViewPreference(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadViewPreference: %v", v)
+	}
+}
+
+type PayloadFavoritesViewPreference string
+
+const (
+	PayloadFavoritesViewPreferenceOpen   PayloadFavoritesViewPreference = "open"
+	PayloadFavoritesViewPreferenceClosed PayloadFavoritesViewPreference = "closed"
+)
+
+func (e PayloadFavoritesViewPreference) ToPointer() *PayloadFavoritesViewPreference {
+	return &e
+}
+func (e *PayloadFavoritesViewPreference) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "open":
+		fallthrough
+	case "closed":
+		*e = PayloadFavoritesViewPreference(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadFavoritesViewPreference: %v", v)
+	}
+}
+
+type PayloadRecentsViewPreference string
+
+const (
+	PayloadRecentsViewPreferenceOpen   PayloadRecentsViewPreference = "open"
+	PayloadRecentsViewPreferenceClosed PayloadRecentsViewPreference = "closed"
+)
+
+func (e PayloadRecentsViewPreference) ToPointer() *PayloadRecentsViewPreference {
+	return &e
+}
+func (e *PayloadRecentsViewPreference) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "open":
+		fallthrough
+	case "closed":
+		*e = PayloadRecentsViewPreference(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadRecentsViewPreference: %v", v)
+	}
+}
+
+type PayloadActiveDashboardViews struct {
+	ScopeID                 string                          `json:"scopeId"`
+	ViewPreference          *PayloadViewPreference          `json:"viewPreference,omitempty"`
+	FavoritesViewPreference *PayloadFavoritesViewPreference `json:"favoritesViewPreference,omitempty"`
+	RecentsViewPreference   *PayloadRecentsViewPreference   `json:"recentsViewPreference,omitempty"`
+}
+
+func (o *PayloadActiveDashboardViews) GetScopeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ScopeID
+}
+
+func (o *PayloadActiveDashboardViews) GetViewPreference() *PayloadViewPreference {
+	if o == nil {
+		return nil
+	}
+	return o.ViewPreference
+}
+
+func (o *PayloadActiveDashboardViews) GetFavoritesViewPreference() *PayloadFavoritesViewPreference {
+	if o == nil {
+		return nil
+	}
+	return o.FavoritesViewPreference
+}
+
+func (o *PayloadActiveDashboardViews) GetRecentsViewPreference() *PayloadRecentsViewPreference {
+	if o == nil {
+		return nil
+	}
+	return o.RecentsViewPreference
+}
+
+type SecondaryEmails struct {
+	Email    string `json:"email"`
+	Verified bool   `json:"verified"`
+}
+
+func (o *SecondaryEmails) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *SecondaryEmails) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+type Rules struct {
+	Email string `json:"email"`
+}
+
+func (o *Rules) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+type EmailNotifications struct {
+	Rules map[string]Rules `json:"rules,omitempty"`
+}
+
+func (o *EmailNotifications) GetRules() map[string]Rules {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}
+
+type PayloadReasons struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+}
+
+func (o *PayloadReasons) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PayloadReasons) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type SiftScores struct {
+	Score   float64          `json:"score"`
+	Reasons []PayloadReasons `json:"reasons"`
+}
+
+func (o *SiftScores) GetScore() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Score
+}
+
+func (o *SiftScores) GetReasons() []PayloadReasons {
+	if o == nil {
+		return []PayloadReasons{}
+	}
+	return o.Reasons
+}
+
+type UserEventPayload62Name string
+
+const (
+	UserEventPayload62NameString UserEventPayload62Name = "string"
+)
+
+func (e UserEventPayload62Name) ToPointer() *UserEventPayload62Name {
+	return &e
+}
+func (e *UserEventPayload62Name) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		*e = UserEventPayload62Name(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62Name: %v", v)
+	}
+}
+
+type SiftRoute struct {
+	Name UserEventPayload62Name `json:"name"`
+}
+
+func (o *SiftRoute) GetName() UserEventPayload62Name {
+	if o == nil {
+		return UserEventPayload62Name("")
+	}
+	return o.Name
+}
+
+type PayloadReason string
+
+const (
+	PayloadReasonSubscriptionCanceled    PayloadReason = "SUBSCRIPTION_CANCELED"
+	PayloadReasonSubscriptionExpired     PayloadReason = "SUBSCRIPTION_EXPIRED"
+	PayloadReasonUnpaidInvoice           PayloadReason = "UNPAID_INVOICE"
+	PayloadReasonEnterpriseTrialEnded    PayloadReason = "ENTERPRISE_TRIAL_ENDED"
+	PayloadReasonFairUseLimitsExceeded   PayloadReason = "FAIR_USE_LIMITS_EXCEEDED"
+	PayloadReasonBlockedForPlatformAbuse PayloadReason = "BLOCKED_FOR_PLATFORM_ABUSE"
+)
+
+func (e PayloadReason) ToPointer() *PayloadReason {
+	return &e
+}
+func (e *PayloadReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SUBSCRIPTION_CANCELED":
+		fallthrough
+	case "SUBSCRIPTION_EXPIRED":
+		fallthrough
+	case "UNPAID_INVOICE":
+		fallthrough
+	case "ENTERPRISE_TRIAL_ENDED":
+		fallthrough
+	case "FAIR_USE_LIMITS_EXCEEDED":
+		fallthrough
+	case "BLOCKED_FOR_PLATFORM_ABUSE":
+		*e = PayloadReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadReason: %v", v)
+	}
+}
+
+type PayloadBlockedDueToOverageType string
+
+const (
+	PayloadBlockedDueToOverageTypeAiCredits                               PayloadBlockedDueToOverageType = "aiCredits"
+	PayloadBlockedDueToOverageTypeAnalyticsUsage                          PayloadBlockedDueToOverageType = "analyticsUsage"
+	PayloadBlockedDueToOverageTypeArtifacts                               PayloadBlockedDueToOverageType = "artifacts"
+	PayloadBlockedDueToOverageTypeBandwidth                               PayloadBlockedDueToOverageType = "bandwidth"
+	PayloadBlockedDueToOverageTypeBlobTotalAdvancedRequests               PayloadBlockedDueToOverageType = "blobTotalAdvancedRequests"
+	PayloadBlockedDueToOverageTypeBlobTotalAvgSizeInBytes                 PayloadBlockedDueToOverageType = "blobTotalAvgSizeInBytes"
+	PayloadBlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes   PayloadBlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
+	PayloadBlockedDueToOverageTypeBlobTotalSimpleRequests                 PayloadBlockedDueToOverageType = "blobTotalSimpleRequests"
+	PayloadBlockedDueToOverageTypeDataCacheRead                           PayloadBlockedDueToOverageType = "dataCacheRead"
+	PayloadBlockedDueToOverageTypeDataCacheWrite                          PayloadBlockedDueToOverageType = "dataCacheWrite"
+	PayloadBlockedDueToOverageTypeEdgeConfigRead                          PayloadBlockedDueToOverageType = "edgeConfigRead"
+	PayloadBlockedDueToOverageTypeEdgeConfigWrite                         PayloadBlockedDueToOverageType = "edgeConfigWrite"
+	PayloadBlockedDueToOverageTypeEdgeFunctionExecutionUnits              PayloadBlockedDueToOverageType = "edgeFunctionExecutionUnits"
+	PayloadBlockedDueToOverageTypeEdgeMiddlewareInvocations               PayloadBlockedDueToOverageType = "edgeMiddlewareInvocations"
+	PayloadBlockedDueToOverageTypeEdgeRequestAdditionalCPUDuration        PayloadBlockedDueToOverageType = "edgeRequestAdditionalCpuDuration"
+	PayloadBlockedDueToOverageTypeEdgeRequest                             PayloadBlockedDueToOverageType = "edgeRequest"
+	PayloadBlockedDueToOverageTypeElasticConcurrencyBuildSlots            PayloadBlockedDueToOverageType = "elasticConcurrencyBuildSlots"
+	PayloadBlockedDueToOverageTypeFastDataTransfer                        PayloadBlockedDueToOverageType = "fastDataTransfer"
+	PayloadBlockedDueToOverageTypeFastOriginTransfer                      PayloadBlockedDueToOverageType = "fastOriginTransfer"
+	PayloadBlockedDueToOverageTypeFunctionDuration                        PayloadBlockedDueToOverageType = "functionDuration"
+	PayloadBlockedDueToOverageTypeFunctionInvocation                      PayloadBlockedDueToOverageType = "functionInvocation"
+	PayloadBlockedDueToOverageTypeImageOptimizationCacheRead              PayloadBlockedDueToOverageType = "imageOptimizationCacheRead"
+	PayloadBlockedDueToOverageTypeImageOptimizationCacheWrite             PayloadBlockedDueToOverageType = "imageOptimizationCacheWrite"
+	PayloadBlockedDueToOverageTypeImageOptimizationTransformation         PayloadBlockedDueToOverageType = "imageOptimizationTransformation"
+	PayloadBlockedDueToOverageTypeLogDrainsVolume                         PayloadBlockedDueToOverageType = "logDrainsVolume"
+	PayloadBlockedDueToOverageTypeMonitoringMetric                        PayloadBlockedDueToOverageType = "monitoringMetric"
+	PayloadBlockedDueToOverageTypeBlobDataTransfer                        PayloadBlockedDueToOverageType = "blobDataTransfer"
+	PayloadBlockedDueToOverageTypeObservabilityEvent                      PayloadBlockedDueToOverageType = "observabilityEvent"
+	PayloadBlockedDueToOverageTypePostgresComputeTime                     PayloadBlockedDueToOverageType = "postgresComputeTime"
+	PayloadBlockedDueToOverageTypePostgresDataStorage                     PayloadBlockedDueToOverageType = "postgresDataStorage"
+	PayloadBlockedDueToOverageTypePostgresDataTransfer                    PayloadBlockedDueToOverageType = "postgresDataTransfer"
+	PayloadBlockedDueToOverageTypePostgresDatabase                        PayloadBlockedDueToOverageType = "postgresDatabase"
+	PayloadBlockedDueToOverageTypePostgresWrittenData                     PayloadBlockedDueToOverageType = "postgresWrittenData"
+	PayloadBlockedDueToOverageTypeServerlessFunctionExecution             PayloadBlockedDueToOverageType = "serverlessFunctionExecution"
+	PayloadBlockedDueToOverageTypeSourceImages                            PayloadBlockedDueToOverageType = "sourceImages"
+	PayloadBlockedDueToOverageTypeStorageRedisTotalBandwidthInBytes       PayloadBlockedDueToOverageType = "storageRedisTotalBandwidthInBytes"
+	PayloadBlockedDueToOverageTypeStorageRedisTotalCommands               PayloadBlockedDueToOverageType = "storageRedisTotalCommands"
+	PayloadBlockedDueToOverageTypeStorageRedisTotalDailyAvgStorageInBytes PayloadBlockedDueToOverageType = "storageRedisTotalDailyAvgStorageInBytes"
+	PayloadBlockedDueToOverageTypeStorageRedisTotalDatabases              PayloadBlockedDueToOverageType = "storageRedisTotalDatabases"
+	PayloadBlockedDueToOverageTypeWafOwaspExcessBytes                     PayloadBlockedDueToOverageType = "wafOwaspExcessBytes"
+	PayloadBlockedDueToOverageTypeWafOwaspRequests                        PayloadBlockedDueToOverageType = "wafOwaspRequests"
+	PayloadBlockedDueToOverageTypeWafRateLimitRequest                     PayloadBlockedDueToOverageType = "wafRateLimitRequest"
+	PayloadBlockedDueToOverageTypeWebAnalyticsEvent                       PayloadBlockedDueToOverageType = "webAnalyticsEvent"
+)
+
+func (e PayloadBlockedDueToOverageType) ToPointer() *PayloadBlockedDueToOverageType {
+	return &e
+}
+func (e *PayloadBlockedDueToOverageType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aiCredits":
+		fallthrough
+	case "analyticsUsage":
+		fallthrough
+	case "artifacts":
+		fallthrough
+	case "bandwidth":
+		fallthrough
+	case "blobTotalAdvancedRequests":
+		fallthrough
+	case "blobTotalAvgSizeInBytes":
+		fallthrough
+	case "blobTotalGetResponseObjectSizeInBytes":
+		fallthrough
+	case "blobTotalSimpleRequests":
+		fallthrough
+	case "dataCacheRead":
+		fallthrough
+	case "dataCacheWrite":
+		fallthrough
+	case "edgeConfigRead":
+		fallthrough
+	case "edgeConfigWrite":
+		fallthrough
+	case "edgeFunctionExecutionUnits":
+		fallthrough
+	case "edgeMiddlewareInvocations":
+		fallthrough
+	case "edgeRequestAdditionalCpuDuration":
+		fallthrough
+	case "edgeRequest":
+		fallthrough
+	case "elasticConcurrencyBuildSlots":
+		fallthrough
+	case "fastDataTransfer":
+		fallthrough
+	case "fastOriginTransfer":
+		fallthrough
+	case "functionDuration":
+		fallthrough
+	case "functionInvocation":
+		fallthrough
+	case "imageOptimizationCacheRead":
+		fallthrough
+	case "imageOptimizationCacheWrite":
+		fallthrough
+	case "imageOptimizationTransformation":
+		fallthrough
+	case "logDrainsVolume":
+		fallthrough
+	case "monitoringMetric":
+		fallthrough
+	case "blobDataTransfer":
+		fallthrough
+	case "observabilityEvent":
+		fallthrough
+	case "postgresComputeTime":
+		fallthrough
+	case "postgresDataStorage":
+		fallthrough
+	case "postgresDataTransfer":
+		fallthrough
+	case "postgresDatabase":
+		fallthrough
+	case "postgresWrittenData":
+		fallthrough
+	case "serverlessFunctionExecution":
+		fallthrough
+	case "sourceImages":
+		fallthrough
+	case "storageRedisTotalBandwidthInBytes":
+		fallthrough
+	case "storageRedisTotalCommands":
+		fallthrough
+	case "storageRedisTotalDailyAvgStorageInBytes":
+		fallthrough
+	case "storageRedisTotalDatabases":
+		fallthrough
+	case "wafOwaspExcessBytes":
+		fallthrough
+	case "wafOwaspRequests":
+		fallthrough
+	case "wafRateLimitRequest":
+		fallthrough
+	case "webAnalyticsEvent":
+		*e = PayloadBlockedDueToOverageType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadBlockedDueToOverageType: %v", v)
+	}
+}
+
+type PayloadSoftBlock struct {
+	BlockedAt               float64                         `json:"blockedAt"`
+	Reason                  PayloadReason                   `json:"reason"`
+	BlockedDueToOverageType *PayloadBlockedDueToOverageType `json:"blockedDueToOverageType,omitempty"`
+}
+
+func (o *PayloadSoftBlock) GetBlockedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.BlockedAt
+}
+
+func (o *PayloadSoftBlock) GetReason() PayloadReason {
+	if o == nil {
+		return PayloadReason("")
+	}
+	return o.Reason
+}
+
+func (o *PayloadSoftBlock) GetBlockedDueToOverageType() *PayloadBlockedDueToOverageType {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedDueToOverageType
+}
+
+type UserEventPayload62Role string
+
+const (
+	UserEventPayload62RoleOwner       UserEventPayload62Role = "OWNER"
+	UserEventPayload62RoleMember      UserEventPayload62Role = "MEMBER"
+	UserEventPayload62RoleDeveloper   UserEventPayload62Role = "DEVELOPER"
+	UserEventPayload62RoleSecurity    UserEventPayload62Role = "SECURITY"
+	UserEventPayload62RoleBilling     UserEventPayload62Role = "BILLING"
+	UserEventPayload62RoleViewer      UserEventPayload62Role = "VIEWER"
+	UserEventPayload62RoleContributor UserEventPayload62Role = "CONTRIBUTOR"
+)
+
+func (e UserEventPayload62Role) ToPointer() *UserEventPayload62Role {
+	return &e
+}
+func (e *UserEventPayload62Role) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = UserEventPayload62Role(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62Role: %v", v)
+	}
+}
+
+type PayloadTeamRoles string
+
+const (
+	PayloadTeamRolesOwner       PayloadTeamRoles = "OWNER"
+	PayloadTeamRolesMember      PayloadTeamRoles = "MEMBER"
+	PayloadTeamRolesDeveloper   PayloadTeamRoles = "DEVELOPER"
+	PayloadTeamRolesSecurity    PayloadTeamRoles = "SECURITY"
+	PayloadTeamRolesBilling     PayloadTeamRoles = "BILLING"
+	PayloadTeamRolesViewer      PayloadTeamRoles = "VIEWER"
+	PayloadTeamRolesContributor PayloadTeamRoles = "CONTRIBUTOR"
+)
+
+func (e PayloadTeamRoles) ToPointer() *PayloadTeamRoles {
+	return &e
+}
+func (e *PayloadTeamRoles) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = PayloadTeamRoles(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadTeamRoles: %v", v)
+	}
+}
+
+type PayloadTeamPermissions string
+
+const (
+	PayloadTeamPermissionsCreateProject            PayloadTeamPermissions = "CreateProject"
+	PayloadTeamPermissionsFullProductionDeployment PayloadTeamPermissions = "FullProductionDeployment"
+	PayloadTeamPermissionsUsageViewer              PayloadTeamPermissions = "UsageViewer"
+	PayloadTeamPermissionsEnvVariableManager       PayloadTeamPermissions = "EnvVariableManager"
+	PayloadTeamPermissionsEnvironmentManager       PayloadTeamPermissions = "EnvironmentManager"
+)
+
+func (e PayloadTeamPermissions) ToPointer() *PayloadTeamPermissions {
+	return &e
+}
+func (e *PayloadTeamPermissions) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		*e = PayloadTeamPermissions(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadTeamPermissions: %v", v)
+	}
+}
+
+type UserEventPayloadOrigin string
+
+const (
+	UserEventPayloadOriginTeams             UserEventPayloadOrigin = "teams"
+	UserEventPayloadOriginSaml              UserEventPayloadOrigin = "saml"
+	UserEventPayloadOriginLink              UserEventPayloadOrigin = "link"
+	UserEventPayloadOriginGithub            UserEventPayloadOrigin = "github"
+	UserEventPayloadOriginGitlab            UserEventPayloadOrigin = "gitlab"
+	UserEventPayloadOriginBitbucket         UserEventPayloadOrigin = "bitbucket"
+	UserEventPayloadOriginMail              UserEventPayloadOrigin = "mail"
+	UserEventPayloadOriginImport            UserEventPayloadOrigin = "import"
+	UserEventPayloadOriginDsync             UserEventPayloadOrigin = "dsync"
+	UserEventPayloadOriginFeedback          UserEventPayloadOrigin = "feedback"
+	UserEventPayloadOriginOrganizationTeams UserEventPayloadOrigin = "organization-teams"
+)
+
+func (e UserEventPayloadOrigin) ToPointer() *UserEventPayloadOrigin {
+	return &e
+}
+func (e *UserEventPayloadOrigin) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "teams":
+		fallthrough
+	case "saml":
+		fallthrough
+	case "link":
+		fallthrough
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "mail":
+		fallthrough
+	case "import":
+		fallthrough
+	case "dsync":
+		fallthrough
+	case "feedback":
+		fallthrough
+	case "organization-teams":
+		*e = UserEventPayloadOrigin(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadOrigin: %v", v)
+	}
+}
+
+type UserEventPayloadGitUserIDType string
+
+const (
+	UserEventPayloadGitUserIDTypeStr    UserEventPayloadGitUserIDType = "str"
+	UserEventPayloadGitUserIDTypeNumber UserEventPayloadGitUserIDType = "number"
+)
+
+type UserEventPayloadGitUserID struct {
+	Str    *string
+	Number *float64
+
+	Type UserEventPayloadGitUserIDType
+}
+
+func CreateUserEventPayloadGitUserIDStr(str string) UserEventPayloadGitUserID {
+	typ := UserEventPayloadGitUserIDTypeStr
+
+	return UserEventPayloadGitUserID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUserEventPayloadGitUserIDNumber(number float64) UserEventPayloadGitUserID {
+	typ := UserEventPayloadGitUserIDTypeNumber
+
+	return UserEventPayloadGitUserID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *UserEventPayloadGitUserID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = UserEventPayloadGitUserIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = UserEventPayloadGitUserIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UserEventPayloadGitUserID", string(data))
+}
+
+func (u UserEventPayloadGitUserID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UserEventPayloadGitUserID: all fields are null")
+}
+
+type UserEventPayloadJoinedFrom struct {
+	Origin           UserEventPayloadOrigin     `json:"origin"`
+	CommitID         *string                    `json:"commitId,omitempty"`
+	RepoID           *string                    `json:"repoId,omitempty"`
+	RepoPath         *string                    `json:"repoPath,omitempty"`
+	GitUserID        *UserEventPayloadGitUserID `json:"gitUserId,omitempty"`
+	GitUserLogin     *string                    `json:"gitUserLogin,omitempty"`
+	SsoUserID        *string                    `json:"ssoUserId,omitempty"`
+	SsoConnectedAt   *float64                   `json:"ssoConnectedAt,omitempty"`
+	IdpUserID        *string                    `json:"idpUserId,omitempty"`
+	DsyncUserID      *string                    `json:"dsyncUserId,omitempty"`
+	DsyncConnectedAt *float64                   `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (o *UserEventPayloadJoinedFrom) GetOrigin() UserEventPayloadOrigin {
+	if o == nil {
+		return UserEventPayloadOrigin("")
+	}
+	return o.Origin
+}
+
+func (o *UserEventPayloadJoinedFrom) GetCommitID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CommitID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetRepoID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetRepoPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoPath
+}
+
+func (o *UserEventPayloadJoinedFrom) GetGitUserID() *UserEventPayloadGitUserID {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetGitUserLogin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserLogin
+}
+
+func (o *UserEventPayloadJoinedFrom) GetSsoUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoUserID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetSsoConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SsoConnectedAt
+}
+
+func (o *UserEventPayloadJoinedFrom) GetIdpUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdpUserID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetDsyncUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncUserID
+}
+
+func (o *UserEventPayloadJoinedFrom) GetDsyncConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncConnectedAt
+}
+
+type Teams struct {
+	Created           *float64                    `json:"created,omitempty"`
+	CreatedAt         *float64                    `json:"createdAt,omitempty"`
+	TeamID            string                      `json:"teamId"`
+	Role              *UserEventPayload62Role     `json:"role,omitempty"`
+	Confirmed         *bool                       `json:"confirmed,omitempty"`
+	ConfirmedAt       *float64                    `json:"confirmedAt,omitempty"`
+	AccessRequestedAt *float64                    `json:"accessRequestedAt,omitempty"`
+	TeamRoles         []PayloadTeamRoles          `json:"teamRoles,omitempty"`
+	TeamPermissions   []PayloadTeamPermissions    `json:"teamPermissions,omitempty"`
+	JoinedFrom        *UserEventPayloadJoinedFrom `json:"joinedFrom,omitempty"`
+}
+
+func (o *Teams) GetCreated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Created
+}
+
+func (o *Teams) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *Teams) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Teams) GetRole() *UserEventPayload62Role {
+	if o == nil {
+		return nil
+	}
+	return o.Role
+}
+
+func (o *Teams) GetConfirmed() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Confirmed
+}
+
+func (o *Teams) GetConfirmedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConfirmedAt
+}
+
+func (o *Teams) GetAccessRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AccessRequestedAt
+}
+
+func (o *Teams) GetTeamRoles() []PayloadTeamRoles {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *Teams) GetTeamPermissions() []PayloadTeamPermissions {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
+}
+
+func (o *Teams) GetJoinedFrom() *UserEventPayloadJoinedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.JoinedFrom
+}
+
+type UserEventPayload62Type string
+
+const (
+	UserEventPayload62TypeUser UserEventPayload62Type = "user"
+)
+
+func (e UserEventPayload62Type) ToPointer() *UserEventPayload62Type {
+	return &e
+}
+func (e *UserEventPayload62Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		*e = UserEventPayload62Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62Type: %v", v)
+	}
+}
+
+// UsageAlerts - Contains the timestamps when a user was notified about their usage
+type UsageAlerts struct {
+	WarningAt  *float64 `json:"warningAt,omitempty"`
+	BlockingAt *float64 `json:"blockingAt,omitempty"`
+}
+
+func (o *UsageAlerts) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *UsageAlerts) GetBlockingAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockingAt
+}
+
+type AiCredits struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *AiCredits) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *AiCredits) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *AiCredits) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type AnalyticsUsage struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *AnalyticsUsage) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *AnalyticsUsage) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *AnalyticsUsage) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type Artifacts struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *Artifacts) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *Artifacts) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *Artifacts) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type Bandwidth struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *Bandwidth) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *Bandwidth) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *Bandwidth) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type BlobTotalAdvancedRequests struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *BlobTotalAdvancedRequests) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *BlobTotalAdvancedRequests) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *BlobTotalAdvancedRequests) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type BlobTotalAvgSizeInBytes struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *BlobTotalAvgSizeInBytes) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *BlobTotalAvgSizeInBytes) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *BlobTotalAvgSizeInBytes) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type BlobTotalGetResponseObjectSizeInBytes struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *BlobTotalGetResponseObjectSizeInBytes) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *BlobTotalGetResponseObjectSizeInBytes) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *BlobTotalGetResponseObjectSizeInBytes) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type BlobTotalSimpleRequests struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *BlobTotalSimpleRequests) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *BlobTotalSimpleRequests) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *BlobTotalSimpleRequests) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type DataCacheRead struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *DataCacheRead) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *DataCacheRead) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *DataCacheRead) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type DataCacheWrite struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *DataCacheWrite) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *DataCacheWrite) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *DataCacheWrite) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeConfigRead struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeConfigRead) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeConfigRead) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeConfigRead) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeConfigWrite struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeConfigWrite) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeConfigWrite) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeConfigWrite) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeFunctionExecutionUnits struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeFunctionExecutionUnits) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeFunctionExecutionUnits) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeFunctionExecutionUnits) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeMiddlewareInvocations struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeMiddlewareInvocations) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeMiddlewareInvocations) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeMiddlewareInvocations) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeRequestAdditionalCPUDuration struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeRequestAdditionalCPUDuration) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeRequestAdditionalCPUDuration) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeRequestAdditionalCPUDuration) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type EdgeRequest struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *EdgeRequest) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *EdgeRequest) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *EdgeRequest) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ElasticConcurrencyBuildSlots struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ElasticConcurrencyBuildSlots) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ElasticConcurrencyBuildSlots) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ElasticConcurrencyBuildSlots) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type FastDataTransfer struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *FastDataTransfer) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *FastDataTransfer) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *FastDataTransfer) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type FastOriginTransfer struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *FastOriginTransfer) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *FastOriginTransfer) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *FastOriginTransfer) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type FunctionDuration struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *FunctionDuration) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *FunctionDuration) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *FunctionDuration) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type FunctionInvocation struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *FunctionInvocation) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *FunctionInvocation) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *FunctionInvocation) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ImageOptimizationCacheRead struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ImageOptimizationCacheRead) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ImageOptimizationCacheRead) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ImageOptimizationCacheRead) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ImageOptimizationCacheWrite struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ImageOptimizationCacheWrite) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ImageOptimizationCacheWrite) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ImageOptimizationCacheWrite) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ImageOptimizationTransformation struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ImageOptimizationTransformation) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ImageOptimizationTransformation) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ImageOptimizationTransformation) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type LogDrainsVolume struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *LogDrainsVolume) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *LogDrainsVolume) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *LogDrainsVolume) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type MonitoringMetric struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *MonitoringMetric) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *MonitoringMetric) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *MonitoringMetric) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type BlobDataTransfer struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *BlobDataTransfer) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *BlobDataTransfer) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *BlobDataTransfer) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ObservabilityEvent struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ObservabilityEvent) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ObservabilityEvent) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ObservabilityEvent) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type PostgresComputeTime struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *PostgresComputeTime) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *PostgresComputeTime) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *PostgresComputeTime) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type PostgresDataStorage struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *PostgresDataStorage) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *PostgresDataStorage) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *PostgresDataStorage) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type PostgresDataTransfer struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *PostgresDataTransfer) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *PostgresDataTransfer) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *PostgresDataTransfer) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type PostgresDatabase struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *PostgresDatabase) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *PostgresDatabase) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *PostgresDatabase) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type PostgresWrittenData struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *PostgresWrittenData) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *PostgresWrittenData) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *PostgresWrittenData) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type ServerlessFunctionExecution struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *ServerlessFunctionExecution) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *ServerlessFunctionExecution) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *ServerlessFunctionExecution) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type SourceImages struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *SourceImages) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *SourceImages) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *SourceImages) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type StorageRedisTotalBandwidthInBytes struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *StorageRedisTotalBandwidthInBytes) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *StorageRedisTotalBandwidthInBytes) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *StorageRedisTotalBandwidthInBytes) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type StorageRedisTotalCommands struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *StorageRedisTotalCommands) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *StorageRedisTotalCommands) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *StorageRedisTotalCommands) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type StorageRedisTotalDailyAvgStorageInBytes struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *StorageRedisTotalDailyAvgStorageInBytes) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *StorageRedisTotalDailyAvgStorageInBytes) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *StorageRedisTotalDailyAvgStorageInBytes) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type StorageRedisTotalDatabases struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *StorageRedisTotalDatabases) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *StorageRedisTotalDatabases) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *StorageRedisTotalDatabases) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type WafOwaspExcessBytes struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *WafOwaspExcessBytes) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *WafOwaspExcessBytes) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *WafOwaspExcessBytes) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type WafOwaspRequests struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *WafOwaspRequests) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *WafOwaspRequests) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *WafOwaspRequests) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type WafRateLimitRequest struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *WafRateLimitRequest) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *WafRateLimitRequest) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *WafRateLimitRequest) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type WebAnalyticsEvent struct {
+	CurrentThreshold float64  `json:"currentThreshold"`
+	WarningAt        *float64 `json:"warningAt,omitempty"`
+	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o *WebAnalyticsEvent) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *WebAnalyticsEvent) GetWarningAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *WebAnalyticsEvent) GetBlockedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
+type OverageUsageAlerts struct {
+	AiCredits                               *AiCredits                               `json:"aiCredits,omitempty"`
+	AnalyticsUsage                          *AnalyticsUsage                          `json:"analyticsUsage,omitempty"`
+	Artifacts                               *Artifacts                               `json:"artifacts,omitempty"`
+	Bandwidth                               *Bandwidth                               `json:"bandwidth,omitempty"`
+	BlobTotalAdvancedRequests               *BlobTotalAdvancedRequests               `json:"blobTotalAdvancedRequests,omitempty"`
+	BlobTotalAvgSizeInBytes                 *BlobTotalAvgSizeInBytes                 `json:"blobTotalAvgSizeInBytes,omitempty"`
+	BlobTotalGetResponseObjectSizeInBytes   *BlobTotalGetResponseObjectSizeInBytes   `json:"blobTotalGetResponseObjectSizeInBytes,omitempty"`
+	BlobTotalSimpleRequests                 *BlobTotalSimpleRequests                 `json:"blobTotalSimpleRequests,omitempty"`
+	DataCacheRead                           *DataCacheRead                           `json:"dataCacheRead,omitempty"`
+	DataCacheWrite                          *DataCacheWrite                          `json:"dataCacheWrite,omitempty"`
+	EdgeConfigRead                          *EdgeConfigRead                          `json:"edgeConfigRead,omitempty"`
+	EdgeConfigWrite                         *EdgeConfigWrite                         `json:"edgeConfigWrite,omitempty"`
+	EdgeFunctionExecutionUnits              *EdgeFunctionExecutionUnits              `json:"edgeFunctionExecutionUnits,omitempty"`
+	EdgeMiddlewareInvocations               *EdgeMiddlewareInvocations               `json:"edgeMiddlewareInvocations,omitempty"`
+	EdgeRequestAdditionalCPUDuration        *EdgeRequestAdditionalCPUDuration        `json:"edgeRequestAdditionalCpuDuration,omitempty"`
+	EdgeRequest                             *EdgeRequest                             `json:"edgeRequest,omitempty"`
+	ElasticConcurrencyBuildSlots            *ElasticConcurrencyBuildSlots            `json:"elasticConcurrencyBuildSlots,omitempty"`
+	FastDataTransfer                        *FastDataTransfer                        `json:"fastDataTransfer,omitempty"`
+	FastOriginTransfer                      *FastOriginTransfer                      `json:"fastOriginTransfer,omitempty"`
+	FunctionDuration                        *FunctionDuration                        `json:"functionDuration,omitempty"`
+	FunctionInvocation                      *FunctionInvocation                      `json:"functionInvocation,omitempty"`
+	ImageOptimizationCacheRead              *ImageOptimizationCacheRead              `json:"imageOptimizationCacheRead,omitempty"`
+	ImageOptimizationCacheWrite             *ImageOptimizationCacheWrite             `json:"imageOptimizationCacheWrite,omitempty"`
+	ImageOptimizationTransformation         *ImageOptimizationTransformation         `json:"imageOptimizationTransformation,omitempty"`
+	LogDrainsVolume                         *LogDrainsVolume                         `json:"logDrainsVolume,omitempty"`
+	MonitoringMetric                        *MonitoringMetric                        `json:"monitoringMetric,omitempty"`
+	BlobDataTransfer                        *BlobDataTransfer                        `json:"blobDataTransfer,omitempty"`
+	ObservabilityEvent                      *ObservabilityEvent                      `json:"observabilityEvent,omitempty"`
+	PostgresComputeTime                     *PostgresComputeTime                     `json:"postgresComputeTime,omitempty"`
+	PostgresDataStorage                     *PostgresDataStorage                     `json:"postgresDataStorage,omitempty"`
+	PostgresDataTransfer                    *PostgresDataTransfer                    `json:"postgresDataTransfer,omitempty"`
+	PostgresDatabase                        *PostgresDatabase                        `json:"postgresDatabase,omitempty"`
+	PostgresWrittenData                     *PostgresWrittenData                     `json:"postgresWrittenData,omitempty"`
+	ServerlessFunctionExecution             *ServerlessFunctionExecution             `json:"serverlessFunctionExecution,omitempty"`
+	SourceImages                            *SourceImages                            `json:"sourceImages,omitempty"`
+	StorageRedisTotalBandwidthInBytes       *StorageRedisTotalBandwidthInBytes       `json:"storageRedisTotalBandwidthInBytes,omitempty"`
+	StorageRedisTotalCommands               *StorageRedisTotalCommands               `json:"storageRedisTotalCommands,omitempty"`
+	StorageRedisTotalDailyAvgStorageInBytes *StorageRedisTotalDailyAvgStorageInBytes `json:"storageRedisTotalDailyAvgStorageInBytes,omitempty"`
+	StorageRedisTotalDatabases              *StorageRedisTotalDatabases              `json:"storageRedisTotalDatabases,omitempty"`
+	WafOwaspExcessBytes                     *WafOwaspExcessBytes                     `json:"wafOwaspExcessBytes,omitempty"`
+	WafOwaspRequests                        *WafOwaspRequests                        `json:"wafOwaspRequests,omitempty"`
+	WafRateLimitRequest                     *WafRateLimitRequest                     `json:"wafRateLimitRequest,omitempty"`
+	WebAnalyticsEvent                       *WebAnalyticsEvent                       `json:"webAnalyticsEvent,omitempty"`
+}
+
+func (o *OverageUsageAlerts) GetAiCredits() *AiCredits {
+	if o == nil {
+		return nil
+	}
+	return o.AiCredits
+}
+
+func (o *OverageUsageAlerts) GetAnalyticsUsage() *AnalyticsUsage {
+	if o == nil {
+		return nil
+	}
+	return o.AnalyticsUsage
+}
+
+func (o *OverageUsageAlerts) GetArtifacts() *Artifacts {
+	if o == nil {
+		return nil
+	}
+	return o.Artifacts
+}
+
+func (o *OverageUsageAlerts) GetBandwidth() *Bandwidth {
+	if o == nil {
+		return nil
+	}
+	return o.Bandwidth
+}
+
+func (o *OverageUsageAlerts) GetBlobTotalAdvancedRequests() *BlobTotalAdvancedRequests {
+	if o == nil {
+		return nil
+	}
+	return o.BlobTotalAdvancedRequests
+}
+
+func (o *OverageUsageAlerts) GetBlobTotalAvgSizeInBytes() *BlobTotalAvgSizeInBytes {
+	if o == nil {
+		return nil
+	}
+	return o.BlobTotalAvgSizeInBytes
+}
+
+func (o *OverageUsageAlerts) GetBlobTotalGetResponseObjectSizeInBytes() *BlobTotalGetResponseObjectSizeInBytes {
+	if o == nil {
+		return nil
+	}
+	return o.BlobTotalGetResponseObjectSizeInBytes
+}
+
+func (o *OverageUsageAlerts) GetBlobTotalSimpleRequests() *BlobTotalSimpleRequests {
+	if o == nil {
+		return nil
+	}
+	return o.BlobTotalSimpleRequests
+}
+
+func (o *OverageUsageAlerts) GetDataCacheRead() *DataCacheRead {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheRead
+}
+
+func (o *OverageUsageAlerts) GetDataCacheWrite() *DataCacheWrite {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheWrite
+}
+
+func (o *OverageUsageAlerts) GetEdgeConfigRead() *EdgeConfigRead {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigRead
+}
+
+func (o *OverageUsageAlerts) GetEdgeConfigWrite() *EdgeConfigWrite {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigWrite
+}
+
+func (o *OverageUsageAlerts) GetEdgeFunctionExecutionUnits() *EdgeFunctionExecutionUnits {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeFunctionExecutionUnits
+}
+
+func (o *OverageUsageAlerts) GetEdgeMiddlewareInvocations() *EdgeMiddlewareInvocations {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeMiddlewareInvocations
+}
+
+func (o *OverageUsageAlerts) GetEdgeRequestAdditionalCPUDuration() *EdgeRequestAdditionalCPUDuration {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeRequestAdditionalCPUDuration
+}
+
+func (o *OverageUsageAlerts) GetEdgeRequest() *EdgeRequest {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeRequest
+}
+
+func (o *OverageUsageAlerts) GetElasticConcurrencyBuildSlots() *ElasticConcurrencyBuildSlots {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyBuildSlots
+}
+
+func (o *OverageUsageAlerts) GetFastDataTransfer() *FastDataTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.FastDataTransfer
+}
+
+func (o *OverageUsageAlerts) GetFastOriginTransfer() *FastOriginTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.FastOriginTransfer
+}
+
+func (o *OverageUsageAlerts) GetFunctionDuration() *FunctionDuration {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDuration
+}
+
+func (o *OverageUsageAlerts) GetFunctionInvocation() *FunctionInvocation {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionInvocation
+}
+
+func (o *OverageUsageAlerts) GetImageOptimizationCacheRead() *ImageOptimizationCacheRead {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationCacheRead
+}
+
+func (o *OverageUsageAlerts) GetImageOptimizationCacheWrite() *ImageOptimizationCacheWrite {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationCacheWrite
+}
+
+func (o *OverageUsageAlerts) GetImageOptimizationTransformation() *ImageOptimizationTransformation {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationTransformation
+}
+
+func (o *OverageUsageAlerts) GetLogDrainsVolume() *LogDrainsVolume {
+	if o == nil {
+		return nil
+	}
+	return o.LogDrainsVolume
+}
+
+func (o *OverageUsageAlerts) GetMonitoringMetric() *MonitoringMetric {
+	if o == nil {
+		return nil
+	}
+	return o.MonitoringMetric
+}
+
+func (o *OverageUsageAlerts) GetBlobDataTransfer() *BlobDataTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.BlobDataTransfer
+}
+
+func (o *OverageUsageAlerts) GetObservabilityEvent() *ObservabilityEvent {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityEvent
+}
+
+func (o *OverageUsageAlerts) GetPostgresComputeTime() *PostgresComputeTime {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresComputeTime
+}
+
+func (o *OverageUsageAlerts) GetPostgresDataStorage() *PostgresDataStorage {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresDataStorage
+}
+
+func (o *OverageUsageAlerts) GetPostgresDataTransfer() *PostgresDataTransfer {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresDataTransfer
+}
+
+func (o *OverageUsageAlerts) GetPostgresDatabase() *PostgresDatabase {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresDatabase
+}
+
+func (o *OverageUsageAlerts) GetPostgresWrittenData() *PostgresWrittenData {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresWrittenData
+}
+
+func (o *OverageUsageAlerts) GetServerlessFunctionExecution() *ServerlessFunctionExecution {
+	if o == nil {
+		return nil
+	}
+	return o.ServerlessFunctionExecution
+}
+
+func (o *OverageUsageAlerts) GetSourceImages() *SourceImages {
+	if o == nil {
+		return nil
+	}
+	return o.SourceImages
+}
+
+func (o *OverageUsageAlerts) GetStorageRedisTotalBandwidthInBytes() *StorageRedisTotalBandwidthInBytes {
+	if o == nil {
+		return nil
+	}
+	return o.StorageRedisTotalBandwidthInBytes
+}
+
+func (o *OverageUsageAlerts) GetStorageRedisTotalCommands() *StorageRedisTotalCommands {
+	if o == nil {
+		return nil
+	}
+	return o.StorageRedisTotalCommands
+}
+
+func (o *OverageUsageAlerts) GetStorageRedisTotalDailyAvgStorageInBytes() *StorageRedisTotalDailyAvgStorageInBytes {
+	if o == nil {
+		return nil
+	}
+	return o.StorageRedisTotalDailyAvgStorageInBytes
+}
+
+func (o *OverageUsageAlerts) GetStorageRedisTotalDatabases() *StorageRedisTotalDatabases {
+	if o == nil {
+		return nil
+	}
+	return o.StorageRedisTotalDatabases
+}
+
+func (o *OverageUsageAlerts) GetWafOwaspExcessBytes() *WafOwaspExcessBytes {
+	if o == nil {
+		return nil
+	}
+	return o.WafOwaspExcessBytes
+}
+
+func (o *OverageUsageAlerts) GetWafOwaspRequests() *WafOwaspRequests {
+	if o == nil {
+		return nil
+	}
+	return o.WafOwaspRequests
+}
+
+func (o *OverageUsageAlerts) GetWafRateLimitRequest() *WafRateLimitRequest {
+	if o == nil {
+		return nil
+	}
+	return o.WafRateLimitRequest
+}
+
+func (o *OverageUsageAlerts) GetWebAnalyticsEvent() *WebAnalyticsEvent {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalyticsEvent
+}
+
+// EnablePreviewFeedback - Whether the Vercel Toolbar is enabled for preview deployments.
+type EnablePreviewFeedback string
+
+const (
+	EnablePreviewFeedbackDefault      EnablePreviewFeedback = "default"
+	EnablePreviewFeedbackOn           EnablePreviewFeedback = "on"
+	EnablePreviewFeedbackOff          EnablePreviewFeedback = "off"
+	EnablePreviewFeedbackOnForce      EnablePreviewFeedback = "on-force"
+	EnablePreviewFeedbackOffForce     EnablePreviewFeedback = "off-force"
+	EnablePreviewFeedbackDefaultForce EnablePreviewFeedback = "default-force"
+)
+
+func (e EnablePreviewFeedback) ToPointer() *EnablePreviewFeedback {
+	return &e
+}
+func (e *EnablePreviewFeedback) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "default":
+		fallthrough
+	case "on":
+		fallthrough
+	case "off":
+		fallthrough
+	case "on-force":
+		fallthrough
+	case "off-force":
+		fallthrough
+	case "default-force":
+		*e = EnablePreviewFeedback(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnablePreviewFeedback: %v", v)
+	}
+}
+
+type BlockReason string
+
+const (
+	BlockReasonAdminOverride  BlockReason = "admin_override"
+	BlockReasonLimitsExceeded BlockReason = "limits_exceeded"
+)
+
+func (e BlockReason) ToPointer() *BlockReason {
+	return &e
+}
+func (e *BlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = BlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BlockReason: %v", v)
+	}
+}
+
+type PayloadWebAnalytics struct {
+	UpdatedAt        *float64     `json:"updatedAt,omitempty"`
+	BlockedFrom      *float64     `json:"blockedFrom,omitempty"`
+	BlockedUntil     *float64     `json:"blockedUntil,omitempty"`
+	BlockReason      *BlockReason `json:"blockReason,omitempty"`
+	GraceEmailSentAt *float64     `json:"graceEmailSentAt,omitempty"`
+}
+
+func (o *PayloadWebAnalytics) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *PayloadWebAnalytics) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *PayloadWebAnalytics) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *PayloadWebAnalytics) GetBlockReason() *BlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *PayloadWebAnalytics) GetGraceEmailSentAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.GraceEmailSentAt
+}
+
+type PayloadBlockReason string
+
+const (
+	PayloadBlockReasonAdminOverride  PayloadBlockReason = "admin_override"
+	PayloadBlockReasonLimitsExceeded PayloadBlockReason = "limits_exceeded"
+)
+
+func (e PayloadBlockReason) ToPointer() *PayloadBlockReason {
+	return &e
+}
+func (e *PayloadBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = PayloadBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadBlockReason: %v", v)
+	}
+}
+
+type BlockType string
+
+const (
+	BlockTypeSoft BlockType = "soft"
+	BlockTypeHard BlockType = "hard"
+)
+
+func (e BlockType) ToPointer() *BlockType {
+	return &e
+}
+func (e *BlockType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "soft":
+		fallthrough
+	case "hard":
+		*e = BlockType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BlockType: %v", v)
+	}
+}
+
+// Monitoring - A soft block indicates a temporary pause in data collection (ex limit exceeded for the current cycle) A hard block indicates a stoppage in data collection that requires manual intervention (ex upgrading a pro trial)
+type Monitoring struct {
+	UpdatedAt    *float64            `json:"updatedAt,omitempty"`
+	BlockedFrom  *float64            `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64            `json:"blockedUntil,omitempty"`
+	BlockReason  *PayloadBlockReason `json:"blockReason,omitempty"`
+	BlockType    BlockType           `json:"blockType"`
+}
+
+func (o *Monitoring) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Monitoring) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *Monitoring) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *Monitoring) GetBlockReason() *PayloadBlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *Monitoring) GetBlockType() BlockType {
+	if o == nil {
+		return BlockType("")
+	}
+	return o.BlockType
+}
+
+type UserEventPayloadBlockReason string
+
+const (
+	UserEventPayloadBlockReasonAdminOverride  UserEventPayloadBlockReason = "admin_override"
+	UserEventPayloadBlockReasonLimitsExceeded UserEventPayloadBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayloadBlockReason) ToPointer() *UserEventPayloadBlockReason {
+	return &e
+}
+func (e *UserEventPayloadBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayloadBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadBlockReason: %v", v)
+	}
+}
+
+type PayloadBlockType string
+
+const (
+	PayloadBlockTypeSoft PayloadBlockType = "soft"
+	PayloadBlockTypeHard PayloadBlockType = "hard"
+)
+
+func (e PayloadBlockType) ToPointer() *PayloadBlockType {
+	return &e
+}
+func (e *PayloadBlockType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "soft":
+		fallthrough
+	case "hard":
+		*e = PayloadBlockType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadBlockType: %v", v)
+	}
+}
+
+type ObservabilityPlus struct {
+	UpdatedAt    *float64                     `json:"updatedAt,omitempty"`
+	BlockedFrom  *float64                     `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                     `json:"blockedUntil,omitempty"`
+	BlockReason  *UserEventPayloadBlockReason `json:"blockReason,omitempty"`
+	BlockType    PayloadBlockType             `json:"blockType"`
+}
+
+func (o *ObservabilityPlus) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *ObservabilityPlus) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *ObservabilityPlus) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *ObservabilityPlus) GetBlockReason() *UserEventPayloadBlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *ObservabilityPlus) GetBlockType() PayloadBlockType {
+	if o == nil {
+		return PayloadBlockType("")
+	}
+	return o.BlockType
+}
+
+type UserEventPayload62BlockReason string
+
+const (
+	UserEventPayload62BlockReasonAdminOverride  UserEventPayload62BlockReason = "admin_override"
+	UserEventPayload62BlockReasonLimitsExceeded UserEventPayload62BlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62BlockReason) ToPointer() *UserEventPayload62BlockReason {
+	return &e
+}
+func (e *UserEventPayload62BlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62BlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62BlockReason: %v", v)
+	}
+}
+
+type UserEventPayloadDataCache struct {
+	UpdatedAt    float64                       `json:"updatedAt"`
+	BlockedFrom  *float64                      `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                      `json:"blockedUntil,omitempty"`
+	BlockReason  UserEventPayload62BlockReason `json:"blockReason"`
+}
+
+func (o *UserEventPayloadDataCache) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UserEventPayloadDataCache) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *UserEventPayloadDataCache) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *UserEventPayloadDataCache) GetBlockReason() UserEventPayload62BlockReason {
+	if o == nil {
+		return UserEventPayload62BlockReason("")
+	}
+	return o.BlockReason
+}
+
+type UserEventPayload62NewOwnerBlockReason string
+
+const (
+	UserEventPayload62NewOwnerBlockReasonAdminOverride  UserEventPayload62NewOwnerBlockReason = "admin_override"
+	UserEventPayload62NewOwnerBlockReasonLimitsExceeded UserEventPayload62NewOwnerBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62NewOwnerBlockReason) ToPointer() *UserEventPayload62NewOwnerBlockReason {
+	return &e
+}
+func (e *UserEventPayload62NewOwnerBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62NewOwnerBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62NewOwnerBlockReason: %v", v)
+	}
+}
+
+type PayloadImageOptimizationTransformation struct {
+	UpdatedAt    float64                               `json:"updatedAt"`
+	BlockedFrom  *float64                              `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                              `json:"blockedUntil,omitempty"`
+	BlockReason  UserEventPayload62NewOwnerBlockReason `json:"blockReason"`
+}
+
+func (o *PayloadImageOptimizationTransformation) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *PayloadImageOptimizationTransformation) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *PayloadImageOptimizationTransformation) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *PayloadImageOptimizationTransformation) GetBlockReason() UserEventPayload62NewOwnerBlockReason {
+	if o == nil {
+		return UserEventPayload62NewOwnerBlockReason("")
+	}
+	return o.BlockReason
+}
+
+type UserEventPayload62NewOwnerFeatureBlocksBlockReason string
+
+const (
+	UserEventPayload62NewOwnerFeatureBlocksBlockReasonAdminOverride  UserEventPayload62NewOwnerFeatureBlocksBlockReason = "admin_override"
+	UserEventPayload62NewOwnerFeatureBlocksBlockReasonLimitsExceeded UserEventPayload62NewOwnerFeatureBlocksBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62NewOwnerFeatureBlocksBlockReason) ToPointer() *UserEventPayload62NewOwnerFeatureBlocksBlockReason {
+	return &e
+}
+func (e *UserEventPayload62NewOwnerFeatureBlocksBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62NewOwnerFeatureBlocksBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62NewOwnerFeatureBlocksBlockReason: %v", v)
+	}
+}
+
+type PayloadSourceImages struct {
+	UpdatedAt    float64                                            `json:"updatedAt"`
+	BlockedFrom  *float64                                           `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                                           `json:"blockedUntil,omitempty"`
+	BlockReason  UserEventPayload62NewOwnerFeatureBlocksBlockReason `json:"blockReason"`
+}
+
+func (o *PayloadSourceImages) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *PayloadSourceImages) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *PayloadSourceImages) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *PayloadSourceImages) GetBlockReason() UserEventPayload62NewOwnerFeatureBlocksBlockReason {
+	if o == nil {
+		return UserEventPayload62NewOwnerFeatureBlocksBlockReason("")
+	}
+	return o.BlockReason
+}
+
+type UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason string
+
+const (
+	UserEventPayload62NewOwnerFeatureBlocksBlobBlockReasonAdminOverride  UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason = "admin_override"
+	UserEventPayload62NewOwnerFeatureBlocksBlobBlockReasonLimitsExceeded UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason) ToPointer() *UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason {
+	return &e
+}
+func (e *UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason: %v", v)
+	}
+}
+
+type OverageReason string
+
+const (
+	OverageReasonAiCredits                               OverageReason = "aiCredits"
+	OverageReasonAnalyticsUsage                          OverageReason = "analyticsUsage"
+	OverageReasonArtifacts                               OverageReason = "artifacts"
+	OverageReasonBandwidth                               OverageReason = "bandwidth"
+	OverageReasonBlobTotalAdvancedRequests               OverageReason = "blobTotalAdvancedRequests"
+	OverageReasonBlobTotalAvgSizeInBytes                 OverageReason = "blobTotalAvgSizeInBytes"
+	OverageReasonBlobTotalGetResponseObjectSizeInBytes   OverageReason = "blobTotalGetResponseObjectSizeInBytes"
+	OverageReasonBlobTotalSimpleRequests                 OverageReason = "blobTotalSimpleRequests"
+	OverageReasonDataCacheRead                           OverageReason = "dataCacheRead"
+	OverageReasonDataCacheWrite                          OverageReason = "dataCacheWrite"
+	OverageReasonEdgeConfigRead                          OverageReason = "edgeConfigRead"
+	OverageReasonEdgeConfigWrite                         OverageReason = "edgeConfigWrite"
+	OverageReasonEdgeFunctionExecutionUnits              OverageReason = "edgeFunctionExecutionUnits"
+	OverageReasonEdgeMiddlewareInvocations               OverageReason = "edgeMiddlewareInvocations"
+	OverageReasonEdgeRequestAdditionalCPUDuration        OverageReason = "edgeRequestAdditionalCpuDuration"
+	OverageReasonEdgeRequest                             OverageReason = "edgeRequest"
+	OverageReasonElasticConcurrencyBuildSlots            OverageReason = "elasticConcurrencyBuildSlots"
+	OverageReasonFastDataTransfer                        OverageReason = "fastDataTransfer"
+	OverageReasonFastOriginTransfer                      OverageReason = "fastOriginTransfer"
+	OverageReasonFunctionDuration                        OverageReason = "functionDuration"
+	OverageReasonFunctionInvocation                      OverageReason = "functionInvocation"
+	OverageReasonImageOptimizationCacheRead              OverageReason = "imageOptimizationCacheRead"
+	OverageReasonImageOptimizationCacheWrite             OverageReason = "imageOptimizationCacheWrite"
+	OverageReasonImageOptimizationTransformation         OverageReason = "imageOptimizationTransformation"
+	OverageReasonLogDrainsVolume                         OverageReason = "logDrainsVolume"
+	OverageReasonMonitoringMetric                        OverageReason = "monitoringMetric"
+	OverageReasonBlobDataTransfer                        OverageReason = "blobDataTransfer"
+	OverageReasonObservabilityEvent                      OverageReason = "observabilityEvent"
+	OverageReasonPostgresComputeTime                     OverageReason = "postgresComputeTime"
+	OverageReasonPostgresDataStorage                     OverageReason = "postgresDataStorage"
+	OverageReasonPostgresDataTransfer                    OverageReason = "postgresDataTransfer"
+	OverageReasonPostgresDatabase                        OverageReason = "postgresDatabase"
+	OverageReasonPostgresWrittenData                     OverageReason = "postgresWrittenData"
+	OverageReasonServerlessFunctionExecution             OverageReason = "serverlessFunctionExecution"
+	OverageReasonSourceImages                            OverageReason = "sourceImages"
+	OverageReasonStorageRedisTotalBandwidthInBytes       OverageReason = "storageRedisTotalBandwidthInBytes"
+	OverageReasonStorageRedisTotalCommands               OverageReason = "storageRedisTotalCommands"
+	OverageReasonStorageRedisTotalDailyAvgStorageInBytes OverageReason = "storageRedisTotalDailyAvgStorageInBytes"
+	OverageReasonStorageRedisTotalDatabases              OverageReason = "storageRedisTotalDatabases"
+	OverageReasonWafOwaspExcessBytes                     OverageReason = "wafOwaspExcessBytes"
+	OverageReasonWafOwaspRequests                        OverageReason = "wafOwaspRequests"
+	OverageReasonWafRateLimitRequest                     OverageReason = "wafRateLimitRequest"
+	OverageReasonWebAnalyticsEvent                       OverageReason = "webAnalyticsEvent"
+)
+
+func (e OverageReason) ToPointer() *OverageReason {
+	return &e
+}
+func (e *OverageReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aiCredits":
+		fallthrough
+	case "analyticsUsage":
+		fallthrough
+	case "artifacts":
+		fallthrough
+	case "bandwidth":
+		fallthrough
+	case "blobTotalAdvancedRequests":
+		fallthrough
+	case "blobTotalAvgSizeInBytes":
+		fallthrough
+	case "blobTotalGetResponseObjectSizeInBytes":
+		fallthrough
+	case "blobTotalSimpleRequests":
+		fallthrough
+	case "dataCacheRead":
+		fallthrough
+	case "dataCacheWrite":
+		fallthrough
+	case "edgeConfigRead":
+		fallthrough
+	case "edgeConfigWrite":
+		fallthrough
+	case "edgeFunctionExecutionUnits":
+		fallthrough
+	case "edgeMiddlewareInvocations":
+		fallthrough
+	case "edgeRequestAdditionalCpuDuration":
+		fallthrough
+	case "edgeRequest":
+		fallthrough
+	case "elasticConcurrencyBuildSlots":
+		fallthrough
+	case "fastDataTransfer":
+		fallthrough
+	case "fastOriginTransfer":
+		fallthrough
+	case "functionDuration":
+		fallthrough
+	case "functionInvocation":
+		fallthrough
+	case "imageOptimizationCacheRead":
+		fallthrough
+	case "imageOptimizationCacheWrite":
+		fallthrough
+	case "imageOptimizationTransformation":
+		fallthrough
+	case "logDrainsVolume":
+		fallthrough
+	case "monitoringMetric":
+		fallthrough
+	case "blobDataTransfer":
+		fallthrough
+	case "observabilityEvent":
+		fallthrough
+	case "postgresComputeTime":
+		fallthrough
+	case "postgresDataStorage":
+		fallthrough
+	case "postgresDataTransfer":
+		fallthrough
+	case "postgresDatabase":
+		fallthrough
+	case "postgresWrittenData":
+		fallthrough
+	case "serverlessFunctionExecution":
+		fallthrough
+	case "sourceImages":
+		fallthrough
+	case "storageRedisTotalBandwidthInBytes":
+		fallthrough
+	case "storageRedisTotalCommands":
+		fallthrough
+	case "storageRedisTotalDailyAvgStorageInBytes":
+		fallthrough
+	case "storageRedisTotalDatabases":
+		fallthrough
+	case "wafOwaspExcessBytes":
+		fallthrough
+	case "wafOwaspRequests":
+		fallthrough
+	case "wafRateLimitRequest":
+		fallthrough
+	case "webAnalyticsEvent":
+		*e = OverageReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OverageReason: %v", v)
+	}
+}
+
+type Blob struct {
+	UpdatedAt     *float64                                                `json:"updatedAt,omitempty"`
+	BlockedFrom   *float64                                                `json:"blockedFrom,omitempty"`
+	BlockedUntil  *float64                                                `json:"blockedUntil,omitempty"`
+	BlockReason   *UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason `json:"blockReason,omitempty"`
+	OverageReason OverageReason                                           `json:"overageReason"`
+}
+
+func (o *Blob) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Blob) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *Blob) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *Blob) GetBlockReason() *UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *Blob) GetOverageReason() OverageReason {
+	if o == nil {
+		return OverageReason("")
+	}
+	return o.OverageReason
+}
+
+type UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason string
+
+const (
+	UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReasonAdminOverride  UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason = "admin_override"
+	UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReasonLimitsExceeded UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason) ToPointer() *UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason {
+	return &e
+}
+func (e *UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason: %v", v)
+	}
+}
+
+type PayloadOverageReason string
+
+const (
+	PayloadOverageReasonAiCredits                               PayloadOverageReason = "aiCredits"
+	PayloadOverageReasonAnalyticsUsage                          PayloadOverageReason = "analyticsUsage"
+	PayloadOverageReasonArtifacts                               PayloadOverageReason = "artifacts"
+	PayloadOverageReasonBandwidth                               PayloadOverageReason = "bandwidth"
+	PayloadOverageReasonBlobTotalAdvancedRequests               PayloadOverageReason = "blobTotalAdvancedRequests"
+	PayloadOverageReasonBlobTotalAvgSizeInBytes                 PayloadOverageReason = "blobTotalAvgSizeInBytes"
+	PayloadOverageReasonBlobTotalGetResponseObjectSizeInBytes   PayloadOverageReason = "blobTotalGetResponseObjectSizeInBytes"
+	PayloadOverageReasonBlobTotalSimpleRequests                 PayloadOverageReason = "blobTotalSimpleRequests"
+	PayloadOverageReasonDataCacheRead                           PayloadOverageReason = "dataCacheRead"
+	PayloadOverageReasonDataCacheWrite                          PayloadOverageReason = "dataCacheWrite"
+	PayloadOverageReasonEdgeConfigRead                          PayloadOverageReason = "edgeConfigRead"
+	PayloadOverageReasonEdgeConfigWrite                         PayloadOverageReason = "edgeConfigWrite"
+	PayloadOverageReasonEdgeFunctionExecutionUnits              PayloadOverageReason = "edgeFunctionExecutionUnits"
+	PayloadOverageReasonEdgeMiddlewareInvocations               PayloadOverageReason = "edgeMiddlewareInvocations"
+	PayloadOverageReasonEdgeRequestAdditionalCPUDuration        PayloadOverageReason = "edgeRequestAdditionalCpuDuration"
+	PayloadOverageReasonEdgeRequest                             PayloadOverageReason = "edgeRequest"
+	PayloadOverageReasonElasticConcurrencyBuildSlots            PayloadOverageReason = "elasticConcurrencyBuildSlots"
+	PayloadOverageReasonFastDataTransfer                        PayloadOverageReason = "fastDataTransfer"
+	PayloadOverageReasonFastOriginTransfer                      PayloadOverageReason = "fastOriginTransfer"
+	PayloadOverageReasonFunctionDuration                        PayloadOverageReason = "functionDuration"
+	PayloadOverageReasonFunctionInvocation                      PayloadOverageReason = "functionInvocation"
+	PayloadOverageReasonImageOptimizationCacheRead              PayloadOverageReason = "imageOptimizationCacheRead"
+	PayloadOverageReasonImageOptimizationCacheWrite             PayloadOverageReason = "imageOptimizationCacheWrite"
+	PayloadOverageReasonImageOptimizationTransformation         PayloadOverageReason = "imageOptimizationTransformation"
+	PayloadOverageReasonLogDrainsVolume                         PayloadOverageReason = "logDrainsVolume"
+	PayloadOverageReasonMonitoringMetric                        PayloadOverageReason = "monitoringMetric"
+	PayloadOverageReasonBlobDataTransfer                        PayloadOverageReason = "blobDataTransfer"
+	PayloadOverageReasonObservabilityEvent                      PayloadOverageReason = "observabilityEvent"
+	PayloadOverageReasonPostgresComputeTime                     PayloadOverageReason = "postgresComputeTime"
+	PayloadOverageReasonPostgresDataStorage                     PayloadOverageReason = "postgresDataStorage"
+	PayloadOverageReasonPostgresDataTransfer                    PayloadOverageReason = "postgresDataTransfer"
+	PayloadOverageReasonPostgresDatabase                        PayloadOverageReason = "postgresDatabase"
+	PayloadOverageReasonPostgresWrittenData                     PayloadOverageReason = "postgresWrittenData"
+	PayloadOverageReasonServerlessFunctionExecution             PayloadOverageReason = "serverlessFunctionExecution"
+	PayloadOverageReasonSourceImages                            PayloadOverageReason = "sourceImages"
+	PayloadOverageReasonStorageRedisTotalBandwidthInBytes       PayloadOverageReason = "storageRedisTotalBandwidthInBytes"
+	PayloadOverageReasonStorageRedisTotalCommands               PayloadOverageReason = "storageRedisTotalCommands"
+	PayloadOverageReasonStorageRedisTotalDailyAvgStorageInBytes PayloadOverageReason = "storageRedisTotalDailyAvgStorageInBytes"
+	PayloadOverageReasonStorageRedisTotalDatabases              PayloadOverageReason = "storageRedisTotalDatabases"
+	PayloadOverageReasonWafOwaspExcessBytes                     PayloadOverageReason = "wafOwaspExcessBytes"
+	PayloadOverageReasonWafOwaspRequests                        PayloadOverageReason = "wafOwaspRequests"
+	PayloadOverageReasonWafRateLimitRequest                     PayloadOverageReason = "wafRateLimitRequest"
+	PayloadOverageReasonWebAnalyticsEvent                       PayloadOverageReason = "webAnalyticsEvent"
+)
+
+func (e PayloadOverageReason) ToPointer() *PayloadOverageReason {
+	return &e
+}
+func (e *PayloadOverageReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aiCredits":
+		fallthrough
+	case "analyticsUsage":
+		fallthrough
+	case "artifacts":
+		fallthrough
+	case "bandwidth":
+		fallthrough
+	case "blobTotalAdvancedRequests":
+		fallthrough
+	case "blobTotalAvgSizeInBytes":
+		fallthrough
+	case "blobTotalGetResponseObjectSizeInBytes":
+		fallthrough
+	case "blobTotalSimpleRequests":
+		fallthrough
+	case "dataCacheRead":
+		fallthrough
+	case "dataCacheWrite":
+		fallthrough
+	case "edgeConfigRead":
+		fallthrough
+	case "edgeConfigWrite":
+		fallthrough
+	case "edgeFunctionExecutionUnits":
+		fallthrough
+	case "edgeMiddlewareInvocations":
+		fallthrough
+	case "edgeRequestAdditionalCpuDuration":
+		fallthrough
+	case "edgeRequest":
+		fallthrough
+	case "elasticConcurrencyBuildSlots":
+		fallthrough
+	case "fastDataTransfer":
+		fallthrough
+	case "fastOriginTransfer":
+		fallthrough
+	case "functionDuration":
+		fallthrough
+	case "functionInvocation":
+		fallthrough
+	case "imageOptimizationCacheRead":
+		fallthrough
+	case "imageOptimizationCacheWrite":
+		fallthrough
+	case "imageOptimizationTransformation":
+		fallthrough
+	case "logDrainsVolume":
+		fallthrough
+	case "monitoringMetric":
+		fallthrough
+	case "blobDataTransfer":
+		fallthrough
+	case "observabilityEvent":
+		fallthrough
+	case "postgresComputeTime":
+		fallthrough
+	case "postgresDataStorage":
+		fallthrough
+	case "postgresDataTransfer":
+		fallthrough
+	case "postgresDatabase":
+		fallthrough
+	case "postgresWrittenData":
+		fallthrough
+	case "serverlessFunctionExecution":
+		fallthrough
+	case "sourceImages":
+		fallthrough
+	case "storageRedisTotalBandwidthInBytes":
+		fallthrough
+	case "storageRedisTotalCommands":
+		fallthrough
+	case "storageRedisTotalDailyAvgStorageInBytes":
+		fallthrough
+	case "storageRedisTotalDatabases":
+		fallthrough
+	case "wafOwaspExcessBytes":
+		fallthrough
+	case "wafOwaspRequests":
+		fallthrough
+	case "wafRateLimitRequest":
+		fallthrough
+	case "webAnalyticsEvent":
+		*e = PayloadOverageReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadOverageReason: %v", v)
+	}
+}
+
+type Postgres struct {
+	UpdatedAt     *float64                                                    `json:"updatedAt,omitempty"`
+	BlockedFrom   *float64                                                    `json:"blockedFrom,omitempty"`
+	BlockedUntil  *float64                                                    `json:"blockedUntil,omitempty"`
+	BlockReason   *UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason `json:"blockReason,omitempty"`
+	OverageReason PayloadOverageReason                                        `json:"overageReason"`
+}
+
+func (o *Postgres) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Postgres) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *Postgres) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *Postgres) GetBlockReason() *UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *Postgres) GetOverageReason() PayloadOverageReason {
+	if o == nil {
+		return PayloadOverageReason("")
+	}
+	return o.OverageReason
+}
+
+type UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason string
+
+const (
+	UserEventPayload62NewOwnerFeatureBlocksRedisBlockReasonAdminOverride  UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason = "admin_override"
+	UserEventPayload62NewOwnerFeatureBlocksRedisBlockReasonLimitsExceeded UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason = "limits_exceeded"
+)
+
+func (e UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason) ToPointer() *UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason {
+	return &e
+}
+func (e *UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason: %v", v)
+	}
+}
+
+type UserEventPayloadOverageReason string
+
+const (
+	UserEventPayloadOverageReasonAiCredits                               UserEventPayloadOverageReason = "aiCredits"
+	UserEventPayloadOverageReasonAnalyticsUsage                          UserEventPayloadOverageReason = "analyticsUsage"
+	UserEventPayloadOverageReasonArtifacts                               UserEventPayloadOverageReason = "artifacts"
+	UserEventPayloadOverageReasonBandwidth                               UserEventPayloadOverageReason = "bandwidth"
+	UserEventPayloadOverageReasonBlobTotalAdvancedRequests               UserEventPayloadOverageReason = "blobTotalAdvancedRequests"
+	UserEventPayloadOverageReasonBlobTotalAvgSizeInBytes                 UserEventPayloadOverageReason = "blobTotalAvgSizeInBytes"
+	UserEventPayloadOverageReasonBlobTotalGetResponseObjectSizeInBytes   UserEventPayloadOverageReason = "blobTotalGetResponseObjectSizeInBytes"
+	UserEventPayloadOverageReasonBlobTotalSimpleRequests                 UserEventPayloadOverageReason = "blobTotalSimpleRequests"
+	UserEventPayloadOverageReasonDataCacheRead                           UserEventPayloadOverageReason = "dataCacheRead"
+	UserEventPayloadOverageReasonDataCacheWrite                          UserEventPayloadOverageReason = "dataCacheWrite"
+	UserEventPayloadOverageReasonEdgeConfigRead                          UserEventPayloadOverageReason = "edgeConfigRead"
+	UserEventPayloadOverageReasonEdgeConfigWrite                         UserEventPayloadOverageReason = "edgeConfigWrite"
+	UserEventPayloadOverageReasonEdgeFunctionExecutionUnits              UserEventPayloadOverageReason = "edgeFunctionExecutionUnits"
+	UserEventPayloadOverageReasonEdgeMiddlewareInvocations               UserEventPayloadOverageReason = "edgeMiddlewareInvocations"
+	UserEventPayloadOverageReasonEdgeRequestAdditionalCPUDuration        UserEventPayloadOverageReason = "edgeRequestAdditionalCpuDuration"
+	UserEventPayloadOverageReasonEdgeRequest                             UserEventPayloadOverageReason = "edgeRequest"
+	UserEventPayloadOverageReasonElasticConcurrencyBuildSlots            UserEventPayloadOverageReason = "elasticConcurrencyBuildSlots"
+	UserEventPayloadOverageReasonFastDataTransfer                        UserEventPayloadOverageReason = "fastDataTransfer"
+	UserEventPayloadOverageReasonFastOriginTransfer                      UserEventPayloadOverageReason = "fastOriginTransfer"
+	UserEventPayloadOverageReasonFunctionDuration                        UserEventPayloadOverageReason = "functionDuration"
+	UserEventPayloadOverageReasonFunctionInvocation                      UserEventPayloadOverageReason = "functionInvocation"
+	UserEventPayloadOverageReasonImageOptimizationCacheRead              UserEventPayloadOverageReason = "imageOptimizationCacheRead"
+	UserEventPayloadOverageReasonImageOptimizationCacheWrite             UserEventPayloadOverageReason = "imageOptimizationCacheWrite"
+	UserEventPayloadOverageReasonImageOptimizationTransformation         UserEventPayloadOverageReason = "imageOptimizationTransformation"
+	UserEventPayloadOverageReasonLogDrainsVolume                         UserEventPayloadOverageReason = "logDrainsVolume"
+	UserEventPayloadOverageReasonMonitoringMetric                        UserEventPayloadOverageReason = "monitoringMetric"
+	UserEventPayloadOverageReasonBlobDataTransfer                        UserEventPayloadOverageReason = "blobDataTransfer"
+	UserEventPayloadOverageReasonObservabilityEvent                      UserEventPayloadOverageReason = "observabilityEvent"
+	UserEventPayloadOverageReasonPostgresComputeTime                     UserEventPayloadOverageReason = "postgresComputeTime"
+	UserEventPayloadOverageReasonPostgresDataStorage                     UserEventPayloadOverageReason = "postgresDataStorage"
+	UserEventPayloadOverageReasonPostgresDataTransfer                    UserEventPayloadOverageReason = "postgresDataTransfer"
+	UserEventPayloadOverageReasonPostgresDatabase                        UserEventPayloadOverageReason = "postgresDatabase"
+	UserEventPayloadOverageReasonPostgresWrittenData                     UserEventPayloadOverageReason = "postgresWrittenData"
+	UserEventPayloadOverageReasonServerlessFunctionExecution             UserEventPayloadOverageReason = "serverlessFunctionExecution"
+	UserEventPayloadOverageReasonSourceImages                            UserEventPayloadOverageReason = "sourceImages"
+	UserEventPayloadOverageReasonStorageRedisTotalBandwidthInBytes       UserEventPayloadOverageReason = "storageRedisTotalBandwidthInBytes"
+	UserEventPayloadOverageReasonStorageRedisTotalCommands               UserEventPayloadOverageReason = "storageRedisTotalCommands"
+	UserEventPayloadOverageReasonStorageRedisTotalDailyAvgStorageInBytes UserEventPayloadOverageReason = "storageRedisTotalDailyAvgStorageInBytes"
+	UserEventPayloadOverageReasonStorageRedisTotalDatabases              UserEventPayloadOverageReason = "storageRedisTotalDatabases"
+	UserEventPayloadOverageReasonWafOwaspExcessBytes                     UserEventPayloadOverageReason = "wafOwaspExcessBytes"
+	UserEventPayloadOverageReasonWafOwaspRequests                        UserEventPayloadOverageReason = "wafOwaspRequests"
+	UserEventPayloadOverageReasonWafRateLimitRequest                     UserEventPayloadOverageReason = "wafRateLimitRequest"
+	UserEventPayloadOverageReasonWebAnalyticsEvent                       UserEventPayloadOverageReason = "webAnalyticsEvent"
+)
+
+func (e UserEventPayloadOverageReason) ToPointer() *UserEventPayloadOverageReason {
+	return &e
+}
+func (e *UserEventPayloadOverageReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aiCredits":
+		fallthrough
+	case "analyticsUsage":
+		fallthrough
+	case "artifacts":
+		fallthrough
+	case "bandwidth":
+		fallthrough
+	case "blobTotalAdvancedRequests":
+		fallthrough
+	case "blobTotalAvgSizeInBytes":
+		fallthrough
+	case "blobTotalGetResponseObjectSizeInBytes":
+		fallthrough
+	case "blobTotalSimpleRequests":
+		fallthrough
+	case "dataCacheRead":
+		fallthrough
+	case "dataCacheWrite":
+		fallthrough
+	case "edgeConfigRead":
+		fallthrough
+	case "edgeConfigWrite":
+		fallthrough
+	case "edgeFunctionExecutionUnits":
+		fallthrough
+	case "edgeMiddlewareInvocations":
+		fallthrough
+	case "edgeRequestAdditionalCpuDuration":
+		fallthrough
+	case "edgeRequest":
+		fallthrough
+	case "elasticConcurrencyBuildSlots":
+		fallthrough
+	case "fastDataTransfer":
+		fallthrough
+	case "fastOriginTransfer":
+		fallthrough
+	case "functionDuration":
+		fallthrough
+	case "functionInvocation":
+		fallthrough
+	case "imageOptimizationCacheRead":
+		fallthrough
+	case "imageOptimizationCacheWrite":
+		fallthrough
+	case "imageOptimizationTransformation":
+		fallthrough
+	case "logDrainsVolume":
+		fallthrough
+	case "monitoringMetric":
+		fallthrough
+	case "blobDataTransfer":
+		fallthrough
+	case "observabilityEvent":
+		fallthrough
+	case "postgresComputeTime":
+		fallthrough
+	case "postgresDataStorage":
+		fallthrough
+	case "postgresDataTransfer":
+		fallthrough
+	case "postgresDatabase":
+		fallthrough
+	case "postgresWrittenData":
+		fallthrough
+	case "serverlessFunctionExecution":
+		fallthrough
+	case "sourceImages":
+		fallthrough
+	case "storageRedisTotalBandwidthInBytes":
+		fallthrough
+	case "storageRedisTotalCommands":
+		fallthrough
+	case "storageRedisTotalDailyAvgStorageInBytes":
+		fallthrough
+	case "storageRedisTotalDatabases":
+		fallthrough
+	case "wafOwaspExcessBytes":
+		fallthrough
+	case "wafOwaspRequests":
+		fallthrough
+	case "wafRateLimitRequest":
+		fallthrough
+	case "webAnalyticsEvent":
+		*e = UserEventPayloadOverageReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadOverageReason: %v", v)
+	}
+}
+
+type Redis struct {
+	UpdatedAt     *float64                                                 `json:"updatedAt,omitempty"`
+	BlockedFrom   *float64                                                 `json:"blockedFrom,omitempty"`
+	BlockedUntil  *float64                                                 `json:"blockedUntil,omitempty"`
+	BlockReason   *UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason `json:"blockReason,omitempty"`
+	OverageReason UserEventPayloadOverageReason                            `json:"overageReason"`
+}
+
+func (o *Redis) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Redis) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *Redis) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *Redis) GetBlockReason() *UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *Redis) GetOverageReason() UserEventPayloadOverageReason {
+	if o == nil {
+		return UserEventPayloadOverageReason("")
+	}
+	return o.OverageReason
+}
+
+// PayloadFeatureBlocks - Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
+type PayloadFeatureBlocks struct {
+	WebAnalytics *PayloadWebAnalytics `json:"webAnalytics,omitempty"`
+	// A soft block indicates a temporary pause in data collection (ex limit exceeded for the current cycle) A hard block indicates a stoppage in data collection that requires manual intervention (ex upgrading a pro trial)
+	Monitoring                      *Monitoring                             `json:"monitoring,omitempty"`
+	ObservabilityPlus               *ObservabilityPlus                      `json:"observabilityPlus,omitempty"`
+	DataCache                       *UserEventPayloadDataCache              `json:"dataCache,omitempty"`
+	ImageOptimizationTransformation *PayloadImageOptimizationTransformation `json:"imageOptimizationTransformation,omitempty"`
+	SourceImages                    *PayloadSourceImages                    `json:"sourceImages,omitempty"`
+	Blob                            *Blob                                   `json:"blob,omitempty"`
+	Postgres                        *Postgres                               `json:"postgres,omitempty"`
+	Redis                           *Redis                                  `json:"redis,omitempty"`
+}
+
+func (o *PayloadFeatureBlocks) GetWebAnalytics() *PayloadWebAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
+func (o *PayloadFeatureBlocks) GetMonitoring() *Monitoring {
+	if o == nil {
+		return nil
+	}
+	return o.Monitoring
+}
+
+func (o *PayloadFeatureBlocks) GetObservabilityPlus() *ObservabilityPlus {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityPlus
+}
+
+func (o *PayloadFeatureBlocks) GetDataCache() *UserEventPayloadDataCache {
+	if o == nil {
+		return nil
+	}
+	return o.DataCache
+}
+
+func (o *PayloadFeatureBlocks) GetImageOptimizationTransformation() *PayloadImageOptimizationTransformation {
+	if o == nil {
+		return nil
+	}
+	return o.ImageOptimizationTransformation
+}
+
+func (o *PayloadFeatureBlocks) GetSourceImages() *PayloadSourceImages {
+	if o == nil {
+		return nil
+	}
+	return o.SourceImages
+}
+
+func (o *PayloadFeatureBlocks) GetBlob() *Blob {
+	if o == nil {
+		return nil
+	}
+	return o.Blob
+}
+
+func (o *PayloadFeatureBlocks) GetPostgres() *Postgres {
+	if o == nil {
+		return nil
+	}
+	return o.Postgres
+}
+
+func (o *PayloadFeatureBlocks) GetRedis() *Redis {
+	if o == nil {
+		return nil
+	}
+	return o.Redis
+}
+
+type PayloadVersion string
+
+const (
+	PayloadVersionNorthstar PayloadVersion = "northstar"
+)
+
+func (e PayloadVersion) ToPointer() *PayloadVersion {
+	return &e
+}
+func (e *PayloadVersion) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "northstar":
+		*e = PayloadVersion(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadVersion: %v", v)
+	}
+}
+
+// PayloadNorthstarMigration - An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
+type PayloadNorthstarMigration struct {
+	// The ID of the team we created for this user.
+	TeamID string `json:"teamId"`
+	// The number of projects migrated for this user.
+	Projects float64 `json:"projects"`
+	// The number of stores migrated for this user.
+	Stores float64 `json:"stores"`
+	// The number of integration configurations migrated for this user.
+	IntegrationConfigurations float64 `json:"integrationConfigurations"`
+	// The number of integration clients migrated for this user.
+	IntegrationClients float64 `json:"integrationClients"`
+	// The migration start time timestamp for this user.
+	StartTime float64 `json:"startTime"`
+	// The migration end time timestamp for this user.
+	EndTime float64 `json:"endTime"`
+}
+
+func (o *PayloadNorthstarMigration) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *PayloadNorthstarMigration) GetProjects() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Projects
+}
+
+func (o *PayloadNorthstarMigration) GetStores() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Stores
+}
+
+func (o *PayloadNorthstarMigration) GetIntegrationConfigurations() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.IntegrationConfigurations
+}
+
+func (o *PayloadNorthstarMigration) GetIntegrationClients() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.IntegrationClients
+}
+
+func (o *PayloadNorthstarMigration) GetStartTime() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartTime
+}
+
+func (o *PayloadNorthstarMigration) GetEndTime() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EndTime
+}
+
+type Totp struct {
+	Secret    string  `json:"secret"`
+	CreatedAt float64 `json:"createdAt"`
+}
+
+func (o *Totp) GetSecret() string {
+	if o == nil {
+		return ""
+	}
+	return o.Secret
+}
+
+func (o *Totp) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+// MfaConfiguration - MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
+type MfaConfiguration struct {
+	Enabled       bool     `json:"enabled"`
+	EnabledAt     *float64 `json:"enabledAt,omitempty"`
+	RecoveryCodes []string `json:"recoveryCodes"`
+	Totp          *Totp    `json:"totp,omitempty"`
+}
+
+func (o *MfaConfiguration) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *MfaConfiguration) GetEnabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledAt
+}
+
+func (o *MfaConfiguration) GetRecoveryCodes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.RecoveryCodes
+}
+
+func (o *MfaConfiguration) GetTotp() *Totp {
+	if o == nil {
+		return nil
+	}
+	return o.Totp
+}
+
+type NewOwner struct {
+	Abuse                           *Abuse                                   `json:"abuse,omitempty"`
+	AcceptanceState                 *string                                  `json:"acceptanceState,omitempty"`
+	AcceptedAt                      *float64                                 `json:"acceptedAt,omitempty"`
+	Avatar                          *string                                  `json:"avatar,omitempty"`
+	Billing                         PayloadBilling                           `json:"billing"`
+	Blocked                         *float64                                 `json:"blocked"`
+	BlockReason                     *string                                  `json:"blockReason,omitempty"`
+	Created                         *float64                                 `json:"created,omitempty"`
+	CreatedAt                       float64                                  `json:"createdAt"`
+	Credentials                     []Credentials                            `json:"credentials,omitempty"`
+	CustomerID                      *string                                  `json:"customerId,omitempty"`
+	OrbCustomerID                   *string                                  `json:"orbCustomerId,omitempty"`
+	DataCache                       *PayloadDataCache                        `json:"dataCache,omitempty"`
+	DeletedAt                       *float64                                 `json:"deletedAt,omitempty"`
+	DeploymentSecret                string                                   `json:"deploymentSecret"`
+	DismissedTeams                  []string                                 `json:"dismissedTeams,omitempty"`
+	DismissedToasts                 []PayloadDismissedToasts                 `json:"dismissedToasts,omitempty"`
+	FavoriteProjectsAndSpaces       []PayloadFavoriteProjectsAndSpaces       `json:"favoriteProjectsAndSpaces,omitempty"`
+	Email                           string                                   `json:"email"`
+	ID                              string                                   `json:"id"`
+	ImportFlowGitNamespace          *PayloadImportFlowGitNamespace           `json:"importFlowGitNamespace,omitempty"`
+	ImportFlowGitNamespaceID        *PayloadImportFlowGitNamespaceID         `json:"importFlowGitNamespaceId,omitempty"`
+	ImportFlowGitProvider           *PayloadImportFlowGitProvider            `json:"importFlowGitProvider,omitempty"`
+	PreferredScopesAndGitNamespaces []PayloadPreferredScopesAndGitNamespaces `json:"preferredScopesAndGitNamespaces,omitempty"`
+	IsDomainReseller                *bool                                    `json:"isDomainReseller,omitempty"`
+	IsZeitPub                       *bool                                    `json:"isZeitPub,omitempty"`
+	MaxActiveSlots                  *float64                                 `json:"maxActiveSlots,omitempty"`
+	Name                            *string                                  `json:"name,omitempty"`
+	PhoneNumber                     *string                                  `json:"phoneNumber,omitempty"`
+	PlatformVersion                 *float64                                 `json:"platformVersion"`
+	PreventAutoBlocking             *PreventAutoBlocking                     `json:"preventAutoBlocking,omitempty"`
+	// Overrides our DEFAULT project domains limit per account or per project.
+	ProjectDomainsLimit *float64 `json:"projectDomainsLimit,omitempty"`
+	// Represents configuration for remote caching
+	RemoteCaching                *UserEventPayloadRemoteCaching `json:"remoteCaching,omitempty"`
+	RemovedAliasesAt             *float64                       `json:"removedAliasesAt,omitempty"`
+	RemovedBillingSubscriptionAt *float64                       `json:"removedBillingSubscriptionAt,omitempty"`
+	RemovedConfigurationsAt      *float64                       `json:"removedConfigurationsAt,omitempty"`
+	RemovedDeploymentsAt         *float64                       `json:"removedDeploymentsAt,omitempty"`
+	RemovedDomiansAt             *float64                       `json:"removedDomiansAt,omitempty"`
+	RemovedEventsAt              *float64                       `json:"removedEventsAt,omitempty"`
+	RemovedProjectsAt            *float64                       `json:"removedProjectsAt,omitempty"`
+	RemovedSecretsAt             *float64                       `json:"removedSecretsAt,omitempty"`
+	RemovedSharedEnvVarsAt       *float64                       `json:"removedSharedEnvVarsAt,omitempty"`
+	RemovedEdgeConfigsAt         *float64                       `json:"removedEdgeConfigsAt,omitempty"`
+	ResourceConfig               *PayloadResourceConfig         `json:"resourceConfig,omitempty"`
+	// User | Team resource limits
+	ResourceLimits       map[string]ResourceLimits     `json:"resourceLimits,omitempty"`
+	ActiveDashboardViews []PayloadActiveDashboardViews `json:"activeDashboardViews,omitempty"`
+	SecondaryEmails      []SecondaryEmails             `json:"secondaryEmails,omitempty"`
+	EmailNotifications   *EmailNotifications           `json:"emailNotifications,omitempty"`
+	SiftScore            *float64                      `json:"siftScore,omitempty"`
+	SiftScores           map[string]SiftScores         `json:"siftScores,omitempty"`
+	SiftRoute            *SiftRoute                    `json:"siftRoute,omitempty"`
+	SfdcID               *string                       `json:"sfdcId,omitempty"`
+	SoftBlock            *PayloadSoftBlock             `json:"softBlock,omitempty"`
+	StagingPrefix        string                        `json:"stagingPrefix"`
+	SysToken             string                        `json:"sysToken"`
+	// A helper that allows to describe a relationship attribute. It receives the shape of a relationship plus the foreignKey name to make it mandatory in the resulting type.
+	Teams []Teams `json:"teams,omitempty"`
+	// Introduced 2022-04-12 An array of teamIds (for trial teams created after 2022-04-01), created by the user in question. Used in determining whether the team has a trial available in utils/api-teams/user-has-trial-available.ts.
+	TrialTeamIds []string `json:"trialTeamIds,omitempty"`
+	// Introduced 2022-04-19 Number of maximum trials to allocate to a user. When undefined, defaults to MAX_TRIALS in utils/api-teams/user-has-trial-available.ts. This is set to trialTeamIds + 1 by services/api-backoffice/src/handlers/add-additional-trial.ts.
+	MaxTrials *float64 `json:"maxTrials,omitempty"`
+	// Deprecated on 2022-04-12 in favor of trialTeamIds and using utils/api-teams/user-has-trial-available.ts.
+	TrialTeamID *string                `json:"trialTeamId,omitempty"`
+	Type        UserEventPayload62Type `json:"type"`
+	// Contains the timestamps when a user was notified about their usage
+	UsageAlerts        *UsageAlerts        `json:"usageAlerts,omitempty"`
+	OverageUsageAlerts *OverageUsageAlerts `json:"overageUsageAlerts,omitempty"`
+	Username           string              `json:"username"`
+	UpdatedAt          float64             `json:"updatedAt"`
+	// Whether the Vercel Toolbar is enabled for preview deployments.
+	EnablePreviewFeedback *EnablePreviewFeedback `json:"enablePreviewFeedback,omitempty"`
+	// Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
+	FeatureBlocks *PayloadFeatureBlocks `json:"featureBlocks,omitempty"`
+	DefaultTeamID *string               `json:"defaultTeamId,omitempty"`
+	Version       PayloadVersion        `json:"version"`
+	// An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
+	NorthstarMigration *PayloadNorthstarMigration `json:"northstarMigration,omitempty"`
+	// The salesforce opportunity ID that this user is linked to. This is used to automatically associate a team of the user's choosing with the opportunity.
+	OpportunityID *string `json:"opportunityId,omitempty"`
+	// MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
+	MfaConfiguration *MfaConfiguration `json:"mfaConfiguration,omitempty"`
+}
+
+func (o *NewOwner) GetAbuse() *Abuse {
+	if o == nil {
+		return nil
+	}
+	return o.Abuse
+}
+
+func (o *NewOwner) GetAcceptanceState() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AcceptanceState
+}
+
+func (o *NewOwner) GetAcceptedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AcceptedAt
+}
+
+func (o *NewOwner) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+func (o *NewOwner) GetBilling() PayloadBilling {
+	if o == nil {
+		return PayloadBilling{}
+	}
+	return o.Billing
+}
+
+func (o *NewOwner) GetBlocked() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Blocked
+}
+
+func (o *NewOwner) GetBlockReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BlockReason
+}
+
+func (o *NewOwner) GetCreated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Created
+}
+
+func (o *NewOwner) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *NewOwner) GetCredentials() []Credentials {
+	if o == nil {
+		return nil
+	}
+	return o.Credentials
+}
+
+func (o *NewOwner) GetCustomerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomerID
+}
+
+func (o *NewOwner) GetOrbCustomerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrbCustomerID
+}
+
+func (o *NewOwner) GetDataCache() *PayloadDataCache {
+	if o == nil {
+		return nil
+	}
+	return o.DataCache
+}
+
+func (o *NewOwner) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *NewOwner) GetDeploymentSecret() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentSecret
+}
+
+func (o *NewOwner) GetDismissedTeams() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedTeams
+}
+
+func (o *NewOwner) GetDismissedToasts() []PayloadDismissedToasts {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedToasts
+}
+
+func (o *NewOwner) GetFavoriteProjectsAndSpaces() []PayloadFavoriteProjectsAndSpaces {
+	if o == nil {
+		return nil
+	}
+	return o.FavoriteProjectsAndSpaces
+}
+
+func (o *NewOwner) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *NewOwner) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *NewOwner) GetImportFlowGitNamespace() *PayloadImportFlowGitNamespace {
+	if o == nil {
+		return nil
+	}
+	return o.ImportFlowGitNamespace
+}
+
+func (o *NewOwner) GetImportFlowGitNamespaceID() *PayloadImportFlowGitNamespaceID {
+	if o == nil {
+		return nil
+	}
+	return o.ImportFlowGitNamespaceID
+}
+
+func (o *NewOwner) GetImportFlowGitProvider() *PayloadImportFlowGitProvider {
+	if o == nil {
+		return nil
+	}
+	return o.ImportFlowGitProvider
+}
+
+func (o *NewOwner) GetPreferredScopesAndGitNamespaces() []PayloadPreferredScopesAndGitNamespaces {
+	if o == nil {
+		return nil
+	}
+	return o.PreferredScopesAndGitNamespaces
+}
+
+func (o *NewOwner) GetIsDomainReseller() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDomainReseller
+}
+
+func (o *NewOwner) GetIsZeitPub() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsZeitPub
+}
+
+func (o *NewOwner) GetMaxActiveSlots() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxActiveSlots
+}
+
+func (o *NewOwner) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *NewOwner) GetPhoneNumber() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PhoneNumber
+}
+
+func (o *NewOwner) GetPlatformVersion() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PlatformVersion
+}
+
+func (o *NewOwner) GetPreventAutoBlocking() *PreventAutoBlocking {
+	if o == nil {
+		return nil
+	}
+	return o.PreventAutoBlocking
+}
+
+func (o *NewOwner) GetProjectDomainsLimit() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainsLimit
+}
+
+func (o *NewOwner) GetRemoteCaching() *UserEventPayloadRemoteCaching {
+	if o == nil {
+		return nil
+	}
+	return o.RemoteCaching
+}
+
+func (o *NewOwner) GetRemovedAliasesAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedAliasesAt
+}
+
+func (o *NewOwner) GetRemovedBillingSubscriptionAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedBillingSubscriptionAt
+}
+
+func (o *NewOwner) GetRemovedConfigurationsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedConfigurationsAt
+}
+
+func (o *NewOwner) GetRemovedDeploymentsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedDeploymentsAt
+}
+
+func (o *NewOwner) GetRemovedDomiansAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedDomiansAt
+}
+
+func (o *NewOwner) GetRemovedEventsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedEventsAt
+}
+
+func (o *NewOwner) GetRemovedProjectsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedProjectsAt
+}
+
+func (o *NewOwner) GetRemovedSecretsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedSecretsAt
+}
+
+func (o *NewOwner) GetRemovedSharedEnvVarsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedSharedEnvVarsAt
+}
+
+func (o *NewOwner) GetRemovedEdgeConfigsAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedEdgeConfigsAt
+}
+
+func (o *NewOwner) GetResourceConfig() *PayloadResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
+}
+
+func (o *NewOwner) GetResourceLimits() map[string]ResourceLimits {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceLimits
+}
+
+func (o *NewOwner) GetActiveDashboardViews() []PayloadActiveDashboardViews {
+	if o == nil {
+		return nil
+	}
+	return o.ActiveDashboardViews
+}
+
+func (o *NewOwner) GetSecondaryEmails() []SecondaryEmails {
+	if o == nil {
+		return nil
+	}
+	return o.SecondaryEmails
+}
+
+func (o *NewOwner) GetEmailNotifications() *EmailNotifications {
+	if o == nil {
+		return nil
+	}
+	return o.EmailNotifications
+}
+
+func (o *NewOwner) GetSiftScore() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SiftScore
+}
+
+func (o *NewOwner) GetSiftScores() map[string]SiftScores {
+	if o == nil {
+		return nil
+	}
+	return o.SiftScores
+}
+
+func (o *NewOwner) GetSiftRoute() *SiftRoute {
+	if o == nil {
+		return nil
+	}
+	return o.SiftRoute
+}
+
+func (o *NewOwner) GetSfdcID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SfdcID
+}
+
+func (o *NewOwner) GetSoftBlock() *PayloadSoftBlock {
+	if o == nil {
+		return nil
+	}
+	return o.SoftBlock
+}
+
+func (o *NewOwner) GetStagingPrefix() string {
+	if o == nil {
+		return ""
+	}
+	return o.StagingPrefix
+}
+
+func (o *NewOwner) GetSysToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.SysToken
+}
+
+func (o *NewOwner) GetTeams() []Teams {
+	if o == nil {
+		return nil
+	}
+	return o.Teams
+}
+
+func (o *NewOwner) GetTrialTeamIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TrialTeamIds
+}
+
+func (o *NewOwner) GetMaxTrials() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxTrials
+}
+
+func (o *NewOwner) GetTrialTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TrialTeamID
+}
+
+func (o *NewOwner) GetType() UserEventPayload62Type {
+	if o == nil {
+		return UserEventPayload62Type("")
+	}
+	return o.Type
+}
+
+func (o *NewOwner) GetUsageAlerts() *UsageAlerts {
+	if o == nil {
+		return nil
+	}
+	return o.UsageAlerts
+}
+
+func (o *NewOwner) GetOverageUsageAlerts() *OverageUsageAlerts {
+	if o == nil {
+		return nil
+	}
+	return o.OverageUsageAlerts
+}
+
+func (o *NewOwner) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *NewOwner) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *NewOwner) GetEnablePreviewFeedback() *EnablePreviewFeedback {
+	if o == nil {
+		return nil
+	}
+	return o.EnablePreviewFeedback
+}
+
+func (o *NewOwner) GetFeatureBlocks() *PayloadFeatureBlocks {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureBlocks
+}
+
+func (o *NewOwner) GetDefaultTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultTeamID
+}
+
+func (o *NewOwner) GetVersion() PayloadVersion {
+	if o == nil {
+		return PayloadVersion("")
+	}
+	return o.Version
+}
+
+func (o *NewOwner) GetNorthstarMigration() *PayloadNorthstarMigration {
+	if o == nil {
+		return nil
+	}
+	return o.NorthstarMigration
+}
+
+func (o *NewOwner) GetOpportunityID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpportunityID
+}
+
+func (o *NewOwner) GetMfaConfiguration() *MfaConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.MfaConfiguration
+}
+
+// SixtyTwo - The payload of the event, if requested.
+type SixtyTwo struct {
+	UserID          string    `json:"userId"`
+	IntegrationID   string    `json:"integrationId"`
+	ConfigurationID string    `json:"configurationId"`
+	IntegrationSlug string    `json:"integrationSlug"`
+	IntegrationName *string   `json:"integrationName,omitempty"`
+	NewOwner        *NewOwner `json:"newOwner"`
+}
+
+func (o *SixtyTwo) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *SixtyTwo) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *SixtyTwo) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
+}
+
+func (o *SixtyTwo) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *SixtyTwo) GetIntegrationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationName
+}
+
+func (o *SixtyTwo) GetNewOwner() *NewOwner {
+	if o == nil {
+		return nil
+	}
+	return o.NewOwner
+}
+
+// SixtyOne - The payload of the event, if requested.
+type SixtyOne struct {
+	IntegrationID   string `json:"integrationId"`
+	IntegrationSlug string `json:"integrationSlug"`
+	IntegrationName string `json:"integrationName"`
+}
+
+func (o *SixtyOne) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *SixtyOne) GetIntegrationSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationSlug
+}
+
+func (o *SixtyOne) GetIntegrationName() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationName
+}
+
+// Sixty - The payload of the event, if requested.
+type Sixty struct {
+	ProjectID string `json:"projectId"`
+	Scope     string `json:"scope"`
+	Source    string `json:"source"`
+}
+
+func (o *Sixty) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *Sixty) GetScope() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scope
+}
+
+func (o *Sixty) GetSource() string {
+	if o == nil {
+		return ""
+	}
+	return o.Source
+}
+
+type ConfigChanges struct {
+}
+
+// FiftyNine - The payload of the event, if requested.
+type FiftyNine struct {
+	ProjectID         string          `json:"projectId"`
+	Restore           bool            `json:"restore"`
+	ConfigVersion     float64         `json:"configVersion"`
+	ConfigChangeCount float64         `json:"configChangeCount"`
+	ConfigChanges     []ConfigChanges `json:"configChanges"`
+}
+
+func (o *FiftyNine) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *FiftyNine) GetRestore() bool {
+	if o == nil {
+		return false
+	}
+	return o.Restore
+}
+
+func (o *FiftyNine) GetConfigVersion() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConfigVersion
+}
+
+func (o *FiftyNine) GetConfigChangeCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConfigChangeCount
+}
+
+func (o *FiftyNine) GetConfigChanges() []ConfigChanges {
+	if o == nil {
+		return []ConfigChanges{}
+	}
+	return o.ConfigChanges
+}
+
+// UserEventPayload58OldEnvVarType - The type of this cosmos doc instance, if blank, assume secret.
+type UserEventPayload58OldEnvVarType string
+
+const (
+	UserEventPayload58OldEnvVarTypeSystem    UserEventPayload58OldEnvVarType = "system"
+	UserEventPayload58OldEnvVarTypeEncrypted UserEventPayload58OldEnvVarType = "encrypted"
+	UserEventPayload58OldEnvVarTypePlain     UserEventPayload58OldEnvVarType = "plain"
+	UserEventPayload58OldEnvVarTypeSensitive UserEventPayload58OldEnvVarType = "sensitive"
+)
+
+func (e UserEventPayload58OldEnvVarType) ToPointer() *UserEventPayload58OldEnvVarType {
+	return &e
+}
+func (e *UserEventPayload58OldEnvVarType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = UserEventPayload58OldEnvVarType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload58OldEnvVarType: %v", v)
+	}
+}
+
+// UserEventPayloadTarget - environments this env variable targets
+type UserEventPayloadTarget string
+
+const (
+	UserEventPayloadTargetProduction  UserEventPayloadTarget = "production"
+	UserEventPayloadTargetPreview     UserEventPayloadTarget = "preview"
+	UserEventPayloadTargetDevelopment UserEventPayloadTarget = "development"
+)
+
+func (e UserEventPayloadTarget) ToPointer() *UserEventPayloadTarget {
+	return &e
+}
+func (e *UserEventPayloadTarget) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = UserEventPayloadTarget(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayloadTarget: %v", v)
+	}
+}
+
+type OldEnvVar struct {
+	// The date when the Shared Env Var was created.
+	Created time.Time `json:"created"`
+	// The name of the Shared Env Var.
+	Key string `json:"key"`
+	// The unique identifier of the owner (team) the Shared Env Var was created for.
+	OwnerID *string `json:"ownerId,omitempty"`
+	// The unique identifier of the Shared Env Var.
+	ID string `json:"id"`
+	// The unique identifier of the user who created the Shared Env Var.
+	CreatedBy *string `json:"createdBy,omitempty"`
+	// The unique identifier of the user who deleted the Shared Env Var.
+	DeletedBy *string `json:"deletedBy,omitempty"`
+	// The unique identifier of the user who last updated the Shared Env Var.
+	UpdatedBy *string `json:"updatedBy,omitempty"`
+	// Timestamp for when the Shared Env Var was created.
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	// Timestamp for when the Shared Env Var was (soft) deleted.
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	// Timestamp for when the Shared Env Var was last updated.
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// The value of the Shared Env Var.
+	Value *string `json:"value,omitempty"`
+	// The value of the shared environment variable decrypted against api-secrets-management.
+	VsmValue *string `json:"vsmValue,omitempty"`
+	// The unique identifiers of the projects which the Shared Env Var is linked to.
+	ProjectID []string `json:"projectId,omitempty"`
+	// The type of this cosmos doc instance, if blank, assume secret.
+	Type *UserEventPayload58OldEnvVarType `json:"type,omitempty"`
+	// environments this env variable targets
+	Target []UserEventPayloadTarget `json:"target,omitempty"`
+	// whether or not this env varible applies to custom environments
+	ApplyToAllCustomEnvironments *bool `json:"applyToAllCustomEnvironments,omitempty"`
+	// whether or not this env variable is decrypted
+	Decrypted bool `json:"decrypted"`
+	// A user provided comment that describes what this Shared Env Var is for.
+	Comment *string `json:"comment,omitempty"`
+	// The last editor full name or username.
+	LastEditedByDisplayName *string `json:"lastEditedByDisplayName,omitempty"`
+}
+
+func (o OldEnvVar) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldEnvVar) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OldEnvVar) GetCreated() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.Created
+}
+
+func (o *OldEnvVar) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *OldEnvVar) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+func (o *OldEnvVar) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *OldEnvVar) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *OldEnvVar) GetDeletedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedBy
+}
+
+func (o *OldEnvVar) GetUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}
+
+func (o *OldEnvVar) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *OldEnvVar) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *OldEnvVar) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *OldEnvVar) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *OldEnvVar) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
+func (o *OldEnvVar) GetProjectID() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *OldEnvVar) GetType() *UserEventPayload58OldEnvVarType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *OldEnvVar) GetTarget() []UserEventPayloadTarget {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *OldEnvVar) GetApplyToAllCustomEnvironments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ApplyToAllCustomEnvironments
+}
+
+func (o *OldEnvVar) GetDecrypted() bool {
+	if o == nil {
+		return false
+	}
+	return o.Decrypted
+}
+
+func (o *OldEnvVar) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *OldEnvVar) GetLastEditedByDisplayName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastEditedByDisplayName
+}
+
+// UserEventPayload58Type - The type of this cosmos doc instance, if blank, assume secret.
+type UserEventPayload58Type string
+
+const (
+	UserEventPayload58TypeSystem    UserEventPayload58Type = "system"
+	UserEventPayload58TypeEncrypted UserEventPayload58Type = "encrypted"
+	UserEventPayload58TypePlain     UserEventPayload58Type = "plain"
+	UserEventPayload58TypeSensitive UserEventPayload58Type = "sensitive"
+)
+
+func (e UserEventPayload58Type) ToPointer() *UserEventPayload58Type {
+	return &e
+}
+func (e *UserEventPayload58Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = UserEventPayload58Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload58Type: %v", v)
+	}
+}
+
+// UserEventPayload58Target - environments this env variable targets
+type UserEventPayload58Target string
+
+const (
+	UserEventPayload58TargetProduction  UserEventPayload58Target = "production"
+	UserEventPayload58TargetPreview     UserEventPayload58Target = "preview"
+	UserEventPayload58TargetDevelopment UserEventPayload58Target = "development"
+)
+
+func (e UserEventPayload58Target) ToPointer() *UserEventPayload58Target {
+	return &e
+}
+func (e *UserEventPayload58Target) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = UserEventPayload58Target(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPayload58Target: %v", v)
+	}
+}
+
+type NewEnvVar struct {
+	// The date when the Shared Env Var was created.
+	Created time.Time `json:"created"`
+	// The name of the Shared Env Var.
+	Key string `json:"key"`
+	// The unique identifier of the owner (team) the Shared Env Var was created for.
+	OwnerID *string `json:"ownerId,omitempty"`
+	// The unique identifier of the Shared Env Var.
+	ID string `json:"id"`
+	// The unique identifier of the user who created the Shared Env Var.
+	CreatedBy *string `json:"createdBy,omitempty"`
+	// The unique identifier of the user who deleted the Shared Env Var.
+	DeletedBy *string `json:"deletedBy,omitempty"`
+	// The unique identifier of the user who last updated the Shared Env Var.
+	UpdatedBy *string `json:"updatedBy,omitempty"`
+	// Timestamp for when the Shared Env Var was created.
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	// Timestamp for when the Shared Env Var was (soft) deleted.
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	// Timestamp for when the Shared Env Var was last updated.
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// The value of the Shared Env Var.
+	Value *string `json:"value,omitempty"`
+	// The value of the shared environment variable decrypted against api-secrets-management.
+	VsmValue *string `json:"vsmValue,omitempty"`
+	// The unique identifiers of the projects which the Shared Env Var is linked to.
+	ProjectID []string `json:"projectId,omitempty"`
+	// The type of this cosmos doc instance, if blank, assume secret.
+	Type *UserEventPayload58Type `json:"type,omitempty"`
+	// environments this env variable targets
+	Target []UserEventPayload58Target `json:"target,omitempty"`
+	// whether or not this env varible applies to custom environments
+	ApplyToAllCustomEnvironments *bool `json:"applyToAllCustomEnvironments,omitempty"`
+	// whether or not this env variable is decrypted
+	Decrypted bool `json:"decrypted"`
+	// A user provided comment that describes what this Shared Env Var is for.
+	Comment *string `json:"comment,omitempty"`
+	// The last editor full name or username.
+	LastEditedByDisplayName *string `json:"lastEditedByDisplayName,omitempty"`
+}
+
+func (n NewEnvVar) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewEnvVar) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NewEnvVar) GetCreated() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.Created
+}
+
+func (o *NewEnvVar) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *NewEnvVar) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+func (o *NewEnvVar) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *NewEnvVar) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *NewEnvVar) GetDeletedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedBy
+}
+
+func (o *NewEnvVar) GetUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}
+
+func (o *NewEnvVar) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *NewEnvVar) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *NewEnvVar) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *NewEnvVar) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *NewEnvVar) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
+func (o *NewEnvVar) GetProjectID() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *NewEnvVar) GetType() *UserEventPayload58Type {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *NewEnvVar) GetTarget() []UserEventPayload58Target {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *NewEnvVar) GetApplyToAllCustomEnvironments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ApplyToAllCustomEnvironments
+}
+
+func (o *NewEnvVar) GetDecrypted() bool {
+	if o == nil {
+		return false
+	}
+	return o.Decrypted
+}
+
+func (o *NewEnvVar) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *NewEnvVar) GetLastEditedByDisplayName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastEditedByDisplayName
+}
+
+type OldTarget string
+
+const (
+	OldTargetProduction  OldTarget = "production"
+	OldTargetPreview     OldTarget = "preview"
+	OldTargetDevelopment OldTarget = "development"
+)
+
+func (e OldTarget) ToPointer() *OldTarget {
+	return &e
+}
+func (e *OldTarget) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = OldTarget(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldTarget: %v", v)
+	}
+}
+
+type NewTarget string
+
+const (
+	NewTargetProduction  NewTarget = "production"
+	NewTargetPreview     NewTarget = "preview"
+	NewTargetDevelopment NewTarget = "development"
+)
+
+func (e NewTarget) ToPointer() *NewTarget {
+	return &e
+}
+func (e *NewTarget) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = NewTarget(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NewTarget: %v", v)
+	}
+}
+
+type OldProjects struct {
+	ProjectName *string `json:"projectName,omitempty"`
+	ProjectID   string  `json:"projectId"`
+}
+
+func (o *OldProjects) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *OldProjects) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+type NewProjects struct {
+	ProjectName *string `json:"projectName,omitempty"`
+	ProjectID   string  `json:"projectId"`
+}
+
+func (o *NewProjects) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *NewProjects) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+type UpdateDiff struct {
+	ID           string        `json:"id"`
+	Key          *string       `json:"key,omitempty"`
+	NewKey       *string       `json:"newKey,omitempty"`
+	OldTarget    []OldTarget   `json:"oldTarget,omitempty"`
+	NewTarget    []NewTarget   `json:"newTarget,omitempty"`
+	OldType      *string       `json:"oldType,omitempty"`
+	NewType      *string       `json:"newType,omitempty"`
+	OldProjects  []OldProjects `json:"oldProjects,omitempty"`
+	NewProjects  []NewProjects `json:"newProjects,omitempty"`
+	ChangedValue bool          `json:"changedValue"`
+}
+
+func (o *UpdateDiff) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateDiff) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *UpdateDiff) GetNewKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NewKey
+}
+
+func (o *UpdateDiff) GetOldTarget() []OldTarget {
+	if o == nil {
+		return nil
+	}
+	return o.OldTarget
+}
+
+func (o *UpdateDiff) GetNewTarget() []NewTarget {
+	if o == nil {
+		return nil
+	}
+	return o.NewTarget
+}
+
+func (o *UpdateDiff) GetOldType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OldType
+}
+
+func (o *UpdateDiff) GetNewType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NewType
+}
+
+func (o *UpdateDiff) GetOldProjects() []OldProjects {
+	if o == nil {
+		return nil
+	}
+	return o.OldProjects
+}
+
+func (o *UpdateDiff) GetNewProjects() []NewProjects {
+	if o == nil {
+		return nil
+	}
+	return o.NewProjects
+}
+
+func (o *UpdateDiff) GetChangedValue() bool {
+	if o == nil {
+		return false
+	}
+	return o.ChangedValue
+}
+
+// FiftyEight - The payload of the event, if requested.
+type FiftyEight struct {
+	OldEnvVar  *OldEnvVar  `json:"oldEnvVar,omitempty"`
+	NewEnvVar  *NewEnvVar  `json:"newEnvVar,omitempty"`
+	UpdateDiff *UpdateDiff `json:"updateDiff,omitempty"`
+}
+
+func (o *FiftyEight) GetOldEnvVar() *OldEnvVar {
+	if o == nil {
+		return nil
+	}
+	return o.OldEnvVar
+}
+
+func (o *FiftyEight) GetNewEnvVar() *NewEnvVar {
+	if o == nil {
+		return nil
+	}
+	return o.NewEnvVar
+}
+
+func (o *FiftyEight) GetUpdateDiff() *UpdateDiff {
+	if o == nil {
+		return nil
+	}
+	return o.UpdateDiff
+}
+
+// PayloadType - The type of this cosmos doc instance, if blank, assume secret.
+type PayloadType string
+
+const (
+	PayloadTypeSystem    PayloadType = "system"
+	PayloadTypeEncrypted PayloadType = "encrypted"
+	PayloadTypePlain     PayloadType = "plain"
+	PayloadTypeSensitive PayloadType = "sensitive"
+)
+
+func (e PayloadType) ToPointer() *PayloadType {
+	return &e
+}
+func (e *PayloadType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = PayloadType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadType: %v", v)
+	}
+}
+
+// PayloadTarget - environments this env variable targets
+type PayloadTarget string
+
+const (
+	PayloadTargetProduction  PayloadTarget = "production"
+	PayloadTargetPreview     PayloadTarget = "preview"
+	PayloadTargetDevelopment PayloadTarget = "development"
+)
+
+func (e PayloadTarget) ToPointer() *PayloadTarget {
+	return &e
+}
+func (e *PayloadTarget) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = PayloadTarget(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadTarget: %v", v)
+	}
+}
+
+// FiftySeven - The payload of the event, if requested.
+type FiftySeven struct {
+	// The date when the Shared Env Var was created.
+	Created *time.Time `json:"created,omitempty"`
+	// The name of the Shared Env Var.
+	Key *string `json:"key,omitempty"`
+	// The unique identifier of the owner (team) the Shared Env Var was created for.
+	OwnerID *string `json:"ownerId,omitempty"`
+	// The unique identifier of the Shared Env Var.
+	ID *string `json:"id,omitempty"`
+	// The unique identifier of the user who created the Shared Env Var.
+	CreatedBy *string `json:"createdBy,omitempty"`
+	// The unique identifier of the user who deleted the Shared Env Var.
+	DeletedBy *string `json:"deletedBy,omitempty"`
+	// The unique identifier of the user who last updated the Shared Env Var.
+	UpdatedBy *string `json:"updatedBy,omitempty"`
+	// Timestamp for when the Shared Env Var was created.
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	// Timestamp for when the Shared Env Var was (soft) deleted.
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	// Timestamp for when the Shared Env Var was last updated.
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// The value of the Shared Env Var.
+	Value *string `json:"value,omitempty"`
+	// The value of the shared environment variable decrypted against api-secrets-management.
+	VsmValue *string `json:"vsmValue,omitempty"`
+	// The unique identifiers of the projects which the Shared Env Var is linked to.
+	ProjectID []string `json:"projectId,omitempty"`
+	// The type of this cosmos doc instance, if blank, assume secret.
+	Type *PayloadType `json:"type,omitempty"`
+	// environments this env variable targets
+	Target []PayloadTarget `json:"target,omitempty"`
+	// whether or not this env varible applies to custom environments
+	ApplyToAllCustomEnvironments *bool `json:"applyToAllCustomEnvironments,omitempty"`
+	// whether or not this env variable is decrypted
+	Decrypted *bool `json:"decrypted,omitempty"`
+	// A user provided comment that describes what this Shared Env Var is for.
+	Comment *string `json:"comment,omitempty"`
+	// The last editor full name or username.
+	LastEditedByDisplayName *string  `json:"lastEditedByDisplayName,omitempty"`
+	ProjectNames            []string `json:"projectNames,omitempty"`
+}
+
+func (f FiftySeven) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FiftySeven) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FiftySeven) GetCreated() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Created
+}
+
+func (o *FiftySeven) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *FiftySeven) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+func (o *FiftySeven) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *FiftySeven) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *FiftySeven) GetDeletedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedBy
+}
+
+func (o *FiftySeven) GetUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}
+
+func (o *FiftySeven) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *FiftySeven) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *FiftySeven) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *FiftySeven) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *FiftySeven) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
+func (o *FiftySeven) GetProjectID() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *FiftySeven) GetType() *PayloadType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *FiftySeven) GetTarget() []PayloadTarget {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *FiftySeven) GetApplyToAllCustomEnvironments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ApplyToAllCustomEnvironments
+}
+
+func (o *FiftySeven) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *FiftySeven) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *FiftySeven) GetLastEditedByDisplayName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastEditedByDisplayName
+}
+
+func (o *FiftySeven) GetProjectNames() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectNames
+}
+
+type TargetType string
+
+const (
+	TargetTypeStr        TargetType = "str"
+	TargetTypeArrayOfStr TargetType = "arrayOfStr"
+)
+
+type Target struct {
+	Str        *string
+	ArrayOfStr []string
+
+	Type TargetType
+}
+
+func CreateTargetStr(str string) Target {
+	typ := TargetTypeStr
+
+	return Target{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateTargetArrayOfStr(arrayOfStr []string) Target {
+	typ := TargetTypeArrayOfStr
+
+	return Target{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *Target) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = TargetTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = TargetTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Target", string(data))
+}
+
+func (u Target) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Target: all fields are null")
+}
+
+// FiftySix - The payload of the event, if requested.
+type FiftySix struct {
+	Key               *string `json:"key,omitempty"`
+	ProjectID         *string `json:"projectId,omitempty"`
+	ProjectName       *string `json:"projectName,omitempty"`
+	Target            *Target `json:"target,omitempty"`
+	ID                *string `json:"id,omitempty"`
+	GitBranch         *string `json:"gitBranch,omitempty"`
+	EdgeConfigID      *string `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string `json:"edgeConfigTokenId,omitempty"`
+	Source            *string `json:"source,omitempty"`
+}
+
+func (o *FiftySix) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *FiftySix) GetProjectID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *FiftySix) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *FiftySix) GetTarget() *Target {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *FiftySix) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *FiftySix) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *FiftySix) GetEdgeConfigID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigID
+}
+
+func (o *FiftySix) GetEdgeConfigTokenID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigTokenID
+}
+
+func (o *FiftySix) GetSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+// FiftyFive - The payload of the event, if requested.
+type FiftyFive struct {
+	Email string `json:"email"`
+	Name  string `json:"name"`
+}
+
+func (o *FiftyFive) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *FiftyFive) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// FiftyFour - The payload of the event, if requested.
+type FiftyFour struct {
+	Sha             string `json:"sha"`
+	GitUserPlatform string `json:"gitUserPlatform"`
+	ProjectName     string `json:"projectName"`
+}
+
+func (o *FiftyFour) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *FiftyFour) GetGitUserPlatform() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitUserPlatform
+}
+
+func (o *FiftyFour) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+// FiftyThree - The payload of the event, if requested.
+type FiftyThree struct {
+	Name     string   `json:"name"`
+	Price    *float64 `json:"price,omitempty"`
+	Currency *string  `json:"currency,omitempty"`
+}
+
+func (o *FiftyThree) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FiftyThree) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *FiftyThree) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+// FiftyTwo - The payload of the event, if requested.
+type FiftyTwo struct {
+	Renew  *bool  `json:"renew,omitempty"`
+	Domain string `json:"domain"`
+}
+
+func (o *FiftyTwo) GetRenew() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Renew
+}
+
+func (o *FiftyTwo) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+// FiftyOne - The payload of the event, if requested.
+type FiftyOne struct {
+	Name            string `json:"name"`
+	DestinationID   string `json:"destinationId"`
+	DestinationName string `json:"destinationName"`
+}
+
+func (o *FiftyOne) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FiftyOne) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}
+
+func (o *FiftyOne) GetDestinationName() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationName
+}
+
+// Fifty - The payload of the event, if requested.
+type Fifty struct {
+	Name            string  `json:"name"`
+	DestinationID   *string `json:"destinationId"`
+	DestinationName *string `json:"destinationName"`
+}
+
+func (o *Fifty) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Fifty) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *Fifty) GetDestinationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationName
+}
+
+// FortyNine - The payload of the event, if requested.
+type FortyNine struct {
+	Name     string  `json:"name"`
+	FromID   *string `json:"fromId"`
+	FromName *string `json:"fromName"`
+}
+
+func (o *FortyNine) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortyNine) GetFromID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FromID
+}
+
+func (o *FortyNine) GetFromName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FromName
+}
+
+// FortyEight - The payload of the event, if requested.
+type FortyEight struct {
+	DomainID string `json:"domainId"`
+	Name     string `json:"name"`
+}
+
+func (o *FortyEight) GetDomainID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DomainID
+}
+
+func (o *FortyEight) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload47OldTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload47OldTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload47NewTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload47NewTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// FortySeven - The payload of the event, if requested.
+type FortySeven struct {
+	Name    string                     `json:"name"`
+	OldTeam *UserEventPayload47OldTeam `json:"oldTeam,omitempty"`
+	NewTeam *UserEventPayload47NewTeam `json:"newTeam,omitempty"`
+}
+
+func (o *FortySeven) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortySeven) GetOldTeam() *UserEventPayload47OldTeam {
+	if o == nil {
+		return nil
+	}
+	return o.OldTeam
+}
+
+func (o *FortySeven) GetNewTeam() *UserEventPayload47NewTeam {
+	if o == nil {
+		return nil
+	}
+	return o.NewTeam
+}
+
+// FortySix - The payload of the event, if requested.
+type FortySix struct {
+	Name      string `json:"name"`
+	UserID    string `json:"userId"`
+	TeamID    string `json:"teamId"`
+	OwnerName string `json:"ownerName"`
+}
+
+func (o *FortySix) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortySix) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *FortySix) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *FortySix) GetOwnerName() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerName
+}
+
+// FortyFive - The payload of the event, if requested.
+type FortyFive struct {
+	Name       string `json:"name"`
+	CdnEnabled bool   `json:"cdnEnabled"`
+}
+
+func (o *FortyFive) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortyFive) GetCdnEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.CdnEnabled
+}
+
+// FortyFour - The payload of the event, if requested.
+type FortyFour struct {
+	Name     string  `json:"name"`
+	Price    float64 `json:"price"`
+	Currency *string `json:"currency,omitempty"`
+}
+
+func (o *FortyFour) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortyFour) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+func (o *FortyFour) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+// FortyThree - The payload of the event, if requested.
+type FortyThree struct {
+	Name string `json:"name"`
+}
+
+func (o *FortyThree) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// FortyTwo - The payload of the event, if requested.
+type FortyTwo struct {
+	ID     string `json:"id"`
+	Value  string `json:"value"`
+	Name   string `json:"name"`
+	Domain string `json:"domain"`
+	Type   string `json:"type"`
+}
+
+func (o *FortyTwo) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *FortyTwo) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *FortyTwo) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *FortyTwo) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *FortyTwo) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+// FortyOne - The payload of the event, if requested.
+type FortyOne struct {
+	ID     string `json:"id"`
+	Domain string `json:"domain"`
+}
+
+func (o *FortyOne) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *FortyOne) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+// Forty - The payload of the event, if requested.
+type Forty struct {
+	ID         string   `json:"id"`
+	Value      string   `json:"value"`
+	Name       string   `json:"name"`
+	Domain     string   `json:"domain"`
+	Type       string   `json:"type"`
+	MxPriority *float64 `json:"mxPriority,omitempty"`
+}
+
+func (o *Forty) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Forty) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *Forty) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Forty) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *Forty) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *Forty) GetMxPriority() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MxPriority
+}
+
+type UserEventPayloadDeployment struct {
+	ID   string            `json:"id"`
+	Name string            `json:"name"`
+	URL  string            `json:"url"`
+	Meta map[string]string `json:"meta"`
+}
+
+func (o *UserEventPayloadDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadDeployment) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UserEventPayloadDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *UserEventPayloadDeployment) GetMeta() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Meta
+}
+
+// ThirtyNine - The payload of the event, if requested.
+type ThirtyNine struct {
+	Deployment   UserEventPayloadDeployment `json:"deployment"`
+	DeploymentID string                     `json:"deploymentId"`
+	URL          string                     `json:"url"`
+}
+
+func (o *ThirtyNine) GetDeployment() UserEventPayloadDeployment {
+	if o == nil {
+		return UserEventPayloadDeployment{}
+	}
+	return o.Deployment
+}
+
+func (o *ThirtyNine) GetDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentID
+}
+
+func (o *ThirtyNine) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UserEventPayloadOldTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayloadOldTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayloadNewTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayloadNewTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// ThirtyEight - The payload of the event, if requested.
+type ThirtyEight struct {
+	URL     string                   `json:"url"`
+	OldTeam *UserEventPayloadOldTeam `json:"oldTeam,omitempty"`
+	NewTeam *UserEventPayloadNewTeam `json:"newTeam,omitempty"`
+}
+
+func (o *ThirtyEight) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *ThirtyEight) GetOldTeam() *UserEventPayloadOldTeam {
+	if o == nil {
+		return nil
+	}
+	return o.OldTeam
+}
+
+func (o *ThirtyEight) GetNewTeam() *UserEventPayloadNewTeam {
+	if o == nil {
+		return nil
+	}
+	return o.NewTeam
+}
+
+type PayloadDeployment struct {
+	ID   string            `json:"id"`
+	Name string            `json:"name"`
+	URL  string            `json:"url"`
+	Meta map[string]string `json:"meta"`
+}
+
+func (o *PayloadDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadDeployment) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PayloadDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *PayloadDeployment) GetMeta() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Meta
+}
+
+// ThirtySeven - The payload of the event, if requested.
+type ThirtySeven struct {
+	Name         *string            `json:"name,omitempty"`
+	Alias        []string           `json:"alias,omitempty"`
+	Target       *string            `json:"target,omitempty"`
+	Deployment   *PayloadDeployment `json:"deployment,omitempty"`
+	URL          string             `json:"url"`
+	Forced       *bool              `json:"forced,omitempty"`
+	DeploymentID *string            `json:"deploymentId,omitempty"`
+	Plan         *string            `json:"plan,omitempty"`
+	Project      *string            `json:"project,omitempty"`
+	ProjectID    *string            `json:"projectId,omitempty"`
+	Regions      []string           `json:"regions,omitempty"`
+	Type         *string            `json:"type,omitempty"`
+}
+
+func (o *ThirtySeven) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ThirtySeven) GetAlias() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *ThirtySeven) GetTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *ThirtySeven) GetDeployment() *PayloadDeployment {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *ThirtySeven) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *ThirtySeven) GetForced() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Forced
+}
+
+func (o *ThirtySeven) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *ThirtySeven) GetPlan() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Plan
+}
+
+func (o *ThirtySeven) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *ThirtySeven) GetProjectID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *ThirtySeven) GetRegions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Regions
+}
+
+func (o *ThirtySeven) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+type UserEventPayload36Project struct {
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload36Project) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type DeployHook struct {
+	CreatedAt float64 `json:"createdAt"`
+	ID        string  `json:"id"`
+	Name      string  `json:"name"`
+	Ref       string  `json:"ref"`
+}
+
+func (o *DeployHook) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *DeployHook) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DeployHook) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *DeployHook) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+type Job struct {
+	DeployHook DeployHook `json:"deployHook"`
+	State      string     `json:"state"`
+}
+
+func (o *Job) GetDeployHook() DeployHook {
+	if o == nil {
+		return DeployHook{}
+	}
+	return o.DeployHook
+}
+
+func (o *Job) GetState() string {
+	if o == nil {
+		return ""
+	}
+	return o.State
+}
+
+// ThirtySix - The payload of the event, if requested.
+type ThirtySix struct {
+	Project UserEventPayload36Project `json:"project"`
+	Job     Job                       `json:"job"`
+}
+
+func (o *ThirtySix) GetProject() UserEventPayload36Project {
+	if o == nil {
+		return UserEventPayload36Project{}
+	}
+	return o.Project
+}
+
+func (o *ThirtySix) GetJob() Job {
+	if o == nil {
+		return Job{}
+	}
+	return o.Job
+}
+
+// ThirtyFive - The payload of the event, if requested.
+type ThirtyFive struct {
+	BitbucketEmail string  `json:"bitbucketEmail"`
+	BitbucketLogin string  `json:"bitbucketLogin"`
+	BitbucketName  *string `json:"bitbucketName,omitempty"`
+}
+
+func (o *ThirtyFive) GetBitbucketEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.BitbucketEmail
+}
+
+func (o *ThirtyFive) GetBitbucketLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.BitbucketLogin
+}
+
+func (o *ThirtyFive) GetBitbucketName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BitbucketName
+}
+
+// ThirtyFour - The payload of the event, if requested.
+type ThirtyFour struct {
+	GitlabLogin string  `json:"gitlabLogin"`
+	GitlabEmail string  `json:"gitlabEmail"`
+	GitlabName  *string `json:"gitlabName,omitempty"`
+}
+
+func (o *ThirtyFour) GetGitlabLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitlabLogin
+}
+
+func (o *ThirtyFour) GetGitlabEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitlabEmail
+}
+
+func (o *ThirtyFour) GetGitlabName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitlabName
+}
+
+// ThirtyThree - The payload of the event, if requested.
+type ThirtyThree struct {
+	GithubLogin string `json:"githubLogin"`
+}
+
+func (o *ThirtyThree) GetGithubLogin() string {
+	if o == nil {
+		return ""
+	}
+	return o.GithubLogin
+}
+
+type UserEventPayload32Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload32Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload32Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayload32Configuration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload32Configuration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload32Configuration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// ThirtyTwo - The payload of the event, if requested.
+type ThirtyTwo struct {
+	Team          UserEventPayload32Team          `json:"team"`
+	Configuration UserEventPayload32Configuration `json:"configuration"`
+	NewName       string                          `json:"newName"`
+}
+
+func (o *ThirtyTwo) GetTeam() UserEventPayload32Team {
+	if o == nil {
+		return UserEventPayload32Team{}
+	}
+	return o.Team
+}
+
+func (o *ThirtyTwo) GetConfiguration() UserEventPayload32Configuration {
+	if o == nil {
+		return UserEventPayload32Configuration{}
+	}
+	return o.Configuration
+}
+
+func (o *ThirtyTwo) GetNewName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NewName
+}
+
+type UserEventPayloadTeam struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayloadTeam) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type UserEventPayloadConfiguration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayloadConfiguration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadConfiguration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type UserEventPayload31Project struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayload31Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload31Project) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// ThirtyOne - The payload of the event, if requested.
+type ThirtyOne struct {
+	Team          UserEventPayloadTeam          `json:"team"`
+	Configuration UserEventPayloadConfiguration `json:"configuration"`
+	Project       UserEventPayload31Project     `json:"project"`
+}
+
+func (o *ThirtyOne) GetTeam() UserEventPayloadTeam {
+	if o == nil {
+		return UserEventPayloadTeam{}
+	}
+	return o.Team
+}
+
+func (o *ThirtyOne) GetConfiguration() UserEventPayloadConfiguration {
+	if o == nil {
+		return UserEventPayloadConfiguration{}
+	}
+	return o.Configuration
+}
+
+func (o *ThirtyOne) GetProject() UserEventPayload31Project {
+	if o == nil {
+		return UserEventPayload31Project{}
+	}
+	return o.Project
+}
+
+type PayloadTeam struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *PayloadTeam) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type PayloadConfiguration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *PayloadConfiguration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadConfiguration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type UserEventPayloadProject struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayloadProject) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadProject) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// Thirty - The payload of the event, if requested.
+type Thirty struct {
+	Team          PayloadTeam             `json:"team"`
+	Configuration PayloadConfiguration    `json:"configuration"`
+	Project       UserEventPayloadProject `json:"project"`
+	BuildsEnabled *bool                   `json:"buildsEnabled,omitempty"`
+	Passive       *bool                   `json:"passive,omitempty"`
+}
+
+func (o *Thirty) GetTeam() PayloadTeam {
+	if o == nil {
+		return PayloadTeam{}
+	}
+	return o.Team
+}
+
+func (o *Thirty) GetConfiguration() PayloadConfiguration {
+	if o == nil {
+		return PayloadConfiguration{}
+	}
+	return o.Configuration
+}
+
+func (o *Thirty) GetProject() UserEventPayloadProject {
+	if o == nil {
+		return UserEventPayloadProject{}
+	}
+	return o.Project
+}
+
+func (o *Thirty) GetBuildsEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BuildsEnabled
+}
+
+func (o *Thirty) GetPassive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Passive
+}
+
+type Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Team) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type Configuration struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *Configuration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Configuration) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type PayloadProject struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *PayloadProject) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadProject) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// TwentyNine - The payload of the event, if requested.
+type TwentyNine struct {
+	Team          Team           `json:"team"`
+	Configuration Configuration  `json:"configuration"`
+	Project       PayloadProject `json:"project"`
+	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
+}
+
+func (o *TwentyNine) GetTeam() Team {
+	if o == nil {
+		return Team{}
+	}
+	return o.Team
+}
+
+func (o *TwentyNine) GetConfiguration() Configuration {
+	if o == nil {
+		return Configuration{}
+	}
+	return o.Configuration
+}
+
+func (o *TwentyNine) GetProject() PayloadProject {
+	if o == nil {
+		return PayloadProject{}
+	}
+	return o.Project
+}
+
+func (o *TwentyNine) GetBuildsEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BuildsEnabled
+}
+
+// TwentyEight - The payload of the event, if requested.
+type TwentyEight struct {
+	Suffix string `json:"suffix"`
+}
+
+func (o *TwentyEight) GetSuffix() string {
+	if o == nil {
+		return ""
+	}
+	return o.Suffix
+}
+
+// TwentySeven - The payload of the event, if requested.
+type TwentySeven struct {
+	Status string `json:"status"`
+	Suffix string `json:"suffix"`
+}
+
+func (o *TwentySeven) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
+}
+
+func (o *TwentySeven) GetSuffix() string {
+	if o == nil {
+		return ""
+	}
+	return o.Suffix
+}
+
+// TwentySix - The payload of the event, if requested.
+type TwentySix struct {
+	Reason *string `json:"reason,omitempty"`
+	Suffix string  `json:"suffix"`
+}
+
+func (o *TwentySix) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
+func (o *TwentySix) GetSuffix() string {
+	if o == nil {
+		return ""
+	}
+	return o.Suffix
+}
+
+// TwentyFive - The payload of the event, if requested.
+type TwentyFive struct {
+	Cn  *string  `json:"cn,omitempty"`
+	Cns []string `json:"cns,omitempty"`
+}
+
+func (o *TwentyFive) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *TwentyFive) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+// TwentyFour - The payload of the event, if requested.
+type TwentyFour struct {
+	ID  string   `json:"id"`
+	Cn  *string  `json:"cn,omitempty"`
+	Cns []string `json:"cns,omitempty"`
+}
+
+func (o *TwentyFour) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TwentyFour) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *TwentyFour) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+// TwentyThree - The payload of the event, if requested.
+type TwentyThree struct {
+	Src string `json:"src"`
+	Dst string `json:"dst"`
+}
+
+func (o *TwentyThree) GetSrc() string {
+	if o == nil {
+		return ""
+	}
+	return o.Src
+}
+
+func (o *TwentyThree) GetDst() string {
+	if o == nil {
+		return ""
+	}
+	return o.Dst
+}
+
+type PayloadOldTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *PayloadOldTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type PayloadNewTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *PayloadNewTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// TwentyTwo - The payload of the event, if requested.
+type TwentyTwo struct {
+	ID      string          `json:"id"`
+	OldTeam *PayloadOldTeam `json:"oldTeam,omitempty"`
+	NewTeam *PayloadNewTeam `json:"newTeam,omitempty"`
+}
+
+func (o *TwentyTwo) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TwentyTwo) GetOldTeam() *PayloadOldTeam {
+	if o == nil {
+		return nil
+	}
+	return o.OldTeam
+}
+
+func (o *TwentyTwo) GetNewTeam() *PayloadNewTeam {
+	if o == nil {
+		return nil
+	}
+	return o.NewTeam
+}
+
+// TwentyOne - The payload of the event, if requested.
+type TwentyOne struct {
+	Cn  *string  `json:"cn,omitempty"`
+	Cns []string `json:"cns,omitempty"`
+	ID  *string  `json:"id,omitempty"`
+}
+
+func (o *TwentyOne) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *TwentyOne) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+func (o *TwentyOne) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+// Twenty - The payload of the event, if requested.
+type Twenty struct {
+	Cn     *string  `json:"cn,omitempty"`
+	Cns    []string `json:"cns,omitempty"`
+	Custom bool     `json:"custom"`
+	ID     *string  `json:"id,omitempty"`
+}
+
+func (o *Twenty) GetCn() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cn
+}
+
+func (o *Twenty) GetCns() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Cns
+}
+
+func (o *Twenty) GetCustom() bool {
+	if o == nil {
+		return false
+	}
+	return o.Custom
+}
+
+func (o *Twenty) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+// Nineteen - The payload of the event, if requested.
+type Nineteen struct {
+	Avatar *string `json:"avatar,omitempty"`
+}
+
+func (o *Nineteen) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+// Eighteen - The payload of the event, if requested.
+type Eighteen struct {
+	ProjectName          string `json:"projectName"`
+	AutoExposeSystemEnvs bool   `json:"autoExposeSystemEnvs"`
+}
+
+func (o *Eighteen) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *Eighteen) GetAutoExposeSystemEnvs() bool {
+	if o == nil {
+		return false
+	}
+	return o.AutoExposeSystemEnvs
+}
+
+// Seventeen - The payload of the event, if requested.
+type Seventeen struct {
+	Alias         string `json:"alias"`
+	DeploymentURL string `json:"deploymentUrl"`
+}
+
+func (o *Seventeen) GetAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alias
+}
+
+func (o *Seventeen) GetDeploymentURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentURL
+}
+
+// Sixteen - The payload of the event, if requested.
+type Sixteen struct {
+	Name         *string `json:"name,omitempty"`
+	Alias        string  `json:"alias"`
+	AliasID      string  `json:"aliasId"`
+	DeploymentID *string `json:"deploymentId"`
+}
+
+func (o *Sixteen) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Sixteen) GetAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alias
+}
+
+func (o *Sixteen) GetAliasID() string {
+	if o == nil {
+		return ""
+	}
+	return o.AliasID
+}
+
+func (o *Sixteen) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+type OldTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *OldTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type NewTeam struct {
+	Name string `json:"name"`
+}
+
+func (o *NewTeam) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Fifteen - The payload of the event, if requested.
+type Fifteen struct {
+	Name    *string  `json:"name,omitempty"`
+	Alias   string   `json:"alias"`
+	OldTeam *OldTeam `json:"oldTeam,omitempty"`
+	NewTeam *NewTeam `json:"newTeam,omitempty"`
+}
+
+func (o *Fifteen) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Fifteen) GetAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alias
+}
+
+func (o *Fifteen) GetOldTeam() *OldTeam {
+	if o == nil {
+		return nil
+	}
+	return o.OldTeam
+}
+
+func (o *Fifteen) GetNewTeam() *NewTeam {
+	if o == nil {
+		return nil
+	}
+	return o.NewTeam
+}
+
+// Fourteen - The payload of the event, if requested.
+type Fourteen struct {
+	Alias *string `json:"alias,omitempty"`
+	Email *string `json:"email,omitempty"`
+}
+
+func (o *Fourteen) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Fourteen) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+// Thirteen - The payload of the event, if requested.
+type Thirteen struct {
+	Alias    *string `json:"alias,omitempty"`
+	Email    *string `json:"email,omitempty"`
+	Username *string `json:"username,omitempty"`
+}
+
+func (o *Thirteen) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Thirteen) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *Thirteen) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type PayloadAction string
+
+const (
+	PayloadActionCreated PayloadAction = "created"
+	PayloadActionRemoved PayloadAction = "removed"
+)
+
+func (e PayloadAction) ToPointer() *PayloadAction {
+	return &e
+}
+func (e *PayloadAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "created":
+		fallthrough
+	case "removed":
+		*e = PayloadAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadAction: %v", v)
+	}
+}
+
+// Twelve - The payload of the event, if requested.
+type Twelve struct {
+	ProjectName string        `json:"projectName"`
+	Alias       string        `json:"alias"`
+	Action      PayloadAction `json:"action"`
+}
+
+func (o *Twelve) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *Twelve) GetAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alias
+}
+
+func (o *Twelve) GetAction() PayloadAction {
+	if o == nil {
+		return PayloadAction("")
+	}
+	return o.Action
+}
+
+// Eleven - The payload of the event, if requested.
+type Eleven struct {
+	Alias    *string `json:"alias,omitempty"`
+	AliasID  *string `json:"aliasId,omitempty"`
+	UserID   *string `json:"userId,omitempty"`
+	Username *string `json:"username,omitempty"`
+}
+
+func (o *Eleven) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Eleven) GetAliasID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AliasID
+}
+
+func (o *Eleven) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *Eleven) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// Ten - The payload of the event, if requested.
+type Ten struct {
+	Alias    *string `json:"alias,omitempty"`
+	UserID   *string `json:"userId,omitempty"`
+	Username *string `json:"username,omitempty"`
+}
+
+func (o *Ten) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Ten) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *Ten) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// Nine - The payload of the event, if requested.
+type Nine struct {
+	Alias *string `json:"alias,omitempty"`
+}
+
+func (o *Nine) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+// Eight - The payload of the event, if requested.
+type Eight struct {
+	AliasID     *string `json:"aliasId,omitempty"`
+	Alias       *string `json:"alias,omitempty"`
+	ProjectName *string `json:"projectName,omitempty"`
+}
+
+func (o *Eight) GetAliasID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AliasID
+}
+
+func (o *Eight) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Eight) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+type Deployment struct {
+	ID   string            `json:"id"`
+	Name string            `json:"name"`
+	URL  string            `json:"url"`
+	Meta map[string]string `json:"meta"`
+}
+
+func (o *Deployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Deployment) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Deployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *Deployment) GetMeta() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Meta
+}
+
+// Seven - The payload of the event, if requested.
+type Seven struct {
+	Alias              *string     `json:"alias,omitempty"`
+	Deployment         *Deployment `json:"deployment,omitempty"`
+	RuleCount          *float64    `json:"ruleCount,omitempty"`
+	DeploymentURL      *string     `json:"deploymentUrl,omitempty"`
+	AliasID            *string     `json:"aliasId,omitempty"`
+	DeploymentID       *string     `json:"deploymentId,omitempty"`
+	OldDeploymentID    *string     `json:"oldDeploymentId,omitempty"`
+	Redirect           *string     `json:"redirect,omitempty"`
+	RedirectStatusCode *float64    `json:"redirectStatusCode,omitempty"`
+	Target             *string     `json:"target,omitempty"`
+	System             *bool       `json:"system,omitempty"`
+	AliasUpdatedAt     *float64    `json:"aliasUpdatedAt,omitempty"`
+}
+
+func (o *Seven) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *Seven) GetDeployment() *Deployment {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *Seven) GetRuleCount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RuleCount
+}
+
+func (o *Seven) GetDeploymentURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentURL
+}
+
+func (o *Seven) GetAliasID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AliasID
+}
+
+func (o *Seven) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *Seven) GetOldDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OldDeploymentID
+}
+
+func (o *Seven) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *Seven) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *Seven) GetTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *Seven) GetSystem() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.System
+}
+
+func (o *Seven) GetAliasUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AliasUpdatedAt
+}
+
+type UserEventPayload6AccessGroup struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *UserEventPayload6AccessGroup) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayload6AccessGroup) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type Project struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *Project) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Project) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+// Six - The payload of the event, if requested.
+type Six struct {
+	AccessGroup  UserEventPayload6AccessGroup `json:"accessGroup"`
+	Project      Project                      `json:"project"`
+	NextRole     *string                      `json:"next_role,omitempty"`
+	PreviousRole *string                      `json:"previous_role,omitempty"`
+}
+
+func (o *Six) GetAccessGroup() UserEventPayload6AccessGroup {
+	if o == nil {
+		return UserEventPayload6AccessGroup{}
+	}
+	return o.AccessGroup
+}
+
+func (o *Six) GetProject() Project {
+	if o == nil {
+		return Project{}
+	}
+	return o.Project
+}
+
+func (o *Six) GetNextRole() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextRole
+}
+
+func (o *Six) GetPreviousRole() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousRole
+}
+
+type UserEventPayloadAccessGroup struct {
+	ID   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+}
+
+func (o *UserEventPayloadAccessGroup) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEventPayloadAccessGroup) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+type PayloadUser struct {
+	ID       string  `json:"id"`
+	Username *string `json:"username,omitempty"`
+}
+
+func (o *PayloadUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadUser) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+// Five - The payload of the event, if requested.
+type Five struct {
+	AccessGroup   UserEventPayloadAccessGroup `json:"accessGroup"`
+	User          PayloadUser                 `json:"user"`
+	DirectoryType *string                     `json:"directoryType,omitempty"`
+}
+
+func (o *Five) GetAccessGroup() UserEventPayloadAccessGroup {
+	if o == nil {
+		return UserEventPayloadAccessGroup{}
+	}
+	return o.AccessGroup
+}
+
+func (o *Five) GetUser() PayloadUser {
+	if o == nil {
+		return PayloadUser{}
+	}
+	return o.User
+}
+
+func (o *Five) GetDirectoryType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DirectoryType
+}
+
+type PayloadAccessGroup struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *PayloadAccessGroup) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *PayloadAccessGroup) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Four - The payload of the event, if requested.
+type Four struct {
+	Author      string             `json:"author"`
+	AccessGroup PayloadAccessGroup `json:"accessGroup"`
+}
+
+func (o *Four) GetAuthor() string {
+	if o == nil {
+		return ""
+	}
+	return o.Author
+}
+
+func (o *Four) GetAccessGroup() PayloadAccessGroup {
+	if o == nil {
+		return PayloadAccessGroup{}
+	}
+	return o.AccessGroup
+}
+
+type AccessGroup struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *AccessGroup) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *AccessGroup) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// Three - The payload of the event, if requested.
+type Three struct {
+	AccessGroup AccessGroup `json:"accessGroup"`
+}
+
+func (o *Three) GetAccessGroup() AccessGroup {
+	if o == nil {
+		return AccessGroup{}
+	}
+	return o.AccessGroup
+}
+
+type Action string
+
+const (
+	ActionCreated    Action = "created"
+	ActionUpdated    Action = "updated"
+	ActionDeleted    Action = "deleted"
+	ActionArchived   Action = "archived"
+	ActionUnarchived Action = "unarchived"
+)
+
+func (e Action) ToPointer() *Action {
+	return &e
+}
+func (e *Action) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "created":
+		fallthrough
+	case "updated":
+		fallthrough
+	case "deleted":
+		fallthrough
+	case "archived":
+		fallthrough
+	case "unarchived":
+		*e = Action(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Action: %v", v)
+	}
+}
+
+// Two - The payload of the event, if requested.
+type Two struct {
+	Action    Action `json:"action"`
+	ID        string `json:"id"`
+	Slug      string `json:"slug"`
+	ProjectID string `json:"projectId"`
+}
+
+func (o *Two) GetAction() Action {
+	if o == nil {
+		return Action("")
+	}
+	return o.Action
+}
+
+func (o *Two) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Two) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *Two) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// One - The payload of the event, if requested.
+type One struct {
+}
+
+type PayloadUnionType string
+
+const (
+	PayloadUnionTypeOne                      PayloadUnionType = "1"
+	PayloadUnionTypeTwo                      PayloadUnionType = "2"
+	PayloadUnionTypeThree                    PayloadUnionType = "3"
+	PayloadUnionTypeFour                     PayloadUnionType = "4"
+	PayloadUnionTypeFive                     PayloadUnionType = "5"
+	PayloadUnionTypeSix                      PayloadUnionType = "6"
+	PayloadUnionTypeSeven                    PayloadUnionType = "7"
+	PayloadUnionTypeEight                    PayloadUnionType = "8"
+	PayloadUnionTypeNine                     PayloadUnionType = "9"
+	PayloadUnionTypeTen                      PayloadUnionType = "10"
+	PayloadUnionTypeEleven                   PayloadUnionType = "11"
+	PayloadUnionTypeTwelve                   PayloadUnionType = "12"
+	PayloadUnionTypeThirteen                 PayloadUnionType = "13"
+	PayloadUnionTypeFourteen                 PayloadUnionType = "14"
+	PayloadUnionTypeFifteen                  PayloadUnionType = "15"
+	PayloadUnionTypeSixteen                  PayloadUnionType = "16"
+	PayloadUnionTypeSeventeen                PayloadUnionType = "17"
+	PayloadUnionTypeEighteen                 PayloadUnionType = "18"
+	PayloadUnionTypeNineteen                 PayloadUnionType = "19"
+	PayloadUnionTypeTwenty                   PayloadUnionType = "20"
+	PayloadUnionTypeTwentyOne                PayloadUnionType = "21"
+	PayloadUnionTypeTwentyTwo                PayloadUnionType = "22"
+	PayloadUnionTypeTwentyThree              PayloadUnionType = "23"
+	PayloadUnionTypeTwentyFour               PayloadUnionType = "24"
+	PayloadUnionTypeTwentyFive               PayloadUnionType = "25"
+	PayloadUnionTypeTwentySix                PayloadUnionType = "26"
+	PayloadUnionTypeTwentySeven              PayloadUnionType = "27"
+	PayloadUnionTypeTwentyEight              PayloadUnionType = "28"
+	PayloadUnionTypeTwentyNine               PayloadUnionType = "29"
+	PayloadUnionTypeThirty                   PayloadUnionType = "30"
+	PayloadUnionTypeThirtyOne                PayloadUnionType = "31"
+	PayloadUnionTypeThirtyTwo                PayloadUnionType = "32"
+	PayloadUnionTypeThirtyThree              PayloadUnionType = "33"
+	PayloadUnionTypeThirtyFour               PayloadUnionType = "34"
+	PayloadUnionTypeThirtyFive               PayloadUnionType = "35"
+	PayloadUnionTypeThirtySix                PayloadUnionType = "36"
+	PayloadUnionTypeThirtySeven              PayloadUnionType = "37"
+	PayloadUnionTypeThirtyEight              PayloadUnionType = "38"
+	PayloadUnionTypeThirtyNine               PayloadUnionType = "39"
+	PayloadUnionTypeForty                    PayloadUnionType = "40"
+	PayloadUnionTypeFortyOne                 PayloadUnionType = "41"
+	PayloadUnionTypeFortyTwo                 PayloadUnionType = "42"
+	PayloadUnionTypeFortyThree               PayloadUnionType = "43"
+	PayloadUnionTypeFortyFour                PayloadUnionType = "44"
+	PayloadUnionTypeFortyFive                PayloadUnionType = "45"
+	PayloadUnionTypeFortySix                 PayloadUnionType = "46"
+	PayloadUnionTypeFortySeven               PayloadUnionType = "47"
+	PayloadUnionTypeFortyEight               PayloadUnionType = "48"
+	PayloadUnionTypeFortyNine                PayloadUnionType = "49"
+	PayloadUnionTypeFifty                    PayloadUnionType = "50"
+	PayloadUnionTypeFiftyOne                 PayloadUnionType = "51"
+	PayloadUnionTypeFiftyTwo                 PayloadUnionType = "52"
+	PayloadUnionTypeFiftyThree               PayloadUnionType = "53"
+	PayloadUnionTypeFiftyFour                PayloadUnionType = "54"
+	PayloadUnionTypeFiftyFive                PayloadUnionType = "55"
+	PayloadUnionTypeFiftySix                 PayloadUnionType = "56"
+	PayloadUnionTypeFiftySeven               PayloadUnionType = "57"
+	PayloadUnionTypeFiftyEight               PayloadUnionType = "58"
+	PayloadUnionTypeFiftyNine                PayloadUnionType = "59"
+	PayloadUnionTypeSixty                    PayloadUnionType = "60"
+	PayloadUnionTypeSixtyOne                 PayloadUnionType = "61"
+	PayloadUnionTypeSixtyTwo                 PayloadUnionType = "62"
+	PayloadUnionTypeSixtyThree               PayloadUnionType = "63"
+	PayloadUnionTypeSixtyFour                PayloadUnionType = "64"
+	PayloadUnionTypeSixtyFive                PayloadUnionType = "65"
+	PayloadUnionTypeSixtySix                 PayloadUnionType = "66"
+	PayloadUnionTypeSixtySeven               PayloadUnionType = "67"
+	PayloadUnionTypeSixtyEight               PayloadUnionType = "68"
+	PayloadUnionTypeSixtyNine                PayloadUnionType = "69"
+	PayloadUnionTypeSeventy                  PayloadUnionType = "70"
+	PayloadUnionTypeSeventyOne               PayloadUnionType = "71"
+	PayloadUnionTypeSeventyTwo               PayloadUnionType = "72"
+	PayloadUnionTypeSeventyThree             PayloadUnionType = "73"
+	PayloadUnionTypeSeventyFour              PayloadUnionType = "74"
+	PayloadUnionTypeSeventyFive              PayloadUnionType = "75"
+	PayloadUnionTypeSeventySix               PayloadUnionType = "76"
+	PayloadUnionTypeSeventySeven             PayloadUnionType = "77"
+	PayloadUnionTypeSeventyEight             PayloadUnionType = "78"
+	PayloadUnionTypeSeventyNine              PayloadUnionType = "79"
+	PayloadUnionTypeEighty                   PayloadUnionType = "80"
+	PayloadUnionTypeEightyOne                PayloadUnionType = "81"
+	PayloadUnionTypeEightyTwo                PayloadUnionType = "82"
+	PayloadUnionTypeEightyThree              PayloadUnionType = "83"
+	PayloadUnionTypeEightyFour               PayloadUnionType = "84"
+	PayloadUnionTypeEightyFive               PayloadUnionType = "85"
+	PayloadUnionTypeEightySix                PayloadUnionType = "86"
+	PayloadUnionTypeEightySeven              PayloadUnionType = "87"
+	PayloadUnionTypeEightyEight              PayloadUnionType = "88"
+	PayloadUnionTypeEightyNine               PayloadUnionType = "89"
+	PayloadUnionTypeNinety                   PayloadUnionType = "90"
+	PayloadUnionTypeNinetyOne                PayloadUnionType = "91"
+	PayloadUnionTypeNinetyTwo                PayloadUnionType = "92"
+	PayloadUnionTypeNinetyThree              PayloadUnionType = "93"
+	PayloadUnionTypeNinetyFour               PayloadUnionType = "94"
+	PayloadUnionTypeNinetyFive               PayloadUnionType = "95"
+	PayloadUnionTypeNinetySix                PayloadUnionType = "96"
+	PayloadUnionTypeNinetySeven              PayloadUnionType = "97"
+	PayloadUnionTypeNinetyEight              PayloadUnionType = "98"
+	PayloadUnionTypeNinetyNine               PayloadUnionType = "99"
+	PayloadUnionTypeOneHundred               PayloadUnionType = "100"
+	PayloadUnionTypeOneHundredAndOne         PayloadUnionType = "101"
+	PayloadUnionTypeOneHundredAndTwo         PayloadUnionType = "102"
+	PayloadUnionTypeOneHundredAndThree       PayloadUnionType = "103"
+	PayloadUnionTypeOneHundredAndFour        PayloadUnionType = "104"
+	PayloadUnionTypeOneHundredAndFive        PayloadUnionType = "105"
+	PayloadUnionTypeOneHundredAndSix         PayloadUnionType = "106"
+	PayloadUnionTypeOneHundredAndSeven       PayloadUnionType = "107"
+	PayloadUnionTypeOneHundredAndEight       PayloadUnionType = "108"
+	PayloadUnionTypeOneHundredAndNine        PayloadUnionType = "109"
+	PayloadUnionTypeOneHundredAndTen         PayloadUnionType = "110"
+	PayloadUnionTypeOneHundredAndEleven      PayloadUnionType = "111"
+	PayloadUnionTypeOneHundredAndTwelve      PayloadUnionType = "112"
+	PayloadUnionTypeOneHundredAndThirteen    PayloadUnionType = "113"
+	PayloadUnionTypeOneHundredAndFourteen    PayloadUnionType = "114"
+	PayloadUnionTypeOneHundredAndFifteen     PayloadUnionType = "115"
+	PayloadUnionTypeOneHundredAndSixteen     PayloadUnionType = "116"
+	PayloadUnionTypeOneHundredAndSeventeen   PayloadUnionType = "117"
+	PayloadUnionTypeOneHundredAndEighteen    PayloadUnionType = "118"
+	PayloadUnionTypeOneHundredAndNineteen    PayloadUnionType = "119"
+	PayloadUnionTypeOneHundredAndTwenty      PayloadUnionType = "120"
+	PayloadUnionTypeOneHundredAndTwentyOne   PayloadUnionType = "121"
+	PayloadUnionTypeOneHundredAndTwentyTwo   PayloadUnionType = "122"
+	PayloadUnionTypeOneHundredAndTwentyThree PayloadUnionType = "123"
+	PayloadUnionTypeOneHundredAndTwentyFour  PayloadUnionType = "124"
+	PayloadUnionTypeOneHundredAndTwentyFive  PayloadUnionType = "125"
+	PayloadUnionTypeOneHundredAndTwentySix   PayloadUnionType = "126"
+	PayloadUnionTypeOneHundredAndTwentySeven PayloadUnionType = "127"
+	PayloadUnionTypeOneHundredAndTwentyEight PayloadUnionType = "128"
+	PayloadUnionTypeOneHundredAndTwentyNine  PayloadUnionType = "129"
+	PayloadUnionTypeOneHundredAndThirty      PayloadUnionType = "130"
+	PayloadUnionTypeOneHundredAndThirtyOne   PayloadUnionType = "131"
+	PayloadUnionTypeOneHundredAndThirtyTwo   PayloadUnionType = "132"
+	PayloadUnionTypeOneHundredAndThirtyThree PayloadUnionType = "133"
+	PayloadUnionTypeOneHundredAndThirtyFour  PayloadUnionType = "134"
+	PayloadUnionTypeOneHundredAndThirtyFive  PayloadUnionType = "135"
+	PayloadUnionTypeOneHundredAndThirtySix   PayloadUnionType = "136"
+	PayloadUnionTypeOneHundredAndThirtySeven PayloadUnionType = "137"
+	PayloadUnionTypeOneHundredAndThirtyEight PayloadUnionType = "138"
+	PayloadUnionTypeOneHundredAndThirtyNine  PayloadUnionType = "139"
+	PayloadUnionTypeOneHundredAndForty       PayloadUnionType = "140"
+	PayloadUnionTypeOneHundredAndFortyOne    PayloadUnionType = "141"
+	PayloadUnionTypeOneHundredAndFortyTwo    PayloadUnionType = "142"
+	PayloadUnionTypeOneHundredAndFortyThree  PayloadUnionType = "143"
+	PayloadUnionTypeOneHundredAndFortyFour   PayloadUnionType = "144"
+	PayloadUnionTypeOneHundredAndFortyFive   PayloadUnionType = "145"
+	PayloadUnionTypeOneHundredAndFortySix    PayloadUnionType = "146"
+	PayloadUnionTypeOneHundredAndFortySeven  PayloadUnionType = "147"
+)
+
+type Payload struct {
+	One                      *One
+	Two                      *Two
+	Three                    *Three
+	Four                     *Four
+	Five                     *Five
+	Six                      *Six
+	Seven                    *Seven
+	Eight                    *Eight
+	Nine                     *Nine
+	Ten                      *Ten
+	Eleven                   *Eleven
+	Twelve                   *Twelve
+	Thirteen                 *Thirteen
+	Fourteen                 *Fourteen
+	Fifteen                  *Fifteen
+	Sixteen                  *Sixteen
+	Seventeen                *Seventeen
+	Eighteen                 *Eighteen
+	Nineteen                 *Nineteen
+	Twenty                   *Twenty
+	TwentyOne                *TwentyOne
+	TwentyTwo                *TwentyTwo
+	TwentyThree              *TwentyThree
+	TwentyFour               *TwentyFour
+	TwentyFive               *TwentyFive
+	TwentySix                *TwentySix
+	TwentySeven              *TwentySeven
+	TwentyEight              *TwentyEight
+	TwentyNine               *TwentyNine
+	Thirty                   *Thirty
+	ThirtyOne                *ThirtyOne
+	ThirtyTwo                *ThirtyTwo
+	ThirtyThree              *ThirtyThree
+	ThirtyFour               *ThirtyFour
+	ThirtyFive               *ThirtyFive
+	ThirtySix                *ThirtySix
+	ThirtySeven              *ThirtySeven
+	ThirtyEight              *ThirtyEight
+	ThirtyNine               *ThirtyNine
+	Forty                    *Forty
+	FortyOne                 *FortyOne
+	FortyTwo                 *FortyTwo
+	FortyThree               *FortyThree
+	FortyFour                *FortyFour
+	FortyFive                *FortyFive
+	FortySix                 *FortySix
+	FortySeven               *FortySeven
+	FortyEight               *FortyEight
+	FortyNine                *FortyNine
+	Fifty                    *Fifty
+	FiftyOne                 *FiftyOne
+	FiftyTwo                 *FiftyTwo
+	FiftyThree               *FiftyThree
+	FiftyFour                *FiftyFour
+	FiftyFive                *FiftyFive
+	FiftySix                 *FiftySix
+	FiftySeven               *FiftySeven
+	FiftyEight               *FiftyEight
+	FiftyNine                *FiftyNine
+	Sixty                    *Sixty
+	SixtyOne                 *SixtyOne
+	SixtyTwo                 *SixtyTwo
+	SixtyThree               *SixtyThree
+	SixtyFour                *SixtyFour
+	SixtyFive                *SixtyFive
+	SixtySix                 *SixtySix
+	SixtySeven               *SixtySeven
+	SixtyEight               *SixtyEight
+	SixtyNine                *SixtyNine
+	Seventy                  *Seventy
+	SeventyOne               *SeventyOne
+	SeventyTwo               *SeventyTwo
+	SeventyThree             *SeventyThree
+	SeventyFour              *SeventyFour
+	SeventyFive              *SeventyFive
+	SeventySix               *SeventySix
+	SeventySeven             *SeventySeven
+	SeventyEight             *SeventyEight
+	SeventyNine              *SeventyNine
+	Eighty                   *Eighty
+	EightyOne                *EightyOne
+	EightyTwo                *EightyTwo
+	EightyThree              *EightyThree
+	EightyFour               *EightyFour
+	EightyFive               *EightyFive
+	EightySix                *EightySix
+	EightySeven              *EightySeven
+	EightyEight              *EightyEight
+	EightyNine               *EightyNine
+	Ninety                   *Ninety
+	NinetyOne                *NinetyOne
+	NinetyTwo                *NinetyTwo
+	NinetyThree              *NinetyThree
+	NinetyFour               *NinetyFour
+	NinetyFive               *NinetyFive
+	NinetySix                *NinetySix
+	NinetySeven              *NinetySeven
+	NinetyEight              *NinetyEight
+	NinetyNine               *NinetyNine
+	OneHundred               *OneHundred
+	OneHundredAndOne         *OneHundredAndOne
+	OneHundredAndTwo         *OneHundredAndTwo
+	OneHundredAndThree       *OneHundredAndThree
+	OneHundredAndFour        *OneHundredAndFour
+	OneHundredAndFive        *OneHundredAndFive
+	OneHundredAndSix         *OneHundredAndSix
+	OneHundredAndSeven       *OneHundredAndSeven
+	OneHundredAndEight       *OneHundredAndEight
+	OneHundredAndNine        *OneHundredAndNine
+	OneHundredAndTen         *OneHundredAndTen
+	OneHundredAndEleven      *OneHundredAndEleven
+	OneHundredAndTwelve      *OneHundredAndTwelve
+	OneHundredAndThirteen    *OneHundredAndThirteen
+	OneHundredAndFourteen    *OneHundredAndFourteen
+	OneHundredAndFifteen     *OneHundredAndFifteen
+	OneHundredAndSixteen     *OneHundredAndSixteen
+	OneHundredAndSeventeen   *OneHundredAndSeventeen
+	OneHundredAndEighteen    *OneHundredAndEighteen
+	OneHundredAndNineteen    *OneHundredAndNineteen
+	OneHundredAndTwenty      *OneHundredAndTwenty
+	OneHundredAndTwentyOne   *OneHundredAndTwentyOne
+	OneHundredAndTwentyTwo   *OneHundredAndTwentyTwo
+	OneHundredAndTwentyThree *OneHundredAndTwentyThree
+	OneHundredAndTwentyFour  *OneHundredAndTwentyFour
+	OneHundredAndTwentyFive  *OneHundredAndTwentyFive
+	OneHundredAndTwentySix   *OneHundredAndTwentySix
+	OneHundredAndTwentySeven *OneHundredAndTwentySeven
+	OneHundredAndTwentyEight *OneHundredAndTwentyEight
+	OneHundredAndTwentyNine  *OneHundredAndTwentyNine
+	OneHundredAndThirty      *OneHundredAndThirty
+	OneHundredAndThirtyOne   *OneHundredAndThirtyOne
+	OneHundredAndThirtyTwo   *OneHundredAndThirtyTwo
+	OneHundredAndThirtyThree *OneHundredAndThirtyThree
+	OneHundredAndThirtyFour  *OneHundredAndThirtyFour
+	OneHundredAndThirtyFive  *OneHundredAndThirtyFive
+	OneHundredAndThirtySix   *OneHundredAndThirtySix
+	OneHundredAndThirtySeven *OneHundredAndThirtySeven
+	OneHundredAndThirtyEight *OneHundredAndThirtyEight
+	OneHundredAndThirtyNine  *OneHundredAndThirtyNine
+	OneHundredAndForty       *OneHundredAndForty
+	OneHundredAndFortyOne    *OneHundredAndFortyOne
+	OneHundredAndFortyTwo    *OneHundredAndFortyTwo
+	OneHundredAndFortyThree  *OneHundredAndFortyThree
+	OneHundredAndFortyFour   *OneHundredAndFortyFour
+	OneHundredAndFortyFive   *OneHundredAndFortyFive
+	OneHundredAndFortySix    *OneHundredAndFortySix
+	OneHundredAndFortySeven  *OneHundredAndFortySeven
+
+	Type PayloadUnionType
+}
+
+func CreatePayloadOne(one One) Payload {
+	typ := PayloadUnionTypeOne
+
+	return Payload{
+		One:  &one,
+		Type: typ,
+	}
+}
+
+func CreatePayloadTwo(two Two) Payload {
+	typ := PayloadUnionTypeTwo
+
+	return Payload{
+		Two:  &two,
+		Type: typ,
+	}
+}
+
+func CreatePayloadThree(three Three) Payload {
+	typ := PayloadUnionTypeThree
+
+	return Payload{
+		Three: &three,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadFour(four Four) Payload {
+	typ := PayloadUnionTypeFour
+
+	return Payload{
+		Four: &four,
+		Type: typ,
+	}
+}
+
+func CreatePayloadFive(five Five) Payload {
+	typ := PayloadUnionTypeFive
+
+	return Payload{
+		Five: &five,
+		Type: typ,
+	}
+}
+
+func CreatePayloadSix(six Six) Payload {
+	typ := PayloadUnionTypeSix
+
+	return Payload{
+		Six:  &six,
+		Type: typ,
+	}
+}
+
+func CreatePayloadSeven(seven Seven) Payload {
+	typ := PayloadUnionTypeSeven
+
+	return Payload{
+		Seven: &seven,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadEight(eight Eight) Payload {
+	typ := PayloadUnionTypeEight
+
+	return Payload{
+		Eight: &eight,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadNine(nine Nine) Payload {
+	typ := PayloadUnionTypeNine
+
+	return Payload{
+		Nine: &nine,
+		Type: typ,
+	}
+}
+
+func CreatePayloadTen(ten Ten) Payload {
+	typ := PayloadUnionTypeTen
+
+	return Payload{
+		Ten:  &ten,
+		Type: typ,
+	}
+}
+
+func CreatePayloadEleven(eleven Eleven) Payload {
+	typ := PayloadUnionTypeEleven
+
+	return Payload{
+		Eleven: &eleven,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadTwelve(twelve Twelve) Payload {
+	typ := PayloadUnionTypeTwelve
+
+	return Payload{
+		Twelve: &twelve,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadThirteen(thirteen Thirteen) Payload {
+	typ := PayloadUnionTypeThirteen
+
+	return Payload{
+		Thirteen: &thirteen,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFourteen(fourteen Fourteen) Payload {
+	typ := PayloadUnionTypeFourteen
+
+	return Payload{
+		Fourteen: &fourteen,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFifteen(fifteen Fifteen) Payload {
+	typ := PayloadUnionTypeFifteen
+
+	return Payload{
+		Fifteen: &fifteen,
+		Type:    typ,
+	}
+}
+
+func CreatePayloadSixteen(sixteen Sixteen) Payload {
+	typ := PayloadUnionTypeSixteen
+
+	return Payload{
+		Sixteen: &sixteen,
+		Type:    typ,
+	}
+}
+
+func CreatePayloadSeventeen(seventeen Seventeen) Payload {
+	typ := PayloadUnionTypeSeventeen
+
+	return Payload{
+		Seventeen: &seventeen,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadEighteen(eighteen Eighteen) Payload {
+	typ := PayloadUnionTypeEighteen
+
+	return Payload{
+		Eighteen: &eighteen,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadNineteen(nineteen Nineteen) Payload {
+	typ := PayloadUnionTypeNineteen
+
+	return Payload{
+		Nineteen: &nineteen,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadTwenty(twenty Twenty) Payload {
+	typ := PayloadUnionTypeTwenty
+
+	return Payload{
+		Twenty: &twenty,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadTwentyOne(twentyOne TwentyOne) Payload {
+	typ := PayloadUnionTypeTwentyOne
+
+	return Payload{
+		TwentyOne: &twentyOne,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadTwentyTwo(twentyTwo TwentyTwo) Payload {
+	typ := PayloadUnionTypeTwentyTwo
+
+	return Payload{
+		TwentyTwo: &twentyTwo,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadTwentyThree(twentyThree TwentyThree) Payload {
+	typ := PayloadUnionTypeTwentyThree
+
+	return Payload{
+		TwentyThree: &twentyThree,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadTwentyFour(twentyFour TwentyFour) Payload {
+	typ := PayloadUnionTypeTwentyFour
+
+	return Payload{
+		TwentyFour: &twentyFour,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadTwentyFive(twentyFive TwentyFive) Payload {
+	typ := PayloadUnionTypeTwentyFive
+
+	return Payload{
+		TwentyFive: &twentyFive,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadTwentySix(twentySix TwentySix) Payload {
+	typ := PayloadUnionTypeTwentySix
+
+	return Payload{
+		TwentySix: &twentySix,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadTwentySeven(twentySeven TwentySeven) Payload {
+	typ := PayloadUnionTypeTwentySeven
+
+	return Payload{
+		TwentySeven: &twentySeven,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadTwentyEight(twentyEight TwentyEight) Payload {
+	typ := PayloadUnionTypeTwentyEight
+
+	return Payload{
+		TwentyEight: &twentyEight,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadTwentyNine(twentyNine TwentyNine) Payload {
+	typ := PayloadUnionTypeTwentyNine
+
+	return Payload{
+		TwentyNine: &twentyNine,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadThirty(thirty Thirty) Payload {
+	typ := PayloadUnionTypeThirty
+
+	return Payload{
+		Thirty: &thirty,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadThirtyOne(thirtyOne ThirtyOne) Payload {
+	typ := PayloadUnionTypeThirtyOne
+
+	return Payload{
+		ThirtyOne: &thirtyOne,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadThirtyTwo(thirtyTwo ThirtyTwo) Payload {
+	typ := PayloadUnionTypeThirtyTwo
+
+	return Payload{
+		ThirtyTwo: &thirtyTwo,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadThirtyThree(thirtyThree ThirtyThree) Payload {
+	typ := PayloadUnionTypeThirtyThree
+
+	return Payload{
+		ThirtyThree: &thirtyThree,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadThirtyFour(thirtyFour ThirtyFour) Payload {
+	typ := PayloadUnionTypeThirtyFour
+
+	return Payload{
+		ThirtyFour: &thirtyFour,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadThirtyFive(thirtyFive ThirtyFive) Payload {
+	typ := PayloadUnionTypeThirtyFive
+
+	return Payload{
+		ThirtyFive: &thirtyFive,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadThirtySix(thirtySix ThirtySix) Payload {
+	typ := PayloadUnionTypeThirtySix
+
+	return Payload{
+		ThirtySix: &thirtySix,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadThirtySeven(thirtySeven ThirtySeven) Payload {
+	typ := PayloadUnionTypeThirtySeven
+
+	return Payload{
+		ThirtySeven: &thirtySeven,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadThirtyEight(thirtyEight ThirtyEight) Payload {
+	typ := PayloadUnionTypeThirtyEight
+
+	return Payload{
+		ThirtyEight: &thirtyEight,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadThirtyNine(thirtyNine ThirtyNine) Payload {
+	typ := PayloadUnionTypeThirtyNine
+
+	return Payload{
+		ThirtyNine: &thirtyNine,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadForty(forty Forty) Payload {
+	typ := PayloadUnionTypeForty
+
+	return Payload{
+		Forty: &forty,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadFortyOne(fortyOne FortyOne) Payload {
+	typ := PayloadUnionTypeFortyOne
+
+	return Payload{
+		FortyOne: &fortyOne,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFortyTwo(fortyTwo FortyTwo) Payload {
+	typ := PayloadUnionTypeFortyTwo
+
+	return Payload{
+		FortyTwo: &fortyTwo,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFortyThree(fortyThree FortyThree) Payload {
+	typ := PayloadUnionTypeFortyThree
+
+	return Payload{
+		FortyThree: &fortyThree,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFortyFour(fortyFour FortyFour) Payload {
+	typ := PayloadUnionTypeFortyFour
+
+	return Payload{
+		FortyFour: &fortyFour,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadFortyFive(fortyFive FortyFive) Payload {
+	typ := PayloadUnionTypeFortyFive
+
+	return Payload{
+		FortyFive: &fortyFive,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadFortySix(fortySix FortySix) Payload {
+	typ := PayloadUnionTypeFortySix
+
+	return Payload{
+		FortySix: &fortySix,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFortySeven(fortySeven FortySeven) Payload {
+	typ := PayloadUnionTypeFortySeven
+
+	return Payload{
+		FortySeven: &fortySeven,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFortyEight(fortyEight FortyEight) Payload {
+	typ := PayloadUnionTypeFortyEight
+
+	return Payload{
+		FortyEight: &fortyEight,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFortyNine(fortyNine FortyNine) Payload {
+	typ := PayloadUnionTypeFortyNine
+
+	return Payload{
+		FortyNine: &fortyNine,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadFifty(fifty Fifty) Payload {
+	typ := PayloadUnionTypeFifty
+
+	return Payload{
+		Fifty: &fifty,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadFiftyOne(fiftyOne FiftyOne) Payload {
+	typ := PayloadUnionTypeFiftyOne
+
+	return Payload{
+		FiftyOne: &fiftyOne,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFiftyTwo(fiftyTwo FiftyTwo) Payload {
+	typ := PayloadUnionTypeFiftyTwo
+
+	return Payload{
+		FiftyTwo: &fiftyTwo,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFiftyThree(fiftyThree FiftyThree) Payload {
+	typ := PayloadUnionTypeFiftyThree
+
+	return Payload{
+		FiftyThree: &fiftyThree,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFiftyFour(fiftyFour FiftyFour) Payload {
+	typ := PayloadUnionTypeFiftyFour
+
+	return Payload{
+		FiftyFour: &fiftyFour,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadFiftyFive(fiftyFive FiftyFive) Payload {
+	typ := PayloadUnionTypeFiftyFive
+
+	return Payload{
+		FiftyFive: &fiftyFive,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadFiftySix(fiftySix FiftySix) Payload {
+	typ := PayloadUnionTypeFiftySix
+
+	return Payload{
+		FiftySix: &fiftySix,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadFiftySeven(fiftySeven FiftySeven) Payload {
+	typ := PayloadUnionTypeFiftySeven
+
+	return Payload{
+		FiftySeven: &fiftySeven,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFiftyEight(fiftyEight FiftyEight) Payload {
+	typ := PayloadUnionTypeFiftyEight
+
+	return Payload{
+		FiftyEight: &fiftyEight,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadFiftyNine(fiftyNine FiftyNine) Payload {
+	typ := PayloadUnionTypeFiftyNine
+
+	return Payload{
+		FiftyNine: &fiftyNine,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadSixty(sixty Sixty) Payload {
+	typ := PayloadUnionTypeSixty
+
+	return Payload{
+		Sixty: &sixty,
+		Type:  typ,
+	}
+}
+
+func CreatePayloadSixtyOne(sixtyOne SixtyOne) Payload {
+	typ := PayloadUnionTypeSixtyOne
+
+	return Payload{
+		SixtyOne: &sixtyOne,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadSixtyTwo(sixtyTwo SixtyTwo) Payload {
+	typ := PayloadUnionTypeSixtyTwo
+
+	return Payload{
+		SixtyTwo: &sixtyTwo,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadSixtyThree(sixtyThree SixtyThree) Payload {
+	typ := PayloadUnionTypeSixtyThree
+
+	return Payload{
+		SixtyThree: &sixtyThree,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSixtyFour(sixtyFour SixtyFour) Payload {
+	typ := PayloadUnionTypeSixtyFour
+
+	return Payload{
+		SixtyFour: &sixtyFour,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadSixtyFive(sixtyFive SixtyFive) Payload {
+	typ := PayloadUnionTypeSixtyFive
+
+	return Payload{
+		SixtyFive: &sixtyFive,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadSixtySix(sixtySix SixtySix) Payload {
+	typ := PayloadUnionTypeSixtySix
+
+	return Payload{
+		SixtySix: &sixtySix,
+		Type:     typ,
+	}
+}
+
+func CreatePayloadSixtySeven(sixtySeven SixtySeven) Payload {
+	typ := PayloadUnionTypeSixtySeven
+
+	return Payload{
+		SixtySeven: &sixtySeven,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSixtyEight(sixtyEight SixtyEight) Payload {
+	typ := PayloadUnionTypeSixtyEight
+
+	return Payload{
+		SixtyEight: &sixtyEight,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSixtyNine(sixtyNine SixtyNine) Payload {
+	typ := PayloadUnionTypeSixtyNine
+
+	return Payload{
+		SixtyNine: &sixtyNine,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadSeventy(seventy Seventy) Payload {
+	typ := PayloadUnionTypeSeventy
+
+	return Payload{
+		Seventy: &seventy,
+		Type:    typ,
+	}
+}
+
+func CreatePayloadSeventyOne(seventyOne SeventyOne) Payload {
+	typ := PayloadUnionTypeSeventyOne
+
+	return Payload{
+		SeventyOne: &seventyOne,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSeventyTwo(seventyTwo SeventyTwo) Payload {
+	typ := PayloadUnionTypeSeventyTwo
+
+	return Payload{
+		SeventyTwo: &seventyTwo,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSeventyThree(seventyThree SeventyThree) Payload {
+	typ := PayloadUnionTypeSeventyThree
+
+	return Payload{
+		SeventyThree: &seventyThree,
+		Type:         typ,
+	}
+}
+
+func CreatePayloadSeventyFour(seventyFour SeventyFour) Payload {
+	typ := PayloadUnionTypeSeventyFour
+
+	return Payload{
+		SeventyFour: &seventyFour,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadSeventyFive(seventyFive SeventyFive) Payload {
+	typ := PayloadUnionTypeSeventyFive
+
+	return Payload{
+		SeventyFive: &seventyFive,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadSeventySix(seventySix SeventySix) Payload {
+	typ := PayloadUnionTypeSeventySix
+
+	return Payload{
+		SeventySix: &seventySix,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadSeventySeven(seventySeven SeventySeven) Payload {
+	typ := PayloadUnionTypeSeventySeven
+
+	return Payload{
+		SeventySeven: &seventySeven,
+		Type:         typ,
+	}
+}
+
+func CreatePayloadSeventyEight(seventyEight SeventyEight) Payload {
+	typ := PayloadUnionTypeSeventyEight
+
+	return Payload{
+		SeventyEight: &seventyEight,
+		Type:         typ,
+	}
+}
+
+func CreatePayloadSeventyNine(seventyNine SeventyNine) Payload {
+	typ := PayloadUnionTypeSeventyNine
+
+	return Payload{
+		SeventyNine: &seventyNine,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadEighty(eighty Eighty) Payload {
+	typ := PayloadUnionTypeEighty
+
+	return Payload{
+		Eighty: &eighty,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadEightyOne(eightyOne EightyOne) Payload {
+	typ := PayloadUnionTypeEightyOne
+
+	return Payload{
+		EightyOne: &eightyOne,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadEightyTwo(eightyTwo EightyTwo) Payload {
+	typ := PayloadUnionTypeEightyTwo
+
+	return Payload{
+		EightyTwo: &eightyTwo,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadEightyThree(eightyThree EightyThree) Payload {
+	typ := PayloadUnionTypeEightyThree
+
+	return Payload{
+		EightyThree: &eightyThree,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadEightyFour(eightyFour EightyFour) Payload {
+	typ := PayloadUnionTypeEightyFour
+
+	return Payload{
+		EightyFour: &eightyFour,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadEightyFive(eightyFive EightyFive) Payload {
+	typ := PayloadUnionTypeEightyFive
+
+	return Payload{
+		EightyFive: &eightyFive,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadEightySix(eightySix EightySix) Payload {
+	typ := PayloadUnionTypeEightySix
+
+	return Payload{
+		EightySix: &eightySix,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadEightySeven(eightySeven EightySeven) Payload {
+	typ := PayloadUnionTypeEightySeven
+
+	return Payload{
+		EightySeven: &eightySeven,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadEightyEight(eightyEight EightyEight) Payload {
+	typ := PayloadUnionTypeEightyEight
+
+	return Payload{
+		EightyEight: &eightyEight,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadEightyNine(eightyNine EightyNine) Payload {
+	typ := PayloadUnionTypeEightyNine
+
+	return Payload{
+		EightyNine: &eightyNine,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadNinety(ninety Ninety) Payload {
+	typ := PayloadUnionTypeNinety
+
+	return Payload{
+		Ninety: &ninety,
+		Type:   typ,
+	}
+}
+
+func CreatePayloadNinetyOne(ninetyOne NinetyOne) Payload {
+	typ := PayloadUnionTypeNinetyOne
+
+	return Payload{
+		NinetyOne: &ninetyOne,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadNinetyTwo(ninetyTwo NinetyTwo) Payload {
+	typ := PayloadUnionTypeNinetyTwo
+
+	return Payload{
+		NinetyTwo: &ninetyTwo,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadNinetyThree(ninetyThree NinetyThree) Payload {
+	typ := PayloadUnionTypeNinetyThree
+
+	return Payload{
+		NinetyThree: &ninetyThree,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadNinetyFour(ninetyFour NinetyFour) Payload {
+	typ := PayloadUnionTypeNinetyFour
+
+	return Payload{
+		NinetyFour: &ninetyFour,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadNinetyFive(ninetyFive NinetyFive) Payload {
+	typ := PayloadUnionTypeNinetyFive
+
+	return Payload{
+		NinetyFive: &ninetyFive,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadNinetySix(ninetySix NinetySix) Payload {
+	typ := PayloadUnionTypeNinetySix
+
+	return Payload{
+		NinetySix: &ninetySix,
+		Type:      typ,
+	}
+}
+
+func CreatePayloadNinetySeven(ninetySeven NinetySeven) Payload {
+	typ := PayloadUnionTypeNinetySeven
+
+	return Payload{
+		NinetySeven: &ninetySeven,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadNinetyEight(ninetyEight NinetyEight) Payload {
+	typ := PayloadUnionTypeNinetyEight
+
+	return Payload{
+		NinetyEight: &ninetyEight,
+		Type:        typ,
+	}
+}
+
+func CreatePayloadNinetyNine(ninetyNine NinetyNine) Payload {
+	typ := PayloadUnionTypeNinetyNine
+
+	return Payload{
+		NinetyNine: &ninetyNine,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadOneHundred(oneHundred OneHundred) Payload {
+	typ := PayloadUnionTypeOneHundred
+
+	return Payload{
+		OneHundred: &oneHundred,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadOneHundredAndOne(oneHundredAndOne OneHundredAndOne) Payload {
+	typ := PayloadUnionTypeOneHundredAndOne
+
+	return Payload{
+		OneHundredAndOne: &oneHundredAndOne,
+		Type:             typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwo(oneHundredAndTwo OneHundredAndTwo) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwo
+
+	return Payload{
+		OneHundredAndTwo: &oneHundredAndTwo,
+		Type:             typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThree(oneHundredAndThree OneHundredAndThree) Payload {
+	typ := PayloadUnionTypeOneHundredAndThree
+
+	return Payload{
+		OneHundredAndThree: &oneHundredAndThree,
+		Type:               typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFour(oneHundredAndFour OneHundredAndFour) Payload {
+	typ := PayloadUnionTypeOneHundredAndFour
+
+	return Payload{
+		OneHundredAndFour: &oneHundredAndFour,
+		Type:              typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFive(oneHundredAndFive OneHundredAndFive) Payload {
+	typ := PayloadUnionTypeOneHundredAndFive
+
+	return Payload{
+		OneHundredAndFive: &oneHundredAndFive,
+		Type:              typ,
+	}
+}
+
+func CreatePayloadOneHundredAndSix(oneHundredAndSix OneHundredAndSix) Payload {
+	typ := PayloadUnionTypeOneHundredAndSix
+
+	return Payload{
+		OneHundredAndSix: &oneHundredAndSix,
+		Type:             typ,
+	}
+}
+
+func CreatePayloadOneHundredAndSeven(oneHundredAndSeven OneHundredAndSeven) Payload {
+	typ := PayloadUnionTypeOneHundredAndSeven
+
+	return Payload{
+		OneHundredAndSeven: &oneHundredAndSeven,
+		Type:               typ,
+	}
+}
+
+func CreatePayloadOneHundredAndEight(oneHundredAndEight OneHundredAndEight) Payload {
+	typ := PayloadUnionTypeOneHundredAndEight
+
+	return Payload{
+		OneHundredAndEight: &oneHundredAndEight,
+		Type:               typ,
+	}
+}
+
+func CreatePayloadOneHundredAndNine(oneHundredAndNine OneHundredAndNine) Payload {
+	typ := PayloadUnionTypeOneHundredAndNine
+
+	return Payload{
+		OneHundredAndNine: &oneHundredAndNine,
+		Type:              typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTen(oneHundredAndTen OneHundredAndTen) Payload {
+	typ := PayloadUnionTypeOneHundredAndTen
+
+	return Payload{
+		OneHundredAndTen: &oneHundredAndTen,
+		Type:             typ,
+	}
+}
+
+func CreatePayloadOneHundredAndEleven(oneHundredAndEleven OneHundredAndEleven) Payload {
+	typ := PayloadUnionTypeOneHundredAndEleven
+
+	return Payload{
+		OneHundredAndEleven: &oneHundredAndEleven,
+		Type:                typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwelve(oneHundredAndTwelve OneHundredAndTwelve) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwelve
+
+	return Payload{
+		OneHundredAndTwelve: &oneHundredAndTwelve,
+		Type:                typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirteen(oneHundredAndThirteen OneHundredAndThirteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirteen
+
+	return Payload{
+		OneHundredAndThirteen: &oneHundredAndThirteen,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFourteen(oneHundredAndFourteen OneHundredAndFourteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndFourteen
+
+	return Payload{
+		OneHundredAndFourteen: &oneHundredAndFourteen,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFifteen(oneHundredAndFifteen OneHundredAndFifteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndFifteen
+
+	return Payload{
+		OneHundredAndFifteen: &oneHundredAndFifteen,
+		Type:                 typ,
+	}
+}
+
+func CreatePayloadOneHundredAndSixteen(oneHundredAndSixteen OneHundredAndSixteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndSixteen
+
+	return Payload{
+		OneHundredAndSixteen: &oneHundredAndSixteen,
+		Type:                 typ,
+	}
+}
+
+func CreatePayloadOneHundredAndSeventeen(oneHundredAndSeventeen OneHundredAndSeventeen) Payload {
+	typ := PayloadUnionTypeOneHundredAndSeventeen
+
+	return Payload{
+		OneHundredAndSeventeen: &oneHundredAndSeventeen,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndEighteen(oneHundredAndEighteen OneHundredAndEighteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndEighteen
+
+	return Payload{
+		OneHundredAndEighteen: &oneHundredAndEighteen,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndNineteen(oneHundredAndNineteen OneHundredAndNineteen) Payload {
+	typ := PayloadUnionTypeOneHundredAndNineteen
+
+	return Payload{
+		OneHundredAndNineteen: &oneHundredAndNineteen,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwenty(oneHundredAndTwenty OneHundredAndTwenty) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwenty
+
+	return Payload{
+		OneHundredAndTwenty: &oneHundredAndTwenty,
+		Type:                typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyOne(oneHundredAndTwentyOne OneHundredAndTwentyOne) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyOne
+
+	return Payload{
+		OneHundredAndTwentyOne: &oneHundredAndTwentyOne,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyTwo(oneHundredAndTwentyTwo OneHundredAndTwentyTwo) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyTwo
+
+	return Payload{
+		OneHundredAndTwentyTwo: &oneHundredAndTwentyTwo,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyThree(oneHundredAndTwentyThree OneHundredAndTwentyThree) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyThree
+
+	return Payload{
+		OneHundredAndTwentyThree: &oneHundredAndTwentyThree,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyFour(oneHundredAndTwentyFour OneHundredAndTwentyFour) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyFour
+
+	return Payload{
+		OneHundredAndTwentyFour: &oneHundredAndTwentyFour,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyFive(oneHundredAndTwentyFive OneHundredAndTwentyFive) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyFive
+
+	return Payload{
+		OneHundredAndTwentyFive: &oneHundredAndTwentyFive,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentySix(oneHundredAndTwentySix OneHundredAndTwentySix) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentySix
+
+	return Payload{
+		OneHundredAndTwentySix: &oneHundredAndTwentySix,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentySeven(oneHundredAndTwentySeven OneHundredAndTwentySeven) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentySeven
+
+	return Payload{
+		OneHundredAndTwentySeven: &oneHundredAndTwentySeven,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyEight(oneHundredAndTwentyEight OneHundredAndTwentyEight) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyEight
+
+	return Payload{
+		OneHundredAndTwentyEight: &oneHundredAndTwentyEight,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndTwentyNine(oneHundredAndTwentyNine OneHundredAndTwentyNine) Payload {
+	typ := PayloadUnionTypeOneHundredAndTwentyNine
+
+	return Payload{
+		OneHundredAndTwentyNine: &oneHundredAndTwentyNine,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirty(oneHundredAndThirty OneHundredAndThirty) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirty
+
+	return Payload{
+		OneHundredAndThirty: &oneHundredAndThirty,
+		Type:                typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyOne(oneHundredAndThirtyOne OneHundredAndThirtyOne) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyOne
+
+	return Payload{
+		OneHundredAndThirtyOne: &oneHundredAndThirtyOne,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyTwo(oneHundredAndThirtyTwo OneHundredAndThirtyTwo) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyTwo
+
+	return Payload{
+		OneHundredAndThirtyTwo: &oneHundredAndThirtyTwo,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyThree(oneHundredAndThirtyThree OneHundredAndThirtyThree) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyThree
+
+	return Payload{
+		OneHundredAndThirtyThree: &oneHundredAndThirtyThree,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyFour(oneHundredAndThirtyFour OneHundredAndThirtyFour) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyFour
+
+	return Payload{
+		OneHundredAndThirtyFour: &oneHundredAndThirtyFour,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyFive(oneHundredAndThirtyFive OneHundredAndThirtyFive) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyFive
+
+	return Payload{
+		OneHundredAndThirtyFive: &oneHundredAndThirtyFive,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtySix(oneHundredAndThirtySix OneHundredAndThirtySix) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtySix
+
+	return Payload{
+		OneHundredAndThirtySix: &oneHundredAndThirtySix,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtySeven(oneHundredAndThirtySeven OneHundredAndThirtySeven) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtySeven
+
+	return Payload{
+		OneHundredAndThirtySeven: &oneHundredAndThirtySeven,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyEight(oneHundredAndThirtyEight OneHundredAndThirtyEight) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyEight
+
+	return Payload{
+		OneHundredAndThirtyEight: &oneHundredAndThirtyEight,
+		Type:                     typ,
+	}
+}
+
+func CreatePayloadOneHundredAndThirtyNine(oneHundredAndThirtyNine OneHundredAndThirtyNine) Payload {
+	typ := PayloadUnionTypeOneHundredAndThirtyNine
+
+	return Payload{
+		OneHundredAndThirtyNine: &oneHundredAndThirtyNine,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndForty(oneHundredAndForty OneHundredAndForty) Payload {
+	typ := PayloadUnionTypeOneHundredAndForty
+
+	return Payload{
+		OneHundredAndForty: &oneHundredAndForty,
+		Type:               typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortyOne(oneHundredAndFortyOne OneHundredAndFortyOne) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortyOne
+
+	return Payload{
+		OneHundredAndFortyOne: &oneHundredAndFortyOne,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortyTwo(oneHundredAndFortyTwo OneHundredAndFortyTwo) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortyTwo
+
+	return Payload{
+		OneHundredAndFortyTwo: &oneHundredAndFortyTwo,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortyThree(oneHundredAndFortyThree OneHundredAndFortyThree) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortyThree
+
+	return Payload{
+		OneHundredAndFortyThree: &oneHundredAndFortyThree,
+		Type:                    typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortyFour(oneHundredAndFortyFour OneHundredAndFortyFour) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortyFour
+
+	return Payload{
+		OneHundredAndFortyFour: &oneHundredAndFortyFour,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortyFive(oneHundredAndFortyFive OneHundredAndFortyFive) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortyFive
+
+	return Payload{
+		OneHundredAndFortyFive: &oneHundredAndFortyFive,
+		Type:                   typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortySix(oneHundredAndFortySix OneHundredAndFortySix) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortySix
+
+	return Payload{
+		OneHundredAndFortySix: &oneHundredAndFortySix,
+		Type:                  typ,
+	}
+}
+
+func CreatePayloadOneHundredAndFortySeven(oneHundredAndFortySeven OneHundredAndFortySeven) Payload {
+	typ := PayloadUnionTypeOneHundredAndFortySeven
+
+	return Payload{
+		OneHundredAndFortySeven: &oneHundredAndFortySeven,
+		Type:                    typ,
+	}
+}
+
+func (u *Payload) UnmarshalJSON(data []byte) error {
+
+	var one One = One{}
+	if err := utils.UnmarshalJSON(data, &one, "", true, true); err == nil {
+		u.One = &one
+		u.Type = PayloadUnionTypeOne
+		return nil
+	}
+
+	var ninetyThree NinetyThree = NinetyThree{}
+	if err := utils.UnmarshalJSON(data, &ninetyThree, "", true, true); err == nil {
+		u.NinetyThree = &ninetyThree
+		u.Type = PayloadUnionTypeNinetyThree
+		return nil
+	}
+
+	var oneHundredAndFourteen OneHundredAndFourteen = OneHundredAndFourteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFourteen, "", true, true); err == nil {
+		u.OneHundredAndFourteen = &oneHundredAndFourteen
+		u.Type = PayloadUnionTypeOneHundredAndFourteen
+		return nil
+	}
+
+	var oneHundredAndNine OneHundredAndNine = OneHundredAndNine{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndNine, "", true, true); err == nil {
+		u.OneHundredAndNine = &oneHundredAndNine
+		u.Type = PayloadUnionTypeOneHundredAndNine
+		return nil
+	}
+
+	var eightyEight EightyEight = EightyEight{}
+	if err := utils.UnmarshalJSON(data, &eightyEight, "", true, true); err == nil {
+		u.EightyEight = &eightyEight
+		u.Type = PayloadUnionTypeEightyEight
+		return nil
+	}
+
+	var ninetyFive NinetyFive = NinetyFive{}
+	if err := utils.UnmarshalJSON(data, &ninetyFive, "", true, true); err == nil {
+		u.NinetyFive = &ninetyFive
+		u.Type = PayloadUnionTypeNinetyFive
+		return nil
+	}
+
+	var ninetySix NinetySix = NinetySix{}
+	if err := utils.UnmarshalJSON(data, &ninetySix, "", true, true); err == nil {
+		u.NinetySix = &ninetySix
+		u.Type = PayloadUnionTypeNinetySix
+		return nil
+	}
+
+	var oneHundredAndThirtyNine OneHundredAndThirtyNine = OneHundredAndThirtyNine{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyNine, "", true, true); err == nil {
+		u.OneHundredAndThirtyNine = &oneHundredAndThirtyNine
+		u.Type = PayloadUnionTypeOneHundredAndThirtyNine
+		return nil
+	}
+
+	var nine Nine = Nine{}
+	if err := utils.UnmarshalJSON(data, &nine, "", true, true); err == nil {
+		u.Nine = &nine
+		u.Type = PayloadUnionTypeNine
+		return nil
+	}
+
+	var fortyThree FortyThree = FortyThree{}
+	if err := utils.UnmarshalJSON(data, &fortyThree, "", true, true); err == nil {
+		u.FortyThree = &fortyThree
+		u.Type = PayloadUnionTypeFortyThree
+		return nil
+	}
+
+	var oneHundredAndThirty OneHundredAndThirty = OneHundredAndThirty{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirty, "", true, true); err == nil {
+		u.OneHundredAndThirty = &oneHundredAndThirty
+		u.Type = PayloadUnionTypeOneHundredAndThirty
+		return nil
+	}
+
+	var ninetySeven NinetySeven = NinetySeven{}
+	if err := utils.UnmarshalJSON(data, &ninetySeven, "", true, true); err == nil {
+		u.NinetySeven = &ninetySeven
+		u.Type = PayloadUnionTypeNinetySeven
+		return nil
+	}
+
+	var ninetyNine NinetyNine = NinetyNine{}
+	if err := utils.UnmarshalJSON(data, &ninetyNine, "", true, true); err == nil {
+		u.NinetyNine = &ninetyNine
+		u.Type = PayloadUnionTypeNinetyNine
+		return nil
+	}
+
+	var thirtyThree ThirtyThree = ThirtyThree{}
+	if err := utils.UnmarshalJSON(data, &thirtyThree, "", true, true); err == nil {
+		u.ThirtyThree = &thirtyThree
+		u.Type = PayloadUnionTypeThirtyThree
+		return nil
+	}
+
+	var oneHundredAndOne OneHundredAndOne = OneHundredAndOne{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndOne, "", true, true); err == nil {
+		u.OneHundredAndOne = &oneHundredAndOne
+		u.Type = PayloadUnionTypeOneHundredAndOne
+		return nil
+	}
+
+	var eightyFour EightyFour = EightyFour{}
+	if err := utils.UnmarshalJSON(data, &eightyFour, "", true, true); err == nil {
+		u.EightyFour = &eightyFour
+		u.Type = PayloadUnionTypeEightyFour
+		return nil
+	}
+
+	var oneHundredAndTen OneHundredAndTen = OneHundredAndTen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTen, "", true, true); err == nil {
+		u.OneHundredAndTen = &oneHundredAndTen
+		u.Type = PayloadUnionTypeOneHundredAndTen
+		return nil
+	}
+
+	var oneHundredAndFortyThree OneHundredAndFortyThree = OneHundredAndFortyThree{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortyThree, "", true, true); err == nil {
+		u.OneHundredAndFortyThree = &oneHundredAndFortyThree
+		u.Type = PayloadUnionTypeOneHundredAndFortyThree
+		return nil
+	}
+
+	var nineteen Nineteen = Nineteen{}
+	if err := utils.UnmarshalJSON(data, &nineteen, "", true, true); err == nil {
+		u.Nineteen = &nineteen
+		u.Type = PayloadUnionTypeNineteen
+		return nil
+	}
+
+	var three Three = Three{}
+	if err := utils.UnmarshalJSON(data, &three, "", true, true); err == nil {
+		u.Three = &three
+		u.Type = PayloadUnionTypeThree
+		return nil
+	}
+
+	var oneHundredAndSixteen OneHundredAndSixteen = OneHundredAndSixteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndSixteen, "", true, true); err == nil {
+		u.OneHundredAndSixteen = &oneHundredAndSixteen
+		u.Type = PayloadUnionTypeOneHundredAndSixteen
+		return nil
+	}
+
+	var oneHundredAndEleven OneHundredAndEleven = OneHundredAndEleven{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndEleven, "", true, true); err == nil {
+		u.OneHundredAndEleven = &oneHundredAndEleven
+		u.Type = PayloadUnionTypeOneHundredAndEleven
+		return nil
+	}
+
+	var twentyEight TwentyEight = TwentyEight{}
+	if err := utils.UnmarshalJSON(data, &twentyEight, "", true, true); err == nil {
+		u.TwentyEight = &twentyEight
+		u.Type = PayloadUnionTypeTwentyEight
+		return nil
+	}
+
+	var seventeen Seventeen = Seventeen{}
+	if err := utils.UnmarshalJSON(data, &seventeen, "", true, true); err == nil {
+		u.Seventeen = &seventeen
+		u.Type = PayloadUnionTypeSeventeen
+		return nil
+	}
+
+	var oneHundredAndThirtySix OneHundredAndThirtySix = OneHundredAndThirtySix{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtySix, "", true, true); err == nil {
+		u.OneHundredAndThirtySix = &oneHundredAndThirtySix
+		u.Type = PayloadUnionTypeOneHundredAndThirtySix
+		return nil
+	}
+
+	var twentySix TwentySix = TwentySix{}
+	if err := utils.UnmarshalJSON(data, &twentySix, "", true, true); err == nil {
+		u.TwentySix = &twentySix
+		u.Type = PayloadUnionTypeTwentySix
+		return nil
+	}
+
+	var twentySeven TwentySeven = TwentySeven{}
+	if err := utils.UnmarshalJSON(data, &twentySeven, "", true, true); err == nil {
+		u.TwentySeven = &twentySeven
+		u.Type = PayloadUnionTypeTwentySeven
+		return nil
+	}
+
+	var twentyThree TwentyThree = TwentyThree{}
+	if err := utils.UnmarshalJSON(data, &twentyThree, "", true, true); err == nil {
+		u.TwentyThree = &twentyThree
+		u.Type = PayloadUnionTypeTwentyThree
+		return nil
+	}
+
+	var oneHundredAndThirteen OneHundredAndThirteen = OneHundredAndThirteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirteen, "", true, true); err == nil {
+		u.OneHundredAndThirteen = &oneHundredAndThirteen
+		u.Type = PayloadUnionTypeOneHundredAndThirteen
+		return nil
+	}
+
+	var oneHundredAndTwelve OneHundredAndTwelve = OneHundredAndTwelve{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwelve, "", true, true); err == nil {
+		u.OneHundredAndTwelve = &oneHundredAndTwelve
+		u.Type = PayloadUnionTypeOneHundredAndTwelve
+		return nil
+	}
+
+	var oneHundredAndFifteen OneHundredAndFifteen = OneHundredAndFifteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFifteen, "", true, true); err == nil {
+		u.OneHundredAndFifteen = &oneHundredAndFifteen
+		u.Type = PayloadUnionTypeOneHundredAndFifteen
+		return nil
+	}
+
+	var oneHundredAndEighteen OneHundredAndEighteen = OneHundredAndEighteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndEighteen, "", true, true); err == nil {
+		u.OneHundredAndEighteen = &oneHundredAndEighteen
+		u.Type = PayloadUnionTypeOneHundredAndEighteen
+		return nil
+	}
+
+	var eighteen Eighteen = Eighteen{}
+	if err := utils.UnmarshalJSON(data, &eighteen, "", true, true); err == nil {
+		u.Eighteen = &eighteen
+		u.Type = PayloadUnionTypeEighteen
+		return nil
+	}
+
+	var oneHundredAndNineteen OneHundredAndNineteen = OneHundredAndNineteen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndNineteen, "", true, true); err == nil {
+		u.OneHundredAndNineteen = &oneHundredAndNineteen
+		u.Type = PayloadUnionTypeOneHundredAndNineteen
+		return nil
+	}
+
+	var oneHundredAndSeven OneHundredAndSeven = OneHundredAndSeven{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndSeven, "", true, true); err == nil {
+		u.OneHundredAndSeven = &oneHundredAndSeven
+		u.Type = PayloadUnionTypeOneHundredAndSeven
+		return nil
+	}
+
+	var thirtySix ThirtySix = ThirtySix{}
+	if err := utils.UnmarshalJSON(data, &thirtySix, "", true, true); err == nil {
+		u.ThirtySix = &thirtySix
+		u.Type = PayloadUnionTypeThirtySix
+		return nil
+	}
+
+	var oneHundredAndTwentySeven OneHundredAndTwentySeven = OneHundredAndTwentySeven{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentySeven, "", true, true); err == nil {
+		u.OneHundredAndTwentySeven = &oneHundredAndTwentySeven
+		u.Type = PayloadUnionTypeOneHundredAndTwentySeven
+		return nil
+	}
+
+	var fourteen Fourteen = Fourteen{}
+	if err := utils.UnmarshalJSON(data, &fourteen, "", true, true); err == nil {
+		u.Fourteen = &fourteen
+		u.Type = PayloadUnionTypeFourteen
+		return nil
+	}
+
+	var oneHundred OneHundred = OneHundred{}
+	if err := utils.UnmarshalJSON(data, &oneHundred, "", true, true); err == nil {
+		u.OneHundred = &oneHundred
+		u.Type = PayloadUnionTypeOneHundred
+		return nil
+	}
+
+	var oneHundredAndTwentyEight OneHundredAndTwentyEight = OneHundredAndTwentyEight{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyEight, "", true, true); err == nil {
+		u.OneHundredAndTwentyEight = &oneHundredAndTwentyEight
+		u.Type = PayloadUnionTypeOneHundredAndTwentyEight
+		return nil
+	}
+
+	var fortyOne FortyOne = FortyOne{}
+	if err := utils.UnmarshalJSON(data, &fortyOne, "", true, true); err == nil {
+		u.FortyOne = &fortyOne
+		u.Type = PayloadUnionTypeFortyOne
+		return nil
+	}
+
+	var oneHundredAndTwentyNine OneHundredAndTwentyNine = OneHundredAndTwentyNine{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyNine, "", true, true); err == nil {
+		u.OneHundredAndTwentyNine = &oneHundredAndTwentyNine
+		u.Type = PayloadUnionTypeOneHundredAndTwentyNine
+		return nil
+	}
+
+	var twentyFive TwentyFive = TwentyFive{}
+	if err := utils.UnmarshalJSON(data, &twentyFive, "", true, true); err == nil {
+		u.TwentyFive = &twentyFive
+		u.Type = PayloadUnionTypeTwentyFive
+		return nil
+	}
+
+	var oneHundredAndForty OneHundredAndForty = OneHundredAndForty{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndForty, "", true, true); err == nil {
+		u.OneHundredAndForty = &oneHundredAndForty
+		u.Type = PayloadUnionTypeOneHundredAndForty
+		return nil
+	}
+
+	var fortyFive FortyFive = FortyFive{}
+	if err := utils.UnmarshalJSON(data, &fortyFive, "", true, true); err == nil {
+		u.FortyFive = &fortyFive
+		u.Type = PayloadUnionTypeFortyFive
+		return nil
+	}
+
+	var oneHundredAndFortyOne OneHundredAndFortyOne = OneHundredAndFortyOne{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortyOne, "", true, true); err == nil {
+		u.OneHundredAndFortyOne = &oneHundredAndFortyOne
+		u.Type = PayloadUnionTypeOneHundredAndFortyOne
+		return nil
+	}
+
+	var sixtyNine SixtyNine = SixtyNine{}
+	if err := utils.UnmarshalJSON(data, &sixtyNine, "", true, true); err == nil {
+		u.SixtyNine = &sixtyNine
+		u.Type = PayloadUnionTypeSixtyNine
+		return nil
+	}
+
+	var fortyEight FortyEight = FortyEight{}
+	if err := utils.UnmarshalJSON(data, &fortyEight, "", true, true); err == nil {
+		u.FortyEight = &fortyEight
+		u.Type = PayloadUnionTypeFortyEight
+		return nil
+	}
+
+	var ninetyOne NinetyOne = NinetyOne{}
+	if err := utils.UnmarshalJSON(data, &ninetyOne, "", true, true); err == nil {
+		u.NinetyOne = &ninetyOne
+		u.Type = PayloadUnionTypeNinetyOne
+		return nil
+	}
+
+	var ninety Ninety = Ninety{}
+	if err := utils.UnmarshalJSON(data, &ninety, "", true, true); err == nil {
+		u.Ninety = &ninety
+		u.Type = PayloadUnionTypeNinety
+		return nil
+	}
+
+	var oneHundredAndFortyTwo OneHundredAndFortyTwo = OneHundredAndFortyTwo{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortyTwo, "", true, true); err == nil {
+		u.OneHundredAndFortyTwo = &oneHundredAndFortyTwo
+		u.Type = PayloadUnionTypeOneHundredAndFortyTwo
+		return nil
+	}
+
+	var fiftyTwo FiftyTwo = FiftyTwo{}
+	if err := utils.UnmarshalJSON(data, &fiftyTwo, "", true, true); err == nil {
+		u.FiftyTwo = &fiftyTwo
+		u.Type = PayloadUnionTypeFiftyTwo
+		return nil
+	}
+
+	var eightySeven EightySeven = EightySeven{}
+	if err := utils.UnmarshalJSON(data, &eightySeven, "", true, true); err == nil {
+		u.EightySeven = &eightySeven
+		u.Type = PayloadUnionTypeEightySeven
+		return nil
+	}
+
+	var eightySix EightySix = EightySix{}
+	if err := utils.UnmarshalJSON(data, &eightySix, "", true, true); err == nil {
+		u.EightySix = &eightySix
+		u.Type = PayloadUnionTypeEightySix
+		return nil
+	}
+
+	var fiftyFive FiftyFive = FiftyFive{}
+	if err := utils.UnmarshalJSON(data, &fiftyFive, "", true, true); err == nil {
+		u.FiftyFive = &fiftyFive
+		u.Type = PayloadUnionTypeFiftyFive
+		return nil
+	}
+
+	var four Four = Four{}
+	if err := utils.UnmarshalJSON(data, &four, "", true, true); err == nil {
+		u.Four = &four
+		u.Type = PayloadUnionTypeFour
+		return nil
+	}
+
+	var eightyThree EightyThree = EightyThree{}
+	if err := utils.UnmarshalJSON(data, &eightyThree, "", true, true); err == nil {
+		u.EightyThree = &eightyThree
+		u.Type = PayloadUnionTypeEightyThree
+		return nil
+	}
+
+	var eightyTwo EightyTwo = EightyTwo{}
+	if err := utils.UnmarshalJSON(data, &eightyTwo, "", true, true); err == nil {
+		u.EightyTwo = &eightyTwo
+		u.Type = PayloadUnionTypeEightyTwo
+		return nil
+	}
+
+	var eightyOne EightyOne = EightyOne{}
+	if err := utils.UnmarshalJSON(data, &eightyOne, "", true, true); err == nil {
+		u.EightyOne = &eightyOne
+		u.Type = PayloadUnionTypeEightyOne
+		return nil
+	}
+
+	var seventySix SeventySix = SeventySix{}
+	if err := utils.UnmarshalJSON(data, &seventySix, "", true, true); err == nil {
+		u.SeventySix = &seventySix
+		u.Type = PayloadUnionTypeSeventySix
+		return nil
+	}
+
+	var seventyOne SeventyOne = SeventyOne{}
+	if err := utils.UnmarshalJSON(data, &seventyOne, "", true, true); err == nil {
+		u.SeventyOne = &seventyOne
+		u.Type = PayloadUnionTypeSeventyOne
+		return nil
+	}
+
+	var seventy Seventy = Seventy{}
+	if err := utils.UnmarshalJSON(data, &seventy, "", true, true); err == nil {
+		u.Seventy = &seventy
+		u.Type = PayloadUnionTypeSeventy
+		return nil
+	}
+
+	var sixtyThree SixtyThree = SixtyThree{}
+	if err := utils.UnmarshalJSON(data, &sixtyThree, "", true, true); err == nil {
+		u.SixtyThree = &sixtyThree
+		u.Type = PayloadUnionTypeSixtyThree
+		return nil
+	}
+
+	var thirtyEight ThirtyEight = ThirtyEight{}
+	if err := utils.UnmarshalJSON(data, &thirtyEight, "", true, true); err == nil {
+		u.ThirtyEight = &thirtyEight
+		u.Type = PayloadUnionTypeThirtyEight
+		return nil
+	}
+
+	var oneHundredAndFive OneHundredAndFive = OneHundredAndFive{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFive, "", true, true); err == nil {
+		u.OneHundredAndFive = &oneHundredAndFive
+		u.Type = PayloadUnionTypeOneHundredAndFive
+		return nil
+	}
+
+	var oneHundredAndFortyFive OneHundredAndFortyFive = OneHundredAndFortyFive{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortyFive, "", true, true); err == nil {
+		u.OneHundredAndFortyFive = &oneHundredAndFortyFive
+		u.Type = PayloadUnionTypeOneHundredAndFortyFive
+		return nil
+	}
+
+	var oneHundredAndFortyFour OneHundredAndFortyFour = OneHundredAndFortyFour{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortyFour, "", true, true); err == nil {
+		u.OneHundredAndFortyFour = &oneHundredAndFortyFour
+		u.Type = PayloadUnionTypeOneHundredAndFortyFour
+		return nil
+	}
+
+	var five Five = Five{}
+	if err := utils.UnmarshalJSON(data, &five, "", true, true); err == nil {
+		u.Five = &five
+		u.Type = PayloadUnionTypeFive
+		return nil
+	}
+
+	var eight Eight = Eight{}
+	if err := utils.UnmarshalJSON(data, &eight, "", true, true); err == nil {
+		u.Eight = &eight
+		u.Type = PayloadUnionTypeEight
+		return nil
+	}
+
+	var oneHundredAndThirtySeven OneHundredAndThirtySeven = OneHundredAndThirtySeven{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtySeven, "", true, true); err == nil {
+		u.OneHundredAndThirtySeven = &oneHundredAndThirtySeven
+		u.Type = PayloadUnionTypeOneHundredAndThirtySeven
+		return nil
+	}
+
+	var sixtyOne SixtyOne = SixtyOne{}
+	if err := utils.UnmarshalJSON(data, &sixtyOne, "", true, true); err == nil {
+		u.SixtyOne = &sixtyOne
+		u.Type = PayloadUnionTypeSixtyOne
+		return nil
+	}
+
+	var seventyTwo SeventyTwo = SeventyTwo{}
+	if err := utils.UnmarshalJSON(data, &seventyTwo, "", true, true); err == nil {
+		u.SeventyTwo = &seventyTwo
+		u.Type = PayloadUnionTypeSeventyTwo
+		return nil
+	}
+
+	var ten Ten = Ten{}
+	if err := utils.UnmarshalJSON(data, &ten, "", true, true); err == nil {
+		u.Ten = &ten
+		u.Type = PayloadUnionTypeTen
+		return nil
+	}
+
+	var oneHundredAndThirtyFour OneHundredAndThirtyFour = OneHundredAndThirtyFour{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyFour, "", true, true); err == nil {
+		u.OneHundredAndThirtyFour = &oneHundredAndThirtyFour
+		u.Type = PayloadUnionTypeOneHundredAndThirtyFour
+		return nil
+	}
+
+	var oneHundredAndThirtyThree OneHundredAndThirtyThree = OneHundredAndThirtyThree{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyThree, "", true, true); err == nil {
+		u.OneHundredAndThirtyThree = &oneHundredAndThirtyThree
+		u.Type = PayloadUnionTypeOneHundredAndThirtyThree
+		return nil
+	}
+
+	var sixty Sixty = Sixty{}
+	if err := utils.UnmarshalJSON(data, &sixty, "", true, true); err == nil {
+		u.Sixty = &sixty
+		u.Type = PayloadUnionTypeSixty
+		return nil
+	}
+
+	var seventySeven SeventySeven = SeventySeven{}
+	if err := utils.UnmarshalJSON(data, &seventySeven, "", true, true); err == nil {
+		u.SeventySeven = &seventySeven
+		u.Type = PayloadUnionTypeSeventySeven
+		return nil
+	}
+
+	var seventyEight SeventyEight = SeventyEight{}
+	if err := utils.UnmarshalJSON(data, &seventyEight, "", true, true); err == nil {
+		u.SeventyEight = &seventyEight
+		u.Type = PayloadUnionTypeSeventyEight
+		return nil
+	}
+
+	var oneHundredAndThirtyOne OneHundredAndThirtyOne = OneHundredAndThirtyOne{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyOne, "", true, true); err == nil {
+		u.OneHundredAndThirtyOne = &oneHundredAndThirtyOne
+		u.Type = PayloadUnionTypeOneHundredAndThirtyOne
+		return nil
+	}
+
+	var eighty Eighty = Eighty{}
+	if err := utils.UnmarshalJSON(data, &eighty, "", true, true); err == nil {
+		u.Eighty = &eighty
+		u.Type = PayloadUnionTypeEighty
+		return nil
+	}
+
+	var twelve Twelve = Twelve{}
+	if err := utils.UnmarshalJSON(data, &twelve, "", true, true); err == nil {
+		u.Twelve = &twelve
+		u.Type = PayloadUnionTypeTwelve
+		return nil
+	}
+
+	var fiftyEight FiftyEight = FiftyEight{}
+	if err := utils.UnmarshalJSON(data, &fiftyEight, "", true, true); err == nil {
+		u.FiftyEight = &fiftyEight
+		u.Type = PayloadUnionTypeFiftyEight
+		return nil
+	}
+
+	var thirteen Thirteen = Thirteen{}
+	if err := utils.UnmarshalJSON(data, &thirteen, "", true, true); err == nil {
+		u.Thirteen = &thirteen
+		u.Type = PayloadUnionTypeThirteen
+		return nil
+	}
+
+	var oneHundredAndTwentyFour OneHundredAndTwentyFour = OneHundredAndTwentyFour{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyFour, "", true, true); err == nil {
+		u.OneHundredAndTwentyFour = &oneHundredAndTwentyFour
+		u.Type = PayloadUnionTypeOneHundredAndTwentyFour
+		return nil
+	}
+
+	var eightyFive EightyFive = EightyFive{}
+	if err := utils.UnmarshalJSON(data, &eightyFive, "", true, true); err == nil {
+		u.EightyFive = &eightyFive
+		u.Type = PayloadUnionTypeEightyFive
+		return nil
+	}
+
+	var fiftyFour FiftyFour = FiftyFour{}
+	if err := utils.UnmarshalJSON(data, &fiftyFour, "", true, true); err == nil {
+		u.FiftyFour = &fiftyFour
+		u.Type = PayloadUnionTypeFiftyFour
+		return nil
+	}
+
+	var fiftyThree FiftyThree = FiftyThree{}
+	if err := utils.UnmarshalJSON(data, &fiftyThree, "", true, true); err == nil {
+		u.FiftyThree = &fiftyThree
+		u.Type = PayloadUnionTypeFiftyThree
+		return nil
+	}
+
+	var fiftyOne FiftyOne = FiftyOne{}
+	if err := utils.UnmarshalJSON(data, &fiftyOne, "", true, true); err == nil {
+		u.FiftyOne = &fiftyOne
+		u.Type = PayloadUnionTypeFiftyOne
+		return nil
+	}
+
+	var eightyNine EightyNine = EightyNine{}
+	if err := utils.UnmarshalJSON(data, &eightyNine, "", true, true); err == nil {
+		u.EightyNine = &eightyNine
+		u.Type = PayloadUnionTypeEightyNine
+		return nil
+	}
+
+	var fifty Fifty = Fifty{}
+	if err := utils.UnmarshalJSON(data, &fifty, "", true, true); err == nil {
+		u.Fifty = &fifty
+		u.Type = PayloadUnionTypeFifty
+		return nil
+	}
+
+	var fortyNine FortyNine = FortyNine{}
+	if err := utils.UnmarshalJSON(data, &fortyNine, "", true, true); err == nil {
+		u.FortyNine = &fortyNine
+		u.Type = PayloadUnionTypeFortyNine
+		return nil
+	}
+
+	var ninetyTwo NinetyTwo = NinetyTwo{}
+	if err := utils.UnmarshalJSON(data, &ninetyTwo, "", true, true); err == nil {
+		u.NinetyTwo = &ninetyTwo
+		u.Type = PayloadUnionTypeNinetyTwo
+		return nil
+	}
+
+	var fortySeven FortySeven = FortySeven{}
+	if err := utils.UnmarshalJSON(data, &fortySeven, "", true, true); err == nil {
+		u.FortySeven = &fortySeven
+		u.Type = PayloadUnionTypeFortySeven
+		return nil
+	}
+
+	var oneHundredAndSeventeen OneHundredAndSeventeen = OneHundredAndSeventeen{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndSeventeen, "", true, true); err == nil {
+		u.OneHundredAndSeventeen = &oneHundredAndSeventeen
+		u.Type = PayloadUnionTypeOneHundredAndSeventeen
+		return nil
+	}
+
+	var twentyOne TwentyOne = TwentyOne{}
+	if err := utils.UnmarshalJSON(data, &twentyOne, "", true, true); err == nil {
+		u.TwentyOne = &twentyOne
+		u.Type = PayloadUnionTypeTwentyOne
+		return nil
+	}
+
+	var fortyFour FortyFour = FortyFour{}
+	if err := utils.UnmarshalJSON(data, &fortyFour, "", true, true); err == nil {
+		u.FortyFour = &fortyFour
+		u.Type = PayloadUnionTypeFortyFour
+		return nil
+	}
+
+	var twentyTwo TwentyTwo = TwentyTwo{}
+	if err := utils.UnmarshalJSON(data, &twentyTwo, "", true, true); err == nil {
+		u.TwentyTwo = &twentyTwo
+		u.Type = PayloadUnionTypeTwentyTwo
+		return nil
+	}
+
+	var twentyFour TwentyFour = TwentyFour{}
+	if err := utils.UnmarshalJSON(data, &twentyFour, "", true, true); err == nil {
+		u.TwentyFour = &twentyFour
+		u.Type = PayloadUnionTypeTwentyFour
+		return nil
+	}
+
+	var thirtyOne ThirtyOne = ThirtyOne{}
+	if err := utils.UnmarshalJSON(data, &thirtyOne, "", true, true); err == nil {
+		u.ThirtyOne = &thirtyOne
+		u.Type = PayloadUnionTypeThirtyOne
+		return nil
+	}
+
+	var thirtyNine ThirtyNine = ThirtyNine{}
+	if err := utils.UnmarshalJSON(data, &thirtyNine, "", true, true); err == nil {
+		u.ThirtyNine = &thirtyNine
+		u.Type = PayloadUnionTypeThirtyNine
+		return nil
+	}
+
+	var thirtyTwo ThirtyTwo = ThirtyTwo{}
+	if err := utils.UnmarshalJSON(data, &thirtyTwo, "", true, true); err == nil {
+		u.ThirtyTwo = &thirtyTwo
+		u.Type = PayloadUnionTypeThirtyTwo
+		return nil
+	}
+
+	var thirtyFour ThirtyFour = ThirtyFour{}
+	if err := utils.UnmarshalJSON(data, &thirtyFour, "", true, true); err == nil {
+		u.ThirtyFour = &thirtyFour
+		u.Type = PayloadUnionTypeThirtyFour
+		return nil
+	}
+
+	var oneHundredAndEight OneHundredAndEight = OneHundredAndEight{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndEight, "", true, true); err == nil {
+		u.OneHundredAndEight = &oneHundredAndEight
+		u.Type = PayloadUnionTypeOneHundredAndEight
+		return nil
+	}
+
+	var thirtyFive ThirtyFive = ThirtyFive{}
+	if err := utils.UnmarshalJSON(data, &thirtyFive, "", true, true); err == nil {
+		u.ThirtyFive = &thirtyFive
+		u.Type = PayloadUnionTypeThirtyFive
+		return nil
+	}
+
+	var oneHundredAndTwentyFive OneHundredAndTwentyFive = OneHundredAndTwentyFive{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyFive, "", true, true); err == nil {
+		u.OneHundredAndTwentyFive = &oneHundredAndTwentyFive
+		u.Type = PayloadUnionTypeOneHundredAndTwentyFive
+		return nil
+	}
+
+	var oneHundredAndTwentySix OneHundredAndTwentySix = OneHundredAndTwentySix{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentySix, "", true, true); err == nil {
+		u.OneHundredAndTwentySix = &oneHundredAndTwentySix
+		u.Type = PayloadUnionTypeOneHundredAndTwentySix
+		return nil
+	}
+
+	var oneHundredAndFortySix OneHundredAndFortySix = OneHundredAndFortySix{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortySix, "", true, true); err == nil {
+		u.OneHundredAndFortySix = &oneHundredAndFortySix
+		u.Type = PayloadUnionTypeOneHundredAndFortySix
+		return nil
+	}
+
+	var two Two = Two{}
+	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
+		u.Two = &two
+		u.Type = PayloadUnionTypeTwo
+		return nil
+	}
+
+	var oneHundredAndTwo OneHundredAndTwo = OneHundredAndTwo{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwo, "", true, true); err == nil {
+		u.OneHundredAndTwo = &oneHundredAndTwo
+		u.Type = PayloadUnionTypeOneHundredAndTwo
+		return nil
+	}
+
+	var six Six = Six{}
+	if err := utils.UnmarshalJSON(data, &six, "", true, true); err == nil {
+		u.Six = &six
+		u.Type = PayloadUnionTypeSix
+		return nil
+	}
+
+	var oneHundredAndThirtyEight OneHundredAndThirtyEight = OneHundredAndThirtyEight{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyEight, "", true, true); err == nil {
+		u.OneHundredAndThirtyEight = &oneHundredAndThirtyEight
+		u.Type = PayloadUnionTypeOneHundredAndThirtyEight
+		return nil
+	}
+
+	var oneHundredAndThirtyFive OneHundredAndThirtyFive = OneHundredAndThirtyFive{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyFive, "", true, true); err == nil {
+		u.OneHundredAndThirtyFive = &oneHundredAndThirtyFive
+		u.Type = PayloadUnionTypeOneHundredAndThirtyFive
+		return nil
+	}
+
+	var twentyNine TwentyNine = TwentyNine{}
+	if err := utils.UnmarshalJSON(data, &twentyNine, "", true, true); err == nil {
+		u.TwentyNine = &twentyNine
+		u.Type = PayloadUnionTypeTwentyNine
+		return nil
+	}
+
+	var seventyFour SeventyFour = SeventyFour{}
+	if err := utils.UnmarshalJSON(data, &seventyFour, "", true, true); err == nil {
+		u.SeventyFour = &seventyFour
+		u.Type = PayloadUnionTypeSeventyFour
+		return nil
+	}
+
+	var seventyFive SeventyFive = SeventyFive{}
+	if err := utils.UnmarshalJSON(data, &seventyFive, "", true, true); err == nil {
+		u.SeventyFive = &seventyFive
+		u.Type = PayloadUnionTypeSeventyFive
+		return nil
+	}
+
+	var fortySix FortySix = FortySix{}
+	if err := utils.UnmarshalJSON(data, &fortySix, "", true, true); err == nil {
+		u.FortySix = &fortySix
+		u.Type = PayloadUnionTypeFortySix
+		return nil
+	}
+
+	var ninetyFour NinetyFour = NinetyFour{}
+	if err := utils.UnmarshalJSON(data, &ninetyFour, "", true, true); err == nil {
+		u.NinetyFour = &ninetyFour
+		u.Type = PayloadUnionTypeNinetyFour
+		return nil
+	}
+
+	var twenty Twenty = Twenty{}
+	if err := utils.UnmarshalJSON(data, &twenty, "", true, true); err == nil {
+		u.Twenty = &twenty
+		u.Type = PayloadUnionTypeTwenty
+		return nil
+	}
+
+	var sixteen Sixteen = Sixteen{}
+	if err := utils.UnmarshalJSON(data, &sixteen, "", true, true); err == nil {
+		u.Sixteen = &sixteen
+		u.Type = PayloadUnionTypeSixteen
+		return nil
+	}
+
+	var oneHundredAndThirtyTwo OneHundredAndThirtyTwo = OneHundredAndThirtyTwo{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThirtyTwo, "", true, true); err == nil {
+		u.OneHundredAndThirtyTwo = &oneHundredAndThirtyTwo
+		u.Type = PayloadUnionTypeOneHundredAndThirtyTwo
+		return nil
+	}
+
+	var eleven Eleven = Eleven{}
+	if err := utils.UnmarshalJSON(data, &eleven, "", true, true); err == nil {
+		u.Eleven = &eleven
+		u.Type = PayloadUnionTypeEleven
+		return nil
+	}
+
+	var fifteen Fifteen = Fifteen{}
+	if err := utils.UnmarshalJSON(data, &fifteen, "", true, true); err == nil {
+		u.Fifteen = &fifteen
+		u.Type = PayloadUnionTypeFifteen
+		return nil
+	}
+
+	var thirty Thirty = Thirty{}
+	if err := utils.UnmarshalJSON(data, &thirty, "", true, true); err == nil {
+		u.Thirty = &thirty
+		u.Type = PayloadUnionTypeThirty
+		return nil
+	}
+
+	var fiftyNine FiftyNine = FiftyNine{}
+	if err := utils.UnmarshalJSON(data, &fiftyNine, "", true, true); err == nil {
+		u.FiftyNine = &fiftyNine
+		u.Type = PayloadUnionTypeFiftyNine
+		return nil
+	}
+
+	var sixtySix SixtySix = SixtySix{}
+	if err := utils.UnmarshalJSON(data, &sixtySix, "", true, true); err == nil {
+		u.SixtySix = &sixtySix
+		u.Type = PayloadUnionTypeSixtySix
+		return nil
+	}
+
+	var oneHundredAndSix OneHundredAndSix = OneHundredAndSix{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndSix, "", true, true); err == nil {
+		u.OneHundredAndSix = &oneHundredAndSix
+		u.Type = PayloadUnionTypeOneHundredAndSix
+		return nil
+	}
+
+	var fortyTwo FortyTwo = FortyTwo{}
+	if err := utils.UnmarshalJSON(data, &fortyTwo, "", true, true); err == nil {
+		u.FortyTwo = &fortyTwo
+		u.Type = PayloadUnionTypeFortyTwo
+		return nil
+	}
+
+	var seventyNine SeventyNine = SeventyNine{}
+	if err := utils.UnmarshalJSON(data, &seventyNine, "", true, true); err == nil {
+		u.SeventyNine = &seventyNine
+		u.Type = PayloadUnionTypeSeventyNine
+		return nil
+	}
+
+	var oneHundredAndTwentyTwo OneHundredAndTwentyTwo = OneHundredAndTwentyTwo{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyTwo, "", true, true); err == nil {
+		u.OneHundredAndTwentyTwo = &oneHundredAndTwentyTwo
+		u.Type = PayloadUnionTypeOneHundredAndTwentyTwo
+		return nil
+	}
+
+	var oneHundredAndTwentyOne OneHundredAndTwentyOne = OneHundredAndTwentyOne{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyOne, "", true, true); err == nil {
+		u.OneHundredAndTwentyOne = &oneHundredAndTwentyOne
+		u.Type = PayloadUnionTypeOneHundredAndTwentyOne
+		return nil
+	}
+
+	var oneHundredAndFortySeven OneHundredAndFortySeven = OneHundredAndFortySeven{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFortySeven, "", true, true); err == nil {
+		u.OneHundredAndFortySeven = &oneHundredAndFortySeven
+		u.Type = PayloadUnionTypeOneHundredAndFortySeven
+		return nil
+	}
+
+	var oneHundredAndFour OneHundredAndFour = OneHundredAndFour{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndFour, "", true, true); err == nil {
+		u.OneHundredAndFour = &oneHundredAndFour
+		u.Type = PayloadUnionTypeOneHundredAndFour
+		return nil
+	}
+
+	var forty Forty = Forty{}
+	if err := utils.UnmarshalJSON(data, &forty, "", true, true); err == nil {
+		u.Forty = &forty
+		u.Type = PayloadUnionTypeForty
+		return nil
+	}
+
+	var ninetyEight NinetyEight = NinetyEight{}
+	if err := utils.UnmarshalJSON(data, &ninetyEight, "", true, true); err == nil {
+		u.NinetyEight = &ninetyEight
+		u.Type = PayloadUnionTypeNinetyEight
+		return nil
+	}
+
+	var sixtyFive SixtyFive = SixtyFive{}
+	if err := utils.UnmarshalJSON(data, &sixtyFive, "", true, true); err == nil {
+		u.SixtyFive = &sixtyFive
+		u.Type = PayloadUnionTypeSixtyFive
+		return nil
+	}
+
+	var sixtyTwo SixtyTwo = SixtyTwo{}
+	if err := utils.UnmarshalJSON(data, &sixtyTwo, "", true, true); err == nil {
+		u.SixtyTwo = &sixtyTwo
+		u.Type = PayloadUnionTypeSixtyTwo
+		return nil
+	}
+
+	var oneHundredAndTwentyThree OneHundredAndTwentyThree = OneHundredAndTwentyThree{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwentyThree, "", true, true); err == nil {
+		u.OneHundredAndTwentyThree = &oneHundredAndTwentyThree
+		u.Type = PayloadUnionTypeOneHundredAndTwentyThree
+		return nil
+	}
+
+	var sixtySeven SixtySeven = SixtySeven{}
+	if err := utils.UnmarshalJSON(data, &sixtySeven, "", true, true); err == nil {
+		u.SixtySeven = &sixtySeven
+		u.Type = PayloadUnionTypeSixtySeven
+		return nil
+	}
+
+	var sixtyFour SixtyFour = SixtyFour{}
+	if err := utils.UnmarshalJSON(data, &sixtyFour, "", true, true); err == nil {
+		u.SixtyFour = &sixtyFour
+		u.Type = PayloadUnionTypeSixtyFour
+		return nil
+	}
+
+	var oneHundredAndThree OneHundredAndThree = OneHundredAndThree{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndThree, "", true, true); err == nil {
+		u.OneHundredAndThree = &oneHundredAndThree
+		u.Type = PayloadUnionTypeOneHundredAndThree
+		return nil
+	}
+
+	var seventyThree SeventyThree = SeventyThree{}
+	if err := utils.UnmarshalJSON(data, &seventyThree, "", true, true); err == nil {
+		u.SeventyThree = &seventyThree
+		u.Type = PayloadUnionTypeSeventyThree
+		return nil
+	}
+
+	var oneHundredAndTwenty OneHundredAndTwenty = OneHundredAndTwenty{}
+	if err := utils.UnmarshalJSON(data, &oneHundredAndTwenty, "", true, true); err == nil {
+		u.OneHundredAndTwenty = &oneHundredAndTwenty
+		u.Type = PayloadUnionTypeOneHundredAndTwenty
+		return nil
+	}
+
+	var fiftySix FiftySix = FiftySix{}
+	if err := utils.UnmarshalJSON(data, &fiftySix, "", true, true); err == nil {
+		u.FiftySix = &fiftySix
+		u.Type = PayloadUnionTypeFiftySix
+		return nil
+	}
+
+	var sixtyEight SixtyEight = SixtyEight{}
+	if err := utils.UnmarshalJSON(data, &sixtyEight, "", true, true); err == nil {
+		u.SixtyEight = &sixtyEight
+		u.Type = PayloadUnionTypeSixtyEight
+		return nil
+	}
+
+	var seven Seven = Seven{}
+	if err := utils.UnmarshalJSON(data, &seven, "", true, true); err == nil {
+		u.Seven = &seven
+		u.Type = PayloadUnionTypeSeven
+		return nil
+	}
+
+	var thirtySeven ThirtySeven = ThirtySeven{}
+	if err := utils.UnmarshalJSON(data, &thirtySeven, "", true, true); err == nil {
+		u.ThirtySeven = &thirtySeven
+		u.Type = PayloadUnionTypeThirtySeven
+		return nil
+	}
+
+	var fiftySeven FiftySeven = FiftySeven{}
+	if err := utils.UnmarshalJSON(data, &fiftySeven, "", true, true); err == nil {
+		u.FiftySeven = &fiftySeven
+		u.Type = PayloadUnionTypeFiftySeven
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Payload", string(data))
+}
+
+func (u Payload) MarshalJSON() ([]byte, error) {
+	if u.One != nil {
+		return utils.MarshalJSON(u.One, "", true)
+	}
+
+	if u.Two != nil {
+		return utils.MarshalJSON(u.Two, "", true)
+	}
+
+	if u.Three != nil {
+		return utils.MarshalJSON(u.Three, "", true)
+	}
+
+	if u.Four != nil {
+		return utils.MarshalJSON(u.Four, "", true)
+	}
+
+	if u.Five != nil {
+		return utils.MarshalJSON(u.Five, "", true)
+	}
+
+	if u.Six != nil {
+		return utils.MarshalJSON(u.Six, "", true)
+	}
+
+	if u.Seven != nil {
+		return utils.MarshalJSON(u.Seven, "", true)
+	}
+
+	if u.Eight != nil {
+		return utils.MarshalJSON(u.Eight, "", true)
+	}
+
+	if u.Nine != nil {
+		return utils.MarshalJSON(u.Nine, "", true)
+	}
+
+	if u.Ten != nil {
+		return utils.MarshalJSON(u.Ten, "", true)
+	}
+
+	if u.Eleven != nil {
+		return utils.MarshalJSON(u.Eleven, "", true)
+	}
+
+	if u.Twelve != nil {
+		return utils.MarshalJSON(u.Twelve, "", true)
+	}
+
+	if u.Thirteen != nil {
+		return utils.MarshalJSON(u.Thirteen, "", true)
+	}
+
+	if u.Fourteen != nil {
+		return utils.MarshalJSON(u.Fourteen, "", true)
+	}
+
+	if u.Fifteen != nil {
+		return utils.MarshalJSON(u.Fifteen, "", true)
+	}
+
+	if u.Sixteen != nil {
+		return utils.MarshalJSON(u.Sixteen, "", true)
+	}
+
+	if u.Seventeen != nil {
+		return utils.MarshalJSON(u.Seventeen, "", true)
+	}
+
+	if u.Eighteen != nil {
+		return utils.MarshalJSON(u.Eighteen, "", true)
+	}
+
+	if u.Nineteen != nil {
+		return utils.MarshalJSON(u.Nineteen, "", true)
+	}
+
+	if u.Twenty != nil {
+		return utils.MarshalJSON(u.Twenty, "", true)
+	}
+
+	if u.TwentyOne != nil {
+		return utils.MarshalJSON(u.TwentyOne, "", true)
+	}
+
+	if u.TwentyTwo != nil {
+		return utils.MarshalJSON(u.TwentyTwo, "", true)
+	}
+
+	if u.TwentyThree != nil {
+		return utils.MarshalJSON(u.TwentyThree, "", true)
+	}
+
+	if u.TwentyFour != nil {
+		return utils.MarshalJSON(u.TwentyFour, "", true)
+	}
+
+	if u.TwentyFive != nil {
+		return utils.MarshalJSON(u.TwentyFive, "", true)
+	}
+
+	if u.TwentySix != nil {
+		return utils.MarshalJSON(u.TwentySix, "", true)
+	}
+
+	if u.TwentySeven != nil {
+		return utils.MarshalJSON(u.TwentySeven, "", true)
+	}
+
+	if u.TwentyEight != nil {
+		return utils.MarshalJSON(u.TwentyEight, "", true)
+	}
+
+	if u.TwentyNine != nil {
+		return utils.MarshalJSON(u.TwentyNine, "", true)
+	}
+
+	if u.Thirty != nil {
+		return utils.MarshalJSON(u.Thirty, "", true)
+	}
+
+	if u.ThirtyOne != nil {
+		return utils.MarshalJSON(u.ThirtyOne, "", true)
+	}
+
+	if u.ThirtyTwo != nil {
+		return utils.MarshalJSON(u.ThirtyTwo, "", true)
+	}
+
+	if u.ThirtyThree != nil {
+		return utils.MarshalJSON(u.ThirtyThree, "", true)
+	}
+
+	if u.ThirtyFour != nil {
+		return utils.MarshalJSON(u.ThirtyFour, "", true)
+	}
+
+	if u.ThirtyFive != nil {
+		return utils.MarshalJSON(u.ThirtyFive, "", true)
+	}
+
+	if u.ThirtySix != nil {
+		return utils.MarshalJSON(u.ThirtySix, "", true)
+	}
+
+	if u.ThirtySeven != nil {
+		return utils.MarshalJSON(u.ThirtySeven, "", true)
+	}
+
+	if u.ThirtyEight != nil {
+		return utils.MarshalJSON(u.ThirtyEight, "", true)
+	}
+
+	if u.ThirtyNine != nil {
+		return utils.MarshalJSON(u.ThirtyNine, "", true)
+	}
+
+	if u.Forty != nil {
+		return utils.MarshalJSON(u.Forty, "", true)
+	}
+
+	if u.FortyOne != nil {
+		return utils.MarshalJSON(u.FortyOne, "", true)
+	}
+
+	if u.FortyTwo != nil {
+		return utils.MarshalJSON(u.FortyTwo, "", true)
+	}
+
+	if u.FortyThree != nil {
+		return utils.MarshalJSON(u.FortyThree, "", true)
+	}
+
+	if u.FortyFour != nil {
+		return utils.MarshalJSON(u.FortyFour, "", true)
+	}
+
+	if u.FortyFive != nil {
+		return utils.MarshalJSON(u.FortyFive, "", true)
+	}
+
+	if u.FortySix != nil {
+		return utils.MarshalJSON(u.FortySix, "", true)
+	}
+
+	if u.FortySeven != nil {
+		return utils.MarshalJSON(u.FortySeven, "", true)
+	}
+
+	if u.FortyEight != nil {
+		return utils.MarshalJSON(u.FortyEight, "", true)
+	}
+
+	if u.FortyNine != nil {
+		return utils.MarshalJSON(u.FortyNine, "", true)
+	}
+
+	if u.Fifty != nil {
+		return utils.MarshalJSON(u.Fifty, "", true)
+	}
+
+	if u.FiftyOne != nil {
+		return utils.MarshalJSON(u.FiftyOne, "", true)
+	}
+
+	if u.FiftyTwo != nil {
+		return utils.MarshalJSON(u.FiftyTwo, "", true)
+	}
+
+	if u.FiftyThree != nil {
+		return utils.MarshalJSON(u.FiftyThree, "", true)
+	}
+
+	if u.FiftyFour != nil {
+		return utils.MarshalJSON(u.FiftyFour, "", true)
+	}
+
+	if u.FiftyFive != nil {
+		return utils.MarshalJSON(u.FiftyFive, "", true)
+	}
+
+	if u.FiftySix != nil {
+		return utils.MarshalJSON(u.FiftySix, "", true)
+	}
+
+	if u.FiftySeven != nil {
+		return utils.MarshalJSON(u.FiftySeven, "", true)
+	}
+
+	if u.FiftyEight != nil {
+		return utils.MarshalJSON(u.FiftyEight, "", true)
+	}
+
+	if u.FiftyNine != nil {
+		return utils.MarshalJSON(u.FiftyNine, "", true)
+	}
+
+	if u.Sixty != nil {
+		return utils.MarshalJSON(u.Sixty, "", true)
+	}
+
+	if u.SixtyOne != nil {
+		return utils.MarshalJSON(u.SixtyOne, "", true)
+	}
+
+	if u.SixtyTwo != nil {
+		return utils.MarshalJSON(u.SixtyTwo, "", true)
+	}
+
+	if u.SixtyThree != nil {
+		return utils.MarshalJSON(u.SixtyThree, "", true)
+	}
+
+	if u.SixtyFour != nil {
+		return utils.MarshalJSON(u.SixtyFour, "", true)
+	}
+
+	if u.SixtyFive != nil {
+		return utils.MarshalJSON(u.SixtyFive, "", true)
+	}
+
+	if u.SixtySix != nil {
+		return utils.MarshalJSON(u.SixtySix, "", true)
+	}
+
+	if u.SixtySeven != nil {
+		return utils.MarshalJSON(u.SixtySeven, "", true)
+	}
+
+	if u.SixtyEight != nil {
+		return utils.MarshalJSON(u.SixtyEight, "", true)
+	}
+
+	if u.SixtyNine != nil {
+		return utils.MarshalJSON(u.SixtyNine, "", true)
+	}
+
+	if u.Seventy != nil {
+		return utils.MarshalJSON(u.Seventy, "", true)
+	}
+
+	if u.SeventyOne != nil {
+		return utils.MarshalJSON(u.SeventyOne, "", true)
+	}
+
+	if u.SeventyTwo != nil {
+		return utils.MarshalJSON(u.SeventyTwo, "", true)
+	}
+
+	if u.SeventyThree != nil {
+		return utils.MarshalJSON(u.SeventyThree, "", true)
+	}
+
+	if u.SeventyFour != nil {
+		return utils.MarshalJSON(u.SeventyFour, "", true)
+	}
+
+	if u.SeventyFive != nil {
+		return utils.MarshalJSON(u.SeventyFive, "", true)
+	}
+
+	if u.SeventySix != nil {
+		return utils.MarshalJSON(u.SeventySix, "", true)
+	}
+
+	if u.SeventySeven != nil {
+		return utils.MarshalJSON(u.SeventySeven, "", true)
+	}
+
+	if u.SeventyEight != nil {
+		return utils.MarshalJSON(u.SeventyEight, "", true)
+	}
+
+	if u.SeventyNine != nil {
+		return utils.MarshalJSON(u.SeventyNine, "", true)
+	}
+
+	if u.Eighty != nil {
+		return utils.MarshalJSON(u.Eighty, "", true)
+	}
+
+	if u.EightyOne != nil {
+		return utils.MarshalJSON(u.EightyOne, "", true)
+	}
+
+	if u.EightyTwo != nil {
+		return utils.MarshalJSON(u.EightyTwo, "", true)
+	}
+
+	if u.EightyThree != nil {
+		return utils.MarshalJSON(u.EightyThree, "", true)
+	}
+
+	if u.EightyFour != nil {
+		return utils.MarshalJSON(u.EightyFour, "", true)
+	}
+
+	if u.EightyFive != nil {
+		return utils.MarshalJSON(u.EightyFive, "", true)
+	}
+
+	if u.EightySix != nil {
+		return utils.MarshalJSON(u.EightySix, "", true)
+	}
+
+	if u.EightySeven != nil {
+		return utils.MarshalJSON(u.EightySeven, "", true)
+	}
+
+	if u.EightyEight != nil {
+		return utils.MarshalJSON(u.EightyEight, "", true)
+	}
+
+	if u.EightyNine != nil {
+		return utils.MarshalJSON(u.EightyNine, "", true)
+	}
+
+	if u.Ninety != nil {
+		return utils.MarshalJSON(u.Ninety, "", true)
+	}
+
+	if u.NinetyOne != nil {
+		return utils.MarshalJSON(u.NinetyOne, "", true)
+	}
+
+	if u.NinetyTwo != nil {
+		return utils.MarshalJSON(u.NinetyTwo, "", true)
+	}
+
+	if u.NinetyThree != nil {
+		return utils.MarshalJSON(u.NinetyThree, "", true)
+	}
+
+	if u.NinetyFour != nil {
+		return utils.MarshalJSON(u.NinetyFour, "", true)
+	}
+
+	if u.NinetyFive != nil {
+		return utils.MarshalJSON(u.NinetyFive, "", true)
+	}
+
+	if u.NinetySix != nil {
+		return utils.MarshalJSON(u.NinetySix, "", true)
+	}
+
+	if u.NinetySeven != nil {
+		return utils.MarshalJSON(u.NinetySeven, "", true)
+	}
+
+	if u.NinetyEight != nil {
+		return utils.MarshalJSON(u.NinetyEight, "", true)
+	}
+
+	if u.NinetyNine != nil {
+		return utils.MarshalJSON(u.NinetyNine, "", true)
+	}
+
+	if u.OneHundred != nil {
+		return utils.MarshalJSON(u.OneHundred, "", true)
+	}
+
+	if u.OneHundredAndOne != nil {
+		return utils.MarshalJSON(u.OneHundredAndOne, "", true)
+	}
+
+	if u.OneHundredAndTwo != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwo, "", true)
+	}
+
+	if u.OneHundredAndThree != nil {
+		return utils.MarshalJSON(u.OneHundredAndThree, "", true)
+	}
+
+	if u.OneHundredAndFour != nil {
+		return utils.MarshalJSON(u.OneHundredAndFour, "", true)
+	}
+
+	if u.OneHundredAndFive != nil {
+		return utils.MarshalJSON(u.OneHundredAndFive, "", true)
+	}
+
+	if u.OneHundredAndSix != nil {
+		return utils.MarshalJSON(u.OneHundredAndSix, "", true)
+	}
+
+	if u.OneHundredAndSeven != nil {
+		return utils.MarshalJSON(u.OneHundredAndSeven, "", true)
+	}
+
+	if u.OneHundredAndEight != nil {
+		return utils.MarshalJSON(u.OneHundredAndEight, "", true)
+	}
+
+	if u.OneHundredAndNine != nil {
+		return utils.MarshalJSON(u.OneHundredAndNine, "", true)
+	}
+
+	if u.OneHundredAndTen != nil {
+		return utils.MarshalJSON(u.OneHundredAndTen, "", true)
+	}
+
+	if u.OneHundredAndEleven != nil {
+		return utils.MarshalJSON(u.OneHundredAndEleven, "", true)
+	}
+
+	if u.OneHundredAndTwelve != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwelve, "", true)
+	}
+
+	if u.OneHundredAndThirteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirteen, "", true)
+	}
+
+	if u.OneHundredAndFourteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndFourteen, "", true)
+	}
+
+	if u.OneHundredAndFifteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndFifteen, "", true)
+	}
+
+	if u.OneHundredAndSixteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndSixteen, "", true)
+	}
+
+	if u.OneHundredAndSeventeen != nil {
+		return utils.MarshalJSON(u.OneHundredAndSeventeen, "", true)
+	}
+
+	if u.OneHundredAndEighteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndEighteen, "", true)
+	}
+
+	if u.OneHundredAndNineteen != nil {
+		return utils.MarshalJSON(u.OneHundredAndNineteen, "", true)
+	}
+
+	if u.OneHundredAndTwenty != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwenty, "", true)
+	}
+
+	if u.OneHundredAndTwentyOne != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyOne, "", true)
+	}
+
+	if u.OneHundredAndTwentyTwo != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyTwo, "", true)
+	}
+
+	if u.OneHundredAndTwentyThree != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyThree, "", true)
+	}
+
+	if u.OneHundredAndTwentyFour != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyFour, "", true)
+	}
+
+	if u.OneHundredAndTwentyFive != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyFive, "", true)
+	}
+
+	if u.OneHundredAndTwentySix != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentySix, "", true)
+	}
+
+	if u.OneHundredAndTwentySeven != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentySeven, "", true)
+	}
+
+	if u.OneHundredAndTwentyEight != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyEight, "", true)
+	}
+
+	if u.OneHundredAndTwentyNine != nil {
+		return utils.MarshalJSON(u.OneHundredAndTwentyNine, "", true)
+	}
+
+	if u.OneHundredAndThirty != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirty, "", true)
+	}
+
+	if u.OneHundredAndThirtyOne != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyOne, "", true)
+	}
+
+	if u.OneHundredAndThirtyTwo != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyTwo, "", true)
+	}
+
+	if u.OneHundredAndThirtyThree != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyThree, "", true)
+	}
+
+	if u.OneHundredAndThirtyFour != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyFour, "", true)
+	}
+
+	if u.OneHundredAndThirtyFive != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyFive, "", true)
+	}
+
+	if u.OneHundredAndThirtySix != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtySix, "", true)
+	}
+
+	if u.OneHundredAndThirtySeven != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtySeven, "", true)
+	}
+
+	if u.OneHundredAndThirtyEight != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyEight, "", true)
+	}
+
+	if u.OneHundredAndThirtyNine != nil {
+		return utils.MarshalJSON(u.OneHundredAndThirtyNine, "", true)
+	}
+
+	if u.OneHundredAndForty != nil {
+		return utils.MarshalJSON(u.OneHundredAndForty, "", true)
+	}
+
+	if u.OneHundredAndFortyOne != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortyOne, "", true)
+	}
+
+	if u.OneHundredAndFortyTwo != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortyTwo, "", true)
+	}
+
+	if u.OneHundredAndFortyThree != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortyThree, "", true)
+	}
+
+	if u.OneHundredAndFortyFour != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortyFour, "", true)
+	}
+
+	if u.OneHundredAndFortyFive != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortyFive, "", true)
+	}
+
+	if u.OneHundredAndFortySix != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortySix, "", true)
+	}
+
+	if u.OneHundredAndFortySeven != nil {
+		return utils.MarshalJSON(u.OneHundredAndFortySeven, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Payload: all fields are null")
+}
+
 // UserEvent - Array of events generated by the User.
 type UserEvent struct {
+	// The unique identifier of the Event.
+	ID string `json:"id"`
+	// The human-readable text of the Event.
+	Text string `json:"text"`
+	// A list of "entities" within the event `text`. Useful for enhancing the displayed text with additional styling and links.
+	Entities []Entities `json:"entities"`
+	// Timestamp (in milliseconds) of when the event was generated.
+	CreatedAt float64 `json:"createdAt"`
+	// Metadata for the User who generated the event.
+	User *User `json:"user,omitempty"`
+	// The unique identifier of the User who generated the event.
+	UserID  string   `json:"userId"`
+	Payload *Payload `json:"payload,omitempty"`
+}
+
+func (o *UserEvent) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UserEvent) GetText() string {
+	if o == nil {
+		return ""
+	}
+	return o.Text
+}
+
+func (o *UserEvent) GetEntities() []Entities {
+	if o == nil {
+		return []Entities{}
+	}
+	return o.Entities
+}
+
+func (o *UserEvent) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UserEvent) GetUser() *User {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}
+
+func (o *UserEvent) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *UserEvent) GetPayload() *Payload {
+	if o == nil {
+		return nil
+	}
+	return o.Payload
 }

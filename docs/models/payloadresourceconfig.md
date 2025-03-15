@@ -1,0 +1,35 @@
+# PayloadResourceConfig
+
+## Example Usage
+
+```typescript
+import { PayloadResourceConfig } from "@vercel/sdk/models/userevent.js";
+
+let value: PayloadResourceConfig = {};
+```
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `nodeType`                                                               | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `concurrentBuilds`                                                       | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `buildEntitlements`                                                      | [models.PayloadBuildEntitlements](../models/payloadbuildentitlements.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `awsAccountType`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `awsAccountIds`                                                          | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `cfZoneName`                                                             | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `imageOptimizationType`                                                  | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `edgeConfigs`                                                            | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `edgeConfigSize`                                                         | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `edgeFunctionMaxSizeBytes`                                               | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `edgeFunctionExecutionTimeoutMs`                                         | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `serverlessFunctionDefaultMaxExecutionTime`                              | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `serverlessFunctionMaxMemorySize`                                        | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `kvDatabases`                                                            | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `postgresDatabases`                                                      | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `blobStores`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `integrationStores`                                                      | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `cronJobs`                                                               | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `cronJobsPerProject`                                                     | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `microfrontendGroupsPerTeam`                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `microfrontendProjectsPerGroup`                                          | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

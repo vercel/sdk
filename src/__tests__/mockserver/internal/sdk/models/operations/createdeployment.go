@@ -1385,6 +1385,30 @@ func (o *Build) GetEnv() []string {
 }
 
 type Builds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *Builds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *Builds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *Builds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type CreateDeploymentFramework string

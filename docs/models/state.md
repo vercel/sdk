@@ -1,11 +1,13 @@
 # State
 
+Invoice state.
+
 ## Example Usage
 
 ```typescript
 import { State } from "@vercel/sdk/models/getinvoiceop.js";
 
-let value: State = "scheduled";
+let value: State = "notpaid";
 ```
 
 ## Values

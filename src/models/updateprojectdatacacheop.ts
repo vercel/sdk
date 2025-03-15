@@ -144,7 +144,7 @@ export type UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONR
     typeof UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type
   >;
 
-export type Fifteen = {
+export type ContentHint15 = {
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type;
   projectId: string;
@@ -159,7 +159,7 @@ export type UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONR
     typeof UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type
   >;
 
-export type Fourteen = {
+export type ContentHint14 = {
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type;
   storeId: string;
@@ -177,7 +177,7 @@ export type UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONR
     typeof UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type
   >;
 
-export type Thirteen = {
+export type ContentHint13 = {
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type;
   storeId: string;
@@ -192,7 +192,7 @@ export type UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONR
     typeof UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type
   >;
 
-export type UpdateProjectDataCacheContentHint12 = {
+export type ContentHint12 = {
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type;
   storeId: string;
@@ -207,7 +207,7 @@ export type UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONR
     typeof UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type
   >;
 
-export type UpdateProjectDataCacheContentHint11 = {
+export type ContentHint11 = {
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type;
   storeId: string;
@@ -355,11 +355,11 @@ export type ContentHint =
   | ContentHint8
   | ContentHint9
   | ContentHint10
-  | UpdateProjectDataCacheContentHint11
-  | UpdateProjectDataCacheContentHint12
-  | Thirteen
-  | Fifteen
-  | Fourteen;
+  | ContentHint11
+  | ContentHint12
+  | ContentHint13
+  | ContentHint15
+  | ContentHint14;
 
 export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyType =
   {
@@ -414,11 +414,11 @@ export type Env = {
     | ContentHint8
     | ContentHint9
     | ContentHint10
-    | UpdateProjectDataCacheContentHint11
-    | UpdateProjectDataCacheContentHint12
-    | Thirteen
-    | Fifteen
-    | Fourteen
+    | ContentHint11
+    | ContentHint12
+    | ContentHint13
+    | ContentHint15
+    | ContentHint14
     | null
     | undefined;
   /**
@@ -734,13 +734,13 @@ export type Link1 = {
 
 export type Link = Link1 | Link3 | Link2;
 
-export type Microfrontends2 = {
+export type UpdateProjectDataCacheMicrofrontends2 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
 };
 
-export type Microfrontends1 = {
+export type UpdateProjectDataCacheMicrofrontends1 = {
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -767,7 +767,9 @@ export type Microfrontends1 = {
   routeObservabilityToThisProject?: boolean | undefined;
 };
 
-export type Microfrontends = Microfrontends2 | Microfrontends1;
+export type UpdateProjectDataCacheMicrofrontends =
+  | UpdateProjectDataCacheMicrofrontends2
+  | UpdateProjectDataCacheMicrofrontends1;
 
 export const UpdateProjectDataCacheNodeVersion = {
   TwentyTwoDotX: "22.x",
@@ -1536,12 +1538,14 @@ export type UpdateProjectDataCacheOidcTokenConfig = {
   issuerMode?: UpdateProjectDataCacheIssuerMode | undefined;
 };
 
-export const Tier = {
+export const UpdateProjectDataCacheTier = {
   Standard: "standard",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
-export type Tier = ClosedEnum<typeof Tier>;
+export type UpdateProjectDataCacheTier = ClosedEnum<
+  typeof UpdateProjectDataCacheTier
+>;
 
 export type UpdateProjectDataCacheResponseBody = {
   accountId: string;
@@ -1571,7 +1575,10 @@ export type UpdateProjectDataCacheResponseBody = {
   ipBuckets?: Array<IpBuckets> | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
   link?: Link1 | Link3 | Link2 | undefined;
-  microfrontends?: Microfrontends2 | Microfrontends1 | undefined;
+  microfrontends?:
+    | UpdateProjectDataCacheMicrofrontends2
+    | UpdateProjectDataCacheMicrofrontends1
+    | undefined;
   name: string;
   nodeVersion: UpdateProjectDataCacheNodeVersion;
   optionsAllowlist?: UpdateProjectDataCacheOptionsAllowlist | null | undefined;
@@ -1617,7 +1624,7 @@ export type UpdateProjectDataCacheResponseBody = {
   webAnalytics?: UpdateProjectDataCacheWebAnalytics | undefined;
   security?: UpdateProjectDataCacheSecurity | undefined;
   oidcTokenConfig?: UpdateProjectDataCacheOidcTokenConfig | undefined;
-  tier?: Tier | undefined;
+  tier?: UpdateProjectDataCacheTier | undefined;
 };
 
 /** @internal */
@@ -2276,24 +2283,27 @@ export namespace UpdateProjectDataCacheContentHintProjectsResponse200Application
 }
 
 /** @internal */
-export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
-  z.object({
-    type:
-      UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$inboundSchema,
-    projectId: z.string(),
-  });
+export const ContentHint15$inboundSchema: z.ZodType<
+  ContentHint15,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$inboundSchema,
+  projectId: z.string(),
+});
 
 /** @internal */
-export type Fifteen$Outbound = {
+export type ContentHint15$Outbound = {
   type: string;
   projectId: string;
 };
 
 /** @internal */
-export const Fifteen$outboundSchema: z.ZodType<
-  Fifteen$Outbound,
+export const ContentHint15$outboundSchema: z.ZodType<
+  ContentHint15$Outbound,
   z.ZodTypeDef,
-  Fifteen
+  ContentHint15
 > = z.object({
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$outboundSchema,
@@ -2304,26 +2314,26 @@ export const Fifteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Fifteen$ {
-  /** @deprecated use `Fifteen$inboundSchema` instead. */
-  export const inboundSchema = Fifteen$inboundSchema;
-  /** @deprecated use `Fifteen$outboundSchema` instead. */
-  export const outboundSchema = Fifteen$outboundSchema;
-  /** @deprecated use `Fifteen$Outbound` instead. */
-  export type Outbound = Fifteen$Outbound;
+export namespace ContentHint15$ {
+  /** @deprecated use `ContentHint15$inboundSchema` instead. */
+  export const inboundSchema = ContentHint15$inboundSchema;
+  /** @deprecated use `ContentHint15$outboundSchema` instead. */
+  export const outboundSchema = ContentHint15$outboundSchema;
+  /** @deprecated use `ContentHint15$Outbound` instead. */
+  export type Outbound = ContentHint15$Outbound;
 }
 
-export function fifteenToJSON(fifteen: Fifteen): string {
-  return JSON.stringify(Fifteen$outboundSchema.parse(fifteen));
+export function contentHint15ToJSON(contentHint15: ContentHint15): string {
+  return JSON.stringify(ContentHint15$outboundSchema.parse(contentHint15));
 }
 
-export function fifteenFromJSON(
+export function contentHint15FromJSON(
   jsonString: string,
-): SafeParseResult<Fifteen, SDKValidationError> {
+): SafeParseResult<ContentHint15, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fifteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fifteen' from JSON`,
+    (x) => ContentHint15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint15' from JSON`,
   );
 }
 
@@ -2356,8 +2366,8 @@ export namespace UpdateProjectDataCacheContentHintProjectsResponse200Application
 }
 
 /** @internal */
-export const Fourteen$inboundSchema: z.ZodType<
-  Fourteen,
+export const ContentHint14$inboundSchema: z.ZodType<
+  ContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2370,7 +2380,7 @@ export const Fourteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Fourteen$Outbound = {
+export type ContentHint14$Outbound = {
   type: string;
   storeId: string;
   integrationId: string;
@@ -2379,10 +2389,10 @@ export type Fourteen$Outbound = {
 };
 
 /** @internal */
-export const Fourteen$outboundSchema: z.ZodType<
-  Fourteen$Outbound,
+export const ContentHint14$outboundSchema: z.ZodType<
+  ContentHint14$Outbound,
   z.ZodTypeDef,
-  Fourteen
+  ContentHint14
 > = z.object({
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$outboundSchema,
@@ -2396,26 +2406,26 @@ export const Fourteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Fourteen$ {
-  /** @deprecated use `Fourteen$inboundSchema` instead. */
-  export const inboundSchema = Fourteen$inboundSchema;
-  /** @deprecated use `Fourteen$outboundSchema` instead. */
-  export const outboundSchema = Fourteen$outboundSchema;
-  /** @deprecated use `Fourteen$Outbound` instead. */
-  export type Outbound = Fourteen$Outbound;
+export namespace ContentHint14$ {
+  /** @deprecated use `ContentHint14$inboundSchema` instead. */
+  export const inboundSchema = ContentHint14$inboundSchema;
+  /** @deprecated use `ContentHint14$outboundSchema` instead. */
+  export const outboundSchema = ContentHint14$outboundSchema;
+  /** @deprecated use `ContentHint14$Outbound` instead. */
+  export type Outbound = ContentHint14$Outbound;
 }
 
-export function fourteenToJSON(fourteen: Fourteen): string {
-  return JSON.stringify(Fourteen$outboundSchema.parse(fourteen));
+export function contentHint14ToJSON(contentHint14: ContentHint14): string {
+  return JSON.stringify(ContentHint14$outboundSchema.parse(contentHint14));
 }
 
-export function fourteenFromJSON(
+export function contentHint14FromJSON(
   jsonString: string,
-): SafeParseResult<Fourteen, SDKValidationError> {
+): SafeParseResult<ContentHint14, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fourteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fourteen' from JSON`,
+    (x) => ContentHint14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint14' from JSON`,
   );
 }
 
@@ -2448,8 +2458,8 @@ export namespace UpdateProjectDataCacheContentHintProjectsResponse200Application
 }
 
 /** @internal */
-export const Thirteen$inboundSchema: z.ZodType<
-  Thirteen,
+export const ContentHint13$inboundSchema: z.ZodType<
+  ContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2459,16 +2469,16 @@ export const Thirteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Thirteen$Outbound = {
+export type ContentHint13$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const Thirteen$outboundSchema: z.ZodType<
-  Thirteen$Outbound,
+export const ContentHint13$outboundSchema: z.ZodType<
+  ContentHint13$Outbound,
   z.ZodTypeDef,
-  Thirteen
+  ContentHint13
 > = z.object({
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$outboundSchema,
@@ -2479,26 +2489,26 @@ export const Thirteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Thirteen$ {
-  /** @deprecated use `Thirteen$inboundSchema` instead. */
-  export const inboundSchema = Thirteen$inboundSchema;
-  /** @deprecated use `Thirteen$outboundSchema` instead. */
-  export const outboundSchema = Thirteen$outboundSchema;
-  /** @deprecated use `Thirteen$Outbound` instead. */
-  export type Outbound = Thirteen$Outbound;
+export namespace ContentHint13$ {
+  /** @deprecated use `ContentHint13$inboundSchema` instead. */
+  export const inboundSchema = ContentHint13$inboundSchema;
+  /** @deprecated use `ContentHint13$outboundSchema` instead. */
+  export const outboundSchema = ContentHint13$outboundSchema;
+  /** @deprecated use `ContentHint13$Outbound` instead. */
+  export type Outbound = ContentHint13$Outbound;
 }
 
-export function thirteenToJSON(thirteen: Thirteen): string {
-  return JSON.stringify(Thirteen$outboundSchema.parse(thirteen));
+export function contentHint13ToJSON(contentHint13: ContentHint13): string {
+  return JSON.stringify(ContentHint13$outboundSchema.parse(contentHint13));
 }
 
-export function thirteenFromJSON(
+export function contentHint13FromJSON(
   jsonString: string,
-): SafeParseResult<Thirteen, SDKValidationError> {
+): SafeParseResult<ContentHint13, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Thirteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirteen' from JSON`,
+    (x) => ContentHint13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint13' from JSON`,
   );
 }
 
@@ -2531,8 +2541,8 @@ export namespace UpdateProjectDataCacheContentHintProjectsResponse200Application
 }
 
 /** @internal */
-export const UpdateProjectDataCacheContentHint12$inboundSchema: z.ZodType<
-  UpdateProjectDataCacheContentHint12,
+export const ContentHint12$inboundSchema: z.ZodType<
+  ContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2542,16 +2552,16 @@ export const UpdateProjectDataCacheContentHint12$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UpdateProjectDataCacheContentHint12$Outbound = {
+export type ContentHint12$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const UpdateProjectDataCacheContentHint12$outboundSchema: z.ZodType<
-  UpdateProjectDataCacheContentHint12$Outbound,
+export const ContentHint12$outboundSchema: z.ZodType<
+  ContentHint12$Outbound,
   z.ZodTypeDef,
-  UpdateProjectDataCacheContentHint12
+  ContentHint12
 > = z.object({
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$outboundSchema,
@@ -2562,35 +2572,26 @@ export const UpdateProjectDataCacheContentHint12$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectDataCacheContentHint12$ {
-  /** @deprecated use `UpdateProjectDataCacheContentHint12$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectDataCacheContentHint12$inboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheContentHint12$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectDataCacheContentHint12$outboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheContentHint12$Outbound` instead. */
-  export type Outbound = UpdateProjectDataCacheContentHint12$Outbound;
+export namespace ContentHint12$ {
+  /** @deprecated use `ContentHint12$inboundSchema` instead. */
+  export const inboundSchema = ContentHint12$inboundSchema;
+  /** @deprecated use `ContentHint12$outboundSchema` instead. */
+  export const outboundSchema = ContentHint12$outboundSchema;
+  /** @deprecated use `ContentHint12$Outbound` instead. */
+  export type Outbound = ContentHint12$Outbound;
 }
 
-export function updateProjectDataCacheContentHint12ToJSON(
-  updateProjectDataCacheContentHint12: UpdateProjectDataCacheContentHint12,
-): string {
-  return JSON.stringify(
-    UpdateProjectDataCacheContentHint12$outboundSchema.parse(
-      updateProjectDataCacheContentHint12,
-    ),
-  );
+export function contentHint12ToJSON(contentHint12: ContentHint12): string {
+  return JSON.stringify(ContentHint12$outboundSchema.parse(contentHint12));
 }
 
-export function updateProjectDataCacheContentHint12FromJSON(
+export function contentHint12FromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectDataCacheContentHint12, SDKValidationError> {
+): SafeParseResult<ContentHint12, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      UpdateProjectDataCacheContentHint12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectDataCacheContentHint12' from JSON`,
+    (x) => ContentHint12$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint12' from JSON`,
   );
 }
 
@@ -2623,8 +2624,8 @@ export namespace UpdateProjectDataCacheContentHintProjectsResponse200Application
 }
 
 /** @internal */
-export const UpdateProjectDataCacheContentHint11$inboundSchema: z.ZodType<
-  UpdateProjectDataCacheContentHint11,
+export const ContentHint11$inboundSchema: z.ZodType<
+  ContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2634,16 +2635,16 @@ export const UpdateProjectDataCacheContentHint11$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UpdateProjectDataCacheContentHint11$Outbound = {
+export type ContentHint11$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const UpdateProjectDataCacheContentHint11$outboundSchema: z.ZodType<
-  UpdateProjectDataCacheContentHint11$Outbound,
+export const ContentHint11$outboundSchema: z.ZodType<
+  ContentHint11$Outbound,
   z.ZodTypeDef,
-  UpdateProjectDataCacheContentHint11
+  ContentHint11
 > = z.object({
   type:
     UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$outboundSchema,
@@ -2654,35 +2655,26 @@ export const UpdateProjectDataCacheContentHint11$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectDataCacheContentHint11$ {
-  /** @deprecated use `UpdateProjectDataCacheContentHint11$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectDataCacheContentHint11$inboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheContentHint11$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectDataCacheContentHint11$outboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheContentHint11$Outbound` instead. */
-  export type Outbound = UpdateProjectDataCacheContentHint11$Outbound;
+export namespace ContentHint11$ {
+  /** @deprecated use `ContentHint11$inboundSchema` instead. */
+  export const inboundSchema = ContentHint11$inboundSchema;
+  /** @deprecated use `ContentHint11$outboundSchema` instead. */
+  export const outboundSchema = ContentHint11$outboundSchema;
+  /** @deprecated use `ContentHint11$Outbound` instead. */
+  export type Outbound = ContentHint11$Outbound;
 }
 
-export function updateProjectDataCacheContentHint11ToJSON(
-  updateProjectDataCacheContentHint11: UpdateProjectDataCacheContentHint11,
-): string {
-  return JSON.stringify(
-    UpdateProjectDataCacheContentHint11$outboundSchema.parse(
-      updateProjectDataCacheContentHint11,
-    ),
-  );
+export function contentHint11ToJSON(contentHint11: ContentHint11): string {
+  return JSON.stringify(ContentHint11$outboundSchema.parse(contentHint11));
 }
 
-export function updateProjectDataCacheContentHint11FromJSON(
+export function contentHint11FromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectDataCacheContentHint11, SDKValidationError> {
+): SafeParseResult<ContentHint11, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      UpdateProjectDataCacheContentHint11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectDataCacheContentHint11' from JSON`,
+    (x) => ContentHint11$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint11' from JSON`,
   );
 }
 
@@ -3500,11 +3492,11 @@ export const ContentHint$inboundSchema: z.ZodType<
   z.lazy(() => ContentHint8$inboundSchema),
   z.lazy(() => ContentHint9$inboundSchema),
   z.lazy(() => ContentHint10$inboundSchema),
-  z.lazy(() => UpdateProjectDataCacheContentHint11$inboundSchema),
-  z.lazy(() => UpdateProjectDataCacheContentHint12$inboundSchema),
-  z.lazy(() => Thirteen$inboundSchema),
-  z.lazy(() => Fifteen$inboundSchema),
-  z.lazy(() => Fourteen$inboundSchema),
+  z.lazy(() => ContentHint11$inboundSchema),
+  z.lazy(() => ContentHint12$inboundSchema),
+  z.lazy(() => ContentHint13$inboundSchema),
+  z.lazy(() => ContentHint15$inboundSchema),
+  z.lazy(() => ContentHint14$inboundSchema),
 ]);
 
 /** @internal */
@@ -3519,11 +3511,11 @@ export type ContentHint$Outbound =
   | ContentHint8$Outbound
   | ContentHint9$Outbound
   | ContentHint10$Outbound
-  | UpdateProjectDataCacheContentHint11$Outbound
-  | UpdateProjectDataCacheContentHint12$Outbound
-  | Thirteen$Outbound
-  | Fifteen$Outbound
-  | Fourteen$Outbound;
+  | ContentHint11$Outbound
+  | ContentHint12$Outbound
+  | ContentHint13$Outbound
+  | ContentHint15$Outbound
+  | ContentHint14$Outbound;
 
 /** @internal */
 export const ContentHint$outboundSchema: z.ZodType<
@@ -3541,11 +3533,11 @@ export const ContentHint$outboundSchema: z.ZodType<
   z.lazy(() => ContentHint8$outboundSchema),
   z.lazy(() => ContentHint9$outboundSchema),
   z.lazy(() => ContentHint10$outboundSchema),
-  z.lazy(() => UpdateProjectDataCacheContentHint11$outboundSchema),
-  z.lazy(() => UpdateProjectDataCacheContentHint12$outboundSchema),
-  z.lazy(() => Thirteen$outboundSchema),
-  z.lazy(() => Fifteen$outboundSchema),
-  z.lazy(() => Fourteen$outboundSchema),
+  z.lazy(() => ContentHint11$outboundSchema),
+  z.lazy(() => ContentHint12$outboundSchema),
+  z.lazy(() => ContentHint13$outboundSchema),
+  z.lazy(() => ContentHint15$outboundSchema),
+  z.lazy(() => ContentHint14$outboundSchema),
 ]);
 
 /**
@@ -3694,11 +3686,11 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
         z.lazy(() => ContentHint8$inboundSchema),
         z.lazy(() => ContentHint9$inboundSchema),
         z.lazy(() => ContentHint10$inboundSchema),
-        z.lazy(() => UpdateProjectDataCacheContentHint11$inboundSchema),
-        z.lazy(() => UpdateProjectDataCacheContentHint12$inboundSchema),
-        z.lazy(() => Thirteen$inboundSchema),
-        z.lazy(() => Fifteen$inboundSchema),
-        z.lazy(() => Fourteen$inboundSchema),
+        z.lazy(() => ContentHint11$inboundSchema),
+        z.lazy(() => ContentHint12$inboundSchema),
+        z.lazy(() => ContentHint13$inboundSchema),
+        z.lazy(() => ContentHint15$inboundSchema),
+        z.lazy(() => ContentHint14$inboundSchema),
       ]),
     ).optional(),
     internalContentHint: z.nullable(
@@ -3737,11 +3729,11 @@ export type Env$Outbound = {
     | ContentHint8$Outbound
     | ContentHint9$Outbound
     | ContentHint10$Outbound
-    | UpdateProjectDataCacheContentHint11$Outbound
-    | UpdateProjectDataCacheContentHint12$Outbound
-    | Thirteen$Outbound
-    | Fifteen$Outbound
-    | Fourteen$Outbound
+    | ContentHint11$Outbound
+    | ContentHint12$Outbound
+    | ContentHint13$Outbound
+    | ContentHint15$Outbound
+    | ContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?: InternalContentHint$Outbound | null | undefined;
@@ -3783,11 +3775,11 @@ export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
         z.lazy(() => ContentHint8$outboundSchema),
         z.lazy(() => ContentHint9$outboundSchema),
         z.lazy(() => ContentHint10$outboundSchema),
-        z.lazy(() => UpdateProjectDataCacheContentHint11$outboundSchema),
-        z.lazy(() => UpdateProjectDataCacheContentHint12$outboundSchema),
-        z.lazy(() => Thirteen$outboundSchema),
-        z.lazy(() => Fifteen$outboundSchema),
-        z.lazy(() => Fourteen$outboundSchema),
+        z.lazy(() => ContentHint11$outboundSchema),
+        z.lazy(() => ContentHint12$outboundSchema),
+        z.lazy(() => ContentHint13$outboundSchema),
+        z.lazy(() => ContentHint15$outboundSchema),
+        z.lazy(() => ContentHint14$outboundSchema),
       ]),
     ).optional(),
     internalContentHint: z.nullable(
@@ -5276,8 +5268,8 @@ export function linkFromJSON(
 }
 
 /** @internal */
-export const Microfrontends2$inboundSchema: z.ZodType<
-  Microfrontends2,
+export const UpdateProjectDataCacheMicrofrontends2$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -5287,17 +5279,17 @@ export const Microfrontends2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Microfrontends2$Outbound = {
+export type UpdateProjectDataCacheMicrofrontends2$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
 };
 
 /** @internal */
-export const Microfrontends2$outboundSchema: z.ZodType<
-  Microfrontends2$Outbound,
+export const UpdateProjectDataCacheMicrofrontends2$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends2$Outbound,
   z.ZodTypeDef,
-  Microfrontends2
+  UpdateProjectDataCacheMicrofrontends2
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
@@ -5308,34 +5300,41 @@ export const Microfrontends2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Microfrontends2$ {
-  /** @deprecated use `Microfrontends2$inboundSchema` instead. */
-  export const inboundSchema = Microfrontends2$inboundSchema;
-  /** @deprecated use `Microfrontends2$outboundSchema` instead. */
-  export const outboundSchema = Microfrontends2$outboundSchema;
-  /** @deprecated use `Microfrontends2$Outbound` instead. */
-  export type Outbound = Microfrontends2$Outbound;
+export namespace UpdateProjectDataCacheMicrofrontends2$ {
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends2$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheMicrofrontends2$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends2$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheMicrofrontends2$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends2$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheMicrofrontends2$Outbound;
 }
 
-export function microfrontends2ToJSON(
-  microfrontends2: Microfrontends2,
+export function updateProjectDataCacheMicrofrontends2ToJSON(
+  updateProjectDataCacheMicrofrontends2: UpdateProjectDataCacheMicrofrontends2,
 ): string {
-  return JSON.stringify(Microfrontends2$outboundSchema.parse(microfrontends2));
+  return JSON.stringify(
+    UpdateProjectDataCacheMicrofrontends2$outboundSchema.parse(
+      updateProjectDataCacheMicrofrontends2,
+    ),
+  );
 }
 
-export function microfrontends2FromJSON(
+export function updateProjectDataCacheMicrofrontends2FromJSON(
   jsonString: string,
-): SafeParseResult<Microfrontends2, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheMicrofrontends2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Microfrontends2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Microfrontends2' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheMicrofrontends2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheMicrofrontends2' from JSON`,
   );
 }
 
 /** @internal */
-export const Microfrontends1$inboundSchema: z.ZodType<
-  Microfrontends1,
+export const UpdateProjectDataCacheMicrofrontends1$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -5348,7 +5347,7 @@ export const Microfrontends1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Microfrontends1$Outbound = {
+export type UpdateProjectDataCacheMicrofrontends1$Outbound = {
   updatedAt: number;
   groupIds: Array<string>;
   enabled: boolean;
@@ -5358,10 +5357,10 @@ export type Microfrontends1$Outbound = {
 };
 
 /** @internal */
-export const Microfrontends1$outboundSchema: z.ZodType<
-  Microfrontends1$Outbound,
+export const UpdateProjectDataCacheMicrofrontends1$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends1$Outbound,
   z.ZodTypeDef,
-  Microfrontends1
+  UpdateProjectDataCacheMicrofrontends1
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
@@ -5375,80 +5374,96 @@ export const Microfrontends1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Microfrontends1$ {
-  /** @deprecated use `Microfrontends1$inboundSchema` instead. */
-  export const inboundSchema = Microfrontends1$inboundSchema;
-  /** @deprecated use `Microfrontends1$outboundSchema` instead. */
-  export const outboundSchema = Microfrontends1$outboundSchema;
-  /** @deprecated use `Microfrontends1$Outbound` instead. */
-  export type Outbound = Microfrontends1$Outbound;
+export namespace UpdateProjectDataCacheMicrofrontends1$ {
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends1$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheMicrofrontends1$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends1$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheMicrofrontends1$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends1$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheMicrofrontends1$Outbound;
 }
 
-export function microfrontends1ToJSON(
-  microfrontends1: Microfrontends1,
+export function updateProjectDataCacheMicrofrontends1ToJSON(
+  updateProjectDataCacheMicrofrontends1: UpdateProjectDataCacheMicrofrontends1,
 ): string {
-  return JSON.stringify(Microfrontends1$outboundSchema.parse(microfrontends1));
+  return JSON.stringify(
+    UpdateProjectDataCacheMicrofrontends1$outboundSchema.parse(
+      updateProjectDataCacheMicrofrontends1,
+    ),
+  );
 }
 
-export function microfrontends1FromJSON(
+export function updateProjectDataCacheMicrofrontends1FromJSON(
   jsonString: string,
-): SafeParseResult<Microfrontends1, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheMicrofrontends1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Microfrontends1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Microfrontends1' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheMicrofrontends1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheMicrofrontends1' from JSON`,
   );
 }
 
 /** @internal */
-export const Microfrontends$inboundSchema: z.ZodType<
-  Microfrontends,
+export const UpdateProjectDataCacheMicrofrontends$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Microfrontends2$inboundSchema),
-  z.lazy(() => Microfrontends1$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends1$inboundSchema),
 ]);
 
 /** @internal */
-export type Microfrontends$Outbound =
-  | Microfrontends2$Outbound
-  | Microfrontends1$Outbound;
+export type UpdateProjectDataCacheMicrofrontends$Outbound =
+  | UpdateProjectDataCacheMicrofrontends2$Outbound
+  | UpdateProjectDataCacheMicrofrontends1$Outbound;
 
 /** @internal */
-export const Microfrontends$outboundSchema: z.ZodType<
-  Microfrontends$Outbound,
+export const UpdateProjectDataCacheMicrofrontends$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheMicrofrontends$Outbound,
   z.ZodTypeDef,
-  Microfrontends
+  UpdateProjectDataCacheMicrofrontends
 > = z.union([
-  z.lazy(() => Microfrontends2$outboundSchema),
-  z.lazy(() => Microfrontends1$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends1$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Microfrontends$ {
-  /** @deprecated use `Microfrontends$inboundSchema` instead. */
-  export const inboundSchema = Microfrontends$inboundSchema;
-  /** @deprecated use `Microfrontends$outboundSchema` instead. */
-  export const outboundSchema = Microfrontends$outboundSchema;
-  /** @deprecated use `Microfrontends$Outbound` instead. */
-  export type Outbound = Microfrontends$Outbound;
+export namespace UpdateProjectDataCacheMicrofrontends$ {
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheMicrofrontends$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheMicrofrontends$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheMicrofrontends$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheMicrofrontends$Outbound;
 }
 
-export function microfrontendsToJSON(microfrontends: Microfrontends): string {
-  return JSON.stringify(Microfrontends$outboundSchema.parse(microfrontends));
+export function updateProjectDataCacheMicrofrontendsToJSON(
+  updateProjectDataCacheMicrofrontends: UpdateProjectDataCacheMicrofrontends,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheMicrofrontends$outboundSchema.parse(
+      updateProjectDataCacheMicrofrontends,
+    ),
+  );
 }
 
-export function microfrontendsFromJSON(
+export function updateProjectDataCacheMicrofrontendsFromJSON(
   jsonString: string,
-): SafeParseResult<Microfrontends, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheMicrofrontends, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Microfrontends$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Microfrontends' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheMicrofrontends' from JSON`,
   );
 }
 
@@ -9241,23 +9256,24 @@ export function updateProjectDataCacheOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const Tier$inboundSchema: z.ZodNativeEnum<typeof Tier> = z.nativeEnum(
-  Tier,
-);
+export const UpdateProjectDataCacheTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheTier
+> = z.nativeEnum(UpdateProjectDataCacheTier);
 
 /** @internal */
-export const Tier$outboundSchema: z.ZodNativeEnum<typeof Tier> =
-  Tier$inboundSchema;
+export const UpdateProjectDataCacheTier$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheTier
+> = UpdateProjectDataCacheTier$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Tier$ {
-  /** @deprecated use `Tier$inboundSchema` instead. */
-  export const inboundSchema = Tier$inboundSchema;
-  /** @deprecated use `Tier$outboundSchema` instead. */
-  export const outboundSchema = Tier$outboundSchema;
+export namespace UpdateProjectDataCacheTier$ {
+  /** @deprecated use `UpdateProjectDataCacheTier$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheTier$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheTier$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheTier$outboundSchema;
 }
 
 /** @internal */
@@ -9304,8 +9320,8 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => Link2$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => Microfrontends2$inboundSchema),
-    z.lazy(() => Microfrontends1$inboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends1$inboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: UpdateProjectDataCacheNodeVersion$inboundSchema,
@@ -9370,7 +9386,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() =>
     UpdateProjectDataCacheOidcTokenConfig$inboundSchema
   ).optional(),
-  tier: Tier$inboundSchema.optional(),
+  tier: UpdateProjectDataCacheTier$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -9403,8 +9419,8 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   latestDeployments?: Array<LatestDeployments$Outbound> | undefined;
   link?: Link1$Outbound | Link3$Outbound | Link2$Outbound | undefined;
   microfrontends?:
-    | Microfrontends2$Outbound
-    | Microfrontends1$Outbound
+    | UpdateProjectDataCacheMicrofrontends2$Outbound
+    | UpdateProjectDataCacheMicrofrontends1$Outbound
     | undefined;
   name: string;
   nodeVersion: string;
@@ -9504,8 +9520,8 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => Link2$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => Microfrontends2$outboundSchema),
-    z.lazy(() => Microfrontends1$outboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends1$outboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: UpdateProjectDataCacheNodeVersion$outboundSchema,
@@ -9573,7 +9589,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() =>
     UpdateProjectDataCacheOidcTokenConfig$outboundSchema
   ).optional(),
-  tier: Tier$outboundSchema.optional(),
+  tier: UpdateProjectDataCacheTier$outboundSchema.optional(),
 });
 
 /**

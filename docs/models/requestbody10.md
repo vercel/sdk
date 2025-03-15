@@ -1,22 +1,27 @@
 # RequestBody10
 
-Remove an IPBlocking rule
-
 ## Example Usage
 
 ```typescript
-import { RequestBody10 } from "@vercel/sdk/models/updatefirewallconfigop.js";
+import { RequestBody10 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody10 = {
-  action: "ip.remove",
-  id: "<id>",
+  type: "TXT",
+  ttl: 60,
+  https: {
+    priority: 10,
+    target: "host.example.com",
+    params: "alpn=h2,h3",
+  },
+  comment: "used to verify ownership of domain",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `action`                                                                                                                             | [models.UpdateFirewallConfigRequestBodySecurityRequest10Action](../models/updatefirewallconfigrequestbodysecurityrequest10action.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `id`                                                                                                                                 | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `value`                                                                                                                              | *any*                                                                                                                                | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                 | [models.CreateRecordRequestBodyDnsRequest10Type](../models/createrecordrequestbodydnsrequest10type.md) | :heavy_check_mark:                                                                                     | The type of record, it could be one of the valid DNS records.                                          |                                                                                                        |
+| `ttl`                                                                                                  | *number*                                                                                               | :heavy_minus_sign:                                                                                     | The TTL value. Must be a number between 60 and 2147483647. Default value is 60.                        | 60                                                                                                     |
+| `https`                                                                                                | [models.RequestBodyHttps](../models/requestbodyhttps.md)                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |                                                                                                        |
+| `comment`                                                                                              | *string*                                                                                               | :heavy_minus_sign:                                                                                     | A comment to add context on what this DNS record is for                                                | used to verify ownership of domain                                                                     |

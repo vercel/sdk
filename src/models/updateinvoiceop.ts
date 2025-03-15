@@ -9,13 +9,13 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Action = {
+export const UpdateInvoiceAction = {
   Refund: "refund",
 } as const;
-export type Action = ClosedEnum<typeof Action>;
+export type UpdateInvoiceAction = ClosedEnum<typeof UpdateInvoiceAction>;
 
 export type UpdateInvoiceRequestBody = {
-  action: Action;
+  action: UpdateInvoiceAction;
   /**
    * Refund reason.
    */
@@ -33,22 +33,24 @@ export type UpdateInvoiceRequest = {
 };
 
 /** @internal */
-export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
-  .nativeEnum(Action);
+export const UpdateInvoiceAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateInvoiceAction
+> = z.nativeEnum(UpdateInvoiceAction);
 
 /** @internal */
-export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
-  Action$inboundSchema;
+export const UpdateInvoiceAction$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateInvoiceAction
+> = UpdateInvoiceAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Action$ {
-  /** @deprecated use `Action$inboundSchema` instead. */
-  export const inboundSchema = Action$inboundSchema;
-  /** @deprecated use `Action$outboundSchema` instead. */
-  export const outboundSchema = Action$outboundSchema;
+export namespace UpdateInvoiceAction$ {
+  /** @deprecated use `UpdateInvoiceAction$inboundSchema` instead. */
+  export const inboundSchema = UpdateInvoiceAction$inboundSchema;
+  /** @deprecated use `UpdateInvoiceAction$outboundSchema` instead. */
+  export const outboundSchema = UpdateInvoiceAction$outboundSchema;
 }
 
 /** @internal */
@@ -57,7 +59,7 @@ export const UpdateInvoiceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: Action$inboundSchema,
+  action: UpdateInvoiceAction$inboundSchema,
   reason: z.string(),
   total: z.string(),
 });
@@ -75,7 +77,7 @@ export const UpdateInvoiceRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateInvoiceRequestBody
 > = z.object({
-  action: Action$outboundSchema,
+  action: UpdateInvoiceAction$outboundSchema,
   reason: z.string(),
   total: z.string(),
 });

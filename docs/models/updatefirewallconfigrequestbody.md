@@ -24,8 +24,8 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "scheme",
-            op: "gte",
+            type: "region",
+            op: "sub",
           },
         ],
       },
@@ -48,8 +48,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "path",
-            op: "inc",
+            type: "cookie",
+            op: "sub",
           },
         ],
       },
@@ -74,16 +74,16 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 2569.75,
+  value: 5036.97,
 };
 ```
 
-### `models.RequestBody6`
+### `models.UpdateFirewallConfigRequestBody6`
 
 ```typescript
-const value: models.RequestBody6 = {
+const value: models.UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  id: "lfi",
+  id: "sd",
   value: {
     active: false,
     action: "log",
@@ -91,54 +91,54 @@ const value: models.RequestBody6 = {
 };
 ```
 
-### `models.RequestBody7`
+### `models.UpdateFirewallConfigRequestBody7`
 
 ```typescript
-const value: models.RequestBody7 = {
+const value: models.UpdateFirewallConfigRequestBody7 = {
   action: "crs.disable",
 };
 ```
 
-### `models.RequestBody8`
+### `models.UpdateFirewallConfigRequestBody8`
 
 ```typescript
-const value: models.RequestBody8 = {
+const value: models.UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "posh-hunger.com",
-    ip: "f40b:eec6:7da2:562a:ee10:67bf:8ffa:d17e",
+    hostname: "noteworthy-birth.info",
+    ip: "225.72.241.139",
+    action: "challenge",
+  },
+};
+```
+
+### `models.UpdateFirewallConfigRequestBody9`
+
+```typescript
+const value: models.UpdateFirewallConfigRequestBody9 = {
+  action: "ip.update",
+  id: "<id>",
+  value: {
+    hostname: "stylish-postbox.info",
+    ip: "bcb3:c14d:2d69:61bf:d6f8:fdee:31bd:af14",
     action: "deny",
   },
 };
 ```
 
-### `models.RequestBody9`
+### `models.UpdateFirewallConfigRequestBody10`
 
 ```typescript
-const value: models.RequestBody9 = {
-  action: "ip.update",
-  id: "<id>",
-  value: {
-    hostname: "tense-possession.info",
-    ip: "bfb2:b8f6:57cd:36c9:9cea:fbb6:ecd1:eb07",
-    action: "log",
-  },
-};
-```
-
-### `models.RequestBody10`
-
-```typescript
-const value: models.RequestBody10 = {
+const value: models.UpdateFirewallConfigRequestBody10 = {
   action: "ip.remove",
   id: "<id>",
 };
 ```
 
-### `models.Eleven`
+### `models.RequestBody11`
 
 ```typescript
-const value: models.Eleven = {
+const value: models.RequestBody11 = {
   action: "managedRules.update",
   id: "<id>",
   value: {
@@ -147,10 +147,10 @@ const value: models.Eleven = {
 };
 ```
 
-### `models.Twelve`
+### `models.RequestBody12`
 
 ```typescript
-const value: models.Twelve = {
+const value: models.RequestBody12 = {
   action: "<value>",
   id: "<id>",
   value: {

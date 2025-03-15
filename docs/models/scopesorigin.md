@@ -5,7 +5,7 @@
 ```typescript
 import { ScopesOrigin } from "@vercel/sdk/models/authtoken.js";
 
-let value: ScopesOrigin = "github";
+let value: ScopesOrigin = "bitbucket";
 ```
 
 ## Values

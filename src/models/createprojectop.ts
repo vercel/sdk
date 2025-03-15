@@ -31,7 +31,7 @@ export type Target1 = ClosedEnum<typeof Target1>;
 /**
  * Deployment Target or Targets in which the ENV variable will be used
  */
-export type Target = Target1 | Array<Target2>;
+export type CreateProjectTarget = Target1 | Array<Target2>;
 
 /**
  * Type of the ENV variable
@@ -339,16 +339,16 @@ export const CreateProjectTarget1 = {
 } as const;
 export type CreateProjectTarget1 = ClosedEnum<typeof CreateProjectTarget1>;
 
-export type CreateProjectTarget =
+export type CreateProjectProjectsTarget =
   | Array<CreateProjectTarget1>
   | CreateProjectTarget2;
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -363,7 +363,7 @@ export type CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBo
     typeof CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type
   >;
 
-export type ContentHint15 = {
+export type CreateProjectContentHint15 = {
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type;
   projectId: string;
@@ -378,7 +378,7 @@ export type CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBo
     typeof CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type
   >;
 
-export type ContentHint14 = {
+export type CreateProjectContentHint14 = {
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type;
   storeId: string;
@@ -396,7 +396,7 @@ export type CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBo
     typeof CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type
   >;
 
-export type ContentHint13 = {
+export type CreateProjectContentHint13 = {
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type;
   storeId: string;
@@ -411,7 +411,7 @@ export type CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBo
     typeof CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type
   >;
 
-export type ContentHint12 = {
+export type CreateProjectContentHint12 = {
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type;
   storeId: string;
@@ -426,7 +426,7 @@ export type CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBo
     typeof CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type
   >;
 
-export type ContentHint11 = {
+export type CreateProjectContentHint11 = {
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type;
   storeId: string;
@@ -579,11 +579,11 @@ export type CreateProjectContentHint =
   | CreateProjectContentHint8
   | CreateProjectContentHint9
   | CreateProjectContentHint10
-  | ContentHint11
-  | ContentHint12
-  | ContentHint13
-  | ContentHint15
-  | ContentHint14;
+  | CreateProjectContentHint11
+  | CreateProjectContentHint12
+  | CreateProjectContentHint13
+  | CreateProjectContentHint15
+  | CreateProjectContentHint14;
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyEnvType =
   {
@@ -634,11 +634,11 @@ export type CreateProjectEnv = {
     | CreateProjectContentHint8
     | CreateProjectContentHint9
     | CreateProjectContentHint10
-    | ContentHint11
-    | ContentHint12
-    | ContentHint13
-    | ContentHint15
-    | ContentHint14
+    | CreateProjectContentHint11
+    | CreateProjectContentHint12
+    | CreateProjectContentHint13
+    | CreateProjectContentHint15
+    | CreateProjectContentHint14
     | null
     | undefined;
   /**
@@ -1893,43 +1893,50 @@ export namespace Target1$ {
 }
 
 /** @internal */
-export const Target$inboundSchema: z.ZodType<Target, z.ZodTypeDef, unknown> = z
-  .union([Target1$inboundSchema, z.array(Target2$inboundSchema)]);
-
-/** @internal */
-export type Target$Outbound = string | Array<string>;
-
-/** @internal */
-export const Target$outboundSchema: z.ZodType<
-  Target$Outbound,
+export const CreateProjectTarget$inboundSchema: z.ZodType<
+  CreateProjectTarget,
   z.ZodTypeDef,
-  Target
+  unknown
+> = z.union([Target1$inboundSchema, z.array(Target2$inboundSchema)]);
+
+/** @internal */
+export type CreateProjectTarget$Outbound = string | Array<string>;
+
+/** @internal */
+export const CreateProjectTarget$outboundSchema: z.ZodType<
+  CreateProjectTarget$Outbound,
+  z.ZodTypeDef,
+  CreateProjectTarget
 > = z.union([Target1$outboundSchema, z.array(Target2$outboundSchema)]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Target$ {
-  /** @deprecated use `Target$inboundSchema` instead. */
-  export const inboundSchema = Target$inboundSchema;
-  /** @deprecated use `Target$outboundSchema` instead. */
-  export const outboundSchema = Target$outboundSchema;
-  /** @deprecated use `Target$Outbound` instead. */
-  export type Outbound = Target$Outbound;
+export namespace CreateProjectTarget$ {
+  /** @deprecated use `CreateProjectTarget$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectTarget$inboundSchema;
+  /** @deprecated use `CreateProjectTarget$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectTarget$outboundSchema;
+  /** @deprecated use `CreateProjectTarget$Outbound` instead. */
+  export type Outbound = CreateProjectTarget$Outbound;
 }
 
-export function targetToJSON(target: Target): string {
-  return JSON.stringify(Target$outboundSchema.parse(target));
+export function createProjectTargetToJSON(
+  createProjectTarget: CreateProjectTarget,
+): string {
+  return JSON.stringify(
+    CreateProjectTarget$outboundSchema.parse(createProjectTarget),
+  );
 }
 
-export function targetFromJSON(
+export function createProjectTargetFromJSON(
   jsonString: string,
-): SafeParseResult<Target, SDKValidationError> {
+): SafeParseResult<CreateProjectTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Target$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Target' from JSON`,
+    (x) => CreateProjectTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTarget' from JSON`,
   );
 }
 
@@ -2799,8 +2806,8 @@ export namespace CreateProjectTarget1$ {
 }
 
 /** @internal */
-export const CreateProjectTarget$inboundSchema: z.ZodType<
-  CreateProjectTarget,
+export const CreateProjectProjectsTarget$inboundSchema: z.ZodType<
+  CreateProjectProjectsTarget,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -2809,13 +2816,13 @@ export const CreateProjectTarget$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type CreateProjectTarget$Outbound = Array<string> | string;
+export type CreateProjectProjectsTarget$Outbound = Array<string> | string;
 
 /** @internal */
-export const CreateProjectTarget$outboundSchema: z.ZodType<
-  CreateProjectTarget$Outbound,
+export const CreateProjectProjectsTarget$outboundSchema: z.ZodType<
+  CreateProjectProjectsTarget$Outbound,
   z.ZodTypeDef,
-  CreateProjectTarget
+  CreateProjectProjectsTarget
 > = z.union([
   z.array(CreateProjectTarget1$outboundSchema),
   CreateProjectTarget2$outboundSchema,
@@ -2825,30 +2832,32 @@ export const CreateProjectTarget$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateProjectTarget$ {
-  /** @deprecated use `CreateProjectTarget$inboundSchema` instead. */
-  export const inboundSchema = CreateProjectTarget$inboundSchema;
-  /** @deprecated use `CreateProjectTarget$outboundSchema` instead. */
-  export const outboundSchema = CreateProjectTarget$outboundSchema;
-  /** @deprecated use `CreateProjectTarget$Outbound` instead. */
-  export type Outbound = CreateProjectTarget$Outbound;
+export namespace CreateProjectProjectsTarget$ {
+  /** @deprecated use `CreateProjectProjectsTarget$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectProjectsTarget$inboundSchema;
+  /** @deprecated use `CreateProjectProjectsTarget$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectProjectsTarget$outboundSchema;
+  /** @deprecated use `CreateProjectProjectsTarget$Outbound` instead. */
+  export type Outbound = CreateProjectProjectsTarget$Outbound;
 }
 
-export function createProjectTargetToJSON(
-  createProjectTarget: CreateProjectTarget,
+export function createProjectProjectsTargetToJSON(
+  createProjectProjectsTarget: CreateProjectProjectsTarget,
 ): string {
   return JSON.stringify(
-    CreateProjectTarget$outboundSchema.parse(createProjectTarget),
+    CreateProjectProjectsTarget$outboundSchema.parse(
+      createProjectProjectsTarget,
+    ),
   );
 }
 
-export function createProjectTargetFromJSON(
+export function createProjectProjectsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectTarget, SDKValidationError> {
+): SafeParseResult<CreateProjectProjectsTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectTarget' from JSON`,
+    (x) => CreateProjectProjectsTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsTarget' from JSON`,
   );
 }
 
@@ -2903,8 +2912,8 @@ export namespace CreateProjectContentHintProjectsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const ContentHint15$inboundSchema: z.ZodType<
-  ContentHint15,
+export const CreateProjectContentHint15$inboundSchema: z.ZodType<
+  CreateProjectContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2914,16 +2923,16 @@ export const ContentHint15$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentHint15$Outbound = {
+export type CreateProjectContentHint15$Outbound = {
   type: string;
   projectId: string;
 };
 
 /** @internal */
-export const ContentHint15$outboundSchema: z.ZodType<
-  ContentHint15$Outbound,
+export const CreateProjectContentHint15$outboundSchema: z.ZodType<
+  CreateProjectContentHint15$Outbound,
   z.ZodTypeDef,
-  ContentHint15
+  CreateProjectContentHint15
 > = z.object({
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$outboundSchema,
@@ -2934,26 +2943,30 @@ export const ContentHint15$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentHint15$ {
-  /** @deprecated use `ContentHint15$inboundSchema` instead. */
-  export const inboundSchema = ContentHint15$inboundSchema;
-  /** @deprecated use `ContentHint15$outboundSchema` instead. */
-  export const outboundSchema = ContentHint15$outboundSchema;
-  /** @deprecated use `ContentHint15$Outbound` instead. */
-  export type Outbound = ContentHint15$Outbound;
+export namespace CreateProjectContentHint15$ {
+  /** @deprecated use `CreateProjectContentHint15$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectContentHint15$inboundSchema;
+  /** @deprecated use `CreateProjectContentHint15$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectContentHint15$outboundSchema;
+  /** @deprecated use `CreateProjectContentHint15$Outbound` instead. */
+  export type Outbound = CreateProjectContentHint15$Outbound;
 }
 
-export function contentHint15ToJSON(contentHint15: ContentHint15): string {
-  return JSON.stringify(ContentHint15$outboundSchema.parse(contentHint15));
+export function createProjectContentHint15ToJSON(
+  createProjectContentHint15: CreateProjectContentHint15,
+): string {
+  return JSON.stringify(
+    CreateProjectContentHint15$outboundSchema.parse(createProjectContentHint15),
+  );
 }
 
-export function contentHint15FromJSON(
+export function createProjectContentHint15FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint15, SDKValidationError> {
+): SafeParseResult<CreateProjectContentHint15, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint15$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint15' from JSON`,
+    (x) => CreateProjectContentHint15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectContentHint15' from JSON`,
   );
 }
 
@@ -2986,8 +2999,8 @@ export namespace CreateProjectContentHintProjectsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const ContentHint14$inboundSchema: z.ZodType<
-  ContentHint14,
+export const CreateProjectContentHint14$inboundSchema: z.ZodType<
+  CreateProjectContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3000,7 +3013,7 @@ export const ContentHint14$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentHint14$Outbound = {
+export type CreateProjectContentHint14$Outbound = {
   type: string;
   storeId: string;
   integrationId: string;
@@ -3009,10 +3022,10 @@ export type ContentHint14$Outbound = {
 };
 
 /** @internal */
-export const ContentHint14$outboundSchema: z.ZodType<
-  ContentHint14$Outbound,
+export const CreateProjectContentHint14$outboundSchema: z.ZodType<
+  CreateProjectContentHint14$Outbound,
   z.ZodTypeDef,
-  ContentHint14
+  CreateProjectContentHint14
 > = z.object({
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$outboundSchema,
@@ -3026,26 +3039,30 @@ export const ContentHint14$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentHint14$ {
-  /** @deprecated use `ContentHint14$inboundSchema` instead. */
-  export const inboundSchema = ContentHint14$inboundSchema;
-  /** @deprecated use `ContentHint14$outboundSchema` instead. */
-  export const outboundSchema = ContentHint14$outboundSchema;
-  /** @deprecated use `ContentHint14$Outbound` instead. */
-  export type Outbound = ContentHint14$Outbound;
+export namespace CreateProjectContentHint14$ {
+  /** @deprecated use `CreateProjectContentHint14$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectContentHint14$inboundSchema;
+  /** @deprecated use `CreateProjectContentHint14$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectContentHint14$outboundSchema;
+  /** @deprecated use `CreateProjectContentHint14$Outbound` instead. */
+  export type Outbound = CreateProjectContentHint14$Outbound;
 }
 
-export function contentHint14ToJSON(contentHint14: ContentHint14): string {
-  return JSON.stringify(ContentHint14$outboundSchema.parse(contentHint14));
+export function createProjectContentHint14ToJSON(
+  createProjectContentHint14: CreateProjectContentHint14,
+): string {
+  return JSON.stringify(
+    CreateProjectContentHint14$outboundSchema.parse(createProjectContentHint14),
+  );
 }
 
-export function contentHint14FromJSON(
+export function createProjectContentHint14FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint14, SDKValidationError> {
+): SafeParseResult<CreateProjectContentHint14, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint14$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint14' from JSON`,
+    (x) => CreateProjectContentHint14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectContentHint14' from JSON`,
   );
 }
 
@@ -3078,8 +3095,8 @@ export namespace CreateProjectContentHintProjectsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const ContentHint13$inboundSchema: z.ZodType<
-  ContentHint13,
+export const CreateProjectContentHint13$inboundSchema: z.ZodType<
+  CreateProjectContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3089,16 +3106,16 @@ export const ContentHint13$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentHint13$Outbound = {
+export type CreateProjectContentHint13$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint13$outboundSchema: z.ZodType<
-  ContentHint13$Outbound,
+export const CreateProjectContentHint13$outboundSchema: z.ZodType<
+  CreateProjectContentHint13$Outbound,
   z.ZodTypeDef,
-  ContentHint13
+  CreateProjectContentHint13
 > = z.object({
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$outboundSchema,
@@ -3109,26 +3126,30 @@ export const ContentHint13$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentHint13$ {
-  /** @deprecated use `ContentHint13$inboundSchema` instead. */
-  export const inboundSchema = ContentHint13$inboundSchema;
-  /** @deprecated use `ContentHint13$outboundSchema` instead. */
-  export const outboundSchema = ContentHint13$outboundSchema;
-  /** @deprecated use `ContentHint13$Outbound` instead. */
-  export type Outbound = ContentHint13$Outbound;
+export namespace CreateProjectContentHint13$ {
+  /** @deprecated use `CreateProjectContentHint13$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectContentHint13$inboundSchema;
+  /** @deprecated use `CreateProjectContentHint13$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectContentHint13$outboundSchema;
+  /** @deprecated use `CreateProjectContentHint13$Outbound` instead. */
+  export type Outbound = CreateProjectContentHint13$Outbound;
 }
 
-export function contentHint13ToJSON(contentHint13: ContentHint13): string {
-  return JSON.stringify(ContentHint13$outboundSchema.parse(contentHint13));
+export function createProjectContentHint13ToJSON(
+  createProjectContentHint13: CreateProjectContentHint13,
+): string {
+  return JSON.stringify(
+    CreateProjectContentHint13$outboundSchema.parse(createProjectContentHint13),
+  );
 }
 
-export function contentHint13FromJSON(
+export function createProjectContentHint13FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint13, SDKValidationError> {
+): SafeParseResult<CreateProjectContentHint13, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint13$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint13' from JSON`,
+    (x) => CreateProjectContentHint13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectContentHint13' from JSON`,
   );
 }
 
@@ -3161,8 +3182,8 @@ export namespace CreateProjectContentHintProjectsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const ContentHint12$inboundSchema: z.ZodType<
-  ContentHint12,
+export const CreateProjectContentHint12$inboundSchema: z.ZodType<
+  CreateProjectContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3172,16 +3193,16 @@ export const ContentHint12$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentHint12$Outbound = {
+export type CreateProjectContentHint12$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint12$outboundSchema: z.ZodType<
-  ContentHint12$Outbound,
+export const CreateProjectContentHint12$outboundSchema: z.ZodType<
+  CreateProjectContentHint12$Outbound,
   z.ZodTypeDef,
-  ContentHint12
+  CreateProjectContentHint12
 > = z.object({
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$outboundSchema,
@@ -3192,26 +3213,30 @@ export const ContentHint12$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentHint12$ {
-  /** @deprecated use `ContentHint12$inboundSchema` instead. */
-  export const inboundSchema = ContentHint12$inboundSchema;
-  /** @deprecated use `ContentHint12$outboundSchema` instead. */
-  export const outboundSchema = ContentHint12$outboundSchema;
-  /** @deprecated use `ContentHint12$Outbound` instead. */
-  export type Outbound = ContentHint12$Outbound;
+export namespace CreateProjectContentHint12$ {
+  /** @deprecated use `CreateProjectContentHint12$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectContentHint12$inboundSchema;
+  /** @deprecated use `CreateProjectContentHint12$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectContentHint12$outboundSchema;
+  /** @deprecated use `CreateProjectContentHint12$Outbound` instead. */
+  export type Outbound = CreateProjectContentHint12$Outbound;
 }
 
-export function contentHint12ToJSON(contentHint12: ContentHint12): string {
-  return JSON.stringify(ContentHint12$outboundSchema.parse(contentHint12));
+export function createProjectContentHint12ToJSON(
+  createProjectContentHint12: CreateProjectContentHint12,
+): string {
+  return JSON.stringify(
+    CreateProjectContentHint12$outboundSchema.parse(createProjectContentHint12),
+  );
 }
 
-export function contentHint12FromJSON(
+export function createProjectContentHint12FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint12, SDKValidationError> {
+): SafeParseResult<CreateProjectContentHint12, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint12' from JSON`,
+    (x) => CreateProjectContentHint12$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectContentHint12' from JSON`,
   );
 }
 
@@ -3244,8 +3269,8 @@ export namespace CreateProjectContentHintProjectsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const ContentHint11$inboundSchema: z.ZodType<
-  ContentHint11,
+export const CreateProjectContentHint11$inboundSchema: z.ZodType<
+  CreateProjectContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3255,16 +3280,16 @@ export const ContentHint11$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentHint11$Outbound = {
+export type CreateProjectContentHint11$Outbound = {
   type: string;
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint11$outboundSchema: z.ZodType<
-  ContentHint11$Outbound,
+export const CreateProjectContentHint11$outboundSchema: z.ZodType<
+  CreateProjectContentHint11$Outbound,
   z.ZodTypeDef,
-  ContentHint11
+  CreateProjectContentHint11
 > = z.object({
   type:
     CreateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$outboundSchema,
@@ -3275,26 +3300,30 @@ export const ContentHint11$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentHint11$ {
-  /** @deprecated use `ContentHint11$inboundSchema` instead. */
-  export const inboundSchema = ContentHint11$inboundSchema;
-  /** @deprecated use `ContentHint11$outboundSchema` instead. */
-  export const outboundSchema = ContentHint11$outboundSchema;
-  /** @deprecated use `ContentHint11$Outbound` instead. */
-  export type Outbound = ContentHint11$Outbound;
+export namespace CreateProjectContentHint11$ {
+  /** @deprecated use `CreateProjectContentHint11$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectContentHint11$inboundSchema;
+  /** @deprecated use `CreateProjectContentHint11$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectContentHint11$outboundSchema;
+  /** @deprecated use `CreateProjectContentHint11$Outbound` instead. */
+  export type Outbound = CreateProjectContentHint11$Outbound;
 }
 
-export function contentHint11ToJSON(contentHint11: ContentHint11): string {
-  return JSON.stringify(ContentHint11$outboundSchema.parse(contentHint11));
+export function createProjectContentHint11ToJSON(
+  createProjectContentHint11: CreateProjectContentHint11,
+): string {
+  return JSON.stringify(
+    CreateProjectContentHint11$outboundSchema.parse(createProjectContentHint11),
+  );
 }
 
-export function contentHint11FromJSON(
+export function createProjectContentHint11FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint11, SDKValidationError> {
+): SafeParseResult<CreateProjectContentHint11, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint11' from JSON`,
+    (x) => CreateProjectContentHint11$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectContentHint11' from JSON`,
   );
 }
 
@@ -4155,11 +4184,11 @@ export const CreateProjectContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectContentHint8$inboundSchema),
   z.lazy(() => CreateProjectContentHint9$inboundSchema),
   z.lazy(() => CreateProjectContentHint10$inboundSchema),
-  z.lazy(() => ContentHint11$inboundSchema),
-  z.lazy(() => ContentHint12$inboundSchema),
-  z.lazy(() => ContentHint13$inboundSchema),
-  z.lazy(() => ContentHint15$inboundSchema),
-  z.lazy(() => ContentHint14$inboundSchema),
+  z.lazy(() => CreateProjectContentHint11$inboundSchema),
+  z.lazy(() => CreateProjectContentHint12$inboundSchema),
+  z.lazy(() => CreateProjectContentHint13$inboundSchema),
+  z.lazy(() => CreateProjectContentHint15$inboundSchema),
+  z.lazy(() => CreateProjectContentHint14$inboundSchema),
 ]);
 
 /** @internal */
@@ -4174,11 +4203,11 @@ export type CreateProjectContentHint$Outbound =
   | CreateProjectContentHint8$Outbound
   | CreateProjectContentHint9$Outbound
   | CreateProjectContentHint10$Outbound
-  | ContentHint11$Outbound
-  | ContentHint12$Outbound
-  | ContentHint13$Outbound
-  | ContentHint15$Outbound
-  | ContentHint14$Outbound;
+  | CreateProjectContentHint11$Outbound
+  | CreateProjectContentHint12$Outbound
+  | CreateProjectContentHint13$Outbound
+  | CreateProjectContentHint15$Outbound
+  | CreateProjectContentHint14$Outbound;
 
 /** @internal */
 export const CreateProjectContentHint$outboundSchema: z.ZodType<
@@ -4196,11 +4225,11 @@ export const CreateProjectContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectContentHint8$outboundSchema),
   z.lazy(() => CreateProjectContentHint9$outboundSchema),
   z.lazy(() => CreateProjectContentHint10$outboundSchema),
-  z.lazy(() => ContentHint11$outboundSchema),
-  z.lazy(() => ContentHint12$outboundSchema),
-  z.lazy(() => ContentHint13$outboundSchema),
-  z.lazy(() => ContentHint15$outboundSchema),
-  z.lazy(() => ContentHint14$outboundSchema),
+  z.lazy(() => CreateProjectContentHint11$outboundSchema),
+  z.lazy(() => CreateProjectContentHint12$outboundSchema),
+  z.lazy(() => CreateProjectContentHint13$outboundSchema),
+  z.lazy(() => CreateProjectContentHint15$outboundSchema),
+  z.lazy(() => CreateProjectContentHint14$outboundSchema),
 ]);
 
 /**
@@ -4358,11 +4387,11 @@ export const CreateProjectEnv$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectContentHint8$inboundSchema),
       z.lazy(() => CreateProjectContentHint9$inboundSchema),
       z.lazy(() => CreateProjectContentHint10$inboundSchema),
-      z.lazy(() => ContentHint11$inboundSchema),
-      z.lazy(() => ContentHint12$inboundSchema),
-      z.lazy(() => ContentHint13$inboundSchema),
-      z.lazy(() => ContentHint15$inboundSchema),
-      z.lazy(() => ContentHint14$inboundSchema),
+      z.lazy(() => CreateProjectContentHint11$inboundSchema),
+      z.lazy(() => CreateProjectContentHint12$inboundSchema),
+      z.lazy(() => CreateProjectContentHint13$inboundSchema),
+      z.lazy(() => CreateProjectContentHint15$inboundSchema),
+      z.lazy(() => CreateProjectContentHint14$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -4401,11 +4430,11 @@ export type CreateProjectEnv$Outbound = {
     | CreateProjectContentHint8$Outbound
     | CreateProjectContentHint9$Outbound
     | CreateProjectContentHint10$Outbound
-    | ContentHint11$Outbound
-    | ContentHint12$Outbound
-    | ContentHint13$Outbound
-    | ContentHint15$Outbound
-    | ContentHint14$Outbound
+    | CreateProjectContentHint11$Outbound
+    | CreateProjectContentHint12$Outbound
+    | CreateProjectContentHint13$Outbound
+    | CreateProjectContentHint15$Outbound
+    | CreateProjectContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -4453,11 +4482,11 @@ export const CreateProjectEnv$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectContentHint8$outboundSchema),
       z.lazy(() => CreateProjectContentHint9$outboundSchema),
       z.lazy(() => CreateProjectContentHint10$outboundSchema),
-      z.lazy(() => ContentHint11$outboundSchema),
-      z.lazy(() => ContentHint12$outboundSchema),
-      z.lazy(() => ContentHint13$outboundSchema),
-      z.lazy(() => ContentHint15$outboundSchema),
-      z.lazy(() => ContentHint14$outboundSchema),
+      z.lazy(() => CreateProjectContentHint11$outboundSchema),
+      z.lazy(() => CreateProjectContentHint12$outboundSchema),
+      z.lazy(() => CreateProjectContentHint13$outboundSchema),
+      z.lazy(() => CreateProjectContentHint15$outboundSchema),
+      z.lazy(() => CreateProjectContentHint14$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(

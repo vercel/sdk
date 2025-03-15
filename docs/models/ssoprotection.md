@@ -1,17 +1,19 @@
 # SsoProtection
 
-Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
 
-## Example Usage
+## Supported Types
+
+### `models.SsoProtection1`
 
 ```typescript
-import { SsoProtection } from "@vercel/sdk/models/updateprojectop.js";
-
-let value: SsoProtection = {};
+const value: models.SsoProtection1 = {
+  deploymentType: "prod_deployment_urls_and_all_previews",
+};
 ```
 
-## Fields
+### `models.SsoProtection2`
 
-| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `deploymentType`                                                                                            | [models.UpdateProjectDeploymentType](../models/updateprojectdeploymenttype.md)                              | :heavy_minus_sign:                                                                                          | Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview |
+```typescript
+const value: models.SsoProtection2 = "preview";
+```
+

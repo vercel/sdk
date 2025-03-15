@@ -9,7 +9,7 @@ import { Php } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Php = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ResponseBodyPagination } from "@vercel/sdk/models/listaccessgroupsop.js";
 
 let value: ResponseBodyPagination = {
-  count: 187.89,
+  count: 6176.36,
   next: "<value>",
 };
 ```

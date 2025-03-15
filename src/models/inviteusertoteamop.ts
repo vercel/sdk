@@ -86,7 +86,7 @@ export type InviteUserToTeamResponseBodyRole = ClosedEnum<
   typeof InviteUserToTeamResponseBodyRole
 >;
 
-export const ResponseBodyTeamRoles = {
+export const InviteUserToTeamResponseBodyTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -95,25 +95,29 @@ export const ResponseBodyTeamRoles = {
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type ResponseBodyTeamRoles = ClosedEnum<typeof ResponseBodyTeamRoles>;
+export type InviteUserToTeamResponseBodyTeamRoles = ClosedEnum<
+  typeof InviteUserToTeamResponseBodyTeamRoles
+>;
 
-export const ResponseBodyTeamPermissions = {
+export const InviteUserToTeamResponseBodyTeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
 } as const;
-export type ResponseBodyTeamPermissions = ClosedEnum<
-  typeof ResponseBodyTeamPermissions
+export type InviteUserToTeamResponseBodyTeamPermissions = ClosedEnum<
+  typeof InviteUserToTeamResponseBodyTeamPermissions
 >;
 
 export type InviteUserToTeamResponseBody2 = {
   uid: string;
   username: string;
   role: InviteUserToTeamResponseBodyRole;
-  teamRoles?: Array<ResponseBodyTeamRoles> | undefined;
-  teamPermissions?: Array<ResponseBodyTeamPermissions> | undefined;
+  teamRoles?: Array<InviteUserToTeamResponseBodyTeamRoles> | undefined;
+  teamPermissions?:
+    | Array<InviteUserToTeamResponseBodyTeamPermissions>
+    | undefined;
 };
 
 /**
@@ -136,7 +140,7 @@ export type ResponseBodyRole = ClosedEnum<typeof ResponseBodyRole>;
 /**
  * The team roles of the user
  */
-export const InviteUserToTeamResponseBodyTeamRoles = {
+export const ResponseBodyTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -148,14 +152,12 @@ export const InviteUserToTeamResponseBodyTeamRoles = {
 /**
  * The team roles of the user
  */
-export type InviteUserToTeamResponseBodyTeamRoles = ClosedEnum<
-  typeof InviteUserToTeamResponseBodyTeamRoles
->;
+export type ResponseBodyTeamRoles = ClosedEnum<typeof ResponseBodyTeamRoles>;
 
 /**
  * The team permissions of the user
  */
-export const InviteUserToTeamResponseBodyTeamPermissions = {
+export const ResponseBodyTeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
@@ -165,8 +167,8 @@ export const InviteUserToTeamResponseBodyTeamPermissions = {
 /**
  * The team permissions of the user
  */
-export type InviteUserToTeamResponseBodyTeamPermissions = ClosedEnum<
-  typeof InviteUserToTeamResponseBodyTeamPermissions
+export type ResponseBodyTeamPermissions = ClosedEnum<
+  typeof ResponseBodyTeamPermissions
 >;
 
 /**
@@ -192,13 +194,11 @@ export type InviteUserToTeamResponseBody1 = {
   /**
    * The team roles of the user
    */
-  teamRoles?: Array<InviteUserToTeamResponseBodyTeamRoles> | undefined;
+  teamRoles?: Array<ResponseBodyTeamRoles> | undefined;
   /**
    * The team permissions of the user
    */
-  teamPermissions?:
-    | Array<InviteUserToTeamResponseBodyTeamPermissions>
-    | undefined;
+  teamPermissions?: Array<ResponseBodyTeamPermissions> | undefined;
 };
 
 /**
@@ -461,45 +461,50 @@ export namespace InviteUserToTeamResponseBodyRole$ {
 }
 
 /** @internal */
-export const ResponseBodyTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamRoles
-> = z.nativeEnum(ResponseBodyTeamRoles);
+export const InviteUserToTeamResponseBodyTeamRoles$inboundSchema:
+  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamRoles> = z.nativeEnum(
+    InviteUserToTeamResponseBodyTeamRoles,
+  );
 
 /** @internal */
-export const ResponseBodyTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamRoles
-> = ResponseBodyTeamRoles$inboundSchema;
+export const InviteUserToTeamResponseBodyTeamRoles$outboundSchema:
+  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamRoles> =
+    InviteUserToTeamResponseBodyTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBodyTeamRoles$ {
-  /** @deprecated use `ResponseBodyTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyTeamRoles$inboundSchema;
-  /** @deprecated use `ResponseBodyTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyTeamRoles$outboundSchema;
+export namespace InviteUserToTeamResponseBodyTeamRoles$ {
+  /** @deprecated use `InviteUserToTeamResponseBodyTeamRoles$inboundSchema` instead. */
+  export const inboundSchema =
+    InviteUserToTeamResponseBodyTeamRoles$inboundSchema;
+  /** @deprecated use `InviteUserToTeamResponseBodyTeamRoles$outboundSchema` instead. */
+  export const outboundSchema =
+    InviteUserToTeamResponseBodyTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const ResponseBodyTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamPermissions
-> = z.nativeEnum(ResponseBodyTeamPermissions);
+export const InviteUserToTeamResponseBodyTeamPermissions$inboundSchema:
+  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamPermissions> = z
+    .nativeEnum(InviteUserToTeamResponseBodyTeamPermissions);
 
 /** @internal */
-export const ResponseBodyTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTeamPermissions
-> = ResponseBodyTeamPermissions$inboundSchema;
+export const InviteUserToTeamResponseBodyTeamPermissions$outboundSchema:
+  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamPermissions> =
+    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBodyTeamPermissions$ {
-  /** @deprecated use `ResponseBodyTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyTeamPermissions$inboundSchema;
-  /** @deprecated use `ResponseBodyTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyTeamPermissions$outboundSchema;
+export namespace InviteUserToTeamResponseBodyTeamPermissions$ {
+  /** @deprecated use `InviteUserToTeamResponseBodyTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema =
+    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema;
+  /** @deprecated use `InviteUserToTeamResponseBodyTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema =
+    InviteUserToTeamResponseBodyTeamPermissions$outboundSchema;
 }
 
 /** @internal */
@@ -511,9 +516,11 @@ export const InviteUserToTeamResponseBody2$inboundSchema: z.ZodType<
   uid: z.string(),
   username: z.string(),
   role: InviteUserToTeamResponseBodyRole$inboundSchema,
-  teamRoles: z.array(ResponseBodyTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(ResponseBodyTeamPermissions$inboundSchema)
+  teamRoles: z.array(InviteUserToTeamResponseBodyTeamRoles$inboundSchema)
     .optional(),
+  teamPermissions: z.array(
+    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema,
+  ).optional(),
 });
 
 /** @internal */
@@ -534,9 +541,11 @@ export const InviteUserToTeamResponseBody2$outboundSchema: z.ZodType<
   uid: z.string(),
   username: z.string(),
   role: InviteUserToTeamResponseBodyRole$outboundSchema,
-  teamRoles: z.array(ResponseBodyTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(ResponseBodyTeamPermissions$outboundSchema)
+  teamRoles: z.array(InviteUserToTeamResponseBodyTeamRoles$outboundSchema)
     .optional(),
+  teamPermissions: z.array(
+    InviteUserToTeamResponseBodyTeamPermissions$outboundSchema,
+  ).optional(),
 });
 
 /**
@@ -594,50 +603,45 @@ export namespace ResponseBodyRole$ {
 }
 
 /** @internal */
-export const InviteUserToTeamResponseBodyTeamRoles$inboundSchema:
-  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamRoles> = z.nativeEnum(
-    InviteUserToTeamResponseBodyTeamRoles,
-  );
+export const ResponseBodyTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTeamRoles
+> = z.nativeEnum(ResponseBodyTeamRoles);
 
 /** @internal */
-export const InviteUserToTeamResponseBodyTeamRoles$outboundSchema:
-  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamRoles> =
-    InviteUserToTeamResponseBodyTeamRoles$inboundSchema;
+export const ResponseBodyTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTeamRoles
+> = ResponseBodyTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace InviteUserToTeamResponseBodyTeamRoles$ {
-  /** @deprecated use `InviteUserToTeamResponseBodyTeamRoles$inboundSchema` instead. */
-  export const inboundSchema =
-    InviteUserToTeamResponseBodyTeamRoles$inboundSchema;
-  /** @deprecated use `InviteUserToTeamResponseBodyTeamRoles$outboundSchema` instead. */
-  export const outboundSchema =
-    InviteUserToTeamResponseBodyTeamRoles$outboundSchema;
+export namespace ResponseBodyTeamRoles$ {
+  /** @deprecated use `ResponseBodyTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyTeamRoles$inboundSchema;
+  /** @deprecated use `ResponseBodyTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const InviteUserToTeamResponseBodyTeamPermissions$inboundSchema:
-  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamPermissions> = z
-    .nativeEnum(InviteUserToTeamResponseBodyTeamPermissions);
+export const ResponseBodyTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTeamPermissions
+> = z.nativeEnum(ResponseBodyTeamPermissions);
 
 /** @internal */
-export const InviteUserToTeamResponseBodyTeamPermissions$outboundSchema:
-  z.ZodNativeEnum<typeof InviteUserToTeamResponseBodyTeamPermissions> =
-    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema;
+export const ResponseBodyTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTeamPermissions
+> = ResponseBodyTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace InviteUserToTeamResponseBodyTeamPermissions$ {
-  /** @deprecated use `InviteUserToTeamResponseBodyTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema =
-    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema;
-  /** @deprecated use `InviteUserToTeamResponseBodyTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema =
-    InviteUserToTeamResponseBodyTeamPermissions$outboundSchema;
+export namespace ResponseBodyTeamPermissions$ {
+  /** @deprecated use `ResponseBodyTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyTeamPermissions$inboundSchema;
+  /** @deprecated use `ResponseBodyTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyTeamPermissions$outboundSchema;
 }
 
 /** @internal */
@@ -650,11 +654,9 @@ export const InviteUserToTeamResponseBody1$inboundSchema: z.ZodType<
   username: z.string(),
   email: z.string().optional(),
   role: ResponseBodyRole$inboundSchema,
-  teamRoles: z.array(InviteUserToTeamResponseBodyTeamRoles$inboundSchema)
+  teamRoles: z.array(ResponseBodyTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(ResponseBodyTeamPermissions$inboundSchema)
     .optional(),
-  teamPermissions: z.array(
-    InviteUserToTeamResponseBodyTeamPermissions$inboundSchema,
-  ).optional(),
 });
 
 /** @internal */
@@ -677,11 +679,9 @@ export const InviteUserToTeamResponseBody1$outboundSchema: z.ZodType<
   username: z.string(),
   email: z.string().optional(),
   role: ResponseBodyRole$outboundSchema,
-  teamRoles: z.array(InviteUserToTeamResponseBodyTeamRoles$outboundSchema)
+  teamRoles: z.array(ResponseBodyTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(ResponseBodyTeamPermissions$outboundSchema)
     .optional(),
-  teamPermissions: z.array(
-    InviteUserToTeamResponseBodyTeamPermissions$outboundSchema,
-  ).optional(),
 });
 
 /**

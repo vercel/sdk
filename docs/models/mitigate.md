@@ -6,7 +6,7 @@
 import { Mitigate } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: Mitigate = {
-  action: "redirect",
+  action: "rate_limit",
 };
 ```
 

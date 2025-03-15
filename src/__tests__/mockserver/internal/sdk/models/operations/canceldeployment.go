@@ -115,6 +115,30 @@ func (o *CancelDeploymentBuild) GetEnv() []string {
 }
 
 type CancelDeploymentBuilds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *CancelDeploymentBuilds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *CancelDeploymentBuilds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *CancelDeploymentBuilds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type CancelDeploymentFramework string

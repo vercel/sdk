@@ -36,9 +36,15 @@ export type SubmitInvoiceItems = {
   end?: Date | undefined;
   name: string;
   details?: string | undefined;
+  /**
+   * Currency amount as a decimal string.
+   */
   price: string;
   quantity: number;
   units: string;
+  /**
+   * Currency amount as a decimal string.
+   */
   total: string;
 };
 
@@ -61,6 +67,9 @@ export type SubmitInvoiceDiscounts = {
   end?: Date | undefined;
   name: string;
   details?: string | undefined;
+  /**
+   * Currency amount as a decimal string.
+   */
   amount: string;
 };
 

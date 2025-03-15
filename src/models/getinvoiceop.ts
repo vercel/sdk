@@ -13,34 +13,9 @@ export type GetInvoiceRequest = {
   invoiceId: string;
 };
 
-export type GetInvoicePeriod = {
-  start: string;
-  end: string;
-};
-
-export type GetInvoiceItems = {
-  billingPlanId: string;
-  resourceId?: string | undefined;
-  start?: string | undefined;
-  end?: string | undefined;
-  name: string;
-  details?: string | undefined;
-  price: string;
-  quantity: number;
-  units: string;
-  total: string;
-};
-
-export type GetInvoiceDiscounts = {
-  billingPlanId: string;
-  resourceId?: string | undefined;
-  start?: string | undefined;
-  end?: string | undefined;
-  name: string;
-  details?: string | undefined;
-  amount: string;
-};
-
+/**
+ * Invoice state.
+ */
 export const State = {
   Pending: "pending",
   Scheduled: "scheduled",
@@ -50,24 +25,160 @@ export const State = {
   RefundRequested: "refund_requested",
   Refunded: "refunded",
 } as const;
+/**
+ * Invoice state.
+ */
 export type State = ClosedEnum<typeof State>;
 
-export type GetInvoiceResponseBody = {
-  invoiceId: string;
-  externalId?: string | undefined;
-  invoiceNumber?: string | undefined;
-  invoiceDate: string;
-  period: GetInvoicePeriod;
-  memo?: string | undefined;
-  items: Array<GetInvoiceItems>;
-  discounts?: Array<GetInvoiceDiscounts> | undefined;
+/**
+ * Subscription period for this billing cycle. ISO 8601 timestamps.
+ */
+export type GetInvoicePeriod = {
+  start: string;
+  end: string;
+};
+
+/**
+ * Invoice items.
+ */
+export type GetInvoiceItems = {
+  /**
+   * Partner's billing plan ID.
+   */
+  billingPlanId: string;
+  /**
+   * Partner's resource ID. If not specified, indicates installation-wide item.
+   */
+  resourceId?: string | undefined;
+  /**
+   * Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+   */
+  start?: string | undefined;
+  /**
+   * Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+   */
+  end?: string | undefined;
+  /**
+   * Invoice item name.
+   */
+  name: string;
+  /**
+   * Additional item details.
+   */
+  details?: string | undefined;
+  /**
+   * Item price. A dollar-based decimal string.
+   */
+  price: string;
+  /**
+   * Item quantity.
+   */
+  quantity: number;
+  /**
+   * Units for item's quantity.
+   */
+  units: string;
+  /**
+   * Item total. A dollar-based decimal string.
+   */
   total: string;
-  created: string;
-  updated: string;
+};
+
+/**
+ * Invoice discounts.
+ */
+export type GetInvoiceDiscounts = {
+  /**
+   * Partner's billing plan ID.
+   */
+  billingPlanId: string;
+  /**
+   * Partner's resource ID. If not specified, indicates installation-wide discount.
+   */
+  resourceId?: string | undefined;
+  /**
+   * Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+   */
+  start?: string | undefined;
+  /**
+   * Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+   */
+  end?: string | undefined;
+  /**
+   * Discount name.
+   */
+  name: string;
+  /**
+   * Additional discount details.
+   */
+  details?: string | undefined;
+  /**
+   * Discount amount. A dollar-based decimal string.
+   */
+  amount: string;
+};
+
+export type GetInvoiceResponseBody = {
+  /**
+   * Whether the invoice is in the testmode (no real transaction created).
+   */
+  test?: boolean | undefined;
+  /**
+   * Vercel Marketplace Invoice ID.
+   */
+  invoiceId: string;
+  /**
+   * Partner-supplied Invoice ID, if applicable.
+   */
+  externalId?: string | undefined;
+  /**
+   * Invoice state.
+   */
   state: State;
+  /**
+   * User-readable invoice number.
+   */
+  invoiceNumber?: string | undefined;
+  /**
+   * Invoice date. ISO 8601 timestamp.
+   */
+  invoiceDate: string;
+  /**
+   * Subscription period for this billing cycle. ISO 8601 timestamps.
+   */
+  period: GetInvoicePeriod;
+  /**
+   * Additional memo for the invoice.
+   */
+  memo?: string | undefined;
+  /**
+   * Invoice items.
+   */
+  items: Array<GetInvoiceItems>;
+  /**
+   * Invoice discounts.
+   */
+  discounts?: Array<GetInvoiceDiscounts> | undefined;
+  /**
+   * Invoice total amount. A dollar-based decimal string.
+   */
+  total: string;
+  /**
+   * The reason for refund. Only applicable for states "refunded" or "refund_request".
+   */
   refundReason?: string | undefined;
+  /**
+   * Refund amount. Only applicable for states "refunded" or "refund_request". A dollar-based decimal string.
+   */
   refundTotal?: string | undefined;
-  test: boolean;
+  /**
+   * System creation date. ISO 8601 timestamp.
+   */
+  created: string;
+  /**
+   * System update date. ISO 8601 timestamp.
+   */
+  updated: string;
 };
 
 /** @internal */
@@ -125,6 +236,26 @@ export function getInvoiceRequestFromJSON(
     (x) => GetInvoiceRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetInvoiceRequest' from JSON`,
   );
+}
+
+/** @internal */
+export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
+  State,
+);
+
+/** @internal */
+export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
+  State$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace State$ {
+  /** @deprecated use `State$inboundSchema` instead. */
+  export const inboundSchema = State$inboundSchema;
+  /** @deprecated use `State$outboundSchema` instead. */
+  export const outboundSchema = State$outboundSchema;
 }
 
 /** @internal */
@@ -336,33 +467,15 @@ export function getInvoiceDiscountsFromJSON(
 }
 
 /** @internal */
-export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
-  State,
-);
-
-/** @internal */
-export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
-  State$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace State$ {
-  /** @deprecated use `State$inboundSchema` instead. */
-  export const inboundSchema = State$inboundSchema;
-  /** @deprecated use `State$outboundSchema` instead. */
-  export const outboundSchema = State$outboundSchema;
-}
-
-/** @internal */
 export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   GetInvoiceResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  test: z.boolean().optional(),
   invoiceId: z.string(),
   externalId: z.string().optional(),
+  state: State$inboundSchema,
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$inboundSchema),
@@ -371,18 +484,18 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   discounts: z.array(z.lazy(() => GetInvoiceDiscounts$inboundSchema))
     .optional(),
   total: z.string(),
-  created: z.string(),
-  updated: z.string(),
-  state: State$inboundSchema,
   refundReason: z.string().optional(),
   refundTotal: z.string().optional(),
-  test: z.boolean(),
+  created: z.string(),
+  updated: z.string(),
 });
 
 /** @internal */
 export type GetInvoiceResponseBody$Outbound = {
+  test?: boolean | undefined;
   invoiceId: string;
   externalId?: string | undefined;
+  state: string;
   invoiceNumber?: string | undefined;
   invoiceDate: string;
   period: GetInvoicePeriod$Outbound;
@@ -390,12 +503,10 @@ export type GetInvoiceResponseBody$Outbound = {
   items: Array<GetInvoiceItems$Outbound>;
   discounts?: Array<GetInvoiceDiscounts$Outbound> | undefined;
   total: string;
-  created: string;
-  updated: string;
-  state: string;
   refundReason?: string | undefined;
   refundTotal?: string | undefined;
-  test: boolean;
+  created: string;
+  updated: string;
 };
 
 /** @internal */
@@ -404,8 +515,10 @@ export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetInvoiceResponseBody
 > = z.object({
+  test: z.boolean().optional(),
   invoiceId: z.string(),
   externalId: z.string().optional(),
+  state: State$outboundSchema,
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$outboundSchema),
@@ -414,12 +527,10 @@ export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
   discounts: z.array(z.lazy(() => GetInvoiceDiscounts$outboundSchema))
     .optional(),
   total: z.string(),
-  created: z.string(),
-  updated: z.string(),
-  state: State$outboundSchema,
   refundReason: z.string().optional(),
   refundTotal: z.string().optional(),
-  test: z.boolean(),
+  created: z.string(),
+  updated: z.string(),
 });
 
 /**

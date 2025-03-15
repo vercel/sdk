@@ -8,8 +8,8 @@ import { Billing1 } from "@vercel/sdk/models/submitbillingdataop.js";
 let value: Billing1 = {
   billingPlanId: "<id>",
   name: "<value>",
-  price: "900.50",
-  quantity: 276.53,
+  price: "738.65",
+  quantity: 4994.61,
   units: "<value>",
   total: "<value>",
 };

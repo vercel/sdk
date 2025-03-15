@@ -472,7 +472,11 @@ export type ResponseBodyBuild = {
   env: Array<string>;
 };
 
-export type ResponseBodyBuilds = {};
+export type ResponseBodyBuilds = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 export const ResponseBodyFramework = {
   Blitzjs: "blitzjs",
@@ -3857,17 +3861,29 @@ export const ResponseBodyBuilds$inboundSchema: z.ZodType<
   ResponseBodyBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /** @internal */
-export type ResponseBodyBuilds$Outbound = {};
+export type ResponseBodyBuilds$Outbound = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 /** @internal */
 export const ResponseBodyBuilds$outboundSchema: z.ZodType<
   ResponseBodyBuilds$Outbound,
   z.ZodTypeDef,
   ResponseBodyBuilds
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /**
  * @internal

@@ -17,8 +17,8 @@ let value: UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "user_agent",
-            op: "lte",
+            type: "ja4_digest",
+            op: "eq",
           },
         ],
       },

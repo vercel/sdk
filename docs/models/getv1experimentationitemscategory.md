@@ -7,7 +7,7 @@ An optional functional category for the item. Categorization semantics are: - fl
 ```typescript
 import { GetV1ExperimentationItemsCategory } from "@vercel/sdk/models/getv1experimentationitemsop.js";
 
-let value: GetV1ExperimentationItemsCategory = "flag";
+let value: GetV1ExperimentationItemsCategory = "experiment";
 ```
 
 ## Values

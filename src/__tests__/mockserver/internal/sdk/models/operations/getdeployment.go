@@ -2165,6 +2165,30 @@ func (o *ResponseBodyBuild) GetEnv() []string {
 }
 
 type ResponseBodyBuilds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *ResponseBodyBuilds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *ResponseBodyBuilds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *ResponseBodyBuilds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type ResponseBodyFramework string

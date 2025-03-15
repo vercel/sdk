@@ -5,7 +5,7 @@
 ```typescript
 import { GetTeamMembersTeamsProjects } from "@vercel/sdk/models/getteammembersop.js";
 
-let value: GetTeamMembersTeamsProjects = "ADMIN";
+let value: GetTeamMembersTeamsProjects = "PROJECT_DEVELOPER";
 ```
 
 ## Values

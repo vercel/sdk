@@ -1188,10 +1188,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1205,13 +1205,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:

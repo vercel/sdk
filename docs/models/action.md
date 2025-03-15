@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Action } from "@vercel/sdk/models/updateinvoiceop.js";
+import { Action } from "@vercel/sdk/models/userevent.js";
 
-let value: Action = "refund";
+let value: Action = "archived";
 ```
 
 ## Values
 
 ```typescript
-"refund"
+"created" | "updated" | "deleted" | "archived" | "unarchived"
 ```

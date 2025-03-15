@@ -36,7 +36,11 @@ export type CancelDeploymentBuild = {
   env: Array<string>;
 };
 
-export type CancelDeploymentBuilds = {};
+export type CancelDeploymentBuilds = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 export const CancelDeploymentFramework = {
   Blitzjs: "blitzjs",
@@ -1183,17 +1187,29 @@ export const CancelDeploymentBuilds$inboundSchema: z.ZodType<
   CancelDeploymentBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /** @internal */
-export type CancelDeploymentBuilds$Outbound = {};
+export type CancelDeploymentBuilds$Outbound = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 /** @internal */
 export const CancelDeploymentBuilds$outboundSchema: z.ZodType<
   CancelDeploymentBuilds$Outbound,
   z.ZodTypeDef,
   CancelDeploymentBuilds
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /**
  * @internal

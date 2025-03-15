@@ -114,7 +114,7 @@ export type UpdateProjectOidcTokenConfig = {
 /**
  * Specify if the password will apply to every Deployment Target or just Preview
  */
-export const DeploymentType = {
+export const UpdateProjectDeploymentType = {
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
@@ -122,16 +122,18 @@ export const DeploymentType = {
 /**
  * Specify if the password will apply to every Deployment Target or just Preview
  */
-export type DeploymentType = ClosedEnum<typeof DeploymentType>;
+export type UpdateProjectDeploymentType = ClosedEnum<
+  typeof UpdateProjectDeploymentType
+>;
 
 /**
  * Allows to protect project deployments with a password
  */
-export type PasswordProtection = {
+export type UpdateProjectPasswordProtection = {
   /**
    * Specify if the password will apply to every Deployment Target or just Preview
    */
-  deploymentType: DeploymentType;
+  deploymentType: UpdateProjectDeploymentType;
   /**
    * The password that will be used to protect Project Deployments
    */
@@ -141,7 +143,7 @@ export type PasswordProtection = {
 /**
  * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
  */
-export const UpdateProjectDeploymentType = {
+export const UpdateProjectProjectsDeploymentType = {
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
@@ -149,24 +151,24 @@ export const UpdateProjectDeploymentType = {
 /**
  * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
  */
-export type UpdateProjectDeploymentType = ClosedEnum<
-  typeof UpdateProjectDeploymentType
+export type UpdateProjectProjectsDeploymentType = ClosedEnum<
+  typeof UpdateProjectProjectsDeploymentType
 >;
 
 /**
  * Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
  */
-export type SsoProtection = {
+export type UpdateProjectSsoProtection = {
   /**
    * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
    */
-  deploymentType?: UpdateProjectDeploymentType | undefined;
+  deploymentType?: UpdateProjectProjectsDeploymentType | undefined;
 };
 
 /**
  * Specify if the Trusted IPs will apply to every Deployment Target or just Preview
  */
-export const UpdateProjectProjectsDeploymentType = {
+export const UpdateProjectProjectsRequestDeploymentType = {
   All: "all",
   Preview: "preview",
   Production: "production",
@@ -175,8 +177,8 @@ export const UpdateProjectProjectsDeploymentType = {
 /**
  * Specify if the Trusted IPs will apply to every Deployment Target or just Preview
  */
-export type UpdateProjectProjectsDeploymentType = ClosedEnum<
-  typeof UpdateProjectProjectsDeploymentType
+export type UpdateProjectProjectsRequestDeploymentType = ClosedEnum<
+  typeof UpdateProjectProjectsRequestDeploymentType
 >;
 
 export type Addresses = {
@@ -205,11 +207,11 @@ export type ProtectionMode = ClosedEnum<typeof ProtectionMode>;
 /**
  * Restricts access to deployments based on the incoming request IP address
  */
-export type TrustedIps = {
+export type UpdateProjectTrustedIps = {
   /**
    * Specify if the Trusted IPs will apply to every Deployment Target or just Preview
    */
-  deploymentType: UpdateProjectProjectsDeploymentType;
+  deploymentType: UpdateProjectProjectsRequestDeploymentType;
   addresses: Array<Addresses>;
   /**
    * exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
@@ -217,7 +219,7 @@ export type TrustedIps = {
   protectionMode: ProtectionMode;
 };
 
-export type Paths = {
+export type UpdateProjectPaths = {
   /**
    * The regex path that should not be protected by Deployment Protection
    */
@@ -227,8 +229,8 @@ export type Paths = {
 /**
  * Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
  */
-export type OptionsAllowlist = {
-  paths: Array<Paths>;
+export type UpdateProjectOptionsAllowlist = {
+  paths: Array<UpdateProjectPaths>;
 };
 
 export type UpdateProjectRequestBody = {
@@ -331,19 +333,19 @@ export type UpdateProjectRequestBody = {
   /**
    * Allows to protect project deployments with a password
    */
-  passwordProtection?: PasswordProtection | null | undefined;
+  passwordProtection?: UpdateProjectPasswordProtection | null | undefined;
   /**
    * Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
    */
-  ssoProtection?: SsoProtection | null | undefined;
+  ssoProtection?: UpdateProjectSsoProtection | null | undefined;
   /**
    * Restricts access to deployments based on the incoming request IP address
    */
-  trustedIps?: TrustedIps | null | undefined;
+  trustedIps?: UpdateProjectTrustedIps | null | undefined;
   /**
    * Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
    */
-  optionsAllowlist?: OptionsAllowlist | null | undefined;
+  optionsAllowlist?: UpdateProjectOptionsAllowlist | null | undefined;
 };
 
 export type UpdateProjectRequest = {
@@ -438,10 +440,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1097,15 +1099,15 @@ export type UpdateProjectProjectsNodeVersion = ClosedEnum<
   typeof UpdateProjectProjectsNodeVersion
 >;
 
-export type UpdateProjectPaths = {
+export type UpdateProjectProjectsPaths = {
   value: string;
 };
 
-export type UpdateProjectOptionsAllowlist = {
-  paths: Array<UpdateProjectPaths>;
+export type UpdateProjectProjectsOptionsAllowlist = {
+  paths: Array<UpdateProjectProjectsPaths>;
 };
 
-export type UpdateProjectPasswordProtection = {};
+export type UpdateProjectProjectsPasswordProtection = {};
 
 export const UpdateProjectFunctionDefaultMemoryType = {
   StandardLegacy: "standard_legacy",
@@ -1181,7 +1183,7 @@ export type UpdateProjectProjectsResponseDeploymentType = ClosedEnum<
   typeof UpdateProjectProjectsResponseDeploymentType
 >;
 
-export type UpdateProjectSsoProtection = {
+export type UpdateProjectProjectsSsoProtection = {
   deploymentType: UpdateProjectProjectsResponseDeploymentType;
 };
 
@@ -1603,7 +1605,7 @@ export type UpdateProjectTrustedIps1 = {
   protectionMode: UpdateProjectTrustedIpsProtectionMode;
 };
 
-export type UpdateProjectTrustedIps =
+export type UpdateProjectProjectsTrustedIps =
   | UpdateProjectTrustedIps2
   | UpdateProjectTrustedIps1;
 
@@ -1893,10 +1895,13 @@ export type UpdateProjectResponseBody = {
     | undefined;
   name: string;
   nodeVersion: UpdateProjectProjectsNodeVersion;
-  optionsAllowlist?: UpdateProjectOptionsAllowlist | null | undefined;
+  optionsAllowlist?: UpdateProjectProjectsOptionsAllowlist | null | undefined;
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
-  passwordProtection?: UpdateProjectPasswordProtection | null | undefined;
+  passwordProtection?:
+    | UpdateProjectProjectsPasswordProtection
+    | null
+    | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: UpdateProjectResourceConfig;
@@ -1910,7 +1915,7 @@ export type UpdateProjectResponseBody = {
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
-  ssoProtection?: UpdateProjectSsoProtection | null | undefined;
+  ssoProtection?: UpdateProjectProjectsSsoProtection | null | undefined;
   targets?: { [k: string]: UpdateProjectTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
@@ -2063,84 +2068,6 @@ export function updateProjectOidcTokenConfigFromJSON(
 }
 
 /** @internal */
-export const DeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof DeploymentType
-> = z.nativeEnum(DeploymentType);
-
-/** @internal */
-export const DeploymentType$outboundSchema: z.ZodNativeEnum<
-  typeof DeploymentType
-> = DeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentType$ {
-  /** @deprecated use `DeploymentType$inboundSchema` instead. */
-  export const inboundSchema = DeploymentType$inboundSchema;
-  /** @deprecated use `DeploymentType$outboundSchema` instead. */
-  export const outboundSchema = DeploymentType$outboundSchema;
-}
-
-/** @internal */
-export const PasswordProtection$inboundSchema: z.ZodType<
-  PasswordProtection,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deploymentType: DeploymentType$inboundSchema,
-  password: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
-export type PasswordProtection$Outbound = {
-  deploymentType: string;
-  password?: string | null | undefined;
-};
-
-/** @internal */
-export const PasswordProtection$outboundSchema: z.ZodType<
-  PasswordProtection$Outbound,
-  z.ZodTypeDef,
-  PasswordProtection
-> = z.object({
-  deploymentType: DeploymentType$outboundSchema,
-  password: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PasswordProtection$ {
-  /** @deprecated use `PasswordProtection$inboundSchema` instead. */
-  export const inboundSchema = PasswordProtection$inboundSchema;
-  /** @deprecated use `PasswordProtection$outboundSchema` instead. */
-  export const outboundSchema = PasswordProtection$outboundSchema;
-  /** @deprecated use `PasswordProtection$Outbound` instead. */
-  export type Outbound = PasswordProtection$Outbound;
-}
-
-export function passwordProtectionToJSON(
-  passwordProtection: PasswordProtection,
-): string {
-  return JSON.stringify(
-    PasswordProtection$outboundSchema.parse(passwordProtection),
-  );
-}
-
-export function passwordProtectionFromJSON(
-  jsonString: string,
-): SafeParseResult<PasswordProtection, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PasswordProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PasswordProtection' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectDeploymentType
 > = z.nativeEnum(UpdateProjectDeploymentType);
@@ -2162,52 +2089,61 @@ export namespace UpdateProjectDeploymentType$ {
 }
 
 /** @internal */
-export const SsoProtection$inboundSchema: z.ZodType<
-  SsoProtection,
+export const UpdateProjectPasswordProtection$inboundSchema: z.ZodType<
+  UpdateProjectPasswordProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentType: UpdateProjectDeploymentType$inboundSchema.default("preview"),
+  deploymentType: UpdateProjectDeploymentType$inboundSchema,
+  password: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
-export type SsoProtection$Outbound = {
+export type UpdateProjectPasswordProtection$Outbound = {
   deploymentType: string;
+  password?: string | null | undefined;
 };
 
 /** @internal */
-export const SsoProtection$outboundSchema: z.ZodType<
-  SsoProtection$Outbound,
+export const UpdateProjectPasswordProtection$outboundSchema: z.ZodType<
+  UpdateProjectPasswordProtection$Outbound,
   z.ZodTypeDef,
-  SsoProtection
+  UpdateProjectPasswordProtection
 > = z.object({
-  deploymentType: UpdateProjectDeploymentType$outboundSchema.default("preview"),
+  deploymentType: UpdateProjectDeploymentType$outboundSchema,
+  password: z.nullable(z.string()).optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SsoProtection$ {
-  /** @deprecated use `SsoProtection$inboundSchema` instead. */
-  export const inboundSchema = SsoProtection$inboundSchema;
-  /** @deprecated use `SsoProtection$outboundSchema` instead. */
-  export const outboundSchema = SsoProtection$outboundSchema;
-  /** @deprecated use `SsoProtection$Outbound` instead. */
-  export type Outbound = SsoProtection$Outbound;
+export namespace UpdateProjectPasswordProtection$ {
+  /** @deprecated use `UpdateProjectPasswordProtection$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectPasswordProtection$inboundSchema;
+  /** @deprecated use `UpdateProjectPasswordProtection$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectPasswordProtection$outboundSchema;
+  /** @deprecated use `UpdateProjectPasswordProtection$Outbound` instead. */
+  export type Outbound = UpdateProjectPasswordProtection$Outbound;
 }
 
-export function ssoProtectionToJSON(ssoProtection: SsoProtection): string {
-  return JSON.stringify(SsoProtection$outboundSchema.parse(ssoProtection));
+export function updateProjectPasswordProtectionToJSON(
+  updateProjectPasswordProtection: UpdateProjectPasswordProtection,
+): string {
+  return JSON.stringify(
+    UpdateProjectPasswordProtection$outboundSchema.parse(
+      updateProjectPasswordProtection,
+    ),
+  );
 }
 
-export function ssoProtectionFromJSON(
+export function updateProjectPasswordProtectionFromJSON(
   jsonString: string,
-): SafeParseResult<SsoProtection, SDKValidationError> {
+): SafeParseResult<UpdateProjectPasswordProtection, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SsoProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SsoProtection' from JSON`,
+    (x) => UpdateProjectPasswordProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectPasswordProtection' from JSON`,
   );
 }
 
@@ -2232,6 +2168,87 @@ export namespace UpdateProjectProjectsDeploymentType$ {
   /** @deprecated use `UpdateProjectProjectsDeploymentType$outboundSchema` instead. */
   export const outboundSchema =
     UpdateProjectProjectsDeploymentType$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectSsoProtection$inboundSchema: z.ZodType<
+  UpdateProjectSsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: UpdateProjectProjectsDeploymentType$inboundSchema.default(
+    "preview",
+  ),
+});
+
+/** @internal */
+export type UpdateProjectSsoProtection$Outbound = {
+  deploymentType: string;
+};
+
+/** @internal */
+export const UpdateProjectSsoProtection$outboundSchema: z.ZodType<
+  UpdateProjectSsoProtection$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectSsoProtection
+> = z.object({
+  deploymentType: UpdateProjectProjectsDeploymentType$outboundSchema.default(
+    "preview",
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectSsoProtection$ {
+  /** @deprecated use `UpdateProjectSsoProtection$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectSsoProtection$inboundSchema;
+  /** @deprecated use `UpdateProjectSsoProtection$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectSsoProtection$outboundSchema;
+  /** @deprecated use `UpdateProjectSsoProtection$Outbound` instead. */
+  export type Outbound = UpdateProjectSsoProtection$Outbound;
+}
+
+export function updateProjectSsoProtectionToJSON(
+  updateProjectSsoProtection: UpdateProjectSsoProtection,
+): string {
+  return JSON.stringify(
+    UpdateProjectSsoProtection$outboundSchema.parse(updateProjectSsoProtection),
+  );
+}
+
+export function updateProjectSsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectSsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectSsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsRequestDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsRequestDeploymentType> = z
+    .nativeEnum(UpdateProjectProjectsRequestDeploymentType);
+
+/** @internal */
+export const UpdateProjectProjectsRequestDeploymentType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsRequestDeploymentType> =
+    UpdateProjectProjectsRequestDeploymentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProjectsRequestDeploymentType$ {
+  /** @deprecated use `UpdateProjectProjectsRequestDeploymentType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProjectsRequestDeploymentType$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsRequestDeploymentType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsRequestDeploymentType$outboundSchema;
 }
 
 /** @internal */
@@ -2309,30 +2326,30 @@ export namespace ProtectionMode$ {
 }
 
 /** @internal */
-export const TrustedIps$inboundSchema: z.ZodType<
-  TrustedIps,
+export const UpdateProjectTrustedIps$inboundSchema: z.ZodType<
+  UpdateProjectTrustedIps,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentType: UpdateProjectProjectsDeploymentType$inboundSchema,
+  deploymentType: UpdateProjectProjectsRequestDeploymentType$inboundSchema,
   addresses: z.array(z.lazy(() => Addresses$inboundSchema)),
   protectionMode: ProtectionMode$inboundSchema,
 });
 
 /** @internal */
-export type TrustedIps$Outbound = {
+export type UpdateProjectTrustedIps$Outbound = {
   deploymentType: string;
   addresses: Array<Addresses$Outbound>;
   protectionMode: string;
 };
 
 /** @internal */
-export const TrustedIps$outboundSchema: z.ZodType<
-  TrustedIps$Outbound,
+export const UpdateProjectTrustedIps$outboundSchema: z.ZodType<
+  UpdateProjectTrustedIps$Outbound,
   z.ZodTypeDef,
-  TrustedIps
+  UpdateProjectTrustedIps
 > = z.object({
-  deploymentType: UpdateProjectProjectsDeploymentType$outboundSchema,
+  deploymentType: UpdateProjectProjectsRequestDeploymentType$outboundSchema,
   addresses: z.array(z.lazy(() => Addresses$outboundSchema)),
   protectionMode: ProtectionMode$outboundSchema,
 });
@@ -2341,45 +2358,52 @@ export const TrustedIps$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TrustedIps$ {
-  /** @deprecated use `TrustedIps$inboundSchema` instead. */
-  export const inboundSchema = TrustedIps$inboundSchema;
-  /** @deprecated use `TrustedIps$outboundSchema` instead. */
-  export const outboundSchema = TrustedIps$outboundSchema;
-  /** @deprecated use `TrustedIps$Outbound` instead. */
-  export type Outbound = TrustedIps$Outbound;
+export namespace UpdateProjectTrustedIps$ {
+  /** @deprecated use `UpdateProjectTrustedIps$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectTrustedIps$inboundSchema;
+  /** @deprecated use `UpdateProjectTrustedIps$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectTrustedIps$outboundSchema;
+  /** @deprecated use `UpdateProjectTrustedIps$Outbound` instead. */
+  export type Outbound = UpdateProjectTrustedIps$Outbound;
 }
 
-export function trustedIpsToJSON(trustedIps: TrustedIps): string {
-  return JSON.stringify(TrustedIps$outboundSchema.parse(trustedIps));
+export function updateProjectTrustedIpsToJSON(
+  updateProjectTrustedIps: UpdateProjectTrustedIps,
+): string {
+  return JSON.stringify(
+    UpdateProjectTrustedIps$outboundSchema.parse(updateProjectTrustedIps),
+  );
 }
 
-export function trustedIpsFromJSON(
+export function updateProjectTrustedIpsFromJSON(
   jsonString: string,
-): SafeParseResult<TrustedIps, SDKValidationError> {
+): SafeParseResult<UpdateProjectTrustedIps, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TrustedIps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TrustedIps' from JSON`,
+    (x) => UpdateProjectTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectTrustedIps' from JSON`,
   );
 }
 
 /** @internal */
-export const Paths$inboundSchema: z.ZodType<Paths, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.string(),
-  });
+export const UpdateProjectPaths$inboundSchema: z.ZodType<
+  UpdateProjectPaths,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string(),
+});
 
 /** @internal */
-export type Paths$Outbound = {
+export type UpdateProjectPaths$Outbound = {
   value: string;
 };
 
 /** @internal */
-export const Paths$outboundSchema: z.ZodType<
-  Paths$Outbound,
+export const UpdateProjectPaths$outboundSchema: z.ZodType<
+  UpdateProjectPaths$Outbound,
   z.ZodTypeDef,
-  Paths
+  UpdateProjectPaths
 > = z.object({
   value: z.string(),
 });
@@ -2388,80 +2412,86 @@ export const Paths$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Paths$ {
-  /** @deprecated use `Paths$inboundSchema` instead. */
-  export const inboundSchema = Paths$inboundSchema;
-  /** @deprecated use `Paths$outboundSchema` instead. */
-  export const outboundSchema = Paths$outboundSchema;
-  /** @deprecated use `Paths$Outbound` instead. */
-  export type Outbound = Paths$Outbound;
+export namespace UpdateProjectPaths$ {
+  /** @deprecated use `UpdateProjectPaths$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectPaths$inboundSchema;
+  /** @deprecated use `UpdateProjectPaths$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectPaths$outboundSchema;
+  /** @deprecated use `UpdateProjectPaths$Outbound` instead. */
+  export type Outbound = UpdateProjectPaths$Outbound;
 }
 
-export function pathsToJSON(paths: Paths): string {
-  return JSON.stringify(Paths$outboundSchema.parse(paths));
+export function updateProjectPathsToJSON(
+  updateProjectPaths: UpdateProjectPaths,
+): string {
+  return JSON.stringify(
+    UpdateProjectPaths$outboundSchema.parse(updateProjectPaths),
+  );
 }
 
-export function pathsFromJSON(
+export function updateProjectPathsFromJSON(
   jsonString: string,
-): SafeParseResult<Paths, SDKValidationError> {
+): SafeParseResult<UpdateProjectPaths, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Paths$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Paths' from JSON`,
+    (x) => UpdateProjectPaths$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectPaths' from JSON`,
   );
 }
 
 /** @internal */
-export const OptionsAllowlist$inboundSchema: z.ZodType<
-  OptionsAllowlist,
+export const UpdateProjectOptionsAllowlist$inboundSchema: z.ZodType<
+  UpdateProjectOptionsAllowlist,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paths: z.array(z.lazy(() => Paths$inboundSchema)),
+  paths: z.array(z.lazy(() => UpdateProjectPaths$inboundSchema)),
 });
 
 /** @internal */
-export type OptionsAllowlist$Outbound = {
-  paths: Array<Paths$Outbound>;
+export type UpdateProjectOptionsAllowlist$Outbound = {
+  paths: Array<UpdateProjectPaths$Outbound>;
 };
 
 /** @internal */
-export const OptionsAllowlist$outboundSchema: z.ZodType<
-  OptionsAllowlist$Outbound,
+export const UpdateProjectOptionsAllowlist$outboundSchema: z.ZodType<
+  UpdateProjectOptionsAllowlist$Outbound,
   z.ZodTypeDef,
-  OptionsAllowlist
+  UpdateProjectOptionsAllowlist
 > = z.object({
-  paths: z.array(z.lazy(() => Paths$outboundSchema)),
+  paths: z.array(z.lazy(() => UpdateProjectPaths$outboundSchema)),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OptionsAllowlist$ {
-  /** @deprecated use `OptionsAllowlist$inboundSchema` instead. */
-  export const inboundSchema = OptionsAllowlist$inboundSchema;
-  /** @deprecated use `OptionsAllowlist$outboundSchema` instead. */
-  export const outboundSchema = OptionsAllowlist$outboundSchema;
-  /** @deprecated use `OptionsAllowlist$Outbound` instead. */
-  export type Outbound = OptionsAllowlist$Outbound;
+export namespace UpdateProjectOptionsAllowlist$ {
+  /** @deprecated use `UpdateProjectOptionsAllowlist$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectOptionsAllowlist$inboundSchema;
+  /** @deprecated use `UpdateProjectOptionsAllowlist$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectOptionsAllowlist$outboundSchema;
+  /** @deprecated use `UpdateProjectOptionsAllowlist$Outbound` instead. */
+  export type Outbound = UpdateProjectOptionsAllowlist$Outbound;
 }
 
-export function optionsAllowlistToJSON(
-  optionsAllowlist: OptionsAllowlist,
+export function updateProjectOptionsAllowlistToJSON(
+  updateProjectOptionsAllowlist: UpdateProjectOptionsAllowlist,
 ): string {
   return JSON.stringify(
-    OptionsAllowlist$outboundSchema.parse(optionsAllowlist),
+    UpdateProjectOptionsAllowlist$outboundSchema.parse(
+      updateProjectOptionsAllowlist,
+    ),
   );
 }
 
-export function optionsAllowlistFromJSON(
+export function updateProjectOptionsAllowlistFromJSON(
   jsonString: string,
-): SafeParseResult<OptionsAllowlist, SDKValidationError> {
+): SafeParseResult<UpdateProjectOptionsAllowlist, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OptionsAllowlist$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OptionsAllowlist' from JSON`,
+    (x) => UpdateProjectOptionsAllowlist$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectOptionsAllowlist' from JSON`,
   );
 }
 
@@ -2500,13 +2530,17 @@ export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   enableAffectedProjectsDeployments: z.boolean().optional(),
   oidcTokenConfig: z.lazy(() => UpdateProjectOidcTokenConfig$inboundSchema)
     .optional(),
-  passwordProtection: z.nullable(z.lazy(() => PasswordProtection$inboundSchema))
+  passwordProtection: z.nullable(
+    z.lazy(() => UpdateProjectPasswordProtection$inboundSchema),
+  ).optional(),
+  ssoProtection: z.nullable(
+    z.lazy(() => UpdateProjectSsoProtection$inboundSchema),
+  ).optional(),
+  trustedIps: z.nullable(z.lazy(() => UpdateProjectTrustedIps$inboundSchema))
     .optional(),
-  ssoProtection: z.nullable(z.lazy(() => SsoProtection$inboundSchema))
-    .optional(),
-  trustedIps: z.nullable(z.lazy(() => TrustedIps$inboundSchema)).optional(),
-  optionsAllowlist: z.nullable(z.lazy(() => OptionsAllowlist$inboundSchema))
-    .optional(),
+  optionsAllowlist: z.nullable(
+    z.lazy(() => UpdateProjectOptionsAllowlist$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
@@ -2539,10 +2573,13 @@ export type UpdateProjectRequestBody$Outbound = {
   enableProductionFeedback?: boolean | null | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   oidcTokenConfig?: UpdateProjectOidcTokenConfig$Outbound | undefined;
-  passwordProtection?: PasswordProtection$Outbound | null | undefined;
-  ssoProtection?: SsoProtection$Outbound | null | undefined;
-  trustedIps?: TrustedIps$Outbound | null | undefined;
-  optionsAllowlist?: OptionsAllowlist$Outbound | null | undefined;
+  passwordProtection?:
+    | UpdateProjectPasswordProtection$Outbound
+    | null
+    | undefined;
+  ssoProtection?: UpdateProjectSsoProtection$Outbound | null | undefined;
+  trustedIps?: UpdateProjectTrustedIps$Outbound | null | undefined;
+  optionsAllowlist?: UpdateProjectOptionsAllowlist$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -2581,13 +2618,16 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() => UpdateProjectOidcTokenConfig$outboundSchema)
     .optional(),
   passwordProtection: z.nullable(
-    z.lazy(() => PasswordProtection$outboundSchema),
+    z.lazy(() => UpdateProjectPasswordProtection$outboundSchema),
   ).optional(),
-  ssoProtection: z.nullable(z.lazy(() => SsoProtection$outboundSchema))
+  ssoProtection: z.nullable(
+    z.lazy(() => UpdateProjectSsoProtection$outboundSchema),
+  ).optional(),
+  trustedIps: z.nullable(z.lazy(() => UpdateProjectTrustedIps$outboundSchema))
     .optional(),
-  trustedIps: z.nullable(z.lazy(() => TrustedIps$outboundSchema)).optional(),
-  optionsAllowlist: z.nullable(z.lazy(() => OptionsAllowlist$outboundSchema))
-    .optional(),
+  optionsAllowlist: z.nullable(
+    z.lazy(() => UpdateProjectOptionsAllowlist$outboundSchema),
+  ).optional(),
 });
 
 /**
@@ -6478,8 +6518,8 @@ export namespace UpdateProjectProjectsNodeVersion$ {
 }
 
 /** @internal */
-export const UpdateProjectPaths$inboundSchema: z.ZodType<
-  UpdateProjectPaths,
+export const UpdateProjectProjectsPaths$inboundSchema: z.ZodType<
+  UpdateProjectProjectsPaths,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -6487,15 +6527,15 @@ export const UpdateProjectPaths$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UpdateProjectPaths$Outbound = {
+export type UpdateProjectProjectsPaths$Outbound = {
   value: string;
 };
 
 /** @internal */
-export const UpdateProjectPaths$outboundSchema: z.ZodType<
-  UpdateProjectPaths$Outbound,
+export const UpdateProjectProjectsPaths$outboundSchema: z.ZodType<
+  UpdateProjectProjectsPaths$Outbound,
   z.ZodTypeDef,
-  UpdateProjectPaths
+  UpdateProjectProjectsPaths
 > = z.object({
   value: z.string(),
 });
@@ -6504,136 +6544,148 @@ export const UpdateProjectPaths$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectPaths$ {
-  /** @deprecated use `UpdateProjectPaths$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectPaths$inboundSchema;
-  /** @deprecated use `UpdateProjectPaths$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectPaths$outboundSchema;
-  /** @deprecated use `UpdateProjectPaths$Outbound` instead. */
-  export type Outbound = UpdateProjectPaths$Outbound;
+export namespace UpdateProjectProjectsPaths$ {
+  /** @deprecated use `UpdateProjectProjectsPaths$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectProjectsPaths$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsPaths$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectProjectsPaths$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsPaths$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsPaths$Outbound;
 }
 
-export function updateProjectPathsToJSON(
-  updateProjectPaths: UpdateProjectPaths,
+export function updateProjectProjectsPathsToJSON(
+  updateProjectProjectsPaths: UpdateProjectProjectsPaths,
 ): string {
   return JSON.stringify(
-    UpdateProjectPaths$outboundSchema.parse(updateProjectPaths),
+    UpdateProjectProjectsPaths$outboundSchema.parse(updateProjectProjectsPaths),
   );
 }
 
-export function updateProjectPathsFromJSON(
+export function updateProjectProjectsPathsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectPaths, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsPaths, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectPaths$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectPaths' from JSON`,
+    (x) => UpdateProjectProjectsPaths$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsPaths' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateProjectOptionsAllowlist$inboundSchema: z.ZodType<
-  UpdateProjectOptionsAllowlist,
+export const UpdateProjectProjectsOptionsAllowlist$inboundSchema: z.ZodType<
+  UpdateProjectProjectsOptionsAllowlist,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  paths: z.array(z.lazy(() => UpdateProjectPaths$inboundSchema)),
+  paths: z.array(z.lazy(() => UpdateProjectProjectsPaths$inboundSchema)),
 });
 
 /** @internal */
-export type UpdateProjectOptionsAllowlist$Outbound = {
-  paths: Array<UpdateProjectPaths$Outbound>;
+export type UpdateProjectProjectsOptionsAllowlist$Outbound = {
+  paths: Array<UpdateProjectProjectsPaths$Outbound>;
 };
 
 /** @internal */
-export const UpdateProjectOptionsAllowlist$outboundSchema: z.ZodType<
-  UpdateProjectOptionsAllowlist$Outbound,
+export const UpdateProjectProjectsOptionsAllowlist$outboundSchema: z.ZodType<
+  UpdateProjectProjectsOptionsAllowlist$Outbound,
   z.ZodTypeDef,
-  UpdateProjectOptionsAllowlist
+  UpdateProjectProjectsOptionsAllowlist
 > = z.object({
-  paths: z.array(z.lazy(() => UpdateProjectPaths$outboundSchema)),
+  paths: z.array(z.lazy(() => UpdateProjectProjectsPaths$outboundSchema)),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectOptionsAllowlist$ {
-  /** @deprecated use `UpdateProjectOptionsAllowlist$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectOptionsAllowlist$inboundSchema;
-  /** @deprecated use `UpdateProjectOptionsAllowlist$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectOptionsAllowlist$outboundSchema;
-  /** @deprecated use `UpdateProjectOptionsAllowlist$Outbound` instead. */
-  export type Outbound = UpdateProjectOptionsAllowlist$Outbound;
+export namespace UpdateProjectProjectsOptionsAllowlist$ {
+  /** @deprecated use `UpdateProjectProjectsOptionsAllowlist$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProjectsOptionsAllowlist$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsOptionsAllowlist$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsOptionsAllowlist$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsOptionsAllowlist$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsOptionsAllowlist$Outbound;
 }
 
-export function updateProjectOptionsAllowlistToJSON(
-  updateProjectOptionsAllowlist: UpdateProjectOptionsAllowlist,
+export function updateProjectProjectsOptionsAllowlistToJSON(
+  updateProjectProjectsOptionsAllowlist: UpdateProjectProjectsOptionsAllowlist,
 ): string {
   return JSON.stringify(
-    UpdateProjectOptionsAllowlist$outboundSchema.parse(
-      updateProjectOptionsAllowlist,
+    UpdateProjectProjectsOptionsAllowlist$outboundSchema.parse(
+      updateProjectProjectsOptionsAllowlist,
     ),
   );
 }
 
-export function updateProjectOptionsAllowlistFromJSON(
+export function updateProjectProjectsOptionsAllowlistFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectOptionsAllowlist, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsOptionsAllowlist, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectOptionsAllowlist$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectOptionsAllowlist' from JSON`,
+    (x) =>
+      UpdateProjectProjectsOptionsAllowlist$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsOptionsAllowlist' from JSON`,
   );
 }
 
 /** @internal */
-export const UpdateProjectPasswordProtection$inboundSchema: z.ZodType<
-  UpdateProjectPasswordProtection,
+export const UpdateProjectProjectsPasswordProtection$inboundSchema: z.ZodType<
+  UpdateProjectProjectsPasswordProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type UpdateProjectPasswordProtection$Outbound = {};
+export type UpdateProjectProjectsPasswordProtection$Outbound = {};
 
 /** @internal */
-export const UpdateProjectPasswordProtection$outboundSchema: z.ZodType<
-  UpdateProjectPasswordProtection$Outbound,
+export const UpdateProjectProjectsPasswordProtection$outboundSchema: z.ZodType<
+  UpdateProjectProjectsPasswordProtection$Outbound,
   z.ZodTypeDef,
-  UpdateProjectPasswordProtection
+  UpdateProjectProjectsPasswordProtection
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectPasswordProtection$ {
-  /** @deprecated use `UpdateProjectPasswordProtection$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectPasswordProtection$inboundSchema;
-  /** @deprecated use `UpdateProjectPasswordProtection$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectPasswordProtection$outboundSchema;
-  /** @deprecated use `UpdateProjectPasswordProtection$Outbound` instead. */
-  export type Outbound = UpdateProjectPasswordProtection$Outbound;
+export namespace UpdateProjectProjectsPasswordProtection$ {
+  /** @deprecated use `UpdateProjectProjectsPasswordProtection$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProjectsPasswordProtection$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsPasswordProtection$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsPasswordProtection$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsPasswordProtection$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsPasswordProtection$Outbound;
 }
 
-export function updateProjectPasswordProtectionToJSON(
-  updateProjectPasswordProtection: UpdateProjectPasswordProtection,
+export function updateProjectProjectsPasswordProtectionToJSON(
+  updateProjectProjectsPasswordProtection:
+    UpdateProjectProjectsPasswordProtection,
 ): string {
   return JSON.stringify(
-    UpdateProjectPasswordProtection$outboundSchema.parse(
-      updateProjectPasswordProtection,
+    UpdateProjectProjectsPasswordProtection$outboundSchema.parse(
+      updateProjectProjectsPasswordProtection,
     ),
   );
 }
 
-export function updateProjectPasswordProtectionFromJSON(
+export function updateProjectProjectsPasswordProtectionFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectPasswordProtection, SDKValidationError> {
+): SafeParseResult<
+  UpdateProjectProjectsPasswordProtection,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectPasswordProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectPasswordProtection' from JSON`,
+    (x) =>
+      UpdateProjectProjectsPasswordProtection$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProjectsPasswordProtection' from JSON`,
   );
 }
 
@@ -6974,8 +7026,8 @@ export namespace UpdateProjectProjectsResponseDeploymentType$ {
 }
 
 /** @internal */
-export const UpdateProjectSsoProtection$inboundSchema: z.ZodType<
-  UpdateProjectSsoProtection,
+export const UpdateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
+  UpdateProjectProjectsSsoProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -6983,15 +7035,15 @@ export const UpdateProjectSsoProtection$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UpdateProjectSsoProtection$Outbound = {
+export type UpdateProjectProjectsSsoProtection$Outbound = {
   deploymentType: string;
 };
 
 /** @internal */
-export const UpdateProjectSsoProtection$outboundSchema: z.ZodType<
-  UpdateProjectSsoProtection$Outbound,
+export const UpdateProjectProjectsSsoProtection$outboundSchema: z.ZodType<
+  UpdateProjectProjectsSsoProtection$Outbound,
   z.ZodTypeDef,
-  UpdateProjectSsoProtection
+  UpdateProjectProjectsSsoProtection
 > = z.object({
   deploymentType: UpdateProjectProjectsResponseDeploymentType$outboundSchema,
 });
@@ -7000,30 +7052,34 @@ export const UpdateProjectSsoProtection$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectSsoProtection$ {
-  /** @deprecated use `UpdateProjectSsoProtection$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectSsoProtection$inboundSchema;
-  /** @deprecated use `UpdateProjectSsoProtection$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectSsoProtection$outboundSchema;
-  /** @deprecated use `UpdateProjectSsoProtection$Outbound` instead. */
-  export type Outbound = UpdateProjectSsoProtection$Outbound;
+export namespace UpdateProjectProjectsSsoProtection$ {
+  /** @deprecated use `UpdateProjectProjectsSsoProtection$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectProjectsSsoProtection$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsSsoProtection$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsSsoProtection$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsSsoProtection$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsSsoProtection$Outbound;
 }
 
-export function updateProjectSsoProtectionToJSON(
-  updateProjectSsoProtection: UpdateProjectSsoProtection,
+export function updateProjectProjectsSsoProtectionToJSON(
+  updateProjectProjectsSsoProtection: UpdateProjectProjectsSsoProtection,
 ): string {
   return JSON.stringify(
-    UpdateProjectSsoProtection$outboundSchema.parse(updateProjectSsoProtection),
+    UpdateProjectProjectsSsoProtection$outboundSchema.parse(
+      updateProjectProjectsSsoProtection,
+    ),
   );
 }
 
-export function updateProjectSsoProtectionFromJSON(
+export function updateProjectProjectsSsoProtectionFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectSsoProtection, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsSsoProtection, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectSsoProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectSsoProtection' from JSON`,
+    (x) =>
+      UpdateProjectProjectsSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsSsoProtection' from JSON`,
   );
 }
 
@@ -8891,8 +8947,8 @@ export function updateProjectTrustedIps1FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectTrustedIps$inboundSchema: z.ZodType<
-  UpdateProjectTrustedIps,
+export const UpdateProjectProjectsTrustedIps$inboundSchema: z.ZodType<
+  UpdateProjectProjectsTrustedIps,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -8901,15 +8957,15 @@ export const UpdateProjectTrustedIps$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type UpdateProjectTrustedIps$Outbound =
+export type UpdateProjectProjectsTrustedIps$Outbound =
   | UpdateProjectTrustedIps2$Outbound
   | UpdateProjectTrustedIps1$Outbound;
 
 /** @internal */
-export const UpdateProjectTrustedIps$outboundSchema: z.ZodType<
-  UpdateProjectTrustedIps$Outbound,
+export const UpdateProjectProjectsTrustedIps$outboundSchema: z.ZodType<
+  UpdateProjectProjectsTrustedIps$Outbound,
   z.ZodTypeDef,
-  UpdateProjectTrustedIps
+  UpdateProjectProjectsTrustedIps
 > = z.union([
   z.lazy(() => UpdateProjectTrustedIps2$outboundSchema),
   z.lazy(() => UpdateProjectTrustedIps1$outboundSchema),
@@ -8919,30 +8975,32 @@ export const UpdateProjectTrustedIps$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectTrustedIps$ {
-  /** @deprecated use `UpdateProjectTrustedIps$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectTrustedIps$inboundSchema;
-  /** @deprecated use `UpdateProjectTrustedIps$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectTrustedIps$outboundSchema;
-  /** @deprecated use `UpdateProjectTrustedIps$Outbound` instead. */
-  export type Outbound = UpdateProjectTrustedIps$Outbound;
+export namespace UpdateProjectProjectsTrustedIps$ {
+  /** @deprecated use `UpdateProjectProjectsTrustedIps$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectProjectsTrustedIps$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsTrustedIps$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectProjectsTrustedIps$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsTrustedIps$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsTrustedIps$Outbound;
 }
 
-export function updateProjectTrustedIpsToJSON(
-  updateProjectTrustedIps: UpdateProjectTrustedIps,
+export function updateProjectProjectsTrustedIpsToJSON(
+  updateProjectProjectsTrustedIps: UpdateProjectProjectsTrustedIps,
 ): string {
   return JSON.stringify(
-    UpdateProjectTrustedIps$outboundSchema.parse(updateProjectTrustedIps),
+    UpdateProjectProjectsTrustedIps$outboundSchema.parse(
+      updateProjectProjectsTrustedIps,
+    ),
   );
 }
 
-export function updateProjectTrustedIpsFromJSON(
+export function updateProjectProjectsTrustedIpsFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectTrustedIps, SDKValidationError> {
+): SafeParseResult<UpdateProjectProjectsTrustedIps, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectTrustedIps$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectTrustedIps' from JSON`,
+    (x) => UpdateProjectProjectsTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsTrustedIps' from JSON`,
   );
 }
 
@@ -10347,12 +10405,12 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   name: z.string(),
   nodeVersion: UpdateProjectProjectsNodeVersion$inboundSchema,
   optionsAllowlist: z.nullable(
-    z.lazy(() => UpdateProjectOptionsAllowlist$inboundSchema),
+    z.lazy(() => UpdateProjectProjectsOptionsAllowlist$inboundSchema),
   ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
   passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   passwordProtection: z.nullable(
-    z.lazy(() => UpdateProjectPasswordProtection$inboundSchema),
+    z.lazy(() => UpdateProjectProjectsPasswordProtection$inboundSchema),
   ).optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
@@ -10372,7 +10430,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
-    z.lazy(() => UpdateProjectSsoProtection$inboundSchema),
+    z.lazy(() => UpdateProjectProjectsSsoProtection$inboundSchema),
   ).optional(),
   targets: z.record(
     z.nullable(z.lazy(() => UpdateProjectTargets$inboundSchema)),
@@ -10463,11 +10521,14 @@ export type UpdateProjectResponseBody$Outbound = {
     | undefined;
   name: string;
   nodeVersion: string;
-  optionsAllowlist?: UpdateProjectOptionsAllowlist$Outbound | null | undefined;
+  optionsAllowlist?:
+    | UpdateProjectProjectsOptionsAllowlist$Outbound
+    | null
+    | undefined;
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passwordProtection?:
-    | UpdateProjectPasswordProtection$Outbound
+    | UpdateProjectProjectsPasswordProtection$Outbound
     | null
     | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
@@ -10483,7 +10544,10 @@ export type UpdateProjectResponseBody$Outbound = {
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
-  ssoProtection?: UpdateProjectSsoProtection$Outbound | null | undefined;
+  ssoProtection?:
+    | UpdateProjectProjectsSsoProtection$Outbound
+    | null
+    | undefined;
   targets?: { [k: string]: UpdateProjectTargets$Outbound | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
@@ -10571,12 +10635,12 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
   nodeVersion: UpdateProjectProjectsNodeVersion$outboundSchema,
   optionsAllowlist: z.nullable(
-    z.lazy(() => UpdateProjectOptionsAllowlist$outboundSchema),
+    z.lazy(() => UpdateProjectProjectsOptionsAllowlist$outboundSchema),
   ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
   passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   passwordProtection: z.nullable(
-    z.lazy(() => UpdateProjectPasswordProtection$outboundSchema),
+    z.lazy(() => UpdateProjectProjectsPasswordProtection$outboundSchema),
   ).optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
@@ -10596,7 +10660,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
-    z.lazy(() => UpdateProjectSsoProtection$outboundSchema),
+    z.lazy(() => UpdateProjectProjectsSsoProtection$outboundSchema),
   ).optional(),
   targets: z.record(
     z.nullable(z.lazy(() => UpdateProjectTargets$outboundSchema)),

@@ -1045,10 +1045,10 @@ type CreateProjectProjectsResponseType string
 
 const (
 	CreateProjectProjectsResponseTypeSystem    CreateProjectProjectsResponseType = "system"
+	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 	CreateProjectProjectsResponseTypeEncrypted CreateProjectProjectsResponseType = "encrypted"
 	CreateProjectProjectsResponseTypePlain     CreateProjectProjectsResponseType = "plain"
 	CreateProjectProjectsResponseTypeSensitive CreateProjectProjectsResponseType = "sensitive"
-	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 )
 
 func (e CreateProjectProjectsResponseType) ToPointer() *CreateProjectProjectsResponseType {
@@ -1062,13 +1062,13 @@ func (e *CreateProjectProjectsResponseType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectProjectsResponseType(v)
 		return nil
 	default:

@@ -12,6 +12,6 @@ let value: UpdateProjectPaths = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `value`                                                              | *string*                                                             | :heavy_check_mark:                                                   | The regex path that should not be protected by Deployment Protection |

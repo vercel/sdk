@@ -11,5 +11,5 @@ let value: UpdateProjectDataCacheProjectsReadySubstate = "PROMOTED";
 ## Values
 
 ```typescript
-"STAGED" | "PROMOTED"
+"STAGED" | "ROLLING" | "PROMOTED"
 ```

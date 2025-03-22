@@ -1,13 +1,14 @@
 # UpdateProjectTrustedIps
 
+Restricts access to deployments based on the incoming request IP address
 
-## Supported Types
-
-### `models.UpdateProjectTrustedIps1`
+## Example Usage
 
 ```typescript
-const value: models.UpdateProjectTrustedIps1 = {
-  deploymentType: "production",
+import { UpdateProjectTrustedIps } from "@vercel/sdk/models/updateprojectop.js";
+
+let value: UpdateProjectTrustedIps = {
+  deploymentType: "prod_deployment_urls_and_all_previews",
   addresses: [
     {
       value: "<value>",
@@ -17,11 +18,10 @@ const value: models.UpdateProjectTrustedIps1 = {
 };
 ```
 
-### `models.UpdateProjectTrustedIps2`
+## Fields
 
-```typescript
-const value: models.UpdateProjectTrustedIps2 = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
-};
-```
-
+| Field                                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                                    | Required                                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `deploymentType`                                                                                                                                                                                                                                                        | [models.UpdateProjectProjectsRequestDeploymentType](../models/updateprojectprojectsrequestdeploymenttype.md)                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                      | Specify if the Trusted IPs will apply to every Deployment Target or just Preview                                                                                                                                                                                        |
+| `addresses`                                                                                                                                                                                                                                                             | [models.Addresses](../models/addresses.md)[]                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                      | N/A                                                                                                                                                                                                                                                                     |
+| `protectionMode`                                                                                                                                                                                                                                                        | [models.ProtectionMode](../models/protectionmode.md)                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                                      | exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param) |

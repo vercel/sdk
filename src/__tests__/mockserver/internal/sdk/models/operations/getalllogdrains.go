@@ -199,9 +199,10 @@ func (e *GetAllLogDrainsCreatedFrom) UnmarshalJSON(data []byte) error {
 type GetAllLogDrainsDeliveryFormat string
 
 const (
-	GetAllLogDrainsDeliveryFormatJSON   GetAllLogDrainsDeliveryFormat = "json"
-	GetAllLogDrainsDeliveryFormatNdjson GetAllLogDrainsDeliveryFormat = "ndjson"
-	GetAllLogDrainsDeliveryFormatSyslog GetAllLogDrainsDeliveryFormat = "syslog"
+	GetAllLogDrainsDeliveryFormatJSON     GetAllLogDrainsDeliveryFormat = "json"
+	GetAllLogDrainsDeliveryFormatNdjson   GetAllLogDrainsDeliveryFormat = "ndjson"
+	GetAllLogDrainsDeliveryFormatSyslog   GetAllLogDrainsDeliveryFormat = "syslog"
+	GetAllLogDrainsDeliveryFormatProtobuf GetAllLogDrainsDeliveryFormat = "protobuf"
 )
 
 func (e GetAllLogDrainsDeliveryFormat) ToPointer() *GetAllLogDrainsDeliveryFormat {
@@ -218,6 +219,8 @@ func (e *GetAllLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error {
 	case "ndjson":
 		fallthrough
 	case "syslog":
+		fallthrough
+	case "protobuf":
 		*e = GetAllLogDrainsDeliveryFormat(v)
 		return nil
 	default:

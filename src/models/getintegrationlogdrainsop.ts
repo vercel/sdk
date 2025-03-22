@@ -26,6 +26,7 @@ export const GetIntegrationLogDrainsDeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
   Syslog: "syslog",
+  Protobuf: "protobuf",
 } as const;
 /**
  * The delivery log format

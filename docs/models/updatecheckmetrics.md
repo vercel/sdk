@@ -7,19 +7,19 @@ import { UpdateCheckMetrics } from "@vercel/sdk/models/updatecheckop.js";
 
 let value: UpdateCheckMetrics = {
   fcp: {
-    value: 6439.9,
-    source: "web-vitals",
-  },
-  lcp: {
     value: 4238.55,
     source: "web-vitals",
   },
-  cls: {
+  lcp: {
     value: 6063.93,
     source: "web-vitals",
   },
-  tbt: {
+  cls: {
     value: 191.93,
+    source: "web-vitals",
+  },
+  tbt: {
+    value: 3015.75,
     source: "web-vitals",
   },
 };

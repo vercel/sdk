@@ -1,11 +1,9 @@
 # DeploymentType
 
-Specify if the password will apply to every Deployment Target or just Preview
-
 ## Example Usage
 
 ```typescript
-import { DeploymentType } from "@vercel/sdk/models/updateprojectop.js";
+import { DeploymentType } from "@vercel/sdk/models/userevent.js";
 
 let value: DeploymentType = "all";
 ```

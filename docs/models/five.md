@@ -1,25 +1,26 @@
 # Five
 
+The payload of the event, if requested.
+
 ## Example Usage
 
 ```typescript
-import { Five } from "@vercel/sdk/models/createdeploymentop.js";
+import { Five } from "@vercel/sdk/models/userevent.js";
 
 let value: Five = {
-  owner: "bitbucket_user",
-  ref: "main",
-  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  slug: "my-awesome-project",
-  type: "bitbucket",
+  accessGroup: {
+    id: "<id>",
+  },
+  user: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            | Example                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `owner`                                                                                                                | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    | bitbucket_user                                                                                                         |
-| `ref`                                                                                                                  | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    | main                                                                                                                   |
-| `sha`                                                                                                                  | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    | a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0                                                                               |
-| `slug`                                                                                                                 | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    | my-awesome-project                                                                                                     |
-| `type`                                                                                                                 | [models.CreateDeploymentGitSourceDeploymentsRequestType](../models/createdeploymentgitsourcedeploymentsrequesttype.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `user`                                                                         | [models.PayloadUser](../models/payloaduser.md)                                 | :heavy_check_mark:                                                             | N/A                                                                            |
+| `directoryType`                                                                | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

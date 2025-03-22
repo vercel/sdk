@@ -3974,7 +3974,6 @@ type GetProjectEnvResponseBody1 struct {
 	InternalContentHint  *GetProjectEnvResponseBodyInternalContentHint `json:"internalContentHint,omitempty"`
 	Comment              *string                                       `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                                      `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string                                       `json:"vsmValue,omitempty"`
 }
 
 func (o *GetProjectEnvResponseBody1) GetDecrypted() bool {
@@ -4101,13 +4100,6 @@ func (o *GetProjectEnvResponseBody1) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *GetProjectEnvResponseBody1) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 type GetProjectEnvResponseBodyUnionType string

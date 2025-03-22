@@ -1,17 +1,17 @@
 # CancelDeploymentReadySubstate
 
-Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 
 ## Example Usage
 
 ```typescript
 import { CancelDeploymentReadySubstate } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentReadySubstate = "STAGED";
+let value: CancelDeploymentReadySubstate = "ROLLING";
 ```
 
 ## Values
 
 ```typescript
-"STAGED" | "PROMOTED"
+"STAGED" | "ROLLING" | "PROMOTED"
 ```

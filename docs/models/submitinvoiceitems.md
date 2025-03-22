@@ -8,8 +8,8 @@ import { SubmitInvoiceItems } from "@vercel/sdk/models/submitinvoiceop.js";
 let value: SubmitInvoiceItems = {
   billingPlanId: "<id>",
   name: "<value>",
-  price: "983.59",
-  quantity: 7791.11,
+  price: "207.11",
+  quantity: 2870.2,
   units: "<value>",
   total: "<value>",
 };
@@ -25,7 +25,7 @@ let value: SubmitInvoiceItems = {
 | `end`                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Start and end are only needed if different from the period's start/end.                       |
 | `name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `details`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `price`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `price`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | Currency amount as a decimal string.                                                          |
 | `quantity`                                                                                    | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `units`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `total`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `total`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | Currency amount as a decimal string.                                                          |

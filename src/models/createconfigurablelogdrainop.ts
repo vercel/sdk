@@ -130,6 +130,7 @@ export const CreateConfigurableLogDrainDeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
   Syslog: "syslog",
+  Protobuf: "protobuf",
 } as const;
 export type CreateConfigurableLogDrainDeliveryFormat = ClosedEnum<
   typeof CreateConfigurableLogDrainDeliveryFormat

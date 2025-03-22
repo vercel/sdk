@@ -1,26 +1,25 @@
 # Two
 
-The access scopes granted to the token.
+The payload of the event, if requested.
 
 ## Example Usage
 
 ```typescript
-import { Two } from "@vercel/sdk/models/authtoken.js";
+import { Two } from "@vercel/sdk/models/userevent.js";
 
 let value: Two = {
-  type: "team",
-  teamId: "<id>",
-  origin: "manual",
-  createdAt: 4866.06,
+  action: "archived",
+  id: "<id>",
+  slug: "<value>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `type`                                                             | [models.ScopesType](../models/scopestype.md)                       | :heavy_check_mark:                                                 | N/A                                                                |
-| `teamId`                                                           | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `origin`                                                           | [models.AuthTokenScopesOrigin](../models/authtokenscopesorigin.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `createdAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `expiresAt`                                                        | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `action`                             | [models.Action](../models/action.md) | :heavy_check_mark:                   | N/A                                  |
+| `id`                                 | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `slug`                               | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |

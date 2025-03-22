@@ -9,7 +9,15 @@ import { GetAuthUserResponseBody } from "@vercel/sdk/models/getauthuserop.js";
 
 let value: GetAuthUserResponseBody = {
   user: {
-    limited: false,
+    createdAt: 1630748523395,
+    softBlock: {
+      blockedAt: 8069.52,
+      reason: "FAIR_USE_LIMITS_EXCEEDED",
+    },
+    billing: {},
+    resourceConfig: {},
+    stagingPrefix: "<value>",
+    hasTrialAvailable: false,
     id: "AEIIDYVk59zbFF2Sxfyxxmua",
     email: "me@example.com",
     name: "John Doe",
@@ -23,6 +31,6 @@ let value: GetAuthUserResponseBody = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `user`             | *models.User*      | :heavy_check_mark: | N/A                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `user`                   | *models.GetAuthUserUser* | :heavy_check_mark:       | N/A                      |

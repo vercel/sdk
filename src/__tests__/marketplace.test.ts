@@ -182,7 +182,9 @@ test("Marketplace Get Invoice", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    test: false,
     invoiceId: "<id>",
+    state: "scheduled",
     invoiceDate: "<value>",
     period: {
       start: "<value>",
@@ -201,8 +203,6 @@ test("Marketplace Get Invoice", async () => {
     total: "<value>",
     created: "<value>",
     updated: "<value>",
-    state: "scheduled",
-    test: false,
   });
 });
 

@@ -183,14 +183,15 @@ export type GetDeploymentsAliasError = {
 export type GetDeploymentsAliasAssigned = number | boolean;
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
 export const GetDeploymentsReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
 export type GetDeploymentsReadySubstate = ClosedEnum<
   typeof GetDeploymentsReadySubstate
@@ -439,7 +440,7 @@ export type Deployments = {
    */
   ready?: number | undefined;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
    */
   readySubstate?: GetDeploymentsReadySubstate | undefined;
   /**

@@ -5,7 +5,7 @@
 ```typescript
 import { Events } from "@vercel/sdk/models/createwebhookop.js";
 
-let value: Events = "deployment-check-rerequested";
+let value: Events = "marketplace.invoice.paid";
 ```
 
 ## Values

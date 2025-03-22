@@ -268,6 +268,8 @@ type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ServerlessFunctionDefaultMaxExecutionTime *float64 `json:"serverlessFunctionDefaultMaxExecutionTime,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	ServerlessFunctionMaxMemorySize *float64 `json:"serverlessFunctionMaxMemorySize,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	KvDatabases *float64 `json:"kvDatabases,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	PostgresDatabases *float64 `json:"postgresDatabases,omitempty"`
@@ -367,6 +369,13 @@ func (o *ResourceConfig) GetServerlessFunctionDefaultMaxExecutionTime() *float64
 		return nil
 	}
 	return o.ServerlessFunctionDefaultMaxExecutionTime
+}
+
+func (o *ResourceConfig) GetServerlessFunctionMaxMemorySize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ServerlessFunctionMaxMemorySize
 }
 
 func (o *ResourceConfig) GetKvDatabases() *float64 {

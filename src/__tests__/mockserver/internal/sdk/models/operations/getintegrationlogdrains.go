@@ -33,9 +33,10 @@ func (o *GetIntegrationLogDrainsRequest) GetSlug() *string {
 type GetIntegrationLogDrainsDeliveryFormat string
 
 const (
-	GetIntegrationLogDrainsDeliveryFormatJSON   GetIntegrationLogDrainsDeliveryFormat = "json"
-	GetIntegrationLogDrainsDeliveryFormatNdjson GetIntegrationLogDrainsDeliveryFormat = "ndjson"
-	GetIntegrationLogDrainsDeliveryFormatSyslog GetIntegrationLogDrainsDeliveryFormat = "syslog"
+	GetIntegrationLogDrainsDeliveryFormatJSON     GetIntegrationLogDrainsDeliveryFormat = "json"
+	GetIntegrationLogDrainsDeliveryFormatNdjson   GetIntegrationLogDrainsDeliveryFormat = "ndjson"
+	GetIntegrationLogDrainsDeliveryFormatSyslog   GetIntegrationLogDrainsDeliveryFormat = "syslog"
+	GetIntegrationLogDrainsDeliveryFormatProtobuf GetIntegrationLogDrainsDeliveryFormat = "protobuf"
 )
 
 func (e GetIntegrationLogDrainsDeliveryFormat) ToPointer() *GetIntegrationLogDrainsDeliveryFormat {
@@ -52,6 +53,8 @@ func (e *GetIntegrationLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error
 	case "ndjson":
 		fallthrough
 	case "syslog":
+		fallthrough
+	case "protobuf":
 		*e = GetIntegrationLogDrainsDeliveryFormat(v)
 		return nil
 	default:

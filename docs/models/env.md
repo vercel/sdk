@@ -6,7 +6,7 @@
 import { Env } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Env = {
-  type: "sensitive",
+  type: "system",
   key: "<key>",
   value: "<value>",
 };

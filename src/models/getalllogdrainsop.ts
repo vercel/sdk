@@ -68,6 +68,7 @@ export const GetAllLogDrainsDeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
   Syslog: "syslog",
+  Protobuf: "protobuf",
 } as const;
 export type GetAllLogDrainsDeliveryFormat = ClosedEnum<
   typeof GetAllLogDrainsDeliveryFormat

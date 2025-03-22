@@ -49,13 +49,15 @@ type SubmitInvoiceItems struct {
 	// Start and end are only needed if different from the period's start/end.
 	Start *time.Time `json:"start,omitempty"`
 	// Start and end are only needed if different from the period's start/end.
-	End      *time.Time `json:"end,omitempty"`
-	Name     string     `json:"name"`
-	Details  *string    `json:"details,omitempty"`
-	Price    string     `json:"price"`
-	Quantity float64    `json:"quantity"`
-	Units    string     `json:"units"`
-	Total    string     `json:"total"`
+	End     *time.Time `json:"end,omitempty"`
+	Name    string     `json:"name"`
+	Details *string    `json:"details,omitempty"`
+	// Currency amount as a decimal string.
+	Price    string  `json:"price"`
+	Quantity float64 `json:"quantity"`
+	Units    string  `json:"units"`
+	// Currency amount as a decimal string.
+	Total string `json:"total"`
 }
 
 func (s SubmitInvoiceItems) MarshalJSON() ([]byte, error) {
@@ -150,7 +152,8 @@ type SubmitInvoiceDiscounts struct {
 	End     *time.Time `json:"end,omitempty"`
 	Name    string     `json:"name"`
 	Details *string    `json:"details,omitempty"`
-	Amount  string     `json:"amount"`
+	// Currency amount as a decimal string.
+	Amount string `json:"amount"`
 }
 
 func (s SubmitInvoiceDiscounts) MarshalJSON() ([]byte, error) {

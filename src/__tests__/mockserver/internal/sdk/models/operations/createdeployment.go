@@ -1385,6 +1385,30 @@ func (o *Build) GetEnv() []string {
 }
 
 type Builds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *Builds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *Builds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *Builds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type CreateDeploymentFramework string
@@ -3538,11 +3562,12 @@ func (e *ChecksConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ReadySubstate - Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+// ReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 type ReadySubstate string
 
 const (
 	ReadySubstateStaged   ReadySubstate = "STAGED"
+	ReadySubstateRolling  ReadySubstate = "ROLLING"
 	ReadySubstatePromoted ReadySubstate = "PROMOTED"
 )
 
@@ -3556,6 +3581,8 @@ func (e *ReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = ReadySubstate(v)
@@ -5321,7 +5348,7 @@ type CreateDeploymentResponseBody struct {
 	ErrorLink         *string  `json:"errorLink,omitempty"`
 	ErrorStep         *string  `json:"errorStep,omitempty"`
 	OriginCacheRegion *string  `json:"originCacheRegion,omitempty"`
-	// Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate          *ReadySubstate                  `json:"readySubstate,omitempty"`
 	SoftDeletedByRetention *bool                           `json:"softDeletedByRetention,omitempty"`
 	UndeletedAt            *float64                        `json:"undeletedAt,omitempty"`

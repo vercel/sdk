@@ -6,7 +6,7 @@
 import { CreateProjectEnv } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectEnv = {
-  type: "encrypted",
+  type: "secret",
   key: "<key>",
   value: "<value>",
 };
@@ -16,7 +16,7 @@ let value: CreateProjectEnv = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `target`                                                                                   | *models.CreateProjectTarget*                                                               | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `target`                                                                                   | *models.CreateProjectProjectsTarget*                                                       | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `type`                                                                                     | [models.CreateProjectProjectsResponseType](../models/createprojectprojectsresponsetype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `sunsetSecretId`                                                                           | *string*                                                                                   | :heavy_minus_sign:                                                                         | This is used to identiy variables that have been migrated from type secret to sensitive.   |
 | `id`                                                                                       | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |

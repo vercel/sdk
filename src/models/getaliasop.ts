@@ -60,7 +60,7 @@ export type GetAliasCreator = {
 /**
  * A map with the deployment ID, URL and metadata
  */
-export type Deployment = {
+export type GetAliasDeployment = {
   /**
    * The deployment unique identifier
    */
@@ -179,7 +179,7 @@ export type GetAliasResponseBody = {
   /**
    * A map with the deployment ID, URL and metadata
    */
-  deployment?: Deployment | undefined;
+  deployment?: GetAliasDeployment | undefined;
   /**
    * The deployment ID
    */
@@ -345,8 +345,8 @@ export function getAliasCreatorFromJSON(
 }
 
 /** @internal */
-export const Deployment$inboundSchema: z.ZodType<
-  Deployment,
+export const GetAliasDeployment$inboundSchema: z.ZodType<
+  GetAliasDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -356,17 +356,17 @@ export const Deployment$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Deployment$Outbound = {
+export type GetAliasDeployment$Outbound = {
   id: string;
   url: string;
   meta?: string | undefined;
 };
 
 /** @internal */
-export const Deployment$outboundSchema: z.ZodType<
-  Deployment$Outbound,
+export const GetAliasDeployment$outboundSchema: z.ZodType<
+  GetAliasDeployment$Outbound,
   z.ZodTypeDef,
-  Deployment
+  GetAliasDeployment
 > = z.object({
   id: z.string(),
   url: z.string(),
@@ -377,26 +377,30 @@ export const Deployment$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Deployment$ {
-  /** @deprecated use `Deployment$inboundSchema` instead. */
-  export const inboundSchema = Deployment$inboundSchema;
-  /** @deprecated use `Deployment$outboundSchema` instead. */
-  export const outboundSchema = Deployment$outboundSchema;
-  /** @deprecated use `Deployment$Outbound` instead. */
-  export type Outbound = Deployment$Outbound;
+export namespace GetAliasDeployment$ {
+  /** @deprecated use `GetAliasDeployment$inboundSchema` instead. */
+  export const inboundSchema = GetAliasDeployment$inboundSchema;
+  /** @deprecated use `GetAliasDeployment$outboundSchema` instead. */
+  export const outboundSchema = GetAliasDeployment$outboundSchema;
+  /** @deprecated use `GetAliasDeployment$Outbound` instead. */
+  export type Outbound = GetAliasDeployment$Outbound;
 }
 
-export function deploymentToJSON(deployment: Deployment): string {
-  return JSON.stringify(Deployment$outboundSchema.parse(deployment));
+export function getAliasDeploymentToJSON(
+  getAliasDeployment: GetAliasDeployment,
+): string {
+  return JSON.stringify(
+    GetAliasDeployment$outboundSchema.parse(getAliasDeployment),
+  );
 }
 
-export function deploymentFromJSON(
+export function getAliasDeploymentFromJSON(
   jsonString: string,
-): SafeParseResult<Deployment, SDKValidationError> {
+): SafeParseResult<GetAliasDeployment, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Deployment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Deployment' from JSON`,
+    (x) => GetAliasDeployment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasDeployment' from JSON`,
   );
 }
 
@@ -830,7 +834,7 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
   createdAt: z.nullable(z.number()).optional(),
   creator: z.lazy(() => GetAliasCreator$inboundSchema).optional(),
   deletedAt: z.nullable(z.number()).optional(),
-  deployment: z.lazy(() => Deployment$inboundSchema).optional(),
+  deployment: z.lazy(() => GetAliasDeployment$inboundSchema).optional(),
   deploymentId: z.nullable(z.string()),
   projectId: z.nullable(z.string()),
   redirect: z.nullable(z.string()).optional(),
@@ -854,7 +858,7 @@ export type GetAliasResponseBody$Outbound = {
   createdAt?: number | null | undefined;
   creator?: GetAliasCreator$Outbound | undefined;
   deletedAt?: number | null | undefined;
-  deployment?: Deployment$Outbound | undefined;
+  deployment?: GetAliasDeployment$Outbound | undefined;
   deploymentId: string | null;
   projectId: string | null;
   redirect?: string | null | undefined;
@@ -881,7 +885,7 @@ export const GetAliasResponseBody$outboundSchema: z.ZodType<
   createdAt: z.nullable(z.number()).optional(),
   creator: z.lazy(() => GetAliasCreator$outboundSchema).optional(),
   deletedAt: z.nullable(z.number()).optional(),
-  deployment: z.lazy(() => Deployment$outboundSchema).optional(),
+  deployment: z.lazy(() => GetAliasDeployment$outboundSchema).optional(),
   deploymentId: z.nullable(z.string()),
   projectId: z.nullable(z.string()),
   redirect: z.nullable(z.string()).optional(),

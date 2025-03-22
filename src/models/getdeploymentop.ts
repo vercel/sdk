@@ -337,14 +337,15 @@ export type GetDeploymentResponseBodyProject = {
 };
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const GetDeploymentResponseBodyReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
   typeof GetDeploymentResponseBodyReadySubstate
@@ -453,7 +454,7 @@ export type GetDeploymentResponseBody2 = {
   originCacheRegion?: string | undefined;
   project?: GetDeploymentResponseBodyProject | undefined;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: GetDeploymentResponseBodyReadySubstate | undefined;
   regions: Array<string>;
@@ -472,7 +473,11 @@ export type ResponseBodyBuild = {
   env: Array<string>;
 };
 
-export type ResponseBodyBuilds = {};
+export type ResponseBodyBuilds = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 export const ResponseBodyFramework = {
   Blitzjs: "blitzjs",
@@ -929,14 +934,15 @@ export type ResponseBodyProject = {
 };
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const ResponseBodyReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export type ResponseBodyReadySubstate = ClosedEnum<
   typeof ResponseBodyReadySubstate
@@ -1391,7 +1397,7 @@ export type GetDeploymentResponseBody1 = {
   originCacheRegion?: string | undefined;
   project?: ResponseBodyProject | undefined;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: ResponseBodyReadySubstate | undefined;
   regions: Array<string>;
@@ -3857,17 +3863,29 @@ export const ResponseBodyBuilds$inboundSchema: z.ZodType<
   ResponseBodyBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /** @internal */
-export type ResponseBodyBuilds$Outbound = {};
+export type ResponseBodyBuilds$Outbound = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 /** @internal */
 export const ResponseBodyBuilds$outboundSchema: z.ZodType<
   ResponseBodyBuilds$Outbound,
   z.ZodTypeDef,
   ResponseBodyBuilds
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /**
  * @internal

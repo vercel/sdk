@@ -16,7 +16,7 @@ let value: GetAllLogDrainsResponseBody = {
   url: "https://firsthand-t-shirt.com",
   name: "<value>",
   ownerId: "<id>",
-  deliveryFormat: "ndjson",
+  deliveryFormat: "syslog",
 };
 ```
 

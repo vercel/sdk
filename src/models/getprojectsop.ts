@@ -615,6 +615,7 @@ export type GetProjectsReadyState = ClosedEnum<typeof GetProjectsReadyState>;
 
 export const GetProjectsReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 export type GetProjectsReadySubstate = ClosedEnum<
@@ -993,6 +994,7 @@ export type GetProjectsProjectsReadyState = ClosedEnum<
 
 export const GetProjectsProjectsReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 export type GetProjectsProjectsReadySubstate = ClosedEnum<

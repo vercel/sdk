@@ -27,6 +27,49 @@ func (o *GetInvoiceRequest) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
+// State - Invoice state.
+type State string
+
+const (
+	StatePending         State = "pending"
+	StateScheduled       State = "scheduled"
+	StateInvoiced        State = "invoiced"
+	StatePaid            State = "paid"
+	StateNotpaid         State = "notpaid"
+	StateRefundRequested State = "refund_requested"
+	StateRefunded        State = "refunded"
+)
+
+func (e State) ToPointer() *State {
+	return &e
+}
+func (e *State) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pending":
+		fallthrough
+	case "scheduled":
+		fallthrough
+	case "invoiced":
+		fallthrough
+	case "paid":
+		fallthrough
+	case "notpaid":
+		fallthrough
+	case "refund_requested":
+		fallthrough
+	case "refunded":
+		*e = State(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for State: %v", v)
+	}
+}
+
+// GetInvoicePeriod - Subscription period for this billing cycle. ISO 8601 timestamps.
 type GetInvoicePeriod struct {
 	Start string `json:"start"`
 	End   string `json:"end"`
@@ -46,17 +89,28 @@ func (o *GetInvoicePeriod) GetEnd() string {
 	return o.End
 }
 
+// GetInvoiceItems - Invoice items.
 type GetInvoiceItems struct {
-	BillingPlanID string  `json:"billingPlanId"`
-	ResourceID    *string `json:"resourceId,omitempty"`
-	Start         *string `json:"start,omitempty"`
-	End           *string `json:"end,omitempty"`
-	Name          string  `json:"name"`
-	Details       *string `json:"details,omitempty"`
-	Price         string  `json:"price"`
-	Quantity      float64 `json:"quantity"`
-	Units         string  `json:"units"`
-	Total         string  `json:"total"`
+	// Partner's billing plan ID.
+	BillingPlanID string `json:"billingPlanId"`
+	// Partner's resource ID. If not specified, indicates installation-wide item.
+	ResourceID *string `json:"resourceId,omitempty"`
+	// Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+	Start *string `json:"start,omitempty"`
+	// Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+	End *string `json:"end,omitempty"`
+	// Invoice item name.
+	Name string `json:"name"`
+	// Additional item details.
+	Details *string `json:"details,omitempty"`
+	// Item price. A dollar-based decimal string.
+	Price string `json:"price"`
+	// Item quantity.
+	Quantity float64 `json:"quantity"`
+	// Units for item's quantity.
+	Units string `json:"units"`
+	// Item total. A dollar-based decimal string.
+	Total string `json:"total"`
 }
 
 func (o *GetInvoiceItems) GetBillingPlanID() string {
@@ -129,14 +183,22 @@ func (o *GetInvoiceItems) GetTotal() string {
 	return o.Total
 }
 
+// GetInvoiceDiscounts - Invoice discounts.
 type GetInvoiceDiscounts struct {
-	BillingPlanID string  `json:"billingPlanId"`
-	ResourceID    *string `json:"resourceId,omitempty"`
-	Start         *string `json:"start,omitempty"`
-	End           *string `json:"end,omitempty"`
-	Name          string  `json:"name"`
-	Details       *string `json:"details,omitempty"`
-	Amount        string  `json:"amount"`
+	// Partner's billing plan ID.
+	BillingPlanID string `json:"billingPlanId"`
+	// Partner's resource ID. If not specified, indicates installation-wide discount.
+	ResourceID *string `json:"resourceId,omitempty"`
+	// Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+	Start *string `json:"start,omitempty"`
+	// Start and end are only needed if different from the period's start/end. ISO 8601 timestamp.
+	End *string `json:"end,omitempty"`
+	// Discount name.
+	Name string `json:"name"`
+	// Additional discount details.
+	Details *string `json:"details,omitempty"`
+	// Discount amount. A dollar-based decimal string.
+	Amount string `json:"amount"`
 }
 
 func (o *GetInvoiceDiscounts) GetBillingPlanID() string {
@@ -188,63 +250,44 @@ func (o *GetInvoiceDiscounts) GetAmount() string {
 	return o.Amount
 }
 
-type State string
-
-const (
-	StatePending         State = "pending"
-	StateScheduled       State = "scheduled"
-	StateInvoiced        State = "invoiced"
-	StatePaid            State = "paid"
-	StateNotpaid         State = "notpaid"
-	StateRefundRequested State = "refund_requested"
-	StateRefunded        State = "refunded"
-)
-
-func (e State) ToPointer() *State {
-	return &e
-}
-func (e *State) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pending":
-		fallthrough
-	case "scheduled":
-		fallthrough
-	case "invoiced":
-		fallthrough
-	case "paid":
-		fallthrough
-	case "notpaid":
-		fallthrough
-	case "refund_requested":
-		fallthrough
-	case "refunded":
-		*e = State(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for State: %v", v)
-	}
-}
-
 type GetInvoiceResponseBody struct {
-	InvoiceID     string                `json:"invoiceId"`
-	ExternalID    *string               `json:"externalId,omitempty"`
-	InvoiceNumber *string               `json:"invoiceNumber,omitempty"`
-	InvoiceDate   string                `json:"invoiceDate"`
-	Period        GetInvoicePeriod      `json:"period"`
-	Memo          *string               `json:"memo,omitempty"`
-	Items         []GetInvoiceItems     `json:"items"`
-	Discounts     []GetInvoiceDiscounts `json:"discounts,omitempty"`
-	Total         string                `json:"total"`
-	Created       string                `json:"created"`
-	Updated       string                `json:"updated"`
-	State         State                 `json:"state"`
-	RefundReason  *string               `json:"refundReason,omitempty"`
-	RefundTotal   *string               `json:"refundTotal,omitempty"`
-	Test          bool                  `json:"test"`
+	// Whether the invoice is in the testmode (no real transaction created).
+	Test *bool `json:"test,omitempty"`
+	// Vercel Marketplace Invoice ID.
+	InvoiceID string `json:"invoiceId"`
+	// Partner-supplied Invoice ID, if applicable.
+	ExternalID *string `json:"externalId,omitempty"`
+	// Invoice state.
+	State State `json:"state"`
+	// User-readable invoice number.
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
+	// Invoice date. ISO 8601 timestamp.
+	InvoiceDate string `json:"invoiceDate"`
+	// Subscription period for this billing cycle. ISO 8601 timestamps.
+	Period GetInvoicePeriod `json:"period"`
+	// Additional memo for the invoice.
+	Memo *string `json:"memo,omitempty"`
+	// Invoice items.
+	Items []GetInvoiceItems `json:"items"`
+	// Invoice discounts.
+	Discounts []GetInvoiceDiscounts `json:"discounts,omitempty"`
+	// Invoice total amount. A dollar-based decimal string.
+	Total string `json:"total"`
+	// The reason for refund. Only applicable for states "refunded" or "refund_request".
+	RefundReason *string `json:"refundReason,omitempty"`
+	// Refund amount. Only applicable for states "refunded" or "refund_request". A dollar-based decimal string.
+	RefundTotal *string `json:"refundTotal,omitempty"`
+	// System creation date. ISO 8601 timestamp.
+	Created string `json:"created"`
+	// System update date. ISO 8601 timestamp.
+	Updated string `json:"updated"`
+}
+
+func (o *GetInvoiceResponseBody) GetTest() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Test
 }
 
 func (o *GetInvoiceResponseBody) GetInvoiceID() string {
@@ -259,6 +302,13 @@ func (o *GetInvoiceResponseBody) GetExternalID() *string {
 		return nil
 	}
 	return o.ExternalID
+}
+
+func (o *GetInvoiceResponseBody) GetState() State {
+	if o == nil {
+		return State("")
+	}
+	return o.State
 }
 
 func (o *GetInvoiceResponseBody) GetInvoiceNumber() *string {
@@ -310,27 +360,6 @@ func (o *GetInvoiceResponseBody) GetTotal() string {
 	return o.Total
 }
 
-func (o *GetInvoiceResponseBody) GetCreated() string {
-	if o == nil {
-		return ""
-	}
-	return o.Created
-}
-
-func (o *GetInvoiceResponseBody) GetUpdated() string {
-	if o == nil {
-		return ""
-	}
-	return o.Updated
-}
-
-func (o *GetInvoiceResponseBody) GetState() State {
-	if o == nil {
-		return State("")
-	}
-	return o.State
-}
-
 func (o *GetInvoiceResponseBody) GetRefundReason() *string {
 	if o == nil {
 		return nil
@@ -345,11 +374,18 @@ func (o *GetInvoiceResponseBody) GetRefundTotal() *string {
 	return o.RefundTotal
 }
 
-func (o *GetInvoiceResponseBody) GetTest() bool {
+func (o *GetInvoiceResponseBody) GetCreated() string {
 	if o == nil {
-		return false
+		return ""
 	}
-	return o.Test
+	return o.Created
+}
+
+func (o *GetInvoiceResponseBody) GetUpdated() string {
+	if o == nil {
+		return ""
+	}
+	return o.Updated
 }
 
 type GetInvoiceResponse struct {

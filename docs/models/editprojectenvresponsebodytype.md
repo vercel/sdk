@@ -5,11 +5,11 @@
 ```typescript
 import { EditProjectEnvResponseBodyType } from "@vercel/sdk/models/editprojectenvop.js";
 
-let value: EditProjectEnvResponseBodyType = "encrypted";
+let value: EditProjectEnvResponseBodyType = "secret";
 ```
 
 ## Values
 
 ```typescript
-"system" | "encrypted" | "plain" | "sensitive" | "secret"
+"system" | "secret" | "encrypted" | "plain" | "sensitive"
 ```

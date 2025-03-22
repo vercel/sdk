@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectReadySubstate } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectReadySubstate = "STAGED";
+let value: UpdateProjectReadySubstate = "ROLLING";
 ```
 
 ## Values
 
 ```typescript
-"STAGED" | "PROMOTED"
+"STAGED" | "ROLLING" | "PROMOTED"
 ```

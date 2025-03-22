@@ -866,10 +866,10 @@ type CreateProjectEnvCreatedType string
 
 const (
 	CreateProjectEnvCreatedTypeSystem    CreateProjectEnvCreatedType = "system"
+	CreateProjectEnvCreatedTypeSecret    CreateProjectEnvCreatedType = "secret"
 	CreateProjectEnvCreatedTypeEncrypted CreateProjectEnvCreatedType = "encrypted"
 	CreateProjectEnvCreatedTypePlain     CreateProjectEnvCreatedType = "plain"
 	CreateProjectEnvCreatedTypeSensitive CreateProjectEnvCreatedType = "sensitive"
-	CreateProjectEnvCreatedTypeSecret    CreateProjectEnvCreatedType = "secret"
 )
 
 func (e CreateProjectEnvCreatedType) ToPointer() *CreateProjectEnvCreatedType {
@@ -883,13 +883,13 @@ func (e *CreateProjectEnvCreatedType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectEnvCreatedType(v)
 		return nil
 	default:
@@ -2243,10 +2243,10 @@ type CreatedType string
 
 const (
 	CreatedTypeSystem    CreatedType = "system"
+	CreatedTypeSecret    CreatedType = "secret"
 	CreatedTypeEncrypted CreatedType = "encrypted"
 	CreatedTypePlain     CreatedType = "plain"
 	CreatedTypeSensitive CreatedType = "sensitive"
-	CreatedTypeSecret    CreatedType = "secret"
 )
 
 func (e CreatedType) ToPointer() *CreatedType {
@@ -2260,13 +2260,13 @@ func (e *CreatedType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreatedType(v)
 		return nil
 	default:

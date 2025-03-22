@@ -115,6 +115,30 @@ func (o *CancelDeploymentBuild) GetEnv() []string {
 }
 
 type CancelDeploymentBuilds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *CancelDeploymentBuilds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *CancelDeploymentBuilds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *CancelDeploymentBuilds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type CancelDeploymentFramework string
@@ -2175,11 +2199,12 @@ func (e *CancelDeploymentReadyState) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CancelDeploymentReadySubstate - Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+// CancelDeploymentReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 type CancelDeploymentReadySubstate string
 
 const (
 	CancelDeploymentReadySubstateStaged   CancelDeploymentReadySubstate = "STAGED"
+	CancelDeploymentReadySubstateRolling  CancelDeploymentReadySubstate = "ROLLING"
 	CancelDeploymentReadySubstatePromoted CancelDeploymentReadySubstate = "PROMOTED"
 )
 
@@ -2193,6 +2218,8 @@ func (e *CancelDeploymentReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = CancelDeploymentReadySubstate(v)
@@ -4046,7 +4073,7 @@ type CancelDeploymentResponseBody struct {
 	OriginCacheRegion *string                    `json:"originCacheRegion,omitempty"`
 	Project           *CancelDeploymentProject   `json:"project,omitempty"`
 	ReadyState        CancelDeploymentReadyState `json:"readyState"`
-	// Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate          *CancelDeploymentReadySubstate       `json:"readySubstate,omitempty"`
 	Regions                []string                             `json:"regions"`
 	SoftDeletedByRetention *bool                                `json:"softDeletedByRetention,omitempty"`

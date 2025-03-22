@@ -363,9 +363,10 @@ func (e *CreateConfigurableLogDrainCreatedFrom) UnmarshalJSON(data []byte) error
 type CreateConfigurableLogDrainDeliveryFormat string
 
 const (
-	CreateConfigurableLogDrainDeliveryFormatJSON   CreateConfigurableLogDrainDeliveryFormat = "json"
-	CreateConfigurableLogDrainDeliveryFormatNdjson CreateConfigurableLogDrainDeliveryFormat = "ndjson"
-	CreateConfigurableLogDrainDeliveryFormatSyslog CreateConfigurableLogDrainDeliveryFormat = "syslog"
+	CreateConfigurableLogDrainDeliveryFormatJSON     CreateConfigurableLogDrainDeliveryFormat = "json"
+	CreateConfigurableLogDrainDeliveryFormatNdjson   CreateConfigurableLogDrainDeliveryFormat = "ndjson"
+	CreateConfigurableLogDrainDeliveryFormatSyslog   CreateConfigurableLogDrainDeliveryFormat = "syslog"
+	CreateConfigurableLogDrainDeliveryFormatProtobuf CreateConfigurableLogDrainDeliveryFormat = "protobuf"
 )
 
 func (e CreateConfigurableLogDrainDeliveryFormat) ToPointer() *CreateConfigurableLogDrainDeliveryFormat {
@@ -382,6 +383,8 @@ func (e *CreateConfigurableLogDrainDeliveryFormat) UnmarshalJSON(data []byte) er
 	case "ndjson":
 		fallthrough
 	case "syslog":
+		fallthrough
+	case "protobuf":
 		*e = CreateConfigurableLogDrainDeliveryFormat(v)
 		return nil
 	default:

@@ -6,7 +6,7 @@
 import { EditProjectEnvResponseBody1 } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: EditProjectEnvResponseBody1 = {
-  type: "secret",
+  type: "sensitive",
   key: "<key>",
   value: "<value>",
 };

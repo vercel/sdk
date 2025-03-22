@@ -18,23 +18,23 @@ let value: Crs = {
   },
   lfi: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   rfi: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   rce: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   php: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   gen: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   xss: {
     active: false,

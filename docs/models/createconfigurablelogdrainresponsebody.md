@@ -16,7 +16,7 @@ let value: CreateConfigurableLogDrainResponseBody = {
   url: "https://elderly-scout.com/",
   name: "<value>",
   ownerId: "<id>",
-  deliveryFormat: "syslog",
+  deliveryFormat: "protobuf",
 };
 ```
 

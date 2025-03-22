@@ -28,10 +28,10 @@ const value: models.GitSource2 = {
 };
 ```
 
-### `models.Three`
+### `models.GitSource3`
 
 ```typescript
-const value: models.Three = {
+const value: models.GitSource3 = {
   projectId: 987654321,
   ref: "main",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
@@ -39,10 +39,10 @@ const value: models.Three = {
 };
 ```
 
-### `models.Four`
+### `models.GitSource4`
 
 ```typescript
-const value: models.Four = {
+const value: models.GitSource4 = {
   ref: "main",
   repoUuid: "123e4567-e89b-12d3-a456-426614174000",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
@@ -51,10 +51,10 @@ const value: models.Four = {
 };
 ```
 
-### `models.Five`
+### `models.GitSource5`
 
 ```typescript
-const value: models.Five = {
+const value: models.GitSource5 = {
   owner: "bitbucket_user",
   ref: "main",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",

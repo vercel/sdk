@@ -7,8 +7,8 @@ import { Ips } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Ips = {
   id: "<id>",
-  hostname: "far-off-hope.com",
-  ip: "57.123.64.224",
+  hostname: "old-fashioned-merit.biz",
+  ip: "117.12.38.41",
   action: "log",
 };
 ```

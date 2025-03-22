@@ -1502,11 +1502,12 @@ func (o *GetDeploymentResponseBodyProject) GetFramework() *string {
 	return o.Framework
 }
 
-// GetDeploymentResponseBodyReadySubstate - Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+// GetDeploymentResponseBodyReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 type GetDeploymentResponseBodyReadySubstate string
 
 const (
 	GetDeploymentResponseBodyReadySubstateStaged   GetDeploymentResponseBodyReadySubstate = "STAGED"
+	GetDeploymentResponseBodyReadySubstateRolling  GetDeploymentResponseBodyReadySubstate = "ROLLING"
 	GetDeploymentResponseBodyReadySubstatePromoted GetDeploymentResponseBodyReadySubstate = "PROMOTED"
 )
 
@@ -1520,6 +1521,8 @@ func (e *GetDeploymentResponseBodyReadySubstate) UnmarshalJSON(data []byte) erro
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = GetDeploymentResponseBodyReadySubstate(v)
@@ -1721,7 +1724,7 @@ type GetDeploymentResponseBody2 struct {
 	Meta              map[string]string                 `json:"meta"`
 	OriginCacheRegion *string                           `json:"originCacheRegion,omitempty"`
 	Project           *GetDeploymentResponseBodyProject `json:"project,omitempty"`
-	// Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate          *GetDeploymentResponseBodyReadySubstate   `json:"readySubstate,omitempty"`
 	Regions                []string                                  `json:"regions"`
 	SoftDeletedByRetention *bool                                     `json:"softDeletedByRetention,omitempty"`
@@ -2165,6 +2168,30 @@ func (o *ResponseBodyBuild) GetEnv() []string {
 }
 
 type ResponseBodyBuilds struct {
+	Use    string         `json:"use"`
+	Src    *string        `json:"src,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
+}
+
+func (o *ResponseBodyBuilds) GetUse() string {
+	if o == nil {
+		return ""
+	}
+	return o.Use
+}
+
+func (o *ResponseBodyBuilds) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+func (o *ResponseBodyBuilds) GetConfig() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Config
 }
 
 type ResponseBodyFramework string
@@ -4248,11 +4275,12 @@ func (o *ResponseBodyProject) GetFramework() *string {
 	return o.Framework
 }
 
-// ResponseBodyReadySubstate - Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+// ResponseBodyReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 type ResponseBodyReadySubstate string
 
 const (
 	ResponseBodyReadySubstateStaged   ResponseBodyReadySubstate = "STAGED"
+	ResponseBodyReadySubstateRolling  ResponseBodyReadySubstate = "ROLLING"
 	ResponseBodyReadySubstatePromoted ResponseBodyReadySubstate = "PROMOTED"
 )
 
@@ -4266,6 +4294,8 @@ func (e *ResponseBodyReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = ResponseBodyReadySubstate(v)
@@ -6097,7 +6127,7 @@ type GetDeploymentResponseBody1 struct {
 	Meta              map[string]string                   `json:"meta"`
 	OriginCacheRegion *string                             `json:"originCacheRegion,omitempty"`
 	Project           *ResponseBodyProject                `json:"project,omitempty"`
-	// Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate          *ResponseBodyReadySubstate       `json:"readySubstate,omitempty"`
 	Regions                []string                         `json:"regions"`
 	SoftDeletedByRetention *bool                            `json:"softDeletedByRetention,omitempty"`

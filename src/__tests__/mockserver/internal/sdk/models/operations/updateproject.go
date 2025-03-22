@@ -1188,10 +1188,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1205,13 +1205,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -3019,6 +3019,7 @@ type UpdateProjectReadySubstate string
 
 const (
 	UpdateProjectReadySubstateStaged   UpdateProjectReadySubstate = "STAGED"
+	UpdateProjectReadySubstateRolling  UpdateProjectReadySubstate = "ROLLING"
 	UpdateProjectReadySubstatePromoted UpdateProjectReadySubstate = "PROMOTED"
 )
 
@@ -3032,6 +3033,8 @@ func (e *UpdateProjectReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = UpdateProjectReadySubstate(v)
@@ -4804,6 +4807,7 @@ type UpdateProjectProjectsReadySubstate string
 
 const (
 	UpdateProjectProjectsReadySubstateStaged   UpdateProjectProjectsReadySubstate = "STAGED"
+	UpdateProjectProjectsReadySubstateRolling  UpdateProjectProjectsReadySubstate = "ROLLING"
 	UpdateProjectProjectsReadySubstatePromoted UpdateProjectProjectsReadySubstate = "PROMOTED"
 )
 
@@ -4817,6 +4821,8 @@ func (e *UpdateProjectProjectsReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = UpdateProjectProjectsReadySubstate(v)

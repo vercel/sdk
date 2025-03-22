@@ -3,24 +3,24 @@
 
 ## Supported Types
 
-### `models.One`
+### `models.Scopes1`
 
 ```typescript
-const value: models.One = {
+const value: models.Scopes1 = {
   type: "user",
   origin: "otp",
-  createdAt: 7046.65,
+  createdAt: 8579.79,
 };
 ```
 
-### `models.Two`
+### `models.Scopes2`
 
 ```typescript
-const value: models.Two = {
+const value: models.Scopes2 = {
   type: "team",
   teamId: "<id>",
-  origin: "invite",
-  createdAt: 2953.07,
+  origin: "email",
+  createdAt: 4343.3,
 };
 ```
 

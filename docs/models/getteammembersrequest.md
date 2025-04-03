@@ -10,7 +10,6 @@ let value: GetTeamMembersRequest = {
   since: 1540095775951,
   until: 1540095775951,
   role: "OWNER",
-  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
 };
 ```
 
@@ -25,4 +24,3 @@ let value: GetTeamMembersRequest = {
 | `role`                                                                        | [models.QueryParamRole](../models/queryparamrole.md)                          | :heavy_minus_sign:                                                            | Only return members with the specified team role.                             | OWNER                                                                         |
 | `excludeProject`                                                              | *string*                                                                      | :heavy_minus_sign:                                                            | Exclude members who belong to the specified project.                          |                                                                               |
 | `eligibleMembersForProjectId`                                                 | *string*                                                                      | :heavy_minus_sign:                                                            | Include team members who are eligible to be members of the specified project. |                                                                               |
-| `teamId`                                                                      | *string*                                                                      | :heavy_check_mark:                                                            | The Team identifier to perform the request on behalf of.                      | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                 |

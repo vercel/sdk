@@ -92,6 +92,7 @@ export type AddBypassIpResponseBodyResult = {
   domain: string;
   ip?: string | undefined;
   projectId: string;
+  note: string;
   isProjectRule: boolean;
 };
 
@@ -604,6 +605,7 @@ export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
   Domain: z.string(),
   Ip: z.string().optional(),
   ProjectId: z.string(),
+  Note: z.string(),
   IsProjectRule: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
@@ -612,6 +614,7 @@ export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
     "Domain": "domain",
     "Ip": "ip",
     "ProjectId": "projectId",
+    "Note": "note",
     "IsProjectRule": "isProjectRule",
   });
 });
@@ -623,6 +626,7 @@ export type AddBypassIpResponseBodyResult$Outbound = {
   Domain: string;
   Ip?: string | undefined;
   ProjectId: string;
+  Note: string;
   IsProjectRule: boolean;
 };
 
@@ -637,6 +641,7 @@ export const AddBypassIpResponseBodyResult$outboundSchema: z.ZodType<
   domain: z.string(),
   ip: z.string().optional(),
   projectId: z.string(),
+  note: z.string(),
   isProjectRule: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
@@ -645,6 +650,7 @@ export const AddBypassIpResponseBodyResult$outboundSchema: z.ZodType<
     domain: "Domain",
     ip: "Ip",
     projectId: "ProjectId",
+    note: "Note",
     isProjectRule: "IsProjectRule",
   });
 });

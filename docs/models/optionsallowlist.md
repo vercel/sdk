@@ -1,11 +1,9 @@
 # OptionsAllowlist
 
-Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
-
 ## Example Usage
 
 ```typescript
-import { OptionsAllowlist } from "@vercel/sdk/models/updateprojectop.js";
+import { OptionsAllowlist } from "@vercel/sdk/models/userevent.js";
 
 let value: OptionsAllowlist = {
   paths: [

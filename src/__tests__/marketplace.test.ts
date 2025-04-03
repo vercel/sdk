@@ -182,7 +182,9 @@ test("Marketplace Get Invoice", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    test: false,
     invoiceId: "<id>",
+    state: "scheduled",
     invoiceDate: "<value>",
     period: {
       start: "<value>",
@@ -201,8 +203,6 @@ test("Marketplace Get Invoice", async () => {
     total: "<value>",
     created: "<value>",
     updated: "<value>",
-    state: "scheduled",
-    test: false,
   });
 });
 
@@ -412,5 +412,21 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
     items: {},
     updatedAt: 6820.68,
     digest: "<value>",
+  });
+});
+
+test("Marketplace Query Experimentation Items", async () => {
+  const testHttpClient = createTestHTTPClient("queryExperimentationItems");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.queryExperimentationItems({});
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    items: [],
   });
 });

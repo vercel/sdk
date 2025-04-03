@@ -5,7 +5,7 @@
 ```typescript
 import { GetMemberRole } from "@vercel/sdk/models/getmemberop.js";
 
-let value: GetMemberRole = "ADMIN";
+let value: GetMemberRole = "USER";
 ```
 
 ## Values

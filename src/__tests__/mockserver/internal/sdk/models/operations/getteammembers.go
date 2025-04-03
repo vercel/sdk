@@ -64,8 +64,6 @@ type GetTeamMembersRequest struct {
 	ExcludeProject *string `queryParam:"style=form,explode=true,name=excludeProject"`
 	// Include team members who are eligible to be members of the specified project.
 	EligibleMembersForProjectID *string `queryParam:"style=form,explode=true,name=eligibleMembersForProjectId"`
-	// The Team identifier to perform the request on behalf of.
-	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 func (o *GetTeamMembersRequest) GetLimit() *float64 {
@@ -115,13 +113,6 @@ func (o *GetTeamMembersRequest) GetEligibleMembersForProjectID() *string {
 		return nil
 	}
 	return o.EligibleMembersForProjectID
-}
-
-func (o *GetTeamMembersRequest) GetTeamID() string {
-	if o == nil {
-		return ""
-	}
-	return o.TeamID
 }
 
 // GetTeamMembersGithub - Information about the GitHub account for this user.

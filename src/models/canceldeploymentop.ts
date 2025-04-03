@@ -36,7 +36,11 @@ export type CancelDeploymentBuild = {
   env: Array<string>;
 };
 
-export type CancelDeploymentBuilds = {};
+export type CancelDeploymentBuilds = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 export const CancelDeploymentFramework = {
   Blitzjs: "blitzjs",
@@ -495,14 +499,15 @@ export type CancelDeploymentReadyState = ClosedEnum<
 >;
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const CancelDeploymentReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export type CancelDeploymentReadySubstate = ClosedEnum<
   typeof CancelDeploymentReadySubstate
@@ -965,7 +970,7 @@ export type CancelDeploymentResponseBody = {
   project?: CancelDeploymentProject | undefined;
   readyState: CancelDeploymentReadyState;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: CancelDeploymentReadySubstate | undefined;
   regions: Array<string>;
@@ -1183,17 +1188,29 @@ export const CancelDeploymentBuilds$inboundSchema: z.ZodType<
   CancelDeploymentBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /** @internal */
-export type CancelDeploymentBuilds$Outbound = {};
+export type CancelDeploymentBuilds$Outbound = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 /** @internal */
 export const CancelDeploymentBuilds$outboundSchema: z.ZodType<
   CancelDeploymentBuilds$Outbound,
   z.ZodTypeDef,
   CancelDeploymentBuilds
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /**
  * @internal

@@ -1,0 +1,21 @@
+# Postgres
+
+## Example Usage
+
+```typescript
+import { Postgres } from "@vercel/sdk/models/userevent.js";
+
+let value: Postgres = {
+  overageReason: "sourceImages",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                  | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `blockedFrom`                                                                                                                                | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `blockedUntil`                                                                                                                               | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `blockReason`                                                                                                                                | [models.UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason](../models/usereventpayload62newownerfeatureblockspostgresblockreason.md) | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `overageReason`                                                                                                                              | [models.PayloadOverageReason](../models/payloadoveragereason.md)                                                                             | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |

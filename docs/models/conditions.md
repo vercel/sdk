@@ -6,8 +6,8 @@
 import { Conditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: Conditions = {
-  type: "geo_continent",
-  op: "pre",
+  type: "user_agent",
+  op: "re",
 };
 ```
 

@@ -6,9 +6,9 @@
 import { GetAccountInfoResponseBody } from "@vercel/sdk/models/getaccountinfoop.js";
 
 let value: GetAccountInfoResponseBody = {
-  url: "https://next-haversack.com/",
+  url: "https://ill-fated-molasses.net",
   contact: {
-    email: "Vincenzo.Weissnat46@gmail.com",
+    email: "Veda_Greenfelder79@hotmail.com",
   },
 };
 ```

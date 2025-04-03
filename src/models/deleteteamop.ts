@@ -11,7 +11,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * An object describing the reason why the team is being deleted.
  */
-export type Reasons = {
+export type DeleteTeamReasons = {
   /**
    * Idenitifier slug of the reason why the team is being deleted.
    */
@@ -26,7 +26,7 @@ export type DeleteTeamRequestBody = {
   /**
    * Optional array of objects that describe the reason why the team is being deleted.
    */
-  reasons?: Array<Reasons> | undefined;
+  reasons?: Array<DeleteTeamReasons> | undefined;
 };
 
 export type DeleteTeamRequest = {
@@ -60,23 +60,26 @@ export type DeleteTeamResponseBody = {
 };
 
 /** @internal */
-export const Reasons$inboundSchema: z.ZodType<Reasons, z.ZodTypeDef, unknown> =
-  z.object({
-    slug: z.string(),
-    description: z.string(),
-  });
+export const DeleteTeamReasons$inboundSchema: z.ZodType<
+  DeleteTeamReasons,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slug: z.string(),
+  description: z.string(),
+});
 
 /** @internal */
-export type Reasons$Outbound = {
+export type DeleteTeamReasons$Outbound = {
   slug: string;
   description: string;
 };
 
 /** @internal */
-export const Reasons$outboundSchema: z.ZodType<
-  Reasons$Outbound,
+export const DeleteTeamReasons$outboundSchema: z.ZodType<
+  DeleteTeamReasons$Outbound,
   z.ZodTypeDef,
-  Reasons
+  DeleteTeamReasons
 > = z.object({
   slug: z.string(),
   description: z.string(),
@@ -86,26 +89,30 @@ export const Reasons$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Reasons$ {
-  /** @deprecated use `Reasons$inboundSchema` instead. */
-  export const inboundSchema = Reasons$inboundSchema;
-  /** @deprecated use `Reasons$outboundSchema` instead. */
-  export const outboundSchema = Reasons$outboundSchema;
-  /** @deprecated use `Reasons$Outbound` instead. */
-  export type Outbound = Reasons$Outbound;
+export namespace DeleteTeamReasons$ {
+  /** @deprecated use `DeleteTeamReasons$inboundSchema` instead. */
+  export const inboundSchema = DeleteTeamReasons$inboundSchema;
+  /** @deprecated use `DeleteTeamReasons$outboundSchema` instead. */
+  export const outboundSchema = DeleteTeamReasons$outboundSchema;
+  /** @deprecated use `DeleteTeamReasons$Outbound` instead. */
+  export type Outbound = DeleteTeamReasons$Outbound;
 }
 
-export function reasonsToJSON(reasons: Reasons): string {
-  return JSON.stringify(Reasons$outboundSchema.parse(reasons));
+export function deleteTeamReasonsToJSON(
+  deleteTeamReasons: DeleteTeamReasons,
+): string {
+  return JSON.stringify(
+    DeleteTeamReasons$outboundSchema.parse(deleteTeamReasons),
+  );
 }
 
-export function reasonsFromJSON(
+export function deleteTeamReasonsFromJSON(
   jsonString: string,
-): SafeParseResult<Reasons, SDKValidationError> {
+): SafeParseResult<DeleteTeamReasons, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Reasons$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Reasons' from JSON`,
+    (x) => DeleteTeamReasons$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteTeamReasons' from JSON`,
   );
 }
 
@@ -115,12 +122,12 @@ export const DeleteTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
+  reasons: z.array(z.lazy(() => DeleteTeamReasons$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type DeleteTeamRequestBody$Outbound = {
-  reasons?: Array<Reasons$Outbound> | undefined;
+  reasons?: Array<DeleteTeamReasons$Outbound> | undefined;
 };
 
 /** @internal */
@@ -129,7 +136,7 @@ export const DeleteTeamRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeleteTeamRequestBody
 > = z.object({
-  reasons: z.array(z.lazy(() => Reasons$outboundSchema)).optional(),
+  reasons: z.array(z.lazy(() => DeleteTeamReasons$outboundSchema)).optional(),
 });
 
 /**

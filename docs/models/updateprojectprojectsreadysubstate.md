@@ -11,5 +11,5 @@ let value: UpdateProjectProjectsReadySubstate = "STAGED";
 ## Values
 
 ```typescript
-"STAGED" | "PROMOTED"
+"STAGED" | "ROLLING" | "PROMOTED"
 ```

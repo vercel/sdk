@@ -1,5 +1,7 @@
 # ResponseBodyTeamPermissions
 
+The team permissions of the user
+
 ## Example Usage
 
 ```typescript

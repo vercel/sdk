@@ -382,6 +382,7 @@ type AddBypassIPResponseBodyResult struct {
 	Domain        string  `json:"Domain"`
 	IP            *string `json:"Ip,omitempty"`
 	ProjectID     string  `json:"ProjectId"`
+	Note          string  `json:"Note"`
 	IsProjectRule bool    `json:"IsProjectRule"`
 }
 
@@ -418,6 +419,13 @@ func (o *AddBypassIPResponseBodyResult) GetProjectID() string {
 		return ""
 	}
 	return o.ProjectID
+}
+
+func (o *AddBypassIPResponseBodyResult) GetNote() string {
+	if o == nil {
+		return ""
+	}
+	return o.Note
 }
 
 func (o *AddBypassIPResponseBodyResult) GetIsProjectRule() bool {

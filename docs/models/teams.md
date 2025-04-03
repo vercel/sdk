@@ -1,50 +1,26 @@
 # Teams
 
-
-## Supported Types
-
-### `{ [k: string]: any }`
+## Example Usage
 
 ```typescript
-const value: { [k: string]: any } = {
-  "key": "<value>",
+import { Teams } from "@vercel/sdk/models/userevent.js";
+
+let value: Teams = {
+  teamId: "<id>",
 };
 ```
 
-### `models.TeamLimited`
+## Fields
 
-```typescript
-const value: models.TeamLimited = {
-  limited: false,
-  saml: {
-    connection: {
-      type: "OktaSAML",
-      status: "linked",
-      state: "active",
-      connectedAt: 1611796915677,
-      lastReceivedWebhookEvent: 1611796915677,
-    },
-    directory: {
-      type: "OktaSAML",
-      state: "active",
-      connectedAt: 1611796915677,
-      lastReceivedWebhookEvent: 1611796915677,
-    },
-    enforced: false,
-  },
-  id: "team_nllPyCtREAqxxdyFKbbMDlxd",
-  slug: "my-team",
-  name: "My Team",
-  avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
-  membership: {
-    confirmed: false,
-    confirmedAt: 8452.38,
-    role: "SECURITY",
-    createdAt: 926.85,
-    created: 4549.04,
-  },
-  created: "<value>",
-  createdAt: 1630748523395,
-};
-```
-
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `created`                                                                    | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `createdAt`                                                                  | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload62Role](../models/usereventpayload62role.md)         | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `confirmed`                                                                  | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `confirmedAt`                                                                | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `accessRequestedAt`                                                          | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `teamRoles`                                                                  | [models.PayloadTeamRoles](../models/payloadteamroles.md)[]                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `teamPermissions`                                                            | [models.PayloadTeamPermissions](../models/payloadteampermissions.md)[]       | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `joinedFrom`                                                                 | [models.UserEventPayloadJoinedFrom](../models/usereventpayloadjoinedfrom.md) | :heavy_minus_sign:                                                           | N/A                                                                          |

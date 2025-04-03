@@ -209,16 +209,6 @@ test("Security Add Bypass Ip", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     ok: false,
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "jubilant-outrun.name",
-        projectId: "<id>",
-        isProjectRule: true,
-      },
-    ],
-    pagination: "<value>",
   });
 });
 

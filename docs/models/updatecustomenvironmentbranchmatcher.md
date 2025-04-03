@@ -8,7 +8,7 @@ How we want to determine a matching branch. This is optional.
 import { UpdateCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/updatecustomenvironmentop.js";
 
 let value: UpdateCustomEnvironmentBranchMatcher = {
-  type: "endsWith",
+  type: "equals",
   pattern: "<value>",
 };
 ```

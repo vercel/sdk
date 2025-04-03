@@ -1042,7 +1042,6 @@ export type GetProjectEnvResponseBody1 = {
     | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 export type GetProjectEnvResponseBody =
@@ -6631,7 +6630,6 @@ export const GetProjectEnvResponseBody1$inboundSchema: z.ZodType<
   ).optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
-  vsmValue: z.string().optional(),
 });
 
 /** @internal */
@@ -6674,7 +6672,6 @@ export type GetProjectEnvResponseBody1$Outbound = {
     | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 /** @internal */
@@ -6724,7 +6721,6 @@ export const GetProjectEnvResponseBody1$outboundSchema: z.ZodType<
   ).optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
-  vsmValue: z.string().optional(),
 });
 
 /**

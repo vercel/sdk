@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Paths } from "@vercel/sdk/models/updateprojectop.js";
+import { Paths } from "@vercel/sdk/models/userevent.js";
 
 let value: Paths = {
   value: "<value>",
@@ -12,6 +12,6 @@ let value: Paths = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `value`                                                              | *string*                                                             | :heavy_check_mark:                                                   | The regex path that should not be protected by Deployment Protection |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

@@ -1,19 +1,19 @@
 # Thirteen
 
+The payload of the event, if requested.
+
 ## Example Usage
 
 ```typescript
-import { Thirteen } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Thirteen = {
-  type: "postgres-url-no-ssl",
-  storeId: "<id>",
-};
+let value: Thirteen = {};
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                                    | Type                                                                                                                                                                                                     | Required                                                                                                                                                                                                 | Description                                                                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                                                   | [models.UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type](../models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv13type.md) | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `storeId`                                                                                                                                                                                                | *string*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

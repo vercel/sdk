@@ -6,8 +6,8 @@
 import { GetFirewallConfigConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigConditions = {
-  type: "query",
-  op: "neq",
+  type: "header",
+  op: "inc",
 };
 ```
 

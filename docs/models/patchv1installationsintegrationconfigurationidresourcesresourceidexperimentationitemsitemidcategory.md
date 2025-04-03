@@ -9,7 +9,7 @@ import {
 
 let value:
   PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory =
-    "flag";
+    "experiment";
 ```
 
 ## Values

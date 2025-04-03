@@ -9,7 +9,7 @@ import { Rfi } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Rfi = {
   active: false,
-  action: "deny",
+  action: "log",
 };
 ```
 

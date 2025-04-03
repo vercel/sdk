@@ -13,5 +13,5 @@ let value: GetConfigurationsResponseBodyIntegrationsSource = "marketplace";
 ## Values
 
 ```typescript
-"marketplace" | "deploy-button" | "external"
+"marketplace" | "deploy-button" | "external" | "v0"
 ```

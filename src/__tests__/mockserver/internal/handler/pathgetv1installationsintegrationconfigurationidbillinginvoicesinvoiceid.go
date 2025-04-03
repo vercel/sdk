@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -46,7 +47,9 @@ func testGetInvoiceGetInvoice0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	respBody := &operations.GetInvoiceResponseBody{
+		Test:        types.Bool(false),
 		InvoiceID:   "<id>",
+		State:       operations.StateScheduled,
 		InvoiceDate: "<value>",
 		Period: operations.GetInvoicePeriod{
 			Start: "<value>",
@@ -65,8 +68,6 @@ func testGetInvoiceGetInvoice0(w http.ResponseWriter, req *http.Request) {
 		Total:   "<value>",
 		Created: "<value>",
 		Updated: "<value>",
-		State:   operations.StateScheduled,
-		Test:    false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

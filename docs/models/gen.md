@@ -9,7 +9,7 @@ import { Gen } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Gen = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

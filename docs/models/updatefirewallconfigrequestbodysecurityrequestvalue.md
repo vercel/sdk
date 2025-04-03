@@ -6,9 +6,9 @@
 import { UpdateFirewallConfigRequestBodySecurityRequestValue } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequestValue = {
-  hostname: "lined-soybean.biz",
-  ip: "156.139.249.174",
-  action: "log",
+  hostname: "unselfish-wilderness.biz",
+  ip: "728c:2ca5:db7f:9fa7:0e42:ef56:3adf:c5ae",
+  action: "challenge",
 };
 ```
 

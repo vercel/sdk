@@ -13,7 +13,7 @@ let value:
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody =
     {
       items: {},
-      updatedAt: 1648.05,
+      updatedAt: 6490.7,
       digest: "<value>",
     };
 ```

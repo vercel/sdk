@@ -1,13 +1,13 @@
 # UpdateProjectDeploymentType
 
-Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+Specify if the password will apply to every Deployment Target or just Preview
 
 ## Example Usage
 
 ```typescript
 import { UpdateProjectDeploymentType } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectDeploymentType = "preview";
+let value: UpdateProjectDeploymentType = "all";
 ```
 
 ## Values

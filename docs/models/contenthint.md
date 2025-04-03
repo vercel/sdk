@@ -93,37 +93,37 @@ const value: models.ContentHint10 = {
 };
 ```
 
-### `models.UpdateProjectDataCacheContentHint11`
+### `models.ContentHint11`
 
 ```typescript
-const value: models.UpdateProjectDataCacheContentHint11 = {
+const value: models.ContentHint11 = {
   type: "postgres-password",
   storeId: "<id>",
 };
 ```
 
-### `models.UpdateProjectDataCacheContentHint12`
+### `models.ContentHint12`
 
 ```typescript
-const value: models.UpdateProjectDataCacheContentHint12 = {
+const value: models.ContentHint12 = {
   type: "postgres-database",
   storeId: "<id>",
 };
 ```
 
-### `models.Thirteen`
+### `models.ContentHint13`
 
 ```typescript
-const value: models.Thirteen = {
+const value: models.ContentHint13 = {
   type: "postgres-url-no-ssl",
   storeId: "<id>",
 };
 ```
 
-### `models.Fourteen`
+### `models.ContentHint14`
 
 ```typescript
-const value: models.Fourteen = {
+const value: models.ContentHint14 = {
   type: "integration-store-secret",
   storeId: "<id>",
   integrationId: "<id>",
@@ -132,10 +132,10 @@ const value: models.Fourteen = {
 };
 ```
 
-### `models.Fifteen`
+### `models.ContentHint15`
 
 ```typescript
-const value: models.Fifteen = {
+const value: models.ContentHint15 = {
   type: "flags-connection-string",
   projectId: "<id>",
 };

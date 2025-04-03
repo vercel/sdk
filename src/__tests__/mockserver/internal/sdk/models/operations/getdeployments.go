@@ -33,6 +33,10 @@ type GetDeploymentsRequest struct {
 	State *string `queryParam:"style=form,explode=true,name=state"`
 	// Filter deployments based on their rollback candidacy
 	RollbackCandidate *bool `queryParam:"style=form,explode=true,name=rollbackCandidate"`
+	// Filter deployments based on the branch name
+	Branch *string `queryParam:"style=form,explode=true,name=branch"`
+	// Filter deployments based on the SHA
+	Sha *string `queryParam:"style=form,explode=true,name=sha"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -114,6 +118,20 @@ func (o *GetDeploymentsRequest) GetRollbackCandidate() *bool {
 		return nil
 	}
 	return o.RollbackCandidate
+}
+
+func (o *GetDeploymentsRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *GetDeploymentsRequest) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
 }
 
 func (o *GetDeploymentsRequest) GetTeamID() *string {
@@ -442,11 +460,12 @@ func (u GetDeploymentsAliasAssigned) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentsAliasAssigned: all fields are null")
 }
 
-// GetDeploymentsReadySubstate - Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+// GetDeploymentsReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
 type GetDeploymentsReadySubstate string
 
 const (
 	GetDeploymentsReadySubstateStaged   GetDeploymentsReadySubstate = "STAGED"
+	GetDeploymentsReadySubstateRolling  GetDeploymentsReadySubstate = "ROLLING"
 	GetDeploymentsReadySubstatePromoted GetDeploymentsReadySubstate = "PROMOTED"
 )
 
@@ -460,6 +479,8 @@ func (e *GetDeploymentsReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = GetDeploymentsReadySubstate(v)
@@ -1067,7 +1088,7 @@ type Deployments struct {
 	BuildingAt *float64 `json:"buildingAt,omitempty"`
 	// Timestamp of when the deployment got ready.
 	Ready *float64 `json:"ready,omitempty"`
-	// Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
 	ReadySubstate *GetDeploymentsReadySubstate `json:"readySubstate,omitempty"`
 	// State of all registered checks
 	ChecksState *GetDeploymentsChecksState `json:"checksState,omitempty"`

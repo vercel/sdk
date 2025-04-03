@@ -6,7 +6,7 @@
 ### `models.Action1`
 
 ```typescript
-const value: models.Action1 = "rate_limit";
+const value: models.Action1 = "challenge";
 ```
 
 ### `any`

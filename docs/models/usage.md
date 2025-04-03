@@ -7,10 +7,10 @@ import { Usage } from "@vercel/sdk/models/submitbillingdataop.js";
 
 let value: Usage = {
   name: "<value>",
-  type: "interval",
+  type: "total",
   units: "<value>",
-  dayValue: 2505.2,
-  periodValue: 6050.43,
+  dayValue: 5929.46,
+  periodValue: 6124.25,
 };
 ```
 

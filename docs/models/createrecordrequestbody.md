@@ -63,10 +63,10 @@ const value: models.RequestBody5 = {
 };
 ```
 
-### `models.Six`
+### `models.RequestBody6`
 
 ```typescript
-const value: models.Six = {
+const value: models.RequestBody6 = {
   name: "subdomain",
   type: "CNAME",
   ttl: 60,
@@ -76,10 +76,10 @@ const value: models.Six = {
 };
 ```
 
-### `models.Seven`
+### `models.RequestBody7`
 
 ```typescript
-const value: models.Seven = {
+const value: models.RequestBody7 = {
   type: "ALIAS",
   ttl: 60,
   srv: {
@@ -92,10 +92,10 @@ const value: models.Seven = {
 };
 ```
 
-### `models.Eight`
+### `models.RequestBody8`
 
 ```typescript
-const value: models.Eight = {
+const value: models.RequestBody8 = {
   type: "CAA",
   ttl: 60,
   value: "hello",
@@ -103,10 +103,10 @@ const value: models.Eight = {
 };
 ```
 
-### `models.Nine`
+### `models.RequestBody9`
 
 ```typescript
-const value: models.Nine = {
+const value: models.RequestBody9 = {
   name: "subdomain",
   type: "NS",
   ttl: 60,
@@ -115,10 +115,10 @@ const value: models.Nine = {
 };
 ```
 
-### `models.Ten`
+### `models.RequestBody10`
 
 ```typescript
-const value: models.Ten = {
+const value: models.RequestBody10 = {
   type: "ALIAS",
   ttl: 60,
   https: {

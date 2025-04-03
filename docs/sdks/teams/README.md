@@ -38,7 +38,6 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   // Handle the result
@@ -68,7 +67,6 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   if (!res.ok) {

@@ -53,10 +53,6 @@ export type GetTeamMembersRequest = {
    * Include team members who are eligible to be members of the specified project.
    */
   eligibleMembersForProjectId?: string | undefined;
-  /**
-   * The Team identifier to perform the request on behalf of.
-   */
-  teamId: string;
 };
 
 /**
@@ -298,7 +294,6 @@ export const GetTeamMembersRequest$inboundSchema: z.ZodType<
   role: QueryParamRole$inboundSchema.optional(),
   excludeProject: z.string().optional(),
   eligibleMembersForProjectId: z.string().optional(),
-  teamId: z.string(),
 });
 
 /** @internal */
@@ -310,7 +305,6 @@ export type GetTeamMembersRequest$Outbound = {
   role?: string | undefined;
   excludeProject?: string | undefined;
   eligibleMembersForProjectId?: string | undefined;
-  teamId: string;
 };
 
 /** @internal */
@@ -326,7 +320,6 @@ export const GetTeamMembersRequest$outboundSchema: z.ZodType<
   role: QueryParamRole$outboundSchema.optional(),
   excludeProject: z.string().optional(),
   eligibleMembersForProjectId: z.string().optional(),
-  teamId: z.string(),
 });
 
 /**

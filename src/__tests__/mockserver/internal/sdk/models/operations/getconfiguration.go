@@ -74,6 +74,7 @@ const (
 	GetConfigurationResponseBodyIntegrationsSourceMarketplace  GetConfigurationResponseBodyIntegrationsSource = "marketplace"
 	GetConfigurationResponseBodyIntegrationsSourceDeployButton GetConfigurationResponseBodyIntegrationsSource = "deploy-button"
 	GetConfigurationResponseBodyIntegrationsSourceExternal     GetConfigurationResponseBodyIntegrationsSource = "external"
+	GetConfigurationResponseBodyIntegrationsSourceV0           GetConfigurationResponseBodyIntegrationsSource = "v0"
 )
 
 func (e GetConfigurationResponseBodyIntegrationsSource) ToPointer() *GetConfigurationResponseBodyIntegrationsSource {
@@ -90,6 +91,8 @@ func (e *GetConfigurationResponseBodyIntegrationsSource) UnmarshalJSON(data []by
 	case "deploy-button":
 		fallthrough
 	case "external":
+		fallthrough
+	case "v0":
 		*e = GetConfigurationResponseBodyIntegrationsSource(v)
 		return nil
 	default:
@@ -372,6 +375,7 @@ const (
 	GetConfigurationResponseBodySourceMarketplace  GetConfigurationResponseBodySource = "marketplace"
 	GetConfigurationResponseBodySourceDeployButton GetConfigurationResponseBodySource = "deploy-button"
 	GetConfigurationResponseBodySourceExternal     GetConfigurationResponseBodySource = "external"
+	GetConfigurationResponseBodySourceV0           GetConfigurationResponseBodySource = "v0"
 )
 
 func (e GetConfigurationResponseBodySource) ToPointer() *GetConfigurationResponseBodySource {
@@ -388,6 +392,8 @@ func (e *GetConfigurationResponseBodySource) UnmarshalJSON(data []byte) error {
 	case "deploy-button":
 		fallthrough
 	case "external":
+		fallthrough
+	case "v0":
 		*e = GetConfigurationResponseBodySource(v)
 		return nil
 	default:

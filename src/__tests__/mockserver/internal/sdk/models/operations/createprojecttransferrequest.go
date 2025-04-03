@@ -6,13 +6,35 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type CreateProjectTransferRequestRequestBody struct {
+	// The URL to send a webhook to when the transfer is accepted.
+	CallbackURL *string `json:"callbackUrl,omitempty"`
+	// The secret to use to sign the webhook payload with HMAC-SHA256.
+	CallbackSecret *string `json:"callbackSecret,omitempty"`
+}
+
+func (o *CreateProjectTransferRequestRequestBody) GetCallbackURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CallbackURL
+}
+
+func (o *CreateProjectTransferRequestRequestBody) GetCallbackSecret() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CallbackSecret
+}
+
 type CreateProjectTransferRequestRequest struct {
 	// The ID or name of the project to transfer.
 	IDOrName string `pathParam:"style=simple,explode=false,name=idOrName"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug *string `queryParam:"style=form,explode=true,name=slug"`
+	Slug        *string                                  `queryParam:"style=form,explode=true,name=slug"`
+	RequestBody *CreateProjectTransferRequestRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateProjectTransferRequestRequest) GetIDOrName() string {
@@ -34,6 +56,13 @@ func (o *CreateProjectTransferRequestRequest) GetSlug() *string {
 		return nil
 	}
 	return o.Slug
+}
+
+func (o *CreateProjectTransferRequestRequest) GetRequestBody() *CreateProjectTransferRequestRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 // CreateProjectTransferRequestResponseBody - The project transfer request has been initiated successfully.

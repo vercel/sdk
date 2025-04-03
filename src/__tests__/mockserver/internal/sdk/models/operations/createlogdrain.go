@@ -207,9 +207,10 @@ func (o *CreateLogDrainRequest) GetRequestBody() CreateLogDrainRequestBody {
 type CreateLogDrainLogDrainsDeliveryFormat string
 
 const (
-	CreateLogDrainLogDrainsDeliveryFormatJSON   CreateLogDrainLogDrainsDeliveryFormat = "json"
-	CreateLogDrainLogDrainsDeliveryFormatNdjson CreateLogDrainLogDrainsDeliveryFormat = "ndjson"
-	CreateLogDrainLogDrainsDeliveryFormatSyslog CreateLogDrainLogDrainsDeliveryFormat = "syslog"
+	CreateLogDrainLogDrainsDeliveryFormatJSON     CreateLogDrainLogDrainsDeliveryFormat = "json"
+	CreateLogDrainLogDrainsDeliveryFormatNdjson   CreateLogDrainLogDrainsDeliveryFormat = "ndjson"
+	CreateLogDrainLogDrainsDeliveryFormatSyslog   CreateLogDrainLogDrainsDeliveryFormat = "syslog"
+	CreateLogDrainLogDrainsDeliveryFormatProtobuf CreateLogDrainLogDrainsDeliveryFormat = "protobuf"
 )
 
 func (e CreateLogDrainLogDrainsDeliveryFormat) ToPointer() *CreateLogDrainLogDrainsDeliveryFormat {
@@ -226,6 +227,8 @@ func (e *CreateLogDrainLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error
 	case "ndjson":
 		fallthrough
 	case "syslog":
+		fallthrough
+	case "protobuf":
 		*e = CreateLogDrainLogDrainsDeliveryFormat(v)
 		return nil
 	default:

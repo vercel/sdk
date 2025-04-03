@@ -5,7 +5,7 @@
 ```typescript
 import { ReadAccessGroupProjectRole } from "@vercel/sdk/models/readaccessgroupprojectop.js";
 
-let value: ReadAccessGroupProjectRole = "PROJECT_VIEWER";
+let value: ReadAccessGroupProjectRole = "ADMIN";
 ```
 
 ## Values

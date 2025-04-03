@@ -34,7 +34,7 @@ export type GetTeamsRequest = {
   until?: number | undefined;
 };
 
-export type Teams = TeamLimited | { [k: string]: any };
+export type GetTeamsTeams = TeamLimited | { [k: string]: any };
 
 /**
  * A paginated list of teams.
@@ -106,43 +106,48 @@ export function getTeamsRequestFromJSON(
 }
 
 /** @internal */
-export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
-  .union([TeamLimited$inboundSchema, z.record(z.any())]);
-
-/** @internal */
-export type Teams$Outbound = TeamLimited$Outbound | { [k: string]: any };
-
-/** @internal */
-export const Teams$outboundSchema: z.ZodType<
-  Teams$Outbound,
+export const GetTeamsTeams$inboundSchema: z.ZodType<
+  GetTeamsTeams,
   z.ZodTypeDef,
-  Teams
+  unknown
+> = z.union([TeamLimited$inboundSchema, z.record(z.any())]);
+
+/** @internal */
+export type GetTeamsTeams$Outbound = TeamLimited$Outbound | {
+  [k: string]: any;
+};
+
+/** @internal */
+export const GetTeamsTeams$outboundSchema: z.ZodType<
+  GetTeamsTeams$Outbound,
+  z.ZodTypeDef,
+  GetTeamsTeams
 > = z.union([TeamLimited$outboundSchema, z.record(z.any())]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Teams$ {
-  /** @deprecated use `Teams$inboundSchema` instead. */
-  export const inboundSchema = Teams$inboundSchema;
-  /** @deprecated use `Teams$outboundSchema` instead. */
-  export const outboundSchema = Teams$outboundSchema;
-  /** @deprecated use `Teams$Outbound` instead. */
-  export type Outbound = Teams$Outbound;
+export namespace GetTeamsTeams$ {
+  /** @deprecated use `GetTeamsTeams$inboundSchema` instead. */
+  export const inboundSchema = GetTeamsTeams$inboundSchema;
+  /** @deprecated use `GetTeamsTeams$outboundSchema` instead. */
+  export const outboundSchema = GetTeamsTeams$outboundSchema;
+  /** @deprecated use `GetTeamsTeams$Outbound` instead. */
+  export type Outbound = GetTeamsTeams$Outbound;
 }
 
-export function teamsToJSON(teams: Teams): string {
-  return JSON.stringify(Teams$outboundSchema.parse(teams));
+export function getTeamsTeamsToJSON(getTeamsTeams: GetTeamsTeams): string {
+  return JSON.stringify(GetTeamsTeams$outboundSchema.parse(getTeamsTeams));
 }
 
-export function teamsFromJSON(
+export function getTeamsTeamsFromJSON(
   jsonString: string,
-): SafeParseResult<Teams, SDKValidationError> {
+): SafeParseResult<GetTeamsTeams, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Teams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Teams' from JSON`,
+    (x) => GetTeamsTeams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamsTeams' from JSON`,
   );
 }
 

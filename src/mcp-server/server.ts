@@ -6,6 +6,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { VercelCore } from "../core.js";
 import { SDKOptions } from "../lib/config.js";
 import type { ConsoleLogger } from "./console-logger.js";
+import { createRegisterPrompt } from "./prompts.js";
 import {
   createRegisterResource,
   createRegisterResourceTemplate,
@@ -28,7 +29,6 @@ import { tool$aliasesDeleteAlias } from "./tools/aliasesDeleteAlias.js";
 import { tool$aliasesGetAlias } from "./tools/aliasesGetAlias.js";
 import { tool$aliasesListAliases } from "./tools/aliasesListAliases.js";
 import { tool$aliasesListDeploymentAliases } from "./tools/aliasesListDeploymentAliases.js";
-import { tool$apiExperimentationGetV1ExperimentationItems } from "./tools/apiExperimentationGetV1ExperimentationItems.js";
 import { tool$artifactsArtifactExists } from "./tools/artifactsArtifactExists.js";
 import { tool$artifactsArtifactQuery } from "./tools/artifactsArtifactQuery.js";
 import { tool$artifactsDownloadArtifact } from "./tools/artifactsDownloadArtifact.js";
@@ -116,6 +116,7 @@ import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInf
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
+import { tool$marketplaceQueryExperimentationItems } from "./tools/marketplaceQueryExperimentationItems.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
 import { tool$marketplaceSubmitPrepaymentBalances } from "./tools/marketplaceSubmitPrepaymentBalances.js";
@@ -186,7 +187,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.5.0",
+    version: "1.6.0",
   });
 
   const client = new VercelCore({
@@ -212,7 +213,8 @@ export function createMCPServer(deps: {
     client,
     scopes,
   );
-  const register = { tool, resource, resourceTemplate };
+  const prompt = createRegisterPrompt(deps.logger, server, client, scopes);
+  const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
   tool(tool$accessGroupsReadAccessGroup);
@@ -326,6 +328,7 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceUpdateResourceSecretsById);
   tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
+  tool(tool$marketplaceQueryExperimentationItems);
   tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
   tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);
@@ -336,7 +339,6 @@ export function createMCPServer(deps: {
   tool(tool$authenticationCreateAuthToken);
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
-  tool(tool$apiExperimentationGetV1ExperimentationItems);
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);

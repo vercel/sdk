@@ -19,7 +19,7 @@ import {
 } from "./authuserlimited.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type User = AuthUserLimited | AuthUser;
+export type GetAuthUserUser = AuthUserLimited | AuthUser;
 
 /**
  * Successful response.
@@ -29,40 +29,50 @@ export type GetAuthUserResponseBody = {
 };
 
 /** @internal */
-export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
-  .union([AuthUserLimited$inboundSchema, AuthUser$inboundSchema]);
+export const GetAuthUserUser$inboundSchema: z.ZodType<
+  GetAuthUserUser,
+  z.ZodTypeDef,
+  unknown
+> = z.union([AuthUserLimited$inboundSchema, AuthUser$inboundSchema]);
 
 /** @internal */
-export type User$Outbound = AuthUserLimited$Outbound | AuthUser$Outbound;
+export type GetAuthUserUser$Outbound =
+  | AuthUserLimited$Outbound
+  | AuthUser$Outbound;
 
 /** @internal */
-export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> =
-  z.union([AuthUserLimited$outboundSchema, AuthUser$outboundSchema]);
+export const GetAuthUserUser$outboundSchema: z.ZodType<
+  GetAuthUserUser$Outbound,
+  z.ZodTypeDef,
+  GetAuthUserUser
+> = z.union([AuthUserLimited$outboundSchema, AuthUser$outboundSchema]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace User$ {
-  /** @deprecated use `User$inboundSchema` instead. */
-  export const inboundSchema = User$inboundSchema;
-  /** @deprecated use `User$outboundSchema` instead. */
-  export const outboundSchema = User$outboundSchema;
-  /** @deprecated use `User$Outbound` instead. */
-  export type Outbound = User$Outbound;
+export namespace GetAuthUserUser$ {
+  /** @deprecated use `GetAuthUserUser$inboundSchema` instead. */
+  export const inboundSchema = GetAuthUserUser$inboundSchema;
+  /** @deprecated use `GetAuthUserUser$outboundSchema` instead. */
+  export const outboundSchema = GetAuthUserUser$outboundSchema;
+  /** @deprecated use `GetAuthUserUser$Outbound` instead. */
+  export type Outbound = GetAuthUserUser$Outbound;
 }
 
-export function userToJSON(user: User): string {
-  return JSON.stringify(User$outboundSchema.parse(user));
+export function getAuthUserUserToJSON(
+  getAuthUserUser: GetAuthUserUser,
+): string {
+  return JSON.stringify(GetAuthUserUser$outboundSchema.parse(getAuthUserUser));
 }
 
-export function userFromJSON(
+export function getAuthUserUserFromJSON(
   jsonString: string,
-): SafeParseResult<User, SDKValidationError> {
+): SafeParseResult<GetAuthUserUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => User$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'User' from JSON`,
+    (x) => GetAuthUserUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAuthUserUser' from JSON`,
   );
 }
 

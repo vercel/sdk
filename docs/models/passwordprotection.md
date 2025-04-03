@@ -1,20 +1,20 @@
 # PasswordProtection
 
-Allows to protect project deployments with a password
 
-## Example Usage
+## Supported Types
+
+### `models.PasswordProtection1`
 
 ```typescript
-import { PasswordProtection } from "@vercel/sdk/models/updateprojectop.js";
-
-let value: PasswordProtection = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
+const value: models.PasswordProtection1 = {
+  deploymentType: "all",
 };
 ```
 
-## Fields
+### `models.PasswordProtection2`
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `deploymentType`                                                              | [models.DeploymentType](../models/deploymenttype.md)                          | :heavy_check_mark:                                                            | Specify if the password will apply to every Deployment Target or just Preview |
-| `password`                                                                    | *string*                                                                      | :heavy_minus_sign:                                                            | The password that will be used to protect Project Deployments                 |
+```typescript
+const value: models.PasswordProtection2 =
+  "prod_deployment_urls_and_all_previews";
+```
+

@@ -273,6 +273,64 @@ func (e *CreateConfigurableLogDrainEnvironments) UnmarshalJSON(data []byte) erro
 	}
 }
 
+type CreateConfigurableLogDrainCreatedFrom string
+
+const (
+	CreateConfigurableLogDrainCreatedFromSelfServed  CreateConfigurableLogDrainCreatedFrom = "self-served"
+	CreateConfigurableLogDrainCreatedFromIntegration CreateConfigurableLogDrainCreatedFrom = "integration"
+)
+
+func (e CreateConfigurableLogDrainCreatedFrom) ToPointer() *CreateConfigurableLogDrainCreatedFrom {
+	return &e
+}
+func (e *CreateConfigurableLogDrainCreatedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "self-served":
+		fallthrough
+	case "integration":
+		*e = CreateConfigurableLogDrainCreatedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateConfigurableLogDrainCreatedFrom: %v", v)
+	}
+}
+
+type CreateConfigurableLogDrainDeliveryFormat string
+
+const (
+	CreateConfigurableLogDrainDeliveryFormatJSON     CreateConfigurableLogDrainDeliveryFormat = "json"
+	CreateConfigurableLogDrainDeliveryFormatNdjson   CreateConfigurableLogDrainDeliveryFormat = "ndjson"
+	CreateConfigurableLogDrainDeliveryFormatSyslog   CreateConfigurableLogDrainDeliveryFormat = "syslog"
+	CreateConfigurableLogDrainDeliveryFormatProtobuf CreateConfigurableLogDrainDeliveryFormat = "protobuf"
+)
+
+func (e CreateConfigurableLogDrainDeliveryFormat) ToPointer() *CreateConfigurableLogDrainDeliveryFormat {
+	return &e
+}
+func (e *CreateConfigurableLogDrainDeliveryFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		fallthrough
+	case "ndjson":
+		fallthrough
+	case "syslog":
+		fallthrough
+	case "protobuf":
+		*e = CreateConfigurableLogDrainDeliveryFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateConfigurableLogDrainDeliveryFormat: %v", v)
+	}
+}
+
 type CreateConfigurableLogDrainStatus string
 
 const (
@@ -334,61 +392,6 @@ func (e *CreateConfigurableLogDrainDisabledReason) UnmarshalJSON(data []byte) er
 	}
 }
 
-type CreateConfigurableLogDrainCreatedFrom string
-
-const (
-	CreateConfigurableLogDrainCreatedFromSelfServed  CreateConfigurableLogDrainCreatedFrom = "self-served"
-	CreateConfigurableLogDrainCreatedFromIntegration CreateConfigurableLogDrainCreatedFrom = "integration"
-)
-
-func (e CreateConfigurableLogDrainCreatedFrom) ToPointer() *CreateConfigurableLogDrainCreatedFrom {
-	return &e
-}
-func (e *CreateConfigurableLogDrainCreatedFrom) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = CreateConfigurableLogDrainCreatedFrom(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateConfigurableLogDrainCreatedFrom: %v", v)
-	}
-}
-
-type CreateConfigurableLogDrainDeliveryFormat string
-
-const (
-	CreateConfigurableLogDrainDeliveryFormatJSON   CreateConfigurableLogDrainDeliveryFormat = "json"
-	CreateConfigurableLogDrainDeliveryFormatNdjson CreateConfigurableLogDrainDeliveryFormat = "ndjson"
-	CreateConfigurableLogDrainDeliveryFormatSyslog CreateConfigurableLogDrainDeliveryFormat = "syslog"
-)
-
-func (e CreateConfigurableLogDrainDeliveryFormat) ToPointer() *CreateConfigurableLogDrainDeliveryFormat {
-	return &e
-}
-func (e *CreateConfigurableLogDrainDeliveryFormat) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "json":
-		fallthrough
-	case "ndjson":
-		fallthrough
-	case "syslog":
-		*e = CreateConfigurableLogDrainDeliveryFormat(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateConfigurableLogDrainDeliveryFormat: %v", v)
-	}
-}
-
 type CreateConfigurableLogDrainResponseBody struct {
 	// The secret to validate the log-drain payload
 	Secret              *string                                   `json:"secret,omitempty"`
@@ -396,9 +399,6 @@ type CreateConfigurableLogDrainResponseBody struct {
 	ConfigurationID     *string                                   `json:"configurationId,omitempty"`
 	Sources             []CreateConfigurableLogDrainSources       `json:"sources,omitempty"`
 	Environments        []CreateConfigurableLogDrainEnvironments  `json:"environments"`
-	Status              *CreateConfigurableLogDrainStatus         `json:"status,omitempty"`
-	DisabledAt          *float64                                  `json:"disabledAt,omitempty"`
-	DisabledReason      *CreateConfigurableLogDrainDisabledReason `json:"disabledReason,omitempty"`
 	DisabledBy          *string                                   `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp *float64                                  `json:"firstErrorTimestamp,omitempty"`
 	SamplingRate        *float64                                  `json:"samplingRate,omitempty"`
@@ -415,6 +415,9 @@ type CreateConfigurableLogDrainResponseBody struct {
 	OwnerID             string                                    `json:"ownerId"`
 	CreatedFrom         *CreateConfigurableLogDrainCreatedFrom    `json:"createdFrom,omitempty"`
 	DeliveryFormat      CreateConfigurableLogDrainDeliveryFormat  `json:"deliveryFormat"`
+	Status              *CreateConfigurableLogDrainStatus         `json:"status,omitempty"`
+	DisabledAt          *float64                                  `json:"disabledAt,omitempty"`
+	DisabledReason      *CreateConfigurableLogDrainDisabledReason `json:"disabledReason,omitempty"`
 }
 
 func (o *CreateConfigurableLogDrainResponseBody) GetSecret() *string {
@@ -450,27 +453,6 @@ func (o *CreateConfigurableLogDrainResponseBody) GetEnvironments() []CreateConfi
 		return []CreateConfigurableLogDrainEnvironments{}
 	}
 	return o.Environments
-}
-
-func (o *CreateConfigurableLogDrainResponseBody) GetStatus() *CreateConfigurableLogDrainStatus {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *CreateConfigurableLogDrainResponseBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *CreateConfigurableLogDrainResponseBody) GetDisabledReason() *CreateConfigurableLogDrainDisabledReason {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
 }
 
 func (o *CreateConfigurableLogDrainResponseBody) GetDisabledBy() *string {
@@ -583,6 +565,27 @@ func (o *CreateConfigurableLogDrainResponseBody) GetDeliveryFormat() CreateConfi
 		return CreateConfigurableLogDrainDeliveryFormat("")
 	}
 	return o.DeliveryFormat
+}
+
+func (o *CreateConfigurableLogDrainResponseBody) GetStatus() *CreateConfigurableLogDrainStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CreateConfigurableLogDrainResponseBody) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *CreateConfigurableLogDrainResponseBody) GetDisabledReason() *CreateConfigurableLogDrainDisabledReason {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 type CreateConfigurableLogDrainResponse struct {

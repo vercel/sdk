@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 7b3de43085c64c859719ed2a063adc23
+  docChecksum: c73cc3803b680aa5b51f2ffa664b490e
   docVersion: 0.0.1
-  speakeasyVersion: 1.517.3
-  generationVersion: 2.548.6
-  releaseVersion: 1.5.0
-  configChecksum: 2cc178121340ffe4a6d7b02f79d2d84f
+  speakeasyVersion: 1.528.1
+  generationVersion: 2.565.1
+  releaseVersion: 1.6.0
+  configChecksum: 2706b5870f699d47ab8f8375956e2e8c
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -28,7 +28,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.7.0
+    mcpServer: 0.9.0
     mockServer: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
@@ -48,11 +48,13 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
+  - docs/models/abuse.md
   - docs/models/acceptedchallenges.md
   - docs/models/acceptprojecttransferrequestrequest.md
   - docs/models/acceptprojecttransferrequestrequestbody.md
   - docs/models/acceptprojecttransferrequestresponsebody.md
   - docs/models/access.md
+  - docs/models/accessgroup.md
   - docs/models/accessgroups.md
   - docs/models/aclaction.md
   - docs/models/action.md
@@ -83,6 +85,7 @@ generatedFiles:
   - docs/models/addprojectmemberresponsebody.md
   - docs/models/addresses.md
   - docs/models/affectedhostmap.md
+  - docs/models/aicredits.md
   - docs/models/algo.md
   - docs/models/aliasassigned.md
   - docs/models/aliasassignedat.md
@@ -90,16 +93,19 @@ generatedFiles:
   - docs/models/aliases.md
   - docs/models/aliaswarning.md
   - docs/models/analytics.md
+  - docs/models/analyticsusage.md
   - docs/models/anomalies.md
   - docs/models/anomalyalerts.md
   - docs/models/applications.md
   - docs/models/artifactexistsrequest.md
   - docs/models/artifactqueryrequest.md
   - docs/models/artifactqueryrequestbody.md
+  - docs/models/artifacts.md
   - docs/models/assignaliasrequest.md
   - docs/models/assignaliasrequestbody.md
   - docs/models/assignaliasresponsebody.md
   - docs/models/attribution.md
+  - docs/models/authmethod.md
   - docs/models/authtoken.md
   - docs/models/authtokenscopes1origin.md
   - docs/models/authtokenscopesorigin.md
@@ -110,13 +116,26 @@ generatedFiles:
   - docs/models/backup.md
   - docs/models/backups.md
   - docs/models/balances.md
+  - docs/models/bandwidth.md
   - docs/models/billing.md
   - docs/models/billing1.md
   - docs/models/billing2.md
   - docs/models/billingplan.md
   - docs/models/bitbucket.md
+  - docs/models/blobdatatransfer.md
+  - docs/models/blobt.md
+  - docs/models/blobtotaladvancedrequests.md
+  - docs/models/blobtotalavgsizeinbytes.md
+  - docs/models/blobtotalgetresponseobjectsizeinbytes.md
+  - docs/models/blobtotalsimplerequests.md
   - docs/models/blockedduetooveragetype.md
+  - docs/models/blockhistory.md
+  - docs/models/blockreason.md
+  - docs/models/blocktype.md
   - docs/models/branchmatcher.md
+  - docs/models/browser.md
+  - docs/models/budget.md
+  - docs/models/budgetitem.md
   - docs/models/build.md
   - docs/models/buildentitlements.md
   - docs/models/builds.md
@@ -228,12 +247,16 @@ generatedFiles:
   - docs/models/checks.md
   - docs/models/checksconclusion.md
   - docs/models/checksstate.md
+  - docs/models/city.md
   - docs/models/cls.md
   - docs/models/computedprojectrole.md
   - docs/models/conclusion.md
   - docs/models/conditiongroup.md
   - docs/models/conditions.md
   - docs/models/config.md
+  - docs/models/configchanges.md
+  - docs/models/configuration.md
+  - docs/models/configurations.md
   - docs/models/configuredby.md
   - docs/models/connection.md
   - docs/models/contact.md
@@ -255,6 +278,7 @@ generatedFiles:
   - docs/models/contenthint8.md
   - docs/models/contenthint9.md
   - docs/models/contenthinttype.md
+  - docs/models/country.md
   - docs/models/createaccessgroupprojectaccessgroupsrole.md
   - docs/models/createaccessgroupprojectrequest.md
   - docs/models/createaccessgroupprojectrequestbody.md
@@ -311,6 +335,9 @@ generatedFiles:
   - docs/models/createdeploymentgitsource.md
   - docs/models/createdeploymentgitsource1.md
   - docs/models/createdeploymentgitsource2.md
+  - docs/models/createdeploymentgitsource3.md
+  - docs/models/createdeploymentgitsource4.md
+  - docs/models/createdeploymentgitsource5.md
   - docs/models/createdeploymentgitsource6.md
   - docs/models/createdeploymentgitsource7.md
   - docs/models/createdeploymentgitsource8.md
@@ -334,6 +361,8 @@ generatedFiles:
   - docs/models/createdeploymentmicrofrontends2.md
   - docs/models/createdeploymentmissingtype.md
   - docs/models/createdeploymentoutput.md
+  - docs/models/createdeploymentplan.md
+  - docs/models/createdeploymentproject.md
   - docs/models/createdeploymentprojectsettings.md
   - docs/models/createdeploymentreadystate.md
   - docs/models/createdeploymentrequest.md
@@ -344,6 +373,7 @@ generatedFiles:
   - docs/models/createdeploymentspeedinsights.md
   - docs/models/createdeploymentstatus.md
   - docs/models/createdeploymenttarget.md
+  - docs/models/createdeploymentteam.md
   - docs/models/createdeploymenttype.md
   - docs/models/createdeploymentwebanalytics.md
   - docs/models/createdfrom.md
@@ -395,6 +425,11 @@ generatedFiles:
   - docs/models/createprojectcontenthint.md
   - docs/models/createprojectcontenthint1.md
   - docs/models/createprojectcontenthint10.md
+  - docs/models/createprojectcontenthint11.md
+  - docs/models/createprojectcontenthint12.md
+  - docs/models/createprojectcontenthint13.md
+  - docs/models/createprojectcontenthint14.md
+  - docs/models/createprojectcontenthint15.md
   - docs/models/createprojectcontenthint2.md
   - docs/models/createprojectcontenthint3.md
   - docs/models/createprojectcontenthint4.md
@@ -575,6 +610,7 @@ generatedFiles:
   - docs/models/createprojectprojectsresponse200applicationjsontype.md
   - docs/models/createprojectprojectsresponse200type.md
   - docs/models/createprojectprojectsresponsetype.md
+  - docs/models/createprojectprojectstarget.md
   - docs/models/createprojectprojectstype.md
   - docs/models/createprojectprojectsvalue.md
   - docs/models/createprojectprotectionbypass.md
@@ -598,6 +634,7 @@ generatedFiles:
   - docs/models/createprojecttargets.md
   - docs/models/createprojecttier.md
   - docs/models/createprojecttransferrequestrequest.md
+  - docs/models/createprojecttransferrequestrequestbody.md
   - docs/models/createprojecttransferrequestresponsebody.md
   - docs/models/createprojecttrustedips.md
   - docs/models/createprojecttrustedips1.md
@@ -631,6 +668,10 @@ generatedFiles:
   - docs/models/createwebhookrequestbody.md
   - docs/models/createwebhookresponsebody.md
   - docs/models/creator.md
+  - docs/models/credentials.md
+  - docs/models/credentials1.md
+  - docs/models/credentials2.md
+  - docs/models/credentialstype.md
   - docs/models/crons.md
   - docs/models/crs.md
   - docs/models/customenvironment.md
@@ -638,6 +679,8 @@ generatedFiles:
   - docs/models/customenvironment2.md
   - docs/models/customenvironments.md
   - docs/models/datacache.md
+  - docs/models/datacacheread.md
+  - docs/models/datacachewrite.md
   - docs/models/ddosalerts.md
   - docs/models/decrypt.md
   - docs/models/defaultresourceconfig.md
@@ -656,6 +699,7 @@ generatedFiles:
   - docs/models/deletedeploymentstate.md
   - docs/models/deletedomainrequest.md
   - docs/models/deletedomainresponsebody.md
+  - docs/models/deleteduser.md
   - docs/models/deleteedgeconfigrequest.md
   - docs/models/deleteedgeconfigschemarequest.md
   - docs/models/deleteedgeconfigtokensrequest.md
@@ -664,12 +708,14 @@ generatedFiles:
   - docs/models/deleteprojectrequest.md
   - docs/models/deleteteaminvitecoderequest.md
   - docs/models/deleteteaminvitecoderesponsebody.md
+  - docs/models/deleteteamreasons.md
   - docs/models/deleteteamrequest.md
   - docs/models/deleteteamrequestbody.md
   - docs/models/deleteteamresponsebody.md
   - docs/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/deletewebhookrequest.md
   - docs/models/deliveryformat.md
+  - docs/models/deployhook.md
   - docs/models/deployhooks.md
   - docs/models/deployment.md
   - docs/models/deploymentexpiration.md
@@ -686,7 +732,13 @@ generatedFiles:
   - docs/models/downloadartifactrequest.md
   - docs/models/edgeconfigitem.md
   - docs/models/edgeconfigitemvalue.md
+  - docs/models/edgeconfigread.md
   - docs/models/edgeconfigtoken.md
+  - docs/models/edgeconfigwrite.md
+  - docs/models/edgefunctionexecutionunits.md
+  - docs/models/edgemiddlewareinvocations.md
+  - docs/models/edgerequest.md
+  - docs/models/edgerequestadditionalcpuduration.md
   - docs/models/editprojectenvcontenthint1.md
   - docs/models/editprojectenvcontenthint10.md
   - docs/models/editprojectenvcontenthint11.md
@@ -731,9 +783,24 @@ generatedFiles:
   - docs/models/editprojectenvtarget2.md
   - docs/models/editprojectenvtype.md
   - docs/models/eight.md
+  - docs/models/eighteen.md
+  - docs/models/eighty.md
+  - docs/models/eightyeight.md
+  - docs/models/eightyfive.md
+  - docs/models/eightyfour.md
+  - docs/models/eightynine.md
+  - docs/models/eightyone.md
+  - docs/models/eightyseven.md
+  - docs/models/eightysix.md
+  - docs/models/eightythree.md
+  - docs/models/eightytwo.md
+  - docs/models/elasticconcurrencybuildslots.md
   - docs/models/eleven.md
   - docs/models/emailinvitecodes.md
+  - docs/models/emailnotifications.md
+  - docs/models/enablepreviewfeedback.md
   - docs/models/encoding.md
+  - docs/models/entities.md
   - docs/models/entitlements.md
   - docs/models/env.md
   - docs/models/environments.md
@@ -749,6 +816,8 @@ generatedFiles:
   - docs/models/exchangessotokenrequestbody.md
   - docs/models/exchangessotokenresponsebody.md
   - docs/models/failed.md
+  - docs/models/fastdatatransfer.md
+  - docs/models/fastorigintransfer.md
   - docs/models/favoriteprojectsandspaces.md
   - docs/models/favoriteprojectsandspaces1.md
   - docs/models/favoriteprojectsandspaces2.md
@@ -756,6 +825,16 @@ generatedFiles:
   - docs/models/fcp.md
   - docs/models/featureblocks.md
   - docs/models/fifteen.md
+  - docs/models/fifty.md
+  - docs/models/fiftyeight.md
+  - docs/models/fiftyfive.md
+  - docs/models/fiftyfour.md
+  - docs/models/fiftynine.md
+  - docs/models/fiftyone.md
+  - docs/models/fiftyseven.md
+  - docs/models/fiftysix.md
+  - docs/models/fiftythree.md
+  - docs/models/fiftytwo.md
   - docs/models/files.md
   - docs/models/filetree.md
   - docs/models/filterprojectenvscontenthint1.md
@@ -882,15 +961,28 @@ generatedFiles:
   - docs/models/flagsoptions.md
   - docs/models/forcenew.md
   - docs/models/formats.md
+  - docs/models/forty.md
+  - docs/models/fortyeight.md
+  - docs/models/fortyfive.md
+  - docs/models/fortyfour.md
+  - docs/models/fortynine.md
+  - docs/models/fortyone.md
+  - docs/models/fortyseven.md
+  - docs/models/fortysix.md
+  - docs/models/fortythree.md
+  - docs/models/fortytwo.md
   - docs/models/four.md
   - docs/models/fourteen.md
   - docs/models/framework.md
   - docs/models/functiondefaultmemorytype.md
+  - docs/models/functionduration.md
+  - docs/models/functioninvocation.md
   - docs/models/functionmemorytype.md
   - docs/models/functions.md
   - docs/models/functiontype.md
   - docs/models/gen.md
   - docs/models/generate.md
+  - docs/models/geolocation.md
   - docs/models/getaccountinforequest.md
   - docs/models/getaccountinforesponsebody.md
   - docs/models/getactiveattackstatusrequest.md
@@ -898,6 +990,7 @@ generatedFiles:
   - docs/models/getactiveattackstatusresponsebody1.md
   - docs/models/getactiveattackstatusresponsebody2.md
   - docs/models/getaliascreator.md
+  - docs/models/getaliasdeployment.md
   - docs/models/getaliasprotectionbypass.md
   - docs/models/getaliasprotectionbypassaliasesresponsescope.md
   - docs/models/getaliasprotectionbypassaliasesscope.md
@@ -931,6 +1024,7 @@ generatedFiles:
   - docs/models/getauthtokenrequest.md
   - docs/models/getauthtokenresponsebody.md
   - docs/models/getauthuserresponsebody.md
+  - docs/models/getauthuseruser.md
   - docs/models/getbypassiprequest.md
   - docs/models/getbypassipresponsebody.md
   - docs/models/getbypassipresponsebody1.md
@@ -1159,6 +1253,7 @@ generatedFiles:
   - docs/models/getfirewallconfigredirect.md
   - docs/models/getfirewallconfigrequest.md
   - docs/models/getfirewallconfigresponsebody.md
+  - docs/models/getfirewallconfigrules.md
   - docs/models/getfirewallconfigsecurityaction.md
   - docs/models/getfirewallconfigsecurityresponse200action.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonaction.md
@@ -1491,10 +1586,7 @@ generatedFiles:
   - docs/models/getteamrequest.md
   - docs/models/getteamsrequest.md
   - docs/models/getteamsresponsebody.md
-  - docs/models/getv1experimentationitemscategory.md
-  - docs/models/getv1experimentationitemsitems.md
-  - docs/models/getv1experimentationitemsrequest.md
-  - docs/models/getv1experimentationitemsresponsebody.md
+  - docs/models/getteamsteams.md
   - docs/models/getv9projectsidornamecustomenvironmentsenvironments.md
   - docs/models/getv9projectsidornamecustomenvironmentsrequest.md
   - docs/models/getv9projectsidornamecustomenvironmentsresponsebody.md
@@ -1539,6 +1631,8 @@ generatedFiles:
   - docs/models/gitsourcerepoid.md
   - docs/models/gitsourcetype.md
   - docs/models/gituserid.md
+  - docs/models/granttype.md
+  - docs/models/group.md
   - docs/models/handle.md
   - docs/models/has.md
   - docs/models/has1.md
@@ -1546,8 +1640,12 @@ generatedFiles:
   - docs/models/hastype.md
   - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
   - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
+  - docs/models/history.md
   - docs/models/https.md
   - docs/models/id.md
+  - docs/models/imageoptimizationcacheread.md
+  - docs/models/imageoptimizationcachewrite.md
+  - docs/models/imageoptimizationtransformation.md
   - docs/models/images.md
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
@@ -1563,6 +1661,7 @@ generatedFiles:
   - docs/models/integration.md
   - docs/models/integrations.md
   - docs/models/internalcontenthint.md
+  - docs/models/inviteduser.md
   - docs/models/inviteusertoteamprojects.md
   - docs/models/inviteusertoteamrequest.md
   - docs/models/inviteusertoteamrequestbody.md
@@ -1582,6 +1681,7 @@ generatedFiles:
   - docs/models/issuermode.md
   - docs/models/items.md
   - docs/models/java.md
+  - docs/models/job.md
   - docs/models/jobstatus.md
   - docs/models/joinedfrom.md
   - docs/models/jointeamrequest.md
@@ -1649,12 +1749,14 @@ generatedFiles:
   - docs/models/listusereventsresponsebody.md
   - docs/models/locale.md
   - docs/models/localpatterns.md
+  - docs/models/logdrainsvolume.md
   - docs/models/ma.md
   - docs/models/managedrules.md
   - docs/models/members.md
   - docs/models/membership.md
   - docs/models/metadata.md
   - docs/models/metrics.md
+  - docs/models/mfaconfiguration.md
   - docs/models/microfrontends.md
   - docs/models/microfrontends1.md
   - docs/models/microfrontends2.md
@@ -1664,14 +1766,104 @@ generatedFiles:
   - docs/models/missing2.md
   - docs/models/missingtype.md
   - docs/models/mitigate.md
+  - docs/models/monitoring.md
+  - docs/models/monitoringmetric.md
+  - docs/models/mostspecificsubdivision.md
+  - docs/models/name.md
+  - docs/models/name2.md
+  - docs/models/names.md
   - docs/models/namespaceid.md
+  - docs/models/newconnectconfigurations.md
+  - docs/models/newenvvar.md
+  - docs/models/newowner.md
+  - docs/models/newprojects.md
+  - docs/models/newtarget.md
+  - docs/models/newteam.md
+  - docs/models/next.md
+  - docs/models/nextrule.md
   - docs/models/nine.md
+  - docs/models/nineteen.md
+  - docs/models/ninety.md
+  - docs/models/ninetyeight.md
+  - docs/models/ninetyfive.md
+  - docs/models/ninetyfour.md
+  - docs/models/ninetynine.md
+  - docs/models/ninetyone.md
+  - docs/models/ninetyseven.md
+  - docs/models/ninetysix.md
+  - docs/models/ninetythree.md
+  - docs/models/ninetytwo.md
   - docs/models/nodeversion.md
   - docs/models/northstarmigration.md
   - docs/models/notification.md
+  - docs/models/observabilityevent.md
+  - docs/models/observabilityplus.md
   - docs/models/oidctokenclaims.md
   - docs/models/oidctokenconfig.md
+  - docs/models/oldconnectconfigurations.md
+  - docs/models/oldenvvar.md
+  - docs/models/oldoptionsallowlist.md
+  - docs/models/oldpasswordprotection.md
+  - docs/models/oldpasswordprotection1.md
+  - docs/models/oldpasswordprotection2.md
+  - docs/models/oldpasswordprotectiondeploymenttype.md
+  - docs/models/oldprojects.md
+  - docs/models/oldssoprotection.md
+  - docs/models/oldssoprotection1.md
+  - docs/models/oldssoprotection2.md
+  - docs/models/oldssoprotectiondeploymenttype.md
+  - docs/models/oldtarget.md
+  - docs/models/oldteam.md
+  - docs/models/oldtrustedips.md
   - docs/models/one.md
+  - docs/models/onehundred.md
+  - docs/models/onehundredandeight.md
+  - docs/models/onehundredandeighteen.md
+  - docs/models/onehundredandeleven.md
+  - docs/models/onehundredandfifteen.md
+  - docs/models/onehundredandfive.md
+  - docs/models/onehundredandforty.md
+  - docs/models/onehundredandfortyfive.md
+  - docs/models/onehundredandfortyfour.md
+  - docs/models/onehundredandfortyone.md
+  - docs/models/onehundredandfortyseven.md
+  - docs/models/onehundredandfortysix.md
+  - docs/models/onehundredandfortythree.md
+  - docs/models/onehundredandfortytwo.md
+  - docs/models/onehundredandfour.md
+  - docs/models/onehundredandfourteen.md
+  - docs/models/onehundredandnine.md
+  - docs/models/onehundredandnineteen.md
+  - docs/models/onehundredandone.md
+  - docs/models/onehundredandseven.md
+  - docs/models/onehundredandseventeen.md
+  - docs/models/onehundredandsix.md
+  - docs/models/onehundredandsixteen.md
+  - docs/models/onehundredandten.md
+  - docs/models/onehundredandthirteen.md
+  - docs/models/onehundredandthirty.md
+  - docs/models/onehundredandthirtyeight.md
+  - docs/models/onehundredandthirtyfive.md
+  - docs/models/onehundredandthirtyfour.md
+  - docs/models/onehundredandthirtynine.md
+  - docs/models/onehundredandthirtyone.md
+  - docs/models/onehundredandthirtyseven.md
+  - docs/models/onehundredandthirtysix.md
+  - docs/models/onehundredandthirtythree.md
+  - docs/models/onehundredandthirtytwo.md
+  - docs/models/onehundredandthree.md
+  - docs/models/onehundredandtwelve.md
+  - docs/models/onehundredandtwenty.md
+  - docs/models/onehundredandtwentyeight.md
+  - docs/models/onehundredandtwentyfive.md
+  - docs/models/onehundredandtwentyfour.md
+  - docs/models/onehundredandtwentynine.md
+  - docs/models/onehundredandtwentyone.md
+  - docs/models/onehundredandtwentyseven.md
+  - docs/models/onehundredandtwentysix.md
+  - docs/models/onehundredandtwentythree.md
+  - docs/models/onehundredandtwentytwo.md
+  - docs/models/onehundredandtwo.md
   - docs/models/onetarget.md
   - docs/models/onetype.md
   - docs/models/op.md
@@ -1679,14 +1871,20 @@ generatedFiles:
   - docs/models/optionsallowlist.md
   - docs/models/order.md
   - docs/models/origin.md
+  - docs/models/os.md
   - docs/models/outcomes.md
   - docs/models/outcomes1.md
   - docs/models/output.md
+  - docs/models/overagereason.md
+  - docs/models/overageusagealerts.md
   - docs/models/owner.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
   - docs/models/paidfeatures.md
   - docs/models/passwordprotection.md
+  - docs/models/passwordprotection1.md
+  - docs/models/passwordprotection2.md
+  - docs/models/passwordprotectiondeploymenttype.md
   - docs/models/patchdomainrequest.md
   - docs/models/patchdomainrequestbody.md
   - docs/models/patchdomainrequestbody1.md
@@ -1706,21 +1904,98 @@ generatedFiles:
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequestbody.md
   - docs/models/paths.md
+  - docs/models/payload.md
+  - docs/models/payloadaccessgroup.md
+  - docs/models/payloadaction.md
+  - docs/models/payloadactivedashboardviews.md
+  - docs/models/payloadbilling.md
+  - docs/models/payloadblockedduetooveragetype.md
+  - docs/models/payloadblockreason.md
+  - docs/models/payloadblocktype.md
+  - docs/models/payloadbudget.md
+  - docs/models/payloadbuildentitlements.md
+  - docs/models/payloadconfiguration.md
+  - docs/models/payloaddatacache.md
+  - docs/models/payloaddeployment.md
+  - docs/models/payloaddismissals.md
+  - docs/models/payloaddismissedtoasts.md
+  - docs/models/payloadfavoriteprojectsandspaces.md
+  - docs/models/payloadfavoritesviewpreference.md
+  - docs/models/payloadfeatureblocks.md
+  - docs/models/payloadgitnamespaceid.md
+  - docs/models/payloadgituserid.md
+  - docs/models/payloadgroup.md
+  - docs/models/payloadimageoptimizationtransformation.md
+  - docs/models/payloadimportflowgitnamespace.md
+  - docs/models/payloadimportflowgitnamespaceid.md
+  - docs/models/payloadimportflowgitprovider.md
+  - docs/models/payloadjoinedfrom.md
+  - docs/models/payloadmicrofrontends.md
+  - docs/models/payloadname.md
+  - docs/models/payloadnames.md
+  - docs/models/payloadnewteam.md
+  - docs/models/payloadnorthstarmigration.md
+  - docs/models/payloadoldteam.md
+  - docs/models/payloadorigin.md
+  - docs/models/payloadoveragereason.md
+  - docs/models/payloadpaths.md
+  - docs/models/payloadpeering.md
+  - docs/models/payloadpreferredscopesandgitnamespaces.md
+  - docs/models/payloadprev.md
+  - docs/models/payloadpreviousrule.md
+  - docs/models/payloadpricingplan.md
+  - docs/models/payloadproject.md
+  - docs/models/payloadprojectmembership.md
+  - docs/models/payloadreason.md
+  - docs/models/payloadreasons.md
+  - docs/models/payloadrecentsviewpreference.md
+  - docs/models/payloadremotecaching.md
+  - docs/models/payloadresourceconfig.md
+  - docs/models/payloadrole.md
+  - docs/models/payloadsoftblock.md
+  - docs/models/payloadsourceimages.md
+  - docs/models/payloadtarget.md
+  - docs/models/payloadteam.md
+  - docs/models/payloadteampermissions.md
+  - docs/models/payloadteamroles.md
+  - docs/models/payloadtype.md
+  - docs/models/payloaduser.md
+  - docs/models/payloadversion.md
+  - docs/models/payloadviewpreference.md
+  - docs/models/payloadwebanalytics.md
+  - docs/models/peering.md
   - docs/models/period.md
   - docs/models/permissions.md
   - docs/models/php.md
   - docs/models/plan.md
+  - docs/models/postgres.md
+  - docs/models/postgrescomputetime.md
+  - docs/models/postgresdatabase.md
+  - docs/models/postgresdatastorage.md
+  - docs/models/postgresdatatransfer.md
+  - docs/models/postgreswrittendata.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitems.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequest.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequestbody.md
   - docs/models/preferredscopesandgitnamespaces.md
+  - docs/models/prev.md
+  - docs/models/preventautoblocking.md
+  - docs/models/previous.md
+  - docs/models/previousrole.md
+  - docs/models/previousrule.md
+  - docs/models/prevprojectanalytics.md
+  - docs/models/prevprojectwebanalytics.md
+  - docs/models/pricingplan.md
   - docs/models/production.md
   - docs/models/project.md
+  - docs/models/projectanalytics.md
   - docs/models/projectid.md
+  - docs/models/projectmembership.md
   - docs/models/projects.md
   - docs/models/projectselection.md
   - docs/models/projectsettings.md
   - docs/models/projectsmetadata.md
+  - docs/models/projectwebanalytics.md
   - docs/models/protectionbypass.md
   - docs/models/protectionbypass1.md
   - docs/models/protectionbypass2.md
@@ -1738,6 +2013,10 @@ generatedFiles:
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequestbody.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
+  - docs/models/queryexperimentationitemscategory.md
+  - docs/models/queryexperimentationitemsitems.md
+  - docs/models/queryexperimentationitemsrequest.md
+  - docs/models/queryexperimentationitemsresponsebody.md
   - docs/models/queryparamprovider.md
   - docs/models/queryparamrole.md
   - docs/models/queryparamtarget.md
@@ -1766,6 +2045,7 @@ generatedFiles:
   - docs/models/redirect1.md
   - docs/models/redirects.md
   - docs/models/redirectstatuscode.md
+  - docs/models/redis.md
   - docs/models/remotecaching.md
   - docs/models/remotepatterns.md
   - docs/models/removebypassiprequest.md
@@ -1778,6 +2058,8 @@ generatedFiles:
   - docs/models/removecustomenvironmentrequest.md
   - docs/models/removecustomenvironmentrequestbody.md
   - docs/models/removecustomenvironmentresponsebody.md
+  - docs/models/removedmembership.md
+  - docs/models/removedusers.md
   - docs/models/removeprojectdomainrequest.md
   - docs/models/removeprojectdomainresponsebody.md
   - docs/models/removeprojectenvcontenthint1.md
@@ -1916,6 +2198,8 @@ generatedFiles:
   - docs/models/requestbody.md
   - docs/models/requestbody1.md
   - docs/models/requestbody10.md
+  - docs/models/requestbody11.md
+  - docs/models/requestbody12.md
   - docs/models/requestbody2.md
   - docs/models/requestbody3.md
   - docs/models/requestbody4.md
@@ -1943,6 +2227,7 @@ generatedFiles:
   - docs/models/rerequestcheckrequest.md
   - docs/models/rerequestcheckresponsebody.md
   - docs/models/resourceconfig.md
+  - docs/models/resourcelimits.md
   - docs/models/responsebody.md
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
@@ -2032,9 +2317,12 @@ generatedFiles:
   - docs/models/routesmissing.md
   - docs/models/rules.md
   - docs/models/saml.md
+  - docs/models/scalingrules.md
   - docs/models/schema.md
   - docs/models/scope.md
   - docs/models/scopes.md
+  - docs/models/scopes1.md
+  - docs/models/scopes2.md
   - docs/models/scopesorigin.md
   - docs/models/scopestype.md
   - docs/models/sd.md
@@ -2044,15 +2332,42 @@ generatedFiles:
   - docs/models/searchreporesponsebody2.md
   - docs/models/searchreporesponsebodyid.md
   - docs/models/searchreporesponsebodyprovider.md
+  - docs/models/secondaryemails.md
   - docs/models/secrets.md
   - docs/models/security.md
+  - docs/models/serverlessfunctionexecution.md
   - docs/models/servicetype.md
   - docs/models/seven.md
+  - docs/models/seventeen.md
+  - docs/models/seventy.md
+  - docs/models/seventyeight.md
+  - docs/models/seventyfive.md
+  - docs/models/seventyfour.md
+  - docs/models/seventynine.md
+  - docs/models/seventyone.md
+  - docs/models/seventyseven.md
+  - docs/models/seventysix.md
+  - docs/models/seventythree.md
+  - docs/models/seventytwo.md
   - docs/models/sf.md
+  - docs/models/siftroute.md
+  - docs/models/siftscores.md
   - docs/models/six.md
+  - docs/models/sixteen.md
+  - docs/models/sixty.md
+  - docs/models/sixtyeight.md
+  - docs/models/sixtyfive.md
+  - docs/models/sixtyfour.md
+  - docs/models/sixtynine.md
+  - docs/models/sixtyone.md
+  - docs/models/sixtyseven.md
+  - docs/models/sixtysix.md
+  - docs/models/sixtythree.md
+  - docs/models/sixtytwo.md
   - docs/models/skipautodetectionconfirmation.md
   - docs/models/softblock.md
   - docs/models/source.md
+  - docs/models/sourceimages.md
   - docs/models/sources.md
   - docs/models/speedinsights.md
   - docs/models/sqli.md
@@ -2060,6 +2375,8 @@ generatedFiles:
   - docs/models/src2.md
   - docs/models/srv.md
   - docs/models/ssoprotection.md
+  - docs/models/ssoprotection1.md
+  - docs/models/ssoprotection2.md
   - docs/models/stages.md
   - docs/models/state.md
   - docs/models/status.md
@@ -2067,6 +2384,12 @@ generatedFiles:
   - docs/models/statusrequest.md
   - docs/models/statusresponsebody.md
   - docs/models/statusstatus.md
+  - docs/models/storageredistotalbandwidthinbytes.md
+  - docs/models/storageredistotalcommands.md
+  - docs/models/storageredistotaldailyavgstorageinbytes.md
+  - docs/models/storageredistotaldatabases.md
+  - docs/models/store.md
+  - docs/models/storetype.md
   - docs/models/strict.md
   - docs/models/submitbillingdatabilling.md
   - docs/models/submitbillingdatarequest.md
@@ -2096,8 +2419,19 @@ generatedFiles:
   - docs/models/ten.md
   - docs/models/test.md
   - docs/models/thirteen.md
+  - docs/models/thirty.md
+  - docs/models/thirtyeight.md
+  - docs/models/thirtyfive.md
+  - docs/models/thirtyfour.md
+  - docs/models/thirtynine.md
+  - docs/models/thirtyone.md
+  - docs/models/thirtyseven.md
+  - docs/models/thirtysix.md
+  - docs/models/thirtythree.md
+  - docs/models/thirtytwo.md
   - docs/models/three.md
   - docs/models/tier.md
+  - docs/models/totp.md
   - docs/models/transfer.md
   - docs/models/transferpolicy.md
   - docs/models/trustedips.md
@@ -2107,6 +2441,16 @@ generatedFiles:
   - docs/models/trustedipsdeploymenttype.md
   - docs/models/trustedipsprotectionmode.md
   - docs/models/twelve.md
+  - docs/models/twenty.md
+  - docs/models/twentyeight.md
+  - docs/models/twentyfive.md
+  - docs/models/twentyfour.md
+  - docs/models/twentynine.md
+  - docs/models/twentyone.md
+  - docs/models/twentyseven.md
+  - docs/models/twentysix.md
+  - docs/models/twentythree.md
+  - docs/models/twentytwo.md
   - docs/models/two.md
   - docs/models/two1.md
   - docs/models/two2.md
@@ -2153,6 +2497,8 @@ generatedFiles:
   - docs/models/updatecustomenvironmentrequestbody.md
   - docs/models/updatecustomenvironmentresponsebody.md
   - docs/models/updatecustomenvironmenttype.md
+  - docs/models/updatediff.md
+  - docs/models/updateduser.md
   - docs/models/updateedgeconfigpurpose.md
   - docs/models/updateedgeconfigpurpose1.md
   - docs/models/updateedgeconfigpurpose2.md
@@ -2171,10 +2517,15 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequest.md
   - docs/models/updatefirewallconfigrequestbody.md
   - docs/models/updatefirewallconfigrequestbody1.md
+  - docs/models/updatefirewallconfigrequestbody10.md
   - docs/models/updatefirewallconfigrequestbody2.md
   - docs/models/updatefirewallconfigrequestbody3.md
   - docs/models/updatefirewallconfigrequestbody4.md
   - docs/models/updatefirewallconfigrequestbody5.md
+  - docs/models/updatefirewallconfigrequestbody6.md
+  - docs/models/updatefirewallconfigrequestbody7.md
+  - docs/models/updatefirewallconfigrequestbody8.md
+  - docs/models/updatefirewallconfigrequestbody9.md
   - docs/models/updatefirewallconfigrequestbodyaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest10action.md
@@ -2207,6 +2558,7 @@ generatedFiles:
   - docs/models/updateintegrationdeploymentactionrequest.md
   - docs/models/updateintegrationdeploymentactionrequestbody.md
   - docs/models/updateintegrationdeploymentactionstatus.md
+  - docs/models/updateinvoiceaction.md
   - docs/models/updateinvoicerequest.md
   - docs/models/updateinvoicerequestbody.md
   - docs/models/updateprojectaction.md
@@ -2261,8 +2613,6 @@ generatedFiles:
   - docs/models/updateprojectdatacachebuilds.md
   - docs/models/updateprojectdatacachechecksconclusion.md
   - docs/models/updateprojectdatacachechecksstate.md
-  - docs/models/updateprojectdatacachecontenthint11.md
-  - docs/models/updateprojectdatacachecontenthint12.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv10type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv11type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv12type.md
@@ -2287,6 +2637,9 @@ generatedFiles:
   - docs/models/updateprojectdatacachelinkprojectstype.md
   - docs/models/updateprojectdatacachelinktype.md
   - docs/models/updateprojectdatacachemanagedrules.md
+  - docs/models/updateprojectdatacachemicrofrontends.md
+  - docs/models/updateprojectdatacachemicrofrontends1.md
+  - docs/models/updateprojectdatacachemicrofrontends2.md
   - docs/models/updateprojectdatacachemitigate.md
   - docs/models/updateprojectdatacachenodeversion.md
   - docs/models/updateprojectdatacacheoidctokenclaims.md
@@ -2326,6 +2679,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachetarget.md
   - docs/models/updateprojectdatacachetarget1.md
   - docs/models/updateprojectdatacachetarget2.md
+  - docs/models/updateprojectdatacachetier.md
   - docs/models/updateprojectdatacachetrustedips.md
   - docs/models/updateprojectdatacachetrustedipsaddresses.md
   - docs/models/updateprojectdatacachetrustedipsdeploymenttype.md
@@ -2398,9 +2752,13 @@ generatedFiles:
   - docs/models/updateprojectprojectsnodeversion.md
   - docs/models/updateprojectprojectsoidctokenclaims.md
   - docs/models/updateprojectprojectsoidctokenconfig.md
+  - docs/models/updateprojectprojectsoptionsallowlist.md
+  - docs/models/updateprojectprojectspasswordprotection.md
+  - docs/models/updateprojectprojectspaths.md
   - docs/models/updateprojectprojectsplan.md
   - docs/models/updateprojectprojectsreadystate.md
   - docs/models/updateprojectprojectsreadysubstate.md
+  - docs/models/updateprojectprojectsrequestdeploymenttype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritytype.md
@@ -2409,6 +2767,8 @@ generatedFiles:
   - docs/models/updateprojectprojectsresponse200type.md
   - docs/models/updateprojectprojectsresponsedeploymenttype.md
   - docs/models/updateprojectprojectsresponsetype.md
+  - docs/models/updateprojectprojectsssoprotection.md
+  - docs/models/updateprojectprojectstrustedips.md
   - docs/models/updateprojectprojectstype.md
   - docs/models/updateprojectprojectsvalue.md
   - docs/models/updateprojectprotectionbypass.md
@@ -2475,8 +2835,81 @@ generatedFiles:
   - docs/models/uploadfileresponsebody1.md
   - docs/models/uploadfileresponsebody2.md
   - docs/models/usage.md
+  - docs/models/usagealerts.md
   - docs/models/user.md
+  - docs/models/useragent.md
   - docs/models/userevent.md
+  - docs/models/usereventcredentialstype.md
+  - docs/models/usereventfavoriteprojectsandspaces1.md
+  - docs/models/usereventfavoriteprojectsandspaces2.md
+  - docs/models/usereventmicrofrontends1.md
+  - docs/models/usereventmicrofrontends2.md
+  - docs/models/usereventpayload108user.md
+  - docs/models/usereventpayload127project.md
+  - docs/models/usereventpayload128project.md
+  - docs/models/usereventpayload129project.md
+  - docs/models/usereventpayload129role.md
+  - docs/models/usereventpayload130project.md
+  - docs/models/usereventpayload130role.md
+  - docs/models/usereventpayload136project.md
+  - docs/models/usereventpayload137prevproject.md
+  - docs/models/usereventpayload137project.md
+  - docs/models/usereventpayload144configuration.md
+  - docs/models/usereventpayload144team.md
+  - docs/models/usereventpayload145configuration.md
+  - docs/models/usereventpayload145team.md
+  - docs/models/usereventpayload146configuration.md
+  - docs/models/usereventpayload146team.md
+  - docs/models/usereventpayload31project.md
+  - docs/models/usereventpayload32configuration.md
+  - docs/models/usereventpayload32team.md
+  - docs/models/usereventpayload36project.md
+  - docs/models/usereventpayload47newteam.md
+  - docs/models/usereventpayload47oldteam.md
+  - docs/models/usereventpayload58oldenvvartype.md
+  - docs/models/usereventpayload58target.md
+  - docs/models/usereventpayload58type.md
+  - docs/models/usereventpayload62action.md
+  - docs/models/usereventpayload62blockreason.md
+  - docs/models/usereventpayload62name.md
+  - docs/models/usereventpayload62newownerblockreason.md
+  - docs/models/usereventpayload62newownerfeatureblocksblobblockreason.md
+  - docs/models/usereventpayload62newownerfeatureblocksblockreason.md
+  - docs/models/usereventpayload62newownerfeatureblockspostgresblockreason.md
+  - docs/models/usereventpayload62newownerfeatureblocksredisblockreason.md
+  - docs/models/usereventpayload62role.md
+  - docs/models/usereventpayload62type.md
+  - docs/models/usereventpayload6accessgroup.md
+  - docs/models/usereventpayload73role.md
+  - docs/models/usereventpayload83project.md
+  - docs/models/usereventpayload83team.md
+  - docs/models/usereventpayload89team.md
+  - docs/models/usereventpayload90team.md
+  - docs/models/usereventpayload96type.md
+  - docs/models/usereventpayload97type.md
+  - docs/models/usereventpayloadaccessgroup.md
+  - docs/models/usereventpayloadaction.md
+  - docs/models/usereventpayloadblockreason.md
+  - docs/models/usereventpayloadconfiguration.md
+  - docs/models/usereventpayloaddatacache.md
+  - docs/models/usereventpayloaddeployment.md
+  - docs/models/usereventpayloadgituserid.md
+  - docs/models/usereventpayloadjoinedfrom.md
+  - docs/models/usereventpayloadname.md
+  - docs/models/usereventpayloadnames.md
+  - docs/models/usereventpayloadnewteam.md
+  - docs/models/usereventpayloadoldteam.md
+  - docs/models/usereventpayloadorigin.md
+  - docs/models/usereventpayloadoveragereason.md
+  - docs/models/usereventpayloadpeering.md
+  - docs/models/usereventpayloadproject.md
+  - docs/models/usereventpayloadremotecaching.md
+  - docs/models/usereventpayloadrole.md
+  - docs/models/usereventpayloadtarget.md
+  - docs/models/usereventpayloadteam.md
+  - docs/models/usereventpayloadtype.md
+  - docs/models/usereventpayloaduser.md
+  - docs/models/usereventtype.md
   - docs/models/utm.md
   - docs/models/value.md
   - docs/models/value2.md
@@ -2495,11 +2928,14 @@ generatedFiles:
   - docs/models/view.md
   - docs/models/viewpreference.md
   - docs/models/virtualexperiencescore.md
+  - docs/models/wafowaspexcessbytes.md
+  - docs/models/wafowasprequests.md
+  - docs/models/wafratelimitrequest.md
   - docs/models/webanalytics.md
+  - docs/models/webanalyticsevent.md
   - docs/models/xss.md
   - docs/sdks/accessgroups/README.md
   - docs/sdks/aliases/README.md
-  - docs/sdks/apiexperimentation/README.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/certs/README.md
@@ -2618,7 +3054,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv2integrationslogdrains.go
   - src/__tests__/mockserver/internal/handler/pathgetv2teams.go
   - src/__tests__/mockserver/internal/handler/pathgetv2teamsteamid.go
-  - src/__tests__/mockserver/internal/handler/pathgetv2teamsteamidmembers.go
   - src/__tests__/mockserver/internal/handler/pathgetv3deploymentsidorurlevents.go
   - src/__tests__/mockserver/internal/handler/pathgetv3events.go
   - src/__tests__/mockserver/internal/handler/pathgetv4aliases.go
@@ -2823,7 +3258,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getteamaccessrequest.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteammembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteams.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/getv1experimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhook.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhooks.go
@@ -2848,6 +3282,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/queryexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/recordevents.go
@@ -2897,6 +3332,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/types/date.go
   - src/__tests__/mockserver/internal/sdk/types/datetime.go
   - src/__tests__/mockserver/internal/sdk/types/decimal.go
+  - src/__tests__/mockserver/internal/sdk/types/jsonl/jsonl.go
   - src/__tests__/mockserver/internal/sdk/types/pointers.go
   - src/__tests__/mockserver/internal/sdk/utils/json.go
   - src/__tests__/mockserver/internal/sdk/utils/reflect.go
@@ -2935,7 +3371,6 @@ generatedFiles:
   - src/funcs/aliasesGetAlias.ts
   - src/funcs/aliasesListAliases.ts
   - src/funcs/aliasesListDeploymentAliases.ts
-  - src/funcs/apiExperimentationGetV1ExperimentationItems.ts
   - src/funcs/artifactsArtifactExists.ts
   - src/funcs/artifactsArtifactQuery.ts
   - src/funcs/artifactsDownloadArtifact.ts
@@ -3023,6 +3458,7 @@ generatedFiles:
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
   - src/funcs/marketplaceImportResource.ts
+  - src/funcs/marketplaceQueryExperimentationItems.ts
   - src/funcs/marketplaceSubmitBillingData.ts
   - src/funcs/marketplaceSubmitInvoice.ts
   - src/funcs/marketplaceSubmitPrepaymentBalances.ts
@@ -3107,6 +3543,7 @@ generatedFiles:
   - src/mcp-server/console-logger.ts
   - src/mcp-server/extensions.ts
   - src/mcp-server/mcp-server.ts
+  - src/mcp-server/prompts.ts
   - src/mcp-server/resources.ts
   - src/mcp-server/scopes.ts
   - src/mcp-server/server.ts
@@ -3128,7 +3565,6 @@ generatedFiles:
   - src/mcp-server/tools/aliasesGetAlias.ts
   - src/mcp-server/tools/aliasesListAliases.ts
   - src/mcp-server/tools/aliasesListDeploymentAliases.ts
-  - src/mcp-server/tools/apiExperimentationGetV1ExperimentationItems.ts
   - src/mcp-server/tools/artifactsArtifactExists.ts
   - src/mcp-server/tools/artifactsArtifactQuery.ts
   - src/mcp-server/tools/artifactsDownloadArtifact.ts
@@ -3216,6 +3652,7 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceGetInvoice.ts
   - src/mcp-server/tools/marketplaceGetMember.ts
   - src/mcp-server/tools/marketplaceImportResource.ts
+  - src/mcp-server/tools/marketplaceQueryExperimentationItems.ts
   - src/mcp-server/tools/marketplaceSubmitBillingData.ts
   - src/mcp-server/tools/marketplaceSubmitInvoice.ts
   - src/mcp-server/tools/marketplaceSubmitPrepaymentBalances.ts
@@ -3379,7 +3816,6 @@ generatedFiles:
   - src/models/getteammembersop.ts
   - src/models/getteamop.ts
   - src/models/getteamsop.ts
-  - src/models/getv1experimentationitemsop.ts
   - src/models/getv9projectsidornamecustomenvironmentsop.ts
   - src/models/getwebhookop.ts
   - src/models/getwebhooksop.ts
@@ -3406,6 +3842,7 @@ generatedFiles:
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
   - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
+  - src/models/queryexperimentationitemsop.ts
   - src/models/ratelimitnotice.ts
   - src/models/readaccessgroupop.ts
   - src/models/readaccessgroupprojectop.ts
@@ -3459,7 +3896,6 @@ generatedFiles:
   - src/models/verifyprojectdomainop.ts
   - src/sdk/accessgroups.ts
   - src/sdk/aliases.ts
-  - src/sdk/apiexperimentation.ts
   - src/sdk/artifacts.ts
   - src/sdk/authentication.ts
   - src/sdk/certs.ts
@@ -5150,7 +5586,7 @@ examples:
           invoiceId: "<id>"
       responses:
         "200":
-          application/json: {"invoiceId": "<id>", "invoiceDate": "<value>", "period": {"start": "<value>", "end": "<value>"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "317.28", "quantity": 1022.19, "units": "<value>", "total": "<value>"}], "total": "<value>", "created": "<value>", "updated": "<value>", "state": "scheduled", "test": false}
+          application/json: {"test": false, "invoiceId": "<id>", "state": "scheduled", "invoiceDate": "<value>", "period": {"start": "<value>", "end": "<value>"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "317.28", "quantity": 1022.19, "units": "<value>", "total": "<value>"}], "total": "<value>", "created": "<value>", "updated": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -5681,7 +6117,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"ok": false, "result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "jubilant-outrun.name", "ProjectId": "<id>", "IsProjectRule": true}], "pagination": "<value>"}
+          application/json: {"ok": false, "result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "jubilant-outrun.name", "ProjectId": "<id>", "Note": "<value>", "IsProjectRule": true}], "pagination": "<value>"}
         "400":
           application/json: {"error": {}}
         "401":
@@ -6314,6 +6750,15 @@ examples:
           application/json: {"error": {}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  queryExperimentationItems:
+    speakeasy-default-query-experimentation-items:
+      responses:
+        "200":
+          application/json: {"items": []}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.0
 generatedTests:
   readAccessGroup: "2025-01-16T21:59:36Z"
@@ -6473,3 +6918,4 @@ generatedTests:
   getCustomEnvironment: "2025-03-07T23:50:38Z"
   updateCustomEnvironment: "2025-03-07T23:50:38Z"
   removeCustomEnvironment: "2025-03-07T23:50:38Z"
+  queryExperimentationItems: "2025-04-03T17:17:07Z"

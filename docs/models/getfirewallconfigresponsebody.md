@@ -11,17 +11,17 @@ let value: GetFirewallConfigResponseBody = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 9747.88,
-  updatedAt: "1741858924632",
+  version: 8313.04,
+  updatedAt: "1743628331034",
   firewallEnabled: false,
   crs: {
     sd: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     ma: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     lfi: {
       active: false,
@@ -29,7 +29,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     rfi: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     rce: {
       active: false,
@@ -45,7 +45,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     xss: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     sqli: {
       active: false,
@@ -53,11 +53,11 @@ let value: GetFirewallConfigResponseBody = {
     },
     sf: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     java: {
       active: false,
-      action: "deny",
+      action: "log",
     },
   },
   rules: [
@@ -70,7 +70,7 @@ let value: GetFirewallConfigResponseBody = {
           conditions: [
             {
               type: "raw_path",
-              op: "eq",
+              op: "nex",
             },
           ],
         },
@@ -81,9 +81,9 @@ let value: GetFirewallConfigResponseBody = {
   ips: [
     {
       id: "<id>",
-      hostname: "hateful-t-shirt.biz",
-      ip: "241.186.132.198",
-      action: "deny",
+      hostname: "tiny-nightlife.name",
+      ip: "6d53:9fdf:e332:4dcd:8cb6:d3a3:a895:265a",
+      action: "challenge",
     },
   ],
   changes: [
@@ -94,16 +94,16 @@ let value: GetFirewallConfigResponseBody = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `ownerId`                                                        | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectKey`                                                     | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `version`                                                        | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `updatedAt`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `firewallEnabled`                                                | *boolean*                                                        | :heavy_check_mark:                                               | N/A                                                              |
-| `crs`                                                            | [models.Crs](../models/crs.md)                                   | :heavy_check_mark:                                               | Custom Ruleset                                                   |
-| `rules`                                                          | [models.Rules](../models/rules.md)[]                             | :heavy_check_mark:                                               | N/A                                                              |
-| `ips`                                                            | [models.Ips](../models/ips.md)[]                                 | :heavy_check_mark:                                               | N/A                                                              |
-| `changes`                                                        | [models.Changes](../models/changes.md)[]                         | :heavy_check_mark:                                               | N/A                                                              |
-| `managedRules`                                                   | Record<string, [models.ManagedRules](../models/managedrules.md)> | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ownerId`                                                              | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectKey`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `version`                                                              | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `updatedAt`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `firewallEnabled`                                                      | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| `crs`                                                                  | [models.Crs](../models/crs.md)                                         | :heavy_check_mark:                                                     | Custom Ruleset                                                         |
+| `rules`                                                                | [models.GetFirewallConfigRules](../models/getfirewallconfigrules.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
+| `ips`                                                                  | [models.Ips](../models/ips.md)[]                                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| `changes`                                                              | [models.Changes](../models/changes.md)[]                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `managedRules`                                                         | Record<string, [models.ManagedRules](../models/managedrules.md)>       | :heavy_minus_sign:                                                     | N/A                                                                    |

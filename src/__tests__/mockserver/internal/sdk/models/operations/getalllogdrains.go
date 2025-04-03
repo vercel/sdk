@@ -109,6 +109,64 @@ func (e *GetAllLogDrainsEnvironments) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsCreatedFrom string
+
+const (
+	GetAllLogDrainsCreatedFromSelfServed  GetAllLogDrainsCreatedFrom = "self-served"
+	GetAllLogDrainsCreatedFromIntegration GetAllLogDrainsCreatedFrom = "integration"
+)
+
+func (e GetAllLogDrainsCreatedFrom) ToPointer() *GetAllLogDrainsCreatedFrom {
+	return &e
+}
+func (e *GetAllLogDrainsCreatedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "self-served":
+		fallthrough
+	case "integration":
+		*e = GetAllLogDrainsCreatedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsCreatedFrom: %v", v)
+	}
+}
+
+type GetAllLogDrainsDeliveryFormat string
+
+const (
+	GetAllLogDrainsDeliveryFormatJSON     GetAllLogDrainsDeliveryFormat = "json"
+	GetAllLogDrainsDeliveryFormatNdjson   GetAllLogDrainsDeliveryFormat = "ndjson"
+	GetAllLogDrainsDeliveryFormatSyslog   GetAllLogDrainsDeliveryFormat = "syslog"
+	GetAllLogDrainsDeliveryFormatProtobuf GetAllLogDrainsDeliveryFormat = "protobuf"
+)
+
+func (e GetAllLogDrainsDeliveryFormat) ToPointer() *GetAllLogDrainsDeliveryFormat {
+	return &e
+}
+func (e *GetAllLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		fallthrough
+	case "ndjson":
+		fallthrough
+	case "syslog":
+		fallthrough
+	case "protobuf":
+		*e = GetAllLogDrainsDeliveryFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsDeliveryFormat: %v", v)
+	}
+}
+
 type GetAllLogDrainsStatus string
 
 const (
@@ -170,69 +228,11 @@ func (e *GetAllLogDrainsDisabledReason) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetAllLogDrainsCreatedFrom string
-
-const (
-	GetAllLogDrainsCreatedFromSelfServed  GetAllLogDrainsCreatedFrom = "self-served"
-	GetAllLogDrainsCreatedFromIntegration GetAllLogDrainsCreatedFrom = "integration"
-)
-
-func (e GetAllLogDrainsCreatedFrom) ToPointer() *GetAllLogDrainsCreatedFrom {
-	return &e
-}
-func (e *GetAllLogDrainsCreatedFrom) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = GetAllLogDrainsCreatedFrom(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsCreatedFrom: %v", v)
-	}
-}
-
-type GetAllLogDrainsDeliveryFormat string
-
-const (
-	GetAllLogDrainsDeliveryFormatJSON   GetAllLogDrainsDeliveryFormat = "json"
-	GetAllLogDrainsDeliveryFormatNdjson GetAllLogDrainsDeliveryFormat = "ndjson"
-	GetAllLogDrainsDeliveryFormatSyslog GetAllLogDrainsDeliveryFormat = "syslog"
-)
-
-func (e GetAllLogDrainsDeliveryFormat) ToPointer() *GetAllLogDrainsDeliveryFormat {
-	return &e
-}
-func (e *GetAllLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "json":
-		fallthrough
-	case "ndjson":
-		fallthrough
-	case "syslog":
-		*e = GetAllLogDrainsDeliveryFormat(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsDeliveryFormat: %v", v)
-	}
-}
-
 type GetAllLogDrainsResponseBody struct {
 	ClientID            *string                        `json:"clientId,omitempty"`
 	ConfigurationID     *string                        `json:"configurationId,omitempty"`
 	Sources             []GetAllLogDrainsSources       `json:"sources,omitempty"`
 	Environments        []GetAllLogDrainsEnvironments  `json:"environments"`
-	Status              *GetAllLogDrainsStatus         `json:"status,omitempty"`
-	DisabledAt          *float64                       `json:"disabledAt,omitempty"`
-	DisabledReason      *GetAllLogDrainsDisabledReason `json:"disabledReason,omitempty"`
 	DisabledBy          *string                        `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp *float64                       `json:"firstErrorTimestamp,omitempty"`
 	SamplingRate        *float64                       `json:"samplingRate,omitempty"`
@@ -249,6 +249,9 @@ type GetAllLogDrainsResponseBody struct {
 	OwnerID             string                         `json:"ownerId"`
 	CreatedFrom         *GetAllLogDrainsCreatedFrom    `json:"createdFrom,omitempty"`
 	DeliveryFormat      GetAllLogDrainsDeliveryFormat  `json:"deliveryFormat"`
+	Status              *GetAllLogDrainsStatus         `json:"status,omitempty"`
+	DisabledAt          *float64                       `json:"disabledAt,omitempty"`
+	DisabledReason      *GetAllLogDrainsDisabledReason `json:"disabledReason,omitempty"`
 	Secret              *string                        `json:"secret,omitempty"`
 }
 
@@ -278,27 +281,6 @@ func (o *GetAllLogDrainsResponseBody) GetEnvironments() []GetAllLogDrainsEnviron
 		return []GetAllLogDrainsEnvironments{}
 	}
 	return o.Environments
-}
-
-func (o *GetAllLogDrainsResponseBody) GetStatus() *GetAllLogDrainsStatus {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *GetAllLogDrainsResponseBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *GetAllLogDrainsResponseBody) GetDisabledReason() *GetAllLogDrainsDisabledReason {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
 }
 
 func (o *GetAllLogDrainsResponseBody) GetDisabledBy() *string {
@@ -411,6 +393,27 @@ func (o *GetAllLogDrainsResponseBody) GetDeliveryFormat() GetAllLogDrainsDeliver
 		return GetAllLogDrainsDeliveryFormat("")
 	}
 	return o.DeliveryFormat
+}
+
+func (o *GetAllLogDrainsResponseBody) GetStatus() *GetAllLogDrainsStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetAllLogDrainsResponseBody) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetAllLogDrainsResponseBody) GetDisabledReason() *GetAllLogDrainsDisabledReason {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 func (o *GetAllLogDrainsResponseBody) GetSecret() *string {

@@ -1,27 +1,23 @@
 # Twelve
 
-Update a managed rule group
+The payload of the event, if requested.
 
 ## Example Usage
 
 ```typescript
-import { Twelve } from "@vercel/sdk/models/updatefirewallconfigop.js";
+import { Twelve } from "@vercel/sdk/models/userevent.js";
 
 let value: Twelve = {
-  action: "<value>",
-  id: "<id>",
-  value: {
-    "key": {
-      active: false,
-    },
-  },
+  projectName: "<value>",
+  alias: "<value>",
+  action: "created",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                                                           | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
-| `id`                                                                                                                                               | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
-| `value`                                                                                                                                            | Record<string, [models.UpdateFirewallConfigRequestBodySecurityRequest12Value](../models/updatefirewallconfigrequestbodysecurityrequest12value.md)> | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `alias`                                            | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `action`                                           | [models.PayloadAction](../models/payloadaction.md) | :heavy_check_mark:                                 | N/A                                                |

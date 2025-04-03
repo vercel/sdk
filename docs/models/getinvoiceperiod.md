@@ -1,5 +1,7 @@
 # GetInvoicePeriod
 
+Subscription period for this billing cycle. ISO 8601 timestamps.
+
 ## Example Usage
 
 ```typescript

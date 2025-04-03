@@ -22,28 +22,28 @@ const value: models.CreateDeploymentGitSource2 = {
 };
 ```
 
-### `models.GitSource3`
+### `models.CreateDeploymentGitSource3`
 
 ```typescript
-const value: models.GitSource3 = {
+const value: models.CreateDeploymentGitSource3 = {
   type: "gitlab",
   projectId: "<id>",
 };
 ```
 
-### `models.GitSource4`
+### `models.CreateDeploymentGitSource4`
 
 ```typescript
-const value: models.GitSource4 = {
+const value: models.CreateDeploymentGitSource4 = {
   type: "bitbucket",
   repoUuid: "<id>",
 };
 ```
 
-### `models.GitSource5`
+### `models.CreateDeploymentGitSource5`
 
 ```typescript
-const value: models.GitSource5 = {
+const value: models.CreateDeploymentGitSource5 = {
   type: "bitbucket",
   owner: "<value>",
   slug: "<value>",

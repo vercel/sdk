@@ -7,7 +7,7 @@ import { PreferredScopesAndGitNamespaces } from "@vercel/sdk/models/authuser.js"
 
 let value: PreferredScopesAndGitNamespaces = {
   scopeId: "<id>",
-  gitNamespaceId: 5123.49,
+  gitNamespaceId: "<id>",
 };
 ```
 

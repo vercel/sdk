@@ -8,8 +8,8 @@ import { ConditionGroup } from "@vercel/sdk/models/updatefirewallconfigop.js";
 let value: ConditionGroup = {
   conditions: [
     {
-      type: "protocol",
-      op: "lt",
+      type: "method",
+      op: "re",
     },
   ],
 };

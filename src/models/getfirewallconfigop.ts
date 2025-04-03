@@ -412,7 +412,7 @@ export type GetFirewallConfigAction = {
   mitigate?: GetFirewallConfigMitigate | undefined;
 };
 
-export type Rules = {
+export type GetFirewallConfigRules = {
   id: string;
   name: string;
   description?: string | undefined;
@@ -472,7 +472,7 @@ export type GetFirewallConfigResponseBody = {
    * Custom Ruleset
    */
   crs: Crs;
-  rules: Array<Rules>;
+  rules: Array<GetFirewallConfigRules>;
   ips: Array<Ips>;
   changes: Array<Changes>;
   managedRules?: { [k: string]: ManagedRules } | undefined;
@@ -1994,20 +1994,23 @@ export function getFirewallConfigActionFromJSON(
 }
 
 /** @internal */
-export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    name: z.string(),
-    description: z.string().optional(),
-    active: z.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() => GetFirewallConfigConditionGroup$inboundSchema),
-    ),
-    action: z.lazy(() => GetFirewallConfigAction$inboundSchema),
-  });
+export const GetFirewallConfigRules$inboundSchema: z.ZodType<
+  GetFirewallConfigRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string().optional(),
+  active: z.boolean(),
+  conditionGroup: z.array(
+    z.lazy(() => GetFirewallConfigConditionGroup$inboundSchema),
+  ),
+  action: z.lazy(() => GetFirewallConfigAction$inboundSchema),
+});
 
 /** @internal */
-export type Rules$Outbound = {
+export type GetFirewallConfigRules$Outbound = {
   id: string;
   name: string;
   description?: string | undefined;
@@ -2017,10 +2020,10 @@ export type Rules$Outbound = {
 };
 
 /** @internal */
-export const Rules$outboundSchema: z.ZodType<
-  Rules$Outbound,
+export const GetFirewallConfigRules$outboundSchema: z.ZodType<
+  GetFirewallConfigRules$Outbound,
   z.ZodTypeDef,
-  Rules
+  GetFirewallConfigRules
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -2036,26 +2039,30 @@ export const Rules$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Rules$ {
-  /** @deprecated use `Rules$inboundSchema` instead. */
-  export const inboundSchema = Rules$inboundSchema;
-  /** @deprecated use `Rules$outboundSchema` instead. */
-  export const outboundSchema = Rules$outboundSchema;
-  /** @deprecated use `Rules$Outbound` instead. */
-  export type Outbound = Rules$Outbound;
+export namespace GetFirewallConfigRules$ {
+  /** @deprecated use `GetFirewallConfigRules$inboundSchema` instead. */
+  export const inboundSchema = GetFirewallConfigRules$inboundSchema;
+  /** @deprecated use `GetFirewallConfigRules$outboundSchema` instead. */
+  export const outboundSchema = GetFirewallConfigRules$outboundSchema;
+  /** @deprecated use `GetFirewallConfigRules$Outbound` instead. */
+  export type Outbound = GetFirewallConfigRules$Outbound;
 }
 
-export function rulesToJSON(rules: Rules): string {
-  return JSON.stringify(Rules$outboundSchema.parse(rules));
+export function getFirewallConfigRulesToJSON(
+  getFirewallConfigRules: GetFirewallConfigRules,
+): string {
+  return JSON.stringify(
+    GetFirewallConfigRules$outboundSchema.parse(getFirewallConfigRules),
+  );
 }
 
-export function rulesFromJSON(
+export function getFirewallConfigRulesFromJSON(
   jsonString: string,
-): SafeParseResult<Rules, SDKValidationError> {
+): SafeParseResult<GetFirewallConfigRules, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Rules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Rules' from JSON`,
+    (x) => GetFirewallConfigRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigRules' from JSON`,
   );
 }
 
@@ -2275,7 +2282,7 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   updatedAt: z.string(),
   firewallEnabled: z.boolean(),
   crs: z.lazy(() => Crs$inboundSchema),
-  rules: z.array(z.lazy(() => Rules$inboundSchema)),
+  rules: z.array(z.lazy(() => GetFirewallConfigRules$inboundSchema)),
   ips: z.array(z.lazy(() => Ips$inboundSchema)),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
   managedRules: z.record(z.lazy(() => ManagedRules$inboundSchema)).optional(),
@@ -2290,7 +2297,7 @@ export type GetFirewallConfigResponseBody$Outbound = {
   updatedAt: string;
   firewallEnabled: boolean;
   crs: Crs$Outbound;
-  rules: Array<Rules$Outbound>;
+  rules: Array<GetFirewallConfigRules$Outbound>;
   ips: Array<Ips$Outbound>;
   changes: Array<Changes$Outbound>;
   managedRules?: { [k: string]: ManagedRules$Outbound } | undefined;
@@ -2309,7 +2316,7 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.string(),
   firewallEnabled: z.boolean(),
   crs: z.lazy(() => Crs$outboundSchema),
-  rules: z.array(z.lazy(() => Rules$outboundSchema)),
+  rules: z.array(z.lazy(() => GetFirewallConfigRules$outboundSchema)),
   ips: z.array(z.lazy(() => Ips$outboundSchema)),
   changes: z.array(z.lazy(() => Changes$outboundSchema)),
   managedRules: z.record(z.lazy(() => ManagedRules$outboundSchema)).optional(),

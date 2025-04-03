@@ -128,7 +128,7 @@ export type CreateDeploymentGitSourceDeploymentsRequestType = ClosedEnum<
   typeof CreateDeploymentGitSourceDeploymentsRequestType
 >;
 
-export type Five = {
+export type GitSource5 = {
   owner: string;
   ref: string;
   sha?: string | undefined;
@@ -143,7 +143,7 @@ export type CreateDeploymentGitSourceDeploymentsType = ClosedEnum<
   typeof CreateDeploymentGitSourceDeploymentsType
 >;
 
-export type Four = {
+export type GitSource4 = {
   ref: string;
   repoUuid: string;
   sha?: string | undefined;
@@ -160,7 +160,7 @@ export type CreateDeploymentGitSourceType = ClosedEnum<
   typeof CreateDeploymentGitSourceType
 >;
 
-export type Three = {
+export type GitSource3 = {
   projectId: number | string;
   ref: string;
   sha?: string | undefined;
@@ -198,7 +198,12 @@ export type GitSource1 = {
 /**
  * Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
  */
-export type GitSource = GitSource1 | Three | GitSource2 | Four | Five;
+export type GitSource =
+  | GitSource1
+  | GitSource3
+  | GitSource2
+  | GitSource4
+  | GitSource5;
 
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -343,7 +348,13 @@ export type CreateDeploymentRequestBody = {
   /**
    * Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
    */
-  gitSource?: GitSource1 | Three | GitSource2 | Four | Five | undefined;
+  gitSource?:
+    | GitSource1
+    | GitSource3
+    | GitSource2
+    | GitSource4
+    | GitSource5
+    | undefined;
   /**
    * An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment
    */
@@ -400,7 +411,11 @@ export type Build = {
   env: Array<string>;
 };
 
-export type Builds = {};
+export type Builds = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 export const CreateDeploymentFramework = {
   Blitzjs: "blitzjs",
@@ -579,8 +594,8 @@ export type Creator = {
 };
 
 export const CreateDeploymentReadyState = {
-  Error: "ERROR",
   Building: "BUILDING",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -597,10 +612,10 @@ export type CreateDeploymentOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type Lambdas = {
-  createdAt?: number | undefined;
   id?: string | undefined;
-  readyState?: CreateDeploymentReadyState | undefined;
+  createdAt?: number | undefined;
   entrypoint?: string | null | undefined;
+  readyState?: CreateDeploymentReadyState | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput>;
 };
@@ -615,7 +630,7 @@ export const CreateDeploymentStatus = {
 } as const;
 export type CreateDeploymentStatus = ClosedEnum<typeof CreateDeploymentStatus>;
 
-export type Team = {
+export type CreateDeploymentTeam = {
   name: string;
   id: string;
   slug: string;
@@ -720,7 +735,7 @@ export type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type
   >;
 
-export type GitSource5 = {
+export type CreateDeploymentGitSource5 = {
   type:
     CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type;
   owner: string;
@@ -739,7 +754,7 @@ export type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
   >;
 
-export type GitSource4 = {
+export type CreateDeploymentGitSource4 = {
   type:
     CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType;
   workspaceUuid?: string | undefined;
@@ -760,7 +775,7 @@ export type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType =
 
 export type GitSourceProjectId = string | number;
 
-export type GitSource3 = {
+export type CreateDeploymentGitSource3 = {
   type: CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType;
   projectId: string | number;
   ref?: string | null | undefined;
@@ -805,14 +820,14 @@ export type CreateDeploymentGitSource =
   | CreateDeploymentGitSource6
   | CreateDeploymentGitSource8
   | CreateDeploymentGitSource1
-  | GitSource3
+  | CreateDeploymentGitSource3
   | CreateDeploymentGitSource2
-  | GitSource4
-  | GitSource5
+  | CreateDeploymentGitSource4
+  | CreateDeploymentGitSource5
   | CreateDeploymentGitSource7
   | CreateDeploymentGitSource9;
 
-export type Project = {
+export type CreateDeploymentProject = {
   id: string;
   name: string;
   framework?: string | null | undefined;
@@ -874,14 +889,15 @@ export const ChecksConclusion = {
 export type ChecksConclusion = ClosedEnum<typeof ChecksConclusion>;
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const ReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
@@ -897,12 +913,12 @@ export type OidcTokenClaims = {
   environment: string;
 };
 
-export const Plan = {
+export const CreateDeploymentPlan = {
   Pro: "pro",
   Enterprise: "enterprise",
   Hobby: "hobby",
 } as const;
-export type Plan = ClosedEnum<typeof Plan>;
+export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 /**
  * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
@@ -955,14 +971,14 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends2;
 
 export const FunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
-  StandardLegacy: "standard_legacy",
   Standard: "standard",
+  StandardLegacy: "standard_legacy",
   Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
@@ -998,8 +1014,8 @@ export const RoutesHandle = {
   Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Resource: "resource",
   Rewrite: "rewrite",
+  Resource: "resource",
 } as const;
 export type RoutesHandle = ClosedEnum<typeof RoutesHandle>;
 
@@ -1112,8 +1128,8 @@ export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CreateDeploymentGitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
@@ -1140,8 +1156,8 @@ export type CreateDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const GitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
@@ -1164,8 +1180,8 @@ export const GitRepoType = {
 export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type OwnerType = ClosedEnum<typeof OwnerType>;
 
@@ -1237,7 +1253,7 @@ export type CreateDeploymentResponseBody = {
   public: boolean;
   ready?: number | undefined;
   status: CreateDeploymentStatus;
-  team?: Team | undefined;
+  team?: CreateDeploymentTeam | undefined;
   userAliases?: Array<string> | undefined;
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
@@ -1256,15 +1272,15 @@ export type CreateDeploymentResponseBody = {
     | CreateDeploymentGitSource6
     | CreateDeploymentGitSource8
     | CreateDeploymentGitSource1
-    | GitSource3
+    | CreateDeploymentGitSource3
     | CreateDeploymentGitSource2
-    | GitSource4
-    | GitSource5
+    | CreateDeploymentGitSource4
+    | CreateDeploymentGitSource5
     | CreateDeploymentGitSource7
     | CreateDeploymentGitSource9
     | undefined;
   meta: { [k: string]: string };
-  project?: Project | undefined;
+  project?: CreateDeploymentProject | undefined;
   readyState: ReadyState;
   source?: CreateDeploymentSource | undefined;
   target?: CreateDeploymentTarget | null | undefined;
@@ -1291,14 +1307,14 @@ export type CreateDeploymentResponseBody = {
   errorStep?: string | undefined;
   originCacheRegion?: string | undefined;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: ReadySubstate | undefined;
   softDeletedByRetention?: boolean | undefined;
   undeletedAt?: number | undefined;
   url: string;
   oidcTokenClaims?: OidcTokenClaims | undefined;
-  plan: Plan;
+  plan: CreateDeploymentPlan;
   projectId: string;
   ownerId: string;
   microfrontends?:
@@ -1631,17 +1647,20 @@ export namespace CreateDeploymentGitSourceDeploymentsRequestType$ {
 }
 
 /** @internal */
-export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
-  .object({
-    owner: z.string(),
-    ref: z.string(),
-    sha: z.string().optional(),
-    slug: z.string(),
-    type: CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema,
-  });
+export const GitSource5$inboundSchema: z.ZodType<
+  GitSource5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  owner: z.string(),
+  ref: z.string(),
+  sha: z.string().optional(),
+  slug: z.string(),
+  type: CreateDeploymentGitSourceDeploymentsRequestType$inboundSchema,
+});
 
 /** @internal */
-export type Five$Outbound = {
+export type GitSource5$Outbound = {
   owner: string;
   ref: string;
   sha?: string | undefined;
@@ -1650,39 +1669,42 @@ export type Five$Outbound = {
 };
 
 /** @internal */
-export const Five$outboundSchema: z.ZodType<Five$Outbound, z.ZodTypeDef, Five> =
-  z.object({
-    owner: z.string(),
-    ref: z.string(),
-    sha: z.string().optional(),
-    slug: z.string(),
-    type: CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema,
-  });
+export const GitSource5$outboundSchema: z.ZodType<
+  GitSource5$Outbound,
+  z.ZodTypeDef,
+  GitSource5
+> = z.object({
+  owner: z.string(),
+  ref: z.string(),
+  sha: z.string().optional(),
+  slug: z.string(),
+  type: CreateDeploymentGitSourceDeploymentsRequestType$outboundSchema,
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Five$ {
-  /** @deprecated use `Five$inboundSchema` instead. */
-  export const inboundSchema = Five$inboundSchema;
-  /** @deprecated use `Five$outboundSchema` instead. */
-  export const outboundSchema = Five$outboundSchema;
-  /** @deprecated use `Five$Outbound` instead. */
-  export type Outbound = Five$Outbound;
+export namespace GitSource5$ {
+  /** @deprecated use `GitSource5$inboundSchema` instead. */
+  export const inboundSchema = GitSource5$inboundSchema;
+  /** @deprecated use `GitSource5$outboundSchema` instead. */
+  export const outboundSchema = GitSource5$outboundSchema;
+  /** @deprecated use `GitSource5$Outbound` instead. */
+  export type Outbound = GitSource5$Outbound;
 }
 
-export function fiveToJSON(five: Five): string {
-  return JSON.stringify(Five$outboundSchema.parse(five));
+export function gitSource5ToJSON(gitSource5: GitSource5): string {
+  return JSON.stringify(GitSource5$outboundSchema.parse(gitSource5));
 }
 
-export function fiveFromJSON(
+export function gitSource5FromJSON(
   jsonString: string,
-): SafeParseResult<Five, SDKValidationError> {
+): SafeParseResult<GitSource5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Five$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Five' from JSON`,
+    (x) => GitSource5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSource5' from JSON`,
   );
 }
 
@@ -1710,17 +1732,20 @@ export namespace CreateDeploymentGitSourceDeploymentsType$ {
 }
 
 /** @internal */
-export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
-  .object({
-    ref: z.string(),
-    repoUuid: z.string(),
-    sha: z.string().optional(),
-    type: CreateDeploymentGitSourceDeploymentsType$inboundSchema,
-    workspaceUuid: z.string().optional(),
-  });
+export const GitSource4$inboundSchema: z.ZodType<
+  GitSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ref: z.string(),
+  repoUuid: z.string(),
+  sha: z.string().optional(),
+  type: CreateDeploymentGitSourceDeploymentsType$inboundSchema,
+  workspaceUuid: z.string().optional(),
+});
 
 /** @internal */
-export type Four$Outbound = {
+export type GitSource4$Outbound = {
   ref: string;
   repoUuid: string;
   sha?: string | undefined;
@@ -1729,39 +1754,42 @@ export type Four$Outbound = {
 };
 
 /** @internal */
-export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
-  z.object({
-    ref: z.string(),
-    repoUuid: z.string(),
-    sha: z.string().optional(),
-    type: CreateDeploymentGitSourceDeploymentsType$outboundSchema,
-    workspaceUuid: z.string().optional(),
-  });
+export const GitSource4$outboundSchema: z.ZodType<
+  GitSource4$Outbound,
+  z.ZodTypeDef,
+  GitSource4
+> = z.object({
+  ref: z.string(),
+  repoUuid: z.string(),
+  sha: z.string().optional(),
+  type: CreateDeploymentGitSourceDeploymentsType$outboundSchema,
+  workspaceUuid: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Four$ {
-  /** @deprecated use `Four$inboundSchema` instead. */
-  export const inboundSchema = Four$inboundSchema;
-  /** @deprecated use `Four$outboundSchema` instead. */
-  export const outboundSchema = Four$outboundSchema;
-  /** @deprecated use `Four$Outbound` instead. */
-  export type Outbound = Four$Outbound;
+export namespace GitSource4$ {
+  /** @deprecated use `GitSource4$inboundSchema` instead. */
+  export const inboundSchema = GitSource4$inboundSchema;
+  /** @deprecated use `GitSource4$outboundSchema` instead. */
+  export const outboundSchema = GitSource4$outboundSchema;
+  /** @deprecated use `GitSource4$Outbound` instead. */
+  export type Outbound = GitSource4$Outbound;
 }
 
-export function fourToJSON(four: Four): string {
-  return JSON.stringify(Four$outboundSchema.parse(four));
+export function gitSource4ToJSON(gitSource4: GitSource4): string {
+  return JSON.stringify(GitSource4$outboundSchema.parse(gitSource4));
 }
 
-export function fourFromJSON(
+export function gitSource4FromJSON(
   jsonString: string,
-): SafeParseResult<Four, SDKValidationError> {
+): SafeParseResult<GitSource4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Four$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Four' from JSON`,
+    (x) => GitSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSource4' from JSON`,
   );
 }
 
@@ -1831,16 +1859,19 @@ export namespace CreateDeploymentGitSourceType$ {
 }
 
 /** @internal */
-export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
-  .object({
-    projectId: z.union([z.number(), z.string()]),
-    ref: z.string(),
-    sha: z.string().optional(),
-    type: CreateDeploymentGitSourceType$inboundSchema,
-  });
+export const GitSource3$inboundSchema: z.ZodType<
+  GitSource3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.union([z.number(), z.string()]),
+  ref: z.string(),
+  sha: z.string().optional(),
+  type: CreateDeploymentGitSourceType$inboundSchema,
+});
 
 /** @internal */
-export type Three$Outbound = {
+export type GitSource3$Outbound = {
   projectId: number | string;
   ref: string;
   sha?: string | undefined;
@@ -1848,10 +1879,10 @@ export type Three$Outbound = {
 };
 
 /** @internal */
-export const Three$outboundSchema: z.ZodType<
-  Three$Outbound,
+export const GitSource3$outboundSchema: z.ZodType<
+  GitSource3$Outbound,
   z.ZodTypeDef,
-  Three
+  GitSource3
 > = z.object({
   projectId: z.union([z.number(), z.string()]),
   ref: z.string(),
@@ -1863,26 +1894,26 @@ export const Three$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Three$ {
-  /** @deprecated use `Three$inboundSchema` instead. */
-  export const inboundSchema = Three$inboundSchema;
-  /** @deprecated use `Three$outboundSchema` instead. */
-  export const outboundSchema = Three$outboundSchema;
-  /** @deprecated use `Three$Outbound` instead. */
-  export type Outbound = Three$Outbound;
+export namespace GitSource3$ {
+  /** @deprecated use `GitSource3$inboundSchema` instead. */
+  export const inboundSchema = GitSource3$inboundSchema;
+  /** @deprecated use `GitSource3$outboundSchema` instead. */
+  export const outboundSchema = GitSource3$outboundSchema;
+  /** @deprecated use `GitSource3$Outbound` instead. */
+  export type Outbound = GitSource3$Outbound;
 }
 
-export function threeToJSON(three: Three): string {
-  return JSON.stringify(Three$outboundSchema.parse(three));
+export function gitSource3ToJSON(gitSource3: GitSource3): string {
+  return JSON.stringify(GitSource3$outboundSchema.parse(gitSource3));
 }
 
-export function threeFromJSON(
+export function gitSource3FromJSON(
   jsonString: string,
-): SafeParseResult<Three, SDKValidationError> {
+): SafeParseResult<GitSource3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Three$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Three' from JSON`,
+    (x) => GitSource3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GitSource3' from JSON`,
   );
 }
 
@@ -2103,19 +2134,19 @@ export const GitSource$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => GitSource1$inboundSchema),
-  z.lazy(() => Three$inboundSchema),
+  z.lazy(() => GitSource3$inboundSchema),
   z.lazy(() => GitSource2$inboundSchema),
-  z.lazy(() => Four$inboundSchema),
-  z.lazy(() => Five$inboundSchema),
+  z.lazy(() => GitSource4$inboundSchema),
+  z.lazy(() => GitSource5$inboundSchema),
 ]);
 
 /** @internal */
 export type GitSource$Outbound =
   | GitSource1$Outbound
-  | Three$Outbound
+  | GitSource3$Outbound
   | GitSource2$Outbound
-  | Four$Outbound
-  | Five$Outbound;
+  | GitSource4$Outbound
+  | GitSource5$Outbound;
 
 /** @internal */
 export const GitSource$outboundSchema: z.ZodType<
@@ -2124,10 +2155,10 @@ export const GitSource$outboundSchema: z.ZodType<
   GitSource
 > = z.union([
   z.lazy(() => GitSource1$outboundSchema),
-  z.lazy(() => Three$outboundSchema),
+  z.lazy(() => GitSource3$outboundSchema),
   z.lazy(() => GitSource2$outboundSchema),
-  z.lazy(() => Four$outboundSchema),
-  z.lazy(() => Five$outboundSchema),
+  z.lazy(() => GitSource4$outboundSchema),
+  z.lazy(() => GitSource5$outboundSchema),
 ]);
 
 /**
@@ -2294,10 +2325,10 @@ export const CreateDeploymentRequestBody$inboundSchema: z.ZodType<
   gitMetadata: z.lazy(() => GitMetadata$inboundSchema).optional(),
   gitSource: z.union([
     z.lazy(() => GitSource1$inboundSchema),
-    z.lazy(() => Three$inboundSchema),
+    z.lazy(() => GitSource3$inboundSchema),
     z.lazy(() => GitSource2$inboundSchema),
-    z.lazy(() => Four$inboundSchema),
-    z.lazy(() => Five$inboundSchema),
+    z.lazy(() => GitSource4$inboundSchema),
+    z.lazy(() => GitSource5$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()).optional(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -2316,10 +2347,10 @@ export type CreateDeploymentRequestBody$Outbound = {
   gitMetadata?: GitMetadata$Outbound | undefined;
   gitSource?:
     | GitSource1$Outbound
-    | Three$Outbound
+    | GitSource3$Outbound
     | GitSource2$Outbound
-    | Four$Outbound
-    | Five$Outbound
+    | GitSource4$Outbound
+    | GitSource5$Outbound
     | undefined;
   meta?: { [k: string]: string } | undefined;
   monorepoManager?: string | null | undefined;
@@ -2347,10 +2378,10 @@ export const CreateDeploymentRequestBody$outboundSchema: z.ZodType<
   gitMetadata: z.lazy(() => GitMetadata$outboundSchema).optional(),
   gitSource: z.union([
     z.lazy(() => GitSource1$outboundSchema),
-    z.lazy(() => Three$outboundSchema),
+    z.lazy(() => GitSource3$outboundSchema),
     z.lazy(() => GitSource2$outboundSchema),
-    z.lazy(() => Four$outboundSchema),
-    z.lazy(() => Five$outboundSchema),
+    z.lazy(() => GitSource4$outboundSchema),
+    z.lazy(() => GitSource5$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()).optional(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -2565,17 +2596,29 @@ export function buildFromJSON(
 
 /** @internal */
 export const Builds$inboundSchema: z.ZodType<Builds, z.ZodTypeDef, unknown> = z
-  .object({});
+  .object({
+    use: z.string(),
+    src: z.string().optional(),
+    config: z.record(z.any()).optional(),
+  });
 
 /** @internal */
-export type Builds$Outbound = {};
+export type Builds$Outbound = {
+  use: string;
+  src?: string | undefined;
+  config?: { [k: string]: any } | undefined;
+};
 
 /** @internal */
 export const Builds$outboundSchema: z.ZodType<
   Builds$Outbound,
   z.ZodTypeDef,
   Builds
-> = z.object({});
+> = z.object({
+  use: z.string(),
+  src: z.string().optional(),
+  config: z.record(z.any()).optional(),
+});
 
 /**
  * @internal
@@ -3314,20 +3357,20 @@ export function createDeploymentOutputFromJSON(
 /** @internal */
 export const Lambdas$inboundSchema: z.ZodType<Lambdas, z.ZodTypeDef, unknown> =
   z.object({
-    createdAt: z.number().optional(),
     id: z.string().optional(),
-    readyState: CreateDeploymentReadyState$inboundSchema.optional(),
+    createdAt: z.number().optional(),
     entrypoint: z.nullable(z.string()).optional(),
+    readyState: CreateDeploymentReadyState$inboundSchema.optional(),
     readyStateAt: z.number().optional(),
     output: z.array(z.lazy(() => CreateDeploymentOutput$inboundSchema)),
   });
 
 /** @internal */
 export type Lambdas$Outbound = {
-  createdAt?: number | undefined;
   id?: string | undefined;
-  readyState?: string | undefined;
+  createdAt?: number | undefined;
   entrypoint?: string | null | undefined;
+  readyState?: string | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput$Outbound>;
 };
@@ -3338,10 +3381,10 @@ export const Lambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Lambdas
 > = z.object({
-  createdAt: z.number().optional(),
   id: z.string().optional(),
-  readyState: CreateDeploymentReadyState$outboundSchema.optional(),
+  createdAt: z.number().optional(),
   entrypoint: z.nullable(z.string()).optional(),
+  readyState: CreateDeploymentReadyState$outboundSchema.optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CreateDeploymentOutput$outboundSchema)),
 });
@@ -3395,16 +3438,19 @@ export namespace CreateDeploymentStatus$ {
 }
 
 /** @internal */
-export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
-  .object({
-    name: z.string(),
-    id: z.string(),
-    slug: z.string(),
-    avatar: z.string().optional(),
-  });
+export const CreateDeploymentTeam$inboundSchema: z.ZodType<
+  CreateDeploymentTeam,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  id: z.string(),
+  slug: z.string(),
+  avatar: z.string().optional(),
+});
 
 /** @internal */
-export type Team$Outbound = {
+export type CreateDeploymentTeam$Outbound = {
   name: string;
   id: string;
   slug: string;
@@ -3412,38 +3458,45 @@ export type Team$Outbound = {
 };
 
 /** @internal */
-export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
-  z.object({
-    name: z.string(),
-    id: z.string(),
-    slug: z.string(),
-    avatar: z.string().optional(),
-  });
+export const CreateDeploymentTeam$outboundSchema: z.ZodType<
+  CreateDeploymentTeam$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentTeam
+> = z.object({
+  name: z.string(),
+  id: z.string(),
+  slug: z.string(),
+  avatar: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Team$ {
-  /** @deprecated use `Team$inboundSchema` instead. */
-  export const inboundSchema = Team$inboundSchema;
-  /** @deprecated use `Team$outboundSchema` instead. */
-  export const outboundSchema = Team$outboundSchema;
-  /** @deprecated use `Team$Outbound` instead. */
-  export type Outbound = Team$Outbound;
+export namespace CreateDeploymentTeam$ {
+  /** @deprecated use `CreateDeploymentTeam$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentTeam$inboundSchema;
+  /** @deprecated use `CreateDeploymentTeam$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentTeam$outboundSchema;
+  /** @deprecated use `CreateDeploymentTeam$Outbound` instead. */
+  export type Outbound = CreateDeploymentTeam$Outbound;
 }
 
-export function teamToJSON(team: Team): string {
-  return JSON.stringify(Team$outboundSchema.parse(team));
+export function createDeploymentTeamToJSON(
+  createDeploymentTeam: CreateDeploymentTeam,
+): string {
+  return JSON.stringify(
+    CreateDeploymentTeam$outboundSchema.parse(createDeploymentTeam),
+  );
 }
 
-export function teamFromJSON(
+export function createDeploymentTeamFromJSON(
   jsonString: string,
-): SafeParseResult<Team, SDKValidationError> {
+): SafeParseResult<CreateDeploymentTeam, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Team' from JSON`,
+    (x) => CreateDeploymentTeam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentTeam' from JSON`,
   );
 }
 
@@ -4042,8 +4095,8 @@ export namespace CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONR
 }
 
 /** @internal */
-export const GitSource5$inboundSchema: z.ZodType<
-  GitSource5,
+export const CreateDeploymentGitSource5$inboundSchema: z.ZodType<
+  CreateDeploymentGitSource5,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4057,7 +4110,7 @@ export const GitSource5$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource5$Outbound = {
+export type CreateDeploymentGitSource5$Outbound = {
   type: string;
   owner: string;
   slug: string;
@@ -4067,10 +4120,10 @@ export type GitSource5$Outbound = {
 };
 
 /** @internal */
-export const GitSource5$outboundSchema: z.ZodType<
-  GitSource5$Outbound,
+export const CreateDeploymentGitSource5$outboundSchema: z.ZodType<
+  CreateDeploymentGitSource5$Outbound,
   z.ZodTypeDef,
-  GitSource5
+  CreateDeploymentGitSource5
 > = z.object({
   type:
     CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type$outboundSchema,
@@ -4085,26 +4138,30 @@ export const GitSource5$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource5$ {
-  /** @deprecated use `GitSource5$inboundSchema` instead. */
-  export const inboundSchema = GitSource5$inboundSchema;
-  /** @deprecated use `GitSource5$outboundSchema` instead. */
-  export const outboundSchema = GitSource5$outboundSchema;
-  /** @deprecated use `GitSource5$Outbound` instead. */
-  export type Outbound = GitSource5$Outbound;
+export namespace CreateDeploymentGitSource5$ {
+  /** @deprecated use `CreateDeploymentGitSource5$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentGitSource5$inboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource5$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentGitSource5$outboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource5$Outbound` instead. */
+  export type Outbound = CreateDeploymentGitSource5$Outbound;
 }
 
-export function gitSource5ToJSON(gitSource5: GitSource5): string {
-  return JSON.stringify(GitSource5$outboundSchema.parse(gitSource5));
+export function createDeploymentGitSource5ToJSON(
+  createDeploymentGitSource5: CreateDeploymentGitSource5,
+): string {
+  return JSON.stringify(
+    CreateDeploymentGitSource5$outboundSchema.parse(createDeploymentGitSource5),
+  );
 }
 
-export function gitSource5FromJSON(
+export function createDeploymentGitSource5FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource5, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitSource5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource5' from JSON`,
+    (x) => CreateDeploymentGitSource5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitSource5' from JSON`,
   );
 }
 
@@ -4137,8 +4194,8 @@ export namespace CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONR
 }
 
 /** @internal */
-export const GitSource4$inboundSchema: z.ZodType<
-  GitSource4,
+export const CreateDeploymentGitSource4$inboundSchema: z.ZodType<
+  CreateDeploymentGitSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4152,7 +4209,7 @@ export const GitSource4$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource4$Outbound = {
+export type CreateDeploymentGitSource4$Outbound = {
   type: string;
   workspaceUuid?: string | undefined;
   repoUuid: string;
@@ -4162,10 +4219,10 @@ export type GitSource4$Outbound = {
 };
 
 /** @internal */
-export const GitSource4$outboundSchema: z.ZodType<
-  GitSource4$Outbound,
+export const CreateDeploymentGitSource4$outboundSchema: z.ZodType<
+  CreateDeploymentGitSource4$Outbound,
   z.ZodTypeDef,
-  GitSource4
+  CreateDeploymentGitSource4
 > = z.object({
   type:
     CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$outboundSchema,
@@ -4180,26 +4237,30 @@ export const GitSource4$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource4$ {
-  /** @deprecated use `GitSource4$inboundSchema` instead. */
-  export const inboundSchema = GitSource4$inboundSchema;
-  /** @deprecated use `GitSource4$outboundSchema` instead. */
-  export const outboundSchema = GitSource4$outboundSchema;
-  /** @deprecated use `GitSource4$Outbound` instead. */
-  export type Outbound = GitSource4$Outbound;
+export namespace CreateDeploymentGitSource4$ {
+  /** @deprecated use `CreateDeploymentGitSource4$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentGitSource4$inboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource4$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentGitSource4$outboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource4$Outbound` instead. */
+  export type Outbound = CreateDeploymentGitSource4$Outbound;
 }
 
-export function gitSource4ToJSON(gitSource4: GitSource4): string {
-  return JSON.stringify(GitSource4$outboundSchema.parse(gitSource4));
+export function createDeploymentGitSource4ToJSON(
+  createDeploymentGitSource4: CreateDeploymentGitSource4,
+): string {
+  return JSON.stringify(
+    CreateDeploymentGitSource4$outboundSchema.parse(createDeploymentGitSource4),
+  );
 }
 
-export function gitSource4FromJSON(
+export function createDeploymentGitSource4FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource4, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitSource4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource4' from JSON`,
+    (x) => CreateDeploymentGitSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitSource4' from JSON`,
   );
 }
 
@@ -4280,8 +4341,8 @@ export function gitSourceProjectIdFromJSON(
 }
 
 /** @internal */
-export const GitSource3$inboundSchema: z.ZodType<
-  GitSource3,
+export const CreateDeploymentGitSource3$inboundSchema: z.ZodType<
+  CreateDeploymentGitSource3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4294,7 +4355,7 @@ export const GitSource3$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource3$Outbound = {
+export type CreateDeploymentGitSource3$Outbound = {
   type: string;
   projectId: string | number;
   ref?: string | null | undefined;
@@ -4303,10 +4364,10 @@ export type GitSource3$Outbound = {
 };
 
 /** @internal */
-export const GitSource3$outboundSchema: z.ZodType<
-  GitSource3$Outbound,
+export const CreateDeploymentGitSource3$outboundSchema: z.ZodType<
+  CreateDeploymentGitSource3$Outbound,
   z.ZodTypeDef,
-  GitSource3
+  CreateDeploymentGitSource3
 > = z.object({
   type:
     CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$outboundSchema,
@@ -4320,26 +4381,30 @@ export const GitSource3$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource3$ {
-  /** @deprecated use `GitSource3$inboundSchema` instead. */
-  export const inboundSchema = GitSource3$inboundSchema;
-  /** @deprecated use `GitSource3$outboundSchema` instead. */
-  export const outboundSchema = GitSource3$outboundSchema;
-  /** @deprecated use `GitSource3$Outbound` instead. */
-  export type Outbound = GitSource3$Outbound;
+export namespace CreateDeploymentGitSource3$ {
+  /** @deprecated use `CreateDeploymentGitSource3$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentGitSource3$inboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource3$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentGitSource3$outboundSchema;
+  /** @deprecated use `CreateDeploymentGitSource3$Outbound` instead. */
+  export type Outbound = CreateDeploymentGitSource3$Outbound;
 }
 
-export function gitSource3ToJSON(gitSource3: GitSource3): string {
-  return JSON.stringify(GitSource3$outboundSchema.parse(gitSource3));
+export function createDeploymentGitSource3ToJSON(
+  createDeploymentGitSource3: CreateDeploymentGitSource3,
+): string {
+  return JSON.stringify(
+    CreateDeploymentGitSource3$outboundSchema.parse(createDeploymentGitSource3),
+  );
 }
 
-export function gitSource3FromJSON(
+export function createDeploymentGitSource3FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource3, SDKValidationError> {
+): SafeParseResult<CreateDeploymentGitSource3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource3' from JSON`,
+    (x) => CreateDeploymentGitSource3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentGitSource3' from JSON`,
   );
 }
 
@@ -4579,10 +4644,10 @@ export const CreateDeploymentGitSource$inboundSchema: z.ZodType<
   z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
-  z.lazy(() => GitSource3$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
-  z.lazy(() => GitSource4$inboundSchema),
-  z.lazy(() => GitSource5$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
 ]);
@@ -4592,10 +4657,10 @@ export type CreateDeploymentGitSource$Outbound =
   | CreateDeploymentGitSource6$Outbound
   | CreateDeploymentGitSource8$Outbound
   | CreateDeploymentGitSource1$Outbound
-  | GitSource3$Outbound
+  | CreateDeploymentGitSource3$Outbound
   | CreateDeploymentGitSource2$Outbound
-  | GitSource4$Outbound
-  | GitSource5$Outbound
+  | CreateDeploymentGitSource4$Outbound
+  | CreateDeploymentGitSource5$Outbound
   | CreateDeploymentGitSource7$Outbound
   | CreateDeploymentGitSource9$Outbound;
 
@@ -4608,10 +4673,10 @@ export const CreateDeploymentGitSource$outboundSchema: z.ZodType<
   z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
-  z.lazy(() => GitSource3$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
-  z.lazy(() => GitSource4$outboundSchema),
-  z.lazy(() => GitSource5$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
 ]);
@@ -4648,25 +4713,28 @@ export function createDeploymentGitSourceFromJSON(
 }
 
 /** @internal */
-export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string(),
-    name: z.string(),
-    framework: z.nullable(z.string()).optional(),
-  });
+export const CreateDeploymentProject$inboundSchema: z.ZodType<
+  CreateDeploymentProject,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  framework: z.nullable(z.string()).optional(),
+});
 
 /** @internal */
-export type Project$Outbound = {
+export type CreateDeploymentProject$Outbound = {
   id: string;
   name: string;
   framework?: string | null | undefined;
 };
 
 /** @internal */
-export const Project$outboundSchema: z.ZodType<
-  Project$Outbound,
+export const CreateDeploymentProject$outboundSchema: z.ZodType<
+  CreateDeploymentProject$Outbound,
   z.ZodTypeDef,
-  Project
+  CreateDeploymentProject
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -4677,26 +4745,30 @@ export const Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Project$ {
-  /** @deprecated use `Project$inboundSchema` instead. */
-  export const inboundSchema = Project$inboundSchema;
-  /** @deprecated use `Project$outboundSchema` instead. */
-  export const outboundSchema = Project$outboundSchema;
-  /** @deprecated use `Project$Outbound` instead. */
-  export type Outbound = Project$Outbound;
+export namespace CreateDeploymentProject$ {
+  /** @deprecated use `CreateDeploymentProject$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentProject$inboundSchema;
+  /** @deprecated use `CreateDeploymentProject$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentProject$outboundSchema;
+  /** @deprecated use `CreateDeploymentProject$Outbound` instead. */
+  export type Outbound = CreateDeploymentProject$Outbound;
 }
 
-export function projectToJSON(project: Project): string {
-  return JSON.stringify(Project$outboundSchema.parse(project));
+export function createDeploymentProjectToJSON(
+  createDeploymentProject: CreateDeploymentProject,
+): string {
+  return JSON.stringify(
+    CreateDeploymentProject$outboundSchema.parse(createDeploymentProject),
+  );
 }
 
-export function projectFromJSON(
+export function createDeploymentProjectFromJSON(
   jsonString: string,
-): SafeParseResult<Project, SDKValidationError> {
+): SafeParseResult<CreateDeploymentProject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Project' from JSON`,
+    (x) => CreateDeploymentProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentProject' from JSON`,
   );
 }
 
@@ -5021,23 +5093,24 @@ export function oidcTokenClaimsFromJSON(
 }
 
 /** @internal */
-export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
-  Plan,
-);
+export const CreateDeploymentPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentPlan
+> = z.nativeEnum(CreateDeploymentPlan);
 
 /** @internal */
-export const Plan$outboundSchema: z.ZodNativeEnum<typeof Plan> =
-  Plan$inboundSchema;
+export const CreateDeploymentPlan$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentPlan
+> = CreateDeploymentPlan$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Plan$ {
-  /** @deprecated use `Plan$inboundSchema` instead. */
-  export const inboundSchema = Plan$inboundSchema;
-  /** @deprecated use `Plan$outboundSchema` instead. */
-  export const outboundSchema = Plan$outboundSchema;
+export namespace CreateDeploymentPlan$ {
+  /** @deprecated use `CreateDeploymentPlan$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentPlan$inboundSchema;
+  /** @deprecated use `CreateDeploymentPlan$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentPlan$outboundSchema;
 }
 
 /** @internal */
@@ -6911,7 +6984,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   public: z.boolean(),
   ready: z.number().optional(),
   status: CreateDeploymentStatus$inboundSchema,
-  team: z.lazy(() => Team$inboundSchema).optional(),
+  team: z.lazy(() => CreateDeploymentTeam$inboundSchema).optional(),
   userAliases: z.array(z.string()).optional(),
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
@@ -6930,15 +7003,15 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
-    z.lazy(() => GitSource3$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
-    z.lazy(() => GitSource4$inboundSchema),
-    z.lazy(() => GitSource5$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
-  project: z.lazy(() => Project$inboundSchema).optional(),
+  project: z.lazy(() => CreateDeploymentProject$inboundSchema).optional(),
   readyState: ReadyState$inboundSchema,
   source: CreateDeploymentSource$inboundSchema.optional(),
   target: z.nullable(CreateDeploymentTarget$inboundSchema).optional(),
@@ -6963,7 +7036,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   undeletedAt: z.number().optional(),
   url: z.string(),
   oidcTokenClaims: z.lazy(() => OidcTokenClaims$inboundSchema).optional(),
-  plan: Plan$inboundSchema,
+  plan: CreateDeploymentPlan$inboundSchema,
   projectId: z.string(),
   ownerId: z.string(),
   microfrontends: z.union([
@@ -7028,7 +7101,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   public: boolean;
   ready?: number | undefined;
   status: string;
-  team?: Team$Outbound | undefined;
+  team?: CreateDeploymentTeam$Outbound | undefined;
   userAliases?: Array<string> | undefined;
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
@@ -7047,15 +7120,15 @@ export type CreateDeploymentResponseBody$Outbound = {
     | CreateDeploymentGitSource6$Outbound
     | CreateDeploymentGitSource8$Outbound
     | CreateDeploymentGitSource1$Outbound
-    | GitSource3$Outbound
+    | CreateDeploymentGitSource3$Outbound
     | CreateDeploymentGitSource2$Outbound
-    | GitSource4$Outbound
-    | GitSource5$Outbound
+    | CreateDeploymentGitSource4$Outbound
+    | CreateDeploymentGitSource5$Outbound
     | CreateDeploymentGitSource7$Outbound
     | CreateDeploymentGitSource9$Outbound
     | undefined;
   meta: { [k: string]: string };
-  project?: Project$Outbound | undefined;
+  project?: CreateDeploymentProject$Outbound | undefined;
   readyState: string;
   source?: string | undefined;
   target?: string | null | undefined;
@@ -7136,7 +7209,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   public: z.boolean(),
   ready: z.number().optional(),
   status: CreateDeploymentStatus$outboundSchema,
-  team: z.lazy(() => Team$outboundSchema).optional(),
+  team: z.lazy(() => CreateDeploymentTeam$outboundSchema).optional(),
   userAliases: z.array(z.string()).optional(),
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
@@ -7155,15 +7228,15 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
-    z.lazy(() => GitSource3$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
-    z.lazy(() => GitSource4$outboundSchema),
-    z.lazy(() => GitSource5$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
-  project: z.lazy(() => Project$outboundSchema).optional(),
+  project: z.lazy(() => CreateDeploymentProject$outboundSchema).optional(),
   readyState: ReadyState$outboundSchema,
   source: CreateDeploymentSource$outboundSchema.optional(),
   target: z.nullable(CreateDeploymentTarget$outboundSchema).optional(),
@@ -7189,7 +7262,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   undeletedAt: z.number().optional(),
   url: z.string(),
   oidcTokenClaims: z.lazy(() => OidcTokenClaims$outboundSchema).optional(),
-  plan: Plan$outboundSchema,
+  plan: CreateDeploymentPlan$outboundSchema,
   projectId: z.string(),
   ownerId: z.string(),
   microfrontends: z.union([

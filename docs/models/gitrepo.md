@@ -15,7 +15,7 @@ const value: models.GitRepo1 = {
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 
@@ -32,7 +32,7 @@ const value: models.GitRepo2 = {
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 
@@ -49,7 +49,7 @@ const value: models.GitRepo3 = {
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 

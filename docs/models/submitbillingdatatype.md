@@ -7,7 +7,7 @@
 ```typescript
 import { SubmitBillingDataType } from "@vercel/sdk/models/submitbillingdataop.js";
 
-let value: SubmitBillingDataType = "interval";
+let value: SubmitBillingDataType = "total";
 ```
 
 ## Values

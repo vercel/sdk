@@ -5,7 +5,7 @@
 ```typescript
 import { CreateConfigurableLogDrainStatus } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
 
-let value: CreateConfigurableLogDrainStatus = "enabled";
+let value: CreateConfigurableLogDrainStatus = "errored";
 ```
 
 ## Values

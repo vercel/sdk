@@ -1,25 +1,18 @@
 # Fourteen
 
+The payload of the event, if requested.
+
 ## Example Usage
 
 ```typescript
-import { Fourteen } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Fourteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Fourteen = {
-  type: "integration-store-secret",
-  storeId: "<id>",
-  integrationId: "<id>",
-  integrationProductId: "<id>",
-  integrationConfigurationId: "<id>",
-};
+let value: Fourteen = {};
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                                    | Type                                                                                                                                                                                                     | Required                                                                                                                                                                                                 | Description                                                                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                                                   | [models.UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type](../models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv14type.md) | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `storeId`                                                                                                                                                                                                | *string*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `integrationId`                                                                                                                                                                                          | *string*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `integrationProductId`                                                                                                                                                                                   | *string*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `integrationConfigurationId`                                                                                                                                                                             | *string*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |

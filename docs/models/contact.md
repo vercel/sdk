@@ -8,7 +8,7 @@ The best contact for the integration, which can change as team members and their
 import { Contact } from "@vercel/sdk/models/getaccountinfoop.js";
 
 let value: Contact = {
-  email: "Zoey96@hotmail.com",
+  email: "Johan79@yahoo.com",
 };
 ```
 

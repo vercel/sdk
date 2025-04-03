@@ -3,12 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Team } from "@vercel/sdk/models/createdeploymentop.js";
+import { Team } from "@vercel/sdk/models/userevent.js";
 
 let value: Team = {
-  name: "<value>",
   id: "<id>",
-  slug: "<value>",
+  name: "<value>",
 };
 ```
 
@@ -16,7 +15,5 @@ let value: Team = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

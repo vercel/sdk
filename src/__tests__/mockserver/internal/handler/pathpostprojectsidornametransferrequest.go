@@ -35,6 +35,11 @@ func testCreateProjectTransferRequestCreateProjectTransferRequest0(w http.Respon
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
+	if err := assert.ContentType(req, "application/json", false); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)

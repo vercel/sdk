@@ -21,15 +21,15 @@ func pathGetV1ExperimentationItems(dir *logging.HTTPFileDirectory, rt *tracking.
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "get_/v1/experimentation/items[0]":
-			dir.HandlerFunc("get_/v1/experimentation/items", testGetV1ExperimentationItemsGetV1ExperimentationItems0)(w, req)
+		case "queryExperimentationItems[0]":
+			dir.HandlerFunc("queryExperimentationItems", testQueryExperimentationItemsQueryExperimentationItems0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetV1ExperimentationItemsGetV1ExperimentationItems0(w http.ResponseWriter, req *http.Request) {
+func testQueryExperimentationItemsQueryExperimentationItems0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -45,8 +45,8 @@ func testGetV1ExperimentationItemsGetV1ExperimentationItems0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetV1ExperimentationItemsResponseBody{
-		Items: []operations.GetV1ExperimentationItemsItems{},
+	respBody := &operations.QueryExperimentationItemsResponseBody{
+		Items: []operations.QueryExperimentationItemsItems{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

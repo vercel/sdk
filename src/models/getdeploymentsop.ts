@@ -60,6 +60,14 @@ export type GetDeploymentsRequest = {
    */
   rollbackCandidate?: boolean | undefined;
   /**
+   * Filter deployments based on the branch name
+   */
+  branch?: string | undefined;
+  /**
+   * Filter deployments based on the SHA
+   */
+  sha?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -183,14 +191,15 @@ export type GetDeploymentsAliasError = {
 export type GetDeploymentsAliasAssigned = number | boolean;
 
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
 export const GetDeploymentsReadySubstate = {
   Staged: "STAGED",
+  Rolling: "ROLLING",
   Promoted: "PROMOTED",
 } as const;
 /**
- * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+ * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
  */
 export type GetDeploymentsReadySubstate = ClosedEnum<
   typeof GetDeploymentsReadySubstate
@@ -439,7 +448,7 @@ export type Deployments = {
    */
   ready?: number | undefined;
   /**
-   * Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic
+   * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic
    */
   readySubstate?: GetDeploymentsReadySubstate | undefined;
   /**
@@ -513,6 +522,8 @@ export const GetDeploymentsRequest$inboundSchema: z.ZodType<
   until: z.number().optional(),
   state: z.string().optional(),
   rollbackCandidate: z.boolean().optional(),
+  branch: z.string().optional(),
+  sha: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -530,6 +541,8 @@ export type GetDeploymentsRequest$Outbound = {
   until?: number | undefined;
   state?: string | undefined;
   rollbackCandidate?: boolean | undefined;
+  branch?: string | undefined;
+  sha?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -551,6 +564,8 @@ export const GetDeploymentsRequest$outboundSchema: z.ZodType<
   until: z.number().optional(),
   state: z.string().optional(),
   rollbackCandidate: z.boolean().optional(),
+  branch: z.string().optional(),
+  sha: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

@@ -1,21 +1,19 @@
 # Target
 
-Deployment Target or Targets in which the ENV variable will be used
-
 
 ## Supported Types
 
-### `models.Target1`
+### `string`
 
 ```typescript
-const value: models.Target1 = "preview";
+const value: string = "<value>";
 ```
 
-### `models.Target2[]`
+### `string[]`
 
 ```typescript
-const value: models.Target2[] = [
-  "preview",
+const value: string[] = [
+  "<value>",
 ];
 ```
 

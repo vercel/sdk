@@ -77,6 +77,7 @@ export const GetConfigurationsResponseBodyIntegrationsSource = {
   Marketplace: "marketplace",
   DeployButton: "deploy-button",
   External: "external",
+  V0: "v0",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -195,6 +196,7 @@ export const GetConfigurationsResponseBodySource = {
   Marketplace: "marketplace",
   DeployButton: "deploy-button",
   External: "external",
+  V0: "v0",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.

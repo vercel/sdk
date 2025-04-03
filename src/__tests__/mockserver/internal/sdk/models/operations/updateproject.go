@@ -3019,6 +3019,7 @@ type UpdateProjectReadySubstate string
 
 const (
 	UpdateProjectReadySubstateStaged   UpdateProjectReadySubstate = "STAGED"
+	UpdateProjectReadySubstateRolling  UpdateProjectReadySubstate = "ROLLING"
 	UpdateProjectReadySubstatePromoted UpdateProjectReadySubstate = "PROMOTED"
 )
 
@@ -3032,6 +3033,8 @@ func (e *UpdateProjectReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = UpdateProjectReadySubstate(v)
@@ -4804,6 +4807,7 @@ type UpdateProjectProjectsReadySubstate string
 
 const (
 	UpdateProjectProjectsReadySubstateStaged   UpdateProjectProjectsReadySubstate = "STAGED"
+	UpdateProjectProjectsReadySubstateRolling  UpdateProjectProjectsReadySubstate = "ROLLING"
 	UpdateProjectProjectsReadySubstatePromoted UpdateProjectProjectsReadySubstate = "PROMOTED"
 )
 
@@ -4817,6 +4821,8 @@ func (e *UpdateProjectProjectsReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "STAGED":
+		fallthrough
+	case "ROLLING":
 		fallthrough
 	case "PROMOTED":
 		*e = UpdateProjectProjectsReadySubstate(v)

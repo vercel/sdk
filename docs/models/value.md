@@ -12,8 +12,8 @@ let value: Value = {
     {
       conditions: [
         {
-          type: "environment",
-          op: "suf",
+          type: "region",
+          op: "lte",
         },
       ],
     },

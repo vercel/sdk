@@ -78,6 +78,11 @@ export type GetDomainConfigResponseBody = {
    * Whether or not the domain is configured AND we can automatically generate a TLS certificate.
    */
   misconfigured: boolean;
+  /**
+   * Recommended IPs and CNAME for the domain.
+   */
+  recommendedIps?: Array<string> | undefined;
+  recommendedCname?: string | undefined;
 };
 
 /** @internal */
@@ -211,6 +216,8 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   configuredBy: z.nullable(ConfiguredBy$inboundSchema).optional(),
   acceptedChallenges: z.array(AcceptedChallenges$inboundSchema).optional(),
   misconfigured: z.boolean(),
+  recommendedIps: z.array(z.string()).optional(),
+  recommendedCname: z.string().optional(),
 });
 
 /** @internal */
@@ -218,6 +225,8 @@ export type GetDomainConfigResponseBody$Outbound = {
   configuredBy?: string | null | undefined;
   acceptedChallenges?: Array<string> | undefined;
   misconfigured: boolean;
+  recommendedIps?: Array<string> | undefined;
+  recommendedCname?: string | undefined;
 };
 
 /** @internal */
@@ -229,6 +238,8 @@ export const GetDomainConfigResponseBody$outboundSchema: z.ZodType<
   configuredBy: z.nullable(ConfiguredBy$outboundSchema).optional(),
   acceptedChallenges: z.array(AcceptedChallenges$outboundSchema).optional(),
   misconfigured: z.boolean(),
+  recommendedIps: z.array(z.string()).optional(),
+  recommendedCname: z.string().optional(),
 });
 
 /**

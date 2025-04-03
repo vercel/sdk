@@ -78,7 +78,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v2/integrations/log-drains", pathGetV2IntegrationsLogDrains(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v2/teams", pathGetV2Teams(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v2/teams/{teamId}", pathGetV2TeamsTeamID(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodGet, "/v2/teams/{teamId}/members", pathGetV2TeamsTeamIDMembers(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v3/deployments/{idOrUrl}/events", pathGetV3DeploymentsIDOrURLEvents(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v3/events", pathGetV3Events(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v4/aliases", pathGetV4Aliases(dir, rt)),

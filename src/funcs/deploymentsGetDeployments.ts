@@ -109,10 +109,12 @@ async function $do(
 
   const query = encodeFormQuery({
     "app": payload.app,
+    "branch": payload.branch,
     "from": payload.from,
     "limit": payload.limit,
     "projectId": payload.projectId,
     "rollbackCandidate": payload.rollbackCandidate,
+    "sha": payload.sha,
     "since": payload.since,
     "slug": payload.slug,
     "state": payload.state,

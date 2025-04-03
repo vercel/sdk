@@ -1,5 +1,7 @@
 # UpdateProjectOptionsAllowlist
 
+Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
+
 ## Example Usage
 
 ```typescript

@@ -87,6 +87,7 @@ export const CreateLogDrainLogDrainsDeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
   Syslog: "syslog",
+  Protobuf: "protobuf",
 } as const;
 /**
  * The delivery log format

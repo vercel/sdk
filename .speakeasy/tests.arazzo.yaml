@@ -5613,3 +5613,17 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: environment
+  - workflowId: queryExperimentationItems
+    steps:
+      - stepId: test
+        operationId: queryExperimentationItems
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": []
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace

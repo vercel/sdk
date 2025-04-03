@@ -5,7 +5,6 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AccessGroups } from "./accessgroups.js";
 import { Aliases } from "./aliases.js";
-import { ApiExperimentation } from "./apiexperimentation.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
 import { Certs } from "./certs.js";
@@ -89,11 +88,6 @@ export class Vercel extends ClientSDK {
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
-  }
-
-  private _apiExperimentation?: ApiExperimentation;
-  get apiExperimentation(): ApiExperimentation {
-    return (this._apiExperimentation ??= new ApiExperimentation(this._options));
   }
 
   private _projectMembers?: ProjectMembers;

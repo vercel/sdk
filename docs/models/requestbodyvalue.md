@@ -12,8 +12,8 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "method",
-          op: "pre",
+          type: "ja4_digest",
+          op: "nex",
         },
       ],
     },

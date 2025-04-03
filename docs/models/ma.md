@@ -9,7 +9,7 @@ import { Ma } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: Ma = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

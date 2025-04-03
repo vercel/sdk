@@ -5,11 +5,11 @@
 ```typescript
 import { GetAllLogDrainsDeliveryFormat } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDeliveryFormat = "json";
+let value: GetAllLogDrainsDeliveryFormat = "syslog";
 ```
 
 ## Values
 
 ```typescript
-"json" | "ndjson" | "syslog"
+"json" | "ndjson" | "syslog" | "protobuf"
 ```

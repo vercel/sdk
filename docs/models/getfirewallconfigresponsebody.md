@@ -11,29 +11,29 @@ let value: GetFirewallConfigResponseBody = {
   ownerId: "<id>",
   projectKey: "<value>",
   id: "<id>",
-  version: 8313.04,
-  updatedAt: "1743628331034",
+  version: 5092.12,
+  updatedAt: "1744385346491",
   firewallEnabled: false,
   crs: {
     sd: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     ma: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     lfi: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     rfi: {
       active: false,
-      action: "log",
+      action: "deny",
     },
     rce: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     php: {
       active: false,
@@ -49,7 +49,7 @@ let value: GetFirewallConfigResponseBody = {
     },
     sqli: {
       active: false,
-      action: "deny",
+      action: "log",
     },
     sf: {
       active: false,
@@ -69,8 +69,8 @@ let value: GetFirewallConfigResponseBody = {
         {
           conditions: [
             {
-              type: "raw_path",
-              op: "nex",
+              type: "host",
+              op: "gt",
             },
           ],
         },
@@ -81,8 +81,8 @@ let value: GetFirewallConfigResponseBody = {
   ips: [
     {
       id: "<id>",
-      hostname: "tiny-nightlife.name",
-      ip: "6d53:9fdf:e332:4dcd:8cb6:d3a3:a895:265a",
+      hostname: "vast-zen.net",
+      ip: "2e19:ddd0:ccfc:9b0b:d351:aa32:ef81:fb58",
       action: "challenge",
     },
   ],

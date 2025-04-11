@@ -6,10 +6,10 @@
 import { SubmitPrepaymentBalancesRequestBody } from "@vercel/sdk/models/submitprepaymentbalancesop.js";
 
 let value: SubmitPrepaymentBalancesRequestBody = {
-  timestamp: new Date("2025-04-25T04:13:36.973Z"),
+  timestamp: new Date("2024-05-08T18:02:53.260Z"),
   balances: [
     {
-      currencyValueInCents: 3290.16,
+      currencyValueInCents: 7661.79,
     },
   ],
 };

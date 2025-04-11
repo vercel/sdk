@@ -6,9 +6,9 @@
 import { UpdateProjectErl } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectErl = {
-  algo: "fixed_window",
-  window: 2244.13,
-  limit: 9536.76,
+  algo: "token_bucket",
+  window: 7339.64,
+  limit: 6140.45,
   keys: [
     "<value>",
   ],

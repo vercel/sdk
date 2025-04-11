@@ -6,7 +6,7 @@
 import { GetDeploymentFlagsOptions } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentFlagsOptions = {
-  value: 9829.91,
+  value: {},
 };
 ```
 

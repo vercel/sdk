@@ -5,7 +5,7 @@
 ```typescript
 import { GetRecordsResponseBodyType } from "@vercel/sdk/models/getrecordsop.js";
 
-let value: GetRecordsResponseBodyType = "HTTPS";
+let value: GetRecordsResponseBodyType = "MX";
 ```
 
 ## Values

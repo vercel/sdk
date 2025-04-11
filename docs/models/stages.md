@@ -8,7 +8,7 @@ An array of all the stages required during a deployment release. each stage requ
 import { Stages } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Stages = {
-  targetPercentage: 6874.88,
+  targetPercentage: 423.31,
 };
 ```
 

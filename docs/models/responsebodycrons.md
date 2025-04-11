@@ -7,7 +7,7 @@ import { ResponseBodyCrons } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyCrons = {
   schedule: "<value>",
-  path: "/etc/periodic",
+  path: "/mnt",
 };
 ```
 

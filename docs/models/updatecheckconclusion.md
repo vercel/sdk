@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateCheckConclusion } from "@vercel/sdk/models/updatecheckop.js";
 
-let value: UpdateCheckConclusion = "stale";
+let value: UpdateCheckConclusion = "failed";
 ```
 
 ## Values

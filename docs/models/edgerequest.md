@@ -6,7 +6,7 @@
 import { EdgeRequest } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeRequest = {
-  currentThreshold: 7456.67,
+  currentThreshold: 4078.48,
 };
 ```
 

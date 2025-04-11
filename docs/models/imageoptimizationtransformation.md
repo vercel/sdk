@@ -6,7 +6,7 @@
 import { ImageOptimizationTransformation } from "@vercel/sdk/models/userevent.js";
 
 let value: ImageOptimizationTransformation = {
-  currentThreshold: 3663.24,
+  currentThreshold: 6667.74,
 };
 ```
 

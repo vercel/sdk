@@ -7,7 +7,7 @@ import { UpdateFirewallConfigRequestBodyValue } from "@vercel/sdk/models/updatef
 
 let value: UpdateFirewallConfigRequestBodyValue = {
   active: false,
-  action: "log",
+  action: "deny",
 };
 ```
 

@@ -35,6 +35,80 @@ export const ProjectSelection = {
  */
 export type ProjectSelection = ClosedEnum<typeof ProjectSelection>;
 
+export const TransferRequestKind = {
+  TransferFromMarketplace: "transfer-from-marketplace",
+} as const;
+export type TransferRequestKind = ClosedEnum<typeof TransferRequestKind>;
+
+export type TransferRequestRequester = {
+  name: string;
+  email?: string | undefined;
+};
+
+export type TransferRequest2 = {
+  kind: TransferRequestKind;
+  requestId: string;
+  transferId: string;
+  requester: TransferRequestRequester;
+  createdAt: number;
+  expiresAt: number;
+  discardedAt?: number | undefined;
+  discardedBy?: string | undefined;
+  approvedAt?: number | undefined;
+  approvedBy?: string | undefined;
+  authorizationId?: string | undefined;
+};
+
+export const Kind = {
+  TransferToMarketplace: "transfer-to-marketplace",
+} as const;
+export type Kind = ClosedEnum<typeof Kind>;
+
+export const TransferRequestType = {
+  Subscription: "subscription",
+  Prepayment: "prepayment",
+} as const;
+export type TransferRequestType = ClosedEnum<typeof TransferRequestType>;
+
+export const TransferRequestScope = {
+  Installation: "installation",
+  Resource: "resource",
+} as const;
+export type TransferRequestScope = ClosedEnum<typeof TransferRequestScope>;
+
+export type TransferRequestBillingPlan = {
+  id: string;
+  type: TransferRequestType;
+  scope?: TransferRequestScope | undefined;
+  name: string;
+  description: string;
+  paymentMethodRequired?: boolean | undefined;
+  preauthorizationAmount?: number | undefined;
+};
+
+export type Requester = {
+  name: string;
+  email?: string | undefined;
+};
+
+export type TransferRequest1 = {
+  kind: Kind;
+  metadata?: { [k: string]: any } | undefined;
+  billingPlan?: TransferRequestBillingPlan | undefined;
+  requestId: string;
+  transferId: string;
+  requester: Requester;
+  createdAt: number;
+  expiresAt: number;
+  discardedAt?: number | undefined;
+  discardedBy?: string | undefined;
+  approvedAt?: number | undefined;
+  approvedBy?: string | undefined;
+  authorizationId?: string | undefined;
+};
+
+export type TransferRequest = TransferRequest2 | TransferRequest1;
+
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
  */
@@ -88,6 +162,7 @@ export type GetConfigurationResponseBody2 = {
    * A string representing the permission for projects. Possible values are `all` or `selected`.
    */
   projectSelection: ProjectSelection;
+  transferRequest: TransferRequest2 | TransferRequest1;
   /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
    */
@@ -371,6 +446,501 @@ export namespace ProjectSelection$ {
 }
 
 /** @internal */
+export const TransferRequestKind$inboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestKind
+> = z.nativeEnum(TransferRequestKind);
+
+/** @internal */
+export const TransferRequestKind$outboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestKind
+> = TransferRequestKind$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequestKind$ {
+  /** @deprecated use `TransferRequestKind$inboundSchema` instead. */
+  export const inboundSchema = TransferRequestKind$inboundSchema;
+  /** @deprecated use `TransferRequestKind$outboundSchema` instead. */
+  export const outboundSchema = TransferRequestKind$outboundSchema;
+}
+
+/** @internal */
+export const TransferRequestRequester$inboundSchema: z.ZodType<
+  TransferRequestRequester,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  email: z.string().optional(),
+});
+
+/** @internal */
+export type TransferRequestRequester$Outbound = {
+  name: string;
+  email?: string | undefined;
+};
+
+/** @internal */
+export const TransferRequestRequester$outboundSchema: z.ZodType<
+  TransferRequestRequester$Outbound,
+  z.ZodTypeDef,
+  TransferRequestRequester
+> = z.object({
+  name: z.string(),
+  email: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequestRequester$ {
+  /** @deprecated use `TransferRequestRequester$inboundSchema` instead. */
+  export const inboundSchema = TransferRequestRequester$inboundSchema;
+  /** @deprecated use `TransferRequestRequester$outboundSchema` instead. */
+  export const outboundSchema = TransferRequestRequester$outboundSchema;
+  /** @deprecated use `TransferRequestRequester$Outbound` instead. */
+  export type Outbound = TransferRequestRequester$Outbound;
+}
+
+export function transferRequestRequesterToJSON(
+  transferRequestRequester: TransferRequestRequester,
+): string {
+  return JSON.stringify(
+    TransferRequestRequester$outboundSchema.parse(transferRequestRequester),
+  );
+}
+
+export function transferRequestRequesterFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferRequestRequester, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferRequestRequester$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferRequestRequester' from JSON`,
+  );
+}
+
+/** @internal */
+export const TransferRequest2$inboundSchema: z.ZodType<
+  TransferRequest2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: TransferRequestKind$inboundSchema,
+  requestId: z.string(),
+  transferId: z.string(),
+  requester: z.lazy(() => TransferRequestRequester$inboundSchema),
+  createdAt: z.number(),
+  expiresAt: z.number(),
+  discardedAt: z.number().optional(),
+  discardedBy: z.string().optional(),
+  approvedAt: z.number().optional(),
+  approvedBy: z.string().optional(),
+  authorizationId: z.string().optional(),
+});
+
+/** @internal */
+export type TransferRequest2$Outbound = {
+  kind: string;
+  requestId: string;
+  transferId: string;
+  requester: TransferRequestRequester$Outbound;
+  createdAt: number;
+  expiresAt: number;
+  discardedAt?: number | undefined;
+  discardedBy?: string | undefined;
+  approvedAt?: number | undefined;
+  approvedBy?: string | undefined;
+  authorizationId?: string | undefined;
+};
+
+/** @internal */
+export const TransferRequest2$outboundSchema: z.ZodType<
+  TransferRequest2$Outbound,
+  z.ZodTypeDef,
+  TransferRequest2
+> = z.object({
+  kind: TransferRequestKind$outboundSchema,
+  requestId: z.string(),
+  transferId: z.string(),
+  requester: z.lazy(() => TransferRequestRequester$outboundSchema),
+  createdAt: z.number(),
+  expiresAt: z.number(),
+  discardedAt: z.number().optional(),
+  discardedBy: z.string().optional(),
+  approvedAt: z.number().optional(),
+  approvedBy: z.string().optional(),
+  authorizationId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequest2$ {
+  /** @deprecated use `TransferRequest2$inboundSchema` instead. */
+  export const inboundSchema = TransferRequest2$inboundSchema;
+  /** @deprecated use `TransferRequest2$outboundSchema` instead. */
+  export const outboundSchema = TransferRequest2$outboundSchema;
+  /** @deprecated use `TransferRequest2$Outbound` instead. */
+  export type Outbound = TransferRequest2$Outbound;
+}
+
+export function transferRequest2ToJSON(
+  transferRequest2: TransferRequest2,
+): string {
+  return JSON.stringify(
+    TransferRequest2$outboundSchema.parse(transferRequest2),
+  );
+}
+
+export function transferRequest2FromJSON(
+  jsonString: string,
+): SafeParseResult<TransferRequest2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferRequest2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferRequest2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
+  Kind,
+);
+
+/** @internal */
+export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
+  Kind$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Kind$ {
+  /** @deprecated use `Kind$inboundSchema` instead. */
+  export const inboundSchema = Kind$inboundSchema;
+  /** @deprecated use `Kind$outboundSchema` instead. */
+  export const outboundSchema = Kind$outboundSchema;
+}
+
+/** @internal */
+export const TransferRequestType$inboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestType
+> = z.nativeEnum(TransferRequestType);
+
+/** @internal */
+export const TransferRequestType$outboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestType
+> = TransferRequestType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequestType$ {
+  /** @deprecated use `TransferRequestType$inboundSchema` instead. */
+  export const inboundSchema = TransferRequestType$inboundSchema;
+  /** @deprecated use `TransferRequestType$outboundSchema` instead. */
+  export const outboundSchema = TransferRequestType$outboundSchema;
+}
+
+/** @internal */
+export const TransferRequestScope$inboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestScope
+> = z.nativeEnum(TransferRequestScope);
+
+/** @internal */
+export const TransferRequestScope$outboundSchema: z.ZodNativeEnum<
+  typeof TransferRequestScope
+> = TransferRequestScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequestScope$ {
+  /** @deprecated use `TransferRequestScope$inboundSchema` instead. */
+  export const inboundSchema = TransferRequestScope$inboundSchema;
+  /** @deprecated use `TransferRequestScope$outboundSchema` instead. */
+  export const outboundSchema = TransferRequestScope$outboundSchema;
+}
+
+/** @internal */
+export const TransferRequestBillingPlan$inboundSchema: z.ZodType<
+  TransferRequestBillingPlan,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  type: TransferRequestType$inboundSchema,
+  scope: TransferRequestScope$inboundSchema.optional(),
+  name: z.string(),
+  description: z.string(),
+  paymentMethodRequired: z.boolean().optional(),
+  preauthorizationAmount: z.number().optional(),
+});
+
+/** @internal */
+export type TransferRequestBillingPlan$Outbound = {
+  id: string;
+  type: string;
+  scope?: string | undefined;
+  name: string;
+  description: string;
+  paymentMethodRequired?: boolean | undefined;
+  preauthorizationAmount?: number | undefined;
+};
+
+/** @internal */
+export const TransferRequestBillingPlan$outboundSchema: z.ZodType<
+  TransferRequestBillingPlan$Outbound,
+  z.ZodTypeDef,
+  TransferRequestBillingPlan
+> = z.object({
+  id: z.string(),
+  type: TransferRequestType$outboundSchema,
+  scope: TransferRequestScope$outboundSchema.optional(),
+  name: z.string(),
+  description: z.string(),
+  paymentMethodRequired: z.boolean().optional(),
+  preauthorizationAmount: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequestBillingPlan$ {
+  /** @deprecated use `TransferRequestBillingPlan$inboundSchema` instead. */
+  export const inboundSchema = TransferRequestBillingPlan$inboundSchema;
+  /** @deprecated use `TransferRequestBillingPlan$outboundSchema` instead. */
+  export const outboundSchema = TransferRequestBillingPlan$outboundSchema;
+  /** @deprecated use `TransferRequestBillingPlan$Outbound` instead. */
+  export type Outbound = TransferRequestBillingPlan$Outbound;
+}
+
+export function transferRequestBillingPlanToJSON(
+  transferRequestBillingPlan: TransferRequestBillingPlan,
+): string {
+  return JSON.stringify(
+    TransferRequestBillingPlan$outboundSchema.parse(transferRequestBillingPlan),
+  );
+}
+
+export function transferRequestBillingPlanFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferRequestBillingPlan, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferRequestBillingPlan$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferRequestBillingPlan' from JSON`,
+  );
+}
+
+/** @internal */
+export const Requester$inboundSchema: z.ZodType<
+  Requester,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  email: z.string().optional(),
+});
+
+/** @internal */
+export type Requester$Outbound = {
+  name: string;
+  email?: string | undefined;
+};
+
+/** @internal */
+export const Requester$outboundSchema: z.ZodType<
+  Requester$Outbound,
+  z.ZodTypeDef,
+  Requester
+> = z.object({
+  name: z.string(),
+  email: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Requester$ {
+  /** @deprecated use `Requester$inboundSchema` instead. */
+  export const inboundSchema = Requester$inboundSchema;
+  /** @deprecated use `Requester$outboundSchema` instead. */
+  export const outboundSchema = Requester$outboundSchema;
+  /** @deprecated use `Requester$Outbound` instead. */
+  export type Outbound = Requester$Outbound;
+}
+
+export function requesterToJSON(requester: Requester): string {
+  return JSON.stringify(Requester$outboundSchema.parse(requester));
+}
+
+export function requesterFromJSON(
+  jsonString: string,
+): SafeParseResult<Requester, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Requester$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Requester' from JSON`,
+  );
+}
+
+/** @internal */
+export const TransferRequest1$inboundSchema: z.ZodType<
+  TransferRequest1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: Kind$inboundSchema,
+  metadata: z.record(z.any()).optional(),
+  billingPlan: z.lazy(() => TransferRequestBillingPlan$inboundSchema)
+    .optional(),
+  requestId: z.string(),
+  transferId: z.string(),
+  requester: z.lazy(() => Requester$inboundSchema),
+  createdAt: z.number(),
+  expiresAt: z.number(),
+  discardedAt: z.number().optional(),
+  discardedBy: z.string().optional(),
+  approvedAt: z.number().optional(),
+  approvedBy: z.string().optional(),
+  authorizationId: z.string().optional(),
+});
+
+/** @internal */
+export type TransferRequest1$Outbound = {
+  kind: string;
+  metadata?: { [k: string]: any } | undefined;
+  billingPlan?: TransferRequestBillingPlan$Outbound | undefined;
+  requestId: string;
+  transferId: string;
+  requester: Requester$Outbound;
+  createdAt: number;
+  expiresAt: number;
+  discardedAt?: number | undefined;
+  discardedBy?: string | undefined;
+  approvedAt?: number | undefined;
+  approvedBy?: string | undefined;
+  authorizationId?: string | undefined;
+};
+
+/** @internal */
+export const TransferRequest1$outboundSchema: z.ZodType<
+  TransferRequest1$Outbound,
+  z.ZodTypeDef,
+  TransferRequest1
+> = z.object({
+  kind: Kind$outboundSchema,
+  metadata: z.record(z.any()).optional(),
+  billingPlan: z.lazy(() => TransferRequestBillingPlan$outboundSchema)
+    .optional(),
+  requestId: z.string(),
+  transferId: z.string(),
+  requester: z.lazy(() => Requester$outboundSchema),
+  createdAt: z.number(),
+  expiresAt: z.number(),
+  discardedAt: z.number().optional(),
+  discardedBy: z.string().optional(),
+  approvedAt: z.number().optional(),
+  approvedBy: z.string().optional(),
+  authorizationId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequest1$ {
+  /** @deprecated use `TransferRequest1$inboundSchema` instead. */
+  export const inboundSchema = TransferRequest1$inboundSchema;
+  /** @deprecated use `TransferRequest1$outboundSchema` instead. */
+  export const outboundSchema = TransferRequest1$outboundSchema;
+  /** @deprecated use `TransferRequest1$Outbound` instead. */
+  export type Outbound = TransferRequest1$Outbound;
+}
+
+export function transferRequest1ToJSON(
+  transferRequest1: TransferRequest1,
+): string {
+  return JSON.stringify(
+    TransferRequest1$outboundSchema.parse(transferRequest1),
+  );
+}
+
+export function transferRequest1FromJSON(
+  jsonString: string,
+): SafeParseResult<TransferRequest1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferRequest1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferRequest1' from JSON`,
+  );
+}
+
+/** @internal */
+export const TransferRequest$inboundSchema: z.ZodType<
+  TransferRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TransferRequest2$inboundSchema),
+  z.lazy(() => TransferRequest1$inboundSchema),
+]);
+
+/** @internal */
+export type TransferRequest$Outbound =
+  | TransferRequest2$Outbound
+  | TransferRequest1$Outbound;
+
+/** @internal */
+export const TransferRequest$outboundSchema: z.ZodType<
+  TransferRequest$Outbound,
+  z.ZodTypeDef,
+  TransferRequest
+> = z.union([
+  z.lazy(() => TransferRequest2$outboundSchema),
+  z.lazy(() => TransferRequest1$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferRequest$ {
+  /** @deprecated use `TransferRequest$inboundSchema` instead. */
+  export const inboundSchema = TransferRequest$inboundSchema;
+  /** @deprecated use `TransferRequest$outboundSchema` instead. */
+  export const outboundSchema = TransferRequest$outboundSchema;
+  /** @deprecated use `TransferRequest$Outbound` instead. */
+  export type Outbound = TransferRequest$Outbound;
+}
+
+export function transferRequestToJSON(
+  transferRequest: TransferRequest,
+): string {
+  return JSON.stringify(TransferRequest$outboundSchema.parse(transferRequest));
+}
+
+export function transferRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferRequest' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetConfigurationResponseBodyIntegrationsSource$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> = z
     .nativeEnum(GetConfigurationResponseBodyIntegrationsSource);
@@ -473,6 +1043,10 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectSelection: ProjectSelection$inboundSchema,
+  transferRequest: z.union([
+    z.lazy(() => TransferRequest2$inboundSchema),
+    z.lazy(() => TransferRequest1$inboundSchema),
+  ]),
   projects: z.array(z.string()).optional(),
   completedAt: z.number().optional(),
   createdAt: z.number(),
@@ -502,6 +1076,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
 /** @internal */
 export type GetConfigurationResponseBody2$Outbound = {
   projectSelection: string;
+  transferRequest: TransferRequest2$Outbound | TransferRequest1$Outbound;
   projects?: Array<string> | undefined;
   completedAt?: number | undefined;
   createdAt: number;
@@ -530,6 +1105,10 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   GetConfigurationResponseBody2
 > = z.object({
   projectSelection: ProjectSelection$outboundSchema,
+  transferRequest: z.union([
+    z.lazy(() => TransferRequest2$outboundSchema),
+    z.lazy(() => TransferRequest1$outboundSchema),
+  ]),
   projects: z.array(z.string()).optional(),
   completedAt: z.number().optional(),
   createdAt: z.number(),

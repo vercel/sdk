@@ -7,7 +7,7 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodyType } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodyType = "cookie";
+let value: UpdateFirewallConfigRequestBodyType = "rate_limit_api_id";
 ```
 
 ## Values

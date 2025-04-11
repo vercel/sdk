@@ -7,7 +7,7 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ```typescript
 import { CancelDeploymentReadySubstate } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentReadySubstate = "ROLLING";
+let value: CancelDeploymentReadySubstate = "PROMOTED";
 ```
 
 ## Values

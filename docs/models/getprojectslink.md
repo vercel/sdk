@@ -12,7 +12,7 @@ const value: models.GetProjectsLink1 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://lustrous-wombat.com",
+      url: "https://unwilling-yak.info/",
     },
   ],
 };
@@ -27,7 +27,7 @@ const value: models.GetProjectsLink2 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://formal-desk.name",
+      url: "https://assured-cemetery.com/",
     },
   ],
 };
@@ -42,7 +42,7 @@ const value: models.GetProjectsLink3 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://rapid-league.info/",
+      url: "https://sardonic-lift.biz/",
     },
   ],
 };

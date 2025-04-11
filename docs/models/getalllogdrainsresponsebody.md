@@ -10,13 +10,13 @@ let value: GetAllLogDrainsResponseBody = {
     "production",
   ],
   id: "<id>",
-  createdAt: 8843.25,
-  deletedAt: 9585.33,
-  updatedAt: 2075.12,
-  url: "https://firsthand-t-shirt.com",
+  createdAt: 4091.44,
+  deletedAt: 205.51,
+  updatedAt: 2991.81,
+  url: "https://unripe-following.org",
   name: "<value>",
   ownerId: "<id>",
-  deliveryFormat: "syslog",
+  deliveryFormat: "ndjson",
 };
 ```
 

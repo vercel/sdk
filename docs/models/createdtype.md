@@ -5,7 +5,7 @@
 ```typescript
 import { CreatedType } from "@vercel/sdk/models/createprojectenvop.js";
 
-let value: CreatedType = "sensitive";
+let value: CreatedType = "secret";
 ```
 
 ## Values

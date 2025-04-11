@@ -7,7 +7,7 @@ import { GetMemberResponseBody } from "@vercel/sdk/models/getmemberop.js";
 
 let value: GetMemberResponseBody = {
   id: "<id>",
-  role: "USER",
+  role: "ADMIN",
 };
 ```
 

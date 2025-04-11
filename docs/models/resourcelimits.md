@@ -6,8 +6,8 @@
 import { ResourceLimits } from "@vercel/sdk/models/userevent.js";
 
 let value: ResourceLimits = {
-  max: 5315.68,
-  duration: 6451.39,
+  max: 4120.69,
+  duration: 2206.93,
 };
 ```
 

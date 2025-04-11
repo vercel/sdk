@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 9384.68,
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.GetDeploymentGitSourceDeployments2 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments3 = {
   type: "gitlab",
-  projectId: "<id>",
+  projectId: 1747.55,
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GetDeploymentGitSourceDeployments6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://accomplished-hippodrome.name/",
+  gitUrl: "https://dreary-invite.biz",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GetDeploymentGitSourceDeployments7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4016.88,
+  repoId: 7013.9,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 857.94,
+  projectId: 2424.31,
 };
 ```
 

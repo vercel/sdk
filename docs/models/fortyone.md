@@ -9,7 +9,7 @@ import { FortyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyOne = {
   id: "<id>",
-  domain: "yummy-department.info",
+  domain: "salty-tomatillo.biz",
 };
 ```
 

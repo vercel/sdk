@@ -24,8 +24,8 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
       {
         conditions: [
           {
-            type: "region",
-            op: "sub",
+            type: "cookie",
+            op: "lte",
           },
         ],
       },
@@ -48,8 +48,8 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
       {
         conditions: [
           {
-            type: "cookie",
-            op: "sub",
+            type: "scheme",
+            op: "inc",
           },
         ],
       },
@@ -74,7 +74,7 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 5036.97,
+  value: 9901.25,
 };
 ```
 
@@ -83,10 +83,10 @@ const value: models.UpdateFirewallConfigRequestBody5 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  id: "sd",
+  id: "sf",
   value: {
     active: false,
-    action: "log",
+    action: "deny",
   },
 };
 ```
@@ -105,9 +105,9 @@ const value: models.UpdateFirewallConfigRequestBody7 = {
 const value: models.UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "noteworthy-birth.info",
-    ip: "225.72.241.139",
-    action: "challenge",
+    hostname: "questionable-marimba.info",
+    ip: "1d0e:0eee:d411:839c:0fff:4cf6:dcb3:fa5a",
+    action: "deny",
   },
 };
 ```
@@ -119,9 +119,9 @@ const value: models.UpdateFirewallConfigRequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "stylish-postbox.info",
-    ip: "bcb3:c14d:2d69:61bf:d6f8:fdee:31bd:af14",
-    action: "deny",
+    hostname: "idolized-tuxedo.name",
+    ip: "6c8e:bfeb:b75e:a5e0:5596:e99e:fee8:b71f",
+    action: "challenge",
   },
 };
 ```

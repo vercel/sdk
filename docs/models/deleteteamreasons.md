@@ -9,7 +9,7 @@ import { DeleteTeamReasons } from "@vercel/sdk/models/deleteteamop.js";
 
 let value: DeleteTeamReasons = {
   slug: "<value>",
-  description: "meaningfully timely forecast dense beneath",
+  description: "how failing integer",
 };
 ```
 

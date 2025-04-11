@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsAlgo } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsAlgo = "fixed_window";
+let value: GetProjectsAlgo = "token_bucket";
 ```
 
 ## Values

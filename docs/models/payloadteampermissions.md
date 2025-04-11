@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadTeamPermissions } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadTeamPermissions = "FullProductionDeployment";
+let value: PayloadTeamPermissions = "EnvironmentManager";
 ```
 
 ## Values

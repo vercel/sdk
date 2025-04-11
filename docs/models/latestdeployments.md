@@ -7,21 +7,21 @@ import { LatestDeployments } from "@vercel/sdk/models/updateprojectdatacacheop.j
 
 let value: LatestDeployments = {
   id: "<id>",
-  createdAt: 9755.22,
+  createdAt: 257.94,
   createdIn: "<value>",
   creator: {
-    email: "Adolf.Renner52@hotmail.com",
+    email: "Rigoberto42@gmail.com",
     uid: "<id>",
-    username: "Cody34",
+    username: "Clint_Wuckert28",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "hobby",
+  plan: "pro",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "BUILDING",
+  readyState: "ERROR",
   type: "LAMBDAS",
-  url: "https://poor-minority.biz/",
+  url: "https://vast-morbidity.name/",
   userId: "<id>",
 };
 ```

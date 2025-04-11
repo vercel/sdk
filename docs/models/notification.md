@@ -6,7 +6,7 @@
 import { Notification } from "@vercel/sdk/models/importresourceop.js";
 
 let value: Notification = {
-  level: "error",
+  level: "warn",
   title: "<value>",
 };
 ```

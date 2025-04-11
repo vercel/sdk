@@ -5,7 +5,7 @@
 ```typescript
 import { CancelDeploymentFramework } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentFramework = "fasthtml";
+let value: CancelDeploymentFramework = "angular";
 ```
 
 ## Values

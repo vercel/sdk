@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadOverageReason } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadOverageReason = "postgresDataStorage";
+let value: PayloadOverageReason = "postgresDatabase";
 ```
 
 ## Values

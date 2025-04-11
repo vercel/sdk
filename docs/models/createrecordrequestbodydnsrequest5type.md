@@ -7,7 +7,7 @@ The type of record, it could be one of the valid DNS records.
 ```typescript
 import { CreateRecordRequestBodyDnsRequest5Type } from "@vercel/sdk/models/createrecordop.js";
 
-let value: CreateRecordRequestBodyDnsRequest5Type = "AAAA";
+let value: CreateRecordRequestBodyDnsRequest5Type = "HTTPS";
 ```
 
 ## Values

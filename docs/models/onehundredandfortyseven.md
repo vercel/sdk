@@ -8,11 +8,11 @@ The payload of the event, if requested.
 import { OneHundredAndFortySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortySeven = {
-  grantType: "refresh_token",
+  grantType: "client_credentials",
   appName: "<value>",
-  atTTL: 5786.1,
+  atTTL: 9710.23,
   scope: "<value>",
-  authMethod: "passkey",
+  authMethod: "bitbucket",
 };
 ```
 

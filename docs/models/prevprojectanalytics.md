@@ -7,8 +7,8 @@ import { PrevProjectAnalytics } from "@vercel/sdk/models/userevent.js";
 
 let value: PrevProjectAnalytics = {
   id: "<id>",
-  disabledAt: 8810.67,
-  enabledAt: 72.81,
+  disabledAt: 1591.57,
+  enabledAt: 6684.29,
 };
 ```
 

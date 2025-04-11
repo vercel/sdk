@@ -5,7 +5,7 @@
 ```typescript
 import { AuthMethod } from "@vercel/sdk/models/userevent.js";
 
-let value: AuthMethod = "gitlab";
+let value: AuthMethod = "passkey";
 ```
 
 ## Values

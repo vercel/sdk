@@ -7,7 +7,7 @@ The framework that is being used for this project. When `null` is used no framew
 ```typescript
 import { CreateProjectFramework } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectFramework = "react-router";
+let value: CreateProjectFramework = "gatsby";
 ```
 
 ## Values

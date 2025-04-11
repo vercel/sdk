@@ -19,7 +19,9 @@ let value: UserEvent = {
   ],
   createdAt: 1632859321020,
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
-  payload: {},
+  payload: {
+    domain: "total-fog.name",
+  },
 };
 ```
 

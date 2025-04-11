@@ -6,7 +6,7 @@
 import { RequestBody7 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody7 = {
-  type: "SRV",
+  type: "A",
   ttl: 60,
   srv: {
     priority: 10,

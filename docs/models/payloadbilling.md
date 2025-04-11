@@ -6,7 +6,7 @@
 import { PayloadBilling } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadBilling = {
-  plan: "pro",
+  plan: "hobby",
 };
 ```
 

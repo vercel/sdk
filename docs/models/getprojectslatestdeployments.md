@@ -7,21 +7,21 @@ import { GetProjectsLatestDeployments } from "@vercel/sdk/models/getprojectsop.j
 
 let value: GetProjectsLatestDeployments = {
   id: "<id>",
-  createdAt: 8577.23,
+  createdAt: 7929.9,
   createdIn: "<value>",
   creator: {
-    email: "Vance_Schuster81@yahoo.com",
+    email: "Elian_Gleason@yahoo.com",
     uid: "<id>",
-    username: "Logan25",
+    username: "Braulio_Grant21",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "pro",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "CANCELED",
+  readyState: "ERROR",
   type: "LAMBDAS",
-  url: "https://hard-to-find-adviser.biz/",
+  url: "https://numb-jet.biz/",
   userId: "<id>",
 };
 ```

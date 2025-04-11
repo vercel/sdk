@@ -6,7 +6,7 @@
 ### `models.UpdateFirewallConfigAction1`
 
 ```typescript
-const value: models.UpdateFirewallConfigAction1 = "log";
+const value: models.UpdateFirewallConfigAction1 = "challenge";
 ```
 
 ### `any`

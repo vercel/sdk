@@ -8,8 +8,8 @@ Since June 2023
 import { BlockHistory } from "@vercel/sdk/models/userevent.js";
 
 let value: BlockHistory = {
-  action: "hard-blocked",
-  createdAt: 8490.29,
+  action: "unblocked",
+  createdAt: 5908.37,
   reason: "<value>",
 };
 ```

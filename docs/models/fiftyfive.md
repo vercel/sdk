@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { FiftyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyFive = {
-  email: "Demetris_Hane@yahoo.com",
+  email: "Adrian.Bergstrom-Reynolds@gmail.com",
   name: "<value>",
 };
 ```

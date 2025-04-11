@@ -9,12 +9,12 @@ import { GetEdgeConfigBackupResponseBody1 } from "@vercel/sdk/models/getedgeconf
 
 let value: GetEdgeConfigBackupResponseBody1 = {
   id: "<id>",
-  lastModified: 4541.65,
+  lastModified: 3370.31,
   backup: {
     digest: "<value>",
     items: {},
     slug: "<value>",
-    updatedAt: 8652.12,
+    updatedAt: 7062.46,
   },
   metadata: {},
 };

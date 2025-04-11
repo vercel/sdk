@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateIntegrationDeploymentActionStatus } from "@vercel/sdk/models/updateintegrationdeploymentactionop.js";
 
-let value: UpdateIntegrationDeploymentActionStatus = "failed";
+let value: UpdateIntegrationDeploymentActionStatus = "running";
 ```
 
 ## Values

@@ -6,7 +6,7 @@
 import { StorageRedisTotalBandwidthInBytes } from "@vercel/sdk/models/userevent.js";
 
 let value: StorageRedisTotalBandwidthInBytes = {
-  currentThreshold: 5723.17,
+  currentThreshold: 4335.96,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { PostgresDataStorage } from "@vercel/sdk/models/userevent.js";
 
 let value: PostgresDataStorage = {
-  currentThreshold: 7734.55,
+  currentThreshold: 6926.93,
 };
 ```
 

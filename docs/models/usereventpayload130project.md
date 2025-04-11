@@ -7,7 +7,7 @@ import { UserEventPayload130Project } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload130Project = {
   name: "<value>",
-  role: "PROJECT_DEVELOPER",
+  role: "PROJECT_VIEWER",
   invitedUserName: "<value>",
 };
 ```

@@ -12,9 +12,9 @@ let value: GetProjectsResponseBody = {
     {
       accountId: "<id>",
       crons: {
-        enabledAt: 9805.81,
-        disabledAt: 8717.86,
-        updatedAt: 5027.21,
+        enabledAt: 8591.13,
+        disabledAt: 6356.32,
+        updatedAt: 1609.95,
         deploymentId: "<id>",
         definitions: [
           {
@@ -29,26 +29,26 @@ let value: GetProjectsResponseBody = {
       latestDeployments: [
         {
           id: "<id>",
-          createdAt: 9223.48,
+          createdAt: 2186.2,
           createdIn: "<value>",
           creator: {
-            email: "Theresia_Wisoky3@yahoo.com",
+            email: "Luciano.Lueilwitz68@yahoo.com",
             uid: "<id>",
-            username: "Gillian44",
+            username: "Kattie79",
           },
           deploymentHostname: "<value>",
           name: "<value>",
           plan: "pro",
           previewCommentsEnabled: false,
           private: false,
-          readyState: "QUEUED",
+          readyState: "READY",
           type: "LAMBDAS",
-          url: "https://blushing-possession.biz/",
+          url: "https://alive-moment.name/",
           userId: "<id>",
         },
       ],
       name: "<value>",
-      nodeVersion: "22.x",
+      nodeVersion: "20.x",
       resourceConfig: {
         functionDefaultRegions: [
           "<value>",
@@ -62,21 +62,21 @@ let value: GetProjectsResponseBody = {
       targets: {
         "key": {
           id: "<id>",
-          createdAt: 599.44,
+          createdAt: 1603.18,
           createdIn: "<value>",
           creator: {
-            email: "Sydney_Treutel52@gmail.com",
+            email: "Bridie18@gmail.com",
             uid: "<id>",
-            username: "Zoe.Kovacek97",
+            username: "Izaiah_Hayes93",
           },
           deploymentHostname: "<value>",
           name: "<value>",
-          plan: "pro",
+          plan: "hobby",
           previewCommentsEnabled: false,
           private: false,
-          readyState: "READY",
+          readyState: "BUILDING",
           type: "LAMBDAS",
-          url: "https://phony-intervention.biz/",
+          url: "https://suburban-calculus.name",
           userId: "<id>",
         },
       },

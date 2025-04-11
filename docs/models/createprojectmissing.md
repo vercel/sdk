@@ -6,7 +6,7 @@
 import { CreateProjectMissing } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectMissing = {
-  type: "host",
+  type: "query",
 };
 ```
 

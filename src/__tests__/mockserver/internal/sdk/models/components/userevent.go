@@ -6451,137 +6451,23 @@ func (o *PayloadDismissedToasts) GetDismissals() []PayloadDismissals {
 	return o.Dismissals
 }
 
-type UserEventFavoriteProjectsAndSpaces2 struct {
-	SpaceID   string  `json:"spaceId"`
-	ScopeSlug string  `json:"scopeSlug"`
-	ScopeID   string  `json:"scopeId"`
-	TeamID    *string `json:"teamId,omitempty"`
+type PayloadFavoriteProjectsAndSpaces struct {
+	TeamID    string `json:"teamId"`
+	ProjectID string `json:"projectId"`
 }
 
-func (o *UserEventFavoriteProjectsAndSpaces2) GetSpaceID() string {
+func (o *PayloadFavoriteProjectsAndSpaces) GetTeamID() string {
 	if o == nil {
 		return ""
-	}
-	return o.SpaceID
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces2) GetScopeSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeSlug
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces2) GetScopeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeID
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces2) GetTeamID() *string {
-	if o == nil {
-		return nil
 	}
 	return o.TeamID
 }
 
-type UserEventFavoriteProjectsAndSpaces1 struct {
-	ProjectID string  `json:"projectId"`
-	ScopeSlug string  `json:"scopeSlug"`
-	ScopeID   string  `json:"scopeId"`
-	TeamID    *string `json:"teamId,omitempty"`
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces1) GetProjectID() string {
+func (o *PayloadFavoriteProjectsAndSpaces) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces1) GetScopeSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeSlug
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces1) GetScopeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeID
-}
-
-func (o *UserEventFavoriteProjectsAndSpaces1) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-type PayloadFavoriteProjectsAndSpacesType string
-
-const (
-	PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1 PayloadFavoriteProjectsAndSpacesType = "UserEvent_favoriteProjectsAndSpaces_1"
-	PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2 PayloadFavoriteProjectsAndSpacesType = "UserEvent_favoriteProjectsAndSpaces_2"
-)
-
-type PayloadFavoriteProjectsAndSpaces struct {
-	UserEventFavoriteProjectsAndSpaces1 *UserEventFavoriteProjectsAndSpaces1
-	UserEventFavoriteProjectsAndSpaces2 *UserEventFavoriteProjectsAndSpaces2
-
-	Type PayloadFavoriteProjectsAndSpacesType
-}
-
-func CreatePayloadFavoriteProjectsAndSpacesUserEventFavoriteProjectsAndSpaces1(userEventFavoriteProjectsAndSpaces1 UserEventFavoriteProjectsAndSpaces1) PayloadFavoriteProjectsAndSpaces {
-	typ := PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1
-
-	return PayloadFavoriteProjectsAndSpaces{
-		UserEventFavoriteProjectsAndSpaces1: &userEventFavoriteProjectsAndSpaces1,
-		Type:                                typ,
-	}
-}
-
-func CreatePayloadFavoriteProjectsAndSpacesUserEventFavoriteProjectsAndSpaces2(userEventFavoriteProjectsAndSpaces2 UserEventFavoriteProjectsAndSpaces2) PayloadFavoriteProjectsAndSpaces {
-	typ := PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2
-
-	return PayloadFavoriteProjectsAndSpaces{
-		UserEventFavoriteProjectsAndSpaces2: &userEventFavoriteProjectsAndSpaces2,
-		Type:                                typ,
-	}
-}
-
-func (u *PayloadFavoriteProjectsAndSpaces) UnmarshalJSON(data []byte) error {
-
-	var userEventFavoriteProjectsAndSpaces1 UserEventFavoriteProjectsAndSpaces1 = UserEventFavoriteProjectsAndSpaces1{}
-	if err := utils.UnmarshalJSON(data, &userEventFavoriteProjectsAndSpaces1, "", true, true); err == nil {
-		u.UserEventFavoriteProjectsAndSpaces1 = &userEventFavoriteProjectsAndSpaces1
-		u.Type = PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces1
-		return nil
-	}
-
-	var userEventFavoriteProjectsAndSpaces2 UserEventFavoriteProjectsAndSpaces2 = UserEventFavoriteProjectsAndSpaces2{}
-	if err := utils.UnmarshalJSON(data, &userEventFavoriteProjectsAndSpaces2, "", true, true); err == nil {
-		u.UserEventFavoriteProjectsAndSpaces2 = &userEventFavoriteProjectsAndSpaces2
-		u.Type = PayloadFavoriteProjectsAndSpacesTypeUserEventFavoriteProjectsAndSpaces2
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadFavoriteProjectsAndSpaces", string(data))
-}
-
-func (u PayloadFavoriteProjectsAndSpaces) MarshalJSON() ([]byte, error) {
-	if u.UserEventFavoriteProjectsAndSpaces1 != nil {
-		return utils.MarshalJSON(u.UserEventFavoriteProjectsAndSpaces1, "", true)
-	}
-
-	if u.UserEventFavoriteProjectsAndSpaces2 != nil {
-		return utils.MarshalJSON(u.UserEventFavoriteProjectsAndSpaces2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type PayloadFavoriteProjectsAndSpaces: all fields are null")
 }
 
 type PayloadImportFlowGitNamespaceType string
@@ -6929,6 +6815,8 @@ type PayloadResourceConfig struct {
 	CronJobsPerProject                        *float64                  `json:"cronJobsPerProject,omitempty"`
 	MicrofrontendGroupsPerTeam                *float64                  `json:"microfrontendGroupsPerTeam,omitempty"`
 	MicrofrontendProjectsPerGroup             *float64                  `json:"microfrontendProjectsPerGroup,omitempty"`
+	FlagsExplorerOverridesThreshold           *float64                  `json:"flagsExplorerOverridesThreshold,omitempty"`
+	FlagsExplorerUnlimitedOverrides           *bool                     `json:"flagsExplorerUnlimitedOverrides,omitempty"`
 }
 
 func (o *PayloadResourceConfig) GetNodeType() *string {
@@ -7076,6 +6964,20 @@ func (o *PayloadResourceConfig) GetMicrofrontendProjectsPerGroup() *float64 {
 		return nil
 	}
 	return o.MicrofrontendProjectsPerGroup
+}
+
+func (o *PayloadResourceConfig) GetFlagsExplorerOverridesThreshold() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerOverridesThreshold
+}
+
+func (o *PayloadResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerUnlimitedOverrides
 }
 
 type ResourceLimits struct {

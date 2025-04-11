@@ -8,14 +8,14 @@ import { PayloadBudget } from "@vercel/sdk/models/userevent.js";
 let value: PayloadBudget = {
   budgetItem: {
     type: "fixed",
-    fixedBudget: 2387.39,
+    fixedBudget: 3089.34,
     previousSpend: [
-      9438.28,
+      2942.51,
     ],
     notifiedAt: [
-      6867.84,
+      8881.12,
     ],
-    createdAt: 2875.75,
+    createdAt: 5077.9,
     isActive: false,
     teamId: "<id>",
     id: "<id>",

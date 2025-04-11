@@ -8,7 +8,7 @@ import { Deployment } from "@vercel/sdk/models/userevent.js";
 let value: Deployment = {
   id: "<id>",
   name: "<value>",
-  url: "https://downright-availability.name",
+  url: "https://clueless-hyena.info/",
   meta: {
     "key": "<value>",
   },

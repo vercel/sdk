@@ -6,7 +6,7 @@
 import { EdgeConfigWrite } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeConfigWrite = {
-  currentThreshold: 9670.06,
+  currentThreshold: 8361.71,
 };
 ```
 

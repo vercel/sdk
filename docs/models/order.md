@@ -7,7 +7,7 @@ Domains sort order by createdAt
 ```typescript
 import { Order } from "@vercel/sdk/models/getprojectdomainsop.js";
 
-let value: Order = "ASC";
+let value: Order = "DESC";
 ```
 
 ## Values

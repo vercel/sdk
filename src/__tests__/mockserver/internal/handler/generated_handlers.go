@@ -54,7 +54,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/edge-config/{edgeConfigId}/schema", pathGetV1EdgeConfigEdgeConfigIDSchema(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/edge-config/{edgeConfigId}/token/{token}", pathGetV1EdgeConfigEdgeConfigIDTokenToken(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/edge-config/{edgeConfigId}/tokens", pathGetV1EdgeConfigEdgeConfigIDTokens(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodGet, "/v1/experimentation/items", pathGetV1ExperimentationItems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/account", pathGetV1InstallationsIntegrationConfigurationIDAccount(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}", pathGetV1InstallationsIntegrationConfigurationIDBillingInvoicesInvoiceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/member/{memberId}", pathGetV1InstallationsIntegrationConfigurationIDMemberMemberID(dir, rt)),

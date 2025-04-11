@@ -5,7 +5,7 @@
 ```typescript
 import { OldSsoProtectionDeploymentType } from "@vercel/sdk/models/userevent.js";
 
-let value: OldSsoProtectionDeploymentType = "preview";
+let value: OldSsoProtectionDeploymentType = "all";
 ```
 
 ## Values

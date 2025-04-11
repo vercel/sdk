@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Microfrontends1 = {
-  updatedAt: 1861.3,
+  updatedAt: 9302.5,
   groupIds: [
     "<value>",
   ],
@@ -19,7 +19,7 @@ const value: models.Microfrontends1 = {
 
 ```typescript
 const value: models.Microfrontends2 = {
-  updatedAt: 92.48,
+  updatedAt: 225.54,
   groupIds: [
     "<value>",
   ],

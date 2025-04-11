@@ -6,7 +6,7 @@
 import { PayloadSoftBlock } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadSoftBlock = {
-  blockedAt: 9514.11,
+  blockedAt: 5219.47,
   reason: "BLOCKED_FOR_PLATFORM_ABUSE",
 };
 ```

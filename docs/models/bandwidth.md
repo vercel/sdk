@@ -6,7 +6,7 @@
 import { Bandwidth } from "@vercel/sdk/models/userevent.js";
 
 let value: Bandwidth = {
-  currentThreshold: 4630.44,
+  currentThreshold: 444.65,
 };
 ```
 

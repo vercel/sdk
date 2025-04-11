@@ -5,7 +5,7 @@
 ```typescript
 import { GetDeploymentResponseBodySource } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentResponseBodySource = "v0-web";
+let value: GetDeploymentResponseBodySource = "cli";
 ```
 
 ## Values

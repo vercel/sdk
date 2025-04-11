@@ -12,7 +12,7 @@ let value: Ninety = {
     id: "<id>",
   },
   previousRule: {
-    email: "Jeffery73@hotmail.com",
+    email: "Vergie_Roberts@gmail.com",
   },
 };
 ```

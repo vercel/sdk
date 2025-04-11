@@ -5,7 +5,7 @@
 ```typescript
 import { UserEventPayloadType } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadType = "redis";
+let value: UserEventPayloadType = "integration";
 ```
 
 ## Values

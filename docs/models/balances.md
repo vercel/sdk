@@ -8,7 +8,7 @@ A credit balance for a particular token type
 import { Balances } from "@vercel/sdk/models/submitprepaymentbalancesop.js";
 
 let value: Balances = {
-  currencyValueInCents: 2107.1,
+  currencyValueInCents: 3195.9,
 };
 ```
 

@@ -11,7 +11,7 @@ let value: Forty = {
   id: "<id>",
   value: "<value>",
   name: "<value>",
-  domain: "fatal-fraudster.com",
+  domain: "brilliant-king.com",
   type: "<value>",
 };
 ```

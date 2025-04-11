@@ -5,7 +5,7 @@
 ```typescript
 import { CreateProjectEnvTargetProjectsResponse2 } from "@vercel/sdk/models/createprojectenvop.js";
 
-let value: CreateProjectEnvTargetProjectsResponse2 = "preview";
+let value: CreateProjectEnvTargetProjectsResponse2 = "development";
 ```
 
 ## Values

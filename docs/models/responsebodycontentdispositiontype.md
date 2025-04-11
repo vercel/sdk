@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyContentDispositionType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyContentDispositionType = "inline";
+let value: ResponseBodyContentDispositionType = "attachment";
 ```
 
 ## Values

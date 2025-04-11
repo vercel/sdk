@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.SsoProtection1 = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
+  deploymentType: "all",
 };
 ```
 

@@ -9,12 +9,12 @@ import { PayloadNorthstarMigration } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadNorthstarMigration = {
   teamId: "<id>",
-  projects: 5802.48,
-  stores: 8974.34,
-  integrationConfigurations: 4188.92,
-  integrationClients: 9107.26,
-  startTime: 5035.28,
-  endTime: 6208.42,
+  projects: 3036.06,
+  stores: 778.27,
+  integrationConfigurations: 8162.14,
+  integrationClients: 7922.03,
+  startTime: 3900.62,
+  endTime: 9300.43,
 };
 ```
 

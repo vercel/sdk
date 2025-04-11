@@ -14,25 +14,25 @@ const value: models.SearchRepoResponseBody1 = {};
 ```typescript
 const value: models.SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "gitlab",
-    namespaceId: 9290.67,
+    provider: "bitbucket",
+    namespaceId: "<id>",
   },
   repos: [
     {
-      id: "<id>",
+      id: 3614.35,
       provider: "github",
-      url: "https://diligent-fold.name/",
+      url: "https://blond-citizen.org/",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
       owner: {
-        id: 7321.42,
+        id: 2046.24,
         name: "<value>",
       },
-      ownerType: "team",
+      ownerType: "user",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 9890.89,
+      updatedAt: 8782.89,
     },
   ],
 };

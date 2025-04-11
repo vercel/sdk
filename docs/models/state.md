@@ -7,7 +7,7 @@ Invoice state.
 ```typescript
 import { State } from "@vercel/sdk/models/getinvoiceop.js";
 
-let value: State = "notpaid";
+let value: State = "pending";
 ```
 
 ## Values

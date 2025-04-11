@@ -5,7 +5,7 @@
 ```typescript
 import { ChecksConclusion } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: ChecksConclusion = "skipped";
+let value: ChecksConclusion = "failed";
 ```
 
 ## Values

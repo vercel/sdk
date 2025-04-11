@@ -7,7 +7,7 @@ import { PayloadPreferredScopesAndGitNamespaces } from "@vercel/sdk/models/usere
 
 let value: PayloadPreferredScopesAndGitNamespaces = {
   scopeId: "<id>",
-  gitNamespaceId: 6037.83,
+  gitNamespaceId: "<id>",
 };
 ```
 

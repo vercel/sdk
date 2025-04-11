@@ -7,7 +7,7 @@ The framework that is being used for this project. When `null` is used no framew
 ```typescript
 import { Framework } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: Framework = "solidstart";
+let value: Framework = "blitzjs";
 ```
 
 ## Values

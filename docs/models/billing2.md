@@ -10,8 +10,8 @@ let value: Billing2 = {
     {
       billingPlanId: "<id>",
       name: "<value>",
-      price: "776.19",
-      quantity: 6650.82,
+      price: "737.15",
+      quantity: 2722.39,
       units: "<value>",
       total: "<value>",
     },

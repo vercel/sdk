@@ -10,9 +10,9 @@ let value: CreateConfigurableLogDrainRequest = {
   slug: "my-team-url-slug",
   requestBody: {
     deliveryFormat: "json",
-    url: "https://limited-ribbon.biz",
+    url: "https://doting-synergy.info",
     sources: [
-      "lambda",
+      "static",
     ],
   },
 };

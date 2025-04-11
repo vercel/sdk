@@ -10,13 +10,13 @@ import { NinetyFour } from "@vercel/sdk/models/userevent.js";
 let value: NinetyFour = {
   scalingRules: {
     "key": {
-      min: 6679.77,
-      max: 8408.31,
+      min: 6227.54,
+      max: 6134.2,
     },
   },
-  min: 4972.31,
-  max: 3920.22,
-  url: "https://straight-pronoun.info/",
+  min: 4608.67,
+  max: 2050.21,
+  url: "https://right-juggernaut.org",
 };
 ```
 

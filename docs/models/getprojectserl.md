@@ -7,8 +7,8 @@ import { GetProjectsErl } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsErl = {
   algo: "fixed_window",
-  window: 7400.98,
-  limit: 6805.15,
+  window: 2518.73,
+  limit: 4529.22,
   keys: [
     "<value>",
   ],

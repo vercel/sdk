@@ -8,10 +8,10 @@ import { ResponseBodyResult } from "@vercel/sdk/models/getbypassipop.js";
 let value: ResponseBodyResult = {
   ownerId: "<id>",
   id: "<id>",
-  domain: "stylish-antelope.com",
-  ip: "ca3a:ee0a:0f9f:866a:4dcf:f4f1:0ef3:9acd",
-  createdAt: "1736591387147",
-  updatedAt: "1743656173050",
+  domain: "zany-platter.com",
+  ip: "eed4:ec4b:da5d:7c93:fd0d:aef0:1b13:ded3",
+  createdAt: "1715982595058",
+  updatedAt: "1744367795194",
   updatedAtHour: "<value>",
 };
 ```

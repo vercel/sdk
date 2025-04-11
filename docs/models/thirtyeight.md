@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { ThirtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyEight = {
-  url: "https://heartfelt-goat.org/",
+  url: "https://limping-goodwill.name/",
 };
 ```
 

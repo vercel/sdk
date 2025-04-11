@@ -6,7 +6,7 @@
 import { UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason =
-  "limits_exceeded";
+  "admin_override";
 ```
 
 ## Values

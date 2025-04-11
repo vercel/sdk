@@ -7,8 +7,8 @@ import { UpdateProjectAnalytics } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectAnalytics = {
   id: "<id>",
-  disabledAt: 8822.84,
-  enabledAt: 7332.89,
+  disabledAt: 9173.51,
+  enabledAt: 1619.46,
 };
 ```
 

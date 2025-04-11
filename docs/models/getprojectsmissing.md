@@ -6,7 +6,7 @@
 import { GetProjectsMissing } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsMissing = {
-  type: "path",
+  type: "scheme",
 };
 ```
 

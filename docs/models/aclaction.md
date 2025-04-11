@@ -7,7 +7,7 @@ Enum containing the actions that can be performed against a resource. Group oper
 ```typescript
 import { ACLAction } from "@vercel/sdk/models/aclaction.js";
 
-let value: ACLAction = "read";
+let value: ACLAction = "list";
 ```
 
 ## Values

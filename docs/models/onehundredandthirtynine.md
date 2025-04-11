@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtyNine = {
-  tier: "pro",
+  tier: "plus",
 };
 ```
 

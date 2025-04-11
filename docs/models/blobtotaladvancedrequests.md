@@ -6,7 +6,7 @@
 import { BlobTotalAdvancedRequests } from "@vercel/sdk/models/userevent.js";
 
 let value: BlobTotalAdvancedRequests = {
-  currentThreshold: 9160.51,
+  currentThreshold: 8152.88,
 };
 ```
 

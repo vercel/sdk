@@ -8,7 +8,7 @@ import { ImportResourceRequestBody } from "@vercel/sdk/models/importresourceop.j
 let value: ImportResourceRequestBody = {
   productId: "<id>",
   name: "<value>",
-  status: "suspended",
+  status: "resumed",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { UpdateProjectDataCacheProjectsBranchMatcher } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: UpdateProjectDataCacheProjectsBranchMatcher = {
-  type: "equals",
+  type: "startsWith",
   pattern: "<value>",
 };
 ```

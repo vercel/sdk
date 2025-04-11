@@ -5,7 +5,7 @@
 ```typescript
 import { UserEventPayloadAction } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadAction = "enabled";
+let value: UserEventPayloadAction = "disabled";
 ```
 
 ## Values

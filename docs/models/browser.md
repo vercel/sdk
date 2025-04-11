@@ -6,7 +6,7 @@
 import { Browser } from "@vercel/sdk/models/userevent.js";
 
 let value: Browser = {
-  name: "ipod",
+  name: "chrome",
 };
 ```
 

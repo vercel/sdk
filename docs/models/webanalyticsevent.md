@@ -6,7 +6,7 @@
 import { WebAnalyticsEvent } from "@vercel/sdk/models/userevent.js";
 
 let value: WebAnalyticsEvent = {
-  currentThreshold: 8207.35,
+  currentThreshold: 1668.55,
 };
 ```
 

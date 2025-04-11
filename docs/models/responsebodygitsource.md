@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSource1 = {
   type: "github",
-  repoId: 9253.95,
+  repoId: "<id>",
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.GetDeploymentGitSource2 = {
 ```typescript
 const value: models.GetDeploymentGitSource3 = {
   type: "gitlab",
-  projectId: 4230.54,
+  projectId: "<id>",
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GetDeploymentGitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://hidden-printer.name/",
+  gitUrl: "https://tired-baseboard.biz/",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GetDeploymentGitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 9279.77,
+  repoId: 1210.01,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GetDeploymentGitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 8668.61,
+  projectId: 1758.71,
 };
 ```
 

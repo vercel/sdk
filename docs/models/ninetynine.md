@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
-  storeType: "postgres",
+  storeType: "redis",
 };
 ```
 

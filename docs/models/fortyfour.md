@@ -9,7 +9,7 @@ import { FortyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyFour = {
   name: "<value>",
-  price: 2733.49,
+  price: 6506.92,
 };
 ```
 

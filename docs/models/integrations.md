@@ -6,8 +6,8 @@
 import { Integrations } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Integrations = {
-  status: "pending",
-  startedAt: 6863.8,
+  status: "timeout",
+  startedAt: 2472.7,
 };
 ```
 

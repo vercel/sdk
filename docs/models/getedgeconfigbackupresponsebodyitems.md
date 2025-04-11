@@ -6,9 +6,9 @@
 import { GetEdgeConfigBackupResponseBodyItems } from "@vercel/sdk/models/getedgeconfigbackupop.js";
 
 let value: GetEdgeConfigBackupResponseBodyItems = {
-  updatedAt: 4766.14,
-  value: "<value>",
-  createdAt: 3214.22,
+  updatedAt: 6174.78,
+  value: 9256.74,
+  createdAt: 9037.18,
 };
 ```
 

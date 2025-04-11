@@ -6,7 +6,7 @@
 import { WafRateLimitRequest } from "@vercel/sdk/models/userevent.js";
 
 let value: WafRateLimitRequest = {
-  currentThreshold: 4473.23,
+  currentThreshold: 3567.18,
 };
 ```
 

@@ -104,7 +104,7 @@ export type UpdateProjectOidcTokenConfig = {
   /**
    * Whether or not to generate OpenID Connect JSON Web Tokens.
    */
-  enabled: boolean;
+  enabled?: boolean | undefined;
   /**
    * team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
    */
@@ -2016,8 +2016,8 @@ export const UpdateProjectOidcTokenConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  issuerMode: UpdateProjectIssuerMode$inboundSchema.default("global"),
+  enabled: z.boolean().default(true),
+  issuerMode: UpdateProjectIssuerMode$inboundSchema.default("team"),
 });
 
 /** @internal */
@@ -2032,8 +2032,8 @@ export const UpdateProjectOidcTokenConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectOidcTokenConfig
 > = z.object({
-  enabled: z.boolean(),
-  issuerMode: UpdateProjectIssuerMode$outboundSchema.default("global"),
+  enabled: z.boolean().default(true),
+  issuerMode: UpdateProjectIssuerMode$outboundSchema.default("team"),
 });
 
 /**

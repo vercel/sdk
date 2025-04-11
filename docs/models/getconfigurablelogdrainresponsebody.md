@@ -7,16 +7,16 @@ import { GetConfigurableLogDrainResponseBody } from "@vercel/sdk/models/getconfi
 
 let value: GetConfigurableLogDrainResponseBody = {
   environments: [
-    "preview",
+    "production",
   ],
   id: "<id>",
-  createdAt: 8345.87,
-  deletedAt: 2379.72,
-  updatedAt: 7619.27,
-  url: "https://strict-bungalow.com",
+  createdAt: 7115.02,
+  deletedAt: 785.2,
+  updatedAt: 6604.88,
+  url: "https://petty-wheel.info",
   name: "<value>",
   ownerId: "<id>",
-  deliveryFormat: "json",
+  deliveryFormat: "syslog",
   secret: "<value>",
 };
 ```

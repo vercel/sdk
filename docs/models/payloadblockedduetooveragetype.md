@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadBlockedDueToOverageType } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadBlockedDueToOverageType = "imageOptimizationCacheWrite";
+let value: PayloadBlockedDueToOverageType = "blobDataTransfer";
 ```
 
 ## Values

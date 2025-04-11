@@ -5,7 +5,7 @@
 ```typescript
 import { OldSsoProtection2 } from "@vercel/sdk/models/userevent.js";
 
-let value: OldSsoProtection2 = "all";
+let value: OldSsoProtection2 = "preview";
 ```
 
 ## Values

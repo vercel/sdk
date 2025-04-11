@@ -15,7 +15,7 @@ const value: models.GetDeploymentRoutes1 = {
 
 ```typescript
 const value: models.GetDeploymentRoutes2 = {
-  handle: "resource",
+  handle: "hit",
 };
 ```
 
@@ -25,7 +25,7 @@ const value: models.GetDeploymentRoutes2 = {
 const value: models.GetDeploymentRoutes3 = {
   src: "<value>",
   continue: false,
-  middleware: 5983.16,
+  middleware: 207.74,
 };
 ```
 

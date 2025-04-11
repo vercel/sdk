@@ -11,7 +11,7 @@ let value: CreateProjectLink1 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://mushy-habit.name/",
+      url: "https://oblong-adviser.com/",
     },
   ],
 };

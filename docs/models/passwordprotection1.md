@@ -6,7 +6,7 @@
 import { PasswordProtection1 } from "@vercel/sdk/models/userevent.js";
 
 let value: PasswordProtection1 = {
-  deploymentType: "preview",
+  deploymentType: "all",
 };
 ```
 

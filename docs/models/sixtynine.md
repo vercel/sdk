@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { SixtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyNine = {
-  logDrainUrl: "https://wretched-adult.name/",
+  logDrainUrl: "https://alert-median.net/",
 };
 ```
 

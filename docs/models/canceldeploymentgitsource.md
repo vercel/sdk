@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CancelDeploymentGitSource1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 7595.93,
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.CancelDeploymentGitSource2 = {
 ```typescript
 const value: models.CancelDeploymentGitSource3 = {
   type: "gitlab",
-  projectId: "<id>",
+  projectId: 9885.17,
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.GitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://raw-viability.name",
+  gitUrl: "https://cuddly-crest.net",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.GitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 8020.69,
+  repoId: 7332.19,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.GitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 3744.14,
+  projectId: 4653.43,
 };
 ```
 

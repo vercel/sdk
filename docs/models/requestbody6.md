@@ -7,7 +7,7 @@ import { RequestBody6 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody6 = {
   name: "subdomain",
-  type: "NS",
+  type: "AAAA",
   ttl: 60,
   value: "10 mail.example.com.",
   mxPriority: 10,

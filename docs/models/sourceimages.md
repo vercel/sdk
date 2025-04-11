@@ -6,7 +6,7 @@
 import { SourceImages } from "@vercel/sdk/models/userevent.js";
 
 let value: SourceImages = {
-  currentThreshold: 3335.07,
+  currentThreshold: 299.51,
 };
 ```
 

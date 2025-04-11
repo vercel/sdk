@@ -7,7 +7,7 @@ The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: 
 ```typescript
 import { TransferPolicy } from "@vercel/sdk/models/getdomaintransferop.js";
 
-let value: TransferPolicy = "charge-and-renew";
+let value: TransferPolicy = "not-supported";
 ```
 
 ## Values

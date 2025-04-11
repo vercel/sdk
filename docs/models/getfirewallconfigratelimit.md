@@ -7,8 +7,8 @@ import { GetFirewallConfigRateLimit } from "@vercel/sdk/models/getfirewallconfig
 
 let value: GetFirewallConfigRateLimit = {
   algo: "fixed_window",
-  window: 5955.95,
-  limit: 8252.83,
+  window: 8498.48,
+  limit: 9430.08,
   keys: [
     "<value>",
   ],

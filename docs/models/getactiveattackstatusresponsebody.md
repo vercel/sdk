@@ -17,9 +17,9 @@ const value: models.GetActiveAttackStatusResponseBody2 = {
     {
       ownerId: "<id>",
       projectId: "<id>",
-      startTime: 9508.94,
-      endTime: 6340.91,
-      atMinute: 5777.31,
+      startTime: 259.76,
+      endTime: 4119.11,
+      atMinute: 9166.33,
       affectedHostMap: {
         "key": {},
       },

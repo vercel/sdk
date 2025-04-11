@@ -9,7 +9,7 @@ import { Seventeen } from "@vercel/sdk/models/userevent.js";
 
 let value: Seventeen = {
   alias: "<value>",
-  deploymentUrl: "https://angelic-metabolite.name",
+  deploymentUrl: "https://trustworthy-starboard.info/",
 };
 ```
 

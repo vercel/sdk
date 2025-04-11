@@ -10,7 +10,7 @@ import { CancelDeploymentConfig } from "@vercel/sdk/models/canceldeploymentop.js
 let value: CancelDeploymentConfig = {
   functionType: "standard",
   functionMemoryType: "standard",
-  functionTimeout: 4984.35,
+  functionTimeout: 1378.13,
   secureComputePrimaryRegion: "<value>",
   secureComputeFallbackRegion: "<value>",
 };

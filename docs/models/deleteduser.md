@@ -6,8 +6,8 @@
 import { DeletedUser } from "@vercel/sdk/models/userevent.js";
 
 let value: DeletedUser = {
-  username: "Flossie.Tromp87",
-  email: "Harvey.Reichert@yahoo.com",
+  username: "Joanne.Bergnaum",
+  email: "Enoch.Ullrich@yahoo.com",
 };
 ```
 

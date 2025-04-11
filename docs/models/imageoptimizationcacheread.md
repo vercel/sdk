@@ -6,7 +6,7 @@
 import { ImageOptimizationCacheRead } from "@vercel/sdk/models/userevent.js";
 
 let value: ImageOptimizationCacheRead = {
-  currentThreshold: 8435.91,
+  currentThreshold: 655.57,
 };
 ```
 

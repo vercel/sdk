@@ -9,14 +9,14 @@ import { Budget } from "@vercel/sdk/models/userevent.js";
 
 let value: Budget = {
   type: "fixed",
-  fixedBudget: 2528.54,
+  fixedBudget: 268.4,
   previousSpend: [
-    7578.24,
+    8744.63,
   ],
   notifiedAt: [
-    0.73,
+    2211.33,
   ],
-  createdAt: 2542.4,
+  createdAt: 3066.93,
   isActive: false,
   teamId: "<id>",
   id: "<id>",

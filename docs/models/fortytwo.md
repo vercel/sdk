@@ -11,7 +11,7 @@ let value: FortyTwo = {
   id: "<id>",
   value: "<value>",
   name: "<value>",
-  domain: "hurtful-interviewer.name",
+  domain: "digital-pantyhose.biz",
   type: "<value>",
 };
 ```

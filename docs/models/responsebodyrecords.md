@@ -12,10 +12,10 @@ let value: ResponseBodyRecords = {
   type: "ALIAS",
   value: "<value>",
   creator: "<value>",
-  created: 1530.97,
-  updated: 1975.19,
-  createdAt: 5283.15,
-  updatedAt: 6716.9,
+  created: 6411.99,
+  updated: 999.47,
+  createdAt: 1739.36,
+  updatedAt: 9762.61,
 };
 ```
 

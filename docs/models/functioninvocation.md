@@ -6,7 +6,7 @@
 import { FunctionInvocation } from "@vercel/sdk/models/userevent.js";
 
 let value: FunctionInvocation = {
-  currentThreshold: 2010.05,
+  currentThreshold: 5022.65,
 };
 ```
 

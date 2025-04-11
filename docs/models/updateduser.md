@@ -6,8 +6,8 @@
 import { UpdatedUser } from "@vercel/sdk/models/userevent.js";
 
 let value: UpdatedUser = {
-  username: "Abigale_Bruen69",
-  email: "Minnie_Quitzon@hotmail.com",
+  username: "Katarina.Towne28",
+  email: "Carolanne.Borer@gmail.com",
 };
 ```
 

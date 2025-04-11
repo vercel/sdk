@@ -6,7 +6,7 @@
 import { GetProjectsGitProviderOptions } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsGitProviderOptions = {
-  createDeployments: "disabled",
+  createDeployments: "enabled",
 };
 ```
 

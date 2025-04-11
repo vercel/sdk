@@ -7,7 +7,7 @@ Whether the Vercel Toolbar is enabled for preview deployments.
 ```typescript
 import { EnablePreviewFeedback } from "@vercel/sdk/models/userevent.js";
 
-let value: EnablePreviewFeedback = "default-force";
+let value: EnablePreviewFeedback = "on-force";
 ```
 
 ## Values

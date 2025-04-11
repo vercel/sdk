@@ -5,7 +5,7 @@
 ```typescript
 import { JobStatus } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: JobStatus = "in-progress";
+let value: JobStatus = "failed";
 ```
 
 ## Values

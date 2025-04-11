@@ -5,7 +5,7 @@
 ```typescript
 import { TagIds } from "@vercel/sdk/models/getconfigurationsop.js";
 
-let value: TagIds = "tag_code_repository";
+let value: TagIds = "tag_ai";
 ```
 
 ## Values

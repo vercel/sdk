@@ -11,7 +11,7 @@ let value: OneHundredAndSeven = {
   entitlement: "<value>",
   user: {
     id: "<id>",
-    username: "Carrie.Haag-Weissnat46",
+    username: "Asa40",
   },
 };
 ```

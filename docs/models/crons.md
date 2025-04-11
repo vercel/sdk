@@ -6,9 +6,9 @@
 import { Crons } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Crons = {
-  enabledAt: 2982.82,
-  disabledAt: 5699.65,
-  updatedAt: 5908.73,
+  enabledAt: 9924.58,
+  disabledAt: 1316.02,
+  updatedAt: 4638.01,
   deploymentId: "<id>",
   definitions: [
     {

@@ -5,7 +5,7 @@
 ```typescript
 import { GrantType } from "@vercel/sdk/models/userevent.js";
 
-let value: GrantType = "refresh_token";
+let value: GrantType = "authorization_code";
 ```
 
 ## Values

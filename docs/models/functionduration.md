@@ -6,7 +6,7 @@
 import { FunctionDuration } from "@vercel/sdk/models/userevent.js";
 
 let value: FunctionDuration = {
-  currentThreshold: 9133.93,
+  currentThreshold: 2327.59,
 };
 ```
 

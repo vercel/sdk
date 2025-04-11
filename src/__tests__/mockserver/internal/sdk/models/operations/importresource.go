@@ -73,12 +73,55 @@ func (e *ImportResourceType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type Details struct {
+	Label string  `json:"label"`
+	Value *string `json:"value,omitempty"`
+}
+
+func (o *Details) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *Details) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+type HeightlightedDetails struct {
+	Label string  `json:"label"`
+	Value *string `json:"value,omitempty"`
+}
+
+func (o *HeightlightedDetails) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *HeightlightedDetails) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
 type BillingPlan struct {
-	ID                    string             `json:"id"`
-	Type                  ImportResourceType `json:"type"`
-	Name                  string             `json:"name"`
-	PaymentMethodRequired *bool              `json:"paymentMethodRequired,omitempty"`
-	AdditionalProperties  map[string]any     `additionalProperties:"true" json:"-"`
+	ID                    string                 `json:"id"`
+	Type                  ImportResourceType     `json:"type"`
+	Name                  string                 `json:"name"`
+	Description           *string                `json:"description,omitempty"`
+	PaymentMethodRequired *bool                  `json:"paymentMethodRequired,omitempty"`
+	Cost                  *string                `json:"cost,omitempty"`
+	Details               []Details              `json:"details,omitempty"`
+	HeightlightedDetails  []HeightlightedDetails `json:"heightlightedDetails,omitempty"`
+	EffectiveDate         *string                `json:"effectiveDate,omitempty"`
+	AdditionalProperties  map[string]any         `additionalProperties:"true" json:"-"`
 }
 
 func (b BillingPlan) MarshalJSON() ([]byte, error) {
@@ -113,11 +156,46 @@ func (o *BillingPlan) GetName() string {
 	return o.Name
 }
 
+func (o *BillingPlan) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
 func (o *BillingPlan) GetPaymentMethodRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.PaymentMethodRequired
+}
+
+func (o *BillingPlan) GetCost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cost
+}
+
+func (o *BillingPlan) GetDetails() []Details {
+	if o == nil {
+		return nil
+	}
+	return o.Details
+}
+
+func (o *BillingPlan) GetHeightlightedDetails() []HeightlightedDetails {
+	if o == nil {
+		return nil
+	}
+	return o.HeightlightedDetails
+}
+
+func (o *BillingPlan) GetEffectiveDate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EffectiveDate
 }
 
 func (o *BillingPlan) GetAdditionalProperties() map[string]any {

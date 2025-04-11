@@ -6,7 +6,7 @@
 import { BlobTotalAvgSizeInBytes } from "@vercel/sdk/models/userevent.js";
 
 let value: BlobTotalAvgSizeInBytes = {
-  currentThreshold: 6687.83,
+  currentThreshold: 5520.92,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { RemoveProjectEnvResponseBody2 } from "@vercel/sdk/models/removeprojectenvop.js";
 
 let value: RemoveProjectEnvResponseBody2 = {
-  type: "sensitive",
+  type: "plain",
   key: "<key>",
   value: "<value>",
 };

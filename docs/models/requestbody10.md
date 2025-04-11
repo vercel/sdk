@@ -6,7 +6,7 @@
 import { RequestBody10 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody10 = {
-  type: "TXT",
+  type: "ALIAS",
   ttl: 60,
   https: {
     priority: 10,

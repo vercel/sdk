@@ -7,7 +7,7 @@ import { Reasons } from "@vercel/sdk/models/userevent.js";
 
 let value: Reasons = {
   slug: "<value>",
-  description: "appropriate bar successfully",
+  description: "indeed mmm jagged brave within",
 };
 ```
 

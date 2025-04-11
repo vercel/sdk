@@ -5,7 +5,7 @@
 ```typescript
 import { TrustedIps } from "@vercel/sdk/models/userevent.js";
 
-let value: TrustedIps = "preview";
+let value: TrustedIps = "all";
 ```
 
 ## Values

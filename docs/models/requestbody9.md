@@ -7,7 +7,7 @@ import { RequestBody9 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody9 = {
   name: "subdomain",
-  type: "ALIAS",
+  type: "AAAA",
   ttl: 60,
   value: "ns1.example.com",
   comment: "used to verify ownership of domain",

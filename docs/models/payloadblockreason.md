@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadBlockReason } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadBlockReason = "limits_exceeded";
+let value: PayloadBlockReason = "admin_override";
 ```
 
 ## Values

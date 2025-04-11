@@ -5,7 +5,7 @@
 ```typescript
 import { OldPasswordProtectionDeploymentType } from "@vercel/sdk/models/userevent.js";
 
-let value: OldPasswordProtectionDeploymentType = "preview";
+let value: OldPasswordProtectionDeploymentType = "all";
 ```
 
 ## Values

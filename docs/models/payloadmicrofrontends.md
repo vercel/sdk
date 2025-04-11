@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.UserEventMicrofrontends1 = {
-  updatedAt: 924.48,
+  updatedAt: 227.19,
   groupIds: [
     "<value>",
   ],
@@ -19,7 +19,7 @@ const value: models.UserEventMicrofrontends1 = {
 
 ```typescript
 const value: models.UserEventMicrofrontends2 = {
-  updatedAt: 8429.21,
+  updatedAt: 8895.91,
   groupIds: [
     "<value>",
   ],

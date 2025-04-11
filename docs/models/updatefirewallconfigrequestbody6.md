@@ -9,10 +9,10 @@ import { UpdateFirewallConfigRequestBody6 } from "@vercel/sdk/models/updatefirew
 
 let value: UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  id: "xss",
+  id: "sd",
   value: {
     active: false,
-    action: "log",
+    action: "deny",
   },
 };
 ```

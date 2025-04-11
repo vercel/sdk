@@ -7,7 +7,7 @@ The sources from which logs are currently being delivered to this log drain.
 ```typescript
 import { CreateLogDrainLogDrainsSources } from "@vercel/sdk/models/createlogdrainop.js";
 
-let value: CreateLogDrainLogDrainsSources = "static";
+let value: CreateLogDrainLogDrainsSources = "build";
 ```
 
 ## Values

@@ -6,7 +6,7 @@
 import { MonitoringMetric } from "@vercel/sdk/models/userevent.js";
 
 let value: MonitoringMetric = {
-  currentThreshold: 5428.07,
+  currentThreshold: 1959.51,
 };
 ```
 

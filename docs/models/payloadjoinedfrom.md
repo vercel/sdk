@@ -6,7 +6,7 @@
 import { PayloadJoinedFrom } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadJoinedFrom = {
-  origin: "mail",
+  origin: "organization-teams",
 };
 ```
 

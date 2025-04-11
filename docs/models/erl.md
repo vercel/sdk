@@ -6,9 +6,9 @@
 import { Erl } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Erl = {
-  algo: "fixed_window",
-  window: 978.44,
-  limit: 8621.92,
+  algo: "token_bucket",
+  window: 1689.99,
+  limit: 4648.04,
   keys: [
     "<value>",
   ],

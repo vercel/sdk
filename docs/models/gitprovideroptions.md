@@ -6,7 +6,7 @@
 import { GitProviderOptions } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: GitProviderOptions = {
-  createDeployments: "enabled",
+  createDeployments: "disabled",
 };
 ```
 

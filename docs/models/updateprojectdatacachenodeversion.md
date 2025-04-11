@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectDataCacheNodeVersion } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheNodeVersion = "20.x";
+let value: UpdateProjectDataCacheNodeVersion = "16.x";
 ```
 
 ## Values

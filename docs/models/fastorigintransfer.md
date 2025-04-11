@@ -6,7 +6,7 @@
 import { FastOriginTransfer } from "@vercel/sdk/models/userevent.js";
 
 let value: FastOriginTransfer = {
-  currentThreshold: 3232.15,
+  currentThreshold: 7303.29,
 };
 ```
 

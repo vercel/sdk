@@ -11,13 +11,13 @@ let value: ThirtyNine = {
   deployment: {
     id: "<id>",
     name: "<value>",
-    url: "https://shadowy-leading.net",
+    url: "https://handy-negotiation.org/",
     meta: {
       "key": "<value>",
     },
   },
   deploymentId: "<id>",
-  url: "https://legal-cardboard.biz/",
+  url: "https://bulky-hammock.biz",
 };
 ```
 

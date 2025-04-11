@@ -6,7 +6,7 @@
 import { PayloadPreviousRule } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadPreviousRule = {
-  email: "Casimir48@yahoo.com",
+  email: "Sabrina_Strosin4@gmail.com",
 };
 ```
 

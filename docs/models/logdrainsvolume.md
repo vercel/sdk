@@ -6,7 +6,7 @@
 import { LogDrainsVolume } from "@vercel/sdk/models/userevent.js";
 
 let value: LogDrainsVolume = {
-  currentThreshold: 5291.74,
+  currentThreshold: 9065.64,
 };
 ```
 

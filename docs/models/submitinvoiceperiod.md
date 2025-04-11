@@ -8,8 +8,8 @@ Subscription period for this billing cycle.
 import { SubmitInvoicePeriod } from "@vercel/sdk/models/submitinvoiceop.js";
 
 let value: SubmitInvoicePeriod = {
-  start: new Date("2025-07-05T06:36:23.390Z"),
-  end: new Date("2024-12-09T05:08:44.511Z"),
+  start: new Date("2023-04-03T11:32:44.508Z"),
+  end: new Date("2025-04-19T03:10:20.338Z"),
 };
 ```
 

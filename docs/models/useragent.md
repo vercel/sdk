@@ -7,12 +7,12 @@ import { UserAgent } from "@vercel/sdk/models/userevent.js";
 
 let value: UserAgent = {
   browser: {
-    name: "unknown",
+    name: "iphone",
   },
   ua: "<value>",
   program: "<value>",
   os: {
-    name: "unknown",
+    name: "mac",
   },
 };
 ```

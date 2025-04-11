@@ -5,7 +5,7 @@
 ```typescript
 import { ImportResourceType } from "@vercel/sdk/models/importresourceop.js";
 
-let value: ImportResourceType = "subscription";
+let value: ImportResourceType = "prepayment";
 ```
 
 ## Values

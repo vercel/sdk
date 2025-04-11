@@ -6,7 +6,7 @@
 import { EdgeRequestAdditionalCpuDuration } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeRequestAdditionalCpuDuration = {
-  currentThreshold: 9949.02,
+  currentThreshold: 4053.61,
 };
 ```
 

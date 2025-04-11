@@ -14,6 +14,6 @@ const value: models.FilterProjectEnvsTargetProjects1[] = [
 ### `models.FilterProjectEnvsTargetProjects2`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjects2 = "development";
+const value: models.FilterProjectEnvsTargetProjects2 = "preview";
 ```
 

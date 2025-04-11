@@ -11,9 +11,9 @@ let value: UpdateFirewallConfigRequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "rotating-guidance.biz",
-    ip: "7289:aebe:af61:8f6c:b47c:577b:01c8:d5ea",
-    action: "deny",
+    hostname: "rectangular-chainstay.com",
+    ip: "a8d7:3bba:f2cf:e55e:efad:639f:e2f6:5aab",
+    action: "challenge",
   },
 };
 ```

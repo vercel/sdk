@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadOrigin } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadOrigin = "github";
+let value: PayloadOrigin = "mail";
 ```
 
 ## Values

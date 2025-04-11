@@ -6,7 +6,7 @@
 import { GetDeploymentRoutes2 } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentRoutes2 = {
-  handle: "miss",
+  handle: "resource",
 };
 ```
 

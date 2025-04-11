@@ -7,7 +7,7 @@ Specify if the password will apply to every Deployment Target or just Preview
 ```typescript
 import { UpdateProjectDeploymentType } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectDeploymentType = "all";
+let value: UpdateProjectDeploymentType = "preview";
 ```
 
 ## Values

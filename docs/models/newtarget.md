@@ -5,7 +5,7 @@
 ```typescript
 import { NewTarget } from "@vercel/sdk/models/userevent.js";
 
-let value: NewTarget = "production";
+let value: NewTarget = "development";
 ```
 
 ## Values

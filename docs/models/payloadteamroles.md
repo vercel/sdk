@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadTeamRoles } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadTeamRoles = "DEVELOPER";
+let value: PayloadTeamRoles = "MEMBER";
 ```
 
 ## Values

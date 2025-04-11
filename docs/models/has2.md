@@ -6,7 +6,7 @@
 import { Has2 } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Has2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

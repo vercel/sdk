@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectProjectsFramework } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProjectsFramework = "fasthtml";
+let value: UpdateProjectProjectsFramework = "dojo";
 ```
 
 ## Values

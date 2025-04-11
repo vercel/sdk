@@ -6,7 +6,7 @@
 import { Artifacts } from "@vercel/sdk/models/userevent.js";
 
 let value: Artifacts = {
-  currentThreshold: 1235.46,
+  currentThreshold: 4601.52,
 };
 ```
 

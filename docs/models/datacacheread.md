@@ -6,7 +6,7 @@
 import { DataCacheRead } from "@vercel/sdk/models/userevent.js";
 
 let value: DataCacheRead = {
-  currentThreshold: 2762.47,
+  currentThreshold: 2452.67,
 };
 ```
 

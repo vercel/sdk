@@ -6,7 +6,7 @@
 import { CreateProjectHas } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectHas = {
-  type: "environment",
+  type: "region",
 };
 ```
 

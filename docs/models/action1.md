@@ -5,7 +5,7 @@
 ```typescript
 import { Action1 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: Action1 = "rate_limit";
+let value: Action1 = "log";
 ```
 
 ## Values

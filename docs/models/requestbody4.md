@@ -7,7 +7,7 @@ import { RequestBody4 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody4 = {
   name: "subdomain",
-  type: "AAAA",
+  type: "HTTPS",
   ttl: 60,
   value: "0 issue \\"letsencrypt.org\\"",
   comment: "used to verify ownership of domain",

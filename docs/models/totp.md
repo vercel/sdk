@@ -7,7 +7,7 @@ import { Totp } from "@vercel/sdk/models/userevent.js";
 
 let value: Totp = {
   secret: "<value>",
-  createdAt: 8329.89,
+  createdAt: 1292.35,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { CreateCheckFCP } from "@vercel/sdk/models/createcheckop.js";
 
 let value: CreateCheckFCP = {
-  value: 6048.46,
+  value: 6786.83,
   source: "web-vitals",
 };
 ```

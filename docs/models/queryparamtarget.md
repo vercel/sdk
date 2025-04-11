@@ -7,7 +7,7 @@ Filters on the target of the domain. Can be either \"production\", \"preview\"
 ```typescript
 import { QueryParamTarget } from "@vercel/sdk/models/getprojectdomainsop.js";
 
-let value: QueryParamTarget = "preview";
+let value: QueryParamTarget = "production";
 ```
 
 ## Values

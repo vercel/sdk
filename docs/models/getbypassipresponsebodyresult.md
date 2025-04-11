@@ -8,10 +8,10 @@ import { GetBypassIpResponseBodyResult } from "@vercel/sdk/models/getbypassipop.
 let value: GetBypassIpResponseBodyResult = {
   ownerId: "<id>",
   id: "<id>",
-  domain: "triangular-gown.net",
-  ip: "604f:c69e:299b:b8a1:09d6:3e38:a558:be03",
-  createdAt: "1742395110435",
-  updatedAt: "1743665477714",
+  domain: "tasty-straw.org",
+  ip: "c7ba:04ff:1335:c1a4:0321:3f60:ce29:ec48",
+  createdAt: "1727392420352",
+  updatedAt: "1744345379073",
   updatedAtHour: "<value>",
 };
 ```

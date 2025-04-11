@@ -6,7 +6,7 @@
 import { Redis } from "@vercel/sdk/models/userevent.js";
 
 let value: Redis = {
-  overageReason: "blobTotalAvgSizeInBytes",
+  overageReason: "postgresDatabase",
 };
 ```
 

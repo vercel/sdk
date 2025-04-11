@@ -6,7 +6,7 @@
 import { EdgeMiddlewareInvocations } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeMiddlewareInvocations = {
-  currentThreshold: 6866.9,
+  currentThreshold: 2265.31,
 };
 ```
 

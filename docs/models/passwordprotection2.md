@@ -5,7 +5,7 @@
 ```typescript
 import { PasswordProtection2 } from "@vercel/sdk/models/userevent.js";
 
-let value: PasswordProtection2 = "preview";
+let value: PasswordProtection2 = "all";
 ```
 
 ## Values

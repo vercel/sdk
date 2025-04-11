@@ -9,7 +9,7 @@ let value: CreateProjectLinkProjectsDeployHooks = {
   id: "<id>",
   name: "<value>",
   ref: "<value>",
-  url: "https://impressive-feather.com/",
+  url: "https://quarrelsome-scorn.org",
 };
 ```
 

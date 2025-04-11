@@ -6,7 +6,7 @@
 import { AnalyticsUsage } from "@vercel/sdk/models/userevent.js";
 
 let value: AnalyticsUsage = {
-  currentThreshold: 2767.95,
+  currentThreshold: 922.98,
 };
 ```
 

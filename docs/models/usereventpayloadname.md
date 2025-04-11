@@ -5,7 +5,7 @@
 ```typescript
 import { UserEventPayloadName } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadName = "OS X";
+let value: UserEventPayloadName = "freebsd";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ import { Sudo } from "@vercel/sdk/models/authtoken.js";
 
 let value: Sudo = {
   origin: "totp",
-  expiresAt: 3056.95,
+  expiresAt: 2002.64,
 };
 ```
 

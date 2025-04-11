@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  instances: 7547.84,
-  url: "https://raw-slide.biz",
+  instances: 5738.09,
+  url: "https://grounded-adult.name",
 };
 ```
 

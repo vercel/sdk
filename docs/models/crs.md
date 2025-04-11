@@ -10,7 +10,7 @@ import { Crs } from "@vercel/sdk/models/getfirewallconfigop.js";
 let value: Crs = {
   sd: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   ma: {
     active: false,
@@ -18,11 +18,11 @@ let value: Crs = {
   },
   lfi: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   rfi: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   rce: {
     active: false,
@@ -34,7 +34,7 @@ let value: Crs = {
   },
   gen: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   xss: {
     active: false,
@@ -46,11 +46,11 @@ let value: Crs = {
   },
   sf: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   java: {
     active: false,
-    action: "deny",
+    action: "log",
   },
 };
 ```

@@ -10,7 +10,7 @@ import { SeventySeven } from "@vercel/sdk/models/userevent.js";
 let value: SeventySeven = {
   projectName: "<value>",
   ssoProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
+    deploymentType: "all",
   },
   oldSsoProtection: "prod_deployment_urls_and_all_previews",
 };

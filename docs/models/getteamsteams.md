@@ -38,10 +38,10 @@ const value: models.TeamLimited = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
     confirmed: false,
-    confirmedAt: 9416.84,
+    confirmedAt: 1358.13,
     role: "MEMBER",
-    createdAt: 963.01,
-    created: 6266.14,
+    createdAt: 3486.24,
+    created: 4110.54,
   },
   created: "<value>",
   createdAt: 1630748523395,

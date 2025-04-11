@@ -9,7 +9,7 @@ let value: LinkDeployHooks = {
   id: "<id>",
   name: "<value>",
   ref: "<value>",
-  url: "https://wealthy-redesign.info/",
+  url: "https://pure-hyphenation.com/",
 };
 ```
 

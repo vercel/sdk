@@ -6,7 +6,7 @@
 import { RequestBody8 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody8 = {
-  type: "AAAA",
+  type: "CNAME",
   ttl: 60,
   value: "hello",
   comment: "used to verify ownership of domain",

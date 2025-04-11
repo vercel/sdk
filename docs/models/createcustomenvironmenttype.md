@@ -7,7 +7,7 @@ Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
 ```typescript
 import { CreateCustomEnvironmentType } from "@vercel/sdk/models/createcustomenvironmentop.js";
 
-let value: CreateCustomEnvironmentType = "equals";
+let value: CreateCustomEnvironmentType = "endsWith";
 ```
 
 ## Values

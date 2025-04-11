@@ -10,8 +10,8 @@ import { UpdateFirewallConfigRequestBody8 } from "@vercel/sdk/models/updatefirew
 let value: UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "royal-humor.info",
-    ip: "708b:ef2e:8a92:5a02:0cd3:afee:0c5c:639a",
+    hostname: "pink-plugin.net",
+    ip: "187.206.27.119",
     action: "bypass",
   },
 };

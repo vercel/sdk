@@ -8,7 +8,7 @@ An array of all the stages required during a deployment release. each stage requ
 import { UpdateProjectStages } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectStages = {
-  targetPercentage: 3302.67,
+  targetPercentage: 9027.6,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { PayloadImageOptimizationTransformation } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadImageOptimizationTransformation = {
-  updatedAt: 156.76,
+  updatedAt: 344.86,
   blockReason: "admin_override",
 };
 ```

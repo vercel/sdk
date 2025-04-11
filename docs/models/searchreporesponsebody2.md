@@ -7,25 +7,25 @@ import { SearchRepoResponseBody2 } from "@vercel/sdk/models/searchrepoop.js";
 
 let value: SearchRepoResponseBody2 = {
   gitAccount: {
-    provider: "github-custom-host",
-    namespaceId: 9906.52,
+    provider: "gitlab",
+    namespaceId: "<id>",
   },
   repos: [
     {
-      id: "<id>",
-      provider: "gitlab",
-      url: "https://putrid-solution.net/",
+      id: 245.69,
+      provider: "bitbucket",
+      url: "https://lost-chapel.net/",
       name: "<value>",
       slug: "<value>",
       namespace: "<value>",
       owner: {
-        id: "<id>",
+        id: 8820.56,
         name: "<value>",
       },
       ownerType: "user",
       private: false,
       defaultBranch: "<value>",
-      updatedAt: 3931.22,
+      updatedAt: 2123.21,
     },
   ],
 };

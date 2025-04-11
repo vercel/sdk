@@ -6,7 +6,7 @@
 import { BlobTotalGetResponseObjectSizeInBytes } from "@vercel/sdk/models/userevent.js";
 
 let value: BlobTotalGetResponseObjectSizeInBytes = {
-  currentThreshold: 724.73,
+  currentThreshold: 2862.79,
 };
 ```
 

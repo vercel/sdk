@@ -8,7 +8,7 @@ A soft block indicates a temporary pause in data collection (ex limit exceeded f
 import { Monitoring } from "@vercel/sdk/models/userevent.js";
 
 let value: Monitoring = {
-  blockType: "hard",
+  blockType: "soft",
 };
 ```
 

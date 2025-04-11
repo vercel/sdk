@@ -9,8 +9,8 @@
 const value: models.AuthUser = {
   createdAt: 1630748523395,
   softBlock: {
-    blockedAt: 3658.92,
-    reason: "FAIR_USE_LIMITS_EXCEEDED",
+    blockedAt: 3760.13,
+    reason: "UNPAID_INVOICE",
   },
   billing: {},
   resourceConfig: {},

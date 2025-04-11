@@ -11,13 +11,13 @@ let value: SeventyFour = {
   projectId: "<id>",
   projectAnalytics: {
     id: "<id>",
-    disabledAt: 334.07,
-    enabledAt: 5902.8,
+    disabledAt: 9674.14,
+    enabledAt: 7805.31,
   },
   prevProjectAnalytics: {
     id: "<id>",
-    disabledAt: 3114.49,
-    enabledAt: 2482.76,
+    disabledAt: 4406.39,
+    enabledAt: 7541.76,
   },
 };
 ```

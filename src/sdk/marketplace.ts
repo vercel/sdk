@@ -11,7 +11,6 @@ import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
-import { marketplaceQueryExperimentationItems } from "../funcs/marketplaceQueryExperimentationItems.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
 import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
@@ -59,10 +58,6 @@ import {
   PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
   PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
 } from "../models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
-import {
-  QueryExperimentationItemsRequest,
-  QueryExperimentationItemsResponseBody,
-} from "../models/queryexperimentationitemsop.js";
 import { SubmitBillingDataRequest } from "../models/submitbillingdataop.js";
 import {
   SubmitInvoiceRequest,
@@ -273,23 +268,6 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ExchangeSsoTokenResponseBody> {
     return unwrapAsync(marketplaceExchangeSsoToken(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Query experimentation items
-   *
-   * @remarks
-   * Queries flags, experiments under a Marketplace resource.
-   */
-  async queryExperimentationItems(
-    request: QueryExperimentationItemsRequest,
-    options?: RequestOptions,
-  ): Promise<QueryExperimentationItemsResponseBody> {
-    return unwrapAsync(marketplaceQueryExperimentationItems(
       this,
       request,
       options,

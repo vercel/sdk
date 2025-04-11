@@ -6,7 +6,7 @@
 import { DataCacheWrite } from "@vercel/sdk/models/userevent.js";
 
 let value: DataCacheWrite = {
-  currentThreshold: 3626.93,
+  currentThreshold: 5131.19,
 };
 ```
 

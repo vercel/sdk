@@ -5,7 +5,7 @@
 ```typescript
 import { InviteUserToTeamResponseBodyTeamPermissions } from "@vercel/sdk/models/inviteusertoteamop.js";
 
-let value: InviteUserToTeamResponseBodyTeamPermissions = "EnvVariableManager";
+let value: InviteUserToTeamResponseBodyTeamPermissions = "CreateProject";
 ```
 
 ## Values

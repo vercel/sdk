@@ -11,14 +11,14 @@ let value: NinetySeven = {
   budget: {
     budgetItem: {
       type: "fixed",
-      fixedBudget: 7689.99,
+      fixedBudget: 4466.53,
       previousSpend: [
-        831.64,
+        1518.84,
       ],
       notifiedAt: [
-        9747.75,
+        8866.64,
       ],
-      createdAt: 492.85,
+      createdAt: 2316.51,
       isActive: false,
       teamId: "<id>",
       id: "<id>",

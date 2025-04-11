@@ -67,6 +67,462 @@ func (e *ProjectSelection) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TransferRequestKind string
+
+const (
+	TransferRequestKindTransferFromMarketplace TransferRequestKind = "transfer-from-marketplace"
+)
+
+func (e TransferRequestKind) ToPointer() *TransferRequestKind {
+	return &e
+}
+func (e *TransferRequestKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "transfer-from-marketplace":
+		*e = TransferRequestKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TransferRequestKind: %v", v)
+	}
+}
+
+type TransferRequestRequester struct {
+	Name  string  `json:"name"`
+	Email *string `json:"email,omitempty"`
+}
+
+func (o *TransferRequestRequester) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *TransferRequestRequester) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+type TransferRequest2 struct {
+	Kind            TransferRequestKind      `json:"kind"`
+	RequestID       string                   `json:"requestId"`
+	TransferID      string                   `json:"transferId"`
+	Requester       TransferRequestRequester `json:"requester"`
+	CreatedAt       float64                  `json:"createdAt"`
+	ExpiresAt       float64                  `json:"expiresAt"`
+	DiscardedAt     *float64                 `json:"discardedAt,omitempty"`
+	DiscardedBy     *string                  `json:"discardedBy,omitempty"`
+	ApprovedAt      *float64                 `json:"approvedAt,omitempty"`
+	ApprovedBy      *string                  `json:"approvedBy,omitempty"`
+	AuthorizationID *string                  `json:"authorizationId,omitempty"`
+}
+
+func (o *TransferRequest2) GetKind() TransferRequestKind {
+	if o == nil {
+		return TransferRequestKind("")
+	}
+	return o.Kind
+}
+
+func (o *TransferRequest2) GetRequestID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RequestID
+}
+
+func (o *TransferRequest2) GetTransferID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TransferID
+}
+
+func (o *TransferRequest2) GetRequester() TransferRequestRequester {
+	if o == nil {
+		return TransferRequestRequester{}
+	}
+	return o.Requester
+}
+
+func (o *TransferRequest2) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *TransferRequest2) GetExpiresAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ExpiresAt
+}
+
+func (o *TransferRequest2) GetDiscardedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DiscardedAt
+}
+
+func (o *TransferRequest2) GetDiscardedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DiscardedBy
+}
+
+func (o *TransferRequest2) GetApprovedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedAt
+}
+
+func (o *TransferRequest2) GetApprovedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedBy
+}
+
+func (o *TransferRequest2) GetAuthorizationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AuthorizationID
+}
+
+type Kind string
+
+const (
+	KindTransferToMarketplace Kind = "transfer-to-marketplace"
+)
+
+func (e Kind) ToPointer() *Kind {
+	return &e
+}
+func (e *Kind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "transfer-to-marketplace":
+		*e = Kind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Kind: %v", v)
+	}
+}
+
+type TransferRequestType string
+
+const (
+	TransferRequestTypeSubscription TransferRequestType = "subscription"
+	TransferRequestTypePrepayment   TransferRequestType = "prepayment"
+)
+
+func (e TransferRequestType) ToPointer() *TransferRequestType {
+	return &e
+}
+func (e *TransferRequestType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "subscription":
+		fallthrough
+	case "prepayment":
+		*e = TransferRequestType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TransferRequestType: %v", v)
+	}
+}
+
+type TransferRequestScope string
+
+const (
+	TransferRequestScopeInstallation TransferRequestScope = "installation"
+	TransferRequestScopeResource     TransferRequestScope = "resource"
+)
+
+func (e TransferRequestScope) ToPointer() *TransferRequestScope {
+	return &e
+}
+func (e *TransferRequestScope) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "installation":
+		fallthrough
+	case "resource":
+		*e = TransferRequestScope(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TransferRequestScope: %v", v)
+	}
+}
+
+type TransferRequestBillingPlan struct {
+	ID                     string                `json:"id"`
+	Type                   TransferRequestType   `json:"type"`
+	Scope                  *TransferRequestScope `json:"scope,omitempty"`
+	Name                   string                `json:"name"`
+	Description            string                `json:"description"`
+	PaymentMethodRequired  *bool                 `json:"paymentMethodRequired,omitempty"`
+	PreauthorizationAmount *float64              `json:"preauthorizationAmount,omitempty"`
+}
+
+func (o *TransferRequestBillingPlan) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TransferRequestBillingPlan) GetType() TransferRequestType {
+	if o == nil {
+		return TransferRequestType("")
+	}
+	return o.Type
+}
+
+func (o *TransferRequestBillingPlan) GetScope() *TransferRequestScope {
+	if o == nil {
+		return nil
+	}
+	return o.Scope
+}
+
+func (o *TransferRequestBillingPlan) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *TransferRequestBillingPlan) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *TransferRequestBillingPlan) GetPaymentMethodRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PaymentMethodRequired
+}
+
+func (o *TransferRequestBillingPlan) GetPreauthorizationAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PreauthorizationAmount
+}
+
+type Requester struct {
+	Name  string  `json:"name"`
+	Email *string `json:"email,omitempty"`
+}
+
+func (o *Requester) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Requester) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+type TransferRequest1 struct {
+	Kind            Kind                        `json:"kind"`
+	Metadata        map[string]any              `json:"metadata,omitempty"`
+	BillingPlan     *TransferRequestBillingPlan `json:"billingPlan,omitempty"`
+	RequestID       string                      `json:"requestId"`
+	TransferID      string                      `json:"transferId"`
+	Requester       Requester                   `json:"requester"`
+	CreatedAt       float64                     `json:"createdAt"`
+	ExpiresAt       float64                     `json:"expiresAt"`
+	DiscardedAt     *float64                    `json:"discardedAt,omitempty"`
+	DiscardedBy     *string                     `json:"discardedBy,omitempty"`
+	ApprovedAt      *float64                    `json:"approvedAt,omitempty"`
+	ApprovedBy      *string                     `json:"approvedBy,omitempty"`
+	AuthorizationID *string                     `json:"authorizationId,omitempty"`
+}
+
+func (o *TransferRequest1) GetKind() Kind {
+	if o == nil {
+		return Kind("")
+	}
+	return o.Kind
+}
+
+func (o *TransferRequest1) GetMetadata() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *TransferRequest1) GetBillingPlan() *TransferRequestBillingPlan {
+	if o == nil {
+		return nil
+	}
+	return o.BillingPlan
+}
+
+func (o *TransferRequest1) GetRequestID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RequestID
+}
+
+func (o *TransferRequest1) GetTransferID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TransferID
+}
+
+func (o *TransferRequest1) GetRequester() Requester {
+	if o == nil {
+		return Requester{}
+	}
+	return o.Requester
+}
+
+func (o *TransferRequest1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *TransferRequest1) GetExpiresAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ExpiresAt
+}
+
+func (o *TransferRequest1) GetDiscardedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DiscardedAt
+}
+
+func (o *TransferRequest1) GetDiscardedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DiscardedBy
+}
+
+func (o *TransferRequest1) GetApprovedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedAt
+}
+
+func (o *TransferRequest1) GetApprovedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedBy
+}
+
+func (o *TransferRequest1) GetAuthorizationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AuthorizationID
+}
+
+type TransferRequestUnionType string
+
+const (
+	TransferRequestUnionTypeTransferRequest1 TransferRequestUnionType = "transferRequest_1"
+	TransferRequestUnionTypeTransferRequest2 TransferRequestUnionType = "transferRequest_2"
+)
+
+type TransferRequest struct {
+	TransferRequest1 *TransferRequest1
+	TransferRequest2 *TransferRequest2
+
+	Type TransferRequestUnionType
+}
+
+func CreateTransferRequestTransferRequest1(transferRequest1 TransferRequest1) TransferRequest {
+	typ := TransferRequestUnionTypeTransferRequest1
+
+	return TransferRequest{
+		TransferRequest1: &transferRequest1,
+		Type:             typ,
+	}
+}
+
+func CreateTransferRequestTransferRequest2(transferRequest2 TransferRequest2) TransferRequest {
+	typ := TransferRequestUnionTypeTransferRequest2
+
+	return TransferRequest{
+		TransferRequest2: &transferRequest2,
+		Type:             typ,
+	}
+}
+
+func (u *TransferRequest) UnmarshalJSON(data []byte) error {
+
+	var transferRequest2 TransferRequest2 = TransferRequest2{}
+	if err := utils.UnmarshalJSON(data, &transferRequest2, "", true, true); err == nil {
+		u.TransferRequest2 = &transferRequest2
+		u.Type = TransferRequestUnionTypeTransferRequest2
+		return nil
+	}
+
+	var transferRequest1 TransferRequest1 = TransferRequest1{}
+	if err := utils.UnmarshalJSON(data, &transferRequest1, "", true, true); err == nil {
+		u.TransferRequest1 = &transferRequest1
+		u.Type = TransferRequestUnionTypeTransferRequest1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TransferRequest", string(data))
+}
+
+func (u TransferRequest) MarshalJSON() ([]byte, error) {
+	if u.TransferRequest1 != nil {
+		return utils.MarshalJSON(u.TransferRequest1, "", true)
+	}
+
+	if u.TransferRequest2 != nil {
+		return utils.MarshalJSON(u.TransferRequest2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TransferRequest: all fields are null")
+}
+
 // GetConfigurationResponseBodyIntegrationsSource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
 type GetConfigurationResponseBodyIntegrationsSource string
 
@@ -191,6 +647,7 @@ func (e *GetConfigurationResponseBodyIntegrationsInstallationType) UnmarshalJSON
 type GetConfigurationResponseBody2 struct {
 	// A string representing the permission for projects. Possible values are `all` or `selected`.
 	ProjectSelection ProjectSelection `json:"projectSelection"`
+	TransferRequest  TransferRequest  `json:"transferRequest"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// A timestamp that tells you when the configuration was installed successfully
@@ -233,6 +690,13 @@ func (o *GetConfigurationResponseBody2) GetProjectSelection() ProjectSelection {
 		return ProjectSelection("")
 	}
 	return o.ProjectSelection
+}
+
+func (o *GetConfigurationResponseBody2) GetTransferRequest() TransferRequest {
+	if o == nil {
+		return TransferRequest{}
+	}
+	return o.TransferRequest
 }
 
 func (o *GetConfigurationResponseBody2) GetProjects() []string {

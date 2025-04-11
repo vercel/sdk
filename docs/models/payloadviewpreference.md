@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadViewPreference } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadViewPreference = "list";
+let value: PayloadViewPreference = "cards";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ```typescript
 import { ReadySubstate } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: ReadySubstate = "ROLLING";
+let value: ReadySubstate = "STAGED";
 ```
 
 ## Values

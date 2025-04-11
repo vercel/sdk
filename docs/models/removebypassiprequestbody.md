@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.RemoveBypassIpRequestBody1 = {
-  domain: "calculating-hepatitis.net",
+  domain: "blind-jet.net",
 };
 ```
 

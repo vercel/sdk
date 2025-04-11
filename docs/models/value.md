@@ -12,8 +12,8 @@ let value: Value = {
     {
       conditions: [
         {
-          type: "region",
-          op: "lte",
+          type: "geo_continent",
+          op: "neq",
         },
       ],
     },

@@ -7,7 +7,7 @@ Substate of deployment when readyState is 'READY' Tracks whether or not deployme
 ```typescript
 import { GetDeploymentResponseBodyReadySubstate } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentResponseBodyReadySubstate = "PROMOTED";
+let value: GetDeploymentResponseBodyReadySubstate = "STAGED";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { GetWebhooksResponseBodyFramework } from "@vercel/sdk/models/getwebhooksop.js";
 
-let value: GetWebhooksResponseBodyFramework = "blitzjs";
+let value: GetWebhooksResponseBodyFramework = "middleman";
 ```
 
 ## Values

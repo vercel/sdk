@@ -7,12 +7,12 @@ import { Job } from "@vercel/sdk/models/userevent.js";
 
 let value: Job = {
   deployHook: {
-    createdAt: 4358.41,
+    createdAt: 3393.49,
     id: "<id>",
     name: "<value>",
     ref: "<value>",
   },
-  state: "Oregon",
+  state: "Idaho",
 };
 ```
 

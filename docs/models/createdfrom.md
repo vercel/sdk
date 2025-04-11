@@ -5,7 +5,7 @@
 ```typescript
 import { CreatedFrom } from "@vercel/sdk/models/getconfigurablelogdrainop.js";
 
-let value: CreatedFrom = "self-served";
+let value: CreatedFrom = "integration";
 ```
 
 ## Values

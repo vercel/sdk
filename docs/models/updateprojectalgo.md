@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectAlgo } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectAlgo = "token_bucket";
+let value: UpdateProjectAlgo = "fixed_window";
 ```
 
 ## Values

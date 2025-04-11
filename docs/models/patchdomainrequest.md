@@ -6,7 +6,7 @@
 import { PatchDomainRequest } from "@vercel/sdk/models/patchdomainop.js";
 
 let value: PatchDomainRequest = {
-  domain: "whirlwind-section.com",
+  domain: "warlike-nephew.com",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
   requestBody: {

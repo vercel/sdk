@@ -7,10 +7,10 @@ import { AnomalyAlerts } from "@vercel/sdk/models/getactiveattackstatusop.js";
 
 let value: AnomalyAlerts = {
   atMinute: "<value>",
-  zscore: 5844.83,
-  totalRequestsMinute: 913.33,
-  avgRequests: 5662.62,
-  stddevRequests: 792.37,
+  zscore: 1070.39,
+  totalRequestsMinute: 535.39,
+  avgRequests: 7615.46,
+  stddevRequests: 5178.09,
 };
 ```
 

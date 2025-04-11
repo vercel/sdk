@@ -13,8 +13,8 @@ let value: GetFirewallConfigRules = {
     {
       conditions: [
         {
-          type: "ja3_digest",
-          op: "lte",
+          type: "rate_limit_api_id",
+          op: "nex",
         },
       ],
     },

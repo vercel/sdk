@@ -5,7 +5,7 @@
 ```typescript
 import { Roles1 } from "@vercel/sdk/models/patchteamop.js";
 
-let value: Roles1 = "CONTRIBUTOR";
+let value: Roles1 = "SECURITY";
 ```
 
 ## Values

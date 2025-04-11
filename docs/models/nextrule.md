@@ -6,7 +6,7 @@
 import { NextRule } from "@vercel/sdk/models/userevent.js";
 
 let value: NextRule = {
-  email: "Elbert47@hotmail.com",
+  email: "Myrtis_Emard99@yahoo.com",
 };
 ```
 

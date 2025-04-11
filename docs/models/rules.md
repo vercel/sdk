@@ -6,7 +6,7 @@
 import { Rules } from "@vercel/sdk/models/userevent.js";
 
 let value: Rules = {
-  email: "Pauline96@gmail.com",
+  email: "Kaela.Fadel@hotmail.com",
 };
 ```
 

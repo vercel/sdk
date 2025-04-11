@@ -10,13 +10,13 @@ let value: CreateConfigurableLogDrainResponseBody = {
     "preview",
   ],
   id: "<id>",
-  createdAt: 726,
-  deletedAt: 7666.7,
-  updatedAt: 2663.7,
-  url: "https://elderly-scout.com/",
+  createdAt: 4155.93,
+  deletedAt: 1634.28,
+  updatedAt: 2845.93,
+  url: "https://ironclad-trench.biz/",
   name: "<value>",
   ownerId: "<id>",
-  deliveryFormat: "protobuf",
+  deliveryFormat: "ndjson",
 };
 ```
 

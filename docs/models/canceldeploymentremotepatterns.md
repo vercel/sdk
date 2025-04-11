@@ -6,7 +6,7 @@
 import { CancelDeploymentRemotePatterns } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentRemotePatterns = {
-  hostname: "warm-excess.org",
+  hostname: "fatal-deduction.name",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { EdgeFunctionExecutionUnits } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeFunctionExecutionUnits = {
-  currentThreshold: 3875.67,
+  currentThreshold: 5747.96,
 };
 ```
 

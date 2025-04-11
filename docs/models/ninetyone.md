@@ -9,9 +9,7 @@ import { NinetyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyOne = {
   uid: "<id>",
-  name: {
-    name: "<value>",
-  },
+  name: "<value>",
 };
 ```
 

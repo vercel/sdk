@@ -11,7 +11,7 @@ import {
   createRegisterResource,
   createRegisterResourceTemplate,
 } from "./resources.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$accessGroupsCreateAccessGroup } from "./tools/accessGroupsCreateAccessGroup.js";
 import { tool$accessGroupsCreateAccessGroupProject } from "./tools/accessGroupsCreateAccessGroupProject.js";
@@ -116,7 +116,6 @@ import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInf
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
-import { tool$marketplaceQueryExperimentationItems } from "./tools/marketplaceQueryExperimentationItems.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
 import { tool$marketplaceSubmitPrepaymentBalances } from "./tools/marketplaceSubmitPrepaymentBalances.js";
@@ -187,7 +186,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.0",
+    version: "1.6.1",
   });
 
   const client = new VercelCore({
@@ -196,7 +195,7 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
 
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+  const scopes = new Set(deps.scopes);
 
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(
@@ -328,7 +327,6 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceUpdateResourceSecretsById);
   tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
-  tool(tool$marketplaceQueryExperimentationItems);
   tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
   tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);

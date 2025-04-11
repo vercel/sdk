@@ -10,10 +10,14 @@ let value: CreateRecordRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
   requestBody: {
-    name: "subdomain",
-    type: "A",
+    type: "ALIAS",
     ttl: 60,
-    value: "0 issue \\"letsencrypt.org\\"",
+    srv: {
+      priority: 10,
+      weight: 10,
+      port: 5000,
+      target: "host.example.com",
+    },
     comment: "used to verify ownership of domain",
   },
 };

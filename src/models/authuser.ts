@@ -181,6 +181,14 @@ export type ResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   microfrontendProjectsPerGroup?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  flagsExplorerOverridesThreshold?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  flagsExplorerUnlimitedOverrides?: boolean | undefined;
 };
 
 export const ViewPreference = {
@@ -247,26 +255,10 @@ export type DismissedToasts = {
 /**
  * A list of projects and spaces across teams that a user has marked as a favorite.
  */
-export type FavoriteProjectsAndSpaces2 = {
-  spaceId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-/**
- * A list of projects and spaces across teams that a user has marked as a favorite.
- */
-export type FavoriteProjectsAndSpaces1 = {
+export type FavoriteProjectsAndSpaces = {
+  teamId: string;
   projectId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
 };
-
-export type FavoriteProjectsAndSpaces =
-  | FavoriteProjectsAndSpaces1
-  | FavoriteProjectsAndSpaces2;
 
 /**
  * remote caching settings
@@ -378,9 +370,7 @@ export type AuthUser = {
   /**
    * A list of projects and spaces across teams that a user has marked as a favorite.
    */
-  favoriteProjectsAndSpaces?:
-    | Array<FavoriteProjectsAndSpaces1 | FavoriteProjectsAndSpaces2>
-    | undefined;
+  favoriteProjectsAndSpaces?: Array<FavoriteProjectsAndSpaces> | undefined;
   /**
    * Whether the user has a trial available for a paid plan subscription.
    */
@@ -646,6 +636,8 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   cronJobsPerProject: z.number().optional(),
   microfrontendGroupsPerTeam: z.number().optional(),
   microfrontendProjectsPerGroup: z.number().optional(),
+  flagsExplorerOverridesThreshold: z.number().optional(),
+  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
 });
 
 /** @internal */
@@ -671,6 +663,8 @@ export type ResourceConfig$Outbound = {
   cronJobsPerProject?: number | undefined;
   microfrontendGroupsPerTeam?: number | undefined;
   microfrontendProjectsPerGroup?: number | undefined;
+  flagsExplorerOverridesThreshold?: number | undefined;
+  flagsExplorerUnlimitedOverrides?: boolean | undefined;
 };
 
 /** @internal */
@@ -700,6 +694,8 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   cronJobsPerProject: z.number().optional(),
   microfrontendGroupsPerTeam: z.number().optional(),
   microfrontendProjectsPerGroup: z.number().optional(),
+  flagsExplorerOverridesThreshold: z.number().optional(),
+  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
 });
 
 /**
@@ -1188,155 +1184,30 @@ export function dismissedToastsFromJSON(
 }
 
 /** @internal */
-export const FavoriteProjectsAndSpaces2$inboundSchema: z.ZodType<
-  FavoriteProjectsAndSpaces2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  spaceId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/** @internal */
-export type FavoriteProjectsAndSpaces2$Outbound = {
-  spaceId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-/** @internal */
-export const FavoriteProjectsAndSpaces2$outboundSchema: z.ZodType<
-  FavoriteProjectsAndSpaces2$Outbound,
-  z.ZodTypeDef,
-  FavoriteProjectsAndSpaces2
-> = z.object({
-  spaceId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FavoriteProjectsAndSpaces2$ {
-  /** @deprecated use `FavoriteProjectsAndSpaces2$inboundSchema` instead. */
-  export const inboundSchema = FavoriteProjectsAndSpaces2$inboundSchema;
-  /** @deprecated use `FavoriteProjectsAndSpaces2$outboundSchema` instead. */
-  export const outboundSchema = FavoriteProjectsAndSpaces2$outboundSchema;
-  /** @deprecated use `FavoriteProjectsAndSpaces2$Outbound` instead. */
-  export type Outbound = FavoriteProjectsAndSpaces2$Outbound;
-}
-
-export function favoriteProjectsAndSpaces2ToJSON(
-  favoriteProjectsAndSpaces2: FavoriteProjectsAndSpaces2,
-): string {
-  return JSON.stringify(
-    FavoriteProjectsAndSpaces2$outboundSchema.parse(favoriteProjectsAndSpaces2),
-  );
-}
-
-export function favoriteProjectsAndSpaces2FromJSON(
-  jsonString: string,
-): SafeParseResult<FavoriteProjectsAndSpaces2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FavoriteProjectsAndSpaces2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FavoriteProjectsAndSpaces2' from JSON`,
-  );
-}
-
-/** @internal */
-export const FavoriteProjectsAndSpaces1$inboundSchema: z.ZodType<
-  FavoriteProjectsAndSpaces1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/** @internal */
-export type FavoriteProjectsAndSpaces1$Outbound = {
-  projectId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-/** @internal */
-export const FavoriteProjectsAndSpaces1$outboundSchema: z.ZodType<
-  FavoriteProjectsAndSpaces1$Outbound,
-  z.ZodTypeDef,
-  FavoriteProjectsAndSpaces1
-> = z.object({
-  projectId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FavoriteProjectsAndSpaces1$ {
-  /** @deprecated use `FavoriteProjectsAndSpaces1$inboundSchema` instead. */
-  export const inboundSchema = FavoriteProjectsAndSpaces1$inboundSchema;
-  /** @deprecated use `FavoriteProjectsAndSpaces1$outboundSchema` instead. */
-  export const outboundSchema = FavoriteProjectsAndSpaces1$outboundSchema;
-  /** @deprecated use `FavoriteProjectsAndSpaces1$Outbound` instead. */
-  export type Outbound = FavoriteProjectsAndSpaces1$Outbound;
-}
-
-export function favoriteProjectsAndSpaces1ToJSON(
-  favoriteProjectsAndSpaces1: FavoriteProjectsAndSpaces1,
-): string {
-  return JSON.stringify(
-    FavoriteProjectsAndSpaces1$outboundSchema.parse(favoriteProjectsAndSpaces1),
-  );
-}
-
-export function favoriteProjectsAndSpaces1FromJSON(
-  jsonString: string,
-): SafeParseResult<FavoriteProjectsAndSpaces1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FavoriteProjectsAndSpaces1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FavoriteProjectsAndSpaces1' from JSON`,
-  );
-}
-
-/** @internal */
 export const FavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
   FavoriteProjectsAndSpaces,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => FavoriteProjectsAndSpaces1$inboundSchema),
-  z.lazy(() => FavoriteProjectsAndSpaces2$inboundSchema),
-]);
+> = z.object({
+  teamId: z.string(),
+  projectId: z.string(),
+});
 
 /** @internal */
-export type FavoriteProjectsAndSpaces$Outbound =
-  | FavoriteProjectsAndSpaces1$Outbound
-  | FavoriteProjectsAndSpaces2$Outbound;
+export type FavoriteProjectsAndSpaces$Outbound = {
+  teamId: string;
+  projectId: string;
+};
 
 /** @internal */
 export const FavoriteProjectsAndSpaces$outboundSchema: z.ZodType<
   FavoriteProjectsAndSpaces$Outbound,
   z.ZodTypeDef,
   FavoriteProjectsAndSpaces
-> = z.union([
-  z.lazy(() => FavoriteProjectsAndSpaces1$outboundSchema),
-  z.lazy(() => FavoriteProjectsAndSpaces2$outboundSchema),
-]);
+> = z.object({
+  teamId: z.string(),
+  projectId: z.string(),
+});
 
 /**
  * @internal
@@ -1692,10 +1563,7 @@ export const AuthUser$inboundSchema: z.ZodType<
   dismissedToasts: z.array(z.lazy(() => DismissedToasts$inboundSchema))
     .optional(),
   favoriteProjectsAndSpaces: z.array(
-    z.union([
-      z.lazy(() => FavoriteProjectsAndSpaces1$inboundSchema),
-      z.lazy(() => FavoriteProjectsAndSpaces2$inboundSchema),
-    ]),
+    z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema),
   ).optional(),
   hasTrialAvailable: z.boolean(),
   remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
@@ -1727,9 +1595,7 @@ export type AuthUser$Outbound = {
     | undefined;
   dismissedToasts?: Array<DismissedToasts$Outbound> | undefined;
   favoriteProjectsAndSpaces?:
-    | Array<
-      FavoriteProjectsAndSpaces1$Outbound | FavoriteProjectsAndSpaces2$Outbound
-    >
+    | Array<FavoriteProjectsAndSpaces$Outbound>
     | undefined;
   hasTrialAvailable: boolean;
   remoteCaching?: RemoteCaching$Outbound | undefined;
@@ -1771,10 +1637,7 @@ export const AuthUser$outboundSchema: z.ZodType<
   dismissedToasts: z.array(z.lazy(() => DismissedToasts$outboundSchema))
     .optional(),
   favoriteProjectsAndSpaces: z.array(
-    z.union([
-      z.lazy(() => FavoriteProjectsAndSpaces1$outboundSchema),
-      z.lazy(() => FavoriteProjectsAndSpaces2$outboundSchema),
-    ]),
+    z.lazy(() => FavoriteProjectsAndSpaces$outboundSchema),
   ).optional(),
   hasTrialAvailable: z.boolean(),
   remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),

@@ -7,7 +7,7 @@ Possible multi-factor origins
 ```typescript
 import { AuthTokenScopes1Origin } from "@vercel/sdk/models/authtoken.js";
 
-let value: AuthTokenScopes1Origin = "recovery-code";
+let value: AuthTokenScopes1Origin = "webauthn";
 ```
 
 ## Values

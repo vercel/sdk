@@ -6,7 +6,7 @@
 import { Postgres } from "@vercel/sdk/models/userevent.js";
 
 let value: Postgres = {
-  overageReason: "sourceImages",
+  overageReason: "webAnalyticsEvent",
 };
 ```
 

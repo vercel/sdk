@@ -5,7 +5,7 @@
 ```typescript
 import { UserEventPayloadRole } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadRole = "PROJECT_VIEWER";
+let value: UserEventPayloadRole = "ADMIN";
 ```
 
 ## Values

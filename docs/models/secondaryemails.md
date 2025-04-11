@@ -6,7 +6,7 @@
 import { SecondaryEmails } from "@vercel/sdk/models/userevent.js";
 
 let value: SecondaryEmails = {
-  email: "Vanessa.Schmitt42@gmail.com",
+  email: "Lindsay.Gorczany-Terry93@gmail.com",
   verified: false,
 };
 ```

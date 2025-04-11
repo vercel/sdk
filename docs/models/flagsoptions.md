@@ -6,7 +6,7 @@
 import { FlagsOptions } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: FlagsOptions = {
-  value: [],
+  value: "<value>",
 };
 ```
 

@@ -23072,8 +23072,53 @@
                       "name": {
                         "type": "string"
                       },
+                      "description": {
+                        "type": "string"
+                      },
                       "paymentMethodRequired": {
                         "type": "boolean"
+                      },
+                      "cost": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "heightlightedDetails": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "effectiveDate": {
+                        "type": "string"
                       }
                     },
                     "additionalProperties": true
@@ -23735,6 +23780,174 @@
                           "description": "A string representing the permission for projects. Possible values are `all` or `selected`.",
                           "example": "all"
                         },
+                        "transferRequest": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "transfer-to-marketplace"
+                                  ]
+                                },
+                                "metadata": {
+                                  "additionalProperties": true,
+                                  "type": "object"
+                                },
+                                "billingPlan": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "subscription",
+                                        "prepayment"
+                                      ]
+                                    },
+                                    "scope": {
+                                      "type": "string",
+                                      "enum": [
+                                        "installation",
+                                        "resource"
+                                      ]
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "paymentMethodRequired": {
+                                      "type": "boolean"
+                                    },
+                                    "preauthorizationAmount": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "name",
+                                    "description"
+                                  ],
+                                  "type": "object"
+                                },
+                                "requestId": {
+                                  "type": "string"
+                                },
+                                "transferId": {
+                                  "type": "string"
+                                },
+                                "requester": {
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "email": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "name"
+                                  ],
+                                  "type": "object"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "expiresAt": {
+                                  "type": "number"
+                                },
+                                "discardedAt": {
+                                  "type": "number"
+                                },
+                                "discardedBy": {
+                                  "type": "string"
+                                },
+                                "approvedAt": {
+                                  "type": "number"
+                                },
+                                "approvedBy": {
+                                  "type": "string"
+                                },
+                                "authorizationId": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "requestId",
+                                "transferId",
+                                "requester",
+                                "createdAt",
+                                "expiresAt"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "transfer-from-marketplace"
+                                  ]
+                                },
+                                "requestId": {
+                                  "type": "string"
+                                },
+                                "transferId": {
+                                  "type": "string"
+                                },
+                                "requester": {
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "email": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "name"
+                                  ],
+                                  "type": "object"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "expiresAt": {
+                                  "type": "number"
+                                },
+                                "discardedAt": {
+                                  "type": "number"
+                                },
+                                "discardedBy": {
+                                  "type": "string"
+                                },
+                                "approvedAt": {
+                                  "type": "number"
+                                },
+                                "approvedBy": {
+                                  "type": "string"
+                                },
+                                "authorizationId": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "requestId",
+                                "transferId",
+                                "requester",
+                                "createdAt",
+                                "expiresAt"
+                              ],
+                              "type": "object"
+                            }
+                          ]
+                        },
                         "projects": {
                           "items": {
                             "type": "string"
@@ -23861,6 +24074,7 @@
                       },
                       "required": [
                         "projectSelection",
+                        "transferRequest",
                         "createdAt",
                         "id",
                         "integrationId",
@@ -25069,131 +25283,6 @@
             "schema": {
               "type": "string",
               "example": "my-team-url-slug"
-            }
-          }
-        ]
-      }
-    },
-    "/v1/experimentation/items": {
-      "get": {
-        "description": "Queries flags, experiments under a Marketplace resource.",
-        "operationId": "queryExperimentationItems",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Query experimentation items",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "items": {
-                      "items": {
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "description": "The Vercel generated ID for this item Integrations should not receive this in API responses"
-                          },
-                          "slug": {
-                            "type": "string"
-                          },
-                          "origin": {
-                            "type": "string"
-                          },
-                          "externalId": {
-                            "type": "string",
-                            "description": "The ID the partner has for this item. Integrations should receive this as `id` in API responses"
-                          },
-                          "integrationConfigurationId": {
-                            "type": "string",
-                            "description": "The id of the integration installation on a team"
-                          },
-                          "resourceId": {
-                            "type": "string",
-                            "description": "The flags collection ID"
-                          },
-                          "category": {
-                            "type": "string",
-                            "enum": [
-                              "experiment",
-                              "flag"
-                            ],
-                            "description": "An optional functional category for the item. Categorization semantics are: - flag (can resolve variants, can freely update variant resolution, usually does not perform analysis) - experiment (has variants, constrains changes to variant allocations, performs analysis) Using statsig as an example: - FeatureGate -\u003e flag - Experiment -\u003e experiment - Autotune -\u003e experiment Forwards compatibility for other primitives can be considered, ex. `DynamicConfig`, `Holdouts`, `Layers`"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "isArchived": {
-                            "type": "boolean"
-                          },
-                          "createdAt": {
-                            "type": "number"
-                          },
-                          "updatedAt": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "slug",
-                          "origin",
-                          "externalId",
-                          "integrationConfigurationId",
-                          "resourceId"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "items"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          }
-        },
-        "parameters": [
-          {
-            "name": "resourceId",
-            "in": "query",
-            "schema": {
-              "type": "string"
             }
           }
         ]
@@ -33847,7 +33936,8 @@
                     "properties": {
                       "enabled": {
                         "description": "Whether or not to generate OpenID Connect JSON Web Tokens.",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": true
                       },
                       "issuerMode": {
                         "description": "team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`",
@@ -33856,12 +33946,9 @@
                           "team",
                           "global"
                         ],
-                        "default": "global"
+                        "default": "team"
                       }
-                    },
-                    "required": [
-                      "enabled"
-                    ]
+                    }
                   },
                   "enableAffectedProjectsDeployments": {
                     "description": "Opt-in to skip deployments when there are no changes to the root directory and its dependencies",
@@ -41361,7 +41448,8 @@
                     "properties": {
                       "enabled": {
                         "description": "Whether or not to generate OpenID Connect JSON Web Tokens.",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": true
                       },
                       "issuerMode": {
                         "description": "team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`",
@@ -41370,12 +41458,9 @@
                           "team",
                           "global"
                         ],
-                        "default": "global"
+                        "default": "team"
                       }
-                    },
-                    "required": [
-                      "enabled"
-                    ]
+                    }
                   },
                   "passwordProtection": {
                     "additionalProperties": false,
@@ -55122,7 +55207,7 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request query is invalid.\nCannot leave the team as the only owner.",
+            "description": "One of the provided values in the request query is invalid.",
             "content": {
               "application/json": {
                 "schema": {
@@ -56105,7 +56190,17 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        }
       }
     },
     "/v5/user/tokens": {
@@ -63048,52 +63143,19 @@
                       },
                       "favoriteProjectsAndSpaces": {
                         "items": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "projectId": {
-                                  "type": "string"
-                                },
-                                "scopeSlug": {
-                                  "type": "string"
-                                },
-                                "scopeId": {
-                                  "type": "string"
-                                },
-                                "teamId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "projectId",
-                                "scopeSlug",
-                                "scopeId"
-                              ],
-                              "type": "object"
+                          "properties": {
+                            "teamId": {
+                              "type": "string"
                             },
-                            {
-                              "properties": {
-                                "spaceId": {
-                                  "type": "string"
-                                },
-                                "scopeSlug": {
-                                  "type": "string"
-                                },
-                                "scopeId": {
-                                  "type": "string"
-                                },
-                                "teamId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "spaceId",
-                                "scopeSlug",
-                                "scopeId"
-                              ],
-                              "type": "object"
+                            "projectId": {
+                              "type": "string"
                             }
-                          ]
+                          },
+                          "required": [
+                            "teamId",
+                            "projectId"
+                          ],
+                          "type": "object"
                         },
                         "type": "array"
                       },
@@ -63304,6 +63366,12 @@
                           },
                           "microfrontendProjectsPerGroup": {
                             "type": "number"
+                          },
+                          "flagsExplorerOverridesThreshold": {
+                            "type": "number"
+                          },
+                          "flagsExplorerUnlimitedOverrides": {
+                            "type": "boolean"
                           }
                         },
                         "type": "object"
@@ -68746,6 +68814,14 @@
               "microfrontendProjectsPerGroup": {
                 "type": "number",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "flagsExplorerOverridesThreshold": {
+                "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "flagsExplorerUnlimitedOverrides": {
+                "type": "boolean",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               }
             },
             "type": "object",
@@ -68889,54 +68965,20 @@
           },
           "favoriteProjectsAndSpaces": {
             "items": {
-              "oneOf": [
-                {
-                  "properties": {
-                    "projectId": {
-                      "type": "string"
-                    },
-                    "scopeSlug": {
-                      "type": "string"
-                    },
-                    "scopeId": {
-                      "type": "string"
-                    },
-                    "teamId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "projectId",
-                    "scopeSlug",
-                    "scopeId"
-                  ],
-                  "type": "object",
-                  "description": "A list of projects and spaces across teams that a user has marked as a favorite."
+              "properties": {
+                "teamId": {
+                  "type": "string"
                 },
-                {
-                  "properties": {
-                    "spaceId": {
-                      "type": "string"
-                    },
-                    "scopeSlug": {
-                      "type": "string"
-                    },
-                    "scopeId": {
-                      "type": "string"
-                    },
-                    "teamId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "spaceId",
-                    "scopeSlug",
-                    "scopeId"
-                  ],
-                  "type": "object",
-                  "description": "A list of projects and spaces across teams that a user has marked as a favorite."
+                "projectId": {
+                  "type": "string"
                 }
-              ]
+              },
+              "required": [
+                "teamId",
+                "projectId"
+              ],
+              "type": "object",
+              "description": "A list of projects and spaces across teams that a user has marked as a favorite."
             },
             "type": "array",
             "description": "A list of projects and spaces across teams that a user has marked as a favorite."

@@ -6,7 +6,7 @@
 import { RemotePatterns } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: RemotePatterns = {
-  hostname: "frozen-fork.net",
+  hostname: "indolent-ectoderm.biz",
 };
 ```
 

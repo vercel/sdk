@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyFormats } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyFormats = "image/webp";
+let value: ResponseBodyFormats = "image/avif";
 ```
 
 ## Values

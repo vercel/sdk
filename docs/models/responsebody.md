@@ -7,8 +7,8 @@
 
 ```typescript
 const value: models.ResponseBody1 = {
-  size: 4686.51,
-  taskDurationMs: 9767.62,
+  size: 1996.68,
+  taskDurationMs: 962.44,
 };
 ```
 

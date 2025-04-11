@@ -18,39 +18,39 @@ const value: models.GetDeploymentResponseBody1 = {
   env: [
     "<value>",
   ],
-  inspectorUrl: "https://soggy-prohibition.com",
+  inspectorUrl: "https://minty-department.info",
   isInConcurrentBuildsQueue: false,
   isInSystemBuildsQueue: false,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 3962.23,
-  buildingAt: 1674.35,
+  bootedAt: 8640.34,
+  buildingAt: 6840.75,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "READY",
+  status: "BUILDING",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 7005.29,
-  readyState: "CANCELED",
+  createdAt: 249.45,
+  readyState: "BUILDING",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://sorrowful-yarmulke.name",
-  version: 371.29,
+  url: "https://unique-birdcage.name",
+  version: 5166.73,
   projectId: "<id>",
   plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
   routes: [
     {
-      handle: "rewrite",
+      handle: "error",
     },
   ],
 };
@@ -61,27 +61,27 @@ const value: models.GetDeploymentResponseBody1 = {
 ```typescript
 const value: models.GetDeploymentResponseBody2 = {
   aliasAssigned: false,
-  bootedAt: 8661.35,
-  buildingAt: 9608.13,
+  bootedAt: 9734.5,
+  buildingAt: 6774.57,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "QUEUED",
+  status: "CANCELED",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 445.71,
-  readyState: "CANCELED",
+  createdAt: 4900.07,
+  readyState: "INITIALIZING",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://nocturnal-whack.info/",
-  version: 6658.72,
+  url: "https://calculating-sock.org",
+  version: 7243.82,
 };
 ```
 

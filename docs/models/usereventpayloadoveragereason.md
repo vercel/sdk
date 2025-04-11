@@ -5,7 +5,7 @@
 ```typescript
 import { UserEventPayloadOverageReason } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadOverageReason = "fastOriginTransfer";
+let value: UserEventPayloadOverageReason = "wafRateLimitRequest";
 ```
 
 ## Values

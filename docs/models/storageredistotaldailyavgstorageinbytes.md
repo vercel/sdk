@@ -6,7 +6,7 @@
 import { StorageRedisTotalDailyAvgStorageInBytes } from "@vercel/sdk/models/userevent.js";
 
 let value: StorageRedisTotalDailyAvgStorageInBytes = {
-  currentThreshold: 1762.81,
+  currentThreshold: 8552.73,
 };
 ```
 

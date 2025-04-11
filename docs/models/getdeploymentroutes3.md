@@ -8,7 +8,7 @@ import { GetDeploymentRoutes3 } from "@vercel/sdk/models/getdeploymentop.js";
 let value: GetDeploymentRoutes3 = {
   src: "<value>",
   continue: false,
-  middleware: 8054.63,
+  middleware: 3333.25,
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateProjectHandle } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectHandle = "init";
+let value: UpdateProjectHandle = "finalize";
 ```
 
 ## Values

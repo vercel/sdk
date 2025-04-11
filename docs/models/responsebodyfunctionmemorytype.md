@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyFunctionMemoryType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyFunctionMemoryType = "standard";
+let value: ResponseBodyFunctionMemoryType = "standard_legacy";
 ```
 
 ## Values

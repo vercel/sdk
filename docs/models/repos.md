@@ -8,7 +8,7 @@ import { Repos } from "@vercel/sdk/models/searchrepoop.js";
 let value: Repos = {
   id: "<id>",
   provider: "github",
-  url: "https://kooky-pronoun.org",
+  url: "https://delectable-taxicab.com",
   name: "<value>",
   slug: "<value>",
   namespace: "<value>",
@@ -19,7 +19,7 @@ let value: Repos = {
   ownerType: "team",
   private: false,
   defaultBranch: "<value>",
-  updatedAt: 4116.26,
+  updatedAt: 1639.21,
 };
 ```
 

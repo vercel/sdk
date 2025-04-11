@@ -6,7 +6,7 @@
 import { GetProjectsEnv } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsEnv = {
-  type: "system",
+  type: "secret",
   key: "<key>",
   value: "<value>",
 };

@@ -10,14 +10,14 @@ import { NinetySix } from "@vercel/sdk/models/userevent.js";
 let value: NinetySix = {
   budget: {
     type: "fixed",
-    fixedBudget: 7491.01,
+    fixedBudget: 3075.73,
     previousSpend: [
-      5323.36,
+      6317.69,
     ],
     notifiedAt: [
-      1149.52,
+      8899.97,
     ],
-    createdAt: 3936.3,
+    createdAt: 4232.05,
     isActive: false,
     teamId: "<id>",
     id: "<id>",

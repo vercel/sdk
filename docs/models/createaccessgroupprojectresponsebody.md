@@ -9,9 +9,9 @@ let value: CreateAccessGroupProjectResponseBody = {
   teamId: "<id>",
   accessGroupId: "<id>",
   projectId: "<id>",
-  role: "PROJECT_DEVELOPER",
-  createdAt: "1725996387779",
-  updatedAt: "1743699645401",
+  role: "PROJECT_VIEWER",
+  createdAt: "1721896512034",
+  updatedAt: "1744367375775",
 };
 ```
 

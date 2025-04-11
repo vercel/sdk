@@ -5,7 +5,7 @@
 ```typescript
 import { CredentialsType } from "@vercel/sdk/models/userevent.js";
 
-let value: CredentialsType = "github-oauth";
+let value: CredentialsType = "github-app";
 ```
 
 ## Values

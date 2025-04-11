@@ -5,7 +5,7 @@
 ```typescript
 import { PayloadReason } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadReason = "SUBSCRIPTION_CANCELED";
+let value: PayloadReason = "FAIR_USE_LIMITS_EXCEEDED";
 ```
 
 ## Values

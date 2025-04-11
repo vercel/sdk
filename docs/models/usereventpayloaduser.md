@@ -7,7 +7,7 @@ import { UserEventPayloadUser } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayloadUser = {
   id: "<id>",
-  username: "Braeden_Sauer-Cummerata41",
+  username: "Stefanie52",
 };
 ```
 

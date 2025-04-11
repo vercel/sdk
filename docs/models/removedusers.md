@@ -6,7 +6,7 @@
 import { RemovedUsers } from "@vercel/sdk/models/userevent.js";
 
 let value: RemovedUsers = {
-  role: "VIEWER",
+  role: "OWNER",
   confirmed: false,
 };
 ```

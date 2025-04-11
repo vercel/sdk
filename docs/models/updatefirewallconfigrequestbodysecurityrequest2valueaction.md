@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodySecurityRequest2ValueAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequest2ValueAction =
-  "redirect";
+  "rate_limit";
 ```
 
 ## Values

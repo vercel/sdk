@@ -6,7 +6,7 @@
 import { PostgresDataTransfer } from "@vercel/sdk/models/userevent.js";
 
 let value: PostgresDataTransfer = {
-  currentThreshold: 4062.72,
+  currentThreshold: 8026.09,
 };
 ```
 

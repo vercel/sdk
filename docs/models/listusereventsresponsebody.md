@@ -22,10 +22,11 @@ let value: ListUserEventsResponseBody = {
       createdAt: 1632859321020,
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       payload: {
-        project: {
-          name: "<value>",
+        projectName: "<value>",
+        ssoProtection: "all",
+        oldSsoProtection: {
+          deploymentType: "all",
         },
-        projectMembership: {},
       },
     },
   ],

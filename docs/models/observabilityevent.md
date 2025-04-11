@@ -6,7 +6,7 @@
 import { ObservabilityEvent } from "@vercel/sdk/models/userevent.js";
 
 let value: ObservabilityEvent = {
-  currentThreshold: 5165.56,
+  currentThreshold: 337.46,
 };
 ```
 

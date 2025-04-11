@@ -13,7 +13,7 @@ const value: models.BuyDomainResponseBody = {
       "<value>",
     ],
     verified: false,
-    created: 8756.93,
+    created: 6372.91,
     pending: false,
   },
 };
@@ -29,7 +29,7 @@ const value: models.BuyDomainDomainsResponseBody = {
       "<value>",
     ],
     verified: false,
-    created: 427.63,
+    created: 4728.58,
     pending: false,
   },
 };

@@ -10,9 +10,9 @@ import { UpdateProjectResponseBody } from "@vercel/sdk/models/updateprojectop.js
 let value: UpdateProjectResponseBody = {
   accountId: "<id>",
   crons: {
-    enabledAt: 209.5,
-    disabledAt: 4116.15,
-    updatedAt: 4894.59,
+    enabledAt: 4055.72,
+    disabledAt: 920.36,
+    updatedAt: 6888.94,
     deploymentId: "<id>",
     definitions: [
       {
@@ -27,26 +27,26 @@ let value: UpdateProjectResponseBody = {
   latestDeployments: [
     {
       id: "<id>",
-      createdAt: 2436.78,
+      createdAt: 5516.01,
       createdIn: "<value>",
       creator: {
-        email: "Nichole94@yahoo.com",
+        email: "Reginald_Krajcik33@hotmail.com",
         uid: "<id>",
-        username: "Rosetta_Denesik",
+        username: "Beatrice71",
       },
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "pro",
+      plan: "hobby",
       previewCommentsEnabled: false,
       private: false,
-      readyState: "CANCELED",
+      readyState: "BUILDING",
       type: "LAMBDAS",
-      url: "https://self-assured-following.biz",
+      url: "https://unsteady-coil.name",
       userId: "<id>",
     },
   ],
   name: "<value>",
-  nodeVersion: "18.x",
+  nodeVersion: "20.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value>",
@@ -60,21 +60,21 @@ let value: UpdateProjectResponseBody = {
   targets: {
     "key": {
       id: "<id>",
-      createdAt: 1272.94,
+      createdAt: 2424.37,
       createdIn: "<value>",
       creator: {
-        email: "Bryana_Murazik@yahoo.com",
+        email: "Dell.Gerlach-Abshire@gmail.com",
         uid: "<id>",
-        username: "Mack_Krajcik26",
+        username: "Dorothy_Reinger3",
       },
       deploymentHostname: "<value>",
       name: "<value>",
       plan: "enterprise",
       previewCommentsEnabled: false,
       private: false,
-      readyState: "ERROR",
+      readyState: "QUEUED",
       type: "LAMBDAS",
-      url: "https://entire-experience.net",
+      url: "https://frank-dividend.com",
       userId: "<id>",
     },
   },

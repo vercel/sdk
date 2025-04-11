@@ -12,8 +12,8 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "ja4_digest",
-          op: "nex",
+          type: "protocol",
+          op: "pre",
         },
       ],
     },

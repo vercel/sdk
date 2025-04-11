@@ -457,9 +457,9 @@ func (e *IssuerMode) UnmarshalJSON(data []byte) error {
 // OidcTokenConfig - OpenID Connect JSON Web Token generation configuration.
 type OidcTokenConfig struct {
 	// Whether or not to generate OpenID Connect JSON Web Tokens.
-	Enabled bool `json:"enabled"`
+	Enabled *bool `default:"true" json:"enabled"`
 	// team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
-	IssuerMode *IssuerMode `default:"global" json:"issuerMode"`
+	IssuerMode *IssuerMode `default:"team" json:"issuerMode"`
 }
 
 func (o OidcTokenConfig) MarshalJSON() ([]byte, error) {
@@ -473,9 +473,9 @@ func (o *OidcTokenConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *OidcTokenConfig) GetEnabled() bool {
+func (o *OidcTokenConfig) GetEnabled() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.Enabled
 }

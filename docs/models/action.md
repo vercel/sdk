@@ -5,7 +5,7 @@
 ```typescript
 import { Action } from "@vercel/sdk/models/userevent.js";
 
-let value: Action = "archived";
+let value: Action = "unarchived";
 ```
 
 ## Values

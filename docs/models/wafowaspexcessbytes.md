@@ -6,7 +6,7 @@
 import { WafOwaspExcessBytes } from "@vercel/sdk/models/userevent.js";
 
 let value: WafOwaspExcessBytes = {
-  currentThreshold: 5816.8,
+  currentThreshold: 2693.47,
 };
 ```
 

@@ -8,7 +8,7 @@ Allows to protect project deployments with a password
 import { UpdateProjectPasswordProtection } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectPasswordProtection = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
+  deploymentType: "preview",
 };
 ```
 

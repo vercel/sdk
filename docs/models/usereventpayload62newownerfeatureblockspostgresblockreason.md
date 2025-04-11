@@ -6,7 +6,7 @@
 import { UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason =
-  "limits_exceeded";
+  "admin_override";
 ```
 
 ## Values

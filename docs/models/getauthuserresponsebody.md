@@ -11,8 +11,8 @@ let value: GetAuthUserResponseBody = {
   user: {
     createdAt: 1630748523395,
     softBlock: {
-      blockedAt: 8069.52,
-      reason: "FAIR_USE_LIMITS_EXCEEDED",
+      blockedAt: 9931.58,
+      reason: "BLOCKED_FOR_PLATFORM_ABUSE",
     },
     billing: {},
     resourceConfig: {},

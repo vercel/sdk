@@ -7,13 +7,13 @@
 
 ```typescript
 const value: models.TrustedIps1 = {
-  deploymentType: "production",
+  deploymentType: "prod_deployment_urls_and_all_previews",
   addresses: [
     {
       value: "<value>",
     },
   ],
-  protectionMode: "additional",
+  protectionMode: "exclusive",
 };
 ```
 
@@ -21,7 +21,7 @@ const value: models.TrustedIps1 = {
 
 ```typescript
 const value: models.TrustedIps2 = {
-  deploymentType: "production",
+  deploymentType: "all",
 };
 ```
 

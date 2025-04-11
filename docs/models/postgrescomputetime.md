@@ -6,7 +6,7 @@
 import { PostgresComputeTime } from "@vercel/sdk/models/userevent.js";
 
 let value: PostgresComputeTime = {
-  currentThreshold: 1330.76,
+  currentThreshold: 575.24,
 };
 ```
 

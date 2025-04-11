@@ -6,8 +6,8 @@
 import { InvitedUser } from "@vercel/sdk/models/userevent.js";
 
 let value: InvitedUser = {
-  username: "Randall.Ledner60",
-  email: "Ceasar.Johnson26@yahoo.com",
+  username: "Marcia_Kub",
+  email: "Sabryna.Leuschke@hotmail.com",
 };
 ```
 

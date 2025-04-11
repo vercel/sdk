@@ -9,27 +9,27 @@ import { GetDeploymentResponseBody2 } from "@vercel/sdk/models/getdeploymentop.j
 
 let value: GetDeploymentResponseBody2 = {
   aliasAssigned: false,
-  bootedAt: 3695.23,
-  buildingAt: 3798.94,
+  bootedAt: 3380.01,
+  buildingAt: 1303.95,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "INITIALIZING",
+  status: "ERROR",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 6682.18,
-  readyState: "BUILDING",
+  createdAt: 6666.5,
+  readyState: "CANCELED",
   meta: {
     "key": "<value>",
   },
   regions: [
     "<value>",
   ],
-  url: "https://impish-expansion.org/",
-  version: 8882.65,
+  url: "https://whimsical-polyester.com/",
+  version: 6963.76,
 };
 ```
 

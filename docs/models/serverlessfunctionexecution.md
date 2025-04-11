@@ -6,7 +6,7 @@
 import { ServerlessFunctionExecution } from "@vercel/sdk/models/userevent.js";
 
 let value: ServerlessFunctionExecution = {
-  currentThreshold: 2630.79,
+  currentThreshold: 3387.82,
 };
 ```
 

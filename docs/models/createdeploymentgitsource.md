@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CreateDeploymentGitSource1 = {
   type: "github",
-  repoId: 9440.33,
+  repoId: "<id>",
 };
 ```
 
@@ -27,7 +27,7 @@ const value: models.CreateDeploymentGitSource2 = {
 ```typescript
 const value: models.CreateDeploymentGitSource3 = {
   type: "gitlab",
-  projectId: "<id>",
+  projectId: 9257.71,
 };
 ```
 
@@ -57,7 +57,7 @@ const value: models.CreateDeploymentGitSource6 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://slushy-blight.name/",
+  gitUrl: "https://monstrous-jet.biz/",
 };
 ```
 
@@ -68,7 +68,7 @@ const value: models.CreateDeploymentGitSource7 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 2198.6,
+  repoId: 3971.18,
 };
 ```
 
@@ -79,7 +79,7 @@ const value: models.CreateDeploymentGitSource8 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 2742.95,
+  projectId: 7316.05,
 };
 ```
 

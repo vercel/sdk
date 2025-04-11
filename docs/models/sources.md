@@ -5,7 +5,7 @@
 ```typescript
 import { Sources } from "@vercel/sdk/models/createconfigurablelogdrainop.js";
 
-let value: Sources = "static";
+let value: Sources = "edge";
 ```
 
 ## Values

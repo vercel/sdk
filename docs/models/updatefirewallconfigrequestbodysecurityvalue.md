@@ -6,9 +6,9 @@
 import { UpdateFirewallConfigRequestBodySecurityValue } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityValue = {
-  hostname: "willing-typeface.net",
-  ip: "147.72.248.183",
-  action: "log",
+  hostname: "portly-unblinking.com",
+  ip: "43ff:fede:07fd:cd3b:a91c:a9c6:a780:e93b",
+  action: "bypass",
 };
 ```
 

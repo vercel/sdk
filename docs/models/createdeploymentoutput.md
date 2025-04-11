@@ -6,7 +6,7 @@
 import { CreateDeploymentOutput } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentOutput = {
-  path: "/opt/bin",
+  path: "/usr/local/bin",
   functionName: "<value>",
 };
 ```

@@ -10,12 +10,8 @@ let value: UpdateFirewallConfigRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
   requestBody: {
-    action: "ip.insert",
-    value: {
-      hostname: "discrete-bakeware.biz",
-      ip: "c7c6:5ca9:3b58:aeb8:da97:2ac6:bdb9:a81c",
-      action: "challenge",
-    },
+    action: "ip.remove",
+    id: "<id>",
   },
 };
 ```

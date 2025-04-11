@@ -5,7 +5,7 @@
 ```typescript
 import { CancelDeploymentDeploymentsStatus } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentDeploymentsStatus = "skipped";
+let value: CancelDeploymentDeploymentsStatus = "timeout";
 ```
 
 ## Values

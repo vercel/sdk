@@ -5,7 +5,7 @@
 ```typescript
 import { CancelDeploymentSource } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentSource = "import/repo";
+let value: CancelDeploymentSource = "v0-web";
 ```
 
 ## Values

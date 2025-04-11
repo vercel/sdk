@@ -6,7 +6,7 @@
 import { FastDataTransfer } from "@vercel/sdk/models/userevent.js";
 
 let value: FastDataTransfer = {
-  currentThreshold: 780.74,
+  currentThreshold: 1855.37,
 };
 ```
 

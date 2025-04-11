@@ -1,25 +1,19 @@
 # PayloadFavoriteProjectsAndSpaces
 
-
-## Supported Types
-
-### `models.UserEventFavoriteProjectsAndSpaces1`
+## Example Usage
 
 ```typescript
-const value: models.UserEventFavoriteProjectsAndSpaces1 = {
+import { PayloadFavoriteProjectsAndSpaces } from "@vercel/sdk/models/userevent.js";
+
+let value: PayloadFavoriteProjectsAndSpaces = {
+  teamId: "<id>",
   projectId: "<id>",
-  scopeSlug: "<value>",
-  scopeId: "<id>",
 };
 ```
 
-### `models.UserEventFavoriteProjectsAndSpaces2`
+## Fields
 
-```typescript
-const value: models.UserEventFavoriteProjectsAndSpaces2 = {
-  spaceId: "<id>",
-  scopeSlug: "<value>",
-  scopeId: "<id>",
-};
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

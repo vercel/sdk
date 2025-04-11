@@ -11,7 +11,7 @@ let value: UpdateProjectLink2 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://clean-tenant.com/",
+      url: "https://those-premium.com/",
     },
   ],
 };

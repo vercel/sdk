@@ -8,8 +8,8 @@ import { RequestBodyConditionGroup } from "@vercel/sdk/models/updatefirewallconf
 let value: RequestBodyConditionGroup = {
   conditions: [
     {
-      type: "header",
-      op: "gte",
+      type: "ja3_digest",
+      op: "ex",
     },
   ],
 };

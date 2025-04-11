@@ -8,8 +8,8 @@
 ```typescript
 const value: models.RateLimit1 = {
   algo: "fixed_window",
-  window: 2807.06,
-  limit: 4714.8,
+  window: 7302.04,
+  limit: 1683.07,
   keys: [
     "<value>",
   ],

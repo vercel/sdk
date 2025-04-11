@@ -5,7 +5,7 @@
 ```typescript
 import { GetProjectsFramework } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsFramework = "angular";
+let value: GetProjectsFramework = "vitepress";
 ```
 
 ## Values

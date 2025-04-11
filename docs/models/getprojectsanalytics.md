@@ -7,8 +7,8 @@ import { GetProjectsAnalytics } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsAnalytics = {
   id: "<id>",
-  disabledAt: 3068.1,
-  enabledAt: 5775.43,
+  disabledAt: 2044.84,
+  enabledAt: 8849.53,
 };
 ```
 

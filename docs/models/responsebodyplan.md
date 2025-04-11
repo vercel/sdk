@@ -5,7 +5,7 @@
 ```typescript
 import { ResponseBodyPlan } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyPlan = "hobby";
+let value: ResponseBodyPlan = "enterprise";
 ```
 
 ## Values

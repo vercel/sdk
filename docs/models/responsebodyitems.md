@@ -6,9 +6,9 @@
 import { ResponseBodyItems } from "@vercel/sdk/models/getedgeconfigbackupop.js";
 
 let value: ResponseBodyItems = {
-  updatedAt: 4835.01,
-  value: 5124.08,
-  createdAt: 3017.01,
+  updatedAt: 2293.73,
+  value: false,
+  createdAt: 5115.86,
 };
 ```
 

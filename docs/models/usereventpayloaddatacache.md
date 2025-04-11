@@ -6,8 +6,8 @@
 import { UserEventPayloadDataCache } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayloadDataCache = {
-  updatedAt: 524.07,
-  blockReason: "limits_exceeded",
+  updatedAt: 2335.94,
+  blockReason: "admin_override",
 };
 ```
 

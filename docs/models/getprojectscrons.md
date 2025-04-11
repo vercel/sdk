@@ -6,9 +6,9 @@
 import { GetProjectsCrons } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsCrons = {
-  enabledAt: 9594.34,
-  disabledAt: 6455.7,
-  updatedAt: 353.62,
+  enabledAt: 8994.7,
+  disabledAt: 6127.35,
+  updatedAt: 7979.8,
   deploymentId: "<id>",
   definitions: [
     {

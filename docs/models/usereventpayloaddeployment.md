@@ -8,7 +8,7 @@ import { UserEventPayloadDeployment } from "@vercel/sdk/models/userevent.js";
 let value: UserEventPayloadDeployment = {
   id: "<id>",
   name: "<value>",
-  url: "https://unhappy-equal.info/",
+  url: "https://posh-sundae.net",
   meta: {
     "key": "<value>",
   },

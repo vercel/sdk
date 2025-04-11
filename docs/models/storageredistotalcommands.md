@@ -6,7 +6,7 @@
 import { StorageRedisTotalCommands } from "@vercel/sdk/models/userevent.js";
 
 let value: StorageRedisTotalCommands = {
-  currentThreshold: 8948.7,
+  currentThreshold: 373.08,
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateFirewallConfigRateLimitAlgo } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRateLimitAlgo = "fixed_window";
+let value: UpdateFirewallConfigRateLimitAlgo = "token_bucket";
 ```
 
 ## Values

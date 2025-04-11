@@ -6,7 +6,7 @@
 import { EdgeConfigRead } from "@vercel/sdk/models/userevent.js";
 
 let value: EdgeConfigRead = {
-  currentThreshold: 7767.5,
+  currentThreshold: 5018.68,
 };
 ```
 

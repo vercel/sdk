@@ -6,7 +6,7 @@
 import { WafOwaspRequests } from "@vercel/sdk/models/userevent.js";
 
 let value: WafOwaspRequests = {
-  currentThreshold: 4543.34,
+  currentThreshold: 1882.02,
 };
 ```
 

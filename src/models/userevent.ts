@@ -1826,23 +1826,10 @@ export type PayloadDismissedToasts = {
   dismissals: Array<PayloadDismissals>;
 };
 
-export type UserEventFavoriteProjectsAndSpaces2 = {
-  spaceId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-export type UserEventFavoriteProjectsAndSpaces1 = {
+export type PayloadFavoriteProjectsAndSpaces = {
+  teamId: string;
   projectId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
 };
-
-export type PayloadFavoriteProjectsAndSpaces =
-  | UserEventFavoriteProjectsAndSpaces1
-  | UserEventFavoriteProjectsAndSpaces2;
 
 export type PayloadImportFlowGitNamespace = string | number;
 
@@ -1899,6 +1886,8 @@ export type PayloadResourceConfig = {
   cronJobsPerProject?: number | undefined;
   microfrontendGroupsPerTeam?: number | undefined;
   microfrontendProjectsPerGroup?: number | undefined;
+  flagsExplorerOverridesThreshold?: number | undefined;
+  flagsExplorerUnlimitedOverrides?: boolean | undefined;
 };
 
 export type ResourceLimits = {
@@ -2848,9 +2837,7 @@ export type NewOwner = {
   dismissedTeams?: Array<string> | undefined;
   dismissedToasts?: Array<PayloadDismissedToasts> | undefined;
   favoriteProjectsAndSpaces?:
-    | Array<
-      UserEventFavoriteProjectsAndSpaces1 | UserEventFavoriteProjectsAndSpaces2
-    >
+    | Array<PayloadFavoriteProjectsAndSpaces>
     | undefined;
   email: string;
   id: string;
@@ -15534,165 +15521,30 @@ export function payloadDismissedToastsFromJSON(
 }
 
 /** @internal */
-export const UserEventFavoriteProjectsAndSpaces2$inboundSchema: z.ZodType<
-  UserEventFavoriteProjectsAndSpaces2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  spaceId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventFavoriteProjectsAndSpaces2$Outbound = {
-  spaceId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-/** @internal */
-export const UserEventFavoriteProjectsAndSpaces2$outboundSchema: z.ZodType<
-  UserEventFavoriteProjectsAndSpaces2$Outbound,
-  z.ZodTypeDef,
-  UserEventFavoriteProjectsAndSpaces2
-> = z.object({
-  spaceId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventFavoriteProjectsAndSpaces2$ {
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces2$inboundSchema` instead. */
-  export const inboundSchema =
-    UserEventFavoriteProjectsAndSpaces2$inboundSchema;
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces2$outboundSchema` instead. */
-  export const outboundSchema =
-    UserEventFavoriteProjectsAndSpaces2$outboundSchema;
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces2$Outbound` instead. */
-  export type Outbound = UserEventFavoriteProjectsAndSpaces2$Outbound;
-}
-
-export function userEventFavoriteProjectsAndSpaces2ToJSON(
-  userEventFavoriteProjectsAndSpaces2: UserEventFavoriteProjectsAndSpaces2,
-): string {
-  return JSON.stringify(
-    UserEventFavoriteProjectsAndSpaces2$outboundSchema.parse(
-      userEventFavoriteProjectsAndSpaces2,
-    ),
-  );
-}
-
-export function userEventFavoriteProjectsAndSpaces2FromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventFavoriteProjectsAndSpaces2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UserEventFavoriteProjectsAndSpaces2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventFavoriteProjectsAndSpaces2' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventFavoriteProjectsAndSpaces1$inboundSchema: z.ZodType<
-  UserEventFavoriteProjectsAndSpaces1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventFavoriteProjectsAndSpaces1$Outbound = {
-  projectId: string;
-  scopeSlug: string;
-  scopeId: string;
-  teamId?: string | undefined;
-};
-
-/** @internal */
-export const UserEventFavoriteProjectsAndSpaces1$outboundSchema: z.ZodType<
-  UserEventFavoriteProjectsAndSpaces1$Outbound,
-  z.ZodTypeDef,
-  UserEventFavoriteProjectsAndSpaces1
-> = z.object({
-  projectId: z.string(),
-  scopeSlug: z.string(),
-  scopeId: z.string(),
-  teamId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventFavoriteProjectsAndSpaces1$ {
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces1$inboundSchema` instead. */
-  export const inboundSchema =
-    UserEventFavoriteProjectsAndSpaces1$inboundSchema;
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces1$outboundSchema` instead. */
-  export const outboundSchema =
-    UserEventFavoriteProjectsAndSpaces1$outboundSchema;
-  /** @deprecated use `UserEventFavoriteProjectsAndSpaces1$Outbound` instead. */
-  export type Outbound = UserEventFavoriteProjectsAndSpaces1$Outbound;
-}
-
-export function userEventFavoriteProjectsAndSpaces1ToJSON(
-  userEventFavoriteProjectsAndSpaces1: UserEventFavoriteProjectsAndSpaces1,
-): string {
-  return JSON.stringify(
-    UserEventFavoriteProjectsAndSpaces1$outboundSchema.parse(
-      userEventFavoriteProjectsAndSpaces1,
-    ),
-  );
-}
-
-export function userEventFavoriteProjectsAndSpaces1FromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventFavoriteProjectsAndSpaces1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UserEventFavoriteProjectsAndSpaces1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventFavoriteProjectsAndSpaces1' from JSON`,
-  );
-}
-
-/** @internal */
 export const PayloadFavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
   PayloadFavoriteProjectsAndSpaces,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UserEventFavoriteProjectsAndSpaces1$inboundSchema),
-  z.lazy(() => UserEventFavoriteProjectsAndSpaces2$inboundSchema),
-]);
+> = z.object({
+  teamId: z.string(),
+  projectId: z.string(),
+});
 
 /** @internal */
-export type PayloadFavoriteProjectsAndSpaces$Outbound =
-  | UserEventFavoriteProjectsAndSpaces1$Outbound
-  | UserEventFavoriteProjectsAndSpaces2$Outbound;
+export type PayloadFavoriteProjectsAndSpaces$Outbound = {
+  teamId: string;
+  projectId: string;
+};
 
 /** @internal */
 export const PayloadFavoriteProjectsAndSpaces$outboundSchema: z.ZodType<
   PayloadFavoriteProjectsAndSpaces$Outbound,
   z.ZodTypeDef,
   PayloadFavoriteProjectsAndSpaces
-> = z.union([
-  z.lazy(() => UserEventFavoriteProjectsAndSpaces1$outboundSchema),
-  z.lazy(() => UserEventFavoriteProjectsAndSpaces2$outboundSchema),
-]);
+> = z.object({
+  teamId: z.string(),
+  projectId: z.string(),
+});
 
 /**
  * @internal
@@ -16145,6 +15997,8 @@ export const PayloadResourceConfig$inboundSchema: z.ZodType<
   cronJobsPerProject: z.number().optional(),
   microfrontendGroupsPerTeam: z.number().optional(),
   microfrontendProjectsPerGroup: z.number().optional(),
+  flagsExplorerOverridesThreshold: z.number().optional(),
+  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
 });
 
 /** @internal */
@@ -16170,6 +16024,8 @@ export type PayloadResourceConfig$Outbound = {
   cronJobsPerProject?: number | undefined;
   microfrontendGroupsPerTeam?: number | undefined;
   microfrontendProjectsPerGroup?: number | undefined;
+  flagsExplorerOverridesThreshold?: number | undefined;
+  flagsExplorerUnlimitedOverrides?: boolean | undefined;
 };
 
 /** @internal */
@@ -16200,6 +16056,8 @@ export const PayloadResourceConfig$outboundSchema: z.ZodType<
   cronJobsPerProject: z.number().optional(),
   microfrontendGroupsPerTeam: z.number().optional(),
   microfrontendProjectsPerGroup: z.number().optional(),
+  flagsExplorerOverridesThreshold: z.number().optional(),
+  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
 });
 
 /**
@@ -21290,10 +21148,7 @@ export const NewOwner$inboundSchema: z.ZodType<
   dismissedToasts: z.array(z.lazy(() => PayloadDismissedToasts$inboundSchema))
     .optional(),
   favoriteProjectsAndSpaces: z.array(
-    z.union([
-      z.lazy(() => UserEventFavoriteProjectsAndSpaces1$inboundSchema),
-      z.lazy(() => UserEventFavoriteProjectsAndSpaces2$inboundSchema),
-    ]),
+    z.lazy(() => PayloadFavoriteProjectsAndSpaces$inboundSchema),
   ).optional(),
   email: z.string(),
   id: z.string(),
@@ -21384,10 +21239,7 @@ export type NewOwner$Outbound = {
   dismissedTeams?: Array<string> | undefined;
   dismissedToasts?: Array<PayloadDismissedToasts$Outbound> | undefined;
   favoriteProjectsAndSpaces?:
-    | Array<
-      | UserEventFavoriteProjectsAndSpaces1$Outbound
-      | UserEventFavoriteProjectsAndSpaces2$Outbound
-    >
+    | Array<PayloadFavoriteProjectsAndSpaces$Outbound>
     | undefined;
   email: string;
   id: string;
@@ -21478,10 +21330,7 @@ export const NewOwner$outboundSchema: z.ZodType<
   dismissedToasts: z.array(z.lazy(() => PayloadDismissedToasts$outboundSchema))
     .optional(),
   favoriteProjectsAndSpaces: z.array(
-    z.union([
-      z.lazy(() => UserEventFavoriteProjectsAndSpaces1$outboundSchema),
-      z.lazy(() => UserEventFavoriteProjectsAndSpaces2$outboundSchema),
-    ]),
+    z.lazy(() => PayloadFavoriteProjectsAndSpaces$outboundSchema),
   ).optional(),
   email: z.string(),
   id: z.string(),

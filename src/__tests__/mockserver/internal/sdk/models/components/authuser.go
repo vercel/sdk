@@ -285,6 +285,10 @@ type ResourceConfig struct {
 	MicrofrontendGroupsPerTeam *float64 `json:"microfrontendGroupsPerTeam,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	MicrofrontendProjectsPerGroup *float64 `json:"microfrontendProjectsPerGroup,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	FlagsExplorerOverridesThreshold *float64 `json:"flagsExplorerOverridesThreshold,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	FlagsExplorerUnlimitedOverrides *bool `json:"flagsExplorerUnlimitedOverrides,omitempty"`
 }
 
 func (o *ResourceConfig) GetNodeType() *string {
@@ -432,6 +436,20 @@ func (o *ResourceConfig) GetMicrofrontendProjectsPerGroup() *float64 {
 		return nil
 	}
 	return o.MicrofrontendProjectsPerGroup
+}
+
+func (o *ResourceConfig) GetFlagsExplorerOverridesThreshold() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerOverridesThreshold
+}
+
+func (o *ResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FlagsExplorerUnlimitedOverrides
 }
 
 type ViewPreference string
@@ -824,139 +842,24 @@ func (o *DismissedToasts) GetDismissals() []Dismissals {
 	return o.Dismissals
 }
 
-// FavoriteProjectsAndSpaces2 - A list of projects and spaces across teams that a user has marked as a favorite.
-type FavoriteProjectsAndSpaces2 struct {
-	SpaceID   string  `json:"spaceId"`
-	ScopeSlug string  `json:"scopeSlug"`
-	ScopeID   string  `json:"scopeId"`
-	TeamID    *string `json:"teamId,omitempty"`
+// FavoriteProjectsAndSpaces - A list of projects and spaces across teams that a user has marked as a favorite.
+type FavoriteProjectsAndSpaces struct {
+	TeamID    string `json:"teamId"`
+	ProjectID string `json:"projectId"`
 }
 
-func (o *FavoriteProjectsAndSpaces2) GetSpaceID() string {
+func (o *FavoriteProjectsAndSpaces) GetTeamID() string {
 	if o == nil {
 		return ""
-	}
-	return o.SpaceID
-}
-
-func (o *FavoriteProjectsAndSpaces2) GetScopeSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeSlug
-}
-
-func (o *FavoriteProjectsAndSpaces2) GetScopeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeID
-}
-
-func (o *FavoriteProjectsAndSpaces2) GetTeamID() *string {
-	if o == nil {
-		return nil
 	}
 	return o.TeamID
 }
 
-// FavoriteProjectsAndSpaces1 - A list of projects and spaces across teams that a user has marked as a favorite.
-type FavoriteProjectsAndSpaces1 struct {
-	ProjectID string  `json:"projectId"`
-	ScopeSlug string  `json:"scopeSlug"`
-	ScopeID   string  `json:"scopeId"`
-	TeamID    *string `json:"teamId,omitempty"`
-}
-
-func (o *FavoriteProjectsAndSpaces1) GetProjectID() string {
+func (o *FavoriteProjectsAndSpaces) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
-}
-
-func (o *FavoriteProjectsAndSpaces1) GetScopeSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeSlug
-}
-
-func (o *FavoriteProjectsAndSpaces1) GetScopeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ScopeID
-}
-
-func (o *FavoriteProjectsAndSpaces1) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-type FavoriteProjectsAndSpacesType string
-
-const (
-	FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1 FavoriteProjectsAndSpacesType = "favoriteProjectsAndSpaces_1"
-	FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2 FavoriteProjectsAndSpacesType = "favoriteProjectsAndSpaces_2"
-)
-
-type FavoriteProjectsAndSpaces struct {
-	FavoriteProjectsAndSpaces1 *FavoriteProjectsAndSpaces1
-	FavoriteProjectsAndSpaces2 *FavoriteProjectsAndSpaces2
-
-	Type FavoriteProjectsAndSpacesType
-}
-
-func CreateFavoriteProjectsAndSpacesFavoriteProjectsAndSpaces1(favoriteProjectsAndSpaces1 FavoriteProjectsAndSpaces1) FavoriteProjectsAndSpaces {
-	typ := FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1
-
-	return FavoriteProjectsAndSpaces{
-		FavoriteProjectsAndSpaces1: &favoriteProjectsAndSpaces1,
-		Type:                       typ,
-	}
-}
-
-func CreateFavoriteProjectsAndSpacesFavoriteProjectsAndSpaces2(favoriteProjectsAndSpaces2 FavoriteProjectsAndSpaces2) FavoriteProjectsAndSpaces {
-	typ := FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2
-
-	return FavoriteProjectsAndSpaces{
-		FavoriteProjectsAndSpaces2: &favoriteProjectsAndSpaces2,
-		Type:                       typ,
-	}
-}
-
-func (u *FavoriteProjectsAndSpaces) UnmarshalJSON(data []byte) error {
-
-	var favoriteProjectsAndSpaces1 FavoriteProjectsAndSpaces1 = FavoriteProjectsAndSpaces1{}
-	if err := utils.UnmarshalJSON(data, &favoriteProjectsAndSpaces1, "", true, true); err == nil {
-		u.FavoriteProjectsAndSpaces1 = &favoriteProjectsAndSpaces1
-		u.Type = FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces1
-		return nil
-	}
-
-	var favoriteProjectsAndSpaces2 FavoriteProjectsAndSpaces2 = FavoriteProjectsAndSpaces2{}
-	if err := utils.UnmarshalJSON(data, &favoriteProjectsAndSpaces2, "", true, true); err == nil {
-		u.FavoriteProjectsAndSpaces2 = &favoriteProjectsAndSpaces2
-		u.Type = FavoriteProjectsAndSpacesTypeFavoriteProjectsAndSpaces2
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FavoriteProjectsAndSpaces", string(data))
-}
-
-func (u FavoriteProjectsAndSpaces) MarshalJSON() ([]byte, error) {
-	if u.FavoriteProjectsAndSpaces1 != nil {
-		return utils.MarshalJSON(u.FavoriteProjectsAndSpaces1, "", true)
-	}
-
-	if u.FavoriteProjectsAndSpaces2 != nil {
-		return utils.MarshalJSON(u.FavoriteProjectsAndSpaces2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type FavoriteProjectsAndSpaces: all fields are null")
 }
 
 // RemoteCaching - remote caching settings

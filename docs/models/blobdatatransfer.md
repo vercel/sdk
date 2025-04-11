@@ -6,7 +6,7 @@
 import { BlobDataTransfer } from "@vercel/sdk/models/userevent.js";
 
 let value: BlobDataTransfer = {
-  currentThreshold: 7140.54,
+  currentThreshold: 7290.07,
 };
 ```
 

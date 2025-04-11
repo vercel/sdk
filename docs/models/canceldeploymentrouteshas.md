@@ -16,7 +16,7 @@ const value: models.CancelDeploymentHas1 = {
 
 ```typescript
 const value: models.CancelDeploymentHas2 = {
-  type: "cookie",
+  type: "query",
   key: "<key>",
 };
 ```

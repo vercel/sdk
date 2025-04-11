@@ -5,6 +5,7 @@ package operations
 import (
 	"errors"
 	"fmt"
+	"io"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
 )
@@ -21,7 +22,8 @@ type UploadFileRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug *string `queryParam:"style=form,explode=true,name=slug"`
+	Slug        *string    `queryParam:"style=form,explode=true,name=slug"`
+	RequestBody *io.Reader `request:"mediaType=application/octet-stream"`
 }
 
 func (o *UploadFileRequest) GetContentLength() *float64 {
@@ -64,6 +66,13 @@ func (o *UploadFileRequest) GetSlug() *string {
 		return nil
 	}
 	return o.Slug
+}
+
+func (o *UploadFileRequest) GetRequestBody() *io.Reader {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 type UploadFileResponseBody2 struct {

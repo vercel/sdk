@@ -5,7 +5,7 @@
 ```typescript
 import { FunctionMemoryType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: FunctionMemoryType = "standard";
+let value: FunctionMemoryType = "standard_legacy";
 ```
 
 ## Values

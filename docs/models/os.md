@@ -6,7 +6,7 @@
 import { Os } from "@vercel/sdk/models/userevent.js";
 
 let value: Os = {
-  name: "Mac OS",
+  name: "linux",
 };
 ```
 

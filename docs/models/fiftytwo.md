@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { FiftyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyTwo = {
-  domain: "enchanted-elver.net",
+  domain: "glaring-bell.biz",
 };
 ```
 

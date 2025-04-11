@@ -38,6 +38,16 @@ const value: models.GetConfigurationResponseBody1 = {
 ```typescript
 const value: models.GetConfigurationResponseBody2 = {
   projectSelection: "all",
+  transferRequest: {
+    kind: "transfer-to-marketplace",
+    requestId: "<id>",
+    transferId: "<id>",
+    requester: {
+      name: "<value>",
+    },
+    createdAt: 9970.58,
+    expiresAt: 1729.95,
+  },
   projects: [
     "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
   ],

@@ -28,11 +28,26 @@ export const ImportResourceType = {
 } as const;
 export type ImportResourceType = ClosedEnum<typeof ImportResourceType>;
 
+export type Details = {
+  label: string;
+  value?: string | undefined;
+};
+
+export type HeightlightedDetails = {
+  label: string;
+  value?: string | undefined;
+};
+
 export type BillingPlan = {
   id: string;
   type: ImportResourceType;
   name: string;
+  description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
+  cost?: string | undefined;
+  details?: Array<Details> | undefined;
+  heightlightedDetails?: Array<HeightlightedDetails> | undefined;
+  effectiveDate?: string | undefined;
   additionalProperties?: { [k: string]: any };
 };
 
@@ -119,6 +134,113 @@ export namespace ImportResourceType$ {
 }
 
 /** @internal */
+export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type Details$Outbound = {
+  label: string;
+  value?: string | undefined;
+};
+
+/** @internal */
+export const Details$outboundSchema: z.ZodType<
+  Details$Outbound,
+  z.ZodTypeDef,
+  Details
+> = z.object({
+  label: z.string(),
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Details$ {
+  /** @deprecated use `Details$inboundSchema` instead. */
+  export const inboundSchema = Details$inboundSchema;
+  /** @deprecated use `Details$outboundSchema` instead. */
+  export const outboundSchema = Details$outboundSchema;
+  /** @deprecated use `Details$Outbound` instead. */
+  export type Outbound = Details$Outbound;
+}
+
+export function detailsToJSON(details: Details): string {
+  return JSON.stringify(Details$outboundSchema.parse(details));
+}
+
+export function detailsFromJSON(
+  jsonString: string,
+): SafeParseResult<Details, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Details$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Details' from JSON`,
+  );
+}
+
+/** @internal */
+export const HeightlightedDetails$inboundSchema: z.ZodType<
+  HeightlightedDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type HeightlightedDetails$Outbound = {
+  label: string;
+  value?: string | undefined;
+};
+
+/** @internal */
+export const HeightlightedDetails$outboundSchema: z.ZodType<
+  HeightlightedDetails$Outbound,
+  z.ZodTypeDef,
+  HeightlightedDetails
+> = z.object({
+  label: z.string(),
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HeightlightedDetails$ {
+  /** @deprecated use `HeightlightedDetails$inboundSchema` instead. */
+  export const inboundSchema = HeightlightedDetails$inboundSchema;
+  /** @deprecated use `HeightlightedDetails$outboundSchema` instead. */
+  export const outboundSchema = HeightlightedDetails$outboundSchema;
+  /** @deprecated use `HeightlightedDetails$Outbound` instead. */
+  export type Outbound = HeightlightedDetails$Outbound;
+}
+
+export function heightlightedDetailsToJSON(
+  heightlightedDetails: HeightlightedDetails,
+): string {
+  return JSON.stringify(
+    HeightlightedDetails$outboundSchema.parse(heightlightedDetails),
+  );
+}
+
+export function heightlightedDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<HeightlightedDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HeightlightedDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HeightlightedDetails' from JSON`,
+  );
+}
+
+/** @internal */
 export const BillingPlan$inboundSchema: z.ZodType<
   BillingPlan,
   z.ZodTypeDef,
@@ -128,7 +250,14 @@ export const BillingPlan$inboundSchema: z.ZodType<
     id: z.string(),
     type: ImportResourceType$inboundSchema,
     name: z.string(),
+    description: z.string().optional(),
     paymentMethodRequired: z.boolean().optional(),
+    cost: z.string().optional(),
+    details: z.array(z.lazy(() => Details$inboundSchema)).optional(),
+    heightlightedDetails: z.array(
+      z.lazy(() => HeightlightedDetails$inboundSchema),
+    ).optional(),
+    effectiveDate: z.string().optional(),
   }).catchall(z.any()),
   "additionalProperties",
   true,
@@ -139,7 +268,12 @@ export type BillingPlan$Outbound = {
   id: string;
   type: string;
   name: string;
+  description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
+  cost?: string | undefined;
+  details?: Array<Details$Outbound> | undefined;
+  heightlightedDetails?: Array<HeightlightedDetails$Outbound> | undefined;
+  effectiveDate?: string | undefined;
   [additionalProperties: string]: unknown;
 };
 
@@ -152,7 +286,14 @@ export const BillingPlan$outboundSchema: z.ZodType<
   id: z.string(),
   type: ImportResourceType$outboundSchema,
   name: z.string(),
+  description: z.string().optional(),
   paymentMethodRequired: z.boolean().optional(),
+  cost: z.string().optional(),
+  details: z.array(z.lazy(() => Details$outboundSchema)).optional(),
+  heightlightedDetails: z.array(
+    z.lazy(() => HeightlightedDetails$outboundSchema),
+  ).optional(),
+  effectiveDate: z.string().optional(),
   additionalProperties: z.record(z.any()),
 }).transform((v) => {
   return {

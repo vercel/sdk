@@ -5,7 +5,7 @@
 ```typescript
 import { CancelDeploymentHasDeploymentsType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentHasDeploymentsType = "header";
+let value: CancelDeploymentHasDeploymentsType = "cookie";
 ```
 
 ## Values

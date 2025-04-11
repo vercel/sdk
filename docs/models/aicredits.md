@@ -6,7 +6,7 @@
 import { AiCredits } from "@vercel/sdk/models/userevent.js";
 
 let value: AiCredits = {
-  currentThreshold: 2484.25,
+  currentThreshold: 6272,
 };
 ```
 

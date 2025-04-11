@@ -33,6 +33,12 @@ export type UploadFileRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?:
+    | ReadableStream<Uint8Array>
+    | Blob
+    | ArrayBuffer
+    | Uint8Array
+    | undefined;
 };
 
 export type UploadFileResponseBody2 = {};
@@ -66,12 +72,19 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   "x-now-size": z.number().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  RequestBody: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(Blob),
+    z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     "Content-Length": "contentLength",
     "x-vercel-digest": "xVercelDigest",
     "x-now-digest": "xNowDigest",
     "x-now-size": "xNowSize",
+    "RequestBody": "requestBody",
   });
 });
 
@@ -83,6 +96,12 @@ export type UploadFileRequest$Outbound = {
   "x-now-size"?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?:
+    | ReadableStream<Uint8Array>
+    | Blob
+    | ArrayBuffer
+    | Uint8Array
+    | undefined;
 };
 
 /** @internal */
@@ -97,12 +116,19 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   xNowSize: z.number().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  requestBody: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(Blob),
+    z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     contentLength: "Content-Length",
     xVercelDigest: "x-vercel-digest",
     xNowDigest: "x-now-digest",
     xNowSize: "x-now-size",
+    requestBody: "RequestBody",
   });
 });
 

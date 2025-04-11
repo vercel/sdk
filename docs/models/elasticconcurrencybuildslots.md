@@ -6,7 +6,7 @@
 import { ElasticConcurrencyBuildSlots } from "@vercel/sdk/models/userevent.js";
 
 let value: ElasticConcurrencyBuildSlots = {
-  currentThreshold: 6361.9,
+  currentThreshold: 3569.2,
 };
 ```
 

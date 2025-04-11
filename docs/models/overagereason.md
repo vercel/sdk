@@ -5,7 +5,7 @@
 ```typescript
 import { OverageReason } from "@vercel/sdk/models/userevent.js";
 
-let value: OverageReason = "edgeRequestAdditionalCpuDuration";
+let value: OverageReason = "imageOptimizationCacheRead";
 ```
 
 ## Values

@@ -6,7 +6,7 @@
 import { PostgresWrittenData } from "@vercel/sdk/models/userevent.js";
 
 let value: PostgresWrittenData = {
-  currentThreshold: 2835.14,
+  currentThreshold: 2186.77,
 };
 ```
 

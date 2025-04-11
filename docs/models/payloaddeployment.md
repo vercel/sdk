@@ -8,7 +8,7 @@ import { PayloadDeployment } from "@vercel/sdk/models/userevent.js";
 let value: PayloadDeployment = {
   id: "<id>",
   name: "<value>",
-  url: "https://linear-sightseeing.net/",
+  url: "https://idolized-valuable.biz",
   meta: {
     "key": "<value>",
   },

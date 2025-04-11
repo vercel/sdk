@@ -6,8 +6,8 @@
 import { ScalingRules } from "@vercel/sdk/models/userevent.js";
 
 let value: ScalingRules = {
-  min: 3755.49,
-  max: 5681.62,
+  min: 7732.79,
+  max: 2712.29,
 };
 ```
 

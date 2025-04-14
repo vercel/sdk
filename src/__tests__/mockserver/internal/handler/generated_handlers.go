@@ -132,6 +132,8 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/integrations/sso/token", pathPostV1IntegrationsSsoToken(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/log-drains", pathPostV1LogDrains(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{idOrName}/members", pathPostV1ProjectsIDOrNameMembers(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{projectId}/pause", pathPostV1ProjectsProjectIDPause(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{projectId}/unpause", pathPostV1ProjectsProjectIDUnpause(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/security/attack-mode", pathPostV1SecurityAttackMode(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/security/firewall/bypass", pathPostV1SecurityFirewallBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/teams", pathPostV1Teams(dir, rt)),

@@ -5627,3 +5627,37 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: marketplace
+  - workflowId: pauseProject
+    steps:
+      - stepId: test
+        operationId: pauseProject
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: projects
+  - workflowId: unpauseProject
+    steps:
+      - stepId: test
+        operationId: unpauseProject
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: projects

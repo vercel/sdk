@@ -15,9 +15,11 @@ import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
 import { projectsGetProjects } from "../funcs/projectsGetProjects.js";
 import { projectsListPromoteAliases } from "../funcs/projectsListPromoteAliases.js";
+import { projectsPauseProject } from "../funcs/projectsPauseProject.js";
 import { projectsRemoveProjectDomain } from "../funcs/projectsRemoveProjectDomain.js";
 import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
 import { projectsRequestPromote } from "../funcs/projectsRequestPromote.js";
+import { projectsUnpauseProject } from "../funcs/projectsUnpauseProject.js";
 import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDataCache } from "../funcs/projectsUpdateProjectDataCache.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
@@ -73,6 +75,7 @@ import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
 } from "../models/listpromotealiasesop.js";
+import { PauseProjectRequest } from "../models/pauseprojectop.js";
 import {
   RemoveProjectDomainRequest,
   RemoveProjectDomainResponseBody,
@@ -82,6 +85,7 @@ import {
   RemoveProjectEnvResponseBody,
 } from "../models/removeprojectenvop.js";
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
+import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
 import {
   UpdateProjectDataCacheRequest,
   UpdateProjectDataCacheResponseBody,
@@ -456,6 +460,40 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListPromoteAliasesResponseBody> {
     return unwrapAsync(projectsListPromoteAliases(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Pause a project
+   *
+   * @remarks
+   * Pause a project by passing its project `id` in the URL. If the project does not exist given the id then the request will fail with 400 status code. If the project disables auto assigning custom production domains and blocks the active Production Deployment then the request will return with 200 status code.
+   */
+  async pauseProject(
+    request: PauseProjectRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(projectsPauseProject(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Unpause a project
+   *
+   * @remarks
+   * Unpause a project by passing its project `id` in the URL. If the project does not exist given the id then the request will fail with 400 status code. If the project enables auto assigning custom production domains and unblocks the active Production Deployment then the request will return with 200 status code.
+   */
+  async unpauseProject(
+    request: UnpauseProjectRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(projectsUnpauseProject(
       this,
       request,
       options,

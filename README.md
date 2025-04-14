@@ -469,6 +469,8 @@ run();
 * [updateProjectProtectionBypass](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestPromote](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
+* [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
+* [unpauseProject](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
 
 ### [security](docs/sdks/security/README.md)
 
@@ -655,9 +657,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsGetProjectEnv`](docs/sdks/projects/README.md#getprojectenv) - Retrieve the decrypted value of an environment variable of a project by id
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
 - [`projectsListPromoteAliases`](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
+- [`projectsPauseProject`](docs/sdks/projects/README.md#pauseproject) - Pause a project
 - [`projectsRemoveProjectDomain`](docs/sdks/projects/README.md#removeprojectdomain) - Remove a domain from a project
 - [`projectsRemoveProjectEnv`](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable
 - [`projectsRequestPromote`](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
+- [`projectsUnpauseProject`](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
 - [`projectsUpdateProject`](docs/sdks/projects/README.md#updateproject) - Update an existing project
 - [`projectsUpdateProjectDataCache`](docs/sdks/projects/README.md#updateprojectdatacache) - Update the data cache feature
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain

@@ -140,9 +140,11 @@ import { tool$projectsGetProjectDomains } from "./tools/projectsGetProjectDomain
 import { tool$projectsGetProjectEnv } from "./tools/projectsGetProjectEnv.js";
 import { tool$projectsGetProjects } from "./tools/projectsGetProjects.js";
 import { tool$projectsListPromoteAliases } from "./tools/projectsListPromoteAliases.js";
+import { tool$projectsPauseProject } from "./tools/projectsPauseProject.js";
 import { tool$projectsRemoveProjectDomain } from "./tools/projectsRemoveProjectDomain.js";
 import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.js";
 import { tool$projectsRequestPromote } from "./tools/projectsRequestPromote.js";
+import { tool$projectsUnpauseProject } from "./tools/projectsUnpauseProject.js";
 import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDataCache } from "./tools/projectsUpdateProjectDataCache.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
@@ -186,7 +188,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.1",
+    version: "1.6.2",
   });
 
   const client = new VercelCore({
@@ -259,6 +261,8 @@ export function createMCPServer(deps: {
   tool(tool$projectsUpdateProjectProtectionBypass);
   tool(tool$projectsRequestPromote);
   tool(tool$projectsListPromoteAliases);
+  tool(tool$projectsPauseProject);
+  tool(tool$projectsUnpauseProject);
   tool(tool$deploymentsGetDeploymentEvents);
   tool(tool$deploymentsUpdateIntegrationDeploymentAction);
   tool(tool$deploymentsGetDeployment);

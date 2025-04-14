@@ -49859,6 +49859,161 @@
         ]
       }
     },
+    "/v1/projects/{projectId}/pause": {
+      "post": {
+        "description": "Pause a project by passing its project `id` in the URL. If the project does not exist given the id then the request will fail with 400 status code. If the project disables auto assigning custom production domains and blocks the active Production Deployment then the request will return with 200 status code.",
+        "operationId": "pauseProject",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Pause a project",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "The unique project identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique project identifier"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/projects/{projectId}/unpause": {
+      "post": {
+        "description": "Unpause a project by passing its project `id` in the URL. If the project does not exist given the id then the request will fail with 400 status code. If the project enables auto assigning custom production domains and unblocks the active Production Deployment then the request will return with 200 status code.",
+        "operationId": "unpauseProject",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Unpause a project",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "The unique project identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique project identifier"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v1/security/attack-mode": {
       "post": {
         "description": "Update the setting for determining if the project has Attack Challenge mode enabled.",

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 5e1d575738b95c5b1ebcf51ed2bd40e4
+  docChecksum: b97d90931aa0a651029b3e6a24d7f022
   docVersion: 0.0.1
-  speakeasyVersion: 1.531.3
-  generationVersion: 2.570.3
-  releaseVersion: 1.6.1
-  configChecksum: f8b228025e1dbc6835a1ef3cc2a10952
+  speakeasyVersion: 1.531.4
+  generationVersion: 2.570.4
+  releaseVersion: 1.6.2
+  configChecksum: 597277c8ecccd2d54bd98e2efa92d870
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -1905,6 +1905,7 @@ generatedFiles:
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequestbody.md
   - docs/models/paths.md
+  - docs/models/pauseprojectrequest.md
   - docs/models/payload.md
   - docs/models/payloadaccessgroup.md
   - docs/models/payloadaction.md
@@ -2463,6 +2464,7 @@ generatedFiles:
   - docs/models/twotarget.md
   - docs/models/twotype.md
   - docs/models/type.md
+  - docs/models/unpauseprojectrequest.md
   - docs/models/updateaccessgroupentitlements.md
   - docs/models/updateaccessgroupprojectaccessgroupsrole.md
   - docs/models/updateaccessgroupprojectrequest.md
@@ -3117,6 +3119,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
   - src/__tests__/mockserver/internal/handler/pathpostv1logdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidpause.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidunpause.go
   - src/__tests__/mockserver/internal/handler/pathpostv1securityattackmode.go
   - src/__tests__/mockserver/internal/handler/pathpostv1securityfirewallbypass.go
   - src/__tests__/mockserver/internal/handler/pathpostv1teams.go
@@ -3283,6 +3287,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroup.go
@@ -3305,6 +3310,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/submitbillingdata.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitinvoice.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitprepaymentbalances.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/unpauseproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateattackchallengemode.go
@@ -3484,9 +3490,11 @@ generatedFiles:
   - src/funcs/projectsGetProjectEnv.ts
   - src/funcs/projectsGetProjects.ts
   - src/funcs/projectsListPromoteAliases.ts
+  - src/funcs/projectsPauseProject.ts
   - src/funcs/projectsRemoveProjectDomain.ts
   - src/funcs/projectsRemoveProjectEnv.ts
   - src/funcs/projectsRequestPromote.ts
+  - src/funcs/projectsUnpauseProject.ts
   - src/funcs/projectsUpdateProject.ts
   - src/funcs/projectsUpdateProjectDataCache.ts
   - src/funcs/projectsUpdateProjectDomain.ts
@@ -3677,9 +3685,11 @@ generatedFiles:
   - src/mcp-server/tools/projectsGetProjectEnv.ts
   - src/mcp-server/tools/projectsGetProjects.ts
   - src/mcp-server/tools/projectsListPromoteAliases.ts
+  - src/mcp-server/tools/projectsPauseProject.ts
   - src/mcp-server/tools/projectsRemoveProjectDomain.ts
   - src/mcp-server/tools/projectsRemoveProjectEnv.ts
   - src/mcp-server/tools/projectsRequestPromote.ts
+  - src/mcp-server/tools/projectsUnpauseProject.ts
   - src/mcp-server/tools/projectsUpdateProject.ts
   - src/mcp-server/tools/projectsUpdateProjectDataCache.ts
   - src/mcp-server/tools/projectsUpdateProjectDomain.ts
@@ -3840,6 +3850,7 @@ generatedFiles:
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchteamop.ts
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
+  - src/models/pauseprojectop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
   - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
   - src/models/ratelimitnotice.ts
@@ -3867,6 +3878,7 @@ generatedFiles:
   - src/models/submitinvoiceop.ts
   - src/models/submitprepaymentbalancesop.ts
   - src/models/teamlimited.ts
+  - src/models/unpauseprojectop.ts
   - src/models/updateaccessgroupop.ts
   - src/models/updateaccessgroupprojectop.ts
   - src/models/updateattackchallengemodeop.ts
@@ -5353,7 +5365,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["static"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
+          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5635,7 +5647,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}, "id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}}
+          application/json: {"id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}, "user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5907,7 +5919,7 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": false, "key1": [], "key2": []}, "updatedAt": 7651.43, "digest": "<value>"}
+          application/json: {"items": {"key": [], "key1": {}, "key2": {}}, "updatedAt": 7651.43, "digest": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6256,7 +6268,7 @@ examples:
         application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "email": "john@example.com", "role": "VIEWER", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
       responses:
         "200":
-          application/json: {"uid": "<id>", "username": "Patrick_Dickinson83", "role": "OWNER"}
+          application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "username": "john-doe", "email": "john@user.co", "role": "MEMBER", "teamRoles": ["MEMBER"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6655,6 +6667,32 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  pauseProject:
+    speakeasy-default-pause-project:
+      parameters:
+        path:
+          projectId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  unpauseProject:
+    speakeasy-default-unpause-project:
+      parameters:
+        path:
+          projectId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
   readAccessGroup: "2025-01-16T21:59:36Z"
@@ -6815,3 +6853,5 @@ generatedTests:
   updateCustomEnvironment: "2025-03-07T23:50:38Z"
   removeCustomEnvironment: "2025-03-07T23:50:38Z"
   queryExperimentationItems: "2025-04-03T17:17:07Z"
+  pauseProject: "2025-04-14T20:46:04Z"
+  unpauseProject: "2025-04-14T20:46:04Z"

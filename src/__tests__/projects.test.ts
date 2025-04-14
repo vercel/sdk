@@ -578,19 +578,21 @@ test("Projects Create Project Env", async () => {
     upsert: "true",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: {
-      key: "API_URL",
-      value: "https://api.vercel.com",
-      type: "plain",
-      target: [
-        "preview",
-      ],
-      gitBranch: "feature-1",
-      comment: "database connection string for production",
-      customEnvironmentIds: [
-        "env_1234567890",
-      ],
-    },
+    requestBody: [
+      {
+        key: "API_URL",
+        value: "https://api.vercel.com",
+        type: "plain",
+        target: [
+          "preview",
+        ],
+        gitBranch: "feature-1",
+        comment: "database connection string for production",
+        customEnvironmentIds: [
+          "env_1234567890",
+        ],
+      },
+    ],
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -773,5 +775,37 @@ test("Projects Filter Project Envs", async () => {
       next: 1540095775951,
       prev: 1540095775951,
     },
+  });
+});
+
+test("Projects Pause Project", async () => {
+  const testHttpClient = createTestHTTPClient("pauseProject");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.projects.pauseProject({
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+});
+
+test("Projects Unpause Project", async () => {
+  const testHttpClient = createTestHTTPClient("unpauseProject");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.projects.unpauseProject({
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 });

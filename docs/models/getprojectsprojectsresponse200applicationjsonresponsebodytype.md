@@ -1,5 +1,7 @@
 # GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript

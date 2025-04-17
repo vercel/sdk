@@ -1,11 +1,11 @@
-# UserEventPayload144Team
+# UserEventPayload147Team
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayload144Team } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayload147Team } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload144Team = {
+let value: UserEventPayload147Team = {
   id: "<id>",
   name: "<value>",
 };

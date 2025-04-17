@@ -2043,6 +2043,7 @@ func (o *GetProjectsAliasError) GetMessage() string {
 	return o.Message
 }
 
+// GetProjectsProjectsResponse200ApplicationJSONResponseBodyType - The type of matching to perform
 type GetProjectsProjectsResponse200ApplicationJSONResponseBodyType string
 
 const (
@@ -2073,8 +2074,10 @@ func (e *GetProjectsProjectsResponse200ApplicationJSONResponseBodyType) Unmarsha
 }
 
 type GetProjectsBranchMatcher struct {
-	Type    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Pattern string                                                        `json:"pattern"`
+	// The type of matching to perform
+	Type GetProjectsProjectsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
 }
 
 func (o *GetProjectsBranchMatcher) GetType() GetProjectsProjectsResponse200ApplicationJSONResponseBodyType {
@@ -3326,7 +3329,7 @@ type GetProjectsMicrofrontends1 struct {
 	Enabled bool `json:"enabled"`
 	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
-	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
@@ -3712,8 +3715,8 @@ func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool 
 type GetProjectsDeploymentType string
 
 const (
-	GetProjectsDeploymentTypePreview                          GetProjectsDeploymentType = "preview"
 	GetProjectsDeploymentTypeAll                              GetProjectsDeploymentType = "all"
+	GetProjectsDeploymentTypePreview                          GetProjectsDeploymentType = "preview"
 	GetProjectsDeploymentTypeProdDeploymentUrlsAndAllPreviews GetProjectsDeploymentType = "prod_deployment_urls_and_all_previews"
 )
 
@@ -3726,9 +3729,9 @@ func (e *GetProjectsDeploymentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		*e = GetProjectsDeploymentType(v)
@@ -3831,6 +3834,7 @@ func (o *GetProjectsProjectsAliasError) GetMessage() string {
 	return o.Message
 }
 
+// GetProjectsProjectsResponse200ApplicationJSONType - The type of matching to perform
 type GetProjectsProjectsResponse200ApplicationJSONType string
 
 const (
@@ -3861,8 +3865,10 @@ func (e *GetProjectsProjectsResponse200ApplicationJSONType) UnmarshalJSON(data [
 }
 
 type GetProjectsProjectsBranchMatcher struct {
-	Type    GetProjectsProjectsResponse200ApplicationJSONType `json:"type"`
-	Pattern string                                            `json:"pattern"`
+	// The type of matching to perform
+	Type GetProjectsProjectsResponse200ApplicationJSONType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
 }
 
 func (o *GetProjectsProjectsBranchMatcher) GetType() GetProjectsProjectsResponse200ApplicationJSONType {
@@ -4612,6 +4618,7 @@ type GetProjectsPermissions struct {
 	TeamInvite                               []components.ACLAction `json:"teamInvite,omitempty"`
 	TeamInviteCode                           []components.ACLAction `json:"teamInviteCode,omitempty"`
 	TeamJoin                                 []components.ACLAction `json:"teamJoin,omitempty"`
+	TeamMemberMfaStatus                      []components.ACLAction `json:"teamMemberMfaStatus,omitempty"`
 	TeamMicrofrontends                       []components.ACLAction `json:"teamMicrofrontends,omitempty"`
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
@@ -4629,6 +4636,8 @@ type GetProjectsPermissions struct {
 	EndpointVerification                     []components.ACLAction `json:"endpointVerification,omitempty"`
 	ProjectTransferIn                        []components.ACLAction `json:"projectTransferIn,omitempty"`
 	Oauth2Application                        []components.ACLAction `json:"oauth2Application,omitempty"`
+	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
+	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
 	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
 	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
@@ -5494,6 +5503,13 @@ func (o *GetProjectsPermissions) GetTeamJoin() []components.ACLAction {
 	return o.TeamJoin
 }
 
+func (o *GetProjectsPermissions) GetTeamMemberMfaStatus() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TeamMemberMfaStatus
+}
+
 func (o *GetProjectsPermissions) GetTeamMicrofrontends() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5611,6 +5627,20 @@ func (o *GetProjectsPermissions) GetOauth2Application() []components.ACLAction {
 		return nil
 	}
 	return o.Oauth2Application
+}
+
+func (o *GetProjectsPermissions) GetVercelRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.VercelRun
+}
+
+func (o *GetProjectsPermissions) GetVercelRunExec() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.VercelRunExec
 }
 
 func (o *GetProjectsPermissions) GetAliasProject() []components.ACLAction {
@@ -6179,10 +6209,10 @@ func (o *GetProjectsProtectionBypass) GetScope() GetProjectsScope {
 type GetProjectsTrustedIpsProjectsDeploymentType string
 
 const (
-	GetProjectsTrustedIpsProjectsDeploymentTypeProduction                       GetProjectsTrustedIpsProjectsDeploymentType = "production"
-	GetProjectsTrustedIpsProjectsDeploymentTypePreview                          GetProjectsTrustedIpsProjectsDeploymentType = "preview"
 	GetProjectsTrustedIpsProjectsDeploymentTypeAll                              GetProjectsTrustedIpsProjectsDeploymentType = "all"
+	GetProjectsTrustedIpsProjectsDeploymentTypePreview                          GetProjectsTrustedIpsProjectsDeploymentType = "preview"
 	GetProjectsTrustedIpsProjectsDeploymentTypeProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsProjectsDeploymentType = "prod_deployment_urls_and_all_previews"
+	GetProjectsTrustedIpsProjectsDeploymentTypeProduction                       GetProjectsTrustedIpsProjectsDeploymentType = "production"
 )
 
 func (e GetProjectsTrustedIpsProjectsDeploymentType) ToPointer() *GetProjectsTrustedIpsProjectsDeploymentType {
@@ -6194,13 +6224,13 @@ func (e *GetProjectsTrustedIpsProjectsDeploymentType) UnmarshalJSON(data []byte)
 		return err
 	}
 	switch v {
-	case "production":
+	case "all":
 		fallthrough
 	case "preview":
 		fallthrough
-	case "all":
-		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "production":
 		*e = GetProjectsTrustedIpsProjectsDeploymentType(v)
 		return nil
 	default:
@@ -6222,10 +6252,10 @@ func (o *GetProjectsTrustedIps2) GetDeploymentType() GetProjectsTrustedIpsProjec
 type GetProjectsTrustedIpsDeploymentType string
 
 const (
-	GetProjectsTrustedIpsDeploymentTypeProduction                       GetProjectsTrustedIpsDeploymentType = "production"
-	GetProjectsTrustedIpsDeploymentTypePreview                          GetProjectsTrustedIpsDeploymentType = "preview"
 	GetProjectsTrustedIpsDeploymentTypeAll                              GetProjectsTrustedIpsDeploymentType = "all"
+	GetProjectsTrustedIpsDeploymentTypePreview                          GetProjectsTrustedIpsDeploymentType = "preview"
 	GetProjectsTrustedIpsDeploymentTypeProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsDeploymentType = "prod_deployment_urls_and_all_previews"
+	GetProjectsTrustedIpsDeploymentTypeProduction                       GetProjectsTrustedIpsDeploymentType = "production"
 )
 
 func (e GetProjectsTrustedIpsDeploymentType) ToPointer() *GetProjectsTrustedIpsDeploymentType {
@@ -6237,13 +6267,13 @@ func (e *GetProjectsTrustedIpsDeploymentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
+	case "all":
 		fallthrough
 	case "preview":
 		fallthrough
-	case "all":
-		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "production":
 		*e = GetProjectsTrustedIpsDeploymentType(v)
 		return nil
 	default:

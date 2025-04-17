@@ -11,5 +11,5 @@ let value: GetProjectsDeploymentType = "prod_deployment_urls_and_all_previews";
 ## Values
 
 ```typescript
-"preview" | "all" | "prod_deployment_urls_and_all_previews"
+"all" | "preview" | "prod_deployment_urls_and_all_previews"
 ```

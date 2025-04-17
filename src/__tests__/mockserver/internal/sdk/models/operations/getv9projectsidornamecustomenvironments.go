@@ -45,6 +45,7 @@ func (o *GetV9ProjectsIDOrNameCustomEnvironmentsRequest) GetSlug() *string {
 	return o.Slug
 }
 
+// GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments - Internal representation of a custom environment with all required properties
 type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments struct {
 }
 

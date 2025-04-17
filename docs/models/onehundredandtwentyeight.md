@@ -11,7 +11,7 @@ let value: OneHundredAndTwentyEight = {
   project: {
     name: "<value>",
   },
-  removedMembership: {},
+  projectMembership: {},
 };
 ```
 
@@ -20,4 +20,4 @@ let value: OneHundredAndTwentyEight = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload128Project](../models/usereventpayload128project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

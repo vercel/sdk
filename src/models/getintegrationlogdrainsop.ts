@@ -56,16 +56,14 @@ export type GetIntegrationLogDrainsSources = ClosedEnum<
 /**
  * Whether the log drain was created by an integration or by a user
  */
-export const GetIntegrationLogDrainsCreatedFrom = {
-  SelfServed: "self-served",
+export const CreatedFrom = {
   Integration: "integration",
+  SelfServed: "self-served",
 } as const;
 /**
  * Whether the log drain was created by an integration or by a user
  */
-export type GetIntegrationLogDrainsCreatedFrom = ClosedEnum<
-  typeof GetIntegrationLogDrainsCreatedFrom
->;
+export type CreatedFrom = ClosedEnum<typeof CreatedFrom>;
 
 /**
  * The environment of log drain
@@ -126,7 +124,7 @@ export type GetIntegrationLogDrainsResponseBody = {
   /**
    * Whether the log drain was created by an integration or by a user
    */
-  createdFrom?: GetIntegrationLogDrainsCreatedFrom | undefined;
+  createdFrom?: CreatedFrom | undefined;
   /**
    * The headers to send with the request
    */
@@ -250,25 +248,22 @@ export namespace GetIntegrationLogDrainsSources$ {
 }
 
 /** @internal */
-export const GetIntegrationLogDrainsCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationLogDrainsCreatedFrom
-> = z.nativeEnum(GetIntegrationLogDrainsCreatedFrom);
+export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
+  .nativeEnum(CreatedFrom);
 
 /** @internal */
-export const GetIntegrationLogDrainsCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof GetIntegrationLogDrainsCreatedFrom
-> = GetIntegrationLogDrainsCreatedFrom$inboundSchema;
+export const CreatedFrom$outboundSchema: z.ZodNativeEnum<typeof CreatedFrom> =
+  CreatedFrom$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetIntegrationLogDrainsCreatedFrom$ {
-  /** @deprecated use `GetIntegrationLogDrainsCreatedFrom$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsCreatedFrom$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsCreatedFrom$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationLogDrainsCreatedFrom$outboundSchema;
+export namespace CreatedFrom$ {
+  /** @deprecated use `CreatedFrom$inboundSchema` instead. */
+  export const inboundSchema = CreatedFrom$inboundSchema;
+  /** @deprecated use `CreatedFrom$outboundSchema` instead. */
+  export const outboundSchema = CreatedFrom$outboundSchema;
 }
 
 /** @internal */
@@ -312,7 +307,7 @@ export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
   projectIds: z.array(z.string()).optional(),
   url: z.string(),
   sources: z.array(GetIntegrationLogDrainsSources$inboundSchema).optional(),
-  createdFrom: GetIntegrationLogDrainsCreatedFrom$inboundSchema.optional(),
+  createdFrom: CreatedFrom$inboundSchema.optional(),
   headers: z.record(z.string()).optional(),
   environments: z.array(GetIntegrationLogDrainsEnvironments$inboundSchema),
   branch: z.string().optional(),
@@ -357,7 +352,7 @@ export const GetIntegrationLogDrainsResponseBody$outboundSchema: z.ZodType<
   projectIds: z.array(z.string()).optional(),
   url: z.string(),
   sources: z.array(GetIntegrationLogDrainsSources$outboundSchema).optional(),
-  createdFrom: GetIntegrationLogDrainsCreatedFrom$outboundSchema.optional(),
+  createdFrom: CreatedFrom$outboundSchema.optional(),
   headers: z.record(z.string()).optional(),
   environments: z.array(GetIntegrationLogDrainsEnvironments$outboundSchema),
   branch: z.string().optional(),

@@ -241,6 +241,28 @@ func (o *BuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+// BuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type BuildMachine struct {
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	Cores *float64 `json:"cores,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (o *BuildMachine) GetCores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cores
+}
+
+func (o *BuildMachine) GetMemory() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
 // ResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -289,6 +311,8 @@ type ResourceConfig struct {
 	FlagsExplorerOverridesThreshold *float64 `json:"flagsExplorerOverridesThreshold,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	FlagsExplorerUnlimitedOverrides *bool `json:"flagsExplorerUnlimitedOverrides,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	BuildMachine *BuildMachine `json:"buildMachine,omitempty"`
 }
 
 func (o *ResourceConfig) GetNodeType() *string {
@@ -450,6 +474,13 @@ func (o *ResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
 		return nil
 	}
 	return o.FlagsExplorerUnlimitedOverrides
+}
+
+func (o *ResourceConfig) GetBuildMachine() *BuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
 }
 
 type ViewPreference string

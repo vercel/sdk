@@ -3,8 +3,34 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
+
+// GrantType - The grant type, when using x-www-form-urlencoded content type
+type GrantType string
+
+const (
+	GrantTypeAuthorizationCode GrantType = "authorization_code"
+)
+
+func (e GrantType) ToPointer() *GrantType {
+	return &e
+}
+func (e *GrantType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "authorization_code":
+		*e = GrantType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GrantType: %v", v)
+	}
+}
 
 type ExchangeSsoTokenRequestBody struct {
 	// The sensitive code received from Vercel
@@ -17,6 +43,8 @@ type ExchangeSsoTokenRequestBody struct {
 	ClientSecret string `json:"client_secret"`
 	// The integration redirect URI
 	RedirectURI *string `json:"redirect_uri,omitempty"`
+	// The grant type, when using x-www-form-urlencoded content type
+	GrantType *GrantType `json:"grant_type,omitempty"`
 }
 
 func (o *ExchangeSsoTokenRequestBody) GetCode() string {
@@ -52,6 +80,13 @@ func (o *ExchangeSsoTokenRequestBody) GetRedirectURI() *string {
 		return nil
 	}
 	return o.RedirectURI
+}
+
+func (o *ExchangeSsoTokenRequestBody) GetGrantType() *GrantType {
+	if o == nil {
+		return nil
+	}
+	return o.GrantType
 }
 
 type ExchangeSsoTokenResponseBody struct {

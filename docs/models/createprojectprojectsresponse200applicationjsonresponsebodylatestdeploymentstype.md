@@ -1,5 +1,7 @@
 # CreateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript

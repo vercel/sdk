@@ -96,6 +96,20 @@ export type BuildEntitlements = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export type BuildMachine = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  cores?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  memory?: number | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type ResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -189,6 +203,10 @@ export type ResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  buildMachine?: BuildMachine | undefined;
 };
 
 export const ViewPreference = {
@@ -610,6 +628,59 @@ export function buildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const BuildMachine$inboundSchema: z.ZodType<
+  BuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: z.number().optional(),
+  memory: z.number().optional(),
+});
+
+/** @internal */
+export type BuildMachine$Outbound = {
+  cores?: number | undefined;
+  memory?: number | undefined;
+};
+
+/** @internal */
+export const BuildMachine$outboundSchema: z.ZodType<
+  BuildMachine$Outbound,
+  z.ZodTypeDef,
+  BuildMachine
+> = z.object({
+  cores: z.number().optional(),
+  memory: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildMachine$ {
+  /** @deprecated use `BuildMachine$inboundSchema` instead. */
+  export const inboundSchema = BuildMachine$inboundSchema;
+  /** @deprecated use `BuildMachine$outboundSchema` instead. */
+  export const outboundSchema = BuildMachine$outboundSchema;
+  /** @deprecated use `BuildMachine$Outbound` instead. */
+  export type Outbound = BuildMachine$Outbound;
+}
+
+export function buildMachineToJSON(buildMachine: BuildMachine): string {
+  return JSON.stringify(BuildMachine$outboundSchema.parse(buildMachine));
+}
+
+export function buildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResourceConfig$inboundSchema: z.ZodType<
   ResourceConfig,
   z.ZodTypeDef,
@@ -638,6 +709,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  buildMachine: z.lazy(() => BuildMachine$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -665,6 +737,7 @@ export type ResourceConfig$Outbound = {
   microfrontendProjectsPerGroup?: number | undefined;
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  buildMachine?: BuildMachine$Outbound | undefined;
 };
 
 /** @internal */
@@ -696,6 +769,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
 });
 
 /**

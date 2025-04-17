@@ -189,20 +189,7 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "unfinished-lender.info",
-        ip: "cae5:14bd:ddd0:3cea:5afd:1bfe:276c:9c15",
-        createdAt: "1718184278808",
-        updatedAt: "1744577466408",
-        updatedAtHour: "<value>",
-      },
-    ],
-    pagination: "<value>",
-  });
+  expect(result).toEqual({});
 });
 
 test("Security Add Bypass Ip", async () => {

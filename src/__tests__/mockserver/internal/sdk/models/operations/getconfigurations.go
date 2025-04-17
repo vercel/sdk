@@ -131,6 +131,7 @@ const (
 	TagIdsTagSecurity        TagIds = "tag_security"
 	TagIdsTagTesting         TagIds = "tag_testing"
 	TagIdsTagVideo           TagIds = "tag_video"
+	TagIdsTagWorkflow        TagIds = "tag_workflow"
 )
 
 func (e TagIds) ToPointer() *TagIds {
@@ -181,6 +182,8 @@ func (e *TagIds) UnmarshalJSON(data []byte) error {
 	case "tag_testing":
 		fallthrough
 	case "tag_video":
+		fallthrough
+	case "tag_workflow":
 		*e = TagIds(v)
 		return nil
 	default:
@@ -295,21 +298,21 @@ func (e *GetConfigurationsResponseBodyIntegrationsType) UnmarshalJSON(data []byt
 	}
 }
 
-type GetConfigurationsResponseBodyDisabledReason string
+type ResponseBodyDisabledReason string
 
 const (
-	GetConfigurationsResponseBodyDisabledReasonDisabledByOwner             GetConfigurationsResponseBodyDisabledReason = "disabled-by-owner"
-	GetConfigurationsResponseBodyDisabledReasonFeatureNotAvailable         GetConfigurationsResponseBodyDisabledReason = "feature-not-available"
-	GetConfigurationsResponseBodyDisabledReasonDisabledByAdmin             GetConfigurationsResponseBodyDisabledReason = "disabled-by-admin"
-	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    GetConfigurationsResponseBodyDisabledReason = "original-owner-left-the-team"
-	GetConfigurationsResponseBodyDisabledReasonAccountPlanDowngrade        GetConfigurationsResponseBodyDisabledReason = "account-plan-downgrade"
-	GetConfigurationsResponseBodyDisabledReasonOriginalOwnerRoleDowngraded GetConfigurationsResponseBodyDisabledReason = "original-owner-role-downgraded"
+	ResponseBodyDisabledReasonDisabledByOwner             ResponseBodyDisabledReason = "disabled-by-owner"
+	ResponseBodyDisabledReasonFeatureNotAvailable         ResponseBodyDisabledReason = "feature-not-available"
+	ResponseBodyDisabledReasonDisabledByAdmin             ResponseBodyDisabledReason = "disabled-by-admin"
+	ResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    ResponseBodyDisabledReason = "original-owner-left-the-team"
+	ResponseBodyDisabledReasonAccountPlanDowngrade        ResponseBodyDisabledReason = "account-plan-downgrade"
+	ResponseBodyDisabledReasonOriginalOwnerRoleDowngraded ResponseBodyDisabledReason = "original-owner-role-downgraded"
 )
 
-func (e GetConfigurationsResponseBodyDisabledReason) ToPointer() *GetConfigurationsResponseBodyDisabledReason {
+func (e ResponseBodyDisabledReason) ToPointer() *ResponseBodyDisabledReason {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -326,10 +329,10 @@ func (e *GetConfigurationsResponseBodyDisabledReason) UnmarshalJSON(data []byte)
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = GetConfigurationsResponseBodyDisabledReason(v)
+		*e = ResponseBodyDisabledReason(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for ResponseBodyDisabledReason: %v", v)
 	}
 }
 
@@ -392,8 +395,8 @@ type GetConfigurationsResponseBody2 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                                     `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationsResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                    `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *ResponseBodyDisabledReason `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsResponseBodyInstallationType `json:"installationType,omitempty"`
 }
@@ -517,7 +520,7 @@ func (o *GetConfigurationsResponseBody2) GetDeleteRequestedAt() *float64 {
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetDisabledReason() *GetConfigurationsResponseBodyDisabledReason {
+func (o *GetConfigurationsResponseBody2) GetDisabledReason() *ResponseBodyDisabledReason {
 	if o == nil {
 		return nil
 	}
@@ -587,21 +590,21 @@ func (e *GetConfigurationsResponseBodyType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ResponseBodyDisabledReason string
+type DisabledReason string
 
 const (
-	ResponseBodyDisabledReasonDisabledByOwner             ResponseBodyDisabledReason = "disabled-by-owner"
-	ResponseBodyDisabledReasonFeatureNotAvailable         ResponseBodyDisabledReason = "feature-not-available"
-	ResponseBodyDisabledReasonDisabledByAdmin             ResponseBodyDisabledReason = "disabled-by-admin"
-	ResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    ResponseBodyDisabledReason = "original-owner-left-the-team"
-	ResponseBodyDisabledReasonAccountPlanDowngrade        ResponseBodyDisabledReason = "account-plan-downgrade"
-	ResponseBodyDisabledReasonOriginalOwnerRoleDowngraded ResponseBodyDisabledReason = "original-owner-role-downgraded"
+	DisabledReasonDisabledByOwner             DisabledReason = "disabled-by-owner"
+	DisabledReasonFeatureNotAvailable         DisabledReason = "feature-not-available"
+	DisabledReasonDisabledByAdmin             DisabledReason = "disabled-by-admin"
+	DisabledReasonOriginalOwnerLeftTheTeam    DisabledReason = "original-owner-left-the-team"
+	DisabledReasonAccountPlanDowngrade        DisabledReason = "account-plan-downgrade"
+	DisabledReasonOriginalOwnerRoleDowngraded DisabledReason = "original-owner-role-downgraded"
 )
 
-func (e ResponseBodyDisabledReason) ToPointer() *ResponseBodyDisabledReason {
+func (e DisabledReason) ToPointer() *DisabledReason {
 	return &e
 }
-func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *DisabledReason) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -618,10 +621,10 @@ func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = ResponseBodyDisabledReason(v)
+		*e = DisabledReason(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for DisabledReason: %v", v)
 	}
 }
 
@@ -684,8 +687,8 @@ type GetConfigurationsResponseBody1 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                    `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *ResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64        `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *DisabledReason `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *ResponseBodyInstallationType `json:"installationType,omitempty"`
 }
@@ -802,7 +805,7 @@ func (o *GetConfigurationsResponseBody1) GetDeleteRequestedAt() *float64 {
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetDisabledReason() *ResponseBodyDisabledReason {
+func (o *GetConfigurationsResponseBody1) GetDisabledReason() *DisabledReason {
 	if o == nil {
 		return nil
 	}

@@ -198,12 +198,12 @@ type GetTeamMembersOrigin string
 const (
 	GetTeamMembersOriginTeams             GetTeamMembersOrigin = "teams"
 	GetTeamMembersOriginLink              GetTeamMembersOrigin = "link"
-	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
-	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
+	GetTeamMembersOriginSaml              GetTeamMembersOrigin = "saml"
 	GetTeamMembersOriginGithub            GetTeamMembersOrigin = "github"
 	GetTeamMembersOriginGitlab            GetTeamMembersOrigin = "gitlab"
 	GetTeamMembersOriginBitbucket         GetTeamMembersOrigin = "bitbucket"
-	GetTeamMembersOriginSaml              GetTeamMembersOrigin = "saml"
+	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
+	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
 	GetTeamMembersOriginDsync             GetTeamMembersOrigin = "dsync"
 	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
 	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
@@ -222,9 +222,7 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "link":
 		fallthrough
-	case "mail":
-		fallthrough
-	case "import":
+	case "saml":
 		fallthrough
 	case "github":
 		fallthrough
@@ -232,7 +230,9 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "bitbucket":
 		fallthrough
-	case "saml":
+	case "mail":
+		fallthrough
+	case "import":
 		fallthrough
 	case "dsync":
 		fallthrough

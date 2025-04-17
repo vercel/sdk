@@ -10,16 +10,14 @@ import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirtyTwo = {
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenId: "<id>",
-  label: "<value>",
+  edgeConfigDigest: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
-| `label`             | *string*            | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |

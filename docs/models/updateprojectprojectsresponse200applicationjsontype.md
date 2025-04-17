@@ -1,5 +1,7 @@
 # UpdateProjectProjectsResponse200ApplicationJSONType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript

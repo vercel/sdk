@@ -6,7 +6,7 @@
 import { TrustedIps1 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: TrustedIps1 = {
-  deploymentType: "prod_deployment_urls_and_all_previews",
+  deploymentType: "all",
   addresses: [
     {
       value: "<value>",

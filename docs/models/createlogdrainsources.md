@@ -1,17 +1,15 @@
 # CreateLogDrainSources
 
-The sources from which logs are currently being delivered to this log drain.
-
 ## Example Usage
 
 ```typescript
 import { CreateLogDrainSources } from "@vercel/sdk/models/createlogdrainop.js";
 
-let value: CreateLogDrainSources = "static";
+let value: CreateLogDrainSources = "edge";
 ```
 
 ## Values
 
 ```typescript
-"build" | "edge" | "lambda" | "static" | "external" | "firewall"
+"static" | "lambda" | "build" | "edge" | "external" | "firewall"
 ```

@@ -13,5 +13,5 @@ let value: CreateLogDrainCreatedFrom = "integration";
 ## Values
 
 ```typescript
-"integration" | "self-served"
+"self-served" | "integration"
 ```

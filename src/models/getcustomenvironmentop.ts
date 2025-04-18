@@ -26,9 +26,6 @@ export type GetCustomEnvironmentRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Internal representation of a custom environment with all required properties
- */
 export type GetCustomEnvironmentResponseBody = {};
 
 /** @internal */

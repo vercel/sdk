@@ -2276,8 +2276,8 @@ func (e *CancelDeploymentSource) UnmarshalJSON(data []byte) error {
 type CancelDeploymentTarget string
 
 const (
-	CancelDeploymentTargetStaging    CancelDeploymentTarget = "staging"
 	CancelDeploymentTargetProduction CancelDeploymentTarget = "production"
+	CancelDeploymentTargetStaging    CancelDeploymentTarget = "staging"
 )
 
 func (e CancelDeploymentTarget) ToPointer() *CancelDeploymentTarget {
@@ -2289,9 +2289,9 @@ func (e *CancelDeploymentTarget) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "staging":
-		fallthrough
 	case "production":
+		fallthrough
+	case "staging":
 		*e = CancelDeploymentTarget(v)
 		return nil
 	default:

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 1752e9f3098574d58566a893faa9b9b5
+  docChecksum: b97d90931aa0a651029b3e6a24d7f022
   docVersion: 0.0.1
-  speakeasyVersion: 1.533.0
-  generationVersion: 2.578.0
-  releaseVersion: 1.6.3
-  configChecksum: 5901ad04db5ef4a7f7bb0ab0f99c4d9f
+  speakeasyVersion: 1.531.4
+  generationVersion: 2.570.4
+  releaseVersion: 1.6.2
+  configChecksum: 597277c8ecccd2d54bd98e2efa92d870
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -138,7 +138,6 @@ generatedFiles:
   - docs/models/budgetitem.md
   - docs/models/build.md
   - docs/models/buildentitlements.md
-  - docs/models/buildmachine.md
   - docs/models/builds.md
   - docs/models/buydomaindomain.md
   - docs/models/buydomaindomainsdomain.md
@@ -310,6 +309,15 @@ generatedFiles:
   - docs/models/createcheckstatus.md
   - docs/models/createchecktbt.md
   - docs/models/createcheckvirtualexperiencescore.md
+  - docs/models/createconfigurablelogdraincreatedfrom.md
+  - docs/models/createconfigurablelogdraindeliveryformat.md
+  - docs/models/createconfigurablelogdraindisabledreason.md
+  - docs/models/createconfigurablelogdrainenvironments.md
+  - docs/models/createconfigurablelogdrainrequest.md
+  - docs/models/createconfigurablelogdrainrequestbody.md
+  - docs/models/createconfigurablelogdrainresponsebody.md
+  - docs/models/createconfigurablelogdrainsources.md
+  - docs/models/createconfigurablelogdrainstatus.md
   - docs/models/createcustomenvironmentrequest.md
   - docs/models/createcustomenvironmentrequestbody.md
   - docs/models/createcustomenvironmentresponsebody.md
@@ -389,6 +397,9 @@ generatedFiles:
   - docs/models/createlogdraincreatedfrom.md
   - docs/models/createlogdraindeliveryformat.md
   - docs/models/createlogdrainenvironments.md
+  - docs/models/createlogdrainlogdrainsdeliveryformat.md
+  - docs/models/createlogdrainlogdrainsenvironments.md
+  - docs/models/createlogdrainlogdrainssources.md
   - docs/models/createlogdrainrequest.md
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
@@ -803,7 +814,6 @@ generatedFiles:
   - docs/models/event2.md
   - docs/models/events.md
   - docs/models/eventtype.md
-  - docs/models/exchangessotokengranttype.md
   - docs/models/exchangessotokenrequestbody.md
   - docs/models/exchangessotokenresponsebody.md
   - docs/models/failed.md
@@ -1002,6 +1012,14 @@ generatedFiles:
   - docs/models/getallchecksstatus.md
   - docs/models/getallcheckstbt.md
   - docs/models/getallchecksvirtualexperiencescore.md
+  - docs/models/getalllogdrainscreatedfrom.md
+  - docs/models/getalllogdrainsdeliveryformat.md
+  - docs/models/getalllogdrainsdisabledreason.md
+  - docs/models/getalllogdrainsenvironments.md
+  - docs/models/getalllogdrainsrequest.md
+  - docs/models/getalllogdrainsresponsebody.md
+  - docs/models/getalllogdrainssources.md
+  - docs/models/getalllogdrainsstatus.md
   - docs/models/getauthtokenrequest.md
   - docs/models/getauthtokenresponsebody.md
   - docs/models/getauthuserresponsebody.md
@@ -1031,6 +1049,12 @@ generatedFiles:
   - docs/models/getcheckstatus.md
   - docs/models/getchecktbt.md
   - docs/models/getcheckvirtualexperiencescore.md
+  - docs/models/getconfigurablelogdraindeliveryformat.md
+  - docs/models/getconfigurablelogdrainenvironments.md
+  - docs/models/getconfigurablelogdrainrequest.md
+  - docs/models/getconfigurablelogdrainresponsebody.md
+  - docs/models/getconfigurablelogdrainsources.md
+  - docs/models/getconfigurablelogdrainstatus.md
   - docs/models/getconfigurationrequest.md
   - docs/models/getconfigurationresponsebody.md
   - docs/models/getconfigurationresponsebody1.md
@@ -1047,6 +1071,7 @@ generatedFiles:
   - docs/models/getconfigurationsresponsebody.md
   - docs/models/getconfigurationsresponsebody1.md
   - docs/models/getconfigurationsresponsebody2.md
+  - docs/models/getconfigurationsresponsebodydisabledreason.md
   - docs/models/getconfigurationsresponsebodyinstallationtype.md
   - docs/models/getconfigurationsresponsebodyintegrationssource.md
   - docs/models/getconfigurationsresponsebodyintegrationstype.md
@@ -1245,6 +1270,7 @@ generatedFiles:
   - docs/models/getfirewallconfigsecurityresponseaction.md
   - docs/models/getfirewallconfigtype.md
   - docs/models/getfirewallconfigvalue.md
+  - docs/models/getintegrationlogdrainscreatedfrom.md
   - docs/models/getintegrationlogdrainsdeliveryformat.md
   - docs/models/getintegrationlogdrainsenvironments.md
   - docs/models/getintegrationlogdrainsrequest.md
@@ -1572,12 +1598,16 @@ generatedFiles:
   - docs/models/getwebhooksresponsebody2.md
   - docs/models/getwebhooksresponsebodyevents.md
   - docs/models/getwebhooksresponsebodyframework.md
+  - docs/models/gitaccount.md
   - docs/models/gitcomments.md
   - docs/models/gitforkprotection.md
   - docs/models/github.md
   - docs/models/gitlab.md
   - docs/models/gitmetadata.md
   - docs/models/gitnamespaceid.md
+  - docs/models/gitnamespacesid.md
+  - docs/models/gitnamespacesrequest.md
+  - docs/models/gitnamespacesresponsebody.md
   - docs/models/gitprovideroptions.md
   - docs/models/gitrepo.md
   - docs/models/gitrepo1.md
@@ -1743,6 +1773,7 @@ generatedFiles:
   - docs/models/name.md
   - docs/models/name2.md
   - docs/models/names.md
+  - docs/models/namespaceid.md
   - docs/models/newconnectconfigurations.md
   - docs/models/newenvvar.md
   - docs/models/newowner.md
@@ -1793,7 +1824,6 @@ generatedFiles:
   - docs/models/onehundredandfifteen.md
   - docs/models/onehundredandfive.md
   - docs/models/onehundredandforty.md
-  - docs/models/onehundredandfortyeight.md
   - docs/models/onehundredandfortyfive.md
   - docs/models/onehundredandfortyfour.md
   - docs/models/onehundredandfortyone.md
@@ -1848,6 +1878,7 @@ generatedFiles:
   - docs/models/output.md
   - docs/models/overagereason.md
   - docs/models/overageusagealerts.md
+  - docs/models/owner.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
   - docs/models/paidfeatures.md
@@ -1885,7 +1916,6 @@ generatedFiles:
   - docs/models/payloadblocktype.md
   - docs/models/payloadbudget.md
   - docs/models/payloadbuildentitlements.md
-  - docs/models/payloadbuildmachine.md
   - docs/models/payloadconfiguration.md
   - docs/models/payloaddatacache.md
   - docs/models/payloaddeployment.md
@@ -1977,6 +2007,7 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/provider.md
   - docs/models/purpose.md
   - docs/models/purpose1.md
   - docs/models/purpose2.md
@@ -1984,6 +2015,7 @@ generatedFiles:
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequestbody.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
+  - docs/models/queryparamprovider.md
   - docs/models/queryparamrole.md
   - docs/models/queryparamtarget.md
   - docs/models/queryparamtype.md
@@ -2151,6 +2183,7 @@ generatedFiles:
   - docs/models/removeteammemberrequest.md
   - docs/models/removeteammemberresponsebody.md
   - docs/models/repoid.md
+  - docs/models/repos.md
   - docs/models/requestaccesstoteamgituserid.md
   - docs/models/requestaccesstoteamjoinedfrom.md
   - docs/models/requestaccesstoteamorigin.md
@@ -2226,6 +2259,7 @@ generatedFiles:
   - docs/models/responsebodyfunctiontype.md
   - docs/models/responsebodygitrepo.md
   - docs/models/responsebodygitsource.md
+  - docs/models/responsebodyid.md
   - docs/models/responsebodyimages.md
   - docs/models/responsebodyinstallationtype.md
   - docs/models/responsebodyintegrations.md
@@ -2236,13 +2270,16 @@ generatedFiles:
   - docs/models/responsebodymembers.md
   - docs/models/responsebodymetadata.md
   - docs/models/responsebodymicrofrontends.md
+  - docs/models/responsebodynamespaceid.md
   - docs/models/responsebodyoidctokenclaims.md
   - docs/models/responsebodyoutput.md
+  - docs/models/responsebodyownertype.md
   - docs/models/responsebodypagination.md
   - docs/models/responsebodyplan.md
   - docs/models/responsebodyproject.md
   - docs/models/responsebodyprojectsettings.md
   - docs/models/responsebodyprotocol.md
+  - docs/models/responsebodyprovider.md
   - docs/models/responsebodyreadystate.md
   - docs/models/responsebodyreadysubstate.md
   - docs/models/responsebodyrecords.md
@@ -2288,6 +2325,12 @@ generatedFiles:
   - docs/models/scopesorigin.md
   - docs/models/scopestype.md
   - docs/models/sd.md
+  - docs/models/searchreporequest.md
+  - docs/models/searchreporesponsebody.md
+  - docs/models/searchreporesponsebody1.md
+  - docs/models/searchreporesponsebody2.md
+  - docs/models/searchreporesponsebodyid.md
+  - docs/models/searchreporesponsebodyprovider.md
   - docs/models/secondaryemails.md
   - docs/models/secrets.md
   - docs/models/security.md
@@ -2808,21 +2851,21 @@ generatedFiles:
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
   - docs/models/usereventpayload108user.md
+  - docs/models/usereventpayload127project.md
   - docs/models/usereventpayload128project.md
   - docs/models/usereventpayload129project.md
+  - docs/models/usereventpayload129role.md
   - docs/models/usereventpayload130project.md
   - docs/models/usereventpayload130role.md
-  - docs/models/usereventpayload131project.md
-  - docs/models/usereventpayload131role.md
+  - docs/models/usereventpayload136project.md
+  - docs/models/usereventpayload137prevproject.md
   - docs/models/usereventpayload137project.md
-  - docs/models/usereventpayload138prevproject.md
-  - docs/models/usereventpayload138project.md
+  - docs/models/usereventpayload144configuration.md
+  - docs/models/usereventpayload144team.md
   - docs/models/usereventpayload145configuration.md
   - docs/models/usereventpayload145team.md
   - docs/models/usereventpayload146configuration.md
   - docs/models/usereventpayload146team.md
-  - docs/models/usereventpayload147configuration.md
-  - docs/models/usereventpayload147team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
   - docs/models/usereventpayload32team.md
@@ -3000,6 +3043,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1integrationsgitnamespaces.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1integrationssearchrepo.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallattackstatus.go
@@ -3070,6 +3117,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidevents.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1logdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidpause.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidunpause.go
@@ -3137,6 +3185,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createauthtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createcustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createdeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfig.go
@@ -3175,11 +3224,13 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getactiveattackstatus.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getalias.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getallchecks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getalllogdrains.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getauthtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getauthuser.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getbypassip.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getcertbyid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfiguration.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurations.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getcustomenvironment.go
@@ -3217,6 +3268,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhook.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhooks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/gitnamespaces.go
   - src/__tests__/mockserver/internal/sdk/models/operations/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/importresource.go
   - src/__tests__/mockserver/internal/sdk/models/operations/inviteusertoteam.go
@@ -3253,6 +3305,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/requestdelete.go
   - src/__tests__/mockserver/internal/sdk/models/operations/requestpromote.go
   - src/__tests__/mockserver/internal/sdk/models/operations/rerequestcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/searchrepo.go
   - src/__tests__/mockserver/internal/sdk/models/operations/status.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitbillingdata.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitinvoice.go
@@ -3394,10 +3447,15 @@ generatedFiles:
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
+  - src/funcs/integrationsGitNamespaces.ts
+  - src/funcs/integrationsSearchRepo.ts
   - src/funcs/integrationsUpdateIntegrationDeploymentAction.ts
+  - src/funcs/logDrainsCreateConfigurableLogDrain.ts
   - src/funcs/logDrainsCreateLogDrain.ts
   - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
   - src/funcs/logDrainsDeleteIntegrationLogDrain.ts
+  - src/funcs/logDrainsGetAllLogDrains.ts
+  - src/funcs/logDrainsGetConfigurableLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
   - src/funcs/marketplaceCreateEvent.ts
   - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
@@ -3584,10 +3642,15 @@ generatedFiles:
   - src/mcp-server/tools/integrationsDeleteConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
+  - src/mcp-server/tools/integrationsGitNamespaces.ts
+  - src/mcp-server/tools/integrationsSearchRepo.ts
   - src/mcp-server/tools/integrationsUpdateIntegrationDeploymentAction.ts
+  - src/mcp-server/tools/logDrainsCreateConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsCreateLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
+  - src/mcp-server/tools/logDrainsGetAllLogDrains.ts
+  - src/mcp-server/tools/logDrainsGetConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
   - src/mcp-server/tools/marketplaceCreateEvent.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
@@ -3678,6 +3741,7 @@ generatedFiles:
   - src/models/createaccessgroupprojectop.ts
   - src/models/createauthtokenop.ts
   - src/models/createcheckop.ts
+  - src/models/createconfigurablelogdrainop.ts
   - src/models/createcustomenvironmentop.ts
   - src/models/createdeploymentop.ts
   - src/models/createedgeconfigop.ts
@@ -3721,11 +3785,13 @@ generatedFiles:
   - src/models/getactiveattackstatusop.ts
   - src/models/getaliasop.ts
   - src/models/getallchecksop.ts
+  - src/models/getalllogdrainsop.ts
   - src/models/getauthtokenop.ts
   - src/models/getauthuserop.ts
   - src/models/getbypassipop.ts
   - src/models/getcertbyidop.ts
   - src/models/getcheckop.ts
+  - src/models/getconfigurablelogdrainop.ts
   - src/models/getconfigurationop.ts
   - src/models/getconfigurationsop.ts
   - src/models/getcustomenvironmentop.ts
@@ -3763,6 +3829,7 @@ generatedFiles:
   - src/models/getv9projectsidornamecustomenvironmentsop.ts
   - src/models/getwebhookop.ts
   - src/models/getwebhooksop.ts
+  - src/models/gitnamespacesop.ts
   - src/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
   - src/models/httpclienterrors.ts
   - src/models/importresourceop.ts
@@ -3804,6 +3871,7 @@ generatedFiles:
   - src/models/rerequestcheckop.ts
   - src/models/sdkerror.ts
   - src/models/sdkvalidationerror.ts
+  - src/models/searchrepoop.ts
   - src/models/security.ts
   - src/models/statusop.ts
   - src/models/submitbillingdataop.ts
@@ -5851,7 +5919,7 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": {}, "key1": {}, "key2": {}}, "updatedAt": 7651.43, "digest": "<value>"}
+          application/json: {"items": {"key": [], "key1": {}, "key2": {}}, "updatedAt": 7651.43, "digest": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

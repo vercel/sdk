@@ -5,22 +5,8 @@
 import * as z from "zod";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * The grant type, when using x-www-form-urlencoded content type
- */
-export const ExchangeSsoTokenGrantType = {
-  AuthorizationCode: "authorization_code",
-} as const;
-/**
- * The grant type, when using x-www-form-urlencoded content type
- */
-export type ExchangeSsoTokenGrantType = ClosedEnum<
-  typeof ExchangeSsoTokenGrantType
->;
 
 export type ExchangeSsoTokenRequestBody = {
   /**
@@ -43,10 +29,6 @@ export type ExchangeSsoTokenRequestBody = {
    * The integration redirect URI
    */
   redirectUri?: string | undefined;
-  /**
-   * The grant type, when using x-www-form-urlencoded content type
-   */
-  grantType?: ExchangeSsoTokenGrantType | undefined;
 };
 
 export type ExchangeSsoTokenResponseBody = {
@@ -54,27 +36,6 @@ export type ExchangeSsoTokenResponseBody = {
   accessToken?: any | null | undefined;
   tokenType?: any | null | undefined;
 };
-
-/** @internal */
-export const ExchangeSsoTokenGrantType$inboundSchema: z.ZodNativeEnum<
-  typeof ExchangeSsoTokenGrantType
-> = z.nativeEnum(ExchangeSsoTokenGrantType);
-
-/** @internal */
-export const ExchangeSsoTokenGrantType$outboundSchema: z.ZodNativeEnum<
-  typeof ExchangeSsoTokenGrantType
-> = ExchangeSsoTokenGrantType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExchangeSsoTokenGrantType$ {
-  /** @deprecated use `ExchangeSsoTokenGrantType$inboundSchema` instead. */
-  export const inboundSchema = ExchangeSsoTokenGrantType$inboundSchema;
-  /** @deprecated use `ExchangeSsoTokenGrantType$outboundSchema` instead. */
-  export const outboundSchema = ExchangeSsoTokenGrantType$outboundSchema;
-}
 
 /** @internal */
 export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
@@ -87,13 +48,11 @@ export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
   client_id: z.string(),
   client_secret: z.string(),
   redirect_uri: z.string().optional(),
-  grant_type: ExchangeSsoTokenGrantType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "client_id": "clientId",
     "client_secret": "clientSecret",
     "redirect_uri": "redirectUri",
-    "grant_type": "grantType",
   });
 });
 
@@ -104,7 +63,6 @@ export type ExchangeSsoTokenRequestBody$Outbound = {
   client_id: string;
   client_secret: string;
   redirect_uri?: string | undefined;
-  grant_type?: string | undefined;
 };
 
 /** @internal */
@@ -118,13 +76,11 @@ export const ExchangeSsoTokenRequestBody$outboundSchema: z.ZodType<
   clientId: z.string(),
   clientSecret: z.string(),
   redirectUri: z.string().optional(),
-  grantType: ExchangeSsoTokenGrantType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     clientId: "client_id",
     clientSecret: "client_secret",
     redirectUri: "redirect_uri",
-    grantType: "grant_type",
   });
 });
 

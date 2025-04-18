@@ -101,30 +101,30 @@ func (e *GetIntegrationLogDrainsSources) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreatedFrom - Whether the log drain was created by an integration or by a user
-type CreatedFrom string
+// GetIntegrationLogDrainsCreatedFrom - Whether the log drain was created by an integration or by a user
+type GetIntegrationLogDrainsCreatedFrom string
 
 const (
-	CreatedFromIntegration CreatedFrom = "integration"
-	CreatedFromSelfServed  CreatedFrom = "self-served"
+	GetIntegrationLogDrainsCreatedFromSelfServed  GetIntegrationLogDrainsCreatedFrom = "self-served"
+	GetIntegrationLogDrainsCreatedFromIntegration GetIntegrationLogDrainsCreatedFrom = "integration"
 )
 
-func (e CreatedFrom) ToPointer() *CreatedFrom {
+func (e GetIntegrationLogDrainsCreatedFrom) ToPointer() *GetIntegrationLogDrainsCreatedFrom {
 	return &e
 }
-func (e *CreatedFrom) UnmarshalJSON(data []byte) error {
+func (e *GetIntegrationLogDrainsCreatedFrom) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "integration":
-		fallthrough
 	case "self-served":
-		*e = CreatedFrom(v)
+		fallthrough
+	case "integration":
+		*e = GetIntegrationLogDrainsCreatedFrom(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedFrom: %v", v)
+		return fmt.Errorf("invalid value for GetIntegrationLogDrainsCreatedFrom: %v", v)
 	}
 }
 
@@ -178,7 +178,7 @@ type GetIntegrationLogDrainsResponseBody struct {
 	// The sources from which logs are currently being delivered to this log drain.
 	Sources []GetIntegrationLogDrainsSources `json:"sources,omitempty"`
 	// Whether the log drain was created by an integration or by a user
-	CreatedFrom *CreatedFrom `json:"createdFrom,omitempty"`
+	CreatedFrom *GetIntegrationLogDrainsCreatedFrom `json:"createdFrom,omitempty"`
 	// The headers to send with the request
 	Headers map[string]string `json:"headers,omitempty"`
 	// The environment of log drain
@@ -266,7 +266,7 @@ func (o *GetIntegrationLogDrainsResponseBody) GetSources() []GetIntegrationLogDr
 	return o.Sources
 }
 
-func (o *GetIntegrationLogDrainsResponseBody) GetCreatedFrom() *CreatedFrom {
+func (o *GetIntegrationLogDrainsResponseBody) GetCreatedFrom() *GetIntegrationLogDrainsCreatedFrom {
 	if o == nil {
 		return nil
 	}

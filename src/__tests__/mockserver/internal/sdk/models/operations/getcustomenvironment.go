@@ -45,7 +45,6 @@ func (o *GetCustomEnvironmentRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetCustomEnvironmentResponseBody - Internal representation of a custom environment with all required properties
 type GetCustomEnvironmentResponseBody struct {
 }
 

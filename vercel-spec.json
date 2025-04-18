@@ -4952,12 +4952,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -5451,7 +5449,7 @@
                             },
                             "defaultRoute": {
                               "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
@@ -5684,8 +5682,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -5753,12 +5751,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -6711,12 +6707,6 @@
                           },
                           "type": "array"
                         },
-                        "teamMemberMfaStatus": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "teamMicrofrontends": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -6814,18 +6804,6 @@
                           "type": "array"
                         },
                         "oauth2Application": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRunExec": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -7261,10 +7239,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -7304,10 +7282,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -14025,8 +14003,8 @@
                       "nullable": true,
                       "type": "string",
                       "enum": [
-                        "staging",
-                        "production"
+                        "production",
+                        "staging"
                       ]
                     },
                     "type": {
@@ -18026,6 +18004,225 @@
       }
     },
     "/v1/log-drains/{id}": {
+      "get": {
+        "description": "Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.",
+        "operationId": "getConfigurableLogDrain",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Retrieves a Configurable Log Drain",
+        "tags": [
+          "logDrains"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "clientId": {
+                      "type": "string"
+                    },
+                    "configurationId": {
+                      "type": "string"
+                    },
+                    "sources": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "build",
+                          "edge",
+                          "lambda",
+                          "static",
+                          "external",
+                          "firewall"
+                        ]
+                      },
+                      "type": "array"
+                    },
+                    "environments": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "production",
+                          "preview"
+                        ]
+                      },
+                      "type": "array"
+                    },
+                    "disabledBy": {
+                      "type": "string"
+                    },
+                    "firstErrorTimestamp": {
+                      "type": "number"
+                    },
+                    "samplingRate": {
+                      "type": "number"
+                    },
+                    "hideIpAddresses": {
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "number"
+                    },
+                    "deletedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "headers": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "projectIds": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "teamId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "createdFrom": {
+                      "type": "string",
+                      "enum": [
+                        "self-served",
+                        "integration"
+                      ]
+                    },
+                    "deliveryFormat": {
+                      "type": "string",
+                      "enum": [
+                        "json",
+                        "ndjson",
+                        "syslog",
+                        "protobuf"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "enabled",
+                        "disabled",
+                        "errored"
+                      ]
+                    },
+                    "disabledAt": {
+                      "type": "number"
+                    },
+                    "disabledReason": {
+                      "type": "string",
+                      "enum": [
+                        "disabled-by-owner",
+                        "feature-not-available",
+                        "account-plan-downgrade",
+                        "disabled-by-admin"
+                      ]
+                    },
+                    "secret": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "environments",
+                    "id",
+                    "createdAt",
+                    "deletedAt",
+                    "updatedAt",
+                    "url",
+                    "name",
+                    "ownerId",
+                    "deliveryFormat",
+                    "secret"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
       "delete": {
         "description": "Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.",
         "operationId": "deleteConfigurableLogDrain",
@@ -18104,6 +18301,519 @@
             }
           }
         ]
+      }
+    },
+    "/v1/log-drains": {
+      "get": {
+        "description": "Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.",
+        "operationId": "getAllLogDrains",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Retrieves a list of all the Log Drains",
+        "tags": [
+          "logDrains"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "configurationId": {
+                        "type": "string"
+                      },
+                      "sources": {
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "build",
+                            "edge",
+                            "lambda",
+                            "static",
+                            "external",
+                            "firewall"
+                          ]
+                        },
+                        "type": "array"
+                      },
+                      "environments": {
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "production",
+                            "preview"
+                          ]
+                        },
+                        "type": "array"
+                      },
+                      "disabledBy": {
+                        "type": "string"
+                      },
+                      "firstErrorTimestamp": {
+                        "type": "number"
+                      },
+                      "samplingRate": {
+                        "type": "number"
+                      },
+                      "hideIpAddresses": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "number"
+                      },
+                      "deletedAt": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "updatedAt": {
+                        "type": "number"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "headers": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      },
+                      "projectIds": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "teamId": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      },
+                      "createdFrom": {
+                        "type": "string",
+                        "enum": [
+                          "self-served",
+                          "integration",
+                          "integration"
+                        ]
+                      },
+                      "deliveryFormat": {
+                        "type": "string",
+                        "enum": [
+                          "json",
+                          "ndjson",
+                          "syslog",
+                          "protobuf"
+                        ]
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "enabled",
+                          "disabled",
+                          "errored"
+                        ]
+                      },
+                      "disabledAt": {
+                        "type": "number"
+                      },
+                      "disabledReason": {
+                        "type": "string",
+                        "enum": [
+                          "disabled-by-owner",
+                          "feature-not-available",
+                          "account-plan-downgrade",
+                          "disabled-by-admin"
+                        ]
+                      },
+                      "secret": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "deliveryFormat",
+                      "url",
+                      "name",
+                      "ownerId",
+                      "createdAt",
+                      "deletedAt",
+                      "updatedAt",
+                      "environments"
+                    ]
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "schema": {
+              "pattern": "^[a-zA-z0-9_]+$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectIdOrName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed)",
+        "operationId": "createConfigurableLogDrain",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Creates a Configurable Log Drain",
+        "tags": [
+          "logDrains"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "secret": {
+                      "type": "string",
+                      "description": "The secret to validate the log-drain payload"
+                    },
+                    "clientId": {
+                      "type": "string"
+                    },
+                    "configurationId": {
+                      "type": "string"
+                    },
+                    "sources": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "build",
+                          "edge",
+                          "lambda",
+                          "static",
+                          "external",
+                          "firewall"
+                        ]
+                      },
+                      "type": "array"
+                    },
+                    "environments": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "production",
+                          "preview"
+                        ]
+                      },
+                      "type": "array"
+                    },
+                    "disabledBy": {
+                      "type": "string"
+                    },
+                    "firstErrorTimestamp": {
+                      "type": "number"
+                    },
+                    "samplingRate": {
+                      "type": "number"
+                    },
+                    "hideIpAddresses": {
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "number"
+                    },
+                    "deletedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "headers": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "projectIds": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "teamId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "createdFrom": {
+                      "type": "string",
+                      "enum": [
+                        "self-served",
+                        "integration"
+                      ]
+                    },
+                    "deliveryFormat": {
+                      "type": "string",
+                      "enum": [
+                        "json",
+                        "ndjson",
+                        "syslog",
+                        "protobuf"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "enabled",
+                        "disabled",
+                        "errored"
+                      ]
+                    },
+                    "disabledAt": {
+                      "type": "number"
+                    },
+                    "disabledReason": {
+                      "type": "string",
+                      "enum": [
+                        "disabled-by-owner",
+                        "feature-not-available",
+                        "account-plan-downgrade",
+                        "disabled-by-admin"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "environments",
+                    "id",
+                    "createdAt",
+                    "deletedAt",
+                    "updatedAt",
+                    "url",
+                    "name",
+                    "ownerId",
+                    "deliveryFormat"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "deliveryFormat",
+                  "url",
+                  "sources"
+                ],
+                "properties": {
+                  "deliveryFormat": {
+                    "description": "The delivery log format",
+                    "example": "json",
+                    "enum": [
+                      "json",
+                      "ndjson"
+                    ]
+                  },
+                  "url": {
+                    "description": "The log drain url",
+                    "format": "uri",
+                    "pattern": "^(http|https)?://",
+                    "type": "string"
+                  },
+                  "headers": {
+                    "description": "Headers to be sent together with the request",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "projectIds": {
+                    "minItems": 1,
+                    "maxItems": 50,
+                    "type": "array",
+                    "items": {
+                      "pattern": "^[a-zA-z0-9_]+$",
+                      "type": "string"
+                    }
+                  },
+                  "sources": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "static",
+                        "lambda",
+                        "build",
+                        "edge",
+                        "external",
+                        "firewall"
+                      ]
+                    },
+                    "minItems": 1
+                  },
+                  "environments": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "preview",
+                        "production"
+                      ]
+                    },
+                    "minItems": 1
+                  },
+                  "secret": {
+                    "description": "Custom secret of log drain",
+                    "type": "string"
+                  },
+                  "samplingRate": {
+                    "type": "number",
+                    "description": "The sampling rate for this log drain. It should be a percentage rate between 0 and 100. With max 2 decimal points",
+                    "minimum": 0.01,
+                    "maximum": 1,
+                    "multipleOf": 0.01
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The custom name of this log drain."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
       }
     },
     "/v1/edge-config": {
@@ -22666,8 +23376,7 @@
                                     "tag_searching",
                                     "tag_security",
                                     "tag_testing",
-                                    "tag_video",
-                                    "tag_workflow"
+                                    "tag_video"
                                   ]
                                 },
                                 "type": "array"
@@ -23621,13 +24330,6 @@
                   "redirect_uri": {
                     "type": "string",
                     "description": "The integration redirect URI"
-                  },
-                  "grant_type": {
-                    "type": "string",
-                    "description": "The grant type, when using x-www-form-urlencoded content type",
-                    "enum": [
-                      "authorization_code"
-                    ]
                   }
                 }
               }
@@ -23744,8 +24446,8 @@
                       "createdFrom": {
                         "type": "string",
                         "enum": [
-                          "integration",
-                          "self-served"
+                          "self-served",
+                          "integration"
                         ],
                         "description": "Whether the log drain was created by an integration or by a user",
                         "example": "integration"
@@ -23952,8 +24654,8 @@
                     "createdFrom": {
                       "type": "string",
                       "enum": [
-                        "integration",
-                        "self-served"
+                        "self-served",
+                        "integration"
                       ],
                       "description": "Whether the log drain was created by an integration or by a user",
                       "example": "integration"
@@ -24204,6 +24906,365 @@
             "schema": {
               "description": "ID of the log drain to be deleted",
               "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/integrations/git-namespaces": {
+      "get": {
+        "description": "Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.",
+        "operationId": "gitNamespaces",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List git namespaces by provider",
+        "tags": [
+          "integrations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "provider": {
+                        "type": "string"
+                      },
+                      "slug": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "ownerType": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "isAccessRestricted": {
+                        "type": "boolean"
+                      },
+                      "installationId": {
+                        "type": "number"
+                      },
+                      "requireReauth": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "provider",
+                      "slug",
+                      "id",
+                      "ownerType"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "host",
+            "description": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server",
+            "in": "query",
+            "schema": {
+              "description": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server",
+              "type": "string",
+              "example": "ghes-test.now.systems"
+            }
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "github",
+                "github-custom-host",
+                "gitlab",
+                "bitbucket"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/v1/integrations/search-repo": {
+      "get": {
+        "description": "Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.",
+        "operationId": "searchRepo",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List git repositories linked to namespace by provider",
+        "tags": [
+          "integrations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "gitAccount": {
+                          "properties": {
+                            "provider": {
+                              "type": "string",
+                              "enum": [
+                                "github",
+                                "github-custom-host",
+                                "gitlab",
+                                "bitbucket"
+                              ]
+                            },
+                            "namespaceId": {
+                              "nullable": true,
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "provider",
+                            "namespaceId"
+                          ],
+                          "type": "object"
+                        },
+                        "repos": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  }
+                                ]
+                              },
+                              "provider": {
+                                "type": "string",
+                                "enum": [
+                                  "github",
+                                  "github-custom-host",
+                                  "gitlab",
+                                  "bitbucket"
+                                ]
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "properties": {
+                                  "id": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      }
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name"
+                                ],
+                                "type": "object"
+                              },
+                              "ownerType": {
+                                "type": "string",
+                                "enum": [
+                                  "user",
+                                  "team"
+                                ]
+                              },
+                              "private": {
+                                "type": "boolean"
+                              },
+                              "defaultBranch": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "provider",
+                              "url",
+                              "name",
+                              "slug",
+                              "namespace",
+                              "owner",
+                              "ownerType",
+                              "private",
+                              "defaultBranch",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "gitAccount",
+                        "repos"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespaceId",
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "github",
+                "github-custom-host",
+                "gitlab",
+                "bitbucket"
+              ]
+            }
+          },
+          {
+            "name": "installationId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "host",
+            "description": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server",
+            "in": "query",
+            "schema": {
+              "description": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server",
+              "type": "string",
+              "example": "ghes-test.now.systems"
             }
           },
           {
@@ -26070,12 +27131,10 @@
                                         "endsWith",
                                         "startsWith",
                                         "equals"
-                                      ],
-                                      "description": "The type of matching to perform"
+                                      ]
                                     },
                                     "pattern": {
-                                      "type": "string",
-                                      "description": "The pattern to match against branch names"
+                                      "type": "string"
                                     }
                                   },
                                   "required": [
@@ -26569,7 +27628,7 @@
                                   },
                                   "defaultRoute": {
                                     "type": "string",
-                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                                   },
                                   "routeObservabilityToThisProject": {
                                     "type": "boolean",
@@ -26802,8 +27861,8 @@
                               "deploymentType": {
                                 "type": "string",
                                 "enum": [
-                                  "all",
                                   "preview",
+                                  "all",
                                   "prod_deployment_urls_and_all_previews"
                                 ]
                               }
@@ -26871,12 +27930,10 @@
                                         "endsWith",
                                         "startsWith",
                                         "equals"
-                                      ],
-                                      "description": "The type of matching to perform"
+                                      ]
                                     },
                                     "pattern": {
-                                      "type": "string",
-                                      "description": "The pattern to match against branch names"
+                                      "type": "string"
                                     }
                                   },
                                   "required": [
@@ -27829,12 +28886,6 @@
                                 },
                                 "type": "array"
                               },
-                              "teamMemberMfaStatus": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
                               "teamMicrofrontends": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -27932,18 +28983,6 @@
                                 "type": "array"
                               },
                               "oauth2Application": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "vercelRun": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "vercelRunExec": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -28379,10 +29418,10 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "all",
+                                      "production",
                                       "preview",
-                                      "prod_deployment_urls_and_all_previews",
-                                      "production"
+                                      "all",
+                                      "prod_deployment_urls_and_all_previews"
                                     ]
                                   },
                                   "addresses": {
@@ -28422,10 +29461,10 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "all",
+                                      "production",
                                       "preview",
-                                      "prod_deployment_urls_and_all_previews",
-                                      "production"
+                                      "all",
+                                      "prod_deployment_urls_and_all_previews"
                                     ]
                                   }
                                 },
@@ -29833,12 +30872,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -30332,7 +31369,7 @@
                             },
                             "defaultRoute": {
                               "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
@@ -30565,8 +31602,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -30634,12 +31671,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -31592,12 +32627,6 @@
                           },
                           "type": "array"
                         },
-                        "teamMemberMfaStatus": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "teamMicrofrontends": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -31695,18 +32724,6 @@
                           "type": "array"
                         },
                         "oauth2Application": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRunExec": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -32142,10 +33159,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -32185,10 +33202,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -32685,9 +33702,6 @@
           },
           "409": {
             "description": "A project with the provided name already exists."
-          },
-          "501": {
-            "description": ""
           }
         },
         "parameters": [
@@ -33726,12 +34740,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -34225,7 +35237,7 @@
                             },
                             "defaultRoute": {
                               "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
@@ -34458,8 +35470,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -34527,12 +35539,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -35485,12 +36495,6 @@
                           },
                           "type": "array"
                         },
-                        "teamMemberMfaStatus": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "teamMicrofrontends": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -35588,18 +36592,6 @@
                           "type": "array"
                         },
                         "oauth2Application": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRunExec": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -36035,10 +37027,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -36078,10 +37070,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -37379,12 +38371,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -37878,7 +38868,7 @@
                             },
                             "defaultRoute": {
                               "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
@@ -38111,8 +39101,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -38180,12 +39170,10 @@
                                   "endsWith",
                                   "startsWith",
                                   "equals"
-                                ],
-                                "description": "The type of matching to perform"
+                                ]
                               },
                               "pattern": {
-                                "type": "string",
-                                "description": "The pattern to match against branch names"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -39138,12 +40126,6 @@
                           },
                           "type": "array"
                         },
-                        "teamMemberMfaStatus": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "teamMicrofrontends": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -39241,18 +40223,6 @@
                           "type": "array"
                         },
                         "oauth2Application": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "vercelRunExec": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -39688,10 +40658,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -39731,10 +40701,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -40864,8 +41834,7 @@
                   "properties": {
                     "environments": {
                       "items": {
-                        "type": "object",
-                        "description": "Internal representation of a custom environment with all required properties"
+                        "type": "object"
                       },
                       "type": "array"
                     }
@@ -40963,8 +41932,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Internal representation of a custom environment with all required properties"
+                  "type": "object"
                 }
               }
             }
@@ -53006,12 +53974,12 @@
                                 "enum": [
                                   "teams",
                                   "link",
-                                  "saml",
+                                  "mail",
+                                  "import",
                                   "github",
                                   "gitlab",
                                   "bitbucket",
-                                  "mail",
-                                  "import",
+                                  "saml",
                                   "dsync",
                                   "feedback",
                                   "organization-teams"
@@ -62559,17 +63527,6 @@
                           },
                           "flagsExplorerUnlimitedOverrides": {
                             "type": "boolean"
-                          },
-                          "buildMachine": {
-                            "properties": {
-                              "cores": {
-                                "type": "number"
-                              },
-                              "memory": {
-                                "type": "number"
-                              }
-                            },
-                            "type": "object"
                           }
                         },
                         "type": "object"
@@ -66088,18 +67045,6 @@
               },
               {
                 "properties": {
-                  "enforced": {
-                    "type": "boolean"
-                  }
-                },
-                "required": [
-                  "enforced"
-                ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
                   "name": {
                     "type": "string"
                   }
@@ -66858,7 +67803,7 @@
                               },
                               "defaultRoute": {
                                 "type": "string",
-                                "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                                "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                               },
                               "routeObservabilityToThisProject": {
                                 "type": "boolean",
@@ -66943,7 +67888,7 @@
                                   },
                                   "defaultRoute": {
                                     "type": "string",
-                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
                                   },
                                   "routeObservabilityToThisProject": {
                                     "type": "boolean",
@@ -68031,20 +68976,6 @@
               },
               "flagsExplorerUnlimitedOverrides": {
                 "type": "boolean",
-                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-              },
-              "buildMachine": {
-                "properties": {
-                  "cores": {
-                    "type": "number",
-                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-                  },
-                  "memory": {
-                    "type": "number",
-                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-                  }
-                },
-                "type": "object",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               }
             },

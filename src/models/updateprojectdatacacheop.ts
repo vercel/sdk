@@ -500,30 +500,18 @@ export type UpdateProjectDataCacheProjectsAliasError = {
   message: string;
 };
 
-/**
- * The type of matching to perform
- */
 export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONType = {
   EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
 } as const;
-/**
- * The type of matching to perform
- */
 export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONType =
   ClosedEnum<
     typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONType
   >;
 
 export type UpdateProjectDataCacheProjectsBranchMatcher = {
-  /**
-   * The type of matching to perform
-   */
   type: UpdateProjectDataCacheProjectsResponse200ApplicationJSONType;
-  /**
-   * The pattern to match against branch names
-   */
   pattern: string;
 };
 
@@ -771,7 +759,7 @@ export type UpdateProjectDataCacheMicrofrontends1 = {
    */
   isDefaultApp?: boolean | undefined;
   /**
-   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
    */
   defaultRoute?: string | undefined;
   /**
@@ -872,8 +860,8 @@ export type DefaultResourceConfig = {
 };
 
 export const UpdateProjectDataCacheDeploymentType = {
-  All: "all",
   Preview: "preview",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type UpdateProjectDataCacheDeploymentType = ClosedEnum<
@@ -891,32 +879,20 @@ export type UpdateProjectDataCacheAliasError = {
   message: string;
 };
 
-/**
- * The type of matching to perform
- */
 export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTargetsType =
   {
     EndsWith: "endsWith",
     StartsWith: "startsWith",
     Equals: "equals",
   } as const;
-/**
- * The type of matching to perform
- */
 export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTargetsType =
   ClosedEnum<
     typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTargetsType
   >;
 
 export type UpdateProjectDataCacheBranchMatcher = {
-  /**
-   * The type of matching to perform
-   */
   type:
     UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTargetsType;
-  /**
-   * The pattern to match against branch names
-   */
   pattern: string;
 };
 
@@ -1160,7 +1136,6 @@ export type Permissions = {
   teamInvite?: Array<ACLAction> | undefined;
   teamInviteCode?: Array<ACLAction> | undefined;
   teamJoin?: Array<ACLAction> | undefined;
-  teamMemberMfaStatus?: Array<ACLAction> | undefined;
   teamMicrofrontends?: Array<ACLAction> | undefined;
   teamOwnMembership?: Array<ACLAction> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
@@ -1178,8 +1153,6 @@ export type Permissions = {
   endpointVerification?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
   oauth2Application?: Array<ACLAction> | undefined;
-  vercelRun?: Array<ACLAction> | undefined;
-  vercelRunExec?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   productionAliasProtectionBypass?: Array<ACLAction> | undefined;
@@ -1279,10 +1252,10 @@ export type ProtectionBypass = {
 };
 
 export const UpdateProjectDataCacheTrustedIpsDeploymentType = {
-  All: "all",
-  Preview: "preview",
-  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   Production: "production",
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type UpdateProjectDataCacheTrustedIpsDeploymentType = ClosedEnum<
   typeof UpdateProjectDataCacheTrustedIpsDeploymentType
@@ -1293,10 +1266,10 @@ export type TrustedIps2 = {
 };
 
 export const TrustedIpsDeploymentType = {
-  All: "all",
-  Preview: "preview",
-  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   Production: "production",
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type TrustedIpsDeploymentType = ClosedEnum<
   typeof TrustedIpsDeploymentType
@@ -6925,7 +6898,6 @@ export const Permissions$inboundSchema: z.ZodType<
   teamInvite: z.array(ACLAction$inboundSchema).optional(),
   teamInviteCode: z.array(ACLAction$inboundSchema).optional(),
   teamJoin: z.array(ACLAction$inboundSchema).optional(),
-  teamMemberMfaStatus: z.array(ACLAction$inboundSchema).optional(),
   teamMicrofrontends: z.array(ACLAction$inboundSchema).optional(),
   teamOwnMembership: z.array(ACLAction$inboundSchema).optional(),
   teamOwnMembershipDisconnectSAML: z.array(ACLAction$inboundSchema).optional(),
@@ -6943,8 +6915,6 @@ export const Permissions$inboundSchema: z.ZodType<
   endpointVerification: z.array(ACLAction$inboundSchema).optional(),
   projectTransferIn: z.array(ACLAction$inboundSchema).optional(),
   oauth2Application: z.array(ACLAction$inboundSchema).optional(),
-  vercelRun: z.array(ACLAction$inboundSchema).optional(),
-  vercelRunExec: z.array(ACLAction$inboundSchema).optional(),
   aliasProject: z.array(ACLAction$inboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   productionAliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
@@ -7130,7 +7100,6 @@ export type Permissions$Outbound = {
   teamInvite?: Array<string> | undefined;
   teamInviteCode?: Array<string> | undefined;
   teamJoin?: Array<string> | undefined;
-  teamMemberMfaStatus?: Array<string> | undefined;
   teamMicrofrontends?: Array<string> | undefined;
   teamOwnMembership?: Array<string> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<string> | undefined;
@@ -7148,8 +7117,6 @@ export type Permissions$Outbound = {
   endpointVerification?: Array<string> | undefined;
   projectTransferIn?: Array<string> | undefined;
   oauth2Application?: Array<string> | undefined;
-  vercelRun?: Array<string> | undefined;
-  vercelRunExec?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
   productionAliasProtectionBypass?: Array<string> | undefined;
@@ -7336,7 +7303,6 @@ export const Permissions$outboundSchema: z.ZodType<
   teamInvite: z.array(ACLAction$outboundSchema).optional(),
   teamInviteCode: z.array(ACLAction$outboundSchema).optional(),
   teamJoin: z.array(ACLAction$outboundSchema).optional(),
-  teamMemberMfaStatus: z.array(ACLAction$outboundSchema).optional(),
   teamMicrofrontends: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembership: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembershipDisconnectSAML: z.array(ACLAction$outboundSchema).optional(),
@@ -7354,8 +7320,6 @@ export const Permissions$outboundSchema: z.ZodType<
   endpointVerification: z.array(ACLAction$outboundSchema).optional(),
   projectTransferIn: z.array(ACLAction$outboundSchema).optional(),
   oauth2Application: z.array(ACLAction$outboundSchema).optional(),
-  vercelRun: z.array(ACLAction$outboundSchema).optional(),
-  vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   productionAliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),

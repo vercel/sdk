@@ -11,5 +11,5 @@ let value: GetTeamMembersOrigin = "teams";
 ## Values
 
 ```typescript
-"teams" | "link" | "saml" | "github" | "gitlab" | "bitbucket" | "mail" | "import" | "dsync" | "feedback" | "organization-teams"
+"teams" | "link" | "mail" | "import" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams"
 ```

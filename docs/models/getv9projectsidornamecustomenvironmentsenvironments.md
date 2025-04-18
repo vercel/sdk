@@ -1,7 +1,5 @@
 # GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments
 
-Internal representation of a custom environment with all required properties
-
 ## Example Usage
 
 ```typescript

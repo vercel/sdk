@@ -26,9 +26,6 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Internal representation of a custom environment with all required properties
- */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {};
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {

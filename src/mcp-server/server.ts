@@ -97,10 +97,15 @@ import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpda
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
+import { tool$integrationsGitNamespaces } from "./tools/integrationsGitNamespaces.js";
+import { tool$integrationsSearchRepo } from "./tools/integrationsSearchRepo.js";
 import { tool$integrationsUpdateIntegrationDeploymentAction } from "./tools/integrationsUpdateIntegrationDeploymentAction.js";
+import { tool$logDrainsCreateConfigurableLogDrain } from "./tools/logDrainsCreateConfigurableLogDrain.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
 import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
+import { tool$logDrainsGetAllLogDrains } from "./tools/logDrainsGetAllLogDrains.js";
+import { tool$logDrainsGetConfigurableLogDrain } from "./tools/logDrainsGetConfigurableLogDrain.js";
 import { tool$logDrainsGetIntegrationLogDrains } from "./tools/logDrainsGetIntegrationLogDrains.js";
 import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
 import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
@@ -183,7 +188,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.3",
+    version: "1.6.2",
   });
 
   const client = new VercelCore({
@@ -272,6 +277,8 @@ export function createMCPServer(deps: {
   tool(tool$integrationsGetConfigurations);
   tool(tool$integrationsGetConfiguration);
   tool(tool$integrationsDeleteConfiguration);
+  tool(tool$integrationsGitNamespaces);
+  tool(tool$integrationsSearchRepo);
   tool(tool$domainsBuyDomain);
   tool(tool$domainsCheckDomainPrice);
   tool(tool$domainsCheckDomainStatus);
@@ -286,7 +293,10 @@ export function createMCPServer(deps: {
   tool(tool$dnsCreateRecord);
   tool(tool$dnsUpdateRecord);
   tool(tool$dnsRemoveRecord);
+  tool(tool$logDrainsGetConfigurableLogDrain);
   tool(tool$logDrainsDeleteConfigurableLogDrain);
+  tool(tool$logDrainsGetAllLogDrains);
+  tool(tool$logDrainsCreateConfigurableLogDrain);
   tool(tool$logDrainsGetIntegrationLogDrains);
   tool(tool$logDrainsCreateLogDrain);
   tool(tool$logDrainsDeleteIntegrationLogDrain);

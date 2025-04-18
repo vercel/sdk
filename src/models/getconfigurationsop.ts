@@ -58,7 +58,6 @@ export const TagIds = {
   TagSecurity: "tag_security",
   TagTesting: "tag_testing",
   TagVideo: "tag_video",
-  TagWorkflow: "tag_workflow",
 } as const;
 export type TagIds = ClosedEnum<typeof TagIds>;
 
@@ -94,7 +93,7 @@ export type GetConfigurationsResponseBodyIntegrationsType = ClosedEnum<
   typeof GetConfigurationsResponseBodyIntegrationsType
 >;
 
-export const ResponseBodyDisabledReason = {
+export const GetConfigurationsResponseBodyDisabledReason = {
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
   DisabledByAdmin: "disabled-by-admin",
@@ -102,8 +101,8 @@ export const ResponseBodyDisabledReason = {
   AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
-export type ResponseBodyDisabledReason = ClosedEnum<
-  typeof ResponseBodyDisabledReason
+export type GetConfigurationsResponseBodyDisabledReason = ClosedEnum<
+  typeof GetConfigurationsResponseBodyDisabledReason
 >;
 
 /**
@@ -183,7 +182,7 @@ export type GetConfigurationsResponseBody2 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
-  disabledReason?: ResponseBodyDisabledReason | undefined;
+  disabledReason?: GetConfigurationsResponseBodyDisabledReason | undefined;
   /**
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
    */
@@ -213,7 +212,7 @@ export type GetConfigurationsResponseBodyType = ClosedEnum<
   typeof GetConfigurationsResponseBodyType
 >;
 
-export const DisabledReason = {
+export const ResponseBodyDisabledReason = {
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
   DisabledByAdmin: "disabled-by-admin",
@@ -221,7 +220,9 @@ export const DisabledReason = {
   AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
-export type DisabledReason = ClosedEnum<typeof DisabledReason>;
+export type ResponseBodyDisabledReason = ClosedEnum<
+  typeof ResponseBodyDisabledReason
+>;
 
 /**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
@@ -302,7 +303,7 @@ export type GetConfigurationsResponseBody1 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
-  disabledReason?: DisabledReason | undefined;
+  disabledReason?: ResponseBodyDisabledReason | undefined;
   /**
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
    */
@@ -554,24 +555,26 @@ export namespace GetConfigurationsResponseBodyIntegrationsType$ {
 }
 
 /** @internal */
-export const ResponseBodyDisabledReason$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyDisabledReason
-> = z.nativeEnum(ResponseBodyDisabledReason);
+export const GetConfigurationsResponseBodyDisabledReason$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> = z
+    .nativeEnum(GetConfigurationsResponseBodyDisabledReason);
 
 /** @internal */
-export const ResponseBodyDisabledReason$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyDisabledReason
-> = ResponseBodyDisabledReason$inboundSchema;
+export const GetConfigurationsResponseBodyDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> =
+    GetConfigurationsResponseBodyDisabledReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBodyDisabledReason$ {
-  /** @deprecated use `ResponseBodyDisabledReason$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyDisabledReason$inboundSchema;
-  /** @deprecated use `ResponseBodyDisabledReason$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyDisabledReason$outboundSchema;
+export namespace GetConfigurationsResponseBodyDisabledReason$ {
+  /** @deprecated use `GetConfigurationsResponseBodyDisabledReason$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationsResponseBodyDisabledReason$inboundSchema;
+  /** @deprecated use `GetConfigurationsResponseBodyDisabledReason$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationsResponseBodyDisabledReason$outboundSchema;
 }
 
 /** @internal */
@@ -621,7 +624,8 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: ResponseBodyDisabledReason$inboundSchema.optional(),
+  disabledReason: GetConfigurationsResponseBodyDisabledReason$inboundSchema
+    .optional(),
   installationType: GetConfigurationsResponseBodyInstallationType$inboundSchema
     .optional(),
 });
@@ -673,7 +677,8 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: ResponseBodyDisabledReason$outboundSchema.optional(),
+  disabledReason: GetConfigurationsResponseBodyDisabledReason$outboundSchema
+    .optional(),
   installationType: GetConfigurationsResponseBodyInstallationType$outboundSchema
     .optional(),
 });
@@ -757,24 +762,24 @@ export namespace GetConfigurationsResponseBodyType$ {
 }
 
 /** @internal */
-export const DisabledReason$inboundSchema: z.ZodNativeEnum<
-  typeof DisabledReason
-> = z.nativeEnum(DisabledReason);
+export const ResponseBodyDisabledReason$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDisabledReason
+> = z.nativeEnum(ResponseBodyDisabledReason);
 
 /** @internal */
-export const DisabledReason$outboundSchema: z.ZodNativeEnum<
-  typeof DisabledReason
-> = DisabledReason$inboundSchema;
+export const ResponseBodyDisabledReason$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDisabledReason
+> = ResponseBodyDisabledReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisabledReason$ {
-  /** @deprecated use `DisabledReason$inboundSchema` instead. */
-  export const inboundSchema = DisabledReason$inboundSchema;
-  /** @deprecated use `DisabledReason$outboundSchema` instead. */
-  export const outboundSchema = DisabledReason$outboundSchema;
+export namespace ResponseBodyDisabledReason$ {
+  /** @deprecated use `ResponseBodyDisabledReason$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyDisabledReason$inboundSchema;
+  /** @deprecated use `ResponseBodyDisabledReason$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyDisabledReason$outboundSchema;
 }
 
 /** @internal */
@@ -820,7 +825,7 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: DisabledReason$inboundSchema.optional(),
+  disabledReason: ResponseBodyDisabledReason$inboundSchema.optional(),
   installationType: ResponseBodyInstallationType$inboundSchema.optional(),
 });
 
@@ -868,7 +873,7 @@ export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   deletedAt: z.nullable(z.number()).optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: DisabledReason$outboundSchema.optional(),
+  disabledReason: ResponseBodyDisabledReason$outboundSchema.optional(),
   installationType: ResponseBodyInstallationType$outboundSchema.optional(),
 });
 

@@ -23,8 +23,8 @@ let value: ListUserEventsResponseBody = {
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       payload: {
         projectName: "<value>",
-        passwordProtection: "all",
-        oldPasswordProtection: {
+        ssoProtection: "all",
+        oldSsoProtection: {
           deploymentType: "all",
         },
       },

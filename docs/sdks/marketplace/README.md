@@ -855,9 +855,7 @@ async function run() {
     integrationProductIdOrSlug: "<value>",
     resourceId: "<id>",
     requestBody: {
-      secrets: [
-
-      ],
+      secrets: [],
     },
   });
 
@@ -887,9 +885,7 @@ async function run() {
     integrationProductIdOrSlug: "<value>",
     resourceId: "<id>",
     requestBody: {
-      secrets: [
-  
-      ],
+      secrets: [],
     },
   });
 

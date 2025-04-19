@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "author": "Speakeasy",
   "type": "module",
   "bin": {
@@ -39,7 +39,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "zod": ">= 3"
   },
   "peerDependenciesMeta": {
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
     "@stricli/core": "^1.1.1",
     "@types/express": "^4.17.21",
     "@types/node": "^18.19.3",

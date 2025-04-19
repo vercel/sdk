@@ -345,10 +345,10 @@ export type CreateProjectProjectsTarget =
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -1040,6 +1040,13 @@ export type CreateProjectFunctionDefaultMemoryType = ClosedEnum<
   typeof CreateProjectFunctionDefaultMemoryType
 >;
 
+export const CreateProjectBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type CreateProjectBuildMachineType = ClosedEnum<
+  typeof CreateProjectBuildMachineType
+>;
+
 export type CreateProjectResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -1049,6 +1056,7 @@ export type CreateProjectResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: CreateProjectBuildMachineType | undefined;
 };
 
 /**
@@ -1085,6 +1093,13 @@ export type CreateProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
   typeof CreateProjectProjectsFunctionDefaultMemoryType
 >;
 
+export const CreateProjectProjectsBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type CreateProjectProjectsBuildMachineType = ClosedEnum<
+  typeof CreateProjectProjectsBuildMachineType
+>;
+
 export type CreateProjectDefaultResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -1094,6 +1109,7 @@ export type CreateProjectDefaultResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: CreateProjectProjectsBuildMachineType | undefined;
 };
 
 export const CreateProjectDeploymentType = {
@@ -1608,8 +1624,8 @@ export type CreateProjectSrc = CreateProjectSrc2 | string;
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -1650,8 +1666,8 @@ export type CreateProjectHas = {
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -6403,6 +6419,27 @@ export namespace CreateProjectFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const CreateProjectBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectBuildMachineType
+> = z.nativeEnum(CreateProjectBuildMachineType);
+
+/** @internal */
+export const CreateProjectBuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectBuildMachineType
+> = CreateProjectBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectBuildMachineType$ {
+  /** @deprecated use `CreateProjectBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectBuildMachineType$inboundSchema;
+  /** @deprecated use `CreateProjectBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
   CreateProjectResourceConfig,
   z.ZodTypeDef,
@@ -6415,6 +6452,7 @@ export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
     CreateProjectFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: CreateProjectBuildMachineType$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -6425,6 +6463,7 @@ export type CreateProjectResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -6440,6 +6479,7 @@ export const CreateProjectResourceConfig$outboundSchema: z.ZodType<
     CreateProjectFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: CreateProjectBuildMachineType$outboundSchema.optional(),
 });
 
 /**
@@ -6617,6 +6657,30 @@ export namespace CreateProjectProjectsFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const CreateProjectProjectsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsBuildMachineType> = z.nativeEnum(
+    CreateProjectProjectsBuildMachineType,
+  );
+
+/** @internal */
+export const CreateProjectProjectsBuildMachineType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsBuildMachineType> =
+    CreateProjectProjectsBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectProjectsBuildMachineType$ {
+  /** @deprecated use `CreateProjectProjectsBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateProjectProjectsBuildMachineType$inboundSchema;
+  /** @deprecated use `CreateProjectProjectsBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProjectsBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const CreateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   CreateProjectDefaultResourceConfig,
   z.ZodTypeDef,
@@ -6629,6 +6693,8 @@ export const CreateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
     CreateProjectProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: CreateProjectProjectsBuildMachineType$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -6639,6 +6705,7 @@ export type CreateProjectDefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -6654,6 +6721,8 @@ export const CreateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
     CreateProjectProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: CreateProjectProjectsBuildMachineType$outboundSchema
+    .optional(),
 });
 
 /**

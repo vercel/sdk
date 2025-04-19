@@ -183,10 +183,10 @@ type RemoveProjectEnvResponseBodyProjectsResponseType string
 
 const (
 	RemoveProjectEnvResponseBodyProjectsResponseTypeSystem    RemoveProjectEnvResponseBodyProjectsResponseType = "system"
+	RemoveProjectEnvResponseBodyProjectsResponseTypeSecret    RemoveProjectEnvResponseBodyProjectsResponseType = "secret"
 	RemoveProjectEnvResponseBodyProjectsResponseTypeEncrypted RemoveProjectEnvResponseBodyProjectsResponseType = "encrypted"
 	RemoveProjectEnvResponseBodyProjectsResponseTypePlain     RemoveProjectEnvResponseBodyProjectsResponseType = "plain"
 	RemoveProjectEnvResponseBodyProjectsResponseTypeSensitive RemoveProjectEnvResponseBodyProjectsResponseType = "sensitive"
-	RemoveProjectEnvResponseBodyProjectsResponseTypeSecret    RemoveProjectEnvResponseBodyProjectsResponseType = "secret"
 )
 
 func (e RemoveProjectEnvResponseBodyProjectsResponseType) ToPointer() *RemoveProjectEnvResponseBodyProjectsResponseType {
@@ -200,13 +200,13 @@ func (e *RemoveProjectEnvResponseBodyProjectsResponseType) UnmarshalJSON(data []
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = RemoveProjectEnvResponseBodyProjectsResponseType(v)
 		return nil
 	default:
@@ -1552,10 +1552,10 @@ type RemoveProjectEnvResponseBodyProjectsType string
 
 const (
 	RemoveProjectEnvResponseBodyProjectsTypeSystem    RemoveProjectEnvResponseBodyProjectsType = "system"
+	RemoveProjectEnvResponseBodyProjectsTypeSecret    RemoveProjectEnvResponseBodyProjectsType = "secret"
 	RemoveProjectEnvResponseBodyProjectsTypeEncrypted RemoveProjectEnvResponseBodyProjectsType = "encrypted"
 	RemoveProjectEnvResponseBodyProjectsTypePlain     RemoveProjectEnvResponseBodyProjectsType = "plain"
 	RemoveProjectEnvResponseBodyProjectsTypeSensitive RemoveProjectEnvResponseBodyProjectsType = "sensitive"
-	RemoveProjectEnvResponseBodyProjectsTypeSecret    RemoveProjectEnvResponseBodyProjectsType = "secret"
 )
 
 func (e RemoveProjectEnvResponseBodyProjectsType) ToPointer() *RemoveProjectEnvResponseBodyProjectsType {
@@ -1569,13 +1569,13 @@ func (e *RemoveProjectEnvResponseBodyProjectsType) UnmarshalJSON(data []byte) er
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = RemoveProjectEnvResponseBodyProjectsType(v)
 		return nil
 	default:
@@ -2929,10 +2929,10 @@ type RemoveProjectEnvResponseBodyType string
 
 const (
 	RemoveProjectEnvResponseBodyTypeSystem    RemoveProjectEnvResponseBodyType = "system"
+	RemoveProjectEnvResponseBodyTypeSecret    RemoveProjectEnvResponseBodyType = "secret"
 	RemoveProjectEnvResponseBodyTypeEncrypted RemoveProjectEnvResponseBodyType = "encrypted"
 	RemoveProjectEnvResponseBodyTypePlain     RemoveProjectEnvResponseBodyType = "plain"
 	RemoveProjectEnvResponseBodyTypeSensitive RemoveProjectEnvResponseBodyType = "sensitive"
-	RemoveProjectEnvResponseBodyTypeSecret    RemoveProjectEnvResponseBodyType = "secret"
 )
 
 func (e RemoveProjectEnvResponseBodyType) ToPointer() *RemoveProjectEnvResponseBodyType {
@@ -2946,13 +2946,13 @@ func (e *RemoveProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = RemoveProjectEnvResponseBodyType(v)
 		return nil
 	default:

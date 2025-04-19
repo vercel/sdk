@@ -29,9 +29,7 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       url: "https://woeful-yin.biz",
-      events: [
-
-      ],
+      events: [],
     },
   });
 
@@ -62,9 +60,7 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       url: "https://woeful-yin.biz",
-      events: [
-  
-      ],
+      events: [],
     },
   });
 

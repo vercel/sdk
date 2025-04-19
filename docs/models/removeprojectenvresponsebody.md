@@ -21,7 +21,7 @@ const value: models.RemoveProjectEnvResponseBody1[] = [
 
 ```typescript
 const value: models.RemoveProjectEnvResponseBody2 = {
-  type: "secret",
+  type: "sensitive",
   key: "<key>",
   value: "<value>",
 };
@@ -31,7 +31,7 @@ const value: models.RemoveProjectEnvResponseBody2 = {
 
 ```typescript
 const value: models.RemoveProjectEnvResponseBody3 = {
-  type: "plain",
+  type: "encrypted",
   key: "<key>",
   value: "<value>",
 };

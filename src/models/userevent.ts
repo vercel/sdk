@@ -1871,7 +1871,13 @@ export type PayloadBuildEntitlements = {
   enhancedBuilds?: boolean | undefined;
 };
 
+export const PayloadPurchaseType = {
+  Enhanced: "enhanced",
+} as const;
+export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
+
 export type PayloadBuildMachine = {
+  purchaseType?: PayloadPurchaseType | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16039,17 +16045,40 @@ export function payloadBuildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const PayloadPurchaseType$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadPurchaseType
+> = z.nativeEnum(PayloadPurchaseType);
+
+/** @internal */
+export const PayloadPurchaseType$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadPurchaseType
+> = PayloadPurchaseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadPurchaseType$ {
+  /** @deprecated use `PayloadPurchaseType$inboundSchema` instead. */
+  export const inboundSchema = PayloadPurchaseType$inboundSchema;
+  /** @deprecated use `PayloadPurchaseType$outboundSchema` instead. */
+  export const outboundSchema = PayloadPurchaseType$outboundSchema;
+}
+
+/** @internal */
 export const PayloadBuildMachine$inboundSchema: z.ZodType<
   PayloadBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  purchaseType: PayloadPurchaseType$inboundSchema.optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
 
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
+  purchaseType?: string | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16060,6 +16089,7 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadBuildMachine
 > = z.object({
+  purchaseType: PayloadPurchaseType$outboundSchema.optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });

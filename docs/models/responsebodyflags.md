@@ -7,7 +7,9 @@
 
 ```typescript
 const value: models.GetDeploymentFlags1 = {
-  definitions: {},
+  definitions: {
+    "key": {},
+  },
 };
 ```
 

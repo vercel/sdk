@@ -817,6 +817,11 @@ export type FunctionDefaultMemoryType = ClosedEnum<
   typeof FunctionDefaultMemoryType
 >;
 
+export const BuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
+
 export type UpdateProjectDataCacheResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -824,6 +829,7 @@ export type UpdateProjectDataCacheResourceConfig = {
   functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: BuildMachineType | undefined;
 };
 
 /**
@@ -860,6 +866,13 @@ export type UpdateProjectDataCacheFunctionDefaultMemoryType = ClosedEnum<
   typeof UpdateProjectDataCacheFunctionDefaultMemoryType
 >;
 
+export const UpdateProjectDataCacheBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type UpdateProjectDataCacheBuildMachineType = ClosedEnum<
+  typeof UpdateProjectDataCacheBuildMachineType
+>;
+
 export type DefaultResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -869,6 +882,7 @@ export type DefaultResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: UpdateProjectDataCacheBuildMachineType | undefined;
 };
 
 export const UpdateProjectDataCacheDeploymentType = {
@@ -5715,6 +5729,27 @@ export namespace FunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const BuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = z.nativeEnum(BuildMachineType);
+
+/** @internal */
+export const BuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = BuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildMachineType$ {
+  /** @deprecated use `BuildMachineType$inboundSchema` instead. */
+  export const inboundSchema = BuildMachineType$inboundSchema;
+  /** @deprecated use `BuildMachineType$outboundSchema` instead. */
+  export const outboundSchema = BuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDataCacheResourceConfig,
   z.ZodTypeDef,
@@ -5726,6 +5761,7 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -5736,6 +5772,7 @@ export type UpdateProjectDataCacheResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -5751,6 +5788,7 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$outboundSchema.optional(),
 });
 
 /**
@@ -5916,6 +5954,30 @@ export namespace UpdateProjectDataCacheFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const UpdateProjectDataCacheBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheBuildMachineType> = z.nativeEnum(
+    UpdateProjectDataCacheBuildMachineType,
+  );
+
+/** @internal */
+export const UpdateProjectDataCacheBuildMachineType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheBuildMachineType> =
+    UpdateProjectDataCacheBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheBuildMachineType$ {
+  /** @deprecated use `UpdateProjectDataCacheBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheBuildMachineType$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const DefaultResourceConfig$inboundSchema: z.ZodType<
   DefaultResourceConfig,
   z.ZodTypeDef,
@@ -5928,6 +5990,8 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectDataCacheFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: UpdateProjectDataCacheBuildMachineType$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -5938,6 +6002,7 @@ export type DefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -5953,6 +6018,8 @@ export const DefaultResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectDataCacheFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: UpdateProjectDataCacheBuildMachineType$outboundSchema
+    .optional(),
 });
 
 /**

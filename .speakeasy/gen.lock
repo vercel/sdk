@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 1752e9f3098574d58566a893faa9b9b5
+  docChecksum: 1ed43942f48c38741f9cd63627535077
   docVersion: 0.0.1
-  speakeasyVersion: 1.533.0
-  generationVersion: 2.578.0
-  releaseVersion: 1.6.3
-  configChecksum: 5901ad04db5ef4a7f7bb0ab0f99c4d9f
+  speakeasyVersion: 1.535.1
+  generationVersion: 2.585.2
+  releaseVersion: 1.6.4
+  configChecksum: 0abe6b08be0cc59977f12719edbfe996
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -28,7 +28,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.9.1
+    mcpServer: 0.9.2
     mockServer: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
@@ -139,6 +139,7 @@ generatedFiles:
   - docs/models/build.md
   - docs/models/buildentitlements.md
   - docs/models/buildmachine.md
+  - docs/models/buildmachinetype.md
   - docs/models/builds.md
   - docs/models/buydomaindomain.md
   - docs/models/buydomaindomainsdomain.md
@@ -408,6 +409,7 @@ generatedFiles:
   - docs/models/createprojectaliaserror.md
   - docs/models/createprojectanalytics.md
   - docs/models/createprojectbranchmatcher.md
+  - docs/models/createprojectbuildmachinetype.md
   - docs/models/createprojectbuilds.md
   - docs/models/createprojectchecksconclusion.md
   - docs/models/createprojectchecksstate.md
@@ -580,6 +582,7 @@ generatedFiles:
   - docs/models/createprojectprojectsaliasassigned.md
   - docs/models/createprojectprojectsaliaserror.md
   - docs/models/createprojectprojectsbranchmatcher.md
+  - docs/models/createprojectprojectsbuildmachinetype.md
   - docs/models/createprojectprojectsbuilds.md
   - docs/models/createprojectprojectschecksconclusion.md
   - docs/models/createprojectprojectschecksstate.md
@@ -1391,6 +1394,7 @@ generatedFiles:
   - docs/models/getprojectsaliaserror.md
   - docs/models/getprojectsanalytics.md
   - docs/models/getprojectsbranchmatcher.md
+  - docs/models/getprojectsbuildmachinetype.md
   - docs/models/getprojectsbuilds.md
   - docs/models/getprojectschecksconclusion.md
   - docs/models/getprojectschecksstate.md
@@ -1479,6 +1483,7 @@ generatedFiles:
   - docs/models/getprojectsprojectsaliasassigned.md
   - docs/models/getprojectsprojectsaliaserror.md
   - docs/models/getprojectsprojectsbranchmatcher.md
+  - docs/models/getprojectsprojectsbuildmachinetype.md
   - docs/models/getprojectsprojectsbuilds.md
   - docs/models/getprojectsprojectschecksconclusion.md
   - docs/models/getprojectsprojectschecksstate.md
@@ -1918,6 +1923,7 @@ generatedFiles:
   - docs/models/payloadpricingplan.md
   - docs/models/payloadproject.md
   - docs/models/payloadprojectmembership.md
+  - docs/models/payloadpurchasetype.md
   - docs/models/payloadreason.md
   - docs/models/payloadreasons.md
   - docs/models/payloadrecentsviewpreference.md
@@ -1977,6 +1983,7 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/purchasetype.md
   - docs/models/purpose.md
   - docs/models/purpose1.md
   - docs/models/purpose2.md
@@ -2532,6 +2539,7 @@ generatedFiles:
   - docs/models/updateprojectaliaserror.md
   - docs/models/updateprojectanalytics.md
   - docs/models/updateprojectbranchmatcher.md
+  - docs/models/updateprojectbuildmachinetype.md
   - docs/models/updateprojectbuilds.md
   - docs/models/updateprojectchecksconclusion.md
   - docs/models/updateprojectchecksstate.md
@@ -2575,6 +2583,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachealiasassigned.md
   - docs/models/updateprojectdatacachealiaserror.md
   - docs/models/updateprojectdatacachebranchmatcher.md
+  - docs/models/updateprojectdatacachebuildmachinetype.md
   - docs/models/updateprojectdatacachebuilds.md
   - docs/models/updateprojectdatacachechecksconclusion.md
   - docs/models/updateprojectdatacachechecksstate.md
@@ -2706,6 +2715,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsaliasassigned.md
   - docs/models/updateprojectprojectsaliaserror.md
   - docs/models/updateprojectprojectsbranchmatcher.md
+  - docs/models/updateprojectprojectsbuildmachinetype.md
   - docs/models/updateprojectprojectsbuilds.md
   - docs/models/updateprojectprojectschecksconclusion.md
   - docs/models/updateprojectprojectschecksstate.md
@@ -4853,7 +4863,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 1805.56}]
+          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "children": [], "contentType": "application/json", "mode": 1805.56}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

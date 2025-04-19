@@ -145,10 +145,10 @@ type GetProjectEnvResponseBodyProjectsResponseType string
 
 const (
 	GetProjectEnvResponseBodyProjectsResponseTypeSystem    GetProjectEnvResponseBodyProjectsResponseType = "system"
+	GetProjectEnvResponseBodyProjectsResponseTypeSecret    GetProjectEnvResponseBodyProjectsResponseType = "secret"
 	GetProjectEnvResponseBodyProjectsResponseTypeEncrypted GetProjectEnvResponseBodyProjectsResponseType = "encrypted"
 	GetProjectEnvResponseBodyProjectsResponseTypePlain     GetProjectEnvResponseBodyProjectsResponseType = "plain"
 	GetProjectEnvResponseBodyProjectsResponseTypeSensitive GetProjectEnvResponseBodyProjectsResponseType = "sensitive"
-	GetProjectEnvResponseBodyProjectsResponseTypeSecret    GetProjectEnvResponseBodyProjectsResponseType = "secret"
 )
 
 func (e GetProjectEnvResponseBodyProjectsResponseType) ToPointer() *GetProjectEnvResponseBodyProjectsResponseType {
@@ -162,13 +162,13 @@ func (e *GetProjectEnvResponseBodyProjectsResponseType) UnmarshalJSON(data []byt
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvResponseBodyProjectsResponseType(v)
 		return nil
 	default:
@@ -1506,10 +1506,10 @@ type GetProjectEnvResponseBodyProjectsType string
 
 const (
 	GetProjectEnvResponseBodyProjectsTypeSystem    GetProjectEnvResponseBodyProjectsType = "system"
+	GetProjectEnvResponseBodyProjectsTypeSecret    GetProjectEnvResponseBodyProjectsType = "secret"
 	GetProjectEnvResponseBodyProjectsTypeEncrypted GetProjectEnvResponseBodyProjectsType = "encrypted"
 	GetProjectEnvResponseBodyProjectsTypePlain     GetProjectEnvResponseBodyProjectsType = "plain"
 	GetProjectEnvResponseBodyProjectsTypeSensitive GetProjectEnvResponseBodyProjectsType = "sensitive"
-	GetProjectEnvResponseBodyProjectsTypeSecret    GetProjectEnvResponseBodyProjectsType = "secret"
 )
 
 func (e GetProjectEnvResponseBodyProjectsType) ToPointer() *GetProjectEnvResponseBodyProjectsType {
@@ -1523,13 +1523,13 @@ func (e *GetProjectEnvResponseBodyProjectsType) UnmarshalJSON(data []byte) error
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvResponseBodyProjectsType(v)
 		return nil
 	default:
@@ -2875,10 +2875,10 @@ type GetProjectEnvResponseBodyType string
 
 const (
 	GetProjectEnvResponseBodyTypeSystem    GetProjectEnvResponseBodyType = "system"
+	GetProjectEnvResponseBodyTypeSecret    GetProjectEnvResponseBodyType = "secret"
 	GetProjectEnvResponseBodyTypeEncrypted GetProjectEnvResponseBodyType = "encrypted"
 	GetProjectEnvResponseBodyTypePlain     GetProjectEnvResponseBodyType = "plain"
 	GetProjectEnvResponseBodyTypeSensitive GetProjectEnvResponseBodyType = "sensitive"
-	GetProjectEnvResponseBodyTypeSecret    GetProjectEnvResponseBodyType = "secret"
 )
 
 func (e GetProjectEnvResponseBodyType) ToPointer() *GetProjectEnvResponseBodyType {
@@ -2892,13 +2892,13 @@ func (e *GetProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvResponseBodyType(v)
 		return nil
 	default:

@@ -189,7 +189,20 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "rectangular-extension.info",
+        ip: "174.202.143.180",
+        createdAt: "1714340901702",
+        updatedAt: "1744963186778",
+        updatedAtHour: "<value>",
+      },
+    ],
+    pagination: "<value>",
+  });
 });
 
 test("Security Add Bypass Ip", async () => {

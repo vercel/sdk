@@ -1188,10 +1188,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1205,13 +1205,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -4189,6 +4189,29 @@ func (e *UpdateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) erro
 	}
 }
 
+type UpdateProjectBuildMachineType string
+
+const (
+	UpdateProjectBuildMachineTypeEnhanced UpdateProjectBuildMachineType = "enhanced"
+)
+
+func (e UpdateProjectBuildMachineType) ToPointer() *UpdateProjectBuildMachineType {
+	return &e
+}
+func (e *UpdateProjectBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = UpdateProjectBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectBuildMachineType: %v", v)
+	}
+}
+
 type UpdateProjectResourceConfig struct {
 	Fluid                      *bool                                   `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                `json:"functionDefaultRegions"`
@@ -4196,6 +4219,7 @@ type UpdateProjectResourceConfig struct {
 	FunctionDefaultMemoryType  *UpdateProjectFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                   `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                   `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *UpdateProjectResourceConfig) GetFluid() *bool {
@@ -4238,6 +4262,13 @@ func (o *UpdateProjectResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectResourceConfig) GetBuildMachineType() *UpdateProjectBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 // UpdateProjectStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
@@ -4312,6 +4343,29 @@ func (e *UpdateProjectProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []by
 	}
 }
 
+type UpdateProjectProjectsBuildMachineType string
+
+const (
+	UpdateProjectProjectsBuildMachineTypeEnhanced UpdateProjectProjectsBuildMachineType = "enhanced"
+)
+
+func (e UpdateProjectProjectsBuildMachineType) ToPointer() *UpdateProjectProjectsBuildMachineType {
+	return &e
+}
+func (e *UpdateProjectProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = UpdateProjectProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectProjectsBuildMachineType: %v", v)
+	}
+}
+
 type UpdateProjectDefaultResourceConfig struct {
 	Fluid                      *bool                                           `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                        `json:"functionDefaultRegions"`
@@ -4319,6 +4373,7 @@ type UpdateProjectDefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *UpdateProjectProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                           `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                           `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -4361,6 +4416,13 @@ func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *boo
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetBuildMachineType() *UpdateProjectProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type UpdateProjectProjectsResponseDeploymentType string
@@ -7327,8 +7389,8 @@ func (u UpdateProjectSrc) MarshalJSON() ([]byte, error) {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -7350,9 +7412,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough
@@ -7564,8 +7626,8 @@ func (o *UpdateProjectHas) GetValue() *UpdateProjectValue {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -7587,9 +7649,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough

@@ -850,6 +850,13 @@ export type GetProjectsFunctionDefaultMemoryType = ClosedEnum<
   typeof GetProjectsFunctionDefaultMemoryType
 >;
 
+export const GetProjectsBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type GetProjectsBuildMachineType = ClosedEnum<
+  typeof GetProjectsBuildMachineType
+>;
+
 export type GetProjectsResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -857,6 +864,7 @@ export type GetProjectsResourceConfig = {
   functionDefaultMemoryType?: GetProjectsFunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: GetProjectsBuildMachineType | undefined;
 };
 
 /**
@@ -893,6 +901,13 @@ export type GetProjectsProjectsFunctionDefaultMemoryType = ClosedEnum<
   typeof GetProjectsProjectsFunctionDefaultMemoryType
 >;
 
+export const GetProjectsProjectsBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type GetProjectsProjectsBuildMachineType = ClosedEnum<
+  typeof GetProjectsProjectsBuildMachineType
+>;
+
 export type GetProjectsDefaultResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -902,6 +917,7 @@ export type GetProjectsDefaultResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: GetProjectsProjectsBuildMachineType | undefined;
 };
 
 export const GetProjectsDeploymentType = {
@@ -5775,6 +5791,27 @@ export namespace GetProjectsFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const GetProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsBuildMachineType
+> = z.nativeEnum(GetProjectsBuildMachineType);
+
+/** @internal */
+export const GetProjectsBuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsBuildMachineType
+> = GetProjectsBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsBuildMachineType$ {
+  /** @deprecated use `GetProjectsBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsBuildMachineType$inboundSchema;
+  /** @deprecated use `GetProjectsBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   GetProjectsResourceConfig,
   z.ZodTypeDef,
@@ -5787,6 +5824,7 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: GetProjectsBuildMachineType$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -5797,6 +5835,7 @@ export type GetProjectsResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -5812,6 +5851,7 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: GetProjectsBuildMachineType$outboundSchema.optional(),
 });
 
 /**
@@ -5985,6 +6025,29 @@ export namespace GetProjectsProjectsFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const GetProjectsProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsBuildMachineType
+> = z.nativeEnum(GetProjectsProjectsBuildMachineType);
+
+/** @internal */
+export const GetProjectsProjectsBuildMachineType$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProjectsBuildMachineType> =
+    GetProjectsProjectsBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProjectsBuildMachineType$ {
+  /** @deprecated use `GetProjectsProjectsBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProjectsBuildMachineType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
   GetProjectsDefaultResourceConfig,
   z.ZodTypeDef,
@@ -5997,6 +6060,8 @@ export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
     GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: GetProjectsProjectsBuildMachineType$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -6007,6 +6072,7 @@ export type GetProjectsDefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -6022,6 +6088,8 @@ export const GetProjectsDefaultResourceConfig$outboundSchema: z.ZodType<
     GetProjectsProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: GetProjectsProjectsBuildMachineType$outboundSchema
+    .optional(),
 });
 
 /**

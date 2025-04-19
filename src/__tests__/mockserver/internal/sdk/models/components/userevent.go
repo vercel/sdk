@@ -6805,9 +6805,40 @@ func (o *PayloadBuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+type PayloadPurchaseType string
+
+const (
+	PayloadPurchaseTypeEnhanced PayloadPurchaseType = "enhanced"
+)
+
+func (e PayloadPurchaseType) ToPointer() *PayloadPurchaseType {
+	return &e
+}
+func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = PayloadPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadPurchaseType: %v", v)
+	}
+}
+
 type PayloadBuildMachine struct {
-	Cores  *float64 `json:"cores,omitempty"`
-	Memory *float64 `json:"memory,omitempty"`
+	PurchaseType *PayloadPurchaseType `json:"purchaseType,omitempty"`
+	Cores        *float64             `json:"cores,omitempty"`
+	Memory       *float64             `json:"memory,omitempty"`
+}
+
+func (o *PayloadBuildMachine) GetPurchaseType() *PayloadPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
 }
 
 func (o *PayloadBuildMachine) GetCores() *float64 {

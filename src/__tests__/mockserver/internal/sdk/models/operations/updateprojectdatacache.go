@@ -3442,6 +3442,29 @@ func (e *FunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type BuildMachineType string
+
+const (
+	BuildMachineTypeEnhanced BuildMachineType = "enhanced"
+)
+
+func (e BuildMachineType) ToPointer() *BuildMachineType {
+	return &e
+}
+func (e *BuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = BuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BuildMachineType: %v", v)
+	}
+}
+
 type ResourceConfig struct {
 	Fluid                      *bool                      `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                   `json:"functionDefaultRegions"`
@@ -3449,6 +3472,7 @@ type ResourceConfig struct {
 	FunctionDefaultMemoryType  *FunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                      `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                      `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *BuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *ResourceConfig) GetFluid() *bool {
@@ -3491,6 +3515,13 @@ func (o *ResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *ResourceConfig) GetBuildMachineType() *BuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 // Stages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
@@ -3565,6 +3596,29 @@ func (e *UpdateProjectDataCacheFunctionDefaultMemoryType) UnmarshalJSON(data []b
 	}
 }
 
+type UpdateProjectDataCacheBuildMachineType string
+
+const (
+	UpdateProjectDataCacheBuildMachineTypeEnhanced UpdateProjectDataCacheBuildMachineType = "enhanced"
+)
+
+func (e UpdateProjectDataCacheBuildMachineType) ToPointer() *UpdateProjectDataCacheBuildMachineType {
+	return &e
+}
+func (e *UpdateProjectDataCacheBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = UpdateProjectDataCacheBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheBuildMachineType: %v", v)
+	}
+}
+
 type DefaultResourceConfig struct {
 	Fluid                      *bool                                            `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                         `json:"functionDefaultRegions"`
@@ -3572,6 +3626,7 @@ type DefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *UpdateProjectDataCacheFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                            `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                            `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectDataCacheBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *DefaultResourceConfig) GetFluid() *bool {
@@ -3614,6 +3669,13 @@ func (o *DefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *DefaultResourceConfig) GetBuildMachineType() *UpdateProjectDataCacheBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type UpdateProjectDataCacheDeploymentType string

@@ -3538,6 +3538,29 @@ func (e *GetProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type GetProjectsBuildMachineType string
+
+const (
+	GetProjectsBuildMachineTypeEnhanced GetProjectsBuildMachineType = "enhanced"
+)
+
+func (e GetProjectsBuildMachineType) ToPointer() *GetProjectsBuildMachineType {
+	return &e
+}
+func (e *GetProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = GetProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsBuildMachineType: %v", v)
+	}
+}
+
 type GetProjectsResourceConfig struct {
 	Fluid                      *bool                                 `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                              `json:"functionDefaultRegions"`
@@ -3545,6 +3568,7 @@ type GetProjectsResourceConfig struct {
 	FunctionDefaultMemoryType  *GetProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                 `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                 `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *GetProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *GetProjectsResourceConfig) GetFluid() *bool {
@@ -3587,6 +3611,13 @@ func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *GetProjectsResourceConfig) GetBuildMachineType() *GetProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 // GetProjectsStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
@@ -3661,6 +3692,29 @@ func (e *GetProjectsProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte
 	}
 }
 
+type GetProjectsProjectsBuildMachineType string
+
+const (
+	GetProjectsProjectsBuildMachineTypeEnhanced GetProjectsProjectsBuildMachineType = "enhanced"
+)
+
+func (e GetProjectsProjectsBuildMachineType) ToPointer() *GetProjectsProjectsBuildMachineType {
+	return &e
+}
+func (e *GetProjectsProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = GetProjectsProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsProjectsBuildMachineType: %v", v)
+	}
+}
+
 type GetProjectsDefaultResourceConfig struct {
 	Fluid                      *bool                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                      `json:"functionDefaultRegions"`
@@ -3668,6 +3722,7 @@ type GetProjectsDefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *GetProjectsProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                         `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                         `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *GetProjectsProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *GetProjectsDefaultResourceConfig) GetFluid() *bool {
@@ -3710,6 +3765,13 @@ func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool 
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetBuildMachineType() *GetProjectsProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type GetProjectsDeploymentType string

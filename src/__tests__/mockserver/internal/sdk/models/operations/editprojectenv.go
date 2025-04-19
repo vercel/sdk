@@ -287,10 +287,10 @@ type EditProjectEnvResponseBodyType string
 
 const (
 	EditProjectEnvResponseBodyTypeSystem    EditProjectEnvResponseBodyType = "system"
+	EditProjectEnvResponseBodyTypeSecret    EditProjectEnvResponseBodyType = "secret"
 	EditProjectEnvResponseBodyTypeEncrypted EditProjectEnvResponseBodyType = "encrypted"
 	EditProjectEnvResponseBodyTypePlain     EditProjectEnvResponseBodyType = "plain"
 	EditProjectEnvResponseBodyTypeSensitive EditProjectEnvResponseBodyType = "sensitive"
-	EditProjectEnvResponseBodyTypeSecret    EditProjectEnvResponseBodyType = "secret"
 )
 
 func (e EditProjectEnvResponseBodyType) ToPointer() *EditProjectEnvResponseBodyType {
@@ -304,13 +304,13 @@ func (e *EditProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = EditProjectEnvResponseBodyType(v)
 		return nil
 	default:

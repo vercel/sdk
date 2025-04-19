@@ -5576,6 +5576,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -5645,6 +5651,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -11137,24 +11149,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -11919,15 +11931,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -12160,8 +12172,8 @@
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -12271,8 +12283,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12324,8 +12336,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12378,8 +12390,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -26694,6 +26706,12 @@
                               },
                               "elasticConcurrencyEnabled": {
                                 "type": "boolean"
+                              },
+                              "buildMachineType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
                               }
                             },
                             "required": [
@@ -26763,6 +26781,12 @@
                               },
                               "elasticConcurrencyEnabled": {
                                 "type": "boolean"
+                              },
+                              "buildMachineType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
                               }
                             },
                             "required": [
@@ -29310,10 +29334,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -30457,6 +30481,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -30526,6 +30556,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -32342,8 +32378,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -32424,8 +32460,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -34350,6 +34386,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -34419,6 +34461,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -36856,10 +36904,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -38003,6 +38051,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -38072,6 +38126,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -39888,8 +39948,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -39970,8 +40030,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -42481,10 +42541,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -42895,10 +42955,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -43321,10 +43381,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -43880,10 +43940,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -44283,10 +44343,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -45065,10 +45125,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -45464,10 +45524,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -45868,10 +45928,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -46369,10 +46429,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -46785,10 +46845,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -47196,10 +47256,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -47715,10 +47775,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -62562,6 +62622,12 @@
                           },
                           "buildMachine": {
                             "properties": {
+                              "purchaseType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
+                              },
                               "cores": {
                                 "type": "number"
                               },
@@ -68035,6 +68101,13 @@
               },
               "buildMachine": {
                 "properties": {
+                  "purchaseType": {
+                    "type": "string",
+                    "enum": [
+                      "enhanced"
+                    ],
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
                   "cores": {
                     "type": "number",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."

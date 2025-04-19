@@ -262,7 +262,22 @@ test("Deployments List Deployment Files", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([]);
+  expect(result).toEqual([
+    {
+      name: "my-file.json",
+      type: "file",
+      uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+      contentType: "application/json",
+      mode: 956.44,
+    },
+    {
+      name: "my-file.json",
+      type: "file",
+      uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+      contentType: "application/json",
+      mode: 1805.56,
+    },
+  ]);
 });
 
 test("Deployments Get Deployment File Contents", async () => {

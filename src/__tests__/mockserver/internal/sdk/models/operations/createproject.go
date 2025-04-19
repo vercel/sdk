@@ -1045,10 +1045,10 @@ type CreateProjectProjectsResponseType string
 
 const (
 	CreateProjectProjectsResponseTypeSystem    CreateProjectProjectsResponseType = "system"
+	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 	CreateProjectProjectsResponseTypeEncrypted CreateProjectProjectsResponseType = "encrypted"
 	CreateProjectProjectsResponseTypePlain     CreateProjectProjectsResponseType = "plain"
 	CreateProjectProjectsResponseTypeSensitive CreateProjectProjectsResponseType = "sensitive"
-	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 )
 
 func (e CreateProjectProjectsResponseType) ToPointer() *CreateProjectProjectsResponseType {
@@ -1062,13 +1062,13 @@ func (e *CreateProjectProjectsResponseType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectProjectsResponseType(v)
 		return nil
 	default:
@@ -4046,6 +4046,29 @@ func (e *CreateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) erro
 	}
 }
 
+type CreateProjectBuildMachineType string
+
+const (
+	CreateProjectBuildMachineTypeEnhanced CreateProjectBuildMachineType = "enhanced"
+)
+
+func (e CreateProjectBuildMachineType) ToPointer() *CreateProjectBuildMachineType {
+	return &e
+}
+func (e *CreateProjectBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = CreateProjectBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBuildMachineType: %v", v)
+	}
+}
+
 type CreateProjectResourceConfig struct {
 	Fluid                      *bool                                   `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                `json:"functionDefaultRegions"`
@@ -4053,6 +4076,7 @@ type CreateProjectResourceConfig struct {
 	FunctionDefaultMemoryType  *CreateProjectFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                   `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                   `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *CreateProjectBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *CreateProjectResourceConfig) GetFluid() *bool {
@@ -4095,6 +4119,13 @@ func (o *CreateProjectResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *CreateProjectResourceConfig) GetBuildMachineType() *CreateProjectBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 // CreateProjectStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
@@ -4169,6 +4200,29 @@ func (e *CreateProjectProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []by
 	}
 }
 
+type CreateProjectProjectsBuildMachineType string
+
+const (
+	CreateProjectProjectsBuildMachineTypeEnhanced CreateProjectProjectsBuildMachineType = "enhanced"
+)
+
+func (e CreateProjectProjectsBuildMachineType) ToPointer() *CreateProjectProjectsBuildMachineType {
+	return &e
+}
+func (e *CreateProjectProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = CreateProjectProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectProjectsBuildMachineType: %v", v)
+	}
+}
+
 type CreateProjectDefaultResourceConfig struct {
 	Fluid                      *bool                                           `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                        `json:"functionDefaultRegions"`
@@ -4176,6 +4230,7 @@ type CreateProjectDefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *CreateProjectProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                           `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                           `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *CreateProjectProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -4218,6 +4273,13 @@ func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *boo
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjectProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type CreateProjectDeploymentType string
@@ -7184,8 +7246,8 @@ func (u CreateProjectSrc) MarshalJSON() ([]byte, error) {
 type CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
+	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -7207,9 +7269,9 @@ func (e *CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough
@@ -7421,8 +7483,8 @@ func (o *CreateProjectHas) GetValue() *CreateProjectValue {
 type CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
+	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -7444,9 +7506,9 @@ func (e *CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough

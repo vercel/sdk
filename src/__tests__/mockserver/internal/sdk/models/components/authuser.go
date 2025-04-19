@@ -241,12 +241,45 @@ func (o *BuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+// PurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type PurchaseType string
+
+const (
+	PurchaseTypeEnhanced PurchaseType = "enhanced"
+)
+
+func (e PurchaseType) ToPointer() *PurchaseType {
+	return &e
+}
+func (e *PurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = PurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PurchaseType: %v", v)
+	}
+}
+
 // BuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type BuildMachine struct {
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	PurchaseType *PurchaseType `json:"purchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Cores *float64 `json:"cores,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (o *BuildMachine) GetPurchaseType() *PurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
 }
 
 func (o *BuildMachine) GetCores() *float64 {

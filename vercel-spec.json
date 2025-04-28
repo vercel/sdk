@@ -4439,13 +4439,19 @@
                             "type": "string",
                             "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                           },
+                          "decrypted": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "vsmValue": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
                           "key": {
-                            "type": "string"
-                          },
-                          "value": {
                             "type": "string"
                           },
                           "configurationId": {
@@ -4785,10 +4791,6 @@
                             "type": "object",
                             "description": "Similar to `contentHints`, but should not be exposed to the user."
                           },
-                          "decrypted": {
-                            "type": "boolean",
-                            "description": "Whether `value` and `vsmValue` are decrypted."
-                          },
                           "comment": {
                             "type": "string"
                           },
@@ -4797,15 +4799,12 @@
                               "type": "string"
                             },
                             "type": "array"
-                          },
-                          "vsmValue": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "type",
-                          "key",
-                          "value"
+                          "value",
+                          "key"
                         ],
                         "type": "object"
                       },
@@ -5414,6 +5413,80 @@
                             "deployHooks"
                           ],
                           "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
                         }
                       ]
                     },
@@ -5576,6 +5649,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -5601,6 +5680,14 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
+                              },
+                              "minutesToRelease": {
+                                "type": "number",
+                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
+                              },
+                              "requireApproval": {
+                                "type": "boolean",
+                                "description": "Whether or not this stage requires approval to proceed."
                               }
                             },
                             "required": [
@@ -5645,6 +5732,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -6508,6 +6601,12 @@
                           "type": "array"
                         },
                         "observabilityConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityNotebook": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -8561,6 +8660,10 @@
                         "buildingAt": {
                           "type": "number"
                         },
+                        "buildContainerFinishedAt": {
+                          "type": "number",
+                          "description": "Since April 2025 it necessary for On-Demand Concurrency Minutes calculation"
+                        },
                         "buildSkipped": {
                           "type": "boolean"
                         },
@@ -8913,6 +9016,83 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-custom-host"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github-custom-host"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
+                                "org",
+                                "repo"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -9062,6 +9242,42 @@
                               },
                               "required": [
                                 "type",
+                                "ref",
+                                "sha",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "type": "number"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
                                 "ref",
                                 "sha",
                                 "repoId"
@@ -9954,6 +10170,10 @@
                         "buildingAt": {
                           "type": "number"
                         },
+                        "buildContainerFinishedAt": {
+                          "type": "number",
+                          "description": "Since April 2025 it necessary for On-Demand Concurrency Minutes calculation"
+                        },
                         "buildSkipped": {
                           "type": "boolean"
                         },
@@ -10306,6 +10526,83 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-custom-host"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github-custom-host"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
+                                "org",
+                                "repo"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -10455,6 +10752,42 @@
                               },
                               "required": [
                                 "type",
+                                "ref",
+                                "sha",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github"
+                                  ]
+                                },
+                                "host": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "type": "number"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "host",
                                 "ref",
                                 "sha",
                                 "repoId"
@@ -11108,6 +11441,10 @@
                     "buildingAt": {
                       "type": "number"
                     },
+                    "buildContainerFinishedAt": {
+                      "type": "number",
+                      "description": "Since April 2025 it necessary for On-Demand Concurrency Minutes calculation"
+                    },
                     "buildSkipped": {
                       "type": "boolean"
                     },
@@ -11360,6 +11697,83 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
+                            "org",
+                            "repo"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -11509,6 +11923,42 @@
                           },
                           "required": [
                             "type",
+                            "ref",
+                            "sha",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
                             "ref",
                             "sha",
                             "repoId"
@@ -13397,6 +13847,10 @@
                     "buildingAt": {
                       "type": "number"
                     },
+                    "buildContainerFinishedAt": {
+                      "type": "number",
+                      "description": "Since April 2025 it necessary for On-Demand Concurrency Minutes calculation"
+                    },
                     "buildSkipped": {
                       "type": "boolean"
                     },
@@ -13729,6 +14183,83 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
+                            "org",
+                            "repo"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -13878,6 +14409,42 @@
                           },
                           "required": [
                             "type",
+                            "ref",
+                            "sha",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "host",
                             "ref",
                             "sha",
                             "repoId"
@@ -25557,13 +26124,19 @@
                                   "type": "string",
                                   "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                                 },
+                                "decrypted": {
+                                  "type": "boolean"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "vsmValue": {
+                                  "type": "string"
+                                },
                                 "id": {
                                   "type": "string"
                                 },
                                 "key": {
-                                  "type": "string"
-                                },
-                                "value": {
                                   "type": "string"
                                 },
                                 "configurationId": {
@@ -25903,10 +26476,6 @@
                                   "type": "object",
                                   "description": "Similar to `contentHints`, but should not be exposed to the user."
                                 },
-                                "decrypted": {
-                                  "type": "boolean",
-                                  "description": "Whether `value` and `vsmValue` are decrypted."
-                                },
                                 "comment": {
                                   "type": "string"
                                 },
@@ -25915,15 +26484,12 @@
                                     "type": "string"
                                   },
                                   "type": "array"
-                                },
-                                "vsmValue": {
-                                  "type": "string"
                                 }
                               },
                               "required": [
                                 "type",
-                                "key",
-                                "value"
+                                "value",
+                                "key"
                               ],
                               "type": "object"
                             },
@@ -26532,6 +27098,80 @@
                                   "deployHooks"
                                 ],
                                 "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "org": {
+                                    "type": "string"
+                                  },
+                                  "repoOwnerId": {
+                                    "type": "number",
+                                    "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                                  },
+                                  "repo": {
+                                    "type": "string"
+                                  },
+                                  "repoId": {
+                                    "type": "number"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "github-custom-host"
+                                    ]
+                                  },
+                                  "host": {
+                                    "type": "string"
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "deployHooks": {
+                                    "items": {
+                                      "properties": {
+                                        "createdAt": {
+                                          "type": "number"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "ref": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "ref",
+                                        "url"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "gitCredentialId": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "sourceless": {
+                                    "type": "boolean"
+                                  },
+                                  "productionBranch": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "deployHooks"
+                                ],
+                                "type": "object"
                               }
                             ]
                           },
@@ -26694,6 +27334,12 @@
                               },
                               "elasticConcurrencyEnabled": {
                                 "type": "boolean"
+                              },
+                              "buildMachineType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
                               }
                             },
                             "required": [
@@ -26719,6 +27365,14 @@
                                     "targetPercentage": {
                                       "type": "number",
                                       "description": "The percentage of traffic to serve to the new deployment"
+                                    },
+                                    "minutesToRelease": {
+                                      "type": "number",
+                                      "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
+                                    },
+                                    "requireApproval": {
+                                      "type": "boolean",
+                                      "description": "Whether or not this stage requires approval to proceed."
                                     }
                                   },
                                   "required": [
@@ -26763,6 +27417,12 @@
                               },
                               "elasticConcurrencyEnabled": {
                                 "type": "boolean"
+                              },
+                              "buildMachineType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
                               }
                             },
                             "required": [
@@ -27626,6 +28286,12 @@
                                 "type": "array"
                               },
                               "observabilityConfiguration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "observabilityNotebook": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -29320,13 +29986,19 @@
                             "type": "string",
                             "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                           },
+                          "decrypted": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "vsmValue": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
                           "key": {
-                            "type": "string"
-                          },
-                          "value": {
                             "type": "string"
                           },
                           "configurationId": {
@@ -29666,10 +30338,6 @@
                             "type": "object",
                             "description": "Similar to `contentHints`, but should not be exposed to the user."
                           },
-                          "decrypted": {
-                            "type": "boolean",
-                            "description": "Whether `value` and `vsmValue` are decrypted."
-                          },
                           "comment": {
                             "type": "string"
                           },
@@ -29678,15 +30346,12 @@
                               "type": "string"
                             },
                             "type": "array"
-                          },
-                          "vsmValue": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "type",
-                          "key",
-                          "value"
+                          "value",
+                          "key"
                         ],
                         "type": "object"
                       },
@@ -30295,6 +30960,80 @@
                             "deployHooks"
                           ],
                           "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
                         }
                       ]
                     },
@@ -30457,6 +31196,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -30482,6 +31227,14 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
+                              },
+                              "minutesToRelease": {
+                                "type": "number",
+                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
+                              },
+                              "requireApproval": {
+                                "type": "boolean",
+                                "description": "Whether or not this stage requires approval to proceed."
                               }
                             },
                             "required": [
@@ -30526,6 +31279,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -31389,6 +32148,12 @@
                           "type": "array"
                         },
                         "observabilityConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityNotebook": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -32685,9 +33450,6 @@
           },
           "409": {
             "description": "A project with the provided name already exists."
-          },
-          "501": {
-            "description": ""
           }
         },
         "parameters": [
@@ -33213,13 +33975,19 @@
                             "type": "string",
                             "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                           },
+                          "decrypted": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "vsmValue": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
                           "key": {
-                            "type": "string"
-                          },
-                          "value": {
                             "type": "string"
                           },
                           "configurationId": {
@@ -33559,10 +34327,6 @@
                             "type": "object",
                             "description": "Similar to `contentHints`, but should not be exposed to the user."
                           },
-                          "decrypted": {
-                            "type": "boolean",
-                            "description": "Whether `value` and `vsmValue` are decrypted."
-                          },
                           "comment": {
                             "type": "string"
                           },
@@ -33571,15 +34335,12 @@
                               "type": "string"
                             },
                             "type": "array"
-                          },
-                          "vsmValue": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "type",
-                          "key",
-                          "value"
+                          "value",
+                          "key"
                         ],
                         "type": "object"
                       },
@@ -34188,6 +34949,80 @@
                             "deployHooks"
                           ],
                           "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
                         }
                       ]
                     },
@@ -34350,6 +35185,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -34375,6 +35216,14 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
+                              },
+                              "minutesToRelease": {
+                                "type": "number",
+                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
+                              },
+                              "requireApproval": {
+                                "type": "boolean",
+                                "description": "Whether or not this stage requires approval to proceed."
                               }
                             },
                             "required": [
@@ -34419,6 +35268,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -35282,6 +36137,12 @@
                           "type": "array"
                         },
                         "observabilityConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityNotebook": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -36866,13 +37727,19 @@
                             "type": "string",
                             "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                           },
+                          "decrypted": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "vsmValue": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
                           "key": {
-                            "type": "string"
-                          },
-                          "value": {
                             "type": "string"
                           },
                           "configurationId": {
@@ -37212,10 +38079,6 @@
                             "type": "object",
                             "description": "Similar to `contentHints`, but should not be exposed to the user."
                           },
-                          "decrypted": {
-                            "type": "boolean",
-                            "description": "Whether `value` and `vsmValue` are decrypted."
-                          },
                           "comment": {
                             "type": "string"
                           },
@@ -37224,15 +38087,12 @@
                               "type": "string"
                             },
                             "type": "array"
-                          },
-                          "vsmValue": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "type",
-                          "key",
-                          "value"
+                          "value",
+                          "key"
                         ],
                         "type": "object"
                       },
@@ -37841,6 +38701,80 @@
                             "deployHooks"
                           ],
                           "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-custom-host"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
                         }
                       ]
                     },
@@ -38003,6 +38937,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -38028,6 +38968,14 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
+                              },
+                              "minutesToRelease": {
+                                "type": "number",
+                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
+                              },
+                              "requireApproval": {
+                                "type": "boolean",
+                                "description": "Whether or not this stage requires approval to proceed."
                               }
                             },
                             "required": [
@@ -38072,6 +39020,12 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
+                        },
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
                         }
                       },
                       "required": [
@@ -38935,6 +39889,12 @@
                           "type": "array"
                         },
                         "observabilityConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityNotebook": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -41306,99 +42266,216 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "domains": {
-                      "items": {
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "apexName": {
-                            "type": "string"
-                          },
-                          "projectId": {
-                            "type": "string"
-                          },
-                          "redirect": {
-                            "nullable": true,
-                            "type": "string"
-                          },
-                          "redirectStatusCode": {
-                            "nullable": true,
-                            "type": "number",
-                            "enum": [
-                              307,
-                              301,
-                              302,
-                              308
-                            ]
-                          },
-                          "gitBranch": {
-                            "nullable": true,
-                            "type": "string"
-                          },
-                          "customEnvironmentId": {
-                            "nullable": true,
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "number"
-                          },
-                          "createdAt": {
-                            "type": "number"
-                          },
-                          "verified": {
-                            "type": "boolean",
-                            "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
-                          },
-                          "verification": {
-                            "items": {
-                              "properties": {
-                                "type": {
-                                  "type": "string"
-                                },
-                                "domain": {
-                                  "type": "string"
-                                },
-                                "value": {
-                                  "type": "string"
-                                },
-                                "reason": {
-                                  "type": "string"
-                                }
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "domains": {
+                          "items": {
+                            "properties": {
+                              "name": {
+                                "type": "string"
                               },
-                              "required": [
-                                "type",
-                                "domain",
-                                "value",
-                                "reason"
-                              ],
-                              "type": "object",
-                              "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                              "apexName": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "redirect": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "redirectStatusCode": {
+                                "nullable": true,
+                                "type": "number",
+                                "enum": [
+                                  307,
+                                  301,
+                                  302,
+                                  308
+                                ]
+                              },
+                              "gitBranch": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "customEnvironmentId": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "number"
+                              },
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "verified": {
+                                "type": "boolean",
+                                "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                              },
+                              "verification": {
+                                "items": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "domain": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "reason": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "domain",
+                                    "value",
+                                    "reason"
+                                  ],
+                                  "type": "object",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                },
+                                "type": "array",
+                                "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                              }
                             },
-                            "type": "array",
-                            "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
-                          }
+                            "required": [
+                              "name",
+                              "apexName",
+                              "projectId",
+                              "verified"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
                         },
-                        "required": [
-                          "name",
-                          "apexName",
-                          "projectId",
-                          "verified"
-                        ],
-                        "type": "object"
+                        "pagination": {
+                          "properties": {
+                            "count": {
+                              "type": "number"
+                            },
+                            "next": {
+                              "nullable": true,
+                              "type": "number"
+                            },
+                            "prev": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "count",
+                            "next",
+                            "prev"
+                          ],
+                          "type": "object"
+                        }
                       },
-                      "type": "array"
+                      "required": [
+                        "domains",
+                        "pagination"
+                      ],
+                      "type": "object"
                     },
-                    "pagination": {
-                      "$ref": "#/components/schemas/Pagination"
+                    {
+                      "properties": {
+                        "domains": {
+                          "items": {
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "apexName": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "redirect": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "redirectStatusCode": {
+                                "nullable": true,
+                                "type": "number",
+                                "enum": [
+                                  307,
+                                  301,
+                                  302,
+                                  308
+                                ]
+                              },
+                              "gitBranch": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "customEnvironmentId": {
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "number"
+                              },
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "verified": {
+                                "type": "boolean",
+                                "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                              },
+                              "verification": {
+                                "items": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "domain": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "reason": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "domain",
+                                    "value",
+                                    "reason"
+                                  ],
+                                  "type": "object",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                },
+                                "type": "array",
+                                "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "apexName",
+                              "projectId",
+                              "verified"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "domains",
+                        "pagination"
+                      ],
+                      "type": "object"
                     }
-                  },
-                  "required": [
-                    "domains",
-                    "pagination"
-                  ],
-                  "type": "object"
+                  ]
                 }
               }
             }
@@ -42491,13 +43568,19 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "vsmValue": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -42837,10 +43920,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -42849,9 +43928,6 @@
                             "type": "string"
                           },
                           "type": "array"
-                        },
-                        "vsmValue": {
-                          "type": "string"
                         },
                         "system": {
                           "type": "boolean"
@@ -42905,13 +43981,19 @@
                                 "type": "string",
                                 "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                               },
+                              "decrypted": {
+                                "type": "boolean"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "vsmValue": {
+                                "type": "string"
+                              },
                               "id": {
                                 "type": "string"
                               },
                               "key": {
-                                "type": "string"
-                              },
-                              "value": {
                                 "type": "string"
                               },
                               "configurationId": {
@@ -43251,10 +44333,6 @@
                                 "type": "object",
                                 "description": "Similar to `contentHints`, but should not be exposed to the user."
                               },
-                              "decrypted": {
-                                "type": "boolean",
-                                "description": "Whether `value` and `vsmValue` are decrypted."
-                              },
                               "comment": {
                                 "type": "string"
                               },
@@ -43263,9 +44341,6 @@
                                   "type": "string"
                                 },
                                 "type": "array"
-                              },
-                              "vsmValue": {
-                                "type": "string"
                               },
                               "system": {
                                 "type": "boolean"
@@ -43331,13 +44406,19 @@
                                 "type": "string",
                                 "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                               },
+                              "decrypted": {
+                                "type": "boolean"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "vsmValue": {
+                                "type": "string"
+                              },
                               "id": {
                                 "type": "string"
                               },
                               "key": {
-                                "type": "string"
-                              },
-                              "value": {
                                 "type": "string"
                               },
                               "configurationId": {
@@ -43677,10 +44758,6 @@
                                 "type": "object",
                                 "description": "Similar to `contentHints`, but should not be exposed to the user."
                               },
-                              "decrypted": {
-                                "type": "boolean",
-                                "description": "Whether `value` and `vsmValue` are decrypted."
-                              },
                               "comment": {
                                 "type": "string"
                               },
@@ -43689,9 +44766,6 @@
                                   "type": "string"
                                 },
                                 "type": "array"
-                              },
-                              "vsmValue": {
-                                "type": "string"
                               },
                               "system": {
                                 "type": "boolean"
@@ -43890,13 +44964,19 @@
                               "type": "string",
                               "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                             },
+                            "decrypted": {
+                              "type": "boolean"
+                            },
+                            "value": {
+                              "type": "string"
+                            },
+                            "vsmValue": {
+                              "type": "string"
+                            },
                             "id": {
                               "type": "string"
                             },
                             "key": {
-                              "type": "string"
-                            },
-                            "value": {
                               "type": "string"
                             },
                             "configurationId": {
@@ -44236,10 +45316,6 @@
                               "type": "object",
                               "description": "Similar to `contentHints`, but should not be exposed to the user."
                             },
-                            "decrypted": {
-                              "type": "boolean",
-                              "description": "Whether `value` and `vsmValue` are decrypted."
-                            },
                             "comment": {
                               "type": "string"
                             },
@@ -44248,9 +45324,6 @@
                                 "type": "string"
                               },
                               "type": "array"
-                            },
-                            "vsmValue": {
-                              "type": "string"
                             },
                             "system": {
                               "type": "boolean"
@@ -44293,13 +45366,19 @@
                                 "type": "string",
                                 "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                               },
+                              "decrypted": {
+                                "type": "boolean"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "vsmValue": {
+                                "type": "string"
+                              },
                               "id": {
                                 "type": "string"
                               },
                               "key": {
-                                "type": "string"
-                              },
-                              "value": {
                                 "type": "string"
                               },
                               "configurationId": {
@@ -44639,10 +45718,6 @@
                                 "type": "object",
                                 "description": "Similar to `contentHints`, but should not be exposed to the user."
                               },
-                              "decrypted": {
-                                "type": "boolean",
-                                "description": "Whether `value` and `vsmValue` are decrypted."
-                              },
                               "comment": {
                                 "type": "string"
                               },
@@ -44651,9 +45726,6 @@
                                   "type": "string"
                                 },
                                 "type": "array"
-                              },
-                              "vsmValue": {
-                                "type": "string"
                               },
                               "system": {
                                 "type": "boolean"
@@ -45474,13 +46546,19 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "vsmValue": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -45820,10 +46898,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -45832,15 +46906,12 @@
                             "type": "string"
                           },
                           "type": "array"
-                        },
-                        "vsmValue": {
-                          "type": "string"
                         }
                       },
                       "required": [
                         "type",
-                        "key",
-                        "value"
+                        "value",
+                        "key"
                       ],
                       "type": "object"
                     },
@@ -45878,13 +46949,16 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -46224,10 +47298,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -46240,8 +47310,8 @@
                       },
                       "required": [
                         "type",
-                        "key",
-                        "value"
+                        "value",
+                        "key"
                       ],
                       "type": "object"
                     }
@@ -46379,13 +47449,19 @@
                             "type": "string",
                             "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                           },
+                          "decrypted": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "vsmValue": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
                           "key": {
-                            "type": "string"
-                          },
-                          "value": {
                             "type": "string"
                           },
                           "configurationId": {
@@ -46725,10 +47801,6 @@
                             "type": "object",
                             "description": "Similar to `contentHints`, but should not be exposed to the user."
                           },
-                          "decrypted": {
-                            "type": "boolean",
-                            "description": "Whether `value` and `vsmValue` are decrypted."
-                          },
                           "comment": {
                             "type": "string"
                           },
@@ -46737,15 +47809,12 @@
                               "type": "string"
                             },
                             "type": "array"
-                          },
-                          "vsmValue": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "type",
-                          "key",
-                          "value"
+                          "value",
+                          "key"
                         ],
                         "type": "object"
                       },
@@ -46795,13 +47864,19 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "vsmValue": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -47141,10 +48216,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -47153,15 +48224,12 @@
                             "type": "string"
                           },
                           "type": "array"
-                        },
-                        "vsmValue": {
-                          "type": "string"
                         }
                       },
                       "required": [
                         "type",
-                        "key",
-                        "value"
+                        "value",
+                        "key"
                       ],
                       "type": "object"
                     },
@@ -47206,13 +48274,19 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "vsmValue": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -47552,10 +48626,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -47564,15 +48634,12 @@
                             "type": "string"
                           },
                           "type": "array"
-                        },
-                        "vsmValue": {
-                          "type": "string"
                         }
                       },
                       "required": [
                         "type",
-                        "key",
-                        "value"
+                        "value",
+                        "key"
                       ],
                       "type": "object"
                     }
@@ -47725,13 +48792,16 @@
                           "type": "string",
                           "description": "This is used to identiy variables that have been migrated from type secret to sensitive."
                         },
+                        "decrypted": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
                         "id": {
                           "type": "string"
                         },
                         "key": {
-                          "type": "string"
-                        },
-                        "value": {
                           "type": "string"
                         },
                         "configurationId": {
@@ -48071,10 +49141,6 @@
                           "type": "object",
                           "description": "Similar to `contentHints`, but should not be exposed to the user."
                         },
-                        "decrypted": {
-                          "type": "boolean",
-                          "description": "Whether `value` and `vsmValue` are decrypted."
-                        },
                         "comment": {
                           "type": "string"
                         },
@@ -48087,8 +49153,8 @@
                       },
                       "required": [
                         "type",
-                        "key",
-                        "value"
+                        "value",
+                        "key"
                       ],
                       "type": "object"
                     },
@@ -49827,9 +50893,6 @@
                     "type": "object",
                     "additionalProperties": {
                       "anyOf": [
-                        {
-                          "not": {}
-                        },
                         {
                           "type": "object",
                           "properties": {
@@ -61567,10 +62630,6 @@
                     "type": "string",
                     "description": "The value of the Shared Env Var."
                   },
-                  "vsmValue": {
-                    "type": "string",
-                    "description": "The value of the shared environment variable decrypted against api-secrets-management."
-                  },
                   "projectId": {
                     "items": {
                       "type": "string"
@@ -61697,10 +62756,6 @@
                         "type": "string",
                         "description": "The value of the Shared Env Var."
                       },
-                      "vsmValue": {
-                        "type": "string",
-                        "description": "The value of the shared environment variable decrypted against api-secrets-management."
-                      },
                       "projectId": {
                         "items": {
                           "type": "string"
@@ -61823,10 +62878,6 @@
                       "value": {
                         "type": "string",
                         "description": "The value of the Shared Env Var."
-                      },
-                      "vsmValue": {
-                        "type": "string",
-                        "description": "The value of the shared environment variable decrypted against api-secrets-management."
                       },
                       "projectId": {
                         "items": {
@@ -62226,6 +63277,7 @@
                                   "enum": [
                                     "gitlab",
                                     "bitbucket",
+                                    "google",
                                     "github-oauth",
                                     "github-app"
                                   ]
@@ -62245,7 +63297,8 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "github-oauth-custom-host"
+                                    "github-oauth-custom-host",
+                                    "github-app-custom-host"
                                   ]
                                 },
                                 "host": {
@@ -62380,7 +63433,8 @@
                         "enum": [
                           "github",
                           "gitlab",
-                          "bitbucket"
+                          "bitbucket",
+                          "github-custom-host"
                         ]
                       },
                       "preferredScopesAndGitNamespaces": {
@@ -62560,8 +63614,20 @@
                           "flagsExplorerUnlimitedOverrides": {
                             "type": "boolean"
                           },
+                          "customEnvironmentsPerProject": {
+                            "type": "number"
+                          },
                           "buildMachine": {
                             "properties": {
+                              "purchaseType": {
+                                "type": "string",
+                                "enum": [
+                                  "enhanced"
+                                ]
+                              },
+                              "abovePlan": {
+                                "type": "boolean"
+                              },
                               "cores": {
                                 "type": "number"
                               },
@@ -64630,6 +65696,9 @@
                   "viaBitbucket": {
                     "type": "boolean"
                   },
+                  "viaGoogle": {
+                    "type": "boolean"
+                  },
                   "viaSamlSso": {
                     "type": "boolean"
                   },
@@ -64653,6 +65722,7 @@
                   "viaGithub",
                   "viaGitlab",
                   "viaBitbucket",
+                  "viaGoogle",
                   "viaSamlSso",
                   "viaPasskey"
                 ],
@@ -67376,7 +68446,8 @@
                       "passkey",
                       "otp",
                       "sms",
-                      "invite"
+                      "invite",
+                      "google"
                     ]
                   }
                 },
@@ -67754,7 +68825,8 @@
                         "passkey",
                         "otp",
                         "sms",
-                        "invite"
+                        "invite",
+                        "google"
                       ]
                     },
                     "createdAt": {
@@ -67795,7 +68867,8 @@
                         "passkey",
                         "otp",
                         "sms",
-                        "invite"
+                        "invite",
+                        "google"
                       ]
                     },
                     "createdAt": {
@@ -68033,8 +69106,23 @@
                 "type": "boolean",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
+              "customEnvironmentsPerProject": {
+                "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
               "buildMachine": {
                 "properties": {
+                  "purchaseType": {
+                    "type": "string",
+                    "enum": [
+                      "enhanced"
+                    ],
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
+                  "abovePlan": {
+                    "type": "boolean",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
                   "cores": {
                     "type": "number",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
@@ -68123,7 +69211,8 @@
             "enum": [
               "github",
               "gitlab",
-              "bitbucket"
+              "bitbucket",
+              "github-custom-host"
             ]
           },
           "preferredScopesAndGitNamespaces": {

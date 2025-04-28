@@ -74,20 +74,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAct
 	}
 }
 
-// Sd - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-type Sd struct {
+// GetFirewallConfigSd - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
+type GetFirewallConfigSd struct {
 	Active bool                                                                       `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction `json:"action"`
 }
 
-func (o *Sd) GetActive() bool {
+func (o *GetFirewallConfigSd) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sd) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction {
+func (o *GetFirewallConfigSd) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdAction("")
 	}
@@ -120,20 +120,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAct
 	}
 }
 
-// Ma - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-type Ma struct {
+// GetFirewallConfigMa - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
+type GetFirewallConfigMa struct {
 	Active bool                                                                       `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction `json:"action"`
 }
 
-func (o *Ma) GetActive() bool {
+func (o *GetFirewallConfigMa) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Ma) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction {
+func (o *GetFirewallConfigMa) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction("")
 	}
@@ -166,20 +166,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAc
 	}
 }
 
-// Lfi - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-type Lfi struct {
+// GetFirewallConfigLfi - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
+type GetFirewallConfigLfi struct {
 	Active bool                                                                        `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction `json:"action"`
 }
 
-func (o *Lfi) GetActive() bool {
+func (o *GetFirewallConfigLfi) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Lfi) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction {
+func (o *GetFirewallConfigLfi) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction("")
 	}
@@ -212,20 +212,20 @@ func (e *GetFirewallConfigSecurityResponse200Action) UnmarshalJSON(data []byte) 
 	}
 }
 
-// Rfi - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-type Rfi struct {
+// GetFirewallConfigRfi - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
+type GetFirewallConfigRfi struct {
 	Active bool                                       `json:"active"`
 	Action GetFirewallConfigSecurityResponse200Action `json:"action"`
 }
 
-func (o *Rfi) GetActive() bool {
+func (o *GetFirewallConfigRfi) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rfi) GetAction() GetFirewallConfigSecurityResponse200Action {
+func (o *GetFirewallConfigRfi) GetAction() GetFirewallConfigSecurityResponse200Action {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200Action("")
 	}
@@ -258,20 +258,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONAction) UnmarshalJSO
 	}
 }
 
-// Rce - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-type Rce struct {
+// GetFirewallConfigRce - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
+type GetFirewallConfigRce struct {
 	Active bool                                                      `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONAction `json:"action"`
 }
 
-func (o *Rce) GetActive() bool {
+func (o *GetFirewallConfigRce) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rce) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONAction {
+func (o *GetFirewallConfigRce) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONAction("")
 	}
@@ -304,20 +304,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction) 
 	}
 }
 
-// Php - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-type Php struct {
+// GetFirewallConfigPhp - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
+type GetFirewallConfigPhp struct {
 	Active bool                                                                  `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction `json:"action"`
 }
 
-func (o *Php) GetActive() bool {
+func (o *GetFirewallConfigPhp) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Php) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction {
+func (o *GetFirewallConfigPhp) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction("")
 	}
@@ -350,20 +350,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsActio
 	}
 }
 
-// Gen - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-type Gen struct {
+// GetFirewallConfigGen - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
+type GetFirewallConfigGen struct {
 	Active bool                                                                     `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction `json:"action"`
 }
 
-func (o *Gen) GetActive() bool {
+func (o *GetFirewallConfigGen) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Gen) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction {
+func (o *GetFirewallConfigGen) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsAction("")
 	}
@@ -396,20 +396,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSAc
 	}
 }
 
-// XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-type XSS struct {
+// GetFirewallConfigXSS - XSS Attack - Prevent injection of malicious scripts into trusted webpages.
+type GetFirewallConfigXSS struct {
 	Active bool                                                                        `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSAction `json:"action"`
 }
 
-func (o *XSS) GetActive() bool {
+func (o *GetFirewallConfigXSS) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *XSS) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSAction {
+func (o *GetFirewallConfigXSS) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSAction("")
 	}
@@ -442,20 +442,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliA
 	}
 }
 
-// Sqli - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-type Sqli struct {
+// GetFirewallConfigSqli - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
+type GetFirewallConfigSqli struct {
 	Active bool                                                                         `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction `json:"action"`
 }
 
-func (o *Sqli) GetActive() bool {
+func (o *GetFirewallConfigSqli) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sqli) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction {
+func (o *GetFirewallConfigSqli) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction("")
 	}
@@ -488,20 +488,20 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAct
 	}
 }
 
-// Sf - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-type Sf struct {
+// GetFirewallConfigSf - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
+type GetFirewallConfigSf struct {
 	Active bool                                                                       `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction `json:"action"`
 }
 
-func (o *Sf) GetActive() bool {
+func (o *GetFirewallConfigSf) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sf) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction {
+func (o *GetFirewallConfigSf) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfAction("")
 	}
@@ -534,125 +534,125 @@ func (e *GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaA
 	}
 }
 
-// Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-type Java struct {
+// GetFirewallConfigJava - Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
+type GetFirewallConfigJava struct {
 	Active bool                                                                         `json:"active"`
 	Action GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction `json:"action"`
 }
 
-func (o *Java) GetActive() bool {
+func (o *GetFirewallConfigJava) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Java) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction {
+func (o *GetFirewallConfigJava) GetAction() GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction {
 	if o == nil {
 		return GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaAction("")
 	}
 	return o.Action
 }
 
-// Crs - Custom Ruleset
-type Crs struct {
+// GetFirewallConfigCrs - Custom Ruleset
+type GetFirewallConfigCrs struct {
 	// Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-	Sd Sd `json:"sd"`
+	Sd GetFirewallConfigSd `json:"sd"`
 	// Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-	Ma Ma `json:"ma"`
+	Ma GetFirewallConfigMa `json:"ma"`
 	// Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-	Lfi Lfi `json:"lfi"`
+	Lfi GetFirewallConfigLfi `json:"lfi"`
 	// Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-	Rfi Rfi `json:"rfi"`
+	Rfi GetFirewallConfigRfi `json:"rfi"`
 	// Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-	Rce Rce `json:"rce"`
+	Rce GetFirewallConfigRce `json:"rce"`
 	// PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-	Php Php `json:"php"`
+	Php GetFirewallConfigPhp `json:"php"`
 	// Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-	Gen Gen `json:"gen"`
+	Gen GetFirewallConfigGen `json:"gen"`
 	// XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-	XSS XSS `json:"xss"`
+	XSS GetFirewallConfigXSS `json:"xss"`
 	// SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-	Sqli Sqli `json:"sqli"`
+	Sqli GetFirewallConfigSqli `json:"sqli"`
 	// Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-	Sf Sf `json:"sf"`
+	Sf GetFirewallConfigSf `json:"sf"`
 	// Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-	Java Java `json:"java"`
+	Java GetFirewallConfigJava `json:"java"`
 }
 
-func (o *Crs) GetSd() Sd {
+func (o *GetFirewallConfigCrs) GetSd() GetFirewallConfigSd {
 	if o == nil {
-		return Sd{}
+		return GetFirewallConfigSd{}
 	}
 	return o.Sd
 }
 
-func (o *Crs) GetMa() Ma {
+func (o *GetFirewallConfigCrs) GetMa() GetFirewallConfigMa {
 	if o == nil {
-		return Ma{}
+		return GetFirewallConfigMa{}
 	}
 	return o.Ma
 }
 
-func (o *Crs) GetLfi() Lfi {
+func (o *GetFirewallConfigCrs) GetLfi() GetFirewallConfigLfi {
 	if o == nil {
-		return Lfi{}
+		return GetFirewallConfigLfi{}
 	}
 	return o.Lfi
 }
 
-func (o *Crs) GetRfi() Rfi {
+func (o *GetFirewallConfigCrs) GetRfi() GetFirewallConfigRfi {
 	if o == nil {
-		return Rfi{}
+		return GetFirewallConfigRfi{}
 	}
 	return o.Rfi
 }
 
-func (o *Crs) GetRce() Rce {
+func (o *GetFirewallConfigCrs) GetRce() GetFirewallConfigRce {
 	if o == nil {
-		return Rce{}
+		return GetFirewallConfigRce{}
 	}
 	return o.Rce
 }
 
-func (o *Crs) GetPhp() Php {
+func (o *GetFirewallConfigCrs) GetPhp() GetFirewallConfigPhp {
 	if o == nil {
-		return Php{}
+		return GetFirewallConfigPhp{}
 	}
 	return o.Php
 }
 
-func (o *Crs) GetGen() Gen {
+func (o *GetFirewallConfigCrs) GetGen() GetFirewallConfigGen {
 	if o == nil {
-		return Gen{}
+		return GetFirewallConfigGen{}
 	}
 	return o.Gen
 }
 
-func (o *Crs) GetXSS() XSS {
+func (o *GetFirewallConfigCrs) GetXSS() GetFirewallConfigXSS {
 	if o == nil {
-		return XSS{}
+		return GetFirewallConfigXSS{}
 	}
 	return o.XSS
 }
 
-func (o *Crs) GetSqli() Sqli {
+func (o *GetFirewallConfigCrs) GetSqli() GetFirewallConfigSqli {
 	if o == nil {
-		return Sqli{}
+		return GetFirewallConfigSqli{}
 	}
 	return o.Sqli
 }
 
-func (o *Crs) GetSf() Sf {
+func (o *GetFirewallConfigCrs) GetSf() GetFirewallConfigSf {
 	if o == nil {
-		return Sf{}
+		return GetFirewallConfigSf{}
 	}
 	return o.Sf
 }
 
-func (o *Crs) GetJava() Java {
+func (o *GetFirewallConfigCrs) GetJava() GetFirewallConfigJava {
 	if o == nil {
-		return Java{}
+		return GetFirewallConfigJava{}
 	}
 	return o.Java
 }
@@ -1160,7 +1160,7 @@ func (o *GetFirewallConfigAction) GetMitigate() *GetFirewallConfigMitigate {
 	return o.Mitigate
 }
 
-type Rules struct {
+type GetFirewallConfigRules struct {
 	ID             string                            `json:"id"`
 	Name           string                            `json:"name"`
 	Description    *string                           `json:"description,omitempty"`
@@ -1169,42 +1169,42 @@ type Rules struct {
 	Action         GetFirewallConfigAction           `json:"action"`
 }
 
-func (o *Rules) GetID() string {
+func (o *GetFirewallConfigRules) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Rules) GetName() string {
+func (o *GetFirewallConfigRules) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Rules) GetDescription() *string {
+func (o *GetFirewallConfigRules) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Rules) GetActive() bool {
+func (o *GetFirewallConfigRules) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rules) GetConditionGroup() []GetFirewallConfigConditionGroup {
+func (o *GetFirewallConfigRules) GetConditionGroup() []GetFirewallConfigConditionGroup {
 	if o == nil {
 		return []GetFirewallConfigConditionGroup{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *Rules) GetAction() GetFirewallConfigAction {
+func (o *GetFirewallConfigRules) GetAction() GetFirewallConfigAction {
 	if o == nil {
 		return GetFirewallConfigAction{}
 	}
@@ -1243,7 +1243,7 @@ func (e *GetFirewallConfigSecurityAction) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Ips struct {
+type GetFirewallConfigIps struct {
 	ID       string                          `json:"id"`
 	Hostname string                          `json:"hostname"`
 	IP       string                          `json:"ip"`
@@ -1251,35 +1251,35 @@ type Ips struct {
 	Action   GetFirewallConfigSecurityAction `json:"action"`
 }
 
-func (o *Ips) GetID() string {
+func (o *GetFirewallConfigIps) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Ips) GetHostname() string {
+func (o *GetFirewallConfigIps) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *Ips) GetIP() string {
+func (o *GetFirewallConfigIps) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *Ips) GetNotes() *string {
+func (o *GetFirewallConfigIps) GetNotes() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Notes
 }
 
-func (o *Ips) GetAction() GetFirewallConfigSecurityAction {
+func (o *GetFirewallConfigIps) GetAction() GetFirewallConfigSecurityAction {
 	if o == nil {
 		return GetFirewallConfigSecurityAction("")
 	}
@@ -1318,7 +1318,7 @@ func (e *GetFirewallConfigSecurityResponseAction) UnmarshalJSON(data []byte) err
 	}
 }
 
-type ManagedRules struct {
+type GetFirewallConfigManagedRules struct {
 	Active    bool                                     `json:"active"`
 	Action    *GetFirewallConfigSecurityResponseAction `json:"action,omitempty"`
 	UpdatedAt *string                                  `json:"updatedAt,omitempty"`
@@ -1326,35 +1326,35 @@ type ManagedRules struct {
 	Username  *string                                  `json:"username,omitempty"`
 }
 
-func (o *ManagedRules) GetActive() bool {
+func (o *GetFirewallConfigManagedRules) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *ManagedRules) GetAction() *GetFirewallConfigSecurityResponseAction {
+func (o *GetFirewallConfigManagedRules) GetAction() *GetFirewallConfigSecurityResponseAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-func (o *ManagedRules) GetUpdatedAt() *string {
+func (o *GetFirewallConfigManagedRules) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *ManagedRules) GetUserID() *string {
+func (o *GetFirewallConfigManagedRules) GetUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UserID
 }
 
-func (o *ManagedRules) GetUsername() *string {
+func (o *GetFirewallConfigManagedRules) GetUsername() *string {
 	if o == nil {
 		return nil
 	}
@@ -1370,11 +1370,11 @@ type GetFirewallConfigResponseBody struct {
 	UpdatedAt       string  `json:"updatedAt"`
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
-	Crs          Crs                     `json:"crs"`
-	Rules        []Rules                 `json:"rules"`
-	Ips          []Ips                   `json:"ips"`
-	Changes      []Changes               `json:"changes"`
-	ManagedRules map[string]ManagedRules `json:"managedRules,omitempty"`
+	Crs          GetFirewallConfigCrs                     `json:"crs"`
+	Rules        []GetFirewallConfigRules                 `json:"rules"`
+	Ips          []GetFirewallConfigIps                   `json:"ips"`
+	Changes      []Changes                                `json:"changes"`
+	ManagedRules map[string]GetFirewallConfigManagedRules `json:"managedRules,omitempty"`
 }
 
 func (o *GetFirewallConfigResponseBody) GetOwnerID() string {
@@ -1419,23 +1419,23 @@ func (o *GetFirewallConfigResponseBody) GetFirewallEnabled() bool {
 	return o.FirewallEnabled
 }
 
-func (o *GetFirewallConfigResponseBody) GetCrs() Crs {
+func (o *GetFirewallConfigResponseBody) GetCrs() GetFirewallConfigCrs {
 	if o == nil {
-		return Crs{}
+		return GetFirewallConfigCrs{}
 	}
 	return o.Crs
 }
 
-func (o *GetFirewallConfigResponseBody) GetRules() []Rules {
+func (o *GetFirewallConfigResponseBody) GetRules() []GetFirewallConfigRules {
 	if o == nil {
-		return []Rules{}
+		return []GetFirewallConfigRules{}
 	}
 	return o.Rules
 }
 
-func (o *GetFirewallConfigResponseBody) GetIps() []Ips {
+func (o *GetFirewallConfigResponseBody) GetIps() []GetFirewallConfigIps {
 	if o == nil {
-		return []Ips{}
+		return []GetFirewallConfigIps{}
 	}
 	return o.Ips
 }
@@ -1447,7 +1447,7 @@ func (o *GetFirewallConfigResponseBody) GetChanges() []Changes {
 	return o.Changes
 }
 
-func (o *GetFirewallConfigResponseBody) GetManagedRules() map[string]ManagedRules {
+func (o *GetFirewallConfigResponseBody) GetManagedRules() map[string]GetFirewallConfigManagedRules {
 	if o == nil {
 		return nil
 	}

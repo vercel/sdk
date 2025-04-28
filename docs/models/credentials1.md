@@ -6,7 +6,7 @@
 import { Credentials1 } from "@vercel/sdk/models/userevent.js";
 
 let value: Credentials1 = {
-  type: "github-oauth",
+  type: "google",
   id: "<id>",
 };
 ```

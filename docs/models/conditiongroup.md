@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConditionGroup } from "@vercel/sdk/models/updatefirewallconfigop.js";
+import { ConditionGroup } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: ConditionGroup = {
   conditions: [

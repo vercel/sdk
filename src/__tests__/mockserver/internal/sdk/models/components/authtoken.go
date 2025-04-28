@@ -45,6 +45,7 @@ const (
 	AuthTokenScopesOriginOtp       AuthTokenScopesOrigin = "otp"
 	AuthTokenScopesOriginSms       AuthTokenScopesOrigin = "sms"
 	AuthTokenScopesOriginInvite    AuthTokenScopesOrigin = "invite"
+	AuthTokenScopesOriginGoogle    AuthTokenScopesOrigin = "google"
 )
 
 func (e AuthTokenScopesOrigin) ToPointer() *AuthTokenScopesOrigin {
@@ -75,6 +76,8 @@ func (e *AuthTokenScopesOrigin) UnmarshalJSON(data []byte) error {
 	case "sms":
 		fallthrough
 	case "invite":
+		fallthrough
+	case "google":
 		*e = AuthTokenScopesOrigin(v)
 		return nil
 	default:
@@ -212,6 +215,7 @@ const (
 	ScopesOriginOtp       ScopesOrigin = "otp"
 	ScopesOriginSms       ScopesOrigin = "sms"
 	ScopesOriginInvite    ScopesOrigin = "invite"
+	ScopesOriginGoogle    ScopesOrigin = "google"
 )
 
 func (e ScopesOrigin) ToPointer() *ScopesOrigin {
@@ -242,6 +246,8 @@ func (e *ScopesOrigin) UnmarshalJSON(data []byte) error {
 	case "sms":
 		fallthrough
 	case "invite":
+		fallthrough
+	case "google":
 		*e = ScopesOrigin(v)
 		return nil
 	default:

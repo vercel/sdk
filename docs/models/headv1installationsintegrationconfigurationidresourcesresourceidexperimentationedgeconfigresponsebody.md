@@ -12,8 +12,10 @@ import {
 let value:
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody =
     {
-      items: {},
-      updatedAt: 4017.91,
+      items: {
+        "key": false,
+      },
+      updatedAt: 7001.9,
       digest: "<value>",
     };
 ```

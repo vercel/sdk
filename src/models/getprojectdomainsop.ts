@@ -136,14 +136,14 @@ export type GetProjectDomainsRequest = {
 /**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
-export type GetProjectDomainsVerification = {
+export type ResponseBodyVerification = {
   type: string;
   domain: string;
   value: string;
   reason: string;
 };
 
-export type GetProjectDomainsDomains = {
+export type GetProjectDomainsResponseBodyDomains = {
   name: string;
   apexName: string;
   projectId: string;
@@ -160,19 +160,64 @@ export type GetProjectDomainsDomains = {
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
-  verification?: Array<GetProjectDomainsVerification> | undefined;
+  verification?: Array<ResponseBodyVerification> | undefined;
 };
 
-/**
- * Successful response retrieving a list of domains
- */
-export type GetProjectDomainsResponseBody = {
-  domains: Array<GetProjectDomainsDomains>;
+export type GetProjectDomainsResponseBody2 = {
+  domains: Array<GetProjectDomainsResponseBodyDomains>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
 };
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type GetProjectDomainsResponseBodyVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+export type ResponseBodyDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?: Array<GetProjectDomainsResponseBodyVerification> | undefined;
+};
+
+export type GetProjectDomainsResponseBodyPagination = {
+  count: number;
+  next: number | null;
+  prev: number | null;
+};
+
+export type GetProjectDomainsResponseBody1 = {
+  domains: Array<ResponseBodyDomains>;
+  pagination: GetProjectDomainsResponseBodyPagination;
+};
+
+/**
+ * Successful response retrieving a list of domains
+ */
+export type GetProjectDomainsResponseBody =
+  | GetProjectDomainsResponseBody1
+  | GetProjectDomainsResponseBody2;
 
 /** @internal */
 export const Production$inboundSchema: z.ZodNativeEnum<typeof Production> = z
@@ -366,8 +411,8 @@ export function getProjectDomainsRequestFromJSON(
 }
 
 /** @internal */
-export const GetProjectDomainsVerification$inboundSchema: z.ZodType<
-  GetProjectDomainsVerification,
+export const ResponseBodyVerification$inboundSchema: z.ZodType<
+  ResponseBodyVerification,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -378,7 +423,7 @@ export const GetProjectDomainsVerification$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetProjectDomainsVerification$Outbound = {
+export type ResponseBodyVerification$Outbound = {
   type: string;
   domain: string;
   value: string;
@@ -386,10 +431,10 @@ export type GetProjectDomainsVerification$Outbound = {
 };
 
 /** @internal */
-export const GetProjectDomainsVerification$outboundSchema: z.ZodType<
-  GetProjectDomainsVerification$Outbound,
+export const ResponseBodyVerification$outboundSchema: z.ZodType<
+  ResponseBodyVerification$Outbound,
   z.ZodTypeDef,
-  GetProjectDomainsVerification
+  ResponseBodyVerification
 > = z.object({
   type: z.string(),
   domain: z.string(),
@@ -401,38 +446,36 @@ export const GetProjectDomainsVerification$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectDomainsVerification$ {
-  /** @deprecated use `GetProjectDomainsVerification$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsVerification$inboundSchema;
-  /** @deprecated use `GetProjectDomainsVerification$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsVerification$outboundSchema;
-  /** @deprecated use `GetProjectDomainsVerification$Outbound` instead. */
-  export type Outbound = GetProjectDomainsVerification$Outbound;
+export namespace ResponseBodyVerification$ {
+  /** @deprecated use `ResponseBodyVerification$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyVerification$inboundSchema;
+  /** @deprecated use `ResponseBodyVerification$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyVerification$outboundSchema;
+  /** @deprecated use `ResponseBodyVerification$Outbound` instead. */
+  export type Outbound = ResponseBodyVerification$Outbound;
 }
 
-export function getProjectDomainsVerificationToJSON(
-  getProjectDomainsVerification: GetProjectDomainsVerification,
+export function responseBodyVerificationToJSON(
+  responseBodyVerification: ResponseBodyVerification,
 ): string {
   return JSON.stringify(
-    GetProjectDomainsVerification$outboundSchema.parse(
-      getProjectDomainsVerification,
-    ),
+    ResponseBodyVerification$outboundSchema.parse(responseBodyVerification),
   );
 }
 
-export function getProjectDomainsVerificationFromJSON(
+export function responseBodyVerificationFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectDomainsVerification, SDKValidationError> {
+): SafeParseResult<ResponseBodyVerification, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectDomainsVerification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectDomainsVerification' from JSON`,
+    (x) => ResponseBodyVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVerification' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectDomainsDomains$inboundSchema: z.ZodType<
-  GetProjectDomainsDomains,
+export const GetProjectDomainsResponseBodyDomains$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyDomains,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -446,13 +489,12 @@ export const GetProjectDomainsDomains$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => GetProjectDomainsVerification$inboundSchema),
-  ).optional(),
+  verification: z.array(z.lazy(() => ResponseBodyVerification$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
-export type GetProjectDomainsDomains$Outbound = {
+export type GetProjectDomainsResponseBodyDomains$Outbound = {
   name: string;
   apexName: string;
   projectId: string;
@@ -463,14 +505,208 @@ export type GetProjectDomainsDomains$Outbound = {
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
   verified: boolean;
-  verification?: Array<GetProjectDomainsVerification$Outbound> | undefined;
+  verification?: Array<ResponseBodyVerification$Outbound> | undefined;
 };
 
 /** @internal */
-export const GetProjectDomainsDomains$outboundSchema: z.ZodType<
-  GetProjectDomainsDomains$Outbound,
+export const GetProjectDomainsResponseBodyDomains$outboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyDomains$Outbound,
   z.ZodTypeDef,
-  GetProjectDomainsDomains
+  GetProjectDomainsResponseBodyDomains
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(z.lazy(() => ResponseBodyVerification$outboundSchema))
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectDomainsResponseBodyDomains$ {
+  /** @deprecated use `GetProjectDomainsResponseBodyDomains$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectDomainsResponseBodyDomains$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyDomains$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectDomainsResponseBodyDomains$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyDomains$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBodyDomains$Outbound;
+}
+
+export function getProjectDomainsResponseBodyDomainsToJSON(
+  getProjectDomainsResponseBodyDomains: GetProjectDomainsResponseBodyDomains,
+): string {
+  return JSON.stringify(
+    GetProjectDomainsResponseBodyDomains$outboundSchema.parse(
+      getProjectDomainsResponseBodyDomains,
+    ),
+  );
+}
+
+export function getProjectDomainsResponseBodyDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectDomainsResponseBodyDomains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectDomainsResponseBodyDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectDomainsResponseBodyDomains' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectDomainsResponseBody2$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: z.array(
+    z.lazy(() => GetProjectDomainsResponseBodyDomains$inboundSchema),
+  ),
+  pagination: Pagination$inboundSchema,
+});
+
+/** @internal */
+export type GetProjectDomainsResponseBody2$Outbound = {
+  domains: Array<GetProjectDomainsResponseBodyDomains$Outbound>;
+  pagination: Pagination$Outbound;
+};
+
+/** @internal */
+export const GetProjectDomainsResponseBody2$outboundSchema: z.ZodType<
+  GetProjectDomainsResponseBody2$Outbound,
+  z.ZodTypeDef,
+  GetProjectDomainsResponseBody2
+> = z.object({
+  domains: z.array(
+    z.lazy(() => GetProjectDomainsResponseBodyDomains$outboundSchema),
+  ),
+  pagination: Pagination$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectDomainsResponseBody2$ {
+  /** @deprecated use `GetProjectDomainsResponseBody2$inboundSchema` instead. */
+  export const inboundSchema = GetProjectDomainsResponseBody2$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBody2$outboundSchema` instead. */
+  export const outboundSchema = GetProjectDomainsResponseBody2$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBody2$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBody2$Outbound;
+}
+
+export function getProjectDomainsResponseBody2ToJSON(
+  getProjectDomainsResponseBody2: GetProjectDomainsResponseBody2,
+): string {
+  return JSON.stringify(
+    GetProjectDomainsResponseBody2$outboundSchema.parse(
+      getProjectDomainsResponseBody2,
+    ),
+  );
+}
+
+export function getProjectDomainsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectDomainsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectDomainsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectDomainsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyVerification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/** @internal */
+export type GetProjectDomainsResponseBodyVerification$Outbound = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/** @internal */
+export const GetProjectDomainsResponseBodyVerification$outboundSchema:
+  z.ZodType<
+    GetProjectDomainsResponseBodyVerification$Outbound,
+    z.ZodTypeDef,
+    GetProjectDomainsResponseBodyVerification
+  > = z.object({
+    type: z.string(),
+    domain: z.string(),
+    value: z.string(),
+    reason: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectDomainsResponseBodyVerification$ {
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectDomainsResponseBodyVerification$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectDomainsResponseBodyVerification$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBodyVerification$Outbound;
+}
+
+export function getProjectDomainsResponseBodyVerificationToJSON(
+  getProjectDomainsResponseBodyVerification:
+    GetProjectDomainsResponseBodyVerification,
+): string {
+  return JSON.stringify(
+    GetProjectDomainsResponseBodyVerification$outboundSchema.parse(
+      getProjectDomainsResponseBodyVerification,
+    ),
+  );
+}
+
+export function getProjectDomainsResponseBodyVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectDomainsResponseBodyVerification,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectDomainsResponseBodyVerification$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectDomainsResponseBodyVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyDomains$inboundSchema: z.ZodType<
+  ResponseBodyDomains,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
   name: z.string(),
   apexName: z.string(),
@@ -483,7 +719,45 @@ export const GetProjectDomainsDomains$outboundSchema: z.ZodType<
   createdAt: z.number().optional(),
   verified: z.boolean(),
   verification: z.array(
-    z.lazy(() => GetProjectDomainsVerification$outboundSchema),
+    z.lazy(() => GetProjectDomainsResponseBodyVerification$inboundSchema),
+  ).optional(),
+});
+
+/** @internal */
+export type ResponseBodyDomains$Outbound = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  verified: boolean;
+  verification?:
+    | Array<GetProjectDomainsResponseBodyVerification$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const ResponseBodyDomains$outboundSchema: z.ZodType<
+  ResponseBodyDomains$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyDomains
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(
+    z.lazy(() => GetProjectDomainsResponseBodyVerification$outboundSchema),
   ).optional(),
 });
 
@@ -491,30 +765,164 @@ export const GetProjectDomainsDomains$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectDomainsDomains$ {
-  /** @deprecated use `GetProjectDomainsDomains$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsDomains$inboundSchema;
-  /** @deprecated use `GetProjectDomainsDomains$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsDomains$outboundSchema;
-  /** @deprecated use `GetProjectDomainsDomains$Outbound` instead. */
-  export type Outbound = GetProjectDomainsDomains$Outbound;
+export namespace ResponseBodyDomains$ {
+  /** @deprecated use `ResponseBodyDomains$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyDomains$inboundSchema;
+  /** @deprecated use `ResponseBodyDomains$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyDomains$outboundSchema;
+  /** @deprecated use `ResponseBodyDomains$Outbound` instead. */
+  export type Outbound = ResponseBodyDomains$Outbound;
 }
 
-export function getProjectDomainsDomainsToJSON(
-  getProjectDomainsDomains: GetProjectDomainsDomains,
+export function responseBodyDomainsToJSON(
+  responseBodyDomains: ResponseBodyDomains,
 ): string {
   return JSON.stringify(
-    GetProjectDomainsDomains$outboundSchema.parse(getProjectDomainsDomains),
+    ResponseBodyDomains$outboundSchema.parse(responseBodyDomains),
   );
 }
 
-export function getProjectDomainsDomainsFromJSON(
+export function responseBodyDomainsFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectDomainsDomains, SDKValidationError> {
+): SafeParseResult<ResponseBodyDomains, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectDomainsDomains$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectDomainsDomains' from JSON`,
+    (x) => ResponseBodyDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyDomains' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectDomainsResponseBodyPagination$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyPagination,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  count: z.number(),
+  next: z.nullable(z.number()),
+  prev: z.nullable(z.number()),
+});
+
+/** @internal */
+export type GetProjectDomainsResponseBodyPagination$Outbound = {
+  count: number;
+  next: number | null;
+  prev: number | null;
+};
+
+/** @internal */
+export const GetProjectDomainsResponseBodyPagination$outboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyPagination$Outbound,
+  z.ZodTypeDef,
+  GetProjectDomainsResponseBodyPagination
+> = z.object({
+  count: z.number(),
+  next: z.nullable(z.number()),
+  prev: z.nullable(z.number()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectDomainsResponseBodyPagination$ {
+  /** @deprecated use `GetProjectDomainsResponseBodyPagination$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectDomainsResponseBodyPagination$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyPagination$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectDomainsResponseBodyPagination$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyPagination$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBodyPagination$Outbound;
+}
+
+export function getProjectDomainsResponseBodyPaginationToJSON(
+  getProjectDomainsResponseBodyPagination:
+    GetProjectDomainsResponseBodyPagination,
+): string {
+  return JSON.stringify(
+    GetProjectDomainsResponseBodyPagination$outboundSchema.parse(
+      getProjectDomainsResponseBodyPagination,
+    ),
+  );
+}
+
+export function getProjectDomainsResponseBodyPaginationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectDomainsResponseBodyPagination,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectDomainsResponseBodyPagination$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectDomainsResponseBodyPagination' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectDomainsResponseBody1$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: z.array(z.lazy(() => ResponseBodyDomains$inboundSchema)),
+  pagination: z.lazy(() =>
+    GetProjectDomainsResponseBodyPagination$inboundSchema
+  ),
+});
+
+/** @internal */
+export type GetProjectDomainsResponseBody1$Outbound = {
+  domains: Array<ResponseBodyDomains$Outbound>;
+  pagination: GetProjectDomainsResponseBodyPagination$Outbound;
+};
+
+/** @internal */
+export const GetProjectDomainsResponseBody1$outboundSchema: z.ZodType<
+  GetProjectDomainsResponseBody1$Outbound,
+  z.ZodTypeDef,
+  GetProjectDomainsResponseBody1
+> = z.object({
+  domains: z.array(z.lazy(() => ResponseBodyDomains$outboundSchema)),
+  pagination: z.lazy(() =>
+    GetProjectDomainsResponseBodyPagination$outboundSchema
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectDomainsResponseBody1$ {
+  /** @deprecated use `GetProjectDomainsResponseBody1$inboundSchema` instead. */
+  export const inboundSchema = GetProjectDomainsResponseBody1$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBody1$outboundSchema` instead. */
+  export const outboundSchema = GetProjectDomainsResponseBody1$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBody1$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBody1$Outbound;
+}
+
+export function getProjectDomainsResponseBody1ToJSON(
+  getProjectDomainsResponseBody1: GetProjectDomainsResponseBody1,
+): string {
+  return JSON.stringify(
+    GetProjectDomainsResponseBody1$outboundSchema.parse(
+      getProjectDomainsResponseBody1,
+    ),
+  );
+}
+
+export function getProjectDomainsResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectDomainsResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectDomainsResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectDomainsResponseBody1' from JSON`,
   );
 }
 
@@ -523,26 +931,25 @@ export const GetProjectDomainsResponseBody$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domains: z.array(z.lazy(() => GetProjectDomainsDomains$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetProjectDomainsResponseBody1$inboundSchema),
+  z.lazy(() => GetProjectDomainsResponseBody2$inboundSchema),
+]);
 
 /** @internal */
-export type GetProjectDomainsResponseBody$Outbound = {
-  domains: Array<GetProjectDomainsDomains$Outbound>;
-  pagination: Pagination$Outbound;
-};
+export type GetProjectDomainsResponseBody$Outbound =
+  | GetProjectDomainsResponseBody1$Outbound
+  | GetProjectDomainsResponseBody2$Outbound;
 
 /** @internal */
 export const GetProjectDomainsResponseBody$outboundSchema: z.ZodType<
   GetProjectDomainsResponseBody$Outbound,
   z.ZodTypeDef,
   GetProjectDomainsResponseBody
-> = z.object({
-  domains: z.array(z.lazy(() => GetProjectDomainsDomains$outboundSchema)),
-  pagination: Pagination$outboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetProjectDomainsResponseBody1$outboundSchema),
+  z.lazy(() => GetProjectDomainsResponseBody2$outboundSchema),
+]);
 
 /**
  * @internal

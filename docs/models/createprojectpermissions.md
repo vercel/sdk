@@ -94,6 +94,7 @@ let value: CreateProjectPermissions = {};
 | `notificationCustomerBudget`                 | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `notificationStatementOfReasons`             | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `observabilityConfiguration`                 | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `observabilityNotebook`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `openTelemetryEndpoint`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `paymentMethod`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `permissions`                                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

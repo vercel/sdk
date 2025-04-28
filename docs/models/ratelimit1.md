@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RateLimit1 } from "@vercel/sdk/models/updatefirewallconfigop.js";
+import { RateLimit1 } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: RateLimit1 = {
   algo: "token_bucket",
@@ -17,10 +17,10 @@ let value: RateLimit1 = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `algo`                                             | [models.RateLimitAlgo](../models/ratelimitalgo.md) | :heavy_check_mark:                                 | N/A                                                |
-| `window`                                           | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `limit`                                            | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `keys`                                             | *string*[]                                         | :heavy_check_mark:                                 | N/A                                                |
-| `action`                                           | *models.RateLimitAction*                           | :heavy_minus_sign:                                 | N/A                                                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `algo`                           | [models.Algo](../models/algo.md) | :heavy_check_mark:               | N/A                              |
+| `window`                         | *number*                         | :heavy_check_mark:               | N/A                              |
+| `limit`                          | *number*                         | :heavy_check_mark:               | N/A                              |
+| `keys`                           | *string*[]                       | :heavy_check_mark:               | N/A                              |
+| `action`                         | *models.RateLimitAction*         | :heavy_minus_sign:               | N/A                              |

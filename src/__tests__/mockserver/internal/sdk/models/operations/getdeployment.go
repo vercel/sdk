@@ -505,10 +505,232 @@ func (e *GetDeploymentResponseBodyChecksConclusion) UnmarshalJSON(data []byte) e
 	}
 }
 
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type = "bitbucket"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSource12 struct {
+	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type `json:"type"`
+	Ref           string                                                                         `json:"ref"`
+	Sha           string                                                                         `json:"sha"`
+	Owner         *string                                                                        `json:"owner,omitempty"`
+	Slug          *string                                                                        `json:"slug,omitempty"`
+	WorkspaceUUID string                                                                         `json:"workspaceUuid"`
+	RepoUUID      string                                                                         `json:"repoUuid"`
+}
+
+func (o *GetDeploymentGitSource12) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSource12) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSource12) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSource12) GetOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Owner
+}
+
+func (o *GetDeploymentGitSource12) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentGitSource12) GetWorkspaceUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GetDeploymentGitSource12) GetRepoUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RepoUUID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type = "gitlab"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSource11 struct {
+	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type `json:"type"`
+	Ref       string                                                                         `json:"ref"`
+	Sha       string                                                                         `json:"sha"`
+	ProjectID float64                                                                        `json:"projectId"`
+}
+
+func (o *GetDeploymentGitSource11) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSource11) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSource11) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSource11) GetProjectID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ProjectID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type = "github"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSource10 struct {
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type `json:"type"`
+	Host   string                                                                         `json:"host"`
+	Ref    string                                                                         `json:"ref"`
+	Sha    string                                                                         `json:"sha"`
+	RepoID float64                                                                        `json:"repoId"`
+	Org    *string                                                                        `json:"org,omitempty"`
+	Repo   *string                                                                        `json:"repo,omitempty"`
+}
+
+func (o *GetDeploymentGitSource10) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSource10) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GetDeploymentGitSource10) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSource10) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSource10) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GetDeploymentGitSource10) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *GetDeploymentGitSource10) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type = "bitbucket"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type = "github"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type {
@@ -520,7 +742,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "github":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type(v)
 		return nil
 	default:
@@ -529,13 +751,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 }
 
 type GetDeploymentGitSource9 struct {
-	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type `json:"type"`
-	Ref           string                                                                        `json:"ref"`
-	Sha           string                                                                        `json:"sha"`
-	Owner         *string                                                                       `json:"owner,omitempty"`
-	Slug          *string                                                                       `json:"slug,omitempty"`
-	WorkspaceUUID string                                                                        `json:"workspaceUuid"`
-	RepoUUID      string                                                                        `json:"repoUuid"`
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type `json:"type"`
+	Ref    string                                                                        `json:"ref"`
+	Sha    string                                                                        `json:"sha"`
+	RepoID float64                                                                       `json:"repoId"`
+	Org    *string                                                                       `json:"org,omitempty"`
+	Repo   *string                                                                       `json:"repo,omitempty"`
 }
 
 func (o *GetDeploymentGitSource9) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type {
@@ -559,38 +780,31 @@ func (o *GetDeploymentGitSource9) GetSha() string {
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSource9) GetOwner() *string {
+func (o *GetDeploymentGitSource9) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GetDeploymentGitSource9) GetOrg() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Owner
+	return o.Org
 }
 
-func (o *GetDeploymentGitSource9) GetSlug() *string {
+func (o *GetDeploymentGitSource9) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Slug
-}
-
-func (o *GetDeploymentGitSource9) GetWorkspaceUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GetDeploymentGitSource9) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
+	return o.Repo
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type = "gitlab"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28TypeCustom GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type = "custom"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type {
@@ -602,7 +816,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "gitlab":
+	case "custom":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type(v)
 		return nil
 	default:
@@ -610,11 +824,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 	}
 }
 
+// GetDeploymentGitSource8 - Allows custom git sources (local folder mounted to the container) in test mode
 type GetDeploymentGitSource8 struct {
-	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type `json:"type"`
-	Ref       string                                                                        `json:"ref"`
-	Sha       string                                                                        `json:"sha"`
-	ProjectID float64                                                                       `json:"projectId"`
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type `json:"type"`
+	Ref    string                                                                        `json:"ref"`
+	Sha    string                                                                        `json:"sha"`
+	GitURL string                                                                        `json:"gitUrl"`
 }
 
 func (o *GetDeploymentGitSource8) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type {
@@ -638,17 +853,17 @@ func (o *GetDeploymentGitSource8) GetSha() string {
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSource8) GetProjectID() float64 {
+func (o *GetDeploymentGitSource8) GetGitURL() string {
 	if o == nil {
-		return 0.0
+		return ""
 	}
-	return o.ProjectID
+	return o.GitURL
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type = "github"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type = "bitbucket"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type {
@@ -660,7 +875,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "github":
+	case "bitbucket":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type(v)
 		return nil
 	default:
@@ -669,12 +884,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 }
 
 type GetDeploymentGitSource7 struct {
-	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type `json:"type"`
-	Ref    string                                                                        `json:"ref"`
-	Sha    string                                                                        `json:"sha"`
-	RepoID float64                                                                       `json:"repoId"`
-	Org    *string                                                                       `json:"org,omitempty"`
-	Repo   *string                                                                       `json:"repo,omitempty"`
+	Type  GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type `json:"type"`
+	Owner string                                                                        `json:"owner"`
+	Slug  string                                                                        `json:"slug"`
+	Ref   *string                                                                       `json:"ref,omitempty"`
+	Sha   *string                                                                       `json:"sha,omitempty"`
+	PrID  *float64                                                                      `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSource7) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type {
@@ -684,45 +899,45 @@ func (o *GetDeploymentGitSource7) GetType() GetDeploymentGitSourceDeploymentsRes
 	return o.Type
 }
 
-func (o *GetDeploymentGitSource7) GetRef() string {
+func (o *GetDeploymentGitSource7) GetOwner() string {
 	if o == nil {
 		return ""
+	}
+	return o.Owner
+}
+
+func (o *GetDeploymentGitSource7) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentGitSource7) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GetDeploymentGitSource7) GetSha() string {
+func (o *GetDeploymentGitSource7) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSource7) GetRepoID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.RepoID
-}
-
-func (o *GetDeploymentGitSource7) GetOrg() *string {
+func (o *GetDeploymentGitSource7) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Org
-}
-
-func (o *GetDeploymentGitSource7) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
+	return o.PrID
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26TypeCustom GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type = "custom"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type = "bitbucket"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type {
@@ -734,7 +949,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "custom":
+	case "bitbucket":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type(v)
 		return nil
 	default:
@@ -742,12 +957,13 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 	}
 }
 
-// GetDeploymentGitSource6 - Allows custom git sources (local folder mounted to the container) in test mode
 type GetDeploymentGitSource6 struct {
-	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type `json:"type"`
-	Ref    string                                                                        `json:"ref"`
-	Sha    string                                                                        `json:"sha"`
-	GitURL string                                                                        `json:"gitUrl"`
+	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type `json:"type"`
+	WorkspaceUUID *string                                                                       `json:"workspaceUuid,omitempty"`
+	RepoUUID      string                                                                        `json:"repoUuid"`
+	Ref           *string                                                                       `json:"ref,omitempty"`
+	Sha           *string                                                                       `json:"sha,omitempty"`
+	PrID          *float64                                                                      `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSource6) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type {
@@ -757,31 +973,45 @@ func (o *GetDeploymentGitSource6) GetType() GetDeploymentGitSourceDeploymentsRes
 	return o.Type
 }
 
-func (o *GetDeploymentGitSource6) GetRef() string {
+func (o *GetDeploymentGitSource6) GetWorkspaceUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GetDeploymentGitSource6) GetRepoUUID() string {
 	if o == nil {
 		return ""
+	}
+	return o.RepoUUID
+}
+
+func (o *GetDeploymentGitSource6) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GetDeploymentGitSource6) GetSha() string {
+func (o *GetDeploymentGitSource6) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSource6) GetGitURL() string {
+func (o *GetDeploymentGitSource6) GetPrID() *float64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.GitURL
+	return o.PrID
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type = "bitbucket"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type = "gitlab"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type {
@@ -793,159 +1023,11 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "gitlab":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type: %v", v)
-	}
-}
-
-type GetDeploymentGitSource5 struct {
-	Type  GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type `json:"type"`
-	Owner string                                                                        `json:"owner"`
-	Slug  string                                                                        `json:"slug"`
-	Ref   *string                                                                       `json:"ref,omitempty"`
-	Sha   *string                                                                       `json:"sha,omitempty"`
-	PrID  *float64                                                                      `json:"prId,omitempty"`
-}
-
-func (o *GetDeploymentGitSource5) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type {
-	if o == nil {
-		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type("")
-	}
-	return o.Type
-}
-
-func (o *GetDeploymentGitSource5) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
-}
-
-func (o *GetDeploymentGitSource5) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
-}
-
-func (o *GetDeploymentGitSource5) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GetDeploymentGitSource5) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GetDeploymentGitSource5) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type string
-
-const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type = "bitbucket"
-)
-
-func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type {
-	return &e
-}
-func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type: %v", v)
-	}
-}
-
-type GetDeploymentGitSource4 struct {
-	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type `json:"type"`
-	WorkspaceUUID *string                                                                       `json:"workspaceUuid,omitempty"`
-	RepoUUID      string                                                                        `json:"repoUuid"`
-	Ref           *string                                                                       `json:"ref,omitempty"`
-	Sha           *string                                                                       `json:"sha,omitempty"`
-	PrID          *float64                                                                      `json:"prId,omitempty"`
-}
-
-func (o *GetDeploymentGitSource4) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type {
-	if o == nil {
-		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type("")
-	}
-	return o.Type
-}
-
-func (o *GetDeploymentGitSource4) GetWorkspaceUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GetDeploymentGitSource4) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
-}
-
-func (o *GetDeploymentGitSource4) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GetDeploymentGitSource4) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GetDeploymentGitSource4) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type string
-
-const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type = "gitlab"
-)
-
-func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type {
-	return &e
-}
-func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gitlab":
-		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type: %v", v)
 	}
 }
 
@@ -1012,12 +1094,224 @@ func (u GetDeploymentGitSourceDeploymentsProjectID) MarshalJSON() ([]byte, error
 	return nil, errors.New("could not marshal union type GetDeploymentGitSourceDeploymentsProjectID: all fields are null")
 }
 
-type GetDeploymentGitSource3 struct {
-	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type `json:"type"`
+type GetDeploymentGitSource5 struct {
+	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type `json:"type"`
 	ProjectID GetDeploymentGitSourceDeploymentsProjectID                                    `json:"projectId"`
 	Ref       *string                                                                       `json:"ref,omitempty"`
 	Sha       *string                                                                       `json:"sha,omitempty"`
 	PrID      *float64                                                                      `json:"prId,omitempty"`
+}
+
+func (o *GetDeploymentGitSource5) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSource5) GetProjectID() GetDeploymentGitSourceDeploymentsProjectID {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsProjectID{}
+	}
+	return o.ProjectID
+}
+
+func (o *GetDeploymentGitSource5) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSource5) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSource5) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24TypeGithubCustomHost GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type = "github-custom-host"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSource4 struct {
+	Type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type `json:"type"`
+	Host string                                                                        `json:"host"`
+	Org  string                                                                        `json:"org"`
+	Repo string                                                                        `json:"repo"`
+	Ref  *string                                                                       `json:"ref,omitempty"`
+	Sha  *string                                                                       `json:"sha,omitempty"`
+	PrID *float64                                                                      `json:"prId,omitempty"`
+}
+
+func (o *GetDeploymentGitSource4) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSource4) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GetDeploymentGitSource4) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GetDeploymentGitSource4) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GetDeploymentGitSource4) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSource4) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSource4) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23TypeGithubCustomHost GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type = "github-custom-host"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeploymentsRepoIDType string
+
+const (
+	GetDeploymentGitSourceDeploymentsRepoIDTypeStr    GetDeploymentGitSourceDeploymentsRepoIDType = "str"
+	GetDeploymentGitSourceDeploymentsRepoIDTypeNumber GetDeploymentGitSourceDeploymentsRepoIDType = "number"
+)
+
+type GetDeploymentGitSourceDeploymentsRepoID struct {
+	Str    *string
+	Number *float64
+
+	Type GetDeploymentGitSourceDeploymentsRepoIDType
+}
+
+func CreateGetDeploymentGitSourceDeploymentsRepoIDStr(str string) GetDeploymentGitSourceDeploymentsRepoID {
+	typ := GetDeploymentGitSourceDeploymentsRepoIDTypeStr
+
+	return GetDeploymentGitSourceDeploymentsRepoID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentGitSourceDeploymentsRepoIDNumber(number float64) GetDeploymentGitSourceDeploymentsRepoID {
+	typ := GetDeploymentGitSourceDeploymentsRepoIDTypeNumber
+
+	return GetDeploymentGitSourceDeploymentsRepoID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentGitSourceDeploymentsRepoID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentGitSourceDeploymentsRepoIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentGitSourceDeploymentsRepoIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceDeploymentsRepoID", string(data))
+}
+
+func (u GetDeploymentGitSourceDeploymentsRepoID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentGitSourceDeploymentsRepoID: all fields are null")
+}
+
+type GetDeploymentGitSource3 struct {
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type `json:"type"`
+	Host   string                                                                        `json:"host"`
+	RepoID GetDeploymentGitSourceDeploymentsRepoID                                       `json:"repoId"`
+	Ref    *string                                                                       `json:"ref,omitempty"`
+	Sha    *string                                                                       `json:"sha,omitempty"`
+	PrID   *float64                                                                      `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSource3) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type {
@@ -1027,11 +1321,18 @@ func (o *GetDeploymentGitSource3) GetType() GetDeploymentGitSourceDeploymentsRes
 	return o.Type
 }
 
-func (o *GetDeploymentGitSource3) GetProjectID() GetDeploymentGitSourceDeploymentsProjectID {
+func (o *GetDeploymentGitSource3) GetHost() string {
 	if o == nil {
-		return GetDeploymentGitSourceDeploymentsProjectID{}
+		return ""
 	}
-	return o.ProjectID
+	return o.Host
+}
+
+func (o *GetDeploymentGitSource3) GetRepoID() GetDeploymentGitSourceDeploymentsRepoID {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsRepoID{}
+	}
+	return o.RepoID
 }
 
 func (o *GetDeploymentGitSource3) GetRef() *string {
@@ -1152,58 +1453,58 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 	}
 }
 
-type GetDeploymentGitSourceDeploymentsRepoIDType string
+type GetDeploymentGitSourceRepoIDType string
 
 const (
-	GetDeploymentGitSourceDeploymentsRepoIDTypeStr    GetDeploymentGitSourceDeploymentsRepoIDType = "str"
-	GetDeploymentGitSourceDeploymentsRepoIDTypeNumber GetDeploymentGitSourceDeploymentsRepoIDType = "number"
+	GetDeploymentGitSourceRepoIDTypeStr    GetDeploymentGitSourceRepoIDType = "str"
+	GetDeploymentGitSourceRepoIDTypeNumber GetDeploymentGitSourceRepoIDType = "number"
 )
 
-type GetDeploymentGitSourceDeploymentsRepoID struct {
+type GetDeploymentGitSourceRepoID struct {
 	Str    *string
 	Number *float64
 
-	Type GetDeploymentGitSourceDeploymentsRepoIDType
+	Type GetDeploymentGitSourceRepoIDType
 }
 
-func CreateGetDeploymentGitSourceDeploymentsRepoIDStr(str string) GetDeploymentGitSourceDeploymentsRepoID {
-	typ := GetDeploymentGitSourceDeploymentsRepoIDTypeStr
+func CreateGetDeploymentGitSourceRepoIDStr(str string) GetDeploymentGitSourceRepoID {
+	typ := GetDeploymentGitSourceRepoIDTypeStr
 
-	return GetDeploymentGitSourceDeploymentsRepoID{
+	return GetDeploymentGitSourceRepoID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetDeploymentGitSourceDeploymentsRepoIDNumber(number float64) GetDeploymentGitSourceDeploymentsRepoID {
-	typ := GetDeploymentGitSourceDeploymentsRepoIDTypeNumber
+func CreateGetDeploymentGitSourceRepoIDNumber(number float64) GetDeploymentGitSourceRepoID {
+	typ := GetDeploymentGitSourceRepoIDTypeNumber
 
-	return GetDeploymentGitSourceDeploymentsRepoID{
+	return GetDeploymentGitSourceRepoID{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *GetDeploymentGitSourceDeploymentsRepoID) UnmarshalJSON(data []byte) error {
+func (u *GetDeploymentGitSourceRepoID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = GetDeploymentGitSourceDeploymentsRepoIDTypeStr
+		u.Type = GetDeploymentGitSourceRepoIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = GetDeploymentGitSourceDeploymentsRepoIDTypeNumber
+		u.Type = GetDeploymentGitSourceRepoIDTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceDeploymentsRepoID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceRepoID", string(data))
 }
 
-func (u GetDeploymentGitSourceDeploymentsRepoID) MarshalJSON() ([]byte, error) {
+func (u GetDeploymentGitSourceRepoID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -1212,12 +1513,12 @@ func (u GetDeploymentGitSourceDeploymentsRepoID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDeploymentGitSourceDeploymentsRepoID: all fields are null")
+	return nil, errors.New("could not marshal union type GetDeploymentGitSourceRepoID: all fields are null")
 }
 
 type GetDeploymentGitSource1 struct {
 	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody2Type `json:"type"`
-	RepoID GetDeploymentGitSourceDeploymentsRepoID                                      `json:"repoId"`
+	RepoID GetDeploymentGitSourceRepoID                                                 `json:"repoId"`
 	Ref    *string                                                                      `json:"ref,omitempty"`
 	Sha    *string                                                                      `json:"sha,omitempty"`
 	PrID   *float64                                                                     `json:"prId,omitempty"`
@@ -1230,9 +1531,9 @@ func (o *GetDeploymentGitSource1) GetType() GetDeploymentGitSourceDeploymentsRes
 	return o.Type
 }
 
-func (o *GetDeploymentGitSource1) GetRepoID() GetDeploymentGitSourceDeploymentsRepoID {
+func (o *GetDeploymentGitSource1) GetRepoID() GetDeploymentGitSourceRepoID {
 	if o == nil {
-		return GetDeploymentGitSourceDeploymentsRepoID{}
+		return GetDeploymentGitSourceRepoID{}
 	}
 	return o.RepoID
 }
@@ -1261,27 +1562,33 @@ func (o *GetDeploymentGitSource1) GetPrID() *float64 {
 type ResponseBodyGitSourceType string
 
 const (
-	ResponseBodyGitSourceTypeGetDeploymentGitSource1 ResponseBodyGitSourceType = "getDeployment_gitSource_1"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource2 ResponseBodyGitSourceType = "getDeployment_gitSource_2"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource3 ResponseBodyGitSourceType = "getDeployment_gitSource_3"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource4 ResponseBodyGitSourceType = "getDeployment_gitSource_4"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource5 ResponseBodyGitSourceType = "getDeployment_gitSource_5"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource6 ResponseBodyGitSourceType = "getDeployment_gitSource_6"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource7 ResponseBodyGitSourceType = "getDeployment_gitSource_7"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource8 ResponseBodyGitSourceType = "getDeployment_gitSource_8"
-	ResponseBodyGitSourceTypeGetDeploymentGitSource9 ResponseBodyGitSourceType = "getDeployment_gitSource_9"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource1  ResponseBodyGitSourceType = "getDeployment_gitSource_1"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource2  ResponseBodyGitSourceType = "getDeployment_gitSource_2"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource3  ResponseBodyGitSourceType = "getDeployment_gitSource_3"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource4  ResponseBodyGitSourceType = "getDeployment_gitSource_4"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource5  ResponseBodyGitSourceType = "getDeployment_gitSource_5"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource6  ResponseBodyGitSourceType = "getDeployment_gitSource_6"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource7  ResponseBodyGitSourceType = "getDeployment_gitSource_7"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource8  ResponseBodyGitSourceType = "getDeployment_gitSource_8"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource9  ResponseBodyGitSourceType = "getDeployment_gitSource_9"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource10 ResponseBodyGitSourceType = "getDeployment_gitSource_10"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource11 ResponseBodyGitSourceType = "getDeployment_gitSource_11"
+	ResponseBodyGitSourceTypeGetDeploymentGitSource12 ResponseBodyGitSourceType = "getDeployment_gitSource_12"
 )
 
 type ResponseBodyGitSource struct {
-	GetDeploymentGitSource1 *GetDeploymentGitSource1
-	GetDeploymentGitSource2 *GetDeploymentGitSource2
-	GetDeploymentGitSource3 *GetDeploymentGitSource3
-	GetDeploymentGitSource4 *GetDeploymentGitSource4
-	GetDeploymentGitSource5 *GetDeploymentGitSource5
-	GetDeploymentGitSource6 *GetDeploymentGitSource6
-	GetDeploymentGitSource7 *GetDeploymentGitSource7
-	GetDeploymentGitSource8 *GetDeploymentGitSource8
-	GetDeploymentGitSource9 *GetDeploymentGitSource9
+	GetDeploymentGitSource1  *GetDeploymentGitSource1
+	GetDeploymentGitSource2  *GetDeploymentGitSource2
+	GetDeploymentGitSource3  *GetDeploymentGitSource3
+	GetDeploymentGitSource4  *GetDeploymentGitSource4
+	GetDeploymentGitSource5  *GetDeploymentGitSource5
+	GetDeploymentGitSource6  *GetDeploymentGitSource6
+	GetDeploymentGitSource7  *GetDeploymentGitSource7
+	GetDeploymentGitSource8  *GetDeploymentGitSource8
+	GetDeploymentGitSource9  *GetDeploymentGitSource9
+	GetDeploymentGitSource10 *GetDeploymentGitSource10
+	GetDeploymentGitSource11 *GetDeploymentGitSource11
+	GetDeploymentGitSource12 *GetDeploymentGitSource12
 
 	Type ResponseBodyGitSourceType
 }
@@ -1367,19 +1674,46 @@ func CreateResponseBodyGitSourceGetDeploymentGitSource9(getDeploymentGitSource9 
 	}
 }
 
-func (u *ResponseBodyGitSource) UnmarshalJSON(data []byte) error {
+func CreateResponseBodyGitSourceGetDeploymentGitSource10(getDeploymentGitSource10 GetDeploymentGitSource10) ResponseBodyGitSource {
+	typ := ResponseBodyGitSourceTypeGetDeploymentGitSource10
 
-	var getDeploymentGitSource6 GetDeploymentGitSource6 = GetDeploymentGitSource6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource6, "", true, true); err == nil {
-		u.GetDeploymentGitSource6 = &getDeploymentGitSource6
-		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource6
-		return nil
+	return ResponseBodyGitSource{
+		GetDeploymentGitSource10: &getDeploymentGitSource10,
+		Type:                     typ,
 	}
+}
+
+func CreateResponseBodyGitSourceGetDeploymentGitSource11(getDeploymentGitSource11 GetDeploymentGitSource11) ResponseBodyGitSource {
+	typ := ResponseBodyGitSourceTypeGetDeploymentGitSource11
+
+	return ResponseBodyGitSource{
+		GetDeploymentGitSource11: &getDeploymentGitSource11,
+		Type:                     typ,
+	}
+}
+
+func CreateResponseBodyGitSourceGetDeploymentGitSource12(getDeploymentGitSource12 GetDeploymentGitSource12) ResponseBodyGitSource {
+	typ := ResponseBodyGitSourceTypeGetDeploymentGitSource12
+
+	return ResponseBodyGitSource{
+		GetDeploymentGitSource12: &getDeploymentGitSource12,
+		Type:                     typ,
+	}
+}
+
+func (u *ResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentGitSource8 GetDeploymentGitSource8 = GetDeploymentGitSource8{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource8, "", true, true); err == nil {
 		u.GetDeploymentGitSource8 = &getDeploymentGitSource8
 		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource8
+		return nil
+	}
+
+	var getDeploymentGitSource11 GetDeploymentGitSource11 = GetDeploymentGitSource11{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource11, "", true, true); err == nil {
+		u.GetDeploymentGitSource11 = &getDeploymentGitSource11
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource11
 		return nil
 	}
 
@@ -1390,10 +1724,10 @@ func (u *ResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getDeploymentGitSource3 GetDeploymentGitSource3 = GetDeploymentGitSource3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource3, "", true, true); err == nil {
-		u.GetDeploymentGitSource3 = &getDeploymentGitSource3
-		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource3
+	var getDeploymentGitSource5 GetDeploymentGitSource5 = GetDeploymentGitSource5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource5, "", true, true); err == nil {
+		u.GetDeploymentGitSource5 = &getDeploymentGitSource5
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource5
 		return nil
 	}
 
@@ -1404,17 +1738,17 @@ func (u *ResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getDeploymentGitSource4 GetDeploymentGitSource4 = GetDeploymentGitSource4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource4, "", true, true); err == nil {
-		u.GetDeploymentGitSource4 = &getDeploymentGitSource4
-		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource4
+	var getDeploymentGitSource3 GetDeploymentGitSource3 = GetDeploymentGitSource3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource3, "", true, true); err == nil {
+		u.GetDeploymentGitSource3 = &getDeploymentGitSource3
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource3
 		return nil
 	}
 
-	var getDeploymentGitSource5 GetDeploymentGitSource5 = GetDeploymentGitSource5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource5, "", true, true); err == nil {
-		u.GetDeploymentGitSource5 = &getDeploymentGitSource5
-		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource5
+	var getDeploymentGitSource6 GetDeploymentGitSource6 = GetDeploymentGitSource6{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource6, "", true, true); err == nil {
+		u.GetDeploymentGitSource6 = &getDeploymentGitSource6
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource6
 		return nil
 	}
 
@@ -1429,6 +1763,27 @@ func (u *ResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource9, "", true, true); err == nil {
 		u.GetDeploymentGitSource9 = &getDeploymentGitSource9
 		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource9
+		return nil
+	}
+
+	var getDeploymentGitSource4 GetDeploymentGitSource4 = GetDeploymentGitSource4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource4, "", true, true); err == nil {
+		u.GetDeploymentGitSource4 = &getDeploymentGitSource4
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource4
+		return nil
+	}
+
+	var getDeploymentGitSource10 GetDeploymentGitSource10 = GetDeploymentGitSource10{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource10, "", true, true); err == nil {
+		u.GetDeploymentGitSource10 = &getDeploymentGitSource10
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource10
+		return nil
+	}
+
+	var getDeploymentGitSource12 GetDeploymentGitSource12 = GetDeploymentGitSource12{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSource12, "", true, true); err == nil {
+		u.GetDeploymentGitSource12 = &getDeploymentGitSource12
+		u.Type = ResponseBodyGitSourceTypeGetDeploymentGitSource12
 		return nil
 	}
 
@@ -1470,6 +1825,18 @@ func (u ResponseBodyGitSource) MarshalJSON() ([]byte, error) {
 
 	if u.GetDeploymentGitSource9 != nil {
 		return utils.MarshalJSON(u.GetDeploymentGitSource9, "", true)
+	}
+
+	if u.GetDeploymentGitSource10 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSource10, "", true)
+	}
+
+	if u.GetDeploymentGitSource11 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSource11, "", true)
+	}
+
+	if u.GetDeploymentGitSource12 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSource12, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ResponseBodyGitSource: all fields are null")
@@ -1679,31 +2046,33 @@ func (o *GetDeploymentResponseBodyOidcTokenClaims) GetEnvironment() string {
 
 // GetDeploymentResponseBody2 - The deployment including only public information
 type GetDeploymentResponseBody2 struct {
-	Alias                   []string                             `json:"alias,omitempty"`
-	AliasAssigned           bool                                 `json:"aliasAssigned"`
-	BootedAt                float64                              `json:"bootedAt"`
-	BuildingAt              float64                              `json:"buildingAt"`
-	BuildSkipped            bool                                 `json:"buildSkipped"`
-	Creator                 GetDeploymentResponseBodyCreator     `json:"creator"`
-	InitReadyAt             *float64                             `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment *bool                                `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                 []ResponseBodyLambdas                `json:"lambdas,omitempty"`
-	Public                  bool                                 `json:"public"`
-	Ready                   *float64                             `json:"ready,omitempty"`
-	Status                  GetDeploymentResponseBodyStatus      `json:"status"`
-	Team                    *ResponseBodyTeam                    `json:"team,omitempty"`
-	UserAliases             []string                             `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled  *bool                                `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs            *bool                                `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment       *ResponseBodyCustomEnvironment       `json:"customEnvironment,omitempty"`
-	AliasWarning            *ResponseBodyAliasWarning            `json:"aliasWarning,omitempty"`
-	ID                      string                               `json:"id"`
-	Name                    string                               `json:"name"`
-	Type                    GetDeploymentResponseBodyType        `json:"type"`
-	CreatedAt               float64                              `json:"createdAt"`
-	ReadyState              GetDeploymentResponseBodyReadyState  `json:"readyState"`
-	AliasError              *GetDeploymentResponseBodyAliasError `json:"aliasError,omitempty"`
-	AliasFinal              *string                              `json:"aliasFinal,omitempty"`
+	Alias         []string `json:"alias,omitempty"`
+	AliasAssigned bool     `json:"aliasAssigned"`
+	BootedAt      float64  `json:"bootedAt"`
+	BuildingAt    float64  `json:"buildingAt"`
+	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
+	BuildContainerFinishedAt *float64                             `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool                                 `json:"buildSkipped"`
+	Creator                  GetDeploymentResponseBodyCreator     `json:"creator"`
+	InitReadyAt              *float64                             `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment  *bool                                `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                  []ResponseBodyLambdas                `json:"lambdas,omitempty"`
+	Public                   bool                                 `json:"public"`
+	Ready                    *float64                             `json:"ready,omitempty"`
+	Status                   GetDeploymentResponseBodyStatus      `json:"status"`
+	Team                     *ResponseBodyTeam                    `json:"team,omitempty"`
+	UserAliases              []string                             `json:"userAliases,omitempty"`
+	PreviewCommentsEnabled   *bool                                `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs             *bool                                `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment        *ResponseBodyCustomEnvironment       `json:"customEnvironment,omitempty"`
+	AliasWarning             *ResponseBodyAliasWarning            `json:"aliasWarning,omitempty"`
+	ID                       string                               `json:"id"`
+	Name                     string                               `json:"name"`
+	Type                     GetDeploymentResponseBodyType        `json:"type"`
+	CreatedAt                float64                              `json:"createdAt"`
+	ReadyState               GetDeploymentResponseBodyReadyState  `json:"readyState"`
+	AliasError               *GetDeploymentResponseBodyAliasError `json:"aliasError,omitempty"`
+	AliasFinal               *string                              `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                                      `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                                   `json:"automaticAliases,omitempty"`
@@ -1762,6 +2131,13 @@ func (o *GetDeploymentResponseBody2) GetBuildingAt() float64 {
 		return 0.0
 	}
 	return o.BuildingAt
+}
+
+func (o *GetDeploymentResponseBody2) GetBuildContainerFinishedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildContainerFinishedAt
 }
 
 func (o *GetDeploymentResponseBody2) GetBuildSkipped() bool {
@@ -3278,10 +3654,232 @@ func (e *ResponseBodyChecksConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type = "bitbucket"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeployments12 struct {
+	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type `json:"type"`
+	Ref           string                                                                         `json:"ref"`
+	Sha           string                                                                         `json:"sha"`
+	Owner         *string                                                                        `json:"owner,omitempty"`
+	Slug          *string                                                                        `json:"slug,omitempty"`
+	WorkspaceUUID string                                                                         `json:"workspaceUuid"`
+	RepoUUID      string                                                                         `json:"repoUuid"`
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Owner
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetWorkspaceUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GetDeploymentGitSourceDeployments12) GetRepoUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RepoUUID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type = "gitlab"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeployments11 struct {
+	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type `json:"type"`
+	Ref       string                                                                         `json:"ref"`
+	Sha       string                                                                         `json:"sha"`
+	ProjectID float64                                                                        `json:"projectId"`
+}
+
+func (o *GetDeploymentGitSourceDeployments11) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSourceDeployments11) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSourceDeployments11) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSourceDeployments11) GetProjectID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ProjectID
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type = "github"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeployments10 struct {
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type `json:"type"`
+	Host   string                                                                         `json:"host"`
+	Ref    string                                                                         `json:"ref"`
+	Sha    string                                                                         `json:"sha"`
+	RepoID float64                                                                        `json:"repoId"`
+	Org    *string                                                                        `json:"org,omitempty"`
+	Repo   *string                                                                        `json:"repo,omitempty"`
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *GetDeploymentGitSourceDeployments10) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type = "bitbucket"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type = "github"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type {
@@ -3293,7 +3891,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "github":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type(v)
 		return nil
 	default:
@@ -3302,13 +3900,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 }
 
 type GetDeploymentGitSourceDeployments9 struct {
-	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type `json:"type"`
-	Ref           string                                                                        `json:"ref"`
-	Sha           string                                                                        `json:"sha"`
-	Owner         *string                                                                       `json:"owner,omitempty"`
-	Slug          *string                                                                       `json:"slug,omitempty"`
-	WorkspaceUUID string                                                                        `json:"workspaceUuid"`
-	RepoUUID      string                                                                        `json:"repoUuid"`
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type `json:"type"`
+	Ref    string                                                                        `json:"ref"`
+	Sha    string                                                                        `json:"sha"`
+	RepoID float64                                                                       `json:"repoId"`
+	Org    *string                                                                       `json:"org,omitempty"`
+	Repo   *string                                                                       `json:"repo,omitempty"`
 }
 
 func (o *GetDeploymentGitSourceDeployments9) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type {
@@ -3332,38 +3929,31 @@ func (o *GetDeploymentGitSourceDeployments9) GetSha() string {
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSourceDeployments9) GetOwner() *string {
+func (o *GetDeploymentGitSourceDeployments9) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GetDeploymentGitSourceDeployments9) GetOrg() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Owner
+	return o.Org
 }
 
-func (o *GetDeploymentGitSourceDeployments9) GetSlug() *string {
+func (o *GetDeploymentGitSourceDeployments9) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Slug
-}
-
-func (o *GetDeploymentGitSourceDeployments9) GetWorkspaceUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GetDeploymentGitSourceDeployments9) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
+	return o.Repo
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1TypeGitlab GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type = "gitlab"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1TypeCustom GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type = "custom"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type {
@@ -3375,7 +3965,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "gitlab":
+	case "custom":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type(v)
 		return nil
 	default:
@@ -3383,11 +3973,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 	}
 }
 
+// GetDeploymentGitSourceDeployments8 - Allows custom git sources (local folder mounted to the container) in test mode
 type GetDeploymentGitSourceDeployments8 struct {
-	Type      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type `json:"type"`
-	Ref       string                                                                       `json:"ref"`
-	Sha       string                                                                       `json:"sha"`
-	ProjectID float64                                                                      `json:"projectId"`
+	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type `json:"type"`
+	Ref    string                                                                       `json:"ref"`
+	Sha    string                                                                       `json:"sha"`
+	GitURL string                                                                       `json:"gitUrl"`
 }
 
 func (o *GetDeploymentGitSourceDeployments8) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type {
@@ -3411,17 +4002,17 @@ func (o *GetDeploymentGitSourceDeployments8) GetSha() string {
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSourceDeployments8) GetProjectID() float64 {
+func (o *GetDeploymentGitSourceDeployments8) GetGitURL() string {
 	if o == nil {
-		return 0.0
+		return ""
 	}
-	return o.ProjectID
+	return o.GitURL
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "github"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "bitbucket"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
@@ -3433,7 +4024,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "github":
+	case "bitbucket":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType(v)
 		return nil
 	default:
@@ -3442,12 +4033,12 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 }
 
 type GetDeploymentGitSourceDeployments7 struct {
-	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Ref    string                                                                      `json:"ref"`
-	Sha    string                                                                      `json:"sha"`
-	RepoID float64                                                                     `json:"repoId"`
-	Org    *string                                                                     `json:"org,omitempty"`
-	Repo   *string                                                                     `json:"repo,omitempty"`
+	Type  GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Owner string                                                                      `json:"owner"`
+	Slug  string                                                                      `json:"slug"`
+	Ref   *string                                                                     `json:"ref,omitempty"`
+	Sha   *string                                                                     `json:"sha,omitempty"`
+	PrID  *float64                                                                    `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSourceDeployments7) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
@@ -3457,45 +4048,45 @@ func (o *GetDeploymentGitSourceDeployments7) GetType() GetDeploymentGitSourceDep
 	return o.Type
 }
 
-func (o *GetDeploymentGitSourceDeployments7) GetRef() string {
+func (o *GetDeploymentGitSourceDeployments7) GetOwner() string {
 	if o == nil {
 		return ""
+	}
+	return o.Owner
+}
+
+func (o *GetDeploymentGitSourceDeployments7) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentGitSourceDeployments7) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GetDeploymentGitSourceDeployments7) GetSha() string {
+func (o *GetDeploymentGitSourceDeployments7) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSourceDeployments7) GetRepoID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.RepoID
-}
-
-func (o *GetDeploymentGitSourceDeployments7) GetOrg() *string {
+func (o *GetDeploymentGitSourceDeployments7) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Org
-}
-
-func (o *GetDeploymentGitSourceDeployments7) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
+	return o.PrID
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeCustom GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "custom"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeBitbucket GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "bitbucket"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
@@ -3507,7 +4098,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) Unmars
 		return err
 	}
 	switch v {
-	case "custom":
+	case "bitbucket":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType(v)
 		return nil
 	default:
@@ -3515,12 +4106,13 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) Unmars
 	}
 }
 
-// GetDeploymentGitSourceDeployments6 - Allows custom git sources (local folder mounted to the container) in test mode
 type GetDeploymentGitSourceDeployments6 struct {
-	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
-	Ref    string                                                          `json:"ref"`
-	Sha    string                                                          `json:"sha"`
-	GitURL string                                                          `json:"gitUrl"`
+	Type          GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
+	WorkspaceUUID *string                                                         `json:"workspaceUuid,omitempty"`
+	RepoUUID      string                                                          `json:"repoUuid"`
+	Ref           *string                                                         `json:"ref,omitempty"`
+	Sha           *string                                                         `json:"sha,omitempty"`
+	PrID          *float64                                                        `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSourceDeployments6) GetType() GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
@@ -3530,31 +4122,45 @@ func (o *GetDeploymentGitSourceDeployments6) GetType() GetDeploymentGitSourceDep
 	return o.Type
 }
 
-func (o *GetDeploymentGitSourceDeployments6) GetRef() string {
+func (o *GetDeploymentGitSourceDeployments6) GetWorkspaceUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GetDeploymentGitSourceDeployments6) GetRepoUUID() string {
 	if o == nil {
 		return ""
+	}
+	return o.RepoUUID
+}
+
+func (o *GetDeploymentGitSourceDeployments6) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GetDeploymentGitSourceDeployments6) GetSha() string {
+func (o *GetDeploymentGitSourceDeployments6) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GetDeploymentGitSourceDeployments6) GetGitURL() string {
+func (o *GetDeploymentGitSourceDeployments6) GetPrID() *float64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.GitURL
+	return o.PrID
 }
 
 type GetDeploymentGitSourceDeploymentsResponse200Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200TypeBitbucket GetDeploymentGitSourceDeploymentsResponse200Type = "bitbucket"
+	GetDeploymentGitSourceDeploymentsResponse200TypeGitlab GetDeploymentGitSourceDeploymentsResponse200Type = "gitlab"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200Type {
@@ -3566,159 +4172,11 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200Type) UnmarshalJSON(data []
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "gitlab":
 		*e = GetDeploymentGitSourceDeploymentsResponse200Type(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponse200Type: %v", v)
-	}
-}
-
-type GetDeploymentGitSourceDeployments5 struct {
-	Type  GetDeploymentGitSourceDeploymentsResponse200Type `json:"type"`
-	Owner string                                           `json:"owner"`
-	Slug  string                                           `json:"slug"`
-	Ref   *string                                          `json:"ref,omitempty"`
-	Sha   *string                                          `json:"sha,omitempty"`
-	PrID  *float64                                         `json:"prId,omitempty"`
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetType() GetDeploymentGitSourceDeploymentsResponse200Type {
-	if o == nil {
-		return GetDeploymentGitSourceDeploymentsResponse200Type("")
-	}
-	return o.Type
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GetDeploymentGitSourceDeployments5) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type GetDeploymentGitSourceDeploymentsResponseType string
-
-const (
-	GetDeploymentGitSourceDeploymentsResponseTypeBitbucket GetDeploymentGitSourceDeploymentsResponseType = "bitbucket"
-)
-
-func (e GetDeploymentGitSourceDeploymentsResponseType) ToPointer() *GetDeploymentGitSourceDeploymentsResponseType {
-	return &e
-}
-func (e *GetDeploymentGitSourceDeploymentsResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = GetDeploymentGitSourceDeploymentsResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponseType: %v", v)
-	}
-}
-
-type GetDeploymentGitSourceDeployments4 struct {
-	Type          GetDeploymentGitSourceDeploymentsResponseType `json:"type"`
-	WorkspaceUUID *string                                       `json:"workspaceUuid,omitempty"`
-	RepoUUID      string                                        `json:"repoUuid"`
-	Ref           *string                                       `json:"ref,omitempty"`
-	Sha           *string                                       `json:"sha,omitempty"`
-	PrID          *float64                                      `json:"prId,omitempty"`
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetType() GetDeploymentGitSourceDeploymentsResponseType {
-	if o == nil {
-		return GetDeploymentGitSourceDeploymentsResponseType("")
-	}
-	return o.Type
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetWorkspaceUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GetDeploymentGitSourceDeployments4) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type GetDeploymentGitSourceDeploymentsType string
-
-const (
-	GetDeploymentGitSourceDeploymentsTypeGitlab GetDeploymentGitSourceDeploymentsType = "gitlab"
-)
-
-func (e GetDeploymentGitSourceDeploymentsType) ToPointer() *GetDeploymentGitSourceDeploymentsType {
-	return &e
-}
-func (e *GetDeploymentGitSourceDeploymentsType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gitlab":
-		*e = GetDeploymentGitSourceDeploymentsType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsType: %v", v)
 	}
 }
 
@@ -3785,12 +4243,224 @@ func (u GetDeploymentGitSourceProjectID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentGitSourceProjectID: all fields are null")
 }
 
+type GetDeploymentGitSourceDeployments5 struct {
+	Type      GetDeploymentGitSourceDeploymentsResponse200Type `json:"type"`
+	ProjectID GetDeploymentGitSourceProjectID                  `json:"projectId"`
+	Ref       *string                                          `json:"ref,omitempty"`
+	Sha       *string                                          `json:"sha,omitempty"`
+	PrID      *float64                                         `json:"prId,omitempty"`
+}
+
+func (o *GetDeploymentGitSourceDeployments5) GetType() GetDeploymentGitSourceDeploymentsResponse200Type {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSourceDeployments5) GetProjectID() GetDeploymentGitSourceProjectID {
+	if o == nil {
+		return GetDeploymentGitSourceProjectID{}
+	}
+	return o.ProjectID
+}
+
+func (o *GetDeploymentGitSourceDeployments5) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSourceDeployments5) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSourceDeployments5) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type GetDeploymentGitSourceDeploymentsResponseType string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponseTypeGithubCustomHost GetDeploymentGitSourceDeploymentsResponseType = "github-custom-host"
+)
+
+func (e GetDeploymentGitSourceDeploymentsResponseType) ToPointer() *GetDeploymentGitSourceDeploymentsResponseType {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = GetDeploymentGitSourceDeploymentsResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsResponseType: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeployments4 struct {
+	Type GetDeploymentGitSourceDeploymentsResponseType `json:"type"`
+	Host string                                        `json:"host"`
+	Org  string                                        `json:"org"`
+	Repo string                                        `json:"repo"`
+	Ref  *string                                       `json:"ref,omitempty"`
+	Sha  *string                                       `json:"sha,omitempty"`
+	PrID *float64                                      `json:"prId,omitempty"`
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetType() GetDeploymentGitSourceDeploymentsResponseType {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponseType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GetDeploymentGitSourceDeployments4) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type GetDeploymentGitSourceDeploymentsType string
+
+const (
+	GetDeploymentGitSourceDeploymentsTypeGithubCustomHost GetDeploymentGitSourceDeploymentsType = "github-custom-host"
+)
+
+func (e GetDeploymentGitSourceDeploymentsType) ToPointer() *GetDeploymentGitSourceDeploymentsType {
+	return &e
+}
+func (e *GetDeploymentGitSourceDeploymentsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = GetDeploymentGitSourceDeploymentsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentGitSourceDeploymentsType: %v", v)
+	}
+}
+
+type GetDeploymentGitSourceDeploymentsResponse200RepoIDType string
+
+const (
+	GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeStr    GetDeploymentGitSourceDeploymentsResponse200RepoIDType = "str"
+	GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeNumber GetDeploymentGitSourceDeploymentsResponse200RepoIDType = "number"
+)
+
+type GetDeploymentGitSourceDeploymentsResponse200RepoID struct {
+	Str    *string
+	Number *float64
+
+	Type GetDeploymentGitSourceDeploymentsResponse200RepoIDType
+}
+
+func CreateGetDeploymentGitSourceDeploymentsResponse200RepoIDStr(str string) GetDeploymentGitSourceDeploymentsResponse200RepoID {
+	typ := GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeStr
+
+	return GetDeploymentGitSourceDeploymentsResponse200RepoID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentGitSourceDeploymentsResponse200RepoIDNumber(number float64) GetDeploymentGitSourceDeploymentsResponse200RepoID {
+	typ := GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeNumber
+
+	return GetDeploymentGitSourceDeploymentsResponse200RepoID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentGitSourceDeploymentsResponse200RepoID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentGitSourceDeploymentsResponse200RepoIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceDeploymentsResponse200RepoID", string(data))
+}
+
+func (u GetDeploymentGitSourceDeploymentsResponse200RepoID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentGitSourceDeploymentsResponse200RepoID: all fields are null")
+}
+
 type GetDeploymentGitSourceDeployments3 struct {
-	Type      GetDeploymentGitSourceDeploymentsType `json:"type"`
-	ProjectID GetDeploymentGitSourceProjectID       `json:"projectId"`
-	Ref       *string                               `json:"ref,omitempty"`
-	Sha       *string                               `json:"sha,omitempty"`
-	PrID      *float64                              `json:"prId,omitempty"`
+	Type   GetDeploymentGitSourceDeploymentsType              `json:"type"`
+	Host   string                                             `json:"host"`
+	RepoID GetDeploymentGitSourceDeploymentsResponse200RepoID `json:"repoId"`
+	Ref    *string                                            `json:"ref,omitempty"`
+	Sha    *string                                            `json:"sha,omitempty"`
+	PrID   *float64                                           `json:"prId,omitempty"`
 }
 
 func (o *GetDeploymentGitSourceDeployments3) GetType() GetDeploymentGitSourceDeploymentsType {
@@ -3800,11 +4470,18 @@ func (o *GetDeploymentGitSourceDeployments3) GetType() GetDeploymentGitSourceDep
 	return o.Type
 }
 
-func (o *GetDeploymentGitSourceDeployments3) GetProjectID() GetDeploymentGitSourceProjectID {
+func (o *GetDeploymentGitSourceDeployments3) GetHost() string {
 	if o == nil {
-		return GetDeploymentGitSourceProjectID{}
+		return ""
 	}
-	return o.ProjectID
+	return o.Host
+}
+
+func (o *GetDeploymentGitSourceDeployments3) GetRepoID() GetDeploymentGitSourceDeploymentsResponse200RepoID {
+	if o == nil {
+		return GetDeploymentGitSourceDeploymentsResponse200RepoID{}
+	}
+	return o.RepoID
 }
 
 func (o *GetDeploymentGitSourceDeployments3) GetRef() *string {
@@ -3925,58 +4602,58 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 	}
 }
 
-type GetDeploymentGitSourceRepoIDType string
+type GetDeploymentGitSourceDeploymentsResponseRepoIDType string
 
 const (
-	GetDeploymentGitSourceRepoIDTypeStr    GetDeploymentGitSourceRepoIDType = "str"
-	GetDeploymentGitSourceRepoIDTypeNumber GetDeploymentGitSourceRepoIDType = "number"
+	GetDeploymentGitSourceDeploymentsResponseRepoIDTypeStr    GetDeploymentGitSourceDeploymentsResponseRepoIDType = "str"
+	GetDeploymentGitSourceDeploymentsResponseRepoIDTypeNumber GetDeploymentGitSourceDeploymentsResponseRepoIDType = "number"
 )
 
-type GetDeploymentGitSourceRepoID struct {
+type GetDeploymentGitSourceDeploymentsResponseRepoID struct {
 	Str    *string
 	Number *float64
 
-	Type GetDeploymentGitSourceRepoIDType
+	Type GetDeploymentGitSourceDeploymentsResponseRepoIDType
 }
 
-func CreateGetDeploymentGitSourceRepoIDStr(str string) GetDeploymentGitSourceRepoID {
-	typ := GetDeploymentGitSourceRepoIDTypeStr
+func CreateGetDeploymentGitSourceDeploymentsResponseRepoIDStr(str string) GetDeploymentGitSourceDeploymentsResponseRepoID {
+	typ := GetDeploymentGitSourceDeploymentsResponseRepoIDTypeStr
 
-	return GetDeploymentGitSourceRepoID{
+	return GetDeploymentGitSourceDeploymentsResponseRepoID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetDeploymentGitSourceRepoIDNumber(number float64) GetDeploymentGitSourceRepoID {
-	typ := GetDeploymentGitSourceRepoIDTypeNumber
+func CreateGetDeploymentGitSourceDeploymentsResponseRepoIDNumber(number float64) GetDeploymentGitSourceDeploymentsResponseRepoID {
+	typ := GetDeploymentGitSourceDeploymentsResponseRepoIDTypeNumber
 
-	return GetDeploymentGitSourceRepoID{
+	return GetDeploymentGitSourceDeploymentsResponseRepoID{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *GetDeploymentGitSourceRepoID) UnmarshalJSON(data []byte) error {
+func (u *GetDeploymentGitSourceDeploymentsResponseRepoID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = GetDeploymentGitSourceRepoIDTypeStr
+		u.Type = GetDeploymentGitSourceDeploymentsResponseRepoIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = GetDeploymentGitSourceRepoIDTypeNumber
+		u.Type = GetDeploymentGitSourceDeploymentsResponseRepoIDTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceRepoID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentGitSourceDeploymentsResponseRepoID", string(data))
 }
 
-func (u GetDeploymentGitSourceRepoID) MarshalJSON() ([]byte, error) {
+func (u GetDeploymentGitSourceDeploymentsResponseRepoID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -3985,12 +4662,12 @@ func (u GetDeploymentGitSourceRepoID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDeploymentGitSourceRepoID: all fields are null")
+	return nil, errors.New("could not marshal union type GetDeploymentGitSourceDeploymentsResponseRepoID: all fields are null")
 }
 
 type GetDeploymentGitSourceDeployments1 struct {
 	Type   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type `json:"type"`
-	RepoID GetDeploymentGitSourceRepoID                                                  `json:"repoId"`
+	RepoID GetDeploymentGitSourceDeploymentsResponseRepoID                               `json:"repoId"`
 	Ref    *string                                                                       `json:"ref,omitempty"`
 	Sha    *string                                                                       `json:"sha,omitempty"`
 	PrID   *float64                                                                      `json:"prId,omitempty"`
@@ -4003,9 +4680,9 @@ func (o *GetDeploymentGitSourceDeployments1) GetType() GetDeploymentGitSourceDep
 	return o.Type
 }
 
-func (o *GetDeploymentGitSourceDeployments1) GetRepoID() GetDeploymentGitSourceRepoID {
+func (o *GetDeploymentGitSourceDeployments1) GetRepoID() GetDeploymentGitSourceDeploymentsResponseRepoID {
 	if o == nil {
-		return GetDeploymentGitSourceRepoID{}
+		return GetDeploymentGitSourceDeploymentsResponseRepoID{}
 	}
 	return o.RepoID
 }
@@ -4034,27 +4711,33 @@ func (o *GetDeploymentGitSourceDeployments1) GetPrID() *float64 {
 type GetDeploymentResponseBodyGitSourceType string
 
 const (
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments1 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_1"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments2 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_2"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments3 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_3"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments4 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_4"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments5 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_5"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments6 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_6"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments7 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_7"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments8 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_8"
-	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments9 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_9"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments1  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_1"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments2  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_2"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments3  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_3"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments4  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_4"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments5  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_5"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments6  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_6"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments7  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_7"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments8  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_8"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments9  GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_9"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments10 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_10"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments11 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_11"
+	GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments12 GetDeploymentResponseBodyGitSourceType = "getDeployment_gitSource_deployments_12"
 )
 
 type GetDeploymentResponseBodyGitSource struct {
-	GetDeploymentGitSourceDeployments1 *GetDeploymentGitSourceDeployments1
-	GetDeploymentGitSourceDeployments2 *GetDeploymentGitSourceDeployments2
-	GetDeploymentGitSourceDeployments3 *GetDeploymentGitSourceDeployments3
-	GetDeploymentGitSourceDeployments4 *GetDeploymentGitSourceDeployments4
-	GetDeploymentGitSourceDeployments5 *GetDeploymentGitSourceDeployments5
-	GetDeploymentGitSourceDeployments6 *GetDeploymentGitSourceDeployments6
-	GetDeploymentGitSourceDeployments7 *GetDeploymentGitSourceDeployments7
-	GetDeploymentGitSourceDeployments8 *GetDeploymentGitSourceDeployments8
-	GetDeploymentGitSourceDeployments9 *GetDeploymentGitSourceDeployments9
+	GetDeploymentGitSourceDeployments1  *GetDeploymentGitSourceDeployments1
+	GetDeploymentGitSourceDeployments2  *GetDeploymentGitSourceDeployments2
+	GetDeploymentGitSourceDeployments3  *GetDeploymentGitSourceDeployments3
+	GetDeploymentGitSourceDeployments4  *GetDeploymentGitSourceDeployments4
+	GetDeploymentGitSourceDeployments5  *GetDeploymentGitSourceDeployments5
+	GetDeploymentGitSourceDeployments6  *GetDeploymentGitSourceDeployments6
+	GetDeploymentGitSourceDeployments7  *GetDeploymentGitSourceDeployments7
+	GetDeploymentGitSourceDeployments8  *GetDeploymentGitSourceDeployments8
+	GetDeploymentGitSourceDeployments9  *GetDeploymentGitSourceDeployments9
+	GetDeploymentGitSourceDeployments10 *GetDeploymentGitSourceDeployments10
+	GetDeploymentGitSourceDeployments11 *GetDeploymentGitSourceDeployments11
+	GetDeploymentGitSourceDeployments12 *GetDeploymentGitSourceDeployments12
 
 	Type GetDeploymentResponseBodyGitSourceType
 }
@@ -4140,19 +4823,46 @@ func CreateGetDeploymentResponseBodyGitSourceGetDeploymentGitSourceDeployments9(
 	}
 }
 
-func (u *GetDeploymentResponseBodyGitSource) UnmarshalJSON(data []byte) error {
+func CreateGetDeploymentResponseBodyGitSourceGetDeploymentGitSourceDeployments10(getDeploymentGitSourceDeployments10 GetDeploymentGitSourceDeployments10) GetDeploymentResponseBodyGitSource {
+	typ := GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments10
 
-	var getDeploymentGitSourceDeployments6 GetDeploymentGitSourceDeployments6 = GetDeploymentGitSourceDeployments6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments6, "", true, true); err == nil {
-		u.GetDeploymentGitSourceDeployments6 = &getDeploymentGitSourceDeployments6
-		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments6
-		return nil
+	return GetDeploymentResponseBodyGitSource{
+		GetDeploymentGitSourceDeployments10: &getDeploymentGitSourceDeployments10,
+		Type:                                typ,
 	}
+}
+
+func CreateGetDeploymentResponseBodyGitSourceGetDeploymentGitSourceDeployments11(getDeploymentGitSourceDeployments11 GetDeploymentGitSourceDeployments11) GetDeploymentResponseBodyGitSource {
+	typ := GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments11
+
+	return GetDeploymentResponseBodyGitSource{
+		GetDeploymentGitSourceDeployments11: &getDeploymentGitSourceDeployments11,
+		Type:                                typ,
+	}
+}
+
+func CreateGetDeploymentResponseBodyGitSourceGetDeploymentGitSourceDeployments12(getDeploymentGitSourceDeployments12 GetDeploymentGitSourceDeployments12) GetDeploymentResponseBodyGitSource {
+	typ := GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments12
+
+	return GetDeploymentResponseBodyGitSource{
+		GetDeploymentGitSourceDeployments12: &getDeploymentGitSourceDeployments12,
+		Type:                                typ,
+	}
+}
+
+func (u *GetDeploymentResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentGitSourceDeployments8 GetDeploymentGitSourceDeployments8 = GetDeploymentGitSourceDeployments8{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments8, "", true, true); err == nil {
 		u.GetDeploymentGitSourceDeployments8 = &getDeploymentGitSourceDeployments8
 		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments8
+		return nil
+	}
+
+	var getDeploymentGitSourceDeployments11 GetDeploymentGitSourceDeployments11 = GetDeploymentGitSourceDeployments11{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments11, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments11 = &getDeploymentGitSourceDeployments11
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments11
 		return nil
 	}
 
@@ -4163,10 +4873,10 @@ func (u *GetDeploymentResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getDeploymentGitSourceDeployments3 GetDeploymentGitSourceDeployments3 = GetDeploymentGitSourceDeployments3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments3, "", true, true); err == nil {
-		u.GetDeploymentGitSourceDeployments3 = &getDeploymentGitSourceDeployments3
-		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments3
+	var getDeploymentGitSourceDeployments5 GetDeploymentGitSourceDeployments5 = GetDeploymentGitSourceDeployments5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments5, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments5 = &getDeploymentGitSourceDeployments5
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments5
 		return nil
 	}
 
@@ -4177,17 +4887,17 @@ func (u *GetDeploymentResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getDeploymentGitSourceDeployments4 GetDeploymentGitSourceDeployments4 = GetDeploymentGitSourceDeployments4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceDeployments4 = &getDeploymentGitSourceDeployments4
-		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments4
+	var getDeploymentGitSourceDeployments3 GetDeploymentGitSourceDeployments3 = GetDeploymentGitSourceDeployments3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments3, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments3 = &getDeploymentGitSourceDeployments3
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments3
 		return nil
 	}
 
-	var getDeploymentGitSourceDeployments5 GetDeploymentGitSourceDeployments5 = GetDeploymentGitSourceDeployments5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments5, "", true, true); err == nil {
-		u.GetDeploymentGitSourceDeployments5 = &getDeploymentGitSourceDeployments5
-		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments5
+	var getDeploymentGitSourceDeployments6 GetDeploymentGitSourceDeployments6 = GetDeploymentGitSourceDeployments6{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments6, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments6 = &getDeploymentGitSourceDeployments6
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments6
 		return nil
 	}
 
@@ -4202,6 +4912,27 @@ func (u *GetDeploymentResponseBodyGitSource) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments9, "", true, true); err == nil {
 		u.GetDeploymentGitSourceDeployments9 = &getDeploymentGitSourceDeployments9
 		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments9
+		return nil
+	}
+
+	var getDeploymentGitSourceDeployments4 GetDeploymentGitSourceDeployments4 = GetDeploymentGitSourceDeployments4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments4, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments4 = &getDeploymentGitSourceDeployments4
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments4
+		return nil
+	}
+
+	var getDeploymentGitSourceDeployments10 GetDeploymentGitSourceDeployments10 = GetDeploymentGitSourceDeployments10{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments10, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments10 = &getDeploymentGitSourceDeployments10
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments10
+		return nil
+	}
+
+	var getDeploymentGitSourceDeployments12 GetDeploymentGitSourceDeployments12 = GetDeploymentGitSourceDeployments12{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceDeployments12, "", true, true); err == nil {
+		u.GetDeploymentGitSourceDeployments12 = &getDeploymentGitSourceDeployments12
+		u.Type = GetDeploymentResponseBodyGitSourceTypeGetDeploymentGitSourceDeployments12
 		return nil
 	}
 
@@ -4243,6 +4974,18 @@ func (u GetDeploymentResponseBodyGitSource) MarshalJSON() ([]byte, error) {
 
 	if u.GetDeploymentGitSourceDeployments9 != nil {
 		return utils.MarshalJSON(u.GetDeploymentGitSourceDeployments9, "", true)
+	}
+
+	if u.GetDeploymentGitSourceDeployments10 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSourceDeployments10, "", true)
+	}
+
+	if u.GetDeploymentGitSourceDeployments11 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSourceDeployments11, "", true)
+	}
+
+	if u.GetDeploymentGitSourceDeployments12 != nil {
+		return utils.MarshalJSON(u.GetDeploymentGitSourceDeployments12, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetDeploymentResponseBodyGitSource: all fields are null")
@@ -6069,44 +6812,46 @@ func (o *ResponseBodyConfig) GetSecureComputeFallbackRegion() *string {
 
 // GetDeploymentResponseBody1 - The deployment including both public and private information
 type GetDeploymentResponseBody1 struct {
-	AliasAssignedAt           *ResponseBodyAliasAssignedAt                `json:"aliasAssignedAt,omitempty"`
-	AlwaysRefuseToBuild       *bool                                       `json:"alwaysRefuseToBuild,omitempty"`
-	Build                     ResponseBodyBuild                           `json:"build"`
-	BuildArtifactUrls         []string                                    `json:"buildArtifactUrls,omitempty"`
-	Builds                    []ResponseBodyBuilds                        `json:"builds,omitempty"`
-	Env                       []string                                    `json:"env"`
-	InspectorURL              *string                                     `json:"inspectorUrl"`
-	IsInConcurrentBuildsQueue bool                                        `json:"isInConcurrentBuildsQueue"`
-	IsInSystemBuildsQueue     bool                                        `json:"isInSystemBuildsQueue"`
-	ProjectSettings           ResponseBodyProjectSettings                 `json:"projectSettings"`
-	ReadyStateReason          *string                                     `json:"readyStateReason,omitempty"`
-	Integrations              *ResponseBodyIntegrations                   `json:"integrations,omitempty"`
-	Images                    *ResponseBodyImages                         `json:"images,omitempty"`
-	Alias                     []string                                    `json:"alias,omitempty"`
-	AliasAssigned             bool                                        `json:"aliasAssigned"`
-	BootedAt                  float64                                     `json:"bootedAt"`
-	BuildingAt                float64                                     `json:"buildingAt"`
-	BuildSkipped              bool                                        `json:"buildSkipped"`
-	Creator                   ResponseBodyCreator                         `json:"creator"`
-	InitReadyAt               *float64                                    `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment   *bool                                       `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                   []GetDeploymentResponseBodyLambdas          `json:"lambdas,omitempty"`
-	Public                    bool                                        `json:"public"`
-	Ready                     *float64                                    `json:"ready,omitempty"`
-	Status                    ResponseBodyStatus                          `json:"status"`
-	Team                      *GetDeploymentResponseBodyTeam              `json:"team,omitempty"`
-	UserAliases               []string                                    `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled    *bool                                       `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs              *bool                                       `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment         *GetDeploymentResponseBodyCustomEnvironment `json:"customEnvironment,omitempty"`
-	AliasWarning              *GetDeploymentResponseBodyAliasWarning      `json:"aliasWarning,omitempty"`
-	ID                        string                                      `json:"id"`
-	Name                      string                                      `json:"name"`
-	Type                      ResponseBodyType                            `json:"type"`
-	CreatedAt                 float64                                     `json:"createdAt"`
-	ReadyState                ResponseBodyReadyState                      `json:"readyState"`
-	AliasError                *ResponseBodyAliasError                     `json:"aliasError,omitempty"`
-	AliasFinal                *string                                     `json:"aliasFinal,omitempty"`
+	AliasAssignedAt           *ResponseBodyAliasAssignedAt `json:"aliasAssignedAt,omitempty"`
+	AlwaysRefuseToBuild       *bool                        `json:"alwaysRefuseToBuild,omitempty"`
+	Build                     ResponseBodyBuild            `json:"build"`
+	BuildArtifactUrls         []string                     `json:"buildArtifactUrls,omitempty"`
+	Builds                    []ResponseBodyBuilds         `json:"builds,omitempty"`
+	Env                       []string                     `json:"env"`
+	InspectorURL              *string                      `json:"inspectorUrl"`
+	IsInConcurrentBuildsQueue bool                         `json:"isInConcurrentBuildsQueue"`
+	IsInSystemBuildsQueue     bool                         `json:"isInSystemBuildsQueue"`
+	ProjectSettings           ResponseBodyProjectSettings  `json:"projectSettings"`
+	ReadyStateReason          *string                      `json:"readyStateReason,omitempty"`
+	Integrations              *ResponseBodyIntegrations    `json:"integrations,omitempty"`
+	Images                    *ResponseBodyImages          `json:"images,omitempty"`
+	Alias                     []string                     `json:"alias,omitempty"`
+	AliasAssigned             bool                         `json:"aliasAssigned"`
+	BootedAt                  float64                      `json:"bootedAt"`
+	BuildingAt                float64                      `json:"buildingAt"`
+	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
+	BuildContainerFinishedAt *float64                                    `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool                                        `json:"buildSkipped"`
+	Creator                  ResponseBodyCreator                         `json:"creator"`
+	InitReadyAt              *float64                                    `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment  *bool                                       `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                  []GetDeploymentResponseBodyLambdas          `json:"lambdas,omitempty"`
+	Public                   bool                                        `json:"public"`
+	Ready                    *float64                                    `json:"ready,omitempty"`
+	Status                   ResponseBodyStatus                          `json:"status"`
+	Team                     *GetDeploymentResponseBodyTeam              `json:"team,omitempty"`
+	UserAliases              []string                                    `json:"userAliases,omitempty"`
+	PreviewCommentsEnabled   *bool                                       `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs             *bool                                       `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment        *GetDeploymentResponseBodyCustomEnvironment `json:"customEnvironment,omitempty"`
+	AliasWarning             *GetDeploymentResponseBodyAliasWarning      `json:"aliasWarning,omitempty"`
+	ID                       string                                      `json:"id"`
+	Name                     string                                      `json:"name"`
+	Type                     ResponseBodyType                            `json:"type"`
+	CreatedAt                float64                                     `json:"createdAt"`
+	ReadyState               ResponseBodyReadyState                      `json:"readyState"`
+	AliasError               *ResponseBodyAliasError                     `json:"aliasError,omitempty"`
+	AliasFinal               *string                                     `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                         `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                      `json:"automaticAliases,omitempty"`
@@ -6273,6 +7018,13 @@ func (o *GetDeploymentResponseBody1) GetBuildingAt() float64 {
 		return 0.0
 	}
 	return o.BuildingAt
+}
+
+func (o *GetDeploymentResponseBody1) GetBuildContainerFinishedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildContainerFinishedAt
 }
 
 func (o *GetDeploymentResponseBody1) GetBuildSkipped() bool {

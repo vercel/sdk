@@ -214,6 +214,7 @@ const (
 	AuthMethodOtp       AuthMethod = "otp"
 	AuthMethodSms       AuthMethod = "sms"
 	AuthMethodInvite    AuthMethod = "invite"
+	AuthMethodGoogle    AuthMethod = "google"
 )
 
 func (e AuthMethod) ToPointer() *AuthMethod {
@@ -244,6 +245,8 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	case "sms":
 		fallthrough
 	case "invite":
+		fallthrough
+	case "google":
 		*e = AuthMethod(v)
 		return nil
 	default:
@@ -5631,6 +5634,7 @@ type SixtyEight struct {
 	ViaGithub    bool         `json:"viaGithub"`
 	ViaGitlab    bool         `json:"viaGitlab"`
 	ViaBitbucket bool         `json:"viaBitbucket"`
+	ViaGoogle    bool         `json:"viaGoogle"`
 	ViaSamlSso   bool         `json:"viaSamlSso"`
 	ViaPasskey   bool         `json:"viaPasskey"`
 	SsoType      *string      `json:"ssoType,omitempty"`
@@ -5672,6 +5676,13 @@ func (o *SixtyEight) GetViaBitbucket() bool {
 		return false
 	}
 	return o.ViaBitbucket
+}
+
+func (o *SixtyEight) GetViaGoogle() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaGoogle
 }
 
 func (o *SixtyEight) GetViaSamlSso() bool {
@@ -6254,6 +6265,7 @@ type UserEventCredentialsType string
 
 const (
 	UserEventCredentialsTypeGithubOauthCustomHost UserEventCredentialsType = "github-oauth-custom-host"
+	UserEventCredentialsTypeGithubAppCustomHost   UserEventCredentialsType = "github-app-custom-host"
 )
 
 func (e UserEventCredentialsType) ToPointer() *UserEventCredentialsType {
@@ -6266,6 +6278,8 @@ func (e *UserEventCredentialsType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "github-oauth-custom-host":
+		fallthrough
+	case "github-app-custom-host":
 		*e = UserEventCredentialsType(v)
 		return nil
 	default:
@@ -6305,6 +6319,7 @@ type CredentialsType string
 const (
 	CredentialsTypeGitlab      CredentialsType = "gitlab"
 	CredentialsTypeBitbucket   CredentialsType = "bitbucket"
+	CredentialsTypeGoogle      CredentialsType = "google"
 	CredentialsTypeGithubOauth CredentialsType = "github-oauth"
 	CredentialsTypeGithubApp   CredentialsType = "github-app"
 )
@@ -6321,6 +6336,8 @@ func (e *CredentialsType) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "google":
 		fallthrough
 	case "github-oauth":
 		fallthrough
@@ -6611,9 +6628,10 @@ func (u PayloadImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 type PayloadImportFlowGitProvider string
 
 const (
-	PayloadImportFlowGitProviderGithub    PayloadImportFlowGitProvider = "github"
-	PayloadImportFlowGitProviderGitlab    PayloadImportFlowGitProvider = "gitlab"
-	PayloadImportFlowGitProviderBitbucket PayloadImportFlowGitProvider = "bitbucket"
+	PayloadImportFlowGitProviderGithub           PayloadImportFlowGitProvider = "github"
+	PayloadImportFlowGitProviderGitlab           PayloadImportFlowGitProvider = "gitlab"
+	PayloadImportFlowGitProviderBitbucket        PayloadImportFlowGitProvider = "bitbucket"
+	PayloadImportFlowGitProviderGithubCustomHost PayloadImportFlowGitProvider = "github-custom-host"
 )
 
 func (e PayloadImportFlowGitProvider) ToPointer() *PayloadImportFlowGitProvider {
@@ -6630,6 +6648,8 @@ func (e *PayloadImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "github-custom-host":
 		*e = PayloadImportFlowGitProvider(v)
 		return nil
 	default:
@@ -6805,9 +6825,48 @@ func (o *PayloadBuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+type PayloadPurchaseType string
+
+const (
+	PayloadPurchaseTypeEnhanced PayloadPurchaseType = "enhanced"
+)
+
+func (e PayloadPurchaseType) ToPointer() *PayloadPurchaseType {
+	return &e
+}
+func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = PayloadPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PayloadPurchaseType: %v", v)
+	}
+}
+
 type PayloadBuildMachine struct {
-	Cores  *float64 `json:"cores,omitempty"`
-	Memory *float64 `json:"memory,omitempty"`
+	PurchaseType *PayloadPurchaseType `json:"purchaseType,omitempty"`
+	AbovePlan    *bool                `json:"abovePlan,omitempty"`
+	Cores        *float64             `json:"cores,omitempty"`
+	Memory       *float64             `json:"memory,omitempty"`
+}
+
+func (o *PayloadBuildMachine) GetPurchaseType() *PayloadPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *PayloadBuildMachine) GetAbovePlan() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AbovePlan
 }
 
 func (o *PayloadBuildMachine) GetCores() *float64 {
@@ -6848,6 +6907,7 @@ type PayloadResourceConfig struct {
 	MicrofrontendProjectsPerGroup             *float64                  `json:"microfrontendProjectsPerGroup,omitempty"`
 	FlagsExplorerOverridesThreshold           *float64                  `json:"flagsExplorerOverridesThreshold,omitempty"`
 	FlagsExplorerUnlimitedOverrides           *bool                     `json:"flagsExplorerUnlimitedOverrides,omitempty"`
+	CustomEnvironmentsPerProject              *float64                  `json:"customEnvironmentsPerProject,omitempty"`
 	BuildMachine                              *PayloadBuildMachine      `json:"buildMachine,omitempty"`
 }
 
@@ -7010,6 +7070,13 @@ func (o *PayloadResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
 		return nil
 	}
 	return o.FlagsExplorerUnlimitedOverrides
+}
+
+func (o *PayloadResourceConfig) GetCustomEnvironmentsPerProject() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentsPerProject
 }
 
 func (o *PayloadResourceConfig) GetBuildMachine() *PayloadBuildMachine {
@@ -11619,8 +11686,6 @@ type OldEnvVar struct {
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	// The value of the Shared Env Var.
 	Value *string `json:"value,omitempty"`
-	// The value of the shared environment variable decrypted against api-secrets-management.
-	VsmValue *string `json:"vsmValue,omitempty"`
 	// The unique identifiers of the projects which the Shared Env Var is linked to.
 	ProjectID []string `json:"projectId,omitempty"`
 	// The type of this cosmos doc instance, if blank, assume secret.
@@ -11723,13 +11788,6 @@ func (o *OldEnvVar) GetValue() *string {
 		return nil
 	}
 	return o.Value
-}
-
-func (o *OldEnvVar) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 func (o *OldEnvVar) GetProjectID() []string {
@@ -11867,8 +11925,6 @@ type NewEnvVar struct {
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	// The value of the Shared Env Var.
 	Value *string `json:"value,omitempty"`
-	// The value of the shared environment variable decrypted against api-secrets-management.
-	VsmValue *string `json:"vsmValue,omitempty"`
 	// The unique identifiers of the projects which the Shared Env Var is linked to.
 	ProjectID []string `json:"projectId,omitempty"`
 	// The type of this cosmos doc instance, if blank, assume secret.
@@ -11971,13 +12027,6 @@ func (o *NewEnvVar) GetValue() *string {
 		return nil
 	}
 	return o.Value
-}
-
-func (o *NewEnvVar) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 func (o *NewEnvVar) GetProjectID() []string {
@@ -12323,8 +12372,6 @@ type FiftySeven struct {
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	// The value of the Shared Env Var.
 	Value *string `json:"value,omitempty"`
-	// The value of the shared environment variable decrypted against api-secrets-management.
-	VsmValue *string `json:"vsmValue,omitempty"`
 	// The unique identifiers of the projects which the Shared Env Var is linked to.
 	ProjectID []string `json:"projectId,omitempty"`
 	// The type of this cosmos doc instance, if blank, assume secret.
@@ -12428,13 +12475,6 @@ func (o *FiftySeven) GetValue() *string {
 		return nil
 	}
 	return o.Value
-}
-
-func (o *FiftySeven) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 func (o *FiftySeven) GetProjectID() []string {

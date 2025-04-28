@@ -5,11 +5,12 @@
 ```typescript
 import { CancelDeploymentGitSourceDeploymentsResponseType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentGitSourceDeploymentsResponseType = "gitlab";
+let value: CancelDeploymentGitSourceDeploymentsResponseType =
+  "github-custom-host";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-custom-host"
 ```

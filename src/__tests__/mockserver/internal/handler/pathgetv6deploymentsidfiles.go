@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,7 +46,22 @@ func testListDeploymentFilesListDeploymentFiles0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []components.FileTree{}
+	respBody := []components.FileTree{
+		components.FileTree{
+			Name:        "my-file.json",
+			Type:        components.TypeFile,
+			UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			ContentType: types.String("application/json"),
+			Mode:        956.44,
+		},
+		components.FileTree{
+			Name:        "my-file.json",
+			Type:        components.TypeFile,
+			UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			ContentType: types.String("application/json"),
+			Mode:        1805.56,
+		},
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

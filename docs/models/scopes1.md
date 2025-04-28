@@ -9,7 +9,7 @@ import { Scopes1 } from "@vercel/sdk/models/authtoken.js";
 
 let value: Scopes1 = {
   type: "user",
-  origin: "passkey",
+  origin: "otp",
   createdAt: 9263.32,
 };
 ```

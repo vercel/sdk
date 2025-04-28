@@ -645,19 +645,19 @@ func (e *UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResp
 	}
 }
 
-type UpdateProjectDataCacheContentHint12 struct {
+type ContentHint12 struct {
 	Type    UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type `json:"type"`
 	StoreID string                                                                                   `json:"storeId"`
 }
 
-func (o *UpdateProjectDataCacheContentHint12) GetType() UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type {
+func (o *ContentHint12) GetType() UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type {
 	if o == nil {
 		return UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectDataCacheContentHint12) GetStoreID() string {
+func (o *ContentHint12) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
@@ -687,19 +687,19 @@ func (e *UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResp
 	}
 }
 
-type UpdateProjectDataCacheContentHint11 struct {
+type ContentHint11 struct {
 	Type    UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type `json:"type"`
 	StoreID string                                                                                   `json:"storeId"`
 }
 
-func (o *UpdateProjectDataCacheContentHint11) GetType() UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type {
+func (o *ContentHint11) GetType() UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type {
 	if o == nil {
 		return UpdateProjectDataCacheContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectDataCacheContentHint11) GetStoreID() string {
+func (o *ContentHint11) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
@@ -1129,39 +1129,39 @@ func (o *ContentHint1) GetStoreID() string {
 type ContentHintUnionType string
 
 const (
-	ContentHintUnionTypeContentHint1                        ContentHintUnionType = "contentHint_1"
-	ContentHintUnionTypeContentHint2                        ContentHintUnionType = "contentHint_2"
-	ContentHintUnionTypeContentHint3                        ContentHintUnionType = "contentHint_3"
-	ContentHintUnionTypeContentHint4                        ContentHintUnionType = "contentHint_4"
-	ContentHintUnionTypeContentHint5                        ContentHintUnionType = "contentHint_5"
-	ContentHintUnionTypeContentHint6                        ContentHintUnionType = "contentHint_6"
-	ContentHintUnionTypeContentHint7                        ContentHintUnionType = "contentHint_7"
-	ContentHintUnionTypeContentHint8                        ContentHintUnionType = "contentHint_8"
-	ContentHintUnionTypeContentHint9                        ContentHintUnionType = "contentHint_9"
-	ContentHintUnionTypeContentHint10                       ContentHintUnionType = "contentHint_10"
-	ContentHintUnionTypeUpdateProjectDataCacheContentHint11 ContentHintUnionType = "updateProjectDataCache_contentHint_11"
-	ContentHintUnionTypeUpdateProjectDataCacheContentHint12 ContentHintUnionType = "updateProjectDataCache_contentHint_12"
-	ContentHintUnionTypeThirteen                            ContentHintUnionType = "13"
-	ContentHintUnionTypeFourteen                            ContentHintUnionType = "14"
-	ContentHintUnionTypeFifteen                             ContentHintUnionType = "15"
+	ContentHintUnionTypeContentHint1  ContentHintUnionType = "contentHint_1"
+	ContentHintUnionTypeContentHint2  ContentHintUnionType = "contentHint_2"
+	ContentHintUnionTypeContentHint3  ContentHintUnionType = "contentHint_3"
+	ContentHintUnionTypeContentHint4  ContentHintUnionType = "contentHint_4"
+	ContentHintUnionTypeContentHint5  ContentHintUnionType = "contentHint_5"
+	ContentHintUnionTypeContentHint6  ContentHintUnionType = "contentHint_6"
+	ContentHintUnionTypeContentHint7  ContentHintUnionType = "contentHint_7"
+	ContentHintUnionTypeContentHint8  ContentHintUnionType = "contentHint_8"
+	ContentHintUnionTypeContentHint9  ContentHintUnionType = "contentHint_9"
+	ContentHintUnionTypeContentHint10 ContentHintUnionType = "contentHint_10"
+	ContentHintUnionTypeContentHint11 ContentHintUnionType = "contentHint_11"
+	ContentHintUnionTypeContentHint12 ContentHintUnionType = "contentHint_12"
+	ContentHintUnionTypeThirteen      ContentHintUnionType = "13"
+	ContentHintUnionTypeFourteen      ContentHintUnionType = "14"
+	ContentHintUnionTypeFifteen       ContentHintUnionType = "15"
 )
 
 type ContentHint struct {
-	ContentHint1                        *ContentHint1
-	ContentHint2                        *ContentHint2
-	ContentHint3                        *ContentHint3
-	ContentHint4                        *ContentHint4
-	ContentHint5                        *ContentHint5
-	ContentHint6                        *ContentHint6
-	ContentHint7                        *ContentHint7
-	ContentHint8                        *ContentHint8
-	ContentHint9                        *ContentHint9
-	ContentHint10                       *ContentHint10
-	UpdateProjectDataCacheContentHint11 *UpdateProjectDataCacheContentHint11
-	UpdateProjectDataCacheContentHint12 *UpdateProjectDataCacheContentHint12
-	Thirteen                            *Thirteen
-	Fourteen                            *Fourteen
-	Fifteen                             *Fifteen
+	ContentHint1  *ContentHint1
+	ContentHint2  *ContentHint2
+	ContentHint3  *ContentHint3
+	ContentHint4  *ContentHint4
+	ContentHint5  *ContentHint5
+	ContentHint6  *ContentHint6
+	ContentHint7  *ContentHint7
+	ContentHint8  *ContentHint8
+	ContentHint9  *ContentHint9
+	ContentHint10 *ContentHint10
+	ContentHint11 *ContentHint11
+	ContentHint12 *ContentHint12
+	Thirteen      *Thirteen
+	Fourteen      *Fourteen
+	Fifteen       *Fifteen
 
 	Type ContentHintUnionType
 }
@@ -1256,21 +1256,21 @@ func CreateContentHintContentHint10(contentHint10 ContentHint10) ContentHint {
 	}
 }
 
-func CreateContentHintUpdateProjectDataCacheContentHint11(updateProjectDataCacheContentHint11 UpdateProjectDataCacheContentHint11) ContentHint {
-	typ := ContentHintUnionTypeUpdateProjectDataCacheContentHint11
+func CreateContentHintContentHint11(contentHint11 ContentHint11) ContentHint {
+	typ := ContentHintUnionTypeContentHint11
 
 	return ContentHint{
-		UpdateProjectDataCacheContentHint11: &updateProjectDataCacheContentHint11,
-		Type:                                typ,
+		ContentHint11: &contentHint11,
+		Type:          typ,
 	}
 }
 
-func CreateContentHintUpdateProjectDataCacheContentHint12(updateProjectDataCacheContentHint12 UpdateProjectDataCacheContentHint12) ContentHint {
-	typ := ContentHintUnionTypeUpdateProjectDataCacheContentHint12
+func CreateContentHintContentHint12(contentHint12 ContentHint12) ContentHint {
+	typ := ContentHintUnionTypeContentHint12
 
 	return ContentHint{
-		UpdateProjectDataCacheContentHint12: &updateProjectDataCacheContentHint12,
-		Type:                                typ,
+		ContentHint12: &contentHint12,
+		Type:          typ,
 	}
 }
 
@@ -1310,10 +1310,10 @@ func (u *ContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateProjectDataCacheContentHint11 UpdateProjectDataCacheContentHint11 = UpdateProjectDataCacheContentHint11{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHint11, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHint11 = &updateProjectDataCacheContentHint11
-		u.Type = ContentHintUnionTypeUpdateProjectDataCacheContentHint11
+	var contentHint11 ContentHint11 = ContentHint11{}
+	if err := utils.UnmarshalJSON(data, &contentHint11, "", true, true); err == nil {
+		u.ContentHint11 = &contentHint11
+		u.Type = ContentHintUnionTypeContentHint11
 		return nil
 	}
 
@@ -1380,10 +1380,10 @@ func (u *ContentHint) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateProjectDataCacheContentHint12 UpdateProjectDataCacheContentHint12 = UpdateProjectDataCacheContentHint12{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHint12, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHint12 = &updateProjectDataCacheContentHint12
-		u.Type = ContentHintUnionTypeUpdateProjectDataCacheContentHint12
+	var contentHint12 ContentHint12 = ContentHint12{}
+	if err := utils.UnmarshalJSON(data, &contentHint12, "", true, true); err == nil {
+		u.ContentHint12 = &contentHint12
+		u.Type = ContentHintUnionTypeContentHint12
 		return nil
 	}
 
@@ -1452,12 +1452,12 @@ func (u ContentHint) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ContentHint10, "", true)
 	}
 
-	if u.UpdateProjectDataCacheContentHint11 != nil {
-		return utils.MarshalJSON(u.UpdateProjectDataCacheContentHint11, "", true)
+	if u.ContentHint11 != nil {
+		return utils.MarshalJSON(u.ContentHint11, "", true)
 	}
 
-	if u.UpdateProjectDataCacheContentHint12 != nil {
-		return utils.MarshalJSON(u.UpdateProjectDataCacheContentHint12, "", true)
+	if u.ContentHint12 != nil {
+		return utils.MarshalJSON(u.ContentHint12, "", true)
 	}
 
 	if u.Thirteen != nil {
@@ -1524,9 +1524,11 @@ type Env struct {
 	Type   UpdateProjectDataCacheProjectsResponse200Type `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string      `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool        `json:"decrypted,omitempty"`
+	Value             string       `json:"value"`
+	VsmValue          *string      `json:"vsmValue,omitempty"`
 	ID                *string      `json:"id,omitempty"`
 	Key               string       `json:"key"`
-	Value             string       `json:"value"`
 	ConfigurationID   *string      `json:"configurationId,omitempty"`
 	CreatedAt         *float64     `json:"createdAt,omitempty"`
 	UpdatedAt         *float64     `json:"updatedAt,omitempty"`
@@ -1537,12 +1539,9 @@ type Env struct {
 	EdgeConfigTokenID *string      `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *ContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *InternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string  `json:"vsmValue,omitempty"`
+	InternalContentHint  *InternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string              `json:"comment,omitempty"`
+	CustomEnvironmentIds []string             `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *Env) GetTarget() *UpdateProjectDataCacheTarget {
@@ -1566,6 +1565,27 @@ func (o *Env) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *Env) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *Env) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *Env) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
 func (o *Env) GetID() *string {
 	if o == nil {
 		return nil
@@ -1578,13 +1598,6 @@ func (o *Env) GetKey() string {
 		return ""
 	}
 	return o.Key
-}
-
-func (o *Env) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
 }
 
 func (o *Env) GetConfigurationID() *string {
@@ -1657,13 +1670,6 @@ func (o *Env) GetInternalContentHint() *InternalContentHint {
 	return o.InternalContentHint
 }
 
-func (o *Env) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
-}
-
 func (o *Env) GetComment() *string {
 	if o == nil {
 		return nil
@@ -1676,13 +1682,6 @@ func (o *Env) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *Env) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 type CustomEnvironments struct {
@@ -2615,6 +2614,172 @@ func (o *LatestDeployments) GetWithCache() *bool {
 	return o.WithCache
 }
 
+type UpdateProjectDataCacheLinkProjectsResponseType string
+
+const (
+	UpdateProjectDataCacheLinkProjectsResponseTypeGithubCustomHost UpdateProjectDataCacheLinkProjectsResponseType = "github-custom-host"
+)
+
+func (e UpdateProjectDataCacheLinkProjectsResponseType) ToPointer() *UpdateProjectDataCacheLinkProjectsResponseType {
+	return &e
+}
+func (e *UpdateProjectDataCacheLinkProjectsResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = UpdateProjectDataCacheLinkProjectsResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheLinkProjectsResponseType: %v", v)
+	}
+}
+
+type UpdateProjectDataCacheLinkProjectsDeployHooks struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDataCacheLinkProjectsDeployHooks) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDataCacheLinkProjectsDeployHooks) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDataCacheLinkProjectsDeployHooks) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDataCacheLinkProjectsDeployHooks) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDataCacheLinkProjectsDeployHooks) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type Link4 struct {
+	Org *string `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                                        `json:"repoOwnerId,omitempty"`
+	Repo             *string                                         `json:"repo,omitempty"`
+	RepoID           *float64                                        `json:"repoId,omitempty"`
+	Type             *UpdateProjectDataCacheLinkProjectsResponseType `json:"type,omitempty"`
+	Host             *string                                         `json:"host,omitempty"`
+	CreatedAt        *float64                                        `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDataCacheLinkProjectsDeployHooks `json:"deployHooks"`
+	GitCredentialID  *string                                         `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                                        `json:"updatedAt,omitempty"`
+	Sourceless       *bool                                           `json:"sourceless,omitempty"`
+	ProductionBranch *string                                         `json:"productionBranch,omitempty"`
+}
+
+func (o *Link4) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *Link4) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *Link4) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *Link4) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *Link4) GetType() *UpdateProjectDataCacheLinkProjectsResponseType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Link4) GetHost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Host
+}
+
+func (o *Link4) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *Link4) GetDeployHooks() []UpdateProjectDataCacheLinkProjectsDeployHooks {
+	if o == nil {
+		return []UpdateProjectDataCacheLinkProjectsDeployHooks{}
+	}
+	return o.DeployHooks
+}
+
+func (o *Link4) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *Link4) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *Link4) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *Link4) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
 type UpdateProjectDataCacheLinkProjectsType string
 
 const (
@@ -3118,12 +3283,14 @@ const (
 	LinkUnionTypeLink1 LinkUnionType = "link_1"
 	LinkUnionTypeLink2 LinkUnionType = "link_2"
 	LinkUnionTypeLink3 LinkUnionType = "link_3"
+	LinkUnionTypeLink4 LinkUnionType = "link_4"
 )
 
 type Link struct {
 	Link1 *Link1
 	Link2 *Link2
 	Link3 *Link3
+	Link4 *Link4
 
 	Type LinkUnionType
 }
@@ -3155,6 +3322,15 @@ func CreateLinkLink3(link3 Link3) Link {
 	}
 }
 
+func CreateLinkLink4(link4 Link4) Link {
+	typ := LinkUnionTypeLink4
+
+	return Link{
+		Link4: &link4,
+		Type:  typ,
+	}
+}
+
 func (u *Link) UnmarshalJSON(data []byte) error {
 
 	var link1 Link1 = Link1{}
@@ -3168,6 +3344,13 @@ func (u *Link) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &link3, "", true, true); err == nil {
 		u.Link3 = &link3
 		u.Type = LinkUnionTypeLink3
+		return nil
+	}
+
+	var link4 Link4 = Link4{}
+	if err := utils.UnmarshalJSON(data, &link4, "", true, true); err == nil {
+		u.Link4 = &link4
+		u.Type = LinkUnionTypeLink4
 		return nil
 	}
 
@@ -3192,6 +3375,10 @@ func (u Link) MarshalJSON() ([]byte, error) {
 
 	if u.Link3 != nil {
 		return utils.MarshalJSON(u.Link3, "", true)
+	}
+
+	if u.Link4 != nil {
+		return utils.MarshalJSON(u.Link4, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Link: all fields are null")
@@ -3442,6 +3629,29 @@ func (e *FunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type BuildMachineType string
+
+const (
+	BuildMachineTypeEnhanced BuildMachineType = "enhanced"
+)
+
+func (e BuildMachineType) ToPointer() *BuildMachineType {
+	return &e
+}
+func (e *BuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = BuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BuildMachineType: %v", v)
+	}
+}
+
 type ResourceConfig struct {
 	Fluid                      *bool                      `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                   `json:"functionDefaultRegions"`
@@ -3449,6 +3659,7 @@ type ResourceConfig struct {
 	FunctionDefaultMemoryType  *FunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                      `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                      `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *BuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *ResourceConfig) GetFluid() *bool {
@@ -3493,10 +3704,21 @@ func (o *ResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	return o.ElasticConcurrencyEnabled
 }
 
+func (o *ResourceConfig) GetBuildMachineType() *BuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
 // Stages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
 type Stages struct {
 	// The percentage of traffic to serve to the new deployment
 	TargetPercentage float64 `json:"targetPercentage"`
+	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving.
+	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
+	// Whether or not this stage requires approval to proceed.
+	RequireApproval *bool `json:"requireApproval,omitempty"`
 }
 
 func (o *Stages) GetTargetPercentage() float64 {
@@ -3504,6 +3726,20 @@ func (o *Stages) GetTargetPercentage() float64 {
 		return 0.0
 	}
 	return o.TargetPercentage
+}
+
+func (o *Stages) GetMinutesToRelease() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinutesToRelease
+}
+
+func (o *Stages) GetRequireApproval() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireApproval
 }
 
 type RollingRelease struct {
@@ -3565,6 +3801,29 @@ func (e *UpdateProjectDataCacheFunctionDefaultMemoryType) UnmarshalJSON(data []b
 	}
 }
 
+type UpdateProjectDataCacheBuildMachineType string
+
+const (
+	UpdateProjectDataCacheBuildMachineTypeEnhanced UpdateProjectDataCacheBuildMachineType = "enhanced"
+)
+
+func (e UpdateProjectDataCacheBuildMachineType) ToPointer() *UpdateProjectDataCacheBuildMachineType {
+	return &e
+}
+func (e *UpdateProjectDataCacheBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = UpdateProjectDataCacheBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheBuildMachineType: %v", v)
+	}
+}
+
 type DefaultResourceConfig struct {
 	Fluid                      *bool                                            `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                         `json:"functionDefaultRegions"`
@@ -3572,6 +3831,7 @@ type DefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *UpdateProjectDataCacheFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                            `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                            `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectDataCacheBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *DefaultResourceConfig) GetFluid() *bool {
@@ -3614,6 +3874,13 @@ func (o *DefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *DefaultResourceConfig) GetBuildMachineType() *UpdateProjectDataCacheBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type UpdateProjectDataCacheDeploymentType string
@@ -4489,6 +4756,7 @@ type Permissions struct {
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
+	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
@@ -5174,6 +5442,13 @@ func (o *Permissions) GetObservabilityConfiguration() []components.ACLAction {
 		return nil
 	}
 	return o.ObservabilityConfiguration
+}
+
+func (o *Permissions) GetObservabilityNotebook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityNotebook
 }
 
 func (o *Permissions) GetOpenTelemetryEndpoint() []components.ACLAction {
@@ -7115,17 +7390,17 @@ func (e *UpdateProjectDataCacheProjectsAction) UnmarshalJSON(data []byte) error 
 	}
 }
 
-type Algo string
+type UpdateProjectDataCacheAlgo string
 
 const (
-	AlgoFixedWindow Algo = "fixed_window"
-	AlgoTokenBucket Algo = "token_bucket"
+	UpdateProjectDataCacheAlgoFixedWindow UpdateProjectDataCacheAlgo = "fixed_window"
+	UpdateProjectDataCacheAlgoTokenBucket UpdateProjectDataCacheAlgo = "token_bucket"
 )
 
-func (e Algo) ToPointer() *Algo {
+func (e UpdateProjectDataCacheAlgo) ToPointer() *UpdateProjectDataCacheAlgo {
 	return &e
 }
-func (e *Algo) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectDataCacheAlgo) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7134,23 +7409,23 @@ func (e *Algo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = Algo(v)
+		*e = UpdateProjectDataCacheAlgo(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Algo: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheAlgo: %v", v)
 	}
 }
 
 type Erl struct {
-	Algo   Algo     `json:"algo"`
-	Window float64  `json:"window"`
-	Limit  float64  `json:"limit"`
-	Keys   []string `json:"keys"`
+	Algo   UpdateProjectDataCacheAlgo `json:"algo"`
+	Window float64                    `json:"window"`
+	Limit  float64                    `json:"limit"`
+	Keys   []string                   `json:"keys"`
 }
 
-func (o *Erl) GetAlgo() Algo {
+func (o *Erl) GetAlgo() UpdateProjectDataCacheAlgo {
 	if o == nil {
-		return Algo("")
+		return UpdateProjectDataCacheAlgo("")
 	}
 	return o.Algo
 }

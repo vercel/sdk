@@ -9,6 +9,7 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -47,7 +48,14 @@ func testHeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 		return
 	}
 	respBody := &operations.HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody{
-		Items:     map[string]*components.EdgeConfigItemValue{},
+		Items: map[string]*components.EdgeConfigItemValue{
+			"key": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+				map[string]*components.EdgeConfigItemValue{},
+			)),
+			"key1": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
+				true,
+			)),
+		},
 		UpdatedAt: 6086.93,
 		Digest:    "<value>",
 	}

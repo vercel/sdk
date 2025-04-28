@@ -1164,10 +1164,232 @@ func (e *CancelDeploymentChecksConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type string
+
+const (
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12TypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type = "bitbucket"
+)
+
+func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type {
+	return &e
+}
+func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type: %v", v)
+	}
+}
+
+type GitSource12 struct {
+	Type          CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type `json:"type"`
+	Ref           string                                                                           `json:"ref"`
+	Sha           string                                                                           `json:"sha"`
+	Owner         *string                                                                          `json:"owner,omitempty"`
+	Slug          *string                                                                          `json:"slug,omitempty"`
+	WorkspaceUUID string                                                                           `json:"workspaceUuid"`
+	RepoUUID      string                                                                           `json:"repoUuid"`
+}
+
+func (o *GitSource12) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type("")
+	}
+	return o.Type
+}
+
+func (o *GitSource12) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GitSource12) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GitSource12) GetOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Owner
+}
+
+func (o *GitSource12) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *GitSource12) GetWorkspaceUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GitSource12) GetRepoUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RepoUUID
+}
+
+type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type string
+
+const (
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11TypeGitlab CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type = "gitlab"
+)
+
+func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type {
+	return &e
+}
+func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type: %v", v)
+	}
+}
+
+type GitSource11 struct {
+	Type      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type `json:"type"`
+	Ref       string                                                                           `json:"ref"`
+	Sha       string                                                                           `json:"sha"`
+	ProjectID float64                                                                          `json:"projectId"`
+}
+
+func (o *GitSource11) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type("")
+	}
+	return o.Type
+}
+
+func (o *GitSource11) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GitSource11) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GitSource11) GetProjectID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ProjectID
+}
+
+type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type string
+
+const (
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithub CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github"
+)
+
+func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
+	return &e
+}
+func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type: %v", v)
+	}
+}
+
+type GitSource10 struct {
+	Type   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type `json:"type"`
+	Host   string                                                                           `json:"host"`
+	Ref    string                                                                           `json:"ref"`
+	Sha    string                                                                           `json:"sha"`
+	RepoID float64                                                                          `json:"repoId"`
+	Org    *string                                                                          `json:"org,omitempty"`
+	Repo   *string                                                                          `json:"repo,omitempty"`
+}
+
+func (o *GitSource10) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type("")
+	}
+	return o.Type
+}
+
+func (o *GitSource10) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GitSource10) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GitSource10) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *GitSource10) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GitSource10) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *GitSource10) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9TypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type = "bitbucket"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9TypeGithub CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type = "github"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type {
@@ -1179,7 +1401,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "github":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type(v)
 		return nil
 	default:
@@ -1188,13 +1410,12 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 }
 
 type GitSource9 struct {
-	Type          CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type `json:"type"`
-	Ref           string                                                                          `json:"ref"`
-	Sha           string                                                                          `json:"sha"`
-	Owner         *string                                                                         `json:"owner,omitempty"`
-	Slug          *string                                                                         `json:"slug,omitempty"`
-	WorkspaceUUID string                                                                          `json:"workspaceUuid"`
-	RepoUUID      string                                                                          `json:"repoUuid"`
+	Type   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type `json:"type"`
+	Ref    string                                                                          `json:"ref"`
+	Sha    string                                                                          `json:"sha"`
+	RepoID float64                                                                         `json:"repoId"`
+	Org    *string                                                                         `json:"org,omitempty"`
+	Repo   *string                                                                         `json:"repo,omitempty"`
 }
 
 func (o *GitSource9) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type {
@@ -1218,38 +1439,31 @@ func (o *GitSource9) GetSha() string {
 	return o.Sha
 }
 
-func (o *GitSource9) GetOwner() *string {
+func (o *GitSource9) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *GitSource9) GetOrg() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Owner
+	return o.Org
 }
 
-func (o *GitSource9) GetSlug() *string {
+func (o *GitSource9) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Slug
-}
-
-func (o *GitSource9) GetWorkspaceUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GitSource9) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
+	return o.Repo
 }
 
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8TypeGitlab CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type = "gitlab"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8TypeCustom CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type = "custom"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type {
@@ -1261,7 +1475,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "gitlab":
+	case "custom":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type(v)
 		return nil
 	default:
@@ -1269,11 +1483,12 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
+// GitSource8 - Allows custom git sources (local folder mounted to the container) in test mode
 type GitSource8 struct {
-	Type      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type `json:"type"`
-	Ref       string                                                                          `json:"ref"`
-	Sha       string                                                                          `json:"sha"`
-	ProjectID float64                                                                         `json:"projectId"`
+	Type   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type `json:"type"`
+	Ref    string                                                                          `json:"ref"`
+	Sha    string                                                                          `json:"sha"`
+	GitURL string                                                                          `json:"gitUrl"`
 }
 
 func (o *GitSource8) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type {
@@ -1297,17 +1512,17 @@ func (o *GitSource8) GetSha() string {
 	return o.Sha
 }
 
-func (o *GitSource8) GetProjectID() float64 {
+func (o *GitSource8) GetGitURL() string {
 	if o == nil {
-		return 0.0
+		return ""
 	}
-	return o.ProjectID
+	return o.GitURL
 }
 
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7TypeGithub CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type = "github"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7TypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type = "bitbucket"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type {
@@ -1319,7 +1534,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "github":
+	case "bitbucket":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type(v)
 		return nil
 	default:
@@ -1328,12 +1543,12 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 }
 
 type GitSource7 struct {
-	Type   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type `json:"type"`
-	Ref    string                                                                          `json:"ref"`
-	Sha    string                                                                          `json:"sha"`
-	RepoID float64                                                                         `json:"repoId"`
-	Org    *string                                                                         `json:"org,omitempty"`
-	Repo   *string                                                                         `json:"repo,omitempty"`
+	Type  CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type `json:"type"`
+	Owner string                                                                          `json:"owner"`
+	Slug  string                                                                          `json:"slug"`
+	Ref   *string                                                                         `json:"ref,omitempty"`
+	Sha   *string                                                                         `json:"sha,omitempty"`
+	PrID  *float64                                                                        `json:"prId,omitempty"`
 }
 
 func (o *GitSource7) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type {
@@ -1343,45 +1558,45 @@ func (o *GitSource7) GetType() CancelDeploymentGitSourceDeploymentsResponse200Ap
 	return o.Type
 }
 
-func (o *GitSource7) GetRef() string {
+func (o *GitSource7) GetOwner() string {
 	if o == nil {
 		return ""
+	}
+	return o.Owner
+}
+
+func (o *GitSource7) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GitSource7) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GitSource7) GetSha() string {
+func (o *GitSource7) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GitSource7) GetRepoID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.RepoID
-}
-
-func (o *GitSource7) GetOrg() *string {
+func (o *GitSource7) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Org
-}
-
-func (o *GitSource7) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
+	return o.PrID
 }
 
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeCustom CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "custom"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "bitbucket"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
@@ -1393,7 +1608,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "custom":
+	case "bitbucket":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType(v)
 		return nil
 	default:
@@ -1401,12 +1616,13 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
-// GitSource6 - Allows custom git sources (local folder mounted to the container) in test mode
 type GitSource6 struct {
-	Type   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Ref    string                                                                         `json:"ref"`
-	Sha    string                                                                         `json:"sha"`
-	GitURL string                                                                         `json:"gitUrl"`
+	Type          CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	WorkspaceUUID *string                                                                        `json:"workspaceUuid,omitempty"`
+	RepoUUID      string                                                                         `json:"repoUuid"`
+	Ref           *string                                                                        `json:"ref,omitempty"`
+	Sha           *string                                                                        `json:"sha,omitempty"`
+	PrID          *float64                                                                       `json:"prId,omitempty"`
 }
 
 func (o *GitSource6) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
@@ -1416,31 +1632,45 @@ func (o *GitSource6) GetType() CancelDeploymentGitSourceDeploymentsResponse200Ap
 	return o.Type
 }
 
-func (o *GitSource6) GetRef() string {
+func (o *GitSource6) GetWorkspaceUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GitSource6) GetRepoUUID() string {
 	if o == nil {
 		return ""
+	}
+	return o.RepoUUID
+}
+
+func (o *GitSource6) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *GitSource6) GetSha() string {
+func (o *GitSource6) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *GitSource6) GetGitURL() string {
+func (o *GitSource6) GetPrID() *float64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.GitURL
+	return o.PrID
 }
 
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "bitbucket"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeGitlab CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "gitlab"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
@@ -1452,159 +1682,11 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) Unm
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "gitlab":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType: %v", v)
-	}
-}
-
-type CancelDeploymentGitSource5 struct {
-	Type  CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
-	Owner string                                                             `json:"owner"`
-	Slug  string                                                             `json:"slug"`
-	Ref   *string                                                            `json:"ref,omitempty"`
-	Sha   *string                                                            `json:"sha,omitempty"`
-	PrID  *float64                                                           `json:"prId,omitempty"`
-}
-
-func (o *CancelDeploymentGitSource5) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
-	if o == nil {
-		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType("")
-	}
-	return o.Type
-}
-
-func (o *CancelDeploymentGitSource5) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
-}
-
-func (o *CancelDeploymentGitSource5) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
-}
-
-func (o *CancelDeploymentGitSource5) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *CancelDeploymentGitSource5) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *CancelDeploymentGitSource5) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type CancelDeploymentGitSourceDeploymentsResponse200Type string
-
-const (
-	CancelDeploymentGitSourceDeploymentsResponse200TypeBitbucket CancelDeploymentGitSourceDeploymentsResponse200Type = "bitbucket"
-)
-
-func (e CancelDeploymentGitSourceDeploymentsResponse200Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200Type {
-	return &e
-}
-func (e *CancelDeploymentGitSourceDeploymentsResponse200Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = CancelDeploymentGitSourceDeploymentsResponse200Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200Type: %v", v)
-	}
-}
-
-type CancelDeploymentGitSource4 struct {
-	Type          CancelDeploymentGitSourceDeploymentsResponse200Type `json:"type"`
-	WorkspaceUUID *string                                             `json:"workspaceUuid,omitempty"`
-	RepoUUID      string                                              `json:"repoUuid"`
-	Ref           *string                                             `json:"ref,omitempty"`
-	Sha           *string                                             `json:"sha,omitempty"`
-	PrID          *float64                                            `json:"prId,omitempty"`
-}
-
-func (o *CancelDeploymentGitSource4) GetType() CancelDeploymentGitSourceDeploymentsResponse200Type {
-	if o == nil {
-		return CancelDeploymentGitSourceDeploymentsResponse200Type("")
-	}
-	return o.Type
-}
-
-func (o *CancelDeploymentGitSource4) GetWorkspaceUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *CancelDeploymentGitSource4) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
-}
-
-func (o *CancelDeploymentGitSource4) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *CancelDeploymentGitSource4) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *CancelDeploymentGitSource4) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type CancelDeploymentGitSourceDeploymentsResponseType string
-
-const (
-	CancelDeploymentGitSourceDeploymentsResponseTypeGitlab CancelDeploymentGitSourceDeploymentsResponseType = "gitlab"
-)
-
-func (e CancelDeploymentGitSourceDeploymentsResponseType) ToPointer() *CancelDeploymentGitSourceDeploymentsResponseType {
-	return &e
-}
-func (e *CancelDeploymentGitSourceDeploymentsResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gitlab":
-		*e = CancelDeploymentGitSourceDeploymentsResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponseType: %v", v)
 	}
 }
 
@@ -1671,12 +1753,224 @@ func (u CancelDeploymentGitSourceProjectID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentGitSourceProjectID: all fields are null")
 }
 
+type CancelDeploymentGitSource5 struct {
+	Type      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
+	ProjectID CancelDeploymentGitSourceProjectID                                 `json:"projectId"`
+	Ref       *string                                                            `json:"ref,omitempty"`
+	Sha       *string                                                            `json:"sha,omitempty"`
+	PrID      *float64                                                           `json:"prId,omitempty"`
+}
+
+func (o *CancelDeploymentGitSource5) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSource5) GetProjectID() CancelDeploymentGitSourceProjectID {
+	if o == nil {
+		return CancelDeploymentGitSourceProjectID{}
+	}
+	return o.ProjectID
+}
+
+func (o *CancelDeploymentGitSource5) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSource5) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSource5) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CancelDeploymentGitSourceDeploymentsResponse200Type string
+
+const (
+	CancelDeploymentGitSourceDeploymentsResponse200TypeGithubCustomHost CancelDeploymentGitSourceDeploymentsResponse200Type = "github-custom-host"
+)
+
+func (e CancelDeploymentGitSourceDeploymentsResponse200Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200Type {
+	return &e
+}
+func (e *CancelDeploymentGitSourceDeploymentsResponse200Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = CancelDeploymentGitSourceDeploymentsResponse200Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponse200Type: %v", v)
+	}
+}
+
+type CancelDeploymentGitSource4 struct {
+	Type CancelDeploymentGitSourceDeploymentsResponse200Type `json:"type"`
+	Host string                                              `json:"host"`
+	Org  string                                              `json:"org"`
+	Repo string                                              `json:"repo"`
+	Ref  *string                                             `json:"ref,omitempty"`
+	Sha  *string                                             `json:"sha,omitempty"`
+	PrID *float64                                            `json:"prId,omitempty"`
+}
+
+func (o *CancelDeploymentGitSource4) GetType() CancelDeploymentGitSourceDeploymentsResponse200Type {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsResponse200Type("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSource4) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *CancelDeploymentGitSource4) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitSource4) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CancelDeploymentGitSource4) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSource4) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSource4) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CancelDeploymentGitSourceDeploymentsResponseType string
+
+const (
+	CancelDeploymentGitSourceDeploymentsResponseTypeGithubCustomHost CancelDeploymentGitSourceDeploymentsResponseType = "github-custom-host"
+)
+
+func (e CancelDeploymentGitSourceDeploymentsResponseType) ToPointer() *CancelDeploymentGitSourceDeploymentsResponseType {
+	return &e
+}
+func (e *CancelDeploymentGitSourceDeploymentsResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = CancelDeploymentGitSourceDeploymentsResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentGitSourceDeploymentsResponseType: %v", v)
+	}
+}
+
+type CancelDeploymentGitSourceDeploymentsRepoIDType string
+
+const (
+	CancelDeploymentGitSourceDeploymentsRepoIDTypeStr    CancelDeploymentGitSourceDeploymentsRepoIDType = "str"
+	CancelDeploymentGitSourceDeploymentsRepoIDTypeNumber CancelDeploymentGitSourceDeploymentsRepoIDType = "number"
+)
+
+type CancelDeploymentGitSourceDeploymentsRepoID struct {
+	Str    *string
+	Number *float64
+
+	Type CancelDeploymentGitSourceDeploymentsRepoIDType
+}
+
+func CreateCancelDeploymentGitSourceDeploymentsRepoIDStr(str string) CancelDeploymentGitSourceDeploymentsRepoID {
+	typ := CancelDeploymentGitSourceDeploymentsRepoIDTypeStr
+
+	return CancelDeploymentGitSourceDeploymentsRepoID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentGitSourceDeploymentsRepoIDNumber(number float64) CancelDeploymentGitSourceDeploymentsRepoID {
+	typ := CancelDeploymentGitSourceDeploymentsRepoIDTypeNumber
+
+	return CancelDeploymentGitSourceDeploymentsRepoID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CancelDeploymentGitSourceDeploymentsRepoID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentGitSourceDeploymentsRepoIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentGitSourceDeploymentsRepoIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentGitSourceDeploymentsRepoID", string(data))
+}
+
+func (u CancelDeploymentGitSourceDeploymentsRepoID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentGitSourceDeploymentsRepoID: all fields are null")
+}
+
 type CancelDeploymentGitSource3 struct {
-	Type      CancelDeploymentGitSourceDeploymentsResponseType `json:"type"`
-	ProjectID CancelDeploymentGitSourceProjectID               `json:"projectId"`
-	Ref       *string                                          `json:"ref,omitempty"`
-	Sha       *string                                          `json:"sha,omitempty"`
-	PrID      *float64                                         `json:"prId,omitempty"`
+	Type   CancelDeploymentGitSourceDeploymentsResponseType `json:"type"`
+	Host   string                                           `json:"host"`
+	RepoID CancelDeploymentGitSourceDeploymentsRepoID       `json:"repoId"`
+	Ref    *string                                          `json:"ref,omitempty"`
+	Sha    *string                                          `json:"sha,omitempty"`
+	PrID   *float64                                         `json:"prId,omitempty"`
 }
 
 func (o *CancelDeploymentGitSource3) GetType() CancelDeploymentGitSourceDeploymentsResponseType {
@@ -1686,11 +1980,18 @@ func (o *CancelDeploymentGitSource3) GetType() CancelDeploymentGitSourceDeployme
 	return o.Type
 }
 
-func (o *CancelDeploymentGitSource3) GetProjectID() CancelDeploymentGitSourceProjectID {
+func (o *CancelDeploymentGitSource3) GetHost() string {
 	if o == nil {
-		return CancelDeploymentGitSourceProjectID{}
+		return ""
 	}
-	return o.ProjectID
+	return o.Host
+}
+
+func (o *CancelDeploymentGitSource3) GetRepoID() CancelDeploymentGitSourceDeploymentsRepoID {
+	if o == nil {
+		return CancelDeploymentGitSourceDeploymentsRepoID{}
+	}
+	return o.RepoID
 }
 
 func (o *CancelDeploymentGitSource3) GetRef() *string {
@@ -1929,6 +2230,9 @@ const (
 	CancelDeploymentGitSourceUnionTypeGitSource7                 CancelDeploymentGitSourceUnionType = "gitSource_7"
 	CancelDeploymentGitSourceUnionTypeGitSource8                 CancelDeploymentGitSourceUnionType = "gitSource_8"
 	CancelDeploymentGitSourceUnionTypeGitSource9                 CancelDeploymentGitSourceUnionType = "gitSource_9"
+	CancelDeploymentGitSourceUnionTypeGitSource10                CancelDeploymentGitSourceUnionType = "gitSource_10"
+	CancelDeploymentGitSourceUnionTypeGitSource11                CancelDeploymentGitSourceUnionType = "gitSource_11"
+	CancelDeploymentGitSourceUnionTypeGitSource12                CancelDeploymentGitSourceUnionType = "gitSource_12"
 )
 
 type CancelDeploymentGitSource struct {
@@ -1941,6 +2245,9 @@ type CancelDeploymentGitSource struct {
 	GitSource7                 *GitSource7
 	GitSource8                 *GitSource8
 	GitSource9                 *GitSource9
+	GitSource10                *GitSource10
+	GitSource11                *GitSource11
+	GitSource12                *GitSource12
 
 	Type CancelDeploymentGitSourceUnionType
 }
@@ -2026,19 +2333,46 @@ func CreateCancelDeploymentGitSourceGitSource9(gitSource9 GitSource9) CancelDepl
 	}
 }
 
-func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
+func CreateCancelDeploymentGitSourceGitSource10(gitSource10 GitSource10) CancelDeploymentGitSource {
+	typ := CancelDeploymentGitSourceUnionTypeGitSource10
 
-	var gitSource6 GitSource6 = GitSource6{}
-	if err := utils.UnmarshalJSON(data, &gitSource6, "", true, true); err == nil {
-		u.GitSource6 = &gitSource6
-		u.Type = CancelDeploymentGitSourceUnionTypeGitSource6
-		return nil
+	return CancelDeploymentGitSource{
+		GitSource10: &gitSource10,
+		Type:        typ,
 	}
+}
+
+func CreateCancelDeploymentGitSourceGitSource11(gitSource11 GitSource11) CancelDeploymentGitSource {
+	typ := CancelDeploymentGitSourceUnionTypeGitSource11
+
+	return CancelDeploymentGitSource{
+		GitSource11: &gitSource11,
+		Type:        typ,
+	}
+}
+
+func CreateCancelDeploymentGitSourceGitSource12(gitSource12 GitSource12) CancelDeploymentGitSource {
+	typ := CancelDeploymentGitSourceUnionTypeGitSource12
+
+	return CancelDeploymentGitSource{
+		GitSource12: &gitSource12,
+		Type:        typ,
+	}
+}
+
+func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
 
 	var gitSource8 GitSource8 = GitSource8{}
 	if err := utils.UnmarshalJSON(data, &gitSource8, "", true, true); err == nil {
 		u.GitSource8 = &gitSource8
 		u.Type = CancelDeploymentGitSourceUnionTypeGitSource8
+		return nil
+	}
+
+	var gitSource11 GitSource11 = GitSource11{}
+	if err := utils.UnmarshalJSON(data, &gitSource11, "", true, true); err == nil {
+		u.GitSource11 = &gitSource11
+		u.Type = CancelDeploymentGitSourceUnionTypeGitSource11
 		return nil
 	}
 
@@ -2049,10 +2383,10 @@ func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var cancelDeploymentGitSource3 CancelDeploymentGitSource3 = CancelDeploymentGitSource3{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource3, "", true, true); err == nil {
-		u.CancelDeploymentGitSource3 = &cancelDeploymentGitSource3
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource3
+	var cancelDeploymentGitSource5 CancelDeploymentGitSource5 = CancelDeploymentGitSource5{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource5, "", true, true); err == nil {
+		u.CancelDeploymentGitSource5 = &cancelDeploymentGitSource5
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource5
 		return nil
 	}
 
@@ -2063,17 +2397,17 @@ func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var cancelDeploymentGitSource4 CancelDeploymentGitSource4 = CancelDeploymentGitSource4{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource4, "", true, true); err == nil {
-		u.CancelDeploymentGitSource4 = &cancelDeploymentGitSource4
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource4
+	var cancelDeploymentGitSource3 CancelDeploymentGitSource3 = CancelDeploymentGitSource3{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource3, "", true, true); err == nil {
+		u.CancelDeploymentGitSource3 = &cancelDeploymentGitSource3
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource3
 		return nil
 	}
 
-	var cancelDeploymentGitSource5 CancelDeploymentGitSource5 = CancelDeploymentGitSource5{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource5, "", true, true); err == nil {
-		u.CancelDeploymentGitSource5 = &cancelDeploymentGitSource5
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource5
+	var gitSource6 GitSource6 = GitSource6{}
+	if err := utils.UnmarshalJSON(data, &gitSource6, "", true, true); err == nil {
+		u.GitSource6 = &gitSource6
+		u.Type = CancelDeploymentGitSourceUnionTypeGitSource6
 		return nil
 	}
 
@@ -2088,6 +2422,27 @@ func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &gitSource9, "", true, true); err == nil {
 		u.GitSource9 = &gitSource9
 		u.Type = CancelDeploymentGitSourceUnionTypeGitSource9
+		return nil
+	}
+
+	var cancelDeploymentGitSource4 CancelDeploymentGitSource4 = CancelDeploymentGitSource4{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource4, "", true, true); err == nil {
+		u.CancelDeploymentGitSource4 = &cancelDeploymentGitSource4
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource4
+		return nil
+	}
+
+	var gitSource10 GitSource10 = GitSource10{}
+	if err := utils.UnmarshalJSON(data, &gitSource10, "", true, true); err == nil {
+		u.GitSource10 = &gitSource10
+		u.Type = CancelDeploymentGitSourceUnionTypeGitSource10
+		return nil
+	}
+
+	var gitSource12 GitSource12 = GitSource12{}
+	if err := utils.UnmarshalJSON(data, &gitSource12, "", true, true); err == nil {
+		u.GitSource12 = &gitSource12
+		u.Type = CancelDeploymentGitSourceUnionTypeGitSource12
 		return nil
 	}
 
@@ -2129,6 +2484,18 @@ func (u CancelDeploymentGitSource) MarshalJSON() ([]byte, error) {
 
 	if u.GitSource9 != nil {
 		return utils.MarshalJSON(u.GitSource9, "", true)
+	}
+
+	if u.GitSource10 != nil {
+		return utils.MarshalJSON(u.GitSource10, "", true)
+	}
+
+	if u.GitSource11 != nil {
+		return utils.MarshalJSON(u.GitSource11, "", true)
+	}
+
+	if u.GitSource12 != nil {
+		return utils.MarshalJSON(u.GitSource12, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CancelDeploymentGitSource: all fields are null")
@@ -4016,40 +4383,42 @@ func (o *CancelDeploymentConfig) GetSecureComputeFallbackRegion() *string {
 
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.
 type CancelDeploymentResponseBody struct {
-	AliasAssignedAt           *CancelDeploymentAliasAssignedAt   `json:"aliasAssignedAt,omitempty"`
-	AlwaysRefuseToBuild       *bool                              `json:"alwaysRefuseToBuild,omitempty"`
-	Build                     CancelDeploymentBuild              `json:"build"`
-	BuildArtifactUrls         []string                           `json:"buildArtifactUrls,omitempty"`
-	Builds                    []CancelDeploymentBuilds           `json:"builds,omitempty"`
-	Env                       []string                           `json:"env"`
-	InspectorURL              *string                            `json:"inspectorUrl"`
-	IsInConcurrentBuildsQueue bool                               `json:"isInConcurrentBuildsQueue"`
-	IsInSystemBuildsQueue     bool                               `json:"isInSystemBuildsQueue"`
-	ProjectSettings           CancelDeploymentProjectSettings    `json:"projectSettings"`
-	ReadyStateReason          *string                            `json:"readyStateReason,omitempty"`
-	Integrations              *CancelDeploymentIntegrations      `json:"integrations,omitempty"`
-	Images                    *CancelDeploymentImages            `json:"images,omitempty"`
-	Alias                     []string                           `json:"alias,omitempty"`
-	AliasAssigned             bool                               `json:"aliasAssigned"`
-	BootedAt                  float64                            `json:"bootedAt"`
-	BuildingAt                float64                            `json:"buildingAt"`
-	BuildSkipped              bool                               `json:"buildSkipped"`
-	Creator                   CancelDeploymentCreator            `json:"creator"`
-	InitReadyAt               *float64                           `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment   *bool                              `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                   []CancelDeploymentLambdas          `json:"lambdas,omitempty"`
-	Public                    bool                               `json:"public"`
-	Ready                     *float64                           `json:"ready,omitempty"`
-	Status                    CancelDeploymentStatus             `json:"status"`
-	Team                      *CancelDeploymentTeam              `json:"team,omitempty"`
-	UserAliases               []string                           `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled    *bool                              `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs              *bool                              `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment         *CancelDeploymentCustomEnvironment `json:"customEnvironment,omitempty"`
-	ID                        string                             `json:"id"`
-	AliasError                *CancelDeploymentAliasError        `json:"aliasError,omitempty"`
-	AliasFinal                *string                            `json:"aliasFinal,omitempty"`
-	AliasWarning              *CancelDeploymentAliasWarning      `json:"aliasWarning,omitempty"`
+	AliasAssignedAt           *CancelDeploymentAliasAssignedAt `json:"aliasAssignedAt,omitempty"`
+	AlwaysRefuseToBuild       *bool                            `json:"alwaysRefuseToBuild,omitempty"`
+	Build                     CancelDeploymentBuild            `json:"build"`
+	BuildArtifactUrls         []string                         `json:"buildArtifactUrls,omitempty"`
+	Builds                    []CancelDeploymentBuilds         `json:"builds,omitempty"`
+	Env                       []string                         `json:"env"`
+	InspectorURL              *string                          `json:"inspectorUrl"`
+	IsInConcurrentBuildsQueue bool                             `json:"isInConcurrentBuildsQueue"`
+	IsInSystemBuildsQueue     bool                             `json:"isInSystemBuildsQueue"`
+	ProjectSettings           CancelDeploymentProjectSettings  `json:"projectSettings"`
+	ReadyStateReason          *string                          `json:"readyStateReason,omitempty"`
+	Integrations              *CancelDeploymentIntegrations    `json:"integrations,omitempty"`
+	Images                    *CancelDeploymentImages          `json:"images,omitempty"`
+	Alias                     []string                         `json:"alias,omitempty"`
+	AliasAssigned             bool                             `json:"aliasAssigned"`
+	BootedAt                  float64                          `json:"bootedAt"`
+	BuildingAt                float64                          `json:"buildingAt"`
+	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
+	BuildContainerFinishedAt *float64                           `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool                               `json:"buildSkipped"`
+	Creator                  CancelDeploymentCreator            `json:"creator"`
+	InitReadyAt              *float64                           `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment  *bool                              `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                  []CancelDeploymentLambdas          `json:"lambdas,omitempty"`
+	Public                   bool                               `json:"public"`
+	Ready                    *float64                           `json:"ready,omitempty"`
+	Status                   CancelDeploymentStatus             `json:"status"`
+	Team                     *CancelDeploymentTeam              `json:"team,omitempty"`
+	UserAliases              []string                           `json:"userAliases,omitempty"`
+	PreviewCommentsEnabled   *bool                              `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs             *bool                              `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment        *CancelDeploymentCustomEnvironment `json:"customEnvironment,omitempty"`
+	ID                       string                             `json:"id"`
+	AliasError               *CancelDeploymentAliasError        `json:"aliasError,omitempty"`
+	AliasFinal               *string                            `json:"aliasFinal,omitempty"`
+	AliasWarning             *CancelDeploymentAliasWarning      `json:"aliasWarning,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                             `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                          `json:"automaticAliases,omitempty"`
@@ -4220,6 +4589,13 @@ func (o *CancelDeploymentResponseBody) GetBuildingAt() float64 {
 		return 0.0
 	}
 	return o.BuildingAt
+}
+
+func (o *CancelDeploymentResponseBody) GetBuildContainerFinishedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildContainerFinishedAt
 }
 
 func (o *CancelDeploymentResponseBody) GetBuildSkipped() bool {

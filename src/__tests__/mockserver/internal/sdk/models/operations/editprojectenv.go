@@ -1370,9 +1370,10 @@ type EditProjectEnvResponseBody1 struct {
 	Type   EditProjectEnvResponseBodyType    `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                                  `json:"decrypted,omitempty"`
+	Value             string                                 `json:"value"`
 	ID                *string                                `json:"id,omitempty"`
 	Key               string                                 `json:"key"`
-	Value             string                                 `json:"value"`
 	ConfigurationID   *string                                `json:"configurationId,omitempty"`
 	CreatedAt         *float64                               `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                               `json:"updatedAt,omitempty"`
@@ -1383,11 +1384,9 @@ type EditProjectEnvResponseBody1 struct {
 	EdgeConfigTokenID *string                                `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *EditProjectEnvResponseBodyContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *EditProjectEnvResponseBodyInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  *EditProjectEnvResponseBodyInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                                        `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                       `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *EditProjectEnvResponseBody1) GetTarget() *EditProjectEnvResponseBodyTarget {
@@ -1411,6 +1410,20 @@ func (o *EditProjectEnvResponseBody1) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *EditProjectEnvResponseBody1) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *EditProjectEnvResponseBody1) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
 func (o *EditProjectEnvResponseBody1) GetID() *string {
 	if o == nil {
 		return nil
@@ -1423,13 +1436,6 @@ func (o *EditProjectEnvResponseBody1) GetKey() string {
 		return ""
 	}
 	return o.Key
-}
-
-func (o *EditProjectEnvResponseBody1) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
 }
 
 func (o *EditProjectEnvResponseBody1) GetConfigurationID() *string {
@@ -1500,13 +1506,6 @@ func (o *EditProjectEnvResponseBody1) GetInternalContentHint() *EditProjectEnvRe
 		return nil
 	}
 	return o.InternalContentHint
-}
-
-func (o *EditProjectEnvResponseBody1) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
 }
 
 func (o *EditProjectEnvResponseBody1) GetComment() *string {

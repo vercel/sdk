@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentGitSourceDeploymentsResponseType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentGitSourceDeploymentsResponseType = "bitbucket";
+let value: GetDeploymentGitSourceDeploymentsResponseType = "github-custom-host";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket"
+"github-custom-host"
 ```

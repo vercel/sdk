@@ -7,7 +7,9 @@
 
 ```typescript
 const value: models.Flags1 = {
-  definitions: {},
+  definitions: {
+    "key": {},
+  },
 };
 ```
 

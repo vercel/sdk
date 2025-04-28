@@ -8,7 +8,9 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 import { CancelDeploymentFlags1 } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentFlags1 = {
-  definitions: {},
+  definitions: {
+    "key": {},
+  },
 };
 ```
 

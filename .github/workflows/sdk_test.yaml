@@ -14,7 +14,6 @@ permissions:
   pull_request:
     branches:
       - main
-      - enable-tests-gh
     paths:
       - '**'        
 jobs:
@@ -24,5 +23,4 @@ jobs:
       target: ${{ github.event.inputs.target || 'vercel' }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

@@ -2342,10 +2342,232 @@ func (e *CreateDeploymentType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type string
+
+const (
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12TypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type = "bitbucket"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type: %v", v)
+	}
+}
+
+type CreateDeploymentGitSource12 struct {
+	Type          CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type `json:"type"`
+	Ref           string                                                                           `json:"ref"`
+	Sha           string                                                                           `json:"sha"`
+	Owner         *string                                                                          `json:"owner,omitempty"`
+	Slug          *string                                                                          `json:"slug,omitempty"`
+	WorkspaceUUID string                                                                           `json:"workspaceUuid"`
+	RepoUUID      string                                                                           `json:"repoUuid"`
+}
+
+func (o *CreateDeploymentGitSource12) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSource12) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSource12) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSource12) GetOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Owner
+}
+
+func (o *CreateDeploymentGitSource12) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *CreateDeploymentGitSource12) GetWorkspaceUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *CreateDeploymentGitSource12) GetRepoUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RepoUUID
+}
+
+type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type string
+
+const (
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11TypeGitlab CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type = "gitlab"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type: %v", v)
+	}
+}
+
+type CreateDeploymentGitSource11 struct {
+	Type      CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type `json:"type"`
+	Ref       string                                                                           `json:"ref"`
+	Sha       string                                                                           `json:"sha"`
+	ProjectID float64                                                                          `json:"projectId"`
+}
+
+func (o *CreateDeploymentGitSource11) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSource11) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSource11) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSource11) GetProjectID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ProjectID
+}
+
+type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type string
+
+const (
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithub CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type: %v", v)
+	}
+}
+
+type CreateDeploymentGitSource10 struct {
+	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type `json:"type"`
+	Host   string                                                                           `json:"host"`
+	Ref    string                                                                           `json:"ref"`
+	Sha    string                                                                           `json:"sha"`
+	RepoID float64                                                                          `json:"repoId"`
+	Org    *string                                                                          `json:"org,omitempty"`
+	Repo   *string                                                                          `json:"repo,omitempty"`
+}
+
+func (o *CreateDeploymentGitSource10) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSource10) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *CreateDeploymentGitSource10) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSource10) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSource10) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *CreateDeploymentGitSource10) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *CreateDeploymentGitSource10) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9TypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type = "bitbucket"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9TypeGithub CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type = "github"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type {
@@ -2357,7 +2579,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "github":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type(v)
 		return nil
 	default:
@@ -2366,13 +2588,12 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 }
 
 type CreateDeploymentGitSource9 struct {
-	Type          CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type `json:"type"`
-	Ref           string                                                                          `json:"ref"`
-	Sha           string                                                                          `json:"sha"`
-	Owner         *string                                                                         `json:"owner,omitempty"`
-	Slug          *string                                                                         `json:"slug,omitempty"`
-	WorkspaceUUID string                                                                          `json:"workspaceUuid"`
-	RepoUUID      string                                                                          `json:"repoUuid"`
+	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type `json:"type"`
+	Ref    string                                                                          `json:"ref"`
+	Sha    string                                                                          `json:"sha"`
+	RepoID float64                                                                         `json:"repoId"`
+	Org    *string                                                                         `json:"org,omitempty"`
+	Repo   *string                                                                         `json:"repo,omitempty"`
 }
 
 func (o *CreateDeploymentGitSource9) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type {
@@ -2396,38 +2617,31 @@ func (o *CreateDeploymentGitSource9) GetSha() string {
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSource9) GetOwner() *string {
+func (o *CreateDeploymentGitSource9) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *CreateDeploymentGitSource9) GetOrg() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Owner
+	return o.Org
 }
 
-func (o *CreateDeploymentGitSource9) GetSlug() *string {
+func (o *CreateDeploymentGitSource9) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Slug
-}
-
-func (o *CreateDeploymentGitSource9) GetWorkspaceUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *CreateDeploymentGitSource9) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
+	return o.Repo
 }
 
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8TypeGitlab CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type = "gitlab"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8TypeCustom CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type = "custom"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type {
@@ -2439,7 +2653,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "gitlab":
+	case "custom":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type(v)
 		return nil
 	default:
@@ -2447,11 +2661,12 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
+// CreateDeploymentGitSource8 - Allows custom git sources (local folder mounted to the container) in test mode
 type CreateDeploymentGitSource8 struct {
-	Type      CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type `json:"type"`
-	Ref       string                                                                          `json:"ref"`
-	Sha       string                                                                          `json:"sha"`
-	ProjectID float64                                                                         `json:"projectId"`
+	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type `json:"type"`
+	Ref    string                                                                          `json:"ref"`
+	Sha    string                                                                          `json:"sha"`
+	GitURL string                                                                          `json:"gitUrl"`
 }
 
 func (o *CreateDeploymentGitSource8) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type {
@@ -2475,17 +2690,17 @@ func (o *CreateDeploymentGitSource8) GetSha() string {
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSource8) GetProjectID() float64 {
+func (o *CreateDeploymentGitSource8) GetGitURL() string {
 	if o == nil {
-		return 0.0
+		return ""
 	}
-	return o.ProjectID
+	return o.GitURL
 }
 
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7TypeGithub CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type = "github"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7TypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type = "bitbucket"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type {
@@ -2497,7 +2712,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "github":
+	case "bitbucket":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type(v)
 		return nil
 	default:
@@ -2506,12 +2721,12 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 }
 
 type CreateDeploymentGitSource7 struct {
-	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type `json:"type"`
-	Ref    string                                                                          `json:"ref"`
-	Sha    string                                                                          `json:"sha"`
-	RepoID float64                                                                         `json:"repoId"`
-	Org    *string                                                                         `json:"org,omitempty"`
-	Repo   *string                                                                         `json:"repo,omitempty"`
+	Type  CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type `json:"type"`
+	Owner string                                                                          `json:"owner"`
+	Slug  string                                                                          `json:"slug"`
+	Ref   *string                                                                         `json:"ref,omitempty"`
+	Sha   *string                                                                         `json:"sha,omitempty"`
+	PrID  *float64                                                                        `json:"prId,omitempty"`
 }
 
 func (o *CreateDeploymentGitSource7) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type {
@@ -2521,45 +2736,45 @@ func (o *CreateDeploymentGitSource7) GetType() CreateDeploymentGitSourceDeployme
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSource7) GetRef() string {
+func (o *CreateDeploymentGitSource7) GetOwner() string {
 	if o == nil {
 		return ""
+	}
+	return o.Owner
+}
+
+func (o *CreateDeploymentGitSource7) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *CreateDeploymentGitSource7) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSource7) GetSha() string {
+func (o *CreateDeploymentGitSource7) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSource7) GetRepoID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.RepoID
-}
-
-func (o *CreateDeploymentGitSource7) GetOrg() *string {
+func (o *CreateDeploymentGitSource7) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Org
-}
-
-func (o *CreateDeploymentGitSource7) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
+	return o.PrID
 }
 
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6TypeCustom CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type = "custom"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6TypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type = "bitbucket"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type {
@@ -2571,7 +2786,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "custom":
+	case "bitbucket":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type(v)
 		return nil
 	default:
@@ -2579,12 +2794,13 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
-// CreateDeploymentGitSource6 - Allows custom git sources (local folder mounted to the container) in test mode
 type CreateDeploymentGitSource6 struct {
-	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type `json:"type"`
-	Ref    string                                                                          `json:"ref"`
-	Sha    string                                                                          `json:"sha"`
-	GitURL string                                                                          `json:"gitUrl"`
+	Type          CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type `json:"type"`
+	WorkspaceUUID *string                                                                         `json:"workspaceUuid,omitempty"`
+	RepoUUID      string                                                                          `json:"repoUuid"`
+	Ref           *string                                                                         `json:"ref,omitempty"`
+	Sha           *string                                                                         `json:"sha,omitempty"`
+	PrID          *float64                                                                        `json:"prId,omitempty"`
 }
 
 func (o *CreateDeploymentGitSource6) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type {
@@ -2594,31 +2810,45 @@ func (o *CreateDeploymentGitSource6) GetType() CreateDeploymentGitSourceDeployme
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSource6) GetRef() string {
+func (o *CreateDeploymentGitSource6) GetWorkspaceUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *CreateDeploymentGitSource6) GetRepoUUID() string {
 	if o == nil {
 		return ""
+	}
+	return o.RepoUUID
+}
+
+func (o *CreateDeploymentGitSource6) GetRef() *string {
+	if o == nil {
+		return nil
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSource6) GetSha() string {
+func (o *CreateDeploymentGitSource6) GetSha() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSource6) GetGitURL() string {
+func (o *CreateDeploymentGitSource6) GetPrID() *float64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.GitURL
+	return o.PrID
 }
 
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5TypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type = "bitbucket"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5TypeGitlab CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type = "gitlab"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type {
@@ -2630,159 +2860,11 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "bitbucket":
+	case "gitlab":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type: %v", v)
-	}
-}
-
-type GitSource5 struct {
-	Type  CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type `json:"type"`
-	Owner string                                                                          `json:"owner"`
-	Slug  string                                                                          `json:"slug"`
-	Ref   *string                                                                         `json:"ref,omitempty"`
-	Sha   *string                                                                         `json:"sha,omitempty"`
-	PrID  *float64                                                                        `json:"prId,omitempty"`
-}
-
-func (o *GitSource5) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type {
-	if o == nil {
-		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type("")
-	}
-	return o.Type
-}
-
-func (o *GitSource5) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
-}
-
-func (o *GitSource5) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
-}
-
-func (o *GitSource5) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GitSource5) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GitSource5) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType string
-
-const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeBitbucket CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "bitbucket"
-)
-
-func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
-	return &e
-}
-func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType: %v", v)
-	}
-}
-
-type GitSource4 struct {
-	Type          CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	WorkspaceUUID *string                                                                        `json:"workspaceUuid,omitempty"`
-	RepoUUID      string                                                                         `json:"repoUuid"`
-	Ref           *string                                                                        `json:"ref,omitempty"`
-	Sha           *string                                                                        `json:"sha,omitempty"`
-	PrID          *float64                                                                       `json:"prId,omitempty"`
-}
-
-func (o *GitSource4) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
-	if o == nil {
-		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType("")
-	}
-	return o.Type
-}
-
-func (o *GitSource4) GetWorkspaceUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *GitSource4) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
-}
-
-func (o *GitSource4) GetRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ref
-}
-
-func (o *GitSource4) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *GitSource4) GetPrID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.PrID
-}
-
-type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType string
-
-const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeGitlab CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "gitlab"
-)
-
-func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
-	return &e
-}
-func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gitlab":
-		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType: %v", v)
 	}
 }
 
@@ -2849,12 +2931,224 @@ func (u GitSourceProjectID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GitSourceProjectID: all fields are null")
 }
 
+type GitSource5 struct {
+	Type      CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type `json:"type"`
+	ProjectID GitSourceProjectID                                                              `json:"projectId"`
+	Ref       *string                                                                         `json:"ref,omitempty"`
+	Sha       *string                                                                         `json:"sha,omitempty"`
+	PrID      *float64                                                                        `json:"prId,omitempty"`
+}
+
+func (o *GitSource5) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type("")
+	}
+	return o.Type
+}
+
+func (o *GitSource5) GetProjectID() GitSourceProjectID {
+	if o == nil {
+		return GitSourceProjectID{}
+	}
+	return o.ProjectID
+}
+
+func (o *GitSource5) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GitSource5) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GitSource5) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType string
+
+const (
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyTypeGithubCustomHost CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType = "github-custom-host"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType: %v", v)
+	}
+}
+
+type GitSource4 struct {
+	Type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Host string                                                                         `json:"host"`
+	Org  string                                                                         `json:"org"`
+	Repo string                                                                         `json:"repo"`
+	Ref  *string                                                                        `json:"ref,omitempty"`
+	Sha  *string                                                                        `json:"sha,omitempty"`
+	PrID *float64                                                                       `json:"prId,omitempty"`
+}
+
+func (o *GitSource4) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType("")
+	}
+	return o.Type
+}
+
+func (o *GitSource4) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *GitSource4) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GitSource4) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GitSource4) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *GitSource4) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GitSource4) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType string
+
+const (
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONTypeGithubCustomHost CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = "github-custom-host"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType: %v", v)
+	}
+}
+
+type CreateDeploymentGitSourceRepoIDType string
+
+const (
+	CreateDeploymentGitSourceRepoIDTypeStr    CreateDeploymentGitSourceRepoIDType = "str"
+	CreateDeploymentGitSourceRepoIDTypeNumber CreateDeploymentGitSourceRepoIDType = "number"
+)
+
+type CreateDeploymentGitSourceRepoID struct {
+	Str    *string
+	Number *float64
+
+	Type CreateDeploymentGitSourceRepoIDType
+}
+
+func CreateCreateDeploymentGitSourceRepoIDStr(str string) CreateDeploymentGitSourceRepoID {
+	typ := CreateDeploymentGitSourceRepoIDTypeStr
+
+	return CreateDeploymentGitSourceRepoID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentGitSourceRepoIDNumber(number float64) CreateDeploymentGitSourceRepoID {
+	typ := CreateDeploymentGitSourceRepoIDTypeNumber
+
+	return CreateDeploymentGitSourceRepoID{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentGitSourceRepoID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentGitSourceRepoIDTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentGitSourceRepoIDTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentGitSourceRepoID", string(data))
+}
+
+func (u CreateDeploymentGitSourceRepoID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentGitSourceRepoID: all fields are null")
+}
+
 type GitSource3 struct {
-	Type      CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
-	ProjectID GitSourceProjectID                                                 `json:"projectId"`
-	Ref       *string                                                            `json:"ref,omitempty"`
-	Sha       *string                                                            `json:"sha,omitempty"`
-	PrID      *float64                                                           `json:"prId,omitempty"`
+	Type   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType `json:"type"`
+	Host   string                                                             `json:"host"`
+	RepoID CreateDeploymentGitSourceRepoID                                    `json:"repoId"`
+	Ref    *string                                                            `json:"ref,omitempty"`
+	Sha    *string                                                            `json:"sha,omitempty"`
+	PrID   *float64                                                           `json:"prId,omitempty"`
 }
 
 func (o *GitSource3) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType {
@@ -2864,11 +3158,18 @@ func (o *GitSource3) GetType() CreateDeploymentGitSourceDeploymentsResponse200Ap
 	return o.Type
 }
 
-func (o *GitSource3) GetProjectID() GitSourceProjectID {
+func (o *GitSource3) GetHost() string {
 	if o == nil {
-		return GitSourceProjectID{}
+		return ""
 	}
-	return o.ProjectID
+	return o.Host
+}
+
+func (o *GitSource3) GetRepoID() CreateDeploymentGitSourceRepoID {
+	if o == nil {
+		return CreateDeploymentGitSourceRepoID{}
+	}
+	return o.RepoID
 }
 
 func (o *GitSource3) GetRef() *string {
@@ -3098,27 +3399,33 @@ func (o *CreateDeploymentGitSource1) GetPrID() *float64 {
 type CreateDeploymentGitSourceUnionType string
 
 const (
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource1 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_1"
-	CreateDeploymentGitSourceUnionTypeGitSource2                 CreateDeploymentGitSourceUnionType = "gitSource_2"
-	CreateDeploymentGitSourceUnionTypeGitSource3                 CreateDeploymentGitSourceUnionType = "gitSource_3"
-	CreateDeploymentGitSourceUnionTypeGitSource4                 CreateDeploymentGitSourceUnionType = "gitSource_4"
-	CreateDeploymentGitSourceUnionTypeGitSource5                 CreateDeploymentGitSourceUnionType = "gitSource_5"
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_6"
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource7 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_7"
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource8 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_8"
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource9 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_9"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource1  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_1"
+	CreateDeploymentGitSourceUnionTypeGitSource2                  CreateDeploymentGitSourceUnionType = "gitSource_2"
+	CreateDeploymentGitSourceUnionTypeGitSource3                  CreateDeploymentGitSourceUnionType = "gitSource_3"
+	CreateDeploymentGitSourceUnionTypeGitSource4                  CreateDeploymentGitSourceUnionType = "gitSource_4"
+	CreateDeploymentGitSourceUnionTypeGitSource5                  CreateDeploymentGitSourceUnionType = "gitSource_5"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_6"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource7  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_7"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource8  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_8"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource9  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_9"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource10 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_10"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource11 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_11"
+	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource12 CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_12"
 )
 
 type CreateDeploymentGitSource struct {
-	CreateDeploymentGitSource1 *CreateDeploymentGitSource1
-	GitSource2                 *GitSource2
-	GitSource3                 *GitSource3
-	GitSource4                 *GitSource4
-	GitSource5                 *GitSource5
-	CreateDeploymentGitSource6 *CreateDeploymentGitSource6
-	CreateDeploymentGitSource7 *CreateDeploymentGitSource7
-	CreateDeploymentGitSource8 *CreateDeploymentGitSource8
-	CreateDeploymentGitSource9 *CreateDeploymentGitSource9
+	CreateDeploymentGitSource1  *CreateDeploymentGitSource1
+	GitSource2                  *GitSource2
+	GitSource3                  *GitSource3
+	GitSource4                  *GitSource4
+	GitSource5                  *GitSource5
+	CreateDeploymentGitSource6  *CreateDeploymentGitSource6
+	CreateDeploymentGitSource7  *CreateDeploymentGitSource7
+	CreateDeploymentGitSource8  *CreateDeploymentGitSource8
+	CreateDeploymentGitSource9  *CreateDeploymentGitSource9
+	CreateDeploymentGitSource10 *CreateDeploymentGitSource10
+	CreateDeploymentGitSource11 *CreateDeploymentGitSource11
+	CreateDeploymentGitSource12 *CreateDeploymentGitSource12
 
 	Type CreateDeploymentGitSourceUnionType
 }
@@ -3204,19 +3511,46 @@ func CreateCreateDeploymentGitSourceCreateDeploymentGitSource9(createDeploymentG
 	}
 }
 
-func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
+func CreateCreateDeploymentGitSourceCreateDeploymentGitSource10(createDeploymentGitSource10 CreateDeploymentGitSource10) CreateDeploymentGitSource {
+	typ := CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource10
 
-	var createDeploymentGitSource6 CreateDeploymentGitSource6 = CreateDeploymentGitSource6{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource6, "", true, true); err == nil {
-		u.CreateDeploymentGitSource6 = &createDeploymentGitSource6
-		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6
-		return nil
+	return CreateDeploymentGitSource{
+		CreateDeploymentGitSource10: &createDeploymentGitSource10,
+		Type:                        typ,
 	}
+}
+
+func CreateCreateDeploymentGitSourceCreateDeploymentGitSource11(createDeploymentGitSource11 CreateDeploymentGitSource11) CreateDeploymentGitSource {
+	typ := CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource11
+
+	return CreateDeploymentGitSource{
+		CreateDeploymentGitSource11: &createDeploymentGitSource11,
+		Type:                        typ,
+	}
+}
+
+func CreateCreateDeploymentGitSourceCreateDeploymentGitSource12(createDeploymentGitSource12 CreateDeploymentGitSource12) CreateDeploymentGitSource {
+	typ := CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource12
+
+	return CreateDeploymentGitSource{
+		CreateDeploymentGitSource12: &createDeploymentGitSource12,
+		Type:                        typ,
+	}
+}
+
+func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
 
 	var createDeploymentGitSource8 CreateDeploymentGitSource8 = CreateDeploymentGitSource8{}
 	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource8, "", true, true); err == nil {
 		u.CreateDeploymentGitSource8 = &createDeploymentGitSource8
 		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource8
+		return nil
+	}
+
+	var createDeploymentGitSource11 CreateDeploymentGitSource11 = CreateDeploymentGitSource11{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource11, "", true, true); err == nil {
+		u.CreateDeploymentGitSource11 = &createDeploymentGitSource11
+		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource11
 		return nil
 	}
 
@@ -3227,10 +3561,10 @@ func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var gitSource3 GitSource3 = GitSource3{}
-	if err := utils.UnmarshalJSON(data, &gitSource3, "", true, true); err == nil {
-		u.GitSource3 = &gitSource3
-		u.Type = CreateDeploymentGitSourceUnionTypeGitSource3
+	var gitSource5 GitSource5 = GitSource5{}
+	if err := utils.UnmarshalJSON(data, &gitSource5, "", true, true); err == nil {
+		u.GitSource5 = &gitSource5
+		u.Type = CreateDeploymentGitSourceUnionTypeGitSource5
 		return nil
 	}
 
@@ -3241,17 +3575,17 @@ func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var gitSource4 GitSource4 = GitSource4{}
-	if err := utils.UnmarshalJSON(data, &gitSource4, "", true, true); err == nil {
-		u.GitSource4 = &gitSource4
-		u.Type = CreateDeploymentGitSourceUnionTypeGitSource4
+	var gitSource3 GitSource3 = GitSource3{}
+	if err := utils.UnmarshalJSON(data, &gitSource3, "", true, true); err == nil {
+		u.GitSource3 = &gitSource3
+		u.Type = CreateDeploymentGitSourceUnionTypeGitSource3
 		return nil
 	}
 
-	var gitSource5 GitSource5 = GitSource5{}
-	if err := utils.UnmarshalJSON(data, &gitSource5, "", true, true); err == nil {
-		u.GitSource5 = &gitSource5
-		u.Type = CreateDeploymentGitSourceUnionTypeGitSource5
+	var createDeploymentGitSource6 CreateDeploymentGitSource6 = CreateDeploymentGitSource6{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource6, "", true, true); err == nil {
+		u.CreateDeploymentGitSource6 = &createDeploymentGitSource6
+		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6
 		return nil
 	}
 
@@ -3266,6 +3600,27 @@ func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource9, "", true, true); err == nil {
 		u.CreateDeploymentGitSource9 = &createDeploymentGitSource9
 		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource9
+		return nil
+	}
+
+	var gitSource4 GitSource4 = GitSource4{}
+	if err := utils.UnmarshalJSON(data, &gitSource4, "", true, true); err == nil {
+		u.GitSource4 = &gitSource4
+		u.Type = CreateDeploymentGitSourceUnionTypeGitSource4
+		return nil
+	}
+
+	var createDeploymentGitSource10 CreateDeploymentGitSource10 = CreateDeploymentGitSource10{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource10, "", true, true); err == nil {
+		u.CreateDeploymentGitSource10 = &createDeploymentGitSource10
+		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource10
+		return nil
+	}
+
+	var createDeploymentGitSource12 CreateDeploymentGitSource12 = CreateDeploymentGitSource12{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource12, "", true, true); err == nil {
+		u.CreateDeploymentGitSource12 = &createDeploymentGitSource12
+		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource12
 		return nil
 	}
 
@@ -3307,6 +3662,18 @@ func (u CreateDeploymentGitSource) MarshalJSON() ([]byte, error) {
 
 	if u.CreateDeploymentGitSource9 != nil {
 		return utils.MarshalJSON(u.CreateDeploymentGitSource9, "", true)
+	}
+
+	if u.CreateDeploymentGitSource10 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSource10, "", true)
+	}
+
+	if u.CreateDeploymentGitSource11 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSource11, "", true)
+	}
+
+	if u.CreateDeploymentGitSource12 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSource12, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateDeploymentGitSource: all fields are null")
@@ -5303,25 +5670,27 @@ type CreateDeploymentResponseBody struct {
 	AliasAssigned             bool                            `json:"aliasAssigned"`
 	BootedAt                  float64                         `json:"bootedAt"`
 	BuildingAt                float64                         `json:"buildingAt"`
-	BuildSkipped              bool                            `json:"buildSkipped"`
-	Creator                   Creator                         `json:"creator"`
-	InitReadyAt               *float64                        `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment   *bool                           `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                   []Lambdas                       `json:"lambdas,omitempty"`
-	Public                    bool                            `json:"public"`
-	Ready                     *float64                        `json:"ready,omitempty"`
-	Status                    CreateDeploymentStatus          `json:"status"`
-	Team                      *Team                           `json:"team,omitempty"`
-	UserAliases               []string                        `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled    *bool                           `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs              *bool                           `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment         *CustomEnvironment              `json:"customEnvironment,omitempty"`
-	Type                      CreateDeploymentType            `json:"type"`
-	Name                      string                          `json:"name"`
-	CreatedAt                 float64                         `json:"createdAt"`
-	DeletedAt                 *float64                        `json:"deletedAt,omitempty"`
-	ID                        string                          `json:"id"`
-	Version                   float64                         `json:"version"`
+	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
+	BuildContainerFinishedAt *float64               `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool                   `json:"buildSkipped"`
+	Creator                  Creator                `json:"creator"`
+	InitReadyAt              *float64               `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment  *bool                  `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                  []Lambdas              `json:"lambdas,omitempty"`
+	Public                   bool                   `json:"public"`
+	Ready                    *float64               `json:"ready,omitempty"`
+	Status                   CreateDeploymentStatus `json:"status"`
+	Team                     *Team                  `json:"team,omitempty"`
+	UserAliases              []string               `json:"userAliases,omitempty"`
+	PreviewCommentsEnabled   *bool                  `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs             *bool                  `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment        *CustomEnvironment     `json:"customEnvironment,omitempty"`
+	Type                     CreateDeploymentType   `json:"type"`
+	Name                     string                 `json:"name"`
+	CreatedAt                float64                `json:"createdAt"`
+	DeletedAt                *float64               `json:"deletedAt,omitempty"`
+	ID                       string                 `json:"id"`
+	Version                  float64                `json:"version"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                      `json:"autoAssignCustomDomains,omitempty"`
 	GitSource               *CreateDeploymentGitSource `json:"gitSource,omitempty"`
@@ -5490,6 +5859,13 @@ func (o *CreateDeploymentResponseBody) GetBuildingAt() float64 {
 		return 0.0
 	}
 	return o.BuildingAt
+}
+
+func (o *CreateDeploymentResponseBody) GetBuildContainerFinishedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildContainerFinishedAt
 }
 
 func (o *CreateDeploymentResponseBody) GetBuildSkipped() bool {

@@ -48,3 +48,18 @@ const value: models.GetProjectsLink3 = {
 };
 ```
 
+### `models.GetProjectsLink4`
+
+```typescript
+const value: models.GetProjectsLink4 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://austere-encouragement.org/",
+    },
+  ],
+};
+```
+

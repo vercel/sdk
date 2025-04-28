@@ -6,11 +6,11 @@
 import { CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONType =
-  "gitlab";
+  "github-custom-host";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-custom-host"
 ```

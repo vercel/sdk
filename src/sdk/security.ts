@@ -6,6 +6,7 @@ import { securityAddBypassIp } from "../funcs/securityAddBypassIp.js";
 import { securityGetActiveAttackStatus } from "../funcs/securityGetActiveAttackStatus.js";
 import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
+import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
 import { securityRemoveBypassIp } from "../funcs/securityRemoveBypassIp.js";
 import { securityUpdateAttackChallengeMode } from "../funcs/securityUpdateAttackChallengeMode.js";
 import { securityUpdateFirewallConfig } from "../funcs/securityUpdateFirewallConfig.js";
@@ -26,6 +27,10 @@ import {
   GetFirewallConfigRequest,
   GetFirewallConfigResponseBody,
 } from "../models/getfirewallconfigop.js";
+import {
+  PutFirewallConfigRequest,
+  PutFirewallConfigResponseBody,
+} from "../models/putfirewallconfigop.js";
 import {
   RemoveBypassIpRequest,
   RemoveBypassIpResponseBody,
@@ -52,6 +57,23 @@ export class Security extends ClientSDK {
     options?: RequestOptions,
   ): Promise<UpdateAttackChallengeModeResponseBody> {
     return unwrapAsync(securityUpdateAttackChallengeMode(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Put Firewall Configuration
+   *
+   * @remarks
+   * Set the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall configuration.
+   */
+  async putFirewallConfig(
+    request: PutFirewallConfigRequest,
+    options?: RequestOptions,
+  ): Promise<PutFirewallConfigResponseBody> {
+    return unwrapAsync(securityPutFirewallConfig(
       this,
       request,
       options,

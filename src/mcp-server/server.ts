@@ -149,6 +149,7 @@ import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
 import { tool$securityGetBypassIp } from "./tools/securityGetBypassIp.js";
 import { tool$securityGetFirewallConfig } from "./tools/securityGetFirewallConfig.js";
+import { tool$securityPutFirewallConfig } from "./tools/securityPutFirewallConfig.js";
 import { tool$securityRemoveBypassIp } from "./tools/securityRemoveBypassIp.js";
 import { tool$securityUpdateAttackChallengeMode } from "./tools/securityUpdateAttackChallengeMode.js";
 import { tool$securityUpdateFirewallConfig } from "./tools/securityUpdateFirewallConfig.js";
@@ -183,7 +184,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.3",
+    version: "1.6.5",
   });
 
   const client = new VercelCore({
@@ -340,6 +341,7 @@ export function createMCPServer(deps: {
   tool(tool$environmentUpdateCustomEnvironment);
   tool(tool$environmentRemoveCustomEnvironment);
   tool(tool$securityUpdateAttackChallengeMode);
+  tool(tool$securityPutFirewallConfig);
   tool(tool$securityUpdateFirewallConfig);
   tool(tool$securityGetFirewallConfig);
   tool(tool$securityGetActiveAttackStatus);

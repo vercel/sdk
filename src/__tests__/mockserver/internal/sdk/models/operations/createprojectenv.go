@@ -1949,9 +1949,11 @@ type Created2 struct {
 	Type   *CreateProjectEnvCreatedType   `json:"type,omitempty"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                             `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                               `json:"decrypted,omitempty"`
+	Value             *string                             `json:"value,omitempty"`
+	VsmValue          *string                             `json:"vsmValue,omitempty"`
 	ID                *string                             `json:"id,omitempty"`
 	Key               *string                             `json:"key,omitempty"`
-	Value             *string                             `json:"value,omitempty"`
 	ConfigurationID   *string                             `json:"configurationId,omitempty"`
 	CreatedAt         *float64                            `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                            `json:"updatedAt,omitempty"`
@@ -1962,13 +1964,10 @@ type Created2 struct {
 	EdgeConfigTokenID *string                             `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *CreateProjectEnvCreatedContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *CreateProjectEnvCreatedInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string  `json:"vsmValue,omitempty"`
-	System               *bool    `json:"system,omitempty"`
+	InternalContentHint  *CreateProjectEnvCreatedInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                                     `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                    `json:"customEnvironmentIds,omitempty"`
+	System               *bool                                       `json:"system,omitempty"`
 }
 
 func (o *Created2) GetTarget() *CreateProjectEnvCreatedTarget {
@@ -1992,6 +1991,27 @@ func (o *Created2) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *Created2) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *Created2) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *Created2) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
 func (o *Created2) GetID() *string {
 	if o == nil {
 		return nil
@@ -2004,13 +2024,6 @@ func (o *Created2) GetKey() *string {
 		return nil
 	}
 	return o.Key
-}
-
-func (o *Created2) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
 }
 
 func (o *Created2) GetConfigurationID() *string {
@@ -2083,13 +2096,6 @@ func (o *Created2) GetInternalContentHint() *CreateProjectEnvCreatedInternalCont
 	return o.InternalContentHint
 }
 
-func (o *Created2) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
-}
-
 func (o *Created2) GetComment() *string {
 	if o == nil {
 		return nil
@@ -2102,13 +2108,6 @@ func (o *Created2) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *Created2) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 func (o *Created2) GetSystem() *bool {
@@ -3326,9 +3325,11 @@ type Created1 struct {
 	Type   *CreatedType   `json:"type,omitempty"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string             `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool               `json:"decrypted,omitempty"`
+	Value             *string             `json:"value,omitempty"`
+	VsmValue          *string             `json:"vsmValue,omitempty"`
 	ID                *string             `json:"id,omitempty"`
 	Key               *string             `json:"key,omitempty"`
-	Value             *string             `json:"value,omitempty"`
 	ConfigurationID   *string             `json:"configurationId,omitempty"`
 	CreatedAt         *float64            `json:"createdAt,omitempty"`
 	UpdatedAt         *float64            `json:"updatedAt,omitempty"`
@@ -3339,13 +3340,10 @@ type Created1 struct {
 	EdgeConfigTokenID *string             `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *CreatedContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *CreatedInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string  `json:"vsmValue,omitempty"`
-	System               *bool    `json:"system,omitempty"`
+	InternalContentHint  *CreatedInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                     `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                    `json:"customEnvironmentIds,omitempty"`
+	System               *bool                       `json:"system,omitempty"`
 }
 
 func (o *Created1) GetTarget() *CreatedTarget {
@@ -3369,6 +3367,27 @@ func (o *Created1) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *Created1) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *Created1) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *Created1) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
 func (o *Created1) GetID() *string {
 	if o == nil {
 		return nil
@@ -3381,13 +3400,6 @@ func (o *Created1) GetKey() *string {
 		return nil
 	}
 	return o.Key
-}
-
-func (o *Created1) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
 }
 
 func (o *Created1) GetConfigurationID() *string {
@@ -3460,13 +3472,6 @@ func (o *Created1) GetInternalContentHint() *CreatedInternalContentHint {
 	return o.InternalContentHint
 }
 
-func (o *Created1) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
-}
-
 func (o *Created1) GetComment() *string {
 	if o == nil {
 		return nil
@@ -3479,13 +3484,6 @@ func (o *Created1) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *Created1) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 func (o *Created1) GetSystem() *bool {

@@ -559,8 +559,8 @@ test("Projects Get Project Env", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     type: "plain",
-    key: "<key>",
     value: "<value>",
+    key: "<key>",
   });
 });
 
@@ -630,18 +630,18 @@ test("Projects Remove Project Env", async () => {
   expect(result).toEqual([
     {
       type: "sensitive",
-      key: "<key>",
       value: "<value>",
+      key: "<key>",
     },
     {
       type: "plain",
-      key: "<key>",
       value: "<value>",
+      key: "<key>",
     },
     {
       type: "encrypted",
-      key: "<key>",
       value: "<value>",
+      key: "<key>",
     },
   ]);
 });

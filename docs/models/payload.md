@@ -745,6 +745,7 @@ const value: models.SixtyEight = {
   viaGithub: false,
   viaGitlab: false,
   viaBitbucket: false,
+  viaGoogle: false,
   viaSamlSso: false,
   viaPasskey: false,
 };

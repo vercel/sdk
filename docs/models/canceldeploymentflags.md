@@ -7,7 +7,9 @@
 
 ```typescript
 const value: models.CancelDeploymentFlags1 = {
-  definitions: {},
+  definitions: {
+    "key": {},
+  },
 };
 ```
 

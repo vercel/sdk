@@ -2,12 +2,33 @@
 
 Successful response retrieving a list of domains
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetProjectDomainsResponseBody1`
 
 ```typescript
-import { GetProjectDomainsResponseBody } from "@vercel/sdk/models/getprojectdomainsop.js";
+const value: models.GetProjectDomainsResponseBody1 = {
+  domains: [
+    {
+      name: "<value>",
+      apexName: "<value>",
+      projectId: "<id>",
+      verified: false,
+    },
+  ],
+  pagination: {
+    count: 3538.67,
+    next: 3470.07,
+    prev: 2597.22,
+  },
+};
+```
 
-let value: GetProjectDomainsResponseBody = {
+### `models.GetProjectDomainsResponseBody2`
+
+```typescript
+const value: models.GetProjectDomainsResponseBody2 = {
   domains: [
     {
       name: "<value>",
@@ -24,9 +45,3 @@ let value: GetProjectDomainsResponseBody = {
 };
 ```
 
-## Fields
-
-| Field                                                                                                                                                           | Type                                                                                                                                                            | Required                                                                                                                                                        | Description                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `domains`                                                                                                                                                       | [models.GetProjectDomainsDomains](../models/getprojectdomainsdomains.md)[]                                                                                      | :heavy_check_mark:                                                                                                                                              | N/A                                                                                                                                                             |
-| `pagination`                                                                                                                                                    | [models.Pagination](../models/pagination.md)                                                                                                                    | :heavy_check_mark:                                                                                                                                              | This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. |

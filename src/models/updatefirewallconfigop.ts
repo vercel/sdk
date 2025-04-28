@@ -97,7 +97,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest9ValueAction = {
 export type UpdateFirewallConfigRequestBodySecurityRequest9ValueAction =
   ClosedEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest9ValueAction>;
 
-export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
+export type UpdateFirewallConfigRequestBodySecurityRequest9Value = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
@@ -110,7 +110,7 @@ export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
 export type UpdateFirewallConfigRequestBody9 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest9Action;
   id: string;
-  value: UpdateFirewallConfigRequestBodySecurityRequestValue;
+  value: UpdateFirewallConfigRequestBodySecurityRequest9Value;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest8Action = {
@@ -129,7 +129,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = {
 export type UpdateFirewallConfigRequestBodySecurityRequest8ValueAction =
   ClosedEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest8ValueAction>;
 
-export type UpdateFirewallConfigRequestBodySecurityValue = {
+export type UpdateFirewallConfigRequestBodySecurityRequestValue = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
@@ -142,7 +142,7 @@ export type UpdateFirewallConfigRequestBodySecurityValue = {
 export type UpdateFirewallConfigRequestBody8 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest8Action;
   id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityValue;
+  value: UpdateFirewallConfigRequestBodySecurityRequestValue;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest7Action = {
@@ -190,7 +190,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest6ValueAction = {
 export type UpdateFirewallConfigRequestBodySecurityRequest6ValueAction =
   ClosedEnum<typeof UpdateFirewallConfigRequestBodySecurityRequest6ValueAction>;
 
-export type UpdateFirewallConfigRequestBodyValue = {
+export type UpdateFirewallConfigRequestBodySecurityValue = {
   active: boolean;
   action: UpdateFirewallConfigRequestBodySecurityRequest6ValueAction;
 };
@@ -201,7 +201,7 @@ export type UpdateFirewallConfigRequestBodyValue = {
 export type UpdateFirewallConfigRequestBody6 = {
   action: UpdateFirewallConfigRequestBodySecurityRequest6Action;
   id: Id;
-  value: UpdateFirewallConfigRequestBodyValue;
+  value: UpdateFirewallConfigRequestBodySecurityValue;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest5Action = {
@@ -280,7 +280,7 @@ export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
 /**
  * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
  */
-export const RequestBodyOp = {
+export const UpdateFirewallConfigRequestBodyOp = {
   Re: "re",
   Eq: "eq",
   Neq: "neq",
@@ -299,14 +299,16 @@ export const RequestBodyOp = {
 /**
  * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
  */
-export type RequestBodyOp = ClosedEnum<typeof RequestBodyOp>;
+export type UpdateFirewallConfigRequestBodyOp = ClosedEnum<
+  typeof UpdateFirewallConfigRequestBodyOp
+>;
 
 export type UpdateFirewallConfigRequestBodySecurityRequest3Value =
   | string
   | Array<string>
   | number;
 
-export type RequestBodyConditions = {
+export type UpdateFirewallConfigRequestBodyConditions = {
   /**
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
@@ -314,14 +316,14 @@ export type RequestBodyConditions = {
   /**
    * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
    */
-  op: RequestBodyOp;
+  op: UpdateFirewallConfigRequestBodyOp;
   neg?: boolean | undefined;
   key?: string | undefined;
   value?: string | Array<string> | number | undefined;
 };
 
-export type RequestBodyConditionGroup = {
-  conditions: Array<RequestBodyConditions>;
+export type UpdateFirewallConfigRequestBodyConditionGroup = {
+  conditions: Array<UpdateFirewallConfigRequestBodyConditions>;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = {
@@ -343,54 +345,58 @@ export type UpdateFirewallConfigRateLimitAlgo = ClosedEnum<
   typeof UpdateFirewallConfigRateLimitAlgo
 >;
 
-export const UpdateFirewallConfigAction1 = {
+export const UpdateFirewallConfigActionSecurity1 = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
   RateLimit: "rate_limit",
 } as const;
-export type UpdateFirewallConfigAction1 = ClosedEnum<
-  typeof UpdateFirewallConfigAction1
+export type UpdateFirewallConfigActionSecurity1 = ClosedEnum<
+  typeof UpdateFirewallConfigActionSecurity1
 >;
 
-export type UpdateFirewallConfigRateLimitAction =
-  | UpdateFirewallConfigAction1
+export type UpdateFirewallConfigRateLimitSecurityAction =
+  | UpdateFirewallConfigActionSecurity1
   | any;
 
-export type UpdateFirewallConfigRateLimit1 = {
+export type UpdateFirewallConfigRateLimitSecurity1 = {
   algo: UpdateFirewallConfigRateLimitAlgo;
   window: number;
   limit: number;
   keys: Array<string>;
-  action?: UpdateFirewallConfigAction1 | any | null | undefined;
+  action?: UpdateFirewallConfigActionSecurity1 | any | null | undefined;
 };
 
-export type RequestBodyRateLimit = UpdateFirewallConfigRateLimit1 | any;
+export type UpdateFirewallConfigRequestBodyRateLimit =
+  | UpdateFirewallConfigRateLimitSecurity1
+  | any;
 
-export type UpdateFirewallConfigRedirect1 = {
+export type UpdateFirewallConfigRedirectSecurity1 = {
   location: string;
   permanent: boolean;
 };
 
-export type RequestBodyRedirect = UpdateFirewallConfigRedirect1 | any;
+export type UpdateFirewallConfigRequestBodyRedirect =
+  | UpdateFirewallConfigRedirectSecurity1
+  | any;
 
-export type RequestBodyMitigate = {
+export type UpdateFirewallConfigRequestBodyMitigate = {
   action: UpdateFirewallConfigRequestBodySecurityRequest3ValueAction;
-  rateLimit?: UpdateFirewallConfigRateLimit1 | any | null | undefined;
-  redirect?: UpdateFirewallConfigRedirect1 | any | null | undefined;
+  rateLimit?: UpdateFirewallConfigRateLimitSecurity1 | any | null | undefined;
+  redirect?: UpdateFirewallConfigRedirectSecurity1 | any | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
 };
 
 export type UpdateFirewallConfigRequestBodySecurityRequest3Action = {
-  mitigate?: RequestBodyMitigate | undefined;
+  mitigate?: UpdateFirewallConfigRequestBodyMitigate | undefined;
 };
 
-export type RequestBodyValue = {
+export type UpdateFirewallConfigRequestBodyValue = {
   name: string;
   description?: string | undefined;
   active: boolean;
-  conditionGroup: Array<RequestBodyConditionGroup>;
+  conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest3Action;
 };
 
@@ -400,7 +406,7 @@ export type RequestBodyValue = {
 export type UpdateFirewallConfigRequestBody3 = {
   action: UpdateFirewallConfigRequestBodySecurityAction;
   id: string;
-  value: RequestBodyValue;
+  value: UpdateFirewallConfigRequestBodyValue;
 };
 
 export const UpdateFirewallConfigRequestBodyAction = {
@@ -447,7 +453,7 @@ export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
 /**
  * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
  */
-export const Op = {
+export const RequestBodyOp = {
   Re: "re",
   Eq: "eq",
   Neq: "neq",
@@ -466,14 +472,14 @@ export const Op = {
 /**
  * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
  */
-export type Op = ClosedEnum<typeof Op>;
+export type RequestBodyOp = ClosedEnum<typeof RequestBodyOp>;
 
 export type UpdateFirewallConfigRequestBodySecurityRequest2Value =
   | string
   | Array<string>
   | number;
 
-export type Conditions = {
+export type RequestBodyConditions = {
   /**
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
@@ -481,14 +487,14 @@ export type Conditions = {
   /**
    * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
    */
-  op: Op;
+  op: RequestBodyOp;
   neg?: boolean | undefined;
   key?: string | undefined;
   value?: string | Array<string> | number | undefined;
 };
 
-export type ConditionGroup = {
-  conditions: Array<Conditions>;
+export type RequestBodyConditionGroup = {
+  conditions: Array<RequestBodyConditions>;
 };
 
 export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = {
@@ -508,50 +514,54 @@ export const RateLimitAlgo = {
 } as const;
 export type RateLimitAlgo = ClosedEnum<typeof RateLimitAlgo>;
 
-export const Action1 = {
+export const UpdateFirewallConfigAction1 = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
   RateLimit: "rate_limit",
 } as const;
-export type Action1 = ClosedEnum<typeof Action1>;
+export type UpdateFirewallConfigAction1 = ClosedEnum<
+  typeof UpdateFirewallConfigAction1
+>;
 
-export type RateLimitAction = Action1 | any;
+export type UpdateFirewallConfigRateLimitAction =
+  | UpdateFirewallConfigAction1
+  | any;
 
-export type RateLimit1 = {
+export type UpdateFirewallConfigRateLimit1 = {
   algo: RateLimitAlgo;
   window: number;
   limit: number;
   keys: Array<string>;
-  action?: Action1 | any | null | undefined;
+  action?: UpdateFirewallConfigAction1 | any | null | undefined;
 };
 
-export type RateLimit = RateLimit1 | any;
+export type RequestBodyRateLimit = UpdateFirewallConfigRateLimit1 | any;
 
-export type Redirect1 = {
+export type UpdateFirewallConfigRedirect1 = {
   location: string;
   permanent: boolean;
 };
 
-export type Redirect = Redirect1 | any;
+export type RequestBodyRedirect = UpdateFirewallConfigRedirect1 | any;
 
-export type Mitigate = {
+export type RequestBodyMitigate = {
   action: UpdateFirewallConfigRequestBodySecurityRequest2ValueAction;
-  rateLimit?: RateLimit1 | any | null | undefined;
-  redirect?: Redirect1 | any | null | undefined;
+  rateLimit?: UpdateFirewallConfigRateLimit1 | any | null | undefined;
+  redirect?: UpdateFirewallConfigRedirect1 | any | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
 };
 
 export type UpdateFirewallConfigRequestBodySecurityRequest2Action = {
-  mitigate?: Mitigate | undefined;
+  mitigate?: RequestBodyMitigate | undefined;
 };
 
-export type Value = {
+export type RequestBodyValue = {
   name: string;
   description?: string | undefined;
   active: boolean;
-  conditionGroup: Array<ConditionGroup>;
+  conditionGroup: Array<RequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest2Action;
 };
 
@@ -561,7 +571,7 @@ export type Value = {
 export type UpdateFirewallConfigRequestBody2 = {
   action: UpdateFirewallConfigRequestBodyAction;
   id?: any | null | undefined;
-  value: Value;
+  value: RequestBodyValue;
 };
 
 export const RequestBodyAction = {
@@ -1108,9 +1118,9 @@ export namespace UpdateFirewallConfigRequestBodySecurityRequest9ValueAction$ {
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestValue,
+    UpdateFirewallConfigRequestBodySecurityRequest9Value,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1122,7 +1132,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema:
   });
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
+export type UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
@@ -1130,11 +1140,11 @@ export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
 };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest9Value$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequestValue
+    UpdateFirewallConfigRequestBodySecurityRequest9Value
   > = z.object({
     hostname: z.string(),
     ip: z.string(),
@@ -1147,42 +1157,42 @@ export const UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateFirewallConfigRequestBodySecurityRequestValue$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema` instead. */
+export namespace UpdateFirewallConfigRequestBodySecurityRequest9Value$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema` instead. */
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest9Value$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound` instead. */
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound` instead. */
   export type Outbound =
-    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound;
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound;
 }
 
-export function updateFirewallConfigRequestBodySecurityRequestValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequestValue:
-    UpdateFirewallConfigRequestBodySecurityRequestValue,
+export function updateFirewallConfigRequestBodySecurityRequest9ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest9Value:
+    UpdateFirewallConfigRequestBodySecurityRequest9Value,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequestValue,
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest9Value,
     ),
   );
 }
 
-export function updateFirewallConfigRequestBodySecurityRequestValueFromJSON(
+export function updateFirewallConfigRequestBodySecurityRequest9ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequestValue,
+  UpdateFirewallConfigRequestBodySecurityRequest9Value,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema.parse(
+      UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequestValue' from JSON`,
+    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest9Value' from JSON`,
   );
 }
 
@@ -1195,7 +1205,7 @@ export const UpdateFirewallConfigRequestBody9$inboundSchema: z.ZodType<
   action: UpdateFirewallConfigRequestBodySecurityRequest9Action$inboundSchema,
   id: z.string(),
   value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$inboundSchema
   ),
 });
 
@@ -1203,7 +1213,7 @@ export const UpdateFirewallConfigRequestBody9$inboundSchema: z.ZodType<
 export type UpdateFirewallConfigRequestBody9$Outbound = {
   action: string;
   id: string;
-  value: UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound;
+  value: UpdateFirewallConfigRequestBodySecurityRequest9Value$Outbound;
 };
 
 /** @internal */
@@ -1215,7 +1225,7 @@ export const UpdateFirewallConfigRequestBody9$outboundSchema: z.ZodType<
   action: UpdateFirewallConfigRequestBodySecurityRequest9Action$outboundSchema,
   id: z.string(),
   value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema
+    UpdateFirewallConfigRequestBodySecurityRequest9Value$outboundSchema
   ),
 });
 
@@ -1303,9 +1313,9 @@ export namespace UpdateFirewallConfigRequestBodySecurityRequest8ValueAction$ {
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityValue$inboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityValue,
+    UpdateFirewallConfigRequestBodySecurityRequestValue,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -1317,7 +1327,7 @@ export const UpdateFirewallConfigRequestBodySecurityValue$inboundSchema:
   });
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
+export type UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound = {
   hostname: string;
   ip: string;
   notes?: string | undefined;
@@ -1325,11 +1335,11 @@ export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
 };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityValue$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityValue$Outbound,
+    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound,
     z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityValue
+    UpdateFirewallConfigRequestBodySecurityRequestValue
   > = z.object({
     hostname: z.string(),
     ip: z.string(),
@@ -1342,41 +1352,42 @@ export const UpdateFirewallConfigRequestBodySecurityValue$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateFirewallConfigRequestBodySecurityValue$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$inboundSchema` instead. */
+export namespace UpdateFirewallConfigRequestBodySecurityRequestValue$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityValue$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$outboundSchema` instead. */
+    UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$Outbound` instead. */
-  export type Outbound = UpdateFirewallConfigRequestBodySecurityValue$Outbound;
+    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound` instead. */
+  export type Outbound =
+    UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound;
 }
 
-export function updateFirewallConfigRequestBodySecurityValueToJSON(
-  updateFirewallConfigRequestBodySecurityValue:
-    UpdateFirewallConfigRequestBodySecurityValue,
+export function updateFirewallConfigRequestBodySecurityRequestValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequestValue:
+    UpdateFirewallConfigRequestBodySecurityRequestValue,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityValue,
+    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequestValue,
     ),
   );
 }
 
-export function updateFirewallConfigRequestBodySecurityValueFromJSON(
+export function updateFirewallConfigRequestBodySecurityRequestValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityValue,
+  UpdateFirewallConfigRequestBodySecurityRequestValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateFirewallConfigRequestBodySecurityValue$inboundSchema.parse(
+      UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityValue' from JSON`,
+    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequestValue' from JSON`,
   );
 }
 
@@ -1389,7 +1400,7 @@ export const UpdateFirewallConfigRequestBody8$inboundSchema: z.ZodType<
   action: UpdateFirewallConfigRequestBodySecurityRequest8Action$inboundSchema,
   id: z.nullable(z.any()).optional(),
   value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityValue$inboundSchema
+    UpdateFirewallConfigRequestBodySecurityRequestValue$inboundSchema
   ),
 });
 
@@ -1397,7 +1408,7 @@ export const UpdateFirewallConfigRequestBody8$inboundSchema: z.ZodType<
 export type UpdateFirewallConfigRequestBody8$Outbound = {
   action: string;
   id?: any | null | undefined;
-  value: UpdateFirewallConfigRequestBodySecurityValue$Outbound;
+  value: UpdateFirewallConfigRequestBodySecurityRequestValue$Outbound;
 };
 
 /** @internal */
@@ -1409,7 +1420,7 @@ export const UpdateFirewallConfigRequestBody8$outboundSchema: z.ZodType<
   action: UpdateFirewallConfigRequestBodySecurityRequest8Action$outboundSchema,
   id: z.nullable(z.any()).optional(),
   value: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema
+    UpdateFirewallConfigRequestBodySecurityRequestValue$outboundSchema
   ),
 });
 
@@ -1601,66 +1612,74 @@ export namespace UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$ {
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$inboundSchema,
-});
+export const UpdateFirewallConfigRequestBodySecurityValue$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active: z.boolean(),
+    action:
+      UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$inboundSchema,
+  });
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodyValue$Outbound = {
+export type UpdateFirewallConfigRequestBodySecurityValue$Outbound = {
   active: boolean;
   action: string;
 };
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodyValue$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBodyValue$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBodyValue
-> = z.object({
-  active: z.boolean(),
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$outboundSchema,
-});
+export const UpdateFirewallConfigRequestBodySecurityValue$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityValue$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityValue
+  > = z.object({
+    active: z.boolean(),
+    action:
+      UpdateFirewallConfigRequestBodySecurityRequest6ValueAction$outboundSchema,
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateFirewallConfigRequestBodyValue$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$inboundSchema` instead. */
+export namespace UpdateFirewallConfigRequestBodySecurityValue$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateFirewallConfigRequestBodyValue$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$outboundSchema` instead. */
+    UpdateFirewallConfigRequestBodySecurityValue$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateFirewallConfigRequestBodyValue$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$Outbound` instead. */
-  export type Outbound = UpdateFirewallConfigRequestBodyValue$Outbound;
+    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityValue$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodySecurityValue$Outbound;
 }
 
-export function updateFirewallConfigRequestBodyValueToJSON(
-  updateFirewallConfigRequestBodyValue: UpdateFirewallConfigRequestBodyValue,
+export function updateFirewallConfigRequestBodySecurityValueToJSON(
+  updateFirewallConfigRequestBodySecurityValue:
+    UpdateFirewallConfigRequestBodySecurityValue,
 ): string {
   return JSON.stringify(
-    UpdateFirewallConfigRequestBodyValue$outboundSchema.parse(
-      updateFirewallConfigRequestBodyValue,
+    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityValue,
     ),
   );
 }
 
-export function updateFirewallConfigRequestBodyValueFromJSON(
+export function updateFirewallConfigRequestBodySecurityValueFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBodyValue, SDKValidationError> {
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodySecurityValue,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      UpdateFirewallConfigRequestBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBodyValue' from JSON`,
+      UpdateFirewallConfigRequestBodySecurityValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityValue' from JSON`,
   );
 }
 
@@ -1672,14 +1691,16 @@ export const UpdateFirewallConfigRequestBody6$inboundSchema: z.ZodType<
 > = z.object({
   action: UpdateFirewallConfigRequestBodySecurityRequest6Action$inboundSchema,
   id: Id$inboundSchema,
-  value: z.lazy(() => UpdateFirewallConfigRequestBodyValue$inboundSchema),
+  value: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityValue$inboundSchema
+  ),
 });
 
 /** @internal */
 export type UpdateFirewallConfigRequestBody6$Outbound = {
   action: string;
   id: string;
-  value: UpdateFirewallConfigRequestBodyValue$Outbound;
+  value: UpdateFirewallConfigRequestBodySecurityValue$Outbound;
 };
 
 /** @internal */
@@ -1690,7 +1711,9 @@ export const UpdateFirewallConfigRequestBody6$outboundSchema: z.ZodType<
 > = z.object({
   action: UpdateFirewallConfigRequestBodySecurityRequest6Action$outboundSchema,
   id: Id$outboundSchema,
-  value: z.lazy(() => UpdateFirewallConfigRequestBodyValue$outboundSchema),
+  value: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityValue$outboundSchema
+  ),
 });
 
 /**
@@ -1945,24 +1968,25 @@ export namespace UpdateFirewallConfigRequestBodySecurityType$ {
 }
 
 /** @internal */
-export const RequestBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyOp
-> = z.nativeEnum(RequestBodyOp);
+export const UpdateFirewallConfigRequestBodyOp$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRequestBodyOp
+> = z.nativeEnum(UpdateFirewallConfigRequestBodyOp);
 
 /** @internal */
-export const RequestBodyOp$outboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyOp
-> = RequestBodyOp$inboundSchema;
+export const UpdateFirewallConfigRequestBodyOp$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRequestBodyOp
+> = UpdateFirewallConfigRequestBodyOp$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestBodyOp$ {
-  /** @deprecated use `RequestBodyOp$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyOp$inboundSchema;
-  /** @deprecated use `RequestBodyOp$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyOp$outboundSchema;
+export namespace UpdateFirewallConfigRequestBodyOp$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyOp$inboundSchema` instead. */
+  export const inboundSchema = UpdateFirewallConfigRequestBodyOp$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyOp$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyOp$outboundSchema;
 }
 
 /** @internal */
@@ -2031,12 +2055,1017 @@ export function updateFirewallConfigRequestBodySecurityRequest3ValueFromJSON(
 }
 
 /** @internal */
+export const UpdateFirewallConfigRequestBodyConditions$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyConditions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFirewallConfigRequestBodySecurityType$inboundSchema,
+  op: UpdateFirewallConfigRequestBodyOp$inboundSchema,
+  neg: z.boolean().optional(),
+  key: z.string().optional(),
+  value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyConditions$Outbound = {
+  type: string;
+  op: string;
+  neg?: boolean | undefined;
+  key?: string | undefined;
+  value?: string | Array<string> | number | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyConditions$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyConditions$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodyConditions
+  > = z.object({
+    type: UpdateFirewallConfigRequestBodySecurityType$outboundSchema,
+    op: UpdateFirewallConfigRequestBodyOp$outboundSchema,
+    neg: z.boolean().optional(),
+    key: z.string().optional(),
+    value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyConditions$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditions$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyConditions$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditions$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyConditions$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditions$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyConditions$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyConditionsToJSON(
+  updateFirewallConfigRequestBodyConditions:
+    UpdateFirewallConfigRequestBodyConditions,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyConditions$outboundSchema.parse(
+      updateFirewallConfigRequestBodyConditions,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyConditions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyConditions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyConditions' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyConditionGroup,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    conditions: z.array(
+      z.lazy(() => UpdateFirewallConfigRequestBodyConditions$inboundSchema),
+    ),
+  });
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyConditionGroup$Outbound = {
+  conditions: Array<UpdateFirewallConfigRequestBodyConditions$Outbound>;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyConditionGroup$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyConditionGroup$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodyConditionGroup
+  > = z.object({
+    conditions: z.array(
+      z.lazy(() => UpdateFirewallConfigRequestBodyConditions$outboundSchema),
+    ),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyConditionGroup$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditionGroup$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyConditionGroup$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyConditionGroup$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyConditionGroup$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyConditionGroupToJSON(
+  updateFirewallConfigRequestBodyConditionGroup:
+    UpdateFirewallConfigRequestBodyConditionGroup,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyConditionGroup$outboundSchema.parse(
+      updateFirewallConfigRequestBodyConditionGroup,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyConditionGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyConditionGroup,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyConditionGroup' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest3ValueAction);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
+  > = UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema;
+}
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitAlgo$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRateLimitAlgo
+> = z.nativeEnum(UpdateFirewallConfigRateLimitAlgo);
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitAlgo$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRateLimitAlgo
+> = UpdateFirewallConfigRateLimitAlgo$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRateLimitAlgo$ {
+  /** @deprecated use `UpdateFirewallConfigRateLimitAlgo$inboundSchema` instead. */
+  export const inboundSchema = UpdateFirewallConfigRateLimitAlgo$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRateLimitAlgo$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRateLimitAlgo$outboundSchema;
+}
+
+/** @internal */
+export const UpdateFirewallConfigActionSecurity1$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigActionSecurity1
+> = z.nativeEnum(UpdateFirewallConfigActionSecurity1);
+
+/** @internal */
+export const UpdateFirewallConfigActionSecurity1$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigActionSecurity1> =
+    UpdateFirewallConfigActionSecurity1$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigActionSecurity1$ {
+  /** @deprecated use `UpdateFirewallConfigActionSecurity1$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigActionSecurity1$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigActionSecurity1$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigActionSecurity1$outboundSchema;
+}
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitSecurityAction$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRateLimitSecurityAction,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([UpdateFirewallConfigActionSecurity1$inboundSchema, z.any()]);
+
+/** @internal */
+export type UpdateFirewallConfigRateLimitSecurityAction$Outbound = string | any;
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitSecurityAction$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRateLimitSecurityAction$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRateLimitSecurityAction
+  > = z.union([UpdateFirewallConfigActionSecurity1$outboundSchema, z.any()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRateLimitSecurityAction$ {
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurityAction$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRateLimitSecurityAction$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurityAction$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRateLimitSecurityAction$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurityAction$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRateLimitSecurityAction$Outbound;
+}
+
+export function updateFirewallConfigRateLimitSecurityActionToJSON(
+  updateFirewallConfigRateLimitSecurityAction:
+    UpdateFirewallConfigRateLimitSecurityAction,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRateLimitSecurityAction$outboundSchema.parse(
+      updateFirewallConfigRateLimitSecurityAction,
+    ),
+  );
+}
+
+export function updateFirewallConfigRateLimitSecurityActionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRateLimitSecurityAction,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRateLimitSecurityAction$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRateLimitSecurityAction' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitSecurity1$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRateLimitSecurity1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  algo: UpdateFirewallConfigRateLimitAlgo$inboundSchema,
+  window: z.number(),
+  limit: z.number(),
+  keys: z.array(z.string()),
+  action: z.nullable(
+    z.union([UpdateFirewallConfigActionSecurity1$inboundSchema, z.any()]),
+  ).optional(),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRateLimitSecurity1$Outbound = {
+  algo: string;
+  window: number;
+  limit: number;
+  keys: Array<string>;
+  action?: string | any | null | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRateLimitSecurity1$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRateLimitSecurity1$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRateLimitSecurity1
+> = z.object({
+  algo: UpdateFirewallConfigRateLimitAlgo$outboundSchema,
+  window: z.number(),
+  limit: z.number(),
+  keys: z.array(z.string()),
+  action: z.nullable(
+    z.union([UpdateFirewallConfigActionSecurity1$outboundSchema, z.any()]),
+  ).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRateLimitSecurity1$ {
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurity1$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRateLimitSecurity1$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurity1$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRateLimitSecurity1$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRateLimitSecurity1$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRateLimitSecurity1$Outbound;
+}
+
+export function updateFirewallConfigRateLimitSecurity1ToJSON(
+  updateFirewallConfigRateLimitSecurity1:
+    UpdateFirewallConfigRateLimitSecurity1,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRateLimitSecurity1$outboundSchema.parse(
+      updateFirewallConfigRateLimitSecurity1,
+    ),
+  );
+}
+
+export function updateFirewallConfigRateLimitSecurity1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFirewallConfigRateLimitSecurity1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRateLimitSecurity1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFirewallConfigRateLimitSecurity1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyRateLimit$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyRateLimit,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$inboundSchema),
+  z.any(),
+]);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyRateLimit$Outbound =
+  | UpdateFirewallConfigRateLimitSecurity1$Outbound
+  | any;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyRateLimit$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyRateLimit$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBodyRateLimit
+> = z.union([
+  z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$outboundSchema),
+  z.any(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyRateLimit$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRateLimit$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyRateLimit$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRateLimit$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyRateLimit$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRateLimit$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyRateLimit$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyRateLimitToJSON(
+  updateFirewallConfigRequestBodyRateLimit:
+    UpdateFirewallConfigRequestBodyRateLimit,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyRateLimit$outboundSchema.parse(
+      updateFirewallConfigRequestBodyRateLimit,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyRateLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyRateLimit,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyRateLimit$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyRateLimit' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRedirectSecurity1$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRedirectSecurity1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  location: z.string(),
+  permanent: z.boolean(),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRedirectSecurity1$Outbound = {
+  location: string;
+  permanent: boolean;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRedirectSecurity1$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRedirectSecurity1$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRedirectSecurity1
+> = z.object({
+  location: z.string(),
+  permanent: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRedirectSecurity1$ {
+  /** @deprecated use `UpdateFirewallConfigRedirectSecurity1$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRedirectSecurity1$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRedirectSecurity1$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRedirectSecurity1$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRedirectSecurity1$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRedirectSecurity1$Outbound;
+}
+
+export function updateFirewallConfigRedirectSecurity1ToJSON(
+  updateFirewallConfigRedirectSecurity1: UpdateFirewallConfigRedirectSecurity1,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRedirectSecurity1$outboundSchema.parse(
+      updateFirewallConfigRedirectSecurity1,
+    ),
+  );
+}
+
+export function updateFirewallConfigRedirectSecurity1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFirewallConfigRedirectSecurity1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRedirectSecurity1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFirewallConfigRedirectSecurity1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyRedirect$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyRedirect,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateFirewallConfigRedirectSecurity1$inboundSchema),
+  z.any(),
+]);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyRedirect$Outbound =
+  | UpdateFirewallConfigRedirectSecurity1$Outbound
+  | any;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyRedirect$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyRedirect$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBodyRedirect
+> = z.union([
+  z.lazy(() => UpdateFirewallConfigRedirectSecurity1$outboundSchema),
+  z.any(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyRedirect$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRedirect$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyRedirect$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRedirect$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyRedirect$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyRedirect$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyRedirect$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyRedirectToJSON(
+  updateFirewallConfigRequestBodyRedirect:
+    UpdateFirewallConfigRequestBodyRedirect,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyRedirect$outboundSchema.parse(
+      updateFirewallConfigRequestBodyRedirect,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyRedirectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyRedirect,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyRedirect$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyRedirect' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyMitigate$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyMitigate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action:
+    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema,
+  rateLimit: z.nullable(
+    z.union([
+      z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$inboundSchema),
+      z.any(),
+    ]),
+  ).optional(),
+  redirect: z.nullable(
+    z.union([
+      z.lazy(() => UpdateFirewallConfigRedirectSecurity1$inboundSchema),
+      z.any(),
+    ]),
+  ).optional(),
+  actionDuration: z.nullable(z.string()).optional(),
+  bypassSystem: z.nullable(z.boolean()).optional(),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyMitigate$Outbound = {
+  action: string;
+  rateLimit?:
+    | UpdateFirewallConfigRateLimitSecurity1$Outbound
+    | any
+    | null
+    | undefined;
+  redirect?:
+    | UpdateFirewallConfigRedirectSecurity1$Outbound
+    | any
+    | null
+    | undefined;
+  actionDuration?: string | null | undefined;
+  bypassSystem?: boolean | null | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyMitigate$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyMitigate$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBodyMitigate
+> = z.object({
+  action:
+    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema,
+  rateLimit: z.nullable(
+    z.union([
+      z.lazy(() => UpdateFirewallConfigRateLimitSecurity1$outboundSchema),
+      z.any(),
+    ]),
+  ).optional(),
+  redirect: z.nullable(
+    z.union([
+      z.lazy(() => UpdateFirewallConfigRedirectSecurity1$outboundSchema),
+      z.any(),
+    ]),
+  ).optional(),
+  actionDuration: z.nullable(z.string()).optional(),
+  bypassSystem: z.nullable(z.boolean()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyMitigate$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyMitigate$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyMitigate$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyMitigate$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyMitigate$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyMitigate$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyMitigate$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyMitigateToJSON(
+  updateFirewallConfigRequestBodyMitigate:
+    UpdateFirewallConfigRequestBodyMitigate,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyMitigate$outboundSchema.parse(
+      updateFirewallConfigRequestBodyMitigate,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyMitigateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyMitigate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyMitigate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyMitigate' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest3Action,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    mitigate: z.lazy(() =>
+      UpdateFirewallConfigRequestBodyMitigate$inboundSchema
+    ).optional(),
+  });
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound = {
+  mitigate?: UpdateFirewallConfigRequestBodyMitigate$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest3Action
+  > = z.object({
+    mitigate: z.lazy(() =>
+      UpdateFirewallConfigRequestBodyMitigate$outboundSchema
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodySecurityRequest3Action$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound` instead. */
+  export type Outbound =
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
+}
+
+export function updateFirewallConfigRequestBodySecurityRequest3ActionToJSON(
+  updateFirewallConfigRequestBodySecurityRequest3Action:
+    UpdateFirewallConfigRequestBodySecurityRequest3Action,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest3Action,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodySecurityRequest3ActionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodySecurityRequest3Action,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest3Action' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  active: z.boolean(),
+  conditionGroup: z.array(
+    z.lazy(() => UpdateFirewallConfigRequestBodyConditionGroup$inboundSchema),
+  ),
+  action: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema
+  ),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodyValue$Outbound = {
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup$Outbound>;
+  action: UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyValue$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyValue$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBodyValue
+> = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  active: z.boolean(),
+  conditionGroup: z.array(
+    z.lazy(() => UpdateFirewallConfigRequestBodyConditionGroup$outboundSchema),
+  ),
+  action: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyValue$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyValue$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyValue$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyValue$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBodyValue$Outbound;
+}
+
+export function updateFirewallConfigRequestBodyValueToJSON(
+  updateFirewallConfigRequestBodyValue: UpdateFirewallConfigRequestBodyValue,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyValue$outboundSchema.parse(
+      updateFirewallConfigRequestBodyValue,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodyValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFirewallConfigRequestBodyValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody3$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityAction$inboundSchema,
+  id: z.string(),
+  value: z.lazy(() => UpdateFirewallConfigRequestBodyValue$inboundSchema),
+});
+
+/** @internal */
+export type UpdateFirewallConfigRequestBody3$Outbound = {
+  action: string;
+  id: string;
+  value: UpdateFirewallConfigRequestBodyValue$Outbound;
+};
+
+/** @internal */
+export const UpdateFirewallConfigRequestBody3$outboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBody3$Outbound,
+  z.ZodTypeDef,
+  UpdateFirewallConfigRequestBody3
+> = z.object({
+  action: UpdateFirewallConfigRequestBodySecurityAction$outboundSchema,
+  id: z.string(),
+  value: z.lazy(() => UpdateFirewallConfigRequestBodyValue$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBody3$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBody3$inboundSchema` instead. */
+  export const inboundSchema = UpdateFirewallConfigRequestBody3$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBody3$outboundSchema` instead. */
+  export const outboundSchema = UpdateFirewallConfigRequestBody3$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBody3$Outbound` instead. */
+  export type Outbound = UpdateFirewallConfigRequestBody3$Outbound;
+}
+
+export function updateFirewallConfigRequestBody3ToJSON(
+  updateFirewallConfigRequestBody3: UpdateFirewallConfigRequestBody3,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBody3$outboundSchema.parse(
+      updateFirewallConfigRequestBody3,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFirewallConfigRequestBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFirewallConfigRequestBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFirewallConfigRequestBody3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyAction$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> = z.nativeEnum(
+    UpdateFirewallConfigRequestBodyAction,
+  );
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyAction$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> =
+    UpdateFirewallConfigRequestBodyAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyAction$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyAction$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyAction$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyAction$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyAction$outboundSchema;
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFirewallConfigRequestBodyType
+> = z.nativeEnum(UpdateFirewallConfigRequestBodyType);
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyType> =
+    UpdateFirewallConfigRequestBodyType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodyType$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodyType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodyType$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodyType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodyType$outboundSchema;
+}
+
+/** @internal */
+export const RequestBodyOp$inboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyOp
+> = z.nativeEnum(RequestBodyOp);
+
+/** @internal */
+export const RequestBodyOp$outboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyOp
+> = RequestBodyOp$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestBodyOp$ {
+  /** @deprecated use `RequestBodyOp$inboundSchema` instead. */
+  export const inboundSchema = RequestBodyOp$inboundSchema;
+  /** @deprecated use `RequestBodyOp$outboundSchema` instead. */
+  export const outboundSchema = RequestBodyOp$outboundSchema;
+}
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest2Value,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([z.string(), z.array(z.string()), z.number()]);
+
+/** @internal */
+export type UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound =
+  | string
+  | Array<string>
+  | number;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodySecurityRequest2Value
+  > = z.union([z.string(), z.array(z.string()), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateFirewallConfigRequestBodySecurityRequest2Value$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound` instead. */
+  export type Outbound =
+    UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound;
+}
+
+export function updateFirewallConfigRequestBodySecurityRequest2ValueToJSON(
+  updateFirewallConfigRequestBodySecurityRequest2Value:
+    UpdateFirewallConfigRequestBodySecurityRequest2Value,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema.parse(
+      updateFirewallConfigRequestBodySecurityRequest2Value,
+    ),
+  );
+}
+
+export function updateFirewallConfigRequestBodySecurityRequest2ValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodySecurityRequest2Value,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest2Value' from JSON`,
+  );
+}
+
+/** @internal */
 export const RequestBodyConditions$inboundSchema: z.ZodType<
   RequestBodyConditions,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateFirewallConfigRequestBodySecurityType$inboundSchema,
+  type: UpdateFirewallConfigRequestBodyType$inboundSchema,
   op: RequestBodyOp$inboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
@@ -2058,7 +3087,7 @@ export const RequestBodyConditions$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RequestBodyConditions
 > = z.object({
-  type: UpdateFirewallConfigRequestBodySecurityType$outboundSchema,
+  type: UpdateFirewallConfigRequestBodyType$outboundSchema,
   op: RequestBodyOp$outboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
@@ -2151,50 +3180,49 @@ export function requestBodyConditionGroupFromJSON(
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest3ValueAction);
+    typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
+  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest2ValueAction);
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest3ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema;
+    typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
+  > = UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema` instead. */
+export namespace UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$ {
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema` instead. */
+    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema;
+  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema;
+    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema;
 }
 
 /** @internal */
-export const UpdateFirewallConfigRateLimitAlgo$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRateLimitAlgo
-> = z.nativeEnum(UpdateFirewallConfigRateLimitAlgo);
+export const RateLimitAlgo$inboundSchema: z.ZodNativeEnum<
+  typeof RateLimitAlgo
+> = z.nativeEnum(RateLimitAlgo);
 
 /** @internal */
-export const UpdateFirewallConfigRateLimitAlgo$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRateLimitAlgo
-> = UpdateFirewallConfigRateLimitAlgo$inboundSchema;
+export const RateLimitAlgo$outboundSchema: z.ZodNativeEnum<
+  typeof RateLimitAlgo
+> = RateLimitAlgo$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateFirewallConfigRateLimitAlgo$ {
-  /** @deprecated use `UpdateFirewallConfigRateLimitAlgo$inboundSchema` instead. */
-  export const inboundSchema = UpdateFirewallConfigRateLimitAlgo$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRateLimitAlgo$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRateLimitAlgo$outboundSchema;
+export namespace RateLimitAlgo$ {
+  /** @deprecated use `RateLimitAlgo$inboundSchema` instead. */
+  export const inboundSchema = RateLimitAlgo$inboundSchema;
+  /** @deprecated use `RateLimitAlgo$outboundSchema` instead. */
+  export const outboundSchema = RateLimitAlgo$outboundSchema;
 }
 
 /** @internal */
@@ -2277,7 +3305,7 @@ export const UpdateFirewallConfigRateLimit1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  algo: UpdateFirewallConfigRateLimitAlgo$inboundSchema,
+  algo: RateLimitAlgo$inboundSchema,
   window: z.number(),
   limit: z.number(),
   keys: z.array(z.string()),
@@ -2301,7 +3329,7 @@ export const UpdateFirewallConfigRateLimit1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateFirewallConfigRateLimit1
 > = z.object({
-  algo: UpdateFirewallConfigRateLimitAlgo$outboundSchema,
+  algo: RateLimitAlgo$outboundSchema,
   window: z.number(),
   limit: z.number(),
   keys: z.array(z.string()),
@@ -2521,7 +3549,7 @@ export const RequestBodyMitigate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action:
-    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$inboundSchema,
+    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema,
   rateLimit: z.nullable(
     z.union([
       z.lazy(() => UpdateFirewallConfigRateLimit1$inboundSchema),
@@ -2554,7 +3582,7 @@ export const RequestBodyMitigate$outboundSchema: z.ZodType<
   RequestBodyMitigate
 > = z.object({
   action:
-    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction$outboundSchema,
+    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema,
   rateLimit: z.nullable(
     z.union([
       z.lazy(() => UpdateFirewallConfigRateLimit1$outboundSchema),
@@ -2603,9 +3631,9 @@ export function requestBodyMitigateFromJSON(
 }
 
 /** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema:
+export const UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema:
   z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest3Action,
+    UpdateFirewallConfigRequestBodySecurityRequest2Action,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -2613,839 +3641,8 @@ export const UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema
   });
 
 /** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound = {
-  mitigate?: RequestBodyMitigate$Outbound | undefined;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound,
-    z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest3Action
-  > = z.object({
-    mitigate: z.lazy(() => RequestBodyMitigate$outboundSchema).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBodySecurityRequest3Action$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound` instead. */
-  export type Outbound =
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
-}
-
-export function updateFirewallConfigRequestBodySecurityRequest3ActionToJSON(
-  updateFirewallConfigRequestBodySecurityRequest3Action:
-    UpdateFirewallConfigRequestBodySecurityRequest3Action,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest3Action,
-    ),
-  );
-}
-
-export function updateFirewallConfigRequestBodySecurityRequest3ActionFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest3Action,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest3Action' from JSON`,
-  );
-}
-
-/** @internal */
-export const RequestBodyValue$inboundSchema: z.ZodType<
-  RequestBodyValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => RequestBodyConditionGroup$inboundSchema),
-  ),
-  action: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema
-  ),
-});
-
-/** @internal */
-export type RequestBodyValue$Outbound = {
-  name: string;
-  description?: string | undefined;
-  active: boolean;
-  conditionGroup: Array<RequestBodyConditionGroup$Outbound>;
-  action: UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
-};
-
-/** @internal */
-export const RequestBodyValue$outboundSchema: z.ZodType<
-  RequestBodyValue$Outbound,
-  z.ZodTypeDef,
-  RequestBodyValue
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => RequestBodyConditionGroup$outboundSchema),
-  ),
-  action: z.lazy(() =>
-    UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyValue$ {
-  /** @deprecated use `RequestBodyValue$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyValue$inboundSchema;
-  /** @deprecated use `RequestBodyValue$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyValue$outboundSchema;
-  /** @deprecated use `RequestBodyValue$Outbound` instead. */
-  export type Outbound = RequestBodyValue$Outbound;
-}
-
-export function requestBodyValueToJSON(
-  requestBodyValue: RequestBodyValue,
-): string {
-  return JSON.stringify(
-    RequestBodyValue$outboundSchema.parse(requestBodyValue),
-  );
-}
-
-export function requestBodyValueFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestBodyValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestBodyValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody3$inboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityAction$inboundSchema,
-  id: z.string(),
-  value: z.lazy(() => RequestBodyValue$inboundSchema),
-});
-
-/** @internal */
-export type UpdateFirewallConfigRequestBody3$Outbound = {
-  action: string;
-  id: string;
-  value: RequestBodyValue$Outbound;
-};
-
-/** @internal */
-export const UpdateFirewallConfigRequestBody3$outboundSchema: z.ZodType<
-  UpdateFirewallConfigRequestBody3$Outbound,
-  z.ZodTypeDef,
-  UpdateFirewallConfigRequestBody3
-> = z.object({
-  action: UpdateFirewallConfigRequestBodySecurityAction$outboundSchema,
-  id: z.string(),
-  value: z.lazy(() => RequestBodyValue$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBody3$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBody3$inboundSchema` instead. */
-  export const inboundSchema = UpdateFirewallConfigRequestBody3$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBody3$outboundSchema` instead. */
-  export const outboundSchema = UpdateFirewallConfigRequestBody3$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBody3$Outbound` instead. */
-  export type Outbound = UpdateFirewallConfigRequestBody3$Outbound;
-}
-
-export function updateFirewallConfigRequestBody3ToJSON(
-  updateFirewallConfigRequestBody3: UpdateFirewallConfigRequestBody3,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBody3$outboundSchema.parse(
-      updateFirewallConfigRequestBody3,
-    ),
-  );
-}
-
-export function updateFirewallConfigRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFirewallConfigRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFirewallConfigRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFirewallConfigRequestBody3' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodyAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> = z.nativeEnum(
-    UpdateFirewallConfigRequestBodyAction,
-  );
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodyAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyAction> =
-    UpdateFirewallConfigRequestBodyAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBodyAction$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodyAction$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateFirewallConfigRequestBodyAction$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodyAction$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRequestBodyAction$outboundSchema;
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateFirewallConfigRequestBodyType
-> = z.nativeEnum(UpdateFirewallConfigRequestBodyType);
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateFirewallConfigRequestBodyType> =
-    UpdateFirewallConfigRequestBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBodyType$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateFirewallConfigRequestBodyType$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRequestBodyType$outboundSchema;
-}
-
-/** @internal */
-export const Op$inboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
-
-/** @internal */
-export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = Op$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Op$ {
-  /** @deprecated use `Op$inboundSchema` instead. */
-  export const inboundSchema = Op$inboundSchema;
-  /** @deprecated use `Op$outboundSchema` instead. */
-  export const outboundSchema = Op$outboundSchema;
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest2Value,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([z.string(), z.array(z.string()), z.number()]);
-
-/** @internal */
-export type UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound =
-  | string
-  | Array<string>
-  | number;
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound,
-    z.ZodTypeDef,
-    UpdateFirewallConfigRequestBodySecurityRequest2Value
-  > = z.union([z.string(), z.array(z.string()), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBodySecurityRequest2Value$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound` instead. */
-  export type Outbound =
-    UpdateFirewallConfigRequestBodySecurityRequest2Value$Outbound;
-}
-
-export function updateFirewallConfigRequestBodySecurityRequest2ValueToJSON(
-  updateFirewallConfigRequestBodySecurityRequest2Value:
-    UpdateFirewallConfigRequestBodySecurityRequest2Value,
-): string {
-  return JSON.stringify(
-    UpdateFirewallConfigRequestBodySecurityRequest2Value$outboundSchema.parse(
-      updateFirewallConfigRequestBodySecurityRequest2Value,
-    ),
-  );
-}
-
-export function updateFirewallConfigRequestBodySecurityRequest2ValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateFirewallConfigRequestBodySecurityRequest2Value,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateFirewallConfigRequestBodySecurityRequest2Value$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateFirewallConfigRequestBodySecurityRequest2Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const Conditions$inboundSchema: z.ZodType<
-  Conditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UpdateFirewallConfigRequestBodyType$inboundSchema,
-  op: Op$inboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
-});
-
-/** @internal */
-export type Conditions$Outbound = {
-  type: string;
-  op: string;
-  neg?: boolean | undefined;
-  key?: string | undefined;
-  value?: string | Array<string> | number | undefined;
-};
-
-/** @internal */
-export const Conditions$outboundSchema: z.ZodType<
-  Conditions$Outbound,
-  z.ZodTypeDef,
-  Conditions
-> = z.object({
-  type: UpdateFirewallConfigRequestBodyType$outboundSchema,
-  op: Op$outboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Conditions$ {
-  /** @deprecated use `Conditions$inboundSchema` instead. */
-  export const inboundSchema = Conditions$inboundSchema;
-  /** @deprecated use `Conditions$outboundSchema` instead. */
-  export const outboundSchema = Conditions$outboundSchema;
-  /** @deprecated use `Conditions$Outbound` instead. */
-  export type Outbound = Conditions$Outbound;
-}
-
-export function conditionsToJSON(conditions: Conditions): string {
-  return JSON.stringify(Conditions$outboundSchema.parse(conditions));
-}
-
-export function conditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Conditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Conditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Conditions' from JSON`,
-  );
-}
-
-/** @internal */
-export const ConditionGroup$inboundSchema: z.ZodType<
-  ConditionGroup,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
-});
-
-/** @internal */
-export type ConditionGroup$Outbound = {
-  conditions: Array<Conditions$Outbound>;
-};
-
-/** @internal */
-export const ConditionGroup$outboundSchema: z.ZodType<
-  ConditionGroup$Outbound,
-  z.ZodTypeDef,
-  ConditionGroup
-> = z.object({
-  conditions: z.array(z.lazy(() => Conditions$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConditionGroup$ {
-  /** @deprecated use `ConditionGroup$inboundSchema` instead. */
-  export const inboundSchema = ConditionGroup$inboundSchema;
-  /** @deprecated use `ConditionGroup$outboundSchema` instead. */
-  export const outboundSchema = ConditionGroup$outboundSchema;
-  /** @deprecated use `ConditionGroup$Outbound` instead. */
-  export type Outbound = ConditionGroup$Outbound;
-}
-
-export function conditionGroupToJSON(conditionGroup: ConditionGroup): string {
-  return JSON.stringify(ConditionGroup$outboundSchema.parse(conditionGroup));
-}
-
-export function conditionGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<ConditionGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ConditionGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConditionGroup' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
-  > = z.nativeEnum(UpdateFirewallConfigRequestBodySecurityRequest2ValueAction);
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFirewallConfigRequestBodySecurityRequest2ValueAction
-  > = UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$ {
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema;
-  /** @deprecated use `UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema;
-}
-
-/** @internal */
-export const RateLimitAlgo$inboundSchema: z.ZodNativeEnum<
-  typeof RateLimitAlgo
-> = z.nativeEnum(RateLimitAlgo);
-
-/** @internal */
-export const RateLimitAlgo$outboundSchema: z.ZodNativeEnum<
-  typeof RateLimitAlgo
-> = RateLimitAlgo$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimitAlgo$ {
-  /** @deprecated use `RateLimitAlgo$inboundSchema` instead. */
-  export const inboundSchema = RateLimitAlgo$inboundSchema;
-  /** @deprecated use `RateLimitAlgo$outboundSchema` instead. */
-  export const outboundSchema = RateLimitAlgo$outboundSchema;
-}
-
-/** @internal */
-export const Action1$inboundSchema: z.ZodNativeEnum<typeof Action1> = z
-  .nativeEnum(Action1);
-
-/** @internal */
-export const Action1$outboundSchema: z.ZodNativeEnum<typeof Action1> =
-  Action1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Action1$ {
-  /** @deprecated use `Action1$inboundSchema` instead. */
-  export const inboundSchema = Action1$inboundSchema;
-  /** @deprecated use `Action1$outboundSchema` instead. */
-  export const outboundSchema = Action1$outboundSchema;
-}
-
-/** @internal */
-export const RateLimitAction$inboundSchema: z.ZodType<
-  RateLimitAction,
-  z.ZodTypeDef,
-  unknown
-> = z.union([Action1$inboundSchema, z.any()]);
-
-/** @internal */
-export type RateLimitAction$Outbound = string | any;
-
-/** @internal */
-export const RateLimitAction$outboundSchema: z.ZodType<
-  RateLimitAction$Outbound,
-  z.ZodTypeDef,
-  RateLimitAction
-> = z.union([Action1$outboundSchema, z.any()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimitAction$ {
-  /** @deprecated use `RateLimitAction$inboundSchema` instead. */
-  export const inboundSchema = RateLimitAction$inboundSchema;
-  /** @deprecated use `RateLimitAction$outboundSchema` instead. */
-  export const outboundSchema = RateLimitAction$outboundSchema;
-  /** @deprecated use `RateLimitAction$Outbound` instead. */
-  export type Outbound = RateLimitAction$Outbound;
-}
-
-export function rateLimitActionToJSON(
-  rateLimitAction: RateLimitAction,
-): string {
-  return JSON.stringify(RateLimitAction$outboundSchema.parse(rateLimitAction));
-}
-
-export function rateLimitActionFromJSON(
-  jsonString: string,
-): SafeParseResult<RateLimitAction, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RateLimitAction$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RateLimitAction' from JSON`,
-  );
-}
-
-/** @internal */
-export const RateLimit1$inboundSchema: z.ZodType<
-  RateLimit1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  algo: RateLimitAlgo$inboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
-  action: z.nullable(z.union([Action1$inboundSchema, z.any()])).optional(),
-});
-
-/** @internal */
-export type RateLimit1$Outbound = {
-  algo: string;
-  window: number;
-  limit: number;
-  keys: Array<string>;
-  action?: string | any | null | undefined;
-};
-
-/** @internal */
-export const RateLimit1$outboundSchema: z.ZodType<
-  RateLimit1$Outbound,
-  z.ZodTypeDef,
-  RateLimit1
-> = z.object({
-  algo: RateLimitAlgo$outboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
-  action: z.nullable(z.union([Action1$outboundSchema, z.any()])).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimit1$ {
-  /** @deprecated use `RateLimit1$inboundSchema` instead. */
-  export const inboundSchema = RateLimit1$inboundSchema;
-  /** @deprecated use `RateLimit1$outboundSchema` instead. */
-  export const outboundSchema = RateLimit1$outboundSchema;
-  /** @deprecated use `RateLimit1$Outbound` instead. */
-  export type Outbound = RateLimit1$Outbound;
-}
-
-export function rateLimit1ToJSON(rateLimit1: RateLimit1): string {
-  return JSON.stringify(RateLimit1$outboundSchema.parse(rateLimit1));
-}
-
-export function rateLimit1FromJSON(
-  jsonString: string,
-): SafeParseResult<RateLimit1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RateLimit1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RateLimit1' from JSON`,
-  );
-}
-
-/** @internal */
-export const RateLimit$inboundSchema: z.ZodType<
-  RateLimit,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.lazy(() => RateLimit1$inboundSchema), z.any()]);
-
-/** @internal */
-export type RateLimit$Outbound = RateLimit1$Outbound | any;
-
-/** @internal */
-export const RateLimit$outboundSchema: z.ZodType<
-  RateLimit$Outbound,
-  z.ZodTypeDef,
-  RateLimit
-> = z.union([z.lazy(() => RateLimit1$outboundSchema), z.any()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RateLimit$ {
-  /** @deprecated use `RateLimit$inboundSchema` instead. */
-  export const inboundSchema = RateLimit$inboundSchema;
-  /** @deprecated use `RateLimit$outboundSchema` instead. */
-  export const outboundSchema = RateLimit$outboundSchema;
-  /** @deprecated use `RateLimit$Outbound` instead. */
-  export type Outbound = RateLimit$Outbound;
-}
-
-export function rateLimitToJSON(rateLimit: RateLimit): string {
-  return JSON.stringify(RateLimit$outboundSchema.parse(rateLimit));
-}
-
-export function rateLimitFromJSON(
-  jsonString: string,
-): SafeParseResult<RateLimit, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RateLimit$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RateLimit' from JSON`,
-  );
-}
-
-/** @internal */
-export const Redirect1$inboundSchema: z.ZodType<
-  Redirect1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
-});
-
-/** @internal */
-export type Redirect1$Outbound = {
-  location: string;
-  permanent: boolean;
-};
-
-/** @internal */
-export const Redirect1$outboundSchema: z.ZodType<
-  Redirect1$Outbound,
-  z.ZodTypeDef,
-  Redirect1
-> = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Redirect1$ {
-  /** @deprecated use `Redirect1$inboundSchema` instead. */
-  export const inboundSchema = Redirect1$inboundSchema;
-  /** @deprecated use `Redirect1$outboundSchema` instead. */
-  export const outboundSchema = Redirect1$outboundSchema;
-  /** @deprecated use `Redirect1$Outbound` instead. */
-  export type Outbound = Redirect1$Outbound;
-}
-
-export function redirect1ToJSON(redirect1: Redirect1): string {
-  return JSON.stringify(Redirect1$outboundSchema.parse(redirect1));
-}
-
-export function redirect1FromJSON(
-  jsonString: string,
-): SafeParseResult<Redirect1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Redirect1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Redirect1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Redirect$inboundSchema: z.ZodType<
-  Redirect,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.lazy(() => Redirect1$inboundSchema), z.any()]);
-
-/** @internal */
-export type Redirect$Outbound = Redirect1$Outbound | any;
-
-/** @internal */
-export const Redirect$outboundSchema: z.ZodType<
-  Redirect$Outbound,
-  z.ZodTypeDef,
-  Redirect
-> = z.union([z.lazy(() => Redirect1$outboundSchema), z.any()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Redirect$ {
-  /** @deprecated use `Redirect$inboundSchema` instead. */
-  export const inboundSchema = Redirect$inboundSchema;
-  /** @deprecated use `Redirect$outboundSchema` instead. */
-  export const outboundSchema = Redirect$outboundSchema;
-  /** @deprecated use `Redirect$Outbound` instead. */
-  export type Outbound = Redirect$Outbound;
-}
-
-export function redirectToJSON(redirect: Redirect): string {
-  return JSON.stringify(Redirect$outboundSchema.parse(redirect));
-}
-
-export function redirectFromJSON(
-  jsonString: string,
-): SafeParseResult<Redirect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Redirect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Redirect' from JSON`,
-  );
-}
-
-/** @internal */
-export const Mitigate$inboundSchema: z.ZodType<
-  Mitigate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$inboundSchema,
-  rateLimit: z.nullable(
-    z.union([z.lazy(() => RateLimit1$inboundSchema), z.any()]),
-  ).optional(),
-  redirect: z.nullable(
-    z.union([z.lazy(() => Redirect1$inboundSchema), z.any()]),
-  ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
-});
-
-/** @internal */
-export type Mitigate$Outbound = {
-  action: string;
-  rateLimit?: RateLimit1$Outbound | any | null | undefined;
-  redirect?: Redirect1$Outbound | any | null | undefined;
-  actionDuration?: string | null | undefined;
-  bypassSystem?: boolean | null | undefined;
-};
-
-/** @internal */
-export const Mitigate$outboundSchema: z.ZodType<
-  Mitigate$Outbound,
-  z.ZodTypeDef,
-  Mitigate
-> = z.object({
-  action:
-    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction$outboundSchema,
-  rateLimit: z.nullable(
-    z.union([z.lazy(() => RateLimit1$outboundSchema), z.any()]),
-  ).optional(),
-  redirect: z.nullable(
-    z.union([z.lazy(() => Redirect1$outboundSchema), z.any()]),
-  ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Mitigate$ {
-  /** @deprecated use `Mitigate$inboundSchema` instead. */
-  export const inboundSchema = Mitigate$inboundSchema;
-  /** @deprecated use `Mitigate$outboundSchema` instead. */
-  export const outboundSchema = Mitigate$outboundSchema;
-  /** @deprecated use `Mitigate$Outbound` instead. */
-  export type Outbound = Mitigate$Outbound;
-}
-
-export function mitigateToJSON(mitigate: Mitigate): string {
-  return JSON.stringify(Mitigate$outboundSchema.parse(mitigate));
-}
-
-export function mitigateFromJSON(
-  jsonString: string,
-): SafeParseResult<Mitigate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Mitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Mitigate' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema:
-  z.ZodType<
-    UpdateFirewallConfigRequestBodySecurityRequest2Action,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    mitigate: z.lazy(() => Mitigate$inboundSchema).optional(),
-  });
-
-/** @internal */
 export type UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound = {
-  mitigate?: Mitigate$Outbound | undefined;
+  mitigate?: RequestBodyMitigate$Outbound | undefined;
 };
 
 /** @internal */
@@ -3455,7 +3652,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest2Action$outboundSchem
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodySecurityRequest2Action
   > = z.object({
-    mitigate: z.lazy(() => Mitigate$outboundSchema).optional(),
+    mitigate: z.lazy(() => RequestBodyMitigate$outboundSchema).optional(),
   });
 
 /**
@@ -3502,36 +3699,43 @@ export function updateFirewallConfigRequestBodySecurityRequest2ActionFromJSON(
 }
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .object({
-    name: z.string(),
-    description: z.string().optional(),
-    active: z.boolean(),
-    conditionGroup: z.array(z.lazy(() => ConditionGroup$inboundSchema)),
-    action: z.lazy(() =>
-      UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema
-    ),
-  });
-
-/** @internal */
-export type Value$Outbound = {
-  name: string;
-  description?: string | undefined;
-  active: boolean;
-  conditionGroup: Array<ConditionGroup$Outbound>;
-  action: UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound;
-};
-
-/** @internal */
-export const Value$outboundSchema: z.ZodType<
-  Value$Outbound,
+export const RequestBodyValue$inboundSchema: z.ZodType<
+  RequestBodyValue,
   z.ZodTypeDef,
-  Value
+  unknown
 > = z.object({
   name: z.string(),
   description: z.string().optional(),
   active: z.boolean(),
-  conditionGroup: z.array(z.lazy(() => ConditionGroup$outboundSchema)),
+  conditionGroup: z.array(
+    z.lazy(() => RequestBodyConditionGroup$inboundSchema),
+  ),
+  action: z.lazy(() =>
+    UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema
+  ),
+});
+
+/** @internal */
+export type RequestBodyValue$Outbound = {
+  name: string;
+  description?: string | undefined;
+  active: boolean;
+  conditionGroup: Array<RequestBodyConditionGroup$Outbound>;
+  action: UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound;
+};
+
+/** @internal */
+export const RequestBodyValue$outboundSchema: z.ZodType<
+  RequestBodyValue$Outbound,
+  z.ZodTypeDef,
+  RequestBodyValue
+> = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  active: z.boolean(),
+  conditionGroup: z.array(
+    z.lazy(() => RequestBodyConditionGroup$outboundSchema),
+  ),
   action: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest2Action$outboundSchema
   ),
@@ -3541,26 +3745,30 @@ export const Value$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Value$ {
-  /** @deprecated use `Value$inboundSchema` instead. */
-  export const inboundSchema = Value$inboundSchema;
-  /** @deprecated use `Value$outboundSchema` instead. */
-  export const outboundSchema = Value$outboundSchema;
-  /** @deprecated use `Value$Outbound` instead. */
-  export type Outbound = Value$Outbound;
+export namespace RequestBodyValue$ {
+  /** @deprecated use `RequestBodyValue$inboundSchema` instead. */
+  export const inboundSchema = RequestBodyValue$inboundSchema;
+  /** @deprecated use `RequestBodyValue$outboundSchema` instead. */
+  export const outboundSchema = RequestBodyValue$outboundSchema;
+  /** @deprecated use `RequestBodyValue$Outbound` instead. */
+  export type Outbound = RequestBodyValue$Outbound;
 }
 
-export function valueToJSON(value: Value): string {
-  return JSON.stringify(Value$outboundSchema.parse(value));
+export function requestBodyValueToJSON(
+  requestBodyValue: RequestBodyValue,
+): string {
+  return JSON.stringify(
+    RequestBodyValue$outboundSchema.parse(requestBodyValue),
+  );
 }
 
-export function valueFromJSON(
+export function requestBodyValueFromJSON(
   jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
+): SafeParseResult<RequestBodyValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
+    (x) => RequestBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBodyValue' from JSON`,
   );
 }
 
@@ -3572,14 +3780,14 @@ export const UpdateFirewallConfigRequestBody2$inboundSchema: z.ZodType<
 > = z.object({
   action: UpdateFirewallConfigRequestBodyAction$inboundSchema,
   id: z.nullable(z.any()).optional(),
-  value: z.lazy(() => Value$inboundSchema),
+  value: z.lazy(() => RequestBodyValue$inboundSchema),
 });
 
 /** @internal */
 export type UpdateFirewallConfigRequestBody2$Outbound = {
   action: string;
   id?: any | null | undefined;
-  value: Value$Outbound;
+  value: RequestBodyValue$Outbound;
 };
 
 /** @internal */
@@ -3590,7 +3798,7 @@ export const UpdateFirewallConfigRequestBody2$outboundSchema: z.ZodType<
 > = z.object({
   action: UpdateFirewallConfigRequestBodyAction$outboundSchema,
   id: z.nullable(z.any()).optional(),
-  value: z.lazy(() => Value$outboundSchema),
+  value: z.lazy(() => RequestBodyValue$outboundSchema),
 });
 
 /**

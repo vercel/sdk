@@ -158,6 +158,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPut, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}", pathPutV1InstallationsIntegrationConfigurationIDResourcesResourceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPut, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config", pathPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfig(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPut, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets", pathPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDSecrets(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPut, "/v1/security/firewall/config", pathPutV1SecurityFirewallConfig(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPut, "/v7/certs", pathPutV7Certs(dir, rt)),
 	}
 }

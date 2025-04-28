@@ -50,18 +50,18 @@ func testRemoveProjectEnvRemoveProjectEnv0(w http.ResponseWriter, req *http.Requ
 		[]operations.RemoveProjectEnvResponseBody1{
 			operations.RemoveProjectEnvResponseBody1{
 				Type:  operations.RemoveProjectEnvResponseBodyTypeSensitive,
-				Key:   "<key>",
 				Value: "<value>",
+				Key:   "<key>",
 			},
 			operations.RemoveProjectEnvResponseBody1{
 				Type:  operations.RemoveProjectEnvResponseBodyTypePlain,
-				Key:   "<key>",
 				Value: "<value>",
+				Key:   "<key>",
 			},
 			operations.RemoveProjectEnvResponseBody1{
 				Type:  operations.RemoveProjectEnvResponseBodyTypeEncrypted,
-				Key:   "<key>",
 				Value: "<value>",
+				Key:   "<key>",
 			},
 		},
 	))

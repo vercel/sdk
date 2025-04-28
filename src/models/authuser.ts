@@ -96,7 +96,26 @@ export type BuildEntitlements = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export const PurchaseType = {
+  Enhanced: "enhanced",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type PurchaseType = ClosedEnum<typeof PurchaseType>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type BuildMachine = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  purchaseType?: PurchaseType | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  abovePlan?: boolean | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -206,6 +225,10 @@ export type ResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
+  customEnvironmentsPerProject?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
   buildMachine?: BuildMachine | undefined;
 };
 
@@ -247,6 +270,7 @@ export const ImportFlowGitProvider = {
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  GithubCustomHost: "github-custom-host",
 } as const;
 export type ImportFlowGitProvider = ClosedEnum<typeof ImportFlowGitProvider>;
 
@@ -628,17 +652,40 @@ export function buildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const PurchaseType$inboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
+  z.nativeEnum(PurchaseType);
+
+/** @internal */
+export const PurchaseType$outboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
+  PurchaseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PurchaseType$ {
+  /** @deprecated use `PurchaseType$inboundSchema` instead. */
+  export const inboundSchema = PurchaseType$inboundSchema;
+  /** @deprecated use `PurchaseType$outboundSchema` instead. */
+  export const outboundSchema = PurchaseType$outboundSchema;
+}
+
+/** @internal */
 export const BuildMachine$inboundSchema: z.ZodType<
   BuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  purchaseType: PurchaseType$inboundSchema.optional(),
+  abovePlan: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
 
 /** @internal */
 export type BuildMachine$Outbound = {
+  purchaseType?: string | undefined;
+  abovePlan?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -649,6 +696,8 @@ export const BuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuildMachine
 > = z.object({
+  purchaseType: PurchaseType$outboundSchema.optional(),
+  abovePlan: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
@@ -709,6 +758,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$inboundSchema).optional(),
 });
 
@@ -737,6 +787,7 @@ export type ResourceConfig$Outbound = {
   microfrontendProjectsPerGroup?: number | undefined;
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  customEnvironmentsPerProject?: number | undefined;
   buildMachine?: BuildMachine$Outbound | undefined;
 };
 
@@ -769,6 +820,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
 });
 

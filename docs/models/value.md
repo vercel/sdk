@@ -1,33 +1,25 @@
 # Value
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Value } from "@vercel/sdk/models/updatefirewallconfigop.js";
-
-let value: Value = {
-  name: "<value>",
-  active: false,
-  conditionGroup: [
-    {
-      conditions: [
-        {
-          type: "geo_continent",
-          op: "neq",
-        },
-      ],
-    },
-  ],
-  action: {},
-};
+const value: string = "<value>";
 ```
 
-## Fields
+### `string[]`
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                                                                                                             | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `description`                                                                                                                      | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `active`                                                                                                                           | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `conditionGroup`                                                                                                                   | [models.ConditionGroup](../models/conditiongroup.md)[]                                                                             | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest2Action](../models/updatefirewallconfigrequestbodysecurityrequest2action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+```typescript
+const value: string[] = [
+  "<value>",
+];
+```
+
+### `number`
+
+```typescript
+const value: number = 1284.03;
+```
+

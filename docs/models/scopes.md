@@ -19,7 +19,7 @@ const value: models.Scopes1 = {
 const value: models.Scopes2 = {
   type: "team",
   teamId: "<id>",
-  origin: "manual",
+  origin: "passkey",
   createdAt: 3684.64,
 };
 ```

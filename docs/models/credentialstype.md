@@ -11,5 +11,5 @@ let value: CredentialsType = "github-app";
 ## Values
 
 ```typescript
-"gitlab" | "bitbucket" | "github-oauth" | "github-app"
+"gitlab" | "bitbucket" | "google" | "github-oauth" | "github-app"
 ```

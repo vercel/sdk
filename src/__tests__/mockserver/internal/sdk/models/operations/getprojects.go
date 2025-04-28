@@ -1620,9 +1620,11 @@ type GetProjectsEnv struct {
 	Type   GetProjectsType    `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                 `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                   `json:"decrypted,omitempty"`
+	Value             string                  `json:"value"`
+	VsmValue          *string                 `json:"vsmValue,omitempty"`
 	ID                *string                 `json:"id,omitempty"`
 	Key               string                  `json:"key"`
-	Value             string                  `json:"value"`
 	ConfigurationID   *string                 `json:"configurationId,omitempty"`
 	CreatedAt         *float64                `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                `json:"updatedAt,omitempty"`
@@ -1633,12 +1635,9 @@ type GetProjectsEnv struct {
 	EdgeConfigTokenID *string                 `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *GetProjectsContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *GetProjectsInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string  `json:"vsmValue,omitempty"`
+	InternalContentHint  *GetProjectsInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                         `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                        `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *GetProjectsEnv) GetTarget() *GetProjectsTarget {
@@ -1662,6 +1661,27 @@ func (o *GetProjectsEnv) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *GetProjectsEnv) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *GetProjectsEnv) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *GetProjectsEnv) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
 func (o *GetProjectsEnv) GetID() *string {
 	if o == nil {
 		return nil
@@ -1674,13 +1694,6 @@ func (o *GetProjectsEnv) GetKey() string {
 		return ""
 	}
 	return o.Key
-}
-
-func (o *GetProjectsEnv) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
 }
 
 func (o *GetProjectsEnv) GetConfigurationID() *string {
@@ -1753,13 +1766,6 @@ func (o *GetProjectsEnv) GetInternalContentHint() *GetProjectsInternalContentHin
 	return o.InternalContentHint
 }
 
-func (o *GetProjectsEnv) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
-}
-
 func (o *GetProjectsEnv) GetComment() *string {
 	if o == nil {
 		return nil
@@ -1772,13 +1778,6 @@ func (o *GetProjectsEnv) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *GetProjectsEnv) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 type GetProjectsCustomEnvironments struct {
@@ -2711,6 +2710,172 @@ func (o *GetProjectsLatestDeployments) GetWithCache() *bool {
 	return o.WithCache
 }
 
+type GetProjectsLinkProjectsResponse200Type string
+
+const (
+	GetProjectsLinkProjectsResponse200TypeGithubCustomHost GetProjectsLinkProjectsResponse200Type = "github-custom-host"
+)
+
+func (e GetProjectsLinkProjectsResponse200Type) ToPointer() *GetProjectsLinkProjectsResponse200Type {
+	return &e
+}
+func (e *GetProjectsLinkProjectsResponse200Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = GetProjectsLinkProjectsResponse200Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsLinkProjectsResponse200Type: %v", v)
+	}
+}
+
+type GetProjectsLinkProjectsResponse200DeployHooks struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *GetProjectsLinkProjectsResponse200DeployHooks) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLinkProjectsResponse200DeployHooks) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetProjectsLinkProjectsResponse200DeployHooks) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsLinkProjectsResponse200DeployHooks) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetProjectsLinkProjectsResponse200DeployHooks) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type GetProjectsLink4 struct {
+	Org *string `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                                        `json:"repoOwnerId,omitempty"`
+	Repo             *string                                         `json:"repo,omitempty"`
+	RepoID           *float64                                        `json:"repoId,omitempty"`
+	Type             *GetProjectsLinkProjectsResponse200Type         `json:"type,omitempty"`
+	Host             *string                                         `json:"host,omitempty"`
+	CreatedAt        *float64                                        `json:"createdAt,omitempty"`
+	DeployHooks      []GetProjectsLinkProjectsResponse200DeployHooks `json:"deployHooks"`
+	GitCredentialID  *string                                         `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                                        `json:"updatedAt,omitempty"`
+	Sourceless       *bool                                           `json:"sourceless,omitempty"`
+	ProductionBranch *string                                         `json:"productionBranch,omitempty"`
+}
+
+func (o *GetProjectsLink4) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *GetProjectsLink4) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *GetProjectsLink4) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *GetProjectsLink4) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *GetProjectsLink4) GetType() *GetProjectsLinkProjectsResponse200Type {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *GetProjectsLink4) GetHost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Host
+}
+
+func (o *GetProjectsLink4) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLink4) GetDeployHooks() []GetProjectsLinkProjectsResponse200DeployHooks {
+	if o == nil {
+		return []GetProjectsLinkProjectsResponse200DeployHooks{}
+	}
+	return o.DeployHooks
+}
+
+func (o *GetProjectsLink4) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *GetProjectsLink4) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsLink4) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *GetProjectsLink4) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
 type GetProjectsLinkProjectsResponseType string
 
 const (
@@ -3214,12 +3379,14 @@ const (
 	GetProjectsLinkUnionTypeGetProjectsLink1 GetProjectsLinkUnionType = "getProjects_link_1"
 	GetProjectsLinkUnionTypeGetProjectsLink2 GetProjectsLinkUnionType = "getProjects_link_2"
 	GetProjectsLinkUnionTypeGetProjectsLink3 GetProjectsLinkUnionType = "getProjects_link_3"
+	GetProjectsLinkUnionTypeGetProjectsLink4 GetProjectsLinkUnionType = "getProjects_link_4"
 )
 
 type GetProjectsLink struct {
 	GetProjectsLink1 *GetProjectsLink1
 	GetProjectsLink2 *GetProjectsLink2
 	GetProjectsLink3 *GetProjectsLink3
+	GetProjectsLink4 *GetProjectsLink4
 
 	Type GetProjectsLinkUnionType
 }
@@ -3251,6 +3418,15 @@ func CreateGetProjectsLinkGetProjectsLink3(getProjectsLink3 GetProjectsLink3) Ge
 	}
 }
 
+func CreateGetProjectsLinkGetProjectsLink4(getProjectsLink4 GetProjectsLink4) GetProjectsLink {
+	typ := GetProjectsLinkUnionTypeGetProjectsLink4
+
+	return GetProjectsLink{
+		GetProjectsLink4: &getProjectsLink4,
+		Type:             typ,
+	}
+}
+
 func (u *GetProjectsLink) UnmarshalJSON(data []byte) error {
 
 	var getProjectsLink1 GetProjectsLink1 = GetProjectsLink1{}
@@ -3264,6 +3440,13 @@ func (u *GetProjectsLink) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &getProjectsLink3, "", true, true); err == nil {
 		u.GetProjectsLink3 = &getProjectsLink3
 		u.Type = GetProjectsLinkUnionTypeGetProjectsLink3
+		return nil
+	}
+
+	var getProjectsLink4 GetProjectsLink4 = GetProjectsLink4{}
+	if err := utils.UnmarshalJSON(data, &getProjectsLink4, "", true, true); err == nil {
+		u.GetProjectsLink4 = &getProjectsLink4
+		u.Type = GetProjectsLinkUnionTypeGetProjectsLink4
 		return nil
 	}
 
@@ -3288,6 +3471,10 @@ func (u GetProjectsLink) MarshalJSON() ([]byte, error) {
 
 	if u.GetProjectsLink3 != nil {
 		return utils.MarshalJSON(u.GetProjectsLink3, "", true)
+	}
+
+	if u.GetProjectsLink4 != nil {
+		return utils.MarshalJSON(u.GetProjectsLink4, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetProjectsLink: all fields are null")
@@ -3538,6 +3725,29 @@ func (e *GetProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type GetProjectsBuildMachineType string
+
+const (
+	GetProjectsBuildMachineTypeEnhanced GetProjectsBuildMachineType = "enhanced"
+)
+
+func (e GetProjectsBuildMachineType) ToPointer() *GetProjectsBuildMachineType {
+	return &e
+}
+func (e *GetProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = GetProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsBuildMachineType: %v", v)
+	}
+}
+
 type GetProjectsResourceConfig struct {
 	Fluid                      *bool                                 `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                              `json:"functionDefaultRegions"`
@@ -3545,6 +3755,7 @@ type GetProjectsResourceConfig struct {
 	FunctionDefaultMemoryType  *GetProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                 `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                 `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *GetProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *GetProjectsResourceConfig) GetFluid() *bool {
@@ -3589,10 +3800,21 @@ func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	return o.ElasticConcurrencyEnabled
 }
 
+func (o *GetProjectsResourceConfig) GetBuildMachineType() *GetProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
 // GetProjectsStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
 type GetProjectsStages struct {
 	// The percentage of traffic to serve to the new deployment
 	TargetPercentage float64 `json:"targetPercentage"`
+	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving.
+	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
+	// Whether or not this stage requires approval to proceed.
+	RequireApproval *bool `json:"requireApproval,omitempty"`
 }
 
 func (o *GetProjectsStages) GetTargetPercentage() float64 {
@@ -3600,6 +3822,20 @@ func (o *GetProjectsStages) GetTargetPercentage() float64 {
 		return 0.0
 	}
 	return o.TargetPercentage
+}
+
+func (o *GetProjectsStages) GetMinutesToRelease() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinutesToRelease
+}
+
+func (o *GetProjectsStages) GetRequireApproval() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireApproval
 }
 
 type GetProjectsRollingRelease struct {
@@ -3661,6 +3897,29 @@ func (e *GetProjectsProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte
 	}
 }
 
+type GetProjectsProjectsBuildMachineType string
+
+const (
+	GetProjectsProjectsBuildMachineTypeEnhanced GetProjectsProjectsBuildMachineType = "enhanced"
+)
+
+func (e GetProjectsProjectsBuildMachineType) ToPointer() *GetProjectsProjectsBuildMachineType {
+	return &e
+}
+func (e *GetProjectsProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		*e = GetProjectsProjectsBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsProjectsBuildMachineType: %v", v)
+	}
+}
+
 type GetProjectsDefaultResourceConfig struct {
 	Fluid                      *bool                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                      `json:"functionDefaultRegions"`
@@ -3668,6 +3927,7 @@ type GetProjectsDefaultResourceConfig struct {
 	FunctionDefaultMemoryType  *GetProjectsProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                         `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                         `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *GetProjectsProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
 func (o *GetProjectsDefaultResourceConfig) GetFluid() *bool {
@@ -3710,6 +3970,13 @@ func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool 
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetBuildMachineType() *GetProjectsProjectsBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
 }
 
 type GetProjectsDeploymentType string
@@ -4585,6 +4852,7 @@ type GetProjectsPermissions struct {
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
+	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
@@ -5270,6 +5538,13 @@ func (o *GetProjectsPermissions) GetObservabilityConfiguration() []components.AC
 		return nil
 	}
 	return o.ObservabilityConfiguration
+}
+
+func (o *GetProjectsPermissions) GetObservabilityNotebook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityNotebook
 }
 
 func (o *GetProjectsPermissions) GetOpenTelemetryEndpoint() []components.ACLAction {

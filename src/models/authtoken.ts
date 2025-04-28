@@ -24,6 +24,7 @@ export const AuthTokenScopesOrigin = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  Google: "google",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
 
@@ -75,6 +76,7 @@ export const ScopesOrigin = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  Google: "google",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 

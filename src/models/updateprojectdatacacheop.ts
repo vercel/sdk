@@ -392,9 +392,11 @@ export type Env = {
    * This is used to identiy variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
+  vsmValue?: string | undefined;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -425,13 +427,8 @@ export type Env = {
    * Similar to `contentHints`, but should not be exposed to the user.
    */
   internalContentHint?: InternalContentHint | null | undefined;
-  /**
-   * Whether `value` and `vsmValue` are decrypted.
-   */
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 export type CustomEnvironments = {};
@@ -651,6 +648,39 @@ export type LatestDeployments = {
   withCache?: boolean | undefined;
 };
 
+export const UpdateProjectDataCacheLinkProjectsResponseType = {
+  GithubCustomHost: "github-custom-host",
+} as const;
+export type UpdateProjectDataCacheLinkProjectsResponseType = ClosedEnum<
+  typeof UpdateProjectDataCacheLinkProjectsResponseType
+>;
+
+export type UpdateProjectDataCacheLinkProjectsDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type Link4 = {
+  org?: string | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type?: UpdateProjectDataCacheLinkProjectsResponseType | undefined;
+  host?: string | undefined;
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateProjectDataCacheLinkProjectsDeployHooks>;
+  gitCredentialId?: string | undefined;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch?: string | undefined;
+};
+
 export const UpdateProjectDataCacheLinkProjectsType = {
   Bitbucket: "bitbucket",
 } as const;
@@ -745,7 +775,7 @@ export type Link1 = {
   productionBranch?: string | undefined;
 };
 
-export type Link = Link1 | Link3 | Link2;
+export type Link = Link1 | Link3 | Link4 | Link2;
 
 export type UpdateProjectDataCacheMicrofrontends2 = {
   updatedAt: number;
@@ -817,6 +847,11 @@ export type FunctionDefaultMemoryType = ClosedEnum<
   typeof FunctionDefaultMemoryType
 >;
 
+export const BuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
+
 export type UpdateProjectDataCacheResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -824,6 +859,7 @@ export type UpdateProjectDataCacheResourceConfig = {
   functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: BuildMachineType | undefined;
 };
 
 /**
@@ -834,6 +870,14 @@ export type Stages = {
    * The percentage of traffic to serve to the new deployment
    */
   targetPercentage: number;
+  /**
+   * minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving.
+   */
+  minutesToRelease?: number | undefined;
+  /**
+   * Whether or not this stage requires approval to proceed.
+   */
+  requireApproval?: boolean | undefined;
 };
 
 export type RollingRelease = {
@@ -860,6 +904,13 @@ export type UpdateProjectDataCacheFunctionDefaultMemoryType = ClosedEnum<
   typeof UpdateProjectDataCacheFunctionDefaultMemoryType
 >;
 
+export const UpdateProjectDataCacheBuildMachineType = {
+  Enhanced: "enhanced",
+} as const;
+export type UpdateProjectDataCacheBuildMachineType = ClosedEnum<
+  typeof UpdateProjectDataCacheBuildMachineType
+>;
+
 export type DefaultResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -869,6 +920,7 @@ export type DefaultResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: UpdateProjectDataCacheBuildMachineType | undefined;
 };
 
 export const UpdateProjectDataCacheDeploymentType = {
@@ -1127,6 +1179,7 @@ export type Permissions = {
   notificationCustomerBudget?: Array<ACLAction> | undefined;
   notificationStatementOfReasons?: Array<ACLAction> | undefined;
   observabilityConfiguration?: Array<ACLAction> | undefined;
+  observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
   permissions?: Array<ACLAction> | undefined;
@@ -1483,14 +1536,16 @@ export type UpdateProjectDataCacheProjectsAction = ClosedEnum<
   typeof UpdateProjectDataCacheProjectsAction
 >;
 
-export const Algo = {
+export const UpdateProjectDataCacheAlgo = {
   FixedWindow: "fixed_window",
   TokenBucket: "token_bucket",
 } as const;
-export type Algo = ClosedEnum<typeof Algo>;
+export type UpdateProjectDataCacheAlgo = ClosedEnum<
+  typeof UpdateProjectDataCacheAlgo
+>;
 
 export type Erl = {
-  algo: Algo;
+  algo: UpdateProjectDataCacheAlgo;
   window: number;
   limit: number;
   keys: Array<string>;
@@ -1603,7 +1658,7 @@ export type UpdateProjectDataCacheResponseBody = {
   id: string;
   ipBuckets?: Array<IpBuckets> | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
-  link?: Link1 | Link3 | Link2 | undefined;
+  link?: Link1 | Link3 | Link4 | Link2 | undefined;
   microfrontends?:
     | UpdateProjectDataCacheMicrofrontends2
     | UpdateProjectDataCacheMicrofrontends1
@@ -3692,9 +3747,11 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
     ]).optional(),
     type: UpdateProjectDataCacheProjectsResponse200Type$inboundSchema,
     sunsetSecretId: z.string().optional(),
+    decrypted: z.boolean().optional(),
+    value: z.string(),
+    vsmValue: z.string().optional(),
     id: z.string().optional(),
     key: z.string(),
-    value: z.string(),
     configurationId: z.nullable(z.string()).optional(),
     createdAt: z.number().optional(),
     updatedAt: z.number().optional(),
@@ -3725,10 +3782,8 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
     internalContentHint: z.nullable(
       z.lazy(() => InternalContentHint$inboundSchema),
     ).optional(),
-    decrypted: z.boolean().optional(),
     comment: z.string().optional(),
     customEnvironmentIds: z.array(z.string()).optional(),
-    vsmValue: z.string().optional(),
   });
 
 /** @internal */
@@ -3736,9 +3791,11 @@ export type Env$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
+  vsmValue?: string | undefined;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -3766,10 +3823,8 @@ export type Env$Outbound = {
     | null
     | undefined;
   internalContentHint?: InternalContentHint$Outbound | null | undefined;
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 /** @internal */
@@ -3781,9 +3836,11 @@ export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
     ]).optional(),
     type: UpdateProjectDataCacheProjectsResponse200Type$outboundSchema,
     sunsetSecretId: z.string().optional(),
+    decrypted: z.boolean().optional(),
+    value: z.string(),
+    vsmValue: z.string().optional(),
     id: z.string().optional(),
     key: z.string(),
-    value: z.string(),
     configurationId: z.nullable(z.string()).optional(),
     createdAt: z.number().optional(),
     updatedAt: z.number().optional(),
@@ -3814,10 +3871,8 @@ export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
     internalContentHint: z.nullable(
       z.lazy(() => InternalContentHint$outboundSchema),
     ).optional(),
-    decrypted: z.boolean().optional(),
     comment: z.string().optional(),
     customEnvironmentIds: z.array(z.string()).optional(),
-    vsmValue: z.string().optional(),
   });
 
 /**
@@ -4746,6 +4801,194 @@ export function latestDeploymentsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsResponseType> = z
+    .nativeEnum(UpdateProjectDataCacheLinkProjectsResponseType);
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsResponseType> =
+    UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheLinkProjectsResponseType$ {
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponseType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponseType$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheLinkProjectsDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+/** @internal */
+export type UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectDataCacheLinkProjectsDeployHooks
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheLinkProjectsDeployHooks$ {
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound;
+}
+
+export function updateProjectDataCacheLinkProjectsDeployHooksToJSON(
+  updateProjectDataCacheLinkProjectsDeployHooks:
+    UpdateProjectDataCacheLinkProjectsDeployHooks,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema.parse(
+      updateProjectDataCacheLinkProjectsDeployHooks,
+    ),
+  );
+}
+
+export function updateProjectDataCacheLinkProjectsDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheLinkProjectsDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheLinkProjectsDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const Link4$inboundSchema: z.ZodType<Link4, z.ZodTypeDef, unknown> = z
+  .object({
+    org: z.string().optional(),
+    repoOwnerId: z.number().optional(),
+    repo: z.string().optional(),
+    repoId: z.number().optional(),
+    type: UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema
+      .optional(),
+    host: z.string().optional(),
+    createdAt: z.number().optional(),
+    deployHooks: z.array(
+      z.lazy(() => UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema),
+    ),
+    gitCredentialId: z.string().optional(),
+    updatedAt: z.number().optional(),
+    sourceless: z.boolean().optional(),
+    productionBranch: z.string().optional(),
+  });
+
+/** @internal */
+export type Link4$Outbound = {
+  org?: string | undefined;
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type?: string | undefined;
+  host?: string | undefined;
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound>;
+  gitCredentialId?: string | undefined;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch?: string | undefined;
+};
+
+/** @internal */
+export const Link4$outboundSchema: z.ZodType<
+  Link4$Outbound,
+  z.ZodTypeDef,
+  Link4
+> = z.object({
+  org: z.string().optional(),
+  repoOwnerId: z.number().optional(),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
+  type: UpdateProjectDataCacheLinkProjectsResponseType$outboundSchema
+    .optional(),
+  host: z.string().optional(),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(
+    z.lazy(() => UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema),
+  ),
+  gitCredentialId: z.string().optional(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Link4$ {
+  /** @deprecated use `Link4$inboundSchema` instead. */
+  export const inboundSchema = Link4$inboundSchema;
+  /** @deprecated use `Link4$outboundSchema` instead. */
+  export const outboundSchema = Link4$outboundSchema;
+  /** @deprecated use `Link4$Outbound` instead. */
+  export type Outbound = Link4$Outbound;
+}
+
+export function link4ToJSON(link4: Link4): string {
+  return JSON.stringify(Link4$outboundSchema.parse(link4));
+}
+
+export function link4FromJSON(
+  jsonString: string,
+): SafeParseResult<Link4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Link4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link4' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheLinkProjectsType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsType> = z.nativeEnum(
     UpdateProjectDataCacheLinkProjectsType,
@@ -5255,17 +5498,23 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
   .union([
     z.lazy(() => Link1$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
+    z.lazy(() => Link4$inboundSchema),
     z.lazy(() => Link2$inboundSchema),
   ]);
 
 /** @internal */
-export type Link$Outbound = Link1$Outbound | Link3$Outbound | Link2$Outbound;
+export type Link$Outbound =
+  | Link1$Outbound
+  | Link3$Outbound
+  | Link4$Outbound
+  | Link2$Outbound;
 
 /** @internal */
 export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
   z.union([
     z.lazy(() => Link1$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
+    z.lazy(() => Link4$outboundSchema),
     z.lazy(() => Link2$outboundSchema),
   ]);
 
@@ -5715,6 +5964,27 @@ export namespace FunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const BuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = z.nativeEnum(BuildMachineType);
+
+/** @internal */
+export const BuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = BuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildMachineType$ {
+  /** @deprecated use `BuildMachineType$inboundSchema` instead. */
+  export const inboundSchema = BuildMachineType$inboundSchema;
+  /** @deprecated use `BuildMachineType$outboundSchema` instead. */
+  export const outboundSchema = BuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDataCacheResourceConfig,
   z.ZodTypeDef,
@@ -5726,6 +5996,7 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -5736,6 +6007,7 @@ export type UpdateProjectDataCacheResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -5751,6 +6023,7 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$outboundSchema.optional(),
 });
 
 /**
@@ -5793,11 +6066,15 @@ export function updateProjectDataCacheResourceConfigFromJSON(
 export const Stages$inboundSchema: z.ZodType<Stages, z.ZodTypeDef, unknown> = z
   .object({
     targetPercentage: z.number(),
+    minutesToRelease: z.number().optional(),
+    requireApproval: z.boolean().optional(),
   });
 
 /** @internal */
 export type Stages$Outbound = {
   targetPercentage: number;
+  minutesToRelease?: number | undefined;
+  requireApproval?: boolean | undefined;
 };
 
 /** @internal */
@@ -5807,6 +6084,8 @@ export const Stages$outboundSchema: z.ZodType<
   Stages
 > = z.object({
   targetPercentage: z.number(),
+  minutesToRelease: z.number().optional(),
+  requireApproval: z.boolean().optional(),
 });
 
 /**
@@ -5916,6 +6195,30 @@ export namespace UpdateProjectDataCacheFunctionDefaultMemoryType$ {
 }
 
 /** @internal */
+export const UpdateProjectDataCacheBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheBuildMachineType> = z.nativeEnum(
+    UpdateProjectDataCacheBuildMachineType,
+  );
+
+/** @internal */
+export const UpdateProjectDataCacheBuildMachineType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheBuildMachineType> =
+    UpdateProjectDataCacheBuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheBuildMachineType$ {
+  /** @deprecated use `UpdateProjectDataCacheBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheBuildMachineType$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheBuildMachineType$outboundSchema;
+}
+
+/** @internal */
 export const DefaultResourceConfig$inboundSchema: z.ZodType<
   DefaultResourceConfig,
   z.ZodTypeDef,
@@ -5928,6 +6231,8 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectDataCacheFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: UpdateProjectDataCacheBuildMachineType$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -5938,6 +6243,7 @@ export type DefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
 };
 
 /** @internal */
@@ -5953,6 +6259,8 @@ export const DefaultResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectDataCacheFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: UpdateProjectDataCacheBuildMachineType$outboundSchema
+    .optional(),
 });
 
 /**
@@ -6892,6 +7200,7 @@ export const Permissions$inboundSchema: z.ZodType<
   notificationCustomerBudget: z.array(ACLAction$inboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$inboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$inboundSchema).optional(),
+  observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$inboundSchema).optional(),
   paymentMethod: z.array(ACLAction$inboundSchema).optional(),
   permissions: z.array(ACLAction$inboundSchema).optional(),
@@ -7097,6 +7406,7 @@ export type Permissions$Outbound = {
   notificationCustomerBudget?: Array<string> | undefined;
   notificationStatementOfReasons?: Array<string> | undefined;
   observabilityConfiguration?: Array<string> | undefined;
+  observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
   permissions?: Array<string> | undefined;
@@ -7303,6 +7613,7 @@ export const Permissions$outboundSchema: z.ZodType<
   notificationCustomerBudget: z.array(ACLAction$outboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$outboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),
   permissions: z.array(ACLAction$outboundSchema).optional(),
@@ -8815,29 +9126,30 @@ export namespace UpdateProjectDataCacheProjectsAction$ {
 }
 
 /** @internal */
-export const Algo$inboundSchema: z.ZodNativeEnum<typeof Algo> = z.nativeEnum(
-  Algo,
-);
+export const UpdateProjectDataCacheAlgo$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheAlgo
+> = z.nativeEnum(UpdateProjectDataCacheAlgo);
 
 /** @internal */
-export const Algo$outboundSchema: z.ZodNativeEnum<typeof Algo> =
-  Algo$inboundSchema;
+export const UpdateProjectDataCacheAlgo$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheAlgo
+> = UpdateProjectDataCacheAlgo$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Algo$ {
-  /** @deprecated use `Algo$inboundSchema` instead. */
-  export const inboundSchema = Algo$inboundSchema;
-  /** @deprecated use `Algo$outboundSchema` instead. */
-  export const outboundSchema = Algo$outboundSchema;
+export namespace UpdateProjectDataCacheAlgo$ {
+  /** @deprecated use `UpdateProjectDataCacheAlgo$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheAlgo$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheAlgo$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheAlgo$outboundSchema;
 }
 
 /** @internal */
 export const Erl$inboundSchema: z.ZodType<Erl, z.ZodTypeDef, unknown> = z
   .object({
-    algo: Algo$inboundSchema,
+    algo: UpdateProjectDataCacheAlgo$inboundSchema,
     window: z.number(),
     limit: z.number(),
     keys: z.array(z.string()),
@@ -8854,7 +9166,7 @@ export type Erl$Outbound = {
 /** @internal */
 export const Erl$outboundSchema: z.ZodType<Erl$Outbound, z.ZodTypeDef, Erl> = z
   .object({
-    algo: Algo$outboundSchema,
+    algo: UpdateProjectDataCacheAlgo$outboundSchema,
     window: z.number(),
     limit: z.number(),
     keys: z.array(z.string()),
@@ -9355,6 +9667,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   link: z.union([
     z.lazy(() => Link1$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
+    z.lazy(() => Link4$inboundSchema),
     z.lazy(() => Link2$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
@@ -9455,7 +9768,12 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   id: string;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
   latestDeployments?: Array<LatestDeployments$Outbound> | undefined;
-  link?: Link1$Outbound | Link3$Outbound | Link2$Outbound | undefined;
+  link?:
+    | Link1$Outbound
+    | Link3$Outbound
+    | Link4$Outbound
+    | Link2$Outbound
+    | undefined;
   microfrontends?:
     | UpdateProjectDataCacheMicrofrontends2$Outbound
     | UpdateProjectDataCacheMicrofrontends1$Outbound
@@ -9555,6 +9873,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   link: z.union([
     z.lazy(() => Link1$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
+    z.lazy(() => Link4$outboundSchema),
     z.lazy(() => Link2$outboundSchema),
   ]).optional(),
   microfrontends: z.union([

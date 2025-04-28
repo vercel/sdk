@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadImportFlowGitProvider } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadImportFlowGitProvider = "gitlab";
+let value: PayloadImportFlowGitProvider = "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"github" | "gitlab" | "bitbucket" | "github-custom-host"
 ```

@@ -89,6 +89,7 @@ export const AuthMethod = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  Google: "google",
 } as const;
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
@@ -1641,6 +1642,7 @@ export type SixtyEight = {
   viaGithub: boolean;
   viaGitlab: boolean;
   viaBitbucket: boolean;
+  viaGoogle: boolean;
   viaSamlSso: boolean;
   viaPasskey: boolean;
   ssoType?: string | undefined;
@@ -1793,6 +1795,7 @@ export type PayloadBilling = {
 
 export const UserEventCredentialsType = {
   GithubOauthCustomHost: "github-oauth-custom-host",
+  GithubAppCustomHost: "github-app-custom-host",
 } as const;
 export type UserEventCredentialsType = ClosedEnum<
   typeof UserEventCredentialsType
@@ -1807,6 +1810,7 @@ export type Credentials2 = {
 export const CredentialsType = {
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Google: "google",
   GithubOauth: "github-oauth",
   GithubApp: "github-app",
 } as const;
@@ -1846,6 +1850,7 @@ export const PayloadImportFlowGitProvider = {
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  GithubCustomHost: "github-custom-host",
 } as const;
 export type PayloadImportFlowGitProvider = ClosedEnum<
   typeof PayloadImportFlowGitProvider
@@ -1871,7 +1876,14 @@ export type PayloadBuildEntitlements = {
   enhancedBuilds?: boolean | undefined;
 };
 
+export const PayloadPurchaseType = {
+  Enhanced: "enhanced",
+} as const;
+export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
+
 export type PayloadBuildMachine = {
+  purchaseType?: PayloadPurchaseType | undefined;
+  abovePlan?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -1900,6 +1912,7 @@ export type PayloadResourceConfig = {
   microfrontendProjectsPerGroup?: number | undefined;
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  customEnvironmentsPerProject?: number | undefined;
   buildMachine?: PayloadBuildMachine | undefined;
 };
 
@@ -3066,10 +3079,6 @@ export type OldEnvVar = {
    */
   value?: string | undefined;
   /**
-   * The value of the shared environment variable decrypted against api-secrets-management.
-   */
-  vsmValue?: string | undefined;
-  /**
    * The unique identifiers of the projects which the Shared Env Var is linked to.
    */
   projectId?: Array<string> | undefined;
@@ -3173,10 +3182,6 @@ export type NewEnvVar = {
    * The value of the Shared Env Var.
    */
   value?: string | undefined;
-  /**
-   * The value of the shared environment variable decrypted against api-secrets-management.
-   */
-  vsmValue?: string | undefined;
   /**
    * The unique identifiers of the projects which the Shared Env Var is linked to.
    */
@@ -3328,10 +3333,6 @@ export type FiftySeven = {
    * The value of the Shared Env Var.
    */
   value?: string | undefined;
-  /**
-   * The value of the shared environment variable decrypted against api-secrets-management.
-   */
-  vsmValue?: string | undefined;
   /**
    * The unique identifiers of the projects which the Shared Env Var is linked to.
    */
@@ -4192,9 +4193,9 @@ export type Payload =
   | OneHundredAndThree
   | OneHundredAndTwentyOne
   | FiftySix
-  | SixtyEight
   | Seven
   | ThirtySeven
+  | SixtyEight
   | FiftySeven;
 
 /**
@@ -4370,9 +4371,9 @@ export type UserEvent = {
     | OneHundredAndThree
     | OneHundredAndTwentyOne
     | FiftySix
-    | SixtyEight
     | Seven
     | ThirtySeven
+    | SixtyEight
     | FiftySeven
     | undefined;
 };
@@ -14482,6 +14483,7 @@ export const SixtyEight$inboundSchema: z.ZodType<
   viaGithub: z.boolean(),
   viaGitlab: z.boolean(),
   viaBitbucket: z.boolean(),
+  viaGoogle: z.boolean(),
   viaSamlSso: z.boolean(),
   viaPasskey: z.boolean(),
   ssoType: z.string().optional(),
@@ -14497,6 +14499,7 @@ export type SixtyEight$Outbound = {
   viaGithub: boolean;
   viaGitlab: boolean;
   viaBitbucket: boolean;
+  viaGoogle: boolean;
   viaSamlSso: boolean;
   viaPasskey: boolean;
   ssoType?: string | undefined;
@@ -14516,6 +14519,7 @@ export const SixtyEight$outboundSchema: z.ZodType<
   viaGithub: z.boolean(),
   viaGitlab: z.boolean(),
   viaBitbucket: z.boolean(),
+  viaGoogle: z.boolean(),
   viaSamlSso: z.boolean(),
   viaPasskey: z.boolean(),
   ssoType: z.string().optional(),
@@ -16039,17 +16043,42 @@ export function payloadBuildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const PayloadPurchaseType$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadPurchaseType
+> = z.nativeEnum(PayloadPurchaseType);
+
+/** @internal */
+export const PayloadPurchaseType$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadPurchaseType
+> = PayloadPurchaseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadPurchaseType$ {
+  /** @deprecated use `PayloadPurchaseType$inboundSchema` instead. */
+  export const inboundSchema = PayloadPurchaseType$inboundSchema;
+  /** @deprecated use `PayloadPurchaseType$outboundSchema` instead. */
+  export const outboundSchema = PayloadPurchaseType$outboundSchema;
+}
+
+/** @internal */
 export const PayloadBuildMachine$inboundSchema: z.ZodType<
   PayloadBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  purchaseType: PayloadPurchaseType$inboundSchema.optional(),
+  abovePlan: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
 
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
+  purchaseType?: string | undefined;
+  abovePlan?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16060,6 +16089,8 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadBuildMachine
 > = z.object({
+  purchaseType: PayloadPurchaseType$outboundSchema.optional(),
+  abovePlan: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
@@ -16125,6 +16156,7 @@ export const PayloadResourceConfig$inboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => PayloadBuildMachine$inboundSchema).optional(),
 });
 
@@ -16153,6 +16185,7 @@ export type PayloadResourceConfig$Outbound = {
   microfrontendProjectsPerGroup?: number | undefined;
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
+  customEnvironmentsPerProject?: number | undefined;
   buildMachine?: PayloadBuildMachine$Outbound | undefined;
 };
 
@@ -16186,6 +16219,7 @@ export const PayloadResourceConfig$outboundSchema: z.ZodType<
   microfrontendProjectsPerGroup: z.number().optional(),
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
+  customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => PayloadBuildMachine$outboundSchema).optional(),
 });
 
@@ -21896,7 +21930,6 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: UserEventPayload58OldEnvVarType$inboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$inboundSchema).optional(),
@@ -21919,7 +21952,6 @@ export type OldEnvVar$Outbound = {
   deletedAt?: number | undefined;
   updatedAt?: number | undefined;
   value?: string | undefined;
-  vsmValue?: string | undefined;
   projectId?: Array<string> | undefined;
   type?: string | undefined;
   target?: Array<string> | undefined;
@@ -21946,7 +21978,6 @@ export const OldEnvVar$outboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: UserEventPayload58OldEnvVarType$outboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$outboundSchema).optional(),
@@ -22042,7 +22073,6 @@ export const NewEnvVar$inboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: UserEventPayload58Type$inboundSchema.optional(),
   target: z.array(UserEventPayload58Target$inboundSchema).optional(),
@@ -22065,7 +22095,6 @@ export type NewEnvVar$Outbound = {
   deletedAt?: number | undefined;
   updatedAt?: number | undefined;
   value?: string | undefined;
-  vsmValue?: string | undefined;
   projectId?: Array<string> | undefined;
   type?: string | undefined;
   target?: Array<string> | undefined;
@@ -22092,7 +22121,6 @@ export const NewEnvVar$outboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: UserEventPayload58Type$outboundSchema.optional(),
   target: z.array(UserEventPayload58Target$outboundSchema).optional(),
@@ -22464,7 +22492,6 @@ export const FiftySeven$inboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: PayloadType$inboundSchema.optional(),
   target: z.array(PayloadTarget$inboundSchema).optional(),
@@ -22488,7 +22515,6 @@ export type FiftySeven$Outbound = {
   deletedAt?: number | undefined;
   updatedAt?: number | undefined;
   value?: string | undefined;
-  vsmValue?: string | undefined;
   projectId?: Array<string> | undefined;
   type?: string | undefined;
   target?: Array<string> | undefined;
@@ -22516,7 +22542,6 @@ export const FiftySeven$outboundSchema: z.ZodType<
   deletedAt: z.number().optional(),
   updatedAt: z.number().optional(),
   value: z.string().optional(),
-  vsmValue: z.string().optional(),
   projectId: z.array(z.string()).optional(),
   type: PayloadType$outboundSchema.optional(),
   target: z.array(PayloadTarget$outboundSchema).optional(),
@@ -27577,9 +27602,9 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndThree$inboundSchema),
     z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
     z.lazy(() => FiftySix$inboundSchema),
-    z.lazy(() => SixtyEight$inboundSchema),
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => ThirtySeven$inboundSchema),
+    z.lazy(() => SixtyEight$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
   ]);
 
@@ -27729,9 +27754,9 @@ export type Payload$Outbound =
   | OneHundredAndThree$Outbound
   | OneHundredAndTwentyOne$Outbound
   | FiftySix$Outbound
-  | SixtyEight$Outbound
   | Seven$Outbound
   | ThirtySeven$Outbound
+  | SixtyEight$Outbound
   | FiftySeven$Outbound;
 
 /** @internal */
@@ -27884,9 +27909,9 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndThree$outboundSchema),
   z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
   z.lazy(() => FiftySix$outboundSchema),
-  z.lazy(() => SixtyEight$outboundSchema),
   z.lazy(() => Seven$outboundSchema),
   z.lazy(() => ThirtySeven$outboundSchema),
+  z.lazy(() => SixtyEight$outboundSchema),
   z.lazy(() => FiftySeven$outboundSchema),
 ]);
 
@@ -28074,9 +28099,9 @@ export const UserEvent$inboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndThree$inboundSchema),
     z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
     z.lazy(() => FiftySix$inboundSchema),
-    z.lazy(() => SixtyEight$inboundSchema),
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => ThirtySeven$inboundSchema),
+    z.lazy(() => SixtyEight$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
   ]).optional(),
 });
@@ -28234,9 +28259,9 @@ export type UserEvent$Outbound = {
     | OneHundredAndThree$Outbound
     | OneHundredAndTwentyOne$Outbound
     | FiftySix$Outbound
-    | SixtyEight$Outbound
     | Seven$Outbound
     | ThirtySeven$Outbound
+    | SixtyEight$Outbound
     | FiftySeven$Outbound
     | undefined;
 };
@@ -28398,9 +28423,9 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndThree$outboundSchema),
     z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
     z.lazy(() => FiftySix$outboundSchema),
-    z.lazy(() => SixtyEight$outboundSchema),
     z.lazy(() => Seven$outboundSchema),
     z.lazy(() => ThirtySeven$outboundSchema),
+    z.lazy(() => SixtyEight$outboundSchema),
     z.lazy(() => FiftySeven$outboundSchema),
   ]).optional(),
 });

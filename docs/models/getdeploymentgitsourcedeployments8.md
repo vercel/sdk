@@ -1,15 +1,17 @@
 # GetDeploymentGitSourceDeployments8
 
+Allows custom git sources (local folder mounted to the container) in test mode
+
 ## Example Usage
 
 ```typescript
 import { GetDeploymentGitSourceDeployments8 } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentGitSourceDeployments8 = {
-  type: "gitlab",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  projectId: 6552.4,
+  gitUrl: "https://usable-aftermath.org",
 };
 ```
 
@@ -20,4 +22,4 @@ let value: GetDeploymentGitSourceDeployments8 = {
 | `type`                                                                                                                                                                           | [models.GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type](../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody1type.md) | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `ref`                                                                                                                                                                            | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `sha`                                                                                                                                                                            | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
-| `projectId`                                                                                                                                                                      | *number*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `gitUrl`                                                                                                                                                                         | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |

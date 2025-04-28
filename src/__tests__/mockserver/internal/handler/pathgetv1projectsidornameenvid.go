@@ -49,8 +49,8 @@ func testGetProjectEnvGetProjectEnv0(w http.ResponseWriter, req *http.Request) {
 	respBody := types.Pointer(operations.CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody2(
 		operations.GetProjectEnvResponseBody2{
 			Type:  operations.GetProjectEnvResponseBodyProjectsTypePlain,
-			Key:   "<key>",
 			Value: "<value>",
+			Key:   "<key>",
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

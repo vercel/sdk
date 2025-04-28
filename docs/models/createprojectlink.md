@@ -48,3 +48,18 @@ const value: models.CreateProjectLink3 = {
 };
 ```
 
+### `models.CreateProjectLink4`
+
+```typescript
+const value: models.CreateProjectLink4 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://oblong-atrium.name/",
+    },
+  ],
+};
+```
+

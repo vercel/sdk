@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
@@ -47,21 +46,23 @@ func testGetProjectDomainsGetProjectDomains0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetProjectDomainsResponseBody{
-		Domains: []operations.GetProjectDomainsDomains{
-			operations.GetProjectDomainsDomains{
-				Name:      "<value>",
-				ApexName:  "<value>",
-				ProjectID: "<id>",
-				Verified:  true,
+	respBody := types.Pointer(operations.CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody1(
+		operations.GetProjectDomainsResponseBody1{
+			Domains: []operations.ResponseBodyDomains{
+				operations.ResponseBodyDomains{
+					Name:      "<value>",
+					ApexName:  "<value>",
+					ProjectID: "<id>",
+					Verified:  true,
+				},
+			},
+			Pagination: operations.GetProjectDomainsResponseBodyPagination{
+				Count: 20,
+				Next:  types.Float64(1540095775951),
+				Prev:  types.Float64(1540095775951),
 			},
 		},
-		Pagination: components.Pagination{
-			Count: 20,
-			Next:  types.Float64(1540095775951),
-			Prev:  types.Float64(1540095775951),
-		},
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

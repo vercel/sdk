@@ -33,4 +33,13 @@ actions:
       x-speakeasy-test: false
   - target: $.paths['/v8/artifacts/{hash}'].put
     update:
-      x-speakeasy-test: false      
+      x-speakeasy-test: false    
+  - target: $.paths['/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config'].head
+    update:
+      x-speakeasy-test: false   
+  - target: $.paths['/v10/projects/{idOrName}/env'].get
+    update:
+      x-speakeasy-test: false   
+  - target: $.paths['/v1/security/firewall/attack-status'].get
+    update:
+      x-speakeasy-test: false       

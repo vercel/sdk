@@ -48,3 +48,18 @@ const value: models.UpdateProjectLink3 = {
 };
 ```
 
+### `models.UpdateProjectLink4`
+
+```typescript
+const value: models.UpdateProjectLink4 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://skeletal-allegation.net/",
+    },
+  ],
+};
+```
+

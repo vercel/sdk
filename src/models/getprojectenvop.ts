@@ -323,9 +323,10 @@ export type GetProjectEnvResponseBody3 = {
    * This is used to identiy variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -359,10 +360,6 @@ export type GetProjectEnvResponseBody3 = {
     | GetProjectEnvResponseBodyProjectsResponseInternalContentHint
     | null
     | undefined;
-  /**
-   * Whether `value` and `vsmValue` are decrypted.
-   */
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
 };
@@ -673,9 +670,11 @@ export type GetProjectEnvResponseBody2 = {
    * This is used to identiy variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
+  vsmValue?: string | undefined;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -709,13 +708,8 @@ export type GetProjectEnvResponseBody2 = {
     | GetProjectEnvResponseBodyProjectsInternalContentHint
     | null
     | undefined;
-  /**
-   * Whether `value` and `vsmValue` are decrypted.
-   */
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 export const GetProjectEnvTarget2 = {
@@ -2932,9 +2926,10 @@ export const GetProjectEnvResponseBody3$inboundSchema: z.ZodType<
   ]).optional(),
   type: GetProjectEnvResponseBodyProjectsResponseType$inboundSchema,
   sunsetSecretId: z.string().optional(),
+  decrypted: z.boolean().optional(),
+  value: z.string(),
   id: z.string().optional(),
   key: z.string(),
-  value: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -2967,7 +2962,6 @@ export const GetProjectEnvResponseBody3$inboundSchema: z.ZodType<
       GetProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema
     ),
   ).optional(),
-  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
@@ -2977,9 +2971,10 @@ export type GetProjectEnvResponseBody3$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -3010,7 +3005,6 @@ export type GetProjectEnvResponseBody3$Outbound = {
     | GetProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound
     | null
     | undefined;
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
 };
@@ -3027,9 +3021,10 @@ export const GetProjectEnvResponseBody3$outboundSchema: z.ZodType<
   ]).optional(),
   type: GetProjectEnvResponseBodyProjectsResponseType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  decrypted: z.boolean().optional(),
+  value: z.string(),
   id: z.string().optional(),
   key: z.string(),
-  value: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -3062,7 +3057,6 @@ export const GetProjectEnvResponseBody3$outboundSchema: z.ZodType<
       GetProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema
     ),
   ).optional(),
-  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
@@ -4810,9 +4804,11 @@ export const GetProjectEnvResponseBody2$inboundSchema: z.ZodType<
   ]).optional(),
   type: GetProjectEnvResponseBodyProjectsType$inboundSchema,
   sunsetSecretId: z.string().optional(),
+  decrypted: z.boolean().optional(),
+  value: z.string(),
+  vsmValue: z.string().optional(),
   id: z.string().optional(),
   key: z.string(),
-  value: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -4845,10 +4841,8 @@ export const GetProjectEnvResponseBody2$inboundSchema: z.ZodType<
       GetProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema
     ),
   ).optional(),
-  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
-  vsmValue: z.string().optional(),
 });
 
 /** @internal */
@@ -4856,9 +4850,11 @@ export type GetProjectEnvResponseBody2$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  value: string;
+  vsmValue?: string | undefined;
   id?: string | undefined;
   key: string;
-  value: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -4889,10 +4885,8 @@ export type GetProjectEnvResponseBody2$Outbound = {
     | GetProjectEnvResponseBodyProjectsInternalContentHint$Outbound
     | null
     | undefined;
-  decrypted?: boolean | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
-  vsmValue?: string | undefined;
 };
 
 /** @internal */
@@ -4907,9 +4901,11 @@ export const GetProjectEnvResponseBody2$outboundSchema: z.ZodType<
   ]).optional(),
   type: GetProjectEnvResponseBodyProjectsType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  decrypted: z.boolean().optional(),
+  value: z.string(),
+  vsmValue: z.string().optional(),
   id: z.string().optional(),
   key: z.string(),
-  value: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -4942,10 +4938,8 @@ export const GetProjectEnvResponseBody2$outboundSchema: z.ZodType<
       GetProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema
     ),
   ).optional(),
-  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
-  vsmValue: z.string().optional(),
 });
 
 /**

@@ -384,33 +384,6 @@ actions:
   - target: $.paths['/v1/edge-config'].post.requestBody.content['application/json'].schema.properties['items']['additionalProperties']['oneOf'][1].items
     update:
       nullable: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['value'].oneOf[0].oneOf[3].type
-    remove: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['value']
-    update:
-      nullable: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['value'].oneOf[1].items['oneOf'][3].type
-    remove: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['value'].oneOf[1].items
-    update:
-      nullable: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['description'].oneOf[1].type
-    remove: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].properties['description']
-    update:
-      nullable: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].anyOf[0].properties['operation']['const']
-    remove: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].anyOf[0].properties['operation']
-    update:
-      type: string
-      enum: [create]
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].anyOf[3].properties['operation']['const']
-    remove: true
-  - target: $.paths['/v1/edge-config/{edgeConfigId}/items'].patch.requestBody.content['application/json'].schema.properties['items']['items']['oneOf'][0].anyOf[3].properties['operation']
-    update:
-      type: string
-      enum: [delete]
   - target: $.paths['/v1/integrations/search-repo'].get.parameters[1].schema.type
     remove: true
   - target: $.paths['/v1/integrations/search-repo'].get.parameters[1].schema

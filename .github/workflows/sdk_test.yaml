@@ -13,7 +13,9 @@ permissions:
       - '**'
   workflow_dispatch:
     inputs:
-      target: all
+      target: 
+        description: all
+        type: string
 jobs:
   test:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-test.yaml@v15

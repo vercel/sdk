@@ -26,8 +26,9 @@ const value: models.CancelDeploymentGitSource2 = {
 
 ```typescript
 const value: models.CancelDeploymentGitSource3 = {
-  type: "gitlab",
-  projectId: 9885.17,
+  type: "github-custom-host",
+  host: "trained-window.name",
+  repoId: 5987.63,
 };
 ```
 
@@ -35,8 +36,10 @@ const value: models.CancelDeploymentGitSource3 = {
 
 ```typescript
 const value: models.CancelDeploymentGitSource4 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-custom-host",
+  host: "distorted-bend.biz",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -44,9 +47,8 @@ const value: models.CancelDeploymentGitSource4 = {
 
 ```typescript
 const value: models.CancelDeploymentGitSource5 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: 808.68,
 };
 ```
 
@@ -54,10 +56,8 @@ const value: models.CancelDeploymentGitSource5 = {
 
 ```typescript
 const value: models.GitSource6 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://cuddly-crest.net",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -65,10 +65,9 @@ const value: models.GitSource6 = {
 
 ```typescript
 const value: models.GitSource7 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 7332.19,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -76,10 +75,10 @@ const value: models.GitSource7 = {
 
 ```typescript
 const value: models.GitSource8 = {
-  type: "gitlab",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  projectId: 4653.43,
+  gitUrl: "https://slow-middle.info/",
 };
 ```
 
@@ -87,6 +86,40 @@ const value: models.GitSource8 = {
 
 ```typescript
 const value: models.GitSource9 = {
+  type: "github",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 7358.23,
+};
+```
+
+### `models.GitSource10`
+
+```typescript
+const value: models.GitSource10 = {
+  type: "github",
+  host: "triangular-farm.org",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 1505.66,
+};
+```
+
+### `models.GitSource11`
+
+```typescript
+const value: models.GitSource11 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 9011.78,
+};
+```
+
+### `models.GitSource12`
+
+```typescript
+const value: models.GitSource12 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

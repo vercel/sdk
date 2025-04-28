@@ -48,3 +48,18 @@ const value: models.Link3 = {
 };
 ```
 
+### `models.Link4`
+
+```typescript
+const value: models.Link4 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://coordinated-bourgeoisie.info/",
+    },
+  ],
+};
+```
+

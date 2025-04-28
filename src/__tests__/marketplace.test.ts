@@ -385,7 +385,10 @@ test("Marketplace Head /V1 /Installations/{integration Configuration Id}/resourc
     });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    items: {},
+    items: {
+      "key": {},
+      "key1": true,
+    },
     updatedAt: 6086.93,
     digest: "<value>",
   });
@@ -409,7 +412,9 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
     });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    items: {},
+    items: {
+      "key": true,
+    },
     updatedAt: 6820.68,
     digest: "<value>",
   });

@@ -5,7 +5,7 @@ Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remo
 ## Example Usage
 
 ```typescript
-import { Rfi } from "@vercel/sdk/models/getfirewallconfigop.js";
+import { Rfi } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Rfi = {
   active: false,
@@ -15,7 +15,7 @@ let value: Rfi = {
 
 ## Fields
 
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `active`                                                                                                     | *boolean*                                                                                                    | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
-| `action`                                                                                                     | [models.GetFirewallConfigSecurityResponse200Action](../models/getfirewallconfigsecurityresponse200action.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `active`                                                                                                                   | *boolean*                                                                                                                  | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `action`                                                                                                                   | [models.PutFirewallConfigSecurityRequestRequestBodyAction](../models/putfirewallconfigsecurityrequestrequestbodyaction.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

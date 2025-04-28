@@ -10,7 +10,9 @@ let value: PayloadBuildMachine = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cores`            | *number*           | :heavy_minus_sign: | N/A                |
-| `memory`           | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `purchaseType`                                                 | [models.PayloadPurchaseType](../models/payloadpurchasetype.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| `abovePlan`                                                    | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `cores`                                                        | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `memory`                                                       | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

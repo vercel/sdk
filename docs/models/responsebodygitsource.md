@@ -26,8 +26,9 @@ const value: models.GetDeploymentGitSource2 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource3 = {
-  type: "gitlab",
-  projectId: "<id>",
+  type: "github-custom-host",
+  host: "direct-backbone.biz",
+  repoId: 1649.73,
 };
 ```
 
@@ -35,8 +36,10 @@ const value: models.GetDeploymentGitSource3 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource4 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-custom-host",
+  host: "natural-unblinking.net",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -44,9 +47,8 @@ const value: models.GetDeploymentGitSource4 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource5 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: "<id>",
 };
 ```
 
@@ -54,10 +56,8 @@ const value: models.GetDeploymentGitSource5 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource6 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://tired-baseboard.biz/",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -65,10 +65,9 @@ const value: models.GetDeploymentGitSource6 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource7 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 1210.01,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -76,10 +75,10 @@ const value: models.GetDeploymentGitSource7 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource8 = {
-  type: "gitlab",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  projectId: 1758.71,
+  gitUrl: "https://golden-essence.net/",
 };
 ```
 
@@ -87,6 +86,40 @@ const value: models.GetDeploymentGitSource8 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource9 = {
+  type: "github",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 2872,
+};
+```
+
+### `models.GetDeploymentGitSource10`
+
+```typescript
+const value: models.GetDeploymentGitSource10 = {
+  type: "github",
+  host: "trustworthy-detective.net",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 4912.83,
+};
+```
+
+### `models.GetDeploymentGitSource11`
+
+```typescript
+const value: models.GetDeploymentGitSource11 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 9975.05,
+};
+```
+
+### `models.GetDeploymentGitSource12`
+
+```typescript
+const value: models.GetDeploymentGitSource12 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

@@ -7,11 +7,11 @@ import { CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 
 let value:
   CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type =
-    "github";
+    "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github"
+"bitbucket"
 ```

@@ -10,6 +10,6 @@ let value: UpdateFirewallConfigRequestBodySecurityRequest2Action = {};
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `mitigate`                               | [models.Mitigate](../models/mitigate.md) | :heavy_minus_sign:                       | N/A                                      |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mitigate`                                                     | [models.RequestBodyMitigate](../models/requestbodymitigate.md) | :heavy_minus_sign:                                             | N/A                                                            |

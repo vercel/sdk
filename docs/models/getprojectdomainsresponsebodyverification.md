@@ -1,15 +1,15 @@
-# GetProjectDomainsVerification
+# GetProjectDomainsResponseBodyVerification
 
 A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 
 ## Example Usage
 
 ```typescript
-import { GetProjectDomainsVerification } from "@vercel/sdk/models/getprojectdomainsop.js";
+import { GetProjectDomainsResponseBodyVerification } from "@vercel/sdk/models/getprojectdomainsop.js";
 
-let value: GetProjectDomainsVerification = {
+let value: GetProjectDomainsResponseBodyVerification = {
   type: "<value>",
-  domain: "compassionate-postbox.biz",
+  domain: "cheap-lay.com",
   value: "<value>",
   reason: "<value>",
 };

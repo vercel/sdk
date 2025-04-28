@@ -4,6 +4,7 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
@@ -284,43 +285,43 @@ func (o *GetProjectDomainsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetProjectDomainsVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-type GetProjectDomainsVerification struct {
+// ResponseBodyVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type ResponseBodyVerification struct {
 	Type   string `json:"type"`
 	Domain string `json:"domain"`
 	Value  string `json:"value"`
 	Reason string `json:"reason"`
 }
 
-func (o *GetProjectDomainsVerification) GetType() string {
+func (o *ResponseBodyVerification) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *GetProjectDomainsVerification) GetDomain() string {
+func (o *ResponseBodyVerification) GetDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.Domain
 }
 
-func (o *GetProjectDomainsVerification) GetValue() string {
+func (o *ResponseBodyVerification) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *GetProjectDomainsVerification) GetReason() string {
+func (o *ResponseBodyVerification) GetReason() string {
 	if o == nil {
 		return ""
 	}
 	return o.Reason
 }
 
-type GetProjectDomainsDomains struct {
+type GetProjectDomainsResponseBodyDomains struct {
 	Name                string   `json:"name"`
 	ApexName            string   `json:"apexName"`
 	ProjectID           string   `json:"projectId"`
@@ -333,111 +334,349 @@ type GetProjectDomainsDomains struct {
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-	Verification []GetProjectDomainsVerification `json:"verification,omitempty"`
+	Verification []ResponseBodyVerification `json:"verification,omitempty"`
 }
 
-func (o *GetProjectDomainsDomains) GetName() string {
+func (o *GetProjectDomainsResponseBodyDomains) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetProjectDomainsDomains) GetApexName() string {
+func (o *GetProjectDomainsResponseBodyDomains) GetApexName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ApexName
 }
 
-func (o *GetProjectDomainsDomains) GetProjectID() string {
+func (o *GetProjectDomainsResponseBodyDomains) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *GetProjectDomainsDomains) GetRedirect() *string {
+func (o *GetProjectDomainsResponseBodyDomains) GetRedirect() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetProjectDomainsDomains) GetRedirectStatusCode() *float64 {
+func (o *GetProjectDomainsResponseBodyDomains) GetRedirectStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *GetProjectDomainsDomains) GetGitBranch() *string {
+func (o *GetProjectDomainsResponseBodyDomains) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *GetProjectDomainsDomains) GetCustomEnvironmentID() *string {
+func (o *GetProjectDomainsResponseBodyDomains) GetCustomEnvironmentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentID
 }
 
-func (o *GetProjectDomainsDomains) GetUpdatedAt() *float64 {
+func (o *GetProjectDomainsResponseBodyDomains) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetProjectDomainsDomains) GetCreatedAt() *float64 {
+func (o *GetProjectDomainsResponseBodyDomains) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetProjectDomainsDomains) GetVerified() bool {
+func (o *GetProjectDomainsResponseBodyDomains) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *GetProjectDomainsDomains) GetVerification() []GetProjectDomainsVerification {
+func (o *GetProjectDomainsResponseBodyDomains) GetVerification() []ResponseBodyVerification {
 	if o == nil {
 		return nil
 	}
 	return o.Verification
 }
 
-// GetProjectDomainsResponseBody - Successful response retrieving a list of domains
-type GetProjectDomainsResponseBody struct {
-	Domains []GetProjectDomainsDomains `json:"domains"`
+type GetProjectDomainsResponseBody2 struct {
+	Domains []GetProjectDomainsResponseBodyDomains `json:"domains"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *GetProjectDomainsResponseBody) GetDomains() []GetProjectDomainsDomains {
+func (o *GetProjectDomainsResponseBody2) GetDomains() []GetProjectDomainsResponseBodyDomains {
 	if o == nil {
-		return []GetProjectDomainsDomains{}
+		return []GetProjectDomainsResponseBodyDomains{}
 	}
 	return o.Domains
 }
 
-func (o *GetProjectDomainsResponseBody) GetPagination() components.Pagination {
+func (o *GetProjectDomainsResponseBody2) GetPagination() components.Pagination {
 	if o == nil {
 		return components.Pagination{}
 	}
 	return o.Pagination
 }
 
+// GetProjectDomainsResponseBodyVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type GetProjectDomainsResponseBodyVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *GetProjectDomainsResponseBodyVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *GetProjectDomainsResponseBodyVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *GetProjectDomainsResponseBodyVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *GetProjectDomainsResponseBodyVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+type ResponseBodyDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []GetProjectDomainsResponseBodyVerification `json:"verification,omitempty"`
+}
+
+func (o *ResponseBodyDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ResponseBodyDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *ResponseBodyDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *ResponseBodyDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *ResponseBodyDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *ResponseBodyDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *ResponseBodyDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *ResponseBodyDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *ResponseBodyDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *ResponseBodyDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *ResponseBodyDomains) GetVerification() []GetProjectDomainsResponseBodyVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+type GetProjectDomainsResponseBodyPagination struct {
+	Count float64  `json:"count"`
+	Next  *float64 `json:"next"`
+	Prev  *float64 `json:"prev"`
+}
+
+func (o *GetProjectDomainsResponseBodyPagination) GetCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Count
+}
+
+func (o *GetProjectDomainsResponseBodyPagination) GetNext() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetProjectDomainsResponseBodyPagination) GetPrev() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+type GetProjectDomainsResponseBody1 struct {
+	Domains    []ResponseBodyDomains                   `json:"domains"`
+	Pagination GetProjectDomainsResponseBodyPagination `json:"pagination"`
+}
+
+func (o *GetProjectDomainsResponseBody1) GetDomains() []ResponseBodyDomains {
+	if o == nil {
+		return []ResponseBodyDomains{}
+	}
+	return o.Domains
+}
+
+func (o *GetProjectDomainsResponseBody1) GetPagination() GetProjectDomainsResponseBodyPagination {
+	if o == nil {
+		return GetProjectDomainsResponseBodyPagination{}
+	}
+	return o.Pagination
+}
+
+type GetProjectDomainsResponseBodyType string
+
+const (
+	GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody1 GetProjectDomainsResponseBodyType = "getProjectDomains_responseBody_1"
+	GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody2 GetProjectDomainsResponseBodyType = "getProjectDomains_responseBody_2"
+)
+
+// GetProjectDomainsResponseBody - Successful response retrieving a list of domains
+type GetProjectDomainsResponseBody struct {
+	GetProjectDomainsResponseBody1 *GetProjectDomainsResponseBody1
+	GetProjectDomainsResponseBody2 *GetProjectDomainsResponseBody2
+
+	Type GetProjectDomainsResponseBodyType
+}
+
+func CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody1(getProjectDomainsResponseBody1 GetProjectDomainsResponseBody1) GetProjectDomainsResponseBody {
+	typ := GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody1
+
+	return GetProjectDomainsResponseBody{
+		GetProjectDomainsResponseBody1: &getProjectDomainsResponseBody1,
+		Type:                           typ,
+	}
+}
+
+func CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody2(getProjectDomainsResponseBody2 GetProjectDomainsResponseBody2) GetProjectDomainsResponseBody {
+	typ := GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody2
+
+	return GetProjectDomainsResponseBody{
+		GetProjectDomainsResponseBody2: &getProjectDomainsResponseBody2,
+		Type:                           typ,
+	}
+}
+
+func (u *GetProjectDomainsResponseBody) UnmarshalJSON(data []byte) error {
+
+	var getProjectDomainsResponseBody1 GetProjectDomainsResponseBody1 = GetProjectDomainsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody1, "", true, true); err == nil {
+		u.GetProjectDomainsResponseBody1 = &getProjectDomainsResponseBody1
+		u.Type = GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody1
+		return nil
+	}
+
+	var getProjectDomainsResponseBody2 GetProjectDomainsResponseBody2 = GetProjectDomainsResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody2, "", true, true); err == nil {
+		u.GetProjectDomainsResponseBody2 = &getProjectDomainsResponseBody2
+		u.Type = GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectDomainsResponseBody", string(data))
+}
+
+func (u GetProjectDomainsResponseBody) MarshalJSON() ([]byte, error) {
+	if u.GetProjectDomainsResponseBody1 != nil {
+		return utils.MarshalJSON(u.GetProjectDomainsResponseBody1, "", true)
+	}
+
+	if u.GetProjectDomainsResponseBody2 != nil {
+		return utils.MarshalJSON(u.GetProjectDomainsResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectDomainsResponseBody: all fields are null")
+}
+
 type GetProjectDomainsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful response retrieving a list of domains
-	Object *GetProjectDomainsResponseBody
+	OneOf *GetProjectDomainsResponseBody
 }
 
 func (o *GetProjectDomainsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -447,9 +686,9 @@ func (o *GetProjectDomainsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetProjectDomainsResponse) GetObject() *GetProjectDomainsResponseBody {
+func (o *GetProjectDomainsResponse) GetOneOf() *GetProjectDomainsResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

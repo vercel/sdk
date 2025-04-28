@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 1752e9f3098574d58566a893faa9b9b5
+  docChecksum: 611842627f9318f138a72477746ca29a
   docVersion: 0.0.1
-  speakeasyVersion: 1.533.0
-  generationVersion: 2.578.0
-  releaseVersion: 1.6.3
-  configChecksum: 5901ad04db5ef4a7f7bb0ab0f99c4d9f
+  speakeasyVersion: 1.540.0
+  generationVersion: 2.593.3
+  releaseVersion: 1.6.4
+  configChecksum: 0abe6b08be0cc59977f12719edbfe996
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -28,14 +28,14 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.9.1
+    mcpServer: 0.9.2
     mockServer: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.16.0
+    tests: 0.16.1
     unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
@@ -59,6 +59,7 @@ generatedFiles:
   - docs/models/aclaction.md
   - docs/models/action.md
   - docs/models/action1.md
+  - docs/models/active.md
   - docs/models/activedashboardviews.md
   - docs/models/addbypassiprequest.md
   - docs/models/addbypassiprequestbody.md
@@ -139,6 +140,7 @@ generatedFiles:
   - docs/models/build.md
   - docs/models/buildentitlements.md
   - docs/models/buildmachine.md
+  - docs/models/buildmachinetype.md
   - docs/models/builds.md
   - docs/models/buydomaindomain.md
   - docs/models/buydomaindomainsdomain.md
@@ -188,6 +190,10 @@ generatedFiles:
   - docs/models/canceldeploymentgitsource3.md
   - docs/models/canceldeploymentgitsource4.md
   - docs/models/canceldeploymentgitsource5.md
+  - docs/models/canceldeploymentgitsourcedeploymentsrepoid.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody12type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody7type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody8type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody9type.md
@@ -326,6 +332,9 @@ generatedFiles:
   - docs/models/createdeploymentgitrepotype.md
   - docs/models/createdeploymentgitsource.md
   - docs/models/createdeploymentgitsource1.md
+  - docs/models/createdeploymentgitsource10.md
+  - docs/models/createdeploymentgitsource11.md
+  - docs/models/createdeploymentgitsource12.md
   - docs/models/createdeploymentgitsource2.md
   - docs/models/createdeploymentgitsource3.md
   - docs/models/createdeploymentgitsource4.md
@@ -336,6 +345,9 @@ generatedFiles:
   - docs/models/createdeploymentgitsource9.md
   - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsrequesttype.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody12type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody5type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody6type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody7type.md
@@ -346,6 +358,7 @@ generatedFiles:
   - docs/models/createdeploymentgitsourcedeploymentsresponse200type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponsetype.md
   - docs/models/createdeploymentgitsourcedeploymentstype.md
+  - docs/models/createdeploymentgitsourcerepoid.md
   - docs/models/createdeploymentgitsourcetype.md
   - docs/models/createdeploymenthastype.md
   - docs/models/createdeploymentmicrofrontends.md
@@ -408,6 +421,7 @@ generatedFiles:
   - docs/models/createprojectaliaserror.md
   - docs/models/createprojectanalytics.md
   - docs/models/createprojectbranchmatcher.md
+  - docs/models/createprojectbuildmachinetype.md
   - docs/models/createprojectbuilds.md
   - docs/models/createprojectchecksconclusion.md
   - docs/models/createprojectchecksstate.md
@@ -556,8 +570,11 @@ generatedFiles:
   - docs/models/createprojectlink1.md
   - docs/models/createprojectlink2.md
   - docs/models/createprojectlink3.md
+  - docs/models/createprojectlink4.md
   - docs/models/createprojectlinkdeployhooks.md
   - docs/models/createprojectlinkprojectsdeployhooks.md
+  - docs/models/createprojectlinkprojectsresponse200deployhooks.md
+  - docs/models/createprojectlinkprojectsresponse200type.md
   - docs/models/createprojectlinkprojectsresponsedeployhooks.md
   - docs/models/createprojectlinkprojectsresponsetype.md
   - docs/models/createprojectlinkprojectstype.md
@@ -580,6 +597,7 @@ generatedFiles:
   - docs/models/createprojectprojectsaliasassigned.md
   - docs/models/createprojectprojectsaliaserror.md
   - docs/models/createprojectprojectsbranchmatcher.md
+  - docs/models/createprojectprojectsbuildmachinetype.md
   - docs/models/createprojectprojectsbuilds.md
   - docs/models/createprojectprojectschecksconclusion.md
   - docs/models/createprojectprojectschecksstate.md
@@ -1074,6 +1092,9 @@ generatedFiles:
   - docs/models/getdeploymentgitrepoownertype.md
   - docs/models/getdeploymentgitrepotype.md
   - docs/models/getdeploymentgitsource1.md
+  - docs/models/getdeploymentgitsource10.md
+  - docs/models/getdeploymentgitsource11.md
+  - docs/models/getdeploymentgitsource12.md
   - docs/models/getdeploymentgitsource2.md
   - docs/models/getdeploymentgitsource3.md
   - docs/models/getdeploymentgitsource4.md
@@ -1083,6 +1104,9 @@ generatedFiles:
   - docs/models/getdeploymentgitsource8.md
   - docs/models/getdeploymentgitsource9.md
   - docs/models/getdeploymentgitsourcedeployments1.md
+  - docs/models/getdeploymentgitsourcedeployments10.md
+  - docs/models/getdeploymentgitsourcedeployments11.md
+  - docs/models/getdeploymentgitsourcedeployments12.md
   - docs/models/getdeploymentgitsourcedeployments2.md
   - docs/models/getdeploymentgitsourcedeployments3.md
   - docs/models/getdeploymentgitsourcedeployments4.md
@@ -1093,9 +1117,15 @@ generatedFiles:
   - docs/models/getdeploymentgitsourcedeployments9.md
   - docs/models/getdeploymentgitsourcedeploymentsprojectid.md
   - docs/models/getdeploymentgitsourcedeploymentsrepoid.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody110type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody111type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody112type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody19type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody1type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody210type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody211type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody212type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody22type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody23type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody24type.md
@@ -1107,7 +1137,9 @@ generatedFiles:
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody2type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebodytype.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsontype.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200repoid.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponserepoid.md
   - docs/models/getdeploymentgitsourcedeploymentsresponsetype.md
   - docs/models/getdeploymentgitsourcedeploymentstype.md
   - docs/models/getdeploymentgitsourceprojectid.md
@@ -1221,13 +1253,24 @@ generatedFiles:
   - docs/models/getfirewallconfigalgo.md
   - docs/models/getfirewallconfigconditiongroup.md
   - docs/models/getfirewallconfigconditions.md
+  - docs/models/getfirewallconfigcrs.md
+  - docs/models/getfirewallconfiggen.md
+  - docs/models/getfirewallconfigips.md
+  - docs/models/getfirewallconfigjava.md
+  - docs/models/getfirewallconfiglfi.md
+  - docs/models/getfirewallconfigma.md
+  - docs/models/getfirewallconfigmanagedrules.md
   - docs/models/getfirewallconfigmitigate.md
   - docs/models/getfirewallconfigop.md
+  - docs/models/getfirewallconfigphp.md
   - docs/models/getfirewallconfigratelimit.md
+  - docs/models/getfirewallconfigrce.md
   - docs/models/getfirewallconfigredirect.md
   - docs/models/getfirewallconfigrequest.md
   - docs/models/getfirewallconfigresponsebody.md
+  - docs/models/getfirewallconfigrfi.md
   - docs/models/getfirewallconfigrules.md
+  - docs/models/getfirewallconfigsd.md
   - docs/models/getfirewallconfigsecurityaction.md
   - docs/models/getfirewallconfigsecurityresponse200action.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonaction.md
@@ -1243,8 +1286,11 @@ generatedFiles:
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesactionaction.md
   - docs/models/getfirewallconfigsecurityresponseaction.md
+  - docs/models/getfirewallconfigsf.md
+  - docs/models/getfirewallconfigsqli.md
   - docs/models/getfirewallconfigtype.md
   - docs/models/getfirewallconfigvalue.md
+  - docs/models/getfirewallconfigxss.md
   - docs/models/getintegrationlogdrainsdeliveryformat.md
   - docs/models/getintegrationlogdrainsenvironments.md
   - docs/models/getintegrationlogdrainsrequest.md
@@ -1260,10 +1306,13 @@ generatedFiles:
   - docs/models/getmemberrole.md
   - docs/models/getprojectdomainrequest.md
   - docs/models/getprojectdomainresponsebody.md
-  - docs/models/getprojectdomainsdomains.md
   - docs/models/getprojectdomainsrequest.md
   - docs/models/getprojectdomainsresponsebody.md
-  - docs/models/getprojectdomainsverification.md
+  - docs/models/getprojectdomainsresponsebody1.md
+  - docs/models/getprojectdomainsresponsebody2.md
+  - docs/models/getprojectdomainsresponsebodydomains.md
+  - docs/models/getprojectdomainsresponsebodypagination.md
+  - docs/models/getprojectdomainsresponsebodyverification.md
   - docs/models/getprojectenvcontenthint1.md
   - docs/models/getprojectenvcontenthint10.md
   - docs/models/getprojectenvcontenthint11.md
@@ -1391,6 +1440,7 @@ generatedFiles:
   - docs/models/getprojectsaliaserror.md
   - docs/models/getprojectsanalytics.md
   - docs/models/getprojectsbranchmatcher.md
+  - docs/models/getprojectsbuildmachinetype.md
   - docs/models/getprojectsbuilds.md
   - docs/models/getprojectschecksconclusion.md
   - docs/models/getprojectschecksstate.md
@@ -1454,8 +1504,11 @@ generatedFiles:
   - docs/models/getprojectslink1.md
   - docs/models/getprojectslink2.md
   - docs/models/getprojectslink3.md
+  - docs/models/getprojectslink4.md
   - docs/models/getprojectslinkdeployhooks.md
   - docs/models/getprojectslinkprojectsdeployhooks.md
+  - docs/models/getprojectslinkprojectsresponse200deployhooks.md
+  - docs/models/getprojectslinkprojectsresponse200type.md
   - docs/models/getprojectslinkprojectsresponsedeployhooks.md
   - docs/models/getprojectslinkprojectsresponsetype.md
   - docs/models/getprojectslinkprojectstype.md
@@ -1479,6 +1532,7 @@ generatedFiles:
   - docs/models/getprojectsprojectsaliasassigned.md
   - docs/models/getprojectsprojectsaliaserror.md
   - docs/models/getprojectsprojectsbranchmatcher.md
+  - docs/models/getprojectsprojectsbuildmachinetype.md
   - docs/models/getprojectsprojectsbuilds.md
   - docs/models/getprojectsprojectschecksconclusion.md
   - docs/models/getprojectsprojectschecksstate.md
@@ -1588,6 +1642,9 @@ generatedFiles:
   - docs/models/gitrepotype.md
   - docs/models/gitsource.md
   - docs/models/gitsource1.md
+  - docs/models/gitsource10.md
+  - docs/models/gitsource11.md
+  - docs/models/gitsource12.md
   - docs/models/gitsource2.md
   - docs/models/gitsource3.md
   - docs/models/gitsource4.md
@@ -1669,6 +1726,7 @@ generatedFiles:
   - docs/models/link1.md
   - docs/models/link2.md
   - docs/models/link3.md
+  - docs/models/link4.md
   - docs/models/linkdeployhooks.md
   - docs/models/linktype.md
   - docs/models/listaccessgroupmemberspagination.md
@@ -1723,6 +1781,8 @@ generatedFiles:
   - docs/models/logdrainsvolume.md
   - docs/models/ma.md
   - docs/models/managedrules.md
+  - docs/models/managedrules1.md
+  - docs/models/managedrulesaction.md
   - docs/models/members.md
   - docs/models/membership.md
   - docs/models/metadata.md
@@ -1918,6 +1978,7 @@ generatedFiles:
   - docs/models/payloadpricingplan.md
   - docs/models/payloadproject.md
   - docs/models/payloadprojectmembership.md
+  - docs/models/payloadpurchasetype.md
   - docs/models/payloadreason.md
   - docs/models/payloadreasons.md
   - docs/models/payloadrecentsviewpreference.md
@@ -1977,10 +2038,72 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/purchasetype.md
   - docs/models/purpose.md
   - docs/models/purpose1.md
   - docs/models/purpose2.md
   - docs/models/purposetype.md
+  - docs/models/putfirewallconfigaction.md
+  - docs/models/putfirewallconfigalgo.md
+  - docs/models/putfirewallconfigchanges.md
+  - docs/models/putfirewallconfigconditiongroup.md
+  - docs/models/putfirewallconfigconditions.md
+  - docs/models/putfirewallconfigcrs.md
+  - docs/models/putfirewallconfiggen.md
+  - docs/models/putfirewallconfigips.md
+  - docs/models/putfirewallconfigjava.md
+  - docs/models/putfirewallconfiglfi.md
+  - docs/models/putfirewallconfigma.md
+  - docs/models/putfirewallconfigmanagedrules.md
+  - docs/models/putfirewallconfigmanagedrulesaction.md
+  - docs/models/putfirewallconfigmitigate.md
+  - docs/models/putfirewallconfigop.md
+  - docs/models/putfirewallconfigphp.md
+  - docs/models/putfirewallconfigratelimit.md
+  - docs/models/putfirewallconfigrce.md
+  - docs/models/putfirewallconfigredirect.md
+  - docs/models/putfirewallconfigrequest.md
+  - docs/models/putfirewallconfigrequestbody.md
+  - docs/models/putfirewallconfigresponsebody.md
+  - docs/models/putfirewallconfigrfi.md
+  - docs/models/putfirewallconfigrules.md
+  - docs/models/putfirewallconfigsd.md
+  - docs/models/putfirewallconfigsecurityaction.md
+  - docs/models/putfirewallconfigsecurityrequestaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodyaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsgenaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsjavaaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsphpaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrssfaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrssqliaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodycrsxssaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodyipsaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodyrulesaction.md
+  - docs/models/putfirewallconfigsecurityrequestrequestbodyrulesactionaction.md
+  - docs/models/putfirewallconfigsecurityresponse200action.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiveaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsgenaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsjavaaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrslfiaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsmaaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssdaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssfaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssqliaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsxssaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesactionaction.md
+  - docs/models/putfirewallconfigsecurityresponseaction.md
+  - docs/models/putfirewallconfigsecurityrules.md
+  - docs/models/putfirewallconfigsecuritytype.md
+  - docs/models/putfirewallconfigsf.md
+  - docs/models/putfirewallconfigsqli.md
+  - docs/models/putfirewallconfigtype.md
+  - docs/models/putfirewallconfigvalue.md
+  - docs/models/putfirewallconfigxss.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequestbody.md
   - docs/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
@@ -2215,6 +2338,7 @@ generatedFiles:
   - docs/models/responsebodycrons.md
   - docs/models/responsebodycustomenvironment.md
   - docs/models/responsebodydisabledreason.md
+  - docs/models/responsebodydomains.md
   - docs/models/responsebodyenvs.md
   - docs/models/responsebodyerror.md
   - docs/models/responsebodyevents.md
@@ -2260,6 +2384,7 @@ generatedFiles:
   - docs/models/responsebodyteamroles.md
   - docs/models/responsebodytype.md
   - docs/models/responsebodyuser.md
+  - docs/models/responsebodyverification.md
   - docs/models/responsebodywebanalytics.md
   - docs/models/result.md
   - docs/models/revoke.md
@@ -2277,6 +2402,7 @@ generatedFiles:
   - docs/models/routeshas.md
   - docs/models/routeslocale.md
   - docs/models/routesmissing.md
+  - docs/models/rulegroups.md
   - docs/models/rules.md
   - docs/models/saml.md
   - docs/models/scalingrules.md
@@ -2475,10 +2601,14 @@ generatedFiles:
   - docs/models/updateedgeconfigschema.md
   - docs/models/updateedgeconfigtransfer.md
   - docs/models/updatefirewallconfigaction1.md
+  - docs/models/updatefirewallconfigactionsecurity1.md
   - docs/models/updatefirewallconfigratelimit1.md
   - docs/models/updatefirewallconfigratelimitaction.md
   - docs/models/updatefirewallconfigratelimitalgo.md
+  - docs/models/updatefirewallconfigratelimitsecurity1.md
+  - docs/models/updatefirewallconfigratelimitsecurityaction.md
   - docs/models/updatefirewallconfigredirect1.md
+  - docs/models/updatefirewallconfigredirectsecurity1.md
   - docs/models/updatefirewallconfigrequest.md
   - docs/models/updatefirewallconfigrequestbody.md
   - docs/models/updatefirewallconfigrequestbody1.md
@@ -2492,6 +2622,12 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequestbody8.md
   - docs/models/updatefirewallconfigrequestbody9.md
   - docs/models/updatefirewallconfigrequestbodyaction.md
+  - docs/models/updatefirewallconfigrequestbodyconditiongroup.md
+  - docs/models/updatefirewallconfigrequestbodyconditions.md
+  - docs/models/updatefirewallconfigrequestbodymitigate.md
+  - docs/models/updatefirewallconfigrequestbodyop.md
+  - docs/models/updatefirewallconfigrequestbodyratelimit.md
+  - docs/models/updatefirewallconfigrequestbodyredirect.md
   - docs/models/updatefirewallconfigrequestbodysecurityaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest10action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest11action.md
@@ -2512,6 +2648,7 @@ generatedFiles:
   - docs/models/updatefirewallconfigrequestbodysecurityrequest8action.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest8valueaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest9action.md
+  - docs/models/updatefirewallconfigrequestbodysecurityrequest9value.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequest9valueaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequestaction.md
   - docs/models/updatefirewallconfigrequestbodysecurityrequestvalue.md
@@ -2532,6 +2669,7 @@ generatedFiles:
   - docs/models/updateprojectaliaserror.md
   - docs/models/updateprojectanalytics.md
   - docs/models/updateprojectbranchmatcher.md
+  - docs/models/updateprojectbuildmachinetype.md
   - docs/models/updateprojectbuilds.md
   - docs/models/updateprojectchecksconclusion.md
   - docs/models/updateprojectchecksstate.md
@@ -2572,9 +2710,11 @@ generatedFiles:
   - docs/models/updateprojectcustomenvironments.md
   - docs/models/updateprojectdatacache.md
   - docs/models/updateprojectdatacacheaction.md
+  - docs/models/updateprojectdatacachealgo.md
   - docs/models/updateprojectdatacachealiasassigned.md
   - docs/models/updateprojectdatacachealiaserror.md
   - docs/models/updateprojectdatacachebranchmatcher.md
+  - docs/models/updateprojectdatacachebuildmachinetype.md
   - docs/models/updateprojectdatacachebuilds.md
   - docs/models/updateprojectdatacachechecksconclusion.md
   - docs/models/updateprojectdatacachechecksstate.md
@@ -2599,6 +2739,8 @@ generatedFiles:
   - docs/models/updateprojectdatacachefunctiondefaultmemorytype.md
   - docs/models/updateprojectdatacacheissuermode.md
   - docs/models/updateprojectdatacachelinkdeployhooks.md
+  - docs/models/updateprojectdatacachelinkprojectsdeployhooks.md
+  - docs/models/updateprojectdatacachelinkprojectsresponsetype.md
   - docs/models/updateprojectdatacachelinkprojectstype.md
   - docs/models/updateprojectdatacachelinktype.md
   - docs/models/updateprojectdatacachemanagedrules.md
@@ -2682,8 +2824,11 @@ generatedFiles:
   - docs/models/updateprojectlink1.md
   - docs/models/updateprojectlink2.md
   - docs/models/updateprojectlink3.md
+  - docs/models/updateprojectlink4.md
   - docs/models/updateprojectlinkdeployhooks.md
   - docs/models/updateprojectlinkprojectsdeployhooks.md
+  - docs/models/updateprojectlinkprojectsresponse200deployhooks.md
+  - docs/models/updateprojectlinkprojectsresponse200type.md
   - docs/models/updateprojectlinkprojectsresponsedeployhooks.md
   - docs/models/updateprojectlinkprojectsresponsetype.md
   - docs/models/updateprojectlinkprojectstype.md
@@ -2706,6 +2851,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsaliasassigned.md
   - docs/models/updateprojectprojectsaliaserror.md
   - docs/models/updateprojectprojectsbranchmatcher.md
+  - docs/models/updateprojectprojectsbuildmachinetype.md
   - docs/models/updateprojectprojectsbuilds.md
   - docs/models/updateprojectprojectschecksconclusion.md
   - docs/models/updateprojectprojectschecksstate.md
@@ -3097,6 +3243,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidsecrets.go
+  - src/__tests__/mockserver/internal/handler/pathputv1securityfirewallconfig.go
   - src/__tests__/mockserver/internal/handler/pathputv7certs.go
   - src/__tests__/mockserver/internal/handler/values/files.go
   - src/__tests__/mockserver/internal/logging/doc.go
@@ -3237,6 +3384,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/readaccessgroupproject.go
@@ -3446,6 +3594,7 @@ generatedFiles:
   - src/funcs/securityGetActiveAttackStatus.ts
   - src/funcs/securityGetBypassIp.ts
   - src/funcs/securityGetFirewallConfig.ts
+  - src/funcs/securityPutFirewallConfig.ts
   - src/funcs/securityRemoveBypassIp.ts
   - src/funcs/securityUpdateAttackChallengeMode.ts
   - src/funcs/securityUpdateFirewallConfig.ts
@@ -3636,6 +3785,7 @@ generatedFiles:
   - src/mcp-server/tools/securityGetActiveAttackStatus.ts
   - src/mcp-server/tools/securityGetBypassIp.ts
   - src/mcp-server/tools/securityGetFirewallConfig.ts
+  - src/mcp-server/tools/securityPutFirewallConfig.ts
   - src/mcp-server/tools/securityRemoveBypassIp.ts
   - src/mcp-server/tools/securityUpdateAttackChallengeMode.ts
   - src/mcp-server/tools/securityUpdateFirewallConfig.ts
@@ -3785,6 +3935,7 @@ generatedFiles:
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/pauseprojectop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
+  - src/models/putfirewallconfigop.ts
   - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
   - src/models/ratelimitnotice.ts
   - src/models/readaccessgroupop.ts
@@ -4615,7 +4766,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"type": "plain", "key": "<key>", "value": "<value>"}
+          application/json: {"type": "plain", "value": "<value>", "key": "<key>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4632,7 +4783,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"type": "sensitive", "key": "<key>", "value": "<value>"}, {"type": "plain", "key": "<key>", "value": "<value>"}, {"type": "encrypted", "key": "<key>", "value": "<value>"}]
+          application/json: [{"type": "sensitive", "value": "<value>", "key": "<key>"}, {"type": "plain", "value": "<value>", "key": "<key>"}, {"type": "encrypted", "value": "<value>", "key": "<key>"}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4652,7 +4803,7 @@ examples:
         application/json: {"key": "GITHUB_APP_ID", "target": ["preview"], "gitBranch": "feature-1", "type": "plain", "value": "bkWIjbnxcvo78", "customEnvironmentIds": ["env_1234567890"], "comment": "database connection string for production"}
       responses:
         "200":
-          application/json: {"type": "encrypted", "key": "<key>", "value": "<value>"}
+          application/json: {"type": "encrypted", "value": "<value>", "key": "<key>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4853,7 +5004,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 1805.56}]
+          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "children": [], "contentType": "application/json", "mode": 1805.56}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6624,6 +6775,24 @@ examples:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  putFirewallConfig:
+    speakeasy-default-put-firewall-config:
+      parameters:
+        query:
+          projectId: "<id>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      requestBody:
+        application/json: {"firewallEnabled": true}
+      responses:
+        "200":
+          application/json: {"active": {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": 892.22, "updatedAt": "1745792555559", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "log"}, "ma": {"active": false, "action": "log"}, "lfi": {"active": false, "action": "deny"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": true, "action": "deny"}, "php": {"active": false, "action": "deny"}, "gen": {"active": false, "action": "deny"}, "xss": {"active": true, "action": "log"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "log"}, "java": {"active": false, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "geo_city", "op": "pre"}]}], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "sub"}, {"type": "ja3_digest", "op": "suf"}, {"type": "protocol", "op": "sub"}]}, {"conditions": [{"type": "geo_as_number", "op": "re"}, {"type": "geo_continent", "op": "nex"}, {"type": "region", "op": "gt"}]}, {"conditions": [{"type": "method", "op": "gte"}, {"type": "header", "op": "inc"}, {"type": "query", "op": "eq"}]}], "action": {}}], "ips": [], "changes": [{}, {}, {}]}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:

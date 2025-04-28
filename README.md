@@ -470,6 +470,7 @@ run();
 ### [security](docs/sdks/security/README.md)
 
 * [updateAttackChallengeMode](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
+* [putFirewallConfig](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 * [updateFirewallConfig](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration
 * [getFirewallConfig](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
 * [getActiveAttackStatus](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
@@ -661,6 +662,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 - [`securityGetFirewallConfig`](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
+- [`securityPutFirewallConfig`](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 - [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 - [`securityUpdateFirewallConfig`](docs/sdks/security/README.md#updatefirewallconfig) - Update Firewall Configuration

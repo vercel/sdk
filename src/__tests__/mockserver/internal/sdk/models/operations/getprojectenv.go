@@ -1228,9 +1228,10 @@ type GetProjectEnvResponseBody3 struct {
 	Type   GetProjectEnvResponseBodyProjectsResponseType    `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                               `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                                                 `json:"decrypted,omitempty"`
+	Value             string                                                `json:"value"`
 	ID                *string                                               `json:"id,omitempty"`
 	Key               string                                                `json:"key"`
-	Value             string                                                `json:"value"`
 	ConfigurationID   *string                                               `json:"configurationId,omitempty"`
 	CreatedAt         *float64                                              `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                                              `json:"updatedAt,omitempty"`
@@ -1241,11 +1242,9 @@ type GetProjectEnvResponseBody3 struct {
 	EdgeConfigTokenID *string                                               `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *GetProjectEnvResponseBodyProjectsResponseContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *GetProjectEnvResponseBodyProjectsResponseInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  *GetProjectEnvResponseBodyProjectsResponseInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                                                       `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                                      `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *GetProjectEnvResponseBody3) GetTarget() *GetProjectEnvResponseBodyProjectsResponseTarget {
@@ -1269,6 +1268,20 @@ func (o *GetProjectEnvResponseBody3) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *GetProjectEnvResponseBody3) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *GetProjectEnvResponseBody3) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
 func (o *GetProjectEnvResponseBody3) GetID() *string {
 	if o == nil {
 		return nil
@@ -1281,13 +1294,6 @@ func (o *GetProjectEnvResponseBody3) GetKey() string {
 		return ""
 	}
 	return o.Key
-}
-
-func (o *GetProjectEnvResponseBody3) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
 }
 
 func (o *GetProjectEnvResponseBody3) GetConfigurationID() *string {
@@ -1358,13 +1364,6 @@ func (o *GetProjectEnvResponseBody3) GetInternalContentHint() *GetProjectEnvResp
 		return nil
 	}
 	return o.InternalContentHint
-}
-
-func (o *GetProjectEnvResponseBody3) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
 }
 
 func (o *GetProjectEnvResponseBody3) GetComment() *string {
@@ -2589,9 +2588,11 @@ type GetProjectEnvResponseBody2 struct {
 	Type   GetProjectEnvResponseBodyProjectsType    `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                       `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                                         `json:"decrypted,omitempty"`
+	Value             string                                        `json:"value"`
+	VsmValue          *string                                       `json:"vsmValue,omitempty"`
 	ID                *string                                       `json:"id,omitempty"`
 	Key               string                                        `json:"key"`
-	Value             string                                        `json:"value"`
 	ConfigurationID   *string                                       `json:"configurationId,omitempty"`
 	CreatedAt         *float64                                      `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                                      `json:"updatedAt,omitempty"`
@@ -2602,12 +2603,9 @@ type GetProjectEnvResponseBody2 struct {
 	EdgeConfigTokenID *string                                       `json:"edgeConfigTokenId,omitempty"`
 	ContentHint       *GetProjectEnvResponseBodyProjectsContentHint `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint *GetProjectEnvResponseBodyProjectsInternalContentHint `json:"internalContentHint,omitempty"`
-	// Whether `value` and `vsmValue` are decrypted.
-	Decrypted            *bool    `json:"decrypted,omitempty"`
-	Comment              *string  `json:"comment,omitempty"`
-	CustomEnvironmentIds []string `json:"customEnvironmentIds,omitempty"`
-	VsmValue             *string  `json:"vsmValue,omitempty"`
+	InternalContentHint  *GetProjectEnvResponseBodyProjectsInternalContentHint `json:"internalContentHint,omitempty"`
+	Comment              *string                                               `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                              `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *GetProjectEnvResponseBody2) GetTarget() *GetProjectEnvResponseBodyProjectsTarget {
@@ -2631,6 +2629,27 @@ func (o *GetProjectEnvResponseBody2) GetSunsetSecretID() *string {
 	return o.SunsetSecretID
 }
 
+func (o *GetProjectEnvResponseBody2) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *GetProjectEnvResponseBody2) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *GetProjectEnvResponseBody2) GetVsmValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VsmValue
+}
+
 func (o *GetProjectEnvResponseBody2) GetID() *string {
 	if o == nil {
 		return nil
@@ -2643,13 +2662,6 @@ func (o *GetProjectEnvResponseBody2) GetKey() string {
 		return ""
 	}
 	return o.Key
-}
-
-func (o *GetProjectEnvResponseBody2) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
 }
 
 func (o *GetProjectEnvResponseBody2) GetConfigurationID() *string {
@@ -2722,13 +2734,6 @@ func (o *GetProjectEnvResponseBody2) GetInternalContentHint() *GetProjectEnvResp
 	return o.InternalContentHint
 }
 
-func (o *GetProjectEnvResponseBody2) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
-}
-
 func (o *GetProjectEnvResponseBody2) GetComment() *string {
 	if o == nil {
 		return nil
@@ -2741,13 +2746,6 @@ func (o *GetProjectEnvResponseBody2) GetCustomEnvironmentIds() []string {
 		return nil
 	}
 	return o.CustomEnvironmentIds
-}
-
-func (o *GetProjectEnvResponseBody2) GetVsmValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.VsmValue
 }
 
 type GetProjectEnvTarget2 string

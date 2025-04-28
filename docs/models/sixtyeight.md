@@ -11,6 +11,7 @@ let value: SixtyEight = {
   viaGithub: false,
   viaGitlab: false,
   viaBitbucket: false,
+  viaGoogle: false,
   viaSamlSso: false,
   viaPasskey: false,
 };
@@ -25,6 +26,7 @@ let value: SixtyEight = {
 | `viaGithub`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaGitlab`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaBitbucket`                                 | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `viaGoogle`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaSamlSso`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaPasskey`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

@@ -369,6 +369,17 @@ test("Security Add Bypass Ip", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     ok: false,
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "memorable-advancement.com",
+        projectId: "<id>",
+        note: "<value>",
+        isProjectRule: false,
+      },
+    ],
+    pagination: "<value>",
   });
 });
 

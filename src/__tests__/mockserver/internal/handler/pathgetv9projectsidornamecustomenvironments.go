@@ -46,6 +46,9 @@ func testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvir
 		return
 	}
 	respBody := &operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody{
+		AccountLimit: operations.AccountLimit{
+			Total: 7151.9,
+		},
 		Environments: []operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

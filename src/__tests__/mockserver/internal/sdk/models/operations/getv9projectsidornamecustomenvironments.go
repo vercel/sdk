@@ -45,12 +45,32 @@ func (o *GetV9ProjectsIDOrNameCustomEnvironmentsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments - Internal representation of a custom environment with all required properties
+// AccountLimit - The maximum number of custom environments allowed either by the team's plan type or a custom override.
+type AccountLimit struct {
+	Total float64 `json:"total"`
+}
+
+func (o *AccountLimit) GetTotal() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Total
+}
+
 type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments struct {
 }
 
 type GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody struct {
+	// The maximum number of custom environments allowed either by the team's plan type or a custom override.
+	AccountLimit AccountLimit                                          `json:"accountLimit"`
 	Environments []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments `json:"environments"`
+}
+
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetAccountLimit() AccountLimit {
+	if o == nil {
+		return AccountLimit{}
+	}
+	return o.AccountLimit
 }
 
 func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetEnvironments() []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments {

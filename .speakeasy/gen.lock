@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 611842627f9318f138a72477746ca29a
+  docChecksum: bb68817203ff109c9d5754a35f5b7600
   docVersion: 0.0.1
-  speakeasyVersion: 1.540.0
-  generationVersion: 2.593.3
-  releaseVersion: 1.6.4
-  configChecksum: 0abe6b08be0cc59977f12719edbfe996
+  speakeasyVersion: 1.540.1
+  generationVersion: 2.593.4
+  releaseVersion: 1.6.5
+  configChecksum: dc7a176b3bbab131a00f158a40e811a1
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -56,6 +56,7 @@ generatedFiles:
   - docs/models/access.md
   - docs/models/accessgroup.md
   - docs/models/accessgroups.md
+  - docs/models/accountlimit.md
   - docs/models/aclaction.md
   - docs/models/action.md
   - docs/models/action1.md
@@ -5004,7 +5005,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "children": [], "contentType": "application/json", "mode": 1805.56}]
+          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 1805.56}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6152,7 +6153,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"environments": []}
+          application/json: {"accountLimit": {"total": 966.92}, "environments": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

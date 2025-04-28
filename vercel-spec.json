@@ -25232,7 +25232,8 @@
             }
           }
         ],
-        "x-speakeasy-name-override": "createInstallationIntegrationEdgeConfig"
+        "x-speakeasy-name-override": "createInstallationIntegrationEdgeConfig",
+        "x-speakeasy-test": false
       },
       "put": {
         "description": "When the user enabled Edge Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Edge Config.",
@@ -41822,15 +41823,27 @@
               "application/json": {
                 "schema": {
                   "properties": {
+                    "accountLimit": {
+                      "properties": {
+                        "total": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "total"
+                      ],
+                      "type": "object",
+                      "description": "The maximum number of custom environments allowed either by the team's plan type or a custom override."
+                    },
                     "environments": {
                       "items": {
-                        "type": "object",
-                        "description": "Internal representation of a custom environment with all required properties"
+                        "type": "object"
                       },
                       "type": "array"
                     }
                   },
                   "required": [
+                    "accountLimit",
                     "environments"
                   ],
                   "type": "object"
@@ -44902,7 +44915,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       },
       "post": {
         "description": "Create one or more environment variables for a project by passing its `key`, `value`, `type` and `target` and by specifying the project by either passing the project `id` or `name` in the URL. If you include `upsert=true` as a query parameter, a new environment variable will not be created if it already exists but, the existing variable's value will be updated.",
@@ -53245,7 +53259,8 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "x-speakeasy-test": false
       }
     },
     "/v1/security/firewall/bypass": {

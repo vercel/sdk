@@ -28,12 +28,6 @@ typescript:
   additionalPackageJSON: {}
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
-  compileCommand:
-    - pnpm
-    - install
-    - --no-frozen-lockfile
-    - --filter
-    - '@vercel/sdk'
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true

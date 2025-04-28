@@ -27,11 +27,19 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsRequest = {
 };
 
 /**
- * Internal representation of a custom environment with all required properties
+ * The maximum number of custom environments allowed either by the team's plan type or a custom override.
  */
+export type AccountLimit = {
+  total: number;
+};
+
 export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {};
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {
+  /**
+   * The maximum number of custom environments allowed either by the team's plan type or a custom override.
+   */
+  accountLimit: AccountLimit;
   environments: Array<GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments>;
 };
 
@@ -113,6 +121,56 @@ export function getV9ProjectsIdOrNameCustomEnvironmentsRequestFromJSON(
 }
 
 /** @internal */
+export const AccountLimit$inboundSchema: z.ZodType<
+  AccountLimit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  total: z.number(),
+});
+
+/** @internal */
+export type AccountLimit$Outbound = {
+  total: number;
+};
+
+/** @internal */
+export const AccountLimit$outboundSchema: z.ZodType<
+  AccountLimit$Outbound,
+  z.ZodTypeDef,
+  AccountLimit
+> = z.object({
+  total: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AccountLimit$ {
+  /** @deprecated use `AccountLimit$inboundSchema` instead. */
+  export const inboundSchema = AccountLimit$inboundSchema;
+  /** @deprecated use `AccountLimit$outboundSchema` instead. */
+  export const outboundSchema = AccountLimit$outboundSchema;
+  /** @deprecated use `AccountLimit$Outbound` instead. */
+  export type Outbound = AccountLimit$Outbound;
+}
+
+export function accountLimitToJSON(accountLimit: AccountLimit): string {
+  return JSON.stringify(AccountLimit$outboundSchema.parse(accountLimit));
+}
+
+export function accountLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountLimit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountLimit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountLimit' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
   z.ZodType<
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments,
@@ -181,6 +239,7 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    accountLimit: z.lazy(() => AccountLimit$inboundSchema),
     environments: z.array(
       z.lazy(() =>
         GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$inboundSchema
@@ -190,6 +249,7 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody$inboundSchema:
 
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody$Outbound = {
+  accountLimit: AccountLimit$Outbound;
   environments: Array<
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound
   >;
@@ -202,6 +262,7 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody
   > = z.object({
+    accountLimit: z.lazy(() => AccountLimit$outboundSchema),
     environments: z.array(
       z.lazy(() =>
         GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$outboundSchema

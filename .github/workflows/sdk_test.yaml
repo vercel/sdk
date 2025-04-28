@@ -13,9 +13,7 @@ permissions:
       - '**'
   workflow_dispatch:
     inputs:
-      target:
-        description: Provided SDK target to run tests for, (all) is valid
-        type: string
+      target: all
 jobs:
   test:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-test.yaml@v15

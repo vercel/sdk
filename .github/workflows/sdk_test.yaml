@@ -9,6 +9,7 @@ permissions:
   pull_request:
     branches:
       - main
+      - enable-tests-gh
     paths:
       - '**'
   workflow_dispatch:
@@ -20,7 +21,7 @@ jobs:
   test:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-test.yaml@v15
     with:
-      target: all
+      target: ${{ github.event.inputs.target || 'vercel' }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

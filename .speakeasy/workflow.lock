@@ -13,8 +13,6 @@ targets:
         sourceNamespace: vercel-oas
         sourceRevisionDigest: sha256:af1cb105c4354954cbc99e5ccf0d188b47749a0685a73bd4a8577cc8382d4f0b
         sourceBlobDigest: sha256:5b68be5629e642e8915d91f80a7f2c8d2610675ba1acc2822798be3464f5c7cc
-        codeSamplesNamespace: vercel-oas-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:cad6884b210ed60a9616d8cc80cd3adeacb72193ce04a1b2a27ca6ee79537127
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

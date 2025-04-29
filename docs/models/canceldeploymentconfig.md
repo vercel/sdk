@@ -8,8 +8,8 @@ Since February 2025 the configuration must include snapshot data at the time of 
 import { CancelDeploymentConfig } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentConfig = {
-  functionType: "fluid",
-  functionMemoryType: "standard_legacy",
+  functionType: "standard",
+  functionMemoryType: "standard",
   functionTimeout: 1378.13,
   secureComputePrimaryRegion: "<value>",
   secureComputeFallbackRegion: "<value>",

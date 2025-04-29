@@ -6,56 +6,6 @@ import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Teams Get Team Members", async () => {
-  const testHttpClient = createTestHTTPClient("getTeamMembers");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.teams.getTeamMembers({
-    limit: 20,
-    since: 1540095775951,
-    until: 1540095775951,
-    role: "OWNER",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    members: [
-      {
-        avatar: "123a6c5209bc3778245d011443644c8d27dc2c50",
-        confirmed: true,
-        email: "jane.doe@example.com",
-        role: "OWNER",
-        uid: "zTuNVUXEAvvnNN3IaqinkyMw",
-        username: "jane-doe",
-        name: "Jane Doe",
-        createdAt: 1588720733602,
-        accessRequestedAt: 1588820733602,
-      },
-      {
-        avatar: "123a6c5209bc3778245d011443644c8d27dc2c50",
-        confirmed: true,
-        email: "jane.doe@example.com",
-        role: "OWNER",
-        uid: "zTuNVUXEAvvnNN3IaqinkyMw",
-        username: "jane-doe",
-        name: "Jane Doe",
-        createdAt: 1588720733602,
-        accessRequestedAt: 1588820733602,
-      },
-    ],
-    pagination: {
-      hasNext: true,
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
-});
-
 test("Teams Request Access To Team", async () => {
   const testHttpClient = createTestHTTPClient("requestAccessToTeam");
 

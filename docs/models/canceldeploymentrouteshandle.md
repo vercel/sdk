@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentRoutesHandle } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentRoutesHandle = "filesystem";
+let value: CancelDeploymentRoutesHandle = "hit";
 ```
 
 ## Values
 
 ```typescript
-"error" | "resource" | "filesystem" | "hit" | "miss" | "rewrite"
+"error" | "filesystem" | "hit" | "miss" | "rewrite" | "resource"
 ```

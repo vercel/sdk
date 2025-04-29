@@ -14,7 +14,7 @@ let value: CancelDeploymentGitRepo1 = {
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "user",
+  ownerType: "team",
 };
 ```
 

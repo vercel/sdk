@@ -15,7 +15,7 @@ const value: models.CancelDeploymentRoutes1 = {
 
 ```typescript
 const value: models.CancelDeploymentRoutes2 = {
-  handle: "rewrite",
+  handle: "resource",
 };
 ```
 

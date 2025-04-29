@@ -6,36 +6,6 @@ import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Dns Create Record", async () => {
-  const testHttpClient = createTestHTTPClient("createRecord");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.dns.createRecord({
-    domain: "example.com",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      type: "CNAME",
-      ttl: 60,
-      https: {
-        priority: 10,
-        target: "host.example.com",
-        params: "alpn=h2,h3",
-      },
-      comment: "used to verify ownership of domain",
-    },
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    uid: "rec_V0fra8eEgQwEpFhYG2vTzC3K",
-  });
-});
-
 test("Dns Update Record", async () => {
   const testHttpClient = createTestHTTPClient("updateRecord");
 

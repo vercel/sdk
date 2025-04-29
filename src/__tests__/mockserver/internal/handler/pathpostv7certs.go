@@ -53,7 +53,7 @@ func testIssueCertIssueCert0(w http.ResponseWriter, req *http.Request) {
 	respBody := &operations.IssueCertResponseBody{
 		ID:        "<id>",
 		CreatedAt: 1842.08,
-		ExpiresAt: 8685.41,
+		ExpiresAt: 8685.42,
 		AutoRenew: true,
 		Cns:       []string{},
 	}

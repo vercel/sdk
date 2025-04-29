@@ -54,9 +54,9 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 	respBody := &operations.UpdateProjectDataCacheResponseBody{
 		AccountID: "<id>",
 		Crons: &operations.Crons{
-			EnabledAt:    7135.80,
+			EnabledAt:    7135.8,
 			DisabledAt:   types.Float64(2989.85),
-			UpdatedAt:    6226.22,
+			UpdatedAt:    6226.23,
 			DeploymentID: types.String("<id>"),
 			Definitions: []operations.Definitions{
 				operations.Definitions{
@@ -81,7 +81,7 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 		LatestDeployments: []operations.LatestDeployments{
 			operations.LatestDeployments{
 				ID:        "<id>",
-				CreatedAt: 5719.60,
+				CreatedAt: 5719.6,
 				CreatedIn: "<value>",
 				Creator: &operations.UpdateProjectDataCacheProjectsCreator{
 					Email:    "Braeden15@gmail.com",
@@ -100,7 +100,7 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 			},
 			operations.LatestDeployments{
 				ID:        "<id>",
-				CreatedAt: 7644.50,
+				CreatedAt: 7644.5,
 				CreatedIn: "<value>",
 				Creator: &operations.UpdateProjectDataCacheProjectsCreator{
 					Email:    "Erich.Mann@hotmail.com",
@@ -140,13 +140,30 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 		Name:        "<value>",
 		NodeVersion: operations.UpdateProjectDataCacheNodeVersionTenDotX,
 		ResourceConfig: operations.ResourceConfig{
-			FunctionDefaultRegions: []string{
-				"<value>",
-			},
+			FunctionDefaultRegions: []string{},
 		},
 		DefaultResourceConfig: operations.DefaultResourceConfig{
-			FunctionDefaultRegions: []string{
-				"<value>",
+			FunctionDefaultRegions: []string{},
+		},
+		Targets: map[string]*operations.Targets{
+			"key": &operations.Targets{
+				ID:        "<id>",
+				CreatedAt: 1048.68,
+				CreatedIn: "<value>",
+				Creator: &operations.UpdateProjectDataCacheCreator{
+					Email:    "Lillie17@gmail.com",
+					UID:      "<id>",
+					Username: "Herminia_Schowalter50",
+				},
+				DeploymentHostname:     "<value>",
+				Name:                   "<value>",
+				Plan:                   operations.UpdateProjectDataCachePlanEnterprise,
+				PreviewCommentsEnabled: types.Bool(false),
+				Private:                false,
+				ReadyState:             operations.UpdateProjectDataCacheReadyStateBuilding,
+				Type:                   operations.UpdateProjectDataCacheProjectsTypeLambdas,
+				URL:                    "https://quintessential-bidet.com/",
+				UserID:                 "<id>",
 			},
 		},
 	}

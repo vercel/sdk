@@ -58,6 +58,13 @@ func testCreateAccessGroupCreateAccessGroup0(w http.ResponseWriter, req *http.Re
 		TeamID:        "team_123a6c5209bc3778245d011443644c8d27dc2c50",
 		UpdatedAt:     "1588720733602",
 		AccessGroupID: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
+		TeamRoles: []string{
+			"DEVELOPER",
+			"BILLING",
+		},
+		TeamPermissions: []string{
+			"CreateProject",
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

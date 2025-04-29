@@ -55,8 +55,8 @@ func testCreateAccessGroupProjectCreateAccessGroupProject0(w http.ResponseWriter
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.CreateAccessGroupProjectAccessGroupsRoleProjectViewer,
-		CreatedAt:     "<value>",
-		UpdatedAt:     "<value>",
+		CreatedAt:     "1726948284257",
+		UpdatedAt:     "1744388503945",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

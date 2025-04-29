@@ -64,7 +64,7 @@ func testCancelDeploymentCancelDeployment0(w http.ResponseWriter, req *http.Requ
 		ProjectSettings:           operations.CancelDeploymentProjectSettings{},
 		AliasAssigned:             false,
 		BootedAt:                  8528.74,
-		BuildingAt:                7590.78,
+		BuildingAt:                7590.79,
 		BuildSkipped:              false,
 		Creator: operations.CancelDeploymentCreator{
 			UID: "<id>",
@@ -99,8 +99,8 @@ func testCancelDeploymentCancelDeployment0(w http.ResponseWriter, req *http.Requ
 			operations.CreateCancelDeploymentRoutesCancelDeploymentRoutes1(
 				operations.CancelDeploymentRoutes1{
 					Src:        "<value>",
-					Continue:   types.Bool(false),
-					Middleware: types.Float64(6618.12),
+					Continue:   types.Bool(true),
+					Middleware: types.Float64(4831.29),
 				},
 			),
 		},

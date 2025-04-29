@@ -59,7 +59,7 @@ func testBuyDomainBuyDomain0(w http.ResponseWriter, req *http.Request) {
 				"<value>",
 			},
 			Verified: false,
-			Created:  9374.80,
+			Created:  9374.8,
 			Pending:  false,
 		},
 	}

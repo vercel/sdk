@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: bb68817203ff109c9d5754a35f5b7600
+  docChecksum: 1391f897a26f61b45749db5e65a2d5d0
   docVersion: 0.0.1
   speakeasyVersion: 1.540.1
   generationVersion: 2.593.4
@@ -1801,6 +1801,10 @@ generatedFiles:
   - docs/models/monitoring.md
   - docs/models/monitoringmetric.md
   - docs/models/mostspecificsubdivision.md
+  - docs/models/moveprojectdomainrequest.md
+  - docs/models/moveprojectdomainrequestbody.md
+  - docs/models/moveprojectdomainresponsebody.md
+  - docs/models/moveprojectdomainverification.md
   - docs/models/name.md
   - docs/models/name2.md
   - docs/models/names.md
@@ -1907,6 +1911,7 @@ generatedFiles:
   - docs/models/outcomes.md
   - docs/models/outcomes1.md
   - docs/models/output.md
+  - docs/models/overagemetadata.md
   - docs/models/overagereason.md
   - docs/models/overageusagealerts.md
   - docs/models/ownertype.md
@@ -3070,7 +3075,6 @@ generatedFiles:
   - package.json
   - src/__tests__/accessgroups.test.ts
   - src/__tests__/aliases.test.ts
-  - src/__tests__/apiexperimentation.test.ts
   - src/__tests__/artifacts.test.ts
   - src/__tests__/assertions.ts
   - src/__tests__/authentication.test.ts
@@ -3125,7 +3129,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv10projects.go
-  - src/__tests__/mockserver/internal/handler/pathgetv10projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroupsaccessgroupidornameprojectsprojectid.go
@@ -3149,7 +3152,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
-  - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallattackstatus.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallbypass.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallconfigconfigversion.go
   - src/__tests__/mockserver/internal/handler/pathgetv1teamsteamidrequestuserid.go
@@ -3180,7 +3182,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
-  - src/__tests__/mockserver/internal/handler/pathheadv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
@@ -3217,6 +3218,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidevents.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamedomainsdomainmove.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidpause.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidunpause.go
@@ -3227,7 +3229,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1teamsteamidrequest.go
   - src/__tests__/mockserver/internal/handler/pathpostv1webhooks.go
   - src/__tests__/mockserver/internal/handler/pathpostv2deploymentsidaliases.go
-  - src/__tests__/mockserver/internal/handler/pathpostv2domainsdomainrecords.go
   - src/__tests__/mockserver/internal/handler/pathpostv2files.go
   - src/__tests__/mockserver/internal/handler/pathpostv2integrationslogdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv3usertokens.go
@@ -3379,6 +3380,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/listdeploymentfiles.go
   - src/__tests__/mockserver/internal/sdk/models/operations/listpromotealiases.go
   - src/__tests__/mockserver/internal/sdk/models/operations/listuserevents.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/moveprojectdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
@@ -3581,6 +3583,7 @@ generatedFiles:
   - src/funcs/projectsGetProjectEnv.ts
   - src/funcs/projectsGetProjects.ts
   - src/funcs/projectsListPromoteAliases.ts
+  - src/funcs/projectsMoveProjectDomain.ts
   - src/funcs/projectsPauseProject.ts
   - src/funcs/projectsRemoveProjectDomain.ts
   - src/funcs/projectsRemoveProjectEnv.ts
@@ -3772,6 +3775,7 @@ generatedFiles:
   - src/mcp-server/tools/projectsGetProjectEnv.ts
   - src/mcp-server/tools/projectsGetProjects.ts
   - src/mcp-server/tools/projectsListPromoteAliases.ts
+  - src/mcp-server/tools/projectsMoveProjectDomain.ts
   - src/mcp-server/tools/projectsPauseProject.ts
   - src/mcp-server/tools/projectsRemoveProjectDomain.ts
   - src/mcp-server/tools/projectsRemoveProjectEnv.ts
@@ -3929,6 +3933,7 @@ generatedFiles:
   - src/models/listdeploymentfilesop.ts
   - src/models/listpromotealiasesop.ts
   - src/models/listusereventsop.ts
+  - src/models/moveprojectdomainop.ts
   - src/models/pagination.ts
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
@@ -6795,165 +6800,166 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  moveProjectDomain:
+    speakeasy-default-move-project-domain:
+      parameters:
+        path:
+          idOrName: "<value>"
+          domain: "www.example.com"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": false}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
-  readAccessGroup: "2025-01-16T21:59:36Z"
-  updateAccessGroup: "2025-01-16T21:59:36Z"
-  deleteAccessGroup: "2025-01-16T21:59:36Z"
-  listAccessGroupMembers: "2025-01-16T21:59:36Z"
-  listAccessGroups: "2025-01-16T21:59:36Z"
-  createAccessGroup: "2025-01-16T21:59:36Z"
-  listAccessGroupProjects: "2025-01-16T21:59:36Z"
-  createAccessGroupProject: "2025-01-16T21:59:36Z"
-  readAccessGroupProject: "2025-01-16T21:59:36Z"
-  updateAccessGroupProject: "2025-01-16T21:59:36Z"
-  deleteAccessGroupProject: "2025-01-16T21:59:36Z"
-  recordEvents: "2025-01-16T21:59:36Z"
-  status: "2025-01-16T21:59:36Z"
-  downloadArtifact: "2025-01-16T21:59:36Z"
-  artifactExists: "2025-01-16T21:59:36Z"
-  artifactQuery: "2025-01-16T21:59:36Z"
-  createCheck: "2025-01-16T21:59:36Z"
-  getAllChecks: "2025-01-16T21:59:36Z"
-  getCheck: "2025-01-16T21:59:36Z"
-  updateCheck: "2025-01-16T21:59:36Z"
-  rerequestCheck: "2025-01-16T21:59:36Z"
-  updateProjectDataCache: "2025-01-16T21:59:36Z"
-  getProjects: "2025-01-16T21:59:36Z"
-  createProject: "2025-01-16T21:59:36Z"
-  updateProject: "2025-01-16T21:59:36Z"
-  deleteProject: "2025-01-16T21:59:36Z"
-  getProjectDomains: "2025-01-16T21:59:36Z"
-  getProjectDomain: "2025-01-16T21:59:36Z"
-  updateProjectDomain: "2025-01-16T21:59:36Z"
-  removeProjectDomain: "2025-01-16T21:59:36Z"
-  addProjectDomain: "2025-01-16T21:59:36Z"
-  verifyProjectDomain: "2025-01-16T21:59:36Z"
-  getProjectEnv: "2025-01-16T21:59:36Z"
-  createProjectEnv: "2025-01-16T21:59:36Z"
-  removeProjectEnv: "2025-01-16T21:59:36Z"
-  updateProjectProtectionBypass: "2025-01-16T21:59:36Z"
-  requestPromote: "2025-01-16T21:59:36Z"
-  listPromoteAliases: "2025-01-16T21:59:36Z"
-  getDeploymentEvents: "2025-01-16T21:59:36Z"
-  getDeployment: "2025-01-16T21:59:36Z"
-  createDeployment: "2025-01-16T21:59:36Z"
-  cancelDeployment: "2025-01-16T21:59:36Z"
-  uploadFile: "2025-01-16T21:59:36Z"
-  listDeploymentFiles: "2025-01-16T21:59:36Z"
-  getDeploymentFileContents: "2025-01-16T21:59:36Z"
-  getDeployments: "2025-01-16T21:59:36Z"
-  deleteDeployment: "2025-01-16T21:59:36Z"
-  buyDomain: "2025-01-16T21:59:36Z"
-  checkDomainPrice: "2025-01-16T21:59:36Z"
-  checkDomainStatus: "2025-01-16T21:59:36Z"
-  getDomainTransfer: "2025-01-16T21:59:36Z"
-  getDomainConfig: "2025-01-16T21:59:36Z"
-  getDomain: "2025-01-16T21:59:36Z"
-  getDomains: "2025-01-16T21:59:36Z"
-  createOrTransferDomain: "2025-01-16T21:59:36Z"
-  deleteDomain: "2025-01-16T21:59:36Z"
-  createRecord: "2025-01-16T21:59:36Z"
-  updateRecord: "2025-01-16T21:59:36Z"
-  removeRecord: "2025-01-16T21:59:36Z"
-  getEdgeConfigs: "2025-01-16T21:59:36Z"
-  createEdgeConfig: "2025-01-16T21:59:36Z"
-  getEdgeConfig: "2025-01-16T21:59:36Z"
-  updateEdgeConfig: "2025-01-16T21:59:36Z"
-  deleteEdgeConfig: "2025-01-16T21:59:36Z"
-  getEdgeConfigItems: "2025-01-16T21:59:36Z"
-  getEdgeConfigSchema: "2025-01-16T21:59:36Z"
-  patchEdgeConfigSchema: "2025-01-16T21:59:36Z"
-  deleteEdgeConfigSchema: "2025-01-16T21:59:36Z"
-  getEdgeConfigItem: "2025-01-16T21:59:36Z"
-  getEdgeConfigTokens: "2025-01-16T21:59:36Z"
-  deleteEdgeConfigTokens: "2025-01-16T21:59:36Z"
-  getEdgeConfigToken: "2025-01-16T21:59:36Z"
-  createEdgeConfigToken: "2025-01-16T21:59:36Z"
-  getEdgeConfigBackups: "2025-01-16T21:59:36Z"
-  listUserEvents: "2025-01-16T21:59:36Z"
-  requestDelete: "2025-01-16T21:59:36Z"
-  get-account-info: "2025-01-16T21:59:36Z"
-  get-member: "2025-01-16T21:59:36Z"
-  create-event: "2025-01-16T21:59:36Z"
-  submit-billing-data: "2025-01-16T21:59:36Z"
-  submit-invoice: "2025-01-16T21:59:36Z"
-  get-invoice: "2025-01-16T21:59:36Z"
-  update-invoice: "2025-01-16T21:59:36Z"
-  update-resource-secrets: "2025-01-16T21:59:36Z"
-  update-resource-secrets-by-id: "2025-01-16T21:59:36Z"
-  exchange-sso-token: "2025-01-16T21:59:36Z"
-  getConfiguration: "2025-01-16T21:59:36Z"
-  deleteConfiguration: "2025-01-16T21:59:36Z"
-  gitNamespaces: "2025-01-16T21:59:36Z"
-  searchRepo: "2025-01-16T21:59:36Z"
-  listAuthTokens: "2025-01-16T21:59:36Z"
-  createAuthToken: "2025-01-16T21:59:36Z"
-  getAuthToken: "2025-01-16T21:59:36Z"
-  deleteAuthToken: "2025-01-16T21:59:36Z"
-  getIntegrationLogDrains: "2025-01-16T21:59:36Z"
-  createLogDrain: "2025-01-16T21:59:36Z"
-  deleteIntegrationLogDrain: "2025-01-16T21:59:36Z"
-  getConfigurableLogDrain: "2025-01-16T21:59:36Z"
-  deleteConfigurableLogDrain: "2025-01-16T21:59:36Z"
-  getAllLogDrains: "2025-01-16T21:59:36Z"
-  createConfigurableLogDrain: "2025-01-16T21:59:36Z"
-  addProjectMember: "2025-01-16T21:59:36Z"
-  removeProjectMember: "2025-01-16T21:59:36Z"
-  post_/v1/projects/{idOrName}/custom-environments: "2025-01-16T21:59:36Z"
-  get_/v9/projects/{idOrName}/custom-environments: "2025-01-16T21:59:36Z"
-  get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
-  patch_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
-  delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}: "2025-01-16T21:59:36Z"
-  updateAttackChallengeMode: "2025-01-16T21:59:36Z"
-  putFirewallConfig: "2025-01-16T21:59:36Z"
-  updateFirewallConfig: "2025-01-16T21:59:36Z"
-  getFirewallConfig: "2025-01-16T21:59:36Z"
-  getBypassIp: "2025-01-16T21:59:36Z"
-  addBypassIp: "2025-01-16T21:59:36Z"
-  removeBypassIp: "2025-01-16T21:59:36Z"
-  getTeamMembers: "2025-01-16T21:59:36Z"
-  requestAccessToTeam: "2025-01-16T21:59:36Z"
-  getTeamAccessRequest: "2025-01-16T21:59:36Z"
-  joinTeam: "2025-01-16T21:59:36Z"
-  updateTeamMember: "2025-01-16T21:59:36Z"
-  removeTeamMember: "2025-01-16T21:59:36Z"
-  getTeam: "2025-01-16T21:59:36Z"
-  patchTeam: "2025-01-16T21:59:36Z"
-  getTeams: "2025-01-16T21:59:36Z"
-  createTeam: "2025-01-16T21:59:36Z"
-  deleteTeam: "2025-01-16T21:59:36Z"
-  deleteTeamInviteCode: "2025-01-16T21:59:36Z"
-  createWebhook: "2025-01-16T21:59:36Z"
-  getWebhooks: "2025-01-16T21:59:36Z"
-  getWebhook: "2025-01-16T21:59:36Z"
-  deleteWebhook: "2025-01-16T21:59:36Z"
-  listAliases: "2025-01-16T21:59:36Z"
-  getAlias: "2025-01-16T21:59:36Z"
-  deleteAlias: "2025-01-16T21:59:36Z"
-  listDeploymentAliases: "2025-01-16T21:59:36Z"
-  assignAlias: "2025-01-16T21:59:36Z"
-  getCertById: "2025-01-16T21:59:36Z"
-  removeCert: "2025-01-16T21:59:36Z"
-  issueCert: "2025-01-16T21:59:36Z"
-  uploadCert: "2025-01-16T21:59:36Z"
-  createProjectTransferRequest: "2025-01-20T19:41:12Z"
-  acceptProjectTransferRequest: "2025-01-20T19:41:12Z"
-  getActiveAttackStatus: "2025-01-20T19:41:12Z"
-  filterProjectEnvs: "2025-03-07T23:50:38Z"
-  update-integration-deployment-action: "2025-03-07T23:50:38Z"
-  submit-prepayment-balances: "2025-03-07T23:50:38Z"
-  import-resource: "2025-03-07T23:50:38Z"
-  post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items: "2025-03-07T23:50:38Z"
-  patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-03-07T23:50:38Z"
-  delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-03-07T23:50:38Z"
-  head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config: "2025-03-07T23:50:38Z"
-  put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config: "2025-03-07T23:50:38Z"
-  get_/v1/experimentation/items: "2025-03-07T23:50:38Z"
-  createCustomEnvironment: "2025-03-07T23:50:38Z"
-  getCustomEnvironment: "2025-03-07T23:50:38Z"
-  updateCustomEnvironment: "2025-03-07T23:50:38Z"
-  removeCustomEnvironment: "2025-03-07T23:50:38Z"
-  queryExperimentationItems: "2025-04-03T17:17:07Z"
-  pauseProject: "2025-04-14T20:46:04Z"
-  unpauseProject: "2025-04-14T20:46:04Z"
+  readAccessGroup: "2025-04-29T14:51:46-05:00"
+  updateAccessGroup: "2025-04-29T14:51:46-05:00"
+  deleteAccessGroup: "2025-04-29T14:51:46-05:00"
+  listAccessGroupMembers: "2025-04-29T14:51:46-05:00"
+  listAccessGroups: "2025-04-29T14:51:46-05:00"
+  createAccessGroup: "2025-04-29T14:51:46-05:00"
+  listAccessGroupProjects: "2025-04-29T14:51:46-05:00"
+  createAccessGroupProject: "2025-04-29T14:51:46-05:00"
+  readAccessGroupProject: "2025-04-29T14:51:46-05:00"
+  updateAccessGroupProject: "2025-04-29T14:51:46-05:00"
+  deleteAccessGroupProject: "2025-04-29T14:51:46-05:00"
+  recordEvents: "2025-04-29T14:51:46-05:00"
+  status: "2025-04-29T14:51:46-05:00"
+  downloadArtifact: "2025-04-29T14:51:46-05:00"
+  artifactExists: "2025-04-29T14:51:46-05:00"
+  artifactQuery: "2025-04-29T14:51:46-05:00"
+  createCheck: "2025-04-29T14:51:46-05:00"
+  getAllChecks: "2025-04-29T14:51:46-05:00"
+  getCheck: "2025-04-29T14:51:46-05:00"
+  updateCheck: "2025-04-29T14:51:46-05:00"
+  rerequestCheck: "2025-04-29T14:51:46-05:00"
+  updateProjectDataCache: "2025-04-29T14:51:46-05:00"
+  getProjects: "2025-04-29T14:51:46-05:00"
+  createProject: "2025-04-29T14:51:46-05:00"
+  updateProject: "2025-04-29T14:51:46-05:00"
+  deleteProject: "2025-04-29T14:51:46-05:00"
+  getProjectDomains: "2025-04-29T14:51:46-05:00"
+  getProjectDomain: "2025-04-29T14:51:46-05:00"
+  updateProjectDomain: "2025-04-29T14:51:46-05:00"
+  removeProjectDomain: "2025-04-29T14:51:46-05:00"
+  addProjectDomain: "2025-04-29T14:51:46-05:00"
+  moveProjectDomain: "2025-04-29T14:51:46-05:00"
+  verifyProjectDomain: "2025-04-29T14:51:46-05:00"
+  createProjectEnv: "2025-04-29T14:51:46-05:00"
+  getProjectEnv: "2025-04-29T14:51:46-05:00"
+  removeProjectEnv: "2025-04-29T14:51:46-05:00"
+  createProjectTransferRequest: "2025-04-29T14:51:46-05:00"
+  acceptProjectTransferRequest: "2025-04-29T14:51:46-05:00"
+  updateProjectProtectionBypass: "2025-04-29T14:51:46-05:00"
+  requestPromote: "2025-04-29T14:51:46-05:00"
+  listPromoteAliases: "2025-04-29T14:51:46-05:00"
+  pauseProject: "2025-04-29T14:51:46-05:00"
+  unpauseProject: "2025-04-29T14:51:46-05:00"
+  getDeploymentEvents: "2025-04-29T14:51:46-05:00"
+  update-integration-deployment-action: "2025-04-29T14:51:46-05:00"
+  getDeployment: "2025-04-29T14:51:46-05:00"
+  createDeployment: "2025-04-29T14:51:46-05:00"
+  cancelDeployment: "2025-04-29T14:51:46-05:00"
+  uploadFile: "2025-04-29T14:51:46-05:00"
+  listDeploymentFiles: "2025-04-29T14:51:46-05:00"
+  getDeploymentFileContents: "2025-04-29T14:51:46-05:00"
+  getDeployments: "2025-04-29T14:51:46-05:00"
+  deleteDeployment: "2025-04-29T14:51:46-05:00"
+  getConfiguration: "2025-04-29T14:51:46-05:00"
+  deleteConfiguration: "2025-04-29T14:51:46-05:00"
+  buyDomain: "2025-04-29T14:51:46-05:00"
+  checkDomainPrice: "2025-04-29T14:51:46-05:00"
+  checkDomainStatus: "2025-04-29T14:51:46-05:00"
+  getDomainTransfer: "2025-04-29T14:51:46-05:00"
+  getDomainConfig: "2025-04-29T14:51:46-05:00"
+  getDomain: "2025-04-29T14:51:46-05:00"
+  getDomains: "2025-04-29T14:51:46-05:00"
+  createOrTransferDomain: "2025-04-29T14:51:46-05:00"
+  deleteDomain: "2025-04-29T14:51:46-05:00"
+  updateRecord: "2025-04-29T14:51:46-05:00"
+  removeRecord: "2025-04-29T14:51:46-05:00"
+  deleteConfigurableLogDrain: "2025-04-29T14:51:46-05:00"
+  getIntegrationLogDrains: "2025-04-29T14:51:46-05:00"
+  createLogDrain: "2025-04-29T14:51:46-05:00"
+  deleteIntegrationLogDrain: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigs: "2025-04-29T14:51:46-05:00"
+  createEdgeConfig: "2025-04-29T14:51:46-05:00"
+  getEdgeConfig: "2025-04-29T14:51:46-05:00"
+  updateEdgeConfig: "2025-04-29T14:51:46-05:00"
+  deleteEdgeConfig: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigItems: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigSchema: "2025-04-29T14:51:46-05:00"
+  patchEdgeConfigSchema: "2025-04-29T14:51:46-05:00"
+  deleteEdgeConfigSchema: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigItem: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigTokens: "2025-04-29T14:51:46-05:00"
+  deleteEdgeConfigTokens: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigToken: "2025-04-29T14:51:46-05:00"
+  createEdgeConfigToken: "2025-04-29T14:51:46-05:00"
+  getEdgeConfigBackups: "2025-04-29T14:51:46-05:00"
+  listUserEvents: "2025-04-29T14:51:46-05:00"
+  requestDelete: "2025-04-29T14:51:46-05:00"
+  get-account-info: "2025-04-29T14:51:46-05:00"
+  get-member: "2025-04-29T14:51:46-05:00"
+  create-event: "2025-04-29T14:51:46-05:00"
+  submit-billing-data: "2025-04-29T14:51:46-05:00"
+  submit-invoice: "2025-04-29T14:51:46-05:00"
+  get-invoice: "2025-04-29T14:51:46-05:00"
+  update-invoice: "2025-04-29T14:51:46-05:00"
+  submit-prepayment-balances: "2025-04-29T14:51:46-05:00"
+  update-resource-secrets: "2025-04-29T14:51:46-05:00"
+  update-resource-secrets-by-id: "2025-04-29T14:51:46-05:00"
+  import-resource: "2025-04-29T14:51:46-05:00"
+  exchange-sso-token: "2025-04-29T14:51:46-05:00"
+  post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items: "2025-04-29T14:51:46-05:00"
+  patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-04-29T14:51:46-05:00"
+  delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}: "2025-04-29T14:51:46-05:00"
+  put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config: "2025-04-29T14:51:46-05:00"
+  listAuthTokens: "2025-04-29T14:51:46-05:00"
+  createAuthToken: "2025-04-29T14:51:46-05:00"
+  getAuthToken: "2025-04-29T14:51:46-05:00"
+  deleteAuthToken: "2025-04-29T14:51:46-05:00"
+  addProjectMember: "2025-04-29T14:51:46-05:00"
+  removeProjectMember: "2025-04-29T14:51:46-05:00"
+  createCustomEnvironment: "2025-04-29T14:51:46-05:00"
+  get_/v9/projects/{idOrName}/custom-environments: "2025-04-29T14:51:46-05:00"
+  getCustomEnvironment: "2025-04-29T14:51:46-05:00"
+  updateCustomEnvironment: "2025-04-29T14:51:46-05:00"
+  removeCustomEnvironment: "2025-04-29T14:51:46-05:00"
+  updateAttackChallengeMode: "2025-04-29T14:51:46-05:00"
+  putFirewallConfig: "2025-04-29T14:51:46-05:00"
+  updateFirewallConfig: "2025-04-29T14:51:46-05:00"
+  getFirewallConfig: "2025-04-29T14:51:46-05:00"
+  getBypassIp: "2025-04-29T14:51:46-05:00"
+  addBypassIp: "2025-04-29T14:51:46-05:00"
+  removeBypassIp: "2025-04-29T14:51:46-05:00"
+  requestAccessToTeam: "2025-04-29T14:51:46-05:00"
+  getTeamAccessRequest: "2025-04-29T14:51:46-05:00"
+  joinTeam: "2025-04-29T14:51:46-05:00"
+  updateTeamMember: "2025-04-29T14:51:46-05:00"
+  removeTeamMember: "2025-04-29T14:51:46-05:00"
+  getTeam: "2025-04-29T14:51:46-05:00"
+  patchTeam: "2025-04-29T14:51:46-05:00"
+  getTeams: "2025-04-29T14:51:46-05:00"
+  createTeam: "2025-04-29T14:51:46-05:00"
+  deleteTeam: "2025-04-29T14:51:46-05:00"
+  deleteTeamInviteCode: "2025-04-29T14:51:46-05:00"
+  createWebhook: "2025-04-29T14:51:46-05:00"
+  getWebhooks: "2025-04-29T14:51:46-05:00"
+  getWebhook: "2025-04-29T14:51:46-05:00"
+  deleteWebhook: "2025-04-29T14:51:46-05:00"
+  listDeploymentAliases: "2025-04-29T14:51:46-05:00"
+  assignAlias: "2025-04-29T14:51:46-05:00"
+  listAliases: "2025-04-29T14:51:46-05:00"
+  getAlias: "2025-04-29T14:51:46-05:00"
+  deleteAlias: "2025-04-29T14:51:46-05:00"
+  getCertById: "2025-04-29T14:51:46-05:00"
+  removeCert: "2025-04-29T14:51:46-05:00"
+  issueCert: "2025-04-29T14:51:46-05:00"
+  uploadCert: "2025-04-29T14:51:46-05:00"

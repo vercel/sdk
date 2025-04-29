@@ -4,7 +4,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
-'on':
+"on":
   workflow_dispatch:
     inputs:
       force:
@@ -14,8 +14,6 @@ permissions:
       set_version:
         description: optionally set a specific SDK version
         type: string
-  pull_request:
-    types: [labeled]        
   schedule:
     - cron: 0 0 * * *
 jobs:
@@ -24,9 +22,9 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       mode: pr
+      pnpm_version: 8.3.1
       set_version: ${{ github.event.inputs.set_version }}
       speakeasy_version: latest
-      pnpm_version: '8.3.1'
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}

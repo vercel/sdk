@@ -1,4 +1,4 @@
-arazzo: 1.0.0
+arazzo: 1.0.1
 info:
   title: Test Suite
   summary: Created from vercel-spec.json
@@ -8,31 +8,6 @@ sourceDescriptions:
     url: https://TBD.com
     type: openapi
 workflows:
-  - workflowId: readAccessGroup
-    steps:
-      - stepId: test
-        operationId: readAccessGroup
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "isDsyncManaged": false,
-                "name": "my-access-group",
-                "createdAt": "1588720733602",
-                "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-                "updatedAt": "1588720733602",
-                "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-                "membersCount": 5,
-                "projectsCount": 2
-              }
-            type: simple
-    x-speakeasy-test-group: access-groups
   - workflowId: readAccessGroup-id
     steps:
       - stepId: test
@@ -60,7 +35,14 @@ workflows:
                 "updatedAt": "1588720733602",
                 "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
                 "membersCount": 5,
-                "projectsCount": 2
+                "projectsCount": 2,
+                "teamRoles": [
+                  "DEVELOPER",
+                  "BILLING"
+                ],
+                "teamPermissions": [
+                  "CreateProject"
+                ]
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -91,7 +73,14 @@ workflows:
                 "updatedAt": "1588720733602",
                 "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
                 "membersCount": 5,
-                "projectsCount": 2
+                "projectsCount": 2,
+                "teamRoles": [
+                  "DEVELOPER",
+                  "BILLING"
+                ],
+                "teamPermissions": [
+                  "CreateProject"
+                ]
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -112,8 +101,16 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
+            membersToAdd:
+              - usr_1a2b3c4d5e6f7g8h9i0j
+              - usr_2b3c4d5e6f7g8h9i0j1k
+            membersToRemove:
+              - usr_1a2b3c4d5e6f7g8h9i0j
+              - usr_2b3c4d5e6f7g8h9i0j1k
             name: My access group
-            projects: []
+            projects:
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -126,7 +123,14 @@ workflows:
                 "updatedAt": "1588720733602",
                 "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
                 "membersCount": 5,
-                "projectsCount": 2
+                "projectsCount": 2,
+                "teamRoles": [
+                  "DEVELOPER",
+                  "BILLING"
+                ],
+                "teamPermissions": [
+                  "CreateProject"
+                ]
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -179,7 +183,7 @@ workflows:
                   }
                 ],
                 "pagination": {
-                  "count": "3878.47",
+                  "count": 3878.47,
                   "next": "\u003cvalue\u003e"
                 }
               }
@@ -233,21 +237,33 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
+            membersToAdd:
+              - usr_1a2b3c4d5e6f7g8h9i0j
+              - usr_2b3c4d5e6f7g8h9i0j1k
             name: My access group
-            projects: []
+            projects:
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
               {
-                "membersCount": "591.78",
-                "projectsCount": "3787.91",
+                "membersCount": 591.78,
+                "projectsCount": 3787.91,
                 "name": "my-access-group",
                 "createdAt": "1588720733602",
                 "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50",
                 "updatedAt": "1588720733602",
-                "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50"
+                "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
+                "teamRoles": [
+                  "DEVELOPER",
+                  "BILLING"
+                ],
+                "teamPermissions": [
+                  "CreateProject"
+                ]
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -276,7 +292,7 @@ workflows:
               {
                 "projects": [],
                 "pagination": {
-                  "count": "7604.02",
+                  "count": 7604.02,
                   "next": "\u003cvalue\u003e"
                 }
               }
@@ -311,34 +327,8 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "PROJECT_VIEWER",
-                "createdAt": "\u003cvalue\u003e",
-                "updatedAt": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: access-groups
-  - workflowId: readAccessGroupProject
-    steps:
-      - stepId: test
-        operationId: readAccessGroupProject
-        parameters:
-          - name: accessGroupIdOrName
-            in: path
-            value: <value>
-          - name: projectId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "teamId": "\u003cid\u003e",
-                "accessGroupId": "\u003cid\u003e",
-                "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "\u003cvalue\u003e",
-                "updatedAt": "\u003cvalue\u003e"
+                "createdAt": "1726948284257",
+                "updatedAt": "1744388503945"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -369,8 +359,8 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "ADMIN",
-                "createdAt": "1706854122023",
-                "updatedAt": "1735905380072"
+                "createdAt": "1715344910813",
+                "updatedAt": "1744396168862"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -401,26 +391,28 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "PROJECT_DEVELOPER",
-                "createdAt": "1731124284693",
-                "updatedAt": "1735836411388"
+                "createdAt": "1739615073482",
+                "updatedAt": "1744327200176"
               }
             type: simple
     x-speakeasy-test-group: access-groups
-  - workflowId: updateAccessGroupProject
+  - workflowId: readAccessGroupProject
     steps:
       - stepId: test
-        operationId: updateAccessGroupProject
+        operationId: readAccessGroupProject
         parameters:
           - name: accessGroupIdOrName
             in: path
             value: <value>
           - name: projectId
             in: path
-            value: <id>
-        requestBody:
-          contentType: application/json
-          payload:
-            role: ADMIN
+            value: prj_ndlgr43fadlPyCtREAqxxdyFK
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -430,9 +422,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "\u003cvalue\u003e",
-                "updatedAt": "\u003cvalue\u003e"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1741430060404",
+                "updatedAt": "1744396619853"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -467,8 +459,8 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "ADMIN",
-                "createdAt": "1706645964469",
-                "updatedAt": "1735872085577"
+                "createdAt": "1715136753218",
+                "updatedAt": "1744362874326"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -503,8 +495,44 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "ADMIN",
-                "createdAt": "1708158031858",
-                "updatedAt": "1735838146635"
+                "createdAt": "1716648820605",
+                "updatedAt": "1744328935382"
+              }
+            type: simple
+    x-speakeasy-test-group: access-groups
+  - workflowId: updateAccessGroupProject
+    steps:
+      - stepId: test
+        operationId: updateAccessGroupProject
+        parameters:
+          - name: accessGroupIdOrName
+            in: path
+            value: <value>
+          - name: projectId
+            in: path
+            value: prj_ndlgr43fadlPyCtREAqxxdyFK
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            role: ADMIN
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "teamId": "\u003cid\u003e",
+                "accessGroupId": "\u003cid\u003e",
+                "projectId": "\u003cid\u003e",
+                "role": "ADMIN",
+                "createdAt": "1736314214978",
+                "updatedAt": "1744397001817"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -558,7 +586,13 @@ workflows:
             value: <value>
           - name: projectId
             in: path
-            value: <id>
+            value: prj_ndlgr43fadlPyCtREAqxxdyFK
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: access-groups
@@ -726,12 +760,14 @@ workflows:
               {
                 "id": "chk_1a2b3c4d5e6f7g8h9i0j",
                 "name": "Performance Check",
+                "path": "/api/users",
                 "status": "completed",
-                "blocking": false,
+                "conclusion": "succeeded",
+                "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": "2396.37",
-                "updatedAt": "1065.29"
+                "createdAt": 9375.78,
+                "updatedAt": 2396.37
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -757,13 +793,13 @@ workflows:
               {
                 "checks": [
                   {
-                    "createdAt": "4203.11",
+                    "createdAt": 4203.11,
                     "id": "\u003cid\u003e",
                     "integrationId": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
                     "rerequestable": false,
                     "status": "registered",
-                    "updatedAt": "4461.16"
+                    "updatedAt": 4461.16
                   }
                 ]
               }
@@ -798,8 +834,8 @@ workflows:
                 "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": "2039.14",
-                "updatedAt": "676.34"
+                "createdAt": 2039.14,
+                "updatedAt": 676.34
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -861,8 +897,8 @@ workflows:
                 "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": "9017.64",
-                "updatedAt": "7909.85"
+                "createdAt": 9017.64,
+                "updatedAt": 7909.85
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -917,9 +953,9 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": "7135.80",
-                  "disabledAt": "2989.85",
-                  "updatedAt": "6226.22",
+                  "enabledAt": 7135.8,
+                  "disabledAt": 2989.85,
+                  "updatedAt": 6226.23,
                   "deploymentId": "\u003cid\u003e",
                   "definitions": [
                     {
@@ -944,7 +980,7 @@ workflows:
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "5719.60",
+                    "createdAt": 5719.6,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Braeden15@gmail.com",
@@ -963,7 +999,7 @@ workflows:
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "7644.50",
+                    "createdAt": 7644.5,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Erich.Mann@hotmail.com",
@@ -982,7 +1018,7 @@ workflows:
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "2357.62",
+                    "createdAt": 2357.62,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Garret.Ferry81@gmail.com",
@@ -1001,7 +1037,34 @@ workflows:
                   }
                 ],
                 "name": "\u003cvalue\u003e",
-                "nodeVersion": "10.x"
+                "nodeVersion": "10.x",
+                "resourceConfig": {
+                  "functionDefaultRegions": []
+                },
+                "defaultResourceConfig": {
+                  "functionDefaultRegions": []
+                },
+                "targets": {
+                  "key": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 1048.68,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Lillie17@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Herminia_Schowalter50"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "enterprise",
+                    "previewCommentsEnabled": false,
+                    "private": false,
+                    "readyState": "BUILDING",
+                    "type": "LAMBDAS",
+                    "url": "https://quintessential-bidet.com/",
+                    "userId": "\u003cid\u003e"
+                  }
+                }
               }
             type: simple
     x-speakeasy-test-group: projects
@@ -1060,9 +1123,9 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": "5535.60",
-                  "disabledAt": "7749.32",
-                  "updatedAt": "4248.45",
+                  "enabledAt": 5535.6,
+                  "disabledAt": 7749.32,
+                  "updatedAt": 4248.44,
                   "deploymentId": "\u003cid\u003e",
                   "definitions": [
                     {
@@ -1082,7 +1145,7 @@ workflows:
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "3954.07",
+                    "createdAt": 3954.07,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Junior46@yahoo.com",
@@ -1102,24 +1165,51 @@ workflows:
                 ],
                 "name": "\u003cvalue\u003e",
                 "nodeVersion": "22.x",
+                "resourceConfig": {
+                  "functionDefaultRegions": [
+                    "\u003cvalue\u003e"
+                  ]
+                },
+                "defaultResourceConfig": {
+                  "functionDefaultRegions": []
+                },
                 "targets": {
                   "key": {
                     "id": "\u003cid\u003e",
-                    "createdAt": "1667.88",
+                    "createdAt": 7352.53,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Mustafa49@yahoo.com",
+                      "email": "Keven88@hotmail.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Roberta.Cormier"
+                      "username": "Helene44"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "hobby",
                     "previewCommentsEnabled": false,
-                    "private": false,
-                    "readyState": "INITIALIZING",
+                    "private": true,
+                    "readyState": "QUEUED",
                     "type": "LAMBDAS",
-                    "url": "https://formal-breastplate.org",
+                    "url": "https://calculating-strait.info/",
+                    "userId": "\u003cid\u003e"
+                  },
+                  "key1": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 1259.18,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Shane_Larson@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Barney93"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "pro",
+                    "previewCommentsEnabled": false,
+                    "private": true,
+                    "readyState": "ERROR",
+                    "type": "LAMBDAS",
+                    "url": "https://fair-annual.biz/",
                     "userId": "\u003cid\u003e"
                   }
                 }
@@ -1152,9 +1242,9 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": "6482.22",
-                  "disabledAt": "3040.87",
-                  "updatedAt": "9398.85",
+                  "enabledAt": 6482.23,
+                  "disabledAt": 3040.87,
+                  "updatedAt": 9398.86,
                   "deploymentId": "\u003cid\u003e",
                   "definitions": [
                     {
@@ -1174,7 +1264,7 @@ workflows:
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "7688.55",
+                    "createdAt": 7688.55,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Alfredo_Murazik@yahoo.com",
@@ -1193,7 +1283,7 @@ workflows:
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": "3847.37",
+                    "createdAt": 3847.37,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
                       "email": "Zachery.Johns68@yahoo.com",
@@ -1209,28 +1299,96 @@ workflows:
                     "type": "LAMBDAS",
                     "url": "https://unsightly-newsstand.net/",
                     "userId": "\u003cid\u003e"
-                  }
-                ],
-                "name": "\u003cvalue\u003e",
-                "nodeVersion": "14.x",
-                "targets": {
-                  "key": {
+                  },
+                  {
                     "id": "\u003cid\u003e",
-                    "createdAt": "5163.13",
+                    "createdAt": 5770.49,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Joyce_Hodkiewicz46@yahoo.com",
+                      "email": "Jose37@yahoo.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Bud.Bogan18"
+                      "username": "Jana.Conroy"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "pro",
                     "previewCommentsEnabled": false,
                     "private": true,
+                    "readyState": "ERROR",
+                    "type": "LAMBDAS",
+                    "url": "https://pricey-dish.biz/",
+                    "userId": "\u003cid\u003e"
+                  }
+                ],
+                "name": "\u003cvalue\u003e",
+                "nodeVersion": "20.x",
+                "resourceConfig": {
+                  "functionDefaultRegions": [
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e"
+                  ]
+                },
+                "defaultResourceConfig": {
+                  "functionDefaultRegions": [
+                    "\u003cvalue\u003e"
+                  ]
+                },
+                "targets": {
+                  "key": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 6585.03,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Garrison_Jenkins@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Trever_Ratke"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "hobby",
+                    "previewCommentsEnabled": false,
+                    "private": true,
+                    "readyState": "INITIALIZING",
+                    "type": "LAMBDAS",
+                    "url": "https://forsaken-edge.org",
+                    "userId": "\u003cid\u003e"
+                  },
+                  "key1": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 5688.03,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Buster.Raynor@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Florine92"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "enterprise",
+                    "previewCommentsEnabled": false,
+                    "private": false,
+                    "readyState": "CANCELED",
+                    "type": "LAMBDAS",
+                    "url": "https://shameless-unit.net",
+                    "userId": "\u003cid\u003e"
+                  },
+                  "key2": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 4805.55,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Jerome0@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Travis_Towne"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "hobby",
+                    "previewCommentsEnabled": false,
+                    "private": true,
                     "readyState": "QUEUED",
                     "type": "LAMBDAS",
-                    "url": "https://frugal-coordination.net/",
+                    "url": "https://whimsical-mathematics.name",
                     "userId": "\u003cid\u003e"
                   }
                 }
@@ -1262,9 +1420,15 @@ workflows:
           - name: idOrName
             in: path
             value: <value>
+          - name: production
+            in: query
+            value: "false"
           - name: customEnvironmentId
             in: query
             value: env_123abc4567
+          - name: redirects
+            in: query
+            value: "true"
           - name: redirect
             in: query
             value: example.com
@@ -1277,6 +1441,9 @@ workflows:
           - name: until
             in: query
             value: 1612264332000
+          - name: order
+            in: query
+            value: DESC
           - name: teamId
             in: query
             value: team_1a2b3c4d5e6f7g8h9i0j1k2l
@@ -1430,6 +1597,36 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: projects
+  - workflowId: moveProjectDomain
+    steps:
+      - stepId: test
+        operationId: moveProjectDomain
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: domain
+            in: path
+            value: www.example.com
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "name": "\u003cvalue\u003e",
+                "apexName": "\u003cvalue\u003e",
+                "projectId": "\u003cid\u003e",
+                "verified": false
+              }
+            type: simple
+    x-speakeasy-test-group: projects
   - workflowId: verifyProjectDomain
     steps:
       - stepId: test
@@ -1460,6 +1657,55 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: projects
+  - workflowId: createProjectEnv
+    steps:
+      - stepId: test
+        operationId: createProjectEnv
+        parameters:
+          - name: idOrName
+            in: path
+            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+          - name: upsert
+            in: query
+            value: "true"
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            comment: database connection string for production
+            customEnvironmentIds:
+              - env_1234567890
+            gitBranch: feature-1
+            key: API_URL
+            target:
+              - preview
+            type: plain
+            value: https://api.vercel.com
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created": [
+                  {}
+                ],
+                "failed": [
+                  {
+                    "error": {
+                      "code": "\u003cvalue\u003e",
+                      "message": "\u003cvalue\u003e"
+                    }
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: projects
   - workflowId: getProjectEnv
     steps:
       - stepId: test
@@ -1484,55 +1730,8 @@ workflows:
             condition: |
               {
                 "type": "plain",
-                "key": "\u003ckey\u003e",
-                "value": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: projects
-  - workflowId: createProjectEnv
-    steps:
-      - stepId: test
-        operationId: createProjectEnv
-        parameters:
-          - name: idOrName
-            in: path
-            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
-          - name: upsert
-            in: query
-            value: "true"
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            comment: database connection string for production
-            gitBranch: feature-1
-            key: API_URL
-            target:
-              - preview
-            type: plain
-            value: https://api.vercel.com
-        successCriteria:
-          - condition: $statusCode == 201
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "created": [
-                  {}
-                ],
-                "failed": [
-                  {
-                    "error": {
-                      "code": "\u003cvalue\u003e",
-                      "message": "\u003cvalue\u003e"
-                    }
-                  }
-                ]
+                "value": "\u003cvalue\u003e",
+                "key": "\u003ckey\u003e"
               }
             type: simple
     x-speakeasy-test-group: projects
@@ -1564,20 +1763,70 @@ workflows:
               [
                 {
                   "type": "sensitive",
-                  "key": "\u003ckey\u003e",
-                  "value": "\u003cvalue\u003e"
+                  "value": "\u003cvalue\u003e",
+                  "key": "\u003ckey\u003e"
                 },
                 {
                   "type": "plain",
-                  "key": "\u003ckey\u003e",
-                  "value": "\u003cvalue\u003e"
+                  "value": "\u003cvalue\u003e",
+                  "key": "\u003ckey\u003e"
                 },
                 {
                   "type": "encrypted",
-                  "key": "\u003ckey\u003e",
-                  "value": "\u003cvalue\u003e"
+                  "value": "\u003cvalue\u003e",
+                  "key": "\u003ckey\u003e"
                 }
               ]
+            type: simple
+    x-speakeasy-test-group: projects
+  - workflowId: createProjectTransferRequest
+    steps:
+      - stepId: test
+        operationId: createProjectTransferRequest
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "code": "f99cc49a-602e-4786-a748-762dfb205880"
+              }
+            type: simple
+    x-speakeasy-test-group: projects
+  - workflowId: acceptProjectTransferRequest
+    steps:
+      - stepId: test
+        operationId: acceptProjectTransferRequest
+        parameters:
+          - name: code
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            newProjectName: a-project-name
+        successCriteria:
+          - condition: $statusCode == 202
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
             type: simple
     x-speakeasy-test-group: projects
   - workflowId: updateProjectProtectionBypass
@@ -1656,6 +1905,40 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: projects
+  - workflowId: pauseProject
+    steps:
+      - stepId: test
+        operationId: pauseProject
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: projects
+  - workflowId: unpauseProject
+    steps:
+      - stepId: test
+        operationId: unpauseProject
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: projects
   - workflowId: getDeploymentEvents
     steps:
       - stepId: test
@@ -1700,6 +1983,26 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: deployments
+  - workflowId: update-integration-deployment-action
+    steps:
+      - stepId: test
+        operationId: update-integration-deployment-action
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: action
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 202
+    x-speakeasy-test-group: deployments
   - workflowId: getDeployment
     steps:
       - stepId: test
@@ -1733,9 +2036,9 @@ workflows:
                 "public": true,
                 "status": "ERROR",
                 "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
                 "type": "LAMBDAS",
                 "createdAt": 3161.76,
-                "name": "\u003cvalue\u003e",
                 "readyState": "READY",
                 "meta": {
                   "key": "\u003cvalue\u003e",
@@ -1761,6 +2064,7 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
+            deploymentId: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
             files:
               - file: folder/file.js
               - file: folder/file.js
@@ -1771,10 +2075,19 @@ workflows:
               commitSha: dc36199b2234c6586ebe05ec94078a895c707e29
               dirty: true
               remoteUrl: https://github.com/vercel/next.js
+            gitSource:
+              ref: main
+              repoId: 123456789
+              sha: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+              type: github
             meta:
               foo: bar
             name: my-instant-deployment
             project: my-deployment-project
+            projectSettings:
+              buildCommand: next build
+              installCommand: pnpm install
+            target: production
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -1782,49 +2095,51 @@ workflows:
             condition: |
               {
                 "build": {
-                  "env": []
+                  "env": [
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e",
+                    "\u003cvalue\u003e"
+                  ]
                 },
                 "env": [
                   "\u003cvalue\u003e",
-                  "\u003cvalue\u003e",
                   "\u003cvalue\u003e"
                 ],
-                "inspectorUrl": "https://grave-dredger.com",
+                "inspectorUrl": "https://firm-casket.name/",
                 "isInConcurrentBuildsQueue": false,
                 "isInSystemBuildsQueue": false,
                 "projectSettings": {},
-                "aliasAssigned": false,
-                "bootedAt": "4336.60",
-                "buildingAt": "7030.55",
-                "buildSkipped": true,
+                "aliasAssigned": true,
+                "bootedAt": 7030.55,
+                "buildingAt": 2916.6,
+                "buildSkipped": false,
                 "creator": {
                   "uid": "\u003cid\u003e"
                 },
-                "public": false,
-                "status": "QUEUED",
+                "public": true,
+                "status": "BUILDING",
                 "type": "LAMBDAS",
-                "createdAt": "5133.44",
                 "name": "\u003cvalue\u003e",
+                "createdAt": 1218,
                 "id": "\u003cid\u003e",
-                "version": "1218.01",
+                "version": 5856.16,
                 "meta": {
                   "key": "\u003cvalue\u003e",
                   "key1": "\u003cvalue\u003e"
                 },
-                "readyState": "INITIALIZING",
-                "regions": [],
-                "url": "https://apprehensive-perp.info/",
+                "readyState": "CANCELED",
+                "regions": [
+                  "\u003cvalue\u003e"
+                ],
+                "url": "https://quiet-formation.name/",
+                "plan": "pro",
                 "projectId": "\u003cid\u003e",
                 "ownerId": "\u003cid\u003e",
                 "routes": [
                   {
                     "src": "\u003cvalue\u003e"
-                  },
-                  {
-                    "src": "\u003cvalue\u003e"
                   }
                 ],
-                "plan": "pro",
                 "createdIn": "\u003cvalue\u003e"
               }
             type: simple
@@ -1865,8 +2180,8 @@ workflows:
                 "isInSystemBuildsQueue": true,
                 "projectSettings": {},
                 "aliasAssigned": false,
-                "bootedAt": "8528.74",
-                "buildingAt": "7590.78",
+                "bootedAt": 8528.74,
+                "buildingAt": 7590.79,
                 "buildSkipped": false,
                 "creator": {
                   "uid": "\u003cid\u003e"
@@ -1874,7 +2189,7 @@ workflows:
                 "public": true,
                 "status": "BUILDING",
                 "id": "\u003cid\u003e",
-                "createdAt": "3071.53",
+                "createdAt": 3071.53,
                 "name": "\u003cvalue\u003e",
                 "meta": {
                   "key": "\u003cvalue\u003e",
@@ -1887,7 +2202,7 @@ workflows:
                 ],
                 "type": "LAMBDAS",
                 "url": "https://timely-reboot.name",
-                "version": "6067.47",
+                "version": 6067.47,
                 "createdIn": "\u003cvalue\u003e",
                 "ownerId": "\u003cid\u003e",
                 "plan": "pro",
@@ -1898,8 +2213,8 @@ workflows:
                   },
                   {
                     "src": "\u003cvalue\u003e",
-                    "continue": false,
-                    "middleware": 6618.12
+                    "continue": true,
+                    "middleware": 4831.29
                   }
                 ]
               }
@@ -1949,14 +2264,14 @@ workflows:
                   "type": "file",
                   "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
                   "contentType": "application/json",
-                  "mode": "956.44"
+                  "mode": 956.43
                 },
                 {
                   "name": "my-file.json",
                   "type": "file",
                   "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
                   "contentType": "application/json",
-                  "mode": "1805.56"
+                  "mode": 1805.56
                 }
               ]
             type: simple
@@ -2039,6 +2354,7 @@ workflows:
                     "name": "docs",
                     "url": "docs-9jaeg38me.vercel.app",
                     "created": 1609492210000,
+                    "defaultRoute": "/docs",
                     "deleted": 1609492210000,
                     "undeleted": 1609492210000,
                     "softDeletedByRetention": true,
@@ -2064,6 +2380,7 @@ workflows:
                     "name": "docs",
                     "url": "docs-9jaeg38me.vercel.app",
                     "created": 1609492210000,
+                    "defaultRoute": "/docs",
                     "deleted": 1609492210000,
                     "undeleted": 1609492210000,
                     "softDeletedByRetention": true,
@@ -2116,6 +2433,67 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: deployments
+  - workflowId: getConfiguration
+    steps:
+      - stepId: test
+        operationId: getConfiguration
+        parameters:
+          - name: id
+            in: path
+            value: icfg_cuwj0AdCdH3BwWT4LPijCC7t
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "completedAt": 1558531915505,
+                "createdAt": 1558531915505,
+                "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
+                "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV",
+                "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+                "projects": [
+                  "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
+                ],
+                "source": "marketplace",
+                "slug": "slack",
+                "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud",
+                "type": "integration-configuration",
+                "updatedAt": 1558531915505,
+                "userId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+                "scopes": [
+                  "read:project",
+                  "read-write:log-drain"
+                ],
+                "disabledAt": 1558531915505,
+                "deletedAt": 1558531915505,
+                "deleteRequestedAt": 1558531915505
+              }
+            type: simple
+    x-speakeasy-test-group: integrations
+  - workflowId: deleteConfiguration
+    steps:
+      - stepId: test
+        operationId: deleteConfiguration
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: integrations
   - workflowId: buyDomain
     steps:
       - stepId: test
@@ -2157,7 +2535,7 @@ workflows:
                     "\u003cvalue\u003e"
                   ],
                   "verified": false,
-                  "created": "9374.80",
+                  "created": 9374.8,
                   "pending": false
                 }
               }
@@ -2185,7 +2563,10 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "price": 20,
+                "period": 1
+              }
             type: simple
     x-speakeasy-test-group: domains
   - workflowId: checkDomainStatus
@@ -2305,10 +2686,10 @@ workflows:
                   },
                   "teamId": "\u003cid\u003e",
                   "boughtAt": 1613602938882,
+                  "name": "example.com",
                   "createdAt": 1613602938882,
                   "expiresAt": 1613602938882,
                   "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-                  "name": "example.com",
                   "orderedAt": 1613602938882,
                   "renew": true,
                   "serviceType": "zeit.world",
@@ -2466,44 +2847,10 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "uid": "rec_V0fra8eEgQwEpFhYG2vTzC3K"
+                "uid": "\u003cid\u003e"
               }
             type: simple
     x-speakeasy-test-group: domains
-  - workflowId: createRecord
-    steps:
-      - stepId: test
-        operationId: createRecord
-        parameters:
-          - name: domain
-            in: path
-            value: example.com
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            comment: used to verify ownership of domain
-            https:
-              params: alpn=h2,h3
-              priority: 10
-              target: host.example.com
-            ttl: 60
-            type: CNAME
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "uid": "rec_V0fra8eEgQwEpFhYG2vTzC3K"
-              }
-            type: simple
-    x-speakeasy-test-group: dns
   - workflowId: updateRecord
     steps:
       - stepId: test
@@ -2575,6 +2922,197 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: dns
+  - workflowId: deleteConfigurableLogDrain
+    steps:
+      - stepId: test
+        operationId: deleteConfigurableLogDrain
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: logDrains
+  - workflowId: getIntegrationLogDrains
+    steps:
+      - stepId: test
+        operationId: getIntegrationLogDrains
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct",
+                  "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+                  "createdAt": 1558531915505,
+                  "id": "ld_nBuA7zCID8g4QZ8g",
+                  "deliveryFormat": "json",
+                  "name": "My first log drain",
+                  "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+                  "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
+                  "projectIds": [
+                    "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"
+                  ],
+                  "url": "https://example.com/log-drain",
+                  "sources": [
+                    "build"
+                  ],
+                  "createdFrom": "integration",
+                  "headers": {
+                    "0": "{",
+                    "1": "\"",
+                    "2": "A",
+                    "3": "u",
+                    "4": "t",
+                    "5": "h",
+                    "6": "o",
+                    "7": "r",
+                    "8": "i",
+                    "9": "z",
+                    "10": "a",
+                    "11": "t",
+                    "12": "i",
+                    "13": "o",
+                    "14": "n",
+                    "15": "\"",
+                    "16": ":",
+                    "17": " ",
+                    "18": "\"",
+                    "19": "B",
+                    "20": "e",
+                    "21": "a",
+                    "22": "r",
+                    "23": "e",
+                    "24": "r",
+                    "25": " ",
+                    "26": "1",
+                    "27": "2",
+                    "28": "3",
+                    "29": "\"",
+                    "30": "}"
+                  },
+                  "environments": [
+                    "production"
+                  ],
+                  "branch": "feature/*",
+                  "samplingRate": 0.5
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: logDrains
+  - workflowId: createLogDrain
+    steps:
+      - stepId: test
+        operationId: createLogDrain
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            deliveryFormat: json
+            name: My first log drain
+            secret: a1Xsfd325fXcs
+            url: https://example.com/log-drain
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct",
+                "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+                "createdAt": 1558531915505,
+                "id": "ld_nBuA7zCID8g4QZ8g",
+                "deliveryFormat": "json",
+                "name": "My first log drain",
+                "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+                "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
+                "projectIds": [
+                  "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"
+                ],
+                "url": "https://example.com/log-drain",
+                "sources": [
+                  "external"
+                ],
+                "createdFrom": "integration",
+                "headers": {
+                  "0": "{",
+                  "1": "\"",
+                  "2": "A",
+                  "3": "u",
+                  "4": "t",
+                  "5": "h",
+                  "6": "o",
+                  "7": "r",
+                  "8": "i",
+                  "9": "z",
+                  "10": "a",
+                  "11": "t",
+                  "12": "i",
+                  "13": "o",
+                  "14": "n",
+                  "15": "\"",
+                  "16": ":",
+                  "17": " ",
+                  "18": "\"",
+                  "19": "B",
+                  "20": "e",
+                  "21": "a",
+                  "22": "r",
+                  "23": "e",
+                  "24": "r",
+                  "25": " ",
+                  "26": "1",
+                  "27": "2",
+                  "28": "3",
+                  "29": "\"",
+                  "30": "}"
+                },
+                "environments": [
+                  "production"
+                ],
+                "branch": "feature/*",
+                "samplingRate": 0.5
+              }
+            type: simple
+    x-speakeasy-test-group: logDrains
+  - workflowId: deleteIntegrationLogDrain
+    steps:
+      - stepId: test
+        operationId: deleteIntegrationLogDrain
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: logDrains
   - workflowId: getEdgeConfigs
     steps:
       - stepId: test
@@ -2593,8 +3131,12 @@ workflows:
             condition: |
               [
                 {
-                  "sizeInBytes": "8239.08",
-                  "itemCount": "557.07"
+                  "sizeInBytes": 8239.08,
+                  "itemCount": 557.07
+                },
+                {
+                  "sizeInBytes": 4591.09,
+                  "itemCount": 7040.34
                 }
               ]
             type: simple
@@ -2620,8 +3162,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": "145.91",
-                "itemCount": "5042.97"
+                "sizeInBytes": 145.91,
+                "itemCount": 5042.97
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2645,8 +3187,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": "3967.65",
-                "itemCount": "7010.13"
+                "sizeInBytes": 3967.65,
+                "itemCount": 7010.13
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2674,8 +3216,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": "5022.37",
-                "itemCount": "211.31"
+                "sizeInBytes": 5022.37,
+                "itemCount": 211.31
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2717,10 +3259,10 @@ workflows:
             condition: |
               {
                 "key": "\u003ckey\u003e",
-                "value": "5002.95",
+                "value": 5002.95,
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": "9069.68",
-                "updatedAt": "6276.41"
+                "createdAt": 9069.69,
+                "updatedAt": 6276.41
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2813,10 +3355,10 @@ workflows:
             condition: |
               {
                 "key": "\u003ckey\u003e",
-                "value": "9966.77",
+                "value": 9966.78,
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": "1621.85",
-                "updatedAt": "3034.44"
+                "createdAt": 1621.85,
+                "updatedAt": 3034.43
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2844,7 +3386,7 @@ workflows:
                 "label": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": "7692.35"
+                "createdAt": 7692.36
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2896,7 +3438,7 @@ workflows:
                 "label": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": "3597.77"
+                "createdAt": 3597.77
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -2952,11 +3494,11 @@ workflows:
                 "backups": [
                   {
                     "id": "\u003cid\u003e",
-                    "lastModified": "2424.25"
+                    "lastModified": 2424.25
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "lastModified": "1518.43"
+                    "lastModified": 1518.43
                   }
                 ],
                 "pagination": {
@@ -3097,32 +3639,41 @@ workflows:
               items:
                 - billingPlanId: <id>
                   name: <value>
-                  price: "161.25"
-                  quantity: 8824.47
+                  price: "511.92"
+                  quantity: 328.54
                   total: <value>
                   units: <value>
-            eod: "2022-12-28T23:46:57.523Z"
+                - billingPlanId: <id>
+                  name: <value>
+                  price: "4.49"
+                  quantity: 3113.17
+                  total: <value>
+                  units: <value>
+                - billingPlanId: <id>
+                  name: <value>
+                  price: "896.30"
+                  quantity: 8536.32
+                  total: <value>
+                  units: <value>
+            eod: "2023-12-28T23:46:57.523Z"
             period:
-              end: "2023-10-18T01:18:36.230Z"
-              start: "2022-06-25T19:04:50.518Z"
-            timestamp: "2024-09-29T02:38:01.476Z"
+              end: "2024-10-17T01:18:36.230Z"
+              start: "2023-06-25T19:04:50.518Z"
+            timestamp: "2025-09-29T02:38:01.476Z"
             usage:
-              - dayValue: "9439.21"
+              - dayValue: 9439.22
                 name: <value>
-                periodValue: "6958.71"
-                resourceId: <id>
+                periodValue: 6958.71
                 type: rate
                 units: <value>
-              - dayValue: "9892.22"
+              - dayValue: 9892.22
                 name: <value>
-                periodValue: "4749.62"
-                resourceId: <id>
+                periodValue: 4749.62
                 type: total
                 units: <value>
-              - dayValue: "7119.53"
+              - dayValue: 7119.53
                 name: <value>
-                periodValue: "6310.47"
-                resourceId: <id>
+                periodValue: 6310.47
                 type: rate
                 units: <value>
         successCriteria:
@@ -3139,23 +3690,23 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            invoiceDate: "2022-06-05T08:54:16.353Z"
+            invoiceDate: "2023-06-05T08:54:16.353Z"
             items:
               - billingPlanId: <id>
                 name: <value>
                 price: "905.89"
-                quantity: "1684.76"
+                quantity: 1684.76
                 total: <value>
                 units: <value>
               - billingPlanId: <id>
                 name: <value>
                 price: "84.05"
-                quantity: "9130.94"
+                quantity: 9130.95
                 total: <value>
                 units: <value>
             period:
-              end: "2024-10-08T09:35:48.520Z"
-              start: "2022-07-26T14:15:15.601Z"
+              end: "2025-10-08T09:35:48.520Z"
+              start: "2023-07-26T14:15:15.601Z"
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -3182,6 +3733,7 @@ workflows:
             condition: |
               {
                 "invoiceId": "\u003cid\u003e",
+                "state": "invoiced",
                 "invoiceDate": "\u003cvalue\u003e",
                 "period": {
                   "start": "\u003cvalue\u003e",
@@ -3191,17 +3743,15 @@ workflows:
                   {
                     "billingPlanId": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
-                    "price": "317.28",
-                    "quantity": "1022.19",
+                    "price": "813.89",
+                    "quantity": 2100.54,
                     "units": "\u003cvalue\u003e",
                     "total": "\u003cvalue\u003e"
                   }
                 ],
                 "total": "\u003cvalue\u003e",
                 "created": "\u003cvalue\u003e",
-                "updated": "\u003cvalue\u003e",
-                "state": "scheduled",
-                "test": false
+                "updated": "\u003cvalue\u003e"
               }
             type: simple
     x-speakeasy-test-group: marketplace
@@ -3224,6 +3774,17 @@ workflows:
             total: <value>
         successCriteria:
           - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: submit-prepayment-balances
+    steps:
+      - stepId: test
+        operationId: submit-prepayment-balances
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 201
     x-speakeasy-test-group: marketplace
   - workflowId: update-resource-secrets
     steps:
@@ -3260,6 +3821,27 @@ workflows:
         successCriteria:
           - condition: $statusCode == 201
     x-speakeasy-test-group: marketplace
+  - workflowId: import-resource
+    steps:
+      - stepId: test
+        operationId: import-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "name": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
   - workflowId: exchange-sso-token
     steps:
       - stepId: test
@@ -3282,118 +3864,80 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: marketplace
-  - workflowId: getConfiguration
+  - workflowId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
     steps:
       - stepId: test
-        operationId: getConfiguration
+        operationId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
         parameters:
-          - name: id
+          - name: integrationConfigurationId
             in: path
-            value: icfg_cuwj0AdCdH3BwWT4LPijCC7t
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+    steps:
+      - stepId: test
+        operationId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: itemId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+    steps:
+      - stepId: test
+        operationId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+          - name: itemId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+    steps:
+      - stepId: test
+        operationId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
               {
-                "completedAt": 1558531915505,
-                "createdAt": 1558531915505,
-                "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
-                "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV",
-                "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "projects": [
-                  "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
-                ],
-                "source": "marketplace",
-                "slug": "slack",
-                "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud",
-                "type": "integration-configuration",
-                "updatedAt": 1558531915505,
-                "userId": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "scopes": [
-                  "read:project",
-                  "read-write:log-drain"
-                ],
-                "disabledAt": 1558531915505,
-                "deletedAt": 1558531915505,
-                "deleteRequestedAt": 1558531915505
+                "items": {
+                  "key": true,
+                  "key1": "\u003cvalue\u003e"
+                },
+                "updatedAt": 8687.23,
+                "digest": "\u003cvalue\u003e"
               }
             type: simple
-    x-speakeasy-test-group: integrations
-  - workflowId: deleteConfiguration
-    steps:
-      - stepId: test
-        operationId: deleteConfiguration
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: integrations
-  - workflowId: gitNamespaces
-    steps:
-      - stepId: test
-        operationId: gitNamespaces
-        parameters:
-          - name: host
-            in: query
-            value: ghes-test.now.systems
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              [
-                {
-                  "provider": "\u003cvalue\u003e",
-                  "slug": "\u003cvalue\u003e",
-                  "id": "8350.19",
-                  "ownerType": "\u003cvalue\u003e"
-                },
-                {
-                  "provider": "\u003cvalue\u003e",
-                  "slug": "\u003cvalue\u003e",
-                  "id": "4647.99",
-                  "ownerType": "\u003cvalue\u003e"
-                }
-              ]
-            type: simple
-    x-speakeasy-test-group: integrations
-  - workflowId: searchRepo
-    steps:
-      - stepId: test
-        operationId: searchRepo
-        parameters:
-          - name: host
-            in: query
-            value: ghes-test.now.systems
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: integrations
+    x-speakeasy-test-group: marketplace
   - workflowId: listAuthTokens
     steps:
       - stepId: test
@@ -3528,248 +4072,6 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: authentication
-  - workflowId: getIntegrationLogDrains
-    steps:
-      - stepId: test
-        operationId: getIntegrationLogDrains
-        parameters:
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              []
-            type: simple
-    x-speakeasy-test-group: logDrains
-  - workflowId: createLogDrain
-    steps:
-      - stepId: test
-        operationId: createLogDrain
-        parameters:
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            deliveryFormat: json
-            name: My first log drain
-            secret: a1Xsfd325fXcs
-            url: https://example.com/log-drain
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct",
-                "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
-                "createdAt": 1558531915505,
-                "id": "ld_nBuA7zCID8g4QZ8g",
-                "deliveryFormat": "json",
-                "name": "My first log drain",
-                "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-                "projectIds": [
-                  "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"
-                ],
-                "url": "https://example.com/log-drain",
-                "sources": [
-                  "external"
-                ],
-                "createdFrom": "integration",
-                "headers": {
-                  "0": "{",
-                  "1": "\"",
-                  "2": "A",
-                  "3": "u",
-                  "4": "t",
-                  "5": "h",
-                  "6": "o",
-                  "7": "r",
-                  "8": "i",
-                  "9": "z",
-                  "10": "a",
-                  "11": "t",
-                  "12": "i",
-                  "13": "o",
-                  "14": "n",
-                  "15": "\"",
-                  "16": ":",
-                  "17": " ",
-                  "18": "\"",
-                  "19": "B",
-                  "20": "e",
-                  "21": "a",
-                  "22": "r",
-                  "23": "e",
-                  "24": "r",
-                  "25": " ",
-                  "26": "1",
-                  "27": "2",
-                  "28": "3",
-                  "29": "\"",
-                  "30": "}"
-                },
-                "environments": [
-                  "production"
-                ],
-                "branch": "feature/*",
-                "samplingRate": 0.5
-              }
-            type: simple
-    x-speakeasy-test-group: logDrains
-  - workflowId: deleteIntegrationLogDrain
-    steps:
-      - stepId: test
-        operationId: deleteIntegrationLogDrain
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: logDrains
-  - workflowId: getConfigurableLogDrain
-    steps:
-      - stepId: test
-        operationId: getConfigurableLogDrain
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "id": "\u003cid\u003e",
-                "deliveryFormat": "json",
-                "url": "https://pleasant-beret.com/",
-                "name": "\u003cvalue\u003e",
-                "ownerId": "\u003cid\u003e",
-                "createdAt": "9979.70",
-                "deletedAt": "2589.89",
-                "updatedAt": "1929.64",
-                "environments": [
-                  "production",
-                  "production"
-                ],
-                "secret": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: logDrains
-  - workflowId: deleteConfigurableLogDrain
-    steps:
-      - stepId: test
-        operationId: deleteConfigurableLogDrain
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: logDrains
-  - workflowId: getAllLogDrains
-    steps:
-      - stepId: test
-        operationId: getAllLogDrains
-        parameters:
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              [
-                {
-                  "id": "\u003cid\u003e",
-                  "deliveryFormat": "json",
-                  "url": "https://perfumed-director.net/",
-                  "name": "\u003cvalue\u003e",
-                  "ownerId": "\u003cid\u003e",
-                  "createdAt": "5878.41",
-                  "deletedAt": "1366.34",
-                  "updatedAt": "8559.11",
-                  "environments": [
-                    "production"
-                  ]
-                }
-              ]
-            type: simple
-    x-speakeasy-test-group: logDrains
-  - workflowId: createConfigurableLogDrain
-    steps:
-      - stepId: test
-        operationId: createConfigurableLogDrain
-        parameters:
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            deliveryFormat: json
-            sources:
-              - external
-            url: https://sugary-technician.name
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "id": "\u003cid\u003e",
-                "deliveryFormat": "json",
-                "url": "https://close-dividend.biz",
-                "name": "\u003cvalue\u003e",
-                "ownerId": "\u003cid\u003e",
-                "createdAt": "911.21",
-                "deletedAt": "5254.68",
-                "updatedAt": "3248.86",
-                "environments": [
-                  "preview",
-                  "production"
-                ]
-              }
-            type: simple
-    x-speakeasy-test-group: logDrains
   - workflowId: addProjectMember
     steps:
       - stepId: test
@@ -3828,10 +4130,10 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: projectMembers
-  - workflowId: post_/v1/projects/{idOrName}/custom-environments
+  - workflowId: createCustomEnvironment
     steps:
       - stepId: test
-        operationId: post_/v1/projects/{idOrName}/custom-environments
+        operationId: createCustomEnvironment
         parameters:
           - name: idOrName
             in: path
@@ -3870,14 +4172,17 @@ workflows:
           - context: $response.body
             condition: |
               {
+                "accountLimit": {
+                  "total": 966.92
+                },
                 "environments": []
               }
             type: simple
     x-speakeasy-test-group: environment
-  - workflowId: get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+  - workflowId: getCustomEnvironment
     steps:
       - stepId: test
-        operationId: get_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+        operationId: getCustomEnvironment
         parameters:
           - name: idOrName
             in: path
@@ -3899,10 +4204,10 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: environment
-  - workflowId: patch_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+  - workflowId: updateCustomEnvironment
     steps:
       - stepId: test
-        operationId: patch_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+        operationId: updateCustomEnvironment
         parameters:
           - name: idOrName
             in: path
@@ -3924,10 +4229,10 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: environment
-  - workflowId: delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+  - workflowId: removeCustomEnvironment
     steps:
       - stepId: test
-        operationId: delete_/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+        operationId: removeCustomEnvironment
         parameters:
           - name: idOrName
             in: path
@@ -3972,7 +4277,7 @@ workflows:
             condition: |
               {
                 "attackModeEnabled": true,
-                "attackModeUpdatedAt": "4536.22"
+                "attackModeUpdatedAt": 6133.77
               }
             type: simple
     x-speakeasy-test-group: security
@@ -4004,13 +4309,13 @@ workflows:
                   "ownerId": "\u003cid\u003e",
                   "projectKey": "\u003cvalue\u003e",
                   "id": "\u003cid\u003e",
-                  "version": "4570.86",
-                  "updatedAt": "\u003cvalue\u003e",
+                  "version": 892.22,
+                  "updatedAt": "1745792555559",
                   "firewallEnabled": true,
                   "crs": {
                     "sd": {
                       "active": false,
-                      "action": "deny"
+                      "action": "log"
                     },
                     "ma": {
                       "active": false,
@@ -4018,18 +4323,18 @@ workflows:
                     },
                     "lfi": {
                       "active": false,
-                      "action": "log"
+                      "action": "deny"
                     },
                     "rfi": {
                       "active": false,
                       "action": "deny"
                     },
                     "rce": {
-                      "active": false,
+                      "active": true,
                       "action": "deny"
                     },
                     "php": {
-                      "active": true,
+                      "active": false,
                       "action": "deny"
                     },
                     "gen": {
@@ -4037,65 +4342,33 @@ workflows:
                       "action": "deny"
                     },
                     "xss": {
-                      "active": false,
-                      "action": "deny"
+                      "active": true,
+                      "action": "log"
                     },
                     "sqli": {
                       "active": true,
-                      "action": "log"
+                      "action": "deny"
                     },
                     "sf": {
                       "active": true,
-                      "action": "deny"
+                      "action": "log"
                     },
                     "java": {
-                      "active": true,
-                      "action": "log"
+                      "active": false,
+                      "action": "deny"
                     }
                   },
                   "rules": [
                     {
                       "id": "\u003cid\u003e",
                       "name": "\u003cvalue\u003e",
-                      "active": true,
+                      "active": false,
                       "conditionGroup": [
                         {
                           "conditions": [
                             {
-                              "type": "ip_address",
-                              "op": "suf"
-                            },
-                            {
-                              "type": "geo_as_number",
+                              "type": "geo_city",
                               "op": "pre"
-                            },
-                            {
-                              "type": "ja3_digest",
-                              "op": "inc"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "type": "geo_as_number",
-                              "op": "neq"
-                            },
-                            {
-                              "type": "protocol",
-                              "op": "sub"
-                            },
-                            {
-                              "type": "ja3_digest",
-                              "op": "suf"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "type": "region",
-                              "op": "neq"
                             }
                           ]
                         }
@@ -4117,16 +4390,41 @@ workflows:
                         {
                           "conditions": [
                             {
-                              "type": "scheme",
-                              "op": "neq"
+                              "type": "ip_address",
+                              "op": "sub"
+                            },
+                            {
+                              "type": "ja3_digest",
+                              "op": "suf"
+                            },
+                            {
+                              "type": "protocol",
+                              "op": "sub"
                             }
                           ]
                         },
                         {
-                          "conditions": []
+                          "conditions": [
+                            {
+                              "type": "geo_as_number",
+                              "op": "re"
+                            },
+                            {
+                              "type": "geo_continent",
+                              "op": "nex"
+                            },
+                            {
+                              "type": "region",
+                              "op": "gt"
+                            }
+                          ]
                         },
                         {
                           "conditions": [
+                            {
+                              "type": "method",
+                              "op": "gte"
+                            },
                             {
                               "type": "header",
                               "op": "inc"
@@ -4142,7 +4440,11 @@ workflows:
                     }
                   ],
                   "ips": [],
-                  "changes": []
+                  "changes": [
+                    {},
+                    {},
+                    {}
+                  ]
                 }
               }
             type: simple
@@ -4164,8 +4466,10 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            action: ip.remove
+            action: managedRules.update
             id: <id>
+            value:
+              active: true
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -4200,16 +4504,16 @@ workflows:
                 "ownerId": "\u003cid\u003e",
                 "projectKey": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
-                "version": "228.91",
-                "updatedAt": "\u003cvalue\u003e",
-                "firewallEnabled": true,
+                "version": 228.9,
+                "updatedAt": "1744362822275",
+                "firewallEnabled": false,
                 "crs": {
                   "sd": {
-                    "active": false,
+                    "active": true,
                     "action": "deny"
                   },
                   "ma": {
-                    "active": true,
+                    "active": false,
                     "action": "log"
                   },
                   "lfi": {
@@ -4217,12 +4521,12 @@ workflows:
                     "action": "log"
                   },
                   "rfi": {
-                    "active": false,
+                    "active": true,
                     "action": "deny"
                   },
                   "rce": {
                     "active": true,
-                    "action": "deny"
+                    "action": "log"
                   },
                   "php": {
                     "active": false,
@@ -4230,7 +4534,7 @@ workflows:
                   },
                   "gen": {
                     "active": false,
-                    "action": "log"
+                    "action": "deny"
                   },
                   "xss": {
                     "active": true,
@@ -4253,29 +4557,13 @@ workflows:
                   {
                     "id": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
-                    "active": true,
+                    "active": false,
                     "conditionGroup": [
                       {
                         "conditions": [
                           {
-                            "type": "ip_address",
-                            "op": "eq"
-                          }
-                        ]
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "type": "geo_city",
-                            "op": "ex"
-                          },
-                          {
-                            "type": "ja4_digest",
-                            "op": "nex"
-                          },
-                          {
-                            "type": "ip_address",
-                            "op": "lte"
+                            "type": "path",
+                            "op": "neq"
                           }
                         ]
                       }
@@ -4286,12 +4574,26 @@ workflows:
                 "ips": [
                   {
                     "id": "\u003cid\u003e",
-                    "hostname": "puny-goat.org",
-                    "ip": "0.147.40.42",
-                    "action": "challenge"
+                    "hostname": "crowded-suspension.net",
+                    "ip": "194.99.165.97",
+                    "action": "bypass"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "hostname": "burly-academics.name",
+                    "ip": "42.161.47.142",
+                    "action": "bypass"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "hostname": "damaged-bracelet.info",
+                    "ip": "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
+                    "action": "log"
                   }
                 ],
-                "changes": []
+                "changes": [
+                  {}
+                ]
               }
             type: simple
     x-speakeasy-test-group: security
@@ -4324,8 +4626,9 @@ workflows:
                     "Id": "\u003cid\u003e",
                     "Domain": "sneaky-intervention.info",
                     "Ip": "124.153.161.35",
-                    "ProjectId": "\u003cid\u003e",
-                    "IsProjectRule": false
+                    "CreatedAt": "1730712703128",
+                    "UpdatedAt": "1744368534759",
+                    "UpdatedAtHour": "\u003cvalue\u003e"
                   }
                 ],
                 "pagination": "\u003cvalue\u003e"
@@ -4359,6 +4662,7 @@ workflows:
                     "Id": "\u003cid\u003e",
                     "Domain": "jubilant-outrun.name",
                     "ProjectId": "\u003cid\u003e",
+                    "Note": "\u003cvalue\u003e",
                     "IsProjectRule": true
                   }
                 ],
@@ -4390,65 +4694,6 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: security
-  - workflowId: getTeamMembers
-    steps:
-      - stepId: test
-        operationId: getTeamMembers
-        parameters:
-          - name: teamId
-            in: path
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: limit
-            in: query
-            value: 20
-          - name: since
-            in: query
-            value: 1540095775951
-          - name: until
-            in: query
-            value: 1540095775951
-          - name: role
-            in: query
-            value: OWNER
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "members": [
-                  {
-                    "avatar": "123a6c5209bc3778245d011443644c8d27dc2c50",
-                    "confirmed": true,
-                    "email": "jane.doe@example.com",
-                    "role": "OWNER",
-                    "uid": "zTuNVUXEAvvnNN3IaqinkyMw",
-                    "username": "jane-doe",
-                    "name": "Jane Doe",
-                    "createdAt": 1588720733602,
-                    "accessRequestedAt": 1588820733602
-                  },
-                  {
-                    "avatar": "123a6c5209bc3778245d011443644c8d27dc2c50",
-                    "confirmed": true,
-                    "email": "jane.doe@example.com",
-                    "role": "OWNER",
-                    "uid": "zTuNVUXEAvvnNN3IaqinkyMw",
-                    "username": "jane-doe",
-                    "name": "Jane Doe",
-                    "createdAt": 1588720733602,
-                    "accessRequestedAt": 1588820733602
-                  }
-                ],
-                "pagination": {
-                  "hasNext": true,
-                  "count": 20,
-                  "next": 1540095775951,
-                  "prev": 1540095775951
-                }
-              }
-            type: simple
-    x-speakeasy-test-group: teams
   - workflowId: requestAccessToTeam
     steps:
       - stepId: test
@@ -4554,6 +4799,8 @@ workflows:
             projects:
               - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
                 role: ADMIN
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
             role: '["MEMBER","VIEWER"]'
         successCriteria:
           - condition: $statusCode == 200
@@ -4605,7 +4852,9 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "key": "\u003cvalue\u003e"
+              }
             type: simple
     x-speakeasy-test-group: teams
   - workflowId: patchTeam
@@ -4642,7 +4891,9 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "key": "\u003cvalue\u003e"
+              }
             type: simple
     x-speakeasy-test-group: teams
   - workflowId: getTeams
@@ -4920,6 +5171,62 @@ workflows:
         successCriteria:
           - condition: $statusCode == 204
     x-speakeasy-test-group: webhooks
+  - workflowId: listDeploymentAliases
+    steps:
+      - stepId: test
+        operationId: listDeploymentAliases
+        parameters:
+          - name: id
+            in: path
+            value: dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "aliases": []
+              }
+            type: simple
+    x-speakeasy-test-group: aliases
+  - workflowId: assignAlias
+    steps:
+      - stepId: test
+        operationId: assignAlias
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            alias: my-alias.vercel.app
+            redirect: null
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "uid": "2WjyKQmM8ZnGcJsPWMrHRHrE",
+                "alias": "my-alias.vercel.app",
+                "created": "2017-04-26T23:00:34.232Z",
+                "oldDeploymentId": "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa"
+              }
+            type: simple
+    x-speakeasy-test-group: aliases
   - workflowId: listAliases
     steps:
       - stepId: test
@@ -5044,62 +5351,6 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: aliases
-  - workflowId: listDeploymentAliases
-    steps:
-      - stepId: test
-        operationId: listDeploymentAliases
-        parameters:
-          - name: id
-            in: path
-            value: dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "aliases": []
-              }
-            type: simple
-    x-speakeasy-test-group: aliases
-  - workflowId: assignAlias
-    steps:
-      - stepId: test
-        operationId: assignAlias
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            alias: my-alias.vercel.app
-            redirect: null
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "uid": "2WjyKQmM8ZnGcJsPWMrHRHrE",
-                "alias": "my-alias.vercel.app",
-                "created": "2017-04-26T23:00:34.232Z",
-                "oldDeploymentId": "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa"
-              }
-            type: simple
-    x-speakeasy-test-group: aliases
   - workflowId: getCertById
     steps:
       - stepId: test
@@ -5121,8 +5372,8 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": "227.13",
-                "expiresAt": "3995.77",
+                "createdAt": 227.12,
+                "expiresAt": 3995.77,
                 "autoRenew": false,
                 "cns": [
                   "\u003cvalue\u003e"
@@ -5173,8 +5424,8 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": "1842.08",
-                "expiresAt": "8685.41",
+                "createdAt": 1842.08,
+                "expiresAt": 8685.42,
                 "autoRenew": true,
                 "cns": []
               }
@@ -5204,8 +5455,8 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": "9219.92",
-                "expiresAt": "5530.55",
+                "createdAt": 9219.92,
+                "expiresAt": 5530.55,
                 "autoRenew": true,
                 "cns": [
                   "\u003cvalue\u003e",
@@ -5214,450 +5465,3 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: certs
-  - workflowId: createProjectTransferRequest
-    steps:
-      - stepId: test
-        operationId: createProjectTransferRequest
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: projects
-  - workflowId: acceptProjectTransferRequest
-    steps:
-      - stepId: test
-        operationId: acceptProjectTransferRequest
-        parameters:
-          - name: code
-            in: path
-            value: <value>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            newProjectName: a-project-name
-        successCriteria:
-          - condition: $statusCode == 202
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: projects
-  - workflowId: getActiveAttackStatus
-    steps:
-      - stepId: test
-        operationId: getActiveAttackStatus
-        parameters:
-          - name: projectId
-            in: query
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "anomalies": [
-                  {
-                    "ownerId": "\u003cid\u003e",
-                    "projectId": "\u003cid\u003e",
-                    "startTime": 9556.58,
-                    "endTime": 3001.16,
-                    "atMinute": 5447.77,
-                    "affectedHostMap": {}
-                  },
-                  {
-                    "ownerId": "\u003cid\u003e",
-                    "projectId": "\u003cid\u003e",
-                    "startTime": 7786.06,
-                    "endTime": 9758.22,
-                    "atMinute": 7118.69,
-                    "affectedHostMap": {}
-                  }
-                ]
-              }
-            type: simple
-    x-speakeasy-test-group: security
-  - workflowId: filterProjectEnvs
-    steps:
-      - stepId: test
-        operationId: filterProjectEnvs
-        parameters:
-          - name: idOrName
-            in: path
-            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
-          - name: gitBranch
-            in: query
-            value: feature-1
-          - name: decrypt
-            in: query
-            value: "true"
-          - name: source
-            in: query
-            value: vercel-cli:pull
-          - name: customEnvironmentId
-            in: query
-            value: env_123abc4567
-          - name: customEnvironmentSlug
-            in: query
-            value: my-custom-env
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "envs": [
-                  {},
-                  {},
-                  {}
-                ],
-                "pagination": {
-                  "count": 20,
-                  "next": 1540095775951,
-                  "prev": 1540095775951
-                }
-              }
-            type: simple
-    x-speakeasy-test-group: projects
-  - workflowId: update-integration-deployment-action
-    steps:
-      - stepId: test
-        operationId: update-integration-deployment-action
-        parameters:
-          - name: deploymentId
-            in: path
-            value: <id>
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-          - name: action
-            in: path
-            value: <value>
-        successCriteria:
-          - condition: $statusCode == 202
-    x-speakeasy-test-group: deployments
-  - workflowId: submit-prepayment-balances
-    steps:
-      - stepId: test
-        operationId: submit-prepayment-balances
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 201
-    x-speakeasy-test-group: marketplace
-  - workflowId: import-resource
-    steps:
-      - stepId: test
-        operationId: import-resource
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "name": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: marketplace
-  - workflowId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
-    steps:
-      - stepId: test
-        operationId: post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: marketplace
-  - workflowId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-    steps:
-      - stepId: test
-        operationId: patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-          - name: itemId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: marketplace
-  - workflowId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-    steps:
-      - stepId: test
-        operationId: delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-          - name: itemId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: marketplace
-  - workflowId: head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
-    steps:
-      - stepId: test
-        operationId: head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "items": {
-                  "key": [],
-                  "key1": true
-                },
-                "updatedAt": 6086.93,
-                "digest": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: marketplace
-  - workflowId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
-    steps:
-      - stepId: test
-        operationId: put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
-        parameters:
-          - name: integrationConfigurationId
-            in: path
-            value: <id>
-          - name: resourceId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "items": {
-                  "key": true
-                },
-                "updatedAt": 6820.68,
-                "digest": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: marketplace
-  - workflowId: get_/v1/experimentation/items
-    steps:
-      - stepId: test
-        operationId: get_/v1/experimentation/items
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "items": []
-              }
-            type: simple
-    x-speakeasy-test-group: api-experimentation
-  - workflowId: createCustomEnvironment
-    steps:
-      - stepId: test
-        operationId: createCustomEnvironment
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 201
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: environment
-  - workflowId: getCustomEnvironment
-    steps:
-      - stepId: test
-        operationId: getCustomEnvironment
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-          - name: environmentSlugOrId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: environment
-  - workflowId: updateCustomEnvironment
-    steps:
-      - stepId: test
-        operationId: updateCustomEnvironment
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-          - name: environmentSlugOrId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: environment
-  - workflowId: removeCustomEnvironment
-    steps:
-      - stepId: test
-        operationId: removeCustomEnvironment
-        parameters:
-          - name: idOrName
-            in: path
-            value: <value>
-          - name: environmentSlugOrId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
-    x-speakeasy-test-group: environment
-  - workflowId: queryExperimentationItems
-    steps:
-      - stepId: test
-        operationId: queryExperimentationItems
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "items": []
-              }
-            type: simple
-    x-speakeasy-test-group: marketplace
-  - workflowId: pauseProject
-    steps:
-      - stepId: test
-        operationId: pauseProject
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-    x-speakeasy-test-group: projects
-  - workflowId: unpauseProject
-    steps:
-      - stepId: test
-        operationId: unpauseProject
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-    x-speakeasy-test-group: projects

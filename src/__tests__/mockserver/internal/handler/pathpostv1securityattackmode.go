@@ -52,7 +52,7 @@ func testUpdateAttackChallengeModeUpdateAttackChallengeMode0(w http.ResponseWrit
 	}
 	respBody := &operations.UpdateAttackChallengeModeResponseBody{
 		AttackModeEnabled:   true,
-		AttackModeUpdatedAt: 4536.22,
+		AttackModeUpdatedAt: 6133.77,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

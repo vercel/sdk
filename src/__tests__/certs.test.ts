@@ -23,7 +23,7 @@ test("Certs Get Cert By Id", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     id: "<id>",
-    createdAt: 227.13,
+    createdAt: 227.12,
     expiresAt: 3995.77,
     autoRenew: false,
     cns: [
@@ -68,7 +68,7 @@ test("Certs Issue Cert", async () => {
   expect(result).toEqual({
     id: "<id>",
     createdAt: 1842.08,
-    expiresAt: 8685.41,
+    expiresAt: 8685.42,
     autoRenew: true,
     cns: [],
   });

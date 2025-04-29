@@ -6849,10 +6849,11 @@ func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
 }
 
 type PayloadBuildMachine struct {
-	PurchaseType *PayloadPurchaseType `json:"purchaseType,omitempty"`
-	AbovePlan    *bool                `json:"abovePlan,omitempty"`
-	Cores        *float64             `json:"cores,omitempty"`
-	Memory       *float64             `json:"memory,omitempty"`
+	PurchaseType          *PayloadPurchaseType `json:"purchaseType,omitempty"`
+	AbovePlan             *bool                `json:"abovePlan,omitempty"`
+	IsDefaultBuildMachine *bool                `json:"isDefaultBuildMachine,omitempty"`
+	Cores                 *float64             `json:"cores,omitempty"`
+	Memory                *float64             `json:"memory,omitempty"`
 }
 
 func (o *PayloadBuildMachine) GetPurchaseType() *PayloadPurchaseType {
@@ -6867,6 +6868,13 @@ func (o *PayloadBuildMachine) GetAbovePlan() *bool {
 		return nil
 	}
 	return o.AbovePlan
+}
+
+func (o *PayloadBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
 }
 
 func (o *PayloadBuildMachine) GetCores() *float64 {
@@ -9503,6 +9511,28 @@ func (o *OverageUsageAlerts) GetWebAnalyticsEvent() *WebAnalyticsEvent {
 	return o.WebAnalyticsEvent
 }
 
+// OverageMetadata - Contains the timestamps for usage summary emails.
+type OverageMetadata struct {
+	// Tracks if the first time on-demand overage email has been sent.
+	FirstTimeOnDemandNotificationSentAt *float64 `json:"firstTimeOnDemandNotificationSentAt,omitempty"`
+	// Tracks the last time we sent a summary email.
+	OverageSummaryEmailSentAt *float64 `json:"overageSummaryEmailSentAt,omitempty"`
+}
+
+func (o *OverageMetadata) GetFirstTimeOnDemandNotificationSentAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstTimeOnDemandNotificationSentAt
+}
+
+func (o *OverageMetadata) GetOverageSummaryEmailSentAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.OverageSummaryEmailSentAt
+}
+
 // EnablePreviewFeedback - Whether the Vercel Toolbar is enabled for preview deployments.
 type EnablePreviewFeedback string
 
@@ -10932,8 +10962,10 @@ type NewOwner struct {
 	// Contains the timestamps when a user was notified about their usage
 	UsageAlerts        *UsageAlerts        `json:"usageAlerts,omitempty"`
 	OverageUsageAlerts *OverageUsageAlerts `json:"overageUsageAlerts,omitempty"`
-	Username           string              `json:"username"`
-	UpdatedAt          float64             `json:"updatedAt"`
+	// Contains the timestamps for usage summary emails.
+	OverageMetadata *OverageMetadata `json:"overageMetadata,omitempty"`
+	Username        string           `json:"username"`
+	UpdatedAt       float64          `json:"updatedAt"`
 	// Whether the Vercel Toolbar is enabled for preview deployments.
 	EnablePreviewFeedback *EnablePreviewFeedback `json:"enablePreviewFeedback,omitempty"`
 	// Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
@@ -11380,6 +11412,13 @@ func (o *NewOwner) GetOverageUsageAlerts() *OverageUsageAlerts {
 		return nil
 	}
 	return o.OverageUsageAlerts
+}
+
+func (o *NewOwner) GetOverageMetadata() *OverageMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.OverageMetadata
 }
 
 func (o *NewOwner) GetUsername() string {

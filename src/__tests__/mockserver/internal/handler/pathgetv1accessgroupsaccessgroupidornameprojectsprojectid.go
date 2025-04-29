@@ -21,55 +21,16 @@ func pathGetV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.HTTP
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "readAccessGroupProject[0]":
-			dir.HandlerFunc("readAccessGroupProject", testReadAccessGroupProjectReadAccessGroupProject0)(w, req)
 		case "readAccessGroupProject-id[0]":
 			dir.HandlerFunc("readAccessGroupProject", testReadAccessGroupProjectReadAccessGroupProjectId0)(w, req)
 		case "readAccessGroupProject-name[0]":
 			dir.HandlerFunc("readAccessGroupProject", testReadAccessGroupProjectReadAccessGroupProjectName0)(w, req)
+		case "readAccessGroupProject[0]":
+			dir.HandlerFunc("readAccessGroupProject", testReadAccessGroupProjectReadAccessGroupProject0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
-}
-
-func testReadAccessGroupProjectReadAccessGroupProject0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusUnauthorized)
-		return
-	}
-	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	respBody := &operations.ReadAccessGroupProjectResponseBody{
-		TeamID:        "<id>",
-		AccessGroupID: "<id>",
-		ProjectID:     "<id>",
-		Role:          operations.ReadAccessGroupProjectRoleAdmin,
-		CreatedAt:     "<value>",
-		UpdatedAt:     "<value>",
-	}
-	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
-
-	if err != nil {
-		http.Error(
-			w,
-			"Unable to encode response body as JSON: "+err.Error(),
-			http.StatusInternalServerError,
-		)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(respBodyBytes)
 }
 
 func testReadAccessGroupProjectReadAccessGroupProjectId0(w http.ResponseWriter, req *http.Request) {
@@ -93,8 +54,8 @@ func testReadAccessGroupProjectReadAccessGroupProjectId0(w http.ResponseWriter, 
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.ReadAccessGroupProjectRoleAdmin,
-		CreatedAt:     "1706854122023",
-		UpdatedAt:     "1735905380072",
+		CreatedAt:     "1715344910813",
+		UpdatedAt:     "1744396168862",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -132,8 +93,47 @@ func testReadAccessGroupProjectReadAccessGroupProjectName0(w http.ResponseWriter
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.ReadAccessGroupProjectRoleProjectDeveloper,
-		CreatedAt:     "1731124284693",
-		UpdatedAt:     "1735836411388",
+		CreatedAt:     "1739615073482",
+		UpdatedAt:     "1744327200176",
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testReadAccessGroupProjectReadAccessGroupProject0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &operations.ReadAccessGroupProjectResponseBody{
+		TeamID:        "<id>",
+		AccessGroupID: "<id>",
+		ProjectID:     "<id>",
+		Role:          operations.ReadAccessGroupProjectRoleProjectDeveloper,
+		CreatedAt:     "1741430060404",
+		UpdatedAt:     "1744396619853",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

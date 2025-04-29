@@ -8,8 +8,8 @@ import { ListAccessGroupProjectsProjects } from "@vercel/sdk/models/listaccessgr
 let value: ListAccessGroupProjectsProjects = {
   projectId: "<id>",
   role: "PROJECT_VIEWER",
-  createdAt: "1739061148042",
-  updatedAt: "1745914549957",
+  createdAt: "1739062551189",
+  updatedAt: "1745915953104",
   project: {},
 };
 ```

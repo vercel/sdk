@@ -49,16 +49,16 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 		OwnerID:         "<id>",
 		ProjectKey:      "<value>",
 		ID:              "<id>",
-		Version:         228.91,
-		UpdatedAt:       "<value>",
-		FirewallEnabled: true,
+		Version:         228.9,
+		UpdatedAt:       "1744362822275",
+		FirewallEnabled: false,
 		Crs: operations.GetFirewallConfigCrs{
 			Sd: operations.GetFirewallConfigSd{
-				Active: false,
+				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdActionDeny,
 			},
 			Ma: operations.GetFirewallConfigMa{
-				Active: true,
+				Active: false,
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaActionLog,
 			},
 			Lfi: operations.GetFirewallConfigLfi{
@@ -66,12 +66,12 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiActionLog,
 			},
 			Rfi: operations.GetFirewallConfigRfi{
-				Active: false,
+				Active: true,
 				Action: operations.GetFirewallConfigSecurityResponse200ActionDeny,
 			},
 			Rce: operations.GetFirewallConfigRce{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONActionDeny,
+				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONActionLog,
 			},
 			Php: operations.GetFirewallConfigPhp{
 				Active: false,
@@ -79,7 +79,7 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 			},
 			Gen: operations.GetFirewallConfigGen{
 				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsActionLog,
+				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsActionDeny,
 			},
 			XSS: operations.GetFirewallConfigXSS{
 				Active: true,
@@ -102,29 +102,13 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 			operations.GetFirewallConfigRules{
 				ID:     "<id>",
 				Name:   "<value>",
-				Active: true,
+				Active: false,
 				ConditionGroup: []operations.GetFirewallConfigConditionGroup{
 					operations.GetFirewallConfigConditionGroup{
 						Conditions: []operations.GetFirewallConfigConditions{
 							operations.GetFirewallConfigConditions{
-								Type: operations.GetFirewallConfigTypeIPAddress,
-								Op:   operations.GetFirewallConfigOpEq,
-							},
-						},
-					},
-					operations.GetFirewallConfigConditionGroup{
-						Conditions: []operations.GetFirewallConfigConditions{
-							operations.GetFirewallConfigConditions{
-								Type: operations.GetFirewallConfigTypeGeoCity,
-								Op:   operations.GetFirewallConfigOpEx,
-							},
-							operations.GetFirewallConfigConditions{
-								Type: operations.GetFirewallConfigTypeJa4Digest,
-								Op:   operations.GetFirewallConfigOpNex,
-							},
-							operations.GetFirewallConfigConditions{
-								Type: operations.GetFirewallConfigTypeIPAddress,
-								Op:   operations.GetFirewallConfigOpLte,
+								Type: operations.GetFirewallConfigTypePath,
+								Op:   operations.GetFirewallConfigOpNeq,
 							},
 						},
 					},
@@ -135,12 +119,26 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 		Ips: []operations.GetFirewallConfigIps{
 			operations.GetFirewallConfigIps{
 				ID:       "<id>",
-				Hostname: "puny-goat.org",
-				IP:       "0.147.40.42",
-				Action:   operations.GetFirewallConfigSecurityActionChallenge,
+				Hostname: "crowded-suspension.net",
+				IP:       "194.99.165.97",
+				Action:   operations.GetFirewallConfigSecurityActionBypass,
+			},
+			operations.GetFirewallConfigIps{
+				ID:       "<id>",
+				Hostname: "burly-academics.name",
+				IP:       "42.161.47.142",
+				Action:   operations.GetFirewallConfigSecurityActionBypass,
+			},
+			operations.GetFirewallConfigIps{
+				ID:       "<id>",
+				Hostname: "damaged-bracelet.info",
+				IP:       "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
+				Action:   operations.GetFirewallConfigSecurityActionLog,
 			},
 		},
-		Changes: []operations.Changes{},
+		Changes: []operations.Changes{
+			operations.Changes{},
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

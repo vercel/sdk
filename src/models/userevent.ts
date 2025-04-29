@@ -1884,6 +1884,7 @@ export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 export type PayloadBuildMachine = {
   purchaseType?: PayloadPurchaseType | undefined;
   abovePlan?: boolean | undefined;
+  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16071,6 +16072,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: PayloadPurchaseType$inboundSchema.optional(),
   abovePlan: z.boolean().optional(),
+  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
@@ -16079,6 +16081,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 export type PayloadBuildMachine$Outbound = {
   purchaseType?: string | undefined;
   abovePlan?: boolean | undefined;
+  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16091,6 +16094,7 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: PayloadPurchaseType$outboundSchema.optional(),
   abovePlan: z.boolean().optional(),
+  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });

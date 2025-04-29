@@ -26,7 +26,7 @@ test("Security Update Attack Challenge Mode", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     attackModeEnabled: true,
-    attackModeUpdatedAt: 4536.22,
+    attackModeUpdatedAt: 6133.77,
   });
 });
 
@@ -53,13 +53,13 @@ test("Security Put Firewall Config", async () => {
       ownerId: "<id>",
       projectKey: "<value>",
       id: "<id>",
-      version: 4570.86,
-      updatedAt: "<value>",
+      version: 892.22,
+      updatedAt: "1745792555559",
       firewallEnabled: true,
       crs: {
         sd: {
           active: false,
-          action: "deny",
+          action: "log",
         },
         ma: {
           active: false,
@@ -67,18 +67,18 @@ test("Security Put Firewall Config", async () => {
         },
         lfi: {
           active: false,
-          action: "log",
+          action: "deny",
         },
         rfi: {
           active: false,
           action: "deny",
         },
         rce: {
-          active: false,
+          active: true,
           action: "deny",
         },
         php: {
-          active: true,
+          active: false,
           action: "deny",
         },
         gen: {
@@ -86,65 +86,33 @@ test("Security Put Firewall Config", async () => {
           action: "deny",
         },
         xss: {
-          active: false,
-          action: "deny",
+          active: true,
+          action: "log",
         },
         sqli: {
           active: true,
-          action: "log",
+          action: "deny",
         },
         sf: {
           active: true,
-          action: "deny",
+          action: "log",
         },
         java: {
-          active: true,
-          action: "log",
+          active: false,
+          action: "deny",
         },
       },
       rules: [
         {
           id: "<id>",
           name: "<value>",
-          active: true,
+          active: false,
           conditionGroup: [
             {
               conditions: [
                 {
-                  type: "ip_address",
-                  op: "suf",
-                },
-                {
-                  type: "geo_as_number",
+                  type: "geo_city",
                   op: "pre",
-                },
-                {
-                  type: "ja3_digest",
-                  op: "inc",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "geo_as_number",
-                  op: "neq",
-                },
-                {
-                  type: "protocol",
-                  op: "sub",
-                },
-                {
-                  type: "ja3_digest",
-                  op: "suf",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "region",
-                  op: "neq",
                 },
               ],
             },
@@ -166,16 +134,41 @@ test("Security Put Firewall Config", async () => {
             {
               conditions: [
                 {
-                  type: "scheme",
-                  op: "neq",
+                  type: "ip_address",
+                  op: "sub",
+                },
+                {
+                  type: "ja3_digest",
+                  op: "suf",
+                },
+                {
+                  type: "protocol",
+                  op: "sub",
                 },
               ],
             },
             {
-              conditions: [],
+              conditions: [
+                {
+                  type: "geo_as_number",
+                  op: "re",
+                },
+                {
+                  type: "geo_continent",
+                  op: "nex",
+                },
+                {
+                  type: "region",
+                  op: "gt",
+                },
+              ],
             },
             {
               conditions: [
+                {
+                  type: "method",
+                  op: "gte",
+                },
                 {
                   type: "header",
                   op: "inc",
@@ -191,7 +184,11 @@ test("Security Put Firewall Config", async () => {
         },
       ],
       ips: [],
-      changes: [],
+      changes: [
+        {},
+        {},
+        {},
+      ],
     },
   });
 });
@@ -210,8 +207,11 @@ test("Security Update Firewall Config", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      action: "ip.remove",
+      action: "managedRules.update",
       id: "<id>",
+      value: {
+        active: true,
+      },
     },
   });
   expect(result).toBeDefined();
@@ -238,16 +238,16 @@ test("Security Get Firewall Config", async () => {
     ownerId: "<id>",
     projectKey: "<value>",
     id: "<id>",
-    version: 228.91,
-    updatedAt: "<value>",
-    firewallEnabled: true,
+    version: 228.9,
+    updatedAt: "1744362822275",
+    firewallEnabled: false,
     crs: {
       sd: {
-        active: false,
+        active: true,
         action: "deny",
       },
       ma: {
-        active: true,
+        active: false,
         action: "log",
       },
       lfi: {
@@ -255,12 +255,12 @@ test("Security Get Firewall Config", async () => {
         action: "log",
       },
       rfi: {
-        active: false,
+        active: true,
         action: "deny",
       },
       rce: {
         active: true,
-        action: "deny",
+        action: "log",
       },
       php: {
         active: false,
@@ -268,7 +268,7 @@ test("Security Get Firewall Config", async () => {
       },
       gen: {
         active: false,
-        action: "log",
+        action: "deny",
       },
       xss: {
         active: true,
@@ -291,29 +291,13 @@ test("Security Get Firewall Config", async () => {
       {
         id: "<id>",
         name: "<value>",
-        active: true,
+        active: false,
         conditionGroup: [
           {
             conditions: [
               {
-                type: "ip_address",
-                op: "eq",
-              },
-            ],
-          },
-          {
-            conditions: [
-              {
-                type: "geo_city",
-                op: "ex",
-              },
-              {
-                type: "ja4_digest",
-                op: "nex",
-              },
-              {
-                type: "ip_address",
-                op: "lte",
+                type: "path",
+                op: "neq",
               },
             ],
           },
@@ -324,12 +308,26 @@ test("Security Get Firewall Config", async () => {
     ips: [
       {
         id: "<id>",
-        hostname: "puny-goat.org",
-        ip: "0.147.40.42",
-        action: "challenge",
+        hostname: "crowded-suspension.net",
+        ip: "194.99.165.97",
+        action: "bypass",
+      },
+      {
+        id: "<id>",
+        hostname: "burly-academics.name",
+        ip: "42.161.47.142",
+        action: "bypass",
+      },
+      {
+        id: "<id>",
+        hostname: "damaged-bracelet.info",
+        ip: "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
+        action: "log",
       },
     ],
-    changes: [],
+    changes: [
+      {},
+    ],
   });
 });
 
@@ -349,7 +347,20 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "sneaky-intervention.info",
+        ip: "124.153.161.35",
+        createdAt: "1730712703128",
+        updatedAt: "1744368534759",
+        updatedAtHour: "<value>",
+      },
+    ],
+    pagination: "<value>",
+  });
 });
 
 test("Security Add Bypass Ip", async () => {
@@ -373,10 +384,10 @@ test("Security Add Bypass Ip", async () => {
       {
         ownerId: "<id>",
         id: "<id>",
-        domain: "memorable-advancement.com",
+        domain: "jubilant-outrun.name",
         projectId: "<id>",
         note: "<value>",
-        isProjectRule: false,
+        isProjectRule: true,
       },
     ],
     pagination: "<value>",
@@ -400,42 +411,5 @@ test("Security Remove Bypass Ip", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     ok: true,
-  });
-});
-
-test("Security Get Active Attack Status", async () => {
-  const testHttpClient = createTestHTTPClient("getActiveAttackStatus");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.security.getActiveAttackStatus({
-    projectId: "<id>",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    anomalies: [
-      {
-        ownerId: "<id>",
-        projectId: "<id>",
-        startTime: 9556.58,
-        endTime: 3001.16,
-        atMinute: 5447.77,
-        affectedHostMap: {},
-      },
-      {
-        ownerId: "<id>",
-        projectId: "<id>",
-        startTime: 7786.06,
-        endTime: 9758.22,
-        atMinute: 7118.69,
-        affectedHostMap: {},
-      },
-    ],
   });
 });

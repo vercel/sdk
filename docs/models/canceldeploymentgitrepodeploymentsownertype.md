@@ -5,11 +5,11 @@
 ```typescript
 import { CancelDeploymentGitRepoDeploymentsOwnerType } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentGitRepoDeploymentsOwnerType = "team";
+let value: CancelDeploymentGitRepoDeploymentsOwnerType = "user";
 ```
 
 ## Values
 
 ```typescript
-"team" | "user"
+"user" | "team"
 ```

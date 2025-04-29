@@ -44,7 +44,7 @@ test("Domains Buy Domain", async () => {
         "<value>",
       ],
       verified: false,
-      created: 9374.80,
+      created: 9374.8,
       pending: false,
     },
   });
@@ -319,6 +319,6 @@ test("Domains Delete Domain", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    uid: "rec_V0fra8eEgQwEpFhYG2vTzC3K",
+    uid: "<id>",
   });
 });

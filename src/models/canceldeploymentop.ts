@@ -225,8 +225,8 @@ export type CancelDeploymentCreator = {
 };
 
 export const CancelDeploymentDeploymentsReadyState = {
-  Building: "BUILDING",
   Error: "ERROR",
+  Building: "BUILDING",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -243,10 +243,10 @@ export type CancelDeploymentOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type CancelDeploymentLambdas = {
-  id?: string | undefined;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
+  id?: string | undefined;
   readyState?: CancelDeploymentDeploymentsReadyState | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CancelDeploymentOutput>;
 };
@@ -264,8 +264,8 @@ export type CancelDeploymentStatus = ClosedEnum<typeof CancelDeploymentStatus>;
 export type CancelDeploymentTeam = {
   id: string;
   name: string;
-  avatar?: string | undefined;
   slug: string;
+  avatar?: string | undefined;
 };
 
 export type CancelDeploymentCustomEnvironment2 = {
@@ -640,11 +640,11 @@ export type CancelDeploymentRoutes3 = {
 
 export const CancelDeploymentRoutesHandle = {
   Error: "error",
+  Resource: "resource",
   Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
   Rewrite: "rewrite",
-  Resource: "resource",
 } as const;
 export type CancelDeploymentRoutesHandle = ClosedEnum<
   typeof CancelDeploymentRoutesHandle
@@ -767,8 +767,8 @@ export type CancelDeploymentGitRepoDeploymentsResponseType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType
@@ -795,8 +795,8 @@ export type CancelDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsOwnerType
@@ -823,8 +823,8 @@ export type CancelDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoOwnerType
@@ -925,16 +925,16 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends2;
 
 export const CancelDeploymentFunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type CancelDeploymentFunctionType = ClosedEnum<
   typeof CancelDeploymentFunctionType
 >;
 
 export const CancelDeploymentFunctionMemoryType = {
-  Standard: "standard",
   StandardLegacy: "standard_legacy",
+  Standard: "standard",
   Performance: "performance",
 } as const;
 export type CancelDeploymentFunctionMemoryType = ClosedEnum<
@@ -2076,20 +2076,20 @@ export const CancelDeploymentLambdas$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
   readyState: CancelDeploymentDeploymentsReadyState$inboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
 });
 
 /** @internal */
 export type CancelDeploymentLambdas$Outbound = {
-  id?: string | undefined;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
+  id?: string | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CancelDeploymentOutput$Outbound>;
 };
@@ -2100,10 +2100,10 @@ export const CancelDeploymentLambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentLambdas
 > = z.object({
-  id: z.string().optional(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
   readyState: CancelDeploymentDeploymentsReadyState$outboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CancelDeploymentOutput$outboundSchema)),
 });
@@ -2168,16 +2168,16 @@ export const CancelDeploymentTeam$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  avatar: z.string().optional(),
   slug: z.string(),
+  avatar: z.string().optional(),
 });
 
 /** @internal */
 export type CancelDeploymentTeam$Outbound = {
   id: string;
   name: string;
-  avatar?: string | undefined;
   slug: string;
+  avatar?: string | undefined;
 };
 
 /** @internal */
@@ -2188,8 +2188,8 @@ export const CancelDeploymentTeam$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  avatar: z.string().optional(),
   slug: z.string(),
+  avatar: z.string().optional(),
 });
 
 /**

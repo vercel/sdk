@@ -48,11 +48,11 @@ func testGetEdgeConfigItemsGetEdgeConfigItems0(w http.ResponseWriter, req *http.
 	}
 	respBody := &components.EdgeConfigItem{
 		Key: "<key>",
-		Value: types.Pointer(components.CreateEdgeConfigItemValueStr(
-			"5002.95",
+		Value: types.Pointer(components.CreateEdgeConfigItemValueNumber(
+			5002.95,
 		)),
 		EdgeConfigID: "<id>",
-		CreatedAt:    9069.68,
+		CreatedAt:    9069.69,
 		UpdatedAt:    6276.41,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

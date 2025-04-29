@@ -25,6 +25,10 @@ test("Edge Config Get Edge Configs", async () => {
       sizeInBytes: 8239.08,
       itemCount: 557.07,
     },
+    {
+      sizeInBytes: 4591.09,
+      itemCount: 7040.34,
+    },
   ]);
 });
 
@@ -129,9 +133,9 @@ test("Edge Config Get Edge Config Items", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     key: "<key>",
-    value: "5002.95",
+    value: 5002.95,
     edgeConfigId: "<id>",
-    createdAt: 9069.68,
+    createdAt: 9069.69,
     updatedAt: 6276.41,
   });
 });
@@ -209,10 +213,10 @@ test("Edge Config Get Edge Config Item", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     key: "<key>",
-    value: "9966.77",
+    value: 9966.78,
     edgeConfigId: "<id>",
     createdAt: 1621.85,
-    updatedAt: 3034.44,
+    updatedAt: 3034.43,
   });
 });
 
@@ -236,7 +240,7 @@ test("Edge Config Get Edge Config Tokens", async () => {
     label: "<value>",
     id: "<id>",
     edgeConfigId: "<id>",
-    createdAt: 7692.35,
+    createdAt: 7692.36,
   });
 });
 

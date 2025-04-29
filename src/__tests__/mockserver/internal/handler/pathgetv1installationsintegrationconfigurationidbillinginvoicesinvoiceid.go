@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -47,9 +46,8 @@ func testGetInvoiceGetInvoice0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	respBody := &operations.GetInvoiceResponseBody{
-		Test:        types.Bool(false),
 		InvoiceID:   "<id>",
-		State:       operations.StateScheduled,
+		State:       operations.StateInvoiced,
 		InvoiceDate: "<value>",
 		Period: operations.GetInvoicePeriod{
 			Start: "<value>",
@@ -59,8 +57,8 @@ func testGetInvoiceGetInvoice0(w http.ResponseWriter, req *http.Request) {
 			operations.GetInvoiceItems{
 				BillingPlanID: "<id>",
 				Name:          "<value>",
-				Price:         "317.28",
-				Quantity:      1022.19,
+				Price:         "813.89",
+				Quantity:      2100.54,
 				Units:         "<value>",
 				Total:         "<value>",
 			},

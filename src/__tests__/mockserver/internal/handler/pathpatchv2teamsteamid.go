@@ -49,7 +49,9 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := map[string]any{}
+	respBody := map[string]any{
+		"key": "<value>",
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

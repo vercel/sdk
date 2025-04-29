@@ -453,6 +453,7 @@ run();
 * [updateProjectDomain](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 * [removeProjectDomain](docs/sdks/projects/README.md#removeprojectdomain) - Remove a domain from a project
 * [addProjectDomain](docs/sdks/projects/README.md#addprojectdomain) - Add a domain to a project
+* [moveProjectDomain](docs/sdks/projects/README.md#moveprojectdomain) - Update a project domain
 * [verifyProjectDomain](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
 * [filterProjectEnvs](docs/sdks/projects/README.md#filterprojectenvs) - Retrieve the environment variables of a project by id or name
 * [createProjectEnv](docs/sdks/projects/README.md#createprojectenv) - Create one or more environment variables
@@ -648,6 +649,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsGetProjectEnv`](docs/sdks/projects/README.md#getprojectenv) - Retrieve the decrypted value of an environment variable of a project by id
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
 - [`projectsListPromoteAliases`](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
+- [`projectsMoveProjectDomain`](docs/sdks/projects/README.md#moveprojectdomain) - Update a project domain
 - [`projectsPauseProject`](docs/sdks/projects/README.md#pauseproject) - Pause a project
 - [`projectsRemoveProjectDomain`](docs/sdks/projects/README.md#removeprojectdomain) - Remove a domain from a project
 - [`projectsRemoveProjectEnv`](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable

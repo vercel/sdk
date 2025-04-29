@@ -6,21 +6,21 @@ permissions:
   statuses: write
   id-token: write
 "on":
-  workflow_dispatch:
-    inputs:
-      target: 
-        description: Provided SDK target to run tests for, (all) is valid
-        type: string
   pull_request:
     branches:
       - main
     paths:
-      - '**'        
+      - '**'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Provided SDK target to run tests for, (all) is valid
+        type: string
 jobs:
   test:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-test.yaml@v15
     with:
-      target: ${{ github.event.inputs.target || 'all' }}
+      target: ${{ github.event.inputs.target || 'vercel' }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

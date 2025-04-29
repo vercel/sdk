@@ -6618,6 +6618,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -11474,24 +11480,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -12369,15 +12375,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -12607,11 +12613,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
+                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -12721,8 +12727,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12774,8 +12780,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -12828,8 +12834,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -13880,24 +13886,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -13954,10 +13960,10 @@
                         "name": {
                           "type": "string"
                         },
-                        "avatar": {
+                        "slug": {
                           "type": "string"
                         },
-                        "slug": {
+                        "avatar": {
                           "type": "string"
                         }
                       },
@@ -14909,11 +14915,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
+                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -14992,8 +14998,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15045,8 +15051,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15099,8 +15105,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15272,15 +15278,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -16787,7 +16793,8 @@
             }
           },
           "required": true
-        }
+        },
+        "x-speakeasy-test": false
       }
     },
     "/v1/domains/records/{recordId}": {
@@ -17334,16 +17341,6 @@
                     "misconfigured": {
                       "type": "boolean",
                       "description": "Whether or not the domain is configured AND we can automatically generate a TLS certificate."
-                    },
-                    "recommendedIps": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array",
-                      "description": "Recommended IPs and CNAME for the domain."
-                    },
-                    "recommendedCname": {
-                      "type": "string"
                     }
                   },
                   "required": [
@@ -28304,6 +28301,12 @@
                                 },
                                 "type": "array"
                               },
+                              "vercelAppInstallation": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "paymentMethod": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -32161,6 +32164,12 @@
                           "type": "array"
                         },
                         "openTelemetryEndpoint": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "vercelAppInstallation": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -36155,6 +36164,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -39907,6 +39922,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallation": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -43374,6 +43395,200 @@
             }
           },
           "required": true
+        }
+      }
+    },
+    "/v1/projects/{idOrName}/domains/{domain}/move": {
+      "post": {
+        "description": "Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.",
+        "operationId": "moveProjectDomain",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update a project domain",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "The domain was updated successfuly",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "apexName": {
+                      "type": "string"
+                    },
+                    "projectId": {
+                      "type": "string"
+                    },
+                    "redirect": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "redirectStatusCode": {
+                      "nullable": true,
+                      "type": "number",
+                      "enum": [
+                        307,
+                        301,
+                        302,
+                        308
+                      ]
+                    },
+                    "gitBranch": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "customEnvironmentId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    },
+                    "createdAt": {
+                      "type": "number"
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                    },
+                    "verification": {
+                      "items": {
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "domain": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "reason": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "domain",
+                          "value",
+                          "reason"
+                        ],
+                        "type": "object",
+                        "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                      },
+                      "type": "array",
+                      "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "apexName",
+                    "projectId",
+                    "verified"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "409": {
+            "description": "The project is currently being transferred"
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "description": "The project domain name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The project domain name",
+              "type": "string",
+              "example": "www.example.com"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "projectId"
+                ],
+                "properties": {
+                  "projectId": {
+                    "description": "The unique target project identifier",
+                    "example": "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
         }
       }
     },
@@ -63643,6 +63858,9 @@
                               "abovePlan": {
                                 "type": "boolean"
                               },
+                              "isDefaultBuildMachine": {
+                                "type": "boolean"
+                              },
                               "cores": {
                                 "type": "number"
                               },
@@ -69135,6 +69353,10 @@
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   },
                   "abovePlan": {
+                    "type": "boolean",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
+                  "isDefaultBuildMachine": {
                     "type": "boolean",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   },

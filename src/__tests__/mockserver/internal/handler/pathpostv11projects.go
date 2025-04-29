@@ -54,9 +54,9 @@ func testCreateProjectCreateProject0(w http.ResponseWriter, req *http.Request) {
 	respBody := &operations.CreateProjectResponseBody{
 		AccountID: "<id>",
 		Crons: &operations.CreateProjectCrons{
-			EnabledAt:    5535.60,
+			EnabledAt:    5535.6,
 			DisabledAt:   types.Float64(7749.32),
-			UpdatedAt:    4248.45,
+			UpdatedAt:    4248.44,
 			DeploymentID: types.String("<id>"),
 			Definitions: []operations.CreateProjectDefinitions{
 				operations.CreateProjectDefinitions{
@@ -102,28 +102,45 @@ func testCreateProjectCreateProject0(w http.ResponseWriter, req *http.Request) {
 			},
 		},
 		DefaultResourceConfig: operations.CreateProjectDefaultResourceConfig{
-			FunctionDefaultRegions: []string{
-				"<value>",
-			},
+			FunctionDefaultRegions: []string{},
 		},
 		Targets: map[string]*operations.CreateProjectTargets{
 			"key": &operations.CreateProjectTargets{
 				ID:        "<id>",
-				CreatedAt: 1667.88,
+				CreatedAt: 7352.53,
 				CreatedIn: "<value>",
 				Creator: &operations.CreateProjectProjectsCreator{
-					Email:    "Mustafa49@yahoo.com",
+					Email:    "Keven88@hotmail.com",
 					UID:      "<id>",
-					Username: "Roberta.Cormier",
+					Username: "Helene44",
 				},
 				DeploymentHostname:     "<value>",
 				Name:                   "<value>",
 				Plan:                   operations.CreateProjectProjectsPlanHobby,
 				PreviewCommentsEnabled: types.Bool(false),
-				Private:                false,
-				ReadyState:             operations.CreateProjectProjectsReadyStateInitializing,
+				Private:                true,
+				ReadyState:             operations.CreateProjectProjectsReadyStateQueued,
 				Type:                   operations.CreateProjectProjectsResponse200ApplicationJSONTypeLambdas,
-				URL:                    "https://formal-breastplate.org",
+				URL:                    "https://calculating-strait.info/",
+				UserID:                 "<id>",
+			},
+			"key1": &operations.CreateProjectTargets{
+				ID:        "<id>",
+				CreatedAt: 1259.18,
+				CreatedIn: "<value>",
+				Creator: &operations.CreateProjectProjectsCreator{
+					Email:    "Shane_Larson@gmail.com",
+					UID:      "<id>",
+					Username: "Barney93",
+				},
+				DeploymentHostname:     "<value>",
+				Name:                   "<value>",
+				Plan:                   operations.CreateProjectProjectsPlanPro,
+				PreviewCommentsEnabled: types.Bool(false),
+				Private:                true,
+				ReadyState:             operations.CreateProjectProjectsReadyStateError,
+				Type:                   operations.CreateProjectProjectsResponse200ApplicationJSONTypeLambdas,
+				URL:                    "https://fair-annual.biz/",
 				UserID:                 "<id>",
 			},
 		},

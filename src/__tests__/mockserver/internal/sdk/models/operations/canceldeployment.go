@@ -799,8 +799,8 @@ func (o *CancelDeploymentCreator) GetAvatar() *string {
 type CancelDeploymentDeploymentsReadyState string
 
 const (
-	CancelDeploymentDeploymentsReadyStateBuilding     CancelDeploymentDeploymentsReadyState = "BUILDING"
 	CancelDeploymentDeploymentsReadyStateError        CancelDeploymentDeploymentsReadyState = "ERROR"
+	CancelDeploymentDeploymentsReadyStateBuilding     CancelDeploymentDeploymentsReadyState = "BUILDING"
 	CancelDeploymentDeploymentsReadyStateInitializing CancelDeploymentDeploymentsReadyState = "INITIALIZING"
 	CancelDeploymentDeploymentsReadyStateReady        CancelDeploymentDeploymentsReadyState = "READY"
 )
@@ -814,9 +814,9 @@ func (e *CancelDeploymentDeploymentsReadyState) UnmarshalJSON(data []byte) error
 		return err
 	}
 	switch v {
-	case "BUILDING":
-		fallthrough
 	case "ERROR":
+		fallthrough
+	case "BUILDING":
 		fallthrough
 	case "INITIALIZING":
 		fallthrough
@@ -849,19 +849,12 @@ func (o *CancelDeploymentOutput) GetFunctionName() string {
 
 // CancelDeploymentLambdas - A partial representation of a Build used by the deployment endpoint.
 type CancelDeploymentLambdas struct {
-	ID           *string                                `json:"id,omitempty"`
 	CreatedAt    *float64                               `json:"createdAt,omitempty"`
-	Entrypoint   *string                                `json:"entrypoint,omitempty"`
+	ID           *string                                `json:"id,omitempty"`
 	ReadyState   *CancelDeploymentDeploymentsReadyState `json:"readyState,omitempty"`
+	Entrypoint   *string                                `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                               `json:"readyStateAt,omitempty"`
 	Output       []CancelDeploymentOutput               `json:"output"`
-}
-
-func (o *CancelDeploymentLambdas) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
 }
 
 func (o *CancelDeploymentLambdas) GetCreatedAt() *float64 {
@@ -871,11 +864,11 @@ func (o *CancelDeploymentLambdas) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CancelDeploymentLambdas) GetEntrypoint() *string {
+func (o *CancelDeploymentLambdas) GetID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Entrypoint
+	return o.ID
 }
 
 func (o *CancelDeploymentLambdas) GetReadyState() *CancelDeploymentDeploymentsReadyState {
@@ -883,6 +876,13 @@ func (o *CancelDeploymentLambdas) GetReadyState() *CancelDeploymentDeploymentsRe
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *CancelDeploymentLambdas) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CancelDeploymentLambdas) GetReadyStateAt() *float64 {
@@ -940,8 +940,8 @@ func (e *CancelDeploymentStatus) UnmarshalJSON(data []byte) error {
 type CancelDeploymentTeam struct {
 	ID     string  `json:"id"`
 	Name   string  `json:"name"`
-	Avatar *string `json:"avatar,omitempty"`
 	Slug   string  `json:"slug"`
+	Avatar *string `json:"avatar,omitempty"`
 }
 
 func (o *CancelDeploymentTeam) GetID() string {
@@ -958,18 +958,18 @@ func (o *CancelDeploymentTeam) GetName() string {
 	return o.Name
 }
 
-func (o *CancelDeploymentTeam) GetAvatar() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Avatar
-}
-
 func (o *CancelDeploymentTeam) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
+}
+
+func (o *CancelDeploymentTeam) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
 }
 
 type CancelDeploymentCustomEnvironment2 struct {
@@ -2886,11 +2886,11 @@ type CancelDeploymentRoutesHandle string
 
 const (
 	CancelDeploymentRoutesHandleError      CancelDeploymentRoutesHandle = "error"
+	CancelDeploymentRoutesHandleResource   CancelDeploymentRoutesHandle = "resource"
 	CancelDeploymentRoutesHandleFilesystem CancelDeploymentRoutesHandle = "filesystem"
 	CancelDeploymentRoutesHandleHit        CancelDeploymentRoutesHandle = "hit"
 	CancelDeploymentRoutesHandleMiss       CancelDeploymentRoutesHandle = "miss"
 	CancelDeploymentRoutesHandleRewrite    CancelDeploymentRoutesHandle = "rewrite"
-	CancelDeploymentRoutesHandleResource   CancelDeploymentRoutesHandle = "resource"
 )
 
 func (e CancelDeploymentRoutesHandle) ToPointer() *CancelDeploymentRoutesHandle {
@@ -2904,6 +2904,8 @@ func (e *CancelDeploymentRoutesHandle) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "error":
 		fallthrough
+	case "resource":
+		fallthrough
 	case "filesystem":
 		fallthrough
 	case "hit":
@@ -2911,8 +2913,6 @@ func (e *CancelDeploymentRoutesHandle) UnmarshalJSON(data []byte) error {
 	case "miss":
 		fallthrough
 	case "rewrite":
-		fallthrough
-	case "resource":
 		*e = CancelDeploymentRoutesHandle(v)
 		return nil
 	default:
@@ -3541,8 +3541,8 @@ func (e *CancelDeploymentGitRepoDeploymentsResponseType) UnmarshalJSON(data []by
 type CancelDeploymentGitRepoDeploymentsResponseOwnerType string
 
 const (
-	CancelDeploymentGitRepoDeploymentsResponseOwnerTypeTeam CancelDeploymentGitRepoDeploymentsResponseOwnerType = "team"
 	CancelDeploymentGitRepoDeploymentsResponseOwnerTypeUser CancelDeploymentGitRepoDeploymentsResponseOwnerType = "user"
+	CancelDeploymentGitRepoDeploymentsResponseOwnerTypeTeam CancelDeploymentGitRepoDeploymentsResponseOwnerType = "team"
 )
 
 func (e CancelDeploymentGitRepoDeploymentsResponseOwnerType) ToPointer() *CancelDeploymentGitRepoDeploymentsResponseOwnerType {
@@ -3554,9 +3554,9 @@ func (e *CancelDeploymentGitRepoDeploymentsResponseOwnerType) UnmarshalJSON(data
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CancelDeploymentGitRepoDeploymentsResponseOwnerType(v)
 		return nil
 	default:
@@ -3673,8 +3673,8 @@ func (e *CancelDeploymentGitRepoDeploymentsType) UnmarshalJSON(data []byte) erro
 type CancelDeploymentGitRepoDeploymentsOwnerType string
 
 const (
-	CancelDeploymentGitRepoDeploymentsOwnerTypeTeam CancelDeploymentGitRepoDeploymentsOwnerType = "team"
 	CancelDeploymentGitRepoDeploymentsOwnerTypeUser CancelDeploymentGitRepoDeploymentsOwnerType = "user"
+	CancelDeploymentGitRepoDeploymentsOwnerTypeTeam CancelDeploymentGitRepoDeploymentsOwnerType = "team"
 )
 
 func (e CancelDeploymentGitRepoDeploymentsOwnerType) ToPointer() *CancelDeploymentGitRepoDeploymentsOwnerType {
@@ -3686,9 +3686,9 @@ func (e *CancelDeploymentGitRepoDeploymentsOwnerType) UnmarshalJSON(data []byte)
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CancelDeploymentGitRepoDeploymentsOwnerType(v)
 		return nil
 	default:
@@ -3805,8 +3805,8 @@ func (e *CancelDeploymentGitRepoType) UnmarshalJSON(data []byte) error {
 type CancelDeploymentGitRepoOwnerType string
 
 const (
-	CancelDeploymentGitRepoOwnerTypeTeam CancelDeploymentGitRepoOwnerType = "team"
 	CancelDeploymentGitRepoOwnerTypeUser CancelDeploymentGitRepoOwnerType = "user"
+	CancelDeploymentGitRepoOwnerTypeTeam CancelDeploymentGitRepoOwnerType = "team"
 )
 
 func (e CancelDeploymentGitRepoOwnerType) ToPointer() *CancelDeploymentGitRepoOwnerType {
@@ -3818,9 +3818,9 @@ func (e *CancelDeploymentGitRepoOwnerType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CancelDeploymentGitRepoOwnerType(v)
 		return nil
 	default:
@@ -4277,8 +4277,8 @@ func (u CancelDeploymentMicrofrontends) MarshalJSON() ([]byte, error) {
 type CancelDeploymentFunctionType string
 
 const (
-	CancelDeploymentFunctionTypeFluid    CancelDeploymentFunctionType = "fluid"
 	CancelDeploymentFunctionTypeStandard CancelDeploymentFunctionType = "standard"
+	CancelDeploymentFunctionTypeFluid    CancelDeploymentFunctionType = "fluid"
 )
 
 func (e CancelDeploymentFunctionType) ToPointer() *CancelDeploymentFunctionType {
@@ -4290,9 +4290,9 @@ func (e *CancelDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = CancelDeploymentFunctionType(v)
 		return nil
 	default:
@@ -4303,8 +4303,8 @@ func (e *CancelDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 type CancelDeploymentFunctionMemoryType string
 
 const (
-	CancelDeploymentFunctionMemoryTypeStandard       CancelDeploymentFunctionMemoryType = "standard"
 	CancelDeploymentFunctionMemoryTypeStandardLegacy CancelDeploymentFunctionMemoryType = "standard_legacy"
+	CancelDeploymentFunctionMemoryTypeStandard       CancelDeploymentFunctionMemoryType = "standard"
 	CancelDeploymentFunctionMemoryTypePerformance    CancelDeploymentFunctionMemoryType = "performance"
 )
 
@@ -4317,9 +4317,9 @@ func (e *CancelDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "standard_legacy":
+		fallthrough
+	case "standard":
 		fallthrough
 	case "performance":
 		*e = CancelDeploymentFunctionMemoryType(v)

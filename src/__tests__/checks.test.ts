@@ -32,12 +32,14 @@ test("Checks Create Check", async () => {
   expect(result).toEqual({
     id: "chk_1a2b3c4d5e6f7g8h9i0j",
     name: "Performance Check",
+    path: "/api/users",
     status: "completed",
-    blocking: false,
+    conclusion: "succeeded",
+    blocking: true,
     integrationId: "<id>",
     deploymentId: "<id>",
-    createdAt: 2396.37,
-    updatedAt: 1065.29,
+    createdAt: 9375.78,
+    updatedAt: 2396.37,
   });
 });
 

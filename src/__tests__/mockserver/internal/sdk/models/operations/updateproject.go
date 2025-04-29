@@ -5505,6 +5505,7 @@ type UpdateProjectPermissions struct {
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
+	VercelAppInstallation                    []components.ACLAction `json:"vercelAppInstallation,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
 	Postgres                                 []components.ACLAction `json:"postgres,omitempty"`
@@ -6203,6 +6204,13 @@ func (o *UpdateProjectPermissions) GetOpenTelemetryEndpoint() []components.ACLAc
 		return nil
 	}
 	return o.OpenTelemetryEndpoint
+}
+
+func (o *UpdateProjectPermissions) GetVercelAppInstallation() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.VercelAppInstallation
 }
 
 func (o *UpdateProjectPermissions) GetPaymentMethod() []components.ACLAction {

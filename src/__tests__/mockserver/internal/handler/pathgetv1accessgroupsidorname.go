@@ -21,8 +21,6 @@ func pathGetV1AccessGroupsIDOrName(dir *logging.HTTPFileDirectory, rt *tracking.
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "readAccessGroup[0]":
-			dir.HandlerFunc("readAccessGroup", testReadAccessGroupReadAccessGroup0)(w, req)
 		case "readAccessGroup-id[0]":
 			dir.HandlerFunc("readAccessGroup", testReadAccessGroupReadAccessGroupId0)(w, req)
 		case "readAccessGroup-name[0]":
@@ -31,47 +29,6 @@ func pathGetV1AccessGroupsIDOrName(dir *logging.HTTPFileDirectory, rt *tracking.
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
-}
-
-func testReadAccessGroupReadAccessGroup0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusUnauthorized)
-		return
-	}
-	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	respBody := &operations.ReadAccessGroupResponseBody{
-		IsDsyncManaged: false,
-		Name:           "my-access-group",
-		CreatedAt:      "1588720733602",
-		TeamID:         "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-		UpdatedAt:      "1588720733602",
-		AccessGroupID:  "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-		MembersCount:   5,
-		ProjectsCount:  2,
-	}
-	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
-
-	if err != nil {
-		http.Error(
-			w,
-			"Unable to encode response body as JSON: "+err.Error(),
-			http.StatusInternalServerError,
-		)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(respBodyBytes)
 }
 
 func testReadAccessGroupReadAccessGroupId0(w http.ResponseWriter, req *http.Request) {
@@ -99,6 +56,13 @@ func testReadAccessGroupReadAccessGroupId0(w http.ResponseWriter, req *http.Requ
 		AccessGroupID:  "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
 		MembersCount:   5,
 		ProjectsCount:  2,
+		TeamRoles: []string{
+			"DEVELOPER",
+			"BILLING",
+		},
+		TeamPermissions: []string{
+			"CreateProject",
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -140,6 +104,13 @@ func testReadAccessGroupReadAccessGroupName0(w http.ResponseWriter, req *http.Re
 		AccessGroupID:  "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
 		MembersCount:   5,
 		ProjectsCount:  2,
+		TeamRoles: []string{
+			"DEVELOPER",
+			"BILLING",
+		},
+		TeamPermissions: []string{
+			"CreateProject",
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

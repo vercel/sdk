@@ -21,60 +21,16 @@ func pathPatchV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir *logging.HT
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "updateAccessGroupProject[0]":
-			dir.HandlerFunc("updateAccessGroupProject", testUpdateAccessGroupProjectUpdateAccessGroupProject0)(w, req)
 		case "updateAccessGroupProject-id[0]":
 			dir.HandlerFunc("updateAccessGroupProject", testUpdateAccessGroupProjectUpdateAccessGroupProjectId0)(w, req)
 		case "updateAccessGroupProject-name[0]":
 			dir.HandlerFunc("updateAccessGroupProject", testUpdateAccessGroupProjectUpdateAccessGroupProjectName0)(w, req)
+		case "updateAccessGroupProject[0]":
+			dir.HandlerFunc("updateAccessGroupProject", testUpdateAccessGroupProjectUpdateAccessGroupProject0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
-}
-
-func testUpdateAccessGroupProjectUpdateAccessGroupProject0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusUnauthorized)
-		return
-	}
-	if err := assert.ContentType(req, "application/json", true); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	respBody := &operations.UpdateAccessGroupProjectResponseBody{
-		TeamID:        "<id>",
-		AccessGroupID: "<id>",
-		ProjectID:     "<id>",
-		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "<value>",
-		UpdatedAt:     "<value>",
-	}
-	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
-
-	if err != nil {
-		http.Error(
-			w,
-			"Unable to encode response body as JSON: "+err.Error(),
-			http.StatusInternalServerError,
-		)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(respBodyBytes)
 }
 
 func testUpdateAccessGroupProjectUpdateAccessGroupProjectId0(w http.ResponseWriter, req *http.Request) {
@@ -103,8 +59,8 @@ func testUpdateAccessGroupProjectUpdateAccessGroupProjectId0(w http.ResponseWrit
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "1706645964469",
-		UpdatedAt:     "1735872085577",
+		CreatedAt:     "1715136753218",
+		UpdatedAt:     "1744362874326",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -147,8 +103,52 @@ func testUpdateAccessGroupProjectUpdateAccessGroupProjectName0(w http.ResponseWr
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "1708158031858",
-		UpdatedAt:     "1735838146635",
+		CreatedAt:     "1716648820605",
+		UpdatedAt:     "1744328935382",
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testUpdateAccessGroupProjectUpdateAccessGroupProject0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	respBody := &operations.UpdateAccessGroupProjectResponseBody{
+		TeamID:        "<id>",
+		AccessGroupID: "<id>",
+		ProjectID:     "<id>",
+		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
+		CreatedAt:     "1736314214978",
+		UpdatedAt:     "1744397001817",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

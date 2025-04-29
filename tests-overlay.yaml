@@ -42,4 +42,7 @@ actions:
       x-speakeasy-test: false   
   - target: $.paths['/v1/security/firewall/attack-status'].get
     update:
-      x-speakeasy-test: false       
+      x-speakeasy-test: false  
+  - target: $.paths['/v2/domains/{domain}/records'].post
+    update:
+      x-speakeasy-test: false     

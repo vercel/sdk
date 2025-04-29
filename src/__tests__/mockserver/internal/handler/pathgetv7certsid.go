@@ -47,7 +47,7 @@ func testGetCertByIDGetCertById0(w http.ResponseWriter, req *http.Request) {
 	}
 	respBody := &operations.GetCertByIDResponseBody{
 		ID:        "<id>",
-		CreatedAt: 227.13,
+		CreatedAt: 227.12,
 		ExpiresAt: 3995.77,
 		AutoRenew: false,
 		Cns: []string{

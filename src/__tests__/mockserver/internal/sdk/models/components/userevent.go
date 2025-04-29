@@ -6849,10 +6849,11 @@ func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
 }
 
 type PayloadBuildMachine struct {
-	PurchaseType *PayloadPurchaseType `json:"purchaseType,omitempty"`
-	AbovePlan    *bool                `json:"abovePlan,omitempty"`
-	Cores        *float64             `json:"cores,omitempty"`
-	Memory       *float64             `json:"memory,omitempty"`
+	PurchaseType          *PayloadPurchaseType `json:"purchaseType,omitempty"`
+	AbovePlan             *bool                `json:"abovePlan,omitempty"`
+	IsDefaultBuildMachine *bool                `json:"isDefaultBuildMachine,omitempty"`
+	Cores                 *float64             `json:"cores,omitempty"`
+	Memory                *float64             `json:"memory,omitempty"`
 }
 
 func (o *PayloadBuildMachine) GetPurchaseType() *PayloadPurchaseType {
@@ -6867,6 +6868,13 @@ func (o *PayloadBuildMachine) GetAbovePlan() *bool {
 		return nil
 	}
 	return o.AbovePlan
+}
+
+func (o *PayloadBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
 }
 
 func (o *PayloadBuildMachine) GetCores() *float64 {

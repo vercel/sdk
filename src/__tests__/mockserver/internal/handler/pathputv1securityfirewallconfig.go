@@ -55,13 +55,13 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 			OwnerID:         "<id>",
 			ProjectKey:      "<value>",
 			ID:              "<id>",
-			Version:         4570.86,
-			UpdatedAt:       "<value>",
+			Version:         892.22,
+			UpdatedAt:       "1745792555559",
 			FirewallEnabled: true,
 			Crs: operations.PutFirewallConfigCrs{
 				Sd: operations.PutFirewallConfigSd{
 					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdActionDeny,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdActionLog,
 				},
 				Ma: operations.PutFirewallConfigMa{
 					Active: false,
@@ -69,18 +69,18 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 				},
 				Lfi: operations.PutFirewallConfigLfi{
 					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiActionLog,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiActionDeny,
 				},
 				Rfi: operations.PutFirewallConfigRfi{
 					Active: false,
 					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionDeny,
 				},
 				Rce: operations.PutFirewallConfigRce{
-					Active: false,
+					Active: true,
 					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveActionDeny,
 				},
 				Php: operations.PutFirewallConfigPhp{
-					Active: true,
+					Active: false,
 					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsActionDeny,
 				},
 				Gen: operations.PutFirewallConfigGen{
@@ -88,65 +88,33 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenActionDeny,
 				},
 				XSS: operations.PutFirewallConfigXSS{
-					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSActionDeny,
+					Active: true,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSActionLog,
 				},
 				Sqli: operations.PutFirewallConfigSqli{
 					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliActionLog,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliActionDeny,
 				},
 				Sf: operations.PutFirewallConfigSf{
 					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfActionDeny,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfActionLog,
 				},
 				Java: operations.PutFirewallConfigJava{
-					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaActionLog,
+					Active: false,
+					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaActionDeny,
 				},
 			},
 			Rules: []operations.PutFirewallConfigRules{
 				operations.PutFirewallConfigRules{
 					ID:     "<id>",
 					Name:   "<value>",
-					Active: true,
+					Active: false,
 					ConditionGroup: []operations.PutFirewallConfigConditionGroup{
 						operations.PutFirewallConfigConditionGroup{
 							Conditions: []operations.PutFirewallConfigConditions{
 								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeIPAddress,
-									Op:   operations.PutFirewallConfigOpSuf,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeGeoAsNumber,
+									Type: operations.PutFirewallConfigSecurityTypeGeoCity,
 									Op:   operations.PutFirewallConfigOpPre,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeJa3Digest,
-									Op:   operations.PutFirewallConfigOpInc,
-								},
-							},
-						},
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeGeoAsNumber,
-									Op:   operations.PutFirewallConfigOpNeq,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeProtocol,
-									Op:   operations.PutFirewallConfigOpSub,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeJa3Digest,
-									Op:   operations.PutFirewallConfigOpSuf,
-								},
-							},
-						},
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeRegion,
-									Op:   operations.PutFirewallConfigOpNeq,
 								},
 							},
 						},
@@ -168,16 +136,41 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						operations.PutFirewallConfigConditionGroup{
 							Conditions: []operations.PutFirewallConfigConditions{
 								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeScheme,
-									Op:   operations.PutFirewallConfigOpNeq,
+									Type: operations.PutFirewallConfigSecurityTypeIPAddress,
+									Op:   operations.PutFirewallConfigOpSub,
+								},
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeJa3Digest,
+									Op:   operations.PutFirewallConfigOpSuf,
+								},
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeProtocol,
+									Op:   operations.PutFirewallConfigOpSub,
 								},
 							},
 						},
 						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{},
+							Conditions: []operations.PutFirewallConfigConditions{
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeGeoAsNumber,
+									Op:   operations.PutFirewallConfigOpRe,
+								},
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeGeoContinent,
+									Op:   operations.PutFirewallConfigOpNex,
+								},
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeRegion,
+									Op:   operations.PutFirewallConfigOpGt,
+								},
+							},
 						},
 						operations.PutFirewallConfigConditionGroup{
 							Conditions: []operations.PutFirewallConfigConditions{
+								operations.PutFirewallConfigConditions{
+									Type: operations.PutFirewallConfigSecurityTypeMethod,
+									Op:   operations.PutFirewallConfigOpGte,
+								},
 								operations.PutFirewallConfigConditions{
 									Type: operations.PutFirewallConfigSecurityTypeHeader,
 									Op:   operations.PutFirewallConfigOpInc,
@@ -192,8 +185,12 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					Action: operations.PutFirewallConfigSecurityResponseAction{},
 				},
 			},
-			Ips:     []operations.PutFirewallConfigIps{},
-			Changes: []operations.PutFirewallConfigChanges{},
+			Ips: []operations.PutFirewallConfigIps{},
+			Changes: []operations.PutFirewallConfigChanges{
+				operations.PutFirewallConfigChanges{},
+				operations.PutFirewallConfigChanges{},
+				operations.PutFirewallConfigChanges{},
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

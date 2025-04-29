@@ -57,8 +57,11 @@ func testPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperime
 			"key": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
 				true,
 			)),
+			"key1": types.Pointer(components.CreateEdgeConfigItemValueStr(
+				"<value>",
+			)),
 		},
-		UpdatedAt: 6820.68,
+		UpdatedAt: 8687.23,
 		Digest:    "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

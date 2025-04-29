@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
@@ -15,7 +14,7 @@ import (
 	"net/http"
 )
 
-func pathGetV10ProjectsIDOrNameEnv(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathGetV3TeamsTeamIDMembers(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -23,15 +22,15 @@ func pathGetV10ProjectsIDOrNameEnv(dir *logging.HTTPFileDirectory, rt *tracking.
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "filterProjectEnvs[0]":
-			dir.HandlerFunc("filterProjectEnvs", testFilterProjectEnvsFilterProjectEnvs0)(w, req)
+		case "getTeamMembers[0]":
+			dir.HandlerFunc("getTeamMembers", testGetTeamMembersGetTeamMembers0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testFilterProjectEnvsFilterProjectEnvs0(w http.ResponseWriter, req *http.Request) {
+func testGetTeamMembersGetTeamMembers0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -47,20 +46,38 @@ func testFilterProjectEnvsFilterProjectEnvs0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateFilterProjectEnvsResponseBodyFilterProjectEnvsResponseBody2(
-		operations.FilterProjectEnvsResponseBody2{
-			Envs: []operations.Envs{
-				operations.Envs{},
-				operations.Envs{},
-				operations.Envs{},
+	respBody := &operations.GetTeamMembersResponseBody{
+		Members: []operations.GetTeamMembersMembers{
+			operations.GetTeamMembersMembers{
+				Avatar:            types.String("123a6c5209bc3778245d011443644c8d27dc2c50"),
+				Confirmed:         true,
+				Email:             "jane.doe@example.com",
+				Role:              operations.GetTeamMembersRoleOwner,
+				UID:               "zTuNVUXEAvvnNN3IaqinkyMw",
+				Username:          "jane-doe",
+				Name:              types.String("Jane Doe"),
+				CreatedAt:         1588720733602,
+				AccessRequestedAt: types.Float64(1588820733602),
 			},
-			Pagination: components.Pagination{
-				Count: 20,
-				Next:  types.Float64(1540095775951),
-				Prev:  types.Float64(1540095775951),
+			operations.GetTeamMembersMembers{
+				Avatar:            types.String("123a6c5209bc3778245d011443644c8d27dc2c50"),
+				Confirmed:         true,
+				Email:             "jane.doe@example.com",
+				Role:              operations.GetTeamMembersRoleOwner,
+				UID:               "zTuNVUXEAvvnNN3IaqinkyMw",
+				Username:          "jane-doe",
+				Name:              types.String("Jane Doe"),
+				CreatedAt:         1588720733602,
+				AccessRequestedAt: types.Float64(1588820733602),
 			},
 		},
-	))
+		Pagination: operations.GetTeamMembersPagination{
+			HasNext: true,
+			Count:   20,
+			Next:    types.Float64(1540095775951),
+			Prev:    types.Float64(1540095775951),
+		},
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

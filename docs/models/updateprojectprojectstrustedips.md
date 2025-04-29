@@ -13,7 +13,7 @@ const value: models.UpdateProjectTrustedIps1 = {
       value: "<value>",
     },
   ],
-  protectionMode: "exclusive",
+  protectionMode: "additional",
 };
 ```
 

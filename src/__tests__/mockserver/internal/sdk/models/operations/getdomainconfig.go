@@ -141,9 +141,6 @@ type GetDomainConfigResponseBody struct {
 	AcceptedChallenges []AcceptedChallenges `json:"acceptedChallenges,omitempty"`
 	// Whether or not the domain is configured AND we can automatically generate a TLS certificate.
 	Misconfigured bool `json:"misconfigured"`
-	// Recommended IPs and CNAME for the domain.
-	RecommendedIps   []string `json:"recommendedIps,omitempty"`
-	RecommendedCname *string  `json:"recommendedCname,omitempty"`
 }
 
 func (o *GetDomainConfigResponseBody) GetConfiguredBy() *ConfiguredBy {
@@ -165,20 +162,6 @@ func (o *GetDomainConfigResponseBody) GetMisconfigured() bool {
 		return false
 	}
 	return o.Misconfigured
-}
-
-func (o *GetDomainConfigResponseBody) GetRecommendedIps() []string {
-	if o == nil {
-		return nil
-	}
-	return o.RecommendedIps
-}
-
-func (o *GetDomainConfigResponseBody) GetRecommendedCname() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RecommendedCname
 }
 
 type GetDomainConfigResponse struct {

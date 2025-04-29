@@ -578,21 +578,19 @@ test("Projects Create Project Env", async () => {
     upsert: "true",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: [
-      {
-        key: "API_URL",
-        value: "https://api.vercel.com",
-        type: "plain",
-        target: [
-          "preview",
-        ],
-        gitBranch: "feature-1",
-        comment: "database connection string for production",
-        customEnvironmentIds: [
-          "env_1234567890",
-        ],
-      },
-    ],
+    requestBody: {
+      key: "API_URL",
+      value: "https://api.vercel.com",
+      type: "plain",
+      target: [
+        "preview",
+      ],
+      gitBranch: "feature-1",
+      comment: "database connection string for production",
+      customEnvironmentIds: [
+        "env_1234567890",
+      ],
+    },
   });
   expect(result).toBeDefined();
   expect(result).toEqual({

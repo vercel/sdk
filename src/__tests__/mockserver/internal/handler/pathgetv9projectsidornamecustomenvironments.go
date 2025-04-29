@@ -47,7 +47,7 @@ func testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvir
 	}
 	respBody := &operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody{
 		AccountLimit: operations.AccountLimit{
-			Total: 7151.9,
+			Total: 5488.14,
 		},
 		Environments: []operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments{},
 	}

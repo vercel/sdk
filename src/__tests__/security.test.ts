@@ -349,7 +349,20 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "pointless-finer.name",
+        ip: "82.97.217.205",
+        createdAt: "1725553585326",
+        updatedAt: "1745850501540",
+        updatedAtHour: "<value>",
+      },
+    ],
+    pagination: "<value>",
+  });
 });
 
 test("Security Add Bypass Ip", async () => {
@@ -369,17 +382,6 @@ test("Security Add Bypass Ip", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     ok: false,
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "memorable-advancement.com",
-        projectId: "<id>",
-        note: "<value>",
-        isProjectRule: false,
-      },
-    ],
-    pagination: "<value>",
   });
 });
 

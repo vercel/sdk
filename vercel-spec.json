@@ -17334,16 +17334,6 @@
                     "misconfigured": {
                       "type": "boolean",
                       "description": "Whether or not the domain is configured AND we can automatically generate a TLS certificate."
-                    },
-                    "recommendedIps": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array",
-                      "description": "Recommended IPs and CNAME for the domain."
-                    },
-                    "recommendedCname": {
-                      "type": "string"
                     }
                   },
                   "required": [
@@ -37717,11 +37707,11 @@
                           "type": {
                             "type": "string",
                             "enum": [
+                              "secret",
                               "system",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -38913,6 +38903,12 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -38938,12 +38934,6 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
-                        },
-                        "buildMachineType": {
-                          "type": "string",
-                          "enum": [
-                            "enhanced"
-                          ]
                         }
                       },
                       "required": [
@@ -38996,6 +38986,12 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "buildMachineType": {
+                          "type": "string",
+                          "enum": [
+                            "enhanced"
+                          ]
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -39021,12 +39017,6 @@
                         },
                         "elasticConcurrencyEnabled": {
                           "type": "boolean"
-                        },
-                        "buildMachineType": {
-                          "type": "string",
-                          "enum": [
-                            "enhanced"
-                          ]
                         }
                       },
                       "required": [
@@ -40675,8 +40665,8 @@
                             "protectionMode": {
                               "type": "string",
                               "enum": [
-                                "additional",
-                                "exclusive"
+                                "exclusive",
+                                "additional"
                               ]
                             }
                           },

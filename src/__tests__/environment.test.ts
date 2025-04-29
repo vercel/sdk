@@ -32,7 +32,7 @@ test("Environment Get /V9 /Projects/{id Or Name}/custom Environments", async () 
   expect(result).toBeDefined();
   expect(result).toEqual({
     accountLimit: {
-      total: 6421.47,
+      total: 136.6,
     },
     environments: [],
   });

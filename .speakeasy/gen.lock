@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.540.1
   generationVersion: 2.593.4
-  releaseVersion: 1.6.5
-  configChecksum: dc7a176b3bbab131a00f158a40e811a1
+  releaseVersion: 1.6.6
+  configChecksum: adc3b3489751ae2965513957334a46f7
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true

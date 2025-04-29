@@ -27,9 +27,9 @@ test("Projects Update Project Data Cache", async () => {
   expect(result).toEqual({
     accountId: "<id>",
     crons: {
-      enabledAt: 7135.80,
+      enabledAt: 7135.8,
       disabledAt: 2989.85,
-      updatedAt: 6226.22,
+      updatedAt: 6226.23,
       deploymentId: "<id>",
       definitions: [
         {
@@ -54,7 +54,7 @@ test("Projects Update Project Data Cache", async () => {
     latestDeployments: [
       {
         id: "<id>",
-        createdAt: 5719.60,
+        createdAt: 5719.6,
         createdIn: "<value>",
         creator: {
           email: "Braeden15@gmail.com",
@@ -73,7 +73,7 @@ test("Projects Update Project Data Cache", async () => {
       },
       {
         id: "<id>",
-        createdAt: 7644.50,
+        createdAt: 7644.5,
         createdIn: "<value>",
         creator: {
           email: "Erich.Mann@hotmail.com",
@@ -113,14 +113,31 @@ test("Projects Update Project Data Cache", async () => {
     name: "<value>",
     nodeVersion: "10.x",
     resourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-      ],
+      functionDefaultRegions: [],
     },
     defaultResourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-      ],
+      functionDefaultRegions: [],
+    },
+    targets: {
+      "key": {
+        id: "<id>",
+        createdAt: 1048.68,
+        createdIn: "<value>",
+        creator: {
+          email: "Lillie17@gmail.com",
+          uid: "<id>",
+          username: "Herminia_Schowalter50",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "enterprise",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "BUILDING",
+        type: "LAMBDAS",
+        url: "https://quintessential-bidet.com/",
+        userId: "<id>",
+      },
     },
   });
 });
@@ -171,9 +188,9 @@ test("Projects Create Project", async () => {
   expect(result).toEqual({
     accountId: "<id>",
     crons: {
-      enabledAt: 5535.60,
+      enabledAt: 5535.6,
       disabledAt: 7749.32,
-      updatedAt: 4248.45,
+      updatedAt: 4248.44,
       deploymentId: "<id>",
       definitions: [
         {
@@ -219,28 +236,45 @@ test("Projects Create Project", async () => {
       ],
     },
     defaultResourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-      ],
+      functionDefaultRegions: [],
     },
     targets: {
       "key": {
         id: "<id>",
-        createdAt: 1667.88,
+        createdAt: 7352.53,
         createdIn: "<value>",
         creator: {
-          email: "Mustafa49@yahoo.com",
+          email: "Keven88@hotmail.com",
           uid: "<id>",
-          username: "Roberta.Cormier",
+          username: "Helene44",
         },
         deploymentHostname: "<value>",
         name: "<value>",
         plan: "hobby",
         previewCommentsEnabled: false,
-        private: false,
-        readyState: "INITIALIZING",
+        private: true,
+        readyState: "QUEUED",
         type: "LAMBDAS",
-        url: "https://formal-breastplate.org",
+        url: "https://calculating-strait.info/",
+        userId: "<id>",
+      },
+      "key1": {
+        id: "<id>",
+        createdAt: 1259.18,
+        createdIn: "<value>",
+        creator: {
+          email: "Shane_Larson@gmail.com",
+          uid: "<id>",
+          username: "Barney93",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "ERROR",
+        type: "LAMBDAS",
+        url: "https://fair-annual.biz/",
         userId: "<id>",
       },
     },
@@ -268,9 +302,9 @@ test("Projects Update Project", async () => {
   expect(result).toEqual({
     accountId: "<id>",
     crons: {
-      enabledAt: 6482.22,
+      enabledAt: 6482.23,
       disabledAt: 3040.87,
-      updatedAt: 9398.85,
+      updatedAt: 9398.86,
       deploymentId: "<id>",
       definitions: [
         {
@@ -326,11 +360,31 @@ test("Projects Update Project", async () => {
         url: "https://unsightly-newsstand.net/",
         userId: "<id>",
       },
+      {
+        id: "<id>",
+        createdAt: 5770.49,
+        createdIn: "<value>",
+        creator: {
+          email: "Jose37@yahoo.com",
+          uid: "<id>",
+          username: "Jana.Conroy",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "ERROR",
+        type: "LAMBDAS",
+        url: "https://pricey-dish.biz/",
+        userId: "<id>",
+      },
     ],
     name: "<value>",
-    nodeVersion: "14.x",
+    nodeVersion: "20.x",
     resourceConfig: {
       functionDefaultRegions: [
+        "<value>",
         "<value>",
       ],
     },
@@ -342,21 +396,59 @@ test("Projects Update Project", async () => {
     targets: {
       "key": {
         id: "<id>",
-        createdAt: 5163.13,
+        createdAt: 6585.03,
         createdIn: "<value>",
         creator: {
-          email: "Joyce_Hodkiewicz46@yahoo.com",
+          email: "Garrison_Jenkins@gmail.com",
           uid: "<id>",
-          username: "Bud.Bogan18",
+          username: "Trever_Ratke",
         },
         deploymentHostname: "<value>",
         name: "<value>",
-        plan: "pro",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "INITIALIZING",
+        type: "LAMBDAS",
+        url: "https://forsaken-edge.org",
+        userId: "<id>",
+      },
+      "key1": {
+        id: "<id>",
+        createdAt: 5688.03,
+        createdIn: "<value>",
+        creator: {
+          email: "Buster.Raynor@gmail.com",
+          uid: "<id>",
+          username: "Florine92",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "enterprise",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "CANCELED",
+        type: "LAMBDAS",
+        url: "https://shameless-unit.net",
+        userId: "<id>",
+      },
+      "key2": {
+        id: "<id>",
+        createdAt: 4805.55,
+        createdIn: "<value>",
+        creator: {
+          email: "Jerome0@gmail.com",
+          uid: "<id>",
+          username: "Travis_Towne",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
         previewCommentsEnabled: false,
         private: true,
         readyState: "QUEUED",
         type: "LAMBDAS",
-        url: "https://frugal-coordination.net/",
+        url: "https://whimsical-mathematics.name",
         userId: "<id>",
       },
     },
@@ -517,6 +609,30 @@ test("Projects Add Project Domain", async () => {
   });
 });
 
+test("Projects Move Project Domain", async () => {
+  const testHttpClient = createTestHTTPClient("moveProjectDomain");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.moveProjectDomain({
+    idOrName: "<value>",
+    domain: "www.example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: false,
+  });
+});
+
 test("Projects Verify Project Domain", async () => {
   const testHttpClient = createTestHTTPClient("verifyProjectDomain");
 
@@ -541,6 +657,50 @@ test("Projects Verify Project Domain", async () => {
   });
 });
 
+test("Projects Create Project Env", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectEnv");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.createProjectEnv({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    upsert: "true",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      key: "API_URL",
+      value: "https://api.vercel.com",
+      type: "plain",
+      target: [
+        "preview",
+      ],
+      gitBranch: "feature-1",
+      comment: "database connection string for production",
+      customEnvironmentIds: [
+        "env_1234567890",
+      ],
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    created: [
+      {},
+    ],
+    failed: [
+      {
+        error: {
+          code: "<value>",
+          message: "<value>",
+        },
+      },
+    ],
+  });
+});
+
 test("Projects Get Project Env", async () => {
   const testHttpClient = createTestHTTPClient("getProjectEnv");
 
@@ -561,52 +721,6 @@ test("Projects Get Project Env", async () => {
     type: "plain",
     value: "<value>",
     key: "<key>",
-  });
-});
-
-test("Projects Create Project Env", async () => {
-  const testHttpClient = createTestHTTPClient("createProjectEnv");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.projects.createProjectEnv({
-    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
-    upsert: "true",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: [
-      {
-        key: "API_URL",
-        value: "https://api.vercel.com",
-        type: "plain",
-        target: [
-          "preview",
-        ],
-        gitBranch: "feature-1",
-        comment: "database connection string for production",
-        customEnvironmentIds: [
-          "env_1234567890",
-        ],
-      },
-    ],
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    created: [
-      {},
-    ],
-    failed: [
-      {
-        error: {
-          code: "<value>",
-          message: "<value>",
-        },
-      },
-    ],
   });
 });
 
@@ -644,6 +758,47 @@ test("Projects Remove Project Env", async () => {
       key: "<key>",
     },
   ]);
+});
+
+test("Projects Create Project Transfer Request", async () => {
+  const testHttpClient = createTestHTTPClient("createProjectTransferRequest");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.createProjectTransferRequest({
+    idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    code: "f99cc49a-602e-4786-a748-762dfb205880",
+  });
+});
+
+test("Projects Accept Project Transfer Request", async () => {
+  const testHttpClient = createTestHTTPClient("acceptProjectTransferRequest");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.acceptProjectTransferRequest({
+    code: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      newProjectName: "a-project-name",
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Projects Update Project Protection Bypass", async () => {
@@ -701,81 +856,6 @@ test("Projects List Promote Aliases", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({});
-});
-
-test("Projects Create Project Transfer Request", async () => {
-  const testHttpClient = createTestHTTPClient("createProjectTransferRequest");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.projects.createProjectTransferRequest({
-    idOrName: "<value>",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    code: "f99cc49a-602e-4786-a748-762dfb205880",
-  });
-});
-
-test("Projects Accept Project Transfer Request", async () => {
-  const testHttpClient = createTestHTTPClient("acceptProjectTransferRequest");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.projects.acceptProjectTransferRequest({
-    code: "<value>",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      newProjectName: "a-project-name",
-    },
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({});
-});
-
-test("Projects Filter Project Envs", async () => {
-  const testHttpClient = createTestHTTPClient("filterProjectEnvs");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.projects.filterProjectEnvs({
-    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
-    gitBranch: "feature-1",
-    decrypt: "true",
-    source: "vercel-cli:pull",
-    customEnvironmentId: "env_123abc4567",
-    customEnvironmentSlug: "my-custom-env",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    envs: [
-      {},
-      {},
-      {},
-    ],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Projects Pause Project", async () => {

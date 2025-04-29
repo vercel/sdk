@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,7 +46,64 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []operations.GetIntegrationLogDrainsResponseBody{}
+	respBody := []operations.GetIntegrationLogDrainsResponseBody{
+		operations.GetIntegrationLogDrainsResponseBody{
+			ClientID:        types.String("oac_xRhY4LAB7yLhUADD69EvV7ct"),
+			ConfigurationID: types.String("icfg_cuwj0AdCdH3BwWT4LPijCC7t"),
+			CreatedAt:       1558531915505,
+			ID:              "ld_nBuA7zCID8g4QZ8g",
+			DeliveryFormat:  operations.GetIntegrationLogDrainsDeliveryFormatJSON.ToPointer(),
+			Name:            "My first log drain",
+			OwnerID:         "kr1PsOIzqEL5Xg6M4VZcZosf",
+			ProjectID:       types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"),
+			ProjectIds: []string{
+				"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
+			},
+			URL: "https://example.com/log-drain",
+			Sources: []operations.GetIntegrationLogDrainsSources{
+				operations.GetIntegrationLogDrainsSourcesBuild,
+			},
+			CreatedFrom: operations.CreatedFromIntegration.ToPointer(),
+			Headers: map[string]string{
+				"0":  "{",
+				"1":  "\"",
+				"2":  "A",
+				"3":  "u",
+				"4":  "t",
+				"5":  "h",
+				"6":  "o",
+				"7":  "r",
+				"8":  "i",
+				"9":  "z",
+				"10": "a",
+				"11": "t",
+				"12": "i",
+				"13": "o",
+				"14": "n",
+				"15": "\"",
+				"16": ":",
+				"17": " ",
+				"18": "\"",
+				"19": "B",
+				"20": "e",
+				"21": "a",
+				"22": "r",
+				"23": "e",
+				"24": "r",
+				"25": " ",
+				"26": "1",
+				"27": "2",
+				"28": "3",
+				"29": "\"",
+				"30": "}",
+			},
+			Environments: []operations.GetIntegrationLogDrainsEnvironments{
+				operations.GetIntegrationLogDrainsEnvironmentsProduction,
+			},
+			Branch:       types.String("feature/*"),
+			SamplingRate: types.Float64(0.5),
+		},
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

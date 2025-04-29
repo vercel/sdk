@@ -58,6 +58,13 @@ func testUpdateAccessGroupUpdateAccessGroup0(w http.ResponseWriter, req *http.Re
 		AccessGroupID: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
 		MembersCount:  5,
 		ProjectsCount: 2,
+		TeamRoles: []string{
+			"DEVELOPER",
+			"BILLING",
+		},
+		TeamPermissions: []string{
+			"CreateProject",
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

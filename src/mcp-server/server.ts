@@ -135,6 +135,7 @@ import { tool$projectsGetProjectDomains } from "./tools/projectsGetProjectDomain
 import { tool$projectsGetProjectEnv } from "./tools/projectsGetProjectEnv.js";
 import { tool$projectsGetProjects } from "./tools/projectsGetProjects.js";
 import { tool$projectsListPromoteAliases } from "./tools/projectsListPromoteAliases.js";
+import { tool$projectsMoveProjectDomain } from "./tools/projectsMoveProjectDomain.js";
 import { tool$projectsPauseProject } from "./tools/projectsPauseProject.js";
 import { tool$projectsRemoveProjectDomain } from "./tools/projectsRemoveProjectDomain.js";
 import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.js";
@@ -184,7 +185,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.5",
+    version: "1.6.6",
   });
 
   const client = new VercelCore({
@@ -246,6 +247,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsUpdateProjectDomain);
   tool(tool$projectsRemoveProjectDomain);
   tool(tool$projectsAddProjectDomain);
+  tool(tool$projectsMoveProjectDomain);
   tool(tool$projectsVerifyProjectDomain);
   tool(tool$projectsFilterProjectEnvs);
   tool(tool$projectsCreateProjectEnv);

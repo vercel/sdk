@@ -6,31 +6,6 @@ import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Access Groups Read Access Group", async () => {
-  const testHttpClient = createTestHTTPClient("readAccessGroup");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "<value>",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    isDsyncManaged: false,
-    name: "my-access-group",
-    createdAt: "1588720733602",
-    teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-    updatedAt: "1588720733602",
-    accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-    membersCount: 5,
-    projectsCount: 2,
-  });
-});
-
 test("Access Groups Read Access Group Id", async () => {
   const testHttpClient = createTestHTTPClient("readAccessGroup-id");
 
@@ -55,6 +30,13 @@ test("Access Groups Read Access Group Id", async () => {
     accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
     membersCount: 5,
     projectsCount: 2,
+    teamRoles: [
+      "DEVELOPER",
+      "BILLING",
+    ],
+    teamPermissions: [
+      "CreateProject",
+    ],
   });
 });
 
@@ -82,6 +64,13 @@ test("Access Groups Read Access Group Name", async () => {
     accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
     membersCount: 5,
     projectsCount: 2,
+    teamRoles: [
+      "DEVELOPER",
+      "BILLING",
+    ],
+    teamPermissions: [
+      "CreateProject",
+    ],
   });
 });
 
@@ -100,7 +89,20 @@ test("Access Groups Update Access Group", async () => {
     slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
-      projects: [],
+      projects: [
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
+      ],
+      membersToAdd: [
+        "usr_1a2b3c4d5e6f7g8h9i0j",
+        "usr_2b3c4d5e6f7g8h9i0j1k",
+      ],
+      membersToRemove: [
+        "usr_1a2b3c4d5e6f7g8h9i0j",
+        "usr_2b3c4d5e6f7g8h9i0j1k",
+      ],
     },
   });
   expect(result).toBeDefined();
@@ -112,6 +114,13 @@ test("Access Groups Update Access Group", async () => {
     accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
     membersCount: 5,
     projectsCount: 2,
+    teamRoles: [
+      "DEVELOPER",
+      "BILLING",
+    ],
+    teamPermissions: [
+      "CreateProject",
+    ],
   });
 });
 
@@ -199,7 +208,16 @@ test("Access Groups Create Access Group", async () => {
     slug: "my-team-url-slug",
     requestBody: {
       name: "My access group",
-      projects: [],
+      projects: [
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
+      ],
+      membersToAdd: [
+        "usr_1a2b3c4d5e6f7g8h9i0j",
+        "usr_2b3c4d5e6f7g8h9i0j1k",
+      ],
     },
   });
   expect(result).toBeDefined();
@@ -211,6 +229,13 @@ test("Access Groups Create Access Group", async () => {
     teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
     updatedAt: "1588720733602",
     accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
+    teamRoles: [
+      "DEVELOPER",
+      "BILLING",
+    ],
+    teamPermissions: [
+      "CreateProject",
+    ],
   });
 });
 
@@ -263,32 +288,8 @@ test("Access Groups Create Access Group Project", async () => {
     accessGroupId: "<id>",
     projectId: "<id>",
     role: "PROJECT_VIEWER",
-    createdAt: "<value>",
-    updatedAt: "<value>",
-  });
-});
-
-test("Access Groups Read Access Group Project", async () => {
-  const testHttpClient = createTestHTTPClient("readAccessGroupProject");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.accessGroups.readAccessGroupProject({
-    accessGroupIdOrName: "<value>",
-    projectId: "<id>",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "<value>",
-    updatedAt: "<value>",
+    createdAt: "1726948284257",
+    updatedAt: "1744388503945",
   });
 });
 
@@ -313,8 +314,8 @@ test("Access Groups Read Access Group Project Id", async () => {
     accessGroupId: "<id>",
     projectId: "<id>",
     role: "ADMIN",
-    createdAt: "1706854122023",
-    updatedAt: "1735905380072",
+    createdAt: "1715344910813",
+    updatedAt: "1744396168862",
   });
 });
 
@@ -339,13 +340,13 @@ test("Access Groups Read Access Group Project Name", async () => {
     accessGroupId: "<id>",
     projectId: "<id>",
     role: "PROJECT_DEVELOPER",
-    createdAt: "1731124284693",
-    updatedAt: "1735836411388",
+    createdAt: "1739615073482",
+    updatedAt: "1744327200176",
   });
 });
 
-test("Access Groups Update Access Group Project", async () => {
-  const testHttpClient = createTestHTTPClient("updateAccessGroupProject");
+test("Access Groups Read Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("readAccessGroupProject");
 
   const vercel = new Vercel({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -353,21 +354,20 @@ test("Access Groups Update Access Group Project", async () => {
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await vercel.accessGroups.updateAccessGroupProject({
+  const result = await vercel.accessGroups.readAccessGroupProject({
     accessGroupIdOrName: "<value>",
-    projectId: "<id>",
-    requestBody: {
-      role: "ADMIN",
-    },
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
     teamId: "<id>",
     accessGroupId: "<id>",
     projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "<value>",
-    updatedAt: "<value>",
+    role: "PROJECT_DEVELOPER",
+    createdAt: "1741430060404",
+    updatedAt: "1744396619853",
   });
 });
 
@@ -395,8 +395,8 @@ test("Access Groups Update Access Group Project Id", async () => {
     accessGroupId: "<id>",
     projectId: "<id>",
     role: "ADMIN",
-    createdAt: "1706645964469",
-    updatedAt: "1735872085577",
+    createdAt: "1715136753218",
+    updatedAt: "1744362874326",
   });
 });
 
@@ -424,8 +424,37 @@ test("Access Groups Update Access Group Project Name", async () => {
     accessGroupId: "<id>",
     projectId: "<id>",
     role: "ADMIN",
-    createdAt: "1708158031858",
-    updatedAt: "1735838146635",
+    createdAt: "1716648820605",
+    updatedAt: "1744328935382",
+  });
+});
+
+test("Access Groups Update Access Group Project", async () => {
+  const testHttpClient = createTestHTTPClient("updateAccessGroupProject");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.accessGroups.updateAccessGroupProject({
+    accessGroupIdOrName: "<value>",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      role: "ADMIN",
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    teamId: "<id>",
+    accessGroupId: "<id>",
+    projectId: "<id>",
+    role: "ADMIN",
+    createdAt: "1736314214978",
+    updatedAt: "1744397001817",
   });
 });
 
@@ -474,6 +503,8 @@ test("Access Groups Delete Access Group Project", async () => {
 
   await vercel.accessGroups.deleteAccessGroupProject({
     accessGroupIdOrName: "<value>",
-    projectId: "<id>",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 });

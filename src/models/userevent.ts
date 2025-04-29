@@ -1884,6 +1884,7 @@ export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 export type PayloadBuildMachine = {
   purchaseType?: PayloadPurchaseType | undefined;
   abovePlan?: boolean | undefined;
+  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -2450,6 +2451,20 @@ export type OverageUsageAlerts = {
 };
 
 /**
+ * Contains the timestamps for usage summary emails.
+ */
+export type OverageMetadata = {
+  /**
+   * Tracks if the first time on-demand overage email has been sent.
+   */
+  firstTimeOnDemandNotificationSentAt?: number | undefined;
+  /**
+   * Tracks the last time we sent a summary email.
+   */
+  overageSummaryEmailSentAt?: number | undefined;
+};
+
+/**
  * Whether the Vercel Toolbar is enabled for preview deployments.
  */
 export const EnablePreviewFeedback = {
@@ -2935,6 +2950,10 @@ export type NewOwner = {
    */
   usageAlerts?: UsageAlerts | null | undefined;
   overageUsageAlerts?: OverageUsageAlerts | undefined;
+  /**
+   * Contains the timestamps for usage summary emails.
+   */
+  overageMetadata?: OverageMetadata | undefined;
   username: string;
   updatedAt: number;
   /**
@@ -16071,6 +16090,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: PayloadPurchaseType$inboundSchema.optional(),
   abovePlan: z.boolean().optional(),
+  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
@@ -16079,6 +16099,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 export type PayloadBuildMachine$Outbound = {
   purchaseType?: string | undefined;
   abovePlan?: boolean | undefined;
+  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -16091,6 +16112,7 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: PayloadPurchaseType$outboundSchema.optional(),
   abovePlan: z.boolean().optional(),
+  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
@@ -20085,6 +20107,61 @@ export function overageUsageAlertsFromJSON(
 }
 
 /** @internal */
+export const OverageMetadata$inboundSchema: z.ZodType<
+  OverageMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  firstTimeOnDemandNotificationSentAt: z.number().optional(),
+  overageSummaryEmailSentAt: z.number().optional(),
+});
+
+/** @internal */
+export type OverageMetadata$Outbound = {
+  firstTimeOnDemandNotificationSentAt?: number | undefined;
+  overageSummaryEmailSentAt?: number | undefined;
+};
+
+/** @internal */
+export const OverageMetadata$outboundSchema: z.ZodType<
+  OverageMetadata$Outbound,
+  z.ZodTypeDef,
+  OverageMetadata
+> = z.object({
+  firstTimeOnDemandNotificationSentAt: z.number().optional(),
+  overageSummaryEmailSentAt: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OverageMetadata$ {
+  /** @deprecated use `OverageMetadata$inboundSchema` instead. */
+  export const inboundSchema = OverageMetadata$inboundSchema;
+  /** @deprecated use `OverageMetadata$outboundSchema` instead. */
+  export const outboundSchema = OverageMetadata$outboundSchema;
+  /** @deprecated use `OverageMetadata$Outbound` instead. */
+  export type Outbound = OverageMetadata$Outbound;
+}
+
+export function overageMetadataToJSON(
+  overageMetadata: OverageMetadata,
+): string {
+  return JSON.stringify(OverageMetadata$outboundSchema.parse(overageMetadata));
+}
+
+export function overageMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<OverageMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OverageMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OverageMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
 > = z.nativeEnum(EnablePreviewFeedback);
@@ -21368,6 +21445,7 @@ export const NewOwner$inboundSchema: z.ZodType<
   type: UserEventPayload62Type$inboundSchema,
   usageAlerts: z.nullable(z.lazy(() => UsageAlerts$inboundSchema)).optional(),
   overageUsageAlerts: z.lazy(() => OverageUsageAlerts$inboundSchema).optional(),
+  overageMetadata: z.lazy(() => OverageMetadata$inboundSchema).optional(),
   username: z.string(),
   updatedAt: z.number(),
   enablePreviewFeedback: EnablePreviewFeedback$inboundSchema.optional(),
@@ -21452,6 +21530,7 @@ export type NewOwner$Outbound = {
   type: string;
   usageAlerts?: UsageAlerts$Outbound | null | undefined;
   overageUsageAlerts?: OverageUsageAlerts$Outbound | undefined;
+  overageMetadata?: OverageMetadata$Outbound | undefined;
   username: string;
   updatedAt: number;
   enablePreviewFeedback?: string | undefined;
@@ -21552,6 +21631,7 @@ export const NewOwner$outboundSchema: z.ZodType<
   usageAlerts: z.nullable(z.lazy(() => UsageAlerts$outboundSchema)).optional(),
   overageUsageAlerts: z.lazy(() => OverageUsageAlerts$outboundSchema)
     .optional(),
+  overageMetadata: z.lazy(() => OverageMetadata$outboundSchema).optional(),
   username: z.string(),
   updatedAt: z.number(),
   enablePreviewFeedback: EnablePreviewFeedback$outboundSchema.optional(),

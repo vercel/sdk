@@ -51,9 +51,20 @@ func testAddBypassIPAddBypassIp0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateAddBypassIPResponseBodyAddBypassIPResponseBody2(
-		operations.AddBypassIPResponseBody2{
+	respBody := types.Pointer(operations.CreateAddBypassIPResponseBodyAddBypassIPResponseBody1(
+		operations.AddBypassIPResponseBody1{
 			Ok: false,
+			Result: []operations.AddBypassIPResponseBodyResult{
+				operations.AddBypassIPResponseBodyResult{
+					OwnerID:       "<id>",
+					ID:            "<id>",
+					Domain:        "jubilant-outrun.name",
+					ProjectID:     "<id>",
+					Note:          "<value>",
+					IsProjectRule: true,
+				},
+			},
+			Pagination: types.String("<value>"),
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

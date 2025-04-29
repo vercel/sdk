@@ -15,6 +15,7 @@ import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
 import { projectsGetProjects } from "../funcs/projectsGetProjects.js";
 import { projectsListPromoteAliases } from "../funcs/projectsListPromoteAliases.js";
+import { projectsMoveProjectDomain } from "../funcs/projectsMoveProjectDomain.js";
 import { projectsPauseProject } from "../funcs/projectsPauseProject.js";
 import { projectsRemoveProjectDomain } from "../funcs/projectsRemoveProjectDomain.js";
 import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
@@ -75,6 +76,10 @@ import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
 } from "../models/listpromotealiasesop.js";
+import {
+  MoveProjectDomainRequest,
+  MoveProjectDomainResponseBody,
+} from "../models/moveprojectdomainop.js";
 import { PauseProjectRequest } from "../models/pauseprojectop.js";
 import {
   RemoveProjectDomainRequest,
@@ -273,6 +278,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<AddProjectDomainResponseBody> {
     return unwrapAsync(projectsAddProjectDomain(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a project domain
+   *
+   * @remarks
+   * Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.
+   */
+  async moveProjectDomain(
+    request: MoveProjectDomainRequest,
+    options?: RequestOptions,
+  ): Promise<MoveProjectDomainResponseBody> {
+    return unwrapAsync(projectsMoveProjectDomain(
       this,
       request,
       options,

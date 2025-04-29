@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -53,12 +54,14 @@ func testCreateCheckCreateCheck0(w http.ResponseWriter, req *http.Request) {
 	respBody := &operations.CreateCheckResponseBody{
 		ID:            "chk_1a2b3c4d5e6f7g8h9i0j",
 		Name:          "Performance Check",
+		Path:          types.String("/api/users"),
 		Status:        operations.CreateCheckStatusCompleted,
-		Blocking:      false,
+		Conclusion:    operations.CreateCheckConclusionSucceeded.ToPointer(),
+		Blocking:      true,
 		IntegrationID: "<id>",
 		DeploymentID:  "<id>",
-		CreatedAt:     2396.37,
-		UpdatedAt:     1065.29,
+		CreatedAt:     9375.78,
+		UpdatedAt:     2396.37,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

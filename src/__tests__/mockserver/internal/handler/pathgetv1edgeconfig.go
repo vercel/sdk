@@ -50,6 +50,10 @@ func testGetEdgeConfigsGetEdgeConfigs0(w http.ResponseWriter, req *http.Request)
 			SizeInBytes: 8239.08,
 			ItemCount:   557.07,
 		},
+		operations.GetEdgeConfigsResponseBody{
+			SizeInBytes: 4591.09,
+			ItemCount:   7040.34,
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

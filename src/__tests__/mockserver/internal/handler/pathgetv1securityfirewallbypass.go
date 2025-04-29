@@ -46,8 +46,21 @@ func testGetBypassIPGetBypassIp0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetBypassIPResponseBodyGetBypassIPResponseBody2(
-		operations.GetBypassIPResponseBody2{},
+	respBody := types.Pointer(operations.CreateGetBypassIPResponseBodyGetBypassIPResponseBody1(
+		operations.GetBypassIPResponseBody1{
+			Result: []operations.ResponseBodyResult{
+				operations.ResponseBodyResult{
+					OwnerID:       "<id>",
+					ID:            "<id>",
+					Domain:        "sneaky-intervention.info",
+					IP:            "124.153.161.35",
+					CreatedAt:     "1730712703128",
+					UpdatedAt:     "1744368534759",
+					UpdatedAtHour: "<value>",
+				},
+			},
+			Pagination: types.String("<value>"),
+		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -53,47 +53,47 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 	}
 	respBody := &operations.CreateDeploymentResponseBody{
 		Build: operations.Build{
-			Env: []string{},
+			Env: []string{
+				"<value>",
+				"<value>",
+				"<value>",
+			},
 		},
 		Env: []string{
 			"<value>",
 			"<value>",
-			"<value>",
 		},
-		InspectorURL:              types.String("https://grave-dredger.com"),
+		InspectorURL:              types.String("https://firm-casket.name/"),
 		IsInConcurrentBuildsQueue: false,
 		IsInSystemBuildsQueue:     false,
 		ProjectSettings:           operations.CreateDeploymentProjectSettings{},
-		AliasAssigned:             false,
-		BootedAt:                  4336.60,
-		BuildingAt:                7030.55,
-		BuildSkipped:              true,
+		AliasAssigned:             true,
+		BootedAt:                  7030.55,
+		BuildingAt:                2916.6,
+		BuildSkipped:              false,
 		Creator: operations.Creator{
 			UID: "<id>",
 		},
-		Public:    false,
-		Status:    operations.CreateDeploymentStatusQueued,
+		Public:    true,
+		Status:    operations.CreateDeploymentStatusBuilding,
 		Type:      operations.CreateDeploymentTypeLambdas,
 		Name:      "<value>",
-		CreatedAt: 5133.44,
+		CreatedAt: 1218,
 		ID:        "<id>",
-		Version:   1218.01,
+		Version:   5856.16,
 		Meta: map[string]string{
 			"key":  "<value>",
 			"key1": "<value>",
 		},
-		ReadyState: operations.ReadyStateInitializing,
-		Regions:    []string{},
-		URL:        "https://apprehensive-perp.info/",
-		Plan:       operations.PlanPro,
-		ProjectID:  "<id>",
-		OwnerID:    "<id>",
+		ReadyState: operations.ReadyStateCanceled,
+		Regions: []string{
+			"<value>",
+		},
+		URL:       "https://quiet-formation.name/",
+		Plan:      operations.PlanPro,
+		ProjectID: "<id>",
+		OwnerID:   "<id>",
 		Routes: []operations.Routes{
-			operations.CreateRoutesRoutes1(
-				operations.Routes1{
-					Src: "<value>",
-				},
-			),
 			operations.CreateRoutesRoutes1(
 				operations.Routes1{
 					Src: "<value>",

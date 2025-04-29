@@ -23,3 +23,5 @@ targets:
             registry:
                 location: registry.speakeasyapi.dev/vercel/vercel-docs/vercel-oas-typescript-code-samples
             blocking: false
+        testing:
+            enabled: true

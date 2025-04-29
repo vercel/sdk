@@ -50,7 +50,7 @@ func testGetEdgeConfigTokensGetEdgeConfigTokens0(w http.ResponseWriter, req *htt
 		Label:        "<value>",
 		ID:           "<id>",
 		EdgeConfigID: "<id>",
-		CreatedAt:    7692.35,
+		CreatedAt:    7692.36,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

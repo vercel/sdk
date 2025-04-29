@@ -6,6 +6,53 @@ import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
+test("Aliases List Deployment Aliases", async () => {
+  const testHttpClient = createTestHTTPClient("listDeploymentAliases");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.aliases.listDeploymentAliases({
+    id: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    aliases: [],
+  });
+});
+
+test("Aliases Assign Alias", async () => {
+  const testHttpClient = createTestHTTPClient("assignAlias");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.aliases.assignAlias({
+    id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      alias: "my-alias.vercel.app",
+      redirect: null,
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    uid: "2WjyKQmM8ZnGcJsPWMrHRHrE",
+    alias: "my-alias.vercel.app",
+    created: new Date("2017-04-26T23:00:34.232Z"),
+    oldDeploymentId: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
+  });
+});
+
 test("Aliases List Aliases", async () => {
   const testHttpClient = createTestHTTPClient("listAliases");
 
@@ -95,52 +142,5 @@ test("Aliases Delete Alias", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     status: "SUCCESS",
-  });
-});
-
-test("Aliases List Deployment Aliases", async () => {
-  const testHttpClient = createTestHTTPClient("listDeploymentAliases");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.aliases.listDeploymentAliases({
-    id: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    aliases: [],
-  });
-});
-
-test("Aliases Assign Alias", async () => {
-  const testHttpClient = createTestHTTPClient("assignAlias");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.aliases.assignAlias({
-    id: "<id>",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      alias: "my-alias.vercel.app",
-      redirect: null,
-    },
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    uid: "2WjyKQmM8ZnGcJsPWMrHRHrE",
-    alias: "my-alias.vercel.app",
-    created: new Date("2017-04-26T23:00:34.232Z"),
-    oldDeploymentId: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
   });
 });

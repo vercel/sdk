@@ -52,7 +52,7 @@ func testListDeploymentFilesListDeploymentFiles0(w http.ResponseWriter, req *htt
 			Type:        components.TypeFile,
 			UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
 			ContentType: types.String("application/json"),
-			Mode:        956.44,
+			Mode:        956.43,
 		},
 		components.FileTree{
 			Name:        "my-file.json",

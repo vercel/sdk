@@ -10,8 +10,8 @@ let value: GetBypassIpResponseBodyResult = {
   id: "<id>",
   domain: "tasty-straw.org",
   ip: "c7ba:04ff:1335:c1a4:0321:3f60:ce29:ec48",
-  createdAt: "1728944124007",
-  updatedAt: "1745897082727",
+  createdAt: "1728956350864",
+  updatedAt: "1745909309584",
   updatedAtHour: "<value>",
 };
 ```

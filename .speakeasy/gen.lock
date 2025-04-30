@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 1391f897a26f61b45749db5e65a2d5d0
+  docChecksum: 4e297be9f377581926a73e477d9ef7e3
   docVersion: 0.0.1
   speakeasyVersion: 1.540.1
   generationVersion: 2.593.4
-  releaseVersion: 1.6.6
-  configChecksum: adc3b3489751ae2965513957334a46f7
+  releaseVersion: 1.6.7
+  configChecksum: fbe65d4255dd75b975646b5a1e826258
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true

@@ -285,7 +285,7 @@ export class Projects extends ClientSDK {
   }
 
   /**
-   * Update a project domain
+   * Move a project domain
    *
    * @remarks
    * Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.

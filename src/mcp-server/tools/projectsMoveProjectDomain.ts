@@ -12,7 +12,7 @@ const args = {
 
 export const tool$projectsMoveProjectDomain: ToolDefinition<typeof args> = {
   name: "projects-move-project-domain",
-  description: `Update a project domain
+  description: `Move a project domain
 
 Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.`,
   args,

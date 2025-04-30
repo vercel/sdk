@@ -10,8 +10,8 @@ let value: ResponseBodyResult = {
   id: "<id>",
   domain: "zany-platter.com",
   ip: "eed4:ec4b:da5d:7c93:fd0d:aef0:1b13:ded3",
-  createdAt: "1717534293734",
-  updatedAt: "1745919493870",
+  createdAt: "1717546544524",
+  updatedAt: "1745931744660",
   updatedAtHour: "<value>",
 };
 ```

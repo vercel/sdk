@@ -15,7 +15,7 @@
 * [updateProjectDomain](#updateprojectdomain) - Update a project domain
 * [removeProjectDomain](#removeprojectdomain) - Remove a domain from a project
 * [addProjectDomain](#addprojectdomain) - Add a domain to a project
-* [moveProjectDomain](#moveprojectdomain) - Update a project domain
+* [moveProjectDomain](#moveprojectdomain) - Move a project domain
 * [verifyProjectDomain](#verifyprojectdomain) - Verify project domain
 * [filterProjectEnvs](#filterprojectenvs) - Retrieve the environment variables of a project by id or name
 * [createProjectEnv](#createprojectenv) - Create one or more environment variables

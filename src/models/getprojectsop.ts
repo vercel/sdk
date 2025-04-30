@@ -914,6 +914,10 @@ export type GetProjectsStages = {
    * Whether or not this stage requires approval to proceed.
    */
   requireApproval?: boolean | undefined;
+  /**
+   * duration is the total time to serve a stage, at the given targetPercentage.
+   */
+  duration?: number | undefined;
 };
 
 export type GetProjectsRollingRelease = {
@@ -6137,6 +6141,7 @@ export const GetProjectsStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   minutesToRelease: z.number().optional(),
   requireApproval: z.boolean().optional(),
+  duration: z.number().optional(),
 });
 
 /** @internal */
@@ -6144,6 +6149,7 @@ export type GetProjectsStages$Outbound = {
   targetPercentage: number;
   minutesToRelease?: number | undefined;
   requireApproval?: boolean | undefined;
+  duration?: number | undefined;
 };
 
 /** @internal */
@@ -6155,6 +6161,7 @@ export const GetProjectsStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   minutesToRelease: z.number().optional(),
   requireApproval: z.boolean().optional(),
+  duration: z.number().optional(),
 });
 
 /**

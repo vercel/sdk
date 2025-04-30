@@ -3815,6 +3815,8 @@ type GetProjectsStages struct {
 	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
 	// Whether or not this stage requires approval to proceed.
 	RequireApproval *bool `json:"requireApproval,omitempty"`
+	// duration is the total time to serve a stage, at the given targetPercentage.
+	Duration *float64 `json:"duration,omitempty"`
 }
 
 func (o *GetProjectsStages) GetTargetPercentage() float64 {
@@ -3836,6 +3838,13 @@ func (o *GetProjectsStages) GetRequireApproval() *bool {
 		return nil
 	}
 	return o.RequireApproval
+}
+
+func (o *GetProjectsStages) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
 }
 
 type GetProjectsRollingRelease struct {

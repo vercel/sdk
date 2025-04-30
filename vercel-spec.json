@@ -5688,6 +5688,10 @@
                               "requireApproval": {
                                 "type": "boolean",
                                 "description": "Whether or not this stage requires approval to proceed."
+                              },
+                              "duration": {
+                                "type": "number",
+                                "description": "duration is the total time to serve a stage, at the given targetPercentage."
                               }
                             },
                             "required": [
@@ -27371,6 +27375,10 @@
                                     "requireApproval": {
                                       "type": "boolean",
                                       "description": "Whether or not this stage requires approval to proceed."
+                                    },
+                                    "duration": {
+                                      "type": "number",
+                                      "description": "duration is the total time to serve a stage, at the given targetPercentage."
                                     }
                                   },
                                   "required": [
@@ -31239,6 +31247,10 @@
                               "requireApproval": {
                                 "type": "boolean",
                                 "description": "Whether or not this stage requires approval to proceed."
+                              },
+                              "duration": {
+                                "type": "number",
+                                "description": "duration is the total time to serve a stage, at the given targetPercentage."
                               }
                             },
                             "required": [
@@ -35234,6 +35246,10 @@
                               "requireApproval": {
                                 "type": "boolean",
                                 "description": "Whether or not this stage requires approval to proceed."
+                              },
+                              "duration": {
+                                "type": "number",
+                                "description": "duration is the total time to serve a stage, at the given targetPercentage."
                               }
                             },
                             "required": [
@@ -38992,6 +39008,10 @@
                               "requireApproval": {
                                 "type": "boolean",
                                 "description": "Whether or not this stage requires approval to proceed."
+                              },
+                              "duration": {
+                                "type": "number",
+                                "description": "duration is the total time to serve a stage, at the given targetPercentage."
                               }
                             },
                             "required": [
@@ -43407,7 +43427,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Update a project domain",
+        "summary": "Move a project domain",
         "tags": [
           "projects"
         ],

@@ -97,7 +97,7 @@ const value: models.GetDeploymentGitSource9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "trustworthy-detective.net",
   ref: "<value>",
   sha: "<value>",

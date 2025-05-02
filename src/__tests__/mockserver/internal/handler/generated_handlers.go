@@ -93,6 +93,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v9/projects/{idOrName}/domains", pathGetV9ProjectsIDOrNameDomains(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v9/projects/{idOrName}/domains/{domain}", pathGetV9ProjectsIDOrNameDomainsDomain(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodHead, "/v8/artifacts/{hash}", pathHeadV8ArtifactsHash(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPatch, "/aliases/{id}/protection-bypass", pathPatchAliasesIDProtectionBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}", pathPatchV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/data-cache/projects/{projectId}", pathPatchV1DataCacheProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/deployments/{deploymentId}/checks/{checkId}", pathPatchV1DeploymentsDeploymentIDChecksCheckID(dir, rt)),

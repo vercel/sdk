@@ -6,7 +6,7 @@
 import { GetDeploymentGitSourceDeployments10 } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentGitSourceDeployments10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "overdue-mousse.com",
   ref: "<value>",
   sha: "<value>",

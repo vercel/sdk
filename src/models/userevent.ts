@@ -1216,9 +1216,39 @@ export type UserEventPayload83Team = {
   name: string;
 };
 
-export type OldConnectConfigurations = {};
+export const EnvId2 = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type EnvId2 = ClosedEnum<typeof EnvId2>;
 
-export type NewConnectConfigurations = {};
+export type EnvId = string | EnvId2;
+
+export type OldConnectConfigurations = {
+  envId: string | EnvId2;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
+
+export const UserEventEnvId2 = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type UserEventEnvId2 = ClosedEnum<typeof UserEventEnvId2>;
+
+export type PayloadEnvId = string | UserEventEnvId2;
+
+export type NewConnectConfigurations = {
+  envId: string | UserEventEnvId2;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
 
 export type UserEventPayload83Project = {
   id: string;
@@ -1883,7 +1913,6 @@ export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 
 export type PayloadBuildMachine = {
   purchaseType?: PayloadPurchaseType | undefined;
-  abovePlan?: boolean | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
@@ -11645,21 +11674,102 @@ export function userEventPayload83TeamFromJSON(
 }
 
 /** @internal */
+export const EnvId2$inboundSchema: z.ZodNativeEnum<typeof EnvId2> = z
+  .nativeEnum(EnvId2);
+
+/** @internal */
+export const EnvId2$outboundSchema: z.ZodNativeEnum<typeof EnvId2> =
+  EnvId2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnvId2$ {
+  /** @deprecated use `EnvId2$inboundSchema` instead. */
+  export const inboundSchema = EnvId2$inboundSchema;
+  /** @deprecated use `EnvId2$outboundSchema` instead. */
+  export const outboundSchema = EnvId2$outboundSchema;
+}
+
+/** @internal */
+export const EnvId$inboundSchema: z.ZodType<EnvId, z.ZodTypeDef, unknown> = z
+  .union([z.string(), EnvId2$inboundSchema]);
+
+/** @internal */
+export type EnvId$Outbound = string | string;
+
+/** @internal */
+export const EnvId$outboundSchema: z.ZodType<
+  EnvId$Outbound,
+  z.ZodTypeDef,
+  EnvId
+> = z.union([z.string(), EnvId2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnvId$ {
+  /** @deprecated use `EnvId$inboundSchema` instead. */
+  export const inboundSchema = EnvId$inboundSchema;
+  /** @deprecated use `EnvId$outboundSchema` instead. */
+  export const outboundSchema = EnvId$outboundSchema;
+  /** @deprecated use `EnvId$Outbound` instead. */
+  export type Outbound = EnvId$Outbound;
+}
+
+export function envIdToJSON(envId: EnvId): string {
+  return JSON.stringify(EnvId$outboundSchema.parse(envId));
+}
+
+export function envIdFromJSON(
+  jsonString: string,
+): SafeParseResult<EnvId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnvId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnvId' from JSON`,
+  );
+}
+
+/** @internal */
 export const OldConnectConfigurations$inboundSchema: z.ZodType<
   OldConnectConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  envId: z.union([z.string(), EnvId2$inboundSchema]),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /** @internal */
-export type OldConnectConfigurations$Outbound = {};
+export type OldConnectConfigurations$Outbound = {
+  envId: string | string;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const OldConnectConfigurations$outboundSchema: z.ZodType<
   OldConnectConfigurations$Outbound,
   z.ZodTypeDef,
   OldConnectConfigurations
-> = z.object({});
+> = z.object({
+  envId: z.union([z.string(), EnvId2$outboundSchema]),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /**
  * @internal
@@ -11693,21 +11803,107 @@ export function oldConnectConfigurationsFromJSON(
 }
 
 /** @internal */
+export const UserEventEnvId2$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventEnvId2
+> = z.nativeEnum(UserEventEnvId2);
+
+/** @internal */
+export const UserEventEnvId2$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventEnvId2
+> = UserEventEnvId2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventEnvId2$ {
+  /** @deprecated use `UserEventEnvId2$inboundSchema` instead. */
+  export const inboundSchema = UserEventEnvId2$inboundSchema;
+  /** @deprecated use `UserEventEnvId2$outboundSchema` instead. */
+  export const outboundSchema = UserEventEnvId2$outboundSchema;
+}
+
+/** @internal */
+export const PayloadEnvId$inboundSchema: z.ZodType<
+  PayloadEnvId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), UserEventEnvId2$inboundSchema]);
+
+/** @internal */
+export type PayloadEnvId$Outbound = string | string;
+
+/** @internal */
+export const PayloadEnvId$outboundSchema: z.ZodType<
+  PayloadEnvId$Outbound,
+  z.ZodTypeDef,
+  PayloadEnvId
+> = z.union([z.string(), UserEventEnvId2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadEnvId$ {
+  /** @deprecated use `PayloadEnvId$inboundSchema` instead. */
+  export const inboundSchema = PayloadEnvId$inboundSchema;
+  /** @deprecated use `PayloadEnvId$outboundSchema` instead. */
+  export const outboundSchema = PayloadEnvId$outboundSchema;
+  /** @deprecated use `PayloadEnvId$Outbound` instead. */
+  export type Outbound = PayloadEnvId$Outbound;
+}
+
+export function payloadEnvIdToJSON(payloadEnvId: PayloadEnvId): string {
+  return JSON.stringify(PayloadEnvId$outboundSchema.parse(payloadEnvId));
+}
+
+export function payloadEnvIdFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadEnvId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadEnvId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadEnvId' from JSON`,
+  );
+}
+
+/** @internal */
 export const NewConnectConfigurations$inboundSchema: z.ZodType<
   NewConnectConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  envId: z.union([z.string(), UserEventEnvId2$inboundSchema]),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /** @internal */
-export type NewConnectConfigurations$Outbound = {};
+export type NewConnectConfigurations$Outbound = {
+  envId: string | string;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const NewConnectConfigurations$outboundSchema: z.ZodType<
   NewConnectConfigurations$Outbound,
   z.ZodTypeDef,
   NewConnectConfigurations
-> = z.object({});
+> = z.object({
+  envId: z.union([z.string(), UserEventEnvId2$outboundSchema]),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /**
  * @internal
@@ -16089,7 +16285,6 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   purchaseType: PayloadPurchaseType$inboundSchema.optional(),
-  abovePlan: z.boolean().optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
@@ -16098,7 +16293,6 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
   purchaseType?: string | undefined;
-  abovePlan?: boolean | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
@@ -16111,7 +16305,6 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   PayloadBuildMachine
 > = z.object({
   purchaseType: PayloadPurchaseType$outboundSchema.optional(),
-  abovePlan: z.boolean().optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),

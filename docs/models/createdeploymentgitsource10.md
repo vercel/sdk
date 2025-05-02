@@ -6,7 +6,7 @@
 import { CreateDeploymentGitSource10 } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentGitSource10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "svelte-roadway.net",
   ref: "<value>",
   sha: "<value>",

@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectDataCacheProjectsResponse200Type } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheProjectsResponse200Type = "secret";
+let value: UpdateProjectDataCacheProjectsResponse200Type = "promote";
 ```
 
 ## Values
 
 ```typescript
-"secret" | "system" | "encrypted" | "plain" | "sensitive"
+"promote" | "rollback"
 ```

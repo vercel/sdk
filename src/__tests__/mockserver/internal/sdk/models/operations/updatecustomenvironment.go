@@ -137,7 +137,301 @@ func (o *UpdateCustomEnvironmentRequest) GetRequestBody() *UpdateCustomEnvironme
 	return o.RequestBody
 }
 
+// UpdateCustomEnvironmentEnvironmentType - The type of environment (production, preview, or development)
+type UpdateCustomEnvironmentEnvironmentType string
+
+const (
+	UpdateCustomEnvironmentEnvironmentTypeProduction  UpdateCustomEnvironmentEnvironmentType = "production"
+	UpdateCustomEnvironmentEnvironmentTypePreview     UpdateCustomEnvironmentEnvironmentType = "preview"
+	UpdateCustomEnvironmentEnvironmentTypeDevelopment UpdateCustomEnvironmentEnvironmentType = "development"
+)
+
+func (e UpdateCustomEnvironmentEnvironmentType) ToPointer() *UpdateCustomEnvironmentEnvironmentType {
+	return &e
+}
+func (e *UpdateCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = UpdateCustomEnvironmentEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateCustomEnvironmentEnvironmentType: %v", v)
+	}
+}
+
+// UpdateCustomEnvironmentEnvironmentResponseType - The type of matching to perform
+type UpdateCustomEnvironmentEnvironmentResponseType string
+
+const (
+	UpdateCustomEnvironmentEnvironmentResponseTypeEndsWith   UpdateCustomEnvironmentEnvironmentResponseType = "endsWith"
+	UpdateCustomEnvironmentEnvironmentResponseTypeStartsWith UpdateCustomEnvironmentEnvironmentResponseType = "startsWith"
+	UpdateCustomEnvironmentEnvironmentResponseTypeEquals     UpdateCustomEnvironmentEnvironmentResponseType = "equals"
+)
+
+func (e UpdateCustomEnvironmentEnvironmentResponseType) ToPointer() *UpdateCustomEnvironmentEnvironmentResponseType {
+	return &e
+}
+func (e *UpdateCustomEnvironmentEnvironmentResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "endsWith":
+		fallthrough
+	case "startsWith":
+		fallthrough
+	case "equals":
+		*e = UpdateCustomEnvironmentEnvironmentResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateCustomEnvironmentEnvironmentResponseType: %v", v)
+	}
+}
+
+// UpdateCustomEnvironmentEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type UpdateCustomEnvironmentEnvironmentBranchMatcher struct {
+	// The type of matching to perform
+	Type UpdateCustomEnvironmentEnvironmentResponseType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *UpdateCustomEnvironmentEnvironmentBranchMatcher) GetType() UpdateCustomEnvironmentEnvironmentResponseType {
+	if o == nil {
+		return UpdateCustomEnvironmentEnvironmentResponseType("")
+	}
+	return o.Type
+}
+
+func (o *UpdateCustomEnvironmentEnvironmentBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// UpdateCustomEnvironmentVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type UpdateCustomEnvironmentVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *UpdateCustomEnvironmentVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *UpdateCustomEnvironmentVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *UpdateCustomEnvironmentVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *UpdateCustomEnvironmentVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// UpdateCustomEnvironmentDomains - List of domains associated with this environment
+type UpdateCustomEnvironmentDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []UpdateCustomEnvironmentVerification `json:"verification,omitempty"`
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *UpdateCustomEnvironmentDomains) GetVerification() []UpdateCustomEnvironmentVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// UpdateCustomEnvironmentResponseBody - Internal representation of a custom environment with all required properties
 type UpdateCustomEnvironmentResponseBody struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type UpdateCustomEnvironmentEnvironmentType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *UpdateCustomEnvironmentEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []UpdateCustomEnvironmentDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetType() UpdateCustomEnvironmentEnvironmentType {
+	if o == nil {
+		return UpdateCustomEnvironmentEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetBranchMatcher() *UpdateCustomEnvironmentEnvironmentBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetDomains() []UpdateCustomEnvironmentDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateCustomEnvironmentResponseBody) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 type UpdateCustomEnvironmentResponse struct {

@@ -405,20 +405,19 @@ export type GetProjectsContentHint =
   | GetProjectsContentHint15
   | GetProjectsContentHint14;
 
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType =
-  {
-    FlagsSecret: "flags-secret",
-  } as const;
-export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType =
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType = {
+  FlagsSecret: "flags-secret",
+} as const;
+export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyType =
   ClosedEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
   >;
 
 /**
  * Similar to `contentHints`, but should not be exposed to the user.
  */
 export type GetProjectsInternalContentHint = {
-  type: GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType;
+  type: GetProjectsProjectsResponse200ApplicationJSONResponseBodyType;
   /**
    * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
    */
@@ -471,7 +470,127 @@ export type GetProjectsEnv = {
   customEnvironmentIds?: Array<string> | undefined;
 };
 
-export type GetProjectsCustomEnvironments = {};
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const GetProjectsProjectsType = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type GetProjectsProjectsType = ClosedEnum<
+  typeof GetProjectsProjectsType
+>;
+
+/**
+ * The type of matching to perform
+ */
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType =
+  {
+    EndsWith: "endsWith",
+    StartsWith: "startsWith",
+    Equals: "equals",
+  } as const;
+/**
+ * The type of matching to perform
+ */
+export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType =
+  ClosedEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType
+  >;
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type GetProjectsBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type GetProjectsVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type GetProjectsDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?: Array<GetProjectsVerification> | undefined;
+};
+
+/**
+ * Internal representation of a custom environment with all required properties
+ */
+export type GetProjectsCustomEnvironments = {
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
+  /**
+   * The type of environment (production, preview, or development)
+   */
+  type: GetProjectsProjectsType;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?: GetProjectsBranchMatcher | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<GetProjectsDomains> | undefined;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
+};
 
 export const GetProjectsFramework = {
   Blitzjs: "blitzjs",
@@ -538,24 +657,26 @@ export type GetProjectsAliasError = {
 /**
  * The type of matching to perform
  */
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType = {
-  EndsWith: "endsWith",
-  StartsWith: "startsWith",
-  Equals: "equals",
-} as const;
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType =
+  {
+    EndsWith: "endsWith",
+    StartsWith: "startsWith",
+    Equals: "equals",
+  } as const;
 /**
  * The type of matching to perform
  */
-export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyType =
+export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType =
   ClosedEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType
   >;
 
-export type GetProjectsBranchMatcher = {
+export type GetProjectsProjectsBranchMatcher = {
   /**
    * The type of matching to perform
    */
-  type: GetProjectsProjectsResponse200ApplicationJSONResponseBodyType;
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType;
   /**
    * The pattern to match against branch names
    */
@@ -631,11 +752,11 @@ export type GetProjectsReadySubstate = ClosedEnum<
   typeof GetProjectsReadySubstate
 >;
 
-export const GetProjectsProjectsType = {
+export const GetProjectsProjectsResponseType = {
   Lambdas: "LAMBDAS",
 } as const;
-export type GetProjectsProjectsType = ClosedEnum<
-  typeof GetProjectsProjectsType
+export type GetProjectsProjectsResponseType = ClosedEnum<
+  typeof GetProjectsProjectsResponseType
 >;
 
 export type GetProjectsLatestDeployments = {
@@ -645,7 +766,7 @@ export type GetProjectsLatestDeployments = {
   aliasError?: GetProjectsAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: GetProjectsBranchMatcher | undefined;
+  branchMatcher?: GetProjectsProjectsBranchMatcher | undefined;
   buildingAt?: number | undefined;
   builds?: Array<GetProjectsBuilds> | undefined;
   checksConclusion?: GetProjectsChecksConclusion | undefined;
@@ -674,7 +795,7 @@ export type GetProjectsLatestDeployments = {
   requestedAt?: number | undefined;
   target?: string | null | undefined;
   teamId?: string | null | undefined;
-  type: GetProjectsProjectsType;
+  type: GetProjectsProjectsResponseType;
   url: string;
   userId: string;
   withCache?: boolean | undefined;
@@ -964,8 +1085,8 @@ export type GetProjectsDefaultResourceConfig = {
 };
 
 export const GetProjectsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type GetProjectsDeploymentType = ClosedEnum<
@@ -986,23 +1107,25 @@ export type GetProjectsProjectsAliasError = {
 /**
  * The type of matching to perform
  */
-export const GetProjectsProjectsResponse200ApplicationJSONType = {
-  EndsWith: "endsWith",
-  StartsWith: "startsWith",
-  Equals: "equals",
-} as const;
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType =
+  {
+    EndsWith: "endsWith",
+    StartsWith: "startsWith",
+    Equals: "equals",
+  } as const;
 /**
  * The type of matching to perform
  */
-export type GetProjectsProjectsResponse200ApplicationJSONType = ClosedEnum<
-  typeof GetProjectsProjectsResponse200ApplicationJSONType
->;
+export type GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType =
+  ClosedEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+  >;
 
-export type GetProjectsProjectsBranchMatcher = {
+export type GetProjectsProjectsResponseBranchMatcher = {
   /**
    * The type of matching to perform
    */
-  type: GetProjectsProjectsResponse200ApplicationJSONType;
+  type: GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType;
   /**
    * The pattern to match against branch names
    */
@@ -1084,11 +1207,11 @@ export type GetProjectsProjectsReadySubstate = ClosedEnum<
   typeof GetProjectsProjectsReadySubstate
 >;
 
-export const GetProjectsProjectsResponseType = {
+export const GetProjectsProjectsResponse200Type = {
   Lambdas: "LAMBDAS",
 } as const;
-export type GetProjectsProjectsResponseType = ClosedEnum<
-  typeof GetProjectsProjectsResponseType
+export type GetProjectsProjectsResponse200Type = ClosedEnum<
+  typeof GetProjectsProjectsResponse200Type
 >;
 
 export type GetProjectsTargets = {
@@ -1098,7 +1221,7 @@ export type GetProjectsTargets = {
   aliasError?: GetProjectsProjectsAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: GetProjectsProjectsBranchMatcher | undefined;
+  branchMatcher?: GetProjectsProjectsResponseBranchMatcher | undefined;
   buildingAt?: number | undefined;
   builds?: Array<GetProjectsProjectsBuilds> | undefined;
   checksConclusion?: GetProjectsProjectsChecksConclusion | undefined;
@@ -1127,7 +1250,7 @@ export type GetProjectsTargets = {
   requestedAt?: number | undefined;
   target?: string | null | undefined;
   teamId?: string | null | undefined;
-  type: GetProjectsProjectsResponseType;
+  type: GetProjectsProjectsResponse200Type;
   url: string;
   userId: string;
   withCache?: boolean | undefined;
@@ -1342,20 +1465,24 @@ export const GetProjectsJobStatus = {
 } as const;
 export type GetProjectsJobStatus = ClosedEnum<typeof GetProjectsJobStatus>;
 
-export const GetProjectsProjectsResponse200Type = {
+export const GetProjectsProjectsResponse200ApplicationJSONType = {
   Promote: "promote",
   Rollback: "rollback",
 } as const;
-export type GetProjectsProjectsResponse200Type = ClosedEnum<
-  typeof GetProjectsProjectsResponse200Type
+export type GetProjectsProjectsResponse200ApplicationJSONType = ClosedEnum<
+  typeof GetProjectsProjectsResponse200ApplicationJSONType
 >;
 
 export type GetProjectsLastAliasRequest = {
   fromDeploymentId: string;
   toDeploymentId: string;
+  /**
+   * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
+   */
+  fromRollingReleaseId?: string | undefined;
   jobStatus: GetProjectsJobStatus;
   requestedAt: number;
-  type: GetProjectsProjectsResponse200Type;
+  type: GetProjectsProjectsResponse200ApplicationJSONType;
 };
 
 export const GetProjectsScope = {
@@ -1370,10 +1497,10 @@ export type GetProjectsProtectionBypass = {
 };
 
 export const GetProjectsTrustedIpsProjectsDeploymentType = {
-  All: "all",
-  Preview: "preview",
-  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   Production: "production",
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type GetProjectsTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof GetProjectsTrustedIpsProjectsDeploymentType
@@ -1384,10 +1511,10 @@ export type GetProjectsTrustedIps2 = {
 };
 
 export const GetProjectsTrustedIpsDeploymentType = {
-  All: "all",
-  Preview: "preview",
-  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   Production: "production",
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
 export type GetProjectsTrustedIpsDeploymentType = ClosedEnum<
   typeof GetProjectsTrustedIpsDeploymentType
@@ -3759,31 +3886,31 @@ export function getProjectsContentHintFromJSON(
 }
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema:
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
   > = z.nativeEnum(
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType,
   );
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema:
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
   > =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema` instead. */
+export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$ {
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
   export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema` instead. */
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
   export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
 }
 
 /** @internal */
@@ -3793,7 +3920,7 @@ export const GetProjectsInternalContentHint$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type:
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   encryptedValue: z.string(),
 });
 
@@ -3810,7 +3937,7 @@ export const GetProjectsInternalContentHint$outboundSchema: z.ZodType<
   GetProjectsInternalContentHint
 > = z.object({
   type:
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema,
   encryptedValue: z.string(),
 });
 
@@ -4021,21 +4148,310 @@ export function getProjectsEnvFromJSON(
 }
 
 /** @internal */
+export const GetProjectsProjectsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsType
+> = z.nativeEnum(GetProjectsProjectsType);
+
+/** @internal */
+export const GetProjectsProjectsType$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsType
+> = GetProjectsProjectsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProjectsType$ {
+  /** @deprecated use `GetProjectsProjectsType$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsType$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProjectsType$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType
+  > = z.nativeEnum(
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType,
+  );
+
+/** @internal */
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType
+  > =
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$ {
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsBranchMatcher$inboundSchema: z.ZodType<
+  GetProjectsBranchMatcher,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema,
+  pattern: z.string(),
+});
+
+/** @internal */
+export type GetProjectsBranchMatcher$Outbound = {
+  type: string;
+  pattern: string;
+};
+
+/** @internal */
+export const GetProjectsBranchMatcher$outboundSchema: z.ZodType<
+  GetProjectsBranchMatcher$Outbound,
+  z.ZodTypeDef,
+  GetProjectsBranchMatcher
+> = z.object({
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema,
+  pattern: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsBranchMatcher$ {
+  /** @deprecated use `GetProjectsBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsBranchMatcher$inboundSchema;
+  /** @deprecated use `GetProjectsBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsBranchMatcher$outboundSchema;
+  /** @deprecated use `GetProjectsBranchMatcher$Outbound` instead. */
+  export type Outbound = GetProjectsBranchMatcher$Outbound;
+}
+
+export function getProjectsBranchMatcherToJSON(
+  getProjectsBranchMatcher: GetProjectsBranchMatcher,
+): string {
+  return JSON.stringify(
+    GetProjectsBranchMatcher$outboundSchema.parse(getProjectsBranchMatcher),
+  );
+}
+
+export function getProjectsBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsBranchMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsVerification$inboundSchema: z.ZodType<
+  GetProjectsVerification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/** @internal */
+export type GetProjectsVerification$Outbound = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/** @internal */
+export const GetProjectsVerification$outboundSchema: z.ZodType<
+  GetProjectsVerification$Outbound,
+  z.ZodTypeDef,
+  GetProjectsVerification
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsVerification$ {
+  /** @deprecated use `GetProjectsVerification$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsVerification$inboundSchema;
+  /** @deprecated use `GetProjectsVerification$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsVerification$outboundSchema;
+  /** @deprecated use `GetProjectsVerification$Outbound` instead. */
+  export type Outbound = GetProjectsVerification$Outbound;
+}
+
+export function getProjectsVerificationToJSON(
+  getProjectsVerification: GetProjectsVerification,
+): string {
+  return JSON.stringify(
+    GetProjectsVerification$outboundSchema.parse(getProjectsVerification),
+  );
+}
+
+export function getProjectsVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsVerification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsDomains$inboundSchema: z.ZodType<
+  GetProjectsDomains,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(z.lazy(() => GetProjectsVerification$inboundSchema))
+    .optional(),
+});
+
+/** @internal */
+export type GetProjectsDomains$Outbound = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  verified: boolean;
+  verification?: Array<GetProjectsVerification$Outbound> | undefined;
+};
+
+/** @internal */
+export const GetProjectsDomains$outboundSchema: z.ZodType<
+  GetProjectsDomains$Outbound,
+  z.ZodTypeDef,
+  GetProjectsDomains
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(z.lazy(() => GetProjectsVerification$outboundSchema))
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsDomains$ {
+  /** @deprecated use `GetProjectsDomains$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsDomains$inboundSchema;
+  /** @deprecated use `GetProjectsDomains$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsDomains$outboundSchema;
+  /** @deprecated use `GetProjectsDomains$Outbound` instead. */
+  export type Outbound = GetProjectsDomains$Outbound;
+}
+
+export function getProjectsDomainsToJSON(
+  getProjectsDomains: GetProjectsDomains,
+): string {
+  return JSON.stringify(
+    GetProjectsDomains$outboundSchema.parse(getProjectsDomains),
+  );
+}
+
+export function getProjectsDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsDomains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsDomains' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsCustomEnvironments$inboundSchema: z.ZodType<
   GetProjectsCustomEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: GetProjectsProjectsType$inboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() => GetProjectsBranchMatcher$inboundSchema)
+    .optional(),
+  domains: z.array(z.lazy(() => GetProjectsDomains$inboundSchema)).optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /** @internal */
-export type GetProjectsCustomEnvironments$Outbound = {};
+export type GetProjectsCustomEnvironments$Outbound = {
+  id: string;
+  slug: string;
+  type: string;
+  description?: string | undefined;
+  branchMatcher?: GetProjectsBranchMatcher$Outbound | undefined;
+  domains?: Array<GetProjectsDomains$Outbound> | undefined;
+  currentDeploymentAliases?: Array<string> | undefined;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const GetProjectsCustomEnvironments$outboundSchema: z.ZodType<
   GetProjectsCustomEnvironments$Outbound,
   z.ZodTypeDef,
   GetProjectsCustomEnvironments
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: GetProjectsProjectsType$outboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() => GetProjectsBranchMatcher$outboundSchema)
+    .optional(),
+  domains: z.array(z.lazy(() => GetProjectsDomains$outboundSchema)).optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /**
  * @internal
@@ -4254,58 +4670,58 @@ export function getProjectsAliasErrorFromJSON(
 }
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType
   > = z.nativeEnum(
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType,
   );
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType
   > =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
+export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$ {
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema` instead. */
   export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema` instead. */
   export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema;
 }
 
 /** @internal */
-export const GetProjectsBranchMatcher$inboundSchema: z.ZodType<
-  GetProjectsBranchMatcher,
+export const GetProjectsProjectsBranchMatcher$inboundSchema: z.ZodType<
+  GetProjectsProjectsBranchMatcher,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type:
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema,
   pattern: z.string(),
 });
 
 /** @internal */
-export type GetProjectsBranchMatcher$Outbound = {
+export type GetProjectsProjectsBranchMatcher$Outbound = {
   type: string;
   pattern: string;
 };
 
 /** @internal */
-export const GetProjectsBranchMatcher$outboundSchema: z.ZodType<
-  GetProjectsBranchMatcher$Outbound,
+export const GetProjectsProjectsBranchMatcher$outboundSchema: z.ZodType<
+  GetProjectsProjectsBranchMatcher$Outbound,
   z.ZodTypeDef,
-  GetProjectsBranchMatcher
+  GetProjectsProjectsBranchMatcher
 > = z.object({
   type:
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema,
   pattern: z.string(),
 });
 
@@ -4313,30 +4729,32 @@ export const GetProjectsBranchMatcher$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsBranchMatcher$ {
-  /** @deprecated use `GetProjectsBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBranchMatcher$inboundSchema;
-  /** @deprecated use `GetProjectsBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBranchMatcher$outboundSchema;
-  /** @deprecated use `GetProjectsBranchMatcher$Outbound` instead. */
-  export type Outbound = GetProjectsBranchMatcher$Outbound;
+export namespace GetProjectsProjectsBranchMatcher$ {
+  /** @deprecated use `GetProjectsProjectsBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsBranchMatcher$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProjectsBranchMatcher$outboundSchema;
+  /** @deprecated use `GetProjectsProjectsBranchMatcher$Outbound` instead. */
+  export type Outbound = GetProjectsProjectsBranchMatcher$Outbound;
 }
 
-export function getProjectsBranchMatcherToJSON(
-  getProjectsBranchMatcher: GetProjectsBranchMatcher,
+export function getProjectsProjectsBranchMatcherToJSON(
+  getProjectsProjectsBranchMatcher: GetProjectsProjectsBranchMatcher,
 ): string {
   return JSON.stringify(
-    GetProjectsBranchMatcher$outboundSchema.parse(getProjectsBranchMatcher),
+    GetProjectsProjectsBranchMatcher$outboundSchema.parse(
+      getProjectsProjectsBranchMatcher,
+    ),
   );
 }
 
-export function getProjectsBranchMatcherFromJSON(
+export function getProjectsProjectsBranchMatcherFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsBranchMatcher, SDKValidationError> {
+): SafeParseResult<GetProjectsProjectsBranchMatcher, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsBranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsBranchMatcher' from JSON`,
+    (x) => GetProjectsProjectsBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsProjectsBranchMatcher' from JSON`,
   );
 }
 
@@ -4660,24 +5078,24 @@ export namespace GetProjectsReadySubstate$ {
 }
 
 /** @internal */
-export const GetProjectsProjectsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsType
-> = z.nativeEnum(GetProjectsProjectsType);
+export const GetProjectsProjectsResponseType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponseType
+> = z.nativeEnum(GetProjectsProjectsResponseType);
 
 /** @internal */
-export const GetProjectsProjectsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsType
-> = GetProjectsProjectsType$inboundSchema;
+export const GetProjectsProjectsResponseType$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponseType
+> = GetProjectsProjectsResponseType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsType$ {
-  /** @deprecated use `GetProjectsProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsType$outboundSchema;
+export namespace GetProjectsProjectsResponseType$ {
+  /** @deprecated use `GetProjectsProjectsResponseType$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsResponseType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponseType$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProjectsResponseType$outboundSchema;
 }
 
 /** @internal */
@@ -4693,7 +5111,7 @@ export const GetProjectsLatestDeployments$inboundSchema: z.ZodType<
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => GetProjectsBranchMatcher$inboundSchema)
+  branchMatcher: z.lazy(() => GetProjectsProjectsBranchMatcher$inboundSchema)
     .optional(),
   buildingAt: z.number().optional(),
   builds: z.array(z.lazy(() => GetProjectsBuilds$inboundSchema)).optional(),
@@ -4721,7 +5139,7 @@ export const GetProjectsLatestDeployments$inboundSchema: z.ZodType<
   requestedAt: z.number().optional(),
   target: z.nullable(z.string()).optional(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetProjectsProjectsType$inboundSchema,
+  type: GetProjectsProjectsResponseType$inboundSchema,
   url: z.string(),
   userId: z.string(),
   withCache: z.boolean().optional(),
@@ -4735,7 +5153,7 @@ export type GetProjectsLatestDeployments$Outbound = {
   aliasError?: GetProjectsAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: GetProjectsBranchMatcher$Outbound | undefined;
+  branchMatcher?: GetProjectsProjectsBranchMatcher$Outbound | undefined;
   buildingAt?: number | undefined;
   builds?: Array<GetProjectsBuilds$Outbound> | undefined;
   checksConclusion?: string | undefined;
@@ -4780,7 +5198,7 @@ export const GetProjectsLatestDeployments$outboundSchema: z.ZodType<
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => GetProjectsBranchMatcher$outboundSchema)
+  branchMatcher: z.lazy(() => GetProjectsProjectsBranchMatcher$outboundSchema)
     .optional(),
   buildingAt: z.number().optional(),
   builds: z.array(z.lazy(() => GetProjectsBuilds$outboundSchema)).optional(),
@@ -4808,7 +5226,7 @@ export const GetProjectsLatestDeployments$outboundSchema: z.ZodType<
   requestedAt: z.number().optional(),
   target: z.nullable(z.string()).optional(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetProjectsProjectsType$outboundSchema,
+  type: GetProjectsProjectsResponseType$outboundSchema,
   url: z.string(),
   userId: z.string(),
   withCache: z.boolean().optional(),
@@ -6566,51 +6984,58 @@ export function getProjectsProjectsAliasErrorFromJSON(
 }
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> = z
-    .nativeEnum(GetProjectsProjectsResponse200ApplicationJSONType);
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+  > = z.nativeEnum(
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType,
+  );
 
 /** @internal */
-export const GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> =
-    GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
+export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
+  > =
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
+export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$ {
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema` instead. */
   export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema` instead. */
   export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema;
 }
 
 /** @internal */
-export const GetProjectsProjectsBranchMatcher$inboundSchema: z.ZodType<
-  GetProjectsProjectsBranchMatcher,
+export const GetProjectsProjectsResponseBranchMatcher$inboundSchema: z.ZodType<
+  GetProjectsProjectsResponseBranchMatcher,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema,
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
   pattern: z.string(),
 });
 
 /** @internal */
-export type GetProjectsProjectsBranchMatcher$Outbound = {
+export type GetProjectsProjectsResponseBranchMatcher$Outbound = {
   type: string;
   pattern: string;
 };
 
 /** @internal */
-export const GetProjectsProjectsBranchMatcher$outboundSchema: z.ZodType<
-  GetProjectsProjectsBranchMatcher$Outbound,
+export const GetProjectsProjectsResponseBranchMatcher$outboundSchema: z.ZodType<
+  GetProjectsProjectsResponseBranchMatcher$Outbound,
   z.ZodTypeDef,
-  GetProjectsProjectsBranchMatcher
+  GetProjectsProjectsResponseBranchMatcher
 > = z.object({
-  type: GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema,
+  type:
+    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema,
   pattern: z.string(),
 });
 
@@ -6618,32 +7043,41 @@ export const GetProjectsProjectsBranchMatcher$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsBranchMatcher$ {
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsBranchMatcher$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsBranchMatcher$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsBranchMatcher$Outbound;
+export namespace GetProjectsProjectsResponseBranchMatcher$ {
+  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProjectsResponseBranchMatcher$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsResponseBranchMatcher$outboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$Outbound` instead. */
+  export type Outbound = GetProjectsProjectsResponseBranchMatcher$Outbound;
 }
 
-export function getProjectsProjectsBranchMatcherToJSON(
-  getProjectsProjectsBranchMatcher: GetProjectsProjectsBranchMatcher,
+export function getProjectsProjectsResponseBranchMatcherToJSON(
+  getProjectsProjectsResponseBranchMatcher:
+    GetProjectsProjectsResponseBranchMatcher,
 ): string {
   return JSON.stringify(
-    GetProjectsProjectsBranchMatcher$outboundSchema.parse(
-      getProjectsProjectsBranchMatcher,
+    GetProjectsProjectsResponseBranchMatcher$outboundSchema.parse(
+      getProjectsProjectsResponseBranchMatcher,
     ),
   );
 }
 
-export function getProjectsProjectsBranchMatcherFromJSON(
+export function getProjectsProjectsResponseBranchMatcherFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsProjectsBranchMatcher, SDKValidationError> {
+): SafeParseResult<
+  GetProjectsProjectsResponseBranchMatcher,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsProjectsBranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsProjectsBranchMatcher' from JSON`,
+    (x) =>
+      GetProjectsProjectsResponseBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsProjectsResponseBranchMatcher' from JSON`,
   );
 }
 
@@ -6973,24 +7407,25 @@ export namespace GetProjectsProjectsReadySubstate$ {
 }
 
 /** @internal */
-export const GetProjectsProjectsResponseType$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsResponseType
-> = z.nativeEnum(GetProjectsProjectsResponseType);
+export const GetProjectsProjectsResponse200Type$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponse200Type
+> = z.nativeEnum(GetProjectsProjectsResponse200Type);
 
 /** @internal */
-export const GetProjectsProjectsResponseType$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsResponseType
-> = GetProjectsProjectsResponseType$inboundSchema;
+export const GetProjectsProjectsResponse200Type$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponse200Type
+> = GetProjectsProjectsResponse200Type$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsResponseType$ {
-  /** @deprecated use `GetProjectsProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsResponseType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsResponseType$outboundSchema;
+export namespace GetProjectsProjectsResponse200Type$ {
+  /** @deprecated use `GetProjectsProjectsResponse200Type$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsResponse200Type$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsResponse200Type$outboundSchema;
 }
 
 /** @internal */
@@ -7007,8 +7442,9 @@ export const GetProjectsTargets$inboundSchema: z.ZodType<
   ).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => GetProjectsProjectsBranchMatcher$inboundSchema)
-    .optional(),
+  branchMatcher: z.lazy(() =>
+    GetProjectsProjectsResponseBranchMatcher$inboundSchema
+  ).optional(),
   buildingAt: z.number().optional(),
   builds: z.array(z.lazy(() => GetProjectsProjectsBuilds$inboundSchema))
     .optional(),
@@ -7038,7 +7474,7 @@ export const GetProjectsTargets$inboundSchema: z.ZodType<
   requestedAt: z.number().optional(),
   target: z.nullable(z.string()).optional(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetProjectsProjectsResponseType$inboundSchema,
+  type: GetProjectsProjectsResponse200Type$inboundSchema,
   url: z.string(),
   userId: z.string(),
   withCache: z.boolean().optional(),
@@ -7052,7 +7488,7 @@ export type GetProjectsTargets$Outbound = {
   aliasError?: GetProjectsProjectsAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
-  branchMatcher?: GetProjectsProjectsBranchMatcher$Outbound | undefined;
+  branchMatcher?: GetProjectsProjectsResponseBranchMatcher$Outbound | undefined;
   buildingAt?: number | undefined;
   builds?: Array<GetProjectsProjectsBuilds$Outbound> | undefined;
   checksConclusion?: string | undefined;
@@ -7098,8 +7534,9 @@ export const GetProjectsTargets$outboundSchema: z.ZodType<
   ).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
   automaticAliases: z.array(z.string()).optional(),
-  branchMatcher: z.lazy(() => GetProjectsProjectsBranchMatcher$outboundSchema)
-    .optional(),
+  branchMatcher: z.lazy(() =>
+    GetProjectsProjectsResponseBranchMatcher$outboundSchema
+  ).optional(),
   buildingAt: z.number().optional(),
   builds: z.array(z.lazy(() => GetProjectsProjectsBuilds$outboundSchema))
     .optional(),
@@ -7129,7 +7566,7 @@ export const GetProjectsTargets$outboundSchema: z.ZodType<
   requestedAt: z.number().optional(),
   target: z.nullable(z.string()).optional(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetProjectsProjectsResponseType$outboundSchema,
+  type: GetProjectsProjectsResponse200Type$outboundSchema,
   url: z.string(),
   userId: z.string(),
   withCache: z.boolean().optional(),
@@ -7898,25 +8335,26 @@ export namespace GetProjectsJobStatus$ {
 }
 
 /** @internal */
-export const GetProjectsProjectsResponse200Type$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsResponse200Type
-> = z.nativeEnum(GetProjectsProjectsResponse200Type);
+export const GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> = z
+    .nativeEnum(GetProjectsProjectsResponse200ApplicationJSONType);
 
 /** @internal */
-export const GetProjectsProjectsResponse200Type$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsResponse200Type
-> = GetProjectsProjectsResponse200Type$inboundSchema;
+export const GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> =
+    GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsResponse200Type$ {
-  /** @deprecated use `GetProjectsProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200Type$outboundSchema` instead. */
+export namespace GetProjectsProjectsResponse200ApplicationJSONType$ {
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
   export const outboundSchema =
-    GetProjectsProjectsResponse200Type$outboundSchema;
+    GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema;
 }
 
 /** @internal */
@@ -7927,15 +8365,17 @@ export const GetProjectsLastAliasRequest$inboundSchema: z.ZodType<
 > = z.object({
   fromDeploymentId: z.string(),
   toDeploymentId: z.string(),
+  fromRollingReleaseId: z.string().optional(),
   jobStatus: GetProjectsJobStatus$inboundSchema,
   requestedAt: z.number(),
-  type: GetProjectsProjectsResponse200Type$inboundSchema,
+  type: GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema,
 });
 
 /** @internal */
 export type GetProjectsLastAliasRequest$Outbound = {
   fromDeploymentId: string;
   toDeploymentId: string;
+  fromRollingReleaseId?: string | undefined;
   jobStatus: string;
   requestedAt: number;
   type: string;
@@ -7949,9 +8389,10 @@ export const GetProjectsLastAliasRequest$outboundSchema: z.ZodType<
 > = z.object({
   fromDeploymentId: z.string(),
   toDeploymentId: z.string(),
+  fromRollingReleaseId: z.string().optional(),
   jobStatus: GetProjectsJobStatus$outboundSchema,
   requestedAt: z.number(),
-  type: GetProjectsProjectsResponse200Type$outboundSchema,
+  type: GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema,
 });
 
 /**

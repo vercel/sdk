@@ -4812,7 +4812,161 @@
                     },
                     "customEnvironments": {
                       "items": {
-                        "type": "object"
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the custom environment (format: env_*)"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL-friendly name of the environment"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ],
+                            "description": "The type of environment (production, preview, or development)"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Optional description of the environment's purpose"
+                          },
+                          "branchMatcher": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "endsWith",
+                                  "startsWith",
+                                  "equals"
+                                ],
+                                "description": "The type of matching to perform"
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "description": "The pattern to match against branch names"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "pattern"
+                            ],
+                            "type": "object",
+                            "description": "Configuration for matching git branches to this environment"
+                          },
+                          "domains": {
+                            "items": {
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "apexName": {
+                                  "type": "string"
+                                },
+                                "projectId": {
+                                  "type": "string"
+                                },
+                                "redirect": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "redirectStatusCode": {
+                                  "nullable": true,
+                                  "type": "number",
+                                  "enum": [
+                                    307,
+                                    301,
+                                    302,
+                                    308
+                                  ]
+                                },
+                                "gitBranch": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "customEnvironmentId": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "verified": {
+                                  "type": "boolean",
+                                  "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                },
+                                "verification": {
+                                  "items": {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "domain": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "reason": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "domain",
+                                      "value",
+                                      "reason"
+                                    ],
+                                    "type": "object",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  },
+                                  "type": "array",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "apexName",
+                                "projectId",
+                                "verified"
+                              ],
+                              "type": "object",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "type": "array",
+                            "description": "List of domains associated with this environment"
+                          },
+                          "currentDeploymentAliases": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "List of aliases for the current deployment"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was last updated"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "type",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object",
+                        "description": "Internal representation of a custom environment with all required properties"
                       },
                       "type": "array"
                     },
@@ -5781,8 +5935,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -7304,6 +7458,10 @@
                         "toDeploymentId": {
                           "type": "string"
                         },
+                        "fromRollingReleaseId": {
+                          "type": "string",
+                          "description": "If rolling back from a rolling release, fromDeploymentId captures the \"base\" of that rolling release, and fromRollingReleaseId captures the \"target\" of that rolling release."
+                        },
                         "jobStatus": {
                           "type": "string",
                           "enum": [
@@ -7370,10 +7528,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -7413,10 +7571,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -8806,7 +8964,161 @@
                         "customEnvironment": {
                           "oneOf": [
                             {
-                              "type": "object"
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Unique identifier for the custom environment (format: env_*)"
+                                },
+                                "slug": {
+                                  "type": "string",
+                                  "description": "URL-friendly name of the environment"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "production",
+                                    "preview",
+                                    "development"
+                                  ],
+                                  "description": "The type of environment (production, preview, or development)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "description": "Optional description of the environment's purpose"
+                                },
+                                "branchMatcher": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "startsWith",
+                                        "equals",
+                                        "endsWith"
+                                      ],
+                                      "description": "The type of matching to perform"
+                                    },
+                                    "pattern": {
+                                      "type": "string",
+                                      "description": "The pattern to match against branch names"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "pattern"
+                                  ],
+                                  "type": "object",
+                                  "description": "Configuration for matching git branches to this environment"
+                                },
+                                "domains": {
+                                  "items": {
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "apexName": {
+                                        "type": "string"
+                                      },
+                                      "projectId": {
+                                        "type": "string"
+                                      },
+                                      "redirect": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "redirectStatusCode": {
+                                        "nullable": true,
+                                        "type": "number",
+                                        "enum": [
+                                          307,
+                                          301,
+                                          302,
+                                          308
+                                        ]
+                                      },
+                                      "gitBranch": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "customEnvironmentId": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "number"
+                                      },
+                                      "createdAt": {
+                                        "type": "number"
+                                      },
+                                      "verified": {
+                                        "type": "boolean",
+                                        "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                      },
+                                      "verification": {
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "domain": {
+                                              "type": "string"
+                                            },
+                                            "value": {
+                                              "type": "string"
+                                            },
+                                            "reason": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "domain",
+                                            "value",
+                                            "reason"
+                                          ],
+                                          "type": "object",
+                                          "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                        },
+                                        "type": "array",
+                                        "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "apexName",
+                                      "projectId",
+                                      "verified"
+                                    ],
+                                    "type": "object",
+                                    "description": "List of domains associated with this environment"
+                                  },
+                                  "type": "array",
+                                  "description": "List of domains associated with this environment"
+                                },
+                                "currentDeploymentAliases": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array",
+                                  "description": "List of aliases for the current deployment"
+                                },
+                                "createdAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was created"
+                                },
+                                "updatedAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was last updated"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "slug",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "type": "object",
+                              "description": "Internal representation of a custom environment with all required properties"
                             },
                             {
                               "properties": {
@@ -9263,7 +9575,7 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "github"
+                                    "github-custom-host"
                                   ]
                                 },
                                 "host": {
@@ -10316,7 +10628,161 @@
                         "customEnvironment": {
                           "oneOf": [
                             {
-                              "type": "object"
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Unique identifier for the custom environment (format: env_*)"
+                                },
+                                "slug": {
+                                  "type": "string",
+                                  "description": "URL-friendly name of the environment"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "production",
+                                    "preview",
+                                    "development"
+                                  ],
+                                  "description": "The type of environment (production, preview, or development)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "description": "Optional description of the environment's purpose"
+                                },
+                                "branchMatcher": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "startsWith",
+                                        "equals",
+                                        "endsWith"
+                                      ],
+                                      "description": "The type of matching to perform"
+                                    },
+                                    "pattern": {
+                                      "type": "string",
+                                      "description": "The pattern to match against branch names"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "pattern"
+                                  ],
+                                  "type": "object",
+                                  "description": "Configuration for matching git branches to this environment"
+                                },
+                                "domains": {
+                                  "items": {
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "apexName": {
+                                        "type": "string"
+                                      },
+                                      "projectId": {
+                                        "type": "string"
+                                      },
+                                      "redirect": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "redirectStatusCode": {
+                                        "nullable": true,
+                                        "type": "number",
+                                        "enum": [
+                                          307,
+                                          301,
+                                          302,
+                                          308
+                                        ]
+                                      },
+                                      "gitBranch": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "customEnvironmentId": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "number"
+                                      },
+                                      "createdAt": {
+                                        "type": "number"
+                                      },
+                                      "verified": {
+                                        "type": "boolean",
+                                        "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                      },
+                                      "verification": {
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "domain": {
+                                              "type": "string"
+                                            },
+                                            "value": {
+                                              "type": "string"
+                                            },
+                                            "reason": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "domain",
+                                            "value",
+                                            "reason"
+                                          ],
+                                          "type": "object",
+                                          "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                        },
+                                        "type": "array",
+                                        "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "apexName",
+                                      "projectId",
+                                      "verified"
+                                    ],
+                                    "type": "object",
+                                    "description": "List of domains associated with this environment"
+                                  },
+                                  "type": "array",
+                                  "description": "List of domains associated with this environment"
+                                },
+                                "currentDeploymentAliases": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array",
+                                  "description": "List of aliases for the current deployment"
+                                },
+                                "createdAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was created"
+                                },
+                                "updatedAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was last updated"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "slug",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "type": "object",
+                              "description": "Internal representation of a custom environment with all required properties"
                             },
                             {
                               "properties": {
@@ -10773,7 +11239,7 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "github"
+                                    "github-custom-host"
                                   ]
                                 },
                                 "host": {
@@ -11587,7 +12053,161 @@
                     "customEnvironment": {
                       "oneOf": [
                         {
-                          "type": "object"
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "Unique identifier for the custom environment (format: env_*)"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "description": "URL-friendly name of the environment"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "production",
+                                "preview",
+                                "development"
+                              ],
+                              "description": "The type of environment (production, preview, or development)"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Optional description of the environment's purpose"
+                            },
+                            "branchMatcher": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "startsWith",
+                                    "equals",
+                                    "endsWith"
+                                  ],
+                                  "description": "The type of matching to perform"
+                                },
+                                "pattern": {
+                                  "type": "string",
+                                  "description": "The pattern to match against branch names"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "pattern"
+                              ],
+                              "type": "object",
+                              "description": "Configuration for matching git branches to this environment"
+                            },
+                            "domains": {
+                              "items": {
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "apexName": {
+                                    "type": "string"
+                                  },
+                                  "projectId": {
+                                    "type": "string"
+                                  },
+                                  "redirect": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "redirectStatusCode": {
+                                    "nullable": true,
+                                    "type": "number",
+                                    "enum": [
+                                      307,
+                                      301,
+                                      302,
+                                      308
+                                    ]
+                                  },
+                                  "gitBranch": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "customEnvironmentId": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "verified": {
+                                    "type": "boolean",
+                                    "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                  },
+                                  "verification": {
+                                    "items": {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string"
+                                        },
+                                        "domain": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        },
+                                        "reason": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "domain",
+                                        "value",
+                                        "reason"
+                                      ],
+                                      "type": "object",
+                                      "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                    },
+                                    "type": "array",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "apexName",
+                                  "projectId",
+                                  "verified"
+                                ],
+                                "type": "object",
+                                "description": "List of domains associated with this environment"
+                              },
+                              "type": "array",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "currentDeploymentAliases": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array",
+                              "description": "List of aliases for the current deployment"
+                            },
+                            "createdAt": {
+                              "type": "number",
+                              "description": "Timestamp when the environment was created"
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the environment was last updated"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "slug",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "type": "object",
+                          "description": "Internal representation of a custom environment with all required properties"
                         },
                         {
                           "properties": {
@@ -11944,7 +12564,7 @@
                             "type": {
                               "type": "string",
                               "enum": [
-                                "github"
+                                "github-custom-host"
                               ]
                             },
                             "host": {
@@ -13216,6 +13836,44 @@
                       },
                       {
                         "properties": {
+                          "org": {
+                            "type": "string",
+                            "example": "vercel"
+                          },
+                          "ref": {
+                            "type": "string",
+                            "example": "main"
+                          },
+                          "repo": {
+                            "type": "string",
+                            "example": "next.js"
+                          },
+                          "sha": {
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+                          },
+                          "host": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "github-custom-host"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "ref",
+                          "org",
+                          "repo",
+                          "host"
+                        ],
+                        "type": "object",
+                        "private": true
+                      },
+                      {
+                        "properties": {
                           "projectId": {
                             "oneOf": [
                               {
@@ -13993,7 +14651,161 @@
                     "customEnvironment": {
                       "oneOf": [
                         {
-                          "type": "object"
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "Unique identifier for the custom environment (format: env_*)"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "description": "URL-friendly name of the environment"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "production",
+                                "preview",
+                                "development"
+                              ],
+                              "description": "The type of environment (production, preview, or development)"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Optional description of the environment's purpose"
+                            },
+                            "branchMatcher": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "startsWith",
+                                    "equals",
+                                    "endsWith"
+                                  ],
+                                  "description": "The type of matching to perform"
+                                },
+                                "pattern": {
+                                  "type": "string",
+                                  "description": "The pattern to match against branch names"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "pattern"
+                              ],
+                              "type": "object",
+                              "description": "Configuration for matching git branches to this environment"
+                            },
+                            "domains": {
+                              "items": {
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "apexName": {
+                                    "type": "string"
+                                  },
+                                  "projectId": {
+                                    "type": "string"
+                                  },
+                                  "redirect": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "redirectStatusCode": {
+                                    "nullable": true,
+                                    "type": "number",
+                                    "enum": [
+                                      307,
+                                      301,
+                                      302,
+                                      308
+                                    ]
+                                  },
+                                  "gitBranch": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "customEnvironmentId": {
+                                    "nullable": true,
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "verified": {
+                                    "type": "boolean",
+                                    "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                  },
+                                  "verification": {
+                                    "items": {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string"
+                                        },
+                                        "domain": {
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "type": "string"
+                                        },
+                                        "reason": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "domain",
+                                        "value",
+                                        "reason"
+                                      ],
+                                      "type": "object",
+                                      "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                    },
+                                    "type": "array",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "apexName",
+                                  "projectId",
+                                  "verified"
+                                ],
+                                "type": "object",
+                                "description": "List of domains associated with this environment"
+                              },
+                              "type": "array",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "currentDeploymentAliases": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array",
+                              "description": "List of aliases for the current deployment"
+                            },
+                            "createdAt": {
+                              "type": "number",
+                              "description": "Timestamp when the environment was created"
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the environment was last updated"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "slug",
+                            "type",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "type": "object",
+                          "description": "Internal representation of a custom environment with all required properties"
                         },
                         {
                           "properties": {
@@ -14430,7 +15242,7 @@
                             "type": {
                               "type": "string",
                               "enum": [
-                                "github"
+                                "github-custom-host"
                               ]
                             },
                             "host": {
@@ -22730,6 +23542,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": ""
           }
         },
         "parameters": [
@@ -26499,7 +27314,161 @@
                           },
                           "customEnvironments": {
                             "items": {
-                              "type": "object"
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Unique identifier for the custom environment (format: env_*)"
+                                },
+                                "slug": {
+                                  "type": "string",
+                                  "description": "URL-friendly name of the environment"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "production",
+                                    "preview",
+                                    "development"
+                                  ],
+                                  "description": "The type of environment (production, preview, or development)"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "description": "Optional description of the environment's purpose"
+                                },
+                                "branchMatcher": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "endsWith",
+                                        "startsWith",
+                                        "equals"
+                                      ],
+                                      "description": "The type of matching to perform"
+                                    },
+                                    "pattern": {
+                                      "type": "string",
+                                      "description": "The pattern to match against branch names"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "pattern"
+                                  ],
+                                  "type": "object",
+                                  "description": "Configuration for matching git branches to this environment"
+                                },
+                                "domains": {
+                                  "items": {
+                                    "properties": {
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "apexName": {
+                                        "type": "string"
+                                      },
+                                      "projectId": {
+                                        "type": "string"
+                                      },
+                                      "redirect": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "redirectStatusCode": {
+                                        "nullable": true,
+                                        "type": "number",
+                                        "enum": [
+                                          307,
+                                          301,
+                                          302,
+                                          308
+                                        ]
+                                      },
+                                      "gitBranch": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "customEnvironmentId": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "number"
+                                      },
+                                      "createdAt": {
+                                        "type": "number"
+                                      },
+                                      "verified": {
+                                        "type": "boolean",
+                                        "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                      },
+                                      "verification": {
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "domain": {
+                                              "type": "string"
+                                            },
+                                            "value": {
+                                              "type": "string"
+                                            },
+                                            "reason": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "domain",
+                                            "value",
+                                            "reason"
+                                          ],
+                                          "type": "object",
+                                          "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                        },
+                                        "type": "array",
+                                        "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                      }
+                                    },
+                                    "required": [
+                                      "name",
+                                      "apexName",
+                                      "projectId",
+                                      "verified"
+                                    ],
+                                    "type": "object",
+                                    "description": "List of domains associated with this environment"
+                                  },
+                                  "type": "array",
+                                  "description": "List of domains associated with this environment"
+                                },
+                                "currentDeploymentAliases": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array",
+                                  "description": "List of aliases for the current deployment"
+                                },
+                                "createdAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was created"
+                                },
+                                "updatedAt": {
+                                  "type": "number",
+                                  "description": "Timestamp when the environment was last updated"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "slug",
+                                "type",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "type": "object",
+                              "description": "Internal representation of a custom environment with all required properties"
                             },
                             "type": "array"
                           },
@@ -27468,8 +28437,8 @@
                               "deploymentType": {
                                 "type": "string",
                                 "enum": [
-                                  "all",
                                   "preview",
+                                  "all",
                                   "prod_deployment_urls_and_all_previews"
                                 ]
                               }
@@ -28991,6 +29960,10 @@
                               "toDeploymentId": {
                                 "type": "string"
                               },
+                              "fromRollingReleaseId": {
+                                "type": "string",
+                                "description": "If rolling back from a rolling release, fromDeploymentId captures the \"base\" of that rolling release, and fromRollingReleaseId captures the \"target\" of that rolling release."
+                              },
                               "jobStatus": {
                                 "type": "string",
                                 "enum": [
@@ -29057,10 +30030,10 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "all",
+                                      "production",
                                       "preview",
-                                      "prod_deployment_urls_and_all_previews",
-                                      "production"
+                                      "all",
+                                      "prod_deployment_urls_and_all_previews"
                                     ]
                                   },
                                   "addresses": {
@@ -29100,10 +30073,10 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "all",
+                                      "production",
                                       "preview",
-                                      "prod_deployment_urls_and_all_previews",
-                                      "production"
+                                      "all",
+                                      "prod_deployment_urls_and_all_previews"
                                     ]
                                   }
                                 },
@@ -30371,7 +31344,161 @@
                     },
                     "customEnvironments": {
                       "items": {
-                        "type": "object"
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the custom environment (format: env_*)"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL-friendly name of the environment"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ],
+                            "description": "The type of environment (production, preview, or development)"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Optional description of the environment's purpose"
+                          },
+                          "branchMatcher": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "endsWith",
+                                  "startsWith",
+                                  "equals"
+                                ],
+                                "description": "The type of matching to perform"
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "description": "The pattern to match against branch names"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "pattern"
+                            ],
+                            "type": "object",
+                            "description": "Configuration for matching git branches to this environment"
+                          },
+                          "domains": {
+                            "items": {
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "apexName": {
+                                  "type": "string"
+                                },
+                                "projectId": {
+                                  "type": "string"
+                                },
+                                "redirect": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "redirectStatusCode": {
+                                  "nullable": true,
+                                  "type": "number",
+                                  "enum": [
+                                    307,
+                                    301,
+                                    302,
+                                    308
+                                  ]
+                                },
+                                "gitBranch": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "customEnvironmentId": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "verified": {
+                                  "type": "boolean",
+                                  "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                },
+                                "verification": {
+                                  "items": {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "domain": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "reason": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "domain",
+                                      "value",
+                                      "reason"
+                                    ],
+                                    "type": "object",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  },
+                                  "type": "array",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "apexName",
+                                "projectId",
+                                "verified"
+                              ],
+                              "type": "object",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "type": "array",
+                            "description": "List of domains associated with this environment"
+                          },
+                          "currentDeploymentAliases": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "List of aliases for the current deployment"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was last updated"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "type",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object",
+                        "description": "Internal representation of a custom environment with all required properties"
                       },
                       "type": "array"
                     },
@@ -31340,8 +32467,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -32863,6 +33990,10 @@
                         "toDeploymentId": {
                           "type": "string"
                         },
+                        "fromRollingReleaseId": {
+                          "type": "string",
+                          "description": "If rolling back from a rolling release, fromDeploymentId captures the \"base\" of that rolling release, and fromRollingReleaseId captures the \"target\" of that rolling release."
+                        },
                         "jobStatus": {
                           "type": "string",
                           "enum": [
@@ -32929,10 +34060,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -32972,10 +34103,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -33500,6 +34631,16 @@
               "schema": {
                 "additionalProperties": false,
                 "properties": {
+                  "enablePreviewFeedback": {
+                    "description": "Opt-in to preview toolbar on the project level",
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "enableProductionFeedback": {
+                    "description": "Opt-in to production toolbar on the project level",
+                    "type": "boolean",
+                    "nullable": true
+                  },
                   "buildCommand": {
                     "description": "The build command for this project. When `null` is used this value will be automatically detected",
                     "maxLength": 256,
@@ -34370,7 +35511,161 @@
                     },
                     "customEnvironments": {
                       "items": {
-                        "type": "object"
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the custom environment (format: env_*)"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL-friendly name of the environment"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ],
+                            "description": "The type of environment (production, preview, or development)"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Optional description of the environment's purpose"
+                          },
+                          "branchMatcher": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "endsWith",
+                                  "startsWith",
+                                  "equals"
+                                ],
+                                "description": "The type of matching to perform"
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "description": "The pattern to match against branch names"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "pattern"
+                            ],
+                            "type": "object",
+                            "description": "Configuration for matching git branches to this environment"
+                          },
+                          "domains": {
+                            "items": {
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "apexName": {
+                                  "type": "string"
+                                },
+                                "projectId": {
+                                  "type": "string"
+                                },
+                                "redirect": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "redirectStatusCode": {
+                                  "nullable": true,
+                                  "type": "number",
+                                  "enum": [
+                                    307,
+                                    301,
+                                    302,
+                                    308
+                                  ]
+                                },
+                                "gitBranch": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "customEnvironmentId": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "verified": {
+                                  "type": "boolean",
+                                  "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                },
+                                "verification": {
+                                  "items": {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "domain": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "reason": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "domain",
+                                      "value",
+                                      "reason"
+                                    ],
+                                    "type": "object",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  },
+                                  "type": "array",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "apexName",
+                                "projectId",
+                                "verified"
+                              ],
+                              "type": "object",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "type": "array",
+                            "description": "List of domains associated with this environment"
+                          },
+                          "currentDeploymentAliases": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "List of aliases for the current deployment"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was last updated"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "type",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object",
+                        "description": "Internal representation of a custom environment with all required properties"
                       },
                       "type": "array"
                     },
@@ -35339,8 +36634,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -36862,6 +38157,10 @@
                         "toDeploymentId": {
                           "type": "string"
                         },
+                        "fromRollingReleaseId": {
+                          "type": "string",
+                          "description": "If rolling back from a rolling release, fromDeploymentId captures the \"base\" of that rolling release, and fromRollingReleaseId captures the \"target\" of that rolling release."
+                        },
                         "jobStatus": {
                           "type": "string",
                           "enum": [
@@ -36928,10 +38227,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -36971,10 +38270,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -38132,7 +39431,161 @@
                     },
                     "customEnvironments": {
                       "items": {
-                        "type": "object"
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the custom environment (format: env_*)"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL-friendly name of the environment"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ],
+                            "description": "The type of environment (production, preview, or development)"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Optional description of the environment's purpose"
+                          },
+                          "branchMatcher": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "endsWith",
+                                  "startsWith",
+                                  "equals"
+                                ],
+                                "description": "The type of matching to perform"
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "description": "The pattern to match against branch names"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "pattern"
+                            ],
+                            "type": "object",
+                            "description": "Configuration for matching git branches to this environment"
+                          },
+                          "domains": {
+                            "items": {
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "apexName": {
+                                  "type": "string"
+                                },
+                                "projectId": {
+                                  "type": "string"
+                                },
+                                "redirect": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "redirectStatusCode": {
+                                  "nullable": true,
+                                  "type": "number",
+                                  "enum": [
+                                    307,
+                                    301,
+                                    302,
+                                    308
+                                  ]
+                                },
+                                "gitBranch": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "customEnvironmentId": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "verified": {
+                                  "type": "boolean",
+                                  "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                },
+                                "verification": {
+                                  "items": {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "domain": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "reason": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "domain",
+                                      "value",
+                                      "reason"
+                                    ],
+                                    "type": "object",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  },
+                                  "type": "array",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "apexName",
+                                "projectId",
+                                "verified"
+                              ],
+                              "type": "object",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "type": "array",
+                            "description": "List of domains associated with this environment"
+                          },
+                          "currentDeploymentAliases": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "List of aliases for the current deployment"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was last updated"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "type",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object",
+                        "description": "Internal representation of a custom environment with all required properties"
                       },
                       "type": "array"
                     },
@@ -39101,8 +40554,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews"
                           ]
                         }
@@ -40624,6 +42077,10 @@
                         "toDeploymentId": {
                           "type": "string"
                         },
+                        "fromRollingReleaseId": {
+                          "type": "string",
+                          "description": "If rolling back from a rolling release, fromDeploymentId captures the \"base\" of that rolling release, and fromRollingReleaseId captures the \"target\" of that rolling release."
+                        },
                         "jobStatus": {
                           "type": "string",
                           "enum": [
@@ -40690,10 +42147,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             },
                             "addresses": {
@@ -40733,10 +42190,10 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
+                                "production",
                                 "preview",
-                                "prod_deployment_urls_and_all_previews",
-                                "production"
+                                "all",
+                                "prod_deployment_urls_and_all_previews"
                               ]
                             }
                           },
@@ -41732,7 +43189,161 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the custom environment (format: env_*)"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL-friendly name of the environment"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "production",
+                        "preview",
+                        "development"
+                      ],
+                      "description": "The type of environment (production, preview, or development)"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Optional description of the environment's purpose"
+                    },
+                    "branchMatcher": {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "endsWith",
+                            "startsWith",
+                            "equals"
+                          ],
+                          "description": "The type of matching to perform"
+                        },
+                        "pattern": {
+                          "type": "string",
+                          "description": "The pattern to match against branch names"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "pattern"
+                      ],
+                      "type": "object",
+                      "description": "Configuration for matching git branches to this environment"
+                    },
+                    "domains": {
+                      "items": {
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "apexName": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "string"
+                          },
+                          "redirect": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "redirectStatusCode": {
+                            "nullable": true,
+                            "type": "number",
+                            "enum": [
+                              307,
+                              301,
+                              302,
+                              308
+                            ]
+                          },
+                          "gitBranch": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "customEnvironmentId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "verified": {
+                            "type": "boolean",
+                            "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                          },
+                          "verification": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "domain": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "reason": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "domain",
+                                "value",
+                                "reason"
+                              ],
+                              "type": "object",
+                              "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                            },
+                            "type": "array",
+                            "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "apexName",
+                          "projectId",
+                          "verified"
+                        ],
+                        "type": "object",
+                        "description": "List of domains associated with this environment"
+                      },
+                      "type": "array",
+                      "description": "List of domains associated with this environment"
+                    },
+                    "currentDeploymentAliases": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "description": "List of aliases for the current deployment"
+                    },
+                    "createdAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was created"
+                    },
+                    "updatedAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was last updated"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "type",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "type": "object",
+                  "description": "Internal representation of a custom environment with all required properties"
                 }
               }
             }
@@ -41878,6 +43489,159 @@
                     },
                     "environments": {
                       "items": {
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the custom environment (format: env_*)"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL-friendly name of the environment"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ],
+                            "description": "The type of environment (production, preview, or development)"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Optional description of the environment's purpose"
+                          },
+                          "branchMatcher": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "endsWith",
+                                  "startsWith",
+                                  "equals"
+                                ],
+                                "description": "The type of matching to perform"
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "description": "The pattern to match against branch names"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "pattern"
+                            ],
+                            "type": "object",
+                            "description": "Configuration for matching git branches to this environment"
+                          },
+                          "domains": {
+                            "items": {
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "apexName": {
+                                  "type": "string"
+                                },
+                                "projectId": {
+                                  "type": "string"
+                                },
+                                "redirect": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "redirectStatusCode": {
+                                  "nullable": true,
+                                  "type": "number",
+                                  "enum": [
+                                    307,
+                                    301,
+                                    302,
+                                    308
+                                  ]
+                                },
+                                "gitBranch": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "customEnvironmentId": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "verified": {
+                                  "type": "boolean",
+                                  "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                                },
+                                "verification": {
+                                  "items": {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "domain": {
+                                        "type": "string"
+                                      },
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "reason": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "domain",
+                                      "value",
+                                      "reason"
+                                    ],
+                                    "type": "object",
+                                    "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                  },
+                                  "type": "array",
+                                  "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "apexName",
+                                "projectId",
+                                "verified"
+                              ],
+                              "type": "object",
+                              "description": "List of domains associated with this environment"
+                            },
+                            "type": "array",
+                            "description": "List of domains associated with this environment"
+                          },
+                          "currentDeploymentAliases": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "List of aliases for the current deployment"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp when the environment was last updated"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "type",
+                          "createdAt",
+                          "updatedAt"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -41977,6 +43741,159 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the custom environment (format: env_*)"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL-friendly name of the environment"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "production",
+                        "preview",
+                        "development"
+                      ],
+                      "description": "The type of environment (production, preview, or development)"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Optional description of the environment's purpose"
+                    },
+                    "branchMatcher": {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "endsWith",
+                            "startsWith",
+                            "equals"
+                          ],
+                          "description": "The type of matching to perform"
+                        },
+                        "pattern": {
+                          "type": "string",
+                          "description": "The pattern to match against branch names"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "pattern"
+                      ],
+                      "type": "object",
+                      "description": "Configuration for matching git branches to this environment"
+                    },
+                    "domains": {
+                      "items": {
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "apexName": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "string"
+                          },
+                          "redirect": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "redirectStatusCode": {
+                            "nullable": true,
+                            "type": "number",
+                            "enum": [
+                              307,
+                              301,
+                              302,
+                              308
+                            ]
+                          },
+                          "gitBranch": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "customEnvironmentId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "verified": {
+                            "type": "boolean",
+                            "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                          },
+                          "verification": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "domain": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "reason": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "domain",
+                                "value",
+                                "reason"
+                              ],
+                              "type": "object",
+                              "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                            },
+                            "type": "array",
+                            "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "apexName",
+                          "projectId",
+                          "verified"
+                        ],
+                        "type": "object",
+                        "description": "List of domains associated with this environment"
+                      },
+                      "type": "array",
+                      "description": "List of domains associated with this environment"
+                    },
+                    "currentDeploymentAliases": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "description": "List of aliases for the current deployment"
+                    },
+                    "createdAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was created"
+                    },
+                    "updatedAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was last updated"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "type",
+                    "createdAt",
+                    "updatedAt"
+                  ],
                   "type": "object",
                   "description": "Internal representation of a custom environment with all required properties"
                 }
@@ -42076,7 +43993,161 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the custom environment (format: env_*)"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL-friendly name of the environment"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "production",
+                        "preview",
+                        "development"
+                      ],
+                      "description": "The type of environment (production, preview, or development)"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Optional description of the environment's purpose"
+                    },
+                    "branchMatcher": {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "endsWith",
+                            "startsWith",
+                            "equals"
+                          ],
+                          "description": "The type of matching to perform"
+                        },
+                        "pattern": {
+                          "type": "string",
+                          "description": "The pattern to match against branch names"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "pattern"
+                      ],
+                      "type": "object",
+                      "description": "Configuration for matching git branches to this environment"
+                    },
+                    "domains": {
+                      "items": {
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "apexName": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "string"
+                          },
+                          "redirect": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "redirectStatusCode": {
+                            "nullable": true,
+                            "type": "number",
+                            "enum": [
+                              307,
+                              301,
+                              302,
+                              308
+                            ]
+                          },
+                          "gitBranch": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "customEnvironmentId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "verified": {
+                            "type": "boolean",
+                            "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                          },
+                          "verification": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "domain": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "reason": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "domain",
+                                "value",
+                                "reason"
+                              ],
+                              "type": "object",
+                              "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                            },
+                            "type": "array",
+                            "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "apexName",
+                          "projectId",
+                          "verified"
+                        ],
+                        "type": "object",
+                        "description": "List of domains associated with this environment"
+                      },
+                      "type": "array",
+                      "description": "List of domains associated with this environment"
+                    },
+                    "currentDeploymentAliases": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "description": "List of aliases for the current deployment"
+                    },
+                    "createdAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was created"
+                    },
+                    "updatedAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was last updated"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "type",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "type": "object",
+                  "description": "Internal representation of a custom environment with all required properties"
                 }
               }
             }
@@ -42215,7 +44286,161 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the custom environment (format: env_*)"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL-friendly name of the environment"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "production",
+                        "preview",
+                        "development"
+                      ],
+                      "description": "The type of environment (production, preview, or development)"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Optional description of the environment's purpose"
+                    },
+                    "branchMatcher": {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "endsWith",
+                            "startsWith",
+                            "equals"
+                          ],
+                          "description": "The type of matching to perform"
+                        },
+                        "pattern": {
+                          "type": "string",
+                          "description": "The pattern to match against branch names"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "pattern"
+                      ],
+                      "type": "object",
+                      "description": "Configuration for matching git branches to this environment"
+                    },
+                    "domains": {
+                      "items": {
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "apexName": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "string"
+                          },
+                          "redirect": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "redirectStatusCode": {
+                            "nullable": true,
+                            "type": "number",
+                            "enum": [
+                              307,
+                              301,
+                              302,
+                              308
+                            ]
+                          },
+                          "gitBranch": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "customEnvironmentId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "verified": {
+                            "type": "boolean",
+                            "description": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed."
+                          },
+                          "verification": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "domain": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "reason": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "domain",
+                                "value",
+                                "reason"
+                              ],
+                              "type": "object",
+                              "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                            },
+                            "type": "array",
+                            "description": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "apexName",
+                          "projectId",
+                          "verified"
+                        ],
+                        "type": "object",
+                        "description": "List of domains associated with this environment"
+                      },
+                      "type": "array",
+                      "description": "List of domains associated with this environment"
+                    },
+                    "currentDeploymentAliases": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "description": "List of aliases for the current deployment"
+                    },
+                    "createdAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was created"
+                    },
+                    "updatedAt": {
+                      "type": "number",
+                      "description": "Timestamp when the environment was last updated"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "type",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "type": "object",
+                  "description": "Internal representation of a custom environment with all required properties"
                 }
               }
             }
@@ -59610,6 +61835,195 @@
         ]
       }
     },
+    "/aliases/{id}/protection-bypass": {
+      "patch": {
+        "description": "Update the protection bypass for the alias (used for user access \u0026 comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": ""
+          },
+          "428": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The alias or deployment ID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The alias or deployment ID"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "revoke": {
+                        "description": "Optional instructions for revoking and regenerating a shareable link",
+                        "type": "object",
+                        "properties": {
+                          "secret": {
+                            "description": "Sharebale link to revoked",
+                            "type": "string"
+                          },
+                          "regenerate": {
+                            "description": "Whether or not a new shareable link should be created after the provided secret is revoked",
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "secret",
+                          "regenerate"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "scope": {
+                        "description": "Instructions for creating a user scoped protection bypass",
+                        "type": "object",
+                        "properties": {
+                          "userId": {
+                            "type": "string",
+                            "description": "Specified user id for the scoped bypass."
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "description": "Specified email for the scoped bypass."
+                          },
+                          "access": {
+                            "enum": [
+                              "denied",
+                              "granted"
+                            ],
+                            "description": "Invitation status for the user scoped bypass."
+                          }
+                        },
+                        "allOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "required": [
+                                  "userId"
+                                ]
+                              },
+                              {
+                                "required": [
+                                  "email"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "required": [
+                              "access"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "scope"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "override": {
+                        "type": "object",
+                        "properties": {
+                          "scope": {
+                            "enum": [
+                              "alias-protection-override"
+                            ]
+                          },
+                          "action": {
+                            "enum": [
+                              "create",
+                              "revoke"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "scope",
+                          "action"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "override"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/v7/certs/{id}": {
       "get": {
         "description": "Get cert by id",
@@ -63876,9 +66290,6 @@
                                   "enhanced"
                                 ]
                               },
-                              "abovePlan": {
-                                "type": "boolean"
-                              },
                               "isDefaultBuildMachine": {
                                 "type": "boolean"
                               },
@@ -66621,6 +69032,45 @@
                       "oldConnectConfigurations": {
                         "nullable": true,
                         "items": {
+                          "properties": {
+                            "envId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "preview",
+                                    "production"
+                                  ]
+                                }
+                              ]
+                            },
+                            "connectConfigurationId": {
+                              "type": "string"
+                            },
+                            "passive": {
+                              "type": "boolean"
+                            },
+                            "buildsEnabled": {
+                              "type": "boolean"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "envId",
+                            "connectConfigurationId",
+                            "passive",
+                            "buildsEnabled",
+                            "createdAt",
+                            "updatedAt"
+                          ],
                           "type": "object"
                         },
                         "type": "array"
@@ -66628,6 +69078,45 @@
                       "newConnectConfigurations": {
                         "nullable": true,
                         "items": {
+                          "properties": {
+                            "envId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "preview",
+                                    "production"
+                                  ]
+                                }
+                              ]
+                            },
+                            "connectConfigurationId": {
+                              "type": "string"
+                            },
+                            "passive": {
+                              "type": "boolean"
+                            },
+                            "buildsEnabled": {
+                              "type": "boolean"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "envId",
+                            "connectConfigurationId",
+                            "passive",
+                            "buildsEnabled",
+                            "createdAt",
+                            "updatedAt"
+                          ],
                           "type": "object"
                         },
                         "type": "array"
@@ -69385,10 +71874,6 @@
                     "enum": [
                       "enhanced"
                     ],
-                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-                  },
-                  "abovePlan": {
-                    "type": "boolean",
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   },
                   "isDefaultBuildMachine": {

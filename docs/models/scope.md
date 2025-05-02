@@ -1,15 +1,25 @@
 # Scope
 
-## Example Usage
+Instructions for creating a user scoped protection bypass
+
+
+## Supported Types
+
+### `models.Scope1`
 
 ```typescript
-import { Scope } from "@vercel/sdk/models/updateprojectdatacacheop.js";
-
-let value: Scope = "automation-bypass";
+const value: models.Scope1 = {
+  userId: "<id>",
+  access: "denied",
+};
 ```
 
-## Values
+### `models.Scope2`
 
 ```typescript
-"automation-bypass"
+const value: models.Scope2 = {
+  email: "Alfredo_McGlynn82@gmail.com",
+  access: "denied",
+};
 ```
+

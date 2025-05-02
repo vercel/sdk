@@ -270,8 +270,6 @@ type BuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	PurchaseType *PurchaseType `json:"purchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	AbovePlan *bool `json:"abovePlan,omitempty"`
-	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Cores *float64 `json:"cores,omitempty"`
@@ -284,13 +282,6 @@ func (o *BuildMachine) GetPurchaseType() *PurchaseType {
 		return nil
 	}
 	return o.PurchaseType
-}
-
-func (o *BuildMachine) GetAbovePlan() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.AbovePlan
 }
 
 func (o *BuildMachine) GetIsDefaultBuildMachine() *bool {

@@ -1,5 +1,7 @@
 # GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
@@ -7,11 +9,11 @@ import { GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType }
 
 let value:
   GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType =
-    "flags-secret";
+    "endsWith";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"endsWith" | "startsWith" | "equals"
 ```

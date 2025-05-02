@@ -119,6 +119,7 @@ import { tool$marketplaceUpdateInstallationIntegrationEdgeConfig } from "./tools
 import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
+import { tool$patchAliasesIdProtectionBypass } from "./tools/patchAliasesIdProtectionBypass.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -185,7 +186,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.7",
+    version: "1.6.8",
   });
 
   const client = new VercelCore({
@@ -215,6 +216,7 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$patchAliasesIdProtectionBypass);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);

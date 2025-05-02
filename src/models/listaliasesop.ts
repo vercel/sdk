@@ -127,11 +127,13 @@ export type ListAliasesProtectionBypass3 = {
   scope: ListAliasesProtectionBypassAliasesResponseScope;
 };
 
-export const ProtectionBypassAccess = {
+export const ListAliasesProtectionBypassAccess = {
   Requested: "requested",
   Granted: "granted",
 } as const;
-export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
+export type ListAliasesProtectionBypassAccess = ClosedEnum<
+  typeof ListAliasesProtectionBypassAccess
+>;
 
 export const ListAliasesProtectionBypassAliasesScope = {
   User: "user",
@@ -147,7 +149,7 @@ export type ListAliasesProtectionBypass2 = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  access: ProtectionBypassAccess;
+  access: ListAliasesProtectionBypassAccess;
   scope: ListAliasesProtectionBypassAliasesScope;
 };
 
@@ -658,24 +660,25 @@ export function listAliasesProtectionBypass3FromJSON(
 }
 
 /** @internal */
-export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
-  typeof ProtectionBypassAccess
-> = z.nativeEnum(ProtectionBypassAccess);
+export const ListAliasesProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
+  typeof ListAliasesProtectionBypassAccess
+> = z.nativeEnum(ListAliasesProtectionBypassAccess);
 
 /** @internal */
-export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
-  typeof ProtectionBypassAccess
-> = ProtectionBypassAccess$inboundSchema;
+export const ListAliasesProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
+  typeof ListAliasesProtectionBypassAccess
+> = ListAliasesProtectionBypassAccess$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProtectionBypassAccess$ {
-  /** @deprecated use `ProtectionBypassAccess$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypassAccess$inboundSchema;
-  /** @deprecated use `ProtectionBypassAccess$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypassAccess$outboundSchema;
+export namespace ListAliasesProtectionBypassAccess$ {
+  /** @deprecated use `ListAliasesProtectionBypassAccess$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesProtectionBypassAccess$inboundSchema;
+  /** @deprecated use `ListAliasesProtectionBypassAccess$outboundSchema` instead. */
+  export const outboundSchema =
+    ListAliasesProtectionBypassAccess$outboundSchema;
 }
 
 /** @internal */
@@ -710,7 +713,7 @@ export const ListAliasesProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: ProtectionBypassAccess$inboundSchema,
+  access: ListAliasesProtectionBypassAccess$inboundSchema,
   scope: ListAliasesProtectionBypassAliasesScope$inboundSchema,
 });
 
@@ -732,7 +735,7 @@ export const ListAliasesProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: ProtectionBypassAccess$outboundSchema,
+  access: ListAliasesProtectionBypassAccess$outboundSchema,
   scope: ListAliasesProtectionBypassAliasesScope$outboundSchema,
 });
 

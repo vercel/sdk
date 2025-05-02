@@ -10,7 +10,13 @@ let value: GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {
     total: 8449.23,
   },
   environments: [
-    {},
+    {
+      id: "<id>",
+      slug: "<value>",
+      type: "preview",
+      createdAt: 8241.49,
+      updatedAt: 3411.19,
+    },
   ],
 };
 ```

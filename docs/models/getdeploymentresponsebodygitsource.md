@@ -97,7 +97,7 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "discrete-lox.biz",
   ref: "<value>",
   sha: "<value>",

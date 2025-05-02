@@ -1,15 +1,17 @@
 # Access
 
+Invitation status for the user scoped bypass.
+
 ## Example Usage
 
 ```typescript
-import { Access } from "@vercel/sdk/models/getaliasop.js";
+import { Access } from "@vercel/sdk/models/patchaliasesidprotectionbypassop.js";
 
-let value: Access = "requested";
+let value: Access = "denied";
 ```
 
 ## Values
 
 ```typescript
-"requested" | "granted"
+"denied" | "granted"
 ```

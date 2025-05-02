@@ -331,17 +331,17 @@ func (o *ListAliasesProtectionBypass3) GetScope() ListAliasesProtectionBypassAli
 	return o.Scope
 }
 
-type ProtectionBypassAccess string
+type ListAliasesProtectionBypassAccess string
 
 const (
-	ProtectionBypassAccessRequested ProtectionBypassAccess = "requested"
-	ProtectionBypassAccessGranted   ProtectionBypassAccess = "granted"
+	ListAliasesProtectionBypassAccessRequested ListAliasesProtectionBypassAccess = "requested"
+	ListAliasesProtectionBypassAccessGranted   ListAliasesProtectionBypassAccess = "granted"
 )
 
-func (e ProtectionBypassAccess) ToPointer() *ProtectionBypassAccess {
+func (e ListAliasesProtectionBypassAccess) ToPointer() *ListAliasesProtectionBypassAccess {
 	return &e
 }
-func (e *ProtectionBypassAccess) UnmarshalJSON(data []byte) error {
+func (e *ListAliasesProtectionBypassAccess) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -350,10 +350,10 @@ func (e *ProtectionBypassAccess) UnmarshalJSON(data []byte) error {
 	case "requested":
 		fallthrough
 	case "granted":
-		*e = ProtectionBypassAccess(v)
+		*e = ListAliasesProtectionBypassAccess(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ProtectionBypassAccess: %v", v)
+		return fmt.Errorf("invalid value for ListAliasesProtectionBypassAccess: %v", v)
 	}
 }
 
@@ -385,7 +385,7 @@ type ListAliasesProtectionBypass2 struct {
 	CreatedAt     float64                                 `json:"createdAt"`
 	LastUpdatedAt float64                                 `json:"lastUpdatedAt"`
 	LastUpdatedBy string                                  `json:"lastUpdatedBy"`
-	Access        ProtectionBypassAccess                  `json:"access"`
+	Access        ListAliasesProtectionBypassAccess       `json:"access"`
 	Scope         ListAliasesProtectionBypassAliasesScope `json:"scope"`
 }
 
@@ -410,9 +410,9 @@ func (o *ListAliasesProtectionBypass2) GetLastUpdatedBy() string {
 	return o.LastUpdatedBy
 }
 
-func (o *ListAliasesProtectionBypass2) GetAccess() ProtectionBypassAccess {
+func (o *ListAliasesProtectionBypass2) GetAccess() ListAliasesProtectionBypassAccess {
 	if o == nil {
-		return ProtectionBypassAccess("")
+		return ListAliasesProtectionBypassAccess("")
 	}
 	return o.Access
 }

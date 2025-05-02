@@ -894,10 +894,24 @@ const value: models.EightyThree = {
   project: {
     id: "<id>",
     oldConnectConfigurations: [
-      {},
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: false,
+        createdAt: 2894.64,
+        updatedAt: 6044.37,
+      },
     ],
     newConnectConfigurations: [
-      {},
+      {
+        envId: "production",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: false,
+        createdAt: 9181.4,
+        updatedAt: 1382.23,
+      },
     ],
   },
 };

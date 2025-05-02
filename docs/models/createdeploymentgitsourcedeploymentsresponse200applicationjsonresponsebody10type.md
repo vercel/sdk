@@ -7,11 +7,11 @@ import { CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 
 let value:
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type =
-    "github";
+    "github-custom-host";
 ```
 
 ## Values
 
 ```typescript
-"github"
+"github-custom-host"
 ```

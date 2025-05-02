@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -33,7 +34,125 @@ export type AccountLimit = {
   total: number;
 };
 
-export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {};
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsType = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsType = ClosedEnum<
+  typeof GetV9ProjectsIdOrNameCustomEnvironmentsType
+>;
+
+/**
+ * The type of matching to perform
+ */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType = {
+  EndsWith: "endsWith",
+  StartsWith: "startsWith",
+  Equals: "equals",
+} as const;
+/**
+ * The type of matching to perform
+ */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType = ClosedEnum<
+  typeof GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType
+>;
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?:
+    | Array<GetV9ProjectsIdOrNameCustomEnvironmentsVerification>
+    | undefined;
+};
+
+export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
+  /**
+   * The type of environment (production, preview, or development)
+   */
+  type: GetV9ProjectsIdOrNameCustomEnvironmentsType;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?:
+    | GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher
+    | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<GetV9ProjectsIdOrNameCustomEnvironmentsDomains> | undefined;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
+};
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {
   /**
@@ -171,15 +290,349 @@ export function accountLimitFromJSON(
 }
 
 /** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetV9ProjectsIdOrNameCustomEnvironmentsType> = z
+    .nativeEnum(GetV9ProjectsIdOrNameCustomEnvironmentsType);
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsType$outboundSchema:
+  z.ZodNativeEnum<typeof GetV9ProjectsIdOrNameCustomEnvironmentsType> =
+    GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV9ProjectsIdOrNameCustomEnvironmentsType$ {
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsType$outboundSchema;
+}
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType
+  > = z.nativeEnum(GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType);
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType
+  > = GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$ {
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema;
+}
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
+    pattern: z.string(),
+  });
+
+/** @internal */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound = {
+  type: string;
+  pattern: string;
+};
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound,
+    z.ZodTypeDef,
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher
+  > = z.object({
+    type: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$outboundSchema,
+    pattern: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$ {
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound` instead. */
+  export type Outbound =
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound;
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsBranchMatcherToJSON(
+  getV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher:
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher,
+): string {
+  return JSON.stringify(
+    GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema.parse(
+      getV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher,
+    ),
+  );
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: z.string(),
+    domain: z.string(),
+    value: z.string(),
+    reason: z.string(),
+  });
+
+/** @internal */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsVerification$outboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound,
+    z.ZodTypeDef,
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification
+  > = z.object({
+    type: z.string(),
+    domain: z.string(),
+    value: z.string(),
+    reason: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV9ProjectsIdOrNameCustomEnvironmentsVerification$ {
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsVerification$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification$outboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound` instead. */
+  export type Outbound =
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound;
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsVerificationToJSON(
+  getV9ProjectsIdOrNameCustomEnvironmentsVerification:
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification,
+): string {
+  return JSON.stringify(
+    GetV9ProjectsIdOrNameCustomEnvironmentsVerification$outboundSchema.parse(
+      getV9ProjectsIdOrNameCustomEnvironmentsVerification,
+    ),
+  );
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV9ProjectsIdOrNameCustomEnvironmentsVerification,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetV9ProjectsIdOrNameCustomEnvironmentsVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: z.string(),
+    apexName: z.string(),
+    projectId: z.string(),
+    redirect: z.nullable(z.string()).optional(),
+    redirectStatusCode: z.nullable(z.number()).optional(),
+    gitBranch: z.nullable(z.string()).optional(),
+    customEnvironmentId: z.nullable(z.string()).optional(),
+    updatedAt: z.number().optional(),
+    createdAt: z.number().optional(),
+    verified: z.boolean(),
+    verification: z.array(
+      z.lazy(() =>
+        GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema
+      ),
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  verified: boolean;
+  verification?:
+    | Array<GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const GetV9ProjectsIdOrNameCustomEnvironmentsDomains$outboundSchema:
+  z.ZodType<
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound,
+    z.ZodTypeDef,
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains
+  > = z.object({
+    name: z.string(),
+    apexName: z.string(),
+    projectId: z.string(),
+    redirect: z.nullable(z.string()).optional(),
+    redirectStatusCode: z.nullable(z.number()).optional(),
+    gitBranch: z.nullable(z.string()).optional(),
+    customEnvironmentId: z.nullable(z.string()).optional(),
+    updatedAt: z.number().optional(),
+    createdAt: z.number().optional(),
+    verified: z.boolean(),
+    verification: z.array(
+      z.lazy(() =>
+        GetV9ProjectsIdOrNameCustomEnvironmentsVerification$outboundSchema
+      ),
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV9ProjectsIdOrNameCustomEnvironmentsDomains$ {
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsDomains$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains$outboundSchema;
+  /** @deprecated use `GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound` instead. */
+  export type Outbound =
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound;
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsDomainsToJSON(
+  getV9ProjectsIdOrNameCustomEnvironmentsDomains:
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains,
+): string {
+  return JSON.stringify(
+    GetV9ProjectsIdOrNameCustomEnvironmentsDomains$outboundSchema.parse(
+      getV9ProjectsIdOrNameCustomEnvironmentsDomains,
+    ),
+  );
+}
+
+export function getV9ProjectsIdOrNameCustomEnvironmentsDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV9ProjectsIdOrNameCustomEnvironmentsDomains,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetV9ProjectsIdOrNameCustomEnvironmentsDomains' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
   z.ZodType<
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = z.object({
+    id: z.string(),
+    slug: z.string(),
+    type: GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema,
+    description: z.string().optional(),
+    branchMatcher: z.lazy(() =>
+      GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
+    ).optional(),
+    domains: z.array(
+      z.lazy(() =>
+        GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema
+      ),
+    ).optional(),
+    currentDeploymentAliases: z.array(z.string()).optional(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+  });
 
 /** @internal */
-export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound = {};
+export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound = {
+  id: string;
+  slug: string;
+  type: string;
+  description?: string | undefined;
+  branchMatcher?:
+    | GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound
+    | undefined;
+  domains?:
+    | Array<GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound>
+    | undefined;
+  currentDeploymentAliases?: Array<string> | undefined;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
@@ -187,7 +640,23 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound,
     z.ZodTypeDef,
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments
-  > = z.object({});
+  > = z.object({
+    id: z.string(),
+    slug: z.string(),
+    type: GetV9ProjectsIdOrNameCustomEnvironmentsType$outboundSchema,
+    description: z.string().optional(),
+    branchMatcher: z.lazy(() =>
+      GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema
+    ).optional(),
+    domains: z.array(
+      z.lazy(() =>
+        GetV9ProjectsIdOrNameCustomEnvironmentsDomains$outboundSchema
+      ),
+    ).optional(),
+    currentDeploymentAliases: z.array(z.string()).optional(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+  });
 
 /**
  * @internal

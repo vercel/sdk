@@ -1,5 +1,7 @@
 # UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyType
 
+The type of matching to perform
+
 ## Example Usage
 
 ```typescript
@@ -7,11 +9,11 @@ import { UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyTyp
 
 let value:
   UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyType =
-    "flags-secret";
+    "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"flags-secret"
+"endsWith" | "startsWith" | "equals"
 ```

@@ -50,7 +50,13 @@ func testRemoveCustomEnvironmentRemoveCustomEnvironment0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveCustomEnvironmentResponseBody{}
+	respBody := &operations.RemoveCustomEnvironmentResponseBody{
+		ID:        "<id>",
+		Slug:      "<value>",
+		Type:      operations.RemoveCustomEnvironmentTypePreview,
+		CreatedAt: 7151.9,
+		UpdatedAt: 6027.63,
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

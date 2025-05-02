@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
 
@@ -65,7 +67,301 @@ func (o *RemoveCustomEnvironmentRequest) GetRequestBody() *RemoveCustomEnvironme
 	return o.RequestBody
 }
 
+// RemoveCustomEnvironmentType - The type of environment (production, preview, or development)
+type RemoveCustomEnvironmentType string
+
+const (
+	RemoveCustomEnvironmentTypeProduction  RemoveCustomEnvironmentType = "production"
+	RemoveCustomEnvironmentTypePreview     RemoveCustomEnvironmentType = "preview"
+	RemoveCustomEnvironmentTypeDevelopment RemoveCustomEnvironmentType = "development"
+)
+
+func (e RemoveCustomEnvironmentType) ToPointer() *RemoveCustomEnvironmentType {
+	return &e
+}
+func (e *RemoveCustomEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = RemoveCustomEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveCustomEnvironmentType: %v", v)
+	}
+}
+
+// RemoveCustomEnvironmentEnvironmentType - The type of matching to perform
+type RemoveCustomEnvironmentEnvironmentType string
+
+const (
+	RemoveCustomEnvironmentEnvironmentTypeEndsWith   RemoveCustomEnvironmentEnvironmentType = "endsWith"
+	RemoveCustomEnvironmentEnvironmentTypeStartsWith RemoveCustomEnvironmentEnvironmentType = "startsWith"
+	RemoveCustomEnvironmentEnvironmentTypeEquals     RemoveCustomEnvironmentEnvironmentType = "equals"
+)
+
+func (e RemoveCustomEnvironmentEnvironmentType) ToPointer() *RemoveCustomEnvironmentEnvironmentType {
+	return &e
+}
+func (e *RemoveCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "endsWith":
+		fallthrough
+	case "startsWith":
+		fallthrough
+	case "equals":
+		*e = RemoveCustomEnvironmentEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveCustomEnvironmentEnvironmentType: %v", v)
+	}
+}
+
+// RemoveCustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type RemoveCustomEnvironmentBranchMatcher struct {
+	// The type of matching to perform
+	Type RemoveCustomEnvironmentEnvironmentType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *RemoveCustomEnvironmentBranchMatcher) GetType() RemoveCustomEnvironmentEnvironmentType {
+	if o == nil {
+		return RemoveCustomEnvironmentEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *RemoveCustomEnvironmentBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// RemoveCustomEnvironmentVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type RemoveCustomEnvironmentVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *RemoveCustomEnvironmentVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *RemoveCustomEnvironmentVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *RemoveCustomEnvironmentVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *RemoveCustomEnvironmentVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// RemoveCustomEnvironmentDomains - List of domains associated with this environment
+type RemoveCustomEnvironmentDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []RemoveCustomEnvironmentVerification `json:"verification,omitempty"`
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *RemoveCustomEnvironmentDomains) GetVerification() []RemoveCustomEnvironmentVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// RemoveCustomEnvironmentResponseBody - Internal representation of a custom environment with all required properties
 type RemoveCustomEnvironmentResponseBody struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type RemoveCustomEnvironmentType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *RemoveCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []RemoveCustomEnvironmentDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetType() RemoveCustomEnvironmentType {
+	if o == nil {
+		return RemoveCustomEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetBranchMatcher() *RemoveCustomEnvironmentBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetDomains() []RemoveCustomEnvironmentDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *RemoveCustomEnvironmentResponseBody) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 type RemoveCustomEnvironmentResponse struct {

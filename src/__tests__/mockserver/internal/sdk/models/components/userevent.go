@@ -3834,10 +3834,284 @@ func (o *UserEventPayload83Team) GetName() string {
 	return o.Name
 }
 
+type EnvID2 string
+
+const (
+	EnvID2Preview    EnvID2 = "preview"
+	EnvID2Production EnvID2 = "production"
+)
+
+func (e EnvID2) ToPointer() *EnvID2 {
+	return &e
+}
+func (e *EnvID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "production":
+		*e = EnvID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvID2: %v", v)
+	}
+}
+
+type EnvIDType string
+
+const (
+	EnvIDTypeStr    EnvIDType = "str"
+	EnvIDTypeEnvID2 EnvIDType = "envId_2"
+)
+
+type EnvID struct {
+	Str    *string
+	EnvID2 *EnvID2
+
+	Type EnvIDType
+}
+
+func CreateEnvIDStr(str string) EnvID {
+	typ := EnvIDTypeStr
+
+	return EnvID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateEnvIDEnvID2(envID2 EnvID2) EnvID {
+	typ := EnvIDTypeEnvID2
+
+	return EnvID{
+		EnvID2: &envID2,
+		Type:   typ,
+	}
+}
+
+func (u *EnvID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = EnvIDTypeStr
+		return nil
+	}
+
+	var envID2 EnvID2 = EnvID2("")
+	if err := utils.UnmarshalJSON(data, &envID2, "", true, true); err == nil {
+		u.EnvID2 = &envID2
+		u.Type = EnvIDTypeEnvID2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvID", string(data))
+}
+
+func (u EnvID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.EnvID2 != nil {
+		return utils.MarshalJSON(u.EnvID2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvID: all fields are null")
+}
+
 type OldConnectConfigurations struct {
+	EnvID                  EnvID   `json:"envId"`
+	ConnectConfigurationID string  `json:"connectConfigurationId"`
+	Passive                bool    `json:"passive"`
+	BuildsEnabled          bool    `json:"buildsEnabled"`
+	CreatedAt              float64 `json:"createdAt"`
+	UpdatedAt              float64 `json:"updatedAt"`
+}
+
+func (o *OldConnectConfigurations) GetEnvID() EnvID {
+	if o == nil {
+		return EnvID{}
+	}
+	return o.EnvID
+}
+
+func (o *OldConnectConfigurations) GetConnectConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *OldConnectConfigurations) GetPassive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Passive
+}
+
+func (o *OldConnectConfigurations) GetBuildsEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.BuildsEnabled
+}
+
+func (o *OldConnectConfigurations) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *OldConnectConfigurations) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+type UserEventEnvID2 string
+
+const (
+	UserEventEnvID2Preview    UserEventEnvID2 = "preview"
+	UserEventEnvID2Production UserEventEnvID2 = "production"
+)
+
+func (e UserEventEnvID2) ToPointer() *UserEventEnvID2 {
+	return &e
+}
+func (e *UserEventEnvID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "production":
+		*e = UserEventEnvID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventEnvID2: %v", v)
+	}
+}
+
+type PayloadEnvIDType string
+
+const (
+	PayloadEnvIDTypeStr             PayloadEnvIDType = "str"
+	PayloadEnvIDTypeUserEventEnvID2 PayloadEnvIDType = "UserEvent_envId_2"
+)
+
+type PayloadEnvID struct {
+	Str             *string
+	UserEventEnvID2 *UserEventEnvID2
+
+	Type PayloadEnvIDType
+}
+
+func CreatePayloadEnvIDStr(str string) PayloadEnvID {
+	typ := PayloadEnvIDTypeStr
+
+	return PayloadEnvID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePayloadEnvIDUserEventEnvID2(userEventEnvID2 UserEventEnvID2) PayloadEnvID {
+	typ := PayloadEnvIDTypeUserEventEnvID2
+
+	return PayloadEnvID{
+		UserEventEnvID2: &userEventEnvID2,
+		Type:            typ,
+	}
+}
+
+func (u *PayloadEnvID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = PayloadEnvIDTypeStr
+		return nil
+	}
+
+	var userEventEnvID2 UserEventEnvID2 = UserEventEnvID2("")
+	if err := utils.UnmarshalJSON(data, &userEventEnvID2, "", true, true); err == nil {
+		u.UserEventEnvID2 = &userEventEnvID2
+		u.Type = PayloadEnvIDTypeUserEventEnvID2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PayloadEnvID", string(data))
+}
+
+func (u PayloadEnvID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.UserEventEnvID2 != nil {
+		return utils.MarshalJSON(u.UserEventEnvID2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PayloadEnvID: all fields are null")
 }
 
 type NewConnectConfigurations struct {
+	EnvID                  PayloadEnvID `json:"envId"`
+	ConnectConfigurationID string       `json:"connectConfigurationId"`
+	Passive                bool         `json:"passive"`
+	BuildsEnabled          bool         `json:"buildsEnabled"`
+	CreatedAt              float64      `json:"createdAt"`
+	UpdatedAt              float64      `json:"updatedAt"`
+}
+
+func (o *NewConnectConfigurations) GetEnvID() PayloadEnvID {
+	if o == nil {
+		return PayloadEnvID{}
+	}
+	return o.EnvID
+}
+
+func (o *NewConnectConfigurations) GetConnectConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *NewConnectConfigurations) GetPassive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Passive
+}
+
+func (o *NewConnectConfigurations) GetBuildsEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.BuildsEnabled
+}
+
+func (o *NewConnectConfigurations) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *NewConnectConfigurations) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 type UserEventPayload83Project struct {
@@ -6850,7 +7124,6 @@ func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
 
 type PayloadBuildMachine struct {
 	PurchaseType          *PayloadPurchaseType `json:"purchaseType,omitempty"`
-	AbovePlan             *bool                `json:"abovePlan,omitempty"`
 	IsDefaultBuildMachine *bool                `json:"isDefaultBuildMachine,omitempty"`
 	Cores                 *float64             `json:"cores,omitempty"`
 	Memory                *float64             `json:"memory,omitempty"`
@@ -6861,13 +7134,6 @@ func (o *PayloadBuildMachine) GetPurchaseType() *PayloadPurchaseType {
 		return nil
 	}
 	return o.PurchaseType
-}
-
-func (o *PayloadBuildMachine) GetAbovePlan() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.AbovePlan
 }
 
 func (o *PayloadBuildMachine) GetIsDefaultBuildMachine() *bool {

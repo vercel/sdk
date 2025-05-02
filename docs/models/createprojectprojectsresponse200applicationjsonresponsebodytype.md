@@ -6,11 +6,11 @@
 import { CreateProjectProjectsResponse200ApplicationJSONResponseBodyType } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectProjectsResponse200ApplicationJSONResponseBodyType =
-  "promote";
+  "LAMBDAS";
 ```
 
 ## Values
 
 ```typescript
-"promote" | "rollback"
+"LAMBDAS"
 ```

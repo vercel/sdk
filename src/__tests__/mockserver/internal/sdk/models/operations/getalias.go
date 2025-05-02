@@ -249,17 +249,17 @@ func (o *ProtectionBypass3) GetScope() GetAliasProtectionBypassAliasesScope {
 	return o.Scope
 }
 
-type Access string
+type ProtectionBypassAccess string
 
 const (
-	AccessRequested Access = "requested"
-	AccessGranted   Access = "granted"
+	ProtectionBypassAccessRequested ProtectionBypassAccess = "requested"
+	ProtectionBypassAccessGranted   ProtectionBypassAccess = "granted"
 )
 
-func (e Access) ToPointer() *Access {
+func (e ProtectionBypassAccess) ToPointer() *ProtectionBypassAccess {
 	return &e
 }
-func (e *Access) UnmarshalJSON(data []byte) error {
+func (e *ProtectionBypassAccess) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -268,10 +268,10 @@ func (e *Access) UnmarshalJSON(data []byte) error {
 	case "requested":
 		fallthrough
 	case "granted":
-		*e = Access(v)
+		*e = ProtectionBypassAccess(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Access: %v", v)
+		return fmt.Errorf("invalid value for ProtectionBypassAccess: %v", v)
 	}
 }
 
@@ -303,7 +303,7 @@ type ProtectionBypass2 struct {
 	CreatedAt     float64                       `json:"createdAt"`
 	LastUpdatedAt float64                       `json:"lastUpdatedAt"`
 	LastUpdatedBy string                        `json:"lastUpdatedBy"`
-	Access        Access                        `json:"access"`
+	Access        ProtectionBypassAccess        `json:"access"`
 	Scope         GetAliasProtectionBypassScope `json:"scope"`
 }
 
@@ -328,9 +328,9 @@ func (o *ProtectionBypass2) GetLastUpdatedBy() string {
 	return o.LastUpdatedBy
 }
 
-func (o *ProtectionBypass2) GetAccess() Access {
+func (o *ProtectionBypass2) GetAccess() ProtectionBypassAccess {
 	if o == nil {
-		return Access("")
+		return ProtectionBypassAccess("")
 	}
 	return o.Access
 }

@@ -136,7 +136,7 @@ export type GetProjectDomainsRequest = {
 /**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
-export type ResponseBodyVerification = {
+export type GetProjectDomainsResponseBodyVerification = {
   type: string;
   domain: string;
   value: string;
@@ -160,7 +160,7 @@ export type GetProjectDomainsResponseBodyDomains = {
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
-  verification?: Array<ResponseBodyVerification> | undefined;
+  verification?: Array<GetProjectDomainsResponseBodyVerification> | undefined;
 };
 
 export type GetProjectDomainsResponseBody2 = {
@@ -174,7 +174,7 @@ export type GetProjectDomainsResponseBody2 = {
 /**
  * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
  */
-export type GetProjectDomainsResponseBodyVerification = {
+export type ResponseBodyVerification = {
   type: string;
   domain: string;
   value: string;
@@ -198,7 +198,7 @@ export type ResponseBodyDomains = {
   /**
    * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
    */
-  verification?: Array<GetProjectDomainsResponseBodyVerification> | undefined;
+  verification?: Array<ResponseBodyVerification> | undefined;
 };
 
 export type GetProjectDomainsResponseBodyPagination = {
@@ -411,8 +411,8 @@ export function getProjectDomainsRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyVerification$inboundSchema: z.ZodType<
-  ResponseBodyVerification,
+export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
+  GetProjectDomainsResponseBodyVerification,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -423,7 +423,7 @@ export const ResponseBodyVerification$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ResponseBodyVerification$Outbound = {
+export type GetProjectDomainsResponseBodyVerification$Outbound = {
   type: string;
   domain: string;
   value: string;
@@ -431,45 +431,57 @@ export type ResponseBodyVerification$Outbound = {
 };
 
 /** @internal */
-export const ResponseBodyVerification$outboundSchema: z.ZodType<
-  ResponseBodyVerification$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyVerification
-> = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
-});
+export const GetProjectDomainsResponseBodyVerification$outboundSchema:
+  z.ZodType<
+    GetProjectDomainsResponseBodyVerification$Outbound,
+    z.ZodTypeDef,
+    GetProjectDomainsResponseBodyVerification
+  > = z.object({
+    type: z.string(),
+    domain: z.string(),
+    value: z.string(),
+    reason: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBodyVerification$ {
-  /** @deprecated use `ResponseBodyVerification$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyVerification$inboundSchema;
-  /** @deprecated use `ResponseBodyVerification$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyVerification$outboundSchema;
-  /** @deprecated use `ResponseBodyVerification$Outbound` instead. */
-  export type Outbound = ResponseBodyVerification$Outbound;
+export namespace GetProjectDomainsResponseBodyVerification$ {
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectDomainsResponseBodyVerification$inboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectDomainsResponseBodyVerification$outboundSchema;
+  /** @deprecated use `GetProjectDomainsResponseBodyVerification$Outbound` instead. */
+  export type Outbound = GetProjectDomainsResponseBodyVerification$Outbound;
 }
 
-export function responseBodyVerificationToJSON(
-  responseBodyVerification: ResponseBodyVerification,
+export function getProjectDomainsResponseBodyVerificationToJSON(
+  getProjectDomainsResponseBodyVerification:
+    GetProjectDomainsResponseBodyVerification,
 ): string {
   return JSON.stringify(
-    ResponseBodyVerification$outboundSchema.parse(responseBodyVerification),
+    GetProjectDomainsResponseBodyVerification$outboundSchema.parse(
+      getProjectDomainsResponseBodyVerification,
+    ),
   );
 }
 
-export function responseBodyVerificationFromJSON(
+export function getProjectDomainsResponseBodyVerificationFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyVerification, SDKValidationError> {
+): SafeParseResult<
+  GetProjectDomainsResponseBodyVerification,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyVerification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyVerification' from JSON`,
+    (x) =>
+      GetProjectDomainsResponseBodyVerification$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectDomainsResponseBodyVerification' from JSON`,
   );
 }
 
@@ -489,8 +501,9 @@ export const GetProjectDomainsResponseBodyDomains$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(z.lazy(() => ResponseBodyVerification$inboundSchema))
-    .optional(),
+  verification: z.array(
+    z.lazy(() => GetProjectDomainsResponseBodyVerification$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
@@ -505,7 +518,9 @@ export type GetProjectDomainsResponseBodyDomains$Outbound = {
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
   verified: boolean;
-  verification?: Array<ResponseBodyVerification$Outbound> | undefined;
+  verification?:
+    | Array<GetProjectDomainsResponseBodyVerification$Outbound>
+    | undefined;
 };
 
 /** @internal */
@@ -524,8 +539,9 @@ export const GetProjectDomainsResponseBodyDomains$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(z.lazy(() => ResponseBodyVerification$outboundSchema))
-    .optional(),
+  verification: z.array(
+    z.lazy(() => GetProjectDomainsResponseBodyVerification$outboundSchema),
+  ).optional(),
 });
 
 /**
@@ -628,8 +644,8 @@ export function getProjectDomainsResponseBody2FromJSON(
 }
 
 /** @internal */
-export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
-  GetProjectDomainsResponseBodyVerification,
+export const ResponseBodyVerification$inboundSchema: z.ZodType<
+  ResponseBodyVerification,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -640,7 +656,7 @@ export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetProjectDomainsResponseBodyVerification$Outbound = {
+export type ResponseBodyVerification$Outbound = {
   type: string;
   domain: string;
   value: string;
@@ -648,57 +664,45 @@ export type GetProjectDomainsResponseBodyVerification$Outbound = {
 };
 
 /** @internal */
-export const GetProjectDomainsResponseBodyVerification$outboundSchema:
-  z.ZodType<
-    GetProjectDomainsResponseBodyVerification$Outbound,
-    z.ZodTypeDef,
-    GetProjectDomainsResponseBodyVerification
-  > = z.object({
-    type: z.string(),
-    domain: z.string(),
-    value: z.string(),
-    reason: z.string(),
-  });
+export const ResponseBodyVerification$outboundSchema: z.ZodType<
+  ResponseBodyVerification$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyVerification
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectDomainsResponseBodyVerification$ {
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectDomainsResponseBodyVerification$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectDomainsResponseBodyVerification$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBodyVerification$Outbound;
+export namespace ResponseBodyVerification$ {
+  /** @deprecated use `ResponseBodyVerification$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyVerification$inboundSchema;
+  /** @deprecated use `ResponseBodyVerification$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyVerification$outboundSchema;
+  /** @deprecated use `ResponseBodyVerification$Outbound` instead. */
+  export type Outbound = ResponseBodyVerification$Outbound;
 }
 
-export function getProjectDomainsResponseBodyVerificationToJSON(
-  getProjectDomainsResponseBodyVerification:
-    GetProjectDomainsResponseBodyVerification,
+export function responseBodyVerificationToJSON(
+  responseBodyVerification: ResponseBodyVerification,
 ): string {
   return JSON.stringify(
-    GetProjectDomainsResponseBodyVerification$outboundSchema.parse(
-      getProjectDomainsResponseBodyVerification,
-    ),
+    ResponseBodyVerification$outboundSchema.parse(responseBodyVerification),
   );
 }
 
-export function getProjectDomainsResponseBodyVerificationFromJSON(
+export function responseBodyVerificationFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetProjectDomainsResponseBodyVerification,
-  SDKValidationError
-> {
+): SafeParseResult<ResponseBodyVerification, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetProjectDomainsResponseBodyVerification$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectDomainsResponseBodyVerification' from JSON`,
+    (x) => ResponseBodyVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVerification' from JSON`,
   );
 }
 
@@ -718,9 +722,8 @@ export const ResponseBodyDomains$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => GetProjectDomainsResponseBodyVerification$inboundSchema),
-  ).optional(),
+  verification: z.array(z.lazy(() => ResponseBodyVerification$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -735,9 +738,7 @@ export type ResponseBodyDomains$Outbound = {
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
   verified: boolean;
-  verification?:
-    | Array<GetProjectDomainsResponseBodyVerification$Outbound>
-    | undefined;
+  verification?: Array<ResponseBodyVerification$Outbound> | undefined;
 };
 
 /** @internal */
@@ -756,9 +757,8 @@ export const ResponseBodyDomains$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
   verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => GetProjectDomainsResponseBodyVerification$outboundSchema),
-  ).optional(),
+  verification: z.array(z.lazy(() => ResponseBodyVerification$outboundSchema))
+    .optional(),
 });
 
 /**

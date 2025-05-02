@@ -22,10 +22,12 @@ let value: CreateDeploymentRequestBody = {
     dirty: true,
   },
   gitSource: {
-    projectId: 987654321,
+    org: "vercel",
     ref: "main",
+    repo: "next.js",
     sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-    type: "gitlab",
+    host: "electric-minority.name",
+    type: "github-custom-host",
   },
   meta: {
     "foo": "bar",

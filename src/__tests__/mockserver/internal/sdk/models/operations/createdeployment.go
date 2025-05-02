@@ -274,6 +274,72 @@ func (o *GitMetadata) GetDirty() *bool {
 	return o.Dirty
 }
 
+type CreateDeploymentGitSourceDeploymentsRequestRequestBodyType string
+
+const (
+	CreateDeploymentGitSourceDeploymentsRequestRequestBodyTypeBitbucket CreateDeploymentGitSourceDeploymentsRequestRequestBodyType = "bitbucket"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsRequestRequestBodyType) ToPointer() *CreateDeploymentGitSourceDeploymentsRequestRequestBodyType {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsRequestRequestBodyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = CreateDeploymentGitSourceDeploymentsRequestRequestBodyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsRequestRequestBodyType: %v", v)
+	}
+}
+
+type Six struct {
+	Owner string                                                     `json:"owner"`
+	Ref   string                                                     `json:"ref"`
+	Sha   *string                                                    `json:"sha,omitempty"`
+	Slug  string                                                     `json:"slug"`
+	Type  CreateDeploymentGitSourceDeploymentsRequestRequestBodyType `json:"type"`
+}
+
+func (o *Six) GetOwner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Owner
+}
+
+func (o *Six) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *Six) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *Six) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *Six) GetType() CreateDeploymentGitSourceDeploymentsRequestRequestBodyType {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsRequestRequestBodyType("")
+	}
+	return o.Type
+}
+
 type CreateDeploymentGitSourceDeploymentsRequestType string
 
 const (
@@ -298,18 +364,11 @@ func (e *CreateDeploymentGitSourceDeploymentsRequestType) UnmarshalJSON(data []b
 }
 
 type Five struct {
-	Owner string                                          `json:"owner"`
-	Ref   string                                          `json:"ref"`
-	Sha   *string                                         `json:"sha,omitempty"`
-	Slug  string                                          `json:"slug"`
-	Type  CreateDeploymentGitSourceDeploymentsRequestType `json:"type"`
-}
-
-func (o *Five) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
+	Ref           string                                          `json:"ref"`
+	RepoUUID      string                                          `json:"repoUuid"`
+	Sha           *string                                         `json:"sha,omitempty"`
+	Type          CreateDeploymentGitSourceDeploymentsRequestType `json:"type"`
+	WorkspaceUUID *string                                         `json:"workspaceUuid,omitempty"`
 }
 
 func (o *Five) GetRef() string {
@@ -319,18 +378,18 @@ func (o *Five) GetRef() string {
 	return o.Ref
 }
 
+func (o *Five) GetRepoUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RepoUUID
+}
+
 func (o *Five) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
-}
-
-func (o *Five) GetSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.Slug
 }
 
 func (o *Five) GetType() CreateDeploymentGitSourceDeploymentsRequestType {
@@ -340,66 +399,7 @@ func (o *Five) GetType() CreateDeploymentGitSourceDeploymentsRequestType {
 	return o.Type
 }
 
-type CreateDeploymentGitSourceDeploymentsType string
-
-const (
-	CreateDeploymentGitSourceDeploymentsTypeBitbucket CreateDeploymentGitSourceDeploymentsType = "bitbucket"
-)
-
-func (e CreateDeploymentGitSourceDeploymentsType) ToPointer() *CreateDeploymentGitSourceDeploymentsType {
-	return &e
-}
-func (e *CreateDeploymentGitSourceDeploymentsType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = CreateDeploymentGitSourceDeploymentsType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsType: %v", v)
-	}
-}
-
-type Four struct {
-	Ref           string                                   `json:"ref"`
-	RepoUUID      string                                   `json:"repoUuid"`
-	Sha           *string                                  `json:"sha,omitempty"`
-	Type          CreateDeploymentGitSourceDeploymentsType `json:"type"`
-	WorkspaceUUID *string                                  `json:"workspaceUuid,omitempty"`
-}
-
-func (o *Four) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *Four) GetRepoUUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RepoUUID
-}
-
-func (o *Four) GetSha() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Sha
-}
-
-func (o *Four) GetType() CreateDeploymentGitSourceDeploymentsType {
-	if o == nil {
-		return CreateDeploymentGitSourceDeploymentsType("")
-	}
-	return o.Type
-}
-
-func (o *Four) GetWorkspaceUUID() *string {
+func (o *Five) GetWorkspaceUUID() *string {
 	if o == nil {
 		return nil
 	}
@@ -469,10 +469,68 @@ func (u ProjectID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ProjectID: all fields are null")
 }
 
+type CreateDeploymentGitSourceDeploymentsType string
+
+const (
+	CreateDeploymentGitSourceDeploymentsTypeGitlab CreateDeploymentGitSourceDeploymentsType = "gitlab"
+)
+
+func (e CreateDeploymentGitSourceDeploymentsType) ToPointer() *CreateDeploymentGitSourceDeploymentsType {
+	return &e
+}
+func (e *CreateDeploymentGitSourceDeploymentsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = CreateDeploymentGitSourceDeploymentsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentGitSourceDeploymentsType: %v", v)
+	}
+}
+
+type Four struct {
+	ProjectID ProjectID                                `json:"projectId"`
+	Ref       string                                   `json:"ref"`
+	Sha       *string                                  `json:"sha,omitempty"`
+	Type      CreateDeploymentGitSourceDeploymentsType `json:"type"`
+}
+
+func (o *Four) GetProjectID() ProjectID {
+	if o == nil {
+		return ProjectID{}
+	}
+	return o.ProjectID
+}
+
+func (o *Four) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *Four) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *Four) GetType() CreateDeploymentGitSourceDeploymentsType {
+	if o == nil {
+		return CreateDeploymentGitSourceDeploymentsType("")
+	}
+	return o.Type
+}
+
 type CreateDeploymentGitSourceType string
 
 const (
-	CreateDeploymentGitSourceTypeGitlab CreateDeploymentGitSourceType = "gitlab"
+	CreateDeploymentGitSourceTypeGithubCustomHost CreateDeploymentGitSourceType = "github-custom-host"
 )
 
 func (e CreateDeploymentGitSourceType) ToPointer() *CreateDeploymentGitSourceType {
@@ -484,7 +542,7 @@ func (e *CreateDeploymentGitSourceType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "gitlab":
+	case "github-custom-host":
 		*e = CreateDeploymentGitSourceType(v)
 		return nil
 	default:
@@ -493,17 +551,19 @@ func (e *CreateDeploymentGitSourceType) UnmarshalJSON(data []byte) error {
 }
 
 type Three struct {
-	ProjectID ProjectID                     `json:"projectId"`
-	Ref       string                        `json:"ref"`
-	Sha       *string                       `json:"sha,omitempty"`
-	Type      CreateDeploymentGitSourceType `json:"type"`
+	Org  string                        `json:"org"`
+	Ref  string                        `json:"ref"`
+	Repo string                        `json:"repo"`
+	Sha  *string                       `json:"sha,omitempty"`
+	Host string                        `json:"host"`
+	Type CreateDeploymentGitSourceType `json:"type"`
 }
 
-func (o *Three) GetProjectID() ProjectID {
+func (o *Three) GetOrg() string {
 	if o == nil {
-		return ProjectID{}
+		return ""
 	}
-	return o.ProjectID
+	return o.Org
 }
 
 func (o *Three) GetRef() string {
@@ -513,11 +573,25 @@ func (o *Three) GetRef() string {
 	return o.Ref
 }
 
+func (o *Three) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
 func (o *Three) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
+}
+
+func (o *Three) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
 }
 
 func (o *Three) GetType() CreateDeploymentGitSourceType {
@@ -722,6 +796,7 @@ const (
 	GitSourceUnionTypeThree      GitSourceUnionType = "3"
 	GitSourceUnionTypeFour       GitSourceUnionType = "4"
 	GitSourceUnionTypeFive       GitSourceUnionType = "5"
+	GitSourceUnionTypeSix        GitSourceUnionType = "6"
 )
 
 // GitSource - Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
@@ -731,6 +806,7 @@ type GitSource struct {
 	Three      *Three
 	Four       *Four
 	Five       *Five
+	Six        *Six
 
 	Type GitSourceUnionType
 }
@@ -780,26 +856,21 @@ func CreateGitSourceFive(five Five) GitSource {
 	}
 }
 
+func CreateGitSourceSix(six Six) GitSource {
+	typ := GitSourceUnionTypeSix
+
+	return GitSource{
+		Six:  &six,
+		Type: typ,
+	}
+}
+
 func (u *GitSource) UnmarshalJSON(data []byte) error {
 
 	var gitSource1 GitSource1 = GitSource1{}
 	if err := utils.UnmarshalJSON(data, &gitSource1, "", true, true); err == nil {
 		u.GitSource1 = &gitSource1
 		u.Type = GitSourceUnionTypeGitSource1
-		return nil
-	}
-
-	var three Three = Three{}
-	if err := utils.UnmarshalJSON(data, &three, "", true, true); err == nil {
-		u.Three = &three
-		u.Type = GitSourceUnionTypeThree
-		return nil
-	}
-
-	var two Two = Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
-		u.Two = &two
-		u.Type = GitSourceUnionTypeTwo
 		return nil
 	}
 
@@ -810,10 +881,31 @@ func (u *GitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var two Two = Two{}
+	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
+		u.Two = &two
+		u.Type = GitSourceUnionTypeTwo
+		return nil
+	}
+
 	var five Five = Five{}
 	if err := utils.UnmarshalJSON(data, &five, "", true, true); err == nil {
 		u.Five = &five
 		u.Type = GitSourceUnionTypeFive
+		return nil
+	}
+
+	var six Six = Six{}
+	if err := utils.UnmarshalJSON(data, &six, "", true, true); err == nil {
+		u.Six = &six
+		u.Type = GitSourceUnionTypeSix
+		return nil
+	}
+
+	var three Three = Three{}
+	if err := utils.UnmarshalJSON(data, &three, "", true, true); err == nil {
+		u.Three = &three
+		u.Type = GitSourceUnionTypeThree
 		return nil
 	}
 
@@ -839,6 +931,10 @@ func (u GitSource) MarshalJSON() ([]byte, error) {
 
 	if u.Five != nil {
 		return utils.MarshalJSON(u.Five, "", true)
+	}
+
+	if u.Six != nil {
+		return utils.MarshalJSON(u.Six, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GitSource: all fields are null")
@@ -2253,25 +2349,319 @@ func (o *CustomEnvironment2) GetID() string {
 	return o.ID
 }
 
-type CustomEnvironment1 struct {
-}
-
+// CustomEnvironmentType - The type of environment (production, preview, or development)
 type CustomEnvironmentType string
 
 const (
-	CustomEnvironmentTypeCustomEnvironment1 CustomEnvironmentType = "customEnvironment_1"
-	CustomEnvironmentTypeCustomEnvironment2 CustomEnvironmentType = "customEnvironment_2"
+	CustomEnvironmentTypeProduction  CustomEnvironmentType = "production"
+	CustomEnvironmentTypePreview     CustomEnvironmentType = "preview"
+	CustomEnvironmentTypeDevelopment CustomEnvironmentType = "development"
+)
+
+func (e CustomEnvironmentType) ToPointer() *CustomEnvironmentType {
+	return &e
+}
+func (e *CustomEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = CustomEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CustomEnvironmentType: %v", v)
+	}
+}
+
+// CreateDeploymentCustomEnvironmentType - The type of matching to perform
+type CreateDeploymentCustomEnvironmentType string
+
+const (
+	CreateDeploymentCustomEnvironmentTypeStartsWith CreateDeploymentCustomEnvironmentType = "startsWith"
+	CreateDeploymentCustomEnvironmentTypeEquals     CreateDeploymentCustomEnvironmentType = "equals"
+	CreateDeploymentCustomEnvironmentTypeEndsWith   CreateDeploymentCustomEnvironmentType = "endsWith"
+)
+
+func (e CreateDeploymentCustomEnvironmentType) ToPointer() *CreateDeploymentCustomEnvironmentType {
+	return &e
+}
+func (e *CreateDeploymentCustomEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "startsWith":
+		fallthrough
+	case "equals":
+		fallthrough
+	case "endsWith":
+		*e = CreateDeploymentCustomEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentCustomEnvironmentType: %v", v)
+	}
+}
+
+// CustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type CustomEnvironmentBranchMatcher struct {
+	// The type of matching to perform
+	Type CreateDeploymentCustomEnvironmentType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *CustomEnvironmentBranchMatcher) GetType() CreateDeploymentCustomEnvironmentType {
+	if o == nil {
+		return CreateDeploymentCustomEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *CustomEnvironmentBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// CustomEnvironmentVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type CustomEnvironmentVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *CustomEnvironmentVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *CustomEnvironmentVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *CustomEnvironmentVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *CustomEnvironmentVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// CustomEnvironmentDomains - List of domains associated with this environment
+type CustomEnvironmentDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []CustomEnvironmentVerification `json:"verification,omitempty"`
+}
+
+func (o *CustomEnvironmentDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CustomEnvironmentDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *CustomEnvironmentDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *CustomEnvironmentDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *CustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *CustomEnvironmentDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *CustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *CustomEnvironmentDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *CustomEnvironmentDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CustomEnvironmentDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *CustomEnvironmentDomains) GetVerification() []CustomEnvironmentVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// CustomEnvironment1 - Internal representation of a custom environment with all required properties
+type CustomEnvironment1 struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type CustomEnvironmentType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *CustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []CustomEnvironmentDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *CustomEnvironment1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CustomEnvironment1) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *CustomEnvironment1) GetType() CustomEnvironmentType {
+	if o == nil {
+		return CustomEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *CustomEnvironment1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CustomEnvironment1) GetBranchMatcher() *CustomEnvironmentBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *CustomEnvironment1) GetDomains() []CustomEnvironmentDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *CustomEnvironment1) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *CustomEnvironment1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CustomEnvironment1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+type CustomEnvironmentUnionType string
+
+const (
+	CustomEnvironmentUnionTypeCustomEnvironment1 CustomEnvironmentUnionType = "customEnvironment_1"
+	CustomEnvironmentUnionTypeCustomEnvironment2 CustomEnvironmentUnionType = "customEnvironment_2"
 )
 
 type CustomEnvironment struct {
 	CustomEnvironment1 *CustomEnvironment1
 	CustomEnvironment2 *CustomEnvironment2
 
-	Type CustomEnvironmentType
+	Type CustomEnvironmentUnionType
 }
 
 func CreateCustomEnvironmentCustomEnvironment1(customEnvironment1 CustomEnvironment1) CustomEnvironment {
-	typ := CustomEnvironmentTypeCustomEnvironment1
+	typ := CustomEnvironmentUnionTypeCustomEnvironment1
 
 	return CustomEnvironment{
 		CustomEnvironment1: &customEnvironment1,
@@ -2280,7 +2670,7 @@ func CreateCustomEnvironmentCustomEnvironment1(customEnvironment1 CustomEnvironm
 }
 
 func CreateCustomEnvironmentCustomEnvironment2(customEnvironment2 CustomEnvironment2) CustomEnvironment {
-	typ := CustomEnvironmentTypeCustomEnvironment2
+	typ := CustomEnvironmentUnionTypeCustomEnvironment2
 
 	return CustomEnvironment{
 		CustomEnvironment2: &customEnvironment2,
@@ -2290,17 +2680,17 @@ func CreateCustomEnvironmentCustomEnvironment2(customEnvironment2 CustomEnvironm
 
 func (u *CustomEnvironment) UnmarshalJSON(data []byte) error {
 
-	var customEnvironment1 CustomEnvironment1 = CustomEnvironment1{}
-	if err := utils.UnmarshalJSON(data, &customEnvironment1, "", true, true); err == nil {
-		u.CustomEnvironment1 = &customEnvironment1
-		u.Type = CustomEnvironmentTypeCustomEnvironment1
-		return nil
-	}
-
 	var customEnvironment2 CustomEnvironment2 = CustomEnvironment2{}
 	if err := utils.UnmarshalJSON(data, &customEnvironment2, "", true, true); err == nil {
 		u.CustomEnvironment2 = &customEnvironment2
-		u.Type = CustomEnvironmentTypeCustomEnvironment2
+		u.Type = CustomEnvironmentUnionTypeCustomEnvironment2
+		return nil
+	}
+
+	var customEnvironment1 CustomEnvironment1 = CustomEnvironment1{}
+	if err := utils.UnmarshalJSON(data, &customEnvironment1, "", true, true); err == nil {
+		u.CustomEnvironment1 = &customEnvironment1
+		u.Type = CustomEnvironmentUnionTypeCustomEnvironment1
 		return nil
 	}
 
@@ -2485,7 +2875,7 @@ func (o *CreateDeploymentGitSource11) GetProjectID() float64 {
 type CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type string
 
 const (
-	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithub CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github"
+	CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithubCustomHost CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github-custom-host"
 )
 
 func (e CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) ToPointer() *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
@@ -2497,7 +2887,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "github":
+	case "github-custom-host":
 		*e = CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type(v)
 		return nil
 	default:
@@ -2794,7 +3184,7 @@ func (e *CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
-type CreateDeploymentGitSource6 struct {
+type GitSource6 struct {
 	Type          CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type `json:"type"`
 	WorkspaceUUID *string                                                                         `json:"workspaceUuid,omitempty"`
 	RepoUUID      string                                                                          `json:"repoUuid"`
@@ -2803,42 +3193,42 @@ type CreateDeploymentGitSource6 struct {
 	PrID          *float64                                                                        `json:"prId,omitempty"`
 }
 
-func (o *CreateDeploymentGitSource6) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type {
+func (o *GitSource6) GetType() CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type {
 	if o == nil {
 		return CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody6Type("")
 	}
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSource6) GetWorkspaceUUID() *string {
+func (o *GitSource6) GetWorkspaceUUID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceUUID
 }
 
-func (o *CreateDeploymentGitSource6) GetRepoUUID() string {
+func (o *GitSource6) GetRepoUUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.RepoUUID
 }
 
-func (o *CreateDeploymentGitSource6) GetRef() *string {
+func (o *GitSource6) GetRef() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSource6) GetSha() *string {
+func (o *GitSource6) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSource6) GetPrID() *float64 {
+func (o *GitSource6) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -3404,7 +3794,7 @@ const (
 	CreateDeploymentGitSourceUnionTypeGitSource3                  CreateDeploymentGitSourceUnionType = "gitSource_3"
 	CreateDeploymentGitSourceUnionTypeGitSource4                  CreateDeploymentGitSourceUnionType = "gitSource_4"
 	CreateDeploymentGitSourceUnionTypeGitSource5                  CreateDeploymentGitSourceUnionType = "gitSource_5"
-	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_6"
+	CreateDeploymentGitSourceUnionTypeGitSource6                  CreateDeploymentGitSourceUnionType = "gitSource_6"
 	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource7  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_7"
 	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource8  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_8"
 	CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource9  CreateDeploymentGitSourceUnionType = "createDeployment_gitSource_9"
@@ -3419,7 +3809,7 @@ type CreateDeploymentGitSource struct {
 	GitSource3                  *GitSource3
 	GitSource4                  *GitSource4
 	GitSource5                  *GitSource5
-	CreateDeploymentGitSource6  *CreateDeploymentGitSource6
+	GitSource6                  *GitSource6
 	CreateDeploymentGitSource7  *CreateDeploymentGitSource7
 	CreateDeploymentGitSource8  *CreateDeploymentGitSource8
 	CreateDeploymentGitSource9  *CreateDeploymentGitSource9
@@ -3475,12 +3865,12 @@ func CreateCreateDeploymentGitSourceGitSource5(gitSource5 GitSource5) CreateDepl
 	}
 }
 
-func CreateCreateDeploymentGitSourceCreateDeploymentGitSource6(createDeploymentGitSource6 CreateDeploymentGitSource6) CreateDeploymentGitSource {
-	typ := CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6
+func CreateCreateDeploymentGitSourceGitSource6(gitSource6 GitSource6) CreateDeploymentGitSource {
+	typ := CreateDeploymentGitSourceUnionTypeGitSource6
 
 	return CreateDeploymentGitSource{
-		CreateDeploymentGitSource6: &createDeploymentGitSource6,
-		Type:                       typ,
+		GitSource6: &gitSource6,
+		Type:       typ,
 	}
 }
 
@@ -3582,10 +3972,10 @@ func (u *CreateDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createDeploymentGitSource6 CreateDeploymentGitSource6 = CreateDeploymentGitSource6{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSource6, "", true, true); err == nil {
-		u.CreateDeploymentGitSource6 = &createDeploymentGitSource6
-		u.Type = CreateDeploymentGitSourceUnionTypeCreateDeploymentGitSource6
+	var gitSource6 GitSource6 = GitSource6{}
+	if err := utils.UnmarshalJSON(data, &gitSource6, "", true, true); err == nil {
+		u.GitSource6 = &gitSource6
+		u.Type = CreateDeploymentGitSourceUnionTypeGitSource6
 		return nil
 	}
 
@@ -3648,8 +4038,8 @@ func (u CreateDeploymentGitSource) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.GitSource5, "", true)
 	}
 
-	if u.CreateDeploymentGitSource6 != nil {
-		return utils.MarshalJSON(u.CreateDeploymentGitSource6, "", true)
+	if u.GitSource6 != nil {
+		return utils.MarshalJSON(u.GitSource6, "", true)
 	}
 
 	if u.CreateDeploymentGitSource7 != nil {

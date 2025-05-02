@@ -983,25 +983,319 @@ func (o *CancelDeploymentCustomEnvironment2) GetID() string {
 	return o.ID
 }
 
-type CancelDeploymentCustomEnvironment1 struct {
-}
-
+// CancelDeploymentCustomEnvironmentType - The type of environment (production, preview, or development)
 type CancelDeploymentCustomEnvironmentType string
 
 const (
-	CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment1 CancelDeploymentCustomEnvironmentType = "cancelDeployment_customEnvironment_1"
-	CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment2 CancelDeploymentCustomEnvironmentType = "cancelDeployment_customEnvironment_2"
+	CancelDeploymentCustomEnvironmentTypeProduction  CancelDeploymentCustomEnvironmentType = "production"
+	CancelDeploymentCustomEnvironmentTypePreview     CancelDeploymentCustomEnvironmentType = "preview"
+	CancelDeploymentCustomEnvironmentTypeDevelopment CancelDeploymentCustomEnvironmentType = "development"
+)
+
+func (e CancelDeploymentCustomEnvironmentType) ToPointer() *CancelDeploymentCustomEnvironmentType {
+	return &e
+}
+func (e *CancelDeploymentCustomEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = CancelDeploymentCustomEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentCustomEnvironmentType: %v", v)
+	}
+}
+
+// CancelDeploymentCustomEnvironmentDeploymentsType - The type of matching to perform
+type CancelDeploymentCustomEnvironmentDeploymentsType string
+
+const (
+	CancelDeploymentCustomEnvironmentDeploymentsTypeStartsWith CancelDeploymentCustomEnvironmentDeploymentsType = "startsWith"
+	CancelDeploymentCustomEnvironmentDeploymentsTypeEquals     CancelDeploymentCustomEnvironmentDeploymentsType = "equals"
+	CancelDeploymentCustomEnvironmentDeploymentsTypeEndsWith   CancelDeploymentCustomEnvironmentDeploymentsType = "endsWith"
+)
+
+func (e CancelDeploymentCustomEnvironmentDeploymentsType) ToPointer() *CancelDeploymentCustomEnvironmentDeploymentsType {
+	return &e
+}
+func (e *CancelDeploymentCustomEnvironmentDeploymentsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "startsWith":
+		fallthrough
+	case "equals":
+		fallthrough
+	case "endsWith":
+		*e = CancelDeploymentCustomEnvironmentDeploymentsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentCustomEnvironmentDeploymentsType: %v", v)
+	}
+}
+
+// CancelDeploymentCustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type CancelDeploymentCustomEnvironmentBranchMatcher struct {
+	// The type of matching to perform
+	Type CancelDeploymentCustomEnvironmentDeploymentsType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *CancelDeploymentCustomEnvironmentBranchMatcher) GetType() CancelDeploymentCustomEnvironmentDeploymentsType {
+	if o == nil {
+		return CancelDeploymentCustomEnvironmentDeploymentsType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentCustomEnvironmentBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// CancelDeploymentCustomEnvironmentVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type CancelDeploymentCustomEnvironmentVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *CancelDeploymentCustomEnvironmentVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentCustomEnvironmentVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *CancelDeploymentCustomEnvironmentVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *CancelDeploymentCustomEnvironmentVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// CancelDeploymentCustomEnvironmentDomains - List of domains associated with this environment
+type CancelDeploymentCustomEnvironmentDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []CancelDeploymentCustomEnvironmentVerification `json:"verification,omitempty"`
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *CancelDeploymentCustomEnvironmentDomains) GetVerification() []CancelDeploymentCustomEnvironmentVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// CancelDeploymentCustomEnvironment1 - Internal representation of a custom environment with all required properties
+type CancelDeploymentCustomEnvironment1 struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type CancelDeploymentCustomEnvironmentType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *CancelDeploymentCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []CancelDeploymentCustomEnvironmentDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetType() CancelDeploymentCustomEnvironmentType {
+	if o == nil {
+		return CancelDeploymentCustomEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetBranchMatcher() *CancelDeploymentCustomEnvironmentBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetDomains() []CancelDeploymentCustomEnvironmentDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CancelDeploymentCustomEnvironment1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+type CancelDeploymentCustomEnvironmentUnionType string
+
+const (
+	CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment1 CancelDeploymentCustomEnvironmentUnionType = "cancelDeployment_customEnvironment_1"
+	CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment2 CancelDeploymentCustomEnvironmentUnionType = "cancelDeployment_customEnvironment_2"
 )
 
 type CancelDeploymentCustomEnvironment struct {
 	CancelDeploymentCustomEnvironment1 *CancelDeploymentCustomEnvironment1
 	CancelDeploymentCustomEnvironment2 *CancelDeploymentCustomEnvironment2
 
-	Type CancelDeploymentCustomEnvironmentType
+	Type CancelDeploymentCustomEnvironmentUnionType
 }
 
 func CreateCancelDeploymentCustomEnvironmentCancelDeploymentCustomEnvironment1(cancelDeploymentCustomEnvironment1 CancelDeploymentCustomEnvironment1) CancelDeploymentCustomEnvironment {
-	typ := CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment1
+	typ := CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment1
 
 	return CancelDeploymentCustomEnvironment{
 		CancelDeploymentCustomEnvironment1: &cancelDeploymentCustomEnvironment1,
@@ -1010,7 +1304,7 @@ func CreateCancelDeploymentCustomEnvironmentCancelDeploymentCustomEnvironment1(c
 }
 
 func CreateCancelDeploymentCustomEnvironmentCancelDeploymentCustomEnvironment2(cancelDeploymentCustomEnvironment2 CancelDeploymentCustomEnvironment2) CancelDeploymentCustomEnvironment {
-	typ := CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment2
+	typ := CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment2
 
 	return CancelDeploymentCustomEnvironment{
 		CancelDeploymentCustomEnvironment2: &cancelDeploymentCustomEnvironment2,
@@ -1020,17 +1314,17 @@ func CreateCancelDeploymentCustomEnvironmentCancelDeploymentCustomEnvironment2(c
 
 func (u *CancelDeploymentCustomEnvironment) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentCustomEnvironment1 CancelDeploymentCustomEnvironment1 = CancelDeploymentCustomEnvironment1{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentCustomEnvironment1, "", true, true); err == nil {
-		u.CancelDeploymentCustomEnvironment1 = &cancelDeploymentCustomEnvironment1
-		u.Type = CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment1
-		return nil
-	}
-
 	var cancelDeploymentCustomEnvironment2 CancelDeploymentCustomEnvironment2 = CancelDeploymentCustomEnvironment2{}
 	if err := utils.UnmarshalJSON(data, &cancelDeploymentCustomEnvironment2, "", true, true); err == nil {
 		u.CancelDeploymentCustomEnvironment2 = &cancelDeploymentCustomEnvironment2
-		u.Type = CancelDeploymentCustomEnvironmentTypeCancelDeploymentCustomEnvironment2
+		u.Type = CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment2
+		return nil
+	}
+
+	var cancelDeploymentCustomEnvironment1 CancelDeploymentCustomEnvironment1 = CancelDeploymentCustomEnvironment1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentCustomEnvironment1, "", true, true); err == nil {
+		u.CancelDeploymentCustomEnvironment1 = &cancelDeploymentCustomEnvironment1
+		u.Type = CancelDeploymentCustomEnvironmentUnionTypeCancelDeploymentCustomEnvironment1
 		return nil
 	}
 
@@ -1307,7 +1601,7 @@ func (o *GitSource11) GetProjectID() float64 {
 type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type string
 
 const (
-	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithub CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github"
+	CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10TypeGithubCustomHost CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type = "github-custom-host"
 )
 
 func (e CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type) ToPointer() *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type {
@@ -1319,7 +1613,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 		return err
 	}
 	switch v {
-	case "github":
+	case "github-custom-host":
 		*e = CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type(v)
 		return nil
 	default:
@@ -1616,7 +1910,7 @@ func (e *CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 	}
 }
 
-type GitSource6 struct {
+type CancelDeploymentGitSource6 struct {
 	Type          CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType `json:"type"`
 	WorkspaceUUID *string                                                                        `json:"workspaceUuid,omitempty"`
 	RepoUUID      string                                                                         `json:"repoUuid"`
@@ -1625,42 +1919,42 @@ type GitSource6 struct {
 	PrID          *float64                                                                       `json:"prId,omitempty"`
 }
 
-func (o *GitSource6) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
+func (o *CancelDeploymentGitSource6) GetType() CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType {
 	if o == nil {
 		return CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType("")
 	}
 	return o.Type
 }
 
-func (o *GitSource6) GetWorkspaceUUID() *string {
+func (o *CancelDeploymentGitSource6) GetWorkspaceUUID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceUUID
 }
 
-func (o *GitSource6) GetRepoUUID() string {
+func (o *CancelDeploymentGitSource6) GetRepoUUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.RepoUUID
 }
 
-func (o *GitSource6) GetRef() *string {
+func (o *CancelDeploymentGitSource6) GetRef() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Ref
 }
 
-func (o *GitSource6) GetSha() *string {
+func (o *CancelDeploymentGitSource6) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
 }
 
-func (o *GitSource6) GetPrID() *float64 {
+func (o *CancelDeploymentGitSource6) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -2226,7 +2520,7 @@ const (
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource3 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource4 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_4"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource5 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_5"
-	CancelDeploymentGitSourceUnionTypeGitSource6                 CancelDeploymentGitSourceUnionType = "gitSource_6"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource6 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_6"
 	CancelDeploymentGitSourceUnionTypeGitSource7                 CancelDeploymentGitSourceUnionType = "gitSource_7"
 	CancelDeploymentGitSourceUnionTypeGitSource8                 CancelDeploymentGitSourceUnionType = "gitSource_8"
 	CancelDeploymentGitSourceUnionTypeGitSource9                 CancelDeploymentGitSourceUnionType = "gitSource_9"
@@ -2241,7 +2535,7 @@ type CancelDeploymentGitSource struct {
 	CancelDeploymentGitSource3 *CancelDeploymentGitSource3
 	CancelDeploymentGitSource4 *CancelDeploymentGitSource4
 	CancelDeploymentGitSource5 *CancelDeploymentGitSource5
-	GitSource6                 *GitSource6
+	CancelDeploymentGitSource6 *CancelDeploymentGitSource6
 	GitSource7                 *GitSource7
 	GitSource8                 *GitSource8
 	GitSource9                 *GitSource9
@@ -2297,12 +2591,12 @@ func CreateCancelDeploymentGitSourceCancelDeploymentGitSource5(cancelDeploymentG
 	}
 }
 
-func CreateCancelDeploymentGitSourceGitSource6(gitSource6 GitSource6) CancelDeploymentGitSource {
-	typ := CancelDeploymentGitSourceUnionTypeGitSource6
+func CreateCancelDeploymentGitSourceCancelDeploymentGitSource6(cancelDeploymentGitSource6 CancelDeploymentGitSource6) CancelDeploymentGitSource {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource6
 
 	return CancelDeploymentGitSource{
-		GitSource6: &gitSource6,
-		Type:       typ,
+		CancelDeploymentGitSource6: &cancelDeploymentGitSource6,
+		Type:                       typ,
 	}
 }
 
@@ -2404,10 +2698,10 @@ func (u *CancelDeploymentGitSource) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var gitSource6 GitSource6 = GitSource6{}
-	if err := utils.UnmarshalJSON(data, &gitSource6, "", true, true); err == nil {
-		u.GitSource6 = &gitSource6
-		u.Type = CancelDeploymentGitSourceUnionTypeGitSource6
+	var cancelDeploymentGitSource6 CancelDeploymentGitSource6 = CancelDeploymentGitSource6{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSource6, "", true, true); err == nil {
+		u.CancelDeploymentGitSource6 = &cancelDeploymentGitSource6
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSource6
 		return nil
 	}
 
@@ -2470,8 +2764,8 @@ func (u CancelDeploymentGitSource) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CancelDeploymentGitSource5, "", true)
 	}
 
-	if u.GitSource6 != nil {
-		return utils.MarshalJSON(u.GitSource6, "", true)
+	if u.CancelDeploymentGitSource6 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSource6, "", true)
 	}
 
 	if u.GitSource7 != nil {

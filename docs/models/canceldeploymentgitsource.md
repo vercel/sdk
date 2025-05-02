@@ -52,10 +52,10 @@ const value: models.CancelDeploymentGitSource5 = {
 };
 ```
 
-### `models.GitSource6`
+### `models.CancelDeploymentGitSource6`
 
 ```typescript
-const value: models.GitSource6 = {
+const value: models.CancelDeploymentGitSource6 = {
   type: "bitbucket",
   repoUuid: "<id>",
 };
@@ -97,7 +97,7 @@ const value: models.GitSource9 = {
 
 ```typescript
 const value: models.GitSource10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "triangular-farm.org",
   ref: "<value>",
   sha: "<value>",

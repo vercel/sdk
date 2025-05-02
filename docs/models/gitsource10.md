@@ -6,7 +6,7 @@
 import { GitSource10 } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: GitSource10 = {
-  type: "github",
+  type: "github-custom-host",
   host: "elastic-yogurt.biz",
   ref: "<value>",
   sha: "<value>",

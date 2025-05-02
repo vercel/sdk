@@ -11,7 +11,7 @@ let value: PutFirewallConfigResponseBody = {
     projectKey: "<value>",
     id: "<id>",
     version: 3941.34,
-    updatedAt: "1745949734459",
+    updatedAt: "1746122547661",
     firewallEnabled: false,
     crs: {
       sd: {

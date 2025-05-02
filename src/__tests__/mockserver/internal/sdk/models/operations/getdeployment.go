@@ -263,7 +263,301 @@ func (o *GetDeploymentCustomEnvironment2) GetID() string {
 	return o.ID
 }
 
+// GetDeploymentCustomEnvironmentType - The type of environment (production, preview, or development)
+type GetDeploymentCustomEnvironmentType string
+
+const (
+	GetDeploymentCustomEnvironmentTypeProduction  GetDeploymentCustomEnvironmentType = "production"
+	GetDeploymentCustomEnvironmentTypePreview     GetDeploymentCustomEnvironmentType = "preview"
+	GetDeploymentCustomEnvironmentTypeDevelopment GetDeploymentCustomEnvironmentType = "development"
+)
+
+func (e GetDeploymentCustomEnvironmentType) ToPointer() *GetDeploymentCustomEnvironmentType {
+	return &e
+}
+func (e *GetDeploymentCustomEnvironmentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = GetDeploymentCustomEnvironmentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentCustomEnvironmentType: %v", v)
+	}
+}
+
+// GetDeploymentCustomEnvironmentDeploymentsResponseType - The type of matching to perform
+type GetDeploymentCustomEnvironmentDeploymentsResponseType string
+
+const (
+	GetDeploymentCustomEnvironmentDeploymentsResponseTypeStartsWith GetDeploymentCustomEnvironmentDeploymentsResponseType = "startsWith"
+	GetDeploymentCustomEnvironmentDeploymentsResponseTypeEquals     GetDeploymentCustomEnvironmentDeploymentsResponseType = "equals"
+	GetDeploymentCustomEnvironmentDeploymentsResponseTypeEndsWith   GetDeploymentCustomEnvironmentDeploymentsResponseType = "endsWith"
+)
+
+func (e GetDeploymentCustomEnvironmentDeploymentsResponseType) ToPointer() *GetDeploymentCustomEnvironmentDeploymentsResponseType {
+	return &e
+}
+func (e *GetDeploymentCustomEnvironmentDeploymentsResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "startsWith":
+		fallthrough
+	case "equals":
+		fallthrough
+	case "endsWith":
+		*e = GetDeploymentCustomEnvironmentDeploymentsResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentCustomEnvironmentDeploymentsResponseType: %v", v)
+	}
+}
+
+// GetDeploymentCustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type GetDeploymentCustomEnvironmentBranchMatcher struct {
+	// The type of matching to perform
+	Type GetDeploymentCustomEnvironmentDeploymentsResponseType `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *GetDeploymentCustomEnvironmentBranchMatcher) GetType() GetDeploymentCustomEnvironmentDeploymentsResponseType {
+	if o == nil {
+		return GetDeploymentCustomEnvironmentDeploymentsResponseType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironmentBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// GetDeploymentCustomEnvironmentVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type GetDeploymentCustomEnvironmentVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *GetDeploymentCustomEnvironmentVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironmentVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *GetDeploymentCustomEnvironmentVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *GetDeploymentCustomEnvironmentVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// GetDeploymentCustomEnvironmentDomains - List of domains associated with this environment
+type GetDeploymentCustomEnvironmentDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []GetDeploymentCustomEnvironmentVerification `json:"verification,omitempty"`
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *GetDeploymentCustomEnvironmentDomains) GetVerification() []GetDeploymentCustomEnvironmentVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// GetDeploymentCustomEnvironment1 - Internal representation of a custom environment with all required properties
 type GetDeploymentCustomEnvironment1 struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type GetDeploymentCustomEnvironmentType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *GetDeploymentCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []GetDeploymentCustomEnvironmentDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetType() GetDeploymentCustomEnvironmentType {
+	if o == nil {
+		return GetDeploymentCustomEnvironmentType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetBranchMatcher() *GetDeploymentCustomEnvironmentBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetDomains() []GetDeploymentCustomEnvironmentDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetDeploymentCustomEnvironment1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 type ResponseBodyCustomEnvironmentType string
@@ -300,17 +594,17 @@ func CreateResponseBodyCustomEnvironmentGetDeploymentCustomEnvironment2(getDeplo
 
 func (u *ResponseBodyCustomEnvironment) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentCustomEnvironment1 GetDeploymentCustomEnvironment1 = GetDeploymentCustomEnvironment1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment1, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironment1 = &getDeploymentCustomEnvironment1
-		u.Type = ResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironment1
-		return nil
-	}
-
 	var getDeploymentCustomEnvironment2 GetDeploymentCustomEnvironment2 = GetDeploymentCustomEnvironment2{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment2, "", true, true); err == nil {
 		u.GetDeploymentCustomEnvironment2 = &getDeploymentCustomEnvironment2
 		u.Type = ResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironment2
+		return nil
+	}
+
+	var getDeploymentCustomEnvironment1 GetDeploymentCustomEnvironment1 = GetDeploymentCustomEnvironment1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment1, "", true, true); err == nil {
+		u.GetDeploymentCustomEnvironment1 = &getDeploymentCustomEnvironment1
+		u.Type = ResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironment1
 		return nil
 	}
 
@@ -648,7 +942,7 @@ func (o *GetDeploymentGitSource11) GetProjectID() float64 {
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type = "github"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210TypeGithubCustomHost GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type = "github-custom-host"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type {
@@ -660,7 +954,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "github":
+	case "github-custom-host":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type(v)
 		return nil
 	default:
@@ -3412,7 +3706,301 @@ func (o *GetDeploymentCustomEnvironmentDeployments2) GetID() string {
 	return o.ID
 }
 
+// GetDeploymentCustomEnvironmentDeploymentsType - The type of environment (production, preview, or development)
+type GetDeploymentCustomEnvironmentDeploymentsType string
+
+const (
+	GetDeploymentCustomEnvironmentDeploymentsTypeProduction  GetDeploymentCustomEnvironmentDeploymentsType = "production"
+	GetDeploymentCustomEnvironmentDeploymentsTypePreview     GetDeploymentCustomEnvironmentDeploymentsType = "preview"
+	GetDeploymentCustomEnvironmentDeploymentsTypeDevelopment GetDeploymentCustomEnvironmentDeploymentsType = "development"
+)
+
+func (e GetDeploymentCustomEnvironmentDeploymentsType) ToPointer() *GetDeploymentCustomEnvironmentDeploymentsType {
+	return &e
+}
+func (e *GetDeploymentCustomEnvironmentDeploymentsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = GetDeploymentCustomEnvironmentDeploymentsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentCustomEnvironmentDeploymentsType: %v", v)
+	}
+}
+
+// GetDeploymentCustomEnvironmentDeploymentsResponse200Type - The type of matching to perform
+type GetDeploymentCustomEnvironmentDeploymentsResponse200Type string
+
+const (
+	GetDeploymentCustomEnvironmentDeploymentsResponse200TypeStartsWith GetDeploymentCustomEnvironmentDeploymentsResponse200Type = "startsWith"
+	GetDeploymentCustomEnvironmentDeploymentsResponse200TypeEquals     GetDeploymentCustomEnvironmentDeploymentsResponse200Type = "equals"
+	GetDeploymentCustomEnvironmentDeploymentsResponse200TypeEndsWith   GetDeploymentCustomEnvironmentDeploymentsResponse200Type = "endsWith"
+)
+
+func (e GetDeploymentCustomEnvironmentDeploymentsResponse200Type) ToPointer() *GetDeploymentCustomEnvironmentDeploymentsResponse200Type {
+	return &e
+}
+func (e *GetDeploymentCustomEnvironmentDeploymentsResponse200Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "startsWith":
+		fallthrough
+	case "equals":
+		fallthrough
+	case "endsWith":
+		*e = GetDeploymentCustomEnvironmentDeploymentsResponse200Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentCustomEnvironmentDeploymentsResponse200Type: %v", v)
+	}
+}
+
+// GetDeploymentCustomEnvironmentDeploymentsBranchMatcher - Configuration for matching git branches to this environment
+type GetDeploymentCustomEnvironmentDeploymentsBranchMatcher struct {
+	// The type of matching to perform
+	Type GetDeploymentCustomEnvironmentDeploymentsResponse200Type `json:"type"`
+	// The pattern to match against branch names
+	Pattern string `json:"pattern"`
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsBranchMatcher) GetType() GetDeploymentCustomEnvironmentDeploymentsResponse200Type {
+	if o == nil {
+		return GetDeploymentCustomEnvironmentDeploymentsResponse200Type("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsBranchMatcher) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+// GetDeploymentCustomEnvironmentDeploymentsVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type GetDeploymentCustomEnvironmentDeploymentsVerification struct {
+	Type   string `json:"type"`
+	Domain string `json:"domain"`
+	Value  string `json:"value"`
+	Reason string `json:"reason"`
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsVerification) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsVerification) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsVerification) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsVerification) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+// GetDeploymentCustomEnvironmentDeploymentsDomains - List of domains associated with this environment
+type GetDeploymentCustomEnvironmentDeploymentsDomains struct {
+	Name                string   `json:"name"`
+	ApexName            string   `json:"apexName"`
+	ProjectID           string   `json:"projectId"`
+	Redirect            *string  `json:"redirect,omitempty"`
+	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
+	GitBranch           *string  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
+	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+	Verified bool `json:"verified"`
+	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+	Verification []GetDeploymentCustomEnvironmentDeploymentsVerification `json:"verification,omitempty"`
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetApexName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ApexName
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetCustomEnvironmentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentID
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetVerified() bool {
+	if o == nil {
+		return false
+	}
+	return o.Verified
+}
+
+func (o *GetDeploymentCustomEnvironmentDeploymentsDomains) GetVerification() []GetDeploymentCustomEnvironmentDeploymentsVerification {
+	if o == nil {
+		return nil
+	}
+	return o.Verification
+}
+
+// GetDeploymentCustomEnvironmentDeployments1 - Internal representation of a custom environment with all required properties
 type GetDeploymentCustomEnvironmentDeployments1 struct {
+	// Unique identifier for the custom environment (format: env_*)
+	ID string `json:"id"`
+	// URL-friendly name of the environment
+	Slug string `json:"slug"`
+	// The type of environment (production, preview, or development)
+	Type GetDeploymentCustomEnvironmentDeploymentsType `json:"type"`
+	// Optional description of the environment's purpose
+	Description *string `json:"description,omitempty"`
+	// Configuration for matching git branches to this environment
+	BranchMatcher *GetDeploymentCustomEnvironmentDeploymentsBranchMatcher `json:"branchMatcher,omitempty"`
+	// List of domains associated with this environment
+	Domains []GetDeploymentCustomEnvironmentDeploymentsDomains `json:"domains,omitempty"`
+	// List of aliases for the current deployment
+	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
+	// Timestamp when the environment was created
+	CreatedAt float64 `json:"createdAt"`
+	// Timestamp when the environment was last updated
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetType() GetDeploymentCustomEnvironmentDeploymentsType {
+	if o == nil {
+		return GetDeploymentCustomEnvironmentDeploymentsType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetBranchMatcher() *GetDeploymentCustomEnvironmentDeploymentsBranchMatcher {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetDomains() []GetDeploymentCustomEnvironmentDeploymentsDomains {
+	if o == nil {
+		return nil
+	}
+	return o.Domains
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetCurrentDeploymentAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CurrentDeploymentAliases
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetDeploymentCustomEnvironmentDeployments1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
 }
 
 type GetDeploymentResponseBodyCustomEnvironmentType string
@@ -3449,17 +4037,17 @@ func CreateGetDeploymentResponseBodyCustomEnvironmentGetDeploymentCustomEnvironm
 
 func (u *GetDeploymentResponseBodyCustomEnvironment) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentCustomEnvironmentDeployments1 GetDeploymentCustomEnvironmentDeployments1 = GetDeploymentCustomEnvironmentDeployments1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironmentDeployments1, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironmentDeployments1 = &getDeploymentCustomEnvironmentDeployments1
-		u.Type = GetDeploymentResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironmentDeployments1
-		return nil
-	}
-
 	var getDeploymentCustomEnvironmentDeployments2 GetDeploymentCustomEnvironmentDeployments2 = GetDeploymentCustomEnvironmentDeployments2{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironmentDeployments2, "", true, true); err == nil {
 		u.GetDeploymentCustomEnvironmentDeployments2 = &getDeploymentCustomEnvironmentDeployments2
 		u.Type = GetDeploymentResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironmentDeployments2
+		return nil
+	}
+
+	var getDeploymentCustomEnvironmentDeployments1 GetDeploymentCustomEnvironmentDeployments1 = GetDeploymentCustomEnvironmentDeployments1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironmentDeployments1, "", true, true); err == nil {
+		u.GetDeploymentCustomEnvironmentDeployments1 = &getDeploymentCustomEnvironmentDeployments1
+		u.Type = GetDeploymentResponseBodyCustomEnvironmentTypeGetDeploymentCustomEnvironmentDeployments1
 		return nil
 	}
 
@@ -3797,7 +4385,7 @@ func (o *GetDeploymentGitSourceDeployments11) GetProjectID() float64 {
 type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type string
 
 const (
-	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110TypeGithub GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type = "github"
+	GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110TypeGithubCustomHost GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type = "github-custom-host"
 )
 
 func (e GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type) ToPointer() *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type {
@@ -3809,7 +4397,7 @@ func (e *GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 		return err
 	}
 	switch v {
-	case "github":
+	case "github-custom-host":
 		*e = GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type(v)
 		return nil
 	default:

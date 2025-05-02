@@ -5465,3 +5465,21 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: certs
+  - workflowId: patch_/aliases/{id}/protection-bypass
+    steps:
+      - stepId: test
+        operationId: patch_/aliases/{id}/protection-bypass
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "key": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel

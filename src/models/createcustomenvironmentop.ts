@@ -73,7 +73,124 @@ export type CreateCustomEnvironmentRequest = {
   requestBody?: CreateCustomEnvironmentRequestBody | undefined;
 };
 
-export type CreateCustomEnvironmentResponseBody = {};
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const CreateCustomEnvironmentEnvironmentType = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type CreateCustomEnvironmentEnvironmentType = ClosedEnum<
+  typeof CreateCustomEnvironmentEnvironmentType
+>;
+
+/**
+ * The type of matching to perform
+ */
+export const CreateCustomEnvironmentEnvironmentResponseType = {
+  EndsWith: "endsWith",
+  StartsWith: "startsWith",
+  Equals: "equals",
+} as const;
+/**
+ * The type of matching to perform
+ */
+export type CreateCustomEnvironmentEnvironmentResponseType = ClosedEnum<
+  typeof CreateCustomEnvironmentEnvironmentResponseType
+>;
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type CreateCustomEnvironmentBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type: CreateCustomEnvironmentEnvironmentResponseType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type CreateCustomEnvironmentVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type CreateCustomEnvironmentDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?: Array<CreateCustomEnvironmentVerification> | undefined;
+};
+
+/**
+ * Internal representation of a custom environment with all required properties
+ */
+export type CreateCustomEnvironmentResponseBody = {
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
+  /**
+   * The type of environment (production, preview, or development)
+   */
+  type: CreateCustomEnvironmentEnvironmentType;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?: CreateCustomEnvironmentBranchMatcher | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<CreateCustomEnvironmentDomains> | undefined;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
+};
 
 /** @internal */
 export const CreateCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
@@ -292,21 +409,326 @@ export function createCustomEnvironmentRequestFromJSON(
 }
 
 /** @internal */
+export const CreateCustomEnvironmentEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> = z.nativeEnum(
+    CreateCustomEnvironmentEnvironmentType,
+  );
+
+/** @internal */
+export const CreateCustomEnvironmentEnvironmentType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> =
+    CreateCustomEnvironmentEnvironmentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomEnvironmentEnvironmentType$ {
+  /** @deprecated use `CreateCustomEnvironmentEnvironmentType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCustomEnvironmentEnvironmentType$inboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentEnvironmentType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCustomEnvironmentEnvironmentType$outboundSchema;
+}
+
+/** @internal */
+export const CreateCustomEnvironmentEnvironmentResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> = z
+    .nativeEnum(CreateCustomEnvironmentEnvironmentResponseType);
+
+/** @internal */
+export const CreateCustomEnvironmentEnvironmentResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> =
+    CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomEnvironmentEnvironmentResponseType$ {
+  /** @deprecated use `CreateCustomEnvironmentEnvironmentResponseType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentEnvironmentResponseType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCustomEnvironmentEnvironmentResponseType$outboundSchema;
+}
+
+/** @internal */
+export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
+  CreateCustomEnvironmentBranchMatcher,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
+  pattern: z.string(),
+});
+
+/** @internal */
+export type CreateCustomEnvironmentBranchMatcher$Outbound = {
+  type: string;
+  pattern: string;
+};
+
+/** @internal */
+export const CreateCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
+  CreateCustomEnvironmentBranchMatcher$Outbound,
+  z.ZodTypeDef,
+  CreateCustomEnvironmentBranchMatcher
+> = z.object({
+  type: CreateCustomEnvironmentEnvironmentResponseType$outboundSchema,
+  pattern: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomEnvironmentBranchMatcher$ {
+  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCustomEnvironmentBranchMatcher$inboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCustomEnvironmentBranchMatcher$outboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$Outbound` instead. */
+  export type Outbound = CreateCustomEnvironmentBranchMatcher$Outbound;
+}
+
+export function createCustomEnvironmentBranchMatcherToJSON(
+  createCustomEnvironmentBranchMatcher: CreateCustomEnvironmentBranchMatcher,
+): string {
+  return JSON.stringify(
+    CreateCustomEnvironmentBranchMatcher$outboundSchema.parse(
+      createCustomEnvironmentBranchMatcher,
+    ),
+  );
+}
+
+export function createCustomEnvironmentBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCustomEnvironmentBranchMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateCustomEnvironmentBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCustomEnvironmentBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCustomEnvironmentVerification$inboundSchema: z.ZodType<
+  CreateCustomEnvironmentVerification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/** @internal */
+export type CreateCustomEnvironmentVerification$Outbound = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/** @internal */
+export const CreateCustomEnvironmentVerification$outboundSchema: z.ZodType<
+  CreateCustomEnvironmentVerification$Outbound,
+  z.ZodTypeDef,
+  CreateCustomEnvironmentVerification
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomEnvironmentVerification$ {
+  /** @deprecated use `CreateCustomEnvironmentVerification$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCustomEnvironmentVerification$inboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentVerification$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCustomEnvironmentVerification$outboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentVerification$Outbound` instead. */
+  export type Outbound = CreateCustomEnvironmentVerification$Outbound;
+}
+
+export function createCustomEnvironmentVerificationToJSON(
+  createCustomEnvironmentVerification: CreateCustomEnvironmentVerification,
+): string {
+  return JSON.stringify(
+    CreateCustomEnvironmentVerification$outboundSchema.parse(
+      createCustomEnvironmentVerification,
+    ),
+  );
+}
+
+export function createCustomEnvironmentVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCustomEnvironmentVerification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateCustomEnvironmentVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCustomEnvironmentVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCustomEnvironmentDomains$inboundSchema: z.ZodType<
+  CreateCustomEnvironmentDomains,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(
+    z.lazy(() => CreateCustomEnvironmentVerification$inboundSchema),
+  ).optional(),
+});
+
+/** @internal */
+export type CreateCustomEnvironmentDomains$Outbound = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  verified: boolean;
+  verification?:
+    | Array<CreateCustomEnvironmentVerification$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const CreateCustomEnvironmentDomains$outboundSchema: z.ZodType<
+  CreateCustomEnvironmentDomains$Outbound,
+  z.ZodTypeDef,
+  CreateCustomEnvironmentDomains
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(
+    z.lazy(() => CreateCustomEnvironmentVerification$outboundSchema),
+  ).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCustomEnvironmentDomains$ {
+  /** @deprecated use `CreateCustomEnvironmentDomains$inboundSchema` instead. */
+  export const inboundSchema = CreateCustomEnvironmentDomains$inboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentDomains$outboundSchema` instead. */
+  export const outboundSchema = CreateCustomEnvironmentDomains$outboundSchema;
+  /** @deprecated use `CreateCustomEnvironmentDomains$Outbound` instead. */
+  export type Outbound = CreateCustomEnvironmentDomains$Outbound;
+}
+
+export function createCustomEnvironmentDomainsToJSON(
+  createCustomEnvironmentDomains: CreateCustomEnvironmentDomains,
+): string {
+  return JSON.stringify(
+    CreateCustomEnvironmentDomains$outboundSchema.parse(
+      createCustomEnvironmentDomains,
+    ),
+  );
+}
+
+export function createCustomEnvironmentDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCustomEnvironmentDomains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCustomEnvironmentDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCustomEnvironmentDomains' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   CreateCustomEnvironmentResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: CreateCustomEnvironmentEnvironmentType$inboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() =>
+    CreateCustomEnvironmentBranchMatcher$inboundSchema
+  ).optional(),
+  domains: z.array(z.lazy(() => CreateCustomEnvironmentDomains$inboundSchema))
+    .optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /** @internal */
-export type CreateCustomEnvironmentResponseBody$Outbound = {};
+export type CreateCustomEnvironmentResponseBody$Outbound = {
+  id: string;
+  slug: string;
+  type: string;
+  description?: string | undefined;
+  branchMatcher?: CreateCustomEnvironmentBranchMatcher$Outbound | undefined;
+  domains?: Array<CreateCustomEnvironmentDomains$Outbound> | undefined;
+  currentDeploymentAliases?: Array<string> | undefined;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const CreateCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
   CreateCustomEnvironmentResponseBody$Outbound,
   z.ZodTypeDef,
   CreateCustomEnvironmentResponseBody
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: CreateCustomEnvironmentEnvironmentType$outboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() =>
+    CreateCustomEnvironmentBranchMatcher$outboundSchema
+  ).optional(),
+  domains: z.array(z.lazy(() => CreateCustomEnvironmentDomains$outboundSchema))
+    .optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /**
  * @internal

@@ -15,10 +15,24 @@ let value: EightyThree = {
   project: {
     id: "<id>",
     oldConnectConfigurations: [
-      {},
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: false,
+        createdAt: 2859.01,
+        updatedAt: 2834.46,
+      },
     ],
     newConnectConfigurations: [
-      {},
+      {
+        envId: "preview",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: false,
+        createdAt: 3458.39,
+        updatedAt: 9069.16,
+      },
     ],
   },
 };

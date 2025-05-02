@@ -644,28 +644,28 @@ func (o *UpdateFirewallConfigRequestBodySecurityValue) GetAction() UpdateFirewal
 	return o.Action
 }
 
-// RequestBody6 - Enable a managed rule
-type RequestBody6 struct {
+// UpdateFirewallConfigRequestBody6 - Enable a managed rule
+type UpdateFirewallConfigRequestBody6 struct {
 	Action UpdateFirewallConfigRequestBodySecurityRequest6Action `json:"action"`
 	ID     ID                                                    `json:"id"`
 	Value  UpdateFirewallConfigRequestBodySecurityValue          `json:"value"`
 }
 
-func (o *RequestBody6) GetAction() UpdateFirewallConfigRequestBodySecurityRequest6Action {
+func (o *UpdateFirewallConfigRequestBody6) GetAction() UpdateFirewallConfigRequestBodySecurityRequest6Action {
 	if o == nil {
 		return UpdateFirewallConfigRequestBodySecurityRequest6Action("")
 	}
 	return o.Action
 }
 
-func (o *RequestBody6) GetID() ID {
+func (o *UpdateFirewallConfigRequestBody6) GetID() ID {
 	if o == nil {
 		return ID("")
 	}
 	return o.ID
 }
 
-func (o *RequestBody6) GetValue() UpdateFirewallConfigRequestBodySecurityValue {
+func (o *UpdateFirewallConfigRequestBody6) GetValue() UpdateFirewallConfigRequestBodySecurityValue {
 	if o == nil {
 		return UpdateFirewallConfigRequestBodySecurityValue{}
 	}
@@ -2405,7 +2405,7 @@ const (
 	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_3"
 	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody4 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_4"
 	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody5 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_5"
-	UpdateFirewallConfigRequestBodyUnionTypeRequestBody6                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_6"
+	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_6"
 	UpdateFirewallConfigRequestBodyUnionTypeRequestBody7                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_7"
 	UpdateFirewallConfigRequestBodyUnionTypeRequestBody8                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_8"
 	UpdateFirewallConfigRequestBodyUnionTypeRequestBody9                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_9"
@@ -2420,7 +2420,7 @@ type UpdateFirewallConfigRequestBody struct {
 	UpdateFirewallConfigRequestBody3 *UpdateFirewallConfigRequestBody3
 	UpdateFirewallConfigRequestBody4 *UpdateFirewallConfigRequestBody4
 	UpdateFirewallConfigRequestBody5 *UpdateFirewallConfigRequestBody5
-	RequestBody6                     *RequestBody6
+	UpdateFirewallConfigRequestBody6 *UpdateFirewallConfigRequestBody6
 	RequestBody7                     *RequestBody7
 	RequestBody8                     *RequestBody8
 	RequestBody9                     *RequestBody9
@@ -2476,12 +2476,12 @@ func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody5(updat
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyRequestBody6(requestBody6 RequestBody6) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRequestBody6
+func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody6(updateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBody6) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6
 
 	return UpdateFirewallConfigRequestBody{
-		RequestBody6: &requestBody6,
-		Type:         typ,
+		UpdateFirewallConfigRequestBody6: &updateFirewallConfigRequestBody6,
+		Type:                             typ,
 	}
 }
 
@@ -2576,10 +2576,10 @@ func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var requestBody6 RequestBody6 = RequestBody6{}
-	if err := utils.UnmarshalJSON(data, &requestBody6, "", true, true); err == nil {
-		u.RequestBody6 = &requestBody6
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRequestBody6
+	var updateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBody6 = UpdateFirewallConfigRequestBody6{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody6, "", true, true); err == nil {
+		u.UpdateFirewallConfigRequestBody6 = &updateFirewallConfigRequestBody6
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6
 		return nil
 	}
 
@@ -2649,8 +2649,8 @@ func (u UpdateFirewallConfigRequestBody) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody5, "", true)
 	}
 
-	if u.RequestBody6 != nil {
-		return utils.MarshalJSON(u.RequestBody6, "", true)
+	if u.UpdateFirewallConfigRequestBody6 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody6, "", true)
 	}
 
 	if u.RequestBody7 != nil {

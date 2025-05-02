@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -35,7 +36,124 @@ export type RemoveCustomEnvironmentRequest = {
   requestBody?: RemoveCustomEnvironmentRequestBody | undefined;
 };
 
-export type RemoveCustomEnvironmentResponseBody = {};
+/**
+ * The type of environment (production, preview, or development)
+ */
+export const RemoveCustomEnvironmentType = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+/**
+ * The type of environment (production, preview, or development)
+ */
+export type RemoveCustomEnvironmentType = ClosedEnum<
+  typeof RemoveCustomEnvironmentType
+>;
+
+/**
+ * The type of matching to perform
+ */
+export const RemoveCustomEnvironmentEnvironmentType = {
+  EndsWith: "endsWith",
+  StartsWith: "startsWith",
+  Equals: "equals",
+} as const;
+/**
+ * The type of matching to perform
+ */
+export type RemoveCustomEnvironmentEnvironmentType = ClosedEnum<
+  typeof RemoveCustomEnvironmentEnvironmentType
+>;
+
+/**
+ * Configuration for matching git branches to this environment
+ */
+export type RemoveCustomEnvironmentBranchMatcher = {
+  /**
+   * The type of matching to perform
+   */
+  type: RemoveCustomEnvironmentEnvironmentType;
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+};
+
+/**
+ * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+ */
+export type RemoveCustomEnvironmentVerification = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/**
+ * List of domains associated with this environment
+ */
+export type RemoveCustomEnvironmentDomains = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  /**
+   * `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
+   */
+  verified: boolean;
+  /**
+   * A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+   */
+  verification?: Array<RemoveCustomEnvironmentVerification> | undefined;
+};
+
+/**
+ * Internal representation of a custom environment with all required properties
+ */
+export type RemoveCustomEnvironmentResponseBody = {
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
+  /**
+   * The type of environment (production, preview, or development)
+   */
+  type: RemoveCustomEnvironmentType;
+  /**
+   * Optional description of the environment's purpose
+   */
+  description?: string | undefined;
+  /**
+   * Configuration for matching git branches to this environment
+   */
+  branchMatcher?: RemoveCustomEnvironmentBranchMatcher | undefined;
+  /**
+   * List of domains associated with this environment
+   */
+  domains?: Array<RemoveCustomEnvironmentDomains> | undefined;
+  /**
+   * List of aliases for the current deployment
+   */
+  currentDeploymentAliases?: Array<string> | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
+};
 
 /** @internal */
 export const RemoveCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
@@ -174,21 +292,324 @@ export function removeCustomEnvironmentRequestFromJSON(
 }
 
 /** @internal */
+export const RemoveCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
+  typeof RemoveCustomEnvironmentType
+> = z.nativeEnum(RemoveCustomEnvironmentType);
+
+/** @internal */
+export const RemoveCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
+  typeof RemoveCustomEnvironmentType
+> = RemoveCustomEnvironmentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveCustomEnvironmentType$ {
+  /** @deprecated use `RemoveCustomEnvironmentType$inboundSchema` instead. */
+  export const inboundSchema = RemoveCustomEnvironmentType$inboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentType$outboundSchema` instead. */
+  export const outboundSchema = RemoveCustomEnvironmentType$outboundSchema;
+}
+
+/** @internal */
+export const RemoveCustomEnvironmentEnvironmentType$inboundSchema:
+  z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> = z.nativeEnum(
+    RemoveCustomEnvironmentEnvironmentType,
+  );
+
+/** @internal */
+export const RemoveCustomEnvironmentEnvironmentType$outboundSchema:
+  z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> =
+    RemoveCustomEnvironmentEnvironmentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveCustomEnvironmentEnvironmentType$ {
+  /** @deprecated use `RemoveCustomEnvironmentEnvironmentType$inboundSchema` instead. */
+  export const inboundSchema =
+    RemoveCustomEnvironmentEnvironmentType$inboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentEnvironmentType$outboundSchema` instead. */
+  export const outboundSchema =
+    RemoveCustomEnvironmentEnvironmentType$outboundSchema;
+}
+
+/** @internal */
+export const RemoveCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
+  RemoveCustomEnvironmentBranchMatcher,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
+  pattern: z.string(),
+});
+
+/** @internal */
+export type RemoveCustomEnvironmentBranchMatcher$Outbound = {
+  type: string;
+  pattern: string;
+};
+
+/** @internal */
+export const RemoveCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
+  RemoveCustomEnvironmentBranchMatcher$Outbound,
+  z.ZodTypeDef,
+  RemoveCustomEnvironmentBranchMatcher
+> = z.object({
+  type: RemoveCustomEnvironmentEnvironmentType$outboundSchema,
+  pattern: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveCustomEnvironmentBranchMatcher$ {
+  /** @deprecated use `RemoveCustomEnvironmentBranchMatcher$inboundSchema` instead. */
+  export const inboundSchema =
+    RemoveCustomEnvironmentBranchMatcher$inboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentBranchMatcher$outboundSchema` instead. */
+  export const outboundSchema =
+    RemoveCustomEnvironmentBranchMatcher$outboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentBranchMatcher$Outbound` instead. */
+  export type Outbound = RemoveCustomEnvironmentBranchMatcher$Outbound;
+}
+
+export function removeCustomEnvironmentBranchMatcherToJSON(
+  removeCustomEnvironmentBranchMatcher: RemoveCustomEnvironmentBranchMatcher,
+): string {
+  return JSON.stringify(
+    RemoveCustomEnvironmentBranchMatcher$outboundSchema.parse(
+      removeCustomEnvironmentBranchMatcher,
+    ),
+  );
+}
+
+export function removeCustomEnvironmentBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveCustomEnvironmentBranchMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RemoveCustomEnvironmentBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveCustomEnvironmentBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoveCustomEnvironmentVerification$inboundSchema: z.ZodType<
+  RemoveCustomEnvironmentVerification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/** @internal */
+export type RemoveCustomEnvironmentVerification$Outbound = {
+  type: string;
+  domain: string;
+  value: string;
+  reason: string;
+};
+
+/** @internal */
+export const RemoveCustomEnvironmentVerification$outboundSchema: z.ZodType<
+  RemoveCustomEnvironmentVerification$Outbound,
+  z.ZodTypeDef,
+  RemoveCustomEnvironmentVerification
+> = z.object({
+  type: z.string(),
+  domain: z.string(),
+  value: z.string(),
+  reason: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveCustomEnvironmentVerification$ {
+  /** @deprecated use `RemoveCustomEnvironmentVerification$inboundSchema` instead. */
+  export const inboundSchema =
+    RemoveCustomEnvironmentVerification$inboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentVerification$outboundSchema` instead. */
+  export const outboundSchema =
+    RemoveCustomEnvironmentVerification$outboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentVerification$Outbound` instead. */
+  export type Outbound = RemoveCustomEnvironmentVerification$Outbound;
+}
+
+export function removeCustomEnvironmentVerificationToJSON(
+  removeCustomEnvironmentVerification: RemoveCustomEnvironmentVerification,
+): string {
+  return JSON.stringify(
+    RemoveCustomEnvironmentVerification$outboundSchema.parse(
+      removeCustomEnvironmentVerification,
+    ),
+  );
+}
+
+export function removeCustomEnvironmentVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveCustomEnvironmentVerification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RemoveCustomEnvironmentVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveCustomEnvironmentVerification' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoveCustomEnvironmentDomains$inboundSchema: z.ZodType<
+  RemoveCustomEnvironmentDomains,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(
+    z.lazy(() => RemoveCustomEnvironmentVerification$inboundSchema),
+  ).optional(),
+});
+
+/** @internal */
+export type RemoveCustomEnvironmentDomains$Outbound = {
+  name: string;
+  apexName: string;
+  projectId: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  gitBranch?: string | null | undefined;
+  customEnvironmentId?: string | null | undefined;
+  updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  verified: boolean;
+  verification?:
+    | Array<RemoveCustomEnvironmentVerification$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const RemoveCustomEnvironmentDomains$outboundSchema: z.ZodType<
+  RemoveCustomEnvironmentDomains$Outbound,
+  z.ZodTypeDef,
+  RemoveCustomEnvironmentDomains
+> = z.object({
+  name: z.string(),
+  apexName: z.string(),
+  projectId: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  customEnvironmentId: z.nullable(z.string()).optional(),
+  updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  verified: z.boolean(),
+  verification: z.array(
+    z.lazy(() => RemoveCustomEnvironmentVerification$outboundSchema),
+  ).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveCustomEnvironmentDomains$ {
+  /** @deprecated use `RemoveCustomEnvironmentDomains$inboundSchema` instead. */
+  export const inboundSchema = RemoveCustomEnvironmentDomains$inboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentDomains$outboundSchema` instead. */
+  export const outboundSchema = RemoveCustomEnvironmentDomains$outboundSchema;
+  /** @deprecated use `RemoveCustomEnvironmentDomains$Outbound` instead. */
+  export type Outbound = RemoveCustomEnvironmentDomains$Outbound;
+}
+
+export function removeCustomEnvironmentDomainsToJSON(
+  removeCustomEnvironmentDomains: RemoveCustomEnvironmentDomains,
+): string {
+  return JSON.stringify(
+    RemoveCustomEnvironmentDomains$outboundSchema.parse(
+      removeCustomEnvironmentDomains,
+    ),
+  );
+}
+
+export function removeCustomEnvironmentDomainsFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveCustomEnvironmentDomains, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoveCustomEnvironmentDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveCustomEnvironmentDomains' from JSON`,
+  );
+}
+
+/** @internal */
 export const RemoveCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: RemoveCustomEnvironmentType$inboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() =>
+    RemoveCustomEnvironmentBranchMatcher$inboundSchema
+  ).optional(),
+  domains: z.array(z.lazy(() => RemoveCustomEnvironmentDomains$inboundSchema))
+    .optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /** @internal */
-export type RemoveCustomEnvironmentResponseBody$Outbound = {};
+export type RemoveCustomEnvironmentResponseBody$Outbound = {
+  id: string;
+  slug: string;
+  type: string;
+  description?: string | undefined;
+  branchMatcher?: RemoveCustomEnvironmentBranchMatcher$Outbound | undefined;
+  domains?: Array<RemoveCustomEnvironmentDomains$Outbound> | undefined;
+  currentDeploymentAliases?: Array<string> | undefined;
+  createdAt: number;
+  updatedAt: number;
+};
 
 /** @internal */
 export const RemoveCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
   RemoveCustomEnvironmentResponseBody$Outbound,
   z.ZodTypeDef,
   RemoveCustomEnvironmentResponseBody
-> = z.object({});
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  type: RemoveCustomEnvironmentType$outboundSchema,
+  description: z.string().optional(),
+  branchMatcher: z.lazy(() =>
+    RemoveCustomEnvironmentBranchMatcher$outboundSchema
+  ).optional(),
+  domains: z.array(z.lazy(() => RemoveCustomEnvironmentDomains$outboundSchema))
+    .optional(),
+  currentDeploymentAliases: z.array(z.string()).optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+});
 
 /**
  * @internal

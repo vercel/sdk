@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 4e297be9f377581926a73e477d9ef7e3
+  docChecksum: 59ba73c83ec68e9b545ed4620d75ddbe
   docVersion: 0.0.1
-  speakeasyVersion: 1.540.1
-  generationVersion: 2.593.4
-  releaseVersion: 1.6.7
-  configChecksum: fbe65d4255dd75b975646b5a1e826258
+  speakeasyVersion: 1.542.0
+  generationVersion: 2.596.2
+  releaseVersion: 1.6.8
+  configChecksum: 310536da4b09cdce1cc27d0da1c9f270
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.6
+    core: 3.21.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -164,6 +164,11 @@ generatedFiles:
   - docs/models/canceldeploymentcustomenvironment.md
   - docs/models/canceldeploymentcustomenvironment1.md
   - docs/models/canceldeploymentcustomenvironment2.md
+  - docs/models/canceldeploymentcustomenvironmentbranchmatcher.md
+  - docs/models/canceldeploymentcustomenvironmentdeploymentstype.md
+  - docs/models/canceldeploymentcustomenvironmentdomains.md
+  - docs/models/canceldeploymentcustomenvironmenttype.md
+  - docs/models/canceldeploymentcustomenvironmentverification.md
   - docs/models/canceldeploymentdeploymentsreadystate.md
   - docs/models/canceldeploymentdeploymentsstatus.md
   - docs/models/canceldeploymentflags.md
@@ -191,6 +196,7 @@ generatedFiles:
   - docs/models/canceldeploymentgitsource3.md
   - docs/models/canceldeploymentgitsource4.md
   - docs/models/canceldeploymentgitsource5.md
+  - docs/models/canceldeploymentgitsource6.md
   - docs/models/canceldeploymentgitsourcedeploymentsrepoid.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
@@ -317,15 +323,21 @@ generatedFiles:
   - docs/models/createcheckstatus.md
   - docs/models/createchecktbt.md
   - docs/models/createcheckvirtualexperiencescore.md
+  - docs/models/createcustomenvironmentbranchmatcher.md
+  - docs/models/createcustomenvironmentdomains.md
+  - docs/models/createcustomenvironmentenvironmentresponsetype.md
+  - docs/models/createcustomenvironmentenvironmenttype.md
   - docs/models/createcustomenvironmentrequest.md
   - docs/models/createcustomenvironmentrequestbody.md
   - docs/models/createcustomenvironmentresponsebody.md
   - docs/models/createcustomenvironmenttype.md
+  - docs/models/createcustomenvironmentverification.md
   - docs/models/created.md
   - docs/models/created1.md
   - docs/models/created2.md
   - docs/models/createdcontenthint.md
   - docs/models/createdeploymentcrons.md
+  - docs/models/createdeploymentcustomenvironmenttype.md
   - docs/models/createdeploymentdeploymentsstatus.md
   - docs/models/createdeploymentframework.md
   - docs/models/createdeploymentgitrepodeploymentstype.md
@@ -344,6 +356,7 @@ generatedFiles:
   - docs/models/createdeploymentgitsource7.md
   - docs/models/createdeploymentgitsource8.md
   - docs/models/createdeploymentgitsource9.md
+  - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbody1type.md
   - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsrequesttype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
@@ -466,6 +479,7 @@ generatedFiles:
   - docs/models/createprojectdefinitions.md
   - docs/models/createprojectdeploymentexpiration.md
   - docs/models/createprojectdeploymenttype.md
+  - docs/models/createprojectdomains.md
   - docs/models/createprojectenv.md
   - docs/models/createprojectenv11.md
   - docs/models/createprojectenv12.md
@@ -609,7 +623,9 @@ generatedFiles:
   - docs/models/createprojectprojectsplan.md
   - docs/models/createprojectprojectsreadystate.md
   - docs/models/createprojectprojectsreadysubstate.md
+  - docs/models/createprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
+  - docs/models/createprojectprojectsresponse200applicationjsonresponsebodylastaliasrequesttype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodysecuritytype.md
@@ -617,6 +633,7 @@ generatedFiles:
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/createprojectprojectsresponse200applicationjsontype.md
   - docs/models/createprojectprojectsresponse200type.md
+  - docs/models/createprojectprojectsresponsebranchmatcher.md
   - docs/models/createprojectprojectsresponsetype.md
   - docs/models/createprojectprojectstarget.md
   - docs/models/createprojectprojectstype.md
@@ -653,9 +670,13 @@ generatedFiles:
   - docs/models/createprojectvalue.md
   - docs/models/createprojectvalue2.md
   - docs/models/createprojectvalueprojects2.md
+  - docs/models/createprojectverification.md
   - docs/models/createprojectwebanalytics.md
   - docs/models/createrecordrequest.md
   - docs/models/createrecordrequestbody.md
+  - docs/models/createrecordrequestbody1.md
+  - docs/models/createrecordrequestbody2.md
+  - docs/models/createrecordrequestbody3.md
   - docs/models/createrecordrequestbodydnsrequest10type.md
   - docs/models/createrecordrequestbodydnsrequest5type.md
   - docs/models/createrecordrequestbodydnsrequest6type.md
@@ -685,7 +706,11 @@ generatedFiles:
   - docs/models/customenvironment.md
   - docs/models/customenvironment1.md
   - docs/models/customenvironment2.md
+  - docs/models/customenvironmentbranchmatcher.md
+  - docs/models/customenvironmentdomains.md
   - docs/models/customenvironments.md
+  - docs/models/customenvironmenttype.md
+  - docs/models/customenvironmentverification.md
   - docs/models/datacache.md
   - docs/models/datacacheread.md
   - docs/models/datacachewrite.md
@@ -812,6 +837,8 @@ generatedFiles:
   - docs/models/entities.md
   - docs/models/entitlements.md
   - docs/models/env.md
+  - docs/models/envid.md
+  - docs/models/envid2.md
   - docs/models/environments.md
   - docs/models/environmentvariables.md
   - docs/models/envs.md
@@ -1071,12 +1098,27 @@ generatedFiles:
   - docs/models/getconfigurationsresponsebodyintegrationstype.md
   - docs/models/getconfigurationsresponsebodysource.md
   - docs/models/getconfigurationsresponsebodytype.md
+  - docs/models/getcustomenvironmentbranchmatcher.md
+  - docs/models/getcustomenvironmentdomains.md
+  - docs/models/getcustomenvironmentenvironmenttype.md
   - docs/models/getcustomenvironmentrequest.md
   - docs/models/getcustomenvironmentresponsebody.md
+  - docs/models/getcustomenvironmenttype.md
+  - docs/models/getcustomenvironmentverification.md
   - docs/models/getdeploymentcustomenvironment1.md
   - docs/models/getdeploymentcustomenvironment2.md
+  - docs/models/getdeploymentcustomenvironmentbranchmatcher.md
   - docs/models/getdeploymentcustomenvironmentdeployments1.md
   - docs/models/getdeploymentcustomenvironmentdeployments2.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentsbranchmatcher.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentsdomains.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentsresponse200type.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentsresponsetype.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentstype.md
+  - docs/models/getdeploymentcustomenvironmentdeploymentsverification.md
+  - docs/models/getdeploymentcustomenvironmentdomains.md
+  - docs/models/getdeploymentcustomenvironmenttype.md
+  - docs/models/getdeploymentcustomenvironmentverification.md
   - docs/models/getdeploymenteventsrequest.md
   - docs/models/getdeploymentfilecontentsrequest.md
   - docs/models/getdeploymentflags1.md
@@ -1485,6 +1527,7 @@ generatedFiles:
   - docs/models/getprojectsdefinitions.md
   - docs/models/getprojectsdeploymentexpiration.md
   - docs/models/getprojectsdeploymenttype.md
+  - docs/models/getprojectsdomains.md
   - docs/models/getprojectsenv.md
   - docs/models/getprojectserl.md
   - docs/models/getprojectsfirewallroutes.md
@@ -1543,12 +1586,15 @@ generatedFiles:
   - docs/models/getprojectsprojectsplan.md
   - docs/models/getprojectsprojectsreadystate.md
   - docs/models/getprojectsprojectsreadysubstate.md
+  - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectscustomenvironmentstype.md
+  - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectslatestdeploymentstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectssecurityfirewallroutestype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectssecuritytype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/getprojectsprojectsresponse200applicationjsontype.md
   - docs/models/getprojectsprojectsresponse200type.md
+  - docs/models/getprojectsprojectsresponsebranchmatcher.md
   - docs/models/getprojectsprojectsresponsetype.md
   - docs/models/getprojectsprojectstype.md
   - docs/models/getprojectsprojectsvalue.md
@@ -1582,6 +1628,7 @@ generatedFiles:
   - docs/models/getprojectsvalue.md
   - docs/models/getprojectsvalue2.md
   - docs/models/getprojectsvalueprojects2.md
+  - docs/models/getprojectsverification.md
   - docs/models/getprojectswebanalytics.md
   - docs/models/getrecordsrequest.md
   - docs/models/getrecordsresponsebody.md
@@ -1615,9 +1662,14 @@ generatedFiles:
   - docs/models/getteamsrequest.md
   - docs/models/getteamsresponsebody.md
   - docs/models/getteamsteams.md
+  - docs/models/getv9projectsidornamecustomenvironmentsbranchmatcher.md
+  - docs/models/getv9projectsidornamecustomenvironmentsdomains.md
   - docs/models/getv9projectsidornamecustomenvironmentsenvironments.md
+  - docs/models/getv9projectsidornamecustomenvironmentsenvironmenttype.md
   - docs/models/getv9projectsidornamecustomenvironmentsrequest.md
   - docs/models/getv9projectsidornamecustomenvironmentsresponsebody.md
+  - docs/models/getv9projectsidornamecustomenvironmentstype.md
+  - docs/models/getv9projectsidornamecustomenvironmentsverification.md
   - docs/models/getwebhookevents.md
   - docs/models/getwebhookrequest.md
   - docs/models/getwebhookresponsebody.md
@@ -1751,6 +1803,7 @@ generatedFiles:
   - docs/models/listaliasesprotectionbypass2.md
   - docs/models/listaliasesprotectionbypass3.md
   - docs/models/listaliasesprotectionbypass4.md
+  - docs/models/listaliasesprotectionbypassaccess.md
   - docs/models/listaliasesprotectionbypassaliasesresponse200scope.md
   - docs/models/listaliasesprotectionbypassaliasesresponsescope.md
   - docs/models/listaliasesprotectionbypassaliasesscope.md
@@ -1914,6 +1967,7 @@ generatedFiles:
   - docs/models/overagemetadata.md
   - docs/models/overagereason.md
   - docs/models/overageusagealerts.md
+  - docs/models/override.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
   - docs/models/paidfeatures.md
@@ -1921,6 +1975,9 @@ generatedFiles:
   - docs/models/passwordprotection1.md
   - docs/models/passwordprotection2.md
   - docs/models/passwordprotectiondeploymenttype.md
+  - docs/models/patchaliasesidprotectionbypassrequest.md
+  - docs/models/patchaliasesidprotectionbypassrequestbody.md
+  - docs/models/patchaliasesidprotectionbypassrequestbodyaction.md
   - docs/models/patchdomainrequest.md
   - docs/models/patchdomainrequestbody.md
   - docs/models/patchdomainrequestbody1.md
@@ -1957,6 +2014,7 @@ generatedFiles:
   - docs/models/payloaddeployment.md
   - docs/models/payloaddismissals.md
   - docs/models/payloaddismissedtoasts.md
+  - docs/models/payloadenvid.md
   - docs/models/payloadfavoriteprojectsandspaces.md
   - docs/models/payloadfavoritesviewpreference.md
   - docs/models/payloadfeatureblocks.md
@@ -2150,9 +2208,14 @@ generatedFiles:
   - docs/models/removebypassipresponsebody.md
   - docs/models/removecertrequest.md
   - docs/models/removecertresponsebody.md
+  - docs/models/removecustomenvironmentbranchmatcher.md
+  - docs/models/removecustomenvironmentdomains.md
+  - docs/models/removecustomenvironmentenvironmenttype.md
   - docs/models/removecustomenvironmentrequest.md
   - docs/models/removecustomenvironmentrequestbody.md
   - docs/models/removecustomenvironmentresponsebody.md
+  - docs/models/removecustomenvironmenttype.md
+  - docs/models/removecustomenvironmentverification.md
   - docs/models/removedmembership.md
   - docs/models/removedusers.md
   - docs/models/removeprojectdomainrequest.md
@@ -2310,7 +2373,9 @@ generatedFiles:
   - docs/models/requestbodyop.md
   - docs/models/requestbodyratelimit.md
   - docs/models/requestbodyredirect.md
+  - docs/models/requestbodyrevoke.md
   - docs/models/requestbodyrole.md
+  - docs/models/requestbodyscope.md
   - docs/models/requestbodysrv.md
   - docs/models/requestbodytype.md
   - docs/models/requestbodyvalue.md
@@ -2414,6 +2479,9 @@ generatedFiles:
   - docs/models/scalingrules.md
   - docs/models/schema.md
   - docs/models/scope.md
+  - docs/models/scope1.md
+  - docs/models/scope2.md
+  - docs/models/scopeaccess.md
   - docs/models/scopes.md
   - docs/models/scopes1.md
   - docs/models/scopes2.md
@@ -2590,10 +2658,15 @@ generatedFiles:
   - docs/models/updatechecktbt.md
   - docs/models/updatecheckvirtualexperiencescore.md
   - docs/models/updatecustomenvironmentbranchmatcher.md
+  - docs/models/updatecustomenvironmentdomains.md
+  - docs/models/updatecustomenvironmentenvironmentbranchmatcher.md
+  - docs/models/updatecustomenvironmentenvironmentresponsetype.md
+  - docs/models/updatecustomenvironmentenvironmenttype.md
   - docs/models/updatecustomenvironmentrequest.md
   - docs/models/updatecustomenvironmentrequestbody.md
   - docs/models/updatecustomenvironmentresponsebody.md
   - docs/models/updatecustomenvironmenttype.md
+  - docs/models/updatecustomenvironmentverification.md
   - docs/models/updatediff.md
   - docs/models/updateduser.md
   - docs/models/updateedgeconfigpurpose.md
@@ -2741,6 +2814,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachecreator.md
   - docs/models/updateprojectdatacachedatacache.md
   - docs/models/updateprojectdatacachedeploymenttype.md
+  - docs/models/updateprojectdatacachedomains.md
   - docs/models/updateprojectdatacacheframework.md
   - docs/models/updateprojectdatacachefunctiondefaultmemorytype.md
   - docs/models/updateprojectdatacacheissuermode.md
@@ -2772,12 +2846,15 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsplan.md
   - docs/models/updateprojectdatacacheprojectsreadystate.md
   - docs/models/updateprojectdatacacheprojectsreadysubstate.md
+  - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
+  - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodyenvtype.md
+  - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodysecuritytype.md
-  - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodytargetstype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectdatacacheprojectsresponse200type.md
+  - docs/models/updateprojectdatacacheprojectsresponsebranchmatcher.md
   - docs/models/updateprojectdatacacheprojectsresponsetype.md
   - docs/models/updateprojectdatacacheprojectstype.md
   - docs/models/updateprojectdatacacheprojectsvalue.md
@@ -2787,6 +2864,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacherequestbody.md
   - docs/models/updateprojectdatacacheresourceconfig.md
   - docs/models/updateprojectdatacacheresponsebody.md
+  - docs/models/updateprojectdatacachescope.md
   - docs/models/updateprojectdatacachesecurity.md
   - docs/models/updateprojectdatacachessoprotection.md
   - docs/models/updateprojectdatacachetarget.md
@@ -2801,6 +2879,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachevalue.md
   - docs/models/updateprojectdatacachevalue2.md
   - docs/models/updateprojectdatacachevalueprojects2.md
+  - docs/models/updateprojectdatacacheverification.md
   - docs/models/updateprojectdatacachewebanalytics.md
   - docs/models/updateprojectdefaultresourceconfig.md
   - docs/models/updateprojectdefinitions.md
@@ -2809,6 +2888,7 @@ generatedFiles:
   - docs/models/updateprojectdomainrequest.md
   - docs/models/updateprojectdomainrequestbody.md
   - docs/models/updateprojectdomainresponsebody.md
+  - docs/models/updateprojectdomains.md
   - docs/models/updateprojectdomainverification.md
   - docs/models/updateprojectenv.md
   - docs/models/updateprojecterl.md
@@ -2876,12 +2956,15 @@ generatedFiles:
   - docs/models/updateprojectprojectsreadystate.md
   - docs/models/updateprojectprojectsreadysubstate.md
   - docs/models/updateprojectprojectsrequestdeploymenttype.md
-  - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
+  - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
+  - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritytype.md
+  - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodytargetstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/updateprojectprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectprojectsresponse200type.md
+  - docs/models/updateprojectprojectsresponsebranchmatcher.md
   - docs/models/updateprojectprojectsresponsedeploymenttype.md
   - docs/models/updateprojectprojectsresponsetype.md
   - docs/models/updateprojectprojectsssoprotection.md
@@ -2923,6 +3006,7 @@ generatedFiles:
   - docs/models/updateprojectvalue.md
   - docs/models/updateprojectvalue2.md
   - docs/models/updateprojectvalueprojects2.md
+  - docs/models/updateprojectverification.md
   - docs/models/updateprojectwebanalytics.md
   - docs/models/updaterecorddnstype.md
   - docs/models/updaterecordrequest.md
@@ -2957,6 +3041,7 @@ generatedFiles:
   - docs/models/useragent.md
   - docs/models/userevent.md
   - docs/models/usereventcredentialstype.md
+  - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
   - docs/models/usereventpayload108user.md
@@ -3089,6 +3174,7 @@ generatedFiles:
   - src/__tests__/integrations.test.ts
   - src/__tests__/logdrains.test.ts
   - src/__tests__/marketplace.test.ts
+  - src/__tests__/mockserver/.gitignore
   - src/__tests__/mockserver/Dockerfile
   - src/__tests__/mockserver/Makefile
   - src/__tests__/mockserver/README.md
@@ -3183,6 +3269,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
+  - src/__tests__/mockserver/internal/handler/pathpatchaliasesidprotectionbypass.go
   - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1datacacheprojectsprojectid.go
@@ -3381,6 +3468,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/listpromotealiases.go
   - src/__tests__/mockserver/internal/sdk/models/operations/listuserevents.go
   - src/__tests__/mockserver/internal/sdk/models/operations/moveprojectdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchaliasesidprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
@@ -3459,6 +3547,7 @@ generatedFiles:
   - src/__tests__/teams.test.ts
   - src/__tests__/testclient.ts
   - src/__tests__/user.test.ts
+  - src/__tests__/vercel.test.ts
   - src/__tests__/webhooks.test.ts
   - src/core.ts
   - src/funcs/accessGroupsCreateAccessGroup.ts
@@ -3567,6 +3656,7 @@ generatedFiles:
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
+  - src/funcs/patchAliasesIdProtectionBypass.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
   - src/funcs/projectMembersRemoveProjectMember.ts
@@ -3759,6 +3849,7 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceUpdateInvoice.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
+  - src/mcp-server/tools/patchAliasesIdProtectionBypass.ts
   - src/mcp-server/tools/projectMembersAddProjectMember.ts
   - src/mcp-server/tools/projectMembersGetProjectMembers.ts
   - src/mcp-server/tools/projectMembersRemoveProjectMember.ts
@@ -3935,6 +4026,7 @@ generatedFiles:
   - src/models/listusereventsop.ts
   - src/models/moveprojectdomainop.ts
   - src/models/pagination.ts
+  - src/models/patchaliasesidprotectionbypassop.ts
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchteamop.ts
@@ -6816,6 +6908,20 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patch_/aliases/{id}/protection-bypass:
+    speakeasy-default-patch-/aliases/{id}/protection-bypass:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"key": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -6963,3 +7069,4 @@ generatedTests:
   removeCert: "2025-04-29T14:51:46-05:00"
   issueCert: "2025-04-29T14:51:46-05:00"
   uploadCert: "2025-04-29T14:51:46-05:00"
+  patch_/aliases/{id}/protection-bypass: "2025-05-02T00:08:48Z"

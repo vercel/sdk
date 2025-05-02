@@ -108,11 +108,11 @@ export type ProtectionBypass3 = {
   scope: GetAliasProtectionBypassAliasesScope;
 };
 
-export const Access = {
+export const ProtectionBypassAccess = {
   Requested: "requested",
   Granted: "granted",
 } as const;
-export type Access = ClosedEnum<typeof Access>;
+export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
 
 export const GetAliasProtectionBypassScope = {
   User: "user",
@@ -128,7 +128,7 @@ export type ProtectionBypass2 = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  access: Access;
+  access: ProtectionBypassAccess;
   scope: GetAliasProtectionBypassScope;
 };
 
@@ -575,22 +575,24 @@ export function protectionBypass3FromJSON(
 }
 
 /** @internal */
-export const Access$inboundSchema: z.ZodNativeEnum<typeof Access> = z
-  .nativeEnum(Access);
+export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassAccess
+> = z.nativeEnum(ProtectionBypassAccess);
 
 /** @internal */
-export const Access$outboundSchema: z.ZodNativeEnum<typeof Access> =
-  Access$inboundSchema;
+export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassAccess
+> = ProtectionBypassAccess$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Access$ {
-  /** @deprecated use `Access$inboundSchema` instead. */
-  export const inboundSchema = Access$inboundSchema;
-  /** @deprecated use `Access$outboundSchema` instead. */
-  export const outboundSchema = Access$outboundSchema;
+export namespace ProtectionBypassAccess$ {
+  /** @deprecated use `ProtectionBypassAccess$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypassAccess$inboundSchema;
+  /** @deprecated use `ProtectionBypassAccess$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypassAccess$outboundSchema;
 }
 
 /** @internal */
@@ -623,7 +625,7 @@ export const ProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: Access$inboundSchema,
+  access: ProtectionBypassAccess$inboundSchema,
   scope: GetAliasProtectionBypassScope$inboundSchema,
 });
 
@@ -645,7 +647,7 @@ export const ProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: Access$outboundSchema,
+  access: ProtectionBypassAccess$outboundSchema,
   scope: GetAliasProtectionBypassScope$outboundSchema,
 });
 

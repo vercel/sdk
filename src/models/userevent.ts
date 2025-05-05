@@ -13,9 +13,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The type of entity.
  */
 export const UserEventType = {
-  Flag: "flag",
-  FlagsSegment: "flags-segment",
-  FlagsSettings: "flags-settings",
   Author: "author",
   BitbucketLogin: "bitbucket_login",
   Bold: "bold",
@@ -27,6 +24,9 @@ export const UserEventType = {
   HookName: "hook_name",
   Integration: "integration",
   EdgeConfig: "edge-config",
+  Flag: "flag",
+  FlagsSegment: "flags-segment",
+  FlagsSettings: "flags-settings",
   Link: "link",
   ProjectName: "project_name",
   ScalingRules: "scaling_rules",
@@ -875,11 +875,11 @@ export type NinetyNine = {
 };
 
 export const UserEventPayloadType = {
-  Integration: "integration",
-  EdgeConfig: "edge-config",
   Redis: "redis",
   Postgres: "postgres",
+  EdgeConfig: "edge-config",
   Blob: "blob",
+  Integration: "integration",
 } as const;
 export type UserEventPayloadType = ClosedEnum<typeof UserEventPayloadType>;
 
@@ -1508,11 +1508,11 @@ export type UserEventPayload73Role = ClosedEnum<typeof UserEventPayload73Role>;
 export const PayloadOrigin = {
   Teams: "teams",
   Saml: "saml",
-  Link: "link",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Mail: "mail",
+  Link: "link",
   Import: "import",
   Dsync: "dsync",
   Feedback: "feedback",
@@ -2023,7 +2023,6 @@ export const PayloadReason = {
 export type PayloadReason = ClosedEnum<typeof PayloadReason>;
 
 export const PayloadBlockedDueToOverageType = {
-  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
@@ -2113,11 +2112,11 @@ export type PayloadTeamPermissions = ClosedEnum<typeof PayloadTeamPermissions>;
 export const UserEventPayloadOrigin = {
   Teams: "teams",
   Saml: "saml",
-  Link: "link",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Mail: "mail",
+  Link: "link",
   Import: "import",
   Dsync: "dsync",
   Feedback: "feedback",
@@ -2165,12 +2164,6 @@ export type UserEventPayload62Type = ClosedEnum<typeof UserEventPayload62Type>;
 export type UsageAlerts = {
   warningAt?: number | null | undefined;
   blockingAt?: number | null | undefined;
-};
-
-export type AiCredits = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
 };
 
 export type AnalyticsUsage = {
@@ -2426,7 +2419,6 @@ export type WebAnalyticsEvent = {
 };
 
 export type OverageUsageAlerts = {
-  aiCredits?: AiCredits | undefined;
   analyticsUsage?: AnalyticsUsage | undefined;
   artifacts?: Artifacts | undefined;
   bandwidth?: Bandwidth | undefined;
@@ -2622,7 +2614,6 @@ export type UserEventPayload62NewOwnerFeatureBlocksBlobBlockReason = ClosedEnum<
 >;
 
 export const OverageReason = {
-  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
@@ -2688,7 +2679,6 @@ export type UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason =
   ClosedEnum<typeof UserEventPayload62NewOwnerFeatureBlocksPostgresBlockReason>;
 
 export const PayloadOverageReason = {
-  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
@@ -2754,7 +2744,6 @@ export type UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason =
   ClosedEnum<typeof UserEventPayload62NewOwnerFeatureBlocksRedisBlockReason>;
 
 export const UserEventPayloadOverageReason = {
-  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",
@@ -3085,11 +3074,11 @@ export type OldEnvVar = {
   /**
    * The date when the Shared Env Var was created.
    */
-  created: Date;
+  created?: Date | undefined;
   /**
    * The name of the Shared Env Var.
    */
-  key: string;
+  key?: string | undefined;
   /**
    * The unique identifier of the owner (team) the Shared Env Var was created for.
    */
@@ -3097,7 +3086,7 @@ export type OldEnvVar = {
   /**
    * The unique identifier of the Shared Env Var.
    */
-  id: string;
+  id?: string | undefined;
   /**
    * The unique identifier of the user who created the Shared Env Var.
    */
@@ -3145,7 +3134,7 @@ export type OldEnvVar = {
   /**
    * whether or not this env variable is decrypted
    */
-  decrypted: boolean;
+  decrypted?: boolean | undefined;
   /**
    * A user provided comment that describes what this Shared Env Var is for.
    */
@@ -3189,11 +3178,11 @@ export type NewEnvVar = {
   /**
    * The date when the Shared Env Var was created.
    */
-  created: Date;
+  created?: Date | undefined;
   /**
    * The name of the Shared Env Var.
    */
-  key: string;
+  key?: string | undefined;
   /**
    * The unique identifier of the owner (team) the Shared Env Var was created for.
    */
@@ -3201,7 +3190,7 @@ export type NewEnvVar = {
   /**
    * The unique identifier of the Shared Env Var.
    */
-  id: string;
+  id?: string | undefined;
   /**
    * The unique identifier of the user who created the Shared Env Var.
    */
@@ -3249,7 +3238,7 @@ export type NewEnvVar = {
   /**
    * whether or not this env variable is decrypted
    */
-  decrypted: boolean;
+  decrypted?: boolean | undefined;
   /**
    * A user provided comment that describes what this Shared Env Var is for.
    */
@@ -17460,62 +17449,6 @@ export function usageAlertsFromJSON(
 }
 
 /** @internal */
-export const AiCredits$inboundSchema: z.ZodType<
-  AiCredits,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
-});
-
-/** @internal */
-export type AiCredits$Outbound = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-};
-
-/** @internal */
-export const AiCredits$outboundSchema: z.ZodType<
-  AiCredits$Outbound,
-  z.ZodTypeDef,
-  AiCredits
-> = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AiCredits$ {
-  /** @deprecated use `AiCredits$inboundSchema` instead. */
-  export const inboundSchema = AiCredits$inboundSchema;
-  /** @deprecated use `AiCredits$outboundSchema` instead. */
-  export const outboundSchema = AiCredits$outboundSchema;
-  /** @deprecated use `AiCredits$Outbound` instead. */
-  export type Outbound = AiCredits$Outbound;
-}
-
-export function aiCreditsToJSON(aiCredits: AiCredits): string {
-  return JSON.stringify(AiCredits$outboundSchema.parse(aiCredits));
-}
-
-export function aiCreditsFromJSON(
-  jsonString: string,
-): SafeParseResult<AiCredits, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AiCredits$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AiCredits' from JSON`,
-  );
-}
-
-/** @internal */
 export const AnalyticsUsage$inboundSchema: z.ZodType<
   AnalyticsUsage,
   z.ZodTypeDef,
@@ -20034,7 +19967,6 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aiCredits: z.lazy(() => AiCredits$inboundSchema).optional(),
   analyticsUsage: z.lazy(() => AnalyticsUsage$inboundSchema).optional(),
   artifacts: z.lazy(() => Artifacts$inboundSchema).optional(),
   bandwidth: z.lazy(() => Bandwidth$inboundSchema).optional(),
@@ -20117,7 +20049,6 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
 
 /** @internal */
 export type OverageUsageAlerts$Outbound = {
-  aiCredits?: AiCredits$Outbound | undefined;
   analyticsUsage?: AnalyticsUsage$Outbound | undefined;
   artifacts?: Artifacts$Outbound | undefined;
   bandwidth?: Bandwidth$Outbound | undefined;
@@ -20184,7 +20115,6 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OverageUsageAlerts
 > = z.object({
-  aiCredits: z.lazy(() => AiCredits$outboundSchema).optional(),
   analyticsUsage: z.lazy(() => AnalyticsUsage$outboundSchema).optional(),
   artifacts: z.lazy(() => Artifacts$outboundSchema).optional(),
   bandwidth: z.lazy(() => Bandwidth$outboundSchema).optional(),
@@ -22192,10 +22122,11 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  key: z.string(),
+  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  key: z.string().optional(),
   ownerId: z.nullable(z.string()).optional(),
-  id: z.string(),
+  id: z.string().optional(),
   createdBy: z.nullable(z.string()).optional(),
   deletedBy: z.nullable(z.string()).optional(),
   updatedBy: z.nullable(z.string()).optional(),
@@ -22207,17 +22138,17 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   type: UserEventPayload58OldEnvVarType$inboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$inboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean(),
+  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),
 });
 
 /** @internal */
 export type OldEnvVar$Outbound = {
-  created: string;
-  key: string;
+  created?: string | undefined;
+  key?: string | undefined;
   ownerId?: string | null | undefined;
-  id: string;
+  id?: string | undefined;
   createdBy?: string | null | undefined;
   deletedBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
@@ -22229,7 +22160,7 @@ export type OldEnvVar$Outbound = {
   type?: string | undefined;
   target?: Array<string> | undefined;
   applyToAllCustomEnvironments?: boolean | undefined;
-  decrypted: boolean;
+  decrypted?: boolean | undefined;
   comment?: string | undefined;
   lastEditedByDisplayName?: string | undefined;
 };
@@ -22240,10 +22171,10 @@ export const OldEnvVar$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OldEnvVar
 > = z.object({
-  created: z.date().transform(v => v.toISOString()),
-  key: z.string(),
+  created: z.date().transform(v => v.toISOString()).optional(),
+  key: z.string().optional(),
   ownerId: z.nullable(z.string()).optional(),
-  id: z.string(),
+  id: z.string().optional(),
   createdBy: z.nullable(z.string()).optional(),
   deletedBy: z.nullable(z.string()).optional(),
   updatedBy: z.nullable(z.string()).optional(),
@@ -22255,7 +22186,7 @@ export const OldEnvVar$outboundSchema: z.ZodType<
   type: UserEventPayload58OldEnvVarType$outboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$outboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean(),
+  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),
 });
@@ -22335,10 +22266,11 @@ export const NewEnvVar$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  key: z.string(),
+  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  key: z.string().optional(),
   ownerId: z.nullable(z.string()).optional(),
-  id: z.string(),
+  id: z.string().optional(),
   createdBy: z.nullable(z.string()).optional(),
   deletedBy: z.nullable(z.string()).optional(),
   updatedBy: z.nullable(z.string()).optional(),
@@ -22350,17 +22282,17 @@ export const NewEnvVar$inboundSchema: z.ZodType<
   type: UserEventPayload58Type$inboundSchema.optional(),
   target: z.array(UserEventPayload58Target$inboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean(),
+  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),
 });
 
 /** @internal */
 export type NewEnvVar$Outbound = {
-  created: string;
-  key: string;
+  created?: string | undefined;
+  key?: string | undefined;
   ownerId?: string | null | undefined;
-  id: string;
+  id?: string | undefined;
   createdBy?: string | null | undefined;
   deletedBy?: string | null | undefined;
   updatedBy?: string | null | undefined;
@@ -22372,7 +22304,7 @@ export type NewEnvVar$Outbound = {
   type?: string | undefined;
   target?: Array<string> | undefined;
   applyToAllCustomEnvironments?: boolean | undefined;
-  decrypted: boolean;
+  decrypted?: boolean | undefined;
   comment?: string | undefined;
   lastEditedByDisplayName?: string | undefined;
 };
@@ -22383,10 +22315,10 @@ export const NewEnvVar$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NewEnvVar
 > = z.object({
-  created: z.date().transform(v => v.toISOString()),
-  key: z.string(),
+  created: z.date().transform(v => v.toISOString()).optional(),
+  key: z.string().optional(),
   ownerId: z.nullable(z.string()).optional(),
-  id: z.string(),
+  id: z.string().optional(),
   createdBy: z.nullable(z.string()).optional(),
   deletedBy: z.nullable(z.string()).optional(),
   updatedBy: z.nullable(z.string()).optional(),
@@ -22398,7 +22330,7 @@ export const NewEnvVar$outboundSchema: z.ZodType<
   type: UserEventPayload58Type$outboundSchema.optional(),
   target: z.array(UserEventPayload58Target$outboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean(),
+  decrypted: z.boolean().optional(),
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),
 });

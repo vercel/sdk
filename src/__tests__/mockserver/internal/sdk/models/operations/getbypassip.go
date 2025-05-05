@@ -110,46 +110,46 @@ func (e *GetBypassIPResponseBodyAction) UnmarshalJSON(data []byte) error {
 }
 
 type GetBypassIPResponseBodyResult struct {
-	OwnerID       string                         `json:"OwnerId"`
-	ID            string                         `json:"Id"`
-	Domain        string                         `json:"Domain"`
-	IP            string                         `json:"Ip"`
+	OwnerID       *string                        `json:"OwnerId,omitempty"`
+	ID            *string                        `json:"Id,omitempty"`
+	Domain        *string                        `json:"Domain,omitempty"`
+	IP            *string                        `json:"Ip,omitempty"`
 	Action        *GetBypassIPResponseBodyAction `json:"Action,omitempty"`
 	ProjectID     *string                        `json:"ProjectId,omitempty"`
 	IsProjectRule *bool                          `json:"IsProjectRule,omitempty"`
 	Note          *string                        `json:"Note,omitempty"`
-	CreatedAt     string                         `json:"CreatedAt"`
+	CreatedAt     *string                        `json:"CreatedAt,omitempty"`
 	ActorID       *string                        `json:"ActorId,omitempty"`
-	UpdatedAt     string                         `json:"UpdatedAt"`
-	UpdatedAtHour string                         `json:"UpdatedAtHour"`
+	UpdatedAt     *string                        `json:"UpdatedAt,omitempty"`
+	UpdatedAtHour *string                        `json:"UpdatedAtHour,omitempty"`
 	DeletedAt     *string                        `json:"DeletedAt,omitempty"`
 	ExpiresAt     *float64                       `json:"ExpiresAt,omitempty"`
 }
 
-func (o *GetBypassIPResponseBodyResult) GetOwnerID() string {
+func (o *GetBypassIPResponseBodyResult) GetOwnerID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *GetBypassIPResponseBodyResult) GetID() string {
+func (o *GetBypassIPResponseBodyResult) GetID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.ID
 }
 
-func (o *GetBypassIPResponseBodyResult) GetDomain() string {
+func (o *GetBypassIPResponseBodyResult) GetDomain() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Domain
 }
 
-func (o *GetBypassIPResponseBodyResult) GetIP() string {
+func (o *GetBypassIPResponseBodyResult) GetIP() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.IP
 }
@@ -182,9 +182,9 @@ func (o *GetBypassIPResponseBodyResult) GetNote() *string {
 	return o.Note
 }
 
-func (o *GetBypassIPResponseBodyResult) GetCreatedAt() string {
+func (o *GetBypassIPResponseBodyResult) GetCreatedAt() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.CreatedAt
 }
@@ -196,16 +196,16 @@ func (o *GetBypassIPResponseBodyResult) GetActorID() *string {
 	return o.ActorID
 }
 
-func (o *GetBypassIPResponseBodyResult) GetUpdatedAt() string {
+func (o *GetBypassIPResponseBodyResult) GetUpdatedAt() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetBypassIPResponseBodyResult) GetUpdatedAtHour() string {
+func (o *GetBypassIPResponseBodyResult) GetUpdatedAtHour() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.UpdatedAtHour
 }
@@ -289,46 +289,46 @@ func (e *ResponseBodyAction) UnmarshalJSON(data []byte) error {
 }
 
 type ResponseBodyResult struct {
-	OwnerID       string              `json:"OwnerId"`
-	ID            string              `json:"Id"`
-	Domain        string              `json:"Domain"`
-	IP            string              `json:"Ip"`
+	OwnerID       *string             `json:"OwnerId,omitempty"`
+	ID            *string             `json:"Id,omitempty"`
+	Domain        *string             `json:"Domain,omitempty"`
+	IP            *string             `json:"Ip,omitempty"`
 	Action        *ResponseBodyAction `json:"Action,omitempty"`
 	ProjectID     *string             `json:"ProjectId,omitempty"`
 	IsProjectRule *bool               `json:"IsProjectRule,omitempty"`
 	Note          *string             `json:"Note,omitempty"`
-	CreatedAt     string              `json:"CreatedAt"`
+	CreatedAt     *string             `json:"CreatedAt,omitempty"`
 	ActorID       *string             `json:"ActorId,omitempty"`
-	UpdatedAt     string              `json:"UpdatedAt"`
-	UpdatedAtHour string              `json:"UpdatedAtHour"`
+	UpdatedAt     *string             `json:"UpdatedAt,omitempty"`
+	UpdatedAtHour *string             `json:"UpdatedAtHour,omitempty"`
 	DeletedAt     *string             `json:"DeletedAt,omitempty"`
 	ExpiresAt     *float64            `json:"ExpiresAt,omitempty"`
 }
 
-func (o *ResponseBodyResult) GetOwnerID() string {
+func (o *ResponseBodyResult) GetOwnerID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *ResponseBodyResult) GetID() string {
+func (o *ResponseBodyResult) GetID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.ID
 }
 
-func (o *ResponseBodyResult) GetDomain() string {
+func (o *ResponseBodyResult) GetDomain() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Domain
 }
 
-func (o *ResponseBodyResult) GetIP() string {
+func (o *ResponseBodyResult) GetIP() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.IP
 }
@@ -361,9 +361,9 @@ func (o *ResponseBodyResult) GetNote() *string {
 	return o.Note
 }
 
-func (o *ResponseBodyResult) GetCreatedAt() string {
+func (o *ResponseBodyResult) GetCreatedAt() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.CreatedAt
 }
@@ -375,16 +375,16 @@ func (o *ResponseBodyResult) GetActorID() *string {
 	return o.ActorID
 }
 
-func (o *ResponseBodyResult) GetUpdatedAt() string {
+func (o *ResponseBodyResult) GetUpdatedAt() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *ResponseBodyResult) GetUpdatedAtHour() string {
+func (o *ResponseBodyResult) GetUpdatedAtHour() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.UpdatedAtHour
 }

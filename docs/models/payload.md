@@ -584,7 +584,6 @@ const value: models.FiftyEight = {
     target: [
       "production",
     ],
-    decrypted: false,
   },
   newEnvVar: {
     created: new Date("2021-02-10T13:11:49.180Z"),
@@ -605,7 +604,6 @@ const value: models.FiftyEight = {
     target: [
       "production",
     ],
-    decrypted: false,
   },
 };
 ```
@@ -1083,7 +1081,7 @@ const value: models.NinetySeven = {
 ```typescript
 const value: models.NinetyEight = {
   id: "<id>",
-  type: "postgres",
+  type: "blob",
 };
 ```
 

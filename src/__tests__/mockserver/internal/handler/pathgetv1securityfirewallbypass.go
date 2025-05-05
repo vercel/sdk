@@ -50,13 +50,13 @@ func testGetBypassIPGetBypassIp0(w http.ResponseWriter, req *http.Request) {
 		operations.GetBypassIPResponseBody1{
 			Result: []operations.ResponseBodyResult{
 				operations.ResponseBodyResult{
-					OwnerID:       "<id>",
-					ID:            "<id>",
-					Domain:        "sneaky-intervention.info",
-					IP:            "124.153.161.35",
-					CreatedAt:     "1730712703128",
-					UpdatedAt:     "1744368534759",
-					UpdatedAtHour: "<value>",
+					OwnerID:       types.String("<id>"),
+					ID:            types.String("<id>"),
+					Domain:        types.String("sneaky-intervention.info"),
+					IP:            types.String("124.153.161.35"),
+					CreatedAt:     types.String("1730712703128"),
+					UpdatedAt:     types.String("1744368534759"),
+					UpdatedAtHour: types.String("<value>"),
 				},
 			},
 			Pagination: types.String("<value>"),

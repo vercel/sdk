@@ -9,7 +9,7 @@ import { NinetyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyEight = {
   id: "<id>",
-  type: "blob",
+  type: "integration",
 };
 ```
 

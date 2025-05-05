@@ -233,6 +233,27 @@ export type UpdateProjectOptionsAllowlist = {
   paths: Array<UpdateProjectPaths>;
 };
 
+export type ConnectConfigurations1 = {
+  /**
+   * The ID of the environment
+   */
+  envId: string;
+  /**
+   * The ID of the Secure Compute network
+   */
+  connectConfigurationId: string;
+  /**
+   * Whether the configuration should be passive, meaning builds will not run there and only passive Serverless Functions will be deployed
+   */
+  passive: boolean;
+  /**
+   * Flag saying if project builds should use Secure Compute
+   */
+  buildsEnabled: boolean;
+};
+
+export type ConnectConfigurations = ConnectConfigurations1;
+
 export type UpdateProjectRequestBody = {
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -346,6 +367,10 @@ export type UpdateProjectRequestBody = {
    * Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
    */
   optionsAllowlist?: UpdateProjectOptionsAllowlist | null | undefined;
+  /**
+   * The list of connections from project environment to Secure Compute network
+   */
+  connectConfigurations?: Array<ConnectConfigurations1> | null | undefined;
 };
 
 export type UpdateProjectRequest = {
@@ -440,10 +465,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1884,8 +1909,8 @@ export type UpdateProjectSrc = UpdateProjectSrc2 | string;
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -1926,8 +1951,8 @@ export type UpdateProjectHas = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -2714,6 +2739,117 @@ export function updateProjectOptionsAllowlistFromJSON(
 }
 
 /** @internal */
+export const ConnectConfigurations1$inboundSchema: z.ZodType<
+  ConnectConfigurations1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  envId: z.string(),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+});
+
+/** @internal */
+export type ConnectConfigurations1$Outbound = {
+  envId: string;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+};
+
+/** @internal */
+export const ConnectConfigurations1$outboundSchema: z.ZodType<
+  ConnectConfigurations1$Outbound,
+  z.ZodTypeDef,
+  ConnectConfigurations1
+> = z.object({
+  envId: z.string(),
+  connectConfigurationId: z.string(),
+  passive: z.boolean(),
+  buildsEnabled: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectConfigurations1$ {
+  /** @deprecated use `ConnectConfigurations1$inboundSchema` instead. */
+  export const inboundSchema = ConnectConfigurations1$inboundSchema;
+  /** @deprecated use `ConnectConfigurations1$outboundSchema` instead. */
+  export const outboundSchema = ConnectConfigurations1$outboundSchema;
+  /** @deprecated use `ConnectConfigurations1$Outbound` instead. */
+  export type Outbound = ConnectConfigurations1$Outbound;
+}
+
+export function connectConfigurations1ToJSON(
+  connectConfigurations1: ConnectConfigurations1,
+): string {
+  return JSON.stringify(
+    ConnectConfigurations1$outboundSchema.parse(connectConfigurations1),
+  );
+}
+
+export function connectConfigurations1FromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectConfigurations1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectConfigurations1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConfigurations1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConnectConfigurations$inboundSchema: z.ZodType<
+  ConnectConfigurations,
+  z.ZodTypeDef,
+  unknown
+> = z.lazy(() => ConnectConfigurations1$inboundSchema);
+
+/** @internal */
+export type ConnectConfigurations$Outbound = ConnectConfigurations1$Outbound;
+
+/** @internal */
+export const ConnectConfigurations$outboundSchema: z.ZodType<
+  ConnectConfigurations$Outbound,
+  z.ZodTypeDef,
+  ConnectConfigurations
+> = z.lazy(() => ConnectConfigurations1$outboundSchema);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectConfigurations$ {
+  /** @deprecated use `ConnectConfigurations$inboundSchema` instead. */
+  export const inboundSchema = ConnectConfigurations$inboundSchema;
+  /** @deprecated use `ConnectConfigurations$outboundSchema` instead. */
+  export const outboundSchema = ConnectConfigurations$outboundSchema;
+  /** @deprecated use `ConnectConfigurations$Outbound` instead. */
+  export type Outbound = ConnectConfigurations$Outbound;
+}
+
+export function connectConfigurationsToJSON(
+  connectConfigurations: ConnectConfigurations,
+): string {
+  return JSON.stringify(
+    ConnectConfigurations$outboundSchema.parse(connectConfigurations),
+  );
+}
+
+export function connectConfigurationsFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectConfigurations, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectConfigurations$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectConfigurations' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   UpdateProjectRequestBody,
   z.ZodTypeDef,
@@ -2759,6 +2895,9 @@ export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   optionsAllowlist: z.nullable(
     z.lazy(() => UpdateProjectOptionsAllowlist$inboundSchema),
   ).optional(),
+  connectConfigurations: z.nullable(
+    z.array(z.lazy(() => ConnectConfigurations1$inboundSchema)),
+  ).optional(),
 });
 
 /** @internal */
@@ -2798,6 +2937,10 @@ export type UpdateProjectRequestBody$Outbound = {
   ssoProtection?: UpdateProjectSsoProtection$Outbound | null | undefined;
   trustedIps?: UpdateProjectTrustedIps$Outbound | null | undefined;
   optionsAllowlist?: UpdateProjectOptionsAllowlist$Outbound | null | undefined;
+  connectConfigurations?:
+    | Array<ConnectConfigurations1$Outbound>
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -2845,6 +2988,9 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
     .optional(),
   optionsAllowlist: z.nullable(
     z.lazy(() => UpdateProjectOptionsAllowlist$outboundSchema),
+  ).optional(),
+  connectConfigurations: z.nullable(
+    z.array(z.lazy(() => ConnectConfigurations1$outboundSchema)),
   ).optional(),
 });
 

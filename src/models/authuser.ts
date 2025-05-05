@@ -19,7 +19,6 @@ export const Reason = {
 export type Reason = ClosedEnum<typeof Reason>;
 
 export const BlockedDueToOverageType = {
-  AiCredits: "aiCredits",
   AnalyticsUsage: "analyticsUsage",
   Artifacts: "artifacts",
   Bandwidth: "bandwidth",

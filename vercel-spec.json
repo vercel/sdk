@@ -30961,10 +30961,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -34260,8 +34260,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -34342,8 +34342,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -39048,10 +39048,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -42347,8 +42347,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -42429,8 +42429,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -43079,6 +43079,44 @@
                       "paths"
                     ],
                     "type": "object",
+                    "nullable": true
+                  },
+                  "connectConfigurations": {
+                    "type": "array",
+                    "description": "The list of connections from project environment to Secure Compute network",
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "envId": {
+                          "type": "string",
+                          "description": "The ID of the environment"
+                        },
+                        "connectConfigurationId": {
+                          "type": "string",
+                          "description": "The ID of the Secure Compute network"
+                        },
+                        "passive": {
+                          "type": "boolean",
+                          "description": "Whether the configuration should be passive, meaning builds will not run there and only passive Serverless Functions will be deployed"
+                        },
+                        "buildsEnabled": {
+                          "type": "boolean",
+                          "description": "Flag saying if project builds should use Secure Compute"
+                        }
+                      },
+                      "required": [
+                        "envId",
+                        "connectConfigurationId",
+                        "passive",
+                        "buildsEnabled"
+                      ],
+                      "oneOf": [
+                        {
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "minItems": 1,
                     "nullable": true
                   }
                 },
@@ -47428,10 +47466,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -47830,10 +47868,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -49913,10 +49951,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -50328,10 +50366,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -50738,10 +50776,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -51256,10 +51294,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -55796,15 +55834,6 @@
                                 "type": "number"
                               }
                             },
-                            "required": [
-                              "OwnerId",
-                              "Id",
-                              "Domain",
-                              "Ip",
-                              "CreatedAt",
-                              "UpdatedAt",
-                              "UpdatedAtHour"
-                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -55872,15 +55901,6 @@
                                 "type": "number"
                               }
                             },
-                            "required": [
-                              "OwnerId",
-                              "Id",
-                              "Domain",
-                              "Ip",
-                              "CreatedAt",
-                              "UpdatedAt",
-                              "UpdatedAtHour"
-                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -63676,9 +63696,6 @@
                 "type": {
                   "type": "string",
                   "enum": [
-                    "flag",
-                    "flags-segment",
-                    "flags-settings",
                     "author",
                     "bitbucket_login",
                     "bold",
@@ -63690,6 +63707,9 @@
                     "hook_name",
                     "integration",
                     "edge-config",
+                    "flag",
+                    "flags-segment",
+                    "flags-settings",
                     "link",
                     "project_name",
                     "scaling_rules",
@@ -65475,12 +65495,6 @@
                         "description": "The last editor full name or username."
                       }
                     },
-                    "required": [
-                      "created",
-                      "key",
-                      "id",
-                      "decrypted"
-                    ],
                     "type": "object"
                   },
                   "newEnvVar": {
@@ -65598,12 +65612,6 @@
                         "description": "The last editor full name or username."
                       }
                     },
-                    "required": [
-                      "created",
-                      "key",
-                      "id",
-                      "decrypted"
-                    ],
                     "type": "object"
                   },
                   "updateDiff": {
@@ -66472,7 +66480,6 @@
                           "blockedDueToOverageType": {
                             "type": "string",
                             "enum": [
-                              "aiCredits",
                               "analyticsUsage",
                               "artifacts",
                               "bandwidth",
@@ -66598,11 +66605,11 @@
                                   "enum": [
                                     "teams",
                                     "saml",
-                                    "link",
                                     "github",
                                     "gitlab",
                                     "bitbucket",
                                     "mail",
+                                    "link",
                                     "import",
                                     "dsync",
                                     "feedback",
@@ -66699,25 +66706,6 @@
                       },
                       "overageUsageAlerts": {
                         "properties": {
-                          "aiCredits": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
                           "analyticsUsage": {
                             "properties": {
                               "currentThreshold": {
@@ -67736,7 +67724,6 @@
                               "overageReason": {
                                 "type": "string",
                                 "enum": [
-                                  "aiCredits",
                                   "analyticsUsage",
                                   "artifacts",
                                   "bandwidth",
@@ -67808,7 +67795,6 @@
                               "overageReason": {
                                 "type": "string",
                                 "enum": [
-                                  "aiCredits",
                                   "analyticsUsage",
                                   "artifacts",
                                   "bandwidth",
@@ -67880,7 +67866,6 @@
                               "overageReason": {
                                 "type": "string",
                                 "enum": [
-                                  "aiCredits",
                                   "analyticsUsage",
                                   "artifacts",
                                   "bandwidth",
@@ -68508,11 +68493,11 @@
                               "enum": [
                                 "teams",
                                 "saml",
-                                "link",
                                 "github",
                                 "gitlab",
                                 "bitbucket",
                                 "mail",
+                                "link",
                                 "import",
                                 "dsync",
                                 "feedback",
@@ -69611,11 +69596,11 @@
                   "type": {
                     "type": "string",
                     "enum": [
-                      "integration",
-                      "edge-config",
                       "redis",
                       "postgres",
-                      "blob"
+                      "edge-config",
+                      "blob",
+                      "integration"
                     ]
                   }
                 },
@@ -71702,7 +71687,6 @@
               "blockedDueToOverageType": {
                 "type": "string",
                 "enum": [
-                  "aiCredits",
                   "analyticsUsage",
                   "artifacts",
                   "bandwidth",

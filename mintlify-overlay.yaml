@@ -18,3 +18,5 @@ actions:
     remove: true
   - target: $.paths..requestBody..[?(@.required && length(@.required) == 0)].required
     remove: true    
+  - target: $.paths..requestBody..["application/json"]..["private"]
+    remove: true  

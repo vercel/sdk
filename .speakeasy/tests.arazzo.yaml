@@ -4149,7 +4149,11 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "createdAt": 7602.36,
+                "updatedAt": 6458.94,
+                "type": "production"
+              }
             type: simple
     x-speakeasy-test-group: environment
   - workflowId: get_/v9/projects/{idOrName}/custom-environments
@@ -4201,7 +4205,11 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "createdAt": 6942.59,
+                "updatedAt": 6821.31,
+                "type": "production"
+              }
             type: simple
     x-speakeasy-test-group: environment
   - workflowId: updateCustomEnvironment
@@ -4226,7 +4234,11 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "createdAt": 6942.59,
+                "updatedAt": 6821.31,
+                "type": "production"
+              }
             type: simple
     x-speakeasy-test-group: environment
   - workflowId: removeCustomEnvironment
@@ -4251,7 +4263,11 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {}
+              {
+                "createdAt": 9269.2,
+                "updatedAt": 4613.86,
+                "type": "development"
+              }
             type: simple
     x-speakeasy-test-group: environment
   - workflowId: updateAttackChallengeMode

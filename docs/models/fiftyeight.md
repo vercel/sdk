@@ -27,7 +27,6 @@ let value: FiftyEight = {
     target: [
       "production",
     ],
-    decrypted: false,
   },
   newEnvVar: {
     created: new Date("2021-02-10T13:11:49.180Z"),
@@ -48,7 +47,6 @@ let value: FiftyEight = {
     target: [
       "production",
     ],
-    decrypted: false,
   },
 };
 ```

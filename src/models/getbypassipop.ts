@@ -47,18 +47,18 @@ export type GetBypassIpResponseBodyAction = ClosedEnum<
 >;
 
 export type GetBypassIpResponseBodyResult = {
-  ownerId: string;
-  id: string;
-  domain: string;
-  ip: string;
+  ownerId?: string | undefined;
+  id?: string | undefined;
+  domain?: string | undefined;
+  ip?: string | undefined;
   action?: GetBypassIpResponseBodyAction | undefined;
   projectId?: string | undefined;
   isProjectRule?: boolean | undefined;
   note?: string | undefined;
-  createdAt: string;
+  createdAt?: string | undefined;
   actorId?: string | undefined;
-  updatedAt: string;
-  updatedAtHour: string;
+  updatedAt?: string | undefined;
+  updatedAtHour?: string | undefined;
   deletedAt?: string | undefined;
   expiresAt?: number | null | undefined;
 };
@@ -80,18 +80,18 @@ export const ResponseBodyAction = {
 export type ResponseBodyAction = ClosedEnum<typeof ResponseBodyAction>;
 
 export type ResponseBodyResult = {
-  ownerId: string;
-  id: string;
-  domain: string;
-  ip: string;
+  ownerId?: string | undefined;
+  id?: string | undefined;
+  domain?: string | undefined;
+  ip?: string | undefined;
   action?: ResponseBodyAction | undefined;
   projectId?: string | undefined;
   isProjectRule?: boolean | undefined;
   note?: string | undefined;
-  createdAt: string;
+  createdAt?: string | undefined;
   actorId?: string | undefined;
-  updatedAt: string;
-  updatedAtHour: string;
+  updatedAt?: string | undefined;
+  updatedAtHour?: string | undefined;
   deletedAt?: string | undefined;
   expiresAt?: number | null | undefined;
 };
@@ -207,18 +207,18 @@ export const GetBypassIpResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
-  Domain: z.string(),
-  Ip: z.string(),
+  OwnerId: z.string().optional(),
+  Id: z.string().optional(),
+  Domain: z.string().optional(),
+  Ip: z.string().optional(),
   Action: GetBypassIpResponseBodyAction$inboundSchema.optional(),
   ProjectId: z.string().optional(),
   IsProjectRule: z.boolean().optional(),
   Note: z.string().optional(),
-  CreatedAt: z.string(),
+  CreatedAt: z.string().optional(),
   ActorId: z.string().optional(),
-  UpdatedAt: z.string(),
-  UpdatedAtHour: z.string(),
+  UpdatedAt: z.string().optional(),
+  UpdatedAtHour: z.string().optional(),
   DeletedAt: z.string().optional(),
   ExpiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {
@@ -242,18 +242,18 @@ export const GetBypassIpResponseBodyResult$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetBypassIpResponseBodyResult$Outbound = {
-  OwnerId: string;
-  Id: string;
-  Domain: string;
-  Ip: string;
+  OwnerId?: string | undefined;
+  Id?: string | undefined;
+  Domain?: string | undefined;
+  Ip?: string | undefined;
   Action?: string | undefined;
   ProjectId?: string | undefined;
   IsProjectRule?: boolean | undefined;
   Note?: string | undefined;
-  CreatedAt: string;
+  CreatedAt?: string | undefined;
   ActorId?: string | undefined;
-  UpdatedAt: string;
-  UpdatedAtHour: string;
+  UpdatedAt?: string | undefined;
+  UpdatedAtHour?: string | undefined;
   DeletedAt?: string | undefined;
   ExpiresAt?: number | null | undefined;
 };
@@ -264,18 +264,18 @@ export const GetBypassIpResponseBodyResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetBypassIpResponseBodyResult
 > = z.object({
-  ownerId: z.string(),
-  id: z.string(),
-  domain: z.string(),
-  ip: z.string(),
+  ownerId: z.string().optional(),
+  id: z.string().optional(),
+  domain: z.string().optional(),
+  ip: z.string().optional(),
   action: GetBypassIpResponseBodyAction$outboundSchema.optional(),
   projectId: z.string().optional(),
   isProjectRule: z.boolean().optional(),
   note: z.string().optional(),
-  createdAt: z.string(),
+  createdAt: z.string().optional(),
   actorId: z.string().optional(),
-  updatedAt: z.string(),
-  updatedAtHour: z.string(),
+  updatedAt: z.string().optional(),
+  updatedAtHour: z.string().optional(),
   deletedAt: z.string().optional(),
   expiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {
@@ -488,18 +488,18 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
-  Domain: z.string(),
-  Ip: z.string(),
+  OwnerId: z.string().optional(),
+  Id: z.string().optional(),
+  Domain: z.string().optional(),
+  Ip: z.string().optional(),
   Action: ResponseBodyAction$inboundSchema.optional(),
   ProjectId: z.string().optional(),
   IsProjectRule: z.boolean().optional(),
   Note: z.string().optional(),
-  CreatedAt: z.string(),
+  CreatedAt: z.string().optional(),
   ActorId: z.string().optional(),
-  UpdatedAt: z.string(),
-  UpdatedAtHour: z.string(),
+  UpdatedAt: z.string().optional(),
+  UpdatedAtHour: z.string().optional(),
   DeletedAt: z.string().optional(),
   ExpiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {
@@ -523,18 +523,18 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ResponseBodyResult$Outbound = {
-  OwnerId: string;
-  Id: string;
-  Domain: string;
-  Ip: string;
+  OwnerId?: string | undefined;
+  Id?: string | undefined;
+  Domain?: string | undefined;
+  Ip?: string | undefined;
   Action?: string | undefined;
   ProjectId?: string | undefined;
   IsProjectRule?: boolean | undefined;
   Note?: string | undefined;
-  CreatedAt: string;
+  CreatedAt?: string | undefined;
   ActorId?: string | undefined;
-  UpdatedAt: string;
-  UpdatedAtHour: string;
+  UpdatedAt?: string | undefined;
+  UpdatedAtHour?: string | undefined;
   DeletedAt?: string | undefined;
   ExpiresAt?: number | null | undefined;
 };
@@ -545,18 +545,18 @@ export const ResponseBodyResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyResult
 > = z.object({
-  ownerId: z.string(),
-  id: z.string(),
-  domain: z.string(),
-  ip: z.string(),
+  ownerId: z.string().optional(),
+  id: z.string().optional(),
+  domain: z.string().optional(),
+  ip: z.string().optional(),
   action: ResponseBodyAction$outboundSchema.optional(),
   projectId: z.string().optional(),
   isProjectRule: z.boolean().optional(),
   note: z.string().optional(),
-  createdAt: z.string(),
+  createdAt: z.string().optional(),
   actorId: z.string().optional(),
-  updatedAt: z.string(),
-  updatedAtHour: z.string(),
+  updatedAt: z.string().optional(),
+  updatedAtHour: z.string().optional(),
   deletedAt: z.string().optional(),
   expiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {

@@ -53,9 +53,9 @@ func testUpdateCustomEnvironmentUpdateCustomEnvironment0(w http.ResponseWriter, 
 	respBody := &operations.UpdateCustomEnvironmentResponseBody{
 		ID:        "<id>",
 		Slug:      "<value>",
-		Type:      operations.UpdateCustomEnvironmentEnvironmentTypePreview,
-		CreatedAt: 4236.55,
-		UpdatedAt: 6458.94,
+		Type:      operations.UpdateCustomEnvironmentEnvironmentTypeProduction,
+		CreatedAt: 6942.59,
+		UpdatedAt: 6821.31,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

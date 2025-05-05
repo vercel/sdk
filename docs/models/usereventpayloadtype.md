@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayloadType } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadType = "integration";
+let value: UserEventPayloadType = "redis";
 ```
 
 ## Values
 
 ```typescript
-"integration" | "edge-config" | "redis" | "postgres" | "blob"
+"redis" | "postgres" | "edge-config" | "blob" | "integration"
 ```

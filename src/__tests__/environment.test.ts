@@ -24,9 +24,9 @@ test("Environment Create Custom Environment", async () => {
   expect(result).toEqual({
     id: "<id>",
     slug: "<value>",
-    type: "development",
-    createdAt: 1502.72,
-    updatedAt: 825.95,
+    type: "production",
+    createdAt: 7602.36,
+    updatedAt: 6458.94,
   });
 });
 
@@ -75,9 +75,9 @@ test("Environment Get Custom Environment", async () => {
   expect(result).toEqual({
     id: "<id>",
     slug: "<value>",
-    type: "development",
-    createdAt: 257.34,
-    updatedAt: 2433.16,
+    type: "production",
+    createdAt: 6942.59,
+    updatedAt: 6821.31,
   });
 });
 
@@ -100,9 +100,9 @@ test("Environment Update Custom Environment", async () => {
   expect(result).toEqual({
     id: "<id>",
     slug: "<value>",
-    type: "preview",
-    createdAt: 5989.45,
-    updatedAt: 7514.28,
+    type: "production",
+    createdAt: 6942.59,
+    updatedAt: 6821.31,
   });
 });
 
@@ -125,8 +125,8 @@ test("Environment Remove Custom Environment", async () => {
   expect(result).toEqual({
     id: "<id>",
     slug: "<value>",
-    type: "preview",
-    createdAt: 5497.09,
-    updatedAt: 8300.85,
+    type: "development",
+    createdAt: 9269.2,
+    updatedAt: 4613.86,
   });
 });

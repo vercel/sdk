@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 59ba73c83ec68e9b545ed4620d75ddbe
+  docChecksum: 774219fc807c3687659bc28f2217d4c4
   docVersion: 0.0.1
-  speakeasyVersion: 1.542.0
-  generationVersion: 2.596.2
-  releaseVersion: 1.6.8
-  configChecksum: 310536da4b09cdce1cc27d0da1c9f270
+  speakeasyVersion: 1.542.3
+  generationVersion: 2.597.9
+  releaseVersion: 1.6.9
+  configChecksum: 315633298dc6b149ee5f6588b639fbd5
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -87,7 +87,6 @@ generatedFiles:
   - docs/models/addprojectmemberresponsebody.md
   - docs/models/addresses.md
   - docs/models/affectedhostmap.md
-  - docs/models/aicredits.md
   - docs/models/algo.md
   - docs/models/aliasassigned.md
   - docs/models/aliasassignedat.md
@@ -272,6 +271,8 @@ generatedFiles:
   - docs/models/configuration.md
   - docs/models/configurations.md
   - docs/models/configuredby.md
+  - docs/models/connectconfigurations.md
+  - docs/models/connectconfigurations1.md
   - docs/models/connection.md
   - docs/models/contact.md
   - docs/models/contentdispositiontype.md

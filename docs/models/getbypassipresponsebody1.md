@@ -7,15 +7,7 @@ import { GetBypassIpResponseBody1 } from "@vercel/sdk/models/getbypassipop.js";
 
 let value: GetBypassIpResponseBody1 = {
   result: [
-    {
-      ownerId: "<id>",
-      id: "<id>",
-      domain: "equatorial-programme.name",
-      ip: "41dc:c03b:1f0c:7dc5:a8fc:6d26:a38d:88e6",
-      createdAt: "1728239079428",
-      updatedAt: "1746058922251",
-      updatedAtHour: "<value>",
-    },
+    {},
   ],
   pagination: "<value>",
 };

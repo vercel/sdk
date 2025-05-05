@@ -511,6 +511,86 @@ func (o *OptionsAllowlist) GetPaths() []Paths {
 	return o.Paths
 }
 
+type ConnectConfigurations1 struct {
+	// The ID of the environment
+	EnvID string `json:"envId"`
+	// The ID of the Secure Compute network
+	ConnectConfigurationID string `json:"connectConfigurationId"`
+	// Whether the configuration should be passive, meaning builds will not run there and only passive Serverless Functions will be deployed
+	Passive bool `json:"passive"`
+	// Flag saying if project builds should use Secure Compute
+	BuildsEnabled bool `json:"buildsEnabled"`
+}
+
+func (o *ConnectConfigurations1) GetEnvID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EnvID
+}
+
+func (o *ConnectConfigurations1) GetConnectConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *ConnectConfigurations1) GetPassive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Passive
+}
+
+func (o *ConnectConfigurations1) GetBuildsEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.BuildsEnabled
+}
+
+type ConnectConfigurationsType string
+
+const (
+	ConnectConfigurationsTypeConnectConfigurations1 ConnectConfigurationsType = "connectConfigurations_1"
+)
+
+type ConnectConfigurations struct {
+	ConnectConfigurations1 *ConnectConfigurations1
+
+	Type ConnectConfigurationsType
+}
+
+func CreateConnectConfigurationsConnectConfigurations1(connectConfigurations1 ConnectConfigurations1) ConnectConfigurations {
+	typ := ConnectConfigurationsTypeConnectConfigurations1
+
+	return ConnectConfigurations{
+		ConnectConfigurations1: &connectConfigurations1,
+		Type:                   typ,
+	}
+}
+
+func (u *ConnectConfigurations) UnmarshalJSON(data []byte) error {
+
+	var connectConfigurations1 ConnectConfigurations1 = ConnectConfigurations1{}
+	if err := utils.UnmarshalJSON(data, &connectConfigurations1, "", true, true); err == nil {
+		u.ConnectConfigurations1 = &connectConfigurations1
+		u.Type = ConnectConfigurationsTypeConnectConfigurations1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ConnectConfigurations", string(data))
+}
+
+func (u ConnectConfigurations) MarshalJSON() ([]byte, error) {
+	if u.ConnectConfigurations1 != nil {
+		return utils.MarshalJSON(u.ConnectConfigurations1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ConnectConfigurations: all fields are null")
+}
+
 type UpdateProjectRequestBody struct {
 	AutoExposeSystemEnvs             *bool   `json:"autoExposeSystemEnvs,omitempty"`
 	AutoAssignCustomDomains          *bool   `json:"autoAssignCustomDomains,omitempty"`
@@ -572,6 +652,8 @@ type UpdateProjectRequestBody struct {
 	TrustedIps *TrustedIps `json:"trustedIps,omitempty"`
 	// Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
 	OptionsAllowlist *OptionsAllowlist `json:"optionsAllowlist,omitempty"`
+	// The list of connections from project environment to Secure Compute network
+	ConnectConfigurations []ConnectConfigurations `json:"connectConfigurations,omitempty"`
 }
 
 func (o *UpdateProjectRequestBody) GetAutoExposeSystemEnvs() *bool {
@@ -796,6 +878,13 @@ func (o *UpdateProjectRequestBody) GetOptionsAllowlist() *OptionsAllowlist {
 		return nil
 	}
 	return o.OptionsAllowlist
+}
+
+func (o *UpdateProjectRequestBody) GetConnectConfigurations() []ConnectConfigurations {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurations
 }
 
 type UpdateProjectRequest struct {
@@ -1188,10 +1277,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1205,13 +1294,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -7922,8 +8011,8 @@ func (u UpdateProjectSrc) MarshalJSON() ([]byte, error) {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -7945,9 +8034,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough
@@ -8159,8 +8248,8 @@ func (o *UpdateProjectHas) GetValue() *UpdateProjectValue {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -8182,9 +8271,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough

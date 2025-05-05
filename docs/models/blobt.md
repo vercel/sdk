@@ -6,7 +6,7 @@
 import { BlobT } from "@vercel/sdk/models/userevent.js";
 
 let value: BlobT = {
-  overageReason: "elasticConcurrencyBuildSlots",
+  overageReason: "fastDataTransfer",
 };
 ```
 

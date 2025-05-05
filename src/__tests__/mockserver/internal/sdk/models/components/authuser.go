@@ -50,7 +50,6 @@ func (e *Reason) UnmarshalJSON(data []byte) error {
 type BlockedDueToOverageType string
 
 const (
-	BlockedDueToOverageTypeAiCredits                               BlockedDueToOverageType = "aiCredits"
 	BlockedDueToOverageTypeAnalyticsUsage                          BlockedDueToOverageType = "analyticsUsage"
 	BlockedDueToOverageTypeArtifacts                               BlockedDueToOverageType = "artifacts"
 	BlockedDueToOverageTypeBandwidth                               BlockedDueToOverageType = "bandwidth"
@@ -104,8 +103,6 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "aiCredits":
-		fallthrough
 	case "analyticsUsage":
 		fallthrough
 	case "artifacts":

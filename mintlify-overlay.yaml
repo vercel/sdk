@@ -18,3 +18,6 @@ actions:
     remove: true
   - target: $.paths..requestBody..[?(@.required && length(@.required) == 0)].required
     remove: true    
+  # Removing any instances in the request body that have "private": true as this break the mintlify linting when generating the docs
+  - target: $.paths..requestBody..[?(@.private == true)].private
+    remove: true  

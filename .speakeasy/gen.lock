@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 774219fc807c3687659bc28f2217d4c4
+  docChecksum: f4317e35e2a168112b08860afb871b37
   docVersion: 0.0.1
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
-  releaseVersion: 1.6.9
-  configChecksum: 315633298dc6b149ee5f6588b639fbd5
+  releaseVersion: 1.6.10
+  configChecksum: 6608b4597da6fef2af21f0acfea93530
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -1776,6 +1776,7 @@ generatedFiles:
   - docs/models/lcp.md
   - docs/models/level.md
   - docs/models/lfi.md
+  - docs/models/limitedby.md
   - docs/models/link.md
   - docs/models/link1.md
   - docs/models/link2.md
@@ -2000,6 +2001,8 @@ generatedFiles:
   - docs/models/paths.md
   - docs/models/pauseprojectrequest.md
   - docs/models/payload.md
+  - docs/models/payload1.md
+  - docs/models/payload2.md
   - docs/models/payloadaccessgroup.md
   - docs/models/payloadaction.md
   - docs/models/payloadactivedashboardviews.md
@@ -2084,6 +2087,8 @@ generatedFiles:
   - docs/models/prevprojectanalytics.md
   - docs/models/prevprojectwebanalytics.md
   - docs/models/pricingplan.md
+  - docs/models/principal.md
+  - docs/models/principaltype.md
   - docs/models/production.md
   - docs/models/project.md
   - docs/models/projectanalytics.md
@@ -3110,7 +3115,9 @@ generatedFiles:
   - docs/models/usereventpayloadteam.md
   - docs/models/usereventpayloadtype.md
   - docs/models/usereventpayloaduser.md
+  - docs/models/usereventprincipaltype.md
   - docs/models/usereventtype.md
+  - docs/models/usereventviatype.md
   - docs/models/utm.md
   - docs/models/value.md
   - docs/models/value2.md
@@ -3126,6 +3133,10 @@ generatedFiles:
   - docs/models/verifyprojectdomainrequest.md
   - docs/models/verifyprojectdomainresponsebody.md
   - docs/models/version.md
+  - docs/models/via.md
+  - docs/models/via1.md
+  - docs/models/via2.md
+  - docs/models/viatype.md
   - docs/models/view.md
   - docs/models/viewpreference.md
   - docs/models/virtualexperiencescore.md
@@ -5865,6 +5876,7 @@ examples:
           withPayload: "true"
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+          principalId: "aeIInYVk59zbFF2SxfyxxmuO"
       responses:
         "200":
           application/json: {"events": []}

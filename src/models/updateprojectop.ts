@@ -465,10 +465,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1310,6 +1310,7 @@ export type UpdateProjectFunctionDefaultMemoryType = ClosedEnum<
 
 export const UpdateProjectBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type UpdateProjectBuildMachineType = ClosedEnum<
   typeof UpdateProjectBuildMachineType
@@ -1375,6 +1376,7 @@ export type UpdateProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const UpdateProjectProjectsBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
   typeof UpdateProjectProjectsBuildMachineType
@@ -1909,8 +1911,8 @@ export type UpdateProjectSrc = UpdateProjectSrc2 | string;
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -1951,8 +1953,8 @@ export type UpdateProjectHas = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",

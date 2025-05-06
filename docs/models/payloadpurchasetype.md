@@ -11,5 +11,5 @@ let value: PayloadPurchaseType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced"
+"enhanced" | "ultra"
 ```

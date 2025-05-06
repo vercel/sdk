@@ -11,7 +11,7 @@ let value: CreateWebhookRequest = {
   requestBody: {
     url: "https://passionate-season.net",
     events: [
-      "deployment.check-rerequested",
+      "deployment.promoted",
     ],
   },
 };

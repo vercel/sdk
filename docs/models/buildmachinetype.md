@@ -11,5 +11,5 @@ let value: BuildMachineType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced"
+"enhanced" | "ultra"
 ```

@@ -353,10 +353,10 @@ export type CreateProjectProjectsTarget =
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -1201,6 +1201,7 @@ export type CreateProjectFunctionDefaultMemoryType = ClosedEnum<
 
 export const CreateProjectBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type CreateProjectBuildMachineType = ClosedEnum<
   typeof CreateProjectBuildMachineType
@@ -1266,6 +1267,7 @@ export type CreateProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const CreateProjectProjectsBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type CreateProjectProjectsBuildMachineType = ClosedEnum<
   typeof CreateProjectProjectsBuildMachineType
@@ -1804,8 +1806,8 @@ export type CreateProjectSrc = CreateProjectSrc2 | string;
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -1846,8 +1848,8 @@ export type CreateProjectHas = {
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",

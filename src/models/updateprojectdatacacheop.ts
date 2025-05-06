@@ -974,6 +974,7 @@ export type FunctionDefaultMemoryType = ClosedEnum<
 
 export const BuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
 
@@ -1035,6 +1036,7 @@ export type UpdateProjectDataCacheFunctionDefaultMemoryType = ClosedEnum<
 
 export const UpdateProjectDataCacheBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type UpdateProjectDataCacheBuildMachineType = ClosedEnum<
   typeof UpdateProjectDataCacheBuildMachineType

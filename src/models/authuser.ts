@@ -97,6 +97,7 @@ export type BuildEntitlements = {
  */
 export const PurchaseType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.

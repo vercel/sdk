@@ -1004,6 +1004,7 @@ export type GetProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const GetProjectsBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type GetProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsBuildMachineType
@@ -1067,6 +1068,7 @@ export type GetProjectsProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const GetProjectsProjectsBuildMachineType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type GetProjectsProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsProjectsBuildMachineType

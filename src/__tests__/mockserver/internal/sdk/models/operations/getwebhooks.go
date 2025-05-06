@@ -67,6 +67,10 @@ const (
 	GetWebhooksResponseBodyEventsIntegrationResourceProjectDisconnected             GetWebhooksResponseBodyEvents = "integration-resource.project-disconnected"
 	GetWebhooksResponseBodyEventsProjectCreated                                     GetWebhooksResponseBodyEvents = "project.created"
 	GetWebhooksResponseBodyEventsProjectRemoved                                     GetWebhooksResponseBodyEvents = "project.removed"
+	GetWebhooksResponseBodyEventsProjectRollingReleaseStarted                       GetWebhooksResponseBodyEvents = "project.rolling-release.started"
+	GetWebhooksResponseBodyEventsProjectRollingReleaseAborted                       GetWebhooksResponseBodyEvents = "project.rolling-release.aborted"
+	GetWebhooksResponseBodyEventsProjectRollingReleaseCompleted                     GetWebhooksResponseBodyEvents = "project.rolling-release.completed"
+	GetWebhooksResponseBodyEventsProjectRollingReleaseApproved                      GetWebhooksResponseBodyEvents = "project.rolling-release.approved"
 	GetWebhooksResponseBodyEventsDeploymentChecksCompletedLegacy                    GetWebhooksResponseBodyEvents = "deployment-checks-completed"
 	GetWebhooksResponseBodyEventsDeploymentReadyLegacy                              GetWebhooksResponseBodyEvents = "deployment-ready"
 	GetWebhooksResponseBodyEventsDeploymentPreparedLegacy                           GetWebhooksResponseBodyEvents = "deployment-prepared"
@@ -144,6 +148,14 @@ func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.rolling-release.started":
+		fallthrough
+	case "project.rolling-release.aborted":
+		fallthrough
+	case "project.rolling-release.completed":
+		fallthrough
+	case "project.rolling-release.approved":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough
@@ -476,6 +488,10 @@ const (
 	ResponseBodyEventsIntegrationResourceProjectDisconnected             ResponseBodyEvents = "integration-resource.project-disconnected"
 	ResponseBodyEventsProjectCreated                                     ResponseBodyEvents = "project.created"
 	ResponseBodyEventsProjectRemoved                                     ResponseBodyEvents = "project.removed"
+	ResponseBodyEventsProjectRollingReleaseStarted                       ResponseBodyEvents = "project.rolling-release.started"
+	ResponseBodyEventsProjectRollingReleaseAborted                       ResponseBodyEvents = "project.rolling-release.aborted"
+	ResponseBodyEventsProjectRollingReleaseCompleted                     ResponseBodyEvents = "project.rolling-release.completed"
+	ResponseBodyEventsProjectRollingReleaseApproved                      ResponseBodyEvents = "project.rolling-release.approved"
 	ResponseBodyEventsDeploymentChecksCompletedLegacy                    ResponseBodyEvents = "deployment-checks-completed"
 	ResponseBodyEventsDeploymentReadyLegacy                              ResponseBodyEvents = "deployment-ready"
 	ResponseBodyEventsDeploymentPreparedLegacy                           ResponseBodyEvents = "deployment-prepared"
@@ -553,6 +569,14 @@ func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.rolling-release.started":
+		fallthrough
+	case "project.rolling-release.aborted":
+		fallthrough
+	case "project.rolling-release.completed":
+		fallthrough
+	case "project.rolling-release.approved":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough

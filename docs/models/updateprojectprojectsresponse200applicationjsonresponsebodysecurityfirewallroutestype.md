@@ -9,11 +9,11 @@ import {
 
 let value:
   UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
-    "path";
+    "host";
 ```
 
 ## Values
 
 ```typescript
-"host" | "path" | "method" | "header" | "cookie" | "query" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
+"path" | "host" | "method" | "header" | "cookie" | "query" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
 ```

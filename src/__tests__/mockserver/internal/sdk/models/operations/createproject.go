@@ -1063,10 +1063,10 @@ type CreateProjectProjectsResponseType string
 
 const (
 	CreateProjectProjectsResponseTypeSystem    CreateProjectProjectsResponseType = "system"
-	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 	CreateProjectProjectsResponseTypeEncrypted CreateProjectProjectsResponseType = "encrypted"
 	CreateProjectProjectsResponseTypePlain     CreateProjectProjectsResponseType = "plain"
 	CreateProjectProjectsResponseTypeSensitive CreateProjectProjectsResponseType = "sensitive"
+	CreateProjectProjectsResponseTypeSecret    CreateProjectProjectsResponseType = "secret"
 )
 
 func (e CreateProjectProjectsResponseType) ToPointer() *CreateProjectProjectsResponseType {
@@ -1080,13 +1080,13 @@ func (e *CreateProjectProjectsResponseType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = CreateProjectProjectsResponseType(v)
 		return nil
 	default:
@@ -4549,6 +4549,7 @@ type CreateProjectBuildMachineType string
 
 const (
 	CreateProjectBuildMachineTypeEnhanced CreateProjectBuildMachineType = "enhanced"
+	CreateProjectBuildMachineTypeUltra    CreateProjectBuildMachineType = "ultra"
 )
 
 func (e CreateProjectBuildMachineType) ToPointer() *CreateProjectBuildMachineType {
@@ -4561,6 +4562,8 @@ func (e *CreateProjectBuildMachineType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = CreateProjectBuildMachineType(v)
 		return nil
 	default:
@@ -4730,6 +4733,7 @@ type CreateProjectProjectsBuildMachineType string
 
 const (
 	CreateProjectProjectsBuildMachineTypeEnhanced CreateProjectProjectsBuildMachineType = "enhanced"
+	CreateProjectProjectsBuildMachineTypeUltra    CreateProjectProjectsBuildMachineType = "ultra"
 )
 
 func (e CreateProjectProjectsBuildMachineType) ToPointer() *CreateProjectProjectsBuildMachineType {
@@ -4742,6 +4746,8 @@ func (e *CreateProjectProjectsBuildMachineType) UnmarshalJSON(data []byte) error
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = CreateProjectProjectsBuildMachineType(v)
 		return nil
 	default:
@@ -7797,8 +7803,8 @@ func (u CreateProjectSrc) MarshalJSON() ([]byte, error) {
 type CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
+	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -7820,9 +7826,9 @@ func (e *CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough
@@ -8034,8 +8040,8 @@ func (o *CreateProjectHas) GetValue() *CreateProjectValue {
 type CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
+	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -8057,9 +8063,9 @@ func (e *CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough

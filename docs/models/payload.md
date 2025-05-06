@@ -3,17 +3,17 @@
 
 ## Supported Types
 
-### `models.One`
+### `models.Payload1`
 
 ```typescript
-const value: models.One = {};
+const value: models.Payload1 = {};
 ```
 
-### `models.Two`
+### `models.Payload2`
 
 ```typescript
-const value: models.Two = {
-  action: "deleted",
+const value: models.Payload2 = {
+  action: "archived",
   id: "<id>",
   slug: "<value>",
   projectId: "<id>",

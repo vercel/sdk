@@ -243,6 +243,7 @@ type PurchaseType string
 
 const (
 	PurchaseTypeEnhanced PurchaseType = "enhanced"
+	PurchaseTypeUltra    PurchaseType = "ultra"
 )
 
 func (e PurchaseType) ToPointer() *PurchaseType {
@@ -255,6 +256,8 @@ func (e *PurchaseType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = PurchaseType(v)
 		return nil
 	default:

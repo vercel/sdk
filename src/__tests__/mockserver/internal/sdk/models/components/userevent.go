@@ -125,13 +125,13 @@ func (o *Entities) GetEnd() float64 {
 	return o.End
 }
 
-// User - Metadata for the User who generated the event.
+// User - Metadata for {@link userId}.
 type User struct {
 	Avatar   string  `json:"avatar"`
 	Email    string  `json:"email"`
+	Username string  `json:"username"`
 	Slug     *string `json:"slug,omitempty"`
 	UID      string  `json:"uid"`
-	Username string  `json:"username"`
 }
 
 func (o *User) GetAvatar() string {
@@ -148,6 +148,13 @@ func (o *User) GetEmail() string {
 	return o.Email
 }
 
+func (o *User) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 func (o *User) GetSlug() *string {
 	if o == nil {
 		return nil
@@ -162,11 +169,382 @@ func (o *User) GetUID() string {
 	return o.UID
 }
 
-func (o *User) GetUsername() string {
+type UserEventPrincipalType string
+
+const (
+	UserEventPrincipalTypeApp UserEventPrincipalType = "app"
+)
+
+func (e UserEventPrincipalType) ToPointer() *UserEventPrincipalType {
+	return &e
+}
+func (e *UserEventPrincipalType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "app":
+		*e = UserEventPrincipalType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventPrincipalType: %v", v)
+	}
+}
+
+// Two - Metadata for {@link principalId}.
+type Two struct {
+	Type     UserEventPrincipalType `json:"type"`
+	ClientID string                 `json:"clientId"`
+	Name     string                 `json:"name"`
+}
+
+func (o *Two) GetType() UserEventPrincipalType {
+	if o == nil {
+		return UserEventPrincipalType("")
+	}
+	return o.Type
+}
+
+func (o *Two) GetClientID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ClientID
+}
+
+func (o *Two) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type PrincipalType string
+
+const (
+	PrincipalTypeUser PrincipalType = "user"
+)
+
+func (e PrincipalType) ToPointer() *PrincipalType {
+	return &e
+}
+func (e *PrincipalType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		*e = PrincipalType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrincipalType: %v", v)
+	}
+}
+
+// One - Metadata for {@link principalId}.
+type One struct {
+	Type     *PrincipalType `json:"type,omitempty"`
+	Avatar   string         `json:"avatar"`
+	Email    string         `json:"email"`
+	Slug     *string        `json:"slug,omitempty"`
+	UID      string         `json:"uid"`
+	Username string         `json:"username"`
+}
+
+func (o *One) GetType() *PrincipalType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *One) GetAvatar() string {
+	if o == nil {
+		return ""
+	}
+	return o.Avatar
+}
+
+func (o *One) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *One) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *One) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *One) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
+}
+
+type PrincipalUnionType string
+
+const (
+	PrincipalUnionTypeOne PrincipalUnionType = "1"
+	PrincipalUnionTypeTwo PrincipalUnionType = "2"
+)
+
+type Principal struct {
+	One *One
+	Two *Two
+
+	Type PrincipalUnionType
+}
+
+func CreatePrincipalOne(one One) Principal {
+	typ := PrincipalUnionTypeOne
+
+	return Principal{
+		One:  &one,
+		Type: typ,
+	}
+}
+
+func CreatePrincipalTwo(two Two) Principal {
+	typ := PrincipalUnionTypeTwo
+
+	return Principal{
+		Two:  &two,
+		Type: typ,
+	}
+}
+
+func (u *Principal) UnmarshalJSON(data []byte) error {
+
+	var two Two = Two{}
+	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
+		u.Two = &two
+		u.Type = PrincipalUnionTypeTwo
+		return nil
+	}
+
+	var one One = One{}
+	if err := utils.UnmarshalJSON(data, &one, "", true, true); err == nil {
+		u.One = &one
+		u.Type = PrincipalUnionTypeOne
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Principal", string(data))
+}
+
+func (u Principal) MarshalJSON() ([]byte, error) {
+	if u.One != nil {
+		return utils.MarshalJSON(u.One, "", true)
+	}
+
+	if u.Two != nil {
+		return utils.MarshalJSON(u.Two, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Principal: all fields are null")
+}
+
+type UserEventViaType string
+
+const (
+	UserEventViaTypeApp UserEventViaType = "app"
+)
+
+func (e UserEventViaType) ToPointer() *UserEventViaType {
+	return &e
+}
+func (e *UserEventViaType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "app":
+		*e = UserEventViaType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventViaType: %v", v)
+	}
+}
+
+// Via2 - Metadata for {@link viaIds}.
+type Via2 struct {
+	Type     UserEventViaType `json:"type"`
+	ClientID string           `json:"clientId"`
+	Name     string           `json:"name"`
+}
+
+func (o *Via2) GetType() UserEventViaType {
+	if o == nil {
+		return UserEventViaType("")
+	}
+	return o.Type
+}
+
+func (o *Via2) GetClientID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ClientID
+}
+
+func (o *Via2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type ViaType string
+
+const (
+	ViaTypeUser ViaType = "user"
+)
+
+func (e ViaType) ToPointer() *ViaType {
+	return &e
+}
+func (e *ViaType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		*e = ViaType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ViaType: %v", v)
+	}
+}
+
+// Via1 - Metadata for {@link viaIds}.
+type Via1 struct {
+	Type     *ViaType `json:"type,omitempty"`
+	Avatar   string   `json:"avatar"`
+	Email    string   `json:"email"`
+	Slug     *string  `json:"slug,omitempty"`
+	UID      string   `json:"uid"`
+	Username string   `json:"username"`
+}
+
+func (o *Via1) GetType() *ViaType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Via1) GetAvatar() string {
+	if o == nil {
+		return ""
+	}
+	return o.Avatar
+}
+
+func (o *Via1) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *Via1) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *Via1) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *Via1) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+type ViaUnionType string
+
+const (
+	ViaUnionTypeVia1 ViaUnionType = "via_1"
+	ViaUnionTypeVia2 ViaUnionType = "via_2"
+)
+
+type Via struct {
+	Via1 *Via1
+	Via2 *Via2
+
+	Type ViaUnionType
+}
+
+func CreateViaVia1(via1 Via1) Via {
+	typ := ViaUnionTypeVia1
+
+	return Via{
+		Via1: &via1,
+		Type: typ,
+	}
+}
+
+func CreateViaVia2(via2 Via2) Via {
+	typ := ViaUnionTypeVia2
+
+	return Via{
+		Via2: &via2,
+		Type: typ,
+	}
+}
+
+func (u *Via) UnmarshalJSON(data []byte) error {
+
+	var via2 Via2 = Via2{}
+	if err := utils.UnmarshalJSON(data, &via2, "", true, true); err == nil {
+		u.Via2 = &via2
+		u.Type = ViaUnionTypeVia2
+		return nil
+	}
+
+	var via1 Via1 = Via1{}
+	if err := utils.UnmarshalJSON(data, &via1, "", true, true); err == nil {
+		u.Via1 = &via1
+		u.Type = ViaUnionTypeVia1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Via", string(data))
+}
+
+func (u Via) MarshalJSON() ([]byte, error) {
+	if u.Via1 != nil {
+		return utils.MarshalJSON(u.Via1, "", true)
+	}
+
+	if u.Via2 != nil {
+		return utils.MarshalJSON(u.Via2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Via: all fields are null")
 }
 
 type GrantType string
@@ -7103,6 +7481,7 @@ type PayloadPurchaseType string
 
 const (
 	PayloadPurchaseTypeEnhanced PayloadPurchaseType = "enhanced"
+	PayloadPurchaseTypeUltra    PayloadPurchaseType = "ultra"
 )
 
 func (e PayloadPurchaseType) ToPointer() *PayloadPurchaseType {
@@ -7115,6 +7494,8 @@ func (e *PayloadPurchaseType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = PayloadPurchaseType(v)
 		return nil
 	default:
@@ -15104,51 +15485,51 @@ func (e *Action) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Two - The payload of the event, if requested.
-type Two struct {
+// Payload2 - The payload of the event, if requested.
+type Payload2 struct {
 	Action    Action `json:"action"`
 	ID        string `json:"id"`
 	Slug      string `json:"slug"`
 	ProjectID string `json:"projectId"`
 }
 
-func (o *Two) GetAction() Action {
+func (o *Payload2) GetAction() Action {
 	if o == nil {
 		return Action("")
 	}
 	return o.Action
 }
 
-func (o *Two) GetID() string {
+func (o *Payload2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Two) GetSlug() string {
+func (o *Payload2) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *Two) GetProjectID() string {
+func (o *Payload2) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-// One - The payload of the event, if requested.
-type One struct {
+// Payload1 - The payload of the event, if requested.
+type Payload1 struct {
 }
 
 type PayloadUnionType string
 
 const (
-	PayloadUnionTypeOne                      PayloadUnionType = "1"
-	PayloadUnionTypeTwo                      PayloadUnionType = "2"
+	PayloadUnionTypePayload1                 PayloadUnionType = "payload_1"
+	PayloadUnionTypePayload2                 PayloadUnionType = "payload_2"
 	PayloadUnionTypeThree                    PayloadUnionType = "3"
 	PayloadUnionTypeFour                     PayloadUnionType = "4"
 	PayloadUnionTypeFive                     PayloadUnionType = "5"
@@ -15298,8 +15679,8 @@ const (
 )
 
 type Payload struct {
-	One                      *One
-	Two                      *Two
+	Payload1                 *Payload1
+	Payload2                 *Payload2
 	Three                    *Three
 	Four                     *Four
 	Five                     *Five
@@ -15450,21 +15831,21 @@ type Payload struct {
 	Type PayloadUnionType
 }
 
-func CreatePayloadOne(one One) Payload {
-	typ := PayloadUnionTypeOne
+func CreatePayloadPayload1(payload1 Payload1) Payload {
+	typ := PayloadUnionTypePayload1
 
 	return Payload{
-		One:  &one,
-		Type: typ,
+		Payload1: &payload1,
+		Type:     typ,
 	}
 }
 
-func CreatePayloadTwo(two Two) Payload {
-	typ := PayloadUnionTypeTwo
+func CreatePayloadPayload2(payload2 Payload2) Payload {
+	typ := PayloadUnionTypePayload2
 
 	return Payload{
-		Two:  &two,
-		Type: typ,
+		Payload2: &payload2,
+		Type:     typ,
 	}
 }
 
@@ -16784,10 +17165,10 @@ func CreatePayloadOneHundredAndFortyEight(oneHundredAndFortyEight OneHundredAndF
 
 func (u *Payload) UnmarshalJSON(data []byte) error {
 
-	var one One = One{}
-	if err := utils.UnmarshalJSON(data, &one, "", true, true); err == nil {
-		u.One = &one
-		u.Type = PayloadUnionTypeOne
+	var payload1 Payload1 = Payload1{}
+	if err := utils.UnmarshalJSON(data, &payload1, "", true, true); err == nil {
+		u.Payload1 = &payload1
+		u.Type = PayloadUnionTypePayload1
 		return nil
 	}
 
@@ -17540,10 +17921,10 @@ func (u *Payload) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var two Two = Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
-		u.Two = &two
-		u.Type = PayloadUnionTypeTwo
+	var payload2 Payload2 = Payload2{}
+	if err := utils.UnmarshalJSON(data, &payload2, "", true, true); err == nil {
+		u.Payload2 = &payload2
+		u.Type = PayloadUnionTypePayload2
 		return nil
 	}
 
@@ -17824,12 +18205,12 @@ func (u *Payload) UnmarshalJSON(data []byte) error {
 }
 
 func (u Payload) MarshalJSON() ([]byte, error) {
-	if u.One != nil {
-		return utils.MarshalJSON(u.One, "", true)
+	if u.Payload1 != nil {
+		return utils.MarshalJSON(u.Payload1, "", true)
 	}
 
-	if u.Two != nil {
-		return utils.MarshalJSON(u.Two, "", true)
+	if u.Payload2 != nil {
+		return utils.MarshalJSON(u.Payload2, "", true)
 	}
 
 	if u.Three != nil {
@@ -18429,10 +18810,17 @@ type UserEvent struct {
 	Entities []Entities `json:"entities"`
 	// Timestamp (in milliseconds) of when the event was generated.
 	CreatedAt float64 `json:"createdAt"`
-	// Metadata for the User who generated the event.
-	User *User `json:"user,omitempty"`
-	// The unique identifier of the User who generated the event.
-	UserID  string   `json:"userId"`
+	// Metadata for {@link userId}.
+	User      *User      `json:"user,omitempty"`
+	Principal *Principal `json:"principal,omitempty"`
+	// Metadata for {@link viaIds}.
+	Via []Via `json:"via,omitempty"`
+	// When the principal who generated the event is a user, this is their ID; otherwise, it is empty.
+	UserID string `json:"userId"`
+	// The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
+	PrincipalID string `json:"principalId"`
+	// If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2".
+	ViaIds  []string `json:"viaIds,omitempty"`
 	Payload *Payload `json:"payload,omitempty"`
 }
 
@@ -18471,11 +18859,39 @@ func (o *UserEvent) GetUser() *User {
 	return o.User
 }
 
+func (o *UserEvent) GetPrincipal() *Principal {
+	if o == nil {
+		return nil
+	}
+	return o.Principal
+}
+
+func (o *UserEvent) GetVia() []Via {
+	if o == nil {
+		return nil
+	}
+	return o.Via
+}
+
 func (o *UserEvent) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
+}
+
+func (o *UserEvent) GetPrincipalID() string {
+	if o == nil {
+		return ""
+	}
+	return o.PrincipalID
+}
+
+func (o *UserEvent) GetViaIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ViaIds
 }
 
 func (o *UserEvent) GetPayload() *Payload {

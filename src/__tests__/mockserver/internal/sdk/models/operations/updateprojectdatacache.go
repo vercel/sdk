@@ -3927,6 +3927,7 @@ type BuildMachineType string
 
 const (
 	BuildMachineTypeEnhanced BuildMachineType = "enhanced"
+	BuildMachineTypeUltra    BuildMachineType = "ultra"
 )
 
 func (e BuildMachineType) ToPointer() *BuildMachineType {
@@ -3939,6 +3940,8 @@ func (e *BuildMachineType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = BuildMachineType(v)
 		return nil
 	default:
@@ -4108,6 +4111,7 @@ type UpdateProjectDataCacheBuildMachineType string
 
 const (
 	UpdateProjectDataCacheBuildMachineTypeEnhanced UpdateProjectDataCacheBuildMachineType = "enhanced"
+	UpdateProjectDataCacheBuildMachineTypeUltra    UpdateProjectDataCacheBuildMachineType = "ultra"
 )
 
 func (e UpdateProjectDataCacheBuildMachineType) ToPointer() *UpdateProjectDataCacheBuildMachineType {
@@ -4120,6 +4124,8 @@ func (e *UpdateProjectDataCacheBuildMachineType) UnmarshalJSON(data []byte) erro
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = UpdateProjectDataCacheBuildMachineType(v)
 		return nil
 	default:

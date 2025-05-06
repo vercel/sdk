@@ -4023,6 +4023,7 @@ type GetProjectsBuildMachineType string
 
 const (
 	GetProjectsBuildMachineTypeEnhanced GetProjectsBuildMachineType = "enhanced"
+	GetProjectsBuildMachineTypeUltra    GetProjectsBuildMachineType = "ultra"
 )
 
 func (e GetProjectsBuildMachineType) ToPointer() *GetProjectsBuildMachineType {
@@ -4035,6 +4036,8 @@ func (e *GetProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = GetProjectsBuildMachineType(v)
 		return nil
 	default:
@@ -4204,6 +4207,7 @@ type GetProjectsProjectsBuildMachineType string
 
 const (
 	GetProjectsProjectsBuildMachineTypeEnhanced GetProjectsProjectsBuildMachineType = "enhanced"
+	GetProjectsProjectsBuildMachineTypeUltra    GetProjectsProjectsBuildMachineType = "ultra"
 )
 
 func (e GetProjectsProjectsBuildMachineType) ToPointer() *GetProjectsProjectsBuildMachineType {
@@ -4216,6 +4220,8 @@ func (e *GetProjectsProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "enhanced":
+		fallthrough
+	case "ultra":
 		*e = GetProjectsProjectsBuildMachineType(v)
 		return nil
 	default:

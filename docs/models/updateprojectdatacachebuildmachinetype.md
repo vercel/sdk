@@ -11,5 +11,5 @@ let value: UpdateProjectDataCacheBuildMachineType = "enhanced";
 ## Values
 
 ```typescript
-"enhanced"
+"enhanced" | "ultra"
 ```

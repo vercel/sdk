@@ -59,15 +59,81 @@ export type Entities = {
 };
 
 /**
- * Metadata for the User who generated the event.
+ * Metadata for {@link userId}.
  */
 export type User = {
+  avatar: string;
+  email: string;
+  username: string;
+  slug?: string | undefined;
+  uid: string;
+};
+
+export const UserEventPrincipalType = {
+  App: "app",
+} as const;
+export type UserEventPrincipalType = ClosedEnum<typeof UserEventPrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Two = {
+  type: UserEventPrincipalType;
+  clientId: string;
+  name: string;
+};
+
+export const PrincipalType = {
+  User: "user",
+} as const;
+export type PrincipalType = ClosedEnum<typeof PrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type One = {
+  type?: PrincipalType | undefined;
   avatar: string;
   email: string;
   slug?: string | undefined;
   uid: string;
   username: string;
 };
+
+export type Principal = Two | One;
+
+export const UserEventViaType = {
+  App: "app",
+} as const;
+export type UserEventViaType = ClosedEnum<typeof UserEventViaType>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via2 = {
+  type: UserEventViaType;
+  clientId: string;
+  name: string;
+};
+
+export const ViaType = {
+  User: "user",
+} as const;
+export type ViaType = ClosedEnum<typeof ViaType>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via1 = {
+  type?: ViaType | undefined;
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type Via = Via2 | Via1;
 
 export const GrantType = {
   AuthorizationCode: "authorization_code",
@@ -1908,6 +1974,7 @@ export type PayloadBuildEntitlements = {
 
 export const PayloadPurchaseType = {
   Enhanced: "enhanced",
+  Ultra: "ultra",
 } as const;
 export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 
@@ -4073,7 +4140,7 @@ export type Action = ClosedEnum<typeof Action>;
 /**
  * The payload of the event, if requested.
  */
-export type Two = {
+export type Payload2 = {
   action: Action;
   id: string;
   slug: string;
@@ -4083,10 +4150,10 @@ export type Two = {
 /**
  * The payload of the event, if requested.
  */
-export type One = {};
+export type Payload1 = {};
 
 export type Payload =
-  | One
+  | Payload1
   | Three
   | Nine
   | Nineteen
@@ -4191,7 +4258,7 @@ export type Payload =
   | OneHundredAndThirtyEight
   | OneHundredAndFortyFive
   | OneHundredAndFortySix
-  | Two
+  | Payload2
   | Six
   | Eleven
   | Fifteen
@@ -4256,15 +4323,28 @@ export type UserEvent = {
    */
   createdAt: number;
   /**
-   * Metadata for the User who generated the event.
+   * Metadata for {@link userId}.
    */
   user?: User | undefined;
+  principal?: Two | One | undefined;
   /**
-   * The unique identifier of the User who generated the event.
+   * Metadata for {@link viaIds}.
+   */
+  via?: Array<Via2 | Via1> | undefined;
+  /**
+   * When the principal who generated the event is a user, this is their ID; otherwise, it is empty.
    */
   userId: string;
+  /**
+   * The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
+   */
+  principalId: string;
+  /**
+   * If the principal delegated its authority (for example, a user delegating to an app), then this array contains the ID of the current actor. For example, if `principalId` is "user123" and `viaIds` is `["app456"]`, we can say the event was triggered by - "app456 on behalf of user123", or - "user123 via app4556". Both are equivalent. Arbitrarily long chains of delegation can be represented. For example, if `principalId` is "user123" and `viaIds` is `["service1", "service2"]`, we can say the event was triggered by "user123 via service1 via service2".
+   */
+  viaIds?: Array<string> | undefined;
   payload?:
-    | One
+    | Payload1
     | Three
     | Nine
     | Nineteen
@@ -4369,7 +4449,7 @@ export type UserEvent = {
     | OneHundredAndThirtyEight
     | OneHundredAndFortyFive
     | OneHundredAndFortySix
-    | Two
+    | Payload2
     | Six
     | Eleven
     | Fifteen
@@ -4497,18 +4577,18 @@ export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
   .object({
     avatar: z.string(),
     email: z.string(),
+    username: z.string(),
     slug: z.string().optional(),
     uid: z.string(),
-    username: z.string(),
   });
 
 /** @internal */
 export type User$Outbound = {
   avatar: string;
   email: string;
+  username: string;
   slug?: string | undefined;
   uid: string;
-  username: string;
 };
 
 /** @internal */
@@ -4516,9 +4596,9 @@ export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> =
   z.object({
     avatar: z.string(),
     email: z.string(),
+    username: z.string(),
     slug: z.string().optional(),
     uid: z.string(),
-    username: z.string(),
   });
 
 /**
@@ -4545,6 +4625,395 @@ export function userFromJSON(
     jsonString,
     (x) => User$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'User' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipalType
+> = z.nativeEnum(UserEventPrincipalType);
+
+/** @internal */
+export const UserEventPrincipalType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipalType
+> = UserEventPrincipalType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPrincipalType$ {
+  /** @deprecated use `UserEventPrincipalType$inboundSchema` instead. */
+  export const inboundSchema = UserEventPrincipalType$inboundSchema;
+  /** @deprecated use `UserEventPrincipalType$outboundSchema` instead. */
+  export const outboundSchema = UserEventPrincipalType$outboundSchema;
+}
+
+/** @internal */
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
+  .object({
+    type: UserEventPrincipalType$inboundSchema,
+    clientId: z.string(),
+    name: z.string(),
+  });
+
+/** @internal */
+export type Two$Outbound = {
+  type: string;
+  clientId: string;
+  name: string;
+};
+
+/** @internal */
+export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
+  .object({
+    type: UserEventPrincipalType$outboundSchema,
+    clientId: z.string(),
+    name: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Two$ {
+  /** @deprecated use `Two$inboundSchema` instead. */
+  export const inboundSchema = Two$inboundSchema;
+  /** @deprecated use `Two$outboundSchema` instead. */
+  export const outboundSchema = Two$outboundSchema;
+  /** @deprecated use `Two$Outbound` instead. */
+  export type Outbound = Two$Outbound;
+}
+
+export function twoToJSON(two: Two): string {
+  return JSON.stringify(Two$outboundSchema.parse(two));
+}
+
+export function twoFromJSON(
+  jsonString: string,
+): SafeParseResult<Two, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Two$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Two' from JSON`,
+  );
+}
+
+/** @internal */
+export const PrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof PrincipalType
+> = z.nativeEnum(PrincipalType);
+
+/** @internal */
+export const PrincipalType$outboundSchema: z.ZodNativeEnum<
+  typeof PrincipalType
+> = PrincipalType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PrincipalType$ {
+  /** @deprecated use `PrincipalType$inboundSchema` instead. */
+  export const inboundSchema = PrincipalType$inboundSchema;
+  /** @deprecated use `PrincipalType$outboundSchema` instead. */
+  export const outboundSchema = PrincipalType$outboundSchema;
+}
+
+/** @internal */
+export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
+  .object({
+    type: PrincipalType$inboundSchema.optional(),
+    avatar: z.string(),
+    email: z.string(),
+    slug: z.string().optional(),
+    uid: z.string(),
+    username: z.string(),
+  });
+
+/** @internal */
+export type One$Outbound = {
+  type?: string | undefined;
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+/** @internal */
+export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
+  .object({
+    type: PrincipalType$outboundSchema.optional(),
+    avatar: z.string(),
+    email: z.string(),
+    slug: z.string().optional(),
+    uid: z.string(),
+    username: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace One$ {
+  /** @deprecated use `One$inboundSchema` instead. */
+  export const inboundSchema = One$inboundSchema;
+  /** @deprecated use `One$outboundSchema` instead. */
+  export const outboundSchema = One$outboundSchema;
+  /** @deprecated use `One$Outbound` instead. */
+  export type Outbound = One$Outbound;
+}
+
+export function oneToJSON(one: One): string {
+  return JSON.stringify(One$outboundSchema.parse(one));
+}
+
+export function oneFromJSON(
+  jsonString: string,
+): SafeParseResult<One, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => One$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'One' from JSON`,
+  );
+}
+
+/** @internal */
+export const Principal$inboundSchema: z.ZodType<
+  Principal,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => Two$inboundSchema), z.lazy(() => One$inboundSchema)]);
+
+/** @internal */
+export type Principal$Outbound = Two$Outbound | One$Outbound;
+
+/** @internal */
+export const Principal$outboundSchema: z.ZodType<
+  Principal$Outbound,
+  z.ZodTypeDef,
+  Principal
+> = z.union([
+  z.lazy(() => Two$outboundSchema),
+  z.lazy(() => One$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Principal$ {
+  /** @deprecated use `Principal$inboundSchema` instead. */
+  export const inboundSchema = Principal$inboundSchema;
+  /** @deprecated use `Principal$outboundSchema` instead. */
+  export const outboundSchema = Principal$outboundSchema;
+  /** @deprecated use `Principal$Outbound` instead. */
+  export type Outbound = Principal$Outbound;
+}
+
+export function principalToJSON(principal: Principal): string {
+  return JSON.stringify(Principal$outboundSchema.parse(principal));
+}
+
+export function principalFromJSON(
+  jsonString: string,
+): SafeParseResult<Principal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventViaType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventViaType
+> = z.nativeEnum(UserEventViaType);
+
+/** @internal */
+export const UserEventViaType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventViaType
+> = UserEventViaType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventViaType$ {
+  /** @deprecated use `UserEventViaType$inboundSchema` instead. */
+  export const inboundSchema = UserEventViaType$inboundSchema;
+  /** @deprecated use `UserEventViaType$outboundSchema` instead. */
+  export const outboundSchema = UserEventViaType$outboundSchema;
+}
+
+/** @internal */
+export const Via2$inboundSchema: z.ZodType<Via2, z.ZodTypeDef, unknown> = z
+  .object({
+    type: UserEventViaType$inboundSchema,
+    clientId: z.string(),
+    name: z.string(),
+  });
+
+/** @internal */
+export type Via2$Outbound = {
+  type: string;
+  clientId: string;
+  name: string;
+};
+
+/** @internal */
+export const Via2$outboundSchema: z.ZodType<Via2$Outbound, z.ZodTypeDef, Via2> =
+  z.object({
+    type: UserEventViaType$outboundSchema,
+    clientId: z.string(),
+    name: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Via2$ {
+  /** @deprecated use `Via2$inboundSchema` instead. */
+  export const inboundSchema = Via2$inboundSchema;
+  /** @deprecated use `Via2$outboundSchema` instead. */
+  export const outboundSchema = Via2$outboundSchema;
+  /** @deprecated use `Via2$Outbound` instead. */
+  export type Outbound = Via2$Outbound;
+}
+
+export function via2ToJSON(via2: Via2): string {
+  return JSON.stringify(Via2$outboundSchema.parse(via2));
+}
+
+export function via2FromJSON(
+  jsonString: string,
+): SafeParseResult<Via2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ViaType$inboundSchema: z.ZodNativeEnum<typeof ViaType> = z
+  .nativeEnum(ViaType);
+
+/** @internal */
+export const ViaType$outboundSchema: z.ZodNativeEnum<typeof ViaType> =
+  ViaType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ViaType$ {
+  /** @deprecated use `ViaType$inboundSchema` instead. */
+  export const inboundSchema = ViaType$inboundSchema;
+  /** @deprecated use `ViaType$outboundSchema` instead. */
+  export const outboundSchema = ViaType$outboundSchema;
+}
+
+/** @internal */
+export const Via1$inboundSchema: z.ZodType<Via1, z.ZodTypeDef, unknown> = z
+  .object({
+    type: ViaType$inboundSchema.optional(),
+    avatar: z.string(),
+    email: z.string(),
+    slug: z.string().optional(),
+    uid: z.string(),
+    username: z.string(),
+  });
+
+/** @internal */
+export type Via1$Outbound = {
+  type?: string | undefined;
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+/** @internal */
+export const Via1$outboundSchema: z.ZodType<Via1$Outbound, z.ZodTypeDef, Via1> =
+  z.object({
+    type: ViaType$outboundSchema.optional(),
+    avatar: z.string(),
+    email: z.string(),
+    slug: z.string().optional(),
+    uid: z.string(),
+    username: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Via1$ {
+  /** @deprecated use `Via1$inboundSchema` instead. */
+  export const inboundSchema = Via1$inboundSchema;
+  /** @deprecated use `Via1$outboundSchema` instead. */
+  export const outboundSchema = Via1$outboundSchema;
+  /** @deprecated use `Via1$Outbound` instead. */
+  export type Outbound = Via1$Outbound;
+}
+
+export function via1ToJSON(via1: Via1): string {
+  return JSON.stringify(Via1$outboundSchema.parse(via1));
+}
+
+export function via1FromJSON(
+  jsonString: string,
+): SafeParseResult<Via1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Via$inboundSchema: z.ZodType<Via, z.ZodTypeDef, unknown> = z.union(
+  [z.lazy(() => Via2$inboundSchema), z.lazy(() => Via1$inboundSchema)],
+);
+
+/** @internal */
+export type Via$Outbound = Via2$Outbound | Via1$Outbound;
+
+/** @internal */
+export const Via$outboundSchema: z.ZodType<Via$Outbound, z.ZodTypeDef, Via> = z
+  .union([
+    z.lazy(() => Via2$outboundSchema),
+    z.lazy(() => Via1$outboundSchema),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Via$ {
+  /** @deprecated use `Via$inboundSchema` instead. */
+  export const inboundSchema = Via$inboundSchema;
+  /** @deprecated use `Via$outboundSchema` instead. */
+  export const outboundSchema = Via$outboundSchema;
+  /** @deprecated use `Via$Outbound` instead. */
+  export type Outbound = Via$Outbound;
+}
+
+export function viaToJSON(via: Via): string {
+  return JSON.stringify(Via$outboundSchema.parse(via));
+}
+
+export function viaFromJSON(
+  jsonString: string,
+): SafeParseResult<Via, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via' from JSON`,
   );
 }
 
@@ -27570,16 +28039,19 @@ export namespace Action$ {
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    action: Action$inboundSchema,
-    id: z.string(),
-    slug: z.string(),
-    projectId: z.string(),
-  });
+export const Payload2$inboundSchema: z.ZodType<
+  Payload2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: Action$inboundSchema,
+  id: z.string(),
+  slug: z.string(),
+  projectId: z.string(),
+});
 
 /** @internal */
-export type Two$Outbound = {
+export type Payload2$Outbound = {
   action: string;
   id: string;
   slug: string;
@@ -27587,83 +28059,92 @@ export type Two$Outbound = {
 };
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({
-    action: Action$outboundSchema,
-    id: z.string(),
-    slug: z.string(),
-    projectId: z.string(),
-  });
+export const Payload2$outboundSchema: z.ZodType<
+  Payload2$Outbound,
+  z.ZodTypeDef,
+  Payload2
+> = z.object({
+  action: Action$outboundSchema,
+  id: z.string(),
+  slug: z.string(),
+  projectId: z.string(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-  /** @deprecated use `Two$Outbound` instead. */
-  export type Outbound = Two$Outbound;
+export namespace Payload2$ {
+  /** @deprecated use `Payload2$inboundSchema` instead. */
+  export const inboundSchema = Payload2$inboundSchema;
+  /** @deprecated use `Payload2$outboundSchema` instead. */
+  export const outboundSchema = Payload2$outboundSchema;
+  /** @deprecated use `Payload2$Outbound` instead. */
+  export type Outbound = Payload2$Outbound;
 }
 
-export function twoToJSON(two: Two): string {
-  return JSON.stringify(Two$outboundSchema.parse(two));
+export function payload2ToJSON(payload2: Payload2): string {
+  return JSON.stringify(Payload2$outboundSchema.parse(payload2));
 }
 
-export function twoFromJSON(
+export function payload2FromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<Payload2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) => Payload2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Payload2' from JSON`,
   );
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({});
+export const Payload1$inboundSchema: z.ZodType<
+  Payload1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
 /** @internal */
-export type One$Outbound = {};
+export type Payload1$Outbound = {};
 
 /** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({});
+export const Payload1$outboundSchema: z.ZodType<
+  Payload1$Outbound,
+  z.ZodTypeDef,
+  Payload1
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
+export namespace Payload1$ {
+  /** @deprecated use `Payload1$inboundSchema` instead. */
+  export const inboundSchema = Payload1$inboundSchema;
+  /** @deprecated use `Payload1$outboundSchema` instead. */
+  export const outboundSchema = Payload1$outboundSchema;
+  /** @deprecated use `Payload1$Outbound` instead. */
+  export type Outbound = Payload1$Outbound;
 }
 
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
+export function payload1ToJSON(payload1: Payload1): string {
+  return JSON.stringify(Payload1$outboundSchema.parse(payload1));
 }
 
-export function oneFromJSON(
+export function payload1FromJSON(
   jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
+): SafeParseResult<Payload1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
+    (x) => Payload1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Payload1' from JSON`,
   );
 }
 
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   z.union([
-    z.lazy(() => One$inboundSchema),
+    z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Nine$inboundSchema),
     z.lazy(() => Nineteen$inboundSchema),
@@ -27768,7 +28249,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
     z.lazy(() => OneHundredAndFortyFive$inboundSchema),
     z.lazy(() => OneHundredAndFortySix$inboundSchema),
-    z.lazy(() => Two$inboundSchema),
+    z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => Six$inboundSchema),
     z.lazy(() => Eleven$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
@@ -27815,7 +28296,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Payload$Outbound =
-  | One$Outbound
+  | Payload1$Outbound
   | Three$Outbound
   | Nine$Outbound
   | Nineteen$Outbound
@@ -27920,7 +28401,7 @@ export type Payload$Outbound =
   | OneHundredAndThirtyEight$Outbound
   | OneHundredAndFortyFive$Outbound
   | OneHundredAndFortySix$Outbound
-  | Two$Outbound
+  | Payload2$Outbound
   | Six$Outbound
   | Eleven$Outbound
   | Fifteen$Outbound
@@ -27970,7 +28451,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Payload
 > = z.union([
-  z.lazy(() => One$outboundSchema),
+  z.lazy(() => Payload1$outboundSchema),
   z.lazy(() => Three$outboundSchema),
   z.lazy(() => Nine$outboundSchema),
   z.lazy(() => Nineteen$outboundSchema),
@@ -28075,7 +28556,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndThirtyEight$outboundSchema),
   z.lazy(() => OneHundredAndFortyFive$outboundSchema),
   z.lazy(() => OneHundredAndFortySix$outboundSchema),
-  z.lazy(() => Two$outboundSchema),
+  z.lazy(() => Payload2$outboundSchema),
   z.lazy(() => Six$outboundSchema),
   z.lazy(() => Eleven$outboundSchema),
   z.lazy(() => Fifteen$outboundSchema),
@@ -28158,9 +28639,21 @@ export const UserEvent$inboundSchema: z.ZodType<
   entities: z.array(z.lazy(() => Entities$inboundSchema)),
   createdAt: z.number(),
   user: z.lazy(() => User$inboundSchema).optional(),
-  userId: z.string(),
-  payload: z.union([
+  principal: z.union([
+    z.lazy(() => Two$inboundSchema),
     z.lazy(() => One$inboundSchema),
+  ]).optional(),
+  via: z.array(
+    z.union([
+      z.lazy(() => Via2$inboundSchema),
+      z.lazy(() => Via1$inboundSchema),
+    ]),
+  ).optional(),
+  userId: z.string(),
+  principalId: z.string(),
+  viaIds: z.array(z.string()).optional(),
+  payload: z.union([
+    z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Nine$inboundSchema),
     z.lazy(() => Nineteen$inboundSchema),
@@ -28265,7 +28758,7 @@ export const UserEvent$inboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
     z.lazy(() => OneHundredAndFortyFive$inboundSchema),
     z.lazy(() => OneHundredAndFortySix$inboundSchema),
-    z.lazy(() => Two$inboundSchema),
+    z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => Six$inboundSchema),
     z.lazy(() => Eleven$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
@@ -28318,9 +28811,13 @@ export type UserEvent$Outbound = {
   entities: Array<Entities$Outbound>;
   createdAt: number;
   user?: User$Outbound | undefined;
+  principal?: Two$Outbound | One$Outbound | undefined;
+  via?: Array<Via2$Outbound | Via1$Outbound> | undefined;
   userId: string;
+  principalId: string;
+  viaIds?: Array<string> | undefined;
   payload?:
-    | One$Outbound
+    | Payload1$Outbound
     | Three$Outbound
     | Nine$Outbound
     | Nineteen$Outbound
@@ -28425,7 +28922,7 @@ export type UserEvent$Outbound = {
     | OneHundredAndThirtyEight$Outbound
     | OneHundredAndFortyFive$Outbound
     | OneHundredAndFortySix$Outbound
-    | Two$Outbound
+    | Payload2$Outbound
     | Six$Outbound
     | Eleven$Outbound
     | Fifteen$Outbound
@@ -28482,9 +28979,21 @@ export const UserEvent$outboundSchema: z.ZodType<
   entities: z.array(z.lazy(() => Entities$outboundSchema)),
   createdAt: z.number(),
   user: z.lazy(() => User$outboundSchema).optional(),
-  userId: z.string(),
-  payload: z.union([
+  principal: z.union([
+    z.lazy(() => Two$outboundSchema),
     z.lazy(() => One$outboundSchema),
+  ]).optional(),
+  via: z.array(
+    z.union([
+      z.lazy(() => Via2$outboundSchema),
+      z.lazy(() => Via1$outboundSchema),
+    ]),
+  ).optional(),
+  userId: z.string(),
+  principalId: z.string(),
+  viaIds: z.array(z.string()).optional(),
+  payload: z.union([
+    z.lazy(() => Payload1$outboundSchema),
     z.lazy(() => Three$outboundSchema),
     z.lazy(() => Nine$outboundSchema),
     z.lazy(() => Nineteen$outboundSchema),
@@ -28589,7 +29098,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndThirtyEight$outboundSchema),
     z.lazy(() => OneHundredAndFortyFive$outboundSchema),
     z.lazy(() => OneHundredAndFortySix$outboundSchema),
-    z.lazy(() => Two$outboundSchema),
+    z.lazy(() => Payload2$outboundSchema),
     z.lazy(() => Six$outboundSchema),
     z.lazy(() => Eleven$outboundSchema),
     z.lazy(() => Fifteen$outboundSchema),

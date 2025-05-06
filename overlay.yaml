@@ -848,6 +848,10 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
         - deployment-checks-completed-legacy
         - deployment-ready-legacy
         - deployment-prepared-legacy
@@ -866,7 +870,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook
+        - test-webhook        
   - target: $["paths"]["/v1/webhooks"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
@@ -894,6 +898,10 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
         - deployment-checks-completed-legacy
         - deployment-ready-legacy
         - deployment-prepared-legacy
@@ -912,7 +920,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook
+        - test-webhook   
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][0]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
@@ -940,6 +948,10 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
         - deployment-checks-completed-legacy
         - deployment-ready-legacy
         - deployment-prepared-legacy
@@ -958,7 +970,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook
+        - test-webhook   
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][1]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
@@ -986,6 +998,10 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
         - deployment-checks-completed-legacy
         - deployment-ready-legacy
         - deployment-prepared-legacy
@@ -1004,7 +1020,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook
+        - test-webhook   
   - target: $["paths"]["/v1/webhooks/{id}"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
@@ -1032,6 +1048,10 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
         - deployment-checks-completed-legacy
         - deployment-ready-legacy
         - deployment-prepared-legacy
@@ -1050,7 +1070,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook
+        - test-webhook   
   # Remove blank required array
   - target: $.paths['/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}'].delete.requestBody["content"]["application/json"]["schema"].required
     remove: true         

@@ -17,3 +17,16 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+  trigger-mintlify:
+    name: Trigger Mintlify Update
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - name: Trigger Mintlify API
+        env:
+          MINTLIFY_TOKEN: ${{ secrets.MINTLIFY_TOKEN }}
+          PROJECT_ID: ${{ secrets.MINTLIFY_PROJECT_ID }}
+        run: |
+                curl --request POST \
+                  --url "https://api.mintlify.com/v1/project/update/$PROJECT_ID" \
+                  --header "Authorization: Bearer $MINTLIFY_TOKEN"    

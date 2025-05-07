@@ -7,11 +7,11 @@ The type of matching to perform
 ```typescript
 import { CreateDeploymentCustomEnvironmentType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentCustomEnvironmentType = "equals";
+let value: CreateDeploymentCustomEnvironmentType = "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"startsWith" | "equals" | "endsWith"
+"endsWith" | "startsWith" | "equals"
 ```

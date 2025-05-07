@@ -8198,6 +8198,80 @@
           },
           "500": {
             "description": ""
+          },
+          "200": {
+            "description": "Successfully retrieved deployment logs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "created": {
+                        "type": "number",
+                        "description": "Unix timestamp when the log entry was created",
+                        "example": 1744583330135
+                      },
+                      "date": {
+                        "type": "number",
+                        "description": "Unix timestamp of the log entry date",
+                        "example": 1744583330135
+                      },
+                      "deploymentId": {
+                        "type": "string",
+                        "description": "Unique identifier for the deployment",
+                        "example": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the log entry",
+                        "example": "1744583330135959366434900001"
+                      },
+                      "text": {
+                        "type": "string",
+                        "description": "Log message content",
+                        "example": "Cloning github link (Branch: yourbranchname, Commit: commithash)"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Type of log entry",
+                        "enum": [
+                          "stdout",
+                          "stderr"
+                        ],
+                        "example": "stdout"
+                      },
+                      "serial": {
+                        "type": "string",
+                        "description": "Serial identifier for the log entry",
+                        "example": "1744583330135959366434900001"
+                      },
+                      "info": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "Type of operation",
+                            "example": "build"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the build",
+                            "example": "bld_by3kz18kn"
+                          },
+                          "entrypoint": {
+                            "type": "string",
+                            "description": "Entrypoint for the build",
+                            "example": "."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -11982,24 +12056,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -12112,9 +12186,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "endsWith",
                                     "startsWith",
-                                    "equals",
-                                    "endsWith"
+                                    "equals"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -13031,15 +13105,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -13269,11 +13343,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
+                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -13383,8 +13457,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -13436,8 +13510,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -13490,8 +13564,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -31034,10 +31108,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -34365,8 +34439,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -34447,8 +34521,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -39234,10 +39308,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -42565,8 +42639,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -42647,8 +42721,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -46337,10 +46411,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -46750,10 +46824,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -47175,10 +47249,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -47734,10 +47808,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -48136,10 +48210,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -50219,10 +50293,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -50634,10 +50708,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -51044,10 +51118,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -51562,10 +51636,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {

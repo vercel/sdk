@@ -26,7 +26,10 @@ import {
   DeleteDeploymentResponseBody,
 } from "../models/deletedeploymentop.js";
 import { FileTree } from "../models/filetree.js";
-import { GetDeploymentEventsRequest } from "../models/getdeploymenteventsop.js";
+import {
+  GetDeploymentEventsRequest,
+  GetDeploymentEventsResponseBody,
+} from "../models/getdeploymenteventsop.js";
 import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
 import {
   GetDeploymentRequest,
@@ -54,7 +57,7 @@ export class Deployments extends ClientSDK {
   async getDeploymentEvents(
     request: GetDeploymentEventsRequest,
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<Array<GetDeploymentEventsResponseBody>> {
     return unwrapAsync(deploymentsGetDeploymentEvents(
       this,
       request,

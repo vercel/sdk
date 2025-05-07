@@ -613,8 +613,8 @@ export type Creator = {
 };
 
 export const CreateDeploymentReadyState = {
-  Building: "BUILDING",
   Error: "ERROR",
+  Building: "BUILDING",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -631,10 +631,10 @@ export type CreateDeploymentOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type Lambdas = {
-  id?: string | undefined;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
+  id?: string | undefined;
   readyState?: CreateDeploymentReadyState | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput>;
 };
@@ -677,9 +677,9 @@ export type CustomEnvironmentType = ClosedEnum<typeof CustomEnvironmentType>;
  * The type of matching to perform
  */
 export const CreateDeploymentCustomEnvironmentType = {
+  EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
-  EndsWith: "endsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -1169,14 +1169,14 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends2;
 
 export const FunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
-  Standard: "standard",
   StandardLegacy: "standard_legacy",
+  Standard: "standard",
   Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
@@ -1209,11 +1209,11 @@ export type Routes3 = {
 
 export const RoutesHandle = {
   Error: "error",
+  Resource: "resource",
   Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
   Rewrite: "rewrite",
-  Resource: "resource",
 } as const;
 export type RoutesHandle = ClosedEnum<typeof RoutesHandle>;
 
@@ -1326,8 +1326,8 @@ export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CreateDeploymentGitRepoOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
@@ -1354,8 +1354,8 @@ export type CreateDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const GitRepoOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
@@ -1378,8 +1378,8 @@ export const GitRepoType = {
 export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type OwnerType = ClosedEnum<typeof OwnerType>;
 
@@ -3660,20 +3660,20 @@ export function createDeploymentOutputFromJSON(
 /** @internal */
 export const Lambdas$inboundSchema: z.ZodType<Lambdas, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string().optional(),
     createdAt: z.number().optional(),
-    entrypoint: z.nullable(z.string()).optional(),
+    id: z.string().optional(),
     readyState: CreateDeploymentReadyState$inboundSchema.optional(),
+    entrypoint: z.nullable(z.string()).optional(),
     readyStateAt: z.number().optional(),
     output: z.array(z.lazy(() => CreateDeploymentOutput$inboundSchema)),
   });
 
 /** @internal */
 export type Lambdas$Outbound = {
-  id?: string | undefined;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
+  id?: string | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput$Outbound>;
 };
@@ -3684,10 +3684,10 @@ export const Lambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Lambdas
 > = z.object({
-  id: z.string().optional(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
   readyState: CreateDeploymentReadyState$outboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CreateDeploymentOutput$outboundSchema)),
 });

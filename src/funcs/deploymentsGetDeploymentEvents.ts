@@ -14,6 +14,8 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetDeploymentEventsRequest,
   GetDeploymentEventsRequest$outboundSchema,
+  GetDeploymentEventsResponseBody,
+  GetDeploymentEventsResponseBody$inboundSchema,
 } from "../models/getdeploymenteventsop.js";
 import {
   ConnectionError,
@@ -47,7 +49,7 @@ export function deploymentsGetDeploymentEvents(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    void,
+    Array<GetDeploymentEventsResponseBody>,
     | VercelBadRequestError
     | VercelForbiddenError
     | SDKError
@@ -73,7 +75,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      void,
+      Array<GetDeploymentEventsResponseBody>,
       | VercelBadRequestError
       | VercelForbiddenError
       | SDKError
@@ -174,7 +176,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    void,
+    Array<GetDeploymentEventsResponseBody>,
     | VercelBadRequestError
     | VercelForbiddenError
     | SDKError
@@ -185,9 +187,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
+    M.json(200, z.array(GetDeploymentEventsResponseBody$inboundSchema)),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.nil("2XX", z.void()),
     M.fail([403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });

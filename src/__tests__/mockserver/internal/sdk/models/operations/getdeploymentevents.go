@@ -221,8 +221,141 @@ func (o *GetDeploymentEventsRequest) GetSlug() *string {
 	return o.Slug
 }
 
+// GetDeploymentEventsType - Type of log entry
+type GetDeploymentEventsType string
+
+const (
+	GetDeploymentEventsTypeStdout GetDeploymentEventsType = "stdout"
+	GetDeploymentEventsTypeStderr GetDeploymentEventsType = "stderr"
+)
+
+func (e GetDeploymentEventsType) ToPointer() *GetDeploymentEventsType {
+	return &e
+}
+func (e *GetDeploymentEventsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "stdout":
+		fallthrough
+	case "stderr":
+		*e = GetDeploymentEventsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentEventsType: %v", v)
+	}
+}
+
+type Info struct {
+	// Type of operation
+	Type *string `json:"type,omitempty"`
+	// Name of the build
+	Name *string `json:"name,omitempty"`
+	// Entrypoint for the build
+	Entrypoint *string `json:"entrypoint,omitempty"`
+}
+
+func (o *Info) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Info) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Info) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
+}
+
+type GetDeploymentEventsResponseBody struct {
+	// Unix timestamp when the log entry was created
+	Created *float64 `json:"created,omitempty"`
+	// Unix timestamp of the log entry date
+	Date *float64 `json:"date,omitempty"`
+	// Unique identifier for the deployment
+	DeploymentID *string `json:"deploymentId,omitempty"`
+	// Unique identifier for the log entry
+	ID *string `json:"id,omitempty"`
+	// Log message content
+	Text *string `json:"text,omitempty"`
+	// Type of log entry
+	Type *GetDeploymentEventsType `json:"type,omitempty"`
+	// Serial identifier for the log entry
+	Serial *string `json:"serial,omitempty"`
+	Info   *Info   `json:"info,omitempty"`
+}
+
+func (o *GetDeploymentEventsResponseBody) GetCreated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Created
+}
+
+func (o *GetDeploymentEventsResponseBody) GetDate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Date
+}
+
+func (o *GetDeploymentEventsResponseBody) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *GetDeploymentEventsResponseBody) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentEventsResponseBody) GetText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Text
+}
+
+func (o *GetDeploymentEventsResponseBody) GetType() *GetDeploymentEventsType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentEventsResponseBody) GetSerial() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Serial
+}
+
+func (o *GetDeploymentEventsResponseBody) GetInfo() *Info {
+	if o == nil {
+		return nil
+	}
+	return o.Info
+}
+
 type GetDeploymentEventsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
+	// Successfully retrieved deployment logs
+	ResponseBodies []GetDeploymentEventsResponseBody
 }
 
 func (o *GetDeploymentEventsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -230,4 +363,11 @@ func (o *GetDeploymentEventsResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetDeploymentEventsResponse) GetResponseBodies() []GetDeploymentEventsResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseBodies
 }

@@ -1,21 +1,26 @@
 # ProtectionBypass
 
-## Example Usage
+
+## Supported Types
+
+### `models.ProtectionBypass1`
 
 ```typescript
-import { ProtectionBypass } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+const value: models.ProtectionBypass1 = {
+  createdAt: 1728.56,
+  createdBy: "<value>",
+  scope: "integration-automation-bypass",
+  integrationId: "<id>",
+};
+```
 
-let value: ProtectionBypass = {
-  createdAt: 4683.38,
+### `models.ProtectionBypass2`
+
+```typescript
+const value: models.ProtectionBypass2 = {
+  createdAt: 8694.65,
   createdBy: "<value>",
   scope: "automation-bypass",
 };
 ```
 
-## Fields
-
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `createdAt`                                                                    | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `createdBy`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UpdateProjectDataCacheScope](../models/updateprojectdatacachescope.md) | :heavy_check_mark:                                                             | N/A                                                                            |

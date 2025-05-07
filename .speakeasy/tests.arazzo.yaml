@@ -5499,3 +5499,27 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: Vercel
+  - workflowId: patchUrlProtectionBypass
+    steps:
+      - stepId: test
+        operationId: patchUrlProtectionBypass
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "key": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: aliases

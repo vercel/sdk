@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Override } from "@vercel/sdk/models/patchaliasesidprotectionbypassop.js";
+import { Override } from "@vercel/sdk/models/patchurlprotectionbypassop.js";
 
 let value: Override = {
   scope: "alias-protection-override",
@@ -13,7 +13,7 @@ let value: Override = {
 
 ## Fields
 
-| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `scope`                                                                                                                | [models.RequestBodyScope](../models/requestbodyscope.md)                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `action`                                                                                                               | [models.PatchAliasesIdProtectionBypassRequestBodyAction](../models/patchaliasesidprotectionbypassrequestbodyaction.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `scope`                                                                                                    | [models.RequestBodyScope](../models/requestbodyscope.md)                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| `action`                                                                                                   | [models.PatchUrlProtectionBypassRequestBodyAction](../models/patchurlprotectionbypassrequestbodyaction.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

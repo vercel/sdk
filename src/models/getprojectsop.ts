@@ -1487,16 +1487,36 @@ export type GetProjectsLastAliasRequest = {
   type: GetProjectsProjectsResponse200ApplicationJSONType;
 };
 
-export const GetProjectsScope = {
+export const GetProjectsProtectionBypassProjectsScope = {
   AutomationBypass: "automation-bypass",
 } as const;
-export type GetProjectsScope = ClosedEnum<typeof GetProjectsScope>;
+export type GetProjectsProtectionBypassProjectsScope = ClosedEnum<
+  typeof GetProjectsProtectionBypassProjectsScope
+>;
 
-export type GetProjectsProtectionBypass = {
+export type GetProjectsProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: GetProjectsScope;
+  scope: GetProjectsProtectionBypassProjectsScope;
 };
+
+export const GetProjectsProtectionBypassScope = {
+  IntegrationAutomationBypass: "integration-automation-bypass",
+} as const;
+export type GetProjectsProtectionBypassScope = ClosedEnum<
+  typeof GetProjectsProtectionBypassScope
+>;
+
+export type GetProjectsProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: GetProjectsProtectionBypassScope;
+  integrationId: string;
+};
+
+export type GetProjectsProtectionBypass =
+  | GetProjectsProtectionBypass2
+  | GetProjectsProtectionBypass1;
 
 export const GetProjectsTrustedIpsProjectsDeploymentType = {
   Production: "production",
@@ -1858,7 +1878,9 @@ export type GetProjectsProjects = {
   permissions?: GetProjectsPermissions | undefined;
   lastRollbackTarget?: GetProjectsLastRollbackTarget | null | undefined;
   lastAliasRequest?: GetProjectsLastAliasRequest | null | undefined;
-  protectionBypass?: { [k: string]: GetProjectsProtectionBypass } | undefined;
+  protectionBypass?: {
+    [k: string]: GetProjectsProtectionBypass2 | GetProjectsProtectionBypass1;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
     | GetProjectsTrustedIps2
@@ -8431,24 +8453,174 @@ export function getProjectsLastAliasRequestFromJSON(
 }
 
 /** @internal */
-export const GetProjectsScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsScope
-> = z.nativeEnum(GetProjectsScope);
+export const GetProjectsProtectionBypassProjectsScope$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProtectionBypassProjectsScope> = z
+    .nativeEnum(GetProjectsProtectionBypassProjectsScope);
 
 /** @internal */
-export const GetProjectsScope$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsScope
-> = GetProjectsScope$inboundSchema;
+export const GetProjectsProtectionBypassProjectsScope$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProtectionBypassProjectsScope> =
+    GetProjectsProtectionBypassProjectsScope$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsScope$ {
-  /** @deprecated use `GetProjectsScope$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsScope$inboundSchema;
-  /** @deprecated use `GetProjectsScope$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsScope$outboundSchema;
+export namespace GetProjectsProtectionBypassProjectsScope$ {
+  /** @deprecated use `GetProjectsProtectionBypassProjectsScope$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProtectionBypassProjectsScope$inboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypassProjectsScope$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProtectionBypassProjectsScope$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsProtectionBypass2$inboundSchema: z.ZodType<
+  GetProjectsProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetProjectsProtectionBypassProjectsScope$inboundSchema,
+});
+
+/** @internal */
+export type GetProjectsProtectionBypass2$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const GetProjectsProtectionBypass2$outboundSchema: z.ZodType<
+  GetProjectsProtectionBypass2$Outbound,
+  z.ZodTypeDef,
+  GetProjectsProtectionBypass2
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetProjectsProtectionBypassProjectsScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProtectionBypass2$ {
+  /** @deprecated use `GetProjectsProtectionBypass2$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProtectionBypass2$inboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypass2$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProtectionBypass2$outboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypass2$Outbound` instead. */
+  export type Outbound = GetProjectsProtectionBypass2$Outbound;
+}
+
+export function getProjectsProtectionBypass2ToJSON(
+  getProjectsProtectionBypass2: GetProjectsProtectionBypass2,
+): string {
+  return JSON.stringify(
+    GetProjectsProtectionBypass2$outboundSchema.parse(
+      getProjectsProtectionBypass2,
+    ),
+  );
+}
+
+export function getProjectsProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProtectionBypassScope
+> = z.nativeEnum(GetProjectsProtectionBypassScope);
+
+/** @internal */
+export const GetProjectsProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProtectionBypassScope
+> = GetProjectsProtectionBypassScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProtectionBypassScope$ {
+  /** @deprecated use `GetProjectsProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProtectionBypassScope$inboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsProtectionBypass1$inboundSchema: z.ZodType<
+  GetProjectsProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetProjectsProtectionBypassScope$inboundSchema,
+  integrationId: z.string(),
+});
+
+/** @internal */
+export type GetProjectsProtectionBypass1$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+  integrationId: string;
+};
+
+/** @internal */
+export const GetProjectsProtectionBypass1$outboundSchema: z.ZodType<
+  GetProjectsProtectionBypass1$Outbound,
+  z.ZodTypeDef,
+  GetProjectsProtectionBypass1
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetProjectsProtectionBypassScope$outboundSchema,
+  integrationId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProtectionBypass1$ {
+  /** @deprecated use `GetProjectsProtectionBypass1$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProtectionBypass1$inboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypass1$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProtectionBypass1$outboundSchema;
+  /** @deprecated use `GetProjectsProtectionBypass1$Outbound` instead. */
+  export type Outbound = GetProjectsProtectionBypass1$Outbound;
+}
+
+export function getProjectsProtectionBypass1ToJSON(
+  getProjectsProtectionBypass1: GetProjectsProtectionBypass1,
+): string {
+  return JSON.stringify(
+    GetProjectsProtectionBypass1$outboundSchema.parse(
+      getProjectsProtectionBypass1,
+    ),
+  );
+}
+
+export function getProjectsProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsProtectionBypass1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8456,29 +8628,25 @@ export const GetProjectsProtectionBypass$inboundSchema: z.ZodType<
   GetProjectsProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: GetProjectsScope$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetProjectsProtectionBypass2$inboundSchema),
+  z.lazy(() => GetProjectsProtectionBypass1$inboundSchema),
+]);
 
 /** @internal */
-export type GetProjectsProtectionBypass$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: string;
-};
+export type GetProjectsProtectionBypass$Outbound =
+  | GetProjectsProtectionBypass2$Outbound
+  | GetProjectsProtectionBypass1$Outbound;
 
 /** @internal */
 export const GetProjectsProtectionBypass$outboundSchema: z.ZodType<
   GetProjectsProtectionBypass$Outbound,
   z.ZodTypeDef,
   GetProjectsProtectionBypass
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: GetProjectsScope$outboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetProjectsProtectionBypass2$outboundSchema),
+  z.lazy(() => GetProjectsProtectionBypass1$outboundSchema),
+]);
 
 /**
  * @internal
@@ -10236,7 +10404,10 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsLastAliasRequest$inboundSchema),
   ).optional(),
   protectionBypass: z.record(
-    z.lazy(() => GetProjectsProtectionBypass$inboundSchema),
+    z.union([
+      z.lazy(() => GetProjectsProtectionBypass2$inboundSchema),
+      z.lazy(() => GetProjectsProtectionBypass1$inboundSchema),
+    ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
@@ -10338,9 +10509,11 @@ export type GetProjectsProjects$Outbound = {
     | null
     | undefined;
   lastAliasRequest?: GetProjectsLastAliasRequest$Outbound | null | undefined;
-  protectionBypass?:
-    | { [k: string]: GetProjectsProtectionBypass$Outbound }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | GetProjectsProtectionBypass2$Outbound
+      | GetProjectsProtectionBypass1$Outbound;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
     | GetProjectsTrustedIps2$Outbound
@@ -10455,7 +10628,10 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectsLastAliasRequest$outboundSchema),
   ).optional(),
   protectionBypass: z.record(
-    z.lazy(() => GetProjectsProtectionBypass$outboundSchema),
+    z.union([
+      z.lazy(() => GetProjectsProtectionBypass2$outboundSchema),
+      z.lazy(() => GetProjectsProtectionBypass1$outboundSchema),
+    ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(

@@ -144,3 +144,23 @@ test("Aliases Delete Alias", async () => {
     status: "SUCCESS",
   });
 });
+
+test("Aliases Patch Url Protection Bypass", async () => {
+  const testHttpClient = createTestHTTPClient("patchUrlProtectionBypass");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.aliases.patchUrlProtectionBypass({
+    id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    "key": "<value>",
+  });
+});

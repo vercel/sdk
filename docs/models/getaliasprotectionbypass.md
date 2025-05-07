@@ -3,22 +3,22 @@
 
 ## Supported Types
 
-### `models.ProtectionBypass1`
+### `models.GetAliasProtectionBypass1`
 
 ```typescript
-const value: models.ProtectionBypass1 = {
-  createdAt: 1728.56,
+const value: models.GetAliasProtectionBypass1 = {
+  createdAt: 3163.57,
   createdBy: "<value>",
   scope: "shareable-link",
 };
 ```
 
-### `models.ProtectionBypass2`
+### `models.GetAliasProtectionBypass2`
 
 ```typescript
-const value: models.ProtectionBypass2 = {
-  createdAt: 8694.65,
-  lastUpdatedAt: 6154.96,
+const value: models.GetAliasProtectionBypass2 = {
+  createdAt: 4727.71,
+  lastUpdatedAt: 6400.88,
   lastUpdatedBy: "<value>",
   access: "requested",
   scope: "user",

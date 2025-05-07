@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Scope2 } from "@vercel/sdk/models/patchaliasesidprotectionbypassop.js";
+import { Scope2 } from "@vercel/sdk/models/patchurlprotectionbypassop.js";
 
 let value: Scope2 = {
   email: "Haven82@hotmail.com",

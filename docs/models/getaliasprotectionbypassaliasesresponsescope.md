@@ -5,11 +5,12 @@
 ```typescript
 import { GetAliasProtectionBypassAliasesResponseScope } from "@vercel/sdk/models/getaliasop.js";
 
-let value: GetAliasProtectionBypassAliasesResponseScope = "email_invite";
+let value: GetAliasProtectionBypassAliasesResponseScope =
+  "alias-protection-override";
 ```
 
 ## Values
 
 ```typescript
-"email_invite"
+"alias-protection-override"
 ```

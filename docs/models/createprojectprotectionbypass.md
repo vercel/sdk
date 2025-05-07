@@ -1,21 +1,26 @@
 # CreateProjectProtectionBypass
 
-## Example Usage
+
+## Supported Types
+
+### `models.CreateProjectProtectionBypass1`
 
 ```typescript
-import { CreateProjectProtectionBypass } from "@vercel/sdk/models/createprojectop.js";
+const value: models.CreateProjectProtectionBypass1 = {
+  createdAt: 1534.98,
+  createdBy: "<value>",
+  scope: "integration-automation-bypass",
+  integrationId: "<id>",
+};
+```
 
-let value: CreateProjectProtectionBypass = {
-  createdAt: 3525.78,
+### `models.CreateProjectProtectionBypass2`
+
+```typescript
+const value: models.CreateProjectProtectionBypass2 = {
+  createdAt: 9133.71,
   createdBy: "<value>",
   scope: "automation-bypass",
 };
 ```
 
-## Fields
-
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `createdAt`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `createdBy`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `scope`                                                      | [models.CreateProjectScope](../models/createprojectscope.md) | :heavy_check_mark:                                           | N/A                                                          |

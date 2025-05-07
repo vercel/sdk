@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProtectionBypassScope } from "@vercel/sdk/models/updateprojectprotectionbypassop.js";
+import { UpdateProjectProtectionBypassScope } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProtectionBypassScope = "automation-bypass";
+let value: UpdateProjectProtectionBypassScope = "integration-automation-bypass";
 ```
 
 ## Values
 
 ```typescript
-"automation-bypass"
+"integration-automation-bypass"
 ```

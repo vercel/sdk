@@ -7496,26 +7496,56 @@
                     },
                     "protectionBypass": {
                       "additionalProperties": {
-                        "properties": {
-                          "createdAt": {
-                            "type": "number"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-automation-bypass"
+                                ]
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope",
+                              "integrationId"
+                            ],
+                            "type": "object"
                           },
-                          "createdBy": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string",
-                            "enum": [
-                              "automation-bypass"
-                            ]
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "automation-bypass"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope"
+                            ],
+                            "type": "object"
                           }
-                        },
-                        "required": [
-                          "createdAt",
-                          "createdBy",
-                          "scope"
-                        ],
-                        "type": "object"
+                        ]
                       },
                       "type": "object"
                     },
@@ -30009,26 +30039,56 @@
                           },
                           "protectionBypass": {
                             "additionalProperties": {
-                              "properties": {
-                                "createdAt": {
-                                  "type": "number"
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "createdAt": {
+                                      "type": "number"
+                                    },
+                                    "createdBy": {
+                                      "type": "string"
+                                    },
+                                    "scope": {
+                                      "type": "string",
+                                      "enum": [
+                                        "integration-automation-bypass"
+                                      ]
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "createdAt",
+                                    "createdBy",
+                                    "scope",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
                                 },
-                                "createdBy": {
-                                  "type": "string"
-                                },
-                                "scope": {
-                                  "type": "string",
-                                  "enum": [
-                                    "automation-bypass"
-                                  ]
+                                {
+                                  "properties": {
+                                    "createdAt": {
+                                      "type": "number"
+                                    },
+                                    "createdBy": {
+                                      "type": "string"
+                                    },
+                                    "scope": {
+                                      "type": "string",
+                                      "enum": [
+                                        "automation-bypass"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "createdAt",
+                                    "createdBy",
+                                    "scope"
+                                  ],
+                                  "type": "object"
                                 }
-                              },
-                              "required": [
-                                "createdAt",
-                                "createdBy",
-                                "scope"
-                              ],
-                              "type": "object"
+                              ]
                             },
                             "type": "object"
                           },
@@ -34041,26 +34101,56 @@
                     },
                     "protectionBypass": {
                       "additionalProperties": {
-                        "properties": {
-                          "createdAt": {
-                            "type": "number"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-automation-bypass"
+                                ]
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope",
+                              "integrationId"
+                            ],
+                            "type": "object"
                           },
-                          "createdBy": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string",
-                            "enum": [
-                              "automation-bypass"
-                            ]
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "automation-bypass"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope"
+                            ],
+                            "type": "object"
                           }
-                        },
-                        "required": [
-                          "createdAt",
-                          "createdBy",
-                          "scope"
-                        ],
-                        "type": "object"
+                        ]
                       },
                       "type": "object"
                     },
@@ -34879,6 +34969,55 @@
                   "enableAffectedProjectsDeployments": {
                     "description": "Opt-in to skip deployments when there are no changes to the root directory and its dependencies",
                     "type": "boolean"
+                  },
+                  "resourceConfig": {
+                    "type": "object",
+                    "description": "Specifies resource override configuration for the project",
+                    "properties": {
+                      "fluid": {
+                        "type": "boolean"
+                      },
+                      "functionDefaultRegions": {
+                        "description": "The regions to deploy Vercel Functions to for this project",
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 4
+                        }
+                      },
+                      "functionDefaultTimeout": {
+                        "type": "number",
+                        "maximum": 900,
+                        "minimum": 1
+                      },
+                      "functionDefaultMemoryType": {
+                        "enum": [
+                          "standard_legacy",
+                          "standard",
+                          "performance"
+                        ]
+                      },
+                      "functionZeroConfigFailover": {
+                        "description": "Specifies whether Zero Config Failover is enabled for this project.",
+                        "oneOf": [
+                          {
+                            "type": "boolean"
+                          }
+                        ]
+                      },
+                      "elasticConcurrencyEnabled": {
+                        "type": "boolean"
+                      },
+                      "buildMachineType": {
+                        "enum": [
+                          "enhanced",
+                          "ultra"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "required": [
@@ -38210,26 +38349,56 @@
                     },
                     "protectionBypass": {
                       "additionalProperties": {
-                        "properties": {
-                          "createdAt": {
-                            "type": "number"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-automation-bypass"
+                                ]
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope",
+                              "integrationId"
+                            ],
+                            "type": "object"
                           },
-                          "createdBy": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string",
-                            "enum": [
-                              "automation-bypass"
-                            ]
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "automation-bypass"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope"
+                            ],
+                            "type": "object"
                           }
-                        },
-                        "required": [
-                          "createdAt",
-                          "createdBy",
-                          "scope"
-                        ],
-                        "type": "object"
+                        ]
                       },
                       "type": "object"
                     },
@@ -42132,26 +42301,56 @@
                     },
                     "protectionBypass": {
                       "additionalProperties": {
-                        "properties": {
-                          "createdAt": {
-                            "type": "number"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-automation-bypass"
+                                ]
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope",
+                              "integrationId"
+                            ],
+                            "type": "object"
                           },
-                          "createdBy": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string",
-                            "enum": [
-                              "automation-bypass"
-                            ]
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "automation-bypass"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope"
+                            ],
+                            "type": "object"
                           }
-                        },
-                        "required": [
-                          "createdAt",
-                          "createdBy",
-                          "scope"
-                        ],
-                        "type": "object"
+                        ]
                       },
                       "type": "object"
                     },
@@ -42895,6 +43094,56 @@
                     "description": "Specifies whether the source code and logs of the deployments for this project should be public or not",
                     "type": "boolean",
                     "nullable": true
+                  },
+                  "resourceConfig": {
+                    "properties": {
+                      "buildMachineType": {
+                        "enum": [
+                          null,
+                          "enhanced",
+                          "ultra"
+                        ]
+                      },
+                      "fluid": {
+                        "type": "boolean"
+                      },
+                      "functionDefaultRegions": {
+                        "description": "The regions to deploy Vercel Functions to for this project",
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "maxLength": 4
+                        }
+                      },
+                      "functionDefaultTimeout": {
+                        "type": "number",
+                        "maximum": 900,
+                        "minimum": 1
+                      },
+                      "functionDefaultMemoryType": {
+                        "enum": [
+                          "standard_legacy",
+                          "standard",
+                          "performance"
+                        ]
+                      },
+                      "functionZeroConfigFailover": {
+                        "description": "Specifies whether Zero Config Failover is enabled for this project.",
+                        "oneOf": [
+                          {
+                            "type": "boolean"
+                          }
+                        ]
+                      },
+                      "elasticConcurrencyEnabled": {
+                        "type": "boolean"
+                      }
+                    },
+                    "type": "object",
+                    "description": "Specifies resource override configuration for the project",
+                    "additionalProperties": false
                   },
                   "rootDirectory": {
                     "description": "The name of a directory or relative path to the source code of your project. When `null` is used it will default to the project root",
@@ -52096,26 +52345,56 @@
                   "properties": {
                     "protectionBypass": {
                       "additionalProperties": {
-                        "properties": {
-                          "createdAt": {
-                            "type": "number"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-automation-bypass"
+                                ]
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope",
+                              "integrationId"
+                            ],
+                            "type": "object"
                           },
-                          "createdBy": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string",
-                            "enum": [
-                              "automation-bypass"
-                            ]
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "number"
+                              },
+                              "createdBy": {
+                                "type": "string"
+                              },
+                              "scope": {
+                                "type": "string",
+                                "enum": [
+                                  "automation-bypass"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "createdBy",
+                              "scope"
+                            ],
+                            "type": "object"
                           }
-                        },
-                        "required": [
-                          "createdAt",
-                          "createdBy",
-                          "scope"
-                        ],
-                        "type": "object"
+                        ]
                       },
                       "type": "object"
                     }
@@ -52221,7 +52500,7 @@
                     "type": "object",
                     "properties": {
                       "secret": {
-                        "description": "Optional value of the secret to generate",
+                        "description": "Optional value of the secret to generate, don't send it for oauth2 tokens",
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9]{32}$"
                       }
@@ -61916,9 +62195,17 @@
     },
     "/aliases/{id}/protection-bypass": {
       "patch": {
-        "description": "Update the protection bypass for the alias (used for user access \u0026 comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).",
-        "security": [],
-        "tags": [],
+        "description": "Update the protection bypass for the alias or deployment URL (used for user access \u0026 comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).",
+        "operationId": "patchUrlProtectionBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update the protection bypass for a URL",
+        "tags": [
+          "aliases"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -61983,6 +62270,24 @@
             "schema": {
               "type": "string",
               "description": "The alias or deployment ID"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],

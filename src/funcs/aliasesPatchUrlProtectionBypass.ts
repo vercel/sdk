@@ -4,11 +4,12 @@
 
 import * as z from "zod";
 import { VercelCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -18,9 +19,9 @@ import {
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
 import {
-  PatchAliasesIdProtectionBypassRequest,
-  PatchAliasesIdProtectionBypassRequest$outboundSchema,
-} from "../models/patchaliasesidprotectionbypassop.js";
+  PatchUrlProtectionBypassRequest,
+  PatchUrlProtectionBypassRequest$outboundSchema,
+} from "../models/patchurlprotectionbypassop.js";
 import { SDKError } from "../models/sdkerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
@@ -39,11 +40,14 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update the protection bypass for the alias (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
+ * Update the protection bypass for a URL
+ *
+ * @remarks
+ * Update the protection bypass for the alias or deployment URL (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
  */
-export function patchAliasesIdProtectionBypass(
+export function aliasesPatchUrlProtectionBypass(
   client: VercelCore,
-  request: PatchAliasesIdProtectionBypassRequest,
+  request: PatchUrlProtectionBypassRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -69,7 +73,7 @@ export function patchAliasesIdProtectionBypass(
 
 async function $do(
   client: VercelCore,
-  request: PatchAliasesIdProtectionBypassRequest,
+  request: PatchUrlProtectionBypassRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -91,8 +95,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      PatchAliasesIdProtectionBypassRequest$outboundSchema.parse(value),
+    (value) => PatchUrlProtectionBypassRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -110,19 +113,28 @@ async function $do(
 
   const path = pathToFunc("/aliases/{id}/protection-bypass")(pathParams);
 
+  const query = encodeFormQuery({
+    "slug": payload.slug,
+    "teamId": payload.teamId,
+  });
+
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
+  const secConfig = await extractSecurity(client._options.bearerToken);
+  const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "patch_/aliases/{id}/protection-bypass",
+    operationID: "patchUrlProtectionBypass",
     oAuth2Scopes: [],
 
-    resolvedSecurity: null,
+    resolvedSecurity: requestSecurity,
 
-    securitySource: null,
+    securitySource: client._options.bearerToken,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -130,10 +142,12 @@ async function $do(
   };
 
   const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "PATCH",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

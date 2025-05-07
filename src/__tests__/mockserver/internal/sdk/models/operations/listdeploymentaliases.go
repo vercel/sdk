@@ -41,35 +41,35 @@ func (o *ListDeploymentAliasesRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type ListDeploymentAliasesProtectionBypassAliasesResponseScope string
+type ListDeploymentAliasesProtectionBypassAliasesResponse200Scope string
 
 const (
-	ListDeploymentAliasesProtectionBypassAliasesResponseScopeEmailInvite ListDeploymentAliasesProtectionBypassAliasesResponseScope = "email_invite"
+	ListDeploymentAliasesProtectionBypassAliasesResponse200ScopeEmailInvite ListDeploymentAliasesProtectionBypassAliasesResponse200Scope = "email_invite"
 )
 
-func (e ListDeploymentAliasesProtectionBypassAliasesResponseScope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesResponseScope {
+func (e ListDeploymentAliasesProtectionBypassAliasesResponse200Scope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesResponse200Scope {
 	return &e
 }
-func (e *ListDeploymentAliasesProtectionBypassAliasesResponseScope) UnmarshalJSON(data []byte) error {
+func (e *ListDeploymentAliasesProtectionBypassAliasesResponse200Scope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email_invite":
-		*e = ListDeploymentAliasesProtectionBypassAliasesResponseScope(v)
+		*e = ListDeploymentAliasesProtectionBypassAliasesResponse200Scope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesResponseScope: %v", v)
+		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesResponse200Scope: %v", v)
 	}
 }
 
 // ListDeploymentAliasesProtectionBypass4 - The protection bypass for the alias
 type ListDeploymentAliasesProtectionBypass4 struct {
-	CreatedAt     float64                                                   `json:"createdAt"`
-	LastUpdatedAt float64                                                   `json:"lastUpdatedAt"`
-	LastUpdatedBy string                                                    `json:"lastUpdatedBy"`
-	Scope         ListDeploymentAliasesProtectionBypassAliasesResponseScope `json:"scope"`
+	CreatedAt     float64                                                      `json:"createdAt"`
+	LastUpdatedAt float64                                                      `json:"lastUpdatedAt"`
+	LastUpdatedBy string                                                       `json:"lastUpdatedBy"`
+	Scope         ListDeploymentAliasesProtectionBypassAliasesResponse200Scope `json:"scope"`
 }
 
 func (o *ListDeploymentAliasesProtectionBypass4) GetCreatedAt() float64 {
@@ -93,41 +93,41 @@ func (o *ListDeploymentAliasesProtectionBypass4) GetLastUpdatedBy() string {
 	return o.LastUpdatedBy
 }
 
-func (o *ListDeploymentAliasesProtectionBypass4) GetScope() ListDeploymentAliasesProtectionBypassAliasesResponseScope {
+func (o *ListDeploymentAliasesProtectionBypass4) GetScope() ListDeploymentAliasesProtectionBypassAliasesResponse200Scope {
 	if o == nil {
-		return ListDeploymentAliasesProtectionBypassAliasesResponseScope("")
+		return ListDeploymentAliasesProtectionBypassAliasesResponse200Scope("")
 	}
 	return o.Scope
 }
 
-type ListDeploymentAliasesProtectionBypassAliasesScope string
+type ListDeploymentAliasesProtectionBypassAliasesResponseScope string
 
 const (
-	ListDeploymentAliasesProtectionBypassAliasesScopeAliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasesScope = "alias-protection-override"
+	ListDeploymentAliasesProtectionBypassAliasesResponseScopeAliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasesResponseScope = "alias-protection-override"
 )
 
-func (e ListDeploymentAliasesProtectionBypassAliasesScope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesScope {
+func (e ListDeploymentAliasesProtectionBypassAliasesResponseScope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesResponseScope {
 	return &e
 }
-func (e *ListDeploymentAliasesProtectionBypassAliasesScope) UnmarshalJSON(data []byte) error {
+func (e *ListDeploymentAliasesProtectionBypassAliasesResponseScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "alias-protection-override":
-		*e = ListDeploymentAliasesProtectionBypassAliasesScope(v)
+		*e = ListDeploymentAliasesProtectionBypassAliasesResponseScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesScope: %v", v)
+		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesResponseScope: %v", v)
 	}
 }
 
 // ListDeploymentAliasesProtectionBypass3 - The protection bypass for the alias
 type ListDeploymentAliasesProtectionBypass3 struct {
-	CreatedAt float64                                           `json:"createdAt"`
-	CreatedBy string                                            `json:"createdBy"`
-	Scope     ListDeploymentAliasesProtectionBypassAliasesScope `json:"scope"`
+	CreatedAt float64                                                   `json:"createdAt"`
+	CreatedBy string                                                    `json:"createdBy"`
+	Scope     ListDeploymentAliasesProtectionBypassAliasesResponseScope `json:"scope"`
 }
 
 func (o *ListDeploymentAliasesProtectionBypass3) GetCreatedAt() float64 {
@@ -144,9 +144,9 @@ func (o *ListDeploymentAliasesProtectionBypass3) GetCreatedBy() string {
 	return o.CreatedBy
 }
 
-func (o *ListDeploymentAliasesProtectionBypass3) GetScope() ListDeploymentAliasesProtectionBypassAliasesScope {
+func (o *ListDeploymentAliasesProtectionBypass3) GetScope() ListDeploymentAliasesProtectionBypassAliasesResponseScope {
 	if o == nil {
-		return ListDeploymentAliasesProtectionBypassAliasesScope("")
+		return ListDeploymentAliasesProtectionBypassAliasesResponseScope("")
 	}
 	return o.Scope
 }
@@ -177,36 +177,36 @@ func (e *ListDeploymentAliasesProtectionBypassAccess) UnmarshalJSON(data []byte)
 	}
 }
 
-type ListDeploymentAliasesProtectionBypassScope string
+type ListDeploymentAliasesProtectionBypassAliasesScope string
 
 const (
-	ListDeploymentAliasesProtectionBypassScopeUser ListDeploymentAliasesProtectionBypassScope = "user"
+	ListDeploymentAliasesProtectionBypassAliasesScopeUser ListDeploymentAliasesProtectionBypassAliasesScope = "user"
 )
 
-func (e ListDeploymentAliasesProtectionBypassScope) ToPointer() *ListDeploymentAliasesProtectionBypassScope {
+func (e ListDeploymentAliasesProtectionBypassAliasesScope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesScope {
 	return &e
 }
-func (e *ListDeploymentAliasesProtectionBypassScope) UnmarshalJSON(data []byte) error {
+func (e *ListDeploymentAliasesProtectionBypassAliasesScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "user":
-		*e = ListDeploymentAliasesProtectionBypassScope(v)
+		*e = ListDeploymentAliasesProtectionBypassAliasesScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassScope: %v", v)
+		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesScope: %v", v)
 	}
 }
 
 // ListDeploymentAliasesProtectionBypass2 - The protection bypass for the alias
 type ListDeploymentAliasesProtectionBypass2 struct {
-	CreatedAt     float64                                     `json:"createdAt"`
-	LastUpdatedAt float64                                     `json:"lastUpdatedAt"`
-	LastUpdatedBy string                                      `json:"lastUpdatedBy"`
-	Access        ListDeploymentAliasesProtectionBypassAccess `json:"access"`
-	Scope         ListDeploymentAliasesProtectionBypassScope  `json:"scope"`
+	CreatedAt     float64                                           `json:"createdAt"`
+	LastUpdatedAt float64                                           `json:"lastUpdatedAt"`
+	LastUpdatedBy string                                            `json:"lastUpdatedBy"`
+	Access        ListDeploymentAliasesProtectionBypassAccess       `json:"access"`
+	Scope         ListDeploymentAliasesProtectionBypassAliasesScope `json:"scope"`
 }
 
 func (o *ListDeploymentAliasesProtectionBypass2) GetCreatedAt() float64 {
@@ -237,41 +237,41 @@ func (o *ListDeploymentAliasesProtectionBypass2) GetAccess() ListDeploymentAlias
 	return o.Access
 }
 
-func (o *ListDeploymentAliasesProtectionBypass2) GetScope() ListDeploymentAliasesProtectionBypassScope {
+func (o *ListDeploymentAliasesProtectionBypass2) GetScope() ListDeploymentAliasesProtectionBypassAliasesScope {
 	if o == nil {
-		return ListDeploymentAliasesProtectionBypassScope("")
+		return ListDeploymentAliasesProtectionBypassAliasesScope("")
 	}
 	return o.Scope
 }
 
-type ListDeploymentAliasesProtectionBypassAliasesResponse200Scope string
+type ListDeploymentAliasesProtectionBypassScope string
 
 const (
-	ListDeploymentAliasesProtectionBypassAliasesResponse200ScopeShareableLink ListDeploymentAliasesProtectionBypassAliasesResponse200Scope = "shareable-link"
+	ListDeploymentAliasesProtectionBypassScopeShareableLink ListDeploymentAliasesProtectionBypassScope = "shareable-link"
 )
 
-func (e ListDeploymentAliasesProtectionBypassAliasesResponse200Scope) ToPointer() *ListDeploymentAliasesProtectionBypassAliasesResponse200Scope {
+func (e ListDeploymentAliasesProtectionBypassScope) ToPointer() *ListDeploymentAliasesProtectionBypassScope {
 	return &e
 }
-func (e *ListDeploymentAliasesProtectionBypassAliasesResponse200Scope) UnmarshalJSON(data []byte) error {
+func (e *ListDeploymentAliasesProtectionBypassScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "shareable-link":
-		*e = ListDeploymentAliasesProtectionBypassAliasesResponse200Scope(v)
+		*e = ListDeploymentAliasesProtectionBypassScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassAliasesResponse200Scope: %v", v)
+		return fmt.Errorf("invalid value for ListDeploymentAliasesProtectionBypassScope: %v", v)
 	}
 }
 
 // ListDeploymentAliasesProtectionBypass1 - The protection bypass for the alias
 type ListDeploymentAliasesProtectionBypass1 struct {
-	CreatedAt float64                                                      `json:"createdAt"`
-	CreatedBy string                                                       `json:"createdBy"`
-	Scope     ListDeploymentAliasesProtectionBypassAliasesResponse200Scope `json:"scope"`
+	CreatedAt float64                                    `json:"createdAt"`
+	CreatedBy string                                     `json:"createdBy"`
+	Scope     ListDeploymentAliasesProtectionBypassScope `json:"scope"`
 }
 
 func (o *ListDeploymentAliasesProtectionBypass1) GetCreatedAt() float64 {
@@ -288,9 +288,9 @@ func (o *ListDeploymentAliasesProtectionBypass1) GetCreatedBy() string {
 	return o.CreatedBy
 }
 
-func (o *ListDeploymentAliasesProtectionBypass1) GetScope() ListDeploymentAliasesProtectionBypassAliasesResponse200Scope {
+func (o *ListDeploymentAliasesProtectionBypass1) GetScope() ListDeploymentAliasesProtectionBypassScope {
 	if o == nil {
-		return ListDeploymentAliasesProtectionBypassAliasesResponse200Scope("")
+		return ListDeploymentAliasesProtectionBypassScope("")
 	}
 	return o.Scope
 }

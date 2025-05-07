@@ -15,7 +15,7 @@ test("Deployments Get Deployment Events", async () => {
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  await vercel.deployments.getDeploymentEvents({
+  const result = await vercel.deployments.getDeploymentEvents({
     idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
     follow: 1,
     limit: 100,
@@ -28,6 +28,7 @@ test("Deployments Get Deployment Events", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
+  expect(result).toBeDefined();
 });
 
 test("Deployments Update Integration Deployment Action", async () => {

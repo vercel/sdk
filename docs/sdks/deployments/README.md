@@ -30,7 +30,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.deployments.getDeploymentEvents({
+  const result = await vercel.deployments.getDeploymentEvents({
     idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
     follow: 1,
     limit: 100,
@@ -44,7 +44,8 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -85,7 +86,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -102,7 +104,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[models.GetDeploymentEventsResponseBody[]](../../models/.md)\>**
 
 ### Errors
 

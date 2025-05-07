@@ -70,6 +70,67 @@ export type GetDeploymentEventsRequest = {
   slug?: string | undefined;
 };
 
+/**
+ * Type of log entry
+ */
+export const GetDeploymentEventsType = {
+  Stdout: "stdout",
+  Stderr: "stderr",
+} as const;
+/**
+ * Type of log entry
+ */
+export type GetDeploymentEventsType = ClosedEnum<
+  typeof GetDeploymentEventsType
+>;
+
+export type Info = {
+  /**
+   * Type of operation
+   */
+  type?: string | undefined;
+  /**
+   * Name of the build
+   */
+  name?: string | undefined;
+  /**
+   * Entrypoint for the build
+   */
+  entrypoint?: string | undefined;
+};
+
+export type GetDeploymentEventsResponseBody = {
+  /**
+   * Unix timestamp when the log entry was created
+   */
+  created?: number | undefined;
+  /**
+   * Unix timestamp of the log entry date
+   */
+  date?: number | undefined;
+  /**
+   * Unique identifier for the deployment
+   */
+  deploymentId?: string | undefined;
+  /**
+   * Unique identifier for the log entry
+   */
+  id?: string | undefined;
+  /**
+   * Log message content
+   */
+  text?: string | undefined;
+  /**
+   * Type of log entry
+   */
+  type?: GetDeploymentEventsType | undefined;
+  /**
+   * Serial identifier for the log entry
+   */
+  serial?: string | undefined;
+  info?: Info | undefined;
+};
+
 /** @internal */
 export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
   .nativeEnum(Direction);
@@ -217,5 +278,153 @@ export function getDeploymentEventsRequestFromJSON(
     jsonString,
     (x) => GetDeploymentEventsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentEventsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEventsType
+> = z.nativeEnum(GetDeploymentEventsType);
+
+/** @internal */
+export const GetDeploymentEventsType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEventsType
+> = GetDeploymentEventsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsType$ {
+  /** @deprecated use `GetDeploymentEventsType$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentEventsType$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsType$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentEventsType$outboundSchema;
+}
+
+/** @internal */
+export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
+  .object({
+    type: z.string().optional(),
+    name: z.string().optional(),
+    entrypoint: z.string().optional(),
+  });
+
+/** @internal */
+export type Info$Outbound = {
+  type?: string | undefined;
+  name?: string | undefined;
+  entrypoint?: string | undefined;
+};
+
+/** @internal */
+export const Info$outboundSchema: z.ZodType<Info$Outbound, z.ZodTypeDef, Info> =
+  z.object({
+    type: z.string().optional(),
+    name: z.string().optional(),
+    entrypoint: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Info$ {
+  /** @deprecated use `Info$inboundSchema` instead. */
+  export const inboundSchema = Info$inboundSchema;
+  /** @deprecated use `Info$outboundSchema` instead. */
+  export const outboundSchema = Info$outboundSchema;
+  /** @deprecated use `Info$Outbound` instead. */
+  export type Outbound = Info$Outbound;
+}
+
+export function infoToJSON(info: Info): string {
+  return JSON.stringify(Info$outboundSchema.parse(info));
+}
+
+export function infoFromJSON(
+  jsonString: string,
+): SafeParseResult<Info, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Info$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Info' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created: z.number().optional(),
+  date: z.number().optional(),
+  deploymentId: z.string().optional(),
+  id: z.string().optional(),
+  text: z.string().optional(),
+  type: GetDeploymentEventsType$inboundSchema.optional(),
+  serial: z.string().optional(),
+  info: z.lazy(() => Info$inboundSchema).optional(),
+});
+
+/** @internal */
+export type GetDeploymentEventsResponseBody$Outbound = {
+  created?: number | undefined;
+  date?: number | undefined;
+  deploymentId?: string | undefined;
+  id?: string | undefined;
+  text?: string | undefined;
+  type?: string | undefined;
+  serial?: string | undefined;
+  info?: Info$Outbound | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponseBody
+> = z.object({
+  created: z.number().optional(),
+  date: z.number().optional(),
+  deploymentId: z.string().optional(),
+  id: z.string().optional(),
+  text: z.string().optional(),
+  type: GetDeploymentEventsType$outboundSchema.optional(),
+  serial: z.string().optional(),
+  info: z.lazy(() => Info$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBody$ {
+  /** @deprecated use `GetDeploymentEventsResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentEventsResponseBody$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentEventsResponseBody$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBody$Outbound;
+}
+
+export function getDeploymentEventsResponseBodyToJSON(
+  getDeploymentEventsResponseBody: GetDeploymentEventsResponseBody,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBody$outboundSchema.parse(
+      getDeploymentEventsResponseBody,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEventsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBody' from JSON`,
   );
 }

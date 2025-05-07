@@ -31,6 +31,8 @@ Get the build logs of a deployment by deployment ID and build ID. It can work as
         };
       }
 
-      return formatResult(void 0, apiCall);
+      const value = result.value;
+
+      return formatResult(value, apiCall);
     },
   };

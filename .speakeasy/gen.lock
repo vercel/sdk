@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 6cbbca90a17fdb30936d0bb21a965316
+  docChecksum: 2a1cc8db1c462fa8417521d81ce8b1ee
   docVersion: 0.0.1
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
-  releaseVersion: 1.6.11
-  configChecksum: 127bbb2b7ef62096139e1ef51b309367
+  releaseVersion: 1.6.12
+  configChecksum: a8b62e1001ffbc6aa8ef3415f7dd4c71
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -1125,6 +1125,8 @@ generatedFiles:
   - docs/models/getdeploymentcustomenvironmenttype.md
   - docs/models/getdeploymentcustomenvironmentverification.md
   - docs/models/getdeploymenteventsrequest.md
+  - docs/models/getdeploymenteventsresponsebody.md
+  - docs/models/getdeploymenteventstype.md
   - docs/models/getdeploymentfilecontentsrequest.md
   - docs/models/getdeploymentflags1.md
   - docs/models/getdeploymentflags2.md
@@ -1744,6 +1746,7 @@ generatedFiles:
   - docs/models/importresourcesecrets.md
   - docs/models/importresourcestatus.md
   - docs/models/importresourcetype.md
+  - docs/models/info.md
   - docs/models/inlinedfile.md
   - docs/models/installationtype.md
   - docs/models/integration.md
@@ -5048,6 +5051,8 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "200":
+          application/json: [{"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout", "serial": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}}, {"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout", "serial": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}}]
   update-integration-deployment-action:
     speakeasy-default-update-integration-deployment-action:
       parameters:

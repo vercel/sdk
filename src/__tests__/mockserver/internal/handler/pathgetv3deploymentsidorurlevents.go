@@ -7,6 +7,9 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
+	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
@@ -43,6 +46,47 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	respBody := []operations.GetDeploymentEventsResponseBody{
+		operations.GetDeploymentEventsResponseBody{
+			Created:      types.Float64(1744583330135),
+			Date:         types.Float64(1744583330135),
+			DeploymentID: types.String("dpl_GjyjUDa3gESegReEzVREj1sQ92b7"),
+			ID:           types.String("1744583330135959366434900001"),
+			Text:         types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
+			Type:         operations.GetDeploymentEventsTypeStdout.ToPointer(),
+			Serial:       types.String("1744583330135959366434900001"),
+			Info: &operations.Info{
+				Type:       types.String("build"),
+				Name:       types.String("bld_by3kz18kn"),
+				Entrypoint: types.String("."),
+			},
+		},
+		operations.GetDeploymentEventsResponseBody{
+			Created:      types.Float64(1744583330135),
+			Date:         types.Float64(1744583330135),
+			DeploymentID: types.String("dpl_GjyjUDa3gESegReEzVREj1sQ92b7"),
+			ID:           types.String("1744583330135959366434900001"),
+			Text:         types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
+			Type:         operations.GetDeploymentEventsTypeStdout.ToPointer(),
+			Serial:       types.String("1744583330135959366434900001"),
+			Info: &operations.Info{
+				Type:       types.String("build"),
+				Name:       types.String("bld_by3kz18kn"),
+				Entrypoint: types.String("."),
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }

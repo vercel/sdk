@@ -29,6 +29,7 @@ import { tool$aliasesDeleteAlias } from "./tools/aliasesDeleteAlias.js";
 import { tool$aliasesGetAlias } from "./tools/aliasesGetAlias.js";
 import { tool$aliasesListAliases } from "./tools/aliasesListAliases.js";
 import { tool$aliasesListDeploymentAliases } from "./tools/aliasesListDeploymentAliases.js";
+import { tool$aliasesPatchUrlProtectionBypass } from "./tools/aliasesPatchUrlProtectionBypass.js";
 import { tool$artifactsArtifactExists } from "./tools/artifactsArtifactExists.js";
 import { tool$artifactsArtifactQuery } from "./tools/artifactsArtifactQuery.js";
 import { tool$artifactsDownloadArtifact } from "./tools/artifactsDownloadArtifact.js";
@@ -119,7 +120,6 @@ import { tool$marketplaceUpdateInstallationIntegrationEdgeConfig } from "./tools
 import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
-import { tool$patchAliasesIdProtectionBypass } from "./tools/patchAliasesIdProtectionBypass.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -186,7 +186,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.6.10",
+    version: "1.6.11",
   });
 
   const client = new VercelCore({
@@ -216,7 +216,6 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
-  tool(tool$patchAliasesIdProtectionBypass);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -374,6 +373,7 @@ export function createMCPServer(deps: {
   tool(tool$aliasesListAliases);
   tool(tool$aliasesGetAlias);
   tool(tool$aliasesDeleteAlias);
+  tool(tool$aliasesPatchUrlProtectionBypass);
   tool(tool$certsGetCertById);
   tool(tool$certsRemoveCert);
   tool(tool$certsIssueCert);

@@ -5,12 +5,11 @@
 ```typescript
 import { ListDeploymentAliasesProtectionBypassAliasesScope } from "@vercel/sdk/models/listdeploymentaliasesop.js";
 
-let value: ListDeploymentAliasesProtectionBypassAliasesScope =
-  "alias-protection-override";
+let value: ListDeploymentAliasesProtectionBypassAliasesScope = "user";
 ```
 
 ## Values
 
 ```typescript
-"alias-protection-override"
+"user"
 ```

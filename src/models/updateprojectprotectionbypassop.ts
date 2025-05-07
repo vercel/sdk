@@ -28,7 +28,7 @@ export type Revoke = {
  */
 export type Generate = {
   /**
-   * Optional value of the secret to generate
+   * Optional value of the secret to generate, don't send it for oauth2 tokens
    */
   secret?: string | undefined;
 };
@@ -60,22 +60,41 @@ export type UpdateProjectProtectionBypassRequest = {
   requestBody: UpdateProjectProtectionBypassRequestBody;
 };
 
-export const UpdateProjectProtectionBypassScope = {
+export const UpdateProjectProtectionBypassProtectionBypassProjectsScope = {
   AutomationBypass: "automation-bypass",
 } as const;
-export type UpdateProjectProtectionBypassScope = ClosedEnum<
-  typeof UpdateProjectProtectionBypassScope
->;
+export type UpdateProjectProtectionBypassProtectionBypassProjectsScope =
+  ClosedEnum<typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope>;
 
-export type UpdateProjectProtectionBypassProtectionBypass = {
+export type UpdateProjectProtectionBypassProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectProtectionBypassScope;
+  scope: UpdateProjectProtectionBypassProtectionBypassProjectsScope;
 };
+
+export const UpdateProjectProtectionBypassProtectionBypassScope = {
+  IntegrationAutomationBypass: "integration-automation-bypass",
+} as const;
+export type UpdateProjectProtectionBypassProtectionBypassScope = ClosedEnum<
+  typeof UpdateProjectProtectionBypassProtectionBypassScope
+>;
+
+export type UpdateProjectProtectionBypassProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: UpdateProjectProtectionBypassProtectionBypassScope;
+  integrationId: string;
+};
+
+export type UpdateProjectProtectionBypassProtectionBypass =
+  | UpdateProjectProtectionBypassProtectionBypass2
+  | UpdateProjectProtectionBypassProtectionBypass1;
 
 export type UpdateProjectProtectionBypassResponseBody = {
   protectionBypass?: {
-    [k: string]: UpdateProjectProtectionBypassProtectionBypass;
+    [k: string]:
+      | UpdateProjectProtectionBypassProtectionBypass2
+      | UpdateProjectProtectionBypassProtectionBypass1;
   } | undefined;
 };
 
@@ -328,25 +347,204 @@ export function updateProjectProtectionBypassRequestFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProtectionBypassScope
-> = z.nativeEnum(UpdateProjectProtectionBypassScope);
+export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
+  > = z.nativeEnum(UpdateProjectProtectionBypassProtectionBypassProjectsScope);
 
 /** @internal */
-export const UpdateProjectProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProtectionBypassScope
-> = UpdateProjectProtectionBypassScope$inboundSchema;
+export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
+  > = UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectProtectionBypassScope$ {
-  /** @deprecated use `UpdateProjectProtectionBypassScope$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectProtectionBypassScope$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassScope$outboundSchema` instead. */
+export namespace UpdateProjectProtectionBypassProtectionBypassProjectsScope$ {
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateProjectProtectionBypassScope$outboundSchema;
+    UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
+  z.ZodType<
+    UpdateProjectProtectionBypassProtectionBypass2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: z.number(),
+    createdBy: z.string(),
+    scope:
+      UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema,
+  });
+
+/** @internal */
+export type UpdateProjectProtectionBypassProtectionBypass2$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypass2$outboundSchema:
+  z.ZodType<
+    UpdateProjectProtectionBypassProtectionBypass2$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectProtectionBypassProtectionBypass2
+  > = z.object({
+    createdAt: z.number(),
+    createdBy: z.string(),
+    scope:
+      UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema,
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProtectionBypassProtectionBypass2$ {
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProtectionBypassProtectionBypass2$inboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProtectionBypassProtectionBypass2$outboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$Outbound` instead. */
+  export type Outbound =
+    UpdateProjectProtectionBypassProtectionBypass2$Outbound;
+}
+
+export function updateProjectProtectionBypassProtectionBypass2ToJSON(
+  updateProjectProtectionBypassProtectionBypass2:
+    UpdateProjectProtectionBypassProtectionBypass2,
+): string {
+  return JSON.stringify(
+    UpdateProjectProtectionBypassProtectionBypass2$outboundSchema.parse(
+      updateProjectProtectionBypassProtectionBypass2,
+    ),
+  );
+}
+
+export function updateProjectProtectionBypassProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProtectionBypassProtectionBypass2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProtectionBypassProtectionBypass2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProtectionBypassProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> = z
+    .nativeEnum(UpdateProjectProtectionBypassProtectionBypassScope);
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> =
+    UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProtectionBypassProtectionBypassScope$ {
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
+  z.ZodType<
+    UpdateProjectProtectionBypassProtectionBypass1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: z.number(),
+    createdBy: z.string(),
+    scope: UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema,
+    integrationId: z.string(),
+  });
+
+/** @internal */
+export type UpdateProjectProtectionBypassProtectionBypass1$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+  integrationId: string;
+};
+
+/** @internal */
+export const UpdateProjectProtectionBypassProtectionBypass1$outboundSchema:
+  z.ZodType<
+    UpdateProjectProtectionBypassProtectionBypass1$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectProtectionBypassProtectionBypass1
+  > = z.object({
+    createdAt: z.number(),
+    createdBy: z.string(),
+    scope: UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema,
+    integrationId: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProtectionBypassProtectionBypass1$ {
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProtectionBypassProtectionBypass1$inboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProtectionBypassProtectionBypass1$outboundSchema;
+  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$Outbound` instead. */
+  export type Outbound =
+    UpdateProjectProtectionBypassProtectionBypass1$Outbound;
+}
+
+export function updateProjectProtectionBypassProtectionBypass1ToJSON(
+  updateProjectProtectionBypassProtectionBypass1:
+    UpdateProjectProtectionBypassProtectionBypass1,
+): string {
+  return JSON.stringify(
+    UpdateProjectProtectionBypassProtectionBypass1$outboundSchema.parse(
+      updateProjectProtectionBypassProtectionBypass1,
+    ),
+  );
+}
+
+export function updateProjectProtectionBypassProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProtectionBypassProtectionBypass1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProtectionBypassProtectionBypass1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProtectionBypassProtectionBypass1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -355,18 +553,15 @@ export const UpdateProjectProtectionBypassProtectionBypass$inboundSchema:
     UpdateProjectProtectionBypassProtectionBypass,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: z.number(),
-    createdBy: z.string(),
-    scope: UpdateProjectProtectionBypassScope$inboundSchema,
-  });
+  > = z.union([
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$inboundSchema),
+  ]);
 
 /** @internal */
-export type UpdateProjectProtectionBypassProtectionBypass$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: string;
-};
+export type UpdateProjectProtectionBypassProtectionBypass$Outbound =
+  | UpdateProjectProtectionBypassProtectionBypass2$Outbound
+  | UpdateProjectProtectionBypassProtectionBypass1$Outbound;
 
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
@@ -374,11 +569,10 @@ export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
     UpdateProjectProtectionBypassProtectionBypass$Outbound,
     z.ZodTypeDef,
     UpdateProjectProtectionBypassProtectionBypass
-  > = z.object({
-    createdAt: z.number(),
-    createdBy: z.string(),
-    scope: UpdateProjectProtectionBypassScope$outboundSchema,
-  });
+  > = z.union([
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$outboundSchema),
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$outboundSchema),
+  ]);
 
 /**
  * @internal
@@ -429,14 +623,23 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   protectionBypass: z.record(
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass$inboundSchema),
+    z.union([
+      z.lazy(() =>
+        UpdateProjectProtectionBypassProtectionBypass2$inboundSchema
+      ),
+      z.lazy(() =>
+        UpdateProjectProtectionBypassProtectionBypass1$inboundSchema
+      ),
+    ]),
   ).optional(),
 });
 
 /** @internal */
 export type UpdateProjectProtectionBypassResponseBody$Outbound = {
   protectionBypass?: {
-    [k: string]: UpdateProjectProtectionBypassProtectionBypass$Outbound;
+    [k: string]:
+      | UpdateProjectProtectionBypassProtectionBypass2$Outbound
+      | UpdateProjectProtectionBypassProtectionBypass1$Outbound;
   } | undefined;
 };
 
@@ -448,9 +651,14 @@ export const UpdateProjectProtectionBypassResponseBody$outboundSchema:
     UpdateProjectProtectionBypassResponseBody
   > = z.object({
     protectionBypass: z.record(
-      z.lazy(() =>
-        UpdateProjectProtectionBypassProtectionBypass$outboundSchema
-      ),
+      z.union([
+        z.lazy(() =>
+          UpdateProjectProtectionBypassProtectionBypass2$outboundSchema
+        ),
+        z.lazy(() =>
+          UpdateProjectProtectionBypassProtectionBypass1$outboundSchema
+        ),
+      ]),
     ).optional(),
   });
 

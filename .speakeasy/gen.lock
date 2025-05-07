@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: f4317e35e2a168112b08860afb871b37
+  docChecksum: 6cbbca90a17fdb30936d0bb21a965316
   docVersion: 0.0.1
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
-  releaseVersion: 1.6.10
-  configChecksum: 6608b4597da6fef2af21f0acfea93530
+  releaseVersion: 1.6.11
+  configChecksum: 127bbb2b7ef62096139e1ef51b309367
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -624,6 +624,7 @@ generatedFiles:
   - docs/models/createprojectprojectsplan.md
   - docs/models/createprojectprojectsreadystate.md
   - docs/models/createprojectprojectsreadysubstate.md
+  - docs/models/createprojectprojectsresourceconfig.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodylastaliasrequesttype.md
@@ -640,6 +641,10 @@ generatedFiles:
   - docs/models/createprojectprojectstype.md
   - docs/models/createprojectprojectsvalue.md
   - docs/models/createprojectprotectionbypass.md
+  - docs/models/createprojectprotectionbypass1.md
+  - docs/models/createprojectprotectionbypass2.md
+  - docs/models/createprojectprotectionbypassprojectsscope.md
+  - docs/models/createprojectprotectionbypassscope.md
   - docs/models/createprojectreadystate.md
   - docs/models/createprojectreadysubstate.md
   - docs/models/createprojectrequest.md
@@ -647,7 +652,6 @@ generatedFiles:
   - docs/models/createprojectresourceconfig.md
   - docs/models/createprojectresponsebody.md
   - docs/models/createprojectrollingrelease.md
-  - docs/models/createprojectscope.md
   - docs/models/createprojectsecurity.md
   - docs/models/createprojectspeedinsights.md
   - docs/models/createprojectsrc.md
@@ -675,9 +679,6 @@ generatedFiles:
   - docs/models/createprojectwebanalytics.md
   - docs/models/createrecordrequest.md
   - docs/models/createrecordrequestbody.md
-  - docs/models/createrecordrequestbody1.md
-  - docs/models/createrecordrequestbody2.md
-  - docs/models/createrecordrequestbody3.md
   - docs/models/createrecordrequestbodydnsrequest10type.md
   - docs/models/createrecordrequestbodydnsrequest5type.md
   - docs/models/createrecordrequestbodydnsrequest6type.md
@@ -1028,6 +1029,9 @@ generatedFiles:
   - docs/models/getaliascreator.md
   - docs/models/getaliasdeployment.md
   - docs/models/getaliasprotectionbypass.md
+  - docs/models/getaliasprotectionbypass1.md
+  - docs/models/getaliasprotectionbypass2.md
+  - docs/models/getaliasprotectionbypassaliasesresponse200scope.md
   - docs/models/getaliasprotectionbypassaliasesresponsescope.md
   - docs/models/getaliasprotectionbypassaliasesscope.md
   - docs/models/getaliasprotectionbypassscope.md
@@ -1600,13 +1604,16 @@ generatedFiles:
   - docs/models/getprojectsprojectstype.md
   - docs/models/getprojectsprojectsvalue.md
   - docs/models/getprojectsprotectionbypass.md
+  - docs/models/getprojectsprotectionbypass1.md
+  - docs/models/getprojectsprotectionbypass2.md
+  - docs/models/getprojectsprotectionbypassprojectsscope.md
+  - docs/models/getprojectsprotectionbypassscope.md
   - docs/models/getprojectsreadystate.md
   - docs/models/getprojectsreadysubstate.md
   - docs/models/getprojectsrequest.md
   - docs/models/getprojectsresourceconfig.md
   - docs/models/getprojectsresponsebody.md
   - docs/models/getprojectsrollingrelease.md
-  - docs/models/getprojectsscope.md
   - docs/models/getprojectssecurity.md
   - docs/models/getprojectsspeedinsights.md
   - docs/models/getprojectssrc.md
@@ -1977,9 +1984,6 @@ generatedFiles:
   - docs/models/passwordprotection1.md
   - docs/models/passwordprotection2.md
   - docs/models/passwordprotectiondeploymenttype.md
-  - docs/models/patchaliasesidprotectionbypassrequest.md
-  - docs/models/patchaliasesidprotectionbypassrequestbody.md
-  - docs/models/patchaliasesidprotectionbypassrequestbodyaction.md
   - docs/models/patchdomainrequest.md
   - docs/models/patchdomainrequestbody.md
   - docs/models/patchdomainrequestbody1.md
@@ -1995,6 +1999,12 @@ generatedFiles:
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
   - docs/models/patchteamsaml.md
+  - docs/models/patchurlprotectionbypassrequest.md
+  - docs/models/patchurlprotectionbypassrequestbody.md
+  - docs/models/patchurlprotectionbypassrequestbody1.md
+  - docs/models/patchurlprotectionbypassrequestbody2.md
+  - docs/models/patchurlprotectionbypassrequestbody3.md
+  - docs/models/patchurlprotectionbypassrequestbodyaction.md
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidcategory.md
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequestbody.md
@@ -2844,10 +2854,12 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsaction.md
   - docs/models/updateprojectdatacacheprojectsaliaserror.md
   - docs/models/updateprojectdatacacheprojectsbranchmatcher.md
+  - docs/models/updateprojectdatacacheprojectsbuildmachinetype.md
   - docs/models/updateprojectdatacacheprojectsbuilds.md
   - docs/models/updateprojectdatacacheprojectschecksconclusion.md
   - docs/models/updateprojectdatacacheprojectschecksstate.md
   - docs/models/updateprojectdatacacheprojectscreator.md
+  - docs/models/updateprojectdatacacheprojectsfunctiondefaultmemorytype.md
   - docs/models/updateprojectdatacacheprojectsoidctokenclaims.md
   - docs/models/updateprojectdatacacheprojectsplan.md
   - docs/models/updateprojectdatacacheprojectsreadystate.md
@@ -2864,13 +2876,13 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsresponsetype.md
   - docs/models/updateprojectdatacacheprojectstype.md
   - docs/models/updateprojectdatacacheprojectsvalue.md
+  - docs/models/updateprojectdatacacheprotectionbypassscope.md
   - docs/models/updateprojectdatacachereadystate.md
   - docs/models/updateprojectdatacachereadysubstate.md
   - docs/models/updateprojectdatacacherequest.md
   - docs/models/updateprojectdatacacherequestbody.md
   - docs/models/updateprojectdatacacheresourceconfig.md
   - docs/models/updateprojectdatacacheresponsebody.md
-  - docs/models/updateprojectdatacachescope.md
   - docs/models/updateprojectdatacachesecurity.md
   - docs/models/updateprojectdatacachessoprotection.md
   - docs/models/updateprojectdatacachetarget.md
@@ -2962,6 +2974,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsreadystate.md
   - docs/models/updateprojectprojectsreadysubstate.md
   - docs/models/updateprojectprojectsrequestdeploymenttype.md
+  - docs/models/updateprojectprojectsresourceconfig.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
@@ -2971,14 +2984,23 @@ generatedFiles:
   - docs/models/updateprojectprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectprojectsresponse200type.md
   - docs/models/updateprojectprojectsresponsebranchmatcher.md
+  - docs/models/updateprojectprojectsresponsebuildmachinetype.md
   - docs/models/updateprojectprojectsresponsedeploymenttype.md
+  - docs/models/updateprojectprojectsresponsefunctiondefaultmemorytype.md
   - docs/models/updateprojectprojectsresponsetype.md
   - docs/models/updateprojectprojectsssoprotection.md
   - docs/models/updateprojectprojectstrustedips.md
   - docs/models/updateprojectprojectstype.md
   - docs/models/updateprojectprojectsvalue.md
   - docs/models/updateprojectprotectionbypass.md
+  - docs/models/updateprojectprotectionbypass1.md
+  - docs/models/updateprojectprotectionbypass2.md
+  - docs/models/updateprojectprotectionbypassprojectsscope.md
   - docs/models/updateprojectprotectionbypassprotectionbypass.md
+  - docs/models/updateprojectprotectionbypassprotectionbypass1.md
+  - docs/models/updateprojectprotectionbypassprotectionbypass2.md
+  - docs/models/updateprojectprotectionbypassprotectionbypassprojectsscope.md
+  - docs/models/updateprojectprotectionbypassprotectionbypassscope.md
   - docs/models/updateprojectprotectionbypassrequest.md
   - docs/models/updateprojectprotectionbypassrequestbody.md
   - docs/models/updateprojectprotectionbypassresponsebody.md
@@ -2990,7 +3012,6 @@ generatedFiles:
   - docs/models/updateprojectresourceconfig.md
   - docs/models/updateprojectresponsebody.md
   - docs/models/updateprojectrollingrelease.md
-  - docs/models/updateprojectscope.md
   - docs/models/updateprojectsecurity.md
   - docs/models/updateprojectspeedinsights.md
   - docs/models/updateprojectsrc.md
@@ -3480,10 +3501,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/listpromotealiases.go
   - src/__tests__/mockserver/internal/sdk/models/operations/listuserevents.go
   - src/__tests__/mockserver/internal/sdk/models/operations/moveprojectdomain.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/patchaliasesidprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchurlprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
@@ -3578,6 +3599,7 @@ generatedFiles:
   - src/funcs/aliasesGetAlias.ts
   - src/funcs/aliasesListAliases.ts
   - src/funcs/aliasesListDeploymentAliases.ts
+  - src/funcs/aliasesPatchUrlProtectionBypass.ts
   - src/funcs/artifactsArtifactExists.ts
   - src/funcs/artifactsArtifactQuery.ts
   - src/funcs/artifactsDownloadArtifact.ts
@@ -3668,7 +3690,6 @@ generatedFiles:
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
-  - src/funcs/patchAliasesIdProtectionBypass.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
   - src/funcs/projectMembersRemoveProjectMember.ts
@@ -3771,6 +3792,7 @@ generatedFiles:
   - src/mcp-server/tools/aliasesGetAlias.ts
   - src/mcp-server/tools/aliasesListAliases.ts
   - src/mcp-server/tools/aliasesListDeploymentAliases.ts
+  - src/mcp-server/tools/aliasesPatchUrlProtectionBypass.ts
   - src/mcp-server/tools/artifactsArtifactExists.ts
   - src/mcp-server/tools/artifactsArtifactQuery.ts
   - src/mcp-server/tools/artifactsDownloadArtifact.ts
@@ -3861,7 +3883,6 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceUpdateInvoice.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
-  - src/mcp-server/tools/patchAliasesIdProtectionBypass.ts
   - src/mcp-server/tools/projectMembersAddProjectMember.ts
   - src/mcp-server/tools/projectMembersGetProjectMembers.ts
   - src/mcp-server/tools/projectMembersRemoveProjectMember.ts
@@ -4038,10 +4059,10 @@ generatedFiles:
   - src/models/listusereventsop.ts
   - src/models/moveprojectdomainop.ts
   - src/models/pagination.ts
-  - src/models/patchaliasesidprotectionbypassop.ts
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchteamop.ts
+  - src/models/patchurlprotectionbypassop.ts
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/pauseprojectop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
@@ -6935,6 +6956,23 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patchUrlProtectionBypass:
+    speakeasy-default-patch-url-protection-bypass:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"key": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -7083,3 +7121,4 @@ generatedTests:
   issueCert: "2025-04-29T14:51:46-05:00"
   uploadCert: "2025-04-29T14:51:46-05:00"
   patch_/aliases/{id}/protection-bypass: "2025-05-02T00:08:48Z"
+  patchUrlProtectionBypass: "2025-05-07T13:36:30Z"

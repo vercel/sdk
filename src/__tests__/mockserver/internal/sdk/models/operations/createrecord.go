@@ -795,7 +795,7 @@ func (e *CreateRecordRequestBodyDNSType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateRecordRequestBody3 struct {
+type RequestBody3 struct {
 	// A subdomain name or an empty string for the root domain.
 	Name string `json:"name"`
 	// The type of record, it could be one of the valid DNS records.
@@ -808,35 +808,35 @@ type CreateRecordRequestBody3 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
-func (o *CreateRecordRequestBody3) GetName() string {
+func (o *RequestBody3) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *CreateRecordRequestBody3) GetType() CreateRecordRequestBodyDNSType {
+func (o *RequestBody3) GetType() CreateRecordRequestBodyDNSType {
 	if o == nil {
 		return CreateRecordRequestBodyDNSType("")
 	}
 	return o.Type
 }
 
-func (o *CreateRecordRequestBody3) GetTTL() *float64 {
+func (o *RequestBody3) GetTTL() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TTL
 }
 
-func (o *CreateRecordRequestBody3) GetValue() string {
+func (o *RequestBody3) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *CreateRecordRequestBody3) GetComment() *string {
+func (o *RequestBody3) GetComment() *string {
 	if o == nil {
 		return nil
 	}
@@ -894,7 +894,7 @@ func (e *CreateRecordRequestBodyType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateRecordRequestBody2 struct {
+type RequestBody2 struct {
 	// A subdomain name or an empty string for the root domain.
 	Name string `json:"name"`
 	// The type of record, it could be one of the valid DNS records.
@@ -907,35 +907,35 @@ type CreateRecordRequestBody2 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
-func (o *CreateRecordRequestBody2) GetName() string {
+func (o *RequestBody2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *CreateRecordRequestBody2) GetType() CreateRecordRequestBodyType {
+func (o *RequestBody2) GetType() CreateRecordRequestBodyType {
 	if o == nil {
 		return CreateRecordRequestBodyType("")
 	}
 	return o.Type
 }
 
-func (o *CreateRecordRequestBody2) GetTTL() *float64 {
+func (o *RequestBody2) GetTTL() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TTL
 }
 
-func (o *CreateRecordRequestBody2) GetValue() string {
+func (o *RequestBody2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *CreateRecordRequestBody2) GetComment() *string {
+func (o *RequestBody2) GetComment() *string {
 	if o == nil {
 		return nil
 	}
@@ -993,7 +993,7 @@ func (e *RequestBodyType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateRecordRequestBody1 struct {
+type RequestBody1 struct {
 	// A subdomain name or an empty string for the root domain.
 	Name string `json:"name"`
 	// The type of record, it could be one of the valid DNS records.
@@ -1006,35 +1006,35 @@ type CreateRecordRequestBody1 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
-func (o *CreateRecordRequestBody1) GetName() string {
+func (o *RequestBody1) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *CreateRecordRequestBody1) GetType() RequestBodyType {
+func (o *RequestBody1) GetType() RequestBodyType {
 	if o == nil {
 		return RequestBodyType("")
 	}
 	return o.Type
 }
 
-func (o *CreateRecordRequestBody1) GetTTL() *float64 {
+func (o *RequestBody1) GetTTL() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TTL
 }
 
-func (o *CreateRecordRequestBody1) GetValue() string {
+func (o *RequestBody1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *CreateRecordRequestBody1) GetComment() *string {
+func (o *RequestBody1) GetComment() *string {
 	if o == nil {
 		return nil
 	}
@@ -1044,57 +1044,57 @@ func (o *CreateRecordRequestBody1) GetComment() *string {
 type CreateRecordRequestBodyUnionType string
 
 const (
-	CreateRecordRequestBodyUnionTypeCreateRecordRequestBody1 CreateRecordRequestBodyUnionType = "createRecord_requestBody_1"
-	CreateRecordRequestBodyUnionTypeCreateRecordRequestBody2 CreateRecordRequestBodyUnionType = "createRecord_requestBody_2"
-	CreateRecordRequestBodyUnionTypeCreateRecordRequestBody3 CreateRecordRequestBodyUnionType = "createRecord_requestBody_3"
-	CreateRecordRequestBodyUnionTypeRequestBody4             CreateRecordRequestBodyUnionType = "requestBody_4"
-	CreateRecordRequestBodyUnionTypeRequestBody5             CreateRecordRequestBodyUnionType = "requestBody_5"
-	CreateRecordRequestBodyUnionTypeRequestBody6             CreateRecordRequestBodyUnionType = "requestBody_6"
-	CreateRecordRequestBodyUnionTypeSeven                    CreateRecordRequestBodyUnionType = "7"
-	CreateRecordRequestBodyUnionTypeEight                    CreateRecordRequestBodyUnionType = "8"
-	CreateRecordRequestBodyUnionTypeNine                     CreateRecordRequestBodyUnionType = "9"
-	CreateRecordRequestBodyUnionTypeTen                      CreateRecordRequestBodyUnionType = "10"
+	CreateRecordRequestBodyUnionTypeRequestBody1 CreateRecordRequestBodyUnionType = "requestBody_1"
+	CreateRecordRequestBodyUnionTypeRequestBody2 CreateRecordRequestBodyUnionType = "requestBody_2"
+	CreateRecordRequestBodyUnionTypeRequestBody3 CreateRecordRequestBodyUnionType = "requestBody_3"
+	CreateRecordRequestBodyUnionTypeRequestBody4 CreateRecordRequestBodyUnionType = "requestBody_4"
+	CreateRecordRequestBodyUnionTypeRequestBody5 CreateRecordRequestBodyUnionType = "requestBody_5"
+	CreateRecordRequestBodyUnionTypeRequestBody6 CreateRecordRequestBodyUnionType = "requestBody_6"
+	CreateRecordRequestBodyUnionTypeSeven        CreateRecordRequestBodyUnionType = "7"
+	CreateRecordRequestBodyUnionTypeEight        CreateRecordRequestBodyUnionType = "8"
+	CreateRecordRequestBodyUnionTypeNine         CreateRecordRequestBodyUnionType = "9"
+	CreateRecordRequestBodyUnionTypeTen          CreateRecordRequestBodyUnionType = "10"
 )
 
 type CreateRecordRequestBody struct {
-	CreateRecordRequestBody1 *CreateRecordRequestBody1
-	CreateRecordRequestBody2 *CreateRecordRequestBody2
-	CreateRecordRequestBody3 *CreateRecordRequestBody3
-	RequestBody4             *RequestBody4
-	RequestBody5             *RequestBody5
-	RequestBody6             *RequestBody6
-	Seven                    *Seven
-	Eight                    *Eight
-	Nine                     *Nine
-	Ten                      *Ten
+	RequestBody1 *RequestBody1
+	RequestBody2 *RequestBody2
+	RequestBody3 *RequestBody3
+	RequestBody4 *RequestBody4
+	RequestBody5 *RequestBody5
+	RequestBody6 *RequestBody6
+	Seven        *Seven
+	Eight        *Eight
+	Nine         *Nine
+	Ten          *Ten
 
 	Type CreateRecordRequestBodyUnionType
 }
 
-func CreateCreateRecordRequestBodyCreateRecordRequestBody1(createRecordRequestBody1 CreateRecordRequestBody1) CreateRecordRequestBody {
-	typ := CreateRecordRequestBodyUnionTypeCreateRecordRequestBody1
+func CreateCreateRecordRequestBodyRequestBody1(requestBody1 RequestBody1) CreateRecordRequestBody {
+	typ := CreateRecordRequestBodyUnionTypeRequestBody1
 
 	return CreateRecordRequestBody{
-		CreateRecordRequestBody1: &createRecordRequestBody1,
-		Type:                     typ,
+		RequestBody1: &requestBody1,
+		Type:         typ,
 	}
 }
 
-func CreateCreateRecordRequestBodyCreateRecordRequestBody2(createRecordRequestBody2 CreateRecordRequestBody2) CreateRecordRequestBody {
-	typ := CreateRecordRequestBodyUnionTypeCreateRecordRequestBody2
+func CreateCreateRecordRequestBodyRequestBody2(requestBody2 RequestBody2) CreateRecordRequestBody {
+	typ := CreateRecordRequestBodyUnionTypeRequestBody2
 
 	return CreateRecordRequestBody{
-		CreateRecordRequestBody2: &createRecordRequestBody2,
-		Type:                     typ,
+		RequestBody2: &requestBody2,
+		Type:         typ,
 	}
 }
 
-func CreateCreateRecordRequestBodyCreateRecordRequestBody3(createRecordRequestBody3 CreateRecordRequestBody3) CreateRecordRequestBody {
-	typ := CreateRecordRequestBodyUnionTypeCreateRecordRequestBody3
+func CreateCreateRecordRequestBodyRequestBody3(requestBody3 RequestBody3) CreateRecordRequestBody {
+	typ := CreateRecordRequestBodyUnionTypeRequestBody3
 
 	return CreateRecordRequestBody{
-		CreateRecordRequestBody3: &createRecordRequestBody3,
-		Type:                     typ,
+		RequestBody3: &requestBody3,
+		Type:         typ,
 	}
 }
 
@@ -1184,24 +1184,24 @@ func (u *CreateRecordRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createRecordRequestBody1 CreateRecordRequestBody1 = CreateRecordRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody1, "", true, true); err == nil {
-		u.CreateRecordRequestBody1 = &createRecordRequestBody1
-		u.Type = CreateRecordRequestBodyUnionTypeCreateRecordRequestBody1
+	var requestBody1 RequestBody1 = RequestBody1{}
+	if err := utils.UnmarshalJSON(data, &requestBody1, "", true, true); err == nil {
+		u.RequestBody1 = &requestBody1
+		u.Type = CreateRecordRequestBodyUnionTypeRequestBody1
 		return nil
 	}
 
-	var createRecordRequestBody2 CreateRecordRequestBody2 = CreateRecordRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody2, "", true, true); err == nil {
-		u.CreateRecordRequestBody2 = &createRecordRequestBody2
-		u.Type = CreateRecordRequestBodyUnionTypeCreateRecordRequestBody2
+	var requestBody2 RequestBody2 = RequestBody2{}
+	if err := utils.UnmarshalJSON(data, &requestBody2, "", true, true); err == nil {
+		u.RequestBody2 = &requestBody2
+		u.Type = CreateRecordRequestBodyUnionTypeRequestBody2
 		return nil
 	}
 
-	var createRecordRequestBody3 CreateRecordRequestBody3 = CreateRecordRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody3, "", true, true); err == nil {
-		u.CreateRecordRequestBody3 = &createRecordRequestBody3
-		u.Type = CreateRecordRequestBodyUnionTypeCreateRecordRequestBody3
+	var requestBody3 RequestBody3 = RequestBody3{}
+	if err := utils.UnmarshalJSON(data, &requestBody3, "", true, true); err == nil {
+		u.RequestBody3 = &requestBody3
+		u.Type = CreateRecordRequestBodyUnionTypeRequestBody3
 		return nil
 	}
 
@@ -1237,16 +1237,16 @@ func (u *CreateRecordRequestBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u CreateRecordRequestBody) MarshalJSON() ([]byte, error) {
-	if u.CreateRecordRequestBody1 != nil {
-		return utils.MarshalJSON(u.CreateRecordRequestBody1, "", true)
+	if u.RequestBody1 != nil {
+		return utils.MarshalJSON(u.RequestBody1, "", true)
 	}
 
-	if u.CreateRecordRequestBody2 != nil {
-		return utils.MarshalJSON(u.CreateRecordRequestBody2, "", true)
+	if u.RequestBody2 != nil {
+		return utils.MarshalJSON(u.RequestBody2, "", true)
 	}
 
-	if u.CreateRecordRequestBody3 != nil {
-		return utils.MarshalJSON(u.CreateRecordRequestBody3, "", true)
+	if u.RequestBody3 != nil {
+		return utils.MarshalJSON(u.RequestBody3, "", true)
 	}
 
 	if u.RequestBody4 != nil {

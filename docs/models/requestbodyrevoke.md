@@ -5,7 +5,7 @@ Optional instructions for revoking and regenerating a shareable link
 ## Example Usage
 
 ```typescript
-import { RequestBodyRevoke } from "@vercel/sdk/models/patchaliasesidprotectionbypassop.js";
+import { RequestBodyRevoke } from "@vercel/sdk/models/patchurlprotectionbypassop.js";
 
 let value: RequestBodyRevoke = {
   secret: "<value>",

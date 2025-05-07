@@ -6757,54 +6757,175 @@ func (o *GetProjectsLastAliasRequest) GetType() GetProjectsProjectsResponse200Ap
 	return o.Type
 }
 
-type GetProjectsScope string
+type GetProjectsProtectionBypassProjectsScope string
 
 const (
-	GetProjectsScopeAutomationBypass GetProjectsScope = "automation-bypass"
+	GetProjectsProtectionBypassProjectsScopeAutomationBypass GetProjectsProtectionBypassProjectsScope = "automation-bypass"
 )
 
-func (e GetProjectsScope) ToPointer() *GetProjectsScope {
+func (e GetProjectsProtectionBypassProjectsScope) ToPointer() *GetProjectsProtectionBypassProjectsScope {
 	return &e
 }
-func (e *GetProjectsScope) UnmarshalJSON(data []byte) error {
+func (e *GetProjectsProtectionBypassProjectsScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "automation-bypass":
-		*e = GetProjectsScope(v)
+		*e = GetProjectsProtectionBypassProjectsScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectsScope: %v", v)
+		return fmt.Errorf("invalid value for GetProjectsProtectionBypassProjectsScope: %v", v)
 	}
 }
 
-type GetProjectsProtectionBypass struct {
-	CreatedAt float64          `json:"createdAt"`
-	CreatedBy string           `json:"createdBy"`
-	Scope     GetProjectsScope `json:"scope"`
+type GetProjectsProtectionBypass2 struct {
+	CreatedAt float64                                  `json:"createdAt"`
+	CreatedBy string                                   `json:"createdBy"`
+	Scope     GetProjectsProtectionBypassProjectsScope `json:"scope"`
 }
 
-func (o *GetProjectsProtectionBypass) GetCreatedAt() float64 {
+func (o *GetProjectsProtectionBypass2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetProjectsProtectionBypass) GetCreatedBy() string {
+func (o *GetProjectsProtectionBypass2) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *GetProjectsProtectionBypass) GetScope() GetProjectsScope {
+func (o *GetProjectsProtectionBypass2) GetScope() GetProjectsProtectionBypassProjectsScope {
 	if o == nil {
-		return GetProjectsScope("")
+		return GetProjectsProtectionBypassProjectsScope("")
 	}
 	return o.Scope
+}
+
+type GetProjectsProtectionBypassScope string
+
+const (
+	GetProjectsProtectionBypassScopeIntegrationAutomationBypass GetProjectsProtectionBypassScope = "integration-automation-bypass"
+)
+
+func (e GetProjectsProtectionBypassScope) ToPointer() *GetProjectsProtectionBypassScope {
+	return &e
+}
+func (e *GetProjectsProtectionBypassScope) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration-automation-bypass":
+		*e = GetProjectsProtectionBypassScope(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsProtectionBypassScope: %v", v)
+	}
+}
+
+type GetProjectsProtectionBypass1 struct {
+	CreatedAt     float64                          `json:"createdAt"`
+	CreatedBy     string                           `json:"createdBy"`
+	Scope         GetProjectsProtectionBypassScope `json:"scope"`
+	IntegrationID string                           `json:"integrationId"`
+}
+
+func (o *GetProjectsProtectionBypass1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsProtectionBypass1) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *GetProjectsProtectionBypass1) GetScope() GetProjectsProtectionBypassScope {
+	if o == nil {
+		return GetProjectsProtectionBypassScope("")
+	}
+	return o.Scope
+}
+
+func (o *GetProjectsProtectionBypass1) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+type GetProjectsProtectionBypassType string
+
+const (
+	GetProjectsProtectionBypassTypeGetProjectsProtectionBypass1 GetProjectsProtectionBypassType = "getProjects_protectionBypass_1"
+	GetProjectsProtectionBypassTypeGetProjectsProtectionBypass2 GetProjectsProtectionBypassType = "getProjects_protectionBypass_2"
+)
+
+type GetProjectsProtectionBypass struct {
+	GetProjectsProtectionBypass1 *GetProjectsProtectionBypass1
+	GetProjectsProtectionBypass2 *GetProjectsProtectionBypass2
+
+	Type GetProjectsProtectionBypassType
+}
+
+func CreateGetProjectsProtectionBypassGetProjectsProtectionBypass1(getProjectsProtectionBypass1 GetProjectsProtectionBypass1) GetProjectsProtectionBypass {
+	typ := GetProjectsProtectionBypassTypeGetProjectsProtectionBypass1
+
+	return GetProjectsProtectionBypass{
+		GetProjectsProtectionBypass1: &getProjectsProtectionBypass1,
+		Type:                         typ,
+	}
+}
+
+func CreateGetProjectsProtectionBypassGetProjectsProtectionBypass2(getProjectsProtectionBypass2 GetProjectsProtectionBypass2) GetProjectsProtectionBypass {
+	typ := GetProjectsProtectionBypassTypeGetProjectsProtectionBypass2
+
+	return GetProjectsProtectionBypass{
+		GetProjectsProtectionBypass2: &getProjectsProtectionBypass2,
+		Type:                         typ,
+	}
+}
+
+func (u *GetProjectsProtectionBypass) UnmarshalJSON(data []byte) error {
+
+	var getProjectsProtectionBypass2 GetProjectsProtectionBypass2 = GetProjectsProtectionBypass2{}
+	if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypass2, "", true, true); err == nil {
+		u.GetProjectsProtectionBypass2 = &getProjectsProtectionBypass2
+		u.Type = GetProjectsProtectionBypassTypeGetProjectsProtectionBypass2
+		return nil
+	}
+
+	var getProjectsProtectionBypass1 GetProjectsProtectionBypass1 = GetProjectsProtectionBypass1{}
+	if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypass1, "", true, true); err == nil {
+		u.GetProjectsProtectionBypass1 = &getProjectsProtectionBypass1
+		u.Type = GetProjectsProtectionBypassTypeGetProjectsProtectionBypass1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsProtectionBypass", string(data))
+}
+
+func (u GetProjectsProtectionBypass) MarshalJSON() ([]byte, error) {
+	if u.GetProjectsProtectionBypass1 != nil {
+		return utils.MarshalJSON(u.GetProjectsProtectionBypass1, "", true)
+	}
+
+	if u.GetProjectsProtectionBypass2 != nil {
+		return utils.MarshalJSON(u.GetProjectsProtectionBypass2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsProtectionBypass: all fields are null")
 }
 
 type GetProjectsTrustedIpsProjectsDeploymentType string

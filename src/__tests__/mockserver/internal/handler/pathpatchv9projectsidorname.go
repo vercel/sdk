@@ -134,7 +134,7 @@ func testUpdateProjectUpdateProject0(w http.ResponseWriter, req *http.Request) {
 		},
 		Name:        "<value>",
 		NodeVersion: operations.UpdateProjectProjectsNodeVersionTwentyDotX,
-		ResourceConfig: operations.UpdateProjectResourceConfig{
+		ResourceConfig: operations.UpdateProjectProjectsResourceConfig{
 			FunctionDefaultRegions: []string{
 				"<value>",
 				"<value>",

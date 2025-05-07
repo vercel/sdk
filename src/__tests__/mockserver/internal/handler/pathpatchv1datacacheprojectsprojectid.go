@@ -139,7 +139,7 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 		},
 		Name:        "<value>",
 		NodeVersion: operations.UpdateProjectDataCacheNodeVersionTenDotX,
-		ResourceConfig: operations.ResourceConfig{
+		ResourceConfig: operations.UpdateProjectDataCacheResourceConfig{
 			FunctionDefaultRegions: []string{},
 		},
 		DefaultResourceConfig: operations.DefaultResourceConfig{

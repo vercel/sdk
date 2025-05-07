@@ -963,29 +963,32 @@ export type UpdateProjectDataCacheOptionsAllowlist = {
 
 export type UpdateProjectDataCachePasswordProtection = {};
 
-export const FunctionDefaultMemoryType = {
+export const UpdateProjectDataCacheProjectsFunctionDefaultMemoryType = {
   StandardLegacy: "standard_legacy",
   Standard: "standard",
   Performance: "performance",
 } as const;
-export type FunctionDefaultMemoryType = ClosedEnum<
-  typeof FunctionDefaultMemoryType
->;
+export type UpdateProjectDataCacheProjectsFunctionDefaultMemoryType =
+  ClosedEnum<typeof UpdateProjectDataCacheProjectsFunctionDefaultMemoryType>;
 
-export const BuildMachineType = {
+export const UpdateProjectDataCacheProjectsBuildMachineType = {
   Enhanced: "enhanced",
   Ultra: "ultra",
 } as const;
-export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
+export type UpdateProjectDataCacheProjectsBuildMachineType = ClosedEnum<
+  typeof UpdateProjectDataCacheProjectsBuildMachineType
+>;
 
 export type UpdateProjectDataCacheResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
-  functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
+  functionDefaultMemoryType?:
+    | UpdateProjectDataCacheProjectsFunctionDefaultMemoryType
+    | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
-  buildMachineType?: BuildMachineType | undefined;
+  buildMachineType?: UpdateProjectDataCacheProjectsBuildMachineType | undefined;
 };
 
 /**
@@ -1456,18 +1459,32 @@ export type LastAliasRequest = {
   type: UpdateProjectDataCacheProjectsResponse200Type;
 };
 
-export const UpdateProjectDataCacheScope = {
+export const ProtectionBypassScope = {
   AutomationBypass: "automation-bypass",
 } as const;
-export type UpdateProjectDataCacheScope = ClosedEnum<
-  typeof UpdateProjectDataCacheScope
->;
+export type ProtectionBypassScope = ClosedEnum<typeof ProtectionBypassScope>;
 
-export type ProtectionBypass = {
+export type ProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectDataCacheScope;
+  scope: ProtectionBypassScope;
 };
+
+export const UpdateProjectDataCacheProtectionBypassScope = {
+  IntegrationAutomationBypass: "integration-automation-bypass",
+} as const;
+export type UpdateProjectDataCacheProtectionBypassScope = ClosedEnum<
+  typeof UpdateProjectDataCacheProtectionBypassScope
+>;
+
+export type ProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: UpdateProjectDataCacheProtectionBypassScope;
+  integrationId: string;
+};
+
+export type ProtectionBypass = ProtectionBypass2 | ProtectionBypass1;
 
 export const UpdateProjectDataCacheTrustedIpsDeploymentType = {
   Production: "production",
@@ -1836,7 +1853,9 @@ export type UpdateProjectDataCacheResponseBody = {
   permissions?: Permissions | undefined;
   lastRollbackTarget?: LastRollbackTarget | null | undefined;
   lastAliasRequest?: LastAliasRequest | null | undefined;
-  protectionBypass?: { [k: string]: ProtectionBypass } | undefined;
+  protectionBypass?:
+    | { [k: string]: ProtectionBypass2 | ProtectionBypass1 }
+    | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: TrustedIps2 | TrustedIps1 | null | undefined;
   gitComments?: GitComments | undefined;
@@ -6395,45 +6414,51 @@ export function updateProjectDataCachePasswordProtectionFromJSON(
 }
 
 /** @internal */
-export const FunctionDefaultMemoryType$inboundSchema: z.ZodNativeEnum<
-  typeof FunctionDefaultMemoryType
-> = z.nativeEnum(FunctionDefaultMemoryType);
+export const UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectDataCacheProjectsFunctionDefaultMemoryType
+  > = z.nativeEnum(UpdateProjectDataCacheProjectsFunctionDefaultMemoryType);
 
 /** @internal */
-export const FunctionDefaultMemoryType$outboundSchema: z.ZodNativeEnum<
-  typeof FunctionDefaultMemoryType
-> = FunctionDefaultMemoryType$inboundSchema;
+export const UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectDataCacheProjectsFunctionDefaultMemoryType
+  > = UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FunctionDefaultMemoryType$ {
-  /** @deprecated use `FunctionDefaultMemoryType$inboundSchema` instead. */
-  export const inboundSchema = FunctionDefaultMemoryType$inboundSchema;
-  /** @deprecated use `FunctionDefaultMemoryType$outboundSchema` instead. */
-  export const outboundSchema = FunctionDefaultMemoryType$outboundSchema;
+export namespace UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$ {
+  /** @deprecated use `UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$outboundSchema;
 }
 
 /** @internal */
-export const BuildMachineType$inboundSchema: z.ZodNativeEnum<
-  typeof BuildMachineType
-> = z.nativeEnum(BuildMachineType);
+export const UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsBuildMachineType> = z
+    .nativeEnum(UpdateProjectDataCacheProjectsBuildMachineType);
 
 /** @internal */
-export const BuildMachineType$outboundSchema: z.ZodNativeEnum<
-  typeof BuildMachineType
-> = BuildMachineType$inboundSchema;
+export const UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsBuildMachineType> =
+    UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BuildMachineType$ {
-  /** @deprecated use `BuildMachineType$inboundSchema` instead. */
-  export const inboundSchema = BuildMachineType$inboundSchema;
-  /** @deprecated use `BuildMachineType$outboundSchema` instead. */
-  export const outboundSchema = BuildMachineType$outboundSchema;
+export namespace UpdateProjectDataCacheProjectsBuildMachineType$ {
+  /** @deprecated use `UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema;
 }
 
 /** @internal */
@@ -6445,10 +6470,13 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
-  functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
+  functionDefaultMemoryType:
+    UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$inboundSchema
+      .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
-  buildMachineType: BuildMachineType$inboundSchema.optional(),
+  buildMachineType: UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -6471,11 +6499,13 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
-  functionDefaultMemoryType: FunctionDefaultMemoryType$outboundSchema
-    .optional(),
+  functionDefaultMemoryType:
+    UpdateProjectDataCacheProjectsFunctionDefaultMemoryType$outboundSchema
+      .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
-  buildMachineType: BuildMachineType$outboundSchema.optional(),
+  buildMachineType:
+    UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema.optional(),
 });
 
 /**
@@ -8391,24 +8421,170 @@ export function lastAliasRequestFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectDataCacheScope$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectDataCacheScope
-> = z.nativeEnum(UpdateProjectDataCacheScope);
+export const ProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassScope
+> = z.nativeEnum(ProtectionBypassScope);
 
 /** @internal */
-export const UpdateProjectDataCacheScope$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectDataCacheScope
-> = UpdateProjectDataCacheScope$inboundSchema;
+export const ProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassScope
+> = ProtectionBypassScope$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectDataCacheScope$ {
-  /** @deprecated use `UpdateProjectDataCacheScope$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDataCacheScope$inboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheScope$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDataCacheScope$outboundSchema;
+export namespace ProtectionBypassScope$ {
+  /** @deprecated use `ProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypassScope$inboundSchema;
+  /** @deprecated use `ProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const ProtectionBypass2$inboundSchema: z.ZodType<
+  ProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: ProtectionBypassScope$inboundSchema,
+});
+
+/** @internal */
+export type ProtectionBypass2$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const ProtectionBypass2$outboundSchema: z.ZodType<
+  ProtectionBypass2$Outbound,
+  z.ZodTypeDef,
+  ProtectionBypass2
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: ProtectionBypassScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProtectionBypass2$ {
+  /** @deprecated use `ProtectionBypass2$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypass2$inboundSchema;
+  /** @deprecated use `ProtectionBypass2$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypass2$outboundSchema;
+  /** @deprecated use `ProtectionBypass2$Outbound` instead. */
+  export type Outbound = ProtectionBypass2$Outbound;
+}
+
+export function protectionBypass2ToJSON(
+  protectionBypass2: ProtectionBypass2,
+): string {
+  return JSON.stringify(
+    ProtectionBypass2$outboundSchema.parse(protectionBypass2),
+  );
+}
+
+export function protectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheProtectionBypassScope$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProtectionBypassScope> = z
+    .nativeEnum(UpdateProjectDataCacheProtectionBypassScope);
+
+/** @internal */
+export const UpdateProjectDataCacheProtectionBypassScope$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProtectionBypassScope> =
+    UpdateProjectDataCacheProtectionBypassScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheProtectionBypassScope$ {
+  /** @deprecated use `UpdateProjectDataCacheProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheProtectionBypassScope$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const ProtectionBypass1$inboundSchema: z.ZodType<
+  ProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: UpdateProjectDataCacheProtectionBypassScope$inboundSchema,
+  integrationId: z.string(),
+});
+
+/** @internal */
+export type ProtectionBypass1$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+  integrationId: string;
+};
+
+/** @internal */
+export const ProtectionBypass1$outboundSchema: z.ZodType<
+  ProtectionBypass1$Outbound,
+  z.ZodTypeDef,
+  ProtectionBypass1
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: UpdateProjectDataCacheProtectionBypassScope$outboundSchema,
+  integrationId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProtectionBypass1$ {
+  /** @deprecated use `ProtectionBypass1$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypass1$inboundSchema;
+  /** @deprecated use `ProtectionBypass1$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypass1$outboundSchema;
+  /** @deprecated use `ProtectionBypass1$Outbound` instead. */
+  export type Outbound = ProtectionBypass1$Outbound;
+}
+
+export function protectionBypass1ToJSON(
+  protectionBypass1: ProtectionBypass1,
+): string {
+  return JSON.stringify(
+    ProtectionBypass1$outboundSchema.parse(protectionBypass1),
+  );
+}
+
+export function protectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8416,29 +8592,25 @@ export const ProtectionBypass$inboundSchema: z.ZodType<
   ProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: UpdateProjectDataCacheScope$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => ProtectionBypass2$inboundSchema),
+  z.lazy(() => ProtectionBypass1$inboundSchema),
+]);
 
 /** @internal */
-export type ProtectionBypass$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: string;
-};
+export type ProtectionBypass$Outbound =
+  | ProtectionBypass2$Outbound
+  | ProtectionBypass1$Outbound;
 
 /** @internal */
 export const ProtectionBypass$outboundSchema: z.ZodType<
   ProtectionBypass$Outbound,
   z.ZodTypeDef,
   ProtectionBypass
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: UpdateProjectDataCacheScope$outboundSchema,
-});
+> = z.union([
+  z.lazy(() => ProtectionBypass2$outboundSchema),
+  z.lazy(() => ProtectionBypass1$outboundSchema),
+]);
 
 /**
  * @internal
@@ -10190,8 +10362,12 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     .optional(),
   lastAliasRequest: z.nullable(z.lazy(() => LastAliasRequest$inboundSchema))
     .optional(),
-  protectionBypass: z.record(z.lazy(() => ProtectionBypass$inboundSchema))
-    .optional(),
+  protectionBypass: z.record(
+    z.union([
+      z.lazy(() => ProtectionBypass2$inboundSchema),
+      z.lazy(() => ProtectionBypass1$inboundSchema),
+    ]),
+  ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([
@@ -10292,7 +10468,9 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   permissions?: Permissions$Outbound | undefined;
   lastRollbackTarget?: LastRollbackTarget$Outbound | null | undefined;
   lastAliasRequest?: LastAliasRequest$Outbound | null | undefined;
-  protectionBypass?: { [k: string]: ProtectionBypass$Outbound } | undefined;
+  protectionBypass?: {
+    [k: string]: ProtectionBypass2$Outbound | ProtectionBypass1$Outbound;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?: TrustedIps2$Outbound | TrustedIps1$Outbound | null | undefined;
   gitComments?: GitComments$Outbound | undefined;
@@ -10398,8 +10576,12 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   lastAliasRequest: z.nullable(z.lazy(() => LastAliasRequest$outboundSchema))
     .optional(),
-  protectionBypass: z.record(z.lazy(() => ProtectionBypass$outboundSchema))
-    .optional(),
+  protectionBypass: z.record(
+    z.union([
+      z.lazy(() => ProtectionBypass2$outboundSchema),
+      z.lazy(() => ProtectionBypass1$outboundSchema),
+    ]),
+  ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([

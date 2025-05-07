@@ -3894,18 +3894,18 @@ func (o *UpdateProjectDataCacheOptionsAllowlist) GetPaths() []UpdateProjectDataC
 type UpdateProjectDataCachePasswordProtection struct {
 }
 
-type FunctionDefaultMemoryType string
+type UpdateProjectDataCacheProjectsFunctionDefaultMemoryType string
 
 const (
-	FunctionDefaultMemoryTypeStandardLegacy FunctionDefaultMemoryType = "standard_legacy"
-	FunctionDefaultMemoryTypeStandard       FunctionDefaultMemoryType = "standard"
-	FunctionDefaultMemoryTypePerformance    FunctionDefaultMemoryType = "performance"
+	UpdateProjectDataCacheProjectsFunctionDefaultMemoryTypeStandardLegacy UpdateProjectDataCacheProjectsFunctionDefaultMemoryType = "standard_legacy"
+	UpdateProjectDataCacheProjectsFunctionDefaultMemoryTypeStandard       UpdateProjectDataCacheProjectsFunctionDefaultMemoryType = "standard"
+	UpdateProjectDataCacheProjectsFunctionDefaultMemoryTypePerformance    UpdateProjectDataCacheProjectsFunctionDefaultMemoryType = "performance"
 )
 
-func (e FunctionDefaultMemoryType) ToPointer() *FunctionDefaultMemoryType {
+func (e UpdateProjectDataCacheProjectsFunctionDefaultMemoryType) ToPointer() *UpdateProjectDataCacheProjectsFunctionDefaultMemoryType {
 	return &e
 }
-func (e *FunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectDataCacheProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3916,24 +3916,24 @@ func (e *FunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
 	case "standard":
 		fallthrough
 	case "performance":
-		*e = FunctionDefaultMemoryType(v)
+		*e = UpdateProjectDataCacheProjectsFunctionDefaultMemoryType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FunctionDefaultMemoryType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheProjectsFunctionDefaultMemoryType: %v", v)
 	}
 }
 
-type BuildMachineType string
+type UpdateProjectDataCacheProjectsBuildMachineType string
 
 const (
-	BuildMachineTypeEnhanced BuildMachineType = "enhanced"
-	BuildMachineTypeUltra    BuildMachineType = "ultra"
+	UpdateProjectDataCacheProjectsBuildMachineTypeEnhanced UpdateProjectDataCacheProjectsBuildMachineType = "enhanced"
+	UpdateProjectDataCacheProjectsBuildMachineTypeUltra    UpdateProjectDataCacheProjectsBuildMachineType = "ultra"
 )
 
-func (e BuildMachineType) ToPointer() *BuildMachineType {
+func (e UpdateProjectDataCacheProjectsBuildMachineType) ToPointer() *UpdateProjectDataCacheProjectsBuildMachineType {
 	return &e
 }
-func (e *BuildMachineType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectDataCacheProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3942,66 +3942,66 @@ func (e *BuildMachineType) UnmarshalJSON(data []byte) error {
 	case "enhanced":
 		fallthrough
 	case "ultra":
-		*e = BuildMachineType(v)
+		*e = UpdateProjectDataCacheProjectsBuildMachineType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for BuildMachineType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheProjectsBuildMachineType: %v", v)
 	}
 }
 
-type ResourceConfig struct {
-	Fluid                      *bool                      `json:"fluid,omitempty"`
-	FunctionDefaultRegions     []string                   `json:"functionDefaultRegions"`
-	FunctionDefaultTimeout     *float64                   `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType  *FunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
-	FunctionZeroConfigFailover *bool                      `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                      `json:"elasticConcurrencyEnabled,omitempty"`
-	BuildMachineType           *BuildMachineType          `json:"buildMachineType,omitempty"`
+type UpdateProjectDataCacheResourceConfig struct {
+	Fluid                      *bool                                                    `json:"fluid,omitempty"`
+	FunctionDefaultRegions     []string                                                 `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout     *float64                                                 `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType  *UpdateProjectDataCacheProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover *bool                                                    `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                    `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectDataCacheProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
 }
 
-func (o *ResourceConfig) GetFluid() *bool {
+func (o *UpdateProjectDataCacheResourceConfig) GetFluid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Fluid
 }
 
-func (o *ResourceConfig) GetFunctionDefaultRegions() []string {
+func (o *UpdateProjectDataCacheResourceConfig) GetFunctionDefaultRegions() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.FunctionDefaultRegions
 }
 
-func (o *ResourceConfig) GetFunctionDefaultTimeout() *float64 {
+func (o *UpdateProjectDataCacheResourceConfig) GetFunctionDefaultTimeout() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultTimeout
 }
 
-func (o *ResourceConfig) GetFunctionDefaultMemoryType() *FunctionDefaultMemoryType {
+func (o *UpdateProjectDataCacheResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectDataCacheProjectsFunctionDefaultMemoryType {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultMemoryType
 }
 
-func (o *ResourceConfig) GetFunctionZeroConfigFailover() *bool {
+func (o *UpdateProjectDataCacheResourceConfig) GetFunctionZeroConfigFailover() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *ResourceConfig) GetElasticConcurrencyEnabled() *bool {
+func (o *UpdateProjectDataCacheResourceConfig) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
 }
 
-func (o *ResourceConfig) GetBuildMachineType() *BuildMachineType {
+func (o *UpdateProjectDataCacheResourceConfig) GetBuildMachineType() *UpdateProjectDataCacheProjectsBuildMachineType {
 	if o == nil {
 		return nil
 	}
@@ -6661,54 +6661,175 @@ func (o *LastAliasRequest) GetType() UpdateProjectDataCacheProjectsResponse200Ty
 	return o.Type
 }
 
-type UpdateProjectDataCacheScope string
+type ProtectionBypassScope string
 
 const (
-	UpdateProjectDataCacheScopeAutomationBypass UpdateProjectDataCacheScope = "automation-bypass"
+	ProtectionBypassScopeAutomationBypass ProtectionBypassScope = "automation-bypass"
 )
 
-func (e UpdateProjectDataCacheScope) ToPointer() *UpdateProjectDataCacheScope {
+func (e ProtectionBypassScope) ToPointer() *ProtectionBypassScope {
 	return &e
 }
-func (e *UpdateProjectDataCacheScope) UnmarshalJSON(data []byte) error {
+func (e *ProtectionBypassScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "automation-bypass":
-		*e = UpdateProjectDataCacheScope(v)
+		*e = ProtectionBypassScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectDataCacheScope: %v", v)
+		return fmt.Errorf("invalid value for ProtectionBypassScope: %v", v)
 	}
 }
 
-type ProtectionBypass struct {
-	CreatedAt float64                     `json:"createdAt"`
-	CreatedBy string                      `json:"createdBy"`
-	Scope     UpdateProjectDataCacheScope `json:"scope"`
+type ProtectionBypass2 struct {
+	CreatedAt float64               `json:"createdAt"`
+	CreatedBy string                `json:"createdBy"`
+	Scope     ProtectionBypassScope `json:"scope"`
 }
 
-func (o *ProtectionBypass) GetCreatedAt() float64 {
+func (o *ProtectionBypass2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *ProtectionBypass) GetCreatedBy() string {
+func (o *ProtectionBypass2) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *ProtectionBypass) GetScope() UpdateProjectDataCacheScope {
+func (o *ProtectionBypass2) GetScope() ProtectionBypassScope {
 	if o == nil {
-		return UpdateProjectDataCacheScope("")
+		return ProtectionBypassScope("")
 	}
 	return o.Scope
+}
+
+type UpdateProjectDataCacheProtectionBypassScope string
+
+const (
+	UpdateProjectDataCacheProtectionBypassScopeIntegrationAutomationBypass UpdateProjectDataCacheProtectionBypassScope = "integration-automation-bypass"
+)
+
+func (e UpdateProjectDataCacheProtectionBypassScope) ToPointer() *UpdateProjectDataCacheProtectionBypassScope {
+	return &e
+}
+func (e *UpdateProjectDataCacheProtectionBypassScope) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration-automation-bypass":
+		*e = UpdateProjectDataCacheProtectionBypassScope(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheProtectionBypassScope: %v", v)
+	}
+}
+
+type ProtectionBypass1 struct {
+	CreatedAt     float64                                     `json:"createdAt"`
+	CreatedBy     string                                      `json:"createdBy"`
+	Scope         UpdateProjectDataCacheProtectionBypassScope `json:"scope"`
+	IntegrationID string                                      `json:"integrationId"`
+}
+
+func (o *ProtectionBypass1) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *ProtectionBypass1) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *ProtectionBypass1) GetScope() UpdateProjectDataCacheProtectionBypassScope {
+	if o == nil {
+		return UpdateProjectDataCacheProtectionBypassScope("")
+	}
+	return o.Scope
+}
+
+func (o *ProtectionBypass1) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+type ProtectionBypassType string
+
+const (
+	ProtectionBypassTypeProtectionBypass1 ProtectionBypassType = "protectionBypass_1"
+	ProtectionBypassTypeProtectionBypass2 ProtectionBypassType = "protectionBypass_2"
+)
+
+type ProtectionBypass struct {
+	ProtectionBypass1 *ProtectionBypass1
+	ProtectionBypass2 *ProtectionBypass2
+
+	Type ProtectionBypassType
+}
+
+func CreateProtectionBypassProtectionBypass1(protectionBypass1 ProtectionBypass1) ProtectionBypass {
+	typ := ProtectionBypassTypeProtectionBypass1
+
+	return ProtectionBypass{
+		ProtectionBypass1: &protectionBypass1,
+		Type:              typ,
+	}
+}
+
+func CreateProtectionBypassProtectionBypass2(protectionBypass2 ProtectionBypass2) ProtectionBypass {
+	typ := ProtectionBypassTypeProtectionBypass2
+
+	return ProtectionBypass{
+		ProtectionBypass2: &protectionBypass2,
+		Type:              typ,
+	}
+}
+
+func (u *ProtectionBypass) UnmarshalJSON(data []byte) error {
+
+	var protectionBypass2 ProtectionBypass2 = ProtectionBypass2{}
+	if err := utils.UnmarshalJSON(data, &protectionBypass2, "", true, true); err == nil {
+		u.ProtectionBypass2 = &protectionBypass2
+		u.Type = ProtectionBypassTypeProtectionBypass2
+		return nil
+	}
+
+	var protectionBypass1 ProtectionBypass1 = ProtectionBypass1{}
+	if err := utils.UnmarshalJSON(data, &protectionBypass1, "", true, true); err == nil {
+		u.ProtectionBypass1 = &protectionBypass1
+		u.Type = ProtectionBypassTypeProtectionBypass1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ProtectionBypass", string(data))
+}
+
+func (u ProtectionBypass) MarshalJSON() ([]byte, error) {
+	if u.ProtectionBypass1 != nil {
+		return utils.MarshalJSON(u.ProtectionBypass1, "", true)
+	}
+
+	if u.ProtectionBypass2 != nil {
+		return utils.MarshalJSON(u.ProtectionBypass2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ProtectionBypass: all fields are null")
 }
 
 type UpdateProjectDataCacheTrustedIpsDeploymentType string
@@ -8131,7 +8252,7 @@ type UpdateProjectDataCacheResponseBody struct {
 	PasswordProtection                   *UpdateProjectDataCachePasswordProtection `json:"passwordProtection,omitempty"`
 	ProductionDeploymentsFastLane        *bool                                     `json:"productionDeploymentsFastLane,omitempty"`
 	PublicSource                         *bool                                     `json:"publicSource,omitempty"`
-	ResourceConfig                       ResourceConfig                            `json:"resourceConfig"`
+	ResourceConfig                       UpdateProjectDataCacheResourceConfig      `json:"resourceConfig"`
 	RollingRelease                       *RollingRelease                           `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                DefaultResourceConfig                     `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                   `json:"rootDirectory,omitempty"`
@@ -8420,9 +8541,9 @@ func (o *UpdateProjectDataCacheResponseBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *UpdateProjectDataCacheResponseBody) GetResourceConfig() ResourceConfig {
+func (o *UpdateProjectDataCacheResponseBody) GetResourceConfig() UpdateProjectDataCacheResourceConfig {
 	if o == nil {
-		return ResourceConfig{}
+		return UpdateProjectDataCacheResourceConfig{}
 	}
 	return o.ResourceConfig
 }

@@ -7,6 +7,7 @@ import { aliasesDeleteAlias } from "../funcs/aliasesDeleteAlias.js";
 import { aliasesGetAlias } from "../funcs/aliasesGetAlias.js";
 import { aliasesListAliases } from "../funcs/aliasesListAliases.js";
 import { aliasesListDeploymentAliases } from "../funcs/aliasesListDeploymentAliases.js";
+import { aliasesPatchUrlProtectionBypass } from "../funcs/aliasesPatchUrlProtectionBypass.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   AssignAliasRequest,
@@ -25,6 +26,7 @@ import {
   ListDeploymentAliasesRequest,
   ListDeploymentAliasesResponseBody,
 } from "../models/listdeploymentaliasesop.js";
+import { PatchUrlProtectionBypassRequest } from "../models/patchurlprotectionbypassop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Aliases extends ClientSDK {
@@ -107,6 +109,23 @@ export class Aliases extends ClientSDK {
     options?: RequestOptions,
   ): Promise<DeleteAliasResponseBody> {
     return unwrapAsync(aliasesDeleteAlias(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update the protection bypass for a URL
+   *
+   * @remarks
+   * Update the protection bypass for the alias or deployment URL (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
+   */
+  async patchUrlProtectionBypass(
+    request: PatchUrlProtectionBypassRequest,
+    options?: RequestOptions,
+  ): Promise<{ [k: string]: any }> {
+    return unwrapAsync(aliasesPatchUrlProtectionBypass(
       this,
       request,
       options,

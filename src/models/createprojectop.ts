@@ -182,6 +182,40 @@ export type OidcTokenConfig = {
   issuerMode?: IssuerMode | undefined;
 };
 
+export const FunctionDefaultMemoryType = {
+  StandardLegacy: "standard_legacy",
+  Standard: "standard",
+  Performance: "performance",
+} as const;
+export type FunctionDefaultMemoryType = ClosedEnum<
+  typeof FunctionDefaultMemoryType
+>;
+
+export const BuildMachineType = {
+  Enhanced: "enhanced",
+  Ultra: "ultra",
+} as const;
+export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
+
+/**
+ * Specifies resource override configuration for the project
+ */
+export type CreateProjectResourceConfig = {
+  fluid?: boolean | undefined;
+  /**
+   * The regions to deploy Vercel Functions to for this project
+   */
+  functionDefaultRegions?: Array<string> | undefined;
+  functionDefaultTimeout?: number | undefined;
+  functionDefaultMemoryType?: FunctionDefaultMemoryType | undefined;
+  /**
+   * Specifies whether Zero Config Failover is enabled for this project.
+   */
+  functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: BuildMachineType | undefined;
+};
+
 export type CreateProjectRequestBody = {
   /**
    * Opt-in to preview toolbar on the project level
@@ -254,6 +288,10 @@ export type CreateProjectRequestBody = {
    * Opt-in to skip deployments when there are no changes to the root directory and its dependencies
    */
   enableAffectedProjectsDeployments?: boolean | undefined;
+  /**
+   * Specifies resource override configuration for the project
+   */
+  resourceConfig?: CreateProjectResourceConfig | undefined;
 };
 
 export type CreateProjectRequest = {
@@ -1207,7 +1245,7 @@ export type CreateProjectBuildMachineType = ClosedEnum<
   typeof CreateProjectBuildMachineType
 >;
 
-export type CreateProjectResourceConfig = {
+export type CreateProjectProjectsResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1690,16 +1728,36 @@ export type CreateProjectLastAliasRequest = {
     CreateProjectProjectsResponse200ApplicationJSONResponseBodyLastAliasRequestType;
 };
 
-export const CreateProjectScope = {
+export const CreateProjectProtectionBypassProjectsScope = {
   AutomationBypass: "automation-bypass",
 } as const;
-export type CreateProjectScope = ClosedEnum<typeof CreateProjectScope>;
+export type CreateProjectProtectionBypassProjectsScope = ClosedEnum<
+  typeof CreateProjectProtectionBypassProjectsScope
+>;
 
-export type CreateProjectProtectionBypass = {
+export type CreateProjectProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: CreateProjectScope;
+  scope: CreateProjectProtectionBypassProjectsScope;
 };
+
+export const CreateProjectProtectionBypassScope = {
+  IntegrationAutomationBypass: "integration-automation-bypass",
+} as const;
+export type CreateProjectProtectionBypassScope = ClosedEnum<
+  typeof CreateProjectProtectionBypassScope
+>;
+
+export type CreateProjectProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: CreateProjectProtectionBypassScope;
+  integrationId: string;
+};
+
+export type CreateProjectProtectionBypass =
+  | CreateProjectProtectionBypass2
+  | CreateProjectProtectionBypass1;
 
 export const CreateProjectTrustedIpsProjectsDeploymentType = {
   Production: "production",
@@ -2041,7 +2099,7 @@ export type CreateProjectResponseBody = {
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
-  resourceConfig: CreateProjectResourceConfig;
+  resourceConfig: CreateProjectProjectsResourceConfig;
   rollingRelease?: CreateProjectRollingRelease | null | undefined;
   defaultResourceConfig: CreateProjectDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
@@ -2065,7 +2123,11 @@ export type CreateProjectResponseBody = {
   permissions?: CreateProjectPermissions | undefined;
   lastRollbackTarget?: CreateProjectLastRollbackTarget | null | undefined;
   lastAliasRequest?: CreateProjectLastAliasRequest | null | undefined;
-  protectionBypass?: { [k: string]: CreateProjectProtectionBypass } | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | CreateProjectProtectionBypass2
+      | CreateProjectProtectionBypass1;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
     | CreateProjectTrustedIps2
@@ -2425,6 +2487,123 @@ export function oidcTokenConfigFromJSON(
 }
 
 /** @internal */
+export const FunctionDefaultMemoryType$inboundSchema: z.ZodNativeEnum<
+  typeof FunctionDefaultMemoryType
+> = z.nativeEnum(FunctionDefaultMemoryType);
+
+/** @internal */
+export const FunctionDefaultMemoryType$outboundSchema: z.ZodNativeEnum<
+  typeof FunctionDefaultMemoryType
+> = FunctionDefaultMemoryType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FunctionDefaultMemoryType$ {
+  /** @deprecated use `FunctionDefaultMemoryType$inboundSchema` instead. */
+  export const inboundSchema = FunctionDefaultMemoryType$inboundSchema;
+  /** @deprecated use `FunctionDefaultMemoryType$outboundSchema` instead. */
+  export const outboundSchema = FunctionDefaultMemoryType$outboundSchema;
+}
+
+/** @internal */
+export const BuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = z.nativeEnum(BuildMachineType);
+
+/** @internal */
+export const BuildMachineType$outboundSchema: z.ZodNativeEnum<
+  typeof BuildMachineType
+> = BuildMachineType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildMachineType$ {
+  /** @deprecated use `BuildMachineType$inboundSchema` instead. */
+  export const inboundSchema = BuildMachineType$inboundSchema;
+  /** @deprecated use `BuildMachineType$outboundSchema` instead. */
+  export const outboundSchema = BuildMachineType$outboundSchema;
+}
+
+/** @internal */
+export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
+  CreateProjectResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fluid: z.boolean().optional(),
+  functionDefaultRegions: z.array(z.string()).optional(),
+  functionDefaultTimeout: z.number().optional(),
+  functionDefaultMemoryType: FunctionDefaultMemoryType$inboundSchema.optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$inboundSchema.optional(),
+});
+
+/** @internal */
+export type CreateProjectResourceConfig$Outbound = {
+  fluid?: boolean | undefined;
+  functionDefaultRegions?: Array<string> | undefined;
+  functionDefaultTimeout?: number | undefined;
+  functionDefaultMemoryType?: string | undefined;
+  functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineType?: string | undefined;
+};
+
+/** @internal */
+export const CreateProjectResourceConfig$outboundSchema: z.ZodType<
+  CreateProjectResourceConfig$Outbound,
+  z.ZodTypeDef,
+  CreateProjectResourceConfig
+> = z.object({
+  fluid: z.boolean().optional(),
+  functionDefaultRegions: z.array(z.string()).optional(),
+  functionDefaultTimeout: z.number().optional(),
+  functionDefaultMemoryType: FunctionDefaultMemoryType$outboundSchema
+    .optional(),
+  functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineType: BuildMachineType$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectResourceConfig$ {
+  /** @deprecated use `CreateProjectResourceConfig$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectResourceConfig$inboundSchema;
+  /** @deprecated use `CreateProjectResourceConfig$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectResourceConfig$outboundSchema;
+  /** @deprecated use `CreateProjectResourceConfig$Outbound` instead. */
+  export type Outbound = CreateProjectResourceConfig$Outbound;
+}
+
+export function createProjectResourceConfigToJSON(
+  createProjectResourceConfig: CreateProjectResourceConfig,
+): string {
+  return JSON.stringify(
+    CreateProjectResourceConfig$outboundSchema.parse(
+      createProjectResourceConfig,
+    ),
+  );
+}
+
+export function createProjectResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectRequestBody$inboundSchema: z.ZodType<
   CreateProjectRequestBody,
   z.ZodTypeDef,
@@ -2450,6 +2629,8 @@ export const CreateProjectRequestBody$inboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   oidcTokenConfig: z.lazy(() => OidcTokenConfig$inboundSchema).optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
+  resourceConfig: z.lazy(() => CreateProjectResourceConfig$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -2472,6 +2653,7 @@ export type CreateProjectRequestBody$Outbound = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   oidcTokenConfig?: OidcTokenConfig$Outbound | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
+  resourceConfig?: CreateProjectResourceConfig$Outbound | undefined;
 };
 
 /** @internal */
@@ -2500,6 +2682,8 @@ export const CreateProjectRequestBody$outboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   oidcTokenConfig: z.lazy(() => OidcTokenConfig$outboundSchema).optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
+  resourceConfig: z.lazy(() => CreateProjectResourceConfig$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -7124,8 +7308,8 @@ export namespace CreateProjectBuildMachineType$ {
 }
 
 /** @internal */
-export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
-  CreateProjectResourceConfig,
+export const CreateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
+  CreateProjectProjectsResourceConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7140,7 +7324,7 @@ export const CreateProjectResourceConfig$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreateProjectResourceConfig$Outbound = {
+export type CreateProjectProjectsResourceConfig$Outbound = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -7151,10 +7335,10 @@ export type CreateProjectResourceConfig$Outbound = {
 };
 
 /** @internal */
-export const CreateProjectResourceConfig$outboundSchema: z.ZodType<
-  CreateProjectResourceConfig$Outbound,
+export const CreateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
+  CreateProjectProjectsResourceConfig$Outbound,
   z.ZodTypeDef,
-  CreateProjectResourceConfig
+  CreateProjectProjectsResourceConfig
 > = z.object({
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
@@ -7170,32 +7354,35 @@ export const CreateProjectResourceConfig$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateProjectResourceConfig$ {
-  /** @deprecated use `CreateProjectResourceConfig$inboundSchema` instead. */
-  export const inboundSchema = CreateProjectResourceConfig$inboundSchema;
-  /** @deprecated use `CreateProjectResourceConfig$outboundSchema` instead. */
-  export const outboundSchema = CreateProjectResourceConfig$outboundSchema;
-  /** @deprecated use `CreateProjectResourceConfig$Outbound` instead. */
-  export type Outbound = CreateProjectResourceConfig$Outbound;
+export namespace CreateProjectProjectsResourceConfig$ {
+  /** @deprecated use `CreateProjectProjectsResourceConfig$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateProjectProjectsResourceConfig$inboundSchema;
+  /** @deprecated use `CreateProjectProjectsResourceConfig$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProjectsResourceConfig$outboundSchema;
+  /** @deprecated use `CreateProjectProjectsResourceConfig$Outbound` instead. */
+  export type Outbound = CreateProjectProjectsResourceConfig$Outbound;
 }
 
-export function createProjectResourceConfigToJSON(
-  createProjectResourceConfig: CreateProjectResourceConfig,
+export function createProjectProjectsResourceConfigToJSON(
+  createProjectProjectsResourceConfig: CreateProjectProjectsResourceConfig,
 ): string {
   return JSON.stringify(
-    CreateProjectResourceConfig$outboundSchema.parse(
-      createProjectResourceConfig,
+    CreateProjectProjectsResourceConfig$outboundSchema.parse(
+      createProjectProjectsResourceConfig,
     ),
   );
 }
 
-export function createProjectResourceConfigFromJSON(
+export function createProjectProjectsResourceConfigFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectResourceConfig, SDKValidationError> {
+): SafeParseResult<CreateProjectProjectsResourceConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectResourceConfig' from JSON`,
+    (x) =>
+      CreateProjectProjectsResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsResourceConfig' from JSON`,
   );
 }
 
@@ -9110,24 +9297,175 @@ export function createProjectLastAliasRequestFromJSON(
 }
 
 /** @internal */
-export const CreateProjectScope$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectScope
-> = z.nativeEnum(CreateProjectScope);
+export const CreateProjectProtectionBypassProjectsScope$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProtectionBypassProjectsScope> = z
+    .nativeEnum(CreateProjectProtectionBypassProjectsScope);
 
 /** @internal */
-export const CreateProjectScope$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectScope
-> = CreateProjectScope$inboundSchema;
+export const CreateProjectProtectionBypassProjectsScope$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProtectionBypassProjectsScope> =
+    CreateProjectProtectionBypassProjectsScope$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateProjectScope$ {
-  /** @deprecated use `CreateProjectScope$inboundSchema` instead. */
-  export const inboundSchema = CreateProjectScope$inboundSchema;
-  /** @deprecated use `CreateProjectScope$outboundSchema` instead. */
-  export const outboundSchema = CreateProjectScope$outboundSchema;
+export namespace CreateProjectProtectionBypassProjectsScope$ {
+  /** @deprecated use `CreateProjectProtectionBypassProjectsScope$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateProjectProtectionBypassProjectsScope$inboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypassProjectsScope$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProtectionBypassProjectsScope$outboundSchema;
+}
+
+/** @internal */
+export const CreateProjectProtectionBypass2$inboundSchema: z.ZodType<
+  CreateProjectProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: CreateProjectProtectionBypassProjectsScope$inboundSchema,
+});
+
+/** @internal */
+export type CreateProjectProtectionBypass2$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const CreateProjectProtectionBypass2$outboundSchema: z.ZodType<
+  CreateProjectProtectionBypass2$Outbound,
+  z.ZodTypeDef,
+  CreateProjectProtectionBypass2
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: CreateProjectProtectionBypassProjectsScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectProtectionBypass2$ {
+  /** @deprecated use `CreateProjectProtectionBypass2$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectProtectionBypass2$inboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypass2$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectProtectionBypass2$outboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypass2$Outbound` instead. */
+  export type Outbound = CreateProjectProtectionBypass2$Outbound;
+}
+
+export function createProjectProtectionBypass2ToJSON(
+  createProjectProtectionBypass2: CreateProjectProtectionBypass2,
+): string {
+  return JSON.stringify(
+    CreateProjectProtectionBypass2$outboundSchema.parse(
+      createProjectProtectionBypass2,
+    ),
+  );
+}
+
+export function createProjectProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProtectionBypassScope
+> = z.nativeEnum(CreateProjectProtectionBypassScope);
+
+/** @internal */
+export const CreateProjectProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProtectionBypassScope
+> = CreateProjectProtectionBypassScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectProtectionBypassScope$ {
+  /** @deprecated use `CreateProjectProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectProtectionBypassScope$inboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const CreateProjectProtectionBypass1$inboundSchema: z.ZodType<
+  CreateProjectProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: CreateProjectProtectionBypassScope$inboundSchema,
+  integrationId: z.string(),
+});
+
+/** @internal */
+export type CreateProjectProtectionBypass1$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+  integrationId: string;
+};
+
+/** @internal */
+export const CreateProjectProtectionBypass1$outboundSchema: z.ZodType<
+  CreateProjectProtectionBypass1$Outbound,
+  z.ZodTypeDef,
+  CreateProjectProtectionBypass1
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: CreateProjectProtectionBypassScope$outboundSchema,
+  integrationId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectProtectionBypass1$ {
+  /** @deprecated use `CreateProjectProtectionBypass1$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectProtectionBypass1$inboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypass1$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectProtectionBypass1$outboundSchema;
+  /** @deprecated use `CreateProjectProtectionBypass1$Outbound` instead. */
+  export type Outbound = CreateProjectProtectionBypass1$Outbound;
+}
+
+export function createProjectProtectionBypass1ToJSON(
+  createProjectProtectionBypass1: CreateProjectProtectionBypass1,
+): string {
+  return JSON.stringify(
+    CreateProjectProtectionBypass1$outboundSchema.parse(
+      createProjectProtectionBypass1,
+    ),
+  );
+}
+
+export function createProjectProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProtectionBypass1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9135,29 +9473,25 @@ export const CreateProjectProtectionBypass$inboundSchema: z.ZodType<
   CreateProjectProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: CreateProjectScope$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
+  z.lazy(() => CreateProjectProtectionBypass1$inboundSchema),
+]);
 
 /** @internal */
-export type CreateProjectProtectionBypass$Outbound = {
-  createdAt: number;
-  createdBy: string;
-  scope: string;
-};
+export type CreateProjectProtectionBypass$Outbound =
+  | CreateProjectProtectionBypass2$Outbound
+  | CreateProjectProtectionBypass1$Outbound;
 
 /** @internal */
 export const CreateProjectProtectionBypass$outboundSchema: z.ZodType<
   CreateProjectProtectionBypass$Outbound,
   z.ZodTypeDef,
   CreateProjectProtectionBypass
-> = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: CreateProjectScope$outboundSchema,
-});
+> = z.union([
+  z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
+  z.lazy(() => CreateProjectProtectionBypass1$outboundSchema),
+]);
 
 /**
  * @internal
@@ -10895,7 +11229,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: z.lazy(() => CreateProjectResourceConfig$inboundSchema),
+  resourceConfig: z.lazy(() =>
+    CreateProjectProjectsResourceConfig$inboundSchema
+  ),
   rollingRelease: z.nullable(
     z.lazy(() => CreateProjectRollingRelease$inboundSchema),
   ).optional(),
@@ -10932,7 +11268,10 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectLastAliasRequest$inboundSchema),
   ).optional(),
   protectionBypass: z.record(
-    z.lazy(() => CreateProjectProtectionBypass$inboundSchema),
+    z.union([
+      z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
+      z.lazy(() => CreateProjectProtectionBypass1$inboundSchema),
+    ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
@@ -11011,7 +11350,7 @@ export type CreateProjectResponseBody$Outbound = {
     | undefined;
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
-  resourceConfig: CreateProjectResourceConfig$Outbound;
+  resourceConfig: CreateProjectProjectsResourceConfig$Outbound;
   rollingRelease?: CreateProjectRollingRelease$Outbound | null | undefined;
   defaultResourceConfig: CreateProjectDefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
@@ -11038,9 +11377,11 @@ export type CreateProjectResponseBody$Outbound = {
     | null
     | undefined;
   lastAliasRequest?: CreateProjectLastAliasRequest$Outbound | null | undefined;
-  protectionBypass?:
-    | { [k: string]: CreateProjectProtectionBypass$Outbound }
-    | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | CreateProjectProtectionBypass2$Outbound
+      | CreateProjectProtectionBypass1$Outbound;
+  } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
     | CreateProjectTrustedIps2$Outbound
@@ -11120,7 +11461,9 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
-  resourceConfig: z.lazy(() => CreateProjectResourceConfig$outboundSchema),
+  resourceConfig: z.lazy(() =>
+    CreateProjectProjectsResourceConfig$outboundSchema
+  ),
   rollingRelease: z.nullable(
     z.lazy(() => CreateProjectRollingRelease$outboundSchema),
   ).optional(),
@@ -11157,7 +11500,10 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CreateProjectLastAliasRequest$outboundSchema),
   ).optional(),
   protectionBypass: z.record(
-    z.lazy(() => CreateProjectProtectionBypass$outboundSchema),
+    z.union([
+      z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
+      z.lazy(() => CreateProjectProtectionBypass1$outboundSchema),
+    ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(

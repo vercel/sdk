@@ -1,25 +1,23 @@
 # CreateProjectResourceConfig
 
+Specifies resource override configuration for the project
+
 ## Example Usage
 
 ```typescript
 import { CreateProjectResourceConfig } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectResourceConfig = {
-  functionDefaultRegions: [
-    "<value>",
-  ],
-};
+let value: CreateProjectResourceConfig = {};
 ```
 
 ## Fields
 
-| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `fluid`                                                                                              | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `functionDefaultRegions`                                                                             | *string*[]                                                                                           | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `functionDefaultTimeout`                                                                             | *number*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `functionDefaultMemoryType`                                                                          | [models.CreateProjectFunctionDefaultMemoryType](../models/createprojectfunctiondefaultmemorytype.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `functionZeroConfigFailover`                                                                         | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `elasticConcurrencyEnabled`                                                                          | *boolean*                                                                                            | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
-| `buildMachineType`                                                                                   | [models.CreateProjectBuildMachineType](../models/createprojectbuildmachinetype.md)                   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `fluid`                                                                    | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `functionDefaultRegions`                                                   | *string*[]                                                                 | :heavy_minus_sign:                                                         | The regions to deploy Vercel Functions to for this project                 |
+| `functionDefaultTimeout`                                                   | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `functionDefaultMemoryType`                                                | [models.FunctionDefaultMemoryType](../models/functiondefaultmemorytype.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `functionZeroConfigFailover`                                               | *boolean*                                                                  | :heavy_minus_sign:                                                         | Specifies whether Zero Config Failover is enabled for this project.        |
+| `elasticConcurrencyEnabled`                                                | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `buildMachineType`                                                         | [models.BuildMachineType](../models/buildmachinetype.md)                   | :heavy_minus_sign:                                                         | N/A                                                                        |

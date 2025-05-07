@@ -198,8 +198,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.patchAliasesIdProtectionBypass({
-    id: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -306,6 +308,7 @@ run();
 * [listAliases](docs/sdks/aliases/README.md#listaliases) - List aliases
 * [getAlias](docs/sdks/aliases/README.md#getalias) - Get an Alias
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
+* [patchUrlProtectionBypass](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
 
 ### [artifacts](docs/sdks/artifacts/README.md)
 
@@ -499,9 +502,6 @@ run();
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
-### [Vercel SDK](docs/sdks/vercel/README.md)
-
-* [patchAliasesIdProtectionBypass](docs/sdks/vercel/README.md#patchaliasesidprotectionbypass) - Update the protection bypass for the alias (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
@@ -544,6 +544,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`aliasesGetAlias`](docs/sdks/aliases/README.md#getalias) - Get an Alias
 - [`aliasesListAliases`](docs/sdks/aliases/README.md#listaliases) - List aliases
 - [`aliasesListDeploymentAliases`](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
+- [`aliasesPatchUrlProtectionBypass`](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
 - [`artifactsArtifactExists`](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 - [`artifactsArtifactQuery`](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
 - [`artifactsDownloadArtifact`](docs/sdks/artifacts/README.md#downloadartifact) - Download a cache artifact
@@ -634,7 +635,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-- [`patchAliasesIdProtectionBypass`](docs/sdks/vercel/README.md#patchaliasesidprotectionbypass) - Update the protection bypass for the alias (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -747,11 +747,15 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  const result = await vercel.patchAliasesIdProtectionBypass({
-    id: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   }, {
     retries: {
       strategy: "backoff",
@@ -788,11 +792,14 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.patchAliasesIdProtectionBypass({
-    id: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result
@@ -807,7 +814,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `patchAliasesIdProtectionBypass` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `readAccessGroup` method may throw the following errors:
 
 | Error Type                   | Status Code | Content Type     |
 | ---------------------------- | ----------- | ---------------- |
@@ -825,13 +832,17 @@ import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.
 import { VercelForbiddenError } from "@vercel/sdk/models/vercelforbiddenerror.js";
 import { VercelNotFoundError } from "@vercel/sdk/models/vercelnotfounderror.js";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
   let result;
   try {
-    result = await vercel.patchAliasesIdProtectionBypass({
-      id: "<id>",
+    result = await vercel.accessGroups.readAccessGroup({
+      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+      slug: "my-team-url-slug",
     });
 
     // Handle the result
@@ -897,11 +908,14 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.patchAliasesIdProtectionBypass({
-    id: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   // Handle the result

@@ -20,15 +20,20 @@ func pathPatchAliasesIDProtectionBypass(dir *logging.HTTPFileDirectory, rt *trac
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "patch_/aliases/{id}/protection-bypass[0]":
-			dir.HandlerFunc("patch_/aliases/{id}/protection-bypass", testPatchAliasesIDProtectionBypassPatchAliasesIDProtectionBypass0)(w, req)
+		case "patchUrlProtectionBypass[0]":
+			dir.HandlerFunc("patchUrlProtectionBypass", testPatchURLProtectionBypassPatchURLProtectionBypass0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testPatchAliasesIDProtectionBypassPatchAliasesIDProtectionBypass0(w http.ResponseWriter, req *http.Request) {
+func testPatchURLProtectionBypassPatchURLProtectionBypass0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
 	if err := assert.ContentType(req, "application/json", false); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)

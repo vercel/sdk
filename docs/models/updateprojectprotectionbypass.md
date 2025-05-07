@@ -1,21 +1,26 @@
 # UpdateProjectProtectionBypass
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateProjectProtectionBypass1`
 
 ```typescript
-import { UpdateProjectProtectionBypass } from "@vercel/sdk/models/updateprojectop.js";
+const value: models.UpdateProjectProtectionBypass1 = {
+  createdAt: 1848.38,
+  createdBy: "<value>",
+  scope: "integration-automation-bypass",
+  integrationId: "<id>",
+};
+```
 
-let value: UpdateProjectProtectionBypass = {
-  createdAt: 5800.65,
+### `models.UpdateProjectProtectionBypass2`
+
+```typescript
+const value: models.UpdateProjectProtectionBypass2 = {
+  createdAt: 3997.13,
   createdBy: "<value>",
   scope: "automation-bypass",
 };
 ```
 
-## Fields
-
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `createdAt`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `createdBy`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `scope`                                                      | [models.UpdateProjectScope](../models/updateprojectscope.md) | :heavy_check_mark:                                           | N/A                                                          |

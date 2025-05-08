@@ -6,16 +6,18 @@
 import { Info } from "@vercel/sdk/models/getdeploymenteventsop.js";
 
 let value: Info = {
-  type: "build",
-  name: "bld_by3kz18kn",
-  entrypoint: ".",
+  type: "<value>",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              | Example                  |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `type`                   | *string*                 | :heavy_minus_sign:       | Type of operation        | build                    |
-| `name`                   | *string*                 | :heavy_minus_sign:       | Name of the build        | bld_by3kz18kn            |
-| `entrypoint`             | *string*                 | :heavy_minus_sign:       | Entrypoint for the build | .                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `entrypoint`       | *string*           | :heavy_minus_sign: | N/A                |
+| `path`             | *string*           | :heavy_minus_sign: | N/A                |
+| `step`             | *string*           | :heavy_minus_sign: | N/A                |
+| `readyState`       | *string*           | :heavy_minus_sign: | N/A                |

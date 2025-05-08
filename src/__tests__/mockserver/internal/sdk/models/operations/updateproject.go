@@ -1403,10 +1403,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1420,13 +1420,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -8264,8 +8264,8 @@ func (u UpdateProjectSrc) MarshalJSON() ([]byte, error) {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -8287,9 +8287,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough
@@ -8501,8 +8501,8 @@ func (o *UpdateProjectHas) GetValue() *UpdateProjectValue {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -8524,9 +8524,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough

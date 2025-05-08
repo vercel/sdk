@@ -104,7 +104,7 @@ run();
 
 ### Response
 
-**Promise\<[models.GetDeploymentEventsResponseBody[]](../../models/.md)\>**
+**Promise\<[models.GetDeploymentEventsResponse](../../models/getdeploymenteventsresponse.md)\>**
 
 ### Errors
 

@@ -17,7 +17,7 @@ const value: { [k: string]: any } = {
 const value: models.TeamLimited = {
   limited: false,
   limitedBy: [
-    "saml",
+    "scope",
   ],
   saml: {
     connection: {

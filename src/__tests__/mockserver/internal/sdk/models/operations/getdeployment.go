@@ -658,26 +658,26 @@ func (o *ResponseBodyAliasWarning) GetAction() *string {
 	return o.Action
 }
 
-type GetDeploymentResponseBodyType string
+type GetDeploymentResponseBodyDeploymentsType string
 
 const (
-	GetDeploymentResponseBodyTypeLambdas GetDeploymentResponseBodyType = "LAMBDAS"
+	GetDeploymentResponseBodyDeploymentsTypeLambdas GetDeploymentResponseBodyDeploymentsType = "LAMBDAS"
 )
 
-func (e GetDeploymentResponseBodyType) ToPointer() *GetDeploymentResponseBodyType {
+func (e GetDeploymentResponseBodyDeploymentsType) ToPointer() *GetDeploymentResponseBodyDeploymentsType {
 	return &e
 }
-func (e *GetDeploymentResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentResponseBodyDeploymentsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "LAMBDAS":
-		*e = GetDeploymentResponseBodyType(v)
+		*e = GetDeploymentResponseBodyDeploymentsType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentResponseBodyDeploymentsType: %v", v)
 	}
 }
 
@@ -2345,28 +2345,28 @@ type GetDeploymentResponseBody2 struct {
 	BootedAt      float64  `json:"bootedAt"`
 	BuildingAt    float64  `json:"buildingAt"`
 	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
-	BuildContainerFinishedAt *float64                             `json:"buildContainerFinishedAt,omitempty"`
-	BuildSkipped             bool                                 `json:"buildSkipped"`
-	Creator                  GetDeploymentResponseBodyCreator     `json:"creator"`
-	InitReadyAt              *float64                             `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment  *bool                                `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                  []ResponseBodyLambdas                `json:"lambdas,omitempty"`
-	Public                   bool                                 `json:"public"`
-	Ready                    *float64                             `json:"ready,omitempty"`
-	Status                   GetDeploymentResponseBodyStatus      `json:"status"`
-	Team                     *ResponseBodyTeam                    `json:"team,omitempty"`
-	UserAliases              []string                             `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled   *bool                                `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs             *bool                                `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment        *ResponseBodyCustomEnvironment       `json:"customEnvironment,omitempty"`
-	AliasWarning             *ResponseBodyAliasWarning            `json:"aliasWarning,omitempty"`
-	ID                       string                               `json:"id"`
-	Name                     string                               `json:"name"`
-	Type                     GetDeploymentResponseBodyType        `json:"type"`
-	CreatedAt                float64                              `json:"createdAt"`
-	ReadyState               GetDeploymentResponseBodyReadyState  `json:"readyState"`
-	AliasError               *GetDeploymentResponseBodyAliasError `json:"aliasError,omitempty"`
-	AliasFinal               *string                              `json:"aliasFinal,omitempty"`
+	BuildContainerFinishedAt *float64                                 `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool                                     `json:"buildSkipped"`
+	Creator                  GetDeploymentResponseBodyCreator         `json:"creator"`
+	InitReadyAt              *float64                                 `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment  *bool                                    `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                  []ResponseBodyLambdas                    `json:"lambdas,omitempty"`
+	Public                   bool                                     `json:"public"`
+	Ready                    *float64                                 `json:"ready,omitempty"`
+	Status                   GetDeploymentResponseBodyStatus          `json:"status"`
+	Team                     *ResponseBodyTeam                        `json:"team,omitempty"`
+	UserAliases              []string                                 `json:"userAliases,omitempty"`
+	PreviewCommentsEnabled   *bool                                    `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs             *bool                                    `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment        *ResponseBodyCustomEnvironment           `json:"customEnvironment,omitempty"`
+	AliasWarning             *ResponseBodyAliasWarning                `json:"aliasWarning,omitempty"`
+	ID                       string                                   `json:"id"`
+	Name                     string                                   `json:"name"`
+	Type                     GetDeploymentResponseBodyDeploymentsType `json:"type"`
+	CreatedAt                float64                                  `json:"createdAt"`
+	ReadyState               GetDeploymentResponseBodyReadyState      `json:"readyState"`
+	AliasError               *GetDeploymentResponseBodyAliasError     `json:"aliasError,omitempty"`
+	AliasFinal               *string                                  `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                                      `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                                   `json:"automaticAliases,omitempty"`
@@ -2546,9 +2546,9 @@ func (o *GetDeploymentResponseBody2) GetName() string {
 	return o.Name
 }
 
-func (o *GetDeploymentResponseBody2) GetType() GetDeploymentResponseBodyType {
+func (o *GetDeploymentResponseBody2) GetType() GetDeploymentResponseBodyDeploymentsType {
 	if o == nil {
-		return GetDeploymentResponseBodyType("")
+		return GetDeploymentResponseBodyDeploymentsType("")
 	}
 	return o.Type
 }
@@ -4101,26 +4101,26 @@ func (o *GetDeploymentResponseBodyAliasWarning) GetAction() *string {
 	return o.Action
 }
 
-type ResponseBodyType string
+type GetDeploymentResponseBodyType string
 
 const (
-	ResponseBodyTypeLambdas ResponseBodyType = "LAMBDAS"
+	GetDeploymentResponseBodyTypeLambdas GetDeploymentResponseBodyType = "LAMBDAS"
 )
 
-func (e ResponseBodyType) ToPointer() *ResponseBodyType {
+func (e GetDeploymentResponseBodyType) ToPointer() *GetDeploymentResponseBodyType {
 	return &e
 }
-func (e *ResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentResponseBodyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "LAMBDAS":
-		*e = ResponseBodyType(v)
+		*e = GetDeploymentResponseBodyType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentResponseBodyType: %v", v)
 	}
 }
 
@@ -7435,7 +7435,7 @@ type GetDeploymentResponseBody1 struct {
 	AliasWarning             *GetDeploymentResponseBodyAliasWarning      `json:"aliasWarning,omitempty"`
 	ID                       string                                      `json:"id"`
 	Name                     string                                      `json:"name"`
-	Type                     ResponseBodyType                            `json:"type"`
+	Type                     GetDeploymentResponseBodyType               `json:"type"`
 	CreatedAt                float64                                     `json:"createdAt"`
 	ReadyState               ResponseBodyReadyState                      `json:"readyState"`
 	AliasError               *ResponseBodyAliasError                     `json:"aliasError,omitempty"`
@@ -7727,9 +7727,9 @@ func (o *GetDeploymentResponseBody1) GetName() string {
 	return o.Name
 }
 
-func (o *GetDeploymentResponseBody1) GetType() ResponseBodyType {
+func (o *GetDeploymentResponseBody1) GetType() GetDeploymentResponseBodyType {
 	if o == nil {
-		return ResponseBodyType("")
+		return GetDeploymentResponseBodyType("")
 	}
 	return o.Type
 }

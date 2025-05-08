@@ -507,10 +507,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1973,8 +1973,8 @@ export type UpdateProjectSrc = UpdateProjectSrc2 | string;
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -2015,8 +2015,8 @@ export type UpdateProjectHas = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",

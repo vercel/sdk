@@ -1,35 +1,37 @@
 # GetDeploymentEventsResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetDeploymentEventsResponseBodyDeployments1`
 
 ```typescript
-import { GetDeploymentEventsResponseBody } from "@vercel/sdk/models/getdeploymenteventsop.js";
-
-let value: GetDeploymentEventsResponseBody = {
-  created: 1744583330135,
-  date: 1744583330135,
-  deploymentId: "dpl_GjyjUDa3gESegReEzVREj1sQ92b7",
-  id: "1744583330135959366434900001",
-  text: "Cloning github link (Branch: yourbranchname, Commit: commithash)",
-  type: "stdout",
-  serial: "1744583330135959366434900001",
-  info: {
-    type: "build",
-    name: "bld_by3kz18kn",
-    entrypoint: ".",
+const value: models.GetDeploymentEventsResponseBodyDeployments1 = {
+  type: "middleware",
+  created: 5666.34,
+  payload: {
+    deploymentId: "<id>",
+    id: "<id>",
+    date: 6428.43,
+    serial: "<value>",
   },
 };
 ```
 
-## Fields
+### `models.GetDeploymentEventsResponseBodyDeployments2`
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `created`                                                              | *number*                                                               | :heavy_minus_sign:                                                     | Unix timestamp when the log entry was created                          | 1744583330135                                                          |
-| `date`                                                                 | *number*                                                               | :heavy_minus_sign:                                                     | Unix timestamp of the log entry date                                   | 1744583330135                                                          |
-| `deploymentId`                                                         | *string*                                                               | :heavy_minus_sign:                                                     | Unique identifier for the deployment                                   | dpl_GjyjUDa3gESegReEzVREj1sQ92b7                                       |
-| `id`                                                                   | *string*                                                               | :heavy_minus_sign:                                                     | Unique identifier for the log entry                                    | 1744583330135959366434900001                                           |
-| `text`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | Log message content                                                    | Cloning github link (Branch: yourbranchname, Commit: commithash)       |
-| `type`                                                                 | [models.GetDeploymentEventsType](../models/getdeploymenteventstype.md) | :heavy_minus_sign:                                                     | Type of log entry                                                      | stdout                                                                 |
-| `serial`                                                               | *string*                                                               | :heavy_minus_sign:                                                     | Serial identifier for the log entry                                    | 1744583330135959366434900001                                           |
-| `info`                                                                 | [models.Info](../models/info.md)                                       | :heavy_minus_sign:                                                     | N/A                                                                    |                                                                        |
+```typescript
+const value: models.GetDeploymentEventsResponseBodyDeployments2 = {
+  created: 4039.62,
+  date: 2084.4,
+  deploymentId: "<id>",
+  id: "<id>",
+  info: {
+    type: "<value>",
+    name: "<value>",
+  },
+  serial: "<value>",
+  type: "report",
+};
+```
+

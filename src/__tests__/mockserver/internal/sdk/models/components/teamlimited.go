@@ -12,8 +12,8 @@ import (
 type LimitedBy string
 
 const (
-	LimitedBySaml LimitedBy = "saml"
-	LimitedByMfa  LimitedBy = "mfa"
+	LimitedByScope LimitedBy = "scope"
+	LimitedByMfa   LimitedBy = "mfa"
 )
 
 func (e LimitedBy) ToPointer() *LimitedBy {
@@ -25,7 +25,7 @@ func (e *LimitedBy) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "saml":
+	case "scope":
 		fallthrough
 	case "mfa":
 		*e = LimitedBy(v)

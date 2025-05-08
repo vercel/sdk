@@ -6,7 +6,10 @@ import { deploymentsCancelDeployment } from "../funcs/deploymentsCancelDeploymen
 import { deploymentsCreateDeployment } from "../funcs/deploymentsCreateDeployment.js";
 import { deploymentsDeleteDeployment } from "../funcs/deploymentsDeleteDeployment.js";
 import { deploymentsGetDeployment } from "../funcs/deploymentsGetDeployment.js";
-import { deploymentsGetDeploymentEvents } from "../funcs/deploymentsGetDeploymentEvents.js";
+import {
+  deploymentsGetDeploymentEvents,
+  GetDeploymentEventsAcceptEnum,
+} from "../funcs/deploymentsGetDeploymentEvents.js";
 import { deploymentsGetDeploymentFileContents } from "../funcs/deploymentsGetDeploymentFileContents.js";
 import { deploymentsGetDeployments } from "../funcs/deploymentsGetDeployments.js";
 import { deploymentsListDeploymentFiles } from "../funcs/deploymentsListDeploymentFiles.js";
@@ -28,7 +31,7 @@ import {
 import { FileTree } from "../models/filetree.js";
 import {
   GetDeploymentEventsRequest,
-  GetDeploymentEventsResponseBody,
+  GetDeploymentEventsResponse,
 } from "../models/getdeploymenteventsop.js";
 import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
 import {
@@ -47,6 +50,8 @@ import {
 } from "../models/uploadfileop.js";
 import { unwrapAsync } from "../types/fp.js";
 
+export { GetDeploymentEventsAcceptEnum } from "../funcs/deploymentsGetDeploymentEvents.js";
+
 export class Deployments extends ClientSDK {
   /**
    * Get deployment events
@@ -56,8 +61,10 @@ export class Deployments extends ClientSDK {
    */
   async getDeploymentEvents(
     request: GetDeploymentEventsRequest,
-    options?: RequestOptions,
-  ): Promise<Array<GetDeploymentEventsResponseBody>> {
+    options?: RequestOptions & {
+      acceptHeaderOverride?: GetDeploymentEventsAcceptEnum;
+    },
+  ): Promise<GetDeploymentEventsResponse> {
     return unwrapAsync(deploymentsGetDeploymentEvents(
       this,
       request,

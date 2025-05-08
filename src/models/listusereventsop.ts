@@ -39,6 +39,10 @@ export type ListUserEventsRequest = {
    */
   principalId?: string | undefined;
   /**
+   * Comma-delimited list of project IDs to filter the results by.
+   */
+  projectIds?: string | undefined;
+  /**
    * When set to `true`, the response will include the `payload` field for each event.
    */
   withPayload?: string | undefined;
@@ -74,6 +78,7 @@ export const ListUserEventsRequest$inboundSchema: z.ZodType<
   types: z.string().optional(),
   userId: z.string().optional(),
   principalId: z.string().optional(),
+  projectIds: z.string().optional(),
   withPayload: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
@@ -87,6 +92,7 @@ export type ListUserEventsRequest$Outbound = {
   types?: string | undefined;
   userId?: string | undefined;
   principalId?: string | undefined;
+  projectIds?: string | undefined;
   withPayload?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -104,6 +110,7 @@ export const ListUserEventsRequest$outboundSchema: z.ZodType<
   types: z.string().optional(),
   userId: z.string().optional(),
   principalId: z.string().optional(),
+  projectIds: z.string().optional(),
   withPayload: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

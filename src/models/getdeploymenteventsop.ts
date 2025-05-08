@@ -70,66 +70,286 @@ export type GetDeploymentEventsRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Type of log entry
- */
-export const GetDeploymentEventsType = {
+export type ResponseBodyInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType = {
+  Delimiter: "delimiter",
+  Command: "command",
   Stdout: "stdout",
   Stderr: "stderr",
+  Exit: "exit",
+  DeploymentState: "deployment-state",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Metric: "metric",
+  Report: "report",
+  Fatal: "fatal",
 } as const;
-/**
- * Type of log entry
- */
-export type GetDeploymentEventsType = ClosedEnum<
-  typeof GetDeploymentEventsType
+export type GetDeploymentEventsResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
 >;
 
-export type Info = {
-  /**
-   * Type of operation
-   */
-  type?: string | undefined;
-  /**
-   * Name of the build
-   */
-  name?: string | undefined;
-  /**
-   * Entrypoint for the build
-   */
-  entrypoint?: string | undefined;
+export const ResponseBodyLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type ResponseBodyLevel = ClosedEnum<typeof ResponseBodyLevel>;
+
+export type GetDeploymentEventsResponseBodyDeployments2 = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: ResponseBodyInfo;
+  serial: string;
+  text?: string | undefined;
+  type: GetDeploymentEventsResponseBodyDeploymentsResponseType;
+  level?: ResponseBodyLevel | undefined;
 };
 
-export type GetDeploymentEventsResponseBody = {
-  /**
-   * Unix timestamp when the log entry was created
-   */
-  created?: number | undefined;
-  /**
-   * Unix timestamp of the log entry date
-   */
-  date?: number | undefined;
-  /**
-   * Unique identifier for the deployment
-   */
-  deploymentId?: string | undefined;
-  /**
-   * Unique identifier for the log entry
-   */
-  id?: string | undefined;
-  /**
-   * Log message content
-   */
-  text?: string | undefined;
-  /**
-   * Type of log entry
-   */
-  type?: GetDeploymentEventsType | undefined;
-  /**
-   * Serial identifier for the log entry
-   */
-  serial?: string | undefined;
-  info?: Info | undefined;
+export const GetDeploymentEventsResponseBodyDeploymentsType = {
+  Delimiter: "delimiter",
+  Command: "command",
+  Stdout: "stdout",
+  Stderr: "stderr",
+  Exit: "exit",
+  DeploymentState: "deployment-state",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Metric: "metric",
+  Report: "report",
+  Fatal: "fatal",
+} as const;
+export type GetDeploymentEventsResponseBodyDeploymentsType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyDeploymentsType
+>;
+
+export type GetDeploymentEventsResponseBodyInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
 };
+
+export const ResponseBodyVercelCache = {
+  Miss: "MISS",
+  Hit: "HIT",
+  Stale: "STALE",
+  Bypass: "BYPASS",
+  Prerender: "PRERENDER",
+  Revalidated: "REVALIDATED",
+} as const;
+export type ResponseBodyVercelCache = ClosedEnum<
+  typeof ResponseBodyVercelCache
+>;
+
+export const ResponseBodyWafAction = {
+  Log: "log",
+  Challenge: "challenge",
+  Deny: "deny",
+  Bypass: "bypass",
+  RateLimit: "rate_limit",
+} as const;
+export type ResponseBodyWafAction = ClosedEnum<typeof ResponseBodyWafAction>;
+
+export type ResponseBodyProxy = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path: string;
+  statusCode?: number | undefined;
+  userAgent: Array<string>;
+  referer: string;
+  clientIp?: string | undefined;
+  region: string;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: ResponseBodyVercelCache | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: ResponseBodyWafAction | undefined;
+  wafRuleId?: string | undefined;
+};
+
+export type ResponseBodyPayload = {
+  deploymentId: string;
+  info?: GetDeploymentEventsResponseBodyInfo | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: ResponseBodyProxy | undefined;
+};
+
+export type GetDeploymentEventsResponseBodyDeployments1 = {
+  type: GetDeploymentEventsResponseBodyDeploymentsType;
+  created: number;
+  payload: ResponseBodyPayload;
+};
+
+export type GetDeploymentEventsResponseBody =
+  | GetDeploymentEventsResponseBodyDeployments1
+  | GetDeploymentEventsResponseBodyDeployments2;
+
+export type Info = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const GetDeploymentEventsResponseBodyType = {
+  Delimiter: "delimiter",
+  Command: "command",
+  Stdout: "stdout",
+  Stderr: "stderr",
+  Exit: "exit",
+  DeploymentState: "deployment-state",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Metric: "metric",
+  Report: "report",
+  Fatal: "fatal",
+} as const;
+export type GetDeploymentEventsResponseBodyType = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyType
+>;
+
+export const GetDeploymentEventsResponseBodyLevel = {
+  Error: "error",
+  Warning: "warning",
+} as const;
+export type GetDeploymentEventsResponseBodyLevel = ClosedEnum<
+  typeof GetDeploymentEventsResponseBodyLevel
+>;
+
+export type GetDeploymentEventsResponseBody2 = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: Info;
+  serial: string;
+  text?: string | undefined;
+  type: GetDeploymentEventsResponseBodyType;
+  level?: GetDeploymentEventsResponseBodyLevel | undefined;
+};
+
+export const ResponseBodyType = {
+  Delimiter: "delimiter",
+  Command: "command",
+  Stdout: "stdout",
+  Stderr: "stderr",
+  Exit: "exit",
+  DeploymentState: "deployment-state",
+  Middleware: "middleware",
+  MiddlewareInvocation: "middleware-invocation",
+  EdgeFunctionInvocation: "edge-function-invocation",
+  Metric: "metric",
+  Report: "report",
+  Fatal: "fatal",
+} as const;
+export type ResponseBodyType = ClosedEnum<typeof ResponseBodyType>;
+
+export type GetDeploymentEventsResponseBodyDeploymentsInfo = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+export const VercelCache = {
+  Miss: "MISS",
+  Hit: "HIT",
+  Stale: "STALE",
+  Bypass: "BYPASS",
+  Prerender: "PRERENDER",
+  Revalidated: "REVALIDATED",
+} as const;
+export type VercelCache = ClosedEnum<typeof VercelCache>;
+
+export const WafAction = {
+  Log: "log",
+  Challenge: "challenge",
+  Deny: "deny",
+  Bypass: "bypass",
+  RateLimit: "rate_limit",
+} as const;
+export type WafAction = ClosedEnum<typeof WafAction>;
+
+export type Proxy = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path: string;
+  statusCode?: number | undefined;
+  userAgent: Array<string>;
+  referer: string;
+  clientIp?: string | undefined;
+  region: string;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: VercelCache | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: WafAction | undefined;
+  wafRuleId?: string | undefined;
+};
+
+export type GetDeploymentEventsResponseBodyPayload = {
+  deploymentId: string;
+  info?: GetDeploymentEventsResponseBodyDeploymentsInfo | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: Proxy | undefined;
+};
+
+export type GetDeploymentEventsResponseBody1 = {
+  type: ResponseBodyType;
+  created: number;
+  payload: GetDeploymentEventsResponseBodyPayload;
+};
+
+export type GetDeploymentEventsDeploymentsResponseBody =
+  | GetDeploymentEventsResponseBody1
+  | GetDeploymentEventsResponseBody2;
+
+export type GetDeploymentEventsResponse =
+  | Array<
+    GetDeploymentEventsResponseBody1 | GetDeploymentEventsResponseBody2 | null
+  >
+  | GetDeploymentEventsResponseBodyDeployments1
+  | GetDeploymentEventsResponseBodyDeployments2;
 
 /** @internal */
 export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
@@ -282,73 +502,611 @@ export function getDeploymentEventsRequestFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentEventsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentEventsType
-> = z.nativeEnum(GetDeploymentEventsType);
+export const ResponseBodyInfo$inboundSchema: z.ZodType<
+  ResponseBodyInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  name: z.string(),
+  entrypoint: z.string().optional(),
+  path: z.string().optional(),
+  step: z.string().optional(),
+  readyState: z.string().optional(),
+});
 
 /** @internal */
-export const GetDeploymentEventsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentEventsType
-> = GetDeploymentEventsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsType$ {
-  /** @deprecated use `GetDeploymentEventsType$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsType$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsType$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsType$outboundSchema;
-}
-
-/** @internal */
-export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
-  .object({
-    type: z.string().optional(),
-    name: z.string().optional(),
-    entrypoint: z.string().optional(),
-  });
-
-/** @internal */
-export type Info$Outbound = {
-  type?: string | undefined;
-  name?: string | undefined;
+export type ResponseBodyInfo$Outbound = {
+  type: string;
+  name: string;
   entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
 };
 
 /** @internal */
-export const Info$outboundSchema: z.ZodType<Info$Outbound, z.ZodTypeDef, Info> =
-  z.object({
-    type: z.string().optional(),
-    name: z.string().optional(),
-    entrypoint: z.string().optional(),
+export const ResponseBodyInfo$outboundSchema: z.ZodType<
+  ResponseBodyInfo$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyInfo
+> = z.object({
+  type: z.string(),
+  name: z.string(),
+  entrypoint: z.string().optional(),
+  path: z.string().optional(),
+  step: z.string().optional(),
+  readyState: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyInfo$ {
+  /** @deprecated use `ResponseBodyInfo$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyInfo$inboundSchema;
+  /** @deprecated use `ResponseBodyInfo$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyInfo$outboundSchema;
+  /** @deprecated use `ResponseBodyInfo$Outbound` instead. */
+  export type Outbound = ResponseBodyInfo$Outbound;
+}
+
+export function responseBodyInfoToJSON(
+  responseBodyInfo: ResponseBodyInfo,
+): string {
+  return JSON.stringify(
+    ResponseBodyInfo$outboundSchema.parse(responseBodyInfo),
+  );
+}
+
+export function responseBodyInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
+  > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
+  > = GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyDeploymentsResponseType$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyLevel
+> = z.nativeEnum(ResponseBodyLevel);
+
+/** @internal */
+export const ResponseBodyLevel$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyLevel
+> = ResponseBodyLevel$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyLevel$ {
+  /** @deprecated use `ResponseBodyLevel$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyLevel$inboundSchema;
+  /** @deprecated use `ResponseBodyLevel$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyLevel$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeployments2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    created: z.number(),
+    date: z.number(),
+    deploymentId: z.string(),
+    id: z.string(),
+    info: z.lazy(() => ResponseBodyInfo$inboundSchema),
+    serial: z.string(),
+    text: z.string().optional(),
+    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
+    level: ResponseBodyLevel$inboundSchema.optional(),
+  });
+
+/** @internal */
+export type GetDeploymentEventsResponseBodyDeployments2$Outbound = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: ResponseBodyInfo$Outbound;
+  serial: string;
+  text?: string | undefined;
+  type: string;
+  level?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeployments2$outboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeployments2$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentEventsResponseBodyDeployments2
+  > = z.object({
+    created: z.number(),
+    date: z.number(),
+    deploymentId: z.string(),
+    id: z.string(),
+    info: z.lazy(() => ResponseBodyInfo$outboundSchema),
+    serial: z.string(),
+    text: z.string().optional(),
+    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema,
+    level: ResponseBodyLevel$outboundSchema.optional(),
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Info$ {
-  /** @deprecated use `Info$inboundSchema` instead. */
-  export const inboundSchema = Info$inboundSchema;
-  /** @deprecated use `Info$outboundSchema` instead. */
-  export const outboundSchema = Info$outboundSchema;
-  /** @deprecated use `Info$Outbound` instead. */
-  export type Outbound = Info$Outbound;
+export namespace GetDeploymentEventsResponseBodyDeployments2$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyDeployments2$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyDeployments2$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBodyDeployments2$Outbound;
 }
 
-export function infoToJSON(info: Info): string {
-  return JSON.stringify(Info$outboundSchema.parse(info));
+export function getDeploymentEventsResponseBodyDeployments2ToJSON(
+  getDeploymentEventsResponseBodyDeployments2:
+    GetDeploymentEventsResponseBodyDeployments2,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBodyDeployments2$outboundSchema.parse(
+      getDeploymentEventsResponseBodyDeployments2,
+    ),
+  );
 }
 
-export function infoFromJSON(
+export function getDeploymentEventsResponseBodyDeployments2FromJSON(
   jsonString: string,
-): SafeParseResult<Info, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentEventsResponseBodyDeployments2,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Info$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Info' from JSON`,
+    (x) =>
+      GetDeploymentEventsResponseBodyDeployments2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEventsResponseBodyDeployments2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
+    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
+    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyDeploymentsType$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBodyInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.string(),
+  name: z.string(),
+  entrypoint: z.string().optional(),
+  path: z.string().optional(),
+  step: z.string().optional(),
+  readyState: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentEventsResponseBodyInfo$Outbound = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyInfo$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBodyInfo$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponseBodyInfo
+> = z.object({
+  type: z.string(),
+  name: z.string(),
+  entrypoint: z.string().optional(),
+  path: z.string().optional(),
+  step: z.string().optional(),
+  readyState: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyInfo$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyInfo$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyInfo$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBodyInfo$Outbound;
+}
+
+export function getDeploymentEventsResponseBodyInfoToJSON(
+  getDeploymentEventsResponseBodyInfo: GetDeploymentEventsResponseBodyInfo,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBodyInfo$outboundSchema.parse(
+      getDeploymentEventsResponseBodyInfo,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBodyInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBodyInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsResponseBodyInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBodyInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyVercelCache$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyVercelCache
+> = z.nativeEnum(ResponseBodyVercelCache);
+
+/** @internal */
+export const ResponseBodyVercelCache$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyVercelCache
+> = ResponseBodyVercelCache$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyVercelCache$ {
+  /** @deprecated use `ResponseBodyVercelCache$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyVercelCache$inboundSchema;
+  /** @deprecated use `ResponseBodyVercelCache$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyVercelCache$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyWafAction$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyWafAction
+> = z.nativeEnum(ResponseBodyWafAction);
+
+/** @internal */
+export const ResponseBodyWafAction$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyWafAction
+> = ResponseBodyWafAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyWafAction$ {
+  /** @deprecated use `ResponseBodyWafAction$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyWafAction$inboundSchema;
+  /** @deprecated use `ResponseBodyWafAction$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyWafAction$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyProxy$inboundSchema: z.ZodType<
+  ResponseBodyProxy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  timestamp: z.number(),
+  method: z.string(),
+  host: z.string(),
+  path: z.string(),
+  statusCode: z.number().optional(),
+  userAgent: z.array(z.string()),
+  referer: z.string(),
+  clientIp: z.string().optional(),
+  region: z.string(),
+  scheme: z.string().optional(),
+  responseByteSize: z.number().optional(),
+  cacheId: z.string().optional(),
+  pathType: z.string().optional(),
+  pathTypeVariant: z.string().optional(),
+  vercelId: z.string().optional(),
+  vercelCache: ResponseBodyVercelCache$inboundSchema.optional(),
+  lambdaRegion: z.string().optional(),
+  wafAction: ResponseBodyWafAction$inboundSchema.optional(),
+  wafRuleId: z.string().optional(),
+});
+
+/** @internal */
+export type ResponseBodyProxy$Outbound = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path: string;
+  statusCode?: number | undefined;
+  userAgent: Array<string>;
+  referer: string;
+  clientIp?: string | undefined;
+  region: string;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: string | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: string | undefined;
+  wafRuleId?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyProxy$outboundSchema: z.ZodType<
+  ResponseBodyProxy$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyProxy
+> = z.object({
+  timestamp: z.number(),
+  method: z.string(),
+  host: z.string(),
+  path: z.string(),
+  statusCode: z.number().optional(),
+  userAgent: z.array(z.string()),
+  referer: z.string(),
+  clientIp: z.string().optional(),
+  region: z.string(),
+  scheme: z.string().optional(),
+  responseByteSize: z.number().optional(),
+  cacheId: z.string().optional(),
+  pathType: z.string().optional(),
+  pathTypeVariant: z.string().optional(),
+  vercelId: z.string().optional(),
+  vercelCache: ResponseBodyVercelCache$outboundSchema.optional(),
+  lambdaRegion: z.string().optional(),
+  wafAction: ResponseBodyWafAction$outboundSchema.optional(),
+  wafRuleId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyProxy$ {
+  /** @deprecated use `ResponseBodyProxy$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyProxy$inboundSchema;
+  /** @deprecated use `ResponseBodyProxy$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyProxy$outboundSchema;
+  /** @deprecated use `ResponseBodyProxy$Outbound` instead. */
+  export type Outbound = ResponseBodyProxy$Outbound;
+}
+
+export function responseBodyProxyToJSON(
+  responseBodyProxy: ResponseBodyProxy,
+): string {
+  return JSON.stringify(
+    ResponseBodyProxy$outboundSchema.parse(responseBodyProxy),
+  );
+}
+
+export function responseBodyProxyFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyProxy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyProxy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyProxy' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyPayload$inboundSchema: z.ZodType<
+  ResponseBodyPayload,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: z.string(),
+  info: z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema)
+    .optional(),
+  text: z.string().optional(),
+  id: z.string(),
+  date: z.number(),
+  serial: z.string(),
+  created: z.number().optional(),
+  statusCode: z.number().optional(),
+  requestId: z.string().optional(),
+  proxy: z.lazy(() => ResponseBodyProxy$inboundSchema).optional(),
+});
+
+/** @internal */
+export type ResponseBodyPayload$Outbound = {
+  deploymentId: string;
+  info?: GetDeploymentEventsResponseBodyInfo$Outbound | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: ResponseBodyProxy$Outbound | undefined;
+};
+
+/** @internal */
+export const ResponseBodyPayload$outboundSchema: z.ZodType<
+  ResponseBodyPayload$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyPayload
+> = z.object({
+  deploymentId: z.string(),
+  info: z.lazy(() => GetDeploymentEventsResponseBodyInfo$outboundSchema)
+    .optional(),
+  text: z.string().optional(),
+  id: z.string(),
+  date: z.number(),
+  serial: z.string(),
+  created: z.number().optional(),
+  statusCode: z.number().optional(),
+  requestId: z.string().optional(),
+  proxy: z.lazy(() => ResponseBodyProxy$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyPayload$ {
+  /** @deprecated use `ResponseBodyPayload$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyPayload$inboundSchema;
+  /** @deprecated use `ResponseBodyPayload$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyPayload$outboundSchema;
+  /** @deprecated use `ResponseBodyPayload$Outbound` instead. */
+  export type Outbound = ResponseBodyPayload$Outbound;
+}
+
+export function responseBodyPayloadToJSON(
+  responseBodyPayload: ResponseBodyPayload,
+): string {
+  return JSON.stringify(
+    ResponseBodyPayload$outboundSchema.parse(responseBodyPayload),
+  );
+}
+
+export function responseBodyPayloadFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPayload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPayload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPayload' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeployments1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
+    created: z.number(),
+    payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
+  });
+
+/** @internal */
+export type GetDeploymentEventsResponseBodyDeployments1$Outbound = {
+  type: string;
+  created: number;
+  payload: ResponseBodyPayload$Outbound;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeployments1$outboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeployments1$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentEventsResponseBodyDeployments1
+  > = z.object({
+    type: GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema,
+    created: z.number(),
+    payload: z.lazy(() => ResponseBodyPayload$outboundSchema),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyDeployments1$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyDeployments1$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyDeployments1$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBodyDeployments1$Outbound;
+}
+
+export function getDeploymentEventsResponseBodyDeployments1ToJSON(
+  getDeploymentEventsResponseBodyDeployments1:
+    GetDeploymentEventsResponseBodyDeployments1,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBodyDeployments1$outboundSchema.parse(
+      getDeploymentEventsResponseBodyDeployments1,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBodyDeployments1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentEventsResponseBodyDeployments1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsResponseBodyDeployments1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEventsResponseBodyDeployments1' from JSON`,
   );
 }
 
@@ -357,44 +1115,25 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: z.number().optional(),
-  date: z.number().optional(),
-  deploymentId: z.string().optional(),
-  id: z.string().optional(),
-  text: z.string().optional(),
-  type: GetDeploymentEventsType$inboundSchema.optional(),
-  serial: z.string().optional(),
-  info: z.lazy(() => Info$inboundSchema).optional(),
-});
+> = z.union([
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
+]);
 
 /** @internal */
-export type GetDeploymentEventsResponseBody$Outbound = {
-  created?: number | undefined;
-  date?: number | undefined;
-  deploymentId?: string | undefined;
-  id?: string | undefined;
-  text?: string | undefined;
-  type?: string | undefined;
-  serial?: string | undefined;
-  info?: Info$Outbound | undefined;
-};
+export type GetDeploymentEventsResponseBody$Outbound =
+  | GetDeploymentEventsResponseBodyDeployments1$Outbound
+  | GetDeploymentEventsResponseBodyDeployments2$Outbound;
 
 /** @internal */
 export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody$Outbound,
   z.ZodTypeDef,
   GetDeploymentEventsResponseBody
-> = z.object({
-  created: z.number().optional(),
-  date: z.number().optional(),
-  deploymentId: z.string().optional(),
-  id: z.string().optional(),
-  text: z.string().optional(),
-  type: GetDeploymentEventsType$outboundSchema.optional(),
-  serial: z.string().optional(),
-  info: z.lazy(() => Info$outboundSchema).optional(),
-});
+> = z.union([
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
+]);
 
 /**
  * @internal
@@ -426,5 +1165,736 @@ export function getDeploymentEventsResponseBodyFromJSON(
     jsonString,
     (x) => GetDeploymentEventsResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentEventsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
+  .object({
+    type: z.string(),
+    name: z.string(),
+    entrypoint: z.string().optional(),
+    path: z.string().optional(),
+    step: z.string().optional(),
+    readyState: z.string().optional(),
+  });
+
+/** @internal */
+export type Info$Outbound = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+/** @internal */
+export const Info$outboundSchema: z.ZodType<Info$Outbound, z.ZodTypeDef, Info> =
+  z.object({
+    type: z.string(),
+    name: z.string(),
+    entrypoint: z.string().optional(),
+    path: z.string().optional(),
+    step: z.string().optional(),
+    readyState: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Info$ {
+  /** @deprecated use `Info$inboundSchema` instead. */
+  export const inboundSchema = Info$inboundSchema;
+  /** @deprecated use `Info$outboundSchema` instead. */
+  export const outboundSchema = Info$outboundSchema;
+  /** @deprecated use `Info$Outbound` instead. */
+  export type Outbound = Info$Outbound;
+}
+
+export function infoToJSON(info: Info): string {
+  return JSON.stringify(Info$outboundSchema.parse(info));
+}
+
+export function infoFromJSON(
+  jsonString: string,
+): SafeParseResult<Info, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Info$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Info' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentEventsResponseBodyType
+> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyType> =
+    GetDeploymentEventsResponseBodyType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyType$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyType$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyType$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> = z.nativeEnum(
+    GetDeploymentEventsResponseBodyLevel,
+  );
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyLevel$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> =
+    GetDeploymentEventsResponseBodyLevel$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyLevel$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyLevel$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyLevel$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyLevel$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyLevel$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created: z.number(),
+  date: z.number(),
+  deploymentId: z.string(),
+  id: z.string(),
+  info: z.lazy(() => Info$inboundSchema),
+  serial: z.string(),
+  text: z.string().optional(),
+  type: GetDeploymentEventsResponseBodyType$inboundSchema,
+  level: GetDeploymentEventsResponseBodyLevel$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetDeploymentEventsResponseBody2$Outbound = {
+  created: number;
+  date: number;
+  deploymentId: string;
+  id: string;
+  info: Info$Outbound;
+  serial: string;
+  text?: string | undefined;
+  type: string;
+  level?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBody2$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody2$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponseBody2
+> = z.object({
+  created: z.number(),
+  date: z.number(),
+  deploymentId: z.string(),
+  id: z.string(),
+  info: z.lazy(() => Info$outboundSchema),
+  serial: z.string(),
+  text: z.string().optional(),
+  type: GetDeploymentEventsResponseBodyType$outboundSchema,
+  level: GetDeploymentEventsResponseBodyLevel$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBody2$ {
+  /** @deprecated use `GetDeploymentEventsResponseBody2$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentEventsResponseBody2$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody2$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentEventsResponseBody2$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody2$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBody2$Outbound;
+}
+
+export function getDeploymentEventsResponseBody2ToJSON(
+  getDeploymentEventsResponseBody2: GetDeploymentEventsResponseBody2,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBody2$outboundSchema.parse(
+      getDeploymentEventsResponseBody2,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEventsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyType
+> = z.nativeEnum(ResponseBodyType);
+
+/** @internal */
+export const ResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyType
+> = ResponseBodyType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyType$ {
+  /** @deprecated use `ResponseBodyType$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyType$inboundSchema;
+  /** @deprecated use `ResponseBodyType$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyType$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeploymentsInfo,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: z.string(),
+    name: z.string(),
+    entrypoint: z.string().optional(),
+    path: z.string().optional(),
+    step: z.string().optional(),
+    readyState: z.string().optional(),
+  });
+
+/** @internal */
+export type GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound = {
+  type: string;
+  name: string;
+  entrypoint?: string | undefined;
+  path?: string | undefined;
+  step?: string | undefined;
+  readyState?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema:
+  z.ZodType<
+    GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentEventsResponseBodyDeploymentsInfo
+  > = z.object({
+    type: z.string(),
+    name: z.string(),
+    entrypoint: z.string().optional(),
+    path: z.string().optional(),
+    step: z.string().optional(),
+    readyState: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyDeploymentsInfo$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound` instead. */
+  export type Outbound =
+    GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound;
+}
+
+export function getDeploymentEventsResponseBodyDeploymentsInfoToJSON(
+  getDeploymentEventsResponseBodyDeploymentsInfo:
+    GetDeploymentEventsResponseBodyDeploymentsInfo,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema.parse(
+      getDeploymentEventsResponseBodyDeploymentsInfo,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentEventsResponseBodyDeploymentsInfo,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEventsResponseBodyDeploymentsInfo' from JSON`,
+  );
+}
+
+/** @internal */
+export const VercelCache$inboundSchema: z.ZodNativeEnum<typeof VercelCache> = z
+  .nativeEnum(VercelCache);
+
+/** @internal */
+export const VercelCache$outboundSchema: z.ZodNativeEnum<typeof VercelCache> =
+  VercelCache$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace VercelCache$ {
+  /** @deprecated use `VercelCache$inboundSchema` instead. */
+  export const inboundSchema = VercelCache$inboundSchema;
+  /** @deprecated use `VercelCache$outboundSchema` instead. */
+  export const outboundSchema = VercelCache$outboundSchema;
+}
+
+/** @internal */
+export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> = z
+  .nativeEnum(WafAction);
+
+/** @internal */
+export const WafAction$outboundSchema: z.ZodNativeEnum<typeof WafAction> =
+  WafAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WafAction$ {
+  /** @deprecated use `WafAction$inboundSchema` instead. */
+  export const inboundSchema = WafAction$inboundSchema;
+  /** @deprecated use `WafAction$outboundSchema` instead. */
+  export const outboundSchema = WafAction$outboundSchema;
+}
+
+/** @internal */
+export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
+  .object({
+    timestamp: z.number(),
+    method: z.string(),
+    host: z.string(),
+    path: z.string(),
+    statusCode: z.number().optional(),
+    userAgent: z.array(z.string()),
+    referer: z.string(),
+    clientIp: z.string().optional(),
+    region: z.string(),
+    scheme: z.string().optional(),
+    responseByteSize: z.number().optional(),
+    cacheId: z.string().optional(),
+    pathType: z.string().optional(),
+    pathTypeVariant: z.string().optional(),
+    vercelId: z.string().optional(),
+    vercelCache: VercelCache$inboundSchema.optional(),
+    lambdaRegion: z.string().optional(),
+    wafAction: WafAction$inboundSchema.optional(),
+    wafRuleId: z.string().optional(),
+  });
+
+/** @internal */
+export type Proxy$Outbound = {
+  timestamp: number;
+  method: string;
+  host: string;
+  path: string;
+  statusCode?: number | undefined;
+  userAgent: Array<string>;
+  referer: string;
+  clientIp?: string | undefined;
+  region: string;
+  scheme?: string | undefined;
+  responseByteSize?: number | undefined;
+  cacheId?: string | undefined;
+  pathType?: string | undefined;
+  pathTypeVariant?: string | undefined;
+  vercelId?: string | undefined;
+  vercelCache?: string | undefined;
+  lambdaRegion?: string | undefined;
+  wafAction?: string | undefined;
+  wafRuleId?: string | undefined;
+};
+
+/** @internal */
+export const Proxy$outboundSchema: z.ZodType<
+  Proxy$Outbound,
+  z.ZodTypeDef,
+  Proxy
+> = z.object({
+  timestamp: z.number(),
+  method: z.string(),
+  host: z.string(),
+  path: z.string(),
+  statusCode: z.number().optional(),
+  userAgent: z.array(z.string()),
+  referer: z.string(),
+  clientIp: z.string().optional(),
+  region: z.string(),
+  scheme: z.string().optional(),
+  responseByteSize: z.number().optional(),
+  cacheId: z.string().optional(),
+  pathType: z.string().optional(),
+  pathTypeVariant: z.string().optional(),
+  vercelId: z.string().optional(),
+  vercelCache: VercelCache$outboundSchema.optional(),
+  lambdaRegion: z.string().optional(),
+  wafAction: WafAction$outboundSchema.optional(),
+  wafRuleId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Proxy$ {
+  /** @deprecated use `Proxy$inboundSchema` instead. */
+  export const inboundSchema = Proxy$inboundSchema;
+  /** @deprecated use `Proxy$outboundSchema` instead. */
+  export const outboundSchema = Proxy$outboundSchema;
+  /** @deprecated use `Proxy$Outbound` instead. */
+  export type Outbound = Proxy$Outbound;
+}
+
+export function proxyToJSON(proxy: Proxy): string {
+  return JSON.stringify(Proxy$outboundSchema.parse(proxy));
+}
+
+export function proxyFromJSON(
+  jsonString: string,
+): SafeParseResult<Proxy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Proxy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Proxy' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBodyPayload,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: z.string(),
+  info: z.lazy(() =>
+    GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema
+  ).optional(),
+  text: z.string().optional(),
+  id: z.string(),
+  date: z.number(),
+  serial: z.string(),
+  created: z.number().optional(),
+  statusCode: z.number().optional(),
+  requestId: z.string().optional(),
+  proxy: z.lazy(() => Proxy$inboundSchema).optional(),
+});
+
+/** @internal */
+export type GetDeploymentEventsResponseBodyPayload$Outbound = {
+  deploymentId: string;
+  info?: GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound | undefined;
+  text?: string | undefined;
+  id: string;
+  date: number;
+  serial: string;
+  created?: number | undefined;
+  statusCode?: number | undefined;
+  requestId?: string | undefined;
+  proxy?: Proxy$Outbound | undefined;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBodyPayload$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBodyPayload$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponseBodyPayload
+> = z.object({
+  deploymentId: z.string(),
+  info: z.lazy(() =>
+    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema
+  ).optional(),
+  text: z.string().optional(),
+  id: z.string(),
+  date: z.number(),
+  serial: z.string(),
+  created: z.number().optional(),
+  statusCode: z.number().optional(),
+  requestId: z.string().optional(),
+  proxy: z.lazy(() => Proxy$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBodyPayload$ {
+  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsResponseBodyPayload$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsResponseBodyPayload$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBodyPayload$Outbound;
+}
+
+export function getDeploymentEventsResponseBodyPayloadToJSON(
+  getDeploymentEventsResponseBodyPayload:
+    GetDeploymentEventsResponseBodyPayload,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBodyPayload$outboundSchema.parse(
+      getDeploymentEventsResponseBodyPayload,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBodyPayloadFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBodyPayload, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsResponseBodyPayload$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBodyPayload' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: ResponseBodyType$inboundSchema,
+  created: z.number(),
+  payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
+});
+
+/** @internal */
+export type GetDeploymentEventsResponseBody1$Outbound = {
+  type: string;
+  created: number;
+  payload: GetDeploymentEventsResponseBodyPayload$Outbound;
+};
+
+/** @internal */
+export const GetDeploymentEventsResponseBody1$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponseBody1$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponseBody1
+> = z.object({
+  type: ResponseBodyType$outboundSchema,
+  created: z.number(),
+  payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponseBody1$ {
+  /** @deprecated use `GetDeploymentEventsResponseBody1$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentEventsResponseBody1$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody1$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentEventsResponseBody1$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponseBody1$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponseBody1$Outbound;
+}
+
+export function getDeploymentEventsResponseBody1ToJSON(
+  getDeploymentEventsResponseBody1: GetDeploymentEventsResponseBody1,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponseBody1$outboundSchema.parse(
+      getDeploymentEventsResponseBody1,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEventsResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
+  z.ZodType<GetDeploymentEventsDeploymentsResponseBody, z.ZodTypeDef, unknown> =
+    z.union([
+      z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+      z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
+    ]);
+
+/** @internal */
+export type GetDeploymentEventsDeploymentsResponseBody$Outbound =
+  | GetDeploymentEventsResponseBody1$Outbound
+  | GetDeploymentEventsResponseBody2$Outbound;
+
+/** @internal */
+export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
+  z.ZodType<
+    GetDeploymentEventsDeploymentsResponseBody$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentEventsDeploymentsResponseBody
+  > = z.union([
+    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsDeploymentsResponseBody$ {
+  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentEventsDeploymentsResponseBody$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentEventsDeploymentsResponseBody$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsDeploymentsResponseBody$Outbound;
+}
+
+export function getDeploymentEventsDeploymentsResponseBodyToJSON(
+  getDeploymentEventsDeploymentsResponseBody:
+    GetDeploymentEventsDeploymentsResponseBody,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsDeploymentsResponseBody$outboundSchema.parse(
+      getDeploymentEventsDeploymentsResponseBody,
+    ),
+  );
+}
+
+export function getDeploymentEventsDeploymentsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentEventsDeploymentsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentEventsDeploymentsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentEventsDeploymentsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
+  GetDeploymentEventsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.array(z.nullable(z.union([
+    z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+    z.lazy(() =>
+      GetDeploymentEventsResponseBody2$inboundSchema
+    ),
+  ]))),
+  z.union([
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+    z.lazy(() =>
+      GetDeploymentEventsResponseBodyDeployments2$inboundSchema
+    ),
+  ]),
+]);
+
+/** @internal */
+export type GetDeploymentEventsResponse$Outbound =
+  | Array<
+    | GetDeploymentEventsResponseBody1$Outbound
+    | GetDeploymentEventsResponseBody2$Outbound
+    | null
+  >
+  | GetDeploymentEventsResponseBodyDeployments1$Outbound
+  | GetDeploymentEventsResponseBodyDeployments2$Outbound;
+
+/** @internal */
+export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
+  GetDeploymentEventsResponse$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentEventsResponse
+> = z.union([
+  z.array(z.nullable(z.union([
+    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
+    z.lazy(() =>
+      GetDeploymentEventsResponseBody2$outboundSchema
+    ),
+  ]))),
+  z.union([
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
+    z.lazy(() =>
+      GetDeploymentEventsResponseBodyDeployments2$outboundSchema
+    ),
+  ]),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentEventsResponse$ {
+  /** @deprecated use `GetDeploymentEventsResponse$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentEventsResponse$inboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponse$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentEventsResponse$outboundSchema;
+  /** @deprecated use `GetDeploymentEventsResponse$Outbound` instead. */
+  export type Outbound = GetDeploymentEventsResponse$Outbound;
+}
+
+export function getDeploymentEventsResponseToJSON(
+  getDeploymentEventsResponse: GetDeploymentEventsResponse,
+): string {
+  return JSON.stringify(
+    GetDeploymentEventsResponse$outboundSchema.parse(
+      getDeploymentEventsResponse,
+    ),
+  );
+}
+
+export function getDeploymentEventsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentEventsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentEventsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentEventsResponse' from JSON`,
   );
 }

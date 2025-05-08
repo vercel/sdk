@@ -239,10 +239,10 @@ type FilterProjectEnvsResponseBodyProjectsResponse200Type string
 
 const (
 	FilterProjectEnvsResponseBodyProjectsResponse200TypeSystem    FilterProjectEnvsResponseBodyProjectsResponse200Type = "system"
-	FilterProjectEnvsResponseBodyProjectsResponse200TypeSecret    FilterProjectEnvsResponseBodyProjectsResponse200Type = "secret"
 	FilterProjectEnvsResponseBodyProjectsResponse200TypeEncrypted FilterProjectEnvsResponseBodyProjectsResponse200Type = "encrypted"
 	FilterProjectEnvsResponseBodyProjectsResponse200TypePlain     FilterProjectEnvsResponseBodyProjectsResponse200Type = "plain"
 	FilterProjectEnvsResponseBodyProjectsResponse200TypeSensitive FilterProjectEnvsResponseBodyProjectsResponse200Type = "sensitive"
+	FilterProjectEnvsResponseBodyProjectsResponse200TypeSecret    FilterProjectEnvsResponseBodyProjectsResponse200Type = "secret"
 )
 
 func (e FilterProjectEnvsResponseBodyProjectsResponse200Type) ToPointer() *FilterProjectEnvsResponseBodyProjectsResponse200Type {
@@ -256,13 +256,13 @@ func (e *FilterProjectEnvsResponseBodyProjectsResponse200Type) UnmarshalJSON(dat
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsResponseBodyProjectsResponse200Type(v)
 		return nil
 	default:
@@ -1627,10 +1627,10 @@ type FilterProjectEnvsResponseBodyProjectsResponseType string
 
 const (
 	FilterProjectEnvsResponseBodyProjectsResponseTypeSystem    FilterProjectEnvsResponseBodyProjectsResponseType = "system"
-	FilterProjectEnvsResponseBodyProjectsResponseTypeSecret    FilterProjectEnvsResponseBodyProjectsResponseType = "secret"
 	FilterProjectEnvsResponseBodyProjectsResponseTypeEncrypted FilterProjectEnvsResponseBodyProjectsResponseType = "encrypted"
 	FilterProjectEnvsResponseBodyProjectsResponseTypePlain     FilterProjectEnvsResponseBodyProjectsResponseType = "plain"
 	FilterProjectEnvsResponseBodyProjectsResponseTypeSensitive FilterProjectEnvsResponseBodyProjectsResponseType = "sensitive"
+	FilterProjectEnvsResponseBodyProjectsResponseTypeSecret    FilterProjectEnvsResponseBodyProjectsResponseType = "secret"
 )
 
 func (e FilterProjectEnvsResponseBodyProjectsResponseType) ToPointer() *FilterProjectEnvsResponseBodyProjectsResponseType {
@@ -1644,13 +1644,13 @@ func (e *FilterProjectEnvsResponseBodyProjectsResponseType) UnmarshalJSON(data [
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsResponseBodyProjectsResponseType(v)
 		return nil
 	default:
@@ -3023,10 +3023,10 @@ type FilterProjectEnvsResponseBodyType string
 
 const (
 	FilterProjectEnvsResponseBodyTypeSystem    FilterProjectEnvsResponseBodyType = "system"
-	FilterProjectEnvsResponseBodyTypeSecret    FilterProjectEnvsResponseBodyType = "secret"
 	FilterProjectEnvsResponseBodyTypeEncrypted FilterProjectEnvsResponseBodyType = "encrypted"
 	FilterProjectEnvsResponseBodyTypePlain     FilterProjectEnvsResponseBodyType = "plain"
 	FilterProjectEnvsResponseBodyTypeSensitive FilterProjectEnvsResponseBodyType = "sensitive"
+	FilterProjectEnvsResponseBodyTypeSecret    FilterProjectEnvsResponseBodyType = "secret"
 )
 
 func (e FilterProjectEnvsResponseBodyType) ToPointer() *FilterProjectEnvsResponseBodyType {
@@ -3040,13 +3040,13 @@ func (e *FilterProjectEnvsResponseBodyType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsResponseBodyType(v)
 		return nil
 	default:

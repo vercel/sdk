@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const LimitedBy = {
-  Saml: "saml",
+  Scope: "scope",
   Mfa: "mfa",
 } as const;
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;

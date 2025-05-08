@@ -51,7 +51,7 @@ func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, e
 				}
 			}
 
-			if isNil(field.Type, fieldVal) && field.Tag.Get("const") == "" {
+			if (isNil(field.Type, fieldVal) || isEmpty(field.Type, fieldVal)) && field.Tag.Get("const") == "" {
 				if omitEmpty {
 					continue
 				}

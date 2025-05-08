@@ -59,7 +59,7 @@ func testGetDeploymentGetDeployment0(w http.ResponseWriter, req *http.Request) {
 			Status:     operations.GetDeploymentResponseBodyStatusError,
 			ID:         "<id>",
 			Name:       "<value>",
-			Type:       operations.GetDeploymentResponseBodyTypeLambdas,
+			Type:       operations.GetDeploymentResponseBodyDeploymentsTypeLambdas,
 			CreatedAt:  3161.76,
 			ReadyState: operations.GetDeploymentResponseBodyReadyStateReady,
 			Meta: map[string]string{

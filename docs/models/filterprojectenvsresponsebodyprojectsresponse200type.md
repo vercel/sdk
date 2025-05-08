@@ -11,5 +11,5 @@ let value: FilterProjectEnvsResponseBodyProjectsResponse200Type = "system";
 ## Values
 
 ```typescript
-"system" | "secret" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

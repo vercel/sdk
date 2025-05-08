@@ -10,7 +10,7 @@ import { TeamLimited } from "@vercel/sdk/models/teamlimited.js";
 let value: TeamLimited = {
   limited: false,
   limitedBy: [
-    "saml",
+    "scope",
   ],
   saml: {
     connection: {

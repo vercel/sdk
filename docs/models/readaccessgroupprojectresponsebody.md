@@ -10,8 +10,8 @@ let value: ReadAccessGroupProjectResponseBody = {
   accessGroupId: "<id>",
   projectId: "<id>",
   role: "PROJECT_DEVELOPER",
-  createdAt: "1715505498501",
-  updatedAt: "1746583156243",
+  createdAt: "1715595592676",
+  updatedAt: "1746673250418",
 };
 ```
 

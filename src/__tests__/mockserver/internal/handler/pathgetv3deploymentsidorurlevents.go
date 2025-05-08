@@ -36,7 +36,7 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
-	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+	if err := assert.AcceptHeader(req, []string{"application/json;q=1", "application/stream+json;q=0"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -46,35 +46,39 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []operations.GetDeploymentEventsResponseBody{
-		operations.GetDeploymentEventsResponseBody{
-			Created:      types.Float64(1744583330135),
-			Date:         types.Float64(1744583330135),
-			DeploymentID: types.String("dpl_GjyjUDa3gESegReEzVREj1sQ92b7"),
-			ID:           types.String("1744583330135959366434900001"),
-			Text:         types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
-			Type:         operations.GetDeploymentEventsTypeStdout.ToPointer(),
-			Serial:       types.String("1744583330135959366434900001"),
-			Info: &operations.Info{
-				Type:       types.String("build"),
-				Name:       types.String("bld_by3kz18kn"),
-				Entrypoint: types.String("."),
+	respBody := []*operations.GetDeploymentEventsDeploymentsResponseBody{
+		types.Pointer(operations.CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody2(
+			operations.GetDeploymentEventsResponseBody2{
+				Created:      1744583330135,
+				Date:         1744583330135,
+				DeploymentID: "dpl_GjyjUDa3gESegReEzVREj1sQ92b7",
+				ID:           "1744583330135959366434900001",
+				Info: operations.Info{
+					Type:       "build",
+					Name:       "bld_by3kz18kn",
+					Entrypoint: types.String("."),
+				},
+				Serial: "1744583330135959366434900001",
+				Text:   types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
+				Type:   operations.GetDeploymentEventsResponseBodyTypeStdout,
 			},
-		},
-		operations.GetDeploymentEventsResponseBody{
-			Created:      types.Float64(1744583330135),
-			Date:         types.Float64(1744583330135),
-			DeploymentID: types.String("dpl_GjyjUDa3gESegReEzVREj1sQ92b7"),
-			ID:           types.String("1744583330135959366434900001"),
-			Text:         types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
-			Type:         operations.GetDeploymentEventsTypeStdout.ToPointer(),
-			Serial:       types.String("1744583330135959366434900001"),
-			Info: &operations.Info{
-				Type:       types.String("build"),
-				Name:       types.String("bld_by3kz18kn"),
-				Entrypoint: types.String("."),
+		)),
+		types.Pointer(operations.CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody2(
+			operations.GetDeploymentEventsResponseBody2{
+				Created:      1744583330135,
+				Date:         1744583330135,
+				DeploymentID: "dpl_GjyjUDa3gESegReEzVREj1sQ92b7",
+				ID:           "1744583330135959366434900001",
+				Info: operations.Info{
+					Type:       "build",
+					Name:       "bld_by3kz18kn",
+					Entrypoint: types.String("."),
+				},
+				Serial: "1744583330135959366434900001",
+				Text:   types.String("Cloning github link (Branch: yourbranchname, Commit: commithash)"),
+				Type:   operations.GetDeploymentEventsResponseBodyTypeStdout,
 			},
-		},
+		)),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

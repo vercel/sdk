@@ -1,17 +1,18 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 2a1cc8db1c462fa8417521d81ce8b1ee
+  docChecksum: da010c21431e59fe68ca5fea94117fd5
   docVersion: 0.0.1
-  speakeasyVersion: 1.542.3
-  generationVersion: 2.597.9
-  releaseVersion: 1.6.12
-  configChecksum: a8b62e1001ffbc6aa8ef3415f7dd4c71
+  speakeasyVersion: 1.543.1
+  generationVersion: 2.598.21
+  releaseVersion: 1.7.0
+  configChecksum: 72a5045ec8e022aa79332986ca9f9f3d
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
 features:
   typescript:
+    acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
@@ -35,7 +36,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.16.1
+    tests: 0.16.2
     unions: 2.85.8
     uploadStreams: 0.1.0
 generatedFiles:
@@ -1124,9 +1125,21 @@ generatedFiles:
   - docs/models/getdeploymentcustomenvironmentdomains.md
   - docs/models/getdeploymentcustomenvironmenttype.md
   - docs/models/getdeploymentcustomenvironmentverification.md
+  - docs/models/getdeploymenteventsdeploymentsresponsebody.md
   - docs/models/getdeploymenteventsrequest.md
+  - docs/models/getdeploymenteventsresponse.md
   - docs/models/getdeploymenteventsresponsebody.md
-  - docs/models/getdeploymenteventstype.md
+  - docs/models/getdeploymenteventsresponsebody1.md
+  - docs/models/getdeploymenteventsresponsebody2.md
+  - docs/models/getdeploymenteventsresponsebodydeployments1.md
+  - docs/models/getdeploymenteventsresponsebodydeployments2.md
+  - docs/models/getdeploymenteventsresponsebodydeploymentsinfo.md
+  - docs/models/getdeploymenteventsresponsebodydeploymentsresponsetype.md
+  - docs/models/getdeploymenteventsresponsebodydeploymentstype.md
+  - docs/models/getdeploymenteventsresponsebodyinfo.md
+  - docs/models/getdeploymenteventsresponsebodylevel.md
+  - docs/models/getdeploymenteventsresponsebodypayload.md
+  - docs/models/getdeploymenteventsresponsebodytype.md
   - docs/models/getdeploymentfilecontentsrequest.md
   - docs/models/getdeploymentflags1.md
   - docs/models/getdeploymentflags2.md
@@ -1219,6 +1232,7 @@ generatedFiles:
   - docs/models/getdeploymentresponsebodydeploymentsreadystate.md
   - docs/models/getdeploymentresponsebodydeploymentsresponsereadystate.md
   - docs/models/getdeploymentresponsebodydeploymentsstatus.md
+  - docs/models/getdeploymentresponsebodydeploymentstype.md
   - docs/models/getdeploymentresponsebodygitsource.md
   - docs/models/getdeploymentresponsebodylambdas.md
   - docs/models/getdeploymentresponsebodyoidctokenclaims.md
@@ -2121,6 +2135,7 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/proxy.md
   - docs/models/purchasetype.md
   - docs/models/purpose.md
   - docs/models/purpose1.md
@@ -2441,11 +2456,13 @@ generatedFiles:
   - docs/models/responsebodygitrepo.md
   - docs/models/responsebodygitsource.md
   - docs/models/responsebodyimages.md
+  - docs/models/responsebodyinfo.md
   - docs/models/responsebodyinstallationtype.md
   - docs/models/responsebodyintegrations.md
   - docs/models/responsebodyinternalcontenthint.md
   - docs/models/responsebodyitems.md
   - docs/models/responsebodylambdas.md
+  - docs/models/responsebodylevel.md
   - docs/models/responsebodylocalpatterns.md
   - docs/models/responsebodymembers.md
   - docs/models/responsebodymetadata.md
@@ -2453,10 +2470,12 @@ generatedFiles:
   - docs/models/responsebodyoidctokenclaims.md
   - docs/models/responsebodyoutput.md
   - docs/models/responsebodypagination.md
+  - docs/models/responsebodypayload.md
   - docs/models/responsebodyplan.md
   - docs/models/responsebodyproject.md
   - docs/models/responsebodyprojectsettings.md
   - docs/models/responsebodyprotocol.md
+  - docs/models/responsebodyproxy.md
   - docs/models/responsebodyreadystate.md
   - docs/models/responsebodyreadysubstate.md
   - docs/models/responsebodyrecords.md
@@ -2474,7 +2493,9 @@ generatedFiles:
   - docs/models/responsebodyteamroles.md
   - docs/models/responsebodytype.md
   - docs/models/responsebodyuser.md
+  - docs/models/responsebodyvercelcache.md
   - docs/models/responsebodyverification.md
+  - docs/models/responsebodywafaction.md
   - docs/models/responsebodywebanalytics.md
   - docs/models/result.md
   - docs/models/revoke.md
@@ -3146,6 +3167,7 @@ generatedFiles:
   - docs/models/value.md
   - docs/models/value2.md
   - docs/models/vercelbadrequesterror.md
+  - docs/models/vercelcache.md
   - docs/models/vercelforbiddenerror.md
   - docs/models/vercelforbiddenerrorerror.md
   - docs/models/vercelnotfounderror.md
@@ -3164,6 +3186,7 @@ generatedFiles:
   - docs/models/view.md
   - docs/models/viewpreference.md
   - docs/models/virtualexperiencescore.md
+  - docs/models/wafaction.md
   - docs/models/wafowaspexcessbytes.md
   - docs/models/wafowasprequests.md
   - docs/models/wafratelimitrequest.md
@@ -5052,7 +5075,8 @@ examples:
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "200":
-          application/json: [{"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout", "serial": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}}, {"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout", "serial": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}}]
+          application/json: [{"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}, "serial": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout"}, {"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}, "serial": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout"}]
+          application/stream+json: {"created": 1830.36, "date": 5938.78, "deploymentId": "<id>", "id": "<id>", "info": {"type": "<value>", "name": "<value>"}, "serial": "<value>", "type": "fatal"}
   update-integration-deployment-action:
     speakeasy-default-update-integration-deployment-action:
       parameters:
@@ -5903,6 +5927,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
           principalId: "aeIInYVk59zbFF2SxfyxxmuO"
+          projectIds: "aeIInYVk59zbFF2SxfyxxmuO"
       responses:
         "200":
           application/json: {"events": []}

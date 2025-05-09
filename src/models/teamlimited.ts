@@ -116,14 +116,14 @@ export const TeamPermissions = {
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 
 export const Origin = {
+  Mail: "mail",
   Link: "link",
-  Saml: "saml",
+  Import: "import",
+  Teams: "teams",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
-  Mail: "mail",
-  Import: "import",
-  Teams: "teams",
+  Saml: "saml",
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
@@ -152,13 +152,13 @@ export type JoinedFrom = {
 export type Membership = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: Role;
   teamRoles?: Array<TeamRoles> | undefined;
   teamPermissions?: Array<TeamPermissions> | undefined;
-  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom | undefined;
@@ -659,13 +659,13 @@ export const Membership$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$inboundSchema,
   teamRoles: z.array(TeamRoles$inboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
-  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
@@ -675,13 +675,13 @@ export const Membership$inboundSchema: z.ZodType<
 export type Membership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements$Outbound> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
-  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom$Outbound | undefined;
@@ -695,13 +695,13 @@ export const Membership$outboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$outboundSchema,
   teamRoles: z.array(TeamRoles$outboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
-  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),

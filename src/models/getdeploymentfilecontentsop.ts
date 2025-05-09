@@ -30,6 +30,16 @@ export type GetDeploymentFileContentsRequest = {
   slug?: string | undefined;
 };
 
+/**
+ * File content as base64 encoded string
+ */
+export type GetDeploymentFileContentsResponseBody = {
+  /**
+   * Base64 encoded file buffer
+   */
+  data: string;
+};
+
 /** @internal */
 export const GetDeploymentFileContentsRequest$inboundSchema: z.ZodType<
   GetDeploymentFileContentsRequest,
@@ -95,5 +105,64 @@ export function getDeploymentFileContentsRequestFromJSON(
     jsonString,
     (x) => GetDeploymentFileContentsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentFileContentsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentFileContentsResponseBody$inboundSchema: z.ZodType<
+  GetDeploymentFileContentsResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  data: z.string(),
+});
+
+/** @internal */
+export type GetDeploymentFileContentsResponseBody$Outbound = {
+  data: string;
+};
+
+/** @internal */
+export const GetDeploymentFileContentsResponseBody$outboundSchema: z.ZodType<
+  GetDeploymentFileContentsResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentFileContentsResponseBody
+> = z.object({
+  data: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentFileContentsResponseBody$ {
+  /** @deprecated use `GetDeploymentFileContentsResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentFileContentsResponseBody$inboundSchema;
+  /** @deprecated use `GetDeploymentFileContentsResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentFileContentsResponseBody$outboundSchema;
+  /** @deprecated use `GetDeploymentFileContentsResponseBody$Outbound` instead. */
+  export type Outbound = GetDeploymentFileContentsResponseBody$Outbound;
+}
+
+export function getDeploymentFileContentsResponseBodyToJSON(
+  getDeploymentFileContentsResponseBody: GetDeploymentFileContentsResponseBody,
+): string {
+  return JSON.stringify(
+    GetDeploymentFileContentsResponseBody$outboundSchema.parse(
+      getDeploymentFileContentsResponseBody,
+    ),
+  );
+}
+
+export function getDeploymentFileContentsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentFileContentsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentFileContentsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentFileContentsResponseBody' from JSON`,
   );
 }

@@ -286,14 +286,14 @@ func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
 type Origin string
 
 const (
+	OriginMail              Origin = "mail"
 	OriginLink              Origin = "link"
-	OriginSaml              Origin = "saml"
+	OriginImport            Origin = "import"
+	OriginTeams             Origin = "teams"
 	OriginGithub            Origin = "github"
 	OriginGitlab            Origin = "gitlab"
 	OriginBitbucket         Origin = "bitbucket"
-	OriginMail              Origin = "mail"
-	OriginImport            Origin = "import"
-	OriginTeams             Origin = "teams"
+	OriginSaml              Origin = "saml"
 	OriginDsync             Origin = "dsync"
 	OriginFeedback          Origin = "feedback"
 	OriginOrganizationTeams Origin = "organization-teams"
@@ -308,9 +308,13 @@ func (e *Origin) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "mail":
+		fallthrough
 	case "link":
 		fallthrough
-	case "saml":
+	case "import":
+		fallthrough
+	case "teams":
 		fallthrough
 	case "github":
 		fallthrough
@@ -318,11 +322,7 @@ func (e *Origin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "bitbucket":
 		fallthrough
-	case "mail":
-		fallthrough
-	case "import":
-		fallthrough
-	case "teams":
+	case "saml":
 		fallthrough
 	case "dsync":
 		fallthrough
@@ -494,13 +494,13 @@ func (o *JoinedFrom) GetDsyncConnectedAt() *float64 {
 type Membership struct {
 	UID               *string           `json:"uid,omitempty"`
 	Entitlements      []Entitlements    `json:"entitlements,omitempty"`
+	TeamID            *string           `json:"teamId,omitempty"`
 	Confirmed         bool              `json:"confirmed"`
 	ConfirmedAt       float64           `json:"confirmedAt"`
 	AccessRequestedAt *float64          `json:"accessRequestedAt,omitempty"`
 	Role              Role              `json:"role"`
 	TeamRoles         []TeamRoles       `json:"teamRoles,omitempty"`
 	TeamPermissions   []TeamPermissions `json:"teamPermissions,omitempty"`
-	TeamID            *string           `json:"teamId,omitempty"`
 	CreatedAt         float64           `json:"createdAt"`
 	Created           float64           `json:"created"`
 	JoinedFrom        *JoinedFrom       `json:"joinedFrom,omitempty"`
@@ -518,6 +518,13 @@ func (o *Membership) GetEntitlements() []Entitlements {
 		return nil
 	}
 	return o.Entitlements
+}
+
+func (o *Membership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *Membership) GetConfirmed() bool {
@@ -560,13 +567,6 @@ func (o *Membership) GetTeamPermissions() []TeamPermissions {
 		return nil
 	}
 	return o.TeamPermissions
-}
-
-func (o *Membership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *Membership) GetCreatedAt() float64 {

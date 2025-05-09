@@ -7,6 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
@@ -43,6 +45,20 @@ func testGetDeploymentFileContentsGetDeploymentFileContents0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	respBody := &operations.GetDeploymentFileContentsResponseBody{
+		Data: "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4=",
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }

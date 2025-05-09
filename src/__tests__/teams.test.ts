@@ -157,7 +157,23 @@ test("Teams Get Team", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    "key": "<value>",
+    limited: false,
+    limitedBy: [
+      "mfa",
+    ],
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+    slug: "my-team",
+    name: "My Team",
+    avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+    membership: {
+      confirmed: false,
+      confirmedAt: 2330.82,
+      role: "MEMBER",
+      createdAt: 2445.84,
+      created: 6907.17,
+    },
+    created: "<value>",
+    createdAt: 1630748523395,
   });
 });
 
@@ -196,7 +212,23 @@ test("Teams Patch Team", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    "key": "<value>",
+    limited: false,
+    limitedBy: [
+      "scope",
+    ],
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+    slug: "my-team",
+    name: "My Team",
+    avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+    membership: {
+      confirmed: false,
+      confirmedAt: 8580.81,
+      role: "CONTRIBUTOR",
+      createdAt: 7225.82,
+      created: 949.38,
+    },
+    created: "<value>",
+    createdAt: 1630748523395,
   });
 });
 

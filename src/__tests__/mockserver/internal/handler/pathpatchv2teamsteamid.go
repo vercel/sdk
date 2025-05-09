@@ -7,6 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -49,8 +51,24 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := map[string]any{
-		"key": "<value>",
+	respBody := &components.TeamLimited{
+		Limited: false,
+		LimitedBy: []components.LimitedBy{
+			components.LimitedByMfa,
+		},
+		ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
+		Slug:   "my-team",
+		Name:   types.String("My Team"),
+		Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
+		Membership: components.Membership{
+			Confirmed:   false,
+			ConfirmedAt: 4375.87,
+			Role:        components.RoleContributor,
+			CreatedAt:   9636.63,
+			Created:     3834.41,
+		},
+		Created:   "<value>",
+		CreatedAt: 1630748523395,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

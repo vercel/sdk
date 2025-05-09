@@ -736,7 +736,7 @@ run();
 
 ### Response
 
-**Promise\<[{ [k: string]: any }](../../models/.md)\>**
+**Promise\<[models.TeamLimited](../../models/teamlimited.md)\>**
 
 ### Errors
 
@@ -855,7 +855,7 @@ run();
 
 ### Response
 
-**Promise\<[{ [k: string]: any }](../../models/.md)\>**
+**Promise\<[models.TeamLimited](../../models/teamlimited.md)\>**
 
 ### Errors
 

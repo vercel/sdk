@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: da010c21431e59fe68ca5fea94117fd5
+  docChecksum: 4dd401681a4475015a189ea4b2f97406
   docVersion: 0.0.1
-  speakeasyVersion: 1.543.1
-  generationVersion: 2.598.21
-  releaseVersion: 1.7.0
-  configChecksum: 72a5045ec8e022aa79332986ca9f9f3d
+  speakeasyVersion: 1.543.3
+  generationVersion: 2.598.22
+  releaseVersion: 1.7.1
+  configChecksum: 3a01e5f20f8d31e9435cbdb01923ec84
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -28,7 +28,7 @@ features:
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
+    globalServerURLs: 2.82.5
     mcpServer: 0.9.2
     mockServer: 0.1.0
     nameOverrides: 2.81.2
@@ -1141,6 +1141,7 @@ generatedFiles:
   - docs/models/getdeploymenteventsresponsebodypayload.md
   - docs/models/getdeploymenteventsresponsebodytype.md
   - docs/models/getdeploymentfilecontentsrequest.md
+  - docs/models/getdeploymentfilecontentsresponsebody.md
   - docs/models/getdeploymentflags1.md
   - docs/models/getdeploymentflags2.md
   - docs/models/getdeploymentflagsdefinitions.md
@@ -5187,6 +5188,17 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+    "":
+      parameters:
+        path:
+          id: "<id>"
+          fileId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"data": "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4="}
   getDeployments:
     speakeasy-default-get-deployments:
       parameters:
@@ -6610,7 +6622,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<value>"}
+          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 2076.98, "role": "VIEWER", "createdAt": 5945.15, "created": 6852.6}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6628,7 +6640,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"key": "<value>"}
+          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 1771.72, "role": "MEMBER", "createdAt": 1162.06, "created": 9734.64}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

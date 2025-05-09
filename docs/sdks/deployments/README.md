@@ -691,14 +691,15 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.deployments.getDeploymentFileContents({
+  const result = await vercel.deployments.getDeploymentFileContents({
     id: "<id>",
     fileId: "<id>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
 
-
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -732,7 +733,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -749,7 +751,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[models.GetDeploymentFileContentsResponseBody](../../models/getdeploymentfilecontentsresponsebody.md)\>**
 
 ### Errors
 

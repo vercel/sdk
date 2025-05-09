@@ -316,8 +316,8 @@ func (o *PatchTeamRequest) GetRequestBody() PatchTeamRequestBody {
 }
 
 type PatchTeamResponse struct {
-	HTTPMeta components.HTTPMetadata `json:"-"`
-	Team     map[string]any
+	HTTPMeta    components.HTTPMetadata `json:"-"`
+	TeamLimited *components.TeamLimited
 }
 
 func (o *PatchTeamResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -327,9 +327,9 @@ func (o *PatchTeamResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *PatchTeamResponse) GetTeam() map[string]any {
+func (o *PatchTeamResponse) GetTeamLimited() *components.TeamLimited {
 	if o == nil {
 		return nil
 	}
-	return o.Team
+	return o.TeamLimited
 }

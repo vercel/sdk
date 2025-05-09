@@ -3,59 +3,21 @@ info:
   title: Add definitions to fix errors or inconsistent behaviour with the equivalent REST API endpoint
   version: 0.0.1
 actions:
-  - target: $["paths"]["/v3/deployments/{idOrUrl}/events"].get.responses
+  - target: $["paths"]["/v7/deployments/{id}/files/{fileId}"].get.responses
     update:
       "200":
-        description: Successfully retrieved deployment logs
+        description: File content as base64 encoded string
         content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    created:
-                      type: number
-                      description: Unix timestamp when the log entry was created
-                      example: 1744583330135
-                    date:
-                      type: number
-                      description: Unix timestamp of the log entry date
-                      example: 1744583330135
-                    deploymentId:
-                      type: string
-                      description: Unique identifier for the deployment
-                      example: "dpl_GjyjUDa3gESegReEzVREj1sQ92b7"
-                    id:
-                      type: string
-                      description: Unique identifier for the log entry
-                      example: "1744583330135959366434900001"
-                    text:
-                      type: string
-                      description: Log message content
-                      example: "Cloning github link (Branch: yourbranchname, Commit: commithash)"
-                    type:
-                      type: string
-                      description: Type of log entry
-                      enum: ["stdout", "stderr"]
-                      example: "stdout"
-                    serial:
-                      type: string
-                      description: Serial identifier for the log entry
-                      example: "1744583330135959366434900001"
-                    info:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          description: Type of operation
-                          example: "build"
-                        name:
-                          type: string
-                          description: Name of the build
-                          example: "bld_by3kz18kn"
-                        entrypoint:
-                          type: string
-                          description: Entrypoint for the build
-                          example: "."    
+                type: object
+                properties:
+                  data:
+                    type: string
+                    description: Base64 encoded file buffer
+                    format: byte
+                required:
+                  - data
+              example:
+                data: "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4="                 
  

@@ -159,7 +159,7 @@ test("Teams Get Team", async () => {
   expect(result).toEqual({
     limited: false,
     limitedBy: [
-      "mfa",
+      "scope",
     ],
     id: "team_nllPyCtREAqxxdyFKbbMDlxd",
     slug: "my-team",
@@ -167,10 +167,10 @@ test("Teams Get Team", async () => {
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
     membership: {
       confirmed: false,
-      confirmedAt: 2330.82,
-      role: "MEMBER",
-      createdAt: 2445.84,
-      created: 6907.17,
+      confirmedAt: 4259.79,
+      role: "CONTRIBUTOR",
+      createdAt: 9245.17,
+      created: 9054.84,
     },
     created: "<value>",
     createdAt: 1630748523395,
@@ -222,10 +222,10 @@ test("Teams Patch Team", async () => {
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
     membership: {
       confirmed: false,
-      confirmedAt: 8580.81,
-      role: "CONTRIBUTOR",
-      createdAt: 7225.82,
-      created: 949.38,
+      confirmedAt: 2478.21,
+      role: "VIEWER",
+      createdAt: 55.67,
+      created: 9847.87,
     },
     created: "<value>",
     createdAt: 1630748523395,
@@ -249,8 +249,76 @@ test("Teams Get Teams", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     teams: [
-      {},
-      {},
+      {
+        limited: false,
+        limitedBy: [
+          "mfa",
+        ],
+        saml: {
+          connection: {
+            type: "OktaSAML",
+            status: "linked",
+            state: "active",
+            connectedAt: 1611796915677,
+            lastReceivedWebhookEvent: 1611796915677,
+          },
+          directory: {
+            type: "OktaSAML",
+            state: "active",
+            connectedAt: 1611796915677,
+            lastReceivedWebhookEvent: 1611796915677,
+          },
+          enforced: false,
+        },
+        id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+        slug: "my-team",
+        name: "My Team",
+        avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+        membership: {
+          confirmed: false,
+          confirmedAt: 3030.58,
+          role: "MEMBER",
+          createdAt: 6361.71,
+          created: 5663.45,
+        },
+        created: "<value>",
+        createdAt: 1630748523395,
+      },
+      {
+        limited: false,
+        limitedBy: [
+          "mfa",
+        ],
+        saml: {
+          connection: {
+            type: "OktaSAML",
+            status: "linked",
+            state: "active",
+            connectedAt: 1611796915677,
+            lastReceivedWebhookEvent: 1611796915677,
+          },
+          directory: {
+            type: "OktaSAML",
+            state: "active",
+            connectedAt: 1611796915677,
+            lastReceivedWebhookEvent: 1611796915677,
+          },
+          enforced: false,
+        },
+        id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+        slug: "my-team",
+        name: "My Team",
+        avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+        membership: {
+          confirmed: false,
+          confirmedAt: 8014.16,
+          role: "MEMBER",
+          createdAt: 6276.55,
+          created: 3370.19,
+        },
+        created: "<value>",
+        createdAt: 1630748523395,
+      },
     ],
     pagination: {
       count: 20,

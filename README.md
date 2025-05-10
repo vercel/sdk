@@ -198,10 +198,8 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.getProjectsProjectIdLogsPresets({
+    projectId: "<id>",
   });
 
   // Handle the result
@@ -416,6 +414,10 @@ run();
 * [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
 * [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
 
+### [logs](docs/sdks/logs/README.md)
+
+* [getRuntimeLogs](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
+
 ### [marketplace](docs/sdks/marketplace/README.md)
 
 * [getAccountInfo](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
@@ -502,6 +504,12 @@ run();
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
+### [Vercel SDK](docs/sdks/vercel/README.md)
+
+* [getProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#getprojectsprojectidlogspresets)
+* [postProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
+* [deleteProjectsProjectIdLogsPresetsId](docs/sdks/vercel/README.md#deleteprojectsprojectidlogspresetsid)
+* [patchProjectsProjectIdLogsPresetsId](docs/sdks/vercel/README.md#patchprojectsprojectidlogspresetsid)
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
@@ -565,6 +573,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksGetCheck`](docs/sdks/checks/README.md#getcheck) - Get a single check
 - [`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
 - [`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck) - Update a check
+- [`deleteProjectsProjectIdLogsPresetsId`](docs/sdks/vercel/README.md#deleteprojectsprojectidlogspresetsid)
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -610,6 +619,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
 - [`environmentRemoveCustomEnvironment`](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
+- [`getProjectsProjectIdLogsPresets`](docs/sdks/vercel/README.md#getprojectsprojectidlogspresets)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
@@ -618,6 +628,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`logDrainsDeleteConfigurableLogDrain`](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
 - [`logDrainsDeleteIntegrationLogDrain`](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
 - [`logDrainsGetIntegrationLogDrains`](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
+- [`logsGetRuntimeLogs`](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
 - [`marketplaceCreateEvent`](docs/sdks/marketplace/README.md#createevent) - Create Event
 - [`marketplaceCreateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 - [`marketplaceCreateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
@@ -635,6 +646,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
+- [`patchProjectsProjectIdLogsPresetsId`](docs/sdks/vercel/README.md#patchprojectsprojectidlogspresetsid)
+- [`postProjectsProjectIdLogsPresets`](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -747,15 +760,11 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.getProjectsProjectIdLogsPresets({
+    projectId: "<id>",
   }, {
     retries: {
       strategy: "backoff",
@@ -792,14 +801,11 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.getProjectsProjectIdLogsPresets({
+    projectId: "<id>",
   });
 
   // Handle the result
@@ -814,13 +820,12 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `readAccessGroup` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `getProjectsProjectIdLogsPresets` method may throw the following errors:
 
 | Error Type                   | Status Code | Content Type     |
 | ---------------------------- | ----------- | ---------------- |
 | models.VercelBadRequestError | 400         | application/json |
 | models.VercelForbiddenError  | 401         | application/json |
-| models.VercelNotFoundError   | 404         | application/json |
 | models.SDKError              | 4XX, 5XX    | \*/\*            |
 
 If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
@@ -830,19 +835,14 @@ import { Vercel } from "@vercel/sdk";
 import { SDKValidationError } from "@vercel/sdk/models/sdkvalidationerror.js";
 import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.js";
 import { VercelForbiddenError } from "@vercel/sdk/models/vercelforbiddenerror.js";
-import { VercelNotFoundError } from "@vercel/sdk/models/vercelnotfounderror.js";
 
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const vercel = new Vercel();
 
 async function run() {
   let result;
   try {
-    result = await vercel.accessGroups.readAccessGroup({
-      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-      slug: "my-team-url-slug",
+    result = await vercel.getProjectsProjectIdLogsPresets({
+      projectId: "<id>",
     });
 
     // Handle the result
@@ -864,11 +864,6 @@ async function run() {
       }
       case (err instanceof VercelForbiddenError): {
         // Handle err.data$: VercelForbiddenErrorData
-        console.error(err);
-        return;
-      }
-      case (err instanceof VercelNotFoundError): {
-        // Handle err.data$: VercelNotFoundErrorData
         console.error(err);
         return;
       }
@@ -908,14 +903,11 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.accessGroups.readAccessGroup({
-    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
+  const result = await vercel.getProjectsProjectIdLogsPresets({
+    projectId: "<id>",
   });
 
   // Handle the result

@@ -14426,19 +14426,19 @@ func (o *Thirty) GetPassive() *bool {
 	return o.Passive
 }
 
-type Team struct {
+type UserEventPayload29Team struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 }
 
-func (o *Team) GetID() string {
+func (o *UserEventPayload29Team) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Team) GetName() string {
+func (o *UserEventPayload29Team) GetName() string {
 	if o == nil {
 		return ""
 	}
@@ -14485,15 +14485,15 @@ func (o *PayloadProject) GetName() *string {
 
 // TwentyNine - The payload of the event, if requested.
 type TwentyNine struct {
-	Team          Team           `json:"team"`
-	Configuration Configuration  `json:"configuration"`
-	Project       PayloadProject `json:"project"`
-	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
+	Team          UserEventPayload29Team `json:"team"`
+	Configuration Configuration          `json:"configuration"`
+	Project       PayloadProject         `json:"project"`
+	BuildsEnabled *bool                  `json:"buildsEnabled,omitempty"`
 }
 
-func (o *TwentyNine) GetTeam() Team {
+func (o *TwentyNine) GetTeam() UserEventPayload29Team {
 	if o == nil {
-		return Team{}
+		return UserEventPayload29Team{}
 	}
 	return o.Team
 }

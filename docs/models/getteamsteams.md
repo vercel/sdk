@@ -3,11 +3,20 @@
 
 ## Supported Types
 
-### `{ [k: string]: any }`
+### `models.Team`
 
 ```typescript
-const value: { [k: string]: any } = {
-  "key": "<value>",
+const value: models.Team = {
+  id: "ABCDEFG000011111",
+  data: {
+    query: "<value>",
+    creatorId: "<id>",
+    title: "<value>",
+    groupId: "<id>",
+    ownerId: "<id>",
+    projectId: "<id>",
+    createdAt: 5042.66,
+  },
 };
 ```
 

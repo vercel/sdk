@@ -10,7 +10,16 @@ import { GetTeamsResponseBody } from "@vercel/sdk/models/getteamsop.js";
 let value: GetTeamsResponseBody = {
   teams: [
     {
-      "key": "<value>",
+      id: "ABCDEFG000011111",
+      data: {
+        query: "<value>",
+        creatorId: "<id>",
+        title: "<value>",
+        groupId: "<id>",
+        ownerId: "<id>",
+        projectId: "<id>",
+        createdAt: 6536.13,
+      },
     },
   ],
   pagination: {

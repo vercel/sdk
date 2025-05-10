@@ -50,6 +50,7 @@ import { tool$checksGetAllChecks } from "./tools/checksGetAllChecks.js";
 import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
+import { tool$deleteProjectsProjectIdLogsPresetsId } from "./tools/deleteProjectsProjectIdLogsPresetsId.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -95,6 +96,7 @@ import { tool$environmentGetCustomEnvironment } from "./tools/environmentGetCust
 import { tool$environmentGetV9ProjectsIdOrNameCustomEnvironments } from "./tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
 import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemoveCustomEnvironment.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
+import { tool$getProjectsProjectIdLogsPresets } from "./tools/getProjectsProjectIdLogsPresets.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
@@ -103,6 +105,7 @@ import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js
 import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
 import { tool$logDrainsGetIntegrationLogDrains } from "./tools/logDrainsGetIntegrationLogDrains.js";
+import { tool$logsGetRuntimeLogs } from "./tools/logsGetRuntimeLogs.js";
 import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
 import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
 import { tool$marketplaceCreateInstallationIntegrationEdgeConfig } from "./tools/marketplaceCreateInstallationIntegrationEdgeConfig.js";
@@ -120,6 +123,8 @@ import { tool$marketplaceUpdateInstallationIntegrationEdgeConfig } from "./tools
 import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
+import { tool$patchProjectsProjectIdLogsPresetsId } from "./tools/patchProjectsProjectIdLogsPresetsId.js";
+import { tool$postProjectsProjectIdLogsPresets } from "./tools/postProjectsProjectIdLogsPresets.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -186,7 +191,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.7.1",
+    version: "1.7.2",
   });
 
   const client = new VercelCore({
@@ -216,6 +221,10 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$getProjectsProjectIdLogsPresets);
+  tool(tool$postProjectsProjectIdLogsPresets);
+  tool(tool$deleteProjectsProjectIdLogsPresetsId);
+  tool(tool$patchProjectsProjectIdLogsPresetsId);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -335,6 +344,7 @@ export function createMCPServer(deps: {
   tool(tool$authenticationCreateAuthToken);
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
+  tool(tool$logsGetRuntimeLogs);
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);

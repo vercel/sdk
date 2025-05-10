@@ -42,23 +42,23 @@ func (o *GetTeamsRequest) GetUntil() *float64 {
 type TeamsType string
 
 const (
-	TeamsTypeMapOfAny    TeamsType = "mapOfAny"
+	TeamsTypeTeam        TeamsType = "Team"
 	TeamsTypeTeamLimited TeamsType = "TeamLimited"
 )
 
 type Teams struct {
-	MapOfAny    map[string]any
+	Team        *components.Team
 	TeamLimited *components.TeamLimited
 
 	Type TeamsType
 }
 
-func CreateTeamsMapOfAny(mapOfAny map[string]any) Teams {
-	typ := TeamsTypeMapOfAny
+func CreateTeamsTeam(team components.Team) Teams {
+	typ := TeamsTypeTeam
 
 	return Teams{
-		MapOfAny: mapOfAny,
-		Type:     typ,
+		Team: &team,
+		Type: typ,
 	}
 }
 
@@ -73,6 +73,13 @@ func CreateTeamsTeamLimited(teamLimited components.TeamLimited) Teams {
 
 func (u *Teams) UnmarshalJSON(data []byte) error {
 
+	var team components.Team = components.Team{}
+	if err := utils.UnmarshalJSON(data, &team, "", true, true); err == nil {
+		u.Team = &team
+		u.Type = TeamsTypeTeam
+		return nil
+	}
+
 	var teamLimited components.TeamLimited = components.TeamLimited{}
 	if err := utils.UnmarshalJSON(data, &teamLimited, "", true, true); err == nil {
 		u.TeamLimited = &teamLimited
@@ -80,19 +87,12 @@ func (u *Teams) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var mapOfAny map[string]any = map[string]any{}
-	if err := utils.UnmarshalJSON(data, &mapOfAny, "", true, true); err == nil {
-		u.MapOfAny = mapOfAny
-		u.Type = TeamsTypeMapOfAny
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Teams", string(data))
 }
 
 func (u Teams) MarshalJSON() ([]byte, error) {
-	if u.MapOfAny != nil {
-		return utils.MarshalJSON(u.MapOfAny, "", true)
+	if u.Team != nil {
+		return utils.MarshalJSON(u.Team, "", true)
 	}
 
 	if u.TeamLimited != nil {

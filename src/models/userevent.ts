@@ -3812,7 +3812,7 @@ export type Thirty = {
   passive?: boolean | undefined;
 };
 
-export type Team = {
+export type UserEventPayload29Team = {
   id: string;
   name: string;
 };
@@ -3831,7 +3831,7 @@ export type PayloadProject = {
  * The payload of the event, if requested.
  */
 export type TwentyNine = {
-  team: Team;
+  team: UserEventPayload29Team;
   configuration: Configuration;
   project: PayloadProject;
   buildsEnabled?: boolean | undefined;
@@ -25797,49 +25797,59 @@ export function thirtyFromJSON(
 }
 
 /** @internal */
-export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    name: z.string(),
-  });
+export const UserEventPayload29Team$inboundSchema: z.ZodType<
+  UserEventPayload29Team,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
 
 /** @internal */
-export type Team$Outbound = {
+export type UserEventPayload29Team$Outbound = {
   id: string;
   name: string;
 };
 
 /** @internal */
-export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
-  z.object({
-    id: z.string(),
-    name: z.string(),
-  });
+export const UserEventPayload29Team$outboundSchema: z.ZodType<
+  UserEventPayload29Team$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload29Team
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Team$ {
-  /** @deprecated use `Team$inboundSchema` instead. */
-  export const inboundSchema = Team$inboundSchema;
-  /** @deprecated use `Team$outboundSchema` instead. */
-  export const outboundSchema = Team$outboundSchema;
-  /** @deprecated use `Team$Outbound` instead. */
-  export type Outbound = Team$Outbound;
+export namespace UserEventPayload29Team$ {
+  /** @deprecated use `UserEventPayload29Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload29Team$inboundSchema;
+  /** @deprecated use `UserEventPayload29Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload29Team$outboundSchema;
+  /** @deprecated use `UserEventPayload29Team$Outbound` instead. */
+  export type Outbound = UserEventPayload29Team$Outbound;
 }
 
-export function teamToJSON(team: Team): string {
-  return JSON.stringify(Team$outboundSchema.parse(team));
+export function userEventPayload29TeamToJSON(
+  userEventPayload29Team: UserEventPayload29Team,
+): string {
+  return JSON.stringify(
+    UserEventPayload29Team$outboundSchema.parse(userEventPayload29Team),
+  );
 }
 
-export function teamFromJSON(
+export function userEventPayload29TeamFromJSON(
   jsonString: string,
-): SafeParseResult<Team, SDKValidationError> {
+): SafeParseResult<UserEventPayload29Team, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Team' from JSON`,
+    (x) => UserEventPayload29Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload29Team' from JSON`,
   );
 }
 
@@ -25955,7 +25965,7 @@ export const TwentyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  team: z.lazy(() => Team$inboundSchema),
+  team: z.lazy(() => UserEventPayload29Team$inboundSchema),
   configuration: z.lazy(() => Configuration$inboundSchema),
   project: z.lazy(() => PayloadProject$inboundSchema),
   buildsEnabled: z.boolean().optional(),
@@ -25963,7 +25973,7 @@ export const TwentyNine$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TwentyNine$Outbound = {
-  team: Team$Outbound;
+  team: UserEventPayload29Team$Outbound;
   configuration: Configuration$Outbound;
   project: PayloadProject$Outbound;
   buildsEnabled?: boolean | undefined;
@@ -25975,7 +25985,7 @@ export const TwentyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TwentyNine
 > = z.object({
-  team: z.lazy(() => Team$outboundSchema),
+  team: z.lazy(() => UserEventPayload29Team$outboundSchema),
   configuration: z.lazy(() => Configuration$outboundSchema),
   project: z.lazy(() => PayloadProject$outboundSchema),
   buildsEnabled: z.boolean().optional(),

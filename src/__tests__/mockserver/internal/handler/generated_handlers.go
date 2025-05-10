@@ -12,6 +12,7 @@ import (
 // GeneratedHandlers returns all generated handlers.
 func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) []*GeneratedHandler {
 	return []*GeneratedHandler{
+		NewGeneratedHandler(ctx, http.MethodDelete, "/projects/{projectId}/logs-presets/{id}", pathDeleteProjectsProjectIDLogsPresetsID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}", pathDeleteV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/access-groups/{idOrName}", pathDeleteV1AccessGroupsIDOrName(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/edge-config/{edgeConfigId}", pathDeleteV1EdgeConfigEdgeConfigID(dir, rt)),
@@ -38,6 +39,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}", pathDeleteV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v9/projects/{idOrName}/domains/{domain}", pathDeleteV9ProjectsIDOrNameDomainsDomain(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v9/projects/{idOrName}/env/{id}", pathDeleteV9ProjectsIDOrNameEnvID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/projects/{projectId}/logs-presets", pathGetProjectsProjectIDLogsPresets(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/access-groups", pathGetV1AccessGroups(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}", pathGetV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/access-groups/{idOrName}", pathGetV1AccessGroupsIDOrName(dir, rt)),
@@ -59,6 +61,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/member/{memberId}", pathGetV1InstallationsIntegrationConfigurationIDMemberMemberID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/integrations/configuration/{id}", pathGetV1IntegrationsConfigurationID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/env/{id}", pathGetV1ProjectsIDOrNameEnvID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs", pathGetV1ProjectsProjectIDDeploymentsDeploymentIDRuntimeLogs(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{projectId}/promote/aliases", pathGetV1ProjectsProjectIDPromoteAliases(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/security/firewall/bypass", pathGetV1SecurityFirewallBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/security/firewall/config/{configVersion}", pathGetV1SecurityFirewallConfigConfigVersion(dir, rt)),
@@ -94,6 +97,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v9/projects/{idOrName}/domains/{domain}", pathGetV9ProjectsIDOrNameDomainsDomain(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodHead, "/v8/artifacts/{hash}", pathHeadV8ArtifactsHash(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/aliases/{id}/protection-bypass", pathPatchAliasesIDProtectionBypass(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPatch, "/projects/{projectId}/logs-presets/{id}", pathPatchProjectsProjectIDLogsPresetsID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}", pathPatchV1AccessGroupsAccessGroupIDOrNameProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/data-cache/projects/{projectId}", pathPatchV1DataCacheProjectsProjectID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/deployments/{deploymentId}/checks/{checkId}", pathPatchV1DeploymentsDeploymentIDChecksCheckID(dir, rt)),
@@ -109,6 +113,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}", pathPatchV9ProjectsIDOrNameCustomEnvironmentsEnvironmentSlugOrID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v9/projects/{idOrName}/domains/{domain}", pathPatchV9ProjectsIDOrNameDomainsDomain(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/projects/{idOrName}/transfer-request", pathPostProjectsIDOrNameTransferRequest(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/projects/{projectId}/logs-presets", pathPostProjectsProjectIDLogsPresets(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/access-groups", pathPostV1AccessGroups(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/access-groups/{accessGroupIdOrName}/projects", pathPostV1AccessGroupsAccessGroupIDOrNameProjects(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/access-groups/{idOrName}", pathPostV1AccessGroupsIDOrName(dir, rt)),

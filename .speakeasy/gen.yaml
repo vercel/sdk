@@ -14,13 +14,13 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
-    sharedErrorComponentsApr2025: false
+    sharedErrorComponentsApr2025: true
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
   tests:
     generateNewTests: true
-    skipResponseBodyAssertions: false
+    skipResponseBodyAssertions: true
 typescript:
   version: 1.7.1
   additionalDependencies:

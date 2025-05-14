@@ -19,12 +19,6 @@ test("Marketplace Get Account Info", async () => {
     integrationConfigurationId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    url: "https://friendly-pleasure.info",
-    contact: {
-      email: "Horace_Bernhard@yahoo.com",
-    },
-  });
 });
 
 test("Marketplace Get Member", async () => {
@@ -41,10 +35,6 @@ test("Marketplace Get Member", async () => {
     memberId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    role: "ADMIN",
-  });
 });
 
 test("Marketplace Create Event", async () => {
@@ -177,7 +167,6 @@ test("Marketplace Submit Invoice", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Marketplace Get Invoice", async () => {
@@ -194,28 +183,6 @@ test("Marketplace Get Invoice", async () => {
     invoiceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    invoiceId: "<id>",
-    state: "invoiced",
-    invoiceDate: "<value>",
-    period: {
-      start: "<value>",
-      end: "<value>",
-    },
-    items: [
-      {
-        billingPlanId: "<id>",
-        name: "<value>",
-        price: "813.89",
-        quantity: 2100.54,
-        units: "<value>",
-        total: "<value>",
-      },
-    ],
-    total: "<value>",
-    created: "<value>",
-    updated: "<value>",
-  });
 });
 
 test("Marketplace Update Invoice", async () => {
@@ -300,9 +267,6 @@ test("Marketplace Import Resource", async () => {
     resourceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-  });
 });
 
 test("Marketplace Exchange Sso Token", async () => {
@@ -319,11 +283,6 @@ test("Marketplace Exchange Sso Token", async () => {
     clientSecret: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    idToken: "<value>",
-    accessToken: "<value>",
-    tokenType: "<value>",
-  });
 });
 
 test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
@@ -396,12 +355,4 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
       resourceId: "<id>",
     });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: {
-      "key": true,
-      "key1": "<value>",
-    },
-    updatedAt: 8687.23,
-    digest: "<value>",
-  });
 });

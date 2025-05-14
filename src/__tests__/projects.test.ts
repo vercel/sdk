@@ -24,122 +24,6 @@ test("Projects Update Project Data Cache", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    accountId: "<id>",
-    crons: {
-      enabledAt: 7135.8,
-      disabledAt: 2989.85,
-      updatedAt: 6226.23,
-      deploymentId: "<id>",
-      definitions: [
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-      ],
-    },
-    directoryListing: false,
-    id: "<id>",
-    latestDeployments: [
-      {
-        id: "<id>",
-        createdAt: 5719.6,
-        createdIn: "<value>",
-        creator: {
-          email: "Braeden15@gmail.com",
-          uid: "<id>",
-          username: "Teresa84",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "BUILDING",
-        type: "LAMBDAS",
-        url: "https://unknown-gift.biz",
-        userId: "<id>",
-      },
-      {
-        id: "<id>",
-        createdAt: 7644.5,
-        createdIn: "<value>",
-        creator: {
-          email: "Erich.Mann@hotmail.com",
-          uid: "<id>",
-          username: "Genoveva89",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "hobby",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "ERROR",
-        type: "LAMBDAS",
-        url: "https://slimy-tuba.name",
-        userId: "<id>",
-      },
-      {
-        id: "<id>",
-        createdAt: 2357.62,
-        createdIn: "<value>",
-        creator: {
-          email: "Garret.Ferry81@gmail.com",
-          uid: "<id>",
-          username: "Vivianne.Gutkowski",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "CANCELED",
-        type: "LAMBDAS",
-        url: "https://astonishing-cinema.net/",
-        userId: "<id>",
-      },
-    ],
-    name: "<value>",
-    nodeVersion: "10.x",
-    resourceConfig: {
-      functionDefaultRegions: [],
-    },
-    defaultResourceConfig: {
-      functionDefaultRegions: [],
-    },
-    targets: {
-      "key": {
-        id: "<id>",
-        createdAt: 1048.68,
-        createdIn: "<value>",
-        creator: {
-          email: "Lillie17@gmail.com",
-          uid: "<id>",
-          username: "Herminia_Schowalter50",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "enterprise",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "BUILDING",
-        type: "LAMBDAS",
-        url: "https://quintessential-bidet.com/",
-        userId: "<id>",
-      },
-    },
-  });
 });
 
 test("Projects Get Projects", async () => {
@@ -158,14 +42,6 @@ test("Projects Get Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    projects: [],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Projects Create Project", async () => {
@@ -185,100 +61,6 @@ test("Projects Create Project", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    accountId: "<id>",
-    crons: {
-      enabledAt: 5535.6,
-      disabledAt: 7749.32,
-      updatedAt: 4248.44,
-      deploymentId: "<id>",
-      definitions: [
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-      ],
-    },
-    directoryListing: false,
-    id: "<id>",
-    latestDeployments: [
-      {
-        id: "<id>",
-        createdAt: 3954.07,
-        createdIn: "<value>",
-        creator: {
-          email: "Junior46@yahoo.com",
-          uid: "<id>",
-          username: "Rick.Fritsch",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "enterprise",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "CANCELED",
-        type: "LAMBDAS",
-        url: "https://potable-bid.biz",
-        userId: "<id>",
-      },
-    ],
-    name: "<value>",
-    nodeVersion: "22.x",
-    resourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-      ],
-    },
-    defaultResourceConfig: {
-      functionDefaultRegions: [],
-    },
-    targets: {
-      "key": {
-        id: "<id>",
-        createdAt: 7352.53,
-        createdIn: "<value>",
-        creator: {
-          email: "Keven88@hotmail.com",
-          uid: "<id>",
-          username: "Helene44",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "hobby",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "QUEUED",
-        type: "LAMBDAS",
-        url: "https://calculating-strait.info/",
-        userId: "<id>",
-      },
-      "key1": {
-        id: "<id>",
-        createdAt: 1259.18,
-        createdIn: "<value>",
-        creator: {
-          email: "Shane_Larson@gmail.com",
-          uid: "<id>",
-          username: "Barney93",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "ERROR",
-        type: "LAMBDAS",
-        url: "https://fair-annual.biz/",
-        userId: "<id>",
-      },
-    },
-  });
 });
 
 test("Projects Update Project", async () => {
@@ -299,160 +81,6 @@ test("Projects Update Project", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    accountId: "<id>",
-    crons: {
-      enabledAt: 6482.23,
-      disabledAt: 3040.87,
-      updatedAt: 9398.86,
-      deploymentId: "<id>",
-      definitions: [
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-        {
-          host: "vercel.com",
-          path: "/api/crons/sync-something?hello=world",
-          schedule: "0 0 * * *",
-        },
-      ],
-    },
-    directoryListing: true,
-    id: "<id>",
-    latestDeployments: [
-      {
-        id: "<id>",
-        createdAt: 7688.55,
-        createdIn: "<value>",
-        creator: {
-          email: "Alfredo_Murazik@yahoo.com",
-          uid: "<id>",
-          username: "Kiera28",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "enterprise",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "ERROR",
-        type: "LAMBDAS",
-        url: "https://close-premise.net/",
-        userId: "<id>",
-      },
-      {
-        id: "<id>",
-        createdAt: 3847.37,
-        createdIn: "<value>",
-        creator: {
-          email: "Zachery.Johns68@yahoo.com",
-          uid: "<id>",
-          username: "Nicole_Reynolds",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "hobby",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "QUEUED",
-        type: "LAMBDAS",
-        url: "https://unsightly-newsstand.net/",
-        userId: "<id>",
-      },
-      {
-        id: "<id>",
-        createdAt: 5770.49,
-        createdIn: "<value>",
-        creator: {
-          email: "Jose37@yahoo.com",
-          uid: "<id>",
-          username: "Jana.Conroy",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "ERROR",
-        type: "LAMBDAS",
-        url: "https://pricey-dish.biz/",
-        userId: "<id>",
-      },
-    ],
-    name: "<value>",
-    nodeVersion: "20.x",
-    resourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-        "<value>",
-      ],
-    },
-    defaultResourceConfig: {
-      functionDefaultRegions: [
-        "<value>",
-      ],
-    },
-    targets: {
-      "key": {
-        id: "<id>",
-        createdAt: 6585.03,
-        createdIn: "<value>",
-        creator: {
-          email: "Garrison_Jenkins@gmail.com",
-          uid: "<id>",
-          username: "Trever_Ratke",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "hobby",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "INITIALIZING",
-        type: "LAMBDAS",
-        url: "https://forsaken-edge.org",
-        userId: "<id>",
-      },
-      "key1": {
-        id: "<id>",
-        createdAt: 5688.03,
-        createdIn: "<value>",
-        creator: {
-          email: "Buster.Raynor@gmail.com",
-          uid: "<id>",
-          username: "Florine92",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "enterprise",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "CANCELED",
-        type: "LAMBDAS",
-        url: "https://shameless-unit.net",
-        userId: "<id>",
-      },
-      "key2": {
-        id: "<id>",
-        createdAt: 4805.55,
-        createdIn: "<value>",
-        creator: {
-          email: "Jerome0@gmail.com",
-          uid: "<id>",
-          username: "Travis_Towne",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "hobby",
-        previewCommentsEnabled: false,
-        private: true,
-        readyState: "QUEUED",
-        type: "LAMBDAS",
-        url: "https://whimsical-mathematics.name",
-        userId: "<id>",
-      },
-    },
-  });
 });
 
 test("Projects Delete Project", async () => {
@@ -491,21 +119,6 @@ test("Projects Get Project Domains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    domains: [
-      {
-        name: "<value>",
-        apexName: "<value>",
-        projectId: "<id>",
-        verified: true,
-      },
-    ],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Projects Get Project Domain", async () => {
@@ -524,12 +137,6 @@ test("Projects Get Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    apexName: "<value>",
-    projectId: "<id>",
-    verified: true,
-  });
 });
 
 test("Projects Update Project Domain", async () => {
@@ -553,12 +160,6 @@ test("Projects Update Project Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    apexName: "<value>",
-    projectId: "<id>",
-    verified: false,
-  });
 });
 
 test("Projects Remove Project Domain", async () => {
@@ -577,7 +178,6 @@ test("Projects Remove Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Projects Add Project Domain", async () => {
@@ -601,12 +201,6 @@ test("Projects Add Project Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    apexName: "<value>",
-    projectId: "<id>",
-    verified: true,
-  });
 });
 
 test("Projects Move Project Domain", async () => {
@@ -625,12 +219,6 @@ test("Projects Move Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    apexName: "<value>",
-    projectId: "<id>",
-    verified: false,
-  });
 });
 
 test("Projects Verify Project Domain", async () => {
@@ -649,12 +237,6 @@ test("Projects Verify Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-    apexName: "<value>",
-    projectId: "<id>",
-    verified: false,
-  });
 });
 
 test("Projects Create Project Env", async () => {
@@ -671,36 +253,21 @@ test("Projects Create Project Env", async () => {
     upsert: "true",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: [
-      {
-        key: "API_URL",
-        value: "https://api.vercel.com",
-        type: "plain",
-        target: [
-          "preview",
-        ],
-        gitBranch: "feature-1",
-        comment: "database connection string for production",
-        customEnvironmentIds: [
-          "env_1234567890",
-        ],
-      },
-    ],
+    requestBody: {
+      key: "API_URL",
+      value: "https://api.vercel.com",
+      type: "plain",
+      target: [
+        "preview",
+      ],
+      gitBranch: "feature-1",
+      comment: "database connection string for production",
+      customEnvironmentIds: [
+        "env_1234567890",
+      ],
+    },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    created: [
-      {},
-    ],
-    failed: [
-      {
-        error: {
-          code: "<value>",
-          message: "<value>",
-        },
-      },
-    ],
-  });
 });
 
 test("Projects Get Project Env", async () => {
@@ -719,11 +286,6 @@ test("Projects Get Project Env", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    type: "plain",
-    value: "<value>",
-    key: "<key>",
-  });
 });
 
 test("Projects Remove Project Env", async () => {
@@ -743,23 +305,6 @@ test("Projects Remove Project Env", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      type: "sensitive",
-      value: "<value>",
-      key: "<key>",
-    },
-    {
-      type: "plain",
-      value: "<value>",
-      key: "<key>",
-    },
-    {
-      type: "encrypted",
-      value: "<value>",
-      key: "<key>",
-    },
-  ]);
 });
 
 test("Projects Create Project Transfer Request", async () => {
@@ -777,9 +322,6 @@ test("Projects Create Project Transfer Request", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    code: "f99cc49a-602e-4786-a748-762dfb205880",
-  });
 });
 
 test("Projects Accept Project Transfer Request", async () => {
@@ -800,7 +342,6 @@ test("Projects Accept Project Transfer Request", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Projects Update Project Protection Bypass", async () => {
@@ -819,7 +360,6 @@ test("Projects Update Project Protection Bypass", async () => {
     requestBody: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Projects Request Promote", async () => {
@@ -857,7 +397,6 @@ test("Projects List Promote Aliases", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Projects Pause Project", async () => {

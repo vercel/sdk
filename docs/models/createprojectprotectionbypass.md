@@ -11,6 +11,7 @@ const value: models.CreateProjectProtectionBypass1 = {
   createdBy: "<value>",
   scope: "integration-automation-bypass",
   integrationId: "<id>",
+  configurationId: "<id>",
 };
 ```
 

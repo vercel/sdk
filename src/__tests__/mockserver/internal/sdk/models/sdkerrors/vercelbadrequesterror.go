@@ -4,29 +4,11 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"mockserver/internal/sdk/models/components"
 )
 
-type Error struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func (o *Error) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *Error) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
 type VercelBadRequestError struct {
-	Error_ Error `json:"error"`
+	Error_ components.Error `json:"error"`
 }
 
 var _ error = &VercelBadRequestError{}

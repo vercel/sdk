@@ -5523,3 +5523,183 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: aliases
+  - workflowId: get_/projects/{projectId}/logs-presets
+    steps:
+      - stepId: test
+        operationId: get_/projects/{projectId}/logs-presets
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "ABCDEFG000011111",
+                  "data": {
+                    "query": "\u003cvalue\u003e",
+                    "creatorId": "\u003cid\u003e",
+                    "title": "\u003cvalue\u003e",
+                    "groupId": "\u003cid\u003e",
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "createdAt": 4859.35
+                  },
+                  "key": "\u003cvalue\u003e",
+                  "key1": "\u003cvalue\u003e"
+                },
+                {
+                  "id": "ABCDEFG000011111",
+                  "data": {
+                    "query": "\u003cvalue\u003e",
+                    "creatorId": "\u003cid\u003e",
+                    "title": "\u003cvalue\u003e",
+                    "groupId": "\u003cid\u003e",
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "createdAt": 4176.11
+                  },
+                  "key": "\u003cvalue\u003e",
+                  "key1": "\u003cvalue\u003e"
+                },
+                {
+                  "id": "ABCDEFG000011111",
+                  "data": {
+                    "query": "\u003cvalue\u003e",
+                    "creatorId": "\u003cid\u003e",
+                    "title": "\u003cvalue\u003e",
+                    "groupId": "\u003cid\u003e",
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "createdAt": 9283.43
+                  },
+                  "key": "\u003cvalue\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: post_/projects/{projectId}/logs-presets
+    steps:
+      - stepId: test
+        operationId: post_/projects/{projectId}/logs-presets
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            group: team
+            query: timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com
+            title: Request Path
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "ABCDEFG000011111",
+                "data": {
+                  "query": "\u003cvalue\u003e",
+                  "creatorId": "\u003cid\u003e",
+                  "title": "\u003cvalue\u003e",
+                  "groupId": "\u003cid\u003e",
+                  "ownerId": "\u003cid\u003e",
+                  "projectId": "\u003cid\u003e",
+                  "createdAt": 4231.46
+                },
+                "key": "\u003cvalue\u003e",
+                "key1": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: delete_/projects/{projectId}/logs-presets/{id}
+    steps:
+      - stepId: test
+        operationId: delete_/projects/{projectId}/logs-presets/{id}
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: Vercel
+  - workflowId: patch_/projects/{projectId}/logs-presets/{id}
+    steps:
+      - stepId: test
+        operationId: patch_/projects/{projectId}/logs-presets/{id}
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: id
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            title: Request Path
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "ABCDEFG000011111",
+                "data": {
+                  "query": "\u003cvalue\u003e",
+                  "creatorId": "\u003cid\u003e",
+                  "title": "\u003cvalue\u003e",
+                  "groupId": "\u003cid\u003e",
+                  "ownerId": "\u003cid\u003e",
+                  "projectId": "\u003cid\u003e",
+                  "createdAt": 4063.98
+                },
+                "key": "\u003cvalue\u003e",
+                "key1": "\u003cvalue\u003e",
+                "key2": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: getRuntimeLogs
+    steps:
+      - stepId: test
+        operationId: getRuntimeLogs
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/stream+json
+          - context: $response.body
+            condition: |
+              {
+                "level": "error",
+                "message": "\u003cvalue\u003e",
+                "rowId": "\u003cid\u003e",
+                "source": "serverless",
+                "timestampInMs": 5218.65,
+                "domain": "putrid-tenement.info",
+                "messageTruncated": false,
+                "requestMethod": "\u003cvalue\u003e",
+                "requestPath": "\u003cvalue\u003e",
+                "responseStatusCode": 4823.11
+              }
+            type: simple
+    x-speakeasy-test-group: logs

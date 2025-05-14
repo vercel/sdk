@@ -4,29 +4,11 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"mockserver/internal/sdk/models/components"
 )
 
-type VercelNotFoundErrorError struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func (o *VercelNotFoundErrorError) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *VercelNotFoundErrorError) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
 type VercelNotFoundError struct {
-	Error_ VercelNotFoundErrorError `json:"error"`
+	Error_ components.VercelNotFoundErrorError `json:"error"`
 }
 
 var _ error = &VercelNotFoundError{}

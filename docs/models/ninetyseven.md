@@ -7,28 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { NinetySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: NinetySeven = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 4466.53,
-      previousSpend: [
-        1518.84,
-      ],
-      notifiedAt: [
-        8866.64,
-      ],
-      createdAt: 2316.51,
-      isActive: false,
-      teamId: "<id>",
-      id: "<id>",
-    },
-  },
-};
+let value: NinetySeven = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `budget`                                           | [models.PayloadBudget](../models/payloadbudget.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

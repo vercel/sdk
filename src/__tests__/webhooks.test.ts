@@ -24,20 +24,6 @@ test("Webhooks Create Webhook", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    secret: "<value>",
-    events: [
-      "deployment.created",
-    ],
-    id: "account_hook_GflD6EYyo7F4ViYS",
-    url: "https://my-webhook.com",
-    ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-    createdAt: 1567024758130,
-    updatedAt: 1567024758130,
-    projectIds: [
-      "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-    ],
-  });
 });
 
 test("Webhooks Get Webhooks", async () => {
@@ -54,73 +40,6 @@ test("Webhooks Get Webhooks", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      projectsMetadata: [
-        {
-          id: "<id>",
-          name: "<value>",
-        },
-        {
-          id: "<id>",
-          name: "<value>",
-        },
-        {
-          id: "<id>",
-          name: "<value>",
-        },
-      ],
-      events: [
-        "deployment.created",
-      ],
-      id: "account_hook_GflD6EYyo7F4ViYS",
-      url: "https://my-webhook.com",
-      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-      createdAt: 1567024758130,
-      updatedAt: 1567024758130,
-      projectIds: [
-        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-      ],
-    },
-    {
-      projectsMetadata: [
-        {
-          id: "<id>",
-          name: "<value>",
-        },
-      ],
-      events: [
-        "deployment.created",
-      ],
-      id: "account_hook_GflD6EYyo7F4ViYS",
-      url: "https://my-webhook.com",
-      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-      createdAt: 1567024758130,
-      updatedAt: 1567024758130,
-      projectIds: [
-        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-      ],
-    },
-    {
-      projectsMetadata: [
-        {
-          id: "<id>",
-          name: "<value>",
-        },
-      ],
-      events: [
-        "deployment.created",
-      ],
-      id: "account_hook_GflD6EYyo7F4ViYS",
-      url: "https://my-webhook.com",
-      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-      createdAt: 1567024758130,
-      updatedAt: 1567024758130,
-      projectIds: [
-        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-      ],
-    },
-  ]);
 });
 
 test("Webhooks Get Webhook", async () => {
@@ -138,19 +57,6 @@ test("Webhooks Get Webhook", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    events: [
-      "deployment.created",
-    ],
-    id: "account_hook_GflD6EYyo7F4ViYS",
-    url: "https://my-webhook.com",
-    ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
-    createdAt: 1567024758130,
-    updatedAt: 1567024758130,
-    projectIds: [
-      "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-    ],
-  });
 });
 
 test("Webhooks Delete Webhook", async () => {

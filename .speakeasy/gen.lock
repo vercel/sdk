@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 4dd401681a4475015a189ea4b2f97406
+  docChecksum: 19f8b7407f3fc24f0c2192c4c9763acc
   docVersion: 0.0.1
-  speakeasyVersion: 1.543.3
-  generationVersion: 2.598.22
-  releaseVersion: 1.7.1
-  configChecksum: 3a01e5f20f8d31e9435cbdb01923ec84
+  speakeasyVersion: 1.544.0
+  generationVersion: 2.599.0
+  releaseVersion: 1.7.2
+  configChecksum: 13247b828e78e855991ffaf9f00b8268
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -714,6 +714,7 @@ generatedFiles:
   - docs/models/customenvironments.md
   - docs/models/customenvironmenttype.md
   - docs/models/customenvironmentverification.md
+  - docs/models/data.md
   - docs/models/datacache.md
   - docs/models/datacacheread.md
   - docs/models/datacachewrite.md
@@ -742,6 +743,7 @@ generatedFiles:
   - docs/models/deleteedgeconfigtokensrequestbody.md
   - docs/models/deleteintegrationlogdrainrequest.md
   - docs/models/deleteprojectrequest.md
+  - docs/models/deleteprojectsprojectidlogspresetsidrequest.md
   - docs/models/deleteteaminvitecoderequest.md
   - docs/models/deleteteaminvitecoderesponsebody.md
   - docs/models/deleteteamreasons.md
@@ -1593,6 +1595,7 @@ generatedFiles:
   - docs/models/getprojectspaths.md
   - docs/models/getprojectspermissions.md
   - docs/models/getprojectsplan.md
+  - docs/models/getprojectsprojectidlogspresetsrequest.md
   - docs/models/getprojectsprojects.md
   - docs/models/getprojectsprojectsaction.md
   - docs/models/getprojectsprojectsaliasassigned.md
@@ -1660,6 +1663,10 @@ generatedFiles:
   - docs/models/getrecordsresponsebody2.md
   - docs/models/getrecordsresponsebodydnstype.md
   - docs/models/getrecordsresponsebodytype.md
+  - docs/models/getruntimelogslevel.md
+  - docs/models/getruntimelogsrequest.md
+  - docs/models/getruntimelogsresponsebody.md
+  - docs/models/getruntimelogssource.md
   - docs/models/getteamaccessrequestbitbucket.md
   - docs/models/getteamaccessrequestgithub.md
   - docs/models/getteamaccessrequestgitlab.md
@@ -1895,6 +1902,7 @@ generatedFiles:
   - docs/models/newtarget.md
   - docs/models/newteam.md
   - docs/models/next.md
+  - docs/models/nextrole.md
   - docs/models/nextrule.md
   - docs/models/nine.md
   - docs/models/nineteen.md
@@ -1936,11 +1944,13 @@ generatedFiles:
   - docs/models/onehundredandeighteen.md
   - docs/models/onehundredandeleven.md
   - docs/models/onehundredandfifteen.md
+  - docs/models/onehundredandfifty.md
   - docs/models/onehundredandfive.md
   - docs/models/onehundredandforty.md
   - docs/models/onehundredandfortyeight.md
   - docs/models/onehundredandfortyfive.md
   - docs/models/onehundredandfortyfour.md
+  - docs/models/onehundredandfortynine.md
   - docs/models/onehundredandfortyone.md
   - docs/models/onehundredandfortyseven.md
   - docs/models/onehundredandfortysix.md
@@ -2013,6 +2023,8 @@ generatedFiles:
   - docs/models/patchedgeconfigschemarequest.md
   - docs/models/patchedgeconfigschemarequestbody.md
   - docs/models/patchedgeconfigschemaresponsebody.md
+  - docs/models/patchprojectsprojectidlogspresetsidrequest.md
+  - docs/models/patchprojectsprojectidlogspresetsidrequestbody.md
   - docs/models/patchteamremotecaching.md
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
@@ -2070,6 +2082,7 @@ generatedFiles:
   - docs/models/payloadpeering.md
   - docs/models/payloadpreferredscopesandgitnamespaces.md
   - docs/models/payloadprev.md
+  - docs/models/payloadpreviousrole.md
   - docs/models/payloadpreviousrule.md
   - docs/models/payloadpricingplan.md
   - docs/models/payloadproject.md
@@ -2103,6 +2116,9 @@ generatedFiles:
   - docs/models/postgresdatastorage.md
   - docs/models/postgresdatatransfer.md
   - docs/models/postgreswrittendata.md
+  - docs/models/postprojectsprojectidlogspresetsgroup.md
+  - docs/models/postprojectsprojectidlogspresetsrequest.md
+  - docs/models/postprojectsprojectidlogspresetsrequestbody.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitems.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequest.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequestbody.md
@@ -3096,22 +3112,23 @@ generatedFiles:
   - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
-  - docs/models/usereventpayload108user.md
-  - docs/models/usereventpayload128project.md
-  - docs/models/usereventpayload129project.md
+  - docs/models/usereventpayload110user.md
   - docs/models/usereventpayload130project.md
-  - docs/models/usereventpayload130role.md
   - docs/models/usereventpayload131project.md
-  - docs/models/usereventpayload131role.md
-  - docs/models/usereventpayload137project.md
-  - docs/models/usereventpayload138prevproject.md
-  - docs/models/usereventpayload138project.md
-  - docs/models/usereventpayload145configuration.md
-  - docs/models/usereventpayload145team.md
-  - docs/models/usereventpayload146configuration.md
-  - docs/models/usereventpayload146team.md
+  - docs/models/usereventpayload132project.md
+  - docs/models/usereventpayload132role.md
+  - docs/models/usereventpayload133project.md
+  - docs/models/usereventpayload133role.md
+  - docs/models/usereventpayload139project.md
+  - docs/models/usereventpayload140prevproject.md
+  - docs/models/usereventpayload140project.md
   - docs/models/usereventpayload147configuration.md
   - docs/models/usereventpayload147team.md
+  - docs/models/usereventpayload148configuration.md
+  - docs/models/usereventpayload148team.md
+  - docs/models/usereventpayload149configuration.md
+  - docs/models/usereventpayload149team.md
+  - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
   - docs/models/usereventpayload32team.md
@@ -3135,10 +3152,10 @@ generatedFiles:
   - docs/models/usereventpayload73role.md
   - docs/models/usereventpayload83project.md
   - docs/models/usereventpayload83team.md
-  - docs/models/usereventpayload89team.md
-  - docs/models/usereventpayload90team.md
-  - docs/models/usereventpayload96type.md
-  - docs/models/usereventpayload97type.md
+  - docs/models/usereventpayload91team.md
+  - docs/models/usereventpayload92team.md
+  - docs/models/usereventpayload98type.md
+  - docs/models/usereventpayload99type.md
   - docs/models/usereventpayloadaccessgroup.md
   - docs/models/usereventpayloadaction.md
   - docs/models/usereventpayloadblockreason.md
@@ -3207,6 +3224,7 @@ generatedFiles:
   - docs/sdks/environment/README.md
   - docs/sdks/integrations/README.md
   - docs/sdks/logdrains/README.md
+  - docs/sdks/logs/README.md
   - docs/sdks/marketplace/README.md
   - docs/sdks/projectmembers/README.md
   - docs/sdks/projects/README.md
@@ -3233,6 +3251,7 @@ generatedFiles:
   - src/__tests__/files.ts
   - src/__tests__/integrations.test.ts
   - src/__tests__/logdrains.test.ts
+  - src/__tests__/logs.test.ts
   - src/__tests__/marketplace.test.ts
   - src/__tests__/mockserver/.gitignore
   - src/__tests__/mockserver/Dockerfile
@@ -3248,6 +3267,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/doc.go
   - src/__tests__/mockserver/internal/handler/generated_handler.go
   - src/__tests__/mockserver/internal/handler/generated_handlers.go
+  - src/__tests__/mockserver/internal/handler/pathdeleteprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev13deploymentsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsidorname.go
@@ -3274,6 +3294,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/handler/pathgetv10projects.go
   - src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go
@@ -3297,6 +3318,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectiddeploymentsdeploymentidruntimelogs.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallbypass.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallconfigconfigversion.go
@@ -3330,6 +3352,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathpatchaliasesidprotectionbypass.go
+  - src/__tests__/mockserver/internal/handler/pathpatchprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1datacacheprojectsprojectid.go
@@ -3345,6 +3368,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathpostprojectsidornametransferrequest.go
+  - src/__tests__/mockserver/internal/handler/pathpostprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsprojectidpromotedeploymentid.go
@@ -3416,8 +3440,13 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/pagination.go
   - src/__tests__/mockserver/internal/sdk/models/components/ratelimitnotice.go
   - src/__tests__/mockserver/internal/sdk/models/components/security.go
+  - src/__tests__/mockserver/internal/sdk/models/components/team.go
   - src/__tests__/mockserver/internal/sdk/models/components/teamlimited.go
   - src/__tests__/mockserver/internal/sdk/models/components/userevent.go
+  - src/__tests__/mockserver/internal/sdk/models/components/vercelbadrequesterror.go
+  - src/__tests__/mockserver/internal/sdk/models/components/vercelforbiddenerror.go
+  - src/__tests__/mockserver/internal/sdk/models/components/vercelnotfounderror.go
+  - src/__tests__/mockserver/internal/sdk/models/components/vercelratelimiterror.go
   - src/__tests__/mockserver/internal/sdk/models/operations/acceptprojecttransferrequest.go
   - src/__tests__/mockserver/internal/sdk/models/operations/addbypassip.go
   - src/__tests__/mockserver/internal/sdk/models/operations/addprojectdomain.go
@@ -3459,6 +3488,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
@@ -3505,7 +3535,9 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectenv.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectmembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getruntimelogs.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteamaccessrequest.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteammembers.go
@@ -3530,10 +3562,12 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/moveprojectdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchurlprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/postprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
@@ -3647,6 +3681,7 @@ generatedFiles:
   - src/funcs/checksGetCheck.ts
   - src/funcs/checksRerequestCheck.ts
   - src/funcs/checksUpdateCheck.ts
+  - src/funcs/deleteProjectsProjectIdLogsPresetsId.ts
   - src/funcs/deploymentsCancelDeployment.ts
   - src/funcs/deploymentsCreateDeployment.ts
   - src/funcs/deploymentsDeleteDeployment.ts
@@ -3692,6 +3727,7 @@ generatedFiles:
   - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
   - src/funcs/environmentRemoveCustomEnvironment.ts
   - src/funcs/environmentUpdateCustomEnvironment.ts
+  - src/funcs/getProjectsProjectIdLogsPresets.ts
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
@@ -3700,6 +3736,7 @@ generatedFiles:
   - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
   - src/funcs/logDrainsDeleteIntegrationLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
+  - src/funcs/logsGetRuntimeLogs.ts
   - src/funcs/marketplaceCreateEvent.ts
   - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.ts
@@ -3717,6 +3754,8 @@ generatedFiles:
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
+  - src/funcs/patchProjectsProjectIdLogsPresetsId.ts
+  - src/funcs/postProjectsProjectIdLogsPresets.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
   - src/funcs/projectMembersRemoveProjectMember.ts
@@ -3840,6 +3879,7 @@ generatedFiles:
   - src/mcp-server/tools/checksGetCheck.ts
   - src/mcp-server/tools/checksRerequestCheck.ts
   - src/mcp-server/tools/checksUpdateCheck.ts
+  - src/mcp-server/tools/deleteProjectsProjectIdLogsPresetsId.ts
   - src/mcp-server/tools/deploymentsCancelDeployment.ts
   - src/mcp-server/tools/deploymentsCreateDeployment.ts
   - src/mcp-server/tools/deploymentsDeleteDeployment.ts
@@ -3885,6 +3925,7 @@ generatedFiles:
   - src/mcp-server/tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
   - src/mcp-server/tools/environmentRemoveCustomEnvironment.ts
   - src/mcp-server/tools/environmentUpdateCustomEnvironment.ts
+  - src/mcp-server/tools/getProjectsProjectIdLogsPresets.ts
   - src/mcp-server/tools/integrationsDeleteConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
@@ -3893,6 +3934,7 @@ generatedFiles:
   - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
   - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
+  - src/mcp-server/tools/logsGetRuntimeLogs.ts
   - src/mcp-server/tools/marketplaceCreateEvent.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationEdgeConfig.ts
@@ -3910,6 +3952,8 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceUpdateInvoice.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
+  - src/mcp-server/tools/patchProjectsProjectIdLogsPresetsId.ts
+  - src/mcp-server/tools/postProjectsProjectIdLogsPresets.ts
   - src/mcp-server/tools/projectMembersAddProjectMember.ts
   - src/mcp-server/tools/projectMembersGetProjectMembers.ts
   - src/mcp-server/tools/projectMembersRemoveProjectMember.ts
@@ -4010,6 +4054,7 @@ generatedFiles:
   - src/models/deleteedgeconfigtokensop.ts
   - src/models/deleteintegrationlogdrainop.ts
   - src/models/deleteprojectop.ts
+  - src/models/deleteprojectsprojectidlogspresetsidop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
   - src/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
@@ -4061,7 +4106,9 @@ generatedFiles:
   - src/models/getprojectenvop.ts
   - src/models/getprojectmembersop.ts
   - src/models/getprojectsop.ts
+  - src/models/getprojectsprojectidlogspresetsop.ts
   - src/models/getrecordsop.ts
+  - src/models/getruntimelogsop.ts
   - src/models/getteamaccessrequestop.ts
   - src/models/getteammembersop.ts
   - src/models/getteamop.ts
@@ -4088,10 +4135,12 @@ generatedFiles:
   - src/models/pagination.ts
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigschemaop.ts
+  - src/models/patchprojectsprojectidlogspresetsidop.ts
   - src/models/patchteamop.ts
   - src/models/patchurlprotectionbypassop.ts
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/pauseprojectop.ts
+  - src/models/postprojectsprojectidlogspresetsop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
   - src/models/putfirewallconfigop.ts
   - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
@@ -4118,6 +4167,7 @@ generatedFiles:
   - src/models/submitbillingdataop.ts
   - src/models/submitinvoiceop.ts
   - src/models/submitprepaymentbalancesop.ts
+  - src/models/team.ts
   - src/models/teamlimited.ts
   - src/models/unpauseprojectop.ts
   - src/models/updateaccessgroupop.ts
@@ -4159,6 +4209,7 @@ generatedFiles:
   - src/sdk/environment.ts
   - src/sdk/integrations.ts
   - src/sdk/logdrains.ts
+  - src/sdk/logs.ts
   - src/sdk/marketplace.ts
   - src/sdk/projectmembers.ts
   - src/sdk/projects.ts
@@ -6656,7 +6707,7 @@ examples:
           until: 1540095775951
       responses:
         "200":
-          application/json: {"teams": [{}, {}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"teams": [{"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3401.3, "role": "VIEWER", "createdAt": 853.16, "created": 1827.59}, "created": "<value>", "createdAt": 1630748523395}, {"limited": true, "limitedBy": ["mfa"], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 9654.85, "role": "OWNER", "createdAt": 1341.03, "created": 7461.12}, "created": "<value>", "createdAt": 1630748523395}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7015,6 +7066,76 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get_/projects/{projectId}/logs-presets:
+    speakeasy-default-get-/projects/{project-id}/logs-presets:
+      parameters:
+        path:
+          projectId: "<id>"
+      responses:
+        "200":
+          application/json: [{"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4859.35}, "key": "<value>", "key1": "<value>"}, {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4176.11}, "key": "<value>", "key1": "<value>"}, {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 9283.43}, "key": "<value>"}]
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  post_/projects/{projectId}/logs-presets:
+    speakeasy-default-post-/projects/{project-id}/logs-presets:
+      parameters:
+        path:
+          projectId: "<id>"
+      requestBody:
+        application/json: {"query": "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com", "title": "Request Path", "group": "team"}
+      responses:
+        "200":
+          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4231.46}, "key": "<value>", "key1": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  delete_/projects/{projectId}/logs-presets/{id}:
+    speakeasy-default-delete-/projects/{project-id}/logs-presets/{id}:
+      parameters:
+        path:
+          projectId: "<id>"
+          id: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patch_/projects/{projectId}/logs-presets/{id}:
+    speakeasy-default-patch-/projects/{project-id}/logs-presets/{id}:
+      parameters:
+        path:
+          projectId: "<id>"
+          id: "<id>"
+      requestBody:
+        application/json: {"title": "Request Path"}
+      responses:
+        "200":
+          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4063.98}, "key": "<value>", "key1": "<value>", "key2": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  getRuntimeLogs:
+    speakeasy-default-get-runtime-logs:
+      parameters:
+        path:
+          projectId: "<id>"
+          deploymentId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/stream+json: {"level": "error", "message": "<value>", "rowId": "<id>", "source": "serverless", "timestampInMs": 5218.65, "domain": "putrid-tenement.info", "messageTruncated": false, "requestMethod": "<value>", "requestPath": "<value>", "responseStatusCode": 4823.11}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -7164,3 +7285,8 @@ generatedTests:
   uploadCert: "2025-04-29T14:51:46-05:00"
   patch_/aliases/{id}/protection-bypass: "2025-05-02T00:08:48Z"
   patchUrlProtectionBypass: "2025-05-07T13:36:30Z"
+  get_/projects/{projectId}/logs-presets: "2025-05-14T14:17:41+01:00"
+  post_/projects/{projectId}/logs-presets: "2025-05-14T14:17:41+01:00"
+  delete_/projects/{projectId}/logs-presets/{id}: "2025-05-14T14:17:41+01:00"
+  patch_/projects/{projectId}/logs-presets/{id}: "2025-05-14T14:17:41+01:00"
+  getRuntimeLogs: "2025-05-14T14:17:41+01:00"

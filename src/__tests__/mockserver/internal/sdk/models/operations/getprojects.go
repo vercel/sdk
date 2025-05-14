@@ -6831,10 +6831,11 @@ func (e *GetProjectsProtectionBypassScope) UnmarshalJSON(data []byte) error {
 }
 
 type GetProjectsProtectionBypass1 struct {
-	CreatedAt     float64                          `json:"createdAt"`
-	CreatedBy     string                           `json:"createdBy"`
-	Scope         GetProjectsProtectionBypassScope `json:"scope"`
-	IntegrationID string                           `json:"integrationId"`
+	CreatedAt       float64                          `json:"createdAt"`
+	CreatedBy       string                           `json:"createdBy"`
+	Scope           GetProjectsProtectionBypassScope `json:"scope"`
+	IntegrationID   string                           `json:"integrationId"`
+	ConfigurationID string                           `json:"configurationId"`
 }
 
 func (o *GetProjectsProtectionBypass1) GetCreatedAt() float64 {
@@ -6863,6 +6864,13 @@ func (o *GetProjectsProtectionBypass1) GetIntegrationID() string {
 		return ""
 	}
 	return o.IntegrationID
+}
+
+func (o *GetProjectsProtectionBypass1) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
 }
 
 type GetProjectsProtectionBypassType string

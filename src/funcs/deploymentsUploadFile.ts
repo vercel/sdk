@@ -114,6 +114,11 @@ async function $do(
       payload["Content-Length"],
       { explode: false, charEncoding: "none" },
     ),
+    "x-internal-v0-token": encodeSimple(
+      "x-internal-v0-token",
+      payload["x-internal-v0-token"],
+      { explode: false, charEncoding: "none" },
+    ),
     "x-now-digest": encodeSimple("x-now-digest", payload["x-now-digest"], {
       explode: false,
       charEncoding: "none",

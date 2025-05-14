@@ -24,10 +24,6 @@ let value: ListUserEventsResponseBody = {
       principalId: "<id>",
       payload: {
         projectName: "<value>",
-        passwordProtection: "all",
-        oldPasswordProtection: {
-          deploymentType: "all",
-        },
       },
     },
   ],

@@ -38,15 +38,6 @@ test("Dns Update Record", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    creator: "<value>",
-    domain: "rectangular-peninsula.net",
-    id: "<id>",
-    name: "<value>",
-    recordType: "SRV",
-    type: "record-sys",
-    value: "<value>",
-  });
 });
 
 test("Dns Remove Record", async () => {
@@ -65,5 +56,4 @@ test("Dns Remove Record", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

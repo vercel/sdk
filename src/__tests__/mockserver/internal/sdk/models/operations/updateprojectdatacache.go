@@ -6735,10 +6735,11 @@ func (e *UpdateProjectDataCacheProtectionBypassScope) UnmarshalJSON(data []byte)
 }
 
 type ProtectionBypass1 struct {
-	CreatedAt     float64                                     `json:"createdAt"`
-	CreatedBy     string                                      `json:"createdBy"`
-	Scope         UpdateProjectDataCacheProtectionBypassScope `json:"scope"`
-	IntegrationID string                                      `json:"integrationId"`
+	CreatedAt       float64                                     `json:"createdAt"`
+	CreatedBy       string                                      `json:"createdBy"`
+	Scope           UpdateProjectDataCacheProtectionBypassScope `json:"scope"`
+	IntegrationID   string                                      `json:"integrationId"`
+	ConfigurationID string                                      `json:"configurationId"`
 }
 
 func (o *ProtectionBypass1) GetCreatedAt() float64 {
@@ -6767,6 +6768,13 @@ func (o *ProtectionBypass1) GetIntegrationID() string {
 		return ""
 	}
 	return o.IntegrationID
+}
+
+func (o *ProtectionBypass1) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
 }
 
 type ProtectionBypassType string

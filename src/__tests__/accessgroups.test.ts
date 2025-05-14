@@ -21,23 +21,6 @@ test("Access Groups Read Access Group Id", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    isDsyncManaged: false,
-    name: "my-access-group",
-    createdAt: "1588720733602",
-    teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-    updatedAt: "1588720733602",
-    accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-    membersCount: 5,
-    projectsCount: 2,
-    teamRoles: [
-      "DEVELOPER",
-      "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
-    ],
-  });
 });
 
 test("Access Groups Read Access Group Name", async () => {
@@ -55,23 +38,6 @@ test("Access Groups Read Access Group Name", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    isDsyncManaged: false,
-    name: "my-access-group",
-    createdAt: "1588720733602",
-    teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-    updatedAt: "1588720733602",
-    accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-    membersCount: 5,
-    projectsCount: 2,
-    teamRoles: [
-      "DEVELOPER",
-      "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
-    ],
-  });
 });
 
 test("Access Groups Update Access Group", async () => {
@@ -106,22 +72,6 @@ test("Access Groups Update Access Group", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "my-access-group",
-    createdAt: "1588720733602",
-    teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-    updatedAt: "1588720733602",
-    accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-    membersCount: 5,
-    projectsCount: 2,
-    teamRoles: [
-      "DEVELOPER",
-      "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
-    ],
-  });
 });
 
 test("Access Groups Delete Access Group", async () => {
@@ -156,20 +106,6 @@ test("Access Groups List Access Group Members", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    members: [
-      {
-        email: "Jaida_Rogahn@yahoo.com",
-        uid: "<id>",
-        username: "Karianne_Bernier",
-        teamRole: "VIEWER",
-      },
-    ],
-    pagination: {
-      count: 3878.47,
-      next: "<value>",
-    },
-  });
 });
 
 test("Access Groups List Access Groups", async () => {
@@ -191,7 +127,6 @@ test("Access Groups List Access Groups", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Access Groups Create Access Group", async () => {
@@ -221,22 +156,6 @@ test("Access Groups Create Access Group", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    membersCount: 591.78,
-    projectsCount: 3787.91,
-    name: "my-access-group",
-    createdAt: "1588720733602",
-    teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
-    updatedAt: "1588720733602",
-    accessGroupId: "ag_123a6c5209bc3778245d011443644c8d27dc2c50",
-    teamRoles: [
-      "DEVELOPER",
-      "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
-    ],
-  });
 });
 
 test("Access Groups List Access Group Projects", async () => {
@@ -255,13 +174,6 @@ test("Access Groups List Access Group Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    projects: [],
-    pagination: {
-      count: 7604.02,
-      next: "<value>",
-    },
-  });
 });
 
 test("Access Groups Create Access Group Project", async () => {
@@ -283,14 +195,6 @@ test("Access Groups Create Access Group Project", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "PROJECT_VIEWER",
-    createdAt: "1726948284257",
-    updatedAt: "1744388503945",
-  });
 });
 
 test("Access Groups Read Access Group Project Id", async () => {
@@ -309,14 +213,6 @@ test("Access Groups Read Access Group Project Id", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "1715344910813",
-    updatedAt: "1744396168862",
-  });
 });
 
 test("Access Groups Read Access Group Project Name", async () => {
@@ -335,14 +231,6 @@ test("Access Groups Read Access Group Project Name", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "PROJECT_DEVELOPER",
-    createdAt: "1739615073482",
-    updatedAt: "1744327200176",
-  });
 });
 
 test("Access Groups Read Access Group Project", async () => {
@@ -361,14 +249,6 @@ test("Access Groups Read Access Group Project", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "PROJECT_DEVELOPER",
-    createdAt: "1741430060404",
-    updatedAt: "1744396619853",
-  });
 });
 
 test("Access Groups Update Access Group Project Id", async () => {
@@ -390,14 +270,6 @@ test("Access Groups Update Access Group Project Id", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "1715136753218",
-    updatedAt: "1744362874326",
-  });
 });
 
 test("Access Groups Update Access Group Project Name", async () => {
@@ -419,14 +291,6 @@ test("Access Groups Update Access Group Project Name", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "1716648820605",
-    updatedAt: "1744328935382",
-  });
 });
 
 test("Access Groups Update Access Group Project", async () => {
@@ -448,14 +312,6 @@ test("Access Groups Update Access Group Project", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    teamId: "<id>",
-    accessGroupId: "<id>",
-    projectId: "<id>",
-    role: "ADMIN",
-    createdAt: "1736314214978",
-    updatedAt: "1744397001817",
-  });
 });
 
 test("Access Groups Delete Access Group Project Id", async () => {

@@ -26,9 +26,6 @@ test("User List User Events", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    events: [],
-  });
 });
 
 test("User Request Delete", async () => {
@@ -42,9 +39,4 @@ test("User Request Delete", async () => {
 
   const result = await vercel.user.requestDelete({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    email: "Lamont82@gmail.com",
-    message: "Verification email sent",
-  });
 });

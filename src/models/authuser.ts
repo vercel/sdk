@@ -177,10 +177,6 @@ export type ResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  serverlessFunctionDefaultMaxExecutionTime?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
   serverlessFunctionMaxMemorySize?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -746,7 +742,6 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   edgeConfigSize: z.number().optional(),
   edgeFunctionMaxSizeBytes: z.number().optional(),
   edgeFunctionExecutionTimeoutMs: z.number().optional(),
-  serverlessFunctionDefaultMaxExecutionTime: z.number().optional(),
   serverlessFunctionMaxMemorySize: z.number().optional(),
   kvDatabases: z.number().optional(),
   postgresDatabases: z.number().optional(),
@@ -775,7 +770,6 @@ export type ResourceConfig$Outbound = {
   edgeConfigSize?: number | undefined;
   edgeFunctionMaxSizeBytes?: number | undefined;
   edgeFunctionExecutionTimeoutMs?: number | undefined;
-  serverlessFunctionDefaultMaxExecutionTime?: number | undefined;
   serverlessFunctionMaxMemorySize?: number | undefined;
   kvDatabases?: number | undefined;
   postgresDatabases?: number | undefined;
@@ -808,7 +802,6 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   edgeConfigSize: z.number().optional(),
   edgeFunctionMaxSizeBytes: z.number().optional(),
   edgeFunctionExecutionTimeoutMs: z.number().optional(),
-  serverlessFunctionDefaultMaxExecutionTime: z.number().optional(),
   serverlessFunctionMaxMemorySize: z.number().optional(),
   kvDatabases: z.number().optional(),
   postgresDatabases: z.number().optional(),

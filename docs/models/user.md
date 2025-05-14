@@ -8,9 +8,9 @@ Metadata for {@link userId}.
 import { User } from "@vercel/sdk/models/userevent.js";
 
 let value: User = {
-  avatar: "https://loremflickr.com/2014/619?lock=4777752609260298",
-  email: "Robyn.Stracke76@hotmail.com",
-  username: "Hannah.Grant",
+  username: "Joanie79",
+  avatar: "https://loremflickr.com/1720/3452?lock=6926663048454067",
+  email: "Hannah.Grant@gmail.com",
   uid: "<id>",
 };
 ```
@@ -19,8 +19,8 @@ let value: User = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |
 | `avatar`           | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
 | `slug`             | *string*           | :heavy_minus_sign: | N/A                |
 | `uid`              | *string*           | :heavy_check_mark: | N/A                |

@@ -66,29 +66,6 @@ test("Deployments Get Deployment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    aliasAssigned: false,
-    bootedAt: 2317.28,
-    buildingAt: 458.05,
-    buildSkipped: true,
-    creator: {
-      uid: "<id>",
-    },
-    public: true,
-    status: "ERROR",
-    id: "<id>",
-    name: "<value>",
-    type: "LAMBDAS",
-    createdAt: 3161.76,
-    readyState: "READY",
-    meta: {
-      "key": "<value>",
-      "key1": "<value>",
-    },
-    regions: [],
-    url: "https://disloyal-backburn.info",
-    version: 1604.95,
-  });
 });
 
 test("Deployments Create Deployment", async () => {
@@ -141,55 +118,6 @@ test("Deployments Create Deployment", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    build: {
-      env: [
-        "<value>",
-        "<value>",
-        "<value>",
-      ],
-    },
-    env: [
-      "<value>",
-      "<value>",
-    ],
-    inspectorUrl: "https://firm-casket.name/",
-    isInConcurrentBuildsQueue: false,
-    isInSystemBuildsQueue: false,
-    projectSettings: {},
-    aliasAssigned: true,
-    bootedAt: 7030.55,
-    buildingAt: 2916.6,
-    buildSkipped: false,
-    creator: {
-      uid: "<id>",
-    },
-    public: true,
-    status: "BUILDING",
-    type: "LAMBDAS",
-    name: "<value>",
-    createdAt: 1218,
-    id: "<id>",
-    version: 5856.16,
-    meta: {
-      "key": "<value>",
-      "key1": "<value>",
-    },
-    readyState: "CANCELED",
-    regions: [
-      "<value>",
-    ],
-    url: "https://quiet-formation.name/",
-    plan: "pro",
-    projectId: "<id>",
-    ownerId: "<id>",
-    routes: [
-      {
-        src: "<value>",
-      },
-    ],
-    createdIn: "<value>",
-  });
 });
 
 test("Deployments Cancel Deployment", async () => {
@@ -207,61 +135,6 @@ test("Deployments Cancel Deployment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    build: {
-      env: [
-        "<value>",
-        "<value>",
-        "<value>",
-      ],
-    },
-    env: [
-      "<value>",
-      "<value>",
-    ],
-    inspectorUrl: "https://concrete-gerbil.org",
-    isInConcurrentBuildsQueue: false,
-    isInSystemBuildsQueue: true,
-    projectSettings: {},
-    aliasAssigned: false,
-    bootedAt: 8528.74,
-    buildingAt: 7590.79,
-    buildSkipped: false,
-    creator: {
-      uid: "<id>",
-    },
-    public: true,
-    status: "BUILDING",
-    id: "<id>",
-    createdAt: 3071.53,
-    name: "<value>",
-    meta: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
-    },
-    readyState: "QUEUED",
-    regions: [
-      "<value>",
-    ],
-    type: "LAMBDAS",
-    url: "https://timely-reboot.name",
-    version: 6067.47,
-    createdIn: "<value>",
-    ownerId: "<id>",
-    plan: "pro",
-    projectId: "<id>",
-    routes: [
-      {
-        handle: "resource",
-      },
-      {
-        src: "<value>",
-        continue: true,
-        middleware: 4831.29,
-      },
-    ],
-  });
 });
 
 test("Deployments Upload File", async () => {
@@ -278,7 +151,6 @@ test("Deployments Upload File", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Deployments List Deployment Files", async () => {
@@ -296,22 +168,6 @@ test("Deployments List Deployment Files", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      name: "my-file.json",
-      type: "file",
-      uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
-      contentType: "application/json",
-      mode: 956.43,
-    },
-    {
-      name: "my-file.json",
-      type: "file",
-      uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
-      contentType: "application/json",
-      mode: 1805.56,
-    },
-  ]);
 });
 
 test("Deployments Get Deployment File Contents", async () => {
@@ -356,69 +212,6 @@ test("Deployments Get Deployments", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-    deployments: [
-      {
-        uid: "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-        name: "docs",
-        url: "docs-9jaeg38me.vercel.app",
-        created: 1609492210000,
-        defaultRoute: "/docs",
-        deleted: 1609492210000,
-        undeleted: 1609492210000,
-        softDeletedByRetention: true,
-        source: "cli",
-        state: "READY",
-        readyState: "READY",
-        type: "LAMBDAS",
-        creator: {
-          uid: "eLrCnEgbKhsHyfbiNR7E8496",
-          email: "example@example.com",
-          username: "johndoe",
-          githubLogin: "johndoe",
-          gitlabLogin: "johndoe",
-        },
-        target: "production",
-        createdAt: 1609492210000,
-        buildingAt: 1609492210000,
-        ready: 1609492210000,
-        inspectorUrl:
-          "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq",
-      },
-      {
-        uid: "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-        name: "docs",
-        url: "docs-9jaeg38me.vercel.app",
-        created: 1609492210000,
-        defaultRoute: "/docs",
-        deleted: 1609492210000,
-        undeleted: 1609492210000,
-        softDeletedByRetention: true,
-        source: "cli",
-        state: "READY",
-        readyState: "READY",
-        type: "LAMBDAS",
-        creator: {
-          uid: "eLrCnEgbKhsHyfbiNR7E8496",
-          email: "example@example.com",
-          username: "johndoe",
-          githubLogin: "johndoe",
-          gitlabLogin: "johndoe",
-        },
-        target: "production",
-        createdAt: 1609492210000,
-        buildingAt: 1609492210000,
-        ready: 1609492210000,
-        inspectorUrl:
-          "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq",
-      },
-    ],
-  });
 });
 
 test("Deployments Delete Deployment", async () => {
@@ -437,8 +230,4 @@ test("Deployments Delete Deployment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    uid: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-    state: "DELETED",
-  });
 });

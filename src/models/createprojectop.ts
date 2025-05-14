@@ -1753,6 +1753,7 @@ export type CreateProjectProtectionBypass1 = {
   createdBy: string;
   scope: CreateProjectProtectionBypassScope;
   integrationId: string;
+  configurationId: string;
 };
 
 export type CreateProjectProtectionBypass =
@@ -9413,6 +9414,7 @@ export const CreateProjectProtectionBypass1$inboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: CreateProjectProtectionBypassScope$inboundSchema,
   integrationId: z.string(),
+  configurationId: z.string(),
 });
 
 /** @internal */
@@ -9421,6 +9423,7 @@ export type CreateProjectProtectionBypass1$Outbound = {
   createdBy: string;
   scope: string;
   integrationId: string;
+  configurationId: string;
 };
 
 /** @internal */
@@ -9433,6 +9436,7 @@ export const CreateProjectProtectionBypass1$outboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: CreateProjectProtectionBypassScope$outboundSchema,
   integrationId: z.string(),
+  configurationId: z.string(),
 });
 
 /**

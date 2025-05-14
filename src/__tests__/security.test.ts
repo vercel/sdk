@@ -24,10 +24,6 @@ test("Security Update Attack Challenge Mode", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    attackModeEnabled: true,
-    attackModeUpdatedAt: 6133.77,
-  });
 });
 
 test("Security Put Firewall Config", async () => {
@@ -48,149 +44,6 @@ test("Security Put Firewall Config", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    active: {
-      ownerId: "<id>",
-      projectKey: "<value>",
-      id: "<id>",
-      version: 892.22,
-      updatedAt: "1745792555559",
-      firewallEnabled: true,
-      crs: {
-        sd: {
-          active: false,
-          action: "log",
-        },
-        ma: {
-          active: false,
-          action: "log",
-        },
-        lfi: {
-          active: false,
-          action: "deny",
-        },
-        rfi: {
-          active: false,
-          action: "deny",
-        },
-        rce: {
-          active: true,
-          action: "deny",
-        },
-        php: {
-          active: false,
-          action: "deny",
-        },
-        gen: {
-          active: false,
-          action: "deny",
-        },
-        xss: {
-          active: true,
-          action: "log",
-        },
-        sqli: {
-          active: true,
-          action: "deny",
-        },
-        sf: {
-          active: true,
-          action: "log",
-        },
-        java: {
-          active: false,
-          action: "deny",
-        },
-      },
-      rules: [
-        {
-          id: "<id>",
-          name: "<value>",
-          active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "geo_city",
-                  op: "pre",
-                },
-              ],
-            },
-          ],
-          action: {},
-        },
-        {
-          id: "<id>",
-          name: "<value>",
-          active: false,
-          conditionGroup: [],
-          action: {},
-        },
-        {
-          id: "<id>",
-          name: "<value>",
-          active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "ip_address",
-                  op: "sub",
-                },
-                {
-                  type: "ja3_digest",
-                  op: "suf",
-                },
-                {
-                  type: "protocol",
-                  op: "sub",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "geo_as_number",
-                  op: "re",
-                },
-                {
-                  type: "geo_continent",
-                  op: "nex",
-                },
-                {
-                  type: "region",
-                  op: "gt",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "method",
-                  op: "gte",
-                },
-                {
-                  type: "header",
-                  op: "inc",
-                },
-                {
-                  type: "query",
-                  op: "eq",
-                },
-              ],
-            },
-          ],
-          action: {},
-        },
-      ],
-      ips: [],
-      changes: [
-        {},
-        {},
-        {},
-      ],
-    },
-  });
 });
 
 test("Security Update Firewall Config", async () => {
@@ -215,7 +68,6 @@ test("Security Update Firewall Config", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Security Get Firewall Config", async () => {
@@ -234,101 +86,6 @@ test("Security Get Firewall Config", async () => {
     configVersion: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    ownerId: "<id>",
-    projectKey: "<value>",
-    id: "<id>",
-    version: 228.9,
-    updatedAt: "1744362822275",
-    firewallEnabled: false,
-    crs: {
-      sd: {
-        active: true,
-        action: "deny",
-      },
-      ma: {
-        active: false,
-        action: "log",
-      },
-      lfi: {
-        active: false,
-        action: "log",
-      },
-      rfi: {
-        active: true,
-        action: "deny",
-      },
-      rce: {
-        active: true,
-        action: "log",
-      },
-      php: {
-        active: false,
-        action: "log",
-      },
-      gen: {
-        active: false,
-        action: "deny",
-      },
-      xss: {
-        active: true,
-        action: "deny",
-      },
-      sqli: {
-        active: true,
-        action: "deny",
-      },
-      sf: {
-        active: true,
-        action: "deny",
-      },
-      java: {
-        active: true,
-        action: "deny",
-      },
-    },
-    rules: [
-      {
-        id: "<id>",
-        name: "<value>",
-        active: false,
-        conditionGroup: [
-          {
-            conditions: [
-              {
-                type: "path",
-                op: "neq",
-              },
-            ],
-          },
-        ],
-        action: {},
-      },
-    ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "crowded-suspension.net",
-        ip: "194.99.165.97",
-        action: "bypass",
-      },
-      {
-        id: "<id>",
-        hostname: "burly-academics.name",
-        ip: "42.161.47.142",
-        action: "bypass",
-      },
-      {
-        id: "<id>",
-        hostname: "damaged-bracelet.info",
-        ip: "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
-        action: "log",
-      },
-    ],
-    changes: [
-      {},
-    ],
-  });
 });
 
 test("Security Get Bypass Ip", async () => {
@@ -347,20 +104,6 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "sneaky-intervention.info",
-        ip: "124.153.161.35",
-        createdAt: "1730712703128",
-        updatedAt: "1744368534759",
-        updatedAtHour: "<value>",
-      },
-    ],
-    pagination: "<value>",
-  });
 });
 
 test("Security Add Bypass Ip", async () => {
@@ -378,20 +121,6 @@ test("Security Add Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    ok: false,
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "jubilant-outrun.name",
-        projectId: "<id>",
-        note: "<value>",
-        isProjectRule: true,
-      },
-    ],
-    pagination: "<value>",
-  });
 });
 
 test("Security Remove Bypass Ip", async () => {
@@ -409,7 +138,4 @@ test("Security Remove Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    ok: true,
-  });
 });

@@ -7,35 +7,8 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type VercelRateLimitErrorError struct {
-	Code    string                      `json:"code"`
-	Message string                      `json:"message"`
-	Limit   *components.RateLimitNotice `json:"limit,omitempty"`
-}
-
-func (o *VercelRateLimitErrorError) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *VercelRateLimitErrorError) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-func (o *VercelRateLimitErrorError) GetLimit() *components.RateLimitNotice {
-	if o == nil {
-		return nil
-	}
-	return o.Limit
-}
-
 type VercelRateLimitError struct {
-	Error_ VercelRateLimitErrorError `json:"error"`
+	Error_ components.VercelRateLimitErrorError `json:"error"`
 }
 
 var _ error = &VercelRateLimitError{}

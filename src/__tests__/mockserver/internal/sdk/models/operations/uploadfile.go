@@ -19,6 +19,8 @@ type UploadFileRequest struct {
 	XNowDigest *string `header:"style=simple,explode=false,name=x-now-digest"`
 	// The file size as an alternative to `Content-Length`
 	XNowSize *float64 `header:"style=simple,explode=false,name=x-now-size"`
+	// Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit.
+	XInternalV0Token *string `header:"style=simple,explode=false,name=x-internal-v0-token"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -52,6 +54,13 @@ func (o *UploadFileRequest) GetXNowSize() *float64 {
 		return nil
 	}
 	return o.XNowSize
+}
+
+func (o *UploadFileRequest) GetXInternalV0Token() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XInternalV0Token
 }
 
 func (o *UploadFileRequest) GetTeamID() *string {

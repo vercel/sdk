@@ -10,6 +10,7 @@ let value: CreateProjectProtectionBypass1 = {
   createdBy: "<value>",
   scope: "integration-automation-bypass",
   integrationId: "<id>",
+  configurationId: "<id>",
 };
 ```
 
@@ -21,3 +22,4 @@ let value: CreateProjectProtectionBypass1 = {
 | `createdBy`                                                                                  | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `scope`                                                                                      | [models.CreateProjectProtectionBypassScope](../models/createprojectprotectionbypassscope.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `integrationId`                                                                              | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `configurationId`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |

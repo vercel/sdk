@@ -1862,6 +1862,7 @@ export type UpdateProjectProtectionBypass1 = {
   createdBy: string;
   scope: UpdateProjectProtectionBypassScope;
   integrationId: string;
+  configurationId: string;
 };
 
 export type UpdateProjectProtectionBypass =
@@ -9892,6 +9893,7 @@ export const UpdateProjectProtectionBypass1$inboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: UpdateProjectProtectionBypassScope$inboundSchema,
   integrationId: z.string(),
+  configurationId: z.string(),
 });
 
 /** @internal */
@@ -9900,6 +9902,7 @@ export type UpdateProjectProtectionBypass1$Outbound = {
   createdBy: string;
   scope: string;
   integrationId: string;
+  configurationId: string;
 };
 
 /** @internal */
@@ -9912,6 +9915,7 @@ export const UpdateProjectProtectionBypass1$outboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: UpdateProjectProtectionBypassScope$outboundSchema,
   integrationId: z.string(),
+  configurationId: z.string(),
 });
 
 /**

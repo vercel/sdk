@@ -178,10 +178,11 @@ func (e *UpdateProjectProtectionBypassProtectionBypassScope) UnmarshalJSON(data 
 }
 
 type UpdateProjectProtectionBypassProtectionBypass1 struct {
-	CreatedAt     float64                                            `json:"createdAt"`
-	CreatedBy     string                                             `json:"createdBy"`
-	Scope         UpdateProjectProtectionBypassProtectionBypassScope `json:"scope"`
-	IntegrationID string                                             `json:"integrationId"`
+	CreatedAt       float64                                            `json:"createdAt"`
+	CreatedBy       string                                             `json:"createdBy"`
+	Scope           UpdateProjectProtectionBypassProtectionBypassScope `json:"scope"`
+	IntegrationID   string                                             `json:"integrationId"`
+	ConfigurationID string                                             `json:"configurationId"`
 }
 
 func (o *UpdateProjectProtectionBypassProtectionBypass1) GetCreatedAt() float64 {
@@ -210,6 +211,13 @@ func (o *UpdateProjectProtectionBypassProtectionBypass1) GetIntegrationID() stri
 		return ""
 	}
 	return o.IntegrationID
+}
+
+func (o *UpdateProjectProtectionBypassProtectionBypass1) GetConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConfigurationID
 }
 
 type UpdateProjectProtectionBypassProtectionBypassType string

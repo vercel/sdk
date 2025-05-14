@@ -7513,13 +7513,17 @@
                               },
                               "integrationId": {
                                 "type": "string"
+                              },
+                              "configurationId": {
+                                "type": "string"
                               }
                             },
                             "required": [
                               "createdAt",
                               "createdBy",
                               "scope",
-                              "integrationId"
+                              "integrationId",
+                              "configurationId"
                             ],
                             "type": "object"
                           },
@@ -26212,6 +26216,440 @@
         ]
       }
     },
+    "/projects/{projectId}/logs-presets": {
+      "get": {
+        "description": "",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Team"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "projectId of the preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "projectId of the preset",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "title",
+                  "group"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "example": "timeline=past30Minutes\u0026startDate=1690446214407\u0026endDate=1690448014407\u0026levels=info\u0026domains=vercel.com",
+                    "description": "query parameter for saved filter preset",
+                    "maxLength": 1000
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Request Path",
+                    "description": "The title of the preset",
+                    "maxLength": 70
+                  },
+                  "group": {
+                    "enum": [
+                      "personal",
+                      "team"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/logs-presets/{id}": {
+      "delete": {
+        "description": "",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "projectId of the preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "projectId of the preset",
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "description": "id of the preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "id of the preset",
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "projectId of the preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "projectId of the preset",
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "description": "Id of the preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "Id of the preset",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Request Path",
+                    "description": "The title of the preset",
+                    "maxLength": 70
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs": {
+      "get": {
+        "description": "Returns a stream of logs for a given deployment.",
+        "operationId": "getRuntimeLogs",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get logs for a deployment",
+        "tags": [
+          "logs"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/stream+json": {
+                "schema": {
+                  "properties": {
+                    "level": {
+                      "type": "string",
+                      "enum": [
+                        "error",
+                        "warning",
+                        "info"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "rowId": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "delimiter",
+                        "edge-function",
+                        "edge-middleware",
+                        "serverless",
+                        "request"
+                      ]
+                    },
+                    "timestampInMs": {
+                      "type": "number"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "messageTruncated": {
+                      "type": "boolean"
+                    },
+                    "requestMethod": {
+                      "type": "string"
+                    },
+                    "requestPath": {
+                      "type": "string"
+                    },
+                    "responseStatusCode": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "level",
+                    "message",
+                    "rowId",
+                    "source",
+                    "timestampInMs",
+                    "domain",
+                    "messageTruncated",
+                    "requestMethod",
+                    "requestPath",
+                    "responseStatusCode"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items": {
       "post": {
         "description": "Create one or multiple experimentation items",
@@ -30617,13 +31055,17 @@
                                     },
                                     "integrationId": {
                                       "type": "string"
+                                    },
+                                    "configurationId": {
+                                      "type": "string"
                                     }
                                   },
                                   "required": [
                                     "createdAt",
                                     "createdBy",
                                     "scope",
-                                    "integrationId"
+                                    "integrationId",
+                                    "configurationId"
                                   ],
                                   "type": "object"
                                 },
@@ -31256,7 +31698,7 @@
             "schema": {
               "description": "Search projects by the name field",
               "type": "string",
-              "maxLength": 511
+              "maxLength": 100
             }
           },
           {
@@ -34680,13 +35122,17 @@
                               },
                               "integrationId": {
                                 "type": "string"
+                              },
+                              "configurationId": {
+                                "type": "string"
                               }
                             },
                             "required": [
                               "createdAt",
                               "createdBy",
                               "scope",
-                              "integrationId"
+                              "integrationId",
+                              "configurationId"
                             ],
                             "type": "object"
                           },
@@ -38928,13 +39374,17 @@
                               },
                               "integrationId": {
                                 "type": "string"
+                              },
+                              "configurationId": {
+                                "type": "string"
                               }
                             },
                             "required": [
                               "createdAt",
                               "createdBy",
                               "scope",
-                              "integrationId"
+                              "integrationId",
+                              "configurationId"
                             ],
                             "type": "object"
                           },
@@ -42880,13 +43330,17 @@
                               },
                               "integrationId": {
                                 "type": "string"
+                              },
+                              "configurationId": {
+                                "type": "string"
                               }
                             },
                             "required": [
                               "createdAt",
                               "createdBy",
                               "scope",
-                              "integrationId"
+                              "integrationId",
+                              "configurationId"
                             ],
                             "type": "object"
                           },
@@ -52924,13 +53378,17 @@
                               },
                               "integrationId": {
                                 "type": "string"
+                              },
+                              "configurationId": {
+                                "type": "string"
                               }
                             },
                             "required": [
                               "createdAt",
                               "createdBy",
                               "scope",
-                              "integrationId"
+                              "integrationId",
+                              "configurationId"
                             ],
                             "type": "object"
                           },
@@ -59779,6 +60237,15 @@
             "name": "x-now-size"
           },
           {
+            "in": "header",
+            "description": "Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit.",
+            "schema": {
+              "type": "string",
+              "description": "Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit."
+            },
+            "name": "x-internal-v0-token"
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -64699,13 +65166,13 @@
           },
           "user": {
             "properties": {
+              "username": {
+                "type": "string"
+              },
               "avatar": {
                 "type": "string"
               },
               "email": {
-                "type": "string"
-              },
-              "username": {
                 "type": "string"
               },
               "slug": {
@@ -64716,9 +65183,9 @@
               }
             },
             "required": [
+              "username",
               "avatar",
               "email",
-              "username",
               "uid"
             ],
             "type": "object",
@@ -65027,10 +65494,20 @@
                   },
                   "next_role": {
                     "nullable": true,
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "PROJECT_DEVELOPER",
+                      "PROJECT_VIEWER"
+                    ]
                   },
                   "previous_role": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "PROJECT_DEVELOPER",
+                      "PROJECT_VIEWER"
+                    ]
                   }
                 },
                 "required": [
@@ -67333,9 +67810,6 @@
                             "type": "number"
                           },
                           "edgeFunctionExecutionTimeoutMs": {
-                            "type": "number"
-                          },
-                          "serverlessFunctionDefaultMaxExecutionTime": {
                             "type": "number"
                           },
                           "serverlessFunctionMaxMemorySize": {
@@ -70221,6 +70695,37 @@
               },
               {
                 "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "projectName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "newTargetPercentage": {
+                    "type": "number"
+                  }
+                },
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "gitProvider": {
                     "type": "string"
                   },
@@ -72302,6 +72807,57 @@
         "type": "object",
         "description": "Array of events generated by the User."
       },
+      "Team": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The Preset's unique identifier.",
+            "example": "ABCDEFG000011111"
+          },
+          "data": {
+            "properties": {
+              "query": {
+                "type": "string"
+              },
+              "creatorId": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "groupId": {
+                "type": "string"
+              },
+              "ownerId": {
+                "type": "string"
+              },
+              "projectId": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "query",
+              "creatorId",
+              "title",
+              "groupId",
+              "ownerId",
+              "projectId",
+              "createdAt"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "data"
+        ],
+        "type": "object",
+        "description": "Data representing a Team.",
+        "additionalProperties": true
+      },
       "TeamLimited": {
         "properties": {
           "limited": {
@@ -72597,11 +73153,6 @@
         "type": "object",
         "description": "A limited form of data representing a Team, due to the authentication token missing privileges to read the full Team data."
       },
-      "Team": {
-        "type": "object",
-        "description": "Data representing a Team.",
-        "additionalProperties": true
-      },
       "AuthToken": {
         "properties": {
           "id": {
@@ -72896,10 +73447,6 @@
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
               "edgeFunctionExecutionTimeoutMs": {
-                "type": "number",
-                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
-              },
-              "serverlessFunctionDefaultMaxExecutionTime": {
                 "type": "number",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },

@@ -330,8 +330,6 @@ type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	EdgeFunctionExecutionTimeoutMs *float64 `json:"edgeFunctionExecutionTimeoutMs,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	ServerlessFunctionDefaultMaxExecutionTime *float64 `json:"serverlessFunctionDefaultMaxExecutionTime,omitempty"`
-	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ServerlessFunctionMaxMemorySize *float64 `json:"serverlessFunctionMaxMemorySize,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	KvDatabases *float64 `json:"kvDatabases,omitempty"`
@@ -434,13 +432,6 @@ func (o *ResourceConfig) GetEdgeFunctionExecutionTimeoutMs() *float64 {
 		return nil
 	}
 	return o.EdgeFunctionExecutionTimeoutMs
-}
-
-func (o *ResourceConfig) GetServerlessFunctionDefaultMaxExecutionTime() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionDefaultMaxExecutionTime
 }
 
 func (o *ResourceConfig) GetServerlessFunctionMaxMemorySize() *float64 {

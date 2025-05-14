@@ -21,7 +21,7 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    domain: "total-fog.name",
+    name: "<value>",
   },
 };
 ```

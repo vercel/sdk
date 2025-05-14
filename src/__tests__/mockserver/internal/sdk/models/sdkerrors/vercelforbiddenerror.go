@@ -4,29 +4,11 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"mockserver/internal/sdk/models/components"
 )
 
-type VercelForbiddenErrorError struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func (o *VercelForbiddenErrorError) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *VercelForbiddenErrorError) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
 type VercelForbiddenError struct {
-	Error_ VercelForbiddenErrorError `json:"error"`
+	Error_ components.VercelForbiddenErrorError `json:"error"`
 }
 
 var _ error = &VercelForbiddenError{}

@@ -7,17 +7,16 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSix } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSix = {
-  previousRole: "<value>",
-};
+let value: OneHundredAndSix = {};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `deletedUser`                                  | [models.DeletedUser](../models/deleteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `deletedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `githubUsername`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `gitlabUsername`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `bitbucketUsername`                            | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

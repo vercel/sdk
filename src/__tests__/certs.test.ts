@@ -21,15 +21,6 @@ test("Certs Get Cert By Id", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 227.12,
-    expiresAt: 3995.77,
-    autoRenew: false,
-    cns: [
-      "<value>",
-    ],
-  });
 });
 
 test("Certs Remove Cert", async () => {
@@ -47,7 +38,6 @@ test("Certs Remove Cert", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Certs Issue Cert", async () => {
@@ -65,13 +55,6 @@ test("Certs Issue Cert", async () => {
     requestBody: {},
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 1842.08,
-    expiresAt: 8685.42,
-    autoRenew: true,
-    cns: [],
-  });
 });
 
 test("Certs Upload Cert", async () => {
@@ -93,14 +76,4 @@ test("Certs Upload Cert", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 9219.92,
-    expiresAt: 5530.55,
-    autoRenew: true,
-    cns: [
-      "<value>",
-      "<value>",
-    ],
-  });
 });

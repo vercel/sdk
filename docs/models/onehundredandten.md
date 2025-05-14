@@ -7,11 +7,19 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndTen } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndTen = {};
+let value: OneHundredAndTen = {
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Brady.Yost72",
+  },
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `entitlement`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `user`                                                                 | [models.UserEventPayload110User](../models/usereventpayload110user.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousCanceledAt`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

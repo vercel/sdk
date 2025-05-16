@@ -10,12 +10,12 @@ import { TeamLimited } from "@vercel/sdk/models/teamlimited.js";
 let value: TeamLimited = {
   limited: false,
   limitedBy: [
-    "scope",
+    "mfa",
   ],
   saml: {
     connection: {
-      type: "OktaSAML",
       status: "linked",
+      type: "OktaSAML",
       state: "active",
       connectedAt: 1611796915677,
       lastReceivedWebhookEvent: 1611796915677,

@@ -342,7 +342,7 @@ export type CreateRecordRequestBodyDnsType = ClosedEnum<
   typeof CreateRecordRequestBodyDnsType
 >;
 
-export type RequestBody3 = {
+export type CreateRecordRequestBody3 = {
   /**
    * A subdomain name or an empty string for the root domain.
    */
@@ -387,7 +387,7 @@ export type CreateRecordRequestBodyType = ClosedEnum<
   typeof CreateRecordRequestBodyType
 >;
 
-export type RequestBody2 = {
+export type CreateRecordRequestBody2 = {
   /**
    * A subdomain name or an empty string for the root domain.
    */
@@ -430,7 +430,7 @@ export const RequestBodyType = {
  */
 export type RequestBodyType = ClosedEnum<typeof RequestBodyType>;
 
-export type RequestBody1 = {
+export type CreateRecordRequestBody1 = {
   /**
    * A subdomain name or an empty string for the root domain.
    */
@@ -457,9 +457,9 @@ export type CreateRecordRequestBody =
   | RequestBody7
   | RequestBody8
   | RequestBody10
-  | RequestBody1
-  | RequestBody2
-  | RequestBody3
+  | CreateRecordRequestBody1
+  | CreateRecordRequestBody2
+  | CreateRecordRequestBody3
   | RequestBody4
   | RequestBody5
   | RequestBody9
@@ -482,9 +482,9 @@ export type CreateRecordRequest = {
     | RequestBody7
     | RequestBody8
     | RequestBody10
-    | RequestBody1
-    | RequestBody2
-    | RequestBody3
+    | CreateRecordRequestBody1
+    | CreateRecordRequestBody2
+    | CreateRecordRequestBody3
     | RequestBody4
     | RequestBody5
     | RequestBody9
@@ -1246,8 +1246,8 @@ export namespace CreateRecordRequestBodyDnsType$ {
 }
 
 /** @internal */
-export const RequestBody3$inboundSchema: z.ZodType<
-  RequestBody3,
+export const CreateRecordRequestBody3$inboundSchema: z.ZodType<
+  CreateRecordRequestBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1259,7 +1259,7 @@ export const RequestBody3$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type RequestBody3$Outbound = {
+export type CreateRecordRequestBody3$Outbound = {
   name: string;
   type: string;
   ttl?: number | undefined;
@@ -1268,10 +1268,10 @@ export type RequestBody3$Outbound = {
 };
 
 /** @internal */
-export const RequestBody3$outboundSchema: z.ZodType<
-  RequestBody3$Outbound,
+export const CreateRecordRequestBody3$outboundSchema: z.ZodType<
+  CreateRecordRequestBody3$Outbound,
   z.ZodTypeDef,
-  RequestBody3
+  CreateRecordRequestBody3
 > = z.object({
   name: z.string(),
   type: CreateRecordRequestBodyDnsType$outboundSchema,
@@ -1284,26 +1284,30 @@ export const RequestBody3$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestBody3$ {
-  /** @deprecated use `RequestBody3$inboundSchema` instead. */
-  export const inboundSchema = RequestBody3$inboundSchema;
-  /** @deprecated use `RequestBody3$outboundSchema` instead. */
-  export const outboundSchema = RequestBody3$outboundSchema;
-  /** @deprecated use `RequestBody3$Outbound` instead. */
-  export type Outbound = RequestBody3$Outbound;
+export namespace CreateRecordRequestBody3$ {
+  /** @deprecated use `CreateRecordRequestBody3$inboundSchema` instead. */
+  export const inboundSchema = CreateRecordRequestBody3$inboundSchema;
+  /** @deprecated use `CreateRecordRequestBody3$outboundSchema` instead. */
+  export const outboundSchema = CreateRecordRequestBody3$outboundSchema;
+  /** @deprecated use `CreateRecordRequestBody3$Outbound` instead. */
+  export type Outbound = CreateRecordRequestBody3$Outbound;
 }
 
-export function requestBody3ToJSON(requestBody3: RequestBody3): string {
-  return JSON.stringify(RequestBody3$outboundSchema.parse(requestBody3));
+export function createRecordRequestBody3ToJSON(
+  createRecordRequestBody3: CreateRecordRequestBody3,
+): string {
+  return JSON.stringify(
+    CreateRecordRequestBody3$outboundSchema.parse(createRecordRequestBody3),
+  );
 }
 
-export function requestBody3FromJSON(
+export function createRecordRequestBody3FromJSON(
   jsonString: string,
-): SafeParseResult<RequestBody3, SDKValidationError> {
+): SafeParseResult<CreateRecordRequestBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody3' from JSON`,
+    (x) => CreateRecordRequestBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRecordRequestBody3' from JSON`,
   );
 }
 
@@ -1329,8 +1333,8 @@ export namespace CreateRecordRequestBodyType$ {
 }
 
 /** @internal */
-export const RequestBody2$inboundSchema: z.ZodType<
-  RequestBody2,
+export const CreateRecordRequestBody2$inboundSchema: z.ZodType<
+  CreateRecordRequestBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1342,7 +1346,7 @@ export const RequestBody2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type RequestBody2$Outbound = {
+export type CreateRecordRequestBody2$Outbound = {
   name: string;
   type: string;
   ttl?: number | undefined;
@@ -1351,10 +1355,10 @@ export type RequestBody2$Outbound = {
 };
 
 /** @internal */
-export const RequestBody2$outboundSchema: z.ZodType<
-  RequestBody2$Outbound,
+export const CreateRecordRequestBody2$outboundSchema: z.ZodType<
+  CreateRecordRequestBody2$Outbound,
   z.ZodTypeDef,
-  RequestBody2
+  CreateRecordRequestBody2
 > = z.object({
   name: z.string(),
   type: CreateRecordRequestBodyType$outboundSchema,
@@ -1367,26 +1371,30 @@ export const RequestBody2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestBody2$ {
-  /** @deprecated use `RequestBody2$inboundSchema` instead. */
-  export const inboundSchema = RequestBody2$inboundSchema;
-  /** @deprecated use `RequestBody2$outboundSchema` instead. */
-  export const outboundSchema = RequestBody2$outboundSchema;
-  /** @deprecated use `RequestBody2$Outbound` instead. */
-  export type Outbound = RequestBody2$Outbound;
+export namespace CreateRecordRequestBody2$ {
+  /** @deprecated use `CreateRecordRequestBody2$inboundSchema` instead. */
+  export const inboundSchema = CreateRecordRequestBody2$inboundSchema;
+  /** @deprecated use `CreateRecordRequestBody2$outboundSchema` instead. */
+  export const outboundSchema = CreateRecordRequestBody2$outboundSchema;
+  /** @deprecated use `CreateRecordRequestBody2$Outbound` instead. */
+  export type Outbound = CreateRecordRequestBody2$Outbound;
 }
 
-export function requestBody2ToJSON(requestBody2: RequestBody2): string {
-  return JSON.stringify(RequestBody2$outboundSchema.parse(requestBody2));
+export function createRecordRequestBody2ToJSON(
+  createRecordRequestBody2: CreateRecordRequestBody2,
+): string {
+  return JSON.stringify(
+    CreateRecordRequestBody2$outboundSchema.parse(createRecordRequestBody2),
+  );
 }
 
-export function requestBody2FromJSON(
+export function createRecordRequestBody2FromJSON(
   jsonString: string,
-): SafeParseResult<RequestBody2, SDKValidationError> {
+): SafeParseResult<CreateRecordRequestBody2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RequestBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody2' from JSON`,
+    (x) => CreateRecordRequestBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRecordRequestBody2' from JSON`,
   );
 }
 
@@ -1412,8 +1420,8 @@ export namespace RequestBodyType$ {
 }
 
 /** @internal */
-export const RequestBody1$inboundSchema: z.ZodType<
-  RequestBody1,
+export const CreateRecordRequestBody1$inboundSchema: z.ZodType<
+  CreateRecordRequestBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1425,7 +1433,7 @@ export const RequestBody1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type RequestBody1$Outbound = {
+export type CreateRecordRequestBody1$Outbound = {
   name: string;
   type: string;
   ttl?: number | undefined;
@@ -1434,10 +1442,10 @@ export type RequestBody1$Outbound = {
 };
 
 /** @internal */
-export const RequestBody1$outboundSchema: z.ZodType<
-  RequestBody1$Outbound,
+export const CreateRecordRequestBody1$outboundSchema: z.ZodType<
+  CreateRecordRequestBody1$Outbound,
   z.ZodTypeDef,
-  RequestBody1
+  CreateRecordRequestBody1
 > = z.object({
   name: z.string(),
   type: RequestBodyType$outboundSchema,
@@ -1450,26 +1458,30 @@ export const RequestBody1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestBody1$ {
-  /** @deprecated use `RequestBody1$inboundSchema` instead. */
-  export const inboundSchema = RequestBody1$inboundSchema;
-  /** @deprecated use `RequestBody1$outboundSchema` instead. */
-  export const outboundSchema = RequestBody1$outboundSchema;
-  /** @deprecated use `RequestBody1$Outbound` instead. */
-  export type Outbound = RequestBody1$Outbound;
+export namespace CreateRecordRequestBody1$ {
+  /** @deprecated use `CreateRecordRequestBody1$inboundSchema` instead. */
+  export const inboundSchema = CreateRecordRequestBody1$inboundSchema;
+  /** @deprecated use `CreateRecordRequestBody1$outboundSchema` instead. */
+  export const outboundSchema = CreateRecordRequestBody1$outboundSchema;
+  /** @deprecated use `CreateRecordRequestBody1$Outbound` instead. */
+  export type Outbound = CreateRecordRequestBody1$Outbound;
 }
 
-export function requestBody1ToJSON(requestBody1: RequestBody1): string {
-  return JSON.stringify(RequestBody1$outboundSchema.parse(requestBody1));
+export function createRecordRequestBody1ToJSON(
+  createRecordRequestBody1: CreateRecordRequestBody1,
+): string {
+  return JSON.stringify(
+    CreateRecordRequestBody1$outboundSchema.parse(createRecordRequestBody1),
+  );
 }
 
-export function requestBody1FromJSON(
+export function createRecordRequestBody1FromJSON(
   jsonString: string,
-): SafeParseResult<RequestBody1, SDKValidationError> {
+): SafeParseResult<CreateRecordRequestBody1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RequestBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBody1' from JSON`,
+    (x) => CreateRecordRequestBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRecordRequestBody1' from JSON`,
   );
 }
 
@@ -1482,9 +1494,9 @@ export const CreateRecordRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => RequestBody7$inboundSchema),
   z.lazy(() => RequestBody8$inboundSchema),
   z.lazy(() => RequestBody10$inboundSchema),
-  z.lazy(() => RequestBody1$inboundSchema),
-  z.lazy(() => RequestBody2$inboundSchema),
-  z.lazy(() => RequestBody3$inboundSchema),
+  z.lazy(() => CreateRecordRequestBody1$inboundSchema),
+  z.lazy(() => CreateRecordRequestBody2$inboundSchema),
+  z.lazy(() => CreateRecordRequestBody3$inboundSchema),
   z.lazy(() => RequestBody4$inboundSchema),
   z.lazy(() => RequestBody5$inboundSchema),
   z.lazy(() => RequestBody9$inboundSchema),
@@ -1496,9 +1508,9 @@ export type CreateRecordRequestBody$Outbound =
   | RequestBody7$Outbound
   | RequestBody8$Outbound
   | RequestBody10$Outbound
-  | RequestBody1$Outbound
-  | RequestBody2$Outbound
-  | RequestBody3$Outbound
+  | CreateRecordRequestBody1$Outbound
+  | CreateRecordRequestBody2$Outbound
+  | CreateRecordRequestBody3$Outbound
   | RequestBody4$Outbound
   | RequestBody5$Outbound
   | RequestBody9$Outbound
@@ -1513,9 +1525,9 @@ export const CreateRecordRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => RequestBody7$outboundSchema),
   z.lazy(() => RequestBody8$outboundSchema),
   z.lazy(() => RequestBody10$outboundSchema),
-  z.lazy(() => RequestBody1$outboundSchema),
-  z.lazy(() => RequestBody2$outboundSchema),
-  z.lazy(() => RequestBody3$outboundSchema),
+  z.lazy(() => CreateRecordRequestBody1$outboundSchema),
+  z.lazy(() => CreateRecordRequestBody2$outboundSchema),
+  z.lazy(() => CreateRecordRequestBody3$outboundSchema),
   z.lazy(() => RequestBody4$outboundSchema),
   z.lazy(() => RequestBody5$outboundSchema),
   z.lazy(() => RequestBody9$outboundSchema),
@@ -1566,9 +1578,9 @@ export const CreateRecordRequest$inboundSchema: z.ZodType<
     z.lazy(() => RequestBody7$inboundSchema),
     z.lazy(() => RequestBody8$inboundSchema),
     z.lazy(() => RequestBody10$inboundSchema),
-    z.lazy(() => RequestBody1$inboundSchema),
-    z.lazy(() => RequestBody2$inboundSchema),
-    z.lazy(() => RequestBody3$inboundSchema),
+    z.lazy(() => CreateRecordRequestBody1$inboundSchema),
+    z.lazy(() => CreateRecordRequestBody2$inboundSchema),
+    z.lazy(() => CreateRecordRequestBody3$inboundSchema),
     z.lazy(() => RequestBody4$inboundSchema),
     z.lazy(() => RequestBody5$inboundSchema),
     z.lazy(() => RequestBody9$inboundSchema),
@@ -1589,9 +1601,9 @@ export type CreateRecordRequest$Outbound = {
     | RequestBody7$Outbound
     | RequestBody8$Outbound
     | RequestBody10$Outbound
-    | RequestBody1$Outbound
-    | RequestBody2$Outbound
-    | RequestBody3$Outbound
+    | CreateRecordRequestBody1$Outbound
+    | CreateRecordRequestBody2$Outbound
+    | CreateRecordRequestBody3$Outbound
     | RequestBody4$Outbound
     | RequestBody5$Outbound
     | RequestBody9$Outbound
@@ -1611,9 +1623,9 @@ export const CreateRecordRequest$outboundSchema: z.ZodType<
     z.lazy(() => RequestBody7$outboundSchema),
     z.lazy(() => RequestBody8$outboundSchema),
     z.lazy(() => RequestBody10$outboundSchema),
-    z.lazy(() => RequestBody1$outboundSchema),
-    z.lazy(() => RequestBody2$outboundSchema),
-    z.lazy(() => RequestBody3$outboundSchema),
+    z.lazy(() => CreateRecordRequestBody1$outboundSchema),
+    z.lazy(() => CreateRecordRequestBody2$outboundSchema),
+    z.lazy(() => CreateRecordRequestBody3$outboundSchema),
     z.lazy(() => RequestBody4$outboundSchema),
     z.lazy(() => RequestBody5$outboundSchema),
     z.lazy(() => RequestBody9$outboundSchema),

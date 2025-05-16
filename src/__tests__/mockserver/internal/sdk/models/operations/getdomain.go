@@ -82,19 +82,19 @@ func (o *GetDomainCreator) GetID() string {
 	return o.ID
 }
 
-// ServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
-type ServiceType string
+// GetDomainServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
+type GetDomainServiceType string
 
 const (
-	ServiceTypeZeitWorld ServiceType = "zeit.world"
-	ServiceTypeExternal  ServiceType = "external"
-	ServiceTypeNa        ServiceType = "na"
+	GetDomainServiceTypeZeitWorld GetDomainServiceType = "zeit.world"
+	GetDomainServiceTypeExternal  GetDomainServiceType = "external"
+	GetDomainServiceTypeNa        GetDomainServiceType = "na"
 )
 
-func (e ServiceType) ToPointer() *ServiceType {
+func (e GetDomainServiceType) ToPointer() *GetDomainServiceType {
 	return &e
 }
-func (e *ServiceType) UnmarshalJSON(data []byte) error {
+func (e *GetDomainServiceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -105,10 +105,10 @@ func (e *ServiceType) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "na":
-		*e = ServiceType(v)
+		*e = GetDomainServiceType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ServiceType: %v", v)
+		return fmt.Errorf("invalid value for GetDomainServiceType: %v", v)
 	}
 }
 
@@ -140,7 +140,7 @@ type GetDomainDomain struct {
 	// Indicates whether the domain is set to automatically renew.
 	Renew *bool `json:"renew,omitempty"`
 	// The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
-	ServiceType ServiceType `json:"serviceType"`
+	ServiceType GetDomainServiceType `json:"serviceType"`
 	// Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.
 	TransferredAt *float64 `json:"transferredAt,omitempty"`
 	// If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
@@ -246,9 +246,9 @@ func (o *GetDomainDomain) GetRenew() *bool {
 	return o.Renew
 }
 
-func (o *GetDomainDomain) GetServiceType() ServiceType {
+func (o *GetDomainDomain) GetServiceType() GetDomainServiceType {
 	if o == nil {
-		return ServiceType("")
+		return GetDomainServiceType("")
 	}
 	return o.ServiceType
 }

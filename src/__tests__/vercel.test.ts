@@ -85,3 +85,19 @@ test("Vercel Patch /Projects/{project Id}/logs Presets/{id}", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Vercel Post /Domains", async () => {
+  const testHttpClient = createTestHTTPClient("post_/domains");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+  });
+
+  const result = await vercel.postDomains({
+    name: "example.com",
+    cdnEnabled: true,
+    method: "transfer-in",
+  });
+  expect(result).toBeDefined();
+});

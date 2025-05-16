@@ -1649,6 +1649,7 @@ export type CreateProjectPermissions = {
   deploymentPrivate?: Array<ACLAction> | undefined;
   deploymentPromote?: Array<ACLAction> | undefined;
   deploymentRollback?: Array<ACLAction> | undefined;
+  edgeCacheNamespace?: Array<ACLAction> | undefined;
   environments?: Array<ACLAction> | undefined;
   logs?: Array<ACLAction> | undefined;
   logsPreset?: Array<ACLAction> | undefined;
@@ -8627,6 +8628,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   deploymentPrivate: z.array(ACLAction$inboundSchema).optional(),
   deploymentPromote: z.array(ACLAction$inboundSchema).optional(),
   deploymentRollback: z.array(ACLAction$inboundSchema).optional(),
+  edgeCacheNamespace: z.array(ACLAction$inboundSchema).optional(),
   environments: z.array(ACLAction$inboundSchema).optional(),
   logs: z.array(ACLAction$inboundSchema).optional(),
   logsPreset: z.array(ACLAction$inboundSchema).optional(),
@@ -8833,6 +8835,7 @@ export type CreateProjectPermissions$Outbound = {
   deploymentPrivate?: Array<string> | undefined;
   deploymentPromote?: Array<string> | undefined;
   deploymentRollback?: Array<string> | undefined;
+  edgeCacheNamespace?: Array<string> | undefined;
   environments?: Array<string> | undefined;
   logs?: Array<string> | undefined;
   logsPreset?: Array<string> | undefined;
@@ -9042,6 +9045,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   deploymentPrivate: z.array(ACLAction$outboundSchema).optional(),
   deploymentPromote: z.array(ACLAction$outboundSchema).optional(),
   deploymentRollback: z.array(ACLAction$outboundSchema).optional(),
+  edgeCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
   environments: z.array(ACLAction$outboundSchema).optional(),
   logs: z.array(ACLAction$outboundSchema).optional(),
   logsPreset: z.array(ACLAction$outboundSchema).optional(),

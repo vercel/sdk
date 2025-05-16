@@ -2566,6 +2566,10 @@ export type OverageMetadata = {
    * Tracks the last time we sent a summary email.
    */
   overageSummaryEmailSentAt?: number | undefined;
+  /**
+   * Tracks the last time we sent a increased on-demand email.
+   */
+  increasedOnDemandEmailSentAt?: number | undefined;
 };
 
 /**
@@ -20856,12 +20860,14 @@ export const OverageMetadata$inboundSchema: z.ZodType<
 > = z.object({
   firstTimeOnDemandNotificationSentAt: z.number().optional(),
   overageSummaryEmailSentAt: z.number().optional(),
+  increasedOnDemandEmailSentAt: z.number().optional(),
 });
 
 /** @internal */
 export type OverageMetadata$Outbound = {
   firstTimeOnDemandNotificationSentAt?: number | undefined;
   overageSummaryEmailSentAt?: number | undefined;
+  increasedOnDemandEmailSentAt?: number | undefined;
 };
 
 /** @internal */
@@ -20872,6 +20878,7 @@ export const OverageMetadata$outboundSchema: z.ZodType<
 > = z.object({
   firstTimeOnDemandNotificationSentAt: z.number().optional(),
   overageSummaryEmailSentAt: z.number().optional(),
+  increasedOnDemandEmailSentAt: z.number().optional(),
 });
 
 /**

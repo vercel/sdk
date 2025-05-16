@@ -9,8 +9,8 @@ import { Saml } from "@vercel/sdk/models/teamlimited.js";
 
 let value: Saml = {
   connection: {
-    type: "OktaSAML",
     status: "linked",
+    type: "OktaSAML",
     state: "active",
     connectedAt: 1611796915677,
     lastReceivedWebhookEvent: 1611796915677,

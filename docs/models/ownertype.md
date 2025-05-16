@@ -5,11 +5,11 @@
 ```typescript
 import { OwnerType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: OwnerType = "user";
+let value: OwnerType = "team";
 ```
 
 ## Values
 
 ```typescript
-"team" | "user"
+"user" | "team"
 ```

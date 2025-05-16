@@ -12,8 +12,8 @@ import (
 type LimitedBy string
 
 const (
-	LimitedByScope LimitedBy = "scope"
 	LimitedByMfa   LimitedBy = "mfa"
+	LimitedByScope LimitedBy = "scope"
 )
 
 func (e LimitedBy) ToPointer() *LimitedBy {
@@ -25,9 +25,9 @@ func (e *LimitedBy) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "scope":
-		fallthrough
 	case "mfa":
+		fallthrough
+	case "scope":
 		*e = LimitedBy(v)
 		return nil
 	default:
@@ -37,10 +37,10 @@ func (e *LimitedBy) UnmarshalJSON(data []byte) error {
 
 // Connection - Information for the SAML Single Sign-On configuration.
 type Connection struct {
-	// The Identity Provider "type", for example Okta.
-	Type string `json:"type"`
 	// Current status of the connection.
 	Status string `json:"status"`
+	// The Identity Provider "type", for example Okta.
+	Type string `json:"type"`
 	// Current state of the connection.
 	State string `json:"state"`
 	// Timestamp (in milliseconds) of when the configuration was connected.
@@ -49,18 +49,18 @@ type Connection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
-func (o *Connection) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
 func (o *Connection) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
+}
+
+func (o *Connection) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
 }
 
 func (o *Connection) GetState() string {
@@ -286,6 +286,7 @@ func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
 type Origin string
 
 const (
+	OriginSaml              Origin = "saml"
 	OriginMail              Origin = "mail"
 	OriginLink              Origin = "link"
 	OriginImport            Origin = "import"
@@ -293,7 +294,6 @@ const (
 	OriginGithub            Origin = "github"
 	OriginGitlab            Origin = "gitlab"
 	OriginBitbucket         Origin = "bitbucket"
-	OriginSaml              Origin = "saml"
 	OriginDsync             Origin = "dsync"
 	OriginFeedback          Origin = "feedback"
 	OriginOrganizationTeams Origin = "organization-teams"
@@ -308,6 +308,8 @@ func (e *Origin) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "saml":
+		fallthrough
 	case "mail":
 		fallthrough
 	case "link":
@@ -321,8 +323,6 @@ func (e *Origin) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
-		fallthrough
-	case "saml":
 		fallthrough
 	case "dsync":
 		fallthrough
@@ -494,13 +494,13 @@ func (o *JoinedFrom) GetDsyncConnectedAt() *float64 {
 type Membership struct {
 	UID               *string           `json:"uid,omitempty"`
 	Entitlements      []Entitlements    `json:"entitlements,omitempty"`
-	TeamID            *string           `json:"teamId,omitempty"`
 	Confirmed         bool              `json:"confirmed"`
 	ConfirmedAt       float64           `json:"confirmedAt"`
 	AccessRequestedAt *float64          `json:"accessRequestedAt,omitempty"`
 	Role              Role              `json:"role"`
 	TeamRoles         []TeamRoles       `json:"teamRoles,omitempty"`
 	TeamPermissions   []TeamPermissions `json:"teamPermissions,omitempty"`
+	TeamID            *string           `json:"teamId,omitempty"`
 	CreatedAt         float64           `json:"createdAt"`
 	Created           float64           `json:"created"`
 	JoinedFrom        *JoinedFrom       `json:"joinedFrom,omitempty"`
@@ -518,13 +518,6 @@ func (o *Membership) GetEntitlements() []Entitlements {
 		return nil
 	}
 	return o.Entitlements
-}
-
-func (o *Membership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *Membership) GetConfirmed() bool {
@@ -567,6 +560,13 @@ func (o *Membership) GetTeamPermissions() []TeamPermissions {
 		return nil
 	}
 	return o.TeamPermissions
+}
+
+func (o *Membership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *Membership) GetCreatedAt() float64 {

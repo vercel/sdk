@@ -10,8 +10,8 @@ let value: AddBypassIpResponseBodySecurityResult = {
   id: "<id>",
   domain: "selfish-version.name",
   ip: "fffe:1d58:eebc:b907:af95:7ab0:bf83:a5a3",
-  createdAt: "1722665963139",
-  updatedAt: "1747169593717",
+  createdAt: "1722785339811",
+  updatedAt: "1747288970389",
   updatedAtHour: "<value>",
 };
 ```

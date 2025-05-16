@@ -11,6 +11,10 @@ export type RequestPromoteRequest = {
   projectId: string;
   deploymentId: string;
   /**
+   * Skip the rolling release process and promote directly to production
+   */
+  dangerouslyForcePromoteCanary?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -28,6 +32,7 @@ export const RequestPromoteRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
   deploymentId: z.string(),
+  dangerouslyForcePromoteCanary: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -36,6 +41,7 @@ export const RequestPromoteRequest$inboundSchema: z.ZodType<
 export type RequestPromoteRequest$Outbound = {
   projectId: string;
   deploymentId: string;
+  dangerouslyForcePromoteCanary?: boolean | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -48,6 +54,7 @@ export const RequestPromoteRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
   deploymentId: z.string(),
+  dangerouslyForcePromoteCanary: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

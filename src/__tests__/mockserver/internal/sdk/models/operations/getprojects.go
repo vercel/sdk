@@ -5231,6 +5231,7 @@ type GetProjectsPermissions struct {
 	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
 	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
 	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
 	Environments                             []components.ACLAction `json:"environments,omitempty"`
 	Logs                                     []components.ACLAction `json:"logs,omitempty"`
 	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
@@ -6338,6 +6339,13 @@ func (o *GetProjectsPermissions) GetDeploymentRollback() []components.ACLAction 
 		return nil
 	}
 	return o.DeploymentRollback
+}
+
+func (o *GetProjectsPermissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
 }
 
 func (o *GetProjectsPermissions) GetEnvironments() []components.ACLAction {

@@ -7186,6 +7186,12 @@
                           },
                           "type": "array"
                         },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "environments": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -12537,24 +12543,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
-                          "id": {
-                            "type": "string"
-                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
+                          "id": {
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -12667,9 +12673,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "endsWith",
                                     "startsWith",
-                                    "equals",
-                                    "endsWith"
+                                    "equals"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -13586,15 +13592,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -13824,11 +13830,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
+                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -13938,8 +13944,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -13991,8 +13997,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -14045,8 +14051,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -19347,19 +19353,13 @@
             }
           }
         ]
-      },
+      }
+    },
+    "/domains": {
       "post": {
-        "description": "This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.",
-        "operationId": "createOrTransferDomain",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Register or transfer-in a new Domain",
-        "tags": [
-          "domains"
-        ],
+        "description": "",
+        "security": [],
+        "tags": [],
         "responses": {
           "200": {
             "description": "",
@@ -19573,26 +19573,7 @@
             "description": ""
           }
         },
-        "parameters": [
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -19693,8 +19674,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         }
       }
     },
@@ -30728,6 +30708,12 @@
                                 },
                                 "type": "array"
                               },
+                              "edgeCacheNamespace": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "environments": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -34790,6 +34776,12 @@
                           "type": "array"
                         },
                         "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -39047,6 +39039,12 @@
                           },
                           "type": "array"
                         },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "environments": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -42998,6 +42996,12 @@
                           "type": "array"
                         },
                         "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -53594,6 +53598,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "dangerouslyForcePromoteCanary",
+            "description": "Skip the rolling release process and promote directly to production",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Skip the rolling release process and promote directly to production"
             }
           },
           {
@@ -69075,6 +69089,10 @@
                           "overageSummaryEmailSentAt": {
                             "type": "number",
                             "description": "Tracks the last time we sent a summary email."
+                          },
+                          "increasedOnDemandEmailSentAt": {
+                            "type": "number",
+                            "description": "Tracks the last time we sent a increased on-demand email."
                           }
                         },
                         "type": "object",
@@ -72868,8 +72886,8 @@
             "items": {
               "type": "string",
               "enum": [
-                "scope",
-                "mfa"
+                "mfa",
+                "scope"
               ]
             },
             "type": "array"
@@ -72878,15 +72896,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The Identity Provider \"type\", for example Okta.",
-                    "example": "OktaSAML"
-                  },
                   "status": {
                     "type": "string",
                     "description": "Current status of the connection.",
                     "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
                   },
                   "state": {
                     "type": "string",
@@ -72905,8 +72923,8 @@
                   }
                 },
                 "required": [
-                  "type",
                   "status",
+                  "type",
                   "state",
                   "connectedAt"
                 ],
@@ -72999,9 +73017,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -73051,6 +73066,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "number"
               },
@@ -73062,6 +73080,7 @@
                   "origin": {
                     "type": "string",
                     "enum": [
+                      "saml",
                       "mail",
                       "link",
                       "import",
@@ -73069,7 +73088,6 @@
                       "github",
                       "gitlab",
                       "bitbucket",
-                      "saml",
                       "dsync",
                       "feedback",
                       "organization-teams"

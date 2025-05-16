@@ -198,8 +198,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.getProjectsProjectIdLogsPresets({
-    projectId: "<id>",
+  const result = await vercel.postDomains({
+    name: "example.com",
+    cdnEnabled: true,
+    method: "transfer-in",
   });
 
   // Handle the result
@@ -369,7 +371,6 @@ run();
 * [getDomainConfig](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 * [getDomain](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 * [getDomains](docs/sdks/domains/README.md#getdomains) - List all the domains
-* [createOrTransferDomain](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
 * [patchDomain](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 * [deleteDomain](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 
@@ -506,6 +507,7 @@ run();
 
 ### [Vercel SDK](docs/sdks/vercel/README.md)
 
+* [postDomains](docs/sdks/vercel/README.md#postdomains)
 * [getProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#getprojectsprojectidlogspresets)
 * [postProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
 * [deleteProjectsProjectIdLogsPresetsId](docs/sdks/vercel/README.md#deleteprojectsprojectidlogspresetsid)
@@ -591,7 +593,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsBuyDomain`](docs/sdks/domains/README.md#buydomain) - Purchase a domain
 - [`domainsCheckDomainPrice`](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain
 - [`domainsCheckDomainStatus`](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability
-- [`domainsCreateOrTransferDomain`](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
 - [`domainsDeleteDomain`](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 - [`domainsGetDomain`](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 - [`domainsGetDomainConfig`](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
@@ -647,6 +648,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 - [`patchProjectsProjectIdLogsPresetsId`](docs/sdks/vercel/README.md#patchprojectsprojectidlogspresetsid)
+- [`postDomains`](docs/sdks/vercel/README.md#postdomains)
 - [`postProjectsProjectIdLogsPresets`](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
@@ -763,8 +765,10 @@ import { Vercel } from "@vercel/sdk";
 const vercel = new Vercel();
 
 async function run() {
-  const result = await vercel.getProjectsProjectIdLogsPresets({
-    projectId: "<id>",
+  const result = await vercel.postDomains({
+    name: "example.com",
+    cdnEnabled: true,
+    method: "transfer-in",
   }, {
     retries: {
       strategy: "backoff",
@@ -804,8 +808,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.getProjectsProjectIdLogsPresets({
-    projectId: "<id>",
+  const result = await vercel.postDomains({
+    name: "example.com",
+    cdnEnabled: true,
+    method: "transfer-in",
   });
 
   // Handle the result
@@ -820,12 +826,13 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `getProjectsProjectIdLogsPresets` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `postDomains` method may throw the following errors:
 
 | Error Type                   | Status Code | Content Type     |
 | ---------------------------- | ----------- | ---------------- |
 | models.VercelBadRequestError | 400         | application/json |
 | models.VercelForbiddenError  | 401         | application/json |
+| models.VercelNotFoundError   | 404         | application/json |
 | models.SDKError              | 4XX, 5XX    | \*/\*            |
 
 If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
@@ -835,14 +842,17 @@ import { Vercel } from "@vercel/sdk";
 import { SDKValidationError } from "@vercel/sdk/models/sdkvalidationerror.js";
 import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.js";
 import { VercelForbiddenError } from "@vercel/sdk/models/vercelforbiddenerror.js";
+import { VercelNotFoundError } from "@vercel/sdk/models/vercelnotfounderror.js";
 
 const vercel = new Vercel();
 
 async function run() {
   let result;
   try {
-    result = await vercel.getProjectsProjectIdLogsPresets({
-      projectId: "<id>",
+    result = await vercel.postDomains({
+      name: "example.com",
+      cdnEnabled: true,
+      method: "transfer-in",
     });
 
     // Handle the result
@@ -864,6 +874,11 @@ async function run() {
       }
       case (err instanceof VercelForbiddenError): {
         // Handle err.data$: VercelForbiddenErrorData
+        console.error(err);
+        return;
+      }
+      case (err instanceof VercelNotFoundError): {
+        // Handle err.data$: VercelNotFoundErrorData
         console.error(err);
         return;
       }
@@ -906,8 +921,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.getProjectsProjectIdLogsPresets({
-    projectId: "<id>",
+  const result = await vercel.postDomains({
+    name: "example.com",
+    cdnEnabled: true,
+    method: "transfer-in",
   });
 
   // Handle the result

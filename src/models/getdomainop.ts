@@ -37,7 +37,7 @@ export type GetDomainCreator = {
 /**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
-export const ServiceType = {
+export const GetDomainServiceType = {
   ZeitWorld: "zeit.world",
   External: "external",
   Na: "na",
@@ -45,7 +45,7 @@ export const ServiceType = {
 /**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
-export type ServiceType = ClosedEnum<typeof ServiceType>;
+export type GetDomainServiceType = ClosedEnum<typeof GetDomainServiceType>;
 
 export type GetDomainDomain = {
   suffix: boolean;
@@ -101,7 +101,7 @@ export type GetDomainDomain = {
   /**
    * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
    */
-  serviceType: ServiceType;
+  serviceType: GetDomainServiceType;
   /**
    * Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.
    */
@@ -247,22 +247,24 @@ export function getDomainCreatorFromJSON(
 }
 
 /** @internal */
-export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
-  .nativeEnum(ServiceType);
+export const GetDomainServiceType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDomainServiceType
+> = z.nativeEnum(GetDomainServiceType);
 
 /** @internal */
-export const ServiceType$outboundSchema: z.ZodNativeEnum<typeof ServiceType> =
-  ServiceType$inboundSchema;
+export const GetDomainServiceType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDomainServiceType
+> = GetDomainServiceType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ServiceType$ {
-  /** @deprecated use `ServiceType$inboundSchema` instead. */
-  export const inboundSchema = ServiceType$inboundSchema;
-  /** @deprecated use `ServiceType$outboundSchema` instead. */
-  export const outboundSchema = ServiceType$outboundSchema;
+export namespace GetDomainServiceType$ {
+  /** @deprecated use `GetDomainServiceType$inboundSchema` instead. */
+  export const inboundSchema = GetDomainServiceType$inboundSchema;
+  /** @deprecated use `GetDomainServiceType$outboundSchema` instead. */
+  export const outboundSchema = GetDomainServiceType$outboundSchema;
 }
 
 /** @internal */
@@ -285,7 +287,7 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   id: z.string(),
   orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
-  serviceType: ServiceType$inboundSchema,
+  serviceType: GetDomainServiceType$inboundSchema,
   transferredAt: z.nullable(z.number()).optional(),
   transferStartedAt: z.number().optional(),
   userId: z.string(),
@@ -333,7 +335,7 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   id: z.string(),
   orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
-  serviceType: ServiceType$outboundSchema,
+  serviceType: GetDomainServiceType$outboundSchema,
   transferredAt: z.nullable(z.number()).optional(),
   transferStartedAt: z.number().optional(),
   userId: z.string(),

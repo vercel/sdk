@@ -5,7 +5,6 @@
 import { domainsBuyDomain } from "../funcs/domainsBuyDomain.js";
 import { domainsCheckDomainPrice } from "../funcs/domainsCheckDomainPrice.js";
 import { domainsCheckDomainStatus } from "../funcs/domainsCheckDomainStatus.js";
-import { domainsCreateOrTransferDomain } from "../funcs/domainsCreateOrTransferDomain.js";
 import { domainsDeleteDomain } from "../funcs/domainsDeleteDomain.js";
 import { domainsGetDomain } from "../funcs/domainsGetDomain.js";
 import { domainsGetDomainConfig } from "../funcs/domainsGetDomainConfig.js";
@@ -22,10 +21,6 @@ import {
   CheckDomainStatusRequest,
   CheckDomainStatusResponseBody,
 } from "../models/checkdomainstatusop.js";
-import {
-  CreateOrTransferDomainRequest,
-  CreateOrTransferDomainResponseBody,
-} from "../models/createortransferdomainop.js";
 import {
   DeleteDomainRequest,
   DeleteDomainResponseBody,
@@ -166,23 +161,6 @@ export class Domains extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetDomainsResponseBody> {
     return unwrapAsync(domainsGetDomains(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Register or transfer-in a new Domain
-   *
-   * @remarks
-   * This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.
-   */
-  async createOrTransferDomain(
-    request: CreateOrTransferDomainRequest,
-    options?: RequestOptions,
-  ): Promise<CreateOrTransferDomainResponseBody> {
-    return unwrapAsync(domainsCreateOrTransferDomain(
       this,
       request,
       options,

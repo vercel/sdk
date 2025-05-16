@@ -68,7 +68,6 @@ import { tool$dnsUpdateRecord } from "./tools/dnsUpdateRecord.js";
 import { tool$domainsBuyDomain } from "./tools/domainsBuyDomain.js";
 import { tool$domainsCheckDomainPrice } from "./tools/domainsCheckDomainPrice.js";
 import { tool$domainsCheckDomainStatus } from "./tools/domainsCheckDomainStatus.js";
-import { tool$domainsCreateOrTransferDomain } from "./tools/domainsCreateOrTransferDomain.js";
 import { tool$domainsDeleteDomain } from "./tools/domainsDeleteDomain.js";
 import { tool$domainsGetDomain } from "./tools/domainsGetDomain.js";
 import { tool$domainsGetDomainConfig } from "./tools/domainsGetDomainConfig.js";
@@ -124,6 +123,7 @@ import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
 import { tool$patchProjectsProjectIdLogsPresetsId } from "./tools/patchProjectsProjectIdLogsPresetsId.js";
+import { tool$postDomains } from "./tools/postDomains.js";
 import { tool$postProjectsProjectIdLogsPresets } from "./tools/postProjectsProjectIdLogsPresets.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
@@ -191,7 +191,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.7.3",
+    version: "1.7.4",
   });
 
   const client = new VercelCore({
@@ -221,6 +221,7 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$postDomains);
   tool(tool$getProjectsProjectIdLogsPresets);
   tool(tool$postProjectsProjectIdLogsPresets);
   tool(tool$deleteProjectsProjectIdLogsPresetsId);
@@ -292,7 +293,6 @@ export function createMCPServer(deps: {
   tool(tool$domainsGetDomainConfig);
   tool(tool$domainsGetDomain);
   tool(tool$domainsGetDomains);
-  tool(tool$domainsCreateOrTransferDomain);
   tool(tool$domainsPatchDomain);
   tool(tool$domainsDeleteDomain);
   tool(tool$dnsGetRecords);

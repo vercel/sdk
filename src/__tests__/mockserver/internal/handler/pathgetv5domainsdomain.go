@@ -75,7 +75,7 @@ func testGetDomainGetDomain0(w http.ResponseWriter, req *http.Request) {
 			ID:                "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
 			OrderedAt:         types.Float64(1613602938882),
 			Renew:             types.Bool(true),
-			ServiceType:       operations.ServiceTypeZeitWorld,
+			ServiceType:       operations.GetDomainServiceTypeZeitWorld,
 			TransferredAt:     types.Float64(1613602938882),
 			TransferStartedAt: types.Float64(1613602938882),
 			UserID:            "<id>",

@@ -5,11 +5,16 @@
 import { deleteProjectsProjectIdLogsPresetsId } from "../funcs/deleteProjectsProjectIdLogsPresetsId.js";
 import { getProjectsProjectIdLogsPresets } from "../funcs/getProjectsProjectIdLogsPresets.js";
 import { patchProjectsProjectIdLogsPresetsId } from "../funcs/patchProjectsProjectIdLogsPresetsId.js";
+import { postDomains } from "../funcs/postDomains.js";
 import { postProjectsProjectIdLogsPresets } from "../funcs/postProjectsProjectIdLogsPresets.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { DeleteProjectsProjectIdLogsPresetsIdRequest } from "../models/deleteprojectsprojectidlogspresetsidop.js";
 import { GetProjectsProjectIdLogsPresetsRequest } from "../models/getprojectsprojectidlogspresetsop.js";
 import { PatchProjectsProjectIdLogsPresetsIdRequest } from "../models/patchprojectsprojectidlogspresetsidop.js";
+import {
+  PostDomainsRequestBody,
+  PostDomainsResponseBody,
+} from "../models/postdomainsop.js";
 import { PostProjectsProjectIdLogsPresetsRequest } from "../models/postprojectsprojectidlogspresetsop.js";
 import { Team } from "../models/team.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -139,6 +144,17 @@ export class Vercel extends ClientSDK {
   private _certs?: Certs;
   get certs(): Certs {
     return (this._certs ??= new Certs(this._options));
+  }
+
+  async postDomains(
+    request?: PostDomainsRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<PostDomainsResponseBody> {
+    return unwrapAsync(postDomains(
+      this,
+      request,
+      options,
+    ));
   }
 
   async getProjectsProjectIdLogsPresets(

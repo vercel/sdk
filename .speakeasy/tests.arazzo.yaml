@@ -5703,3 +5703,54 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: logs
+  - workflowId: post_/domains
+    steps:
+      - stepId: test
+        operationId: post_/domains
+        requestBody:
+          contentType: application/json
+          payload:
+            cdnEnabled: true
+            method: transfer-in
+            name: example.com
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "domain": {
+                  "verified": true,
+                  "nameservers": [
+                    "ns1.nameserver.net",
+                    "ns2.nameserver.net"
+                  ],
+                  "intendedNameservers": [
+                    "ns1.vercel-dns.com",
+                    "ns2.vercel-dns.com"
+                  ],
+                  "customNameservers": [
+                    "ns1.nameserver.net",
+                    "ns2.nameserver.net"
+                  ],
+                  "creator": {
+                    "username": "vercel_user",
+                    "email": "demo@example.com",
+                    "id": "ZspSRT4ljIEEmMHgoDwKWDei"
+                  },
+                  "name": "example.com",
+                  "boughtAt": 1613602938882,
+                  "createdAt": 1613602938882,
+                  "expiresAt": 1613602938882,
+                  "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
+                  "orderedAt": 1613602938882,
+                  "renew": true,
+                  "serviceType": "zeit.world",
+                  "transferredAt": 1613602938882,
+                  "transferStartedAt": 1613602938882,
+                  "userId": "\u003cid\u003e",
+                  "teamId": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel

@@ -114,6 +114,7 @@ async function $do(
   );
 
   const query = encodeFormQuery({
+    "dangerouslyForcePromoteCanary": payload.dangerouslyForcePromoteCanary,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

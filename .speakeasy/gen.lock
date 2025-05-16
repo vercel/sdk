@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 19f8b7407f3fc24f0c2192c4c9763acc
+  docChecksum: 2d45066a9ff750eea073204f72e6f3da
   docVersion: 0.0.1
-  speakeasyVersion: 1.544.0
+  speakeasyVersion: 1.545.0
   generationVersion: 2.599.0
-  releaseVersion: 1.7.3
-  configChecksum: 87945131bd635488f23f5f58708d92fa
+  releaseVersion: 1.7.4
+  configChecksum: a898b80cc67557ac2d3320777cd6c08a
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -422,15 +422,6 @@ generatedFiles:
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
   - docs/models/createlogdrainsources.md
-  - docs/models/createortransferdomaincreator.md
-  - docs/models/createortransferdomaindomain.md
-  - docs/models/createortransferdomainrequest.md
-  - docs/models/createortransferdomainrequestbody.md
-  - docs/models/createortransferdomainrequestbody1.md
-  - docs/models/createortransferdomainrequestbody2.md
-  - docs/models/createortransferdomainrequestbody3.md
-  - docs/models/createortransferdomainresponsebody.md
-  - docs/models/createortransferdomainservicetype.md
   - docs/models/createprojectaction.md
   - docs/models/createprojectalgo.md
   - docs/models/createprojectaliasassigned.md
@@ -680,6 +671,9 @@ generatedFiles:
   - docs/models/createprojectwebanalytics.md
   - docs/models/createrecordrequest.md
   - docs/models/createrecordrequestbody.md
+  - docs/models/createrecordrequestbody1.md
+  - docs/models/createrecordrequestbody2.md
+  - docs/models/createrecordrequestbody3.md
   - docs/models/createrecordrequestbodydnsrequest10type.md
   - docs/models/createrecordrequestbodydnsrequest5type.md
   - docs/models/createrecordrequestbodydnsrequest6type.md
@@ -1282,6 +1276,7 @@ generatedFiles:
   - docs/models/getdomainrequest.md
   - docs/models/getdomainresponsebody.md
   - docs/models/getdomainscreator.md
+  - docs/models/getdomainservicetype.md
   - docs/models/getdomainsrequest.md
   - docs/models/getdomainsresponsebody.md
   - docs/models/getdomainsservicetype.md
@@ -2110,6 +2105,10 @@ generatedFiles:
   - docs/models/permissions.md
   - docs/models/php.md
   - docs/models/plan.md
+  - docs/models/postdomainscreator.md
+  - docs/models/postdomainsdomain.md
+  - docs/models/postdomainsrequestbody.md
+  - docs/models/postdomainsresponsebody.md
   - docs/models/postgres.md
   - docs/models/postgrescomputetime.md
   - docs/models/postgresdatabase.md
@@ -3367,6 +3366,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidorname.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamedomainsdomain.go
+  - src/__tests__/mockserver/internal/handler/pathpostdomains.go
   - src/__tests__/mockserver/internal/handler/pathpostprojectsidornametransferrequest.go
   - src/__tests__/mockserver/internal/handler/pathpostprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornamedomains.go
@@ -3403,7 +3403,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv2files.go
   - src/__tests__/mockserver/internal/handler/pathpostv2integrationslogdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv3usertokens.go
-  - src/__tests__/mockserver/internal/handler/pathpostv5domains.go
   - src/__tests__/mockserver/internal/handler/pathpostv5domainsbuy.go
   - src/__tests__/mockserver/internal/handler/pathpostv7certs.go
   - src/__tests__/mockserver/internal/handler/pathpostv8artifacts.go
@@ -3468,7 +3467,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfigtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createevent.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createlogdrain.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/createortransferdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createprojectenv.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createprojecttransferrequest.go
@@ -3567,6 +3565,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchurlprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/postdomains.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
@@ -3699,7 +3698,6 @@ generatedFiles:
   - src/funcs/domainsBuyDomain.ts
   - src/funcs/domainsCheckDomainPrice.ts
   - src/funcs/domainsCheckDomainStatus.ts
-  - src/funcs/domainsCreateOrTransferDomain.ts
   - src/funcs/domainsDeleteDomain.ts
   - src/funcs/domainsGetDomain.ts
   - src/funcs/domainsGetDomainConfig.ts
@@ -3755,6 +3753,7 @@ generatedFiles:
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
   - src/funcs/patchProjectsProjectIdLogsPresetsId.ts
+  - src/funcs/postDomains.ts
   - src/funcs/postProjectsProjectIdLogsPresets.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
@@ -3897,7 +3896,6 @@ generatedFiles:
   - src/mcp-server/tools/domainsBuyDomain.ts
   - src/mcp-server/tools/domainsCheckDomainPrice.ts
   - src/mcp-server/tools/domainsCheckDomainStatus.ts
-  - src/mcp-server/tools/domainsCreateOrTransferDomain.ts
   - src/mcp-server/tools/domainsDeleteDomain.ts
   - src/mcp-server/tools/domainsGetDomain.ts
   - src/mcp-server/tools/domainsGetDomainConfig.ts
@@ -3953,6 +3951,7 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
   - src/mcp-server/tools/patchProjectsProjectIdLogsPresetsId.ts
+  - src/mcp-server/tools/postDomains.ts
   - src/mcp-server/tools/postProjectsProjectIdLogsPresets.ts
   - src/mcp-server/tools/projectMembersAddProjectMember.ts
   - src/mcp-server/tools/projectMembersGetProjectMembers.ts
@@ -4034,7 +4033,6 @@ generatedFiles:
   - src/models/createedgeconfigtokenop.ts
   - src/models/createeventop.ts
   - src/models/createlogdrainop.ts
-  - src/models/createortransferdomainop.ts
   - src/models/createprojectenvop.ts
   - src/models/createprojectop.ts
   - src/models/createprojecttransferrequestop.ts
@@ -4140,6 +4138,7 @@ generatedFiles:
   - src/models/patchurlprotectionbypassop.ts
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/pauseprojectop.ts
+  - src/models/postdomainsop.ts
   - src/models/postprojectsprojectidlogspresetsop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
   - src/models/putfirewallconfigop.ts
@@ -6673,7 +6672,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 2076.98, "role": "VIEWER", "createdAt": 5945.15, "created": 6852.6}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 2076.98, "role": "VIEWER", "createdAt": 5945.15, "created": 6852.6}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6691,7 +6690,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 1771.72, "role": "MEMBER", "createdAt": 1162.06, "created": 9734.64}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 1771.72, "role": "MEMBER", "createdAt": 1162.06, "created": 9734.64}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6707,7 +6706,7 @@ examples:
           until: 1540095775951
       responses:
         "200":
-          application/json: {"teams": [{"limited": true, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3401.3, "role": "VIEWER", "createdAt": 853.16, "created": 1827.59}, "created": "<value>", "createdAt": 1630748523395}, {"limited": true, "limitedBy": ["mfa"], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 9654.85, "role": "OWNER", "createdAt": 1341.03, "created": 7461.12}, "created": "<value>", "createdAt": 1630748523395}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"teams": [{"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3401.3, "role": "VIEWER", "createdAt": 853.16, "created": 1827.59}, "created": "<value>", "createdAt": 1630748523395}, {"limited": true, "limitedBy": ["mfa"], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 9654.85, "role": "OWNER", "createdAt": 1341.03, "created": 7461.12}, "created": "<value>", "createdAt": 1630748523395}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7136,6 +7135,19 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  post_/domains:
+    speakeasy-default-post-/domains:
+      requestBody:
+        application/json: {"name": "example.com", "cdnEnabled": true, "method": "transfer-in"}
+      responses:
+        "200":
+          application/json: {"domain": {"verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "name": "example.com", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>", "teamId": "<id>"}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.1
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -7290,3 +7302,4 @@ generatedTests:
   delete_/projects/{projectId}/logs-presets/{id}: "2025-05-14T14:17:41+01:00"
   patch_/projects/{projectId}/logs-presets/{id}: "2025-05-14T14:17:41+01:00"
   getRuntimeLogs: "2025-05-14T14:17:41+01:00"
+  post_/domains: "2025-05-16T00:08:53Z"

@@ -54,7 +54,7 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 	respBody := &components.TeamLimited{
 		Limited: false,
 		LimitedBy: []components.LimitedBy{
-			components.LimitedByMfa,
+			components.LimitedByScope,
 		},
 		ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
 		Slug:   "my-team",
@@ -62,10 +62,10 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
 		Membership: components.Membership{
 			Confirmed:   false,
-			ConfirmedAt: 4375.87,
-			Role:        components.RoleContributor,
-			CreatedAt:   9636.63,
-			Created:     3834.41,
+			ConfirmedAt: 7151.9,
+			Role:        components.RoleBilling,
+			CreatedAt:   5448.83,
+			Created:     4236.55,
 		},
 		Created:   "<value>",
 		CreatedAt: 1630748523395,

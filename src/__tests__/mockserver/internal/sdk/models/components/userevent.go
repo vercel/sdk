@@ -10166,6 +10166,8 @@ type OverageMetadata struct {
 	FirstTimeOnDemandNotificationSentAt *float64 `json:"firstTimeOnDemandNotificationSentAt,omitempty"`
 	// Tracks the last time we sent a summary email.
 	OverageSummaryEmailSentAt *float64 `json:"overageSummaryEmailSentAt,omitempty"`
+	// Tracks the last time we sent a increased on-demand email.
+	IncreasedOnDemandEmailSentAt *float64 `json:"increasedOnDemandEmailSentAt,omitempty"`
 }
 
 func (o *OverageMetadata) GetFirstTimeOnDemandNotificationSentAt() *float64 {
@@ -10180,6 +10182,13 @@ func (o *OverageMetadata) GetOverageSummaryEmailSentAt() *float64 {
 		return nil
 	}
 	return o.OverageSummaryEmailSentAt
+}
+
+func (o *OverageMetadata) GetIncreasedOnDemandEmailSentAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IncreasedOnDemandEmailSentAt
 }
 
 // EnablePreviewFeedback - Whether the Vercel Toolbar is enabled for preview deployments.

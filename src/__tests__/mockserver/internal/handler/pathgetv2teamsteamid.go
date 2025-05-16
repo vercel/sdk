@@ -49,7 +49,7 @@ func testGetTeamGetTeam0(w http.ResponseWriter, req *http.Request) {
 	respBody := &components.TeamLimited{
 		Limited: false,
 		LimitedBy: []components.LimitedBy{
-			components.LimitedByMfa,
+			components.LimitedByScope,
 		},
 		ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
 		Slug:   "my-team",

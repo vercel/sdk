@@ -3,19 +3,12 @@
  */
 
 import { VercelCore } from "../core.js";
-import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import {
-  CreateOrTransferDomainRequest,
-  CreateOrTransferDomainRequest$outboundSchema,
-  CreateOrTransferDomainResponseBody,
-  CreateOrTransferDomainResponseBody$inboundSchema,
-} from "../models/createortransferdomainop.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -23,6 +16,12 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  PostDomainsRequestBody,
+  PostDomainsRequestBody$outboundSchema,
+  PostDomainsResponseBody,
+  PostDomainsResponseBody$inboundSchema,
+} from "../models/postdomainsop.js";
 import { SDKError } from "../models/sdkerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
@@ -40,19 +39,13 @@ import {
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
-/**
- * Register or transfer-in a new Domain
- *
- * @remarks
- * This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.
- */
-export function domainsCreateOrTransferDomain(
+export function postDomains(
   client: VercelCore,
-  request: CreateOrTransferDomainRequest,
+  request?: PostDomainsRequestBody | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    CreateOrTransferDomainResponseBody,
+    PostDomainsResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
     | VercelNotFoundError
@@ -74,12 +67,12 @@ export function domainsCreateOrTransferDomain(
 
 async function $do(
   client: VercelCore,
-  request: CreateOrTransferDomainRequest,
+  request?: PostDomainsRequestBody | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      CreateOrTransferDomainResponseBody,
+      PostDomainsResponseBody,
       | VercelBadRequestError
       | VercelForbiddenError
       | VercelNotFoundError
@@ -96,39 +89,32 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => CreateOrTransferDomainRequest$outboundSchema.parse(value),
+    (value) => PostDomainsRequestBody$outboundSchema.optional().parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RequestBody, { explode: true });
+  const body = payload === undefined
+    ? null
+    : encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/v5/domains")();
-
-  const query = encodeFormQuery({
-    "slug": payload.slug,
-    "teamId": payload.teamId,
-  });
+  const path = pathToFunc("/domains")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.bearerToken);
-  const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
-
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "createOrTransferDomain",
+    operationID: "post_/domains",
     oAuth2Scopes: [],
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.bearerToken,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -136,12 +122,10 @@ async function $do(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
     method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -166,7 +150,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    CreateOrTransferDomainResponseBody,
+    PostDomainsResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
     | VercelNotFoundError
@@ -178,7 +162,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, CreateOrTransferDomainResponseBody$inboundSchema),
+    M.json(200, PostDomainsResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),

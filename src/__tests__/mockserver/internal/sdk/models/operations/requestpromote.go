@@ -9,6 +9,8 @@ import (
 type RequestPromoteRequest struct {
 	ProjectID    string `pathParam:"style=simple,explode=false,name=projectId"`
 	DeploymentID string `pathParam:"style=simple,explode=false,name=deploymentId"`
+	// Skip the rolling release process and promote directly to production
+	DangerouslyForcePromoteCanary *bool `queryParam:"style=form,explode=true,name=dangerouslyForcePromoteCanary"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -27,6 +29,13 @@ func (o *RequestPromoteRequest) GetDeploymentID() string {
 		return ""
 	}
 	return o.DeploymentID
+}
+
+func (o *RequestPromoteRequest) GetDangerouslyForcePromoteCanary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DangerouslyForcePromoteCanary
 }
 
 func (o *RequestPromoteRequest) GetTeamID() *string {

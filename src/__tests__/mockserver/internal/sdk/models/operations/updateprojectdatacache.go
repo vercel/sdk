@@ -5135,6 +5135,7 @@ type Permissions struct {
 	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
 	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
 	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
 	Environments                             []components.ACLAction `json:"environments,omitempty"`
 	Logs                                     []components.ACLAction `json:"logs,omitempty"`
 	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
@@ -6242,6 +6243,13 @@ func (o *Permissions) GetDeploymentRollback() []components.ACLAction {
 		return nil
 	}
 	return o.DeploymentRollback
+}
+
+func (o *Permissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
 }
 
 func (o *Permissions) GetEnvironments() []components.ACLAction {

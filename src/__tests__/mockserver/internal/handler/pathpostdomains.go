@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-func pathPostV5Domains(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPostDomains(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -22,21 +22,16 @@ func pathPostV5Domains(dir *logging.HTTPFileDirectory, rt *tracking.RequestTrack
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "createOrTransferDomain[0]":
-			dir.HandlerFunc("createOrTransferDomain", testCreateOrTransferDomainCreateOrTransferDomain0)(w, req)
+		case "post_/domains[0]":
+			dir.HandlerFunc("post_/domains", testPostDomainsPostDomains0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testCreateOrTransferDomainCreateOrTransferDomain0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusUnauthorized)
-		return
-	}
-	if err := assert.ContentType(req, "application/json", true); err != nil {
+func testPostDomainsPostDomains0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.ContentType(req, "application/json", false); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -51,8 +46,8 @@ func testCreateOrTransferDomainCreateOrTransferDomain0(w http.ResponseWriter, re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateOrTransferDomainResponseBody{
-		Domain: operations.CreateOrTransferDomainDomain{
+	respBody := &operations.PostDomainsResponseBody{
+		Domain: operations.PostDomainsDomain{
 			Verified: true,
 			Nameservers: []string{
 				"ns1.nameserver.net",
@@ -66,7 +61,7 @@ func testCreateOrTransferDomainCreateOrTransferDomain0(w http.ResponseWriter, re
 				"ns1.nameserver.net",
 				"ns2.nameserver.net",
 			},
-			Creator: operations.CreateOrTransferDomainCreator{
+			Creator: operations.PostDomainsCreator{
 				Username: "vercel_user",
 				Email:    "demo@example.com",
 				ID:       "ZspSRT4ljIEEmMHgoDwKWDei",
@@ -78,7 +73,7 @@ func testCreateOrTransferDomainCreateOrTransferDomain0(w http.ResponseWriter, re
 			ID:                "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
 			OrderedAt:         types.Float64(1613602938882),
 			Renew:             types.Bool(true),
-			ServiceType:       operations.CreateOrTransferDomainServiceTypeZeitWorld,
+			ServiceType:       operations.ServiceTypeZeitWorld,
 			TransferredAt:     types.Float64(1613602938882),
 			TransferStartedAt: types.Float64(1613602938882),
 			UserID:            "<id>",

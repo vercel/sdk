@@ -34,8 +34,8 @@ async function run() {
     requestBody: [
       {
         sessionId: "<id>",
-        source: "LOCAL",
-        event: "HIT",
+        source: "REMOTE",
+        event: "MISS",
         hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
         duration: 400,
       },
@@ -71,8 +71,8 @@ async function run() {
     requestBody: [
       {
         sessionId: "<id>",
-        source: "LOCAL",
-        event: "HIT",
+        source: "REMOTE",
+        event: "MISS",
         hash: "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
         duration: 400,
       },
@@ -208,7 +208,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.artifacts.uploadArtifact({
-    contentLength: 4504.13,
+    contentLength: 3848.22,
     xArtifactDuration: 400,
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
@@ -243,7 +243,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await artifactsUploadArtifact(vercel, {
-    contentLength: 4504.13,
+    contentLength: 3848.22,
     xArtifactDuration: 400,
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,

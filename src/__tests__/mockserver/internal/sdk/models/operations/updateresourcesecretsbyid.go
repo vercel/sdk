@@ -10,6 +10,8 @@ type UpdateResourceSecretsByIDSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
+	// @hidden
+	EnvironmentOverrides map[string]string `json:"environmentOverrides,omitempty"`
 }
 
 func (o *UpdateResourceSecretsByIDSecrets) GetName() string {
@@ -31,6 +33,13 @@ func (o *UpdateResourceSecretsByIDSecrets) GetPrefix() *string {
 		return nil
 	}
 	return o.Prefix
+}
+
+func (o *UpdateResourceSecretsByIDSecrets) GetEnvironmentOverrides() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.EnvironmentOverrides
 }
 
 type UpdateResourceSecretsByIDRequestBody struct {

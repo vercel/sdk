@@ -54,7 +54,7 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 	respBody := &components.TeamLimited{
 		Limited: false,
 		LimitedBy: []components.LimitedBy{
-			components.LimitedByScope,
+			components.LimitedByMfa,
 		},
 		ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
 		Slug:   "my-team",

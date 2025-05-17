@@ -8,7 +8,8 @@ import (
 )
 
 type VercelRateLimitError struct {
-	Error_ components.VercelRateLimitErrorError `json:"error"`
+	Error_   components.VercelRateLimitErrorError `json:"error"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 
 var _ error = &VercelRateLimitError{}

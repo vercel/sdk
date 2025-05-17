@@ -56,6 +56,25 @@ export type SpeedInsights = {
   paidAt?: number | undefined;
 };
 
+export const UpdateProjectDataCacheEnvId2 = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type UpdateProjectDataCacheEnvId2 = ClosedEnum<
+  typeof UpdateProjectDataCacheEnvId2
+>;
+
+export type UpdateProjectDataCacheEnvId = string | UpdateProjectDataCacheEnvId2;
+
+export type UpdateProjectDataCacheConnectConfigurations = {
+  envId: string | UpdateProjectDataCacheEnvId2;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
+
 export type Definitions = {
   /**
    * The hostname that should be used.
@@ -1797,8 +1816,13 @@ export type UpdateProjectDataCacheResponseBody = {
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
+  connectConfigurations?:
+    | Array<UpdateProjectDataCacheConnectConfigurations>
+    | null
+    | undefined;
   connectConfigurationId?: string | null | undefined;
   connectBuildsEnabled?: boolean | undefined;
+  passiveConnectConfigurationId?: string | null | undefined;
   createdAt?: number | undefined;
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: Crons | undefined;
@@ -1824,7 +1848,6 @@ export type UpdateProjectDataCacheResponseBody = {
   nodeVersion: UpdateProjectDataCacheNodeVersion;
   optionsAllowlist?: UpdateProjectDataCacheOptionsAllowlist | null | undefined;
   outputDirectory?: string | null | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
   passwordProtection?:
     | UpdateProjectDataCachePasswordProtection
     | null
@@ -2130,6 +2153,159 @@ export function speedInsightsFromJSON(
     jsonString,
     (x) => SpeedInsights$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SpeedInsights' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheEnvId2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheEnvId2
+> = z.nativeEnum(UpdateProjectDataCacheEnvId2);
+
+/** @internal */
+export const UpdateProjectDataCacheEnvId2$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheEnvId2
+> = UpdateProjectDataCacheEnvId2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheEnvId2$ {
+  /** @deprecated use `UpdateProjectDataCacheEnvId2$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheEnvId2$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheEnvId2$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheEnvId2$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectDataCacheEnvId$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheEnvId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), UpdateProjectDataCacheEnvId2$inboundSchema]);
+
+/** @internal */
+export type UpdateProjectDataCacheEnvId$Outbound = string | string;
+
+/** @internal */
+export const UpdateProjectDataCacheEnvId$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheEnvId$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheEnvId
+> = z.union([z.string(), UpdateProjectDataCacheEnvId2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheEnvId$ {
+  /** @deprecated use `UpdateProjectDataCacheEnvId$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheEnvId$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheEnvId$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheEnvId$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheEnvId$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheEnvId$Outbound;
+}
+
+export function updateProjectDataCacheEnvIdToJSON(
+  updateProjectDataCacheEnvId: UpdateProjectDataCacheEnvId,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheEnvId$outboundSchema.parse(
+      updateProjectDataCacheEnvId,
+    ),
+  );
+}
+
+export function updateProjectDataCacheEnvIdFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDataCacheEnvId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDataCacheEnvId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheEnvId' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheConnectConfigurations$inboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheConnectConfigurations,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    envId: z.union([z.string(), UpdateProjectDataCacheEnvId2$inboundSchema]),
+    connectConfigurationId: z.string(),
+    passive: z.boolean(),
+    buildsEnabled: z.boolean(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+  });
+
+/** @internal */
+export type UpdateProjectDataCacheConnectConfigurations$Outbound = {
+  envId: string | string;
+  connectConfigurationId: string;
+  passive: boolean;
+  buildsEnabled: boolean;
+  createdAt: number;
+  updatedAt: number;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheConnectConfigurations$outboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheConnectConfigurations$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectDataCacheConnectConfigurations
+  > = z.object({
+    envId: z.union([z.string(), UpdateProjectDataCacheEnvId2$outboundSchema]),
+    connectConfigurationId: z.string(),
+    passive: z.boolean(),
+    buildsEnabled: z.boolean(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheConnectConfigurations$ {
+  /** @deprecated use `UpdateProjectDataCacheConnectConfigurations$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheConnectConfigurations$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheConnectConfigurations$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheConnectConfigurations$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheConnectConfigurations$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheConnectConfigurations$Outbound;
+}
+
+export function updateProjectDataCacheConnectConfigurationsToJSON(
+  updateProjectDataCacheConnectConfigurations:
+    UpdateProjectDataCacheConnectConfigurations,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheConnectConfigurations$outboundSchema.parse(
+      updateProjectDataCacheConnectConfigurations,
+    ),
+  );
+}
+
+export function updateProjectDataCacheConnectConfigurationsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheConnectConfigurations,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheConnectConfigurations$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheConnectConfigurations' from JSON`,
   );
 }
 
@@ -10293,8 +10469,14 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   autoAssignCustomDomainsUpdatedBy: z.string().optional(),
   buildCommand: z.nullable(z.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
+  connectConfigurations: z.nullable(
+    z.array(z.lazy(() =>
+      UpdateProjectDataCacheConnectConfigurations$inboundSchema
+    )),
+  ).optional(),
   connectConfigurationId: z.nullable(z.string()).optional(),
   connectBuildsEnabled: z.boolean().optional(),
+  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: z.lazy(() => Crons$inboundSchema).optional(),
@@ -10333,7 +10515,6 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectDataCacheOptionsAllowlist$inboundSchema),
   ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   passwordProtection: z.nullable(
     z.lazy(() => UpdateProjectDataCachePasswordProtection$inboundSchema),
   ).optional(),
@@ -10407,8 +10588,13 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   autoAssignCustomDomainsUpdatedBy?: string | undefined;
   buildCommand?: string | null | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
+  connectConfigurations?:
+    | Array<UpdateProjectDataCacheConnectConfigurations$Outbound>
+    | null
+    | undefined;
   connectConfigurationId?: string | null | undefined;
   connectBuildsEnabled?: boolean | undefined;
+  passiveConnectConfigurationId?: string | null | undefined;
   createdAt?: number | undefined;
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: Crons$Outbound | undefined;
@@ -10442,7 +10628,6 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
     | null
     | undefined;
   outputDirectory?: string | null | undefined;
-  passiveConnectConfigurationId?: string | null | undefined;
   passwordProtection?:
     | UpdateProjectDataCachePasswordProtection$Outbound
     | null
@@ -10505,8 +10690,14 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   autoAssignCustomDomainsUpdatedBy: z.string().optional(),
   buildCommand: z.nullable(z.string()).optional(),
   commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
+  connectConfigurations: z.nullable(
+    z.array(z.lazy(() =>
+      UpdateProjectDataCacheConnectConfigurations$outboundSchema
+    )),
+  ).optional(),
   connectConfigurationId: z.nullable(z.string()).optional(),
   connectBuildsEnabled: z.boolean().optional(),
+  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: z.lazy(() => Crons$outboundSchema).optional(),
@@ -10545,7 +10736,6 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectDataCacheOptionsAllowlist$outboundSchema),
   ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(z.string()).optional(),
   passwordProtection: z.nullable(
     z.lazy(() => UpdateProjectDataCachePasswordProtection$outboundSchema),
   ).optional(),

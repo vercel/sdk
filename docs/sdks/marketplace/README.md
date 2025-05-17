@@ -285,61 +285,51 @@ async function run() {
   await vercel.marketplace.submitBillingData({
     integrationConfigurationId: "<id>",
     requestBody: {
-      timestamp: new Date("2025-09-29T02:38:01.476Z"),
-      eod: new Date("2023-12-28T23:46:57.523Z"),
+      timestamp: new Date("2023-11-26T05:03:03.977Z"),
+      eod: new Date("2023-04-14T04:58:49.647Z"),
       period: {
-        start: new Date("2023-06-25T19:04:50.518Z"),
-        end: new Date("2024-10-17T01:18:36.230Z"),
+        start: new Date("2023-03-12T13:32:00.895Z"),
+        end: new Date("2023-12-15T15:17:13.187Z"),
       },
-      billing: {
-        items: [
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "511.92",
-            quantity: 328.54,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "4.49",
-            quantity: 3113.17,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "896.30",
-            quantity: 8536.32,
-            units: "<value>",
-            total: "<value>",
-          },
-        ],
-      },
+      billing: [
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+      ],
       usage: [
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 9439.22,
-          periodValue: 6958.71,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "total",
+          type: "interval",
           units: "<value>",
-          dayValue: 9892.22,
-          periodValue: 4749.62,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 7119.53,
-          periodValue: 6310.47,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
       ],
     },
@@ -369,61 +359,51 @@ async function run() {
   const res = await marketplaceSubmitBillingData(vercel, {
     integrationConfigurationId: "<id>",
     requestBody: {
-      timestamp: new Date("2025-09-29T02:38:01.476Z"),
-      eod: new Date("2023-12-28T23:46:57.523Z"),
+      timestamp: new Date("2023-11-26T05:03:03.977Z"),
+      eod: new Date("2023-04-14T04:58:49.647Z"),
       period: {
-        start: new Date("2023-06-25T19:04:50.518Z"),
-        end: new Date("2024-10-17T01:18:36.230Z"),
+        start: new Date("2023-03-12T13:32:00.895Z"),
+        end: new Date("2023-12-15T15:17:13.187Z"),
       },
-      billing: {
-        items: [
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "511.92",
-            quantity: 328.54,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "4.49",
-            quantity: 3113.17,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "896.30",
-            quantity: 8536.32,
-            units: "<value>",
-            total: "<value>",
-          },
-        ],
-      },
+      billing: [
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+      ],
       usage: [
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 9439.22,
-          periodValue: 6958.71,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "total",
+          type: "interval",
           units: "<value>",
-          dayValue: 9892.22,
-          periodValue: 4749.62,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 7119.53,
-          periodValue: 6310.47,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
       ],
     },
@@ -479,25 +459,25 @@ async function run() {
   const result = await vercel.marketplace.submitInvoice({
     integrationConfigurationId: "<id>",
     requestBody: {
-      invoiceDate: new Date("2023-06-05T08:54:16.353Z"),
+      invoiceDate: new Date("2023-12-12T13:24:35.882Z"),
       period: {
-        start: new Date("2023-07-26T14:15:15.601Z"),
-        end: new Date("2025-10-08T09:35:48.520Z"),
+        start: new Date("2024-10-20T02:46:19.279Z"),
+        end: new Date("2025-06-06T21:30:28.107Z"),
       },
       items: [
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "905.89",
-          quantity: 1684.76,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "84.05",
-          quantity: 9130.95,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
@@ -530,25 +510,25 @@ async function run() {
   const res = await marketplaceSubmitInvoice(vercel, {
     integrationConfigurationId: "<id>",
     requestBody: {
-      invoiceDate: new Date("2023-06-05T08:54:16.353Z"),
+      invoiceDate: new Date("2023-12-12T13:24:35.882Z"),
       period: {
-        start: new Date("2023-07-26T14:15:15.601Z"),
-        end: new Date("2025-10-08T09:35:48.520Z"),
+        start: new Date("2024-10-20T02:46:19.279Z"),
+        end: new Date("2025-06-06T21:30:28.107Z"),
       },
       items: [
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "905.89",
-          quantity: 1684.76,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "84.05",
-          quantity: 9130.95,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
@@ -1085,7 +1065,7 @@ run();
 
 ## exchangeSsoToken
 
-During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. This is used to verify the identity of the user during the [**Open in Provider** flow](https://vercel.com/docs/integrations/marketplace-flows#open-in-provider-button-flow). Providers should not persist the returned `id_token` in a database since the token will expire.
+During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. Providers should not persist the returned `id_token` in a database since the token will expire. See [**Authentication with SSO**](https://vercel.com/docs/integrations/create-integration/marketplace-api#authentication-with-sso) for more details.
 
 ### Example Usage
 

@@ -200,8 +200,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.postDomains({
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   });
 
   // Handle the result
@@ -733,7 +733,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.artifacts.uploadArtifact({
-    contentLength: 4504.13,
+    contentLength: 3848.22,
     xArtifactDuration: 400,
     xArtifactClientCi: "VERCEL",
     xArtifactClientInteractive: 0,
@@ -767,8 +767,8 @@ const vercel = new Vercel();
 async function run() {
   const result = await vercel.postDomains({
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   }, {
     retries: {
       strategy: "backoff",
@@ -810,8 +810,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.postDomains({
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   });
 
   // Handle the result
@@ -851,8 +851,8 @@ async function run() {
   try {
     result = await vercel.postDomains({
       name: "example.com",
-      cdnEnabled: true,
       method: "transfer-in",
+      token: "fdhfr820ad#@FAdlj$$",
     });
 
     // Handle the result
@@ -923,8 +923,8 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.postDomains({
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   });
 
   // Handle the result

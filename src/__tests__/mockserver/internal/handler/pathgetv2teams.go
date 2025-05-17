@@ -53,12 +53,12 @@ func testGetTeamsGetTeams0(w http.ResponseWriter, req *http.Request) {
 				components.TeamLimited{
 					Limited: false,
 					LimitedBy: []components.LimitedBy{
-						components.LimitedByScope,
+						components.LimitedByMfa,
 					},
 					Saml: &components.Saml{
 						Connection: &components.Connection{
-							Status:                   "linked",
 							Type:                     "OktaSAML",
+							Status:                   "linked",
 							State:                    "active",
 							ConnectedAt:              1611796915677,
 							LastReceivedWebhookEvent: types.Float64(1611796915677),

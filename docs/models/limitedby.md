@@ -5,11 +5,11 @@
 ```typescript
 import { LimitedBy } from "@vercel/sdk/models/teamlimited.js";
 
-let value: LimitedBy = "mfa";
+let value: LimitedBy = "scope";
 ```
 
 ## Values
 
 ```typescript
-"mfa" | "scope"
+"scope" | "mfa"
 ```

@@ -170,6 +170,173 @@ func (o *SpeedInsights) GetPaidAt() *float64 {
 	return o.PaidAt
 }
 
+type EnvID2 string
+
+const (
+	EnvID2Production EnvID2 = "production"
+	EnvID2Preview    EnvID2 = "preview"
+)
+
+func (e EnvID2) ToPointer() *EnvID2 {
+	return &e
+}
+func (e *EnvID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = EnvID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvID2: %v", v)
+	}
+}
+
+type EnvIDType string
+
+const (
+	EnvIDTypeStr    EnvIDType = "str"
+	EnvIDTypeEnvID2 EnvIDType = "envId_2"
+)
+
+type EnvID struct {
+	Str    *string
+	EnvID2 *EnvID2
+
+	Type EnvIDType
+}
+
+func CreateEnvIDStr(str string) EnvID {
+	typ := EnvIDTypeStr
+
+	return EnvID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateEnvIDEnvID2(envID2 EnvID2) EnvID {
+	typ := EnvIDTypeEnvID2
+
+	return EnvID{
+		EnvID2: &envID2,
+		Type:   typ,
+	}
+}
+
+func (u *EnvID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = EnvIDTypeStr
+		return nil
+	}
+
+	var envID2 EnvID2 = EnvID2("")
+	if err := utils.UnmarshalJSON(data, &envID2, "", true, true); err == nil {
+		u.EnvID2 = &envID2
+		u.Type = EnvIDTypeEnvID2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvID", string(data))
+}
+
+func (u EnvID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.EnvID2 != nil {
+		return utils.MarshalJSON(u.EnvID2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvID: all fields are null")
+}
+
+type Aws struct {
+	SubnetIds       []string `json:"subnetIds"`
+	SecurityGroupID string   `json:"securityGroupId"`
+}
+
+func (o *Aws) GetSubnetIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.SubnetIds
+}
+
+func (o *Aws) GetSecurityGroupID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SecurityGroupID
+}
+
+type UpdateProjectDataCacheConnectConfigurations struct {
+	EnvID                  EnvID   `json:"envId"`
+	ConnectConfigurationID string  `json:"connectConfigurationId"`
+	Passive                bool    `json:"passive"`
+	BuildsEnabled          bool    `json:"buildsEnabled"`
+	Aws                    *Aws    `json:"aws,omitempty"`
+	CreatedAt              float64 `json:"createdAt"`
+	UpdatedAt              float64 `json:"updatedAt"`
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetEnvID() EnvID {
+	if o == nil {
+		return EnvID{}
+	}
+	return o.EnvID
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetConnectConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetPassive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Passive
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetBuildsEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.BuildsEnabled
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetAws() *Aws {
+	if o == nil {
+		return nil
+	}
+	return o.Aws
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDataCacheConnectConfigurations) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
 type Definitions struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
@@ -8232,77 +8399,78 @@ func (e *Tier) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateProjectDataCacheResponseBody struct {
-	AccountID                            string                                    `json:"accountId"`
-	Analytics                            *Analytics                                `json:"analytics,omitempty"`
-	SpeedInsights                        *SpeedInsights                            `json:"speedInsights,omitempty"`
-	AutoExposeSystemEnvs                 *bool                                     `json:"autoExposeSystemEnvs,omitempty"`
-	AutoAssignCustomDomains              *bool                                     `json:"autoAssignCustomDomains,omitempty"`
-	AutoAssignCustomDomainsUpdatedBy     *string                                   `json:"autoAssignCustomDomainsUpdatedBy,omitempty"`
-	BuildCommand                         *string                                   `json:"buildCommand,omitempty"`
-	CommandForIgnoringBuildStep          *string                                   `json:"commandForIgnoringBuildStep,omitempty"`
-	ConnectConfigurationID               *string                                   `json:"connectConfigurationId,omitempty"`
-	ConnectBuildsEnabled                 *bool                                     `json:"connectBuildsEnabled,omitempty"`
-	CreatedAt                            *float64                                  `json:"createdAt,omitempty"`
-	CustomerSupportCodeVisibility        *bool                                     `json:"customerSupportCodeVisibility,omitempty"`
-	Crons                                *Crons                                    `json:"crons,omitempty"`
-	DataCache                            *DataCache                                `json:"dataCache,omitempty"`
-	DeploymentExpiration                 *DeploymentExpiration                     `json:"deploymentExpiration,omitempty"`
-	DevCommand                           *string                                   `json:"devCommand,omitempty"`
-	DirectoryListing                     bool                                      `json:"directoryListing"`
-	InstallCommand                       *string                                   `json:"installCommand,omitempty"`
-	Env                                  []Env                                     `json:"env,omitempty"`
-	CustomEnvironments                   []CustomEnvironments                      `json:"customEnvironments,omitempty"`
-	Framework                            *UpdateProjectDataCacheFramework          `json:"framework,omitempty"`
-	GitForkProtection                    *bool                                     `json:"gitForkProtection,omitempty"`
-	GitLFS                               *bool                                     `json:"gitLFS,omitempty"`
-	ID                                   string                                    `json:"id"`
-	IPBuckets                            []IPBuckets                               `json:"ipBuckets,omitempty"`
-	LatestDeployments                    []LatestDeployments                       `json:"latestDeployments,omitempty"`
-	Link                                 *Link                                     `json:"link,omitempty"`
-	Microfrontends                       *Microfrontends                           `json:"microfrontends,omitempty"`
-	Name                                 string                                    `json:"name"`
-	NodeVersion                          UpdateProjectDataCacheNodeVersion         `json:"nodeVersion"`
-	OptionsAllowlist                     *UpdateProjectDataCacheOptionsAllowlist   `json:"optionsAllowlist,omitempty"`
-	OutputDirectory                      *string                                   `json:"outputDirectory,omitempty"`
-	PassiveConnectConfigurationID        *string                                   `json:"passiveConnectConfigurationId,omitempty"`
-	PasswordProtection                   *UpdateProjectDataCachePasswordProtection `json:"passwordProtection,omitempty"`
-	ProductionDeploymentsFastLane        *bool                                     `json:"productionDeploymentsFastLane,omitempty"`
-	PublicSource                         *bool                                     `json:"publicSource,omitempty"`
-	ResourceConfig                       UpdateProjectDataCacheResourceConfig      `json:"resourceConfig"`
-	RollingRelease                       *RollingRelease                           `json:"rollingRelease,omitempty"`
-	DefaultResourceConfig                DefaultResourceConfig                     `json:"defaultResourceConfig"`
-	RootDirectory                        *string                                   `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                   `json:"serverlessFunctionRegion,omitempty"`
-	ServerlessFunctionZeroConfigFailover *bool                                     `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SkewProtectionBoundaryAt             *float64                                  `json:"skewProtectionBoundaryAt,omitempty"`
-	SkewProtectionMaxAge                 *float64                                  `json:"skewProtectionMaxAge,omitempty"`
-	SkipGitConnectDuringLink             *bool                                     `json:"skipGitConnectDuringLink,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                     `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	EnableAffectedProjectsDeployments    *bool                                     `json:"enableAffectedProjectsDeployments,omitempty"`
-	SsoProtection                        *UpdateProjectDataCacheSsoProtection      `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*Targets                       `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                  `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                  `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                   `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                   `json:"transferredFromAccountId,omitempty"`
-	UpdatedAt                            *float64                                  `json:"updatedAt,omitempty"`
-	Live                                 *bool                                     `json:"live,omitempty"`
-	EnablePreviewFeedback                *bool                                     `json:"enablePreviewFeedback,omitempty"`
-	EnableProductionFeedback             *bool                                     `json:"enableProductionFeedback,omitempty"`
-	Permissions                          *Permissions                              `json:"permissions,omitempty"`
-	LastRollbackTarget                   *LastRollbackTarget                       `json:"lastRollbackTarget,omitempty"`
-	LastAliasRequest                     *LastAliasRequest                         `json:"lastAliasRequest,omitempty"`
-	ProtectionBypass                     map[string]ProtectionBypass               `json:"protectionBypass,omitempty"`
-	HasActiveBranches                    *bool                                     `json:"hasActiveBranches,omitempty"`
-	TrustedIps                           *UpdateProjectDataCacheTrustedIps         `json:"trustedIps,omitempty"`
-	GitComments                          *GitComments                              `json:"gitComments,omitempty"`
-	GitProviderOptions                   *GitProviderOptions                       `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                     `json:"paused,omitempty"`
-	ConcurrencyBucketName                *string                                   `json:"concurrencyBucketName,omitempty"`
-	WebAnalytics                         *WebAnalytics                             `json:"webAnalytics,omitempty"`
-	Security                             *Security                                 `json:"security,omitempty"`
-	OidcTokenConfig                      *UpdateProjectDataCacheOidcTokenConfig    `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *Tier                                     `json:"tier,omitempty"`
+	AccountID                            string                                        `json:"accountId"`
+	Analytics                            *Analytics                                    `json:"analytics,omitempty"`
+	SpeedInsights                        *SpeedInsights                                `json:"speedInsights,omitempty"`
+	AutoExposeSystemEnvs                 *bool                                         `json:"autoExposeSystemEnvs,omitempty"`
+	AutoAssignCustomDomains              *bool                                         `json:"autoAssignCustomDomains,omitempty"`
+	AutoAssignCustomDomainsUpdatedBy     *string                                       `json:"autoAssignCustomDomainsUpdatedBy,omitempty"`
+	BuildCommand                         *string                                       `json:"buildCommand,omitempty"`
+	CommandForIgnoringBuildStep          *string                                       `json:"commandForIgnoringBuildStep,omitempty"`
+	ConnectConfigurations                []UpdateProjectDataCacheConnectConfigurations `json:"connectConfigurations,omitempty"`
+	ConnectConfigurationID               *string                                       `json:"connectConfigurationId,omitempty"`
+	ConnectBuildsEnabled                 *bool                                         `json:"connectBuildsEnabled,omitempty"`
+	PassiveConnectConfigurationID        *string                                       `json:"passiveConnectConfigurationId,omitempty"`
+	CreatedAt                            *float64                                      `json:"createdAt,omitempty"`
+	CustomerSupportCodeVisibility        *bool                                         `json:"customerSupportCodeVisibility,omitempty"`
+	Crons                                *Crons                                        `json:"crons,omitempty"`
+	DataCache                            *DataCache                                    `json:"dataCache,omitempty"`
+	DeploymentExpiration                 *DeploymentExpiration                         `json:"deploymentExpiration,omitempty"`
+	DevCommand                           *string                                       `json:"devCommand,omitempty"`
+	DirectoryListing                     bool                                          `json:"directoryListing"`
+	InstallCommand                       *string                                       `json:"installCommand,omitempty"`
+	Env                                  []Env                                         `json:"env,omitempty"`
+	CustomEnvironments                   []CustomEnvironments                          `json:"customEnvironments,omitempty"`
+	Framework                            *UpdateProjectDataCacheFramework              `json:"framework,omitempty"`
+	GitForkProtection                    *bool                                         `json:"gitForkProtection,omitempty"`
+	GitLFS                               *bool                                         `json:"gitLFS,omitempty"`
+	ID                                   string                                        `json:"id"`
+	IPBuckets                            []IPBuckets                                   `json:"ipBuckets,omitempty"`
+	LatestDeployments                    []LatestDeployments                           `json:"latestDeployments,omitempty"`
+	Link                                 *Link                                         `json:"link,omitempty"`
+	Microfrontends                       *Microfrontends                               `json:"microfrontends,omitempty"`
+	Name                                 string                                        `json:"name"`
+	NodeVersion                          UpdateProjectDataCacheNodeVersion             `json:"nodeVersion"`
+	OptionsAllowlist                     *UpdateProjectDataCacheOptionsAllowlist       `json:"optionsAllowlist,omitempty"`
+	OutputDirectory                      *string                                       `json:"outputDirectory,omitempty"`
+	PasswordProtection                   *UpdateProjectDataCachePasswordProtection     `json:"passwordProtection,omitempty"`
+	ProductionDeploymentsFastLane        *bool                                         `json:"productionDeploymentsFastLane,omitempty"`
+	PublicSource                         *bool                                         `json:"publicSource,omitempty"`
+	ResourceConfig                       UpdateProjectDataCacheResourceConfig          `json:"resourceConfig"`
+	RollingRelease                       *RollingRelease                               `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                DefaultResourceConfig                         `json:"defaultResourceConfig"`
+	RootDirectory                        *string                                       `json:"rootDirectory,omitempty"`
+	ServerlessFunctionRegion             *string                                       `json:"serverlessFunctionRegion,omitempty"`
+	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
+	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
+	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	EnableAffectedProjectsDeployments    *bool                                         `json:"enableAffectedProjectsDeployments,omitempty"`
+	SsoProtection                        *UpdateProjectDataCacheSsoProtection          `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*Targets                           `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                      `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                      `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                       `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                       `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                      `json:"updatedAt,omitempty"`
+	Live                                 *bool                                         `json:"live,omitempty"`
+	EnablePreviewFeedback                *bool                                         `json:"enablePreviewFeedback,omitempty"`
+	EnableProductionFeedback             *bool                                         `json:"enableProductionFeedback,omitempty"`
+	Permissions                          *Permissions                                  `json:"permissions,omitempty"`
+	LastRollbackTarget                   *LastRollbackTarget                           `json:"lastRollbackTarget,omitempty"`
+	LastAliasRequest                     *LastAliasRequest                             `json:"lastAliasRequest,omitempty"`
+	ProtectionBypass                     map[string]ProtectionBypass                   `json:"protectionBypass,omitempty"`
+	HasActiveBranches                    *bool                                         `json:"hasActiveBranches,omitempty"`
+	TrustedIps                           *UpdateProjectDataCacheTrustedIps             `json:"trustedIps,omitempty"`
+	GitComments                          *GitComments                                  `json:"gitComments,omitempty"`
+	GitProviderOptions                   *GitProviderOptions                           `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                         `json:"paused,omitempty"`
+	ConcurrencyBucketName                *string                                       `json:"concurrencyBucketName,omitempty"`
+	WebAnalytics                         *WebAnalytics                                 `json:"webAnalytics,omitempty"`
+	Security                             *Security                                     `json:"security,omitempty"`
+	OidcTokenConfig                      *UpdateProjectDataCacheOidcTokenConfig        `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *Tier                                         `json:"tier,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetAccountID() string {
@@ -8361,6 +8529,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetCommandForIgnoringBuildStep() *s
 	return o.CommandForIgnoringBuildStep
 }
 
+func (o *UpdateProjectDataCacheResponseBody) GetConnectConfigurations() []UpdateProjectDataCacheConnectConfigurations {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurations
+}
+
 func (o *UpdateProjectDataCacheResponseBody) GetConnectConfigurationID() *string {
 	if o == nil {
 		return nil
@@ -8373,6 +8548,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetConnectBuildsEnabled() *bool {
 		return nil
 	}
 	return o.ConnectBuildsEnabled
+}
+
+func (o *UpdateProjectDataCacheResponseBody) GetPassiveConnectConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PassiveConnectConfigurationID
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetCreatedAt() *float64 {
@@ -8527,13 +8709,6 @@ func (o *UpdateProjectDataCacheResponseBody) GetOutputDirectory() *string {
 		return nil
 	}
 	return o.OutputDirectory
-}
-
-func (o *UpdateProjectDataCacheResponseBody) GetPassiveConnectConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PassiveConnectConfigurationID
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetPasswordProtection() *UpdateProjectDataCachePasswordProtection {

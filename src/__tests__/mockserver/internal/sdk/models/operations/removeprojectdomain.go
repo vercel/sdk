@@ -6,6 +6,18 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type RemoveProjectDomainRequestBody struct {
+	// Whether to remove all domains from this project that redirect to the domain being removed.
+	RemoveRedirects *bool `json:"removeRedirects,omitempty"`
+}
+
+func (o *RemoveProjectDomainRequestBody) GetRemoveRedirects() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RemoveRedirects
+}
+
 type RemoveProjectDomainRequest struct {
 	// The unique project identifier or the project name
 	IDOrName string `pathParam:"style=simple,explode=false,name=idOrName"`
@@ -14,7 +26,8 @@ type RemoveProjectDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug *string `queryParam:"style=form,explode=true,name=slug"`
+	Slug        *string                         `queryParam:"style=form,explode=true,name=slug"`
+	RequestBody *RemoveProjectDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *RemoveProjectDomainRequest) GetIDOrName() string {
@@ -43,6 +56,13 @@ func (o *RemoveProjectDomainRequest) GetSlug() *string {
 		return nil
 	}
 	return o.Slug
+}
+
+func (o *RemoveProjectDomainRequest) GetRequestBody() *RemoveProjectDomainRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 // RemoveProjectDomainResponseBody - The domain was succesfully removed from the project

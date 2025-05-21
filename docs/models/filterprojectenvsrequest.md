@@ -8,6 +8,7 @@ import { FilterProjectEnvsRequest } from "@vercel/sdk/models/filterprojectenvsop
 let value: FilterProjectEnvsRequest = {
   idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
   gitBranch: "feature-1",
+  decrypt: "true",
   source: "vercel-cli:pull",
   customEnvironmentId: "env_123abc4567",
   customEnvironmentSlug: "my-custom-env",

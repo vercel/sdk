@@ -1015,6 +1015,10 @@ export type CancelDeploymentMicrofrontends2 = {
   applications?: { [k: string]: MicrofrontendsApplications } | undefined;
   isDefaultApp: boolean;
   /**
+   * The project name of the default app of this deployment's microfrontends group.
+   */
+  defaultAppProjectName: string;
+  /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
    */
   defaultRoute?: string | undefined;
@@ -1029,6 +1033,10 @@ export type CancelDeploymentMicrofrontends1 = {
    * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
    */
   isDefaultApp?: boolean | undefined;
+  /**
+   * The project name of the default app of this deployment's microfrontends group.
+   */
+  defaultAppProjectName: string;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
    */
@@ -6381,6 +6389,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   applications: z.record(z.lazy(() => MicrofrontendsApplications$inboundSchema))
     .optional(),
   isDefaultApp: z.boolean(),
+  defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
 });
@@ -6391,6 +6400,7 @@ export type CancelDeploymentMicrofrontends2$Outbound = {
     | { [k: string]: MicrofrontendsApplications$Outbound }
     | undefined;
   isDefaultApp: boolean;
+  defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
 };
@@ -6405,6 +6415,7 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
     z.lazy(() => MicrofrontendsApplications$outboundSchema),
   ).optional(),
   isDefaultApp: z.boolean(),
+  defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
 });
@@ -6449,6 +6460,7 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   isDefaultApp: z.boolean().optional(),
+  defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
 });
@@ -6456,6 +6468,7 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
 /** @internal */
 export type CancelDeploymentMicrofrontends1$Outbound = {
   isDefaultApp?: boolean | undefined;
+  defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
 };
@@ -6467,6 +6480,7 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   CancelDeploymentMicrofrontends1
 > = z.object({
   isDefaultApp: z.boolean().optional(),
+  defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
 });

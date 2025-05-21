@@ -7,13 +7,11 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathGetV8DeploymentsIDFilesFileID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -21,23 +19,18 @@ func pathPostV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "issueCert[0]":
-			dir.HandlerFunc("issueCert", testIssueCertIssueCert0)(w, req)
+		case "getDeploymentFileContents[0]":
+			dir.HandlerFunc("getDeploymentFileContents", testGetDeploymentFileContentsGetDeploymentFileContents0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testIssueCertIssueCert0(w http.ResponseWriter, req *http.Request) {
+func testGetDeploymentFileContentsGetDeploymentFileContents0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
-		return
-	}
-	if err := assert.ContentType(req, "application/json", true); err != nil {
-		log.Printf("assertion error: %s\n", err)
-		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
@@ -50,24 +43,6 @@ func testIssueCertIssueCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.IssueCertResponseBody{
-		ID:        "<id>",
-		CreatedAt: 1842.08,
-		ExpiresAt: 8685.42,
-		AutoRenew: true,
-		Cns:       []string{},
-	}
-	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
-	if err != nil {
-		http.Error(
-			w,
-			"Unable to encode response body as JSON: "+err.Error(),
-			http.StatusInternalServerError,
-		)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(respBodyBytes)
 }

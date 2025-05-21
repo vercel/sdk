@@ -179,13 +179,12 @@ test("Deployments Get Deployment File Contents", async () => {
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await vercel.deployments.getDeploymentFileContents({
+  await vercel.deployments.getDeploymentFileContents({
     id: "<id>",
     fileId: "<id>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-  expect(result).toBeDefined();
 });
 
 test("Deployments Get Deployments", async () => {

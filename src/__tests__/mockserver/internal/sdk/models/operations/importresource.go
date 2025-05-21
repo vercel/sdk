@@ -273,6 +273,8 @@ type ImportResourceSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
+	// @hidden
+	EnvironmentOverrides map[string]string `json:"environmentOverrides,omitempty"`
 }
 
 func (o *ImportResourceSecrets) GetName() string {
@@ -294,6 +296,13 @@ func (o *ImportResourceSecrets) GetPrefix() *string {
 		return nil
 	}
 	return o.Prefix
+}
+
+func (o *ImportResourceSecrets) GetEnvironmentOverrides() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.EnvironmentOverrides
 }
 
 type ImportResourceRequestBody struct {

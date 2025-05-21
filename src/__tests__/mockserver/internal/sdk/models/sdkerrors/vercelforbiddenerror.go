@@ -8,7 +8,8 @@ import (
 )
 
 type VercelForbiddenError struct {
-	Error_ components.VercelForbiddenErrorError `json:"error"`
+	Error_   components.VercelForbiddenErrorError `json:"error"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 
 var _ error = &VercelForbiddenError{}

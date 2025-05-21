@@ -1,13 +1,12 @@
-# UserEventPayload147Team
+# UserEventPayload150Configuration
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayload147Team } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayload150Configuration } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload147Team = {
+let value: UserEventPayload150Configuration = {
   id: "<id>",
-  name: "<value>",
 };
 ```
 
@@ -16,4 +15,4 @@ let value: UserEventPayload147Team = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

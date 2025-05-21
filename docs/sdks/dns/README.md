@@ -118,12 +118,13 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      type: "CNAME",
+      type: "NS",
       ttl: 60,
-      https: {
+      srv: {
         priority: 10,
+        weight: 10,
+        port: 5000,
         target: "host.example.com",
-        params: "alpn=h2,h3",
       },
       comment: "used to verify ownership of domain",
     },
@@ -156,12 +157,13 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      type: "CNAME",
+      type: "NS",
       ttl: 60,
-      https: {
+      srv: {
         priority: 10,
+        weight: 10,
+        port: 5000,
         target: "host.example.com",
-        params: "alpn=h2,h3",
       },
       comment: "used to verify ownership of domain",
     },
@@ -225,16 +227,8 @@ async function run() {
       value: "google.com",
       type: "A",
       ttl: 60,
-      srv: {
-        target: "example2.com.",
-        weight: 97604,
-        port: 570172,
-        priority: 199524,
-      },
-      https: {
-        priority: 35000,
-        target: "example2.com.",
-      },
+      srv: null,
+      https: null,
       comment: "used to verify ownership of domain",
     },
   });
@@ -270,16 +264,8 @@ async function run() {
       value: "google.com",
       type: "A",
       ttl: 60,
-      srv: {
-        target: "example2.com.",
-        weight: 97604,
-        port: 570172,
-        priority: 199524,
-      },
-      https: {
-        priority: 35000,
-        target: "example2.com.",
-      },
+      srv: null,
+      https: null,
       comment: "used to verify ownership of domain",
     },
   });

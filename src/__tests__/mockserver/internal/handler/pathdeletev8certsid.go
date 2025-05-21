@@ -13,7 +13,7 @@ import (
 	"net/http"
 )
 
-func pathGetV7DeploymentsIDFilesFileID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathDeleteV8CertsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -21,15 +21,15 @@ func pathGetV7DeploymentsIDFilesFileID(dir *logging.HTTPFileDirectory, rt *track
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "getDeploymentFileContents[0]":
-			dir.HandlerFunc("getDeploymentFileContents", testGetDeploymentFileContentsGetDeploymentFileContents0)(w, req)
+		case "removeCert[0]":
+			dir.HandlerFunc("removeCert", testRemoveCertRemoveCert0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetDeploymentFileContentsGetDeploymentFileContents0(w http.ResponseWriter, req *http.Request) {
+func testRemoveCertRemoveCert0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -45,9 +45,7 @@ func testGetDeploymentFileContentsGetDeploymentFileContents0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDeploymentFileContentsResponseBody{
-		Data: "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4=",
-	}
+	respBody := &operations.RemoveCertResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

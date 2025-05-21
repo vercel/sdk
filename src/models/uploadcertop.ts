@@ -36,7 +36,7 @@ export type UploadCertRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: UploadCertRequestBody;
+  requestBody?: UploadCertRequestBody | undefined;
 };
 
 export type UploadCertResponseBody = {
@@ -118,7 +118,7 @@ export const UploadCertRequest$inboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  RequestBody: z.lazy(() => UploadCertRequestBody$inboundSchema),
+  RequestBody: z.lazy(() => UploadCertRequestBody$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -129,7 +129,7 @@ export const UploadCertRequest$inboundSchema: z.ZodType<
 export type UploadCertRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: UploadCertRequestBody$Outbound;
+  RequestBody?: UploadCertRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -140,7 +140,7 @@ export const UploadCertRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => UploadCertRequestBody$outboundSchema),
+  requestBody: z.lazy(() => UploadCertRequestBody$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

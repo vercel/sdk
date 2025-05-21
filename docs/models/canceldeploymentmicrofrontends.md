@@ -7,6 +7,7 @@
 
 ```typescript
 const value: models.CancelDeploymentMicrofrontends1 = {
+  defaultAppProjectName: "<value>",
   groupIds: [
     "<value>",
   ],
@@ -18,6 +19,7 @@ const value: models.CancelDeploymentMicrofrontends1 = {
 ```typescript
 const value: models.CancelDeploymentMicrofrontends2 = {
   isDefaultApp: false,
+  defaultAppProjectName: "<value>",
   groupIds: [
     "<value>",
   ],

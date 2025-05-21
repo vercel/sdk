@@ -303,9 +303,6 @@ async function run() {
         {
           file: "folder/file.js",
         },
-        {
-          file: "folder/file.js",
-        },
       ],
       gitMetadata: {
         remoteUrl: "https://github.com/vercel/next.js",
@@ -316,8 +313,9 @@ async function run() {
         dirty: true,
       },
       gitSource: {
+        org: "vercel",
         ref: "main",
-        repoId: 123456789,
+        repo: "next.js",
         sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
         type: "github",
       },
@@ -365,9 +363,6 @@ async function run() {
         {
           file: "folder/file.js",
         },
-        {
-          file: "folder/file.js",
-        },
       ],
       gitMetadata: {
         remoteUrl: "https://github.com/vercel/next.js",
@@ -378,8 +373,9 @@ async function run() {
         dirty: true,
       },
       gitSource: {
+        org: "vercel",
         ref: "main",
-        repoId: 123456789,
+        repo: "next.js",
         sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
         type: "github",
       },
@@ -691,15 +687,14 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.deployments.getDeploymentFileContents({
+  await vercel.deployments.getDeploymentFileContents({
     id: "<id>",
     fileId: "<id>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
-  console.log(result);
+
 }
 
 run();
@@ -733,8 +728,7 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  
 }
 
 run();
@@ -751,7 +745,7 @@ run();
 
 ### Response
 
-**Promise\<[models.GetDeploymentFileContentsResponseBody](../../models/getdeploymentfilecontentsresponsebody.md)\>**
+**Promise\<void\>**
 
 ### Errors
 

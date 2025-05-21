@@ -4279,12 +4279,80 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "connectConfigurations": {
+                      "nullable": true,
+                      "items": {
+                        "properties": {
+                          "envId": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "production",
+                                  "preview"
+                                ]
+                              }
+                            ]
+                          },
+                          "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "passive": {
+                            "type": "boolean"
+                          },
+                          "buildsEnabled": {
+                            "type": "boolean"
+                          },
+                          "aws": {
+                            "properties": {
+                              "subnetIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "securityGroupId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "subnetIds",
+                              "securityGroupId"
+                            ],
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "envId",
+                          "connectConfigurationId",
+                          "passive",
+                          "buildsEnabled",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
                     "connectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean"
+                    },
+                    "passiveConnectConfigurationId": {
+                      "nullable": true,
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "number"
@@ -5758,10 +5826,6 @@
                       "type": "object"
                     },
                     "outputDirectory": {
-                      "nullable": true,
-                      "type": "string"
-                    },
-                    "passiveConnectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
@@ -10908,6 +10972,10 @@
                                   "type": "boolean",
                                   "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
                                 },
+                                "defaultAppProjectName": {
+                                  "type": "string",
+                                  "description": "The project name of the default app of this deployment's microfrontends group."
+                                },
                                 "defaultRoute": {
                                   "type": "string",
                                   "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -10930,6 +10998,7 @@
                                 }
                               },
                               "required": [
+                                "defaultAppProjectName",
                                 "groupIds"
                               ],
                               "type": "object"
@@ -10963,6 +11032,10 @@
                                 "isDefaultApp": {
                                   "type": "boolean"
                                 },
+                                "defaultAppProjectName": {
+                                  "type": "string",
+                                  "description": "The project name of the default app of this deployment's microfrontends group."
+                                },
                                 "defaultRoute": {
                                   "type": "string",
                                   "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -10986,6 +11059,7 @@
                               },
                               "required": [
                                 "isDefaultApp",
+                                "defaultAppProjectName",
                                 "groupIds"
                               ],
                               "type": "object"
@@ -12543,24 +12617,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
+                          "id": {
+                            "type": "string"
+                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "id": {
+                          "entrypoint": {
+                            "nullable": true,
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
-                          },
-                          "entrypoint": {
-                            "nullable": true,
-                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -12673,9 +12747,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "endsWith",
                                     "startsWith",
-                                    "equals"
+                                    "equals",
+                                    "endsWith"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -13496,6 +13570,10 @@
                               "type": "boolean",
                               "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
                             },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -13518,6 +13596,7 @@
                             }
                           },
                           "required": [
+                            "defaultAppProjectName",
                             "groupIds"
                           ],
                           "type": "object"
@@ -13551,6 +13630,10 @@
                             "isDefaultApp": {
                               "type": "boolean"
                             },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -13574,6 +13657,7 @@
                           },
                           "required": [
                             "isDefaultApp",
+                            "defaultAppProjectName",
                             "groupIds"
                           ],
                           "type": "object"
@@ -13592,15 +13676,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -13830,11 +13914,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
-                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -13944,8 +14028,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -13997,8 +14081,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -14051,8 +14135,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -16594,6 +16678,10 @@
                               "type": "boolean",
                               "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
                             },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -16616,6 +16704,7 @@
                             }
                           },
                           "required": [
+                            "defaultAppProjectName",
                             "groupIds"
                           ],
                           "type": "object"
@@ -16649,6 +16738,10 @@
                             "isDefaultApp": {
                               "type": "boolean"
                             },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
@@ -16672,6 +16765,7 @@
                           },
                           "required": [
                             "isDefaultApp",
+                            "defaultAppProjectName",
                             "groupIds"
                           ],
                           "type": "object"
@@ -24061,6 +24155,13 @@
                         },
                         "prefix": {
                           "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "@hidden",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
                         }
                       },
                       "additionalProperties": false
@@ -24177,6 +24278,13 @@
                         },
                         "prefix": {
                           "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "@hidden",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
                         }
                       },
                       "additionalProperties": false
@@ -24426,6 +24534,13 @@
                         },
                         "prefix": {
                           "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "@hidden",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
                         }
                       },
                       "additionalProperties": false
@@ -25500,7 +25615,7 @@
     },
     "/v1/integrations/sso/token": {
       "post": {
-        "description": "During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. This is used to verify the identity of the user during the [**Open in Provider** flow](https://vercel.com/docs/integrations/marketplace-flows#open-in-provider-button-flow). Providers should not persist the returned `id_token` in a database since the token will expire.",
+        "description": "During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. Providers should not persist the returned `id_token` in a database since the token will expire. See [**Authentication with SSO**](https://vercel.com/docs/integrations/create-integration/marketplace-api#authentication-with-sso) for more details.",
         "operationId": "exchange-sso-token",
         "security": [],
         "summary": "SSO Token Exchange",
@@ -27797,12 +27912,80 @@
                             "nullable": true,
                             "type": "string"
                           },
+                          "connectConfigurations": {
+                            "nullable": true,
+                            "items": {
+                              "properties": {
+                                "envId": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "connectConfigurationId": {
+                                  "type": "string"
+                                },
+                                "passive": {
+                                  "type": "boolean"
+                                },
+                                "buildsEnabled": {
+                                  "type": "boolean"
+                                },
+                                "aws": {
+                                  "properties": {
+                                    "subnetIds": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "securityGroupId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "subnetIds",
+                                    "securityGroupId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "createdAt": {
+                                  "type": "number"
+                                },
+                                "updatedAt": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "envId",
+                                "connectConfigurationId",
+                                "passive",
+                                "buildsEnabled",
+                                "createdAt",
+                                "updatedAt"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
                           "connectConfigurationId": {
                             "nullable": true,
                             "type": "string"
                           },
                           "connectBuildsEnabled": {
                             "type": "boolean"
+                          },
+                          "passiveConnectConfigurationId": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "createdAt": {
                             "type": "number"
@@ -29280,10 +29463,6 @@
                             "type": "object"
                           },
                           "outputDirectory": {
-                            "nullable": true,
-                            "type": "string"
-                          },
-                          "passiveConnectConfigurationId": {
                             "nullable": true,
                             "type": "string"
                           },
@@ -31870,12 +32049,80 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "connectConfigurations": {
+                      "nullable": true,
+                      "items": {
+                        "properties": {
+                          "envId": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "production",
+                                  "preview"
+                                ]
+                              }
+                            ]
+                          },
+                          "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "passive": {
+                            "type": "boolean"
+                          },
+                          "buildsEnabled": {
+                            "type": "boolean"
+                          },
+                          "aws": {
+                            "properties": {
+                              "subnetIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "securityGroupId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "subnetIds",
+                              "securityGroupId"
+                            ],
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "envId",
+                          "connectConfigurationId",
+                          "passive",
+                          "buildsEnabled",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
                     "connectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean"
+                    },
+                    "passiveConnectConfigurationId": {
+                      "nullable": true,
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "number"
@@ -33353,10 +33600,6 @@
                       "type": "object"
                     },
                     "outputDirectory": {
-                      "nullable": true,
-                      "type": "string"
-                    },
-                    "passiveConnectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
@@ -36130,12 +36373,80 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "connectConfigurations": {
+                      "nullable": true,
+                      "items": {
+                        "properties": {
+                          "envId": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "production",
+                                  "preview"
+                                ]
+                              }
+                            ]
+                          },
+                          "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "passive": {
+                            "type": "boolean"
+                          },
+                          "buildsEnabled": {
+                            "type": "boolean"
+                          },
+                          "aws": {
+                            "properties": {
+                              "subnetIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "securityGroupId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "subnetIds",
+                              "securityGroupId"
+                            ],
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "envId",
+                          "connectConfigurationId",
+                          "passive",
+                          "buildsEnabled",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
                     "connectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean"
+                    },
+                    "passiveConnectConfigurationId": {
+                      "nullable": true,
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "number"
@@ -37611,10 +37922,6 @@
                       "type": "object"
                     },
                     "outputDirectory": {
-                      "nullable": true,
-                      "type": "string"
-                    },
-                    "passiveConnectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
@@ -40099,12 +40406,80 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "connectConfigurations": {
+                      "nullable": true,
+                      "items": {
+                        "properties": {
+                          "envId": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string",
+                                "enum": [
+                                  "production",
+                                  "preview"
+                                ]
+                              }
+                            ]
+                          },
+                          "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "passive": {
+                            "type": "boolean"
+                          },
+                          "buildsEnabled": {
+                            "type": "boolean"
+                          },
+                          "aws": {
+                            "properties": {
+                              "subnetIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "securityGroupId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "subnetIds",
+                              "securityGroupId"
+                            ],
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "envId",
+                          "connectConfigurationId",
+                          "passive",
+                          "buildsEnabled",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
                     "connectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean"
+                    },
+                    "passiveConnectConfigurationId": {
+                      "nullable": true,
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "number"
@@ -41573,10 +41948,6 @@
                       "type": "object"
                     },
                     "outputDirectory": {
-                      "nullable": true,
-                      "type": "string"
-                    },
-                    "passiveConnectConfigurationId": {
                       "nullable": true,
                       "type": "string"
                     },
@@ -46677,7 +47048,7 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request query is invalid.",
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
             "content": {
               "application/json": {
                 "schema": {
@@ -46753,7 +47124,22 @@
               "example": "my-team-url-slug"
             }
           }
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "removeRedirects": {
+                    "type": "boolean",
+                    "description": "Whether to remove all domains from this project that redirect to the domain being removed."
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v10/projects/{idOrName}/domains": {
@@ -53598,16 +53984,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "dangerouslyForcePromoteCanary",
-            "description": "Skip the rolling release process and promote directly to production",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "description": "Skip the rolling release process and promote directly to production"
             }
           },
           {
@@ -63451,7 +63827,7 @@
         }
       }
     },
-    "/v7/certs/{id}": {
+    "/v8/certs/{id}": {
       "get": {
         "description": "Get cert by id",
         "operationId": "getCertById",
@@ -63656,7 +64032,7 @@
         ]
       }
     },
-    "/v7/certs": {
+    "/v8/certs": {
       "post": {
         "description": "Issue a new cert",
         "operationId": "issueCert",
@@ -63786,8 +64162,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       },
       "put": {
@@ -63918,8 +64293,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         }
       }
     },
@@ -64016,7 +64390,7 @@
         ]
       }
     },
-    "/v7/deployments/{id}/files/{fileId}": {
+    "/v8/deployments/{id}/files/{fileId}": {
       "get": {
         "description": "Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier. The response body will contain a JSON response containing the contents of the file encoded as base64.",
         "operationId": "getDeploymentFileContents",
@@ -64065,29 +64439,6 @@
           },
           "410": {
             "description": "Invalid API version."
-          },
-          "200": {
-            "description": "File content as base64 encoded string",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "string",
-                      "description": "Base64 encoded file buffer",
-                      "format": "byte"
-                    }
-                  },
-                  "required": [
-                    "data"
-                  ]
-                },
-                "example": {
-                  "data": "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4="
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -70618,6 +70969,24 @@
                             "buildsEnabled": {
                               "type": "boolean"
                             },
+                            "aws": {
+                              "properties": {
+                                "subnetIds": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array"
+                                },
+                                "securityGroupId": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "subnetIds",
+                                "securityGroupId"
+                              ],
+                              "type": "object"
+                            },
                             "createdAt": {
                               "type": "number"
                             },
@@ -70663,6 +71032,24 @@
                             },
                             "buildsEnabled": {
                               "type": "boolean"
+                            },
+                            "aws": {
+                              "properties": {
+                                "subnetIds": {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array"
+                                },
+                                "securityGroupId": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "subnetIds",
+                                "securityGroupId"
+                              ],
+                              "type": "object"
                             },
                             "createdAt": {
                               "type": "number"
@@ -72136,6 +72523,22 @@
               },
               {
                 "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "enable",
+                      "disable"
+                    ]
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "id": {
                     "type": "string"
                   },
@@ -72886,8 +73289,8 @@
             "items": {
               "type": "string",
               "enum": [
-                "mfa",
-                "scope"
+                "scope",
+                "mfa"
               ]
             },
             "type": "array"
@@ -72896,15 +73299,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "status": {
-                    "type": "string",
-                    "description": "Current status of the connection.",
-                    "example": "linked"
-                  },
                   "type": {
                     "type": "string",
                     "description": "The Identity Provider \"type\", for example Okta.",
                     "example": "OktaSAML"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Current status of the connection.",
+                    "example": "linked"
                   },
                   "state": {
                     "type": "string",
@@ -72923,8 +73326,8 @@
                   }
                 },
                 "required": [
-                  "status",
                   "type",
+                  "status",
                   "state",
                   "connectedAt"
                 ],
@@ -73017,6 +73420,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -73066,9 +73472,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "createdAt": {
                 "type": "number"
               },
@@ -73080,7 +73483,6 @@
                   "origin": {
                     "type": "string",
                     "enum": [
-                      "saml",
                       "mail",
                       "link",
                       "import",
@@ -73088,6 +73490,7 @@
                       "github",
                       "gitlab",
                       "bitbucket",
+                      "saml",
                       "dsync",
                       "feedback",
                       "organization-teams"

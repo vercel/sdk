@@ -96,11 +96,11 @@ func testCancelDeploymentCancelDeployment0(w http.ResponseWriter, req *http.Requ
 					Handle: operations.CancelDeploymentRoutesHandleResource,
 				},
 			),
-			operations.CreateCancelDeploymentRoutesCancelDeploymentRoutes1(
-				operations.CancelDeploymentRoutes1{
+			operations.CreateCancelDeploymentRoutesCancelDeploymentRoutes3(
+				operations.CancelDeploymentRoutes3{
 					Src:        "<value>",
-					Continue:   types.Bool(true),
-					Middleware: types.Float64(4831.29),
+					Continue:   true,
+					Middleware: 4831.29,
 				},
 			),
 		},

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 2d45066a9ff750eea073204f72e6f3da
+  docChecksum: 8c8ef936dd2a943b43e6f2e4eb9c3549
   docVersion: 0.0.1
-  speakeasyVersion: 1.545.0
-  generationVersion: 2.599.0
-  releaseVersion: 1.7.4
-  configChecksum: a898b80cc67557ac2d3320777cd6c08a
+  speakeasyVersion: 1.548.3
+  generationVersion: 2.605.6
+  releaseVersion: 1.7.5
+  configChecksum: 83e7164750923ed6beec57dc47cadb1c
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.7
+    core: 3.21.9
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -115,6 +115,7 @@ generatedFiles:
   - docs/models/authuser.md
   - docs/models/authuserlimited.md
   - docs/models/authuserlimitedversion.md
+  - docs/models/aws.md
   - docs/models/backup.md
   - docs/models/backups.md
   - docs/models/balances.md
@@ -427,11 +428,13 @@ generatedFiles:
   - docs/models/createprojectaliasassigned.md
   - docs/models/createprojectaliaserror.md
   - docs/models/createprojectanalytics.md
+  - docs/models/createprojectaws.md
   - docs/models/createprojectbranchmatcher.md
   - docs/models/createprojectbuildmachinetype.md
   - docs/models/createprojectbuilds.md
   - docs/models/createprojectchecksconclusion.md
   - docs/models/createprojectchecksstate.md
+  - docs/models/createprojectconnectconfigurations.md
   - docs/models/createprojectcontenthint.md
   - docs/models/createprojectcontenthint1.md
   - docs/models/createprojectcontenthint10.md
@@ -547,6 +550,8 @@ generatedFiles:
   - docs/models/createprojectenvcreatedtarget.md
   - docs/models/createprojectenvcreatedtype.md
   - docs/models/createprojectenverror.md
+  - docs/models/createprojectenvid.md
+  - docs/models/createprojectenvid2.md
   - docs/models/createprojectenvrequest.md
   - docs/models/createprojectenvrequestbody.md
   - docs/models/createprojectenvrequestbody1.md
@@ -1137,7 +1142,6 @@ generatedFiles:
   - docs/models/getdeploymenteventsresponsebodypayload.md
   - docs/models/getdeploymenteventsresponsebodytype.md
   - docs/models/getdeploymentfilecontentsrequest.md
-  - docs/models/getdeploymentfilecontentsresponsebody.md
   - docs/models/getdeploymentflags1.md
   - docs/models/getdeploymentflags2.md
   - docs/models/getdeploymentflagsdefinitions.md
@@ -1501,11 +1505,13 @@ generatedFiles:
   - docs/models/getprojectsaliasassigned.md
   - docs/models/getprojectsaliaserror.md
   - docs/models/getprojectsanalytics.md
+  - docs/models/getprojectsaws.md
   - docs/models/getprojectsbranchmatcher.md
   - docs/models/getprojectsbuildmachinetype.md
   - docs/models/getprojectsbuilds.md
   - docs/models/getprojectschecksconclusion.md
   - docs/models/getprojectschecksstate.md
+  - docs/models/getprojectsconnectconfigurations.md
   - docs/models/getprojectscontenthint.md
   - docs/models/getprojectscontenthint1.md
   - docs/models/getprojectscontenthint10.md
@@ -1548,6 +1554,8 @@ generatedFiles:
   - docs/models/getprojectsdeploymenttype.md
   - docs/models/getprojectsdomains.md
   - docs/models/getprojectsenv.md
+  - docs/models/getprojectsenvid.md
+  - docs/models/getprojectsenvid2.md
   - docs/models/getprojectserl.md
   - docs/models/getprojectsfirewallroutes.md
   - docs/models/getprojectsframework.md
@@ -1940,6 +1948,7 @@ generatedFiles:
   - docs/models/onehundredandeleven.md
   - docs/models/onehundredandfifteen.md
   - docs/models/onehundredandfifty.md
+  - docs/models/onehundredandfiftyone.md
   - docs/models/onehundredandfive.md
   - docs/models/onehundredandforty.md
   - docs/models/onehundredandfortyeight.md
@@ -2041,6 +2050,7 @@ generatedFiles:
   - docs/models/payloadaccessgroup.md
   - docs/models/payloadaction.md
   - docs/models/payloadactivedashboardviews.md
+  - docs/models/payloadaws.md
   - docs/models/payloadbilling.md
   - docs/models/payloadblockedduetooveragetype.md
   - docs/models/payloadblockreason.md
@@ -2269,6 +2279,7 @@ generatedFiles:
   - docs/models/removedmembership.md
   - docs/models/removedusers.md
   - docs/models/removeprojectdomainrequest.md
+  - docs/models/removeprojectdomainrequestbody.md
   - docs/models/removeprojectdomainresponsebody.md
   - docs/models/removeprojectenvcontenthint1.md
   - docs/models/removeprojectenvcontenthint10.md
@@ -2803,11 +2814,13 @@ generatedFiles:
   - docs/models/updateprojectaliasassigned.md
   - docs/models/updateprojectaliaserror.md
   - docs/models/updateprojectanalytics.md
+  - docs/models/updateprojectaws.md
   - docs/models/updateprojectbranchmatcher.md
   - docs/models/updateprojectbuildmachinetype.md
   - docs/models/updateprojectbuilds.md
   - docs/models/updateprojectchecksconclusion.md
   - docs/models/updateprojectchecksstate.md
+  - docs/models/updateprojectconnectconfigurations.md
   - docs/models/updateprojectcontenthint.md
   - docs/models/updateprojectcontenthint1.md
   - docs/models/updateprojectcontenthint10.md
@@ -2848,11 +2861,13 @@ generatedFiles:
   - docs/models/updateprojectdatacachealgo.md
   - docs/models/updateprojectdatacachealiasassigned.md
   - docs/models/updateprojectdatacachealiaserror.md
+  - docs/models/updateprojectdatacacheaws.md
   - docs/models/updateprojectdatacachebranchmatcher.md
   - docs/models/updateprojectdatacachebuildmachinetype.md
   - docs/models/updateprojectdatacachebuilds.md
   - docs/models/updateprojectdatacachechecksconclusion.md
   - docs/models/updateprojectdatacachechecksstate.md
+  - docs/models/updateprojectdatacacheconnectconfigurations.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv10type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv11type.md
   - docs/models/updateprojectdatacachecontenthintprojectsresponse200applicationjsonresponsebodyenv12type.md
@@ -2871,6 +2886,8 @@ generatedFiles:
   - docs/models/updateprojectdatacachedatacache.md
   - docs/models/updateprojectdatacachedeploymenttype.md
   - docs/models/updateprojectdatacachedomains.md
+  - docs/models/updateprojectdatacacheenvid.md
+  - docs/models/updateprojectdatacacheenvid2.md
   - docs/models/updateprojectdatacacheframework.md
   - docs/models/updateprojectdatacachefunctiondefaultmemorytype.md
   - docs/models/updateprojectdatacacheissuermode.md
@@ -2949,6 +2966,8 @@ generatedFiles:
   - docs/models/updateprojectdomains.md
   - docs/models/updateprojectdomainverification.md
   - docs/models/updateprojectenv.md
+  - docs/models/updateprojectenvid.md
+  - docs/models/updateprojectenvid2.md
   - docs/models/updateprojecterl.md
   - docs/models/updateprojectfirewallroutes.md
   - docs/models/updateprojectframework.md
@@ -3118,15 +3137,16 @@ generatedFiles:
   - docs/models/usereventpayload132role.md
   - docs/models/usereventpayload133project.md
   - docs/models/usereventpayload133role.md
-  - docs/models/usereventpayload139project.md
-  - docs/models/usereventpayload140prevproject.md
+  - docs/models/usereventpayload137action.md
   - docs/models/usereventpayload140project.md
-  - docs/models/usereventpayload147configuration.md
-  - docs/models/usereventpayload147team.md
+  - docs/models/usereventpayload141prevproject.md
+  - docs/models/usereventpayload141project.md
   - docs/models/usereventpayload148configuration.md
   - docs/models/usereventpayload148team.md
   - docs/models/usereventpayload149configuration.md
   - docs/models/usereventpayload149team.md
+  - docs/models/usereventpayload150configuration.md
+  - docs/models/usereventpayload150team.md
   - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
@@ -3288,7 +3308,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev2domainsdomainrecordsrecordid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev3usertokenstokenid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev6domainsdomain.go
-  - src/__tests__/mockserver/internal/handler/pathdeletev7certsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev8certsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidorname.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
@@ -3341,10 +3361,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv6deployments.go
   - src/__tests__/mockserver/internal/handler/pathgetv6deploymentsidfiles.go
   - src/__tests__/mockserver/internal/handler/pathgetv6domainsdomainconfig.go
-  - src/__tests__/mockserver/internal/handler/pathgetv7certsid.go
-  - src/__tests__/mockserver/internal/handler/pathgetv7deploymentsidfilesfileid.go
   - src/__tests__/mockserver/internal/handler/pathgetv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathgetv8artifactsstatus.go
+  - src/__tests__/mockserver/internal/handler/pathgetv8certsid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv8deploymentsidfilesfileid.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomains.go
@@ -3404,9 +3424,9 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv2integrationslogdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv3usertokens.go
   - src/__tests__/mockserver/internal/handler/pathpostv5domainsbuy.go
-  - src/__tests__/mockserver/internal/handler/pathpostv7certs.go
   - src/__tests__/mockserver/internal/handler/pathpostv8artifacts.go
   - src/__tests__/mockserver/internal/handler/pathpostv8artifactsevents.go
+  - src/__tests__/mockserver/internal/handler/pathpostv8certs.go
   - src/__tests__/mockserver/internal/handler/pathpostv9projectsidornamecustomenvironments.go
   - src/__tests__/mockserver/internal/handler/pathpostv9projectsidornamedomainsdomainverify.go
   - src/__tests__/mockserver/internal/handler/pathputprojectstransferrequestcode.go
@@ -3416,7 +3436,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathputv1installationsintegrationconfigurationidresourcesresourceidsecrets.go
   - src/__tests__/mockserver/internal/handler/pathputv1securityfirewallconfig.go
-  - src/__tests__/mockserver/internal/handler/pathputv7certs.go
+  - src/__tests__/mockserver/internal/handler/pathputv8certs.go
   - src/__tests__/mockserver/internal/handler/values/files.go
   - src/__tests__/mockserver/internal/logging/doc.go
   - src/__tests__/mockserver/internal/logging/formats.go
@@ -4227,6 +4247,73 @@ generatedFiles:
   - src/types/streams.ts
   - tsconfig.json
 examples:
+  post_/domains:
+    speakeasy-default-post-/domains:
+      requestBody:
+        application/json: {"name": "example.com", "method": "transfer-in", "token": "fdhfr820ad#@FAdlj$$"}
+      responses:
+        "200":
+          application/json: {"domain": {"verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "name": "example.com", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>", "teamId": "<id>"}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get_/projects/{projectId}/logs-presets:
+    speakeasy-default-get-/projects/{project-id}/logs-presets:
+      parameters:
+        path:
+          projectId: "<id>"
+      responses:
+        "200":
+          application/json: [{"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 76.8}}]
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  post_/projects/{projectId}/logs-presets:
+    speakeasy-default-post-/projects/{project-id}/logs-presets:
+      parameters:
+        path:
+          projectId: "<id>"
+      requestBody:
+        application/json: {"query": "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com", "title": "Request Path", "group": "team"}
+      responses:
+        "200":
+          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 1407.34}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  delete_/projects/{projectId}/logs-presets/{id}:
+    speakeasy-default-delete-/projects/{project-id}/logs-presets/{id}:
+      parameters:
+        path:
+          projectId: "<id>"
+          id: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patch_/projects/{projectId}/logs-presets/{id}:
+    speakeasy-default-patch-/projects/{project-id}/logs-presets/{id}:
+      parameters:
+        path:
+          projectId: "<id>"
+          id: "<id>"
+      requestBody:
+        application/json: {"title": "Request Path"}
+      responses:
+        "200":
+          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 8019.04}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   readAccessGroup:
     id:
       parameters:
@@ -4237,7 +4324,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"isDsyncManaged": false, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2, "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
+          application/json: {"isDsyncManaged": true, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2, "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4253,7 +4340,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"isDsyncManaged": false, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2, "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
+          application/json: {"isDsyncManaged": true, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "membersCount": 5, "projectsCount": 2, "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4305,7 +4392,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"members": [{"email": "Jaida_Rogahn@yahoo.com", "uid": "<id>", "username": "Karianne_Bernier", "teamRole": "VIEWER"}], "pagination": {"count": 3878.47, "next": "<value>"}}
+          application/json: {"members": [{"email": "Kassandra13@yahoo.com", "uid": "<id>", "username": "Chelsie97", "teamRole": "MEMBER"}, {"email": "Kassandra13@yahoo.com", "uid": "<id>", "username": "Chelsie97", "teamRole": "MEMBER"}, {"email": "Kassandra13@yahoo.com", "uid": "<id>", "username": "Chelsie97", "teamRole": "MEMBER"}], "pagination": {"count": 9302.16, "next": "<value>"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4339,10 +4426,10 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"name": "My access group", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}], "membersToAdd": ["usr_1a2b3c4d5e6f7g8h9i0j", "usr_2b3c4d5e6f7g8h9i0j1k"]}
+        application/json: {"name": "My access group", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}], "membersToAdd": ["usr_1a2b3c4d5e6f7g8h9i0j", "usr_2b3c4d5e6f7g8h9i0j1k"]}
       responses:
         "200":
-          application/json: {"membersCount": 591.78, "projectsCount": 3787.91, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
+          application/json: {"membersCount": 446.92, "projectsCount": 5113.22, "name": "my-access-group", "createdAt": "1588720733602", "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50", "updatedAt": "1588720733602", "accessGroupId": "ag_123a6c5209bc3778245d011443644c8d27dc2c50", "teamRoles": ["DEVELOPER", "BILLING"], "teamPermissions": ["CreateProject"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4360,7 +4447,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"projects": [], "pagination": {"count": 7604.02, "next": "<value>"}}
+          application/json: {"projects": [], "pagination": {"count": 2941.35, "next": "<value>"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4379,7 +4466,7 @@ examples:
         application/json: {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_VIEWER", "createdAt": "1726948284257", "updatedAt": "1744388503945"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1709685008609", "updatedAt": "1735605925345"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4397,7 +4484,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "ADMIN", "createdAt": "1715344910813", "updatedAt": "1744396168862"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1725636411556", "updatedAt": "1735610404453"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4414,7 +4501,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1739615073482", "updatedAt": "1744327200176"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1725636411556", "updatedAt": "1735610404453"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4431,7 +4518,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1741430060404", "updatedAt": "1744396619853"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1725636411556", "updatedAt": "1735610404453"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4451,7 +4538,7 @@ examples:
         application/json: {"role": "ADMIN"}
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "ADMIN", "createdAt": "1715136753218", "updatedAt": "1744362874326"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1728862860579", "updatedAt": "1735681594699"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4470,7 +4557,7 @@ examples:
         application/json: {"role": "ADMIN"}
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "ADMIN", "createdAt": "1716648820605", "updatedAt": "1744328935382"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1728862860579", "updatedAt": "1735681594699"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4489,7 +4576,7 @@ examples:
         application/json: {"role": "ADMIN"}
       responses:
         "200":
-          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "ADMIN", "createdAt": "1736314214978", "updatedAt": "1744397001817"}
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1728862860579", "updatedAt": "1735681594699"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4552,7 +4639,7 @@ examples:
           x-artifact-client-ci: "VERCEL"
           x-artifact-client-interactive: 0
       requestBody:
-        application/json: [{"sessionId": "<id>", "source": "LOCAL", "event": "HIT", "hash": "12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "duration": 400}]
+        application/json: [{"sessionId": "<id>", "source": "REMOTE", "event": "MISS", "hash": "12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "duration": 400}]
       responses:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
@@ -4566,7 +4653,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"status": "enabled"}
+          application/json: {"status": "over_limit"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4580,7 +4667,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
         header:
-          Content-Length: 4504.13
+          Content-Length: 3848.22
           x-artifact-duration: 400
           x-artifact-client-ci: "VERCEL"
           x-artifact-client-interactive: 0
@@ -4639,7 +4726,7 @@ examples:
         application/json: {"hashes": ["12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "34HKQaOmR5t5Uy6vasdasdasdasd"]}
       responses:
         "200":
-          application/json: {"key": {"error": {"message": "<value>"}}, "key1": {"size": 9698.01, "taskDurationMs": 1946.74}, "key2": {"size": 1135.95, "taskDurationMs": 5348.41}}
+          application/json: {"key": {"size": 3811.11, "taskDurationMs": 5116.13}, "key1": {"size": 3811.11, "taskDurationMs": 5116.13}, "key2": {"size": 3811.11, "taskDurationMs": 5116.13}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4656,7 +4743,7 @@ examples:
         application/json: {"name": "Performance Check", "path": "/", "blocking": true, "detailsUrl": "http://example.com", "externalId": "1234abc", "rerequestable": true}
       responses:
         "200":
-          application/json: {"id": "chk_1a2b3c4d5e6f7g8h9i0j", "name": "Performance Check", "path": "/api/users", "status": "completed", "conclusion": "succeeded", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 9375.78, "updatedAt": 2396.37}
+          application/json: {"id": "chk_1a2b3c4d5e6f7g8h9i0j", "name": "Performance Check", "path": "/api/users", "status": "completed", "conclusion": "succeeded", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 6444.33, "updatedAt": 2432.96}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4673,7 +4760,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"checks": [{"createdAt": 4203.11, "id": "<id>", "integrationId": "<id>", "name": "<value>", "rerequestable": false, "status": "registered", "updatedAt": 4461.16}]}
+          application/json: {"checks": [{"createdAt": 4018.09, "id": "<id>", "integrationId": "<id>", "name": "<value>", "rerequestable": false, "status": "completed", "updatedAt": 5993.81}]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4691,7 +4778,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "status": "completed", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 2039.14, "updatedAt": 676.34}
+          application/json: {"id": "<id>", "name": "<value>", "status": "running", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 6704.13, "updatedAt": 5470.22}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4711,7 +4798,7 @@ examples:
         application/json: {"name": "Performance Check", "path": "/", "detailsUrl": "https://example.com/check/run/1234abc", "output": {"metrics": {"FCP": {"value": 1200, "previousValue": 900, "source": "web-vitals"}, "LCP": {"value": 1200, "previousValue": 1000, "source": "web-vitals"}, "CLS": {"value": 4, "previousValue": 2, "source": "web-vitals"}, "TBT": {"value": 3000, "previousValue": 3500, "source": "web-vitals"}, "virtualExperienceScore": {"value": 30, "previousValue": 35, "source": "web-vitals"}}}, "externalId": "1234abc"}
       responses:
         "200":
-          application/json: {"id": "<id>", "name": "<value>", "status": "completed", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 9017.64, "updatedAt": 7909.85}
+          application/json: {"id": "<id>", "name": "<value>", "status": "running", "blocking": true, "integrationId": "<id>", "deploymentId": "<id>", "createdAt": 3990.23, "updatedAt": 3283.38}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4748,7 +4835,7 @@ examples:
         application/json: {"disabled": true}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 7135.8, "disabledAt": 2989.85, "updatedAt": 6226.23, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5719.6, "createdIn": "<value>", "creator": {"email": "Braeden15@gmail.com", "uid": "<id>", "username": "Teresa84"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://unknown-gift.biz", "userId": "<id>"}, {"id": "<id>", "createdAt": 7644.5, "createdIn": "<value>", "creator": {"email": "Erich.Mann@hotmail.com", "uid": "<id>", "username": "Genoveva89"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://slimy-tuba.name", "userId": "<id>"}, {"id": "<id>", "createdAt": 2357.62, "createdIn": "<value>", "creator": {"email": "Garret.Ferry81@gmail.com", "uid": "<id>", "username": "Vivianne.Gutkowski"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://astonishing-cinema.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "10.x", "resourceConfig": {"functionDefaultRegions": []}, "defaultResourceConfig": {"functionDefaultRegions": []}, "targets": {"key": {"id": "<id>", "createdAt": 1048.68, "createdIn": "<value>", "creator": {"email": "Lillie17@gmail.com", "uid": "<id>", "username": "Herminia_Schowalter50"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "BUILDING", "type": "LAMBDAS", "url": "https://quintessential-bidet.com/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 4537.72, "disabledAt": 4306.04, "updatedAt": 4313.17, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 1954.03, "createdIn": "<value>", "creator": {"email": "Cleveland_Bruen@gmail.com", "uid": "<id>", "username": "Frida_Stamm12"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://well-worn-handful.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": []}, "defaultResourceConfig": {"functionDefaultRegions": []}, "targets": {"key": {"id": "<id>", "createdAt": 5941.68, "createdIn": "<value>", "creator": {"email": "Fay_Herman21@yahoo.com", "uid": "<id>", "username": "Anna.Barrows31"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://scaly-epic.com", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4765,7 +4852,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"projects": [], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"projects": [{"accountId": "<id>", "crons": {"enabledAt": 5254.53, "disabledAt": null, "updatedAt": 514.35, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 6310.4, "createdIn": "<value>", "creator": {"email": "Howell_Metz@gmail.com", "uid": "<id>", "username": "Mohammed_Bechtelar67"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://monthly-numeracy.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 6310.4, "createdIn": "<value>", "creator": {"email": "Howell_Metz@gmail.com", "uid": "<id>", "username": "Mohammed_Bechtelar67"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://monthly-numeracy.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "14.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3954.3, "createdIn": "<value>", "creator": {"email": "Tavares_Hills95@gmail.com", "uid": "<id>", "username": "Dariana_Hand"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://obedient-mentor.org/", "userId": "<id>"}}}, {"accountId": "<id>", "crons": {"enabledAt": 5254.53, "disabledAt": null, "updatedAt": 514.35, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 6310.4, "createdIn": "<value>", "creator": {"email": "Howell_Metz@gmail.com", "uid": "<id>", "username": "Mohammed_Bechtelar67"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://monthly-numeracy.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 6310.4, "createdIn": "<value>", "creator": {"email": "Howell_Metz@gmail.com", "uid": "<id>", "username": "Mohammed_Bechtelar67"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://monthly-numeracy.net/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "14.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3954.3, "createdIn": "<value>", "creator": {"email": "Tavares_Hills95@gmail.com", "uid": "<id>", "username": "Dariana_Hand"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://obedient-mentor.org/", "userId": "<id>"}}}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4780,7 +4867,7 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 5535.6, "disabledAt": 7749.32, "updatedAt": 4248.44, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": false, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 3954.07, "createdIn": "<value>", "creator": {"email": "Junior46@yahoo.com", "uid": "<id>", "username": "Rick.Fritsch"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://potable-bid.biz", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": ["<value>"]}, "defaultResourceConfig": {"functionDefaultRegions": []}, "targets": {"key": {"id": "<id>", "createdAt": 7352.53, "createdIn": "<value>", "creator": {"email": "Keven88@hotmail.com", "uid": "<id>", "username": "Helene44"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://calculating-strait.info/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 1259.18, "createdIn": "<value>", "creator": {"email": "Shane_Larson@gmail.com", "uid": "<id>", "username": "Barney93"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://fair-annual.biz/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 9025.89, "disabledAt": 7665.94, "updatedAt": 4493.49, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}, {"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}], "name": "<value>", "nodeVersion": "16.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3635.11, "createdIn": "<value>", "creator": {"email": "Leanne_Langworth@gmail.com", "uid": "<id>", "username": "Kurtis_Marks97"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://twin-hydrolyse.com/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4797,7 +4884,7 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 6482.23, "disabledAt": 3040.87, "updatedAt": 9398.86, "deploymentId": "<id>", "definitions": [{"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}, {"host": "vercel.com", "path": "/api/crons/sync-something?hello=world", "schedule": "0 0 * * *"}]}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 7688.55, "createdIn": "<value>", "creator": {"email": "Alfredo_Murazik@yahoo.com", "uid": "<id>", "username": "Kiera28"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://close-premise.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 3847.37, "createdIn": "<value>", "creator": {"email": "Zachery.Johns68@yahoo.com", "uid": "<id>", "username": "Nicole_Reynolds"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://unsightly-newsstand.net/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5770.49, "createdIn": "<value>", "creator": {"email": "Jose37@yahoo.com", "uid": "<id>", "username": "Jana.Conroy"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://pricey-dish.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "20.x", "resourceConfig": {"functionDefaultRegions": ["<value>", "<value>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value>"]}, "targets": {"key": {"id": "<id>", "createdAt": 6585.03, "createdIn": "<value>", "creator": {"email": "Garrison_Jenkins@gmail.com", "uid": "<id>", "username": "Trever_Ratke"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "INITIALIZING", "type": "LAMBDAS", "url": "https://forsaken-edge.org", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 5688.03, "createdIn": "<value>", "creator": {"email": "Buster.Raynor@gmail.com", "uid": "<id>", "username": "Florine92"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "enterprise", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://shameless-unit.net", "userId": "<id>"}, "key2": {"id": "<id>", "createdAt": 4805.55, "createdIn": "<value>", "creator": {"email": "Jerome0@gmail.com", "uid": "<id>", "username": "Travis_Towne"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://whimsical-mathematics.name", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 827.44, "disabledAt": 9685.26, "updatedAt": 3884.97, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>", "<value 3>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4851,7 +4938,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": true}
+          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": false}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4869,7 +4956,7 @@ examples:
         application/json: {"gitBranch": null, "redirect": "foobar.com", "redirectStatusCode": 307}
       responses:
         "200":
-          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": false}
+          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": true}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4909,6 +4996,22 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  moveProjectDomain:
+    speakeasy-default-move-project-domain:
+      parameters:
+        path:
+          idOrName: "<value>"
+          domain: "www.example.com"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": false}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   verifyProjectDomain:
     speakeasy-default-verify-project-domain:
       parameters:
@@ -4940,7 +5043,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"envs": [{}, {}, {}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"envs": [{}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4958,7 +5061,7 @@ examples:
         application/json: {"key": "API_URL", "value": "https://api.vercel.com", "type": "plain", "target": ["preview"], "gitBranch": "feature-1", "comment": "database connection string for production", "customEnvironmentIds": ["env_1234567890"]}
       responses:
         "201":
-          application/json: {"created": [{}], "failed": [{"error": {"code": "<value>", "message": "<value>"}}]}
+          application/json: {"created": [], "failed": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4974,7 +5077,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"type": "plain", "value": "<value>", "key": "<key>"}
+          application/json: {"type": "sensitive", "value": "<value>", "key": "<key>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4991,7 +5094,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"type": "sensitive", "value": "<value>", "key": "<key>"}, {"type": "plain", "value": "<value>", "key": "<key>"}, {"type": "encrypted", "value": "<value>", "key": "<key>"}]
+          application/json: [{"type": "system", "value": "<value>", "key": "<key>"}, {"type": "system", "value": "<value>", "key": "<key>"}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5011,7 +5114,7 @@ examples:
         application/json: {"key": "GITHUB_APP_ID", "target": ["preview"], "gitBranch": "feature-1", "type": "plain", "value": "bkWIjbnxcvo78", "customEnvironmentIds": ["env_1234567890"], "comment": "database connection string for production"}
       responses:
         "200":
-          application/json: {"type": "encrypted", "value": "<value>", "key": "<key>"}
+          application/json: {}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5096,12 +5199,38 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {}
+          application/json: {"aliases": [{"status": "<value>", "alias": "<value>", "id": "<id>"}, {"status": "<value>", "alias": "<value>", "id": "<id>"}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  pauseProject:
+    speakeasy-default-pause-project:
+      parameters:
+        path:
+          projectId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  unpauseProject:
+    speakeasy-default-unpause-project:
+      parameters:
+        path:
+          projectId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getDeploymentEvents:
     speakeasy-default-get-deployment-events:
@@ -5121,13 +5250,13 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       responses:
+        "200":
+          application/json: [{"created": 9364.53, "date": 65.47, "deploymentId": "<id>", "id": "<id>", "info": {"type": "<value>", "name": "<value>"}, "serial": "<value>", "type": "command"}, {"type": "stderr", "created": 2829.12, "payload": {"deploymentId": "<id>", "id": "<id>", "date": 7964.23, "serial": "<value>"}}, {"type": "stderr", "created": 2829.12, "payload": {"deploymentId": "<id>", "id": "<id>", "date": 7964.23, "serial": "<value>"}}]
+          application/stream+json: null
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "200":
-          application/json: [{"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}, "serial": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout"}, {"created": 1744583330135, "date": 1744583330135, "deploymentId": "dpl_GjyjUDa3gESegReEzVREj1sQ92b7", "id": "1744583330135959366434900001", "info": {"type": "build", "name": "bld_by3kz18kn", "entrypoint": "."}, "serial": "1744583330135959366434900001", "text": "Cloning github link (Branch: yourbranchname, Commit: commithash)", "type": "stdout"}]
-          application/stream+json: {"created": 1830.36, "date": 5938.78, "deploymentId": "<id>", "id": "<id>", "info": {"type": "<value>", "name": "<value>"}, "serial": "<value>", "type": "fatal"}
   update-integration-deployment-action:
     speakeasy-default-update-integration-deployment-action:
       parameters:
@@ -5152,7 +5281,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"aliasAssigned": false, "bootedAt": 2317.28, "buildingAt": 458.05, "buildSkipped": true, "creator": {"uid": "<id>"}, "public": true, "status": "ERROR", "id": "<id>", "name": "<value>", "type": "LAMBDAS", "createdAt": 3161.76, "readyState": "READY", "meta": {"key": "<value>", "key1": "<value>"}, "regions": [], "url": "https://disloyal-backburn.info", "version": 1604.95}
+          application/json: {"aliasAssigned": true, "bootedAt": 2363.88, "buildingAt": 7418.28, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "BUILDING", "id": "<id>", "name": "<value>", "type": "LAMBDAS", "createdAt": 548.4, "readyState": "ERROR", "meta": {"key": "<value>", "key1": "<value>"}, "regions": ["<value 1>", "<value 2>", "<value 3>"], "url": "https://jagged-pacemaker.biz/", "version": 5784.12}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
@@ -5164,10 +5293,10 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}, {"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"ref": "main", "repoId": 123456789, "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
+        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://firm-casket.name/", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": true, "bootedAt": 7030.55, "buildingAt": 2916.6, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "type": "LAMBDAS", "name": "<value>", "createdAt": 1218, "id": "<id>", "version": 5856.16, "meta": {"key": "<value>", "key1": "<value>"}, "readyState": "CANCELED", "regions": ["<value>"], "url": "https://quiet-formation.name/", "plan": "pro", "projectId": "<id>", "ownerId": "<id>", "routes": [{"src": "<value>"}], "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "type": "LAMBDAS", "name": "<value>", "createdAt": 179.28, "id": "<id>", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "plan": "enterprise", "projectId": "<id>", "ownerId": "<id>", "routes": [], "createdIn": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5184,7 +5313,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"build": {"env": ["<value>", "<value>", "<value>"]}, "env": ["<value>", "<value>"], "inspectorUrl": "https://concrete-gerbil.org", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": true, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 8528.74, "buildingAt": 7590.79, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": true, "status": "BUILDING", "id": "<id>", "createdAt": 3071.53, "name": "<value>", "meta": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "readyState": "QUEUED", "regions": ["<value>"], "type": "LAMBDAS", "url": "https://timely-reboot.name", "version": 6067.47, "createdIn": "<value>", "ownerId": "<id>", "plan": "pro", "projectId": "<id>", "routes": [{"handle": "resource"}, {"src": "<value>", "continue": true, "middleware": 4831.29}]}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>"]}, "env": [], "inspectorUrl": "https://grown-gymnast.net", "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 9923.4, "buildingAt": 4182.97, "buildSkipped": true, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "createdAt": 4076.8, "name": "<value>", "meta": {}, "readyState": "READY", "regions": [], "type": "LAMBDAS", "url": "https://medium-tribe.org/", "version": 7316.38, "createdIn": "<value>", "ownerId": "<id>", "plan": "hobby", "projectId": "<id>", "routes": [{"src": "<value>"}, {"src": "<value>", "continue": true, "middleware": 1635.94}]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5197,10 +5326,9 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
-        header: {}
       responses:
         "200":
-          application/json: {}
+          application/json: {"urls": ["example-upload.aws.com"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5215,7 +5343,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 956.43}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 1805.56}]
+          application/json: [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "children": [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}], "contentType": "application/json", "mode": 6417.18}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "children": [{"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}, {"name": "my-file.json", "type": "file", "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0", "contentType": "application/json", "mode": 7131.4}], "contentType": "application/json", "mode": 6417.18}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5238,17 +5366,6 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-    "":
-      parameters:
-        path:
-          id: "<id>"
-          fileId: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: {"data": "SGVsbG8gV29ybGQhIFRoaXMgaXMgYSByYW5kb20gc2hvcnQgZmlsZSBidWZmZXIgZXhhbXBsZS4="}
   getDeployments:
     speakeasy-default-get-deployments:
       parameters:
@@ -5267,7 +5384,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}, "deployments": [{"uid": "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa", "name": "docs", "url": "docs-9jaeg38me.vercel.app", "created": 1609492210000, "defaultRoute": "/docs", "deleted": 1609492210000, "undeleted": 1609492210000, "softDeletedByRetention": true, "source": "cli", "state": "READY", "readyState": "READY", "type": "LAMBDAS", "creator": {"uid": "eLrCnEgbKhsHyfbiNR7E8496", "email": "example@example.com", "username": "johndoe", "githubLogin": "johndoe", "gitlabLogin": "johndoe"}, "target": "production", "createdAt": 1609492210000, "buildingAt": 1609492210000, "ready": 1609492210000, "inspectorUrl": "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"}, {"uid": "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa", "name": "docs", "url": "docs-9jaeg38me.vercel.app", "created": 1609492210000, "defaultRoute": "/docs", "deleted": 1609492210000, "undeleted": 1609492210000, "softDeletedByRetention": true, "source": "cli", "state": "READY", "readyState": "READY", "type": "LAMBDAS", "creator": {"uid": "eLrCnEgbKhsHyfbiNR7E8496", "email": "example@example.com", "username": "johndoe", "githubLogin": "johndoe", "gitlabLogin": "johndoe"}, "target": "production", "createdAt": 1609492210000, "buildingAt": 1609492210000, "ready": 1609492210000, "inspectorUrl": "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"}]}
+          application/json: {"pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}, "deployments": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5301,7 +5418,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"integration": {"name": "<value>", "icon": "<value>", "isLegacy": true}, "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}, {"integration": {"name": "<value>", "icon": "<value>", "isLegacy": false}, "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}]
+          application/json: [{"integration": {"name": "<value>", "icon": "<value>", "isLegacy": false}, "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5316,7 +5433,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}
+          application/json: {"projectSelection": "all", "transferRequest": {"kind": "transfer-from-marketplace", "requestId": "<id>", "transferId": "<id>", "requester": {"name": "<value>"}, "createdAt": 7423.49, "expiresAt": 2957.4}, "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5338,30 +5455,6 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  gitNamespaces:
-    speakeasy-default-git-namespaces:
-      parameters:
-        query:
-          host: "ghes-test.now.systems"
-      responses:
-        "200":
-          application/json: [{"provider": "<value>", "slug": "<value>", "id": 8350.2, "ownerType": "<value>"}, {"provider": "<value>", "slug": "<value>", "id": 4647.99, "ownerType": "<value>"}]
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  searchRepo:
-    speakeasy-default-search-repo:
-      parameters:
-        query:
-          host: "ghes-test.now.systems"
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   buyDomain:
     speakeasy-default-buy-domain:
       parameters:
@@ -5372,9 +5465,9 @@ examples:
         application/json: {"name": "example.com", "expectedPrice": 10, "renew": true, "country": "US", "orgName": "Acme Inc.", "firstName": "Jane", "lastName": "Doe", "address1": "340 S Lemon Ave Suite 4133", "city": "San Francisco", "state": "CA", "postalCode": "91789", "phone": "+1.4158551452", "email": "jane.doe@someplace.com"}
       responses:
         "201":
-          application/json: {"domain": {"uid": "<id>", "ns": ["<value>", "<value>", "<value>"], "verified": false, "created": 9374.8, "pending": false}}
+          application/json: {"domain": {"uid": "<id>", "ns": ["<value 1>"], "verified": true, "created": 6683.9, "pending": true}}
         "202":
-          application/json: {"domain": {"uid": "<id>", "ns": [], "verified": true, "created": 3454.82, "pending": true}}
+          application/json: {"domain": {"uid": "<id>", "ns": ["<value 1>"], "verified": true, "created": 2787.19, "pending": false}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5420,7 +5513,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"transferable": false, "transferPolicy": "charge-and-renew", "reason": "<value>", "status": "completed"}
+          application/json: {"transferable": false, "transferPolicy": null, "reason": "<value>", "status": "pending_admin"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5435,7 +5528,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"misconfigured": true}
+          application/json: {"misconfigured": false}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5473,28 +5566,11 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  createOrTransferDomain:
-    speakeasy-default-create-or-transfer-domain:
-      parameters:
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      requestBody:
-        application/json: {"name": "example.com", "method": "transfer-in", "authCode": "fdhfr820ad#@FAdlj$$", "expectedPrice": 8}
-      responses:
-        "200":
-          application/json: {"domain": {"verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "name": "example.com", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>", "teamId": "<id>"}}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   patchDomain:
     speakeasy-default-patch-domain:
       parameters:
         path:
-          domain: "tight-secrecy.info"
+          domain: "flimsy-napkin.com"
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
@@ -5502,7 +5578,7 @@ examples:
         application/json: {"op": "update"}
       responses:
         "200":
-          application/json: {"moved": true, "token": "<value>"}
+          application/json: {}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5539,7 +5615,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"records": [{"id": "<id>", "slug": "<value>", "name": "<value>", "type": "CAA", "value": "<value>", "creator": "<value>", "created": 625.21, "updated": 9085.95, "createdAt": 5625.17, "updatedAt": 391.36}, {"id": "<id>", "slug": "<value>", "name": "<value>", "type": "TXT", "value": "<value>", "creator": "<value>", "created": 8810.32, "updated": 5188.16, "createdAt": 6202.54, "updatedAt": 4008.09}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"records": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5555,10 +5631,10 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"type": "CNAME", "ttl": 60, "https": {"priority": 10, "target": "host.example.com", "params": "alpn=h2,h3"}, "comment": "used to verify ownership of domain"}
+        application/json: {"type": "NS", "ttl": 60, "srv": {"priority": 10, "weight": 10, "port": 5000, "target": "host.example.com"}, "comment": "used to verify ownership of domain"}
       responses:
         "200":
-          application/json: {"uid": "<id>", "updated": 5674.67}
+          application/json: {"uid": "rec_V0fra8eEgQwEpFhYG2vTzC3K"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5574,10 +5650,10 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"name": "example-1", "value": "google.com", "type": "A", "ttl": "60", "srv": {"target": "example2.com.", "weight": 97604, "port": 570172, "priority": 199524}, "https": {"priority": 35000, "target": "example2.com."}, "comment": "used to verify ownership of domain"}
+        application/json: {"name": "example-1", "value": "google.com", "type": "A", "ttl": 60, "srv": null, "https": null, "comment": "used to verify ownership of domain"}
       responses:
         "200":
-          application/json: {"creator": "<value>", "domain": "rectangular-peninsula.net", "id": "<id>", "name": "<value>", "recordType": "SRV", "type": "record-sys", "value": "<value>"}
+          application/json: {"creator": "<value>", "domain": "raw-scorpion.net", "id": "<id>", "name": "<value>", "recordType": "AAAA", "type": "record", "value": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5602,23 +5678,6 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  getConfigurableLogDrain:
-    speakeasy-default-get-configurable-log-drain:
-      parameters:
-        path:
-          id: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: {"environments": [], "id": "<id>", "createdAt": 2748.7, "deletedAt": 6121.41, "updatedAt": 757.62, "url": "https://zany-disk.biz/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "syslog", "secret": "<value>"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   deleteConfigurableLogDrain:
     speakeasy-default-delete-configurable-log-drain:
       parameters:
@@ -5634,34 +5693,6 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  getAllLogDrains:
-    speakeasy-default-get-all-log-drains:
-      parameters:
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: [{"environments": [], "id": "<id>", "createdAt": 574.66, "deletedAt": 6011.91, "updatedAt": 2517.89, "url": "https://outstanding-challenge.org", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "ndjson"}, {"environments": [], "id": "<id>", "createdAt": 5517.31, "deletedAt": 1493.78, "updatedAt": 8708.81, "url": "https://earnest-cafe.info/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "ndjson"}]
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  createConfigurableLogDrain:
-    speakeasy-default-create-configurable-log-drain:
-      parameters:
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      requestBody:
-        application/json: {"deliveryFormat": "json", "url": "https://sugary-technician.name", "sources": ["external"]}
-      responses:
-        "200":
-          application/json: {"environments": [], "id": "<id>", "createdAt": 7499.97, "deletedAt": 1180.21, "updatedAt": 2631.59, "url": "https://brown-lifestyle.biz/", "name": "<value>", "ownerId": "<id>", "deliveryFormat": "syslog"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getIntegrationLogDrains:
     speakeasy-default-get-integration-log-drains:
       parameters:
@@ -5670,7 +5701,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
+          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}, {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5685,7 +5716,7 @@ examples:
         application/json: {"name": "My first log drain", "secret": "a1Xsfd325fXcs", "deliveryFormat": "json", "url": "https://example.com/log-drain"}
       responses:
         "200":
-          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["external"], "createdFrom": "integration", "headers": {"0": "{", "1": "\"", "2": "A", "3": "u", "4": "t", "5": "h", "6": "o", "7": "r", "8": "i", "9": "z", "10": "a", "11": "t", "12": "i", "13": "o", "14": "n", "15": "\"", "16": ":", "17": " ", "18": "\"", "19": "B", "20": "e", "21": "a", "22": "r", "23": "e", "24": "r", "25": " ", "26": "1", "27": "2", "28": "3", "29": "\"", "30": "}"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}
+          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5713,7 +5744,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"sizeInBytes": 8239.08, "itemCount": 557.07}, {"sizeInBytes": 4591.09, "itemCount": 7040.34}]
+          application/json: [{"sizeInBytes": 2670.91, "itemCount": 9219.58}, {"sizeInBytes": 2670.91, "itemCount": 9219.58}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5728,7 +5759,7 @@ examples:
         application/json: {"slug": "<value>"}
       responses:
         "201":
-          application/json: {"sizeInBytes": 145.91, "itemCount": 5042.97}
+          application/json: {"sizeInBytes": 9972.06, "itemCount": 9113.46}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5743,7 +5774,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"sizeInBytes": 3967.65, "itemCount": 7010.13}
+          application/json: {"sizeInBytes": 3866.06, "itemCount": 4529.9}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5762,7 +5793,7 @@ examples:
         application/json: {"slug": "<value>"}
       responses:
         "200":
-          application/json: {"sizeInBytes": 5022.37, "itemCount": 211.31}
+          application/json: {"sizeInBytes": 7731.03, "itemCount": 3563.67}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5794,7 +5825,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<key>", "value": 5002.95, "edgeConfigId": "<id>", "createdAt": 9069.69, "updatedAt": 6276.41}
+          application/json: {"key": "<key>", "value": {"key": [false, {"key": [], "key1": {"key": "<value>", "key1": []}, "key2": 7567.91}, "<value>"], "key1": 4645.1, "key2": []}, "edgeConfigId": "<id>", "createdAt": 70.73, "updatedAt": 2714.73}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5863,7 +5894,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<key>", "value": 9966.78, "edgeConfigId": "<id>", "createdAt": 1621.85, "updatedAt": 3034.43}
+          application/json: {"key": "<key>", "value": [{"key": false, "key1": [], "key2": {"key": [], "key1": "<value>"}}, true, []], "edgeConfigId": "<id>", "createdAt": 8897.2, "updatedAt": 3673.26}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5880,7 +5911,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"token": "<value>", "label": "<value>", "id": "<id>", "edgeConfigId": "<id>", "createdAt": 7692.36}
+          application/json: {"token": "<value>", "label": "<value>", "id": "<id>", "edgeConfigId": "<id>", "createdAt": 7767.4}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5896,7 +5927,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"tokens": []}
+        application/json: {"tokens": ["<value 1>", "<value 2>", "<value 3>"]}
       responses:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
@@ -5915,7 +5946,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"token": "<value>", "label": "<value>", "id": "<id>", "edgeConfigId": "<id>", "createdAt": 3597.77}
+          application/json: {"token": "<value>", "label": "<value>", "id": "<id>", "edgeConfigId": "<id>", "createdAt": 2212.78}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5952,7 +5983,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "<id>", "lastModified": 1520, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 1577.8, "value": "<value>", "createdAt": 970.45}}, "slug": "<value>", "updatedAt": 952.13}, "metadata": {}, "user": {"id": "<id>", "username": "Leola60", "email": "Eunice.Hansen@hotmail.com"}}
+          application/json: {"id": "<id>", "lastModified": 8516.74, "backup": {"digest": "<value>", "items": {"key": {"updatedAt": 9506.24, "value": {"key": 9876.5, "key1": 4619.66}, "createdAt": 6446.55}}, "slug": "<value>", "updatedAt": 512.01}, "metadata": {}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5969,7 +6000,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"backups": [{"id": "<id>", "lastModified": 2424.25}, {"id": "<id>", "lastModified": 1518.43}], "pagination": {"hasNext": true}}
+          application/json: {"backups": [{"id": "<id>", "lastModified": 3645.28}, {"id": "<id>", "lastModified": 3645.28}], "pagination": {"hasNext": true}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5985,11 +6016,11 @@ examples:
           until: "2019-12-09T23:00:38.976Z"
           types: "login,team-member-join,domain-buy"
           userId: "aeIInYVk59zbFF2SxfyxxmuO"
+          principalId: "aeIInYVk59zbFF2SxfyxxmuO"
+          projectIds: "aeIInYVk59zbFF2SxfyxxmuO"
           withPayload: "true"
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
-          principalId: "aeIInYVk59zbFF2SxfyxxmuO"
-          projectIds: "aeIInYVk59zbFF2SxfyxxmuO"
       responses:
         "200":
           application/json: {"events": []}
@@ -6001,7 +6032,7 @@ examples:
     speakeasy-default-get-auth-user:
       responses:
         "200":
-          application/json: {"user": {"createdAt": 1630748523395, "softBlock": {"blockedAt": 7708.7, "reason": "UNPAID_INVOICE"}, "billing": {}, "resourceConfig": {}, "stagingPrefix": "<value>", "hasTrialAvailable": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": "<id>", "version": "northstar"}}
+          application/json: {"user": {"limited": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": null, "version": "northstar"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6012,7 +6043,7 @@ examples:
         application/json: {}
       responses:
         "202":
-          application/json: {"id": "<id>", "email": "Lamont82@gmail.com", "message": "Verification email sent"}
+          application/json: {"id": "<id>", "email": "Gilda_Murphy@yahoo.com", "message": "Verification email sent"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6024,7 +6055,7 @@ examples:
           integrationConfigurationId: "<id>"
       responses:
         "200":
-          application/json: {"url": "https://friendly-pleasure.info", "contact": {"email": "Horace_Bernhard@yahoo.com"}}
+          application/json: {"url": "https://joyful-mouser.com/", "contact": {"email": "Cecile47@yahoo.com"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6037,7 +6068,7 @@ examples:
           memberId: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "role": "ADMIN"}
+          application/json: {"id": "<id>", "role": "USER"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6062,7 +6093,7 @@ examples:
         path:
           integrationConfigurationId: "<id>"
       requestBody:
-        application/json: {"timestamp": "2025-09-29T02:38:01.476Z", "eod": "2023-12-28T23:46:57.523Z", "period": {"start": "2023-06-25T19:04:50.518Z", "end": "2024-10-17T01:18:36.230Z"}, "billing": {"items": [{"billingPlanId": "<id>", "name": "<value>", "price": "511.92", "quantity": 328.54, "units": "<value>", "total": "<value>"}, {"billingPlanId": "<id>", "name": "<value>", "price": "4.49", "quantity": 3113.17, "units": "<value>", "total": "<value>"}, {"billingPlanId": "<id>", "name": "<value>", "price": "896.30", "quantity": 8536.32, "units": "<value>", "total": "<value>"}]}, "usage": [{"name": "<value>", "type": "rate", "units": "<value>", "dayValue": 9439.22, "periodValue": 6958.71}, {"name": "<value>", "type": "total", "units": "<value>", "dayValue": 9892.22, "periodValue": 4749.62}, {"name": "<value>", "type": "rate", "units": "<value>", "dayValue": 7119.53, "periodValue": 6310.47}]}
+        application/json: {"timestamp": "2023-11-26T05:03:03.977Z", "eod": "2023-04-14T04:58:49.647Z", "period": {"start": "2023-03-12T13:32:00.895Z", "end": "2023-12-15T15:17:13.187Z"}, "billing": [{"billingPlanId": "<id>", "name": "<value>", "price": "694.00", "quantity": 228.64, "units": "<value>", "total": "<value>"}, {"billingPlanId": "<id>", "name": "<value>", "price": "694.00", "quantity": 228.64, "units": "<value>", "total": "<value>"}], "usage": [{"name": "<value>", "type": "interval", "units": "<value>", "dayValue": 5212.43, "periodValue": 4147.35}, {"name": "<value>", "type": "interval", "units": "<value>", "dayValue": 5212.43, "periodValue": 4147.35}, {"name": "<value>", "type": "interval", "units": "<value>", "dayValue": 5212.43, "periodValue": 4147.35}]}
       responses:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
@@ -6074,7 +6105,7 @@ examples:
         path:
           integrationConfigurationId: "<id>"
       requestBody:
-        application/json: {"invoiceDate": "2023-06-05T08:54:16.353Z", "period": {"start": "2023-07-26T14:15:15.601Z", "end": "2025-10-08T09:35:48.520Z"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "905.89", "quantity": 1684.76, "units": "<value>", "total": "<value>"}, {"billingPlanId": "<id>", "name": "<value>", "price": "84.05", "quantity": 9130.95, "units": "<value>", "total": "<value>"}]}
+        application/json: {"invoiceDate": "2023-12-12T13:24:35.882Z", "period": {"start": "2024-10-20T02:46:19.279Z", "end": "2025-06-06T21:30:28.107Z"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "469.29", "quantity": 3808.42, "units": "<value>", "total": "<value>"}, {"billingPlanId": "<id>", "name": "<value>", "price": "469.29", "quantity": 3808.42, "units": "<value>", "total": "<value>"}]}
       responses:
         "200":
           application/json: {}
@@ -6090,7 +6121,7 @@ examples:
           invoiceId: "<id>"
       responses:
         "200":
-          application/json: {"invoiceId": "<id>", "state": "invoiced", "invoiceDate": "<value>", "period": {"start": "<value>", "end": "<value>"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "813.89", "quantity": 2100.54, "units": "<value>", "total": "<value>"}], "total": "<value>", "created": "<value>", "updated": "<value>"}
+          application/json: {"invoiceId": "<id>", "state": "invoiced", "invoiceDate": "<value>", "period": {"start": "<value>", "end": "<value>"}, "items": [{"billingPlanId": "<id>", "name": "<value>", "price": "354.65", "quantity": 4602.57, "units": "<value>", "total": "<value>"}], "total": "<value>", "created": "<value>", "updated": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6226,7 +6257,7 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": {}, "key1": {}, "key2": {}}, "updatedAt": 7651.43, "digest": "<value>"}
+          application/json: {"items": {}, "updatedAt": 418.64, "digest": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6241,7 +6272,7 @@ examples:
           resourceId: "<id>"
       responses:
         "200":
-          application/json: {"items": {"key": true, "key1": "<value>"}, "updatedAt": 8687.23, "digest": "<value>"}
+          application/json: {"items": {"key": "<value>"}, "updatedAt": 1217.32, "digest": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6252,7 +6283,7 @@ examples:
     speakeasy-default-list-auth-tokens:
       responses:
         "200":
-          application/json: {"tokens": [{"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}, {"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}, {"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}], "testingToken": {"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}, "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"tokens": [{"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}], "testingToken": {"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}, "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6300,6 +6331,22 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  getRuntimeLogs:
+    speakeasy-default-get-runtime-logs:
+      parameters:
+        path:
+          projectId: "<id>"
+          deploymentId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/stream+json: {"level": "error", "message": "<value>", "rowId": "<id>", "source": "serverless", "timestampInMs": 3529.38, "domain": "tragic-larva.biz", "messageTruncated": true, "requestMethod": "<value>", "requestPath": "<value>", "responseStatusCode": 5431.32}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getProjectMembers:
     speakeasy-default-get-project-members:
       parameters:
@@ -6313,7 +6360,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"members": [{"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "email": "jane.doe@example.com", "role": "ADMIN", "computedProjectRole": "ADMIN", "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "teamRole": "CONTRIBUTOR"}], "pagination": {"hasNext": false, "count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"members": [{"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "email": "jane.doe@example.com", "role": "ADMIN", "computedProjectRole": "ADMIN", "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "teamRole": "CONTRIBUTOR"}, {"avatar": "123a6c5209bc3778245d011443644c8d27dc2c50", "email": "jane.doe@example.com", "role": "ADMIN", "computedProjectRole": "ADMIN", "uid": "zTuNVUXEAvvnNN3IaqinkyMw", "username": "jane-doe", "name": "Jane Doe", "createdAt": 1588720733602, "teamRole": "CONTRIBUTOR"}], "pagination": {"hasNext": false, "count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6361,7 +6408,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "201":
-          application/json: {}
+          application/json: {"id": "<id>", "slug": "<value>", "type": "production", "createdAt": 772.39, "updatedAt": 509.66}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6376,7 +6423,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"accountLimit": {"total": 966.92}, "environments": []}
+          application/json: {"accountLimit": {"total": 4336.88}, "environments": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6392,7 +6439,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {}
+          application/json: {"id": "<id>", "slug": "<value>", "type": "production", "createdAt": 212.72, "updatedAt": 2304.72}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6410,7 +6457,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {}
+          application/json: {"id": "<id>", "slug": "<value>", "type": "production", "createdAt": 4054.52, "updatedAt": 7043.79}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6426,7 +6473,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {}
+          application/json: {"id": "<id>", "slug": "<value>", "type": "preview", "createdAt": 3549.56, "updatedAt": 1676.55}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6438,10 +6485,28 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"projectId": "<id>", "attackModeEnabled": true}
+        application/json: {"projectId": "<id>", "attackModeEnabled": false}
       responses:
         "200":
-          application/json: {"attackModeEnabled": true, "attackModeUpdatedAt": 6133.77}
+          application/json: {"attackModeEnabled": false, "attackModeUpdatedAt": 7411.4}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  putFirewallConfig:
+    speakeasy-default-put-firewall-config:
+      parameters:
+        query:
+          projectId: "<id>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      requestBody:
+        application/json: {"firewallEnabled": true}
+      responses:
+        "200":
+          application/json: {"active": {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": 9165.84, "updatedAt": "1735603203410", "firewallEnabled": false, "crs": {"sd": {"active": false, "action": "deny"}, "ma": {"active": false, "action": "deny"}, "lfi": {"active": true, "action": "log"}, "rfi": {"active": true, "action": "deny"}, "rce": {"active": false, "action": "log"}, "php": {"active": true, "action": "log"}, "gen": {"active": true, "action": "deny"}, "xss": {"active": true, "action": "log"}, "sqli": {"active": false, "action": "deny"}, "sf": {"active": false, "action": "deny"}, "java": {"active": true, "action": "log"}}, "rules": [{"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "target_path", "op": "pre"}]}, {"conditions": [{"type": "target_path", "op": "pre"}]}], "action": {}}, {"id": "<id>", "name": "<value>", "active": true, "conditionGroup": [{"conditions": [{"type": "target_path", "op": "pre"}]}, {"conditions": [{"type": "target_path", "op": "pre"}]}], "action": {}}], "ips": [], "changes": [{}]}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6456,7 +6521,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"action": "managedRules.update", "id": "<id>", "value": {"active": true}}
+        application/json: {"action": "ip.remove", "id": "<id>"}
       responses:
         "200":
           application/json: {}
@@ -6477,7 +6542,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": 228.9, "updatedAt": "1744362822275", "firewallEnabled": false, "crs": {"sd": {"active": true, "action": "deny"}, "ma": {"active": false, "action": "log"}, "lfi": {"active": false, "action": "log"}, "rfi": {"active": true, "action": "deny"}, "rce": {"active": true, "action": "log"}, "php": {"active": false, "action": "log"}, "gen": {"active": false, "action": "deny"}, "xss": {"active": true, "action": "deny"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "deny"}, "java": {"active": true, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "path", "op": "neq"}]}], "action": {}}], "ips": [{"id": "<id>", "hostname": "crowded-suspension.net", "ip": "194.99.165.97", "action": "bypass"}, {"id": "<id>", "hostname": "burly-academics.name", "ip": "42.161.47.142", "action": "bypass"}, {"id": "<id>", "hostname": "damaged-bracelet.info", "ip": "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203", "action": "log"}], "changes": [{}]}
+          application/json: {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": 6575.82, "updatedAt": "1735634663735", "firewallEnabled": false, "crs": {"sd": {"active": true, "action": "log"}, "ma": {"active": false, "action": "deny"}, "lfi": {"active": false, "action": "deny"}, "rfi": {"active": true, "action": "deny"}, "rce": {"active": true, "action": "log"}, "php": {"active": true, "action": "deny"}, "gen": {"active": true, "action": "deny"}, "xss": {"active": false, "action": "log"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "log"}, "java": {"active": true, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "header", "op": "ex"}, {"type": "header", "op": "ex"}]}], "action": {}}], "ips": [{"id": "<id>", "hostname": "graceful-elevator.com", "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329", "action": "bypass"}, {"id": "<id>", "hostname": "graceful-elevator.com", "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329", "action": "bypass"}, {"id": "<id>", "hostname": "graceful-elevator.com", "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329", "action": "bypass"}], "changes": [{}, {}, {}]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6493,7 +6558,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"anomalies": [{"ownerId": "<id>", "projectId": "<id>", "startTime": 9556.58, "endTime": 3001.16, "atMinute": 5447.77, "affectedHostMap": {}}, {"ownerId": "<id>", "projectId": "<id>", "startTime": 7786.06, "endTime": 9758.22, "atMinute": 7118.69, "affectedHostMap": {}}]}
+          application/json: {}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6510,7 +6575,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "sneaky-intervention.info", "Ip": "124.153.161.35", "CreatedAt": "1730712703128", "UpdatedAt": "1744368534759", "UpdatedAtHour": "<value>"}], "pagination": "<value>"}
+          application/json: {}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6526,7 +6591,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"ok": false, "result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "jubilant-outrun.name", "ProjectId": "<id>", "Note": "<value>", "IsProjectRule": true}], "pagination": "<value>"}
+          application/json: {"ok": false, "result": [], "pagination": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6542,7 +6607,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"ok": true}
+          application/json: {"ok": false}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6572,7 +6637,7 @@ examples:
         path:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
-        application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "email": "john@example.com", "role": "VIEWER", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
+        application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "email": "john@example.com", "role": "DEVELOPER", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
       responses:
         "200":
           application/json: {"uid": "kr1PsOIzqEL5Xg6M4VZcZosf", "username": "john-doe", "email": "john@user.co", "role": "MEMBER", "teamRoles": ["MEMBER"], "teamPermissions": ["CreateProject"]}
@@ -6606,7 +6671,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
-          application/json: {"teamSlug": "my-team", "teamName": "My Team", "confirmed": false, "joinedFrom": {"origin": "import"}, "accessRequestedAt": 1588720733602, "github": {}, "gitlab": {}, "bitbucket": {}}
+          application/json: {"teamSlug": "my-team", "teamName": "My Team", "confirmed": false, "joinedFrom": {"origin": "saml"}, "accessRequestedAt": 1588720733602, "github": {}, "gitlab": {}, "bitbucket": {}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6636,7 +6701,7 @@ examples:
           uid: "ndfasllgPyCtREAqxxdyFKb"
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
-        application/json: {"confirmed": true, "role": "[\"MEMBER\",\"VIEWER\"]", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
+        application/json: {"confirmed": true, "role": "[\"MEMBER\",\"VIEWER\"]", "projects": [{"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}, {"projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK", "role": "ADMIN"}]}
       responses:
         "200":
           application/json: {"id": "<id>"}
@@ -6672,7 +6737,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 2076.98, "role": "VIEWER", "createdAt": 5945.15, "created": 6852.6}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"limited": false, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6690,7 +6755,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 1771.72, "role": "MEMBER", "createdAt": 1162.06, "created": 9734.64}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"limited": false, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "created": "<value>", "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6706,7 +6771,7 @@ examples:
           until: 1540095775951
       responses:
         "200":
-          application/json: {"teams": [{"limited": true, "limitedBy": [], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3401.3, "role": "VIEWER", "createdAt": 853.16, "created": 1827.59}, "created": "<value>", "createdAt": 1630748523395}, {"limited": true, "limitedBy": ["mfa"], "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 9654.85, "role": "OWNER", "createdAt": 1341.03, "created": 7461.12}, "created": "<value>", "createdAt": 1630748523395}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"teams": [], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6763,7 +6828,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"url": "https://woeful-yin.biz", "events": []}
+        application/json: {"url": "https://experienced-sailor.biz/", "events": ["deployment.promoted", "deployment.error", "deployment.integration.action.cancel"]}
       responses:
         "200":
           application/json: {"secret": "<value>", "events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}
@@ -6779,7 +6844,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"projectsMetadata": [{"id": "<id>", "name": "<value>"}, {"id": "<id>", "name": "<value>"}, {"id": "<id>", "name": "<value>"}], "events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}, {"projectsMetadata": [{"id": "<id>", "name": "<value>"}], "events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}, {"projectsMetadata": [{"id": "<id>", "name": "<value>"}], "events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}]
+          application/json: [{"events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}, {"events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}, {"events": ["deployment.created"], "id": "account_hook_GflD6EYyo7F4ViYS", "url": "https://my-webhook.com", "ownerId": "ZspSRT4ljIEEmMHgoDwKWDei", "createdAt": 1567024758130, "updatedAt": 1567024758130, "projectIds": ["prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"]}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6863,7 +6928,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"aliases": [], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"aliases": [{"alias": "my-alias.vercel.app", "created": "2017-04-26T23:00:34.232Z", "createdAt": 1540095775941, "creator": {"uid": "96SnxkFiMyVKsK3pnoHfx3Hz", "email": "john-doe@gmail.com", "username": "john-doe"}, "deletedAt": 1540095775941, "deployment": {"id": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "url": "my-instant-deployment-3ij3cxz9qr.now.sh", "meta": "{}"}, "deploymentId": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "projectId": "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "uid": "<id>", "updatedAt": 1540095775941}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6908,6 +6973,23 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patchUrlProtectionBypass:
+    speakeasy-default-patch-url-protection-bypass:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"key": "<value>", "key1": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getCertById:
     speakeasy-default-get-cert-by-id:
       parameters:
@@ -6918,7 +7000,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "<id>", "createdAt": 227.12, "expiresAt": 3995.77, "autoRenew": false, "cns": ["<value>"]}
+          application/json: {"id": "<id>", "createdAt": 6540.28, "expiresAt": 6456.07, "autoRenew": true, "cns": ["<value 1>", "<value 2>"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6948,11 +7030,9 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
-      requestBody:
-        application/json: {}
       responses:
         "200":
-          application/json: {"id": "<id>", "createdAt": 1842.08, "expiresAt": 8685.42, "autoRenew": true, "cns": []}
+          application/json: {"id": "<id>", "createdAt": 8859.68, "expiresAt": 8499.2, "autoRenew": true, "cns": ["<value 1>", "<value 2>"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6965,190 +7045,14 @@ examples:
         query:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
-      requestBody:
-        application/json: {"ca": "<value>", "key": "<key>", "cert": "<value>"}
       responses:
         "200":
-          application/json: {"id": "<id>", "createdAt": 9219.92, "expiresAt": 5530.55, "autoRenew": true, "cns": ["<value>", "<value>"]}
+          application/json: {"id": "<id>", "createdAt": 5621.19, "expiresAt": 3778.47, "autoRenew": true, "cns": ["<value 1>", "<value 2>", "<value 3>"]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  pauseProject:
-    speakeasy-default-pause-project:
-      parameters:
-        path:
-          projectId: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  unpauseProject:
-    speakeasy-default-unpause-project:
-      parameters:
-        path:
-          projectId: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  putFirewallConfig:
-    speakeasy-default-put-firewall-config:
-      parameters:
-        query:
-          projectId: "<id>"
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      requestBody:
-        application/json: {"firewallEnabled": true}
-      responses:
-        "200":
-          application/json: {"active": {"ownerId": "<id>", "projectKey": "<value>", "id": "<id>", "version": 892.22, "updatedAt": "1745792555559", "firewallEnabled": true, "crs": {"sd": {"active": false, "action": "log"}, "ma": {"active": false, "action": "log"}, "lfi": {"active": false, "action": "deny"}, "rfi": {"active": false, "action": "deny"}, "rce": {"active": true, "action": "deny"}, "php": {"active": false, "action": "deny"}, "gen": {"active": false, "action": "deny"}, "xss": {"active": true, "action": "log"}, "sqli": {"active": true, "action": "deny"}, "sf": {"active": true, "action": "log"}, "java": {"active": false, "action": "deny"}}, "rules": [{"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "geo_city", "op": "pre"}]}], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [], "action": {}}, {"id": "<id>", "name": "<value>", "active": false, "conditionGroup": [{"conditions": [{"type": "ip_address", "op": "sub"}, {"type": "ja3_digest", "op": "suf"}, {"type": "protocol", "op": "sub"}]}, {"conditions": [{"type": "geo_as_number", "op": "re"}, {"type": "geo_continent", "op": "nex"}, {"type": "region", "op": "gt"}]}, {"conditions": [{"type": "method", "op": "gte"}, {"type": "header", "op": "inc"}, {"type": "query", "op": "eq"}]}], "action": {}}], "ips": [], "changes": [{}, {}, {}]}}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  moveProjectDomain:
-    speakeasy-default-move-project-domain:
-      parameters:
-        path:
-          idOrName: "<value>"
-          domain: "www.example.com"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: {"name": "<value>", "apexName": "<value>", "projectId": "<id>", "verified": false}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  patch_/aliases/{id}/protection-bypass:
-    speakeasy-default-patch-/aliases/{id}/protection-bypass:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: {"key": "<value>"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  patchUrlProtectionBypass:
-    speakeasy-default-patch-url-protection-bypass:
-      parameters:
-        path:
-          id: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/json: {"key": "<value>"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  get_/projects/{projectId}/logs-presets:
-    speakeasy-default-get-/projects/{project-id}/logs-presets:
-      parameters:
-        path:
-          projectId: "<id>"
-      responses:
-        "200":
-          application/json: [{"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4859.35}, "key": "<value>", "key1": "<value>"}, {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4176.11}, "key": "<value>", "key1": "<value>"}, {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 9283.43}, "key": "<value>"}]
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  post_/projects/{projectId}/logs-presets:
-    speakeasy-default-post-/projects/{project-id}/logs-presets:
-      parameters:
-        path:
-          projectId: "<id>"
-      requestBody:
-        application/json: {"query": "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com", "title": "Request Path", "group": "team"}
-      responses:
-        "200":
-          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4231.46}, "key": "<value>", "key1": "<value>"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  delete_/projects/{projectId}/logs-presets/{id}:
-    speakeasy-default-delete-/projects/{project-id}/logs-presets/{id}:
-      parameters:
-        path:
-          projectId: "<id>"
-          id: "<id>"
-      responses:
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  patch_/projects/{projectId}/logs-presets/{id}:
-    speakeasy-default-patch-/projects/{project-id}/logs-presets/{id}:
-      parameters:
-        path:
-          projectId: "<id>"
-          id: "<id>"
-      requestBody:
-        application/json: {"title": "Request Path"}
-      responses:
-        "200":
-          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 4063.98}, "key": "<value>", "key1": "<value>", "key2": "<value>"}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  getRuntimeLogs:
-    speakeasy-default-get-runtime-logs:
-      parameters:
-        path:
-          projectId: "<id>"
-          deploymentId: "<id>"
-        query:
-          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-          slug: "my-team-url-slug"
-      responses:
-        "200":
-          application/stream+json: {"level": "error", "message": "<value>", "rowId": "<id>", "source": "serverless", "timestampInMs": 5218.65, "domain": "putrid-tenement.info", "messageTruncated": false, "requestMethod": "<value>", "requestPath": "<value>", "responseStatusCode": 4823.11}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-  post_/domains:
-    speakeasy-default-post-/domains:
-      requestBody:
-        application/json: {"name": "example.com", "cdnEnabled": true, "method": "transfer-in"}
-      responses:
-        "200":
-          application/json: {"domain": {"verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "name": "example.com", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>", "teamId": "<id>"}}
-        "400":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "401":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-        "404":
-          application/json: {"error": {"code": "<value>", "message": "<value>"}}
-examplesVersion: 1.0.1
+examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
   updateAccessGroup: "2025-04-29T14:51:46-05:00"

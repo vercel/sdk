@@ -12,6 +12,10 @@ export type UpdateResourceSecretsSecrets = {
   name: string;
   value: string;
   prefix?: string | undefined;
+  /**
+   * @hidden
+   */
+  environmentOverrides?: { [k: string]: string } | undefined;
 };
 
 export type UpdateResourceSecretsRequestBody = {
@@ -38,6 +42,7 @@ export const UpdateResourceSecretsSecrets$inboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
+  environmentOverrides: z.record(z.string()).optional(),
 });
 
 /** @internal */
@@ -45,6 +50,7 @@ export type UpdateResourceSecretsSecrets$Outbound = {
   name: string;
   value: string;
   prefix?: string | undefined;
+  environmentOverrides?: { [k: string]: string } | undefined;
 };
 
 /** @internal */
@@ -56,6 +62,7 @@ export const UpdateResourceSecretsSecrets$outboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
+  environmentOverrides: z.record(z.string()).optional(),
 });
 
 /**

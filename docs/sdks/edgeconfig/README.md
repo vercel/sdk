@@ -964,7 +964,11 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      tokens: [],
+      tokens: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
     },
   });
 
@@ -994,7 +998,11 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      tokens: [],
+      tokens: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
     },
   });
 

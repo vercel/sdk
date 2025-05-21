@@ -3,9 +3,17 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type RemoveProjectDomainRequestBody = {
+  /**
+   * Whether to remove all domains from this project that redirect to the domain being removed.
+   */
+  removeRedirects?: boolean | undefined;
+};
 
 export type RemoveProjectDomainRequest = {
   /**
@@ -24,12 +32,69 @@ export type RemoveProjectDomainRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?: RemoveProjectDomainRequestBody | undefined;
 };
 
 /**
  * The domain was succesfully removed from the project
  */
 export type RemoveProjectDomainResponseBody = {};
+
+/** @internal */
+export const RemoveProjectDomainRequestBody$inboundSchema: z.ZodType<
+  RemoveProjectDomainRequestBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  removeRedirects: z.boolean().optional(),
+});
+
+/** @internal */
+export type RemoveProjectDomainRequestBody$Outbound = {
+  removeRedirects?: boolean | undefined;
+};
+
+/** @internal */
+export const RemoveProjectDomainRequestBody$outboundSchema: z.ZodType<
+  RemoveProjectDomainRequestBody$Outbound,
+  z.ZodTypeDef,
+  RemoveProjectDomainRequestBody
+> = z.object({
+  removeRedirects: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoveProjectDomainRequestBody$ {
+  /** @deprecated use `RemoveProjectDomainRequestBody$inboundSchema` instead. */
+  export const inboundSchema = RemoveProjectDomainRequestBody$inboundSchema;
+  /** @deprecated use `RemoveProjectDomainRequestBody$outboundSchema` instead. */
+  export const outboundSchema = RemoveProjectDomainRequestBody$outboundSchema;
+  /** @deprecated use `RemoveProjectDomainRequestBody$Outbound` instead. */
+  export type Outbound = RemoveProjectDomainRequestBody$Outbound;
+}
+
+export function removeProjectDomainRequestBodyToJSON(
+  removeProjectDomainRequestBody: RemoveProjectDomainRequestBody,
+): string {
+  return JSON.stringify(
+    RemoveProjectDomainRequestBody$outboundSchema.parse(
+      removeProjectDomainRequestBody,
+    ),
+  );
+}
+
+export function removeProjectDomainRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveProjectDomainRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoveProjectDomainRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveProjectDomainRequestBody' from JSON`,
+  );
+}
 
 /** @internal */
 export const RemoveProjectDomainRequest$inboundSchema: z.ZodType<
@@ -41,6 +106,12 @@ export const RemoveProjectDomainRequest$inboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  RequestBody: z.lazy(() => RemoveProjectDomainRequestBody$inboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "RequestBody": "requestBody",
+  });
 });
 
 /** @internal */
@@ -49,6 +120,7 @@ export type RemoveProjectDomainRequest$Outbound = {
   domain: string;
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?: RemoveProjectDomainRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -61,6 +133,12 @@ export const RemoveProjectDomainRequest$outboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  requestBody: z.lazy(() => RemoveProjectDomainRequestBody$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
 });
 
 /**

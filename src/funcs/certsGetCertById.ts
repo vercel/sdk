@@ -112,7 +112,7 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/v7/certs/{id}")(pathParams);
+  const path = pathToFunc("/v8/certs/{id}")(pathParams);
 
   const query = encodeFormQuery({
     "slug": payload.slug,

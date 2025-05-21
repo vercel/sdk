@@ -13,7 +13,7 @@ import (
 	"net/http"
 )
 
-func pathPutV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPostV8Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -21,21 +21,21 @@ func pathPutV7Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker)
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "uploadCert[0]":
-			dir.HandlerFunc("uploadCert", testUploadCertUploadCert0)(w, req)
+		case "issueCert[0]":
+			dir.HandlerFunc("issueCert", testIssueCertIssueCert0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testUploadCertUploadCert0(w http.ResponseWriter, req *http.Request) {
+func testIssueCertIssueCert0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
-	if err := assert.ContentType(req, "application/json", true); err != nil {
+	if err := assert.ContentType(req, "application/json", false); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -50,15 +50,12 @@ func testUploadCertUploadCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UploadCertResponseBody{
+	respBody := &operations.IssueCertResponseBody{
 		ID:        "<id>",
-		CreatedAt: 9219.92,
-		ExpiresAt: 5530.55,
+		CreatedAt: 1842.08,
+		ExpiresAt: 8685.42,
 		AutoRenew: true,
-		Cns: []string{
-			"<value>",
-			"<value>",
-		},
+		Cns:       []string{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

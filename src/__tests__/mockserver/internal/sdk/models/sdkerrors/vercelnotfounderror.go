@@ -8,7 +8,8 @@ import (
 )
 
 type VercelNotFoundError struct {
-	Error_ components.VercelNotFoundErrorError `json:"error"`
+	Error_   components.VercelNotFoundErrorError `json:"error"`
+	HTTPMeta components.HTTPMetadata             `json:"-"`
 }
 
 var _ error = &VercelNotFoundError{}

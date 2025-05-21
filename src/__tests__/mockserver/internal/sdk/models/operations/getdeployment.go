@@ -7164,6 +7164,8 @@ type GetDeploymentMicrofrontends2 struct {
 	// A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
 	Applications map[string]GetDeploymentMicrofrontendsApplications `json:"applications,omitempty"`
 	IsDefaultApp bool                                               `json:"isDefaultApp"`
+	// The project name of the default app of this deployment's microfrontends group.
+	DefaultAppProjectName string `json:"defaultAppProjectName"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
@@ -7184,6 +7186,13 @@ func (o *GetDeploymentMicrofrontends2) GetIsDefaultApp() bool {
 	return o.IsDefaultApp
 }
 
+func (o *GetDeploymentMicrofrontends2) GetDefaultAppProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultAppProjectName
+}
+
 func (o *GetDeploymentMicrofrontends2) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
@@ -7201,6 +7210,8 @@ func (o *GetDeploymentMicrofrontends2) GetGroupIds() []string {
 type GetDeploymentMicrofrontends1 struct {
 	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// The project name of the default app of this deployment's microfrontends group.
+	DefaultAppProjectName string `json:"defaultAppProjectName"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI.
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
@@ -7212,6 +7223,13 @@ func (o *GetDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
 		return nil
 	}
 	return o.IsDefaultApp
+}
+
+func (o *GetDeploymentMicrofrontends1) GetDefaultAppProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultAppProjectName
 }
 
 func (o *GetDeploymentMicrofrontends1) GetDefaultRoute() *string {

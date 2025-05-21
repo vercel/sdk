@@ -266,6 +266,173 @@ func (o *GetProjectsSpeedInsights) GetPaidAt() *float64 {
 	return o.PaidAt
 }
 
+type GetProjectsEnvID2 string
+
+const (
+	GetProjectsEnvID2Production GetProjectsEnvID2 = "production"
+	GetProjectsEnvID2Preview    GetProjectsEnvID2 = "preview"
+)
+
+func (e GetProjectsEnvID2) ToPointer() *GetProjectsEnvID2 {
+	return &e
+}
+func (e *GetProjectsEnvID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = GetProjectsEnvID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsEnvID2: %v", v)
+	}
+}
+
+type GetProjectsEnvIDType string
+
+const (
+	GetProjectsEnvIDTypeStr               GetProjectsEnvIDType = "str"
+	GetProjectsEnvIDTypeGetProjectsEnvID2 GetProjectsEnvIDType = "getProjects_envId_2"
+)
+
+type GetProjectsEnvID struct {
+	Str               *string
+	GetProjectsEnvID2 *GetProjectsEnvID2
+
+	Type GetProjectsEnvIDType
+}
+
+func CreateGetProjectsEnvIDStr(str string) GetProjectsEnvID {
+	typ := GetProjectsEnvIDTypeStr
+
+	return GetProjectsEnvID{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetProjectsEnvIDGetProjectsEnvID2(getProjectsEnvID2 GetProjectsEnvID2) GetProjectsEnvID {
+	typ := GetProjectsEnvIDTypeGetProjectsEnvID2
+
+	return GetProjectsEnvID{
+		GetProjectsEnvID2: &getProjectsEnvID2,
+		Type:              typ,
+	}
+}
+
+func (u *GetProjectsEnvID) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetProjectsEnvIDTypeStr
+		return nil
+	}
+
+	var getProjectsEnvID2 GetProjectsEnvID2 = GetProjectsEnvID2("")
+	if err := utils.UnmarshalJSON(data, &getProjectsEnvID2, "", true, true); err == nil {
+		u.GetProjectsEnvID2 = &getProjectsEnvID2
+		u.Type = GetProjectsEnvIDTypeGetProjectsEnvID2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsEnvID", string(data))
+}
+
+func (u GetProjectsEnvID) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetProjectsEnvID2 != nil {
+		return utils.MarshalJSON(u.GetProjectsEnvID2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsEnvID: all fields are null")
+}
+
+type GetProjectsAws struct {
+	SubnetIds       []string `json:"subnetIds"`
+	SecurityGroupID string   `json:"securityGroupId"`
+}
+
+func (o *GetProjectsAws) GetSubnetIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.SubnetIds
+}
+
+func (o *GetProjectsAws) GetSecurityGroupID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SecurityGroupID
+}
+
+type GetProjectsConnectConfigurations struct {
+	EnvID                  GetProjectsEnvID `json:"envId"`
+	ConnectConfigurationID string           `json:"connectConfigurationId"`
+	Passive                bool             `json:"passive"`
+	BuildsEnabled          bool             `json:"buildsEnabled"`
+	Aws                    *GetProjectsAws  `json:"aws,omitempty"`
+	CreatedAt              float64          `json:"createdAt"`
+	UpdatedAt              float64          `json:"updatedAt"`
+}
+
+func (o *GetProjectsConnectConfigurations) GetEnvID() GetProjectsEnvID {
+	if o == nil {
+		return GetProjectsEnvID{}
+	}
+	return o.EnvID
+}
+
+func (o *GetProjectsConnectConfigurations) GetConnectConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *GetProjectsConnectConfigurations) GetPassive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Passive
+}
+
+func (o *GetProjectsConnectConfigurations) GetBuildsEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.BuildsEnabled
+}
+
+func (o *GetProjectsConnectConfigurations) GetAws() *GetProjectsAws {
+	if o == nil {
+		return nil
+	}
+	return o.Aws
+}
+
+func (o *GetProjectsConnectConfigurations) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsConnectConfigurations) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
 type GetProjectsDefinitions struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
@@ -8336,8 +8503,10 @@ type GetProjectsProjects struct {
 	AutoAssignCustomDomainsUpdatedBy     *string                                `json:"autoAssignCustomDomainsUpdatedBy,omitempty"`
 	BuildCommand                         *string                                `json:"buildCommand,omitempty"`
 	CommandForIgnoringBuildStep          *string                                `json:"commandForIgnoringBuildStep,omitempty"`
+	ConnectConfigurations                []GetProjectsConnectConfigurations     `json:"connectConfigurations,omitempty"`
 	ConnectConfigurationID               *string                                `json:"connectConfigurationId,omitempty"`
 	ConnectBuildsEnabled                 *bool                                  `json:"connectBuildsEnabled,omitempty"`
+	PassiveConnectConfigurationID        *string                                `json:"passiveConnectConfigurationId,omitempty"`
 	CreatedAt                            *float64                               `json:"createdAt,omitempty"`
 	CustomerSupportCodeVisibility        *bool                                  `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                                *GetProjectsCrons                      `json:"crons,omitempty"`
@@ -8360,7 +8529,6 @@ type GetProjectsProjects struct {
 	NodeVersion                          GetProjectsNodeVersion                 `json:"nodeVersion"`
 	OptionsAllowlist                     *GetProjectsOptionsAllowlist           `json:"optionsAllowlist,omitempty"`
 	OutputDirectory                      *string                                `json:"outputDirectory,omitempty"`
-	PassiveConnectConfigurationID        *string                                `json:"passiveConnectConfigurationId,omitempty"`
 	PasswordProtection                   *GetProjectsPasswordProtection         `json:"passwordProtection,omitempty"`
 	ProductionDeploymentsFastLane        *bool                                  `json:"productionDeploymentsFastLane,omitempty"`
 	PublicSource                         *bool                                  `json:"publicSource,omitempty"`
@@ -8457,6 +8625,13 @@ func (o *GetProjectsProjects) GetCommandForIgnoringBuildStep() *string {
 	return o.CommandForIgnoringBuildStep
 }
 
+func (o *GetProjectsProjects) GetConnectConfigurations() []GetProjectsConnectConfigurations {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurations
+}
+
 func (o *GetProjectsProjects) GetConnectConfigurationID() *string {
 	if o == nil {
 		return nil
@@ -8469,6 +8644,13 @@ func (o *GetProjectsProjects) GetConnectBuildsEnabled() *bool {
 		return nil
 	}
 	return o.ConnectBuildsEnabled
+}
+
+func (o *GetProjectsProjects) GetPassiveConnectConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PassiveConnectConfigurationID
 }
 
 func (o *GetProjectsProjects) GetCreatedAt() *float64 {
@@ -8623,13 +8805,6 @@ func (o *GetProjectsProjects) GetOutputDirectory() *string {
 		return nil
 	}
 	return o.OutputDirectory
-}
-
-func (o *GetProjectsProjects) GetPassiveConnectConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PassiveConnectConfigurationID
 }
 
 func (o *GetProjectsProjects) GetPasswordProtection() *GetProjectsPasswordProtection {

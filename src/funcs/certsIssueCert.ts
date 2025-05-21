@@ -105,7 +105,7 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
-  const path = pathToFunc("/v7/certs")();
+  const path = pathToFunc("/v8/certs")();
 
   const query = encodeFormQuery({
     "slug": payload.slug,

@@ -17,11 +17,12 @@ let value: OldConnectConfigurations = {
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `envId`                  | *models.EnvId*           | :heavy_check_mark:       | N/A                      |
-| `connectConfigurationId` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `passive`                | *boolean*                | :heavy_check_mark:       | N/A                      |
-| `buildsEnabled`          | *boolean*                | :heavy_check_mark:       | N/A                      |
-| `createdAt`              | *number*                 | :heavy_check_mark:       | N/A                      |
-| `updatedAt`              | *number*                 | :heavy_check_mark:       | N/A                      |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `envId`                        | *models.EnvId*                 | :heavy_check_mark:             | N/A                            |
+| `connectConfigurationId`       | *string*                       | :heavy_check_mark:             | N/A                            |
+| `passive`                      | *boolean*                      | :heavy_check_mark:             | N/A                            |
+| `buildsEnabled`                | *boolean*                      | :heavy_check_mark:             | N/A                            |
+| `aws`                          | [models.Aws](../models/aws.md) | :heavy_minus_sign:             | N/A                            |
+| `createdAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |
+| `updatedAt`                    | *number*                       | :heavy_check_mark:             | N/A                            |

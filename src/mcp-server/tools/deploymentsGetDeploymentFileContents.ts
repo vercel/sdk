@@ -32,8 +32,6 @@ Allows to retrieve the content of a file by supplying the file identifier and th
       };
     }
 
-    const value = result.value;
-
-    return formatResult(value, apiCall);
+    return formatResult(void 0, apiCall);
   },
 };

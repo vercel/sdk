@@ -13,7 +13,7 @@ import (
 	"net/http"
 )
 
-func pathDeleteV7CertsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPutV8Certs(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -21,18 +21,23 @@ func pathDeleteV7CertsID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "removeCert[0]":
-			dir.HandlerFunc("removeCert", testRemoveCertRemoveCert0)(w, req)
+		case "uploadCert[0]":
+			dir.HandlerFunc("uploadCert", testUploadCertUploadCert0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testRemoveCertRemoveCert0(w http.ResponseWriter, req *http.Request) {
+func testUploadCertUploadCert0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", false); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
@@ -45,7 +50,16 @@ func testRemoveCertRemoveCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveCertResponseBody{}
+	respBody := &operations.UploadCertResponseBody{
+		ID:        "<id>",
+		CreatedAt: 9219.92,
+		ExpiresAt: 5530.55,
+		AutoRenew: true,
+		Cns: []string{
+			"<value>",
+			"<value>",
+		},
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

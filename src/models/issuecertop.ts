@@ -24,7 +24,7 @@ export type IssueCertRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: IssueCertRequestBody;
+  requestBody?: IssueCertRequestBody | undefined;
 };
 
 export type IssueCertResponseBody = {
@@ -97,7 +97,7 @@ export const IssueCertRequest$inboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  RequestBody: z.lazy(() => IssueCertRequestBody$inboundSchema),
+  RequestBody: z.lazy(() => IssueCertRequestBody$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -108,7 +108,7 @@ export const IssueCertRequest$inboundSchema: z.ZodType<
 export type IssueCertRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: IssueCertRequestBody$Outbound;
+  RequestBody?: IssueCertRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -119,7 +119,7 @@ export const IssueCertRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() => IssueCertRequestBody$outboundSchema),
+  requestBody: z.lazy(() => IssueCertRequestBody$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

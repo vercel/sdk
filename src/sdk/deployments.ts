@@ -33,10 +33,7 @@ import {
   GetDeploymentEventsRequest,
   GetDeploymentEventsResponse,
 } from "../models/getdeploymenteventsop.js";
-import {
-  GetDeploymentFileContentsRequest,
-  GetDeploymentFileContentsResponseBody,
-} from "../models/getdeploymentfilecontentsop.js";
+import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
 import {
   GetDeploymentRequest,
   GetDeploymentResponseBody,
@@ -186,7 +183,7 @@ export class Deployments extends ClientSDK {
   async getDeploymentFileContents(
     request: GetDeploymentFileContentsRequest,
     options?: RequestOptions,
-  ): Promise<GetDeploymentFileContentsResponseBody> {
+  ): Promise<void> {
     return unwrapAsync(deploymentsGetDeploymentFileContents(
       this,
       request,

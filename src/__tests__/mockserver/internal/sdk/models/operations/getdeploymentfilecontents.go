@@ -54,23 +54,8 @@ func (o *GetDeploymentFileContentsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetDeploymentFileContentsResponseBody - File content as base64 encoded string
-type GetDeploymentFileContentsResponseBody struct {
-	// Base64 encoded file buffer
-	Data string `json:"data"`
-}
-
-func (o *GetDeploymentFileContentsResponseBody) GetData() string {
-	if o == nil {
-		return ""
-	}
-	return o.Data
-}
-
 type GetDeploymentFileContentsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// File content as base64 encoded string
-	Object *GetDeploymentFileContentsResponseBody
 }
 
 func (o *GetDeploymentFileContentsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -78,11 +63,4 @@ func (o *GetDeploymentFileContentsResponse) GetHTTPMeta() components.HTTPMetadat
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
-}
-
-func (o *GetDeploymentFileContentsResponse) GetObject() *GetDeploymentFileContentsResponseBody {
-	if o == nil {
-		return nil
-	}
-	return o.Object
 }

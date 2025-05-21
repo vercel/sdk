@@ -24,8 +24,8 @@ const vercel = new Vercel();
 async function run() {
   const result = await vercel.postDomains({
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   });
 
   // Handle the result
@@ -50,8 +50,8 @@ const vercel = new VercelCore();
 async function run() {
   const res = await postDomains(vercel, {
     name: "example.com",
-    cdnEnabled: true,
     method: "transfer-in",
+    token: "fdhfr820ad#@FAdlj$$",
   });
 
   if (!res.ok) {

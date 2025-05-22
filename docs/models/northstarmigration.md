@@ -1,9 +1,11 @@
 # NorthstarMigration
 
+An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
+
 ## Example Usage
 
 ```typescript
-import { NorthstarMigration } from "@vercel/sdk/models/authuser.js";
+import { NorthstarMigration } from "@vercel/sdk/models/userevent.js";
 
 let value: NorthstarMigration = {
   teamId: "<id>",

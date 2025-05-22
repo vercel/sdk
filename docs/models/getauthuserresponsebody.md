@@ -24,7 +24,6 @@ let value: GetAuthUserResponseBody = {
     username: "jdoe",
     avatar: "22cb30c85ff45ac4c72de8981500006b28114aa1",
     defaultTeamId: "<id>",
-    version: "northstar",
   },
 };
 ```

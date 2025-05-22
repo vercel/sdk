@@ -4,20 +4,8 @@
 
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * The user's version. Will always be `northstar`.
- */
-export const AuthUserLimitedVersion = {
-  Northstar: "northstar",
-} as const;
-/**
- * The user's version. Will always be `northstar`.
- */
-export type AuthUserLimitedVersion = ClosedEnum<typeof AuthUserLimitedVersion>;
 
 /**
  * A limited form of data for the currently authenticated User, due to the authentication token missing privileges to read the full User data.
@@ -51,32 +39,7 @@ export type AuthUserLimited = {
    * The user's default team.
    */
   defaultTeamId: string | null;
-  /**
-   * The user's version. Will always be `northstar`.
-   */
-  version: AuthUserLimitedVersion;
 };
-
-/** @internal */
-export const AuthUserLimitedVersion$inboundSchema: z.ZodNativeEnum<
-  typeof AuthUserLimitedVersion
-> = z.nativeEnum(AuthUserLimitedVersion);
-
-/** @internal */
-export const AuthUserLimitedVersion$outboundSchema: z.ZodNativeEnum<
-  typeof AuthUserLimitedVersion
-> = AuthUserLimitedVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthUserLimitedVersion$ {
-  /** @deprecated use `AuthUserLimitedVersion$inboundSchema` instead. */
-  export const inboundSchema = AuthUserLimitedVersion$inboundSchema;
-  /** @deprecated use `AuthUserLimitedVersion$outboundSchema` instead. */
-  export const outboundSchema = AuthUserLimitedVersion$outboundSchema;
-}
 
 /** @internal */
 export const AuthUserLimited$inboundSchema: z.ZodType<
@@ -91,7 +54,6 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: AuthUserLimitedVersion$inboundSchema,
 });
 
 /** @internal */
@@ -103,7 +65,6 @@ export type AuthUserLimited$Outbound = {
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
-  version: string;
 };
 
 /** @internal */
@@ -119,7 +80,6 @@ export const AuthUserLimited$outboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: AuthUserLimitedVersion$outboundSchema,
 });
 
 /**

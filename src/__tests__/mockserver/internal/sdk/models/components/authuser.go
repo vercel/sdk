@@ -1001,96 +1001,6 @@ func (o *FeatureBlocks) GetWebAnalytics() *WebAnalytics {
 	return o.WebAnalytics
 }
 
-type NorthstarMigration struct {
-	// The ID of the team we created for this user.
-	TeamID string `json:"teamId"`
-	// The number of projects migrated for this user.
-	Projects float64 `json:"projects"`
-	// The number of stores migrated for this user.
-	Stores float64 `json:"stores"`
-	// The number of integration configurations migrated for this user.
-	IntegrationConfigurations float64 `json:"integrationConfigurations"`
-	// The number of integration clients migrated for this user.
-	IntegrationClients float64 `json:"integrationClients"`
-	// The migration start time timestamp for this user.
-	StartTime float64 `json:"startTime"`
-	// The migration end time timestamp for this user.
-	EndTime float64 `json:"endTime"`
-}
-
-func (o *NorthstarMigration) GetTeamID() string {
-	if o == nil {
-		return ""
-	}
-	return o.TeamID
-}
-
-func (o *NorthstarMigration) GetProjects() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Projects
-}
-
-func (o *NorthstarMigration) GetStores() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Stores
-}
-
-func (o *NorthstarMigration) GetIntegrationConfigurations() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.IntegrationConfigurations
-}
-
-func (o *NorthstarMigration) GetIntegrationClients() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.IntegrationClients
-}
-
-func (o *NorthstarMigration) GetStartTime() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.StartTime
-}
-
-func (o *NorthstarMigration) GetEndTime() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.EndTime
-}
-
-// Version - The user's version. Will always be `northstar`.
-type Version string
-
-const (
-	VersionNorthstar Version = "northstar"
-)
-
-func (e Version) ToPointer() *Version {
-	return &e
-}
-func (e *Version) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "northstar":
-		*e = Version(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Version: %v", v)
-	}
-}
-
 // AuthUser - Data for the currently authenticated User.
 type AuthUser struct {
 	// UNIX timestamp (in milliseconds) when the User account was created.
@@ -1120,8 +1030,7 @@ type AuthUser struct {
 	// data cache settings
 	DataCache *DataCache `json:"dataCache,omitempty"`
 	// Feature blocks for the user
-	FeatureBlocks      *FeatureBlocks      `json:"featureBlocks,omitempty"`
-	NorthstarMigration *NorthstarMigration `json:"northstarMigration,omitempty"`
+	FeatureBlocks *FeatureBlocks `json:"featureBlocks,omitempty"`
 	// The User's unique identifier.
 	ID string `json:"id"`
 	// Email address associated with the User account.
@@ -1134,8 +1043,6 @@ type AuthUser struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
-	// The user's version. Will always be `northstar`.
-	Version Version `json:"version"`
 }
 
 func (o *AuthUser) GetCreatedAt() float64 {
@@ -1250,13 +1157,6 @@ func (o *AuthUser) GetFeatureBlocks() *FeatureBlocks {
 	return o.FeatureBlocks
 }
 
-func (o *AuthUser) GetNorthstarMigration() *NorthstarMigration {
-	if o == nil {
-		return nil
-	}
-	return o.NorthstarMigration
-}
-
 func (o *AuthUser) GetID() string {
 	if o == nil {
 		return ""
@@ -1297,11 +1197,4 @@ func (o *AuthUser) GetDefaultTeamID() *string {
 		return nil
 	}
 	return o.DefaultTeamID
-}
-
-func (o *AuthUser) GetVersion() Version {
-	if o == nil {
-		return Version("")
-	}
-	return o.Version
 }

@@ -2,35 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-// AuthUserLimitedVersion - The user's version. Will always be `northstar`.
-type AuthUserLimitedVersion string
-
-const (
-	AuthUserLimitedVersionNorthstar AuthUserLimitedVersion = "northstar"
-)
-
-func (e AuthUserLimitedVersion) ToPointer() *AuthUserLimitedVersion {
-	return &e
-}
-func (e *AuthUserLimitedVersion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "northstar":
-		*e = AuthUserLimitedVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AuthUserLimitedVersion: %v", v)
-	}
-}
-
 // AuthUserLimited - A limited form of data for the currently authenticated User, due to the authentication token missing privileges to read the full User data.
 type AuthUserLimited struct {
 	// Property indicating that this User data contains only limited information, due to the authentication token missing privileges to read the full User data. Re-login with email, GitHub, GitLab or Bitbucket in order to upgrade the authentication token with the necessary privileges.
@@ -47,8 +18,6 @@ type AuthUserLimited struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
-	// The user's version. Will always be `northstar`.
-	Version AuthUserLimitedVersion `json:"version"`
 }
 
 func (o *AuthUserLimited) GetLimited() bool {
@@ -98,11 +67,4 @@ func (o *AuthUserLimited) GetDefaultTeamID() *string {
 		return nil
 	}
 	return o.DefaultTeamID
-}
-
-func (o *AuthUserLimited) GetVersion() AuthUserLimitedVersion {
-	if o == nil {
-		return AuthUserLimitedVersion("")
-	}
-	return o.Version
 }

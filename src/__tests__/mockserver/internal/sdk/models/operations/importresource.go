@@ -273,7 +273,7 @@ type ImportResourceSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
-	// @hidden
+	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
 	EnvironmentOverrides map[string]string `json:"environmentOverrides,omitempty"`
 }
 

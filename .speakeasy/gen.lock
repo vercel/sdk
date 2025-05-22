@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 8c8ef936dd2a943b43e6f2e4eb9c3549
+  docChecksum: ef049433a6eb967f84e86f9a25da5d85
   docVersion: 0.0.1
-  speakeasyVersion: 1.548.3
+  speakeasyVersion: 1.548.4
   generationVersion: 2.605.6
-  releaseVersion: 1.7.5
-  configChecksum: 83e7164750923ed6beec57dc47cadb1c
+  releaseVersion: 1.7.6
+  configChecksum: 79a68a03f80369ddc9e2469ef6318ed9
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -114,7 +114,6 @@ generatedFiles:
   - docs/models/authtokenscopestype.md
   - docs/models/authuser.md
   - docs/models/authuserlimited.md
-  - docs/models/authuserlimitedversion.md
   - docs/models/aws.md
   - docs/models/backup.md
   - docs/models/backups.md
@@ -2079,7 +2078,6 @@ generatedFiles:
   - docs/models/payloadname.md
   - docs/models/payloadnames.md
   - docs/models/payloadnewteam.md
-  - docs/models/payloadnorthstarmigration.md
   - docs/models/payloadoldteam.md
   - docs/models/payloadorigin.md
   - docs/models/payloadoveragereason.md
@@ -2107,7 +2105,6 @@ generatedFiles:
   - docs/models/payloadteamroles.md
   - docs/models/payloadtype.md
   - docs/models/payloaduser.md
-  - docs/models/payloadversion.md
   - docs/models/payloadviewpreference.md
   - docs/models/payloadwebanalytics.md
   - docs/models/peering.md
@@ -5825,7 +5822,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<key>", "value": {"key": [false, {"key": [], "key1": {"key": "<value>", "key1": []}, "key2": 7567.91}, "<value>"], "key1": 4645.1, "key2": []}, "edgeConfigId": "<id>", "createdAt": 70.73, "updatedAt": 2714.73}
+          application/json: {"key": "<key>", "value": {"key": {"0": false, "1": {"key": {}, "key1": {"key": "<value>", "key1": {}}, "key2": 7567.91}, "2": "<value>"}, "key1": 4645.1, "key2": {}}, "edgeConfigId": "<id>", "createdAt": 70.73, "updatedAt": 2714.73}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5894,7 +5891,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<key>", "value": [{"key": false, "key1": [], "key2": {"key": [], "key1": "<value>"}}, true, []], "edgeConfigId": "<id>", "createdAt": 8897.2, "updatedAt": 3673.26}
+          application/json: {"key": "<key>", "value": {"0": {"key": false, "key1": {}, "key2": {"key": {}, "key1": "<value>"}}, "1": true, "2": {}}, "edgeConfigId": "<id>", "createdAt": 8897.2, "updatedAt": 3673.26}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6032,7 +6029,7 @@ examples:
     speakeasy-default-get-auth-user:
       responses:
         "200":
-          application/json: {"user": {"limited": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": null, "version": "northstar"}}
+          application/json: {"user": {"limited": true, "id": "AEIIDYVk59zbFF2Sxfyxxmua", "email": "me@example.com", "name": "John Doe", "username": "jdoe", "avatar": "22cb30c85ff45ac4c72de8981500006b28114aa1", "defaultTeamId": null}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

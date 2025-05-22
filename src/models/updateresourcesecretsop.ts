@@ -13,7 +13,7 @@ export type UpdateResourceSecretsSecrets = {
   value: string;
   prefix?: string | undefined;
   /**
-   * @hidden
+   * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
    */
   environmentOverrides?: { [k: string]: string } | undefined;
 };

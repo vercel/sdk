@@ -2937,15 +2937,15 @@ export type PayloadFeatureBlocks = {
   redis?: Redis | undefined;
 };
 
-export const PayloadVersion = {
+export const Version = {
   Northstar: "northstar",
 } as const;
-export type PayloadVersion = ClosedEnum<typeof PayloadVersion>;
+export type Version = ClosedEnum<typeof Version>;
 
 /**
  * An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
  */
-export type PayloadNorthstarMigration = {
+export type NorthstarMigration = {
   /**
    * The ID of the team we created for this user.
    */
@@ -3097,11 +3097,11 @@ export type NewOwner = {
    */
   featureBlocks?: PayloadFeatureBlocks | undefined;
   defaultTeamId?: string | undefined;
-  version: PayloadVersion;
+  version: Version;
   /**
    * An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
    */
-  northstarMigration?: PayloadNorthstarMigration | undefined;
+  northstarMigration?: NorthstarMigration | undefined;
   /**
    * The salesforce opportunity ID that this user is linked to. This is used to automatically associate a team of the user's choosing with the opportunity.
    */
@@ -22115,29 +22115,27 @@ export function payloadFeatureBlocksFromJSON(
 }
 
 /** @internal */
-export const PayloadVersion$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadVersion
-> = z.nativeEnum(PayloadVersion);
+export const Version$inboundSchema: z.ZodNativeEnum<typeof Version> = z
+  .nativeEnum(Version);
 
 /** @internal */
-export const PayloadVersion$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadVersion
-> = PayloadVersion$inboundSchema;
+export const Version$outboundSchema: z.ZodNativeEnum<typeof Version> =
+  Version$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayloadVersion$ {
-  /** @deprecated use `PayloadVersion$inboundSchema` instead. */
-  export const inboundSchema = PayloadVersion$inboundSchema;
-  /** @deprecated use `PayloadVersion$outboundSchema` instead. */
-  export const outboundSchema = PayloadVersion$outboundSchema;
+export namespace Version$ {
+  /** @deprecated use `Version$inboundSchema` instead. */
+  export const inboundSchema = Version$inboundSchema;
+  /** @deprecated use `Version$outboundSchema` instead. */
+  export const outboundSchema = Version$outboundSchema;
 }
 
 /** @internal */
-export const PayloadNorthstarMigration$inboundSchema: z.ZodType<
-  PayloadNorthstarMigration,
+export const NorthstarMigration$inboundSchema: z.ZodType<
+  NorthstarMigration,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -22151,7 +22149,7 @@ export const PayloadNorthstarMigration$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PayloadNorthstarMigration$Outbound = {
+export type NorthstarMigration$Outbound = {
   teamId: string;
   projects: number;
   stores: number;
@@ -22162,10 +22160,10 @@ export type PayloadNorthstarMigration$Outbound = {
 };
 
 /** @internal */
-export const PayloadNorthstarMigration$outboundSchema: z.ZodType<
-  PayloadNorthstarMigration$Outbound,
+export const NorthstarMigration$outboundSchema: z.ZodType<
+  NorthstarMigration$Outbound,
   z.ZodTypeDef,
-  PayloadNorthstarMigration
+  NorthstarMigration
 > = z.object({
   teamId: z.string(),
   projects: z.number(),
@@ -22180,30 +22178,30 @@ export const PayloadNorthstarMigration$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayloadNorthstarMigration$ {
-  /** @deprecated use `PayloadNorthstarMigration$inboundSchema` instead. */
-  export const inboundSchema = PayloadNorthstarMigration$inboundSchema;
-  /** @deprecated use `PayloadNorthstarMigration$outboundSchema` instead. */
-  export const outboundSchema = PayloadNorthstarMigration$outboundSchema;
-  /** @deprecated use `PayloadNorthstarMigration$Outbound` instead. */
-  export type Outbound = PayloadNorthstarMigration$Outbound;
+export namespace NorthstarMigration$ {
+  /** @deprecated use `NorthstarMigration$inboundSchema` instead. */
+  export const inboundSchema = NorthstarMigration$inboundSchema;
+  /** @deprecated use `NorthstarMigration$outboundSchema` instead. */
+  export const outboundSchema = NorthstarMigration$outboundSchema;
+  /** @deprecated use `NorthstarMigration$Outbound` instead. */
+  export type Outbound = NorthstarMigration$Outbound;
 }
 
-export function payloadNorthstarMigrationToJSON(
-  payloadNorthstarMigration: PayloadNorthstarMigration,
+export function northstarMigrationToJSON(
+  northstarMigration: NorthstarMigration,
 ): string {
   return JSON.stringify(
-    PayloadNorthstarMigration$outboundSchema.parse(payloadNorthstarMigration),
+    NorthstarMigration$outboundSchema.parse(northstarMigration),
   );
 }
 
-export function payloadNorthstarMigrationFromJSON(
+export function northstarMigrationFromJSON(
   jsonString: string,
-): SafeParseResult<PayloadNorthstarMigration, SDKValidationError> {
+): SafeParseResult<NorthstarMigration, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PayloadNorthstarMigration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadNorthstarMigration' from JSON`,
+    (x) => NorthstarMigration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NorthstarMigration' from JSON`,
   );
 }
 
@@ -22410,9 +22408,8 @@ export const NewOwner$inboundSchema: z.ZodType<
   enablePreviewFeedback: EnablePreviewFeedback$inboundSchema.optional(),
   featureBlocks: z.lazy(() => PayloadFeatureBlocks$inboundSchema).optional(),
   defaultTeamId: z.string().optional(),
-  version: PayloadVersion$inboundSchema,
-  northstarMigration: z.lazy(() => PayloadNorthstarMigration$inboundSchema)
-    .optional(),
+  version: Version$inboundSchema,
+  northstarMigration: z.lazy(() => NorthstarMigration$inboundSchema).optional(),
   opportunityId: z.string().optional(),
   mfaConfiguration: z.lazy(() => MfaConfiguration$inboundSchema).optional(),
 });
@@ -22496,7 +22493,7 @@ export type NewOwner$Outbound = {
   featureBlocks?: PayloadFeatureBlocks$Outbound | undefined;
   defaultTeamId?: string | undefined;
   version: string;
-  northstarMigration?: PayloadNorthstarMigration$Outbound | undefined;
+  northstarMigration?: NorthstarMigration$Outbound | undefined;
   opportunityId?: string | undefined;
   mfaConfiguration?: MfaConfiguration$Outbound | undefined;
 };
@@ -22596,8 +22593,8 @@ export const NewOwner$outboundSchema: z.ZodType<
   enablePreviewFeedback: EnablePreviewFeedback$outboundSchema.optional(),
   featureBlocks: z.lazy(() => PayloadFeatureBlocks$outboundSchema).optional(),
   defaultTeamId: z.string().optional(),
-  version: PayloadVersion$outboundSchema,
-  northstarMigration: z.lazy(() => PayloadNorthstarMigration$outboundSchema)
+  version: Version$outboundSchema,
+  northstarMigration: z.lazy(() => NorthstarMigration$outboundSchema)
     .optional(),
   opportunityId: z.string().optional(),
   mfaConfiguration: z.lazy(() => MfaConfiguration$outboundSchema).optional(),

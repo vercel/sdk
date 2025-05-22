@@ -24158,7 +24158,7 @@
                         },
                         "environmentOverrides": {
                           "type": "object",
-                          "description": "@hidden",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
                           "additionalProperties": {
                             "type": "string"
                           }
@@ -24281,7 +24281,7 @@
                         },
                         "environmentOverrides": {
                           "type": "object",
-                          "description": "@hidden",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
                           "additionalProperties": {
                             "type": "string"
                           }
@@ -24292,7 +24292,7 @@
                   },
                   "partial": {
                     "type": "boolean",
-                    "description": "If true, will only update the provided secrets"
+                    "description": "If true, will only overwrite the provided secrets instead of replacing all secrets."
                   }
                 },
                 "additionalProperties": false
@@ -24537,7 +24537,7 @@
                         },
                         "environmentOverrides": {
                           "type": "object",
-                          "description": "@hidden",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
                           "additionalProperties": {
                             "type": "string"
                           }
@@ -32271,10 +32271,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -35608,8 +35608,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -35690,8 +35690,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -40619,10 +40619,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -43956,8 +43956,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -44038,8 +44038,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -74151,48 +74151,6 @@
             "type": "object",
             "description": "Feature blocks for the user"
           },
-          "northstarMigration": {
-            "properties": {
-              "teamId": {
-                "type": "string",
-                "description": "The ID of the team we created for this user."
-              },
-              "projects": {
-                "type": "number",
-                "description": "The number of projects migrated for this user."
-              },
-              "stores": {
-                "type": "number",
-                "description": "The number of stores migrated for this user."
-              },
-              "integrationConfigurations": {
-                "type": "number",
-                "description": "The number of integration configurations migrated for this user."
-              },
-              "integrationClients": {
-                "type": "number",
-                "description": "The number of integration clients migrated for this user."
-              },
-              "startTime": {
-                "type": "number",
-                "description": "The migration start time timestamp for this user."
-              },
-              "endTime": {
-                "type": "number",
-                "description": "The migration end time timestamp for this user."
-              }
-            },
-            "required": [
-              "teamId",
-              "projects",
-              "stores",
-              "integrationConfigurations",
-              "integrationClients",
-              "startTime",
-              "endTime"
-            ],
-            "type": "object"
-          },
           "id": {
             "type": "string",
             "description": "The User's unique identifier.",
@@ -74224,13 +74182,6 @@
             "nullable": true,
             "type": "string",
             "description": "The user's default team."
-          },
-          "version": {
-            "type": "string",
-            "enum": [
-              "northstar"
-            ],
-            "description": "The user's version. Will always be `northstar`."
           }
         },
         "required": [
@@ -74245,8 +74196,7 @@
           "name",
           "username",
           "avatar",
-          "defaultTeamId",
-          "version"
+          "defaultTeamId"
         ],
         "type": "object",
         "description": "Data for the currently authenticated User."
@@ -74288,13 +74238,6 @@
             "nullable": true,
             "type": "string",
             "description": "The user's default team."
-          },
-          "version": {
-            "type": "string",
-            "enum": [
-              "northstar"
-            ],
-            "description": "The user's version. Will always be `northstar`."
           }
         },
         "required": [
@@ -74304,8 +74247,7 @@
           "name",
           "username",
           "avatar",
-          "defaultTeamId",
-          "version"
+          "defaultTeamId"
         ],
         "type": "object",
         "description": "A limited form of data for the currently authenticated User, due to the authentication token missing privileges to read the full User data."

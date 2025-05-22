@@ -414,10 +414,10 @@ export type CreateProjectProjectsTarget =
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -1889,8 +1889,8 @@ export type CreateProjectSrc = CreateProjectSrc2 | string;
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -1931,8 +1931,8 @@ export type CreateProjectHas = {
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Path: "path",
     Host: "host",
+    Path: "path",
     Method: "method",
     Header: "header",
     Cookie: "cookie",

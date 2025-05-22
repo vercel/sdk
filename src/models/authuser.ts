@@ -325,48 +325,6 @@ export type FeatureBlocks = {
   webAnalytics?: WebAnalytics | undefined;
 };
 
-export type NorthstarMigration = {
-  /**
-   * The ID of the team we created for this user.
-   */
-  teamId: string;
-  /**
-   * The number of projects migrated for this user.
-   */
-  projects: number;
-  /**
-   * The number of stores migrated for this user.
-   */
-  stores: number;
-  /**
-   * The number of integration configurations migrated for this user.
-   */
-  integrationConfigurations: number;
-  /**
-   * The number of integration clients migrated for this user.
-   */
-  integrationClients: number;
-  /**
-   * The migration start time timestamp for this user.
-   */
-  startTime: number;
-  /**
-   * The migration end time timestamp for this user.
-   */
-  endTime: number;
-};
-
-/**
- * The user's version. Will always be `northstar`.
- */
-export const Version = {
-  Northstar: "northstar",
-} as const;
-/**
- * The user's version. Will always be `northstar`.
- */
-export type Version = ClosedEnum<typeof Version>;
-
 /**
  * Data for the currently authenticated User.
  */
@@ -425,7 +383,6 @@ export type AuthUser = {
    * Feature blocks for the user
    */
   featureBlocks?: FeatureBlocks | undefined;
-  northstarMigration?: NorthstarMigration | undefined;
   /**
    * The User's unique identifier.
    */
@@ -450,10 +407,6 @@ export type AuthUser = {
    * The user's default team.
    */
   defaultTeamId: string | null;
-  /**
-   * The user's version. Will always be `northstar`.
-   */
-  version: Version;
 };
 
 /** @internal */
@@ -1566,97 +1519,6 @@ export function featureBlocksFromJSON(
 }
 
 /** @internal */
-export const NorthstarMigration$inboundSchema: z.ZodType<
-  NorthstarMigration,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: z.string(),
-  projects: z.number(),
-  stores: z.number(),
-  integrationConfigurations: z.number(),
-  integrationClients: z.number(),
-  startTime: z.number(),
-  endTime: z.number(),
-});
-
-/** @internal */
-export type NorthstarMigration$Outbound = {
-  teamId: string;
-  projects: number;
-  stores: number;
-  integrationConfigurations: number;
-  integrationClients: number;
-  startTime: number;
-  endTime: number;
-};
-
-/** @internal */
-export const NorthstarMigration$outboundSchema: z.ZodType<
-  NorthstarMigration$Outbound,
-  z.ZodTypeDef,
-  NorthstarMigration
-> = z.object({
-  teamId: z.string(),
-  projects: z.number(),
-  stores: z.number(),
-  integrationConfigurations: z.number(),
-  integrationClients: z.number(),
-  startTime: z.number(),
-  endTime: z.number(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NorthstarMigration$ {
-  /** @deprecated use `NorthstarMigration$inboundSchema` instead. */
-  export const inboundSchema = NorthstarMigration$inboundSchema;
-  /** @deprecated use `NorthstarMigration$outboundSchema` instead. */
-  export const outboundSchema = NorthstarMigration$outboundSchema;
-  /** @deprecated use `NorthstarMigration$Outbound` instead. */
-  export type Outbound = NorthstarMigration$Outbound;
-}
-
-export function northstarMigrationToJSON(
-  northstarMigration: NorthstarMigration,
-): string {
-  return JSON.stringify(
-    NorthstarMigration$outboundSchema.parse(northstarMigration),
-  );
-}
-
-export function northstarMigrationFromJSON(
-  jsonString: string,
-): SafeParseResult<NorthstarMigration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NorthstarMigration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NorthstarMigration' from JSON`,
-  );
-}
-
-/** @internal */
-export const Version$inboundSchema: z.ZodNativeEnum<typeof Version> = z
-  .nativeEnum(Version);
-
-/** @internal */
-export const Version$outboundSchema: z.ZodNativeEnum<typeof Version> =
-  Version$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Version$ {
-  /** @deprecated use `Version$inboundSchema` instead. */
-  export const inboundSchema = Version$inboundSchema;
-  /** @deprecated use `Version$outboundSchema` instead. */
-  export const outboundSchema = Version$outboundSchema;
-}
-
-/** @internal */
 export const AuthUser$inboundSchema: z.ZodType<
   AuthUser,
   z.ZodTypeDef,
@@ -1688,14 +1550,12 @@ export const AuthUser$inboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
   dataCache: z.lazy(() => DataCache$inboundSchema).optional(),
   featureBlocks: z.lazy(() => FeatureBlocks$inboundSchema).optional(),
-  northstarMigration: z.lazy(() => NorthstarMigration$inboundSchema).optional(),
   id: z.string(),
   email: z.string(),
   name: z.nullable(z.string()),
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: Version$inboundSchema,
 });
 
 /** @internal */
@@ -1720,14 +1580,12 @@ export type AuthUser$Outbound = {
   remoteCaching?: RemoteCaching$Outbound | undefined;
   dataCache?: DataCache$Outbound | undefined;
   featureBlocks?: FeatureBlocks$Outbound | undefined;
-  northstarMigration?: NorthstarMigration$Outbound | undefined;
   id: string;
   email: string;
   name: string | null;
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
-  version: string;
 };
 
 /** @internal */
@@ -1762,15 +1620,12 @@ export const AuthUser$outboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
   dataCache: z.lazy(() => DataCache$outboundSchema).optional(),
   featureBlocks: z.lazy(() => FeatureBlocks$outboundSchema).optional(),
-  northstarMigration: z.lazy(() => NorthstarMigration$outboundSchema)
-    .optional(),
   id: z.string(),
   email: z.string(),
   name: z.nullable(z.string()),
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
-  version: Version$outboundSchema,
 });
 
 /**

@@ -11487,31 +11487,31 @@ func (o *PayloadFeatureBlocks) GetRedis() *Redis {
 	return o.Redis
 }
 
-type PayloadVersion string
+type Version string
 
 const (
-	PayloadVersionNorthstar PayloadVersion = "northstar"
+	VersionNorthstar Version = "northstar"
 )
 
-func (e PayloadVersion) ToPointer() *PayloadVersion {
+func (e Version) ToPointer() *Version {
 	return &e
 }
-func (e *PayloadVersion) UnmarshalJSON(data []byte) error {
+func (e *Version) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "northstar":
-		*e = PayloadVersion(v)
+		*e = Version(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PayloadVersion: %v", v)
+		return fmt.Errorf("invalid value for Version: %v", v)
 	}
 }
 
-// PayloadNorthstarMigration - An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
-type PayloadNorthstarMigration struct {
+// NorthstarMigration - An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
+type NorthstarMigration struct {
 	// The ID of the team we created for this user.
 	TeamID string `json:"teamId"`
 	// The number of projects migrated for this user.
@@ -11528,49 +11528,49 @@ type PayloadNorthstarMigration struct {
 	EndTime float64 `json:"endTime"`
 }
 
-func (o *PayloadNorthstarMigration) GetTeamID() string {
+func (o *NorthstarMigration) GetTeamID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TeamID
 }
 
-func (o *PayloadNorthstarMigration) GetProjects() float64 {
+func (o *NorthstarMigration) GetProjects() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Projects
 }
 
-func (o *PayloadNorthstarMigration) GetStores() float64 {
+func (o *NorthstarMigration) GetStores() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Stores
 }
 
-func (o *PayloadNorthstarMigration) GetIntegrationConfigurations() float64 {
+func (o *NorthstarMigration) GetIntegrationConfigurations() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.IntegrationConfigurations
 }
 
-func (o *PayloadNorthstarMigration) GetIntegrationClients() float64 {
+func (o *NorthstarMigration) GetIntegrationClients() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.IntegrationClients
 }
 
-func (o *PayloadNorthstarMigration) GetStartTime() float64 {
+func (o *NorthstarMigration) GetStartTime() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.StartTime
 }
 
-func (o *PayloadNorthstarMigration) GetEndTime() float64 {
+func (o *NorthstarMigration) GetEndTime() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -11712,9 +11712,9 @@ type NewOwner struct {
 	// Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
 	FeatureBlocks *PayloadFeatureBlocks `json:"featureBlocks,omitempty"`
 	DefaultTeamID *string               `json:"defaultTeamId,omitempty"`
-	Version       PayloadVersion        `json:"version"`
+	Version       Version               `json:"version"`
 	// An archive of information about the Northstar migration, derived from the old (deprecated) property, `northstarMigrationEvents`.
-	NorthstarMigration *PayloadNorthstarMigration `json:"northstarMigration,omitempty"`
+	NorthstarMigration *NorthstarMigration `json:"northstarMigration,omitempty"`
 	// The salesforce opportunity ID that this user is linked to. This is used to automatically associate a team of the user's choosing with the opportunity.
 	OpportunityID *string `json:"opportunityId,omitempty"`
 	// MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
@@ -12197,14 +12197,14 @@ func (o *NewOwner) GetDefaultTeamID() *string {
 	return o.DefaultTeamID
 }
 
-func (o *NewOwner) GetVersion() PayloadVersion {
+func (o *NewOwner) GetVersion() Version {
 	if o == nil {
-		return PayloadVersion("")
+		return Version("")
 	}
 	return o.Version
 }
 
-func (o *NewOwner) GetNorthstarMigration() *PayloadNorthstarMigration {
+func (o *NewOwner) GetNorthstarMigration() *NorthstarMigration {
 	if o == nil {
 		return nil
 	}

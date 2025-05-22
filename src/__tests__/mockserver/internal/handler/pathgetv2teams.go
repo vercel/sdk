@@ -53,43 +53,6 @@ func testGetTeamsGetTeams0(w http.ResponseWriter, req *http.Request) {
 				components.TeamLimited{
 					Limited: false,
 					LimitedBy: []components.LimitedBy{
-						components.LimitedByScope,
-					},
-					Saml: &components.Saml{
-						Connection: &components.Connection{
-							Type:                     "OktaSAML",
-							Status:                   "linked",
-							State:                    "active",
-							ConnectedAt:              1611796915677,
-							LastReceivedWebhookEvent: types.Float64(1611796915677),
-						},
-						Directory: &components.Directory{
-							Type:                     "OktaSAML",
-							State:                    "active",
-							ConnectedAt:              1611796915677,
-							LastReceivedWebhookEvent: types.Float64(1611796915677),
-						},
-						Enforced: false,
-					},
-					ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
-					Slug:   "my-team",
-					Name:   types.String("My Team"),
-					Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
-					Membership: components.Membership{
-						Confirmed:   false,
-						ConfirmedAt: 8917.73,
-						Role:        components.RoleContributor,
-						CreatedAt:   3834.41,
-						Created:     7917.25,
-					},
-					Created:   "<value>",
-					CreatedAt: 1630748523395,
-				},
-			),
-			operations.CreateTeamsTeamLimited(
-				components.TeamLimited{
-					Limited: false,
-					LimitedBy: []components.LimitedBy{
 						components.LimitedByMfa,
 					},
 					Saml: &components.Saml{
@@ -114,13 +77,27 @@ func testGetTeamsGetTeams0(w http.ResponseWriter, req *http.Request) {
 					Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
 					Membership: components.Membership{
 						Confirmed:   false,
-						ConfirmedAt: 9255.97,
-						Role:        components.RoleOwner,
-						CreatedAt:   871.29,
-						Created:     202.18,
+						ConfirmedAt: 6027.63,
+						Role:        components.RoleSecurity,
+						CreatedAt:   4236.55,
+						Created:     6458.94,
 					},
 					Created:   "<value>",
 					CreatedAt: 1630748523395,
+				},
+			),
+			operations.CreateTeamsTeam(
+				components.Team{
+					ID: "ABCDEFG000011111",
+					Data: components.Data{
+						Query:     "<value>",
+						CreatorID: "<id>",
+						Title:     "<value>",
+						GroupID:   "<id>",
+						OwnerID:   "<id>",
+						ProjectID: "<id>",
+						CreatedAt: 8917.73,
+					},
 				},
 			),
 		},

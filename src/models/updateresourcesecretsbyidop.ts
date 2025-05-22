@@ -13,7 +13,7 @@ export type UpdateResourceSecretsByIdSecrets = {
   value: string;
   prefix?: string | undefined;
   /**
-   * @hidden
+   * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
    */
   environmentOverrides?: { [k: string]: string } | undefined;
 };
@@ -21,7 +21,7 @@ export type UpdateResourceSecretsByIdSecrets = {
 export type UpdateResourceSecretsByIdRequestBody = {
   secrets: Array<UpdateResourceSecretsByIdSecrets>;
   /**
-   * If true, will only update the provided secrets
+   * If true, will only overwrite the provided secrets instead of replacing all secrets.
    */
   partial?: boolean | undefined;
 };

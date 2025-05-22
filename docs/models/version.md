@@ -1,11 +1,9 @@
 # Version
 
-The user's version. Will always be `northstar`.
-
 ## Example Usage
 
 ```typescript
-import { Version } from "@vercel/sdk/models/authuser.js";
+import { Version } from "@vercel/sdk/models/userevent.js";
 
 let value: Version = "northstar";
 ```

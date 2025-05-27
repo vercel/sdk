@@ -9,26 +9,24 @@ import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
   budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 4084.8,
-      previousSpend: [
-        5082.46,
-      ],
-      notifiedAt: [
-        4620.84,
-      ],
-      createdAt: 2521.87,
-      isActive: false,
-      teamId: "<id>",
-      id: "<id>",
-    },
+    type: "fixed",
+    fixedBudget: 4084.8,
+    previousSpend: [
+      5082.46,
+    ],
+    notifiedAt: [
+      4620.84,
+    ],
+    createdAt: 2521.87,
+    isActive: false,
+    teamId: "<id>",
+    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `budget`                                           | [models.PayloadBudget](../models/payloadbudget.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.Budget](../models/budget.md)                                    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

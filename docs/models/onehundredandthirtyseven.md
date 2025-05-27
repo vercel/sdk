@@ -8,12 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndThirtySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtySeven = {
-  action: "enable",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [
+    "<value>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload137Action](../models/usereventpayload137action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

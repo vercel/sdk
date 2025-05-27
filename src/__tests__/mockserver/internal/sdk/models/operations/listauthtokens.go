@@ -8,8 +8,6 @@ import (
 
 type ListAuthTokensResponseBody struct {
 	Tokens []components.AuthToken `json:"tokens"`
-	// Authentication token metadata.
-	TestingToken *components.AuthToken `json:"testingToken,omitempty"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
@@ -19,13 +17,6 @@ func (o *ListAuthTokensResponseBody) GetTokens() []components.AuthToken {
 		return []components.AuthToken{}
 	}
 	return o.Tokens
-}
-
-func (o *ListAuthTokensResponseBody) GetTestingToken() *components.AuthToken {
-	if o == nil {
-		return nil
-	}
-	return o.TestingToken
 }
 
 func (o *ListAuthTokensResponseBody) GetPagination() components.Pagination {

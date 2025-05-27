@@ -1,0 +1,21 @@
+# ListAliasesApplications
+
+A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+
+## Example Usage
+
+```typescript
+import { ListAliasesApplications } from "@vercel/sdk/models/listaliasesop.js";
+
+let value: ListAliasesApplications = {
+  fallbackHost: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                       | Type                                                                                                                                                                                        | Required                                                                                                                                                                                    | Description                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fallbackHost`                                                                                                                                                                              | *string*                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                          | This is always set and is the fallback host to send the request to if there is no deployment ID.                                                                                            |
+| `deploymentId`                                                                                                                                                                              | *string*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                          | This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`. |
+| `deploymentUrl`                                                                                                                                                                             | *string*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                          | This is used and set in the exact same way as `deploymentId`.                                                                                                                               |

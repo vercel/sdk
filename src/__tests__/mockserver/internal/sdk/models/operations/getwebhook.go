@@ -65,6 +65,7 @@ const (
 	GetWebhookEventsIntegrationResourceProjectDisconnected             GetWebhookEvents = "integration-resource.project-disconnected"
 	GetWebhookEventsProjectCreated                                     GetWebhookEvents = "project.created"
 	GetWebhookEventsProjectRemoved                                     GetWebhookEvents = "project.removed"
+	GetWebhookEventsProjectDomainVerified                              GetWebhookEvents = "project.domain.verified"
 	GetWebhookEventsProjectRollingReleaseStarted                       GetWebhookEvents = "project.rolling-release.started"
 	GetWebhookEventsProjectRollingReleaseAborted                       GetWebhookEvents = "project.rolling-release.aborted"
 	GetWebhookEventsProjectRollingReleaseCompleted                     GetWebhookEvents = "project.rolling-release.completed"
@@ -146,6 +147,8 @@ func (e *GetWebhookEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.domain.verified":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough

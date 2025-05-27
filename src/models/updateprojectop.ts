@@ -530,10 +530,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1428,6 +1428,10 @@ export type UpdateProjectRollingRelease = {
    * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
    */
   stages?: Array<UpdateProjectStages> | null | undefined;
+  /**
+   * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+   */
+  canaryResponseHeader?: boolean | undefined;
 };
 
 export const UpdateProjectProjectsResponseFunctionDefaultMemoryType = {
@@ -1796,6 +1800,8 @@ export type UpdateProjectPermissions = {
   projectFromV0?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
   projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  projectCheck?: Array<ACLAction> | undefined;
+  projectCheckRun?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
@@ -1998,8 +2004,8 @@ export type UpdateProjectSrc = UpdateProjectSrc2 | string;
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -2040,8 +2046,8 @@ export type UpdateProjectHas = {
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType =
   {
-    Host: "host",
     Path: "path",
+    Host: "host",
     Method: "method",
     Header: "header",
     Cookie: "cookie",
@@ -8173,6 +8179,7 @@ export const UpdateProjectRollingRelease$inboundSchema: z.ZodType<
   minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => UpdateProjectStages$inboundSchema)))
     .optional(),
+  canaryResponseHeader: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8180,6 +8187,7 @@ export type UpdateProjectRollingRelease$Outbound = {
   target: string;
   minutesToRelease?: number | undefined;
   stages?: Array<UpdateProjectStages$Outbound> | null | undefined;
+  canaryResponseHeader?: boolean | undefined;
 };
 
 /** @internal */
@@ -8192,6 +8200,7 @@ export const UpdateProjectRollingRelease$outboundSchema: z.ZodType<
   minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => UpdateProjectStages$outboundSchema)))
     .optional(),
+  canaryResponseHeader: z.boolean().optional(),
 });
 
 /**
@@ -9355,6 +9364,8 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$inboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$inboundSchema).optional(),
+  projectCheck: z.array(ACLAction$inboundSchema).optional(),
+  projectCheckRun: z.array(ACLAction$inboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$inboundSchema).optional(),
   projectDomain: z.array(ACLAction$inboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$inboundSchema).optional(),
@@ -9562,6 +9573,8 @@ export type UpdateProjectPermissions$Outbound = {
   projectFromV0?: Array<string> | undefined;
   projectAccessGroup?: Array<string> | undefined;
   projectAnalyticsSampling?: Array<string> | undefined;
+  projectCheck?: Array<string> | undefined;
+  projectCheckRun?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDomain?: Array<string> | undefined;
   projectDomainMove?: Array<string> | undefined;
@@ -9772,6 +9785,8 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$outboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$outboundSchema).optional(),
+  projectCheck: z.array(ACLAction$outboundSchema).optional(),
+  projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$outboundSchema).optional(),

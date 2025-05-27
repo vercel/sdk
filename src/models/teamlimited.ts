@@ -80,6 +80,11 @@ export type Saml = {
   enforced: boolean;
 };
 
+export type Mfa = {
+  enforced: boolean;
+  updatedAt: number;
+};
+
 export type Entitlements = {
   entitlement: string;
 };
@@ -177,7 +182,7 @@ export type TeamLimited = {
    * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
    */
   saml?: Saml | undefined;
-  mfaEnforced?: boolean | undefined;
+  mfa?: Mfa | undefined;
   /**
    * The Team's unique identifier.
    */
@@ -395,6 +400,53 @@ export function samlFromJSON(
     jsonString,
     (x) => Saml$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Saml' from JSON`,
+  );
+}
+
+/** @internal */
+export const Mfa$inboundSchema: z.ZodType<Mfa, z.ZodTypeDef, unknown> = z
+  .object({
+    enforced: z.boolean(),
+    updatedAt: z.number(),
+  });
+
+/** @internal */
+export type Mfa$Outbound = {
+  enforced: boolean;
+  updatedAt: number;
+};
+
+/** @internal */
+export const Mfa$outboundSchema: z.ZodType<Mfa$Outbound, z.ZodTypeDef, Mfa> = z
+  .object({
+    enforced: z.boolean(),
+    updatedAt: z.number(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Mfa$ {
+  /** @deprecated use `Mfa$inboundSchema` instead. */
+  export const inboundSchema = Mfa$inboundSchema;
+  /** @deprecated use `Mfa$outboundSchema` instead. */
+  export const outboundSchema = Mfa$outboundSchema;
+  /** @deprecated use `Mfa$Outbound` instead. */
+  export type Outbound = Mfa$Outbound;
+}
+
+export function mfaToJSON(mfa: Mfa): string {
+  return JSON.stringify(Mfa$outboundSchema.parse(mfa));
+}
+
+export function mfaFromJSON(
+  jsonString: string,
+): SafeParseResult<Mfa, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Mfa$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Mfa' from JSON`,
   );
 }
 
@@ -743,7 +795,7 @@ export const TeamLimited$inboundSchema: z.ZodType<
   limited: z.boolean(),
   limitedBy: z.array(LimitedBy$inboundSchema),
   saml: z.lazy(() => Saml$inboundSchema).optional(),
-  mfaEnforced: z.boolean().optional(),
+  mfa: z.lazy(() => Mfa$inboundSchema).optional(),
   id: z.string(),
   slug: z.string(),
   name: z.nullable(z.string()),
@@ -758,7 +810,7 @@ export type TeamLimited$Outbound = {
   limited: boolean;
   limitedBy: Array<string>;
   saml?: Saml$Outbound | undefined;
-  mfaEnforced?: boolean | undefined;
+  mfa?: Mfa$Outbound | undefined;
   id: string;
   slug: string;
   name: string | null;
@@ -777,7 +829,7 @@ export const TeamLimited$outboundSchema: z.ZodType<
   limited: z.boolean(),
   limitedBy: z.array(LimitedBy$outboundSchema),
   saml: z.lazy(() => Saml$outboundSchema).optional(),
-  mfaEnforced: z.boolean().optional(),
+  mfa: z.lazy(() => Mfa$outboundSchema).optional(),
   id: z.string(),
   slug: z.string(),
   name: z.nullable(z.string()),

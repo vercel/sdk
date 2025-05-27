@@ -1051,6 +1051,10 @@ export type RollingRelease = {
    * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
    */
   stages?: Array<Stages> | null | undefined;
+  /**
+   * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+   */
+  canaryResponseHeader?: boolean | undefined;
 };
 
 export const UpdateProjectDataCacheFunctionDefaultMemoryType = {
@@ -1420,6 +1424,8 @@ export type Permissions = {
   projectFromV0?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
   projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  projectCheck?: Array<ACLAction> | undefined;
+  projectCheckRun?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
@@ -6853,6 +6859,7 @@ export const RollingRelease$inboundSchema: z.ZodType<
   target: z.string(),
   minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => Stages$inboundSchema))).optional(),
+  canaryResponseHeader: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6860,6 +6867,7 @@ export type RollingRelease$Outbound = {
   target: string;
   minutesToRelease?: number | undefined;
   stages?: Array<Stages$Outbound> | null | undefined;
+  canaryResponseHeader?: boolean | undefined;
 };
 
 /** @internal */
@@ -6871,6 +6879,7 @@ export const RollingRelease$outboundSchema: z.ZodType<
   target: z.string(),
   minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => Stages$outboundSchema))).optional(),
+  canaryResponseHeader: z.boolean().optional(),
 });
 
 /**
@@ -8023,6 +8032,8 @@ export const Permissions$inboundSchema: z.ZodType<
   projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$inboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$inboundSchema).optional(),
+  projectCheck: z.array(ACLAction$inboundSchema).optional(),
+  projectCheckRun: z.array(ACLAction$inboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$inboundSchema).optional(),
   projectDomain: z.array(ACLAction$inboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$inboundSchema).optional(),
@@ -8230,6 +8241,8 @@ export type Permissions$Outbound = {
   projectFromV0?: Array<string> | undefined;
   projectAccessGroup?: Array<string> | undefined;
   projectAnalyticsSampling?: Array<string> | undefined;
+  projectCheck?: Array<string> | undefined;
+  projectCheckRun?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDomain?: Array<string> | undefined;
   projectDomainMove?: Array<string> | undefined;
@@ -8440,6 +8453,8 @@ export const Permissions$outboundSchema: z.ZodType<
   projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$outboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$outboundSchema).optional(),
+  projectCheck: z.array(ACLAction$outboundSchema).optional(),
+  projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$outboundSchema).optional(),

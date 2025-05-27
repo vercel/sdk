@@ -4222,6 +4222,8 @@ type RollingRelease struct {
 	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
 	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
 	Stages []Stages `json:"stages,omitempty"`
+	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
 }
 
 func (o *RollingRelease) GetTarget() string {
@@ -4243,6 +4245,13 @@ func (o *RollingRelease) GetStages() []Stages {
 		return nil
 	}
 	return o.Stages
+}
+
+func (o *RollingRelease) GetCanaryResponseHeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryResponseHeader
 }
 
 type UpdateProjectDataCacheFunctionDefaultMemoryType string
@@ -5314,6 +5323,8 @@ type Permissions struct {
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
 	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
@@ -6494,6 +6505,20 @@ func (o *Permissions) GetProjectAnalyticsSampling() []components.ACLAction {
 		return nil
 	}
 	return o.ProjectAnalyticsSampling
+}
+
+func (o *Permissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *Permissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
 }
 
 func (o *Permissions) GetProjectDeploymentHook() []components.ACLAction {

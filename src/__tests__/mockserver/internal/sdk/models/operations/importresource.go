@@ -269,12 +269,43 @@ func (o *Notification) GetHref() *string {
 	return o.Href
 }
 
+// ImportResourceEnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+type ImportResourceEnvironmentOverrides struct {
+	// Value used for development environment.
+	Development *string `json:"development,omitempty"`
+	// Value used for preview environment.
+	Preview *string `json:"preview,omitempty"`
+	// Value used for production environment.
+	Production *string `json:"production,omitempty"`
+}
+
+func (o *ImportResourceEnvironmentOverrides) GetDevelopment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Development
+}
+
+func (o *ImportResourceEnvironmentOverrides) GetPreview() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Preview
+}
+
+func (o *ImportResourceEnvironmentOverrides) GetProduction() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Production
+}
+
 type ImportResourceSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
 	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-	EnvironmentOverrides map[string]string `json:"environmentOverrides,omitempty"`
+	EnvironmentOverrides *ImportResourceEnvironmentOverrides `json:"environmentOverrides,omitempty"`
 }
 
 func (o *ImportResourceSecrets) GetName() string {
@@ -298,7 +329,7 @@ func (o *ImportResourceSecrets) GetPrefix() *string {
 	return o.Prefix
 }
 
-func (o *ImportResourceSecrets) GetEnvironmentOverrides() map[string]string {
+func (o *ImportResourceSecrets) GetEnvironmentOverrides() *ImportResourceEnvironmentOverrides {
 	if o == nil {
 		return nil
 	}

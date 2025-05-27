@@ -9,15 +9,19 @@ import { SeventyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyNine = {
   projectName: "<value>",
+  passwordProtection: {
+    deploymentType: "all",
+  },
+  oldPasswordProtection: {
+    deploymentType: "preview",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
-| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `projectName`                  | *string*                       | :heavy_check_mark:             | N/A                            |
+| `passwordProtection`           | *models.PasswordProtection*    | :heavy_check_mark:             | N/A                            |
+| `oldPasswordProtection`        | *models.OldPasswordProtection* | :heavy_check_mark:             | N/A                            |

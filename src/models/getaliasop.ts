@@ -154,6 +154,39 @@ export type GetAliasProtectionBypass =
   | ProtectionBypass4
   | GetAliasProtectionBypass2;
 
+export type DefaultApp = {
+  projectId: string;
+};
+
+/**
+ * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+ */
+export type Applications = {
+  /**
+   * This is always set and is the fallback host to send the request to if there is no deployment ID.
+   */
+  fallbackHost: string;
+  /**
+   * This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`.
+   */
+  deploymentId?: string | undefined;
+  /**
+   * This is used and set in the exact same way as `deploymentId`.
+   */
+  deploymentUrl?: string | undefined;
+};
+
+/**
+ * The microfrontends for the alias including the routing configuration
+ */
+export type GetAliasMicrofrontends = {
+  defaultApp: DefaultApp;
+  /**
+   * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+   */
+  applications: { [k: string]: Applications };
+};
+
 /**
  * The alias information
  */
@@ -216,6 +249,10 @@ export type GetAliasResponseBody = {
       | ProtectionBypass4
       | GetAliasProtectionBypass2;
   } | undefined;
+  /**
+   * The microfrontends for the alias including the routing configuration
+   */
+  microfrontends?: GetAliasMicrofrontends | undefined;
 };
 
 /** @internal */
@@ -830,6 +867,169 @@ export function getAliasProtectionBypassFromJSON(
 }
 
 /** @internal */
+export const DefaultApp$inboundSchema: z.ZodType<
+  DefaultApp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.string(),
+});
+
+/** @internal */
+export type DefaultApp$Outbound = {
+  projectId: string;
+};
+
+/** @internal */
+export const DefaultApp$outboundSchema: z.ZodType<
+  DefaultApp$Outbound,
+  z.ZodTypeDef,
+  DefaultApp
+> = z.object({
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultApp$ {
+  /** @deprecated use `DefaultApp$inboundSchema` instead. */
+  export const inboundSchema = DefaultApp$inboundSchema;
+  /** @deprecated use `DefaultApp$outboundSchema` instead. */
+  export const outboundSchema = DefaultApp$outboundSchema;
+  /** @deprecated use `DefaultApp$Outbound` instead. */
+  export type Outbound = DefaultApp$Outbound;
+}
+
+export function defaultAppToJSON(defaultApp: DefaultApp): string {
+  return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
+}
+
+export function defaultAppFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultApp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultApp' from JSON`,
+  );
+}
+
+/** @internal */
+export const Applications$inboundSchema: z.ZodType<
+  Applications,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fallbackHost: z.string(),
+  deploymentId: z.string().optional(),
+  deploymentUrl: z.string().optional(),
+});
+
+/** @internal */
+export type Applications$Outbound = {
+  fallbackHost: string;
+  deploymentId?: string | undefined;
+  deploymentUrl?: string | undefined;
+};
+
+/** @internal */
+export const Applications$outboundSchema: z.ZodType<
+  Applications$Outbound,
+  z.ZodTypeDef,
+  Applications
+> = z.object({
+  fallbackHost: z.string(),
+  deploymentId: z.string().optional(),
+  deploymentUrl: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications$ {
+  /** @deprecated use `Applications$inboundSchema` instead. */
+  export const inboundSchema = Applications$inboundSchema;
+  /** @deprecated use `Applications$outboundSchema` instead. */
+  export const outboundSchema = Applications$outboundSchema;
+  /** @deprecated use `Applications$Outbound` instead. */
+  export type Outbound = Applications$Outbound;
+}
+
+export function applicationsToJSON(applications: Applications): string {
+  return JSON.stringify(Applications$outboundSchema.parse(applications));
+}
+
+export function applicationsFromJSON(
+  jsonString: string,
+): SafeParseResult<Applications, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Applications$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Applications' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
+  GetAliasMicrofrontends,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  defaultApp: z.lazy(() => DefaultApp$inboundSchema),
+  applications: z.record(z.lazy(() => Applications$inboundSchema)),
+});
+
+/** @internal */
+export type GetAliasMicrofrontends$Outbound = {
+  defaultApp: DefaultApp$Outbound;
+  applications: { [k: string]: Applications$Outbound };
+};
+
+/** @internal */
+export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
+  GetAliasMicrofrontends$Outbound,
+  z.ZodTypeDef,
+  GetAliasMicrofrontends
+> = z.object({
+  defaultApp: z.lazy(() => DefaultApp$outboundSchema),
+  applications: z.record(z.lazy(() => Applications$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasMicrofrontends$ {
+  /** @deprecated use `GetAliasMicrofrontends$inboundSchema` instead. */
+  export const inboundSchema = GetAliasMicrofrontends$inboundSchema;
+  /** @deprecated use `GetAliasMicrofrontends$outboundSchema` instead. */
+  export const outboundSchema = GetAliasMicrofrontends$outboundSchema;
+  /** @deprecated use `GetAliasMicrofrontends$Outbound` instead. */
+  export type Outbound = GetAliasMicrofrontends$Outbound;
+}
+
+export function getAliasMicrofrontendsToJSON(
+  getAliasMicrofrontends: GetAliasMicrofrontends,
+): string {
+  return JSON.stringify(
+    GetAliasMicrofrontends$outboundSchema.parse(getAliasMicrofrontends),
+  );
+}
+
+export function getAliasMicrofrontendsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasMicrofrontends, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasMicrofrontends' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAliasResponseBody$inboundSchema: z.ZodType<
   GetAliasResponseBody,
   z.ZodTypeDef,
@@ -855,6 +1055,7 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
     ]),
   ).optional(),
+  microfrontends: z.lazy(() => GetAliasMicrofrontends$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -878,6 +1079,7 @@ export type GetAliasResponseBody$Outbound = {
       | ProtectionBypass4$Outbound
       | GetAliasProtectionBypass2$Outbound;
   } | undefined;
+  microfrontends?: GetAliasMicrofrontends$Outbound | undefined;
 };
 
 /** @internal */
@@ -906,6 +1108,8 @@ export const GetAliasResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
+  microfrontends: z.lazy(() => GetAliasMicrofrontends$outboundSchema)
+    .optional(),
 });
 
 /**

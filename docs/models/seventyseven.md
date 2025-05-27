@@ -8,18 +8,13 @@ The payload of the event, if requested.
 import { SeventySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventySeven = {
-  projectName: "<value>",
-  ssoProtection: {
-    deploymentType: "all",
-  },
-  oldSsoProtection: "prod_deployment_urls_and_all_previews",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `ssoProtection`           | *models.SsoProtection*    | :heavy_check_mark:        | N/A                       |
-| `oldSsoProtection`        | *models.OldSsoProtection* | :heavy_check_mark:        | N/A                       |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

@@ -22,10 +22,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type ListAuthTokensResponseBody = {
   tokens: Array<AuthToken>;
   /**
-   * Authentication token metadata.
-   */
-  testingToken?: AuthToken | undefined;
-  /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
@@ -38,14 +34,12 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tokens: z.array(AuthToken$inboundSchema),
-  testingToken: AuthToken$inboundSchema.optional(),
   pagination: Pagination$inboundSchema,
 });
 
 /** @internal */
 export type ListAuthTokensResponseBody$Outbound = {
   tokens: Array<AuthToken$Outbound>;
-  testingToken?: AuthToken$Outbound | undefined;
   pagination: Pagination$Outbound;
 };
 
@@ -56,7 +50,6 @@ export const ListAuthTokensResponseBody$outboundSchema: z.ZodType<
   ListAuthTokensResponseBody
 > = z.object({
   tokens: z.array(AuthToken$outboundSchema),
-  testingToken: AuthToken$outboundSchema.optional(),
   pagination: Pagination$outboundSchema,
 });
 

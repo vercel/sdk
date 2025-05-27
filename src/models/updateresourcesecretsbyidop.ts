@@ -8,6 +8,24 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+ */
+export type UpdateResourceSecretsByIdEnvironmentOverrides = {
+  /**
+   * Value used for development environment.
+   */
+  development?: string | undefined;
+  /**
+   * Value used for preview environment.
+   */
+  preview?: string | undefined;
+  /**
+   * Value used for production environment.
+   */
+  production?: string | undefined;
+};
+
 export type UpdateResourceSecretsByIdSecrets = {
   name: string;
   value: string;
@@ -15,7 +33,9 @@ export type UpdateResourceSecretsByIdSecrets = {
   /**
    * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
    */
-  environmentOverrides?: { [k: string]: string } | undefined;
+  environmentOverrides?:
+    | UpdateResourceSecretsByIdEnvironmentOverrides
+    | undefined;
 };
 
 export type UpdateResourceSecretsByIdRequestBody = {
@@ -33,6 +53,79 @@ export type UpdateResourceSecretsByIdRequest = {
 };
 
 /** @internal */
+export const UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema:
+  z.ZodType<
+    UpdateResourceSecretsByIdEnvironmentOverrides,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  });
+
+/** @internal */
+export type UpdateResourceSecretsByIdEnvironmentOverrides$Outbound = {
+  development?: string | undefined;
+  preview?: string | undefined;
+  production?: string | undefined;
+};
+
+/** @internal */
+export const UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema:
+  z.ZodType<
+    UpdateResourceSecretsByIdEnvironmentOverrides$Outbound,
+    z.ZodTypeDef,
+    UpdateResourceSecretsByIdEnvironmentOverrides
+  > = z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateResourceSecretsByIdEnvironmentOverrides$ {
+  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema;
+  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema;
+  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$Outbound` instead. */
+  export type Outbound = UpdateResourceSecretsByIdEnvironmentOverrides$Outbound;
+}
+
+export function updateResourceSecretsByIdEnvironmentOverridesToJSON(
+  updateResourceSecretsByIdEnvironmentOverrides:
+    UpdateResourceSecretsByIdEnvironmentOverrides,
+): string {
+  return JSON.stringify(
+    UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema.parse(
+      updateResourceSecretsByIdEnvironmentOverrides,
+    ),
+  );
+}
+
+export function updateResourceSecretsByIdEnvironmentOverridesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateResourceSecretsByIdEnvironmentOverrides,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateResourceSecretsByIdEnvironmentOverrides' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateResourceSecretsByIdSecrets$inboundSchema: z.ZodType<
   UpdateResourceSecretsByIdSecrets,
   z.ZodTypeDef,
@@ -41,7 +134,9 @@ export const UpdateResourceSecretsByIdSecrets$inboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
-  environmentOverrides: z.record(z.string()).optional(),
+  environmentOverrides: z.lazy(() =>
+    UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema
+  ).optional(),
 });
 
 /** @internal */
@@ -49,7 +144,9 @@ export type UpdateResourceSecretsByIdSecrets$Outbound = {
   name: string;
   value: string;
   prefix?: string | undefined;
-  environmentOverrides?: { [k: string]: string } | undefined;
+  environmentOverrides?:
+    | UpdateResourceSecretsByIdEnvironmentOverrides$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -61,7 +158,9 @@ export const UpdateResourceSecretsByIdSecrets$outboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
-  environmentOverrides: z.record(z.string()).optional(),
+  environmentOverrides: z.lazy(() =>
+    UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema
+  ).optional(),
 });
 
 /**

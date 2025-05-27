@@ -11,9 +11,6 @@ let value: NinetyTwo = {
   team: {
     id: "<id>",
   },
-  previousRule: {
-    email: "Meaghan_Williamson@hotmail.com",
-  },
 };
 ```
 
@@ -22,4 +19,5 @@ let value: NinetyTwo = {
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `team`                                                               | [models.UserEventPayload92Team](../models/usereventpayload92team.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `previousRule`                                                       | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `previousRule`                                                       | [models.PreviousRule](../models/previousrule.md)                     | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `nextRule`                                                           | [models.NextRule](../models/nextrule.md)                             | :heavy_minus_sign:                                                   | N/A                                                                  |

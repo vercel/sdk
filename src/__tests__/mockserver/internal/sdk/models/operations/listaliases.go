@@ -582,6 +582,69 @@ func (u ListAliasesProtectionBypass) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListAliasesProtectionBypass: all fields are null")
 }
 
+type ListAliasesDefaultApp struct {
+	ProjectID string `json:"projectId"`
+}
+
+func (o *ListAliasesDefaultApp) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// ListAliasesApplications - A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+type ListAliasesApplications struct {
+	// This is always set and is the fallback host to send the request to if there is no deployment ID.
+	FallbackHost string `json:"fallbackHost"`
+	// This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`.
+	DeploymentID *string `json:"deploymentId,omitempty"`
+	// This is used and set in the exact same way as `deploymentId`.
+	DeploymentURL *string `json:"deploymentUrl,omitempty"`
+}
+
+func (o *ListAliasesApplications) GetFallbackHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.FallbackHost
+}
+
+func (o *ListAliasesApplications) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *ListAliasesApplications) GetDeploymentURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentURL
+}
+
+// ListAliasesMicrofrontends - The microfrontends for the alias including the routing configuration
+type ListAliasesMicrofrontends struct {
+	DefaultApp ListAliasesDefaultApp `json:"defaultApp"`
+	// A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+	Applications map[string]ListAliasesApplications `json:"applications"`
+}
+
+func (o *ListAliasesMicrofrontends) GetDefaultApp() ListAliasesDefaultApp {
+	if o == nil {
+		return ListAliasesDefaultApp{}
+	}
+	return o.DefaultApp
+}
+
+func (o *ListAliasesMicrofrontends) GetApplications() map[string]ListAliasesApplications {
+	if o == nil {
+		return map[string]ListAliasesApplications{}
+	}
+	return o.Applications
+}
+
 type ListAliasesAliases struct {
 	// The alias name, it could be a `.vercel.app` subdomain or a custom domain
 	Alias string `json:"alias"`
@@ -609,6 +672,8 @@ type ListAliasesAliases struct {
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	// The protection bypass for the alias
 	ProtectionBypass map[string]ListAliasesProtectionBypass `json:"protectionBypass,omitempty"`
+	// The microfrontends for the alias including the routing configuration
+	Microfrontends *ListAliasesMicrofrontends `json:"microfrontends,omitempty"`
 }
 
 func (l ListAliasesAliases) MarshalJSON() ([]byte, error) {
@@ -711,6 +776,13 @@ func (o *ListAliasesAliases) GetProtectionBypass() map[string]ListAliasesProtect
 		return nil
 	}
 	return o.ProtectionBypass
+}
+
+func (o *ListAliasesAliases) GetMicrofrontends() *ListAliasesMicrofrontends {
+	if o == nil {
+		return nil
+	}
+	return o.Microfrontends
 }
 
 // ListAliasesResponseBody - The paginated list of aliases

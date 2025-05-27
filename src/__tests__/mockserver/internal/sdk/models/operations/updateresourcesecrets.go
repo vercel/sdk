@@ -6,12 +6,43 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// EnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+type EnvironmentOverrides struct {
+	// Value used for development environment.
+	Development *string `json:"development,omitempty"`
+	// Value used for preview environment.
+	Preview *string `json:"preview,omitempty"`
+	// Value used for production environment.
+	Production *string `json:"production,omitempty"`
+}
+
+func (o *EnvironmentOverrides) GetDevelopment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Development
+}
+
+func (o *EnvironmentOverrides) GetPreview() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Preview
+}
+
+func (o *EnvironmentOverrides) GetProduction() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Production
+}
+
 type UpdateResourceSecretsSecrets struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
 	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-	EnvironmentOverrides map[string]string `json:"environmentOverrides,omitempty"`
+	EnvironmentOverrides *EnvironmentOverrides `json:"environmentOverrides,omitempty"`
 }
 
 func (o *UpdateResourceSecretsSecrets) GetName() string {
@@ -35,7 +66,7 @@ func (o *UpdateResourceSecretsSecrets) GetPrefix() *string {
 	return o.Prefix
 }
 
-func (o *UpdateResourceSecretsSecrets) GetEnvironmentOverrides() map[string]string {
+func (o *UpdateResourceSecretsSecrets) GetEnvironmentOverrides() *EnvironmentOverrides {
 	if o == nil {
 		return nil
 	}

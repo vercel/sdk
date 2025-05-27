@@ -21,7 +21,9 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    name: "<value>",
+    sha: "<value>",
+    gitUserPlatform: "<value>",
+    projectName: "<value>",
   },
 };
 ```

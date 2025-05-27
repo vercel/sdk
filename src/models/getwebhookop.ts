@@ -51,6 +51,7 @@ export const GetWebhookEvents = {
     "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
+  ProjectDomainVerified: "project.domain.verified",
   ProjectRollingReleaseStarted: "project.rolling-release.started",
   ProjectRollingReleaseAborted: "project.rolling-release.aborted",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",

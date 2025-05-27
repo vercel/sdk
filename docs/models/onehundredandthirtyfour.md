@@ -8,16 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtyFour = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
+  project: {
+    name: "<value>",
+    role: "ADMIN",
+    invitedUserName: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload134Project](../models/usereventpayload134project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

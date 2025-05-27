@@ -175,6 +175,39 @@ export type ListAliasesProtectionBypass =
   | ListAliasesProtectionBypass4
   | ListAliasesProtectionBypass2;
 
+export type ListAliasesDefaultApp = {
+  projectId: string;
+};
+
+/**
+ * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+ */
+export type ListAliasesApplications = {
+  /**
+   * This is always set and is the fallback host to send the request to if there is no deployment ID.
+   */
+  fallbackHost: string;
+  /**
+   * This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`.
+   */
+  deploymentId?: string | undefined;
+  /**
+   * This is used and set in the exact same way as `deploymentId`.
+   */
+  deploymentUrl?: string | undefined;
+};
+
+/**
+ * The microfrontends for the alias including the routing configuration
+ */
+export type ListAliasesMicrofrontends = {
+  defaultApp: ListAliasesDefaultApp;
+  /**
+   * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+   */
+  applications: { [k: string]: ListAliasesApplications };
+};
+
 export type ListAliasesAliases = {
   /**
    * The alias name, it could be a `.vercel.app` subdomain or a custom domain
@@ -234,6 +267,10 @@ export type ListAliasesAliases = {
       | ListAliasesProtectionBypass4
       | ListAliasesProtectionBypass2;
   } | undefined;
+  /**
+   * The microfrontends for the alias including the routing configuration
+   */
+  microfrontends?: ListAliasesMicrofrontends | undefined;
 };
 
 /**
@@ -920,6 +957,177 @@ export function listAliasesProtectionBypassFromJSON(
 }
 
 /** @internal */
+export const ListAliasesDefaultApp$inboundSchema: z.ZodType<
+  ListAliasesDefaultApp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.string(),
+});
+
+/** @internal */
+export type ListAliasesDefaultApp$Outbound = {
+  projectId: string;
+};
+
+/** @internal */
+export const ListAliasesDefaultApp$outboundSchema: z.ZodType<
+  ListAliasesDefaultApp$Outbound,
+  z.ZodTypeDef,
+  ListAliasesDefaultApp
+> = z.object({
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAliasesDefaultApp$ {
+  /** @deprecated use `ListAliasesDefaultApp$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesDefaultApp$inboundSchema;
+  /** @deprecated use `ListAliasesDefaultApp$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesDefaultApp$outboundSchema;
+  /** @deprecated use `ListAliasesDefaultApp$Outbound` instead. */
+  export type Outbound = ListAliasesDefaultApp$Outbound;
+}
+
+export function listAliasesDefaultAppToJSON(
+  listAliasesDefaultApp: ListAliasesDefaultApp,
+): string {
+  return JSON.stringify(
+    ListAliasesDefaultApp$outboundSchema.parse(listAliasesDefaultApp),
+  );
+}
+
+export function listAliasesDefaultAppFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesDefaultApp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesDefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesDefaultApp' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesApplications$inboundSchema: z.ZodType<
+  ListAliasesApplications,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fallbackHost: z.string(),
+  deploymentId: z.string().optional(),
+  deploymentUrl: z.string().optional(),
+});
+
+/** @internal */
+export type ListAliasesApplications$Outbound = {
+  fallbackHost: string;
+  deploymentId?: string | undefined;
+  deploymentUrl?: string | undefined;
+};
+
+/** @internal */
+export const ListAliasesApplications$outboundSchema: z.ZodType<
+  ListAliasesApplications$Outbound,
+  z.ZodTypeDef,
+  ListAliasesApplications
+> = z.object({
+  fallbackHost: z.string(),
+  deploymentId: z.string().optional(),
+  deploymentUrl: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAliasesApplications$ {
+  /** @deprecated use `ListAliasesApplications$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesApplications$inboundSchema;
+  /** @deprecated use `ListAliasesApplications$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesApplications$outboundSchema;
+  /** @deprecated use `ListAliasesApplications$Outbound` instead. */
+  export type Outbound = ListAliasesApplications$Outbound;
+}
+
+export function listAliasesApplicationsToJSON(
+  listAliasesApplications: ListAliasesApplications,
+): string {
+  return JSON.stringify(
+    ListAliasesApplications$outboundSchema.parse(listAliasesApplications),
+  );
+}
+
+export function listAliasesApplicationsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesApplications, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesApplications$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
+  ListAliasesMicrofrontends,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
+  applications: z.record(z.lazy(() => ListAliasesApplications$inboundSchema)),
+});
+
+/** @internal */
+export type ListAliasesMicrofrontends$Outbound = {
+  defaultApp: ListAliasesDefaultApp$Outbound;
+  applications: { [k: string]: ListAliasesApplications$Outbound };
+};
+
+/** @internal */
+export const ListAliasesMicrofrontends$outboundSchema: z.ZodType<
+  ListAliasesMicrofrontends$Outbound,
+  z.ZodTypeDef,
+  ListAliasesMicrofrontends
+> = z.object({
+  defaultApp: z.lazy(() => ListAliasesDefaultApp$outboundSchema),
+  applications: z.record(z.lazy(() => ListAliasesApplications$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAliasesMicrofrontends$ {
+  /** @deprecated use `ListAliasesMicrofrontends$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesMicrofrontends$inboundSchema;
+  /** @deprecated use `ListAliasesMicrofrontends$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesMicrofrontends$outboundSchema;
+  /** @deprecated use `ListAliasesMicrofrontends$Outbound` instead. */
+  export type Outbound = ListAliasesMicrofrontends$Outbound;
+}
+
+export function listAliasesMicrofrontendsToJSON(
+  listAliasesMicrofrontends: ListAliasesMicrofrontends,
+): string {
+  return JSON.stringify(
+    ListAliasesMicrofrontends$outboundSchema.parse(listAliasesMicrofrontends),
+  );
+}
+
+export function listAliasesMicrofrontendsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAliasesMicrofrontends, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAliasesMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesMicrofrontends' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListAliasesAliases$inboundSchema: z.ZodType<
   ListAliasesAliases,
   z.ZodTypeDef,
@@ -945,6 +1153,8 @@ export const ListAliasesAliases$inboundSchema: z.ZodType<
       z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
     ]),
   ).optional(),
+  microfrontends: z.lazy(() => ListAliasesMicrofrontends$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -968,6 +1178,7 @@ export type ListAliasesAliases$Outbound = {
       | ListAliasesProtectionBypass4$Outbound
       | ListAliasesProtectionBypass2$Outbound;
   } | undefined;
+  microfrontends?: ListAliasesMicrofrontends$Outbound | undefined;
 };
 
 /** @internal */
@@ -996,6 +1207,8 @@ export const ListAliasesAliases$outboundSchema: z.ZodType<
       z.lazy(() => ListAliasesProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
+  microfrontends: z.lazy(() => ListAliasesMicrofrontends$outboundSchema)
+    .optional(),
 });
 
 /**

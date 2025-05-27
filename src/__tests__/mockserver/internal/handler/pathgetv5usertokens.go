@@ -77,15 +77,6 @@ func testListAuthTokensListAuthTokens0(w http.ResponseWriter, req *http.Request)
 				CreatedAt: 1632816536002,
 			},
 		},
-		TestingToken: &components.AuthToken{
-			ID:        "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-			Name:      "<value>",
-			Type:      "oauth2-token",
-			Origin:    types.String("github"),
-			ExpiresAt: types.Float64(1632816536002),
-			ActiveAt:  1632816536002,
-			CreatedAt: 1632816536002,
-		},
 		Pagination: components.Pagination{
 			Count: 20,
 			Next:  types.Float64(1540095775951),

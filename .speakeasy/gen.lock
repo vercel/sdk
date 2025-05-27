@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: ef049433a6eb967f84e86f9a25da5d85
+  docChecksum: 8bf02cd72ecf78ed52bd6b09ce49a54b
   docVersion: 0.0.1
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 1.7.6
-  configChecksum: 79a68a03f80369ddc9e2469ef6318ed9
+  speakeasyVersion: 1.552.0
+  generationVersion: 2.610.0
+  releaseVersion: 1.7.7
+  configChecksum: 3c3f98b027c1ad50c3971831a84514eb
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -380,6 +380,7 @@ generatedFiles:
   - docs/models/createdeploymentmicrofrontends.md
   - docs/models/createdeploymentmicrofrontends1.md
   - docs/models/createdeploymentmicrofrontends2.md
+  - docs/models/createdeploymentmicrofrontendsapplications.md
   - docs/models/createdeploymentmissingtype.md
   - docs/models/createdeploymentoutput.md
   - docs/models/createdeploymentplan.md
@@ -718,6 +719,7 @@ generatedFiles:
   - docs/models/datacachewrite.md
   - docs/models/ddosalerts.md
   - docs/models/decrypt.md
+  - docs/models/defaultapp.md
   - docs/models/defaultresourceconfig.md
   - docs/models/definitions.md
   - docs/models/deleteaccessgroupprojectrequest.md
@@ -842,6 +844,7 @@ generatedFiles:
   - docs/models/env.md
   - docs/models/envid.md
   - docs/models/envid2.md
+  - docs/models/environmentoverrides.md
   - docs/models/environments.md
   - docs/models/environmentvariables.md
   - docs/models/envs.md
@@ -1029,6 +1032,7 @@ generatedFiles:
   - docs/models/getactiveattackstatusresponsebody2.md
   - docs/models/getaliascreator.md
   - docs/models/getaliasdeployment.md
+  - docs/models/getaliasmicrofrontends.md
   - docs/models/getaliasprotectionbypass.md
   - docs/models/getaliasprotectionbypass1.md
   - docs/models/getaliasprotectionbypass2.md
@@ -1764,6 +1768,7 @@ generatedFiles:
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
   - docs/models/importflowgitprovider.md
+  - docs/models/importresourceenvironmentoverrides.md
   - docs/models/importresourcerequest.md
   - docs/models/importresourcerequestbody.md
   - docs/models/importresourceresponsebody.md
@@ -1832,8 +1837,11 @@ generatedFiles:
   - docs/models/listaccessgroupsresponsebody1.md
   - docs/models/listaccessgroupsresponsebody2.md
   - docs/models/listaliasesaliases.md
+  - docs/models/listaliasesapplications.md
   - docs/models/listaliasescreator.md
+  - docs/models/listaliasesdefaultapp.md
   - docs/models/listaliasesdeployment.md
+  - docs/models/listaliasesmicrofrontends.md
   - docs/models/listaliasesprotectionbypass.md
   - docs/models/listaliasesprotectionbypass1.md
   - docs/models/listaliasesprotectionbypass2.md
@@ -1877,6 +1885,7 @@ generatedFiles:
   - docs/models/membership.md
   - docs/models/metadata.md
   - docs/models/metrics.md
+  - docs/models/mfa.md
   - docs/models/mfaconfiguration.md
   - docs/models/microfrontends.md
   - docs/models/microfrontends1.md
@@ -1948,6 +1957,7 @@ generatedFiles:
   - docs/models/onehundredandfifteen.md
   - docs/models/onehundredandfifty.md
   - docs/models/onehundredandfiftyone.md
+  - docs/models/onehundredandfiftytwo.md
   - docs/models/onehundredandfive.md
   - docs/models/onehundredandforty.md
   - docs/models/onehundredandfortyeight.md
@@ -3096,6 +3106,7 @@ generatedFiles:
   - docs/models/updaterecordrequestbody.md
   - docs/models/updaterecordresponsebody.md
   - docs/models/updaterecordtype.md
+  - docs/models/updateresourcesecretsbyidenvironmentoverrides.md
   - docs/models/updateresourcesecretsbyidrequest.md
   - docs/models/updateresourcesecretsbyidrequestbody.md
   - docs/models/updateresourcesecretsbyidsecrets.md
@@ -3127,23 +3138,24 @@ generatedFiles:
   - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
-  - docs/models/usereventpayload110user.md
-  - docs/models/usereventpayload130project.md
+  - docs/models/usereventpayload100type.md
+  - docs/models/usereventpayload111user.md
   - docs/models/usereventpayload131project.md
   - docs/models/usereventpayload132project.md
-  - docs/models/usereventpayload132role.md
   - docs/models/usereventpayload133project.md
   - docs/models/usereventpayload133role.md
-  - docs/models/usereventpayload137action.md
-  - docs/models/usereventpayload140project.md
-  - docs/models/usereventpayload141prevproject.md
+  - docs/models/usereventpayload134project.md
+  - docs/models/usereventpayload134role.md
+  - docs/models/usereventpayload138action.md
   - docs/models/usereventpayload141project.md
-  - docs/models/usereventpayload148configuration.md
-  - docs/models/usereventpayload148team.md
+  - docs/models/usereventpayload142prevproject.md
+  - docs/models/usereventpayload142project.md
   - docs/models/usereventpayload149configuration.md
   - docs/models/usereventpayload149team.md
   - docs/models/usereventpayload150configuration.md
   - docs/models/usereventpayload150team.md
+  - docs/models/usereventpayload151configuration.md
+  - docs/models/usereventpayload151team.md
   - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
@@ -3165,12 +3177,11 @@ generatedFiles:
   - docs/models/usereventpayload62role.md
   - docs/models/usereventpayload62type.md
   - docs/models/usereventpayload6accessgroup.md
-  - docs/models/usereventpayload73role.md
-  - docs/models/usereventpayload83project.md
-  - docs/models/usereventpayload83team.md
-  - docs/models/usereventpayload91team.md
+  - docs/models/usereventpayload74role.md
+  - docs/models/usereventpayload84project.md
+  - docs/models/usereventpayload84team.md
   - docs/models/usereventpayload92team.md
-  - docs/models/usereventpayload98type.md
+  - docs/models/usereventpayload93team.md
   - docs/models/usereventpayload99type.md
   - docs/models/usereventpayloadaccessgroup.md
   - docs/models/usereventpayloadaction.md
@@ -6280,7 +6291,7 @@ examples:
     speakeasy-default-list-auth-tokens:
       responses:
         "200":
-          application/json: {"tokens": [{"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}], "testingToken": {"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}, "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
+          application/json: {"tokens": [{"id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391", "name": "<value>", "type": "oauth2-token", "origin": "github", "expiresAt": 1632816536002, "activeAt": 1632816536002, "createdAt": 1632816536002}], "pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

@@ -7,17 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { EightySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: EightySeven = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
-};
+let value: EightySeven = {};
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_minus_sign:    | N/A                   |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| `newTargetPercentage` | *number*              | :heavy_minus_sign:    | N/A                   |

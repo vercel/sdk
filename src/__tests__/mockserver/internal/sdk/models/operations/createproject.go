@@ -4970,6 +4970,8 @@ type CreateProjectRollingRelease struct {
 	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
 	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
 	Stages []CreateProjectStages `json:"stages,omitempty"`
+	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
 }
 
 func (o *CreateProjectRollingRelease) GetTarget() string {
@@ -4991,6 +4993,13 @@ func (o *CreateProjectRollingRelease) GetStages() []CreateProjectStages {
 		return nil
 	}
 	return o.Stages
+}
+
+func (o *CreateProjectRollingRelease) GetCanaryResponseHeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryResponseHeader
 }
 
 type CreateProjectProjectsFunctionDefaultMemoryType string
@@ -6062,6 +6071,8 @@ type CreateProjectPermissions struct {
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
 	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
@@ -7242,6 +7253,20 @@ func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.AC
 		return nil
 	}
 	return o.ProjectAnalyticsSampling
+}
+
+func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
 }
 
 func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {

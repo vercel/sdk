@@ -155,6 +155,25 @@ func (o *Saml) GetEnforced() bool {
 	return o.Enforced
 }
 
+type Mfa struct {
+	Enforced  bool    `json:"enforced"`
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (o *Mfa) GetEnforced() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enforced
+}
+
+func (o *Mfa) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
 type Entitlements struct {
 	Entitlement string `json:"entitlement"`
 }
@@ -596,8 +615,8 @@ type TeamLimited struct {
 	Limited   bool        `json:"limited"`
 	LimitedBy []LimitedBy `json:"limitedBy"`
 	// When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
-	Saml        *Saml `json:"saml,omitempty"`
-	MfaEnforced *bool `json:"mfaEnforced,omitempty"`
+	Saml *Saml `json:"saml,omitempty"`
+	Mfa  *Mfa  `json:"mfa,omitempty"`
 	// The Team's unique identifier.
 	ID string `json:"id"`
 	// The Team's slug, which is unique across the Vercel platform.
@@ -635,11 +654,11 @@ func (o *TeamLimited) GetSaml() *Saml {
 	return o.Saml
 }
 
-func (o *TeamLimited) GetMfaEnforced() *bool {
+func (o *TeamLimited) GetMfa() *Mfa {
 	if o == nil {
 		return nil
 	}
-	return o.MfaEnforced
+	return o.Mfa
 }
 
 func (o *TeamLimited) GetID() string {

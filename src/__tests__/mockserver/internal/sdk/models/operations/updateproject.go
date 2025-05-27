@@ -1570,10 +1570,10 @@ type UpdateProjectType string
 
 const (
 	UpdateProjectTypeSystem    UpdateProjectType = "system"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
 	UpdateProjectTypePlain     UpdateProjectType = "plain"
 	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
+	UpdateProjectTypeSecret    UpdateProjectType = "secret"
 )
 
 func (e UpdateProjectType) ToPointer() *UpdateProjectType {
@@ -1587,13 +1587,13 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = UpdateProjectType(v)
 		return nil
 	default:
@@ -5184,6 +5184,8 @@ type UpdateProjectRollingRelease struct {
 	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
 	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
 	Stages []UpdateProjectStages `json:"stages,omitempty"`
+	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
 }
 
 func (o *UpdateProjectRollingRelease) GetTarget() string {
@@ -5205,6 +5207,13 @@ func (o *UpdateProjectRollingRelease) GetStages() []UpdateProjectStages {
 		return nil
 	}
 	return o.Stages
+}
+
+func (o *UpdateProjectRollingRelease) GetCanaryResponseHeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryResponseHeader
 }
 
 type UpdateProjectProjectsResponseFunctionDefaultMemoryType string
@@ -6276,6 +6285,8 @@ type UpdateProjectPermissions struct {
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
 	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
@@ -7458,6 +7469,20 @@ func (o *UpdateProjectPermissions) GetProjectAnalyticsSampling() []components.AC
 	return o.ProjectAnalyticsSampling
 }
 
+func (o *UpdateProjectPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *UpdateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
+}
+
 func (o *UpdateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8447,8 +8472,8 @@ func (u UpdateProjectSrc) MarshalJSON() ([]byte, error) {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
@@ -8470,9 +8495,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough
@@ -8684,8 +8709,8 @@ func (o *UpdateProjectHas) GetValue() *UpdateProjectValue {
 type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
+	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
 	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
@@ -8707,9 +8732,9 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 		return err
 	}
 	switch v {
-	case "host":
-		fallthrough
 	case "path":
+		fallthrough
+	case "host":
 		fallthrough
 	case "method":
 		fallthrough

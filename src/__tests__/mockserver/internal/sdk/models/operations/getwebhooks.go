@@ -67,6 +67,7 @@ const (
 	GetWebhooksResponseBodyEventsIntegrationResourceProjectDisconnected             GetWebhooksResponseBodyEvents = "integration-resource.project-disconnected"
 	GetWebhooksResponseBodyEventsProjectCreated                                     GetWebhooksResponseBodyEvents = "project.created"
 	GetWebhooksResponseBodyEventsProjectRemoved                                     GetWebhooksResponseBodyEvents = "project.removed"
+	GetWebhooksResponseBodyEventsProjectDomainVerified                              GetWebhooksResponseBodyEvents = "project.domain.verified"
 	GetWebhooksResponseBodyEventsProjectRollingReleaseStarted                       GetWebhooksResponseBodyEvents = "project.rolling-release.started"
 	GetWebhooksResponseBodyEventsProjectRollingReleaseAborted                       GetWebhooksResponseBodyEvents = "project.rolling-release.aborted"
 	GetWebhooksResponseBodyEventsProjectRollingReleaseCompleted                     GetWebhooksResponseBodyEvents = "project.rolling-release.completed"
@@ -148,6 +149,8 @@ func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.domain.verified":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -488,6 +491,7 @@ const (
 	ResponseBodyEventsIntegrationResourceProjectDisconnected             ResponseBodyEvents = "integration-resource.project-disconnected"
 	ResponseBodyEventsProjectCreated                                     ResponseBodyEvents = "project.created"
 	ResponseBodyEventsProjectRemoved                                     ResponseBodyEvents = "project.removed"
+	ResponseBodyEventsProjectDomainVerified                              ResponseBodyEvents = "project.domain.verified"
 	ResponseBodyEventsProjectRollingReleaseStarted                       ResponseBodyEvents = "project.rolling-release.started"
 	ResponseBodyEventsProjectRollingReleaseAborted                       ResponseBodyEvents = "project.rolling-release.aborted"
 	ResponseBodyEventsProjectRollingReleaseCompleted                     ResponseBodyEvents = "project.rolling-release.completed"
@@ -569,6 +573,8 @@ func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.domain.verified":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough

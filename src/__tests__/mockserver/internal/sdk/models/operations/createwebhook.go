@@ -35,6 +35,7 @@ const (
 	EventsIntegrationResourceProjectDisconnected             Events = "integration-resource.project-disconnected"
 	EventsProjectCreated                                     Events = "project.created"
 	EventsProjectRemoved                                     Events = "project.removed"
+	EventsProjectDomainVerified                              Events = "project.domain.verified"
 	EventsProjectRollingReleaseStarted                       Events = "project.rolling-release.started"
 	EventsProjectRollingReleaseAborted                       Events = "project.rolling-release.aborted"
 	EventsProjectRollingReleaseCompleted                     Events = "project.rolling-release.completed"
@@ -116,6 +117,8 @@ func (e *Events) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.domain.verified":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -253,6 +256,7 @@ const (
 	CreateWebhookEventsIntegrationResourceProjectDisconnected             CreateWebhookEvents = "integration-resource.project-disconnected"
 	CreateWebhookEventsProjectCreated                                     CreateWebhookEvents = "project.created"
 	CreateWebhookEventsProjectRemoved                                     CreateWebhookEvents = "project.removed"
+	CreateWebhookEventsProjectDomainVerified                              CreateWebhookEvents = "project.domain.verified"
 	CreateWebhookEventsProjectRollingReleaseStarted                       CreateWebhookEvents = "project.rolling-release.started"
 	CreateWebhookEventsProjectRollingReleaseAborted                       CreateWebhookEvents = "project.rolling-release.aborted"
 	CreateWebhookEventsProjectRollingReleaseCompleted                     CreateWebhookEvents = "project.rolling-release.completed"
@@ -334,6 +338,8 @@ func (e *CreateWebhookEvents) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.domain.verified":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough

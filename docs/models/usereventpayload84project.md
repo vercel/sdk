@@ -1,11 +1,11 @@
-# UserEventPayload83Project
+# UserEventPayload84Project
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayload83Project } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayload84Project } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload83Project = {
+let value: UserEventPayload84Project = {
   id: "<id>",
   oldConnectConfigurations: [
     {
@@ -13,18 +13,18 @@ let value: UserEventPayload83Project = {
       connectConfigurationId: "<id>",
       passive: false,
       buildsEnabled: false,
-      createdAt: 2599.49,
-      updatedAt: 9006.68,
+      createdAt: 409.31,
+      updatedAt: 8134,
     },
   ],
   newConnectConfigurations: [
     {
-      envId: "preview",
+      envId: "<id>",
       connectConfigurationId: "<id>",
       passive: false,
       buildsEnabled: false,
-      createdAt: 1806.52,
-      updatedAt: 463.67,
+      createdAt: 5292.1,
+      updatedAt: 5572.98,
     },
   ],
 };

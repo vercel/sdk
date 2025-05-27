@@ -848,6 +848,7 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.verified
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
@@ -898,6 +899,7 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.verified
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
@@ -948,6 +950,7 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.verified
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
@@ -998,6 +1001,7 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.verified
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
@@ -1048,6 +1052,7 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.verified
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed

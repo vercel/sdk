@@ -826,80 +826,81 @@ actions:
       x-speakeasy-enums:
         - budget.reached
         - budget.reset
-        - deployment
-        - deployment-check-rerequested
-        - deployment-check-rerequested-legacy
-        - deployment-canceled
-        - deployment-canceled-legacy
-        - deployment-created
-        - deployment-error
-        - deployment-error-legacy
-        - deployment-prepared
-        - deployment-prepared-legacy
-        - deployment-promoted
-        - deployment-ready
-        - deployment-ready-legacy
-        - deployment-succeeded
-        - deployment.check-rerequested
-        - deployment.canceled
-        - deployment.created
-        - deployment.error
-        - deployment.integration.action.cancel
-        - deployment.integration.action.cleanup
-        - deployment.integration.action.start
-        - deployment.promoted
-        - deployment.ready
-        - deployment.succeeded
-        - domain-created
-        - domain-created-legacy
-        - domain.certificate.add
-        - domain.certificate.add.failed
-        - domain.certificate.deleted
-        - domain.certificate.renew
-        - domain.certificate.renew.failed
         - domain.created
         - domain.dns.records.changed
+        - domain.transfer-in.started
         - domain.transfer-in.completed
         - domain.transfer-in.failed
-        - domain.transfer-in.started
+        - domain.certificate.add
+        - domain.certificate.add.failed
+        - domain.certificate.renew
+        - domain.certificate.renew.failed
+        - domain.certificate.deleted
+        - deployment.created
+        - deployment.error
+        - deployment.canceled
+        - deployment.succeeded
+        - deployment.ready
+        - deployment.check-rerequested
+        - deployment.promoted
+        - deployment.integration.action.start
+        - deployment.integration.action.cancel
+        - deployment.integration.action.cleanup
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated
         - firewall.attack
-        - integration-configuration-permission-updated-legacy
-        - integration-configuration-removed-legacy
-        - integration-configuration-scope-change-confirmed-legacy
         - integration-configuration.permission-upgraded
         - integration-configuration.removed
         - integration-configuration.scope-change-confirmed
         - integration-resource.project-connected
         - integration-resource.project-disconnected
-        - marketplace.invoice.created
-        - marketplace.invoice.notpaid
-        - marketplace.invoice.paid
-        - marketplace.invoice.refunded
-        - observability.anomaly
+        - project.created
+        - project.removed
+        - project.domain.created
+        - project.domain.updated
+        - project.domain.deleted
+        - project.domain.verified
+        - project.domain.unverified
+        - project.domain.moved
+        - project.rolling-release.started
+        - project.rolling-release.aborted
+        - project.rolling-release.completed
+        - project.rolling-release.approved
+        - deployment-checks-completed
+        - deployment-ready-legacy
+        - deployment-prepared
+        - deployment-error-legacy
+        - deployment-check-rerequested-legacy
+        - deployment-canceled-legacy
         - project-created-legacy
         - project-removed-legacy
-        - project.created
-        - project.domain.created
-        - project.domain.deleted
-        - project.domain.moved
-        - project.domain.unverified
-        - project.domain.updated
-        - project.domain.verified
-        - project.removed
-        - project.rolling-release.aborted
-        - project.rolling-release.approved
-        - project.rolling-release.completed
-        - project.rolling-release.started
-        - test-webhook          
+        - domain-created-legacy
+        - deployment
+        - integration-configuration-permission-updated
+        - integration-configuration-removed-legacy
+        - integration-configuration-scope-change-confirmed-legacy
+        - marketplace.invoice.created
+        - marketplace.invoice.paid
+        - marketplace.invoice.notpaid
+        - marketplace.invoice.refunded
+        - observability.anomaly
+        - test-webhook        
   - target: $["paths"]["/v1/webhooks"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
         - budget.reached
         - budget.reset
         - domain.created
+        - domain.dns.records.changed
+        - domain.transfer-in.started
+        - domain.transfer-in.completed
+        - domain.transfer-in.failed
+        - domain.certificate.add
+        - domain.certificate.add.failed
+        - domain.certificate.renew
+        - domain.certificate.renew.failed
+        - domain.certificate.deleted
         - deployment.created
         - deployment.error
         - deployment.canceled
@@ -921,22 +922,27 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.created
+        - project.domain.updated
+        - project.domain.deleted
         - project.domain.verified
+        - project.domain.unverified
+        - project.domain.moved
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
-        - deployment-checks-completed-legacy
+        - deployment-checks-completed
         - deployment-ready-legacy
-        - deployment-prepared-legacy
+        - deployment-prepared
         - deployment-error-legacy
         - deployment-check-rerequested-legacy
         - deployment-canceled-legacy
         - project-created-legacy
         - project-removed-legacy
         - domain-created-legacy
-        - deployment-legacy
-        - integration-configuration-permission-updated-legacy
+        - deployment
+        - integration-configuration-permission-updated
         - integration-configuration-removed-legacy
         - integration-configuration-scope-change-confirmed-legacy
         - marketplace.invoice.created
@@ -944,13 +950,22 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook   
+        - test-webhook    
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][0]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
         - budget.reached
         - budget.reset
         - domain.created
+        - domain.dns.records.changed
+        - domain.transfer-in.started
+        - domain.transfer-in.completed
+        - domain.transfer-in.failed
+        - domain.certificate.add
+        - domain.certificate.add.failed
+        - domain.certificate.renew
+        - domain.certificate.renew.failed
+        - domain.certificate.deleted
         - deployment.created
         - deployment.error
         - deployment.canceled
@@ -972,22 +987,27 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.created
+        - project.domain.updated
+        - project.domain.deleted
         - project.domain.verified
+        - project.domain.unverified
+        - project.domain.moved
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
-        - deployment-checks-completed-legacy
+        - deployment-checks-completed
         - deployment-ready-legacy
-        - deployment-prepared-legacy
+        - deployment-prepared
         - deployment-error-legacy
         - deployment-check-rerequested-legacy
         - deployment-canceled-legacy
         - project-created-legacy
         - project-removed-legacy
         - domain-created-legacy
-        - deployment-legacy
-        - integration-configuration-permission-updated-legacy
+        - deployment
+        - integration-configuration-permission-updated
         - integration-configuration-removed-legacy
         - integration-configuration-scope-change-confirmed-legacy
         - marketplace.invoice.created
@@ -995,13 +1015,22 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook   
+        - test-webhook    
   - target: $["paths"]["/v1/webhooks"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["oneOf"][1]["items"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
         - budget.reached
         - budget.reset
         - domain.created
+        - domain.dns.records.changed
+        - domain.transfer-in.started
+        - domain.transfer-in.completed
+        - domain.transfer-in.failed
+        - domain.certificate.add
+        - domain.certificate.add.failed
+        - domain.certificate.renew
+        - domain.certificate.renew.failed
+        - domain.certificate.deleted
         - deployment.created
         - deployment.error
         - deployment.canceled
@@ -1023,22 +1052,27 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.created
+        - project.domain.updated
+        - project.domain.deleted
         - project.domain.verified
+        - project.domain.unverified
+        - project.domain.moved
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
-        - deployment-checks-completed-legacy
+        - deployment-checks-completed
         - deployment-ready-legacy
-        - deployment-prepared-legacy
+        - deployment-prepared
         - deployment-error-legacy
         - deployment-check-rerequested-legacy
         - deployment-canceled-legacy
         - project-created-legacy
         - project-removed-legacy
         - domain-created-legacy
-        - deployment-legacy
-        - integration-configuration-permission-updated-legacy
+        - deployment
+        - integration-configuration-permission-updated
         - integration-configuration-removed-legacy
         - integration-configuration-scope-change-confirmed-legacy
         - marketplace.invoice.created
@@ -1046,13 +1080,22 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook   
+        - test-webhook    
   - target: $["paths"]["/v1/webhooks/{id}"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]["properties"]["events"]["items"]
     update:
       x-speakeasy-enums:
         - budget.reached
         - budget.reset
         - domain.created
+        - domain.dns.records.changed
+        - domain.transfer-in.started
+        - domain.transfer-in.completed
+        - domain.transfer-in.failed
+        - domain.certificate.add
+        - domain.certificate.add.failed
+        - domain.certificate.renew
+        - domain.certificate.renew.failed
+        - domain.certificate.deleted
         - deployment.created
         - deployment.error
         - deployment.canceled
@@ -1074,22 +1117,27 @@ actions:
         - integration-resource.project-disconnected
         - project.created
         - project.removed
+        - project.domain.created
+        - project.domain.updated
+        - project.domain.deleted
         - project.domain.verified
+        - project.domain.unverified
+        - project.domain.moved
         - project.rolling-release.started
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
-        - deployment-checks-completed-legacy
+        - deployment-checks-completed
         - deployment-ready-legacy
-        - deployment-prepared-legacy
+        - deployment-prepared
         - deployment-error-legacy
         - deployment-check-rerequested-legacy
         - deployment-canceled-legacy
         - project-created-legacy
         - project-removed-legacy
         - domain-created-legacy
-        - deployment-legacy
-        - integration-configuration-permission-updated-legacy
+        - deployment
+        - integration-configuration-permission-updated
         - integration-configuration-removed-legacy
         - integration-configuration-scope-change-confirmed-legacy
         - marketplace.invoice.created
@@ -1097,7 +1145,7 @@ actions:
         - marketplace.invoice.notpaid
         - marketplace.invoice.refunded
         - observability.anomaly
-        - test-webhook   
+        - test-webhook       
   # Remove blank required array
   - target: $.paths['/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}'].delete.requestBody["content"]["application/json"]["schema"].required
     remove: true         

@@ -51,30 +51,34 @@ let value: GetProjectsProjects = {
       "<value 2>",
     ],
   },
-  defaultResourceConfig: {
-    functionDefaultRegions: [
-      "<value 1>",
-      "<value 2>",
+  rollingRelease: {
+    target: "production",
+    stages: [
+      {
+        targetPercentage: 25,
+        requireApproval: false,
+        duration: 600,
+      },
     ],
+    canaryResponseHeader: false,
+  },
+  defaultResourceConfig: {
+    functionDefaultRegions: [],
   },
   targets: {
     "key": {
       id: "<id>",
-      createdAt: 2773.26,
+      createdAt: 9261.58,
       createdIn: "<value>",
-      creator: {
-        email: "Nestor_Osinski-Sporer62@hotmail.com",
-        uid: "<id>",
-        username: "Jaquan14",
-      },
+      creator: null,
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "hobby",
+      plan: "enterprise",
       previewCommentsEnabled: false,
       private: true,
       readyState: "QUEUED",
       type: "LAMBDAS",
-      url: "https://quixotic-thongs.org/",
+      url: "https://unselfish-millet.name",
       userId: "<id>",
     },
   },
@@ -124,7 +128,7 @@ let value: GetProjectsProjects = {
 | `publicSource`                                                                                                                      | *boolean*                                                                                                                           | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `resourceConfig`                                                                                                                    | [models.GetProjectsResourceConfig](../models/getprojectsresourceconfig.md)                                                          | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rollbackDescription`                                                                                                               | [models.GetProjectsRollbackDescription](../models/getprojectsrollbackdescription.md)                                                | :heavy_minus_sign:                                                                                                                  | Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback. |
-| `rollingRelease`                                                                                                                    | [models.GetProjectsRollingRelease](../models/getprojectsrollingrelease.md)                                                          | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
+| `rollingRelease`                                                                                                                    | [models.GetProjectsRollingRelease](../models/getprojectsrollingrelease.md)                                                          | :heavy_minus_sign:                                                                                                                  | Project-level rolling release configuration that defines how deployments should be gradually rolled out                             |
 | `defaultResourceConfig`                                                                                                             | [models.GetProjectsDefaultResourceConfig](../models/getprojectsdefaultresourceconfig.md)                                            | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rootDirectory`                                                                                                                     | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `serverlessFunctionRegion`                                                                                                          | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |

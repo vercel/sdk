@@ -10,151 +10,6 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type ManagedRulesActionRequestBody string
-
-const (
-	ManagedRulesActionRequestBodyLog       ManagedRulesActionRequestBody = "log"
-	ManagedRulesActionRequestBodyChallenge ManagedRulesActionRequestBody = "challenge"
-	ManagedRulesActionRequestBodyDeny      ManagedRulesActionRequestBody = "deny"
-)
-
-func (e ManagedRulesActionRequestBody) ToPointer() *ManagedRulesActionRequestBody {
-	return &e
-}
-func (e *ManagedRulesActionRequestBody) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "log":
-		fallthrough
-	case "challenge":
-		fallthrough
-	case "deny":
-		*e = ManagedRulesActionRequestBody(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ManagedRulesActionRequestBody: %v", v)
-	}
-}
-
-type RuleGroupsAction string
-
-const (
-	RuleGroupsActionLog       RuleGroupsAction = "log"
-	RuleGroupsActionChallenge RuleGroupsAction = "challenge"
-	RuleGroupsActionDeny      RuleGroupsAction = "deny"
-)
-
-func (e RuleGroupsAction) ToPointer() *RuleGroupsAction {
-	return &e
-}
-func (e *RuleGroupsAction) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "log":
-		fallthrough
-	case "challenge":
-		fallthrough
-	case "deny":
-		*e = RuleGroupsAction(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RuleGroupsAction: %v", v)
-	}
-}
-
-type RuleGroups struct {
-	Active *bool             `json:"active,omitempty"`
-	Action *RuleGroupsAction `json:"action,omitempty"`
-}
-
-func (o *RuleGroups) GetActive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Active
-}
-
-func (o *RuleGroups) GetAction() *RuleGroupsAction {
-	if o == nil {
-		return nil
-	}
-	return o.Action
-}
-
-type ManagedRulesRequest struct {
-	Active     bool                           `json:"active"`
-	Action     *ManagedRulesActionRequestBody `json:"action,omitempty"`
-	RuleGroups map[string]RuleGroups          `json:"ruleGroups,omitempty"`
-}
-
-func (o *ManagedRulesRequest) GetActive() bool {
-	if o == nil {
-		return false
-	}
-	return o.Active
-}
-
-func (o *ManagedRulesRequest) GetAction() *ManagedRulesActionRequestBody {
-	if o == nil {
-		return nil
-	}
-	return o.Action
-}
-
-func (o *ManagedRulesRequest) GetRuleGroups() map[string]RuleGroups {
-	if o == nil {
-		return nil
-	}
-	return o.RuleGroups
-}
-
-type ManagedRulesType string
-
-const (
-	ManagedRulesTypeManagedRulesRequest ManagedRulesType = "managedRules_request"
-)
-
-type ManagedRules struct {
-	ManagedRulesRequest *ManagedRulesRequest `queryParam:"inline"`
-
-	Type ManagedRulesType
-}
-
-func CreateManagedRulesManagedRulesRequest(managedRulesRequest ManagedRulesRequest) ManagedRules {
-	typ := ManagedRulesTypeManagedRulesRequest
-
-	return ManagedRules{
-		ManagedRulesRequest: &managedRulesRequest,
-		Type:                typ,
-	}
-}
-
-func (u *ManagedRules) UnmarshalJSON(data []byte) error {
-
-	var managedRulesRequest ManagedRulesRequest = ManagedRulesRequest{}
-	if err := utils.UnmarshalJSON(data, &managedRulesRequest, "", true, true); err == nil {
-		u.ManagedRulesRequest = &managedRulesRequest
-		u.Type = ManagedRulesTypeManagedRulesRequest
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ManagedRules", string(data))
-}
-
-func (u ManagedRules) MarshalJSON() ([]byte, error) {
-	if u.ManagedRulesRequest != nil {
-		return utils.MarshalJSON(u.ManagedRulesRequest, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ManagedRules: all fields are null")
-}
-
 type SdActionRequestBody string
 
 const (
@@ -1581,8 +1436,8 @@ func (o *IPRequest) GetAction() IPActionRequestBody {
 }
 
 type PutFirewallConfigRequestBody struct {
-	FirewallEnabled bool                    `json:"firewallEnabled"`
-	ManagedRules    map[string]ManagedRules `json:"managedRules,omitempty"`
+	FirewallEnabled bool           `json:"firewallEnabled"`
+	ManagedRules    map[string]any `json:"managedRules,omitempty"`
 	// Custom Ruleset
 	Crs   *CrsRequest   `json:"crs,omitempty"`
 	Rules []RuleRequest `json:"rules,omitempty"`
@@ -1596,7 +1451,7 @@ func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
 	return o.FirewallEnabled
 }
 
-func (o *PutFirewallConfigRequestBody) GetManagedRules() map[string]ManagedRules {
+func (o *PutFirewallConfigRequestBody) GetManagedRules() map[string]any {
 	if o == nil {
 		return nil
 	}
@@ -3114,27 +2969,27 @@ func (o *PutFirewallConfigOwasp) GetUsername() *string {
 	return o.Username
 }
 
-type ActiveManagedRules struct {
+type PutFirewallConfigManagedRules struct {
 	BotProtection *PutFirewallConfigBotProtection `json:"bot_protection,omitempty"`
 	AiBots        *PutFirewallConfigAiBots        `json:"ai_bots,omitempty"`
 	Owasp         *PutFirewallConfigOwasp         `json:"owasp,omitempty"`
 }
 
-func (o *ActiveManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
+func (o *PutFirewallConfigManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
 	if o == nil {
 		return nil
 	}
 	return o.BotProtection
 }
 
-func (o *ActiveManagedRules) GetAiBots() *PutFirewallConfigAiBots {
+func (o *PutFirewallConfigManagedRules) GetAiBots() *PutFirewallConfigAiBots {
 	if o == nil {
 		return nil
 	}
 	return o.AiBots
 }
 
-func (o *ActiveManagedRules) GetOwasp() *PutFirewallConfigOwasp {
+func (o *PutFirewallConfigManagedRules) GetOwasp() *PutFirewallConfigOwasp {
 	if o == nil {
 		return nil
 	}
@@ -3149,11 +3004,11 @@ type Active struct {
 	UpdatedAt       string  `json:"updatedAt"`
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
-	Crs          ActiveCrs                 `json:"crs"`
-	Rules        []ActiveRule              `json:"rules"`
-	Ips          []ActiveIP                `json:"ips"`
-	Changes      []PutFirewallConfigChange `json:"changes"`
-	ManagedRules *ActiveManagedRules       `json:"managedRules,omitempty"`
+	Crs          ActiveCrs                      `json:"crs"`
+	Rules        []ActiveRule                   `json:"rules"`
+	Ips          []ActiveIP                     `json:"ips"`
+	Changes      []PutFirewallConfigChange      `json:"changes"`
+	ManagedRules *PutFirewallConfigManagedRules `json:"managedRules,omitempty"`
 }
 
 func (o *Active) GetOwnerID() string {
@@ -3226,7 +3081,7 @@ func (o *Active) GetChanges() []PutFirewallConfigChange {
 	return o.Changes
 }
 
-func (o *Active) GetManagedRules() *ActiveManagedRules {
+func (o *Active) GetManagedRules() *PutFirewallConfigManagedRules {
 	if o == nil {
 		return nil
 	}

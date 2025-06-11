@@ -35,6 +35,7 @@ import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { Projects } from "./projects.js";
+import { RollingRelease } from "./rollingrelease.js";
 import { Security } from "./security.js";
 import { Teams } from "./teams.js";
 import { User } from "./user.js";
@@ -119,6 +120,11 @@ export class Vercel extends ClientSDK {
   private _environment?: Environment;
   get environment(): Environment {
     return (this._environment ??= new Environment(this._options));
+  }
+
+  private _rollingRelease?: RollingRelease;
+  get rollingRelease(): RollingRelease {
+    return (this._rollingRelease ??= new RollingRelease(this._options));
   }
 
   private _security?: Security;

@@ -46,11 +46,19 @@ let value: UpdateProjectDataCacheResponseBody = {
       "<value 3>",
     ],
   },
-  defaultResourceConfig: {
-    functionDefaultRegions: [
-      "<value 1>",
-      "<value 2>",
+  rollingRelease: {
+    target: "production",
+    stages: [
+      {
+        targetPercentage: 25,
+        requireApproval: false,
+        duration: 600,
+      },
     ],
+    canaryResponseHeader: false,
+  },
+  defaultResourceConfig: {
+    functionDefaultRegions: [],
   },
   targets: {
     "key": {
@@ -115,7 +123,7 @@ let value: UpdateProjectDataCacheResponseBody = {
 | `publicSource`                                                                                                                      | *boolean*                                                                                                                           | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `resourceConfig`                                                                                                                    | [models.UpdateProjectDataCacheResourceConfig](../models/updateprojectdatacacheresourceconfig.md)                                    | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rollbackDescription`                                                                                                               | [models.RollbackDescription](../models/rollbackdescription.md)                                                                      | :heavy_minus_sign:                                                                                                                  | Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback. |
-| `rollingRelease`                                                                                                                    | [models.RollingRelease](../models/rollingrelease.md)                                                                                | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
+| `rollingRelease`                                                                                                                    | [models.RollingRelease](../models/rollingrelease.md)                                                                                | :heavy_minus_sign:                                                                                                                  | Project-level rolling release configuration that defines how deployments should be gradually rolled out                             |
 | `defaultResourceConfig`                                                                                                             | [models.DefaultResourceConfig](../models/defaultresourceconfig.md)                                                                  | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rootDirectory`                                                                                                                     | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `serverlessFunctionRegion`                                                                                                          | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |

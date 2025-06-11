@@ -5734,3 +5734,388 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: certs
+  - workflowId: patchEdgeConfigItems
+    steps:
+      - stepId: test
+        operationId: patchEdgeConfigItems
+        parameters:
+          - name: edgeConfigId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "status": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: edge-config
+  - workflowId: getRollingReleaseConfig
+    steps:
+      - stepId: test
+        operationId: getRollingReleaseConfig
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": {
+                  "target": "production",
+                  "stages": [
+                    {
+                      "targetPercentage": 25,
+                      "requireApproval": false,
+                      "duration": 600
+                    }
+                  ],
+                  "canaryResponseHeader": false
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release
+  - workflowId: deleteRollingReleaseConfig
+    steps:
+      - stepId: test
+        operationId: deleteRollingReleaseConfig
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release
+  - workflowId: updateRollingReleaseConfig
+    steps:
+      - stepId: test
+        operationId: updateRollingReleaseConfig
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release
+  - workflowId: getRollingRelease
+    steps:
+      - stepId: test
+        operationId: getRollingRelease
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": {
+                  "state": "ACTIVE",
+                  "currentDeployment": {
+                    "id": "dpl_abc123",
+                    "name": "my-shop@main",
+                    "url": "my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716206500000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716206800000
+                  },
+                  "canaryDeployment": {
+                    "id": "dpl_def456",
+                    "name": "my-shop@9c7e2f4",
+                    "url": "9c7e2f4-my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716210100000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716210400000
+                  },
+                  "queuedDeploymentId": "dpl_ghi789",
+                  "stages": [
+                    {
+                      "index": 0,
+                      "isFinalStage": false,
+                      "targetPercentage": 5,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 1,
+                      "isFinalStage": false,
+                      "targetPercentage": 25,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 2,
+                      "isFinalStage": false,
+                      "targetPercentage": 60,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 3,
+                      "isFinalStage": true,
+                      "targetPercentage": 100,
+                      "requireApproval": false,
+                      "duration": null
+                    }
+                  ],
+                  "activeStage": {
+                    "index": 1,
+                    "isFinalStage": false,
+                    "targetPercentage": 25,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "nextStage": {
+                    "index": 2,
+                    "isFinalStage": false,
+                    "targetPercentage": 60,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "startedAt": 1716210500000,
+                  "updatedAt": 1716210600000
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release
+  - workflowId: approveRollingReleaseStage
+    steps:
+      - stepId: test
+        operationId: approveRollingReleaseStage
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": {
+                  "state": "ACTIVE",
+                  "currentDeployment": {
+                    "id": "dpl_abc123",
+                    "name": "my-shop@main",
+                    "url": "my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716206500000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716206800000
+                  },
+                  "canaryDeployment": {
+                    "id": "dpl_def456",
+                    "name": "my-shop@9c7e2f4",
+                    "url": "9c7e2f4-my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716210100000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716210400000
+                  },
+                  "queuedDeploymentId": "dpl_ghi789",
+                  "stages": [
+                    {
+                      "index": 0,
+                      "isFinalStage": false,
+                      "targetPercentage": 5,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 1,
+                      "isFinalStage": false,
+                      "targetPercentage": 25,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 2,
+                      "isFinalStage": false,
+                      "targetPercentage": 60,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 3,
+                      "isFinalStage": true,
+                      "targetPercentage": 100,
+                      "requireApproval": false,
+                      "duration": null
+                    }
+                  ],
+                  "activeStage": {
+                    "index": 1,
+                    "isFinalStage": false,
+                    "targetPercentage": 25,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "nextStage": {
+                    "index": 2,
+                    "isFinalStage": false,
+                    "targetPercentage": 60,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "startedAt": 1716210500000,
+                  "updatedAt": 1716210600000
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release
+  - workflowId: completeRollingRelease
+    steps:
+      - stepId: test
+        operationId: completeRollingRelease
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "rollingRelease": {
+                  "state": "ACTIVE",
+                  "currentDeployment": {
+                    "id": "dpl_abc123",
+                    "name": "my-shop@main",
+                    "url": "my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716206500000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716206800000
+                  },
+                  "canaryDeployment": {
+                    "id": "dpl_def456",
+                    "name": "my-shop@9c7e2f4",
+                    "url": "9c7e2f4-my-shop.vercel.app",
+                    "target": "production",
+                    "source": "git",
+                    "createdAt": 1716210100000,
+                    "readyState": "READY",
+                    "readyStateAt": 1716210400000
+                  },
+                  "queuedDeploymentId": "dpl_ghi789",
+                  "stages": [
+                    {
+                      "index": 0,
+                      "isFinalStage": false,
+                      "targetPercentage": 5,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 1,
+                      "isFinalStage": false,
+                      "targetPercentage": 25,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 2,
+                      "isFinalStage": false,
+                      "targetPercentage": 60,
+                      "requireApproval": true,
+                      "duration": null
+                    },
+                    {
+                      "index": 3,
+                      "isFinalStage": true,
+                      "targetPercentage": 100,
+                      "requireApproval": false,
+                      "duration": null
+                    }
+                  ],
+                  "activeStage": {
+                    "index": 1,
+                    "isFinalStage": false,
+                    "targetPercentage": 25,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "nextStage": {
+                    "index": 2,
+                    "isFinalStage": false,
+                    "targetPercentage": 60,
+                    "requireApproval": true,
+                    "duration": null
+                  },
+                  "startedAt": 1716210500000,
+                  "updatedAt": 1716210600000
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release

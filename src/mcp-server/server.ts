@@ -87,6 +87,7 @@ import { tool$edgeConfigGetEdgeConfigs } from "./tools/edgeConfigGetEdgeConfigs.
 import { tool$edgeConfigGetEdgeConfigSchema } from "./tools/edgeConfigGetEdgeConfigSchema.js";
 import { tool$edgeConfigGetEdgeConfigToken } from "./tools/edgeConfigGetEdgeConfigToken.js";
 import { tool$edgeConfigGetEdgeConfigTokens } from "./tools/edgeConfigGetEdgeConfigTokens.js";
+import { tool$edgeConfigPatchEdgeConfigItems } from "./tools/edgeConfigPatchEdgeConfigItems.js";
 import { tool$edgeConfigPatchEdgeConfigSchema } from "./tools/edgeConfigPatchEdgeConfigSchema.js";
 import { tool$edgeConfigUpdateEdgeConfig } from "./tools/edgeConfigUpdateEdgeConfig.js";
 import { tool$environmentCreateCustomEnvironment } from "./tools/environmentCreateCustomEnvironment.js";
@@ -150,6 +151,12 @@ import { tool$projectsUpdateProjectDataCache } from "./tools/projectsUpdateProje
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
+import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
+import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
+import { tool$rollingReleaseDeleteRollingReleaseConfig } from "./tools/rollingReleaseDeleteRollingReleaseConfig.js";
+import { tool$rollingReleaseGetRollingRelease } from "./tools/rollingReleaseGetRollingRelease.js";
+import { tool$rollingReleaseGetRollingReleaseConfig } from "./tools/rollingReleaseGetRollingReleaseConfig.js";
+import { tool$rollingReleaseUpdateRollingReleaseConfig } from "./tools/rollingReleaseUpdateRollingReleaseConfig.js";
 import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
 import { tool$securityGetBypassIp } from "./tools/securityGetBypassIp.js";
@@ -189,7 +196,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.8.0",
+    version: "1.8.1",
   });
 
   const client = new VercelCore({
@@ -306,6 +313,7 @@ export function createMCPServer(deps: {
   tool(tool$edgeConfigUpdateEdgeConfig);
   tool(tool$edgeConfigDeleteEdgeConfig);
   tool(tool$edgeConfigGetEdgeConfigItems);
+  tool(tool$edgeConfigPatchEdgeConfigItems);
   tool(tool$edgeConfigGetEdgeConfigSchema);
   tool(tool$edgeConfigPatchEdgeConfigSchema);
   tool(tool$edgeConfigDeleteEdgeConfigSchema);
@@ -349,6 +357,12 @@ export function createMCPServer(deps: {
   tool(tool$environmentGetCustomEnvironment);
   tool(tool$environmentUpdateCustomEnvironment);
   tool(tool$environmentRemoveCustomEnvironment);
+  tool(tool$rollingReleaseGetRollingReleaseConfig);
+  tool(tool$rollingReleaseDeleteRollingReleaseConfig);
+  tool(tool$rollingReleaseUpdateRollingReleaseConfig);
+  tool(tool$rollingReleaseGetRollingRelease);
+  tool(tool$rollingReleaseApproveRollingReleaseStage);
+  tool(tool$rollingReleaseCompleteRollingRelease);
   tool(tool$securityUpdateAttackChallengeMode);
   tool(tool$securityPutFirewallConfig);
   tool(tool$securityUpdateFirewallConfig);

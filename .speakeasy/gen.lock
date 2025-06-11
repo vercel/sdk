@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 8bd319e96529407a127c450520c3b620
+  docChecksum: d6dff05a8e6378afb0128dab588d0604
   docVersion: 0.0.1
-  speakeasyVersion: 1.560.1
-  generationVersion: 2.625.0
-  releaseVersion: 1.8.0
-  configChecksum: 590af9bb7278bbdc74ca1f777c75ff07
+  speakeasyVersion: 1.561.0
+  generationVersion: 2.628.0
+  releaseVersion: 1.8.1
+  configChecksum: cd2c4b27a299938d5b6eef7ce7f63c28
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -63,6 +63,7 @@ generatedFiles:
   - docs/models/action1.md
   - docs/models/active.md
   - docs/models/activedashboardviews.md
+  - docs/models/activestage.md
   - docs/models/addbypassiprequest.md
   - docs/models/addbypassiprequestbody.md
   - docs/models/addbypassiprequestbody1.md
@@ -100,6 +101,22 @@ generatedFiles:
   - docs/models/anomalies.md
   - docs/models/anomalyalerts.md
   - docs/models/applications.md
+  - docs/models/approverollingreleasestageactivestage.md
+  - docs/models/approverollingreleasestagecanarydeployment.md
+  - docs/models/approverollingreleasestagecurrentdeployment.md
+  - docs/models/approverollingreleasestagenextstage.md
+  - docs/models/approverollingreleasestagereadystate.md
+  - docs/models/approverollingreleasestagerequest.md
+  - docs/models/approverollingreleasestagerequestbody.md
+  - docs/models/approverollingreleasestageresponsebody.md
+  - docs/models/approverollingreleasestagerollingrelease.md
+  - docs/models/approverollingreleasestagerollingreleasereadystate.md
+  - docs/models/approverollingreleasestagerollingreleasesource.md
+  - docs/models/approverollingreleasestagerollingreleasetarget.md
+  - docs/models/approverollingreleasestagesource.md
+  - docs/models/approverollingreleasestagestages.md
+  - docs/models/approverollingreleasestagestate.md
+  - docs/models/approverollingreleasestagetarget.md
   - docs/models/architecture.md
   - docs/models/artifactexistsrequest.md
   - docs/models/artifactqueryrequest.md
@@ -127,6 +144,7 @@ generatedFiles:
   - docs/models/billing.md
   - docs/models/billing1.md
   - docs/models/billing2.md
+  - docs/models/billingitems.md
   - docs/models/billingplan.md
   - docs/models/bitbucket.md
   - docs/models/blobdatatransfer.md
@@ -157,6 +175,7 @@ generatedFiles:
   - docs/models/buydomainrequestbody.md
   - docs/models/buydomainresponse.md
   - docs/models/buydomainresponsebody.md
+  - docs/models/canarydeployment.md
   - docs/models/canceldeploymentaliasassignedat.md
   - docs/models/canceldeploymentaliaserror.md
   - docs/models/canceldeploymentaliaswarning.md
@@ -274,6 +293,22 @@ generatedFiles:
   - docs/models/checksstate.md
   - docs/models/city.md
   - docs/models/cls.md
+  - docs/models/completerollingreleaseactivestage.md
+  - docs/models/completerollingreleasecanarydeployment.md
+  - docs/models/completerollingreleasecurrentdeployment.md
+  - docs/models/completerollingreleasenextstage.md
+  - docs/models/completerollingreleasereadystate.md
+  - docs/models/completerollingreleaserequest.md
+  - docs/models/completerollingreleaserequestbody.md
+  - docs/models/completerollingreleaseresponsebody.md
+  - docs/models/completerollingreleaserollingrelease.md
+  - docs/models/completerollingreleaserollingreleasereadystate.md
+  - docs/models/completerollingreleaserollingreleasesource.md
+  - docs/models/completerollingreleaserollingreleasetarget.md
+  - docs/models/completerollingreleasesource.md
+  - docs/models/completerollingreleasestages.md
+  - docs/models/completerollingreleasestate.md
+  - docs/models/completerollingreleasetarget.md
   - docs/models/computedprojectrole.md
   - docs/models/conclusion.md
   - docs/models/conditiongroup.md
@@ -726,6 +761,7 @@ generatedFiles:
   - docs/models/credentialstype.md
   - docs/models/crons.md
   - docs/models/crs.md
+  - docs/models/currentdeployment.md
   - docs/models/customenvironment.md
   - docs/models/customenvironment1.md
   - docs/models/customenvironment2.md
@@ -765,6 +801,8 @@ generatedFiles:
   - docs/models/deleteintegrationlogdrainrequest.md
   - docs/models/deleteprojectrequest.md
   - docs/models/deleteprojectsprojectidlogspresetsidrequest.md
+  - docs/models/deleterollingreleaseconfigrequest.md
+  - docs/models/deleterollingreleaseconfigresponsebody.md
   - docs/models/deleteteaminvitecoderequest.md
   - docs/models/deleteteaminvitecoderesponsebody.md
   - docs/models/deleteteamreasons.md
@@ -781,6 +819,7 @@ generatedFiles:
   - docs/models/deploymentexpiration.md
   - docs/models/deployments.md
   - docs/models/deploymenttype.md
+  - docs/models/description.md
   - docs/models/details.md
   - docs/models/direction.md
   - docs/models/directory.md
@@ -1357,7 +1396,6 @@ generatedFiles:
   - docs/models/getfirewallconfigjava.md
   - docs/models/getfirewallconfiglfi.md
   - docs/models/getfirewallconfigma.md
-  - docs/models/getfirewallconfigmanagedrules.md
   - docs/models/getfirewallconfigmitigate.md
   - docs/models/getfirewallconfigop.md
   - docs/models/getfirewallconfigphp.md
@@ -1401,6 +1439,7 @@ generatedFiles:
   - docs/models/getinvoiceperiod.md
   - docs/models/getinvoicerequest.md
   - docs/models/getinvoiceresponsebody.md
+  - docs/models/getinvoicestate.md
   - docs/models/getmemberrequest.md
   - docs/models/getmemberresponsebody.md
   - docs/models/getmemberrole.md
@@ -1707,6 +1746,21 @@ generatedFiles:
   - docs/models/getrecordsresponsebody2.md
   - docs/models/getrecordsresponsebodydnstype.md
   - docs/models/getrecordsresponsebodytype.md
+  - docs/models/getrollingreleaseconfigrequest.md
+  - docs/models/getrollingreleaseconfigresponsebody.md
+  - docs/models/getrollingreleaseconfigrollingrelease.md
+  - docs/models/getrollingreleaseconfigstages.md
+  - docs/models/getrollingreleasereadystate.md
+  - docs/models/getrollingreleaserequest.md
+  - docs/models/getrollingreleaseresponsebody.md
+  - docs/models/getrollingreleaserollingrelease.md
+  - docs/models/getrollingreleaserollingreleasereadystate.md
+  - docs/models/getrollingreleaserollingreleasesource.md
+  - docs/models/getrollingreleaserollingreleasetarget.md
+  - docs/models/getrollingreleasesource.md
+  - docs/models/getrollingreleasestages.md
+  - docs/models/getrollingreleasestate.md
+  - docs/models/getrollingreleasetarget.md
   - docs/models/getruntimelogslevel.md
   - docs/models/getruntimelogsrequest.md
   - docs/models/getruntimelogsresponsebody.md
@@ -1838,6 +1892,7 @@ generatedFiles:
   - docs/models/issuecertresponsebody.md
   - docs/models/issuermode.md
   - docs/models/items.md
+  - docs/models/items1.md
   - docs/models/java.md
   - docs/models/job.md
   - docs/models/jobstatus.md
@@ -1917,8 +1972,6 @@ generatedFiles:
   - docs/models/logdrainsvolume.md
   - docs/models/ma.md
   - docs/models/managedrules.md
-  - docs/models/managedrules1.md
-  - docs/models/managedrulesaction.md
   - docs/models/members.md
   - docs/models/membership.md
   - docs/models/metadata.md
@@ -1952,6 +2005,7 @@ generatedFiles:
   - docs/models/next.md
   - docs/models/nextrole.md
   - docs/models/nextrule.md
+  - docs/models/nextstage.md
   - docs/models/nine.md
   - docs/models/nineteen.md
   - docs/models/ninety.md
@@ -1988,6 +2042,10 @@ generatedFiles:
   - docs/models/oldtrustedips.md
   - docs/models/ondemandconcurrencyminutes.md
   - docs/models/one.md
+  - docs/models/one1.md
+  - docs/models/one2.md
+  - docs/models/one3.md
+  - docs/models/onedescription.md
   - docs/models/onehundred.md
   - docs/models/onehundredandeight.md
   - docs/models/onehundredandeighteen.md
@@ -2041,9 +2099,11 @@ generatedFiles:
   - docs/models/onehundredandtwentythree.md
   - docs/models/onehundredandtwentytwo.md
   - docs/models/onehundredandtwo.md
+  - docs/models/oneoperation.md
   - docs/models/onetarget.md
   - docs/models/onetype.md
   - docs/models/op.md
+  - docs/models/operation.md
   - docs/models/options.md
   - docs/models/optionsallowlist.md
   - docs/models/order.md
@@ -2072,6 +2132,11 @@ generatedFiles:
   - docs/models/patchdomainresponsebody1.md
   - docs/models/patchdomainresponsebody2.md
   - docs/models/patchdomainresponsebody3.md
+  - docs/models/patchedgeconfigitems1description.md
+  - docs/models/patchedgeconfigitems1operation.md
+  - docs/models/patchedgeconfigitemsrequest.md
+  - docs/models/patchedgeconfigitemsrequestbody.md
+  - docs/models/patchedgeconfigitemsresponsebody.md
   - docs/models/patchedgeconfigschemarequest.md
   - docs/models/patchedgeconfigschemarequestbody.md
   - docs/models/patchedgeconfigschemaresponsebody.md
@@ -2231,7 +2296,6 @@ generatedFiles:
   - docs/models/putfirewallconfiglfi.md
   - docs/models/putfirewallconfigma.md
   - docs/models/putfirewallconfigmanagedrules.md
-  - docs/models/putfirewallconfigmanagedrulesaction.md
   - docs/models/putfirewallconfigmitigate.md
   - docs/models/putfirewallconfigop.md
   - docs/models/putfirewallconfigowasp.md
@@ -2567,9 +2631,11 @@ generatedFiles:
   - docs/models/responsebodyremotepatterns.md
   - docs/models/responsebodyresult.md
   - docs/models/responsebodyrole.md
+  - docs/models/responsebodyrollingrelease.md
   - docs/models/responsebodyroutes.md
   - docs/models/responsebodysource.md
   - docs/models/responsebodyspeedinsights.md
+  - docs/models/responsebodystages.md
   - docs/models/responsebodystate.md
   - docs/models/responsebodystatus.md
   - docs/models/responsebodytarget.md
@@ -2600,7 +2666,6 @@ generatedFiles:
   - docs/models/routeshas.md
   - docs/models/routeslocale.md
   - docs/models/routesmissing.md
-  - docs/models/rulegroups.md
   - docs/models/rules.md
   - docs/models/runtimecacheread.md
   - docs/models/runtimecachewrite.md
@@ -3192,6 +3257,10 @@ generatedFiles:
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
   - docs/models/updateresourcesecretssecrets.md
+  - docs/models/updaterollingreleaseconfigrequest.md
+  - docs/models/updaterollingreleaseconfigresponsebody.md
+  - docs/models/updaterollingreleaseconfigresponsebody1.md
+  - docs/models/updaterollingreleaseconfigresponsebody2.md
   - docs/models/updateteammemberjoinedfrom.md
   - docs/models/updateteammemberprojects.md
   - docs/models/updateteammemberrequest.md
@@ -3334,6 +3403,7 @@ generatedFiles:
   - docs/sdks/marketplace/README.md
   - docs/sdks/projectmembers/README.md
   - docs/sdks/projects/README.md
+  - docs/sdks/rollingrelease/README.md
   - docs/sdks/security/README.md
   - docs/sdks/teams/README.md
   - docs/sdks/user/README.md
@@ -3385,6 +3455,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1logdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamemembersuid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamerollingreleaseconfig.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1securityfirewallbypass.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1teamsteamid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1teamsteamidinvitesinviteid.go
@@ -3424,6 +3495,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingrelease.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingreleaseconfig.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectiddeploymentsdeploymentidruntimelogs.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
   - src/__tests__/mockserver/internal/handler/pathgetv1securityfirewallbypass.go
@@ -3465,8 +3538,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidcheckscheckid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidintegrationsintegrationconfigurationidresourcesresourceidactionsaction.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1domainsrecordsrecordid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1edgeconfigedgeconfigiditems.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1projectsidornameprotectionbypass.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1projectsidornamerollingreleaseconfig.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1securityfirewallconfig.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1teamsteamidmembersuid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv2teamsteamid.go
@@ -3498,6 +3573,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamedomainsdomainmove.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamerollingreleaseapprovestage.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamerollingreleasecomplete.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidpause.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsprojectidunpause.go
   - src/__tests__/mockserver/internal/handler/pathpostv1securityattackmode.go
@@ -3557,6 +3634,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/addbypassip.go
   - src/__tests__/mockserver/internal/sdk/models/operations/addprojectdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/addprojectmember.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/approverollingreleasestage.go
   - src/__tests__/mockserver/internal/sdk/models/operations/artifactexists.go
   - src/__tests__/mockserver/internal/sdk/models/operations/artifactquery.go
   - src/__tests__/mockserver/internal/sdk/models/operations/assignalias.go
@@ -3564,6 +3642,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/canceldeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/checkdomainprice.go
   - src/__tests__/mockserver/internal/sdk/models/operations/checkdomainstatus.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/completerollingrelease.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createauthtoken.go
@@ -3594,6 +3673,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteprojectsprojectidlogspresetsid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
@@ -3642,6 +3722,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getrollingrelease.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getruntimelogs.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteamaccessrequest.go
@@ -3666,6 +3748,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/listuserevents.go
   - src/__tests__/mockserver/internal/sdk/models/operations/moveprojectdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
@@ -3713,6 +3796,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/updaterecord.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateresourcesecrets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateresourcesecretsbyid.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updaterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateteammember.go
   - src/__tests__/mockserver/internal/sdk/models/operations/uploadartifact.go
   - src/__tests__/mockserver/internal/sdk/models/operations/uploadcert.go
@@ -3743,6 +3827,7 @@ generatedFiles:
   - src/__tests__/mockserver/main.go
   - src/__tests__/projectmembers.test.ts
   - src/__tests__/projects.test.ts
+  - src/__tests__/rollingrelease.test.ts
   - src/__tests__/security.test.ts
   - src/__tests__/teams.test.ts
   - src/__tests__/testclient.ts
@@ -3824,6 +3909,7 @@ generatedFiles:
   - src/funcs/edgeConfigGetEdgeConfigToken.ts
   - src/funcs/edgeConfigGetEdgeConfigTokens.ts
   - src/funcs/edgeConfigGetEdgeConfigs.ts
+  - src/funcs/edgeConfigPatchEdgeConfigItems.ts
   - src/funcs/edgeConfigPatchEdgeConfigSchema.ts
   - src/funcs/edgeConfigUpdateEdgeConfig.ts
   - src/funcs/environmentCreateCustomEnvironment.ts
@@ -3887,6 +3973,12 @@ generatedFiles:
   - src/funcs/projectsUpdateProjectDomain.ts
   - src/funcs/projectsUpdateProjectProtectionBypass.ts
   - src/funcs/projectsVerifyProjectDomain.ts
+  - src/funcs/rollingReleaseApproveRollingReleaseStage.ts
+  - src/funcs/rollingReleaseCompleteRollingRelease.ts
+  - src/funcs/rollingReleaseDeleteRollingReleaseConfig.ts
+  - src/funcs/rollingReleaseGetRollingRelease.ts
+  - src/funcs/rollingReleaseGetRollingReleaseConfig.ts
+  - src/funcs/rollingReleaseUpdateRollingReleaseConfig.ts
   - src/funcs/securityAddBypassIp.ts
   - src/funcs/securityGetActiveAttackStatus.ts
   - src/funcs/securityGetBypassIp.ts
@@ -4020,6 +4112,7 @@ generatedFiles:
   - src/mcp-server/tools/edgeConfigGetEdgeConfigToken.ts
   - src/mcp-server/tools/edgeConfigGetEdgeConfigTokens.ts
   - src/mcp-server/tools/edgeConfigGetEdgeConfigs.ts
+  - src/mcp-server/tools/edgeConfigPatchEdgeConfigItems.ts
   - src/mcp-server/tools/edgeConfigPatchEdgeConfigSchema.ts
   - src/mcp-server/tools/edgeConfigUpdateEdgeConfig.ts
   - src/mcp-server/tools/environmentCreateCustomEnvironment.ts
@@ -4083,6 +4176,12 @@ generatedFiles:
   - src/mcp-server/tools/projectsUpdateProjectDomain.ts
   - src/mcp-server/tools/projectsUpdateProjectProtectionBypass.ts
   - src/mcp-server/tools/projectsVerifyProjectDomain.ts
+  - src/mcp-server/tools/rollingReleaseApproveRollingReleaseStage.ts
+  - src/mcp-server/tools/rollingReleaseCompleteRollingRelease.ts
+  - src/mcp-server/tools/rollingReleaseDeleteRollingReleaseConfig.ts
+  - src/mcp-server/tools/rollingReleaseGetRollingRelease.ts
+  - src/mcp-server/tools/rollingReleaseGetRollingReleaseConfig.ts
+  - src/mcp-server/tools/rollingReleaseUpdateRollingReleaseConfig.ts
   - src/mcp-server/tools/securityAddBypassIp.ts
   - src/mcp-server/tools/securityGetActiveAttackStatus.ts
   - src/mcp-server/tools/securityGetBypassIp.ts
@@ -4116,6 +4215,7 @@ generatedFiles:
   - src/models/addbypassipop.ts
   - src/models/addprojectdomainop.ts
   - src/models/addprojectmemberop.ts
+  - src/models/approverollingreleasestageop.ts
   - src/models/artifactexistsop.ts
   - src/models/artifactqueryop.ts
   - src/models/assignaliasop.ts
@@ -4126,6 +4226,7 @@ generatedFiles:
   - src/models/canceldeploymentop.ts
   - src/models/checkdomainpriceop.ts
   - src/models/checkdomainstatusop.ts
+  - src/models/completerollingreleaseop.ts
   - src/models/createaccessgroupop.ts
   - src/models/createaccessgroupprojectop.ts
   - src/models/createauthtokenop.ts
@@ -4156,6 +4257,7 @@ generatedFiles:
   - src/models/deleteintegrationlogdrainop.ts
   - src/models/deleteprojectop.ts
   - src/models/deleteprojectsprojectidlogspresetsidop.ts
+  - src/models/deleterollingreleaseconfigop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
   - src/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
@@ -4209,6 +4311,8 @@ generatedFiles:
   - src/models/getprojectsop.ts
   - src/models/getprojectsprojectidlogspresetsop.ts
   - src/models/getrecordsop.ts
+  - src/models/getrollingreleaseconfigop.ts
+  - src/models/getrollingreleaseop.ts
   - src/models/getruntimelogsop.ts
   - src/models/getteamaccessrequestop.ts
   - src/models/getteammembersop.ts
@@ -4235,6 +4339,7 @@ generatedFiles:
   - src/models/moveprojectdomainop.ts
   - src/models/pagination.ts
   - src/models/patchdomainop.ts
+  - src/models/patchedgeconfigitemsop.ts
   - src/models/patchedgeconfigschemaop.ts
   - src/models/patchprojectsprojectidlogspresetsidop.ts
   - src/models/patchteamop.ts
@@ -4289,6 +4394,7 @@ generatedFiles:
   - src/models/updaterecordop.ts
   - src/models/updateresourcesecretsbyidop.ts
   - src/models/updateresourcesecretsop.ts
+  - src/models/updaterollingreleaseconfigop.ts
   - src/models/updateteammemberop.ts
   - src/models/uploadartifactop.ts
   - src/models/uploadcertop.ts
@@ -4317,6 +4423,7 @@ generatedFiles:
   - src/sdk/marketplace.ts
   - src/sdk/projectmembers.ts
   - src/sdk/projects.ts
+  - src/sdk/rollingrelease.ts
   - src/sdk/sdk.ts
   - src/sdk/security.ts
   - src/sdk/teams.ts
@@ -4366,7 +4473,7 @@ examples:
         application/json: {"query": "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com", "title": "Request Path", "group": "team"}
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 6926.21, "role": "CONTRIBUTOR", "createdAt": 1063.07, "created": 7437.99}, "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 6926.21, "role": "CONTRIBUTOR", "createdAt": 1063.07, "created": 7437.99}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4392,7 +4499,7 @@ examples:
         application/json: {"title": "Request Path"}
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 5697.43, "role": "VIEWER", "createdAt": 9741.23, "created": 2482.46}, "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 5697.43, "role": "VIEWER", "createdAt": 9741.23, "created": 2482.46}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4965,7 +5072,7 @@ examples:
         application/json: {"disabled": true}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 4537.72, "disabledAt": 4306.04, "updatedAt": 4313.17, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 1954.03, "createdIn": "<value>", "creator": {"email": "Cleveland_Bruen@gmail.com", "uid": "<id>", "username": "Frida_Stamm12"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://well-worn-handful.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": []}, "defaultResourceConfig": {"functionDefaultRegions": []}, "targets": {"key": {"id": "<id>", "createdAt": 5941.68, "createdIn": "<value>", "creator": {"email": "Fay_Herman21@yahoo.com", "uid": "<id>", "username": "Anna.Barrows31"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://scaly-epic.com", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 4537.72, "disabledAt": 4306.04, "updatedAt": 4313.17, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 1954.03, "createdIn": "<value>", "creator": {"email": "Cleveland_Bruen@gmail.com", "uid": "<id>", "username": "Frida_Stamm12"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "CANCELED", "type": "LAMBDAS", "url": "https://well-worn-handful.biz/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": []}, "rollingRelease": {"target": "production", "stages": [{"targetPercentage": 25, "requireApproval": false, "duration": 600}], "canaryResponseHeader": false}, "defaultResourceConfig": {"functionDefaultRegions": []}, "targets": {"key": {"id": "<id>", "createdAt": 5941.68, "createdIn": "<value>", "creator": {"email": "Fay_Herman21@yahoo.com", "uid": "<id>", "username": "Anna.Barrows31"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://scaly-epic.com", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4997,7 +5104,7 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 9025.89, "disabledAt": 7665.94, "updatedAt": 4493.49, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}, {"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}], "name": "<value>", "nodeVersion": "16.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3635.11, "createdIn": "<value>", "creator": {"email": "Leanne_Langworth@gmail.com", "uid": "<id>", "username": "Kurtis_Marks97"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://twin-hydrolyse.com/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 9025.89, "disabledAt": 7665.94, "updatedAt": 4493.49, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}, {"id": "<id>", "createdAt": 79.03, "createdIn": "<value>", "creator": {"email": "Merle_Boehm@yahoo.com", "uid": "<id>", "username": "Wilbert.Conn"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "READY", "type": "LAMBDAS", "url": "https://likable-validity.info", "userId": "<id>"}], "name": "<value>", "nodeVersion": "16.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>"]}, "rollingRelease": {"target": "production", "stages": [{"targetPercentage": 25, "requireApproval": false, "duration": 600}], "canaryResponseHeader": false}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 3635.11, "createdIn": "<value>", "creator": {"email": "Leanne_Langworth@gmail.com", "uid": "<id>", "username": "Kurtis_Marks97"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "ERROR", "type": "LAMBDAS", "url": "https://twin-hydrolyse.com/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5014,7 +5121,7 @@ examples:
         application/json: {"name": "a-project-name"}
       responses:
         "200":
-          application/json: {"accountId": "<id>", "crons": {"enabledAt": 827.44, "disabledAt": 9685.26, "updatedAt": 3884.97, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>", "<value 3>"]}, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}}}
+          application/json: {"accountId": "<id>", "crons": {"enabledAt": 827.44, "disabledAt": 9685.26, "updatedAt": 3884.97, "deploymentId": "<id>", "definitions": []}, "directoryListing": true, "id": "<id>", "latestDeployments": [{"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}, {"id": "<id>", "createdAt": 5470.28, "createdIn": "<value>", "creator": {"email": "Richmond72@yahoo.com", "uid": "<id>", "username": "Ryley1"}, "deploymentHostname": "<value>", "name": "<value>", "plan": "pro", "previewCommentsEnabled": false, "private": true, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://cheap-muscat.name/", "userId": "<id>"}], "name": "<value>", "nodeVersion": "22.x", "resourceConfig": {"functionDefaultRegions": ["<value 1>", "<value 2>", "<value 3>"]}, "rollingRelease": null, "defaultResourceConfig": {"functionDefaultRegions": ["<value 1>"]}, "targets": {"key": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}, "key1": {"id": "<id>", "createdAt": 8270.86, "createdIn": "<value>", "creator": null, "deploymentHostname": "<value>", "name": "<value>", "plan": "hobby", "previewCommentsEnabled": false, "private": false, "readyState": "QUEUED", "type": "LAMBDAS", "url": "https://feline-valley.name/", "userId": "<id>"}}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6877,7 +6984,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6895,7 +7002,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7192,6 +7299,125 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  patchEdgeConfigItems:
+    speakeasy-default-patch-edge-config-items:
+      parameters:
+        path:
+          edgeConfigId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"status": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  getRollingReleaseConfig:
+    speakeasy-default-get-rolling-release-config:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": {"target": "production", "stages": [{"targetPercentage": 25, "requireApproval": false, "duration": 600}], "canaryResponseHeader": false}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  deleteRollingReleaseConfig:
+    speakeasy-default-delete-rolling-release-config:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  updateRollingReleaseConfig:
+    speakeasy-default-update-rolling-release-config:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  getRollingRelease:
+    speakeasy-default-get-rolling-release:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  approveRollingReleaseStage:
+    speakeasy-default-approve-rolling-release-stage:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  completeRollingRelease:
+    speakeasy-default-complete-rolling-release:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -7347,3 +7573,10 @@ generatedTests:
   patch_/projects/{projectId}/logs-presets/{id}: "2025-05-14T14:17:41+01:00"
   getRuntimeLogs: "2025-05-14T14:17:41+01:00"
   post_/domains: "2025-05-16T00:08:53Z"
+  patchEdgeConfigItems: "2025-06-11T22:13:13Z"
+  getRollingReleaseConfig: "2025-06-11T22:13:13Z"
+  deleteRollingReleaseConfig: "2025-06-11T22:13:13Z"
+  updateRollingReleaseConfig: "2025-06-11T22:13:13Z"
+  getRollingRelease: "2025-06-11T22:13:13Z"
+  approveRollingReleaseStage: "2025-06-11T22:13:13Z"
+  completeRollingRelease: "2025-06-11T22:13:13Z"

@@ -16,7 +16,7 @@ export type GetInvoiceRequest = {
 /**
  * Invoice state.
  */
-export const State = {
+export const GetInvoiceState = {
   Pending: "pending",
   Scheduled: "scheduled",
   Invoiced: "invoiced",
@@ -28,7 +28,7 @@ export const State = {
 /**
  * Invoice state.
  */
-export type State = ClosedEnum<typeof State>;
+export type GetInvoiceState = ClosedEnum<typeof GetInvoiceState>;
 
 /**
  * Subscription period for this billing cycle. ISO 8601 timestamps.
@@ -134,7 +134,7 @@ export type GetInvoiceResponseBody = {
   /**
    * Invoice state.
    */
-  state: State;
+  state: GetInvoiceState;
   /**
    * User-readable invoice number.
    */
@@ -239,23 +239,24 @@ export function getInvoiceRequestFromJSON(
 }
 
 /** @internal */
-export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
-  State,
-);
+export const GetInvoiceState$inboundSchema: z.ZodNativeEnum<
+  typeof GetInvoiceState
+> = z.nativeEnum(GetInvoiceState);
 
 /** @internal */
-export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
-  State$inboundSchema;
+export const GetInvoiceState$outboundSchema: z.ZodNativeEnum<
+  typeof GetInvoiceState
+> = GetInvoiceState$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace State$ {
-  /** @deprecated use `State$inboundSchema` instead. */
-  export const inboundSchema = State$inboundSchema;
-  /** @deprecated use `State$outboundSchema` instead. */
-  export const outboundSchema = State$outboundSchema;
+export namespace GetInvoiceState$ {
+  /** @deprecated use `GetInvoiceState$inboundSchema` instead. */
+  export const inboundSchema = GetInvoiceState$inboundSchema;
+  /** @deprecated use `GetInvoiceState$outboundSchema` instead. */
+  export const outboundSchema = GetInvoiceState$outboundSchema;
 }
 
 /** @internal */
@@ -475,7 +476,7 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   test: z.boolean().optional(),
   invoiceId: z.string(),
   externalId: z.string().optional(),
-  state: State$inboundSchema,
+  state: GetInvoiceState$inboundSchema,
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$inboundSchema),
@@ -518,7 +519,7 @@ export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
   test: z.boolean().optional(),
   invoiceId: z.string(),
   externalId: z.string().optional(),
-  state: State$outboundSchema,
+  state: GetInvoiceState$outboundSchema,
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$outboundSchema),

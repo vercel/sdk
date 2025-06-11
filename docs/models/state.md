@@ -1,17 +1,17 @@
 # State
 
-Invoice state.
+Filter by rolling release state
 
 ## Example Usage
 
 ```typescript
-import { State } from "@vercel/sdk/models/getinvoiceop.js";
+import { State } from "@vercel/sdk/models/getrollingreleaseop.js";
 
-let value: State = "pending";
+let value: State = "ACTIVE";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "scheduled" | "invoiced" | "paid" | "notpaid" | "refund_requested" | "refunded"
+"ACTIVE" | "COMPLETE" | "ABORTED"
 ```

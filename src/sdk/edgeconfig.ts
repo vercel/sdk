@@ -16,6 +16,7 @@ import { edgeConfigGetEdgeConfigs } from "../funcs/edgeConfigGetEdgeConfigs.js";
 import { edgeConfigGetEdgeConfigSchema } from "../funcs/edgeConfigGetEdgeConfigSchema.js";
 import { edgeConfigGetEdgeConfigToken } from "../funcs/edgeConfigGetEdgeConfigToken.js";
 import { edgeConfigGetEdgeConfigTokens } from "../funcs/edgeConfigGetEdgeConfigTokens.js";
+import { edgeConfigPatchEdgeConfigItems } from "../funcs/edgeConfigPatchEdgeConfigItems.js";
 import { edgeConfigPatchEdgeConfigSchema } from "../funcs/edgeConfigPatchEdgeConfigSchema.js";
 import { edgeConfigUpdateEdgeConfig } from "../funcs/edgeConfigUpdateEdgeConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -56,6 +57,10 @@ import {
 } from "../models/getedgeconfigsop.js";
 import { GetEdgeConfigTokenRequest } from "../models/getedgeconfigtokenop.js";
 import { GetEdgeConfigTokensRequest } from "../models/getedgeconfigtokensop.js";
+import {
+  PatchEdgeConfigItemsRequest,
+  PatchEdgeConfigItemsResponseBody,
+} from "../models/patchedgeconfigitemsop.js";
 import {
   PatchEdgeConfigSchemaRequest,
   PatchEdgeConfigSchemaResponseBody,
@@ -163,6 +168,23 @@ export class EdgeConfig extends ClientSDK {
     options?: RequestOptions,
   ): Promise<EdgeConfigItem> {
     return unwrapAsync(edgeConfigGetEdgeConfigItems(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Edge Config items in batch
+   *
+   * @remarks
+   * Update multiple Edge Config Items in batch.
+   */
+  async patchEdgeConfigItems(
+    request: PatchEdgeConfigItemsRequest,
+    options?: RequestOptions,
+  ): Promise<PatchEdgeConfigItemsResponseBody> {
+    return unwrapAsync(edgeConfigPatchEdgeConfigItems(
       this,
       request,
       options,

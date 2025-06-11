@@ -129,8 +129,8 @@ test("Vercel Post /Projects/{project Id}/logs Presets", async () => {
     emailDomain: "example.com",
     saml: {
       connection: {
-        status: "linked",
         type: "OktaSAML",
+        status: "linked",
         state: "active",
         connectedAt: 1611796915677,
         lastReceivedWebhookEvent: 1611796915677,
@@ -203,8 +203,8 @@ test("Vercel Patch /Projects/{project Id}/logs Presets/{id}", async () => {
     emailDomain: "example.com",
     saml: {
       connection: {
-        status: "linked",
         type: "OktaSAML",
+        status: "linked",
         state: "active",
         connectedAt: 1611796915677,
         lastReceivedWebhookEvent: 1611796915677,

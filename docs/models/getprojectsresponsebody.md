@@ -55,30 +55,34 @@ let value: GetProjectsResponseBody = {
           "<value 2>",
         ],
       },
-      defaultResourceConfig: {
-        functionDefaultRegions: [
-          "<value 1>",
-          "<value 2>",
+      rollingRelease: {
+        target: "production",
+        stages: [
+          {
+            targetPercentage: 25,
+            requireApproval: false,
+            duration: 600,
+          },
         ],
+        canaryResponseHeader: false,
+      },
+      defaultResourceConfig: {
+        functionDefaultRegions: [],
       },
       targets: {
         "key": {
           id: "<id>",
-          createdAt: 2773.26,
+          createdAt: 9261.58,
           createdIn: "<value>",
-          creator: {
-            email: "Nestor_Osinski-Sporer62@hotmail.com",
-            uid: "<id>",
-            username: "Jaquan14",
-          },
+          creator: null,
           deploymentHostname: "<value>",
           name: "<value>",
-          plan: "hobby",
+          plan: "enterprise",
           previewCommentsEnabled: false,
           private: true,
           readyState: "QUEUED",
           type: "LAMBDAS",
-          url: "https://quixotic-thongs.org/",
+          url: "https://unselfish-millet.name",
           userId: "<id>",
         },
       },

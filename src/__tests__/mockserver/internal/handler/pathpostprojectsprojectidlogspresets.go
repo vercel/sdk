@@ -53,8 +53,8 @@ func testPostProjectsProjectIDLogsPresetsPostProjectsProjectIDLogsPresets0(w htt
 		EmailDomain: types.String("example.com"),
 		Saml: &components.TeamSaml{
 			Connection: &components.TeamConnection{
-				Status:                   "linked",
 				Type:                     "OktaSAML",
+				Status:                   "linked",
 				State:                    "active",
 				ConnectedAt:              1611796915677,
 				LastReceivedWebhookEvent: types.Float64(1611796915677),

@@ -1,13 +1,17 @@
 # ManagedRules
 
-
-## Supported Types
-
-### `models.ManagedRules1`
+## Example Usage
 
 ```typescript
-const value: models.ManagedRules1 = {
-  active: false,
-};
+import { ManagedRules } from "@vercel/sdk/models/getfirewallconfigop.js";
+
+let value: ManagedRules = {};
 ```
 
+## Fields
+
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `botProtection`                                    | [models.BotProtection](../models/botprotection.md) | :heavy_minus_sign:                                 | N/A                                                |
+| `aiBots`                                           | [models.AiBots](../models/aibots.md)               | :heavy_minus_sign:                                 | N/A                                                |
+| `owasp`                                            | [models.Owasp](../models/owasp.md)                 | :heavy_minus_sign:                                 | N/A                                                |

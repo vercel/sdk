@@ -42,16 +42,26 @@ let value: CreateProjectResponseBody = {
       "<value 1>",
     ],
   },
+  rollingRelease: {
+    target: "production",
+    stages: [
+      {
+        targetPercentage: 25,
+        requireApproval: false,
+        duration: 600,
+      },
+    ],
+    canaryResponseHeader: false,
+  },
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
     ],
   },
   targets: {
     "key": {
       id: "<id>",
-      createdAt: 7498.06,
+      createdAt: 8978.12,
       createdIn: "<value>",
       creator: {
         email: "Stephen_Stamm@gmail.com",
@@ -60,12 +70,12 @@ let value: CreateProjectResponseBody = {
       },
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "hobby",
+      plan: "enterprise",
       previewCommentsEnabled: false,
       private: true,
       readyState: "INITIALIZING",
       type: "LAMBDAS",
-      url: "https://grounded-analogy.biz/",
+      url: "https://different-bourgeoisie.net/",
       userId: "<id>",
     },
   },
@@ -115,7 +125,7 @@ let value: CreateProjectResponseBody = {
 | `publicSource`                                                                                                                      | *boolean*                                                                                                                           | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `resourceConfig`                                                                                                                    | [models.CreateProjectProjectsResourceConfig](../models/createprojectprojectsresourceconfig.md)                                      | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rollbackDescription`                                                                                                               | [models.CreateProjectRollbackDescription](../models/createprojectrollbackdescription.md)                                            | :heavy_minus_sign:                                                                                                                  | Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback. |
-| `rollingRelease`                                                                                                                    | [models.CreateProjectRollingRelease](../models/createprojectrollingrelease.md)                                                      | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
+| `rollingRelease`                                                                                                                    | [models.CreateProjectRollingRelease](../models/createprojectrollingrelease.md)                                                      | :heavy_minus_sign:                                                                                                                  | Project-level rolling release configuration that defines how deployments should be gradually rolled out                             |
 | `defaultResourceConfig`                                                                                                             | [models.CreateProjectDefaultResourceConfig](../models/createprojectdefaultresourceconfig.md)                                        | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rootDirectory`                                                                                                                     | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `serverlessFunctionRegion`                                                                                                          | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |

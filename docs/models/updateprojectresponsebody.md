@@ -53,16 +53,28 @@ let value: UpdateProjectResponseBody = {
       "<value 2>",
     ],
   },
+  rollingRelease: {
+    target: "production",
+    stages: [
+      {
+        targetPercentage: 25,
+        requireApproval: false,
+        duration: 600,
+      },
+    ],
+    canaryResponseHeader: false,
+  },
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
   },
   targets: {
     "key": {
       id: "<id>",
-      createdAt: 1118.51,
+      createdAt: 9036.6,
       createdIn: "<value>",
       creator: {
         email: "Josiah94@hotmail.com",
@@ -71,12 +83,12 @@ let value: UpdateProjectResponseBody = {
       },
       deploymentHostname: "<value>",
       name: "<value>",
-      plan: "hobby",
+      plan: "enterprise",
       previewCommentsEnabled: false,
       private: true,
-      readyState: "QUEUED",
+      readyState: "ERROR",
       type: "LAMBDAS",
-      url: "https://excitable-duster.biz/",
+      url: "https://experienced-wriggler.biz/",
       userId: "<id>",
     },
   },
@@ -126,7 +138,7 @@ let value: UpdateProjectResponseBody = {
 | `publicSource`                                                                                                                      | *boolean*                                                                                                                           | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `resourceConfig`                                                                                                                    | [models.UpdateProjectProjectsResourceConfig](../models/updateprojectprojectsresourceconfig.md)                                      | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rollbackDescription`                                                                                                               | [models.UpdateProjectRollbackDescription](../models/updateprojectrollbackdescription.md)                                            | :heavy_minus_sign:                                                                                                                  | Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback. |
-| `rollingRelease`                                                                                                                    | [models.UpdateProjectRollingRelease](../models/updateprojectrollingrelease.md)                                                      | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
+| `rollingRelease`                                                                                                                    | [models.UpdateProjectRollingRelease](../models/updateprojectrollingrelease.md)                                                      | :heavy_minus_sign:                                                                                                                  | Project-level rolling release configuration that defines how deployments should be gradually rolled out                             |
 | `defaultResourceConfig`                                                                                                             | [models.UpdateProjectDefaultResourceConfig](../models/updateprojectdefaultresourceconfig.md)                                        | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
 | `rootDirectory`                                                                                                                     | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |
 | `serverlessFunctionRegion`                                                                                                          | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | N/A                                                                                                                                 |

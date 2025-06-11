@@ -17,7 +17,7 @@ export type Period = {
   end: Date;
 };
 
-export type Items = {
+export type BillingItems = {
   /**
    * Partner's billing plan ID.
    */
@@ -92,7 +92,7 @@ export type Discounts = {
 };
 
 export type Billing2 = {
-  items: Array<Items>;
+  items: Array<BillingItems>;
   discounts?: Array<Discounts> | undefined;
 };
 
@@ -264,24 +264,27 @@ export function periodFromJSON(
 }
 
 /** @internal */
-export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
-  .object({
-    billingPlanId: z.string(),
-    resourceId: z.string().optional(),
-    start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    name: z.string(),
-    details: z.string().optional(),
-    price: z.string(),
-    quantity: z.number(),
-    units: z.string(),
-    total: z.string(),
-  });
+export const BillingItems$inboundSchema: z.ZodType<
+  BillingItems,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  billingPlanId: z.string(),
+  resourceId: z.string().optional(),
+  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  name: z.string(),
+  details: z.string().optional(),
+  price: z.string(),
+  quantity: z.number(),
+  units: z.string(),
+  total: z.string(),
+});
 
 /** @internal */
-export type Items$Outbound = {
+export type BillingItems$Outbound = {
   billingPlanId: string;
   resourceId?: string | undefined;
   start?: string | undefined;
@@ -295,10 +298,10 @@ export type Items$Outbound = {
 };
 
 /** @internal */
-export const Items$outboundSchema: z.ZodType<
-  Items$Outbound,
+export const BillingItems$outboundSchema: z.ZodType<
+  BillingItems$Outbound,
   z.ZodTypeDef,
-  Items
+  BillingItems
 > = z.object({
   billingPlanId: z.string(),
   resourceId: z.string().optional(),
@@ -316,26 +319,26 @@ export const Items$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Items$ {
-  /** @deprecated use `Items$inboundSchema` instead. */
-  export const inboundSchema = Items$inboundSchema;
-  /** @deprecated use `Items$outboundSchema` instead. */
-  export const outboundSchema = Items$outboundSchema;
-  /** @deprecated use `Items$Outbound` instead. */
-  export type Outbound = Items$Outbound;
+export namespace BillingItems$ {
+  /** @deprecated use `BillingItems$inboundSchema` instead. */
+  export const inboundSchema = BillingItems$inboundSchema;
+  /** @deprecated use `BillingItems$outboundSchema` instead. */
+  export const outboundSchema = BillingItems$outboundSchema;
+  /** @deprecated use `BillingItems$Outbound` instead. */
+  export type Outbound = BillingItems$Outbound;
 }
 
-export function itemsToJSON(items: Items): string {
-  return JSON.stringify(Items$outboundSchema.parse(items));
+export function billingItemsToJSON(billingItems: BillingItems): string {
+  return JSON.stringify(BillingItems$outboundSchema.parse(billingItems));
 }
 
-export function itemsFromJSON(
+export function billingItemsFromJSON(
   jsonString: string,
-): SafeParseResult<Items, SDKValidationError> {
+): SafeParseResult<BillingItems, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Items$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items' from JSON`,
+    (x) => BillingItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BillingItems' from JSON`,
   );
 }
 
@@ -415,13 +418,13 @@ export const Billing2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(z.lazy(() => Items$inboundSchema)),
+  items: z.array(z.lazy(() => BillingItems$inboundSchema)),
   discounts: z.array(z.lazy(() => Discounts$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type Billing2$Outbound = {
-  items: Array<Items$Outbound>;
+  items: Array<BillingItems$Outbound>;
   discounts?: Array<Discounts$Outbound> | undefined;
 };
 
@@ -431,7 +434,7 @@ export const Billing2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Billing2
 > = z.object({
-  items: z.array(z.lazy(() => Items$outboundSchema)),
+  items: z.array(z.lazy(() => BillingItems$outboundSchema)),
   discounts: z.array(z.lazy(() => Discounts$outboundSchema)).optional(),
 });
 

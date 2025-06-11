@@ -373,3 +373,23 @@ test("Edge Config Get Edge Config Backups", async () => {
     },
   });
 });
+
+test("Edge Config Patch Edge Config Items", async () => {
+  const testHttpClient = createTestHTTPClient("patchEdgeConfigItems");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.edgeConfig.patchEdgeConfigItems({
+    edgeConfigId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    status: "<value>",
+  });
+});

@@ -9,35 +9,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const ManagedRulesAction = {
-  Log: "log",
-  Challenge: "challenge",
-  Deny: "deny",
-} as const;
-export type ManagedRulesAction = ClosedEnum<typeof ManagedRulesAction>;
-
-export const PutFirewallConfigManagedRulesAction = {
-  Log: "log",
-  Challenge: "challenge",
-  Deny: "deny",
-} as const;
-export type PutFirewallConfigManagedRulesAction = ClosedEnum<
-  typeof PutFirewallConfigManagedRulesAction
->;
-
-export type RuleGroups = {
-  active?: boolean | undefined;
-  action?: PutFirewallConfigManagedRulesAction | undefined;
-};
-
-export type ManagedRules1 = {
-  active: boolean;
-  action?: ManagedRulesAction | undefined;
-  ruleGroups?: { [k: string]: RuleGroups } | undefined;
-};
-
-export type ManagedRules = ManagedRules1;
-
 export const PutFirewallConfigAction = {
   Deny: "deny",
   Log: "log",
@@ -413,7 +384,7 @@ export type Ips = {
 
 export type PutFirewallConfigRequestBody = {
   firewallEnabled: boolean;
-  managedRules?: { [k: string]: ManagedRules1 } | undefined;
+  managedRules?: { [k: string]: any } | undefined;
   /**
    * Custom Ruleset
    */
@@ -928,203 +899,6 @@ export type Active = {
 export type PutFirewallConfigResponseBody = {
   active: Active;
 };
-
-/** @internal */
-export const ManagedRulesAction$inboundSchema: z.ZodNativeEnum<
-  typeof ManagedRulesAction
-> = z.nativeEnum(ManagedRulesAction);
-
-/** @internal */
-export const ManagedRulesAction$outboundSchema: z.ZodNativeEnum<
-  typeof ManagedRulesAction
-> = ManagedRulesAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManagedRulesAction$ {
-  /** @deprecated use `ManagedRulesAction$inboundSchema` instead. */
-  export const inboundSchema = ManagedRulesAction$inboundSchema;
-  /** @deprecated use `ManagedRulesAction$outboundSchema` instead. */
-  export const outboundSchema = ManagedRulesAction$outboundSchema;
-}
-
-/** @internal */
-export const PutFirewallConfigManagedRulesAction$inboundSchema: z.ZodNativeEnum<
-  typeof PutFirewallConfigManagedRulesAction
-> = z.nativeEnum(PutFirewallConfigManagedRulesAction);
-
-/** @internal */
-export const PutFirewallConfigManagedRulesAction$outboundSchema:
-  z.ZodNativeEnum<typeof PutFirewallConfigManagedRulesAction> =
-    PutFirewallConfigManagedRulesAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutFirewallConfigManagedRulesAction$ {
-  /** @deprecated use `PutFirewallConfigManagedRulesAction$inboundSchema` instead. */
-  export const inboundSchema =
-    PutFirewallConfigManagedRulesAction$inboundSchema;
-  /** @deprecated use `PutFirewallConfigManagedRulesAction$outboundSchema` instead. */
-  export const outboundSchema =
-    PutFirewallConfigManagedRulesAction$outboundSchema;
-}
-
-/** @internal */
-export const RuleGroups$inboundSchema: z.ZodType<
-  RuleGroups,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean().optional(),
-  action: PutFirewallConfigManagedRulesAction$inboundSchema.optional(),
-});
-
-/** @internal */
-export type RuleGroups$Outbound = {
-  active?: boolean | undefined;
-  action?: string | undefined;
-};
-
-/** @internal */
-export const RuleGroups$outboundSchema: z.ZodType<
-  RuleGroups$Outbound,
-  z.ZodTypeDef,
-  RuleGroups
-> = z.object({
-  active: z.boolean().optional(),
-  action: PutFirewallConfigManagedRulesAction$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RuleGroups$ {
-  /** @deprecated use `RuleGroups$inboundSchema` instead. */
-  export const inboundSchema = RuleGroups$inboundSchema;
-  /** @deprecated use `RuleGroups$outboundSchema` instead. */
-  export const outboundSchema = RuleGroups$outboundSchema;
-  /** @deprecated use `RuleGroups$Outbound` instead. */
-  export type Outbound = RuleGroups$Outbound;
-}
-
-export function ruleGroupsToJSON(ruleGroups: RuleGroups): string {
-  return JSON.stringify(RuleGroups$outboundSchema.parse(ruleGroups));
-}
-
-export function ruleGroupsFromJSON(
-  jsonString: string,
-): SafeParseResult<RuleGroups, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RuleGroups$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RuleGroups' from JSON`,
-  );
-}
-
-/** @internal */
-export const ManagedRules1$inboundSchema: z.ZodType<
-  ManagedRules1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  action: ManagedRulesAction$inboundSchema.optional(),
-  ruleGroups: z.record(z.lazy(() => RuleGroups$inboundSchema)).optional(),
-});
-
-/** @internal */
-export type ManagedRules1$Outbound = {
-  active: boolean;
-  action?: string | undefined;
-  ruleGroups?: { [k: string]: RuleGroups$Outbound } | undefined;
-};
-
-/** @internal */
-export const ManagedRules1$outboundSchema: z.ZodType<
-  ManagedRules1$Outbound,
-  z.ZodTypeDef,
-  ManagedRules1
-> = z.object({
-  active: z.boolean(),
-  action: ManagedRulesAction$outboundSchema.optional(),
-  ruleGroups: z.record(z.lazy(() => RuleGroups$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManagedRules1$ {
-  /** @deprecated use `ManagedRules1$inboundSchema` instead. */
-  export const inboundSchema = ManagedRules1$inboundSchema;
-  /** @deprecated use `ManagedRules1$outboundSchema` instead. */
-  export const outboundSchema = ManagedRules1$outboundSchema;
-  /** @deprecated use `ManagedRules1$Outbound` instead. */
-  export type Outbound = ManagedRules1$Outbound;
-}
-
-export function managedRules1ToJSON(managedRules1: ManagedRules1): string {
-  return JSON.stringify(ManagedRules1$outboundSchema.parse(managedRules1));
-}
-
-export function managedRules1FromJSON(
-  jsonString: string,
-): SafeParseResult<ManagedRules1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ManagedRules1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManagedRules1' from JSON`,
-  );
-}
-
-/** @internal */
-export const ManagedRules$inboundSchema: z.ZodType<
-  ManagedRules,
-  z.ZodTypeDef,
-  unknown
-> = z.lazy(() => ManagedRules1$inboundSchema);
-
-/** @internal */
-export type ManagedRules$Outbound = ManagedRules1$Outbound;
-
-/** @internal */
-export const ManagedRules$outboundSchema: z.ZodType<
-  ManagedRules$Outbound,
-  z.ZodTypeDef,
-  ManagedRules
-> = z.lazy(() => ManagedRules1$outboundSchema);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManagedRules$ {
-  /** @deprecated use `ManagedRules$inboundSchema` instead. */
-  export const inboundSchema = ManagedRules$inboundSchema;
-  /** @deprecated use `ManagedRules$outboundSchema` instead. */
-  export const outboundSchema = ManagedRules$outboundSchema;
-  /** @deprecated use `ManagedRules$Outbound` instead. */
-  export type Outbound = ManagedRules$Outbound;
-}
-
-export function managedRulesToJSON(managedRules: ManagedRules): string {
-  return JSON.stringify(ManagedRules$outboundSchema.parse(managedRules));
-}
-
-export function managedRulesFromJSON(
-  jsonString: string,
-): SafeParseResult<ManagedRules, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ManagedRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManagedRules' from JSON`,
-  );
-}
 
 /** @internal */
 export const PutFirewallConfigAction$inboundSchema: z.ZodNativeEnum<
@@ -2792,7 +2566,7 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   firewallEnabled: z.boolean(),
-  managedRules: z.record(z.lazy(() => ManagedRules1$inboundSchema)).optional(),
+  managedRules: z.record(z.any()).optional(),
   crs: z.lazy(() => Crs$inboundSchema).optional(),
   rules: z.array(z.lazy(() => PutFirewallConfigRules$inboundSchema)).optional(),
   ips: z.array(z.lazy(() => Ips$inboundSchema)).optional(),
@@ -2801,7 +2575,7 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
 /** @internal */
 export type PutFirewallConfigRequestBody$Outbound = {
   firewallEnabled: boolean;
-  managedRules?: { [k: string]: ManagedRules1$Outbound } | undefined;
+  managedRules?: { [k: string]: any } | undefined;
   crs?: Crs$Outbound | undefined;
   rules?: Array<PutFirewallConfigRules$Outbound> | undefined;
   ips?: Array<Ips$Outbound> | undefined;
@@ -2814,7 +2588,7 @@ export const PutFirewallConfigRequestBody$outboundSchema: z.ZodType<
   PutFirewallConfigRequestBody
 > = z.object({
   firewallEnabled: z.boolean(),
-  managedRules: z.record(z.lazy(() => ManagedRules1$outboundSchema)).optional(),
+  managedRules: z.record(z.any()).optional(),
   crs: z.lazy(() => Crs$outboundSchema).optional(),
   rules: z.array(z.lazy(() => PutFirewallConfigRules$outboundSchema))
     .optional(),

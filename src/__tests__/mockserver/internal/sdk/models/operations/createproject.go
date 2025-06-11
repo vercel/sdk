@@ -4507,13 +4507,13 @@ func (o *CreateProjectRollbackDescription) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
-// CreateProjectStage - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+// CreateProjectStage - An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
 type CreateProjectStage struct {
-	// The percentage of traffic to serve to the new deployment
+	// The percentage of traffic to serve to the canary deployment (0-100)
 	TargetPercentage float64 `json:"targetPercentage"`
-	// Whether or not this stage requires approval to proceed.
+	// Whether or not this stage requires manual approval to proceed
 	RequireApproval *bool `json:"requireApproval,omitempty"`
-	// duration is the total time to serve a stage, at the given targetPercentage.
+	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
 }
 
@@ -4538,10 +4538,11 @@ func (o *CreateProjectStage) GetDuration() *float64 {
 	return o.Duration
 }
 
+// CreateProjectRollingRelease - Project-level rolling release configuration that defines how deployments should be gradually rolled out
 type CreateProjectRollingRelease struct {
 	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
 	Target string `json:"target"`
-	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+	// An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
 	Stages []CreateProjectStage `json:"stages,omitempty"`
 	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
 	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
@@ -8953,7 +8954,8 @@ type CreateProjectResponseBody struct {
 	PublicSource                     *bool                               `json:"publicSource,omitempty"`
 	ResourceConfig                   CreateProjectResourceConfigResponse `json:"resourceConfig"`
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
-	RollbackDescription                  *CreateProjectRollbackDescription             `json:"rollbackDescription,omitempty"`
+	RollbackDescription *CreateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
+	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
 	RollingRelease                       *CreateProjectRollingRelease                  `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                CreateProjectDefaultResourceConfig            `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                       `json:"rootDirectory,omitempty"`

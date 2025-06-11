@@ -1039,30 +1039,33 @@ export type RollbackDescription = {
 };
 
 /**
- * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+ * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
  */
 export type Stages = {
   /**
-   * The percentage of traffic to serve to the new deployment
+   * The percentage of traffic to serve to the canary deployment (0-100)
    */
   targetPercentage: number;
   /**
-   * Whether or not this stage requires approval to proceed.
+   * Whether or not this stage requires manual approval to proceed
    */
   requireApproval?: boolean | undefined;
   /**
-   * duration is the total time to serve a stage, at the given targetPercentage.
+   * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
 };
 
+/**
+ * Project-level rolling release configuration that defines how deployments should be gradually rolled out
+ */
 export type RollingRelease = {
   /**
    * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
    */
   target: string;
   /**
-   * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+   * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
    */
   stages?: Array<Stages> | null | undefined;
   /**
@@ -1928,6 +1931,9 @@ export type UpdateProjectDataCacheResponseBody = {
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
    */
   rollbackDescription?: RollbackDescription | undefined;
+  /**
+   * Project-level rolling release configuration that defines how deployments should be gradually rolled out
+   */
   rollingRelease?: RollingRelease | null | undefined;
   defaultResourceConfig: DefaultResourceConfig;
   rootDirectory?: string | null | undefined;

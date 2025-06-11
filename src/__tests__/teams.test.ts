@@ -168,8 +168,8 @@ test("Teams Get Team", async () => {
     emailDomain: "example.com",
     saml: {
       connection: {
-        status: "linked",
         type: "OktaSAML",
+        status: "linked",
         state: "active",
         connectedAt: 1611796915677,
         lastReceivedWebhookEvent: 1611796915677,
@@ -242,8 +242,8 @@ test("Teams Patch Team", async () => {
     emailDomain: "example.com",
     saml: {
       connection: {
-        status: "linked",
         type: "OktaSAML",
+        status: "linked",
         state: "active",
         connectedAt: 1611796915677,
         lastReceivedWebhookEvent: 1611796915677,

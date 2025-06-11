@@ -379,6 +379,7 @@ run();
 * [updateEdgeConfig](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
 * [deleteEdgeConfig](docs/sdks/edgeconfig/README.md#deleteedgeconfig) - Delete an Edge Config
 * [getEdgeConfigItems](docs/sdks/edgeconfig/README.md#getedgeconfigitems) - Get Edge Config items
+* [patchEdgeConfigItems](docs/sdks/edgeconfig/README.md#patchedgeconfigitems) - Update Edge Config items in batch
 * [getEdgeConfigSchema](docs/sdks/edgeconfig/README.md#getedgeconfigschema) - Get Edge Config schema
 * [patchEdgeConfigSchema](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
 * [deleteEdgeConfigSchema](docs/sdks/edgeconfig/README.md#deleteedgeconfigschema) - Delete an Edge Config's schema
@@ -468,6 +469,15 @@ run();
 * [listPromoteAliases](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
 * [unpauseProject](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
+
+### [rollingRelease](docs/sdks/rollingrelease/README.md)
+
+* [getRollingReleaseConfig](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
+* [deleteRollingReleaseConfig](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
+* [updateRollingReleaseConfig](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
+* [getRollingRelease](docs/sdks/rollingrelease/README.md#getrollingrelease) - Get the active rolling release information for a project
+* [approveRollingReleaseStage](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
+* [completeRollingRelease](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 
 ### [security](docs/sdks/security/README.md)
 
@@ -610,6 +620,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`edgeConfigGetEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#getedgeconfigschema) - Get Edge Config schema
 - [`edgeConfigGetEdgeConfigToken`](docs/sdks/edgeconfig/README.md#getedgeconfigtoken) - Get Edge Config token meta data
 - [`edgeConfigGetEdgeConfigTokens`](docs/sdks/edgeconfig/README.md#getedgeconfigtokens) - Get all tokens of an Edge Config
+- [`edgeConfigPatchEdgeConfigItems`](docs/sdks/edgeconfig/README.md#patchedgeconfigitems) - Update Edge Config items in batch
 - [`edgeConfigPatchEdgeConfigSchema`](docs/sdks/edgeconfig/README.md#patchedgeconfigschema) - Update Edge Config schema
 - [`edgeConfigUpdateEdgeConfig`](docs/sdks/edgeconfig/README.md#updateedgeconfig) - Update an Edge Config
 - [`environmentCreateCustomEnvironment`](docs/sdks/environment/README.md#createcustomenvironment) - Create a custom environment for the current project.
@@ -674,6 +685,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
+- [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
+- [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
+- [`rollingReleaseDeleteRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
+- [`rollingReleaseGetRollingRelease`](docs/sdks/rollingrelease/README.md#getrollingrelease) - Get the active rolling release information for a project
+- [`rollingReleaseGetRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
+- [`rollingReleaseUpdateRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
 - [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
@@ -887,8 +904,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 93 of 167 methods.*
-* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 167 methods.*
+* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 100 of 174 methods.*
+* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 174 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

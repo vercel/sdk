@@ -20,7 +20,7 @@ generation:
     oAuth2PasswordEnabled: false
   tests:
     generateNewTests: true
-    skipResponseBodyAssertions: true
+    skipResponseBodyAssertions: false
 typescript:
   version: 1.7.7
   additionalDependencies:

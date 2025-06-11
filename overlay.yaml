@@ -1543,7 +1543,7 @@ actions:
       x-speakeasy-name-override: updateInstallationIntegrationEdgeConfig
   - target: $["paths"]["/v1/security/firewall/config"]["put"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["managedRules"]["additionalProperties"]["anyOf"][*]
     remove: true
-  - target: $["paths"]["/v1/security/firewall/config"]["put"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["managedRules"]["additionalProperties"]["anyOf"]
+  - target: $["paths"]["/v1/security/firewall/config"]["put"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["managedRules"]["additionalProperties"]["anyOf"][*]
     update:
       - type: object
         properties:
@@ -1572,3 +1572,16 @@ actions:
         required:
           - active
         additionalProperties: false
+  - target: $["paths"]["/v1/edge-config/{edgeConfigId}/items"]["patch"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["items"]["items"]["oneOf"][0]["anyOf"][3]
+    remove: true
+  - target: $["paths"]["/v1/edge-config/{edgeConfigId}/items"]["patch"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["items"]["items"]["oneOf"][0]["anyOf"][3]
+    update:
+      - type: object
+        properties:
+          operation:
+            type: string
+            enum:
+              - delete
+        required:
+          - operation
+          - key

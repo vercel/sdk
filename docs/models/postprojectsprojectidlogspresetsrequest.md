@@ -7,12 +7,6 @@ import { PostProjectsProjectIdLogsPresetsRequest } from "@vercel/sdk/models/post
 
 let value: PostProjectsProjectIdLogsPresetsRequest = {
   projectId: "<id>",
-  requestBody: {
-    query:
-      "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com",
-    title: "Request Path",
-    group: "team",
-  },
 };
 ```
 

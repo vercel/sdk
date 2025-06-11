@@ -7,9 +7,7 @@ import { Microfrontends2 } from "@vercel/sdk/models/userevent.js";
 
 let value: Microfrontends2 = {
   updatedAt: 8437.65,
-  groupIds: [
-    "<value>",
-  ],
+  groupIds: [],
   enabled: false,
 };
 ```

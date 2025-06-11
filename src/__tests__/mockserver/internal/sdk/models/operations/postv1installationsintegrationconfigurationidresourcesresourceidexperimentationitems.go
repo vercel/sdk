@@ -8,17 +8,17 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type Category string
+type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory string
 
 const (
-	CategoryExperiment Category = "experiment"
-	CategoryFlag       Category = "flag"
+	PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategoryExperiment PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory = "experiment"
+	PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategoryFlag       PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory = "flag"
 )
 
-func (e Category) ToPointer() *Category {
+func (e PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory) ToPointer() *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory {
 	return &e
 }
-func (e *Category) UnmarshalJSON(data []byte) error {
+func (e *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,82 +27,82 @@ func (e *Category) UnmarshalJSON(data []byte) error {
 	case "experiment":
 		fallthrough
 	case "flag":
-		*e = Category(v)
+		*e = PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Category: %v", v)
+		return fmt.Errorf("invalid value for PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory: %v", v)
 	}
 }
 
-type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems struct {
-	ID          string    `json:"id"`
-	Slug        string    `json:"slug"`
-	Origin      string    `json:"origin"`
-	Category    *Category `json:"category,omitempty"`
-	Name        *string   `json:"name,omitempty"`
-	Description *string   `json:"description,omitempty"`
-	IsArchived  *bool     `json:"isArchived,omitempty"`
-	CreatedAt   *float64  `json:"createdAt,omitempty"`
-	UpdatedAt   *float64  `json:"updatedAt,omitempty"`
+type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem struct {
+	ID          string                                                                                        `json:"id"`
+	Slug        string                                                                                        `json:"slug"`
+	Origin      string                                                                                        `json:"origin"`
+	Category    *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory `json:"category,omitempty"`
+	Name        *string                                                                                       `json:"name,omitempty"`
+	Description *string                                                                                       `json:"description,omitempty"`
+	IsArchived  *bool                                                                                         `json:"isArchived,omitempty"`
+	CreatedAt   *float64                                                                                      `json:"createdAt,omitempty"`
+	UpdatedAt   *float64                                                                                      `json:"updatedAt,omitempty"`
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetID() string {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetSlug() string {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetOrigin() string {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetOrigin() string {
 	if o == nil {
 		return ""
 	}
 	return o.Origin
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetCategory() *Category {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetCategory() *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsCategory {
 	if o == nil {
 		return nil
 	}
 	return o.Category
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetName() *string {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetDescription() *string {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetIsArchived() *bool {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetIsArchived() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsArchived
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetCreatedAt() *float64 {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems) GetUpdatedAt() *float64 {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -110,12 +110,12 @@ func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 }
 
 type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody struct {
-	Items []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems `json:"items"`
+	Items []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem `json:"items"`
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody) GetItems() []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody) GetItems() []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem {
 	if o == nil {
-		return []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItems{}
+		return []PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItem{}
 	}
 	return o.Items
 }

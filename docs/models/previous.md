@@ -7,7 +7,7 @@ import { Previous } from "@vercel/sdk/models/userevent.js";
 
 let value: Previous = {
   enabled: false,
-  totpVerified: false,
+  totpVerified: true,
 };
 ```
 

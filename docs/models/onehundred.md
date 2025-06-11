@@ -11,14 +11,15 @@ let value: OneHundred = {
   budget: {
     budgetItem: {
       type: "fixed",
-      fixedBudget: 7642.14,
+      fixedBudget: 3089.34,
       previousSpend: [
-        7073.71,
+        8881.12,
       ],
       notifiedAt: [
-        7851.11,
+        6992.68,
+        7286.47,
       ],
-      createdAt: 804.65,
+      createdAt: 3556.79,
       isActive: false,
       teamId: "<id>",
       id: "<id>",

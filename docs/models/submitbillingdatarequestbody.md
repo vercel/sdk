@@ -17,8 +17,8 @@ let value: SubmitBillingDataRequestBody = {
       {
         billingPlanId: "<id>",
         name: "<value>",
-        price: "530.99",
-        quantity: 1553.68,
+        price: "664.25",
+        quantity: 5861.41,
         units: "<value>",
         total: "<value>",
       },
@@ -27,10 +27,10 @@ let value: SubmitBillingDataRequestBody = {
   usage: [
     {
       name: "<value>",
-      type: "interval",
+      type: "rate",
       units: "<value>",
-      dayValue: 4779.38,
-      periodValue: 7753.8,
+      dayValue: 7874.4,
+      periodValue: 8608.64,
     },
   ],
 };

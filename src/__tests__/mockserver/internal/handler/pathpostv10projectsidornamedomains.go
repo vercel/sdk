@@ -50,7 +50,7 @@ func testAddProjectDomainAddProjectDomain0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.AddProjectDomainResponseBody{
+	var respBody *operations.AddProjectDomainResponseBody = &operations.AddProjectDomainResponseBody{
 		Name:      "<value>",
 		ApexName:  "<value>",
 		ProjectID: "<id>",

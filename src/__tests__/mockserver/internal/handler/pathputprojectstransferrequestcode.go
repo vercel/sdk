@@ -50,7 +50,7 @@ func testAcceptProjectTransferRequestAcceptProjectTransferRequest0(w http.Respon
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.AcceptProjectTransferRequestResponseBody{}
+	var respBody *operations.AcceptProjectTransferRequestResponseBody = &operations.AcceptProjectTransferRequestResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

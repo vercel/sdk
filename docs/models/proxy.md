@@ -11,9 +11,9 @@ let value: Proxy = {
   host: "elliptical-integer.org",
   path: "/var/mail",
   userAgent: [
-    "<value>",
+    "<value 1>",
   ],
-  referer: "hidden-longboat.name",
+  referer: "multicolored-lawmaker.net",
   region: "<value>",
 };
 ```

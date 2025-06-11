@@ -10,18 +10,18 @@ let value: UpdateProjectTargets = {
   createdAt: 9376.19,
   createdIn: "<value>",
   creator: {
-    email: "Una44@gmail.com",
+    email: "Josiah94@hotmail.com",
     uid: "<id>",
-    username: "Sydnie31",
+    username: "Junior.Strosin66",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "pro",
+  plan: "enterprise",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "QUEUED",
+  readyState: "CANCELED",
   type: "LAMBDAS",
-  url: "https://weighty-declaration.com",
+  url: "https://brilliant-label.name/",
   userId: "<id>",
 };
 ```

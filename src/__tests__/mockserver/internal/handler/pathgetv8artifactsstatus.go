@@ -45,8 +45,8 @@ func testStatusStatus0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.StatusResponseBody{
-		Status: operations.StatusStatusEnabled,
+	var respBody *operations.StatusResponseBody = &operations.StatusResponseBody{
+		Status: operations.ArtifactsStatusOverLimit,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -7,9 +7,7 @@ import { UpdateProjectDataCacheMicrofrontends2 } from "@vercel/sdk/models/update
 
 let value: UpdateProjectDataCacheMicrofrontends2 = {
   updatedAt: 6729.07,
-  groupIds: [
-    "<value>",
-  ],
+  groupIds: [],
   enabled: false,
 };
 ```

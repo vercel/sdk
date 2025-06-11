@@ -46,10 +46,10 @@ func testListAccessGroupProjectsListAccessGroupProjects0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ListAccessGroupProjectsResponseBody{
-		Projects: []operations.ListAccessGroupProjectsProjects{},
+	var respBody *operations.ListAccessGroupProjectsResponseBody = &operations.ListAccessGroupProjectsResponseBody{
+		Projects: []operations.ListAccessGroupProjectsProject{},
 		Pagination: operations.ListAccessGroupProjectsPagination{
-			Count: 7604.02,
+			Count: 2941.35,
 			Next:  types.String("<value>"),
 		},
 	}

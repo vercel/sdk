@@ -6,11 +6,7 @@
 import { UpdateProjectDataCacheOptionsAllowlist } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: UpdateProjectDataCacheOptionsAllowlist = {
-  paths: [
-    {
-      value: "<value>",
-    },
-  ],
+  paths: [],
 };
 ```
 

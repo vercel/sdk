@@ -46,20 +46,66 @@ func testListDeploymentFilesListDeploymentFiles0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []components.FileTree{
+	var respBody []components.FileTree = []components.FileTree{
 		components.FileTree{
-			Name:        "my-file.json",
-			Type:        components.TypeFile,
-			UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			Name: "my-file.json",
+			Type: components.FileTreeTypeFile,
+			UID:  types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			Children: []components.FileTree{
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+			},
 			ContentType: types.String("application/json"),
-			Mode:        956.43,
+			Mode:        6417.18,
 		},
 		components.FileTree{
-			Name:        "my-file.json",
-			Type:        components.TypeFile,
-			UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			Name: "my-file.json",
+			Type: components.FileTreeTypeFile,
+			UID:  types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+			Children: []components.FileTree{
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+				components.FileTree{
+					Name:        "my-file.json",
+					Type:        components.FileTreeTypeFile,
+					UID:         types.String("2d4aad419917f15b1146e9e03ddc9bb31747e4d0"),
+					ContentType: types.String("application/json"),
+					Mode:        7131.4,
+				},
+			},
 			ContentType: types.String("application/json"),
-			Mode:        1805.56,
+			Mode:        6417.18,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

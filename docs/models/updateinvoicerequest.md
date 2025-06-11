@@ -8,11 +8,6 @@ import { UpdateInvoiceRequest } from "@vercel/sdk/models/updateinvoiceop.js";
 let value: UpdateInvoiceRequest = {
   integrationConfigurationId: "<id>",
   invoiceId: "<id>",
-  requestBody: {
-    action: "refund",
-    reason: "<value>",
-    total: "<value>",
-  },
 };
 ```
 

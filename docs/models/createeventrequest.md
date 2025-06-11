@@ -7,11 +7,6 @@ import { CreateEventRequest } from "@vercel/sdk/models/createeventop.js";
 
 let value: CreateEventRequest = {
   integrationConfigurationId: "<id>",
-  requestBody: {
-    event: {
-      type: "installation.updated",
-    },
-  },
 };
 ```
 

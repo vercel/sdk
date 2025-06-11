@@ -45,7 +45,7 @@ func testDeleteTeamInviteCodeDeleteTeamInviteCode0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.DeleteTeamInviteCodeResponseBody{
+	var respBody *operations.DeleteTeamInviteCodeResponseBody = &operations.DeleteTeamInviteCodeResponseBody{
 		ID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

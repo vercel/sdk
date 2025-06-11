@@ -12,9 +12,9 @@ let value: GetProjectsResponseBody = {
     {
       accountId: "<id>",
       crons: {
-        enabledAt: 8591.13,
-        disabledAt: 6356.32,
-        updatedAt: 1609.95,
+        enabledAt: 8873.52,
+        disabledAt: null,
+        updatedAt: 4201.43,
         deploymentId: "<id>",
         definitions: [
           {
@@ -29,21 +29,21 @@ let value: GetProjectsResponseBody = {
       latestDeployments: [
         {
           id: "<id>",
-          createdAt: 2186.2,
+          createdAt: 5974.19,
           createdIn: "<value>",
           creator: {
-            email: "Luciano.Lueilwitz68@yahoo.com",
+            email: "Tanya.Stanton64@gmail.com",
             uid: "<id>",
-            username: "Kattie79",
+            username: "Mary.Murphy24",
           },
           deploymentHostname: "<value>",
           name: "<value>",
-          plan: "pro",
+          plan: "enterprise",
           previewCommentsEnabled: false,
-          private: false,
-          readyState: "READY",
+          private: true,
+          readyState: "QUEUED",
           type: "LAMBDAS",
-          url: "https://alive-moment.name/",
+          url: "https://humiliating-resolve.name",
           userId: "<id>",
         },
       ],
@@ -51,32 +51,34 @@ let value: GetProjectsResponseBody = {
       nodeVersion: "20.x",
       resourceConfig: {
         functionDefaultRegions: [
-          "<value>",
+          "<value 1>",
+          "<value 2>",
         ],
       },
       defaultResourceConfig: {
         functionDefaultRegions: [
-          "<value>",
+          "<value 1>",
+          "<value 2>",
         ],
       },
       targets: {
         "key": {
           id: "<id>",
-          createdAt: 1603.18,
+          createdAt: 2773.26,
           createdIn: "<value>",
           creator: {
-            email: "Bridie18@gmail.com",
+            email: "Nestor_Osinski-Sporer62@hotmail.com",
             uid: "<id>",
-            username: "Izaiah_Hayes93",
+            username: "Jaquan14",
           },
           deploymentHostname: "<value>",
           name: "<value>",
           plan: "hobby",
           previewCommentsEnabled: false,
-          private: false,
-          readyState: "BUILDING",
+          private: true,
+          readyState: "QUEUED",
           type: "LAMBDAS",
-          url: "https://suburban-calculus.name",
+          url: "https://quixotic-thongs.org/",
           userId: "<id>",
         },
       },

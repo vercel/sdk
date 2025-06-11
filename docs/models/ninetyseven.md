@@ -8,15 +8,10 @@ The payload of the event, if requested.
 import { NinetySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetySeven = {
-  scalingRules: {
-    "key": {
-      min: 4466.53,
-      max: 1518.84,
-    },
-  },
-  min: 8866.64,
-  max: 2316.51,
-  url: "https://guilty-fort.net/",
+  scalingRules: {},
+  min: 1518.84,
+  max: 8866.64,
+  url: "https://equatorial-follower.info/",
 };
 ```
 

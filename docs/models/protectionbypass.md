@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.ProtectionBypass1 = {
-  createdAt: 1728.56,
+  createdAt: 5989.52,
   createdBy: "<value>",
   scope: "integration-automation-bypass",
   integrationId: "<id>",
@@ -19,7 +19,7 @@ const value: models.ProtectionBypass1 = {
 
 ```typescript
 const value: models.ProtectionBypass2 = {
-  createdAt: 8694.65,
+  createdAt: 5425.95,
   createdBy: "<value>",
   scope: "automation-bypass",
 };

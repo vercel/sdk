@@ -50,8 +50,8 @@ func testRemoveBypassIPRemoveBypassIp0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveBypassIPResponseBody{
-		Ok: true,
+	var respBody *operations.RemoveBypassIPResponseBody = &operations.RemoveBypassIPResponseBody{
+		Ok: false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

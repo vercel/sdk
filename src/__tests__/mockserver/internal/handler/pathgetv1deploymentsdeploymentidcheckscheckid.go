@@ -45,15 +45,15 @@ func testGetCheckGetCheck0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetCheckResponseBody{
+	var respBody *operations.GetCheckResponseBody = &operations.GetCheckResponseBody{
 		ID:            "<id>",
 		Name:          "<value>",
-		Status:        operations.GetCheckStatusCompleted,
+		Status:        operations.GetCheckStatusRunning,
 		Blocking:      true,
 		IntegrationID: "<id>",
 		DeploymentID:  "<id>",
-		CreatedAt:     2039.14,
-		UpdatedAt:     676.34,
+		CreatedAt:     6704.13,
+		UpdatedAt:     5470.22,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

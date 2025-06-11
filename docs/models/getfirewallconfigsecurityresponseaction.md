@@ -11,5 +11,5 @@ let value: GetFirewallConfigSecurityResponseAction = "log";
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge"
+"deny" | "log"
 ```

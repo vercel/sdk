@@ -90,8 +90,8 @@ const (
 )
 
 type GetTeamAccessRequestGitUserID struct {
-	Str    *string
-	Number *float64
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
 
 	Type GetTeamAccessRequestGitUserIDType
 }

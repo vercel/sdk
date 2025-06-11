@@ -8,7 +8,7 @@ Session Fixation Attack - Prevent unauthorized takeover of user sessions by enfo
 import { Sf } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Sf = {
-  active: false,
+  active: true,
   action: "deny",
 };
 ```

@@ -10,9 +10,7 @@ import {
 let value:
   PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody =
     {
-      data: {
-        "key": "<value>",
-      },
+      data: {},
     };
 ```
 

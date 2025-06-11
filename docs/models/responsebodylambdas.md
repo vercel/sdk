@@ -8,12 +8,7 @@ A partial representation of a Build used by the deployment endpoint.
 import { ResponseBodyLambdas } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyLambdas = {
-  output: [
-    {
-      path: "/lost+found",
-      functionName: "<value>",
-    },
-  ],
+  output: [],
 };
 ```
 

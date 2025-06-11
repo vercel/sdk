@@ -6,22 +6,22 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// Reasons - An object describing the reason why the team is being deleted.
-type Reasons struct {
+// DeleteTeamReason - An object describing the reason why the team is being deleted.
+type DeleteTeamReason struct {
 	// Idenitifier slug of the reason why the team is being deleted.
 	Slug string `json:"slug"`
 	// Description of the reason why the team is being deleted.
 	Description string `json:"description"`
 }
 
-func (o *Reasons) GetSlug() string {
+func (o *DeleteTeamReason) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *Reasons) GetDescription() string {
+func (o *DeleteTeamReason) GetDescription() string {
 	if o == nil {
 		return ""
 	}
@@ -30,10 +30,10 @@ func (o *Reasons) GetDescription() string {
 
 type DeleteTeamRequestBody struct {
 	// Optional array of objects that describe the reason why the team is being deleted.
-	Reasons []Reasons `json:"reasons,omitempty"`
+	Reasons []DeleteTeamReason `json:"reasons,omitempty"`
 }
 
-func (o *DeleteTeamRequestBody) GetReasons() []Reasons {
+func (o *DeleteTeamRequestBody) GetReasons() []DeleteTeamReason {
 	if o == nil {
 		return nil
 	}

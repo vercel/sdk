@@ -10,8 +10,8 @@ const value: models.GetDeploymentCustomEnvironmentDeployments1 = {
   id: "<id>",
   slug: "<value>",
   type: "production",
-  createdAt: 4388.2,
-  updatedAt: 6491.13,
+  createdAt: 7799.26,
+  updatedAt: 1685.64,
 };
 ```
 

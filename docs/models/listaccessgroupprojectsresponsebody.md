@@ -6,17 +6,9 @@
 import { ListAccessGroupProjectsResponseBody } from "@vercel/sdk/models/listaccessgroupprojectsop.js";
 
 let value: ListAccessGroupProjectsResponseBody = {
-  projects: [
-    {
-      projectId: "<id>",
-      role: "PROJECT_DEVELOPER",
-      createdAt: "1715258543384",
-      updatedAt: "1735651326469",
-      project: {},
-    },
-  ],
+  projects: [],
   pagination: {
-    count: 2185.28,
+    count: 3521.35,
     next: "<value>",
   },
 };

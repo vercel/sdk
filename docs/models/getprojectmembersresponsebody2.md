@@ -8,19 +8,7 @@ Paginated list of members for the project.
 import { GetProjectMembersResponseBody2 } from "@vercel/sdk/models/getprojectmembersop.js";
 
 let value: GetProjectMembersResponseBody2 = {
-  members: [
-    {
-      avatar: "123a6c5209bc3778245d011443644c8d27dc2c50",
-      email: "jane.doe@example.com",
-      role: "ADMIN",
-      computedProjectRole: "ADMIN",
-      uid: "zTuNVUXEAvvnNN3IaqinkyMw",
-      username: "jane-doe",
-      name: "Jane Doe",
-      createdAt: 1588720733602,
-      teamRole: "CONTRIBUTOR",
-    },
-  ],
+  members: [],
   pagination: {
     hasNext: false,
     count: 20,

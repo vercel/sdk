@@ -14,8 +14,8 @@ const value: models.PatchUrlProtectionBypassRequestBody1 = {};
 ```typescript
 const value: models.PatchUrlProtectionBypassRequestBody2 = {
   scope: {
-    email: "Roger_Lesch@yahoo.com",
-    access: "granted",
+    userId: "<id>",
+    access: "denied",
   },
 };
 ```

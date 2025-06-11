@@ -9,7 +9,8 @@ let value: GetDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

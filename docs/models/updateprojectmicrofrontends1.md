@@ -8,9 +8,10 @@ import { UpdateProjectMicrofrontends1 } from "@vercel/sdk/models/updateprojectop
 let value: UpdateProjectMicrofrontends1 = {
   updatedAt: 5290.64,
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 

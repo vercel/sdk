@@ -6,7 +6,15 @@
 import { UpdateProjectDataCacheManagedRules } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: UpdateProjectDataCacheManagedRules = {
-  active: false,
+  botFilter: {
+    active: false,
+  },
+  aiBots: {
+    active: true,
+  },
+  owasp: {
+    active: false,
+  },
 };
 ```
 
@@ -14,5 +22,6 @@ let value: UpdateProjectDataCacheManagedRules = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `active`                                                                         | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `action`                                                                         | [models.UpdateProjectDataCacheAction](../models/updateprojectdatacacheaction.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `botFilter`                                                                      | [models.BotFilter](../models/botfilter.md)                                       | :heavy_check_mark:                                                               | N/A                                                                              |
+| `aiBots`                                                                         | [models.UpdateProjectDataCacheAiBots](../models/updateprojectdatacacheaibots.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `owasp`                                                                          | [models.UpdateProjectDataCacheOwasp](../models/updateprojectdatacacheowasp.md)   | :heavy_check_mark:                                                               | N/A                                                                              |

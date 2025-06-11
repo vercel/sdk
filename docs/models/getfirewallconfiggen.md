@@ -8,8 +8,8 @@ Generic Attack - Provide broad protection from various undefined or novel attack
 import { GetFirewallConfigGen } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigGen = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

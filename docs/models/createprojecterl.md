@@ -9,9 +9,7 @@ let value: CreateProjectErl = {
   algo: "fixed_window",
   window: 1092.29,
   limit: 8175.34,
-  keys: [
-    "<value>",
-  ],
+  keys: [],
 };
 ```
 

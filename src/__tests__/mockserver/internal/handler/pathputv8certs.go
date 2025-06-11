@@ -50,14 +50,15 @@ func testUploadCertUploadCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UploadCertResponseBody{
+	var respBody *operations.UploadCertResponseBody = &operations.UploadCertResponseBody{
 		ID:        "<id>",
-		CreatedAt: 9219.92,
-		ExpiresAt: 5530.55,
+		CreatedAt: 5621.19,
+		ExpiresAt: 3778.47,
 		AutoRenew: true,
 		Cns: []string{
-			"<value>",
-			"<value>",
+			"<value 1>",
+			"<value 2>",
+			"<value 3>",
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

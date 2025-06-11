@@ -45,17 +45,17 @@ func testGetRuntimeLogsGetRuntimeLogs0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetRuntimeLogsResponseBody{
+	var respBody *operations.GetRuntimeLogsResponseBody = &operations.GetRuntimeLogsResponseBody{
 		Level:              operations.GetRuntimeLogsLevelError,
 		Message:            "<value>",
 		RowID:              "<id>",
 		Source:             operations.GetRuntimeLogsSourceServerless,
-		TimestampInMs:      5218.65,
-		Domain:             "putrid-tenement.info",
-		MessageTruncated:   false,
+		TimestampInMs:      3529.38,
+		Domain:             "tragic-larva.biz",
+		MessageTruncated:   true,
 		RequestMethod:      "<value>",
 		RequestPath:        "<value>",
-		ResponseStatusCode: 4823.11,
+		ResponseStatusCode: 5431.32,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -4,9 +4,9 @@
 
 import { authenticationCreateAuthToken } from "../funcs/authenticationCreateAuthToken.js";
 import { authenticationDeleteAuthToken } from "../funcs/authenticationDeleteAuthToken.js";
-import { authenticationExchangeSsoToken } from "../funcs/authenticationExchangeSsoToken.js";
 import { authenticationGetAuthToken } from "../funcs/authenticationGetAuthToken.js";
 import { authenticationListAuthTokens } from "../funcs/authenticationListAuthTokens.js";
+import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateAuthTokenRequest,
@@ -38,7 +38,7 @@ export class Authentication extends ClientSDK {
     request: ExchangeSsoTokenRequestBody,
     options?: RequestOptions,
   ): Promise<ExchangeSsoTokenResponseBody> {
-    return unwrapAsync(authenticationExchangeSsoToken(
+    return unwrapAsync(marketplaceExchangeSsoToken(
       this,
       request,
       options,

@@ -26,7 +26,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -55,7 +54,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 

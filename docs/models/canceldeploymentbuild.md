@@ -7,7 +7,9 @@ import { CancelDeploymentBuild } from "@vercel/sdk/models/canceldeploymentop.js"
 
 let value: CancelDeploymentBuild = {
   env: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

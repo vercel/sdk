@@ -14,7 +14,7 @@ let value: GetDeploymentGitRepo3 = {
   path: "/usr/include",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "team",
 };
 ```

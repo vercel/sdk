@@ -8,13 +8,13 @@
 ```typescript
 const value: models.CancelDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 6152.38,
+  projectId: 7174.84,
   type: "gitlab",
-  url: "https://complicated-swing.net/",
-  path: "/home",
+  url: "https://spanish-strategy.com",
+  path: "/usr/ports",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "team",
 };
 ```
@@ -25,10 +25,10 @@ const value: models.CancelDeploymentGitRepo1 = {
 const value: models.CancelDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 8167.36,
+  repoId: 8261.61,
   type: "github",
-  repoOwnerId: 1412.53,
-  path: "/etc/periodic",
+  repoOwnerId: 2748.76,
+  path: "/rescue",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
@@ -45,11 +45,11 @@ const value: models.CancelDeploymentGitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/etc/ppp",
+  path: "/proc",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
-  ownerType: "user",
+  private: true,
+  ownerType: "team",
 };
 ```
 

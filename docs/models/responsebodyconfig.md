@@ -10,9 +10,9 @@ import { ResponseBodyConfig } from "@vercel/sdk/models/getdeploymentop.js";
 let value: ResponseBodyConfig = {
   functionType: "standard",
   functionMemoryType: "standard",
-  functionTimeout: 862.25,
+  functionTimeout: null,
   secureComputePrimaryRegion: "<value>",
-  secureComputeFallbackRegion: "<value>",
+  secureComputeFallbackRegion: null,
 };
 ```
 

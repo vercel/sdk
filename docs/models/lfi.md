@@ -8,8 +8,8 @@ Local File Inclusion Attack - Prevent unauthorized access to local files through
 import { Lfi } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Lfi = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

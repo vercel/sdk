@@ -15,7 +15,7 @@ const value: models.PatchDomainResponseBody1 = {
 
 ```typescript
 const value: models.PatchDomainResponseBody2 = {
-  moved: false,
+  moved: true,
   token: "<value>",
 };
 ```

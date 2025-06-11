@@ -50,7 +50,7 @@ func testCreateProjectTransferRequestCreateProjectTransferRequest0(w http.Respon
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateProjectTransferRequestResponseBody{
+	var respBody *operations.CreateProjectTransferRequestResponseBody = &operations.CreateProjectTransferRequestResponseBody{
 		Code: "f99cc49a-602e-4786-a748-762dfb205880",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -8,8 +8,8 @@ SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate d
 import { Sqli } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Sqli = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

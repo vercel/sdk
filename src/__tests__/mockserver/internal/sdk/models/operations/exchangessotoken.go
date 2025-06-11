@@ -32,7 +32,7 @@ func (e *GrantType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ExchangeSsoTokenRequestBody struct {
+type ExchangeSsoTokenRequest struct {
 	// The sensitive code received from Vercel
 	Code string `json:"code"`
 	// The state received from the initialization request
@@ -47,42 +47,42 @@ type ExchangeSsoTokenRequestBody struct {
 	GrantType *GrantType `json:"grant_type,omitempty"`
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetCode() string {
+func (o *ExchangeSsoTokenRequest) GetCode() string {
 	if o == nil {
 		return ""
 	}
 	return o.Code
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetState() *string {
+func (o *ExchangeSsoTokenRequest) GetState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.State
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetClientID() string {
+func (o *ExchangeSsoTokenRequest) GetClientID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ClientID
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetClientSecret() string {
+func (o *ExchangeSsoTokenRequest) GetClientSecret() string {
 	if o == nil {
 		return ""
 	}
 	return o.ClientSecret
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetRedirectURI() *string {
+func (o *ExchangeSsoTokenRequest) GetRedirectURI() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectURI
 }
 
-func (o *ExchangeSsoTokenRequestBody) GetGrantType() *GrantType {
+func (o *ExchangeSsoTokenRequest) GetGrantType() *GrantType {
 	if o == nil {
 		return nil
 	}

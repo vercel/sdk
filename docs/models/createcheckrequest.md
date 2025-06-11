@@ -9,14 +9,6 @@ let value: CreateCheckRequest = {
   deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    name: "Performance Check",
-    path: "/",
-    blocking: true,
-    detailsUrl: "http://example.com",
-    externalId: "1234abc",
-    rerequestable: true,
-  },
 };
 ```
 

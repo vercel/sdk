@@ -8,8 +8,8 @@ import (
 	"time"
 )
 
-// Balances - A credit balance for a particular token type
-type Balances struct {
+// Balance - A credit balance for a particular token type
+type Balance struct {
 	// Partner's resource ID, exclude if credits are tied to the installation and not an individual resource.
 	ResourceID *string `json:"resourceId,omitempty"`
 	// A human-readable description of the credits the user currently has, e.g. \"2,000 Tokens\"
@@ -20,28 +20,28 @@ type Balances struct {
 	CurrencyValueInCents float64 `json:"currencyValueInCents"`
 }
 
-func (o *Balances) GetResourceID() *string {
+func (o *Balance) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *Balances) GetCredit() *string {
+func (o *Balance) GetCredit() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Credit
 }
 
-func (o *Balances) GetNameLabel() *string {
+func (o *Balance) GetNameLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NameLabel
 }
 
-func (o *Balances) GetCurrencyValueInCents() float64 {
+func (o *Balance) GetCurrencyValueInCents() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -50,8 +50,8 @@ func (o *Balances) GetCurrencyValueInCents() float64 {
 
 type SubmitPrepaymentBalancesRequestBody struct {
 	// Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept.
-	Timestamp time.Time  `json:"timestamp"`
-	Balances  []Balances `json:"balances"`
+	Timestamp time.Time `json:"timestamp"`
+	Balances  []Balance `json:"balances"`
 }
 
 func (s SubmitPrepaymentBalancesRequestBody) MarshalJSON() ([]byte, error) {
@@ -72,9 +72,9 @@ func (o *SubmitPrepaymentBalancesRequestBody) GetTimestamp() time.Time {
 	return o.Timestamp
 }
 
-func (o *SubmitPrepaymentBalancesRequestBody) GetBalances() []Balances {
+func (o *SubmitPrepaymentBalancesRequestBody) GetBalances() []Balance {
 	if o == nil {
-		return []Balances{}
+		return []Balance{}
 	}
 	return o.Balances
 }

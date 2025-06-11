@@ -8,10 +8,10 @@ import { BuyDomainDomainsDomain } from "@vercel/sdk/models/buydomainop.js";
 let value: BuyDomainDomainsDomain = {
   uid: "<id>",
   ns: [
-    "<value>",
+    "<value 1>",
   ],
   verified: false,
-  created: 2903.03,
+  created: 6916.29,
   pending: false,
 };
 ```

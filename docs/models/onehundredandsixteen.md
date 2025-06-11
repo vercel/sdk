@@ -9,7 +9,7 @@ import { OneHundredAndSixteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixteen = {
   previous: {
-    enabled: false,
+    enabled: true,
     totpVerified: false,
   },
   next: {

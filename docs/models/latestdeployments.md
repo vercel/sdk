@@ -10,18 +10,18 @@ let value: LatestDeployments = {
   createdAt: 257.94,
   createdIn: "<value>",
   creator: {
-    email: "Rigoberto42@gmail.com",
+    email: "Arvilla.Ziemann80@hotmail.com",
     uid: "<id>",
-    username: "Clint_Wuckert28",
+    username: "Maida.Purdy-Green24",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "pro",
+  plan: "enterprise",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "ERROR",
+  readyState: "QUEUED",
   type: "LAMBDAS",
-  url: "https://vast-morbidity.name/",
+  url: "https://clumsy-tackle.info",
   userId: "<id>",
 };
 ```

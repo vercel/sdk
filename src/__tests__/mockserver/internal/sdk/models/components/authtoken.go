@@ -9,49 +9,49 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type AuthTokenScopesType string
+type TypeTeam string
 
 const (
-	AuthTokenScopesTypeTeam AuthTokenScopesType = "team"
+	TypeTeamTeam TypeTeam = "team"
 )
 
-func (e AuthTokenScopesType) ToPointer() *AuthTokenScopesType {
+func (e TypeTeam) ToPointer() *TypeTeam {
 	return &e
 }
-func (e *AuthTokenScopesType) UnmarshalJSON(data []byte) error {
+func (e *TypeTeam) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "team":
-		*e = AuthTokenScopesType(v)
+		*e = TypeTeam(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AuthTokenScopesType: %v", v)
+		return fmt.Errorf("invalid value for TypeTeam: %v", v)
 	}
 }
 
-type AuthTokenScopesOrigin string
+type AuthTokenOrigin2 string
 
 const (
-	AuthTokenScopesOriginSaml      AuthTokenScopesOrigin = "saml"
-	AuthTokenScopesOriginGithub    AuthTokenScopesOrigin = "github"
-	AuthTokenScopesOriginGitlab    AuthTokenScopesOrigin = "gitlab"
-	AuthTokenScopesOriginBitbucket AuthTokenScopesOrigin = "bitbucket"
-	AuthTokenScopesOriginEmail     AuthTokenScopesOrigin = "email"
-	AuthTokenScopesOriginManual    AuthTokenScopesOrigin = "manual"
-	AuthTokenScopesOriginPasskey   AuthTokenScopesOrigin = "passkey"
-	AuthTokenScopesOriginOtp       AuthTokenScopesOrigin = "otp"
-	AuthTokenScopesOriginSms       AuthTokenScopesOrigin = "sms"
-	AuthTokenScopesOriginInvite    AuthTokenScopesOrigin = "invite"
-	AuthTokenScopesOriginGoogle    AuthTokenScopesOrigin = "google"
+	AuthTokenOrigin2Saml      AuthTokenOrigin2 = "saml"
+	AuthTokenOrigin2Github    AuthTokenOrigin2 = "github"
+	AuthTokenOrigin2Gitlab    AuthTokenOrigin2 = "gitlab"
+	AuthTokenOrigin2Bitbucket AuthTokenOrigin2 = "bitbucket"
+	AuthTokenOrigin2Email     AuthTokenOrigin2 = "email"
+	AuthTokenOrigin2Manual    AuthTokenOrigin2 = "manual"
+	AuthTokenOrigin2Passkey   AuthTokenOrigin2 = "passkey"
+	AuthTokenOrigin2Otp       AuthTokenOrigin2 = "otp"
+	AuthTokenOrigin2Sms       AuthTokenOrigin2 = "sms"
+	AuthTokenOrigin2Invite    AuthTokenOrigin2 = "invite"
+	AuthTokenOrigin2Google    AuthTokenOrigin2 = "google"
 )
 
-func (e AuthTokenScopesOrigin) ToPointer() *AuthTokenScopesOrigin {
+func (e AuthTokenOrigin2) ToPointer() *AuthTokenOrigin2 {
 	return &e
 }
-func (e *AuthTokenScopesOrigin) UnmarshalJSON(data []byte) error {
+func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -78,93 +78,93 @@ func (e *AuthTokenScopesOrigin) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
-		*e = AuthTokenScopesOrigin(v)
+		*e = AuthTokenOrigin2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AuthTokenScopesOrigin: %v", v)
+		return fmt.Errorf("invalid value for AuthTokenOrigin2: %v", v)
 	}
 }
 
-// Scopes2 - The access scopes granted to the token.
-type Scopes2 struct {
-	Type      AuthTokenScopesType   `json:"type"`
-	TeamID    string                `json:"teamId"`
-	Origin    AuthTokenScopesOrigin `json:"origin"`
-	CreatedAt float64               `json:"createdAt"`
-	ExpiresAt *float64              `json:"expiresAt,omitempty"`
+// ScopeTeam - The access scopes granted to the token.
+type ScopeTeam struct {
+	Type      TypeTeam         `json:"type"`
+	TeamID    string           `json:"teamId"`
+	Origin    AuthTokenOrigin2 `json:"origin"`
+	CreatedAt float64          `json:"createdAt"`
+	ExpiresAt *float64         `json:"expiresAt,omitempty"`
 }
 
-func (o *Scopes2) GetType() AuthTokenScopesType {
+func (o *ScopeTeam) GetType() TypeTeam {
 	if o == nil {
-		return AuthTokenScopesType("")
+		return TypeTeam("")
 	}
 	return o.Type
 }
 
-func (o *Scopes2) GetTeamID() string {
+func (o *ScopeTeam) GetTeamID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TeamID
 }
 
-func (o *Scopes2) GetOrigin() AuthTokenScopesOrigin {
+func (o *ScopeTeam) GetOrigin() AuthTokenOrigin2 {
 	if o == nil {
-		return AuthTokenScopesOrigin("")
+		return AuthTokenOrigin2("")
 	}
 	return o.Origin
 }
 
-func (o *Scopes2) GetCreatedAt() float64 {
+func (o *ScopeTeam) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *Scopes2) GetExpiresAt() *float64 {
+func (o *ScopeTeam) GetExpiresAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExpiresAt
 }
 
-type ScopesType string
+type AuthTokenTypeUser string
 
 const (
-	ScopesTypeUser ScopesType = "user"
+	AuthTokenTypeUserUser AuthTokenTypeUser = "user"
 )
 
-func (e ScopesType) ToPointer() *ScopesType {
+func (e AuthTokenTypeUser) ToPointer() *AuthTokenTypeUser {
 	return &e
 }
-func (e *ScopesType) UnmarshalJSON(data []byte) error {
+func (e *AuthTokenTypeUser) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "user":
-		*e = ScopesType(v)
+		*e = AuthTokenTypeUser(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ScopesType: %v", v)
+		return fmt.Errorf("invalid value for AuthTokenTypeUser: %v", v)
 	}
 }
 
-// AuthTokenScopes1Origin - Possible multi-factor origins
-type AuthTokenScopes1Origin string
+// SudoOrigin - Possible multi-factor origins
+type SudoOrigin string
 
 const (
-	AuthTokenScopes1OriginTotp         AuthTokenScopes1Origin = "totp"
-	AuthTokenScopes1OriginWebauthn     AuthTokenScopes1Origin = "webauthn"
-	AuthTokenScopes1OriginRecoveryCode AuthTokenScopes1Origin = "recovery-code"
+	SudoOriginTotp         SudoOrigin = "totp"
+	SudoOriginWebauthn     SudoOrigin = "webauthn"
+	SudoOriginRecoveryCode SudoOrigin = "recovery-code"
 )
 
-func (e AuthTokenScopes1Origin) ToPointer() *AuthTokenScopes1Origin {
+func (e SudoOrigin) ToPointer() *SudoOrigin {
 	return &e
 }
-func (e *AuthTokenScopes1Origin) UnmarshalJSON(data []byte) error {
+func (e *SudoOrigin) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -175,22 +175,22 @@ func (e *AuthTokenScopes1Origin) UnmarshalJSON(data []byte) error {
 	case "webauthn":
 		fallthrough
 	case "recovery-code":
-		*e = AuthTokenScopes1Origin(v)
+		*e = SudoOrigin(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AuthTokenScopes1Origin: %v", v)
+		return fmt.Errorf("invalid value for SudoOrigin: %v", v)
 	}
 }
 
 type Sudo struct {
 	// Possible multi-factor origins
-	Origin    AuthTokenScopes1Origin `json:"origin"`
-	ExpiresAt float64                `json:"expiresAt"`
+	Origin    SudoOrigin `json:"origin"`
+	ExpiresAt float64    `json:"expiresAt"`
 }
 
-func (o *Sudo) GetOrigin() AuthTokenScopes1Origin {
+func (o *Sudo) GetOrigin() SudoOrigin {
 	if o == nil {
-		return AuthTokenScopes1Origin("")
+		return SudoOrigin("")
 	}
 	return o.Origin
 }
@@ -202,26 +202,26 @@ func (o *Sudo) GetExpiresAt() float64 {
 	return o.ExpiresAt
 }
 
-type ScopesOrigin string
+type AuthTokenOrigin1 string
 
 const (
-	ScopesOriginSaml      ScopesOrigin = "saml"
-	ScopesOriginGithub    ScopesOrigin = "github"
-	ScopesOriginGitlab    ScopesOrigin = "gitlab"
-	ScopesOriginBitbucket ScopesOrigin = "bitbucket"
-	ScopesOriginEmail     ScopesOrigin = "email"
-	ScopesOriginManual    ScopesOrigin = "manual"
-	ScopesOriginPasskey   ScopesOrigin = "passkey"
-	ScopesOriginOtp       ScopesOrigin = "otp"
-	ScopesOriginSms       ScopesOrigin = "sms"
-	ScopesOriginInvite    ScopesOrigin = "invite"
-	ScopesOriginGoogle    ScopesOrigin = "google"
+	AuthTokenOrigin1Saml      AuthTokenOrigin1 = "saml"
+	AuthTokenOrigin1Github    AuthTokenOrigin1 = "github"
+	AuthTokenOrigin1Gitlab    AuthTokenOrigin1 = "gitlab"
+	AuthTokenOrigin1Bitbucket AuthTokenOrigin1 = "bitbucket"
+	AuthTokenOrigin1Email     AuthTokenOrigin1 = "email"
+	AuthTokenOrigin1Manual    AuthTokenOrigin1 = "manual"
+	AuthTokenOrigin1Passkey   AuthTokenOrigin1 = "passkey"
+	AuthTokenOrigin1Otp       AuthTokenOrigin1 = "otp"
+	AuthTokenOrigin1Sms       AuthTokenOrigin1 = "sms"
+	AuthTokenOrigin1Invite    AuthTokenOrigin1 = "invite"
+	AuthTokenOrigin1Google    AuthTokenOrigin1 = "google"
 )
 
-func (e ScopesOrigin) ToPointer() *ScopesOrigin {
+func (e AuthTokenOrigin1) ToPointer() *AuthTokenOrigin1 {
 	return &e
 }
-func (e *ScopesOrigin) UnmarshalJSON(data []byte) error {
+func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -248,118 +248,118 @@ func (e *ScopesOrigin) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
-		*e = ScopesOrigin(v)
+		*e = AuthTokenOrigin1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ScopesOrigin: %v", v)
+		return fmt.Errorf("invalid value for AuthTokenOrigin1: %v", v)
 	}
 }
 
-// Scopes1 - The access scopes granted to the token.
-type Scopes1 struct {
-	Type      ScopesType   `json:"type"`
-	Sudo      *Sudo        `json:"sudo,omitempty"`
-	Origin    ScopesOrigin `json:"origin"`
-	CreatedAt float64      `json:"createdAt"`
-	ExpiresAt *float64     `json:"expiresAt,omitempty"`
+// ScopeUser - The access scopes granted to the token.
+type ScopeUser struct {
+	Type      AuthTokenTypeUser `json:"type"`
+	Sudo      *Sudo             `json:"sudo,omitempty"`
+	Origin    AuthTokenOrigin1  `json:"origin"`
+	CreatedAt float64           `json:"createdAt"`
+	ExpiresAt *float64          `json:"expiresAt,omitempty"`
 }
 
-func (o *Scopes1) GetType() ScopesType {
+func (o *ScopeUser) GetType() AuthTokenTypeUser {
 	if o == nil {
-		return ScopesType("")
+		return AuthTokenTypeUser("")
 	}
 	return o.Type
 }
 
-func (o *Scopes1) GetSudo() *Sudo {
+func (o *ScopeUser) GetSudo() *Sudo {
 	if o == nil {
 		return nil
 	}
 	return o.Sudo
 }
 
-func (o *Scopes1) GetOrigin() ScopesOrigin {
+func (o *ScopeUser) GetOrigin() AuthTokenOrigin1 {
 	if o == nil {
-		return ScopesOrigin("")
+		return AuthTokenOrigin1("")
 	}
 	return o.Origin
 }
 
-func (o *Scopes1) GetCreatedAt() float64 {
+func (o *ScopeUser) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *Scopes1) GetExpiresAt() *float64 {
+func (o *ScopeUser) GetExpiresAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExpiresAt
 }
 
-type ScopesUnionType string
+type ScopeType string
 
 const (
-	ScopesUnionTypeScopes1 ScopesUnionType = "scopes_1"
-	ScopesUnionTypeScopes2 ScopesUnionType = "scopes_2"
+	ScopeTypeScopeUser ScopeType = "scope_User"
+	ScopeTypeScopeTeam ScopeType = "scope_Team"
 )
 
-type Scopes struct {
-	Scopes1 *Scopes1
-	Scopes2 *Scopes2
+type Scope struct {
+	ScopeUser *ScopeUser `queryParam:"inline"`
+	ScopeTeam *ScopeTeam `queryParam:"inline"`
 
-	Type ScopesUnionType
+	Type ScopeType
 }
 
-func CreateScopesScopes1(scopes1 Scopes1) Scopes {
-	typ := ScopesUnionTypeScopes1
+func CreateScopeScopeUser(scopeUser ScopeUser) Scope {
+	typ := ScopeTypeScopeUser
 
-	return Scopes{
-		Scopes1: &scopes1,
-		Type:    typ,
+	return Scope{
+		ScopeUser: &scopeUser,
+		Type:      typ,
 	}
 }
 
-func CreateScopesScopes2(scopes2 Scopes2) Scopes {
-	typ := ScopesUnionTypeScopes2
+func CreateScopeScopeTeam(scopeTeam ScopeTeam) Scope {
+	typ := ScopeTypeScopeTeam
 
-	return Scopes{
-		Scopes2: &scopes2,
-		Type:    typ,
+	return Scope{
+		ScopeTeam: &scopeTeam,
+		Type:      typ,
 	}
 }
 
-func (u *Scopes) UnmarshalJSON(data []byte) error {
+func (u *Scope) UnmarshalJSON(data []byte) error {
 
-	var scopes1 Scopes1 = Scopes1{}
-	if err := utils.UnmarshalJSON(data, &scopes1, "", true, true); err == nil {
-		u.Scopes1 = &scopes1
-		u.Type = ScopesUnionTypeScopes1
+	var scopeUser ScopeUser = ScopeUser{}
+	if err := utils.UnmarshalJSON(data, &scopeUser, "", true, true); err == nil {
+		u.ScopeUser = &scopeUser
+		u.Type = ScopeTypeScopeUser
 		return nil
 	}
 
-	var scopes2 Scopes2 = Scopes2{}
-	if err := utils.UnmarshalJSON(data, &scopes2, "", true, true); err == nil {
-		u.Scopes2 = &scopes2
-		u.Type = ScopesUnionTypeScopes2
+	var scopeTeam ScopeTeam = ScopeTeam{}
+	if err := utils.UnmarshalJSON(data, &scopeTeam, "", true, true); err == nil {
+		u.ScopeTeam = &scopeTeam
+		u.Type = ScopeTypeScopeTeam
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Scopes", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Scope", string(data))
 }
 
-func (u Scopes) MarshalJSON() ([]byte, error) {
-	if u.Scopes1 != nil {
-		return utils.MarshalJSON(u.Scopes1, "", true)
+func (u Scope) MarshalJSON() ([]byte, error) {
+	if u.ScopeUser != nil {
+		return utils.MarshalJSON(u.ScopeUser, "", true)
 	}
 
-	if u.Scopes2 != nil {
-		return utils.MarshalJSON(u.Scopes2, "", true)
+	if u.ScopeTeam != nil {
+		return utils.MarshalJSON(u.ScopeTeam, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Scopes: all fields are null")
+	return nil, errors.New("could not marshal union type Scope: all fields are null")
 }
 
 // AuthToken - Authentication token metadata.
@@ -373,7 +373,7 @@ type AuthToken struct {
 	// The origin of how the token was created.
 	Origin *string `json:"origin,omitempty"`
 	// The access scopes granted to the token.
-	Scopes []Scopes `json:"scopes,omitempty"`
+	Scopes []Scope `json:"scopes,omitempty"`
 	// Timestamp (in milliseconds) of when the token expires.
 	ExpiresAt *float64 `json:"expiresAt,omitempty"`
 	// Timestamp (in milliseconds) of when the token was most recently used.
@@ -410,7 +410,7 @@ func (o *AuthToken) GetOrigin() *string {
 	return o.Origin
 }
 
-func (o *AuthToken) GetScopes() []Scopes {
+func (o *AuthToken) GetScopes() []Scope {
 	if o == nil {
 		return nil
 	}

@@ -52,7 +52,7 @@ import {
   RequestAccessToTeamRequest,
   RequestAccessToTeamResponseBody,
 } from "../models/requestaccesstoteamop.js";
-import { TeamLimited } from "../models/teamlimited.js";
+import { Team } from "../models/team.js";
 import {
   UpdateTeamMemberRequest,
   UpdateTeamMemberResponseBody,
@@ -188,7 +188,7 @@ export class Teams extends ClientSDK {
   async getTeam(
     request: GetTeamRequest,
     options?: RequestOptions,
-  ): Promise<TeamLimited> {
+  ): Promise<Team> {
     return unwrapAsync(teamsGetTeam(
       this,
       request,
@@ -205,7 +205,7 @@ export class Teams extends ClientSDK {
   async patchTeam(
     request: PatchTeamRequest,
     options?: RequestOptions,
-  ): Promise<TeamLimited> {
+  ): Promise<Team> {
     return unwrapAsync(teamsPatchTeam(
       this,
       request,

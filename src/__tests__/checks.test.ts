@@ -29,6 +29,18 @@ test("Checks Create Check", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "chk_1a2b3c4d5e6f7g8h9i0j",
+    name: "Performance Check",
+    path: "/api/users",
+    status: "completed",
+    conclusion: "succeeded",
+    blocking: true,
+    integrationId: "<id>",
+    deploymentId: "<id>",
+    createdAt: 6444.33,
+    updatedAt: 2432.96,
+  });
 });
 
 test("Checks Get All Checks", async () => {
@@ -46,6 +58,19 @@ test("Checks Get All Checks", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    checks: [
+      {
+        createdAt: 4018.09,
+        id: "<id>",
+        integrationId: "<id>",
+        name: "<value>",
+        rerequestable: false,
+        status: "completed",
+        updatedAt: 5993.81,
+      },
+    ],
+  });
 });
 
 test("Checks Get Check", async () => {
@@ -64,6 +89,16 @@ test("Checks Get Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    name: "<value>",
+    status: "running",
+    blocking: true,
+    integrationId: "<id>",
+    deploymentId: "<id>",
+    createdAt: 6704.13,
+    updatedAt: 5470.22,
+  });
 });
 
 test("Checks Update Check", async () => {
@@ -117,6 +152,16 @@ test("Checks Update Check", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    name: "<value>",
+    status: "running",
+    blocking: true,
+    integrationId: "<id>",
+    deploymentId: "<id>",
+    createdAt: 3990.23,
+    updatedAt: 3283.38,
+  });
 });
 
 test("Checks Rerequest Check", async () => {
@@ -135,4 +180,5 @@ test("Checks Rerequest Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });

@@ -6,9 +6,7 @@
 import { CreateProjectProjectsResourceConfig } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectProjectsResourceConfig = {
-  functionDefaultRegions: [
-    "<value>",
-  ],
+  functionDefaultRegions: [],
 };
 ```
 

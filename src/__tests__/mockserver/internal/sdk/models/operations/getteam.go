@@ -29,7 +29,7 @@ func (o *GetTeamRequest) GetTeamID() string {
 type GetTeamResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The requested team
-	TeamLimited *components.TeamLimited
+	Team *components.Team
 }
 
 func (o *GetTeamResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -39,9 +39,9 @@ func (o *GetTeamResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetTeamResponse) GetTeamLimited() *components.TeamLimited {
+func (o *GetTeamResponse) GetTeam() *components.Team {
 	if o == nil {
 		return nil
 	}
-	return o.TeamLimited
+	return o.Team
 }

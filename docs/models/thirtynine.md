@@ -14,10 +14,12 @@ let value: ThirtyNine = {
     url: "https://handy-negotiation.org/",
     meta: {
       "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
     },
   },
   deploymentId: "<id>",
-  url: "https://bulky-hammock.biz",
+  url: "https://inborn-doorpost.name/",
 };
 ```
 

@@ -11,6 +11,8 @@ let value: PayloadDeployment = {
   url: "https://idolized-valuable.biz",
   meta: {
     "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
   },
 };
 ```

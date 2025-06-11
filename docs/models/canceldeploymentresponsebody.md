@@ -10,38 +10,42 @@ import { CancelDeploymentResponseBody } from "@vercel/sdk/models/canceldeploymen
 let value: CancelDeploymentResponseBody = {
   build: {
     env: [
-      "<value>",
+      "<value 1>",
     ],
   },
   env: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  inspectorUrl: "https://tough-schnitzel.info/",
-  isInConcurrentBuildsQueue: false,
-  isInSystemBuildsQueue: false,
+  inspectorUrl: "https://sniveling-rawhide.org/",
+  isInConcurrentBuildsQueue: true,
+  isInSystemBuildsQueue: true,
   projectSettings: {},
-  aliasAssigned: false,
-  bootedAt: 7652.95,
-  buildingAt: 7318.56,
+  aliasAssigned: true,
+  bootedAt: 4945.71,
+  buildingAt: 8506.11,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "CANCELED",
+  status: "ERROR",
   id: "<id>",
-  createdAt: 779.91,
+  createdAt: 8106.36,
   name: "<value>",
   meta: {
     "key": "<value>",
   },
-  readyState: "ERROR",
+  readyState: "CANCELED",
   regions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
   type: "LAMBDAS",
-  url: "https://majestic-step.net/",
-  version: 6840.28,
+  url: "https://front-cheetah.org/",
+  version: 7768.72,
   createdIn: "<value>",
   ownerId: "<id>",
   plan: "pro",
@@ -49,8 +53,6 @@ let value: CancelDeploymentResponseBody = {
   routes: [
     {
       src: "<value>",
-      continue: false,
-      middleware: 3006.32,
     },
   ],
 };
@@ -140,3 +142,4 @@ let value: CancelDeploymentResponseBody = {
 | `flags`                                                                                                                                                                                                                                                                                                        | *models.CancelDeploymentFlags*                                                                                                                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |
 | `microfrontends`                                                                                                                                                                                                                                                                                               | *models.CancelDeploymentMicrofrontends*                                                                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |
 | `config`                                                                                                                                                                                                                                                                                                       | [models.CancelDeploymentConfig](../models/canceldeploymentconfig.md)                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured |
+| `checks`                                                                                                                                                                                                                                                                                                       | [models.CancelDeploymentChecks](../models/canceldeploymentchecks.md)                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |

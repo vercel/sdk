@@ -9,58 +9,58 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UserType string
+type GetAuthUserUserType string
 
 const (
-	UserTypeAuthUser        UserType = "AuthUser"
-	UserTypeAuthUserLimited UserType = "AuthUserLimited"
+	GetAuthUserUserTypeAuthUser        GetAuthUserUserType = "AuthUser"
+	GetAuthUserUserTypeAuthUserLimited GetAuthUserUserType = "AuthUserLimited"
 )
 
-type User struct {
-	AuthUser        *components.AuthUser
-	AuthUserLimited *components.AuthUserLimited
+type GetAuthUserUser struct {
+	AuthUser        *components.AuthUser        `queryParam:"inline"`
+	AuthUserLimited *components.AuthUserLimited `queryParam:"inline"`
 
-	Type UserType
+	Type GetAuthUserUserType
 }
 
-func CreateUserAuthUser(authUser components.AuthUser) User {
-	typ := UserTypeAuthUser
+func CreateGetAuthUserUserAuthUser(authUser components.AuthUser) GetAuthUserUser {
+	typ := GetAuthUserUserTypeAuthUser
 
-	return User{
+	return GetAuthUserUser{
 		AuthUser: &authUser,
 		Type:     typ,
 	}
 }
 
-func CreateUserAuthUserLimited(authUserLimited components.AuthUserLimited) User {
-	typ := UserTypeAuthUserLimited
+func CreateGetAuthUserUserAuthUserLimited(authUserLimited components.AuthUserLimited) GetAuthUserUser {
+	typ := GetAuthUserUserTypeAuthUserLimited
 
-	return User{
+	return GetAuthUserUser{
 		AuthUserLimited: &authUserLimited,
 		Type:            typ,
 	}
 }
 
-func (u *User) UnmarshalJSON(data []byte) error {
+func (u *GetAuthUserUser) UnmarshalJSON(data []byte) error {
 
 	var authUserLimited components.AuthUserLimited = components.AuthUserLimited{}
 	if err := utils.UnmarshalJSON(data, &authUserLimited, "", true, true); err == nil {
 		u.AuthUserLimited = &authUserLimited
-		u.Type = UserTypeAuthUserLimited
+		u.Type = GetAuthUserUserTypeAuthUserLimited
 		return nil
 	}
 
 	var authUser components.AuthUser = components.AuthUser{}
 	if err := utils.UnmarshalJSON(data, &authUser, "", true, true); err == nil {
 		u.AuthUser = &authUser
-		u.Type = UserTypeAuthUser
+		u.Type = GetAuthUserUserTypeAuthUser
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for User", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAuthUserUser", string(data))
 }
 
-func (u User) MarshalJSON() ([]byte, error) {
+func (u GetAuthUserUser) MarshalJSON() ([]byte, error) {
 	if u.AuthUser != nil {
 		return utils.MarshalJSON(u.AuthUser, "", true)
 	}
@@ -69,17 +69,17 @@ func (u User) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AuthUserLimited, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type User: all fields are null")
+	return nil, errors.New("could not marshal union type GetAuthUserUser: all fields are null")
 }
 
 // GetAuthUserResponseBody - Successful response.
 type GetAuthUserResponseBody struct {
-	User User `json:"user"`
+	User GetAuthUserUser `json:"user"`
 }
 
-func (o *GetAuthUserResponseBody) GetUser() User {
+func (o *GetAuthUserResponseBody) GetUser() GetAuthUserUser {
 	if o == nil {
-		return User{}
+		return GetAuthUserUser{}
 	}
 	return o.User
 }

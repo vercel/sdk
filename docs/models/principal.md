@@ -7,10 +7,10 @@
 
 ```typescript
 const value: models.One = {
-  avatar: "https://loremflickr.com/3500/2165?lock=111259719786041",
-  email: "Gerson_Miller@gmail.com",
+  avatar: "https://loremflickr.com/1984/95?lock=4930089081020699",
+  email: "Cierra14@hotmail.com",
   uid: "<id>",
-  username: "Ricky_Schumm",
+  username: "Keara_Lynch9",
 };
 ```
 

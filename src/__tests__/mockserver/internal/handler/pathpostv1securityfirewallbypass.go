@@ -51,19 +51,10 @@ func testAddBypassIPAddBypassIp0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateAddBypassIPResponseBodyAddBypassIPResponseBody1(
+	var respBody *operations.AddBypassIPResponseBody = types.Pointer(operations.CreateAddBypassIPResponseBodyAddBypassIPResponseBody1(
 		operations.AddBypassIPResponseBody1{
-			Ok: false,
-			Result: []operations.AddBypassIPResponseBodyResult{
-				operations.AddBypassIPResponseBodyResult{
-					OwnerID:       "<id>",
-					ID:            "<id>",
-					Domain:        "jubilant-outrun.name",
-					ProjectID:     "<id>",
-					Note:          "<value>",
-					IsProjectRule: true,
-				},
-			},
+			Ok:         false,
+			Result:     []operations.AddBypassIPResult1{},
 			Pagination: types.String("<value>"),
 		},
 	))

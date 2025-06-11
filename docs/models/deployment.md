@@ -9,9 +9,7 @@ let value: Deployment = {
   id: "<id>",
   name: "<value>",
   url: "https://clueless-hyena.info/",
-  meta: {
-    "key": "<value>",
-  },
+  meta: {},
 };
 ```
 

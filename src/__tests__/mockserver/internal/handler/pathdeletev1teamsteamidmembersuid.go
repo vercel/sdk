@@ -45,7 +45,7 @@ func testRemoveTeamMemberRemoveTeamMember0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveTeamMemberResponseBody{
+	var respBody *operations.RemoveTeamMemberResponseBody = &operations.RemoveTeamMemberResponseBody{
 		ID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

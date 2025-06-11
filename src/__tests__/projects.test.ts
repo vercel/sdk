@@ -24,6 +24,68 @@ test("Projects Update Project Data Cache", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    accountId: "<id>",
+    crons: {
+      enabledAt: 4537.72,
+      disabledAt: 4306.04,
+      updatedAt: 4313.17,
+      deploymentId: "<id>",
+      definitions: [],
+    },
+    directoryListing: true,
+    id: "<id>",
+    latestDeployments: [
+      {
+        id: "<id>",
+        createdAt: 1954.03,
+        createdIn: "<value>",
+        creator: {
+          email: "Cleveland_Bruen@gmail.com",
+          uid: "<id>",
+          username: "Frida_Stamm12",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "CANCELED",
+        type: "LAMBDAS",
+        url: "https://well-worn-handful.biz/",
+        userId: "<id>",
+      },
+    ],
+    name: "<value>",
+    nodeVersion: "22.x",
+    resourceConfig: {
+      functionDefaultRegions: [],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [],
+    },
+    targets: {
+      "key": {
+        id: "<id>",
+        createdAt: 5941.68,
+        createdIn: "<value>",
+        creator: {
+          email: "Fay_Herman21@yahoo.com",
+          uid: "<id>",
+          username: "Anna.Barrows31",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "READY",
+        type: "LAMBDAS",
+        url: "https://scaly-epic.com",
+        userId: "<id>",
+      },
+    },
+  });
 });
 
 test("Projects Get Projects", async () => {
@@ -42,6 +104,201 @@ test("Projects Get Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    projects: [
+      {
+        accountId: "<id>",
+        crons: {
+          enabledAt: 5254.53,
+          disabledAt: null,
+          updatedAt: 514.35,
+          deploymentId: "<id>",
+          definitions: [
+            {
+              host: "vercel.com",
+              path: "/api/crons/sync-something?hello=world",
+              schedule: "0 0 * * *",
+            },
+          ],
+        },
+        directoryListing: false,
+        id: "<id>",
+        latestDeployments: [
+          {
+            id: "<id>",
+            createdAt: 6310.4,
+            createdIn: "<value>",
+            creator: {
+              email: "Howell_Metz@gmail.com",
+              uid: "<id>",
+              username: "Mohammed_Bechtelar67",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "pro",
+            previewCommentsEnabled: false,
+            private: true,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://monthly-numeracy.net/",
+            userId: "<id>",
+          },
+          {
+            id: "<id>",
+            createdAt: 6310.4,
+            createdIn: "<value>",
+            creator: {
+              email: "Howell_Metz@gmail.com",
+              uid: "<id>",
+              username: "Mohammed_Bechtelar67",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "pro",
+            previewCommentsEnabled: false,
+            private: true,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://monthly-numeracy.net/",
+            userId: "<id>",
+          },
+        ],
+        name: "<value>",
+        nodeVersion: "14.x",
+        resourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+          ],
+        },
+        defaultResourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+          ],
+        },
+        targets: {
+          "key": {
+            id: "<id>",
+            createdAt: 3954.3,
+            createdIn: "<value>",
+            creator: {
+              email: "Tavares_Hills95@gmail.com",
+              uid: "<id>",
+              username: "Dariana_Hand",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "hobby",
+            previewCommentsEnabled: false,
+            private: false,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://obedient-mentor.org/",
+            userId: "<id>",
+          },
+        },
+      },
+      {
+        accountId: "<id>",
+        crons: {
+          enabledAt: 5254.53,
+          disabledAt: null,
+          updatedAt: 514.35,
+          deploymentId: "<id>",
+          definitions: [
+            {
+              host: "vercel.com",
+              path: "/api/crons/sync-something?hello=world",
+              schedule: "0 0 * * *",
+            },
+          ],
+        },
+        directoryListing: false,
+        id: "<id>",
+        latestDeployments: [
+          {
+            id: "<id>",
+            createdAt: 6310.4,
+            createdIn: "<value>",
+            creator: {
+              email: "Howell_Metz@gmail.com",
+              uid: "<id>",
+              username: "Mohammed_Bechtelar67",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "pro",
+            previewCommentsEnabled: false,
+            private: true,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://monthly-numeracy.net/",
+            userId: "<id>",
+          },
+          {
+            id: "<id>",
+            createdAt: 6310.4,
+            createdIn: "<value>",
+            creator: {
+              email: "Howell_Metz@gmail.com",
+              uid: "<id>",
+              username: "Mohammed_Bechtelar67",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "pro",
+            previewCommentsEnabled: false,
+            private: true,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://monthly-numeracy.net/",
+            userId: "<id>",
+          },
+        ],
+        name: "<value>",
+        nodeVersion: "14.x",
+        resourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+          ],
+        },
+        defaultResourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+          ],
+        },
+        targets: {
+          "key": {
+            id: "<id>",
+            createdAt: 3954.3,
+            createdIn: "<value>",
+            creator: {
+              email: "Tavares_Hills95@gmail.com",
+              uid: "<id>",
+              username: "Dariana_Hand",
+            },
+            deploymentHostname: "<value>",
+            name: "<value>",
+            plan: "hobby",
+            previewCommentsEnabled: false,
+            private: false,
+            readyState: "ERROR",
+            type: "LAMBDAS",
+            url: "https://obedient-mentor.org/",
+            userId: "<id>",
+          },
+        },
+      },
+    ],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
+    },
+  });
 });
 
 test("Projects Create Project", async () => {
@@ -61,6 +318,92 @@ test("Projects Create Project", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    accountId: "<id>",
+    crons: {
+      enabledAt: 9025.89,
+      disabledAt: 7665.94,
+      updatedAt: 4493.49,
+      deploymentId: "<id>",
+      definitions: [],
+    },
+    directoryListing: true,
+    id: "<id>",
+    latestDeployments: [
+      {
+        id: "<id>",
+        createdAt: 79.03,
+        createdIn: "<value>",
+        creator: {
+          email: "Merle_Boehm@yahoo.com",
+          uid: "<id>",
+          username: "Wilbert.Conn",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "READY",
+        type: "LAMBDAS",
+        url: "https://likable-validity.info",
+        userId: "<id>",
+      },
+      {
+        id: "<id>",
+        createdAt: 79.03,
+        createdIn: "<value>",
+        creator: {
+          email: "Merle_Boehm@yahoo.com",
+          uid: "<id>",
+          username: "Wilbert.Conn",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "READY",
+        type: "LAMBDAS",
+        url: "https://likable-validity.info",
+        userId: "<id>",
+      },
+    ],
+    name: "<value>",
+    nodeVersion: "16.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [
+        "<value 1>",
+      ],
+    },
+    targets: {
+      "key": {
+        id: "<id>",
+        createdAt: 3635.11,
+        createdIn: "<value>",
+        creator: {
+          email: "Leanne_Langworth@gmail.com",
+          uid: "<id>",
+          username: "Kurtis_Marks97",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "ERROR",
+        type: "LAMBDAS",
+        url: "https://twin-hydrolyse.com/",
+        userId: "<id>",
+      },
+    },
+  });
 });
 
 test("Projects Update Project", async () => {
@@ -81,6 +424,104 @@ test("Projects Update Project", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    accountId: "<id>",
+    crons: {
+      enabledAt: 827.44,
+      disabledAt: 9685.26,
+      updatedAt: 3884.97,
+      deploymentId: "<id>",
+      definitions: [],
+    },
+    directoryListing: true,
+    id: "<id>",
+    latestDeployments: [
+      {
+        id: "<id>",
+        createdAt: 5470.28,
+        createdIn: "<value>",
+        creator: {
+          email: "Richmond72@yahoo.com",
+          uid: "<id>",
+          username: "Ryley1",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "QUEUED",
+        type: "LAMBDAS",
+        url: "https://cheap-muscat.name/",
+        userId: "<id>",
+      },
+      {
+        id: "<id>",
+        createdAt: 5470.28,
+        createdIn: "<value>",
+        creator: {
+          email: "Richmond72@yahoo.com",
+          uid: "<id>",
+          username: "Ryley1",
+        },
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "pro",
+        previewCommentsEnabled: false,
+        private: true,
+        readyState: "QUEUED",
+        type: "LAMBDAS",
+        url: "https://cheap-muscat.name/",
+        userId: "<id>",
+      },
+    ],
+    name: "<value>",
+    nodeVersion: "22.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
+    },
+    defaultResourceConfig: {
+      functionDefaultRegions: [
+        "<value 1>",
+      ],
+    },
+    targets: {
+      "key": {
+        id: "<id>",
+        createdAt: 8270.86,
+        createdIn: "<value>",
+        creator: null,
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "QUEUED",
+        type: "LAMBDAS",
+        url: "https://feline-valley.name/",
+        userId: "<id>",
+      },
+      "key1": {
+        id: "<id>",
+        createdAt: 8270.86,
+        createdIn: "<value>",
+        creator: null,
+        deploymentHostname: "<value>",
+        name: "<value>",
+        plan: "hobby",
+        previewCommentsEnabled: false,
+        private: false,
+        readyState: "QUEUED",
+        type: "LAMBDAS",
+        url: "https://feline-valley.name/",
+        userId: "<id>",
+      },
+    },
+  });
 });
 
 test("Projects Delete Project", async () => {
@@ -119,6 +560,21 @@ test("Projects Get Project Domains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    domains: [
+      {
+        name: "<value>",
+        apexName: "<value>",
+        projectId: "<id>",
+        verified: true,
+      },
+    ],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
+    },
+  });
 });
 
 test("Projects Get Project Domain", async () => {
@@ -137,6 +593,12 @@ test("Projects Get Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: false,
+  });
 });
 
 test("Projects Update Project Domain", async () => {
@@ -160,6 +622,12 @@ test("Projects Update Project Domain", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: true,
+  });
 });
 
 test("Projects Remove Project Domain", async () => {
@@ -178,6 +646,7 @@ test("Projects Remove Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Projects Add Project Domain", async () => {
@@ -201,6 +670,12 @@ test("Projects Add Project Domain", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: true,
+  });
 });
 
 test("Projects Move Project Domain", async () => {
@@ -219,6 +694,12 @@ test("Projects Move Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: false,
+  });
 });
 
 test("Projects Verify Project Domain", async () => {
@@ -237,6 +718,12 @@ test("Projects Verify Project Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+    apexName: "<value>",
+    projectId: "<id>",
+    verified: false,
+  });
 });
 
 test("Projects Create Project Env", async () => {
@@ -270,6 +757,10 @@ test("Projects Create Project Env", async () => {
     ],
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    created: [],
+    failed: [],
+  });
 });
 
 test("Projects Get Project Env", async () => {
@@ -288,6 +779,11 @@ test("Projects Get Project Env", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    type: "sensitive",
+    value: "<value>",
+    key: "<key>",
+  });
 });
 
 test("Projects Remove Project Env", async () => {
@@ -307,6 +803,18 @@ test("Projects Remove Project Env", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual([
+    {
+      type: "system",
+      value: "<value>",
+      key: "<key>",
+    },
+    {
+      type: "system",
+      value: "<value>",
+      key: "<key>",
+    },
+  ]);
 });
 
 test("Projects Create Project Transfer Request", async () => {
@@ -324,6 +832,9 @@ test("Projects Create Project Transfer Request", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    code: "f99cc49a-602e-4786-a748-762dfb205880",
+  });
 });
 
 test("Projects Accept Project Transfer Request", async () => {
@@ -344,6 +855,7 @@ test("Projects Accept Project Transfer Request", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Projects Update Project Protection Bypass", async () => {
@@ -362,6 +874,7 @@ test("Projects Update Project Protection Bypass", async () => {
     requestBody: {},
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Projects Request Promote", async () => {

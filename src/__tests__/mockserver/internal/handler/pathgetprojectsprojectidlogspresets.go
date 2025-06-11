@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -40,53 +41,33 @@ func testGetProjectsProjectIDLogsPresetsGetProjectsProjectIDLogsPresets0(w http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []components.Team{
+	var respBody []components.Team = []components.Team{
 		components.Team{
 			ID: "ABCDEFG000011111",
-			Data: components.Data{
+			Data: &components.Data{
 				Query:     "<value>",
 				CreatorID: "<id>",
 				Title:     "<value>",
 				GroupID:   "<id>",
 				OwnerID:   "<id>",
 				ProjectID: "<id>",
-				CreatedAt: 4859.35,
+				CreatedAt: 76.8,
 			},
-			AdditionalProperties: map[string]any{
-				"key":  "<value>",
-				"key1": "<value>",
+			CreatorID:     "R6efeCJQ2HKXywuasPDc0fOWB",
+			UpdatedAt:     1611796915677,
+			Description:   types.String("Our mission is to make cloud computing accessible to everyone."),
+			StagingPrefix: "<value>",
+			Slug:          "my-team",
+			Name:          types.String("My Team"),
+			Avatar:        types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
+			Membership: components.TeamMembership{
+				Confirmed:   true,
+				ConfirmedAt: 76.8,
+				Role:        components.TeamRole2Owner,
+				CreatedAt:   8753.86,
+				Created:     3816.98,
 			},
-		},
-		components.Team{
-			ID: "ABCDEFG000011111",
-			Data: components.Data{
-				Query:     "<value>",
-				CreatorID: "<id>",
-				Title:     "<value>",
-				GroupID:   "<id>",
-				OwnerID:   "<id>",
-				ProjectID: "<id>",
-				CreatedAt: 4176.11,
-			},
-			AdditionalProperties: map[string]any{
-				"key":  "<value>",
-				"key1": "<value>",
-			},
-		},
-		components.Team{
-			ID: "ABCDEFG000011111",
-			Data: components.Data{
-				Query:     "<value>",
-				CreatorID: "<id>",
-				Title:     "<value>",
-				GroupID:   "<id>",
-				OwnerID:   "<id>",
-				ProjectID: "<id>",
-				CreatedAt: 9283.43,
-			},
-			AdditionalProperties: map[string]any{
-				"key": "<value>",
-			},
+			CreatedAt: 1630748523395,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

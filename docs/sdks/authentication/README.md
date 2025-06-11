@@ -29,7 +29,6 @@ async function run() {
     clientSecret: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -42,27 +41,24 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { authenticationExchangeSsoToken } from "@vercel/sdk/funcs/authenticationExchangeSsoToken.js";
+import { marketplaceExchangeSsoToken } from "@vercel/sdk/funcs/marketplaceExchangeSsoToken.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const vercel = new VercelCore();
 
 async function run() {
-  const res = await authenticationExchangeSsoToken(vercel, {
+  const res = await marketplaceExchangeSsoToken(vercel, {
     code: "<value>",
     clientId: "<id>",
     clientSecret: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceExchangeSsoToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -105,7 +101,6 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.authentication.listAuthTokens();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -128,15 +123,12 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await authenticationListAuthTokens(vercel);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationListAuthTokens failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -184,7 +176,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -213,15 +204,12 @@ async function run() {
       name: "<value>",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationCreateAuthToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -266,7 +254,6 @@ async function run() {
     tokenId: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -291,15 +278,12 @@ async function run() {
   const res = await authenticationGetAuthToken(vercel, {
     tokenId: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationGetAuthToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -345,7 +329,6 @@ async function run() {
     tokenId: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -370,15 +353,12 @@ async function run() {
   const res = await authenticationDeleteAuthToken(vercel, {
     tokenId: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("authenticationDeleteAuthToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

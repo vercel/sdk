@@ -119,13 +119,13 @@ func (o *AddBypassIPRequestBody1) GetNote() *string {
 type AddBypassIPRequestBodyType string
 
 const (
-	AddBypassIPRequestBodyTypeAddBypassIPRequestBody1 AddBypassIPRequestBodyType = "addBypassIp_requestBody_1"
-	AddBypassIPRequestBodyTypeAddBypassIPRequestBody2 AddBypassIPRequestBodyType = "addBypassIp_requestBody_2"
+	AddBypassIPRequestBodyTypeAddBypassIPRequestBody1 AddBypassIPRequestBodyType = "addBypassIp_RequestBody_1"
+	AddBypassIPRequestBodyTypeAddBypassIPRequestBody2 AddBypassIPRequestBodyType = "addBypassIp_RequestBody_2"
 )
 
 type AddBypassIPRequestBody struct {
-	AddBypassIPRequestBody1 *AddBypassIPRequestBody1
-	AddBypassIPRequestBody2 *AddBypassIPRequestBody2
+	AddBypassIPRequestBody1 *AddBypassIPRequestBody1 `queryParam:"inline"`
+	AddBypassIPRequestBody2 *AddBypassIPRequestBody2 `queryParam:"inline"`
 
 	Type AddBypassIPRequestBodyType
 }
@@ -216,17 +216,17 @@ func (o *AddBypassIPRequest) GetRequestBody() *AddBypassIPRequestBody {
 	return o.RequestBody
 }
 
-type AddBypassIPResponseBodyAction string
+type AddBypassIPAction string
 
 const (
-	AddBypassIPResponseBodyActionBlock  AddBypassIPResponseBodyAction = "block"
-	AddBypassIPResponseBodyActionBypass AddBypassIPResponseBodyAction = "bypass"
+	AddBypassIPActionBlock  AddBypassIPAction = "block"
+	AddBypassIPActionBypass AddBypassIPAction = "bypass"
 )
 
-func (e AddBypassIPResponseBodyAction) ToPointer() *AddBypassIPResponseBodyAction {
+func (e AddBypassIPAction) ToPointer() *AddBypassIPAction {
 	return &e
 }
-func (e *AddBypassIPResponseBodyAction) UnmarshalJSON(data []byte) error {
+func (e *AddBypassIPAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -235,122 +235,122 @@ func (e *AddBypassIPResponseBodyAction) UnmarshalJSON(data []byte) error {
 	case "block":
 		fallthrough
 	case "bypass":
-		*e = AddBypassIPResponseBodyAction(v)
+		*e = AddBypassIPAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AddBypassIPResponseBodyAction: %v", v)
+		return fmt.Errorf("invalid value for AddBypassIPAction: %v", v)
 	}
 }
 
-type AddBypassIPResponseBodySecurityResult struct {
-	OwnerID       string                         `json:"OwnerId"`
-	ID            string                         `json:"Id"`
-	Domain        string                         `json:"Domain"`
-	IP            string                         `json:"Ip"`
-	Action        *AddBypassIPResponseBodyAction `json:"Action,omitempty"`
-	ProjectID     *string                        `json:"ProjectId,omitempty"`
-	IsProjectRule *bool                          `json:"IsProjectRule,omitempty"`
-	Note          *string                        `json:"Note,omitempty"`
-	CreatedAt     string                         `json:"CreatedAt"`
-	ActorID       *string                        `json:"ActorId,omitempty"`
-	UpdatedAt     string                         `json:"UpdatedAt"`
-	UpdatedAtHour string                         `json:"UpdatedAtHour"`
-	DeletedAt     *string                        `json:"DeletedAt,omitempty"`
-	ExpiresAt     *float64                       `json:"ExpiresAt,omitempty"`
+type AddBypassIPResult2 struct {
+	OwnerID       string             `json:"OwnerId"`
+	ID            string             `json:"Id"`
+	Domain        string             `json:"Domain"`
+	IP            string             `json:"Ip"`
+	Action        *AddBypassIPAction `json:"Action,omitempty"`
+	ProjectID     *string            `json:"ProjectId,omitempty"`
+	IsProjectRule *bool              `json:"IsProjectRule,omitempty"`
+	Note          *string            `json:"Note,omitempty"`
+	CreatedAt     string             `json:"CreatedAt"`
+	ActorID       *string            `json:"ActorId,omitempty"`
+	UpdatedAt     string             `json:"UpdatedAt"`
+	UpdatedAtHour string             `json:"UpdatedAtHour"`
+	DeletedAt     *string            `json:"DeletedAt,omitempty"`
+	ExpiresAt     *float64           `json:"ExpiresAt,omitempty"`
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetOwnerID() string {
+func (o *AddBypassIPResult2) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetID() string {
+func (o *AddBypassIPResult2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetDomain() string {
+func (o *AddBypassIPResult2) GetDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.Domain
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetIP() string {
+func (o *AddBypassIPResult2) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetAction() *AddBypassIPResponseBodyAction {
+func (o *AddBypassIPResult2) GetAction() *AddBypassIPAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetProjectID() *string {
+func (o *AddBypassIPResult2) GetProjectID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectID
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetIsProjectRule() *bool {
+func (o *AddBypassIPResult2) GetIsProjectRule() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsProjectRule
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetNote() *string {
+func (o *AddBypassIPResult2) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetCreatedAt() string {
+func (o *AddBypassIPResult2) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetActorID() *string {
+func (o *AddBypassIPResult2) GetActorID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActorID
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetUpdatedAt() string {
+func (o *AddBypassIPResult2) GetUpdatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.UpdatedAt
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetUpdatedAtHour() string {
+func (o *AddBypassIPResult2) GetUpdatedAtHour() string {
 	if o == nil {
 		return ""
 	}
 	return o.UpdatedAtHour
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetDeletedAt() *string {
+func (o *AddBypassIPResult2) GetDeletedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *AddBypassIPResponseBodySecurityResult) GetExpiresAt() *float64 {
+func (o *AddBypassIPResult2) GetExpiresAt() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -358,8 +358,8 @@ func (o *AddBypassIPResponseBodySecurityResult) GetExpiresAt() *float64 {
 }
 
 type AddBypassIPResponseBody2 struct {
-	Ok     bool                                    `json:"ok"`
-	Result []AddBypassIPResponseBodySecurityResult `json:"result,omitempty"`
+	Ok     bool                 `json:"ok"`
+	Result []AddBypassIPResult2 `json:"result,omitempty"`
 }
 
 func (o *AddBypassIPResponseBody2) GetOk() bool {
@@ -369,14 +369,14 @@ func (o *AddBypassIPResponseBody2) GetOk() bool {
 	return o.Ok
 }
 
-func (o *AddBypassIPResponseBody2) GetResult() []AddBypassIPResponseBodySecurityResult {
+func (o *AddBypassIPResponseBody2) GetResult() []AddBypassIPResult2 {
 	if o == nil {
 		return nil
 	}
 	return o.Result
 }
 
-type AddBypassIPResponseBodyResult struct {
+type AddBypassIPResult1 struct {
 	OwnerID       string  `json:"OwnerId"`
 	ID            string  `json:"Id"`
 	Domain        string  `json:"Domain"`
@@ -386,49 +386,49 @@ type AddBypassIPResponseBodyResult struct {
 	IsProjectRule bool    `json:"IsProjectRule"`
 }
 
-func (o *AddBypassIPResponseBodyResult) GetOwnerID() string {
+func (o *AddBypassIPResult1) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *AddBypassIPResponseBodyResult) GetID() string {
+func (o *AddBypassIPResult1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *AddBypassIPResponseBodyResult) GetDomain() string {
+func (o *AddBypassIPResult1) GetDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.Domain
 }
 
-func (o *AddBypassIPResponseBodyResult) GetIP() *string {
+func (o *AddBypassIPResult1) GetIP() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IP
 }
 
-func (o *AddBypassIPResponseBodyResult) GetProjectID() string {
+func (o *AddBypassIPResult1) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *AddBypassIPResponseBodyResult) GetNote() string {
+func (o *AddBypassIPResult1) GetNote() string {
 	if o == nil {
 		return ""
 	}
 	return o.Note
 }
 
-func (o *AddBypassIPResponseBodyResult) GetIsProjectRule() bool {
+func (o *AddBypassIPResult1) GetIsProjectRule() bool {
 	if o == nil {
 		return false
 	}
@@ -436,9 +436,9 @@ func (o *AddBypassIPResponseBodyResult) GetIsProjectRule() bool {
 }
 
 type AddBypassIPResponseBody1 struct {
-	Ok         bool                            `json:"ok"`
-	Result     []AddBypassIPResponseBodyResult `json:"result"`
-	Pagination any                             `json:"pagination"`
+	Ok         bool                 `json:"ok"`
+	Result     []AddBypassIPResult1 `json:"result"`
+	Pagination any                  `json:"pagination"`
 }
 
 func (o *AddBypassIPResponseBody1) GetOk() bool {
@@ -448,9 +448,9 @@ func (o *AddBypassIPResponseBody1) GetOk() bool {
 	return o.Ok
 }
 
-func (o *AddBypassIPResponseBody1) GetResult() []AddBypassIPResponseBodyResult {
+func (o *AddBypassIPResponseBody1) GetResult() []AddBypassIPResult1 {
 	if o == nil {
-		return []AddBypassIPResponseBodyResult{}
+		return []AddBypassIPResult1{}
 	}
 	return o.Result
 }
@@ -465,13 +465,13 @@ func (o *AddBypassIPResponseBody1) GetPagination() any {
 type AddBypassIPResponseBodyType string
 
 const (
-	AddBypassIPResponseBodyTypeAddBypassIPResponseBody1 AddBypassIPResponseBodyType = "addBypassIp_responseBody_1"
-	AddBypassIPResponseBodyTypeAddBypassIPResponseBody2 AddBypassIPResponseBodyType = "addBypassIp_responseBody_2"
+	AddBypassIPResponseBodyTypeAddBypassIPResponseBody1 AddBypassIPResponseBodyType = "addBypassIp_ResponseBody_1"
+	AddBypassIPResponseBodyTypeAddBypassIPResponseBody2 AddBypassIPResponseBodyType = "addBypassIp_ResponseBody_2"
 )
 
 type AddBypassIPResponseBody struct {
-	AddBypassIPResponseBody1 *AddBypassIPResponseBody1
-	AddBypassIPResponseBody2 *AddBypassIPResponseBody2
+	AddBypassIPResponseBody1 *AddBypassIPResponseBody1 `queryParam:"inline"`
+	AddBypassIPResponseBody2 *AddBypassIPResponseBody2 `queryParam:"inline"`
 
 	Type AddBypassIPResponseBodyType
 }

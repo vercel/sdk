@@ -9,7 +9,8 @@
 const value: models.CreateDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```
@@ -20,9 +21,7 @@ const value: models.CreateDeploymentMicrofrontends1 = {
 const value: models.CreateDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   defaultAppProjectName: "<value>",
-  groupIds: [
-    "<value>",
-  ],
+  groupIds: [],
 };
 ```
 

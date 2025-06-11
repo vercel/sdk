@@ -50,7 +50,7 @@ func testAddProjectMemberAddProjectMember0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.AddProjectMemberResponseBody{
+	var respBody *operations.AddProjectMemberResponseBody = &operations.AddProjectMemberResponseBody{
 		ID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

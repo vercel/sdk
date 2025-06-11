@@ -405,8 +405,8 @@ const (
 )
 
 type GetDeploymentsAliasAssigned struct {
-	Number  *float64
-	Boolean *bool
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
 
 	Type GetDeploymentsAliasAssignedType
 }
@@ -551,6 +551,76 @@ func (e *GetDeploymentsChecksConclusion) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentsChecksConclusion: %v", v)
 	}
+}
+
+type GetDeploymentsDeploymentAliasState string
+
+const (
+	GetDeploymentsDeploymentAliasStateSucceeded GetDeploymentsDeploymentAliasState = "succeeded"
+	GetDeploymentsDeploymentAliasStateFailed    GetDeploymentsDeploymentAliasState = "failed"
+	GetDeploymentsDeploymentAliasStatePending   GetDeploymentsDeploymentAliasState = "pending"
+)
+
+func (e GetDeploymentsDeploymentAliasState) ToPointer() *GetDeploymentsDeploymentAliasState {
+	return &e
+}
+func (e *GetDeploymentsDeploymentAliasState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "succeeded":
+		fallthrough
+	case "failed":
+		fallthrough
+	case "pending":
+		*e = GetDeploymentsDeploymentAliasState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsDeploymentAliasState: %v", v)
+	}
+}
+
+// GetDeploymentsDeploymentAlias - Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+type GetDeploymentsDeploymentAlias struct {
+	State       GetDeploymentsDeploymentAliasState `json:"state"`
+	StartedAt   float64                            `json:"startedAt"`
+	CompletedAt *float64                           `json:"completedAt,omitempty"`
+}
+
+func (o *GetDeploymentsDeploymentAlias) GetState() GetDeploymentsDeploymentAliasState {
+	if o == nil {
+		return GetDeploymentsDeploymentAliasState("")
+	}
+	return o.State
+}
+
+func (o *GetDeploymentsDeploymentAlias) GetStartedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StartedAt
+}
+
+func (o *GetDeploymentsDeploymentAlias) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
+// GetDeploymentsChecks - Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+type GetDeploymentsChecks struct {
+	// Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+	DeploymentAlias GetDeploymentsDeploymentAlias `json:"deployment-alias"`
+}
+
+func (o *GetDeploymentsChecks) GetDeploymentAlias() GetDeploymentsDeploymentAlias {
+	if o == nil {
+		return GetDeploymentsDeploymentAlias{}
+	}
+	return o.DeploymentAlias
 }
 
 type GetDeploymentsFramework string
@@ -1048,7 +1118,7 @@ func (o *GetDeploymentsCustomEnvironment) GetSlug() *string {
 	return o.Slug
 }
 
-type Deployments struct {
+type GetDeploymentsDeployment struct {
 	// The unique identifier of the deployment.
 	UID string `json:"uid"`
 	// The name of the deployment.
@@ -1094,6 +1164,8 @@ type Deployments struct {
 	ChecksState *GetDeploymentsChecksState `json:"checksState,omitempty"`
 	// Conclusion for checks
 	ChecksConclusion *GetDeploymentsChecksConclusion `json:"checksConclusion,omitempty"`
+	// Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+	Checks *GetDeploymentsChecks `json:"checks,omitempty"`
 	// Vercel URL to inspect the deployment.
 	InspectorURL *string `json:"inspectorUrl"`
 	// Deployment can be used for instant rollback
@@ -1114,224 +1186,231 @@ type Deployments struct {
 	CustomEnvironment *GetDeploymentsCustomEnvironment `json:"customEnvironment,omitempty"`
 }
 
-func (o *Deployments) GetUID() string {
+func (o *GetDeploymentsDeployment) GetUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UID
 }
 
-func (o *Deployments) GetName() string {
+func (o *GetDeploymentsDeployment) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Deployments) GetURL() string {
+func (o *GetDeploymentsDeployment) GetURL() string {
 	if o == nil {
 		return ""
 	}
 	return o.URL
 }
 
-func (o *Deployments) GetCreated() float64 {
+func (o *GetDeploymentsDeployment) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *Deployments) GetDefaultRoute() *string {
+func (o *GetDeploymentsDeployment) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultRoute
 }
 
-func (o *Deployments) GetDeleted() *float64 {
+func (o *GetDeploymentsDeployment) GetDeleted() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Deleted
 }
 
-func (o *Deployments) GetUndeleted() *float64 {
+func (o *GetDeploymentsDeployment) GetUndeleted() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Undeleted
 }
 
-func (o *Deployments) GetSoftDeletedByRetention() *bool {
+func (o *GetDeploymentsDeployment) GetSoftDeletedByRetention() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SoftDeletedByRetention
 }
 
-func (o *Deployments) GetSource() *GetDeploymentsSource {
+func (o *GetDeploymentsDeployment) GetSource() *GetDeploymentsSource {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *Deployments) GetState() *GetDeploymentsState {
+func (o *GetDeploymentsDeployment) GetState() *GetDeploymentsState {
 	if o == nil {
 		return nil
 	}
 	return o.State
 }
 
-func (o *Deployments) GetReadyState() *GetDeploymentsReadyState {
+func (o *GetDeploymentsDeployment) GetReadyState() *GetDeploymentsReadyState {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
 }
 
-func (o *Deployments) GetType() GetDeploymentsType {
+func (o *GetDeploymentsDeployment) GetType() GetDeploymentsType {
 	if o == nil {
 		return GetDeploymentsType("")
 	}
 	return o.Type
 }
 
-func (o *Deployments) GetCreator() GetDeploymentsCreator {
+func (o *GetDeploymentsDeployment) GetCreator() GetDeploymentsCreator {
 	if o == nil {
 		return GetDeploymentsCreator{}
 	}
 	return o.Creator
 }
 
-func (o *Deployments) GetMeta() map[string]string {
+func (o *GetDeploymentsDeployment) GetMeta() map[string]string {
 	if o == nil {
 		return nil
 	}
 	return o.Meta
 }
 
-func (o *Deployments) GetTarget() *GetDeploymentsTarget {
+func (o *GetDeploymentsDeployment) GetTarget() *GetDeploymentsTarget {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Deployments) GetAliasError() *GetDeploymentsAliasError {
+func (o *GetDeploymentsDeployment) GetAliasError() *GetDeploymentsAliasError {
 	if o == nil {
 		return nil
 	}
 	return o.AliasError
 }
 
-func (o *Deployments) GetAliasAssigned() *GetDeploymentsAliasAssigned {
+func (o *GetDeploymentsDeployment) GetAliasAssigned() *GetDeploymentsAliasAssigned {
 	if o == nil {
 		return nil
 	}
 	return o.AliasAssigned
 }
 
-func (o *Deployments) GetCreatedAt() *float64 {
+func (o *GetDeploymentsDeployment) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Deployments) GetBuildingAt() *float64 {
+func (o *GetDeploymentsDeployment) GetBuildingAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BuildingAt
 }
 
-func (o *Deployments) GetReady() *float64 {
+func (o *GetDeploymentsDeployment) GetReady() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Ready
 }
 
-func (o *Deployments) GetReadySubstate() *GetDeploymentsReadySubstate {
+func (o *GetDeploymentsDeployment) GetReadySubstate() *GetDeploymentsReadySubstate {
 	if o == nil {
 		return nil
 	}
 	return o.ReadySubstate
 }
 
-func (o *Deployments) GetChecksState() *GetDeploymentsChecksState {
+func (o *GetDeploymentsDeployment) GetChecksState() *GetDeploymentsChecksState {
 	if o == nil {
 		return nil
 	}
 	return o.ChecksState
 }
 
-func (o *Deployments) GetChecksConclusion() *GetDeploymentsChecksConclusion {
+func (o *GetDeploymentsDeployment) GetChecksConclusion() *GetDeploymentsChecksConclusion {
 	if o == nil {
 		return nil
 	}
 	return o.ChecksConclusion
 }
 
-func (o *Deployments) GetInspectorURL() *string {
+func (o *GetDeploymentsDeployment) GetChecks() *GetDeploymentsChecks {
+	if o == nil {
+		return nil
+	}
+	return o.Checks
+}
+
+func (o *GetDeploymentsDeployment) GetInspectorURL() *string {
 	if o == nil {
 		return nil
 	}
 	return o.InspectorURL
 }
 
-func (o *Deployments) GetIsRollbackCandidate() *bool {
+func (o *GetDeploymentsDeployment) GetIsRollbackCandidate() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsRollbackCandidate
 }
 
-func (o *Deployments) GetProjectSettings() *GetDeploymentsProjectSettings {
+func (o *GetDeploymentsDeployment) GetProjectSettings() *GetDeploymentsProjectSettings {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectSettings
 }
 
-func (o *Deployments) GetConnectBuildsEnabled() *bool {
+func (o *GetDeploymentsDeployment) GetConnectBuildsEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ConnectBuildsEnabled
 }
 
-func (o *Deployments) GetConnectConfigurationID() *string {
+func (o *GetDeploymentsDeployment) GetConnectConfigurationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ConnectConfigurationID
 }
 
-func (o *Deployments) GetPassiveConnectConfigurationID() *string {
+func (o *GetDeploymentsDeployment) GetPassiveConnectConfigurationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PassiveConnectConfigurationID
 }
 
-func (o *Deployments) GetExpiration() *float64 {
+func (o *GetDeploymentsDeployment) GetExpiration() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Expiration
 }
 
-func (o *Deployments) GetProposedExpiration() *float64 {
+func (o *GetDeploymentsDeployment) GetProposedExpiration() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ProposedExpiration
 }
 
-func (o *Deployments) GetCustomEnvironment() *GetDeploymentsCustomEnvironment {
+func (o *GetDeploymentsDeployment) GetCustomEnvironment() *GetDeploymentsCustomEnvironment {
 	if o == nil {
 		return nil
 	}
@@ -1340,8 +1419,8 @@ func (o *Deployments) GetCustomEnvironment() *GetDeploymentsCustomEnvironment {
 
 type GetDeploymentsResponseBody struct {
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
-	Pagination  components.Pagination `json:"pagination"`
-	Deployments []Deployments         `json:"deployments"`
+	Pagination  components.Pagination      `json:"pagination"`
+	Deployments []GetDeploymentsDeployment `json:"deployments"`
 }
 
 func (o *GetDeploymentsResponseBody) GetPagination() components.Pagination {
@@ -1351,9 +1430,9 @@ func (o *GetDeploymentsResponseBody) GetPagination() components.Pagination {
 	return o.Pagination
 }
 
-func (o *GetDeploymentsResponseBody) GetDeployments() []Deployments {
+func (o *GetDeploymentsResponseBody) GetDeployments() []GetDeploymentsDeployment {
 	if o == nil {
-		return []Deployments{}
+		return []GetDeploymentsDeployment{}
 	}
 	return o.Deployments
 }

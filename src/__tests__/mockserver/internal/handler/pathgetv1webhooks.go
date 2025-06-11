@@ -46,25 +46,11 @@ func testGetWebhooksGetWebhooks0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetWebhooksResponseBodyArrayOfGetWebhooksResponseBody1(
-		[]operations.GetWebhooksResponseBody1{
-			operations.GetWebhooksResponseBody1{
-				ProjectsMetadata: []operations.ProjectsMetadata{
-					operations.ProjectsMetadata{
-						ID:   "<id>",
-						Name: "<value>",
-					},
-					operations.ProjectsMetadata{
-						ID:   "<id>",
-						Name: "<value>",
-					},
-					operations.ProjectsMetadata{
-						ID:   "<id>",
-						Name: "<value>",
-					},
-				},
-				Events: []operations.ResponseBodyEvents{
-					operations.ResponseBodyEventsDeploymentCreated,
+	var respBody *operations.GetWebhooksResponseBody = types.Pointer(operations.CreateGetWebhooksResponseBodyArrayOfGetWebhooksResponseBody2(
+		[]operations.GetWebhooksResponseBody2{
+			operations.GetWebhooksResponseBody2{
+				Events: []operations.GetWebhooksEvent2{
+					operations.GetWebhooksEvent2DeploymentCreated,
 				},
 				ID:        "account_hook_GflD6EYyo7F4ViYS",
 				URL:       "https://my-webhook.com",
@@ -75,15 +61,9 @@ func testGetWebhooksGetWebhooks0(w http.ResponseWriter, req *http.Request) {
 					"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
 				},
 			},
-			operations.GetWebhooksResponseBody1{
-				ProjectsMetadata: []operations.ProjectsMetadata{
-					operations.ProjectsMetadata{
-						ID:   "<id>",
-						Name: "<value>",
-					},
-				},
-				Events: []operations.ResponseBodyEvents{
-					operations.ResponseBodyEventsDeploymentCreated,
+			operations.GetWebhooksResponseBody2{
+				Events: []operations.GetWebhooksEvent2{
+					operations.GetWebhooksEvent2DeploymentCreated,
 				},
 				ID:        "account_hook_GflD6EYyo7F4ViYS",
 				URL:       "https://my-webhook.com",
@@ -94,15 +74,9 @@ func testGetWebhooksGetWebhooks0(w http.ResponseWriter, req *http.Request) {
 					"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
 				},
 			},
-			operations.GetWebhooksResponseBody1{
-				ProjectsMetadata: []operations.ProjectsMetadata{
-					operations.ProjectsMetadata{
-						ID:   "<id>",
-						Name: "<value>",
-					},
-				},
-				Events: []operations.ResponseBodyEvents{
-					operations.ResponseBodyEventsDeploymentCreated,
+			operations.GetWebhooksResponseBody2{
+				Events: []operations.GetWebhooksEvent2{
+					operations.GetWebhooksEvent2DeploymentCreated,
 				},
 				ID:        "account_hook_GflD6EYyo7F4ViYS",
 				URL:       "https://my-webhook.com",

@@ -10,9 +10,9 @@ let value: UpdateProjectLatestDeployments = {
   createdAt: 5561.43,
   createdIn: "<value>",
   creator: {
-    email: "Clovis_Mayert81@hotmail.com",
+    email: "Margret_Volkman@gmail.com",
     uid: "<id>",
-    username: "Fredrick.Hansen",
+    username: "Skye_Bartell",
   },
   deploymentHostname: "<value>",
   name: "<value>",
@@ -21,7 +21,7 @@ let value: UpdateProjectLatestDeployments = {
   private: false,
   readyState: "QUEUED",
   type: "LAMBDAS",
-  url: "https://pleasant-lotion.biz",
+  url: "https://different-chiffonier.com",
   userId: "<id>",
 };
 ```

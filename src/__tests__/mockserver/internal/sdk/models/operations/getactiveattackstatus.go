@@ -119,7 +119,7 @@ func (o *AffectedHostMap) GetDdosAlerts() map[string]DdosAlerts {
 	return o.DdosAlerts
 }
 
-type Anomalies struct {
+type Anomaly struct {
 	OwnerID         string                     `json:"ownerId"`
 	ProjectID       string                     `json:"projectId"`
 	StartTime       float64                    `json:"startTime"`
@@ -129,49 +129,49 @@ type Anomalies struct {
 	AffectedHostMap map[string]AffectedHostMap `json:"affectedHostMap"`
 }
 
-func (o *Anomalies) GetOwnerID() string {
+func (o *Anomaly) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *Anomalies) GetProjectID() string {
+func (o *Anomaly) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Anomalies) GetStartTime() float64 {
+func (o *Anomaly) GetStartTime() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.StartTime
 }
 
-func (o *Anomalies) GetEndTime() *float64 {
+func (o *Anomaly) GetEndTime() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.EndTime
 }
 
-func (o *Anomalies) GetAtMinute() float64 {
+func (o *Anomaly) GetAtMinute() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.AtMinute
 }
 
-func (o *Anomalies) GetState() *string {
+func (o *Anomaly) GetState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.State
 }
 
-func (o *Anomalies) GetAffectedHostMap() map[string]AffectedHostMap {
+func (o *Anomaly) GetAffectedHostMap() map[string]AffectedHostMap {
 	if o == nil {
 		return map[string]AffectedHostMap{}
 	}
@@ -179,12 +179,12 @@ func (o *Anomalies) GetAffectedHostMap() map[string]AffectedHostMap {
 }
 
 type GetActiveAttackStatusResponseBody2 struct {
-	Anomalies []Anomalies `json:"anomalies"`
+	Anomalies []Anomaly `json:"anomalies"`
 }
 
-func (o *GetActiveAttackStatusResponseBody2) GetAnomalies() []Anomalies {
+func (o *GetActiveAttackStatusResponseBody2) GetAnomalies() []Anomaly {
 	if o == nil {
-		return []Anomalies{}
+		return []Anomaly{}
 	}
 	return o.Anomalies
 }
@@ -195,13 +195,13 @@ type GetActiveAttackStatusResponseBody1 struct {
 type GetActiveAttackStatusResponseBodyType string
 
 const (
-	GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody1 GetActiveAttackStatusResponseBodyType = "getActiveAttackStatus_responseBody_1"
-	GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody2 GetActiveAttackStatusResponseBodyType = "getActiveAttackStatus_responseBody_2"
+	GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody1 GetActiveAttackStatusResponseBodyType = "getActiveAttackStatus_ResponseBody_1"
+	GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody2 GetActiveAttackStatusResponseBodyType = "getActiveAttackStatus_ResponseBody_2"
 )
 
 type GetActiveAttackStatusResponseBody struct {
-	GetActiveAttackStatusResponseBody1 *GetActiveAttackStatusResponseBody1
-	GetActiveAttackStatusResponseBody2 *GetActiveAttackStatusResponseBody2
+	GetActiveAttackStatusResponseBody1 *GetActiveAttackStatusResponseBody1 `queryParam:"inline"`
+	GetActiveAttackStatusResponseBody2 *GetActiveAttackStatusResponseBody2 `queryParam:"inline"`
 
 	Type GetActiveAttackStatusResponseBodyType
 }

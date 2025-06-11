@@ -54,13 +54,13 @@ func testUpdateAccessGroupProjectUpdateAccessGroupProjectId0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateAccessGroupProjectResponseBody{
+	var respBody *operations.UpdateAccessGroupProjectResponseBody = &operations.UpdateAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
-		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "1715136753218",
-		UpdatedAt:     "1744362874326",
+		Role:          operations.UpdateAccessGroupProjectRoleResponseProjectDeveloper,
+		CreatedAt:     "1728862860579",
+		UpdatedAt:     "1735681594699",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -98,13 +98,13 @@ func testUpdateAccessGroupProjectUpdateAccessGroupProjectName0(w http.ResponseWr
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateAccessGroupProjectResponseBody{
+	var respBody *operations.UpdateAccessGroupProjectResponseBody = &operations.UpdateAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
-		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "1716648820605",
-		UpdatedAt:     "1744328935382",
+		Role:          operations.UpdateAccessGroupProjectRoleResponseProjectDeveloper,
+		CreatedAt:     "1728862860579",
+		UpdatedAt:     "1735681594699",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -142,13 +142,13 @@ func testUpdateAccessGroupProjectUpdateAccessGroupProject0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateAccessGroupProjectResponseBody{
+	var respBody *operations.UpdateAccessGroupProjectResponseBody = &operations.UpdateAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
-		Role:          operations.UpdateAccessGroupProjectAccessGroupsRoleAdmin,
-		CreatedAt:     "1736314214978",
-		UpdatedAt:     "1744397001817",
+		Role:          operations.UpdateAccessGroupProjectRoleResponseProjectDeveloper,
+		CreatedAt:     "1728862860579",
+		UpdatedAt:     "1735681594699",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

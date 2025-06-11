@@ -45,7 +45,7 @@ func testDeleteDomainDeleteDomain0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.DeleteDomainResponseBody{
+	var respBody *operations.DeleteDomainResponseBody = &operations.DeleteDomainResponseBody{
 		UID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

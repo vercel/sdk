@@ -89,84 +89,84 @@ func (o *UpdateEdgeConfigTransfer) GetDoneAt() *float64 {
 type UpdateEdgeConfigSchema struct {
 }
 
-type UpdateEdgeConfigPurposeEdgeConfigType string
+type UpdateEdgeConfigTypeExperimentation string
 
 const (
-	UpdateEdgeConfigPurposeEdgeConfigTypeExperimentation UpdateEdgeConfigPurposeEdgeConfigType = "experimentation"
+	UpdateEdgeConfigTypeExperimentationExperimentation UpdateEdgeConfigTypeExperimentation = "experimentation"
 )
 
-func (e UpdateEdgeConfigPurposeEdgeConfigType) ToPointer() *UpdateEdgeConfigPurposeEdgeConfigType {
+func (e UpdateEdgeConfigTypeExperimentation) ToPointer() *UpdateEdgeConfigTypeExperimentation {
 	return &e
 }
-func (e *UpdateEdgeConfigPurposeEdgeConfigType) UnmarshalJSON(data []byte) error {
+func (e *UpdateEdgeConfigTypeExperimentation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "experimentation":
-		*e = UpdateEdgeConfigPurposeEdgeConfigType(v)
+		*e = UpdateEdgeConfigTypeExperimentation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateEdgeConfigPurposeEdgeConfigType: %v", v)
+		return fmt.Errorf("invalid value for UpdateEdgeConfigTypeExperimentation: %v", v)
 	}
 }
 
-type UpdateEdgeConfigPurpose2 struct {
-	Type       UpdateEdgeConfigPurposeEdgeConfigType `json:"type"`
-	ResourceID string                                `json:"resourceId"`
+type UpdateEdgeConfigPurposeExperimentation struct {
+	Type       UpdateEdgeConfigTypeExperimentation `json:"type"`
+	ResourceID string                              `json:"resourceId"`
 }
 
-func (o *UpdateEdgeConfigPurpose2) GetType() UpdateEdgeConfigPurposeEdgeConfigType {
+func (o *UpdateEdgeConfigPurposeExperimentation) GetType() UpdateEdgeConfigTypeExperimentation {
 	if o == nil {
-		return UpdateEdgeConfigPurposeEdgeConfigType("")
+		return UpdateEdgeConfigTypeExperimentation("")
 	}
 	return o.Type
 }
 
-func (o *UpdateEdgeConfigPurpose2) GetResourceID() string {
+func (o *UpdateEdgeConfigPurposeExperimentation) GetResourceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ResourceID
 }
 
-type UpdateEdgeConfigPurposeType string
+type UpdateEdgeConfigTypeFlags string
 
 const (
-	UpdateEdgeConfigPurposeTypeFlags UpdateEdgeConfigPurposeType = "flags"
+	UpdateEdgeConfigTypeFlagsFlags UpdateEdgeConfigTypeFlags = "flags"
 )
 
-func (e UpdateEdgeConfigPurposeType) ToPointer() *UpdateEdgeConfigPurposeType {
+func (e UpdateEdgeConfigTypeFlags) ToPointer() *UpdateEdgeConfigTypeFlags {
 	return &e
 }
-func (e *UpdateEdgeConfigPurposeType) UnmarshalJSON(data []byte) error {
+func (e *UpdateEdgeConfigTypeFlags) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags":
-		*e = UpdateEdgeConfigPurposeType(v)
+		*e = UpdateEdgeConfigTypeFlags(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateEdgeConfigPurposeType: %v", v)
+		return fmt.Errorf("invalid value for UpdateEdgeConfigTypeFlags: %v", v)
 	}
 }
 
-type UpdateEdgeConfigPurpose1 struct {
-	Type      UpdateEdgeConfigPurposeType `json:"type"`
-	ProjectID string                      `json:"projectId"`
+type UpdateEdgeConfigPurposeFlags struct {
+	Type      UpdateEdgeConfigTypeFlags `json:"type"`
+	ProjectID string                    `json:"projectId"`
 }
 
-func (o *UpdateEdgeConfigPurpose1) GetType() UpdateEdgeConfigPurposeType {
+func (o *UpdateEdgeConfigPurposeFlags) GetType() UpdateEdgeConfigTypeFlags {
 	if o == nil {
-		return UpdateEdgeConfigPurposeType("")
+		return UpdateEdgeConfigTypeFlags("")
 	}
 	return o.Type
 }
 
-func (o *UpdateEdgeConfigPurpose1) GetProjectID() string {
+func (o *UpdateEdgeConfigPurposeFlags) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
@@ -176,64 +176,64 @@ func (o *UpdateEdgeConfigPurpose1) GetProjectID() string {
 type UpdateEdgeConfigPurposeUnionType string
 
 const (
-	UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose1 UpdateEdgeConfigPurposeUnionType = "updateEdgeConfig_purpose_1"
-	UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose2 UpdateEdgeConfigPurposeUnionType = "updateEdgeConfig_purpose_2"
+	UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeFlags           UpdateEdgeConfigPurposeUnionType = "updateEdgeConfig_purpose_Flags"
+	UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeExperimentation UpdateEdgeConfigPurposeUnionType = "updateEdgeConfig_purpose_Experimentation"
 )
 
-type UpdateEdgeConfigPurpose struct {
-	UpdateEdgeConfigPurpose1 *UpdateEdgeConfigPurpose1
-	UpdateEdgeConfigPurpose2 *UpdateEdgeConfigPurpose2
+type UpdateEdgeConfigPurposeUnion struct {
+	UpdateEdgeConfigPurposeFlags           *UpdateEdgeConfigPurposeFlags           `queryParam:"inline"`
+	UpdateEdgeConfigPurposeExperimentation *UpdateEdgeConfigPurposeExperimentation `queryParam:"inline"`
 
 	Type UpdateEdgeConfigPurposeUnionType
 }
 
-func CreateUpdateEdgeConfigPurposeUpdateEdgeConfigPurpose1(updateEdgeConfigPurpose1 UpdateEdgeConfigPurpose1) UpdateEdgeConfigPurpose {
-	typ := UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose1
+func CreateUpdateEdgeConfigPurposeUnionUpdateEdgeConfigPurposeFlags(updateEdgeConfigPurposeFlags UpdateEdgeConfigPurposeFlags) UpdateEdgeConfigPurposeUnion {
+	typ := UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeFlags
 
-	return UpdateEdgeConfigPurpose{
-		UpdateEdgeConfigPurpose1: &updateEdgeConfigPurpose1,
-		Type:                     typ,
+	return UpdateEdgeConfigPurposeUnion{
+		UpdateEdgeConfigPurposeFlags: &updateEdgeConfigPurposeFlags,
+		Type:                         typ,
 	}
 }
 
-func CreateUpdateEdgeConfigPurposeUpdateEdgeConfigPurpose2(updateEdgeConfigPurpose2 UpdateEdgeConfigPurpose2) UpdateEdgeConfigPurpose {
-	typ := UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose2
+func CreateUpdateEdgeConfigPurposeUnionUpdateEdgeConfigPurposeExperimentation(updateEdgeConfigPurposeExperimentation UpdateEdgeConfigPurposeExperimentation) UpdateEdgeConfigPurposeUnion {
+	typ := UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeExperimentation
 
-	return UpdateEdgeConfigPurpose{
-		UpdateEdgeConfigPurpose2: &updateEdgeConfigPurpose2,
-		Type:                     typ,
+	return UpdateEdgeConfigPurposeUnion{
+		UpdateEdgeConfigPurposeExperimentation: &updateEdgeConfigPurposeExperimentation,
+		Type:                                   typ,
 	}
 }
 
-func (u *UpdateEdgeConfigPurpose) UnmarshalJSON(data []byte) error {
+func (u *UpdateEdgeConfigPurposeUnion) UnmarshalJSON(data []byte) error {
 
-	var updateEdgeConfigPurpose1 UpdateEdgeConfigPurpose1 = UpdateEdgeConfigPurpose1{}
-	if err := utils.UnmarshalJSON(data, &updateEdgeConfigPurpose1, "", true, true); err == nil {
-		u.UpdateEdgeConfigPurpose1 = &updateEdgeConfigPurpose1
-		u.Type = UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose1
+	var updateEdgeConfigPurposeFlags UpdateEdgeConfigPurposeFlags = UpdateEdgeConfigPurposeFlags{}
+	if err := utils.UnmarshalJSON(data, &updateEdgeConfigPurposeFlags, "", true, true); err == nil {
+		u.UpdateEdgeConfigPurposeFlags = &updateEdgeConfigPurposeFlags
+		u.Type = UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeFlags
 		return nil
 	}
 
-	var updateEdgeConfigPurpose2 UpdateEdgeConfigPurpose2 = UpdateEdgeConfigPurpose2{}
-	if err := utils.UnmarshalJSON(data, &updateEdgeConfigPurpose2, "", true, true); err == nil {
-		u.UpdateEdgeConfigPurpose2 = &updateEdgeConfigPurpose2
-		u.Type = UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurpose2
+	var updateEdgeConfigPurposeExperimentation UpdateEdgeConfigPurposeExperimentation = UpdateEdgeConfigPurposeExperimentation{}
+	if err := utils.UnmarshalJSON(data, &updateEdgeConfigPurposeExperimentation, "", true, true); err == nil {
+		u.UpdateEdgeConfigPurposeExperimentation = &updateEdgeConfigPurposeExperimentation
+		u.Type = UpdateEdgeConfigPurposeUnionTypeUpdateEdgeConfigPurposeExperimentation
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateEdgeConfigPurpose", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateEdgeConfigPurposeUnion", string(data))
 }
 
-func (u UpdateEdgeConfigPurpose) MarshalJSON() ([]byte, error) {
-	if u.UpdateEdgeConfigPurpose1 != nil {
-		return utils.MarshalJSON(u.UpdateEdgeConfigPurpose1, "", true)
+func (u UpdateEdgeConfigPurposeUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateEdgeConfigPurposeFlags != nil {
+		return utils.MarshalJSON(u.UpdateEdgeConfigPurposeFlags, "", true)
 	}
 
-	if u.UpdateEdgeConfigPurpose2 != nil {
-		return utils.MarshalJSON(u.UpdateEdgeConfigPurpose2, "", true)
+	if u.UpdateEdgeConfigPurposeExperimentation != nil {
+		return utils.MarshalJSON(u.UpdateEdgeConfigPurposeExperimentation, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateEdgeConfigPurpose: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateEdgeConfigPurposeUnion: all fields are null")
 }
 
 // UpdateEdgeConfigResponseBody - An Edge Config
@@ -246,11 +246,11 @@ type UpdateEdgeConfigResponseBody struct {
 	OwnerID *string `json:"ownerId,omitempty"`
 	Digest  *string `json:"digest,omitempty"`
 	// Keeps track of the current state of the Edge Config while it gets transferred.
-	Transfer    *UpdateEdgeConfigTransfer `json:"transfer,omitempty"`
-	Schema      *UpdateEdgeConfigSchema   `json:"schema,omitempty"`
-	Purpose     *UpdateEdgeConfigPurpose  `json:"purpose,omitempty"`
-	SizeInBytes float64                   `json:"sizeInBytes"`
-	ItemCount   float64                   `json:"itemCount"`
+	Transfer    *UpdateEdgeConfigTransfer     `json:"transfer,omitempty"`
+	Schema      *UpdateEdgeConfigSchema       `json:"schema,omitempty"`
+	Purpose     *UpdateEdgeConfigPurposeUnion `json:"purpose,omitempty"`
+	SizeInBytes float64                       `json:"sizeInBytes"`
+	ItemCount   float64                       `json:"itemCount"`
 }
 
 func (o *UpdateEdgeConfigResponseBody) GetCreatedAt() *float64 {
@@ -309,7 +309,7 @@ func (o *UpdateEdgeConfigResponseBody) GetSchema() *UpdateEdgeConfigSchema {
 	return o.Schema
 }
 
-func (o *UpdateEdgeConfigResponseBody) GetPurpose() *UpdateEdgeConfigPurpose {
+func (o *UpdateEdgeConfigResponseBody) GetPurpose() *UpdateEdgeConfigPurposeUnion {
 	if o == nil {
 		return nil
 	}

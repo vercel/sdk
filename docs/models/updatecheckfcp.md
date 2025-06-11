@@ -6,7 +6,7 @@
 import { UpdateCheckFCP } from "@vercel/sdk/models/updatecheckop.js";
 
 let value: UpdateCheckFCP = {
-  value: 6089.01,
+  value: 5881.2,
   source: "web-vitals",
 };
 ```

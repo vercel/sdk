@@ -7,7 +7,8 @@ import { GetProjectsDefaultResourceConfig } from "@vercel/sdk/models/getprojects
 
 let value: GetProjectsDefaultResourceConfig = {
   functionDefaultRegions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

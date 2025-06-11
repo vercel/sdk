@@ -46,7 +46,7 @@ func testExchangeSsoTokenExchangeSsoToken0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ExchangeSsoTokenResponseBody{
+	var respBody *operations.ExchangeSsoTokenResponseBody = &operations.ExchangeSsoTokenResponseBody{
 		IDToken:     "<value>",
 		AccessToken: types.String("<value>"),
 		TokenType:   types.String("<value>"),

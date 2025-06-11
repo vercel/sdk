@@ -8,9 +8,11 @@ MFA configuration. When enabled, the user will be required to provide a second f
 import { MfaConfiguration } from "@vercel/sdk/models/userevent.js";
 
 let value: MfaConfiguration = {
-  enabled: false,
+  enabled: true,
   recoveryCodes: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

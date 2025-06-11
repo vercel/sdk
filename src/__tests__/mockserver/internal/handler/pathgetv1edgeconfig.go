@@ -45,14 +45,14 @@ func testGetEdgeConfigsGetEdgeConfigs0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []operations.GetEdgeConfigsResponseBody{
+	var respBody []operations.GetEdgeConfigsResponseBody = []operations.GetEdgeConfigsResponseBody{
 		operations.GetEdgeConfigsResponseBody{
-			SizeInBytes: 8239.08,
-			ItemCount:   557.07,
+			SizeInBytes: 2670.91,
+			ItemCount:   9219.58,
 		},
 		operations.GetEdgeConfigsResponseBody{
-			SizeInBytes: 4591.09,
-			ItemCount:   7040.34,
+			SizeInBytes: 2670.91,
+			ItemCount:   9219.58,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

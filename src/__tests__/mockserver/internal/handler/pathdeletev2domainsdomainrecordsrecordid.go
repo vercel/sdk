@@ -45,7 +45,7 @@ func testRemoveRecordRemoveRecord0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveRecordResponseBody{}
+	var respBody *operations.RemoveRecordResponseBody = &operations.RemoveRecordResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

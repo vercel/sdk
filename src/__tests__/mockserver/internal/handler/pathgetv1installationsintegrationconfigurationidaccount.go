@@ -45,10 +45,10 @@ func testGetAccountInfoGetAccountInfo0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetAccountInfoResponseBody{
-		URL: "https://friendly-pleasure.info",
+	var respBody *operations.GetAccountInfoResponseBody = &operations.GetAccountInfoResponseBody{
+		URL: "https://joyful-mouser.com/",
 		Contact: &operations.Contact{
-			Email: "Horace_Bernhard@yahoo.com",
+			Email: "Cecile47@yahoo.com",
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -8,26 +8,26 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// UpdateRecordType - The type of the DNS record
-type UpdateRecordType string
+// UpdateRecordTypeRequest - The type of the DNS record
+type UpdateRecordTypeRequest string
 
 const (
-	UpdateRecordTypeA     UpdateRecordType = "A"
-	UpdateRecordTypeAaaa  UpdateRecordType = "AAAA"
-	UpdateRecordTypeAlias UpdateRecordType = "ALIAS"
-	UpdateRecordTypeCaa   UpdateRecordType = "CAA"
-	UpdateRecordTypeCname UpdateRecordType = "CNAME"
-	UpdateRecordTypeHTTPS UpdateRecordType = "HTTPS"
-	UpdateRecordTypeMx    UpdateRecordType = "MX"
-	UpdateRecordTypeSrv   UpdateRecordType = "SRV"
-	UpdateRecordTypeTxt   UpdateRecordType = "TXT"
-	UpdateRecordTypeNs    UpdateRecordType = "NS"
+	UpdateRecordTypeRequestA     UpdateRecordTypeRequest = "A"
+	UpdateRecordTypeRequestAaaa  UpdateRecordTypeRequest = "AAAA"
+	UpdateRecordTypeRequestAlias UpdateRecordTypeRequest = "ALIAS"
+	UpdateRecordTypeRequestCaa   UpdateRecordTypeRequest = "CAA"
+	UpdateRecordTypeRequestCname UpdateRecordTypeRequest = "CNAME"
+	UpdateRecordTypeRequestHTTPS UpdateRecordTypeRequest = "HTTPS"
+	UpdateRecordTypeRequestMx    UpdateRecordTypeRequest = "MX"
+	UpdateRecordTypeRequestSrv   UpdateRecordTypeRequest = "SRV"
+	UpdateRecordTypeRequestTxt   UpdateRecordTypeRequest = "TXT"
+	UpdateRecordTypeRequestNs    UpdateRecordTypeRequest = "NS"
 )
 
-func (e UpdateRecordType) ToPointer() *UpdateRecordType {
+func (e UpdateRecordTypeRequest) ToPointer() *UpdateRecordTypeRequest {
 	return &e
 }
-func (e *UpdateRecordType) UnmarshalJSON(data []byte) error {
+func (e *UpdateRecordTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -52,69 +52,69 @@ func (e *UpdateRecordType) UnmarshalJSON(data []byte) error {
 	case "TXT":
 		fallthrough
 	case "NS":
-		*e = UpdateRecordType(v)
+		*e = UpdateRecordTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateRecordType: %v", v)
+		return fmt.Errorf("invalid value for UpdateRecordTypeRequest: %v", v)
 	}
 }
 
-type Srv struct {
+type UpdateRecordSrv struct {
 	Target   *string `json:"target"`
 	Weight   *int64  `json:"weight"`
 	Port     *int64  `json:"port"`
 	Priority *int64  `json:"priority"`
 }
 
-func (o *Srv) GetTarget() *string {
+func (o *UpdateRecordSrv) GetTarget() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Srv) GetWeight() *int64 {
+func (o *UpdateRecordSrv) GetWeight() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Weight
 }
 
-func (o *Srv) GetPort() *int64 {
+func (o *UpdateRecordSrv) GetPort() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Port
 }
 
-func (o *Srv) GetPriority() *int64 {
+func (o *UpdateRecordSrv) GetPriority() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Priority
 }
 
-type HTTPS struct {
+type UpdateRecordHTTPS struct {
 	Priority *int64  `json:"priority"`
 	Target   *string `json:"target"`
 	Params   *string `json:"params,omitempty"`
 }
 
-func (o *HTTPS) GetPriority() *int64 {
+func (o *UpdateRecordHTTPS) GetPriority() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Priority
 }
 
-func (o *HTTPS) GetTarget() *string {
+func (o *UpdateRecordHTTPS) GetTarget() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *HTTPS) GetParams() *string {
+func (o *UpdateRecordHTTPS) GetParams() *string {
 	if o == nil {
 		return nil
 	}
@@ -127,13 +127,13 @@ type UpdateRecordRequestBody struct {
 	// The value of the DNS record
 	Value *string `json:"value,omitempty"`
 	// The type of the DNS record
-	Type *UpdateRecordType `json:"type,omitempty"`
+	Type *UpdateRecordTypeRequest `json:"type,omitempty"`
 	// The Time to live (TTL) value of the DNS record
 	TTL *int64 `json:"ttl,omitempty"`
 	// The MX priority value of the DNS record
-	MxPriority *int64 `json:"mxPriority,omitempty"`
-	Srv        *Srv   `json:"srv,omitempty"`
-	HTTPS      *HTTPS `json:"https,omitempty"`
+	MxPriority *int64             `json:"mxPriority,omitempty"`
+	Srv        *UpdateRecordSrv   `json:"srv,omitempty"`
+	HTTPS      *UpdateRecordHTTPS `json:"https,omitempty"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
 }
@@ -152,7 +152,7 @@ func (o *UpdateRecordRequestBody) GetValue() *string {
 	return o.Value
 }
 
-func (o *UpdateRecordRequestBody) GetType() *UpdateRecordType {
+func (o *UpdateRecordRequestBody) GetType() *UpdateRecordTypeRequest {
 	if o == nil {
 		return nil
 	}
@@ -173,14 +173,14 @@ func (o *UpdateRecordRequestBody) GetMxPriority() *int64 {
 	return o.MxPriority
 }
 
-func (o *UpdateRecordRequestBody) GetSrv() *Srv {
+func (o *UpdateRecordRequestBody) GetSrv() *UpdateRecordSrv {
 	if o == nil {
 		return nil
 	}
 	return o.Srv
 }
 
-func (o *UpdateRecordRequestBody) GetHTTPS() *HTTPS {
+func (o *UpdateRecordRequestBody) GetHTTPS() *UpdateRecordHTTPS {
 	if o == nil {
 		return nil
 	}
@@ -282,17 +282,17 @@ func (e *RecordType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateRecordDNSType string
+type UpdateRecordTypeResponseBody string
 
 const (
-	UpdateRecordDNSTypeRecord    UpdateRecordDNSType = "record"
-	UpdateRecordDNSTypeRecordSys UpdateRecordDNSType = "record-sys"
+	UpdateRecordTypeResponseBodyRecord    UpdateRecordTypeResponseBody = "record"
+	UpdateRecordTypeResponseBodyRecordSys UpdateRecordTypeResponseBody = "record-sys"
 )
 
-func (e UpdateRecordDNSType) ToPointer() *UpdateRecordDNSType {
+func (e UpdateRecordTypeResponseBody) ToPointer() *UpdateRecordTypeResponseBody {
 	return &e
 }
-func (e *UpdateRecordDNSType) UnmarshalJSON(data []byte) error {
+func (e *UpdateRecordTypeResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -301,24 +301,24 @@ func (e *UpdateRecordDNSType) UnmarshalJSON(data []byte) error {
 	case "record":
 		fallthrough
 	case "record-sys":
-		*e = UpdateRecordDNSType(v)
+		*e = UpdateRecordTypeResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateRecordDNSType: %v", v)
+		return fmt.Errorf("invalid value for UpdateRecordTypeResponseBody: %v", v)
 	}
 }
 
 type UpdateRecordResponseBody struct {
-	CreatedAt  *float64            `json:"createdAt,omitempty"`
-	Creator    string              `json:"creator"`
-	Domain     string              `json:"domain"`
-	ID         string              `json:"id"`
-	Name       string              `json:"name"`
-	RecordType RecordType          `json:"recordType"`
-	TTL        *float64            `json:"ttl,omitempty"`
-	Type       UpdateRecordDNSType `json:"type"`
-	Value      string              `json:"value"`
-	Comment    *string             `json:"comment,omitempty"`
+	CreatedAt  *float64                     `json:"createdAt,omitempty"`
+	Creator    string                       `json:"creator"`
+	Domain     string                       `json:"domain"`
+	ID         string                       `json:"id"`
+	Name       string                       `json:"name"`
+	RecordType RecordType                   `json:"recordType"`
+	TTL        *float64                     `json:"ttl,omitempty"`
+	Type       UpdateRecordTypeResponseBody `json:"type"`
+	Value      string                       `json:"value"`
+	Comment    *string                      `json:"comment,omitempty"`
 }
 
 func (o *UpdateRecordResponseBody) GetCreatedAt() *float64 {
@@ -370,9 +370,9 @@ func (o *UpdateRecordResponseBody) GetTTL() *float64 {
 	return o.TTL
 }
 
-func (o *UpdateRecordResponseBody) GetType() UpdateRecordDNSType {
+func (o *UpdateRecordResponseBody) GetType() UpdateRecordTypeResponseBody {
 	if o == nil {
-		return UpdateRecordDNSType("")
+		return UpdateRecordTypeResponseBody("")
 	}
 	return o.Type
 }

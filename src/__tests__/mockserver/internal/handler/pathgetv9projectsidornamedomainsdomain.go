@@ -45,11 +45,11 @@ func testGetProjectDomainGetProjectDomain0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetProjectDomainResponseBody{
+	var respBody *operations.GetProjectDomainResponseBody = &operations.GetProjectDomainResponseBody{
 		Name:      "<value>",
 		ApexName:  "<value>",
 		ProjectID: "<id>",
-		Verified:  true,
+		Verified:  false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -6,7 +6,11 @@
 import { GetDeploymentFlagsOptions } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentFlagsOptions = {
-  value: {},
+  value: {
+    "key": [
+      "<value>",
+    ],
+  },
 };
 ```
 

@@ -6,11 +6,7 @@
 import { GetProjectsOptionsAllowlist } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsOptionsAllowlist = {
-  paths: [
-    {
-      value: "<value>",
-    },
-  ],
+  paths: [],
 };
 ```
 

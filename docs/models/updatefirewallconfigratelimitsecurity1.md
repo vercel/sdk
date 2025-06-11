@@ -10,7 +10,7 @@ let value: UpdateFirewallConfigRateLimitSecurity1 = {
   window: 8371.73,
   limit: 5294.69,
   keys: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

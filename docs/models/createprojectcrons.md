@@ -7,16 +7,10 @@ import { CreateProjectCrons } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectCrons = {
   enabledAt: 6003.25,
-  disabledAt: 1338.77,
-  updatedAt: 299.8,
+  disabledAt: 299.8,
+  updatedAt: 6508.08,
   deploymentId: "<id>",
-  definitions: [
-    {
-      host: "vercel.com",
-      path: "/api/crons/sync-something?hello=world",
-      schedule: "0 0 * * *",
-    },
-  ],
+  definitions: [],
 };
 ```
 

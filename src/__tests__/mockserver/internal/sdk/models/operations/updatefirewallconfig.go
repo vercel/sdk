@@ -10,18 +10,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateFirewallConfigRequestBodySecurityRequest12Action string
+type ValueActionEnum5 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest12ActionLog       UpdateFirewallConfigRequestBodySecurityRequest12Action = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest12ActionChallenge UpdateFirewallConfigRequestBodySecurityRequest12Action = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest12ActionDeny      UpdateFirewallConfigRequestBodySecurityRequest12Action = "deny"
+	ValueActionEnum5Log       ValueActionEnum5 = "log"
+	ValueActionEnum5Challenge ValueActionEnum5 = "challenge"
+	ValueActionEnum5Deny      ValueActionEnum5 = "deny"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest12Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest12Action {
+func (e ValueActionEnum5) ToPointer() *ValueActionEnum5 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest12Action) UnmarshalJSON(data []byte) error {
+func (e *ValueActionEnum5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,95 +32,95 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest12Action) UnmarshalJSON(d
 	case "challenge":
 		fallthrough
 	case "deny":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest12Action(v)
+		*e = ValueActionEnum5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest12Action: %v", v)
+		return fmt.Errorf("invalid value for ValueActionEnum5: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest12Value struct {
-	Active bool                                                    `json:"active"`
-	Action *UpdateFirewallConfigRequestBodySecurityRequest12Action `json:"action,omitempty"`
+type UpdateFirewallConfigValue7 struct {
+	Active bool              `json:"active"`
+	Action *ValueActionEnum5 `json:"action,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest12Value) GetActive() bool {
+func (o *UpdateFirewallConfigValue7) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest12Value) GetAction() *UpdateFirewallConfigRequestBodySecurityRequest12Action {
+func (o *UpdateFirewallConfigValue7) GetAction() *ValueActionEnum5 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-// Twelve - Update a managed rule group
-type Twelve struct {
-	Action string                                                           `json:"action"`
-	ID     string                                                           `json:"id"`
-	Value  map[string]UpdateFirewallConfigRequestBodySecurityRequest12Value `json:"value"`
+// UpdateFirewallConfigRequestBody - Update a managed rule group
+type UpdateFirewallConfigRequestBody struct {
+	Action string                                `json:"action"`
+	ID     string                                `json:"id"`
+	Value  map[string]UpdateFirewallConfigValue7 `json:"value"`
 }
 
-func (o *Twelve) GetAction() string {
+func (o *UpdateFirewallConfigRequestBody) GetAction() string {
 	if o == nil {
 		return ""
 	}
 	return o.Action
 }
 
-func (o *Twelve) GetID() string {
+func (o *UpdateFirewallConfigRequestBody) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Twelve) GetValue() map[string]UpdateFirewallConfigRequestBodySecurityRequest12Value {
+func (o *UpdateFirewallConfigRequestBody) GetValue() map[string]UpdateFirewallConfigValue7 {
 	if o == nil {
-		return map[string]UpdateFirewallConfigRequestBodySecurityRequest12Value{}
+		return map[string]UpdateFirewallConfigValue7{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest11Action string
+type ActionManagedRulesUpdate string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest11ActionManagedRulesUpdate UpdateFirewallConfigRequestBodySecurityRequest11Action = "managedRules.update"
+	ActionManagedRulesUpdateManagedRulesUpdate ActionManagedRulesUpdate = "managedRules.update"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest11Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest11Action {
+func (e ActionManagedRulesUpdate) ToPointer() *ActionManagedRulesUpdate {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest11Action) UnmarshalJSON(data []byte) error {
+func (e *ActionManagedRulesUpdate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "managedRules.update":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest11Action(v)
+		*e = ActionManagedRulesUpdate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest11Action: %v", v)
+		return fmt.Errorf("invalid value for ActionManagedRulesUpdate: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest11ValueAction string
+type ValueActionEnum4 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest11ValueActionLog       UpdateFirewallConfigRequestBodySecurityRequest11ValueAction = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest11ValueActionChallenge UpdateFirewallConfigRequestBodySecurityRequest11ValueAction = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest11ValueActionDeny      UpdateFirewallConfigRequestBodySecurityRequest11ValueAction = "deny"
+	ValueActionEnum4Log       ValueActionEnum4 = "log"
+	ValueActionEnum4Challenge ValueActionEnum4 = "challenge"
+	ValueActionEnum4Deny      ValueActionEnum4 = "deny"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest11ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest11ValueAction {
+func (e ValueActionEnum4) ToPointer() *ValueActionEnum4 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest11ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueActionEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -131,147 +131,147 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest11ValueAction) UnmarshalJ
 	case "challenge":
 		fallthrough
 	case "deny":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest11ValueAction(v)
+		*e = ValueActionEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest11ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueActionEnum4: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest11Value struct {
-	Action *UpdateFirewallConfigRequestBodySecurityRequest11ValueAction `json:"action,omitempty"`
-	Active bool                                                         `json:"active"`
+type UpdateFirewallConfigValue6 struct {
+	Action *ValueActionEnum4 `json:"action,omitempty"`
+	Active bool              `json:"active"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest11Value) GetAction() *UpdateFirewallConfigRequestBodySecurityRequest11ValueAction {
+func (o *UpdateFirewallConfigValue6) GetAction() *ValueActionEnum4 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest11Value) GetActive() bool {
+func (o *UpdateFirewallConfigValue6) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-// Eleven - Update a managed ruleset
-type Eleven struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest11Action `json:"action"`
-	ID     string                                                 `json:"id"`
-	Value  UpdateFirewallConfigRequestBodySecurityRequest11Value  `json:"value"`
+// ManagedRulesUpdate - Update a managed ruleset
+type ManagedRulesUpdate struct {
+	Action ActionManagedRulesUpdate   `json:"action"`
+	ID     string                     `json:"id"`
+	Value  UpdateFirewallConfigValue6 `json:"value"`
 }
 
-func (o *Eleven) GetAction() UpdateFirewallConfigRequestBodySecurityRequest11Action {
+func (o *ManagedRulesUpdate) GetAction() ActionManagedRulesUpdate {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest11Action("")
+		return ActionManagedRulesUpdate("")
 	}
 	return o.Action
 }
 
-func (o *Eleven) GetID() string {
+func (o *ManagedRulesUpdate) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Eleven) GetValue() UpdateFirewallConfigRequestBodySecurityRequest11Value {
+func (o *ManagedRulesUpdate) GetValue() UpdateFirewallConfigValue6 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest11Value{}
+		return UpdateFirewallConfigValue6{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest10Action string
+type ActionIPRemove string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest10ActionIPRemove UpdateFirewallConfigRequestBodySecurityRequest10Action = "ip.remove"
+	ActionIPRemoveIPRemove ActionIPRemove = "ip.remove"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest10Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest10Action {
+func (e ActionIPRemove) ToPointer() *ActionIPRemove {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest10Action) UnmarshalJSON(data []byte) error {
+func (e *ActionIPRemove) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ip.remove":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest10Action(v)
+		*e = ActionIPRemove(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest10Action: %v", v)
+		return fmt.Errorf("invalid value for ActionIPRemove: %v", v)
 	}
 }
 
-// RequestBody10 - Remove an IPBlocking rule
-type RequestBody10 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest10Action `json:"action"`
-	ID     string                                                 `json:"id"`
-	Value  any                                                    `json:"value,omitempty"`
+// IPRemove - Remove an IPBlocking rule
+type IPRemove struct {
+	Action ActionIPRemove `json:"action"`
+	ID     string         `json:"id"`
+	Value  any            `json:"value,omitempty"`
 }
 
-func (o *RequestBody10) GetAction() UpdateFirewallConfigRequestBodySecurityRequest10Action {
+func (o *IPRemove) GetAction() ActionIPRemove {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest10Action("")
+		return ActionIPRemove("")
 	}
 	return o.Action
 }
 
-func (o *RequestBody10) GetID() string {
+func (o *IPRemove) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *RequestBody10) GetValue() any {
+func (o *IPRemove) GetValue() any {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest9Action string
+type ActionIPUpdate string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest9ActionIPUpdate UpdateFirewallConfigRequestBodySecurityRequest9Action = "ip.update"
+	ActionIPUpdateIPUpdate ActionIPUpdate = "ip.update"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest9Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest9Action {
+func (e ActionIPUpdate) ToPointer() *ActionIPUpdate {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest9Action) UnmarshalJSON(data []byte) error {
+func (e *ActionIPUpdate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ip.update":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest9Action(v)
+		*e = ActionIPUpdate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest9Action: %v", v)
+		return fmt.Errorf("invalid value for ActionIPUpdate: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest9ValueAction string
+type ValueActionEnum3 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest9ValueActionDeny      UpdateFirewallConfigRequestBodySecurityRequest9ValueAction = "deny"
-	UpdateFirewallConfigRequestBodySecurityRequest9ValueActionChallenge UpdateFirewallConfigRequestBodySecurityRequest9ValueAction = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest9ValueActionLog       UpdateFirewallConfigRequestBodySecurityRequest9ValueAction = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest9ValueActionBypass    UpdateFirewallConfigRequestBodySecurityRequest9ValueAction = "bypass"
+	ValueActionEnum3Deny      ValueActionEnum3 = "deny"
+	ValueActionEnum3Challenge ValueActionEnum3 = "challenge"
+	ValueActionEnum3Log       ValueActionEnum3 = "log"
+	ValueActionEnum3Bypass    ValueActionEnum3 = "bypass"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest9ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest9ValueAction {
+func (e ValueActionEnum3) ToPointer() *ValueActionEnum3 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest9ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueActionEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -284,112 +284,112 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest9ValueAction) UnmarshalJS
 	case "log":
 		fallthrough
 	case "bypass":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest9ValueAction(v)
+		*e = ValueActionEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest9ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueActionEnum3: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest9Value struct {
-	Hostname string                                                     `json:"hostname"`
-	IP       string                                                     `json:"ip"`
-	Notes    *string                                                    `json:"notes,omitempty"`
-	Action   UpdateFirewallConfigRequestBodySecurityRequest9ValueAction `json:"action"`
+type UpdateFirewallConfigValue5 struct {
+	Hostname string           `json:"hostname"`
+	IP       string           `json:"ip"`
+	Notes    *string          `json:"notes,omitempty"`
+	Action   ValueActionEnum3 `json:"action"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest9Value) GetHostname() string {
+func (o *UpdateFirewallConfigValue5) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest9Value) GetIP() string {
+func (o *UpdateFirewallConfigValue5) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest9Value) GetNotes() *string {
+func (o *UpdateFirewallConfigValue5) GetNotes() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Notes
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest9Value) GetAction() UpdateFirewallConfigRequestBodySecurityRequest9ValueAction {
+func (o *UpdateFirewallConfigValue5) GetAction() ValueActionEnum3 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest9ValueAction("")
+		return ValueActionEnum3("")
 	}
 	return o.Action
 }
 
-// RequestBody9 - Update an IP Blocking rule
-type RequestBody9 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest9Action `json:"action"`
-	ID     string                                                `json:"id"`
-	Value  UpdateFirewallConfigRequestBodySecurityRequest9Value  `json:"value"`
+// IPUpdate - Update an IP Blocking rule
+type IPUpdate struct {
+	Action ActionIPUpdate             `json:"action"`
+	ID     string                     `json:"id"`
+	Value  UpdateFirewallConfigValue5 `json:"value"`
 }
 
-func (o *RequestBody9) GetAction() UpdateFirewallConfigRequestBodySecurityRequest9Action {
+func (o *IPUpdate) GetAction() ActionIPUpdate {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest9Action("")
+		return ActionIPUpdate("")
 	}
 	return o.Action
 }
 
-func (o *RequestBody9) GetID() string {
+func (o *IPUpdate) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *RequestBody9) GetValue() UpdateFirewallConfigRequestBodySecurityRequest9Value {
+func (o *IPUpdate) GetValue() UpdateFirewallConfigValue5 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest9Value{}
+		return UpdateFirewallConfigValue5{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest8Action string
+type ActionIPInsert string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest8ActionIPInsert UpdateFirewallConfigRequestBodySecurityRequest8Action = "ip.insert"
+	ActionIPInsertIPInsert ActionIPInsert = "ip.insert"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest8Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest8Action {
+func (e ActionIPInsert) ToPointer() *ActionIPInsert {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest8Action) UnmarshalJSON(data []byte) error {
+func (e *ActionIPInsert) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ip.insert":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest8Action(v)
+		*e = ActionIPInsert(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest8Action: %v", v)
+		return fmt.Errorf("invalid value for ActionIPInsert: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest8ValueAction string
+type ValueActionEnum2 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest8ValueActionDeny      UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = "deny"
-	UpdateFirewallConfigRequestBodySecurityRequest8ValueActionChallenge UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest8ValueActionLog       UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest8ValueActionBypass    UpdateFirewallConfigRequestBodySecurityRequest8ValueAction = "bypass"
+	ValueActionEnum2Deny      ValueActionEnum2 = "deny"
+	ValueActionEnum2Challenge ValueActionEnum2 = "challenge"
+	ValueActionEnum2Log       ValueActionEnum2 = "log"
+	ValueActionEnum2Bypass    ValueActionEnum2 = "bypass"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest8ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest8ValueAction {
+func (e ValueActionEnum2) ToPointer() *ValueActionEnum2 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest8ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueActionEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -402,147 +402,147 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest8ValueAction) UnmarshalJS
 	case "log":
 		fallthrough
 	case "bypass":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest8ValueAction(v)
+		*e = ValueActionEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest8ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueActionEnum2: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequestValue struct {
-	Hostname string                                                     `json:"hostname"`
-	IP       string                                                     `json:"ip"`
-	Notes    *string                                                    `json:"notes,omitempty"`
-	Action   UpdateFirewallConfigRequestBodySecurityRequest8ValueAction `json:"action"`
+type UpdateFirewallConfigValue4 struct {
+	Hostname string           `json:"hostname"`
+	IP       string           `json:"ip"`
+	Notes    *string          `json:"notes,omitempty"`
+	Action   ValueActionEnum2 `json:"action"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequestValue) GetHostname() string {
+func (o *UpdateFirewallConfigValue4) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequestValue) GetIP() string {
+func (o *UpdateFirewallConfigValue4) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequestValue) GetNotes() *string {
+func (o *UpdateFirewallConfigValue4) GetNotes() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Notes
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequestValue) GetAction() UpdateFirewallConfigRequestBodySecurityRequest8ValueAction {
+func (o *UpdateFirewallConfigValue4) GetAction() ValueActionEnum2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest8ValueAction("")
+		return ValueActionEnum2("")
 	}
 	return o.Action
 }
 
-// RequestBody8 - Add an IP Blocking rule
-type RequestBody8 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest8Action `json:"action"`
-	ID     any                                                   `json:"id,omitempty"`
-	Value  UpdateFirewallConfigRequestBodySecurityRequestValue   `json:"value"`
+// IPInsert - Add an IP Blocking rule
+type IPInsert struct {
+	Action ActionIPInsert             `json:"action"`
+	ID     any                        `json:"id,omitempty"`
+	Value  UpdateFirewallConfigValue4 `json:"value"`
 }
 
-func (o *RequestBody8) GetAction() UpdateFirewallConfigRequestBodySecurityRequest8Action {
+func (o *IPInsert) GetAction() ActionIPInsert {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest8Action("")
+		return ActionIPInsert("")
 	}
 	return o.Action
 }
 
-func (o *RequestBody8) GetID() any {
+func (o *IPInsert) GetID() any {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *RequestBody8) GetValue() UpdateFirewallConfigRequestBodySecurityRequestValue {
+func (o *IPInsert) GetValue() UpdateFirewallConfigValue4 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequestValue{}
+		return UpdateFirewallConfigValue4{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest7Action string
+type ActionCrsDisable string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest7ActionCrsDisable UpdateFirewallConfigRequestBodySecurityRequest7Action = "crs.disable"
+	ActionCrsDisableCrsDisable ActionCrsDisable = "crs.disable"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest7Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest7Action {
+func (e ActionCrsDisable) ToPointer() *ActionCrsDisable {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest7Action) UnmarshalJSON(data []byte) error {
+func (e *ActionCrsDisable) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "crs.disable":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest7Action(v)
+		*e = ActionCrsDisable(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest7Action: %v", v)
+		return fmt.Errorf("invalid value for ActionCrsDisable: %v", v)
 	}
 }
 
-// RequestBody7 - Disable a managed rule
-type RequestBody7 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest7Action `json:"action"`
-	ID     any                                                   `json:"id,omitempty"`
-	Value  any                                                   `json:"value,omitempty"`
+// CrsDisable - Disable a managed rule
+type CrsDisable struct {
+	Action ActionCrsDisable `json:"action"`
+	ID     any              `json:"id,omitempty"`
+	Value  any              `json:"value,omitempty"`
 }
 
-func (o *RequestBody7) GetAction() UpdateFirewallConfigRequestBodySecurityRequest7Action {
+func (o *CrsDisable) GetAction() ActionCrsDisable {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest7Action("")
+		return ActionCrsDisable("")
 	}
 	return o.Action
 }
 
-func (o *RequestBody7) GetID() any {
+func (o *CrsDisable) GetID() any {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *RequestBody7) GetValue() any {
+func (o *CrsDisable) GetValue() any {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest6Action string
+type ActionCrsUpdate string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest6ActionCrsUpdate UpdateFirewallConfigRequestBodySecurityRequest6Action = "crs.update"
+	ActionCrsUpdateCrsUpdate ActionCrsUpdate = "crs.update"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest6Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest6Action {
+func (e ActionCrsUpdate) ToPointer() *ActionCrsUpdate {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest6Action) UnmarshalJSON(data []byte) error {
+func (e *ActionCrsUpdate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "crs.update":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest6Action(v)
+		*e = ActionCrsUpdate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest6Action: %v", v)
+		return fmt.Errorf("invalid value for ActionCrsUpdate: %v", v)
 	}
 }
 
@@ -599,17 +599,17 @@ func (e *ID) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest6ValueAction string
+type ValueActionEnum1 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest6ValueActionDeny UpdateFirewallConfigRequestBodySecurityRequest6ValueAction = "deny"
-	UpdateFirewallConfigRequestBodySecurityRequest6ValueActionLog  UpdateFirewallConfigRequestBodySecurityRequest6ValueAction = "log"
+	ValueActionEnum1Deny ValueActionEnum1 = "deny"
+	ValueActionEnum1Log  ValueActionEnum1 = "log"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest6ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest6ValueAction {
+func (e ValueActionEnum1) ToPointer() *ValueActionEnum1 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest6ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueActionEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -618,217 +618,216 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest6ValueAction) UnmarshalJS
 	case "deny":
 		fallthrough
 	case "log":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest6ValueAction(v)
+		*e = ValueActionEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest6ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueActionEnum1: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityValue struct {
-	Active bool                                                       `json:"active"`
-	Action UpdateFirewallConfigRequestBodySecurityRequest6ValueAction `json:"action"`
+type UpdateFirewallConfigValue3 struct {
+	Active bool             `json:"active"`
+	Action ValueActionEnum1 `json:"action"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityValue) GetActive() bool {
+func (o *UpdateFirewallConfigValue3) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityValue) GetAction() UpdateFirewallConfigRequestBodySecurityRequest6ValueAction {
+func (o *UpdateFirewallConfigValue3) GetAction() ValueActionEnum1 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest6ValueAction("")
+		return ValueActionEnum1("")
 	}
 	return o.Action
 }
 
-// UpdateFirewallConfigRequestBody6 - Enable a managed rule
-type UpdateFirewallConfigRequestBody6 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest6Action `json:"action"`
-	ID     ID                                                    `json:"id"`
-	Value  UpdateFirewallConfigRequestBodySecurityValue          `json:"value"`
+// CrsUpdate - Enable a managed rule
+type CrsUpdate struct {
+	Action ActionCrsUpdate            `json:"action"`
+	ID     ID                         `json:"id"`
+	Value  UpdateFirewallConfigValue3 `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody6) GetAction() UpdateFirewallConfigRequestBodySecurityRequest6Action {
+func (o *CrsUpdate) GetAction() ActionCrsUpdate {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest6Action("")
+		return ActionCrsUpdate("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody6) GetID() ID {
+func (o *CrsUpdate) GetID() ID {
 	if o == nil {
 		return ID("")
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody6) GetValue() UpdateFirewallConfigRequestBodySecurityValue {
+func (o *CrsUpdate) GetValue() UpdateFirewallConfigValue3 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityValue{}
+		return UpdateFirewallConfigValue3{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest5Action string
+type ActionRulesPriority string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest5ActionRulesPriority UpdateFirewallConfigRequestBodySecurityRequest5Action = "rules.priority"
+	ActionRulesPriorityRulesPriority ActionRulesPriority = "rules.priority"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest5Action) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest5Action {
+func (e ActionRulesPriority) ToPointer() *ActionRulesPriority {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest5Action) UnmarshalJSON(data []byte) error {
+func (e *ActionRulesPriority) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "rules.priority":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest5Action(v)
+		*e = ActionRulesPriority(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest5Action: %v", v)
+		return fmt.Errorf("invalid value for ActionRulesPriority: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBody5 - Reorder a custom rule
-type UpdateFirewallConfigRequestBody5 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequest5Action `json:"action"`
-	ID     string                                                `json:"id"`
-	Value  float64                                               `json:"value"`
+// RulesPriority - Reorder a custom rule
+type RulesPriority struct {
+	Action ActionRulesPriority `json:"action"`
+	ID     string              `json:"id"`
+	Value  float64             `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody5) GetAction() UpdateFirewallConfigRequestBodySecurityRequest5Action {
+func (o *RulesPriority) GetAction() ActionRulesPriority {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest5Action("")
+		return ActionRulesPriority("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody5) GetID() string {
+func (o *RulesPriority) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody5) GetValue() float64 {
+func (o *RulesPriority) GetValue() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequestAction string
+type ActionRulesRemove string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequestActionRulesRemove UpdateFirewallConfigRequestBodySecurityRequestAction = "rules.remove"
+	ActionRulesRemoveRulesRemove ActionRulesRemove = "rules.remove"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequestAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequestAction {
+func (e ActionRulesRemove) ToPointer() *ActionRulesRemove {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequestAction) UnmarshalJSON(data []byte) error {
+func (e *ActionRulesRemove) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "rules.remove":
-		*e = UpdateFirewallConfigRequestBodySecurityRequestAction(v)
+		*e = ActionRulesRemove(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequestAction: %v", v)
+		return fmt.Errorf("invalid value for ActionRulesRemove: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBody4 - Remove a custom rule
-type UpdateFirewallConfigRequestBody4 struct {
-	Action UpdateFirewallConfigRequestBodySecurityRequestAction `json:"action"`
-	ID     string                                               `json:"id"`
-	Value  any                                                  `json:"value,omitempty"`
+// RulesRemove - Remove a custom rule
+type RulesRemove struct {
+	Action ActionRulesRemove `json:"action"`
+	ID     string            `json:"id"`
+	Value  any               `json:"value,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBody4) GetAction() UpdateFirewallConfigRequestBodySecurityRequestAction {
+func (o *RulesRemove) GetAction() ActionRulesRemove {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequestAction("")
+		return ActionRulesRemove("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody4) GetID() string {
+func (o *RulesRemove) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody4) GetValue() any {
+func (o *RulesRemove) GetValue() any {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodySecurityAction string
+type ActionRulesUpdate string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityActionRulesUpdate UpdateFirewallConfigRequestBodySecurityAction = "rules.update"
+	ActionRulesUpdateRulesUpdate ActionRulesUpdate = "rules.update"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityAction {
+func (e ActionRulesUpdate) ToPointer() *ActionRulesUpdate {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityAction) UnmarshalJSON(data []byte) error {
+func (e *ActionRulesUpdate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "rules.update":
-		*e = UpdateFirewallConfigRequestBodySecurityAction(v)
+		*e = ActionRulesUpdate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityAction: %v", v)
+		return fmt.Errorf("invalid value for ActionRulesUpdate: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBodySecurityType - [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-type UpdateFirewallConfigRequestBodySecurityType string
+type UpdateFirewallConfigType2 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityTypeHost             UpdateFirewallConfigRequestBodySecurityType = "host"
-	UpdateFirewallConfigRequestBodySecurityTypePath             UpdateFirewallConfigRequestBodySecurityType = "path"
-	UpdateFirewallConfigRequestBodySecurityTypeMethod           UpdateFirewallConfigRequestBodySecurityType = "method"
-	UpdateFirewallConfigRequestBodySecurityTypeHeader           UpdateFirewallConfigRequestBodySecurityType = "header"
-	UpdateFirewallConfigRequestBodySecurityTypeQuery            UpdateFirewallConfigRequestBodySecurityType = "query"
-	UpdateFirewallConfigRequestBodySecurityTypeCookie           UpdateFirewallConfigRequestBodySecurityType = "cookie"
-	UpdateFirewallConfigRequestBodySecurityTypeTargetPath       UpdateFirewallConfigRequestBodySecurityType = "target_path"
-	UpdateFirewallConfigRequestBodySecurityTypeRawPath          UpdateFirewallConfigRequestBodySecurityType = "raw_path"
-	UpdateFirewallConfigRequestBodySecurityTypeIPAddress        UpdateFirewallConfigRequestBodySecurityType = "ip_address"
-	UpdateFirewallConfigRequestBodySecurityTypeRegion           UpdateFirewallConfigRequestBodySecurityType = "region"
-	UpdateFirewallConfigRequestBodySecurityTypeProtocol         UpdateFirewallConfigRequestBodySecurityType = "protocol"
-	UpdateFirewallConfigRequestBodySecurityTypeScheme           UpdateFirewallConfigRequestBodySecurityType = "scheme"
-	UpdateFirewallConfigRequestBodySecurityTypeEnvironment      UpdateFirewallConfigRequestBodySecurityType = "environment"
-	UpdateFirewallConfigRequestBodySecurityTypeUserAgent        UpdateFirewallConfigRequestBodySecurityType = "user_agent"
-	UpdateFirewallConfigRequestBodySecurityTypeGeoContinent     UpdateFirewallConfigRequestBodySecurityType = "geo_continent"
-	UpdateFirewallConfigRequestBodySecurityTypeGeoCountry       UpdateFirewallConfigRequestBodySecurityType = "geo_country"
-	UpdateFirewallConfigRequestBodySecurityTypeGeoCountryRegion UpdateFirewallConfigRequestBodySecurityType = "geo_country_region"
-	UpdateFirewallConfigRequestBodySecurityTypeGeoCity          UpdateFirewallConfigRequestBodySecurityType = "geo_city"
-	UpdateFirewallConfigRequestBodySecurityTypeGeoAsNumber      UpdateFirewallConfigRequestBodySecurityType = "geo_as_number"
-	UpdateFirewallConfigRequestBodySecurityTypeJa4Digest        UpdateFirewallConfigRequestBodySecurityType = "ja4_digest"
-	UpdateFirewallConfigRequestBodySecurityTypeJa3Digest        UpdateFirewallConfigRequestBodySecurityType = "ja3_digest"
-	UpdateFirewallConfigRequestBodySecurityTypeRateLimitAPIID   UpdateFirewallConfigRequestBodySecurityType = "rate_limit_api_id"
+	UpdateFirewallConfigType2Host             UpdateFirewallConfigType2 = "host"
+	UpdateFirewallConfigType2Path             UpdateFirewallConfigType2 = "path"
+	UpdateFirewallConfigType2Method           UpdateFirewallConfigType2 = "method"
+	UpdateFirewallConfigType2Header           UpdateFirewallConfigType2 = "header"
+	UpdateFirewallConfigType2Query            UpdateFirewallConfigType2 = "query"
+	UpdateFirewallConfigType2Cookie           UpdateFirewallConfigType2 = "cookie"
+	UpdateFirewallConfigType2TargetPath       UpdateFirewallConfigType2 = "target_path"
+	UpdateFirewallConfigType2RawPath          UpdateFirewallConfigType2 = "raw_path"
+	UpdateFirewallConfigType2IPAddress        UpdateFirewallConfigType2 = "ip_address"
+	UpdateFirewallConfigType2Region           UpdateFirewallConfigType2 = "region"
+	UpdateFirewallConfigType2Protocol         UpdateFirewallConfigType2 = "protocol"
+	UpdateFirewallConfigType2Scheme           UpdateFirewallConfigType2 = "scheme"
+	UpdateFirewallConfigType2Environment      UpdateFirewallConfigType2 = "environment"
+	UpdateFirewallConfigType2UserAgent        UpdateFirewallConfigType2 = "user_agent"
+	UpdateFirewallConfigType2GeoContinent     UpdateFirewallConfigType2 = "geo_continent"
+	UpdateFirewallConfigType2GeoCountry       UpdateFirewallConfigType2 = "geo_country"
+	UpdateFirewallConfigType2GeoCountryRegion UpdateFirewallConfigType2 = "geo_country_region"
+	UpdateFirewallConfigType2GeoCity          UpdateFirewallConfigType2 = "geo_city"
+	UpdateFirewallConfigType2GeoAsNumber      UpdateFirewallConfigType2 = "geo_as_number"
+	UpdateFirewallConfigType2Ja4Digest        UpdateFirewallConfigType2 = "ja4_digest"
+	UpdateFirewallConfigType2Ja3Digest        UpdateFirewallConfigType2 = "ja3_digest"
+	UpdateFirewallConfigType2RateLimitAPIID   UpdateFirewallConfigType2 = "rate_limit_api_id"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityType) ToPointer() *UpdateFirewallConfigRequestBodySecurityType {
+func (e UpdateFirewallConfigType2) ToPointer() *UpdateFirewallConfigType2 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityType) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -877,37 +876,36 @@ func (e *UpdateFirewallConfigRequestBodySecurityType) UnmarshalJSON(data []byte)
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
-		*e = UpdateFirewallConfigRequestBodySecurityType(v)
+		*e = UpdateFirewallConfigType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityType: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigType2: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBodyOp - [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
-type UpdateFirewallConfigRequestBodyOp string
+type UpdateFirewallConfigOp2 string
 
 const (
-	UpdateFirewallConfigRequestBodyOpRe   UpdateFirewallConfigRequestBodyOp = "re"
-	UpdateFirewallConfigRequestBodyOpEq   UpdateFirewallConfigRequestBodyOp = "eq"
-	UpdateFirewallConfigRequestBodyOpNeq  UpdateFirewallConfigRequestBodyOp = "neq"
-	UpdateFirewallConfigRequestBodyOpEx   UpdateFirewallConfigRequestBodyOp = "ex"
-	UpdateFirewallConfigRequestBodyOpNex  UpdateFirewallConfigRequestBodyOp = "nex"
-	UpdateFirewallConfigRequestBodyOpInc  UpdateFirewallConfigRequestBodyOp = "inc"
-	UpdateFirewallConfigRequestBodyOpNinc UpdateFirewallConfigRequestBodyOp = "ninc"
-	UpdateFirewallConfigRequestBodyOpPre  UpdateFirewallConfigRequestBodyOp = "pre"
-	UpdateFirewallConfigRequestBodyOpSuf  UpdateFirewallConfigRequestBodyOp = "suf"
-	UpdateFirewallConfigRequestBodyOpSub  UpdateFirewallConfigRequestBodyOp = "sub"
-	UpdateFirewallConfigRequestBodyOpGt   UpdateFirewallConfigRequestBodyOp = "gt"
-	UpdateFirewallConfigRequestBodyOpGte  UpdateFirewallConfigRequestBodyOp = "gte"
-	UpdateFirewallConfigRequestBodyOpLt   UpdateFirewallConfigRequestBodyOp = "lt"
-	UpdateFirewallConfigRequestBodyOpLte  UpdateFirewallConfigRequestBodyOp = "lte"
+	UpdateFirewallConfigOp2Re   UpdateFirewallConfigOp2 = "re"
+	UpdateFirewallConfigOp2Eq   UpdateFirewallConfigOp2 = "eq"
+	UpdateFirewallConfigOp2Neq  UpdateFirewallConfigOp2 = "neq"
+	UpdateFirewallConfigOp2Ex   UpdateFirewallConfigOp2 = "ex"
+	UpdateFirewallConfigOp2Nex  UpdateFirewallConfigOp2 = "nex"
+	UpdateFirewallConfigOp2Inc  UpdateFirewallConfigOp2 = "inc"
+	UpdateFirewallConfigOp2Ninc UpdateFirewallConfigOp2 = "ninc"
+	UpdateFirewallConfigOp2Pre  UpdateFirewallConfigOp2 = "pre"
+	UpdateFirewallConfigOp2Suf  UpdateFirewallConfigOp2 = "suf"
+	UpdateFirewallConfigOp2Sub  UpdateFirewallConfigOp2 = "sub"
+	UpdateFirewallConfigOp2Gt   UpdateFirewallConfigOp2 = "gt"
+	UpdateFirewallConfigOp2Gte  UpdateFirewallConfigOp2 = "gte"
+	UpdateFirewallConfigOp2Lt   UpdateFirewallConfigOp2 = "lt"
+	UpdateFirewallConfigOp2Lte  UpdateFirewallConfigOp2 = "lte"
 )
 
-func (e UpdateFirewallConfigRequestBodyOp) ToPointer() *UpdateFirewallConfigRequestBodyOp {
+func (e UpdateFirewallConfigOp2) ToPointer() *UpdateFirewallConfigOp2 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodyOp) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigOp2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -940,83 +938,83 @@ func (e *UpdateFirewallConfigRequestBodyOp) UnmarshalJSON(data []byte) error {
 	case "lt":
 		fallthrough
 	case "lte":
-		*e = UpdateFirewallConfigRequestBodyOp(v)
+		*e = UpdateFirewallConfigOp2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodyOp: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigOp2: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest3ValueType string
+type UpdateFirewallConfigConditionValue2Type string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeStr        UpdateFirewallConfigRequestBodySecurityRequest3ValueType = "str"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeArrayOfStr UpdateFirewallConfigRequestBodySecurityRequest3ValueType = "arrayOfStr"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeNumber     UpdateFirewallConfigRequestBodySecurityRequest3ValueType = "number"
+	UpdateFirewallConfigConditionValue2TypeStr        UpdateFirewallConfigConditionValue2Type = "str"
+	UpdateFirewallConfigConditionValue2TypeArrayOfStr UpdateFirewallConfigConditionValue2Type = "arrayOfStr"
+	UpdateFirewallConfigConditionValue2TypeNumber     UpdateFirewallConfigConditionValue2Type = "number"
 )
 
-type UpdateFirewallConfigRequestBodySecurityRequest3Value struct {
-	Str        *string
-	ArrayOfStr []string
-	Number     *float64
+type UpdateFirewallConfigConditionValue2 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRequestBodySecurityRequest3ValueType
+	Type UpdateFirewallConfigConditionValue2Type
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest3ValueStr(str string) UpdateFirewallConfigRequestBodySecurityRequest3Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeStr
+func CreateUpdateFirewallConfigConditionValue2Str(str string) UpdateFirewallConfigConditionValue2 {
+	typ := UpdateFirewallConfigConditionValue2TypeStr
 
-	return UpdateFirewallConfigRequestBodySecurityRequest3Value{
+	return UpdateFirewallConfigConditionValue2{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest3ValueArrayOfStr(arrayOfStr []string) UpdateFirewallConfigRequestBodySecurityRequest3Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeArrayOfStr
+func CreateUpdateFirewallConfigConditionValue2ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigConditionValue2 {
+	typ := UpdateFirewallConfigConditionValue2TypeArrayOfStr
 
-	return UpdateFirewallConfigRequestBodySecurityRequest3Value{
+	return UpdateFirewallConfigConditionValue2{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest3ValueNumber(number float64) UpdateFirewallConfigRequestBodySecurityRequest3Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeNumber
+func CreateUpdateFirewallConfigConditionValue2Number(number float64) UpdateFirewallConfigConditionValue2 {
+	typ := UpdateFirewallConfigConditionValue2TypeNumber
 
-	return UpdateFirewallConfigRequestBodySecurityRequest3Value{
+	return UpdateFirewallConfigConditionValue2{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBodySecurityRequest3Value) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigConditionValue2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeStr
+		u.Type = UpdateFirewallConfigConditionValue2TypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeArrayOfStr
+		u.Type = UpdateFirewallConfigConditionValue2TypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest3ValueTypeNumber
+		u.Type = UpdateFirewallConfigConditionValue2TypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodySecurityRequest3Value", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigConditionValue2", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBodySecurityRequest3Value) MarshalJSON() ([]byte, error) {
+func (u UpdateFirewallConfigConditionValue2) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -1029,80 +1027,78 @@ func (u UpdateFirewallConfigRequestBodySecurityRequest3Value) MarshalJSON() ([]b
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodySecurityRequest3Value: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigConditionValue2: all fields are null")
 }
 
-type UpdateFirewallConfigRequestBodyConditions struct {
-	// [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-	Type UpdateFirewallConfigRequestBodySecurityType `json:"type"`
-	// [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
-	Op    UpdateFirewallConfigRequestBodyOp                     `json:"op"`
-	Neg   *bool                                                 `json:"neg,omitempty"`
-	Key   *string                                               `json:"key,omitempty"`
-	Value *UpdateFirewallConfigRequestBodySecurityRequest3Value `json:"value,omitempty"`
+type UpdateFirewallConfigCondition2 struct {
+	Type  UpdateFirewallConfigType2            `json:"type"`
+	Op    UpdateFirewallConfigOp2              `json:"op"`
+	Neg   *bool                                `json:"neg,omitempty"`
+	Key   *string                              `json:"key,omitempty"`
+	Value *UpdateFirewallConfigConditionValue2 `json:"value,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditions) GetType() UpdateFirewallConfigRequestBodySecurityType {
+func (o *UpdateFirewallConfigCondition2) GetType() UpdateFirewallConfigType2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityType("")
+		return UpdateFirewallConfigType2("")
 	}
 	return o.Type
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditions) GetOp() UpdateFirewallConfigRequestBodyOp {
+func (o *UpdateFirewallConfigCondition2) GetOp() UpdateFirewallConfigOp2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodyOp("")
+		return UpdateFirewallConfigOp2("")
 	}
 	return o.Op
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditions) GetNeg() *bool {
+func (o *UpdateFirewallConfigCondition2) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditions) GetKey() *string {
+func (o *UpdateFirewallConfigCondition2) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditions) GetValue() *UpdateFirewallConfigRequestBodySecurityRequest3Value {
+func (o *UpdateFirewallConfigCondition2) GetValue() *UpdateFirewallConfigConditionValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodyConditionGroup struct {
-	Conditions []UpdateFirewallConfigRequestBodyConditions `json:"conditions"`
+type UpdateFirewallConfigConditionGroup2 struct {
+	Conditions []UpdateFirewallConfigCondition2 `json:"conditions"`
 }
 
-func (o *UpdateFirewallConfigRequestBodyConditionGroup) GetConditions() []UpdateFirewallConfigRequestBodyConditions {
+func (o *UpdateFirewallConfigConditionGroup2) GetConditions() []UpdateFirewallConfigCondition2 {
 	if o == nil {
-		return []UpdateFirewallConfigRequestBodyConditions{}
+		return []UpdateFirewallConfigCondition2{}
 	}
 	return o.Conditions
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest3ValueAction string
+type ValueMitigateActionEnum2 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionLog       UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionChallenge UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionDeny      UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "deny"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionBypass    UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "bypass"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionRateLimit UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "rate_limit"
-	UpdateFirewallConfigRequestBodySecurityRequest3ValueActionRedirect  UpdateFirewallConfigRequestBodySecurityRequest3ValueAction = "redirect"
+	ValueMitigateActionEnum2Log       ValueMitigateActionEnum2 = "log"
+	ValueMitigateActionEnum2Challenge ValueMitigateActionEnum2 = "challenge"
+	ValueMitigateActionEnum2Deny      ValueMitigateActionEnum2 = "deny"
+	ValueMitigateActionEnum2Bypass    ValueMitigateActionEnum2 = "bypass"
+	ValueMitigateActionEnum2RateLimit ValueMitigateActionEnum2 = "rate_limit"
+	ValueMitigateActionEnum2Redirect  ValueMitigateActionEnum2 = "redirect"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest3ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest3ValueAction {
+func (e ValueMitigateActionEnum2) ToPointer() *ValueMitigateActionEnum2 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest3ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueMitigateActionEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1119,24 +1115,24 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest3ValueAction) UnmarshalJS
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest3ValueAction(v)
+		*e = ValueMitigateActionEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest3ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueMitigateActionEnum2: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRateLimitAlgo string
+type UpdateFirewallConfigAlgo2 string
 
 const (
-	UpdateFirewallConfigRateLimitAlgoFixedWindow UpdateFirewallConfigRateLimitAlgo = "fixed_window"
-	UpdateFirewallConfigRateLimitAlgoTokenBucket UpdateFirewallConfigRateLimitAlgo = "token_bucket"
+	UpdateFirewallConfigAlgo2FixedWindow UpdateFirewallConfigAlgo2 = "fixed_window"
+	UpdateFirewallConfigAlgo2TokenBucket UpdateFirewallConfigAlgo2 = "token_bucket"
 )
 
-func (e UpdateFirewallConfigRateLimitAlgo) ToPointer() *UpdateFirewallConfigRateLimitAlgo {
+func (e UpdateFirewallConfigAlgo2) ToPointer() *UpdateFirewallConfigAlgo2 {
 	return &e
 }
-func (e *UpdateFirewallConfigRateLimitAlgo) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigAlgo2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1145,26 +1141,26 @@ func (e *UpdateFirewallConfigRateLimitAlgo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = UpdateFirewallConfigRateLimitAlgo(v)
+		*e = UpdateFirewallConfigAlgo2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRateLimitAlgo: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigAlgo2: %v", v)
 	}
 }
 
-type UpdateFirewallConfigActionSecurity1 string
+type RateLimitActionValueEnum2 string
 
 const (
-	UpdateFirewallConfigActionSecurity1Log       UpdateFirewallConfigActionSecurity1 = "log"
-	UpdateFirewallConfigActionSecurity1Challenge UpdateFirewallConfigActionSecurity1 = "challenge"
-	UpdateFirewallConfigActionSecurity1Deny      UpdateFirewallConfigActionSecurity1 = "deny"
-	UpdateFirewallConfigActionSecurity1RateLimit UpdateFirewallConfigActionSecurity1 = "rate_limit"
+	RateLimitActionValueEnum2Log       RateLimitActionValueEnum2 = "log"
+	RateLimitActionValueEnum2Challenge RateLimitActionValueEnum2 = "challenge"
+	RateLimitActionValueEnum2Deny      RateLimitActionValueEnum2 = "deny"
+	RateLimitActionValueEnum2RateLimit RateLimitActionValueEnum2 = "rate_limit"
 )
 
-func (e UpdateFirewallConfigActionSecurity1) ToPointer() *UpdateFirewallConfigActionSecurity1 {
+func (e RateLimitActionValueEnum2) ToPointer() *RateLimitActionValueEnum2 {
 	return &e
 }
-func (e *UpdateFirewallConfigActionSecurity1) UnmarshalJSON(data []byte) error {
+func (e *RateLimitActionValueEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1177,444 +1173,443 @@ func (e *UpdateFirewallConfigActionSecurity1) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "rate_limit":
-		*e = UpdateFirewallConfigActionSecurity1(v)
+		*e = RateLimitActionValueEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigActionSecurity1: %v", v)
+		return fmt.Errorf("invalid value for RateLimitActionValueEnum2: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRateLimitSecurityActionType string
+type ValueActionUnion2Type string
 
 const (
-	UpdateFirewallConfigRateLimitSecurityActionTypeUpdateFirewallConfigActionSecurity1 UpdateFirewallConfigRateLimitSecurityActionType = "updateFirewallConfig_action_security_1"
-	UpdateFirewallConfigRateLimitSecurityActionTypeAny                                 UpdateFirewallConfigRateLimitSecurityActionType = "any"
+	ValueActionUnion2TypeRateLimitActionValueEnum2 ValueActionUnion2Type = "rateLimit_action_value_enum_2"
+	ValueActionUnion2TypeAny                       ValueActionUnion2Type = "any"
 )
 
-type UpdateFirewallConfigRateLimitSecurityAction struct {
-	UpdateFirewallConfigActionSecurity1 *UpdateFirewallConfigActionSecurity1
-	Any                                 any
+type ValueActionUnion2 struct {
+	RateLimitActionValueEnum2 *RateLimitActionValueEnum2 `queryParam:"inline"`
+	Any                       any                        `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRateLimitSecurityActionType
+	Type ValueActionUnion2Type
 }
 
-func CreateUpdateFirewallConfigRateLimitSecurityActionUpdateFirewallConfigActionSecurity1(updateFirewallConfigActionSecurity1 UpdateFirewallConfigActionSecurity1) UpdateFirewallConfigRateLimitSecurityAction {
-	typ := UpdateFirewallConfigRateLimitSecurityActionTypeUpdateFirewallConfigActionSecurity1
+func CreateValueActionUnion2RateLimitActionValueEnum2(rateLimitActionValueEnum2 RateLimitActionValueEnum2) ValueActionUnion2 {
+	typ := ValueActionUnion2TypeRateLimitActionValueEnum2
 
-	return UpdateFirewallConfigRateLimitSecurityAction{
-		UpdateFirewallConfigActionSecurity1: &updateFirewallConfigActionSecurity1,
-		Type:                                typ,
+	return ValueActionUnion2{
+		RateLimitActionValueEnum2: &rateLimitActionValueEnum2,
+		Type:                      typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRateLimitSecurityActionAny(anyT any) UpdateFirewallConfigRateLimitSecurityAction {
-	typ := UpdateFirewallConfigRateLimitSecurityActionTypeAny
+func CreateValueActionUnion2Any(anyT any) ValueActionUnion2 {
+	typ := ValueActionUnion2TypeAny
 
-	return UpdateFirewallConfigRateLimitSecurityAction{
+	return ValueActionUnion2{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRateLimitSecurityAction) UnmarshalJSON(data []byte) error {
+func (u *ValueActionUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateFirewallConfigActionSecurity1 UpdateFirewallConfigActionSecurity1 = UpdateFirewallConfigActionSecurity1("")
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigActionSecurity1, "", true, true); err == nil {
-		u.UpdateFirewallConfigActionSecurity1 = &updateFirewallConfigActionSecurity1
-		u.Type = UpdateFirewallConfigRateLimitSecurityActionTypeUpdateFirewallConfigActionSecurity1
+	var rateLimitActionValueEnum2 RateLimitActionValueEnum2 = RateLimitActionValueEnum2("")
+	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum2, "", true, true); err == nil {
+		u.RateLimitActionValueEnum2 = &rateLimitActionValueEnum2
+		u.Type = ValueActionUnion2TypeRateLimitActionValueEnum2
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = UpdateFirewallConfigRateLimitSecurityActionTypeAny
+		u.Type = ValueActionUnion2TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRateLimitSecurityAction", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ValueActionUnion2", string(data))
 }
 
-func (u UpdateFirewallConfigRateLimitSecurityAction) MarshalJSON() ([]byte, error) {
-	if u.UpdateFirewallConfigActionSecurity1 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigActionSecurity1, "", true)
+func (u ValueActionUnion2) MarshalJSON() ([]byte, error) {
+	if u.RateLimitActionValueEnum2 != nil {
+		return utils.MarshalJSON(u.RateLimitActionValueEnum2, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRateLimitSecurityAction: all fields are null")
+	return nil, errors.New("could not marshal union type ValueActionUnion2: all fields are null")
 }
 
-type UpdateFirewallConfigRateLimitSecurity1 struct {
-	Algo   UpdateFirewallConfigRateLimitAlgo            `json:"algo"`
-	Window float64                                      `json:"window"`
-	Limit  float64                                      `json:"limit"`
-	Keys   []string                                     `json:"keys"`
-	Action *UpdateFirewallConfigRateLimitSecurityAction `json:"action,omitempty"`
+type UpdateFirewallConfigRateLimit2 struct {
+	Algo   UpdateFirewallConfigAlgo2 `json:"algo"`
+	Window float64                   `json:"window"`
+	Limit  float64                   `json:"limit"`
+	Keys   []string                  `json:"keys"`
+	Action *ValueActionUnion2        `json:"action,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRateLimitSecurity1) GetAlgo() UpdateFirewallConfigRateLimitAlgo {
+func (o *UpdateFirewallConfigRateLimit2) GetAlgo() UpdateFirewallConfigAlgo2 {
 	if o == nil {
-		return UpdateFirewallConfigRateLimitAlgo("")
+		return UpdateFirewallConfigAlgo2("")
 	}
 	return o.Algo
 }
 
-func (o *UpdateFirewallConfigRateLimitSecurity1) GetWindow() float64 {
+func (o *UpdateFirewallConfigRateLimit2) GetWindow() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Window
 }
 
-func (o *UpdateFirewallConfigRateLimitSecurity1) GetLimit() float64 {
+func (o *UpdateFirewallConfigRateLimit2) GetLimit() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Limit
 }
 
-func (o *UpdateFirewallConfigRateLimitSecurity1) GetKeys() []string {
+func (o *UpdateFirewallConfigRateLimit2) GetKeys() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Keys
 }
 
-func (o *UpdateFirewallConfigRateLimitSecurity1) GetAction() *UpdateFirewallConfigRateLimitSecurityAction {
+func (o *UpdateFirewallConfigRateLimit2) GetAction() *ValueActionUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type UpdateFirewallConfigRequestBodyRateLimitType string
+type UpdateFirewallConfigRateLimitUnion2Type string
 
 const (
-	UpdateFirewallConfigRequestBodyRateLimitTypeUpdateFirewallConfigRateLimitSecurity1 UpdateFirewallConfigRequestBodyRateLimitType = "updateFirewallConfig_rateLimit_security_1"
-	UpdateFirewallConfigRequestBodyRateLimitTypeAny                                    UpdateFirewallConfigRequestBodyRateLimitType = "any"
+	UpdateFirewallConfigRateLimitUnion2TypeUpdateFirewallConfigRateLimit2 UpdateFirewallConfigRateLimitUnion2Type = "updateFirewallConfig_rateLimit_2"
+	UpdateFirewallConfigRateLimitUnion2TypeAny                            UpdateFirewallConfigRateLimitUnion2Type = "any"
 )
 
-type UpdateFirewallConfigRequestBodyRateLimit struct {
-	UpdateFirewallConfigRateLimitSecurity1 *UpdateFirewallConfigRateLimitSecurity1
-	Any                                    any
+type UpdateFirewallConfigRateLimitUnion2 struct {
+	UpdateFirewallConfigRateLimit2 *UpdateFirewallConfigRateLimit2 `queryParam:"inline"`
+	Any                            any                             `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRequestBodyRateLimitType
+	Type UpdateFirewallConfigRateLimitUnion2Type
 }
 
-func CreateUpdateFirewallConfigRequestBodyRateLimitUpdateFirewallConfigRateLimitSecurity1(updateFirewallConfigRateLimitSecurity1 UpdateFirewallConfigRateLimitSecurity1) UpdateFirewallConfigRequestBodyRateLimit {
-	typ := UpdateFirewallConfigRequestBodyRateLimitTypeUpdateFirewallConfigRateLimitSecurity1
+func CreateUpdateFirewallConfigRateLimitUnion2UpdateFirewallConfigRateLimit2(updateFirewallConfigRateLimit2 UpdateFirewallConfigRateLimit2) UpdateFirewallConfigRateLimitUnion2 {
+	typ := UpdateFirewallConfigRateLimitUnion2TypeUpdateFirewallConfigRateLimit2
 
-	return UpdateFirewallConfigRequestBodyRateLimit{
-		UpdateFirewallConfigRateLimitSecurity1: &updateFirewallConfigRateLimitSecurity1,
-		Type:                                   typ,
+	return UpdateFirewallConfigRateLimitUnion2{
+		UpdateFirewallConfigRateLimit2: &updateFirewallConfigRateLimit2,
+		Type:                           typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyRateLimitAny(anyT any) UpdateFirewallConfigRequestBodyRateLimit {
-	typ := UpdateFirewallConfigRequestBodyRateLimitTypeAny
+func CreateUpdateFirewallConfigRateLimitUnion2Any(anyT any) UpdateFirewallConfigRateLimitUnion2 {
+	typ := UpdateFirewallConfigRateLimitUnion2TypeAny
 
-	return UpdateFirewallConfigRequestBodyRateLimit{
+	return UpdateFirewallConfigRateLimitUnion2{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBodyRateLimit) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigRateLimitUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateFirewallConfigRateLimitSecurity1 UpdateFirewallConfigRateLimitSecurity1 = UpdateFirewallConfigRateLimitSecurity1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimitSecurity1, "", true, true); err == nil {
-		u.UpdateFirewallConfigRateLimitSecurity1 = &updateFirewallConfigRateLimitSecurity1
-		u.Type = UpdateFirewallConfigRequestBodyRateLimitTypeUpdateFirewallConfigRateLimitSecurity1
+	var updateFirewallConfigRateLimit2 UpdateFirewallConfigRateLimit2 = UpdateFirewallConfigRateLimit2{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit2, "", true, true); err == nil {
+		u.UpdateFirewallConfigRateLimit2 = &updateFirewallConfigRateLimit2
+		u.Type = UpdateFirewallConfigRateLimitUnion2TypeUpdateFirewallConfigRateLimit2
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = UpdateFirewallConfigRequestBodyRateLimitTypeAny
+		u.Type = UpdateFirewallConfigRateLimitUnion2TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodyRateLimit", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRateLimitUnion2", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBodyRateLimit) MarshalJSON() ([]byte, error) {
-	if u.UpdateFirewallConfigRateLimitSecurity1 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRateLimitSecurity1, "", true)
+func (u UpdateFirewallConfigRateLimitUnion2) MarshalJSON() ([]byte, error) {
+	if u.UpdateFirewallConfigRateLimit2 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRateLimit2, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodyRateLimit: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRateLimitUnion2: all fields are null")
 }
 
-type UpdateFirewallConfigRedirectSecurity1 struct {
+type UpdateFirewallConfigRedirect2 struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
 }
 
-func (o *UpdateFirewallConfigRedirectSecurity1) GetLocation() string {
+func (o *UpdateFirewallConfigRedirect2) GetLocation() string {
 	if o == nil {
 		return ""
 	}
 	return o.Location
 }
 
-func (o *UpdateFirewallConfigRedirectSecurity1) GetPermanent() bool {
+func (o *UpdateFirewallConfigRedirect2) GetPermanent() bool {
 	if o == nil {
 		return false
 	}
 	return o.Permanent
 }
 
-type UpdateFirewallConfigRequestBodyRedirectType string
+type UpdateFirewallConfigRedirectUnion2Type string
 
 const (
-	UpdateFirewallConfigRequestBodyRedirectTypeUpdateFirewallConfigRedirectSecurity1 UpdateFirewallConfigRequestBodyRedirectType = "updateFirewallConfig_redirect_security_1"
-	UpdateFirewallConfigRequestBodyRedirectTypeAny                                   UpdateFirewallConfigRequestBodyRedirectType = "any"
+	UpdateFirewallConfigRedirectUnion2TypeUpdateFirewallConfigRedirect2 UpdateFirewallConfigRedirectUnion2Type = "updateFirewallConfig_redirect_2"
+	UpdateFirewallConfigRedirectUnion2TypeAny                           UpdateFirewallConfigRedirectUnion2Type = "any"
 )
 
-type UpdateFirewallConfigRequestBodyRedirect struct {
-	UpdateFirewallConfigRedirectSecurity1 *UpdateFirewallConfigRedirectSecurity1
-	Any                                   any
+type UpdateFirewallConfigRedirectUnion2 struct {
+	UpdateFirewallConfigRedirect2 *UpdateFirewallConfigRedirect2 `queryParam:"inline"`
+	Any                           any                            `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRequestBodyRedirectType
+	Type UpdateFirewallConfigRedirectUnion2Type
 }
 
-func CreateUpdateFirewallConfigRequestBodyRedirectUpdateFirewallConfigRedirectSecurity1(updateFirewallConfigRedirectSecurity1 UpdateFirewallConfigRedirectSecurity1) UpdateFirewallConfigRequestBodyRedirect {
-	typ := UpdateFirewallConfigRequestBodyRedirectTypeUpdateFirewallConfigRedirectSecurity1
+func CreateUpdateFirewallConfigRedirectUnion2UpdateFirewallConfigRedirect2(updateFirewallConfigRedirect2 UpdateFirewallConfigRedirect2) UpdateFirewallConfigRedirectUnion2 {
+	typ := UpdateFirewallConfigRedirectUnion2TypeUpdateFirewallConfigRedirect2
 
-	return UpdateFirewallConfigRequestBodyRedirect{
-		UpdateFirewallConfigRedirectSecurity1: &updateFirewallConfigRedirectSecurity1,
-		Type:                                  typ,
+	return UpdateFirewallConfigRedirectUnion2{
+		UpdateFirewallConfigRedirect2: &updateFirewallConfigRedirect2,
+		Type:                          typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyRedirectAny(anyT any) UpdateFirewallConfigRequestBodyRedirect {
-	typ := UpdateFirewallConfigRequestBodyRedirectTypeAny
+func CreateUpdateFirewallConfigRedirectUnion2Any(anyT any) UpdateFirewallConfigRedirectUnion2 {
+	typ := UpdateFirewallConfigRedirectUnion2TypeAny
 
-	return UpdateFirewallConfigRequestBodyRedirect{
+	return UpdateFirewallConfigRedirectUnion2{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBodyRedirect) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigRedirectUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateFirewallConfigRedirectSecurity1 UpdateFirewallConfigRedirectSecurity1 = UpdateFirewallConfigRedirectSecurity1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirectSecurity1, "", true, true); err == nil {
-		u.UpdateFirewallConfigRedirectSecurity1 = &updateFirewallConfigRedirectSecurity1
-		u.Type = UpdateFirewallConfigRequestBodyRedirectTypeUpdateFirewallConfigRedirectSecurity1
+	var updateFirewallConfigRedirect2 UpdateFirewallConfigRedirect2 = UpdateFirewallConfigRedirect2{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect2, "", true, true); err == nil {
+		u.UpdateFirewallConfigRedirect2 = &updateFirewallConfigRedirect2
+		u.Type = UpdateFirewallConfigRedirectUnion2TypeUpdateFirewallConfigRedirect2
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = UpdateFirewallConfigRequestBodyRedirectTypeAny
+		u.Type = UpdateFirewallConfigRedirectUnion2TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodyRedirect", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRedirectUnion2", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBodyRedirect) MarshalJSON() ([]byte, error) {
-	if u.UpdateFirewallConfigRedirectSecurity1 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRedirectSecurity1, "", true)
+func (u UpdateFirewallConfigRedirectUnion2) MarshalJSON() ([]byte, error) {
+	if u.UpdateFirewallConfigRedirect2 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRedirect2, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodyRedirect: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRedirectUnion2: all fields are null")
 }
 
-type UpdateFirewallConfigRequestBodyMitigate struct {
-	Action         UpdateFirewallConfigRequestBodySecurityRequest3ValueAction `json:"action"`
-	RateLimit      *UpdateFirewallConfigRequestBodyRateLimit                  `json:"rateLimit,omitempty"`
-	Redirect       *UpdateFirewallConfigRequestBodyRedirect                   `json:"redirect,omitempty"`
-	ActionDuration *string                                                    `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                                      `json:"bypassSystem,omitempty"`
+type UpdateFirewallConfigMitigate2 struct {
+	Action         ValueMitigateActionEnum2             `json:"action"`
+	RateLimit      *UpdateFirewallConfigRateLimitUnion2 `json:"rateLimit,omitempty"`
+	Redirect       *UpdateFirewallConfigRedirectUnion2  `json:"redirect,omitempty"`
+	ActionDuration *string                              `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBodyMitigate) GetAction() UpdateFirewallConfigRequestBodySecurityRequest3ValueAction {
+func (o *UpdateFirewallConfigMitigate2) GetAction() ValueMitigateActionEnum2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest3ValueAction("")
+		return ValueMitigateActionEnum2("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBodyMitigate) GetRateLimit() *UpdateFirewallConfigRequestBodyRateLimit {
+func (o *UpdateFirewallConfigMitigate2) GetRateLimit() *UpdateFirewallConfigRateLimitUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *UpdateFirewallConfigRequestBodyMitigate) GetRedirect() *UpdateFirewallConfigRequestBodyRedirect {
+func (o *UpdateFirewallConfigMitigate2) GetRedirect() *UpdateFirewallConfigRedirectUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateFirewallConfigRequestBodyMitigate) GetActionDuration() *string {
+func (o *UpdateFirewallConfigMitigate2) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *UpdateFirewallConfigRequestBodyMitigate) GetBypassSystem() *bool {
+func (o *UpdateFirewallConfigMitigate2) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest3Action struct {
-	Mitigate *UpdateFirewallConfigRequestBodyMitigate `json:"mitigate,omitempty"`
+type ValueAction2 struct {
+	Mitigate *UpdateFirewallConfigMitigate2 `json:"mitigate,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest3Action) GetMitigate() *UpdateFirewallConfigRequestBodyMitigate {
+func (o *ValueAction2) GetMitigate() *UpdateFirewallConfigMitigate2 {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type UpdateFirewallConfigRequestBodyValue struct {
-	Name           string                                                `json:"name"`
-	Description    *string                                               `json:"description,omitempty"`
-	Active         bool                                                  `json:"active"`
-	ConditionGroup []UpdateFirewallConfigRequestBodyConditionGroup       `json:"conditionGroup"`
-	Action         UpdateFirewallConfigRequestBodySecurityRequest3Action `json:"action"`
+type UpdateFirewallConfigValue2 struct {
+	Name           string                                `json:"name"`
+	Description    *string                               `json:"description,omitempty"`
+	Active         bool                                  `json:"active"`
+	ConditionGroup []UpdateFirewallConfigConditionGroup2 `json:"conditionGroup"`
+	Action         ValueAction2                          `json:"action"`
 }
 
-func (o *UpdateFirewallConfigRequestBodyValue) GetName() string {
+func (o *UpdateFirewallConfigValue2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateFirewallConfigRequestBodyValue) GetDescription() *string {
+func (o *UpdateFirewallConfigValue2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *UpdateFirewallConfigRequestBodyValue) GetActive() bool {
+func (o *UpdateFirewallConfigValue2) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateFirewallConfigRequestBodyValue) GetConditionGroup() []UpdateFirewallConfigRequestBodyConditionGroup {
+func (o *UpdateFirewallConfigValue2) GetConditionGroup() []UpdateFirewallConfigConditionGroup2 {
 	if o == nil {
-		return []UpdateFirewallConfigRequestBodyConditionGroup{}
+		return []UpdateFirewallConfigConditionGroup2{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *UpdateFirewallConfigRequestBodyValue) GetAction() UpdateFirewallConfigRequestBodySecurityRequest3Action {
+func (o *UpdateFirewallConfigValue2) GetAction() ValueAction2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest3Action{}
+		return ValueAction2{}
 	}
 	return o.Action
 }
 
-// UpdateFirewallConfigRequestBody3 - Update a custom rule
-type UpdateFirewallConfigRequestBody3 struct {
-	Action UpdateFirewallConfigRequestBodySecurityAction `json:"action"`
-	ID     string                                        `json:"id"`
-	Value  UpdateFirewallConfigRequestBodyValue          `json:"value"`
+// RulesUpdate - Update a custom rule
+type RulesUpdate struct {
+	Action ActionRulesUpdate          `json:"action"`
+	ID     string                     `json:"id"`
+	Value  UpdateFirewallConfigValue2 `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody3) GetAction() UpdateFirewallConfigRequestBodySecurityAction {
+func (o *RulesUpdate) GetAction() ActionRulesUpdate {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityAction("")
+		return ActionRulesUpdate("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody3) GetID() string {
+func (o *RulesUpdate) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody3) GetValue() UpdateFirewallConfigRequestBodyValue {
+func (o *RulesUpdate) GetValue() UpdateFirewallConfigValue2 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodyValue{}
+		return UpdateFirewallConfigValue2{}
 	}
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodyAction string
+type ActionRulesInsert string
 
 const (
-	UpdateFirewallConfigRequestBodyActionRulesInsert UpdateFirewallConfigRequestBodyAction = "rules.insert"
+	ActionRulesInsertRulesInsert ActionRulesInsert = "rules.insert"
 )
 
-func (e UpdateFirewallConfigRequestBodyAction) ToPointer() *UpdateFirewallConfigRequestBodyAction {
+func (e ActionRulesInsert) ToPointer() *ActionRulesInsert {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodyAction) UnmarshalJSON(data []byte) error {
+func (e *ActionRulesInsert) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "rules.insert":
-		*e = UpdateFirewallConfigRequestBodyAction(v)
+		*e = ActionRulesInsert(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodyAction: %v", v)
+		return fmt.Errorf("invalid value for ActionRulesInsert: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBodyType - [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-type UpdateFirewallConfigRequestBodyType string
+type UpdateFirewallConfigType1 string
 
 const (
-	UpdateFirewallConfigRequestBodyTypeHost             UpdateFirewallConfigRequestBodyType = "host"
-	UpdateFirewallConfigRequestBodyTypePath             UpdateFirewallConfigRequestBodyType = "path"
-	UpdateFirewallConfigRequestBodyTypeMethod           UpdateFirewallConfigRequestBodyType = "method"
-	UpdateFirewallConfigRequestBodyTypeHeader           UpdateFirewallConfigRequestBodyType = "header"
-	UpdateFirewallConfigRequestBodyTypeQuery            UpdateFirewallConfigRequestBodyType = "query"
-	UpdateFirewallConfigRequestBodyTypeCookie           UpdateFirewallConfigRequestBodyType = "cookie"
-	UpdateFirewallConfigRequestBodyTypeTargetPath       UpdateFirewallConfigRequestBodyType = "target_path"
-	UpdateFirewallConfigRequestBodyTypeRawPath          UpdateFirewallConfigRequestBodyType = "raw_path"
-	UpdateFirewallConfigRequestBodyTypeIPAddress        UpdateFirewallConfigRequestBodyType = "ip_address"
-	UpdateFirewallConfigRequestBodyTypeRegion           UpdateFirewallConfigRequestBodyType = "region"
-	UpdateFirewallConfigRequestBodyTypeProtocol         UpdateFirewallConfigRequestBodyType = "protocol"
-	UpdateFirewallConfigRequestBodyTypeScheme           UpdateFirewallConfigRequestBodyType = "scheme"
-	UpdateFirewallConfigRequestBodyTypeEnvironment      UpdateFirewallConfigRequestBodyType = "environment"
-	UpdateFirewallConfigRequestBodyTypeUserAgent        UpdateFirewallConfigRequestBodyType = "user_agent"
-	UpdateFirewallConfigRequestBodyTypeGeoContinent     UpdateFirewallConfigRequestBodyType = "geo_continent"
-	UpdateFirewallConfigRequestBodyTypeGeoCountry       UpdateFirewallConfigRequestBodyType = "geo_country"
-	UpdateFirewallConfigRequestBodyTypeGeoCountryRegion UpdateFirewallConfigRequestBodyType = "geo_country_region"
-	UpdateFirewallConfigRequestBodyTypeGeoCity          UpdateFirewallConfigRequestBodyType = "geo_city"
-	UpdateFirewallConfigRequestBodyTypeGeoAsNumber      UpdateFirewallConfigRequestBodyType = "geo_as_number"
-	UpdateFirewallConfigRequestBodyTypeJa4Digest        UpdateFirewallConfigRequestBodyType = "ja4_digest"
-	UpdateFirewallConfigRequestBodyTypeJa3Digest        UpdateFirewallConfigRequestBodyType = "ja3_digest"
-	UpdateFirewallConfigRequestBodyTypeRateLimitAPIID   UpdateFirewallConfigRequestBodyType = "rate_limit_api_id"
+	UpdateFirewallConfigType1Host             UpdateFirewallConfigType1 = "host"
+	UpdateFirewallConfigType1Path             UpdateFirewallConfigType1 = "path"
+	UpdateFirewallConfigType1Method           UpdateFirewallConfigType1 = "method"
+	UpdateFirewallConfigType1Header           UpdateFirewallConfigType1 = "header"
+	UpdateFirewallConfigType1Query            UpdateFirewallConfigType1 = "query"
+	UpdateFirewallConfigType1Cookie           UpdateFirewallConfigType1 = "cookie"
+	UpdateFirewallConfigType1TargetPath       UpdateFirewallConfigType1 = "target_path"
+	UpdateFirewallConfigType1RawPath          UpdateFirewallConfigType1 = "raw_path"
+	UpdateFirewallConfigType1IPAddress        UpdateFirewallConfigType1 = "ip_address"
+	UpdateFirewallConfigType1Region           UpdateFirewallConfigType1 = "region"
+	UpdateFirewallConfigType1Protocol         UpdateFirewallConfigType1 = "protocol"
+	UpdateFirewallConfigType1Scheme           UpdateFirewallConfigType1 = "scheme"
+	UpdateFirewallConfigType1Environment      UpdateFirewallConfigType1 = "environment"
+	UpdateFirewallConfigType1UserAgent        UpdateFirewallConfigType1 = "user_agent"
+	UpdateFirewallConfigType1GeoContinent     UpdateFirewallConfigType1 = "geo_continent"
+	UpdateFirewallConfigType1GeoCountry       UpdateFirewallConfigType1 = "geo_country"
+	UpdateFirewallConfigType1GeoCountryRegion UpdateFirewallConfigType1 = "geo_country_region"
+	UpdateFirewallConfigType1GeoCity          UpdateFirewallConfigType1 = "geo_city"
+	UpdateFirewallConfigType1GeoAsNumber      UpdateFirewallConfigType1 = "geo_as_number"
+	UpdateFirewallConfigType1Ja4Digest        UpdateFirewallConfigType1 = "ja4_digest"
+	UpdateFirewallConfigType1Ja3Digest        UpdateFirewallConfigType1 = "ja3_digest"
+	UpdateFirewallConfigType1RateLimitAPIID   UpdateFirewallConfigType1 = "rate_limit_api_id"
 )
 
-func (e UpdateFirewallConfigRequestBodyType) ToPointer() *UpdateFirewallConfigRequestBodyType {
+func (e UpdateFirewallConfigType1) ToPointer() *UpdateFirewallConfigType1 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodyType) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1663,37 +1658,36 @@ func (e *UpdateFirewallConfigRequestBodyType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
-		*e = UpdateFirewallConfigRequestBodyType(v)
+		*e = UpdateFirewallConfigType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodyType: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigType1: %v", v)
 	}
 }
 
-// RequestBodyOp - [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-type RequestBodyOp string
+type UpdateFirewallConfigOp1 string
 
 const (
-	RequestBodyOpRe   RequestBodyOp = "re"
-	RequestBodyOpEq   RequestBodyOp = "eq"
-	RequestBodyOpNeq  RequestBodyOp = "neq"
-	RequestBodyOpEx   RequestBodyOp = "ex"
-	RequestBodyOpNex  RequestBodyOp = "nex"
-	RequestBodyOpInc  RequestBodyOp = "inc"
-	RequestBodyOpNinc RequestBodyOp = "ninc"
-	RequestBodyOpPre  RequestBodyOp = "pre"
-	RequestBodyOpSuf  RequestBodyOp = "suf"
-	RequestBodyOpSub  RequestBodyOp = "sub"
-	RequestBodyOpGt   RequestBodyOp = "gt"
-	RequestBodyOpGte  RequestBodyOp = "gte"
-	RequestBodyOpLt   RequestBodyOp = "lt"
-	RequestBodyOpLte  RequestBodyOp = "lte"
+	UpdateFirewallConfigOp1Re   UpdateFirewallConfigOp1 = "re"
+	UpdateFirewallConfigOp1Eq   UpdateFirewallConfigOp1 = "eq"
+	UpdateFirewallConfigOp1Neq  UpdateFirewallConfigOp1 = "neq"
+	UpdateFirewallConfigOp1Ex   UpdateFirewallConfigOp1 = "ex"
+	UpdateFirewallConfigOp1Nex  UpdateFirewallConfigOp1 = "nex"
+	UpdateFirewallConfigOp1Inc  UpdateFirewallConfigOp1 = "inc"
+	UpdateFirewallConfigOp1Ninc UpdateFirewallConfigOp1 = "ninc"
+	UpdateFirewallConfigOp1Pre  UpdateFirewallConfigOp1 = "pre"
+	UpdateFirewallConfigOp1Suf  UpdateFirewallConfigOp1 = "suf"
+	UpdateFirewallConfigOp1Sub  UpdateFirewallConfigOp1 = "sub"
+	UpdateFirewallConfigOp1Gt   UpdateFirewallConfigOp1 = "gt"
+	UpdateFirewallConfigOp1Gte  UpdateFirewallConfigOp1 = "gte"
+	UpdateFirewallConfigOp1Lt   UpdateFirewallConfigOp1 = "lt"
+	UpdateFirewallConfigOp1Lte  UpdateFirewallConfigOp1 = "lte"
 )
 
-func (e RequestBodyOp) ToPointer() *RequestBodyOp {
+func (e UpdateFirewallConfigOp1) ToPointer() *UpdateFirewallConfigOp1 {
 	return &e
 }
-func (e *RequestBodyOp) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigOp1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1726,83 +1720,83 @@ func (e *RequestBodyOp) UnmarshalJSON(data []byte) error {
 	case "lt":
 		fallthrough
 	case "lte":
-		*e = RequestBodyOp(v)
+		*e = UpdateFirewallConfigOp1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestBodyOp: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigOp1: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest2ValueType string
+type UpdateFirewallConfigConditionValue1Type string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeStr        UpdateFirewallConfigRequestBodySecurityRequest2ValueType = "str"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeArrayOfStr UpdateFirewallConfigRequestBodySecurityRequest2ValueType = "arrayOfStr"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeNumber     UpdateFirewallConfigRequestBodySecurityRequest2ValueType = "number"
+	UpdateFirewallConfigConditionValue1TypeStr        UpdateFirewallConfigConditionValue1Type = "str"
+	UpdateFirewallConfigConditionValue1TypeArrayOfStr UpdateFirewallConfigConditionValue1Type = "arrayOfStr"
+	UpdateFirewallConfigConditionValue1TypeNumber     UpdateFirewallConfigConditionValue1Type = "number"
 )
 
-type UpdateFirewallConfigRequestBodySecurityRequest2Value struct {
-	Str        *string
-	ArrayOfStr []string
-	Number     *float64
+type UpdateFirewallConfigConditionValue1 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRequestBodySecurityRequest2ValueType
+	Type UpdateFirewallConfigConditionValue1Type
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest2ValueStr(str string) UpdateFirewallConfigRequestBodySecurityRequest2Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeStr
+func CreateUpdateFirewallConfigConditionValue1Str(str string) UpdateFirewallConfigConditionValue1 {
+	typ := UpdateFirewallConfigConditionValue1TypeStr
 
-	return UpdateFirewallConfigRequestBodySecurityRequest2Value{
+	return UpdateFirewallConfigConditionValue1{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest2ValueArrayOfStr(arrayOfStr []string) UpdateFirewallConfigRequestBodySecurityRequest2Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeArrayOfStr
+func CreateUpdateFirewallConfigConditionValue1ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigConditionValue1 {
+	typ := UpdateFirewallConfigConditionValue1TypeArrayOfStr
 
-	return UpdateFirewallConfigRequestBodySecurityRequest2Value{
+	return UpdateFirewallConfigConditionValue1{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodySecurityRequest2ValueNumber(number float64) UpdateFirewallConfigRequestBodySecurityRequest2Value {
-	typ := UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeNumber
+func CreateUpdateFirewallConfigConditionValue1Number(number float64) UpdateFirewallConfigConditionValue1 {
+	typ := UpdateFirewallConfigConditionValue1TypeNumber
 
-	return UpdateFirewallConfigRequestBodySecurityRequest2Value{
+	return UpdateFirewallConfigConditionValue1{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBodySecurityRequest2Value) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigConditionValue1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeStr
+		u.Type = UpdateFirewallConfigConditionValue1TypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeArrayOfStr
+		u.Type = UpdateFirewallConfigConditionValue1TypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = UpdateFirewallConfigRequestBodySecurityRequest2ValueTypeNumber
+		u.Type = UpdateFirewallConfigConditionValue1TypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodySecurityRequest2Value", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigConditionValue1", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBodySecurityRequest2Value) MarshalJSON() ([]byte, error) {
+func (u UpdateFirewallConfigConditionValue1) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -1815,80 +1809,78 @@ func (u UpdateFirewallConfigRequestBodySecurityRequest2Value) MarshalJSON() ([]b
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodySecurityRequest2Value: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigConditionValue1: all fields are null")
 }
 
-type RequestBodyConditions struct {
-	// [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-	Type UpdateFirewallConfigRequestBodyType `json:"type"`
-	// [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-	Op    RequestBodyOp                                         `json:"op"`
-	Neg   *bool                                                 `json:"neg,omitempty"`
-	Key   *string                                               `json:"key,omitempty"`
-	Value *UpdateFirewallConfigRequestBodySecurityRequest2Value `json:"value,omitempty"`
+type UpdateFirewallConfigCondition1 struct {
+	Type  UpdateFirewallConfigType1            `json:"type"`
+	Op    UpdateFirewallConfigOp1              `json:"op"`
+	Neg   *bool                                `json:"neg,omitempty"`
+	Key   *string                              `json:"key,omitempty"`
+	Value *UpdateFirewallConfigConditionValue1 `json:"value,omitempty"`
 }
 
-func (o *RequestBodyConditions) GetType() UpdateFirewallConfigRequestBodyType {
+func (o *UpdateFirewallConfigCondition1) GetType() UpdateFirewallConfigType1 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodyType("")
+		return UpdateFirewallConfigType1("")
 	}
 	return o.Type
 }
 
-func (o *RequestBodyConditions) GetOp() RequestBodyOp {
+func (o *UpdateFirewallConfigCondition1) GetOp() UpdateFirewallConfigOp1 {
 	if o == nil {
-		return RequestBodyOp("")
+		return UpdateFirewallConfigOp1("")
 	}
 	return o.Op
 }
 
-func (o *RequestBodyConditions) GetNeg() *bool {
+func (o *UpdateFirewallConfigCondition1) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *RequestBodyConditions) GetKey() *string {
+func (o *UpdateFirewallConfigCondition1) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *RequestBodyConditions) GetValue() *UpdateFirewallConfigRequestBodySecurityRequest2Value {
+func (o *UpdateFirewallConfigCondition1) GetValue() *UpdateFirewallConfigConditionValue1 {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type RequestBodyConditionGroup struct {
-	Conditions []RequestBodyConditions `json:"conditions"`
+type UpdateFirewallConfigConditionGroup1 struct {
+	Conditions []UpdateFirewallConfigCondition1 `json:"conditions"`
 }
 
-func (o *RequestBodyConditionGroup) GetConditions() []RequestBodyConditions {
+func (o *UpdateFirewallConfigConditionGroup1) GetConditions() []UpdateFirewallConfigCondition1 {
 	if o == nil {
-		return []RequestBodyConditions{}
+		return []UpdateFirewallConfigCondition1{}
 	}
 	return o.Conditions
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest2ValueAction string
+type ValueMitigateActionEnum1 string
 
 const (
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionLog       UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "log"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionChallenge UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "challenge"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionDeny      UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "deny"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionBypass    UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "bypass"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionRateLimit UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "rate_limit"
-	UpdateFirewallConfigRequestBodySecurityRequest2ValueActionRedirect  UpdateFirewallConfigRequestBodySecurityRequest2ValueAction = "redirect"
+	ValueMitigateActionEnum1Log       ValueMitigateActionEnum1 = "log"
+	ValueMitigateActionEnum1Challenge ValueMitigateActionEnum1 = "challenge"
+	ValueMitigateActionEnum1Deny      ValueMitigateActionEnum1 = "deny"
+	ValueMitigateActionEnum1Bypass    ValueMitigateActionEnum1 = "bypass"
+	ValueMitigateActionEnum1RateLimit ValueMitigateActionEnum1 = "rate_limit"
+	ValueMitigateActionEnum1Redirect  ValueMitigateActionEnum1 = "redirect"
 )
 
-func (e UpdateFirewallConfigRequestBodySecurityRequest2ValueAction) ToPointer() *UpdateFirewallConfigRequestBodySecurityRequest2ValueAction {
+func (e ValueMitigateActionEnum1) ToPointer() *ValueMitigateActionEnum1 {
 	return &e
 }
-func (e *UpdateFirewallConfigRequestBodySecurityRequest2ValueAction) UnmarshalJSON(data []byte) error {
+func (e *ValueMitigateActionEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1905,24 +1897,24 @@ func (e *UpdateFirewallConfigRequestBodySecurityRequest2ValueAction) UnmarshalJS
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = UpdateFirewallConfigRequestBodySecurityRequest2ValueAction(v)
+		*e = ValueMitigateActionEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigRequestBodySecurityRequest2ValueAction: %v", v)
+		return fmt.Errorf("invalid value for ValueMitigateActionEnum1: %v", v)
 	}
 }
 
-type RateLimitAlgo string
+type UpdateFirewallConfigAlgo1 string
 
 const (
-	RateLimitAlgoFixedWindow RateLimitAlgo = "fixed_window"
-	RateLimitAlgoTokenBucket RateLimitAlgo = "token_bucket"
+	UpdateFirewallConfigAlgo1FixedWindow UpdateFirewallConfigAlgo1 = "fixed_window"
+	UpdateFirewallConfigAlgo1TokenBucket UpdateFirewallConfigAlgo1 = "token_bucket"
 )
 
-func (e RateLimitAlgo) ToPointer() *RateLimitAlgo {
+func (e UpdateFirewallConfigAlgo1) ToPointer() *UpdateFirewallConfigAlgo1 {
 	return &e
 }
-func (e *RateLimitAlgo) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigAlgo1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1931,26 +1923,26 @@ func (e *RateLimitAlgo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = RateLimitAlgo(v)
+		*e = UpdateFirewallConfigAlgo1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RateLimitAlgo: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigAlgo1: %v", v)
 	}
 }
 
-type UpdateFirewallConfigAction1 string
+type RateLimitActionValueEnum1 string
 
 const (
-	UpdateFirewallConfigAction1Log       UpdateFirewallConfigAction1 = "log"
-	UpdateFirewallConfigAction1Challenge UpdateFirewallConfigAction1 = "challenge"
-	UpdateFirewallConfigAction1Deny      UpdateFirewallConfigAction1 = "deny"
-	UpdateFirewallConfigAction1RateLimit UpdateFirewallConfigAction1 = "rate_limit"
+	RateLimitActionValueEnum1Log       RateLimitActionValueEnum1 = "log"
+	RateLimitActionValueEnum1Challenge RateLimitActionValueEnum1 = "challenge"
+	RateLimitActionValueEnum1Deny      RateLimitActionValueEnum1 = "deny"
+	RateLimitActionValueEnum1RateLimit RateLimitActionValueEnum1 = "rate_limit"
 )
 
-func (e UpdateFirewallConfigAction1) ToPointer() *UpdateFirewallConfigAction1 {
+func (e RateLimitActionValueEnum1) ToPointer() *RateLimitActionValueEnum1 {
 	return &e
 }
-func (e *UpdateFirewallConfigAction1) UnmarshalJSON(data []byte) error {
+func (e *RateLimitActionValueEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1963,87 +1955,87 @@ func (e *UpdateFirewallConfigAction1) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "rate_limit":
-		*e = UpdateFirewallConfigAction1(v)
+		*e = RateLimitActionValueEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFirewallConfigAction1: %v", v)
+		return fmt.Errorf("invalid value for RateLimitActionValueEnum1: %v", v)
 	}
 }
 
-type UpdateFirewallConfigRateLimitActionType string
+type ValueActionUnion1Type string
 
 const (
-	UpdateFirewallConfigRateLimitActionTypeUpdateFirewallConfigAction1 UpdateFirewallConfigRateLimitActionType = "updateFirewallConfig_action_1"
-	UpdateFirewallConfigRateLimitActionTypeAny                         UpdateFirewallConfigRateLimitActionType = "any"
+	ValueActionUnion1TypeRateLimitActionValueEnum1 ValueActionUnion1Type = "rateLimit_action_value_enum_1"
+	ValueActionUnion1TypeAny                       ValueActionUnion1Type = "any"
 )
 
-type UpdateFirewallConfigRateLimitAction struct {
-	UpdateFirewallConfigAction1 *UpdateFirewallConfigAction1
-	Any                         any
+type ValueActionUnion1 struct {
+	RateLimitActionValueEnum1 *RateLimitActionValueEnum1 `queryParam:"inline"`
+	Any                       any                        `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRateLimitActionType
+	Type ValueActionUnion1Type
 }
 
-func CreateUpdateFirewallConfigRateLimitActionUpdateFirewallConfigAction1(updateFirewallConfigAction1 UpdateFirewallConfigAction1) UpdateFirewallConfigRateLimitAction {
-	typ := UpdateFirewallConfigRateLimitActionTypeUpdateFirewallConfigAction1
+func CreateValueActionUnion1RateLimitActionValueEnum1(rateLimitActionValueEnum1 RateLimitActionValueEnum1) ValueActionUnion1 {
+	typ := ValueActionUnion1TypeRateLimitActionValueEnum1
 
-	return UpdateFirewallConfigRateLimitAction{
-		UpdateFirewallConfigAction1: &updateFirewallConfigAction1,
-		Type:                        typ,
+	return ValueActionUnion1{
+		RateLimitActionValueEnum1: &rateLimitActionValueEnum1,
+		Type:                      typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRateLimitActionAny(anyT any) UpdateFirewallConfigRateLimitAction {
-	typ := UpdateFirewallConfigRateLimitActionTypeAny
+func CreateValueActionUnion1Any(anyT any) ValueActionUnion1 {
+	typ := ValueActionUnion1TypeAny
 
-	return UpdateFirewallConfigRateLimitAction{
+	return ValueActionUnion1{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRateLimitAction) UnmarshalJSON(data []byte) error {
+func (u *ValueActionUnion1) UnmarshalJSON(data []byte) error {
 
-	var updateFirewallConfigAction1 UpdateFirewallConfigAction1 = UpdateFirewallConfigAction1("")
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigAction1, "", true, true); err == nil {
-		u.UpdateFirewallConfigAction1 = &updateFirewallConfigAction1
-		u.Type = UpdateFirewallConfigRateLimitActionTypeUpdateFirewallConfigAction1
+	var rateLimitActionValueEnum1 RateLimitActionValueEnum1 = RateLimitActionValueEnum1("")
+	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum1, "", true, true); err == nil {
+		u.RateLimitActionValueEnum1 = &rateLimitActionValueEnum1
+		u.Type = ValueActionUnion1TypeRateLimitActionValueEnum1
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = UpdateFirewallConfigRateLimitActionTypeAny
+		u.Type = ValueActionUnion1TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRateLimitAction", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ValueActionUnion1", string(data))
 }
 
-func (u UpdateFirewallConfigRateLimitAction) MarshalJSON() ([]byte, error) {
-	if u.UpdateFirewallConfigAction1 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigAction1, "", true)
+func (u ValueActionUnion1) MarshalJSON() ([]byte, error) {
+	if u.RateLimitActionValueEnum1 != nil {
+		return utils.MarshalJSON(u.RateLimitActionValueEnum1, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRateLimitAction: all fields are null")
+	return nil, errors.New("could not marshal union type ValueActionUnion1: all fields are null")
 }
 
 type UpdateFirewallConfigRateLimit1 struct {
-	Algo   RateLimitAlgo                        `json:"algo"`
-	Window float64                              `json:"window"`
-	Limit  float64                              `json:"limit"`
-	Keys   []string                             `json:"keys"`
-	Action *UpdateFirewallConfigRateLimitAction `json:"action,omitempty"`
+	Algo   UpdateFirewallConfigAlgo1 `json:"algo"`
+	Window float64                   `json:"window"`
+	Limit  float64                   `json:"limit"`
+	Keys   []string                  `json:"keys"`
+	Action *ValueActionUnion1        `json:"action,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRateLimit1) GetAlgo() RateLimitAlgo {
+func (o *UpdateFirewallConfigRateLimit1) GetAlgo() UpdateFirewallConfigAlgo1 {
 	if o == nil {
-		return RateLimitAlgo("")
+		return UpdateFirewallConfigAlgo1("")
 	}
 	return o.Algo
 }
@@ -2069,65 +2061,65 @@ func (o *UpdateFirewallConfigRateLimit1) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *UpdateFirewallConfigRateLimit1) GetAction() *UpdateFirewallConfigRateLimitAction {
+func (o *UpdateFirewallConfigRateLimit1) GetAction() *ValueActionUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type RequestBodyRateLimitType string
+type UpdateFirewallConfigRateLimitUnion1Type string
 
 const (
-	RequestBodyRateLimitTypeUpdateFirewallConfigRateLimit1 RequestBodyRateLimitType = "updateFirewallConfig_rateLimit_1"
-	RequestBodyRateLimitTypeAny                            RequestBodyRateLimitType = "any"
+	UpdateFirewallConfigRateLimitUnion1TypeUpdateFirewallConfigRateLimit1 UpdateFirewallConfigRateLimitUnion1Type = "updateFirewallConfig_rateLimit_1"
+	UpdateFirewallConfigRateLimitUnion1TypeAny                            UpdateFirewallConfigRateLimitUnion1Type = "any"
 )
 
-type RequestBodyRateLimit struct {
-	UpdateFirewallConfigRateLimit1 *UpdateFirewallConfigRateLimit1
-	Any                            any
+type UpdateFirewallConfigRateLimitUnion1 struct {
+	UpdateFirewallConfigRateLimit1 *UpdateFirewallConfigRateLimit1 `queryParam:"inline"`
+	Any                            any                             `queryParam:"inline"`
 
-	Type RequestBodyRateLimitType
+	Type UpdateFirewallConfigRateLimitUnion1Type
 }
 
-func CreateRequestBodyRateLimitUpdateFirewallConfigRateLimit1(updateFirewallConfigRateLimit1 UpdateFirewallConfigRateLimit1) RequestBodyRateLimit {
-	typ := RequestBodyRateLimitTypeUpdateFirewallConfigRateLimit1
+func CreateUpdateFirewallConfigRateLimitUnion1UpdateFirewallConfigRateLimit1(updateFirewallConfigRateLimit1 UpdateFirewallConfigRateLimit1) UpdateFirewallConfigRateLimitUnion1 {
+	typ := UpdateFirewallConfigRateLimitUnion1TypeUpdateFirewallConfigRateLimit1
 
-	return RequestBodyRateLimit{
+	return UpdateFirewallConfigRateLimitUnion1{
 		UpdateFirewallConfigRateLimit1: &updateFirewallConfigRateLimit1,
 		Type:                           typ,
 	}
 }
 
-func CreateRequestBodyRateLimitAny(anyT any) RequestBodyRateLimit {
-	typ := RequestBodyRateLimitTypeAny
+func CreateUpdateFirewallConfigRateLimitUnion1Any(anyT any) UpdateFirewallConfigRateLimitUnion1 {
+	typ := UpdateFirewallConfigRateLimitUnion1TypeAny
 
-	return RequestBodyRateLimit{
+	return UpdateFirewallConfigRateLimitUnion1{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *RequestBodyRateLimit) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigRateLimitUnion1) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRateLimit1 UpdateFirewallConfigRateLimit1 = UpdateFirewallConfigRateLimit1{}
 	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit1, "", true, true); err == nil {
 		u.UpdateFirewallConfigRateLimit1 = &updateFirewallConfigRateLimit1
-		u.Type = RequestBodyRateLimitTypeUpdateFirewallConfigRateLimit1
+		u.Type = UpdateFirewallConfigRateLimitUnion1TypeUpdateFirewallConfigRateLimit1
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = RequestBodyRateLimitTypeAny
+		u.Type = UpdateFirewallConfigRateLimitUnion1TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RequestBodyRateLimit", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRateLimitUnion1", string(data))
 }
 
-func (u RequestBodyRateLimit) MarshalJSON() ([]byte, error) {
+func (u UpdateFirewallConfigRateLimitUnion1) MarshalJSON() ([]byte, error) {
 	if u.UpdateFirewallConfigRateLimit1 != nil {
 		return utils.MarshalJSON(u.UpdateFirewallConfigRateLimit1, "", true)
 	}
@@ -2136,7 +2128,7 @@ func (u RequestBodyRateLimit) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RequestBodyRateLimit: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRateLimitUnion1: all fields are null")
 }
 
 type UpdateFirewallConfigRedirect1 struct {
@@ -2158,58 +2150,58 @@ func (o *UpdateFirewallConfigRedirect1) GetPermanent() bool {
 	return o.Permanent
 }
 
-type RequestBodyRedirectType string
+type UpdateFirewallConfigRedirectUnion1Type string
 
 const (
-	RequestBodyRedirectTypeUpdateFirewallConfigRedirect1 RequestBodyRedirectType = "updateFirewallConfig_redirect_1"
-	RequestBodyRedirectTypeAny                           RequestBodyRedirectType = "any"
+	UpdateFirewallConfigRedirectUnion1TypeUpdateFirewallConfigRedirect1 UpdateFirewallConfigRedirectUnion1Type = "updateFirewallConfig_redirect_1"
+	UpdateFirewallConfigRedirectUnion1TypeAny                           UpdateFirewallConfigRedirectUnion1Type = "any"
 )
 
-type RequestBodyRedirect struct {
-	UpdateFirewallConfigRedirect1 *UpdateFirewallConfigRedirect1
-	Any                           any
+type UpdateFirewallConfigRedirectUnion1 struct {
+	UpdateFirewallConfigRedirect1 *UpdateFirewallConfigRedirect1 `queryParam:"inline"`
+	Any                           any                            `queryParam:"inline"`
 
-	Type RequestBodyRedirectType
+	Type UpdateFirewallConfigRedirectUnion1Type
 }
 
-func CreateRequestBodyRedirectUpdateFirewallConfigRedirect1(updateFirewallConfigRedirect1 UpdateFirewallConfigRedirect1) RequestBodyRedirect {
-	typ := RequestBodyRedirectTypeUpdateFirewallConfigRedirect1
+func CreateUpdateFirewallConfigRedirectUnion1UpdateFirewallConfigRedirect1(updateFirewallConfigRedirect1 UpdateFirewallConfigRedirect1) UpdateFirewallConfigRedirectUnion1 {
+	typ := UpdateFirewallConfigRedirectUnion1TypeUpdateFirewallConfigRedirect1
 
-	return RequestBodyRedirect{
+	return UpdateFirewallConfigRedirectUnion1{
 		UpdateFirewallConfigRedirect1: &updateFirewallConfigRedirect1,
 		Type:                          typ,
 	}
 }
 
-func CreateRequestBodyRedirectAny(anyT any) RequestBodyRedirect {
-	typ := RequestBodyRedirectTypeAny
+func CreateUpdateFirewallConfigRedirectUnion1Any(anyT any) UpdateFirewallConfigRedirectUnion1 {
+	typ := UpdateFirewallConfigRedirectUnion1TypeAny
 
-	return RequestBodyRedirect{
+	return UpdateFirewallConfigRedirectUnion1{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *RequestBodyRedirect) UnmarshalJSON(data []byte) error {
+func (u *UpdateFirewallConfigRedirectUnion1) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRedirect1 UpdateFirewallConfigRedirect1 = UpdateFirewallConfigRedirect1{}
 	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect1, "", true, true); err == nil {
 		u.UpdateFirewallConfigRedirect1 = &updateFirewallConfigRedirect1
-		u.Type = RequestBodyRedirectTypeUpdateFirewallConfigRedirect1
+		u.Type = UpdateFirewallConfigRedirectUnion1TypeUpdateFirewallConfigRedirect1
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = RequestBodyRedirectTypeAny
+		u.Type = UpdateFirewallConfigRedirectUnion1TypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RequestBodyRedirect", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRedirectUnion1", string(data))
 }
 
-func (u RequestBodyRedirect) MarshalJSON() ([]byte, error) {
+func (u UpdateFirewallConfigRedirectUnion1) MarshalJSON() ([]byte, error) {
 	if u.UpdateFirewallConfigRedirect1 != nil {
 		return utils.MarshalJSON(u.UpdateFirewallConfigRedirect1, "", true)
 	}
@@ -2218,179 +2210,179 @@ func (u RequestBodyRedirect) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RequestBodyRedirect: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRedirectUnion1: all fields are null")
 }
 
-type RequestBodyMitigate struct {
-	Action         UpdateFirewallConfigRequestBodySecurityRequest2ValueAction `json:"action"`
-	RateLimit      *RequestBodyRateLimit                                      `json:"rateLimit,omitempty"`
-	Redirect       *RequestBodyRedirect                                       `json:"redirect,omitempty"`
-	ActionDuration *string                                                    `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                                      `json:"bypassSystem,omitempty"`
+type UpdateFirewallConfigMitigate1 struct {
+	Action         ValueMitigateActionEnum1             `json:"action"`
+	RateLimit      *UpdateFirewallConfigRateLimitUnion1 `json:"rateLimit,omitempty"`
+	Redirect       *UpdateFirewallConfigRedirectUnion1  `json:"redirect,omitempty"`
+	ActionDuration *string                              `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
 }
 
-func (o *RequestBodyMitigate) GetAction() UpdateFirewallConfigRequestBodySecurityRequest2ValueAction {
+func (o *UpdateFirewallConfigMitigate1) GetAction() ValueMitigateActionEnum1 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest2ValueAction("")
+		return ValueMitigateActionEnum1("")
 	}
 	return o.Action
 }
 
-func (o *RequestBodyMitigate) GetRateLimit() *RequestBodyRateLimit {
+func (o *UpdateFirewallConfigMitigate1) GetRateLimit() *UpdateFirewallConfigRateLimitUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *RequestBodyMitigate) GetRedirect() *RequestBodyRedirect {
+func (o *UpdateFirewallConfigMitigate1) GetRedirect() *UpdateFirewallConfigRedirectUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *RequestBodyMitigate) GetActionDuration() *string {
+func (o *UpdateFirewallConfigMitigate1) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *RequestBodyMitigate) GetBypassSystem() *bool {
+func (o *UpdateFirewallConfigMitigate1) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type UpdateFirewallConfigRequestBodySecurityRequest2Action struct {
-	Mitigate *RequestBodyMitigate `json:"mitigate,omitempty"`
+type ValueAction1 struct {
+	Mitigate *UpdateFirewallConfigMitigate1 `json:"mitigate,omitempty"`
 }
 
-func (o *UpdateFirewallConfigRequestBodySecurityRequest2Action) GetMitigate() *RequestBodyMitigate {
+func (o *ValueAction1) GetMitigate() *UpdateFirewallConfigMitigate1 {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type RequestBodyValue struct {
-	Name           string                                                `json:"name"`
-	Description    *string                                               `json:"description,omitempty"`
-	Active         bool                                                  `json:"active"`
-	ConditionGroup []RequestBodyConditionGroup                           `json:"conditionGroup"`
-	Action         UpdateFirewallConfigRequestBodySecurityRequest2Action `json:"action"`
+type UpdateFirewallConfigValue1 struct {
+	Name           string                                `json:"name"`
+	Description    *string                               `json:"description,omitempty"`
+	Active         bool                                  `json:"active"`
+	ConditionGroup []UpdateFirewallConfigConditionGroup1 `json:"conditionGroup"`
+	Action         ValueAction1                          `json:"action"`
 }
 
-func (o *RequestBodyValue) GetName() string {
+func (o *UpdateFirewallConfigValue1) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RequestBodyValue) GetDescription() *string {
+func (o *UpdateFirewallConfigValue1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *RequestBodyValue) GetActive() bool {
+func (o *UpdateFirewallConfigValue1) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *RequestBodyValue) GetConditionGroup() []RequestBodyConditionGroup {
+func (o *UpdateFirewallConfigValue1) GetConditionGroup() []UpdateFirewallConfigConditionGroup1 {
 	if o == nil {
-		return []RequestBodyConditionGroup{}
+		return []UpdateFirewallConfigConditionGroup1{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *RequestBodyValue) GetAction() UpdateFirewallConfigRequestBodySecurityRequest2Action {
+func (o *UpdateFirewallConfigValue1) GetAction() ValueAction1 {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodySecurityRequest2Action{}
+		return ValueAction1{}
 	}
 	return o.Action
 }
 
-// UpdateFirewallConfigRequestBody2 - Add a custom rule
-type UpdateFirewallConfigRequestBody2 struct {
-	Action UpdateFirewallConfigRequestBodyAction `json:"action"`
-	ID     any                                   `json:"id,omitempty"`
-	Value  RequestBodyValue                      `json:"value"`
+// RulesInsert - Add a custom rule
+type RulesInsert struct {
+	Action ActionRulesInsert          `json:"action"`
+	ID     any                        `json:"id,omitempty"`
+	Value  UpdateFirewallConfigValue1 `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody2) GetAction() UpdateFirewallConfigRequestBodyAction {
+func (o *RulesInsert) GetAction() ActionRulesInsert {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodyAction("")
+		return ActionRulesInsert("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody2) GetID() any {
+func (o *RulesInsert) GetID() any {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody2) GetValue() RequestBodyValue {
+func (o *RulesInsert) GetValue() UpdateFirewallConfigValue1 {
 	if o == nil {
-		return RequestBodyValue{}
+		return UpdateFirewallConfigValue1{}
 	}
 	return o.Value
 }
 
-type RequestBodyAction string
+type ActionFirewallEnabled string
 
 const (
-	RequestBodyActionFirewallEnabled RequestBodyAction = "firewallEnabled"
+	ActionFirewallEnabledFirewallEnabled ActionFirewallEnabled = "firewallEnabled"
 )
 
-func (e RequestBodyAction) ToPointer() *RequestBodyAction {
+func (e ActionFirewallEnabled) ToPointer() *ActionFirewallEnabled {
 	return &e
 }
-func (e *RequestBodyAction) UnmarshalJSON(data []byte) error {
+func (e *ActionFirewallEnabled) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "firewallEnabled":
-		*e = RequestBodyAction(v)
+		*e = ActionFirewallEnabled(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestBodyAction: %v", v)
+		return fmt.Errorf("invalid value for ActionFirewallEnabled: %v", v)
 	}
 }
 
-// UpdateFirewallConfigRequestBody1 - Enable Firewall
-type UpdateFirewallConfigRequestBody1 struct {
-	Action RequestBodyAction `json:"action"`
-	ID     any               `json:"id,omitempty"`
-	Value  bool              `json:"value"`
+// FirewallEnabled - Enable Firewall
+type FirewallEnabled struct {
+	Action ActionFirewallEnabled `json:"action"`
+	ID     any                   `json:"id,omitempty"`
+	Value  bool                  `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody1) GetAction() RequestBodyAction {
+func (o *FirewallEnabled) GetAction() ActionFirewallEnabled {
 	if o == nil {
-		return RequestBodyAction("")
+		return ActionFirewallEnabled("")
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody1) GetID() any {
+func (o *FirewallEnabled) GetID() any {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody1) GetValue() bool {
+func (o *FirewallEnabled) GetValue() bool {
 	if o == nil {
 		return false
 	}
@@ -2400,284 +2392,284 @@ func (o *UpdateFirewallConfigRequestBody1) GetValue() bool {
 type UpdateFirewallConfigRequestBodyUnionType string
 
 const (
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_1"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_2"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_3"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody4 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_4"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody5 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_5"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_requestBody_6"
-	UpdateFirewallConfigRequestBodyUnionTypeRequestBody7                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_7"
-	UpdateFirewallConfigRequestBodyUnionTypeRequestBody8                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_8"
-	UpdateFirewallConfigRequestBodyUnionTypeRequestBody9                     UpdateFirewallConfigRequestBodyUnionType = "requestBody_9"
-	UpdateFirewallConfigRequestBodyUnionTypeRequestBody10                    UpdateFirewallConfigRequestBodyUnionType = "requestBody_10"
-	UpdateFirewallConfigRequestBodyUnionTypeEleven                           UpdateFirewallConfigRequestBodyUnionType = "11"
-	UpdateFirewallConfigRequestBodyUnionTypeTwelve                           UpdateFirewallConfigRequestBodyUnionType = "12"
+	UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled                 UpdateFirewallConfigRequestBodyUnionType = "FirewallEnabled"
+	UpdateFirewallConfigRequestBodyUnionTypeRulesInsert                     UpdateFirewallConfigRequestBodyUnionType = "RulesInsert"
+	UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate                     UpdateFirewallConfigRequestBodyUnionType = "RulesUpdate"
+	UpdateFirewallConfigRequestBodyUnionTypeRulesRemove                     UpdateFirewallConfigRequestBodyUnionType = "RulesRemove"
+	UpdateFirewallConfigRequestBodyUnionTypeRulesPriority                   UpdateFirewallConfigRequestBodyUnionType = "RulesPriority"
+	UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate                       UpdateFirewallConfigRequestBodyUnionType = "CrsUpdate"
+	UpdateFirewallConfigRequestBodyUnionTypeCrsDisable                      UpdateFirewallConfigRequestBodyUnionType = "CrsDisable"
+	UpdateFirewallConfigRequestBodyUnionTypeIPInsert                        UpdateFirewallConfigRequestBodyUnionType = "IPInsert"
+	UpdateFirewallConfigRequestBodyUnionTypeIPUpdate                        UpdateFirewallConfigRequestBodyUnionType = "IPUpdate"
+	UpdateFirewallConfigRequestBodyUnionTypeIPRemove                        UpdateFirewallConfigRequestBodyUnionType = "IPRemove"
+	UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate              UpdateFirewallConfigRequestBodyUnionType = "ManagedRulesUpdate"
+	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_RequestBody"
 )
 
-type UpdateFirewallConfigRequestBody struct {
-	UpdateFirewallConfigRequestBody1 *UpdateFirewallConfigRequestBody1
-	UpdateFirewallConfigRequestBody2 *UpdateFirewallConfigRequestBody2
-	UpdateFirewallConfigRequestBody3 *UpdateFirewallConfigRequestBody3
-	UpdateFirewallConfigRequestBody4 *UpdateFirewallConfigRequestBody4
-	UpdateFirewallConfigRequestBody5 *UpdateFirewallConfigRequestBody5
-	UpdateFirewallConfigRequestBody6 *UpdateFirewallConfigRequestBody6
-	RequestBody7                     *RequestBody7
-	RequestBody8                     *RequestBody8
-	RequestBody9                     *RequestBody9
-	RequestBody10                    *RequestBody10
-	Eleven                           *Eleven
-	Twelve                           *Twelve
+type UpdateFirewallConfigRequestBodyUnion struct {
+	FirewallEnabled                 *FirewallEnabled                 `queryParam:"inline"`
+	RulesInsert                     *RulesInsert                     `queryParam:"inline"`
+	RulesUpdate                     *RulesUpdate                     `queryParam:"inline"`
+	RulesRemove                     *RulesRemove                     `queryParam:"inline"`
+	RulesPriority                   *RulesPriority                   `queryParam:"inline"`
+	CrsUpdate                       *CrsUpdate                       `queryParam:"inline"`
+	CrsDisable                      *CrsDisable                      `queryParam:"inline"`
+	IPInsert                        *IPInsert                        `queryParam:"inline"`
+	IPUpdate                        *IPUpdate                        `queryParam:"inline"`
+	IPRemove                        *IPRemove                        `queryParam:"inline"`
+	ManagedRulesUpdate              *ManagedRulesUpdate              `queryParam:"inline"`
+	UpdateFirewallConfigRequestBody *UpdateFirewallConfigRequestBody `queryParam:"inline"`
 
 	Type UpdateFirewallConfigRequestBodyUnionType
 }
 
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody1(updateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBody1) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody1
+func CreateUpdateFirewallConfigRequestBodyUnionFirewallEnabled(firewallEnabled FirewallEnabled) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled
 
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody1: &updateFirewallConfigRequestBody1,
-		Type:                             typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		FirewallEnabled: &firewallEnabled,
+		Type:            typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody2(updateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBody2) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody2
+func CreateUpdateFirewallConfigRequestBodyUnionRulesInsert(rulesInsert RulesInsert) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesInsert
 
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody2: &updateFirewallConfigRequestBody2,
-		Type:                             typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		RulesInsert: &rulesInsert,
+		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody3(updateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBody3) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody3
+func CreateUpdateFirewallConfigRequestBodyUnionRulesUpdate(rulesUpdate RulesUpdate) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate
 
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody3: &updateFirewallConfigRequestBody3,
-		Type:                             typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		RulesUpdate: &rulesUpdate,
+		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody4(updateFirewallConfigRequestBody4 UpdateFirewallConfigRequestBody4) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody4
+func CreateUpdateFirewallConfigRequestBodyUnionRulesRemove(rulesRemove RulesRemove) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesRemove
 
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody4: &updateFirewallConfigRequestBody4,
-		Type:                             typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		RulesRemove: &rulesRemove,
+		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody5(updateFirewallConfigRequestBody5 UpdateFirewallConfigRequestBody5) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody5
+func CreateUpdateFirewallConfigRequestBodyUnionRulesPriority(rulesPriority RulesPriority) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesPriority
 
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody5: &updateFirewallConfigRequestBody5,
-		Type:                             typ,
-	}
-}
-
-func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody6(updateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBody6) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6
-
-	return UpdateFirewallConfigRequestBody{
-		UpdateFirewallConfigRequestBody6: &updateFirewallConfigRequestBody6,
-		Type:                             typ,
-	}
-}
-
-func CreateUpdateFirewallConfigRequestBodyRequestBody7(requestBody7 RequestBody7) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRequestBody7
-
-	return UpdateFirewallConfigRequestBody{
-		RequestBody7: &requestBody7,
-		Type:         typ,
-	}
-}
-
-func CreateUpdateFirewallConfigRequestBodyRequestBody8(requestBody8 RequestBody8) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRequestBody8
-
-	return UpdateFirewallConfigRequestBody{
-		RequestBody8: &requestBody8,
-		Type:         typ,
-	}
-}
-
-func CreateUpdateFirewallConfigRequestBodyRequestBody9(requestBody9 RequestBody9) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRequestBody9
-
-	return UpdateFirewallConfigRequestBody{
-		RequestBody9: &requestBody9,
-		Type:         typ,
-	}
-}
-
-func CreateUpdateFirewallConfigRequestBodyRequestBody10(requestBody10 RequestBody10) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRequestBody10
-
-	return UpdateFirewallConfigRequestBody{
-		RequestBody10: &requestBody10,
+	return UpdateFirewallConfigRequestBodyUnion{
+		RulesPriority: &rulesPriority,
 		Type:          typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyEleven(eleven Eleven) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeEleven
+func CreateUpdateFirewallConfigRequestBodyUnionCrsUpdate(crsUpdate CrsUpdate) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate
 
-	return UpdateFirewallConfigRequestBody{
-		Eleven: &eleven,
-		Type:   typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		CrsUpdate: &crsUpdate,
+		Type:      typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyTwelve(twelve Twelve) UpdateFirewallConfigRequestBody {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeTwelve
+func CreateUpdateFirewallConfigRequestBodyUnionCrsDisable(crsDisable CrsDisable) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeCrsDisable
 
-	return UpdateFirewallConfigRequestBody{
-		Twelve: &twelve,
-		Type:   typ,
+	return UpdateFirewallConfigRequestBodyUnion{
+		CrsDisable: &crsDisable,
+		Type:       typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
+func CreateUpdateFirewallConfigRequestBodyUnionIPInsert(ipInsert IPInsert) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeIPInsert
 
-	var updateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBody1 = UpdateFirewallConfigRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody1, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody1 = &updateFirewallConfigRequestBody1
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody1
-		return nil
+	return UpdateFirewallConfigRequestBodyUnion{
+		IPInsert: &ipInsert,
+		Type:     typ,
 	}
-
-	var updateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBody2 = UpdateFirewallConfigRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody2, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody2 = &updateFirewallConfigRequestBody2
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody2
-		return nil
-	}
-
-	var updateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBody3 = UpdateFirewallConfigRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody3, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody3 = &updateFirewallConfigRequestBody3
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody3
-		return nil
-	}
-
-	var updateFirewallConfigRequestBody4 UpdateFirewallConfigRequestBody4 = UpdateFirewallConfigRequestBody4{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody4, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody4 = &updateFirewallConfigRequestBody4
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody4
-		return nil
-	}
-
-	var updateFirewallConfigRequestBody5 UpdateFirewallConfigRequestBody5 = UpdateFirewallConfigRequestBody5{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody5, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody5 = &updateFirewallConfigRequestBody5
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody5
-		return nil
-	}
-
-	var updateFirewallConfigRequestBody6 UpdateFirewallConfigRequestBody6 = UpdateFirewallConfigRequestBody6{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody6, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody6 = &updateFirewallConfigRequestBody6
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody6
-		return nil
-	}
-
-	var requestBody7 RequestBody7 = RequestBody7{}
-	if err := utils.UnmarshalJSON(data, &requestBody7, "", true, true); err == nil {
-		u.RequestBody7 = &requestBody7
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRequestBody7
-		return nil
-	}
-
-	var requestBody8 RequestBody8 = RequestBody8{}
-	if err := utils.UnmarshalJSON(data, &requestBody8, "", true, true); err == nil {
-		u.RequestBody8 = &requestBody8
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRequestBody8
-		return nil
-	}
-
-	var requestBody9 RequestBody9 = RequestBody9{}
-	if err := utils.UnmarshalJSON(data, &requestBody9, "", true, true); err == nil {
-		u.RequestBody9 = &requestBody9
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRequestBody9
-		return nil
-	}
-
-	var requestBody10 RequestBody10 = RequestBody10{}
-	if err := utils.UnmarshalJSON(data, &requestBody10, "", true, true); err == nil {
-		u.RequestBody10 = &requestBody10
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRequestBody10
-		return nil
-	}
-
-	var eleven Eleven = Eleven{}
-	if err := utils.UnmarshalJSON(data, &eleven, "", true, true); err == nil {
-		u.Eleven = &eleven
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeEleven
-		return nil
-	}
-
-	var twelve Twelve = Twelve{}
-	if err := utils.UnmarshalJSON(data, &twelve, "", true, true); err == nil {
-		u.Twelve = &twelve
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeTwelve
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBody", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBody) MarshalJSON() ([]byte, error) {
-	if u.UpdateFirewallConfigRequestBody1 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody1, "", true)
+func CreateUpdateFirewallConfigRequestBodyUnionIPUpdate(ipUpdate IPUpdate) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeIPUpdate
+
+	return UpdateFirewallConfigRequestBodyUnion{
+		IPUpdate: &ipUpdate,
+		Type:     typ,
+	}
+}
+
+func CreateUpdateFirewallConfigRequestBodyUnionIPRemove(ipRemove IPRemove) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeIPRemove
+
+	return UpdateFirewallConfigRequestBodyUnion{
+		IPRemove: &ipRemove,
+		Type:     typ,
+	}
+}
+
+func CreateUpdateFirewallConfigRequestBodyUnionManagedRulesUpdate(managedRulesUpdate ManagedRulesUpdate) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate
+
+	return UpdateFirewallConfigRequestBodyUnion{
+		ManagedRulesUpdate: &managedRulesUpdate,
+		Type:               typ,
+	}
+}
+
+func CreateUpdateFirewallConfigRequestBodyUnionUpdateFirewallConfigRequestBody(updateFirewallConfigRequestBody UpdateFirewallConfigRequestBody) UpdateFirewallConfigRequestBodyUnion {
+	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody
+
+	return UpdateFirewallConfigRequestBodyUnion{
+		UpdateFirewallConfigRequestBody: &updateFirewallConfigRequestBody,
+		Type:                            typ,
+	}
+}
+
+func (u *UpdateFirewallConfigRequestBodyUnion) UnmarshalJSON(data []byte) error {
+
+	var firewallEnabled FirewallEnabled = FirewallEnabled{}
+	if err := utils.UnmarshalJSON(data, &firewallEnabled, "", true, true); err == nil {
+		u.FirewallEnabled = &firewallEnabled
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled
+		return nil
 	}
 
-	if u.UpdateFirewallConfigRequestBody2 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody2, "", true)
+	var rulesInsert RulesInsert = RulesInsert{}
+	if err := utils.UnmarshalJSON(data, &rulesInsert, "", true, true); err == nil {
+		u.RulesInsert = &rulesInsert
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesInsert
+		return nil
 	}
 
-	if u.UpdateFirewallConfigRequestBody3 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody3, "", true)
+	var rulesUpdate RulesUpdate = RulesUpdate{}
+	if err := utils.UnmarshalJSON(data, &rulesUpdate, "", true, true); err == nil {
+		u.RulesUpdate = &rulesUpdate
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate
+		return nil
 	}
 
-	if u.UpdateFirewallConfigRequestBody4 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody4, "", true)
+	var rulesRemove RulesRemove = RulesRemove{}
+	if err := utils.UnmarshalJSON(data, &rulesRemove, "", true, true); err == nil {
+		u.RulesRemove = &rulesRemove
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesRemove
+		return nil
 	}
 
-	if u.UpdateFirewallConfigRequestBody5 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody5, "", true)
+	var rulesPriority RulesPriority = RulesPriority{}
+	if err := utils.UnmarshalJSON(data, &rulesPriority, "", true, true); err == nil {
+		u.RulesPriority = &rulesPriority
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesPriority
+		return nil
 	}
 
-	if u.UpdateFirewallConfigRequestBody6 != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody6, "", true)
+	var crsUpdate CrsUpdate = CrsUpdate{}
+	if err := utils.UnmarshalJSON(data, &crsUpdate, "", true, true); err == nil {
+		u.CrsUpdate = &crsUpdate
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate
+		return nil
 	}
 
-	if u.RequestBody7 != nil {
-		return utils.MarshalJSON(u.RequestBody7, "", true)
+	var crsDisable CrsDisable = CrsDisable{}
+	if err := utils.UnmarshalJSON(data, &crsDisable, "", true, true); err == nil {
+		u.CrsDisable = &crsDisable
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeCrsDisable
+		return nil
 	}
 
-	if u.RequestBody8 != nil {
-		return utils.MarshalJSON(u.RequestBody8, "", true)
+	var ipInsert IPInsert = IPInsert{}
+	if err := utils.UnmarshalJSON(data, &ipInsert, "", true, true); err == nil {
+		u.IPInsert = &ipInsert
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPInsert
+		return nil
 	}
 
-	if u.RequestBody9 != nil {
-		return utils.MarshalJSON(u.RequestBody9, "", true)
+	var ipUpdate IPUpdate = IPUpdate{}
+	if err := utils.UnmarshalJSON(data, &ipUpdate, "", true, true); err == nil {
+		u.IPUpdate = &ipUpdate
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPUpdate
+		return nil
 	}
 
-	if u.RequestBody10 != nil {
-		return utils.MarshalJSON(u.RequestBody10, "", true)
+	var ipRemove IPRemove = IPRemove{}
+	if err := utils.UnmarshalJSON(data, &ipRemove, "", true, true); err == nil {
+		u.IPRemove = &ipRemove
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPRemove
+		return nil
 	}
 
-	if u.Eleven != nil {
-		return utils.MarshalJSON(u.Eleven, "", true)
+	var managedRulesUpdate ManagedRulesUpdate = ManagedRulesUpdate{}
+	if err := utils.UnmarshalJSON(data, &managedRulesUpdate, "", true, true); err == nil {
+		u.ManagedRulesUpdate = &managedRulesUpdate
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate
+		return nil
 	}
 
-	if u.Twelve != nil {
-		return utils.MarshalJSON(u.Twelve, "", true)
+	var updateFirewallConfigRequestBody UpdateFirewallConfigRequestBody = UpdateFirewallConfigRequestBody{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody, "", true, true); err == nil {
+		u.UpdateFirewallConfigRequestBody = &updateFirewallConfigRequestBody
+		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody
+		return nil
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBody: all fields are null")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodyUnion", string(data))
+}
+
+func (u UpdateFirewallConfigRequestBodyUnion) MarshalJSON() ([]byte, error) {
+	if u.FirewallEnabled != nil {
+		return utils.MarshalJSON(u.FirewallEnabled, "", true)
+	}
+
+	if u.RulesInsert != nil {
+		return utils.MarshalJSON(u.RulesInsert, "", true)
+	}
+
+	if u.RulesUpdate != nil {
+		return utils.MarshalJSON(u.RulesUpdate, "", true)
+	}
+
+	if u.RulesRemove != nil {
+		return utils.MarshalJSON(u.RulesRemove, "", true)
+	}
+
+	if u.RulesPriority != nil {
+		return utils.MarshalJSON(u.RulesPriority, "", true)
+	}
+
+	if u.CrsUpdate != nil {
+		return utils.MarshalJSON(u.CrsUpdate, "", true)
+	}
+
+	if u.CrsDisable != nil {
+		return utils.MarshalJSON(u.CrsDisable, "", true)
+	}
+
+	if u.IPInsert != nil {
+		return utils.MarshalJSON(u.IPInsert, "", true)
+	}
+
+	if u.IPUpdate != nil {
+		return utils.MarshalJSON(u.IPUpdate, "", true)
+	}
+
+	if u.IPRemove != nil {
+		return utils.MarshalJSON(u.IPRemove, "", true)
+	}
+
+	if u.ManagedRulesUpdate != nil {
+		return utils.MarshalJSON(u.ManagedRulesUpdate, "", true)
+	}
+
+	if u.UpdateFirewallConfigRequestBody != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodyUnion: all fields are null")
 }
 
 type UpdateFirewallConfigRequest struct {
@@ -2685,8 +2677,8 @@ type UpdateFirewallConfigRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                         `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateFirewallConfigRequestBody `request:"mediaType=application/json"`
+	Slug        *string                              `queryParam:"style=form,explode=true,name=slug"`
+	RequestBody UpdateFirewallConfigRequestBodyUnion `request:"mediaType=application/json"`
 }
 
 func (o *UpdateFirewallConfigRequest) GetProjectID() string {
@@ -2710,9 +2702,9 @@ func (o *UpdateFirewallConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateFirewallConfigRequest) GetRequestBody() UpdateFirewallConfigRequestBody {
+func (o *UpdateFirewallConfigRequest) GetRequestBody() UpdateFirewallConfigRequestBodyUnion {
 	if o == nil {
-		return UpdateFirewallConfigRequestBody{}
+		return UpdateFirewallConfigRequestBodyUnion{}
 	}
 	return o.RequestBody
 }

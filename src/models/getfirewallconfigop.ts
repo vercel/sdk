@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -62,23 +63,20 @@ export type GetFirewallConfigMa = {
     GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaAction;
 };
 
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction =
-  {
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction =
-  ClosedEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
-  >;
+export const GetFirewallConfigSecurityResponseAction = {
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type GetFirewallConfigSecurityResponseAction = ClosedEnum<
+  typeof GetFirewallConfigSecurityResponseAction
+>;
 
 /**
  * Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
  */
 export type GetFirewallConfigLfi = {
   active: boolean;
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction;
+  action: GetFirewallConfigSecurityResponseAction;
 };
 
 export const GetFirewallConfigSecurityResponse200Action = {
@@ -307,9 +305,6 @@ export const GetFirewallConfigType = {
  */
 export type GetFirewallConfigType = ClosedEnum<typeof GetFirewallConfigType>;
 
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
- */
 export const GetFirewallConfigOp = {
   Re: "re",
   Eq: "eq",
@@ -326,9 +321,6 @@ export const GetFirewallConfigOp = {
   Ninc: "ninc",
   Neq: "neq",
 } as const;
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
- */
 export type GetFirewallConfigOp = ClosedEnum<typeof GetFirewallConfigOp>;
 
 export type GetFirewallConfigValue = string | number | Array<string>;
@@ -338,9 +330,6 @@ export type GetFirewallConfigConditions = {
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
   type: GetFirewallConfigType;
-  /**
-   * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
-   */
   op: GetFirewallConfigOp;
   neg?: boolean | undefined;
   key?: string | undefined;
@@ -441,21 +430,73 @@ export type GetFirewallConfigIps = {
 
 export type Changes = {};
 
-export const GetFirewallConfigSecurityResponseAction = {
-  Deny: "deny",
-  Log: "log",
-  Challenge: "challenge",
-} as const;
-export type GetFirewallConfigSecurityResponseAction = ClosedEnum<
-  typeof GetFirewallConfigSecurityResponseAction
->;
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+  >;
 
-export type GetFirewallConfigManagedRules = {
+export type BotProtection = {
   active: boolean;
-  action?: GetFirewallConfigSecurityResponseAction | undefined;
+  action?:
+    | GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+    | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
+};
+
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+  >;
+
+export type AiBots = {
+  active: boolean;
+  action?:
+    | GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+  >;
+
+export type Owasp = {
+  active: boolean;
+  action?:
+    | GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+export type GetFirewallConfigManagedRules = {
+  botProtection?: BotProtection | undefined;
+  aiBots?: AiBots | undefined;
+  owasp?: Owasp | undefined;
 };
 
 /**
@@ -475,7 +516,7 @@ export type GetFirewallConfigResponseBody = {
   rules: Array<GetFirewallConfigRules>;
   ips: Array<GetFirewallConfigIps>;
   changes: Array<Changes>;
-  managedRules?: { [k: string]: GetFirewallConfigManagedRules } | undefined;
+  managedRules?: GetFirewallConfigManagedRules | undefined;
 };
 
 /** @internal */
@@ -716,31 +757,26 @@ export function getFirewallConfigMaFromJSON(
 }
 
 /** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
-  > = z.nativeEnum(
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction,
-  );
+export const GetFirewallConfigSecurityResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> = z
+    .nativeEnum(GetFirewallConfigSecurityResponseAction);
 
 /** @internal */
-export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction
-  > =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema;
+export const GetFirewallConfigSecurityResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> =
+    GetFirewallConfigSecurityResponseAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$ {
-  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema` instead. */
+export namespace GetFirewallConfigSecurityResponseAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponseAction$inboundSchema` instead. */
   export const inboundSchema =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema` instead. */
+    GetFirewallConfigSecurityResponseAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponseAction$outboundSchema` instead. */
   export const outboundSchema =
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema;
+    GetFirewallConfigSecurityResponseAction$outboundSchema;
 }
 
 /** @internal */
@@ -750,8 +786,7 @@ export const GetFirewallConfigLfi$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$inboundSchema,
+  action: GetFirewallConfigSecurityResponseAction$inboundSchema,
 });
 
 /** @internal */
@@ -767,8 +802,7 @@ export const GetFirewallConfigLfi$outboundSchema: z.ZodType<
   GetFirewallConfigLfi
 > = z.object({
   active: z.boolean(),
-  action:
-    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiAction$outboundSchema,
+  action: GetFirewallConfigSecurityResponseAction$outboundSchema,
 });
 
 /**
@@ -2318,43 +2352,50 @@ export function changesFromJSON(
 }
 
 /** @internal */
-export const GetFirewallConfigSecurityResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> = z
-    .nativeEnum(GetFirewallConfigSecurityResponseAction);
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
+  );
 
 /** @internal */
-export const GetFirewallConfigSecurityResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetFirewallConfigSecurityResponseAction> =
-    GetFirewallConfigSecurityResponseAction$inboundSchema;
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
+  > =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetFirewallConfigSecurityResponseAction$ {
-  /** @deprecated use `GetFirewallConfigSecurityResponseAction$inboundSchema` instead. */
+export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema` instead. */
   export const inboundSchema =
-    GetFirewallConfigSecurityResponseAction$inboundSchema;
-  /** @deprecated use `GetFirewallConfigSecurityResponseAction$outboundSchema` instead. */
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema` instead. */
   export const outboundSchema =
-    GetFirewallConfigSecurityResponseAction$outboundSchema;
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema;
 }
 
 /** @internal */
-export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
-  GetFirewallConfigManagedRules,
+export const BotProtection$inboundSchema: z.ZodType<
+  BotProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   active: z.boolean(),
-  action: GetFirewallConfigSecurityResponseAction$inboundSchema.optional(),
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema
+      .optional(),
   updatedAt: z.string().optional(),
   userId: z.string().optional(),
   username: z.string().optional(),
 });
 
 /** @internal */
-export type GetFirewallConfigManagedRules$Outbound = {
+export type BotProtection$Outbound = {
   active: boolean;
   action?: string | undefined;
   updatedAt?: string | undefined;
@@ -2363,16 +2404,266 @@ export type GetFirewallConfigManagedRules$Outbound = {
 };
 
 /** @internal */
+export const BotProtection$outboundSchema: z.ZodType<
+  BotProtection$Outbound,
+  z.ZodTypeDef,
+  BotProtection
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BotProtection$ {
+  /** @deprecated use `BotProtection$inboundSchema` instead. */
+  export const inboundSchema = BotProtection$inboundSchema;
+  /** @deprecated use `BotProtection$outboundSchema` instead. */
+  export const outboundSchema = BotProtection$outboundSchema;
+  /** @deprecated use `BotProtection$Outbound` instead. */
+  export type Outbound = BotProtection$Outbound;
+}
+
+export function botProtectionToJSON(botProtection: BotProtection): string {
+  return JSON.stringify(BotProtection$outboundSchema.parse(botProtection));
+}
+
+export function botProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<BotProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BotProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BotProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction,
+  );
+
+/** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction
+  > =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema` instead. */
+  export const inboundSchema =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema` instead. */
+  export const outboundSchema =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema;
+}
+
+/** @internal */
+export const AiBots$inboundSchema: z.ZodType<AiBots, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$inboundSchema
+        .optional(),
+    updatedAt: z.string().optional(),
+    userId: z.string().optional(),
+    username: z.string().optional(),
+  });
+
+/** @internal */
+export type AiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const AiBots$outboundSchema: z.ZodType<
+  AiBots$Outbound,
+  z.ZodTypeDef,
+  AiBots
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesAiBotsAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AiBots$ {
+  /** @deprecated use `AiBots$inboundSchema` instead. */
+  export const inboundSchema = AiBots$inboundSchema;
+  /** @deprecated use `AiBots$outboundSchema` instead. */
+  export const outboundSchema = AiBots$outboundSchema;
+  /** @deprecated use `AiBots$Outbound` instead. */
+  export type Outbound = AiBots$Outbound;
+}
+
+export function aiBotsToJSON(aiBots: AiBots): string {
+  return JSON.stringify(AiBots$outboundSchema.parse(aiBots));
+}
+
+export function aiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<AiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
+  );
+
+/** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
+  > =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$ {
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema` instead. */
+  export const inboundSchema =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema;
+  /** @deprecated use `GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema` instead. */
+  export const outboundSchema =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema;
+}
+
+/** @internal */
+export const Owasp$inboundSchema: z.ZodType<Owasp, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    action:
+      GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema
+        .optional(),
+    updatedAt: z.string().optional(),
+    userId: z.string().optional(),
+    username: z.string().optional(),
+  });
+
+/** @internal */
+export type Owasp$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const Owasp$outboundSchema: z.ZodType<
+  Owasp$Outbound,
+  z.ZodTypeDef,
+  Owasp
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Owasp$ {
+  /** @deprecated use `Owasp$inboundSchema` instead. */
+  export const inboundSchema = Owasp$inboundSchema;
+  /** @deprecated use `Owasp$outboundSchema` instead. */
+  export const outboundSchema = Owasp$outboundSchema;
+  /** @deprecated use `Owasp$Outbound` instead. */
+  export type Outbound = Owasp$Outbound;
+}
+
+export function owaspToJSON(owasp: Owasp): string {
+  return JSON.stringify(Owasp$outboundSchema.parse(owasp));
+}
+
+export function owaspFromJSON(
+  jsonString: string,
+): SafeParseResult<Owasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Owasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Owasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
+  GetFirewallConfigManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bot_protection: z.lazy(() => BotProtection$inboundSchema).optional(),
+  ai_bots: z.lazy(() => AiBots$inboundSchema).optional(),
+  owasp: z.lazy(() => Owasp$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "bot_protection": "botProtection",
+    "ai_bots": "aiBots",
+  });
+});
+
+/** @internal */
+export type GetFirewallConfigManagedRules$Outbound = {
+  bot_protection?: BotProtection$Outbound | undefined;
+  ai_bots?: AiBots$Outbound | undefined;
+  owasp?: Owasp$Outbound | undefined;
+};
+
+/** @internal */
 export const GetFirewallConfigManagedRules$outboundSchema: z.ZodType<
   GetFirewallConfigManagedRules$Outbound,
   z.ZodTypeDef,
   GetFirewallConfigManagedRules
 > = z.object({
-  active: z.boolean(),
-  action: GetFirewallConfigSecurityResponseAction$outboundSchema.optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  botProtection: z.lazy(() => BotProtection$outboundSchema).optional(),
+  aiBots: z.lazy(() => AiBots$outboundSchema).optional(),
+  owasp: z.lazy(() => Owasp$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    botProtection: "bot_protection",
+    aiBots: "ai_bots",
+  });
 });
 
 /**
@@ -2424,9 +2715,8 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   rules: z.array(z.lazy(() => GetFirewallConfigRules$inboundSchema)),
   ips: z.array(z.lazy(() => GetFirewallConfigIps$inboundSchema)),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
-  managedRules: z.record(
-    z.lazy(() => GetFirewallConfigManagedRules$inboundSchema),
-  ).optional(),
+  managedRules: z.lazy(() => GetFirewallConfigManagedRules$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -2441,9 +2731,7 @@ export type GetFirewallConfigResponseBody$Outbound = {
   rules: Array<GetFirewallConfigRules$Outbound>;
   ips: Array<GetFirewallConfigIps$Outbound>;
   changes: Array<Changes$Outbound>;
-  managedRules?:
-    | { [k: string]: GetFirewallConfigManagedRules$Outbound }
-    | undefined;
+  managedRules?: GetFirewallConfigManagedRules$Outbound | undefined;
 };
 
 /** @internal */
@@ -2462,9 +2750,8 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   rules: z.array(z.lazy(() => GetFirewallConfigRules$outboundSchema)),
   ips: z.array(z.lazy(() => GetFirewallConfigIps$outboundSchema)),
   changes: z.array(z.lazy(() => Changes$outboundSchema)),
-  managedRules: z.record(
-    z.lazy(() => GetFirewallConfigManagedRules$outboundSchema),
-  ).optional(),
+  managedRules: z.lazy(() => GetFirewallConfigManagedRules$outboundSchema)
+    .optional(),
 });
 
 /**

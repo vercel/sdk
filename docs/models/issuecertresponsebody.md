@@ -11,7 +11,9 @@ let value: IssueCertResponseBody = {
   expiresAt: 4491.63,
   autoRenew: false,
   cns: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

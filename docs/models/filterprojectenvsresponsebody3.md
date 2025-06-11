@@ -8,9 +8,7 @@ The list of environment variables for the given project
 import { FilterProjectEnvsResponseBody3 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsResponseBody3 = {
-  envs: [
-    {},
-  ],
+  envs: [],
 };
 ```
 

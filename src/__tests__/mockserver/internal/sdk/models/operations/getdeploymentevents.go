@@ -46,8 +46,8 @@ const (
 
 // StatusCode - HTTP status code range to filter events by.
 type StatusCode struct {
-	Number *float64
-	Str    *string
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
 
 	Type StatusCodeType
 }
@@ -221,7 +221,7 @@ func (o *GetDeploymentEventsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type ResponseBodyInfo struct {
+type StreamJSONInfo struct {
 	Type       string  `json:"type"`
 	Name       string  `json:"name"`
 	Entrypoint *string `json:"entrypoint,omitempty"`
@@ -230,69 +230,69 @@ type ResponseBodyInfo struct {
 	ReadyState *string `json:"readyState,omitempty"`
 }
 
-func (o *ResponseBodyInfo) GetType() string {
+func (o *StreamJSONInfo) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *ResponseBodyInfo) GetName() string {
+func (o *StreamJSONInfo) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ResponseBodyInfo) GetEntrypoint() *string {
+func (o *StreamJSONInfo) GetEntrypoint() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Entrypoint
 }
 
-func (o *ResponseBodyInfo) GetPath() *string {
+func (o *StreamJSONInfo) GetPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Path
 }
 
-func (o *ResponseBodyInfo) GetStep() *string {
+func (o *StreamJSONInfo) GetStep() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Step
 }
 
-func (o *ResponseBodyInfo) GetReadyState() *string {
+func (o *StreamJSONInfo) GetReadyState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
 }
 
-type GetDeploymentEventsResponseBodyDeploymentsResponseType string
+type StreamJSONType2 string
 
 const (
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeDelimiter              GetDeploymentEventsResponseBodyDeploymentsResponseType = "delimiter"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeCommand                GetDeploymentEventsResponseBodyDeploymentsResponseType = "command"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeStdout                 GetDeploymentEventsResponseBodyDeploymentsResponseType = "stdout"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeStderr                 GetDeploymentEventsResponseBodyDeploymentsResponseType = "stderr"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeExit                   GetDeploymentEventsResponseBodyDeploymentsResponseType = "exit"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeDeploymentState        GetDeploymentEventsResponseBodyDeploymentsResponseType = "deployment-state"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeMiddleware             GetDeploymentEventsResponseBodyDeploymentsResponseType = "middleware"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeMiddlewareInvocation   GetDeploymentEventsResponseBodyDeploymentsResponseType = "middleware-invocation"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeEdgeFunctionInvocation GetDeploymentEventsResponseBodyDeploymentsResponseType = "edge-function-invocation"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeMetric                 GetDeploymentEventsResponseBodyDeploymentsResponseType = "metric"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeReport                 GetDeploymentEventsResponseBodyDeploymentsResponseType = "report"
-	GetDeploymentEventsResponseBodyDeploymentsResponseTypeFatal                  GetDeploymentEventsResponseBodyDeploymentsResponseType = "fatal"
+	StreamJSONType2Delimiter              StreamJSONType2 = "delimiter"
+	StreamJSONType2Command                StreamJSONType2 = "command"
+	StreamJSONType2Stdout                 StreamJSONType2 = "stdout"
+	StreamJSONType2Stderr                 StreamJSONType2 = "stderr"
+	StreamJSONType2Exit                   StreamJSONType2 = "exit"
+	StreamJSONType2DeploymentState        StreamJSONType2 = "deployment-state"
+	StreamJSONType2Middleware             StreamJSONType2 = "middleware"
+	StreamJSONType2MiddlewareInvocation   StreamJSONType2 = "middleware-invocation"
+	StreamJSONType2EdgeFunctionInvocation StreamJSONType2 = "edge-function-invocation"
+	StreamJSONType2Metric                 StreamJSONType2 = "metric"
+	StreamJSONType2Report                 StreamJSONType2 = "report"
+	StreamJSONType2Fatal                  StreamJSONType2 = "fatal"
 )
 
-func (e GetDeploymentEventsResponseBodyDeploymentsResponseType) ToPointer() *GetDeploymentEventsResponseBodyDeploymentsResponseType {
+func (e StreamJSONType2) ToPointer() *StreamJSONType2 {
 	return &e
 }
-func (e *GetDeploymentEventsResponseBodyDeploymentsResponseType) UnmarshalJSON(data []byte) error {
+func (e *StreamJSONType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -321,24 +321,24 @@ func (e *GetDeploymentEventsResponseBodyDeploymentsResponseType) UnmarshalJSON(d
 	case "report":
 		fallthrough
 	case "fatal":
-		*e = GetDeploymentEventsResponseBodyDeploymentsResponseType(v)
+		*e = StreamJSONType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentEventsResponseBodyDeploymentsResponseType: %v", v)
+		return fmt.Errorf("invalid value for StreamJSONType2: %v", v)
 	}
 }
 
-type ResponseBodyLevel string
+type GetDeploymentEventsStreamJSONLevel string
 
 const (
-	ResponseBodyLevelError   ResponseBodyLevel = "error"
-	ResponseBodyLevelWarning ResponseBodyLevel = "warning"
+	GetDeploymentEventsStreamJSONLevelError   GetDeploymentEventsStreamJSONLevel = "error"
+	GetDeploymentEventsStreamJSONLevelWarning GetDeploymentEventsStreamJSONLevel = "warning"
 )
 
-func (e ResponseBodyLevel) ToPointer() *ResponseBodyLevel {
+func (e GetDeploymentEventsStreamJSONLevel) ToPointer() *GetDeploymentEventsStreamJSONLevel {
 	return &e
 }
-func (e *ResponseBodyLevel) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentEventsStreamJSONLevel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -347,109 +347,109 @@ func (e *ResponseBodyLevel) UnmarshalJSON(data []byte) error {
 	case "error":
 		fallthrough
 	case "warning":
-		*e = ResponseBodyLevel(v)
+		*e = GetDeploymentEventsStreamJSONLevel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyLevel: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentEventsStreamJSONLevel: %v", v)
 	}
 }
 
-type GetDeploymentEventsResponseBodyDeployments2 struct {
-	Created      float64                                                `json:"created"`
-	Date         float64                                                `json:"date"`
-	DeploymentID string                                                 `json:"deploymentId"`
-	ID           string                                                 `json:"id"`
-	Info         ResponseBodyInfo                                       `json:"info"`
-	Serial       string                                                 `json:"serial"`
-	Text         *string                                                `json:"text,omitempty"`
-	Type         GetDeploymentEventsResponseBodyDeploymentsResponseType `json:"type"`
-	Level        *ResponseBodyLevel                                     `json:"level,omitempty"`
+type ResponseBodyStreamJSON2 struct {
+	Created      float64                             `json:"created"`
+	Date         float64                             `json:"date"`
+	DeploymentID string                              `json:"deploymentId"`
+	ID           string                              `json:"id"`
+	Info         StreamJSONInfo                      `json:"info"`
+	Serial       string                              `json:"serial"`
+	Text         *string                             `json:"text,omitempty"`
+	Type         StreamJSONType2                     `json:"type"`
+	Level        *GetDeploymentEventsStreamJSONLevel `json:"level,omitempty"`
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetCreated() float64 {
+func (o *ResponseBodyStreamJSON2) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetDate() float64 {
+func (o *ResponseBodyStreamJSON2) GetDate() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Date
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetDeploymentID() string {
+func (o *ResponseBodyStreamJSON2) GetDeploymentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.DeploymentID
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetID() string {
+func (o *ResponseBodyStreamJSON2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetInfo() ResponseBodyInfo {
+func (o *ResponseBodyStreamJSON2) GetInfo() StreamJSONInfo {
 	if o == nil {
-		return ResponseBodyInfo{}
+		return StreamJSONInfo{}
 	}
 	return o.Info
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetSerial() string {
+func (o *ResponseBodyStreamJSON2) GetSerial() string {
 	if o == nil {
 		return ""
 	}
 	return o.Serial
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetText() *string {
+func (o *ResponseBodyStreamJSON2) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetType() GetDeploymentEventsResponseBodyDeploymentsResponseType {
+func (o *ResponseBodyStreamJSON2) GetType() StreamJSONType2 {
 	if o == nil {
-		return GetDeploymentEventsResponseBodyDeploymentsResponseType("")
+		return StreamJSONType2("")
 	}
 	return o.Type
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments2) GetLevel() *ResponseBodyLevel {
+func (o *ResponseBodyStreamJSON2) GetLevel() *GetDeploymentEventsStreamJSONLevel {
 	if o == nil {
 		return nil
 	}
 	return o.Level
 }
 
-type GetDeploymentEventsResponseBodyDeploymentsType string
+type StreamJSONType1 string
 
 const (
-	GetDeploymentEventsResponseBodyDeploymentsTypeDelimiter              GetDeploymentEventsResponseBodyDeploymentsType = "delimiter"
-	GetDeploymentEventsResponseBodyDeploymentsTypeCommand                GetDeploymentEventsResponseBodyDeploymentsType = "command"
-	GetDeploymentEventsResponseBodyDeploymentsTypeStdout                 GetDeploymentEventsResponseBodyDeploymentsType = "stdout"
-	GetDeploymentEventsResponseBodyDeploymentsTypeStderr                 GetDeploymentEventsResponseBodyDeploymentsType = "stderr"
-	GetDeploymentEventsResponseBodyDeploymentsTypeExit                   GetDeploymentEventsResponseBodyDeploymentsType = "exit"
-	GetDeploymentEventsResponseBodyDeploymentsTypeDeploymentState        GetDeploymentEventsResponseBodyDeploymentsType = "deployment-state"
-	GetDeploymentEventsResponseBodyDeploymentsTypeMiddleware             GetDeploymentEventsResponseBodyDeploymentsType = "middleware"
-	GetDeploymentEventsResponseBodyDeploymentsTypeMiddlewareInvocation   GetDeploymentEventsResponseBodyDeploymentsType = "middleware-invocation"
-	GetDeploymentEventsResponseBodyDeploymentsTypeEdgeFunctionInvocation GetDeploymentEventsResponseBodyDeploymentsType = "edge-function-invocation"
-	GetDeploymentEventsResponseBodyDeploymentsTypeMetric                 GetDeploymentEventsResponseBodyDeploymentsType = "metric"
-	GetDeploymentEventsResponseBodyDeploymentsTypeReport                 GetDeploymentEventsResponseBodyDeploymentsType = "report"
-	GetDeploymentEventsResponseBodyDeploymentsTypeFatal                  GetDeploymentEventsResponseBodyDeploymentsType = "fatal"
+	StreamJSONType1Delimiter              StreamJSONType1 = "delimiter"
+	StreamJSONType1Command                StreamJSONType1 = "command"
+	StreamJSONType1Stdout                 StreamJSONType1 = "stdout"
+	StreamJSONType1Stderr                 StreamJSONType1 = "stderr"
+	StreamJSONType1Exit                   StreamJSONType1 = "exit"
+	StreamJSONType1DeploymentState        StreamJSONType1 = "deployment-state"
+	StreamJSONType1Middleware             StreamJSONType1 = "middleware"
+	StreamJSONType1MiddlewareInvocation   StreamJSONType1 = "middleware-invocation"
+	StreamJSONType1EdgeFunctionInvocation StreamJSONType1 = "edge-function-invocation"
+	StreamJSONType1Metric                 StreamJSONType1 = "metric"
+	StreamJSONType1Report                 StreamJSONType1 = "report"
+	StreamJSONType1Fatal                  StreamJSONType1 = "fatal"
 )
 
-func (e GetDeploymentEventsResponseBodyDeploymentsType) ToPointer() *GetDeploymentEventsResponseBodyDeploymentsType {
+func (e StreamJSONType1) ToPointer() *StreamJSONType1 {
 	return &e
 }
-func (e *GetDeploymentEventsResponseBodyDeploymentsType) UnmarshalJSON(data []byte) error {
+func (e *StreamJSONType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -478,14 +478,14 @@ func (e *GetDeploymentEventsResponseBodyDeploymentsType) UnmarshalJSON(data []by
 	case "report":
 		fallthrough
 	case "fatal":
-		*e = GetDeploymentEventsResponseBodyDeploymentsType(v)
+		*e = StreamJSONType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentEventsResponseBodyDeploymentsType: %v", v)
+		return fmt.Errorf("invalid value for StreamJSONType1: %v", v)
 	}
 }
 
-type GetDeploymentEventsResponseBodyInfo struct {
+type StreamJSONPayloadInfo struct {
 	Type       string  `json:"type"`
 	Name       string  `json:"name"`
 	Entrypoint *string `json:"entrypoint,omitempty"`
@@ -494,63 +494,63 @@ type GetDeploymentEventsResponseBodyInfo struct {
 	ReadyState *string `json:"readyState,omitempty"`
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetType() string {
+func (o *StreamJSONPayloadInfo) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetName() string {
+func (o *StreamJSONPayloadInfo) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetEntrypoint() *string {
+func (o *StreamJSONPayloadInfo) GetEntrypoint() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Entrypoint
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetPath() *string {
+func (o *StreamJSONPayloadInfo) GetPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Path
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetStep() *string {
+func (o *StreamJSONPayloadInfo) GetStep() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Step
 }
 
-func (o *GetDeploymentEventsResponseBodyInfo) GetReadyState() *string {
+func (o *StreamJSONPayloadInfo) GetReadyState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
 }
 
-type ResponseBodyVercelCache string
+type StreamJSONVercelCache string
 
 const (
-	ResponseBodyVercelCacheMiss        ResponseBodyVercelCache = "MISS"
-	ResponseBodyVercelCacheHit         ResponseBodyVercelCache = "HIT"
-	ResponseBodyVercelCacheStale       ResponseBodyVercelCache = "STALE"
-	ResponseBodyVercelCacheBypass      ResponseBodyVercelCache = "BYPASS"
-	ResponseBodyVercelCachePrerender   ResponseBodyVercelCache = "PRERENDER"
-	ResponseBodyVercelCacheRevalidated ResponseBodyVercelCache = "REVALIDATED"
+	StreamJSONVercelCacheMiss        StreamJSONVercelCache = "MISS"
+	StreamJSONVercelCacheHit         StreamJSONVercelCache = "HIT"
+	StreamJSONVercelCacheStale       StreamJSONVercelCache = "STALE"
+	StreamJSONVercelCacheBypass      StreamJSONVercelCache = "BYPASS"
+	StreamJSONVercelCachePrerender   StreamJSONVercelCache = "PRERENDER"
+	StreamJSONVercelCacheRevalidated StreamJSONVercelCache = "REVALIDATED"
 )
 
-func (e ResponseBodyVercelCache) ToPointer() *ResponseBodyVercelCache {
+func (e StreamJSONVercelCache) ToPointer() *StreamJSONVercelCache {
 	return &e
 }
-func (e *ResponseBodyVercelCache) UnmarshalJSON(data []byte) error {
+func (e *StreamJSONVercelCache) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -567,27 +567,27 @@ func (e *ResponseBodyVercelCache) UnmarshalJSON(data []byte) error {
 	case "PRERENDER":
 		fallthrough
 	case "REVALIDATED":
-		*e = ResponseBodyVercelCache(v)
+		*e = StreamJSONVercelCache(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyVercelCache: %v", v)
+		return fmt.Errorf("invalid value for StreamJSONVercelCache: %v", v)
 	}
 }
 
-type ResponseBodyWafAction string
+type StreamJSONWafAction string
 
 const (
-	ResponseBodyWafActionLog       ResponseBodyWafAction = "log"
-	ResponseBodyWafActionChallenge ResponseBodyWafAction = "challenge"
-	ResponseBodyWafActionDeny      ResponseBodyWafAction = "deny"
-	ResponseBodyWafActionBypass    ResponseBodyWafAction = "bypass"
-	ResponseBodyWafActionRateLimit ResponseBodyWafAction = "rate_limit"
+	StreamJSONWafActionLog       StreamJSONWafAction = "log"
+	StreamJSONWafActionChallenge StreamJSONWafAction = "challenge"
+	StreamJSONWafActionDeny      StreamJSONWafAction = "deny"
+	StreamJSONWafActionBypass    StreamJSONWafAction = "bypass"
+	StreamJSONWafActionRateLimit StreamJSONWafAction = "rate_limit"
 )
 
-func (e ResponseBodyWafAction) ToPointer() *ResponseBodyWafAction {
+func (e StreamJSONWafAction) ToPointer() *StreamJSONWafAction {
 	return &e
 }
-func (e *ResponseBodyWafAction) UnmarshalJSON(data []byte) error {
+func (e *StreamJSONWafAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -602,323 +602,323 @@ func (e *ResponseBodyWafAction) UnmarshalJSON(data []byte) error {
 	case "bypass":
 		fallthrough
 	case "rate_limit":
-		*e = ResponseBodyWafAction(v)
+		*e = StreamJSONWafAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyWafAction: %v", v)
+		return fmt.Errorf("invalid value for StreamJSONWafAction: %v", v)
 	}
 }
 
-type ResponseBodyProxy struct {
-	Timestamp        float64                  `json:"timestamp"`
-	Method           string                   `json:"method"`
-	Host             string                   `json:"host"`
-	Path             string                   `json:"path"`
-	StatusCode       *float64                 `json:"statusCode,omitempty"`
-	UserAgent        []string                 `json:"userAgent"`
-	Referer          string                   `json:"referer"`
-	ClientIP         *string                  `json:"clientIp,omitempty"`
-	Region           string                   `json:"region"`
-	Scheme           *string                  `json:"scheme,omitempty"`
-	ResponseByteSize *float64                 `json:"responseByteSize,omitempty"`
-	CacheID          *string                  `json:"cacheId,omitempty"`
-	PathType         *string                  `json:"pathType,omitempty"`
-	PathTypeVariant  *string                  `json:"pathTypeVariant,omitempty"`
-	VercelID         *string                  `json:"vercelId,omitempty"`
-	VercelCache      *ResponseBodyVercelCache `json:"vercelCache,omitempty"`
-	LambdaRegion     *string                  `json:"lambdaRegion,omitempty"`
-	WafAction        *ResponseBodyWafAction   `json:"wafAction,omitempty"`
-	WafRuleID        *string                  `json:"wafRuleId,omitempty"`
+type StreamJSONProxy struct {
+	Timestamp        float64                `json:"timestamp"`
+	Method           string                 `json:"method"`
+	Host             string                 `json:"host"`
+	Path             string                 `json:"path"`
+	StatusCode       *float64               `json:"statusCode,omitempty"`
+	UserAgent        []string               `json:"userAgent"`
+	Referer          string                 `json:"referer"`
+	ClientIP         *string                `json:"clientIp,omitempty"`
+	Region           string                 `json:"region"`
+	Scheme           *string                `json:"scheme,omitempty"`
+	ResponseByteSize *float64               `json:"responseByteSize,omitempty"`
+	CacheID          *string                `json:"cacheId,omitempty"`
+	PathType         *string                `json:"pathType,omitempty"`
+	PathTypeVariant  *string                `json:"pathTypeVariant,omitempty"`
+	VercelID         *string                `json:"vercelId,omitempty"`
+	VercelCache      *StreamJSONVercelCache `json:"vercelCache,omitempty"`
+	LambdaRegion     *string                `json:"lambdaRegion,omitempty"`
+	WafAction        *StreamJSONWafAction   `json:"wafAction,omitempty"`
+	WafRuleID        *string                `json:"wafRuleId,omitempty"`
 }
 
-func (o *ResponseBodyProxy) GetTimestamp() float64 {
+func (o *StreamJSONProxy) GetTimestamp() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Timestamp
 }
 
-func (o *ResponseBodyProxy) GetMethod() string {
+func (o *StreamJSONProxy) GetMethod() string {
 	if o == nil {
 		return ""
 	}
 	return o.Method
 }
 
-func (o *ResponseBodyProxy) GetHost() string {
+func (o *StreamJSONProxy) GetHost() string {
 	if o == nil {
 		return ""
 	}
 	return o.Host
 }
 
-func (o *ResponseBodyProxy) GetPath() string {
+func (o *StreamJSONProxy) GetPath() string {
 	if o == nil {
 		return ""
 	}
 	return o.Path
 }
 
-func (o *ResponseBodyProxy) GetStatusCode() *float64 {
+func (o *StreamJSONProxy) GetStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.StatusCode
 }
 
-func (o *ResponseBodyProxy) GetUserAgent() []string {
+func (o *StreamJSONProxy) GetUserAgent() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.UserAgent
 }
 
-func (o *ResponseBodyProxy) GetReferer() string {
+func (o *StreamJSONProxy) GetReferer() string {
 	if o == nil {
 		return ""
 	}
 	return o.Referer
 }
 
-func (o *ResponseBodyProxy) GetClientIP() *string {
+func (o *StreamJSONProxy) GetClientIP() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ClientIP
 }
 
-func (o *ResponseBodyProxy) GetRegion() string {
+func (o *StreamJSONProxy) GetRegion() string {
 	if o == nil {
 		return ""
 	}
 	return o.Region
 }
 
-func (o *ResponseBodyProxy) GetScheme() *string {
+func (o *StreamJSONProxy) GetScheme() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Scheme
 }
 
-func (o *ResponseBodyProxy) GetResponseByteSize() *float64 {
+func (o *StreamJSONProxy) GetResponseByteSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ResponseByteSize
 }
 
-func (o *ResponseBodyProxy) GetCacheID() *string {
+func (o *StreamJSONProxy) GetCacheID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CacheID
 }
 
-func (o *ResponseBodyProxy) GetPathType() *string {
+func (o *StreamJSONProxy) GetPathType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PathType
 }
 
-func (o *ResponseBodyProxy) GetPathTypeVariant() *string {
+func (o *StreamJSONProxy) GetPathTypeVariant() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PathTypeVariant
 }
 
-func (o *ResponseBodyProxy) GetVercelID() *string {
+func (o *StreamJSONProxy) GetVercelID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.VercelID
 }
 
-func (o *ResponseBodyProxy) GetVercelCache() *ResponseBodyVercelCache {
+func (o *StreamJSONProxy) GetVercelCache() *StreamJSONVercelCache {
 	if o == nil {
 		return nil
 	}
 	return o.VercelCache
 }
 
-func (o *ResponseBodyProxy) GetLambdaRegion() *string {
+func (o *StreamJSONProxy) GetLambdaRegion() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LambdaRegion
 }
 
-func (o *ResponseBodyProxy) GetWafAction() *ResponseBodyWafAction {
+func (o *StreamJSONProxy) GetWafAction() *StreamJSONWafAction {
 	if o == nil {
 		return nil
 	}
 	return o.WafAction
 }
 
-func (o *ResponseBodyProxy) GetWafRuleID() *string {
+func (o *StreamJSONProxy) GetWafRuleID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WafRuleID
 }
 
-type ResponseBodyPayload struct {
-	DeploymentID string                               `json:"deploymentId"`
-	Info         *GetDeploymentEventsResponseBodyInfo `json:"info,omitempty"`
-	Text         *string                              `json:"text,omitempty"`
-	ID           string                               `json:"id"`
-	Date         float64                              `json:"date"`
-	Serial       string                               `json:"serial"`
-	Created      *float64                             `json:"created,omitempty"`
-	StatusCode   *float64                             `json:"statusCode,omitempty"`
-	RequestID    *string                              `json:"requestId,omitempty"`
-	Proxy        *ResponseBodyProxy                   `json:"proxy,omitempty"`
+type StreamJSONPayload struct {
+	DeploymentID string                 `json:"deploymentId"`
+	Info         *StreamJSONPayloadInfo `json:"info,omitempty"`
+	Text         *string                `json:"text,omitempty"`
+	ID           string                 `json:"id"`
+	Date         float64                `json:"date"`
+	Serial       string                 `json:"serial"`
+	Created      *float64               `json:"created,omitempty"`
+	StatusCode   *float64               `json:"statusCode,omitempty"`
+	RequestID    *string                `json:"requestId,omitempty"`
+	Proxy        *StreamJSONProxy       `json:"proxy,omitempty"`
 }
 
-func (o *ResponseBodyPayload) GetDeploymentID() string {
+func (o *StreamJSONPayload) GetDeploymentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.DeploymentID
 }
 
-func (o *ResponseBodyPayload) GetInfo() *GetDeploymentEventsResponseBodyInfo {
+func (o *StreamJSONPayload) GetInfo() *StreamJSONPayloadInfo {
 	if o == nil {
 		return nil
 	}
 	return o.Info
 }
 
-func (o *ResponseBodyPayload) GetText() *string {
+func (o *StreamJSONPayload) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *ResponseBodyPayload) GetID() string {
+func (o *StreamJSONPayload) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ResponseBodyPayload) GetDate() float64 {
+func (o *StreamJSONPayload) GetDate() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Date
 }
 
-func (o *ResponseBodyPayload) GetSerial() string {
+func (o *StreamJSONPayload) GetSerial() string {
 	if o == nil {
 		return ""
 	}
 	return o.Serial
 }
 
-func (o *ResponseBodyPayload) GetCreated() *float64 {
+func (o *StreamJSONPayload) GetCreated() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Created
 }
 
-func (o *ResponseBodyPayload) GetStatusCode() *float64 {
+func (o *StreamJSONPayload) GetStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.StatusCode
 }
 
-func (o *ResponseBodyPayload) GetRequestID() *string {
+func (o *StreamJSONPayload) GetRequestID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RequestID
 }
 
-func (o *ResponseBodyPayload) GetProxy() *ResponseBodyProxy {
+func (o *StreamJSONPayload) GetProxy() *StreamJSONProxy {
 	if o == nil {
 		return nil
 	}
 	return o.Proxy
 }
 
-type GetDeploymentEventsResponseBodyDeployments1 struct {
-	Type    GetDeploymentEventsResponseBodyDeploymentsType `json:"type"`
-	Created float64                                        `json:"created"`
-	Payload ResponseBodyPayload                            `json:"payload"`
+type ResponseBodyStreamJSON1 struct {
+	Type    StreamJSONType1   `json:"type"`
+	Created float64           `json:"created"`
+	Payload StreamJSONPayload `json:"payload"`
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments1) GetType() GetDeploymentEventsResponseBodyDeploymentsType {
+func (o *ResponseBodyStreamJSON1) GetType() StreamJSONType1 {
 	if o == nil {
-		return GetDeploymentEventsResponseBodyDeploymentsType("")
+		return StreamJSONType1("")
 	}
 	return o.Type
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments1) GetCreated() float64 {
+func (o *ResponseBodyStreamJSON1) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *GetDeploymentEventsResponseBodyDeployments1) GetPayload() ResponseBodyPayload {
+func (o *ResponseBodyStreamJSON1) GetPayload() StreamJSONPayload {
 	if o == nil {
-		return ResponseBodyPayload{}
+		return StreamJSONPayload{}
 	}
 	return o.Payload
 }
 
-type GetDeploymentEventsResponseBodyUnionType string
+type GetDeploymentEventsResponseBodyType string
 
 const (
-	GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments1 GetDeploymentEventsResponseBodyUnionType = "getDeploymentEvents_responseBody_deployments_1"
-	GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments2 GetDeploymentEventsResponseBodyUnionType = "getDeploymentEvents_responseBody_deployments_2"
+	GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON1 GetDeploymentEventsResponseBodyType = "ResponseBody_StreamJSON_1"
+	GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON2 GetDeploymentEventsResponseBodyType = "ResponseBody_StreamJSON_2"
 )
 
 type GetDeploymentEventsResponseBody struct {
-	GetDeploymentEventsResponseBodyDeployments1 *GetDeploymentEventsResponseBodyDeployments1
-	GetDeploymentEventsResponseBodyDeployments2 *GetDeploymentEventsResponseBodyDeployments2
+	ResponseBodyStreamJSON1 *ResponseBodyStreamJSON1 `queryParam:"inline"`
+	ResponseBodyStreamJSON2 *ResponseBodyStreamJSON2 `queryParam:"inline"`
 
-	Type GetDeploymentEventsResponseBodyUnionType
+	Type GetDeploymentEventsResponseBodyType
 }
 
-func CreateGetDeploymentEventsResponseBodyGetDeploymentEventsResponseBodyDeployments1(getDeploymentEventsResponseBodyDeployments1 GetDeploymentEventsResponseBodyDeployments1) GetDeploymentEventsResponseBody {
-	typ := GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments1
+func CreateGetDeploymentEventsResponseBodyResponseBodyStreamJSON1(responseBodyStreamJSON1 ResponseBodyStreamJSON1) GetDeploymentEventsResponseBody {
+	typ := GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON1
 
 	return GetDeploymentEventsResponseBody{
-		GetDeploymentEventsResponseBodyDeployments1: &getDeploymentEventsResponseBodyDeployments1,
-		Type: typ,
+		ResponseBodyStreamJSON1: &responseBodyStreamJSON1,
+		Type:                    typ,
 	}
 }
 
-func CreateGetDeploymentEventsResponseBodyGetDeploymentEventsResponseBodyDeployments2(getDeploymentEventsResponseBodyDeployments2 GetDeploymentEventsResponseBodyDeployments2) GetDeploymentEventsResponseBody {
-	typ := GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments2
+func CreateGetDeploymentEventsResponseBodyResponseBodyStreamJSON2(responseBodyStreamJSON2 ResponseBodyStreamJSON2) GetDeploymentEventsResponseBody {
+	typ := GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON2
 
 	return GetDeploymentEventsResponseBody{
-		GetDeploymentEventsResponseBodyDeployments2: &getDeploymentEventsResponseBodyDeployments2,
-		Type: typ,
+		ResponseBodyStreamJSON2: &responseBodyStreamJSON2,
+		Type:                    typ,
 	}
 }
 
 func (u *GetDeploymentEventsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentEventsResponseBodyDeployments1 GetDeploymentEventsResponseBodyDeployments1 = GetDeploymentEventsResponseBodyDeployments1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBodyDeployments1, "", true, true); err == nil {
-		u.GetDeploymentEventsResponseBodyDeployments1 = &getDeploymentEventsResponseBodyDeployments1
-		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments1
+	var responseBodyStreamJSON1 ResponseBodyStreamJSON1 = ResponseBodyStreamJSON1{}
+	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON1, "", true, true); err == nil {
+		u.ResponseBodyStreamJSON1 = &responseBodyStreamJSON1
+		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON1
 		return nil
 	}
 
-	var getDeploymentEventsResponseBodyDeployments2 GetDeploymentEventsResponseBodyDeployments2 = GetDeploymentEventsResponseBodyDeployments2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBodyDeployments2, "", true, true); err == nil {
-		u.GetDeploymentEventsResponseBodyDeployments2 = &getDeploymentEventsResponseBodyDeployments2
-		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBodyDeployments2
+	var responseBodyStreamJSON2 ResponseBodyStreamJSON2 = ResponseBodyStreamJSON2{}
+	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON2, "", true, true); err == nil {
+		u.ResponseBodyStreamJSON2 = &responseBodyStreamJSON2
+		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON2
 		return nil
 	}
 
@@ -926,12 +926,12 @@ func (u *GetDeploymentEventsResponseBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetDeploymentEventsResponseBody) MarshalJSON() ([]byte, error) {
-	if u.GetDeploymentEventsResponseBodyDeployments1 != nil {
-		return utils.MarshalJSON(u.GetDeploymentEventsResponseBodyDeployments1, "", true)
+	if u.ResponseBodyStreamJSON1 != nil {
+		return utils.MarshalJSON(u.ResponseBodyStreamJSON1, "", true)
 	}
 
-	if u.GetDeploymentEventsResponseBodyDeployments2 != nil {
-		return utils.MarshalJSON(u.GetDeploymentEventsResponseBodyDeployments2, "", true)
+	if u.ResponseBodyStreamJSON2 != nil {
+		return utils.MarshalJSON(u.ResponseBodyStreamJSON2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetDeploymentEventsResponseBody: all fields are null")
@@ -988,27 +988,27 @@ func (o *Info) GetReadyState() *string {
 	return o.ReadyState
 }
 
-type GetDeploymentEventsResponseBodyType string
+type GetDeploymentEventsType2 string
 
 const (
-	GetDeploymentEventsResponseBodyTypeDelimiter              GetDeploymentEventsResponseBodyType = "delimiter"
-	GetDeploymentEventsResponseBodyTypeCommand                GetDeploymentEventsResponseBodyType = "command"
-	GetDeploymentEventsResponseBodyTypeStdout                 GetDeploymentEventsResponseBodyType = "stdout"
-	GetDeploymentEventsResponseBodyTypeStderr                 GetDeploymentEventsResponseBodyType = "stderr"
-	GetDeploymentEventsResponseBodyTypeExit                   GetDeploymentEventsResponseBodyType = "exit"
-	GetDeploymentEventsResponseBodyTypeDeploymentState        GetDeploymentEventsResponseBodyType = "deployment-state"
-	GetDeploymentEventsResponseBodyTypeMiddleware             GetDeploymentEventsResponseBodyType = "middleware"
-	GetDeploymentEventsResponseBodyTypeMiddlewareInvocation   GetDeploymentEventsResponseBodyType = "middleware-invocation"
-	GetDeploymentEventsResponseBodyTypeEdgeFunctionInvocation GetDeploymentEventsResponseBodyType = "edge-function-invocation"
-	GetDeploymentEventsResponseBodyTypeMetric                 GetDeploymentEventsResponseBodyType = "metric"
-	GetDeploymentEventsResponseBodyTypeReport                 GetDeploymentEventsResponseBodyType = "report"
-	GetDeploymentEventsResponseBodyTypeFatal                  GetDeploymentEventsResponseBodyType = "fatal"
+	GetDeploymentEventsType2Delimiter              GetDeploymentEventsType2 = "delimiter"
+	GetDeploymentEventsType2Command                GetDeploymentEventsType2 = "command"
+	GetDeploymentEventsType2Stdout                 GetDeploymentEventsType2 = "stdout"
+	GetDeploymentEventsType2Stderr                 GetDeploymentEventsType2 = "stderr"
+	GetDeploymentEventsType2Exit                   GetDeploymentEventsType2 = "exit"
+	GetDeploymentEventsType2DeploymentState        GetDeploymentEventsType2 = "deployment-state"
+	GetDeploymentEventsType2Middleware             GetDeploymentEventsType2 = "middleware"
+	GetDeploymentEventsType2MiddlewareInvocation   GetDeploymentEventsType2 = "middleware-invocation"
+	GetDeploymentEventsType2EdgeFunctionInvocation GetDeploymentEventsType2 = "edge-function-invocation"
+	GetDeploymentEventsType2Metric                 GetDeploymentEventsType2 = "metric"
+	GetDeploymentEventsType2Report                 GetDeploymentEventsType2 = "report"
+	GetDeploymentEventsType2Fatal                  GetDeploymentEventsType2 = "fatal"
 )
 
-func (e GetDeploymentEventsResponseBodyType) ToPointer() *GetDeploymentEventsResponseBodyType {
+func (e GetDeploymentEventsType2) ToPointer() *GetDeploymentEventsType2 {
 	return &e
 }
-func (e *GetDeploymentEventsResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentEventsType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1037,24 +1037,24 @@ func (e *GetDeploymentEventsResponseBodyType) UnmarshalJSON(data []byte) error {
 	case "report":
 		fallthrough
 	case "fatal":
-		*e = GetDeploymentEventsResponseBodyType(v)
+		*e = GetDeploymentEventsType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentEventsResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentEventsType2: %v", v)
 	}
 }
 
-type GetDeploymentEventsResponseBodyLevel string
+type GetDeploymentEventsLevel string
 
 const (
-	GetDeploymentEventsResponseBodyLevelError   GetDeploymentEventsResponseBodyLevel = "error"
-	GetDeploymentEventsResponseBodyLevelWarning GetDeploymentEventsResponseBodyLevel = "warning"
+	GetDeploymentEventsLevelError   GetDeploymentEventsLevel = "error"
+	GetDeploymentEventsLevelWarning GetDeploymentEventsLevel = "warning"
 )
 
-func (e GetDeploymentEventsResponseBodyLevel) ToPointer() *GetDeploymentEventsResponseBodyLevel {
+func (e GetDeploymentEventsLevel) ToPointer() *GetDeploymentEventsLevel {
 	return &e
 }
-func (e *GetDeploymentEventsResponseBodyLevel) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentEventsLevel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1063,23 +1063,23 @@ func (e *GetDeploymentEventsResponseBodyLevel) UnmarshalJSON(data []byte) error 
 	case "error":
 		fallthrough
 	case "warning":
-		*e = GetDeploymentEventsResponseBodyLevel(v)
+		*e = GetDeploymentEventsLevel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentEventsResponseBodyLevel: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentEventsLevel: %v", v)
 	}
 }
 
 type GetDeploymentEventsResponseBody2 struct {
-	Created      float64                               `json:"created"`
-	Date         float64                               `json:"date"`
-	DeploymentID string                                `json:"deploymentId"`
-	ID           string                                `json:"id"`
-	Info         Info                                  `json:"info"`
-	Serial       string                                `json:"serial"`
-	Text         *string                               `json:"text,omitempty"`
-	Type         GetDeploymentEventsResponseBodyType   `json:"type"`
-	Level        *GetDeploymentEventsResponseBodyLevel `json:"level,omitempty"`
+	Created      float64                   `json:"created"`
+	Date         float64                   `json:"date"`
+	DeploymentID string                    `json:"deploymentId"`
+	ID           string                    `json:"id"`
+	Info         Info                      `json:"info"`
+	Serial       string                    `json:"serial"`
+	Text         *string                   `json:"text,omitempty"`
+	Type         GetDeploymentEventsType2  `json:"type"`
+	Level        *GetDeploymentEventsLevel `json:"level,omitempty"`
 }
 
 func (o *GetDeploymentEventsResponseBody2) GetCreated() float64 {
@@ -1131,41 +1131,41 @@ func (o *GetDeploymentEventsResponseBody2) GetText() *string {
 	return o.Text
 }
 
-func (o *GetDeploymentEventsResponseBody2) GetType() GetDeploymentEventsResponseBodyType {
+func (o *GetDeploymentEventsResponseBody2) GetType() GetDeploymentEventsType2 {
 	if o == nil {
-		return GetDeploymentEventsResponseBodyType("")
+		return GetDeploymentEventsType2("")
 	}
 	return o.Type
 }
 
-func (o *GetDeploymentEventsResponseBody2) GetLevel() *GetDeploymentEventsResponseBodyLevel {
+func (o *GetDeploymentEventsResponseBody2) GetLevel() *GetDeploymentEventsLevel {
 	if o == nil {
 		return nil
 	}
 	return o.Level
 }
 
-type ResponseBodyType string
+type GetDeploymentEventsType1 string
 
 const (
-	ResponseBodyTypeDelimiter              ResponseBodyType = "delimiter"
-	ResponseBodyTypeCommand                ResponseBodyType = "command"
-	ResponseBodyTypeStdout                 ResponseBodyType = "stdout"
-	ResponseBodyTypeStderr                 ResponseBodyType = "stderr"
-	ResponseBodyTypeExit                   ResponseBodyType = "exit"
-	ResponseBodyTypeDeploymentState        ResponseBodyType = "deployment-state"
-	ResponseBodyTypeMiddleware             ResponseBodyType = "middleware"
-	ResponseBodyTypeMiddlewareInvocation   ResponseBodyType = "middleware-invocation"
-	ResponseBodyTypeEdgeFunctionInvocation ResponseBodyType = "edge-function-invocation"
-	ResponseBodyTypeMetric                 ResponseBodyType = "metric"
-	ResponseBodyTypeReport                 ResponseBodyType = "report"
-	ResponseBodyTypeFatal                  ResponseBodyType = "fatal"
+	GetDeploymentEventsType1Delimiter              GetDeploymentEventsType1 = "delimiter"
+	GetDeploymentEventsType1Command                GetDeploymentEventsType1 = "command"
+	GetDeploymentEventsType1Stdout                 GetDeploymentEventsType1 = "stdout"
+	GetDeploymentEventsType1Stderr                 GetDeploymentEventsType1 = "stderr"
+	GetDeploymentEventsType1Exit                   GetDeploymentEventsType1 = "exit"
+	GetDeploymentEventsType1DeploymentState        GetDeploymentEventsType1 = "deployment-state"
+	GetDeploymentEventsType1Middleware             GetDeploymentEventsType1 = "middleware"
+	GetDeploymentEventsType1MiddlewareInvocation   GetDeploymentEventsType1 = "middleware-invocation"
+	GetDeploymentEventsType1EdgeFunctionInvocation GetDeploymentEventsType1 = "edge-function-invocation"
+	GetDeploymentEventsType1Metric                 GetDeploymentEventsType1 = "metric"
+	GetDeploymentEventsType1Report                 GetDeploymentEventsType1 = "report"
+	GetDeploymentEventsType1Fatal                  GetDeploymentEventsType1 = "fatal"
 )
 
-func (e ResponseBodyType) ToPointer() *ResponseBodyType {
+func (e GetDeploymentEventsType1) ToPointer() *GetDeploymentEventsType1 {
 	return &e
 }
-func (e *ResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentEventsType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1194,14 +1194,14 @@ func (e *ResponseBodyType) UnmarshalJSON(data []byte) error {
 	case "report":
 		fallthrough
 	case "fatal":
-		*e = ResponseBodyType(v)
+		*e = GetDeploymentEventsType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentEventsType1: %v", v)
 	}
 }
 
-type GetDeploymentEventsResponseBodyDeploymentsInfo struct {
+type PayloadInfo struct {
 	Type       string  `json:"type"`
 	Name       string  `json:"name"`
 	Entrypoint *string `json:"entrypoint,omitempty"`
@@ -1210,42 +1210,42 @@ type GetDeploymentEventsResponseBodyDeploymentsInfo struct {
 	ReadyState *string `json:"readyState,omitempty"`
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetType() string {
+func (o *PayloadInfo) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetName() string {
+func (o *PayloadInfo) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetEntrypoint() *string {
+func (o *PayloadInfo) GetEntrypoint() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Entrypoint
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetPath() *string {
+func (o *PayloadInfo) GetPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Path
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetStep() *string {
+func (o *PayloadInfo) GetStep() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Step
 }
 
-func (o *GetDeploymentEventsResponseBodyDeploymentsInfo) GetReadyState() *string {
+func (o *PayloadInfo) GetReadyState() *string {
 	if o == nil {
 		return nil
 	}
@@ -1481,16 +1481,16 @@ func (o *Proxy) GetWafRuleID() *string {
 }
 
 type Payload struct {
-	DeploymentID string                                          `json:"deploymentId"`
-	Info         *GetDeploymentEventsResponseBodyDeploymentsInfo `json:"info,omitempty"`
-	Text         *string                                         `json:"text,omitempty"`
-	ID           string                                          `json:"id"`
-	Date         float64                                         `json:"date"`
-	Serial       string                                          `json:"serial"`
-	Created      *float64                                        `json:"created,omitempty"`
-	StatusCode   *float64                                        `json:"statusCode,omitempty"`
-	RequestID    *string                                         `json:"requestId,omitempty"`
-	Proxy        *Proxy                                          `json:"proxy,omitempty"`
+	DeploymentID string       `json:"deploymentId"`
+	Info         *PayloadInfo `json:"info,omitempty"`
+	Text         *string      `json:"text,omitempty"`
+	ID           string       `json:"id"`
+	Date         float64      `json:"date"`
+	Serial       string       `json:"serial"`
+	Created      *float64     `json:"created,omitempty"`
+	StatusCode   *float64     `json:"statusCode,omitempty"`
+	RequestID    *string      `json:"requestId,omitempty"`
+	Proxy        *Proxy       `json:"proxy,omitempty"`
 }
 
 func (o *Payload) GetDeploymentID() string {
@@ -1500,7 +1500,7 @@ func (o *Payload) GetDeploymentID() string {
 	return o.DeploymentID
 }
 
-func (o *Payload) GetInfo() *GetDeploymentEventsResponseBodyDeploymentsInfo {
+func (o *Payload) GetInfo() *PayloadInfo {
 	if o == nil {
 		return nil
 	}
@@ -1564,14 +1564,14 @@ func (o *Payload) GetProxy() *Proxy {
 }
 
 type GetDeploymentEventsResponseBody1 struct {
-	Type    ResponseBodyType `json:"type"`
-	Created float64          `json:"created"`
-	Payload Payload          `json:"payload"`
+	Type    GetDeploymentEventsType1 `json:"type"`
+	Created float64                  `json:"created"`
+	Payload Payload                  `json:"payload"`
 }
 
-func (o *GetDeploymentEventsResponseBody1) GetType() ResponseBodyType {
+func (o *GetDeploymentEventsResponseBody1) GetType() GetDeploymentEventsType1 {
 	if o == nil {
-		return ResponseBodyType("")
+		return GetDeploymentEventsType1("")
 	}
 	return o.Type
 }
@@ -1590,58 +1590,58 @@ func (o *GetDeploymentEventsResponseBody1) GetPayload() Payload {
 	return o.Payload
 }
 
-type GetDeploymentEventsDeploymentsResponseBodyType string
+type GetDeploymentEventsResponseBodyUnionType string
 
 const (
-	GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody1 GetDeploymentEventsDeploymentsResponseBodyType = "getDeploymentEvents_responseBody_1"
-	GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody2 GetDeploymentEventsDeploymentsResponseBodyType = "getDeploymentEvents_responseBody_2"
+	GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody1 GetDeploymentEventsResponseBodyUnionType = "getDeploymentEvents_ResponseBody_1"
+	GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody2 GetDeploymentEventsResponseBodyUnionType = "getDeploymentEvents_ResponseBody_2"
 )
 
-type GetDeploymentEventsDeploymentsResponseBody struct {
-	GetDeploymentEventsResponseBody1 *GetDeploymentEventsResponseBody1
-	GetDeploymentEventsResponseBody2 *GetDeploymentEventsResponseBody2
+type GetDeploymentEventsResponseBodyUnion struct {
+	GetDeploymentEventsResponseBody1 *GetDeploymentEventsResponseBody1 `queryParam:"inline"`
+	GetDeploymentEventsResponseBody2 *GetDeploymentEventsResponseBody2 `queryParam:"inline"`
 
-	Type GetDeploymentEventsDeploymentsResponseBodyType
+	Type GetDeploymentEventsResponseBodyUnionType
 }
 
-func CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody1(getDeploymentEventsResponseBody1 GetDeploymentEventsResponseBody1) GetDeploymentEventsDeploymentsResponseBody {
-	typ := GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody1
+func CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody1(getDeploymentEventsResponseBody1 GetDeploymentEventsResponseBody1) GetDeploymentEventsResponseBodyUnion {
+	typ := GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody1
 
-	return GetDeploymentEventsDeploymentsResponseBody{
+	return GetDeploymentEventsResponseBodyUnion{
 		GetDeploymentEventsResponseBody1: &getDeploymentEventsResponseBody1,
 		Type:                             typ,
 	}
 }
 
-func CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody2(getDeploymentEventsResponseBody2 GetDeploymentEventsResponseBody2) GetDeploymentEventsDeploymentsResponseBody {
-	typ := GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody2
+func CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody2(getDeploymentEventsResponseBody2 GetDeploymentEventsResponseBody2) GetDeploymentEventsResponseBodyUnion {
+	typ := GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody2
 
-	return GetDeploymentEventsDeploymentsResponseBody{
+	return GetDeploymentEventsResponseBodyUnion{
 		GetDeploymentEventsResponseBody2: &getDeploymentEventsResponseBody2,
 		Type:                             typ,
 	}
 }
 
-func (u *GetDeploymentEventsDeploymentsResponseBody) UnmarshalJSON(data []byte) error {
+func (u *GetDeploymentEventsResponseBodyUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentEventsResponseBody1 GetDeploymentEventsResponseBody1 = GetDeploymentEventsResponseBody1{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody1, "", true, true); err == nil {
 		u.GetDeploymentEventsResponseBody1 = &getDeploymentEventsResponseBody1
-		u.Type = GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody1
+		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody1
 		return nil
 	}
 
 	var getDeploymentEventsResponseBody2 GetDeploymentEventsResponseBody2 = GetDeploymentEventsResponseBody2{}
 	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody2, "", true, true); err == nil {
 		u.GetDeploymentEventsResponseBody2 = &getDeploymentEventsResponseBody2
-		u.Type = GetDeploymentEventsDeploymentsResponseBodyTypeGetDeploymentEventsResponseBody2
+		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentEventsDeploymentsResponseBody", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentEventsResponseBodyUnion", string(data))
 }
 
-func (u GetDeploymentEventsDeploymentsResponseBody) MarshalJSON() ([]byte, error) {
+func (u GetDeploymentEventsResponseBodyUnion) MarshalJSON() ([]byte, error) {
 	if u.GetDeploymentEventsResponseBody1 != nil {
 		return utils.MarshalJSON(u.GetDeploymentEventsResponseBody1, "", true)
 	}
@@ -1650,12 +1650,12 @@ func (u GetDeploymentEventsDeploymentsResponseBody) MarshalJSON() ([]byte, error
 		return utils.MarshalJSON(u.GetDeploymentEventsResponseBody2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDeploymentEventsDeploymentsResponseBody: all fields are null")
+	return nil, errors.New("could not marshal union type GetDeploymentEventsResponseBodyUnion: all fields are null")
 }
 
 type GetDeploymentEventsResponse struct {
 	HTTPMeta       components.HTTPMetadata `json:"-"`
-	ResponseBodies []*GetDeploymentEventsDeploymentsResponseBody
+	ResponseBodies []*GetDeploymentEventsResponseBodyUnion
 	OneOf          *GetDeploymentEventsResponseBody
 }
 
@@ -1666,7 +1666,7 @@ func (o *GetDeploymentEventsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetDeploymentEventsResponse) GetResponseBodies() []*GetDeploymentEventsDeploymentsResponseBody {
+func (o *GetDeploymentEventsResponse) GetResponseBodies() []*GetDeploymentEventsResponseBodyUnion {
 	if o == nil {
 		return nil
 	}

@@ -46,9 +46,9 @@ func testGetProjectEnvGetProjectEnv0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody3(
+	var respBody *operations.GetProjectEnvResponseBody = types.Pointer(operations.CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody3(
 		operations.GetProjectEnvResponseBody3{
-			Type:  operations.GetProjectEnvResponseBodyProjectsResponseTypePlain,
+			Type:  operations.GetProjectEnvType3Sensitive,
 			Value: "<value>",
 			Key:   "<key>",
 		},

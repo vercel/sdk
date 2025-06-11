@@ -11,12 +11,7 @@ let value: GetFirewallConfigRules = {
   active: false,
   conditionGroup: [
     {
-      conditions: [
-        {
-          type: "rate_limit_api_id",
-          op: "nex",
-        },
-      ],
+      conditions: [],
     },
   ],
   action: {},

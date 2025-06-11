@@ -6,12 +6,7 @@
 import { UpdateResourceSecretsRequestBody } from "@vercel/sdk/models/updateresourcesecretsop.js";
 
 let value: UpdateResourceSecretsRequestBody = {
-  secrets: [
-    {
-      name: "<value>",
-      value: "<value>",
-    },
-  ],
+  secrets: [],
 };
 ```
 

@@ -10,19 +10,19 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// AddProjectMemberRequestBodyProjectMembersRole - The project role of the member that will be added.
-type AddProjectMemberRequestBodyProjectMembersRole string
+// AddProjectMemberRole3 - The project role of the member that will be added.
+type AddProjectMemberRole3 string
 
 const (
-	AddProjectMemberRequestBodyProjectMembersRoleAdmin            AddProjectMemberRequestBodyProjectMembersRole = "ADMIN"
-	AddProjectMemberRequestBodyProjectMembersRoleProjectDeveloper AddProjectMemberRequestBodyProjectMembersRole = "PROJECT_DEVELOPER"
-	AddProjectMemberRequestBodyProjectMembersRoleProjectViewer    AddProjectMemberRequestBodyProjectMembersRole = "PROJECT_VIEWER"
+	AddProjectMemberRole3Admin            AddProjectMemberRole3 = "ADMIN"
+	AddProjectMemberRole3ProjectDeveloper AddProjectMemberRole3 = "PROJECT_DEVELOPER"
+	AddProjectMemberRole3ProjectViewer    AddProjectMemberRole3 = "PROJECT_VIEWER"
 )
 
-func (e AddProjectMemberRequestBodyProjectMembersRole) ToPointer() *AddProjectMemberRequestBodyProjectMembersRole {
+func (e AddProjectMemberRole3) ToPointer() *AddProjectMemberRole3 {
 	return &e
 }
-func (e *AddProjectMemberRequestBodyProjectMembersRole) UnmarshalJSON(data []byte) error {
+func (e *AddProjectMemberRole3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *AddProjectMemberRequestBodyProjectMembersRole) UnmarshalJSON(data []byt
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = AddProjectMemberRequestBodyProjectMembersRole(v)
+		*e = AddProjectMemberRole3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AddProjectMemberRequestBodyProjectMembersRole: %v", v)
+		return fmt.Errorf("invalid value for AddProjectMemberRole3: %v", v)
 	}
 }
 
@@ -48,7 +48,7 @@ type AddProjectMemberRequestBody3 struct {
 	// The email of the team member that should be added to this project.
 	Email string `json:"email"`
 	// The project role of the member that will be added.
-	Role AddProjectMemberRequestBodyProjectMembersRole `json:"role"`
+	Role AddProjectMemberRole3 `json:"role"`
 }
 
 func (o *AddProjectMemberRequestBody3) GetUID() *string {
@@ -72,26 +72,26 @@ func (o *AddProjectMemberRequestBody3) GetEmail() string {
 	return o.Email
 }
 
-func (o *AddProjectMemberRequestBody3) GetRole() AddProjectMemberRequestBodyProjectMembersRole {
+func (o *AddProjectMemberRequestBody3) GetRole() AddProjectMemberRole3 {
 	if o == nil {
-		return AddProjectMemberRequestBodyProjectMembersRole("")
+		return AddProjectMemberRole3("")
 	}
 	return o.Role
 }
 
-// AddProjectMemberRequestBodyRole - The project role of the member that will be added.
-type AddProjectMemberRequestBodyRole string
+// AddProjectMemberRole2 - The project role of the member that will be added.
+type AddProjectMemberRole2 string
 
 const (
-	AddProjectMemberRequestBodyRoleAdmin            AddProjectMemberRequestBodyRole = "ADMIN"
-	AddProjectMemberRequestBodyRoleProjectDeveloper AddProjectMemberRequestBodyRole = "PROJECT_DEVELOPER"
-	AddProjectMemberRequestBodyRoleProjectViewer    AddProjectMemberRequestBodyRole = "PROJECT_VIEWER"
+	AddProjectMemberRole2Admin            AddProjectMemberRole2 = "ADMIN"
+	AddProjectMemberRole2ProjectDeveloper AddProjectMemberRole2 = "PROJECT_DEVELOPER"
+	AddProjectMemberRole2ProjectViewer    AddProjectMemberRole2 = "PROJECT_VIEWER"
 )
 
-func (e AddProjectMemberRequestBodyRole) ToPointer() *AddProjectMemberRequestBodyRole {
+func (e AddProjectMemberRole2) ToPointer() *AddProjectMemberRole2 {
 	return &e
 }
-func (e *AddProjectMemberRequestBodyRole) UnmarshalJSON(data []byte) error {
+func (e *AddProjectMemberRole2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -102,10 +102,10 @@ func (e *AddProjectMemberRequestBodyRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = AddProjectMemberRequestBodyRole(v)
+		*e = AddProjectMemberRole2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AddProjectMemberRequestBodyRole: %v", v)
+		return fmt.Errorf("invalid value for AddProjectMemberRole2: %v", v)
 	}
 }
 
@@ -117,7 +117,7 @@ type AddProjectMemberRequestBody2 struct {
 	// The email of the team member that should be added to this project.
 	Email *string `json:"email,omitempty"`
 	// The project role of the member that will be added.
-	Role AddProjectMemberRequestBodyRole `json:"role"`
+	Role AddProjectMemberRole2 `json:"role"`
 }
 
 func (o *AddProjectMemberRequestBody2) GetUID() *string {
@@ -141,26 +141,26 @@ func (o *AddProjectMemberRequestBody2) GetEmail() *string {
 	return o.Email
 }
 
-func (o *AddProjectMemberRequestBody2) GetRole() AddProjectMemberRequestBodyRole {
+func (o *AddProjectMemberRequestBody2) GetRole() AddProjectMemberRole2 {
 	if o == nil {
-		return AddProjectMemberRequestBodyRole("")
+		return AddProjectMemberRole2("")
 	}
 	return o.Role
 }
 
-// RequestBodyRole - The project role of the member that will be added.
-type RequestBodyRole string
+// AddProjectMemberRole1 - The project role of the member that will be added.
+type AddProjectMemberRole1 string
 
 const (
-	RequestBodyRoleAdmin            RequestBodyRole = "ADMIN"
-	RequestBodyRoleProjectDeveloper RequestBodyRole = "PROJECT_DEVELOPER"
-	RequestBodyRoleProjectViewer    RequestBodyRole = "PROJECT_VIEWER"
+	AddProjectMemberRole1Admin            AddProjectMemberRole1 = "ADMIN"
+	AddProjectMemberRole1ProjectDeveloper AddProjectMemberRole1 = "PROJECT_DEVELOPER"
+	AddProjectMemberRole1ProjectViewer    AddProjectMemberRole1 = "PROJECT_VIEWER"
 )
 
-func (e RequestBodyRole) ToPointer() *RequestBodyRole {
+func (e AddProjectMemberRole1) ToPointer() *AddProjectMemberRole1 {
 	return &e
 }
-func (e *RequestBodyRole) UnmarshalJSON(data []byte) error {
+func (e *AddProjectMemberRole1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -171,10 +171,10 @@ func (e *RequestBodyRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = RequestBodyRole(v)
+		*e = AddProjectMemberRole1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestBodyRole: %v", v)
+		return fmt.Errorf("invalid value for AddProjectMemberRole1: %v", v)
 	}
 }
 
@@ -186,7 +186,7 @@ type AddProjectMemberRequestBody1 struct {
 	// The email of the team member that should be added to this project.
 	Email *string `json:"email,omitempty"`
 	// The project role of the member that will be added.
-	Role RequestBodyRole `json:"role"`
+	Role AddProjectMemberRole1 `json:"role"`
 }
 
 func (o *AddProjectMemberRequestBody1) GetUID() string {
@@ -210,9 +210,9 @@ func (o *AddProjectMemberRequestBody1) GetEmail() *string {
 	return o.Email
 }
 
-func (o *AddProjectMemberRequestBody1) GetRole() RequestBodyRole {
+func (o *AddProjectMemberRequestBody1) GetRole() AddProjectMemberRole1 {
 	if o == nil {
-		return RequestBodyRole("")
+		return AddProjectMemberRole1("")
 	}
 	return o.Role
 }
@@ -220,15 +220,15 @@ func (o *AddProjectMemberRequestBody1) GetRole() RequestBodyRole {
 type AddProjectMemberRequestBodyType string
 
 const (
-	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody1 AddProjectMemberRequestBodyType = "addProjectMember_requestBody_1"
-	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody2 AddProjectMemberRequestBodyType = "addProjectMember_requestBody_2"
-	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody3 AddProjectMemberRequestBodyType = "addProjectMember_requestBody_3"
+	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody1 AddProjectMemberRequestBodyType = "addProjectMember_RequestBody_1"
+	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody2 AddProjectMemberRequestBodyType = "addProjectMember_RequestBody_2"
+	AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody3 AddProjectMemberRequestBodyType = "addProjectMember_RequestBody_3"
 )
 
 type AddProjectMemberRequestBody struct {
-	AddProjectMemberRequestBody1 *AddProjectMemberRequestBody1
-	AddProjectMemberRequestBody2 *AddProjectMemberRequestBody2
-	AddProjectMemberRequestBody3 *AddProjectMemberRequestBody3
+	AddProjectMemberRequestBody1 *AddProjectMemberRequestBody1 `queryParam:"inline"`
+	AddProjectMemberRequestBody2 *AddProjectMemberRequestBody2 `queryParam:"inline"`
+	AddProjectMemberRequestBody3 *AddProjectMemberRequestBody3 `queryParam:"inline"`
 
 	Type AddProjectMemberRequestBodyType
 }

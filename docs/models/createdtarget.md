@@ -6,9 +6,7 @@
 ### `models.CreateProjectEnvTarget1[]`
 
 ```typescript
-const value: models.CreateProjectEnvTarget1[] = [
-  "production",
-];
+const value: models.CreateProjectEnvTarget1[] = [];
 ```
 
 ### `models.CreateProjectEnvTarget2`

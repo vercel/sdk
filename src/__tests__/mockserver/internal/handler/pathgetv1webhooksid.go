@@ -45,9 +45,9 @@ func testGetWebhookGetWebhook0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetWebhookResponseBody{
-		Events: []operations.GetWebhookEvents{
-			operations.GetWebhookEventsDeploymentCreated,
+	var respBody *operations.GetWebhookResponseBody = &operations.GetWebhookResponseBody{
+		Events: []operations.GetWebhookEvent{
+			operations.GetWebhookEventDeploymentCreated,
 		},
 		ID:        "account_hook_GflD6EYyo7F4ViYS",
 		URL:       "https://my-webhook.com",

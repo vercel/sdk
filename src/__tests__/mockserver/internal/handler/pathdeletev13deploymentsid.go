@@ -45,7 +45,7 @@ func testDeleteDeploymentDeleteDeployment0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.DeleteDeploymentResponseBody{
+	var respBody *operations.DeleteDeploymentResponseBody = &operations.DeleteDeploymentResponseBody{
 		UID:   "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
 		State: operations.DeleteDeploymentStateDeleted,
 	}

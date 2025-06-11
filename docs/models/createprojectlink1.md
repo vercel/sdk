@@ -6,14 +6,7 @@
 import { CreateProjectLink1 } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectLink1 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://oblong-adviser.com/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

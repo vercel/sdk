@@ -10,11 +10,9 @@ import { FiftyNine } from "@vercel/sdk/models/userevent.js";
 let value: FiftyNine = {
   projectId: "<id>",
   restore: false,
-  configVersion: 6462.86,
-  configChangeCount: 6058.28,
-  configChanges: [
-    {},
-  ],
+  configVersion: 6058.28,
+  configChangeCount: 501.99,
+  configChanges: [],
 };
 ```
 

@@ -45,7 +45,7 @@ func testCheckDomainPriceCheckDomainPrice0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CheckDomainPriceResponseBody{
+	var respBody *operations.CheckDomainPriceResponseBody = &operations.CheckDomainPriceResponseBody{
 		Price:  20,
 		Period: 1,
 	}

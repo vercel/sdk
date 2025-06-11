@@ -20,16 +20,7 @@ const value: models.UpdateFirewallConfigRequestBody2 = {
   value: {
     name: "<value>",
     active: false,
-    conditionGroup: [
-      {
-        conditions: [
-          {
-            type: "cookie",
-            op: "lte",
-          },
-        ],
-      },
-    ],
+    conditionGroup: [],
     action: {},
   },
 };
@@ -44,16 +35,7 @@ const value: models.UpdateFirewallConfigRequestBody3 = {
   value: {
     name: "<value>",
     active: false,
-    conditionGroup: [
-      {
-        conditions: [
-          {
-            type: "scheme",
-            op: "inc",
-          },
-        ],
-      },
-    ],
+    conditionGroup: [],
     action: {},
   },
 };
@@ -74,7 +56,7 @@ const value: models.UpdateFirewallConfigRequestBody4 = {
 const value: models.UpdateFirewallConfigRequestBody5 = {
   action: "rules.priority",
   id: "<id>",
-  value: 9901.25,
+  value: 5203.13,
 };
 ```
 
@@ -83,9 +65,9 @@ const value: models.UpdateFirewallConfigRequestBody5 = {
 ```typescript
 const value: models.UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
-  id: "sf",
+  id: "sd",
   value: {
-    active: false,
+    active: true,
     action: "deny",
   },
 };
@@ -105,9 +87,9 @@ const value: models.UpdateFirewallConfigRequestBody7 = {
 const value: models.UpdateFirewallConfigRequestBody8 = {
   action: "ip.insert",
   value: {
-    hostname: "questionable-marimba.info",
-    ip: "1d0e:0eee:d411:839c:0fff:4cf6:dcb3:fa5a",
-    action: "deny",
+    hostname: "pink-plugin.net",
+    ip: "187.206.27.119",
+    action: "bypass",
   },
 };
 ```
@@ -119,8 +101,8 @@ const value: models.UpdateFirewallConfigRequestBody9 = {
   action: "ip.update",
   id: "<id>",
   value: {
-    hostname: "idolized-tuxedo.name",
-    ip: "6c8e:bfeb:b75e:a5e0:5596:e99e:fee8:b71f",
+    hostname: "rectangular-chainstay.com",
+    ip: "a8d7:3bba:f2cf:e55e:efad:639f:e2f6:5aab",
     action: "challenge",
   },
 };
@@ -155,7 +137,7 @@ const value: models.RequestBody12 = {
   id: "<id>",
   value: {
     "key": {
-      active: false,
+      active: true,
     },
   },
 };

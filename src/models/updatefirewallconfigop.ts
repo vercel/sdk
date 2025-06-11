@@ -243,9 +243,6 @@ export type UpdateFirewallConfigRequestBodySecurityAction = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityAction
 >;
 
-/**
- * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
- */
 export const UpdateFirewallConfigRequestBodySecurityType = {
   Host: "host",
   Path: "path",
@@ -270,16 +267,10 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
 } as const;
-/**
- * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
- */
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityType
 >;
 
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
- */
 export const UpdateFirewallConfigRequestBodyOp = {
   Re: "re",
   Eq: "eq",
@@ -296,9 +287,6 @@ export const UpdateFirewallConfigRequestBodyOp = {
   Lt: "lt",
   Lte: "lte",
 } as const;
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
- */
 export type UpdateFirewallConfigRequestBodyOp = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyOp
 >;
@@ -309,13 +297,7 @@ export type UpdateFirewallConfigRequestBodySecurityRequest3Value =
   | number;
 
 export type UpdateFirewallConfigRequestBodyConditions = {
-  /**
-   * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-   */
   type: UpdateFirewallConfigRequestBodySecurityType;
-  /**
-   * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value
-   */
   op: UpdateFirewallConfigRequestBodyOp;
   neg?: boolean | undefined;
   key?: string | undefined;
@@ -416,9 +398,6 @@ export type UpdateFirewallConfigRequestBodyAction = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyAction
 >;
 
-/**
- * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
- */
 export const UpdateFirewallConfigRequestBodyType = {
   Host: "host",
   Path: "path",
@@ -443,16 +422,10 @@ export const UpdateFirewallConfigRequestBodyType = {
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
 } as const;
-/**
- * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
- */
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyType
 >;
 
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
- */
 export const RequestBodyOp = {
   Re: "re",
   Eq: "eq",
@@ -469,9 +442,6 @@ export const RequestBodyOp = {
   Lt: "lt",
   Lte: "lte",
 } as const;
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
- */
 export type RequestBodyOp = ClosedEnum<typeof RequestBodyOp>;
 
 export type UpdateFirewallConfigRequestBodySecurityRequest2Value =
@@ -480,13 +450,7 @@ export type UpdateFirewallConfigRequestBodySecurityRequest2Value =
   | number;
 
 export type RequestBodyConditions = {
-  /**
-   * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-   */
   type: UpdateFirewallConfigRequestBodyType;
-  /**
-   * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-   */
   op: RequestBodyOp;
   neg?: boolean | undefined;
   key?: string | undefined;

@@ -8,15 +8,10 @@ import { PutFirewallConfigSecurityRules } from "@vercel/sdk/models/putfirewallco
 let value: PutFirewallConfigSecurityRules = {
   id: "<id>",
   name: "<value>",
-  active: false,
+  active: true,
   conditionGroup: [
     {
-      conditions: [
-        {
-          type: "host",
-          op: "neq",
-        },
-      ],
+      conditions: [],
     },
   ],
   action: {},

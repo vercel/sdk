@@ -47,8 +47,8 @@ func testReadAccessGroupReadAccessGroupId0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ReadAccessGroupResponseBody{
-		IsDsyncManaged: false,
+	var respBody *operations.ReadAccessGroupResponseBody = &operations.ReadAccessGroupResponseBody{
+		IsDsyncManaged: true,
 		Name:           "my-access-group",
 		CreatedAt:      "1588720733602",
 		TeamID:         "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -95,8 +95,8 @@ func testReadAccessGroupReadAccessGroupName0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ReadAccessGroupResponseBody{
-		IsDsyncManaged: false,
+	var respBody *operations.ReadAccessGroupResponseBody = &operations.ReadAccessGroupResponseBody{
+		IsDsyncManaged: true,
 		Name:           "my-access-group",
 		CreatedAt:      "1588720733602",
 		TeamID:         "team_123a6c5209bc3778245d011443644c8d27dc2c50",

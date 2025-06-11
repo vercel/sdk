@@ -50,11 +50,11 @@ func testUpdateProjectDomainUpdateProjectDomain0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateProjectDomainResponseBody{
+	var respBody *operations.UpdateProjectDomainResponseBody = &operations.UpdateProjectDomainResponseBody{
 		Name:      "<value>",
 		ApexName:  "<value>",
 		ProjectID: "<id>",
-		Verified:  false,
+		Verified:  true,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

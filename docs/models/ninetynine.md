@@ -12,13 +12,14 @@ let value: NinetyNine = {
     type: "fixed",
     fixedBudget: 4084.8,
     previousSpend: [
-      5082.46,
+      4620.84,
+      2521.87,
     ],
     notifiedAt: [
-      4620.84,
+      332.38,
     ],
-    createdAt: 2521.87,
-    isActive: false,
+    createdAt: 7600.65,
+    isActive: true,
     teamId: "<id>",
     id: "<id>",
   },

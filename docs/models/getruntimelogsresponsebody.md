@@ -12,10 +12,10 @@ let value: GetRuntimeLogsResponseBody = {
   source: "request",
   timestampInMs: 6344.7,
   domain: "corrupt-hovel.net",
-  messageTruncated: false,
+  messageTruncated: true,
   requestMethod: "<value>",
   requestPath: "<value>",
-  responseStatusCode: 3493.22,
+  responseStatusCode: 5045.16,
 };
 ```
 

@@ -50,9 +50,9 @@ func testCreateAccessGroupCreateAccessGroup0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateAccessGroupResponseBody{
-		MembersCount:  591.78,
-		ProjectsCount: 3787.91,
+	var respBody *operations.CreateAccessGroupResponseBody = &operations.CreateAccessGroupResponseBody{
+		MembersCount:  446.92,
+		ProjectsCount: 5113.22,
 		Name:          "my-access-group",
 		CreatedAt:     "1588720733602",
 		TeamID:        "team_123a6c5209bc3778245d011443644c8d27dc2c50",

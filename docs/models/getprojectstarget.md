@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.GetProjectsTarget1[] = [
-  "preview",
+  "production",
 ];
 ```
 

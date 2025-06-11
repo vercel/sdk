@@ -14,13 +14,13 @@ const value: models.GetProjectDomainsResponseBody1 = {
       name: "<value>",
       apexName: "<value>",
       projectId: "<id>",
-      verified: false,
+      verified: true,
     },
   ],
   pagination: {
-    count: 3538.67,
-    next: 3470.07,
-    prev: 2597.22,
+    count: 8962.06,
+    next: 1793.22,
+    prev: null,
   },
 };
 ```
@@ -34,7 +34,7 @@ const value: models.GetProjectDomainsResponseBody2 = {
       name: "<value>",
       apexName: "<value>",
       projectId: "<id>",
-      verified: false,
+      verified: true,
     },
   ],
   pagination: {

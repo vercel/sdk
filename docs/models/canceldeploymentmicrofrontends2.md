@@ -9,7 +9,7 @@ let value: CancelDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

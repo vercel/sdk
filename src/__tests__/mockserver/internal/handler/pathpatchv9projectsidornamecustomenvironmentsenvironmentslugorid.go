@@ -50,12 +50,12 @@ func testUpdateCustomEnvironmentUpdateCustomEnvironment0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateCustomEnvironmentResponseBody{
+	var respBody *operations.UpdateCustomEnvironmentResponseBody = &operations.UpdateCustomEnvironmentResponseBody{
 		ID:        "<id>",
 		Slug:      "<value>",
-		Type:      operations.UpdateCustomEnvironmentEnvironmentTypeProduction,
-		CreatedAt: 6942.59,
-		UpdatedAt: 6821.31,
+		Type:      operations.UpdateCustomEnvironmentTypeResponseBodyProduction,
+		CreatedAt: 4054.52,
+		UpdatedAt: 7043.79,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

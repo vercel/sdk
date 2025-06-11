@@ -7,16 +7,41 @@
 
 ```typescript
 const value: models.Team = {
-  id: "ABCDEFG000011111",
-  data: {
-    query: "<value>",
-    creatorId: "<id>",
-    title: "<value>",
-    groupId: "<id>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    createdAt: 5042.66,
+  id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+  creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
+  updatedAt: 1611796915677,
+  emailDomain: "example.com",
+  saml: {
+    connection: {
+      status: "linked",
+      type: "OktaSAML",
+      state: "active",
+      connectedAt: 1611796915677,
+      lastReceivedWebhookEvent: 1611796915677,
+    },
+    directory: {
+      type: "OktaSAML",
+      state: "active",
+      connectedAt: 1611796915677,
+      lastReceivedWebhookEvent: 1611796915677,
+    },
+    enforced: false,
   },
+  inviteCode: "hasihf9e89",
+  description: "Our mission is to make cloud computing accessible to everyone.",
+  stagingPrefix: "<value>",
+  previewDeploymentSuffix: "example.dev",
+  slug: "my-team",
+  name: "My Team",
+  avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+  membership: {
+    confirmed: false,
+    confirmedAt: 2738.3,
+    role: "MEMBER",
+    createdAt: 7074.8,
+    created: 7786.93,
+  },
+  createdAt: 1630748523395,
 };
 ```
 
@@ -24,10 +49,8 @@ const value: models.Team = {
 
 ```typescript
 const value: models.TeamLimited = {
-  limited: false,
-  limitedBy: [
-    "scope",
-  ],
+  limited: true,
+  limitedBy: [],
   saml: {
     connection: {
       type: "OktaSAML",
@@ -42,20 +65,19 @@ const value: models.TeamLimited = {
       connectedAt: 1611796915677,
       lastReceivedWebhookEvent: 1611796915677,
     },
-    enforced: false,
+    enforced: true,
   },
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   slug: "my-team",
   name: "My Team",
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
-    confirmed: false,
-    confirmedAt: 2822.91,
+    confirmed: true,
+    confirmedAt: 7470.91,
     role: "DEVELOPER",
-    createdAt: 4110.54,
-    created: 7470.91,
+    createdAt: 964.08,
+    created: 6198.36,
   },
-  created: "<value>",
   createdAt: 1630748523395,
 };
 ```

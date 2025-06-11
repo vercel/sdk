@@ -50,9 +50,9 @@ func testRequestDeleteRequestDelete0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RequestDeleteResponseBody{
+	var respBody *operations.RequestDeleteResponseBody = &operations.RequestDeleteResponseBody{
 		ID:      "<id>",
-		Email:   "Lamont82@gmail.com",
+		Email:   "Gilda_Murphy@yahoo.com",
 		Message: "Verification email sent",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

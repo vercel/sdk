@@ -46,7 +46,7 @@ func testListUserEventsListUserEvents0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ListUserEventsResponseBody{
+	var respBody *operations.ListUserEventsResponseBody = &operations.ListUserEventsResponseBody{
 		Events: []components.UserEvent{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

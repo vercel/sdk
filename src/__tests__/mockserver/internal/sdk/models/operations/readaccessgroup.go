@@ -37,32 +37,32 @@ func (o *ReadAccessGroupRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type Entitlements string
+type ReadAccessGroupEntitlement string
 
 const (
-	EntitlementsV0 Entitlements = "v0"
+	ReadAccessGroupEntitlementV0 ReadAccessGroupEntitlement = "v0"
 )
 
-func (e Entitlements) ToPointer() *Entitlements {
+func (e ReadAccessGroupEntitlement) ToPointer() *ReadAccessGroupEntitlement {
 	return &e
 }
-func (e *Entitlements) UnmarshalJSON(data []byte) error {
+func (e *ReadAccessGroupEntitlement) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "v0":
-		*e = Entitlements(v)
+		*e = ReadAccessGroupEntitlement(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Entitlements: %v", v)
+		return fmt.Errorf("invalid value for ReadAccessGroupEntitlement: %v", v)
 	}
 }
 
 type ReadAccessGroupResponseBody struct {
-	Entitlements   []Entitlements `json:"entitlements,omitempty"`
-	IsDsyncManaged bool           `json:"isDsyncManaged"`
+	Entitlements   []ReadAccessGroupEntitlement `json:"entitlements,omitempty"`
+	IsDsyncManaged bool                         `json:"isDsyncManaged"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -83,7 +83,7 @@ type ReadAccessGroupResponseBody struct {
 	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
-func (o *ReadAccessGroupResponseBody) GetEntitlements() []Entitlements {
+func (o *ReadAccessGroupResponseBody) GetEntitlements() []ReadAccessGroupEntitlement {
 	if o == nil {
 		return nil
 	}

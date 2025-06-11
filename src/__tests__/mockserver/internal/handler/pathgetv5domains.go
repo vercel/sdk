@@ -47,9 +47,9 @@ func testGetDomainsGetDomains0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDomainsResponseBody{
-		Domains: []operations.Domains{
-			operations.Domains{
+	var respBody *operations.GetDomainsResponseBody = &operations.GetDomainsResponseBody{
+		Domains: []operations.GetDomainsDomain{
+			operations.GetDomainsDomain{
 				Verified: true,
 				Nameservers: []string{
 					"ns1.nameserver.net",

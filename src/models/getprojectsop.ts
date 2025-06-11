@@ -1027,7 +1027,7 @@ export type GetProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const GetProjectsBuildMachineType = {
   Enhanced: "enhanced",
-  Ultra: "ultra",
+  Turbo: "turbo",
 } as const;
 export type GetProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsBuildMachineType
@@ -1044,6 +1044,28 @@ export type GetProjectsResourceConfig = {
 };
 
 /**
+ * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+ */
+export type GetProjectsRollbackDescription = {
+  /**
+   * The user who rolled back the project.
+   */
+  userId: string;
+  /**
+   * The username of the user who rolled back the project.
+   */
+  username: string;
+  /**
+   * User-supplied explanation of why they rolled back the project. Limited to 250 characters.
+   */
+  description: string;
+  /**
+   * Timestamp of when the rollback was requested.
+   */
+  createdAt: number;
+};
+
+/**
  * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
  */
 export type GetProjectsStages = {
@@ -1051,10 +1073,6 @@ export type GetProjectsStages = {
    * The percentage of traffic to serve to the new deployment
    */
   targetPercentage: number;
-  /**
-   * minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving.
-   */
-  minutesToRelease?: number | undefined;
   /**
    * Whether or not this stage requires approval to proceed.
    */
@@ -1070,10 +1088,6 @@ export type GetProjectsRollingRelease = {
    * The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
    */
   target: string;
-  /**
-   * minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%.
-   */
-  minutesToRelease?: number | undefined;
   /**
    * An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
    */
@@ -1095,7 +1109,7 @@ export type GetProjectsProjectsFunctionDefaultMemoryType = ClosedEnum<
 
 export const GetProjectsProjectsBuildMachineType = {
   Enhanced: "enhanced",
-  Ultra: "ultra",
+  Turbo: "turbo",
 } as const;
 export type GetProjectsProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsProjectsBuildMachineType
@@ -1423,8 +1437,11 @@ export type GetProjectsPermissions = {
   oauth2Application?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
   vercelRunExec?: Array<ACLAction> | undefined;
+  apiKey?: Array<ACLAction> | undefined;
+  apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
+  buildMachine?: Array<ACLAction> | undefined;
   productionAliasProtectionBypass?: Array<ACLAction> | undefined;
   connectConfigurationLink?: Array<ACLAction> | undefined;
   dataCacheNamespace?: Array<ACLAction> | undefined;
@@ -1446,6 +1463,8 @@ export type GetProjectsPermissions = {
   optionsAllowlist?: Array<ACLAction> | undefined;
   job?: Array<ACLAction> | undefined;
   observabilityData?: Array<ACLAction> | undefined;
+  onDemandBuild?: Array<ACLAction> | undefined;
+  onDemandConcurrency?: Array<ACLAction> | undefined;
   project?: Array<ACLAction> | undefined;
   projectFromV0?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
@@ -1744,7 +1763,7 @@ export const GetProjectsHandle = {
 } as const;
 export type GetProjectsHandle = ClosedEnum<typeof GetProjectsHandle>;
 
-export const GetProjectsProjectsAction = {
+export const GetProjectsAction = {
   Deny: "deny",
   Challenge: "challenge",
   Log: "log",
@@ -1752,9 +1771,7 @@ export const GetProjectsProjectsAction = {
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
-export type GetProjectsProjectsAction = ClosedEnum<
-  typeof GetProjectsProjectsAction
->;
+export type GetProjectsAction = ClosedEnum<typeof GetProjectsAction>;
 
 export const GetProjectsAlgo = {
   FixedWindow: "fixed_window",
@@ -1770,7 +1787,7 @@ export type GetProjectsErl = {
 };
 
 export type GetProjectsMitigate = {
-  action: GetProjectsProjectsAction;
+  action: GetProjectsAction;
   ruleId: string;
   ttl?: number | undefined;
   erl?: GetProjectsErl | undefined;
@@ -1786,16 +1803,52 @@ export type GetProjectsFirewallRoutes = {
   mitigate?: GetProjectsMitigate | undefined;
 };
 
-export const GetProjectsAction = {
+export const GetProjectsProjectsAction = {
   Deny: "deny",
   Challenge: "challenge",
   Log: "log",
 } as const;
-export type GetProjectsAction = ClosedEnum<typeof GetProjectsAction>;
+export type GetProjectsProjectsAction = ClosedEnum<
+  typeof GetProjectsProjectsAction
+>;
+
+export type GetProjectsBotFilter = {
+  active: boolean;
+  action?: GetProjectsProjectsAction | undefined;
+};
+
+export const GetProjectsProjectsResponseAction = {
+  Deny: "deny",
+  Challenge: "challenge",
+  Log: "log",
+} as const;
+export type GetProjectsProjectsResponseAction = ClosedEnum<
+  typeof GetProjectsProjectsResponseAction
+>;
+
+export type GetProjectsAiBots = {
+  active: boolean;
+  action?: GetProjectsProjectsResponseAction | undefined;
+};
+
+export const GetProjectsProjectsResponse200Action = {
+  Deny: "deny",
+  Challenge: "challenge",
+  Log: "log",
+} as const;
+export type GetProjectsProjectsResponse200Action = ClosedEnum<
+  typeof GetProjectsProjectsResponse200Action
+>;
+
+export type GetProjectsOwasp = {
+  active: boolean;
+  action?: GetProjectsProjectsResponse200Action | undefined;
+};
 
 export type GetProjectsManagedRules = {
-  active: boolean;
-  action?: GetProjectsAction | undefined;
+  botFilter: GetProjectsBotFilter;
+  aiBots: GetProjectsAiBots;
+  owasp: GetProjectsOwasp;
 };
 
 export type GetProjectsSecurity = {
@@ -1810,7 +1863,7 @@ export type GetProjectsSecurity = {
   ja3Enabled?: boolean | undefined;
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
-  managedRules?: { [k: string]: GetProjectsManagedRules } | null | undefined;
+  managedRules?: GetProjectsManagedRules | null | undefined;
 };
 
 /**
@@ -1826,7 +1879,10 @@ export const GetProjectsIssuerMode = {
 export type GetProjectsIssuerMode = ClosedEnum<typeof GetProjectsIssuerMode>;
 
 export type GetProjectsOidcTokenConfig = {
-  enabled: boolean;
+  /**
+   * Whether or not to generate OpenID Connect JSON Web Tokens.
+   */
+  enabled?: boolean | undefined;
   /**
    * - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
    */
@@ -1839,6 +1895,10 @@ export const GetProjectsTier = {
   Critical: "critical",
 } as const;
 export type GetProjectsTier = ClosedEnum<typeof GetProjectsTier>;
+
+export type GetProjectsFeatures = {
+  webAnalytics?: boolean | undefined;
+};
 
 export type GetProjectsProjects = {
   accountId: string;
@@ -1890,6 +1950,10 @@ export type GetProjectsProjects = {
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: GetProjectsResourceConfig;
+  /**
+   * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+   */
+  rollbackDescription?: GetProjectsRollbackDescription | undefined;
   rollingRelease?: GetProjectsRollingRelease | null | undefined;
   defaultResourceConfig: GetProjectsDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
@@ -1930,6 +1994,7 @@ export type GetProjectsProjects = {
   security?: GetProjectsSecurity | undefined;
   oidcTokenConfig?: GetProjectsOidcTokenConfig | undefined;
   tier?: GetProjectsTier | undefined;
+  features?: GetProjectsFeatures | undefined;
 };
 
 /**
@@ -6806,13 +6871,77 @@ export function getProjectsResourceConfigFromJSON(
 }
 
 /** @internal */
+export const GetProjectsRollbackDescription$inboundSchema: z.ZodType<
+  GetProjectsRollbackDescription,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  userId: z.string(),
+  username: z.string(),
+  description: z.string(),
+  createdAt: z.number(),
+});
+
+/** @internal */
+export type GetProjectsRollbackDescription$Outbound = {
+  userId: string;
+  username: string;
+  description: string;
+  createdAt: number;
+};
+
+/** @internal */
+export const GetProjectsRollbackDescription$outboundSchema: z.ZodType<
+  GetProjectsRollbackDescription$Outbound,
+  z.ZodTypeDef,
+  GetProjectsRollbackDescription
+> = z.object({
+  userId: z.string(),
+  username: z.string(),
+  description: z.string(),
+  createdAt: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsRollbackDescription$ {
+  /** @deprecated use `GetProjectsRollbackDescription$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsRollbackDescription$inboundSchema;
+  /** @deprecated use `GetProjectsRollbackDescription$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsRollbackDescription$outboundSchema;
+  /** @deprecated use `GetProjectsRollbackDescription$Outbound` instead. */
+  export type Outbound = GetProjectsRollbackDescription$Outbound;
+}
+
+export function getProjectsRollbackDescriptionToJSON(
+  getProjectsRollbackDescription: GetProjectsRollbackDescription,
+): string {
+  return JSON.stringify(
+    GetProjectsRollbackDescription$outboundSchema.parse(
+      getProjectsRollbackDescription,
+    ),
+  );
+}
+
+export function getProjectsRollbackDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsRollbackDescription, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsRollbackDescription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsRollbackDescription' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsStages$inboundSchema: z.ZodType<
   GetProjectsStages,
   z.ZodTypeDef,
   unknown
 > = z.object({
   targetPercentage: z.number(),
-  minutesToRelease: z.number().optional(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
 });
@@ -6820,7 +6949,6 @@ export const GetProjectsStages$inboundSchema: z.ZodType<
 /** @internal */
 export type GetProjectsStages$Outbound = {
   targetPercentage: number;
-  minutesToRelease?: number | undefined;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
 };
@@ -6832,7 +6960,6 @@ export const GetProjectsStages$outboundSchema: z.ZodType<
   GetProjectsStages
 > = z.object({
   targetPercentage: z.number(),
-  minutesToRelease: z.number().optional(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
 });
@@ -6875,7 +7002,6 @@ export const GetProjectsRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   target: z.string(),
-  minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => GetProjectsStages$inboundSchema)))
     .optional(),
   canaryResponseHeader: z.boolean().optional(),
@@ -6884,7 +7010,6 @@ export const GetProjectsRollingRelease$inboundSchema: z.ZodType<
 /** @internal */
 export type GetProjectsRollingRelease$Outbound = {
   target: string;
-  minutesToRelease?: number | undefined;
   stages?: Array<GetProjectsStages$Outbound> | null | undefined;
   canaryResponseHeader?: boolean | undefined;
 };
@@ -6896,7 +7021,6 @@ export const GetProjectsRollingRelease$outboundSchema: z.ZodType<
   GetProjectsRollingRelease
 > = z.object({
   target: z.string(),
-  minutesToRelease: z.number().optional(),
   stages: z.nullable(z.array(z.lazy(() => GetProjectsStages$outboundSchema)))
     .optional(),
   canaryResponseHeader: z.boolean().optional(),
@@ -8007,8 +8131,11 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
   oauth2Application: z.array(ACLAction$inboundSchema).optional(),
   vercelRun: z.array(ACLAction$inboundSchema).optional(),
   vercelRunExec: z.array(ACLAction$inboundSchema).optional(),
+  apiKey: z.array(ACLAction$inboundSchema).optional(),
+  apiKeyOwnedBySelf: z.array(ACLAction$inboundSchema).optional(),
   aliasProject: z.array(ACLAction$inboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
+  buildMachine: z.array(ACLAction$inboundSchema).optional(),
   productionAliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$inboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$inboundSchema).optional(),
@@ -8031,6 +8158,8 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
   optionsAllowlist: z.array(ACLAction$inboundSchema).optional(),
   job: z.array(ACLAction$inboundSchema).optional(),
   observabilityData: z.array(ACLAction$inboundSchema).optional(),
+  onDemandBuild: z.array(ACLAction$inboundSchema).optional(),
+  onDemandConcurrency: z.array(ACLAction$inboundSchema).optional(),
   project: z.array(ACLAction$inboundSchema).optional(),
   projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$inboundSchema).optional(),
@@ -8217,8 +8346,11 @@ export type GetProjectsPermissions$Outbound = {
   oauth2Application?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
   vercelRunExec?: Array<string> | undefined;
+  apiKey?: Array<string> | undefined;
+  apiKeyOwnedBySelf?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
+  buildMachine?: Array<string> | undefined;
   productionAliasProtectionBypass?: Array<string> | undefined;
   connectConfigurationLink?: Array<string> | undefined;
   dataCacheNamespace?: Array<string> | undefined;
@@ -8240,6 +8372,8 @@ export type GetProjectsPermissions$Outbound = {
   optionsAllowlist?: Array<string> | undefined;
   job?: Array<string> | undefined;
   observabilityData?: Array<string> | undefined;
+  onDemandBuild?: Array<string> | undefined;
+  onDemandConcurrency?: Array<string> | undefined;
   project?: Array<string> | undefined;
   projectFromV0?: Array<string> | undefined;
   projectAccessGroup?: Array<string> | undefined;
@@ -8428,8 +8562,11 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   oauth2Application: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
   vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
+  apiKey: z.array(ACLAction$outboundSchema).optional(),
+  apiKeyOwnedBySelf: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
+  buildMachine: z.array(ACLAction$outboundSchema).optional(),
   productionAliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$outboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
@@ -8452,6 +8589,8 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   optionsAllowlist: z.array(ACLAction$outboundSchema).optional(),
   job: z.array(ACLAction$outboundSchema).optional(),
   observabilityData: z.array(ACLAction$outboundSchema).optional(),
+  onDemandBuild: z.array(ACLAction$outboundSchema).optional(),
+  onDemandConcurrency: z.array(ACLAction$outboundSchema).optional(),
   project: z.array(ACLAction$outboundSchema).optional(),
   projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$outboundSchema).optional(),
@@ -10033,24 +10172,24 @@ export namespace GetProjectsHandle$ {
 }
 
 /** @internal */
-export const GetProjectsProjectsAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsAction
-> = z.nativeEnum(GetProjectsProjectsAction);
+export const GetProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsAction
+> = z.nativeEnum(GetProjectsAction);
 
 /** @internal */
-export const GetProjectsProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsProjectsAction
-> = GetProjectsProjectsAction$inboundSchema;
+export const GetProjectsAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsAction
+> = GetProjectsAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsProjectsAction$ {
-  /** @deprecated use `GetProjectsProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsAction$outboundSchema;
+export namespace GetProjectsAction$ {
+  /** @deprecated use `GetProjectsAction$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsAction$inboundSchema;
+  /** @deprecated use `GetProjectsAction$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsAction$outboundSchema;
 }
 
 /** @internal */
@@ -10139,7 +10278,7 @@ export const GetProjectsMitigate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: GetProjectsProjectsAction$inboundSchema,
+  action: GetProjectsAction$inboundSchema,
   rule_id: z.string(),
   ttl: z.number().optional(),
   erl: z.lazy(() => GetProjectsErl$inboundSchema).optional(),
@@ -10163,7 +10302,7 @@ export const GetProjectsMitigate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsMitigate
 > = z.object({
-  action: GetProjectsProjectsAction$outboundSchema,
+  action: GetProjectsAction$outboundSchema,
   ruleId: z.string(),
   ttl: z.number().optional(),
   erl: z.lazy(() => GetProjectsErl$outboundSchema).optional(),
@@ -10279,24 +10418,241 @@ export function getProjectsFirewallRoutesFromJSON(
 }
 
 /** @internal */
-export const GetProjectsAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsAction
-> = z.nativeEnum(GetProjectsAction);
+export const GetProjectsProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsAction
+> = z.nativeEnum(GetProjectsProjectsAction);
 
 /** @internal */
-export const GetProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsAction
-> = GetProjectsAction$inboundSchema;
+export const GetProjectsProjectsAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsAction
+> = GetProjectsProjectsAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectsAction$ {
-  /** @deprecated use `GetProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAction$outboundSchema;
+export namespace GetProjectsProjectsAction$ {
+  /** @deprecated use `GetProjectsProjectsAction$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsAction$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsAction$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsProjectsAction$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsBotFilter$inboundSchema: z.ZodType<
+  GetProjectsBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsAction$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetProjectsBotFilter$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetProjectsBotFilter$outboundSchema: z.ZodType<
+  GetProjectsBotFilter$Outbound,
+  z.ZodTypeDef,
+  GetProjectsBotFilter
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsAction$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsBotFilter$ {
+  /** @deprecated use `GetProjectsBotFilter$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsBotFilter$inboundSchema;
+  /** @deprecated use `GetProjectsBotFilter$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsBotFilter$outboundSchema;
+  /** @deprecated use `GetProjectsBotFilter$Outbound` instead. */
+  export type Outbound = GetProjectsBotFilter$Outbound;
+}
+
+export function getProjectsBotFilterToJSON(
+  getProjectsBotFilter: GetProjectsBotFilter,
+): string {
+  return JSON.stringify(
+    GetProjectsBotFilter$outboundSchema.parse(getProjectsBotFilter),
+  );
+}
+
+export function getProjectsBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBotFilter' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponseAction
+> = z.nativeEnum(GetProjectsProjectsResponseAction);
+
+/** @internal */
+export const GetProjectsProjectsResponseAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsResponseAction
+> = GetProjectsProjectsResponseAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProjectsResponseAction$ {
+  /** @deprecated use `GetProjectsProjectsResponseAction$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsProjectsResponseAction$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponseAction$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsResponseAction$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsAiBots$inboundSchema: z.ZodType<
+  GetProjectsAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsResponseAction$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetProjectsAiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetProjectsAiBots$outboundSchema: z.ZodType<
+  GetProjectsAiBots$Outbound,
+  z.ZodTypeDef,
+  GetProjectsAiBots
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsResponseAction$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsAiBots$ {
+  /** @deprecated use `GetProjectsAiBots$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsAiBots$inboundSchema;
+  /** @deprecated use `GetProjectsAiBots$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsAiBots$outboundSchema;
+  /** @deprecated use `GetProjectsAiBots$Outbound` instead. */
+  export type Outbound = GetProjectsAiBots$Outbound;
+}
+
+export function getProjectsAiBotsToJSON(
+  getProjectsAiBots: GetProjectsAiBots,
+): string {
+  return JSON.stringify(
+    GetProjectsAiBots$outboundSchema.parse(getProjectsAiBots),
+  );
+}
+
+export function getProjectsAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200Action> = z.nativeEnum(
+    GetProjectsProjectsResponse200Action,
+  );
+
+/** @internal */
+export const GetProjectsProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsProjectsResponse200Action> =
+    GetProjectsProjectsResponse200Action$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsProjectsResponse200Action$ {
+  /** @deprecated use `GetProjectsProjectsResponse200Action$inboundSchema` instead. */
+  export const inboundSchema =
+    GetProjectsProjectsResponse200Action$inboundSchema;
+  /** @deprecated use `GetProjectsProjectsResponse200Action$outboundSchema` instead. */
+  export const outboundSchema =
+    GetProjectsProjectsResponse200Action$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsOwasp$inboundSchema: z.ZodType<
+  GetProjectsOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsResponse200Action$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetProjectsOwasp$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const GetProjectsOwasp$outboundSchema: z.ZodType<
+  GetProjectsOwasp$Outbound,
+  z.ZodTypeDef,
+  GetProjectsOwasp
+> = z.object({
+  active: z.boolean(),
+  action: GetProjectsProjectsResponse200Action$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsOwasp$ {
+  /** @deprecated use `GetProjectsOwasp$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsOwasp$inboundSchema;
+  /** @deprecated use `GetProjectsOwasp$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsOwasp$outboundSchema;
+  /** @deprecated use `GetProjectsOwasp$Outbound` instead. */
+  export type Outbound = GetProjectsOwasp$Outbound;
+}
+
+export function getProjectsOwaspToJSON(
+  getProjectsOwasp: GetProjectsOwasp,
+): string {
+  return JSON.stringify(
+    GetProjectsOwasp$outboundSchema.parse(getProjectsOwasp),
+  );
+}
+
+export function getProjectsOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsOwasp' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10305,14 +10661,21 @@ export const GetProjectsManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
-  action: GetProjectsAction$inboundSchema.optional(),
+  bot_filter: z.lazy(() => GetProjectsBotFilter$inboundSchema),
+  ai_bots: z.lazy(() => GetProjectsAiBots$inboundSchema),
+  owasp: z.lazy(() => GetProjectsOwasp$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "bot_filter": "botFilter",
+    "ai_bots": "aiBots",
+  });
 });
 
 /** @internal */
 export type GetProjectsManagedRules$Outbound = {
-  active: boolean;
-  action?: string | undefined;
+  bot_filter: GetProjectsBotFilter$Outbound;
+  ai_bots: GetProjectsAiBots$Outbound;
+  owasp: GetProjectsOwasp$Outbound;
 };
 
 /** @internal */
@@ -10321,8 +10684,14 @@ export const GetProjectsManagedRules$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsManagedRules
 > = z.object({
-  active: z.boolean(),
-  action: GetProjectsAction$outboundSchema.optional(),
+  botFilter: z.lazy(() => GetProjectsBotFilter$outboundSchema),
+  aiBots: z.lazy(() => GetProjectsAiBots$outboundSchema),
+  owasp: z.lazy(() => GetProjectsOwasp$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    botFilter: "bot_filter",
+    aiBots: "ai_bots",
+  });
 });
 
 /**
@@ -10374,9 +10743,8 @@ export const GetProjectsSecurity$inboundSchema: z.ZodType<
   ja3Enabled: z.boolean().optional(),
   ja4Enabled: z.boolean().optional(),
   firewallBypassIps: z.array(z.string()).optional(),
-  managedRules: z.nullable(
-    z.record(z.lazy(() => GetProjectsManagedRules$inboundSchema)),
-  ).optional(),
+  managedRules: z.nullable(z.lazy(() => GetProjectsManagedRules$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
@@ -10392,10 +10760,7 @@ export type GetProjectsSecurity$Outbound = {
   ja3Enabled?: boolean | undefined;
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
-  managedRules?:
-    | { [k: string]: GetProjectsManagedRules$Outbound }
-    | null
-    | undefined;
+  managedRules?: GetProjectsManagedRules$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -10417,9 +10782,8 @@ export const GetProjectsSecurity$outboundSchema: z.ZodType<
   ja3Enabled: z.boolean().optional(),
   ja4Enabled: z.boolean().optional(),
   firewallBypassIps: z.array(z.string()).optional(),
-  managedRules: z.nullable(
-    z.record(z.lazy(() => GetProjectsManagedRules$outboundSchema)),
-  ).optional(),
+  managedRules: z.nullable(z.lazy(() => GetProjectsManagedRules$outboundSchema))
+    .optional(),
 });
 
 /**
@@ -10480,13 +10844,13 @@ export const GetProjectsOidcTokenConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
+  enabled: z.boolean().optional(),
   issuerMode: GetProjectsIssuerMode$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetProjectsOidcTokenConfig$Outbound = {
-  enabled: boolean;
+  enabled?: boolean | undefined;
   issuerMode?: string | undefined;
 };
 
@@ -10496,7 +10860,7 @@ export const GetProjectsOidcTokenConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsOidcTokenConfig
 > = z.object({
-  enabled: z.boolean(),
+  enabled: z.boolean().optional(),
   issuerMode: GetProjectsIssuerMode$outboundSchema.optional(),
 });
 
@@ -10550,6 +10914,60 @@ export namespace GetProjectsTier$ {
   export const inboundSchema = GetProjectsTier$inboundSchema;
   /** @deprecated use `GetProjectsTier$outboundSchema` instead. */
   export const outboundSchema = GetProjectsTier$outboundSchema;
+}
+
+/** @internal */
+export const GetProjectsFeatures$inboundSchema: z.ZodType<
+  GetProjectsFeatures,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  webAnalytics: z.boolean().optional(),
+});
+
+/** @internal */
+export type GetProjectsFeatures$Outbound = {
+  webAnalytics?: boolean | undefined;
+};
+
+/** @internal */
+export const GetProjectsFeatures$outboundSchema: z.ZodType<
+  GetProjectsFeatures$Outbound,
+  z.ZodTypeDef,
+  GetProjectsFeatures
+> = z.object({
+  webAnalytics: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsFeatures$ {
+  /** @deprecated use `GetProjectsFeatures$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsFeatures$inboundSchema;
+  /** @deprecated use `GetProjectsFeatures$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsFeatures$outboundSchema;
+  /** @deprecated use `GetProjectsFeatures$Outbound` instead. */
+  export type Outbound = GetProjectsFeatures$Outbound;
+}
+
+export function getProjectsFeaturesToJSON(
+  getProjectsFeatures: GetProjectsFeatures,
+): string {
+  return JSON.stringify(
+    GetProjectsFeatures$outboundSchema.parse(getProjectsFeatures),
+  );
+}
+
+export function getProjectsFeaturesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsFeatures, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsFeatures$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsFeatures' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10618,6 +11036,9 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: z.lazy(() => GetProjectsResourceConfig$inboundSchema),
+  rollbackDescription: z.lazy(() =>
+    GetProjectsRollbackDescription$inboundSchema
+  ).optional(),
   rollingRelease: z.nullable(
     z.lazy(() => GetProjectsRollingRelease$inboundSchema),
   ).optional(),
@@ -10675,6 +11096,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() => GetProjectsOidcTokenConfig$inboundSchema)
     .optional(),
   tier: GetProjectsTier$inboundSchema.optional(),
+  features: z.lazy(() => GetProjectsFeatures$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -10736,6 +11158,7 @@ export type GetProjectsProjects$Outbound = {
   productionDeploymentsFastLane?: boolean | undefined;
   publicSource?: boolean | null | undefined;
   resourceConfig: GetProjectsResourceConfig$Outbound;
+  rollbackDescription?: GetProjectsRollbackDescription$Outbound | undefined;
   rollingRelease?: GetProjectsRollingRelease$Outbound | null | undefined;
   defaultResourceConfig: GetProjectsDefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
@@ -10781,6 +11204,7 @@ export type GetProjectsProjects$Outbound = {
   security?: GetProjectsSecurity$Outbound | undefined;
   oidcTokenConfig?: GetProjectsOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  features?: GetProjectsFeatures$Outbound | undefined;
 };
 
 /** @internal */
@@ -10849,6 +11273,9 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
   productionDeploymentsFastLane: z.boolean().optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   resourceConfig: z.lazy(() => GetProjectsResourceConfig$outboundSchema),
+  rollbackDescription: z.lazy(() =>
+    GetProjectsRollbackDescription$outboundSchema
+  ).optional(),
   rollingRelease: z.nullable(
     z.lazy(() => GetProjectsRollingRelease$outboundSchema),
   ).optional(),
@@ -10906,6 +11333,7 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() => GetProjectsOidcTokenConfig$outboundSchema)
     .optional(),
   tier: GetProjectsTier$outboundSchema.optional(),
+  features: z.lazy(() => GetProjectsFeatures$outboundSchema).optional(),
 });
 
 /**

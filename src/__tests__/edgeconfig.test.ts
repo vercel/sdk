@@ -20,6 +20,16 @@ test("Edge Config Get Edge Configs", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual([
+    {
+      sizeInBytes: 2670.91,
+      itemCount: 9219.58,
+    },
+    {
+      sizeInBytes: 2670.91,
+      itemCount: 9219.58,
+    },
+  ]);
 });
 
 test("Edge Config Create Edge Config", async () => {
@@ -39,6 +49,10 @@ test("Edge Config Create Edge Config", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    sizeInBytes: 9972.06,
+    itemCount: 9113.46,
+  });
 });
 
 test("Edge Config Get Edge Config", async () => {
@@ -56,6 +70,10 @@ test("Edge Config Get Edge Config", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    sizeInBytes: 3866.06,
+    itemCount: 4529.9,
+  });
 });
 
 test("Edge Config Update Edge Config", async () => {
@@ -76,6 +94,10 @@ test("Edge Config Update Edge Config", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    sizeInBytes: 7731.03,
+    itemCount: 3563.67,
+  });
 });
 
 test("Edge Config Delete Edge Config", async () => {
@@ -109,6 +131,28 @@ test("Edge Config Get Edge Config Items", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    key: "<key>",
+    value: {
+      "key": {
+        "0": false,
+        "1": {
+          "key": {},
+          "key1": {
+            "key": "<value>",
+            "key1": {},
+          },
+          "key2": 7567.91,
+        },
+        "2": "<value>",
+      },
+      "key1": 4645.1,
+      "key2": {},
+    },
+    edgeConfigId: "<id>",
+    createdAt: 70.73,
+    updatedAt: 2714.73,
+  });
 });
 
 test("Edge Config Get Edge Config Schema", async () => {
@@ -126,6 +170,7 @@ test("Edge Config Get Edge Config Schema", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Edge Config Patch Edge Config Schema", async () => {
@@ -146,6 +191,7 @@ test("Edge Config Patch Edge Config Schema", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Edge Config Delete Edge Config Schema", async () => {
@@ -180,6 +226,24 @@ test("Edge Config Get Edge Config Item", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    key: "<key>",
+    value: {
+      "0": {
+        "key": false,
+        "key1": {},
+        "key2": {
+          "key": {},
+          "key1": "<value>",
+        },
+      },
+      "1": true,
+      "2": {},
+    },
+    edgeConfigId: "<id>",
+    createdAt: 8897.2,
+    updatedAt: 3673.26,
+  });
 });
 
 test("Edge Config Get Edge Config Tokens", async () => {
@@ -197,6 +261,13 @@ test("Edge Config Get Edge Config Tokens", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    token: "<value>",
+    label: "<value>",
+    id: "<id>",
+    edgeConfigId: "<id>",
+    createdAt: 7767.4,
+  });
 });
 
 test("Edge Config Delete Edge Config Tokens", async () => {
@@ -213,7 +284,11 @@ test("Edge Config Delete Edge Config Tokens", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      tokens: [],
+      tokens: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
     },
   });
 });
@@ -234,6 +309,13 @@ test("Edge Config Get Edge Config Token", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    token: "<value>",
+    label: "<value>",
+    id: "<id>",
+    edgeConfigId: "<id>",
+    createdAt: 2212.78,
+  });
 });
 
 test("Edge Config Create Edge Config Token", async () => {
@@ -254,6 +336,10 @@ test("Edge Config Create Edge Config Token", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    token: "<value>",
+    id: "<id>",
+  });
 });
 
 test("Edge Config Get Edge Config Backups", async () => {
@@ -271,4 +357,19 @@ test("Edge Config Get Edge Config Backups", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    backups: [
+      {
+        id: "<id>",
+        lastModified: 3645.28,
+      },
+      {
+        id: "<id>",
+        lastModified: 3645.28,
+      },
+    ],
+    pagination: {
+      hasNext: true,
+    },
+  });
 });

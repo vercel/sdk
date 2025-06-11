@@ -51,8 +51,12 @@ func testUploadFileUploadFile0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateUploadFileResponseBodyUploadFileResponseBody2(
-		operations.UploadFileResponseBody2{},
+	var respBody *operations.UploadFileResponseBody = types.Pointer(operations.CreateUploadFileResponseBodyUploadFileResponseBody1(
+		operations.UploadFileResponseBody1{
+			Urls: []string{
+				"example-upload.aws.com",
+			},
+		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

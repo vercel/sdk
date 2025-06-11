@@ -8,7 +8,7 @@ XSS Attack - Prevent injection of malicious scripts into trusted webpages.
 import { PutFirewallConfigXss } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigXss = {
-  active: false,
+  active: true,
   action: "deny",
 };
 ```

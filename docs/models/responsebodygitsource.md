@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSource1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 2047.24,
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.GetDeploymentGitSource2 = {
 ```typescript
 const value: models.GetDeploymentGitSource3 = {
   type: "github-custom-host",
-  host: "direct-backbone.biz",
-  repoId: 1649.73,
+  host: "querulous-papa.name",
+  repoId: "<id>",
 };
 ```
 
@@ -37,7 +37,7 @@ const value: models.GetDeploymentGitSource3 = {
 ```typescript
 const value: models.GetDeploymentGitSource4 = {
   type: "github-custom-host",
-  host: "natural-unblinking.net",
+  host: "outstanding-shoulder.org",
   org: "<value>",
   repo: "<value>",
 };
@@ -78,7 +78,7 @@ const value: models.GetDeploymentGitSource8 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://golden-essence.net/",
+  gitUrl: "https://puny-rawhide.net",
 };
 ```
 
@@ -89,7 +89,7 @@ const value: models.GetDeploymentGitSource9 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 2872,
+  repoId: 5739.74,
 };
 ```
 
@@ -98,10 +98,10 @@ const value: models.GetDeploymentGitSource9 = {
 ```typescript
 const value: models.GetDeploymentGitSource10 = {
   type: "github-custom-host",
-  host: "trustworthy-detective.net",
+  host: "tiny-velocity.com",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4912.83,
+  repoId: 5632.25,
 };
 ```
 
@@ -112,7 +112,7 @@ const value: models.GetDeploymentGitSource11 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 9975.05,
+  projectId: 5631.38,
 };
 ```
 

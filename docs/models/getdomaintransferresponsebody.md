@@ -7,9 +7,9 @@ import { GetDomainTransferResponseBody } from "@vercel/sdk/models/getdomaintrans
 
 let value: GetDomainTransferResponseBody = {
   transferable: false,
-  transferPolicy: "no-change",
+  transferPolicy: "not-supported",
   reason: "<value>",
-  status: "pending_registry",
+  status: "pending_admin",
 };
 ```
 

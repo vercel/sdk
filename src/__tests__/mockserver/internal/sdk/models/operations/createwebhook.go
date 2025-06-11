@@ -8,63 +8,80 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type Events string
+type CreateWebhookEventRequest string
 
 const (
-	EventsBudgetReached                                      Events = "budget.reached"
-	EventsBudgetReset                                        Events = "budget.reset"
-	EventsDomainCreated                                      Events = "domain.created"
-	EventsDeploymentCreated                                  Events = "deployment.created"
-	EventsDeploymentError                                    Events = "deployment.error"
-	EventsDeploymentCanceled                                 Events = "deployment.canceled"
-	EventsDeploymentSucceeded                                Events = "deployment.succeeded"
-	EventsDeploymentReady                                    Events = "deployment.ready"
-	EventsDeploymentCheckRerequested                         Events = "deployment.check-rerequested"
-	EventsDeploymentPromoted                                 Events = "deployment.promoted"
-	EventsDeploymentIntegrationActionStart                   Events = "deployment.integration.action.start"
-	EventsDeploymentIntegrationActionCancel                  Events = "deployment.integration.action.cancel"
-	EventsDeploymentIntegrationActionCleanup                 Events = "deployment.integration.action.cleanup"
-	EventsEdgeConfigCreated                                  Events = "edge-config.created"
-	EventsEdgeConfigDeleted                                  Events = "edge-config.deleted"
-	EventsEdgeConfigItemsUpdated                             Events = "edge-config.items.updated"
-	EventsFirewallAttack                                     Events = "firewall.attack"
-	EventsIntegrationConfigurationPermissionUpgraded         Events = "integration-configuration.permission-upgraded"
-	EventsIntegrationConfigurationRemoved                    Events = "integration-configuration.removed"
-	EventsIntegrationConfigurationScopeChangeConfirmed       Events = "integration-configuration.scope-change-confirmed"
-	EventsIntegrationResourceProjectConnected                Events = "integration-resource.project-connected"
-	EventsIntegrationResourceProjectDisconnected             Events = "integration-resource.project-disconnected"
-	EventsProjectCreated                                     Events = "project.created"
-	EventsProjectRemoved                                     Events = "project.removed"
-	EventsProjectDomainVerified                              Events = "project.domain.verified"
-	EventsProjectRollingReleaseStarted                       Events = "project.rolling-release.started"
-	EventsProjectRollingReleaseAborted                       Events = "project.rolling-release.aborted"
-	EventsProjectRollingReleaseCompleted                     Events = "project.rolling-release.completed"
-	EventsProjectRollingReleaseApproved                      Events = "project.rolling-release.approved"
-	EventsDeploymentChecksCompletedLegacy                    Events = "deployment-checks-completed"
-	EventsDeploymentReadyLegacy                              Events = "deployment-ready"
-	EventsDeploymentPreparedLegacy                           Events = "deployment-prepared"
-	EventsDeploymentErrorLegacy                              Events = "deployment-error"
-	EventsDeploymentCheckRerequestedLegacy                   Events = "deployment-check-rerequested"
-	EventsDeploymentCanceledLegacy                           Events = "deployment-canceled"
-	EventsProjectCreatedLegacy                               Events = "project-created"
-	EventsProjectRemovedLegacy                               Events = "project-removed"
-	EventsDomainCreatedLegacy                                Events = "domain-created"
-	EventsDeploymentLegacy                                   Events = "deployment"
-	EventsIntegrationConfigurationPermissionUpdatedLegacy    Events = "integration-configuration-permission-updated"
-	EventsIntegrationConfigurationRemovedLegacy              Events = "integration-configuration-removed"
-	EventsIntegrationConfigurationScopeChangeConfirmedLegacy Events = "integration-configuration-scope-change-confirmed"
-	EventsMarketplaceInvoiceCreated                          Events = "marketplace.invoice.created"
-	EventsMarketplaceInvoicePaid                             Events = "marketplace.invoice.paid"
-	EventsMarketplaceInvoiceNotpaid                          Events = "marketplace.invoice.notpaid"
-	EventsMarketplaceInvoiceRefunded                         Events = "marketplace.invoice.refunded"
-	EventsObservabilityAnomaly                               Events = "observability.anomaly"
-	EventsTestWebhook                                        Events = "test-webhook"
+	CreateWebhookEventRequestBudgetReached                                      CreateWebhookEventRequest = "budget.reached"
+	CreateWebhookEventRequestBudgetReset                                        CreateWebhookEventRequest = "budget.reset"
+	CreateWebhookEventRequestDomainCreated                                      CreateWebhookEventRequest = "domain.created"
+	CreateWebhookEventRequestDomainDnsRecordsChanged                            CreateWebhookEventRequest = "domain.dns.records.changed"
+	CreateWebhookEventRequestDomainTransferInStarted                            CreateWebhookEventRequest = "domain.transfer-in.started"
+	CreateWebhookEventRequestDomainTransferInCompleted                          CreateWebhookEventRequest = "domain.transfer-in.completed"
+	CreateWebhookEventRequestDomainTransferInFailed                             CreateWebhookEventRequest = "domain.transfer-in.failed"
+	CreateWebhookEventRequestDomainCertificateAdd                               CreateWebhookEventRequest = "domain.certificate.add"
+	CreateWebhookEventRequestDomainCertificateAddFailed                         CreateWebhookEventRequest = "domain.certificate.add.failed"
+	CreateWebhookEventRequestDomainCertificateRenew                             CreateWebhookEventRequest = "domain.certificate.renew"
+	CreateWebhookEventRequestDomainCertificateRenewFailed                       CreateWebhookEventRequest = "domain.certificate.renew.failed"
+	CreateWebhookEventRequestDomainCertificateDeleted                           CreateWebhookEventRequest = "domain.certificate.deleted"
+	CreateWebhookEventRequestDomainRenewal                                      CreateWebhookEventRequest = "domain.renewal"
+	CreateWebhookEventRequestDomainRenewalFailed                                CreateWebhookEventRequest = "domain.renewal.failed"
+	CreateWebhookEventRequestDomainAutoRenewChanged                             CreateWebhookEventRequest = "domain.auto-renew.changed"
+	CreateWebhookEventRequestDeploymentCreated                                  CreateWebhookEventRequest = "deployment.created"
+	CreateWebhookEventRequestDeploymentError                                    CreateWebhookEventRequest = "deployment.error"
+	CreateWebhookEventRequestDeploymentCanceled                                 CreateWebhookEventRequest = "deployment.canceled"
+	CreateWebhookEventRequestDeploymentSucceeded                                CreateWebhookEventRequest = "deployment.succeeded"
+	CreateWebhookEventRequestDeploymentReady                                    CreateWebhookEventRequest = "deployment.ready"
+	CreateWebhookEventRequestDeploymentCheckRerequested                         CreateWebhookEventRequest = "deployment.check-rerequested"
+	CreateWebhookEventRequestDeploymentPromoted                                 CreateWebhookEventRequest = "deployment.promoted"
+	CreateWebhookEventRequestDeploymentIntegrationActionStart                   CreateWebhookEventRequest = "deployment.integration.action.start"
+	CreateWebhookEventRequestDeploymentIntegrationActionCancel                  CreateWebhookEventRequest = "deployment.integration.action.cancel"
+	CreateWebhookEventRequestDeploymentIntegrationActionCleanup                 CreateWebhookEventRequest = "deployment.integration.action.cleanup"
+	CreateWebhookEventRequestEdgeConfigCreated                                  CreateWebhookEventRequest = "edge-config.created"
+	CreateWebhookEventRequestEdgeConfigDeleted                                  CreateWebhookEventRequest = "edge-config.deleted"
+	CreateWebhookEventRequestEdgeConfigItemsUpdated                             CreateWebhookEventRequest = "edge-config.items.updated"
+	CreateWebhookEventRequestFirewallAttack                                     CreateWebhookEventRequest = "firewall.attack"
+	CreateWebhookEventRequestIntegrationConfigurationPermissionUpgraded         CreateWebhookEventRequest = "integration-configuration.permission-upgraded"
+	CreateWebhookEventRequestIntegrationConfigurationRemoved                    CreateWebhookEventRequest = "integration-configuration.removed"
+	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventRequest = "integration-configuration.scope-change-confirmed"
+	CreateWebhookEventRequestIntegrationResourceProjectConnected                CreateWebhookEventRequest = "integration-resource.project-connected"
+	CreateWebhookEventRequestIntegrationResourceProjectDisconnected             CreateWebhookEventRequest = "integration-resource.project-disconnected"
+	CreateWebhookEventRequestProjectCreated                                     CreateWebhookEventRequest = "project.created"
+	CreateWebhookEventRequestProjectRemoved                                     CreateWebhookEventRequest = "project.removed"
+	CreateWebhookEventRequestProjectDomainCreated                               CreateWebhookEventRequest = "project.domain.created"
+	CreateWebhookEventRequestProjectDomainUpdated                               CreateWebhookEventRequest = "project.domain.updated"
+	CreateWebhookEventRequestProjectDomainDeleted                               CreateWebhookEventRequest = "project.domain.deleted"
+	CreateWebhookEventRequestProjectDomainVerified                              CreateWebhookEventRequest = "project.domain.verified"
+	CreateWebhookEventRequestProjectDomainUnverified                            CreateWebhookEventRequest = "project.domain.unverified"
+	CreateWebhookEventRequestProjectDomainMoved                                 CreateWebhookEventRequest = "project.domain.moved"
+	CreateWebhookEventRequestProjectRollingReleaseStarted                       CreateWebhookEventRequest = "project.rolling-release.started"
+	CreateWebhookEventRequestProjectRollingReleaseAborted                       CreateWebhookEventRequest = "project.rolling-release.aborted"
+	CreateWebhookEventRequestProjectRollingReleaseCompleted                     CreateWebhookEventRequest = "project.rolling-release.completed"
+	CreateWebhookEventRequestProjectRollingReleaseApproved                      CreateWebhookEventRequest = "project.rolling-release.approved"
+	CreateWebhookEventRequestDeploymentChecksCompleted                          CreateWebhookEventRequest = "deployment-checks-completed"
+	CreateWebhookEventRequestDeploymentReadyLegacy                              CreateWebhookEventRequest = "deployment-ready"
+	CreateWebhookEventRequestDeploymentPrepared                                 CreateWebhookEventRequest = "deployment-prepared"
+	CreateWebhookEventRequestDeploymentErrorLegacy                              CreateWebhookEventRequest = "deployment-error"
+	CreateWebhookEventRequestDeploymentCheckRerequestedLegacy                   CreateWebhookEventRequest = "deployment-check-rerequested"
+	CreateWebhookEventRequestDeploymentCanceledLegacy                           CreateWebhookEventRequest = "deployment-canceled"
+	CreateWebhookEventRequestProjectCreatedLegacy                               CreateWebhookEventRequest = "project-created"
+	CreateWebhookEventRequestProjectRemovedLegacy                               CreateWebhookEventRequest = "project-removed"
+	CreateWebhookEventRequestDomainCreatedLegacy                                CreateWebhookEventRequest = "domain-created"
+	CreateWebhookEventRequestDeployment                                         CreateWebhookEventRequest = "deployment"
+	CreateWebhookEventRequestIntegrationConfigurationPermissionUpdated          CreateWebhookEventRequest = "integration-configuration-permission-updated"
+	CreateWebhookEventRequestIntegrationConfigurationRemovedLegacy              CreateWebhookEventRequest = "integration-configuration-removed"
+	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmedLegacy CreateWebhookEventRequest = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventRequestMarketplaceInvoiceCreated                          CreateWebhookEventRequest = "marketplace.invoice.created"
+	CreateWebhookEventRequestMarketplaceInvoicePaid                             CreateWebhookEventRequest = "marketplace.invoice.paid"
+	CreateWebhookEventRequestMarketplaceInvoiceNotpaid                          CreateWebhookEventRequest = "marketplace.invoice.notpaid"
+	CreateWebhookEventRequestMarketplaceInvoiceRefunded                         CreateWebhookEventRequest = "marketplace.invoice.refunded"
+	CreateWebhookEventRequestObservabilityAnomaly                               CreateWebhookEventRequest = "observability.anomaly"
+	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
 )
 
-func (e Events) ToPointer() *Events {
+func (e CreateWebhookEventRequest) ToPointer() *CreateWebhookEventRequest {
 	return &e
 }
-func (e *Events) UnmarshalJSON(data []byte) error {
+func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -75,6 +92,30 @@ func (e *Events) UnmarshalJSON(data []byte) error {
 	case "budget.reset":
 		fallthrough
 	case "domain.created":
+		fallthrough
+	case "domain.dns.records.changed":
+		fallthrough
+	case "domain.transfer-in.started":
+		fallthrough
+	case "domain.transfer-in.completed":
+		fallthrough
+	case "domain.transfer-in.failed":
+		fallthrough
+	case "domain.certificate.add":
+		fallthrough
+	case "domain.certificate.add.failed":
+		fallthrough
+	case "domain.certificate.renew":
+		fallthrough
+	case "domain.certificate.renew.failed":
+		fallthrough
+	case "domain.certificate.deleted":
+		fallthrough
+	case "domain.renewal":
+		fallthrough
+	case "domain.renewal.failed":
+		fallthrough
+	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
 		fallthrough
@@ -118,7 +159,17 @@ func (e *Events) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.removed":
 		fallthrough
+	case "project.domain.created":
+		fallthrough
+	case "project.domain.updated":
+		fallthrough
+	case "project.domain.deleted":
+		fallthrough
 	case "project.domain.verified":
+		fallthrough
+	case "project.domain.unverified":
+		fallthrough
+	case "project.domain.moved":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -165,17 +216,17 @@ func (e *Events) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "test-webhook":
-		*e = Events(v)
+		*e = CreateWebhookEventRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Events: %v", v)
+		return fmt.Errorf("invalid value for CreateWebhookEventRequest: %v", v)
 	}
 }
 
 type CreateWebhookRequestBody struct {
-	URL        string   `json:"url"`
-	Events     []Events `json:"events"`
-	ProjectIds []string `json:"projectIds,omitempty"`
+	URL        string                      `json:"url"`
+	Events     []CreateWebhookEventRequest `json:"events"`
+	ProjectIds []string                    `json:"projectIds,omitempty"`
 }
 
 func (o *CreateWebhookRequestBody) GetURL() string {
@@ -185,9 +236,9 @@ func (o *CreateWebhookRequestBody) GetURL() string {
 	return o.URL
 }
 
-func (o *CreateWebhookRequestBody) GetEvents() []Events {
+func (o *CreateWebhookRequestBody) GetEvents() []CreateWebhookEventRequest {
 	if o == nil {
-		return []Events{}
+		return []CreateWebhookEventRequest{}
 	}
 	return o.Events
 }
@@ -228,64 +279,81 @@ func (o *CreateWebhookRequest) GetRequestBody() CreateWebhookRequestBody {
 	return o.RequestBody
 }
 
-// CreateWebhookEvents - The webhooks events
-type CreateWebhookEvents string
+// CreateWebhookEventResponse - The webhooks events
+type CreateWebhookEventResponse string
 
 const (
-	CreateWebhookEventsBudgetReached                                      CreateWebhookEvents = "budget.reached"
-	CreateWebhookEventsBudgetReset                                        CreateWebhookEvents = "budget.reset"
-	CreateWebhookEventsDomainCreated                                      CreateWebhookEvents = "domain.created"
-	CreateWebhookEventsDeploymentCreated                                  CreateWebhookEvents = "deployment.created"
-	CreateWebhookEventsDeploymentError                                    CreateWebhookEvents = "deployment.error"
-	CreateWebhookEventsDeploymentCanceled                                 CreateWebhookEvents = "deployment.canceled"
-	CreateWebhookEventsDeploymentSucceeded                                CreateWebhookEvents = "deployment.succeeded"
-	CreateWebhookEventsDeploymentReady                                    CreateWebhookEvents = "deployment.ready"
-	CreateWebhookEventsDeploymentCheckRerequested                         CreateWebhookEvents = "deployment.check-rerequested"
-	CreateWebhookEventsDeploymentPromoted                                 CreateWebhookEvents = "deployment.promoted"
-	CreateWebhookEventsDeploymentIntegrationActionStart                   CreateWebhookEvents = "deployment.integration.action.start"
-	CreateWebhookEventsDeploymentIntegrationActionCancel                  CreateWebhookEvents = "deployment.integration.action.cancel"
-	CreateWebhookEventsDeploymentIntegrationActionCleanup                 CreateWebhookEvents = "deployment.integration.action.cleanup"
-	CreateWebhookEventsEdgeConfigCreated                                  CreateWebhookEvents = "edge-config.created"
-	CreateWebhookEventsEdgeConfigDeleted                                  CreateWebhookEvents = "edge-config.deleted"
-	CreateWebhookEventsEdgeConfigItemsUpdated                             CreateWebhookEvents = "edge-config.items.updated"
-	CreateWebhookEventsFirewallAttack                                     CreateWebhookEvents = "firewall.attack"
-	CreateWebhookEventsIntegrationConfigurationPermissionUpgraded         CreateWebhookEvents = "integration-configuration.permission-upgraded"
-	CreateWebhookEventsIntegrationConfigurationRemoved                    CreateWebhookEvents = "integration-configuration.removed"
-	CreateWebhookEventsIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEvents = "integration-configuration.scope-change-confirmed"
-	CreateWebhookEventsIntegrationResourceProjectConnected                CreateWebhookEvents = "integration-resource.project-connected"
-	CreateWebhookEventsIntegrationResourceProjectDisconnected             CreateWebhookEvents = "integration-resource.project-disconnected"
-	CreateWebhookEventsProjectCreated                                     CreateWebhookEvents = "project.created"
-	CreateWebhookEventsProjectRemoved                                     CreateWebhookEvents = "project.removed"
-	CreateWebhookEventsProjectDomainVerified                              CreateWebhookEvents = "project.domain.verified"
-	CreateWebhookEventsProjectRollingReleaseStarted                       CreateWebhookEvents = "project.rolling-release.started"
-	CreateWebhookEventsProjectRollingReleaseAborted                       CreateWebhookEvents = "project.rolling-release.aborted"
-	CreateWebhookEventsProjectRollingReleaseCompleted                     CreateWebhookEvents = "project.rolling-release.completed"
-	CreateWebhookEventsProjectRollingReleaseApproved                      CreateWebhookEvents = "project.rolling-release.approved"
-	CreateWebhookEventsDeploymentChecksCompletedLegacy                    CreateWebhookEvents = "deployment-checks-completed"
-	CreateWebhookEventsDeploymentReadyLegacy                              CreateWebhookEvents = "deployment-ready"
-	CreateWebhookEventsDeploymentPreparedLegacy                           CreateWebhookEvents = "deployment-prepared"
-	CreateWebhookEventsDeploymentErrorLegacy                              CreateWebhookEvents = "deployment-error"
-	CreateWebhookEventsDeploymentCheckRerequestedLegacy                   CreateWebhookEvents = "deployment-check-rerequested"
-	CreateWebhookEventsDeploymentCanceledLegacy                           CreateWebhookEvents = "deployment-canceled"
-	CreateWebhookEventsProjectCreatedLegacy                               CreateWebhookEvents = "project-created"
-	CreateWebhookEventsProjectRemovedLegacy                               CreateWebhookEvents = "project-removed"
-	CreateWebhookEventsDomainCreatedLegacy                                CreateWebhookEvents = "domain-created"
-	CreateWebhookEventsDeploymentLegacy                                   CreateWebhookEvents = "deployment"
-	CreateWebhookEventsIntegrationConfigurationPermissionUpdatedLegacy    CreateWebhookEvents = "integration-configuration-permission-updated"
-	CreateWebhookEventsIntegrationConfigurationRemovedLegacy              CreateWebhookEvents = "integration-configuration-removed"
-	CreateWebhookEventsIntegrationConfigurationScopeChangeConfirmedLegacy CreateWebhookEvents = "integration-configuration-scope-change-confirmed"
-	CreateWebhookEventsMarketplaceInvoiceCreated                          CreateWebhookEvents = "marketplace.invoice.created"
-	CreateWebhookEventsMarketplaceInvoicePaid                             CreateWebhookEvents = "marketplace.invoice.paid"
-	CreateWebhookEventsMarketplaceInvoiceNotpaid                          CreateWebhookEvents = "marketplace.invoice.notpaid"
-	CreateWebhookEventsMarketplaceInvoiceRefunded                         CreateWebhookEvents = "marketplace.invoice.refunded"
-	CreateWebhookEventsObservabilityAnomaly                               CreateWebhookEvents = "observability.anomaly"
-	CreateWebhookEventsTestWebhook                                        CreateWebhookEvents = "test-webhook"
+	CreateWebhookEventResponseBudgetReached                                      CreateWebhookEventResponse = "budget.reached"
+	CreateWebhookEventResponseBudgetReset                                        CreateWebhookEventResponse = "budget.reset"
+	CreateWebhookEventResponseDomainCreated                                      CreateWebhookEventResponse = "domain.created"
+	CreateWebhookEventResponseDomainDnsRecordsChanged                            CreateWebhookEventResponse = "domain.dns.records.changed"
+	CreateWebhookEventResponseDomainTransferInStarted                            CreateWebhookEventResponse = "domain.transfer-in.started"
+	CreateWebhookEventResponseDomainTransferInCompleted                          CreateWebhookEventResponse = "domain.transfer-in.completed"
+	CreateWebhookEventResponseDomainTransferInFailed                             CreateWebhookEventResponse = "domain.transfer-in.failed"
+	CreateWebhookEventResponseDomainCertificateAdd                               CreateWebhookEventResponse = "domain.certificate.add"
+	CreateWebhookEventResponseDomainCertificateAddFailed                         CreateWebhookEventResponse = "domain.certificate.add.failed"
+	CreateWebhookEventResponseDomainCertificateRenew                             CreateWebhookEventResponse = "domain.certificate.renew"
+	CreateWebhookEventResponseDomainCertificateRenewFailed                       CreateWebhookEventResponse = "domain.certificate.renew.failed"
+	CreateWebhookEventResponseDomainCertificateDeleted                           CreateWebhookEventResponse = "domain.certificate.deleted"
+	CreateWebhookEventResponseDomainRenewal                                      CreateWebhookEventResponse = "domain.renewal"
+	CreateWebhookEventResponseDomainRenewalFailed                                CreateWebhookEventResponse = "domain.renewal.failed"
+	CreateWebhookEventResponseDomainAutoRenewChanged                             CreateWebhookEventResponse = "domain.auto-renew.changed"
+	CreateWebhookEventResponseDeploymentCreated                                  CreateWebhookEventResponse = "deployment.created"
+	CreateWebhookEventResponseDeploymentError                                    CreateWebhookEventResponse = "deployment.error"
+	CreateWebhookEventResponseDeploymentCanceled                                 CreateWebhookEventResponse = "deployment.canceled"
+	CreateWebhookEventResponseDeploymentSucceeded                                CreateWebhookEventResponse = "deployment.succeeded"
+	CreateWebhookEventResponseDeploymentReady                                    CreateWebhookEventResponse = "deployment.ready"
+	CreateWebhookEventResponseDeploymentCheckRerequested                         CreateWebhookEventResponse = "deployment.check-rerequested"
+	CreateWebhookEventResponseDeploymentPromoted                                 CreateWebhookEventResponse = "deployment.promoted"
+	CreateWebhookEventResponseDeploymentIntegrationActionStart                   CreateWebhookEventResponse = "deployment.integration.action.start"
+	CreateWebhookEventResponseDeploymentIntegrationActionCancel                  CreateWebhookEventResponse = "deployment.integration.action.cancel"
+	CreateWebhookEventResponseDeploymentIntegrationActionCleanup                 CreateWebhookEventResponse = "deployment.integration.action.cleanup"
+	CreateWebhookEventResponseEdgeConfigCreated                                  CreateWebhookEventResponse = "edge-config.created"
+	CreateWebhookEventResponseEdgeConfigDeleted                                  CreateWebhookEventResponse = "edge-config.deleted"
+	CreateWebhookEventResponseEdgeConfigItemsUpdated                             CreateWebhookEventResponse = "edge-config.items.updated"
+	CreateWebhookEventResponseFirewallAttack                                     CreateWebhookEventResponse = "firewall.attack"
+	CreateWebhookEventResponseIntegrationConfigurationPermissionUpgraded         CreateWebhookEventResponse = "integration-configuration.permission-upgraded"
+	CreateWebhookEventResponseIntegrationConfigurationRemoved                    CreateWebhookEventResponse = "integration-configuration.removed"
+	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventResponse = "integration-configuration.scope-change-confirmed"
+	CreateWebhookEventResponseIntegrationResourceProjectConnected                CreateWebhookEventResponse = "integration-resource.project-connected"
+	CreateWebhookEventResponseIntegrationResourceProjectDisconnected             CreateWebhookEventResponse = "integration-resource.project-disconnected"
+	CreateWebhookEventResponseProjectCreated                                     CreateWebhookEventResponse = "project.created"
+	CreateWebhookEventResponseProjectRemoved                                     CreateWebhookEventResponse = "project.removed"
+	CreateWebhookEventResponseProjectDomainCreated                               CreateWebhookEventResponse = "project.domain.created"
+	CreateWebhookEventResponseProjectDomainUpdated                               CreateWebhookEventResponse = "project.domain.updated"
+	CreateWebhookEventResponseProjectDomainDeleted                               CreateWebhookEventResponse = "project.domain.deleted"
+	CreateWebhookEventResponseProjectDomainVerified                              CreateWebhookEventResponse = "project.domain.verified"
+	CreateWebhookEventResponseProjectDomainUnverified                            CreateWebhookEventResponse = "project.domain.unverified"
+	CreateWebhookEventResponseProjectDomainMoved                                 CreateWebhookEventResponse = "project.domain.moved"
+	CreateWebhookEventResponseProjectRollingReleaseStarted                       CreateWebhookEventResponse = "project.rolling-release.started"
+	CreateWebhookEventResponseProjectRollingReleaseAborted                       CreateWebhookEventResponse = "project.rolling-release.aborted"
+	CreateWebhookEventResponseProjectRollingReleaseCompleted                     CreateWebhookEventResponse = "project.rolling-release.completed"
+	CreateWebhookEventResponseProjectRollingReleaseApproved                      CreateWebhookEventResponse = "project.rolling-release.approved"
+	CreateWebhookEventResponseDeploymentChecksCompleted                          CreateWebhookEventResponse = "deployment-checks-completed"
+	CreateWebhookEventResponseDeploymentReadyLegacy                              CreateWebhookEventResponse = "deployment-ready"
+	CreateWebhookEventResponseDeploymentPrepared                                 CreateWebhookEventResponse = "deployment-prepared"
+	CreateWebhookEventResponseDeploymentErrorLegacy                              CreateWebhookEventResponse = "deployment-error"
+	CreateWebhookEventResponseDeploymentCheckRerequestedLegacy                   CreateWebhookEventResponse = "deployment-check-rerequested"
+	CreateWebhookEventResponseDeploymentCanceledLegacy                           CreateWebhookEventResponse = "deployment-canceled"
+	CreateWebhookEventResponseProjectCreatedLegacy                               CreateWebhookEventResponse = "project-created"
+	CreateWebhookEventResponseProjectRemovedLegacy                               CreateWebhookEventResponse = "project-removed"
+	CreateWebhookEventResponseDomainCreatedLegacy                                CreateWebhookEventResponse = "domain-created"
+	CreateWebhookEventResponseDeployment                                         CreateWebhookEventResponse = "deployment"
+	CreateWebhookEventResponseIntegrationConfigurationPermissionUpdated          CreateWebhookEventResponse = "integration-configuration-permission-updated"
+	CreateWebhookEventResponseIntegrationConfigurationRemovedLegacy              CreateWebhookEventResponse = "integration-configuration-removed"
+	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmedLegacy CreateWebhookEventResponse = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventResponseMarketplaceInvoiceCreated                          CreateWebhookEventResponse = "marketplace.invoice.created"
+	CreateWebhookEventResponseMarketplaceInvoicePaid                             CreateWebhookEventResponse = "marketplace.invoice.paid"
+	CreateWebhookEventResponseMarketplaceInvoiceNotpaid                          CreateWebhookEventResponse = "marketplace.invoice.notpaid"
+	CreateWebhookEventResponseMarketplaceInvoiceRefunded                         CreateWebhookEventResponse = "marketplace.invoice.refunded"
+	CreateWebhookEventResponseObservabilityAnomaly                               CreateWebhookEventResponse = "observability.anomaly"
+	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
 )
 
-func (e CreateWebhookEvents) ToPointer() *CreateWebhookEvents {
+func (e CreateWebhookEventResponse) ToPointer() *CreateWebhookEventResponse {
 	return &e
 }
-func (e *CreateWebhookEvents) UnmarshalJSON(data []byte) error {
+func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -296,6 +364,30 @@ func (e *CreateWebhookEvents) UnmarshalJSON(data []byte) error {
 	case "budget.reset":
 		fallthrough
 	case "domain.created":
+		fallthrough
+	case "domain.dns.records.changed":
+		fallthrough
+	case "domain.transfer-in.started":
+		fallthrough
+	case "domain.transfer-in.completed":
+		fallthrough
+	case "domain.transfer-in.failed":
+		fallthrough
+	case "domain.certificate.add":
+		fallthrough
+	case "domain.certificate.add.failed":
+		fallthrough
+	case "domain.certificate.renew":
+		fallthrough
+	case "domain.certificate.renew.failed":
+		fallthrough
+	case "domain.certificate.deleted":
+		fallthrough
+	case "domain.renewal":
+		fallthrough
+	case "domain.renewal.failed":
+		fallthrough
+	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
 		fallthrough
@@ -339,7 +431,17 @@ func (e *CreateWebhookEvents) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.removed":
 		fallthrough
+	case "project.domain.created":
+		fallthrough
+	case "project.domain.updated":
+		fallthrough
+	case "project.domain.deleted":
+		fallthrough
 	case "project.domain.verified":
+		fallthrough
+	case "project.domain.unverified":
+		fallthrough
+	case "project.domain.moved":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -386,10 +488,10 @@ func (e *CreateWebhookEvents) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "test-webhook":
-		*e = CreateWebhookEvents(v)
+		*e = CreateWebhookEventResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateWebhookEvents: %v", v)
+		return fmt.Errorf("invalid value for CreateWebhookEventResponse: %v", v)
 	}
 }
 
@@ -397,7 +499,7 @@ type CreateWebhookResponseBody struct {
 	// The webhook secret used to sign the payload
 	Secret string `json:"secret"`
 	// The webhooks events
-	Events []CreateWebhookEvents `json:"events"`
+	Events []CreateWebhookEventResponse `json:"events"`
 	// The webhook id
 	ID string `json:"id"`
 	// A string with the URL of the webhook
@@ -419,9 +521,9 @@ func (o *CreateWebhookResponseBody) GetSecret() string {
 	return o.Secret
 }
 
-func (o *CreateWebhookResponseBody) GetEvents() []CreateWebhookEvents {
+func (o *CreateWebhookResponseBody) GetEvents() []CreateWebhookEventResponse {
 	if o == nil {
-		return []CreateWebhookEvents{}
+		return []CreateWebhookEventResponse{}
 	}
 	return o.Events
 }

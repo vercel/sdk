@@ -73,150 +73,150 @@ func (e *ImportResourceType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Details struct {
+type Detail struct {
 	Label string  `json:"label"`
 	Value *string `json:"value,omitempty"`
 }
 
-func (o *Details) GetLabel() string {
+func (o *Detail) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *Details) GetValue() *string {
+func (o *Detail) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type HeightlightedDetails struct {
+type HeightlightedDetail struct {
 	Label string  `json:"label"`
 	Value *string `json:"value,omitempty"`
 }
 
-func (o *HeightlightedDetails) GetLabel() string {
+func (o *HeightlightedDetail) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *HeightlightedDetails) GetValue() *string {
+func (o *HeightlightedDetail) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type BillingPlan struct {
-	ID                    string                 `json:"id"`
-	Type                  ImportResourceType     `json:"type"`
-	Name                  string                 `json:"name"`
-	Description           *string                `json:"description,omitempty"`
-	PaymentMethodRequired *bool                  `json:"paymentMethodRequired,omitempty"`
-	Cost                  *string                `json:"cost,omitempty"`
-	Details               []Details              `json:"details,omitempty"`
-	HeightlightedDetails  []HeightlightedDetails `json:"heightlightedDetails,omitempty"`
-	EffectiveDate         *string                `json:"effectiveDate,omitempty"`
-	AdditionalProperties  map[string]any         `additionalProperties:"true" json:"-"`
+type ImportResourceBillingPlan struct {
+	ID                    string                `json:"id"`
+	Type                  ImportResourceType    `json:"type"`
+	Name                  string                `json:"name"`
+	Description           *string               `json:"description,omitempty"`
+	PaymentMethodRequired *bool                 `json:"paymentMethodRequired,omitempty"`
+	Cost                  *string               `json:"cost,omitempty"`
+	Details               []Detail              `json:"details,omitempty"`
+	HeightlightedDetails  []HeightlightedDetail `json:"heightlightedDetails,omitempty"`
+	EffectiveDate         *string               `json:"effectiveDate,omitempty"`
+	AdditionalProperties  map[string]any        `additionalProperties:"true" json:"-"`
 }
 
-func (b BillingPlan) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
+func (i ImportResourceBillingPlan) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
 }
 
-func (b *BillingPlan) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+func (i *ImportResourceBillingPlan) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BillingPlan) GetID() string {
+func (o *ImportResourceBillingPlan) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *BillingPlan) GetType() ImportResourceType {
+func (o *ImportResourceBillingPlan) GetType() ImportResourceType {
 	if o == nil {
 		return ImportResourceType("")
 	}
 	return o.Type
 }
 
-func (o *BillingPlan) GetName() string {
+func (o *ImportResourceBillingPlan) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *BillingPlan) GetDescription() *string {
+func (o *ImportResourceBillingPlan) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *BillingPlan) GetPaymentMethodRequired() *bool {
+func (o *ImportResourceBillingPlan) GetPaymentMethodRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.PaymentMethodRequired
 }
 
-func (o *BillingPlan) GetCost() *string {
+func (o *ImportResourceBillingPlan) GetCost() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Cost
 }
 
-func (o *BillingPlan) GetDetails() []Details {
+func (o *ImportResourceBillingPlan) GetDetails() []Detail {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *BillingPlan) GetHeightlightedDetails() []HeightlightedDetails {
+func (o *ImportResourceBillingPlan) GetHeightlightedDetails() []HeightlightedDetail {
 	if o == nil {
 		return nil
 	}
 	return o.HeightlightedDetails
 }
 
-func (o *BillingPlan) GetEffectiveDate() *string {
+func (o *ImportResourceBillingPlan) GetEffectiveDate() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EffectiveDate
 }
 
-func (o *BillingPlan) GetAdditionalProperties() map[string]any {
+func (o *ImportResourceBillingPlan) GetAdditionalProperties() map[string]any {
 	if o == nil {
 		return nil
 	}
 	return o.AdditionalProperties
 }
 
-type Level string
+type ImportResourceLevel string
 
 const (
-	LevelInfo  Level = "info"
-	LevelWarn  Level = "warn"
-	LevelError Level = "error"
+	ImportResourceLevelInfo  ImportResourceLevel = "info"
+	ImportResourceLevelWarn  ImportResourceLevel = "warn"
+	ImportResourceLevelError ImportResourceLevel = "error"
 )
 
-func (e Level) ToPointer() *Level {
+func (e ImportResourceLevel) ToPointer() *ImportResourceLevel {
 	return &e
 }
-func (e *Level) UnmarshalJSON(data []byte) error {
+func (e *ImportResourceLevel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -227,23 +227,23 @@ func (e *Level) UnmarshalJSON(data []byte) error {
 	case "warn":
 		fallthrough
 	case "error":
-		*e = Level(v)
+		*e = ImportResourceLevel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Level: %v", v)
+		return fmt.Errorf("invalid value for ImportResourceLevel: %v", v)
 	}
 }
 
 type Notification struct {
-	Level   Level   `json:"level"`
-	Title   string  `json:"title"`
-	Message *string `json:"message,omitempty"`
-	Href    *string `json:"href,omitempty"`
+	Level   ImportResourceLevel `json:"level"`
+	Title   string              `json:"title"`
+	Message *string             `json:"message,omitempty"`
+	Href    *string             `json:"href,omitempty"`
 }
 
-func (o *Notification) GetLevel() Level {
+func (o *Notification) GetLevel() ImportResourceLevel {
 	if o == nil {
-		return Level("")
+		return ImportResourceLevel("")
 	}
 	return o.Level
 }
@@ -300,7 +300,7 @@ func (o *ImportResourceEnvironmentOverrides) GetProduction() *string {
 	return o.Production
 }
 
-type ImportResourceSecrets struct {
+type ImportResourceSecret struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
@@ -308,28 +308,28 @@ type ImportResourceSecrets struct {
 	EnvironmentOverrides *ImportResourceEnvironmentOverrides `json:"environmentOverrides,omitempty"`
 }
 
-func (o *ImportResourceSecrets) GetName() string {
+func (o *ImportResourceSecret) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ImportResourceSecrets) GetValue() string {
+func (o *ImportResourceSecret) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *ImportResourceSecrets) GetPrefix() *string {
+func (o *ImportResourceSecret) GetPrefix() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Prefix
 }
 
-func (o *ImportResourceSecrets) GetEnvironmentOverrides() *ImportResourceEnvironmentOverrides {
+func (o *ImportResourceSecret) GetEnvironmentOverrides() *ImportResourceEnvironmentOverrides {
 	if o == nil {
 		return nil
 	}
@@ -337,13 +337,13 @@ func (o *ImportResourceSecrets) GetEnvironmentOverrides() *ImportResourceEnviron
 }
 
 type ImportResourceRequestBody struct {
-	ProductID    string                  `json:"productId"`
-	Name         string                  `json:"name"`
-	Status       ImportResourceStatus    `json:"status"`
-	Metadata     map[string]any          `json:"metadata,omitempty"`
-	BillingPlan  *BillingPlan            `json:"billingPlan,omitempty"`
-	Notification *Notification           `json:"notification,omitempty"`
-	Secrets      []ImportResourceSecrets `json:"secrets,omitempty"`
+	ProductID    string                     `json:"productId"`
+	Name         string                     `json:"name"`
+	Status       ImportResourceStatus       `json:"status"`
+	Metadata     map[string]any             `json:"metadata,omitempty"`
+	BillingPlan  *ImportResourceBillingPlan `json:"billingPlan,omitempty"`
+	Notification *Notification              `json:"notification,omitempty"`
+	Secrets      []ImportResourceSecret     `json:"secrets,omitempty"`
 }
 
 func (o *ImportResourceRequestBody) GetProductID() string {
@@ -374,7 +374,7 @@ func (o *ImportResourceRequestBody) GetMetadata() map[string]any {
 	return o.Metadata
 }
 
-func (o *ImportResourceRequestBody) GetBillingPlan() *BillingPlan {
+func (o *ImportResourceRequestBody) GetBillingPlan() *ImportResourceBillingPlan {
 	if o == nil {
 		return nil
 	}
@@ -388,7 +388,7 @@ func (o *ImportResourceRequestBody) GetNotification() *Notification {
 	return o.Notification
 }
 
-func (o *ImportResourceRequestBody) GetSecrets() []ImportResourceSecrets {
+func (o *ImportResourceRequestBody) GetSecrets() []ImportResourceSecret {
 	if o == nil {
 		return nil
 	}

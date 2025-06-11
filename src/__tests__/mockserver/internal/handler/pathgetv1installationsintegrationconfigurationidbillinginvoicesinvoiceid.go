@@ -45,20 +45,20 @@ func testGetInvoiceGetInvoice0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetInvoiceResponseBody{
+	var respBody *operations.GetInvoiceResponseBody = &operations.GetInvoiceResponseBody{
 		InvoiceID:   "<id>",
-		State:       operations.StateInvoiced,
+		State:       operations.GetInvoiceStateInvoiced,
 		InvoiceDate: "<value>",
 		Period: operations.GetInvoicePeriod{
 			Start: "<value>",
 			End:   "<value>",
 		},
-		Items: []operations.GetInvoiceItems{
-			operations.GetInvoiceItems{
+		Items: []operations.GetInvoiceItem{
+			operations.GetInvoiceItem{
 				BillingPlanID: "<id>",
 				Name:          "<value>",
-				Price:         "813.89",
-				Quantity:      2100.54,
+				Price:         "354.65",
+				Quantity:      4602.57,
 				Units:         "<value>",
 				Total:         "<value>",
 			},

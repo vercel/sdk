@@ -46,7 +46,7 @@ func testGetAliasGetAlias0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetAliasResponseBody{
+	var respBody *operations.GetAliasResponseBody = &operations.GetAliasResponseBody{
 		Alias:     "my-alias.vercel.app",
 		Created:   types.MustTimeFromString("2017-04-26T23:00:34.232Z"),
 		CreatedAt: types.Float64(1540095775941),
@@ -56,7 +56,7 @@ func testGetAliasGetAlias0(w http.ResponseWriter, req *http.Request) {
 			Username: "john-doe",
 		},
 		DeletedAt: types.Float64(1540095775941),
-		Deployment: &operations.Deployment{
+		Deployment: &operations.GetAliasDeployment{
 			ID:   "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
 			URL:  "my-instant-deployment-3ij3cxz9qr.now.sh",
 			Meta: types.String("{}"),

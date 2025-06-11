@@ -10,7 +10,7 @@ import { CreateEdgeConfigTransfer } from "@vercel/sdk/models/createedgeconfigop.
 let value: CreateEdgeConfigTransfer = {
   fromAccountId: "<id>",
   startedAt: 1732.09,
-  doneAt: 2301.06,
+  doneAt: 9570.05,
 };
 ```
 

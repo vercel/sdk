@@ -13,12 +13,12 @@ let value: ThirtySix = {
   },
   job: {
     deployHook: {
-      createdAt: 9630.08,
+      createdAt: 3393.49,
       id: "<id>",
       name: "<value>",
       ref: "<value>",
     },
-    state: "New Hampshire",
+    state: "Wisconsin",
   },
 };
 ```

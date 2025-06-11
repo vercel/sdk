@@ -6,7 +6,7 @@
 import { UpdateCheckLCP } from "@vercel/sdk/models/updatecheckop.js";
 
 let value: UpdateCheckLCP = {
-  value: 537.68,
+  value: null,
   source: "web-vitals",
 };
 ```

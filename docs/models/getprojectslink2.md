@@ -6,14 +6,7 @@
 import { GetProjectsLink2 } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsLink2 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://favorite-recovery.com/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

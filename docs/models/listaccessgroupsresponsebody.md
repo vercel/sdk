@@ -15,7 +15,7 @@ const value: models.ListAccessGroupsResponseBody1 = {};
 const value: models.ListAccessGroupsResponseBody2 = {
   accessGroups: [
     {
-      isDsyncManaged: false,
+      isDsyncManaged: true,
       name: "my-access-group",
       createdAt: "1588720733602",
       teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -33,7 +33,7 @@ const value: models.ListAccessGroupsResponseBody2 = {
     },
   ],
   pagination: {
-    count: 6573.69,
+    count: 2726.07,
     next: "<value>",
   },
 };

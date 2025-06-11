@@ -10,40 +10,40 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type RequestBodyScope string
+type OverrideScope string
 
 const (
-	RequestBodyScopeAliasProtectionOverride RequestBodyScope = "alias-protection-override"
+	OverrideScopeAliasProtectionOverride OverrideScope = "alias-protection-override"
 )
 
-func (e RequestBodyScope) ToPointer() *RequestBodyScope {
+func (e OverrideScope) ToPointer() *OverrideScope {
 	return &e
 }
-func (e *RequestBodyScope) UnmarshalJSON(data []byte) error {
+func (e *OverrideScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "alias-protection-override":
-		*e = RequestBodyScope(v)
+		*e = OverrideScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestBodyScope: %v", v)
+		return fmt.Errorf("invalid value for OverrideScope: %v", v)
 	}
 }
 
-type PatchURLProtectionBypassRequestBodyAction string
+type PatchURLProtectionBypassAction string
 
 const (
-	PatchURLProtectionBypassRequestBodyActionCreate PatchURLProtectionBypassRequestBodyAction = "create"
-	PatchURLProtectionBypassRequestBodyActionRevoke PatchURLProtectionBypassRequestBodyAction = "revoke"
+	PatchURLProtectionBypassActionCreate PatchURLProtectionBypassAction = "create"
+	PatchURLProtectionBypassActionRevoke PatchURLProtectionBypassAction = "revoke"
 )
 
-func (e PatchURLProtectionBypassRequestBodyAction) ToPointer() *PatchURLProtectionBypassRequestBodyAction {
+func (e PatchURLProtectionBypassAction) ToPointer() *PatchURLProtectionBypassAction {
 	return &e
 }
-func (e *PatchURLProtectionBypassRequestBodyAction) UnmarshalJSON(data []byte) error {
+func (e *PatchURLProtectionBypassAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -52,28 +52,28 @@ func (e *PatchURLProtectionBypassRequestBodyAction) UnmarshalJSON(data []byte) e
 	case "create":
 		fallthrough
 	case "revoke":
-		*e = PatchURLProtectionBypassRequestBodyAction(v)
+		*e = PatchURLProtectionBypassAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PatchURLProtectionBypassRequestBodyAction: %v", v)
+		return fmt.Errorf("invalid value for PatchURLProtectionBypassAction: %v", v)
 	}
 }
 
 type Override struct {
-	Scope  RequestBodyScope                          `json:"scope"`
-	Action PatchURLProtectionBypassRequestBodyAction `json:"action"`
+	Scope  OverrideScope                  `json:"scope"`
+	Action PatchURLProtectionBypassAction `json:"action"`
 }
 
-func (o *Override) GetScope() RequestBodyScope {
+func (o *Override) GetScope() OverrideScope {
 	if o == nil {
-		return RequestBodyScope("")
+		return OverrideScope("")
 	}
 	return o.Scope
 }
 
-func (o *Override) GetAction() PatchURLProtectionBypassRequestBodyAction {
+func (o *Override) GetAction() PatchURLProtectionBypassAction {
 	if o == nil {
-		return PatchURLProtectionBypassRequestBodyAction("")
+		return PatchURLProtectionBypassAction("")
 	}
 	return o.Action
 }
@@ -89,18 +89,18 @@ func (o *PatchURLProtectionBypassRequestBody3) GetOverride() Override {
 	return o.Override
 }
 
-// ScopeAccess - Invitation status for the user scoped bypass.
-type ScopeAccess string
+// PatchURLProtectionBypassAccess2 - Invitation status for the user scoped bypass.
+type PatchURLProtectionBypassAccess2 string
 
 const (
-	ScopeAccessDenied  ScopeAccess = "denied"
-	ScopeAccessGranted ScopeAccess = "granted"
+	PatchURLProtectionBypassAccess2Denied  PatchURLProtectionBypassAccess2 = "denied"
+	PatchURLProtectionBypassAccess2Granted PatchURLProtectionBypassAccess2 = "granted"
 )
 
-func (e ScopeAccess) ToPointer() *ScopeAccess {
+func (e PatchURLProtectionBypassAccess2) ToPointer() *PatchURLProtectionBypassAccess2 {
 	return &e
 }
-func (e *ScopeAccess) UnmarshalJSON(data []byte) error {
+func (e *PatchURLProtectionBypassAccess2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -109,55 +109,55 @@ func (e *ScopeAccess) UnmarshalJSON(data []byte) error {
 	case "denied":
 		fallthrough
 	case "granted":
-		*e = ScopeAccess(v)
+		*e = PatchURLProtectionBypassAccess2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ScopeAccess: %v", v)
+		return fmt.Errorf("invalid value for PatchURLProtectionBypassAccess2: %v", v)
 	}
 }
 
-type Scope2 struct {
+type PatchURLProtectionBypassScope2 struct {
 	// Specified user id for the scoped bypass.
 	UserID *string `json:"userId,omitempty"`
 	// Specified email for the scoped bypass.
 	Email string `json:"email"`
 	// Invitation status for the user scoped bypass.
-	Access ScopeAccess `json:"access"`
+	Access PatchURLProtectionBypassAccess2 `json:"access"`
 }
 
-func (o *Scope2) GetUserID() *string {
+func (o *PatchURLProtectionBypassScope2) GetUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UserID
 }
 
-func (o *Scope2) GetEmail() string {
+func (o *PatchURLProtectionBypassScope2) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *Scope2) GetAccess() ScopeAccess {
+func (o *PatchURLProtectionBypassScope2) GetAccess() PatchURLProtectionBypassAccess2 {
 	if o == nil {
-		return ScopeAccess("")
+		return PatchURLProtectionBypassAccess2("")
 	}
 	return o.Access
 }
 
-// Access - Invitation status for the user scoped bypass.
-type Access string
+// PatchURLProtectionBypassAccess1 - Invitation status for the user scoped bypass.
+type PatchURLProtectionBypassAccess1 string
 
 const (
-	AccessDenied  Access = "denied"
-	AccessGranted Access = "granted"
+	PatchURLProtectionBypassAccess1Denied  PatchURLProtectionBypassAccess1 = "denied"
+	PatchURLProtectionBypassAccess1Granted PatchURLProtectionBypassAccess1 = "granted"
 )
 
-func (e Access) ToPointer() *Access {
+func (e PatchURLProtectionBypassAccess1) ToPointer() *PatchURLProtectionBypassAccess1 {
 	return &e
 }
-func (e *Access) UnmarshalJSON(data []byte) error {
+func (e *PatchURLProtectionBypassAccess1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -166,39 +166,39 @@ func (e *Access) UnmarshalJSON(data []byte) error {
 	case "denied":
 		fallthrough
 	case "granted":
-		*e = Access(v)
+		*e = PatchURLProtectionBypassAccess1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Access: %v", v)
+		return fmt.Errorf("invalid value for PatchURLProtectionBypassAccess1: %v", v)
 	}
 }
 
-type Scope1 struct {
+type PatchURLProtectionBypassScope1 struct {
 	// Specified user id for the scoped bypass.
 	UserID string `json:"userId"`
 	// Specified email for the scoped bypass.
 	Email *string `json:"email,omitempty"`
 	// Invitation status for the user scoped bypass.
-	Access Access `json:"access"`
+	Access PatchURLProtectionBypassAccess1 `json:"access"`
 }
 
-func (o *Scope1) GetUserID() string {
+func (o *PatchURLProtectionBypassScope1) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
 }
 
-func (o *Scope1) GetEmail() *string {
+func (o *PatchURLProtectionBypassScope1) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *Scope1) GetAccess() Access {
+func (o *PatchURLProtectionBypassScope1) GetAccess() PatchURLProtectionBypassAccess1 {
 	if o == nil {
-		return Access("")
+		return PatchURLProtectionBypassAccess1("")
 	}
 	return o.Access
 }
@@ -206,49 +206,49 @@ func (o *Scope1) GetAccess() Access {
 type ScopeType string
 
 const (
-	ScopeTypeScope1 ScopeType = "scope_1"
-	ScopeTypeScope2 ScopeType = "scope_2"
+	ScopeTypePatchURLProtectionBypassScope1 ScopeType = "patchUrlProtectionBypass_scope_1"
+	ScopeTypePatchURLProtectionBypassScope2 ScopeType = "patchUrlProtectionBypass_scope_2"
 )
 
 // Scope - Instructions for creating a user scoped protection bypass
 type Scope struct {
-	Scope1 *Scope1
-	Scope2 *Scope2
+	PatchURLProtectionBypassScope1 *PatchURLProtectionBypassScope1 `queryParam:"inline"`
+	PatchURLProtectionBypassScope2 *PatchURLProtectionBypassScope2 `queryParam:"inline"`
 
 	Type ScopeType
 }
 
-func CreateScopeScope1(scope1 Scope1) Scope {
-	typ := ScopeTypeScope1
+func CreateScopePatchURLProtectionBypassScope1(patchURLProtectionBypassScope1 PatchURLProtectionBypassScope1) Scope {
+	typ := ScopeTypePatchURLProtectionBypassScope1
 
 	return Scope{
-		Scope1: &scope1,
-		Type:   typ,
+		PatchURLProtectionBypassScope1: &patchURLProtectionBypassScope1,
+		Type:                           typ,
 	}
 }
 
-func CreateScopeScope2(scope2 Scope2) Scope {
-	typ := ScopeTypeScope2
+func CreateScopePatchURLProtectionBypassScope2(patchURLProtectionBypassScope2 PatchURLProtectionBypassScope2) Scope {
+	typ := ScopeTypePatchURLProtectionBypassScope2
 
 	return Scope{
-		Scope2: &scope2,
-		Type:   typ,
+		PatchURLProtectionBypassScope2: &patchURLProtectionBypassScope2,
+		Type:                           typ,
 	}
 }
 
 func (u *Scope) UnmarshalJSON(data []byte) error {
 
-	var scope1 Scope1 = Scope1{}
-	if err := utils.UnmarshalJSON(data, &scope1, "", true, true); err == nil {
-		u.Scope1 = &scope1
-		u.Type = ScopeTypeScope1
+	var patchURLProtectionBypassScope1 PatchURLProtectionBypassScope1 = PatchURLProtectionBypassScope1{}
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope1, "", true, true); err == nil {
+		u.PatchURLProtectionBypassScope1 = &patchURLProtectionBypassScope1
+		u.Type = ScopeTypePatchURLProtectionBypassScope1
 		return nil
 	}
 
-	var scope2 Scope2 = Scope2{}
-	if err := utils.UnmarshalJSON(data, &scope2, "", true, true); err == nil {
-		u.Scope2 = &scope2
-		u.Type = ScopeTypeScope2
+	var patchURLProtectionBypassScope2 PatchURLProtectionBypassScope2 = PatchURLProtectionBypassScope2{}
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope2, "", true, true); err == nil {
+		u.PatchURLProtectionBypassScope2 = &patchURLProtectionBypassScope2
+		u.Type = ScopeTypePatchURLProtectionBypassScope2
 		return nil
 	}
 
@@ -256,12 +256,12 @@ func (u *Scope) UnmarshalJSON(data []byte) error {
 }
 
 func (u Scope) MarshalJSON() ([]byte, error) {
-	if u.Scope1 != nil {
-		return utils.MarshalJSON(u.Scope1, "", true)
+	if u.PatchURLProtectionBypassScope1 != nil {
+		return utils.MarshalJSON(u.PatchURLProtectionBypassScope1, "", true)
 	}
 
-	if u.Scope2 != nil {
-		return utils.MarshalJSON(u.Scope2, "", true)
+	if u.PatchURLProtectionBypassScope2 != nil {
+		return utils.MarshalJSON(u.PatchURLProtectionBypassScope2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Scope: all fields are null")
@@ -279,22 +279,22 @@ func (o *PatchURLProtectionBypassRequestBody2) GetScope() Scope {
 	return o.Scope
 }
 
-// RequestBodyRevoke - Optional instructions for revoking and regenerating a shareable link
-type RequestBodyRevoke struct {
+// PatchURLProtectionBypassRevoke - Optional instructions for revoking and regenerating a shareable link
+type PatchURLProtectionBypassRevoke struct {
 	// Sharebale link to revoked
 	Secret string `json:"secret"`
 	// Whether or not a new shareable link should be created after the provided secret is revoked
 	Regenerate bool `json:"regenerate"`
 }
 
-func (o *RequestBodyRevoke) GetSecret() string {
+func (o *PatchURLProtectionBypassRevoke) GetSecret() string {
 	if o == nil {
 		return ""
 	}
 	return o.Secret
 }
 
-func (o *RequestBodyRevoke) GetRegenerate() bool {
+func (o *PatchURLProtectionBypassRevoke) GetRegenerate() bool {
 	if o == nil {
 		return false
 	}
@@ -303,10 +303,10 @@ func (o *RequestBodyRevoke) GetRegenerate() bool {
 
 type PatchURLProtectionBypassRequestBody1 struct {
 	// Optional instructions for revoking and regenerating a shareable link
-	Revoke *RequestBodyRevoke `json:"revoke,omitempty"`
+	Revoke *PatchURLProtectionBypassRevoke `json:"revoke,omitempty"`
 }
 
-func (o *PatchURLProtectionBypassRequestBody1) GetRevoke() *RequestBodyRevoke {
+func (o *PatchURLProtectionBypassRequestBody1) GetRevoke() *PatchURLProtectionBypassRevoke {
 	if o == nil {
 		return nil
 	}
@@ -316,15 +316,15 @@ func (o *PatchURLProtectionBypassRequestBody1) GetRevoke() *RequestBodyRevoke {
 type PatchURLProtectionBypassRequestBodyType string
 
 const (
-	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody1 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_requestBody_1"
-	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody2 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_requestBody_2"
-	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody3 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_requestBody_3"
+	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody1 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_RequestBody_1"
+	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody2 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_RequestBody_2"
+	PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody3 PatchURLProtectionBypassRequestBodyType = "patchUrlProtectionBypass_RequestBody_3"
 )
 
 type PatchURLProtectionBypassRequestBody struct {
-	PatchURLProtectionBypassRequestBody1 *PatchURLProtectionBypassRequestBody1
-	PatchURLProtectionBypassRequestBody2 *PatchURLProtectionBypassRequestBody2
-	PatchURLProtectionBypassRequestBody3 *PatchURLProtectionBypassRequestBody3
+	PatchURLProtectionBypassRequestBody1 *PatchURLProtectionBypassRequestBody1 `queryParam:"inline"`
+	PatchURLProtectionBypassRequestBody2 *PatchURLProtectionBypassRequestBody2 `queryParam:"inline"`
+	PatchURLProtectionBypassRequestBody3 *PatchURLProtectionBypassRequestBody3 `queryParam:"inline"`
 
 	Type PatchURLProtectionBypassRequestBodyType
 }

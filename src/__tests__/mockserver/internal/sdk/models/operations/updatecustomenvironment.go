@@ -8,19 +8,19 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// UpdateCustomEnvironmentType - Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
-type UpdateCustomEnvironmentType string
+// UpdateCustomEnvironmentTypeRequest - Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
+type UpdateCustomEnvironmentTypeRequest string
 
 const (
-	UpdateCustomEnvironmentTypeEquals     UpdateCustomEnvironmentType = "equals"
-	UpdateCustomEnvironmentTypeStartsWith UpdateCustomEnvironmentType = "startsWith"
-	UpdateCustomEnvironmentTypeEndsWith   UpdateCustomEnvironmentType = "endsWith"
+	UpdateCustomEnvironmentTypeRequestEquals     UpdateCustomEnvironmentTypeRequest = "equals"
+	UpdateCustomEnvironmentTypeRequestStartsWith UpdateCustomEnvironmentTypeRequest = "startsWith"
+	UpdateCustomEnvironmentTypeRequestEndsWith   UpdateCustomEnvironmentTypeRequest = "endsWith"
 )
 
-func (e UpdateCustomEnvironmentType) ToPointer() *UpdateCustomEnvironmentType {
+func (e UpdateCustomEnvironmentTypeRequest) ToPointer() *UpdateCustomEnvironmentTypeRequest {
 	return &e
 }
-func (e *UpdateCustomEnvironmentType) UnmarshalJSON(data []byte) error {
+func (e *UpdateCustomEnvironmentTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,29 +31,29 @@ func (e *UpdateCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 	case "startsWith":
 		fallthrough
 	case "endsWith":
-		*e = UpdateCustomEnvironmentType(v)
+		*e = UpdateCustomEnvironmentTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateCustomEnvironmentType: %v", v)
+		return fmt.Errorf("invalid value for UpdateCustomEnvironmentTypeRequest: %v", v)
 	}
 }
 
-// UpdateCustomEnvironmentBranchMatcher - How we want to determine a matching branch. This is optional.
-type UpdateCustomEnvironmentBranchMatcher struct {
+// UpdateCustomEnvironmentBranchMatcherRequest - How we want to determine a matching branch. This is optional.
+type UpdateCustomEnvironmentBranchMatcherRequest struct {
 	// Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
-	Type UpdateCustomEnvironmentType `json:"type"`
+	Type UpdateCustomEnvironmentTypeRequest `json:"type"`
 	// Git branch name or portion thereof.
 	Pattern string `json:"pattern"`
 }
 
-func (o *UpdateCustomEnvironmentBranchMatcher) GetType() UpdateCustomEnvironmentType {
+func (o *UpdateCustomEnvironmentBranchMatcherRequest) GetType() UpdateCustomEnvironmentTypeRequest {
 	if o == nil {
-		return UpdateCustomEnvironmentType("")
+		return UpdateCustomEnvironmentTypeRequest("")
 	}
 	return o.Type
 }
 
-func (o *UpdateCustomEnvironmentBranchMatcher) GetPattern() string {
+func (o *UpdateCustomEnvironmentBranchMatcherRequest) GetPattern() string {
 	if o == nil {
 		return ""
 	}
@@ -66,7 +66,7 @@ type UpdateCustomEnvironmentRequestBody struct {
 	// Description of the custom environment. This is optional.
 	Description *string `json:"description,omitempty"`
 	// How we want to determine a matching branch. This is optional.
-	BranchMatcher *UpdateCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	BranchMatcher *UpdateCustomEnvironmentBranchMatcherRequest `json:"branchMatcher,omitempty"`
 }
 
 func (o *UpdateCustomEnvironmentRequestBody) GetSlug() *string {
@@ -83,7 +83,7 @@ func (o *UpdateCustomEnvironmentRequestBody) GetDescription() *string {
 	return o.Description
 }
 
-func (o *UpdateCustomEnvironmentRequestBody) GetBranchMatcher() *UpdateCustomEnvironmentBranchMatcher {
+func (o *UpdateCustomEnvironmentRequestBody) GetBranchMatcher() *UpdateCustomEnvironmentBranchMatcherRequest {
 	if o == nil {
 		return nil
 	}
@@ -137,19 +137,19 @@ func (o *UpdateCustomEnvironmentRequest) GetRequestBody() *UpdateCustomEnvironme
 	return o.RequestBody
 }
 
-// UpdateCustomEnvironmentEnvironmentType - The type of environment (production, preview, or development)
-type UpdateCustomEnvironmentEnvironmentType string
+// UpdateCustomEnvironmentTypeResponseBody - The type of environment (production, preview, or development)
+type UpdateCustomEnvironmentTypeResponseBody string
 
 const (
-	UpdateCustomEnvironmentEnvironmentTypeProduction  UpdateCustomEnvironmentEnvironmentType = "production"
-	UpdateCustomEnvironmentEnvironmentTypePreview     UpdateCustomEnvironmentEnvironmentType = "preview"
-	UpdateCustomEnvironmentEnvironmentTypeDevelopment UpdateCustomEnvironmentEnvironmentType = "development"
+	UpdateCustomEnvironmentTypeResponseBodyProduction  UpdateCustomEnvironmentTypeResponseBody = "production"
+	UpdateCustomEnvironmentTypeResponseBodyPreview     UpdateCustomEnvironmentTypeResponseBody = "preview"
+	UpdateCustomEnvironmentTypeResponseBodyDevelopment UpdateCustomEnvironmentTypeResponseBody = "development"
 )
 
-func (e UpdateCustomEnvironmentEnvironmentType) ToPointer() *UpdateCustomEnvironmentEnvironmentType {
+func (e UpdateCustomEnvironmentTypeResponseBody) ToPointer() *UpdateCustomEnvironmentTypeResponseBody {
 	return &e
 }
-func (e *UpdateCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) error {
+func (e *UpdateCustomEnvironmentTypeResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -160,26 +160,26 @@ func (e *UpdateCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) erro
 	case "preview":
 		fallthrough
 	case "development":
-		*e = UpdateCustomEnvironmentEnvironmentType(v)
+		*e = UpdateCustomEnvironmentTypeResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateCustomEnvironmentEnvironmentType: %v", v)
+		return fmt.Errorf("invalid value for UpdateCustomEnvironmentTypeResponseBody: %v", v)
 	}
 }
 
-// UpdateCustomEnvironmentEnvironmentResponseType - The type of matching to perform
-type UpdateCustomEnvironmentEnvironmentResponseType string
+// UpdateCustomEnvironmentBranchMatcherTypeResponseBody - The type of matching to perform
+type UpdateCustomEnvironmentBranchMatcherTypeResponseBody string
 
 const (
-	UpdateCustomEnvironmentEnvironmentResponseTypeEndsWith   UpdateCustomEnvironmentEnvironmentResponseType = "endsWith"
-	UpdateCustomEnvironmentEnvironmentResponseTypeStartsWith UpdateCustomEnvironmentEnvironmentResponseType = "startsWith"
-	UpdateCustomEnvironmentEnvironmentResponseTypeEquals     UpdateCustomEnvironmentEnvironmentResponseType = "equals"
+	UpdateCustomEnvironmentBranchMatcherTypeResponseBodyEndsWith   UpdateCustomEnvironmentBranchMatcherTypeResponseBody = "endsWith"
+	UpdateCustomEnvironmentBranchMatcherTypeResponseBodyStartsWith UpdateCustomEnvironmentBranchMatcherTypeResponseBody = "startsWith"
+	UpdateCustomEnvironmentBranchMatcherTypeResponseBodyEquals     UpdateCustomEnvironmentBranchMatcherTypeResponseBody = "equals"
 )
 
-func (e UpdateCustomEnvironmentEnvironmentResponseType) ToPointer() *UpdateCustomEnvironmentEnvironmentResponseType {
+func (e UpdateCustomEnvironmentBranchMatcherTypeResponseBody) ToPointer() *UpdateCustomEnvironmentBranchMatcherTypeResponseBody {
 	return &e
 }
-func (e *UpdateCustomEnvironmentEnvironmentResponseType) UnmarshalJSON(data []byte) error {
+func (e *UpdateCustomEnvironmentBranchMatcherTypeResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -190,29 +190,29 @@ func (e *UpdateCustomEnvironmentEnvironmentResponseType) UnmarshalJSON(data []by
 	case "startsWith":
 		fallthrough
 	case "equals":
-		*e = UpdateCustomEnvironmentEnvironmentResponseType(v)
+		*e = UpdateCustomEnvironmentBranchMatcherTypeResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateCustomEnvironmentEnvironmentResponseType: %v", v)
+		return fmt.Errorf("invalid value for UpdateCustomEnvironmentBranchMatcherTypeResponseBody: %v", v)
 	}
 }
 
-// UpdateCustomEnvironmentEnvironmentBranchMatcher - Configuration for matching git branches to this environment
-type UpdateCustomEnvironmentEnvironmentBranchMatcher struct {
+// UpdateCustomEnvironmentBranchMatcherResponseBody - Configuration for matching git branches to this environment
+type UpdateCustomEnvironmentBranchMatcherResponseBody struct {
 	// The type of matching to perform
-	Type UpdateCustomEnvironmentEnvironmentResponseType `json:"type"`
+	Type UpdateCustomEnvironmentBranchMatcherTypeResponseBody `json:"type"`
 	// The pattern to match against branch names
 	Pattern string `json:"pattern"`
 }
 
-func (o *UpdateCustomEnvironmentEnvironmentBranchMatcher) GetType() UpdateCustomEnvironmentEnvironmentResponseType {
+func (o *UpdateCustomEnvironmentBranchMatcherResponseBody) GetType() UpdateCustomEnvironmentBranchMatcherTypeResponseBody {
 	if o == nil {
-		return UpdateCustomEnvironmentEnvironmentResponseType("")
+		return UpdateCustomEnvironmentBranchMatcherTypeResponseBody("")
 	}
 	return o.Type
 }
 
-func (o *UpdateCustomEnvironmentEnvironmentBranchMatcher) GetPattern() string {
+func (o *UpdateCustomEnvironmentBranchMatcherResponseBody) GetPattern() string {
 	if o == nil {
 		return ""
 	}
@@ -255,8 +255,8 @@ func (o *UpdateCustomEnvironmentVerification) GetReason() string {
 	return o.Reason
 }
 
-// UpdateCustomEnvironmentDomains - List of domains associated with this environment
-type UpdateCustomEnvironmentDomains struct {
+// UpdateCustomEnvironmentDomain - List of domains associated with this environment
+type UpdateCustomEnvironmentDomain struct {
 	Name                string   `json:"name"`
 	ApexName            string   `json:"apexName"`
 	ProjectID           string   `json:"projectId"`
@@ -272,77 +272,77 @@ type UpdateCustomEnvironmentDomains struct {
 	Verification []UpdateCustomEnvironmentVerification `json:"verification,omitempty"`
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetName() string {
+func (o *UpdateCustomEnvironmentDomain) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetApexName() string {
+func (o *UpdateCustomEnvironmentDomain) GetApexName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ApexName
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetProjectID() string {
+func (o *UpdateCustomEnvironmentDomain) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetRedirect() *string {
+func (o *UpdateCustomEnvironmentDomain) GetRedirect() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+func (o *UpdateCustomEnvironmentDomain) GetRedirectStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetGitBranch() *string {
+func (o *UpdateCustomEnvironmentDomain) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+func (o *UpdateCustomEnvironmentDomain) GetCustomEnvironmentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentID
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+func (o *UpdateCustomEnvironmentDomain) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetCreatedAt() *float64 {
+func (o *UpdateCustomEnvironmentDomain) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetVerified() bool {
+func (o *UpdateCustomEnvironmentDomain) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *UpdateCustomEnvironmentDomains) GetVerification() []UpdateCustomEnvironmentVerification {
+func (o *UpdateCustomEnvironmentDomain) GetVerification() []UpdateCustomEnvironmentVerification {
 	if o == nil {
 		return nil
 	}
@@ -356,13 +356,13 @@ type UpdateCustomEnvironmentResponseBody struct {
 	// URL-friendly name of the environment
 	Slug string `json:"slug"`
 	// The type of environment (production, preview, or development)
-	Type UpdateCustomEnvironmentEnvironmentType `json:"type"`
+	Type UpdateCustomEnvironmentTypeResponseBody `json:"type"`
 	// Optional description of the environment's purpose
 	Description *string `json:"description,omitempty"`
 	// Configuration for matching git branches to this environment
-	BranchMatcher *UpdateCustomEnvironmentEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
+	BranchMatcher *UpdateCustomEnvironmentBranchMatcherResponseBody `json:"branchMatcher,omitempty"`
 	// List of domains associated with this environment
-	Domains []UpdateCustomEnvironmentDomains `json:"domains,omitempty"`
+	Domains []UpdateCustomEnvironmentDomain `json:"domains,omitempty"`
 	// List of aliases for the current deployment
 	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
 	// Timestamp when the environment was created
@@ -385,9 +385,9 @@ func (o *UpdateCustomEnvironmentResponseBody) GetSlug() string {
 	return o.Slug
 }
 
-func (o *UpdateCustomEnvironmentResponseBody) GetType() UpdateCustomEnvironmentEnvironmentType {
+func (o *UpdateCustomEnvironmentResponseBody) GetType() UpdateCustomEnvironmentTypeResponseBody {
 	if o == nil {
-		return UpdateCustomEnvironmentEnvironmentType("")
+		return UpdateCustomEnvironmentTypeResponseBody("")
 	}
 	return o.Type
 }
@@ -399,14 +399,14 @@ func (o *UpdateCustomEnvironmentResponseBody) GetDescription() *string {
 	return o.Description
 }
 
-func (o *UpdateCustomEnvironmentResponseBody) GetBranchMatcher() *UpdateCustomEnvironmentEnvironmentBranchMatcher {
+func (o *UpdateCustomEnvironmentResponseBody) GetBranchMatcher() *UpdateCustomEnvironmentBranchMatcherResponseBody {
 	if o == nil {
 		return nil
 	}
 	return o.BranchMatcher
 }
 
-func (o *UpdateCustomEnvironmentResponseBody) GetDomains() []UpdateCustomEnvironmentDomains {
+func (o *UpdateCustomEnvironmentResponseBody) GetDomains() []UpdateCustomEnvironmentDomain {
 	if o == nil {
 		return nil
 	}

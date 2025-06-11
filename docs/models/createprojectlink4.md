@@ -6,14 +6,7 @@
 import { CreateProjectLink4 } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectLink4 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://beloved-tentacle.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

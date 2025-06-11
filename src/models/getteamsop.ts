@@ -40,13 +40,13 @@ export type GetTeamsRequest = {
   until?: number | undefined;
 };
 
-export type GetTeamsTeams = Team | TeamLimited;
+export type GetTeamsTeams = TeamLimited | Team;
 
 /**
  * A paginated list of teams.
  */
 export type GetTeamsResponseBody = {
-  teams: Array<Team | TeamLimited>;
+  teams: Array<TeamLimited | Team>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
@@ -116,17 +116,17 @@ export const GetTeamsTeams$inboundSchema: z.ZodType<
   GetTeamsTeams,
   z.ZodTypeDef,
   unknown
-> = z.union([Team$inboundSchema, TeamLimited$inboundSchema]);
+> = z.union([TeamLimited$inboundSchema, Team$inboundSchema]);
 
 /** @internal */
-export type GetTeamsTeams$Outbound = Team$Outbound | TeamLimited$Outbound;
+export type GetTeamsTeams$Outbound = TeamLimited$Outbound | Team$Outbound;
 
 /** @internal */
 export const GetTeamsTeams$outboundSchema: z.ZodType<
   GetTeamsTeams$Outbound,
   z.ZodTypeDef,
   GetTeamsTeams
-> = z.union([Team$outboundSchema, TeamLimited$outboundSchema]);
+> = z.union([TeamLimited$outboundSchema, Team$outboundSchema]);
 
 /**
  * @internal
@@ -161,13 +161,13 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teams: z.array(z.union([Team$inboundSchema, TeamLimited$inboundSchema])),
+  teams: z.array(z.union([TeamLimited$inboundSchema, Team$inboundSchema])),
   pagination: Pagination$inboundSchema,
 });
 
 /** @internal */
 export type GetTeamsResponseBody$Outbound = {
-  teams: Array<Team$Outbound | TeamLimited$Outbound>;
+  teams: Array<TeamLimited$Outbound | Team$Outbound>;
   pagination: Pagination$Outbound;
 };
 
@@ -177,7 +177,7 @@ export const GetTeamsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTeamsResponseBody
 > = z.object({
-  teams: z.array(z.union([Team$outboundSchema, TeamLimited$outboundSchema])),
+  teams: z.array(z.union([TeamLimited$outboundSchema, Team$outboundSchema])),
   pagination: Pagination$outboundSchema,
 });
 

@@ -3,6 +3,9 @@
 package components
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -65,11 +68,958 @@ func (o *Data) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
+type Connect struct {
+	Enabled *bool `json:"enabled,omitempty"`
+}
+
+func (o *Connect) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+// TeamConnection - Information for the SAML Single Sign-On configuration.
+type TeamConnection struct {
+	// Current status of the connection.
+	Status string `json:"status"`
+	// The Identity Provider "type", for example Okta.
+	Type string `json:"type"`
+	// Current state of the connection.
+	State string `json:"state"`
+	// Timestamp (in milliseconds) of when the configuration was connected.
+	ConnectedAt float64 `json:"connectedAt"`
+	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+}
+
+func (o *TeamConnection) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
+}
+
+func (o *TeamConnection) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *TeamConnection) GetState() string {
+	if o == nil {
+		return ""
+	}
+	return o.State
+}
+
+func (o *TeamConnection) GetConnectedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConnectedAt
+}
+
+func (o *TeamConnection) GetLastReceivedWebhookEvent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastReceivedWebhookEvent
+}
+
+// TeamDirectory - Information for the Directory Sync configuration.
+type TeamDirectory struct {
+	// The Identity Provider "type", for example Okta.
+	Type string `json:"type"`
+	// Current state of the connection.
+	State string `json:"state"`
+	// Timestamp (in milliseconds) of when the configuration was connected.
+	ConnectedAt float64 `json:"connectedAt"`
+	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
+	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+}
+
+func (o *TeamDirectory) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *TeamDirectory) GetState() string {
+	if o == nil {
+		return ""
+	}
+	return o.State
+}
+
+func (o *TeamDirectory) GetConnectedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConnectedAt
+}
+
+func (o *TeamDirectory) GetLastReceivedWebhookEvent() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastReceivedWebhookEvent
+}
+
+type RolesEnum string
+
+const (
+	RolesEnumOwner       RolesEnum = "OWNER"
+	RolesEnumMember      RolesEnum = "MEMBER"
+	RolesEnumDeveloper   RolesEnum = "DEVELOPER"
+	RolesEnumSecurity    RolesEnum = "SECURITY"
+	RolesEnumBilling     RolesEnum = "BILLING"
+	RolesEnumViewer      RolesEnum = "VIEWER"
+	RolesEnumContributor RolesEnum = "CONTRIBUTOR"
+)
+
+func (e RolesEnum) ToPointer() *RolesEnum {
+	return &e
+}
+func (e *RolesEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = RolesEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesEnum: %v", v)
+	}
+}
+
+// Roles - When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+type Roles struct {
+	AccessGroupID string `json:"accessGroupId"`
+}
+
+func (o *Roles) GetAccessGroupID() string {
+	if o == nil {
+		return ""
+	}
+	return o.AccessGroupID
+}
+
+type RolesUnionType string
+
+const (
+	RolesUnionTypeRoles     RolesUnionType = "roles"
+	RolesUnionTypeRolesEnum RolesUnionType = "roles_enum"
+)
+
+type RolesUnion struct {
+	Roles     *Roles     `queryParam:"inline"`
+	RolesEnum *RolesEnum `queryParam:"inline"`
+
+	Type RolesUnionType
+}
+
+func CreateRolesUnionRoles(roles Roles) RolesUnion {
+	typ := RolesUnionTypeRoles
+
+	return RolesUnion{
+		Roles: &roles,
+		Type:  typ,
+	}
+}
+
+func CreateRolesUnionRolesEnum(rolesEnum RolesEnum) RolesUnion {
+	typ := RolesUnionTypeRolesEnum
+
+	return RolesUnion{
+		RolesEnum: &rolesEnum,
+		Type:      typ,
+	}
+}
+
+func (u *RolesUnion) UnmarshalJSON(data []byte) error {
+
+	var roles Roles = Roles{}
+	if err := utils.UnmarshalJSON(data, &roles, "", true, true); err == nil {
+		u.Roles = &roles
+		u.Type = RolesUnionTypeRoles
+		return nil
+	}
+
+	var rolesEnum RolesEnum = RolesEnum("")
+	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, true); err == nil {
+		u.RolesEnum = &rolesEnum
+		u.Type = RolesUnionTypeRolesEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RolesUnion", string(data))
+}
+
+func (u RolesUnion) MarshalJSON() ([]byte, error) {
+	if u.Roles != nil {
+		return utils.MarshalJSON(u.Roles, "", true)
+	}
+
+	if u.RolesEnum != nil {
+		return utils.MarshalJSON(u.RolesEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type RolesUnion: all fields are null")
+}
+
+// TeamSaml - When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
+type TeamSaml struct {
+	// Information for the SAML Single Sign-On configuration.
+	Connection *TeamConnection `json:"connection,omitempty"`
+	// Information for the Directory Sync configuration.
+	Directory *TeamDirectory `json:"directory,omitempty"`
+	// When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
+	Enforced bool `json:"enforced"`
+	// When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
+	Roles map[string]RolesUnion `json:"roles,omitempty"`
+}
+
+func (o *TeamSaml) GetConnection() *TeamConnection {
+	if o == nil {
+		return nil
+	}
+	return o.Connection
+}
+
+func (o *TeamSaml) GetDirectory() *TeamDirectory {
+	if o == nil {
+		return nil
+	}
+	return o.Directory
+}
+
+func (o *TeamSaml) GetEnforced() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enforced
+}
+
+func (o *TeamSaml) GetRoles() map[string]RolesUnion {
+	if o == nil {
+		return nil
+	}
+	return o.Roles
+}
+
+type TeamBuildEntitlements struct {
+	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
+}
+
+func (o *TeamBuildEntitlements) GetEnhancedBuilds() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnhancedBuilds
+}
+
+type TeamResourceConfig struct {
+	// The total amount of concurrent builds that can be used.
+	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
+	// The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
+	EdgeConfigSize *float64 `json:"edgeConfigSize,omitempty"`
+	// The maximum number of edge configs an account can create.
+	EdgeConfigs *float64 `json:"edgeConfigs,omitempty"`
+	// The maximum number of kv databases an account can create.
+	KvDatabases *float64 `json:"kvDatabases,omitempty"`
+	// The maximum number of blob stores an account can create.
+	BlobStores *float64 `json:"blobStores,omitempty"`
+	// The maximum number of postgres databases an account can create.
+	PostgresDatabases *float64               `json:"postgresDatabases,omitempty"`
+	BuildEntitlements *TeamBuildEntitlements `json:"buildEntitlements,omitempty"`
+}
+
+func (o *TeamResourceConfig) GetConcurrentBuilds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConcurrentBuilds
+}
+
+func (o *TeamResourceConfig) GetEdgeConfigSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigSize
+}
+
+func (o *TeamResourceConfig) GetEdgeConfigs() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeConfigs
+}
+
+func (o *TeamResourceConfig) GetKvDatabases() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.KvDatabases
+}
+
+func (o *TeamResourceConfig) GetBlobStores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlobStores
+}
+
+func (o *TeamResourceConfig) GetPostgresDatabases() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PostgresDatabases
+}
+
+func (o *TeamResourceConfig) GetBuildEntitlements() *TeamBuildEntitlements {
+	if o == nil {
+		return nil
+	}
+	return o.BuildEntitlements
+}
+
+// TeamRemoteCaching - Is remote caching enabled for this team
+type TeamRemoteCaching struct {
+	Enabled *bool `json:"enabled,omitempty"`
+}
+
+func (o *TeamRemoteCaching) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+// TeamEnablePreviewFeedback - Whether toolbar is enabled on preview deployments
+type TeamEnablePreviewFeedback string
+
+const (
+	TeamEnablePreviewFeedbackDefault      TeamEnablePreviewFeedback = "default"
+	TeamEnablePreviewFeedbackOn           TeamEnablePreviewFeedback = "on"
+	TeamEnablePreviewFeedbackOff          TeamEnablePreviewFeedback = "off"
+	TeamEnablePreviewFeedbackOnForce      TeamEnablePreviewFeedback = "on-force"
+	TeamEnablePreviewFeedbackOffForce     TeamEnablePreviewFeedback = "off-force"
+	TeamEnablePreviewFeedbackDefaultForce TeamEnablePreviewFeedback = "default-force"
+)
+
+func (e TeamEnablePreviewFeedback) ToPointer() *TeamEnablePreviewFeedback {
+	return &e
+}
+func (e *TeamEnablePreviewFeedback) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "default":
+		fallthrough
+	case "on":
+		fallthrough
+	case "off":
+		fallthrough
+	case "on-force":
+		fallthrough
+	case "off-force":
+		fallthrough
+	case "default-force":
+		*e = TeamEnablePreviewFeedback(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamEnablePreviewFeedback: %v", v)
+	}
+}
+
+// EnableProductionFeedback - Whether toolbar is enabled on production deployments
+type EnableProductionFeedback string
+
+const (
+	EnableProductionFeedbackDefault      EnableProductionFeedback = "default"
+	EnableProductionFeedbackOn           EnableProductionFeedback = "on"
+	EnableProductionFeedbackOff          EnableProductionFeedback = "off"
+	EnableProductionFeedbackOnForce      EnableProductionFeedback = "on-force"
+	EnableProductionFeedbackOffForce     EnableProductionFeedback = "off-force"
+	EnableProductionFeedbackDefaultForce EnableProductionFeedback = "default-force"
+)
+
+func (e EnableProductionFeedback) ToPointer() *EnableProductionFeedback {
+	return &e
+}
+func (e *EnableProductionFeedback) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "default":
+		fallthrough
+	case "on":
+		fallthrough
+	case "off":
+		fallthrough
+	case "on-force":
+		fallthrough
+	case "off-force":
+		fallthrough
+	case "default-force":
+		*e = EnableProductionFeedback(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnableProductionFeedback: %v", v)
+	}
+}
+
+// SensitiveEnvironmentVariablePolicy - Sensitive environment variable policy for this team
+type SensitiveEnvironmentVariablePolicy string
+
+const (
+	SensitiveEnvironmentVariablePolicyDefault SensitiveEnvironmentVariablePolicy = "default"
+	SensitiveEnvironmentVariablePolicyOn      SensitiveEnvironmentVariablePolicy = "on"
+	SensitiveEnvironmentVariablePolicyOff     SensitiveEnvironmentVariablePolicy = "off"
+)
+
+func (e SensitiveEnvironmentVariablePolicy) ToPointer() *SensitiveEnvironmentVariablePolicy {
+	return &e
+}
+func (e *SensitiveEnvironmentVariablePolicy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "default":
+		fallthrough
+	case "on":
+		fallthrough
+	case "off":
+		*e = SensitiveEnvironmentVariablePolicy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SensitiveEnvironmentVariablePolicy: %v", v)
+	}
+}
+
+type IPBucket struct {
+	Bucket       string   `json:"bucket"`
+	SupportUntil *float64 `json:"supportUntil,omitempty"`
+}
+
+func (o *IPBucket) GetBucket() string {
+	if o == nil {
+		return ""
+	}
+	return o.Bucket
+}
+
+func (o *IPBucket) GetSupportUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SupportUntil
+}
+
+type TeamEntitlement struct {
+	Entitlement string `json:"entitlement"`
+}
+
+func (o *TeamEntitlement) GetEntitlement() string {
+	if o == nil {
+		return ""
+	}
+	return o.Entitlement
+}
+
+type TeamRole2 string
+
+const (
+	TeamRole2Owner       TeamRole2 = "OWNER"
+	TeamRole2Member      TeamRole2 = "MEMBER"
+	TeamRole2Developer   TeamRole2 = "DEVELOPER"
+	TeamRole2Security    TeamRole2 = "SECURITY"
+	TeamRole2Billing     TeamRole2 = "BILLING"
+	TeamRole2Viewer      TeamRole2 = "VIEWER"
+	TeamRole2Contributor TeamRole2 = "CONTRIBUTOR"
+)
+
+func (e TeamRole2) ToPointer() *TeamRole2 {
+	return &e
+}
+func (e *TeamRole2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = TeamRole2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamRole2: %v", v)
+	}
+}
+
+type TeamTeamRole string
+
+const (
+	TeamTeamRoleOwner       TeamTeamRole = "OWNER"
+	TeamTeamRoleMember      TeamTeamRole = "MEMBER"
+	TeamTeamRoleDeveloper   TeamTeamRole = "DEVELOPER"
+	TeamTeamRoleSecurity    TeamTeamRole = "SECURITY"
+	TeamTeamRoleBilling     TeamTeamRole = "BILLING"
+	TeamTeamRoleViewer      TeamTeamRole = "VIEWER"
+	TeamTeamRoleContributor TeamTeamRole = "CONTRIBUTOR"
+)
+
+func (e TeamTeamRole) ToPointer() *TeamTeamRole {
+	return &e
+}
+func (e *TeamTeamRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = TeamTeamRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamTeamRole: %v", v)
+	}
+}
+
+type TeamTeamPermission string
+
+const (
+	TeamTeamPermissionCreateProject            TeamTeamPermission = "CreateProject"
+	TeamTeamPermissionFullProductionDeployment TeamTeamPermission = "FullProductionDeployment"
+	TeamTeamPermissionUsageViewer              TeamTeamPermission = "UsageViewer"
+	TeamTeamPermissionEnvVariableManager       TeamTeamPermission = "EnvVariableManager"
+	TeamTeamPermissionEnvironmentManager       TeamTeamPermission = "EnvironmentManager"
+)
+
+func (e TeamTeamPermission) ToPointer() *TeamTeamPermission {
+	return &e
+}
+func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		*e = TeamTeamPermission(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamTeamPermission: %v", v)
+	}
+}
+
+type TeamOrigin2 string
+
+const (
+	TeamOrigin2Saml              TeamOrigin2 = "saml"
+	TeamOrigin2Mail              TeamOrigin2 = "mail"
+	TeamOrigin2Link              TeamOrigin2 = "link"
+	TeamOrigin2Import            TeamOrigin2 = "import"
+	TeamOrigin2Teams             TeamOrigin2 = "teams"
+	TeamOrigin2Github            TeamOrigin2 = "github"
+	TeamOrigin2Gitlab            TeamOrigin2 = "gitlab"
+	TeamOrigin2Bitbucket         TeamOrigin2 = "bitbucket"
+	TeamOrigin2Dsync             TeamOrigin2 = "dsync"
+	TeamOrigin2Feedback          TeamOrigin2 = "feedback"
+	TeamOrigin2OrganizationTeams TeamOrigin2 = "organization-teams"
+)
+
+func (e TeamOrigin2) ToPointer() *TeamOrigin2 {
+	return &e
+}
+func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "saml":
+		fallthrough
+	case "mail":
+		fallthrough
+	case "link":
+		fallthrough
+	case "import":
+		fallthrough
+	case "teams":
+		fallthrough
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		fallthrough
+	case "dsync":
+		fallthrough
+	case "feedback":
+		fallthrough
+	case "organization-teams":
+		*e = TeamOrigin2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamOrigin2: %v", v)
+	}
+}
+
+type TeamGitUserID2Type string
+
+const (
+	TeamGitUserID2TypeStr    TeamGitUserID2Type = "str"
+	TeamGitUserID2TypeNumber TeamGitUserID2Type = "number"
+)
+
+type TeamGitUserID2 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type TeamGitUserID2Type
+}
+
+func CreateTeamGitUserID2Str(str string) TeamGitUserID2 {
+	typ := TeamGitUserID2TypeStr
+
+	return TeamGitUserID2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateTeamGitUserID2Number(number float64) TeamGitUserID2 {
+	typ := TeamGitUserID2TypeNumber
+
+	return TeamGitUserID2{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *TeamGitUserID2) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = TeamGitUserID2TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = TeamGitUserID2TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TeamGitUserID2", string(data))
+}
+
+func (u TeamGitUserID2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TeamGitUserID2: all fields are null")
+}
+
+type TeamJoinedFrom2 struct {
+	Origin           TeamOrigin2     `json:"origin"`
+	CommitID         *string         `json:"commitId,omitempty"`
+	RepoID           *string         `json:"repoId,omitempty"`
+	RepoPath         *string         `json:"repoPath,omitempty"`
+	GitUserID        *TeamGitUserID2 `json:"gitUserId,omitempty"`
+	GitUserLogin     *string         `json:"gitUserLogin,omitempty"`
+	SsoUserID        *string         `json:"ssoUserId,omitempty"`
+	SsoConnectedAt   *float64        `json:"ssoConnectedAt,omitempty"`
+	IdpUserID        *string         `json:"idpUserId,omitempty"`
+	DsyncUserID      *string         `json:"dsyncUserId,omitempty"`
+	DsyncConnectedAt *float64        `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (o *TeamJoinedFrom2) GetOrigin() TeamOrigin2 {
+	if o == nil {
+		return TeamOrigin2("")
+	}
+	return o.Origin
+}
+
+func (o *TeamJoinedFrom2) GetCommitID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CommitID
+}
+
+func (o *TeamJoinedFrom2) GetRepoID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *TeamJoinedFrom2) GetRepoPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RepoPath
+}
+
+func (o *TeamJoinedFrom2) GetGitUserID() *TeamGitUserID2 {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserID
+}
+
+func (o *TeamJoinedFrom2) GetGitUserLogin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitUserLogin
+}
+
+func (o *TeamJoinedFrom2) GetSsoUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoUserID
+}
+
+func (o *TeamJoinedFrom2) GetSsoConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SsoConnectedAt
+}
+
+func (o *TeamJoinedFrom2) GetIdpUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdpUserID
+}
+
+func (o *TeamJoinedFrom2) GetDsyncUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncUserID
+}
+
+func (o *TeamJoinedFrom2) GetDsyncConnectedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DsyncConnectedAt
+}
+
+// TeamMembership - The membership of the authenticated User in relation to the Team.
+type TeamMembership struct {
+	UID               *string              `json:"uid,omitempty"`
+	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
+	Confirmed         bool                 `json:"confirmed"`
+	ConfirmedAt       float64              `json:"confirmedAt"`
+	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
+	Role              TeamRole2            `json:"role"`
+	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions   []TeamTeamPermission `json:"teamPermissions,omitempty"`
+	TeamID            *string              `json:"teamId,omitempty"`
+	CreatedAt         float64              `json:"createdAt"`
+	Created           float64              `json:"created"`
+	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
+}
+
+func (o *TeamMembership) GetUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+func (o *TeamMembership) GetEntitlements() []TeamEntitlement {
+	if o == nil {
+		return nil
+	}
+	return o.Entitlements
+}
+
+func (o *TeamMembership) GetConfirmed() bool {
+	if o == nil {
+		return false
+	}
+	return o.Confirmed
+}
+
+func (o *TeamMembership) GetConfirmedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConfirmedAt
+}
+
+func (o *TeamMembership) GetAccessRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.AccessRequestedAt
+}
+
+func (o *TeamMembership) GetRole() TeamRole2 {
+	if o == nil {
+		return TeamRole2("")
+	}
+	return o.Role
+}
+
+func (o *TeamMembership) GetTeamRoles() []TeamTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *TeamMembership) GetTeamPermissions() []TeamTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
+}
+
+func (o *TeamMembership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *TeamMembership) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *TeamMembership) GetCreated() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Created
+}
+
+func (o *TeamMembership) GetJoinedFrom() *TeamJoinedFrom2 {
+	if o == nil {
+		return nil
+	}
+	return o.JoinedFrom
+}
+
 // Team - Data representing a Team.
 type Team struct {
-	// The Preset's unique identifier.
-	ID                   string         `json:"id"`
-	Data                 Data           `json:"data"`
+	// The Team's unique identifier.
+	ID      string   `json:"id"`
+	Data    *Data    `json:"data,omitempty"`
+	Connect *Connect `json:"connect,omitempty"`
+	// The ID of the user who created the Team.
+	CreatorID string `json:"creatorId"`
+	// Timestamp (in milliseconds) of when the Team was last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// Hostname that'll be matched with emails on sign-up to automatically join the Team.
+	EmailDomain *string `json:"emailDomain,omitempty"`
+	// When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
+	Saml *TeamSaml `json:"saml,omitempty"`
+	// Code that can be used to join this Team. Only visible to Team owners.
+	InviteCode *string `json:"inviteCode,omitempty"`
+	// A short description of the Team.
+	Description *string `json:"description"`
+	// The prefix that is prepended to automatic aliases.
+	StagingPrefix  string              `json:"stagingPrefix"`
+	ResourceConfig *TeamResourceConfig `json:"resourceConfig,omitempty"`
+	// The hostname that is current set as preview deployment suffix.
+	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
+	// Is remote caching enabled for this team
+	RemoteCaching *TeamRemoteCaching `json:"remoteCaching,omitempty"`
+	// Whether toolbar is enabled on preview deployments
+	EnablePreviewFeedback *TeamEnablePreviewFeedback `json:"enablePreviewFeedback,omitempty"`
+	// Whether toolbar is enabled on production deployments
+	EnableProductionFeedback *EnableProductionFeedback `json:"enableProductionFeedback,omitempty"`
+	// Sensitive environment variable policy for this team
+	SensitiveEnvironmentVariablePolicy *SensitiveEnvironmentVariablePolicy `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
+	// Indicates if IP addresses should be accessible in observability (o11y) tooling
+	HideIPAddresses *bool `json:"hideIpAddresses,omitempty"`
+	// Indicates if IP addresses should be accessible in log drains
+	HideIPAddressesInLogDrains *bool      `json:"hideIpAddressesInLogDrains,omitempty"`
+	IPBuckets                  []IPBucket `json:"ipBuckets,omitempty"`
+	// The Team's slug, which is unique across the Vercel platform.
+	Slug string `json:"slug"`
+	// Name associated with the Team account, or `null` if none has been provided.
+	Name *string `json:"name"`
+	// The ID of the file used as avatar for this Team.
+	Avatar *string `json:"avatar"`
+	// The membership of the authenticated User in relation to the Team.
+	Membership TeamMembership `json:"membership"`
+	// UNIX timestamp (in milliseconds) when the Team was created.
+	CreatedAt            float64        `json:"createdAt"`
 	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
@@ -91,11 +1041,165 @@ func (o *Team) GetID() string {
 	return o.ID
 }
 
-func (o *Team) GetData() Data {
+func (o *Team) GetData() *Data {
 	if o == nil {
-		return Data{}
+		return nil
 	}
 	return o.Data
+}
+
+func (o *Team) GetConnect() *Connect {
+	if o == nil {
+		return nil
+	}
+	return o.Connect
+}
+
+func (o *Team) GetCreatorID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatorID
+}
+
+func (o *Team) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *Team) GetEmailDomain() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EmailDomain
+}
+
+func (o *Team) GetSaml() *TeamSaml {
+	if o == nil {
+		return nil
+	}
+	return o.Saml
+}
+
+func (o *Team) GetInviteCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InviteCode
+}
+
+func (o *Team) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *Team) GetStagingPrefix() string {
+	if o == nil {
+		return ""
+	}
+	return o.StagingPrefix
+}
+
+func (o *Team) GetResourceConfig() *TeamResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
+}
+
+func (o *Team) GetPreviewDeploymentSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewDeploymentSuffix
+}
+
+func (o *Team) GetRemoteCaching() *TeamRemoteCaching {
+	if o == nil {
+		return nil
+	}
+	return o.RemoteCaching
+}
+
+func (o *Team) GetEnablePreviewFeedback() *TeamEnablePreviewFeedback {
+	if o == nil {
+		return nil
+	}
+	return o.EnablePreviewFeedback
+}
+
+func (o *Team) GetEnableProductionFeedback() *EnableProductionFeedback {
+	if o == nil {
+		return nil
+	}
+	return o.EnableProductionFeedback
+}
+
+func (o *Team) GetSensitiveEnvironmentVariablePolicy() *SensitiveEnvironmentVariablePolicy {
+	if o == nil {
+		return nil
+	}
+	return o.SensitiveEnvironmentVariablePolicy
+}
+
+func (o *Team) GetHideIPAddresses() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideIPAddresses
+}
+
+func (o *Team) GetHideIPAddressesInLogDrains() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideIPAddressesInLogDrains
+}
+
+func (o *Team) GetIPBuckets() []IPBucket {
+	if o == nil {
+		return nil
+	}
+	return o.IPBuckets
+}
+
+func (o *Team) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *Team) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Team) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+func (o *Team) GetMembership() TeamMembership {
+	if o == nil {
+		return TeamMembership{}
+	}
+	return o.Membership
+}
+
+func (o *Team) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
 }
 
 func (o *Team) GetAdditionalProperties() map[string]any {

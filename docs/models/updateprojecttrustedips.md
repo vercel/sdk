@@ -9,12 +9,8 @@ import { UpdateProjectTrustedIps } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectTrustedIps = {
   deploymentType: "preview",
-  addresses: [
-    {
-      value: "<value>",
-    },
-  ],
-  protectionMode: "exclusive",
+  addresses: [],
+  protectionMode: "additional",
 };
 ```
 

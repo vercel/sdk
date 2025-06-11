@@ -2027,7 +2027,7 @@ export type PayloadBuildEntitlements = {
 
 export const PayloadPurchaseType = {
   Enhanced: "enhanced",
-  Ultra: "ultra",
+  Turbo: "turbo",
 } as const;
 export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 
@@ -2150,6 +2150,7 @@ export const PayloadBlockedDueToOverageType = {
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
   DataCacheRead: "dataCacheRead",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
@@ -2161,6 +2162,8 @@ export const PayloadBlockedDueToOverageType = {
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
   FunctionDuration: "functionDuration",
   FunctionInvocation: "functionInvocation",
   ImageOptimizationCacheRead: "imageOptimizationCacheRead",
@@ -2170,11 +2173,14 @@ export const PayloadBlockedDueToOverageType = {
   MonitoringMetric: "monitoringMetric",
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
   PostgresDataTransfer: "postgresDataTransfer",
   PostgresDatabase: "postgresDatabase",
   PostgresWrittenData: "postgresWrittenData",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
   StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
@@ -2327,6 +2333,12 @@ export type BlobTotalSimpleRequests = {
   blockedAt?: number | null | undefined;
 };
 
+export type ConnectDataTransfer = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
 export type DataCacheRead = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
@@ -2393,6 +2405,18 @@ export type FastOriginTransfer = {
   blockedAt?: number | null | undefined;
 };
 
+export type FluidCpuDuration = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+export type FluidDuration = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
 export type FunctionDuration = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
@@ -2447,6 +2471,12 @@ export type ObservabilityEvent = {
   blockedAt?: number | null | undefined;
 };
 
+export type OnDemandConcurrencyMinutes = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
 export type PostgresComputeTime = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
@@ -2472,6 +2502,18 @@ export type PostgresDatabase = {
 };
 
 export type PostgresWrittenData = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+export type RuntimeCacheRead = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+export type RuntimeCacheWrite = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
   blockedAt?: number | null | undefined;
@@ -2547,6 +2589,7 @@ export type OverageUsageAlerts = {
     | BlobTotalGetResponseObjectSizeInBytes
     | undefined;
   blobTotalSimpleRequests?: BlobTotalSimpleRequests | undefined;
+  connectDataTransfer?: ConnectDataTransfer | undefined;
   dataCacheRead?: DataCacheRead | undefined;
   dataCacheWrite?: DataCacheWrite | undefined;
   edgeConfigRead?: EdgeConfigRead | undefined;
@@ -2560,6 +2603,8 @@ export type OverageUsageAlerts = {
   elasticConcurrencyBuildSlots?: ElasticConcurrencyBuildSlots | undefined;
   fastDataTransfer?: FastDataTransfer | undefined;
   fastOriginTransfer?: FastOriginTransfer | undefined;
+  fluidCpuDuration?: FluidCpuDuration | undefined;
+  fluidDuration?: FluidDuration | undefined;
   functionDuration?: FunctionDuration | undefined;
   functionInvocation?: FunctionInvocation | undefined;
   imageOptimizationCacheRead?: ImageOptimizationCacheRead | undefined;
@@ -2569,11 +2614,14 @@ export type OverageUsageAlerts = {
   monitoringMetric?: MonitoringMetric | undefined;
   blobDataTransfer?: BlobDataTransfer | undefined;
   observabilityEvent?: ObservabilityEvent | undefined;
+  onDemandConcurrencyMinutes?: OnDemandConcurrencyMinutes | undefined;
   postgresComputeTime?: PostgresComputeTime | undefined;
   postgresDataStorage?: PostgresDataStorage | undefined;
   postgresDataTransfer?: PostgresDataTransfer | undefined;
   postgresDatabase?: PostgresDatabase | undefined;
   postgresWrittenData?: PostgresWrittenData | undefined;
+  runtimeCacheRead?: RuntimeCacheRead | undefined;
+  runtimeCacheWrite?: RuntimeCacheWrite | undefined;
   serverlessFunctionExecution?: ServerlessFunctionExecution | undefined;
   sourceImages?: SourceImages | undefined;
   storageRedisTotalBandwidthInBytes?:
@@ -2599,9 +2647,17 @@ export type OverageMetadata = {
    */
   firstTimeOnDemandNotificationSentAt?: number | undefined;
   /**
-   * Tracks the last time we sent a summary email.
+   * Tracks the last time we sent a daily summary email.
    */
-  overageSummaryEmailSentAt?: number | undefined;
+  dailyOverageSummaryEmailSentAt?: number | undefined;
+  /**
+   * Tracks the last time we sent a weekly summary email.
+   */
+  weeklyOverageSummaryEmailSentAt?: number | undefined;
+  /**
+   * Tracks when the overage summary email will stop auto-sending. We currently lock the user into email for a month after the last on-demand usage.
+   */
+  overageSummaryExpiresAt?: number | undefined;
   /**
    * Tracks the last time we sent a increased on-demand email.
    */
@@ -2611,7 +2667,7 @@ export type OverageMetadata = {
 /**
  * Whether the Vercel Toolbar is enabled for preview deployments.
  */
-export const EnablePreviewFeedback = {
+export const PayloadEnablePreviewFeedback = {
   Default: "default",
   On: "on",
   Off: "off",
@@ -2622,7 +2678,9 @@ export const EnablePreviewFeedback = {
 /**
  * Whether the Vercel Toolbar is enabled for preview deployments.
  */
-export type EnablePreviewFeedback = ClosedEnum<typeof EnablePreviewFeedback>;
+export type PayloadEnablePreviewFeedback = ClosedEnum<
+  typeof PayloadEnablePreviewFeedback
+>;
 
 export const BlockReason = {
   AdminOverride: "admin_override",
@@ -2745,6 +2803,7 @@ export const OverageReason = {
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
   DataCacheRead: "dataCacheRead",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
@@ -2756,6 +2815,8 @@ export const OverageReason = {
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
   FunctionDuration: "functionDuration",
   FunctionInvocation: "functionInvocation",
   ImageOptimizationCacheRead: "imageOptimizationCacheRead",
@@ -2765,11 +2826,14 @@ export const OverageReason = {
   MonitoringMetric: "monitoringMetric",
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
   PostgresDataTransfer: "postgresDataTransfer",
   PostgresDatabase: "postgresDatabase",
   PostgresWrittenData: "postgresWrittenData",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
   StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
@@ -2810,6 +2874,7 @@ export const PayloadOverageReason = {
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
   DataCacheRead: "dataCacheRead",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
@@ -2821,6 +2886,8 @@ export const PayloadOverageReason = {
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
   FunctionDuration: "functionDuration",
   FunctionInvocation: "functionInvocation",
   ImageOptimizationCacheRead: "imageOptimizationCacheRead",
@@ -2830,11 +2897,14 @@ export const PayloadOverageReason = {
   MonitoringMetric: "monitoringMetric",
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
   PostgresDataTransfer: "postgresDataTransfer",
   PostgresDatabase: "postgresDatabase",
   PostgresWrittenData: "postgresWrittenData",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
   StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
@@ -2875,6 +2945,7 @@ export const UserEventPayloadOverageReason = {
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
   DataCacheRead: "dataCacheRead",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
@@ -2886,6 +2957,8 @@ export const UserEventPayloadOverageReason = {
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
   FunctionDuration: "functionDuration",
   FunctionInvocation: "functionInvocation",
   ImageOptimizationCacheRead: "imageOptimizationCacheRead",
@@ -2895,11 +2968,14 @@ export const UserEventPayloadOverageReason = {
   MonitoringMetric: "monitoringMetric",
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
   PostgresDataTransfer: "postgresDataTransfer",
   PostgresDatabase: "postgresDatabase",
   PostgresWrittenData: "postgresWrittenData",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
   StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
@@ -3100,7 +3176,7 @@ export type NewOwner = {
   /**
    * Whether the Vercel Toolbar is enabled for preview deployments.
    */
-  enablePreviewFeedback?: EnablePreviewFeedback | undefined;
+  enablePreviewFeedback?: PayloadEnablePreviewFeedback | undefined;
   /**
    * Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
    */
@@ -18760,6 +18836,66 @@ export function blobTotalSimpleRequestsFromJSON(
 }
 
 /** @internal */
+export const ConnectDataTransfer$inboundSchema: z.ZodType<
+  ConnectDataTransfer,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type ConnectDataTransfer$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const ConnectDataTransfer$outboundSchema: z.ZodType<
+  ConnectDataTransfer$Outbound,
+  z.ZodTypeDef,
+  ConnectDataTransfer
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectDataTransfer$ {
+  /** @deprecated use `ConnectDataTransfer$inboundSchema` instead. */
+  export const inboundSchema = ConnectDataTransfer$inboundSchema;
+  /** @deprecated use `ConnectDataTransfer$outboundSchema` instead. */
+  export const outboundSchema = ConnectDataTransfer$outboundSchema;
+  /** @deprecated use `ConnectDataTransfer$Outbound` instead. */
+  export type Outbound = ConnectDataTransfer$Outbound;
+}
+
+export function connectDataTransferToJSON(
+  connectDataTransfer: ConnectDataTransfer,
+): string {
+  return JSON.stringify(
+    ConnectDataTransfer$outboundSchema.parse(connectDataTransfer),
+  );
+}
+
+export function connectDataTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectDataTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectDataTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectDataTransfer' from JSON`,
+  );
+}
+
+/** @internal */
 export const DataCacheRead$inboundSchema: z.ZodType<
   DataCacheRead,
   z.ZodTypeDef,
@@ -19406,6 +19542,122 @@ export function fastOriginTransferFromJSON(
 }
 
 /** @internal */
+export const FluidCpuDuration$inboundSchema: z.ZodType<
+  FluidCpuDuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type FluidCpuDuration$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const FluidCpuDuration$outboundSchema: z.ZodType<
+  FluidCpuDuration$Outbound,
+  z.ZodTypeDef,
+  FluidCpuDuration
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FluidCpuDuration$ {
+  /** @deprecated use `FluidCpuDuration$inboundSchema` instead. */
+  export const inboundSchema = FluidCpuDuration$inboundSchema;
+  /** @deprecated use `FluidCpuDuration$outboundSchema` instead. */
+  export const outboundSchema = FluidCpuDuration$outboundSchema;
+  /** @deprecated use `FluidCpuDuration$Outbound` instead. */
+  export type Outbound = FluidCpuDuration$Outbound;
+}
+
+export function fluidCpuDurationToJSON(
+  fluidCpuDuration: FluidCpuDuration,
+): string {
+  return JSON.stringify(
+    FluidCpuDuration$outboundSchema.parse(fluidCpuDuration),
+  );
+}
+
+export function fluidCpuDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<FluidCpuDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FluidCpuDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FluidCpuDuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const FluidDuration$inboundSchema: z.ZodType<
+  FluidDuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type FluidDuration$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const FluidDuration$outboundSchema: z.ZodType<
+  FluidDuration$Outbound,
+  z.ZodTypeDef,
+  FluidDuration
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FluidDuration$ {
+  /** @deprecated use `FluidDuration$inboundSchema` instead. */
+  export const inboundSchema = FluidDuration$inboundSchema;
+  /** @deprecated use `FluidDuration$outboundSchema` instead. */
+  export const outboundSchema = FluidDuration$outboundSchema;
+  /** @deprecated use `FluidDuration$Outbound` instead. */
+  export type Outbound = FluidDuration$Outbound;
+}
+
+export function fluidDurationToJSON(fluidDuration: FluidDuration): string {
+  return JSON.stringify(FluidDuration$outboundSchema.parse(fluidDuration));
+}
+
+export function fluidDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<FluidDuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FluidDuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FluidDuration' from JSON`,
+  );
+}
+
+/** @internal */
 export const FunctionDuration$inboundSchema: z.ZodType<
   FunctionDuration,
   z.ZodTypeDef,
@@ -19948,6 +20200,66 @@ export function observabilityEventFromJSON(
 }
 
 /** @internal */
+export const OnDemandConcurrencyMinutes$inboundSchema: z.ZodType<
+  OnDemandConcurrencyMinutes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type OnDemandConcurrencyMinutes$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const OnDemandConcurrencyMinutes$outboundSchema: z.ZodType<
+  OnDemandConcurrencyMinutes$Outbound,
+  z.ZodTypeDef,
+  OnDemandConcurrencyMinutes
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OnDemandConcurrencyMinutes$ {
+  /** @deprecated use `OnDemandConcurrencyMinutes$inboundSchema` instead. */
+  export const inboundSchema = OnDemandConcurrencyMinutes$inboundSchema;
+  /** @deprecated use `OnDemandConcurrencyMinutes$outboundSchema` instead. */
+  export const outboundSchema = OnDemandConcurrencyMinutes$outboundSchema;
+  /** @deprecated use `OnDemandConcurrencyMinutes$Outbound` instead. */
+  export type Outbound = OnDemandConcurrencyMinutes$Outbound;
+}
+
+export function onDemandConcurrencyMinutesToJSON(
+  onDemandConcurrencyMinutes: OnDemandConcurrencyMinutes,
+): string {
+  return JSON.stringify(
+    OnDemandConcurrencyMinutes$outboundSchema.parse(onDemandConcurrencyMinutes),
+  );
+}
+
+export function onDemandConcurrencyMinutesFromJSON(
+  jsonString: string,
+): SafeParseResult<OnDemandConcurrencyMinutes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OnDemandConcurrencyMinutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OnDemandConcurrencyMinutes' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostgresComputeTime$inboundSchema: z.ZodType<
   PostgresComputeTime,
   z.ZodTypeDef,
@@ -20244,6 +20556,126 @@ export function postgresWrittenDataFromJSON(
     jsonString,
     (x) => PostgresWrittenData$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PostgresWrittenData' from JSON`,
+  );
+}
+
+/** @internal */
+export const RuntimeCacheRead$inboundSchema: z.ZodType<
+  RuntimeCacheRead,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type RuntimeCacheRead$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const RuntimeCacheRead$outboundSchema: z.ZodType<
+  RuntimeCacheRead$Outbound,
+  z.ZodTypeDef,
+  RuntimeCacheRead
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RuntimeCacheRead$ {
+  /** @deprecated use `RuntimeCacheRead$inboundSchema` instead. */
+  export const inboundSchema = RuntimeCacheRead$inboundSchema;
+  /** @deprecated use `RuntimeCacheRead$outboundSchema` instead. */
+  export const outboundSchema = RuntimeCacheRead$outboundSchema;
+  /** @deprecated use `RuntimeCacheRead$Outbound` instead. */
+  export type Outbound = RuntimeCacheRead$Outbound;
+}
+
+export function runtimeCacheReadToJSON(
+  runtimeCacheRead: RuntimeCacheRead,
+): string {
+  return JSON.stringify(
+    RuntimeCacheRead$outboundSchema.parse(runtimeCacheRead),
+  );
+}
+
+export function runtimeCacheReadFromJSON(
+  jsonString: string,
+): SafeParseResult<RuntimeCacheRead, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RuntimeCacheRead$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RuntimeCacheRead' from JSON`,
+  );
+}
+
+/** @internal */
+export const RuntimeCacheWrite$inboundSchema: z.ZodType<
+  RuntimeCacheWrite,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/** @internal */
+export type RuntimeCacheWrite$Outbound = {
+  currentThreshold: number;
+  warningAt?: number | null | undefined;
+  blockedAt?: number | null | undefined;
+};
+
+/** @internal */
+export const RuntimeCacheWrite$outboundSchema: z.ZodType<
+  RuntimeCacheWrite$Outbound,
+  z.ZodTypeDef,
+  RuntimeCacheWrite
+> = z.object({
+  currentThreshold: z.number(),
+  warningAt: z.nullable(z.number()).optional(),
+  blockedAt: z.nullable(z.number()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RuntimeCacheWrite$ {
+  /** @deprecated use `RuntimeCacheWrite$inboundSchema` instead. */
+  export const inboundSchema = RuntimeCacheWrite$inboundSchema;
+  /** @deprecated use `RuntimeCacheWrite$outboundSchema` instead. */
+  export const outboundSchema = RuntimeCacheWrite$outboundSchema;
+  /** @deprecated use `RuntimeCacheWrite$Outbound` instead. */
+  export type Outbound = RuntimeCacheWrite$Outbound;
+}
+
+export function runtimeCacheWriteToJSON(
+  runtimeCacheWrite: RuntimeCacheWrite,
+): string {
+  return JSON.stringify(
+    RuntimeCacheWrite$outboundSchema.parse(runtimeCacheWrite),
+  );
+}
+
+export function runtimeCacheWriteFromJSON(
+  jsonString: string,
+): SafeParseResult<RuntimeCacheWrite, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RuntimeCacheWrite$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RuntimeCacheWrite' from JSON`,
   );
 }
 
@@ -20878,6 +21310,8 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   ).optional(),
   blobTotalSimpleRequests: z.lazy(() => BlobTotalSimpleRequests$inboundSchema)
     .optional(),
+  connectDataTransfer: z.lazy(() => ConnectDataTransfer$inboundSchema)
+    .optional(),
   dataCacheRead: z.lazy(() => DataCacheRead$inboundSchema).optional(),
   dataCacheWrite: z.lazy(() => DataCacheWrite$inboundSchema).optional(),
   edgeConfigRead: z.lazy(() => EdgeConfigRead$inboundSchema).optional(),
@@ -20897,6 +21331,8 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   ).optional(),
   fastDataTransfer: z.lazy(() => FastDataTransfer$inboundSchema).optional(),
   fastOriginTransfer: z.lazy(() => FastOriginTransfer$inboundSchema).optional(),
+  fluidCpuDuration: z.lazy(() => FluidCpuDuration$inboundSchema).optional(),
+  fluidDuration: z.lazy(() => FluidDuration$inboundSchema).optional(),
   functionDuration: z.lazy(() => FunctionDuration$inboundSchema).optional(),
   functionInvocation: z.lazy(() => FunctionInvocation$inboundSchema).optional(),
   imageOptimizationCacheRead: z.lazy(() =>
@@ -20912,6 +21348,9 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   monitoringMetric: z.lazy(() => MonitoringMetric$inboundSchema).optional(),
   blobDataTransfer: z.lazy(() => BlobDataTransfer$inboundSchema).optional(),
   observabilityEvent: z.lazy(() => ObservabilityEvent$inboundSchema).optional(),
+  onDemandConcurrencyMinutes: z.lazy(() =>
+    OnDemandConcurrencyMinutes$inboundSchema
+  ).optional(),
   postgresComputeTime: z.lazy(() => PostgresComputeTime$inboundSchema)
     .optional(),
   postgresDataStorage: z.lazy(() => PostgresDataStorage$inboundSchema)
@@ -20921,6 +21360,8 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   postgresDatabase: z.lazy(() => PostgresDatabase$inboundSchema).optional(),
   postgresWrittenData: z.lazy(() => PostgresWrittenData$inboundSchema)
     .optional(),
+  runtimeCacheRead: z.lazy(() => RuntimeCacheRead$inboundSchema).optional(),
+  runtimeCacheWrite: z.lazy(() => RuntimeCacheWrite$inboundSchema).optional(),
   serverlessFunctionExecution: z.lazy(() =>
     ServerlessFunctionExecution$inboundSchema
   ).optional(),
@@ -20956,6 +21397,7 @@ export type OverageUsageAlerts$Outbound = {
     | BlobTotalGetResponseObjectSizeInBytes$Outbound
     | undefined;
   blobTotalSimpleRequests?: BlobTotalSimpleRequests$Outbound | undefined;
+  connectDataTransfer?: ConnectDataTransfer$Outbound | undefined;
   dataCacheRead?: DataCacheRead$Outbound | undefined;
   dataCacheWrite?: DataCacheWrite$Outbound | undefined;
   edgeConfigRead?: EdgeConfigRead$Outbound | undefined;
@@ -20971,6 +21413,8 @@ export type OverageUsageAlerts$Outbound = {
     | undefined;
   fastDataTransfer?: FastDataTransfer$Outbound | undefined;
   fastOriginTransfer?: FastOriginTransfer$Outbound | undefined;
+  fluidCpuDuration?: FluidCpuDuration$Outbound | undefined;
+  fluidDuration?: FluidDuration$Outbound | undefined;
   functionDuration?: FunctionDuration$Outbound | undefined;
   functionInvocation?: FunctionInvocation$Outbound | undefined;
   imageOptimizationCacheRead?: ImageOptimizationCacheRead$Outbound | undefined;
@@ -20984,11 +21428,14 @@ export type OverageUsageAlerts$Outbound = {
   monitoringMetric?: MonitoringMetric$Outbound | undefined;
   blobDataTransfer?: BlobDataTransfer$Outbound | undefined;
   observabilityEvent?: ObservabilityEvent$Outbound | undefined;
+  onDemandConcurrencyMinutes?: OnDemandConcurrencyMinutes$Outbound | undefined;
   postgresComputeTime?: PostgresComputeTime$Outbound | undefined;
   postgresDataStorage?: PostgresDataStorage$Outbound | undefined;
   postgresDataTransfer?: PostgresDataTransfer$Outbound | undefined;
   postgresDatabase?: PostgresDatabase$Outbound | undefined;
   postgresWrittenData?: PostgresWrittenData$Outbound | undefined;
+  runtimeCacheRead?: RuntimeCacheRead$Outbound | undefined;
+  runtimeCacheWrite?: RuntimeCacheWrite$Outbound | undefined;
   serverlessFunctionExecution?:
     | ServerlessFunctionExecution$Outbound
     | undefined;
@@ -21026,6 +21473,8 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   ).optional(),
   blobTotalSimpleRequests: z.lazy(() => BlobTotalSimpleRequests$outboundSchema)
     .optional(),
+  connectDataTransfer: z.lazy(() => ConnectDataTransfer$outboundSchema)
+    .optional(),
   dataCacheRead: z.lazy(() => DataCacheRead$outboundSchema).optional(),
   dataCacheWrite: z.lazy(() => DataCacheWrite$outboundSchema).optional(),
   edgeConfigRead: z.lazy(() => EdgeConfigRead$outboundSchema).optional(),
@@ -21046,6 +21495,8 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   fastDataTransfer: z.lazy(() => FastDataTransfer$outboundSchema).optional(),
   fastOriginTransfer: z.lazy(() => FastOriginTransfer$outboundSchema)
     .optional(),
+  fluidCpuDuration: z.lazy(() => FluidCpuDuration$outboundSchema).optional(),
+  fluidDuration: z.lazy(() => FluidDuration$outboundSchema).optional(),
   functionDuration: z.lazy(() => FunctionDuration$outboundSchema).optional(),
   functionInvocation: z.lazy(() => FunctionInvocation$outboundSchema)
     .optional(),
@@ -21063,6 +21514,9 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   blobDataTransfer: z.lazy(() => BlobDataTransfer$outboundSchema).optional(),
   observabilityEvent: z.lazy(() => ObservabilityEvent$outboundSchema)
     .optional(),
+  onDemandConcurrencyMinutes: z.lazy(() =>
+    OnDemandConcurrencyMinutes$outboundSchema
+  ).optional(),
   postgresComputeTime: z.lazy(() => PostgresComputeTime$outboundSchema)
     .optional(),
   postgresDataStorage: z.lazy(() => PostgresDataStorage$outboundSchema)
@@ -21072,6 +21526,8 @@ export const OverageUsageAlerts$outboundSchema: z.ZodType<
   postgresDatabase: z.lazy(() => PostgresDatabase$outboundSchema).optional(),
   postgresWrittenData: z.lazy(() => PostgresWrittenData$outboundSchema)
     .optional(),
+  runtimeCacheRead: z.lazy(() => RuntimeCacheRead$outboundSchema).optional(),
+  runtimeCacheWrite: z.lazy(() => RuntimeCacheWrite$outboundSchema).optional(),
   serverlessFunctionExecution: z.lazy(() =>
     ServerlessFunctionExecution$outboundSchema
   ).optional(),
@@ -21134,14 +21590,18 @@ export const OverageMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   firstTimeOnDemandNotificationSentAt: z.number().optional(),
-  overageSummaryEmailSentAt: z.number().optional(),
+  dailyOverageSummaryEmailSentAt: z.number().optional(),
+  weeklyOverageSummaryEmailSentAt: z.number().optional(),
+  overageSummaryExpiresAt: z.number().optional(),
   increasedOnDemandEmailSentAt: z.number().optional(),
 });
 
 /** @internal */
 export type OverageMetadata$Outbound = {
   firstTimeOnDemandNotificationSentAt?: number | undefined;
-  overageSummaryEmailSentAt?: number | undefined;
+  dailyOverageSummaryEmailSentAt?: number | undefined;
+  weeklyOverageSummaryEmailSentAt?: number | undefined;
+  overageSummaryExpiresAt?: number | undefined;
   increasedOnDemandEmailSentAt?: number | undefined;
 };
 
@@ -21152,7 +21612,9 @@ export const OverageMetadata$outboundSchema: z.ZodType<
   OverageMetadata
 > = z.object({
   firstTimeOnDemandNotificationSentAt: z.number().optional(),
-  overageSummaryEmailSentAt: z.number().optional(),
+  dailyOverageSummaryEmailSentAt: z.number().optional(),
+  weeklyOverageSummaryEmailSentAt: z.number().optional(),
+  overageSummaryExpiresAt: z.number().optional(),
   increasedOnDemandEmailSentAt: z.number().optional(),
 });
 
@@ -21186,24 +21648,24 @@ export function overageMetadataFromJSON(
 }
 
 /** @internal */
-export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
-  typeof EnablePreviewFeedback
-> = z.nativeEnum(EnablePreviewFeedback);
+export const PayloadEnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadEnablePreviewFeedback
+> = z.nativeEnum(PayloadEnablePreviewFeedback);
 
 /** @internal */
-export const EnablePreviewFeedback$outboundSchema: z.ZodNativeEnum<
-  typeof EnablePreviewFeedback
-> = EnablePreviewFeedback$inboundSchema;
+export const PayloadEnablePreviewFeedback$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadEnablePreviewFeedback
+> = PayloadEnablePreviewFeedback$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EnablePreviewFeedback$ {
-  /** @deprecated use `EnablePreviewFeedback$inboundSchema` instead. */
-  export const inboundSchema = EnablePreviewFeedback$inboundSchema;
-  /** @deprecated use `EnablePreviewFeedback$outboundSchema` instead. */
-  export const outboundSchema = EnablePreviewFeedback$outboundSchema;
+export namespace PayloadEnablePreviewFeedback$ {
+  /** @deprecated use `PayloadEnablePreviewFeedback$inboundSchema` instead. */
+  export const inboundSchema = PayloadEnablePreviewFeedback$inboundSchema;
+  /** @deprecated use `PayloadEnablePreviewFeedback$outboundSchema` instead. */
+  export const outboundSchema = PayloadEnablePreviewFeedback$outboundSchema;
 }
 
 /** @internal */
@@ -22470,7 +22932,7 @@ export const NewOwner$inboundSchema: z.ZodType<
   overageMetadata: z.lazy(() => OverageMetadata$inboundSchema).optional(),
   username: z.string(),
   updatedAt: z.number(),
-  enablePreviewFeedback: EnablePreviewFeedback$inboundSchema.optional(),
+  enablePreviewFeedback: PayloadEnablePreviewFeedback$inboundSchema.optional(),
   featureBlocks: z.lazy(() => PayloadFeatureBlocks$inboundSchema).optional(),
   defaultTeamId: z.string().optional(),
   version: Version$inboundSchema,
@@ -22655,7 +23117,7 @@ export const NewOwner$outboundSchema: z.ZodType<
   overageMetadata: z.lazy(() => OverageMetadata$outboundSchema).optional(),
   username: z.string(),
   updatedAt: z.number(),
-  enablePreviewFeedback: EnablePreviewFeedback$outboundSchema.optional(),
+  enablePreviewFeedback: PayloadEnablePreviewFeedback$outboundSchema.optional(),
   featureBlocks: z.lazy(() => PayloadFeatureBlocks$outboundSchema).optional(),
   defaultTeamId: z.string().optional(),
   version: Version$outboundSchema,

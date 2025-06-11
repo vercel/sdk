@@ -14,8 +14,8 @@ let value: GitRepo2 = {
   path: "/Network",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
-  ownerType: "user",
+  private: true,
+  ownerType: "team",
 };
 ```
 

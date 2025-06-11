@@ -22,12 +22,13 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import { SDKError } from "../models/sdkerror.js";
+import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   VercelBadRequestError,
   VercelBadRequestError$inboundSchema,
 } from "../models/vercelbadrequesterror.js";
+import { VercelError } from "../models/vercelerror.js";
 import {
   VercelNotFoundError,
   VercelNotFoundError$inboundSchema,
@@ -50,13 +51,14 @@ export function marketplaceExchangeSsoToken(
     ExchangeSsoTokenResponseBody,
     | VercelBadRequestError
     | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -76,13 +78,14 @@ async function $do(
       ExchangeSsoTokenResponseBody,
       | VercelBadRequestError
       | VercelNotFoundError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | VercelError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -106,6 +109,7 @@ async function $do(
   }));
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "exchange-sso-token",
     oAuth2Scopes: [],
@@ -125,6 +129,7 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -151,20 +156,21 @@ async function $do(
     ExchangeSsoTokenResponseBody,
     | VercelBadRequestError
     | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, ExchangeSsoTokenResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail([500, "5XX"]),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

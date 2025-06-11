@@ -10,22 +10,22 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// Revoke - Optional instructions for revoking and regenerating a automation bypass
-type Revoke struct {
+// UpdateProjectProtectionBypassRevoke - Optional instructions for revoking and regenerating a automation bypass
+type UpdateProjectProtectionBypassRevoke struct {
 	// Automation bypass to revoked
 	Secret string `json:"secret"`
 	// Whether or not a new automation bypass should be created after the provided secret is revoked
 	Regenerate bool `json:"regenerate"`
 }
 
-func (o *Revoke) GetSecret() string {
+func (o *UpdateProjectProtectionBypassRevoke) GetSecret() string {
 	if o == nil {
 		return ""
 	}
 	return o.Secret
 }
 
-func (o *Revoke) GetRegenerate() bool {
+func (o *UpdateProjectProtectionBypassRevoke) GetRegenerate() bool {
 	if o == nil {
 		return false
 	}
@@ -47,12 +47,12 @@ func (o *Generate) GetSecret() *string {
 
 type UpdateProjectProtectionBypassRequestBody struct {
 	// Optional instructions for revoking and regenerating a automation bypass
-	Revoke *Revoke `json:"revoke,omitempty"`
+	Revoke *UpdateProjectProtectionBypassRevoke `json:"revoke,omitempty"`
 	// Generate a new secret. If neither generate or revoke are provided, a new random secret will be generated.
 	Generate *Generate `json:"generate,omitempty"`
 }
 
-func (o *UpdateProjectProtectionBypassRequestBody) GetRevoke() *Revoke {
+func (o *UpdateProjectProtectionBypassRequestBody) GetRevoke() *UpdateProjectProtectionBypassRevoke {
 	if o == nil {
 		return nil
 	}
@@ -104,190 +104,190 @@ func (o *UpdateProjectProtectionBypassRequest) GetRequestBody() UpdateProjectPro
 	return o.RequestBody
 }
 
-type UpdateProjectProtectionBypassProtectionBypassProjectsScope string
+type UpdateProjectProtectionBypassScopeAutomationBypass string
 
 const (
-	UpdateProjectProtectionBypassProtectionBypassProjectsScopeAutomationBypass UpdateProjectProtectionBypassProtectionBypassProjectsScope = "automation-bypass"
+	UpdateProjectProtectionBypassScopeAutomationBypassAutomationBypass UpdateProjectProtectionBypassScopeAutomationBypass = "automation-bypass"
 )
 
-func (e UpdateProjectProtectionBypassProtectionBypassProjectsScope) ToPointer() *UpdateProjectProtectionBypassProtectionBypassProjectsScope {
+func (e UpdateProjectProtectionBypassScopeAutomationBypass) ToPointer() *UpdateProjectProtectionBypassScopeAutomationBypass {
 	return &e
 }
-func (e *UpdateProjectProtectionBypassProtectionBypassProjectsScope) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectProtectionBypassScopeAutomationBypass) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "automation-bypass":
-		*e = UpdateProjectProtectionBypassProtectionBypassProjectsScope(v)
+		*e = UpdateProjectProtectionBypassScopeAutomationBypass(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassProtectionBypassProjectsScope: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassScopeAutomationBypass: %v", v)
 	}
 }
 
-type UpdateProjectProtectionBypassProtectionBypass2 struct {
-	CreatedAt float64                                                    `json:"createdAt"`
-	CreatedBy string                                                     `json:"createdBy"`
-	Scope     UpdateProjectProtectionBypassProtectionBypassProjectsScope `json:"scope"`
+type UpdateProjectProtectionBypassProtectionBypassAutomationBypass struct {
+	CreatedAt float64                                            `json:"createdAt"`
+	CreatedBy string                                             `json:"createdBy"`
+	Scope     UpdateProjectProtectionBypassScopeAutomationBypass `json:"scope"`
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass2) GetCreatedAt() float64 {
+func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass2) GetCreatedBy() string {
+func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass2) GetScope() UpdateProjectProtectionBypassProtectionBypassProjectsScope {
+func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetScope() UpdateProjectProtectionBypassScopeAutomationBypass {
 	if o == nil {
-		return UpdateProjectProtectionBypassProtectionBypassProjectsScope("")
+		return UpdateProjectProtectionBypassScopeAutomationBypass("")
 	}
 	return o.Scope
 }
 
-type UpdateProjectProtectionBypassProtectionBypassScope string
+type UpdateProjectProtectionBypassScopeIntegrationAutomationBypass string
 
 const (
-	UpdateProjectProtectionBypassProtectionBypassScopeIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassScope = "integration-automation-bypass"
+	UpdateProjectProtectionBypassScopeIntegrationAutomationBypassIntegrationAutomationBypass UpdateProjectProtectionBypassScopeIntegrationAutomationBypass = "integration-automation-bypass"
 )
 
-func (e UpdateProjectProtectionBypassProtectionBypassScope) ToPointer() *UpdateProjectProtectionBypassProtectionBypassScope {
+func (e UpdateProjectProtectionBypassScopeIntegrationAutomationBypass) ToPointer() *UpdateProjectProtectionBypassScopeIntegrationAutomationBypass {
 	return &e
 }
-func (e *UpdateProjectProtectionBypassProtectionBypassScope) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectProtectionBypassScopeIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-automation-bypass":
-		*e = UpdateProjectProtectionBypassProtectionBypassScope(v)
+		*e = UpdateProjectProtectionBypassScopeIntegrationAutomationBypass(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassProtectionBypassScope: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassScopeIntegrationAutomationBypass: %v", v)
 	}
 }
 
-type UpdateProjectProtectionBypassProtectionBypass1 struct {
-	CreatedAt       float64                                            `json:"createdAt"`
-	CreatedBy       string                                             `json:"createdBy"`
-	Scope           UpdateProjectProtectionBypassProtectionBypassScope `json:"scope"`
-	IntegrationID   string                                             `json:"integrationId"`
-	ConfigurationID string                                             `json:"configurationId"`
+type UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass struct {
+	CreatedAt       float64                                                       `json:"createdAt"`
+	CreatedBy       string                                                        `json:"createdBy"`
+	Scope           UpdateProjectProtectionBypassScopeIntegrationAutomationBypass `json:"scope"`
+	IntegrationID   string                                                        `json:"integrationId"`
+	ConfigurationID string                                                        `json:"configurationId"`
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass1) GetCreatedAt() float64 {
+func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass1) GetCreatedBy() string {
+func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass1) GetScope() UpdateProjectProtectionBypassProtectionBypassScope {
+func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) GetScope() UpdateProjectProtectionBypassScopeIntegrationAutomationBypass {
 	if o == nil {
-		return UpdateProjectProtectionBypassProtectionBypassScope("")
+		return UpdateProjectProtectionBypassScopeIntegrationAutomationBypass("")
 	}
 	return o.Scope
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass1) GetIntegrationID() string {
+func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *UpdateProjectProtectionBypassProtectionBypass1) GetConfigurationID() string {
+func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) GetConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConfigurationID
 }
 
-type UpdateProjectProtectionBypassProtectionBypassType string
+type UpdateProjectProtectionBypassProtectionBypassUnionType string
 
 const (
-	UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass1 UpdateProjectProtectionBypassProtectionBypassType = "updateProjectProtectionBypass_protectionBypass_1"
-	UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass2 UpdateProjectProtectionBypassProtectionBypassType = "updateProjectProtectionBypass_protectionBypass_2"
+	UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassUnionType = "updateProjectProtectionBypass_protectionBypass_IntegrationAutomationBypass"
+	UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass            UpdateProjectProtectionBypassProtectionBypassUnionType = "updateProjectProtectionBypass_protectionBypass_AutomationBypass"
 )
 
-type UpdateProjectProtectionBypassProtectionBypass struct {
-	UpdateProjectProtectionBypassProtectionBypass1 *UpdateProjectProtectionBypassProtectionBypass1
-	UpdateProjectProtectionBypassProtectionBypass2 *UpdateProjectProtectionBypassProtectionBypass2
+type UpdateProjectProtectionBypassProtectionBypassUnion struct {
+	UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass `queryParam:"inline"`
+	UpdateProjectProtectionBypassProtectionBypassAutomationBypass            *UpdateProjectProtectionBypassProtectionBypassAutomationBypass            `queryParam:"inline"`
 
-	Type UpdateProjectProtectionBypassProtectionBypassType
+	Type UpdateProjectProtectionBypassProtectionBypassUnionType
 }
 
-func CreateUpdateProjectProtectionBypassProtectionBypassUpdateProjectProtectionBypassProtectionBypass1(updateProjectProtectionBypassProtectionBypass1 UpdateProjectProtectionBypassProtectionBypass1) UpdateProjectProtectionBypassProtectionBypass {
-	typ := UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass1
+func CreateUpdateProjectProtectionBypassProtectionBypassUnionUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass(updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
 
-	return UpdateProjectProtectionBypassProtectionBypass{
-		UpdateProjectProtectionBypassProtectionBypass1: &updateProjectProtectionBypassProtectionBypass1,
+	return UpdateProjectProtectionBypassProtectionBypassUnion{
+		UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass: &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectProtectionBypassProtectionBypassUpdateProjectProtectionBypassProtectionBypass2(updateProjectProtectionBypassProtectionBypass2 UpdateProjectProtectionBypassProtectionBypass2) UpdateProjectProtectionBypassProtectionBypass {
-	typ := UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass2
+func CreateUpdateProjectProtectionBypassProtectionBypassUnionUpdateProjectProtectionBypassProtectionBypassAutomationBypass(updateProjectProtectionBypassProtectionBypassAutomationBypass UpdateProjectProtectionBypassProtectionBypassAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass
 
-	return UpdateProjectProtectionBypassProtectionBypass{
-		UpdateProjectProtectionBypassProtectionBypass2: &updateProjectProtectionBypassProtectionBypass2,
+	return UpdateProjectProtectionBypassProtectionBypassUnion{
+		UpdateProjectProtectionBypassProtectionBypassAutomationBypass: &updateProjectProtectionBypassProtectionBypassAutomationBypass,
 		Type: typ,
 	}
 }
 
-func (u *UpdateProjectProtectionBypassProtectionBypass) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectProtectionBypassProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectProtectionBypassProtectionBypass2 UpdateProjectProtectionBypassProtectionBypass2 = UpdateProjectProtectionBypassProtectionBypass2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypass2, "", true, true); err == nil {
-		u.UpdateProjectProtectionBypassProtectionBypass2 = &updateProjectProtectionBypassProtectionBypass2
-		u.Type = UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass2
+	var updateProjectProtectionBypassProtectionBypassAutomationBypass UpdateProjectProtectionBypassProtectionBypassAutomationBypass = UpdateProjectProtectionBypassProtectionBypassAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassAutomationBypass, "", true, true); err == nil {
+		u.UpdateProjectProtectionBypassProtectionBypassAutomationBypass = &updateProjectProtectionBypassProtectionBypassAutomationBypass
+		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass
 		return nil
 	}
 
-	var updateProjectProtectionBypassProtectionBypass1 UpdateProjectProtectionBypassProtectionBypass1 = UpdateProjectProtectionBypassProtectionBypass1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypass1, "", true, true); err == nil {
-		u.UpdateProjectProtectionBypassProtectionBypass1 = &updateProjectProtectionBypassProtectionBypass1
-		u.Type = UpdateProjectProtectionBypassProtectionBypassTypeUpdateProjectProtectionBypassProtectionBypass1
+	var updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass = UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass, "", true, true); err == nil {
+		u.UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass = &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
+		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProtectionBypassProtectionBypass", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProtectionBypassProtectionBypassUnion", string(data))
 }
 
-func (u UpdateProjectProtectionBypassProtectionBypass) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectProtectionBypassProtectionBypass1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectProtectionBypassProtectionBypass1, "", true)
+func (u UpdateProjectProtectionBypassProtectionBypassUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass, "", true)
 	}
 
-	if u.UpdateProjectProtectionBypassProtectionBypass2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectProtectionBypassProtectionBypass2, "", true)
+	if u.UpdateProjectProtectionBypassProtectionBypassAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassProtectionBypassAutomationBypass, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectProtectionBypassProtectionBypass: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectProtectionBypassProtectionBypassUnion: all fields are null")
 }
 
 type UpdateProjectProtectionBypassResponseBody struct {
-	ProtectionBypass map[string]UpdateProjectProtectionBypassProtectionBypass `json:"protectionBypass,omitempty"`
+	ProtectionBypass map[string]UpdateProjectProtectionBypassProtectionBypassUnion `json:"protectionBypass,omitempty"`
 }
 
-func (o *UpdateProjectProtectionBypassResponseBody) GetProtectionBypass() map[string]UpdateProjectProtectionBypassProtectionBypass {
+func (o *UpdateProjectProtectionBypassResponseBody) GetProtectionBypass() map[string]UpdateProjectProtectionBypassProtectionBypassUnion {
 	if o == nil {
 		return nil
 	}

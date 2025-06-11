@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Credentials1 = {
-  type: "gitlab",
+  type: "google",
   id: "<id>",
 };
 ```
@@ -17,7 +17,7 @@ const value: models.Credentials1 = {
 ```typescript
 const value: models.Credentials2 = {
   type: "github-app-custom-host",
-  host: "chubby-horst.com",
+  host: "quiet-fax.name",
   id: "<id>",
 };
 ```

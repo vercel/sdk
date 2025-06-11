@@ -8,7 +8,7 @@ import { ListAccessGroupsResponseBody2 } from "@vercel/sdk/models/listaccessgrou
 let value: ListAccessGroupsResponseBody2 = {
   accessGroups: [
     {
-      isDsyncManaged: false,
+      isDsyncManaged: true,
       name: "my-access-group",
       createdAt: "1588720733602",
       teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -26,7 +26,7 @@ let value: ListAccessGroupsResponseBody2 = {
     },
   ],
   pagination: {
-    count: 8243.12,
+    count: 2726.07,
     next: "<value>",
   },
 };

@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsBuildMachineType } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectProjectsBuildMachineType = "ultra";
+let value: CreateProjectProjectsBuildMachineType = "turbo";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "ultra"
+"enhanced" | "turbo"
 ```

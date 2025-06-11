@@ -50,7 +50,7 @@ func testPatchEdgeConfigSchemaPatchEdgeConfigSchema0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.PatchEdgeConfigSchemaResponseBody{}
+	var respBody *operations.PatchEdgeConfigSchemaResponseBody = &operations.PatchEdgeConfigSchemaResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

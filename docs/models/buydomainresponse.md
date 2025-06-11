@@ -10,10 +10,12 @@ const value: models.BuyDomainResponseBody = {
   domain: {
     uid: "<id>",
     ns: [
-      "<value>",
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
-    verified: false,
-    created: 6372.91,
+    verified: true,
+    created: 5744.85,
     pending: false,
   },
 };
@@ -26,10 +28,12 @@ const value: models.BuyDomainDomainsResponseBody = {
   domain: {
     uid: "<id>",
     ns: [
-      "<value>",
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
-    verified: false,
-    created: 4728.58,
+    verified: true,
+    created: 5607.88,
     pending: false,
   },
 };

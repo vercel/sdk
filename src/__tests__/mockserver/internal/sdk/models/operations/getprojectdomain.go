@@ -45,36 +45,36 @@ func (o *GetProjectDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// Verification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-type Verification struct {
+// GetProjectDomainVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
+type GetProjectDomainVerification struct {
 	Type   string `json:"type"`
 	Domain string `json:"domain"`
 	Value  string `json:"value"`
 	Reason string `json:"reason"`
 }
 
-func (o *Verification) GetType() string {
+func (o *GetProjectDomainVerification) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *Verification) GetDomain() string {
+func (o *GetProjectDomainVerification) GetDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.Domain
 }
 
-func (o *Verification) GetValue() string {
+func (o *GetProjectDomainVerification) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *Verification) GetReason() string {
+func (o *GetProjectDomainVerification) GetReason() string {
 	if o == nil {
 		return ""
 	}
@@ -94,7 +94,7 @@ type GetProjectDomainResponseBody struct {
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
-	Verification []Verification `json:"verification,omitempty"`
+	Verification []GetProjectDomainVerification `json:"verification,omitempty"`
 }
 
 func (o *GetProjectDomainResponseBody) GetName() string {
@@ -167,7 +167,7 @@ func (o *GetProjectDomainResponseBody) GetVerified() bool {
 	return o.Verified
 }
 
-func (o *GetProjectDomainResponseBody) GetVerification() []Verification {
+func (o *GetProjectDomainResponseBody) GetVerification() []GetProjectDomainVerification {
 	if o == nil {
 		return nil
 	}

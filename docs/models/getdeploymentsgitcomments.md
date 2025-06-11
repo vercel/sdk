@@ -8,7 +8,7 @@ Since June '23
 import { GetDeploymentsGitComments } from "@vercel/sdk/models/getdeploymentsop.js";
 
 let value: GetDeploymentsGitComments = {
-  onPullRequest: false,
+  onPullRequest: true,
   onCommit: false,
 };
 ```

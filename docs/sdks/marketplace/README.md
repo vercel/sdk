@@ -41,7 +41,6 @@ async function run() {
     integrationConfigurationId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -66,15 +65,12 @@ async function run() {
   const res = await marketplaceGetAccountInfo(vercel, {
     integrationConfigurationId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceGetAccountInfo failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -99,6 +95,7 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getMember
@@ -120,7 +117,6 @@ async function run() {
     memberId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -146,15 +142,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     memberId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceGetMember failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -234,14 +227,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceCreateEvent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -266,6 +257,7 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## submitBillingData
@@ -408,14 +400,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceSubmitBillingData failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -440,6 +430,7 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## submitInvoice
@@ -485,7 +476,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -535,15 +525,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceSubmitInvoice failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -568,6 +555,7 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getInvoice
@@ -589,7 +577,6 @@ async function run() {
     invoiceId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -615,15 +602,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     invoiceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceGetInvoice failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -705,14 +689,12 @@ async function run() {
       total: "<value>",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceUpdateInvoice failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -782,14 +764,12 @@ async function run() {
   const res = await marketplaceSubmitPrepaymentBalances(vercel, {
     integrationConfigurationId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceSubmitPrepaymentBalances failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -814,6 +794,7 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
+| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## updateResourceSecrets
@@ -868,14 +849,12 @@ async function run() {
       secrets: [],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceUpdateResourceSecrets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -947,14 +926,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceUpdateResourceSecretsById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1001,7 +978,6 @@ async function run() {
     resourceId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1027,15 +1003,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceImportResource failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1081,7 +1054,6 @@ async function run() {
     clientSecret: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1106,15 +1078,12 @@ async function run() {
     clientId: "<id>",
     clientSecret: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceExchangeSsoToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1185,14 +1154,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceCreateInstallationIntegrationConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1266,14 +1233,12 @@ async function run() {
     resourceId: "<id>",
     itemId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceUpdateInstallationIntegrationConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1347,14 +1312,12 @@ async function run() {
     resourceId: "<id>",
     itemId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceDeleteInstallationIntegrationConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1401,7 +1364,6 @@ async function run() {
     resourceId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1427,15 +1389,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceCreateInstallationIntegrationEdgeConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1482,7 +1441,6 @@ async function run() {
     resourceId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1508,15 +1466,12 @@ async function run() {
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceUpdateInstallationIntegrationEdgeConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

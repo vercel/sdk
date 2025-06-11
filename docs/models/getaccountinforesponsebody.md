@@ -8,7 +8,7 @@ import { GetAccountInfoResponseBody } from "@vercel/sdk/models/getaccountinfoop.
 let value: GetAccountInfoResponseBody = {
   url: "https://friendly-sesame.org/",
   contact: {
-    email: "Griffin_Predovic@yahoo.com",
+    email: "Al_Stamm51@yahoo.com",
   },
 };
 ```

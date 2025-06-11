@@ -10,10 +10,8 @@ let value: ResponseBodyProxy = {
   method: "<value>",
   host: "boiling-switchboard.info",
   path: "/var/spool",
-  userAgent: [
-    "<value>",
-  ],
-  referer: "aware-saw.info",
+  userAgent: [],
+  referer: "sparkling-joy.name",
   region: "<value>",
 };
 ```

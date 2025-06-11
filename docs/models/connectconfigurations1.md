@@ -8,8 +8,8 @@ import { ConnectConfigurations1 } from "@vercel/sdk/models/updateprojectop.js";
 let value: ConnectConfigurations1 = {
   envId: "<id>",
   connectConfigurationId: "<id>",
-  passive: false,
-  buildsEnabled: false,
+  passive: true,
+  buildsEnabled: true,
 };
 ```
 

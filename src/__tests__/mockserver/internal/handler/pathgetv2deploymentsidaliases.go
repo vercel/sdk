@@ -45,8 +45,8 @@ func testListDeploymentAliasesListDeploymentAliases0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ListDeploymentAliasesResponseBody{
-		Aliases: []operations.Aliases{},
+	var respBody *operations.ListDeploymentAliasesResponseBody = &operations.ListDeploymentAliasesResponseBody{
+		Aliases: []operations.ListDeploymentAliasesAlias{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

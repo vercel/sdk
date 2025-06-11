@@ -46,23 +46,41 @@ func testGetTeamGetTeam0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.TeamLimited{
-		Limited: false,
-		LimitedBy: []components.LimitedBy{
-			components.LimitedByMfa,
+	var respBody *components.Team = &components.Team{
+		ID:          "team_nllPyCtREAqxxdyFKbbMDlxd",
+		CreatorID:   "R6efeCJQ2HKXywuasPDc0fOWB",
+		UpdatedAt:   1611796915677,
+		EmailDomain: types.String("example.com"),
+		Saml: &components.TeamSaml{
+			Connection: &components.TeamConnection{
+				Status:                   "linked",
+				Type:                     "OktaSAML",
+				State:                    "active",
+				ConnectedAt:              1611796915677,
+				LastReceivedWebhookEvent: types.Float64(1611796915677),
+			},
+			Directory: &components.TeamDirectory{
+				Type:                     "OktaSAML",
+				State:                    "active",
+				ConnectedAt:              1611796915677,
+				LastReceivedWebhookEvent: types.Float64(1611796915677),
+			},
+			Enforced: true,
 		},
-		ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
-		Slug:   "my-team",
-		Name:   types.String("My Team"),
-		Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
-		Membership: components.Membership{
+		InviteCode:              types.String("hasihf9e89"),
+		Description:             types.String("Our mission is to make cloud computing accessible to everyone."),
+		StagingPrefix:           "<value>",
+		PreviewDeploymentSuffix: types.String("example.dev"),
+		Slug:                    "my-team",
+		Name:                    types.String("My Team"),
+		Avatar:                  types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
+		Membership: components.TeamMembership{
 			Confirmed:   false,
-			ConfirmedAt: 7151.9,
-			Role:        components.RoleBilling,
-			CreatedAt:   5448.83,
-			Created:     4236.55,
+			ConfirmedAt: 4040.18,
+			Role:        components.TeamRole2Security,
+			CreatedAt:   1519.81,
+			Created:     619.38,
 		},
-		Created:   "<value>",
 		CreatedAt: 1630748523395,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

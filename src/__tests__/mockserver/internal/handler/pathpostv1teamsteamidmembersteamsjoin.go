@@ -50,7 +50,7 @@ func testJoinTeamJoinTeam0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.JoinTeamResponseBody{
+	var respBody *operations.JoinTeamResponseBody = &operations.JoinTeamResponseBody{
 		TeamID: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
 		Slug:   "my-team",
 		Name:   "My Team",

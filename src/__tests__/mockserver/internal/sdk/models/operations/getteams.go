@@ -39,58 +39,58 @@ func (o *GetTeamsRequest) GetUntil() *float64 {
 	return o.Until
 }
 
-type TeamsType string
+type GetTeamsTeamType string
 
 const (
-	TeamsTypeTeam        TeamsType = "Team"
-	TeamsTypeTeamLimited TeamsType = "TeamLimited"
+	GetTeamsTeamTypeTeam        GetTeamsTeamType = "Team"
+	GetTeamsTeamTypeTeamLimited GetTeamsTeamType = "TeamLimited"
 )
 
-type Teams struct {
-	Team        *components.Team
-	TeamLimited *components.TeamLimited
+type GetTeamsTeam struct {
+	Team        *components.Team        `queryParam:"inline"`
+	TeamLimited *components.TeamLimited `queryParam:"inline"`
 
-	Type TeamsType
+	Type GetTeamsTeamType
 }
 
-func CreateTeamsTeam(team components.Team) Teams {
-	typ := TeamsTypeTeam
+func CreateGetTeamsTeamTeam(team components.Team) GetTeamsTeam {
+	typ := GetTeamsTeamTypeTeam
 
-	return Teams{
+	return GetTeamsTeam{
 		Team: &team,
 		Type: typ,
 	}
 }
 
-func CreateTeamsTeamLimited(teamLimited components.TeamLimited) Teams {
-	typ := TeamsTypeTeamLimited
+func CreateGetTeamsTeamTeamLimited(teamLimited components.TeamLimited) GetTeamsTeam {
+	typ := GetTeamsTeamTypeTeamLimited
 
-	return Teams{
+	return GetTeamsTeam{
 		TeamLimited: &teamLimited,
 		Type:        typ,
 	}
 }
 
-func (u *Teams) UnmarshalJSON(data []byte) error {
-
-	var team components.Team = components.Team{}
-	if err := utils.UnmarshalJSON(data, &team, "", true, true); err == nil {
-		u.Team = &team
-		u.Type = TeamsTypeTeam
-		return nil
-	}
+func (u *GetTeamsTeam) UnmarshalJSON(data []byte) error {
 
 	var teamLimited components.TeamLimited = components.TeamLimited{}
 	if err := utils.UnmarshalJSON(data, &teamLimited, "", true, true); err == nil {
 		u.TeamLimited = &teamLimited
-		u.Type = TeamsTypeTeamLimited
+		u.Type = GetTeamsTeamTypeTeamLimited
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Teams", string(data))
+	var team components.Team = components.Team{}
+	if err := utils.UnmarshalJSON(data, &team, "", true, true); err == nil {
+		u.Team = &team
+		u.Type = GetTeamsTeamTypeTeam
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetTeamsTeam", string(data))
 }
 
-func (u Teams) MarshalJSON() ([]byte, error) {
+func (u GetTeamsTeam) MarshalJSON() ([]byte, error) {
 	if u.Team != nil {
 		return utils.MarshalJSON(u.Team, "", true)
 	}
@@ -99,19 +99,19 @@ func (u Teams) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.TeamLimited, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Teams: all fields are null")
+	return nil, errors.New("could not marshal union type GetTeamsTeam: all fields are null")
 }
 
 // GetTeamsResponseBody - A paginated list of teams.
 type GetTeamsResponseBody struct {
-	Teams []Teams `json:"teams"`
+	Teams []GetTeamsTeam `json:"teams"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *GetTeamsResponseBody) GetTeams() []Teams {
+func (o *GetTeamsResponseBody) GetTeams() []GetTeamsTeam {
 	if o == nil {
-		return []Teams{}
+		return []GetTeamsTeam{}
 	}
 	return o.Teams
 }

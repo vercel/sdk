@@ -8,9 +8,6 @@ import { PatchProjectsProjectIdLogsPresetsIdRequest } from "@vercel/sdk/models/p
 let value: PatchProjectsProjectIdLogsPresetsIdRequest = {
   projectId: "<id>",
   id: "<id>",
-  requestBody: {
-    title: "Request Path",
-  },
 };
 ```
 

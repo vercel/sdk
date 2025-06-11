@@ -8,8 +8,8 @@ PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
 import { Php } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Php = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

@@ -8,7 +8,7 @@ import { Routes3 } from "@vercel/sdk/models/createdeploymentop.js";
 let value: Routes3 = {
   src: "<value>",
   continue: false,
-  middleware: 5468.64,
+  middleware: 1714.6,
 };
 ```
 

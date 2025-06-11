@@ -7,13 +7,13 @@ import { RequestBodyValue } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBodyValue = {
   name: "<value>",
-  active: false,
+  active: true,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "protocol",
-          op: "pre",
+          type: "target_path",
+          op: "re",
         },
       ],
     },

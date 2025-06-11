@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CreateRecordRequestBody1 = {
   name: "subdomain",
-  type: "HTTPS",
+  type: "SRV",
   ttl: 60,
   value: "192.0.2.42",
   comment: "used to verify ownership of domain",
@@ -20,7 +20,7 @@ const value: models.CreateRecordRequestBody1 = {
 ```typescript
 const value: models.CreateRecordRequestBody2 = {
   name: "subdomain",
-  type: "A",
+  type: "CNAME",
   ttl: 60,
   value: "2001:DB8::42",
   comment: "used to verify ownership of domain",
@@ -32,7 +32,7 @@ const value: models.CreateRecordRequestBody2 = {
 ```typescript
 const value: models.CreateRecordRequestBody3 = {
   name: "subdomain",
-  type: "TXT",
+  type: "AAAA",
   ttl: 60,
   value: "cname.vercel-dns.com",
   comment: "used to verify ownership of domain",
@@ -44,7 +44,7 @@ const value: models.CreateRecordRequestBody3 = {
 ```typescript
 const value: models.RequestBody4 = {
   name: "subdomain",
-  type: "CAA",
+  type: "HTTPS",
   ttl: 60,
   value: "0 issue \\"letsencrypt.org\\"",
   comment: "used to verify ownership of domain",
@@ -56,7 +56,7 @@ const value: models.RequestBody4 = {
 ```typescript
 const value: models.RequestBody5 = {
   name: "subdomain",
-  type: "AAAA",
+  type: "MX",
   ttl: 60,
   value: "cname.vercel-dns.com",
   comment: "used to verify ownership of domain",
@@ -68,7 +68,7 @@ const value: models.RequestBody5 = {
 ```typescript
 const value: models.RequestBody6 = {
   name: "subdomain",
-  type: "CNAME",
+  type: "AAAA",
   ttl: 60,
   value: "10 mail.example.com.",
   mxPriority: 10,
@@ -80,7 +80,7 @@ const value: models.RequestBody6 = {
 
 ```typescript
 const value: models.RequestBody7 = {
-  type: "CAA",
+  type: "A",
   ttl: 60,
   srv: {
     priority: 10,
@@ -96,7 +96,7 @@ const value: models.RequestBody7 = {
 
 ```typescript
 const value: models.RequestBody8 = {
-  type: "A",
+  type: "CNAME",
   ttl: 60,
   value: "hello",
   comment: "used to verify ownership of domain",
@@ -108,7 +108,7 @@ const value: models.RequestBody8 = {
 ```typescript
 const value: models.RequestBody9 = {
   name: "subdomain",
-  type: "ALIAS",
+  type: "AAAA",
   ttl: 60,
   value: "ns1.example.com",
   comment: "used to verify ownership of domain",
@@ -119,7 +119,7 @@ const value: models.RequestBody9 = {
 
 ```typescript
 const value: models.RequestBody10 = {
-  type: "AAAA",
+  type: "ALIAS",
   ttl: 60,
   https: {
     priority: 10,

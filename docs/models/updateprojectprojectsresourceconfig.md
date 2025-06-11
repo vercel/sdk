@@ -6,9 +6,7 @@
 import { UpdateProjectProjectsResourceConfig } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectProjectsResourceConfig = {
-  functionDefaultRegions: [
-    "<value>",
-  ],
+  functionDefaultRegions: [],
 };
 ```
 

@@ -50,15 +50,15 @@ func testUpdateCheckUpdateCheck0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateCheckResponseBody{
+	var respBody *operations.UpdateCheckResponseBody = &operations.UpdateCheckResponseBody{
 		ID:            "<id>",
 		Name:          "<value>",
-		Status:        operations.UpdateCheckStatusCompleted,
+		Status:        operations.UpdateCheckStatusResponseBodyRunning,
 		Blocking:      true,
 		IntegrationID: "<id>",
 		DeploymentID:  "<id>",
-		CreatedAt:     9017.64,
-		UpdatedAt:     7909.85,
+		CreatedAt:     3990.23,
+		UpdatedAt:     3283.38,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

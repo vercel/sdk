@@ -41,7 +41,7 @@ func (o *SubmitInvoicePeriod) GetEnd() time.Time {
 	return o.End
 }
 
-type SubmitInvoiceItems struct {
+type SubmitInvoiceItem struct {
 	// Partner's resource ID.
 	ResourceID *string `json:"resourceId,omitempty"`
 	// Partner's billing plan ID.
@@ -60,88 +60,88 @@ type SubmitInvoiceItems struct {
 	Total string `json:"total"`
 }
 
-func (s SubmitInvoiceItems) MarshalJSON() ([]byte, error) {
+func (s SubmitInvoiceItem) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *SubmitInvoiceItems) UnmarshalJSON(data []byte) error {
+func (s *SubmitInvoiceItem) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SubmitInvoiceItems) GetResourceID() *string {
+func (o *SubmitInvoiceItem) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *SubmitInvoiceItems) GetBillingPlanID() string {
+func (o *SubmitInvoiceItem) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *SubmitInvoiceItems) GetStart() *time.Time {
+func (o *SubmitInvoiceItem) GetStart() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *SubmitInvoiceItems) GetEnd() *time.Time {
+func (o *SubmitInvoiceItem) GetEnd() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *SubmitInvoiceItems) GetName() string {
+func (o *SubmitInvoiceItem) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *SubmitInvoiceItems) GetDetails() *string {
+func (o *SubmitInvoiceItem) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *SubmitInvoiceItems) GetPrice() string {
+func (o *SubmitInvoiceItem) GetPrice() string {
 	if o == nil {
 		return ""
 	}
 	return o.Price
 }
 
-func (o *SubmitInvoiceItems) GetQuantity() float64 {
+func (o *SubmitInvoiceItem) GetQuantity() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Quantity
 }
 
-func (o *SubmitInvoiceItems) GetUnits() string {
+func (o *SubmitInvoiceItem) GetUnits() string {
 	if o == nil {
 		return ""
 	}
 	return o.Units
 }
 
-func (o *SubmitInvoiceItems) GetTotal() string {
+func (o *SubmitInvoiceItem) GetTotal() string {
 	if o == nil {
 		return ""
 	}
 	return o.Total
 }
 
-type SubmitInvoiceDiscounts struct {
+type SubmitInvoiceDiscount struct {
 	// Partner's resource ID.
 	ResourceID *string `json:"resourceId,omitempty"`
 	// Partner's billing plan ID.
@@ -156,77 +156,77 @@ type SubmitInvoiceDiscounts struct {
 	Amount string `json:"amount"`
 }
 
-func (s SubmitInvoiceDiscounts) MarshalJSON() ([]byte, error) {
+func (s SubmitInvoiceDiscount) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *SubmitInvoiceDiscounts) UnmarshalJSON(data []byte) error {
+func (s *SubmitInvoiceDiscount) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SubmitInvoiceDiscounts) GetResourceID() *string {
+func (o *SubmitInvoiceDiscount) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *SubmitInvoiceDiscounts) GetBillingPlanID() string {
+func (o *SubmitInvoiceDiscount) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *SubmitInvoiceDiscounts) GetStart() *time.Time {
+func (o *SubmitInvoiceDiscount) GetStart() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *SubmitInvoiceDiscounts) GetEnd() *time.Time {
+func (o *SubmitInvoiceDiscount) GetEnd() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *SubmitInvoiceDiscounts) GetName() string {
+func (o *SubmitInvoiceDiscount) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *SubmitInvoiceDiscounts) GetDetails() *string {
+func (o *SubmitInvoiceDiscount) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *SubmitInvoiceDiscounts) GetAmount() string {
+func (o *SubmitInvoiceDiscount) GetAmount() string {
 	if o == nil {
 		return ""
 	}
 	return o.Amount
 }
 
-type Result string
+type SubmitInvoiceResult string
 
 const (
-	ResultPaid    Result = "paid"
-	ResultNotpaid Result = "notpaid"
+	SubmitInvoiceResultPaid    SubmitInvoiceResult = "paid"
+	SubmitInvoiceResultNotpaid SubmitInvoiceResult = "notpaid"
 )
 
-func (e Result) ToPointer() *Result {
+func (e SubmitInvoiceResult) ToPointer() *SubmitInvoiceResult {
 	return &e
 }
-func (e *Result) UnmarshalJSON(data []byte) error {
+func (e *SubmitInvoiceResult) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -235,17 +235,17 @@ func (e *Result) UnmarshalJSON(data []byte) error {
 	case "paid":
 		fallthrough
 	case "notpaid":
-		*e = Result(v)
+		*e = SubmitInvoiceResult(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Result: %v", v)
+		return fmt.Errorf("invalid value for SubmitInvoiceResult: %v", v)
 	}
 }
 
 // Test mode
 type Test struct {
-	Validate *bool   `json:"validate,omitempty"`
-	Result   *Result `json:"result,omitempty"`
+	Validate *bool                `json:"validate,omitempty"`
+	Result   *SubmitInvoiceResult `json:"result,omitempty"`
 }
 
 func (o *Test) GetValidate() *bool {
@@ -255,7 +255,7 @@ func (o *Test) GetValidate() *bool {
 	return o.Validate
 }
 
-func (o *Test) GetResult() *Result {
+func (o *Test) GetResult() *SubmitInvoiceResult {
 	if o == nil {
 		return nil
 	}
@@ -269,9 +269,9 @@ type SubmitInvoiceRequestBody struct {
 	// Additional memo for the invoice.
 	Memo *string `json:"memo,omitempty"`
 	// Subscription period for this billing cycle.
-	Period    SubmitInvoicePeriod      `json:"period"`
-	Items     []SubmitInvoiceItems     `json:"items"`
-	Discounts []SubmitInvoiceDiscounts `json:"discounts,omitempty"`
+	Period    SubmitInvoicePeriod     `json:"period"`
+	Items     []SubmitInvoiceItem     `json:"items"`
+	Discounts []SubmitInvoiceDiscount `json:"discounts,omitempty"`
 	// Test mode
 	Test *Test `json:"test,omitempty"`
 }
@@ -315,14 +315,14 @@ func (o *SubmitInvoiceRequestBody) GetPeriod() SubmitInvoicePeriod {
 	return o.Period
 }
 
-func (o *SubmitInvoiceRequestBody) GetItems() []SubmitInvoiceItems {
+func (o *SubmitInvoiceRequestBody) GetItems() []SubmitInvoiceItem {
 	if o == nil {
-		return []SubmitInvoiceItems{}
+		return []SubmitInvoiceItem{}
 	}
 	return o.Items
 }
 
-func (o *SubmitInvoiceRequestBody) GetDiscounts() []SubmitInvoiceDiscounts {
+func (o *SubmitInvoiceRequestBody) GetDiscounts() []SubmitInvoiceDiscount {
 	if o == nil {
 		return nil
 	}

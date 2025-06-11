@@ -50,12 +50,12 @@ func testRequestAccessToTeamRequestAccessToTeam0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RequestAccessToTeamResponseBody{
+	var respBody *operations.RequestAccessToTeamResponseBody = &operations.RequestAccessToTeamResponseBody{
 		TeamSlug:  "<value>",
 		TeamName:  "<value>",
-		Github:    &operations.Github{},
-		Gitlab:    &operations.Gitlab{},
-		Bitbucket: &operations.Bitbucket{},
+		Github:    &operations.RequestAccessToTeamGithub{},
+		Gitlab:    &operations.RequestAccessToTeamGitlab{},
+		Bitbucket: &operations.RequestAccessToTeamBitbucket{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

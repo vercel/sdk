@@ -29,19 +29,19 @@ func (o *StatusRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type StatusStatus string
+type ArtifactsStatus string
 
 const (
-	StatusStatusDisabled  StatusStatus = "disabled"
-	StatusStatusEnabled   StatusStatus = "enabled"
-	StatusStatusOverLimit StatusStatus = "over_limit"
-	StatusStatusPaused    StatusStatus = "paused"
+	ArtifactsStatusDisabled  ArtifactsStatus = "disabled"
+	ArtifactsStatusEnabled   ArtifactsStatus = "enabled"
+	ArtifactsStatusOverLimit ArtifactsStatus = "over_limit"
+	ArtifactsStatusPaused    ArtifactsStatus = "paused"
 )
 
-func (e StatusStatus) ToPointer() *StatusStatus {
+func (e ArtifactsStatus) ToPointer() *ArtifactsStatus {
 	return &e
 }
-func (e *StatusStatus) UnmarshalJSON(data []byte) error {
+func (e *ArtifactsStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -54,20 +54,20 @@ func (e *StatusStatus) UnmarshalJSON(data []byte) error {
 	case "over_limit":
 		fallthrough
 	case "paused":
-		*e = StatusStatus(v)
+		*e = ArtifactsStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for StatusStatus: %v", v)
+		return fmt.Errorf("invalid value for ArtifactsStatus: %v", v)
 	}
 }
 
 type StatusResponseBody struct {
-	Status StatusStatus `json:"status"`
+	Status ArtifactsStatus `json:"status"`
 }
 
-func (o *StatusResponseBody) GetStatus() StatusStatus {
+func (o *StatusResponseBody) GetStatus() ArtifactsStatus {
 	if o == nil {
-		return StatusStatus("")
+		return ArtifactsStatus("")
 	}
 	return o.Status
 }

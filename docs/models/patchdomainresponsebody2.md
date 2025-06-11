@@ -6,7 +6,7 @@
 import { PatchDomainResponseBody2 } from "@vercel/sdk/models/patchdomainop.js";
 
 let value: PatchDomainResponseBody2 = {
-  moved: false,
+  moved: true,
   token: "<value>",
 };
 ```

@@ -21,7 +21,6 @@ specific category of applications.
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
 import { projectsUpdateProject } from "@vercel/sdk/funcs/projectsUpdateProject.js";
-import { SDKValidationError } from "@vercel/sdk/models/sdkvalidationerror.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -38,28 +37,12 @@ async function run() {
       name: "a-project-name",
     },
   });
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("projectsUpdateProject failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

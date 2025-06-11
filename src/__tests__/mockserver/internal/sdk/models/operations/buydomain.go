@@ -155,7 +155,7 @@ func (o *BuyDomainRequest) GetRequestBody() BuyDomainRequestBody {
 	return o.RequestBody
 }
 
-type BuyDomainDomain struct {
+type BuyDomainDomain2 struct {
 	UID      string   `json:"uid"`
 	Ns       []string `json:"ns"`
 	Verified bool     `json:"verified"`
@@ -163,53 +163,53 @@ type BuyDomainDomain struct {
 	Pending  bool     `json:"pending"`
 }
 
-func (o *BuyDomainDomain) GetUID() string {
+func (o *BuyDomainDomain2) GetUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UID
 }
 
-func (o *BuyDomainDomain) GetNs() []string {
+func (o *BuyDomainDomain2) GetNs() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Ns
 }
 
-func (o *BuyDomainDomain) GetVerified() bool {
+func (o *BuyDomainDomain2) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *BuyDomainDomain) GetCreated() float64 {
+func (o *BuyDomainDomain2) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *BuyDomainDomain) GetPending() bool {
+func (o *BuyDomainDomain2) GetPending() bool {
 	if o == nil {
 		return false
 	}
 	return o.Pending
 }
 
-type BuyDomainDomainsResponseBody struct {
-	Domain BuyDomainDomain `json:"domain"`
+type BuyDomainResponseBody2 struct {
+	Domain BuyDomainDomain2 `json:"domain"`
 }
 
-func (o *BuyDomainDomainsResponseBody) GetDomain() BuyDomainDomain {
+func (o *BuyDomainResponseBody2) GetDomain() BuyDomainDomain2 {
 	if o == nil {
-		return BuyDomainDomain{}
+		return BuyDomainDomain2{}
 	}
 	return o.Domain
 }
 
-type BuyDomainDomainsDomain struct {
+type BuyDomainDomain1 struct {
 	UID      string   `json:"uid"`
 	Ns       []string `json:"ns"`
 	Verified bool     `json:"verified"`
@@ -217,56 +217,56 @@ type BuyDomainDomainsDomain struct {
 	Pending  bool     `json:"pending"`
 }
 
-func (o *BuyDomainDomainsDomain) GetUID() string {
+func (o *BuyDomainDomain1) GetUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UID
 }
 
-func (o *BuyDomainDomainsDomain) GetNs() []string {
+func (o *BuyDomainDomain1) GetNs() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Ns
 }
 
-func (o *BuyDomainDomainsDomain) GetVerified() bool {
+func (o *BuyDomainDomain1) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *BuyDomainDomainsDomain) GetCreated() float64 {
+func (o *BuyDomainDomain1) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *BuyDomainDomainsDomain) GetPending() bool {
+func (o *BuyDomainDomain1) GetPending() bool {
 	if o == nil {
 		return false
 	}
 	return o.Pending
 }
 
-type BuyDomainResponseBody struct {
-	Domain BuyDomainDomainsDomain `json:"domain"`
+type BuyDomainResponseBody1 struct {
+	Domain BuyDomainDomain1 `json:"domain"`
 }
 
-func (o *BuyDomainResponseBody) GetDomain() BuyDomainDomainsDomain {
+func (o *BuyDomainResponseBody1) GetDomain() BuyDomainDomain1 {
 	if o == nil {
-		return BuyDomainDomainsDomain{}
+		return BuyDomainDomain1{}
 	}
 	return o.Domain
 }
 
 type BuyDomainResponse struct {
 	HTTPMeta                              components.HTTPMetadata `json:"-"`
-	TwoHundredAndOneApplicationJSONObject *BuyDomainResponseBody
-	TwoHundredAndTwoApplicationJSONObject *BuyDomainDomainsResponseBody
+	TwoHundredAndOneApplicationJSONObject *BuyDomainResponseBody1
+	TwoHundredAndTwoApplicationJSONObject *BuyDomainResponseBody2
 }
 
 func (o *BuyDomainResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -276,14 +276,14 @@ func (o *BuyDomainResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *BuyDomainResponse) GetTwoHundredAndOneApplicationJSONObject() *BuyDomainResponseBody {
+func (o *BuyDomainResponse) GetTwoHundredAndOneApplicationJSONObject() *BuyDomainResponseBody1 {
 	if o == nil {
 		return nil
 	}
 	return o.TwoHundredAndOneApplicationJSONObject
 }
 
-func (o *BuyDomainResponse) GetTwoHundredAndTwoApplicationJSONObject() *BuyDomainDomainsResponseBody {
+func (o *BuyDomainResponse) GetTwoHundredAndTwoApplicationJSONObject() *BuyDomainResponseBody2 {
 	if o == nil {
 		return nil
 	}

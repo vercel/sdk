@@ -6,7 +6,7 @@
 import { Next } from "@vercel/sdk/models/userevent.js";
 
 let value: Next = {
-  enabled: false,
+  enabled: true,
   totpVerified: false,
 };
 ```

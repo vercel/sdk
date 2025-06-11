@@ -10,19 +10,6 @@ let value: EditProjectEnvRequest = {
   id: "XMbOEya1gUUO1ir4",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    key: "GITHUB_APP_ID",
-    target: [
-      "preview",
-    ],
-    gitBranch: "feature-1",
-    type: "plain",
-    value: "bkWIjbnxcvo78",
-    customEnvironmentIds: [
-      "env_1234567890",
-    ],
-    comment: "database connection string for production",
-  },
 };
 ```
 

@@ -10,8 +10,8 @@ let value: CreateProjectConnectConfigurations = {
   connectConfigurationId: "<id>",
   passive: false,
   buildsEnabled: false,
-  createdAt: 8919.66,
-  updatedAt: 5122.19,
+  createdAt: 6832.38,
+  updatedAt: 3013.56,
 };
 ```
 

@@ -76,19 +76,19 @@ func (o *GetProjectMembersRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetProjectMembersResponseBodyRole - Role of this user in the project.
-type GetProjectMembersResponseBodyRole string
+// GetProjectMembersRole - Role of this user in the project.
+type GetProjectMembersRole string
 
 const (
-	GetProjectMembersResponseBodyRoleAdmin            GetProjectMembersResponseBodyRole = "ADMIN"
-	GetProjectMembersResponseBodyRoleProjectDeveloper GetProjectMembersResponseBodyRole = "PROJECT_DEVELOPER"
-	GetProjectMembersResponseBodyRoleProjectViewer    GetProjectMembersResponseBodyRole = "PROJECT_VIEWER"
+	GetProjectMembersRoleAdmin            GetProjectMembersRole = "ADMIN"
+	GetProjectMembersRoleProjectDeveloper GetProjectMembersRole = "PROJECT_DEVELOPER"
+	GetProjectMembersRoleProjectViewer    GetProjectMembersRole = "PROJECT_VIEWER"
 )
 
-func (e GetProjectMembersResponseBodyRole) ToPointer() *GetProjectMembersResponseBodyRole {
+func (e GetProjectMembersRole) ToPointer() *GetProjectMembersRole {
 	return &e
 }
-func (e *GetProjectMembersResponseBodyRole) UnmarshalJSON(data []byte) error {
+func (e *GetProjectMembersRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -99,10 +99,10 @@ func (e *GetProjectMembersResponseBodyRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = GetProjectMembersResponseBodyRole(v)
+		*e = GetProjectMembersRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectMembersResponseBodyRole: %v", v)
+		return fmt.Errorf("invalid value for GetProjectMembersRole: %v", v)
 	}
 }
 
@@ -136,23 +136,23 @@ func (e *ComputedProjectRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ResponseBodyTeamRole - The role of this user in the team.
-type ResponseBodyTeamRole string
+// GetProjectMembersTeamRole - The role of this user in the team.
+type GetProjectMembersTeamRole string
 
 const (
-	ResponseBodyTeamRoleOwner       ResponseBodyTeamRole = "OWNER"
-	ResponseBodyTeamRoleMember      ResponseBodyTeamRole = "MEMBER"
-	ResponseBodyTeamRoleDeveloper   ResponseBodyTeamRole = "DEVELOPER"
-	ResponseBodyTeamRoleSecurity    ResponseBodyTeamRole = "SECURITY"
-	ResponseBodyTeamRoleBilling     ResponseBodyTeamRole = "BILLING"
-	ResponseBodyTeamRoleViewer      ResponseBodyTeamRole = "VIEWER"
-	ResponseBodyTeamRoleContributor ResponseBodyTeamRole = "CONTRIBUTOR"
+	GetProjectMembersTeamRoleOwner       GetProjectMembersTeamRole = "OWNER"
+	GetProjectMembersTeamRoleMember      GetProjectMembersTeamRole = "MEMBER"
+	GetProjectMembersTeamRoleDeveloper   GetProjectMembersTeamRole = "DEVELOPER"
+	GetProjectMembersTeamRoleSecurity    GetProjectMembersTeamRole = "SECURITY"
+	GetProjectMembersTeamRoleBilling     GetProjectMembersTeamRole = "BILLING"
+	GetProjectMembersTeamRoleViewer      GetProjectMembersTeamRole = "VIEWER"
+	GetProjectMembersTeamRoleContributor GetProjectMembersTeamRole = "CONTRIBUTOR"
 )
 
-func (e ResponseBodyTeamRole) ToPointer() *ResponseBodyTeamRole {
+func (e GetProjectMembersTeamRole) ToPointer() *GetProjectMembersTeamRole {
 	return &e
 }
-func (e *ResponseBodyTeamRole) UnmarshalJSON(data []byte) error {
+func (e *GetProjectMembersTeamRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -171,20 +171,20 @@ func (e *ResponseBodyTeamRole) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = ResponseBodyTeamRole(v)
+		*e = GetProjectMembersTeamRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyTeamRole: %v", v)
+		return fmt.Errorf("invalid value for GetProjectMembersTeamRole: %v", v)
 	}
 }
 
-type ResponseBodyMembers struct {
+type GetProjectMembersMember struct {
 	// ID of the file for the Avatar of this member.
 	Avatar *string `json:"avatar,omitempty"`
 	// The email of this member.
 	Email string `json:"email"`
 	// Role of this user in the project.
-	Role GetProjectMembersResponseBodyRole `json:"role"`
+	Role GetProjectMembersRole `json:"role"`
 	// Role of this user in the project.
 	ComputedProjectRole ComputedProjectRole `json:"computedProjectRole"`
 	// The ID of this user.
@@ -196,73 +196,73 @@ type ResponseBodyMembers struct {
 	// Timestamp in milliseconds when this member was added.
 	CreatedAt float64 `json:"createdAt"`
 	// The role of this user in the team.
-	TeamRole ResponseBodyTeamRole `json:"teamRole"`
+	TeamRole GetProjectMembersTeamRole `json:"teamRole"`
 }
 
-func (o *ResponseBodyMembers) GetAvatar() *string {
+func (o *GetProjectMembersMember) GetAvatar() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Avatar
 }
 
-func (o *ResponseBodyMembers) GetEmail() string {
+func (o *GetProjectMembersMember) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *ResponseBodyMembers) GetRole() GetProjectMembersResponseBodyRole {
+func (o *GetProjectMembersMember) GetRole() GetProjectMembersRole {
 	if o == nil {
-		return GetProjectMembersResponseBodyRole("")
+		return GetProjectMembersRole("")
 	}
 	return o.Role
 }
 
-func (o *ResponseBodyMembers) GetComputedProjectRole() ComputedProjectRole {
+func (o *GetProjectMembersMember) GetComputedProjectRole() ComputedProjectRole {
 	if o == nil {
 		return ComputedProjectRole("")
 	}
 	return o.ComputedProjectRole
 }
 
-func (o *ResponseBodyMembers) GetUID() string {
+func (o *GetProjectMembersMember) GetUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UID
 }
 
-func (o *ResponseBodyMembers) GetUsername() string {
+func (o *GetProjectMembersMember) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
 }
 
-func (o *ResponseBodyMembers) GetName() *string {
+func (o *GetProjectMembersMember) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *ResponseBodyMembers) GetCreatedAt() float64 {
+func (o *GetProjectMembersMember) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *ResponseBodyMembers) GetTeamRole() ResponseBodyTeamRole {
+func (o *GetProjectMembersMember) GetTeamRole() GetProjectMembersTeamRole {
 	if o == nil {
-		return ResponseBodyTeamRole("")
+		return GetProjectMembersTeamRole("")
 	}
 	return o.TeamRole
 }
 
-type GetProjectMembersResponseBodyPagination struct {
+type GetProjectMembersPagination struct {
 	HasNext bool `json:"hasNext"`
 	// Amount of items in the current page.
 	Count float64 `json:"count"`
@@ -272,28 +272,28 @@ type GetProjectMembersResponseBodyPagination struct {
 	Prev *float64 `json:"prev"`
 }
 
-func (o *GetProjectMembersResponseBodyPagination) GetHasNext() bool {
+func (o *GetProjectMembersPagination) GetHasNext() bool {
 	if o == nil {
 		return false
 	}
 	return o.HasNext
 }
 
-func (o *GetProjectMembersResponseBodyPagination) GetCount() float64 {
+func (o *GetProjectMembersPagination) GetCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Count
 }
 
-func (o *GetProjectMembersResponseBodyPagination) GetNext() *float64 {
+func (o *GetProjectMembersPagination) GetNext() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Next
 }
 
-func (o *GetProjectMembersResponseBodyPagination) GetPrev() *float64 {
+func (o *GetProjectMembersPagination) GetPrev() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -302,20 +302,20 @@ func (o *GetProjectMembersResponseBodyPagination) GetPrev() *float64 {
 
 // GetProjectMembersResponseBody2 - Paginated list of members for the project.
 type GetProjectMembersResponseBody2 struct {
-	Members    []ResponseBodyMembers                   `json:"members"`
-	Pagination GetProjectMembersResponseBodyPagination `json:"pagination"`
+	Members    []GetProjectMembersMember   `json:"members"`
+	Pagination GetProjectMembersPagination `json:"pagination"`
 }
 
-func (o *GetProjectMembersResponseBody2) GetMembers() []ResponseBodyMembers {
+func (o *GetProjectMembersResponseBody2) GetMembers() []GetProjectMembersMember {
 	if o == nil {
-		return []ResponseBodyMembers{}
+		return []GetProjectMembersMember{}
 	}
 	return o.Members
 }
 
-func (o *GetProjectMembersResponseBody2) GetPagination() GetProjectMembersResponseBodyPagination {
+func (o *GetProjectMembersResponseBody2) GetPagination() GetProjectMembersPagination {
 	if o == nil {
-		return GetProjectMembersResponseBodyPagination{}
+		return GetProjectMembersPagination{}
 	}
 	return o.Pagination
 }
@@ -326,14 +326,14 @@ type GetProjectMembersResponseBody1 struct {
 type GetProjectMembersResponseBodyType string
 
 const (
-	GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody1 GetProjectMembersResponseBodyType = "getProjectMembers_responseBody_1"
-	GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody2 GetProjectMembersResponseBodyType = "getProjectMembers_responseBody_2"
+	GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody1 GetProjectMembersResponseBodyType = "getProjectMembers_ResponseBody_1"
+	GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody2 GetProjectMembersResponseBodyType = "getProjectMembers_ResponseBody_2"
 )
 
 // GetProjectMembersResponseBody - Paginated list of members for the project.
 type GetProjectMembersResponseBody struct {
-	GetProjectMembersResponseBody1 *GetProjectMembersResponseBody1
-	GetProjectMembersResponseBody2 *GetProjectMembersResponseBody2
+	GetProjectMembersResponseBody1 *GetProjectMembersResponseBody1 `queryParam:"inline"`
+	GetProjectMembersResponseBody2 *GetProjectMembersResponseBody2 `queryParam:"inline"`
 
 	Type GetProjectMembersResponseBodyType
 }

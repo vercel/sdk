@@ -46,29 +46,33 @@ func testGetDeploymentGetDeployment0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetDeploymentResponseBodyGetDeploymentResponseBody2(
-		operations.GetDeploymentResponseBody2{
-			AliasAssigned: false,
-			BootedAt:      2317.28,
-			BuildingAt:    458.05,
-			BuildSkipped:  true,
-			Creator: operations.GetDeploymentResponseBodyCreator{
+	var respBody *operations.GetDeploymentResponseBody = types.Pointer(operations.CreateGetDeploymentResponseBodyLambdas2(
+		operations.Lambdas2{
+			AliasAssigned: true,
+			BootedAt:      2363.88,
+			BuildingAt:    7418.28,
+			BuildSkipped:  false,
+			Creator: operations.GetDeploymentCreator2{
 				UID: "<id>",
 			},
-			Public:     true,
-			Status:     operations.GetDeploymentResponseBodyStatusError,
+			Public:     false,
+			Status:     operations.GetDeploymentStatus2Building,
 			ID:         "<id>",
 			Name:       "<value>",
-			Type:       operations.GetDeploymentResponseBodyDeploymentsTypeLambdas,
-			CreatedAt:  3161.76,
-			ReadyState: operations.GetDeploymentResponseBodyReadyStateReady,
+			Type:       operations.GetDeploymentTypeLambdas2Lambdas,
+			CreatedAt:  548.4,
+			ReadyState: operations.GetDeploymentReadyState2Error,
 			Meta: map[string]string{
 				"key":  "<value>",
 				"key1": "<value>",
 			},
-			Regions: []string{},
-			URL:     "https://disloyal-backburn.info",
-			Version: 1604.95,
+			Regions: []string{
+				"<value 1>",
+				"<value 2>",
+				"<value 3>",
+			},
+			URL:     "https://jagged-pacemaker.biz/",
+			Version: 5784.12,
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

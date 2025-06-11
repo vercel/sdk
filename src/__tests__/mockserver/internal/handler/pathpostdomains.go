@@ -46,7 +46,7 @@ func testPostDomainsPostDomains0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.PostDomainsResponseBody{
+	var respBody *operations.PostDomainsResponseBody = &operations.PostDomainsResponseBody{
 		Domain: operations.PostDomainsDomain{
 			Verified: true,
 			Nameservers: []string{
@@ -73,7 +73,7 @@ func testPostDomainsPostDomains0(w http.ResponseWriter, req *http.Request) {
 			ID:                "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
 			OrderedAt:         types.Float64(1613602938882),
 			Renew:             types.Bool(true),
-			ServiceType:       operations.ServiceTypeZeitWorld,
+			ServiceType:       operations.PostDomainsServiceTypeZeitWorld,
 			TransferredAt:     types.Float64(1613602938882),
 			TransferStartedAt: types.Float64(1613602938882),
 			UserID:            "<id>",

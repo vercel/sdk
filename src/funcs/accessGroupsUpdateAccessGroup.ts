@@ -17,7 +17,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import { SDKError } from "../models/sdkerror.js";
+import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateAccessGroupRequest,
@@ -29,14 +29,11 @@ import {
   VercelBadRequestError,
   VercelBadRequestError$inboundSchema,
 } from "../models/vercelbadrequesterror.js";
+import { VercelError } from "../models/vercelerror.js";
 import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
-import {
-  VercelNotFoundError,
-  VercelNotFoundError$inboundSchema,
-} from "../models/vercelnotfounderror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -55,14 +52,14 @@ export function accessGroupsUpdateAccessGroup(
     UpdateAccessGroupResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
-    | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -82,14 +79,14 @@ async function $do(
       UpdateAccessGroupResponseBody,
       | VercelBadRequestError
       | VercelForbiddenError
-      | VercelNotFoundError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | VercelError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -129,6 +126,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "updateAccessGroup",
     oAuth2Scopes: [],
@@ -150,6 +148,7 @@ async function $do(
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -159,7 +158,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "404", "4XX", "5XX"],
+    errorCodes: ["400", "401", "403", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -176,22 +175,21 @@ async function $do(
     UpdateAccessGroupResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
-    | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, UpdateAccessGroupResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(404, VercelNotFoundError$inboundSchema),
     M.fail([403, "4XX"]),
     M.fail("5XX"),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

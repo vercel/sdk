@@ -11,13 +11,13 @@ let value: GetAuthUserResponseBody = {
   user: {
     createdAt: 1630748523395,
     softBlock: {
-      blockedAt: 9931.58,
-      reason: "BLOCKED_FOR_PLATFORM_ABUSE",
+      blockedAt: 3863.42,
+      reason: "ENTERPRISE_TRIAL_ENDED",
     },
     billing: {},
     resourceConfig: {},
     stagingPrefix: "<value>",
-    hasTrialAvailable: false,
+    hasTrialAvailable: true,
     id: "AEIIDYVk59zbFF2Sxfyxxmua",
     email: "me@example.com",
     name: "John Doe",

@@ -39,21 +39,21 @@ func (e *UpdateTeamMemberRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateTeamMemberProjects struct {
+type UpdateTeamMemberProject struct {
 	// The ID of the project.
 	ProjectID string `json:"projectId"`
 	// The project role of the member that will be added. \"null\" will remove this project level role.
 	Role *UpdateTeamMemberRole `json:"role"`
 }
 
-func (o *UpdateTeamMemberProjects) GetProjectID() string {
+func (o *UpdateTeamMemberProject) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateTeamMemberProjects) GetRole() *UpdateTeamMemberRole {
+func (o *UpdateTeamMemberProject) GetRole() *UpdateTeamMemberRole {
 	if o == nil {
 		return nil
 	}
@@ -76,7 +76,7 @@ type UpdateTeamMemberRequestBody struct {
 	Confirmed *bool `json:"confirmed,omitempty"`
 	// The role in the team of the member.
 	Role       *string                     `default:"MEMBER" json:"role"`
-	Projects   []UpdateTeamMemberProjects  `json:"projects,omitempty"`
+	Projects   []UpdateTeamMemberProject   `json:"projects,omitempty"`
 	JoinedFrom *UpdateTeamMemberJoinedFrom `json:"joinedFrom,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *UpdateTeamMemberRequestBody) GetRole() *string {
 	return o.Role
 }
 
-func (o *UpdateTeamMemberRequestBody) GetProjects() []UpdateTeamMemberProjects {
+func (o *UpdateTeamMemberRequestBody) GetProjects() []UpdateTeamMemberProject {
 	if o == nil {
 		return nil
 	}

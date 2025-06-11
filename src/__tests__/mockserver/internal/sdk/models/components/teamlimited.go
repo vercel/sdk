@@ -35,8 +35,8 @@ func (e *LimitedBy) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Connection - Information for the SAML Single Sign-On configuration.
-type Connection struct {
+// TeamLimitedConnection - Information for the SAML Single Sign-On configuration.
+type TeamLimitedConnection struct {
 	// The Identity Provider "type", for example Okta.
 	Type string `json:"type"`
 	// Current status of the connection.
@@ -49,43 +49,43 @@ type Connection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
-func (o *Connection) GetType() string {
+func (o *TeamLimitedConnection) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *Connection) GetStatus() string {
+func (o *TeamLimitedConnection) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
 }
 
-func (o *Connection) GetState() string {
+func (o *TeamLimitedConnection) GetState() string {
 	if o == nil {
 		return ""
 	}
 	return o.State
 }
 
-func (o *Connection) GetConnectedAt() float64 {
+func (o *TeamLimitedConnection) GetConnectedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConnectedAt
 }
 
-func (o *Connection) GetLastReceivedWebhookEvent() *float64 {
+func (o *TeamLimitedConnection) GetLastReceivedWebhookEvent() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.LastReceivedWebhookEvent
 }
 
-// Directory - Information for the Directory Sync configuration.
-type Directory struct {
+// TeamLimitedDirectory - Information for the Directory Sync configuration.
+type TeamLimitedDirectory struct {
 	// The Identity Provider "type", for example Okta.
 	Type string `json:"type"`
 	// Current state of the connection.
@@ -96,111 +96,92 @@ type Directory struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
-func (o *Directory) GetType() string {
+func (o *TeamLimitedDirectory) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *Directory) GetState() string {
+func (o *TeamLimitedDirectory) GetState() string {
 	if o == nil {
 		return ""
 	}
 	return o.State
 }
 
-func (o *Directory) GetConnectedAt() float64 {
+func (o *TeamLimitedDirectory) GetConnectedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConnectedAt
 }
 
-func (o *Directory) GetLastReceivedWebhookEvent() *float64 {
+func (o *TeamLimitedDirectory) GetLastReceivedWebhookEvent() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.LastReceivedWebhookEvent
 }
 
-// Saml - When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
-type Saml struct {
+// TeamLimitedSaml - When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
+type TeamLimitedSaml struct {
 	// Information for the SAML Single Sign-On configuration.
-	Connection *Connection `json:"connection,omitempty"`
+	Connection *TeamLimitedConnection `json:"connection,omitempty"`
 	// Information for the Directory Sync configuration.
-	Directory *Directory `json:"directory,omitempty"`
+	Directory *TeamLimitedDirectory `json:"directory,omitempty"`
 	// When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
 	Enforced bool `json:"enforced"`
 }
 
-func (o *Saml) GetConnection() *Connection {
+func (o *TeamLimitedSaml) GetConnection() *TeamLimitedConnection {
 	if o == nil {
 		return nil
 	}
 	return o.Connection
 }
 
-func (o *Saml) GetDirectory() *Directory {
+func (o *TeamLimitedSaml) GetDirectory() *TeamLimitedDirectory {
 	if o == nil {
 		return nil
 	}
 	return o.Directory
 }
 
-func (o *Saml) GetEnforced() bool {
+func (o *TeamLimitedSaml) GetEnforced() bool {
 	if o == nil {
 		return false
 	}
 	return o.Enforced
 }
 
-type Mfa struct {
-	Enforced  bool    `json:"enforced"`
-	UpdatedAt float64 `json:"updatedAt"`
-}
-
-func (o *Mfa) GetEnforced() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enforced
-}
-
-func (o *Mfa) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-type Entitlements struct {
+type TeamLimitedEntitlement struct {
 	Entitlement string `json:"entitlement"`
 }
 
-func (o *Entitlements) GetEntitlement() string {
+func (o *TeamLimitedEntitlement) GetEntitlement() string {
 	if o == nil {
 		return ""
 	}
 	return o.Entitlement
 }
 
-type Role string
+type TeamLimitedRole string
 
 const (
-	RoleOwner       Role = "OWNER"
-	RoleMember      Role = "MEMBER"
-	RoleDeveloper   Role = "DEVELOPER"
-	RoleSecurity    Role = "SECURITY"
-	RoleBilling     Role = "BILLING"
-	RoleViewer      Role = "VIEWER"
-	RoleContributor Role = "CONTRIBUTOR"
+	TeamLimitedRoleOwner       TeamLimitedRole = "OWNER"
+	TeamLimitedRoleMember      TeamLimitedRole = "MEMBER"
+	TeamLimitedRoleDeveloper   TeamLimitedRole = "DEVELOPER"
+	TeamLimitedRoleSecurity    TeamLimitedRole = "SECURITY"
+	TeamLimitedRoleBilling     TeamLimitedRole = "BILLING"
+	TeamLimitedRoleViewer      TeamLimitedRole = "VIEWER"
+	TeamLimitedRoleContributor TeamLimitedRole = "CONTRIBUTOR"
 )
 
-func (e Role) ToPointer() *Role {
+func (e TeamLimitedRole) ToPointer() *TeamLimitedRole {
 	return &e
 }
-func (e *Role) UnmarshalJSON(data []byte) error {
+func (e *TeamLimitedRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -219,29 +200,29 @@ func (e *Role) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = Role(v)
+		*e = TeamLimitedRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Role: %v", v)
+		return fmt.Errorf("invalid value for TeamLimitedRole: %v", v)
 	}
 }
 
-type TeamRoles string
+type TeamLimitedTeamRole string
 
 const (
-	TeamRolesOwner       TeamRoles = "OWNER"
-	TeamRolesMember      TeamRoles = "MEMBER"
-	TeamRolesDeveloper   TeamRoles = "DEVELOPER"
-	TeamRolesSecurity    TeamRoles = "SECURITY"
-	TeamRolesBilling     TeamRoles = "BILLING"
-	TeamRolesViewer      TeamRoles = "VIEWER"
-	TeamRolesContributor TeamRoles = "CONTRIBUTOR"
+	TeamLimitedTeamRoleOwner       TeamLimitedTeamRole = "OWNER"
+	TeamLimitedTeamRoleMember      TeamLimitedTeamRole = "MEMBER"
+	TeamLimitedTeamRoleDeveloper   TeamLimitedTeamRole = "DEVELOPER"
+	TeamLimitedTeamRoleSecurity    TeamLimitedTeamRole = "SECURITY"
+	TeamLimitedTeamRoleBilling     TeamLimitedTeamRole = "BILLING"
+	TeamLimitedTeamRoleViewer      TeamLimitedTeamRole = "VIEWER"
+	TeamLimitedTeamRoleContributor TeamLimitedTeamRole = "CONTRIBUTOR"
 )
 
-func (e TeamRoles) ToPointer() *TeamRoles {
+func (e TeamLimitedTeamRole) ToPointer() *TeamLimitedTeamRole {
 	return &e
 }
-func (e *TeamRoles) UnmarshalJSON(data []byte) error {
+func (e *TeamLimitedTeamRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -260,27 +241,27 @@ func (e *TeamRoles) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = TeamRoles(v)
+		*e = TeamLimitedTeamRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamRoles: %v", v)
+		return fmt.Errorf("invalid value for TeamLimitedTeamRole: %v", v)
 	}
 }
 
-type TeamPermissions string
+type TeamLimitedTeamPermission string
 
 const (
-	TeamPermissionsCreateProject            TeamPermissions = "CreateProject"
-	TeamPermissionsFullProductionDeployment TeamPermissions = "FullProductionDeployment"
-	TeamPermissionsUsageViewer              TeamPermissions = "UsageViewer"
-	TeamPermissionsEnvVariableManager       TeamPermissions = "EnvVariableManager"
-	TeamPermissionsEnvironmentManager       TeamPermissions = "EnvironmentManager"
+	TeamLimitedTeamPermissionCreateProject            TeamLimitedTeamPermission = "CreateProject"
+	TeamLimitedTeamPermissionFullProductionDeployment TeamLimitedTeamPermission = "FullProductionDeployment"
+	TeamLimitedTeamPermissionUsageViewer              TeamLimitedTeamPermission = "UsageViewer"
+	TeamLimitedTeamPermissionEnvVariableManager       TeamLimitedTeamPermission = "EnvVariableManager"
+	TeamLimitedTeamPermissionEnvironmentManager       TeamLimitedTeamPermission = "EnvironmentManager"
 )
 
-func (e TeamPermissions) ToPointer() *TeamPermissions {
+func (e TeamLimitedTeamPermission) ToPointer() *TeamLimitedTeamPermission {
 	return &e
 }
-func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
+func (e *TeamLimitedTeamPermission) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -295,38 +276,40 @@ func (e *TeamPermissions) UnmarshalJSON(data []byte) error {
 	case "EnvVariableManager":
 		fallthrough
 	case "EnvironmentManager":
-		*e = TeamPermissions(v)
+		*e = TeamLimitedTeamPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamPermissions: %v", v)
+		return fmt.Errorf("invalid value for TeamLimitedTeamPermission: %v", v)
 	}
 }
 
-type Origin string
+type TeamLimitedOrigin string
 
 const (
-	OriginMail              Origin = "mail"
-	OriginLink              Origin = "link"
-	OriginImport            Origin = "import"
-	OriginTeams             Origin = "teams"
-	OriginGithub            Origin = "github"
-	OriginGitlab            Origin = "gitlab"
-	OriginBitbucket         Origin = "bitbucket"
-	OriginSaml              Origin = "saml"
-	OriginDsync             Origin = "dsync"
-	OriginFeedback          Origin = "feedback"
-	OriginOrganizationTeams Origin = "organization-teams"
+	TeamLimitedOriginSaml              TeamLimitedOrigin = "saml"
+	TeamLimitedOriginMail              TeamLimitedOrigin = "mail"
+	TeamLimitedOriginLink              TeamLimitedOrigin = "link"
+	TeamLimitedOriginImport            TeamLimitedOrigin = "import"
+	TeamLimitedOriginTeams             TeamLimitedOrigin = "teams"
+	TeamLimitedOriginGithub            TeamLimitedOrigin = "github"
+	TeamLimitedOriginGitlab            TeamLimitedOrigin = "gitlab"
+	TeamLimitedOriginBitbucket         TeamLimitedOrigin = "bitbucket"
+	TeamLimitedOriginDsync             TeamLimitedOrigin = "dsync"
+	TeamLimitedOriginFeedback          TeamLimitedOrigin = "feedback"
+	TeamLimitedOriginOrganizationTeams TeamLimitedOrigin = "organization-teams"
 )
 
-func (e Origin) ToPointer() *Origin {
+func (e TeamLimitedOrigin) ToPointer() *TeamLimitedOrigin {
 	return &e
 }
-func (e *Origin) UnmarshalJSON(data []byte) error {
+func (e *TeamLimitedOrigin) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
+	case "saml":
+		fallthrough
 	case "mail":
 		fallthrough
 	case "link":
@@ -341,72 +324,70 @@ func (e *Origin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "bitbucket":
 		fallthrough
-	case "saml":
-		fallthrough
 	case "dsync":
 		fallthrough
 	case "feedback":
 		fallthrough
 	case "organization-teams":
-		*e = Origin(v)
+		*e = TeamLimitedOrigin(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Origin: %v", v)
+		return fmt.Errorf("invalid value for TeamLimitedOrigin: %v", v)
 	}
 }
 
-type GitUserIDType string
+type TeamLimitedGitUserIDType string
 
 const (
-	GitUserIDTypeStr    GitUserIDType = "str"
-	GitUserIDTypeNumber GitUserIDType = "number"
+	TeamLimitedGitUserIDTypeStr    TeamLimitedGitUserIDType = "str"
+	TeamLimitedGitUserIDTypeNumber TeamLimitedGitUserIDType = "number"
 )
 
-type GitUserID struct {
-	Str    *string
-	Number *float64
+type TeamLimitedGitUserID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
 
-	Type GitUserIDType
+	Type TeamLimitedGitUserIDType
 }
 
-func CreateGitUserIDStr(str string) GitUserID {
-	typ := GitUserIDTypeStr
+func CreateTeamLimitedGitUserIDStr(str string) TeamLimitedGitUserID {
+	typ := TeamLimitedGitUserIDTypeStr
 
-	return GitUserID{
+	return TeamLimitedGitUserID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGitUserIDNumber(number float64) GitUserID {
-	typ := GitUserIDTypeNumber
+func CreateTeamLimitedGitUserIDNumber(number float64) TeamLimitedGitUserID {
+	typ := TeamLimitedGitUserIDTypeNumber
 
-	return GitUserID{
+	return TeamLimitedGitUserID{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *GitUserID) UnmarshalJSON(data []byte) error {
+func (u *TeamLimitedGitUserID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = GitUserIDTypeStr
+		u.Type = TeamLimitedGitUserIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = GitUserIDTypeNumber
+		u.Type = TeamLimitedGitUserIDTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GitUserID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TeamLimitedGitUserID", string(data))
 }
 
-func (u GitUserID) MarshalJSON() ([]byte, error) {
+func (u TeamLimitedGitUserID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -415,194 +396,194 @@ func (u GitUserID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GitUserID: all fields are null")
+	return nil, errors.New("could not marshal union type TeamLimitedGitUserID: all fields are null")
 }
 
-type JoinedFrom struct {
-	Origin           Origin     `json:"origin"`
-	CommitID         *string    `json:"commitId,omitempty"`
-	RepoID           *string    `json:"repoId,omitempty"`
-	RepoPath         *string    `json:"repoPath,omitempty"`
-	GitUserID        *GitUserID `json:"gitUserId,omitempty"`
-	GitUserLogin     *string    `json:"gitUserLogin,omitempty"`
-	SsoUserID        *string    `json:"ssoUserId,omitempty"`
-	SsoConnectedAt   *float64   `json:"ssoConnectedAt,omitempty"`
-	IdpUserID        *string    `json:"idpUserId,omitempty"`
-	DsyncUserID      *string    `json:"dsyncUserId,omitempty"`
-	DsyncConnectedAt *float64   `json:"dsyncConnectedAt,omitempty"`
+type TeamLimitedJoinedFrom struct {
+	Origin           TeamLimitedOrigin     `json:"origin"`
+	CommitID         *string               `json:"commitId,omitempty"`
+	RepoID           *string               `json:"repoId,omitempty"`
+	RepoPath         *string               `json:"repoPath,omitempty"`
+	GitUserID        *TeamLimitedGitUserID `json:"gitUserId,omitempty"`
+	GitUserLogin     *string               `json:"gitUserLogin,omitempty"`
+	SsoUserID        *string               `json:"ssoUserId,omitempty"`
+	SsoConnectedAt   *float64              `json:"ssoConnectedAt,omitempty"`
+	IdpUserID        *string               `json:"idpUserId,omitempty"`
+	DsyncUserID      *string               `json:"dsyncUserId,omitempty"`
+	DsyncConnectedAt *float64              `json:"dsyncConnectedAt,omitempty"`
 }
 
-func (o *JoinedFrom) GetOrigin() Origin {
+func (o *TeamLimitedJoinedFrom) GetOrigin() TeamLimitedOrigin {
 	if o == nil {
-		return Origin("")
+		return TeamLimitedOrigin("")
 	}
 	return o.Origin
 }
 
-func (o *JoinedFrom) GetCommitID() *string {
+func (o *TeamLimitedJoinedFrom) GetCommitID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CommitID
 }
 
-func (o *JoinedFrom) GetRepoID() *string {
+func (o *TeamLimitedJoinedFrom) GetRepoID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RepoID
 }
 
-func (o *JoinedFrom) GetRepoPath() *string {
+func (o *TeamLimitedJoinedFrom) GetRepoPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RepoPath
 }
 
-func (o *JoinedFrom) GetGitUserID() *GitUserID {
+func (o *TeamLimitedJoinedFrom) GetGitUserID() *TeamLimitedGitUserID {
 	if o == nil {
 		return nil
 	}
 	return o.GitUserID
 }
 
-func (o *JoinedFrom) GetGitUserLogin() *string {
+func (o *TeamLimitedJoinedFrom) GetGitUserLogin() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitUserLogin
 }
 
-func (o *JoinedFrom) GetSsoUserID() *string {
+func (o *TeamLimitedJoinedFrom) GetSsoUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SsoUserID
 }
 
-func (o *JoinedFrom) GetSsoConnectedAt() *float64 {
+func (o *TeamLimitedJoinedFrom) GetSsoConnectedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SsoConnectedAt
 }
 
-func (o *JoinedFrom) GetIdpUserID() *string {
+func (o *TeamLimitedJoinedFrom) GetIdpUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IdpUserID
 }
 
-func (o *JoinedFrom) GetDsyncUserID() *string {
+func (o *TeamLimitedJoinedFrom) GetDsyncUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DsyncUserID
 }
 
-func (o *JoinedFrom) GetDsyncConnectedAt() *float64 {
+func (o *TeamLimitedJoinedFrom) GetDsyncConnectedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DsyncConnectedAt
 }
 
-// Membership - The membership of the authenticated User in relation to the Team.
-type Membership struct {
-	UID               *string           `json:"uid,omitempty"`
-	Entitlements      []Entitlements    `json:"entitlements,omitempty"`
-	TeamID            *string           `json:"teamId,omitempty"`
-	Confirmed         bool              `json:"confirmed"`
-	ConfirmedAt       float64           `json:"confirmedAt"`
-	AccessRequestedAt *float64          `json:"accessRequestedAt,omitempty"`
-	Role              Role              `json:"role"`
-	TeamRoles         []TeamRoles       `json:"teamRoles,omitempty"`
-	TeamPermissions   []TeamPermissions `json:"teamPermissions,omitempty"`
-	CreatedAt         float64           `json:"createdAt"`
-	Created           float64           `json:"created"`
-	JoinedFrom        *JoinedFrom       `json:"joinedFrom,omitempty"`
+// TeamLimitedMembership - The membership of the authenticated User in relation to the Team.
+type TeamLimitedMembership struct {
+	UID               *string                     `json:"uid,omitempty"`
+	Entitlements      []TeamLimitedEntitlement    `json:"entitlements,omitempty"`
+	TeamID            *string                     `json:"teamId,omitempty"`
+	Confirmed         bool                        `json:"confirmed"`
+	ConfirmedAt       float64                     `json:"confirmedAt"`
+	AccessRequestedAt *float64                    `json:"accessRequestedAt,omitempty"`
+	Role              TeamLimitedRole             `json:"role"`
+	TeamRoles         []TeamLimitedTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions   []TeamLimitedTeamPermission `json:"teamPermissions,omitempty"`
+	CreatedAt         float64                     `json:"createdAt"`
+	Created           float64                     `json:"created"`
+	JoinedFrom        *TeamLimitedJoinedFrom      `json:"joinedFrom,omitempty"`
 }
 
-func (o *Membership) GetUID() *string {
+func (o *TeamLimitedMembership) GetUID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UID
 }
 
-func (o *Membership) GetEntitlements() []Entitlements {
+func (o *TeamLimitedMembership) GetEntitlements() []TeamLimitedEntitlement {
 	if o == nil {
 		return nil
 	}
 	return o.Entitlements
 }
 
-func (o *Membership) GetTeamID() *string {
+func (o *TeamLimitedMembership) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *Membership) GetConfirmed() bool {
+func (o *TeamLimitedMembership) GetConfirmed() bool {
 	if o == nil {
 		return false
 	}
 	return o.Confirmed
 }
 
-func (o *Membership) GetConfirmedAt() float64 {
+func (o *TeamLimitedMembership) GetConfirmedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConfirmedAt
 }
 
-func (o *Membership) GetAccessRequestedAt() *float64 {
+func (o *TeamLimitedMembership) GetAccessRequestedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.AccessRequestedAt
 }
 
-func (o *Membership) GetRole() Role {
+func (o *TeamLimitedMembership) GetRole() TeamLimitedRole {
 	if o == nil {
-		return Role("")
+		return TeamLimitedRole("")
 	}
 	return o.Role
 }
 
-func (o *Membership) GetTeamRoles() []TeamRoles {
+func (o *TeamLimitedMembership) GetTeamRoles() []TeamLimitedTeamRole {
 	if o == nil {
 		return nil
 	}
 	return o.TeamRoles
 }
 
-func (o *Membership) GetTeamPermissions() []TeamPermissions {
+func (o *TeamLimitedMembership) GetTeamPermissions() []TeamLimitedTeamPermission {
 	if o == nil {
 		return nil
 	}
 	return o.TeamPermissions
 }
 
-func (o *Membership) GetCreatedAt() float64 {
+func (o *TeamLimitedMembership) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *Membership) GetCreated() float64 {
+func (o *TeamLimitedMembership) GetCreated() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Created
 }
 
-func (o *Membership) GetJoinedFrom() *JoinedFrom {
+func (o *TeamLimitedMembership) GetJoinedFrom() *TeamLimitedJoinedFrom {
 	if o == nil {
 		return nil
 	}
@@ -615,8 +596,7 @@ type TeamLimited struct {
 	Limited   bool        `json:"limited"`
 	LimitedBy []LimitedBy `json:"limitedBy"`
 	// When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
-	Saml *Saml `json:"saml,omitempty"`
-	Mfa  *Mfa  `json:"mfa,omitempty"`
+	Saml *TeamLimitedSaml `json:"saml,omitempty"`
 	// The Team's unique identifier.
 	ID string `json:"id"`
 	// The Team's slug, which is unique across the Vercel platform.
@@ -626,9 +606,7 @@ type TeamLimited struct {
 	// The ID of the file used as avatar for this Team.
 	Avatar *string `json:"avatar"`
 	// The membership of the authenticated User in relation to the Team.
-	Membership Membership `json:"membership"`
-	// Will remain undocumented. Remove in v3 API.
-	Created string `json:"created"`
+	Membership TeamLimitedMembership `json:"membership"`
 	// UNIX timestamp (in milliseconds) when the Team was created.
 	CreatedAt float64 `json:"createdAt"`
 }
@@ -647,18 +625,11 @@ func (o *TeamLimited) GetLimitedBy() []LimitedBy {
 	return o.LimitedBy
 }
 
-func (o *TeamLimited) GetSaml() *Saml {
+func (o *TeamLimited) GetSaml() *TeamLimitedSaml {
 	if o == nil {
 		return nil
 	}
 	return o.Saml
-}
-
-func (o *TeamLimited) GetMfa() *Mfa {
-	if o == nil {
-		return nil
-	}
-	return o.Mfa
 }
 
 func (o *TeamLimited) GetID() string {
@@ -689,18 +660,11 @@ func (o *TeamLimited) GetAvatar() *string {
 	return o.Avatar
 }
 
-func (o *TeamLimited) GetMembership() Membership {
+func (o *TeamLimited) GetMembership() TeamLimitedMembership {
 	if o == nil {
-		return Membership{}
+		return TeamLimitedMembership{}
 	}
 	return o.Membership
-}
-
-func (o *TeamLimited) GetCreated() string {
-	if o == nil {
-		return ""
-	}
-	return o.Created
 }
 
 func (o *TeamLimited) GetCreatedAt() float64 {

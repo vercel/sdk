@@ -10,18 +10,18 @@ let value: GetProjectsLatestDeployments = {
   createdAt: 7929.9,
   createdIn: "<value>",
   creator: {
-    email: "Elian_Gleason@yahoo.com",
+    email: "Tanya.Stanton64@gmail.com",
     uid: "<id>",
-    username: "Braulio_Grant21",
+    username: "Mary.Murphy24",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "pro",
   previewCommentsEnabled: false,
-  private: false,
-  readyState: "ERROR",
+  private: true,
+  readyState: "QUEUED",
   type: "LAMBDAS",
-  url: "https://numb-jet.biz/",
+  url: "https://decisive-intervention.com/",
   userId: "<id>",
 };
 ```

@@ -6,9 +6,7 @@
 import { ResponseBodyBuild } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: ResponseBodyBuild = {
-  env: [
-    "<value>",
-  ],
+  env: [],
 };
 ```
 

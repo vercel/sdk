@@ -12,7 +12,7 @@ const value: models.Link1 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://firm-hope.net",
+      url: "https://valuable-remark.name/",
     },
   ],
 };
@@ -22,14 +22,7 @@ const value: models.Link1 = {
 
 ```typescript
 const value: models.Link2 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://cheap-colonialism.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 
@@ -37,14 +30,7 @@ const value: models.Link2 = {
 
 ```typescript
 const value: models.Link3 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://overcooked-government.net",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 
@@ -52,14 +38,7 @@ const value: models.Link3 = {
 
 ```typescript
 const value: models.Link4 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://coordinated-bourgeoisie.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

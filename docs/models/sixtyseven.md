@@ -14,7 +14,8 @@ let value: SixtySeven = {
   integrationName: "<value>",
   ownerId: "<id>",
   confirmedScopes: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

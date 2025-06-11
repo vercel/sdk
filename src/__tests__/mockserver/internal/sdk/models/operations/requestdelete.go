@@ -6,34 +6,34 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// RequestDeleteReasons - An object describing the reason why the User account is being deleted.
-type RequestDeleteReasons struct {
+// RequestDeleteReason - An object describing the reason why the User account is being deleted.
+type RequestDeleteReason struct {
 	// Idenitifier slug of the reason why the User account is being deleted.
 	Slug string `json:"slug"`
 	// Description of the reason why the User account is being deleted.
 	Description string `json:"description"`
 }
 
-func (o *RequestDeleteReasons) GetSlug() string {
+func (o *RequestDeleteReason) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *RequestDeleteReasons) GetDescription() string {
+func (o *RequestDeleteReason) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-type RequestDeleteRequestBody struct {
+type RequestDeleteRequest struct {
 	// Optional array of objects that describe the reason why the User account is being deleted.
-	Reasons []RequestDeleteReasons `json:"reasons,omitempty"`
+	Reasons []RequestDeleteReason `json:"reasons,omitempty"`
 }
 
-func (o *RequestDeleteRequestBody) GetReasons() []RequestDeleteReasons {
+func (o *RequestDeleteRequest) GetReasons() []RequestDeleteReason {
 	if o == nil {
 		return nil
 	}

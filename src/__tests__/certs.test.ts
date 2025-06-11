@@ -21,6 +21,16 @@ test("Certs Get Cert By Id", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    createdAt: 6540.28,
+    expiresAt: 6456.07,
+    autoRenew: true,
+    cns: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  });
 });
 
 test("Certs Remove Cert", async () => {
@@ -38,6 +48,7 @@ test("Certs Remove Cert", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Certs Issue Cert", async () => {
@@ -52,9 +63,18 @@ test("Certs Issue Cert", async () => {
   const result = await vercel.certs.issueCert({
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: {},
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    createdAt: 8859.68,
+    expiresAt: 8499.2,
+    autoRenew: true,
+    cns: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  });
 });
 
 test("Certs Upload Cert", async () => {
@@ -69,11 +89,17 @@ test("Certs Upload Cert", async () => {
   const result = await vercel.certs.uploadCert({
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: {
-      ca: "<value>",
-      key: "<key>",
-      cert: "<value>",
-    },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    createdAt: 5621.19,
+    expiresAt: 3778.47,
+    autoRenew: true,
+    cns: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  });
 });

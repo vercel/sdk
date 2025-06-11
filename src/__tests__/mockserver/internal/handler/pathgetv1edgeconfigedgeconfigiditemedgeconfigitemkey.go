@@ -46,14 +46,41 @@ func testGetEdgeConfigItemGetEdgeConfigItem0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.EdgeConfigItem{
+	var respBody *components.EdgeConfigItem = &components.EdgeConfigItem{
 		Key: "<key>",
-		Value: types.Pointer(components.CreateEdgeConfigItemValueNumber(
-			9966.78,
+		Value: types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+			map[string]*components.EdgeConfigItemValue{
+				"0": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+					map[string]*components.EdgeConfigItemValue{
+						"key": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
+							false,
+						)),
+						"key1": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+							map[string]*components.EdgeConfigItemValue{},
+						)),
+						"key2": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+							map[string]*components.EdgeConfigItemValue{
+								"key": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+									map[string]*components.EdgeConfigItemValue{},
+								)),
+								"key1": types.Pointer(components.CreateEdgeConfigItemValueStr(
+									"<value>",
+								)),
+							},
+						)),
+					},
+				)),
+				"1": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
+					true,
+				)),
+				"2": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
+					map[string]*components.EdgeConfigItemValue{},
+				)),
+			},
 		)),
 		EdgeConfigID: "<id>",
-		CreatedAt:    1621.85,
-		UpdatedAt:    3034.43,
+		CreatedAt:    8897.2,
+		UpdatedAt:    3673.26,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

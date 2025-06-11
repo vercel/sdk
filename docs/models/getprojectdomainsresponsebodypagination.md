@@ -7,8 +7,8 @@ import { GetProjectDomainsResponseBodyPagination } from "@vercel/sdk/models/getp
 
 let value: GetProjectDomainsResponseBodyPagination = {
   count: 1905.58,
-  next: 5946.34,
-  prev: 2039.18,
+  next: 2039.18,
+  prev: 6511.41,
 };
 ```
 

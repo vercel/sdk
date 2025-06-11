@@ -8,7 +8,7 @@ Java Attack - Mitigate risks of exploitation targeting Java-based applications o
 import { PutFirewallConfigJava } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigJava = {
-  active: false,
+  active: true,
   action: "deny",
 };
 ```

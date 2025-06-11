@@ -46,7 +46,7 @@ func (o *GetEdgeConfigBackupRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type ResponseBodyUser struct {
+type GetEdgeConfigBackupUser2 struct {
 	ID       string  `json:"id"`
 	Username string  `json:"username"`
 	Email    string  `json:"email"`
@@ -54,141 +54,141 @@ type ResponseBodyUser struct {
 	Avatar   *string `json:"avatar,omitempty"`
 }
 
-func (o *ResponseBodyUser) GetID() string {
+func (o *GetEdgeConfigBackupUser2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ResponseBodyUser) GetUsername() string {
+func (o *GetEdgeConfigBackupUser2) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
 }
 
-func (o *ResponseBodyUser) GetEmail() string {
+func (o *GetEdgeConfigBackupUser2) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *ResponseBodyUser) GetName() *string {
+func (o *GetEdgeConfigBackupUser2) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *ResponseBodyUser) GetAvatar() *string {
+func (o *GetEdgeConfigBackupUser2) GetAvatar() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Avatar
 }
 
-type ResponseBodyItems struct {
+type Items2 struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *ResponseBodyItems) GetUpdatedAt() float64 {
+func (o *Items2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *ResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
+func (o *Items2) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *ResponseBodyItems) GetDescription() *string {
+func (o *Items2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ResponseBodyItems) GetCreatedAt() float64 {
+func (o *Items2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-type ResponseBodyBackup struct {
-	Digest string                       `json:"digest"`
-	Items  map[string]ResponseBodyItems `json:"items"`
+type GetEdgeConfigBackupBackup2 struct {
+	Digest string            `json:"digest"`
+	Items  map[string]Items2 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
-func (o *ResponseBodyBackup) GetDigest() string {
+func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
 	if o == nil {
 		return ""
 	}
 	return o.Digest
 }
 
-func (o *ResponseBodyBackup) GetItems() map[string]ResponseBodyItems {
+func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]Items2 {
 	if o == nil {
-		return map[string]ResponseBodyItems{}
+		return map[string]Items2{}
 	}
 	return o.Items
 }
 
-func (o *ResponseBodyBackup) GetSlug() string {
+func (o *GetEdgeConfigBackupBackup2) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *ResponseBodyBackup) GetUpdatedAt() float64 {
+func (o *GetEdgeConfigBackupBackup2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-type ResponseBodyMetadata struct {
+type GetEdgeConfigBackupMetadata2 struct {
 	UpdatedAt  *string  `json:"updatedAt,omitempty"`
 	UpdatedBy  *string  `json:"updatedBy,omitempty"`
 	ItemsCount *float64 `json:"itemsCount,omitempty"`
 	ItemsBytes *float64 `json:"itemsBytes,omitempty"`
 }
 
-func (o *ResponseBodyMetadata) GetUpdatedAt() *string {
+func (o *GetEdgeConfigBackupMetadata2) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *ResponseBodyMetadata) GetUpdatedBy() *string {
+func (o *GetEdgeConfigBackupMetadata2) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *ResponseBodyMetadata) GetItemsCount() *float64 {
+func (o *GetEdgeConfigBackupMetadata2) GetItemsCount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ItemsCount
 }
 
-func (o *ResponseBodyMetadata) GetItemsBytes() *float64 {
+func (o *GetEdgeConfigBackupMetadata2) GetItemsBytes() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -196,16 +196,16 @@ func (o *ResponseBodyMetadata) GetItemsBytes() *float64 {
 }
 
 type GetEdgeConfigBackupResponseBody2 struct {
-	User         ResponseBodyUser     `json:"user"`
-	ID           string               `json:"id"`
-	LastModified float64              `json:"lastModified"`
-	Backup       ResponseBodyBackup   `json:"backup"`
-	Metadata     ResponseBodyMetadata `json:"metadata"`
+	User         GetEdgeConfigBackupUser2     `json:"user"`
+	ID           string                       `json:"id"`
+	LastModified float64                      `json:"lastModified"`
+	Backup       GetEdgeConfigBackupBackup2   `json:"backup"`
+	Metadata     GetEdgeConfigBackupMetadata2 `json:"metadata"`
 }
 
-func (o *GetEdgeConfigBackupResponseBody2) GetUser() ResponseBodyUser {
+func (o *GetEdgeConfigBackupResponseBody2) GetUser() GetEdgeConfigBackupUser2 {
 	if o == nil {
-		return ResponseBodyUser{}
+		return GetEdgeConfigBackupUser2{}
 	}
 	return o.User
 }
@@ -224,127 +224,127 @@ func (o *GetEdgeConfigBackupResponseBody2) GetLastModified() float64 {
 	return o.LastModified
 }
 
-func (o *GetEdgeConfigBackupResponseBody2) GetBackup() ResponseBodyBackup {
+func (o *GetEdgeConfigBackupResponseBody2) GetBackup() GetEdgeConfigBackupBackup2 {
 	if o == nil {
-		return ResponseBodyBackup{}
+		return GetEdgeConfigBackupBackup2{}
 	}
 	return o.Backup
 }
 
-func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() ResponseBodyMetadata {
+func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() GetEdgeConfigBackupMetadata2 {
 	if o == nil {
-		return ResponseBodyMetadata{}
+		return GetEdgeConfigBackupMetadata2{}
 	}
 	return o.Metadata
 }
 
-type GetEdgeConfigBackupResponseBodyItems struct {
+type Items1 struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetUpdatedAt() float64 {
+func (o *Items1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetValue() *components.EdgeConfigItemValue {
+func (o *Items1) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetDescription() *string {
+func (o *Items1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *GetEdgeConfigBackupResponseBodyItems) GetCreatedAt() float64 {
+func (o *Items1) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-type Backup struct {
-	Digest string                                          `json:"digest"`
-	Items  map[string]GetEdgeConfigBackupResponseBodyItems `json:"items"`
+type GetEdgeConfigBackupBackup1 struct {
+	Digest string            `json:"digest"`
+	Items  map[string]Items1 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
-func (o *Backup) GetDigest() string {
+func (o *GetEdgeConfigBackupBackup1) GetDigest() string {
 	if o == nil {
 		return ""
 	}
 	return o.Digest
 }
 
-func (o *Backup) GetItems() map[string]GetEdgeConfigBackupResponseBodyItems {
+func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]Items1 {
 	if o == nil {
-		return map[string]GetEdgeConfigBackupResponseBodyItems{}
+		return map[string]Items1{}
 	}
 	return o.Items
 }
 
-func (o *Backup) GetSlug() string {
+func (o *GetEdgeConfigBackupBackup1) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *Backup) GetUpdatedAt() float64 {
+func (o *GetEdgeConfigBackupBackup1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-type Metadata struct {
+type GetEdgeConfigBackupMetadata1 struct {
 	UpdatedAt  *string  `json:"updatedAt,omitempty"`
 	UpdatedBy  *string  `json:"updatedBy,omitempty"`
 	ItemsCount *float64 `json:"itemsCount,omitempty"`
 	ItemsBytes *float64 `json:"itemsBytes,omitempty"`
 }
 
-func (o *Metadata) GetUpdatedAt() *string {
+func (o *GetEdgeConfigBackupMetadata1) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *Metadata) GetUpdatedBy() *string {
+func (o *GetEdgeConfigBackupMetadata1) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *Metadata) GetItemsCount() *float64 {
+func (o *GetEdgeConfigBackupMetadata1) GetItemsCount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ItemsCount
 }
 
-func (o *Metadata) GetItemsBytes() *float64 {
+func (o *GetEdgeConfigBackupMetadata1) GetItemsBytes() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ItemsBytes
 }
 
-type GetEdgeConfigBackupResponseBodyUser struct {
+type GetEdgeConfigBackupUser1 struct {
 	ID       string  `json:"id"`
 	Username string  `json:"username"`
 	Email    string  `json:"email"`
@@ -352,35 +352,35 @@ type GetEdgeConfigBackupResponseBodyUser struct {
 	Avatar   *string `json:"avatar,omitempty"`
 }
 
-func (o *GetEdgeConfigBackupResponseBodyUser) GetID() string {
+func (o *GetEdgeConfigBackupUser1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetEdgeConfigBackupResponseBodyUser) GetUsername() string {
+func (o *GetEdgeConfigBackupUser1) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
 }
 
-func (o *GetEdgeConfigBackupResponseBodyUser) GetEmail() string {
+func (o *GetEdgeConfigBackupUser1) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *GetEdgeConfigBackupResponseBodyUser) GetName() *string {
+func (o *GetEdgeConfigBackupUser1) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *GetEdgeConfigBackupResponseBodyUser) GetAvatar() *string {
+func (o *GetEdgeConfigBackupUser1) GetAvatar() *string {
 	if o == nil {
 		return nil
 	}
@@ -389,11 +389,11 @@ func (o *GetEdgeConfigBackupResponseBodyUser) GetAvatar() *string {
 
 // GetEdgeConfigBackupResponseBody1 - The object the API responds with when requesting an Edge Config backup
 type GetEdgeConfigBackupResponseBody1 struct {
-	ID           string                               `json:"id"`
-	LastModified float64                              `json:"lastModified"`
-	Backup       Backup                               `json:"backup"`
-	Metadata     Metadata                             `json:"metadata"`
-	User         *GetEdgeConfigBackupResponseBodyUser `json:"user,omitempty"`
+	ID           string                       `json:"id"`
+	LastModified float64                      `json:"lastModified"`
+	Backup       GetEdgeConfigBackupBackup1   `json:"backup"`
+	Metadata     GetEdgeConfigBackupMetadata1 `json:"metadata"`
+	User         *GetEdgeConfigBackupUser1    `json:"user,omitempty"`
 }
 
 func (o *GetEdgeConfigBackupResponseBody1) GetID() string {
@@ -410,21 +410,21 @@ func (o *GetEdgeConfigBackupResponseBody1) GetLastModified() float64 {
 	return o.LastModified
 }
 
-func (o *GetEdgeConfigBackupResponseBody1) GetBackup() Backup {
+func (o *GetEdgeConfigBackupResponseBody1) GetBackup() GetEdgeConfigBackupBackup1 {
 	if o == nil {
-		return Backup{}
+		return GetEdgeConfigBackupBackup1{}
 	}
 	return o.Backup
 }
 
-func (o *GetEdgeConfigBackupResponseBody1) GetMetadata() Metadata {
+func (o *GetEdgeConfigBackupResponseBody1) GetMetadata() GetEdgeConfigBackupMetadata1 {
 	if o == nil {
-		return Metadata{}
+		return GetEdgeConfigBackupMetadata1{}
 	}
 	return o.Metadata
 }
 
-func (o *GetEdgeConfigBackupResponseBody1) GetUser() *GetEdgeConfigBackupResponseBodyUser {
+func (o *GetEdgeConfigBackupResponseBody1) GetUser() *GetEdgeConfigBackupUser1 {
 	if o == nil {
 		return nil
 	}
@@ -434,13 +434,13 @@ func (o *GetEdgeConfigBackupResponseBody1) GetUser() *GetEdgeConfigBackupRespons
 type GetEdgeConfigBackupResponseBodyType string
 
 const (
-	GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody1 GetEdgeConfigBackupResponseBodyType = "getEdgeConfigBackup_responseBody_1"
-	GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody2 GetEdgeConfigBackupResponseBodyType = "getEdgeConfigBackup_responseBody_2"
+	GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody1 GetEdgeConfigBackupResponseBodyType = "getEdgeConfigBackup_ResponseBody_1"
+	GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody2 GetEdgeConfigBackupResponseBodyType = "getEdgeConfigBackup_ResponseBody_2"
 )
 
 type GetEdgeConfigBackupResponseBody struct {
-	GetEdgeConfigBackupResponseBody1 *GetEdgeConfigBackupResponseBody1
-	GetEdgeConfigBackupResponseBody2 *GetEdgeConfigBackupResponseBody2
+	GetEdgeConfigBackupResponseBody1 *GetEdgeConfigBackupResponseBody1 `queryParam:"inline"`
+	GetEdgeConfigBackupResponseBody2 *GetEdgeConfigBackupResponseBody2 `queryParam:"inline"`
 
 	Type GetEdgeConfigBackupResponseBodyType
 }

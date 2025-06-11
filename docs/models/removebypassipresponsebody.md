@@ -6,7 +6,7 @@
 import { RemoveBypassIpResponseBody } from "@vercel/sdk/models/removebypassipop.js";
 
 let value: RemoveBypassIpResponseBody = {
-  ok: false,
+  ok: true,
 };
 ```
 

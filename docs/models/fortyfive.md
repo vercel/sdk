@@ -9,7 +9,7 @@ import { FortyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyFive = {
   name: "<value>",
-  cdnEnabled: false,
+  cdnEnabled: true,
 };
 ```
 

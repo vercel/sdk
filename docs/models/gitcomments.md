@@ -7,7 +7,7 @@ import { GitComments } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: GitComments = {
   onPullRequest: false,
-  onCommit: false,
+  onCommit: true,
 };
 ```
 

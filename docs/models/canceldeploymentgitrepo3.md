@@ -14,7 +14,7 @@ let value: CancelDeploymentGitRepo3 = {
   path: "/proc",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "team",
 };
 ```

@@ -8,7 +8,7 @@ import { UserEventMicrofrontends1 } from "@vercel/sdk/models/userevent.js";
 let value: UserEventMicrofrontends1 = {
   updatedAt: 1770.01,
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
   enabled: false,
 };

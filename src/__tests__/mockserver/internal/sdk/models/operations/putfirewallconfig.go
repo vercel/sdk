@@ -10,18 +10,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type ManagedRulesAction string
+type ManagedRulesActionRequestBody string
 
 const (
-	ManagedRulesActionLog       ManagedRulesAction = "log"
-	ManagedRulesActionChallenge ManagedRulesAction = "challenge"
-	ManagedRulesActionDeny      ManagedRulesAction = "deny"
+	ManagedRulesActionRequestBodyLog       ManagedRulesActionRequestBody = "log"
+	ManagedRulesActionRequestBodyChallenge ManagedRulesActionRequestBody = "challenge"
+	ManagedRulesActionRequestBodyDeny      ManagedRulesActionRequestBody = "deny"
 )
 
-func (e ManagedRulesAction) ToPointer() *ManagedRulesAction {
+func (e ManagedRulesActionRequestBody) ToPointer() *ManagedRulesActionRequestBody {
 	return &e
 }
-func (e *ManagedRulesAction) UnmarshalJSON(data []byte) error {
+func (e *ManagedRulesActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,25 +32,25 @@ func (e *ManagedRulesAction) UnmarshalJSON(data []byte) error {
 	case "challenge":
 		fallthrough
 	case "deny":
-		*e = ManagedRulesAction(v)
+		*e = ManagedRulesActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ManagedRulesAction: %v", v)
+		return fmt.Errorf("invalid value for ManagedRulesActionRequestBody: %v", v)
 	}
 }
 
-type PutFirewallConfigManagedRulesAction string
+type RuleGroupsAction string
 
 const (
-	PutFirewallConfigManagedRulesActionLog       PutFirewallConfigManagedRulesAction = "log"
-	PutFirewallConfigManagedRulesActionChallenge PutFirewallConfigManagedRulesAction = "challenge"
-	PutFirewallConfigManagedRulesActionDeny      PutFirewallConfigManagedRulesAction = "deny"
+	RuleGroupsActionLog       RuleGroupsAction = "log"
+	RuleGroupsActionChallenge RuleGroupsAction = "challenge"
+	RuleGroupsActionDeny      RuleGroupsAction = "deny"
 )
 
-func (e PutFirewallConfigManagedRulesAction) ToPointer() *PutFirewallConfigManagedRulesAction {
+func (e RuleGroupsAction) ToPointer() *RuleGroupsAction {
 	return &e
 }
-func (e *PutFirewallConfigManagedRulesAction) UnmarshalJSON(data []byte) error {
+func (e *RuleGroupsAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -61,16 +61,16 @@ func (e *PutFirewallConfigManagedRulesAction) UnmarshalJSON(data []byte) error {
 	case "challenge":
 		fallthrough
 	case "deny":
-		*e = PutFirewallConfigManagedRulesAction(v)
+		*e = RuleGroupsAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigManagedRulesAction: %v", v)
+		return fmt.Errorf("invalid value for RuleGroupsAction: %v", v)
 	}
 }
 
 type RuleGroups struct {
-	Active *bool                                `json:"active,omitempty"`
-	Action *PutFirewallConfigManagedRulesAction `json:"action,omitempty"`
+	Active *bool             `json:"active,omitempty"`
+	Action *RuleGroupsAction `json:"action,omitempty"`
 }
 
 func (o *RuleGroups) GetActive() *bool {
@@ -80,34 +80,34 @@ func (o *RuleGroups) GetActive() *bool {
 	return o.Active
 }
 
-func (o *RuleGroups) GetAction() *PutFirewallConfigManagedRulesAction {
+func (o *RuleGroups) GetAction() *RuleGroupsAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type ManagedRules1 struct {
-	Active     bool                  `json:"active"`
-	Action     *ManagedRulesAction   `json:"action,omitempty"`
-	RuleGroups map[string]RuleGroups `json:"ruleGroups,omitempty"`
+type ManagedRulesRequest struct {
+	Active     bool                           `json:"active"`
+	Action     *ManagedRulesActionRequestBody `json:"action,omitempty"`
+	RuleGroups map[string]RuleGroups          `json:"ruleGroups,omitempty"`
 }
 
-func (o *ManagedRules1) GetActive() bool {
+func (o *ManagedRulesRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *ManagedRules1) GetAction() *ManagedRulesAction {
+func (o *ManagedRulesRequest) GetAction() *ManagedRulesActionRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-func (o *ManagedRules1) GetRuleGroups() map[string]RuleGroups {
+func (o *ManagedRulesRequest) GetRuleGroups() map[string]RuleGroups {
 	if o == nil {
 		return nil
 	}
@@ -117,30 +117,30 @@ func (o *ManagedRules1) GetRuleGroups() map[string]RuleGroups {
 type ManagedRulesType string
 
 const (
-	ManagedRulesTypeManagedRules1 ManagedRulesType = "managedRules_1"
+	ManagedRulesTypeManagedRulesRequest ManagedRulesType = "managedRules_request"
 )
 
 type ManagedRules struct {
-	ManagedRules1 *ManagedRules1
+	ManagedRulesRequest *ManagedRulesRequest `queryParam:"inline"`
 
 	Type ManagedRulesType
 }
 
-func CreateManagedRulesManagedRules1(managedRules1 ManagedRules1) ManagedRules {
-	typ := ManagedRulesTypeManagedRules1
+func CreateManagedRulesManagedRulesRequest(managedRulesRequest ManagedRulesRequest) ManagedRules {
+	typ := ManagedRulesTypeManagedRulesRequest
 
 	return ManagedRules{
-		ManagedRules1: &managedRules1,
-		Type:          typ,
+		ManagedRulesRequest: &managedRulesRequest,
+		Type:                typ,
 	}
 }
 
 func (u *ManagedRules) UnmarshalJSON(data []byte) error {
 
-	var managedRules1 ManagedRules1 = ManagedRules1{}
-	if err := utils.UnmarshalJSON(data, &managedRules1, "", true, true); err == nil {
-		u.ManagedRules1 = &managedRules1
-		u.Type = ManagedRulesTypeManagedRules1
+	var managedRulesRequest ManagedRulesRequest = ManagedRulesRequest{}
+	if err := utils.UnmarshalJSON(data, &managedRulesRequest, "", true, true); err == nil {
+		u.ManagedRulesRequest = &managedRulesRequest
+		u.Type = ManagedRulesTypeManagedRulesRequest
 		return nil
 	}
 
@@ -148,24 +148,24 @@ func (u *ManagedRules) UnmarshalJSON(data []byte) error {
 }
 
 func (u ManagedRules) MarshalJSON() ([]byte, error) {
-	if u.ManagedRules1 != nil {
-		return utils.MarshalJSON(u.ManagedRules1, "", true)
+	if u.ManagedRulesRequest != nil {
+		return utils.MarshalJSON(u.ManagedRulesRequest, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ManagedRules: all fields are null")
 }
 
-type PutFirewallConfigAction string
+type SdActionRequestBody string
 
 const (
-	PutFirewallConfigActionDeny PutFirewallConfigAction = "deny"
-	PutFirewallConfigActionLog  PutFirewallConfigAction = "log"
+	SdActionRequestBodyDeny SdActionRequestBody = "deny"
+	SdActionRequestBodyLog  SdActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigAction) ToPointer() *PutFirewallConfigAction {
+func (e SdActionRequestBody) ToPointer() *SdActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigAction) UnmarshalJSON(data []byte) error {
+func (e *SdActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -174,44 +174,44 @@ func (e *PutFirewallConfigAction) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigAction(v)
+		*e = SdActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigAction: %v", v)
+		return fmt.Errorf("invalid value for SdActionRequestBody: %v", v)
 	}
 }
 
-// Sd - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-type Sd struct {
-	Active bool                    `json:"active"`
-	Action PutFirewallConfigAction `json:"action"`
+// SdRequest - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
+type SdRequest struct {
+	Active bool                `json:"active"`
+	Action SdActionRequestBody `json:"action"`
 }
 
-func (o *Sd) GetActive() bool {
+func (o *SdRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sd) GetAction() PutFirewallConfigAction {
+func (o *SdRequest) GetAction() SdActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigAction("")
+		return SdActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityAction string
+type MaActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityActionDeny PutFirewallConfigSecurityAction = "deny"
-	PutFirewallConfigSecurityActionLog  PutFirewallConfigSecurityAction = "log"
+	MaActionRequestBodyDeny MaActionRequestBody = "deny"
+	MaActionRequestBodyLog  MaActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityAction) ToPointer() *PutFirewallConfigSecurityAction {
+func (e MaActionRequestBody) ToPointer() *MaActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityAction) UnmarshalJSON(data []byte) error {
+func (e *MaActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -220,44 +220,44 @@ func (e *PutFirewallConfigSecurityAction) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityAction(v)
+		*e = MaActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityAction: %v", v)
+		return fmt.Errorf("invalid value for MaActionRequestBody: %v", v)
 	}
 }
 
-// Ma - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-type Ma struct {
-	Active bool                            `json:"active"`
-	Action PutFirewallConfigSecurityAction `json:"action"`
+// MaRequest - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
+type MaRequest struct {
+	Active bool                `json:"active"`
+	Action MaActionRequestBody `json:"action"`
 }
 
-func (o *Ma) GetActive() bool {
+func (o *MaRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Ma) GetAction() PutFirewallConfigSecurityAction {
+func (o *MaRequest) GetAction() MaActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityAction("")
+		return MaActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestAction string
+type LfiActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestActionDeny PutFirewallConfigSecurityRequestAction = "deny"
-	PutFirewallConfigSecurityRequestActionLog  PutFirewallConfigSecurityRequestAction = "log"
+	LfiActionRequestBodyDeny LfiActionRequestBody = "deny"
+	LfiActionRequestBodyLog  LfiActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestAction) ToPointer() *PutFirewallConfigSecurityRequestAction {
+func (e LfiActionRequestBody) ToPointer() *LfiActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestAction) UnmarshalJSON(data []byte) error {
+func (e *LfiActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -266,44 +266,44 @@ func (e *PutFirewallConfigSecurityRequestAction) UnmarshalJSON(data []byte) erro
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestAction(v)
+		*e = LfiActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestAction: %v", v)
+		return fmt.Errorf("invalid value for LfiActionRequestBody: %v", v)
 	}
 }
 
-// Lfi - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-type Lfi struct {
-	Active bool                                   `json:"active"`
-	Action PutFirewallConfigSecurityRequestAction `json:"action"`
+// LfiRequest - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
+type LfiRequest struct {
+	Active bool                 `json:"active"`
+	Action LfiActionRequestBody `json:"action"`
 }
 
-func (o *Lfi) GetActive() bool {
+func (o *LfiRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Lfi) GetAction() PutFirewallConfigSecurityRequestAction {
+func (o *LfiRequest) GetAction() LfiActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestAction("")
+		return LfiActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyAction string
+type RfiActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyActionDeny PutFirewallConfigSecurityRequestRequestBodyAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyActionLog  PutFirewallConfigSecurityRequestRequestBodyAction = "log"
+	RfiActionRequestBodyDeny RfiActionRequestBody = "deny"
+	RfiActionRequestBodyLog  RfiActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyAction {
+func (e RfiActionRequestBody) ToPointer() *RfiActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyAction) UnmarshalJSON(data []byte) error {
+func (e *RfiActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -312,44 +312,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyAction) UnmarshalJSON(data [
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyAction(v)
+		*e = RfiActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyAction: %v", v)
+		return fmt.Errorf("invalid value for RfiActionRequestBody: %v", v)
 	}
 }
 
-// Rfi - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-type Rfi struct {
-	Active bool                                              `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyAction `json:"action"`
+// RfiRequest - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
+type RfiRequest struct {
+	Active bool                 `json:"active"`
+	Action RfiActionRequestBody `json:"action"`
 }
 
-func (o *Rfi) GetActive() bool {
+func (o *RfiRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rfi) GetAction() PutFirewallConfigSecurityRequestRequestBodyAction {
+func (o *RfiRequest) GetAction() RfiActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyAction("")
+		return RfiActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsAction string
+type RceActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsAction = "log"
+	RceActionRequestBodyDeny RceActionRequestBody = "deny"
+	RceActionRequestBodyLog  RceActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsAction {
+func (e RceActionRequestBody) ToPointer() *RceActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsAction) UnmarshalJSON(data []byte) error {
+func (e *RceActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -358,44 +358,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsAction) UnmarshalJSON(dat
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsAction(v)
+		*e = RceActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsAction: %v", v)
+		return fmt.Errorf("invalid value for RceActionRequestBody: %v", v)
 	}
 }
 
-// Rce - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-type Rce struct {
-	Active bool                                                 `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsAction `json:"action"`
+// RceRequest - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
+type RceRequest struct {
+	Active bool                 `json:"active"`
+	Action RceActionRequestBody `json:"action"`
 }
 
-func (o *Rce) GetActive() bool {
+func (o *RceRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rce) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsAction {
+func (o *RceRequest) GetAction() RceActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsAction("")
+		return RceActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction string
+type PhpActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsPhpActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsPhpActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction = "log"
+	PhpActionRequestBodyDeny PhpActionRequestBody = "deny"
+	PhpActionRequestBodyLog  PhpActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction {
+func (e PhpActionRequestBody) ToPointer() *PhpActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction) UnmarshalJSON(data []byte) error {
+func (e *PhpActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -404,44 +404,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction) UnmarshalJSON(
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction(v)
+		*e = PhpActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction: %v", v)
+		return fmt.Errorf("invalid value for PhpActionRequestBody: %v", v)
 	}
 }
 
-// Php - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-type Php struct {
-	Active bool                                                    `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction `json:"action"`
+// PhpRequest - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
+type PhpRequest struct {
+	Active bool                 `json:"active"`
+	Action PhpActionRequestBody `json:"action"`
 }
 
-func (o *Php) GetActive() bool {
+func (o *PhpRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Php) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction {
+func (o *PhpRequest) GetAction() PhpActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction("")
+		return PhpActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsGenAction string
+type GenActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsGenActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsGenAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsGenActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsGenAction = "log"
+	GenActionRequestBodyDeny GenActionRequestBody = "deny"
+	GenActionRequestBodyLog  GenActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsGenAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsGenAction {
+func (e GenActionRequestBody) ToPointer() *GenActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsGenAction) UnmarshalJSON(data []byte) error {
+func (e *GenActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -450,44 +450,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsGenAction) UnmarshalJSON(
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsGenAction(v)
+		*e = GenActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsGenAction: %v", v)
+		return fmt.Errorf("invalid value for GenActionRequestBody: %v", v)
 	}
 }
 
-// Gen - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-type Gen struct {
-	Active bool                                                    `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsGenAction `json:"action"`
+// GenRequest - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
+type GenRequest struct {
+	Active bool                 `json:"active"`
+	Action GenActionRequestBody `json:"action"`
 }
 
-func (o *Gen) GetActive() bool {
+func (o *GenRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Gen) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsGenAction {
+func (o *GenRequest) GetAction() GenActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsGenAction("")
+		return GenActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction string
+type XSSActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsXSSActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsXSSActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction = "log"
+	XSSActionRequestBodyDeny XSSActionRequestBody = "deny"
+	XSSActionRequestBodyLog  XSSActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction {
+func (e XSSActionRequestBody) ToPointer() *XSSActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction) UnmarshalJSON(data []byte) error {
+func (e *XSSActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -496,44 +496,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction) UnmarshalJSON(
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction(v)
+		*e = XSSActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction: %v", v)
+		return fmt.Errorf("invalid value for XSSActionRequestBody: %v", v)
 	}
 }
 
-// XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-type XSS struct {
-	Active bool                                                    `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction `json:"action"`
+// XSSRequest - XSS Attack - Prevent injection of malicious scripts into trusted webpages.
+type XSSRequest struct {
+	Active bool                 `json:"active"`
+	Action XSSActionRequestBody `json:"action"`
 }
 
-func (o *XSS) GetActive() bool {
+func (o *XSSRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *XSS) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction {
+func (o *XSSRequest) GetAction() XSSActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsXSSAction("")
+		return XSSActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction string
+type SqliActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsSqliActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsSqliActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction = "log"
+	SqliActionRequestBodyDeny SqliActionRequestBody = "deny"
+	SqliActionRequestBodyLog  SqliActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction {
+func (e SqliActionRequestBody) ToPointer() *SqliActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction) UnmarshalJSON(data []byte) error {
+func (e *SqliActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -542,44 +542,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction) UnmarshalJSON
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction(v)
+		*e = SqliActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction: %v", v)
+		return fmt.Errorf("invalid value for SqliActionRequestBody: %v", v)
 	}
 }
 
-// Sqli - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-type Sqli struct {
-	Active bool                                                     `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction `json:"action"`
+// SqliRequest - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
+type SqliRequest struct {
+	Active bool                  `json:"active"`
+	Action SqliActionRequestBody `json:"action"`
 }
 
-func (o *Sqli) GetActive() bool {
+func (o *SqliRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sqli) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction {
+func (o *SqliRequest) GetAction() SqliActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction("")
+		return SqliActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsSfAction string
+type SfActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsSfActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsSfAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsSfActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsSfAction = "log"
+	SfActionRequestBodyDeny SfActionRequestBody = "deny"
+	SfActionRequestBodyLog  SfActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsSfAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsSfAction {
+func (e SfActionRequestBody) ToPointer() *SfActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsSfAction) UnmarshalJSON(data []byte) error {
+func (e *SfActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -588,44 +588,44 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsSfAction) UnmarshalJSON(d
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsSfAction(v)
+		*e = SfActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsSfAction: %v", v)
+		return fmt.Errorf("invalid value for SfActionRequestBody: %v", v)
 	}
 }
 
-// Sf - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-type Sf struct {
-	Active bool                                                   `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsSfAction `json:"action"`
+// SfRequest - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
+type SfRequest struct {
+	Active bool                `json:"active"`
+	Action SfActionRequestBody `json:"action"`
 }
 
-func (o *Sf) GetActive() bool {
+func (o *SfRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Sf) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsSfAction {
+func (o *SfRequest) GetAction() SfActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsSfAction("")
+		return SfActionRequestBody("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction string
+type JavaActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyCrsJavaActionDeny PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyCrsJavaActionLog  PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction = "log"
+	JavaActionRequestBodyDeny JavaActionRequestBody = "deny"
+	JavaActionRequestBodyLog  JavaActionRequestBody = "log"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction {
+func (e JavaActionRequestBody) ToPointer() *JavaActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction) UnmarshalJSON(data []byte) error {
+func (e *JavaActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -634,168 +634,168 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction) UnmarshalJSON
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction(v)
+		*e = JavaActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction: %v", v)
+		return fmt.Errorf("invalid value for JavaActionRequestBody: %v", v)
 	}
 }
 
-// Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-type Java struct {
-	Active bool                                                     `json:"active"`
-	Action PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction `json:"action"`
+// JavaRequest - Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
+type JavaRequest struct {
+	Active bool                  `json:"active"`
+	Action JavaActionRequestBody `json:"action"`
 }
 
-func (o *Java) GetActive() bool {
+func (o *JavaRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Java) GetAction() PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction {
+func (o *JavaRequest) GetAction() JavaActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction("")
+		return JavaActionRequestBody("")
 	}
 	return o.Action
 }
 
-// Crs - Custom Ruleset
-type Crs struct {
+// CrsRequest - Custom Ruleset
+type CrsRequest struct {
 	// Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-	Sd *Sd `json:"sd,omitempty"`
+	Sd *SdRequest `json:"sd,omitempty"`
 	// Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-	Ma *Ma `json:"ma,omitempty"`
+	Ma *MaRequest `json:"ma,omitempty"`
 	// Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-	Lfi *Lfi `json:"lfi,omitempty"`
+	Lfi *LfiRequest `json:"lfi,omitempty"`
 	// Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-	Rfi *Rfi `json:"rfi,omitempty"`
+	Rfi *RfiRequest `json:"rfi,omitempty"`
 	// Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-	Rce *Rce `json:"rce,omitempty"`
+	Rce *RceRequest `json:"rce,omitempty"`
 	// PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-	Php *Php `json:"php,omitempty"`
+	Php *PhpRequest `json:"php,omitempty"`
 	// Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-	Gen *Gen `json:"gen,omitempty"`
+	Gen *GenRequest `json:"gen,omitempty"`
 	// XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-	XSS *XSS `json:"xss,omitempty"`
+	XSS *XSSRequest `json:"xss,omitempty"`
 	// SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-	Sqli *Sqli `json:"sqli,omitempty"`
+	Sqli *SqliRequest `json:"sqli,omitempty"`
 	// Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-	Sf *Sf `json:"sf,omitempty"`
+	Sf *SfRequest `json:"sf,omitempty"`
 	// Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-	Java *Java `json:"java,omitempty"`
+	Java *JavaRequest `json:"java,omitempty"`
 }
 
-func (o *Crs) GetSd() *Sd {
+func (o *CrsRequest) GetSd() *SdRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Sd
 }
 
-func (o *Crs) GetMa() *Ma {
+func (o *CrsRequest) GetMa() *MaRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Ma
 }
 
-func (o *Crs) GetLfi() *Lfi {
+func (o *CrsRequest) GetLfi() *LfiRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Lfi
 }
 
-func (o *Crs) GetRfi() *Rfi {
+func (o *CrsRequest) GetRfi() *RfiRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Rfi
 }
 
-func (o *Crs) GetRce() *Rce {
+func (o *CrsRequest) GetRce() *RceRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Rce
 }
 
-func (o *Crs) GetPhp() *Php {
+func (o *CrsRequest) GetPhp() *PhpRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Php
 }
 
-func (o *Crs) GetGen() *Gen {
+func (o *CrsRequest) GetGen() *GenRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Gen
 }
 
-func (o *Crs) GetXSS() *XSS {
+func (o *CrsRequest) GetXSS() *XSSRequest {
 	if o == nil {
 		return nil
 	}
 	return o.XSS
 }
 
-func (o *Crs) GetSqli() *Sqli {
+func (o *CrsRequest) GetSqli() *SqliRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Sqli
 }
 
-func (o *Crs) GetSf() *Sf {
+func (o *CrsRequest) GetSf() *SfRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Sf
 }
 
-func (o *Crs) GetJava() *Java {
+func (o *CrsRequest) GetJava() *JavaRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Java
 }
 
-// PutFirewallConfigType - [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-type PutFirewallConfigType string
+// PutFirewallConfigTypeRequest - [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
+type PutFirewallConfigTypeRequest string
 
 const (
-	PutFirewallConfigTypeHost             PutFirewallConfigType = "host"
-	PutFirewallConfigTypePath             PutFirewallConfigType = "path"
-	PutFirewallConfigTypeMethod           PutFirewallConfigType = "method"
-	PutFirewallConfigTypeHeader           PutFirewallConfigType = "header"
-	PutFirewallConfigTypeQuery            PutFirewallConfigType = "query"
-	PutFirewallConfigTypeCookie           PutFirewallConfigType = "cookie"
-	PutFirewallConfigTypeTargetPath       PutFirewallConfigType = "target_path"
-	PutFirewallConfigTypeRawPath          PutFirewallConfigType = "raw_path"
-	PutFirewallConfigTypeIPAddress        PutFirewallConfigType = "ip_address"
-	PutFirewallConfigTypeRegion           PutFirewallConfigType = "region"
-	PutFirewallConfigTypeProtocol         PutFirewallConfigType = "protocol"
-	PutFirewallConfigTypeScheme           PutFirewallConfigType = "scheme"
-	PutFirewallConfigTypeEnvironment      PutFirewallConfigType = "environment"
-	PutFirewallConfigTypeUserAgent        PutFirewallConfigType = "user_agent"
-	PutFirewallConfigTypeGeoContinent     PutFirewallConfigType = "geo_continent"
-	PutFirewallConfigTypeGeoCountry       PutFirewallConfigType = "geo_country"
-	PutFirewallConfigTypeGeoCountryRegion PutFirewallConfigType = "geo_country_region"
-	PutFirewallConfigTypeGeoCity          PutFirewallConfigType = "geo_city"
-	PutFirewallConfigTypeGeoAsNumber      PutFirewallConfigType = "geo_as_number"
-	PutFirewallConfigTypeJa4Digest        PutFirewallConfigType = "ja4_digest"
-	PutFirewallConfigTypeJa3Digest        PutFirewallConfigType = "ja3_digest"
-	PutFirewallConfigTypeRateLimitAPIID   PutFirewallConfigType = "rate_limit_api_id"
+	PutFirewallConfigTypeRequestHost             PutFirewallConfigTypeRequest = "host"
+	PutFirewallConfigTypeRequestPath             PutFirewallConfigTypeRequest = "path"
+	PutFirewallConfigTypeRequestMethod           PutFirewallConfigTypeRequest = "method"
+	PutFirewallConfigTypeRequestHeader           PutFirewallConfigTypeRequest = "header"
+	PutFirewallConfigTypeRequestQuery            PutFirewallConfigTypeRequest = "query"
+	PutFirewallConfigTypeRequestCookie           PutFirewallConfigTypeRequest = "cookie"
+	PutFirewallConfigTypeRequestTargetPath       PutFirewallConfigTypeRequest = "target_path"
+	PutFirewallConfigTypeRequestRawPath          PutFirewallConfigTypeRequest = "raw_path"
+	PutFirewallConfigTypeRequestIPAddress        PutFirewallConfigTypeRequest = "ip_address"
+	PutFirewallConfigTypeRequestRegion           PutFirewallConfigTypeRequest = "region"
+	PutFirewallConfigTypeRequestProtocol         PutFirewallConfigTypeRequest = "protocol"
+	PutFirewallConfigTypeRequestScheme           PutFirewallConfigTypeRequest = "scheme"
+	PutFirewallConfigTypeRequestEnvironment      PutFirewallConfigTypeRequest = "environment"
+	PutFirewallConfigTypeRequestUserAgent        PutFirewallConfigTypeRequest = "user_agent"
+	PutFirewallConfigTypeRequestGeoContinent     PutFirewallConfigTypeRequest = "geo_continent"
+	PutFirewallConfigTypeRequestGeoCountry       PutFirewallConfigTypeRequest = "geo_country"
+	PutFirewallConfigTypeRequestGeoCountryRegion PutFirewallConfigTypeRequest = "geo_country_region"
+	PutFirewallConfigTypeRequestGeoCity          PutFirewallConfigTypeRequest = "geo_city"
+	PutFirewallConfigTypeRequestGeoAsNumber      PutFirewallConfigTypeRequest = "geo_as_number"
+	PutFirewallConfigTypeRequestJa4Digest        PutFirewallConfigTypeRequest = "ja4_digest"
+	PutFirewallConfigTypeRequestJa3Digest        PutFirewallConfigTypeRequest = "ja3_digest"
+	PutFirewallConfigTypeRequestRateLimitAPIID   PutFirewallConfigTypeRequest = "rate_limit_api_id"
 )
 
-func (e PutFirewallConfigType) ToPointer() *PutFirewallConfigType {
+func (e PutFirewallConfigTypeRequest) ToPointer() *PutFirewallConfigTypeRequest {
 	return &e
 }
-func (e *PutFirewallConfigType) UnmarshalJSON(data []byte) error {
+func (e *PutFirewallConfigTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -844,37 +844,36 @@ func (e *PutFirewallConfigType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
-		*e = PutFirewallConfigType(v)
+		*e = PutFirewallConfigTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigType: %v", v)
+		return fmt.Errorf("invalid value for PutFirewallConfigTypeRequest: %v", v)
 	}
 }
 
-// Op - [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-type Op string
+type PutFirewallConfigOpRequest string
 
 const (
-	OpRe   Op = "re"
-	OpEq   Op = "eq"
-	OpNeq  Op = "neq"
-	OpEx   Op = "ex"
-	OpNex  Op = "nex"
-	OpInc  Op = "inc"
-	OpNinc Op = "ninc"
-	OpPre  Op = "pre"
-	OpSuf  Op = "suf"
-	OpSub  Op = "sub"
-	OpGt   Op = "gt"
-	OpGte  Op = "gte"
-	OpLt   Op = "lt"
-	OpLte  Op = "lte"
+	PutFirewallConfigOpRequestRe   PutFirewallConfigOpRequest = "re"
+	PutFirewallConfigOpRequestEq   PutFirewallConfigOpRequest = "eq"
+	PutFirewallConfigOpRequestNeq  PutFirewallConfigOpRequest = "neq"
+	PutFirewallConfigOpRequestEx   PutFirewallConfigOpRequest = "ex"
+	PutFirewallConfigOpRequestNex  PutFirewallConfigOpRequest = "nex"
+	PutFirewallConfigOpRequestInc  PutFirewallConfigOpRequest = "inc"
+	PutFirewallConfigOpRequestNinc PutFirewallConfigOpRequest = "ninc"
+	PutFirewallConfigOpRequestPre  PutFirewallConfigOpRequest = "pre"
+	PutFirewallConfigOpRequestSuf  PutFirewallConfigOpRequest = "suf"
+	PutFirewallConfigOpRequestSub  PutFirewallConfigOpRequest = "sub"
+	PutFirewallConfigOpRequestGt   PutFirewallConfigOpRequest = "gt"
+	PutFirewallConfigOpRequestGte  PutFirewallConfigOpRequest = "gte"
+	PutFirewallConfigOpRequestLt   PutFirewallConfigOpRequest = "lt"
+	PutFirewallConfigOpRequestLte  PutFirewallConfigOpRequest = "lte"
 )
 
-func (e Op) ToPointer() *Op {
+func (e PutFirewallConfigOpRequest) ToPointer() *PutFirewallConfigOpRequest {
 	return &e
 }
-func (e *Op) UnmarshalJSON(data []byte) error {
+func (e *PutFirewallConfigOpRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -907,83 +906,83 @@ func (e *Op) UnmarshalJSON(data []byte) error {
 	case "lt":
 		fallthrough
 	case "lte":
-		*e = Op(v)
+		*e = PutFirewallConfigOpRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Op: %v", v)
+		return fmt.Errorf("invalid value for PutFirewallConfigOpRequest: %v", v)
 	}
 }
 
-type ValueType string
+type PutFirewallConfigValueRequestType string
 
 const (
-	ValueTypeStr        ValueType = "str"
-	ValueTypeArrayOfStr ValueType = "arrayOfStr"
-	ValueTypeNumber     ValueType = "number"
+	PutFirewallConfigValueRequestTypeStr        PutFirewallConfigValueRequestType = "str"
+	PutFirewallConfigValueRequestTypeArrayOfStr PutFirewallConfigValueRequestType = "arrayOfStr"
+	PutFirewallConfigValueRequestTypeNumber     PutFirewallConfigValueRequestType = "number"
 )
 
-type Value struct {
-	Str        *string
-	ArrayOfStr []string
-	Number     *float64
+type PutFirewallConfigValueRequest struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
 
-	Type ValueType
+	Type PutFirewallConfigValueRequestType
 }
 
-func CreateValueStr(str string) Value {
-	typ := ValueTypeStr
+func CreatePutFirewallConfigValueRequestStr(str string) PutFirewallConfigValueRequest {
+	typ := PutFirewallConfigValueRequestTypeStr
 
-	return Value{
+	return PutFirewallConfigValueRequest{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateValueArrayOfStr(arrayOfStr []string) Value {
-	typ := ValueTypeArrayOfStr
+func CreatePutFirewallConfigValueRequestArrayOfStr(arrayOfStr []string) PutFirewallConfigValueRequest {
+	typ := PutFirewallConfigValueRequestTypeArrayOfStr
 
-	return Value{
+	return PutFirewallConfigValueRequest{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateValueNumber(number float64) Value {
-	typ := ValueTypeNumber
+func CreatePutFirewallConfigValueRequestNumber(number float64) PutFirewallConfigValueRequest {
+	typ := PutFirewallConfigValueRequestTypeNumber
 
-	return Value{
+	return PutFirewallConfigValueRequest{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *Value) UnmarshalJSON(data []byte) error {
+func (u *PutFirewallConfigValueRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = ValueTypeStr
+		u.Type = PutFirewallConfigValueRequestTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = ValueTypeArrayOfStr
+		u.Type = PutFirewallConfigValueRequestTypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = ValueTypeNumber
+		u.Type = PutFirewallConfigValueRequestTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Value", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigValueRequest", string(data))
 }
 
-func (u Value) MarshalJSON() ([]byte, error) {
+func (u PutFirewallConfigValueRequest) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -996,80 +995,79 @@ func (u Value) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Value: all fields are null")
+	return nil, errors.New("could not marshal union type PutFirewallConfigValueRequest: all fields are null")
 }
 
-type Conditions struct {
+type PutFirewallConfigConditionRequest struct {
 	// [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-	Type PutFirewallConfigType `json:"type"`
-	// [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-	Op    Op      `json:"op"`
-	Neg   *bool   `json:"neg,omitempty"`
-	Key   *string `json:"key,omitempty"`
-	Value *Value  `json:"value,omitempty"`
+	Type  PutFirewallConfigTypeRequest   `json:"type"`
+	Op    PutFirewallConfigOpRequest     `json:"op"`
+	Neg   *bool                          `json:"neg,omitempty"`
+	Key   *string                        `json:"key,omitempty"`
+	Value *PutFirewallConfigValueRequest `json:"value,omitempty"`
 }
 
-func (o *Conditions) GetType() PutFirewallConfigType {
+func (o *PutFirewallConfigConditionRequest) GetType() PutFirewallConfigTypeRequest {
 	if o == nil {
-		return PutFirewallConfigType("")
+		return PutFirewallConfigTypeRequest("")
 	}
 	return o.Type
 }
 
-func (o *Conditions) GetOp() Op {
+func (o *PutFirewallConfigConditionRequest) GetOp() PutFirewallConfigOpRequest {
 	if o == nil {
-		return Op("")
+		return PutFirewallConfigOpRequest("")
 	}
 	return o.Op
 }
 
-func (o *Conditions) GetNeg() *bool {
+func (o *PutFirewallConfigConditionRequest) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *Conditions) GetKey() *string {
+func (o *PutFirewallConfigConditionRequest) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *Conditions) GetValue() *Value {
+func (o *PutFirewallConfigConditionRequest) GetValue() *PutFirewallConfigValueRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type ConditionGroup struct {
-	Conditions []Conditions `json:"conditions"`
+type PutFirewallConfigConditionGroupRequest struct {
+	Conditions []PutFirewallConfigConditionRequest `json:"conditions"`
 }
 
-func (o *ConditionGroup) GetConditions() []Conditions {
+func (o *PutFirewallConfigConditionGroupRequest) GetConditions() []PutFirewallConfigConditionRequest {
 	if o == nil {
-		return []Conditions{}
+		return []PutFirewallConfigConditionRequest{}
 	}
 	return o.Conditions
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyRulesActionAction string
+type RuleActionRequestBodyEnum string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionLog       PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "log"
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionChallenge PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "challenge"
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionDeny      PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionBypass    PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "bypass"
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionRateLimit PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "rate_limit"
-	PutFirewallConfigSecurityRequestRequestBodyRulesActionActionRedirect  PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = "redirect"
+	RuleActionRequestBodyEnumLog       RuleActionRequestBodyEnum = "log"
+	RuleActionRequestBodyEnumChallenge RuleActionRequestBodyEnum = "challenge"
+	RuleActionRequestBodyEnumDeny      RuleActionRequestBodyEnum = "deny"
+	RuleActionRequestBodyEnumBypass    RuleActionRequestBodyEnum = "bypass"
+	RuleActionRequestBodyEnumRateLimit RuleActionRequestBodyEnum = "rate_limit"
+	RuleActionRequestBodyEnumRedirect  RuleActionRequestBodyEnum = "redirect"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyRulesActionAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyRulesActionAction {
+func (e RuleActionRequestBodyEnum) ToPointer() *RuleActionRequestBodyEnum {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyRulesActionAction) UnmarshalJSON(data []byte) error {
+func (e *RuleActionRequestBodyEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1086,24 +1084,24 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyRulesActionAction) Unmarshal
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = PutFirewallConfigSecurityRequestRequestBodyRulesActionAction(v)
+		*e = RuleActionRequestBodyEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyRulesActionAction: %v", v)
+		return fmt.Errorf("invalid value for RuleActionRequestBodyEnum: %v", v)
 	}
 }
 
-type Algo string
+type PutFirewallConfigAlgoRequest string
 
 const (
-	AlgoFixedWindow Algo = "fixed_window"
-	AlgoTokenBucket Algo = "token_bucket"
+	PutFirewallConfigAlgoRequestFixedWindow PutFirewallConfigAlgoRequest = "fixed_window"
+	PutFirewallConfigAlgoRequestTokenBucket PutFirewallConfigAlgoRequest = "token_bucket"
 )
 
-func (e Algo) ToPointer() *Algo {
+func (e PutFirewallConfigAlgoRequest) ToPointer() *PutFirewallConfigAlgoRequest {
 	return &e
 }
-func (e *Algo) UnmarshalJSON(data []byte) error {
+func (e *PutFirewallConfigAlgoRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1112,26 +1110,26 @@ func (e *Algo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = Algo(v)
+		*e = PutFirewallConfigAlgoRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Algo: %v", v)
+		return fmt.Errorf("invalid value for PutFirewallConfigAlgoRequest: %v", v)
 	}
 }
 
-type Action1 string
+type RateLimitActionRuleRequestBodyEnum string
 
 const (
-	Action1Log       Action1 = "log"
-	Action1Challenge Action1 = "challenge"
-	Action1Deny      Action1 = "deny"
-	Action1RateLimit Action1 = "rate_limit"
+	RateLimitActionRuleRequestBodyEnumLog       RateLimitActionRuleRequestBodyEnum = "log"
+	RateLimitActionRuleRequestBodyEnumChallenge RateLimitActionRuleRequestBodyEnum = "challenge"
+	RateLimitActionRuleRequestBodyEnumDeny      RateLimitActionRuleRequestBodyEnum = "deny"
+	RateLimitActionRuleRequestBodyEnumRateLimit RateLimitActionRuleRequestBodyEnum = "rate_limit"
 )
 
-func (e Action1) ToPointer() *Action1 {
+func (e RateLimitActionRuleRequestBodyEnum) ToPointer() *RateLimitActionRuleRequestBodyEnum {
 	return &e
 }
-func (e *Action1) UnmarshalJSON(data []byte) error {
+func (e *RateLimitActionRuleRequestBodyEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1144,382 +1142,382 @@ func (e *Action1) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "rate_limit":
-		*e = Action1(v)
+		*e = RateLimitActionRuleRequestBodyEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Action1: %v", v)
+		return fmt.Errorf("invalid value for RateLimitActionRuleRequestBodyEnum: %v", v)
 	}
 }
 
-type RateLimitActionType string
+type RuleActionUnionType string
 
 const (
-	RateLimitActionTypeAction1 RateLimitActionType = "action_1"
-	RateLimitActionTypeAny     RateLimitActionType = "any"
+	RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum RuleActionUnionType = "rateLimit_action_rule_RequestBody_enum"
+	RuleActionUnionTypeAny                                RuleActionUnionType = "any"
 )
 
-type RateLimitAction struct {
-	Action1 *Action1
-	Any     any
+type RuleActionUnion struct {
+	RateLimitActionRuleRequestBodyEnum *RateLimitActionRuleRequestBodyEnum `queryParam:"inline"`
+	Any                                any                                 `queryParam:"inline"`
 
-	Type RateLimitActionType
+	Type RuleActionUnionType
 }
 
-func CreateRateLimitActionAction1(action1 Action1) RateLimitAction {
-	typ := RateLimitActionTypeAction1
+func CreateRuleActionUnionRateLimitActionRuleRequestBodyEnum(rateLimitActionRuleRequestBodyEnum RateLimitActionRuleRequestBodyEnum) RuleActionUnion {
+	typ := RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum
 
-	return RateLimitAction{
-		Action1: &action1,
-		Type:    typ,
+	return RuleActionUnion{
+		RateLimitActionRuleRequestBodyEnum: &rateLimitActionRuleRequestBodyEnum,
+		Type:                               typ,
 	}
 }
 
-func CreateRateLimitActionAny(anyT any) RateLimitAction {
-	typ := RateLimitActionTypeAny
+func CreateRuleActionUnionAny(anyT any) RuleActionUnion {
+	typ := RuleActionUnionTypeAny
 
-	return RateLimitAction{
+	return RuleActionUnion{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *RateLimitAction) UnmarshalJSON(data []byte) error {
+func (u *RuleActionUnion) UnmarshalJSON(data []byte) error {
 
-	var action1 Action1 = Action1("")
-	if err := utils.UnmarshalJSON(data, &action1, "", true, true); err == nil {
-		u.Action1 = &action1
-		u.Type = RateLimitActionTypeAction1
+	var rateLimitActionRuleRequestBodyEnum RateLimitActionRuleRequestBodyEnum = RateLimitActionRuleRequestBodyEnum("")
+	if err := utils.UnmarshalJSON(data, &rateLimitActionRuleRequestBodyEnum, "", true, true); err == nil {
+		u.RateLimitActionRuleRequestBodyEnum = &rateLimitActionRuleRequestBodyEnum
+		u.Type = RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = RateLimitActionTypeAny
+		u.Type = RuleActionUnionTypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RateLimitAction", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RuleActionUnion", string(data))
 }
 
-func (u RateLimitAction) MarshalJSON() ([]byte, error) {
-	if u.Action1 != nil {
-		return utils.MarshalJSON(u.Action1, "", true)
+func (u RuleActionUnion) MarshalJSON() ([]byte, error) {
+	if u.RateLimitActionRuleRequestBodyEnum != nil {
+		return utils.MarshalJSON(u.RateLimitActionRuleRequestBodyEnum, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RateLimitAction: all fields are null")
+	return nil, errors.New("could not marshal union type RuleActionUnion: all fields are null")
 }
 
-type RateLimit1 struct {
-	Algo   Algo             `json:"algo"`
-	Window float64          `json:"window"`
-	Limit  float64          `json:"limit"`
-	Keys   []string         `json:"keys"`
-	Action *RateLimitAction `json:"action,omitempty"`
+type PutFirewallConfigRateLimitRequest struct {
+	Algo   PutFirewallConfigAlgoRequest `json:"algo"`
+	Window float64                      `json:"window"`
+	Limit  float64                      `json:"limit"`
+	Keys   []string                     `json:"keys"`
+	Action *RuleActionUnion             `json:"action,omitempty"`
 }
 
-func (o *RateLimit1) GetAlgo() Algo {
+func (o *PutFirewallConfigRateLimitRequest) GetAlgo() PutFirewallConfigAlgoRequest {
 	if o == nil {
-		return Algo("")
+		return PutFirewallConfigAlgoRequest("")
 	}
 	return o.Algo
 }
 
-func (o *RateLimit1) GetWindow() float64 {
+func (o *PutFirewallConfigRateLimitRequest) GetWindow() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Window
 }
 
-func (o *RateLimit1) GetLimit() float64 {
+func (o *PutFirewallConfigRateLimitRequest) GetLimit() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Limit
 }
 
-func (o *RateLimit1) GetKeys() []string {
+func (o *PutFirewallConfigRateLimitRequest) GetKeys() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Keys
 }
 
-func (o *RateLimit1) GetAction() *RateLimitAction {
+func (o *PutFirewallConfigRateLimitRequest) GetAction() *RuleActionUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type RateLimitType string
+type PutFirewallConfigRateLimitUnionType string
 
 const (
-	RateLimitTypeRateLimit1 RateLimitType = "rateLimit_1"
-	RateLimitTypeAny        RateLimitType = "any"
+	PutFirewallConfigRateLimitUnionTypePutFirewallConfigRateLimitRequest PutFirewallConfigRateLimitUnionType = "putFirewallConfig_rateLimit_request"
+	PutFirewallConfigRateLimitUnionTypeAny                               PutFirewallConfigRateLimitUnionType = "any"
 )
 
-type RateLimit struct {
-	RateLimit1 *RateLimit1
-	Any        any
+type PutFirewallConfigRateLimitUnion struct {
+	PutFirewallConfigRateLimitRequest *PutFirewallConfigRateLimitRequest `queryParam:"inline"`
+	Any                               any                                `queryParam:"inline"`
 
-	Type RateLimitType
+	Type PutFirewallConfigRateLimitUnionType
 }
 
-func CreateRateLimitRateLimit1(rateLimit1 RateLimit1) RateLimit {
-	typ := RateLimitTypeRateLimit1
+func CreatePutFirewallConfigRateLimitUnionPutFirewallConfigRateLimitRequest(putFirewallConfigRateLimitRequest PutFirewallConfigRateLimitRequest) PutFirewallConfigRateLimitUnion {
+	typ := PutFirewallConfigRateLimitUnionTypePutFirewallConfigRateLimitRequest
 
-	return RateLimit{
-		RateLimit1: &rateLimit1,
-		Type:       typ,
+	return PutFirewallConfigRateLimitUnion{
+		PutFirewallConfigRateLimitRequest: &putFirewallConfigRateLimitRequest,
+		Type:                              typ,
 	}
 }
 
-func CreateRateLimitAny(anyT any) RateLimit {
-	typ := RateLimitTypeAny
+func CreatePutFirewallConfigRateLimitUnionAny(anyT any) PutFirewallConfigRateLimitUnion {
+	typ := PutFirewallConfigRateLimitUnionTypeAny
 
-	return RateLimit{
+	return PutFirewallConfigRateLimitUnion{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *RateLimit) UnmarshalJSON(data []byte) error {
+func (u *PutFirewallConfigRateLimitUnion) UnmarshalJSON(data []byte) error {
 
-	var rateLimit1 RateLimit1 = RateLimit1{}
-	if err := utils.UnmarshalJSON(data, &rateLimit1, "", true, true); err == nil {
-		u.RateLimit1 = &rateLimit1
-		u.Type = RateLimitTypeRateLimit1
+	var putFirewallConfigRateLimitRequest PutFirewallConfigRateLimitRequest = PutFirewallConfigRateLimitRequest{}
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRateLimitRequest, "", true, true); err == nil {
+		u.PutFirewallConfigRateLimitRequest = &putFirewallConfigRateLimitRequest
+		u.Type = PutFirewallConfigRateLimitUnionTypePutFirewallConfigRateLimitRequest
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = RateLimitTypeAny
+		u.Type = PutFirewallConfigRateLimitUnionTypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RateLimit", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigRateLimitUnion", string(data))
 }
 
-func (u RateLimit) MarshalJSON() ([]byte, error) {
-	if u.RateLimit1 != nil {
-		return utils.MarshalJSON(u.RateLimit1, "", true)
+func (u PutFirewallConfigRateLimitUnion) MarshalJSON() ([]byte, error) {
+	if u.PutFirewallConfigRateLimitRequest != nil {
+		return utils.MarshalJSON(u.PutFirewallConfigRateLimitRequest, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RateLimit: all fields are null")
+	return nil, errors.New("could not marshal union type PutFirewallConfigRateLimitUnion: all fields are null")
 }
 
-type Redirect1 struct {
+type PutFirewallConfigRedirectRequest struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
 }
 
-func (o *Redirect1) GetLocation() string {
+func (o *PutFirewallConfigRedirectRequest) GetLocation() string {
 	if o == nil {
 		return ""
 	}
 	return o.Location
 }
 
-func (o *Redirect1) GetPermanent() bool {
+func (o *PutFirewallConfigRedirectRequest) GetPermanent() bool {
 	if o == nil {
 		return false
 	}
 	return o.Permanent
 }
 
-type RedirectType string
+type PutFirewallConfigRedirectUnionType string
 
 const (
-	RedirectTypeRedirect1 RedirectType = "redirect_1"
-	RedirectTypeAny       RedirectType = "any"
+	PutFirewallConfigRedirectUnionTypePutFirewallConfigRedirectRequest PutFirewallConfigRedirectUnionType = "putFirewallConfig_redirect_request"
+	PutFirewallConfigRedirectUnionTypeAny                              PutFirewallConfigRedirectUnionType = "any"
 )
 
-type Redirect struct {
-	Redirect1 *Redirect1
-	Any       any
+type PutFirewallConfigRedirectUnion struct {
+	PutFirewallConfigRedirectRequest *PutFirewallConfigRedirectRequest `queryParam:"inline"`
+	Any                              any                               `queryParam:"inline"`
 
-	Type RedirectType
+	Type PutFirewallConfigRedirectUnionType
 }
 
-func CreateRedirectRedirect1(redirect1 Redirect1) Redirect {
-	typ := RedirectTypeRedirect1
+func CreatePutFirewallConfigRedirectUnionPutFirewallConfigRedirectRequest(putFirewallConfigRedirectRequest PutFirewallConfigRedirectRequest) PutFirewallConfigRedirectUnion {
+	typ := PutFirewallConfigRedirectUnionTypePutFirewallConfigRedirectRequest
 
-	return Redirect{
-		Redirect1: &redirect1,
-		Type:      typ,
+	return PutFirewallConfigRedirectUnion{
+		PutFirewallConfigRedirectRequest: &putFirewallConfigRedirectRequest,
+		Type:                             typ,
 	}
 }
 
-func CreateRedirectAny(anyT any) Redirect {
-	typ := RedirectTypeAny
+func CreatePutFirewallConfigRedirectUnionAny(anyT any) PutFirewallConfigRedirectUnion {
+	typ := PutFirewallConfigRedirectUnionTypeAny
 
-	return Redirect{
+	return PutFirewallConfigRedirectUnion{
 		Any:  anyT,
 		Type: typ,
 	}
 }
 
-func (u *Redirect) UnmarshalJSON(data []byte) error {
+func (u *PutFirewallConfigRedirectUnion) UnmarshalJSON(data []byte) error {
 
-	var redirect1 Redirect1 = Redirect1{}
-	if err := utils.UnmarshalJSON(data, &redirect1, "", true, true); err == nil {
-		u.Redirect1 = &redirect1
-		u.Type = RedirectTypeRedirect1
+	var putFirewallConfigRedirectRequest PutFirewallConfigRedirectRequest = PutFirewallConfigRedirectRequest{}
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRedirectRequest, "", true, true); err == nil {
+		u.PutFirewallConfigRedirectRequest = &putFirewallConfigRedirectRequest
+		u.Type = PutFirewallConfigRedirectUnionTypePutFirewallConfigRedirectRequest
 		return nil
 	}
 
 	var anyVar any = nil
 	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
 		u.Any = anyVar
-		u.Type = RedirectTypeAny
+		u.Type = PutFirewallConfigRedirectUnionTypeAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Redirect", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigRedirectUnion", string(data))
 }
 
-func (u Redirect) MarshalJSON() ([]byte, error) {
-	if u.Redirect1 != nil {
-		return utils.MarshalJSON(u.Redirect1, "", true)
+func (u PutFirewallConfigRedirectUnion) MarshalJSON() ([]byte, error) {
+	if u.PutFirewallConfigRedirectRequest != nil {
+		return utils.MarshalJSON(u.PutFirewallConfigRedirectRequest, "", true)
 	}
 
 	if u.Any != nil {
 		return utils.MarshalJSON(u.Any, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Redirect: all fields are null")
+	return nil, errors.New("could not marshal union type PutFirewallConfigRedirectUnion: all fields are null")
 }
 
-type Mitigate struct {
-	Action         PutFirewallConfigSecurityRequestRequestBodyRulesActionAction `json:"action"`
-	RateLimit      *RateLimit                                                   `json:"rateLimit,omitempty"`
-	Redirect       *Redirect                                                    `json:"redirect,omitempty"`
-	ActionDuration *string                                                      `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                                        `json:"bypassSystem,omitempty"`
+type PutFirewallConfigMitigateRequest struct {
+	Action         RuleActionRequestBodyEnum        `json:"action"`
+	RateLimit      *PutFirewallConfigRateLimitUnion `json:"rateLimit,omitempty"`
+	Redirect       *PutFirewallConfigRedirectUnion  `json:"redirect,omitempty"`
+	ActionDuration *string                          `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                            `json:"bypassSystem,omitempty"`
 }
 
-func (o *Mitigate) GetAction() PutFirewallConfigSecurityRequestRequestBodyRulesActionAction {
+func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestBodyEnum {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyRulesActionAction("")
+		return RuleActionRequestBodyEnum("")
 	}
 	return o.Action
 }
 
-func (o *Mitigate) GetRateLimit() *RateLimit {
+func (o *PutFirewallConfigMitigateRequest) GetRateLimit() *PutFirewallConfigRateLimitUnion {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *Mitigate) GetRedirect() *Redirect {
+func (o *PutFirewallConfigMitigateRequest) GetRedirect() *PutFirewallConfigRedirectUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *Mitigate) GetActionDuration() *string {
+func (o *PutFirewallConfigMitigateRequest) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *Mitigate) GetBypassSystem() *bool {
+func (o *PutFirewallConfigMitigateRequest) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyRulesAction struct {
-	Mitigate *Mitigate `json:"mitigate,omitempty"`
+type RuleActionRequestBody struct {
+	Mitigate *PutFirewallConfigMitigateRequest `json:"mitigate,omitempty"`
 }
 
-func (o *PutFirewallConfigSecurityRequestRequestBodyRulesAction) GetMitigate() *Mitigate {
+func (o *RuleActionRequestBody) GetMitigate() *PutFirewallConfigMitigateRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type Rules struct {
-	ID             *string                                                `json:"id,omitempty"`
-	Name           string                                                 `json:"name"`
-	Description    *string                                                `json:"description,omitempty"`
-	Active         bool                                                   `json:"active"`
-	ConditionGroup []ConditionGroup                                       `json:"conditionGroup"`
-	Action         PutFirewallConfigSecurityRequestRequestBodyRulesAction `json:"action"`
+type RuleRequest struct {
+	ID             *string                                  `json:"id,omitempty"`
+	Name           string                                   `json:"name"`
+	Description    *string                                  `json:"description,omitempty"`
+	Active         bool                                     `json:"active"`
+	ConditionGroup []PutFirewallConfigConditionGroupRequest `json:"conditionGroup"`
+	Action         RuleActionRequestBody                    `json:"action"`
 }
 
-func (o *Rules) GetID() *string {
+func (o *RuleRequest) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Rules) GetName() string {
+func (o *RuleRequest) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Rules) GetDescription() *string {
+func (o *RuleRequest) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Rules) GetActive() bool {
+func (o *RuleRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *Rules) GetConditionGroup() []ConditionGroup {
+func (o *RuleRequest) GetConditionGroup() []PutFirewallConfigConditionGroupRequest {
 	if o == nil {
-		return []ConditionGroup{}
+		return []PutFirewallConfigConditionGroupRequest{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *Rules) GetAction() PutFirewallConfigSecurityRequestRequestBodyRulesAction {
+func (o *RuleRequest) GetAction() RuleActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyRulesAction{}
+		return RuleActionRequestBody{}
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityRequestRequestBodyIpsAction string
+type IPActionRequestBody string
 
 const (
-	PutFirewallConfigSecurityRequestRequestBodyIpsActionDeny      PutFirewallConfigSecurityRequestRequestBodyIpsAction = "deny"
-	PutFirewallConfigSecurityRequestRequestBodyIpsActionChallenge PutFirewallConfigSecurityRequestRequestBodyIpsAction = "challenge"
-	PutFirewallConfigSecurityRequestRequestBodyIpsActionLog       PutFirewallConfigSecurityRequestRequestBodyIpsAction = "log"
-	PutFirewallConfigSecurityRequestRequestBodyIpsActionBypass    PutFirewallConfigSecurityRequestRequestBodyIpsAction = "bypass"
+	IPActionRequestBodyDeny      IPActionRequestBody = "deny"
+	IPActionRequestBodyChallenge IPActionRequestBody = "challenge"
+	IPActionRequestBodyLog       IPActionRequestBody = "log"
+	IPActionRequestBodyBypass    IPActionRequestBody = "bypass"
 )
 
-func (e PutFirewallConfigSecurityRequestRequestBodyIpsAction) ToPointer() *PutFirewallConfigSecurityRequestRequestBodyIpsAction {
+func (e IPActionRequestBody) ToPointer() *IPActionRequestBody {
 	return &e
 }
-func (e *PutFirewallConfigSecurityRequestRequestBodyIpsAction) UnmarshalJSON(data []byte) error {
+func (e *IPActionRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1532,52 +1530,52 @@ func (e *PutFirewallConfigSecurityRequestRequestBodyIpsAction) UnmarshalJSON(dat
 	case "log":
 		fallthrough
 	case "bypass":
-		*e = PutFirewallConfigSecurityRequestRequestBodyIpsAction(v)
+		*e = IPActionRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityRequestRequestBodyIpsAction: %v", v)
+		return fmt.Errorf("invalid value for IPActionRequestBody: %v", v)
 	}
 }
 
-type Ips struct {
-	ID       *string                                              `json:"id,omitempty"`
-	Hostname string                                               `json:"hostname"`
-	IP       string                                               `json:"ip"`
-	Notes    *string                                              `json:"notes,omitempty"`
-	Action   PutFirewallConfigSecurityRequestRequestBodyIpsAction `json:"action"`
+type IPRequest struct {
+	ID       *string             `json:"id,omitempty"`
+	Hostname string              `json:"hostname"`
+	IP       string              `json:"ip"`
+	Notes    *string             `json:"notes,omitempty"`
+	Action   IPActionRequestBody `json:"action"`
 }
 
-func (o *Ips) GetID() *string {
+func (o *IPRequest) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Ips) GetHostname() string {
+func (o *IPRequest) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *Ips) GetIP() string {
+func (o *IPRequest) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *Ips) GetNotes() *string {
+func (o *IPRequest) GetNotes() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Notes
 }
 
-func (o *Ips) GetAction() PutFirewallConfigSecurityRequestRequestBodyIpsAction {
+func (o *IPRequest) GetAction() IPActionRequestBody {
 	if o == nil {
-		return PutFirewallConfigSecurityRequestRequestBodyIpsAction("")
+		return IPActionRequestBody("")
 	}
 	return o.Action
 }
@@ -1586,9 +1584,9 @@ type PutFirewallConfigRequestBody struct {
 	FirewallEnabled bool                    `json:"firewallEnabled"`
 	ManagedRules    map[string]ManagedRules `json:"managedRules,omitempty"`
 	// Custom Ruleset
-	Crs   *Crs    `json:"crs,omitempty"`
-	Rules []Rules `json:"rules,omitempty"`
-	Ips   []Ips   `json:"ips,omitempty"`
+	Crs   *CrsRequest   `json:"crs,omitempty"`
+	Rules []RuleRequest `json:"rules,omitempty"`
+	Ips   []IPRequest   `json:"ips,omitempty"`
 }
 
 func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
@@ -1605,21 +1603,21 @@ func (o *PutFirewallConfigRequestBody) GetManagedRules() map[string]ManagedRules
 	return o.ManagedRules
 }
 
-func (o *PutFirewallConfigRequestBody) GetCrs() *Crs {
+func (o *PutFirewallConfigRequestBody) GetCrs() *CrsRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Crs
 }
 
-func (o *PutFirewallConfigRequestBody) GetRules() []Rules {
+func (o *PutFirewallConfigRequestBody) GetRules() []RuleRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Rules
 }
 
-func (o *PutFirewallConfigRequestBody) GetIps() []Ips {
+func (o *PutFirewallConfigRequestBody) GetIps() []IPRequest {
 	if o == nil {
 		return nil
 	}
@@ -1663,17 +1661,17 @@ func (o *PutFirewallConfigRequest) GetRequestBody() PutFirewallConfigRequestBody
 	return o.RequestBody
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction string
+type ActiveSdAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction = "log"
+	ActiveSdActionDeny ActiveSdAction = "deny"
+	ActiveSdActionLog  ActiveSdAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction {
+func (e ActiveSdAction) ToPointer() *ActiveSdAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveSdAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1682,44 +1680,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction(v)
+		*e = ActiveSdAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveSdAction: %v", v)
 	}
 }
 
-// PutFirewallConfigSd - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-type PutFirewallConfigSd struct {
-	Active bool                                                                             `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction `json:"action"`
+// ActiveSd - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
+type ActiveSd struct {
+	Active bool           `json:"active"`
+	Action ActiveSdAction `json:"action"`
 }
 
-func (o *PutFirewallConfigSd) GetActive() bool {
+func (o *ActiveSd) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigSd) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction {
+func (o *ActiveSd) GetAction() ActiveSdAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction("")
+		return ActiveSdAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction string
+type ActiveMaAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction = "log"
+	ActiveMaActionDeny ActiveMaAction = "deny"
+	ActiveMaActionLog  ActiveMaAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction {
+func (e ActiveMaAction) ToPointer() *ActiveMaAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveMaAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1728,44 +1726,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction(v)
+		*e = ActiveMaAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveMaAction: %v", v)
 	}
 }
 
-// PutFirewallConfigMa - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-type PutFirewallConfigMa struct {
-	Active bool                                                                             `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction `json:"action"`
+// ActiveMa - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
+type ActiveMa struct {
+	Active bool           `json:"active"`
+	Action ActiveMaAction `json:"action"`
 }
 
-func (o *PutFirewallConfigMa) GetActive() bool {
+func (o *ActiveMa) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigMa) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction {
+func (o *ActiveMa) GetAction() ActiveMaAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction("")
+		return ActiveMaAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction string
+type ActiveLfiAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction = "log"
+	ActiveLfiActionDeny ActiveLfiAction = "deny"
+	ActiveLfiActionLog  ActiveLfiAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction {
+func (e ActiveLfiAction) ToPointer() *ActiveLfiAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveLfiAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1774,44 +1772,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction(v)
+		*e = ActiveLfiAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveLfiAction: %v", v)
 	}
 }
 
-// PutFirewallConfigLfi - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-type PutFirewallConfigLfi struct {
-	Active bool                                                                              `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction `json:"action"`
+// ActiveLfi - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
+type ActiveLfi struct {
+	Active bool            `json:"active"`
+	Action ActiveLfiAction `json:"action"`
 }
 
-func (o *PutFirewallConfigLfi) GetActive() bool {
+func (o *ActiveLfi) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigLfi) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction {
+func (o *ActiveLfi) GetAction() ActiveLfiAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction("")
+		return ActiveLfiAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction string
+type ActiveRfiAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction = "log"
+	ActiveRfiActionDeny ActiveRfiAction = "deny"
+	ActiveRfiActionLog  ActiveRfiAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction {
+func (e ActiveRfiAction) ToPointer() *ActiveRfiAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveRfiAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1820,44 +1818,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction) 
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction(v)
+		*e = ActiveRfiAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveRfiAction: %v", v)
 	}
 }
 
-// PutFirewallConfigRfi - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-type PutFirewallConfigRfi struct {
-	Active bool                                                                  `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction `json:"action"`
+// ActiveRfi - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
+type ActiveRfi struct {
+	Active bool            `json:"active"`
+	Action ActiveRfiAction `json:"action"`
 }
 
-func (o *PutFirewallConfigRfi) GetActive() bool {
+func (o *ActiveRfi) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigRfi) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction {
+func (o *ActiveRfi) GetAction() ActiveRfiAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction("")
+		return ActiveRfiAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction string
+type ActiveRceAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction = "log"
+	ActiveRceActionDeny ActiveRceAction = "deny"
+	ActiveRceActionLog  ActiveRceAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction {
+func (e ActiveRceAction) ToPointer() *ActiveRceAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveRceAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1866,44 +1864,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAc
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction(v)
+		*e = ActiveRceAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveRceAction: %v", v)
 	}
 }
 
-// PutFirewallConfigRce - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-type PutFirewallConfigRce struct {
-	Active bool                                                                        `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction `json:"action"`
+// ActiveRce - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
+type ActiveRce struct {
+	Active bool            `json:"active"`
+	Action ActiveRceAction `json:"action"`
 }
 
-func (o *PutFirewallConfigRce) GetActive() bool {
+func (o *ActiveRce) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigRce) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction {
+func (o *ActiveRce) GetAction() ActiveRceAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction("")
+		return ActiveRceAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction string
+type ActivePhpAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction = "log"
+	ActivePhpActionDeny ActivePhpAction = "deny"
+	ActivePhpActionLog  ActivePhpAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction {
+func (e ActivePhpAction) ToPointer() *ActivePhpAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction) UnmarshalJSON(data []byte) error {
+func (e *ActivePhpAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1912,44 +1910,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction(v)
+		*e = ActivePhpAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction: %v", v)
+		return fmt.Errorf("invalid value for ActivePhpAction: %v", v)
 	}
 }
 
-// PutFirewallConfigPhp - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-type PutFirewallConfigPhp struct {
-	Active bool                                                                           `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction `json:"action"`
+// ActivePhp - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
+type ActivePhp struct {
+	Active bool            `json:"active"`
+	Action ActivePhpAction `json:"action"`
 }
 
-func (o *PutFirewallConfigPhp) GetActive() bool {
+func (o *ActivePhp) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigPhp) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction {
+func (o *ActivePhp) GetAction() ActivePhpAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction("")
+		return ActivePhpAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction string
+type ActiveGenAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction = "log"
+	ActiveGenActionDeny ActiveGenAction = "deny"
+	ActiveGenActionLog  ActiveGenAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction {
+func (e ActiveGenAction) ToPointer() *ActiveGenAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveGenAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1958,44 +1956,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction(v)
+		*e = ActiveGenAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveGenAction: %v", v)
 	}
 }
 
-// PutFirewallConfigGen - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-type PutFirewallConfigGen struct {
-	Active bool                                                                              `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction `json:"action"`
+// ActiveGen - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
+type ActiveGen struct {
+	Active bool            `json:"active"`
+	Action ActiveGenAction `json:"action"`
 }
 
-func (o *PutFirewallConfigGen) GetActive() bool {
+func (o *ActiveGen) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigGen) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction {
+func (o *ActiveGen) GetAction() ActiveGenAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction("")
+		return ActiveGenAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction string
+type ActiveXSSAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction = "log"
+	ActiveXSSActionDeny ActiveXSSAction = "deny"
+	ActiveXSSActionLog  ActiveXSSAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction {
+func (e ActiveXSSAction) ToPointer() *ActiveXSSAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveXSSAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2004,44 +2002,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction(v)
+		*e = ActiveXSSAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveXSSAction: %v", v)
 	}
 }
 
-// PutFirewallConfigXSS - XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-type PutFirewallConfigXSS struct {
-	Active bool                                                                              `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction `json:"action"`
+// ActiveXSS - XSS Attack - Prevent injection of malicious scripts into trusted webpages.
+type ActiveXSS struct {
+	Active bool            `json:"active"`
+	Action ActiveXSSAction `json:"action"`
 }
 
-func (o *PutFirewallConfigXSS) GetActive() bool {
+func (o *ActiveXSS) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigXSS) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction {
+func (o *ActiveXSS) GetAction() ActiveXSSAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSAction("")
+		return ActiveXSSAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction string
+type ActiveSqliAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction = "log"
+	ActiveSqliActionDeny ActiveSqliAction = "deny"
+	ActiveSqliActionLog  ActiveSqliAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction {
+func (e ActiveSqliAction) ToPointer() *ActiveSqliAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveSqliAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2050,44 +2048,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction(v)
+		*e = ActiveSqliAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveSqliAction: %v", v)
 	}
 }
 
-// PutFirewallConfigSqli - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-type PutFirewallConfigSqli struct {
-	Active bool                                                                               `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction `json:"action"`
+// ActiveSqli - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
+type ActiveSqli struct {
+	Active bool             `json:"active"`
+	Action ActiveSqliAction `json:"action"`
 }
 
-func (o *PutFirewallConfigSqli) GetActive() bool {
+func (o *ActiveSqli) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigSqli) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction {
+func (o *ActiveSqli) GetAction() ActiveSqliAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction("")
+		return ActiveSqliAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction string
+type ActiveSfAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction = "log"
+	ActiveSfActionDeny ActiveSfAction = "deny"
+	ActiveSfActionLog  ActiveSfAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction {
+func (e ActiveSfAction) ToPointer() *ActiveSfAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveSfAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2096,44 +2094,44 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction(v)
+		*e = ActiveSfAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveSfAction: %v", v)
 	}
 }
 
-// PutFirewallConfigSf - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-type PutFirewallConfigSf struct {
-	Active bool                                                                             `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction `json:"action"`
+// ActiveSf - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
+type ActiveSf struct {
+	Active bool           `json:"active"`
+	Action ActiveSfAction `json:"action"`
 }
 
-func (o *PutFirewallConfigSf) GetActive() bool {
+func (o *ActiveSf) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigSf) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction {
+func (o *ActiveSf) GetAction() ActiveSfAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction("")
+		return ActiveSfAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction string
+type ActiveJavaAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaActionDeny PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaActionLog  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction = "log"
+	ActiveJavaActionDeny ActiveJavaAction = "deny"
+	ActiveJavaActionLog  ActiveJavaAction = "log"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction {
+func (e ActiveJavaAction) ToPointer() *ActiveJavaAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveJavaAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2142,167 +2140,167 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCr
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction(v)
+		*e = ActiveJavaAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveJavaAction: %v", v)
 	}
 }
 
-// PutFirewallConfigJava - Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-type PutFirewallConfigJava struct {
-	Active bool                                                                               `json:"active"`
-	Action PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction `json:"action"`
+// ActiveJava - Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
+type ActiveJava struct {
+	Active bool             `json:"active"`
+	Action ActiveJavaAction `json:"action"`
 }
 
-func (o *PutFirewallConfigJava) GetActive() bool {
+func (o *ActiveJava) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigJava) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction {
+func (o *ActiveJava) GetAction() ActiveJavaAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction("")
+		return ActiveJavaAction("")
 	}
 	return o.Action
 }
 
-// PutFirewallConfigCrs - Custom Ruleset
-type PutFirewallConfigCrs struct {
+// ActiveCrs - Custom Ruleset
+type ActiveCrs struct {
 	// Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
-	Sd PutFirewallConfigSd `json:"sd"`
+	Sd ActiveSd `json:"sd"`
 	// Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
-	Ma PutFirewallConfigMa `json:"ma"`
+	Ma ActiveMa `json:"ma"`
 	// Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
-	Lfi PutFirewallConfigLfi `json:"lfi"`
+	Lfi ActiveLfi `json:"lfi"`
 	// Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
-	Rfi PutFirewallConfigRfi `json:"rfi"`
+	Rfi ActiveRfi `json:"rfi"`
 	// Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
-	Rce PutFirewallConfigRce `json:"rce"`
+	Rce ActiveRce `json:"rce"`
 	// PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
-	Php PutFirewallConfigPhp `json:"php"`
+	Php ActivePhp `json:"php"`
 	// Generic Attack - Provide broad protection from various undefined or novel attack vectors.
-	Gen PutFirewallConfigGen `json:"gen"`
+	Gen ActiveGen `json:"gen"`
 	// XSS Attack - Prevent injection of malicious scripts into trusted webpages.
-	XSS PutFirewallConfigXSS `json:"xss"`
+	XSS ActiveXSS `json:"xss"`
 	// SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
-	Sqli PutFirewallConfigSqli `json:"sqli"`
+	Sqli ActiveSqli `json:"sqli"`
 	// Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
-	Sf PutFirewallConfigSf `json:"sf"`
+	Sf ActiveSf `json:"sf"`
 	// Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
-	Java PutFirewallConfigJava `json:"java"`
+	Java ActiveJava `json:"java"`
 }
 
-func (o *PutFirewallConfigCrs) GetSd() PutFirewallConfigSd {
+func (o *ActiveCrs) GetSd() ActiveSd {
 	if o == nil {
-		return PutFirewallConfigSd{}
+		return ActiveSd{}
 	}
 	return o.Sd
 }
 
-func (o *PutFirewallConfigCrs) GetMa() PutFirewallConfigMa {
+func (o *ActiveCrs) GetMa() ActiveMa {
 	if o == nil {
-		return PutFirewallConfigMa{}
+		return ActiveMa{}
 	}
 	return o.Ma
 }
 
-func (o *PutFirewallConfigCrs) GetLfi() PutFirewallConfigLfi {
+func (o *ActiveCrs) GetLfi() ActiveLfi {
 	if o == nil {
-		return PutFirewallConfigLfi{}
+		return ActiveLfi{}
 	}
 	return o.Lfi
 }
 
-func (o *PutFirewallConfigCrs) GetRfi() PutFirewallConfigRfi {
+func (o *ActiveCrs) GetRfi() ActiveRfi {
 	if o == nil {
-		return PutFirewallConfigRfi{}
+		return ActiveRfi{}
 	}
 	return o.Rfi
 }
 
-func (o *PutFirewallConfigCrs) GetRce() PutFirewallConfigRce {
+func (o *ActiveCrs) GetRce() ActiveRce {
 	if o == nil {
-		return PutFirewallConfigRce{}
+		return ActiveRce{}
 	}
 	return o.Rce
 }
 
-func (o *PutFirewallConfigCrs) GetPhp() PutFirewallConfigPhp {
+func (o *ActiveCrs) GetPhp() ActivePhp {
 	if o == nil {
-		return PutFirewallConfigPhp{}
+		return ActivePhp{}
 	}
 	return o.Php
 }
 
-func (o *PutFirewallConfigCrs) GetGen() PutFirewallConfigGen {
+func (o *ActiveCrs) GetGen() ActiveGen {
 	if o == nil {
-		return PutFirewallConfigGen{}
+		return ActiveGen{}
 	}
 	return o.Gen
 }
 
-func (o *PutFirewallConfigCrs) GetXSS() PutFirewallConfigXSS {
+func (o *ActiveCrs) GetXSS() ActiveXSS {
 	if o == nil {
-		return PutFirewallConfigXSS{}
+		return ActiveXSS{}
 	}
 	return o.XSS
 }
 
-func (o *PutFirewallConfigCrs) GetSqli() PutFirewallConfigSqli {
+func (o *ActiveCrs) GetSqli() ActiveSqli {
 	if o == nil {
-		return PutFirewallConfigSqli{}
+		return ActiveSqli{}
 	}
 	return o.Sqli
 }
 
-func (o *PutFirewallConfigCrs) GetSf() PutFirewallConfigSf {
+func (o *ActiveCrs) GetSf() ActiveSf {
 	if o == nil {
-		return PutFirewallConfigSf{}
+		return ActiveSf{}
 	}
 	return o.Sf
 }
 
-func (o *PutFirewallConfigCrs) GetJava() PutFirewallConfigJava {
+func (o *ActiveCrs) GetJava() ActiveJava {
 	if o == nil {
-		return PutFirewallConfigJava{}
+		return ActiveJava{}
 	}
 	return o.Java
 }
 
-type PutFirewallConfigSecurityType string
+type ActiveType string
 
 const (
-	PutFirewallConfigSecurityTypeHost             PutFirewallConfigSecurityType = "host"
-	PutFirewallConfigSecurityTypePath             PutFirewallConfigSecurityType = "path"
-	PutFirewallConfigSecurityTypeMethod           PutFirewallConfigSecurityType = "method"
-	PutFirewallConfigSecurityTypeHeader           PutFirewallConfigSecurityType = "header"
-	PutFirewallConfigSecurityTypeQuery            PutFirewallConfigSecurityType = "query"
-	PutFirewallConfigSecurityTypeCookie           PutFirewallConfigSecurityType = "cookie"
-	PutFirewallConfigSecurityTypeTargetPath       PutFirewallConfigSecurityType = "target_path"
-	PutFirewallConfigSecurityTypeRawPath          PutFirewallConfigSecurityType = "raw_path"
-	PutFirewallConfigSecurityTypeIPAddress        PutFirewallConfigSecurityType = "ip_address"
-	PutFirewallConfigSecurityTypeProtocol         PutFirewallConfigSecurityType = "protocol"
-	PutFirewallConfigSecurityTypeRegion           PutFirewallConfigSecurityType = "region"
-	PutFirewallConfigSecurityTypeScheme           PutFirewallConfigSecurityType = "scheme"
-	PutFirewallConfigSecurityTypeEnvironment      PutFirewallConfigSecurityType = "environment"
-	PutFirewallConfigSecurityTypeUserAgent        PutFirewallConfigSecurityType = "user_agent"
-	PutFirewallConfigSecurityTypeGeoContinent     PutFirewallConfigSecurityType = "geo_continent"
-	PutFirewallConfigSecurityTypeGeoCountry       PutFirewallConfigSecurityType = "geo_country"
-	PutFirewallConfigSecurityTypeGeoCountryRegion PutFirewallConfigSecurityType = "geo_country_region"
-	PutFirewallConfigSecurityTypeGeoCity          PutFirewallConfigSecurityType = "geo_city"
-	PutFirewallConfigSecurityTypeGeoAsNumber      PutFirewallConfigSecurityType = "geo_as_number"
-	PutFirewallConfigSecurityTypeJa4Digest        PutFirewallConfigSecurityType = "ja4_digest"
-	PutFirewallConfigSecurityTypeJa3Digest        PutFirewallConfigSecurityType = "ja3_digest"
-	PutFirewallConfigSecurityTypeRateLimitAPIID   PutFirewallConfigSecurityType = "rate_limit_api_id"
+	ActiveTypeHost             ActiveType = "host"
+	ActiveTypePath             ActiveType = "path"
+	ActiveTypeMethod           ActiveType = "method"
+	ActiveTypeHeader           ActiveType = "header"
+	ActiveTypeQuery            ActiveType = "query"
+	ActiveTypeCookie           ActiveType = "cookie"
+	ActiveTypeTargetPath       ActiveType = "target_path"
+	ActiveTypeRawPath          ActiveType = "raw_path"
+	ActiveTypeIPAddress        ActiveType = "ip_address"
+	ActiveTypeProtocol         ActiveType = "protocol"
+	ActiveTypeRegion           ActiveType = "region"
+	ActiveTypeScheme           ActiveType = "scheme"
+	ActiveTypeEnvironment      ActiveType = "environment"
+	ActiveTypeUserAgent        ActiveType = "user_agent"
+	ActiveTypeGeoContinent     ActiveType = "geo_continent"
+	ActiveTypeGeoCountry       ActiveType = "geo_country"
+	ActiveTypeGeoCountryRegion ActiveType = "geo_country_region"
+	ActiveTypeGeoCity          ActiveType = "geo_city"
+	ActiveTypeGeoAsNumber      ActiveType = "geo_as_number"
+	ActiveTypeJa4Digest        ActiveType = "ja4_digest"
+	ActiveTypeJa3Digest        ActiveType = "ja3_digest"
+	ActiveTypeRateLimitAPIID   ActiveType = "rate_limit_api_id"
 )
 
-func (e PutFirewallConfigSecurityType) ToPointer() *PutFirewallConfigSecurityType {
+func (e ActiveType) ToPointer() *ActiveType {
 	return &e
 }
-func (e *PutFirewallConfigSecurityType) UnmarshalJSON(data []byte) error {
+func (e *ActiveType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2351,36 +2349,36 @@ func (e *PutFirewallConfigSecurityType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
-		*e = PutFirewallConfigSecurityType(v)
+		*e = ActiveType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityType: %v", v)
+		return fmt.Errorf("invalid value for ActiveType: %v", v)
 	}
 }
 
-type PutFirewallConfigOp string
+type ActiveOp string
 
 const (
-	PutFirewallConfigOpRe   PutFirewallConfigOp = "re"
-	PutFirewallConfigOpEq   PutFirewallConfigOp = "eq"
-	PutFirewallConfigOpEx   PutFirewallConfigOp = "ex"
-	PutFirewallConfigOpInc  PutFirewallConfigOp = "inc"
-	PutFirewallConfigOpPre  PutFirewallConfigOp = "pre"
-	PutFirewallConfigOpSuf  PutFirewallConfigOp = "suf"
-	PutFirewallConfigOpSub  PutFirewallConfigOp = "sub"
-	PutFirewallConfigOpGt   PutFirewallConfigOp = "gt"
-	PutFirewallConfigOpGte  PutFirewallConfigOp = "gte"
-	PutFirewallConfigOpLt   PutFirewallConfigOp = "lt"
-	PutFirewallConfigOpLte  PutFirewallConfigOp = "lte"
-	PutFirewallConfigOpNex  PutFirewallConfigOp = "nex"
-	PutFirewallConfigOpNinc PutFirewallConfigOp = "ninc"
-	PutFirewallConfigOpNeq  PutFirewallConfigOp = "neq"
+	ActiveOpRe   ActiveOp = "re"
+	ActiveOpEq   ActiveOp = "eq"
+	ActiveOpEx   ActiveOp = "ex"
+	ActiveOpInc  ActiveOp = "inc"
+	ActiveOpPre  ActiveOp = "pre"
+	ActiveOpSuf  ActiveOp = "suf"
+	ActiveOpSub  ActiveOp = "sub"
+	ActiveOpGt   ActiveOp = "gt"
+	ActiveOpGte  ActiveOp = "gte"
+	ActiveOpLt   ActiveOp = "lt"
+	ActiveOpLte  ActiveOp = "lte"
+	ActiveOpNex  ActiveOp = "nex"
+	ActiveOpNinc ActiveOp = "ninc"
+	ActiveOpNeq  ActiveOp = "neq"
 )
 
-func (e PutFirewallConfigOp) ToPointer() *PutFirewallConfigOp {
+func (e ActiveOp) ToPointer() *ActiveOp {
 	return &e
 }
-func (e *PutFirewallConfigOp) UnmarshalJSON(data []byte) error {
+func (e *ActiveOp) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2413,83 +2411,83 @@ func (e *PutFirewallConfigOp) UnmarshalJSON(data []byte) error {
 	case "ninc":
 		fallthrough
 	case "neq":
-		*e = PutFirewallConfigOp(v)
+		*e = ActiveOp(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigOp: %v", v)
+		return fmt.Errorf("invalid value for ActiveOp: %v", v)
 	}
 }
 
-type PutFirewallConfigValueType string
+type ActiveValueType string
 
 const (
-	PutFirewallConfigValueTypeStr        PutFirewallConfigValueType = "str"
-	PutFirewallConfigValueTypeNumber     PutFirewallConfigValueType = "number"
-	PutFirewallConfigValueTypeArrayOfStr PutFirewallConfigValueType = "arrayOfStr"
+	ActiveValueTypeStr        ActiveValueType = "str"
+	ActiveValueTypeNumber     ActiveValueType = "number"
+	ActiveValueTypeArrayOfStr ActiveValueType = "arrayOfStr"
 )
 
-type PutFirewallConfigValue struct {
-	Str        *string
-	Number     *float64
-	ArrayOfStr []string
+type ActiveValue struct {
+	Str        *string  `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
 
-	Type PutFirewallConfigValueType
+	Type ActiveValueType
 }
 
-func CreatePutFirewallConfigValueStr(str string) PutFirewallConfigValue {
-	typ := PutFirewallConfigValueTypeStr
+func CreateActiveValueStr(str string) ActiveValue {
+	typ := ActiveValueTypeStr
 
-	return PutFirewallConfigValue{
+	return ActiveValue{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreatePutFirewallConfigValueNumber(number float64) PutFirewallConfigValue {
-	typ := PutFirewallConfigValueTypeNumber
+func CreateActiveValueNumber(number float64) ActiveValue {
+	typ := ActiveValueTypeNumber
 
-	return PutFirewallConfigValue{
+	return ActiveValue{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreatePutFirewallConfigValueArrayOfStr(arrayOfStr []string) PutFirewallConfigValue {
-	typ := PutFirewallConfigValueTypeArrayOfStr
+func CreateActiveValueArrayOfStr(arrayOfStr []string) ActiveValue {
+	typ := ActiveValueTypeArrayOfStr
 
-	return PutFirewallConfigValue{
+	return ActiveValue{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func (u *PutFirewallConfigValue) UnmarshalJSON(data []byte) error {
+func (u *ActiveValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = PutFirewallConfigValueTypeStr
+		u.Type = ActiveValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = PutFirewallConfigValueTypeNumber
+		u.Type = ActiveValueTypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = PutFirewallConfigValueTypeArrayOfStr
+		u.Type = ActiveValueTypeArrayOfStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveValue", string(data))
 }
 
-func (u PutFirewallConfigValue) MarshalJSON() ([]byte, error) {
+func (u ActiveValue) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -2502,78 +2500,78 @@ func (u PutFirewallConfigValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type PutFirewallConfigValue: all fields are null")
+	return nil, errors.New("could not marshal union type ActiveValue: all fields are null")
 }
 
-type PutFirewallConfigConditions struct {
-	Type  PutFirewallConfigSecurityType `json:"type"`
-	Op    PutFirewallConfigOp           `json:"op"`
-	Neg   *bool                         `json:"neg,omitempty"`
-	Key   *string                       `json:"key,omitempty"`
-	Value *PutFirewallConfigValue       `json:"value,omitempty"`
+type ActiveCondition struct {
+	Type  ActiveType   `json:"type"`
+	Op    ActiveOp     `json:"op"`
+	Neg   *bool        `json:"neg,omitempty"`
+	Key   *string      `json:"key,omitempty"`
+	Value *ActiveValue `json:"value,omitempty"`
 }
 
-func (o *PutFirewallConfigConditions) GetType() PutFirewallConfigSecurityType {
+func (o *ActiveCondition) GetType() ActiveType {
 	if o == nil {
-		return PutFirewallConfigSecurityType("")
+		return ActiveType("")
 	}
 	return o.Type
 }
 
-func (o *PutFirewallConfigConditions) GetOp() PutFirewallConfigOp {
+func (o *ActiveCondition) GetOp() ActiveOp {
 	if o == nil {
-		return PutFirewallConfigOp("")
+		return ActiveOp("")
 	}
 	return o.Op
 }
 
-func (o *PutFirewallConfigConditions) GetNeg() *bool {
+func (o *ActiveCondition) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *PutFirewallConfigConditions) GetKey() *string {
+func (o *ActiveCondition) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *PutFirewallConfigConditions) GetValue() *PutFirewallConfigValue {
+func (o *ActiveCondition) GetValue() *ActiveValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type PutFirewallConfigConditionGroup struct {
-	Conditions []PutFirewallConfigConditions `json:"conditions"`
+type ActiveConditionGroup struct {
+	Conditions []ActiveCondition `json:"conditions"`
 }
 
-func (o *PutFirewallConfigConditionGroup) GetConditions() []PutFirewallConfigConditions {
+func (o *ActiveConditionGroup) GetConditions() []ActiveCondition {
 	if o == nil {
-		return []PutFirewallConfigConditions{}
+		return []ActiveCondition{}
 	}
 	return o.Conditions
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction string
+type ActiveMitigateAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionDeny      PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionLog       PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "log"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionChallenge PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "challenge"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionBypass    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "bypass"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionRateLimit PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "rate_limit"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionRedirect  PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction = "redirect"
+	ActiveMitigateActionDeny      ActiveMitigateAction = "deny"
+	ActiveMitigateActionLog       ActiveMitigateAction = "log"
+	ActiveMitigateActionChallenge ActiveMitigateAction = "challenge"
+	ActiveMitigateActionBypass    ActiveMitigateAction = "bypass"
+	ActiveMitigateActionRateLimit ActiveMitigateAction = "rate_limit"
+	ActiveMitigateActionRedirect  ActiveMitigateAction = "redirect"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction {
+func (e ActiveMitigateAction) ToPointer() *ActiveMitigateAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveMitigateAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2590,24 +2588,24 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRu
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction(v)
+		*e = ActiveMitigateAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveMitigateAction: %v", v)
 	}
 }
 
-type PutFirewallConfigAlgo string
+type ActiveAlgo string
 
 const (
-	PutFirewallConfigAlgoFixedWindow PutFirewallConfigAlgo = "fixed_window"
-	PutFirewallConfigAlgoTokenBucket PutFirewallConfigAlgo = "token_bucket"
+	ActiveAlgoFixedWindow ActiveAlgo = "fixed_window"
+	ActiveAlgoTokenBucket ActiveAlgo = "token_bucket"
 )
 
-func (e PutFirewallConfigAlgo) ToPointer() *PutFirewallConfigAlgo {
+func (e ActiveAlgo) ToPointer() *ActiveAlgo {
 	return &e
 }
-func (e *PutFirewallConfigAlgo) UnmarshalJSON(data []byte) error {
+func (e *ActiveAlgo) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2616,26 +2614,26 @@ func (e *PutFirewallConfigAlgo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = PutFirewallConfigAlgo(v)
+		*e = ActiveAlgo(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigAlgo: %v", v)
+		return fmt.Errorf("invalid value for ActiveAlgo: %v", v)
 	}
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction string
+type ActiveRateLimitAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionActionDeny      PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionActionLog       PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction = "log"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionActionChallenge PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction = "challenge"
-	PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionActionRateLimit PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction = "rate_limit"
+	ActiveRateLimitActionDeny      ActiveRateLimitAction = "deny"
+	ActiveRateLimitActionLog       ActiveRateLimitAction = "log"
+	ActiveRateLimitActionChallenge ActiveRateLimitAction = "challenge"
+	ActiveRateLimitActionRateLimit ActiveRateLimitAction = "rate_limit"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction {
+func (e ActiveRateLimitAction) ToPointer() *ActiveRateLimitAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveRateLimitAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2648,193 +2646,193 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRu
 	case "challenge":
 		fallthrough
 	case "rate_limit":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction(v)
+		*e = ActiveRateLimitAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveRateLimitAction: %v", v)
 	}
 }
 
-type PutFirewallConfigRateLimit struct {
-	Algo   PutFirewallConfigAlgo                                                                   `json:"algo"`
-	Window float64                                                                                 `json:"window"`
-	Limit  float64                                                                                 `json:"limit"`
-	Keys   []string                                                                                `json:"keys"`
-	Action *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction `json:"action,omitempty"`
+type ActiveRateLimit struct {
+	Algo   ActiveAlgo             `json:"algo"`
+	Window float64                `json:"window"`
+	Limit  float64                `json:"limit"`
+	Keys   []string               `json:"keys"`
+	Action *ActiveRateLimitAction `json:"action,omitempty"`
 }
 
-func (o *PutFirewallConfigRateLimit) GetAlgo() PutFirewallConfigAlgo {
+func (o *ActiveRateLimit) GetAlgo() ActiveAlgo {
 	if o == nil {
-		return PutFirewallConfigAlgo("")
+		return ActiveAlgo("")
 	}
 	return o.Algo
 }
 
-func (o *PutFirewallConfigRateLimit) GetWindow() float64 {
+func (o *ActiveRateLimit) GetWindow() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Window
 }
 
-func (o *PutFirewallConfigRateLimit) GetLimit() float64 {
+func (o *ActiveRateLimit) GetLimit() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Limit
 }
 
-func (o *PutFirewallConfigRateLimit) GetKeys() []string {
+func (o *ActiveRateLimit) GetKeys() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Keys
 }
 
-func (o *PutFirewallConfigRateLimit) GetAction() *PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesActionAction {
+func (o *ActiveRateLimit) GetAction() *ActiveRateLimitAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type PutFirewallConfigRedirect struct {
+type ActiveRedirect struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
 }
 
-func (o *PutFirewallConfigRedirect) GetLocation() string {
+func (o *ActiveRedirect) GetLocation() string {
 	if o == nil {
 		return ""
 	}
 	return o.Location
 }
 
-func (o *PutFirewallConfigRedirect) GetPermanent() bool {
+func (o *ActiveRedirect) GetPermanent() bool {
 	if o == nil {
 		return false
 	}
 	return o.Permanent
 }
 
-type PutFirewallConfigMitigate struct {
-	Action         PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction `json:"action"`
-	RateLimit      *PutFirewallConfigRateLimit                                                      `json:"rateLimit,omitempty"`
-	Redirect       *PutFirewallConfigRedirect                                                       `json:"redirect,omitempty"`
-	ActionDuration *string                                                                          `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                                                            `json:"bypassSystem,omitempty"`
+type ActiveMitigate struct {
+	Action         ActiveMitigateAction `json:"action"`
+	RateLimit      *ActiveRateLimit     `json:"rateLimit,omitempty"`
+	Redirect       *ActiveRedirect      `json:"redirect,omitempty"`
+	ActionDuration *string              `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                `json:"bypassSystem,omitempty"`
 }
 
-func (o *PutFirewallConfigMitigate) GetAction() PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction {
+func (o *ActiveMitigate) GetAction() ActiveMitigateAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveRulesAction("")
+		return ActiveMitigateAction("")
 	}
 	return o.Action
 }
 
-func (o *PutFirewallConfigMitigate) GetRateLimit() *PutFirewallConfigRateLimit {
+func (o *ActiveMitigate) GetRateLimit() *ActiveRateLimit {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *PutFirewallConfigMitigate) GetRedirect() *PutFirewallConfigRedirect {
+func (o *ActiveMitigate) GetRedirect() *ActiveRedirect {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *PutFirewallConfigMitigate) GetActionDuration() *string {
+func (o *ActiveMitigate) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *PutFirewallConfigMitigate) GetBypassSystem() *bool {
+func (o *ActiveMitigate) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type PutFirewallConfigSecurityResponseAction struct {
-	Mitigate *PutFirewallConfigMitigate `json:"mitigate,omitempty"`
+type ActiveRuleAction struct {
+	Mitigate *ActiveMitigate `json:"mitigate,omitempty"`
 }
 
-func (o *PutFirewallConfigSecurityResponseAction) GetMitigate() *PutFirewallConfigMitigate {
+func (o *ActiveRuleAction) GetMitigate() *ActiveMitigate {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type PutFirewallConfigRules struct {
-	ID             string                                  `json:"id"`
-	Name           string                                  `json:"name"`
-	Description    *string                                 `json:"description,omitempty"`
-	Active         bool                                    `json:"active"`
-	ConditionGroup []PutFirewallConfigConditionGroup       `json:"conditionGroup"`
-	Action         PutFirewallConfigSecurityResponseAction `json:"action"`
+type ActiveRule struct {
+	ID             string                 `json:"id"`
+	Name           string                 `json:"name"`
+	Description    *string                `json:"description,omitempty"`
+	Active         bool                   `json:"active"`
+	ConditionGroup []ActiveConditionGroup `json:"conditionGroup"`
+	Action         ActiveRuleAction       `json:"action"`
 }
 
-func (o *PutFirewallConfigRules) GetID() string {
+func (o *ActiveRule) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *PutFirewallConfigRules) GetName() string {
+func (o *ActiveRule) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *PutFirewallConfigRules) GetDescription() *string {
+func (o *ActiveRule) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PutFirewallConfigRules) GetActive() bool {
+func (o *ActiveRule) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigRules) GetConditionGroup() []PutFirewallConfigConditionGroup {
+func (o *ActiveRule) GetConditionGroup() []ActiveConditionGroup {
 	if o == nil {
-		return []PutFirewallConfigConditionGroup{}
+		return []ActiveConditionGroup{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *PutFirewallConfigRules) GetAction() PutFirewallConfigSecurityResponseAction {
+func (o *ActiveRule) GetAction() ActiveRuleAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponseAction{}
+		return ActiveRuleAction{}
 	}
 	return o.Action
 }
 
-type PutFirewallConfigSecurityResponse200Action string
+type ActiveIPAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ActionDeny      PutFirewallConfigSecurityResponse200Action = "deny"
-	PutFirewallConfigSecurityResponse200ActionLog       PutFirewallConfigSecurityResponse200Action = "log"
-	PutFirewallConfigSecurityResponse200ActionChallenge PutFirewallConfigSecurityResponse200Action = "challenge"
-	PutFirewallConfigSecurityResponse200ActionBypass    PutFirewallConfigSecurityResponse200Action = "bypass"
+	ActiveIPActionDeny      ActiveIPAction = "deny"
+	ActiveIPActionLog       ActiveIPAction = "log"
+	ActiveIPActionChallenge ActiveIPAction = "challenge"
+	ActiveIPActionBypass    ActiveIPAction = "bypass"
 )
 
-func (e PutFirewallConfigSecurityResponse200Action) ToPointer() *PutFirewallConfigSecurityResponse200Action {
+func (e ActiveIPAction) ToPointer() *ActiveIPAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200Action) UnmarshalJSON(data []byte) error {
+func (e *ActiveIPAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2847,71 +2845,71 @@ func (e *PutFirewallConfigSecurityResponse200Action) UnmarshalJSON(data []byte) 
 	case "challenge":
 		fallthrough
 	case "bypass":
-		*e = PutFirewallConfigSecurityResponse200Action(v)
+		*e = ActiveIPAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200Action: %v", v)
+		return fmt.Errorf("invalid value for ActiveIPAction: %v", v)
 	}
 }
 
-type PutFirewallConfigIps struct {
-	ID       string                                     `json:"id"`
-	Hostname string                                     `json:"hostname"`
-	IP       string                                     `json:"ip"`
-	Notes    *string                                    `json:"notes,omitempty"`
-	Action   PutFirewallConfigSecurityResponse200Action `json:"action"`
+type ActiveIP struct {
+	ID       string         `json:"id"`
+	Hostname string         `json:"hostname"`
+	IP       string         `json:"ip"`
+	Notes    *string        `json:"notes,omitempty"`
+	Action   ActiveIPAction `json:"action"`
 }
 
-func (o *PutFirewallConfigIps) GetID() string {
+func (o *ActiveIP) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *PutFirewallConfigIps) GetHostname() string {
+func (o *ActiveIP) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *PutFirewallConfigIps) GetIP() string {
+func (o *ActiveIP) GetIP() string {
 	if o == nil {
 		return ""
 	}
 	return o.IP
 }
 
-func (o *PutFirewallConfigIps) GetNotes() *string {
+func (o *ActiveIP) GetNotes() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Notes
 }
 
-func (o *PutFirewallConfigIps) GetAction() PutFirewallConfigSecurityResponse200Action {
+func (o *ActiveIP) GetAction() ActiveIPAction {
 	if o == nil {
-		return PutFirewallConfigSecurityResponse200Action("")
+		return ActiveIPAction("")
 	}
 	return o.Action
 }
 
-type PutFirewallConfigChanges struct {
+type PutFirewallConfigChange struct {
 }
 
-type PutFirewallConfigSecurityResponse200ApplicationJSONAction string
+type ActiveBotProtectionAction string
 
 const (
-	PutFirewallConfigSecurityResponse200ApplicationJSONActionDeny      PutFirewallConfigSecurityResponse200ApplicationJSONAction = "deny"
-	PutFirewallConfigSecurityResponse200ApplicationJSONActionLog       PutFirewallConfigSecurityResponse200ApplicationJSONAction = "log"
-	PutFirewallConfigSecurityResponse200ApplicationJSONActionChallenge PutFirewallConfigSecurityResponse200ApplicationJSONAction = "challenge"
+	ActiveBotProtectionActionDeny      ActiveBotProtectionAction = "deny"
+	ActiveBotProtectionActionLog       ActiveBotProtectionAction = "log"
+	ActiveBotProtectionActionChallenge ActiveBotProtectionAction = "challenge"
 )
 
-func (e PutFirewallConfigSecurityResponse200ApplicationJSONAction) ToPointer() *PutFirewallConfigSecurityResponse200ApplicationJSONAction {
+func (e ActiveBotProtectionAction) ToPointer() *ActiveBotProtectionAction {
 	return &e
 }
-func (e *PutFirewallConfigSecurityResponse200ApplicationJSONAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveBotProtectionAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2922,54 +2920,225 @@ func (e *PutFirewallConfigSecurityResponse200ApplicationJSONAction) UnmarshalJSO
 	case "log":
 		fallthrough
 	case "challenge":
-		*e = PutFirewallConfigSecurityResponse200ApplicationJSONAction(v)
+		*e = ActiveBotProtectionAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigSecurityResponse200ApplicationJSONAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveBotProtectionAction: %v", v)
 	}
 }
 
-type PutFirewallConfigManagedRules struct {
-	Active    bool                                                       `json:"active"`
-	Action    *PutFirewallConfigSecurityResponse200ApplicationJSONAction `json:"action,omitempty"`
-	UpdatedAt *string                                                    `json:"updatedAt,omitempty"`
-	UserID    *string                                                    `json:"userId,omitempty"`
-	Username  *string                                                    `json:"username,omitempty"`
+type PutFirewallConfigBotProtection struct {
+	Active    bool                       `json:"active"`
+	Action    *ActiveBotProtectionAction `json:"action,omitempty"`
+	UpdatedAt *string                    `json:"updatedAt,omitempty"`
+	UserID    *string                    `json:"userId,omitempty"`
+	Username  *string                    `json:"username,omitempty"`
 }
 
-func (o *PutFirewallConfigManagedRules) GetActive() bool {
+func (o *PutFirewallConfigBotProtection) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *PutFirewallConfigManagedRules) GetAction() *PutFirewallConfigSecurityResponse200ApplicationJSONAction {
+func (o *PutFirewallConfigBotProtection) GetAction() *ActiveBotProtectionAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-func (o *PutFirewallConfigManagedRules) GetUpdatedAt() *string {
+func (o *PutFirewallConfigBotProtection) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *PutFirewallConfigManagedRules) GetUserID() *string {
+func (o *PutFirewallConfigBotProtection) GetUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UserID
 }
 
-func (o *PutFirewallConfigManagedRules) GetUsername() *string {
+func (o *PutFirewallConfigBotProtection) GetUsername() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Username
+}
+
+type ActiveAiBotsAction string
+
+const (
+	ActiveAiBotsActionDeny      ActiveAiBotsAction = "deny"
+	ActiveAiBotsActionLog       ActiveAiBotsAction = "log"
+	ActiveAiBotsActionChallenge ActiveAiBotsAction = "challenge"
+)
+
+func (e ActiveAiBotsAction) ToPointer() *ActiveAiBotsAction {
+	return &e
+}
+func (e *ActiveAiBotsAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		*e = ActiveAiBotsAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveAiBotsAction: %v", v)
+	}
+}
+
+type PutFirewallConfigAiBots struct {
+	Active    bool                `json:"active"`
+	Action    *ActiveAiBotsAction `json:"action,omitempty"`
+	UpdatedAt *string             `json:"updatedAt,omitempty"`
+	UserID    *string             `json:"userId,omitempty"`
+	Username  *string             `json:"username,omitempty"`
+}
+
+func (o *PutFirewallConfigAiBots) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *PutFirewallConfigAiBots) GetAction() *ActiveAiBotsAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+func (o *PutFirewallConfigAiBots) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *PutFirewallConfigAiBots) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *PutFirewallConfigAiBots) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type ActiveOwaspAction string
+
+const (
+	ActiveOwaspActionDeny      ActiveOwaspAction = "deny"
+	ActiveOwaspActionLog       ActiveOwaspAction = "log"
+	ActiveOwaspActionChallenge ActiveOwaspAction = "challenge"
+)
+
+func (e ActiveOwaspAction) ToPointer() *ActiveOwaspAction {
+	return &e
+}
+func (e *ActiveOwaspAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		*e = ActiveOwaspAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveOwaspAction: %v", v)
+	}
+}
+
+type PutFirewallConfigOwasp struct {
+	Active    bool               `json:"active"`
+	Action    *ActiveOwaspAction `json:"action,omitempty"`
+	UpdatedAt *string            `json:"updatedAt,omitempty"`
+	UserID    *string            `json:"userId,omitempty"`
+	Username  *string            `json:"username,omitempty"`
+}
+
+func (o *PutFirewallConfigOwasp) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *PutFirewallConfigOwasp) GetAction() *ActiveOwaspAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+func (o *PutFirewallConfigOwasp) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *PutFirewallConfigOwasp) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *PutFirewallConfigOwasp) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type ActiveManagedRules struct {
+	BotProtection *PutFirewallConfigBotProtection `json:"bot_protection,omitempty"`
+	AiBots        *PutFirewallConfigAiBots        `json:"ai_bots,omitempty"`
+	Owasp         *PutFirewallConfigOwasp         `json:"owasp,omitempty"`
+}
+
+func (o *ActiveManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
+	if o == nil {
+		return nil
+	}
+	return o.BotProtection
+}
+
+func (o *ActiveManagedRules) GetAiBots() *PutFirewallConfigAiBots {
+	if o == nil {
+		return nil
+	}
+	return o.AiBots
+}
+
+func (o *ActiveManagedRules) GetOwasp() *PutFirewallConfigOwasp {
+	if o == nil {
+		return nil
+	}
+	return o.Owasp
 }
 
 type Active struct {
@@ -2980,11 +3149,11 @@ type Active struct {
 	UpdatedAt       string  `json:"updatedAt"`
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
-	Crs          PutFirewallConfigCrs                     `json:"crs"`
-	Rules        []PutFirewallConfigRules                 `json:"rules"`
-	Ips          []PutFirewallConfigIps                   `json:"ips"`
-	Changes      []PutFirewallConfigChanges               `json:"changes"`
-	ManagedRules map[string]PutFirewallConfigManagedRules `json:"managedRules,omitempty"`
+	Crs          ActiveCrs                 `json:"crs"`
+	Rules        []ActiveRule              `json:"rules"`
+	Ips          []ActiveIP                `json:"ips"`
+	Changes      []PutFirewallConfigChange `json:"changes"`
+	ManagedRules *ActiveManagedRules       `json:"managedRules,omitempty"`
 }
 
 func (o *Active) GetOwnerID() string {
@@ -3029,35 +3198,35 @@ func (o *Active) GetFirewallEnabled() bool {
 	return o.FirewallEnabled
 }
 
-func (o *Active) GetCrs() PutFirewallConfigCrs {
+func (o *Active) GetCrs() ActiveCrs {
 	if o == nil {
-		return PutFirewallConfigCrs{}
+		return ActiveCrs{}
 	}
 	return o.Crs
 }
 
-func (o *Active) GetRules() []PutFirewallConfigRules {
+func (o *Active) GetRules() []ActiveRule {
 	if o == nil {
-		return []PutFirewallConfigRules{}
+		return []ActiveRule{}
 	}
 	return o.Rules
 }
 
-func (o *Active) GetIps() []PutFirewallConfigIps {
+func (o *Active) GetIps() []ActiveIP {
 	if o == nil {
-		return []PutFirewallConfigIps{}
+		return []ActiveIP{}
 	}
 	return o.Ips
 }
 
-func (o *Active) GetChanges() []PutFirewallConfigChanges {
+func (o *Active) GetChanges() []PutFirewallConfigChange {
 	if o == nil {
-		return []PutFirewallConfigChanges{}
+		return []PutFirewallConfigChange{}
 	}
 	return o.Changes
 }
 
-func (o *Active) GetManagedRules() map[string]PutFirewallConfigManagedRules {
+func (o *Active) GetManagedRules() *ActiveManagedRules {
 	if o == nil {
 		return nil
 	}

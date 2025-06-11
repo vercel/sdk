@@ -10,7 +10,7 @@ import { GetDeploymentResponseBodyLambdas } from "@vercel/sdk/models/getdeployme
 let value: GetDeploymentResponseBodyLambdas = {
   output: [
     {
-      path: "/usr",
+      path: "/usr/libdata",
       functionName: "<value>",
     },
   ],

@@ -9,7 +9,7 @@
 const value: models.CancelDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```
@@ -21,7 +21,7 @@ const value: models.CancelDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

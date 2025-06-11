@@ -9,11 +9,11 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Roles2 = {
+export type PatchTeamRoles2 = {
   accessGroupId: string;
 };
 
-export const Roles1 = {
+export const PatchTeamRoles1 = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -22,9 +22,9 @@ export const Roles1 = {
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type Roles1 = ClosedEnum<typeof Roles1>;
+export type PatchTeamRoles1 = ClosedEnum<typeof PatchTeamRoles1>;
 
-export type Roles = Roles2 | Roles1;
+export type PatchTeamRoles = PatchTeamRoles2 | PatchTeamRoles1;
 
 export type PatchTeamSaml = {
   /**
@@ -34,7 +34,7 @@ export type PatchTeamSaml = {
   /**
    * Directory groups to role or access group mappings.
    */
-  roles?: { [k: string]: Roles2 | Roles1 } | undefined;
+  roles?: { [k: string]: PatchTeamRoles2 | PatchTeamRoles1 } | undefined;
 };
 
 /**
@@ -113,21 +113,24 @@ export type PatchTeamRequest = {
 };
 
 /** @internal */
-export const Roles2$inboundSchema: z.ZodType<Roles2, z.ZodTypeDef, unknown> = z
-  .object({
-    accessGroupId: z.string(),
-  });
+export const PatchTeamRoles2$inboundSchema: z.ZodType<
+  PatchTeamRoles2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  accessGroupId: z.string(),
+});
 
 /** @internal */
-export type Roles2$Outbound = {
+export type PatchTeamRoles2$Outbound = {
   accessGroupId: string;
 };
 
 /** @internal */
-export const Roles2$outboundSchema: z.ZodType<
-  Roles2$Outbound,
+export const PatchTeamRoles2$outboundSchema: z.ZodType<
+  PatchTeamRoles2$Outbound,
   z.ZodTypeDef,
-  Roles2
+  PatchTeamRoles2
 > = z.object({
   accessGroupId: z.string(),
 });
@@ -136,86 +139,99 @@ export const Roles2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Roles2$ {
-  /** @deprecated use `Roles2$inboundSchema` instead. */
-  export const inboundSchema = Roles2$inboundSchema;
-  /** @deprecated use `Roles2$outboundSchema` instead. */
-  export const outboundSchema = Roles2$outboundSchema;
-  /** @deprecated use `Roles2$Outbound` instead. */
-  export type Outbound = Roles2$Outbound;
+export namespace PatchTeamRoles2$ {
+  /** @deprecated use `PatchTeamRoles2$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamRoles2$inboundSchema;
+  /** @deprecated use `PatchTeamRoles2$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamRoles2$outboundSchema;
+  /** @deprecated use `PatchTeamRoles2$Outbound` instead. */
+  export type Outbound = PatchTeamRoles2$Outbound;
 }
 
-export function roles2ToJSON(roles2: Roles2): string {
-  return JSON.stringify(Roles2$outboundSchema.parse(roles2));
+export function patchTeamRoles2ToJSON(
+  patchTeamRoles2: PatchTeamRoles2,
+): string {
+  return JSON.stringify(PatchTeamRoles2$outboundSchema.parse(patchTeamRoles2));
 }
 
-export function roles2FromJSON(
+export function patchTeamRoles2FromJSON(
   jsonString: string,
-): SafeParseResult<Roles2, SDKValidationError> {
+): SafeParseResult<PatchTeamRoles2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Roles2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Roles2' from JSON`,
+    (x) => PatchTeamRoles2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamRoles2' from JSON`,
   );
 }
 
 /** @internal */
-export const Roles1$inboundSchema: z.ZodNativeEnum<typeof Roles1> = z
-  .nativeEnum(Roles1);
+export const PatchTeamRoles1$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamRoles1
+> = z.nativeEnum(PatchTeamRoles1);
 
 /** @internal */
-export const Roles1$outboundSchema: z.ZodNativeEnum<typeof Roles1> =
-  Roles1$inboundSchema;
+export const PatchTeamRoles1$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamRoles1
+> = PatchTeamRoles1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Roles1$ {
-  /** @deprecated use `Roles1$inboundSchema` instead. */
-  export const inboundSchema = Roles1$inboundSchema;
-  /** @deprecated use `Roles1$outboundSchema` instead. */
-  export const outboundSchema = Roles1$outboundSchema;
+export namespace PatchTeamRoles1$ {
+  /** @deprecated use `PatchTeamRoles1$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamRoles1$inboundSchema;
+  /** @deprecated use `PatchTeamRoles1$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamRoles1$outboundSchema;
 }
 
 /** @internal */
-export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> = z
-  .union([z.lazy(() => Roles2$inboundSchema), Roles1$inboundSchema]);
-
-/** @internal */
-export type Roles$Outbound = Roles2$Outbound | string;
-
-/** @internal */
-export const Roles$outboundSchema: z.ZodType<
-  Roles$Outbound,
+export const PatchTeamRoles$inboundSchema: z.ZodType<
+  PatchTeamRoles,
   z.ZodTypeDef,
-  Roles
-> = z.union([z.lazy(() => Roles2$outboundSchema), Roles1$outboundSchema]);
+  unknown
+> = z.union([
+  z.lazy(() => PatchTeamRoles2$inboundSchema),
+  PatchTeamRoles1$inboundSchema,
+]);
+
+/** @internal */
+export type PatchTeamRoles$Outbound = PatchTeamRoles2$Outbound | string;
+
+/** @internal */
+export const PatchTeamRoles$outboundSchema: z.ZodType<
+  PatchTeamRoles$Outbound,
+  z.ZodTypeDef,
+  PatchTeamRoles
+> = z.union([
+  z.lazy(() => PatchTeamRoles2$outboundSchema),
+  PatchTeamRoles1$outboundSchema,
+]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Roles$ {
-  /** @deprecated use `Roles$inboundSchema` instead. */
-  export const inboundSchema = Roles$inboundSchema;
-  /** @deprecated use `Roles$outboundSchema` instead. */
-  export const outboundSchema = Roles$outboundSchema;
-  /** @deprecated use `Roles$Outbound` instead. */
-  export type Outbound = Roles$Outbound;
+export namespace PatchTeamRoles$ {
+  /** @deprecated use `PatchTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamRoles$inboundSchema;
+  /** @deprecated use `PatchTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamRoles$outboundSchema;
+  /** @deprecated use `PatchTeamRoles$Outbound` instead. */
+  export type Outbound = PatchTeamRoles$Outbound;
 }
 
-export function rolesToJSON(roles: Roles): string {
-  return JSON.stringify(Roles$outboundSchema.parse(roles));
+export function patchTeamRolesToJSON(patchTeamRoles: PatchTeamRoles): string {
+  return JSON.stringify(PatchTeamRoles$outboundSchema.parse(patchTeamRoles));
 }
 
-export function rolesFromJSON(
+export function patchTeamRolesFromJSON(
   jsonString: string,
-): SafeParseResult<Roles, SDKValidationError> {
+): SafeParseResult<PatchTeamRoles, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Roles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Roles' from JSON`,
+    (x) => PatchTeamRoles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamRoles' from JSON`,
   );
 }
 
@@ -227,14 +243,17 @@ export const PatchTeamSaml$inboundSchema: z.ZodType<
 > = z.object({
   enforced: z.boolean().optional(),
   roles: z.record(
-    z.union([z.lazy(() => Roles2$inboundSchema), Roles1$inboundSchema]),
+    z.union([
+      z.lazy(() => PatchTeamRoles2$inboundSchema),
+      PatchTeamRoles1$inboundSchema,
+    ]),
   ).optional(),
 });
 
 /** @internal */
 export type PatchTeamSaml$Outbound = {
   enforced?: boolean | undefined;
-  roles?: { [k: string]: Roles2$Outbound | string } | undefined;
+  roles?: { [k: string]: PatchTeamRoles2$Outbound | string } | undefined;
 };
 
 /** @internal */
@@ -245,7 +264,10 @@ export const PatchTeamSaml$outboundSchema: z.ZodType<
 > = z.object({
   enforced: z.boolean().optional(),
   roles: z.record(
-    z.union([z.lazy(() => Roles2$outboundSchema), Roles1$outboundSchema]),
+    z.union([
+      z.lazy(() => PatchTeamRoles2$outboundSchema),
+      PatchTeamRoles1$outboundSchema,
+    ]),
   ).optional(),
 });
 

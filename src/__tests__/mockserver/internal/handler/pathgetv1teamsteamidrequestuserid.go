@@ -45,12 +45,12 @@ func testGetTeamAccessRequestGetTeamAccessRequest0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetTeamAccessRequestResponseBody{
+	var respBody *operations.GetTeamAccessRequestResponseBody = &operations.GetTeamAccessRequestResponseBody{
 		TeamSlug:  "my-team",
 		TeamName:  "My Team",
 		Confirmed: false,
 		JoinedFrom: operations.GetTeamAccessRequestJoinedFrom{
-			Origin: operations.GetTeamAccessRequestOriginImport,
+			Origin: operations.GetTeamAccessRequestOriginSaml,
 		},
 		AccessRequestedAt: 1588720733602,
 		Github:            &operations.GetTeamAccessRequestGithub{},

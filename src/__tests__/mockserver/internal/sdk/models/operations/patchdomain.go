@@ -72,13 +72,13 @@ func (o *PatchDomainRequestBody1) GetZone() *bool {
 type PatchDomainRequestBodyType string
 
 const (
-	PatchDomainRequestBodyTypePatchDomainRequestBody1 PatchDomainRequestBodyType = "patchDomain_requestBody_1"
-	PatchDomainRequestBodyTypePatchDomainRequestBody2 PatchDomainRequestBodyType = "patchDomain_requestBody_2"
+	PatchDomainRequestBodyTypePatchDomainRequestBody1 PatchDomainRequestBodyType = "patchDomain_RequestBody_1"
+	PatchDomainRequestBodyTypePatchDomainRequestBody2 PatchDomainRequestBodyType = "patchDomain_RequestBody_2"
 )
 
 type PatchDomainRequestBody struct {
-	PatchDomainRequestBody1 *PatchDomainRequestBody1
-	PatchDomainRequestBody2 *PatchDomainRequestBody2
+	PatchDomainRequestBody1 *PatchDomainRequestBody1 `queryParam:"inline"`
+	PatchDomainRequestBody2 *PatchDomainRequestBody2 `queryParam:"inline"`
 
 	Type PatchDomainRequestBodyType
 }
@@ -229,15 +229,15 @@ func (o *PatchDomainResponseBody1) GetMoved() bool {
 type PatchDomainResponseBodyType string
 
 const (
-	PatchDomainResponseBodyTypePatchDomainResponseBody1 PatchDomainResponseBodyType = "patchDomain_responseBody_1"
-	PatchDomainResponseBodyTypePatchDomainResponseBody2 PatchDomainResponseBodyType = "patchDomain_responseBody_2"
-	PatchDomainResponseBodyTypePatchDomainResponseBody3 PatchDomainResponseBodyType = "patchDomain_responseBody_3"
+	PatchDomainResponseBodyTypePatchDomainResponseBody1 PatchDomainResponseBodyType = "patchDomain_ResponseBody_1"
+	PatchDomainResponseBodyTypePatchDomainResponseBody2 PatchDomainResponseBodyType = "patchDomain_ResponseBody_2"
+	PatchDomainResponseBodyTypePatchDomainResponseBody3 PatchDomainResponseBodyType = "patchDomain_ResponseBody_3"
 )
 
 type PatchDomainResponseBody struct {
-	PatchDomainResponseBody1 *PatchDomainResponseBody1
-	PatchDomainResponseBody2 *PatchDomainResponseBody2
-	PatchDomainResponseBody3 *PatchDomainResponseBody3
+	PatchDomainResponseBody1 *PatchDomainResponseBody1 `queryParam:"inline"`
+	PatchDomainResponseBody2 *PatchDomainResponseBody2 `queryParam:"inline"`
+	PatchDomainResponseBody3 *PatchDomainResponseBody3 `queryParam:"inline"`
 
 	Type PatchDomainResponseBodyType
 }

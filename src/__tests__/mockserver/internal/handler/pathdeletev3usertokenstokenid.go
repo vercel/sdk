@@ -45,7 +45,7 @@ func testDeleteAuthTokenDeleteAuthToken0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.DeleteAuthTokenResponseBody{
+	var respBody *operations.DeleteAuthTokenResponseBody = &operations.DeleteAuthTokenResponseBody{
 		TokenID: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

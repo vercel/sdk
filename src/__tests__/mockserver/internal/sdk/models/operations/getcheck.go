@@ -114,29 +114,6 @@ func (e *GetCheckConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetCheckSource string
-
-const (
-	GetCheckSourceWebVitals GetCheckSource = "web-vitals"
-)
-
-func (e GetCheckSource) ToPointer() *GetCheckSource {
-	return &e
-}
-func (e *GetCheckSource) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "web-vitals":
-		*e = GetCheckSource(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetCheckSource: %v", v)
-	}
-}
-
 type GetCheckFCP struct {
 	Value         *float64       `json:"value"`
 	PreviousValue *float64       `json:"previousValue,omitempty"`
@@ -164,33 +141,10 @@ func (o *GetCheckFCP) GetSource() GetCheckSource {
 	return o.Source
 }
 
-type GetCheckChecksSource string
-
-const (
-	GetCheckChecksSourceWebVitals GetCheckChecksSource = "web-vitals"
-)
-
-func (e GetCheckChecksSource) ToPointer() *GetCheckChecksSource {
-	return &e
-}
-func (e *GetCheckChecksSource) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "web-vitals":
-		*e = GetCheckChecksSource(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetCheckChecksSource: %v", v)
-	}
-}
-
 type GetCheckLCP struct {
-	Value         *float64             `json:"value"`
-	PreviousValue *float64             `json:"previousValue,omitempty"`
-	Source        GetCheckChecksSource `json:"source"`
+	Value         *float64       `json:"value"`
+	PreviousValue *float64       `json:"previousValue,omitempty"`
+	Source        GetCheckSource `json:"source"`
 }
 
 func (o *GetCheckLCP) GetValue() *float64 {
@@ -207,40 +161,17 @@ func (o *GetCheckLCP) GetPreviousValue() *float64 {
 	return o.PreviousValue
 }
 
-func (o *GetCheckLCP) GetSource() GetCheckChecksSource {
+func (o *GetCheckLCP) GetSource() GetCheckSource {
 	if o == nil {
-		return GetCheckChecksSource("")
+		return GetCheckSource("")
 	}
 	return o.Source
 }
 
-type GetCheckChecksResponseSource string
-
-const (
-	GetCheckChecksResponseSourceWebVitals GetCheckChecksResponseSource = "web-vitals"
-)
-
-func (e GetCheckChecksResponseSource) ToPointer() *GetCheckChecksResponseSource {
-	return &e
-}
-func (e *GetCheckChecksResponseSource) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "web-vitals":
-		*e = GetCheckChecksResponseSource(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetCheckChecksResponseSource: %v", v)
-	}
-}
-
 type GetCheckCLS struct {
-	Value         *float64                     `json:"value"`
-	PreviousValue *float64                     `json:"previousValue,omitempty"`
-	Source        GetCheckChecksResponseSource `json:"source"`
+	Value         *float64       `json:"value"`
+	PreviousValue *float64       `json:"previousValue,omitempty"`
+	Source        GetCheckSource `json:"source"`
 }
 
 func (o *GetCheckCLS) GetValue() *float64 {
@@ -257,40 +188,17 @@ func (o *GetCheckCLS) GetPreviousValue() *float64 {
 	return o.PreviousValue
 }
 
-func (o *GetCheckCLS) GetSource() GetCheckChecksResponseSource {
+func (o *GetCheckCLS) GetSource() GetCheckSource {
 	if o == nil {
-		return GetCheckChecksResponseSource("")
+		return GetCheckSource("")
 	}
 	return o.Source
 }
 
-type GetCheckChecksResponse200Source string
-
-const (
-	GetCheckChecksResponse200SourceWebVitals GetCheckChecksResponse200Source = "web-vitals"
-)
-
-func (e GetCheckChecksResponse200Source) ToPointer() *GetCheckChecksResponse200Source {
-	return &e
-}
-func (e *GetCheckChecksResponse200Source) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "web-vitals":
-		*e = GetCheckChecksResponse200Source(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetCheckChecksResponse200Source: %v", v)
-	}
-}
-
 type GetCheckTBT struct {
-	Value         *float64                        `json:"value"`
-	PreviousValue *float64                        `json:"previousValue,omitempty"`
-	Source        GetCheckChecksResponse200Source `json:"source"`
+	Value         *float64       `json:"value"`
+	PreviousValue *float64       `json:"previousValue,omitempty"`
+	Source        GetCheckSource `json:"source"`
 }
 
 func (o *GetCheckTBT) GetValue() *float64 {
@@ -307,40 +215,40 @@ func (o *GetCheckTBT) GetPreviousValue() *float64 {
 	return o.PreviousValue
 }
 
-func (o *GetCheckTBT) GetSource() GetCheckChecksResponse200Source {
+func (o *GetCheckTBT) GetSource() GetCheckSource {
 	if o == nil {
-		return GetCheckChecksResponse200Source("")
+		return GetCheckSource("")
 	}
 	return o.Source
 }
 
-type GetCheckChecksResponse200ApplicationJSONSource string
+type GetCheckSource string
 
 const (
-	GetCheckChecksResponse200ApplicationJSONSourceWebVitals GetCheckChecksResponse200ApplicationJSONSource = "web-vitals"
+	GetCheckSourceWebVitals GetCheckSource = "web-vitals"
 )
 
-func (e GetCheckChecksResponse200ApplicationJSONSource) ToPointer() *GetCheckChecksResponse200ApplicationJSONSource {
+func (e GetCheckSource) ToPointer() *GetCheckSource {
 	return &e
 }
-func (e *GetCheckChecksResponse200ApplicationJSONSource) UnmarshalJSON(data []byte) error {
+func (e *GetCheckSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "web-vitals":
-		*e = GetCheckChecksResponse200ApplicationJSONSource(v)
+		*e = GetCheckSource(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetCheckChecksResponse200ApplicationJSONSource: %v", v)
+		return fmt.Errorf("invalid value for GetCheckSource: %v", v)
 	}
 }
 
 type GetCheckVirtualExperienceScore struct {
-	Value         *float64                                       `json:"value"`
-	PreviousValue *float64                                       `json:"previousValue,omitempty"`
-	Source        GetCheckChecksResponse200ApplicationJSONSource `json:"source"`
+	Value         *float64       `json:"value"`
+	PreviousValue *float64       `json:"previousValue,omitempty"`
+	Source        GetCheckSource `json:"source"`
 }
 
 func (o *GetCheckVirtualExperienceScore) GetValue() *float64 {
@@ -357,9 +265,9 @@ func (o *GetCheckVirtualExperienceScore) GetPreviousValue() *float64 {
 	return o.PreviousValue
 }
 
-func (o *GetCheckVirtualExperienceScore) GetSource() GetCheckChecksResponse200ApplicationJSONSource {
+func (o *GetCheckVirtualExperienceScore) GetSource() GetCheckSource {
 	if o == nil {
-		return GetCheckChecksResponse200ApplicationJSONSource("")
+		return GetCheckSource("")
 	}
 	return o.Source
 }

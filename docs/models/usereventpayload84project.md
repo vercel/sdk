@@ -7,26 +7,8 @@ import { UserEventPayload84Project } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload84Project = {
   id: "<id>",
-  oldConnectConfigurations: [
-    {
-      envId: "<id>",
-      connectConfigurationId: "<id>",
-      passive: false,
-      buildsEnabled: false,
-      createdAt: 409.31,
-      updatedAt: 8134,
-    },
-  ],
-  newConnectConfigurations: [
-    {
-      envId: "<id>",
-      connectConfigurationId: "<id>",
-      passive: false,
-      buildsEnabled: false,
-      createdAt: 5292.1,
-      updatedAt: 5572.98,
-    },
-  ],
+  oldConnectConfigurations: null,
+  newConnectConfigurations: null,
 };
 ```
 

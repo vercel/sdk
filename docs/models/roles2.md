@@ -3,15 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Roles2 } from "@vercel/sdk/models/patchteamop.js";
+import { Roles2 } from "@vercel/sdk/models/team.js";
 
-let value: Roles2 = {
-  accessGroupId: "<id>",
-};
+let value: Roles2 = "MEMBER";
 ```
 
-## Fields
+## Values
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `accessGroupId`    | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
+```

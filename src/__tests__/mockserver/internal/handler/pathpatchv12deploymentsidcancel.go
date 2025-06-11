@@ -46,61 +46,51 @@ func testCancelDeploymentCancelDeployment0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CancelDeploymentResponseBody{
-		Build: operations.CancelDeploymentBuild{
+	var respBody *operations.CancelDeploymentResponseBody = &operations.CancelDeploymentResponseBody{
+		Build: operations.CancelDeploymentBuild1{
 			Env: []string{
-				"<value>",
-				"<value>",
-				"<value>",
+				"<value 1>",
+				"<value 2>",
 			},
 		},
-		Env: []string{
-			"<value>",
-			"<value>",
-		},
-		InspectorURL:              types.String("https://concrete-gerbil.org"),
+		Env:                       []string{},
+		InspectorURL:              types.String("https://grown-gymnast.net"),
 		IsInConcurrentBuildsQueue: false,
-		IsInSystemBuildsQueue:     true,
+		IsInSystemBuildsQueue:     false,
 		ProjectSettings:           operations.CancelDeploymentProjectSettings{},
 		AliasAssigned:             false,
-		BootedAt:                  8528.74,
-		BuildingAt:                7590.79,
-		BuildSkipped:              false,
+		BootedAt:                  9923.4,
+		BuildingAt:                4182.97,
+		BuildSkipped:              true,
 		Creator: operations.CancelDeploymentCreator{
 			UID: "<id>",
 		},
-		Public:    true,
-		Status:    operations.CancelDeploymentStatusBuilding,
-		ID:        "<id>",
-		CreatedAt: 3071.53,
-		Name:      "<value>",
-		Meta: map[string]string{
-			"key":  "<value>",
-			"key1": "<value>",
-			"key2": "<value>",
-		},
-		ReadyState: operations.CancelDeploymentReadyStateQueued,
-		Regions: []string{
-			"<value>",
-		},
-		Type:      operations.CancelDeploymentTypeLambdas,
-		URL:       "https://timely-reboot.name",
-		Version:   6067.47,
-		CreatedIn: "<value>",
-		OwnerID:   "<id>",
-		Plan:      operations.CancelDeploymentPlanPro,
-		ProjectID: "<id>",
-		Routes: []operations.CancelDeploymentRoutes{
-			operations.CreateCancelDeploymentRoutesCancelDeploymentRoutes2(
-				operations.CancelDeploymentRoutes2{
-					Handle: operations.CancelDeploymentRoutesHandleResource,
+		Public:     false,
+		Status:     operations.CancelDeploymentStatusCanceled,
+		ID:         "<id>",
+		CreatedAt:  4076.8,
+		Name:       "<value>",
+		Meta:       map[string]string{},
+		ReadyState: operations.CancelDeploymentReadyStateReady,
+		Regions:    []string{},
+		Type:       operations.CancelDeploymentTypeLambdas,
+		URL:        "https://medium-tribe.org/",
+		Version:    7316.38,
+		CreatedIn:  "<value>",
+		OwnerID:    "<id>",
+		Plan:       operations.CancelDeploymentPlanHobby,
+		ProjectID:  "<id>",
+		Routes: []operations.CancelDeploymentRouteUnion{
+			operations.CreateCancelDeploymentRouteUnionCancelDeploymentRoute1(
+				operations.CancelDeploymentRoute1{
+					Src: "<value>",
 				},
 			),
-			operations.CreateCancelDeploymentRoutesCancelDeploymentRoutes3(
-				operations.CancelDeploymentRoutes3{
+			operations.CreateCancelDeploymentRouteUnionCancelDeploymentRoute3(
+				operations.CancelDeploymentRoute3{
 					Src:        "<value>",
 					Continue:   true,
-					Middleware: 4831.29,
+					Middleware: 1635.94,
 				},
 			),
 		},

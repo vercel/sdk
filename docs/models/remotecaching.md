@@ -1,11 +1,11 @@
 # RemoteCaching
 
-remote caching settings
+Is remote caching enabled for this team
 
 ## Example Usage
 
 ```typescript
-import { RemoteCaching } from "@vercel/sdk/models/authuser.js";
+import { RemoteCaching } from "@vercel/sdk/models/team.js";
 
 let value: RemoteCaching = {};
 ```

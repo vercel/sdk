@@ -6,6 +6,7 @@ import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import { VercelError } from "./vercelerror.js";
 
 export type VercelNotFoundErrorError = {
   code: string;
@@ -16,19 +17,21 @@ export type VercelNotFoundErrorData = {
   error: VercelNotFoundErrorError;
 };
 
-export class VercelNotFoundError extends Error {
+export class VercelNotFoundError extends VercelError {
   error: VercelNotFoundErrorError;
 
   /** The original data that was passed to this error instance. */
   data$: VercelNotFoundErrorData;
 
-  constructor(err: VercelNotFoundErrorData) {
+  constructor(
+    err: VercelNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "VercelNotFoundError";
@@ -99,9 +102,16 @@ export const VercelNotFoundError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => VercelNotFoundErrorError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new VercelNotFoundError(v);
+    return new VercelNotFoundError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

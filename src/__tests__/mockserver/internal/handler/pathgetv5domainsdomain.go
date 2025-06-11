@@ -46,7 +46,7 @@ func testGetDomainGetDomain0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDomainResponseBody{
+	var respBody *operations.GetDomainResponseBody = &operations.GetDomainResponseBody{
 		Domain: operations.GetDomainDomain{
 			Suffix:   true,
 			Verified: true,

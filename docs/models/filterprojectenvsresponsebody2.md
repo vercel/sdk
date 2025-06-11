@@ -6,9 +6,7 @@
 import { FilterProjectEnvsResponseBody2 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsResponseBody2 = {
-  envs: [
-    {},
-  ],
+  envs: [],
   pagination: {
     count: 20,
     next: 1540095775951,

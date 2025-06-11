@@ -10,62 +10,62 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// UpdateProjectFramework - The framework that is being used for this project. When `null` is used no framework is selected
-type UpdateProjectFramework string
+// UpdateProjectFrameworkRequest - The framework that is being used for this project. When `null` is used no framework is selected
+type UpdateProjectFrameworkRequest string
 
 const (
-	UpdateProjectFrameworkBlitzjs        UpdateProjectFramework = "blitzjs"
-	UpdateProjectFrameworkNextjs         UpdateProjectFramework = "nextjs"
-	UpdateProjectFrameworkGatsby         UpdateProjectFramework = "gatsby"
-	UpdateProjectFrameworkRemix          UpdateProjectFramework = "remix"
-	UpdateProjectFrameworkReactRouter    UpdateProjectFramework = "react-router"
-	UpdateProjectFrameworkAstro          UpdateProjectFramework = "astro"
-	UpdateProjectFrameworkHexo           UpdateProjectFramework = "hexo"
-	UpdateProjectFrameworkEleventy       UpdateProjectFramework = "eleventy"
-	UpdateProjectFrameworkDocusaurus2    UpdateProjectFramework = "docusaurus-2"
-	UpdateProjectFrameworkDocusaurus     UpdateProjectFramework = "docusaurus"
-	UpdateProjectFrameworkPreact         UpdateProjectFramework = "preact"
-	UpdateProjectFrameworkSolidstart1    UpdateProjectFramework = "solidstart-1"
-	UpdateProjectFrameworkSolidstart     UpdateProjectFramework = "solidstart"
-	UpdateProjectFrameworkDojo           UpdateProjectFramework = "dojo"
-	UpdateProjectFrameworkEmber          UpdateProjectFramework = "ember"
-	UpdateProjectFrameworkVue            UpdateProjectFramework = "vue"
-	UpdateProjectFrameworkScully         UpdateProjectFramework = "scully"
-	UpdateProjectFrameworkIonicAngular   UpdateProjectFramework = "ionic-angular"
-	UpdateProjectFrameworkAngular        UpdateProjectFramework = "angular"
-	UpdateProjectFrameworkPolymer        UpdateProjectFramework = "polymer"
-	UpdateProjectFrameworkSvelte         UpdateProjectFramework = "svelte"
-	UpdateProjectFrameworkSveltekit      UpdateProjectFramework = "sveltekit"
-	UpdateProjectFrameworkSveltekit1     UpdateProjectFramework = "sveltekit-1"
-	UpdateProjectFrameworkIonicReact     UpdateProjectFramework = "ionic-react"
-	UpdateProjectFrameworkCreateReactApp UpdateProjectFramework = "create-react-app"
-	UpdateProjectFrameworkGridsome       UpdateProjectFramework = "gridsome"
-	UpdateProjectFrameworkUmijs          UpdateProjectFramework = "umijs"
-	UpdateProjectFrameworkSapper         UpdateProjectFramework = "sapper"
-	UpdateProjectFrameworkSaber          UpdateProjectFramework = "saber"
-	UpdateProjectFrameworkStencil        UpdateProjectFramework = "stencil"
-	UpdateProjectFrameworkNuxtjs         UpdateProjectFramework = "nuxtjs"
-	UpdateProjectFrameworkRedwoodjs      UpdateProjectFramework = "redwoodjs"
-	UpdateProjectFrameworkHugo           UpdateProjectFramework = "hugo"
-	UpdateProjectFrameworkJekyll         UpdateProjectFramework = "jekyll"
-	UpdateProjectFrameworkBrunch         UpdateProjectFramework = "brunch"
-	UpdateProjectFrameworkMiddleman      UpdateProjectFramework = "middleman"
-	UpdateProjectFrameworkZola           UpdateProjectFramework = "zola"
-	UpdateProjectFrameworkHydrogen       UpdateProjectFramework = "hydrogen"
-	UpdateProjectFrameworkVite           UpdateProjectFramework = "vite"
-	UpdateProjectFrameworkVitepress      UpdateProjectFramework = "vitepress"
-	UpdateProjectFrameworkVuepress       UpdateProjectFramework = "vuepress"
-	UpdateProjectFrameworkParcel         UpdateProjectFramework = "parcel"
-	UpdateProjectFrameworkFasthtml       UpdateProjectFramework = "fasthtml"
-	UpdateProjectFrameworkSanityV3       UpdateProjectFramework = "sanity-v3"
-	UpdateProjectFrameworkSanity         UpdateProjectFramework = "sanity"
-	UpdateProjectFrameworkStorybook      UpdateProjectFramework = "storybook"
+	UpdateProjectFrameworkRequestBlitzjs        UpdateProjectFrameworkRequest = "blitzjs"
+	UpdateProjectFrameworkRequestNextjs         UpdateProjectFrameworkRequest = "nextjs"
+	UpdateProjectFrameworkRequestGatsby         UpdateProjectFrameworkRequest = "gatsby"
+	UpdateProjectFrameworkRequestRemix          UpdateProjectFrameworkRequest = "remix"
+	UpdateProjectFrameworkRequestReactRouter    UpdateProjectFrameworkRequest = "react-router"
+	UpdateProjectFrameworkRequestAstro          UpdateProjectFrameworkRequest = "astro"
+	UpdateProjectFrameworkRequestHexo           UpdateProjectFrameworkRequest = "hexo"
+	UpdateProjectFrameworkRequestEleventy       UpdateProjectFrameworkRequest = "eleventy"
+	UpdateProjectFrameworkRequestDocusaurus2    UpdateProjectFrameworkRequest = "docusaurus-2"
+	UpdateProjectFrameworkRequestDocusaurus     UpdateProjectFrameworkRequest = "docusaurus"
+	UpdateProjectFrameworkRequestPreact         UpdateProjectFrameworkRequest = "preact"
+	UpdateProjectFrameworkRequestSolidstart1    UpdateProjectFrameworkRequest = "solidstart-1"
+	UpdateProjectFrameworkRequestSolidstart     UpdateProjectFrameworkRequest = "solidstart"
+	UpdateProjectFrameworkRequestDojo           UpdateProjectFrameworkRequest = "dojo"
+	UpdateProjectFrameworkRequestEmber          UpdateProjectFrameworkRequest = "ember"
+	UpdateProjectFrameworkRequestVue            UpdateProjectFrameworkRequest = "vue"
+	UpdateProjectFrameworkRequestScully         UpdateProjectFrameworkRequest = "scully"
+	UpdateProjectFrameworkRequestIonicAngular   UpdateProjectFrameworkRequest = "ionic-angular"
+	UpdateProjectFrameworkRequestAngular        UpdateProjectFrameworkRequest = "angular"
+	UpdateProjectFrameworkRequestPolymer        UpdateProjectFrameworkRequest = "polymer"
+	UpdateProjectFrameworkRequestSvelte         UpdateProjectFrameworkRequest = "svelte"
+	UpdateProjectFrameworkRequestSveltekit      UpdateProjectFrameworkRequest = "sveltekit"
+	UpdateProjectFrameworkRequestSveltekit1     UpdateProjectFrameworkRequest = "sveltekit-1"
+	UpdateProjectFrameworkRequestIonicReact     UpdateProjectFrameworkRequest = "ionic-react"
+	UpdateProjectFrameworkRequestCreateReactApp UpdateProjectFrameworkRequest = "create-react-app"
+	UpdateProjectFrameworkRequestGridsome       UpdateProjectFrameworkRequest = "gridsome"
+	UpdateProjectFrameworkRequestUmijs          UpdateProjectFrameworkRequest = "umijs"
+	UpdateProjectFrameworkRequestSapper         UpdateProjectFrameworkRequest = "sapper"
+	UpdateProjectFrameworkRequestSaber          UpdateProjectFrameworkRequest = "saber"
+	UpdateProjectFrameworkRequestStencil        UpdateProjectFrameworkRequest = "stencil"
+	UpdateProjectFrameworkRequestNuxtjs         UpdateProjectFrameworkRequest = "nuxtjs"
+	UpdateProjectFrameworkRequestRedwoodjs      UpdateProjectFrameworkRequest = "redwoodjs"
+	UpdateProjectFrameworkRequestHugo           UpdateProjectFrameworkRequest = "hugo"
+	UpdateProjectFrameworkRequestJekyll         UpdateProjectFrameworkRequest = "jekyll"
+	UpdateProjectFrameworkRequestBrunch         UpdateProjectFrameworkRequest = "brunch"
+	UpdateProjectFrameworkRequestMiddleman      UpdateProjectFrameworkRequest = "middleman"
+	UpdateProjectFrameworkRequestZola           UpdateProjectFrameworkRequest = "zola"
+	UpdateProjectFrameworkRequestHydrogen       UpdateProjectFrameworkRequest = "hydrogen"
+	UpdateProjectFrameworkRequestVite           UpdateProjectFrameworkRequest = "vite"
+	UpdateProjectFrameworkRequestVitepress      UpdateProjectFrameworkRequest = "vitepress"
+	UpdateProjectFrameworkRequestVuepress       UpdateProjectFrameworkRequest = "vuepress"
+	UpdateProjectFrameworkRequestParcel         UpdateProjectFrameworkRequest = "parcel"
+	UpdateProjectFrameworkRequestFasthtml       UpdateProjectFrameworkRequest = "fasthtml"
+	UpdateProjectFrameworkRequestSanityV3       UpdateProjectFrameworkRequest = "sanity-v3"
+	UpdateProjectFrameworkRequestSanity         UpdateProjectFrameworkRequest = "sanity"
+	UpdateProjectFrameworkRequestStorybook      UpdateProjectFrameworkRequest = "storybook"
 )
 
-func (e UpdateProjectFramework) ToPointer() *UpdateProjectFramework {
+func (e UpdateProjectFrameworkRequest) ToPointer() *UpdateProjectFrameworkRequest {
 	return &e
 }
-func (e *UpdateProjectFramework) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -162,29 +162,29 @@ func (e *UpdateProjectFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
-		*e = UpdateProjectFramework(v)
+		*e = UpdateProjectFrameworkRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectFramework: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectFrameworkRequest: %v", v)
 	}
 }
 
-type UpdateProjectNodeVersion string
+type UpdateProjectNodeVersionRequest string
 
 const (
-	UpdateProjectNodeVersionTwentyTwoDotX UpdateProjectNodeVersion = "22.x"
-	UpdateProjectNodeVersionTwentyDotX    UpdateProjectNodeVersion = "20.x"
-	UpdateProjectNodeVersionEighteenDotX  UpdateProjectNodeVersion = "18.x"
-	UpdateProjectNodeVersionSixteenDotX   UpdateProjectNodeVersion = "16.x"
-	UpdateProjectNodeVersionFourteenDotX  UpdateProjectNodeVersion = "14.x"
-	UpdateProjectNodeVersionTwelveDotX    UpdateProjectNodeVersion = "12.x"
-	UpdateProjectNodeVersionTenDotX       UpdateProjectNodeVersion = "10.x"
+	UpdateProjectNodeVersionRequestTwentyTwoDotX UpdateProjectNodeVersionRequest = "22.x"
+	UpdateProjectNodeVersionRequestTwentyDotX    UpdateProjectNodeVersionRequest = "20.x"
+	UpdateProjectNodeVersionRequestEighteenDotX  UpdateProjectNodeVersionRequest = "18.x"
+	UpdateProjectNodeVersionRequestSixteenDotX   UpdateProjectNodeVersionRequest = "16.x"
+	UpdateProjectNodeVersionRequestFourteenDotX  UpdateProjectNodeVersionRequest = "14.x"
+	UpdateProjectNodeVersionRequestTwelveDotX    UpdateProjectNodeVersionRequest = "12.x"
+	UpdateProjectNodeVersionRequestTenDotX       UpdateProjectNodeVersionRequest = "10.x"
 )
 
-func (e UpdateProjectNodeVersion) ToPointer() *UpdateProjectNodeVersion {
+func (e UpdateProjectNodeVersionRequest) ToPointer() *UpdateProjectNodeVersionRequest {
 	return &e
 }
-func (e *UpdateProjectNodeVersion) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectNodeVersionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -203,24 +203,24 @@ func (e *UpdateProjectNodeVersion) UnmarshalJSON(data []byte) error {
 	case "12.x":
 		fallthrough
 	case "10.x":
-		*e = UpdateProjectNodeVersion(v)
+		*e = UpdateProjectNodeVersionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectNodeVersion: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectNodeVersionRequest: %v", v)
 	}
 }
 
-type UpdateProjectBuildMachineType string
+type UpdateProjectBuildMachineTypeRequest string
 
 const (
-	UpdateProjectBuildMachineTypeEnhanced UpdateProjectBuildMachineType = "enhanced"
-	UpdateProjectBuildMachineTypeUltra    UpdateProjectBuildMachineType = "ultra"
+	UpdateProjectBuildMachineTypeRequestEnhanced UpdateProjectBuildMachineTypeRequest = "enhanced"
+	UpdateProjectBuildMachineTypeRequestTurbo    UpdateProjectBuildMachineTypeRequest = "turbo"
 )
 
-func (e UpdateProjectBuildMachineType) ToPointer() *UpdateProjectBuildMachineType {
+func (e UpdateProjectBuildMachineTypeRequest) ToPointer() *UpdateProjectBuildMachineTypeRequest {
 	return &e
 }
-func (e *UpdateProjectBuildMachineType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectBuildMachineTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -228,26 +228,26 @@ func (e *UpdateProjectBuildMachineType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "enhanced":
 		fallthrough
-	case "ultra":
-		*e = UpdateProjectBuildMachineType(v)
+	case "turbo":
+		*e = UpdateProjectBuildMachineTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectBuildMachineType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectBuildMachineTypeRequest: %v", v)
 	}
 }
 
-type UpdateProjectFunctionDefaultMemoryType string
+type UpdateProjectFunctionDefaultMemoryTypeRequest string
 
 const (
-	UpdateProjectFunctionDefaultMemoryTypeStandardLegacy UpdateProjectFunctionDefaultMemoryType = "standard_legacy"
-	UpdateProjectFunctionDefaultMemoryTypeStandard       UpdateProjectFunctionDefaultMemoryType = "standard"
-	UpdateProjectFunctionDefaultMemoryTypePerformance    UpdateProjectFunctionDefaultMemoryType = "performance"
+	UpdateProjectFunctionDefaultMemoryTypeRequestStandardLegacy UpdateProjectFunctionDefaultMemoryTypeRequest = "standard_legacy"
+	UpdateProjectFunctionDefaultMemoryTypeRequestStandard       UpdateProjectFunctionDefaultMemoryTypeRequest = "standard"
+	UpdateProjectFunctionDefaultMemoryTypeRequestPerformance    UpdateProjectFunctionDefaultMemoryTypeRequest = "performance"
 )
 
-func (e UpdateProjectFunctionDefaultMemoryType) ToPointer() *UpdateProjectFunctionDefaultMemoryType {
+func (e UpdateProjectFunctionDefaultMemoryTypeRequest) ToPointer() *UpdateProjectFunctionDefaultMemoryTypeRequest {
 	return &e
 }
-func (e *UpdateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectFunctionDefaultMemoryTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -258,87 +258,87 @@ func (e *UpdateProjectFunctionDefaultMemoryType) UnmarshalJSON(data []byte) erro
 	case "standard":
 		fallthrough
 	case "performance":
-		*e = UpdateProjectFunctionDefaultMemoryType(v)
+		*e = UpdateProjectFunctionDefaultMemoryTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectFunctionDefaultMemoryType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectFunctionDefaultMemoryTypeRequest: %v", v)
 	}
 }
 
-// UpdateProjectResourceConfig - Specifies resource override configuration for the project
-type UpdateProjectResourceConfig struct {
-	BuildMachineType *UpdateProjectBuildMachineType `json:"buildMachineType,omitempty"`
-	Fluid            *bool                          `json:"fluid,omitempty"`
+// UpdateProjectResourceConfigRequest - Specifies resource override configuration for the project
+type UpdateProjectResourceConfigRequest struct {
+	BuildMachineType *UpdateProjectBuildMachineTypeRequest `json:"buildMachineType,omitempty"`
+	Fluid            *bool                                 `json:"fluid,omitempty"`
 	// The regions to deploy Vercel Functions to for this project
-	FunctionDefaultRegions    []string                                `json:"functionDefaultRegions,omitempty"`
-	FunctionDefaultTimeout    *float64                                `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType *UpdateProjectFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionDefaultRegions    []string                                       `json:"functionDefaultRegions,omitempty"`
+	FunctionDefaultTimeout    *float64                                       `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType *UpdateProjectFunctionDefaultMemoryTypeRequest `json:"functionDefaultMemoryType,omitempty"`
 	// Specifies whether Zero Config Failover is enabled for this project.
 	FunctionZeroConfigFailover *bool `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool `json:"elasticConcurrencyEnabled,omitempty"`
 }
 
-func (o *UpdateProjectResourceConfig) GetBuildMachineType() *UpdateProjectBuildMachineType {
+func (o *UpdateProjectResourceConfigRequest) GetBuildMachineType() *UpdateProjectBuildMachineTypeRequest {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
 }
 
-func (o *UpdateProjectResourceConfig) GetFluid() *bool {
+func (o *UpdateProjectResourceConfigRequest) GetFluid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Fluid
 }
 
-func (o *UpdateProjectResourceConfig) GetFunctionDefaultRegions() []string {
+func (o *UpdateProjectResourceConfigRequest) GetFunctionDefaultRegions() []string {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultRegions
 }
 
-func (o *UpdateProjectResourceConfig) GetFunctionDefaultTimeout() *float64 {
+func (o *UpdateProjectResourceConfigRequest) GetFunctionDefaultTimeout() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultTimeout
 }
 
-func (o *UpdateProjectResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectFunctionDefaultMemoryType {
+func (o *UpdateProjectResourceConfigRequest) GetFunctionDefaultMemoryType() *UpdateProjectFunctionDefaultMemoryTypeRequest {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultMemoryType
 }
 
-func (o *UpdateProjectResourceConfig) GetFunctionZeroConfigFailover() *bool {
+func (o *UpdateProjectResourceConfigRequest) GetFunctionZeroConfigFailover() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *UpdateProjectResourceConfig) GetElasticConcurrencyEnabled() *bool {
+func (o *UpdateProjectResourceConfigRequest) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
 }
 
-// UpdateProjectIssuerMode - team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
-type UpdateProjectIssuerMode string
+// UpdateProjectIssuerModeRequest - team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
+type UpdateProjectIssuerModeRequest string
 
 const (
-	UpdateProjectIssuerModeTeam   UpdateProjectIssuerMode = "team"
-	UpdateProjectIssuerModeGlobal UpdateProjectIssuerMode = "global"
+	UpdateProjectIssuerModeRequestTeam   UpdateProjectIssuerModeRequest = "team"
+	UpdateProjectIssuerModeRequestGlobal UpdateProjectIssuerModeRequest = "global"
 )
 
-func (e UpdateProjectIssuerMode) ToPointer() *UpdateProjectIssuerMode {
+func (e UpdateProjectIssuerModeRequest) ToPointer() *UpdateProjectIssuerModeRequest {
 	return &e
 }
-func (e *UpdateProjectIssuerMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectIssuerModeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -347,59 +347,61 @@ func (e *UpdateProjectIssuerMode) UnmarshalJSON(data []byte) error {
 	case "team":
 		fallthrough
 	case "global":
-		*e = UpdateProjectIssuerMode(v)
+		*e = UpdateProjectIssuerModeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectIssuerMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectIssuerModeRequest: %v", v)
 	}
 }
 
-// UpdateProjectOidcTokenConfig - OpenID Connect JSON Web Token generation configuration.
-type UpdateProjectOidcTokenConfig struct {
+// UpdateProjectOidcTokenConfigRequest - OpenID Connect JSON Web Token generation configuration.
+type UpdateProjectOidcTokenConfigRequest struct {
 	// Whether or not to generate OpenID Connect JSON Web Tokens.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Enabled *bool `default:"true" json:"enabled"`
 	// team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
-	IssuerMode *UpdateProjectIssuerMode `default:"team" json:"issuerMode"`
+	IssuerMode *UpdateProjectIssuerModeRequest `default:"team" json:"issuerMode"`
 }
 
-func (u UpdateProjectOidcTokenConfig) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectOidcTokenConfigRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateProjectOidcTokenConfig) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectOidcTokenConfigRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateProjectOidcTokenConfig) GetEnabled() *bool {
+func (o *UpdateProjectOidcTokenConfigRequest) GetEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Enabled
 }
 
-func (o *UpdateProjectOidcTokenConfig) GetIssuerMode() *UpdateProjectIssuerMode {
+func (o *UpdateProjectOidcTokenConfigRequest) GetIssuerMode() *UpdateProjectIssuerModeRequest {
 	if o == nil {
 		return nil
 	}
 	return o.IssuerMode
 }
 
-// DeploymentType - Specify if the password will apply to every Deployment Target or just Preview
-type DeploymentType string
+// PasswordProtectionDeploymentType - Specify if the password will apply to every Deployment Target or just Preview
+type PasswordProtectionDeploymentType string
 
 const (
-	DeploymentTypeAll                              DeploymentType = "all"
-	DeploymentTypePreview                          DeploymentType = "preview"
-	DeploymentTypeProdDeploymentUrlsAndAllPreviews DeploymentType = "prod_deployment_urls_and_all_previews"
+	PasswordProtectionDeploymentTypeAll                              PasswordProtectionDeploymentType = "all"
+	PasswordProtectionDeploymentTypePreview                          PasswordProtectionDeploymentType = "preview"
+	PasswordProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews PasswordProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
 )
 
-func (e DeploymentType) ToPointer() *DeploymentType {
+func (e PasswordProtectionDeploymentType) ToPointer() *PasswordProtectionDeploymentType {
 	return &e
 }
-func (e *DeploymentType) UnmarshalJSON(data []byte) error {
+func (e *PasswordProtectionDeploymentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -410,48 +412,48 @@ func (e *DeploymentType) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = DeploymentType(v)
+		*e = PasswordProtectionDeploymentType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DeploymentType: %v", v)
+		return fmt.Errorf("invalid value for PasswordProtectionDeploymentType: %v", v)
 	}
 }
 
-// PasswordProtection - Allows to protect project deployments with a password
-type PasswordProtection struct {
+// PasswordProtectionRequest - Allows to protect project deployments with a password
+type PasswordProtectionRequest struct {
 	// Specify if the password will apply to every Deployment Target or just Preview
-	DeploymentType DeploymentType `json:"deploymentType"`
+	DeploymentType PasswordProtectionDeploymentType `json:"deploymentType"`
 	// The password that will be used to protect Project Deployments
 	Password *string `json:"password,omitempty"`
 }
 
-func (o *PasswordProtection) GetDeploymentType() DeploymentType {
+func (o *PasswordProtectionRequest) GetDeploymentType() PasswordProtectionDeploymentType {
 	if o == nil {
-		return DeploymentType("")
+		return PasswordProtectionDeploymentType("")
 	}
 	return o.DeploymentType
 }
 
-func (o *PasswordProtection) GetPassword() *string {
+func (o *PasswordProtectionRequest) GetPassword() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Password
 }
 
-// UpdateProjectDeploymentType - Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-type UpdateProjectDeploymentType string
+// SsoProtectionDeploymentTypeRequest - Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+type SsoProtectionDeploymentTypeRequest string
 
 const (
-	UpdateProjectDeploymentTypeAll                              UpdateProjectDeploymentType = "all"
-	UpdateProjectDeploymentTypePreview                          UpdateProjectDeploymentType = "preview"
-	UpdateProjectDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectDeploymentType = "prod_deployment_urls_and_all_previews"
+	SsoProtectionDeploymentTypeRequestAll                              SsoProtectionDeploymentTypeRequest = "all"
+	SsoProtectionDeploymentTypeRequestPreview                          SsoProtectionDeploymentTypeRequest = "preview"
+	SsoProtectionDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews SsoProtectionDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
 )
 
-func (e UpdateProjectDeploymentType) ToPointer() *UpdateProjectDeploymentType {
+func (e SsoProtectionDeploymentTypeRequest) ToPointer() *SsoProtectionDeploymentTypeRequest {
 	return &e
 }
-func (e *UpdateProjectDeploymentType) UnmarshalJSON(data []byte) error {
+func (e *SsoProtectionDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -462,51 +464,51 @@ func (e *UpdateProjectDeploymentType) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = UpdateProjectDeploymentType(v)
+		*e = SsoProtectionDeploymentTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectDeploymentType: %v", v)
+		return fmt.Errorf("invalid value for SsoProtectionDeploymentTypeRequest: %v", v)
 	}
 }
 
-// SsoProtection - Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
-type SsoProtection struct {
+// SsoProtectionRequest - Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+type SsoProtectionRequest struct {
 	// Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-	DeploymentType *UpdateProjectDeploymentType `default:"preview" json:"deploymentType"`
+	DeploymentType *SsoProtectionDeploymentTypeRequest `default:"preview" json:"deploymentType"`
 }
 
-func (s SsoProtection) MarshalJSON() ([]byte, error) {
+func (s SsoProtectionRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *SsoProtection) UnmarshalJSON(data []byte) error {
+func (s *SsoProtectionRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SsoProtection) GetDeploymentType() *UpdateProjectDeploymentType {
+func (o *SsoProtectionRequest) GetDeploymentType() *SsoProtectionDeploymentTypeRequest {
 	if o == nil {
 		return nil
 	}
 	return o.DeploymentType
 }
 
-// UpdateProjectProjectsDeploymentType - Specify if the Trusted IPs will apply to every Deployment Target or just Preview
-type UpdateProjectProjectsDeploymentType string
+// TrustedIpsDeploymentTypeRequest - Specify if the Trusted IPs will apply to every Deployment Target or just Preview
+type TrustedIpsDeploymentTypeRequest string
 
 const (
-	UpdateProjectProjectsDeploymentTypeAll                              UpdateProjectProjectsDeploymentType = "all"
-	UpdateProjectProjectsDeploymentTypePreview                          UpdateProjectProjectsDeploymentType = "preview"
-	UpdateProjectProjectsDeploymentTypeProduction                       UpdateProjectProjectsDeploymentType = "production"
-	UpdateProjectProjectsDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectProjectsDeploymentType = "prod_deployment_urls_and_all_previews"
+	TrustedIpsDeploymentTypeRequestAll                              TrustedIpsDeploymentTypeRequest = "all"
+	TrustedIpsDeploymentTypeRequestPreview                          TrustedIpsDeploymentTypeRequest = "preview"
+	TrustedIpsDeploymentTypeRequestProduction                       TrustedIpsDeploymentTypeRequest = "production"
+	TrustedIpsDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews TrustedIpsDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
 )
 
-func (e UpdateProjectProjectsDeploymentType) ToPointer() *UpdateProjectProjectsDeploymentType {
+func (e TrustedIpsDeploymentTypeRequest) ToPointer() *TrustedIpsDeploymentTypeRequest {
 	return &e
 }
-func (e *UpdateProjectProjectsDeploymentType) UnmarshalJSON(data []byte) error {
+func (e *TrustedIpsDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -519,46 +521,46 @@ func (e *UpdateProjectProjectsDeploymentType) UnmarshalJSON(data []byte) error {
 	case "production":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = UpdateProjectProjectsDeploymentType(v)
+		*e = TrustedIpsDeploymentTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsDeploymentType: %v", v)
+		return fmt.Errorf("invalid value for TrustedIpsDeploymentTypeRequest: %v", v)
 	}
 }
 
-type Addresses struct {
+type AddressRequest struct {
 	// The IP addresses that are allowlisted. Supports IPv4 addresses and CIDR notations. IPv6 is not supported
 	Value string `json:"value"`
 	// An optional note explaining what the IP address or subnet is used for
 	Note *string `json:"note,omitempty"`
 }
 
-func (o *Addresses) GetValue() string {
+func (o *AddressRequest) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *Addresses) GetNote() *string {
+func (o *AddressRequest) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-// ProtectionMode - exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
-type ProtectionMode string
+// ProtectionModeRequest - exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
+type ProtectionModeRequest string
 
 const (
-	ProtectionModeExclusive  ProtectionMode = "exclusive"
-	ProtectionModeAdditional ProtectionMode = "additional"
+	ProtectionModeRequestExclusive  ProtectionModeRequest = "exclusive"
+	ProtectionModeRequestAdditional ProtectionModeRequest = "additional"
 )
 
-func (e ProtectionMode) ToPointer() *ProtectionMode {
+func (e ProtectionModeRequest) ToPointer() *ProtectionModeRequest {
 	return &e
 }
-func (e *ProtectionMode) UnmarshalJSON(data []byte) error {
+func (e *ProtectionModeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -567,68 +569,68 @@ func (e *ProtectionMode) UnmarshalJSON(data []byte) error {
 	case "exclusive":
 		fallthrough
 	case "additional":
-		*e = ProtectionMode(v)
+		*e = ProtectionModeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ProtectionMode: %v", v)
+		return fmt.Errorf("invalid value for ProtectionModeRequest: %v", v)
 	}
 }
 
-// TrustedIps - Restricts access to deployments based on the incoming request IP address
-type TrustedIps struct {
+// TrustedIpsRequest - Restricts access to deployments based on the incoming request IP address
+type TrustedIpsRequest struct {
 	// Specify if the Trusted IPs will apply to every Deployment Target or just Preview
-	DeploymentType UpdateProjectProjectsDeploymentType `json:"deploymentType"`
-	Addresses      []Addresses                         `json:"addresses"`
+	DeploymentType TrustedIpsDeploymentTypeRequest `json:"deploymentType"`
+	Addresses      []AddressRequest                `json:"addresses"`
 	// exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
-	ProtectionMode ProtectionMode `json:"protectionMode"`
+	ProtectionMode ProtectionModeRequest `json:"protectionMode"`
 }
 
-func (o *TrustedIps) GetDeploymentType() UpdateProjectProjectsDeploymentType {
+func (o *TrustedIpsRequest) GetDeploymentType() TrustedIpsDeploymentTypeRequest {
 	if o == nil {
-		return UpdateProjectProjectsDeploymentType("")
+		return TrustedIpsDeploymentTypeRequest("")
 	}
 	return o.DeploymentType
 }
 
-func (o *TrustedIps) GetAddresses() []Addresses {
+func (o *TrustedIpsRequest) GetAddresses() []AddressRequest {
 	if o == nil {
-		return []Addresses{}
+		return []AddressRequest{}
 	}
 	return o.Addresses
 }
 
-func (o *TrustedIps) GetProtectionMode() ProtectionMode {
+func (o *TrustedIpsRequest) GetProtectionMode() ProtectionModeRequest {
 	if o == nil {
-		return ProtectionMode("")
+		return ProtectionModeRequest("")
 	}
 	return o.ProtectionMode
 }
 
-type Paths struct {
+type PathRequest struct {
 	// The regex path that should not be protected by Deployment Protection
 	Value string `json:"value"`
 }
 
-func (o *Paths) GetValue() string {
+func (o *PathRequest) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-// OptionsAllowlist - Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
-type OptionsAllowlist struct {
-	Paths []Paths `json:"paths"`
+// OptionsAllowlistRequest - Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
+type OptionsAllowlistRequest struct {
+	Paths []PathRequest `json:"paths"`
 }
 
-func (o *OptionsAllowlist) GetPaths() []Paths {
+func (o *OptionsAllowlistRequest) GetPaths() []PathRequest {
 	if o == nil {
-		return []Paths{}
+		return []PathRequest{}
 	}
 	return o.Paths
 }
 
-type ConnectConfigurations1 struct {
+type ConnectConfigurationRequest struct {
 	// The ID of the environment
 	EnvID string `json:"envId"`
 	// The ID of the Secure Compute network
@@ -639,73 +641,73 @@ type ConnectConfigurations1 struct {
 	BuildsEnabled bool `json:"buildsEnabled"`
 }
 
-func (o *ConnectConfigurations1) GetEnvID() string {
+func (o *ConnectConfigurationRequest) GetEnvID() string {
 	if o == nil {
 		return ""
 	}
 	return o.EnvID
 }
 
-func (o *ConnectConfigurations1) GetConnectConfigurationID() string {
+func (o *ConnectConfigurationRequest) GetConnectConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConnectConfigurationID
 }
 
-func (o *ConnectConfigurations1) GetPassive() bool {
+func (o *ConnectConfigurationRequest) GetPassive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Passive
 }
 
-func (o *ConnectConfigurations1) GetBuildsEnabled() bool {
+func (o *ConnectConfigurationRequest) GetBuildsEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.BuildsEnabled
 }
 
-type ConnectConfigurationsType string
+type ConnectConfigurationType string
 
 const (
-	ConnectConfigurationsTypeConnectConfigurations1 ConnectConfigurationsType = "connectConfigurations_1"
+	ConnectConfigurationTypeConnectConfigurationRequest ConnectConfigurationType = "connectConfiguration_request"
 )
 
-type ConnectConfigurations struct {
-	ConnectConfigurations1 *ConnectConfigurations1
+type ConnectConfiguration struct {
+	ConnectConfigurationRequest *ConnectConfigurationRequest `queryParam:"inline"`
 
-	Type ConnectConfigurationsType
+	Type ConnectConfigurationType
 }
 
-func CreateConnectConfigurationsConnectConfigurations1(connectConfigurations1 ConnectConfigurations1) ConnectConfigurations {
-	typ := ConnectConfigurationsTypeConnectConfigurations1
+func CreateConnectConfigurationConnectConfigurationRequest(connectConfigurationRequest ConnectConfigurationRequest) ConnectConfiguration {
+	typ := ConnectConfigurationTypeConnectConfigurationRequest
 
-	return ConnectConfigurations{
-		ConnectConfigurations1: &connectConfigurations1,
-		Type:                   typ,
+	return ConnectConfiguration{
+		ConnectConfigurationRequest: &connectConfigurationRequest,
+		Type:                        typ,
 	}
 }
 
-func (u *ConnectConfigurations) UnmarshalJSON(data []byte) error {
+func (u *ConnectConfiguration) UnmarshalJSON(data []byte) error {
 
-	var connectConfigurations1 ConnectConfigurations1 = ConnectConfigurations1{}
-	if err := utils.UnmarshalJSON(data, &connectConfigurations1, "", true, true); err == nil {
-		u.ConnectConfigurations1 = &connectConfigurations1
-		u.Type = ConnectConfigurationsTypeConnectConfigurations1
+	var connectConfigurationRequest ConnectConfigurationRequest = ConnectConfigurationRequest{}
+	if err := utils.UnmarshalJSON(data, &connectConfigurationRequest, "", true, true); err == nil {
+		u.ConnectConfigurationRequest = &connectConfigurationRequest
+		u.Type = ConnectConfigurationTypeConnectConfigurationRequest
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ConnectConfigurations", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ConnectConfiguration", string(data))
 }
 
-func (u ConnectConfigurations) MarshalJSON() ([]byte, error) {
-	if u.ConnectConfigurations1 != nil {
-		return utils.MarshalJSON(u.ConnectConfigurations1, "", true)
+func (u ConnectConfiguration) MarshalJSON() ([]byte, error) {
+	if u.ConnectConfigurationRequest != nil {
+		return utils.MarshalJSON(u.ConnectConfigurationRequest, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ConnectConfigurations: all fields are null")
+	return nil, errors.New("could not marshal union type ConnectConfiguration: all fields are null")
 }
 
 type UpdateProjectRequestBody struct {
@@ -721,7 +723,7 @@ type UpdateProjectRequestBody struct {
 	DevCommand       *string `json:"devCommand,omitempty"`
 	DirectoryListing *bool   `json:"directoryListing,omitempty"`
 	// The framework that is being used for this project. When `null` is used no framework is selected
-	Framework *UpdateProjectFramework `json:"framework,omitempty"`
+	Framework *UpdateProjectFrameworkRequest `json:"framework,omitempty"`
 	// Specifies whether PRs from Git forks should require a team member's authorization before it can be deployed
 	GitForkProtection *bool `json:"gitForkProtection,omitempty"`
 	// Specifies whether Git LFS is enabled for this project.
@@ -729,8 +731,8 @@ type UpdateProjectRequestBody struct {
 	// The install command for this project. When `null` is used this value will be automatically detected
 	InstallCommand *string `json:"installCommand,omitempty"`
 	// The desired name for the project
-	Name        *string                   `json:"name,omitempty"`
-	NodeVersion *UpdateProjectNodeVersion `json:"nodeVersion,omitempty"`
+	Name        *string                          `json:"name,omitempty"`
+	NodeVersion *UpdateProjectNodeVersionRequest `json:"nodeVersion,omitempty"`
 	// The output directory of the project. When `null` is used this value will be automatically detected
 	OutputDirectory *string `json:"outputDirectory,omitempty"`
 	// Specifies whether preview deployments are disabled for this project.
@@ -738,7 +740,7 @@ type UpdateProjectRequestBody struct {
 	// Specifies whether the source code and logs of the deployments for this project should be public or not
 	PublicSource *bool `json:"publicSource,omitempty"`
 	// Specifies resource override configuration for the project
-	ResourceConfig *UpdateProjectResourceConfig `json:"resourceConfig,omitempty"`
+	ResourceConfig *UpdateProjectResourceConfigRequest `json:"resourceConfig,omitempty"`
 	// The name of a directory or relative path to the source code of your project. When `null` is used it will default to the project root
 	RootDirectory *string `json:"rootDirectory,omitempty"`
 	// The region to deploy Serverless Functions in this project
@@ -762,17 +764,17 @@ type UpdateProjectRequestBody struct {
 	// Opt-in to skip deployments when there are no changes to the root directory and its dependencies
 	EnableAffectedProjectsDeployments *bool `json:"enableAffectedProjectsDeployments,omitempty"`
 	// OpenID Connect JSON Web Token generation configuration.
-	OidcTokenConfig *UpdateProjectOidcTokenConfig `json:"oidcTokenConfig,omitempty"`
+	OidcTokenConfig *UpdateProjectOidcTokenConfigRequest `json:"oidcTokenConfig,omitempty"`
 	// Allows to protect project deployments with a password
-	PasswordProtection *PasswordProtection `json:"passwordProtection,omitempty"`
+	PasswordProtection *PasswordProtectionRequest `json:"passwordProtection,omitempty"`
 	// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
-	SsoProtection *SsoProtection `json:"ssoProtection,omitempty"`
+	SsoProtection *SsoProtectionRequest `json:"ssoProtection,omitempty"`
 	// Restricts access to deployments based on the incoming request IP address
-	TrustedIps *TrustedIps `json:"trustedIps,omitempty"`
+	TrustedIps *TrustedIpsRequest `json:"trustedIps,omitempty"`
 	// Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
-	OptionsAllowlist *OptionsAllowlist `json:"optionsAllowlist,omitempty"`
+	OptionsAllowlist *OptionsAllowlistRequest `json:"optionsAllowlist,omitempty"`
 	// The list of connections from project environment to Secure Compute network
-	ConnectConfigurations []ConnectConfigurations `json:"connectConfigurations,omitempty"`
+	ConnectConfigurations []ConnectConfiguration `json:"connectConfigurations,omitempty"`
 }
 
 func (o *UpdateProjectRequestBody) GetAutoExposeSystemEnvs() *bool {
@@ -831,7 +833,7 @@ func (o *UpdateProjectRequestBody) GetDirectoryListing() *bool {
 	return o.DirectoryListing
 }
 
-func (o *UpdateProjectRequestBody) GetFramework() *UpdateProjectFramework {
+func (o *UpdateProjectRequestBody) GetFramework() *UpdateProjectFrameworkRequest {
 	if o == nil {
 		return nil
 	}
@@ -866,7 +868,7 @@ func (o *UpdateProjectRequestBody) GetName() *string {
 	return o.Name
 }
 
-func (o *UpdateProjectRequestBody) GetNodeVersion() *UpdateProjectNodeVersion {
+func (o *UpdateProjectRequestBody) GetNodeVersion() *UpdateProjectNodeVersionRequest {
 	if o == nil {
 		return nil
 	}
@@ -894,7 +896,7 @@ func (o *UpdateProjectRequestBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *UpdateProjectRequestBody) GetResourceConfig() *UpdateProjectResourceConfig {
+func (o *UpdateProjectRequestBody) GetResourceConfig() *UpdateProjectResourceConfigRequest {
 	if o == nil {
 		return nil
 	}
@@ -971,42 +973,42 @@ func (o *UpdateProjectRequestBody) GetEnableAffectedProjectsDeployments() *bool 
 	return o.EnableAffectedProjectsDeployments
 }
 
-func (o *UpdateProjectRequestBody) GetOidcTokenConfig() *UpdateProjectOidcTokenConfig {
+func (o *UpdateProjectRequestBody) GetOidcTokenConfig() *UpdateProjectOidcTokenConfigRequest {
 	if o == nil {
 		return nil
 	}
 	return o.OidcTokenConfig
 }
 
-func (o *UpdateProjectRequestBody) GetPasswordProtection() *PasswordProtection {
+func (o *UpdateProjectRequestBody) GetPasswordProtection() *PasswordProtectionRequest {
 	if o == nil {
 		return nil
 	}
 	return o.PasswordProtection
 }
 
-func (o *UpdateProjectRequestBody) GetSsoProtection() *SsoProtection {
+func (o *UpdateProjectRequestBody) GetSsoProtection() *SsoProtectionRequest {
 	if o == nil {
 		return nil
 	}
 	return o.SsoProtection
 }
 
-func (o *UpdateProjectRequestBody) GetTrustedIps() *TrustedIps {
+func (o *UpdateProjectRequestBody) GetTrustedIps() *TrustedIpsRequest {
 	if o == nil {
 		return nil
 	}
 	return o.TrustedIps
 }
 
-func (o *UpdateProjectRequestBody) GetOptionsAllowlist() *OptionsAllowlist {
+func (o *UpdateProjectRequestBody) GetOptionsAllowlist() *OptionsAllowlistRequest {
 	if o == nil {
 		return nil
 	}
 	return o.OptionsAllowlist
 }
 
-func (o *UpdateProjectRequestBody) GetConnectConfigurations() []ConnectConfigurations {
+func (o *UpdateProjectRequestBody) GetConnectConfigurations() []ConnectConfiguration {
 	if o == nil {
 		return nil
 	}
@@ -1161,17 +1163,17 @@ func (o *UpdateProjectSpeedInsights) GetPaidAt() *float64 {
 	return o.PaidAt
 }
 
-type UpdateProjectEnvID2 string
+type UpdateProjectEnvIDEnum string
 
 const (
-	UpdateProjectEnvID2Production UpdateProjectEnvID2 = "production"
-	UpdateProjectEnvID2Preview    UpdateProjectEnvID2 = "preview"
+	UpdateProjectEnvIDEnumProduction UpdateProjectEnvIDEnum = "production"
+	UpdateProjectEnvIDEnumPreview    UpdateProjectEnvIDEnum = "preview"
 )
 
-func (e UpdateProjectEnvID2) ToPointer() *UpdateProjectEnvID2 {
+func (e UpdateProjectEnvIDEnum) ToPointer() *UpdateProjectEnvIDEnum {
 	return &e
 }
-func (e *UpdateProjectEnvID2) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectEnvIDEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1180,74 +1182,74 @@ func (e *UpdateProjectEnvID2) UnmarshalJSON(data []byte) error {
 	case "production":
 		fallthrough
 	case "preview":
-		*e = UpdateProjectEnvID2(v)
+		*e = UpdateProjectEnvIDEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectEnvID2: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectEnvIDEnum: %v", v)
 	}
 }
 
-type UpdateProjectEnvIDType string
+type UpdateProjectEnvIDUnionType string
 
 const (
-	UpdateProjectEnvIDTypeStr                 UpdateProjectEnvIDType = "str"
-	UpdateProjectEnvIDTypeUpdateProjectEnvID2 UpdateProjectEnvIDType = "updateProject_envId_2"
+	UpdateProjectEnvIDUnionTypeStr                    UpdateProjectEnvIDUnionType = "str"
+	UpdateProjectEnvIDUnionTypeUpdateProjectEnvIDEnum UpdateProjectEnvIDUnionType = "updateProject_envId_enum"
 )
 
-type UpdateProjectEnvID struct {
-	Str                 *string
-	UpdateProjectEnvID2 *UpdateProjectEnvID2
+type UpdateProjectEnvIDUnion struct {
+	Str                    *string                 `queryParam:"inline"`
+	UpdateProjectEnvIDEnum *UpdateProjectEnvIDEnum `queryParam:"inline"`
 
-	Type UpdateProjectEnvIDType
+	Type UpdateProjectEnvIDUnionType
 }
 
-func CreateUpdateProjectEnvIDStr(str string) UpdateProjectEnvID {
-	typ := UpdateProjectEnvIDTypeStr
+func CreateUpdateProjectEnvIDUnionStr(str string) UpdateProjectEnvIDUnion {
+	typ := UpdateProjectEnvIDUnionTypeStr
 
-	return UpdateProjectEnvID{
+	return UpdateProjectEnvIDUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectEnvIDUpdateProjectEnvID2(updateProjectEnvID2 UpdateProjectEnvID2) UpdateProjectEnvID {
-	typ := UpdateProjectEnvIDTypeUpdateProjectEnvID2
+func CreateUpdateProjectEnvIDUnionUpdateProjectEnvIDEnum(updateProjectEnvIDEnum UpdateProjectEnvIDEnum) UpdateProjectEnvIDUnion {
+	typ := UpdateProjectEnvIDUnionTypeUpdateProjectEnvIDEnum
 
-	return UpdateProjectEnvID{
-		UpdateProjectEnvID2: &updateProjectEnvID2,
-		Type:                typ,
+	return UpdateProjectEnvIDUnion{
+		UpdateProjectEnvIDEnum: &updateProjectEnvIDEnum,
+		Type:                   typ,
 	}
 }
 
-func (u *UpdateProjectEnvID) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectEnvIDUnion) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateProjectEnvIDTypeStr
+		u.Type = UpdateProjectEnvIDUnionTypeStr
 		return nil
 	}
 
-	var updateProjectEnvID2 UpdateProjectEnvID2 = UpdateProjectEnvID2("")
-	if err := utils.UnmarshalJSON(data, &updateProjectEnvID2, "", true, true); err == nil {
-		u.UpdateProjectEnvID2 = &updateProjectEnvID2
-		u.Type = UpdateProjectEnvIDTypeUpdateProjectEnvID2
+	var updateProjectEnvIDEnum UpdateProjectEnvIDEnum = UpdateProjectEnvIDEnum("")
+	if err := utils.UnmarshalJSON(data, &updateProjectEnvIDEnum, "", true, true); err == nil {
+		u.UpdateProjectEnvIDEnum = &updateProjectEnvIDEnum
+		u.Type = UpdateProjectEnvIDUnionTypeUpdateProjectEnvIDEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectEnvID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectEnvIDUnion", string(data))
 }
 
-func (u UpdateProjectEnvID) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectEnvIDUnion) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UpdateProjectEnvID2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectEnvID2, "", true)
+	if u.UpdateProjectEnvIDEnum != nil {
+		return utils.MarshalJSON(u.UpdateProjectEnvIDEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectEnvID: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectEnvIDUnion: all fields are null")
 }
 
 type UpdateProjectAws struct {
@@ -1269,66 +1271,66 @@ func (o *UpdateProjectAws) GetSecurityGroupID() string {
 	return o.SecurityGroupID
 }
 
-type UpdateProjectConnectConfigurations struct {
-	EnvID                  UpdateProjectEnvID `json:"envId"`
-	ConnectConfigurationID string             `json:"connectConfigurationId"`
-	Passive                bool               `json:"passive"`
-	BuildsEnabled          bool               `json:"buildsEnabled"`
-	Aws                    *UpdateProjectAws  `json:"aws,omitempty"`
-	CreatedAt              float64            `json:"createdAt"`
-	UpdatedAt              float64            `json:"updatedAt"`
+type UpdateProjectConnectConfigurationResponse struct {
+	EnvID                  UpdateProjectEnvIDUnion `json:"envId"`
+	ConnectConfigurationID string                  `json:"connectConfigurationId"`
+	Passive                bool                    `json:"passive"`
+	BuildsEnabled          bool                    `json:"buildsEnabled"`
+	Aws                    *UpdateProjectAws       `json:"aws,omitempty"`
+	CreatedAt              float64                 `json:"createdAt"`
+	UpdatedAt              float64                 `json:"updatedAt"`
 }
 
-func (o *UpdateProjectConnectConfigurations) GetEnvID() UpdateProjectEnvID {
+func (o *UpdateProjectConnectConfigurationResponse) GetEnvID() UpdateProjectEnvIDUnion {
 	if o == nil {
-		return UpdateProjectEnvID{}
+		return UpdateProjectEnvIDUnion{}
 	}
 	return o.EnvID
 }
 
-func (o *UpdateProjectConnectConfigurations) GetConnectConfigurationID() string {
+func (o *UpdateProjectConnectConfigurationResponse) GetConnectConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConnectConfigurationID
 }
 
-func (o *UpdateProjectConnectConfigurations) GetPassive() bool {
+func (o *UpdateProjectConnectConfigurationResponse) GetPassive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Passive
 }
 
-func (o *UpdateProjectConnectConfigurations) GetBuildsEnabled() bool {
+func (o *UpdateProjectConnectConfigurationResponse) GetBuildsEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.BuildsEnabled
 }
 
-func (o *UpdateProjectConnectConfigurations) GetAws() *UpdateProjectAws {
+func (o *UpdateProjectConnectConfigurationResponse) GetAws() *UpdateProjectAws {
 	if o == nil {
 		return nil
 	}
 	return o.Aws
 }
 
-func (o *UpdateProjectConnectConfigurations) GetCreatedAt() float64 {
+func (o *UpdateProjectConnectConfigurationResponse) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectConnectConfigurations) GetUpdatedAt() float64 {
+func (o *UpdateProjectConnectConfigurationResponse) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-type UpdateProjectDefinitions struct {
+type UpdateProjectDefinition struct {
 	// The hostname that should be used.
 	Host string `json:"host"`
 	// The path that should be called for the cronjob.
@@ -1337,21 +1339,21 @@ type UpdateProjectDefinitions struct {
 	Schedule string `json:"schedule"`
 }
 
-func (o *UpdateProjectDefinitions) GetHost() string {
+func (o *UpdateProjectDefinition) GetHost() string {
 	if o == nil {
 		return ""
 	}
 	return o.Host
 }
 
-func (o *UpdateProjectDefinitions) GetPath() string {
+func (o *UpdateProjectDefinition) GetPath() string {
 	if o == nil {
 		return ""
 	}
 	return o.Path
 }
 
-func (o *UpdateProjectDefinitions) GetSchedule() string {
+func (o *UpdateProjectDefinition) GetSchedule() string {
 	if o == nil {
 		return ""
 	}
@@ -1365,8 +1367,8 @@ type UpdateProjectCrons struct {
 	DisabledAt *float64 `json:"disabledAt"`
 	UpdatedAt  float64  `json:"updatedAt"`
 	// The ID of the Deployment from which the definitions originated.
-	DeploymentID *string                    `json:"deploymentId"`
-	Definitions  []UpdateProjectDefinitions `json:"definitions"`
+	DeploymentID *string                   `json:"deploymentId"`
+	Definitions  []UpdateProjectDefinition `json:"definitions"`
 }
 
 func (o *UpdateProjectCrons) GetEnabledAt() float64 {
@@ -1397,9 +1399,9 @@ func (o *UpdateProjectCrons) GetDeploymentID() *string {
 	return o.DeploymentID
 }
 
-func (o *UpdateProjectCrons) GetDefinitions() []UpdateProjectDefinitions {
+func (o *UpdateProjectCrons) GetDefinitions() []UpdateProjectDefinition {
 	if o == nil {
-		return []UpdateProjectDefinitions{}
+		return []UpdateProjectDefinition{}
 	}
 	return o.Definitions
 }
@@ -1474,18 +1476,18 @@ func (o *UpdateProjectDeploymentExpiration) GetDeploymentsToKeep() *float64 {
 	return o.DeploymentsToKeep
 }
 
-type UpdateProjectTarget2 string
+type UpdateProjectTargetEnum string
 
 const (
-	UpdateProjectTarget2Production  UpdateProjectTarget2 = "production"
-	UpdateProjectTarget2Preview     UpdateProjectTarget2 = "preview"
-	UpdateProjectTarget2Development UpdateProjectTarget2 = "development"
+	UpdateProjectTargetEnumProduction  UpdateProjectTargetEnum = "production"
+	UpdateProjectTargetEnumPreview     UpdateProjectTargetEnum = "preview"
+	UpdateProjectTargetEnumDevelopment UpdateProjectTargetEnum = "development"
 )
 
-func (e UpdateProjectTarget2) ToPointer() *UpdateProjectTarget2 {
+func (e UpdateProjectTargetEnum) ToPointer() *UpdateProjectTargetEnum {
 	return &e
 }
-func (e *UpdateProjectTarget2) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTargetEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1496,90 +1498,90 @@ func (e *UpdateProjectTarget2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = UpdateProjectTarget2(v)
+		*e = UpdateProjectTargetEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectTarget2: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTargetEnum: %v", v)
 	}
 }
 
-type UpdateProjectTargetType string
+type UpdateProjectTargetUnionType string
 
 const (
-	UpdateProjectTargetTypeArrayOfStr           UpdateProjectTargetType = "arrayOfStr"
-	UpdateProjectTargetTypeUpdateProjectTarget2 UpdateProjectTargetType = "updateProject_target_2"
+	UpdateProjectTargetUnionTypeArrayOfStr              UpdateProjectTargetUnionType = "arrayOfStr"
+	UpdateProjectTargetUnionTypeUpdateProjectTargetEnum UpdateProjectTargetUnionType = "updateProject_target_enum"
 )
 
-type UpdateProjectTarget struct {
-	ArrayOfStr           []string
-	UpdateProjectTarget2 *UpdateProjectTarget2
+type UpdateProjectTargetUnion struct {
+	ArrayOfStr              []string                 `queryParam:"inline"`
+	UpdateProjectTargetEnum *UpdateProjectTargetEnum `queryParam:"inline"`
 
-	Type UpdateProjectTargetType
+	Type UpdateProjectTargetUnionType
 }
 
-func CreateUpdateProjectTargetArrayOfStr(arrayOfStr []string) UpdateProjectTarget {
-	typ := UpdateProjectTargetTypeArrayOfStr
+func CreateUpdateProjectTargetUnionArrayOfStr(arrayOfStr []string) UpdateProjectTargetUnion {
+	typ := UpdateProjectTargetUnionTypeArrayOfStr
 
-	return UpdateProjectTarget{
+	return UpdateProjectTargetUnion{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateUpdateProjectTargetUpdateProjectTarget2(updateProjectTarget2 UpdateProjectTarget2) UpdateProjectTarget {
-	typ := UpdateProjectTargetTypeUpdateProjectTarget2
+func CreateUpdateProjectTargetUnionUpdateProjectTargetEnum(updateProjectTargetEnum UpdateProjectTargetEnum) UpdateProjectTargetUnion {
+	typ := UpdateProjectTargetUnionTypeUpdateProjectTargetEnum
 
-	return UpdateProjectTarget{
-		UpdateProjectTarget2: &updateProjectTarget2,
-		Type:                 typ,
+	return UpdateProjectTargetUnion{
+		UpdateProjectTargetEnum: &updateProjectTargetEnum,
+		Type:                    typ,
 	}
 }
 
-func (u *UpdateProjectTarget) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = UpdateProjectTargetTypeArrayOfStr
+		u.Type = UpdateProjectTargetUnionTypeArrayOfStr
 		return nil
 	}
 
-	var updateProjectTarget2 UpdateProjectTarget2 = UpdateProjectTarget2("")
-	if err := utils.UnmarshalJSON(data, &updateProjectTarget2, "", true, true); err == nil {
-		u.UpdateProjectTarget2 = &updateProjectTarget2
-		u.Type = UpdateProjectTargetTypeUpdateProjectTarget2
+	var updateProjectTargetEnum UpdateProjectTargetEnum = UpdateProjectTargetEnum("")
+	if err := utils.UnmarshalJSON(data, &updateProjectTargetEnum, "", true, true); err == nil {
+		u.UpdateProjectTargetEnum = &updateProjectTargetEnum
+		u.Type = UpdateProjectTargetUnionTypeUpdateProjectTargetEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectTarget", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectTargetUnion", string(data))
 }
 
-func (u UpdateProjectTarget) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectTargetUnion) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.UpdateProjectTarget2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectTarget2, "", true)
+	if u.UpdateProjectTargetEnum != nil {
+		return utils.MarshalJSON(u.UpdateProjectTargetEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectTarget: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectTargetUnion: all fields are null")
 }
 
-type UpdateProjectType string
+type UpdateProjectEnvType string
 
 const (
-	UpdateProjectTypeSystem    UpdateProjectType = "system"
-	UpdateProjectTypeEncrypted UpdateProjectType = "encrypted"
-	UpdateProjectTypePlain     UpdateProjectType = "plain"
-	UpdateProjectTypeSensitive UpdateProjectType = "sensitive"
-	UpdateProjectTypeSecret    UpdateProjectType = "secret"
+	UpdateProjectEnvTypeSystem    UpdateProjectEnvType = "system"
+	UpdateProjectEnvTypeEncrypted UpdateProjectEnvType = "encrypted"
+	UpdateProjectEnvTypePlain     UpdateProjectEnvType = "plain"
+	UpdateProjectEnvTypeSensitive UpdateProjectEnvType = "sensitive"
+	UpdateProjectEnvTypeSecret    UpdateProjectEnvType = "secret"
 )
 
-func (e UpdateProjectType) ToPointer() *UpdateProjectType {
+func (e UpdateProjectEnvType) ToPointer() *UpdateProjectEnvType {
 	return &e
 }
-func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectEnvType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1594,661 +1596,661 @@ func (e *UpdateProjectType) UnmarshalJSON(data []byte) error {
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = UpdateProjectType(v)
+		*e = UpdateProjectEnvType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectEnvType: %v", v)
 	}
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type string
+type UpdateProjectTypeFlagsConnectionString string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15TypeFlagsConnectionString UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type = "flags-connection-string"
+	UpdateProjectTypeFlagsConnectionStringFlagsConnectionString UpdateProjectTypeFlagsConnectionString = "flags-connection-string"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type {
+func (e UpdateProjectTypeFlagsConnectionString) ToPointer() *UpdateProjectTypeFlagsConnectionString {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeFlagsConnectionString) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-connection-string":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type(v)
+		*e = UpdateProjectTypeFlagsConnectionString(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeFlagsConnectionString: %v", v)
 	}
 }
 
-type UpdateProjectContentHint15 struct {
-	Type      UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type `json:"type"`
-	ProjectID string                                                                          `json:"projectId"`
+type UpdateProjectContentHintFlagsConnectionString struct {
+	Type      UpdateProjectTypeFlagsConnectionString `json:"type"`
+	ProjectID string                                 `json:"projectId"`
 }
 
-func (o *UpdateProjectContentHint15) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type {
+func (o *UpdateProjectContentHintFlagsConnectionString) GetType() UpdateProjectTypeFlagsConnectionString {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type("")
+		return UpdateProjectTypeFlagsConnectionString("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint15) GetProjectID() string {
+func (o *UpdateProjectContentHintFlagsConnectionString) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type string
+type UpdateProjectTypeIntegrationStoreSecret string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14TypeIntegrationStoreSecret UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type = "integration-store-secret"
+	UpdateProjectTypeIntegrationStoreSecretIntegrationStoreSecret UpdateProjectTypeIntegrationStoreSecret = "integration-store-secret"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type {
+func (e UpdateProjectTypeIntegrationStoreSecret) ToPointer() *UpdateProjectTypeIntegrationStoreSecret {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeIntegrationStoreSecret) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-store-secret":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type(v)
+		*e = UpdateProjectTypeIntegrationStoreSecret(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeIntegrationStoreSecret: %v", v)
 	}
 }
 
-type UpdateProjectContentHint14 struct {
-	Type                       UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type `json:"type"`
-	StoreID                    string                                                                          `json:"storeId"`
-	IntegrationID              string                                                                          `json:"integrationId"`
-	IntegrationProductID       string                                                                          `json:"integrationProductId"`
-	IntegrationConfigurationID string                                                                          `json:"integrationConfigurationId"`
+type UpdateProjectContentHintIntegrationStoreSecret struct {
+	Type                       UpdateProjectTypeIntegrationStoreSecret `json:"type"`
+	StoreID                    string                                  `json:"storeId"`
+	IntegrationID              string                                  `json:"integrationId"`
+	IntegrationProductID       string                                  `json:"integrationProductId"`
+	IntegrationConfigurationID string                                  `json:"integrationConfigurationId"`
 }
 
-func (o *UpdateProjectContentHint14) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type {
+func (o *UpdateProjectContentHintIntegrationStoreSecret) GetType() UpdateProjectTypeIntegrationStoreSecret {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type("")
+		return UpdateProjectTypeIntegrationStoreSecret("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint14) GetStoreID() string {
+func (o *UpdateProjectContentHintIntegrationStoreSecret) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-func (o *UpdateProjectContentHint14) GetIntegrationID() string {
+func (o *UpdateProjectContentHintIntegrationStoreSecret) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *UpdateProjectContentHint14) GetIntegrationProductID() string {
+func (o *UpdateProjectContentHintIntegrationStoreSecret) GetIntegrationProductID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationProductID
 }
 
-func (o *UpdateProjectContentHint14) GetIntegrationConfigurationID() string {
+func (o *UpdateProjectContentHintIntegrationStoreSecret) GetIntegrationConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationConfigurationID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type string
+type UpdateProjectTypePostgresURLNoSsl string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13TypePostgresURLNoSsl UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type = "postgres-url-no-ssl"
+	UpdateProjectTypePostgresURLNoSslPostgresURLNoSsl UpdateProjectTypePostgresURLNoSsl = "postgres-url-no-ssl"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type {
+func (e UpdateProjectTypePostgresURLNoSsl) ToPointer() *UpdateProjectTypePostgresURLNoSsl {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresURLNoSsl) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-no-ssl":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type(v)
+		*e = UpdateProjectTypePostgresURLNoSsl(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresURLNoSsl: %v", v)
 	}
 }
 
-type UpdateProjectContentHint13 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type `json:"type"`
-	StoreID string                                                                          `json:"storeId"`
+type UpdateProjectContentHintPostgresURLNoSsl struct {
+	Type    UpdateProjectTypePostgresURLNoSsl `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint13) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type {
+func (o *UpdateProjectContentHintPostgresURLNoSsl) GetType() UpdateProjectTypePostgresURLNoSsl {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type("")
+		return UpdateProjectTypePostgresURLNoSsl("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint13) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresURLNoSsl) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type string
+type UpdateProjectTypePostgresDatabase string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12TypePostgresDatabase UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type = "postgres-database"
+	UpdateProjectTypePostgresDatabasePostgresDatabase UpdateProjectTypePostgresDatabase = "postgres-database"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type {
+func (e UpdateProjectTypePostgresDatabase) ToPointer() *UpdateProjectTypePostgresDatabase {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresDatabase) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-database":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type(v)
+		*e = UpdateProjectTypePostgresDatabase(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresDatabase: %v", v)
 	}
 }
 
-type UpdateProjectContentHint12 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type `json:"type"`
-	StoreID string                                                                          `json:"storeId"`
+type UpdateProjectContentHintPostgresDatabase struct {
+	Type    UpdateProjectTypePostgresDatabase `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint12) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type {
+func (o *UpdateProjectContentHintPostgresDatabase) GetType() UpdateProjectTypePostgresDatabase {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type("")
+		return UpdateProjectTypePostgresDatabase("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint12) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresDatabase) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type string
+type UpdateProjectTypePostgresPassword string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11TypePostgresPassword UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type = "postgres-password"
+	UpdateProjectTypePostgresPasswordPostgresPassword UpdateProjectTypePostgresPassword = "postgres-password"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type {
+func (e UpdateProjectTypePostgresPassword) ToPointer() *UpdateProjectTypePostgresPassword {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresPassword) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-password":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type(v)
+		*e = UpdateProjectTypePostgresPassword(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresPassword: %v", v)
 	}
 }
 
-type UpdateProjectContentHint11 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type `json:"type"`
-	StoreID string                                                                          `json:"storeId"`
+type UpdateProjectContentHintPostgresPassword struct {
+	Type    UpdateProjectTypePostgresPassword `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint11) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type {
+func (o *UpdateProjectContentHintPostgresPassword) GetType() UpdateProjectTypePostgresPassword {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type("")
+		return UpdateProjectTypePostgresPassword("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint11) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresPassword) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type string
+type UpdateProjectTypePostgresHost string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10TypePostgresHost UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type = "postgres-host"
+	UpdateProjectTypePostgresHostPostgresHost UpdateProjectTypePostgresHost = "postgres-host"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type {
+func (e UpdateProjectTypePostgresHost) ToPointer() *UpdateProjectTypePostgresHost {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresHost) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-host":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type(v)
+		*e = UpdateProjectTypePostgresHost(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresHost: %v", v)
 	}
 }
 
-type UpdateProjectContentHint10 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type `json:"type"`
-	StoreID string                                                                          `json:"storeId"`
+type UpdateProjectContentHintPostgresHost struct {
+	Type    UpdateProjectTypePostgresHost `json:"type"`
+	StoreID string                        `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint10) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type {
+func (o *UpdateProjectContentHintPostgresHost) GetType() UpdateProjectTypePostgresHost {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type("")
+		return UpdateProjectTypePostgresHost("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint10) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresHost) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type string
+type UpdateProjectTypePostgresUser string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9TypePostgresUser UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type = "postgres-user"
+	UpdateProjectTypePostgresUserPostgresUser UpdateProjectTypePostgresUser = "postgres-user"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type {
+func (e UpdateProjectTypePostgresUser) ToPointer() *UpdateProjectTypePostgresUser {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresUser) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-user":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type(v)
+		*e = UpdateProjectTypePostgresUser(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresUser: %v", v)
 	}
 }
 
-type UpdateProjectContentHint9 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type `json:"type"`
-	StoreID string                                                                         `json:"storeId"`
+type UpdateProjectContentHintPostgresUser struct {
+	Type    UpdateProjectTypePostgresUser `json:"type"`
+	StoreID string                        `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint9) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type {
+func (o *UpdateProjectContentHintPostgresUser) GetType() UpdateProjectTypePostgresUser {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type("")
+		return UpdateProjectTypePostgresUser("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint9) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresUser) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type string
+type UpdateProjectTypePostgresPrismaURL string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8TypePostgresPrismaURL UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type = "postgres-prisma-url"
+	UpdateProjectTypePostgresPrismaURLPostgresPrismaURL UpdateProjectTypePostgresPrismaURL = "postgres-prisma-url"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type {
+func (e UpdateProjectTypePostgresPrismaURL) ToPointer() *UpdateProjectTypePostgresPrismaURL {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresPrismaURL) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-prisma-url":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type(v)
+		*e = UpdateProjectTypePostgresPrismaURL(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresPrismaURL: %v", v)
 	}
 }
 
-type UpdateProjectContentHint8 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type `json:"type"`
-	StoreID string                                                                         `json:"storeId"`
+type UpdateProjectContentHintPostgresPrismaURL struct {
+	Type    UpdateProjectTypePostgresPrismaURL `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint8) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type {
+func (o *UpdateProjectContentHintPostgresPrismaURL) GetType() UpdateProjectTypePostgresPrismaURL {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type("")
+		return UpdateProjectTypePostgresPrismaURL("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint8) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresPrismaURL) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType string
+type UpdateProjectTypePostgresURLNonPooling string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvTypePostgresURLNonPooling UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType = "postgres-url-non-pooling"
+	UpdateProjectTypePostgresURLNonPoolingPostgresURLNonPooling UpdateProjectTypePostgresURLNonPooling = "postgres-url-non-pooling"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType {
+func (e UpdateProjectTypePostgresURLNonPooling) ToPointer() *UpdateProjectTypePostgresURLNonPooling {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresURLNonPooling) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-non-pooling":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType(v)
+		*e = UpdateProjectTypePostgresURLNonPooling(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresURLNonPooling: %v", v)
 	}
 }
 
-type UpdateProjectContentHint7 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type UpdateProjectContentHintPostgresURLNonPooling struct {
+	Type    UpdateProjectTypePostgresURLNonPooling `json:"type"`
+	StoreID string                                 `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint7) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType {
+func (o *UpdateProjectContentHintPostgresURLNonPooling) GetType() UpdateProjectTypePostgresURLNonPooling {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType("")
+		return UpdateProjectTypePostgresURLNonPooling("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint7) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresURLNonPooling) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType string
+type UpdateProjectTypePostgresURL string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyTypePostgresURL UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType = "postgres-url"
+	UpdateProjectTypePostgresURLPostgresURL UpdateProjectTypePostgresURL = "postgres-url"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType {
+func (e UpdateProjectTypePostgresURL) ToPointer() *UpdateProjectTypePostgresURL {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypePostgresURL) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType(v)
+		*e = UpdateProjectTypePostgresURL(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypePostgresURL: %v", v)
 	}
 }
 
-type UpdateProjectContentHint6 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	StoreID string                                                                     `json:"storeId"`
+type UpdateProjectContentHintPostgresURL struct {
+	Type    UpdateProjectTypePostgresURL `json:"type"`
+	StoreID string                       `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint6) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType {
+func (o *UpdateProjectContentHintPostgresURL) GetType() UpdateProjectTypePostgresURL {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType("")
+		return UpdateProjectTypePostgresURL("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint6) GetStoreID() string {
+func (o *UpdateProjectContentHintPostgresURL) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200ApplicationJSONType string
+type UpdateProjectTypeBlobReadWriteToken string
 
 const (
-	UpdateProjectContentHintProjectsResponse200ApplicationJSONTypeBlobReadWriteToken UpdateProjectContentHintProjectsResponse200ApplicationJSONType = "blob-read-write-token"
+	UpdateProjectTypeBlobReadWriteTokenBlobReadWriteToken UpdateProjectTypeBlobReadWriteToken = "blob-read-write-token"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200ApplicationJSONType) ToPointer() *UpdateProjectContentHintProjectsResponse200ApplicationJSONType {
+func (e UpdateProjectTypeBlobReadWriteToken) ToPointer() *UpdateProjectTypeBlobReadWriteToken {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeBlobReadWriteToken) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "blob-read-write-token":
-		*e = UpdateProjectContentHintProjectsResponse200ApplicationJSONType(v)
+		*e = UpdateProjectTypeBlobReadWriteToken(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeBlobReadWriteToken: %v", v)
 	}
 }
 
-type UpdateProjectContentHint5 struct {
-	Type    UpdateProjectContentHintProjectsResponse200ApplicationJSONType `json:"type"`
-	StoreID string                                                         `json:"storeId"`
+type UpdateProjectContentHintBlobReadWriteToken struct {
+	Type    UpdateProjectTypeBlobReadWriteToken `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint5) GetType() UpdateProjectContentHintProjectsResponse200ApplicationJSONType {
+func (o *UpdateProjectContentHintBlobReadWriteToken) GetType() UpdateProjectTypeBlobReadWriteToken {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200ApplicationJSONType("")
+		return UpdateProjectTypeBlobReadWriteToken("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint5) GetStoreID() string {
+func (o *UpdateProjectContentHintBlobReadWriteToken) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponse200Type string
+type UpdateProjectTypeRedisRestAPIReadOnlyToken string
 
 const (
-	UpdateProjectContentHintProjectsResponse200TypeRedisRestAPIReadOnlyToken UpdateProjectContentHintProjectsResponse200Type = "redis-rest-api-read-only-token"
+	UpdateProjectTypeRedisRestAPIReadOnlyTokenRedisRestAPIReadOnlyToken UpdateProjectTypeRedisRestAPIReadOnlyToken = "redis-rest-api-read-only-token"
 )
 
-func (e UpdateProjectContentHintProjectsResponse200Type) ToPointer() *UpdateProjectContentHintProjectsResponse200Type {
+func (e UpdateProjectTypeRedisRestAPIReadOnlyToken) ToPointer() *UpdateProjectTypeRedisRestAPIReadOnlyToken {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-read-only-token":
-		*e = UpdateProjectContentHintProjectsResponse200Type(v)
+		*e = UpdateProjectTypeRedisRestAPIReadOnlyToken(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeRedisRestAPIReadOnlyToken: %v", v)
 	}
 }
 
-type UpdateProjectContentHint4 struct {
-	Type    UpdateProjectContentHintProjectsResponse200Type `json:"type"`
-	StoreID string                                          `json:"storeId"`
+type UpdateProjectContentHintRedisRestAPIReadOnlyToken struct {
+	Type    UpdateProjectTypeRedisRestAPIReadOnlyToken `json:"type"`
+	StoreID string                                     `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint4) GetType() UpdateProjectContentHintProjectsResponse200Type {
+func (o *UpdateProjectContentHintRedisRestAPIReadOnlyToken) GetType() UpdateProjectTypeRedisRestAPIReadOnlyToken {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponse200Type("")
+		return UpdateProjectTypeRedisRestAPIReadOnlyToken("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint4) GetStoreID() string {
+func (o *UpdateProjectContentHintRedisRestAPIReadOnlyToken) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsResponseType string
+type UpdateProjectTypeRedisRestAPIToken string
 
 const (
-	UpdateProjectContentHintProjectsResponseTypeRedisRestAPIToken UpdateProjectContentHintProjectsResponseType = "redis-rest-api-token"
+	UpdateProjectTypeRedisRestAPITokenRedisRestAPIToken UpdateProjectTypeRedisRestAPIToken = "redis-rest-api-token"
 )
 
-func (e UpdateProjectContentHintProjectsResponseType) ToPointer() *UpdateProjectContentHintProjectsResponseType {
+func (e UpdateProjectTypeRedisRestAPIToken) ToPointer() *UpdateProjectTypeRedisRestAPIToken {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsResponseType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeRedisRestAPIToken) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-token":
-		*e = UpdateProjectContentHintProjectsResponseType(v)
+		*e = UpdateProjectTypeRedisRestAPIToken(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsResponseType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeRedisRestAPIToken: %v", v)
 	}
 }
 
-type UpdateProjectContentHint3 struct {
-	Type    UpdateProjectContentHintProjectsResponseType `json:"type"`
-	StoreID string                                       `json:"storeId"`
+type UpdateProjectContentHintRedisRestAPIToken struct {
+	Type    UpdateProjectTypeRedisRestAPIToken `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint3) GetType() UpdateProjectContentHintProjectsResponseType {
+func (o *UpdateProjectContentHintRedisRestAPIToken) GetType() UpdateProjectTypeRedisRestAPIToken {
 	if o == nil {
-		return UpdateProjectContentHintProjectsResponseType("")
+		return UpdateProjectTypeRedisRestAPIToken("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint3) GetStoreID() string {
+func (o *UpdateProjectContentHintRedisRestAPIToken) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintProjectsType string
+type UpdateProjectTypeRedisRestAPIURL string
 
 const (
-	UpdateProjectContentHintProjectsTypeRedisRestAPIURL UpdateProjectContentHintProjectsType = "redis-rest-api-url"
+	UpdateProjectTypeRedisRestAPIURLRedisRestAPIURL UpdateProjectTypeRedisRestAPIURL = "redis-rest-api-url"
 )
 
-func (e UpdateProjectContentHintProjectsType) ToPointer() *UpdateProjectContentHintProjectsType {
+func (e UpdateProjectTypeRedisRestAPIURL) ToPointer() *UpdateProjectTypeRedisRestAPIURL {
 	return &e
 }
-func (e *UpdateProjectContentHintProjectsType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeRedisRestAPIURL) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-url":
-		*e = UpdateProjectContentHintProjectsType(v)
+		*e = UpdateProjectTypeRedisRestAPIURL(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintProjectsType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeRedisRestAPIURL: %v", v)
 	}
 }
 
-type UpdateProjectContentHint2 struct {
-	Type    UpdateProjectContentHintProjectsType `json:"type"`
-	StoreID string                               `json:"storeId"`
+type UpdateProjectContentHintRedisRestAPIURL struct {
+	Type    UpdateProjectTypeRedisRestAPIURL `json:"type"`
+	StoreID string                           `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint2) GetType() UpdateProjectContentHintProjectsType {
+func (o *UpdateProjectContentHintRedisRestAPIURL) GetType() UpdateProjectTypeRedisRestAPIURL {
 	if o == nil {
-		return UpdateProjectContentHintProjectsType("")
+		return UpdateProjectTypeRedisRestAPIURL("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint2) GetStoreID() string {
+func (o *UpdateProjectContentHintRedisRestAPIURL) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type UpdateProjectContentHintType string
+type UpdateProjectTypeRedisURL string
 
 const (
-	UpdateProjectContentHintTypeRedisURL UpdateProjectContentHintType = "redis-url"
+	UpdateProjectTypeRedisURLRedisURL UpdateProjectTypeRedisURL = "redis-url"
 )
 
-func (e UpdateProjectContentHintType) ToPointer() *UpdateProjectContentHintType {
+func (e UpdateProjectTypeRedisURL) ToPointer() *UpdateProjectTypeRedisURL {
 	return &e
 }
-func (e *UpdateProjectContentHintType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeRedisURL) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-url":
-		*e = UpdateProjectContentHintType(v)
+		*e = UpdateProjectTypeRedisURL(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectContentHintType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeRedisURL: %v", v)
 	}
 }
 
-type UpdateProjectContentHint1 struct {
-	Type    UpdateProjectContentHintType `json:"type"`
-	StoreID string                       `json:"storeId"`
+type UpdateProjectContentHintRedisURL struct {
+	Type    UpdateProjectTypeRedisURL `json:"type"`
+	StoreID string                    `json:"storeId"`
 }
 
-func (o *UpdateProjectContentHint1) GetType() UpdateProjectContentHintType {
+func (o *UpdateProjectContentHintRedisURL) GetType() UpdateProjectTypeRedisURL {
 	if o == nil {
-		return UpdateProjectContentHintType("")
+		return UpdateProjectTypeRedisURL("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectContentHint1) GetStoreID() string {
+func (o *UpdateProjectContentHintRedisURL) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
@@ -2258,385 +2260,385 @@ func (o *UpdateProjectContentHint1) GetStoreID() string {
 type UpdateProjectContentHintUnionType string
 
 const (
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint1  UpdateProjectContentHintUnionType = "updateProject_contentHint_1"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint2  UpdateProjectContentHintUnionType = "updateProject_contentHint_2"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint3  UpdateProjectContentHintUnionType = "updateProject_contentHint_3"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint4  UpdateProjectContentHintUnionType = "updateProject_contentHint_4"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint5  UpdateProjectContentHintUnionType = "updateProject_contentHint_5"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint6  UpdateProjectContentHintUnionType = "updateProject_contentHint_6"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint7  UpdateProjectContentHintUnionType = "updateProject_contentHint_7"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint8  UpdateProjectContentHintUnionType = "updateProject_contentHint_8"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint9  UpdateProjectContentHintUnionType = "updateProject_contentHint_9"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint10 UpdateProjectContentHintUnionType = "updateProject_contentHint_10"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint11 UpdateProjectContentHintUnionType = "updateProject_contentHint_11"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint12 UpdateProjectContentHintUnionType = "updateProject_contentHint_12"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint13 UpdateProjectContentHintUnionType = "updateProject_contentHint_13"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint14 UpdateProjectContentHintUnionType = "updateProject_contentHint_14"
-	UpdateProjectContentHintUnionTypeUpdateProjectContentHint15 UpdateProjectContentHintUnionType = "updateProject_contentHint_15"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisURL                  UpdateProjectContentHintUnionType = "updateProject_contentHint_RedisURL"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIURL           UpdateProjectContentHintUnionType = "updateProject_contentHint_RedisRestAPIURL"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIToken         UpdateProjectContentHintUnionType = "updateProject_contentHint_RedisRestAPIToken"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIReadOnlyToken UpdateProjectContentHintUnionType = "updateProject_contentHint_RedisRestAPIReadOnlyToken"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintBlobReadWriteToken        UpdateProjectContentHintUnionType = "updateProject_contentHint_BlobReadWriteToken"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURL               UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresURL"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNonPooling     UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresURLNonPooling"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPrismaURL         UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresPrismaURL"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresUser              UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresUser"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresHost              UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresHost"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPassword          UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresPassword"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresDatabase          UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresDatabase"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNoSsl          UpdateProjectContentHintUnionType = "updateProject_contentHint_PostgresURLNoSsl"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintIntegrationStoreSecret    UpdateProjectContentHintUnionType = "updateProject_contentHint_IntegrationStoreSecret"
+	UpdateProjectContentHintUnionTypeUpdateProjectContentHintFlagsConnectionString     UpdateProjectContentHintUnionType = "updateProject_contentHint_FlagsConnectionString"
 )
 
-type UpdateProjectContentHint struct {
-	UpdateProjectContentHint1  *UpdateProjectContentHint1
-	UpdateProjectContentHint2  *UpdateProjectContentHint2
-	UpdateProjectContentHint3  *UpdateProjectContentHint3
-	UpdateProjectContentHint4  *UpdateProjectContentHint4
-	UpdateProjectContentHint5  *UpdateProjectContentHint5
-	UpdateProjectContentHint6  *UpdateProjectContentHint6
-	UpdateProjectContentHint7  *UpdateProjectContentHint7
-	UpdateProjectContentHint8  *UpdateProjectContentHint8
-	UpdateProjectContentHint9  *UpdateProjectContentHint9
-	UpdateProjectContentHint10 *UpdateProjectContentHint10
-	UpdateProjectContentHint11 *UpdateProjectContentHint11
-	UpdateProjectContentHint12 *UpdateProjectContentHint12
-	UpdateProjectContentHint13 *UpdateProjectContentHint13
-	UpdateProjectContentHint14 *UpdateProjectContentHint14
-	UpdateProjectContentHint15 *UpdateProjectContentHint15
+type UpdateProjectContentHintUnion struct {
+	UpdateProjectContentHintRedisURL                  *UpdateProjectContentHintRedisURL                  `queryParam:"inline"`
+	UpdateProjectContentHintRedisRestAPIURL           *UpdateProjectContentHintRedisRestAPIURL           `queryParam:"inline"`
+	UpdateProjectContentHintRedisRestAPIToken         *UpdateProjectContentHintRedisRestAPIToken         `queryParam:"inline"`
+	UpdateProjectContentHintRedisRestAPIReadOnlyToken *UpdateProjectContentHintRedisRestAPIReadOnlyToken `queryParam:"inline"`
+	UpdateProjectContentHintBlobReadWriteToken        *UpdateProjectContentHintBlobReadWriteToken        `queryParam:"inline"`
+	UpdateProjectContentHintPostgresURL               *UpdateProjectContentHintPostgresURL               `queryParam:"inline"`
+	UpdateProjectContentHintPostgresURLNonPooling     *UpdateProjectContentHintPostgresURLNonPooling     `queryParam:"inline"`
+	UpdateProjectContentHintPostgresPrismaURL         *UpdateProjectContentHintPostgresPrismaURL         `queryParam:"inline"`
+	UpdateProjectContentHintPostgresUser              *UpdateProjectContentHintPostgresUser              `queryParam:"inline"`
+	UpdateProjectContentHintPostgresHost              *UpdateProjectContentHintPostgresHost              `queryParam:"inline"`
+	UpdateProjectContentHintPostgresPassword          *UpdateProjectContentHintPostgresPassword          `queryParam:"inline"`
+	UpdateProjectContentHintPostgresDatabase          *UpdateProjectContentHintPostgresDatabase          `queryParam:"inline"`
+	UpdateProjectContentHintPostgresURLNoSsl          *UpdateProjectContentHintPostgresURLNoSsl          `queryParam:"inline"`
+	UpdateProjectContentHintIntegrationStoreSecret    *UpdateProjectContentHintIntegrationStoreSecret    `queryParam:"inline"`
+	UpdateProjectContentHintFlagsConnectionString     *UpdateProjectContentHintFlagsConnectionString     `queryParam:"inline"`
 
 	Type UpdateProjectContentHintUnionType
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint1(updateProjectContentHint1 UpdateProjectContentHint1) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint1
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintRedisURL(updateProjectContentHintRedisURL UpdateProjectContentHintRedisURL) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisURL
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint1: &updateProjectContentHint1,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintRedisURL: &updateProjectContentHintRedisURL,
+		Type:                             typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint2(updateProjectContentHint2 UpdateProjectContentHint2) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint2
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintRedisRestAPIURL(updateProjectContentHintRedisRestAPIURL UpdateProjectContentHintRedisRestAPIURL) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIURL
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint2: &updateProjectContentHint2,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintRedisRestAPIURL: &updateProjectContentHintRedisRestAPIURL,
+		Type:                                    typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint3(updateProjectContentHint3 UpdateProjectContentHint3) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint3
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintRedisRestAPIToken(updateProjectContentHintRedisRestAPIToken UpdateProjectContentHintRedisRestAPIToken) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIToken
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint3: &updateProjectContentHint3,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintRedisRestAPIToken: &updateProjectContentHintRedisRestAPIToken,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint4(updateProjectContentHint4 UpdateProjectContentHint4) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint4
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintRedisRestAPIReadOnlyToken(updateProjectContentHintRedisRestAPIReadOnlyToken UpdateProjectContentHintRedisRestAPIReadOnlyToken) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIReadOnlyToken
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint4: &updateProjectContentHint4,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintRedisRestAPIReadOnlyToken: &updateProjectContentHintRedisRestAPIReadOnlyToken,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint5(updateProjectContentHint5 UpdateProjectContentHint5) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint5
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintBlobReadWriteToken(updateProjectContentHintBlobReadWriteToken UpdateProjectContentHintBlobReadWriteToken) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintBlobReadWriteToken
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint5: &updateProjectContentHint5,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintBlobReadWriteToken: &updateProjectContentHintBlobReadWriteToken,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint6(updateProjectContentHint6 UpdateProjectContentHint6) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint6
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresURL(updateProjectContentHintPostgresURL UpdateProjectContentHintPostgresURL) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURL
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint6: &updateProjectContentHint6,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresURL: &updateProjectContentHintPostgresURL,
+		Type:                                typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint7(updateProjectContentHint7 UpdateProjectContentHint7) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint7
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresURLNonPooling(updateProjectContentHintPostgresURLNonPooling UpdateProjectContentHintPostgresURLNonPooling) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNonPooling
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint7: &updateProjectContentHint7,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresURLNonPooling: &updateProjectContentHintPostgresURLNonPooling,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint8(updateProjectContentHint8 UpdateProjectContentHint8) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint8
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresPrismaURL(updateProjectContentHintPostgresPrismaURL UpdateProjectContentHintPostgresPrismaURL) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPrismaURL
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint8: &updateProjectContentHint8,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresPrismaURL: &updateProjectContentHintPostgresPrismaURL,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint9(updateProjectContentHint9 UpdateProjectContentHint9) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint9
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresUser(updateProjectContentHintPostgresUser UpdateProjectContentHintPostgresUser) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresUser
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint9: &updateProjectContentHint9,
-		Type:                      typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresUser: &updateProjectContentHintPostgresUser,
+		Type:                                 typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint10(updateProjectContentHint10 UpdateProjectContentHint10) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint10
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresHost(updateProjectContentHintPostgresHost UpdateProjectContentHintPostgresHost) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresHost
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint10: &updateProjectContentHint10,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresHost: &updateProjectContentHintPostgresHost,
+		Type:                                 typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint11(updateProjectContentHint11 UpdateProjectContentHint11) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint11
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresPassword(updateProjectContentHintPostgresPassword UpdateProjectContentHintPostgresPassword) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPassword
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint11: &updateProjectContentHint11,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresPassword: &updateProjectContentHintPostgresPassword,
+		Type:                                     typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint12(updateProjectContentHint12 UpdateProjectContentHint12) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint12
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresDatabase(updateProjectContentHintPostgresDatabase UpdateProjectContentHintPostgresDatabase) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresDatabase
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint12: &updateProjectContentHint12,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresDatabase: &updateProjectContentHintPostgresDatabase,
+		Type:                                     typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint13(updateProjectContentHint13 UpdateProjectContentHint13) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint13
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintPostgresURLNoSsl(updateProjectContentHintPostgresURLNoSsl UpdateProjectContentHintPostgresURLNoSsl) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNoSsl
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint13: &updateProjectContentHint13,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintPostgresURLNoSsl: &updateProjectContentHintPostgresURLNoSsl,
+		Type:                                     typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint14(updateProjectContentHint14 UpdateProjectContentHint14) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint14
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintIntegrationStoreSecret(updateProjectContentHintIntegrationStoreSecret UpdateProjectContentHintIntegrationStoreSecret) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintIntegrationStoreSecret
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint14: &updateProjectContentHint14,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintIntegrationStoreSecret: &updateProjectContentHintIntegrationStoreSecret,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectContentHintUpdateProjectContentHint15(updateProjectContentHint15 UpdateProjectContentHint15) UpdateProjectContentHint {
-	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHint15
+func CreateUpdateProjectContentHintUnionUpdateProjectContentHintFlagsConnectionString(updateProjectContentHintFlagsConnectionString UpdateProjectContentHintFlagsConnectionString) UpdateProjectContentHintUnion {
+	typ := UpdateProjectContentHintUnionTypeUpdateProjectContentHintFlagsConnectionString
 
-	return UpdateProjectContentHint{
-		UpdateProjectContentHint15: &updateProjectContentHint15,
-		Type:                       typ,
+	return UpdateProjectContentHintUnion{
+		UpdateProjectContentHintFlagsConnectionString: &updateProjectContentHintFlagsConnectionString,
+		Type: typ,
 	}
 }
 
-func (u *UpdateProjectContentHint) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectContentHint7 UpdateProjectContentHint7 = UpdateProjectContentHint7{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint7, "", true, true); err == nil {
-		u.UpdateProjectContentHint7 = &updateProjectContentHint7
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint7
+	var updateProjectContentHintPostgresURLNonPooling UpdateProjectContentHintPostgresURLNonPooling = UpdateProjectContentHintPostgresURLNonPooling{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresURLNonPooling, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresURLNonPooling = &updateProjectContentHintPostgresURLNonPooling
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNonPooling
 		return nil
 	}
 
-	var updateProjectContentHint11 UpdateProjectContentHint11 = UpdateProjectContentHint11{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint11, "", true, true); err == nil {
-		u.UpdateProjectContentHint11 = &updateProjectContentHint11
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint11
+	var updateProjectContentHintPostgresPassword UpdateProjectContentHintPostgresPassword = UpdateProjectContentHintPostgresPassword{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresPassword, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresPassword = &updateProjectContentHintPostgresPassword
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPassword
 		return nil
 	}
 
-	var updateProjectContentHint3 UpdateProjectContentHint3 = UpdateProjectContentHint3{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint3, "", true, true); err == nil {
-		u.UpdateProjectContentHint3 = &updateProjectContentHint3
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint3
+	var updateProjectContentHintRedisRestAPIToken UpdateProjectContentHintRedisRestAPIToken = UpdateProjectContentHintRedisRestAPIToken{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintRedisRestAPIToken, "", true, true); err == nil {
+		u.UpdateProjectContentHintRedisRestAPIToken = &updateProjectContentHintRedisRestAPIToken
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIToken
 		return nil
 	}
 
-	var updateProjectContentHint4 UpdateProjectContentHint4 = UpdateProjectContentHint4{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint4, "", true, true); err == nil {
-		u.UpdateProjectContentHint4 = &updateProjectContentHint4
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint4
+	var updateProjectContentHintRedisRestAPIReadOnlyToken UpdateProjectContentHintRedisRestAPIReadOnlyToken = UpdateProjectContentHintRedisRestAPIReadOnlyToken{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintRedisRestAPIReadOnlyToken, "", true, true); err == nil {
+		u.UpdateProjectContentHintRedisRestAPIReadOnlyToken = &updateProjectContentHintRedisRestAPIReadOnlyToken
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIReadOnlyToken
 		return nil
 	}
 
-	var updateProjectContentHint5 UpdateProjectContentHint5 = UpdateProjectContentHint5{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint5, "", true, true); err == nil {
-		u.UpdateProjectContentHint5 = &updateProjectContentHint5
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint5
+	var updateProjectContentHintBlobReadWriteToken UpdateProjectContentHintBlobReadWriteToken = UpdateProjectContentHintBlobReadWriteToken{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintBlobReadWriteToken, "", true, true); err == nil {
+		u.UpdateProjectContentHintBlobReadWriteToken = &updateProjectContentHintBlobReadWriteToken
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintBlobReadWriteToken
 		return nil
 	}
 
-	var updateProjectContentHint6 UpdateProjectContentHint6 = UpdateProjectContentHint6{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint6, "", true, true); err == nil {
-		u.UpdateProjectContentHint6 = &updateProjectContentHint6
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint6
+	var updateProjectContentHintPostgresURL UpdateProjectContentHintPostgresURL = UpdateProjectContentHintPostgresURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresURL, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresURL = &updateProjectContentHintPostgresURL
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURL
 		return nil
 	}
 
-	var updateProjectContentHint2 UpdateProjectContentHint2 = UpdateProjectContentHint2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint2, "", true, true); err == nil {
-		u.UpdateProjectContentHint2 = &updateProjectContentHint2
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint2
+	var updateProjectContentHintRedisRestAPIURL UpdateProjectContentHintRedisRestAPIURL = UpdateProjectContentHintRedisRestAPIURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintRedisRestAPIURL, "", true, true); err == nil {
+		u.UpdateProjectContentHintRedisRestAPIURL = &updateProjectContentHintRedisRestAPIURL
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisRestAPIURL
 		return nil
 	}
 
-	var updateProjectContentHint9 UpdateProjectContentHint9 = UpdateProjectContentHint9{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint9, "", true, true); err == nil {
-		u.UpdateProjectContentHint9 = &updateProjectContentHint9
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint9
+	var updateProjectContentHintPostgresUser UpdateProjectContentHintPostgresUser = UpdateProjectContentHintPostgresUser{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresUser, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresUser = &updateProjectContentHintPostgresUser
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresUser
 		return nil
 	}
 
-	var updateProjectContentHint1 UpdateProjectContentHint1 = UpdateProjectContentHint1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint1, "", true, true); err == nil {
-		u.UpdateProjectContentHint1 = &updateProjectContentHint1
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint1
+	var updateProjectContentHintRedisURL UpdateProjectContentHintRedisURL = UpdateProjectContentHintRedisURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintRedisURL, "", true, true); err == nil {
+		u.UpdateProjectContentHintRedisURL = &updateProjectContentHintRedisURL
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintRedisURL
 		return nil
 	}
 
-	var updateProjectContentHint10 UpdateProjectContentHint10 = UpdateProjectContentHint10{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint10, "", true, true); err == nil {
-		u.UpdateProjectContentHint10 = &updateProjectContentHint10
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint10
+	var updateProjectContentHintPostgresHost UpdateProjectContentHintPostgresHost = UpdateProjectContentHintPostgresHost{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresHost, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresHost = &updateProjectContentHintPostgresHost
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresHost
 		return nil
 	}
 
-	var updateProjectContentHint8 UpdateProjectContentHint8 = UpdateProjectContentHint8{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint8, "", true, true); err == nil {
-		u.UpdateProjectContentHint8 = &updateProjectContentHint8
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint8
+	var updateProjectContentHintPostgresPrismaURL UpdateProjectContentHintPostgresPrismaURL = UpdateProjectContentHintPostgresPrismaURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresPrismaURL, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresPrismaURL = &updateProjectContentHintPostgresPrismaURL
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresPrismaURL
 		return nil
 	}
 
-	var updateProjectContentHint12 UpdateProjectContentHint12 = UpdateProjectContentHint12{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint12, "", true, true); err == nil {
-		u.UpdateProjectContentHint12 = &updateProjectContentHint12
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint12
+	var updateProjectContentHintPostgresDatabase UpdateProjectContentHintPostgresDatabase = UpdateProjectContentHintPostgresDatabase{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresDatabase, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresDatabase = &updateProjectContentHintPostgresDatabase
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresDatabase
 		return nil
 	}
 
-	var updateProjectContentHint13 UpdateProjectContentHint13 = UpdateProjectContentHint13{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint13, "", true, true); err == nil {
-		u.UpdateProjectContentHint13 = &updateProjectContentHint13
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint13
+	var updateProjectContentHintPostgresURLNoSsl UpdateProjectContentHintPostgresURLNoSsl = UpdateProjectContentHintPostgresURLNoSsl{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintPostgresURLNoSsl, "", true, true); err == nil {
+		u.UpdateProjectContentHintPostgresURLNoSsl = &updateProjectContentHintPostgresURLNoSsl
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintPostgresURLNoSsl
 		return nil
 	}
 
-	var updateProjectContentHint15 UpdateProjectContentHint15 = UpdateProjectContentHint15{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint15, "", true, true); err == nil {
-		u.UpdateProjectContentHint15 = &updateProjectContentHint15
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint15
+	var updateProjectContentHintFlagsConnectionString UpdateProjectContentHintFlagsConnectionString = UpdateProjectContentHintFlagsConnectionString{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintFlagsConnectionString, "", true, true); err == nil {
+		u.UpdateProjectContentHintFlagsConnectionString = &updateProjectContentHintFlagsConnectionString
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintFlagsConnectionString
 		return nil
 	}
 
-	var updateProjectContentHint14 UpdateProjectContentHint14 = UpdateProjectContentHint14{}
-	if err := utils.UnmarshalJSON(data, &updateProjectContentHint14, "", true, true); err == nil {
-		u.UpdateProjectContentHint14 = &updateProjectContentHint14
-		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHint14
+	var updateProjectContentHintIntegrationStoreSecret UpdateProjectContentHintIntegrationStoreSecret = UpdateProjectContentHintIntegrationStoreSecret{}
+	if err := utils.UnmarshalJSON(data, &updateProjectContentHintIntegrationStoreSecret, "", true, true); err == nil {
+		u.UpdateProjectContentHintIntegrationStoreSecret = &updateProjectContentHintIntegrationStoreSecret
+		u.Type = UpdateProjectContentHintUnionTypeUpdateProjectContentHintIntegrationStoreSecret
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectContentHint", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectContentHintUnion", string(data))
 }
 
-func (u UpdateProjectContentHint) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectContentHint1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint1, "", true)
+func (u UpdateProjectContentHintUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectContentHintRedisURL != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintRedisURL, "", true)
 	}
 
-	if u.UpdateProjectContentHint2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint2, "", true)
+	if u.UpdateProjectContentHintRedisRestAPIURL != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintRedisRestAPIURL, "", true)
 	}
 
-	if u.UpdateProjectContentHint3 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint3, "", true)
+	if u.UpdateProjectContentHintRedisRestAPIToken != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintRedisRestAPIToken, "", true)
 	}
 
-	if u.UpdateProjectContentHint4 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint4, "", true)
+	if u.UpdateProjectContentHintRedisRestAPIReadOnlyToken != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintRedisRestAPIReadOnlyToken, "", true)
 	}
 
-	if u.UpdateProjectContentHint5 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint5, "", true)
+	if u.UpdateProjectContentHintBlobReadWriteToken != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintBlobReadWriteToken, "", true)
 	}
 
-	if u.UpdateProjectContentHint6 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint6, "", true)
+	if u.UpdateProjectContentHintPostgresURL != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresURL, "", true)
 	}
 
-	if u.UpdateProjectContentHint7 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint7, "", true)
+	if u.UpdateProjectContentHintPostgresURLNonPooling != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresURLNonPooling, "", true)
 	}
 
-	if u.UpdateProjectContentHint8 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint8, "", true)
+	if u.UpdateProjectContentHintPostgresPrismaURL != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresPrismaURL, "", true)
 	}
 
-	if u.UpdateProjectContentHint9 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint9, "", true)
+	if u.UpdateProjectContentHintPostgresUser != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresUser, "", true)
 	}
 
-	if u.UpdateProjectContentHint10 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint10, "", true)
+	if u.UpdateProjectContentHintPostgresHost != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresHost, "", true)
 	}
 
-	if u.UpdateProjectContentHint11 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint11, "", true)
+	if u.UpdateProjectContentHintPostgresPassword != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresPassword, "", true)
 	}
 
-	if u.UpdateProjectContentHint12 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint12, "", true)
+	if u.UpdateProjectContentHintPostgresDatabase != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresDatabase, "", true)
 	}
 
-	if u.UpdateProjectContentHint13 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint13, "", true)
+	if u.UpdateProjectContentHintPostgresURLNoSsl != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintPostgresURLNoSsl, "", true)
 	}
 
-	if u.UpdateProjectContentHint14 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint14, "", true)
+	if u.UpdateProjectContentHintIntegrationStoreSecret != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintIntegrationStoreSecret, "", true)
 	}
 
-	if u.UpdateProjectContentHint15 != nil {
-		return utils.MarshalJSON(u.UpdateProjectContentHint15, "", true)
+	if u.UpdateProjectContentHintFlagsConnectionString != nil {
+		return utils.MarshalJSON(u.UpdateProjectContentHintFlagsConnectionString, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectContentHint: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectContentHintUnion: all fields are null")
 }
 
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType string
+type UpdateProjectTypeFlagsSecret string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTypeFlagsSecret UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType = "flags-secret"
+	UpdateProjectTypeFlagsSecretFlagsSecret UpdateProjectTypeFlagsSecret = "flags-secret"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType {
+func (e UpdateProjectTypeFlagsSecret) ToPointer() *UpdateProjectTypeFlagsSecret {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeFlagsSecret) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-secret":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType(v)
+		*e = UpdateProjectTypeFlagsSecret(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeFlagsSecret: %v", v)
 	}
 }
 
 // UpdateProjectInternalContentHint - Similar to `contentHints`, but should not be exposed to the user.
 type UpdateProjectInternalContentHint struct {
-	Type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Type UpdateProjectTypeFlagsSecret `json:"type"`
 	// Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
 	EncryptedValue string `json:"encryptedValue"`
 }
 
-func (o *UpdateProjectInternalContentHint) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType {
+func (o *UpdateProjectInternalContentHint) GetType() UpdateProjectTypeFlagsSecret {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType("")
+		return UpdateProjectTypeFlagsSecret("")
 	}
 	return o.Type
 }
@@ -2649,40 +2651,40 @@ func (o *UpdateProjectInternalContentHint) GetEncryptedValue() string {
 }
 
 type UpdateProjectEnv struct {
-	Target *UpdateProjectTarget `json:"target,omitempty"`
-	Type   UpdateProjectType    `json:"type"`
+	Target *UpdateProjectTargetUnion `json:"target,omitempty"`
+	Type   UpdateProjectEnvType      `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                   `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                     `json:"decrypted,omitempty"`
-	Value             string                    `json:"value"`
-	VsmValue          *string                   `json:"vsmValue,omitempty"`
-	ID                *string                   `json:"id,omitempty"`
-	Key               string                    `json:"key"`
-	ConfigurationID   *string                   `json:"configurationId,omitempty"`
-	CreatedAt         *float64                  `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                  `json:"updatedAt,omitempty"`
-	CreatedBy         *string                   `json:"createdBy,omitempty"`
-	UpdatedBy         *string                   `json:"updatedBy,omitempty"`
-	GitBranch         *string                   `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                   `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                   `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *UpdateProjectContentHint `json:"contentHint,omitempty"`
+	SunsetSecretID    *string                        `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                          `json:"decrypted,omitempty"`
+	Value             string                         `json:"value"`
+	VsmValue          *string                        `json:"vsmValue,omitempty"`
+	ID                *string                        `json:"id,omitempty"`
+	Key               string                         `json:"key"`
+	ConfigurationID   *string                        `json:"configurationId,omitempty"`
+	CreatedAt         *float64                       `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                       `json:"updatedAt,omitempty"`
+	CreatedBy         *string                        `json:"createdBy,omitempty"`
+	UpdatedBy         *string                        `json:"updatedBy,omitempty"`
+	GitBranch         *string                        `json:"gitBranch,omitempty"`
+	EdgeConfigID      *string                        `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                        `json:"edgeConfigTokenId,omitempty"`
+	ContentHint       *UpdateProjectContentHintUnion `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
 	InternalContentHint  *UpdateProjectInternalContentHint `json:"internalContentHint,omitempty"`
 	Comment              *string                           `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                          `json:"customEnvironmentIds,omitempty"`
 }
 
-func (o *UpdateProjectEnv) GetTarget() *UpdateProjectTarget {
+func (o *UpdateProjectEnv) GetTarget() *UpdateProjectTargetUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *UpdateProjectEnv) GetType() UpdateProjectType {
+func (o *UpdateProjectEnv) GetType() UpdateProjectEnvType {
 	if o == nil {
-		return UpdateProjectType("")
+		return UpdateProjectEnvType("")
 	}
 	return o.Type
 }
@@ -2785,7 +2787,7 @@ func (o *UpdateProjectEnv) GetEdgeConfigTokenID() *string {
 	return o.EdgeConfigTokenID
 }
 
-func (o *UpdateProjectEnv) GetContentHint() *UpdateProjectContentHint {
+func (o *UpdateProjectEnv) GetContentHint() *UpdateProjectContentHintUnion {
 	if o == nil {
 		return nil
 	}
@@ -2813,19 +2815,19 @@ func (o *UpdateProjectEnv) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
-// UpdateProjectProjectsType - The type of environment (production, preview, or development)
-type UpdateProjectProjectsType string
+// UpdateProjectCustomEnvironmentType - The type of environment (production, preview, or development)
+type UpdateProjectCustomEnvironmentType string
 
 const (
-	UpdateProjectProjectsTypeProduction  UpdateProjectProjectsType = "production"
-	UpdateProjectProjectsTypePreview     UpdateProjectProjectsType = "preview"
-	UpdateProjectProjectsTypeDevelopment UpdateProjectProjectsType = "development"
+	UpdateProjectCustomEnvironmentTypeProduction  UpdateProjectCustomEnvironmentType = "production"
+	UpdateProjectCustomEnvironmentTypePreview     UpdateProjectCustomEnvironmentType = "preview"
+	UpdateProjectCustomEnvironmentTypeDevelopment UpdateProjectCustomEnvironmentType = "development"
 )
 
-func (e UpdateProjectProjectsType) ToPointer() *UpdateProjectProjectsType {
+func (e UpdateProjectCustomEnvironmentType) ToPointer() *UpdateProjectCustomEnvironmentType {
 	return &e
 }
-func (e *UpdateProjectProjectsType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2836,26 +2838,26 @@ func (e *UpdateProjectProjectsType) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = UpdateProjectProjectsType(v)
+		*e = UpdateProjectCustomEnvironmentType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectCustomEnvironmentType: %v", v)
 	}
 }
 
-// UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType - The type of matching to perform
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType string
+// UpdateProjectCustomEnvironmentBranchMatcherType - The type of matching to perform
+type UpdateProjectCustomEnvironmentBranchMatcherType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsTypeEndsWith   UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType = "endsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsTypeStartsWith UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType = "startsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsTypeEquals     UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType = "equals"
+	UpdateProjectCustomEnvironmentBranchMatcherTypeEndsWith   UpdateProjectCustomEnvironmentBranchMatcherType = "endsWith"
+	UpdateProjectCustomEnvironmentBranchMatcherTypeStartsWith UpdateProjectCustomEnvironmentBranchMatcherType = "startsWith"
+	UpdateProjectCustomEnvironmentBranchMatcherTypeEquals     UpdateProjectCustomEnvironmentBranchMatcherType = "equals"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType {
+func (e UpdateProjectCustomEnvironmentBranchMatcherType) ToPointer() *UpdateProjectCustomEnvironmentBranchMatcherType {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectCustomEnvironmentBranchMatcherType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2866,29 +2868,29 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnviro
 	case "startsWith":
 		fallthrough
 	case "equals":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType(v)
+		*e = UpdateProjectCustomEnvironmentBranchMatcherType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectCustomEnvironmentBranchMatcherType: %v", v)
 	}
 }
 
-// UpdateProjectBranchMatcher - Configuration for matching git branches to this environment
-type UpdateProjectBranchMatcher struct {
+// UpdateProjectCustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
+type UpdateProjectCustomEnvironmentBranchMatcher struct {
 	// The type of matching to perform
-	Type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType `json:"type"`
+	Type UpdateProjectCustomEnvironmentBranchMatcherType `json:"type"`
 	// The pattern to match against branch names
 	Pattern string `json:"pattern"`
 }
 
-func (o *UpdateProjectBranchMatcher) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType {
+func (o *UpdateProjectCustomEnvironmentBranchMatcher) GetType() UpdateProjectCustomEnvironmentBranchMatcherType {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType("")
+		return UpdateProjectCustomEnvironmentBranchMatcherType("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectBranchMatcher) GetPattern() string {
+func (o *UpdateProjectCustomEnvironmentBranchMatcher) GetPattern() string {
 	if o == nil {
 		return ""
 	}
@@ -2931,8 +2933,8 @@ func (o *UpdateProjectVerification) GetReason() string {
 	return o.Reason
 }
 
-// UpdateProjectDomains - List of domains associated with this environment
-type UpdateProjectDomains struct {
+// UpdateProjectDomain - List of domains associated with this environment
+type UpdateProjectDomain struct {
 	Name                string   `json:"name"`
 	ApexName            string   `json:"apexName"`
 	ProjectID           string   `json:"projectId"`
@@ -2948,97 +2950,97 @@ type UpdateProjectDomains struct {
 	Verification []UpdateProjectVerification `json:"verification,omitempty"`
 }
 
-func (o *UpdateProjectDomains) GetName() string {
+func (o *UpdateProjectDomain) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateProjectDomains) GetApexName() string {
+func (o *UpdateProjectDomain) GetApexName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ApexName
 }
 
-func (o *UpdateProjectDomains) GetProjectID() string {
+func (o *UpdateProjectDomain) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateProjectDomains) GetRedirect() *string {
+func (o *UpdateProjectDomain) GetRedirect() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateProjectDomains) GetRedirectStatusCode() *float64 {
+func (o *UpdateProjectDomain) GetRedirectStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *UpdateProjectDomains) GetGitBranch() *string {
+func (o *UpdateProjectDomain) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *UpdateProjectDomains) GetCustomEnvironmentID() *string {
+func (o *UpdateProjectDomain) GetCustomEnvironmentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentID
 }
 
-func (o *UpdateProjectDomains) GetUpdatedAt() *float64 {
+func (o *UpdateProjectDomain) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *UpdateProjectDomains) GetCreatedAt() *float64 {
+func (o *UpdateProjectDomain) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDomains) GetVerified() bool {
+func (o *UpdateProjectDomain) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *UpdateProjectDomains) GetVerification() []UpdateProjectVerification {
+func (o *UpdateProjectDomain) GetVerification() []UpdateProjectVerification {
 	if o == nil {
 		return nil
 	}
 	return o.Verification
 }
 
-// UpdateProjectCustomEnvironments - Internal representation of a custom environment with all required properties
-type UpdateProjectCustomEnvironments struct {
+// UpdateProjectCustomEnvironment - Internal representation of a custom environment with all required properties
+type UpdateProjectCustomEnvironment struct {
 	// Unique identifier for the custom environment (format: env_*)
 	ID string `json:"id"`
 	// URL-friendly name of the environment
 	Slug string `json:"slug"`
 	// The type of environment (production, preview, or development)
-	Type UpdateProjectProjectsType `json:"type"`
+	Type UpdateProjectCustomEnvironmentType `json:"type"`
 	// Optional description of the environment's purpose
 	Description *string `json:"description,omitempty"`
 	// Configuration for matching git branches to this environment
-	BranchMatcher *UpdateProjectBranchMatcher `json:"branchMatcher,omitempty"`
+	BranchMatcher *UpdateProjectCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
 	// List of domains associated with this environment
-	Domains []UpdateProjectDomains `json:"domains,omitempty"`
+	Domains []UpdateProjectDomain `json:"domains,omitempty"`
 	// List of aliases for the current deployment
 	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
 	// Timestamp when the environment was created
@@ -3047,124 +3049,124 @@ type UpdateProjectCustomEnvironments struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
-func (o *UpdateProjectCustomEnvironments) GetID() string {
+func (o *UpdateProjectCustomEnvironment) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateProjectCustomEnvironments) GetSlug() string {
+func (o *UpdateProjectCustomEnvironment) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *UpdateProjectCustomEnvironments) GetType() UpdateProjectProjectsType {
+func (o *UpdateProjectCustomEnvironment) GetType() UpdateProjectCustomEnvironmentType {
 	if o == nil {
-		return UpdateProjectProjectsType("")
+		return UpdateProjectCustomEnvironmentType("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectCustomEnvironments) GetDescription() *string {
+func (o *UpdateProjectCustomEnvironment) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *UpdateProjectCustomEnvironments) GetBranchMatcher() *UpdateProjectBranchMatcher {
+func (o *UpdateProjectCustomEnvironment) GetBranchMatcher() *UpdateProjectCustomEnvironmentBranchMatcher {
 	if o == nil {
 		return nil
 	}
 	return o.BranchMatcher
 }
 
-func (o *UpdateProjectCustomEnvironments) GetDomains() []UpdateProjectDomains {
+func (o *UpdateProjectCustomEnvironment) GetDomains() []UpdateProjectDomain {
 	if o == nil {
 		return nil
 	}
 	return o.Domains
 }
 
-func (o *UpdateProjectCustomEnvironments) GetCurrentDeploymentAliases() []string {
+func (o *UpdateProjectCustomEnvironment) GetCurrentDeploymentAliases() []string {
 	if o == nil {
 		return nil
 	}
 	return o.CurrentDeploymentAliases
 }
 
-func (o *UpdateProjectCustomEnvironments) GetCreatedAt() float64 {
+func (o *UpdateProjectCustomEnvironment) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectCustomEnvironments) GetUpdatedAt() float64 {
+func (o *UpdateProjectCustomEnvironment) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-type UpdateProjectProjectsFramework string
+type UpdateProjectFrameworkResponseBody string
 
 const (
-	UpdateProjectProjectsFrameworkBlitzjs        UpdateProjectProjectsFramework = "blitzjs"
-	UpdateProjectProjectsFrameworkNextjs         UpdateProjectProjectsFramework = "nextjs"
-	UpdateProjectProjectsFrameworkGatsby         UpdateProjectProjectsFramework = "gatsby"
-	UpdateProjectProjectsFrameworkRemix          UpdateProjectProjectsFramework = "remix"
-	UpdateProjectProjectsFrameworkReactRouter    UpdateProjectProjectsFramework = "react-router"
-	UpdateProjectProjectsFrameworkAstro          UpdateProjectProjectsFramework = "astro"
-	UpdateProjectProjectsFrameworkHexo           UpdateProjectProjectsFramework = "hexo"
-	UpdateProjectProjectsFrameworkEleventy       UpdateProjectProjectsFramework = "eleventy"
-	UpdateProjectProjectsFrameworkDocusaurus2    UpdateProjectProjectsFramework = "docusaurus-2"
-	UpdateProjectProjectsFrameworkDocusaurus     UpdateProjectProjectsFramework = "docusaurus"
-	UpdateProjectProjectsFrameworkPreact         UpdateProjectProjectsFramework = "preact"
-	UpdateProjectProjectsFrameworkSolidstart1    UpdateProjectProjectsFramework = "solidstart-1"
-	UpdateProjectProjectsFrameworkSolidstart     UpdateProjectProjectsFramework = "solidstart"
-	UpdateProjectProjectsFrameworkDojo           UpdateProjectProjectsFramework = "dojo"
-	UpdateProjectProjectsFrameworkEmber          UpdateProjectProjectsFramework = "ember"
-	UpdateProjectProjectsFrameworkVue            UpdateProjectProjectsFramework = "vue"
-	UpdateProjectProjectsFrameworkScully         UpdateProjectProjectsFramework = "scully"
-	UpdateProjectProjectsFrameworkIonicAngular   UpdateProjectProjectsFramework = "ionic-angular"
-	UpdateProjectProjectsFrameworkAngular        UpdateProjectProjectsFramework = "angular"
-	UpdateProjectProjectsFrameworkPolymer        UpdateProjectProjectsFramework = "polymer"
-	UpdateProjectProjectsFrameworkSvelte         UpdateProjectProjectsFramework = "svelte"
-	UpdateProjectProjectsFrameworkSveltekit      UpdateProjectProjectsFramework = "sveltekit"
-	UpdateProjectProjectsFrameworkSveltekit1     UpdateProjectProjectsFramework = "sveltekit-1"
-	UpdateProjectProjectsFrameworkIonicReact     UpdateProjectProjectsFramework = "ionic-react"
-	UpdateProjectProjectsFrameworkCreateReactApp UpdateProjectProjectsFramework = "create-react-app"
-	UpdateProjectProjectsFrameworkGridsome       UpdateProjectProjectsFramework = "gridsome"
-	UpdateProjectProjectsFrameworkUmijs          UpdateProjectProjectsFramework = "umijs"
-	UpdateProjectProjectsFrameworkSapper         UpdateProjectProjectsFramework = "sapper"
-	UpdateProjectProjectsFrameworkSaber          UpdateProjectProjectsFramework = "saber"
-	UpdateProjectProjectsFrameworkStencil        UpdateProjectProjectsFramework = "stencil"
-	UpdateProjectProjectsFrameworkNuxtjs         UpdateProjectProjectsFramework = "nuxtjs"
-	UpdateProjectProjectsFrameworkRedwoodjs      UpdateProjectProjectsFramework = "redwoodjs"
-	UpdateProjectProjectsFrameworkHugo           UpdateProjectProjectsFramework = "hugo"
-	UpdateProjectProjectsFrameworkJekyll         UpdateProjectProjectsFramework = "jekyll"
-	UpdateProjectProjectsFrameworkBrunch         UpdateProjectProjectsFramework = "brunch"
-	UpdateProjectProjectsFrameworkMiddleman      UpdateProjectProjectsFramework = "middleman"
-	UpdateProjectProjectsFrameworkZola           UpdateProjectProjectsFramework = "zola"
-	UpdateProjectProjectsFrameworkHydrogen       UpdateProjectProjectsFramework = "hydrogen"
-	UpdateProjectProjectsFrameworkVite           UpdateProjectProjectsFramework = "vite"
-	UpdateProjectProjectsFrameworkVitepress      UpdateProjectProjectsFramework = "vitepress"
-	UpdateProjectProjectsFrameworkVuepress       UpdateProjectProjectsFramework = "vuepress"
-	UpdateProjectProjectsFrameworkParcel         UpdateProjectProjectsFramework = "parcel"
-	UpdateProjectProjectsFrameworkFasthtml       UpdateProjectProjectsFramework = "fasthtml"
-	UpdateProjectProjectsFrameworkSanityV3       UpdateProjectProjectsFramework = "sanity-v3"
-	UpdateProjectProjectsFrameworkSanity         UpdateProjectProjectsFramework = "sanity"
-	UpdateProjectProjectsFrameworkStorybook      UpdateProjectProjectsFramework = "storybook"
+	UpdateProjectFrameworkResponseBodyBlitzjs        UpdateProjectFrameworkResponseBody = "blitzjs"
+	UpdateProjectFrameworkResponseBodyNextjs         UpdateProjectFrameworkResponseBody = "nextjs"
+	UpdateProjectFrameworkResponseBodyGatsby         UpdateProjectFrameworkResponseBody = "gatsby"
+	UpdateProjectFrameworkResponseBodyRemix          UpdateProjectFrameworkResponseBody = "remix"
+	UpdateProjectFrameworkResponseBodyReactRouter    UpdateProjectFrameworkResponseBody = "react-router"
+	UpdateProjectFrameworkResponseBodyAstro          UpdateProjectFrameworkResponseBody = "astro"
+	UpdateProjectFrameworkResponseBodyHexo           UpdateProjectFrameworkResponseBody = "hexo"
+	UpdateProjectFrameworkResponseBodyEleventy       UpdateProjectFrameworkResponseBody = "eleventy"
+	UpdateProjectFrameworkResponseBodyDocusaurus2    UpdateProjectFrameworkResponseBody = "docusaurus-2"
+	UpdateProjectFrameworkResponseBodyDocusaurus     UpdateProjectFrameworkResponseBody = "docusaurus"
+	UpdateProjectFrameworkResponseBodyPreact         UpdateProjectFrameworkResponseBody = "preact"
+	UpdateProjectFrameworkResponseBodySolidstart1    UpdateProjectFrameworkResponseBody = "solidstart-1"
+	UpdateProjectFrameworkResponseBodySolidstart     UpdateProjectFrameworkResponseBody = "solidstart"
+	UpdateProjectFrameworkResponseBodyDojo           UpdateProjectFrameworkResponseBody = "dojo"
+	UpdateProjectFrameworkResponseBodyEmber          UpdateProjectFrameworkResponseBody = "ember"
+	UpdateProjectFrameworkResponseBodyVue            UpdateProjectFrameworkResponseBody = "vue"
+	UpdateProjectFrameworkResponseBodyScully         UpdateProjectFrameworkResponseBody = "scully"
+	UpdateProjectFrameworkResponseBodyIonicAngular   UpdateProjectFrameworkResponseBody = "ionic-angular"
+	UpdateProjectFrameworkResponseBodyAngular        UpdateProjectFrameworkResponseBody = "angular"
+	UpdateProjectFrameworkResponseBodyPolymer        UpdateProjectFrameworkResponseBody = "polymer"
+	UpdateProjectFrameworkResponseBodySvelte         UpdateProjectFrameworkResponseBody = "svelte"
+	UpdateProjectFrameworkResponseBodySveltekit      UpdateProjectFrameworkResponseBody = "sveltekit"
+	UpdateProjectFrameworkResponseBodySveltekit1     UpdateProjectFrameworkResponseBody = "sveltekit-1"
+	UpdateProjectFrameworkResponseBodyIonicReact     UpdateProjectFrameworkResponseBody = "ionic-react"
+	UpdateProjectFrameworkResponseBodyCreateReactApp UpdateProjectFrameworkResponseBody = "create-react-app"
+	UpdateProjectFrameworkResponseBodyGridsome       UpdateProjectFrameworkResponseBody = "gridsome"
+	UpdateProjectFrameworkResponseBodyUmijs          UpdateProjectFrameworkResponseBody = "umijs"
+	UpdateProjectFrameworkResponseBodySapper         UpdateProjectFrameworkResponseBody = "sapper"
+	UpdateProjectFrameworkResponseBodySaber          UpdateProjectFrameworkResponseBody = "saber"
+	UpdateProjectFrameworkResponseBodyStencil        UpdateProjectFrameworkResponseBody = "stencil"
+	UpdateProjectFrameworkResponseBodyNuxtjs         UpdateProjectFrameworkResponseBody = "nuxtjs"
+	UpdateProjectFrameworkResponseBodyRedwoodjs      UpdateProjectFrameworkResponseBody = "redwoodjs"
+	UpdateProjectFrameworkResponseBodyHugo           UpdateProjectFrameworkResponseBody = "hugo"
+	UpdateProjectFrameworkResponseBodyJekyll         UpdateProjectFrameworkResponseBody = "jekyll"
+	UpdateProjectFrameworkResponseBodyBrunch         UpdateProjectFrameworkResponseBody = "brunch"
+	UpdateProjectFrameworkResponseBodyMiddleman      UpdateProjectFrameworkResponseBody = "middleman"
+	UpdateProjectFrameworkResponseBodyZola           UpdateProjectFrameworkResponseBody = "zola"
+	UpdateProjectFrameworkResponseBodyHydrogen       UpdateProjectFrameworkResponseBody = "hydrogen"
+	UpdateProjectFrameworkResponseBodyVite           UpdateProjectFrameworkResponseBody = "vite"
+	UpdateProjectFrameworkResponseBodyVitepress      UpdateProjectFrameworkResponseBody = "vitepress"
+	UpdateProjectFrameworkResponseBodyVuepress       UpdateProjectFrameworkResponseBody = "vuepress"
+	UpdateProjectFrameworkResponseBodyParcel         UpdateProjectFrameworkResponseBody = "parcel"
+	UpdateProjectFrameworkResponseBodyFasthtml       UpdateProjectFrameworkResponseBody = "fasthtml"
+	UpdateProjectFrameworkResponseBodySanityV3       UpdateProjectFrameworkResponseBody = "sanity-v3"
+	UpdateProjectFrameworkResponseBodySanity         UpdateProjectFrameworkResponseBody = "sanity"
+	UpdateProjectFrameworkResponseBodyStorybook      UpdateProjectFrameworkResponseBody = "storybook"
 )
 
-func (e UpdateProjectProjectsFramework) ToPointer() *UpdateProjectProjectsFramework {
+func (e UpdateProjectFrameworkResponseBody) ToPointer() *UpdateProjectFrameworkResponseBody {
 	return &e
 }
-func (e *UpdateProjectProjectsFramework) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3261,30 +3263,1677 @@ func (e *UpdateProjectProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
-		*e = UpdateProjectProjectsFramework(v)
+		*e = UpdateProjectFrameworkResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsFramework: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectFrameworkResponseBody: %v", v)
 	}
 }
 
-type UpdateProjectIPBuckets struct {
+type UpdateProjectIPBucket struct {
 	Bucket       string   `json:"bucket"`
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
-func (o *UpdateProjectIPBuckets) GetBucket() string {
+func (o *UpdateProjectIPBucket) GetBucket() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bucket
 }
 
-func (o *UpdateProjectIPBuckets) GetSupportUntil() *float64 {
+func (o *UpdateProjectIPBucket) GetSupportUntil() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SupportUntil
+}
+
+type UpdateProjectLatestDeployment struct {
+	ID                     string                             `json:"id"`
+	Alias                  []string                           `json:"alias,omitempty"`
+	AliasAssigned          *UpdateProjectAliasAssigned        `json:"aliasAssigned,omitempty"`
+	AliasError             *UpdateProjectAliasError           `json:"aliasError,omitempty"`
+	AliasFinal             *string                            `json:"aliasFinal,omitempty"`
+	AutomaticAliases       []string                           `json:"automaticAliases,omitempty"`
+	BranchMatcher          *UpdateProjectBranchMatcherLambdas `json:"branchMatcher,omitempty"`
+	BuildingAt             *float64                           `json:"buildingAt,omitempty"`
+	Builds                 []UpdateProjectBuild               `json:"builds,omitempty"`
+	ChecksConclusion       *UpdateProjectChecksConclusion     `json:"checksConclusion,omitempty"`
+	ChecksState            *UpdateProjectChecksState          `json:"checksState,omitempty"`
+	ConnectBuildsEnabled   *bool                              `json:"connectBuildsEnabled,omitempty"`
+	ConnectConfigurationID *string                            `json:"connectConfigurationId,omitempty"`
+	CreatedAt              float64                            `json:"createdAt"`
+	CreatedIn              string                             `json:"createdIn"`
+	Creator                *UpdateProjectCreator              `json:"creator"`
+	DeletedAt              *float64                           `json:"deletedAt,omitempty"`
+	DeploymentHostname     string                             `json:"deploymentHostname"`
+	Forced                 *bool                              `json:"forced,omitempty"`
+	Name                   string                             `json:"name"`
+	Meta                   map[string]string                  `json:"meta,omitempty"`
+	MonorepoManager        *string                            `json:"monorepoManager,omitempty"`
+	OidcTokenClaims        *UpdateProjectOidcTokenClaims      `json:"oidcTokenClaims,omitempty"`
+	Plan                   UpdateProjectPlan                  `json:"plan"`
+	// Whether or not preview comments are enabled for the deployment
+	PreviewCommentsEnabled *bool                       `json:"previewCommentsEnabled,omitempty"`
+	Private                bool                        `json:"private"`
+	ReadyAt                *float64                    `json:"readyAt,omitempty"`
+	ReadyState             UpdateProjectReadyState     `json:"readyState"`
+	ReadySubstate          *UpdateProjectReadySubstate `json:"readySubstate,omitempty"`
+	RequestedAt            *float64                    `json:"requestedAt,omitempty"`
+	Target                 *string                     `json:"target,omitempty"`
+	TeamID                 *string                     `json:"teamId,omitempty"`
+	Type                   UpdateProjectTypeLambdas    `json:"type"`
+	URL                    string                      `json:"url"`
+	UserID                 string                      `json:"userId"`
+	WithCache              *bool                       `json:"withCache,omitempty"`
+}
+
+func (o *UpdateProjectLatestDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectLatestDeployment) GetAlias() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *UpdateProjectLatestDeployment) GetAliasAssigned() *UpdateProjectAliasAssigned {
+	if o == nil {
+		return nil
+	}
+	return o.AliasAssigned
+}
+
+func (o *UpdateProjectLatestDeployment) GetAliasError() *UpdateProjectAliasError {
+	if o == nil {
+		return nil
+	}
+	return o.AliasError
+}
+
+func (o *UpdateProjectLatestDeployment) GetAliasFinal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AliasFinal
+}
+
+func (o *UpdateProjectLatestDeployment) GetAutomaticAliases() []string {
+	if o == nil {
+		return nil
+	}
+	return o.AutomaticAliases
+}
+
+func (o *UpdateProjectLatestDeployment) GetBranchMatcher() *UpdateProjectBranchMatcherLambdas {
+	if o == nil {
+		return nil
+	}
+	return o.BranchMatcher
+}
+
+func (o *UpdateProjectLatestDeployment) GetBuildingAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildingAt
+}
+
+func (o *UpdateProjectLatestDeployment) GetBuilds() []UpdateProjectBuild {
+	if o == nil {
+		return nil
+	}
+	return o.Builds
+}
+
+func (o *UpdateProjectLatestDeployment) GetChecksConclusion() *UpdateProjectChecksConclusion {
+	if o == nil {
+		return nil
+	}
+	return o.ChecksConclusion
+}
+
+func (o *UpdateProjectLatestDeployment) GetChecksState() *UpdateProjectChecksState {
+	if o == nil {
+		return nil
+	}
+	return o.ChecksState
+}
+
+func (o *UpdateProjectLatestDeployment) GetConnectBuildsEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectBuildsEnabled
+}
+
+func (o *UpdateProjectLatestDeployment) GetConnectConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurationID
+}
+
+func (o *UpdateProjectLatestDeployment) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectLatestDeployment) GetCreatedIn() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedIn
+}
+
+func (o *UpdateProjectLatestDeployment) GetCreator() *UpdateProjectCreator {
+	if o == nil {
+		return nil
+	}
+	return o.Creator
+}
+
+func (o *UpdateProjectLatestDeployment) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *UpdateProjectLatestDeployment) GetDeploymentHostname() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentHostname
+}
+
+func (o *UpdateProjectLatestDeployment) GetForced() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Forced
+}
+
+func (o *UpdateProjectLatestDeployment) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectLatestDeployment) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *UpdateProjectLatestDeployment) GetMonorepoManager() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MonorepoManager
+}
+
+func (o *UpdateProjectLatestDeployment) GetOidcTokenClaims() *UpdateProjectOidcTokenClaims {
+	if o == nil {
+		return nil
+	}
+	return o.OidcTokenClaims
+}
+
+func (o *UpdateProjectLatestDeployment) GetPlan() UpdateProjectPlan {
+	if o == nil {
+		return UpdateProjectPlan("")
+	}
+	return o.Plan
+}
+
+func (o *UpdateProjectLatestDeployment) GetPreviewCommentsEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewCommentsEnabled
+}
+
+func (o *UpdateProjectLatestDeployment) GetPrivate() bool {
+	if o == nil {
+		return false
+	}
+	return o.Private
+}
+
+func (o *UpdateProjectLatestDeployment) GetReadyAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ReadyAt
+}
+
+func (o *UpdateProjectLatestDeployment) GetReadyState() UpdateProjectReadyState {
+	if o == nil {
+		return UpdateProjectReadyState("")
+	}
+	return o.ReadyState
+}
+
+func (o *UpdateProjectLatestDeployment) GetReadySubstate() *UpdateProjectReadySubstate {
+	if o == nil {
+		return nil
+	}
+	return o.ReadySubstate
+}
+
+func (o *UpdateProjectLatestDeployment) GetRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestedAt
+}
+
+func (o *UpdateProjectLatestDeployment) GetTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *UpdateProjectLatestDeployment) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *UpdateProjectLatestDeployment) GetType() UpdateProjectTypeLambdas {
+	if o == nil {
+		return UpdateProjectTypeLambdas("")
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectLatestDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *UpdateProjectLatestDeployment) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *UpdateProjectLatestDeployment) GetWithCache() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WithCache
+}
+
+type UpdateProjectTypeGithubCustomHost string
+
+const (
+	UpdateProjectTypeGithubCustomHostGithubCustomHost UpdateProjectTypeGithubCustomHost = "github-custom-host"
+)
+
+func (e UpdateProjectTypeGithubCustomHost) ToPointer() *UpdateProjectTypeGithubCustomHost {
+	return &e
+}
+func (e *UpdateProjectTypeGithubCustomHost) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = UpdateProjectTypeGithubCustomHost(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectTypeGithubCustomHost: %v", v)
+	}
+}
+
+type UpdateProjectDeployHook4 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDeployHook4) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDeployHook4) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDeployHook4) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDeployHook4) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDeployHook4) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UpdateProjectLinkGithubCustomHost struct {
+	Org *string `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                           `json:"repoOwnerId,omitempty"`
+	Repo             *string                            `json:"repo,omitempty"`
+	RepoID           *float64                           `json:"repoId,omitempty"`
+	Type             *UpdateProjectTypeGithubCustomHost `json:"type,omitempty"`
+	Host             *string                            `json:"host,omitempty"`
+	CreatedAt        *float64                           `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDeployHook4         `json:"deployHooks"`
+	GitCredentialID  *string                            `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                           `json:"updatedAt,omitempty"`
+	Sourceless       *bool                              `json:"sourceless,omitempty"`
+	ProductionBranch *string                            `json:"productionBranch,omitempty"`
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetType() *UpdateProjectTypeGithubCustomHost {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetHost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Host
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetDeployHooks() []UpdateProjectDeployHook4 {
+	if o == nil {
+		return []UpdateProjectDeployHook4{}
+	}
+	return o.DeployHooks
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *UpdateProjectLinkGithubCustomHost) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type UpdateProjectTypeBitbucket string
+
+const (
+	UpdateProjectTypeBitbucketBitbucket UpdateProjectTypeBitbucket = "bitbucket"
+)
+
+func (e UpdateProjectTypeBitbucket) ToPointer() *UpdateProjectTypeBitbucket {
+	return &e
+}
+func (e *UpdateProjectTypeBitbucket) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = UpdateProjectTypeBitbucket(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectTypeBitbucket: %v", v)
+	}
+}
+
+type UpdateProjectDeployHook3 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDeployHook3) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDeployHook3) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDeployHook3) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDeployHook3) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDeployHook3) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UpdateProjectLinkBitbucket struct {
+	Name             *string                     `json:"name,omitempty"`
+	Slug             *string                     `json:"slug,omitempty"`
+	Owner            *string                     `json:"owner,omitempty"`
+	Type             *UpdateProjectTypeBitbucket `json:"type,omitempty"`
+	UUID             *string                     `json:"uuid,omitempty"`
+	WorkspaceUUID    *string                     `json:"workspaceUuid,omitempty"`
+	CreatedAt        *float64                    `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDeployHook3  `json:"deployHooks"`
+	GitCredentialID  *string                     `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                    `json:"updatedAt,omitempty"`
+	Sourceless       *bool                       `json:"sourceless,omitempty"`
+	ProductionBranch *string                     `json:"productionBranch,omitempty"`
+}
+
+func (o *UpdateProjectLinkBitbucket) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectLinkBitbucket) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *UpdateProjectLinkBitbucket) GetOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Owner
+}
+
+func (o *UpdateProjectLinkBitbucket) GetType() *UpdateProjectTypeBitbucket {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectLinkBitbucket) GetUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UUID
+}
+
+func (o *UpdateProjectLinkBitbucket) GetWorkspaceUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *UpdateProjectLinkBitbucket) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectLinkBitbucket) GetDeployHooks() []UpdateProjectDeployHook3 {
+	if o == nil {
+		return []UpdateProjectDeployHook3{}
+	}
+	return o.DeployHooks
+}
+
+func (o *UpdateProjectLinkBitbucket) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *UpdateProjectLinkBitbucket) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectLinkBitbucket) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *UpdateProjectLinkBitbucket) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type UpdateProjectTypeGitlab string
+
+const (
+	UpdateProjectTypeGitlabGitlab UpdateProjectTypeGitlab = "gitlab"
+)
+
+func (e UpdateProjectTypeGitlab) ToPointer() *UpdateProjectTypeGitlab {
+	return &e
+}
+func (e *UpdateProjectTypeGitlab) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = UpdateProjectTypeGitlab(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectTypeGitlab: %v", v)
+	}
+}
+
+type UpdateProjectDeployHook2 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDeployHook2) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDeployHook2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDeployHook2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDeployHook2) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDeployHook2) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UpdateProjectLinkGitlab struct {
+	ProjectID                *string `json:"projectId,omitempty"`
+	ProjectName              *string `json:"projectName,omitempty"`
+	ProjectNameWithNamespace *string `json:"projectNameWithNamespace,omitempty"`
+	ProjectNamespace         *string `json:"projectNamespace,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
+	ProjectOwnerID   *float64                   `json:"projectOwnerId,omitempty"`
+	ProjectURL       *string                    `json:"projectUrl,omitempty"`
+	Type             *UpdateProjectTypeGitlab   `json:"type,omitempty"`
+	CreatedAt        *float64                   `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDeployHook2 `json:"deployHooks"`
+	GitCredentialID  *string                    `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
+	Sourceless       *bool                      `json:"sourceless,omitempty"`
+	ProductionBranch *string                    `json:"productionBranch,omitempty"`
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectName
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectNameWithNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectNameWithNamespace
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectNamespace
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOwnerID
+}
+
+func (o *UpdateProjectLinkGitlab) GetProjectURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectURL
+}
+
+func (o *UpdateProjectLinkGitlab) GetType() *UpdateProjectTypeGitlab {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectLinkGitlab) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectLinkGitlab) GetDeployHooks() []UpdateProjectDeployHook2 {
+	if o == nil {
+		return []UpdateProjectDeployHook2{}
+	}
+	return o.DeployHooks
+}
+
+func (o *UpdateProjectLinkGitlab) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *UpdateProjectLinkGitlab) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectLinkGitlab) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *UpdateProjectLinkGitlab) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type UpdateProjectTypeGithub string
+
+const (
+	UpdateProjectTypeGithubGithub UpdateProjectTypeGithub = "github"
+)
+
+func (e UpdateProjectTypeGithub) ToPointer() *UpdateProjectTypeGithub {
+	return &e
+}
+func (e *UpdateProjectTypeGithub) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		*e = UpdateProjectTypeGithub(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectTypeGithub: %v", v)
+	}
+}
+
+type UpdateProjectDeployHook1 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDeployHook1) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDeployHook1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDeployHook1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDeployHook1) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDeployHook1) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UpdateProjectLinkGithub struct {
+	Org *string `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                   `json:"repoOwnerId,omitempty"`
+	Repo             *string                    `json:"repo,omitempty"`
+	RepoID           *float64                   `json:"repoId,omitempty"`
+	Type             *UpdateProjectTypeGithub   `json:"type,omitempty"`
+	CreatedAt        *float64                   `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDeployHook1 `json:"deployHooks"`
+	GitCredentialID  *string                    `json:"gitCredentialId,omitempty"`
+	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
+	Sourceless       *bool                      `json:"sourceless,omitempty"`
+	ProductionBranch *string                    `json:"productionBranch,omitempty"`
+}
+
+func (o *UpdateProjectLinkGithub) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *UpdateProjectLinkGithub) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *UpdateProjectLinkGithub) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *UpdateProjectLinkGithub) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *UpdateProjectLinkGithub) GetType() *UpdateProjectTypeGithub {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectLinkGithub) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectLinkGithub) GetDeployHooks() []UpdateProjectDeployHook1 {
+	if o == nil {
+		return []UpdateProjectDeployHook1{}
+	}
+	return o.DeployHooks
+}
+
+func (o *UpdateProjectLinkGithub) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *UpdateProjectLinkGithub) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectLinkGithub) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *UpdateProjectLinkGithub) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type UpdateProjectLinkUnionType string
+
+const (
+	UpdateProjectLinkUnionTypeUpdateProjectLinkGithub           UpdateProjectLinkUnionType = "updateProject_link_Github"
+	UpdateProjectLinkUnionTypeUpdateProjectLinkGitlab           UpdateProjectLinkUnionType = "updateProject_link_Gitlab"
+	UpdateProjectLinkUnionTypeUpdateProjectLinkBitbucket        UpdateProjectLinkUnionType = "updateProject_link_Bitbucket"
+	UpdateProjectLinkUnionTypeUpdateProjectLinkGithubCustomHost UpdateProjectLinkUnionType = "updateProject_link_GithubCustomHost"
+)
+
+type UpdateProjectLinkUnion struct {
+	UpdateProjectLinkGithub           *UpdateProjectLinkGithub           `queryParam:"inline"`
+	UpdateProjectLinkGitlab           *UpdateProjectLinkGitlab           `queryParam:"inline"`
+	UpdateProjectLinkBitbucket        *UpdateProjectLinkBitbucket        `queryParam:"inline"`
+	UpdateProjectLinkGithubCustomHost *UpdateProjectLinkGithubCustomHost `queryParam:"inline"`
+
+	Type UpdateProjectLinkUnionType
+}
+
+func CreateUpdateProjectLinkUnionUpdateProjectLinkGithub(updateProjectLinkGithub UpdateProjectLinkGithub) UpdateProjectLinkUnion {
+	typ := UpdateProjectLinkUnionTypeUpdateProjectLinkGithub
+
+	return UpdateProjectLinkUnion{
+		UpdateProjectLinkGithub: &updateProjectLinkGithub,
+		Type:                    typ,
+	}
+}
+
+func CreateUpdateProjectLinkUnionUpdateProjectLinkGitlab(updateProjectLinkGitlab UpdateProjectLinkGitlab) UpdateProjectLinkUnion {
+	typ := UpdateProjectLinkUnionTypeUpdateProjectLinkGitlab
+
+	return UpdateProjectLinkUnion{
+		UpdateProjectLinkGitlab: &updateProjectLinkGitlab,
+		Type:                    typ,
+	}
+}
+
+func CreateUpdateProjectLinkUnionUpdateProjectLinkBitbucket(updateProjectLinkBitbucket UpdateProjectLinkBitbucket) UpdateProjectLinkUnion {
+	typ := UpdateProjectLinkUnionTypeUpdateProjectLinkBitbucket
+
+	return UpdateProjectLinkUnion{
+		UpdateProjectLinkBitbucket: &updateProjectLinkBitbucket,
+		Type:                       typ,
+	}
+}
+
+func CreateUpdateProjectLinkUnionUpdateProjectLinkGithubCustomHost(updateProjectLinkGithubCustomHost UpdateProjectLinkGithubCustomHost) UpdateProjectLinkUnion {
+	typ := UpdateProjectLinkUnionTypeUpdateProjectLinkGithubCustomHost
+
+	return UpdateProjectLinkUnion{
+		UpdateProjectLinkGithubCustomHost: &updateProjectLinkGithubCustomHost,
+		Type:                              typ,
+	}
+}
+
+func (u *UpdateProjectLinkUnion) UnmarshalJSON(data []byte) error {
+
+	var updateProjectLinkGithub UpdateProjectLinkGithub = UpdateProjectLinkGithub{}
+	if err := utils.UnmarshalJSON(data, &updateProjectLinkGithub, "", true, true); err == nil {
+		u.UpdateProjectLinkGithub = &updateProjectLinkGithub
+		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLinkGithub
+		return nil
+	}
+
+	var updateProjectLinkBitbucket UpdateProjectLinkBitbucket = UpdateProjectLinkBitbucket{}
+	if err := utils.UnmarshalJSON(data, &updateProjectLinkBitbucket, "", true, true); err == nil {
+		u.UpdateProjectLinkBitbucket = &updateProjectLinkBitbucket
+		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLinkBitbucket
+		return nil
+	}
+
+	var updateProjectLinkGithubCustomHost UpdateProjectLinkGithubCustomHost = UpdateProjectLinkGithubCustomHost{}
+	if err := utils.UnmarshalJSON(data, &updateProjectLinkGithubCustomHost, "", true, true); err == nil {
+		u.UpdateProjectLinkGithubCustomHost = &updateProjectLinkGithubCustomHost
+		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLinkGithubCustomHost
+		return nil
+	}
+
+	var updateProjectLinkGitlab UpdateProjectLinkGitlab = UpdateProjectLinkGitlab{}
+	if err := utils.UnmarshalJSON(data, &updateProjectLinkGitlab, "", true, true); err == nil {
+		u.UpdateProjectLinkGitlab = &updateProjectLinkGitlab
+		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLinkGitlab
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectLinkUnion", string(data))
+}
+
+func (u UpdateProjectLinkUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectLinkGithub != nil {
+		return utils.MarshalJSON(u.UpdateProjectLinkGithub, "", true)
+	}
+
+	if u.UpdateProjectLinkGitlab != nil {
+		return utils.MarshalJSON(u.UpdateProjectLinkGitlab, "", true)
+	}
+
+	if u.UpdateProjectLinkBitbucket != nil {
+		return utils.MarshalJSON(u.UpdateProjectLinkBitbucket, "", true)
+	}
+
+	if u.UpdateProjectLinkGithubCustomHost != nil {
+		return utils.MarshalJSON(u.UpdateProjectLinkGithubCustomHost, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateProjectLinkUnion: all fields are null")
+}
+
+type UpdateProjectMicrofrontends2 struct {
+	UpdatedAt float64 `json:"updatedAt"`
+	GroupIds  []any   `json:"groupIds"`
+	Enabled   bool    `json:"enabled"`
+}
+
+func (o *UpdateProjectMicrofrontends2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectMicrofrontends2) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *UpdateProjectMicrofrontends2) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type UpdateProjectMicrofrontends1 struct {
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (o *UpdateProjectMicrofrontends1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectMicrofrontends1) GetGroupIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.GroupIds
+}
+
+func (o *UpdateProjectMicrofrontends1) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *UpdateProjectMicrofrontends1) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *UpdateProjectMicrofrontends1) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
+func (o *UpdateProjectMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+type UpdateProjectMicrofrontendsUnionType string
+
+const (
+	UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends1 UpdateProjectMicrofrontendsUnionType = "updateProject_microfrontends_1"
+	UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends2 UpdateProjectMicrofrontendsUnionType = "updateProject_microfrontends_2"
+)
+
+type UpdateProjectMicrofrontendsUnion struct {
+	UpdateProjectMicrofrontends1 *UpdateProjectMicrofrontends1 `queryParam:"inline"`
+	UpdateProjectMicrofrontends2 *UpdateProjectMicrofrontends2 `queryParam:"inline"`
+
+	Type UpdateProjectMicrofrontendsUnionType
+}
+
+func CreateUpdateProjectMicrofrontendsUnionUpdateProjectMicrofrontends1(updateProjectMicrofrontends1 UpdateProjectMicrofrontends1) UpdateProjectMicrofrontendsUnion {
+	typ := UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends1
+
+	return UpdateProjectMicrofrontendsUnion{
+		UpdateProjectMicrofrontends1: &updateProjectMicrofrontends1,
+		Type:                         typ,
+	}
+}
+
+func CreateUpdateProjectMicrofrontendsUnionUpdateProjectMicrofrontends2(updateProjectMicrofrontends2 UpdateProjectMicrofrontends2) UpdateProjectMicrofrontendsUnion {
+	typ := UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends2
+
+	return UpdateProjectMicrofrontendsUnion{
+		UpdateProjectMicrofrontends2: &updateProjectMicrofrontends2,
+		Type:                         typ,
+	}
+}
+
+func (u *UpdateProjectMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
+
+	var updateProjectMicrofrontends2 UpdateProjectMicrofrontends2 = UpdateProjectMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends2, "", true, true); err == nil {
+		u.UpdateProjectMicrofrontends2 = &updateProjectMicrofrontends2
+		u.Type = UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends2
+		return nil
+	}
+
+	var updateProjectMicrofrontends1 UpdateProjectMicrofrontends1 = UpdateProjectMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends1, "", true, true); err == nil {
+		u.UpdateProjectMicrofrontends1 = &updateProjectMicrofrontends1
+		u.Type = UpdateProjectMicrofrontendsUnionTypeUpdateProjectMicrofrontends1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectMicrofrontendsUnion", string(data))
+}
+
+func (u UpdateProjectMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectMicrofrontends1 != nil {
+		return utils.MarshalJSON(u.UpdateProjectMicrofrontends1, "", true)
+	}
+
+	if u.UpdateProjectMicrofrontends2 != nil {
+		return utils.MarshalJSON(u.UpdateProjectMicrofrontends2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateProjectMicrofrontendsUnion: all fields are null")
+}
+
+type UpdateProjectNodeVersionResponse string
+
+const (
+	UpdateProjectNodeVersionResponseTwentyTwoDotX  UpdateProjectNodeVersionResponse = "22.x"
+	UpdateProjectNodeVersionResponseTwentyDotX     UpdateProjectNodeVersionResponse = "20.x"
+	UpdateProjectNodeVersionResponseEighteenDotX   UpdateProjectNodeVersionResponse = "18.x"
+	UpdateProjectNodeVersionResponseSixteenDotX    UpdateProjectNodeVersionResponse = "16.x"
+	UpdateProjectNodeVersionResponseFourteenDotX   UpdateProjectNodeVersionResponse = "14.x"
+	UpdateProjectNodeVersionResponseTwelveDotX     UpdateProjectNodeVersionResponse = "12.x"
+	UpdateProjectNodeVersionResponseTenDotX        UpdateProjectNodeVersionResponse = "10.x"
+	UpdateProjectNodeVersionResponseEightDot10DotX UpdateProjectNodeVersionResponse = "8.10.x"
+)
+
+func (e UpdateProjectNodeVersionResponse) ToPointer() *UpdateProjectNodeVersionResponse {
+	return &e
+}
+func (e *UpdateProjectNodeVersionResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = UpdateProjectNodeVersionResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectNodeVersionResponse: %v", v)
+	}
+}
+
+type UpdateProjectPathResponse struct {
+	Value string `json:"value"`
+}
+
+func (o *UpdateProjectPathResponse) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type UpdateProjectOptionsAllowlistResponse struct {
+	Paths []UpdateProjectPathResponse `json:"paths"`
+}
+
+func (o *UpdateProjectOptionsAllowlistResponse) GetPaths() []UpdateProjectPathResponse {
+	if o == nil {
+		return []UpdateProjectPathResponse{}
+	}
+	return o.Paths
+}
+
+type UpdateProjectPasswordProtectionResponse struct {
+}
+
+type UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse string
+
+const (
+	UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponseStandardLegacy UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse = "standard_legacy"
+	UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponseStandard       UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse = "standard"
+	UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponsePerformance    UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse = "performance"
+)
+
+func (e UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse) ToPointer() *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
+	return &e
+}
+func (e *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard_legacy":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "performance":
+		*e = UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse: %v", v)
+	}
+}
+
+type UpdateProjectResourceConfigBuildMachineTypeResponse string
+
+const (
+	UpdateProjectResourceConfigBuildMachineTypeResponseEnhanced UpdateProjectResourceConfigBuildMachineTypeResponse = "enhanced"
+	UpdateProjectResourceConfigBuildMachineTypeResponseTurbo    UpdateProjectResourceConfigBuildMachineTypeResponse = "turbo"
+)
+
+func (e UpdateProjectResourceConfigBuildMachineTypeResponse) ToPointer() *UpdateProjectResourceConfigBuildMachineTypeResponse {
+	return &e
+}
+func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = UpdateProjectResourceConfigBuildMachineTypeResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectResourceConfigBuildMachineTypeResponse: %v", v)
+	}
+}
+
+type UpdateProjectResourceConfigResponse struct {
+	Fluid                      *bool                                                         `json:"fluid,omitempty"`
+	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType  *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultMemoryType() *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
+// UpdateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+type UpdateProjectRollbackDescription struct {
+	// The user who rolled back the project.
+	UserID string `json:"userId"`
+	// The username of the user who rolled back the project.
+	Username string `json:"username"`
+	// User-supplied explanation of why they rolled back the project. Limited to 250 characters.
+	Description string `json:"description"`
+	// Timestamp of when the rollback was requested.
+	CreatedAt float64 `json:"createdAt"`
+}
+
+func (o *UpdateProjectRollbackDescription) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *UpdateProjectRollbackDescription) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+func (o *UpdateProjectRollbackDescription) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *UpdateProjectRollbackDescription) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+// UpdateProjectStage - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+type UpdateProjectStage struct {
+	// The percentage of traffic to serve to the new deployment
+	TargetPercentage float64 `json:"targetPercentage"`
+	// Whether or not this stage requires approval to proceed.
+	RequireApproval *bool `json:"requireApproval,omitempty"`
+	// duration is the total time to serve a stage, at the given targetPercentage.
+	Duration *float64 `json:"duration,omitempty"`
+}
+
+func (o *UpdateProjectStage) GetTargetPercentage() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TargetPercentage
+}
+
+func (o *UpdateProjectStage) GetRequireApproval() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireApproval
+}
+
+func (o *UpdateProjectStage) GetDuration() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Duration
+}
+
+type UpdateProjectRollingRelease struct {
+	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
+	Target string `json:"target"`
+	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
+	Stages []UpdateProjectStage `json:"stages,omitempty"`
+	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
+	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
+}
+
+func (o *UpdateProjectRollingRelease) GetTarget() string {
+	if o == nil {
+		return ""
+	}
+	return o.Target
+}
+
+func (o *UpdateProjectRollingRelease) GetStages() []UpdateProjectStage {
+	if o == nil {
+		return nil
+	}
+	return o.Stages
+}
+
+func (o *UpdateProjectRollingRelease) GetCanaryResponseHeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryResponseHeader
+}
+
+type UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType string
+
+const (
+	UpdateProjectDefaultResourceConfigFunctionDefaultMemoryTypeStandardLegacy UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType = "standard_legacy"
+	UpdateProjectDefaultResourceConfigFunctionDefaultMemoryTypeStandard       UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType = "standard"
+	UpdateProjectDefaultResourceConfigFunctionDefaultMemoryTypePerformance    UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType = "performance"
+)
+
+func (e UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType) ToPointer() *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType {
+	return &e
+}
+func (e *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard_legacy":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "performance":
+		*e = UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType: %v", v)
+	}
+}
+
+type UpdateProjectDefaultResourceConfigBuildMachineType string
+
+const (
+	UpdateProjectDefaultResourceConfigBuildMachineTypeEnhanced UpdateProjectDefaultResourceConfigBuildMachineType = "enhanced"
+	UpdateProjectDefaultResourceConfigBuildMachineTypeTurbo    UpdateProjectDefaultResourceConfigBuildMachineType = "turbo"
+)
+
+func (e UpdateProjectDefaultResourceConfigBuildMachineType) ToPointer() *UpdateProjectDefaultResourceConfigBuildMachineType {
+	return &e
+}
+func (e *UpdateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = UpdateProjectDefaultResourceConfigBuildMachineType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDefaultResourceConfigBuildMachineType: %v", v)
+	}
+}
+
+type UpdateProjectDefaultResourceConfig struct {
+	Fluid                      *bool                                                        `json:"fluid,omitempty"`
+	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType  *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType           *UpdateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fluid
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.FunctionDefaultRegions
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultTimeout() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultTimeout
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionDefaultMemoryType
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionZeroConfigFailover
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetBuildMachineType() *UpdateProjectDefaultResourceConfigBuildMachineType {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineType
+}
+
+type UpdateProjectSsoProtectionDeploymentTypeResponse string
+
+const (
+	UpdateProjectSsoProtectionDeploymentTypeResponsePreview                          UpdateProjectSsoProtectionDeploymentTypeResponse = "preview"
+	UpdateProjectSsoProtectionDeploymentTypeResponseAll                              UpdateProjectSsoProtectionDeploymentTypeResponse = "all"
+	UpdateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews UpdateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
+)
+
+func (e UpdateProjectSsoProtectionDeploymentTypeResponse) ToPointer() *UpdateProjectSsoProtectionDeploymentTypeResponse {
+	return &e
+}
+func (e *UpdateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		*e = UpdateProjectSsoProtectionDeploymentTypeResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectSsoProtectionDeploymentTypeResponse: %v", v)
+	}
+}
+
+type UpdateProjectSsoProtectionResponse struct {
+	DeploymentType UpdateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
+}
+
+func (o *UpdateProjectSsoProtectionResponse) GetDeploymentType() UpdateProjectSsoProtectionDeploymentTypeResponse {
+	if o == nil {
+		return UpdateProjectSsoProtectionDeploymentTypeResponse("")
+	}
+	return o.DeploymentType
 }
 
 type UpdateProjectAliasAssignedType string
@@ -3295,8 +4944,8 @@ const (
 )
 
 type UpdateProjectAliasAssigned struct {
-	Number  *float64
-	Boolean *bool
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
 
 	Type UpdateProjectAliasAssignedType
 }
@@ -3369,19 +5018,19 @@ func (o *UpdateProjectAliasError) GetMessage() string {
 	return o.Message
 }
 
-// UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType - The type of matching to perform
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType string
+// UpdateProjectBranchMatcherTypeLambdas - The type of matching to perform
+type UpdateProjectBranchMatcherTypeLambdas string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsTypeEndsWith   UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType = "endsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsTypeStartsWith UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType = "startsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsTypeEquals     UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType = "equals"
+	UpdateProjectBranchMatcherTypeLambdasEndsWith   UpdateProjectBranchMatcherTypeLambdas = "endsWith"
+	UpdateProjectBranchMatcherTypeLambdasStartsWith UpdateProjectBranchMatcherTypeLambdas = "startsWith"
+	UpdateProjectBranchMatcherTypeLambdasEquals     UpdateProjectBranchMatcherTypeLambdas = "equals"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType {
+func (e UpdateProjectBranchMatcherTypeLambdas) ToPointer() *UpdateProjectBranchMatcherTypeLambdas {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectBranchMatcherTypeLambdas) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3392,55 +5041,55 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploy
 	case "startsWith":
 		fallthrough
 	case "equals":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType(v)
+		*e = UpdateProjectBranchMatcherTypeLambdas(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectBranchMatcherTypeLambdas: %v", v)
 	}
 }
 
-type UpdateProjectProjectsBranchMatcher struct {
+type UpdateProjectBranchMatcherLambdas struct {
 	// The type of matching to perform
-	Type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType `json:"type"`
+	Type UpdateProjectBranchMatcherTypeLambdas `json:"type"`
 	// The pattern to match against branch names
 	Pattern string `json:"pattern"`
 }
 
-func (o *UpdateProjectProjectsBranchMatcher) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType {
+func (o *UpdateProjectBranchMatcherLambdas) GetType() UpdateProjectBranchMatcherTypeLambdas {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType("")
+		return UpdateProjectBranchMatcherTypeLambdas("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectProjectsBranchMatcher) GetPattern() string {
+func (o *UpdateProjectBranchMatcherLambdas) GetPattern() string {
 	if o == nil {
 		return ""
 	}
 	return o.Pattern
 }
 
-type UpdateProjectBuilds struct {
+type UpdateProjectBuild struct {
 	Use  string  `json:"use"`
 	Src  *string `json:"src,omitempty"`
 	Dest *string `json:"dest,omitempty"`
 }
 
-func (o *UpdateProjectBuilds) GetUse() string {
+func (o *UpdateProjectBuild) GetUse() string {
 	if o == nil {
 		return ""
 	}
 	return o.Use
 }
 
-func (o *UpdateProjectBuilds) GetSrc() *string {
+func (o *UpdateProjectBuild) GetSrc() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Src
 }
 
-func (o *UpdateProjectBuilds) GetDest() *string {
+func (o *UpdateProjectBuild) GetDest() *string {
 	if o == nil {
 		return nil
 	}
@@ -3722,2150 +5371,67 @@ func (e *UpdateProjectReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectProjectsResponseType string
+type UpdateProjectTypeLambdas string
 
 const (
-	UpdateProjectProjectsResponseTypeLambdas UpdateProjectProjectsResponseType = "LAMBDAS"
+	UpdateProjectTypeLambdasLambdas UpdateProjectTypeLambdas = "LAMBDAS"
 )
 
-func (e UpdateProjectProjectsResponseType) ToPointer() *UpdateProjectProjectsResponseType {
+func (e UpdateProjectTypeLambdas) ToPointer() *UpdateProjectTypeLambdas {
 	return &e
 }
-func (e *UpdateProjectProjectsResponseType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTypeLambdas) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "LAMBDAS":
-		*e = UpdateProjectProjectsResponseType(v)
+		*e = UpdateProjectTypeLambdas(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponseType: %v", v)
-	}
-}
-
-type UpdateProjectLatestDeployments struct {
-	ID                     string                              `json:"id"`
-	Alias                  []string                            `json:"alias,omitempty"`
-	AliasAssigned          *UpdateProjectAliasAssigned         `json:"aliasAssigned,omitempty"`
-	AliasError             *UpdateProjectAliasError            `json:"aliasError,omitempty"`
-	AliasFinal             *string                             `json:"aliasFinal,omitempty"`
-	AutomaticAliases       []string                            `json:"automaticAliases,omitempty"`
-	BranchMatcher          *UpdateProjectProjectsBranchMatcher `json:"branchMatcher,omitempty"`
-	BuildingAt             *float64                            `json:"buildingAt,omitempty"`
-	Builds                 []UpdateProjectBuilds               `json:"builds,omitempty"`
-	ChecksConclusion       *UpdateProjectChecksConclusion      `json:"checksConclusion,omitempty"`
-	ChecksState            *UpdateProjectChecksState           `json:"checksState,omitempty"`
-	ConnectBuildsEnabled   *bool                               `json:"connectBuildsEnabled,omitempty"`
-	ConnectConfigurationID *string                             `json:"connectConfigurationId,omitempty"`
-	CreatedAt              float64                             `json:"createdAt"`
-	CreatedIn              string                              `json:"createdIn"`
-	Creator                *UpdateProjectCreator               `json:"creator"`
-	DeletedAt              *float64                            `json:"deletedAt,omitempty"`
-	DeploymentHostname     string                              `json:"deploymentHostname"`
-	Forced                 *bool                               `json:"forced,omitempty"`
-	Name                   string                              `json:"name"`
-	Meta                   map[string]string                   `json:"meta,omitempty"`
-	MonorepoManager        *string                             `json:"monorepoManager,omitempty"`
-	OidcTokenClaims        *UpdateProjectOidcTokenClaims       `json:"oidcTokenClaims,omitempty"`
-	Plan                   UpdateProjectPlan                   `json:"plan"`
-	// Whether or not preview comments are enabled for the deployment
-	PreviewCommentsEnabled *bool                             `json:"previewCommentsEnabled,omitempty"`
-	Private                bool                              `json:"private"`
-	ReadyAt                *float64                          `json:"readyAt,omitempty"`
-	ReadyState             UpdateProjectReadyState           `json:"readyState"`
-	ReadySubstate          *UpdateProjectReadySubstate       `json:"readySubstate,omitempty"`
-	RequestedAt            *float64                          `json:"requestedAt,omitempty"`
-	Target                 *string                           `json:"target,omitempty"`
-	TeamID                 *string                           `json:"teamId,omitempty"`
-	Type                   UpdateProjectProjectsResponseType `json:"type"`
-	URL                    string                            `json:"url"`
-	UserID                 string                            `json:"userId"`
-	WithCache              *bool                             `json:"withCache,omitempty"`
-}
-
-func (o *UpdateProjectLatestDeployments) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UpdateProjectLatestDeployments) GetAlias() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-func (o *UpdateProjectLatestDeployments) GetAliasAssigned() *UpdateProjectAliasAssigned {
-	if o == nil {
-		return nil
-	}
-	return o.AliasAssigned
-}
-
-func (o *UpdateProjectLatestDeployments) GetAliasError() *UpdateProjectAliasError {
-	if o == nil {
-		return nil
-	}
-	return o.AliasError
-}
-
-func (o *UpdateProjectLatestDeployments) GetAliasFinal() *string {
-	if o == nil {
-		return nil
-	}
-	return o.AliasFinal
-}
-
-func (o *UpdateProjectLatestDeployments) GetAutomaticAliases() []string {
-	if o == nil {
-		return nil
-	}
-	return o.AutomaticAliases
-}
-
-func (o *UpdateProjectLatestDeployments) GetBranchMatcher() *UpdateProjectProjectsBranchMatcher {
-	if o == nil {
-		return nil
-	}
-	return o.BranchMatcher
-}
-
-func (o *UpdateProjectLatestDeployments) GetBuildingAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.BuildingAt
-}
-
-func (o *UpdateProjectLatestDeployments) GetBuilds() []UpdateProjectBuilds {
-	if o == nil {
-		return nil
-	}
-	return o.Builds
-}
-
-func (o *UpdateProjectLatestDeployments) GetChecksConclusion() *UpdateProjectChecksConclusion {
-	if o == nil {
-		return nil
-	}
-	return o.ChecksConclusion
-}
-
-func (o *UpdateProjectLatestDeployments) GetChecksState() *UpdateProjectChecksState {
-	if o == nil {
-		return nil
-	}
-	return o.ChecksState
-}
-
-func (o *UpdateProjectLatestDeployments) GetConnectBuildsEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectBuildsEnabled
-}
-
-func (o *UpdateProjectLatestDeployments) GetConnectConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectConfigurationID
-}
-
-func (o *UpdateProjectLatestDeployments) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLatestDeployments) GetCreatedIn() string {
-	if o == nil {
-		return ""
-	}
-	return o.CreatedIn
-}
-
-func (o *UpdateProjectLatestDeployments) GetCreator() *UpdateProjectCreator {
-	if o == nil {
-		return nil
-	}
-	return o.Creator
-}
-
-func (o *UpdateProjectLatestDeployments) GetDeletedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DeletedAt
-}
-
-func (o *UpdateProjectLatestDeployments) GetDeploymentHostname() string {
-	if o == nil {
-		return ""
-	}
-	return o.DeploymentHostname
-}
-
-func (o *UpdateProjectLatestDeployments) GetForced() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Forced
-}
-
-func (o *UpdateProjectLatestDeployments) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLatestDeployments) GetMeta() map[string]string {
-	if o == nil {
-		return nil
-	}
-	return o.Meta
-}
-
-func (o *UpdateProjectLatestDeployments) GetMonorepoManager() *string {
-	if o == nil {
-		return nil
-	}
-	return o.MonorepoManager
-}
-
-func (o *UpdateProjectLatestDeployments) GetOidcTokenClaims() *UpdateProjectOidcTokenClaims {
-	if o == nil {
-		return nil
-	}
-	return o.OidcTokenClaims
-}
-
-func (o *UpdateProjectLatestDeployments) GetPlan() UpdateProjectPlan {
-	if o == nil {
-		return UpdateProjectPlan("")
-	}
-	return o.Plan
-}
-
-func (o *UpdateProjectLatestDeployments) GetPreviewCommentsEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewCommentsEnabled
-}
-
-func (o *UpdateProjectLatestDeployments) GetPrivate() bool {
-	if o == nil {
-		return false
-	}
-	return o.Private
-}
-
-func (o *UpdateProjectLatestDeployments) GetReadyAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.ReadyAt
-}
-
-func (o *UpdateProjectLatestDeployments) GetReadyState() UpdateProjectReadyState {
-	if o == nil {
-		return UpdateProjectReadyState("")
-	}
-	return o.ReadyState
-}
-
-func (o *UpdateProjectLatestDeployments) GetReadySubstate() *UpdateProjectReadySubstate {
-	if o == nil {
-		return nil
-	}
-	return o.ReadySubstate
-}
-
-func (o *UpdateProjectLatestDeployments) GetRequestedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RequestedAt
-}
-
-func (o *UpdateProjectLatestDeployments) GetTarget() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Target
-}
-
-func (o *UpdateProjectLatestDeployments) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *UpdateProjectLatestDeployments) GetType() UpdateProjectProjectsResponseType {
-	if o == nil {
-		return UpdateProjectProjectsResponseType("")
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectLatestDeployments) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-func (o *UpdateProjectLatestDeployments) GetUserID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UserID
-}
-
-func (o *UpdateProjectLatestDeployments) GetWithCache() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.WithCache
-}
-
-type UpdateProjectLinkProjectsResponse200Type string
-
-const (
-	UpdateProjectLinkProjectsResponse200TypeGithubCustomHost UpdateProjectLinkProjectsResponse200Type = "github-custom-host"
-)
-
-func (e UpdateProjectLinkProjectsResponse200Type) ToPointer() *UpdateProjectLinkProjectsResponse200Type {
-	return &e
-}
-func (e *UpdateProjectLinkProjectsResponse200Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "github-custom-host":
-		*e = UpdateProjectLinkProjectsResponse200Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLinkProjectsResponse200Type: %v", v)
-	}
-}
-
-type UpdateProjectLinkProjectsResponse200DeployHooks struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Ref       string   `json:"ref"`
-	URL       string   `json:"url"`
-}
-
-func (o *UpdateProjectLinkProjectsResponse200DeployHooks) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLinkProjectsResponse200DeployHooks) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UpdateProjectLinkProjectsResponse200DeployHooks) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLinkProjectsResponse200DeployHooks) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *UpdateProjectLinkProjectsResponse200DeployHooks) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-type UpdateProjectLink4 struct {
-	Org *string `json:"org,omitempty"`
-	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-	RepoOwnerID      *float64                                          `json:"repoOwnerId,omitempty"`
-	Repo             *string                                           `json:"repo,omitempty"`
-	RepoID           *float64                                          `json:"repoId,omitempty"`
-	Type             *UpdateProjectLinkProjectsResponse200Type         `json:"type,omitempty"`
-	Host             *string                                           `json:"host,omitempty"`
-	CreatedAt        *float64                                          `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectLinkProjectsResponse200DeployHooks `json:"deployHooks"`
-	GitCredentialID  *string                                           `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                                          `json:"updatedAt,omitempty"`
-	Sourceless       *bool                                             `json:"sourceless,omitempty"`
-	ProductionBranch *string                                           `json:"productionBranch,omitempty"`
-}
-
-func (o *UpdateProjectLink4) GetOrg() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Org
-}
-
-func (o *UpdateProjectLink4) GetRepoOwnerID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoOwnerID
-}
-
-func (o *UpdateProjectLink4) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *UpdateProjectLink4) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
-}
-
-func (o *UpdateProjectLink4) GetType() *UpdateProjectLinkProjectsResponse200Type {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectLink4) GetHost() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Host
-}
-
-func (o *UpdateProjectLink4) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLink4) GetDeployHooks() []UpdateProjectLinkProjectsResponse200DeployHooks {
-	if o == nil {
-		return []UpdateProjectLinkProjectsResponse200DeployHooks{}
-	}
-	return o.DeployHooks
-}
-
-func (o *UpdateProjectLink4) GetGitCredentialID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitCredentialID
-}
-
-func (o *UpdateProjectLink4) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectLink4) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
-func (o *UpdateProjectLink4) GetProductionBranch() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionBranch
-}
-
-type UpdateProjectLinkProjectsResponseType string
-
-const (
-	UpdateProjectLinkProjectsResponseTypeBitbucket UpdateProjectLinkProjectsResponseType = "bitbucket"
-)
-
-func (e UpdateProjectLinkProjectsResponseType) ToPointer() *UpdateProjectLinkProjectsResponseType {
-	return &e
-}
-func (e *UpdateProjectLinkProjectsResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = UpdateProjectLinkProjectsResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLinkProjectsResponseType: %v", v)
-	}
-}
-
-type UpdateProjectLinkProjectsResponseDeployHooks struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Ref       string   `json:"ref"`
-	URL       string   `json:"url"`
-}
-
-func (o *UpdateProjectLinkProjectsResponseDeployHooks) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLinkProjectsResponseDeployHooks) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UpdateProjectLinkProjectsResponseDeployHooks) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLinkProjectsResponseDeployHooks) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *UpdateProjectLinkProjectsResponseDeployHooks) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-type UpdateProjectLink3 struct {
-	Name             *string                                        `json:"name,omitempty"`
-	Slug             *string                                        `json:"slug,omitempty"`
-	Owner            *string                                        `json:"owner,omitempty"`
-	Type             *UpdateProjectLinkProjectsResponseType         `json:"type,omitempty"`
-	UUID             *string                                        `json:"uuid,omitempty"`
-	WorkspaceUUID    *string                                        `json:"workspaceUuid,omitempty"`
-	CreatedAt        *float64                                       `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectLinkProjectsResponseDeployHooks `json:"deployHooks"`
-	GitCredentialID  *string                                        `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                                       `json:"updatedAt,omitempty"`
-	Sourceless       *bool                                          `json:"sourceless,omitempty"`
-	ProductionBranch *string                                        `json:"productionBranch,omitempty"`
-}
-
-func (o *UpdateProjectLink3) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLink3) GetSlug() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Slug
-}
-
-func (o *UpdateProjectLink3) GetOwner() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Owner
-}
-
-func (o *UpdateProjectLink3) GetType() *UpdateProjectLinkProjectsResponseType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectLink3) GetUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.UUID
-}
-
-func (o *UpdateProjectLink3) GetWorkspaceUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceUUID
-}
-
-func (o *UpdateProjectLink3) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLink3) GetDeployHooks() []UpdateProjectLinkProjectsResponseDeployHooks {
-	if o == nil {
-		return []UpdateProjectLinkProjectsResponseDeployHooks{}
-	}
-	return o.DeployHooks
-}
-
-func (o *UpdateProjectLink3) GetGitCredentialID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitCredentialID
-}
-
-func (o *UpdateProjectLink3) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectLink3) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
-func (o *UpdateProjectLink3) GetProductionBranch() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionBranch
-}
-
-type UpdateProjectLinkProjectsType string
-
-const (
-	UpdateProjectLinkProjectsTypeGitlab UpdateProjectLinkProjectsType = "gitlab"
-)
-
-func (e UpdateProjectLinkProjectsType) ToPointer() *UpdateProjectLinkProjectsType {
-	return &e
-}
-func (e *UpdateProjectLinkProjectsType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gitlab":
-		*e = UpdateProjectLinkProjectsType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLinkProjectsType: %v", v)
-	}
-}
-
-type UpdateProjectLinkProjectsDeployHooks struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Ref       string   `json:"ref"`
-	URL       string   `json:"url"`
-}
-
-func (o *UpdateProjectLinkProjectsDeployHooks) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLinkProjectsDeployHooks) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UpdateProjectLinkProjectsDeployHooks) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLinkProjectsDeployHooks) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *UpdateProjectLinkProjectsDeployHooks) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-type UpdateProjectLink2 struct {
-	ProjectID                *string `json:"projectId,omitempty"`
-	ProjectName              *string `json:"projectName,omitempty"`
-	ProjectNameWithNamespace *string `json:"projectNameWithNamespace,omitempty"`
-	ProjectNamespace         *string `json:"projectNamespace,omitempty"`
-	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
-	ProjectOwnerID   *float64                               `json:"projectOwnerId,omitempty"`
-	ProjectURL       *string                                `json:"projectUrl,omitempty"`
-	Type             *UpdateProjectLinkProjectsType         `json:"type,omitempty"`
-	CreatedAt        *float64                               `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectLinkProjectsDeployHooks `json:"deployHooks"`
-	GitCredentialID  *string                                `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                               `json:"updatedAt,omitempty"`
-	Sourceless       *bool                                  `json:"sourceless,omitempty"`
-	ProductionBranch *string                                `json:"productionBranch,omitempty"`
-}
-
-func (o *UpdateProjectLink2) GetProjectID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectID
-}
-
-func (o *UpdateProjectLink2) GetProjectName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectName
-}
-
-func (o *UpdateProjectLink2) GetProjectNameWithNamespace() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectNameWithNamespace
-}
-
-func (o *UpdateProjectLink2) GetProjectNamespace() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectNamespace
-}
-
-func (o *UpdateProjectLink2) GetProjectOwnerID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectOwnerID
-}
-
-func (o *UpdateProjectLink2) GetProjectURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectURL
-}
-
-func (o *UpdateProjectLink2) GetType() *UpdateProjectLinkProjectsType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectLink2) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLink2) GetDeployHooks() []UpdateProjectLinkProjectsDeployHooks {
-	if o == nil {
-		return []UpdateProjectLinkProjectsDeployHooks{}
-	}
-	return o.DeployHooks
-}
-
-func (o *UpdateProjectLink2) GetGitCredentialID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitCredentialID
-}
-
-func (o *UpdateProjectLink2) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectLink2) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
-func (o *UpdateProjectLink2) GetProductionBranch() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionBranch
-}
-
-type UpdateProjectLinkType string
-
-const (
-	UpdateProjectLinkTypeGithub UpdateProjectLinkType = "github"
-)
-
-func (e UpdateProjectLinkType) ToPointer() *UpdateProjectLinkType {
-	return &e
-}
-func (e *UpdateProjectLinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "github":
-		*e = UpdateProjectLinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectLinkType: %v", v)
-	}
-}
-
-type UpdateProjectLinkDeployHooks struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Ref       string   `json:"ref"`
-	URL       string   `json:"url"`
-}
-
-func (o *UpdateProjectLinkDeployHooks) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLinkDeployHooks) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *UpdateProjectLinkDeployHooks) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *UpdateProjectLinkDeployHooks) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *UpdateProjectLinkDeployHooks) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
-type UpdateProjectLink1 struct {
-	Org *string `json:"org,omitempty"`
-	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-	RepoOwnerID      *float64                       `json:"repoOwnerId,omitempty"`
-	Repo             *string                        `json:"repo,omitempty"`
-	RepoID           *float64                       `json:"repoId,omitempty"`
-	Type             *UpdateProjectLinkType         `json:"type,omitempty"`
-	CreatedAt        *float64                       `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectLinkDeployHooks `json:"deployHooks"`
-	GitCredentialID  *string                        `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                       `json:"updatedAt,omitempty"`
-	Sourceless       *bool                          `json:"sourceless,omitempty"`
-	ProductionBranch *string                        `json:"productionBranch,omitempty"`
-}
-
-func (o *UpdateProjectLink1) GetOrg() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Org
-}
-
-func (o *UpdateProjectLink1) GetRepoOwnerID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoOwnerID
-}
-
-func (o *UpdateProjectLink1) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *UpdateProjectLink1) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
-}
-
-func (o *UpdateProjectLink1) GetType() *UpdateProjectLinkType {
-	if o == nil {
-		return nil
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectLink1) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateProjectLink1) GetDeployHooks() []UpdateProjectLinkDeployHooks {
-	if o == nil {
-		return []UpdateProjectLinkDeployHooks{}
-	}
-	return o.DeployHooks
-}
-
-func (o *UpdateProjectLink1) GetGitCredentialID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitCredentialID
-}
-
-func (o *UpdateProjectLink1) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectLink1) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
-func (o *UpdateProjectLink1) GetProductionBranch() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionBranch
-}
-
-type UpdateProjectLinkUnionType string
-
-const (
-	UpdateProjectLinkUnionTypeUpdateProjectLink1 UpdateProjectLinkUnionType = "updateProject_link_1"
-	UpdateProjectLinkUnionTypeUpdateProjectLink2 UpdateProjectLinkUnionType = "updateProject_link_2"
-	UpdateProjectLinkUnionTypeUpdateProjectLink3 UpdateProjectLinkUnionType = "updateProject_link_3"
-	UpdateProjectLinkUnionTypeUpdateProjectLink4 UpdateProjectLinkUnionType = "updateProject_link_4"
-)
-
-type UpdateProjectLink struct {
-	UpdateProjectLink1 *UpdateProjectLink1
-	UpdateProjectLink2 *UpdateProjectLink2
-	UpdateProjectLink3 *UpdateProjectLink3
-	UpdateProjectLink4 *UpdateProjectLink4
-
-	Type UpdateProjectLinkUnionType
-}
-
-func CreateUpdateProjectLinkUpdateProjectLink1(updateProjectLink1 UpdateProjectLink1) UpdateProjectLink {
-	typ := UpdateProjectLinkUnionTypeUpdateProjectLink1
-
-	return UpdateProjectLink{
-		UpdateProjectLink1: &updateProjectLink1,
-		Type:               typ,
-	}
-}
-
-func CreateUpdateProjectLinkUpdateProjectLink2(updateProjectLink2 UpdateProjectLink2) UpdateProjectLink {
-	typ := UpdateProjectLinkUnionTypeUpdateProjectLink2
-
-	return UpdateProjectLink{
-		UpdateProjectLink2: &updateProjectLink2,
-		Type:               typ,
-	}
-}
-
-func CreateUpdateProjectLinkUpdateProjectLink3(updateProjectLink3 UpdateProjectLink3) UpdateProjectLink {
-	typ := UpdateProjectLinkUnionTypeUpdateProjectLink3
-
-	return UpdateProjectLink{
-		UpdateProjectLink3: &updateProjectLink3,
-		Type:               typ,
-	}
-}
-
-func CreateUpdateProjectLinkUpdateProjectLink4(updateProjectLink4 UpdateProjectLink4) UpdateProjectLink {
-	typ := UpdateProjectLinkUnionTypeUpdateProjectLink4
-
-	return UpdateProjectLink{
-		UpdateProjectLink4: &updateProjectLink4,
-		Type:               typ,
-	}
-}
-
-func (u *UpdateProjectLink) UnmarshalJSON(data []byte) error {
-
-	var updateProjectLink1 UpdateProjectLink1 = UpdateProjectLink1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectLink1, "", true, true); err == nil {
-		u.UpdateProjectLink1 = &updateProjectLink1
-		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLink1
-		return nil
-	}
-
-	var updateProjectLink3 UpdateProjectLink3 = UpdateProjectLink3{}
-	if err := utils.UnmarshalJSON(data, &updateProjectLink3, "", true, true); err == nil {
-		u.UpdateProjectLink3 = &updateProjectLink3
-		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLink3
-		return nil
-	}
-
-	var updateProjectLink4 UpdateProjectLink4 = UpdateProjectLink4{}
-	if err := utils.UnmarshalJSON(data, &updateProjectLink4, "", true, true); err == nil {
-		u.UpdateProjectLink4 = &updateProjectLink4
-		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLink4
-		return nil
-	}
-
-	var updateProjectLink2 UpdateProjectLink2 = UpdateProjectLink2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectLink2, "", true, true); err == nil {
-		u.UpdateProjectLink2 = &updateProjectLink2
-		u.Type = UpdateProjectLinkUnionTypeUpdateProjectLink2
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectLink", string(data))
-}
-
-func (u UpdateProjectLink) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectLink1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectLink1, "", true)
-	}
-
-	if u.UpdateProjectLink2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectLink2, "", true)
-	}
-
-	if u.UpdateProjectLink3 != nil {
-		return utils.MarshalJSON(u.UpdateProjectLink3, "", true)
-	}
-
-	if u.UpdateProjectLink4 != nil {
-		return utils.MarshalJSON(u.UpdateProjectLink4, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type UpdateProjectLink: all fields are null")
-}
-
-type UpdateProjectMicrofrontends2 struct {
-	UpdatedAt float64 `json:"updatedAt"`
-	GroupIds  []any   `json:"groupIds"`
-	Enabled   bool    `json:"enabled"`
-}
-
-func (o *UpdateProjectMicrofrontends2) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectMicrofrontends2) GetGroupIds() []any {
-	if o == nil {
-		return []any{}
-	}
-	return o.GroupIds
-}
-
-func (o *UpdateProjectMicrofrontends2) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
-}
-
-type UpdateProjectMicrofrontends1 struct {
-	// Timestamp when the microfrontends settings were last updated.
-	UpdatedAt float64 `json:"updatedAt"`
-	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
-	GroupIds []string `json:"groupIds"`
-	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
-	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
-	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
-	DefaultRoute *string `json:"defaultRoute,omitempty"`
-	// Whether observability data should be routed to this microfrontend project or a root project.
-	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
-}
-
-func (o *UpdateProjectMicrofrontends1) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-func (o *UpdateProjectMicrofrontends1) GetGroupIds() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.GroupIds
-}
-
-func (o *UpdateProjectMicrofrontends1) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
-}
-
-func (o *UpdateProjectMicrofrontends1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
-func (o *UpdateProjectMicrofrontends1) GetDefaultRoute() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DefaultRoute
-}
-
-func (o *UpdateProjectMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RouteObservabilityToThisProject
-}
-
-type UpdateProjectMicrofrontendsType string
-
-const (
-	UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1 UpdateProjectMicrofrontendsType = "updateProject_microfrontends_1"
-	UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2 UpdateProjectMicrofrontendsType = "updateProject_microfrontends_2"
-)
-
-type UpdateProjectMicrofrontends struct {
-	UpdateProjectMicrofrontends1 *UpdateProjectMicrofrontends1
-	UpdateProjectMicrofrontends2 *UpdateProjectMicrofrontends2
-
-	Type UpdateProjectMicrofrontendsType
-}
-
-func CreateUpdateProjectMicrofrontendsUpdateProjectMicrofrontends1(updateProjectMicrofrontends1 UpdateProjectMicrofrontends1) UpdateProjectMicrofrontends {
-	typ := UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1
-
-	return UpdateProjectMicrofrontends{
-		UpdateProjectMicrofrontends1: &updateProjectMicrofrontends1,
-		Type:                         typ,
-	}
-}
-
-func CreateUpdateProjectMicrofrontendsUpdateProjectMicrofrontends2(updateProjectMicrofrontends2 UpdateProjectMicrofrontends2) UpdateProjectMicrofrontends {
-	typ := UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2
-
-	return UpdateProjectMicrofrontends{
-		UpdateProjectMicrofrontends2: &updateProjectMicrofrontends2,
-		Type:                         typ,
-	}
-}
-
-func (u *UpdateProjectMicrofrontends) UnmarshalJSON(data []byte) error {
-
-	var updateProjectMicrofrontends2 UpdateProjectMicrofrontends2 = UpdateProjectMicrofrontends2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends2, "", true, true); err == nil {
-		u.UpdateProjectMicrofrontends2 = &updateProjectMicrofrontends2
-		u.Type = UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends2
-		return nil
-	}
-
-	var updateProjectMicrofrontends1 UpdateProjectMicrofrontends1 = UpdateProjectMicrofrontends1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectMicrofrontends1, "", true, true); err == nil {
-		u.UpdateProjectMicrofrontends1 = &updateProjectMicrofrontends1
-		u.Type = UpdateProjectMicrofrontendsTypeUpdateProjectMicrofrontends1
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectMicrofrontends", string(data))
-}
-
-func (u UpdateProjectMicrofrontends) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectMicrofrontends1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectMicrofrontends1, "", true)
-	}
-
-	if u.UpdateProjectMicrofrontends2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectMicrofrontends2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type UpdateProjectMicrofrontends: all fields are null")
-}
-
-type UpdateProjectProjectsNodeVersion string
-
-const (
-	UpdateProjectProjectsNodeVersionTwentyTwoDotX  UpdateProjectProjectsNodeVersion = "22.x"
-	UpdateProjectProjectsNodeVersionTwentyDotX     UpdateProjectProjectsNodeVersion = "20.x"
-	UpdateProjectProjectsNodeVersionEighteenDotX   UpdateProjectProjectsNodeVersion = "18.x"
-	UpdateProjectProjectsNodeVersionSixteenDotX    UpdateProjectProjectsNodeVersion = "16.x"
-	UpdateProjectProjectsNodeVersionFourteenDotX   UpdateProjectProjectsNodeVersion = "14.x"
-	UpdateProjectProjectsNodeVersionTwelveDotX     UpdateProjectProjectsNodeVersion = "12.x"
-	UpdateProjectProjectsNodeVersionTenDotX        UpdateProjectProjectsNodeVersion = "10.x"
-	UpdateProjectProjectsNodeVersionEightDot10DotX UpdateProjectProjectsNodeVersion = "8.10.x"
-)
-
-func (e UpdateProjectProjectsNodeVersion) ToPointer() *UpdateProjectProjectsNodeVersion {
-	return &e
-}
-func (e *UpdateProjectProjectsNodeVersion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "22.x":
-		fallthrough
-	case "20.x":
-		fallthrough
-	case "18.x":
-		fallthrough
-	case "16.x":
-		fallthrough
-	case "14.x":
-		fallthrough
-	case "12.x":
-		fallthrough
-	case "10.x":
-		fallthrough
-	case "8.10.x":
-		*e = UpdateProjectProjectsNodeVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsNodeVersion: %v", v)
-	}
-}
-
-type UpdateProjectPaths struct {
-	Value string `json:"value"`
-}
-
-func (o *UpdateProjectPaths) GetValue() string {
-	if o == nil {
-		return ""
-	}
-	return o.Value
-}
-
-type UpdateProjectOptionsAllowlist struct {
-	Paths []UpdateProjectPaths `json:"paths"`
-}
-
-func (o *UpdateProjectOptionsAllowlist) GetPaths() []UpdateProjectPaths {
-	if o == nil {
-		return []UpdateProjectPaths{}
-	}
-	return o.Paths
-}
-
-type UpdateProjectPasswordProtection struct {
-}
-
-type UpdateProjectProjectsFunctionDefaultMemoryType string
-
-const (
-	UpdateProjectProjectsFunctionDefaultMemoryTypeStandardLegacy UpdateProjectProjectsFunctionDefaultMemoryType = "standard_legacy"
-	UpdateProjectProjectsFunctionDefaultMemoryTypeStandard       UpdateProjectProjectsFunctionDefaultMemoryType = "standard"
-	UpdateProjectProjectsFunctionDefaultMemoryTypePerformance    UpdateProjectProjectsFunctionDefaultMemoryType = "performance"
-)
-
-func (e UpdateProjectProjectsFunctionDefaultMemoryType) ToPointer() *UpdateProjectProjectsFunctionDefaultMemoryType {
-	return &e
-}
-func (e *UpdateProjectProjectsFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard_legacy":
-		fallthrough
-	case "standard":
-		fallthrough
-	case "performance":
-		*e = UpdateProjectProjectsFunctionDefaultMemoryType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsFunctionDefaultMemoryType: %v", v)
-	}
-}
-
-type UpdateProjectProjectsBuildMachineType string
-
-const (
-	UpdateProjectProjectsBuildMachineTypeEnhanced UpdateProjectProjectsBuildMachineType = "enhanced"
-	UpdateProjectProjectsBuildMachineTypeUltra    UpdateProjectProjectsBuildMachineType = "ultra"
-)
-
-func (e UpdateProjectProjectsBuildMachineType) ToPointer() *UpdateProjectProjectsBuildMachineType {
-	return &e
-}
-func (e *UpdateProjectProjectsBuildMachineType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enhanced":
-		fallthrough
-	case "ultra":
-		*e = UpdateProjectProjectsBuildMachineType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsBuildMachineType: %v", v)
-	}
-}
-
-type UpdateProjectProjectsResourceConfig struct {
-	Fluid                      *bool                                           `json:"fluid,omitempty"`
-	FunctionDefaultRegions     []string                                        `json:"functionDefaultRegions"`
-	FunctionDefaultTimeout     *float64                                        `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType  *UpdateProjectProjectsFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
-	FunctionZeroConfigFailover *bool                                           `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                           `json:"elasticConcurrencyEnabled,omitempty"`
-	BuildMachineType           *UpdateProjectProjectsBuildMachineType          `json:"buildMachineType,omitempty"`
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetFluid() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Fluid
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetFunctionDefaultRegions() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.FunctionDefaultRegions
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetFunctionDefaultTimeout() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionDefaultTimeout
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectProjectsFunctionDefaultMemoryType {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionDefaultMemoryType
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetFunctionZeroConfigFailover() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionZeroConfigFailover
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
-func (o *UpdateProjectProjectsResourceConfig) GetBuildMachineType() *UpdateProjectProjectsBuildMachineType {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachineType
-}
-
-// UpdateProjectStages - An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
-type UpdateProjectStages struct {
-	// The percentage of traffic to serve to the new deployment
-	TargetPercentage float64 `json:"targetPercentage"`
-	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving.
-	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
-	// Whether or not this stage requires approval to proceed.
-	RequireApproval *bool `json:"requireApproval,omitempty"`
-	// duration is the total time to serve a stage, at the given targetPercentage.
-	Duration *float64 `json:"duration,omitempty"`
-}
-
-func (o *UpdateProjectStages) GetTargetPercentage() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.TargetPercentage
-}
-
-func (o *UpdateProjectStages) GetMinutesToRelease() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.MinutesToRelease
-}
-
-func (o *UpdateProjectStages) GetRequireApproval() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RequireApproval
-}
-
-func (o *UpdateProjectStages) GetDuration() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Duration
-}
-
-type UpdateProjectRollingRelease struct {
-	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
-	Target string `json:"target"`
-	// minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%.
-	MinutesToRelease *float64 `json:"minutesToRelease,omitempty"`
-	// An array of all the stages required during a deployment release. each stage requires an approval before advancing to the next stage.
-	Stages []UpdateProjectStages `json:"stages,omitempty"`
-	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
-	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
-}
-
-func (o *UpdateProjectRollingRelease) GetTarget() string {
-	if o == nil {
-		return ""
-	}
-	return o.Target
-}
-
-func (o *UpdateProjectRollingRelease) GetMinutesToRelease() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.MinutesToRelease
-}
-
-func (o *UpdateProjectRollingRelease) GetStages() []UpdateProjectStages {
-	if o == nil {
-		return nil
-	}
-	return o.Stages
-}
-
-func (o *UpdateProjectRollingRelease) GetCanaryResponseHeader() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.CanaryResponseHeader
-}
-
-type UpdateProjectProjectsResponseFunctionDefaultMemoryType string
-
-const (
-	UpdateProjectProjectsResponseFunctionDefaultMemoryTypeStandardLegacy UpdateProjectProjectsResponseFunctionDefaultMemoryType = "standard_legacy"
-	UpdateProjectProjectsResponseFunctionDefaultMemoryTypeStandard       UpdateProjectProjectsResponseFunctionDefaultMemoryType = "standard"
-	UpdateProjectProjectsResponseFunctionDefaultMemoryTypePerformance    UpdateProjectProjectsResponseFunctionDefaultMemoryType = "performance"
-)
-
-func (e UpdateProjectProjectsResponseFunctionDefaultMemoryType) ToPointer() *UpdateProjectProjectsResponseFunctionDefaultMemoryType {
-	return &e
-}
-func (e *UpdateProjectProjectsResponseFunctionDefaultMemoryType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard_legacy":
-		fallthrough
-	case "standard":
-		fallthrough
-	case "performance":
-		*e = UpdateProjectProjectsResponseFunctionDefaultMemoryType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponseFunctionDefaultMemoryType: %v", v)
-	}
-}
-
-type UpdateProjectProjectsResponseBuildMachineType string
-
-const (
-	UpdateProjectProjectsResponseBuildMachineTypeEnhanced UpdateProjectProjectsResponseBuildMachineType = "enhanced"
-	UpdateProjectProjectsResponseBuildMachineTypeUltra    UpdateProjectProjectsResponseBuildMachineType = "ultra"
-)
-
-func (e UpdateProjectProjectsResponseBuildMachineType) ToPointer() *UpdateProjectProjectsResponseBuildMachineType {
-	return &e
-}
-func (e *UpdateProjectProjectsResponseBuildMachineType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enhanced":
-		fallthrough
-	case "ultra":
-		*e = UpdateProjectProjectsResponseBuildMachineType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponseBuildMachineType: %v", v)
-	}
-}
-
-type UpdateProjectDefaultResourceConfig struct {
-	Fluid                      *bool                                                   `json:"fluid,omitempty"`
-	FunctionDefaultRegions     []string                                                `json:"functionDefaultRegions"`
-	FunctionDefaultTimeout     *float64                                                `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType  *UpdateProjectProjectsResponseFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
-	FunctionZeroConfigFailover *bool                                                   `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                   `json:"elasticConcurrencyEnabled,omitempty"`
-	BuildMachineType           *UpdateProjectProjectsResponseBuildMachineType          `json:"buildMachineType,omitempty"`
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Fluid
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultRegions() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.FunctionDefaultRegions
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultTimeout() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionDefaultTimeout
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetFunctionDefaultMemoryType() *UpdateProjectProjectsResponseFunctionDefaultMemoryType {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionDefaultMemoryType
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.FunctionZeroConfigFailover
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetBuildMachineType() *UpdateProjectProjectsResponseBuildMachineType {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachineType
-}
-
-type UpdateProjectProjectsResponseDeploymentType string
-
-const (
-	UpdateProjectProjectsResponseDeploymentTypePreview                          UpdateProjectProjectsResponseDeploymentType = "preview"
-	UpdateProjectProjectsResponseDeploymentTypeAll                              UpdateProjectProjectsResponseDeploymentType = "all"
-	UpdateProjectProjectsResponseDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectProjectsResponseDeploymentType = "prod_deployment_urls_and_all_previews"
-)
-
-func (e UpdateProjectProjectsResponseDeploymentType) ToPointer() *UpdateProjectProjectsResponseDeploymentType {
-	return &e
-}
-func (e *UpdateProjectProjectsResponseDeploymentType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "preview":
-		fallthrough
-	case "all":
-		fallthrough
-	case "prod_deployment_urls_and_all_previews":
-		*e = UpdateProjectProjectsResponseDeploymentType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponseDeploymentType: %v", v)
-	}
-}
-
-type UpdateProjectSsoProtection struct {
-	DeploymentType UpdateProjectProjectsResponseDeploymentType `json:"deploymentType"`
-}
-
-func (o *UpdateProjectSsoProtection) GetDeploymentType() UpdateProjectProjectsResponseDeploymentType {
-	if o == nil {
-		return UpdateProjectProjectsResponseDeploymentType("")
-	}
-	return o.DeploymentType
-}
-
-type UpdateProjectProjectsAliasAssignedType string
-
-const (
-	UpdateProjectProjectsAliasAssignedTypeNumber  UpdateProjectProjectsAliasAssignedType = "number"
-	UpdateProjectProjectsAliasAssignedTypeBoolean UpdateProjectProjectsAliasAssignedType = "boolean"
-)
-
-type UpdateProjectProjectsAliasAssigned struct {
-	Number  *float64
-	Boolean *bool
-
-	Type UpdateProjectProjectsAliasAssignedType
-}
-
-func CreateUpdateProjectProjectsAliasAssignedNumber(number float64) UpdateProjectProjectsAliasAssigned {
-	typ := UpdateProjectProjectsAliasAssignedTypeNumber
-
-	return UpdateProjectProjectsAliasAssigned{
-		Number: &number,
-		Type:   typ,
-	}
-}
-
-func CreateUpdateProjectProjectsAliasAssignedBoolean(boolean bool) UpdateProjectProjectsAliasAssigned {
-	typ := UpdateProjectProjectsAliasAssignedTypeBoolean
-
-	return UpdateProjectProjectsAliasAssigned{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *UpdateProjectProjectsAliasAssigned) UnmarshalJSON(data []byte) error {
-
-	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
-		u.Number = &number
-		u.Type = UpdateProjectProjectsAliasAssignedTypeNumber
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = &boolean
-		u.Type = UpdateProjectProjectsAliasAssignedTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProjectsAliasAssigned", string(data))
-}
-
-func (u UpdateProjectProjectsAliasAssigned) MarshalJSON() ([]byte, error) {
-	if u.Number != nil {
-		return utils.MarshalJSON(u.Number, "", true)
-	}
-
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type UpdateProjectProjectsAliasAssigned: all fields are null")
-}
-
-type UpdateProjectProjectsAliasError struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func (o *UpdateProjectProjectsAliasError) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *UpdateProjectProjectsAliasError) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-// UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType - The type of matching to perform
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType string
-
-const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsTypeEndsWith   UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType = "endsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsTypeStartsWith UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType = "startsWith"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsTypeEquals     UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType = "equals"
-)
-
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType {
-	return &e
-}
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "endsWith":
-		fallthrough
-	case "startsWith":
-		fallthrough
-	case "equals":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType: %v", v)
-	}
-}
-
-type UpdateProjectProjectsResponseBranchMatcher struct {
-	// The type of matching to perform
-	Type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType `json:"type"`
-	// The pattern to match against branch names
-	Pattern string `json:"pattern"`
-}
-
-func (o *UpdateProjectProjectsResponseBranchMatcher) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType {
-	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType("")
-	}
-	return o.Type
-}
-
-func (o *UpdateProjectProjectsResponseBranchMatcher) GetPattern() string {
-	if o == nil {
-		return ""
-	}
-	return o.Pattern
-}
-
-type UpdateProjectProjectsBuilds struct {
-	Use  string  `json:"use"`
-	Src  *string `json:"src,omitempty"`
-	Dest *string `json:"dest,omitempty"`
-}
-
-func (o *UpdateProjectProjectsBuilds) GetUse() string {
-	if o == nil {
-		return ""
-	}
-	return o.Use
-}
-
-func (o *UpdateProjectProjectsBuilds) GetSrc() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Src
-}
-
-func (o *UpdateProjectProjectsBuilds) GetDest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Dest
-}
-
-type UpdateProjectProjectsChecksConclusion string
-
-const (
-	UpdateProjectProjectsChecksConclusionSucceeded UpdateProjectProjectsChecksConclusion = "succeeded"
-	UpdateProjectProjectsChecksConclusionFailed    UpdateProjectProjectsChecksConclusion = "failed"
-	UpdateProjectProjectsChecksConclusionSkipped   UpdateProjectProjectsChecksConclusion = "skipped"
-	UpdateProjectProjectsChecksConclusionCanceled  UpdateProjectProjectsChecksConclusion = "canceled"
-)
-
-func (e UpdateProjectProjectsChecksConclusion) ToPointer() *UpdateProjectProjectsChecksConclusion {
-	return &e
-}
-func (e *UpdateProjectProjectsChecksConclusion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "succeeded":
-		fallthrough
-	case "failed":
-		fallthrough
-	case "skipped":
-		fallthrough
-	case "canceled":
-		*e = UpdateProjectProjectsChecksConclusion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsChecksConclusion: %v", v)
-	}
-}
-
-type UpdateProjectProjectsChecksState string
-
-const (
-	UpdateProjectProjectsChecksStateRegistered UpdateProjectProjectsChecksState = "registered"
-	UpdateProjectProjectsChecksStateRunning    UpdateProjectProjectsChecksState = "running"
-	UpdateProjectProjectsChecksStateCompleted  UpdateProjectProjectsChecksState = "completed"
-)
-
-func (e UpdateProjectProjectsChecksState) ToPointer() *UpdateProjectProjectsChecksState {
-	return &e
-}
-func (e *UpdateProjectProjectsChecksState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "registered":
-		fallthrough
-	case "running":
-		fallthrough
-	case "completed":
-		*e = UpdateProjectProjectsChecksState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsChecksState: %v", v)
-	}
-}
-
-type UpdateProjectProjectsCreator struct {
-	Email       string  `json:"email"`
-	GithubLogin *string `json:"githubLogin,omitempty"`
-	GitlabLogin *string `json:"gitlabLogin,omitempty"`
-	UID         string  `json:"uid"`
-	Username    string  `json:"username"`
-}
-
-func (o *UpdateProjectProjectsCreator) GetEmail() string {
-	if o == nil {
-		return ""
-	}
-	return o.Email
-}
-
-func (o *UpdateProjectProjectsCreator) GetGithubLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GithubLogin
-}
-
-func (o *UpdateProjectProjectsCreator) GetGitlabLogin() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitlabLogin
-}
-
-func (o *UpdateProjectProjectsCreator) GetUID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UID
-}
-
-func (o *UpdateProjectProjectsCreator) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
-}
-
-type UpdateProjectProjectsOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetIss() string {
-	if o == nil {
-		return ""
-	}
-	return o.Iss
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetSub() string {
-	if o == nil {
-		return ""
-	}
-	return o.Sub
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetScope() string {
-	if o == nil {
-		return ""
-	}
-	return o.Scope
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetAud() string {
-	if o == nil {
-		return ""
-	}
-	return o.Aud
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetOwner() string {
-	if o == nil {
-		return ""
-	}
-	return o.Owner
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetProject() string {
-	if o == nil {
-		return ""
-	}
-	return o.Project
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *UpdateProjectProjectsOidcTokenClaims) GetEnvironment() string {
-	if o == nil {
-		return ""
-	}
-	return o.Environment
-}
-
-type UpdateProjectProjectsPlan string
-
-const (
-	UpdateProjectProjectsPlanPro        UpdateProjectProjectsPlan = "pro"
-	UpdateProjectProjectsPlanEnterprise UpdateProjectProjectsPlan = "enterprise"
-	UpdateProjectProjectsPlanHobby      UpdateProjectProjectsPlan = "hobby"
-)
-
-func (e UpdateProjectProjectsPlan) ToPointer() *UpdateProjectProjectsPlan {
-	return &e
-}
-func (e *UpdateProjectProjectsPlan) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pro":
-		fallthrough
-	case "enterprise":
-		fallthrough
-	case "hobby":
-		*e = UpdateProjectProjectsPlan(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsPlan: %v", v)
-	}
-}
-
-type UpdateProjectProjectsReadyState string
-
-const (
-	UpdateProjectProjectsReadyStateBuilding     UpdateProjectProjectsReadyState = "BUILDING"
-	UpdateProjectProjectsReadyStateError        UpdateProjectProjectsReadyState = "ERROR"
-	UpdateProjectProjectsReadyStateInitializing UpdateProjectProjectsReadyState = "INITIALIZING"
-	UpdateProjectProjectsReadyStateQueued       UpdateProjectProjectsReadyState = "QUEUED"
-	UpdateProjectProjectsReadyStateReady        UpdateProjectProjectsReadyState = "READY"
-	UpdateProjectProjectsReadyStateCanceled     UpdateProjectProjectsReadyState = "CANCELED"
-)
-
-func (e UpdateProjectProjectsReadyState) ToPointer() *UpdateProjectProjectsReadyState {
-	return &e
-}
-func (e *UpdateProjectProjectsReadyState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BUILDING":
-		fallthrough
-	case "ERROR":
-		fallthrough
-	case "INITIALIZING":
-		fallthrough
-	case "QUEUED":
-		fallthrough
-	case "READY":
-		fallthrough
-	case "CANCELED":
-		*e = UpdateProjectProjectsReadyState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsReadyState: %v", v)
-	}
-}
-
-type UpdateProjectProjectsReadySubstate string
-
-const (
-	UpdateProjectProjectsReadySubstateStaged   UpdateProjectProjectsReadySubstate = "STAGED"
-	UpdateProjectProjectsReadySubstateRolling  UpdateProjectProjectsReadySubstate = "ROLLING"
-	UpdateProjectProjectsReadySubstatePromoted UpdateProjectProjectsReadySubstate = "PROMOTED"
-)
-
-func (e UpdateProjectProjectsReadySubstate) ToPointer() *UpdateProjectProjectsReadySubstate {
-	return &e
-}
-func (e *UpdateProjectProjectsReadySubstate) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "STAGED":
-		fallthrough
-	case "ROLLING":
-		fallthrough
-	case "PROMOTED":
-		*e = UpdateProjectProjectsReadySubstate(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsReadySubstate: %v", v)
-	}
-}
-
-type UpdateProjectProjectsResponse200Type string
-
-const (
-	UpdateProjectProjectsResponse200TypeLambdas UpdateProjectProjectsResponse200Type = "LAMBDAS"
-)
-
-func (e UpdateProjectProjectsResponse200Type) ToPointer() *UpdateProjectProjectsResponse200Type {
-	return &e
-}
-func (e *UpdateProjectProjectsResponse200Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "LAMBDAS":
-		*e = UpdateProjectProjectsResponse200Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTypeLambdas: %v", v)
 	}
 }
 
 type UpdateProjectTargets struct {
-	ID                     string                                      `json:"id"`
-	Alias                  []string                                    `json:"alias,omitempty"`
-	AliasAssigned          *UpdateProjectProjectsAliasAssigned         `json:"aliasAssigned,omitempty"`
-	AliasError             *UpdateProjectProjectsAliasError            `json:"aliasError,omitempty"`
-	AliasFinal             *string                                     `json:"aliasFinal,omitempty"`
-	AutomaticAliases       []string                                    `json:"automaticAliases,omitempty"`
-	BranchMatcher          *UpdateProjectProjectsResponseBranchMatcher `json:"branchMatcher,omitempty"`
-	BuildingAt             *float64                                    `json:"buildingAt,omitempty"`
-	Builds                 []UpdateProjectProjectsBuilds               `json:"builds,omitempty"`
-	ChecksConclusion       *UpdateProjectProjectsChecksConclusion      `json:"checksConclusion,omitempty"`
-	ChecksState            *UpdateProjectProjectsChecksState           `json:"checksState,omitempty"`
-	ConnectBuildsEnabled   *bool                                       `json:"connectBuildsEnabled,omitempty"`
-	ConnectConfigurationID *string                                     `json:"connectConfigurationId,omitempty"`
-	CreatedAt              float64                                     `json:"createdAt"`
-	CreatedIn              string                                      `json:"createdIn"`
-	Creator                *UpdateProjectProjectsCreator               `json:"creator"`
-	DeletedAt              *float64                                    `json:"deletedAt,omitempty"`
-	DeploymentHostname     string                                      `json:"deploymentHostname"`
-	Forced                 *bool                                       `json:"forced,omitempty"`
-	Name                   string                                      `json:"name"`
-	Meta                   map[string]string                           `json:"meta,omitempty"`
-	MonorepoManager        *string                                     `json:"monorepoManager,omitempty"`
-	OidcTokenClaims        *UpdateProjectProjectsOidcTokenClaims       `json:"oidcTokenClaims,omitempty"`
-	Plan                   UpdateProjectProjectsPlan                   `json:"plan"`
+	ID                     string                             `json:"id"`
+	Alias                  []string                           `json:"alias,omitempty"`
+	AliasAssigned          *UpdateProjectAliasAssigned        `json:"aliasAssigned,omitempty"`
+	AliasError             *UpdateProjectAliasError           `json:"aliasError,omitempty"`
+	AliasFinal             *string                            `json:"aliasFinal,omitempty"`
+	AutomaticAliases       []string                           `json:"automaticAliases,omitempty"`
+	BranchMatcher          *UpdateProjectBranchMatcherLambdas `json:"branchMatcher,omitempty"`
+	BuildingAt             *float64                           `json:"buildingAt,omitempty"`
+	Builds                 []UpdateProjectBuild               `json:"builds,omitempty"`
+	ChecksConclusion       *UpdateProjectChecksConclusion     `json:"checksConclusion,omitempty"`
+	ChecksState            *UpdateProjectChecksState          `json:"checksState,omitempty"`
+	ConnectBuildsEnabled   *bool                              `json:"connectBuildsEnabled,omitempty"`
+	ConnectConfigurationID *string                            `json:"connectConfigurationId,omitempty"`
+	CreatedAt              float64                            `json:"createdAt"`
+	CreatedIn              string                             `json:"createdIn"`
+	Creator                *UpdateProjectCreator              `json:"creator"`
+	DeletedAt              *float64                           `json:"deletedAt,omitempty"`
+	DeploymentHostname     string                             `json:"deploymentHostname"`
+	Forced                 *bool                              `json:"forced,omitempty"`
+	Name                   string                             `json:"name"`
+	Meta                   map[string]string                  `json:"meta,omitempty"`
+	MonorepoManager        *string                            `json:"monorepoManager,omitempty"`
+	OidcTokenClaims        *UpdateProjectOidcTokenClaims      `json:"oidcTokenClaims,omitempty"`
+	Plan                   UpdateProjectPlan                  `json:"plan"`
 	// Whether or not preview comments are enabled for the deployment
-	PreviewCommentsEnabled *bool                                `json:"previewCommentsEnabled,omitempty"`
-	Private                bool                                 `json:"private"`
-	ReadyAt                *float64                             `json:"readyAt,omitempty"`
-	ReadyState             UpdateProjectProjectsReadyState      `json:"readyState"`
-	ReadySubstate          *UpdateProjectProjectsReadySubstate  `json:"readySubstate,omitempty"`
-	RequestedAt            *float64                             `json:"requestedAt,omitempty"`
-	Target                 *string                              `json:"target,omitempty"`
-	TeamID                 *string                              `json:"teamId,omitempty"`
-	Type                   UpdateProjectProjectsResponse200Type `json:"type"`
-	URL                    string                               `json:"url"`
-	UserID                 string                               `json:"userId"`
-	WithCache              *bool                                `json:"withCache,omitempty"`
+	PreviewCommentsEnabled *bool                       `json:"previewCommentsEnabled,omitempty"`
+	Private                bool                        `json:"private"`
+	ReadyAt                *float64                    `json:"readyAt,omitempty"`
+	ReadyState             UpdateProjectReadyState     `json:"readyState"`
+	ReadySubstate          *UpdateProjectReadySubstate `json:"readySubstate,omitempty"`
+	RequestedAt            *float64                    `json:"requestedAt,omitempty"`
+	Target                 *string                     `json:"target,omitempty"`
+	TeamID                 *string                     `json:"teamId,omitempty"`
+	Type                   UpdateProjectTypeLambdas    `json:"type"`
+	URL                    string                      `json:"url"`
+	UserID                 string                      `json:"userId"`
+	WithCache              *bool                       `json:"withCache,omitempty"`
 }
 
 func (o *UpdateProjectTargets) GetID() string {
@@ -5882,14 +5448,14 @@ func (o *UpdateProjectTargets) GetAlias() []string {
 	return o.Alias
 }
 
-func (o *UpdateProjectTargets) GetAliasAssigned() *UpdateProjectProjectsAliasAssigned {
+func (o *UpdateProjectTargets) GetAliasAssigned() *UpdateProjectAliasAssigned {
 	if o == nil {
 		return nil
 	}
 	return o.AliasAssigned
 }
 
-func (o *UpdateProjectTargets) GetAliasError() *UpdateProjectProjectsAliasError {
+func (o *UpdateProjectTargets) GetAliasError() *UpdateProjectAliasError {
 	if o == nil {
 		return nil
 	}
@@ -5910,7 +5476,7 @@ func (o *UpdateProjectTargets) GetAutomaticAliases() []string {
 	return o.AutomaticAliases
 }
 
-func (o *UpdateProjectTargets) GetBranchMatcher() *UpdateProjectProjectsResponseBranchMatcher {
+func (o *UpdateProjectTargets) GetBranchMatcher() *UpdateProjectBranchMatcherLambdas {
 	if o == nil {
 		return nil
 	}
@@ -5924,21 +5490,21 @@ func (o *UpdateProjectTargets) GetBuildingAt() *float64 {
 	return o.BuildingAt
 }
 
-func (o *UpdateProjectTargets) GetBuilds() []UpdateProjectProjectsBuilds {
+func (o *UpdateProjectTargets) GetBuilds() []UpdateProjectBuild {
 	if o == nil {
 		return nil
 	}
 	return o.Builds
 }
 
-func (o *UpdateProjectTargets) GetChecksConclusion() *UpdateProjectProjectsChecksConclusion {
+func (o *UpdateProjectTargets) GetChecksConclusion() *UpdateProjectChecksConclusion {
 	if o == nil {
 		return nil
 	}
 	return o.ChecksConclusion
 }
 
-func (o *UpdateProjectTargets) GetChecksState() *UpdateProjectProjectsChecksState {
+func (o *UpdateProjectTargets) GetChecksState() *UpdateProjectChecksState {
 	if o == nil {
 		return nil
 	}
@@ -5973,7 +5539,7 @@ func (o *UpdateProjectTargets) GetCreatedIn() string {
 	return o.CreatedIn
 }
 
-func (o *UpdateProjectTargets) GetCreator() *UpdateProjectProjectsCreator {
+func (o *UpdateProjectTargets) GetCreator() *UpdateProjectCreator {
 	if o == nil {
 		return nil
 	}
@@ -6022,16 +5588,16 @@ func (o *UpdateProjectTargets) GetMonorepoManager() *string {
 	return o.MonorepoManager
 }
 
-func (o *UpdateProjectTargets) GetOidcTokenClaims() *UpdateProjectProjectsOidcTokenClaims {
+func (o *UpdateProjectTargets) GetOidcTokenClaims() *UpdateProjectOidcTokenClaims {
 	if o == nil {
 		return nil
 	}
 	return o.OidcTokenClaims
 }
 
-func (o *UpdateProjectTargets) GetPlan() UpdateProjectProjectsPlan {
+func (o *UpdateProjectTargets) GetPlan() UpdateProjectPlan {
 	if o == nil {
-		return UpdateProjectProjectsPlan("")
+		return UpdateProjectPlan("")
 	}
 	return o.Plan
 }
@@ -6057,14 +5623,14 @@ func (o *UpdateProjectTargets) GetReadyAt() *float64 {
 	return o.ReadyAt
 }
 
-func (o *UpdateProjectTargets) GetReadyState() UpdateProjectProjectsReadyState {
+func (o *UpdateProjectTargets) GetReadyState() UpdateProjectReadyState {
 	if o == nil {
-		return UpdateProjectProjectsReadyState("")
+		return UpdateProjectReadyState("")
 	}
 	return o.ReadyState
 }
 
-func (o *UpdateProjectTargets) GetReadySubstate() *UpdateProjectProjectsReadySubstate {
+func (o *UpdateProjectTargets) GetReadySubstate() *UpdateProjectReadySubstate {
 	if o == nil {
 		return nil
 	}
@@ -6092,9 +5658,9 @@ func (o *UpdateProjectTargets) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *UpdateProjectTargets) GetType() UpdateProjectProjectsResponse200Type {
+func (o *UpdateProjectTargets) GetType() UpdateProjectTypeLambdas {
 	if o == nil {
-		return UpdateProjectProjectsResponse200Type("")
+		return UpdateProjectTypeLambdas("")
 	}
 	return o.Type
 }
@@ -6258,8 +5824,11 @@ type UpdateProjectPermissions struct {
 	Oauth2Application                        []components.ACLAction `json:"oauth2Application,omitempty"`
 	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
+	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
+	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
 	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
 	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
 	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
 	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
 	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
@@ -6281,6 +5850,8 @@ type UpdateProjectPermissions struct {
 	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
 	Job                                      []components.ACLAction `json:"job,omitempty"`
 	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
+	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
+	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
 	Project                                  []components.ACLAction `json:"project,omitempty"`
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
@@ -7280,6 +6851,20 @@ func (o *UpdateProjectPermissions) GetVercelRunExec() []components.ACLAction {
 	return o.VercelRunExec
 }
 
+func (o *UpdateProjectPermissions) GetAPIKey() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *UpdateProjectPermissions) GetAPIKeyOwnedBySelf() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyOwnedBySelf
+}
+
 func (o *UpdateProjectPermissions) GetAliasProject() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7292,6 +6877,13 @@ func (o *UpdateProjectPermissions) GetAliasProtectionBypass() []components.ACLAc
 		return nil
 	}
 	return o.AliasProtectionBypass
+}
+
+func (o *UpdateProjectPermissions) GetBuildMachine() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
 }
 
 func (o *UpdateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
@@ -7439,6 +7031,20 @@ func (o *UpdateProjectPermissions) GetObservabilityData() []components.ACLAction
 		return nil
 	}
 	return o.ObservabilityData
+}
+
+func (o *UpdateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandBuild
+}
+
+func (o *UpdateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandConcurrency
 }
 
 func (o *UpdateProjectPermissions) GetProject() []components.ACLAction {
@@ -7745,17 +7351,17 @@ func (e *UpdateProjectJobStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectProjectsResponse200ApplicationJSONType string
+type UpdateProjectLastAliasRequestType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONTypePromote  UpdateProjectProjectsResponse200ApplicationJSONType = "promote"
-	UpdateProjectProjectsResponse200ApplicationJSONTypeRollback UpdateProjectProjectsResponse200ApplicationJSONType = "rollback"
+	UpdateProjectLastAliasRequestTypePromote  UpdateProjectLastAliasRequestType = "promote"
+	UpdateProjectLastAliasRequestTypeRollback UpdateProjectLastAliasRequestType = "rollback"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONType {
+func (e UpdateProjectLastAliasRequestType) ToPointer() *UpdateProjectLastAliasRequestType {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7764,10 +7370,10 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONType) UnmarshalJSON(data
 	case "promote":
 		fallthrough
 	case "rollback":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONType(v)
+		*e = UpdateProjectLastAliasRequestType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectLastAliasRequestType: %v", v)
 	}
 }
 
@@ -7775,10 +7381,10 @@ type UpdateProjectLastAliasRequest struct {
 	FromDeploymentID string `json:"fromDeploymentId"`
 	ToDeploymentID   string `json:"toDeploymentId"`
 	// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
-	FromRollingReleaseID *string                                             `json:"fromRollingReleaseId,omitempty"`
-	JobStatus            UpdateProjectJobStatus                              `json:"jobStatus"`
-	RequestedAt          float64                                             `json:"requestedAt"`
-	Type                 UpdateProjectProjectsResponse200ApplicationJSONType `json:"type"`
+	FromRollingReleaseID *string                           `json:"fromRollingReleaseId,omitempty"`
+	JobStatus            UpdateProjectJobStatus            `json:"jobStatus"`
+	RequestedAt          float64                           `json:"requestedAt"`
+	Type                 UpdateProjectLastAliasRequestType `json:"type"`
 }
 
 func (o *UpdateProjectLastAliasRequest) GetFromDeploymentID() string {
@@ -7816,205 +7422,205 @@ func (o *UpdateProjectLastAliasRequest) GetRequestedAt() float64 {
 	return o.RequestedAt
 }
 
-func (o *UpdateProjectLastAliasRequest) GetType() UpdateProjectProjectsResponse200ApplicationJSONType {
+func (o *UpdateProjectLastAliasRequest) GetType() UpdateProjectLastAliasRequestType {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONType("")
+		return UpdateProjectLastAliasRequestType("")
 	}
 	return o.Type
 }
 
-type UpdateProjectProtectionBypassProjectsScope string
+type UpdateProjectScopeAutomationBypass string
 
 const (
-	UpdateProjectProtectionBypassProjectsScopeAutomationBypass UpdateProjectProtectionBypassProjectsScope = "automation-bypass"
+	UpdateProjectScopeAutomationBypassAutomationBypass UpdateProjectScopeAutomationBypass = "automation-bypass"
 )
 
-func (e UpdateProjectProtectionBypassProjectsScope) ToPointer() *UpdateProjectProtectionBypassProjectsScope {
+func (e UpdateProjectScopeAutomationBypass) ToPointer() *UpdateProjectScopeAutomationBypass {
 	return &e
 }
-func (e *UpdateProjectProtectionBypassProjectsScope) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectScopeAutomationBypass) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "automation-bypass":
-		*e = UpdateProjectProtectionBypassProjectsScope(v)
+		*e = UpdateProjectScopeAutomationBypass(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassProjectsScope: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectScopeAutomationBypass: %v", v)
 	}
 }
 
-type UpdateProjectProtectionBypass2 struct {
-	CreatedAt float64                                    `json:"createdAt"`
-	CreatedBy string                                     `json:"createdBy"`
-	Scope     UpdateProjectProtectionBypassProjectsScope `json:"scope"`
+type UpdateProjectProtectionBypassAutomationBypass struct {
+	CreatedAt float64                            `json:"createdAt"`
+	CreatedBy string                             `json:"createdBy"`
+	Scope     UpdateProjectScopeAutomationBypass `json:"scope"`
 }
 
-func (o *UpdateProjectProtectionBypass2) GetCreatedAt() float64 {
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectProtectionBypass2) GetCreatedBy() string {
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *UpdateProjectProtectionBypass2) GetScope() UpdateProjectProtectionBypassProjectsScope {
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetScope() UpdateProjectScopeAutomationBypass {
 	if o == nil {
-		return UpdateProjectProtectionBypassProjectsScope("")
+		return UpdateProjectScopeAutomationBypass("")
 	}
 	return o.Scope
 }
 
-type UpdateProjectProtectionBypassScope string
+type UpdateProjectScopeIntegrationAutomationBypass string
 
 const (
-	UpdateProjectProtectionBypassScopeIntegrationAutomationBypass UpdateProjectProtectionBypassScope = "integration-automation-bypass"
+	UpdateProjectScopeIntegrationAutomationBypassIntegrationAutomationBypass UpdateProjectScopeIntegrationAutomationBypass = "integration-automation-bypass"
 )
 
-func (e UpdateProjectProtectionBypassScope) ToPointer() *UpdateProjectProtectionBypassScope {
+func (e UpdateProjectScopeIntegrationAutomationBypass) ToPointer() *UpdateProjectScopeIntegrationAutomationBypass {
 	return &e
 }
-func (e *UpdateProjectProtectionBypassScope) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectScopeIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-automation-bypass":
-		*e = UpdateProjectProtectionBypassScope(v)
+		*e = UpdateProjectScopeIntegrationAutomationBypass(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProtectionBypassScope: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectScopeIntegrationAutomationBypass: %v", v)
 	}
 }
 
-type UpdateProjectProtectionBypass1 struct {
-	CreatedAt       float64                            `json:"createdAt"`
-	CreatedBy       string                             `json:"createdBy"`
-	Scope           UpdateProjectProtectionBypassScope `json:"scope"`
-	IntegrationID   string                             `json:"integrationId"`
-	ConfigurationID string                             `json:"configurationId"`
+type UpdateProjectProtectionBypassIntegrationAutomationBypass struct {
+	CreatedAt       float64                                       `json:"createdAt"`
+	CreatedBy       string                                        `json:"createdBy"`
+	Scope           UpdateProjectScopeIntegrationAutomationBypass `json:"scope"`
+	IntegrationID   string                                        `json:"integrationId"`
+	ConfigurationID string                                        `json:"configurationId"`
 }
 
-func (o *UpdateProjectProtectionBypass1) GetCreatedAt() float64 {
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectProtectionBypass1) GetCreatedBy() string {
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *UpdateProjectProtectionBypass1) GetScope() UpdateProjectProtectionBypassScope {
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetScope() UpdateProjectScopeIntegrationAutomationBypass {
 	if o == nil {
-		return UpdateProjectProtectionBypassScope("")
+		return UpdateProjectScopeIntegrationAutomationBypass("")
 	}
 	return o.Scope
 }
 
-func (o *UpdateProjectProtectionBypass1) GetIntegrationID() string {
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *UpdateProjectProtectionBypass1) GetConfigurationID() string {
+func (o *UpdateProjectProtectionBypassIntegrationAutomationBypass) GetConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConfigurationID
 }
 
-type UpdateProjectProtectionBypassType string
+type UpdateProjectProtectionBypassUnionType string
 
 const (
-	UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass1 UpdateProjectProtectionBypassType = "updateProject_protectionBypass_1"
-	UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass2 UpdateProjectProtectionBypassType = "updateProject_protectionBypass_2"
+	UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassUnionType = "updateProject_protectionBypass_IntegrationAutomationBypass"
+	UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassAutomationBypass            UpdateProjectProtectionBypassUnionType = "updateProject_protectionBypass_AutomationBypass"
 )
 
-type UpdateProjectProtectionBypass struct {
-	UpdateProjectProtectionBypass1 *UpdateProjectProtectionBypass1
-	UpdateProjectProtectionBypass2 *UpdateProjectProtectionBypass2
+type UpdateProjectProtectionBypassUnion struct {
+	UpdateProjectProtectionBypassIntegrationAutomationBypass *UpdateProjectProtectionBypassIntegrationAutomationBypass `queryParam:"inline"`
+	UpdateProjectProtectionBypassAutomationBypass            *UpdateProjectProtectionBypassAutomationBypass            `queryParam:"inline"`
 
-	Type UpdateProjectProtectionBypassType
+	Type UpdateProjectProtectionBypassUnionType
 }
 
-func CreateUpdateProjectProtectionBypassUpdateProjectProtectionBypass1(updateProjectProtectionBypass1 UpdateProjectProtectionBypass1) UpdateProjectProtectionBypass {
-	typ := UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass1
+func CreateUpdateProjectProtectionBypassUnionUpdateProjectProtectionBypassIntegrationAutomationBypass(updateProjectProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassIntegrationAutomationBypass) UpdateProjectProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassIntegrationAutomationBypass
 
-	return UpdateProjectProtectionBypass{
-		UpdateProjectProtectionBypass1: &updateProjectProtectionBypass1,
-		Type:                           typ,
+	return UpdateProjectProtectionBypassUnion{
+		UpdateProjectProtectionBypassIntegrationAutomationBypass: &updateProjectProtectionBypassIntegrationAutomationBypass,
+		Type: typ,
 	}
 }
 
-func CreateUpdateProjectProtectionBypassUpdateProjectProtectionBypass2(updateProjectProtectionBypass2 UpdateProjectProtectionBypass2) UpdateProjectProtectionBypass {
-	typ := UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass2
+func CreateUpdateProjectProtectionBypassUnionUpdateProjectProtectionBypassAutomationBypass(updateProjectProtectionBypassAutomationBypass UpdateProjectProtectionBypassAutomationBypass) UpdateProjectProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassAutomationBypass
 
-	return UpdateProjectProtectionBypass{
-		UpdateProjectProtectionBypass2: &updateProjectProtectionBypass2,
-		Type:                           typ,
+	return UpdateProjectProtectionBypassUnion{
+		UpdateProjectProtectionBypassAutomationBypass: &updateProjectProtectionBypassAutomationBypass,
+		Type: typ,
 	}
 }
 
-func (u *UpdateProjectProtectionBypass) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectProtectionBypass2 UpdateProjectProtectionBypass2 = UpdateProjectProtectionBypass2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypass2, "", true, true); err == nil {
-		u.UpdateProjectProtectionBypass2 = &updateProjectProtectionBypass2
-		u.Type = UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass2
+	var updateProjectProtectionBypassAutomationBypass UpdateProjectProtectionBypassAutomationBypass = UpdateProjectProtectionBypassAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassAutomationBypass, "", true, true); err == nil {
+		u.UpdateProjectProtectionBypassAutomationBypass = &updateProjectProtectionBypassAutomationBypass
+		u.Type = UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassAutomationBypass
 		return nil
 	}
 
-	var updateProjectProtectionBypass1 UpdateProjectProtectionBypass1 = UpdateProjectProtectionBypass1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypass1, "", true, true); err == nil {
-		u.UpdateProjectProtectionBypass1 = &updateProjectProtectionBypass1
-		u.Type = UpdateProjectProtectionBypassTypeUpdateProjectProtectionBypass1
+	var updateProjectProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassIntegrationAutomationBypass = UpdateProjectProtectionBypassIntegrationAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassIntegrationAutomationBypass, "", true, true); err == nil {
+		u.UpdateProjectProtectionBypassIntegrationAutomationBypass = &updateProjectProtectionBypassIntegrationAutomationBypass
+		u.Type = UpdateProjectProtectionBypassUnionTypeUpdateProjectProtectionBypassIntegrationAutomationBypass
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProtectionBypass", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProtectionBypassUnion", string(data))
 }
 
-func (u UpdateProjectProtectionBypass) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectProtectionBypass1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectProtectionBypass1, "", true)
+func (u UpdateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectProtectionBypassIntegrationAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassIntegrationAutomationBypass, "", true)
 	}
 
-	if u.UpdateProjectProtectionBypass2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectProtectionBypass2, "", true)
+	if u.UpdateProjectProtectionBypassAutomationBypass != nil {
+		return utils.MarshalJSON(u.UpdateProjectProtectionBypassAutomationBypass, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectProtectionBypass: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectProtectionBypassUnion: all fields are null")
 }
 
-type UpdateProjectTrustedIpsProjectsDeploymentType string
+type UpdateProjectTrustedIpsDeploymentTypeResponse2 string
 
 const (
-	UpdateProjectTrustedIpsProjectsDeploymentTypeProduction                       UpdateProjectTrustedIpsProjectsDeploymentType = "production"
-	UpdateProjectTrustedIpsProjectsDeploymentTypePreview                          UpdateProjectTrustedIpsProjectsDeploymentType = "preview"
-	UpdateProjectTrustedIpsProjectsDeploymentTypeAll                              UpdateProjectTrustedIpsProjectsDeploymentType = "all"
-	UpdateProjectTrustedIpsProjectsDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsProjectsDeploymentType = "prod_deployment_urls_and_all_previews"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Production                       UpdateProjectTrustedIpsDeploymentTypeResponse2 = "production"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2All                              UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse2 = "prod_deployment_urls_and_all_previews"
 )
 
-func (e UpdateProjectTrustedIpsProjectsDeploymentType) ToPointer() *UpdateProjectTrustedIpsProjectsDeploymentType {
+func (e UpdateProjectTrustedIpsDeploymentTypeResponse2) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse2 {
 	return &e
 }
-func (e *UpdateProjectTrustedIpsProjectsDeploymentType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTrustedIpsDeploymentTypeResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -8027,37 +7633,37 @@ func (e *UpdateProjectTrustedIpsProjectsDeploymentType) UnmarshalJSON(data []byt
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = UpdateProjectTrustedIpsProjectsDeploymentType(v)
+		*e = UpdateProjectTrustedIpsDeploymentTypeResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsProjectsDeploymentType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsDeploymentTypeResponse2: %v", v)
 	}
 }
 
-type UpdateProjectTrustedIps2 struct {
-	DeploymentType UpdateProjectTrustedIpsProjectsDeploymentType `json:"deploymentType"`
+type UpdateProjectTrustedIpsResponse2 struct {
+	DeploymentType UpdateProjectTrustedIpsDeploymentTypeResponse2 `json:"deploymentType"`
 }
 
-func (o *UpdateProjectTrustedIps2) GetDeploymentType() UpdateProjectTrustedIpsProjectsDeploymentType {
+func (o *UpdateProjectTrustedIpsResponse2) GetDeploymentType() UpdateProjectTrustedIpsDeploymentTypeResponse2 {
 	if o == nil {
-		return UpdateProjectTrustedIpsProjectsDeploymentType("")
+		return UpdateProjectTrustedIpsDeploymentTypeResponse2("")
 	}
 	return o.DeploymentType
 }
 
-type UpdateProjectTrustedIpsDeploymentType string
+type UpdateProjectTrustedIpsDeploymentTypeResponse1 string
 
 const (
-	UpdateProjectTrustedIpsDeploymentTypeProduction                       UpdateProjectTrustedIpsDeploymentType = "production"
-	UpdateProjectTrustedIpsDeploymentTypePreview                          UpdateProjectTrustedIpsDeploymentType = "preview"
-	UpdateProjectTrustedIpsDeploymentTypeAll                              UpdateProjectTrustedIpsDeploymentType = "all"
-	UpdateProjectTrustedIpsDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentType = "prod_deployment_urls_and_all_previews"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1Production                       UpdateProjectTrustedIpsDeploymentTypeResponse1 = "production"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1All                              UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse1 = "prod_deployment_urls_and_all_previews"
 )
 
-func (e UpdateProjectTrustedIpsDeploymentType) ToPointer() *UpdateProjectTrustedIpsDeploymentType {
+func (e UpdateProjectTrustedIpsDeploymentTypeResponse1) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse1 {
 	return &e
 }
-func (e *UpdateProjectTrustedIpsDeploymentType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectTrustedIpsDeploymentTypeResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -8070,43 +7676,43 @@ func (e *UpdateProjectTrustedIpsDeploymentType) UnmarshalJSON(data []byte) error
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = UpdateProjectTrustedIpsDeploymentType(v)
+		*e = UpdateProjectTrustedIpsDeploymentTypeResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsDeploymentType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsDeploymentTypeResponse1: %v", v)
 	}
 }
 
-type UpdateProjectTrustedIpsAddresses struct {
+type UpdateProjectAddressResponse struct {
 	Value string  `json:"value"`
 	Note  *string `json:"note,omitempty"`
 }
 
-func (o *UpdateProjectTrustedIpsAddresses) GetValue() string {
+func (o *UpdateProjectAddressResponse) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UpdateProjectTrustedIpsAddresses) GetNote() *string {
+func (o *UpdateProjectAddressResponse) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-type UpdateProjectTrustedIpsProtectionMode string
+type UpdateProjectProtectionModeResponse string
 
 const (
-	UpdateProjectTrustedIpsProtectionModeAdditional UpdateProjectTrustedIpsProtectionMode = "additional"
-	UpdateProjectTrustedIpsProtectionModeExclusive  UpdateProjectTrustedIpsProtectionMode = "exclusive"
+	UpdateProjectProtectionModeResponseAdditional UpdateProjectProtectionModeResponse = "additional"
+	UpdateProjectProtectionModeResponseExclusive  UpdateProjectProtectionModeResponse = "exclusive"
 )
 
-func (e UpdateProjectTrustedIpsProtectionMode) ToPointer() *UpdateProjectTrustedIpsProtectionMode {
+func (e UpdateProjectProtectionModeResponse) ToPointer() *UpdateProjectProtectionModeResponse {
 	return &e
 }
-func (e *UpdateProjectTrustedIpsProtectionMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectProtectionModeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -8115,101 +7721,101 @@ func (e *UpdateProjectTrustedIpsProtectionMode) UnmarshalJSON(data []byte) error
 	case "additional":
 		fallthrough
 	case "exclusive":
-		*e = UpdateProjectTrustedIpsProtectionMode(v)
+		*e = UpdateProjectProtectionModeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectTrustedIpsProtectionMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectProtectionModeResponse: %v", v)
 	}
 }
 
-type UpdateProjectTrustedIps1 struct {
-	DeploymentType UpdateProjectTrustedIpsDeploymentType `json:"deploymentType"`
-	Addresses      []UpdateProjectTrustedIpsAddresses    `json:"addresses"`
-	ProtectionMode UpdateProjectTrustedIpsProtectionMode `json:"protectionMode"`
+type UpdateProjectTrustedIpsResponse1 struct {
+	DeploymentType UpdateProjectTrustedIpsDeploymentTypeResponse1 `json:"deploymentType"`
+	Addresses      []UpdateProjectAddressResponse                 `json:"addresses"`
+	ProtectionMode UpdateProjectProtectionModeResponse            `json:"protectionMode"`
 }
 
-func (o *UpdateProjectTrustedIps1) GetDeploymentType() UpdateProjectTrustedIpsDeploymentType {
+func (o *UpdateProjectTrustedIpsResponse1) GetDeploymentType() UpdateProjectTrustedIpsDeploymentTypeResponse1 {
 	if o == nil {
-		return UpdateProjectTrustedIpsDeploymentType("")
+		return UpdateProjectTrustedIpsDeploymentTypeResponse1("")
 	}
 	return o.DeploymentType
 }
 
-func (o *UpdateProjectTrustedIps1) GetAddresses() []UpdateProjectTrustedIpsAddresses {
+func (o *UpdateProjectTrustedIpsResponse1) GetAddresses() []UpdateProjectAddressResponse {
 	if o == nil {
-		return []UpdateProjectTrustedIpsAddresses{}
+		return []UpdateProjectAddressResponse{}
 	}
 	return o.Addresses
 }
 
-func (o *UpdateProjectTrustedIps1) GetProtectionMode() UpdateProjectTrustedIpsProtectionMode {
+func (o *UpdateProjectTrustedIpsResponse1) GetProtectionMode() UpdateProjectProtectionModeResponse {
 	if o == nil {
-		return UpdateProjectTrustedIpsProtectionMode("")
+		return UpdateProjectProtectionModeResponse("")
 	}
 	return o.ProtectionMode
 }
 
-type UpdateProjectTrustedIpsType string
+type UpdateProjectTrustedIpsUnionType string
 
 const (
-	UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps1 UpdateProjectTrustedIpsType = "updateProject_trustedIps_1"
-	UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps2 UpdateProjectTrustedIpsType = "updateProject_trustedIps_2"
+	UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse1 UpdateProjectTrustedIpsUnionType = "updateProject_trustedIps_response_1"
+	UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse2 UpdateProjectTrustedIpsUnionType = "updateProject_trustedIps_response_2"
 )
 
-type UpdateProjectTrustedIps struct {
-	UpdateProjectTrustedIps1 *UpdateProjectTrustedIps1
-	UpdateProjectTrustedIps2 *UpdateProjectTrustedIps2
+type UpdateProjectTrustedIpsUnion struct {
+	UpdateProjectTrustedIpsResponse1 *UpdateProjectTrustedIpsResponse1 `queryParam:"inline"`
+	UpdateProjectTrustedIpsResponse2 *UpdateProjectTrustedIpsResponse2 `queryParam:"inline"`
 
-	Type UpdateProjectTrustedIpsType
+	Type UpdateProjectTrustedIpsUnionType
 }
 
-func CreateUpdateProjectTrustedIpsUpdateProjectTrustedIps1(updateProjectTrustedIps1 UpdateProjectTrustedIps1) UpdateProjectTrustedIps {
-	typ := UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps1
+func CreateUpdateProjectTrustedIpsUnionUpdateProjectTrustedIpsResponse1(updateProjectTrustedIpsResponse1 UpdateProjectTrustedIpsResponse1) UpdateProjectTrustedIpsUnion {
+	typ := UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse1
 
-	return UpdateProjectTrustedIps{
-		UpdateProjectTrustedIps1: &updateProjectTrustedIps1,
-		Type:                     typ,
+	return UpdateProjectTrustedIpsUnion{
+		UpdateProjectTrustedIpsResponse1: &updateProjectTrustedIpsResponse1,
+		Type:                             typ,
 	}
 }
 
-func CreateUpdateProjectTrustedIpsUpdateProjectTrustedIps2(updateProjectTrustedIps2 UpdateProjectTrustedIps2) UpdateProjectTrustedIps {
-	typ := UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps2
+func CreateUpdateProjectTrustedIpsUnionUpdateProjectTrustedIpsResponse2(updateProjectTrustedIpsResponse2 UpdateProjectTrustedIpsResponse2) UpdateProjectTrustedIpsUnion {
+	typ := UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse2
 
-	return UpdateProjectTrustedIps{
-		UpdateProjectTrustedIps2: &updateProjectTrustedIps2,
-		Type:                     typ,
+	return UpdateProjectTrustedIpsUnion{
+		UpdateProjectTrustedIpsResponse2: &updateProjectTrustedIpsResponse2,
+		Type:                             typ,
 	}
 }
 
-func (u *UpdateProjectTrustedIps) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectTrustedIpsUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectTrustedIps2 UpdateProjectTrustedIps2 = UpdateProjectTrustedIps2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectTrustedIps2, "", true, true); err == nil {
-		u.UpdateProjectTrustedIps2 = &updateProjectTrustedIps2
-		u.Type = UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps2
+	var updateProjectTrustedIpsResponse2 UpdateProjectTrustedIpsResponse2 = UpdateProjectTrustedIpsResponse2{}
+	if err := utils.UnmarshalJSON(data, &updateProjectTrustedIpsResponse2, "", true, true); err == nil {
+		u.UpdateProjectTrustedIpsResponse2 = &updateProjectTrustedIpsResponse2
+		u.Type = UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse2
 		return nil
 	}
 
-	var updateProjectTrustedIps1 UpdateProjectTrustedIps1 = UpdateProjectTrustedIps1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectTrustedIps1, "", true, true); err == nil {
-		u.UpdateProjectTrustedIps1 = &updateProjectTrustedIps1
-		u.Type = UpdateProjectTrustedIpsTypeUpdateProjectTrustedIps1
+	var updateProjectTrustedIpsResponse1 UpdateProjectTrustedIpsResponse1 = UpdateProjectTrustedIpsResponse1{}
+	if err := utils.UnmarshalJSON(data, &updateProjectTrustedIpsResponse1, "", true, true); err == nil {
+		u.UpdateProjectTrustedIpsResponse1 = &updateProjectTrustedIpsResponse1
+		u.Type = UpdateProjectTrustedIpsUnionTypeUpdateProjectTrustedIpsResponse1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectTrustedIps", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectTrustedIpsUnion", string(data))
 }
 
-func (u UpdateProjectTrustedIps) MarshalJSON() ([]byte, error) {
-	if u.UpdateProjectTrustedIps1 != nil {
-		return utils.MarshalJSON(u.UpdateProjectTrustedIps1, "", true)
+func (u UpdateProjectTrustedIpsUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateProjectTrustedIpsResponse1 != nil {
+		return utils.MarshalJSON(u.UpdateProjectTrustedIpsResponse1, "", true)
 	}
 
-	if u.UpdateProjectTrustedIps2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectTrustedIps2, "", true)
+	if u.UpdateProjectTrustedIpsResponse2 != nil {
+		return utils.MarshalJSON(u.UpdateProjectTrustedIpsResponse2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectTrustedIps: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectTrustedIpsUnion: all fields are null")
 }
 
 type UpdateProjectGitComments struct {
@@ -8315,7 +7921,7 @@ func (o *UpdateProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
-type UpdateProjectSrc2 struct {
+type UpdateProjectSrc struct {
 	Re   *string  `json:"re,omitempty"`
 	Eq   *string  `json:"eq,omitempty"`
 	Neq  *string  `json:"neq,omitempty"`
@@ -8329,167 +7935,167 @@ type UpdateProjectSrc2 struct {
 	Lte  *float64 `json:"lte,omitempty"`
 }
 
-func (o *UpdateProjectSrc2) GetRe() *string {
+func (o *UpdateProjectSrc) GetRe() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Re
 }
 
-func (o *UpdateProjectSrc2) GetEq() *string {
+func (o *UpdateProjectSrc) GetEq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Eq
 }
 
-func (o *UpdateProjectSrc2) GetNeq() *string {
+func (o *UpdateProjectSrc) GetNeq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Neq
 }
 
-func (o *UpdateProjectSrc2) GetInc() []string {
+func (o *UpdateProjectSrc) GetInc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Inc
 }
 
-func (o *UpdateProjectSrc2) GetNinc() []string {
+func (o *UpdateProjectSrc) GetNinc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Ninc
 }
 
-func (o *UpdateProjectSrc2) GetPre() *string {
+func (o *UpdateProjectSrc) GetPre() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Pre
 }
 
-func (o *UpdateProjectSrc2) GetSuf() *string {
+func (o *UpdateProjectSrc) GetSuf() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Suf
 }
 
-func (o *UpdateProjectSrc2) GetGt() *float64 {
+func (o *UpdateProjectSrc) GetGt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gt
 }
 
-func (o *UpdateProjectSrc2) GetGte() *float64 {
+func (o *UpdateProjectSrc) GetGte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gte
 }
 
-func (o *UpdateProjectSrc2) GetLt() *float64 {
+func (o *UpdateProjectSrc) GetLt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lt
 }
 
-func (o *UpdateProjectSrc2) GetLte() *float64 {
+func (o *UpdateProjectSrc) GetLte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lte
 }
 
-type UpdateProjectSrcType string
+type UpdateProjectSrcUnionType string
 
 const (
-	UpdateProjectSrcTypeStr               UpdateProjectSrcType = "str"
-	UpdateProjectSrcTypeUpdateProjectSrc2 UpdateProjectSrcType = "updateProject_src_2"
+	UpdateProjectSrcUnionTypeStr              UpdateProjectSrcUnionType = "str"
+	UpdateProjectSrcUnionTypeUpdateProjectSrc UpdateProjectSrcUnionType = "updateProject_src"
 )
 
-type UpdateProjectSrc struct {
-	Str               *string
-	UpdateProjectSrc2 *UpdateProjectSrc2
+type UpdateProjectSrcUnion struct {
+	Str              *string           `queryParam:"inline"`
+	UpdateProjectSrc *UpdateProjectSrc `queryParam:"inline"`
 
-	Type UpdateProjectSrcType
+	Type UpdateProjectSrcUnionType
 }
 
-func CreateUpdateProjectSrcStr(str string) UpdateProjectSrc {
-	typ := UpdateProjectSrcTypeStr
+func CreateUpdateProjectSrcUnionStr(str string) UpdateProjectSrcUnion {
+	typ := UpdateProjectSrcUnionTypeStr
 
-	return UpdateProjectSrc{
+	return UpdateProjectSrcUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectSrcUpdateProjectSrc2(updateProjectSrc2 UpdateProjectSrc2) UpdateProjectSrc {
-	typ := UpdateProjectSrcTypeUpdateProjectSrc2
+func CreateUpdateProjectSrcUnionUpdateProjectSrc(updateProjectSrc UpdateProjectSrc) UpdateProjectSrcUnion {
+	typ := UpdateProjectSrcUnionTypeUpdateProjectSrc
 
-	return UpdateProjectSrc{
-		UpdateProjectSrc2: &updateProjectSrc2,
-		Type:              typ,
+	return UpdateProjectSrcUnion{
+		UpdateProjectSrc: &updateProjectSrc,
+		Type:             typ,
 	}
 }
 
-func (u *UpdateProjectSrc) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectSrcUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectSrc2 UpdateProjectSrc2 = UpdateProjectSrc2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectSrc2, "", true, true); err == nil {
-		u.UpdateProjectSrc2 = &updateProjectSrc2
-		u.Type = UpdateProjectSrcTypeUpdateProjectSrc2
+	var updateProjectSrc UpdateProjectSrc = UpdateProjectSrc{}
+	if err := utils.UnmarshalJSON(data, &updateProjectSrc, "", true, true); err == nil {
+		u.UpdateProjectSrc = &updateProjectSrc
+		u.Type = UpdateProjectSrcUnionTypeUpdateProjectSrc
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateProjectSrcTypeStr
+		u.Type = UpdateProjectSrcUnionTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectSrc", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectSrcUnion", string(data))
 }
 
-func (u UpdateProjectSrc) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectSrcUnion) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UpdateProjectSrc2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectSrc2, "", true)
+	if u.UpdateProjectSrc != nil {
+		return utils.MarshalJSON(u.UpdateProjectSrc, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectSrc: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectSrcUnion: all fields are null")
 }
 
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType string
+type UpdateProjectHasType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "path"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "host"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "method"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "header"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "cookie"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeQuery              UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "query"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeIPAddress          UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "ip_address"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeProtocol           UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "protocol"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeScheme             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "scheme"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeEnvironment        UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "environment"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeRegion             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "region"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityTypeInitialRequestPath UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType = "initial_request_path"
+	UpdateProjectHasTypePath               UpdateProjectHasType = "path"
+	UpdateProjectHasTypeHost               UpdateProjectHasType = "host"
+	UpdateProjectHasTypeMethod             UpdateProjectHasType = "method"
+	UpdateProjectHasTypeHeader             UpdateProjectHasType = "header"
+	UpdateProjectHasTypeCookie             UpdateProjectHasType = "cookie"
+	UpdateProjectHasTypeQuery              UpdateProjectHasType = "query"
+	UpdateProjectHasTypeIPAddress          UpdateProjectHasType = "ip_address"
+	UpdateProjectHasTypeProtocol           UpdateProjectHasType = "protocol"
+	UpdateProjectHasTypeScheme             UpdateProjectHasType = "scheme"
+	UpdateProjectHasTypeEnvironment        UpdateProjectHasType = "environment"
+	UpdateProjectHasTypeRegion             UpdateProjectHasType = "region"
+	UpdateProjectHasTypeInitialRequestPath UpdateProjectHasType = "initial_request_path"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType {
+func (e UpdateProjectHasType) ToPointer() *UpdateProjectHasType {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectHasType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -8518,14 +8124,14 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType
 	case "region":
 		fallthrough
 	case "initial_request_path":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType(v)
+		*e = UpdateProjectHasType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectHasType: %v", v)
 	}
 }
 
-type UpdateProjectValue2 struct {
+type UpdateProjectValueHas struct {
 	Re   *string  `json:"re,omitempty"`
 	Eq   *string  `json:"eq,omitempty"`
 	Neq  *string  `json:"neq,omitempty"`
@@ -8539,155 +8145,155 @@ type UpdateProjectValue2 struct {
 	Lte  *float64 `json:"lte,omitempty"`
 }
 
-func (o *UpdateProjectValue2) GetRe() *string {
+func (o *UpdateProjectValueHas) GetRe() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Re
 }
 
-func (o *UpdateProjectValue2) GetEq() *string {
+func (o *UpdateProjectValueHas) GetEq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Eq
 }
 
-func (o *UpdateProjectValue2) GetNeq() *string {
+func (o *UpdateProjectValueHas) GetNeq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Neq
 }
 
-func (o *UpdateProjectValue2) GetInc() []string {
+func (o *UpdateProjectValueHas) GetInc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Inc
 }
 
-func (o *UpdateProjectValue2) GetNinc() []string {
+func (o *UpdateProjectValueHas) GetNinc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Ninc
 }
 
-func (o *UpdateProjectValue2) GetPre() *string {
+func (o *UpdateProjectValueHas) GetPre() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Pre
 }
 
-func (o *UpdateProjectValue2) GetSuf() *string {
+func (o *UpdateProjectValueHas) GetSuf() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Suf
 }
 
-func (o *UpdateProjectValue2) GetGt() *float64 {
+func (o *UpdateProjectValueHas) GetGt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gt
 }
 
-func (o *UpdateProjectValue2) GetGte() *float64 {
+func (o *UpdateProjectValueHas) GetGte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gte
 }
 
-func (o *UpdateProjectValue2) GetLt() *float64 {
+func (o *UpdateProjectValueHas) GetLt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lt
 }
 
-func (o *UpdateProjectValue2) GetLte() *float64 {
+func (o *UpdateProjectValueHas) GetLte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lte
 }
 
-type UpdateProjectValueType string
+type UpdateProjectHasValueUnionType string
 
 const (
-	UpdateProjectValueTypeStr                 UpdateProjectValueType = "str"
-	UpdateProjectValueTypeUpdateProjectValue2 UpdateProjectValueType = "updateProject_value_2"
+	UpdateProjectHasValueUnionTypeStr                   UpdateProjectHasValueUnionType = "str"
+	UpdateProjectHasValueUnionTypeUpdateProjectValueHas UpdateProjectHasValueUnionType = "updateProject_value_has"
 )
 
-type UpdateProjectValue struct {
-	Str                 *string
-	UpdateProjectValue2 *UpdateProjectValue2
+type UpdateProjectHasValueUnion struct {
+	Str                   *string                `queryParam:"inline"`
+	UpdateProjectValueHas *UpdateProjectValueHas `queryParam:"inline"`
 
-	Type UpdateProjectValueType
+	Type UpdateProjectHasValueUnionType
 }
 
-func CreateUpdateProjectValueStr(str string) UpdateProjectValue {
-	typ := UpdateProjectValueTypeStr
+func CreateUpdateProjectHasValueUnionStr(str string) UpdateProjectHasValueUnion {
+	typ := UpdateProjectHasValueUnionTypeStr
 
-	return UpdateProjectValue{
+	return UpdateProjectHasValueUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectValueUpdateProjectValue2(updateProjectValue2 UpdateProjectValue2) UpdateProjectValue {
-	typ := UpdateProjectValueTypeUpdateProjectValue2
+func CreateUpdateProjectHasValueUnionUpdateProjectValueHas(updateProjectValueHas UpdateProjectValueHas) UpdateProjectHasValueUnion {
+	typ := UpdateProjectHasValueUnionTypeUpdateProjectValueHas
 
-	return UpdateProjectValue{
-		UpdateProjectValue2: &updateProjectValue2,
-		Type:                typ,
+	return UpdateProjectHasValueUnion{
+		UpdateProjectValueHas: &updateProjectValueHas,
+		Type:                  typ,
 	}
 }
 
-func (u *UpdateProjectValue) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectHasValueUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectValue2 UpdateProjectValue2 = UpdateProjectValue2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectValue2, "", true, true); err == nil {
-		u.UpdateProjectValue2 = &updateProjectValue2
-		u.Type = UpdateProjectValueTypeUpdateProjectValue2
+	var updateProjectValueHas UpdateProjectValueHas = UpdateProjectValueHas{}
+	if err := utils.UnmarshalJSON(data, &updateProjectValueHas, "", true, true); err == nil {
+		u.UpdateProjectValueHas = &updateProjectValueHas
+		u.Type = UpdateProjectHasValueUnionTypeUpdateProjectValueHas
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateProjectValueTypeStr
+		u.Type = UpdateProjectHasValueUnionTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectHasValueUnion", string(data))
 }
 
-func (u UpdateProjectValue) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectHasValueUnion) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UpdateProjectValue2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectValue2, "", true)
+	if u.UpdateProjectValueHas != nil {
+		return utils.MarshalJSON(u.UpdateProjectValueHas, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectValue: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectHasValueUnion: all fields are null")
 }
 
 type UpdateProjectHas struct {
-	Type  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType `json:"type"`
-	Key   *string                                                                 `json:"key,omitempty"`
-	Value *UpdateProjectValue                                                     `json:"value,omitempty"`
+	Type  UpdateProjectHasType        `json:"type"`
+	Key   *string                     `json:"key,omitempty"`
+	Value *UpdateProjectHasValueUnion `json:"value,omitempty"`
 }
 
-func (o *UpdateProjectHas) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType {
+func (o *UpdateProjectHas) GetType() UpdateProjectHasType {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityType("")
+		return UpdateProjectHasType("")
 	}
 	return o.Type
 }
@@ -8699,34 +8305,34 @@ func (o *UpdateProjectHas) GetKey() *string {
 	return o.Key
 }
 
-func (o *UpdateProjectHas) GetValue() *UpdateProjectValue {
+func (o *UpdateProjectHas) GetValue() *UpdateProjectHasValueUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType string
+type UpdateProjectMissingType string
 
 const (
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypePath               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "path"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHost               UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "host"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeMethod             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "method"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeHeader             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "header"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeCookie             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "cookie"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeQuery              UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "query"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeIPAddress          UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "ip_address"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeProtocol           UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "protocol"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeScheme             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "scheme"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeEnvironment        UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "environment"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeRegion             UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "region"
-	UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesTypeInitialRequestPath UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType = "initial_request_path"
+	UpdateProjectMissingTypePath               UpdateProjectMissingType = "path"
+	UpdateProjectMissingTypeHost               UpdateProjectMissingType = "host"
+	UpdateProjectMissingTypeMethod             UpdateProjectMissingType = "method"
+	UpdateProjectMissingTypeHeader             UpdateProjectMissingType = "header"
+	UpdateProjectMissingTypeCookie             UpdateProjectMissingType = "cookie"
+	UpdateProjectMissingTypeQuery              UpdateProjectMissingType = "query"
+	UpdateProjectMissingTypeIPAddress          UpdateProjectMissingType = "ip_address"
+	UpdateProjectMissingTypeProtocol           UpdateProjectMissingType = "protocol"
+	UpdateProjectMissingTypeScheme             UpdateProjectMissingType = "scheme"
+	UpdateProjectMissingTypeEnvironment        UpdateProjectMissingType = "environment"
+	UpdateProjectMissingTypeRegion             UpdateProjectMissingType = "region"
+	UpdateProjectMissingTypeInitialRequestPath UpdateProjectMissingType = "initial_request_path"
 )
 
-func (e UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType) ToPointer() *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType {
+func (e UpdateProjectMissingType) ToPointer() *UpdateProjectMissingType {
 	return &e
 }
-func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectMissingType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -8755,14 +8361,14 @@ func (e *UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFire
 	case "region":
 		fallthrough
 	case "initial_request_path":
-		*e = UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType(v)
+		*e = UpdateProjectMissingType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectMissingType: %v", v)
 	}
 }
 
-type UpdateProjectValueProjects2 struct {
+type UpdateProjectValueMissing struct {
 	Re   *string  `json:"re,omitempty"`
 	Eq   *string  `json:"eq,omitempty"`
 	Neq  *string  `json:"neq,omitempty"`
@@ -8776,155 +8382,155 @@ type UpdateProjectValueProjects2 struct {
 	Lte  *float64 `json:"lte,omitempty"`
 }
 
-func (o *UpdateProjectValueProjects2) GetRe() *string {
+func (o *UpdateProjectValueMissing) GetRe() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Re
 }
 
-func (o *UpdateProjectValueProjects2) GetEq() *string {
+func (o *UpdateProjectValueMissing) GetEq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Eq
 }
 
-func (o *UpdateProjectValueProjects2) GetNeq() *string {
+func (o *UpdateProjectValueMissing) GetNeq() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Neq
 }
 
-func (o *UpdateProjectValueProjects2) GetInc() []string {
+func (o *UpdateProjectValueMissing) GetInc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Inc
 }
 
-func (o *UpdateProjectValueProjects2) GetNinc() []string {
+func (o *UpdateProjectValueMissing) GetNinc() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Ninc
 }
 
-func (o *UpdateProjectValueProjects2) GetPre() *string {
+func (o *UpdateProjectValueMissing) GetPre() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Pre
 }
 
-func (o *UpdateProjectValueProjects2) GetSuf() *string {
+func (o *UpdateProjectValueMissing) GetSuf() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Suf
 }
 
-func (o *UpdateProjectValueProjects2) GetGt() *float64 {
+func (o *UpdateProjectValueMissing) GetGt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gt
 }
 
-func (o *UpdateProjectValueProjects2) GetGte() *float64 {
+func (o *UpdateProjectValueMissing) GetGte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Gte
 }
 
-func (o *UpdateProjectValueProjects2) GetLt() *float64 {
+func (o *UpdateProjectValueMissing) GetLt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lt
 }
 
-func (o *UpdateProjectValueProjects2) GetLte() *float64 {
+func (o *UpdateProjectValueMissing) GetLte() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Lte
 }
 
-type UpdateProjectProjectsValueType string
+type UpdateProjectMissingValueUnionType string
 
 const (
-	UpdateProjectProjectsValueTypeStr                         UpdateProjectProjectsValueType = "str"
-	UpdateProjectProjectsValueTypeUpdateProjectValueProjects2 UpdateProjectProjectsValueType = "updateProject_value_projects_2"
+	UpdateProjectMissingValueUnionTypeStr                       UpdateProjectMissingValueUnionType = "str"
+	UpdateProjectMissingValueUnionTypeUpdateProjectValueMissing UpdateProjectMissingValueUnionType = "updateProject_value_missing"
 )
 
-type UpdateProjectProjectsValue struct {
-	Str                         *string
-	UpdateProjectValueProjects2 *UpdateProjectValueProjects2
+type UpdateProjectMissingValueUnion struct {
+	Str                       *string                    `queryParam:"inline"`
+	UpdateProjectValueMissing *UpdateProjectValueMissing `queryParam:"inline"`
 
-	Type UpdateProjectProjectsValueType
+	Type UpdateProjectMissingValueUnionType
 }
 
-func CreateUpdateProjectProjectsValueStr(str string) UpdateProjectProjectsValue {
-	typ := UpdateProjectProjectsValueTypeStr
+func CreateUpdateProjectMissingValueUnionStr(str string) UpdateProjectMissingValueUnion {
+	typ := UpdateProjectMissingValueUnionTypeStr
 
-	return UpdateProjectProjectsValue{
+	return UpdateProjectMissingValueUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectProjectsValueUpdateProjectValueProjects2(updateProjectValueProjects2 UpdateProjectValueProjects2) UpdateProjectProjectsValue {
-	typ := UpdateProjectProjectsValueTypeUpdateProjectValueProjects2
+func CreateUpdateProjectMissingValueUnionUpdateProjectValueMissing(updateProjectValueMissing UpdateProjectValueMissing) UpdateProjectMissingValueUnion {
+	typ := UpdateProjectMissingValueUnionTypeUpdateProjectValueMissing
 
-	return UpdateProjectProjectsValue{
-		UpdateProjectValueProjects2: &updateProjectValueProjects2,
-		Type:                        typ,
+	return UpdateProjectMissingValueUnion{
+		UpdateProjectValueMissing: &updateProjectValueMissing,
+		Type:                      typ,
 	}
 }
 
-func (u *UpdateProjectProjectsValue) UnmarshalJSON(data []byte) error {
+func (u *UpdateProjectMissingValueUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectValueProjects2 UpdateProjectValueProjects2 = UpdateProjectValueProjects2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectValueProjects2, "", true, true); err == nil {
-		u.UpdateProjectValueProjects2 = &updateProjectValueProjects2
-		u.Type = UpdateProjectProjectsValueTypeUpdateProjectValueProjects2
+	var updateProjectValueMissing UpdateProjectValueMissing = UpdateProjectValueMissing{}
+	if err := utils.UnmarshalJSON(data, &updateProjectValueMissing, "", true, true); err == nil {
+		u.UpdateProjectValueMissing = &updateProjectValueMissing
+		u.Type = UpdateProjectMissingValueUnionTypeUpdateProjectValueMissing
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = UpdateProjectProjectsValueTypeStr
+		u.Type = UpdateProjectMissingValueUnionTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectProjectsValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectMissingValueUnion", string(data))
 }
 
-func (u UpdateProjectProjectsValue) MarshalJSON() ([]byte, error) {
+func (u UpdateProjectMissingValueUnion) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UpdateProjectValueProjects2 != nil {
-		return utils.MarshalJSON(u.UpdateProjectValueProjects2, "", true)
+	if u.UpdateProjectValueMissing != nil {
+		return utils.MarshalJSON(u.UpdateProjectValueMissing, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateProjectProjectsValue: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateProjectMissingValueUnion: all fields are null")
 }
 
 type UpdateProjectMissing struct {
-	Type  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType `json:"type"`
-	Key   *string                                                                               `json:"key,omitempty"`
-	Value *UpdateProjectProjectsValue                                                           `json:"value,omitempty"`
+	Type  UpdateProjectMissingType        `json:"type"`
+	Key   *string                         `json:"key,omitempty"`
+	Value *UpdateProjectMissingValueUnion `json:"value,omitempty"`
 }
 
-func (o *UpdateProjectMissing) GetType() UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType {
+func (o *UpdateProjectMissing) GetType() UpdateProjectMissingType {
 	if o == nil {
-		return UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType("")
+		return UpdateProjectMissingType("")
 	}
 	return o.Type
 }
@@ -8936,7 +8542,7 @@ func (o *UpdateProjectMissing) GetKey() *string {
 	return o.Key
 }
 
-func (o *UpdateProjectMissing) GetValue() *UpdateProjectProjectsValue {
+func (o *UpdateProjectMissing) GetValue() *UpdateProjectMissingValueUnion {
 	if o == nil {
 		return nil
 	}
@@ -8969,21 +8575,21 @@ func (e *UpdateProjectHandle) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectProjectsAction string
+type UpdateProjectFirewallRouteAction string
 
 const (
-	UpdateProjectProjectsActionDeny      UpdateProjectProjectsAction = "deny"
-	UpdateProjectProjectsActionChallenge UpdateProjectProjectsAction = "challenge"
-	UpdateProjectProjectsActionLog       UpdateProjectProjectsAction = "log"
-	UpdateProjectProjectsActionBypass    UpdateProjectProjectsAction = "bypass"
-	UpdateProjectProjectsActionRateLimit UpdateProjectProjectsAction = "rate_limit"
-	UpdateProjectProjectsActionRedirect  UpdateProjectProjectsAction = "redirect"
+	UpdateProjectFirewallRouteActionDeny      UpdateProjectFirewallRouteAction = "deny"
+	UpdateProjectFirewallRouteActionChallenge UpdateProjectFirewallRouteAction = "challenge"
+	UpdateProjectFirewallRouteActionLog       UpdateProjectFirewallRouteAction = "log"
+	UpdateProjectFirewallRouteActionBypass    UpdateProjectFirewallRouteAction = "bypass"
+	UpdateProjectFirewallRouteActionRateLimit UpdateProjectFirewallRouteAction = "rate_limit"
+	UpdateProjectFirewallRouteActionRedirect  UpdateProjectFirewallRouteAction = "redirect"
 )
 
-func (e UpdateProjectProjectsAction) ToPointer() *UpdateProjectProjectsAction {
+func (e UpdateProjectFirewallRouteAction) ToPointer() *UpdateProjectFirewallRouteAction {
 	return &e
 }
-func (e *UpdateProjectProjectsAction) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectFirewallRouteAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -9000,10 +8606,10 @@ func (e *UpdateProjectProjectsAction) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = UpdateProjectProjectsAction(v)
+		*e = UpdateProjectFirewallRouteAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsAction: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectFirewallRouteAction: %v", v)
 	}
 }
 
@@ -9069,15 +8675,15 @@ func (o *UpdateProjectErl) GetKeys() []string {
 }
 
 type UpdateProjectMitigate struct {
-	Action UpdateProjectProjectsAction `json:"action"`
-	RuleID string                      `json:"rule_id"`
-	TTL    *float64                    `json:"ttl,omitempty"`
-	Erl    *UpdateProjectErl           `json:"erl,omitempty"`
+	Action UpdateProjectFirewallRouteAction `json:"action"`
+	RuleID string                           `json:"rule_id"`
+	TTL    *float64                         `json:"ttl,omitempty"`
+	Erl    *UpdateProjectErl                `json:"erl,omitempty"`
 }
 
-func (o *UpdateProjectMitigate) GetAction() UpdateProjectProjectsAction {
+func (o *UpdateProjectMitigate) GetAction() UpdateProjectFirewallRouteAction {
 	if o == nil {
-		return UpdateProjectProjectsAction("")
+		return UpdateProjectFirewallRouteAction("")
 	}
 	return o.Action
 }
@@ -9103,8 +8709,8 @@ func (o *UpdateProjectMitigate) GetErl() *UpdateProjectErl {
 	return o.Erl
 }
 
-type UpdateProjectFirewallRoutes struct {
-	Src      *UpdateProjectSrc      `json:"src,omitempty"`
+type UpdateProjectFirewallRoute struct {
+	Src      *UpdateProjectSrcUnion `json:"src,omitempty"`
 	Has      []UpdateProjectHas     `json:"has,omitempty"`
 	Missing  []UpdateProjectMissing `json:"missing,omitempty"`
 	Dest     *string                `json:"dest,omitempty"`
@@ -9113,67 +8719,67 @@ type UpdateProjectFirewallRoutes struct {
 	Mitigate *UpdateProjectMitigate `json:"mitigate,omitempty"`
 }
 
-func (o *UpdateProjectFirewallRoutes) GetSrc() *UpdateProjectSrc {
+func (o *UpdateProjectFirewallRoute) GetSrc() *UpdateProjectSrcUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Src
 }
 
-func (o *UpdateProjectFirewallRoutes) GetHas() []UpdateProjectHas {
+func (o *UpdateProjectFirewallRoute) GetHas() []UpdateProjectHas {
 	if o == nil {
 		return nil
 	}
 	return o.Has
 }
 
-func (o *UpdateProjectFirewallRoutes) GetMissing() []UpdateProjectMissing {
+func (o *UpdateProjectFirewallRoute) GetMissing() []UpdateProjectMissing {
 	if o == nil {
 		return nil
 	}
 	return o.Missing
 }
 
-func (o *UpdateProjectFirewallRoutes) GetDest() *string {
+func (o *UpdateProjectFirewallRoute) GetDest() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Dest
 }
 
-func (o *UpdateProjectFirewallRoutes) GetStatus() *float64 {
+func (o *UpdateProjectFirewallRoute) GetStatus() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Status
 }
 
-func (o *UpdateProjectFirewallRoutes) GetHandle() *UpdateProjectHandle {
+func (o *UpdateProjectFirewallRoute) GetHandle() *UpdateProjectHandle {
 	if o == nil {
 		return nil
 	}
 	return o.Handle
 }
 
-func (o *UpdateProjectFirewallRoutes) GetMitigate() *UpdateProjectMitigate {
+func (o *UpdateProjectFirewallRoute) GetMitigate() *UpdateProjectMitigate {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type UpdateProjectAction string
+type UpdateProjectBotFilterAction string
 
 const (
-	UpdateProjectActionDeny      UpdateProjectAction = "deny"
-	UpdateProjectActionChallenge UpdateProjectAction = "challenge"
-	UpdateProjectActionLog       UpdateProjectAction = "log"
+	UpdateProjectBotFilterActionDeny      UpdateProjectBotFilterAction = "deny"
+	UpdateProjectBotFilterActionChallenge UpdateProjectBotFilterAction = "challenge"
+	UpdateProjectBotFilterActionLog       UpdateProjectBotFilterAction = "log"
 )
 
-func (e UpdateProjectAction) ToPointer() *UpdateProjectAction {
+func (e UpdateProjectBotFilterAction) ToPointer() *UpdateProjectBotFilterAction {
 	return &e
 }
-func (e *UpdateProjectAction) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectBotFilterAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -9184,45 +8790,168 @@ func (e *UpdateProjectAction) UnmarshalJSON(data []byte) error {
 	case "challenge":
 		fallthrough
 	case "log":
-		*e = UpdateProjectAction(v)
+		*e = UpdateProjectBotFilterAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectAction: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectBotFilterAction: %v", v)
 	}
 }
 
-type UpdateProjectManagedRules struct {
-	Active bool                 `json:"active"`
-	Action *UpdateProjectAction `json:"action,omitempty"`
+type UpdateProjectBotFilter struct {
+	Active bool                          `json:"active"`
+	Action *UpdateProjectBotFilterAction `json:"action,omitempty"`
 }
 
-func (o *UpdateProjectManagedRules) GetActive() bool {
+func (o *UpdateProjectBotFilter) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateProjectManagedRules) GetAction() *UpdateProjectAction {
+func (o *UpdateProjectBotFilter) GetAction() *UpdateProjectBotFilterAction {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
+type UpdateProjectAiBotsAction string
+
+const (
+	UpdateProjectAiBotsActionDeny      UpdateProjectAiBotsAction = "deny"
+	UpdateProjectAiBotsActionChallenge UpdateProjectAiBotsAction = "challenge"
+	UpdateProjectAiBotsActionLog       UpdateProjectAiBotsAction = "log"
+)
+
+func (e UpdateProjectAiBotsAction) ToPointer() *UpdateProjectAiBotsAction {
+	return &e
+}
+func (e *UpdateProjectAiBotsAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "log":
+		*e = UpdateProjectAiBotsAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectAiBotsAction: %v", v)
+	}
+}
+
+type UpdateProjectAiBots struct {
+	Active bool                       `json:"active"`
+	Action *UpdateProjectAiBotsAction `json:"action,omitempty"`
+}
+
+func (o *UpdateProjectAiBots) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateProjectAiBots) GetAction() *UpdateProjectAiBotsAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateProjectOwaspAction string
+
+const (
+	UpdateProjectOwaspActionDeny      UpdateProjectOwaspAction = "deny"
+	UpdateProjectOwaspActionChallenge UpdateProjectOwaspAction = "challenge"
+	UpdateProjectOwaspActionLog       UpdateProjectOwaspAction = "log"
+)
+
+func (e UpdateProjectOwaspAction) ToPointer() *UpdateProjectOwaspAction {
+	return &e
+}
+func (e *UpdateProjectOwaspAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "log":
+		*e = UpdateProjectOwaspAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectOwaspAction: %v", v)
+	}
+}
+
+type UpdateProjectOwasp struct {
+	Active bool                      `json:"active"`
+	Action *UpdateProjectOwaspAction `json:"action,omitempty"`
+}
+
+func (o *UpdateProjectOwasp) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateProjectOwasp) GetAction() *UpdateProjectOwaspAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type UpdateProjectManagedRules struct {
+	BotFilter UpdateProjectBotFilter `json:"bot_filter"`
+	AiBots    UpdateProjectAiBots    `json:"ai_bots"`
+	Owasp     UpdateProjectOwasp     `json:"owasp"`
+}
+
+func (o *UpdateProjectManagedRules) GetBotFilter() UpdateProjectBotFilter {
+	if o == nil {
+		return UpdateProjectBotFilter{}
+	}
+	return o.BotFilter
+}
+
+func (o *UpdateProjectManagedRules) GetAiBots() UpdateProjectAiBots {
+	if o == nil {
+		return UpdateProjectAiBots{}
+	}
+	return o.AiBots
+}
+
+func (o *UpdateProjectManagedRules) GetOwasp() UpdateProjectOwasp {
+	if o == nil {
+		return UpdateProjectOwasp{}
+	}
+	return o.Owasp
+}
+
 type UpdateProjectSecurity struct {
-	AttackModeEnabled      *bool                                `json:"attackModeEnabled,omitempty"`
-	AttackModeUpdatedAt    *float64                             `json:"attackModeUpdatedAt,omitempty"`
-	FirewallEnabled        *bool                                `json:"firewallEnabled,omitempty"`
-	FirewallUpdatedAt      *float64                             `json:"firewallUpdatedAt,omitempty"`
-	AttackModeActiveUntil  *float64                             `json:"attackModeActiveUntil,omitempty"`
-	FirewallConfigVersion  *float64                             `json:"firewallConfigVersion,omitempty"`
-	FirewallRoutes         []UpdateProjectFirewallRoutes        `json:"firewallRoutes,omitempty"`
-	FirewallSeawallEnabled *bool                                `json:"firewallSeawallEnabled,omitempty"`
-	Ja3Enabled             *bool                                `json:"ja3Enabled,omitempty"`
-	Ja4Enabled             *bool                                `json:"ja4Enabled,omitempty"`
-	FirewallBypassIps      []string                             `json:"firewallBypassIps,omitempty"`
-	ManagedRules           map[string]UpdateProjectManagedRules `json:"managedRules,omitempty"`
+	AttackModeEnabled      *bool                        `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                     `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                        `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                     `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  *float64                     `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                     `json:"firewallConfigVersion,omitempty"`
+	FirewallRoutes         []UpdateProjectFirewallRoute `json:"firewallRoutes,omitempty"`
+	FirewallSeawallEnabled *bool                        `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                        `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                        `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                     `json:"firewallBypassIps,omitempty"`
+	ManagedRules           *UpdateProjectManagedRules   `json:"managedRules,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -9267,7 +8996,7 @@ func (o *UpdateProjectSecurity) GetFirewallConfigVersion() *float64 {
 	return o.FirewallConfigVersion
 }
 
-func (o *UpdateProjectSecurity) GetFirewallRoutes() []UpdateProjectFirewallRoutes {
+func (o *UpdateProjectSecurity) GetFirewallRoutes() []UpdateProjectFirewallRoute {
 	if o == nil {
 		return nil
 	}
@@ -9302,25 +9031,25 @@ func (o *UpdateProjectSecurity) GetFirewallBypassIps() []string {
 	return o.FirewallBypassIps
 }
 
-func (o *UpdateProjectSecurity) GetManagedRules() map[string]UpdateProjectManagedRules {
+func (o *UpdateProjectSecurity) GetManagedRules() *UpdateProjectManagedRules {
 	if o == nil {
 		return nil
 	}
 	return o.ManagedRules
 }
 
-// UpdateProjectProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
-type UpdateProjectProjectsIssuerMode string
+// UpdateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
+type UpdateProjectIssuerModeResponse string
 
 const (
-	UpdateProjectProjectsIssuerModeTeam   UpdateProjectProjectsIssuerMode = "team"
-	UpdateProjectProjectsIssuerModeGlobal UpdateProjectProjectsIssuerMode = "global"
+	UpdateProjectIssuerModeResponseTeam   UpdateProjectIssuerModeResponse = "team"
+	UpdateProjectIssuerModeResponseGlobal UpdateProjectIssuerModeResponse = "global"
 )
 
-func (e UpdateProjectProjectsIssuerMode) ToPointer() *UpdateProjectProjectsIssuerMode {
+func (e UpdateProjectIssuerModeResponse) ToPointer() *UpdateProjectIssuerModeResponse {
 	return &e
 }
-func (e *UpdateProjectProjectsIssuerMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectIssuerModeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -9329,27 +9058,28 @@ func (e *UpdateProjectProjectsIssuerMode) UnmarshalJSON(data []byte) error {
 	case "team":
 		fallthrough
 	case "global":
-		*e = UpdateProjectProjectsIssuerMode(v)
+		*e = UpdateProjectIssuerModeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectProjectsIssuerMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectIssuerModeResponse: %v", v)
 	}
 }
 
-type UpdateProjectProjectsOidcTokenConfig struct {
-	Enabled bool `json:"enabled"`
+type UpdateProjectOidcTokenConfigResponse struct {
+	// Whether or not to generate OpenID Connect JSON Web Tokens.
+	Enabled *bool `json:"enabled,omitempty"`
 	// - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
-	IssuerMode *UpdateProjectProjectsIssuerMode `json:"issuerMode,omitempty"`
+	IssuerMode *UpdateProjectIssuerModeResponse `json:"issuerMode,omitempty"`
 }
 
-func (o *UpdateProjectProjectsOidcTokenConfig) GetEnabled() bool {
+func (o *UpdateProjectOidcTokenConfigResponse) GetEnabled() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.Enabled
 }
 
-func (o *UpdateProjectProjectsOidcTokenConfig) GetIssuerMode() *UpdateProjectProjectsIssuerMode {
+func (o *UpdateProjectOidcTokenConfigResponse) GetIssuerMode() *UpdateProjectIssuerModeResponse {
 	if o == nil {
 		return nil
 	}
@@ -9385,80 +9115,94 @@ func (e *UpdateProjectTier) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateProjectFeatures struct {
+	WebAnalytics *bool `json:"webAnalytics,omitempty"`
+}
+
+func (o *UpdateProjectFeatures) GetWebAnalytics() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
 // UpdateProjectResponseBody - The project was successfully updated
 type UpdateProjectResponseBody struct {
-	AccountID                            string                                   `json:"accountId"`
-	Analytics                            *UpdateProjectAnalytics                  `json:"analytics,omitempty"`
-	SpeedInsights                        *UpdateProjectSpeedInsights              `json:"speedInsights,omitempty"`
-	AutoExposeSystemEnvs                 *bool                                    `json:"autoExposeSystemEnvs,omitempty"`
-	AutoAssignCustomDomains              *bool                                    `json:"autoAssignCustomDomains,omitempty"`
-	AutoAssignCustomDomainsUpdatedBy     *string                                  `json:"autoAssignCustomDomainsUpdatedBy,omitempty"`
-	BuildCommand                         *string                                  `json:"buildCommand,omitempty"`
-	CommandForIgnoringBuildStep          *string                                  `json:"commandForIgnoringBuildStep,omitempty"`
-	ConnectConfigurations                []UpdateProjectConnectConfigurations     `json:"connectConfigurations,omitempty"`
-	ConnectConfigurationID               *string                                  `json:"connectConfigurationId,omitempty"`
-	ConnectBuildsEnabled                 *bool                                    `json:"connectBuildsEnabled,omitempty"`
-	PassiveConnectConfigurationID        *string                                  `json:"passiveConnectConfigurationId,omitempty"`
-	CreatedAt                            *float64                                 `json:"createdAt,omitempty"`
-	CustomerSupportCodeVisibility        *bool                                    `json:"customerSupportCodeVisibility,omitempty"`
-	Crons                                *UpdateProjectCrons                      `json:"crons,omitempty"`
-	DataCache                            *UpdateProjectDataCache                  `json:"dataCache,omitempty"`
-	DeploymentExpiration                 *UpdateProjectDeploymentExpiration       `json:"deploymentExpiration,omitempty"`
-	DevCommand                           *string                                  `json:"devCommand,omitempty"`
-	DirectoryListing                     bool                                     `json:"directoryListing"`
-	InstallCommand                       *string                                  `json:"installCommand,omitempty"`
-	Env                                  []UpdateProjectEnv                       `json:"env,omitempty"`
-	CustomEnvironments                   []UpdateProjectCustomEnvironments        `json:"customEnvironments,omitempty"`
-	Framework                            *UpdateProjectProjectsFramework          `json:"framework,omitempty"`
-	GitForkProtection                    *bool                                    `json:"gitForkProtection,omitempty"`
-	GitLFS                               *bool                                    `json:"gitLFS,omitempty"`
-	ID                                   string                                   `json:"id"`
-	IPBuckets                            []UpdateProjectIPBuckets                 `json:"ipBuckets,omitempty"`
-	LatestDeployments                    []UpdateProjectLatestDeployments         `json:"latestDeployments,omitempty"`
-	Link                                 *UpdateProjectLink                       `json:"link,omitempty"`
-	Microfrontends                       *UpdateProjectMicrofrontends             `json:"microfrontends,omitempty"`
-	Name                                 string                                   `json:"name"`
-	NodeVersion                          UpdateProjectProjectsNodeVersion         `json:"nodeVersion"`
-	OptionsAllowlist                     *UpdateProjectOptionsAllowlist           `json:"optionsAllowlist,omitempty"`
-	OutputDirectory                      *string                                  `json:"outputDirectory,omitempty"`
-	PasswordProtection                   *UpdateProjectPasswordProtection         `json:"passwordProtection,omitempty"`
-	ProductionDeploymentsFastLane        *bool                                    `json:"productionDeploymentsFastLane,omitempty"`
-	PublicSource                         *bool                                    `json:"publicSource,omitempty"`
-	ResourceConfig                       UpdateProjectProjectsResourceConfig      `json:"resourceConfig"`
-	RollingRelease                       *UpdateProjectRollingRelease             `json:"rollingRelease,omitempty"`
-	DefaultResourceConfig                UpdateProjectDefaultResourceConfig       `json:"defaultResourceConfig"`
-	RootDirectory                        *string                                  `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                  `json:"serverlessFunctionRegion,omitempty"`
-	ServerlessFunctionZeroConfigFailover *bool                                    `json:"serverlessFunctionZeroConfigFailover,omitempty"`
-	SkewProtectionBoundaryAt             *float64                                 `json:"skewProtectionBoundaryAt,omitempty"`
-	SkewProtectionMaxAge                 *float64                                 `json:"skewProtectionMaxAge,omitempty"`
-	SkipGitConnectDuringLink             *bool                                    `json:"skipGitConnectDuringLink,omitempty"`
-	SourceFilesOutsideRootDirectory      *bool                                    `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	EnableAffectedProjectsDeployments    *bool                                    `json:"enableAffectedProjectsDeployments,omitempty"`
-	SsoProtection                        *UpdateProjectSsoProtection              `json:"ssoProtection,omitempty"`
-	Targets                              map[string]*UpdateProjectTargets         `json:"targets,omitempty"`
-	TransferCompletedAt                  *float64                                 `json:"transferCompletedAt,omitempty"`
-	TransferStartedAt                    *float64                                 `json:"transferStartedAt,omitempty"`
-	TransferToAccountID                  *string                                  `json:"transferToAccountId,omitempty"`
-	TransferredFromAccountID             *string                                  `json:"transferredFromAccountId,omitempty"`
-	UpdatedAt                            *float64                                 `json:"updatedAt,omitempty"`
-	Live                                 *bool                                    `json:"live,omitempty"`
-	EnablePreviewFeedback                *bool                                    `json:"enablePreviewFeedback,omitempty"`
-	EnableProductionFeedback             *bool                                    `json:"enableProductionFeedback,omitempty"`
-	Permissions                          *UpdateProjectPermissions                `json:"permissions,omitempty"`
-	LastRollbackTarget                   *UpdateProjectLastRollbackTarget         `json:"lastRollbackTarget,omitempty"`
-	LastAliasRequest                     *UpdateProjectLastAliasRequest           `json:"lastAliasRequest,omitempty"`
-	ProtectionBypass                     map[string]UpdateProjectProtectionBypass `json:"protectionBypass,omitempty"`
-	HasActiveBranches                    *bool                                    `json:"hasActiveBranches,omitempty"`
-	TrustedIps                           *UpdateProjectTrustedIps                 `json:"trustedIps,omitempty"`
-	GitComments                          *UpdateProjectGitComments                `json:"gitComments,omitempty"`
-	GitProviderOptions                   *UpdateProjectGitProviderOptions         `json:"gitProviderOptions,omitempty"`
-	Paused                               *bool                                    `json:"paused,omitempty"`
-	ConcurrencyBucketName                *string                                  `json:"concurrencyBucketName,omitempty"`
-	WebAnalytics                         *UpdateProjectWebAnalytics               `json:"webAnalytics,omitempty"`
-	Security                             *UpdateProjectSecurity                   `json:"security,omitempty"`
-	OidcTokenConfig                      *UpdateProjectProjectsOidcTokenConfig    `json:"oidcTokenConfig,omitempty"`
-	Tier                                 *UpdateProjectTier                       `json:"tier,omitempty"`
+	AccountID                        string                                      `json:"accountId"`
+	Analytics                        *UpdateProjectAnalytics                     `json:"analytics,omitempty"`
+	SpeedInsights                    *UpdateProjectSpeedInsights                 `json:"speedInsights,omitempty"`
+	AutoExposeSystemEnvs             *bool                                       `json:"autoExposeSystemEnvs,omitempty"`
+	AutoAssignCustomDomains          *bool                                       `json:"autoAssignCustomDomains,omitempty"`
+	AutoAssignCustomDomainsUpdatedBy *string                                     `json:"autoAssignCustomDomainsUpdatedBy,omitempty"`
+	BuildCommand                     *string                                     `json:"buildCommand,omitempty"`
+	CommandForIgnoringBuildStep      *string                                     `json:"commandForIgnoringBuildStep,omitempty"`
+	ConnectConfigurations            []UpdateProjectConnectConfigurationResponse `json:"connectConfigurations,omitempty"`
+	ConnectConfigurationID           *string                                     `json:"connectConfigurationId,omitempty"`
+	ConnectBuildsEnabled             *bool                                       `json:"connectBuildsEnabled,omitempty"`
+	PassiveConnectConfigurationID    *string                                     `json:"passiveConnectConfigurationId,omitempty"`
+	CreatedAt                        *float64                                    `json:"createdAt,omitempty"`
+	CustomerSupportCodeVisibility    *bool                                       `json:"customerSupportCodeVisibility,omitempty"`
+	Crons                            *UpdateProjectCrons                         `json:"crons,omitempty"`
+	DataCache                        *UpdateProjectDataCache                     `json:"dataCache,omitempty"`
+	DeploymentExpiration             *UpdateProjectDeploymentExpiration          `json:"deploymentExpiration,omitempty"`
+	DevCommand                       *string                                     `json:"devCommand,omitempty"`
+	DirectoryListing                 bool                                        `json:"directoryListing"`
+	InstallCommand                   *string                                     `json:"installCommand,omitempty"`
+	Env                              []UpdateProjectEnv                          `json:"env,omitempty"`
+	CustomEnvironments               []UpdateProjectCustomEnvironment            `json:"customEnvironments,omitempty"`
+	Framework                        *UpdateProjectFrameworkResponseBody         `json:"framework,omitempty"`
+	GitForkProtection                *bool                                       `json:"gitForkProtection,omitempty"`
+	GitLFS                           *bool                                       `json:"gitLFS,omitempty"`
+	ID                               string                                      `json:"id"`
+	IPBuckets                        []UpdateProjectIPBucket                     `json:"ipBuckets,omitempty"`
+	LatestDeployments                []UpdateProjectLatestDeployment             `json:"latestDeployments,omitempty"`
+	Link                             *UpdateProjectLinkUnion                     `json:"link,omitempty"`
+	Microfrontends                   *UpdateProjectMicrofrontendsUnion           `json:"microfrontends,omitempty"`
+	Name                             string                                      `json:"name"`
+	NodeVersion                      UpdateProjectNodeVersionResponse            `json:"nodeVersion"`
+	OptionsAllowlist                 *UpdateProjectOptionsAllowlistResponse      `json:"optionsAllowlist,omitempty"`
+	OutputDirectory                  *string                                     `json:"outputDirectory,omitempty"`
+	PasswordProtection               *UpdateProjectPasswordProtectionResponse    `json:"passwordProtection,omitempty"`
+	ProductionDeploymentsFastLane    *bool                                       `json:"productionDeploymentsFastLane,omitempty"`
+	PublicSource                     *bool                                       `json:"publicSource,omitempty"`
+	ResourceConfig                   UpdateProjectResourceConfigResponse         `json:"resourceConfig"`
+	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
+	RollbackDescription                  *UpdateProjectRollbackDescription             `json:"rollbackDescription,omitempty"`
+	RollingRelease                       *UpdateProjectRollingRelease                  `json:"rollingRelease,omitempty"`
+	DefaultResourceConfig                UpdateProjectDefaultResourceConfig            `json:"defaultResourceConfig"`
+	RootDirectory                        *string                                       `json:"rootDirectory,omitempty"`
+	ServerlessFunctionRegion             *string                                       `json:"serverlessFunctionRegion,omitempty"`
+	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
+	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
+	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
+	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
+	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	EnableAffectedProjectsDeployments    *bool                                         `json:"enableAffectedProjectsDeployments,omitempty"`
+	SsoProtection                        *UpdateProjectSsoProtectionResponse           `json:"ssoProtection,omitempty"`
+	Targets                              map[string]*UpdateProjectTargets              `json:"targets,omitempty"`
+	TransferCompletedAt                  *float64                                      `json:"transferCompletedAt,omitempty"`
+	TransferStartedAt                    *float64                                      `json:"transferStartedAt,omitempty"`
+	TransferToAccountID                  *string                                       `json:"transferToAccountId,omitempty"`
+	TransferredFromAccountID             *string                                       `json:"transferredFromAccountId,omitempty"`
+	UpdatedAt                            *float64                                      `json:"updatedAt,omitempty"`
+	Live                                 *bool                                         `json:"live,omitempty"`
+	EnablePreviewFeedback                *bool                                         `json:"enablePreviewFeedback,omitempty"`
+	EnableProductionFeedback             *bool                                         `json:"enableProductionFeedback,omitempty"`
+	Permissions                          *UpdateProjectPermissions                     `json:"permissions,omitempty"`
+	LastRollbackTarget                   *UpdateProjectLastRollbackTarget              `json:"lastRollbackTarget,omitempty"`
+	LastAliasRequest                     *UpdateProjectLastAliasRequest                `json:"lastAliasRequest,omitempty"`
+	ProtectionBypass                     map[string]UpdateProjectProtectionBypassUnion `json:"protectionBypass,omitempty"`
+	HasActiveBranches                    *bool                                         `json:"hasActiveBranches,omitempty"`
+	TrustedIps                           *UpdateProjectTrustedIpsUnion                 `json:"trustedIps,omitempty"`
+	GitComments                          *UpdateProjectGitComments                     `json:"gitComments,omitempty"`
+	GitProviderOptions                   *UpdateProjectGitProviderOptions              `json:"gitProviderOptions,omitempty"`
+	Paused                               *bool                                         `json:"paused,omitempty"`
+	ConcurrencyBucketName                *string                                       `json:"concurrencyBucketName,omitempty"`
+	WebAnalytics                         *UpdateProjectWebAnalytics                    `json:"webAnalytics,omitempty"`
+	Security                             *UpdateProjectSecurity                        `json:"security,omitempty"`
+	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse         `json:"oidcTokenConfig,omitempty"`
+	Tier                                 *UpdateProjectTier                            `json:"tier,omitempty"`
+	Features                             *UpdateProjectFeatures                        `json:"features,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -9517,7 +9261,7 @@ func (o *UpdateProjectResponseBody) GetCommandForIgnoringBuildStep() *string {
 	return o.CommandForIgnoringBuildStep
 }
 
-func (o *UpdateProjectResponseBody) GetConnectConfigurations() []UpdateProjectConnectConfigurations {
+func (o *UpdateProjectResponseBody) GetConnectConfigurations() []UpdateProjectConnectConfigurationResponse {
 	if o == nil {
 		return nil
 	}
@@ -9608,14 +9352,14 @@ func (o *UpdateProjectResponseBody) GetEnv() []UpdateProjectEnv {
 	return o.Env
 }
 
-func (o *UpdateProjectResponseBody) GetCustomEnvironments() []UpdateProjectCustomEnvironments {
+func (o *UpdateProjectResponseBody) GetCustomEnvironments() []UpdateProjectCustomEnvironment {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironments
 }
 
-func (o *UpdateProjectResponseBody) GetFramework() *UpdateProjectProjectsFramework {
+func (o *UpdateProjectResponseBody) GetFramework() *UpdateProjectFrameworkResponseBody {
 	if o == nil {
 		return nil
 	}
@@ -9643,28 +9387,28 @@ func (o *UpdateProjectResponseBody) GetID() string {
 	return o.ID
 }
 
-func (o *UpdateProjectResponseBody) GetIPBuckets() []UpdateProjectIPBuckets {
+func (o *UpdateProjectResponseBody) GetIPBuckets() []UpdateProjectIPBucket {
 	if o == nil {
 		return nil
 	}
 	return o.IPBuckets
 }
 
-func (o *UpdateProjectResponseBody) GetLatestDeployments() []UpdateProjectLatestDeployments {
+func (o *UpdateProjectResponseBody) GetLatestDeployments() []UpdateProjectLatestDeployment {
 	if o == nil {
 		return nil
 	}
 	return o.LatestDeployments
 }
 
-func (o *UpdateProjectResponseBody) GetLink() *UpdateProjectLink {
+func (o *UpdateProjectResponseBody) GetLink() *UpdateProjectLinkUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Link
 }
 
-func (o *UpdateProjectResponseBody) GetMicrofrontends() *UpdateProjectMicrofrontends {
+func (o *UpdateProjectResponseBody) GetMicrofrontends() *UpdateProjectMicrofrontendsUnion {
 	if o == nil {
 		return nil
 	}
@@ -9678,14 +9422,14 @@ func (o *UpdateProjectResponseBody) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateProjectResponseBody) GetNodeVersion() UpdateProjectProjectsNodeVersion {
+func (o *UpdateProjectResponseBody) GetNodeVersion() UpdateProjectNodeVersionResponse {
 	if o == nil {
-		return UpdateProjectProjectsNodeVersion("")
+		return UpdateProjectNodeVersionResponse("")
 	}
 	return o.NodeVersion
 }
 
-func (o *UpdateProjectResponseBody) GetOptionsAllowlist() *UpdateProjectOptionsAllowlist {
+func (o *UpdateProjectResponseBody) GetOptionsAllowlist() *UpdateProjectOptionsAllowlistResponse {
 	if o == nil {
 		return nil
 	}
@@ -9699,7 +9443,7 @@ func (o *UpdateProjectResponseBody) GetOutputDirectory() *string {
 	return o.OutputDirectory
 }
 
-func (o *UpdateProjectResponseBody) GetPasswordProtection() *UpdateProjectPasswordProtection {
+func (o *UpdateProjectResponseBody) GetPasswordProtection() *UpdateProjectPasswordProtectionResponse {
 	if o == nil {
 		return nil
 	}
@@ -9720,11 +9464,18 @@ func (o *UpdateProjectResponseBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *UpdateProjectResponseBody) GetResourceConfig() UpdateProjectProjectsResourceConfig {
+func (o *UpdateProjectResponseBody) GetResourceConfig() UpdateProjectResourceConfigResponse {
 	if o == nil {
-		return UpdateProjectProjectsResourceConfig{}
+		return UpdateProjectResourceConfigResponse{}
 	}
 	return o.ResourceConfig
+}
+
+func (o *UpdateProjectResponseBody) GetRollbackDescription() *UpdateProjectRollbackDescription {
+	if o == nil {
+		return nil
+	}
+	return o.RollbackDescription
 }
 
 func (o *UpdateProjectResponseBody) GetRollingRelease() *UpdateProjectRollingRelease {
@@ -9797,7 +9548,7 @@ func (o *UpdateProjectResponseBody) GetEnableAffectedProjectsDeployments() *bool
 	return o.EnableAffectedProjectsDeployments
 }
 
-func (o *UpdateProjectResponseBody) GetSsoProtection() *UpdateProjectSsoProtection {
+func (o *UpdateProjectResponseBody) GetSsoProtection() *UpdateProjectSsoProtectionResponse {
 	if o == nil {
 		return nil
 	}
@@ -9888,7 +9639,7 @@ func (o *UpdateProjectResponseBody) GetLastAliasRequest() *UpdateProjectLastAlia
 	return o.LastAliasRequest
 }
 
-func (o *UpdateProjectResponseBody) GetProtectionBypass() map[string]UpdateProjectProtectionBypass {
+func (o *UpdateProjectResponseBody) GetProtectionBypass() map[string]UpdateProjectProtectionBypassUnion {
 	if o == nil {
 		return nil
 	}
@@ -9902,7 +9653,7 @@ func (o *UpdateProjectResponseBody) GetHasActiveBranches() *bool {
 	return o.HasActiveBranches
 }
 
-func (o *UpdateProjectResponseBody) GetTrustedIps() *UpdateProjectTrustedIps {
+func (o *UpdateProjectResponseBody) GetTrustedIps() *UpdateProjectTrustedIpsUnion {
 	if o == nil {
 		return nil
 	}
@@ -9951,7 +9702,7 @@ func (o *UpdateProjectResponseBody) GetSecurity() *UpdateProjectSecurity {
 	return o.Security
 }
 
-func (o *UpdateProjectResponseBody) GetOidcTokenConfig() *UpdateProjectProjectsOidcTokenConfig {
+func (o *UpdateProjectResponseBody) GetOidcTokenConfig() *UpdateProjectOidcTokenConfigResponse {
 	if o == nil {
 		return nil
 	}
@@ -9963,6 +9714,13 @@ func (o *UpdateProjectResponseBody) GetTier() *UpdateProjectTier {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *UpdateProjectResponseBody) GetFeatures() *UpdateProjectFeatures {
+	if o == nil {
+		return nil
+	}
+	return o.Features
 }
 
 type UpdateProjectResponse struct {

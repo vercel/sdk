@@ -61,11 +61,6 @@ export type CreateTeamRequestBody = {
 };
 
 /**
- * IMPORTANT: If extending Billing, particularly with optional fields, make sure you also update `sync-orb-subscription-to-owner.ts` to handle the items when the object is recreated.
- */
-export type CreateTeamBilling = {};
-
-/**
  * The team was created successfully
  */
 export type CreateTeamResponseBody = {
@@ -74,10 +69,6 @@ export type CreateTeamResponseBody = {
    */
   id: string;
   slug: string;
-  /**
-   * IMPORTANT: If extending Billing, particularly with optional fields, make sure you also update `sync-orb-subscription-to-owner.ts` to handle the items when the object is recreated.
-   */
-  billing: CreateTeamBilling;
 };
 
 /** @internal */
@@ -253,54 +244,6 @@ export function createTeamRequestBodyFromJSON(
 }
 
 /** @internal */
-export const CreateTeamBilling$inboundSchema: z.ZodType<
-  CreateTeamBilling,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CreateTeamBilling$Outbound = {};
-
-/** @internal */
-export const CreateTeamBilling$outboundSchema: z.ZodType<
-  CreateTeamBilling$Outbound,
-  z.ZodTypeDef,
-  CreateTeamBilling
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTeamBilling$ {
-  /** @deprecated use `CreateTeamBilling$inboundSchema` instead. */
-  export const inboundSchema = CreateTeamBilling$inboundSchema;
-  /** @deprecated use `CreateTeamBilling$outboundSchema` instead. */
-  export const outboundSchema = CreateTeamBilling$outboundSchema;
-  /** @deprecated use `CreateTeamBilling$Outbound` instead. */
-  export type Outbound = CreateTeamBilling$Outbound;
-}
-
-export function createTeamBillingToJSON(
-  createTeamBilling: CreateTeamBilling,
-): string {
-  return JSON.stringify(
-    CreateTeamBilling$outboundSchema.parse(createTeamBilling),
-  );
-}
-
-export function createTeamBillingFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateTeamBilling, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateTeamBilling$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateTeamBilling' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateTeamResponseBody$inboundSchema: z.ZodType<
   CreateTeamResponseBody,
   z.ZodTypeDef,
@@ -308,14 +251,12 @@ export const CreateTeamResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   slug: z.string(),
-  billing: z.lazy(() => CreateTeamBilling$inboundSchema),
 });
 
 /** @internal */
 export type CreateTeamResponseBody$Outbound = {
   id: string;
   slug: string;
-  billing: CreateTeamBilling$Outbound;
 };
 
 /** @internal */
@@ -326,7 +267,6 @@ export const CreateTeamResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   slug: z.string(),
-  billing: z.lazy(() => CreateTeamBilling$outboundSchema),
 });
 
 /**

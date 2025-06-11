@@ -8,8 +8,8 @@ Remote Execution Attack - Prevent unauthorized execution of remote scripts or co
 import { PutFirewallConfigRce } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRce = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

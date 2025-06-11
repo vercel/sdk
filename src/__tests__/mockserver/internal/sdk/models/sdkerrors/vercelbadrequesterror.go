@@ -8,8 +8,8 @@ import (
 )
 
 type VercelBadRequestError struct {
-	Error_   components.Error        `json:"error"`
-	HTTPMeta components.HTTPMetadata `json:"-"`
+	Error_   components.VercelBadRequestErrorError `json:"error"`
+	HTTPMeta components.HTTPMetadata               `json:"-"`
 }
 
 var _ error = &VercelBadRequestError{}

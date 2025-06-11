@@ -8,7 +8,7 @@ import { GetProjectsMicrofrontends2 } from "@vercel/sdk/models/getprojectsop.js"
 let value: GetProjectsMicrofrontends2 = {
   updatedAt: 9716.33,
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
   enabled: false,
 };

@@ -8,20 +8,20 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// RedirectStatusCode - Status code for domain redirect
-type RedirectStatusCode int64
+// UpdateProjectDomainRedirectStatusCode - Status code for domain redirect
+type UpdateProjectDomainRedirectStatusCode int64
 
 const (
-	RedirectStatusCodeThreeHundredAndOne   RedirectStatusCode = 301
-	RedirectStatusCodeThreeHundredAndTwo   RedirectStatusCode = 302
-	RedirectStatusCodeThreeHundredAndSeven RedirectStatusCode = 307
-	RedirectStatusCodeThreeHundredAndEight RedirectStatusCode = 308
+	UpdateProjectDomainRedirectStatusCodeThreeHundredAndOne   UpdateProjectDomainRedirectStatusCode = 301
+	UpdateProjectDomainRedirectStatusCodeThreeHundredAndTwo   UpdateProjectDomainRedirectStatusCode = 302
+	UpdateProjectDomainRedirectStatusCodeThreeHundredAndSeven UpdateProjectDomainRedirectStatusCode = 307
+	UpdateProjectDomainRedirectStatusCodeThreeHundredAndEight UpdateProjectDomainRedirectStatusCode = 308
 )
 
-func (e RedirectStatusCode) ToPointer() *RedirectStatusCode {
+func (e UpdateProjectDomainRedirectStatusCode) ToPointer() *UpdateProjectDomainRedirectStatusCode {
 	return &e
 }
-func (e *RedirectStatusCode) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectDomainRedirectStatusCode) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,10 +34,10 @@ func (e *RedirectStatusCode) UnmarshalJSON(data []byte) error {
 	case 307:
 		fallthrough
 	case 308:
-		*e = RedirectStatusCode(v)
+		*e = UpdateProjectDomainRedirectStatusCode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RedirectStatusCode: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectDomainRedirectStatusCode: %v", v)
 	}
 }
 
@@ -47,7 +47,7 @@ type UpdateProjectDomainRequestBody struct {
 	// Target destination domain for redirect
 	Redirect *string `json:"redirect,omitempty"`
 	// Status code for domain redirect
-	RedirectStatusCode *RedirectStatusCode `json:"redirectStatusCode,omitempty"`
+	RedirectStatusCode *UpdateProjectDomainRedirectStatusCode `json:"redirectStatusCode,omitempty"`
 }
 
 func (o *UpdateProjectDomainRequestBody) GetGitBranch() *string {
@@ -64,7 +64,7 @@ func (o *UpdateProjectDomainRequestBody) GetRedirect() *string {
 	return o.Redirect
 }
 
-func (o *UpdateProjectDomainRequestBody) GetRedirectStatusCode() *RedirectStatusCode {
+func (o *UpdateProjectDomainRequestBody) GetRedirectStatusCode() *UpdateProjectDomainRedirectStatusCode {
 	if o == nil {
 		return nil
 	}

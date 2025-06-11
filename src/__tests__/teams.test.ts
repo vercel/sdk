@@ -29,6 +29,13 @@ test("Teams Request Access To Team", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    teamSlug: "<value>",
+    teamName: "<value>",
+    github: {},
+    gitlab: {},
+    bitbucket: {},
+  });
 });
 
 test("Teams Get Team Access Request", async () => {
@@ -45,6 +52,18 @@ test("Teams Get Team Access Request", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    teamSlug: "my-team",
+    teamName: "My Team",
+    confirmed: false,
+    joinedFrom: {
+      origin: "saml",
+    },
+    accessRequestedAt: 1588720733602,
+    github: {},
+    gitlab: {},
+    bitbucket: {},
+  });
 });
 
 test("Teams Join Team", async () => {
@@ -63,6 +82,12 @@ test("Teams Join Team", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    teamId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    slug: "my-team",
+    name: "My Team",
+    from: "email",
+  });
 });
 
 test("Teams Update Team Member", async () => {
@@ -79,7 +104,12 @@ test("Teams Update Team Member", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
+      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
           role: "ADMIN",
@@ -92,6 +122,9 @@ test("Teams Update Team Member", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
 });
 
 test("Teams Remove Team Member", async () => {
@@ -109,6 +142,9 @@ test("Teams Remove Team Member", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
 });
 
 test("Teams Get Team", async () => {
@@ -125,6 +161,44 @@ test("Teams Get Team", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+    creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
+    updatedAt: 1611796915677,
+    emailDomain: "example.com",
+    saml: {
+      connection: {
+        status: "linked",
+        type: "OktaSAML",
+        state: "active",
+        connectedAt: 1611796915677,
+        lastReceivedWebhookEvent: 1611796915677,
+      },
+      directory: {
+        type: "OktaSAML",
+        state: "active",
+        connectedAt: 1611796915677,
+        lastReceivedWebhookEvent: 1611796915677,
+      },
+      enforced: true,
+    },
+    inviteCode: "hasihf9e89",
+    description:
+      "Our mission is to make cloud computing accessible to everyone.",
+    stagingPrefix: "<value>",
+    previewDeploymentSuffix: "example.dev",
+    slug: "my-team",
+    name: "My Team",
+    avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+    membership: {
+      confirmed: false,
+      confirmedAt: 4040.18,
+      role: "SECURITY",
+      createdAt: 1519.81,
+      created: 619.38,
+    },
+    createdAt: 1630748523395,
+  });
 });
 
 test("Teams Patch Team", async () => {
@@ -161,6 +235,44 @@ test("Teams Patch Team", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
+    creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
+    updatedAt: 1611796915677,
+    emailDomain: "example.com",
+    saml: {
+      connection: {
+        status: "linked",
+        type: "OktaSAML",
+        state: "active",
+        connectedAt: 1611796915677,
+        lastReceivedWebhookEvent: 1611796915677,
+      },
+      directory: {
+        type: "OktaSAML",
+        state: "active",
+        connectedAt: 1611796915677,
+        lastReceivedWebhookEvent: 1611796915677,
+      },
+      enforced: true,
+    },
+    inviteCode: "hasihf9e89",
+    description:
+      "Our mission is to make cloud computing accessible to everyone.",
+    stagingPrefix: "<value>",
+    previewDeploymentSuffix: "example.dev",
+    slug: "my-team",
+    name: "My Team",
+    avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
+    membership: {
+      confirmed: true,
+      confirmedAt: 3200.42,
+      role: "CONTRIBUTOR",
+      createdAt: 6209.44,
+      created: 5994.92,
+    },
+    createdAt: 1630748523395,
+  });
 });
 
 test("Teams Get Teams", async () => {
@@ -178,6 +290,14 @@ test("Teams Get Teams", async () => {
     until: 1540095775951,
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    teams: [],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
+    },
+  });
 });
 
 test("Teams Create Team", async () => {
@@ -194,6 +314,10 @@ test("Teams Create Team", async () => {
     name: "A Random Team",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "team_nLlpyC6RE1qxqglFKbrMxlud",
+    slug: "<value>",
+  });
 });
 
 test("Teams Delete Team", async () => {
@@ -212,6 +336,10 @@ test("Teams Delete Team", async () => {
     requestBody: {},
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    newDefaultTeamIdError: true,
+  });
 });
 
 test("Teams Delete Team Invite Code", async () => {
@@ -228,4 +356,7 @@ test("Teams Delete Team Invite Code", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
 });

@@ -50,7 +50,7 @@ func testUpdateFirewallConfigUpdateFirewallConfig0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateFirewallConfigResponseBody{}
+	var respBody *operations.UpdateFirewallConfigResponseBody = &operations.UpdateFirewallConfigResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

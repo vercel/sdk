@@ -65,22 +65,22 @@ func (o *ListAccessGroupMembersRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type TeamRole string
+type ListAccessGroupMembersTeamRole string
 
 const (
-	TeamRoleOwner       TeamRole = "OWNER"
-	TeamRoleMember      TeamRole = "MEMBER"
-	TeamRoleDeveloper   TeamRole = "DEVELOPER"
-	TeamRoleSecurity    TeamRole = "SECURITY"
-	TeamRoleBilling     TeamRole = "BILLING"
-	TeamRoleViewer      TeamRole = "VIEWER"
-	TeamRoleContributor TeamRole = "CONTRIBUTOR"
+	ListAccessGroupMembersTeamRoleOwner       ListAccessGroupMembersTeamRole = "OWNER"
+	ListAccessGroupMembersTeamRoleMember      ListAccessGroupMembersTeamRole = "MEMBER"
+	ListAccessGroupMembersTeamRoleDeveloper   ListAccessGroupMembersTeamRole = "DEVELOPER"
+	ListAccessGroupMembersTeamRoleSecurity    ListAccessGroupMembersTeamRole = "SECURITY"
+	ListAccessGroupMembersTeamRoleBilling     ListAccessGroupMembersTeamRole = "BILLING"
+	ListAccessGroupMembersTeamRoleViewer      ListAccessGroupMembersTeamRole = "VIEWER"
+	ListAccessGroupMembersTeamRoleContributor ListAccessGroupMembersTeamRole = "CONTRIBUTOR"
 )
 
-func (e TeamRole) ToPointer() *TeamRole {
+func (e ListAccessGroupMembersTeamRole) ToPointer() *ListAccessGroupMembersTeamRole {
 	return &e
 }
-func (e *TeamRole) UnmarshalJSON(data []byte) error {
+func (e *ListAccessGroupMembersTeamRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -99,85 +99,85 @@ func (e *TeamRole) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = TeamRole(v)
+		*e = ListAccessGroupMembersTeamRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamRole: %v", v)
+		return fmt.Errorf("invalid value for ListAccessGroupMembersTeamRole: %v", v)
 	}
 }
 
-type Members struct {
-	Avatar    *string  `json:"avatar,omitempty"`
-	Email     string   `json:"email"`
-	UID       string   `json:"uid"`
-	Username  string   `json:"username"`
-	Name      *string  `json:"name,omitempty"`
-	CreatedAt *string  `json:"createdAt,omitempty"`
-	TeamRole  TeamRole `json:"teamRole"`
+type ListAccessGroupMembersMember struct {
+	Avatar    *string                        `json:"avatar,omitempty"`
+	Email     string                         `json:"email"`
+	UID       string                         `json:"uid"`
+	Username  string                         `json:"username"`
+	Name      *string                        `json:"name,omitempty"`
+	CreatedAt *string                        `json:"createdAt,omitempty"`
+	TeamRole  ListAccessGroupMembersTeamRole `json:"teamRole"`
 }
 
-func (o *Members) GetAvatar() *string {
+func (o *ListAccessGroupMembersMember) GetAvatar() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Avatar
 }
 
-func (o *Members) GetEmail() string {
+func (o *ListAccessGroupMembersMember) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *Members) GetUID() string {
+func (o *ListAccessGroupMembersMember) GetUID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UID
 }
 
-func (o *Members) GetUsername() string {
+func (o *ListAccessGroupMembersMember) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
 }
 
-func (o *Members) GetName() *string {
+func (o *ListAccessGroupMembersMember) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *Members) GetCreatedAt() *string {
+func (o *ListAccessGroupMembersMember) GetCreatedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Members) GetTeamRole() TeamRole {
+func (o *ListAccessGroupMembersMember) GetTeamRole() ListAccessGroupMembersTeamRole {
 	if o == nil {
-		return TeamRole("")
+		return ListAccessGroupMembersTeamRole("")
 	}
 	return o.TeamRole
 }
 
-type Pagination struct {
+type ListAccessGroupMembersPagination struct {
 	Count float64 `json:"count"`
 	Next  *string `json:"next"`
 }
 
-func (o *Pagination) GetCount() float64 {
+func (o *ListAccessGroupMembersPagination) GetCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Count
 }
 
-func (o *Pagination) GetNext() *string {
+func (o *ListAccessGroupMembersPagination) GetNext() *string {
 	if o == nil {
 		return nil
 	}
@@ -185,20 +185,20 @@ func (o *Pagination) GetNext() *string {
 }
 
 type ListAccessGroupMembersResponseBody struct {
-	Members    []Members  `json:"members"`
-	Pagination Pagination `json:"pagination"`
+	Members    []ListAccessGroupMembersMember   `json:"members"`
+	Pagination ListAccessGroupMembersPagination `json:"pagination"`
 }
 
-func (o *ListAccessGroupMembersResponseBody) GetMembers() []Members {
+func (o *ListAccessGroupMembersResponseBody) GetMembers() []ListAccessGroupMembersMember {
 	if o == nil {
-		return []Members{}
+		return []ListAccessGroupMembersMember{}
 	}
 	return o.Members
 }
 
-func (o *ListAccessGroupMembersResponseBody) GetPagination() Pagination {
+func (o *ListAccessGroupMembersResponseBody) GetPagination() ListAccessGroupMembersPagination {
 	if o == nil {
-		return Pagination{}
+		return ListAccessGroupMembersPagination{}
 	}
 	return o.Pagination
 }

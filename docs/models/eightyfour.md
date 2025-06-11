@@ -14,24 +14,15 @@ let value: EightyFour = {
   },
   project: {
     id: "<id>",
-    oldConnectConfigurations: [
+    oldConnectConfigurations: [],
+    newConnectConfigurations: [
       {
         envId: "<id>",
         connectConfigurationId: "<id>",
-        passive: false,
+        passive: true,
         buildsEnabled: false,
-        createdAt: 1198.73,
-        updatedAt: 5450.64,
-      },
-    ],
-    newConnectConfigurations: [
-      {
-        envId: "production",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: false,
-        createdAt: 9414.28,
-        updatedAt: 9502.17,
+        createdAt: 5463.76,
+        updatedAt: 2696.76,
       },
     ],
   },

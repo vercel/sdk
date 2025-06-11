@@ -21,6 +21,13 @@ test("Environment Create Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    slug: "<value>",
+    type: "production",
+    createdAt: 772.39,
+    updatedAt: 509.66,
+  });
 });
 
 test("Environment Get /V9 /Projects/{id Or Name}/custom Environments", async () => {
@@ -41,6 +48,12 @@ test("Environment Get /V9 /Projects/{id Or Name}/custom Environments", async () 
       slug: "my-team-url-slug",
     });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    accountLimit: {
+      total: 4336.88,
+    },
+    environments: [],
+  });
 });
 
 test("Environment Get Custom Environment", async () => {
@@ -59,6 +72,13 @@ test("Environment Get Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    slug: "<value>",
+    type: "production",
+    createdAt: 212.72,
+    updatedAt: 2304.72,
+  });
 });
 
 test("Environment Update Custom Environment", async () => {
@@ -77,6 +97,13 @@ test("Environment Update Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    slug: "<value>",
+    type: "production",
+    createdAt: 4054.52,
+    updatedAt: 7043.79,
+  });
 });
 
 test("Environment Remove Custom Environment", async () => {
@@ -95,4 +122,11 @@ test("Environment Remove Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    slug: "<value>",
+    type: "preview",
+    createdAt: 3549.56,
+    updatedAt: 1676.55,
+  });
 });

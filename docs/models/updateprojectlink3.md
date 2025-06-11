@@ -6,14 +6,7 @@
 import { UpdateProjectLink3 } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectLink3 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://these-railway.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

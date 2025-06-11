@@ -6,8 +6,8 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// EnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-type EnvironmentOverrides struct {
+// UpdateResourceSecretsEnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+type UpdateResourceSecretsEnvironmentOverrides struct {
 	// Value used for development environment.
 	Development *string `json:"development,omitempty"`
 	// Value used for preview environment.
@@ -16,57 +16,57 @@ type EnvironmentOverrides struct {
 	Production *string `json:"production,omitempty"`
 }
 
-func (o *EnvironmentOverrides) GetDevelopment() *string {
+func (o *UpdateResourceSecretsEnvironmentOverrides) GetDevelopment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Development
 }
 
-func (o *EnvironmentOverrides) GetPreview() *string {
+func (o *UpdateResourceSecretsEnvironmentOverrides) GetPreview() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Preview
 }
 
-func (o *EnvironmentOverrides) GetProduction() *string {
+func (o *UpdateResourceSecretsEnvironmentOverrides) GetProduction() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Production
 }
 
-type UpdateResourceSecretsSecrets struct {
+type UpdateResourceSecretsSecret struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
 	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-	EnvironmentOverrides *EnvironmentOverrides `json:"environmentOverrides,omitempty"`
+	EnvironmentOverrides *UpdateResourceSecretsEnvironmentOverrides `json:"environmentOverrides,omitempty"`
 }
 
-func (o *UpdateResourceSecretsSecrets) GetName() string {
+func (o *UpdateResourceSecretsSecret) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateResourceSecretsSecrets) GetValue() string {
+func (o *UpdateResourceSecretsSecret) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UpdateResourceSecretsSecrets) GetPrefix() *string {
+func (o *UpdateResourceSecretsSecret) GetPrefix() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Prefix
 }
 
-func (o *UpdateResourceSecretsSecrets) GetEnvironmentOverrides() *EnvironmentOverrides {
+func (o *UpdateResourceSecretsSecret) GetEnvironmentOverrides() *UpdateResourceSecretsEnvironmentOverrides {
 	if o == nil {
 		return nil
 	}
@@ -74,14 +74,14 @@ func (o *UpdateResourceSecretsSecrets) GetEnvironmentOverrides() *EnvironmentOve
 }
 
 type UpdateResourceSecretsRequestBody struct {
-	Secrets []UpdateResourceSecretsSecrets `json:"secrets"`
+	Secrets []UpdateResourceSecretsSecret `json:"secrets"`
 	// If true, will only update the provided secrets
 	Partial *bool `json:"partial,omitempty"`
 }
 
-func (o *UpdateResourceSecretsRequestBody) GetSecrets() []UpdateResourceSecretsSecrets {
+func (o *UpdateResourceSecretsRequestBody) GetSecrets() []UpdateResourceSecretsSecret {
 	if o == nil {
-		return []UpdateResourceSecretsSecrets{}
+		return []UpdateResourceSecretsSecret{}
 	}
 	return o.Secrets
 }

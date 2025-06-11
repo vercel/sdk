@@ -7,7 +7,8 @@ import { UpdateProjectAws } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectAws = {
   subnetIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
   securityGroupId: "<id>",
 };

@@ -8,20 +8,7 @@ A paginated list of teams.
 import { GetTeamsResponseBody } from "@vercel/sdk/models/getteamsop.js";
 
 let value: GetTeamsResponseBody = {
-  teams: [
-    {
-      id: "ABCDEFG000011111",
-      data: {
-        query: "<value>",
-        creatorId: "<id>",
-        title: "<value>",
-        groupId: "<id>",
-        ownerId: "<id>",
-        projectId: "<id>",
-        createdAt: 6536.13,
-      },
-    },
-  ],
+  teams: [],
   pagination: {
     count: 20,
     next: 1540095775951,

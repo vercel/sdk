@@ -97,19 +97,19 @@ func (e *RemoveCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// RemoveCustomEnvironmentEnvironmentType - The type of matching to perform
-type RemoveCustomEnvironmentEnvironmentType string
+// RemoveCustomEnvironmentBranchMatcherType - The type of matching to perform
+type RemoveCustomEnvironmentBranchMatcherType string
 
 const (
-	RemoveCustomEnvironmentEnvironmentTypeEndsWith   RemoveCustomEnvironmentEnvironmentType = "endsWith"
-	RemoveCustomEnvironmentEnvironmentTypeStartsWith RemoveCustomEnvironmentEnvironmentType = "startsWith"
-	RemoveCustomEnvironmentEnvironmentTypeEquals     RemoveCustomEnvironmentEnvironmentType = "equals"
+	RemoveCustomEnvironmentBranchMatcherTypeEndsWith   RemoveCustomEnvironmentBranchMatcherType = "endsWith"
+	RemoveCustomEnvironmentBranchMatcherTypeStartsWith RemoveCustomEnvironmentBranchMatcherType = "startsWith"
+	RemoveCustomEnvironmentBranchMatcherTypeEquals     RemoveCustomEnvironmentBranchMatcherType = "equals"
 )
 
-func (e RemoveCustomEnvironmentEnvironmentType) ToPointer() *RemoveCustomEnvironmentEnvironmentType {
+func (e RemoveCustomEnvironmentBranchMatcherType) ToPointer() *RemoveCustomEnvironmentBranchMatcherType {
 	return &e
 }
-func (e *RemoveCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) error {
+func (e *RemoveCustomEnvironmentBranchMatcherType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -120,24 +120,24 @@ func (e *RemoveCustomEnvironmentEnvironmentType) UnmarshalJSON(data []byte) erro
 	case "startsWith":
 		fallthrough
 	case "equals":
-		*e = RemoveCustomEnvironmentEnvironmentType(v)
+		*e = RemoveCustomEnvironmentBranchMatcherType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RemoveCustomEnvironmentEnvironmentType: %v", v)
+		return fmt.Errorf("invalid value for RemoveCustomEnvironmentBranchMatcherType: %v", v)
 	}
 }
 
 // RemoveCustomEnvironmentBranchMatcher - Configuration for matching git branches to this environment
 type RemoveCustomEnvironmentBranchMatcher struct {
 	// The type of matching to perform
-	Type RemoveCustomEnvironmentEnvironmentType `json:"type"`
+	Type RemoveCustomEnvironmentBranchMatcherType `json:"type"`
 	// The pattern to match against branch names
 	Pattern string `json:"pattern"`
 }
 
-func (o *RemoveCustomEnvironmentBranchMatcher) GetType() RemoveCustomEnvironmentEnvironmentType {
+func (o *RemoveCustomEnvironmentBranchMatcher) GetType() RemoveCustomEnvironmentBranchMatcherType {
 	if o == nil {
-		return RemoveCustomEnvironmentEnvironmentType("")
+		return RemoveCustomEnvironmentBranchMatcherType("")
 	}
 	return o.Type
 }
@@ -185,8 +185,8 @@ func (o *RemoveCustomEnvironmentVerification) GetReason() string {
 	return o.Reason
 }
 
-// RemoveCustomEnvironmentDomains - List of domains associated with this environment
-type RemoveCustomEnvironmentDomains struct {
+// RemoveCustomEnvironmentDomain - List of domains associated with this environment
+type RemoveCustomEnvironmentDomain struct {
 	Name                string   `json:"name"`
 	ApexName            string   `json:"apexName"`
 	ProjectID           string   `json:"projectId"`
@@ -202,77 +202,77 @@ type RemoveCustomEnvironmentDomains struct {
 	Verification []RemoveCustomEnvironmentVerification `json:"verification,omitempty"`
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetName() string {
+func (o *RemoveCustomEnvironmentDomain) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetApexName() string {
+func (o *RemoveCustomEnvironmentDomain) GetApexName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ApexName
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetProjectID() string {
+func (o *RemoveCustomEnvironmentDomain) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetRedirect() *string {
+func (o *RemoveCustomEnvironmentDomain) GetRedirect() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetRedirectStatusCode() *float64 {
+func (o *RemoveCustomEnvironmentDomain) GetRedirectStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetGitBranch() *string {
+func (o *RemoveCustomEnvironmentDomain) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetCustomEnvironmentID() *string {
+func (o *RemoveCustomEnvironmentDomain) GetCustomEnvironmentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentID
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetUpdatedAt() *float64 {
+func (o *RemoveCustomEnvironmentDomain) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetCreatedAt() *float64 {
+func (o *RemoveCustomEnvironmentDomain) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetVerified() bool {
+func (o *RemoveCustomEnvironmentDomain) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *RemoveCustomEnvironmentDomains) GetVerification() []RemoveCustomEnvironmentVerification {
+func (o *RemoveCustomEnvironmentDomain) GetVerification() []RemoveCustomEnvironmentVerification {
 	if o == nil {
 		return nil
 	}
@@ -292,7 +292,7 @@ type RemoveCustomEnvironmentResponseBody struct {
 	// Configuration for matching git branches to this environment
 	BranchMatcher *RemoveCustomEnvironmentBranchMatcher `json:"branchMatcher,omitempty"`
 	// List of domains associated with this environment
-	Domains []RemoveCustomEnvironmentDomains `json:"domains,omitempty"`
+	Domains []RemoveCustomEnvironmentDomain `json:"domains,omitempty"`
 	// List of aliases for the current deployment
 	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
 	// Timestamp when the environment was created
@@ -336,7 +336,7 @@ func (o *RemoveCustomEnvironmentResponseBody) GetBranchMatcher() *RemoveCustomEn
 	return o.BranchMatcher
 }
 
-func (o *RemoveCustomEnvironmentResponseBody) GetDomains() []RemoveCustomEnvironmentDomains {
+func (o *RemoveCustomEnvironmentResponseBody) GetDomains() []RemoveCustomEnvironmentDomain {
 	if o == nil {
 		return nil
 	}

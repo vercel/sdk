@@ -29,35 +29,35 @@ func (o *GetEdgeConfigsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// Transfer - Keeps track of the current state of the Edge Config while it gets transferred.
-type Transfer struct {
+// GetEdgeConfigsTransfer - Keeps track of the current state of the Edge Config while it gets transferred.
+type GetEdgeConfigsTransfer struct {
 	FromAccountID string   `json:"fromAccountId"`
 	StartedAt     float64  `json:"startedAt"`
 	DoneAt        *float64 `json:"doneAt"`
 }
 
-func (o *Transfer) GetFromAccountID() string {
+func (o *GetEdgeConfigsTransfer) GetFromAccountID() string {
 	if o == nil {
 		return ""
 	}
 	return o.FromAccountID
 }
 
-func (o *Transfer) GetStartedAt() float64 {
+func (o *GetEdgeConfigsTransfer) GetStartedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.StartedAt
 }
 
-func (o *Transfer) GetDoneAt() *float64 {
+func (o *GetEdgeConfigsTransfer) GetDoneAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DoneAt
 }
 
-type Schema struct {
+type GetEdgeConfigsSchema struct {
 }
 
 type GetEdgeConfigsType string
@@ -83,19 +83,19 @@ func (e *GetEdgeConfigsType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Purpose struct {
+type GetEdgeConfigsPurpose struct {
 	Type      GetEdgeConfigsType `json:"type"`
 	ProjectID string             `json:"projectId"`
 }
 
-func (o *Purpose) GetType() GetEdgeConfigsType {
+func (o *GetEdgeConfigsPurpose) GetType() GetEdgeConfigsType {
 	if o == nil {
 		return GetEdgeConfigsType("")
 	}
 	return o.Type
 }
 
-func (o *Purpose) GetProjectID() string {
+func (o *GetEdgeConfigsPurpose) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
@@ -111,11 +111,11 @@ type GetEdgeConfigsResponseBody struct {
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	Digest    *string  `json:"digest,omitempty"`
 	// Keeps track of the current state of the Edge Config while it gets transferred.
-	Transfer    *Transfer `json:"transfer,omitempty"`
-	Schema      *Schema   `json:"schema,omitempty"`
-	Purpose     *Purpose  `json:"purpose,omitempty"`
-	SizeInBytes float64   `json:"sizeInBytes"`
-	ItemCount   float64   `json:"itemCount"`
+	Transfer    *GetEdgeConfigsTransfer `json:"transfer,omitempty"`
+	Schema      *GetEdgeConfigsSchema   `json:"schema,omitempty"`
+	Purpose     *GetEdgeConfigsPurpose  `json:"purpose,omitempty"`
+	SizeInBytes float64                 `json:"sizeInBytes"`
+	ItemCount   float64                 `json:"itemCount"`
 }
 
 func (o *GetEdgeConfigsResponseBody) GetID() *string {
@@ -160,21 +160,21 @@ func (o *GetEdgeConfigsResponseBody) GetDigest() *string {
 	return o.Digest
 }
 
-func (o *GetEdgeConfigsResponseBody) GetTransfer() *Transfer {
+func (o *GetEdgeConfigsResponseBody) GetTransfer() *GetEdgeConfigsTransfer {
 	if o == nil {
 		return nil
 	}
 	return o.Transfer
 }
 
-func (o *GetEdgeConfigsResponseBody) GetSchema() *Schema {
+func (o *GetEdgeConfigsResponseBody) GetSchema() *GetEdgeConfigsSchema {
 	if o == nil {
 		return nil
 	}
 	return o.Schema
 }
 
-func (o *GetEdgeConfigsResponseBody) GetPurpose() *Purpose {
+func (o *GetEdgeConfigsResponseBody) GetPurpose() *GetEdgeConfigsPurpose {
 	if o == nil {
 		return nil
 	}

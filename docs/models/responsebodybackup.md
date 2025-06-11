@@ -7,15 +7,9 @@ import { ResponseBodyBackup } from "@vercel/sdk/models/getedgeconfigbackupop.js"
 
 let value: ResponseBodyBackup = {
   digest: "<value>",
-  items: {
-    "key": {
-      updatedAt: 1426.45,
-      value: 4073.57,
-      createdAt: 6147.16,
-    },
-  },
+  items: {},
   slug: "<value>",
-  updatedAt: 7293.5,
+  updatedAt: 3780.21,
 };
 ```
 

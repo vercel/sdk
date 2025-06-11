@@ -8,10 +8,10 @@ import { UpdateProjectConnectConfigurations } from "@vercel/sdk/models/updatepro
 let value: UpdateProjectConnectConfigurations = {
   envId: "production",
   connectConfigurationId: "<id>",
-  passive: false,
+  passive: true,
   buildsEnabled: false,
-  createdAt: 3821.33,
-  updatedAt: 6200.19,
+  createdAt: 9052.12,
+  updatedAt: 5336.37,
 };
 ```
 

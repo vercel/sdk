@@ -11,6 +11,7 @@ let value: UserEventPayloadDeployment = {
   url: "https://posh-sundae.net",
   meta: {
     "key": "<value>",
+    "key1": "<value>",
   },
 };
 ```

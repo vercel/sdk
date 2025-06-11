@@ -6,6 +6,7 @@ import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import { VercelError } from "./vercelerror.js";
 
 export type VercelForbiddenErrorError = {
   code: string;
@@ -16,19 +17,21 @@ export type VercelForbiddenErrorData = {
   error: VercelForbiddenErrorError;
 };
 
-export class VercelForbiddenError extends Error {
+export class VercelForbiddenError extends VercelError {
   error: VercelForbiddenErrorError;
 
   /** The original data that was passed to this error instance. */
   data$: VercelForbiddenErrorData;
 
-  constructor(err: VercelForbiddenErrorData) {
+  constructor(
+    err: VercelForbiddenErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "VercelForbiddenError";
@@ -99,9 +102,16 @@ export const VercelForbiddenError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => VercelForbiddenErrorError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new VercelForbiddenError(v);
+    return new VercelForbiddenError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

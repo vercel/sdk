@@ -47,26 +47,8 @@ func testListAuthTokensListAuthTokens0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ListAuthTokensResponseBody{
+	var respBody *operations.ListAuthTokensResponseBody = &operations.ListAuthTokensResponseBody{
 		Tokens: []components.AuthToken{
-			components.AuthToken{
-				ID:        "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-				Name:      "<value>",
-				Type:      "oauth2-token",
-				Origin:    types.String("github"),
-				ExpiresAt: types.Float64(1632816536002),
-				ActiveAt:  1632816536002,
-				CreatedAt: 1632816536002,
-			},
-			components.AuthToken{
-				ID:        "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-				Name:      "<value>",
-				Type:      "oauth2-token",
-				Origin:    types.String("github"),
-				ExpiresAt: types.Float64(1632816536002),
-				ActiveAt:  1632816536002,
-				CreatedAt: 1632816536002,
-			},
 			components.AuthToken{
 				ID:        "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
 				Name:      "<value>",

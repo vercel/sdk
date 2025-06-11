@@ -24,20 +24,21 @@ test("Dns Update Record", async () => {
       value: "google.com",
       type: "A",
       ttl: 60,
-      srv: {
-        target: "example2.com.",
-        weight: 97604,
-        port: 570172,
-        priority: 199524,
-      },
-      https: {
-        priority: 35000,
-        target: "example2.com.",
-      },
+      srv: null,
+      https: null,
       comment: "used to verify ownership of domain",
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    creator: "<value>",
+    domain: "raw-scorpion.net",
+    id: "<id>",
+    name: "<value>",
+    recordType: "AAAA",
+    type: "record",
+    value: "<value>",
+  });
 });
 
 test("Dns Remove Record", async () => {
@@ -56,4 +57,5 @@ test("Dns Remove Record", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });

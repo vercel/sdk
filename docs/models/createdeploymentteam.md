@@ -6,8 +6,8 @@
 import { CreateDeploymentTeam } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: CreateDeploymentTeam = {
-  name: "<value>",
   id: "<id>",
+  name: "<value>",
   slug: "<value>",
 };
 ```
@@ -16,7 +16,7 @@ let value: CreateDeploymentTeam = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `slug`             | *string*           | :heavy_check_mark: | N/A                |
 | `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

@@ -11,13 +11,13 @@ let value: GetProjectDomainsResponseBody1 = {
       name: "<value>",
       apexName: "<value>",
       projectId: "<id>",
-      verified: false,
+      verified: true,
     },
   ],
   pagination: {
-    count: 7996.46,
-    next: 4630.41,
-    prev: 8962.06,
+    count: 8962.06,
+    next: 1793.22,
+    prev: null,
   },
 };
 ```

@@ -8,8 +8,8 @@
 ```typescript
 const value: models.GetDeploymentEventsDeploymentsResponseBody[] = [
   {
-    created: 5476.41,
-    date: 1698.31,
+    created: 1698.31,
+    date: 4940.57,
     deploymentId: "<id>",
     id: "<id>",
     info: {
@@ -17,7 +17,7 @@ const value: models.GetDeploymentEventsDeploymentsResponseBody[] = [
       name: "<value>",
     },
     serial: "<value>",
-    type: "deployment-state",
+    type: "middleware-invocation",
   },
 ];
 ```

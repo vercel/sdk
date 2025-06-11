@@ -38,21 +38,21 @@ func (e *CreateAccessGroupRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateAccessGroupProjects struct {
+type CreateAccessGroupProject struct {
 	// The ID of the project.
 	ProjectID string `json:"projectId"`
 	// The project role that will be added to this Access Group. \"null\" will remove this project level role.
 	Role *CreateAccessGroupRole `json:"role"`
 }
 
-func (o *CreateAccessGroupProjects) GetProjectID() string {
+func (o *CreateAccessGroupProject) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *CreateAccessGroupProjects) GetRole() *CreateAccessGroupRole {
+func (o *CreateAccessGroupProject) GetRole() *CreateAccessGroupRole {
 	if o == nil {
 		return nil
 	}
@@ -61,8 +61,8 @@ func (o *CreateAccessGroupProjects) GetRole() *CreateAccessGroupRole {
 
 type CreateAccessGroupRequestBody struct {
 	// The name of the access group
-	Name     string                      `json:"name"`
-	Projects []CreateAccessGroupProjects `json:"projects,omitempty"`
+	Name     string                     `json:"name"`
+	Projects []CreateAccessGroupProject `json:"projects,omitempty"`
 	// List of members to add to the access group.
 	MembersToAdd []string `json:"membersToAdd,omitempty"`
 }
@@ -74,7 +74,7 @@ func (o *CreateAccessGroupRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *CreateAccessGroupRequestBody) GetProjects() []CreateAccessGroupProjects {
+func (o *CreateAccessGroupRequestBody) GetProjects() []CreateAccessGroupProject {
 	if o == nil {
 		return nil
 	}

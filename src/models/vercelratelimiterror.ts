@@ -12,6 +12,7 @@ import {
   RateLimitNotice$outboundSchema,
 } from "./ratelimitnotice.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import { VercelError } from "./vercelerror.js";
 
 export type VercelRateLimitErrorError = {
   code: string;
@@ -23,19 +24,21 @@ export type VercelRateLimitErrorData = {
   error: VercelRateLimitErrorError;
 };
 
-export class VercelRateLimitError extends Error {
+export class VercelRateLimitError extends VercelError {
   error: VercelRateLimitErrorError;
 
   /** The original data that was passed to this error instance. */
   data$: VercelRateLimitErrorData;
 
-  constructor(err: VercelRateLimitErrorData) {
+  constructor(
+    err: VercelRateLimitErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     this.error = err.error;
 
     this.name = "VercelRateLimitError";
@@ -109,9 +112,16 @@ export const VercelRateLimitError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   error: z.lazy(() => VercelRateLimitErrorError$inboundSchema),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new VercelRateLimitError(v);
+    return new VercelRateLimitError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

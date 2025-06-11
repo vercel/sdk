@@ -46,8 +46,8 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []*operations.GetDeploymentEventsDeploymentsResponseBody{
-		types.Pointer(operations.CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody2(
+	var respBody []*operations.GetDeploymentEventsResponseBodyUnion = []*operations.GetDeploymentEventsResponseBodyUnion{
+		types.Pointer(operations.CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody2(
 			operations.GetDeploymentEventsResponseBody2{
 				Created:      9364.53,
 				Date:         65.47,
@@ -58,12 +58,12 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 					Name: "<value>",
 				},
 				Serial: "<value>",
-				Type:   operations.GetDeploymentEventsResponseBodyTypeCommand,
+				Type:   operations.GetDeploymentEventsType2Command,
 			},
 		)),
-		types.Pointer(operations.CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody1(
+		types.Pointer(operations.CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody1(
 			operations.GetDeploymentEventsResponseBody1{
-				Type:    operations.ResponseBodyTypeStderr,
+				Type:    operations.GetDeploymentEventsType1Stderr,
 				Created: 2829.12,
 				Payload: operations.Payload{
 					DeploymentID: "<id>",
@@ -73,9 +73,9 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 				},
 			},
 		)),
-		types.Pointer(operations.CreateGetDeploymentEventsDeploymentsResponseBodyGetDeploymentEventsResponseBody1(
+		types.Pointer(operations.CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody1(
 			operations.GetDeploymentEventsResponseBody1{
-				Type:    operations.ResponseBodyTypeStderr,
+				Type:    operations.GetDeploymentEventsType1Stderr,
 				Created: 2829.12,
 				Payload: operations.Payload{
 					DeploymentID: "<id>",

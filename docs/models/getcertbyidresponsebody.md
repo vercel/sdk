@@ -10,9 +10,7 @@ let value: GetCertByIdResponseBody = {
   createdAt: 6827.26,
   expiresAt: 2231.55,
   autoRenew: false,
-  cns: [
-    "<value>",
-  ],
+  cns: [],
 };
 ```
 

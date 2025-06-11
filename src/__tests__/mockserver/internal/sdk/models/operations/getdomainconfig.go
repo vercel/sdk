@@ -107,18 +107,18 @@ func (e *ConfiguredBy) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// AcceptedChallenges - Which challenge types the domain can use for issuing certs.
-type AcceptedChallenges string
+// AcceptedChallenge - Which challenge types the domain can use for issuing certs.
+type AcceptedChallenge string
 
 const (
-	AcceptedChallengesDns01  AcceptedChallenges = "dns-01"
-	AcceptedChallengesHttp01 AcceptedChallenges = "http-01"
+	AcceptedChallengeDns01  AcceptedChallenge = "dns-01"
+	AcceptedChallengeHttp01 AcceptedChallenge = "http-01"
 )
 
-func (e AcceptedChallenges) ToPointer() *AcceptedChallenges {
+func (e AcceptedChallenge) ToPointer() *AcceptedChallenge {
 	return &e
 }
-func (e *AcceptedChallenges) UnmarshalJSON(data []byte) error {
+func (e *AcceptedChallenge) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -127,10 +127,10 @@ func (e *AcceptedChallenges) UnmarshalJSON(data []byte) error {
 	case "dns-01":
 		fallthrough
 	case "http-01":
-		*e = AcceptedChallenges(v)
+		*e = AcceptedChallenge(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AcceptedChallenges: %v", v)
+		return fmt.Errorf("invalid value for AcceptedChallenge: %v", v)
 	}
 }
 
@@ -138,7 +138,7 @@ type GetDomainConfigResponseBody struct {
 	// How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
 	ConfiguredBy *ConfiguredBy `json:"configuredBy,omitempty"`
 	// Which challenge types the domain can use for issuing certs.
-	AcceptedChallenges []AcceptedChallenges `json:"acceptedChallenges,omitempty"`
+	AcceptedChallenges []AcceptedChallenge `json:"acceptedChallenges,omitempty"`
 	// Whether or not the domain is configured AND we can automatically generate a TLS certificate.
 	Misconfigured bool `json:"misconfigured"`
 }
@@ -150,7 +150,7 @@ func (o *GetDomainConfigResponseBody) GetConfiguredBy() *ConfiguredBy {
 	return o.ConfiguredBy
 }
 
-func (o *GetDomainConfigResponseBody) GetAcceptedChallenges() []AcceptedChallenges {
+func (o *GetDomainConfigResponseBody) GetAcceptedChallenges() []AcceptedChallenge {
 	if o == nil {
 		return nil
 	}

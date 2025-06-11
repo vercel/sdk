@@ -8,7 +8,7 @@ Remote Execution Attack - Prevent unauthorized execution of remote scripts or co
 import { GetFirewallConfigRce } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigRce = {
-  active: false,
+  active: true,
   action: "deny",
 };
 ```

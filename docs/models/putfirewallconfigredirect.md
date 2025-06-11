@@ -7,7 +7,7 @@ import { PutFirewallConfigRedirect } from "@vercel/sdk/models/putfirewallconfigo
 
 let value: PutFirewallConfigRedirect = {
   location: "<value>",
-  permanent: false,
+  permanent: true,
 };
 ```
 

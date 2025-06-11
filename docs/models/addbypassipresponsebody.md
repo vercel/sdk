@@ -7,17 +7,8 @@
 
 ```typescript
 const value: models.AddBypassIpResponseBody1 = {
-  ok: false,
-  result: [
-    {
-      ownerId: "<id>",
-      id: "<id>",
-      domain: "gummy-graffiti.info",
-      projectId: "<id>",
-      note: "<value>",
-      isProjectRule: false,
-    },
-  ],
+  ok: true,
+  result: [],
   pagination: "<value>",
 };
 ```

@@ -12,9 +12,7 @@ import {
 let value:
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody =
     {
-      items: {
-        "key": false,
-      },
+      items: {},
       updatedAt: 7001.9,
       digest: "<value>",
     };

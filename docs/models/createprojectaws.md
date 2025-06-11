@@ -7,7 +7,8 @@ import { CreateProjectAws } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectAws = {
   subnetIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
   securityGroupId: "<id>",
 };

@@ -50,7 +50,7 @@ func testUpdateAccessGroupUpdateAccessGroup0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateAccessGroupResponseBody{
+	var respBody *operations.UpdateAccessGroupResponseBody = &operations.UpdateAccessGroupResponseBody{
 		Name:          "my-access-group",
 		CreatedAt:     "1588720733602",
 		TeamID:        "team_123a6c5209bc3778245d011443644c8d27dc2c50",

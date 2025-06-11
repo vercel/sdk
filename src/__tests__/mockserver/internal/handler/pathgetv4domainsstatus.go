@@ -45,7 +45,7 @@ func testCheckDomainStatusCheckDomainStatus0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CheckDomainStatusResponseBody{
+	var respBody *operations.CheckDomainStatusResponseBody = &operations.CheckDomainStatusResponseBody{
 		Available: true,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

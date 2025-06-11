@@ -49,13 +49,13 @@ func testReadAccessGroupProjectReadAccessGroupProjectId0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ReadAccessGroupProjectResponseBody{
+	var respBody *operations.ReadAccessGroupProjectResponseBody = &operations.ReadAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
-		Role:          operations.ReadAccessGroupProjectRoleAdmin,
-		CreatedAt:     "1715344910813",
-		UpdatedAt:     "1744396168862",
+		Role:          operations.ReadAccessGroupProjectRoleProjectDeveloper,
+		CreatedAt:     "1725636411556",
+		UpdatedAt:     "1735610404453",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -88,13 +88,13 @@ func testReadAccessGroupProjectReadAccessGroupProjectName0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ReadAccessGroupProjectResponseBody{
+	var respBody *operations.ReadAccessGroupProjectResponseBody = &operations.ReadAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.ReadAccessGroupProjectRoleProjectDeveloper,
-		CreatedAt:     "1739615073482",
-		UpdatedAt:     "1744327200176",
+		CreatedAt:     "1725636411556",
+		UpdatedAt:     "1735610404453",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
@@ -127,13 +127,13 @@ func testReadAccessGroupProjectReadAccessGroupProject0(w http.ResponseWriter, re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ReadAccessGroupProjectResponseBody{
+	var respBody *operations.ReadAccessGroupProjectResponseBody = &operations.ReadAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
 		Role:          operations.ReadAccessGroupProjectRoleProjectDeveloper,
-		CreatedAt:     "1741430060404",
-		UpdatedAt:     "1744396619853",
+		CreatedAt:     "1725636411556",
+		UpdatedAt:     "1735610404453",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

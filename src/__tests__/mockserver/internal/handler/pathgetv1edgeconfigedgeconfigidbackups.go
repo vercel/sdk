@@ -45,15 +45,15 @@ func testGetEdgeConfigBackupsGetEdgeConfigBackups0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetEdgeConfigBackupsResponseBody{
-		Backups: []operations.Backups{
-			operations.Backups{
+	var respBody *operations.GetEdgeConfigBackupsResponseBody = &operations.GetEdgeConfigBackupsResponseBody{
+		Backups: []operations.GetEdgeConfigBackupsBackup{
+			operations.GetEdgeConfigBackupsBackup{
 				ID:           "<id>",
-				LastModified: 2424.25,
+				LastModified: 3645.28,
 			},
-			operations.Backups{
+			operations.GetEdgeConfigBackupsBackup{
 				ID:           "<id>",
-				LastModified: 1518.43,
+				LastModified: 3645.28,
 			},
 		},
 		Pagination: operations.GetEdgeConfigBackupsPagination{

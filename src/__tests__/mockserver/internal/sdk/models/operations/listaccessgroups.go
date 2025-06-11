@@ -84,7 +84,7 @@ func (o *ListAccessGroupsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type AccessGroups struct {
+type AccessGroup struct {
 	Members        []string `json:"members,omitempty"`
 	Projects       []string `json:"projects,omitempty"`
 	Entitlements   []string `json:"entitlements,omitempty"`
@@ -109,110 +109,110 @@ type AccessGroups struct {
 	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
-func (o *AccessGroups) GetMembers() []string {
+func (o *AccessGroup) GetMembers() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Members
 }
 
-func (o *AccessGroups) GetProjects() []string {
+func (o *AccessGroup) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *AccessGroups) GetEntitlements() []string {
+func (o *AccessGroup) GetEntitlements() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Entitlements
 }
 
-func (o *AccessGroups) GetIsDsyncManaged() bool {
+func (o *AccessGroup) GetIsDsyncManaged() bool {
 	if o == nil {
 		return false
 	}
 	return o.IsDsyncManaged
 }
 
-func (o *AccessGroups) GetName() string {
+func (o *AccessGroup) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *AccessGroups) GetCreatedAt() string {
+func (o *AccessGroup) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *AccessGroups) GetTeamID() string {
+func (o *AccessGroup) GetTeamID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TeamID
 }
 
-func (o *AccessGroups) GetUpdatedAt() string {
+func (o *AccessGroup) GetUpdatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.UpdatedAt
 }
 
-func (o *AccessGroups) GetAccessGroupID() string {
+func (o *AccessGroup) GetAccessGroupID() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccessGroupID
 }
 
-func (o *AccessGroups) GetMembersCount() float64 {
+func (o *AccessGroup) GetMembersCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.MembersCount
 }
 
-func (o *AccessGroups) GetProjectsCount() float64 {
+func (o *AccessGroup) GetProjectsCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ProjectsCount
 }
 
-func (o *AccessGroups) GetTeamRoles() []string {
+func (o *AccessGroup) GetTeamRoles() []string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamRoles
 }
 
-func (o *AccessGroups) GetTeamPermissions() []string {
+func (o *AccessGroup) GetTeamPermissions() []string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamPermissions
 }
 
-type ResponseBodyPagination struct {
+type ListAccessGroupsPagination struct {
 	Count float64 `json:"count"`
 	Next  *string `json:"next"`
 }
 
-func (o *ResponseBodyPagination) GetCount() float64 {
+func (o *ListAccessGroupsPagination) GetCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Count
 }
 
-func (o *ResponseBodyPagination) GetNext() *string {
+func (o *ListAccessGroupsPagination) GetNext() *string {
 	if o == nil {
 		return nil
 	}
@@ -220,20 +220,20 @@ func (o *ResponseBodyPagination) GetNext() *string {
 }
 
 type ListAccessGroupsResponseBody2 struct {
-	AccessGroups []AccessGroups         `json:"accessGroups"`
-	Pagination   ResponseBodyPagination `json:"pagination"`
+	AccessGroups []AccessGroup              `json:"accessGroups"`
+	Pagination   ListAccessGroupsPagination `json:"pagination"`
 }
 
-func (o *ListAccessGroupsResponseBody2) GetAccessGroups() []AccessGroups {
+func (o *ListAccessGroupsResponseBody2) GetAccessGroups() []AccessGroup {
 	if o == nil {
-		return []AccessGroups{}
+		return []AccessGroup{}
 	}
 	return o.AccessGroups
 }
 
-func (o *ListAccessGroupsResponseBody2) GetPagination() ResponseBodyPagination {
+func (o *ListAccessGroupsResponseBody2) GetPagination() ListAccessGroupsPagination {
 	if o == nil {
-		return ResponseBodyPagination{}
+		return ListAccessGroupsPagination{}
 	}
 	return o.Pagination
 }
@@ -244,13 +244,13 @@ type ListAccessGroupsResponseBody1 struct {
 type ListAccessGroupsResponseBodyType string
 
 const (
-	ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody1 ListAccessGroupsResponseBodyType = "listAccessGroups_responseBody_1"
-	ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody2 ListAccessGroupsResponseBodyType = "listAccessGroups_responseBody_2"
+	ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody1 ListAccessGroupsResponseBodyType = "listAccessGroups_ResponseBody_1"
+	ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody2 ListAccessGroupsResponseBodyType = "listAccessGroups_ResponseBody_2"
 )
 
 type ListAccessGroupsResponseBody struct {
-	ListAccessGroupsResponseBody1 *ListAccessGroupsResponseBody1
-	ListAccessGroupsResponseBody2 *ListAccessGroupsResponseBody2
+	ListAccessGroupsResponseBody1 *ListAccessGroupsResponseBody1 `queryParam:"inline"`
+	ListAccessGroupsResponseBody2 *ListAccessGroupsResponseBody2 `queryParam:"inline"`
 
 	Type ListAccessGroupsResponseBodyType
 }

@@ -11,38 +11,38 @@ import (
 	"time"
 )
 
-// Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
-type Period struct {
+// SubmitBillingDataPeriod - Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
+type SubmitBillingDataPeriod struct {
 	Start time.Time `json:"start"`
 	End   time.Time `json:"end"`
 }
 
-func (p Period) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
+func (s SubmitBillingDataPeriod) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
 }
 
-func (p *Period) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+func (s *SubmitBillingDataPeriod) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Period) GetStart() time.Time {
+func (o *SubmitBillingDataPeriod) GetStart() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Start
 }
 
-func (o *Period) GetEnd() time.Time {
+func (o *SubmitBillingDataPeriod) GetEnd() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.End
 }
 
-type Items struct {
+type SubmitBillingDataItem struct {
 	// Partner's billing plan ID.
 	BillingPlanID string `json:"billingPlanId"`
 	// Partner's resource ID.
@@ -65,88 +65,88 @@ type Items struct {
 	Total string `json:"total"`
 }
 
-func (i Items) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
+func (s SubmitBillingDataItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
 }
 
-func (i *Items) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+func (s *SubmitBillingDataItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Items) GetBillingPlanID() string {
+func (o *SubmitBillingDataItem) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *Items) GetResourceID() *string {
+func (o *SubmitBillingDataItem) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *Items) GetStart() *time.Time {
+func (o *SubmitBillingDataItem) GetStart() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *Items) GetEnd() *time.Time {
+func (o *SubmitBillingDataItem) GetEnd() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *Items) GetName() string {
+func (o *SubmitBillingDataItem) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Items) GetDetails() *string {
+func (o *SubmitBillingDataItem) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *Items) GetPrice() string {
+func (o *SubmitBillingDataItem) GetPrice() string {
 	if o == nil {
 		return ""
 	}
 	return o.Price
 }
 
-func (o *Items) GetQuantity() float64 {
+func (o *SubmitBillingDataItem) GetQuantity() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Quantity
 }
 
-func (o *Items) GetUnits() string {
+func (o *SubmitBillingDataItem) GetUnits() string {
 	if o == nil {
 		return ""
 	}
 	return o.Units
 }
 
-func (o *Items) GetTotal() string {
+func (o *SubmitBillingDataItem) GetTotal() string {
 	if o == nil {
 		return ""
 	}
 	return o.Total
 }
 
-type Discounts struct {
+type SubmitBillingDataDiscount struct {
 	// Partner's billing plan ID.
 	BillingPlanID string `json:"billingPlanId"`
 	// Partner's resource ID.
@@ -163,60 +163,60 @@ type Discounts struct {
 	Amount string `json:"amount"`
 }
 
-func (d Discounts) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
+func (s SubmitBillingDataDiscount) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
 }
 
-func (d *Discounts) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+func (s *SubmitBillingDataDiscount) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Discounts) GetBillingPlanID() string {
+func (o *SubmitBillingDataDiscount) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *Discounts) GetResourceID() *string {
+func (o *SubmitBillingDataDiscount) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *Discounts) GetStart() *time.Time {
+func (o *SubmitBillingDataDiscount) GetStart() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *Discounts) GetEnd() *time.Time {
+func (o *SubmitBillingDataDiscount) GetEnd() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *Discounts) GetName() string {
+func (o *SubmitBillingDataDiscount) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Discounts) GetDetails() *string {
+func (o *SubmitBillingDataDiscount) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *Discounts) GetAmount() string {
+func (o *SubmitBillingDataDiscount) GetAmount() string {
 	if o == nil {
 		return ""
 	}
@@ -224,18 +224,18 @@ func (o *Discounts) GetAmount() string {
 }
 
 type Billing2 struct {
-	Items     []Items     `json:"items"`
-	Discounts []Discounts `json:"discounts,omitempty"`
+	Items     []SubmitBillingDataItem     `json:"items"`
+	Discounts []SubmitBillingDataDiscount `json:"discounts,omitempty"`
 }
 
-func (o *Billing2) GetItems() []Items {
+func (o *Billing2) GetItems() []SubmitBillingDataItem {
 	if o == nil {
-		return []Items{}
+		return []SubmitBillingDataItem{}
 	}
 	return o.Items
 }
 
-func (o *Billing2) GetDiscounts() []Discounts {
+func (o *Billing2) GetDiscounts() []SubmitBillingDataDiscount {
 	if o == nil {
 		return nil
 	}
@@ -346,59 +346,59 @@ func (o *Billing1) GetTotal() string {
 	return o.Total
 }
 
-type BillingType string
+type BillingUnionType string
 
 const (
-	BillingTypeArrayOfBilling1 BillingType = "arrayOfBilling1"
-	BillingTypeBilling2        BillingType = "billing_2"
+	BillingUnionTypeArrayOfBilling1 BillingUnionType = "arrayOfBilling1"
+	BillingUnionTypeBilling2        BillingUnionType = "billing_2"
 )
 
-// Billing data (interim invoicing data).
-type Billing struct {
-	ArrayOfBilling1 []Billing1
-	Billing2        *Billing2
+// BillingUnion - Billing data (interim invoicing data).
+type BillingUnion struct {
+	ArrayOfBilling1 []Billing1 `queryParam:"inline"`
+	Billing2        *Billing2  `queryParam:"inline"`
 
-	Type BillingType
+	Type BillingUnionType
 }
 
-func CreateBillingArrayOfBilling1(arrayOfBilling1 []Billing1) Billing {
-	typ := BillingTypeArrayOfBilling1
+func CreateBillingUnionArrayOfBilling1(arrayOfBilling1 []Billing1) BillingUnion {
+	typ := BillingUnionTypeArrayOfBilling1
 
-	return Billing{
+	return BillingUnion{
 		ArrayOfBilling1: arrayOfBilling1,
 		Type:            typ,
 	}
 }
 
-func CreateBillingBilling2(billing2 Billing2) Billing {
-	typ := BillingTypeBilling2
+func CreateBillingUnionBilling2(billing2 Billing2) BillingUnion {
+	typ := BillingUnionTypeBilling2
 
-	return Billing{
+	return BillingUnion{
 		Billing2: &billing2,
 		Type:     typ,
 	}
 }
 
-func (u *Billing) UnmarshalJSON(data []byte) error {
+func (u *BillingUnion) UnmarshalJSON(data []byte) error {
 
 	var billing2 Billing2 = Billing2{}
 	if err := utils.UnmarshalJSON(data, &billing2, "", true, true); err == nil {
 		u.Billing2 = &billing2
-		u.Type = BillingTypeBilling2
+		u.Type = BillingUnionTypeBilling2
 		return nil
 	}
 
 	var arrayOfBilling1 []Billing1 = []Billing1{}
 	if err := utils.UnmarshalJSON(data, &arrayOfBilling1, "", true, true); err == nil {
 		u.ArrayOfBilling1 = arrayOfBilling1
-		u.Type = BillingTypeArrayOfBilling1
+		u.Type = BillingUnionTypeArrayOfBilling1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Billing", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BillingUnion", string(data))
 }
 
-func (u Billing) MarshalJSON() ([]byte, error) {
+func (u BillingUnion) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfBilling1 != nil {
 		return utils.MarshalJSON(u.ArrayOfBilling1, "", true)
 	}
@@ -407,7 +407,7 @@ func (u Billing) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Billing2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Billing: all fields are null")
+	return nil, errors.New("could not marshal union type BillingUnion: all fields are null")
 }
 
 // SubmitBillingDataType - \n              Type of the metric.\n              - total: measured total value, such as Database size\n              - interval: usage during the period, such as i/o or number of queries.\n              - rate: rate of usage, such as queries per second.\n
@@ -512,10 +512,10 @@ type SubmitBillingDataRequestBody struct {
 	// End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
 	Eod time.Time `json:"eod"`
 	// Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
-	Period Period `json:"period"`
+	Period SubmitBillingDataPeriod `json:"period"`
 	// Billing data (interim invoicing data).
-	Billing Billing `json:"billing"`
-	Usage   []Usage `json:"usage"`
+	Billing BillingUnion `json:"billing"`
+	Usage   []Usage      `json:"usage"`
 }
 
 func (s SubmitBillingDataRequestBody) MarshalJSON() ([]byte, error) {
@@ -543,16 +543,16 @@ func (o *SubmitBillingDataRequestBody) GetEod() time.Time {
 	return o.Eod
 }
 
-func (o *SubmitBillingDataRequestBody) GetPeriod() Period {
+func (o *SubmitBillingDataRequestBody) GetPeriod() SubmitBillingDataPeriod {
 	if o == nil {
-		return Period{}
+		return SubmitBillingDataPeriod{}
 	}
 	return o.Period
 }
 
-func (o *SubmitBillingDataRequestBody) GetBilling() Billing {
+func (o *SubmitBillingDataRequestBody) GetBilling() BillingUnion {
 	if o == nil {
-		return Billing{}
+		return BillingUnion{}
 	}
 	return o.Billing
 }

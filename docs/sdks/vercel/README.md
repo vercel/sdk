@@ -28,7 +28,6 @@ async function run() {
     token: "fdhfr820ad#@FAdlj$$",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -53,15 +52,12 @@ async function run() {
     method: "transfer-in",
     token: "fdhfr820ad#@FAdlj$$",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("postDomains failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -103,7 +99,6 @@ async function run() {
     projectId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -126,15 +121,12 @@ async function run() {
   const res = await getProjectsProjectIdLogsPresets(vercel, {
     projectId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("getProjectsProjectIdLogsPresets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -180,7 +172,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -208,15 +199,12 @@ async function run() {
       group: "team",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("postProjectsProjectIdLogsPresets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -281,14 +269,12 @@ async function run() {
     projectId: "<id>",
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("deleteProjectsProjectIdLogsPresetsId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -333,7 +319,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -360,15 +345,12 @@ async function run() {
       title: "Request Path",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("patchProjectsProjectIdLogsPresetsId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

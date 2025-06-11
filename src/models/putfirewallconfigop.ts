@@ -291,9 +291,6 @@ export const PutFirewallConfigType = {
  */
 export type PutFirewallConfigType = ClosedEnum<typeof PutFirewallConfigType>;
 
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
- */
 export const Op = {
   Re: "re",
   Eq: "eq",
@@ -310,9 +307,6 @@ export const Op = {
   Lt: "lt",
   Lte: "lte",
 } as const;
-/**
- * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
- */
 export type Op = ClosedEnum<typeof Op>;
 
 export type Value = string | Array<string> | number;
@@ -322,9 +316,6 @@ export type Conditions = {
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
   type: PutFirewallConfigType;
-  /**
-   * [Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value.
-   */
   op: Op;
   neg?: boolean | undefined;
   key?: string | undefined;
@@ -482,23 +473,19 @@ export type PutFirewallConfigMa = {
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaAction;
 };
 
-export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction =
-  {
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction =
-  ClosedEnum<
-    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction
-  >;
+export const PutFirewallConfigSecurityResponse200ApplicationJSONAction = {
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONAction =
+  ClosedEnum<typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction>;
 
 /**
  * Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
  */
 export type PutFirewallConfigLfi = {
   active: boolean;
-  action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction;
+  action: PutFirewallConfigSecurityResponse200ApplicationJSONAction;
 };
 
 export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction =
@@ -852,22 +839,73 @@ export type PutFirewallConfigIps = {
 
 export type PutFirewallConfigChanges = {};
 
-export const PutFirewallConfigSecurityResponse200ApplicationJSONAction = {
-  Deny: "deny",
-  Log: "log",
-  Challenge: "challenge",
-} as const;
-export type PutFirewallConfigSecurityResponse200ApplicationJSONAction =
-  ClosedEnum<typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction>;
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction =
+  ClosedEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction
+  >;
 
-export type PutFirewallConfigManagedRules = {
+export type PutFirewallConfigBotProtection = {
   active: boolean;
   action?:
-    | PutFirewallConfigSecurityResponse200ApplicationJSONAction
+    | PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction
     | undefined;
   updatedAt?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
+};
+
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction =
+  ClosedEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction
+  >;
+
+export type PutFirewallConfigAiBots = {
+  active: boolean;
+  action?:
+    | PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction =
+  ClosedEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction
+  >;
+
+export type PutFirewallConfigOwasp = {
+  active: boolean;
+  action?:
+    | PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+export type PutFirewallConfigManagedRules = {
+  botProtection?: PutFirewallConfigBotProtection | undefined;
+  aiBots?: PutFirewallConfigAiBots | undefined;
+  owasp?: PutFirewallConfigOwasp | undefined;
 };
 
 export type Active = {
@@ -884,7 +922,7 @@ export type Active = {
   rules: Array<PutFirewallConfigSecurityRules>;
   ips: Array<PutFirewallConfigIps>;
   changes: Array<PutFirewallConfigChanges>;
-  managedRules?: { [k: string]: PutFirewallConfigManagedRules } | undefined;
+  managedRules?: PutFirewallConfigManagedRules | undefined;
 };
 
 export type PutFirewallConfigResponseBody = {
@@ -3062,31 +3100,28 @@ export function putFirewallConfigMaFromJSON(
 }
 
 /** @internal */
-export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$inboundSchema:
+export const PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction
-  > = z.nativeEnum(
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction,
-  );
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction
+  > = z.nativeEnum(PutFirewallConfigSecurityResponse200ApplicationJSONAction);
 
 /** @internal */
-export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$outboundSchema:
+export const PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction
-  > =
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$inboundSchema;
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction
+  > = PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$ {
-  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$inboundSchema` instead. */
+export namespace PutFirewallConfigSecurityResponse200ApplicationJSONAction$ {
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema` instead. */
   export const inboundSchema =
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$inboundSchema;
-  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$outboundSchema` instead. */
+    PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema;
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema` instead. */
   export const outboundSchema =
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$outboundSchema;
+    PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema;
 }
 
 /** @internal */
@@ -3097,7 +3132,7 @@ export const PutFirewallConfigLfi$inboundSchema: z.ZodType<
 > = z.object({
   active: z.boolean(),
   action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$inboundSchema,
+    PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema,
 });
 
 /** @internal */
@@ -3114,7 +3149,7 @@ export const PutFirewallConfigLfi$outboundSchema: z.ZodType<
 > = z.object({
   active: z.boolean(),
   action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiAction$outboundSchema,
+    PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema,
 });
 
 /**
@@ -4696,39 +4731,42 @@ export function putFirewallConfigChangesFromJSON(
 }
 
 /** @internal */
-export const PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema:
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction
-  > = z.nativeEnum(PutFirewallConfigSecurityResponse200ApplicationJSONAction);
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction
+  > = z.nativeEnum(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction,
+  );
 
 /** @internal */
-export const PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema:
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof PutFirewallConfigSecurityResponse200ApplicationJSONAction
-  > = PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema;
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction
+  > =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutFirewallConfigSecurityResponse200ApplicationJSONAction$ {
-  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema` instead. */
+export namespace PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$ {
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema` instead. */
   export const inboundSchema =
-    PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema;
-  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema` instead. */
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema;
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$outboundSchema` instead. */
   export const outboundSchema =
-    PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema;
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$outboundSchema;
 }
 
 /** @internal */
-export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
-  PutFirewallConfigManagedRules,
+export const PutFirewallConfigBotProtection$inboundSchema: z.ZodType<
+  PutFirewallConfigBotProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   active: z.boolean(),
   action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema
       .optional(),
   updatedAt: z.string().optional(),
   userId: z.string().optional(),
@@ -4736,7 +4774,7 @@ export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PutFirewallConfigManagedRules$Outbound = {
+export type PutFirewallConfigBotProtection$Outbound = {
   active: boolean;
   action?: string | undefined;
   updatedAt?: string | undefined;
@@ -4745,18 +4783,288 @@ export type PutFirewallConfigManagedRules$Outbound = {
 };
 
 /** @internal */
+export const PutFirewallConfigBotProtection$outboundSchema: z.ZodType<
+  PutFirewallConfigBotProtection$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigBotProtection
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutFirewallConfigBotProtection$ {
+  /** @deprecated use `PutFirewallConfigBotProtection$inboundSchema` instead. */
+  export const inboundSchema = PutFirewallConfigBotProtection$inboundSchema;
+  /** @deprecated use `PutFirewallConfigBotProtection$outboundSchema` instead. */
+  export const outboundSchema = PutFirewallConfigBotProtection$outboundSchema;
+  /** @deprecated use `PutFirewallConfigBotProtection$Outbound` instead. */
+  export type Outbound = PutFirewallConfigBotProtection$Outbound;
+}
+
+export function putFirewallConfigBotProtectionToJSON(
+  putFirewallConfigBotProtection: PutFirewallConfigBotProtection,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigBotProtection$outboundSchema.parse(
+      putFirewallConfigBotProtection,
+    ),
+  );
+}
+
+export function putFirewallConfigBotProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigBotProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigBotProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigBotProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction
+  > = z.nativeEnum(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction,
+  );
+
+/** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction
+  > =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$ {
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema` instead. */
+  export const inboundSchema =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema;
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$outboundSchema` instead. */
+  export const outboundSchema =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$outboundSchema;
+}
+
+/** @internal */
+export const PutFirewallConfigAiBots$inboundSchema: z.ZodType<
+  PutFirewallConfigAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/** @internal */
+export type PutFirewallConfigAiBots$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const PutFirewallConfigAiBots$outboundSchema: z.ZodType<
+  PutFirewallConfigAiBots$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigAiBots
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutFirewallConfigAiBots$ {
+  /** @deprecated use `PutFirewallConfigAiBots$inboundSchema` instead. */
+  export const inboundSchema = PutFirewallConfigAiBots$inboundSchema;
+  /** @deprecated use `PutFirewallConfigAiBots$outboundSchema` instead. */
+  export const outboundSchema = PutFirewallConfigAiBots$outboundSchema;
+  /** @deprecated use `PutFirewallConfigAiBots$Outbound` instead. */
+  export type Outbound = PutFirewallConfigAiBots$Outbound;
+}
+
+export function putFirewallConfigAiBotsToJSON(
+  putFirewallConfigAiBots: PutFirewallConfigAiBots,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigAiBots$outboundSchema.parse(putFirewallConfigAiBots),
+  );
+}
+
+export function putFirewallConfigAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction
+  > = z.nativeEnum(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction,
+  );
+
+/** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction
+  > =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$ {
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema` instead. */
+  export const inboundSchema =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema;
+  /** @deprecated use `PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$outboundSchema` instead. */
+  export const outboundSchema =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$outboundSchema;
+}
+
+/** @internal */
+export const PutFirewallConfigOwasp$inboundSchema: z.ZodType<
+  PutFirewallConfigOwasp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/** @internal */
+export type PutFirewallConfigOwasp$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const PutFirewallConfigOwasp$outboundSchema: z.ZodType<
+  PutFirewallConfigOwasp$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigOwasp
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutFirewallConfigOwasp$ {
+  /** @deprecated use `PutFirewallConfigOwasp$inboundSchema` instead. */
+  export const inboundSchema = PutFirewallConfigOwasp$inboundSchema;
+  /** @deprecated use `PutFirewallConfigOwasp$outboundSchema` instead. */
+  export const outboundSchema = PutFirewallConfigOwasp$outboundSchema;
+  /** @deprecated use `PutFirewallConfigOwasp$Outbound` instead. */
+  export type Outbound = PutFirewallConfigOwasp$Outbound;
+}
+
+export function putFirewallConfigOwaspToJSON(
+  putFirewallConfigOwasp: PutFirewallConfigOwasp,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigOwasp$outboundSchema.parse(putFirewallConfigOwasp),
+  );
+}
+
+export function putFirewallConfigOwaspFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigOwasp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigOwasp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigOwasp' from JSON`,
+  );
+}
+
+/** @internal */
+export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
+  PutFirewallConfigManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bot_protection: z.lazy(() => PutFirewallConfigBotProtection$inboundSchema)
+    .optional(),
+  ai_bots: z.lazy(() => PutFirewallConfigAiBots$inboundSchema).optional(),
+  owasp: z.lazy(() => PutFirewallConfigOwasp$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "bot_protection": "botProtection",
+    "ai_bots": "aiBots",
+  });
+});
+
+/** @internal */
+export type PutFirewallConfigManagedRules$Outbound = {
+  bot_protection?: PutFirewallConfigBotProtection$Outbound | undefined;
+  ai_bots?: PutFirewallConfigAiBots$Outbound | undefined;
+  owasp?: PutFirewallConfigOwasp$Outbound | undefined;
+};
+
+/** @internal */
 export const PutFirewallConfigManagedRules$outboundSchema: z.ZodType<
   PutFirewallConfigManagedRules$Outbound,
   z.ZodTypeDef,
   PutFirewallConfigManagedRules
 > = z.object({
-  active: z.boolean(),
-  action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONAction$outboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  botProtection: z.lazy(() => PutFirewallConfigBotProtection$outboundSchema)
+    .optional(),
+  aiBots: z.lazy(() => PutFirewallConfigAiBots$outboundSchema).optional(),
+  owasp: z.lazy(() => PutFirewallConfigOwasp$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    botProtection: "bot_protection",
+    aiBots: "ai_bots",
+  });
 });
 
 /**
@@ -4805,9 +5113,8 @@ export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
     rules: z.array(z.lazy(() => PutFirewallConfigSecurityRules$inboundSchema)),
     ips: z.array(z.lazy(() => PutFirewallConfigIps$inboundSchema)),
     changes: z.array(z.lazy(() => PutFirewallConfigChanges$inboundSchema)),
-    managedRules: z.record(
-      z.lazy(() => PutFirewallConfigManagedRules$inboundSchema),
-    ).optional(),
+    managedRules: z.lazy(() => PutFirewallConfigManagedRules$inboundSchema)
+      .optional(),
   });
 
 /** @internal */
@@ -4822,9 +5129,7 @@ export type Active$Outbound = {
   rules: Array<PutFirewallConfigSecurityRules$Outbound>;
   ips: Array<PutFirewallConfigIps$Outbound>;
   changes: Array<PutFirewallConfigChanges$Outbound>;
-  managedRules?:
-    | { [k: string]: PutFirewallConfigManagedRules$Outbound }
-    | undefined;
+  managedRules?: PutFirewallConfigManagedRules$Outbound | undefined;
 };
 
 /** @internal */
@@ -4843,9 +5148,8 @@ export const Active$outboundSchema: z.ZodType<
   rules: z.array(z.lazy(() => PutFirewallConfigSecurityRules$outboundSchema)),
   ips: z.array(z.lazy(() => PutFirewallConfigIps$outboundSchema)),
   changes: z.array(z.lazy(() => PutFirewallConfigChanges$outboundSchema)),
-  managedRules: z.record(
-    z.lazy(() => PutFirewallConfigManagedRules$outboundSchema),
-  ).optional(),
+  managedRules: z.lazy(() => PutFirewallConfigManagedRules$outboundSchema)
+    .optional(),
 });
 
 /**

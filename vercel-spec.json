@@ -143,16 +143,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -315,16 +305,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -467,16 +447,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -621,16 +591,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -869,16 +829,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1075,16 +1025,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1288,16 +1228,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1435,16 +1365,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1589,16 +1509,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1727,16 +1637,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -1851,16 +1751,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -5872,7 +5762,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -5881,16 +5771,40 @@
                       ],
                       "type": "object"
                     },
+                    "rollbackDescription": {
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "description": "The user who rolled back the project."
+                        },
+                        "username": {
+                          "type": "string",
+                          "description": "The username of the user who rolled back the project."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
+                        },
+                        "createdAt": {
+                          "type": "number",
+                          "description": "Timestamp of when the rollback was requested."
+                        }
+                      },
+                      "required": [
+                        "userId",
+                        "username",
+                        "description",
+                        "createdAt"
+                      ],
+                      "type": "object",
+                      "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+                    },
                     "rollingRelease": {
                       "nullable": true,
                       "properties": {
                         "target": {
                           "type": "string",
                           "description": "The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments."
-                        },
-                        "minutesToRelease": {
-                          "type": "number",
-                          "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%."
                         },
                         "stages": {
                           "nullable": true,
@@ -5899,10 +5813,6 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
-                              },
-                              "minutesToRelease": {
-                                "type": "number",
-                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
                               },
                               "requireApproval": {
                                 "type": "boolean",
@@ -5964,7 +5874,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -7164,6 +7074,18 @@
                           },
                           "type": "array"
                         },
+                        "apiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "apiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -7171,6 +7093,12 @@
                           "type": "array"
                         },
                         "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -7297,6 +7225,18 @@
                           "type": "array"
                         },
                         "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -8099,25 +8039,70 @@
                         },
                         "managedRules": {
                           "nullable": true,
-                          "additionalProperties": {
-                            "properties": {
-                              "active": {
-                                "type": "boolean"
+                          "properties": {
+                            "bot_filter": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
                               },
-                              "action": {
-                                "type": "string",
-                                "enum": [
-                                  "deny",
-                                  "challenge",
-                                  "log"
-                                ]
-                              }
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
                             },
-                            "required": [
-                              "active"
-                            ],
-                            "type": "object"
+                            "ai_bots": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            },
+                            "owasp": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            }
                           },
+                          "required": [
+                            "bot_filter",
+                            "ai_bots",
+                            "owasp"
+                          ],
                           "type": "object"
                         }
                       },
@@ -8126,7 +8111,8 @@
                     "oidcTokenConfig": {
                       "properties": {
                         "enabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not to generate OpenID Connect JSON Web Tokens."
                         },
                         "issuerMode": {
                           "type": "string",
@@ -8137,9 +8123,6 @@
                           "description": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
                         }
                       },
-                      "required": [
-                        "enabled"
-                      ],
                       "type": "object"
                     },
                     "tier": {
@@ -8149,6 +8132,14 @@
                         "advanced",
                         "critical"
                       ]
+                    },
+                    "features": {
+                      "properties": {
+                        "webAnalytics": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -10507,6 +10498,13 @@
                           "nullable": true,
                           "additionalProperties": {
                             "properties": {
+                              "architecture": {
+                                "type": "string",
+                                "enum": [
+                                  "x86_64",
+                                  "arm64"
+                                ]
+                              },
                               "memory": {
                                 "type": "number"
                               },
@@ -11124,6 +11122,38 @@
                           ],
                           "type": "object",
                           "description": "Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured"
+                        },
+                        "checks": {
+                          "properties": {
+                            "deployment-alias": {
+                              "properties": {
+                                "state": {
+                                  "type": "string",
+                                  "enum": [
+                                    "succeeded",
+                                    "failed",
+                                    "pending"
+                                  ]
+                                },
+                                "startedAt": {
+                                  "type": "number"
+                                },
+                                "completedAt": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "state",
+                                "startedAt"
+                              ],
+                              "type": "object",
+                              "description": "Condensed check data. Retrieve individual check and check run data using api-checks v2 routes."
+                            }
+                          },
+                          "required": [
+                            "deployment-alias"
+                          ],
+                          "type": "object"
                         }
                       },
                       "required": [
@@ -12633,24 +12663,24 @@
                     "lambdas": {
                       "items": {
                         "properties": {
+                          "id": {
+                            "type": "string"
+                          },
                           "createdAt": {
                             "type": "number"
                           },
-                          "id": {
+                          "entrypoint": {
+                            "nullable": true,
                             "type": "string"
                           },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
-                          },
-                          "entrypoint": {
-                            "nullable": true,
-                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -12701,10 +12731,10 @@
                     },
                     "team": {
                       "properties": {
-                        "name": {
+                        "id": {
                           "type": "string"
                         },
-                        "id": {
+                        "name": {
                           "type": "string"
                         },
                         "slug": {
@@ -12715,8 +12745,8 @@
                         }
                       },
                       "required": [
-                        "name",
                         "id",
+                        "name",
                         "slug"
                       ],
                       "type": "object"
@@ -12763,9 +12793,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "endsWith",
                                     "startsWith",
-                                    "equals"
+                                    "equals",
+                                    "endsWith"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -12905,11 +12935,8 @@
                         }
                       ]
                     },
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "LAMBDAS"
-                      ]
+                    "id": {
+                      "type": "string"
                     },
                     "name": {
                       "type": "string"
@@ -12917,12 +12944,15 @@
                     "createdAt": {
                       "type": "number"
                     },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "LAMBDAS"
+                      ]
+                    },
                     "deletedAt": {
                       "nullable": true,
                       "type": "number"
-                    },
-                    "id": {
-                      "type": "string"
                     },
                     "version": {
                       "type": "number",
@@ -13564,121 +13594,11 @@
                       ],
                       "type": "object"
                     },
-                    "plan": {
-                      "type": "string",
-                      "enum": [
-                        "pro",
-                        "enterprise",
-                        "hobby"
-                      ]
-                    },
                     "projectId": {
                       "type": "string"
                     },
                     "ownerId": {
                       "type": "string"
-                    },
-                    "microfrontends": {
-                      "oneOf": [
-                        {
-                          "properties": {
-                            "isDefaultApp": {
-                              "type": "boolean",
-                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                            },
-                            "defaultAppProjectName": {
-                              "type": "string",
-                              "description": "The project name of the default app of this deployment's microfrontends group."
-                            },
-                            "defaultRoute": {
-                              "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
-                            },
-                            "groupIds": {
-                              "items": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ]
-                              },
-                              "maxItems": 2,
-                              "minItems": 2,
-                              "type": "array",
-                              "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
-                            }
-                          },
-                          "required": [
-                            "defaultAppProjectName",
-                            "groupIds"
-                          ],
-                          "type": "object"
-                        },
-                        {
-                          "properties": {
-                            "applications": {
-                              "additionalProperties": {
-                                "properties": {
-                                  "productionHost": {
-                                    "type": "string",
-                                    "description": "This is the production alias, it will always show the most up to date of each application."
-                                  },
-                                  "deploymentAlias": {
-                                    "type": "string",
-                                    "description": "Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used."
-                                  },
-                                  "deploymentHost": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "productionHost"
-                                ],
-                                "type": "object",
-                                "description": "A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment."
-                              },
-                              "type": "object",
-                              "description": "A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment."
-                            },
-                            "isDefaultApp": {
-                              "type": "boolean"
-                            },
-                            "defaultAppProjectName": {
-                              "type": "string",
-                              "description": "The project name of the default app of this deployment's microfrontends group."
-                            },
-                            "defaultRoute": {
-                              "type": "string",
-                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
-                            },
-                            "groupIds": {
-                              "items": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ]
-                              },
-                              "maxItems": 2,
-                              "minItems": 2,
-                              "type": "array",
-                              "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
-                            }
-                          },
-                          "required": [
-                            "isDefaultApp",
-                            "defaultAppProjectName",
-                            "groupIds"
-                          ],
-                          "type": "object"
-                        }
-                      ]
                     },
                     "monorepoManager": {
                       "nullable": true,
@@ -13692,15 +13612,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -13731,6 +13651,13 @@
                       "nullable": true,
                       "additionalProperties": {
                         "properties": {
+                          "architecture": {
+                            "type": "string",
+                            "enum": [
+                              "x86_64",
+                              "arm64"
+                            ]
+                          },
                           "memory": {
                             "type": "number"
                           },
@@ -13930,11 +13857,11 @@
                                 "type": "string",
                                 "enum": [
                                   "error",
-                                  "resource",
                                   "filesystem",
                                   "hit",
                                   "miss",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -13996,6 +13923,148 @@
                       },
                       "type": "array"
                     },
+                    "microfrontends": {
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean",
+                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
+                            },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            }
+                          },
+                          "required": [
+                            "defaultAppProjectName",
+                            "groupIds"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "applications": {
+                              "additionalProperties": {
+                                "properties": {
+                                  "productionHost": {
+                                    "type": "string",
+                                    "description": "This is the production alias, it will always show the most up to date of each application."
+                                  },
+                                  "deploymentAlias": {
+                                    "type": "string",
+                                    "description": "Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used."
+                                  },
+                                  "deploymentHost": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "productionHost"
+                                ],
+                                "type": "object",
+                                "description": "A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment."
+                              },
+                              "type": "object",
+                              "description": "A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment."
+                            },
+                            "isDefaultApp": {
+                              "type": "boolean"
+                            },
+                            "defaultAppProjectName": {
+                              "type": "string",
+                              "description": "The project name of the default app of this deployment's microfrontends group."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            }
+                          },
+                          "required": [
+                            "isDefaultApp",
+                            "defaultAppProjectName",
+                            "groupIds"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "checks": {
+                      "properties": {
+                        "deployment-alias": {
+                          "properties": {
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "succeeded",
+                                "failed",
+                                "pending"
+                              ]
+                            },
+                            "startedAt": {
+                              "type": "number"
+                            },
+                            "completedAt": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "state",
+                            "startedAt"
+                          ],
+                          "type": "object",
+                          "description": "Condensed check data. Retrieve individual check and check run data using api-checks v2 routes."
+                        }
+                      },
+                      "required": [
+                        "deployment-alias"
+                      ],
+                      "type": "object"
+                    },
+                    "plan": {
+                      "type": "string",
+                      "enum": [
+                        "pro",
+                        "enterprise",
+                        "hobby"
+                      ]
+                    },
                     "connectBuildsEnabled": {
                       "type": "boolean"
                     },
@@ -14044,8 +14113,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -14097,8 +14166,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -14151,8 +14220,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -14239,19 +14308,19 @@
                     "creator",
                     "public",
                     "status",
-                    "type",
+                    "id",
                     "name",
                     "createdAt",
-                    "id",
+                    "type",
                     "version",
                     "meta",
                     "readyState",
                     "regions",
                     "url",
-                    "plan",
                     "projectId",
                     "ownerId",
                     "routes",
+                    "plan",
                     "createdIn"
                   ],
                   "type": "object",
@@ -16202,6 +16271,13 @@
                       "nullable": true,
                       "additionalProperties": {
                         "properties": {
+                          "architecture": {
+                            "type": "string",
+                            "enum": [
+                              "x86_64",
+                              "arm64"
+                            ]
+                          },
                           "memory": {
                             "type": "number"
                           },
@@ -16830,6 +16906,38 @@
                       ],
                       "type": "object",
                       "description": "Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured"
+                    },
+                    "checks": {
+                      "properties": {
+                        "deployment-alias": {
+                          "properties": {
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "succeeded",
+                                "failed",
+                                "pending"
+                              ]
+                            },
+                            "startedAt": {
+                              "type": "number"
+                            },
+                            "completedAt": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "state",
+                            "startedAt"
+                          ],
+                          "type": "object",
+                          "description": "Condensed check data. Retrieve individual check and check run data using api-checks v2 routes."
+                        }
+                      },
+                      "required": [
+                        "deployment-alias"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -22801,6 +22909,16 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -22948,6 +23066,16 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -23065,6 +23193,16 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -23417,6 +23555,16 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -24004,6 +24152,16 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -25799,7 +25957,7 @@
                       "configurationId": {
                         "type": "string",
                         "description": "The client configuration this log drain was created with",
-                        "example": "icfg_cuwj0AdCdH3BwWT4LPijCC7t"
+                        "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
                       },
                       "createdAt": {
                         "type": "number",
@@ -26007,7 +26165,7 @@
                     "configurationId": {
                       "type": "string",
                       "description": "The client configuration this log drain was created with",
-                      "example": "icfg_cuwj0AdCdH3BwWT4LPijCC7t"
+                      "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
                     },
                     "createdAt": {
                       "type": "number",
@@ -29558,7 +29716,7 @@
                                 "type": "string",
                                 "enum": [
                                   "enhanced",
-                                  "ultra"
+                                  "turbo"
                                 ]
                               }
                             },
@@ -29567,16 +29725,40 @@
                             ],
                             "type": "object"
                           },
+                          "rollbackDescription": {
+                            "properties": {
+                              "userId": {
+                                "type": "string",
+                                "description": "The user who rolled back the project."
+                              },
+                              "username": {
+                                "type": "string",
+                                "description": "The username of the user who rolled back the project."
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
+                              },
+                              "createdAt": {
+                                "type": "number",
+                                "description": "Timestamp of when the rollback was requested."
+                              }
+                            },
+                            "required": [
+                              "userId",
+                              "username",
+                              "description",
+                              "createdAt"
+                            ],
+                            "type": "object",
+                            "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+                          },
                           "rollingRelease": {
                             "nullable": true,
                             "properties": {
                               "target": {
                                 "type": "string",
                                 "description": "The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments."
-                              },
-                              "minutesToRelease": {
-                                "type": "number",
-                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%."
                               },
                               "stages": {
                                 "nullable": true,
@@ -29585,10 +29767,6 @@
                                     "targetPercentage": {
                                       "type": "number",
                                       "description": "The percentage of traffic to serve to the new deployment"
-                                    },
-                                    "minutesToRelease": {
-                                      "type": "number",
-                                      "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
                                     },
                                     "requireApproval": {
                                       "type": "boolean",
@@ -29650,7 +29828,7 @@
                                 "type": "string",
                                 "enum": [
                                   "enhanced",
-                                  "ultra"
+                                  "turbo"
                                 ]
                               }
                             },
@@ -30850,6 +31028,18 @@
                                 },
                                 "type": "array"
                               },
+                              "apiKey": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "apiKeyOwnedBySelf": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "aliasProject": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -30857,6 +31047,12 @@
                                 "type": "array"
                               },
                               "aliasProtectionBypass": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "buildMachine": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -30983,6 +31179,18 @@
                                 "type": "array"
                               },
                               "observabilityData": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "onDemandBuild": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "onDemandConcurrency": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -31785,25 +31993,70 @@
                               },
                               "managedRules": {
                                 "nullable": true,
-                                "additionalProperties": {
-                                  "properties": {
-                                    "active": {
-                                      "type": "boolean"
+                                "properties": {
+                                  "bot_filter": {
+                                    "properties": {
+                                      "active": {
+                                        "type": "boolean"
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "deny",
+                                          "challenge",
+                                          "log"
+                                        ]
+                                      }
                                     },
-                                    "action": {
-                                      "type": "string",
-                                      "enum": [
-                                        "deny",
-                                        "challenge",
-                                        "log"
-                                      ]
-                                    }
+                                    "required": [
+                                      "active"
+                                    ],
+                                    "type": "object"
                                   },
-                                  "required": [
-                                    "active"
-                                  ],
-                                  "type": "object"
+                                  "ai_bots": {
+                                    "properties": {
+                                      "active": {
+                                        "type": "boolean"
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "deny",
+                                          "challenge",
+                                          "log"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "active"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  "owasp": {
+                                    "properties": {
+                                      "active": {
+                                        "type": "boolean"
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "deny",
+                                          "challenge",
+                                          "log"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "active"
+                                    ],
+                                    "type": "object"
+                                  }
                                 },
+                                "required": [
+                                  "bot_filter",
+                                  "ai_bots",
+                                  "owasp"
+                                ],
                                 "type": "object"
                               }
                             },
@@ -31812,7 +32065,8 @@
                           "oidcTokenConfig": {
                             "properties": {
                               "enabled": {
-                                "type": "boolean"
+                                "type": "boolean",
+                                "description": "Whether or not to generate OpenID Connect JSON Web Tokens."
                               },
                               "issuerMode": {
                                 "type": "string",
@@ -31823,9 +32077,6 @@
                                 "description": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
                               }
                             },
-                            "required": [
-                              "enabled"
-                            ],
                             "type": "object"
                           },
                           "tier": {
@@ -31835,6 +32086,14 @@
                               "advanced",
                               "critical"
                             ]
+                          },
+                          "features": {
+                            "properties": {
+                              "webAnalytics": {
+                                "type": "boolean"
+                              }
+                            },
+                            "type": "object"
                           }
                         },
                         "required": [
@@ -32336,10 +32595,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -33711,7 +33970,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -33720,16 +33979,40 @@
                       ],
                       "type": "object"
                     },
+                    "rollbackDescription": {
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "description": "The user who rolled back the project."
+                        },
+                        "username": {
+                          "type": "string",
+                          "description": "The username of the user who rolled back the project."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
+                        },
+                        "createdAt": {
+                          "type": "number",
+                          "description": "Timestamp of when the rollback was requested."
+                        }
+                      },
+                      "required": [
+                        "userId",
+                        "username",
+                        "description",
+                        "createdAt"
+                      ],
+                      "type": "object",
+                      "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+                    },
                     "rollingRelease": {
                       "nullable": true,
                       "properties": {
                         "target": {
                           "type": "string",
                           "description": "The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments."
-                        },
-                        "minutesToRelease": {
-                          "type": "number",
-                          "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%."
                         },
                         "stages": {
                           "nullable": true,
@@ -33738,10 +34021,6 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
-                              },
-                              "minutesToRelease": {
-                                "type": "number",
-                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
                               },
                               "requireApproval": {
                                 "type": "boolean",
@@ -33803,7 +34082,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -35003,6 +35282,18 @@
                           },
                           "type": "array"
                         },
+                        "apiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "apiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -35010,6 +35301,12 @@
                           "type": "array"
                         },
                         "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -35136,6 +35433,18 @@
                           "type": "array"
                         },
                         "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -35689,8 +35998,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "host",
                                         "path",
+                                        "host",
                                         "method",
                                         "header",
                                         "cookie",
@@ -35771,8 +36080,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "host",
                                         "path",
+                                        "host",
                                         "method",
                                         "header",
                                         "cookie",
@@ -35938,25 +36247,70 @@
                         },
                         "managedRules": {
                           "nullable": true,
-                          "additionalProperties": {
-                            "properties": {
-                              "active": {
-                                "type": "boolean"
+                          "properties": {
+                            "bot_filter": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
                               },
-                              "action": {
-                                "type": "string",
-                                "enum": [
-                                  "deny",
-                                  "challenge",
-                                  "log"
-                                ]
-                              }
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
                             },
-                            "required": [
-                              "active"
-                            ],
-                            "type": "object"
+                            "ai_bots": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            },
+                            "owasp": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            }
                           },
+                          "required": [
+                            "bot_filter",
+                            "ai_bots",
+                            "owasp"
+                          ],
                           "type": "object"
                         }
                       },
@@ -35965,7 +36319,8 @@
                     "oidcTokenConfig": {
                       "properties": {
                         "enabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not to generate OpenID Connect JSON Web Tokens."
                         },
                         "issuerMode": {
                           "type": "string",
@@ -35976,9 +36331,6 @@
                           "description": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
                         }
                       },
-                      "required": [
-                        "enabled"
-                      ],
                       "type": "object"
                     },
                     "tier": {
@@ -35988,6 +36340,14 @@
                         "advanced",
                         "critical"
                       ]
+                    },
+                    "features": {
+                      "properties": {
+                        "webAnalytics": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -36276,6 +36636,7 @@
                     "properties": {
                       "enabled": {
                         "description": "Whether or not to generate OpenID Connect JSON Web Tokens.",
+                        "deprecated": true,
                         "type": "boolean",
                         "default": true
                       },
@@ -36337,7 +36698,7 @@
                       "buildMachineType": {
                         "enum": [
                           "enhanced",
-                          "ultra"
+                          "turbo"
                         ]
                       }
                     },
@@ -36374,6 +36735,39 @@
               "application/json": {
                 "schema": {
                   "properties": {
+                    "integrations": {
+                      "items": {
+                        "properties": {
+                          "installationId": {
+                            "type": "string",
+                            "description": "The integration installation ID.",
+                            "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
+                          },
+                          "resources": {
+                            "items": {
+                              "properties": {
+                                "externalResourceId": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "externalResourceId"
+                              ],
+                              "type": "object",
+                              "description": "The list of the installation resources connected to the project."
+                            },
+                            "type": "array",
+                            "description": "The list of the installation resources connected to the project."
+                          }
+                        },
+                        "required": [
+                          "installationId"
+                        ],
+                        "type": "object",
+                        "description": "Integration installation enabled on the project."
+                      },
+                      "type": "array"
+                    },
                     "accountId": {
                       "type": "string"
                     },
@@ -38049,7 +38443,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -38058,16 +38452,40 @@
                       ],
                       "type": "object"
                     },
+                    "rollbackDescription": {
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "description": "The user who rolled back the project."
+                        },
+                        "username": {
+                          "type": "string",
+                          "description": "The username of the user who rolled back the project."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
+                        },
+                        "createdAt": {
+                          "type": "number",
+                          "description": "Timestamp of when the rollback was requested."
+                        }
+                      },
+                      "required": [
+                        "userId",
+                        "username",
+                        "description",
+                        "createdAt"
+                      ],
+                      "type": "object",
+                      "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+                    },
                     "rollingRelease": {
                       "nullable": true,
                       "properties": {
                         "target": {
                           "type": "string",
                           "description": "The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments."
-                        },
-                        "minutesToRelease": {
-                          "type": "number",
-                          "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%."
                         },
                         "stages": {
                           "nullable": true,
@@ -38076,10 +38494,6 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
-                              },
-                              "minutesToRelease": {
-                                "type": "number",
-                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
                               },
                               "requireApproval": {
                                 "type": "boolean",
@@ -38141,7 +38555,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -39341,6 +39755,18 @@
                           },
                           "type": "array"
                         },
+                        "apiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "apiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -39348,6 +39774,12 @@
                           "type": "array"
                         },
                         "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -39474,6 +39906,18 @@
                           "type": "array"
                         },
                         "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -40276,25 +40720,70 @@
                         },
                         "managedRules": {
                           "nullable": true,
-                          "additionalProperties": {
-                            "properties": {
-                              "active": {
-                                "type": "boolean"
+                          "properties": {
+                            "bot_filter": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
                               },
-                              "action": {
-                                "type": "string",
-                                "enum": [
-                                  "deny",
-                                  "challenge",
-                                  "log"
-                                ]
-                              }
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
                             },
-                            "required": [
-                              "active"
-                            ],
-                            "type": "object"
+                            "ai_bots": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            },
+                            "owasp": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            }
                           },
+                          "required": [
+                            "bot_filter",
+                            "ai_bots",
+                            "owasp"
+                          ],
                           "type": "object"
                         }
                       },
@@ -40303,7 +40792,8 @@
                     "oidcTokenConfig": {
                       "properties": {
                         "enabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not to generate OpenID Connect JSON Web Tokens."
                         },
                         "issuerMode": {
                           "type": "string",
@@ -40314,9 +40804,6 @@
                           "description": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
                         }
                       },
-                      "required": [
-                        "enabled"
-                      ],
                       "type": "object"
                     },
                     "tier": {
@@ -40326,6 +40813,14 @@
                         "advanced",
                         "critical"
                       ]
+                    },
+                    "features": {
+                      "properties": {
+                        "webAnalytics": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -42091,7 +42586,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -42100,16 +42595,40 @@
                       ],
                       "type": "object"
                     },
+                    "rollbackDescription": {
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "description": "The user who rolled back the project."
+                        },
+                        "username": {
+                          "type": "string",
+                          "description": "The username of the user who rolled back the project."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
+                        },
+                        "createdAt": {
+                          "type": "number",
+                          "description": "Timestamp of when the rollback was requested."
+                        }
+                      },
+                      "required": [
+                        "userId",
+                        "username",
+                        "description",
+                        "createdAt"
+                      ],
+                      "type": "object",
+                      "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+                    },
                     "rollingRelease": {
                       "nullable": true,
                       "properties": {
                         "target": {
                           "type": "string",
                           "description": "The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments."
-                        },
-                        "minutesToRelease": {
-                          "type": "number",
-                          "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth 0-100 stage. So once we have fetched the document with the start time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving. There is no approval required, and for the case of Vercel, it would just slowly shift traffic 0 to 100%."
                         },
                         "stages": {
                           "nullable": true,
@@ -42118,10 +42637,6 @@
                               "targetPercentage": {
                                 "type": "number",
                                 "description": "The percentage of traffic to serve to the new deployment"
-                              },
-                              "minutesToRelease": {
-                                "type": "number",
-                                "description": "minutesToRelease is the total time to gradually shift percentages. This value overrides stages and instead creates a single smooth starting percentage to ending percentage stage. So once we have fetched the document with the update time, subtract from the current time, and divide by total minutesToRelease, to determine what percentage of traffic the new deployment should be serving."
                               },
                               "requireApproval": {
                                 "type": "boolean",
@@ -42183,7 +42698,7 @@
                           "type": "string",
                           "enum": [
                             "enhanced",
-                            "ultra"
+                            "turbo"
                           ]
                         }
                       },
@@ -43383,6 +43898,18 @@
                           },
                           "type": "array"
                         },
+                        "apiKey": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "apiKeyOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -43390,6 +43917,12 @@
                           "type": "array"
                         },
                         "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -43516,6 +44049,18 @@
                           "type": "array"
                         },
                         "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -44318,25 +44863,70 @@
                         },
                         "managedRules": {
                           "nullable": true,
-                          "additionalProperties": {
-                            "properties": {
-                              "active": {
-                                "type": "boolean"
+                          "properties": {
+                            "bot_filter": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
                               },
-                              "action": {
-                                "type": "string",
-                                "enum": [
-                                  "deny",
-                                  "challenge",
-                                  "log"
-                                ]
-                              }
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
                             },
-                            "required": [
-                              "active"
-                            ],
-                            "type": "object"
+                            "ai_bots": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            },
+                            "owasp": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "challenge",
+                                    "log"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            }
                           },
+                          "required": [
+                            "bot_filter",
+                            "ai_bots",
+                            "owasp"
+                          ],
                           "type": "object"
                         }
                       },
@@ -44345,7 +44935,8 @@
                     "oidcTokenConfig": {
                       "properties": {
                         "enabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not to generate OpenID Connect JSON Web Tokens."
                         },
                         "issuerMode": {
                           "type": "string",
@@ -44356,9 +44947,6 @@
                           "description": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
                         }
                       },
-                      "required": [
-                        "enabled"
-                      ],
                       "type": "object"
                     },
                     "tier": {
@@ -44368,6 +44956,14 @@
                         "advanced",
                         "critical"
                       ]
+                    },
+                    "features": {
+                      "properties": {
+                        "webAnalytics": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -44605,7 +45201,7 @@
                         "enum": [
                           null,
                           "enhanced",
-                          "ultra"
+                          "turbo"
                         ]
                       },
                       "fluid": {
@@ -44709,6 +45305,7 @@
                     "properties": {
                       "enabled": {
                         "description": "Whether or not to generate OpenID Connect JSON Web Tokens.",
+                        "deprecated": true,
                         "type": "boolean",
                         "default": true
                       },
@@ -54055,6 +54652,9 @@
           "201": {
             "description": ""
           },
+          "202": {
+            "description": ""
+          },
           "400": {
             "description": "One of the provided values in the request query is invalid.",
             "content": {
@@ -55091,33 +55691,91 @@
                           "type": "array"
                         },
                         "managedRules": {
-                          "additionalProperties": {
-                            "properties": {
-                              "active": {
-                                "type": "boolean"
+                          "properties": {
+                            "bot_protection": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "log",
+                                    "challenge"
+                                  ]
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                },
+                                "userId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
                               },
-                              "action": {
-                                "type": "string",
-                                "enum": [
-                                  "deny",
-                                  "log",
-                                  "challenge"
-                                ]
-                              },
-                              "updatedAt": {
-                                "type": "string"
-                              },
-                              "userId": {
-                                "type": "string"
-                              },
-                              "username": {
-                                "type": "string"
-                              }
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
                             },
-                            "required": [
-                              "active"
-                            ],
-                            "type": "object"
+                            "ai_bots": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "log",
+                                    "challenge"
+                                  ]
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                },
+                                "userId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            },
+                            "owasp": {
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "action": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deny",
+                                    "log",
+                                    "challenge"
+                                  ]
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                },
+                                "userId": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "active"
+                              ],
+                              "type": "object"
+                            }
                           },
                           "type": "object"
                         }
@@ -55581,8 +56239,7 @@
                                         "gte",
                                         "lt",
                                         "lte"
-                                      ],
-                                      "description": "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."
+                                      ]
                                     },
                                     "neg": {
                                       "type": "boolean"
@@ -55969,8 +56626,7 @@
                                           "ja4_digest",
                                           "ja3_digest",
                                           "rate_limit_api_id"
-                                        ],
-                                        "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
+                                        ]
                                       },
                                       "op": {
                                         "type": "string",
@@ -55989,8 +56645,7 @@
                                           "gte",
                                           "lt",
                                           "lte"
-                                        ],
-                                        "description": "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value."
+                                        ]
                                       },
                                       "neg": {
                                         "type": "boolean"
@@ -56218,8 +56873,7 @@
                                           "ja4_digest",
                                           "ja3_digest",
                                           "rate_limit_api_id"
-                                        ],
-                                        "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
+                                        ]
                                       },
                                       "op": {
                                         "type": "string",
@@ -56238,8 +56892,7 @@
                                           "gte",
                                           "lt",
                                           "lte"
-                                        ],
-                                        "description": "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"
+                                        ]
                                       },
                                       "neg": {
                                         "type": "boolean"
@@ -57084,8 +57737,7 @@
                                           "nex",
                                           "ninc",
                                           "neq"
-                                        ],
-                                        "description": "[Operator](https://vercel.com/docs/security/vercel-waf/rule-configuration#operators) used to compare the parameter with a value"
+                                        ]
                                       },
                                       "neg": {
                                         "type": "boolean"
@@ -57269,33 +57921,91 @@
                       "type": "array"
                     },
                     "managedRules": {
-                      "additionalProperties": {
-                        "properties": {
-                          "active": {
-                            "type": "boolean"
+                      "properties": {
+                        "bot_protection": {
+                          "properties": {
+                            "active": {
+                              "type": "boolean"
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "deny",
+                                "log",
+                                "challenge"
+                              ]
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "userId": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            }
                           },
-                          "action": {
-                            "type": "string",
-                            "enum": [
-                              "deny",
-                              "log",
-                              "challenge"
-                            ]
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          },
-                          "userId": {
-                            "type": "string"
-                          },
-                          "username": {
-                            "type": "string"
-                          }
+                          "required": [
+                            "active"
+                          ],
+                          "type": "object"
                         },
-                        "required": [
-                          "active"
-                        ],
-                        "type": "object"
+                        "ai_bots": {
+                          "properties": {
+                            "active": {
+                              "type": "boolean"
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "deny",
+                                "log",
+                                "challenge"
+                              ]
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "userId": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "active"
+                          ],
+                          "type": "object"
+                        },
+                        "owasp": {
+                          "properties": {
+                            "active": {
+                              "type": "boolean"
+                            },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "deny",
+                                "log",
+                                "challenge"
+                              ]
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "userId": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "active"
+                          ],
+                          "type": "object"
+                        }
                       },
                       "type": "object"
                     }
@@ -58604,7 +59314,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
-            "description": "No team was found.",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -58889,16 +59599,6 @@
           },
           "403": {
             "description": "The authenticated user must be a team owner to perform the action\nYou do not have permission to access this resource."
-          },
-          "404": {
-            "description": "The team was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           },
           "503": {
             "description": ""
@@ -59635,7 +60335,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
-            "description": "The provided user is not part of this team.\nA user with the specified ID does not exist.\nTeam not found.",
+            "description": "The provided user is not part of this team.\nA user with the specified ID does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -59797,7 +60497,7 @@
             "description": "You do not have permission to access this resource.\nNot authorized to update the team."
           },
           "404": {
-            "description": "A user with the specified ID does not exist.\nNo team found.",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
@@ -59865,7 +60565,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TeamLimited"
+                  "$ref": "#/components/schemas/Team"
                 }
               }
             }
@@ -59943,7 +60643,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TeamLimited"
+                  "$ref": "#/components/schemas/Team"
                 }
               }
             }
@@ -59973,16 +60673,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource.\nNot authorized to update the team. Must be an OWNER."
-          },
-          "404": {
-            "description": "Team was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
           }
         },
         "parameters": [
@@ -60274,16 +60964,11 @@
                     },
                     "slug": {
                       "type": "string"
-                    },
-                    "billing": {
-                      "type": "object",
-                      "description": "IMPORTANT: If extending Billing, particularly with optional fields, make sure you also update `sync-orb-subscription-to-owner.ts` to handle the items when the object is recreated."
                     }
                   },
                   "required": [
                     "id",
-                    "slug",
-                    "billing"
+                    "slug"
                   ],
                   "type": "object",
                   "description": "The team was created successfully"
@@ -60451,16 +61136,6 @@
           "403": {
             "description": "You do not have permission to access this resource.\nThe authenticated user can't access the team"
           },
-          "404": {
-            "description": "The team was not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          },
           "409": {
             "description": ""
           }
@@ -60592,7 +61267,7 @@
             "description": "You do not have permission to access this resource.\nInvite managed by directory sync\nNot authorized to access this team."
           },
           "404": {
-            "description": "Team invite code not found.\nNo team found.",
+            "description": "Team invite code not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61330,6 +62005,18 @@
                           "budget.reached",
                           "budget.reset",
                           "domain.created",
+                          "domain.dns.records.changed",
+                          "domain.transfer-in.started",
+                          "domain.transfer-in.completed",
+                          "domain.transfer-in.failed",
+                          "domain.certificate.add",
+                          "domain.certificate.add.failed",
+                          "domain.certificate.renew",
+                          "domain.certificate.renew.failed",
+                          "domain.certificate.deleted",
+                          "domain.renewal",
+                          "domain.renewal.failed",
+                          "domain.auto-renew.changed",
                           "deployment.created",
                           "deployment.error",
                           "deployment.canceled",
@@ -61351,7 +62038,12 @@
                           "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
+                          "project.domain.created",
+                          "project.domain.updated",
+                          "project.domain.deleted",
                           "project.domain.verified",
+                          "project.domain.unverified",
+                          "project.domain.moved",
                           "project.rolling-release.started",
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
@@ -61382,6 +62074,18 @@
                           "budget.reached",
                           "budget.reset",
                           "domain.created",
+                          "domain.dns.records.changed",
+                          "domain.transfer-in.started",
+                          "domain.transfer-in.completed",
+                          "domain.transfer-in.failed",
+                          "domain.certificate.add",
+                          "domain.certificate.add.failed",
+                          "domain.certificate.renew",
+                          "domain.certificate.renew.failed",
+                          "domain.certificate.deleted",
+                          "domain.renewal",
+                          "domain.renewal.failed",
+                          "domain.auto-renew.changed",
                           "deployment.created",
                           "deployment.error",
                           "deployment.canceled",
@@ -61403,22 +62107,27 @@
                           "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
+                          "project.domain.created",
+                          "project.domain.updated",
+                          "project.domain.deleted",
                           "project.domain.verified",
+                          "project.domain.unverified",
+                          "project.domain.moved",
                           "project.rolling-release.started",
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
-                          "deployment-checks-completed-legacy",
+                          "deployment-checks-completed",
                           "deployment-ready-legacy",
-                          "deployment-prepared-legacy",
+                          "deployment-prepared",
                           "deployment-error-legacy",
                           "deployment-check-rerequested-legacy",
                           "deployment-canceled-legacy",
                           "project-created-legacy",
                           "project-removed-legacy",
                           "domain-created-legacy",
-                          "deployment-legacy",
-                          "integration-configuration-permission-updated-legacy",
+                          "deployment",
+                          "integration-configuration-permission-updated",
                           "integration-configuration-removed-legacy",
                           "integration-configuration-scope-change-confirmed-legacy",
                           "marketplace.invoice.created",
@@ -61552,6 +62261,18 @@
                         "budget.reached",
                         "budget.reset",
                         "domain.created",
+                        "domain.dns.records.changed",
+                        "domain.transfer-in.started",
+                        "domain.transfer-in.completed",
+                        "domain.transfer-in.failed",
+                        "domain.certificate.add",
+                        "domain.certificate.add.failed",
+                        "domain.certificate.renew",
+                        "domain.certificate.renew.failed",
+                        "domain.certificate.deleted",
+                        "domain.renewal",
+                        "domain.renewal.failed",
+                        "domain.auto-renew.changed",
                         "deployment.created",
                         "deployment.error",
                         "deployment.canceled",
@@ -61573,7 +62294,12 @@
                         "integration-resource.project-disconnected",
                         "project.created",
                         "project.removed",
+                        "project.domain.created",
+                        "project.domain.updated",
+                        "project.domain.deleted",
                         "project.domain.verified",
+                        "project.domain.unverified",
+                        "project.domain.moved",
                         "project.rolling-release.started",
                         "project.rolling-release.aborted",
                         "project.rolling-release.completed",
@@ -61602,6 +62328,18 @@
                         "budget.reached",
                         "budget.reset",
                         "domain.created",
+                        "domain.dns.records.changed",
+                        "domain.transfer-in.started",
+                        "domain.transfer-in.completed",
+                        "domain.transfer-in.failed",
+                        "domain.certificate.add",
+                        "domain.certificate.add.failed",
+                        "domain.certificate.renew",
+                        "domain.certificate.renew.failed",
+                        "domain.certificate.deleted",
+                        "domain.renewal",
+                        "domain.renewal.failed",
+                        "domain.auto-renew.changed",
                         "deployment.created",
                         "deployment.error",
                         "deployment.canceled",
@@ -61623,22 +62361,27 @@
                         "integration-resource.project-disconnected",
                         "project.created",
                         "project.removed",
+                        "project.domain.created",
+                        "project.domain.updated",
+                        "project.domain.deleted",
                         "project.domain.verified",
+                        "project.domain.unverified",
+                        "project.domain.moved",
                         "project.rolling-release.started",
                         "project.rolling-release.aborted",
                         "project.rolling-release.completed",
                         "project.rolling-release.approved",
-                        "deployment-checks-completed-legacy",
+                        "deployment-checks-completed",
                         "deployment-ready-legacy",
-                        "deployment-prepared-legacy",
+                        "deployment-prepared",
                         "deployment-error-legacy",
                         "deployment-check-rerequested-legacy",
                         "deployment-canceled-legacy",
                         "project-created-legacy",
                         "project-removed-legacy",
                         "domain-created-legacy",
-                        "deployment-legacy",
-                        "integration-configuration-permission-updated-legacy",
+                        "deployment",
+                        "integration-configuration-permission-updated",
                         "integration-configuration-removed-legacy",
                         "integration-configuration-scope-change-confirmed-legacy",
                         "marketplace.invoice.created",
@@ -61769,6 +62512,18 @@
                                 "budget.reached",
                                 "budget.reset",
                                 "domain.created",
+                                "domain.dns.records.changed",
+                                "domain.transfer-in.started",
+                                "domain.transfer-in.completed",
+                                "domain.transfer-in.failed",
+                                "domain.certificate.add",
+                                "domain.certificate.add.failed",
+                                "domain.certificate.renew",
+                                "domain.certificate.renew.failed",
+                                "domain.certificate.deleted",
+                                "domain.renewal",
+                                "domain.renewal.failed",
+                                "domain.auto-renew.changed",
                                 "deployment.created",
                                 "deployment.error",
                                 "deployment.canceled",
@@ -61790,7 +62545,12 @@
                                 "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
+                                "project.domain.created",
+                                "project.domain.updated",
+                                "project.domain.deleted",
                                 "project.domain.verified",
+                                "project.domain.unverified",
+                                "project.domain.moved",
                                 "project.rolling-release.started",
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
@@ -61821,6 +62581,18 @@
                                 "budget.reached",
                                 "budget.reset",
                                 "domain.created",
+                                "domain.dns.records.changed",
+                                "domain.transfer-in.started",
+                                "domain.transfer-in.completed",
+                                "domain.transfer-in.failed",
+                                "domain.certificate.add",
+                                "domain.certificate.add.failed",
+                                "domain.certificate.renew",
+                                "domain.certificate.renew.failed",
+                                "domain.certificate.deleted",
+                                "domain.renewal",
+                                "domain.renewal.failed",
+                                "domain.auto-renew.changed",
                                 "deployment.created",
                                 "deployment.error",
                                 "deployment.canceled",
@@ -61842,22 +62614,27 @@
                                 "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
+                                "project.domain.created",
+                                "project.domain.updated",
+                                "project.domain.deleted",
                                 "project.domain.verified",
+                                "project.domain.unverified",
+                                "project.domain.moved",
                                 "project.rolling-release.started",
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
-                                "deployment-checks-completed-legacy",
+                                "deployment-checks-completed",
                                 "deployment-ready-legacy",
-                                "deployment-prepared-legacy",
+                                "deployment-prepared",
                                 "deployment-error-legacy",
                                 "deployment-check-rerequested-legacy",
                                 "deployment-canceled-legacy",
                                 "project-created-legacy",
                                 "project-removed-legacy",
                                 "domain-created-legacy",
-                                "deployment-legacy",
-                                "integration-configuration-permission-updated-legacy",
+                                "deployment",
+                                "integration-configuration-permission-updated",
                                 "integration-configuration-removed-legacy",
                                 "integration-configuration-scope-change-confirmed-legacy",
                                 "marketplace.invoice.created",
@@ -61931,6 +62708,18 @@
                                 "budget.reached",
                                 "budget.reset",
                                 "domain.created",
+                                "domain.dns.records.changed",
+                                "domain.transfer-in.started",
+                                "domain.transfer-in.completed",
+                                "domain.transfer-in.failed",
+                                "domain.certificate.add",
+                                "domain.certificate.add.failed",
+                                "domain.certificate.renew",
+                                "domain.certificate.renew.failed",
+                                "domain.certificate.deleted",
+                                "domain.renewal",
+                                "domain.renewal.failed",
+                                "domain.auto-renew.changed",
                                 "deployment.created",
                                 "deployment.error",
                                 "deployment.canceled",
@@ -61952,7 +62741,12 @@
                                 "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
+                                "project.domain.created",
+                                "project.domain.updated",
+                                "project.domain.deleted",
                                 "project.domain.verified",
+                                "project.domain.unverified",
+                                "project.domain.moved",
                                 "project.rolling-release.started",
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
@@ -61983,6 +62777,18 @@
                                 "budget.reached",
                                 "budget.reset",
                                 "domain.created",
+                                "domain.dns.records.changed",
+                                "domain.transfer-in.started",
+                                "domain.transfer-in.completed",
+                                "domain.transfer-in.failed",
+                                "domain.certificate.add",
+                                "domain.certificate.add.failed",
+                                "domain.certificate.renew",
+                                "domain.certificate.renew.failed",
+                                "domain.certificate.deleted",
+                                "domain.renewal",
+                                "domain.renewal.failed",
+                                "domain.auto-renew.changed",
                                 "deployment.created",
                                 "deployment.error",
                                 "deployment.canceled",
@@ -62004,22 +62810,27 @@
                                 "integration-resource.project-disconnected",
                                 "project.created",
                                 "project.removed",
+                                "project.domain.created",
+                                "project.domain.updated",
+                                "project.domain.deleted",
                                 "project.domain.verified",
+                                "project.domain.unverified",
+                                "project.domain.moved",
                                 "project.rolling-release.started",
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
-                                "deployment-checks-completed-legacy",
+                                "deployment-checks-completed",
                                 "deployment-ready-legacy",
-                                "deployment-prepared-legacy",
+                                "deployment-prepared",
                                 "deployment-error-legacy",
                                 "deployment-check-rerequested-legacy",
                                 "deployment-canceled-legacy",
                                 "project-created-legacy",
                                 "project-removed-legacy",
                                 "domain-created-legacy",
-                                "deployment-legacy",
-                                "integration-configuration-permission-updated-legacy",
+                                "deployment",
+                                "integration-configuration-permission-updated",
                                 "integration-configuration-removed-legacy",
                                 "integration-configuration-scope-change-confirmed-legacy",
                                 "marketplace.invoice.created",
@@ -62168,6 +62979,18 @@
                           "budget.reached",
                           "budget.reset",
                           "domain.created",
+                          "domain.dns.records.changed",
+                          "domain.transfer-in.started",
+                          "domain.transfer-in.completed",
+                          "domain.transfer-in.failed",
+                          "domain.certificate.add",
+                          "domain.certificate.add.failed",
+                          "domain.certificate.renew",
+                          "domain.certificate.renew.failed",
+                          "domain.certificate.deleted",
+                          "domain.renewal",
+                          "domain.renewal.failed",
+                          "domain.auto-renew.changed",
                           "deployment.created",
                           "deployment.error",
                           "deployment.canceled",
@@ -62189,7 +63012,12 @@
                           "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
+                          "project.domain.created",
+                          "project.domain.updated",
+                          "project.domain.deleted",
                           "project.domain.verified",
+                          "project.domain.unverified",
+                          "project.domain.moved",
                           "project.rolling-release.started",
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
@@ -62220,6 +63048,18 @@
                           "budget.reached",
                           "budget.reset",
                           "domain.created",
+                          "domain.dns.records.changed",
+                          "domain.transfer-in.started",
+                          "domain.transfer-in.completed",
+                          "domain.transfer-in.failed",
+                          "domain.certificate.add",
+                          "domain.certificate.add.failed",
+                          "domain.certificate.renew",
+                          "domain.certificate.renew.failed",
+                          "domain.certificate.deleted",
+                          "domain.renewal",
+                          "domain.renewal.failed",
+                          "domain.auto-renew.changed",
                           "deployment.created",
                           "deployment.error",
                           "deployment.canceled",
@@ -62241,22 +63081,27 @@
                           "integration-resource.project-disconnected",
                           "project.created",
                           "project.removed",
+                          "project.domain.created",
+                          "project.domain.updated",
+                          "project.domain.deleted",
                           "project.domain.verified",
+                          "project.domain.unverified",
+                          "project.domain.moved",
                           "project.rolling-release.started",
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
-                          "deployment-checks-completed-legacy",
+                          "deployment-checks-completed",
                           "deployment-ready-legacy",
-                          "deployment-prepared-legacy",
+                          "deployment-prepared",
                           "deployment-error-legacy",
                           "deployment-check-rerequested-legacy",
                           "deployment-canceled-legacy",
                           "project-created-legacy",
                           "project-removed-legacy",
                           "domain-created-legacy",
-                          "deployment-legacy",
-                          "integration-configuration-permission-updated-legacy",
+                          "deployment",
+                          "integration-configuration-permission-updated",
                           "integration-configuration-removed-legacy",
                           "integration-configuration-scope-change-confirmed-legacy",
                           "marketplace.invoice.created",
@@ -63105,8 +63950,12 @@
                                 "type": "object"
                               },
                               "applications": {
-                                "additionalProperties": {
+                                "items": {
                                   "properties": {
+                                    "projectId": {
+                                      "type": "string",
+                                      "description": "The project ID that should use the below configuration."
+                                    },
                                     "fallbackHost": {
                                       "type": "string",
                                       "description": "This is always set and is the fallback host to send the request to if there is no deployment ID."
@@ -63121,13 +63970,14 @@
                                     }
                                   },
                                   "required": [
+                                    "projectId",
                                     "fallbackHost"
                                   ],
                                   "type": "object",
-                                  "description": "A mapping from `projectId` to information that should be used if the path is routed to that particular project."
+                                  "description": "A list of the deployment routing information for each project."
                                 },
-                                "type": "object",
-                                "description": "A mapping from `projectId` to information that should be used if the path is routed to that particular project."
+                                "type": "array",
+                                "description": "A list of the deployment routing information for each project."
                               }
                             },
                             "required": [
@@ -63562,8 +64412,12 @@
                           "type": "object"
                         },
                         "applications": {
-                          "additionalProperties": {
+                          "items": {
                             "properties": {
+                              "projectId": {
+                                "type": "string",
+                                "description": "The project ID that should use the below configuration."
+                              },
                               "fallbackHost": {
                                 "type": "string",
                                 "description": "This is always set and is the fallback host to send the request to if there is no deployment ID."
@@ -63578,13 +64432,14 @@
                               }
                             },
                             "required": [
+                              "projectId",
                               "fallbackHost"
                             ],
                             "type": "object",
-                            "description": "A mapping from `projectId` to information that should be used if the path is routed to that particular project."
+                            "description": "A list of the deployment routing information for each project."
                           },
-                          "type": "object",
-                          "description": "A mapping from `projectId` to information that should be used if the path is routed to that particular project."
+                          "type": "array",
+                          "description": "A list of the deployment routing information for each project."
                         }
                       },
                       "required": [
@@ -64944,6 +65799,39 @@
                               "canceled"
                             ],
                             "description": "Conclusion for checks"
+                          },
+                          "checks": {
+                            "properties": {
+                              "deployment-alias": {
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "succeeded",
+                                      "failed",
+                                      "pending"
+                                    ]
+                                  },
+                                  "startedAt": {
+                                    "type": "number"
+                                  },
+                                  "completedAt": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "startedAt"
+                                ],
+                                "type": "object",
+                                "description": "Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle."
+                              }
+                            },
+                            "required": [
+                              "deployment-alias"
+                            ],
+                            "type": "object",
+                            "description": "Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle."
                           },
                           "inspectorUrl": {
                             "nullable": true,
@@ -68431,7 +69319,7 @@
                                 "type": "string",
                                 "enum": [
                                   "enhanced",
-                                  "ultra"
+                                  "turbo"
                                 ]
                               },
                               "isDefaultBuildMachine": {
@@ -68623,6 +69511,7 @@
                               "blobTotalAvgSizeInBytes",
                               "blobTotalGetResponseObjectSizeInBytes",
                               "blobTotalSimpleRequests",
+                              "connectDataTransfer",
                               "dataCacheRead",
                               "dataCacheWrite",
                               "edgeConfigRead",
@@ -68634,6 +69523,8 @@
                               "elasticConcurrencyBuildSlots",
                               "fastDataTransfer",
                               "fastOriginTransfer",
+                              "fluidCpuDuration",
+                              "fluidDuration",
                               "functionDuration",
                               "functionInvocation",
                               "imageOptimizationCacheRead",
@@ -68643,11 +69534,14 @@
                               "monitoringMetric",
                               "blobDataTransfer",
                               "observabilityEvent",
+                              "onDemandConcurrencyMinutes",
                               "postgresComputeTime",
                               "postgresDataStorage",
                               "postgresDataTransfer",
                               "postgresDatabase",
                               "postgresWrittenData",
+                              "runtimeCacheRead",
+                              "runtimeCacheWrite",
                               "serverlessFunctionExecution",
                               "sourceImages",
                               "storageRedisTotalBandwidthInBytes",
@@ -68975,6 +69869,25 @@
                             ],
                             "type": "object"
                           },
+                          "connectDataTransfer": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
                           "dataCacheRead": {
                             "properties": {
                               "currentThreshold": {
@@ -69184,6 +70097,44 @@
                             ],
                             "type": "object"
                           },
+                          "fluidCpuDuration": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
+                          "fluidDuration": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
                           "functionDuration": {
                             "properties": {
                               "currentThreshold": {
@@ -69355,6 +70306,25 @@
                             ],
                             "type": "object"
                           },
+                          "onDemandConcurrencyMinutes": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
                           "postgresComputeTime": {
                             "properties": {
                               "currentThreshold": {
@@ -69432,6 +70402,44 @@
                             "type": "object"
                           },
                           "postgresWrittenData": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
+                          "runtimeCacheRead": {
+                            "properties": {
+                              "currentThreshold": {
+                                "type": "number"
+                              },
+                              "warningAt": {
+                                "nullable": true,
+                                "type": "number"
+                              },
+                              "blockedAt": {
+                                "nullable": true,
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "currentThreshold"
+                            ],
+                            "type": "object"
+                          },
+                          "runtimeCacheWrite": {
                             "properties": {
                               "currentThreshold": {
                                 "type": "number"
@@ -69649,9 +70657,17 @@
                             "type": "number",
                             "description": "Tracks if the first time on-demand overage email has been sent."
                           },
-                          "overageSummaryEmailSentAt": {
+                          "dailyOverageSummaryEmailSentAt": {
                             "type": "number",
-                            "description": "Tracks the last time we sent a summary email."
+                            "description": "Tracks the last time we sent a daily summary email."
+                          },
+                          "weeklyOverageSummaryEmailSentAt": {
+                            "type": "number",
+                            "description": "Tracks the last time we sent a weekly summary email."
+                          },
+                          "overageSummaryExpiresAt": {
+                            "type": "number",
+                            "description": "Tracks when the overage summary email will stop auto-sending. We currently lock the user into email for a month after the last on-demand usage."
                           },
                           "increasedOnDemandEmailSentAt": {
                             "type": "number",
@@ -69871,6 +70887,7 @@
                                   "blobTotalAvgSizeInBytes",
                                   "blobTotalGetResponseObjectSizeInBytes",
                                   "blobTotalSimpleRequests",
+                                  "connectDataTransfer",
                                   "dataCacheRead",
                                   "dataCacheWrite",
                                   "edgeConfigRead",
@@ -69882,6 +70899,8 @@
                                   "elasticConcurrencyBuildSlots",
                                   "fastDataTransfer",
                                   "fastOriginTransfer",
+                                  "fluidCpuDuration",
+                                  "fluidDuration",
                                   "functionDuration",
                                   "functionInvocation",
                                   "imageOptimizationCacheRead",
@@ -69891,11 +70910,14 @@
                                   "monitoringMetric",
                                   "blobDataTransfer",
                                   "observabilityEvent",
+                                  "onDemandConcurrencyMinutes",
                                   "postgresComputeTime",
                                   "postgresDataStorage",
                                   "postgresDataTransfer",
                                   "postgresDatabase",
                                   "postgresWrittenData",
+                                  "runtimeCacheRead",
+                                  "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
                                   "storageRedisTotalBandwidthInBytes",
@@ -69942,6 +70964,7 @@
                                   "blobTotalAvgSizeInBytes",
                                   "blobTotalGetResponseObjectSizeInBytes",
                                   "blobTotalSimpleRequests",
+                                  "connectDataTransfer",
                                   "dataCacheRead",
                                   "dataCacheWrite",
                                   "edgeConfigRead",
@@ -69953,6 +70976,8 @@
                                   "elasticConcurrencyBuildSlots",
                                   "fastDataTransfer",
                                   "fastOriginTransfer",
+                                  "fluidCpuDuration",
+                                  "fluidDuration",
                                   "functionDuration",
                                   "functionInvocation",
                                   "imageOptimizationCacheRead",
@@ -69962,11 +70987,14 @@
                                   "monitoringMetric",
                                   "blobDataTransfer",
                                   "observabilityEvent",
+                                  "onDemandConcurrencyMinutes",
                                   "postgresComputeTime",
                                   "postgresDataStorage",
                                   "postgresDataTransfer",
                                   "postgresDatabase",
                                   "postgresWrittenData",
+                                  "runtimeCacheRead",
+                                  "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
                                   "storageRedisTotalBandwidthInBytes",
@@ -70013,6 +71041,7 @@
                                   "blobTotalAvgSizeInBytes",
                                   "blobTotalGetResponseObjectSizeInBytes",
                                   "blobTotalSimpleRequests",
+                                  "connectDataTransfer",
                                   "dataCacheRead",
                                   "dataCacheWrite",
                                   "edgeConfigRead",
@@ -70024,6 +71053,8 @@
                                   "elasticConcurrencyBuildSlots",
                                   "fastDataTransfer",
                                   "fastOriginTransfer",
+                                  "fluidCpuDuration",
+                                  "fluidDuration",
                                   "functionDuration",
                                   "functionInvocation",
                                   "imageOptimizationCacheRead",
@@ -70033,11 +71064,14 @@
                                   "monitoringMetric",
                                   "blobDataTransfer",
                                   "observabilityEvent",
+                                  "onDemandConcurrencyMinutes",
                                   "postgresComputeTime",
                                   "postgresDataStorage",
                                   "postgresDataTransfer",
                                   "postgresDatabase",
                                   "postgresWrittenData",
+                                  "runtimeCacheRead",
+                                  "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
                                   "storageRedisTotalBandwidthInBytes",
@@ -73456,8 +74490,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The Preset's unique identifier.",
-            "example": "ABCDEFG000011111"
+            "description": "The Team's unique identifier.",
+            "example": "team_nllPyCtREAqxxdyFKbbMDlxd"
           },
           "data": {
             "properties": {
@@ -73493,11 +74527,457 @@
               "createdAt"
             ],
             "type": "object"
+          },
+          "connect": {
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "creatorId": {
+            "type": "string",
+            "description": "The ID of the user who created the Team.",
+            "example": "R6efeCJQ2HKXywuasPDc0fOWB"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "Timestamp (in milliseconds) of when the Team was last updated.",
+            "example": 1611796915677
+          },
+          "emailDomain": {
+            "nullable": true,
+            "type": "string",
+            "description": "Hostname that'll be matched with emails on sign-up to automatically join the Team.",
+            "example": "example.com"
+          },
+          "saml": {
+            "properties": {
+              "connection": {
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "Current status of the connection.",
+                    "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "Current state of the connection.",
+                    "example": "active"
+                  },
+                  "connectedAt": {
+                    "type": "number",
+                    "description": "Timestamp (in milliseconds) of when the configuration was connected.",
+                    "example": 1611796915677
+                  },
+                  "lastReceivedWebhookEvent": {
+                    "type": "number",
+                    "description": "Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.",
+                    "example": 1611796915677
+                  }
+                },
+                "required": [
+                  "status",
+                  "type",
+                  "state",
+                  "connectedAt"
+                ],
+                "type": "object",
+                "description": "Information for the SAML Single Sign-On configuration."
+              },
+              "directory": {
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "Current state of the connection.",
+                    "example": "active"
+                  },
+                  "connectedAt": {
+                    "type": "number",
+                    "description": "Timestamp (in milliseconds) of when the configuration was connected.",
+                    "example": 1611796915677
+                  },
+                  "lastReceivedWebhookEvent": {
+                    "type": "number",
+                    "description": "Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.",
+                    "example": 1611796915677
+                  }
+                },
+                "required": [
+                  "type",
+                  "state",
+                  "connectedAt"
+                ],
+                "type": "object",
+                "description": "Information for the Directory Sync configuration."
+              },
+              "enforced": {
+                "type": "boolean",
+                "description": "When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider."
+              },
+              "roles": {
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "accessGroupId": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "accessGroupId"
+                      ],
+                      "type": "object",
+                      "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team \"role\"."
+                    },
+                    {
+                      "type": "string",
+                      "enum": [
+                        "OWNER",
+                        "MEMBER",
+                        "DEVELOPER",
+                        "SECURITY",
+                        "BILLING",
+                        "VIEWER",
+                        "CONTRIBUTOR"
+                      ]
+                    }
+                  ]
+                },
+                "type": "object",
+                "description": "When \"Directory Sync\" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team \"role\"."
+              }
+            },
+            "required": [
+              "enforced"
+            ],
+            "type": "object",
+            "description": "When \"Single Sign-On (SAML)\" is configured, this object contains information regarding the configuration of the Identity Provider (IdP)."
+          },
+          "inviteCode": {
+            "type": "string",
+            "description": "Code that can be used to join this Team. Only visible to Team owners.",
+            "example": "hasihf9e89"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string",
+            "description": "A short description of the Team.",
+            "example": "Our mission is to make cloud computing accessible to everyone."
+          },
+          "stagingPrefix": {
+            "type": "string",
+            "description": "The prefix that is prepended to automatic aliases."
+          },
+          "resourceConfig": {
+            "properties": {
+              "concurrentBuilds": {
+                "type": "number",
+                "description": "The total amount of concurrent builds that can be used."
+              },
+              "edgeConfigSize": {
+                "type": "number",
+                "description": "The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set."
+              },
+              "edgeConfigs": {
+                "type": "number",
+                "description": "The maximum number of edge configs an account can create."
+              },
+              "kvDatabases": {
+                "type": "number",
+                "description": "The maximum number of kv databases an account can create."
+              },
+              "blobStores": {
+                "type": "number",
+                "description": "The maximum number of blob stores an account can create."
+              },
+              "postgresDatabases": {
+                "type": "number",
+                "description": "The maximum number of postgres databases an account can create."
+              },
+              "buildEntitlements": {
+                "properties": {
+                  "enhancedBuilds": {
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "previewDeploymentSuffix": {
+            "nullable": true,
+            "type": "string",
+            "description": "The hostname that is current set as preview deployment suffix.",
+            "example": "example.dev"
+          },
+          "remoteCaching": {
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              }
+            },
+            "type": "object",
+            "description": "Is remote caching enabled for this team"
+          },
+          "enablePreviewFeedback": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "default",
+              "on",
+              "off",
+              "on-force",
+              "off-force",
+              "default-force"
+            ],
+            "description": "Whether toolbar is enabled on preview deployments"
+          },
+          "enableProductionFeedback": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "default",
+              "on",
+              "off",
+              "on-force",
+              "off-force",
+              "default-force"
+            ],
+            "description": "Whether toolbar is enabled on production deployments"
+          },
+          "sensitiveEnvironmentVariablePolicy": {
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "default",
+              "on",
+              "off"
+            ],
+            "description": "Sensitive environment variable policy for this team"
+          },
+          "hideIpAddresses": {
+            "nullable": true,
+            "type": "boolean",
+            "description": "Indicates if IP addresses should be accessible in observability (o11y) tooling"
+          },
+          "hideIpAddressesInLogDrains": {
+            "nullable": true,
+            "type": "boolean",
+            "description": "Indicates if IP addresses should be accessible in log drains"
+          },
+          "ipBuckets": {
+            "items": {
+              "properties": {
+                "bucket": {
+                  "type": "string"
+                },
+                "supportUntil": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "bucket"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "slug": {
+            "type": "string",
+            "description": "The Team's slug, which is unique across the Vercel platform.",
+            "example": "my-team"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string",
+            "description": "Name associated with the Team account, or `null` if none has been provided.",
+            "example": "My Team"
+          },
+          "avatar": {
+            "nullable": true,
+            "type": "string",
+            "description": "The ID of the file used as avatar for this Team.",
+            "example": "6eb07268bcfadd309905ffb1579354084c24655c"
+          },
+          "membership": {
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "entitlements": {
+                "items": {
+                  "properties": {
+                    "entitlement": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entitlement"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "confirmedAt": {
+                "type": "number"
+              },
+              "accessRequestedAt": {
+                "type": "number"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "OWNER",
+                  "MEMBER",
+                  "DEVELOPER",
+                  "SECURITY",
+                  "BILLING",
+                  "VIEWER",
+                  "CONTRIBUTOR"
+                ]
+              },
+              "teamRoles": {
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "OWNER",
+                    "MEMBER",
+                    "DEVELOPER",
+                    "SECURITY",
+                    "BILLING",
+                    "VIEWER",
+                    "CONTRIBUTOR"
+                  ]
+                },
+                "type": "array"
+              },
+              "teamPermissions": {
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "CreateProject",
+                    "FullProductionDeployment",
+                    "UsageViewer",
+                    "EnvVariableManager",
+                    "EnvironmentManager"
+                  ]
+                },
+                "type": "array"
+              },
+              "teamId": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "number"
+              },
+              "created": {
+                "type": "number"
+              },
+              "joinedFrom": {
+                "properties": {
+                  "origin": {
+                    "type": "string",
+                    "enum": [
+                      "saml",
+                      "mail",
+                      "link",
+                      "import",
+                      "teams",
+                      "github",
+                      "gitlab",
+                      "bitbucket",
+                      "dsync",
+                      "feedback",
+                      "organization-teams"
+                    ]
+                  },
+                  "commitId": {
+                    "type": "string"
+                  },
+                  "repoId": {
+                    "type": "string"
+                  },
+                  "repoPath": {
+                    "type": "string"
+                  },
+                  "gitUserId": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "gitUserLogin": {
+                    "type": "string"
+                  },
+                  "ssoUserId": {
+                    "type": "string"
+                  },
+                  "ssoConnectedAt": {
+                    "type": "number"
+                  },
+                  "idpUserId": {
+                    "type": "string"
+                  },
+                  "dsyncUserId": {
+                    "type": "string"
+                  },
+                  "dsyncConnectedAt": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "origin"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "confirmed",
+              "confirmedAt",
+              "role",
+              "createdAt",
+              "created"
+            ],
+            "type": "object",
+            "description": "The membership of the authenticated User in relation to the Team."
+          },
+          "createdAt": {
+            "type": "number",
+            "description": "UNIX timestamp (in milliseconds) when the Team was created.",
+            "example": 1630748523395
           }
         },
         "required": [
+          "creatorId",
+          "updatedAt",
+          "description",
+          "stagingPrefix",
           "id",
-          "data"
+          "slug",
+          "name",
+          "avatar",
+          "membership",
+          "createdAt"
         ],
         "type": "object",
         "description": "Data representing a Team.",
@@ -73599,21 +75079,6 @@
             ],
             "type": "object",
             "description": "When \"Single Sign-On (SAML)\" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced."
-          },
-          "mfa": {
-            "properties": {
-              "enforced": {
-                "type": "boolean"
-              },
-              "updatedAt": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "enforced",
-              "updatedAt"
-            ],
-            "type": "object"
           },
           "id": {
             "type": "string",
@@ -73719,6 +75184,7 @@
                   "origin": {
                     "type": "string",
                     "enum": [
+                      "saml",
                       "mail",
                       "link",
                       "import",
@@ -73726,7 +75192,6 @@
                       "github",
                       "gitlab",
                       "bitbucket",
-                      "saml",
                       "dsync",
                       "feedback",
                       "organization-teams"
@@ -73786,10 +75251,6 @@
             "type": "object",
             "description": "The membership of the authenticated User in relation to the Team."
           },
-          "created": {
-            "type": "string",
-            "description": "Will remain undocumented. Remove in v3 API."
-          },
           "createdAt": {
             "type": "number",
             "description": "UNIX timestamp (in milliseconds) when the Team was created.",
@@ -73804,7 +75265,6 @@
           "name",
           "avatar",
           "membership",
-          "created",
           "createdAt"
         ],
         "type": "object",
@@ -74002,6 +75462,7 @@
                   "blobTotalAvgSizeInBytes",
                   "blobTotalGetResponseObjectSizeInBytes",
                   "blobTotalSimpleRequests",
+                  "connectDataTransfer",
                   "dataCacheRead",
                   "dataCacheWrite",
                   "edgeConfigRead",
@@ -74013,6 +75474,8 @@
                   "elasticConcurrencyBuildSlots",
                   "fastDataTransfer",
                   "fastOriginTransfer",
+                  "fluidCpuDuration",
+                  "fluidDuration",
                   "functionDuration",
                   "functionInvocation",
                   "imageOptimizationCacheRead",
@@ -74022,11 +75485,14 @@
                   "monitoringMetric",
                   "blobDataTransfer",
                   "observabilityEvent",
+                  "onDemandConcurrencyMinutes",
                   "postgresComputeTime",
                   "postgresDataStorage",
                   "postgresDataTransfer",
                   "postgresDatabase",
                   "postgresWrittenData",
+                  "runtimeCacheRead",
+                  "runtimeCacheWrite",
                   "serverlessFunctionExecution",
                   "sourceImages",
                   "storageRedisTotalBandwidthInBytes",
@@ -74161,7 +75627,7 @@
                     "type": "string",
                     "enum": [
                       "enhanced",
-                      "ultra"
+                      "turbo"
                     ],
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   },

@@ -10,7 +10,8 @@ let value: Erl = {
   window: 1689.99,
   limit: 4648.04,
   keys: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

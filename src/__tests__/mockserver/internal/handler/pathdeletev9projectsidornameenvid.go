@@ -46,20 +46,15 @@ func testRemoveProjectEnvRemoveProjectEnv0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateRemoveProjectEnvResponseBodyArrayOfRemoveProjectEnvResponseBody1(
+	var respBody *operations.RemoveProjectEnvResponseBody = types.Pointer(operations.CreateRemoveProjectEnvResponseBodyArrayOfRemoveProjectEnvResponseBody1(
 		[]operations.RemoveProjectEnvResponseBody1{
 			operations.RemoveProjectEnvResponseBody1{
-				Type:  operations.RemoveProjectEnvResponseBodyTypeSensitive,
+				Type:  operations.RemoveProjectEnvType1System,
 				Value: "<value>",
 				Key:   "<key>",
 			},
 			operations.RemoveProjectEnvResponseBody1{
-				Type:  operations.RemoveProjectEnvResponseBodyTypePlain,
-				Value: "<value>",
-				Key:   "<key>",
-			},
-			operations.RemoveProjectEnvResponseBody1{
-				Type:  operations.RemoveProjectEnvResponseBodyTypeEncrypted,
+				Type:  operations.RemoveProjectEnvType1System,
 				Value: "<value>",
 				Key:   "<key>",
 			},

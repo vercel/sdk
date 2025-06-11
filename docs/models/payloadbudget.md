@@ -10,12 +10,13 @@ let value: PayloadBudget = {
     type: "fixed",
     fixedBudget: 3089.34,
     previousSpend: [
-      2942.51,
-    ],
-    notifiedAt: [
       8881.12,
     ],
-    createdAt: 5077.9,
+    notifiedAt: [
+      6992.68,
+      7286.47,
+    ],
+    createdAt: 3556.79,
     isActive: false,
     teamId: "<id>",
     id: "<id>",

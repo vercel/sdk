@@ -8,7 +8,9 @@ import { CreateProjectMicrofrontends1 } from "@vercel/sdk/models/createprojectop
 let value: CreateProjectMicrofrontends1 = {
   updatedAt: 1263.63,
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
   enabled: false,
 };

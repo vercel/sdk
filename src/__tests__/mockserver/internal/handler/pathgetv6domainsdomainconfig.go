@@ -45,8 +45,8 @@ func testGetDomainConfigGetDomainConfig0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDomainConfigResponseBody{
-		Misconfigured: true,
+	var respBody *operations.GetDomainConfigResponseBody = &operations.GetDomainConfigResponseBody{
+		Misconfigured: false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

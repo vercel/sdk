@@ -8,6 +8,232 @@ sourceDescriptions:
     url: https://TBD.com
     type: openapi
 workflows:
+  - workflowId: post_/domains
+    steps:
+      - stepId: test
+        operationId: post_/domains
+        requestBody:
+          contentType: application/json
+          payload:
+            method: transfer-in
+            name: example.com
+            token: fdhfr820ad#@FAdlj$$
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "domain": {
+                  "verified": true,
+                  "nameservers": [
+                    "ns1.nameserver.net",
+                    "ns2.nameserver.net"
+                  ],
+                  "intendedNameservers": [
+                    "ns1.vercel-dns.com",
+                    "ns2.vercel-dns.com"
+                  ],
+                  "customNameservers": [
+                    "ns1.nameserver.net",
+                    "ns2.nameserver.net"
+                  ],
+                  "creator": {
+                    "username": "vercel_user",
+                    "email": "demo@example.com",
+                    "id": "ZspSRT4ljIEEmMHgoDwKWDei"
+                  },
+                  "name": "example.com",
+                  "boughtAt": 1613602938882,
+                  "createdAt": 1613602938882,
+                  "expiresAt": 1613602938882,
+                  "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
+                  "orderedAt": 1613602938882,
+                  "renew": true,
+                  "serviceType": "zeit.world",
+                  "transferredAt": 1613602938882,
+                  "transferStartedAt": 1613602938882,
+                  "userId": "\u003cid\u003e",
+                  "teamId": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: get_/projects/{projectId}/logs-presets
+    steps:
+      - stepId: test
+        operationId: get_/projects/{projectId}/logs-presets
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "id": "ABCDEFG000011111",
+                  "data": {
+                    "query": "\u003cvalue\u003e",
+                    "creatorId": "\u003cid\u003e",
+                    "title": "\u003cvalue\u003e",
+                    "groupId": "\u003cid\u003e",
+                    "ownerId": "\u003cid\u003e",
+                    "projectId": "\u003cid\u003e",
+                    "createdAt": 76.8
+                  },
+                  "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB",
+                  "updatedAt": 1611796915677,
+                  "description": "Our mission is to make cloud computing accessible to everyone.",
+                  "stagingPrefix": "\u003cvalue\u003e",
+                  "slug": "my-team",
+                  "name": "My Team",
+                  "avatar": "6eb07268bcfadd309905ffb1579354084c24655c",
+                  "membership": {
+                    "confirmed": true,
+                    "confirmedAt": 76.8,
+                    "role": "OWNER",
+                    "createdAt": 8753.86,
+                    "created": 3816.98
+                  },
+                  "createdAt": 1630748523395
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: post_/projects/{projectId}/logs-presets
+    steps:
+      - stepId: test
+        operationId: post_/projects/{projectId}/logs-presets
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            group: team
+            query: timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com
+            title: Request Path
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "team_nllPyCtREAqxxdyFKbbMDlxd",
+                "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB",
+                "updatedAt": 1611796915677,
+                "emailDomain": "example.com",
+                "saml": {
+                  "connection": {
+                    "type": "OktaSAML",
+                    "status": "linked",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "directory": {
+                    "type": "OktaSAML",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "enforced": false
+                },
+                "inviteCode": "hasihf9e89",
+                "description": "Our mission is to make cloud computing accessible to everyone.",
+                "stagingPrefix": "\u003cvalue\u003e",
+                "previewDeploymentSuffix": "example.dev",
+                "slug": "my-team",
+                "name": "My Team",
+                "avatar": "6eb07268bcfadd309905ffb1579354084c24655c",
+                "membership": {
+                  "confirmed": true,
+                  "confirmedAt": 6926.21,
+                  "role": "CONTRIBUTOR",
+                  "createdAt": 1063.07,
+                  "created": 7437.99
+                },
+                "createdAt": 1630748523395
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+  - workflowId: delete_/projects/{projectId}/logs-presets/{id}
+    steps:
+      - stepId: test
+        operationId: delete_/projects/{projectId}/logs-presets/{id}
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: Vercel
+  - workflowId: patch_/projects/{projectId}/logs-presets/{id}
+    steps:
+      - stepId: test
+        operationId: patch_/projects/{projectId}/logs-presets/{id}
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: id
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            title: Request Path
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "team_nllPyCtREAqxxdyFKbbMDlxd",
+                "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB",
+                "updatedAt": 1611796915677,
+                "emailDomain": "example.com",
+                "saml": {
+                  "connection": {
+                    "type": "OktaSAML",
+                    "status": "linked",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "directory": {
+                    "type": "OktaSAML",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "enforced": false
+                },
+                "inviteCode": "hasihf9e89",
+                "description": "Our mission is to make cloud computing accessible to everyone.",
+                "stagingPrefix": "\u003cvalue\u003e",
+                "previewDeploymentSuffix": "example.dev",
+                "slug": "my-team",
+                "name": "My Team",
+                "avatar": "6eb07268bcfadd309905ffb1579354084c24655c",
+                "membership": {
+                  "confirmed": true,
+                  "confirmedAt": 5697.43,
+                  "role": "VIEWER",
+                  "createdAt": 9741.23,
+                  "created": 2482.46
+                },
+                "createdAt": 1630748523395
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
   - workflowId: readAccessGroup-id
     steps:
       - stepId: test
@@ -28,7 +254,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "isDsyncManaged": false,
+                "isDsyncManaged": true,
                 "name": "my-access-group",
                 "createdAt": "1588720733602",
                 "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -66,7 +292,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "isDsyncManaged": false,
+                "isDsyncManaged": true,
                 "name": "my-access-group",
                 "createdAt": "1588720733602",
                 "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -176,14 +402,26 @@ workflows:
               {
                 "members": [
                   {
-                    "email": "Jaida_Rogahn@yahoo.com",
+                    "email": "Kassandra13@yahoo.com",
                     "uid": "\u003cid\u003e",
-                    "username": "Karianne_Bernier",
-                    "teamRole": "VIEWER"
+                    "username": "Chelsie97",
+                    "teamRole": "MEMBER"
+                  },
+                  {
+                    "email": "Kassandra13@yahoo.com",
+                    "uid": "\u003cid\u003e",
+                    "username": "Chelsie97",
+                    "teamRole": "MEMBER"
+                  },
+                  {
+                    "email": "Kassandra13@yahoo.com",
+                    "uid": "\u003cid\u003e",
+                    "username": "Chelsie97",
+                    "teamRole": "MEMBER"
                   }
                 ],
                 "pagination": {
-                  "count": 3878.47,
+                  "count": 9302.16,
                   "next": "\u003cvalue\u003e"
                 }
               }
@@ -244,14 +482,18 @@ workflows:
             projects:
               - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
                 role: ADMIN
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
               {
-                "membersCount": 591.78,
-                "projectsCount": 3787.91,
+                "membersCount": 446.92,
+                "projectsCount": 5113.22,
                 "name": "my-access-group",
                 "createdAt": "1588720733602",
                 "teamId": "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -292,7 +534,7 @@ workflows:
               {
                 "projects": [],
                 "pagination": {
-                  "count": 7604.02,
+                  "count": 2941.35,
                   "next": "\u003cvalue\u003e"
                 }
               }
@@ -326,9 +568,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "PROJECT_VIEWER",
-                "createdAt": "1726948284257",
-                "updatedAt": "1744388503945"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1709685008609",
+                "updatedAt": "1735605925345"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -358,9 +600,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "1715344910813",
-                "updatedAt": "1744396168862"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1725636411556",
+                "updatedAt": "1735610404453"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -391,8 +633,8 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "PROJECT_DEVELOPER",
-                "createdAt": "1739615073482",
-                "updatedAt": "1744327200176"
+                "createdAt": "1725636411556",
+                "updatedAt": "1735610404453"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -423,8 +665,8 @@ workflows:
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
                 "role": "PROJECT_DEVELOPER",
-                "createdAt": "1741430060404",
-                "updatedAt": "1744396619853"
+                "createdAt": "1725636411556",
+                "updatedAt": "1735610404453"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -458,9 +700,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "1715136753218",
-                "updatedAt": "1744362874326"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1728862860579",
+                "updatedAt": "1735681594699"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -494,9 +736,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "1716648820605",
-                "updatedAt": "1744328935382"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1728862860579",
+                "updatedAt": "1735681594699"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -530,9 +772,9 @@ workflows:
                 "teamId": "\u003cid\u003e",
                 "accessGroupId": "\u003cid\u003e",
                 "projectId": "\u003cid\u003e",
-                "role": "ADMIN",
-                "createdAt": "1736314214978",
-                "updatedAt": "1744397001817"
+                "role": "PROJECT_DEVELOPER",
+                "createdAt": "1728862860579",
+                "updatedAt": "1735681594699"
               }
             type: simple
     x-speakeasy-test-group: access-groups
@@ -617,10 +859,10 @@ workflows:
           contentType: application/json
           payload:
             - duration: 400
-              event: HIT
+              event: MISS
               hash: 12HKQaOmR5t5Uy6vdcQsNIiZgHGB
               sessionId: <id>
-              source: LOCAL
+              source: REMOTE
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: artifacts
@@ -641,7 +883,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "status": "enabled"
+                "status": "over_limit"
               }
             type: simple
     x-speakeasy-test-group: artifacts
@@ -714,17 +956,16 @@ workflows:
             condition: |
               {
                 "key": {
-                  "error": {
-                    "message": "\u003cvalue\u003e"
-                  }
+                  "size": 3811.11,
+                  "taskDurationMs": 5116.13
                 },
                 "key1": {
-                  "size": 9698.01,
-                  "taskDurationMs": 1946.74
+                  "size": 3811.11,
+                  "taskDurationMs": 5116.13
                 },
                 "key2": {
-                  "size": 1135.95,
-                  "taskDurationMs": 5348.41
+                  "size": 3811.11,
+                  "taskDurationMs": 5116.13
                 }
               }
             type: simple
@@ -766,8 +1007,8 @@ workflows:
                 "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": 9375.78,
-                "updatedAt": 2396.37
+                "createdAt": 6444.33,
+                "updatedAt": 2432.96
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -793,13 +1034,13 @@ workflows:
               {
                 "checks": [
                   {
-                    "createdAt": 4203.11,
+                    "createdAt": 4018.09,
                     "id": "\u003cid\u003e",
                     "integrationId": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
                     "rerequestable": false,
-                    "status": "registered",
-                    "updatedAt": 4461.16
+                    "status": "completed",
+                    "updatedAt": 5993.81
                   }
                 ]
               }
@@ -830,12 +1071,12 @@ workflows:
               {
                 "id": "\u003cid\u003e",
                 "name": "\u003cvalue\u003e",
-                "status": "completed",
+                "status": "running",
                 "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": 2039.14,
-                "updatedAt": 676.34
+                "createdAt": 6704.13,
+                "updatedAt": 5470.22
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -893,12 +1134,12 @@ workflows:
               {
                 "id": "\u003cid\u003e",
                 "name": "\u003cvalue\u003e",
-                "status": "completed",
+                "status": "running",
                 "blocking": true,
                 "integrationId": "\u003cid\u003e",
                 "deploymentId": "\u003cid\u003e",
-                "createdAt": 9017.64,
-                "updatedAt": 7909.85
+                "createdAt": 3990.23,
+                "updatedAt": 3283.38
               }
             type: simple
     x-speakeasy-test-group: checks
@@ -953,91 +1194,37 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": 7135.8,
-                  "disabledAt": 2989.85,
-                  "updatedAt": 6226.23,
+                  "enabledAt": 4537.72,
+                  "disabledAt": 4306.04,
+                  "updatedAt": 4313.17,
                   "deploymentId": "\u003cid\u003e",
-                  "definitions": [
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    },
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    },
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    }
-                  ]
+                  "definitions": []
                 },
-                "directoryListing": false,
+                "directoryListing": true,
                 "id": "\u003cid\u003e",
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": 5719.6,
+                    "createdAt": 1954.03,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Braeden15@gmail.com",
+                      "email": "Cleveland_Bruen@gmail.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Teresa84"
+                      "username": "Frida_Stamm12"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "pro",
                     "previewCommentsEnabled": false,
                     "private": false,
-                    "readyState": "BUILDING",
-                    "type": "LAMBDAS",
-                    "url": "https://unknown-gift.biz",
-                    "userId": "\u003cid\u003e"
-                  },
-                  {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 7644.5,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Erich.Mann@hotmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Genoveva89"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "hobby",
-                    "previewCommentsEnabled": false,
-                    "private": true,
-                    "readyState": "ERROR",
-                    "type": "LAMBDAS",
-                    "url": "https://slimy-tuba.name",
-                    "userId": "\u003cid\u003e"
-                  },
-                  {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 2357.62,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Garret.Ferry81@gmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Vivianne.Gutkowski"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "pro",
-                    "previewCommentsEnabled": false,
-                    "private": true,
                     "readyState": "CANCELED",
                     "type": "LAMBDAS",
-                    "url": "https://astonishing-cinema.net/",
+                    "url": "https://well-worn-handful.biz/",
                     "userId": "\u003cid\u003e"
                   }
                 ],
                 "name": "\u003cvalue\u003e",
-                "nodeVersion": "10.x",
+                "nodeVersion": "22.x",
                 "resourceConfig": {
                   "functionDefaultRegions": []
                 },
@@ -1047,21 +1234,21 @@ workflows:
                 "targets": {
                   "key": {
                     "id": "\u003cid\u003e",
-                    "createdAt": 1048.68,
+                    "createdAt": 5941.68,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Lillie17@gmail.com",
+                      "email": "Fay_Herman21@yahoo.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Herminia_Schowalter50"
+                      "username": "Anna.Barrows31"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
-                    "plan": "enterprise",
+                    "plan": "pro",
                     "previewCommentsEnabled": false,
                     "private": false,
-                    "readyState": "BUILDING",
+                    "readyState": "READY",
                     "type": "LAMBDAS",
-                    "url": "https://quintessential-bidet.com/",
+                    "url": "https://scaly-epic.com",
                     "userId": "\u003cid\u003e"
                   }
                 }
@@ -1091,7 +1278,194 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "projects": [],
+                "projects": [
+                  {
+                    "accountId": "\u003cid\u003e",
+                    "crons": {
+                      "enabledAt": 5254.53,
+                      "disabledAt": null,
+                      "updatedAt": 514.35,
+                      "deploymentId": "\u003cid\u003e",
+                      "definitions": [
+                        {
+                          "host": "vercel.com",
+                          "path": "/api/crons/sync-something?hello=world",
+                          "schedule": "0 0 * * *"
+                        }
+                      ]
+                    },
+                    "directoryListing": false,
+                    "id": "\u003cid\u003e",
+                    "latestDeployments": [
+                      {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 6310.4,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Howell_Metz@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Mohammed_Bechtelar67"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "pro",
+                        "previewCommentsEnabled": false,
+                        "private": true,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://monthly-numeracy.net/",
+                        "userId": "\u003cid\u003e"
+                      },
+                      {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 6310.4,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Howell_Metz@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Mohammed_Bechtelar67"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "pro",
+                        "previewCommentsEnabled": false,
+                        "private": true,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://monthly-numeracy.net/",
+                        "userId": "\u003cid\u003e"
+                      }
+                    ],
+                    "name": "\u003cvalue\u003e",
+                    "nodeVersion": "14.x",
+                    "resourceConfig": {
+                      "functionDefaultRegions": [
+                        "\u003cvalue 1\u003e",
+                        "\u003cvalue 2\u003e"
+                      ]
+                    },
+                    "defaultResourceConfig": {
+                      "functionDefaultRegions": [
+                        "\u003cvalue 1\u003e",
+                        "\u003cvalue 2\u003e"
+                      ]
+                    },
+                    "targets": {
+                      "key": {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 3954.3,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Tavares_Hills95@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Dariana_Hand"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "hobby",
+                        "previewCommentsEnabled": false,
+                        "private": false,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://obedient-mentor.org/",
+                        "userId": "\u003cid\u003e"
+                      }
+                    }
+                  },
+                  {
+                    "accountId": "\u003cid\u003e",
+                    "crons": {
+                      "enabledAt": 5254.53,
+                      "disabledAt": null,
+                      "updatedAt": 514.35,
+                      "deploymentId": "\u003cid\u003e",
+                      "definitions": [
+                        {
+                          "host": "vercel.com",
+                          "path": "/api/crons/sync-something?hello=world",
+                          "schedule": "0 0 * * *"
+                        }
+                      ]
+                    },
+                    "directoryListing": false,
+                    "id": "\u003cid\u003e",
+                    "latestDeployments": [
+                      {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 6310.4,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Howell_Metz@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Mohammed_Bechtelar67"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "pro",
+                        "previewCommentsEnabled": false,
+                        "private": true,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://monthly-numeracy.net/",
+                        "userId": "\u003cid\u003e"
+                      },
+                      {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 6310.4,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Howell_Metz@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Mohammed_Bechtelar67"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "pro",
+                        "previewCommentsEnabled": false,
+                        "private": true,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://monthly-numeracy.net/",
+                        "userId": "\u003cid\u003e"
+                      }
+                    ],
+                    "name": "\u003cvalue\u003e",
+                    "nodeVersion": "14.x",
+                    "resourceConfig": {
+                      "functionDefaultRegions": [
+                        "\u003cvalue 1\u003e",
+                        "\u003cvalue 2\u003e"
+                      ]
+                    },
+                    "defaultResourceConfig": {
+                      "functionDefaultRegions": [
+                        "\u003cvalue 1\u003e",
+                        "\u003cvalue 2\u003e"
+                      ]
+                    },
+                    "targets": {
+                      "key": {
+                        "id": "\u003cid\u003e",
+                        "createdAt": 3954.3,
+                        "createdIn": "\u003cvalue\u003e",
+                        "creator": {
+                          "email": "Tavares_Hills95@gmail.com",
+                          "uid": "\u003cid\u003e",
+                          "username": "Dariana_Hand"
+                        },
+                        "deploymentHostname": "\u003cvalue\u003e",
+                        "name": "\u003cvalue\u003e",
+                        "plan": "hobby",
+                        "previewCommentsEnabled": false,
+                        "private": false,
+                        "readyState": "ERROR",
+                        "type": "LAMBDAS",
+                        "url": "https://obedient-mentor.org/",
+                        "userId": "\u003cid\u003e"
+                      }
+                    }
+                  }
+                ],
                 "pagination": {
                   "count": 20,
                   "next": 1540095775951,
@@ -1123,93 +1497,85 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": 5535.6,
-                  "disabledAt": 7749.32,
-                  "updatedAt": 4248.44,
+                  "enabledAt": 9025.89,
+                  "disabledAt": 7665.94,
+                  "updatedAt": 4493.49,
                   "deploymentId": "\u003cid\u003e",
-                  "definitions": [
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    },
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    }
-                  ]
+                  "definitions": []
                 },
-                "directoryListing": false,
+                "directoryListing": true,
                 "id": "\u003cid\u003e",
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": 3954.07,
+                    "createdAt": 79.03,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Junior46@yahoo.com",
+                      "email": "Merle_Boehm@yahoo.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Rick.Fritsch"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "enterprise",
-                    "previewCommentsEnabled": false,
-                    "private": false,
-                    "readyState": "CANCELED",
-                    "type": "LAMBDAS",
-                    "url": "https://potable-bid.biz",
-                    "userId": "\u003cid\u003e"
-                  }
-                ],
-                "name": "\u003cvalue\u003e",
-                "nodeVersion": "22.x",
-                "resourceConfig": {
-                  "functionDefaultRegions": [
-                    "\u003cvalue\u003e"
-                  ]
-                },
-                "defaultResourceConfig": {
-                  "functionDefaultRegions": []
-                },
-                "targets": {
-                  "key": {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 7352.53,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Keven88@hotmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Helene44"
+                      "username": "Wilbert.Conn"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "hobby",
                     "previewCommentsEnabled": false,
-                    "private": true,
-                    "readyState": "QUEUED",
+                    "private": false,
+                    "readyState": "READY",
                     "type": "LAMBDAS",
-                    "url": "https://calculating-strait.info/",
+                    "url": "https://likable-validity.info",
                     "userId": "\u003cid\u003e"
                   },
-                  "key1": {
+                  {
                     "id": "\u003cid\u003e",
-                    "createdAt": 1259.18,
+                    "createdAt": 79.03,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Shane_Larson@gmail.com",
+                      "email": "Merle_Boehm@yahoo.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Barney93"
+                      "username": "Wilbert.Conn"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
-                    "plan": "pro",
+                    "plan": "hobby",
                     "previewCommentsEnabled": false,
-                    "private": true,
+                    "private": false,
+                    "readyState": "READY",
+                    "type": "LAMBDAS",
+                    "url": "https://likable-validity.info",
+                    "userId": "\u003cid\u003e"
+                  }
+                ],
+                "name": "\u003cvalue\u003e",
+                "nodeVersion": "16.x",
+                "resourceConfig": {
+                  "functionDefaultRegions": [
+                    "\u003cvalue 1\u003e",
+                    "\u003cvalue 2\u003e"
+                  ]
+                },
+                "defaultResourceConfig": {
+                  "functionDefaultRegions": [
+                    "\u003cvalue 1\u003e"
+                  ]
+                },
+                "targets": {
+                  "key": {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 3635.11,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Leanne_Langworth@gmail.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Kurtis_Marks97"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "hobby",
+                    "previewCommentsEnabled": false,
+                    "private": false,
                     "readyState": "ERROR",
                     "type": "LAMBDAS",
-                    "url": "https://fair-annual.biz/",
+                    "url": "https://twin-hydrolyse.com/",
                     "userId": "\u003cid\u003e"
                   }
                 }
@@ -1242,153 +1608,97 @@ workflows:
               {
                 "accountId": "\u003cid\u003e",
                 "crons": {
-                  "enabledAt": 6482.23,
-                  "disabledAt": 3040.87,
-                  "updatedAt": 9398.86,
+                  "enabledAt": 827.44,
+                  "disabledAt": 9685.26,
+                  "updatedAt": 3884.97,
                   "deploymentId": "\u003cid\u003e",
-                  "definitions": [
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    },
-                    {
-                      "host": "vercel.com",
-                      "path": "/api/crons/sync-something?hello=world",
-                      "schedule": "0 0 * * *"
-                    }
-                  ]
+                  "definitions": []
                 },
                 "directoryListing": true,
                 "id": "\u003cid\u003e",
                 "latestDeployments": [
                   {
                     "id": "\u003cid\u003e",
-                    "createdAt": 7688.55,
+                    "createdAt": 5470.28,
                     "createdIn": "\u003cvalue\u003e",
                     "creator": {
-                      "email": "Alfredo_Murazik@yahoo.com",
+                      "email": "Richmond72@yahoo.com",
                       "uid": "\u003cid\u003e",
-                      "username": "Kiera28"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "enterprise",
-                    "previewCommentsEnabled": false,
-                    "private": false,
-                    "readyState": "ERROR",
-                    "type": "LAMBDAS",
-                    "url": "https://close-premise.net/",
-                    "userId": "\u003cid\u003e"
-                  },
-                  {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 3847.37,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Zachery.Johns68@yahoo.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Nicole_Reynolds"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "hobby",
-                    "previewCommentsEnabled": false,
-                    "private": true,
-                    "readyState": "QUEUED",
-                    "type": "LAMBDAS",
-                    "url": "https://unsightly-newsstand.net/",
-                    "userId": "\u003cid\u003e"
-                  },
-                  {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 5770.49,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Jose37@yahoo.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Jana.Conroy"
+                      "username": "Ryley1"
                     },
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "pro",
                     "previewCommentsEnabled": false,
                     "private": true,
-                    "readyState": "ERROR",
+                    "readyState": "QUEUED",
                     "type": "LAMBDAS",
-                    "url": "https://pricey-dish.biz/",
+                    "url": "https://cheap-muscat.name/",
+                    "userId": "\u003cid\u003e"
+                  },
+                  {
+                    "id": "\u003cid\u003e",
+                    "createdAt": 5470.28,
+                    "createdIn": "\u003cvalue\u003e",
+                    "creator": {
+                      "email": "Richmond72@yahoo.com",
+                      "uid": "\u003cid\u003e",
+                      "username": "Ryley1"
+                    },
+                    "deploymentHostname": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "plan": "pro",
+                    "previewCommentsEnabled": false,
+                    "private": true,
+                    "readyState": "QUEUED",
+                    "type": "LAMBDAS",
+                    "url": "https://cheap-muscat.name/",
                     "userId": "\u003cid\u003e"
                   }
                 ],
                 "name": "\u003cvalue\u003e",
-                "nodeVersion": "20.x",
+                "nodeVersion": "22.x",
                 "resourceConfig": {
                   "functionDefaultRegions": [
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e"
+                    "\u003cvalue 1\u003e",
+                    "\u003cvalue 2\u003e",
+                    "\u003cvalue 3\u003e"
                   ]
                 },
                 "defaultResourceConfig": {
                   "functionDefaultRegions": [
-                    "\u003cvalue\u003e"
+                    "\u003cvalue 1\u003e"
                   ]
                 },
                 "targets": {
                   "key": {
                     "id": "\u003cid\u003e",
-                    "createdAt": 6585.03,
+                    "createdAt": 8270.86,
                     "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Garrison_Jenkins@gmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Trever_Ratke"
-                    },
+                    "creator": null,
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "hobby",
                     "previewCommentsEnabled": false,
-                    "private": true,
-                    "readyState": "INITIALIZING",
+                    "private": false,
+                    "readyState": "QUEUED",
                     "type": "LAMBDAS",
-                    "url": "https://forsaken-edge.org",
+                    "url": "https://feline-valley.name/",
                     "userId": "\u003cid\u003e"
                   },
                   "key1": {
                     "id": "\u003cid\u003e",
-                    "createdAt": 5688.03,
+                    "createdAt": 8270.86,
                     "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Buster.Raynor@gmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Florine92"
-                    },
-                    "deploymentHostname": "\u003cvalue\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "plan": "enterprise",
-                    "previewCommentsEnabled": false,
-                    "private": false,
-                    "readyState": "CANCELED",
-                    "type": "LAMBDAS",
-                    "url": "https://shameless-unit.net",
-                    "userId": "\u003cid\u003e"
-                  },
-                  "key2": {
-                    "id": "\u003cid\u003e",
-                    "createdAt": 4805.55,
-                    "createdIn": "\u003cvalue\u003e",
-                    "creator": {
-                      "email": "Jerome0@gmail.com",
-                      "uid": "\u003cid\u003e",
-                      "username": "Travis_Towne"
-                    },
+                    "creator": null,
                     "deploymentHostname": "\u003cvalue\u003e",
                     "name": "\u003cvalue\u003e",
                     "plan": "hobby",
                     "previewCommentsEnabled": false,
-                    "private": true,
+                    "private": false,
                     "readyState": "QUEUED",
                     "type": "LAMBDAS",
-                    "url": "https://whimsical-mathematics.name",
+                    "url": "https://feline-valley.name/",
                     "userId": "\u003cid\u003e"
                   }
                 }
@@ -1498,7 +1808,7 @@ workflows:
                 "name": "\u003cvalue\u003e",
                 "apexName": "\u003cvalue\u003e",
                 "projectId": "\u003cid\u003e",
-                "verified": true
+                "verified": false
               }
             type: simple
     x-speakeasy-test-group: projects
@@ -1534,7 +1844,7 @@ workflows:
                 "name": "\u003cvalue\u003e",
                 "apexName": "\u003cvalue\u003e",
                 "projectId": "\u003cid\u003e",
-                "verified": false
+                "verified": true
               }
             type: simple
     x-speakeasy-test-group: projects
@@ -1692,17 +2002,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "created": [
-                  {}
-                ],
-                "failed": [
-                  {
-                    "error": {
-                      "code": "\u003cvalue\u003e",
-                      "message": "\u003cvalue\u003e"
-                    }
-                  }
-                ]
+                "created": [],
+                "failed": []
               }
             type: simple
     x-speakeasy-test-group: projects
@@ -1729,7 +2030,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "type": "plain",
+                "type": "sensitive",
                 "value": "\u003cvalue\u003e",
                 "key": "\u003ckey\u003e"
               }
@@ -1762,17 +2063,12 @@ workflows:
             condition: |
               [
                 {
-                  "type": "sensitive",
+                  "type": "system",
                   "value": "\u003cvalue\u003e",
                   "key": "\u003ckey\u003e"
                 },
                 {
-                  "type": "plain",
-                  "value": "\u003cvalue\u003e",
-                  "key": "\u003ckey\u003e"
-                },
-                {
-                  "type": "encrypted",
+                  "type": "system",
                   "value": "\u003cvalue\u003e",
                   "key": "\u003ckey\u003e"
                 }
@@ -1900,10 +2196,6 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
     x-speakeasy-test-group: projects
   - workflowId: pauseProject
     steps:
@@ -1982,6 +2274,44 @@ workflows:
             value: my-team-url-slug
         successCriteria:
           - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "created": 9364.53,
+                  "date": 65.47,
+                  "deploymentId": "\u003cid\u003e",
+                  "id": "\u003cid\u003e",
+                  "info": {
+                    "type": "\u003cvalue\u003e",
+                    "name": "\u003cvalue\u003e"
+                  },
+                  "serial": "\u003cvalue\u003e",
+                  "type": "command"
+                },
+                {
+                  "type": "stderr",
+                  "created": 2829.12,
+                  "payload": {
+                    "deploymentId": "\u003cid\u003e",
+                    "id": "\u003cid\u003e",
+                    "date": 7964.23,
+                    "serial": "\u003cvalue\u003e"
+                  }
+                },
+                {
+                  "type": "stderr",
+                  "created": 2829.12,
+                  "payload": {
+                    "deploymentId": "\u003cid\u003e",
+                    "id": "\u003cid\u003e",
+                    "date": 7964.23,
+                    "serial": "\u003cvalue\u003e"
+                  }
+                }
+              ]
+            type: simple
     x-speakeasy-test-group: deployments
   - workflowId: update-integration-deployment-action
     steps:
@@ -2026,27 +2356,31 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "aliasAssigned": false,
-                "bootedAt": 2317.28,
-                "buildingAt": 458.05,
-                "buildSkipped": true,
+                "aliasAssigned": true,
+                "bootedAt": 2363.88,
+                "buildingAt": 7418.28,
+                "buildSkipped": false,
                 "creator": {
                   "uid": "\u003cid\u003e"
                 },
-                "public": true,
-                "status": "ERROR",
+                "public": false,
+                "status": "BUILDING",
                 "id": "\u003cid\u003e",
                 "name": "\u003cvalue\u003e",
                 "type": "LAMBDAS",
-                "createdAt": 3161.76,
-                "readyState": "READY",
+                "createdAt": 548.4,
+                "readyState": "ERROR",
                 "meta": {
                   "key": "\u003cvalue\u003e",
                   "key1": "\u003cvalue\u003e"
                 },
-                "regions": [],
-                "url": "https://disloyal-backburn.info",
-                "version": 1604.95
+                "regions": [
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e",
+                  "\u003cvalue 3\u003e"
+                ],
+                "url": "https://jagged-pacemaker.biz/",
+                "version": 5784.12
               }
             type: simple
     x-speakeasy-test-group: deployments
@@ -2067,7 +2401,6 @@ workflows:
             deploymentId: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
             files:
               - file: folder/file.js
-              - file: folder/file.js
             gitMetadata:
               commitAuthorName: kyliau
               commitMessage: add method to measure Interaction to Next Paint (INP) (#36490)
@@ -2076,8 +2409,9 @@ workflows:
               dirty: true
               remoteUrl: https://github.com/vercel/next.js
             gitSource:
+              org: vercel
               ref: main
-              repoId: 123456789
+              repo: next.js
               sha: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
               type: github
             meta:
@@ -2096,50 +2430,40 @@ workflows:
               {
                 "build": {
                   "env": [
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e"
+                    "\u003cvalue 1\u003e",
+                    "\u003cvalue 2\u003e",
+                    "\u003cvalue 3\u003e"
                   ]
                 },
-                "env": [
-                  "\u003cvalue\u003e",
-                  "\u003cvalue\u003e"
-                ],
-                "inspectorUrl": "https://firm-casket.name/",
+                "env": [],
+                "inspectorUrl": null,
                 "isInConcurrentBuildsQueue": false,
                 "isInSystemBuildsQueue": false,
                 "projectSettings": {},
-                "aliasAssigned": true,
-                "bootedAt": 7030.55,
-                "buildingAt": 2916.6,
+                "aliasAssigned": false,
+                "bootedAt": 3619.08,
+                "buildingAt": 1664.36,
                 "buildSkipped": false,
                 "creator": {
                   "uid": "\u003cid\u003e"
                 },
-                "public": true,
-                "status": "BUILDING",
-                "type": "LAMBDAS",
-                "name": "\u003cvalue\u003e",
-                "createdAt": 1218,
+                "public": false,
+                "status": "CANCELED",
                 "id": "\u003cid\u003e",
-                "version": 5856.16,
+                "name": "\u003cvalue\u003e",
+                "createdAt": 179.28,
+                "type": "LAMBDAS",
+                "version": 8477.72,
                 "meta": {
-                  "key": "\u003cvalue\u003e",
-                  "key1": "\u003cvalue\u003e"
+                  "key": "\u003cvalue\u003e"
                 },
-                "readyState": "CANCELED",
-                "regions": [
-                  "\u003cvalue\u003e"
-                ],
-                "url": "https://quiet-formation.name/",
-                "plan": "pro",
+                "readyState": "BUILDING",
+                "regions": [],
+                "url": "https://unwritten-viability.org",
                 "projectId": "\u003cid\u003e",
                 "ownerId": "\u003cid\u003e",
-                "routes": [
-                  {
-                    "src": "\u003cvalue\u003e"
-                  }
-                ],
+                "routes": [],
+                "plan": "enterprise",
                 "createdIn": "\u003cvalue\u003e"
               }
             type: simple
@@ -2166,55 +2490,45 @@ workflows:
               {
                 "build": {
                   "env": [
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e"
+                    "\u003cvalue 1\u003e",
+                    "\u003cvalue 2\u003e"
                   ]
                 },
-                "env": [
-                  "\u003cvalue\u003e",
-                  "\u003cvalue\u003e"
-                ],
-                "inspectorUrl": "https://concrete-gerbil.org",
+                "env": [],
+                "inspectorUrl": "https://grown-gymnast.net",
                 "isInConcurrentBuildsQueue": false,
-                "isInSystemBuildsQueue": true,
+                "isInSystemBuildsQueue": false,
                 "projectSettings": {},
                 "aliasAssigned": false,
-                "bootedAt": 8528.74,
-                "buildingAt": 7590.79,
-                "buildSkipped": false,
+                "bootedAt": 9923.4,
+                "buildingAt": 4182.97,
+                "buildSkipped": true,
                 "creator": {
                   "uid": "\u003cid\u003e"
                 },
-                "public": true,
-                "status": "BUILDING",
+                "public": false,
+                "status": "CANCELED",
                 "id": "\u003cid\u003e",
-                "createdAt": 3071.53,
+                "createdAt": 4076.8,
                 "name": "\u003cvalue\u003e",
-                "meta": {
-                  "key": "\u003cvalue\u003e",
-                  "key1": "\u003cvalue\u003e",
-                  "key2": "\u003cvalue\u003e"
-                },
-                "readyState": "QUEUED",
-                "regions": [
-                  "\u003cvalue\u003e"
-                ],
+                "meta": {},
+                "readyState": "READY",
+                "regions": [],
                 "type": "LAMBDAS",
-                "url": "https://timely-reboot.name",
-                "version": 6067.47,
+                "url": "https://medium-tribe.org/",
+                "version": 7316.38,
                 "createdIn": "\u003cvalue\u003e",
                 "ownerId": "\u003cid\u003e",
-                "plan": "pro",
+                "plan": "hobby",
                 "projectId": "\u003cid\u003e",
                 "routes": [
                   {
-                    "handle": "resource"
+                    "src": "\u003cvalue\u003e"
                   },
                   {
                     "src": "\u003cvalue\u003e",
                     "continue": true,
-                    "middleware": 4831.29
+                    "middleware": 1635.94
                   }
                 ]
               }
@@ -2234,10 +2548,6 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {}
-            type: simple
     x-speakeasy-test-group: deployments
   - workflowId: listDeploymentFiles
     steps:
@@ -2263,15 +2573,61 @@ workflows:
                   "name": "my-file.json",
                   "type": "file",
                   "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                  "children": [
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    },
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    },
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    }
+                  ],
                   "contentType": "application/json",
-                  "mode": 956.43
+                  "mode": 6417.18
                 },
                 {
                   "name": "my-file.json",
                   "type": "file",
                   "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                  "children": [
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    },
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    },
+                    {
+                      "name": "my-file.json",
+                      "type": "file",
+                      "uid": "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+                      "contentType": "application/json",
+                      "mode": 7131.4
+                    }
+                  ],
                   "contentType": "application/json",
-                  "mode": 1805.56
+                  "mode": 6417.18
                 }
               ]
             type: simple
@@ -2348,60 +2704,7 @@ workflows:
                   "next": 1540095775951,
                   "prev": 1540095775951
                 },
-                "deployments": [
-                  {
-                    "uid": "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-                    "name": "docs",
-                    "url": "docs-9jaeg38me.vercel.app",
-                    "created": 1609492210000,
-                    "defaultRoute": "/docs",
-                    "deleted": 1609492210000,
-                    "undeleted": 1609492210000,
-                    "softDeletedByRetention": true,
-                    "source": "cli",
-                    "state": "READY",
-                    "readyState": "READY",
-                    "type": "LAMBDAS",
-                    "creator": {
-                      "uid": "eLrCnEgbKhsHyfbiNR7E8496",
-                      "email": "example@example.com",
-                      "username": "johndoe",
-                      "githubLogin": "johndoe",
-                      "gitlabLogin": "johndoe"
-                    },
-                    "target": "production",
-                    "createdAt": 1609492210000,
-                    "buildingAt": 1609492210000,
-                    "ready": 1609492210000,
-                    "inspectorUrl": "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"
-                  },
-                  {
-                    "uid": "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-                    "name": "docs",
-                    "url": "docs-9jaeg38me.vercel.app",
-                    "created": 1609492210000,
-                    "defaultRoute": "/docs",
-                    "deleted": 1609492210000,
-                    "undeleted": 1609492210000,
-                    "softDeletedByRetention": true,
-                    "source": "cli",
-                    "state": "READY",
-                    "readyState": "READY",
-                    "type": "LAMBDAS",
-                    "creator": {
-                      "uid": "eLrCnEgbKhsHyfbiNR7E8496",
-                      "email": "example@example.com",
-                      "username": "johndoe",
-                      "githubLogin": "johndoe",
-                      "gitlabLogin": "johndoe"
-                    },
-                    "target": "production",
-                    "createdAt": 1609492210000,
-                    "buildingAt": 1609492210000,
-                    "ready": 1609492210000,
-                    "inspectorUrl": "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"
-                  }
-                ]
+                "deployments": []
               }
             type: simple
     x-speakeasy-test-group: deployments
@@ -2450,32 +2753,6 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "completedAt": 1558531915505,
-                "createdAt": 1558531915505,
-                "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
-                "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV",
-                "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "projects": [
-                  "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
-                ],
-                "source": "marketplace",
-                "slug": "slack",
-                "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud",
-                "type": "integration-configuration",
-                "updatedAt": 1558531915505,
-                "userId": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "scopes": [
-                  "read:project",
-                  "read-write:log-drain"
-                ],
-                "disabledAt": 1558531915505,
-                "deletedAt": 1558531915505,
-                "deleteRequestedAt": 1558531915505
-              }
-            type: simple
     x-speakeasy-test-group: integrations
   - workflowId: deleteConfiguration
     steps:
@@ -2530,13 +2807,11 @@ workflows:
                 "domain": {
                   "uid": "\u003cid\u003e",
                   "ns": [
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e",
-                    "\u003cvalue\u003e"
+                    "\u003cvalue 1\u003e"
                   ],
-                  "verified": false,
-                  "created": 9374.8,
-                  "pending": false
+                  "verified": true,
+                  "created": 6683.9,
+                  "pending": true
                 }
               }
             type: simple
@@ -2614,9 +2889,9 @@ workflows:
             condition: |
               {
                 "transferable": false,
-                "transferPolicy": "charge-and-renew",
+                "transferPolicy": null,
                 "reason": "\u003cvalue\u003e",
-                "status": "completed"
+                "status": "pending_admin"
               }
             type: simple
     x-speakeasy-test-group: domains
@@ -2640,7 +2915,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "misconfigured": true
+                "misconfigured": false
               }
             type: simple
     x-speakeasy-test-group: domains
@@ -2768,65 +3043,6 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: domains
-  - workflowId: createOrTransferDomain
-    steps:
-      - stepId: test
-        operationId: createOrTransferDomain
-        parameters:
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            authCode: fdhfr820ad#@FAdlj$$
-            expectedPrice: 8
-            method: transfer-in
-            name: example.com
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "domain": {
-                  "verified": true,
-                  "nameservers": [
-                    "ns1.nameserver.net",
-                    "ns2.nameserver.net"
-                  ],
-                  "intendedNameservers": [
-                    "ns1.vercel-dns.com",
-                    "ns2.vercel-dns.com"
-                  ],
-                  "customNameservers": [
-                    "ns1.nameserver.net",
-                    "ns2.nameserver.net"
-                  ],
-                  "creator": {
-                    "username": "vercel_user",
-                    "email": "demo@example.com",
-                    "id": "ZspSRT4ljIEEmMHgoDwKWDei"
-                  },
-                  "name": "example.com",
-                  "boughtAt": 1613602938882,
-                  "createdAt": 1613602938882,
-                  "expiresAt": 1613602938882,
-                  "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-                  "orderedAt": 1613602938882,
-                  "renew": true,
-                  "serviceType": "zeit.world",
-                  "transferredAt": 1613602938882,
-                  "transferStartedAt": 1613602938882,
-                  "userId": "\u003cid\u003e",
-                  "teamId": "\u003cid\u003e"
-                }
-              }
-            type: simple
-    x-speakeasy-test-group: domains
   - workflowId: deleteDomain
     steps:
       - stepId: test
@@ -2869,16 +3085,10 @@ workflows:
           contentType: application/json
           payload:
             comment: used to verify ownership of domain
-            https:
-              priority: 35000
-              target: example2.com.
+            https: null
             name: example-1
-            srv:
-              port: 570172
-              priority: 199524
-              target: example2.com.
-              weight: 97604
-            ttl: "60"
+            srv: null
+            ttl: 60
             type: A
             value: google.com
         successCriteria:
@@ -2888,11 +3098,11 @@ workflows:
             condition: |
               {
                 "creator": "\u003cvalue\u003e",
-                "domain": "rectangular-peninsula.net",
+                "domain": "raw-scorpion.net",
                 "id": "\u003cid\u003e",
                 "name": "\u003cvalue\u003e",
-                "recordType": "SRV",
-                "type": "record-sys",
+                "recordType": "AAAA",
+                "type": "record",
                 "value": "\u003cvalue\u003e"
               }
             type: simple
@@ -2970,41 +3180,43 @@ workflows:
                   ],
                   "url": "https://example.com/log-drain",
                   "sources": [
-                    "build"
+                    "build",
+                    "edge"
                   ],
                   "createdFrom": "integration",
                   "headers": {
-                    "0": "{",
-                    "1": "\"",
-                    "2": "A",
-                    "3": "u",
-                    "4": "t",
-                    "5": "h",
-                    "6": "o",
-                    "7": "r",
-                    "8": "i",
-                    "9": "z",
-                    "10": "a",
-                    "11": "t",
-                    "12": "i",
-                    "13": "o",
-                    "14": "n",
-                    "15": "\"",
-                    "16": ":",
-                    "17": " ",
-                    "18": "\"",
-                    "19": "B",
-                    "20": "e",
-                    "21": "a",
-                    "22": "r",
-                    "23": "e",
-                    "24": "r",
-                    "25": " ",
-                    "26": "1",
-                    "27": "2",
-                    "28": "3",
-                    "29": "\"",
-                    "30": "}"
+                    "key": "\u003cvalue\u003e",
+                    "key1": "\u003cvalue\u003e",
+                    "key2": "\u003cvalue\u003e"
+                  },
+                  "environments": [
+                    "production"
+                  ],
+                  "branch": "feature/*",
+                  "samplingRate": 0.5
+                },
+                {
+                  "clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct",
+                  "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+                  "createdAt": 1558531915505,
+                  "id": "ld_nBuA7zCID8g4QZ8g",
+                  "deliveryFormat": "json",
+                  "name": "My first log drain",
+                  "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+                  "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
+                  "projectIds": [
+                    "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"
+                  ],
+                  "url": "https://example.com/log-drain",
+                  "sources": [
+                    "build",
+                    "edge"
+                  ],
+                  "createdFrom": "integration",
+                  "headers": {
+                    "key": "\u003cvalue\u003e",
+                    "key1": "\u003cvalue\u003e",
+                    "key2": "\u003cvalue\u003e"
                   },
                   "environments": [
                     "production"
@@ -3040,7 +3252,7 @@ workflows:
             condition: |
               {
                 "clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct",
-                "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+                "configurationId": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
                 "createdAt": 1558531915505,
                 "id": "ld_nBuA7zCID8g4QZ8g",
                 "deliveryFormat": "json",
@@ -3052,41 +3264,12 @@ workflows:
                 ],
                 "url": "https://example.com/log-drain",
                 "sources": [
-                  "external"
+                  "build",
+                  "edge"
                 ],
                 "createdFrom": "integration",
                 "headers": {
-                  "0": "{",
-                  "1": "\"",
-                  "2": "A",
-                  "3": "u",
-                  "4": "t",
-                  "5": "h",
-                  "6": "o",
-                  "7": "r",
-                  "8": "i",
-                  "9": "z",
-                  "10": "a",
-                  "11": "t",
-                  "12": "i",
-                  "13": "o",
-                  "14": "n",
-                  "15": "\"",
-                  "16": ":",
-                  "17": " ",
-                  "18": "\"",
-                  "19": "B",
-                  "20": "e",
-                  "21": "a",
-                  "22": "r",
-                  "23": "e",
-                  "24": "r",
-                  "25": " ",
-                  "26": "1",
-                  "27": "2",
-                  "28": "3",
-                  "29": "\"",
-                  "30": "}"
+                  "Authorization": "Bearer 123"
                 },
                 "environments": [
                   "production"
@@ -3131,12 +3314,12 @@ workflows:
             condition: |
               [
                 {
-                  "sizeInBytes": 8239.08,
-                  "itemCount": 557.07
+                  "sizeInBytes": 2670.91,
+                  "itemCount": 9219.58
                 },
                 {
-                  "sizeInBytes": 4591.09,
-                  "itemCount": 7040.34
+                  "sizeInBytes": 2670.91,
+                  "itemCount": 9219.58
                 }
               ]
             type: simple
@@ -3162,8 +3345,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": 145.91,
-                "itemCount": 5042.97
+                "sizeInBytes": 9972.06,
+                "itemCount": 9113.46
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3187,8 +3370,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": 3967.65,
-                "itemCount": 7010.13
+                "sizeInBytes": 3866.06,
+                "itemCount": 4529.9
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3216,8 +3399,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "sizeInBytes": 5022.37,
-                "itemCount": 211.31
+                "sizeInBytes": 7731.03,
+                "itemCount": 3563.67
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3259,10 +3442,25 @@ workflows:
             condition: |
               {
                 "key": "\u003ckey\u003e",
-                "value": 5002.95,
+                "value": {
+                  "key": {
+                    "0": false,
+                    "1": {
+                      "key": {},
+                      "key1": {
+                        "key": "\u003cvalue\u003e",
+                        "key1": {}
+                      },
+                      "key2": 7567.91
+                    },
+                    "2": "\u003cvalue\u003e"
+                  },
+                  "key1": 4645.1,
+                  "key2": {}
+                },
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": 9069.69,
-                "updatedAt": 6276.41
+                "createdAt": 70.73,
+                "updatedAt": 2714.73
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3355,10 +3553,21 @@ workflows:
             condition: |
               {
                 "key": "\u003ckey\u003e",
-                "value": 9966.78,
+                "value": {
+                  "0": {
+                    "key": false,
+                    "key1": {},
+                    "key2": {
+                      "key": {},
+                      "key1": "\u003cvalue\u003e"
+                    }
+                  },
+                  "1": true,
+                  "2": {}
+                },
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": 1621.85,
-                "updatedAt": 3034.43
+                "createdAt": 8897.2,
+                "updatedAt": 3673.26
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3386,7 +3595,7 @@ workflows:
                 "label": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": 7692.36
+                "createdAt": 7767.4
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3407,7 +3616,10 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            tokens: []
+            tokens:
+              - <value 1>
+              - <value 2>
+              - <value 3>
         successCriteria:
           - condition: $statusCode == 204
     x-speakeasy-test-group: edge-config
@@ -3438,7 +3650,7 @@ workflows:
                 "label": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
                 "edgeConfigId": "\u003cid\u003e",
-                "createdAt": 3597.77
+                "createdAt": 2212.78
               }
             type: simple
     x-speakeasy-test-group: edge-config
@@ -3494,11 +3706,11 @@ workflows:
                 "backups": [
                   {
                     "id": "\u003cid\u003e",
-                    "lastModified": 2424.25
+                    "lastModified": 3645.28
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "lastModified": 1518.43
+                    "lastModified": 3645.28
                   }
                 ],
                 "pagination": {
@@ -3525,6 +3737,12 @@ workflows:
             in: query
             value: login,team-member-join,domain-buy
           - name: userId
+            in: query
+            value: aeIInYVk59zbFF2SxfyxxmuO
+          - name: principalId
+            in: query
+            value: aeIInYVk59zbFF2SxfyxxmuO
+          - name: projectIds
             in: query
             value: aeIInYVk59zbFF2SxfyxxmuO
           - name: withPayload
@@ -3560,7 +3778,7 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "email": "Lamont82@gmail.com",
+                "email": "Gilda_Murphy@yahoo.com",
                 "message": "Verification email sent"
               }
             type: simple
@@ -3579,9 +3797,9 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "url": "https://friendly-pleasure.info",
+                "url": "https://joyful-mouser.com/",
                 "contact": {
-                  "email": "Horace_Bernhard@yahoo.com"
+                  "email": "Cecile47@yahoo.com"
                 }
               }
             type: simple
@@ -3604,7 +3822,7 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "role": "ADMIN"
+                "role": "USER"
               }
             type: simple
     x-speakeasy-test-group: marketplace
@@ -3636,45 +3854,38 @@ workflows:
           contentType: application/json
           payload:
             billing:
-              items:
-                - billingPlanId: <id>
-                  name: <value>
-                  price: "511.92"
-                  quantity: 328.54
-                  total: <value>
-                  units: <value>
-                - billingPlanId: <id>
-                  name: <value>
-                  price: "4.49"
-                  quantity: 3113.17
-                  total: <value>
-                  units: <value>
-                - billingPlanId: <id>
-                  name: <value>
-                  price: "896.30"
-                  quantity: 8536.32
-                  total: <value>
-                  units: <value>
-            eod: "2023-12-28T23:46:57.523Z"
+              - billingPlanId: <id>
+                name: <value>
+                price: "694.00"
+                quantity: 228.64
+                total: <value>
+                units: <value>
+              - billingPlanId: <id>
+                name: <value>
+                price: "694.00"
+                quantity: 228.64
+                total: <value>
+                units: <value>
+            eod: "2023-04-14T04:58:49.647Z"
             period:
-              end: "2024-10-17T01:18:36.230Z"
-              start: "2023-06-25T19:04:50.518Z"
-            timestamp: "2025-09-29T02:38:01.476Z"
+              end: "2023-12-15T15:17:13.187Z"
+              start: "2023-03-12T13:32:00.895Z"
+            timestamp: "2023-11-26T05:03:03.977Z"
             usage:
-              - dayValue: 9439.22
+              - dayValue: 5212.43
                 name: <value>
-                periodValue: 6958.71
-                type: rate
+                periodValue: 4147.35
+                type: interval
                 units: <value>
-              - dayValue: 9892.22
+              - dayValue: 5212.43
                 name: <value>
-                periodValue: 4749.62
-                type: total
+                periodValue: 4147.35
+                type: interval
                 units: <value>
-              - dayValue: 7119.53
+              - dayValue: 5212.43
                 name: <value>
-                periodValue: 6310.47
-                type: rate
+                periodValue: 4147.35
+                type: interval
                 units: <value>
         successCriteria:
           - condition: $statusCode == 201
@@ -3690,23 +3901,23 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            invoiceDate: "2023-06-05T08:54:16.353Z"
+            invoiceDate: "2023-12-12T13:24:35.882Z"
             items:
               - billingPlanId: <id>
                 name: <value>
-                price: "905.89"
-                quantity: 1684.76
+                price: "469.29"
+                quantity: 3808.42
                 total: <value>
                 units: <value>
               - billingPlanId: <id>
                 name: <value>
-                price: "84.05"
-                quantity: 9130.95
+                price: "469.29"
+                quantity: 3808.42
                 total: <value>
                 units: <value>
             period:
-              end: "2025-10-08T09:35:48.520Z"
-              start: "2023-07-26T14:15:15.601Z"
+              end: "2025-06-06T21:30:28.107Z"
+              start: "2024-10-20T02:46:19.279Z"
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -3743,8 +3954,8 @@ workflows:
                   {
                     "billingPlanId": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
-                    "price": "813.89",
-                    "quantity": 2100.54,
+                    "price": "354.65",
+                    "quantity": 4602.57,
                     "units": "\u003cvalue\u003e",
                     "total": "\u003cvalue\u003e"
                   }
@@ -3930,10 +4141,9 @@ workflows:
             condition: |
               {
                 "items": {
-                  "key": true,
-                  "key1": "\u003cvalue\u003e"
+                  "key": "\u003cvalue\u003e"
                 },
-                "updatedAt": 8687.23,
+                "updatedAt": 1217.32,
                 "digest": "\u003cvalue\u003e"
               }
             type: simple
@@ -3957,35 +4167,8 @@ workflows:
                     "expiresAt": 1632816536002,
                     "activeAt": 1632816536002,
                     "createdAt": 1632816536002
-                  },
-                  {
-                    "id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-                    "name": "\u003cvalue\u003e",
-                    "type": "oauth2-token",
-                    "origin": "github",
-                    "expiresAt": 1632816536002,
-                    "activeAt": 1632816536002,
-                    "createdAt": 1632816536002
-                  },
-                  {
-                    "id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-                    "name": "\u003cvalue\u003e",
-                    "type": "oauth2-token",
-                    "origin": "github",
-                    "expiresAt": 1632816536002,
-                    "activeAt": 1632816536002,
-                    "createdAt": 1632816536002
                   }
                 ],
-                "testingToken": {
-                  "id": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
-                  "name": "\u003cvalue\u003e",
-                  "type": "oauth2-token",
-                  "origin": "github",
-                  "expiresAt": 1632816536002,
-                  "activeAt": 1632816536002,
-                  "createdAt": 1632816536002
-                },
                 "pagination": {
                   "count": 20,
                   "next": 1540095775951,
@@ -4072,6 +4255,42 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: authentication
+  - workflowId: getRuntimeLogs
+    steps:
+      - stepId: test
+        operationId: getRuntimeLogs
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/stream+json
+          - context: $response.body
+            condition: |
+              {
+                "level": "error",
+                "message": "\u003cvalue\u003e",
+                "rowId": "\u003cid\u003e",
+                "source": "serverless",
+                "timestampInMs": 3529.38,
+                "domain": "tragic-larva.biz",
+                "messageTruncated": true,
+                "requestMethod": "\u003cvalue\u003e",
+                "requestPath": "\u003cvalue\u003e",
+                "responseStatusCode": 5431.32
+              }
+            type: simple
+    x-speakeasy-test-group: logs
   - workflowId: addProjectMember
     steps:
       - stepId: test
@@ -4150,9 +4369,11 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "createdAt": 7602.36,
-                "updatedAt": 6458.94,
-                "type": "production"
+                "id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "type": "production",
+                "createdAt": 772.39,
+                "updatedAt": 509.66
               }
             type: simple
     x-speakeasy-test-group: environment
@@ -4177,7 +4398,7 @@ workflows:
             condition: |
               {
                 "accountLimit": {
-                  "total": 966.92
+                  "total": 4336.88
                 },
                 "environments": []
               }
@@ -4206,9 +4427,11 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "createdAt": 6942.59,
-                "updatedAt": 6821.31,
-                "type": "production"
+                "id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "type": "production",
+                "createdAt": 212.72,
+                "updatedAt": 2304.72
               }
             type: simple
     x-speakeasy-test-group: environment
@@ -4235,9 +4458,11 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "createdAt": 6942.59,
-                "updatedAt": 6821.31,
-                "type": "production"
+                "id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "type": "production",
+                "createdAt": 4054.52,
+                "updatedAt": 7043.79
               }
             type: simple
     x-speakeasy-test-group: environment
@@ -4264,9 +4489,11 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "createdAt": 9269.2,
-                "updatedAt": 4613.86,
-                "type": "development"
+                "id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "type": "preview",
+                "createdAt": 3549.56,
+                "updatedAt": 1676.55
               }
             type: simple
     x-speakeasy-test-group: environment
@@ -4284,7 +4511,7 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            attackModeEnabled: true
+            attackModeEnabled: false
             projectId: <id>
         successCriteria:
           - condition: $statusCode == 200
@@ -4292,8 +4519,8 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "attackModeEnabled": true,
-                "attackModeUpdatedAt": 6133.77
+                "attackModeEnabled": false,
+                "attackModeUpdatedAt": 7411.4
               }
             type: simple
     x-speakeasy-test-group: security
@@ -4325,36 +4552,36 @@ workflows:
                   "ownerId": "\u003cid\u003e",
                   "projectKey": "\u003cvalue\u003e",
                   "id": "\u003cid\u003e",
-                  "version": 892.22,
-                  "updatedAt": "1745792555559",
-                  "firewallEnabled": true,
+                  "version": 9165.84,
+                  "updatedAt": "1735603203410",
+                  "firewallEnabled": false,
                   "crs": {
                     "sd": {
                       "active": false,
-                      "action": "log"
+                      "action": "deny"
                     },
                     "ma": {
                       "active": false,
-                      "action": "log"
+                      "action": "deny"
                     },
                     "lfi": {
-                      "active": false,
-                      "action": "deny"
+                      "active": true,
+                      "action": "log"
                     },
                     "rfi": {
-                      "active": false,
-                      "action": "deny"
-                    },
-                    "rce": {
                       "active": true,
                       "action": "deny"
                     },
-                    "php": {
+                    "rce": {
                       "active": false,
-                      "action": "deny"
+                      "action": "log"
+                    },
+                    "php": {
+                      "active": true,
+                      "action": "log"
                     },
                     "gen": {
-                      "active": false,
+                      "active": true,
                       "action": "deny"
                     },
                     "xss": {
@@ -4362,28 +4589,36 @@ workflows:
                       "action": "log"
                     },
                     "sqli": {
-                      "active": true,
+                      "active": false,
                       "action": "deny"
                     },
                     "sf": {
-                      "active": true,
-                      "action": "log"
-                    },
-                    "java": {
                       "active": false,
                       "action": "deny"
+                    },
+                    "java": {
+                      "active": true,
+                      "action": "log"
                     }
                   },
                   "rules": [
                     {
                       "id": "\u003cid\u003e",
                       "name": "\u003cvalue\u003e",
-                      "active": false,
+                      "active": true,
                       "conditionGroup": [
                         {
                           "conditions": [
                             {
-                              "type": "geo_city",
+                              "type": "target_path",
+                              "op": "pre"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [
+                            {
+                              "type": "target_path",
                               "op": "pre"
                             }
                           ]
@@ -4394,60 +4629,21 @@ workflows:
                     {
                       "id": "\u003cid\u003e",
                       "name": "\u003cvalue\u003e",
-                      "active": false,
-                      "conditionGroup": [],
-                      "action": {}
-                    },
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e",
-                      "active": false,
+                      "active": true,
                       "conditionGroup": [
                         {
                           "conditions": [
                             {
-                              "type": "ip_address",
-                              "op": "sub"
-                            },
-                            {
-                              "type": "ja3_digest",
-                              "op": "suf"
-                            },
-                            {
-                              "type": "protocol",
-                              "op": "sub"
+                              "type": "target_path",
+                              "op": "pre"
                             }
                           ]
                         },
                         {
                           "conditions": [
                             {
-                              "type": "geo_as_number",
-                              "op": "re"
-                            },
-                            {
-                              "type": "geo_continent",
-                              "op": "nex"
-                            },
-                            {
-                              "type": "region",
-                              "op": "gt"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "type": "method",
-                              "op": "gte"
-                            },
-                            {
-                              "type": "header",
-                              "op": "inc"
-                            },
-                            {
-                              "type": "query",
-                              "op": "eq"
+                              "type": "target_path",
+                              "op": "pre"
                             }
                           ]
                         }
@@ -4457,8 +4653,6 @@ workflows:
                   ],
                   "ips": [],
                   "changes": [
-                    {},
-                    {},
                     {}
                   ]
                 }
@@ -4482,10 +4676,8 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            action: managedRules.update
+            action: ip.remove
             id: <id>
-            value:
-              active: true
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -4520,21 +4712,21 @@ workflows:
                 "ownerId": "\u003cid\u003e",
                 "projectKey": "\u003cvalue\u003e",
                 "id": "\u003cid\u003e",
-                "version": 228.9,
-                "updatedAt": "1744362822275",
+                "version": 6575.82,
+                "updatedAt": "1735634663735",
                 "firewallEnabled": false,
                 "crs": {
                   "sd": {
                     "active": true,
-                    "action": "deny"
+                    "action": "log"
                   },
                   "ma": {
                     "active": false,
-                    "action": "log"
+                    "action": "deny"
                   },
                   "lfi": {
                     "active": false,
-                    "action": "log"
+                    "action": "deny"
                   },
                   "rfi": {
                     "active": true,
@@ -4545,16 +4737,16 @@ workflows:
                     "action": "log"
                   },
                   "php": {
-                    "active": false,
-                    "action": "log"
+                    "active": true,
+                    "action": "deny"
                   },
                   "gen": {
-                    "active": false,
+                    "active": true,
                     "action": "deny"
                   },
                   "xss": {
-                    "active": true,
-                    "action": "deny"
+                    "active": false,
+                    "action": "log"
                   },
                   "sqli": {
                     "active": true,
@@ -4562,7 +4754,7 @@ workflows:
                   },
                   "sf": {
                     "active": true,
-                    "action": "deny"
+                    "action": "log"
                   },
                   "java": {
                     "active": true,
@@ -4578,8 +4770,12 @@ workflows:
                       {
                         "conditions": [
                           {
-                            "type": "path",
-                            "op": "neq"
+                            "type": "header",
+                            "op": "ex"
+                          },
+                          {
+                            "type": "header",
+                            "op": "ex"
                           }
                         ]
                       }
@@ -4590,24 +4786,26 @@ workflows:
                 "ips": [
                   {
                     "id": "\u003cid\u003e",
-                    "hostname": "crowded-suspension.net",
-                    "ip": "194.99.165.97",
+                    "hostname": "graceful-elevator.com",
+                    "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
                     "action": "bypass"
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "hostname": "burly-academics.name",
-                    "ip": "42.161.47.142",
+                    "hostname": "graceful-elevator.com",
+                    "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
                     "action": "bypass"
                   },
                   {
                     "id": "\u003cid\u003e",
-                    "hostname": "damaged-bracelet.info",
-                    "ip": "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
-                    "action": "log"
+                    "hostname": "graceful-elevator.com",
+                    "ip": "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
+                    "action": "bypass"
                   }
                 ],
                 "changes": [
+                  {},
+                  {},
                   {}
                 ]
               }
@@ -4635,20 +4833,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "result": [
-                  {
-                    "OwnerId": "\u003cid\u003e",
-                    "Id": "\u003cid\u003e",
-                    "Domain": "sneaky-intervention.info",
-                    "Ip": "124.153.161.35",
-                    "CreatedAt": "1730712703128",
-                    "UpdatedAt": "1744368534759",
-                    "UpdatedAtHour": "\u003cvalue\u003e"
-                  }
-                ],
-                "pagination": "\u003cvalue\u003e"
-              }
+              {}
             type: simple
     x-speakeasy-test-group: security
   - workflowId: addBypassIp
@@ -4668,23 +4853,6 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "ok": false,
-                "result": [
-                  {
-                    "OwnerId": "\u003cid\u003e",
-                    "Id": "\u003cid\u003e",
-                    "Domain": "jubilant-outrun.name",
-                    "ProjectId": "\u003cid\u003e",
-                    "Note": "\u003cvalue\u003e",
-                    "IsProjectRule": true
-                  }
-                ],
-                "pagination": "\u003cvalue\u003e"
-              }
-            type: simple
     x-speakeasy-test-group: security
   - workflowId: removeBypassIp
     steps:
@@ -4706,7 +4874,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "ok": true
+                "ok": false
               }
             type: simple
     x-speakeasy-test-group: security
@@ -4763,7 +4931,7 @@ workflows:
                 "teamName": "My Team",
                 "confirmed": false,
                 "joinedFrom": {
-                  "origin": "import"
+                  "origin": "saml"
                 },
                 "accessRequestedAt": 1588720733602,
                 "github": {},
@@ -4813,6 +4981,8 @@ workflows:
           payload:
             confirmed: true
             projects:
+              - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
+                role: ADMIN
               - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
                 role: ADMIN
               - projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
@@ -4869,7 +5039,41 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "key": "\u003cvalue\u003e"
+                "id": "team_nllPyCtREAqxxdyFKbbMDlxd",
+                "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB",
+                "updatedAt": 1611796915677,
+                "emailDomain": "example.com",
+                "saml": {
+                  "connection": {
+                    "type": "OktaSAML",
+                    "status": "linked",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "directory": {
+                    "type": "OktaSAML",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "enforced": true
+                },
+                "inviteCode": "hasihf9e89",
+                "description": "Our mission is to make cloud computing accessible to everyone.",
+                "stagingPrefix": "\u003cvalue\u003e",
+                "previewDeploymentSuffix": "example.dev",
+                "slug": "my-team",
+                "name": "My Team",
+                "avatar": "6eb07268bcfadd309905ffb1579354084c24655c",
+                "membership": {
+                  "confirmed": false,
+                  "confirmedAt": 4040.18,
+                  "role": "SECURITY",
+                  "createdAt": 1519.81,
+                  "created": 619.38
+                },
+                "createdAt": 1630748523395
               }
             type: simple
     x-speakeasy-test-group: teams
@@ -4908,7 +5112,41 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "key": "\u003cvalue\u003e"
+                "id": "team_nllPyCtREAqxxdyFKbbMDlxd",
+                "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB",
+                "updatedAt": 1611796915677,
+                "emailDomain": "example.com",
+                "saml": {
+                  "connection": {
+                    "type": "OktaSAML",
+                    "status": "linked",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "directory": {
+                    "type": "OktaSAML",
+                    "state": "active",
+                    "connectedAt": 1611796915677,
+                    "lastReceivedWebhookEvent": 1611796915677
+                  },
+                  "enforced": true
+                },
+                "inviteCode": "hasihf9e89",
+                "description": "Our mission is to make cloud computing accessible to everyone.",
+                "stagingPrefix": "\u003cvalue\u003e",
+                "previewDeploymentSuffix": "example.dev",
+                "slug": "my-team",
+                "name": "My Team",
+                "avatar": "6eb07268bcfadd309905ffb1579354084c24655c",
+                "membership": {
+                  "confirmed": true,
+                  "confirmedAt": 3200.42,
+                  "role": "CONTRIBUTOR",
+                  "createdAt": 6209.44,
+                  "created": 5994.92
+                },
+                "createdAt": 1630748523395
               }
             type: simple
     x-speakeasy-test-group: teams
@@ -4932,10 +5170,7 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "teams": [
-                  {},
-                  {}
-                ],
+                "teams": [],
                 "pagination": {
                   "count": 20,
                   "next": 1540095775951,
@@ -4960,8 +5195,7 @@ workflows:
             condition: |
               {
                 "id": "team_nLlpyC6RE1qxqglFKbrMxlud",
-                "slug": "\u003cvalue\u003e",
-                "billing": {}
+                "slug": "\u003cvalue\u003e"
               }
             type: simple
     x-speakeasy-test-group: teams
@@ -5028,8 +5262,11 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            events: []
-            url: https://woeful-yin.biz
+            events:
+              - deployment.promoted
+              - deployment.error
+              - deployment.integration.action.cancel
+            url: https://experienced-sailor.biz/
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -5069,20 +5306,6 @@ workflows:
             condition: |
               [
                 {
-                  "projectsMetadata": [
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e"
-                    },
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e"
-                    },
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e"
-                    }
-                  ],
                   "events": [
                     "deployment.created"
                   ],
@@ -5096,12 +5319,6 @@ workflows:
                   ]
                 },
                 {
-                  "projectsMetadata": [
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e"
-                    }
-                  ],
                   "events": [
                     "deployment.created"
                   ],
@@ -5115,12 +5332,6 @@ workflows:
                   ]
                 },
                 {
-                  "projectsMetadata": [
-                    {
-                      "id": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e"
-                    }
-                  ],
                   "events": [
                     "deployment.created"
                   ],
@@ -5281,7 +5492,28 @@ workflows:
           - context: $response.body
             condition: |
               {
-                "aliases": [],
+                "aliases": [
+                  {
+                    "alias": "my-alias.vercel.app",
+                    "created": "2017-04-26T23:00:34.232Z",
+                    "createdAt": 1540095775941,
+                    "creator": {
+                      "uid": "96SnxkFiMyVKsK3pnoHfx3Hz",
+                      "email": "john-doe@gmail.com",
+                      "username": "john-doe"
+                    },
+                    "deletedAt": 1540095775941,
+                    "deployment": {
+                      "id": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
+                      "url": "my-instant-deployment-3ij3cxz9qr.now.sh",
+                      "meta": "{}"
+                    },
+                    "deploymentId": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
+                    "projectId": "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+                    "uid": "\u003cid\u003e",
+                    "updatedAt": 1540095775941
+                  }
+                ],
                 "pagination": {
                   "count": 20,
                   "next": 1540095775951,
@@ -5367,6 +5599,31 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: aliases
+  - workflowId: patchUrlProtectionBypass
+    steps:
+      - stepId: test
+        operationId: patchUrlProtectionBypass
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "key": "\u003cvalue\u003e",
+                "key1": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: aliases
   - workflowId: getCertById
     steps:
       - stepId: test
@@ -5388,11 +5645,12 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": 227.12,
-                "expiresAt": 3995.77,
-                "autoRenew": false,
+                "createdAt": 6540.28,
+                "expiresAt": 6456.07,
+                "autoRenew": true,
                 "cns": [
-                  "\u003cvalue\u003e"
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e"
                 ]
               }
             type: simple
@@ -5430,9 +5688,6 @@ workflows:
           - name: slug
             in: query
             value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload: {}
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -5440,10 +5695,13 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": 1842.08,
-                "expiresAt": 8685.42,
+                "createdAt": 8859.68,
+                "expiresAt": 8499.2,
                 "autoRenew": true,
-                "cns": []
+                "cns": [
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e"
+                ]
               }
             type: simple
     x-speakeasy-test-group: certs
@@ -5458,12 +5716,6 @@ workflows:
           - name: slug
             in: query
             value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            ca: <value>
-            cert: <value>
-            key: <key>
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -5471,286 +5723,14 @@ workflows:
             condition: |
               {
                 "id": "\u003cid\u003e",
-                "createdAt": 9219.92,
-                "expiresAt": 5530.55,
+                "createdAt": 5621.19,
+                "expiresAt": 3778.47,
                 "autoRenew": true,
                 "cns": [
-                  "\u003cvalue\u003e",
-                  "\u003cvalue\u003e"
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e",
+                  "\u003cvalue 3\u003e"
                 ]
               }
             type: simple
     x-speakeasy-test-group: certs
-  - workflowId: patch_/aliases/{id}/protection-bypass
-    steps:
-      - stepId: test
-        operationId: patch_/aliases/{id}/protection-bypass
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "key": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: Vercel
-  - workflowId: patchUrlProtectionBypass
-    steps:
-      - stepId: test
-        operationId: patchUrlProtectionBypass
-        parameters:
-          - name: id
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "key": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: aliases
-  - workflowId: get_/projects/{projectId}/logs-presets
-    steps:
-      - stepId: test
-        operationId: get_/projects/{projectId}/logs-presets
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              [
-                {
-                  "id": "ABCDEFG000011111",
-                  "data": {
-                    "query": "\u003cvalue\u003e",
-                    "creatorId": "\u003cid\u003e",
-                    "title": "\u003cvalue\u003e",
-                    "groupId": "\u003cid\u003e",
-                    "ownerId": "\u003cid\u003e",
-                    "projectId": "\u003cid\u003e",
-                    "createdAt": 4859.35
-                  },
-                  "key": "\u003cvalue\u003e",
-                  "key1": "\u003cvalue\u003e"
-                },
-                {
-                  "id": "ABCDEFG000011111",
-                  "data": {
-                    "query": "\u003cvalue\u003e",
-                    "creatorId": "\u003cid\u003e",
-                    "title": "\u003cvalue\u003e",
-                    "groupId": "\u003cid\u003e",
-                    "ownerId": "\u003cid\u003e",
-                    "projectId": "\u003cid\u003e",
-                    "createdAt": 4176.11
-                  },
-                  "key": "\u003cvalue\u003e",
-                  "key1": "\u003cvalue\u003e"
-                },
-                {
-                  "id": "ABCDEFG000011111",
-                  "data": {
-                    "query": "\u003cvalue\u003e",
-                    "creatorId": "\u003cid\u003e",
-                    "title": "\u003cvalue\u003e",
-                    "groupId": "\u003cid\u003e",
-                    "ownerId": "\u003cid\u003e",
-                    "projectId": "\u003cid\u003e",
-                    "createdAt": 9283.43
-                  },
-                  "key": "\u003cvalue\u003e"
-                }
-              ]
-            type: simple
-    x-speakeasy-test-group: Vercel
-  - workflowId: post_/projects/{projectId}/logs-presets
-    steps:
-      - stepId: test
-        operationId: post_/projects/{projectId}/logs-presets
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-        requestBody:
-          contentType: application/json
-          payload:
-            group: team
-            query: timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com
-            title: Request Path
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "id": "ABCDEFG000011111",
-                "data": {
-                  "query": "\u003cvalue\u003e",
-                  "creatorId": "\u003cid\u003e",
-                  "title": "\u003cvalue\u003e",
-                  "groupId": "\u003cid\u003e",
-                  "ownerId": "\u003cid\u003e",
-                  "projectId": "\u003cid\u003e",
-                  "createdAt": 4231.46
-                },
-                "key": "\u003cvalue\u003e",
-                "key1": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: Vercel
-  - workflowId: delete_/projects/{projectId}/logs-presets/{id}
-    steps:
-      - stepId: test
-        operationId: delete_/projects/{projectId}/logs-presets/{id}
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-          - name: id
-            in: path
-            value: <id>
-        successCriteria:
-          - condition: $statusCode == 204
-    x-speakeasy-test-group: Vercel
-  - workflowId: patch_/projects/{projectId}/logs-presets/{id}
-    steps:
-      - stepId: test
-        operationId: patch_/projects/{projectId}/logs-presets/{id}
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-          - name: id
-            in: path
-            value: <id>
-        requestBody:
-          contentType: application/json
-          payload:
-            title: Request Path
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "id": "ABCDEFG000011111",
-                "data": {
-                  "query": "\u003cvalue\u003e",
-                  "creatorId": "\u003cid\u003e",
-                  "title": "\u003cvalue\u003e",
-                  "groupId": "\u003cid\u003e",
-                  "ownerId": "\u003cid\u003e",
-                  "projectId": "\u003cid\u003e",
-                  "createdAt": 4063.98
-                },
-                "key": "\u003cvalue\u003e",
-                "key1": "\u003cvalue\u003e",
-                "key2": "\u003cvalue\u003e"
-              }
-            type: simple
-    x-speakeasy-test-group: Vercel
-  - workflowId: getRuntimeLogs
-    steps:
-      - stepId: test
-        operationId: getRuntimeLogs
-        parameters:
-          - name: projectId
-            in: path
-            value: <id>
-          - name: deploymentId
-            in: path
-            value: <id>
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/stream+json
-          - context: $response.body
-            condition: |
-              {
-                "level": "error",
-                "message": "\u003cvalue\u003e",
-                "rowId": "\u003cid\u003e",
-                "source": "serverless",
-                "timestampInMs": 5218.65,
-                "domain": "putrid-tenement.info",
-                "messageTruncated": false,
-                "requestMethod": "\u003cvalue\u003e",
-                "requestPath": "\u003cvalue\u003e",
-                "responseStatusCode": 4823.11
-              }
-            type: simple
-    x-speakeasy-test-group: logs
-  - workflowId: post_/domains
-    steps:
-      - stepId: test
-        operationId: post_/domains
-        requestBody:
-          contentType: application/json
-          payload:
-            cdnEnabled: true
-            method: transfer-in
-            name: example.com
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {
-                "domain": {
-                  "verified": true,
-                  "nameservers": [
-                    "ns1.nameserver.net",
-                    "ns2.nameserver.net"
-                  ],
-                  "intendedNameservers": [
-                    "ns1.vercel-dns.com",
-                    "ns2.vercel-dns.com"
-                  ],
-                  "customNameservers": [
-                    "ns1.nameserver.net",
-                    "ns2.nameserver.net"
-                  ],
-                  "creator": {
-                    "username": "vercel_user",
-                    "email": "demo@example.com",
-                    "id": "ZspSRT4ljIEEmMHgoDwKWDei"
-                  },
-                  "name": "example.com",
-                  "boughtAt": 1613602938882,
-                  "createdAt": 1613602938882,
-                  "expiresAt": 1613602938882,
-                  "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-                  "orderedAt": 1613602938882,
-                  "renew": true,
-                  "serviceType": "zeit.world",
-                  "transferredAt": 1613602938882,
-                  "transferStartedAt": 1613602938882,
-                  "userId": "\u003cid\u003e",
-                  "teamId": "\u003cid\u003e"
-                }
-              }
-            type: simple
-    x-speakeasy-test-group: Vercel

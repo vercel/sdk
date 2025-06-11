@@ -46,17 +46,29 @@ func testListAccessGroupMembersListAccessGroupMembers0(w http.ResponseWriter, re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ListAccessGroupMembersResponseBody{
-		Members: []operations.Members{
-			operations.Members{
-				Email:    "Jaida_Rogahn@yahoo.com",
+	var respBody *operations.ListAccessGroupMembersResponseBody = &operations.ListAccessGroupMembersResponseBody{
+		Members: []operations.ListAccessGroupMembersMember{
+			operations.ListAccessGroupMembersMember{
+				Email:    "Kassandra13@yahoo.com",
 				UID:      "<id>",
-				Username: "Karianne_Bernier",
-				TeamRole: operations.TeamRoleViewer,
+				Username: "Chelsie97",
+				TeamRole: operations.ListAccessGroupMembersTeamRoleMember,
+			},
+			operations.ListAccessGroupMembersMember{
+				Email:    "Kassandra13@yahoo.com",
+				UID:      "<id>",
+				Username: "Chelsie97",
+				TeamRole: operations.ListAccessGroupMembersTeamRoleMember,
+			},
+			operations.ListAccessGroupMembersMember{
+				Email:    "Kassandra13@yahoo.com",
+				UID:      "<id>",
+				Username: "Chelsie97",
+				TeamRole: operations.ListAccessGroupMembersTeamRoleMember,
 			},
 		},
-		Pagination: operations.Pagination{
-			Count: 3878.47,
+		Pagination: operations.ListAccessGroupMembersPagination{
+			Count: 9302.16,
 			Next:  types.String("<value>"),
 		},
 	}

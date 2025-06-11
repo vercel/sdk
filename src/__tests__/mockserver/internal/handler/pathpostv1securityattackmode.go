@@ -50,9 +50,9 @@ func testUpdateAttackChallengeModeUpdateAttackChallengeMode0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateAttackChallengeModeResponseBody{
-		AttackModeEnabled:   true,
-		AttackModeUpdatedAt: 6133.77,
+	var respBody *operations.UpdateAttackChallengeModeResponseBody = &operations.UpdateAttackChallengeModeResponseBody{
+		AttackModeEnabled:   false,
+		AttackModeUpdatedAt: 7411.4,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

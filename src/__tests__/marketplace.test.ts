@@ -19,6 +19,12 @@ test("Marketplace Get Account Info", async () => {
     integrationConfigurationId: "<id>",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    url: "https://joyful-mouser.com/",
+    contact: {
+      email: "Cecile47@yahoo.com",
+    },
+  });
 });
 
 test("Marketplace Get Member", async () => {
@@ -35,6 +41,10 @@ test("Marketplace Get Member", async () => {
     memberId: "<id>",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    role: "USER",
+  });
 });
 
 test("Marketplace Create Event", async () => {
@@ -68,61 +78,51 @@ test("Marketplace Submit Billing Data", async () => {
   await vercel.marketplace.submitBillingData({
     integrationConfigurationId: "<id>",
     requestBody: {
-      timestamp: new Date("2025-09-29T02:38:01.476Z"),
-      eod: new Date("2023-12-28T23:46:57.523Z"),
+      timestamp: new Date("2023-11-26T05:03:03.977Z"),
+      eod: new Date("2023-04-14T04:58:49.647Z"),
       period: {
-        start: new Date("2023-06-25T19:04:50.518Z"),
-        end: new Date("2024-10-17T01:18:36.230Z"),
+        start: new Date("2023-03-12T13:32:00.895Z"),
+        end: new Date("2023-12-15T15:17:13.187Z"),
       },
-      billing: {
-        items: [
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "511.92",
-            quantity: 328.54,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "4.49",
-            quantity: 3113.17,
-            units: "<value>",
-            total: "<value>",
-          },
-          {
-            billingPlanId: "<id>",
-            name: "<value>",
-            price: "896.30",
-            quantity: 8536.32,
-            units: "<value>",
-            total: "<value>",
-          },
-        ],
-      },
+      billing: [
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+        {
+          billingPlanId: "<id>",
+          name: "<value>",
+          price: "694.00",
+          quantity: 228.64,
+          units: "<value>",
+          total: "<value>",
+        },
+      ],
       usage: [
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 9439.22,
-          periodValue: 6958.71,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "total",
+          type: "interval",
           units: "<value>",
-          dayValue: 9892.22,
-          periodValue: 4749.62,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
         {
           name: "<value>",
-          type: "rate",
+          type: "interval",
           units: "<value>",
-          dayValue: 7119.53,
-          periodValue: 6310.47,
+          dayValue: 5212.43,
+          periodValue: 4147.35,
         },
       ],
     },
@@ -141,25 +141,25 @@ test("Marketplace Submit Invoice", async () => {
   const result = await vercel.marketplace.submitInvoice({
     integrationConfigurationId: "<id>",
     requestBody: {
-      invoiceDate: new Date("2023-06-05T08:54:16.353Z"),
+      invoiceDate: new Date("2023-12-12T13:24:35.882Z"),
       period: {
-        start: new Date("2023-07-26T14:15:15.601Z"),
-        end: new Date("2025-10-08T09:35:48.520Z"),
+        start: new Date("2024-10-20T02:46:19.279Z"),
+        end: new Date("2025-06-06T21:30:28.107Z"),
       },
       items: [
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "905.89",
-          quantity: 1684.76,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
         {
           billingPlanId: "<id>",
           name: "<value>",
-          price: "84.05",
-          quantity: 9130.95,
+          price: "469.29",
+          quantity: 3808.42,
           units: "<value>",
           total: "<value>",
         },
@@ -167,6 +167,7 @@ test("Marketplace Submit Invoice", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({});
 });
 
 test("Marketplace Get Invoice", async () => {
@@ -183,6 +184,28 @@ test("Marketplace Get Invoice", async () => {
     invoiceId: "<id>",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    invoiceId: "<id>",
+    state: "invoiced",
+    invoiceDate: "<value>",
+    period: {
+      start: "<value>",
+      end: "<value>",
+    },
+    items: [
+      {
+        billingPlanId: "<id>",
+        name: "<value>",
+        price: "354.65",
+        quantity: 4602.57,
+        units: "<value>",
+        total: "<value>",
+      },
+    ],
+    total: "<value>",
+    created: "<value>",
+    updated: "<value>",
+  });
 });
 
 test("Marketplace Update Invoice", async () => {
@@ -267,6 +290,9 @@ test("Marketplace Import Resource", async () => {
     resourceId: "<id>",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+  });
 });
 
 test("Marketplace Exchange Sso Token", async () => {
@@ -283,6 +309,11 @@ test("Marketplace Exchange Sso Token", async () => {
     clientSecret: "<value>",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    idToken: "<value>",
+    accessToken: "<value>",
+    tokenType: "<value>",
+  });
 });
 
 test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
@@ -355,4 +386,11 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
       resourceId: "<id>",
     });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    items: {
+      "key": "<value>",
+    },
+    updatedAt: 1217.32,
+    digest: "<value>",
+  });
 });

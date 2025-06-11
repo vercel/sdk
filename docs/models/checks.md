@@ -11,8 +11,8 @@ let value: Checks = {
   integrationId: "<id>",
   name: "<value>",
   rerequestable: false,
-  status: "running",
-  updatedAt: 510.81,
+  status: "registered",
+  updatedAt: 5455.02,
 };
 ```
 

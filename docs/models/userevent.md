@@ -10,20 +10,15 @@ import { UserEvent } from "@vercel/sdk/models/userevent.js";
 let value: UserEvent = {
   id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
   text: "You logged in via GitHub",
-  entities: [
-    {
-      type: "author",
-      start: 0,
-      end: 3,
-    },
-  ],
+  entities: [],
   createdAt: 1632859321020,
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    sha: "<value>",
-    gitUserPlatform: "<value>",
-    projectName: "<value>",
+    project: {
+      name: "<value>",
+    },
+    projectMembership: {},
   },
 };
 ```

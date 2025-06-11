@@ -7,9 +7,10 @@
 
 ```typescript
 const value: models.UpdateProjectDataCacheMicrofrontends1 = {
-  updatedAt: 6958.3,
+  updatedAt: 1432.42,
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
   enabled: false,
 };
@@ -19,10 +20,8 @@ const value: models.UpdateProjectDataCacheMicrofrontends1 = {
 
 ```typescript
 const value: models.UpdateProjectDataCacheMicrofrontends2 = {
-  updatedAt: 9042.38,
-  groupIds: [
-    "<value>",
-  ],
+  updatedAt: 6729.07,
+  groupIds: [],
   enabled: false,
 };
 ```

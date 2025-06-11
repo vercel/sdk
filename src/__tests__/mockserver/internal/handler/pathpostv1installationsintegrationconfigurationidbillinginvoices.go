@@ -50,7 +50,7 @@ func testSubmitInvoiceSubmitInvoice0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.SubmitInvoiceResponseBody{}
+	var respBody *operations.SubmitInvoiceResponseBody = &operations.SubmitInvoiceResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

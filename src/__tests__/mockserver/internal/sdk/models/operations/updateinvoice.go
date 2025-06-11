@@ -8,40 +8,40 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type Action string
+type UpdateInvoiceAction string
 
 const (
-	ActionRefund Action = "refund"
+	UpdateInvoiceActionRefund UpdateInvoiceAction = "refund"
 )
 
-func (e Action) ToPointer() *Action {
+func (e UpdateInvoiceAction) ToPointer() *UpdateInvoiceAction {
 	return &e
 }
-func (e *Action) UnmarshalJSON(data []byte) error {
+func (e *UpdateInvoiceAction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "refund":
-		*e = Action(v)
+		*e = UpdateInvoiceAction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Action: %v", v)
+		return fmt.Errorf("invalid value for UpdateInvoiceAction: %v", v)
 	}
 }
 
 type UpdateInvoiceRequestBody struct {
-	Action Action `json:"action"`
+	Action UpdateInvoiceAction `json:"action"`
 	// Refund reason.
 	Reason string `json:"reason"`
 	// The total amount to be refunded. Must be less than or equal to the total amount of the invoice.
 	Total string `json:"total"`
 }
 
-func (o *UpdateInvoiceRequestBody) GetAction() Action {
+func (o *UpdateInvoiceRequestBody) GetAction() UpdateInvoiceAction {
 	if o == nil {
-		return Action("")
+		return UpdateInvoiceAction("")
 	}
 	return o.Action
 }

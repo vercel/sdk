@@ -15,20 +15,7 @@ const value: string = "<value>";
 
 ```typescript
 const value: models.GetRecordsResponseBody2 = {
-  records: [
-    {
-      id: "<id>",
-      slug: "<value>",
-      name: "<value>",
-      type: "CNAME",
-      value: "<value>",
-      creator: "<value>",
-      created: 6222.54,
-      updated: 4377.9,
-      createdAt: 6803.31,
-      updatedAt: 2125.86,
-    },
-  ],
+  records: [],
 };
 ```
 
@@ -41,13 +28,13 @@ const value: models.ResponseBody3 = {
       id: "<id>",
       slug: "<value>",
       name: "<value>",
-      type: "MX",
+      type: "CNAME",
       value: "<value>",
       creator: "<value>",
-      created: 5737.31,
-      updated: 1243.92,
-      createdAt: 1311.69,
-      updatedAt: 3964.11,
+      created: 6882.51,
+      updated: 6428.55,
+      createdAt: 7060.69,
+      updatedAt: 6317.6,
     },
   ],
   pagination: {

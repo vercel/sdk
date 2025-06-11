@@ -85,72 +85,72 @@ func (e *ListAccessGroupProjectsRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ListAccessGroupProjectsProject struct {
+type ListAccessGroupProjectsProjectProject struct {
 	Name               *string `json:"name,omitempty"`
 	Framework          *string `json:"framework,omitempty"`
 	LatestDeploymentID *string `json:"latestDeploymentId,omitempty"`
 }
 
-func (o *ListAccessGroupProjectsProject) GetName() *string {
+func (o *ListAccessGroupProjectsProjectProject) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *ListAccessGroupProjectsProject) GetFramework() *string {
+func (o *ListAccessGroupProjectsProjectProject) GetFramework() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Framework
 }
 
-func (o *ListAccessGroupProjectsProject) GetLatestDeploymentID() *string {
+func (o *ListAccessGroupProjectsProjectProject) GetLatestDeploymentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LatestDeploymentID
 }
 
-type ListAccessGroupProjectsProjects struct {
-	ProjectID string                         `json:"projectId"`
-	Role      ListAccessGroupProjectsRole    `json:"role"`
-	CreatedAt string                         `json:"createdAt"`
-	UpdatedAt string                         `json:"updatedAt"`
-	Project   ListAccessGroupProjectsProject `json:"project"`
+type ListAccessGroupProjectsProject struct {
+	ProjectID string                                `json:"projectId"`
+	Role      ListAccessGroupProjectsRole           `json:"role"`
+	CreatedAt string                                `json:"createdAt"`
+	UpdatedAt string                                `json:"updatedAt"`
+	Project   ListAccessGroupProjectsProjectProject `json:"project"`
 }
 
-func (o *ListAccessGroupProjectsProjects) GetProjectID() string {
+func (o *ListAccessGroupProjectsProject) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *ListAccessGroupProjectsProjects) GetRole() ListAccessGroupProjectsRole {
+func (o *ListAccessGroupProjectsProject) GetRole() ListAccessGroupProjectsRole {
 	if o == nil {
 		return ListAccessGroupProjectsRole("")
 	}
 	return o.Role
 }
 
-func (o *ListAccessGroupProjectsProjects) GetCreatedAt() string {
+func (o *ListAccessGroupProjectsProject) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *ListAccessGroupProjectsProjects) GetUpdatedAt() string {
+func (o *ListAccessGroupProjectsProject) GetUpdatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.UpdatedAt
 }
 
-func (o *ListAccessGroupProjectsProjects) GetProject() ListAccessGroupProjectsProject {
+func (o *ListAccessGroupProjectsProject) GetProject() ListAccessGroupProjectsProjectProject {
 	if o == nil {
-		return ListAccessGroupProjectsProject{}
+		return ListAccessGroupProjectsProjectProject{}
 	}
 	return o.Project
 }
@@ -175,13 +175,13 @@ func (o *ListAccessGroupProjectsPagination) GetNext() *string {
 }
 
 type ListAccessGroupProjectsResponseBody struct {
-	Projects   []ListAccessGroupProjectsProjects `json:"projects"`
+	Projects   []ListAccessGroupProjectsProject  `json:"projects"`
 	Pagination ListAccessGroupProjectsPagination `json:"pagination"`
 }
 
-func (o *ListAccessGroupProjectsResponseBody) GetProjects() []ListAccessGroupProjectsProjects {
+func (o *ListAccessGroupProjectsResponseBody) GetProjects() []ListAccessGroupProjectsProject {
 	if o == nil {
-		return []ListAccessGroupProjectsProjects{}
+		return []ListAccessGroupProjectsProject{}
 	}
 	return o.Projects
 }

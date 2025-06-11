@@ -8,19 +8,19 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// UpdateAccessGroupProjectRole - The project role that will be added to this Access Group.
-type UpdateAccessGroupProjectRole string
+// UpdateAccessGroupProjectRoleRequest - The project role that will be added to this Access Group.
+type UpdateAccessGroupProjectRoleRequest string
 
 const (
-	UpdateAccessGroupProjectRoleAdmin            UpdateAccessGroupProjectRole = "ADMIN"
-	UpdateAccessGroupProjectRoleProjectViewer    UpdateAccessGroupProjectRole = "PROJECT_VIEWER"
-	UpdateAccessGroupProjectRoleProjectDeveloper UpdateAccessGroupProjectRole = "PROJECT_DEVELOPER"
+	UpdateAccessGroupProjectRoleRequestAdmin            UpdateAccessGroupProjectRoleRequest = "ADMIN"
+	UpdateAccessGroupProjectRoleRequestProjectViewer    UpdateAccessGroupProjectRoleRequest = "PROJECT_VIEWER"
+	UpdateAccessGroupProjectRoleRequestProjectDeveloper UpdateAccessGroupProjectRoleRequest = "PROJECT_DEVELOPER"
 )
 
-func (e UpdateAccessGroupProjectRole) ToPointer() *UpdateAccessGroupProjectRole {
+func (e UpdateAccessGroupProjectRoleRequest) ToPointer() *UpdateAccessGroupProjectRoleRequest {
 	return &e
 }
-func (e *UpdateAccessGroupProjectRole) UnmarshalJSON(data []byte) error {
+func (e *UpdateAccessGroupProjectRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,21 +31,21 @@ func (e *UpdateAccessGroupProjectRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_VIEWER":
 		fallthrough
 	case "PROJECT_DEVELOPER":
-		*e = UpdateAccessGroupProjectRole(v)
+		*e = UpdateAccessGroupProjectRoleRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateAccessGroupProjectRole: %v", v)
+		return fmt.Errorf("invalid value for UpdateAccessGroupProjectRoleRequest: %v", v)
 	}
 }
 
 type UpdateAccessGroupProjectRequestBody struct {
 	// The project role that will be added to this Access Group.
-	Role UpdateAccessGroupProjectRole `json:"role"`
+	Role UpdateAccessGroupProjectRoleRequest `json:"role"`
 }
 
-func (o *UpdateAccessGroupProjectRequestBody) GetRole() UpdateAccessGroupProjectRole {
+func (o *UpdateAccessGroupProjectRequestBody) GetRole() UpdateAccessGroupProjectRoleRequest {
 	if o == nil {
-		return UpdateAccessGroupProjectRole("")
+		return UpdateAccessGroupProjectRoleRequest("")
 	}
 	return o.Role
 }
@@ -95,18 +95,18 @@ func (o *UpdateAccessGroupProjectRequest) GetRequestBody() UpdateAccessGroupProj
 	return o.RequestBody
 }
 
-type UpdateAccessGroupProjectAccessGroupsRole string
+type UpdateAccessGroupProjectRoleResponse string
 
 const (
-	UpdateAccessGroupProjectAccessGroupsRoleAdmin            UpdateAccessGroupProjectAccessGroupsRole = "ADMIN"
-	UpdateAccessGroupProjectAccessGroupsRoleProjectDeveloper UpdateAccessGroupProjectAccessGroupsRole = "PROJECT_DEVELOPER"
-	UpdateAccessGroupProjectAccessGroupsRoleProjectViewer    UpdateAccessGroupProjectAccessGroupsRole = "PROJECT_VIEWER"
+	UpdateAccessGroupProjectRoleResponseAdmin            UpdateAccessGroupProjectRoleResponse = "ADMIN"
+	UpdateAccessGroupProjectRoleResponseProjectDeveloper UpdateAccessGroupProjectRoleResponse = "PROJECT_DEVELOPER"
+	UpdateAccessGroupProjectRoleResponseProjectViewer    UpdateAccessGroupProjectRoleResponse = "PROJECT_VIEWER"
 )
 
-func (e UpdateAccessGroupProjectAccessGroupsRole) ToPointer() *UpdateAccessGroupProjectAccessGroupsRole {
+func (e UpdateAccessGroupProjectRoleResponse) ToPointer() *UpdateAccessGroupProjectRoleResponse {
 	return &e
 }
-func (e *UpdateAccessGroupProjectAccessGroupsRole) UnmarshalJSON(data []byte) error {
+func (e *UpdateAccessGroupProjectRoleResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -117,20 +117,20 @@ func (e *UpdateAccessGroupProjectAccessGroupsRole) UnmarshalJSON(data []byte) er
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = UpdateAccessGroupProjectAccessGroupsRole(v)
+		*e = UpdateAccessGroupProjectRoleResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateAccessGroupProjectAccessGroupsRole: %v", v)
+		return fmt.Errorf("invalid value for UpdateAccessGroupProjectRoleResponse: %v", v)
 	}
 }
 
 type UpdateAccessGroupProjectResponseBody struct {
-	TeamID        string                                   `json:"teamId"`
-	AccessGroupID string                                   `json:"accessGroupId"`
-	ProjectID     string                                   `json:"projectId"`
-	Role          UpdateAccessGroupProjectAccessGroupsRole `json:"role"`
-	CreatedAt     string                                   `json:"createdAt"`
-	UpdatedAt     string                                   `json:"updatedAt"`
+	TeamID        string                               `json:"teamId"`
+	AccessGroupID string                               `json:"accessGroupId"`
+	ProjectID     string                               `json:"projectId"`
+	Role          UpdateAccessGroupProjectRoleResponse `json:"role"`
+	CreatedAt     string                               `json:"createdAt"`
+	UpdatedAt     string                               `json:"updatedAt"`
 }
 
 func (o *UpdateAccessGroupProjectResponseBody) GetTeamID() string {
@@ -154,9 +154,9 @@ func (o *UpdateAccessGroupProjectResponseBody) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *UpdateAccessGroupProjectResponseBody) GetRole() UpdateAccessGroupProjectAccessGroupsRole {
+func (o *UpdateAccessGroupProjectResponseBody) GetRole() UpdateAccessGroupProjectRoleResponse {
 	if o == nil {
-		return UpdateAccessGroupProjectAccessGroupsRole("")
+		return UpdateAccessGroupProjectRoleResponse("")
 	}
 	return o.Role
 }

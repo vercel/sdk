@@ -18,7 +18,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import { SDKError } from "../models/sdkerror.js";
+import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateResourceSecretsRequest,
@@ -28,6 +28,7 @@ import {
   VercelBadRequestError,
   VercelBadRequestError$inboundSchema,
 } from "../models/vercelbadrequesterror.js";
+import { VercelError } from "../models/vercelerror.js";
 import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
@@ -55,13 +56,14 @@ export function marketplaceUpdateResourceSecrets(
     | VercelBadRequestError
     | VercelForbiddenError
     | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -82,13 +84,14 @@ async function $do(
       | VercelBadRequestError
       | VercelForbiddenError
       | VercelNotFoundError
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | VercelError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -135,6 +138,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "update-resource-secrets",
     oAuth2Scopes: [],
@@ -155,6 +159,7 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -182,13 +187,14 @@ async function $do(
     | VercelBadRequestError
     | VercelForbiddenError
     | VercelNotFoundError
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | VercelError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.nil(201, z.void()),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
@@ -196,7 +202,7 @@ async function $do(
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
     M.fail([403, "4XX"]),
     M.fail("5XX"),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

@@ -10,7 +10,7 @@ let value: UpdateProjectErl = {
   window: 7339.64,
   limit: 6140.45,
   keys: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

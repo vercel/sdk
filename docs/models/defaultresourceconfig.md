@@ -7,7 +7,9 @@ import { DefaultResourceConfig } from "@vercel/sdk/models/updateprojectdatacache
 
 let value: DefaultResourceConfig = {
   functionDefaultRegions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

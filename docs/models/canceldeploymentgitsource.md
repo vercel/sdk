@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CancelDeploymentGitSource1 = {
   type: "github",
-  repoId: 7595.93,
+  repoId: 5059.08,
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.CancelDeploymentGitSource2 = {
 ```typescript
 const value: models.CancelDeploymentGitSource3 = {
   type: "github-custom-host",
-  host: "trained-window.name",
-  repoId: 5987.63,
+  host: "considerate-lotion.name",
+  repoId: "<id>",
 };
 ```
 
@@ -37,7 +37,7 @@ const value: models.CancelDeploymentGitSource3 = {
 ```typescript
 const value: models.CancelDeploymentGitSource4 = {
   type: "github-custom-host",
-  host: "distorted-bend.biz",
+  host: "swift-deer.net",
   org: "<value>",
   repo: "<value>",
 };
@@ -48,7 +48,7 @@ const value: models.CancelDeploymentGitSource4 = {
 ```typescript
 const value: models.CancelDeploymentGitSource5 = {
   type: "gitlab",
-  projectId: 808.68,
+  projectId: "<id>",
 };
 ```
 
@@ -78,7 +78,7 @@ const value: models.GitSource8 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://slow-middle.info/",
+  gitUrl: "https://teeming-electronics.name",
 };
 ```
 
@@ -89,7 +89,7 @@ const value: models.GitSource9 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 7358.23,
+  repoId: 3080.91,
 };
 ```
 
@@ -98,10 +98,10 @@ const value: models.GitSource9 = {
 ```typescript
 const value: models.GitSource10 = {
   type: "github-custom-host",
-  host: "triangular-farm.org",
+  host: "elastic-yogurt.biz",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1505.66,
+  repoId: 8369.17,
 };
 ```
 
@@ -112,7 +112,7 @@ const value: models.GitSource11 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 9011.78,
+  projectId: 1177.12,
 };
 ```
 

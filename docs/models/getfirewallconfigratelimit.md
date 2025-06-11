@@ -10,7 +10,9 @@ let value: GetFirewallConfigRateLimit = {
   window: 8498.48,
   limit: 9430.08,
   keys: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

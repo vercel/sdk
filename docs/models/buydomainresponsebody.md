@@ -9,10 +9,12 @@ let value: BuyDomainResponseBody = {
   domain: {
     uid: "<id>",
     ns: [
-      "<value>",
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
-    verified: false,
-    created: 7845.41,
+    verified: true,
+    created: 5744.85,
     pending: false,
   },
 };

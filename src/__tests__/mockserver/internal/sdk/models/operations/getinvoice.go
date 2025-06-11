@@ -27,23 +27,23 @@ func (o *GetInvoiceRequest) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-// State - Invoice state.
-type State string
+// GetInvoiceState - Invoice state.
+type GetInvoiceState string
 
 const (
-	StatePending         State = "pending"
-	StateScheduled       State = "scheduled"
-	StateInvoiced        State = "invoiced"
-	StatePaid            State = "paid"
-	StateNotpaid         State = "notpaid"
-	StateRefundRequested State = "refund_requested"
-	StateRefunded        State = "refunded"
+	GetInvoiceStatePending         GetInvoiceState = "pending"
+	GetInvoiceStateScheduled       GetInvoiceState = "scheduled"
+	GetInvoiceStateInvoiced        GetInvoiceState = "invoiced"
+	GetInvoiceStatePaid            GetInvoiceState = "paid"
+	GetInvoiceStateNotpaid         GetInvoiceState = "notpaid"
+	GetInvoiceStateRefundRequested GetInvoiceState = "refund_requested"
+	GetInvoiceStateRefunded        GetInvoiceState = "refunded"
 )
 
-func (e State) ToPointer() *State {
+func (e GetInvoiceState) ToPointer() *GetInvoiceState {
 	return &e
 }
-func (e *State) UnmarshalJSON(data []byte) error {
+func (e *GetInvoiceState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -62,10 +62,10 @@ func (e *State) UnmarshalJSON(data []byte) error {
 	case "refund_requested":
 		fallthrough
 	case "refunded":
-		*e = State(v)
+		*e = GetInvoiceState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for State: %v", v)
+		return fmt.Errorf("invalid value for GetInvoiceState: %v", v)
 	}
 }
 
@@ -89,8 +89,8 @@ func (o *GetInvoicePeriod) GetEnd() string {
 	return o.End
 }
 
-// GetInvoiceItems - Invoice items.
-type GetInvoiceItems struct {
+// GetInvoiceItem - Invoice items.
+type GetInvoiceItem struct {
 	// Partner's billing plan ID.
 	BillingPlanID string `json:"billingPlanId"`
 	// Partner's resource ID. If not specified, indicates installation-wide item.
@@ -113,78 +113,78 @@ type GetInvoiceItems struct {
 	Total string `json:"total"`
 }
 
-func (o *GetInvoiceItems) GetBillingPlanID() string {
+func (o *GetInvoiceItem) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *GetInvoiceItems) GetResourceID() *string {
+func (o *GetInvoiceItem) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *GetInvoiceItems) GetStart() *string {
+func (o *GetInvoiceItem) GetStart() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *GetInvoiceItems) GetEnd() *string {
+func (o *GetInvoiceItem) GetEnd() *string {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *GetInvoiceItems) GetName() string {
+func (o *GetInvoiceItem) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetInvoiceItems) GetDetails() *string {
+func (o *GetInvoiceItem) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *GetInvoiceItems) GetPrice() string {
+func (o *GetInvoiceItem) GetPrice() string {
 	if o == nil {
 		return ""
 	}
 	return o.Price
 }
 
-func (o *GetInvoiceItems) GetQuantity() float64 {
+func (o *GetInvoiceItem) GetQuantity() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Quantity
 }
 
-func (o *GetInvoiceItems) GetUnits() string {
+func (o *GetInvoiceItem) GetUnits() string {
 	if o == nil {
 		return ""
 	}
 	return o.Units
 }
 
-func (o *GetInvoiceItems) GetTotal() string {
+func (o *GetInvoiceItem) GetTotal() string {
 	if o == nil {
 		return ""
 	}
 	return o.Total
 }
 
-// GetInvoiceDiscounts - Invoice discounts.
-type GetInvoiceDiscounts struct {
+// GetInvoiceDiscount - Invoice discounts.
+type GetInvoiceDiscount struct {
 	// Partner's billing plan ID.
 	BillingPlanID string `json:"billingPlanId"`
 	// Partner's resource ID. If not specified, indicates installation-wide discount.
@@ -201,49 +201,49 @@ type GetInvoiceDiscounts struct {
 	Amount string `json:"amount"`
 }
 
-func (o *GetInvoiceDiscounts) GetBillingPlanID() string {
+func (o *GetInvoiceDiscount) GetBillingPlanID() string {
 	if o == nil {
 		return ""
 	}
 	return o.BillingPlanID
 }
 
-func (o *GetInvoiceDiscounts) GetResourceID() *string {
+func (o *GetInvoiceDiscount) GetResourceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ResourceID
 }
 
-func (o *GetInvoiceDiscounts) GetStart() *string {
+func (o *GetInvoiceDiscount) GetStart() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Start
 }
 
-func (o *GetInvoiceDiscounts) GetEnd() *string {
+func (o *GetInvoiceDiscount) GetEnd() *string {
 	if o == nil {
 		return nil
 	}
 	return o.End
 }
 
-func (o *GetInvoiceDiscounts) GetName() string {
+func (o *GetInvoiceDiscount) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetInvoiceDiscounts) GetDetails() *string {
+func (o *GetInvoiceDiscount) GetDetails() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Details
 }
 
-func (o *GetInvoiceDiscounts) GetAmount() string {
+func (o *GetInvoiceDiscount) GetAmount() string {
 	if o == nil {
 		return ""
 	}
@@ -258,7 +258,7 @@ type GetInvoiceResponseBody struct {
 	// Partner-supplied Invoice ID, if applicable.
 	ExternalID *string `json:"externalId,omitempty"`
 	// Invoice state.
-	State State `json:"state"`
+	State GetInvoiceState `json:"state"`
 	// User-readable invoice number.
 	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
 	// Invoice date. ISO 8601 timestamp.
@@ -268,9 +268,9 @@ type GetInvoiceResponseBody struct {
 	// Additional memo for the invoice.
 	Memo *string `json:"memo,omitempty"`
 	// Invoice items.
-	Items []GetInvoiceItems `json:"items"`
+	Items []GetInvoiceItem `json:"items"`
 	// Invoice discounts.
-	Discounts []GetInvoiceDiscounts `json:"discounts,omitempty"`
+	Discounts []GetInvoiceDiscount `json:"discounts,omitempty"`
 	// Invoice total amount. A dollar-based decimal string.
 	Total string `json:"total"`
 	// The reason for refund. Only applicable for states "refunded" or "refund_request".
@@ -304,9 +304,9 @@ func (o *GetInvoiceResponseBody) GetExternalID() *string {
 	return o.ExternalID
 }
 
-func (o *GetInvoiceResponseBody) GetState() State {
+func (o *GetInvoiceResponseBody) GetState() GetInvoiceState {
 	if o == nil {
-		return State("")
+		return GetInvoiceState("")
 	}
 	return o.State
 }
@@ -339,14 +339,14 @@ func (o *GetInvoiceResponseBody) GetMemo() *string {
 	return o.Memo
 }
 
-func (o *GetInvoiceResponseBody) GetItems() []GetInvoiceItems {
+func (o *GetInvoiceResponseBody) GetItems() []GetInvoiceItem {
 	if o == nil {
-		return []GetInvoiceItems{}
+		return []GetInvoiceItem{}
 	}
 	return o.Items
 }
 
-func (o *GetInvoiceResponseBody) GetDiscounts() []GetInvoiceDiscounts {
+func (o *GetInvoiceResponseBody) GetDiscounts() []GetInvoiceDiscount {
 	if o == nil {
 		return nil
 	}

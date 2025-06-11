@@ -6,9 +6,7 @@
 import { GetProjectsAws } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsAws = {
-  subnetIds: [
-    "<value>",
-  ],
+  subnetIds: [],
   securityGroupId: "<id>",
 };
 ```

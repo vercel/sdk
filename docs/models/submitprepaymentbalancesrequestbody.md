@@ -9,7 +9,7 @@ let value: SubmitPrepaymentBalancesRequestBody = {
   timestamp: new Date("2024-05-08T18:02:53.260Z"),
   balances: [
     {
-      currencyValueInCents: 7661.79,
+      currencyValueInCents: 3195.9,
     },
   ],
 };

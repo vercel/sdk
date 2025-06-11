@@ -8,12 +8,6 @@ import { CreateLogDrainRequest } from "@vercel/sdk/models/createlogdrainop.js";
 let value: CreateLogDrainRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    name: "My first log drain",
-    secret: "a1Xsfd325fXcs",
-    deliveryFormat: "json",
-    url: "https://example.com/log-drain",
-  },
 };
 ```
 

@@ -16,7 +16,7 @@ const value: models.GetDeploymentMissing1 = {
 
 ```typescript
 const value: models.GetDeploymentMissing2 = {
-  type: "cookie",
+  type: "header",
   key: "<key>",
 };
 ```

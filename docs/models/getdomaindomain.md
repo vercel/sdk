@@ -6,7 +6,7 @@
 import { GetDomainDomain } from "@vercel/sdk/models/getdomainop.js";
 
 let value: GetDomainDomain = {
-  suffix: false,
+  suffix: true,
   verified: true,
   nameservers: [
     "ns1.nameserver.net",

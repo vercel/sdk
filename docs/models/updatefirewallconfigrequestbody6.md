@@ -11,7 +11,7 @@ let value: UpdateFirewallConfigRequestBody6 = {
   action: "crs.update",
   id: "sd",
   value: {
-    active: false,
+    active: true,
     action: "deny",
   },
 };

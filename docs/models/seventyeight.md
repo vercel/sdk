@@ -9,9 +9,9 @@ import { SeventyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyEight = {
   projectName: "<value>",
-  ssoProtection: "prod_deployment_urls_and_all_previews",
+  ssoProtection: "all",
   oldSsoProtection: {
-    deploymentType: "preview",
+    deploymentType: "prod_deployment_urls_and_all_previews",
   },
 };
 ```

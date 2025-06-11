@@ -19,11 +19,11 @@ const (
 )
 
 type FlagJSONValue struct {
-	Str                  *string
-	Number               *float64
-	Boolean              *bool
-	ArrayOfFlagJSONValue []*FlagJSONValue
-	MapOfFlagJSONValue   map[string]*FlagJSONValue
+	Str                  *string                   `queryParam:"inline"`
+	Number               *float64                  `queryParam:"inline"`
+	Boolean              *bool                     `queryParam:"inline"`
+	ArrayOfFlagJSONValue []*FlagJSONValue          `queryParam:"inline"`
+	MapOfFlagJSONValue   map[string]*FlagJSONValue `queryParam:"inline"`
 
 	Type FlagJSONValueType
 }

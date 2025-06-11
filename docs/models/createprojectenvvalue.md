@@ -13,7 +13,7 @@ const value: string = "<value>";
 
 ```typescript
 const value: models.Value2[] = [
-  "development",
+  "production",
 ];
 ```
 

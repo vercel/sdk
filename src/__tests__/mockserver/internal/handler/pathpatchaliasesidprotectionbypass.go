@@ -49,8 +49,9 @@ func testPatchURLProtectionBypassPatchURLProtectionBypass0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := map[string]any{
-		"key": "<value>",
+	var respBody map[string]any = map[string]any{
+		"key":  "<value>",
+		"key1": "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

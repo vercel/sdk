@@ -7,9 +7,11 @@
 
 ```typescript
 const value: models.CreateProjectMicrofrontends1 = {
-  updatedAt: 1410.43,
+  updatedAt: 1263.63,
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
   enabled: false,
 };
@@ -19,10 +21,8 @@ const value: models.CreateProjectMicrofrontends1 = {
 
 ```typescript
 const value: models.CreateProjectMicrofrontends2 = {
-  updatedAt: 2286.96,
-  groupIds: [
-    "<value>",
-  ],
+  updatedAt: 8320.85,
+  groupIds: [],
   enabled: false,
 };
 ```

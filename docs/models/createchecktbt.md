@@ -6,7 +6,7 @@
 import { CreateCheckTBT } from "@vercel/sdk/models/createcheckop.js";
 
 let value: CreateCheckTBT = {
-  value: 2115.71,
+  value: 2438.6,
   source: "web-vitals",
 };
 ```

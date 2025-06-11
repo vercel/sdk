@@ -9,9 +9,9 @@ let value: GetProjectsConnectConfigurations = {
   envId: "production",
   connectConfigurationId: "<id>",
   passive: false,
-  buildsEnabled: false,
-  createdAt: 8361.73,
-  updatedAt: 2517.28,
+  buildsEnabled: true,
+  createdAt: 3990.22,
+  updatedAt: 3234.92,
 };
 ```
 

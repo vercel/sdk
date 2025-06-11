@@ -8,18 +8,18 @@
 ```typescript
 const value: models.GetEdgeConfigBackupResponseBody1 = {
   id: "<id>",
-  lastModified: 4249.81,
+  lastModified: 3370.31,
   backup: {
     digest: "<value>",
     items: {
       "key": {
-        updatedAt: 3692.05,
-        value: "<value>",
-        createdAt: 2028.84,
+        updatedAt: 1254.45,
+        value: 4882.02,
+        createdAt: 1865.34,
       },
     },
     slug: "<value>",
-    updatedAt: 7674.05,
+    updatedAt: 9984.91,
   },
   metadata: {},
 };
@@ -31,22 +31,16 @@ const value: models.GetEdgeConfigBackupResponseBody1 = {
 const value: models.GetEdgeConfigBackupResponseBody2 = {
   user: {
     id: "<id>",
-    username: "Cheyanne.Hegmann",
-    email: "Heber_VonRueden@yahoo.com",
+    username: "Carrie.Ondricka9",
+    email: "Anabel66@hotmail.com",
   },
   id: "<id>",
-  lastModified: 4430.93,
+  lastModified: 9287.58,
   backup: {
     digest: "<value>",
-    items: {
-      "key": {
-        updatedAt: 5365.21,
-        value: "<value>",
-        createdAt: 794.08,
-      },
-    },
+    items: {},
     slug: "<value>",
-    updatedAt: 1890.92,
+    updatedAt: 8767.37,
   },
   metadata: {},
 };

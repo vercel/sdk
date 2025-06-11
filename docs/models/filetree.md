@@ -11,9 +11,17 @@ let value: FileTree = {
   name: "my-file.json",
   type: "file",
   uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
-  children: [],
+  children: [
+    {
+      name: "my-file.json",
+      type: "file",
+      uid: "2d4aad419917f15b1146e9e03ddc9bb31747e4d0",
+      contentType: "application/json",
+      mode: 3492.32,
+    },
+  ],
   contentType: "application/json",
-  mode: 3492.32,
+  mode: 6661.84,
 };
 ```
 

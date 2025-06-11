@@ -6,9 +6,7 @@
 ### `models.FilterProjectEnvsTargetProjectsResponse1[]`
 
 ```typescript
-const value: models.FilterProjectEnvsTargetProjectsResponse1[] = [
-  "production",
-];
+const value: models.FilterProjectEnvsTargetProjectsResponse1[] = [];
 ```
 
 ### `models.FilterProjectEnvsTargetProjectsResponse2`

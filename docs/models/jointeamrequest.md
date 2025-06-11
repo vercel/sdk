@@ -7,9 +7,6 @@ import { JoinTeamRequest } from "@vercel/sdk/models/jointeamop.js";
 
 let value: JoinTeamRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-  requestBody: {
-    inviteCode: "fisdh38aejkeivn34nslfore9vjtn4ls",
-  },
 };
 ```
 

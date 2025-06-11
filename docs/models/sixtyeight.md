@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { SixtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyEight = {
-  viaGithub: false,
+  viaGithub: true,
   viaGitlab: false,
-  viaBitbucket: false,
-  viaGoogle: false,
+  viaBitbucket: true,
+  viaGoogle: true,
   viaSamlSso: false,
-  viaPasskey: false,
+  viaPasskey: true,
 };
 ```
 

@@ -10,8 +10,8 @@ const value: models.CancelDeploymentCustomEnvironment1 = {
   id: "<id>",
   slug: "<value>",
   type: "development",
-  createdAt: 7173.95,
-  updatedAt: 6545.28,
+  createdAt: 1483.58,
+  updatedAt: 6852.54,
 };
 ```
 

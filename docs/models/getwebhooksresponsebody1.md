@@ -6,12 +6,7 @@
 import { GetWebhooksResponseBody1 } from "@vercel/sdk/models/getwebhooksop.js";
 
 let value: GetWebhooksResponseBody1 = {
-  projectsMetadata: [
-    {
-      id: "<id>",
-      name: "<value>",
-    },
-  ],
+  projectsMetadata: [],
   events: [
     "deployment.created",
   ],

@@ -50,7 +50,7 @@ func testUpdateTeamMemberUpdateTeamMember0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateTeamMemberResponseBody{
+	var respBody *operations.UpdateTeamMemberResponseBody = &operations.UpdateTeamMemberResponseBody{
 		ID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -10,18 +10,18 @@ let value: GetProjectsTargets = {
   createdAt: 169.2,
   createdIn: "<value>",
   creator: {
-    email: "Samara84@hotmail.com",
+    email: "Nestor_Osinski-Sporer62@hotmail.com",
     uid: "<id>",
-    username: "Llewellyn.Kozey",
+    username: "Jaquan14",
   },
   deploymentHostname: "<value>",
   name: "<value>",
-  plan: "pro",
+  plan: "enterprise",
   previewCommentsEnabled: false,
   private: false,
-  readyState: "READY",
+  readyState: "INITIALIZING",
   type: "LAMBDAS",
-  url: "https://snoopy-godfather.info/",
+  url: "https://favorable-word.info/",
   userId: "<id>",
 };
 ```

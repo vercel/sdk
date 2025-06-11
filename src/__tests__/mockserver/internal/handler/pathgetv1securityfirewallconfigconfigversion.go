@@ -45,99 +45,105 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetFirewallConfigResponseBody{
+	var respBody *operations.GetFirewallConfigResponseBody = &operations.GetFirewallConfigResponseBody{
 		OwnerID:         "<id>",
 		ProjectKey:      "<value>",
 		ID:              "<id>",
-		Version:         228.9,
-		UpdatedAt:       "1744362822275",
+		Version:         6575.82,
+		UpdatedAt:       "1735634663735",
 		FirewallEnabled: false,
 		Crs: operations.GetFirewallConfigCrs{
 			Sd: operations.GetFirewallConfigSd{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSdActionDeny,
+				Action: operations.GetFirewallConfigSdActionLog,
 			},
 			Ma: operations.GetFirewallConfigMa{
 				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsMaActionLog,
+				Action: operations.GetFirewallConfigMaActionDeny,
 			},
 			Lfi: operations.GetFirewallConfigLfi{
 				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsLfiActionLog,
+				Action: operations.GetFirewallConfigLfiActionDeny,
 			},
 			Rfi: operations.GetFirewallConfigRfi{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ActionDeny,
+				Action: operations.GetFirewallConfigRfiActionDeny,
 			},
 			Rce: operations.GetFirewallConfigRce{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONActionLog,
+				Action: operations.GetFirewallConfigRceActionLog,
 			},
 			Php: operations.GetFirewallConfigPhp{
-				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionLog,
+				Active: true,
+				Action: operations.GetFirewallConfigPhpActionDeny,
 			},
 			Gen: operations.GetFirewallConfigGen{
-				Active: false,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsActionDeny,
+				Active: true,
+				Action: operations.GetFirewallConfigGenActionDeny,
 			},
 			XSS: operations.GetFirewallConfigXSS{
-				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsXSSActionDeny,
+				Active: false,
+				Action: operations.GetFirewallConfigXSSActionLog,
 			},
 			Sqli: operations.GetFirewallConfigSqli{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSqliActionDeny,
+				Action: operations.GetFirewallConfigSqliActionDeny,
 			},
 			Sf: operations.GetFirewallConfigSf{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsSfActionDeny,
+				Action: operations.GetFirewallConfigSfActionLog,
 			},
 			Java: operations.GetFirewallConfigJava{
 				Active: true,
-				Action: operations.GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyCrsJavaActionDeny,
+				Action: operations.GetFirewallConfigJavaActionDeny,
 			},
 		},
-		Rules: []operations.GetFirewallConfigRules{
-			operations.GetFirewallConfigRules{
+		Rules: []operations.GetFirewallConfigRule{
+			operations.GetFirewallConfigRule{
 				ID:     "<id>",
 				Name:   "<value>",
 				Active: false,
 				ConditionGroup: []operations.GetFirewallConfigConditionGroup{
 					operations.GetFirewallConfigConditionGroup{
-						Conditions: []operations.GetFirewallConfigConditions{
-							operations.GetFirewallConfigConditions{
-								Type: operations.GetFirewallConfigTypePath,
-								Op:   operations.GetFirewallConfigOpNeq,
+						Conditions: []operations.GetFirewallConfigCondition{
+							operations.GetFirewallConfigCondition{
+								Type: operations.GetFirewallConfigTypeHeader,
+								Op:   operations.GetFirewallConfigOpEx,
+							},
+							operations.GetFirewallConfigCondition{
+								Type: operations.GetFirewallConfigTypeHeader,
+								Op:   operations.GetFirewallConfigOpEx,
 							},
 						},
 					},
 				},
-				Action: operations.GetFirewallConfigAction{},
+				Action: operations.GetFirewallConfigRuleAction{},
 			},
 		},
-		Ips: []operations.GetFirewallConfigIps{
-			operations.GetFirewallConfigIps{
+		Ips: []operations.GetFirewallConfigIP{
+			operations.GetFirewallConfigIP{
 				ID:       "<id>",
-				Hostname: "crowded-suspension.net",
-				IP:       "194.99.165.97",
-				Action:   operations.GetFirewallConfigSecurityActionBypass,
+				Hostname: "graceful-elevator.com",
+				IP:       "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
+				Action:   operations.GetFirewallConfigIPActionBypass,
 			},
-			operations.GetFirewallConfigIps{
+			operations.GetFirewallConfigIP{
 				ID:       "<id>",
-				Hostname: "burly-academics.name",
-				IP:       "42.161.47.142",
-				Action:   operations.GetFirewallConfigSecurityActionBypass,
+				Hostname: "graceful-elevator.com",
+				IP:       "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
+				Action:   operations.GetFirewallConfigIPActionBypass,
 			},
-			operations.GetFirewallConfigIps{
+			operations.GetFirewallConfigIP{
 				ID:       "<id>",
-				Hostname: "damaged-bracelet.info",
-				IP:       "8ad7:ffff:b919:0fee:fa4e:54ce:6be3:2203",
-				Action:   operations.GetFirewallConfigSecurityActionLog,
+				Hostname: "graceful-elevator.com",
+				IP:       "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
+				Action:   operations.GetFirewallConfigIPActionBypass,
 			},
 		},
-		Changes: []operations.Changes{
-			operations.Changes{},
+		Changes: []operations.GetFirewallConfigChange{
+			operations.GetFirewallConfigChange{},
+			operations.GetFirewallConfigChange{},
+			operations.GetFirewallConfigChange{},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

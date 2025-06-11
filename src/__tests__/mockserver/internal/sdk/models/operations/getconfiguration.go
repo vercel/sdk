@@ -67,159 +67,159 @@ func (e *ProjectSelection) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type TransferRequestKind string
+type KindTransferFromMarketplace string
 
 const (
-	TransferRequestKindTransferFromMarketplace TransferRequestKind = "transfer-from-marketplace"
+	KindTransferFromMarketplaceTransferFromMarketplace KindTransferFromMarketplace = "transfer-from-marketplace"
 )
 
-func (e TransferRequestKind) ToPointer() *TransferRequestKind {
+func (e KindTransferFromMarketplace) ToPointer() *KindTransferFromMarketplace {
 	return &e
 }
-func (e *TransferRequestKind) UnmarshalJSON(data []byte) error {
+func (e *KindTransferFromMarketplace) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "transfer-from-marketplace":
-		*e = TransferRequestKind(v)
+		*e = KindTransferFromMarketplace(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TransferRequestKind: %v", v)
+		return fmt.Errorf("invalid value for KindTransferFromMarketplace: %v", v)
 	}
 }
 
-type TransferRequestRequester struct {
+type Requester2 struct {
 	Name  string  `json:"name"`
 	Email *string `json:"email,omitempty"`
 }
 
-func (o *TransferRequestRequester) GetName() string {
+func (o *Requester2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *TransferRequestRequester) GetEmail() *string {
+func (o *Requester2) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-type TransferRequest2 struct {
-	Kind            TransferRequestKind      `json:"kind"`
-	RequestID       string                   `json:"requestId"`
-	TransferID      string                   `json:"transferId"`
-	Requester       TransferRequestRequester `json:"requester"`
-	CreatedAt       float64                  `json:"createdAt"`
-	ExpiresAt       float64                  `json:"expiresAt"`
-	DiscardedAt     *float64                 `json:"discardedAt,omitempty"`
-	DiscardedBy     *string                  `json:"discardedBy,omitempty"`
-	ApprovedAt      *float64                 `json:"approvedAt,omitempty"`
-	ApprovedBy      *string                  `json:"approvedBy,omitempty"`
-	AuthorizationID *string                  `json:"authorizationId,omitempty"`
+type TransferRequestTransferFromMarketplace struct {
+	Kind            KindTransferFromMarketplace `json:"kind"`
+	RequestID       string                      `json:"requestId"`
+	TransferID      string                      `json:"transferId"`
+	Requester       Requester2                  `json:"requester"`
+	CreatedAt       float64                     `json:"createdAt"`
+	ExpiresAt       float64                     `json:"expiresAt"`
+	DiscardedAt     *float64                    `json:"discardedAt,omitempty"`
+	DiscardedBy     *string                     `json:"discardedBy,omitempty"`
+	ApprovedAt      *float64                    `json:"approvedAt,omitempty"`
+	ApprovedBy      *string                     `json:"approvedBy,omitempty"`
+	AuthorizationID *string                     `json:"authorizationId,omitempty"`
 }
 
-func (o *TransferRequest2) GetKind() TransferRequestKind {
+func (o *TransferRequestTransferFromMarketplace) GetKind() KindTransferFromMarketplace {
 	if o == nil {
-		return TransferRequestKind("")
+		return KindTransferFromMarketplace("")
 	}
 	return o.Kind
 }
 
-func (o *TransferRequest2) GetRequestID() string {
+func (o *TransferRequestTransferFromMarketplace) GetRequestID() string {
 	if o == nil {
 		return ""
 	}
 	return o.RequestID
 }
 
-func (o *TransferRequest2) GetTransferID() string {
+func (o *TransferRequestTransferFromMarketplace) GetTransferID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TransferID
 }
 
-func (o *TransferRequest2) GetRequester() TransferRequestRequester {
+func (o *TransferRequestTransferFromMarketplace) GetRequester() Requester2 {
 	if o == nil {
-		return TransferRequestRequester{}
+		return Requester2{}
 	}
 	return o.Requester
 }
 
-func (o *TransferRequest2) GetCreatedAt() float64 {
+func (o *TransferRequestTransferFromMarketplace) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *TransferRequest2) GetExpiresAt() float64 {
+func (o *TransferRequestTransferFromMarketplace) GetExpiresAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ExpiresAt
 }
 
-func (o *TransferRequest2) GetDiscardedAt() *float64 {
+func (o *TransferRequestTransferFromMarketplace) GetDiscardedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DiscardedAt
 }
 
-func (o *TransferRequest2) GetDiscardedBy() *string {
+func (o *TransferRequestTransferFromMarketplace) GetDiscardedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DiscardedBy
 }
 
-func (o *TransferRequest2) GetApprovedAt() *float64 {
+func (o *TransferRequestTransferFromMarketplace) GetApprovedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ApprovedAt
 }
 
-func (o *TransferRequest2) GetApprovedBy() *string {
+func (o *TransferRequestTransferFromMarketplace) GetApprovedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ApprovedBy
 }
 
-func (o *TransferRequest2) GetAuthorizationID() *string {
+func (o *TransferRequestTransferFromMarketplace) GetAuthorizationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AuthorizationID
 }
 
-type Kind string
+type KindTransferToMarketplace string
 
 const (
-	KindTransferToMarketplace Kind = "transfer-to-marketplace"
+	KindTransferToMarketplaceTransferToMarketplace KindTransferToMarketplace = "transfer-to-marketplace"
 )
 
-func (e Kind) ToPointer() *Kind {
+func (e KindTransferToMarketplace) ToPointer() *KindTransferToMarketplace {
 	return &e
 }
-func (e *Kind) UnmarshalJSON(data []byte) error {
+func (e *KindTransferToMarketplace) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "transfer-to-marketplace":
-		*e = Kind(v)
+		*e = KindTransferToMarketplace(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Kind: %v", v)
+		return fmt.Errorf("invalid value for KindTransferToMarketplace: %v", v)
 	}
 }
 
@@ -249,17 +249,17 @@ func (e *TransferRequestType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type TransferRequestScope string
+type GetConfigurationScope string
 
 const (
-	TransferRequestScopeInstallation TransferRequestScope = "installation"
-	TransferRequestScopeResource     TransferRequestScope = "resource"
+	GetConfigurationScopeInstallation GetConfigurationScope = "installation"
+	GetConfigurationScopeResource     GetConfigurationScope = "resource"
 )
 
-func (e TransferRequestScope) ToPointer() *TransferRequestScope {
+func (e GetConfigurationScope) ToPointer() *GetConfigurationScope {
 	return &e
 }
-func (e *TransferRequestScope) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationScope) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -268,192 +268,192 @@ func (e *TransferRequestScope) UnmarshalJSON(data []byte) error {
 	case "installation":
 		fallthrough
 	case "resource":
-		*e = TransferRequestScope(v)
+		*e = GetConfigurationScope(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TransferRequestScope: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationScope: %v", v)
 	}
 }
 
-type TransferRequestBillingPlan struct {
-	ID                     string                `json:"id"`
-	Type                   TransferRequestType   `json:"type"`
-	Scope                  *TransferRequestScope `json:"scope,omitempty"`
-	Name                   string                `json:"name"`
-	Description            string                `json:"description"`
-	PaymentMethodRequired  *bool                 `json:"paymentMethodRequired,omitempty"`
-	PreauthorizationAmount *float64              `json:"preauthorizationAmount,omitempty"`
+type GetConfigurationBillingPlan struct {
+	ID                     string                 `json:"id"`
+	Type                   TransferRequestType    `json:"type"`
+	Scope                  *GetConfigurationScope `json:"scope,omitempty"`
+	Name                   string                 `json:"name"`
+	Description            string                 `json:"description"`
+	PaymentMethodRequired  *bool                  `json:"paymentMethodRequired,omitempty"`
+	PreauthorizationAmount *float64               `json:"preauthorizationAmount,omitempty"`
 }
 
-func (o *TransferRequestBillingPlan) GetID() string {
+func (o *GetConfigurationBillingPlan) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *TransferRequestBillingPlan) GetType() TransferRequestType {
+func (o *GetConfigurationBillingPlan) GetType() TransferRequestType {
 	if o == nil {
 		return TransferRequestType("")
 	}
 	return o.Type
 }
 
-func (o *TransferRequestBillingPlan) GetScope() *TransferRequestScope {
+func (o *GetConfigurationBillingPlan) GetScope() *GetConfigurationScope {
 	if o == nil {
 		return nil
 	}
 	return o.Scope
 }
 
-func (o *TransferRequestBillingPlan) GetName() string {
+func (o *GetConfigurationBillingPlan) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *TransferRequestBillingPlan) GetDescription() string {
+func (o *GetConfigurationBillingPlan) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-func (o *TransferRequestBillingPlan) GetPaymentMethodRequired() *bool {
+func (o *GetConfigurationBillingPlan) GetPaymentMethodRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.PaymentMethodRequired
 }
 
-func (o *TransferRequestBillingPlan) GetPreauthorizationAmount() *float64 {
+func (o *GetConfigurationBillingPlan) GetPreauthorizationAmount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.PreauthorizationAmount
 }
 
-type Requester struct {
+type Requester1 struct {
 	Name  string  `json:"name"`
 	Email *string `json:"email,omitempty"`
 }
 
-func (o *Requester) GetName() string {
+func (o *Requester1) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Requester) GetEmail() *string {
+func (o *Requester1) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-type TransferRequest1 struct {
-	Kind            Kind                        `json:"kind"`
-	Metadata        map[string]any              `json:"metadata,omitempty"`
-	BillingPlan     *TransferRequestBillingPlan `json:"billingPlan,omitempty"`
-	RequestID       string                      `json:"requestId"`
-	TransferID      string                      `json:"transferId"`
-	Requester       Requester                   `json:"requester"`
-	CreatedAt       float64                     `json:"createdAt"`
-	ExpiresAt       float64                     `json:"expiresAt"`
-	DiscardedAt     *float64                    `json:"discardedAt,omitempty"`
-	DiscardedBy     *string                     `json:"discardedBy,omitempty"`
-	ApprovedAt      *float64                    `json:"approvedAt,omitempty"`
-	ApprovedBy      *string                     `json:"approvedBy,omitempty"`
-	AuthorizationID *string                     `json:"authorizationId,omitempty"`
+type TransferRequestTransferToMarketplace struct {
+	Kind            KindTransferToMarketplace    `json:"kind"`
+	Metadata        map[string]any               `json:"metadata,omitempty"`
+	BillingPlan     *GetConfigurationBillingPlan `json:"billingPlan,omitempty"`
+	RequestID       string                       `json:"requestId"`
+	TransferID      string                       `json:"transferId"`
+	Requester       Requester1                   `json:"requester"`
+	CreatedAt       float64                      `json:"createdAt"`
+	ExpiresAt       float64                      `json:"expiresAt"`
+	DiscardedAt     *float64                     `json:"discardedAt,omitempty"`
+	DiscardedBy     *string                      `json:"discardedBy,omitempty"`
+	ApprovedAt      *float64                     `json:"approvedAt,omitempty"`
+	ApprovedBy      *string                      `json:"approvedBy,omitempty"`
+	AuthorizationID *string                      `json:"authorizationId,omitempty"`
 }
 
-func (o *TransferRequest1) GetKind() Kind {
+func (o *TransferRequestTransferToMarketplace) GetKind() KindTransferToMarketplace {
 	if o == nil {
-		return Kind("")
+		return KindTransferToMarketplace("")
 	}
 	return o.Kind
 }
 
-func (o *TransferRequest1) GetMetadata() map[string]any {
+func (o *TransferRequestTransferToMarketplace) GetMetadata() map[string]any {
 	if o == nil {
 		return nil
 	}
 	return o.Metadata
 }
 
-func (o *TransferRequest1) GetBillingPlan() *TransferRequestBillingPlan {
+func (o *TransferRequestTransferToMarketplace) GetBillingPlan() *GetConfigurationBillingPlan {
 	if o == nil {
 		return nil
 	}
 	return o.BillingPlan
 }
 
-func (o *TransferRequest1) GetRequestID() string {
+func (o *TransferRequestTransferToMarketplace) GetRequestID() string {
 	if o == nil {
 		return ""
 	}
 	return o.RequestID
 }
 
-func (o *TransferRequest1) GetTransferID() string {
+func (o *TransferRequestTransferToMarketplace) GetTransferID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TransferID
 }
 
-func (o *TransferRequest1) GetRequester() Requester {
+func (o *TransferRequestTransferToMarketplace) GetRequester() Requester1 {
 	if o == nil {
-		return Requester{}
+		return Requester1{}
 	}
 	return o.Requester
 }
 
-func (o *TransferRequest1) GetCreatedAt() float64 {
+func (o *TransferRequestTransferToMarketplace) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *TransferRequest1) GetExpiresAt() float64 {
+func (o *TransferRequestTransferToMarketplace) GetExpiresAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ExpiresAt
 }
 
-func (o *TransferRequest1) GetDiscardedAt() *float64 {
+func (o *TransferRequestTransferToMarketplace) GetDiscardedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DiscardedAt
 }
 
-func (o *TransferRequest1) GetDiscardedBy() *string {
+func (o *TransferRequestTransferToMarketplace) GetDiscardedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DiscardedBy
 }
 
-func (o *TransferRequest1) GetApprovedAt() *float64 {
+func (o *TransferRequestTransferToMarketplace) GetApprovedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ApprovedAt
 }
 
-func (o *TransferRequest1) GetApprovedBy() *string {
+func (o *TransferRequestTransferToMarketplace) GetApprovedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ApprovedBy
 }
 
-func (o *TransferRequest1) GetAuthorizationID() *string {
+func (o *TransferRequestTransferToMarketplace) GetAuthorizationID() *string {
 	if o == nil {
 		return nil
 	}
@@ -463,48 +463,48 @@ func (o *TransferRequest1) GetAuthorizationID() *string {
 type TransferRequestUnionType string
 
 const (
-	TransferRequestUnionTypeTransferRequest1 TransferRequestUnionType = "transferRequest_1"
-	TransferRequestUnionTypeTransferRequest2 TransferRequestUnionType = "transferRequest_2"
+	TransferRequestUnionTypeTransferRequestTransferToMarketplace   TransferRequestUnionType = "transferRequest_TransferToMarketplace"
+	TransferRequestUnionTypeTransferRequestTransferFromMarketplace TransferRequestUnionType = "transferRequest_TransferFromMarketplace"
 )
 
 type TransferRequest struct {
-	TransferRequest1 *TransferRequest1
-	TransferRequest2 *TransferRequest2
+	TransferRequestTransferToMarketplace   *TransferRequestTransferToMarketplace   `queryParam:"inline"`
+	TransferRequestTransferFromMarketplace *TransferRequestTransferFromMarketplace `queryParam:"inline"`
 
 	Type TransferRequestUnionType
 }
 
-func CreateTransferRequestTransferRequest1(transferRequest1 TransferRequest1) TransferRequest {
-	typ := TransferRequestUnionTypeTransferRequest1
+func CreateTransferRequestTransferRequestTransferToMarketplace(transferRequestTransferToMarketplace TransferRequestTransferToMarketplace) TransferRequest {
+	typ := TransferRequestUnionTypeTransferRequestTransferToMarketplace
 
 	return TransferRequest{
-		TransferRequest1: &transferRequest1,
-		Type:             typ,
+		TransferRequestTransferToMarketplace: &transferRequestTransferToMarketplace,
+		Type:                                 typ,
 	}
 }
 
-func CreateTransferRequestTransferRequest2(transferRequest2 TransferRequest2) TransferRequest {
-	typ := TransferRequestUnionTypeTransferRequest2
+func CreateTransferRequestTransferRequestTransferFromMarketplace(transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace) TransferRequest {
+	typ := TransferRequestUnionTypeTransferRequestTransferFromMarketplace
 
 	return TransferRequest{
-		TransferRequest2: &transferRequest2,
-		Type:             typ,
+		TransferRequestTransferFromMarketplace: &transferRequestTransferFromMarketplace,
+		Type:                                   typ,
 	}
 }
 
 func (u *TransferRequest) UnmarshalJSON(data []byte) error {
 
-	var transferRequest2 TransferRequest2 = TransferRequest2{}
-	if err := utils.UnmarshalJSON(data, &transferRequest2, "", true, true); err == nil {
-		u.TransferRequest2 = &transferRequest2
-		u.Type = TransferRequestUnionTypeTransferRequest2
+	var transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace = TransferRequestTransferFromMarketplace{}
+	if err := utils.UnmarshalJSON(data, &transferRequestTransferFromMarketplace, "", true, true); err == nil {
+		u.TransferRequestTransferFromMarketplace = &transferRequestTransferFromMarketplace
+		u.Type = TransferRequestUnionTypeTransferRequestTransferFromMarketplace
 		return nil
 	}
 
-	var transferRequest1 TransferRequest1 = TransferRequest1{}
-	if err := utils.UnmarshalJSON(data, &transferRequest1, "", true, true); err == nil {
-		u.TransferRequest1 = &transferRequest1
-		u.Type = TransferRequestUnionTypeTransferRequest1
+	var transferRequestTransferToMarketplace TransferRequestTransferToMarketplace = TransferRequestTransferToMarketplace{}
+	if err := utils.UnmarshalJSON(data, &transferRequestTransferToMarketplace, "", true, true); err == nil {
+		u.TransferRequestTransferToMarketplace = &transferRequestTransferToMarketplace
+		u.Type = TransferRequestUnionTypeTransferRequestTransferToMarketplace
 		return nil
 	}
 
@@ -512,31 +512,31 @@ func (u *TransferRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u TransferRequest) MarshalJSON() ([]byte, error) {
-	if u.TransferRequest1 != nil {
-		return utils.MarshalJSON(u.TransferRequest1, "", true)
+	if u.TransferRequestTransferToMarketplace != nil {
+		return utils.MarshalJSON(u.TransferRequestTransferToMarketplace, "", true)
 	}
 
-	if u.TransferRequest2 != nil {
-		return utils.MarshalJSON(u.TransferRequest2, "", true)
+	if u.TransferRequestTransferFromMarketplace != nil {
+		return utils.MarshalJSON(u.TransferRequestTransferFromMarketplace, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type TransferRequest: all fields are null")
 }
 
-// GetConfigurationResponseBodyIntegrationsSource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationResponseBodyIntegrationsSource string
+// GetConfigurationSource2 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationSource2 string
 
 const (
-	GetConfigurationResponseBodyIntegrationsSourceMarketplace  GetConfigurationResponseBodyIntegrationsSource = "marketplace"
-	GetConfigurationResponseBodyIntegrationsSourceDeployButton GetConfigurationResponseBodyIntegrationsSource = "deploy-button"
-	GetConfigurationResponseBodyIntegrationsSourceExternal     GetConfigurationResponseBodyIntegrationsSource = "external"
-	GetConfigurationResponseBodyIntegrationsSourceV0           GetConfigurationResponseBodyIntegrationsSource = "v0"
+	GetConfigurationSource2Marketplace  GetConfigurationSource2 = "marketplace"
+	GetConfigurationSource2DeployButton GetConfigurationSource2 = "deploy-button"
+	GetConfigurationSource2External     GetConfigurationSource2 = "external"
+	GetConfigurationSource2V0           GetConfigurationSource2 = "v0"
 )
 
-func (e GetConfigurationResponseBodyIntegrationsSource) ToPointer() *GetConfigurationResponseBodyIntegrationsSource {
+func (e GetConfigurationSource2) ToPointer() *GetConfigurationSource2 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyIntegrationsSource) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationSource2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -549,51 +549,51 @@ func (e *GetConfigurationResponseBodyIntegrationsSource) UnmarshalJSON(data []by
 	case "external":
 		fallthrough
 	case "v0":
-		*e = GetConfigurationResponseBodyIntegrationsSource(v)
+		*e = GetConfigurationSource2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyIntegrationsSource: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationSource2: %v", v)
 	}
 }
 
-type GetConfigurationResponseBodyIntegrationsType string
+type GetConfigurationTypeIntegrationConfiguration2 string
 
 const (
-	GetConfigurationResponseBodyIntegrationsTypeIntegrationConfiguration GetConfigurationResponseBodyIntegrationsType = "integration-configuration"
+	GetConfigurationTypeIntegrationConfiguration2IntegrationConfiguration GetConfigurationTypeIntegrationConfiguration2 = "integration-configuration"
 )
 
-func (e GetConfigurationResponseBodyIntegrationsType) ToPointer() *GetConfigurationResponseBodyIntegrationsType {
+func (e GetConfigurationTypeIntegrationConfiguration2) ToPointer() *GetConfigurationTypeIntegrationConfiguration2 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyIntegrationsType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationTypeIntegrationConfiguration2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-configuration":
-		*e = GetConfigurationResponseBodyIntegrationsType(v)
+		*e = GetConfigurationTypeIntegrationConfiguration2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyIntegrationsType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationTypeIntegrationConfiguration2: %v", v)
 	}
 }
 
-type GetConfigurationResponseBodyIntegrationsDisabledReason string
+type GetConfigurationDisabledReason2 string
 
 const (
-	GetConfigurationResponseBodyIntegrationsDisabledReasonDisabledByOwner             GetConfigurationResponseBodyIntegrationsDisabledReason = "disabled-by-owner"
-	GetConfigurationResponseBodyIntegrationsDisabledReasonFeatureNotAvailable         GetConfigurationResponseBodyIntegrationsDisabledReason = "feature-not-available"
-	GetConfigurationResponseBodyIntegrationsDisabledReasonDisabledByAdmin             GetConfigurationResponseBodyIntegrationsDisabledReason = "disabled-by-admin"
-	GetConfigurationResponseBodyIntegrationsDisabledReasonOriginalOwnerLeftTheTeam    GetConfigurationResponseBodyIntegrationsDisabledReason = "original-owner-left-the-team"
-	GetConfigurationResponseBodyIntegrationsDisabledReasonAccountPlanDowngrade        GetConfigurationResponseBodyIntegrationsDisabledReason = "account-plan-downgrade"
-	GetConfigurationResponseBodyIntegrationsDisabledReasonOriginalOwnerRoleDowngraded GetConfigurationResponseBodyIntegrationsDisabledReason = "original-owner-role-downgraded"
+	GetConfigurationDisabledReason2DisabledByOwner             GetConfigurationDisabledReason2 = "disabled-by-owner"
+	GetConfigurationDisabledReason2FeatureNotAvailable         GetConfigurationDisabledReason2 = "feature-not-available"
+	GetConfigurationDisabledReason2DisabledByAdmin             GetConfigurationDisabledReason2 = "disabled-by-admin"
+	GetConfigurationDisabledReason2OriginalOwnerLeftTheTeam    GetConfigurationDisabledReason2 = "original-owner-left-the-team"
+	GetConfigurationDisabledReason2AccountPlanDowngrade        GetConfigurationDisabledReason2 = "account-plan-downgrade"
+	GetConfigurationDisabledReason2OriginalOwnerRoleDowngraded GetConfigurationDisabledReason2 = "original-owner-role-downgraded"
 )
 
-func (e GetConfigurationResponseBodyIntegrationsDisabledReason) ToPointer() *GetConfigurationResponseBodyIntegrationsDisabledReason {
+func (e GetConfigurationDisabledReason2) ToPointer() *GetConfigurationDisabledReason2 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyIntegrationsDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationDisabledReason2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -610,25 +610,25 @@ func (e *GetConfigurationResponseBodyIntegrationsDisabledReason) UnmarshalJSON(d
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = GetConfigurationResponseBodyIntegrationsDisabledReason(v)
+		*e = GetConfigurationDisabledReason2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyIntegrationsDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationDisabledReason2: %v", v)
 	}
 }
 
-// GetConfigurationResponseBodyIntegrationsInstallationType - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-type GetConfigurationResponseBodyIntegrationsInstallationType string
+// GetConfigurationInstallationType2 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+type GetConfigurationInstallationType2 string
 
 const (
-	GetConfigurationResponseBodyIntegrationsInstallationTypeMarketplace GetConfigurationResponseBodyIntegrationsInstallationType = "marketplace"
-	GetConfigurationResponseBodyIntegrationsInstallationTypeExternal    GetConfigurationResponseBodyIntegrationsInstallationType = "external"
+	GetConfigurationInstallationType2Marketplace GetConfigurationInstallationType2 = "marketplace"
+	GetConfigurationInstallationType2External    GetConfigurationInstallationType2 = "external"
 )
 
-func (e GetConfigurationResponseBodyIntegrationsInstallationType) ToPointer() *GetConfigurationResponseBodyIntegrationsInstallationType {
+func (e GetConfigurationInstallationType2) ToPointer() *GetConfigurationInstallationType2 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyIntegrationsInstallationType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationInstallationType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -637,14 +637,14 @@ func (e *GetConfigurationResponseBodyIntegrationsInstallationType) UnmarshalJSON
 	case "marketplace":
 		fallthrough
 	case "external":
-		*e = GetConfigurationResponseBodyIntegrationsInstallationType(v)
+		*e = GetConfigurationInstallationType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyIntegrationsInstallationType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationInstallationType2: %v", v)
 	}
 }
 
-type GetConfigurationResponseBody2 struct {
+type GetConfigurationIntegrationConfiguration2 struct {
 	// A string representing the permission for projects. Possible values are `all` or `selected`.
 	ProjectSelection ProjectSelection `json:"projectSelection"`
 	TransferRequest  TransferRequest  `json:"transferRequest"`
@@ -661,12 +661,12 @@ type GetConfigurationResponseBody2 struct {
 	// The user or team ID that owns the configuration
 	OwnerID string `json:"ownerId"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationResponseBodyIntegrationsSource `json:"source,omitempty"`
+	Source *GetConfigurationSource2 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                                      `json:"teamId,omitempty"`
-	Type   GetConfigurationResponseBodyIntegrationsType `json:"type"`
+	TeamID *string                                       `json:"teamId,omitempty"`
+	Type   GetConfigurationTypeIntegrationConfiguration2 `json:"type"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The ID of the user that created the configuration.
@@ -678,174 +678,174 @@ type GetConfigurationResponseBody2 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                                                `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationResponseBodyIntegrationsDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason2 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-	InstallationType          *GetConfigurationResponseBodyIntegrationsInstallationType `json:"installationType,omitempty"`
-	CanConfigureOpenTelemetry *bool                                                     `json:"canConfigureOpenTelemetry,omitempty"`
+	InstallationType          *GetConfigurationInstallationType2 `json:"installationType,omitempty"`
+	CanConfigureOpenTelemetry *bool                              `json:"canConfigureOpenTelemetry,omitempty"`
 }
 
-func (o *GetConfigurationResponseBody2) GetProjectSelection() ProjectSelection {
+func (o *GetConfigurationIntegrationConfiguration2) GetProjectSelection() ProjectSelection {
 	if o == nil {
 		return ProjectSelection("")
 	}
 	return o.ProjectSelection
 }
 
-func (o *GetConfigurationResponseBody2) GetTransferRequest() TransferRequest {
+func (o *GetConfigurationIntegrationConfiguration2) GetTransferRequest() TransferRequest {
 	if o == nil {
 		return TransferRequest{}
 	}
 	return o.TransferRequest
 }
 
-func (o *GetConfigurationResponseBody2) GetProjects() []string {
+func (o *GetConfigurationIntegrationConfiguration2) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *GetConfigurationResponseBody2) GetCompletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CompletedAt
 }
 
-func (o *GetConfigurationResponseBody2) GetCreatedAt() float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationResponseBody2) GetID() string {
+func (o *GetConfigurationIntegrationConfiguration2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetConfigurationResponseBody2) GetIntegrationID() string {
+func (o *GetConfigurationIntegrationConfiguration2) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetConfigurationResponseBody2) GetOwnerID() string {
+func (o *GetConfigurationIntegrationConfiguration2) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *GetConfigurationResponseBody2) GetSource() *GetConfigurationResponseBodyIntegrationsSource {
+func (o *GetConfigurationIntegrationConfiguration2) GetSource() *GetConfigurationSource2 {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *GetConfigurationResponseBody2) GetSlug() string {
+func (o *GetConfigurationIntegrationConfiguration2) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetConfigurationResponseBody2) GetTeamID() *string {
+func (o *GetConfigurationIntegrationConfiguration2) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *GetConfigurationResponseBody2) GetType() GetConfigurationResponseBodyIntegrationsType {
+func (o *GetConfigurationIntegrationConfiguration2) GetType() GetConfigurationTypeIntegrationConfiguration2 {
 	if o == nil {
-		return GetConfigurationResponseBodyIntegrationsType("")
+		return GetConfigurationTypeIntegrationConfiguration2("")
 	}
 	return o.Type
 }
 
-func (o *GetConfigurationResponseBody2) GetUpdatedAt() float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetConfigurationResponseBody2) GetUserID() string {
+func (o *GetConfigurationIntegrationConfiguration2) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
 }
 
-func (o *GetConfigurationResponseBody2) GetScopes() []string {
+func (o *GetConfigurationIntegrationConfiguration2) GetScopes() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Scopes
 }
 
-func (o *GetConfigurationResponseBody2) GetDisabledAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetDisabledAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationResponseBody2) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationResponseBody2) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetDeleteRequestedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationResponseBody2) GetDisabledReason() *GetConfigurationResponseBodyIntegrationsDisabledReason {
+func (o *GetConfigurationIntegrationConfiguration2) GetDisabledReason() *GetConfigurationDisabledReason2 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledReason
 }
 
-func (o *GetConfigurationResponseBody2) GetInstallationType() *GetConfigurationResponseBodyIntegrationsInstallationType {
+func (o *GetConfigurationIntegrationConfiguration2) GetInstallationType() *GetConfigurationInstallationType2 {
 	if o == nil {
 		return nil
 	}
 	return o.InstallationType
 }
 
-func (o *GetConfigurationResponseBody2) GetCanConfigureOpenTelemetry() *bool {
+func (o *GetConfigurationIntegrationConfiguration2) GetCanConfigureOpenTelemetry() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.CanConfigureOpenTelemetry
 }
 
-// GetConfigurationResponseBodySource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationResponseBodySource string
+// GetConfigurationSource1 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationSource1 string
 
 const (
-	GetConfigurationResponseBodySourceMarketplace  GetConfigurationResponseBodySource = "marketplace"
-	GetConfigurationResponseBodySourceDeployButton GetConfigurationResponseBodySource = "deploy-button"
-	GetConfigurationResponseBodySourceExternal     GetConfigurationResponseBodySource = "external"
-	GetConfigurationResponseBodySourceV0           GetConfigurationResponseBodySource = "v0"
+	GetConfigurationSource1Marketplace  GetConfigurationSource1 = "marketplace"
+	GetConfigurationSource1DeployButton GetConfigurationSource1 = "deploy-button"
+	GetConfigurationSource1External     GetConfigurationSource1 = "external"
+	GetConfigurationSource1V0           GetConfigurationSource1 = "v0"
 )
 
-func (e GetConfigurationResponseBodySource) ToPointer() *GetConfigurationResponseBodySource {
+func (e GetConfigurationSource1) ToPointer() *GetConfigurationSource1 {
 	return &e
 }
-func (e *GetConfigurationResponseBodySource) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationSource1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -858,51 +858,51 @@ func (e *GetConfigurationResponseBodySource) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
-		*e = GetConfigurationResponseBodySource(v)
+		*e = GetConfigurationSource1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodySource: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationSource1: %v", v)
 	}
 }
 
-type GetConfigurationResponseBodyType string
+type GetConfigurationTypeIntegrationConfiguration1 string
 
 const (
-	GetConfigurationResponseBodyTypeIntegrationConfiguration GetConfigurationResponseBodyType = "integration-configuration"
+	GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration GetConfigurationTypeIntegrationConfiguration1 = "integration-configuration"
 )
 
-func (e GetConfigurationResponseBodyType) ToPointer() *GetConfigurationResponseBodyType {
+func (e GetConfigurationTypeIntegrationConfiguration1) ToPointer() *GetConfigurationTypeIntegrationConfiguration1 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationTypeIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-configuration":
-		*e = GetConfigurationResponseBodyType(v)
+		*e = GetConfigurationTypeIntegrationConfiguration1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationTypeIntegrationConfiguration1: %v", v)
 	}
 }
 
-type GetConfigurationResponseBodyDisabledReason string
+type GetConfigurationDisabledReason1 string
 
 const (
-	GetConfigurationResponseBodyDisabledReasonDisabledByOwner             GetConfigurationResponseBodyDisabledReason = "disabled-by-owner"
-	GetConfigurationResponseBodyDisabledReasonFeatureNotAvailable         GetConfigurationResponseBodyDisabledReason = "feature-not-available"
-	GetConfigurationResponseBodyDisabledReasonDisabledByAdmin             GetConfigurationResponseBodyDisabledReason = "disabled-by-admin"
-	GetConfigurationResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    GetConfigurationResponseBodyDisabledReason = "original-owner-left-the-team"
-	GetConfigurationResponseBodyDisabledReasonAccountPlanDowngrade        GetConfigurationResponseBodyDisabledReason = "account-plan-downgrade"
-	GetConfigurationResponseBodyDisabledReasonOriginalOwnerRoleDowngraded GetConfigurationResponseBodyDisabledReason = "original-owner-role-downgraded"
+	GetConfigurationDisabledReason1DisabledByOwner             GetConfigurationDisabledReason1 = "disabled-by-owner"
+	GetConfigurationDisabledReason1FeatureNotAvailable         GetConfigurationDisabledReason1 = "feature-not-available"
+	GetConfigurationDisabledReason1DisabledByAdmin             GetConfigurationDisabledReason1 = "disabled-by-admin"
+	GetConfigurationDisabledReason1OriginalOwnerLeftTheTeam    GetConfigurationDisabledReason1 = "original-owner-left-the-team"
+	GetConfigurationDisabledReason1AccountPlanDowngrade        GetConfigurationDisabledReason1 = "account-plan-downgrade"
+	GetConfigurationDisabledReason1OriginalOwnerRoleDowngraded GetConfigurationDisabledReason1 = "original-owner-role-downgraded"
 )
 
-func (e GetConfigurationResponseBodyDisabledReason) ToPointer() *GetConfigurationResponseBodyDisabledReason {
+func (e GetConfigurationDisabledReason1) ToPointer() *GetConfigurationDisabledReason1 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationDisabledReason1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -919,25 +919,25 @@ func (e *GetConfigurationResponseBodyDisabledReason) UnmarshalJSON(data []byte) 
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = GetConfigurationResponseBodyDisabledReason(v)
+		*e = GetConfigurationDisabledReason1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationDisabledReason1: %v", v)
 	}
 }
 
-// GetConfigurationResponseBodyInstallationType - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-type GetConfigurationResponseBodyInstallationType string
+// GetConfigurationInstallationType1 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+type GetConfigurationInstallationType1 string
 
 const (
-	GetConfigurationResponseBodyInstallationTypeMarketplace GetConfigurationResponseBodyInstallationType = "marketplace"
-	GetConfigurationResponseBodyInstallationTypeExternal    GetConfigurationResponseBodyInstallationType = "external"
+	GetConfigurationInstallationType1Marketplace GetConfigurationInstallationType1 = "marketplace"
+	GetConfigurationInstallationType1External    GetConfigurationInstallationType1 = "external"
 )
 
-func (e GetConfigurationResponseBodyInstallationType) ToPointer() *GetConfigurationResponseBodyInstallationType {
+func (e GetConfigurationInstallationType1) ToPointer() *GetConfigurationInstallationType1 {
 	return &e
 }
-func (e *GetConfigurationResponseBodyInstallationType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationInstallationType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -946,15 +946,15 @@ func (e *GetConfigurationResponseBodyInstallationType) UnmarshalJSON(data []byte
 	case "marketplace":
 		fallthrough
 	case "external":
-		*e = GetConfigurationResponseBodyInstallationType(v)
+		*e = GetConfigurationInstallationType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationResponseBodyInstallationType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationInstallationType1: %v", v)
 	}
 }
 
-// GetConfigurationResponseBody1 - The configuration with the provided id
-type GetConfigurationResponseBody1 struct {
+// GetConfigurationIntegrationConfiguration1 - The configuration with the provided id
+type GetConfigurationIntegrationConfiguration1 struct {
 	// A timestamp that tells you when the configuration was installed successfully
 	CompletedAt *float64 `json:"completedAt,omitempty"`
 	// A timestamp that tells you when the configuration was created
@@ -968,12 +968,12 @@ type GetConfigurationResponseBody1 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationResponseBodySource `json:"source,omitempty"`
+	Source *GetConfigurationSource1 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                          `json:"teamId,omitempty"`
-	Type   GetConfigurationResponseBodyType `json:"type"`
+	TeamID *string                                       `json:"teamId,omitempty"`
+	Type   GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The ID of the user that created the configuration.
@@ -985,184 +985,184 @@ type GetConfigurationResponseBody1 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                                    `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-	InstallationType *GetConfigurationResponseBodyInstallationType `json:"installationType,omitempty"`
+	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
 }
 
-func (o *GetConfigurationResponseBody1) GetCompletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CompletedAt
 }
 
-func (o *GetConfigurationResponseBody1) GetCreatedAt() float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationResponseBody1) GetID() string {
+func (o *GetConfigurationIntegrationConfiguration1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetConfigurationResponseBody1) GetIntegrationID() string {
+func (o *GetConfigurationIntegrationConfiguration1) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetConfigurationResponseBody1) GetOwnerID() string {
+func (o *GetConfigurationIntegrationConfiguration1) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *GetConfigurationResponseBody1) GetProjects() []string {
+func (o *GetConfigurationIntegrationConfiguration1) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *GetConfigurationResponseBody1) GetSource() *GetConfigurationResponseBodySource {
+func (o *GetConfigurationIntegrationConfiguration1) GetSource() *GetConfigurationSource1 {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *GetConfigurationResponseBody1) GetSlug() string {
+func (o *GetConfigurationIntegrationConfiguration1) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetConfigurationResponseBody1) GetTeamID() *string {
+func (o *GetConfigurationIntegrationConfiguration1) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *GetConfigurationResponseBody1) GetType() GetConfigurationResponseBodyType {
+func (o *GetConfigurationIntegrationConfiguration1) GetType() GetConfigurationTypeIntegrationConfiguration1 {
 	if o == nil {
-		return GetConfigurationResponseBodyType("")
+		return GetConfigurationTypeIntegrationConfiguration1("")
 	}
 	return o.Type
 }
 
-func (o *GetConfigurationResponseBody1) GetUpdatedAt() float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetConfigurationResponseBody1) GetUserID() string {
+func (o *GetConfigurationIntegrationConfiguration1) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
 }
 
-func (o *GetConfigurationResponseBody1) GetScopes() []string {
+func (o *GetConfigurationIntegrationConfiguration1) GetScopes() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Scopes
 }
 
-func (o *GetConfigurationResponseBody1) GetDisabledAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDisabledAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationResponseBody1) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationResponseBody1) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationResponseBody1) GetDisabledReason() *GetConfigurationResponseBodyDisabledReason {
+func (o *GetConfigurationIntegrationConfiguration1) GetDisabledReason() *GetConfigurationDisabledReason1 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledReason
 }
 
-func (o *GetConfigurationResponseBody1) GetInstallationType() *GetConfigurationResponseBodyInstallationType {
+func (o *GetConfigurationIntegrationConfiguration1) GetInstallationType() *GetConfigurationInstallationType1 {
 	if o == nil {
 		return nil
 	}
 	return o.InstallationType
 }
 
-type GetConfigurationResponseBodyUnionType string
+type GetConfigurationResponseBodyType string
 
 const (
-	GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody1 GetConfigurationResponseBodyUnionType = "getConfiguration_responseBody_1"
-	GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody2 GetConfigurationResponseBodyUnionType = "getConfiguration_responseBody_2"
+	GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1 GetConfigurationResponseBodyType = "getConfiguration_IntegrationConfiguration_1"
+	GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2 GetConfigurationResponseBodyType = "getConfiguration_IntegrationConfiguration_2"
 )
 
 // GetConfigurationResponseBody - The configuration with the provided id
 type GetConfigurationResponseBody struct {
-	GetConfigurationResponseBody1 *GetConfigurationResponseBody1
-	GetConfigurationResponseBody2 *GetConfigurationResponseBody2
+	GetConfigurationIntegrationConfiguration1 *GetConfigurationIntegrationConfiguration1 `queryParam:"inline"`
+	GetConfigurationIntegrationConfiguration2 *GetConfigurationIntegrationConfiguration2 `queryParam:"inline"`
 
-	Type GetConfigurationResponseBodyUnionType
+	Type GetConfigurationResponseBodyType
 }
 
-func CreateGetConfigurationResponseBodyGetConfigurationResponseBody1(getConfigurationResponseBody1 GetConfigurationResponseBody1) GetConfigurationResponseBody {
-	typ := GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody1
+func CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration1(getConfigurationIntegrationConfiguration1 GetConfigurationIntegrationConfiguration1) GetConfigurationResponseBody {
+	typ := GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1
 
 	return GetConfigurationResponseBody{
-		GetConfigurationResponseBody1: &getConfigurationResponseBody1,
-		Type:                          typ,
+		GetConfigurationIntegrationConfiguration1: &getConfigurationIntegrationConfiguration1,
+		Type: typ,
 	}
 }
 
-func CreateGetConfigurationResponseBodyGetConfigurationResponseBody2(getConfigurationResponseBody2 GetConfigurationResponseBody2) GetConfigurationResponseBody {
-	typ := GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody2
+func CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2(getConfigurationIntegrationConfiguration2 GetConfigurationIntegrationConfiguration2) GetConfigurationResponseBody {
+	typ := GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2
 
 	return GetConfigurationResponseBody{
-		GetConfigurationResponseBody2: &getConfigurationResponseBody2,
-		Type:                          typ,
+		GetConfigurationIntegrationConfiguration2: &getConfigurationIntegrationConfiguration2,
+		Type: typ,
 	}
 }
 
 func (u *GetConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getConfigurationResponseBody1 GetConfigurationResponseBody1 = GetConfigurationResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getConfigurationResponseBody1, "", true, true); err == nil {
-		u.GetConfigurationResponseBody1 = &getConfigurationResponseBody1
-		u.Type = GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody1
+	var getConfigurationIntegrationConfiguration1 GetConfigurationIntegrationConfiguration1 = GetConfigurationIntegrationConfiguration1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration1, "", true, true); err == nil {
+		u.GetConfigurationIntegrationConfiguration1 = &getConfigurationIntegrationConfiguration1
+		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1
 		return nil
 	}
 
-	var getConfigurationResponseBody2 GetConfigurationResponseBody2 = GetConfigurationResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getConfigurationResponseBody2, "", true, true); err == nil {
-		u.GetConfigurationResponseBody2 = &getConfigurationResponseBody2
-		u.Type = GetConfigurationResponseBodyUnionTypeGetConfigurationResponseBody2
+	var getConfigurationIntegrationConfiguration2 GetConfigurationIntegrationConfiguration2 = GetConfigurationIntegrationConfiguration2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration2, "", true, true); err == nil {
+		u.GetConfigurationIntegrationConfiguration2 = &getConfigurationIntegrationConfiguration2
+		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2
 		return nil
 	}
 
@@ -1170,12 +1170,12 @@ func (u *GetConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetConfigurationResponseBody) MarshalJSON() ([]byte, error) {
-	if u.GetConfigurationResponseBody1 != nil {
-		return utils.MarshalJSON(u.GetConfigurationResponseBody1, "", true)
+	if u.GetConfigurationIntegrationConfiguration1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationIntegrationConfiguration1, "", true)
 	}
 
-	if u.GetConfigurationResponseBody2 != nil {
-		return utils.MarshalJSON(u.GetConfigurationResponseBody2, "", true)
+	if u.GetConfigurationIntegrationConfiguration2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationIntegrationConfiguration2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetConfigurationResponseBody: all fields are null")

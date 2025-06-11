@@ -8,20 +8,20 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// QueryParamType - In which status of the domain the price needs to be checked.
-type QueryParamType string
+// CheckDomainPriceType - In which status of the domain the price needs to be checked.
+type CheckDomainPriceType string
 
 const (
-	QueryParamTypeNew        QueryParamType = "new"
-	QueryParamTypeRenewal    QueryParamType = "renewal"
-	QueryParamTypeTransfer   QueryParamType = "transfer"
-	QueryParamTypeRedemption QueryParamType = "redemption"
+	CheckDomainPriceTypeNew        CheckDomainPriceType = "new"
+	CheckDomainPriceTypeRenewal    CheckDomainPriceType = "renewal"
+	CheckDomainPriceTypeTransfer   CheckDomainPriceType = "transfer"
+	CheckDomainPriceTypeRedemption CheckDomainPriceType = "redemption"
 )
 
-func (e QueryParamType) ToPointer() *QueryParamType {
+func (e CheckDomainPriceType) ToPointer() *CheckDomainPriceType {
 	return &e
 }
-func (e *QueryParamType) UnmarshalJSON(data []byte) error {
+func (e *CheckDomainPriceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,10 +34,10 @@ func (e *QueryParamType) UnmarshalJSON(data []byte) error {
 	case "transfer":
 		fallthrough
 	case "redemption":
-		*e = QueryParamType(v)
+		*e = CheckDomainPriceType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryParamType: %v", v)
+		return fmt.Errorf("invalid value for CheckDomainPriceType: %v", v)
 	}
 }
 
@@ -45,7 +45,7 @@ type CheckDomainPriceRequest struct {
 	// The name of the domain for which the price needs to be checked.
 	Name string `queryParam:"style=form,explode=true,name=name"`
 	// In which status of the domain the price needs to be checked.
-	Type *QueryParamType `queryParam:"style=form,explode=true,name=type"`
+	Type *CheckDomainPriceType `queryParam:"style=form,explode=true,name=type"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -59,7 +59,7 @@ func (o *CheckDomainPriceRequest) GetName() string {
 	return o.Name
 }
 
-func (o *CheckDomainPriceRequest) GetType() *QueryParamType {
+func (o *CheckDomainPriceRequest) GetType() *CheckDomainPriceType {
 	if o == nil {
 		return nil
 	}

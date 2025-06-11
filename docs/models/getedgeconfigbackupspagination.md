@@ -6,7 +6,7 @@
 import { GetEdgeConfigBackupsPagination } from "@vercel/sdk/models/getedgeconfigbackupsop.js";
 
 let value: GetEdgeConfigBackupsPagination = {
-  hasNext: false,
+  hasNext: true,
 };
 ```
 

@@ -6,9 +6,7 @@
 import { Aws } from "@vercel/sdk/models/userevent.js";
 
 let value: Aws = {
-  subnetIds: [
-    "<value>",
-  ],
+  subnetIds: [],
   securityGroupId: "<id>",
 };
 ```

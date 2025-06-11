@@ -50,20 +50,11 @@ func testCreateProjectEnvCreateProjectEnv0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateProjectEnvResponseBody{
-		Created: operations.CreateCreatedArrayOfCreated2(
-			[]operations.Created2{
-				operations.Created2{},
-			},
+	var respBody *operations.CreateProjectEnvResponseBody = &operations.CreateProjectEnvResponseBody{
+		Created: operations.CreateCreatedUnionArrayOfCreated2(
+			[]operations.Created2{},
 		),
-		Failed: []operations.Failed{
-			operations.Failed{
-				Error: operations.CreateProjectEnvError{
-					Code:    "<value>",
-					Message: "<value>",
-				},
-			},
-		},
+		Failed: []operations.Failed{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

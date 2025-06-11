@@ -9,21 +9,21 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Reason string
+type AuthUserReason string
 
 const (
-	ReasonSubscriptionCanceled    Reason = "SUBSCRIPTION_CANCELED"
-	ReasonSubscriptionExpired     Reason = "SUBSCRIPTION_EXPIRED"
-	ReasonUnpaidInvoice           Reason = "UNPAID_INVOICE"
-	ReasonEnterpriseTrialEnded    Reason = "ENTERPRISE_TRIAL_ENDED"
-	ReasonFairUseLimitsExceeded   Reason = "FAIR_USE_LIMITS_EXCEEDED"
-	ReasonBlockedForPlatformAbuse Reason = "BLOCKED_FOR_PLATFORM_ABUSE"
+	AuthUserReasonSubscriptionCanceled    AuthUserReason = "SUBSCRIPTION_CANCELED"
+	AuthUserReasonSubscriptionExpired     AuthUserReason = "SUBSCRIPTION_EXPIRED"
+	AuthUserReasonUnpaidInvoice           AuthUserReason = "UNPAID_INVOICE"
+	AuthUserReasonEnterpriseTrialEnded    AuthUserReason = "ENTERPRISE_TRIAL_ENDED"
+	AuthUserReasonFairUseLimitsExceeded   AuthUserReason = "FAIR_USE_LIMITS_EXCEEDED"
+	AuthUserReasonBlockedForPlatformAbuse AuthUserReason = "BLOCKED_FOR_PLATFORM_ABUSE"
 )
 
-func (e Reason) ToPointer() *Reason {
+func (e AuthUserReason) ToPointer() *AuthUserReason {
 	return &e
 }
-func (e *Reason) UnmarshalJSON(data []byte) error {
+func (e *AuthUserReason) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -40,64 +40,70 @@ func (e *Reason) UnmarshalJSON(data []byte) error {
 	case "FAIR_USE_LIMITS_EXCEEDED":
 		fallthrough
 	case "BLOCKED_FOR_PLATFORM_ABUSE":
-		*e = Reason(v)
+		*e = AuthUserReason(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Reason: %v", v)
+		return fmt.Errorf("invalid value for AuthUserReason: %v", v)
 	}
 }
 
-type BlockedDueToOverageType string
+type AuthUserBlockedDueToOverageType string
 
 const (
-	BlockedDueToOverageTypeAnalyticsUsage                          BlockedDueToOverageType = "analyticsUsage"
-	BlockedDueToOverageTypeArtifacts                               BlockedDueToOverageType = "artifacts"
-	BlockedDueToOverageTypeBandwidth                               BlockedDueToOverageType = "bandwidth"
-	BlockedDueToOverageTypeBlobTotalAdvancedRequests               BlockedDueToOverageType = "blobTotalAdvancedRequests"
-	BlockedDueToOverageTypeBlobTotalAvgSizeInBytes                 BlockedDueToOverageType = "blobTotalAvgSizeInBytes"
-	BlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes   BlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
-	BlockedDueToOverageTypeBlobTotalSimpleRequests                 BlockedDueToOverageType = "blobTotalSimpleRequests"
-	BlockedDueToOverageTypeDataCacheRead                           BlockedDueToOverageType = "dataCacheRead"
-	BlockedDueToOverageTypeDataCacheWrite                          BlockedDueToOverageType = "dataCacheWrite"
-	BlockedDueToOverageTypeEdgeConfigRead                          BlockedDueToOverageType = "edgeConfigRead"
-	BlockedDueToOverageTypeEdgeConfigWrite                         BlockedDueToOverageType = "edgeConfigWrite"
-	BlockedDueToOverageTypeEdgeFunctionExecutionUnits              BlockedDueToOverageType = "edgeFunctionExecutionUnits"
-	BlockedDueToOverageTypeEdgeMiddlewareInvocations               BlockedDueToOverageType = "edgeMiddlewareInvocations"
-	BlockedDueToOverageTypeEdgeRequestAdditionalCPUDuration        BlockedDueToOverageType = "edgeRequestAdditionalCpuDuration"
-	BlockedDueToOverageTypeEdgeRequest                             BlockedDueToOverageType = "edgeRequest"
-	BlockedDueToOverageTypeElasticConcurrencyBuildSlots            BlockedDueToOverageType = "elasticConcurrencyBuildSlots"
-	BlockedDueToOverageTypeFastDataTransfer                        BlockedDueToOverageType = "fastDataTransfer"
-	BlockedDueToOverageTypeFastOriginTransfer                      BlockedDueToOverageType = "fastOriginTransfer"
-	BlockedDueToOverageTypeFunctionDuration                        BlockedDueToOverageType = "functionDuration"
-	BlockedDueToOverageTypeFunctionInvocation                      BlockedDueToOverageType = "functionInvocation"
-	BlockedDueToOverageTypeImageOptimizationCacheRead              BlockedDueToOverageType = "imageOptimizationCacheRead"
-	BlockedDueToOverageTypeImageOptimizationCacheWrite             BlockedDueToOverageType = "imageOptimizationCacheWrite"
-	BlockedDueToOverageTypeImageOptimizationTransformation         BlockedDueToOverageType = "imageOptimizationTransformation"
-	BlockedDueToOverageTypeLogDrainsVolume                         BlockedDueToOverageType = "logDrainsVolume"
-	BlockedDueToOverageTypeMonitoringMetric                        BlockedDueToOverageType = "monitoringMetric"
-	BlockedDueToOverageTypeBlobDataTransfer                        BlockedDueToOverageType = "blobDataTransfer"
-	BlockedDueToOverageTypeObservabilityEvent                      BlockedDueToOverageType = "observabilityEvent"
-	BlockedDueToOverageTypePostgresComputeTime                     BlockedDueToOverageType = "postgresComputeTime"
-	BlockedDueToOverageTypePostgresDataStorage                     BlockedDueToOverageType = "postgresDataStorage"
-	BlockedDueToOverageTypePostgresDataTransfer                    BlockedDueToOverageType = "postgresDataTransfer"
-	BlockedDueToOverageTypePostgresDatabase                        BlockedDueToOverageType = "postgresDatabase"
-	BlockedDueToOverageTypePostgresWrittenData                     BlockedDueToOverageType = "postgresWrittenData"
-	BlockedDueToOverageTypeServerlessFunctionExecution             BlockedDueToOverageType = "serverlessFunctionExecution"
-	BlockedDueToOverageTypeSourceImages                            BlockedDueToOverageType = "sourceImages"
-	BlockedDueToOverageTypeStorageRedisTotalBandwidthInBytes       BlockedDueToOverageType = "storageRedisTotalBandwidthInBytes"
-	BlockedDueToOverageTypeStorageRedisTotalCommands               BlockedDueToOverageType = "storageRedisTotalCommands"
-	BlockedDueToOverageTypeStorageRedisTotalDailyAvgStorageInBytes BlockedDueToOverageType = "storageRedisTotalDailyAvgStorageInBytes"
-	BlockedDueToOverageTypeStorageRedisTotalDatabases              BlockedDueToOverageType = "storageRedisTotalDatabases"
-	BlockedDueToOverageTypeWafOwaspExcessBytes                     BlockedDueToOverageType = "wafOwaspExcessBytes"
-	BlockedDueToOverageTypeWafOwaspRequests                        BlockedDueToOverageType = "wafOwaspRequests"
-	BlockedDueToOverageTypeWafRateLimitRequest                     BlockedDueToOverageType = "wafRateLimitRequest"
-	BlockedDueToOverageTypeWebAnalyticsEvent                       BlockedDueToOverageType = "webAnalyticsEvent"
+	AuthUserBlockedDueToOverageTypeAnalyticsUsage                          AuthUserBlockedDueToOverageType = "analyticsUsage"
+	AuthUserBlockedDueToOverageTypeArtifacts                               AuthUserBlockedDueToOverageType = "artifacts"
+	AuthUserBlockedDueToOverageTypeBandwidth                               AuthUserBlockedDueToOverageType = "bandwidth"
+	AuthUserBlockedDueToOverageTypeBlobTotalAdvancedRequests               AuthUserBlockedDueToOverageType = "blobTotalAdvancedRequests"
+	AuthUserBlockedDueToOverageTypeBlobTotalAvgSizeInBytes                 AuthUserBlockedDueToOverageType = "blobTotalAvgSizeInBytes"
+	AuthUserBlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes   AuthUserBlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
+	AuthUserBlockedDueToOverageTypeBlobTotalSimpleRequests                 AuthUserBlockedDueToOverageType = "blobTotalSimpleRequests"
+	AuthUserBlockedDueToOverageTypeConnectDataTransfer                     AuthUserBlockedDueToOverageType = "connectDataTransfer"
+	AuthUserBlockedDueToOverageTypeDataCacheRead                           AuthUserBlockedDueToOverageType = "dataCacheRead"
+	AuthUserBlockedDueToOverageTypeDataCacheWrite                          AuthUserBlockedDueToOverageType = "dataCacheWrite"
+	AuthUserBlockedDueToOverageTypeEdgeConfigRead                          AuthUserBlockedDueToOverageType = "edgeConfigRead"
+	AuthUserBlockedDueToOverageTypeEdgeConfigWrite                         AuthUserBlockedDueToOverageType = "edgeConfigWrite"
+	AuthUserBlockedDueToOverageTypeEdgeFunctionExecutionUnits              AuthUserBlockedDueToOverageType = "edgeFunctionExecutionUnits"
+	AuthUserBlockedDueToOverageTypeEdgeMiddlewareInvocations               AuthUserBlockedDueToOverageType = "edgeMiddlewareInvocations"
+	AuthUserBlockedDueToOverageTypeEdgeRequestAdditionalCPUDuration        AuthUserBlockedDueToOverageType = "edgeRequestAdditionalCpuDuration"
+	AuthUserBlockedDueToOverageTypeEdgeRequest                             AuthUserBlockedDueToOverageType = "edgeRequest"
+	AuthUserBlockedDueToOverageTypeElasticConcurrencyBuildSlots            AuthUserBlockedDueToOverageType = "elasticConcurrencyBuildSlots"
+	AuthUserBlockedDueToOverageTypeFastDataTransfer                        AuthUserBlockedDueToOverageType = "fastDataTransfer"
+	AuthUserBlockedDueToOverageTypeFastOriginTransfer                      AuthUserBlockedDueToOverageType = "fastOriginTransfer"
+	AuthUserBlockedDueToOverageTypeFluidCPUDuration                        AuthUserBlockedDueToOverageType = "fluidCpuDuration"
+	AuthUserBlockedDueToOverageTypeFluidDuration                           AuthUserBlockedDueToOverageType = "fluidDuration"
+	AuthUserBlockedDueToOverageTypeFunctionDuration                        AuthUserBlockedDueToOverageType = "functionDuration"
+	AuthUserBlockedDueToOverageTypeFunctionInvocation                      AuthUserBlockedDueToOverageType = "functionInvocation"
+	AuthUserBlockedDueToOverageTypeImageOptimizationCacheRead              AuthUserBlockedDueToOverageType = "imageOptimizationCacheRead"
+	AuthUserBlockedDueToOverageTypeImageOptimizationCacheWrite             AuthUserBlockedDueToOverageType = "imageOptimizationCacheWrite"
+	AuthUserBlockedDueToOverageTypeImageOptimizationTransformation         AuthUserBlockedDueToOverageType = "imageOptimizationTransformation"
+	AuthUserBlockedDueToOverageTypeLogDrainsVolume                         AuthUserBlockedDueToOverageType = "logDrainsVolume"
+	AuthUserBlockedDueToOverageTypeMonitoringMetric                        AuthUserBlockedDueToOverageType = "monitoringMetric"
+	AuthUserBlockedDueToOverageTypeBlobDataTransfer                        AuthUserBlockedDueToOverageType = "blobDataTransfer"
+	AuthUserBlockedDueToOverageTypeObservabilityEvent                      AuthUserBlockedDueToOverageType = "observabilityEvent"
+	AuthUserBlockedDueToOverageTypeOnDemandConcurrencyMinutes              AuthUserBlockedDueToOverageType = "onDemandConcurrencyMinutes"
+	AuthUserBlockedDueToOverageTypePostgresComputeTime                     AuthUserBlockedDueToOverageType = "postgresComputeTime"
+	AuthUserBlockedDueToOverageTypePostgresDataStorage                     AuthUserBlockedDueToOverageType = "postgresDataStorage"
+	AuthUserBlockedDueToOverageTypePostgresDataTransfer                    AuthUserBlockedDueToOverageType = "postgresDataTransfer"
+	AuthUserBlockedDueToOverageTypePostgresDatabase                        AuthUserBlockedDueToOverageType = "postgresDatabase"
+	AuthUserBlockedDueToOverageTypePostgresWrittenData                     AuthUserBlockedDueToOverageType = "postgresWrittenData"
+	AuthUserBlockedDueToOverageTypeRuntimeCacheRead                        AuthUserBlockedDueToOverageType = "runtimeCacheRead"
+	AuthUserBlockedDueToOverageTypeRuntimeCacheWrite                       AuthUserBlockedDueToOverageType = "runtimeCacheWrite"
+	AuthUserBlockedDueToOverageTypeServerlessFunctionExecution             AuthUserBlockedDueToOverageType = "serverlessFunctionExecution"
+	AuthUserBlockedDueToOverageTypeSourceImages                            AuthUserBlockedDueToOverageType = "sourceImages"
+	AuthUserBlockedDueToOverageTypeStorageRedisTotalBandwidthInBytes       AuthUserBlockedDueToOverageType = "storageRedisTotalBandwidthInBytes"
+	AuthUserBlockedDueToOverageTypeStorageRedisTotalCommands               AuthUserBlockedDueToOverageType = "storageRedisTotalCommands"
+	AuthUserBlockedDueToOverageTypeStorageRedisTotalDailyAvgStorageInBytes AuthUserBlockedDueToOverageType = "storageRedisTotalDailyAvgStorageInBytes"
+	AuthUserBlockedDueToOverageTypeStorageRedisTotalDatabases              AuthUserBlockedDueToOverageType = "storageRedisTotalDatabases"
+	AuthUserBlockedDueToOverageTypeWafOwaspExcessBytes                     AuthUserBlockedDueToOverageType = "wafOwaspExcessBytes"
+	AuthUserBlockedDueToOverageTypeWafOwaspRequests                        AuthUserBlockedDueToOverageType = "wafOwaspRequests"
+	AuthUserBlockedDueToOverageTypeWafRateLimitRequest                     AuthUserBlockedDueToOverageType = "wafRateLimitRequest"
+	AuthUserBlockedDueToOverageTypeWebAnalyticsEvent                       AuthUserBlockedDueToOverageType = "webAnalyticsEvent"
 )
 
-func (e BlockedDueToOverageType) ToPointer() *BlockedDueToOverageType {
+func (e AuthUserBlockedDueToOverageType) ToPointer() *AuthUserBlockedDueToOverageType {
 	return &e
 }
-func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
+func (e *AuthUserBlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -116,6 +122,8 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "blobTotalGetResponseObjectSizeInBytes":
 		fallthrough
 	case "blobTotalSimpleRequests":
+		fallthrough
+	case "connectDataTransfer":
 		fallthrough
 	case "dataCacheRead":
 		fallthrough
@@ -139,6 +147,10 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "fastOriginTransfer":
 		fallthrough
+	case "fluidCpuDuration":
+		fallthrough
+	case "fluidDuration":
+		fallthrough
 	case "functionDuration":
 		fallthrough
 	case "functionInvocation":
@@ -157,6 +169,8 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observabilityEvent":
 		fallthrough
+	case "onDemandConcurrencyMinutes":
+		fallthrough
 	case "postgresComputeTime":
 		fallthrough
 	case "postgresDataStorage":
@@ -166,6 +180,10 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "postgresDatabase":
 		fallthrough
 	case "postgresWrittenData":
+		fallthrough
+	case "runtimeCacheRead":
+		fallthrough
+	case "runtimeCacheWrite":
 		fallthrough
 	case "serverlessFunctionExecution":
 		fallthrough
@@ -186,70 +204,70 @@ func (e *BlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "wafRateLimitRequest":
 		fallthrough
 	case "webAnalyticsEvent":
-		*e = BlockedDueToOverageType(v)
+		*e = AuthUserBlockedDueToOverageType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for BlockedDueToOverageType: %v", v)
+		return fmt.Errorf("invalid value for AuthUserBlockedDueToOverageType: %v", v)
 	}
 }
 
-// SoftBlock - When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
-type SoftBlock struct {
-	BlockedAt               float64                  `json:"blockedAt"`
-	Reason                  Reason                   `json:"reason"`
-	BlockedDueToOverageType *BlockedDueToOverageType `json:"blockedDueToOverageType,omitempty"`
+// AuthUserSoftBlock - When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
+type AuthUserSoftBlock struct {
+	BlockedAt               float64                          `json:"blockedAt"`
+	Reason                  AuthUserReason                   `json:"reason"`
+	BlockedDueToOverageType *AuthUserBlockedDueToOverageType `json:"blockedDueToOverageType,omitempty"`
 }
 
-func (o *SoftBlock) GetBlockedAt() float64 {
+func (o *AuthUserSoftBlock) GetBlockedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.BlockedAt
 }
 
-func (o *SoftBlock) GetReason() Reason {
+func (o *AuthUserSoftBlock) GetReason() AuthUserReason {
 	if o == nil {
-		return Reason("")
+		return AuthUserReason("")
 	}
 	return o.Reason
 }
 
-func (o *SoftBlock) GetBlockedDueToOverageType() *BlockedDueToOverageType {
+func (o *AuthUserSoftBlock) GetBlockedDueToOverageType() *AuthUserBlockedDueToOverageType {
 	if o == nil {
 		return nil
 	}
 	return o.BlockedDueToOverageType
 }
 
-// Billing - An object containing billing infomation associated with the User account.
-type Billing struct {
+// AuthUserBilling - An object containing billing infomation associated with the User account.
+type AuthUserBilling struct {
 }
 
-// BuildEntitlements - An object containing infomation related to the amount of platform resources may be allocated to the User account.
-type BuildEntitlements struct {
+// AuthUserBuildEntitlements - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserBuildEntitlements struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
 }
 
-func (o *BuildEntitlements) GetEnhancedBuilds() *bool {
+func (o *AuthUserBuildEntitlements) GetEnhancedBuilds() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.EnhancedBuilds
 }
 
-// PurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
-type PurchaseType string
+// AuthUserPurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserPurchaseType string
 
 const (
-	PurchaseTypeEnhanced PurchaseType = "enhanced"
-	PurchaseTypeUltra    PurchaseType = "ultra"
+	AuthUserPurchaseTypeEnhanced AuthUserPurchaseType = "enhanced"
+	AuthUserPurchaseTypeTurbo    AuthUserPurchaseType = "turbo"
 )
 
-func (e PurchaseType) ToPointer() *PurchaseType {
+func (e AuthUserPurchaseType) ToPointer() *AuthUserPurchaseType {
 	return &e
 }
-func (e *PurchaseType) UnmarshalJSON(data []byte) error {
+func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -257,18 +275,18 @@ func (e *PurchaseType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "enhanced":
 		fallthrough
-	case "ultra":
-		*e = PurchaseType(v)
+	case "turbo":
+		*e = AuthUserPurchaseType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PurchaseType: %v", v)
+		return fmt.Errorf("invalid value for AuthUserPurchaseType: %v", v)
 	}
 }
 
-// BuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
-type BuildMachine struct {
+// AuthUserBuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserBuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	PurchaseType *PurchaseType `json:"purchaseType,omitempty"`
+	PurchaseType *AuthUserPurchaseType `json:"purchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -277,42 +295,42 @@ type BuildMachine struct {
 	Memory *float64 `json:"memory,omitempty"`
 }
 
-func (o *BuildMachine) GetPurchaseType() *PurchaseType {
+func (o *AuthUserBuildMachine) GetPurchaseType() *AuthUserPurchaseType {
 	if o == nil {
 		return nil
 	}
 	return o.PurchaseType
 }
 
-func (o *BuildMachine) GetIsDefaultBuildMachine() *bool {
+func (o *AuthUserBuildMachine) GetIsDefaultBuildMachine() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsDefaultBuildMachine
 }
 
-func (o *BuildMachine) GetCores() *float64 {
+func (o *AuthUserBuildMachine) GetCores() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Cores
 }
 
-func (o *BuildMachine) GetMemory() *float64 {
+func (o *AuthUserBuildMachine) GetMemory() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Memory
 }
 
-// ResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
-type ResourceConfig struct {
+// AuthUserResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	NodeType *string `json:"nodeType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	BuildEntitlements *BuildEntitlements `json:"buildEntitlements,omitempty"`
+	BuildEntitlements *AuthUserBuildEntitlements `json:"buildEntitlements,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	AwsAccountType *string `json:"awsAccountType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -354,188 +372,188 @@ type ResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	CustomEnvironmentsPerProject *float64 `json:"customEnvironmentsPerProject,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	BuildMachine *BuildMachine `json:"buildMachine,omitempty"`
+	BuildMachine *AuthUserBuildMachine `json:"buildMachine,omitempty"`
 }
 
-func (o *ResourceConfig) GetNodeType() *string {
+func (o *AuthUserResourceConfig) GetNodeType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NodeType
 }
 
-func (o *ResourceConfig) GetConcurrentBuilds() *float64 {
+func (o *AuthUserResourceConfig) GetConcurrentBuilds() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ConcurrentBuilds
 }
 
-func (o *ResourceConfig) GetBuildEntitlements() *BuildEntitlements {
+func (o *AuthUserResourceConfig) GetBuildEntitlements() *AuthUserBuildEntitlements {
 	if o == nil {
 		return nil
 	}
 	return o.BuildEntitlements
 }
 
-func (o *ResourceConfig) GetAwsAccountType() *string {
+func (o *AuthUserResourceConfig) GetAwsAccountType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AwsAccountType
 }
 
-func (o *ResourceConfig) GetAwsAccountIds() []string {
+func (o *AuthUserResourceConfig) GetAwsAccountIds() []string {
 	if o == nil {
 		return nil
 	}
 	return o.AwsAccountIds
 }
 
-func (o *ResourceConfig) GetCfZoneName() *string {
+func (o *AuthUserResourceConfig) GetCfZoneName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CfZoneName
 }
 
-func (o *ResourceConfig) GetImageOptimizationType() *string {
+func (o *AuthUserResourceConfig) GetImageOptimizationType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ImageOptimizationType
 }
 
-func (o *ResourceConfig) GetEdgeConfigs() *float64 {
+func (o *AuthUserResourceConfig) GetEdgeConfigs() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigs
 }
 
-func (o *ResourceConfig) GetEdgeConfigSize() *float64 {
+func (o *AuthUserResourceConfig) GetEdgeConfigSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigSize
 }
 
-func (o *ResourceConfig) GetEdgeFunctionMaxSizeBytes() *float64 {
+func (o *AuthUserResourceConfig) GetEdgeFunctionMaxSizeBytes() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeFunctionMaxSizeBytes
 }
 
-func (o *ResourceConfig) GetEdgeFunctionExecutionTimeoutMs() *float64 {
+func (o *AuthUserResourceConfig) GetEdgeFunctionExecutionTimeoutMs() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeFunctionExecutionTimeoutMs
 }
 
-func (o *ResourceConfig) GetServerlessFunctionMaxMemorySize() *float64 {
+func (o *AuthUserResourceConfig) GetServerlessFunctionMaxMemorySize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ServerlessFunctionMaxMemorySize
 }
 
-func (o *ResourceConfig) GetKvDatabases() *float64 {
+func (o *AuthUserResourceConfig) GetKvDatabases() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.KvDatabases
 }
 
-func (o *ResourceConfig) GetPostgresDatabases() *float64 {
+func (o *AuthUserResourceConfig) GetPostgresDatabases() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.PostgresDatabases
 }
 
-func (o *ResourceConfig) GetBlobStores() *float64 {
+func (o *AuthUserResourceConfig) GetBlobStores() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BlobStores
 }
 
-func (o *ResourceConfig) GetIntegrationStores() *float64 {
+func (o *AuthUserResourceConfig) GetIntegrationStores() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.IntegrationStores
 }
 
-func (o *ResourceConfig) GetCronJobs() *float64 {
+func (o *AuthUserResourceConfig) GetCronJobs() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CronJobs
 }
 
-func (o *ResourceConfig) GetCronJobsPerProject() *float64 {
+func (o *AuthUserResourceConfig) GetCronJobsPerProject() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CronJobsPerProject
 }
 
-func (o *ResourceConfig) GetMicrofrontendGroupsPerTeam() *float64 {
+func (o *AuthUserResourceConfig) GetMicrofrontendGroupsPerTeam() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MicrofrontendGroupsPerTeam
 }
 
-func (o *ResourceConfig) GetMicrofrontendProjectsPerGroup() *float64 {
+func (o *AuthUserResourceConfig) GetMicrofrontendProjectsPerGroup() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MicrofrontendProjectsPerGroup
 }
 
-func (o *ResourceConfig) GetFlagsExplorerOverridesThreshold() *float64 {
+func (o *AuthUserResourceConfig) GetFlagsExplorerOverridesThreshold() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FlagsExplorerOverridesThreshold
 }
 
-func (o *ResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
+func (o *AuthUserResourceConfig) GetFlagsExplorerUnlimitedOverrides() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.FlagsExplorerUnlimitedOverrides
 }
 
-func (o *ResourceConfig) GetCustomEnvironmentsPerProject() *float64 {
+func (o *AuthUserResourceConfig) GetCustomEnvironmentsPerProject() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentsPerProject
 }
 
-func (o *ResourceConfig) GetBuildMachine() *BuildMachine {
+func (o *AuthUserResourceConfig) GetBuildMachine() *AuthUserBuildMachine {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachine
 }
 
-type ViewPreference string
+type AuthUserViewPreference string
 
 const (
-	ViewPreferenceList  ViewPreference = "list"
-	ViewPreferenceCards ViewPreference = "cards"
+	AuthUserViewPreferenceList  AuthUserViewPreference = "list"
+	AuthUserViewPreferenceCards AuthUserViewPreference = "cards"
 )
 
-func (e ViewPreference) ToPointer() *ViewPreference {
+func (e AuthUserViewPreference) ToPointer() *AuthUserViewPreference {
 	return &e
 }
-func (e *ViewPreference) UnmarshalJSON(data []byte) error {
+func (e *AuthUserViewPreference) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -544,24 +562,24 @@ func (e *ViewPreference) UnmarshalJSON(data []byte) error {
 	case "list":
 		fallthrough
 	case "cards":
-		*e = ViewPreference(v)
+		*e = AuthUserViewPreference(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ViewPreference: %v", v)
+		return fmt.Errorf("invalid value for AuthUserViewPreference: %v", v)
 	}
 }
 
-type FavoritesViewPreference string
+type AuthUserFavoritesViewPreference string
 
 const (
-	FavoritesViewPreferenceOpen   FavoritesViewPreference = "open"
-	FavoritesViewPreferenceClosed FavoritesViewPreference = "closed"
+	AuthUserFavoritesViewPreferenceOpen   AuthUserFavoritesViewPreference = "open"
+	AuthUserFavoritesViewPreferenceClosed AuthUserFavoritesViewPreference = "closed"
 )
 
-func (e FavoritesViewPreference) ToPointer() *FavoritesViewPreference {
+func (e AuthUserFavoritesViewPreference) ToPointer() *AuthUserFavoritesViewPreference {
 	return &e
 }
-func (e *FavoritesViewPreference) UnmarshalJSON(data []byte) error {
+func (e *AuthUserFavoritesViewPreference) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -570,24 +588,24 @@ func (e *FavoritesViewPreference) UnmarshalJSON(data []byte) error {
 	case "open":
 		fallthrough
 	case "closed":
-		*e = FavoritesViewPreference(v)
+		*e = AuthUserFavoritesViewPreference(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FavoritesViewPreference: %v", v)
+		return fmt.Errorf("invalid value for AuthUserFavoritesViewPreference: %v", v)
 	}
 }
 
-type RecentsViewPreference string
+type AuthUserRecentsViewPreference string
 
 const (
-	RecentsViewPreferenceOpen   RecentsViewPreference = "open"
-	RecentsViewPreferenceClosed RecentsViewPreference = "closed"
+	AuthUserRecentsViewPreferenceOpen   AuthUserRecentsViewPreference = "open"
+	AuthUserRecentsViewPreferenceClosed AuthUserRecentsViewPreference = "closed"
 )
 
-func (e RecentsViewPreference) ToPointer() *RecentsViewPreference {
+func (e AuthUserRecentsViewPreference) ToPointer() *AuthUserRecentsViewPreference {
 	return &e
 }
-func (e *RecentsViewPreference) UnmarshalJSON(data []byte) error {
+func (e *AuthUserRecentsViewPreference) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -596,101 +614,101 @@ func (e *RecentsViewPreference) UnmarshalJSON(data []byte) error {
 	case "open":
 		fallthrough
 	case "closed":
-		*e = RecentsViewPreference(v)
+		*e = AuthUserRecentsViewPreference(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecentsViewPreference: %v", v)
+		return fmt.Errorf("invalid value for AuthUserRecentsViewPreference: %v", v)
 	}
 }
 
-// ActiveDashboardViews - set of dashboard view preferences (cards or list) per scopeId
-type ActiveDashboardViews struct {
-	ScopeID                 string                   `json:"scopeId"`
-	ViewPreference          *ViewPreference          `json:"viewPreference,omitempty"`
-	FavoritesViewPreference *FavoritesViewPreference `json:"favoritesViewPreference,omitempty"`
-	RecentsViewPreference   *RecentsViewPreference   `json:"recentsViewPreference,omitempty"`
+// AuthUserActiveDashboardView - set of dashboard view preferences (cards or list) per scopeId
+type AuthUserActiveDashboardView struct {
+	ScopeID                 string                           `json:"scopeId"`
+	ViewPreference          *AuthUserViewPreference          `json:"viewPreference,omitempty"`
+	FavoritesViewPreference *AuthUserFavoritesViewPreference `json:"favoritesViewPreference,omitempty"`
+	RecentsViewPreference   *AuthUserRecentsViewPreference   `json:"recentsViewPreference,omitempty"`
 }
 
-func (o *ActiveDashboardViews) GetScopeID() string {
+func (o *AuthUserActiveDashboardView) GetScopeID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeID
 }
 
-func (o *ActiveDashboardViews) GetViewPreference() *ViewPreference {
+func (o *AuthUserActiveDashboardView) GetViewPreference() *AuthUserViewPreference {
 	if o == nil {
 		return nil
 	}
 	return o.ViewPreference
 }
 
-func (o *ActiveDashboardViews) GetFavoritesViewPreference() *FavoritesViewPreference {
+func (o *AuthUserActiveDashboardView) GetFavoritesViewPreference() *AuthUserFavoritesViewPreference {
 	if o == nil {
 		return nil
 	}
 	return o.FavoritesViewPreference
 }
 
-func (o *ActiveDashboardViews) GetRecentsViewPreference() *RecentsViewPreference {
+func (o *AuthUserActiveDashboardView) GetRecentsViewPreference() *AuthUserRecentsViewPreference {
 	if o == nil {
 		return nil
 	}
 	return o.RecentsViewPreference
 }
 
-type ImportFlowGitNamespaceType string
+type AuthUserImportFlowGitNamespaceType string
 
 const (
-	ImportFlowGitNamespaceTypeStr    ImportFlowGitNamespaceType = "str"
-	ImportFlowGitNamespaceTypeNumber ImportFlowGitNamespaceType = "number"
+	AuthUserImportFlowGitNamespaceTypeStr    AuthUserImportFlowGitNamespaceType = "str"
+	AuthUserImportFlowGitNamespaceTypeNumber AuthUserImportFlowGitNamespaceType = "number"
 )
 
-type ImportFlowGitNamespace struct {
-	Str    *string
-	Number *float64
+type AuthUserImportFlowGitNamespace struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
 
-	Type ImportFlowGitNamespaceType
+	Type AuthUserImportFlowGitNamespaceType
 }
 
-func CreateImportFlowGitNamespaceStr(str string) ImportFlowGitNamespace {
-	typ := ImportFlowGitNamespaceTypeStr
+func CreateAuthUserImportFlowGitNamespaceStr(str string) AuthUserImportFlowGitNamespace {
+	typ := AuthUserImportFlowGitNamespaceTypeStr
 
-	return ImportFlowGitNamespace{
+	return AuthUserImportFlowGitNamespace{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateImportFlowGitNamespaceNumber(number float64) ImportFlowGitNamespace {
-	typ := ImportFlowGitNamespaceTypeNumber
+func CreateAuthUserImportFlowGitNamespaceNumber(number float64) AuthUserImportFlowGitNamespace {
+	typ := AuthUserImportFlowGitNamespaceTypeNumber
 
-	return ImportFlowGitNamespace{
+	return AuthUserImportFlowGitNamespace{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *ImportFlowGitNamespace) UnmarshalJSON(data []byte) error {
+func (u *AuthUserImportFlowGitNamespace) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = ImportFlowGitNamespaceTypeStr
+		u.Type = AuthUserImportFlowGitNamespaceTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = ImportFlowGitNamespaceTypeNumber
+		u.Type = AuthUserImportFlowGitNamespaceTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ImportFlowGitNamespace", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AuthUserImportFlowGitNamespace", string(data))
 }
 
-func (u ImportFlowGitNamespace) MarshalJSON() ([]byte, error) {
+func (u AuthUserImportFlowGitNamespace) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -699,61 +717,61 @@ func (u ImportFlowGitNamespace) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ImportFlowGitNamespace: all fields are null")
+	return nil, errors.New("could not marshal union type AuthUserImportFlowGitNamespace: all fields are null")
 }
 
-type ImportFlowGitNamespaceIDType string
+type AuthUserImportFlowGitNamespaceIDType string
 
 const (
-	ImportFlowGitNamespaceIDTypeStr    ImportFlowGitNamespaceIDType = "str"
-	ImportFlowGitNamespaceIDTypeNumber ImportFlowGitNamespaceIDType = "number"
+	AuthUserImportFlowGitNamespaceIDTypeStr    AuthUserImportFlowGitNamespaceIDType = "str"
+	AuthUserImportFlowGitNamespaceIDTypeNumber AuthUserImportFlowGitNamespaceIDType = "number"
 )
 
-type ImportFlowGitNamespaceID struct {
-	Str    *string
-	Number *float64
+type AuthUserImportFlowGitNamespaceID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
 
-	Type ImportFlowGitNamespaceIDType
+	Type AuthUserImportFlowGitNamespaceIDType
 }
 
-func CreateImportFlowGitNamespaceIDStr(str string) ImportFlowGitNamespaceID {
-	typ := ImportFlowGitNamespaceIDTypeStr
+func CreateAuthUserImportFlowGitNamespaceIDStr(str string) AuthUserImportFlowGitNamespaceID {
+	typ := AuthUserImportFlowGitNamespaceIDTypeStr
 
-	return ImportFlowGitNamespaceID{
+	return AuthUserImportFlowGitNamespaceID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateImportFlowGitNamespaceIDNumber(number float64) ImportFlowGitNamespaceID {
-	typ := ImportFlowGitNamespaceIDTypeNumber
+func CreateAuthUserImportFlowGitNamespaceIDNumber(number float64) AuthUserImportFlowGitNamespaceID {
+	typ := AuthUserImportFlowGitNamespaceIDTypeNumber
 
-	return ImportFlowGitNamespaceID{
+	return AuthUserImportFlowGitNamespaceID{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *ImportFlowGitNamespaceID) UnmarshalJSON(data []byte) error {
+func (u *AuthUserImportFlowGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = ImportFlowGitNamespaceIDTypeStr
+		u.Type = AuthUserImportFlowGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = ImportFlowGitNamespaceIDTypeNumber
+		u.Type = AuthUserImportFlowGitNamespaceIDTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ImportFlowGitNamespaceID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AuthUserImportFlowGitNamespaceID", string(data))
 }
 
-func (u ImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
+func (u AuthUserImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -762,22 +780,22 @@ func (u ImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ImportFlowGitNamespaceID: all fields are null")
+	return nil, errors.New("could not marshal union type AuthUserImportFlowGitNamespaceID: all fields are null")
 }
 
-type ImportFlowGitProvider string
+type AuthUserImportFlowGitProvider string
 
 const (
-	ImportFlowGitProviderGithub           ImportFlowGitProvider = "github"
-	ImportFlowGitProviderGitlab           ImportFlowGitProvider = "gitlab"
-	ImportFlowGitProviderBitbucket        ImportFlowGitProvider = "bitbucket"
-	ImportFlowGitProviderGithubCustomHost ImportFlowGitProvider = "github-custom-host"
+	AuthUserImportFlowGitProviderGithub           AuthUserImportFlowGitProvider = "github"
+	AuthUserImportFlowGitProviderGitlab           AuthUserImportFlowGitProvider = "gitlab"
+	AuthUserImportFlowGitProviderBitbucket        AuthUserImportFlowGitProvider = "bitbucket"
+	AuthUserImportFlowGitProviderGithubCustomHost AuthUserImportFlowGitProvider = "github-custom-host"
 )
 
-func (e ImportFlowGitProvider) ToPointer() *ImportFlowGitProvider {
+func (e AuthUserImportFlowGitProvider) ToPointer() *AuthUserImportFlowGitProvider {
 	return &e
 }
-func (e *ImportFlowGitProvider) UnmarshalJSON(data []byte) error {
+func (e *AuthUserImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -790,65 +808,65 @@ func (e *ImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 	case "bitbucket":
 		fallthrough
 	case "github-custom-host":
-		*e = ImportFlowGitProvider(v)
+		*e = AuthUserImportFlowGitProvider(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ImportFlowGitProvider: %v", v)
+		return fmt.Errorf("invalid value for AuthUserImportFlowGitProvider: %v", v)
 	}
 }
 
-type GitNamespaceIDType string
+type AuthUserGitNamespaceIDType string
 
 const (
-	GitNamespaceIDTypeStr    GitNamespaceIDType = "str"
-	GitNamespaceIDTypeNumber GitNamespaceIDType = "number"
+	AuthUserGitNamespaceIDTypeStr    AuthUserGitNamespaceIDType = "str"
+	AuthUserGitNamespaceIDTypeNumber AuthUserGitNamespaceIDType = "number"
 )
 
-type GitNamespaceID struct {
-	Str    *string
-	Number *float64
+type AuthUserGitNamespaceID struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
 
-	Type GitNamespaceIDType
+	Type AuthUserGitNamespaceIDType
 }
 
-func CreateGitNamespaceIDStr(str string) GitNamespaceID {
-	typ := GitNamespaceIDTypeStr
+func CreateAuthUserGitNamespaceIDStr(str string) AuthUserGitNamespaceID {
+	typ := AuthUserGitNamespaceIDTypeStr
 
-	return GitNamespaceID{
+	return AuthUserGitNamespaceID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGitNamespaceIDNumber(number float64) GitNamespaceID {
-	typ := GitNamespaceIDTypeNumber
+func CreateAuthUserGitNamespaceIDNumber(number float64) AuthUserGitNamespaceID {
+	typ := AuthUserGitNamespaceIDTypeNumber
 
-	return GitNamespaceID{
+	return AuthUserGitNamespaceID{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *GitNamespaceID) UnmarshalJSON(data []byte) error {
+func (u *AuthUserGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = GitNamespaceIDTypeStr
+		u.Type = AuthUserGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = GitNamespaceIDTypeNumber
+		u.Type = AuthUserGitNamespaceIDTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GitNamespaceID", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AuthUserGitNamespaceID", string(data))
 }
 
-func (u GitNamespaceID) MarshalJSON() ([]byte, error) {
+func (u AuthUserGitNamespaceID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -857,144 +875,144 @@ func (u GitNamespaceID) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GitNamespaceID: all fields are null")
+	return nil, errors.New("could not marshal union type AuthUserGitNamespaceID: all fields are null")
 }
 
-type PreferredScopesAndGitNamespaces struct {
-	ScopeID        string          `json:"scopeId"`
-	GitNamespaceID *GitNamespaceID `json:"gitNamespaceId"`
+type AuthUserPreferredScopesAndGitNamespace struct {
+	ScopeID        string                  `json:"scopeId"`
+	GitNamespaceID *AuthUserGitNamespaceID `json:"gitNamespaceId"`
 }
 
-func (o *PreferredScopesAndGitNamespaces) GetScopeID() string {
+func (o *AuthUserPreferredScopesAndGitNamespace) GetScopeID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeID
 }
 
-func (o *PreferredScopesAndGitNamespaces) GetGitNamespaceID() *GitNamespaceID {
+func (o *AuthUserPreferredScopesAndGitNamespace) GetGitNamespaceID() *AuthUserGitNamespaceID {
 	if o == nil {
 		return nil
 	}
 	return o.GitNamespaceID
 }
 
-type Dismissals struct {
+type AuthUserDismissal struct {
 	ScopeID   string  `json:"scopeId"`
 	CreatedAt float64 `json:"createdAt"`
 }
 
-func (o *Dismissals) GetScopeID() string {
+func (o *AuthUserDismissal) GetScopeID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ScopeID
 }
 
-func (o *Dismissals) GetCreatedAt() float64 {
+func (o *AuthUserDismissal) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-// DismissedToasts - A record of when, under a certain scopeId, a toast was dismissed
-type DismissedToasts struct {
-	Name       string       `json:"name"`
-	Dismissals []Dismissals `json:"dismissals"`
+// AuthUserDismissedToast - A record of when, under a certain scopeId, a toast was dismissed
+type AuthUserDismissedToast struct {
+	Name       string              `json:"name"`
+	Dismissals []AuthUserDismissal `json:"dismissals"`
 }
 
-func (o *DismissedToasts) GetName() string {
+func (o *AuthUserDismissedToast) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *DismissedToasts) GetDismissals() []Dismissals {
+func (o *AuthUserDismissedToast) GetDismissals() []AuthUserDismissal {
 	if o == nil {
-		return []Dismissals{}
+		return []AuthUserDismissal{}
 	}
 	return o.Dismissals
 }
 
-// FavoriteProjectsAndSpaces - A list of projects and spaces across teams that a user has marked as a favorite.
-type FavoriteProjectsAndSpaces struct {
+// AuthUserFavoriteProjectsAndSpace - A list of projects and spaces across teams that a user has marked as a favorite.
+type AuthUserFavoriteProjectsAndSpace struct {
 	TeamID    string `json:"teamId"`
 	ProjectID string `json:"projectId"`
 }
 
-func (o *FavoriteProjectsAndSpaces) GetTeamID() string {
+func (o *AuthUserFavoriteProjectsAndSpace) GetTeamID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TeamID
 }
 
-func (o *FavoriteProjectsAndSpaces) GetProjectID() string {
+func (o *AuthUserFavoriteProjectsAndSpace) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-// RemoteCaching - remote caching settings
-type RemoteCaching struct {
+// AuthUserRemoteCaching - remote caching settings
+type AuthUserRemoteCaching struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
-func (o *RemoteCaching) GetEnabled() *bool {
+func (o *AuthUserRemoteCaching) GetEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Enabled
 }
 
-// DataCache - data cache settings
-type DataCache struct {
+// AuthUserDataCache - data cache settings
+type AuthUserDataCache struct {
 	ExcessBillingEnabled *bool `json:"excessBillingEnabled,omitempty"`
 }
 
-func (o *DataCache) GetExcessBillingEnabled() *bool {
+func (o *AuthUserDataCache) GetExcessBillingEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ExcessBillingEnabled
 }
 
-type WebAnalytics struct {
+type AuthUserWebAnalytics struct {
 	BlockedFrom        *float64 `json:"blockedFrom,omitempty"`
 	BlockedUntil       *float64 `json:"blockedUntil,omitempty"`
 	IsCurrentlyBlocked bool     `json:"isCurrentlyBlocked"`
 }
 
-func (o *WebAnalytics) GetBlockedFrom() *float64 {
+func (o *AuthUserWebAnalytics) GetBlockedFrom() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BlockedFrom
 }
 
-func (o *WebAnalytics) GetBlockedUntil() *float64 {
+func (o *AuthUserWebAnalytics) GetBlockedUntil() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BlockedUntil
 }
 
-func (o *WebAnalytics) GetIsCurrentlyBlocked() bool {
+func (o *AuthUserWebAnalytics) GetIsCurrentlyBlocked() bool {
 	if o == nil {
 		return false
 	}
 	return o.IsCurrentlyBlocked
 }
 
-// FeatureBlocks - Feature blocks for the user
-type FeatureBlocks struct {
-	WebAnalytics *WebAnalytics `json:"webAnalytics,omitempty"`
+// AuthUserFeatureBlocks - Feature blocks for the user
+type AuthUserFeatureBlocks struct {
+	WebAnalytics *AuthUserWebAnalytics `json:"webAnalytics,omitempty"`
 }
 
-func (o *FeatureBlocks) GetWebAnalytics() *WebAnalytics {
+func (o *AuthUserFeatureBlocks) GetWebAnalytics() *AuthUserWebAnalytics {
 	if o == nil {
 		return nil
 	}
@@ -1006,31 +1024,31 @@ type AuthUser struct {
 	// UNIX timestamp (in milliseconds) when the User account was created.
 	CreatedAt float64 `json:"createdAt"`
 	// When the User account has been "soft blocked", this property will contain the date when the restriction was enacted, and the identifier for why.
-	SoftBlock *SoftBlock `json:"softBlock"`
+	SoftBlock *AuthUserSoftBlock `json:"softBlock"`
 	// An object containing billing infomation associated with the User account.
-	Billing *Billing `json:"billing"`
+	Billing *AuthUserBilling `json:"billing"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	ResourceConfig ResourceConfig `json:"resourceConfig"`
+	ResourceConfig AuthUserResourceConfig `json:"resourceConfig"`
 	// Prefix that will be used in the URL of "Preview" deployments created by the User account.
 	StagingPrefix string `json:"stagingPrefix"`
 	// set of dashboard view preferences (cards or list) per scopeId
-	ActiveDashboardViews            []ActiveDashboardViews            `json:"activeDashboardViews,omitempty"`
-	ImportFlowGitNamespace          *ImportFlowGitNamespace           `json:"importFlowGitNamespace,omitempty"`
-	ImportFlowGitNamespaceID        *ImportFlowGitNamespaceID         `json:"importFlowGitNamespaceId,omitempty"`
-	ImportFlowGitProvider           *ImportFlowGitProvider            `json:"importFlowGitProvider,omitempty"`
-	PreferredScopesAndGitNamespaces []PreferredScopesAndGitNamespaces `json:"preferredScopesAndGitNamespaces,omitempty"`
+	ActiveDashboardViews            []AuthUserActiveDashboardView            `json:"activeDashboardViews,omitempty"`
+	ImportFlowGitNamespace          *AuthUserImportFlowGitNamespace          `json:"importFlowGitNamespace,omitempty"`
+	ImportFlowGitNamespaceID        *AuthUserImportFlowGitNamespaceID        `json:"importFlowGitNamespaceId,omitempty"`
+	ImportFlowGitProvider           *AuthUserImportFlowGitProvider           `json:"importFlowGitProvider,omitempty"`
+	PreferredScopesAndGitNamespaces []AuthUserPreferredScopesAndGitNamespace `json:"preferredScopesAndGitNamespaces,omitempty"`
 	// A record of when, under a certain scopeId, a toast was dismissed
-	DismissedToasts []DismissedToasts `json:"dismissedToasts,omitempty"`
+	DismissedToasts []AuthUserDismissedToast `json:"dismissedToasts,omitempty"`
 	// A list of projects and spaces across teams that a user has marked as a favorite.
-	FavoriteProjectsAndSpaces []FavoriteProjectsAndSpaces `json:"favoriteProjectsAndSpaces,omitempty"`
+	FavoriteProjectsAndSpaces []AuthUserFavoriteProjectsAndSpace `json:"favoriteProjectsAndSpaces,omitempty"`
 	// Whether the user has a trial available for a paid plan subscription.
 	HasTrialAvailable bool `json:"hasTrialAvailable"`
 	// remote caching settings
-	RemoteCaching *RemoteCaching `json:"remoteCaching,omitempty"`
+	RemoteCaching *AuthUserRemoteCaching `json:"remoteCaching,omitempty"`
 	// data cache settings
-	DataCache *DataCache `json:"dataCache,omitempty"`
+	DataCache *AuthUserDataCache `json:"dataCache,omitempty"`
 	// Feature blocks for the user
-	FeatureBlocks *FeatureBlocks `json:"featureBlocks,omitempty"`
+	FeatureBlocks *AuthUserFeatureBlocks `json:"featureBlocks,omitempty"`
 	// The User's unique identifier.
 	ID string `json:"id"`
 	// Email address associated with the User account.
@@ -1052,23 +1070,23 @@ func (o *AuthUser) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
-func (o *AuthUser) GetSoftBlock() *SoftBlock {
+func (o *AuthUser) GetSoftBlock() *AuthUserSoftBlock {
 	if o == nil {
 		return nil
 	}
 	return o.SoftBlock
 }
 
-func (o *AuthUser) GetBilling() *Billing {
+func (o *AuthUser) GetBilling() *AuthUserBilling {
 	if o == nil {
 		return nil
 	}
 	return o.Billing
 }
 
-func (o *AuthUser) GetResourceConfig() ResourceConfig {
+func (o *AuthUser) GetResourceConfig() AuthUserResourceConfig {
 	if o == nil {
-		return ResourceConfig{}
+		return AuthUserResourceConfig{}
 	}
 	return o.ResourceConfig
 }
@@ -1080,49 +1098,49 @@ func (o *AuthUser) GetStagingPrefix() string {
 	return o.StagingPrefix
 }
 
-func (o *AuthUser) GetActiveDashboardViews() []ActiveDashboardViews {
+func (o *AuthUser) GetActiveDashboardViews() []AuthUserActiveDashboardView {
 	if o == nil {
 		return nil
 	}
 	return o.ActiveDashboardViews
 }
 
-func (o *AuthUser) GetImportFlowGitNamespace() *ImportFlowGitNamespace {
+func (o *AuthUser) GetImportFlowGitNamespace() *AuthUserImportFlowGitNamespace {
 	if o == nil {
 		return nil
 	}
 	return o.ImportFlowGitNamespace
 }
 
-func (o *AuthUser) GetImportFlowGitNamespaceID() *ImportFlowGitNamespaceID {
+func (o *AuthUser) GetImportFlowGitNamespaceID() *AuthUserImportFlowGitNamespaceID {
 	if o == nil {
 		return nil
 	}
 	return o.ImportFlowGitNamespaceID
 }
 
-func (o *AuthUser) GetImportFlowGitProvider() *ImportFlowGitProvider {
+func (o *AuthUser) GetImportFlowGitProvider() *AuthUserImportFlowGitProvider {
 	if o == nil {
 		return nil
 	}
 	return o.ImportFlowGitProvider
 }
 
-func (o *AuthUser) GetPreferredScopesAndGitNamespaces() []PreferredScopesAndGitNamespaces {
+func (o *AuthUser) GetPreferredScopesAndGitNamespaces() []AuthUserPreferredScopesAndGitNamespace {
 	if o == nil {
 		return nil
 	}
 	return o.PreferredScopesAndGitNamespaces
 }
 
-func (o *AuthUser) GetDismissedToasts() []DismissedToasts {
+func (o *AuthUser) GetDismissedToasts() []AuthUserDismissedToast {
 	if o == nil {
 		return nil
 	}
 	return o.DismissedToasts
 }
 
-func (o *AuthUser) GetFavoriteProjectsAndSpaces() []FavoriteProjectsAndSpaces {
+func (o *AuthUser) GetFavoriteProjectsAndSpaces() []AuthUserFavoriteProjectsAndSpace {
 	if o == nil {
 		return nil
 	}
@@ -1136,21 +1154,21 @@ func (o *AuthUser) GetHasTrialAvailable() bool {
 	return o.HasTrialAvailable
 }
 
-func (o *AuthUser) GetRemoteCaching() *RemoteCaching {
+func (o *AuthUser) GetRemoteCaching() *AuthUserRemoteCaching {
 	if o == nil {
 		return nil
 	}
 	return o.RemoteCaching
 }
 
-func (o *AuthUser) GetDataCache() *DataCache {
+func (o *AuthUser) GetDataCache() *AuthUserDataCache {
 	if o == nil {
 		return nil
 	}
 	return o.DataCache
 }
 
-func (o *AuthUser) GetFeatureBlocks() *FeatureBlocks {
+func (o *AuthUser) GetFeatureBlocks() *AuthUserFeatureBlocks {
 	if o == nil {
 		return nil
 	}

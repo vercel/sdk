@@ -6,9 +6,7 @@
 ### `models.RemoveProjectEnvTarget1[]`
 
 ```typescript
-const value: models.RemoveProjectEnvTarget1[] = [
-  "production",
-];
+const value: models.RemoveProjectEnvTarget1[] = [];
 ```
 
 ### `models.RemoveProjectEnvTarget2`

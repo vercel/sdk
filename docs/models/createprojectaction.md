@@ -11,5 +11,5 @@ let value: CreateProjectAction = "deny";
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
 ```

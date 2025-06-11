@@ -2,19 +2,19 @@
 
 package components
 
-type Error struct {
+type VercelBadRequestErrorError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
 }
 
-func (o *Error) GetCode() string {
+func (o *VercelBadRequestErrorError) GetCode() string {
 	if o == nil {
 		return ""
 	}
 	return o.Code
 }
 
-func (o *Error) GetMessage() string {
+func (o *VercelBadRequestErrorError) GetMessage() string {
 	if o == nil {
 		return ""
 	}

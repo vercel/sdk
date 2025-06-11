@@ -7,6 +7,7 @@ import { UpdateTeamMemberRequestBody } from "@vercel/sdk/models/updateteammember
 
 let value: UpdateTeamMemberRequestBody = {
   confirmed: true,
+  role: "[\"MEMBER\",\"VIEWER\"]",
   projects: [
     {
       projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",

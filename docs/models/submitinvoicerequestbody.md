@@ -11,16 +11,7 @@ let value: SubmitInvoiceRequestBody = {
     start: new Date("2024-10-21T11:00:17.650Z"),
     end: new Date("2024-12-04T19:43:42.837Z"),
   },
-  items: [
-    {
-      billingPlanId: "<id>",
-      name: "<value>",
-      price: "139.75",
-      quantity: 4818.11,
-      units: "<value>",
-      total: "<value>",
-    },
-  ],
+  items: [],
 };
 ```
 

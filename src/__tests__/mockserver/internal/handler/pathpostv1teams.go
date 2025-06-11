@@ -50,10 +50,9 @@ func testCreateTeamCreateTeam0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateTeamResponseBody{
-		ID:      "team_nLlpyC6RE1qxqglFKbrMxlud",
-		Slug:    "<value>",
-		Billing: operations.CreateTeamBilling{},
+	var respBody *operations.CreateTeamResponseBody = &operations.CreateTeamResponseBody{
+		ID:   "team_nLlpyC6RE1qxqglFKbrMxlud",
+		Slug: "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

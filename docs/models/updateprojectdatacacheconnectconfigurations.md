@@ -8,10 +8,10 @@ import { UpdateProjectDataCacheConnectConfigurations } from "@vercel/sdk/models/
 let value: UpdateProjectDataCacheConnectConfigurations = {
   envId: "<id>",
   connectConfigurationId: "<id>",
-  passive: false,
+  passive: true,
   buildsEnabled: false,
-  createdAt: 2203.33,
-  updatedAt: 8347.64,
+  createdAt: 1411.89,
+  updatedAt: 7659.5,
 };
 ```
 

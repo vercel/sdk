@@ -50,7 +50,7 @@ func testCreateEdgeConfigTokenCreateEdgeConfigToken0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateEdgeConfigTokenResponseBody{
+	var respBody *operations.CreateEdgeConfigTokenResponseBody = &operations.CreateEdgeConfigTokenResponseBody{
 		Token: "<value>",
 		ID:    "<id>",
 	}

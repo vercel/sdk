@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 8bf02cd72ecf78ed52bd6b09ce49a54b
+  docChecksum: 8bd319e96529407a127c450520c3b620
   docVersion: 0.0.1
-  speakeasyVersion: 1.552.0
-  generationVersion: 2.610.0
-  releaseVersion: 1.7.7
-  configChecksum: 3c3f98b027c1ad50c3971831a84514eb
+  speakeasyVersion: 1.560.1
+  generationVersion: 2.625.0
+  releaseVersion: 1.8.0
+  configChecksum: 590af9bb7278bbdc74ca1f777c75ff07
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.9
+    core: 3.21.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -35,9 +35,9 @@ features:
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
     tests: 0.16.2
-    unions: 2.85.8
+    unions: 2.85.9
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -88,6 +88,7 @@ generatedFiles:
   - docs/models/addprojectmemberresponsebody.md
   - docs/models/addresses.md
   - docs/models/affectedhostmap.md
+  - docs/models/aibots.md
   - docs/models/algo.md
   - docs/models/aliasassigned.md
   - docs/models/aliasassignedat.md
@@ -99,6 +100,7 @@ generatedFiles:
   - docs/models/anomalies.md
   - docs/models/anomalyalerts.md
   - docs/models/applications.md
+  - docs/models/architecture.md
   - docs/models/artifactexistsrequest.md
   - docs/models/artifactqueryrequest.md
   - docs/models/artifactqueryrequestbody.md
@@ -113,7 +115,10 @@ generatedFiles:
   - docs/models/authtokenscopesorigin.md
   - docs/models/authtokenscopestype.md
   - docs/models/authuser.md
+  - docs/models/authuserbuildentitlements.md
   - docs/models/authuserlimited.md
+  - docs/models/authuserremotecaching.md
+  - docs/models/authuserresourceconfig.md
   - docs/models/aws.md
   - docs/models/backup.md
   - docs/models/backups.md
@@ -134,6 +139,8 @@ generatedFiles:
   - docs/models/blockhistory.md
   - docs/models/blockreason.md
   - docs/models/blocktype.md
+  - docs/models/botfilter.md
+  - docs/models/botprotection.md
   - docs/models/branchmatcher.md
   - docs/models/browser.md
   - docs/models/budget.md
@@ -153,8 +160,10 @@ generatedFiles:
   - docs/models/canceldeploymentaliasassignedat.md
   - docs/models/canceldeploymentaliaserror.md
   - docs/models/canceldeploymentaliaswarning.md
+  - docs/models/canceldeploymentarchitecture.md
   - docs/models/canceldeploymentbuild.md
   - docs/models/canceldeploymentbuilds.md
+  - docs/models/canceldeploymentchecks.md
   - docs/models/canceldeploymentchecksconclusion.md
   - docs/models/canceldeploymentchecksstate.md
   - docs/models/canceldeploymentconfig.md
@@ -169,6 +178,7 @@ generatedFiles:
   - docs/models/canceldeploymentcustomenvironmentdomains.md
   - docs/models/canceldeploymentcustomenvironmenttype.md
   - docs/models/canceldeploymentcustomenvironmentverification.md
+  - docs/models/canceldeploymentdeploymentalias.md
   - docs/models/canceldeploymentdeploymentsreadystate.md
   - docs/models/canceldeploymentdeploymentsstatus.md
   - docs/models/canceldeploymentflags.md
@@ -247,6 +257,7 @@ generatedFiles:
   - docs/models/canceldeploymentroutesmissing.md
   - docs/models/canceldeploymentsource.md
   - docs/models/canceldeploymentspeedinsights.md
+  - docs/models/canceldeploymentstate.md
   - docs/models/canceldeploymentstatus.md
   - docs/models/canceldeploymenttarget.md
   - docs/models/canceldeploymentteam.md
@@ -272,8 +283,10 @@ generatedFiles:
   - docs/models/configuration.md
   - docs/models/configurations.md
   - docs/models/configuredby.md
+  - docs/models/connect.md
   - docs/models/connectconfigurations.md
   - docs/models/connectconfigurations1.md
+  - docs/models/connectdatatransfer.md
   - docs/models/connection.md
   - docs/models/contact.md
   - docs/models/contentdispositiontype.md
@@ -338,6 +351,7 @@ generatedFiles:
   - docs/models/created1.md
   - docs/models/created2.md
   - docs/models/createdcontenthint.md
+  - docs/models/createdeploymentchecks.md
   - docs/models/createdeploymentcrons.md
   - docs/models/createdeploymentcustomenvironmenttype.md
   - docs/models/createdeploymentdeploymentsstatus.md
@@ -393,6 +407,7 @@ generatedFiles:
   - docs/models/createdeployments.md
   - docs/models/createdeploymentsource.md
   - docs/models/createdeploymentspeedinsights.md
+  - docs/models/createdeploymentstate.md
   - docs/models/createdeploymentstatus.md
   - docs/models/createdeploymenttarget.md
   - docs/models/createdeploymentteam.md
@@ -424,11 +439,13 @@ generatedFiles:
   - docs/models/createlogdrainresponsebody.md
   - docs/models/createlogdrainsources.md
   - docs/models/createprojectaction.md
+  - docs/models/createprojectaibots.md
   - docs/models/createprojectalgo.md
   - docs/models/createprojectaliasassigned.md
   - docs/models/createprojectaliaserror.md
   - docs/models/createprojectanalytics.md
   - docs/models/createprojectaws.md
+  - docs/models/createprojectbotfilter.md
   - docs/models/createprojectbranchmatcher.md
   - docs/models/createprojectbuildmachinetype.md
   - docs/models/createprojectbuilds.md
@@ -565,6 +582,7 @@ generatedFiles:
   - docs/models/createprojectenvtargetprojectsresponse2.md
   - docs/models/createprojectenvvalue.md
   - docs/models/createprojecterl.md
+  - docs/models/createprojectfeatures.md
   - docs/models/createprojectfirewallroutes.md
   - docs/models/createprojectframework.md
   - docs/models/createprojectfunctiondefaultmemorytype.md
@@ -602,6 +620,7 @@ generatedFiles:
   - docs/models/createprojectoidctokenclaims.md
   - docs/models/createprojectoidctokenconfig.md
   - docs/models/createprojectoptionsallowlist.md
+  - docs/models/createprojectowasp.md
   - docs/models/createprojectpasswordprotection.md
   - docs/models/createprojectpaths.md
   - docs/models/createprojectpermissions.md
@@ -622,6 +641,7 @@ generatedFiles:
   - docs/models/createprojectprojectsreadystate.md
   - docs/models/createprojectprojectsreadysubstate.md
   - docs/models/createprojectprojectsresourceconfig.md
+  - docs/models/createprojectprojectsresponse200action.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodylastaliasrequesttype.md
@@ -632,6 +652,7 @@ generatedFiles:
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/createprojectprojectsresponse200applicationjsontype.md
   - docs/models/createprojectprojectsresponse200type.md
+  - docs/models/createprojectprojectsresponseaction.md
   - docs/models/createprojectprojectsresponsebranchmatcher.md
   - docs/models/createprojectprojectsresponsetype.md
   - docs/models/createprojectprojectstarget.md
@@ -648,6 +669,7 @@ generatedFiles:
   - docs/models/createprojectrequestbody.md
   - docs/models/createprojectresourceconfig.md
   - docs/models/createprojectresponsebody.md
+  - docs/models/createprojectrollbackdescription.md
   - docs/models/createprojectrollingrelease.md
   - docs/models/createprojectsecurity.md
   - docs/models/createprojectspeedinsights.md
@@ -691,7 +713,6 @@ generatedFiles:
   - docs/models/createrecordresponsebody.md
   - docs/models/createrecordresponsebody1.md
   - docs/models/createrecordresponsebody2.md
-  - docs/models/createteambilling.md
   - docs/models/createteamrequestbody.md
   - docs/models/createteamresponsebody.md
   - docs/models/createwebhookevents.md
@@ -756,6 +777,7 @@ generatedFiles:
   - docs/models/deployhook.md
   - docs/models/deployhooks.md
   - docs/models/deployment.md
+  - docs/models/deploymentalias.md
   - docs/models/deploymentexpiration.md
   - docs/models/deployments.md
   - docs/models/deploymenttype.md
@@ -838,6 +860,7 @@ generatedFiles:
   - docs/models/emailinvitecodes.md
   - docs/models/emailnotifications.md
   - docs/models/enablepreviewfeedback.md
+  - docs/models/enableproductionfeedback.md
   - docs/models/encoding.md
   - docs/models/entities.md
   - docs/models/entitlements.md
@@ -865,6 +888,7 @@ generatedFiles:
   - docs/models/favoritesviewpreference.md
   - docs/models/fcp.md
   - docs/models/featureblocks.md
+  - docs/models/features.md
   - docs/models/fifteen.md
   - docs/models/fifty.md
   - docs/models/fiftyeight.md
@@ -1000,6 +1024,8 @@ generatedFiles:
   - docs/models/flags2.md
   - docs/models/flagsdefinitions.md
   - docs/models/flagsoptions.md
+  - docs/models/fluidcpuduration.md
+  - docs/models/fluidduration.md
   - docs/models/forcenew.md
   - docs/models/formats.md
   - docs/models/forty.md
@@ -1258,10 +1284,13 @@ generatedFiles:
   - docs/models/getdeploymentroutesmissing.md
   - docs/models/getdeploymentsaliasassigned.md
   - docs/models/getdeploymentsaliaserror.md
+  - docs/models/getdeploymentschecks.md
   - docs/models/getdeploymentschecksconclusion.md
   - docs/models/getdeploymentschecksstate.md
   - docs/models/getdeploymentscreator.md
   - docs/models/getdeploymentscustomenvironment.md
+  - docs/models/getdeploymentsdeploymentalias.md
+  - docs/models/getdeploymentsdeploymentsstate.md
   - docs/models/getdeploymentsframework.md
   - docs/models/getdeploymentsgitcomments.md
   - docs/models/getdeploymentsnodeversion.md
@@ -1346,12 +1375,14 @@ generatedFiles:
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsjavaaction.md
-  - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrslfiaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsmaaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrssdaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrssfaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrssqliaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodycrsxssaction.md
+  - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodymanagedrulesaction.md
+  - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodymanagedrulesaibotsaction.md
+  - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodymanagedrulesowaspaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesaction.md
   - docs/models/getfirewallconfigsecurityresponse200applicationjsonresponsebodyrulesactionaction.md
   - docs/models/getfirewallconfigsecurityresponseaction.md
@@ -1504,11 +1535,13 @@ generatedFiles:
   - docs/models/getprojectmembersresponsebodypagination.md
   - docs/models/getprojectmembersresponsebodyrole.md
   - docs/models/getprojectsaction.md
+  - docs/models/getprojectsaibots.md
   - docs/models/getprojectsalgo.md
   - docs/models/getprojectsaliasassigned.md
   - docs/models/getprojectsaliaserror.md
   - docs/models/getprojectsanalytics.md
   - docs/models/getprojectsaws.md
+  - docs/models/getprojectsbotfilter.md
   - docs/models/getprojectsbranchmatcher.md
   - docs/models/getprojectsbuildmachinetype.md
   - docs/models/getprojectsbuilds.md
@@ -1560,6 +1593,7 @@ generatedFiles:
   - docs/models/getprojectsenvid.md
   - docs/models/getprojectsenvid2.md
   - docs/models/getprojectserl.md
+  - docs/models/getprojectsfeatures.md
   - docs/models/getprojectsfirewallroutes.md
   - docs/models/getprojectsframework.md
   - docs/models/getprojectsfunctiondefaultmemorytype.md
@@ -1597,6 +1631,7 @@ generatedFiles:
   - docs/models/getprojectsoidctokenclaims.md
   - docs/models/getprojectsoidctokenconfig.md
   - docs/models/getprojectsoptionsallowlist.md
+  - docs/models/getprojectsowasp.md
   - docs/models/getprojectspasswordprotection.md
   - docs/models/getprojectspaths.md
   - docs/models/getprojectspermissions.md
@@ -1617,6 +1652,7 @@ generatedFiles:
   - docs/models/getprojectsprojectsplan.md
   - docs/models/getprojectsprojectsreadystate.md
   - docs/models/getprojectsprojectsreadysubstate.md
+  - docs/models/getprojectsprojectsresponse200action.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectscustomenvironmentstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectslatestdeploymentstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectssecurityfirewallroutestype.md
@@ -1625,6 +1661,7 @@ generatedFiles:
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/getprojectsprojectsresponse200applicationjsontype.md
   - docs/models/getprojectsprojectsresponse200type.md
+  - docs/models/getprojectsprojectsresponseaction.md
   - docs/models/getprojectsprojectsresponsebranchmatcher.md
   - docs/models/getprojectsprojectsresponsetype.md
   - docs/models/getprojectsprojectstype.md
@@ -1639,6 +1676,7 @@ generatedFiles:
   - docs/models/getprojectsrequest.md
   - docs/models/getprojectsresourceconfig.md
   - docs/models/getprojectsresponsebody.md
+  - docs/models/getprojectsrollbackdescription.md
   - docs/models/getprojectsrollingrelease.md
   - docs/models/getprojectssecurity.md
   - docs/models/getprojectsspeedinsights.md
@@ -1885,7 +1923,6 @@ generatedFiles:
   - docs/models/membership.md
   - docs/models/metadata.md
   - docs/models/metrics.md
-  - docs/models/mfa.md
   - docs/models/mfaconfiguration.md
   - docs/models/microfrontends.md
   - docs/models/microfrontends1.md
@@ -1949,6 +1986,7 @@ generatedFiles:
   - docs/models/oldtarget.md
   - docs/models/oldteam.md
   - docs/models/oldtrustedips.md
+  - docs/models/ondemandconcurrencyminutes.md
   - docs/models/one.md
   - docs/models/onehundred.md
   - docs/models/onehundredandeight.md
@@ -2018,6 +2056,7 @@ generatedFiles:
   - docs/models/overagereason.md
   - docs/models/overageusagealerts.md
   - docs/models/override.md
+  - docs/models/owasp.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
   - docs/models/paidfeatures.md
@@ -2041,6 +2080,9 @@ generatedFiles:
   - docs/models/patchteamremotecaching.md
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
+  - docs/models/patchteamroles.md
+  - docs/models/patchteamroles1.md
+  - docs/models/patchteamroles2.md
   - docs/models/patchteamsaml.md
   - docs/models/patchurlprotectionbypassrequest.md
   - docs/models/patchurlprotectionbypassrequestbody.md
@@ -2072,6 +2114,7 @@ generatedFiles:
   - docs/models/payloaddeployment.md
   - docs/models/payloaddismissals.md
   - docs/models/payloaddismissedtoasts.md
+  - docs/models/payloadenablepreviewfeedback.md
   - docs/models/payloadenvid.md
   - docs/models/payloadfavoriteprojectsandspaces.md
   - docs/models/payloadfavoritesviewpreference.md
@@ -2175,7 +2218,9 @@ generatedFiles:
   - docs/models/purpose2.md
   - docs/models/purposetype.md
   - docs/models/putfirewallconfigaction.md
+  - docs/models/putfirewallconfigaibots.md
   - docs/models/putfirewallconfigalgo.md
+  - docs/models/putfirewallconfigbotprotection.md
   - docs/models/putfirewallconfigchanges.md
   - docs/models/putfirewallconfigconditiongroup.md
   - docs/models/putfirewallconfigconditions.md
@@ -2189,6 +2234,7 @@ generatedFiles:
   - docs/models/putfirewallconfigmanagedrulesaction.md
   - docs/models/putfirewallconfigmitigate.md
   - docs/models/putfirewallconfigop.md
+  - docs/models/putfirewallconfigowasp.md
   - docs/models/putfirewallconfigphp.md
   - docs/models/putfirewallconfigratelimit.md
   - docs/models/putfirewallconfigrce.md
@@ -2219,12 +2265,14 @@ generatedFiles:
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsgenaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsjavaaction.md
-  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrslfiaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsmaaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssdaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssfaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrssqliaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivecrsxssaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivemanagedrulesaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivemanagedrulesaibotsaction.md
+  - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactivemanagedrulesowaspaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesaction.md
   - docs/models/putfirewallconfigsecurityresponse200applicationjsonresponsebodyactiverulesactionaction.md
   - docs/models/putfirewallconfigsecurityresponseaction.md
@@ -2465,9 +2513,11 @@ generatedFiles:
   - docs/models/responsebodyaliaserror.md
   - docs/models/responsebodyaliases.md
   - docs/models/responsebodyaliaswarning.md
+  - docs/models/responsebodyarchitecture.md
   - docs/models/responsebodybackup.md
   - docs/models/responsebodybuild.md
   - docs/models/responsebodybuilds.md
+  - docs/models/responsebodychecks.md
   - docs/models/responsebodychecksconclusion.md
   - docs/models/responsebodychecksstate.md
   - docs/models/responsebodyconfig.md
@@ -2476,6 +2526,7 @@ generatedFiles:
   - docs/models/responsebodycreator.md
   - docs/models/responsebodycrons.md
   - docs/models/responsebodycustomenvironment.md
+  - docs/models/responsebodydeploymentalias.md
   - docs/models/responsebodydisabledreason.md
   - docs/models/responsebodydomains.md
   - docs/models/responsebodyenvs.md
@@ -2519,6 +2570,7 @@ generatedFiles:
   - docs/models/responsebodyroutes.md
   - docs/models/responsebodysource.md
   - docs/models/responsebodyspeedinsights.md
+  - docs/models/responsebodystate.md
   - docs/models/responsebodystatus.md
   - docs/models/responsebodytarget.md
   - docs/models/responsebodyteam.md
@@ -2538,6 +2590,7 @@ generatedFiles:
   - docs/models/roles.md
   - docs/models/roles1.md
   - docs/models/roles2.md
+  - docs/models/rollbackdescription.md
   - docs/models/rollingrelease.md
   - docs/models/routes.md
   - docs/models/routes1.md
@@ -2549,6 +2602,8 @@ generatedFiles:
   - docs/models/routesmissing.md
   - docs/models/rulegroups.md
   - docs/models/rules.md
+  - docs/models/runtimecacheread.md
+  - docs/models/runtimecachewrite.md
   - docs/models/saml.md
   - docs/models/scalingrules.md
   - docs/models/schema.md
@@ -2565,6 +2620,7 @@ generatedFiles:
   - docs/models/secondaryemails.md
   - docs/models/secrets.md
   - docs/models/security.md
+  - docs/models/sensitiveenvironmentvariablepolicy.md
   - docs/models/serverlessfunctionexecution.md
   - docs/models/servicetype.md
   - docs/models/seven.md
@@ -2642,6 +2698,17 @@ generatedFiles:
   - docs/models/tbt.md
   - docs/models/team.md
   - docs/models/teamlimited.md
+  - docs/models/teamlimitedconnection.md
+  - docs/models/teamlimiteddirectory.md
+  - docs/models/teamlimitedentitlements.md
+  - docs/models/teamlimitedgituserid.md
+  - docs/models/teamlimitedjoinedfrom.md
+  - docs/models/teamlimitedmembership.md
+  - docs/models/teamlimitedorigin.md
+  - docs/models/teamlimitedrole.md
+  - docs/models/teamlimitedsaml.md
+  - docs/models/teamlimitedteampermissions.md
+  - docs/models/teamlimitedteamroles.md
   - docs/models/teampermissions.md
   - docs/models/teamrole.md
   - docs/models/teamroles.md
@@ -2817,11 +2884,13 @@ generatedFiles:
   - docs/models/updateinvoicerequest.md
   - docs/models/updateinvoicerequestbody.md
   - docs/models/updateprojectaction.md
+  - docs/models/updateprojectaibots.md
   - docs/models/updateprojectalgo.md
   - docs/models/updateprojectaliasassigned.md
   - docs/models/updateprojectaliaserror.md
   - docs/models/updateprojectanalytics.md
   - docs/models/updateprojectaws.md
+  - docs/models/updateprojectbotfilter.md
   - docs/models/updateprojectbranchmatcher.md
   - docs/models/updateprojectbuildmachinetype.md
   - docs/models/updateprojectbuilds.md
@@ -2865,6 +2934,7 @@ generatedFiles:
   - docs/models/updateprojectcustomenvironments.md
   - docs/models/updateprojectdatacache.md
   - docs/models/updateprojectdatacacheaction.md
+  - docs/models/updateprojectdatacacheaibots.md
   - docs/models/updateprojectdatacachealgo.md
   - docs/models/updateprojectdatacachealiasassigned.md
   - docs/models/updateprojectdatacachealiaserror.md
@@ -2897,6 +2967,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacheenvid2.md
   - docs/models/updateprojectdatacacheframework.md
   - docs/models/updateprojectdatacachefunctiondefaultmemorytype.md
+  - docs/models/updateprojectdatacacheipbuckets.md
   - docs/models/updateprojectdatacacheissuermode.md
   - docs/models/updateprojectdatacachelinkdeployhooks.md
   - docs/models/updateprojectdatacachelinkprojectsdeployhooks.md
@@ -2912,6 +2983,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacheoidctokenclaims.md
   - docs/models/updateprojectdatacacheoidctokenconfig.md
   - docs/models/updateprojectdatacacheoptionsallowlist.md
+  - docs/models/updateprojectdatacacheowasp.md
   - docs/models/updateprojectdatacachepasswordprotection.md
   - docs/models/updateprojectdatacachepaths.md
   - docs/models/updateprojectdatacacheplan.md
@@ -2928,6 +3000,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsplan.md
   - docs/models/updateprojectdatacacheprojectsreadystate.md
   - docs/models/updateprojectdatacacheprojectsreadysubstate.md
+  - docs/models/updateprojectdatacacheprojectsresponse200action.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
@@ -2936,6 +3009,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectdatacacheprojectsresponse200type.md
+  - docs/models/updateprojectdatacacheprojectsresponseaction.md
   - docs/models/updateprojectdatacacheprojectsresponsebranchmatcher.md
   - docs/models/updateprojectdatacacheprojectsresponsetype.md
   - docs/models/updateprojectdatacacheprojectstype.md
@@ -2976,6 +3050,7 @@ generatedFiles:
   - docs/models/updateprojectenvid.md
   - docs/models/updateprojectenvid2.md
   - docs/models/updateprojecterl.md
+  - docs/models/updateprojectfeatures.md
   - docs/models/updateprojectfirewallroutes.md
   - docs/models/updateprojectframework.md
   - docs/models/updateprojectfunctiondefaultmemorytype.md
@@ -3013,6 +3088,7 @@ generatedFiles:
   - docs/models/updateprojectoidctokenclaims.md
   - docs/models/updateprojectoidctokenconfig.md
   - docs/models/updateprojectoptionsallowlist.md
+  - docs/models/updateprojectowasp.md
   - docs/models/updateprojectpasswordprotection.md
   - docs/models/updateprojectpaths.md
   - docs/models/updateprojectpermissions.md
@@ -3041,6 +3117,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsreadysubstate.md
   - docs/models/updateprojectprojectsrequestdeploymenttype.md
   - docs/models/updateprojectprojectsresourceconfig.md
+  - docs/models/updateprojectprojectsresponse200action.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md
@@ -3049,6 +3126,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodytype.md
   - docs/models/updateprojectprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectprojectsresponse200type.md
+  - docs/models/updateprojectprojectsresponseaction.md
   - docs/models/updateprojectprojectsresponsebranchmatcher.md
   - docs/models/updateprojectprojectsresponsebuildmachinetype.md
   - docs/models/updateprojectprojectsresponsedeploymenttype.md
@@ -3077,6 +3155,7 @@ generatedFiles:
   - docs/models/updateprojectrequestbody.md
   - docs/models/updateprojectresourceconfig.md
   - docs/models/updateprojectresponsebody.md
+  - docs/models/updateprojectrollbackdescription.md
   - docs/models/updateprojectrollingrelease.md
   - docs/models/updateprojectsecurity.md
   - docs/models/updateprojectspeedinsights.md
@@ -3696,7 +3775,6 @@ generatedFiles:
   - src/funcs/artifactsUploadArtifact.ts
   - src/funcs/authenticationCreateAuthToken.ts
   - src/funcs/authenticationDeleteAuthToken.ts
-  - src/funcs/authenticationExchangeSsoToken.ts
   - src/funcs/authenticationGetAuthToken.ts
   - src/funcs/authenticationListAuthTokens.ts
   - src/funcs/certsGetCertById.ts
@@ -3757,7 +3835,6 @@ generatedFiles:
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
-  - src/funcs/integrationsUpdateIntegrationDeploymentAction.ts
   - src/funcs/logDrainsCreateLogDrain.ts
   - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
   - src/funcs/logDrainsDeleteIntegrationLogDrain.ts
@@ -3894,7 +3971,6 @@ generatedFiles:
   - src/mcp-server/tools/artifactsUploadArtifact.ts
   - src/mcp-server/tools/authenticationCreateAuthToken.ts
   - src/mcp-server/tools/authenticationDeleteAuthToken.ts
-  - src/mcp-server/tools/authenticationExchangeSsoToken.ts
   - src/mcp-server/tools/authenticationGetAuthToken.ts
   - src/mcp-server/tools/authenticationListAuthTokens.ts
   - src/mcp-server/tools/certsGetCertById.ts
@@ -3955,7 +4031,6 @@ generatedFiles:
   - src/mcp-server/tools/integrationsDeleteConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
-  - src/mcp-server/tools/integrationsUpdateIntegrationDeploymentAction.ts
   - src/mcp-server/tools/logDrainsCreateLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
@@ -4187,6 +4262,7 @@ generatedFiles:
   - src/models/requestdeleteop.ts
   - src/models/requestpromoteop.ts
   - src/models/rerequestcheckop.ts
+  - src/models/responsevalidationerror.ts
   - src/models/sdkerror.ts
   - src/models/sdkvalidationerror.ts
   - src/models/security.ts
@@ -4219,6 +4295,7 @@ generatedFiles:
   - src/models/uploadfileop.ts
   - src/models/userevent.ts
   - src/models/vercelbadrequesterror.ts
+  - src/models/vercelerror.ts
   - src/models/vercelforbiddenerror.ts
   - src/models/vercelnotfounderror.ts
   - src/models/vercelratelimiterror.ts
@@ -4275,7 +4352,7 @@ examples:
           projectId: "<id>"
       responses:
         "200":
-          application/json: [{"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 76.8}}]
+          application/json: [{"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 76.8}, "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 76.8, "role": "OWNER", "createdAt": 8753.86, "created": 3816.98}, "createdAt": 1630748523395}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4289,7 +4366,7 @@ examples:
         application/json: {"query": "timeline=past30Minutes&startDate=1690446214407&endDate=1690448014407&levels=info&domains=vercel.com", "title": "Request Path", "group": "team"}
       responses:
         "200":
-          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 1407.34}}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 6926.21, "role": "CONTRIBUTOR", "createdAt": 1063.07, "created": 7437.99}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4315,7 +4392,7 @@ examples:
         application/json: {"title": "Request Path"}
       responses:
         "200":
-          application/json: {"id": "ABCDEFG000011111", "data": {"query": "<value>", "creatorId": "<id>", "title": "<value>", "groupId": "<id>", "ownerId": "<id>", "projectId": "<id>", "createdAt": 8019.04}}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": false}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 5697.43, "role": "VIEWER", "createdAt": 9741.23, "created": 2482.46}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -4533,6 +4610,21 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+    speakeasy-default-read-access-group-project:
+      parameters:
+        path:
+          accessGroupIdOrName: "<value>"
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1725636411556", "updatedAt": "1735610404453"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   updateAccessGroupProject:
     id:
       parameters:
@@ -4591,6 +4683,23 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+    speakeasy-default-update-access-group-project:
+      parameters:
+        path:
+          accessGroupIdOrName: "<value>"
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      requestBody:
+        application/json: {"role": "ADMIN"}
+      responses:
+        "200":
+          application/json: {"teamId": "<id>", "accessGroupId": "<id>", "projectId": "<id>", "role": "PROJECT_DEVELOPER", "createdAt": "1728862860579", "updatedAt": "1735681594699"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   deleteAccessGroupProject:
     id:
       parameters:
@@ -4636,6 +4745,19 @@ examples:
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+    speakeasy-default-delete-access-group-project:
+      parameters:
+        path:
+          accessGroupIdOrName: "<value>"
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   recordEvents:
     speakeasy-default-record-events:
@@ -5304,7 +5426,7 @@ examples:
         application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "type": "LAMBDAS", "name": "<value>", "createdAt": 179.28, "id": "<id>", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "plan": "enterprise", "projectId": "<id>", "ownerId": "<id>", "routes": [], "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "routes": [], "plan": "enterprise", "createdIn": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -5724,7 +5846,7 @@ examples:
         application/json: {"name": "My first log drain", "secret": "a1Xsfd325fXcs", "deliveryFormat": "json", "url": "https://example.com/log-drain"}
       responses:
         "200":
-          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}
+          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"Authorization": "Bearer 123"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6068,6 +6190,8 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get-member:
     speakeasy-default-get-member:
       parameters:
@@ -6095,6 +6219,8 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
   submit-billing-data:
     speakeasy-default-submit-billing-data:
       parameters:
@@ -6106,6 +6232,8 @@ examples:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   submit-invoice:
     speakeasy-default-submit-invoice:
@@ -6120,6 +6248,8 @@ examples:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   get-invoice:
     speakeasy-default-get-invoice:
@@ -6160,6 +6290,8 @@ examples:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   update-resource-secrets:
     speakeasy-default-update-resource-secrets:
@@ -6745,7 +6877,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"limited": false, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6763,7 +6895,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"limited": false, "limitedBy": [], "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "created": "<value>", "createdAt": 1630748523395}
+          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6790,7 +6922,7 @@ examples:
         application/json: {"slug": "a-random-team", "name": "A Random Team"}
       responses:
         "200":
-          application/json: {"id": "team_nLlpyC6RE1qxqglFKbrMxlud", "slug": "<value>", "billing": {}}
+          application/json: {"id": "team_nLlpyC6RE1qxqglFKbrMxlud", "slug": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

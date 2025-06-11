@@ -51,7 +51,7 @@ func testAssignAliasAssignAlias0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.AssignAliasResponseBody{
+	var respBody *operations.AssignAliasResponseBody = &operations.AssignAliasResponseBody{
 		UID:             "2WjyKQmM8ZnGcJsPWMrHRHrE",
 		Alias:           "my-alias.vercel.app",
 		Created:         types.MustTimeFromString("2017-04-26T23:00:34.232Z"),

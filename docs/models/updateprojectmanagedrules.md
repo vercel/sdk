@@ -6,13 +6,22 @@
 import { UpdateProjectManagedRules } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectManagedRules = {
-  active: false,
+  botFilter: {
+    active: true,
+  },
+  aiBots: {
+    active: false,
+  },
+  owasp: {
+    active: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `active`                                                       | *boolean*                                                      | :heavy_check_mark:                                             | N/A                                                            |
-| `action`                                                       | [models.UpdateProjectAction](../models/updateprojectaction.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `botFilter`                                                          | [models.UpdateProjectBotFilter](../models/updateprojectbotfilter.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `aiBots`                                                             | [models.UpdateProjectAiBots](../models/updateprojectaibots.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `owasp`                                                              | [models.UpdateProjectOwasp](../models/updateprojectowasp.md)         | :heavy_check_mark:                                                   | N/A                                                                  |

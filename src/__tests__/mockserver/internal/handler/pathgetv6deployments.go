@@ -47,66 +47,13 @@ func testGetDeploymentsGetDeployments0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDeploymentsResponseBody{
+	var respBody *operations.GetDeploymentsResponseBody = &operations.GetDeploymentsResponseBody{
 		Pagination: components.Pagination{
 			Count: 20,
 			Next:  types.Float64(1540095775951),
 			Prev:  types.Float64(1540095775951),
 		},
-		Deployments: []operations.Deployments{
-			operations.Deployments{
-				UID:                    "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-				Name:                   "docs",
-				URL:                    "docs-9jaeg38me.vercel.app",
-				Created:                1609492210000,
-				DefaultRoute:           types.String("/docs"),
-				Deleted:                types.Float64(1609492210000),
-				Undeleted:              types.Float64(1609492210000),
-				SoftDeletedByRetention: types.Bool(true),
-				Source:                 operations.GetDeploymentsSourceCli.ToPointer(),
-				State:                  operations.GetDeploymentsStateReady.ToPointer(),
-				ReadyState:             operations.GetDeploymentsReadyStateReady.ToPointer(),
-				Type:                   operations.GetDeploymentsTypeLambdas,
-				Creator: operations.GetDeploymentsCreator{
-					UID:         "eLrCnEgbKhsHyfbiNR7E8496",
-					Email:       types.String("example@example.com"),
-					Username:    types.String("johndoe"),
-					GithubLogin: types.String("johndoe"),
-					GitlabLogin: types.String("johndoe"),
-				},
-				Target:       operations.GetDeploymentsTargetProduction.ToPointer(),
-				CreatedAt:    types.Float64(1609492210000),
-				BuildingAt:   types.Float64(1609492210000),
-				Ready:        types.Float64(1609492210000),
-				InspectorURL: types.String("https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"),
-			},
-			operations.Deployments{
-				UID:                    "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
-				Name:                   "docs",
-				URL:                    "docs-9jaeg38me.vercel.app",
-				Created:                1609492210000,
-				DefaultRoute:           types.String("/docs"),
-				Deleted:                types.Float64(1609492210000),
-				Undeleted:              types.Float64(1609492210000),
-				SoftDeletedByRetention: types.Bool(true),
-				Source:                 operations.GetDeploymentsSourceCli.ToPointer(),
-				State:                  operations.GetDeploymentsStateReady.ToPointer(),
-				ReadyState:             operations.GetDeploymentsReadyStateReady.ToPointer(),
-				Type:                   operations.GetDeploymentsTypeLambdas,
-				Creator: operations.GetDeploymentsCreator{
-					UID:         "eLrCnEgbKhsHyfbiNR7E8496",
-					Email:       types.String("example@example.com"),
-					Username:    types.String("johndoe"),
-					GithubLogin: types.String("johndoe"),
-					GitlabLogin: types.String("johndoe"),
-				},
-				Target:       operations.GetDeploymentsTargetProduction.ToPointer(),
-				CreatedAt:    types.Float64(1609492210000),
-				BuildingAt:   types.Float64(1609492210000),
-				Ready:        types.Float64(1609492210000),
-				InspectorURL: types.String("https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"),
-			},
-		},
+		Deployments: []operations.GetDeploymentsDeployment{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -70,84 +70,84 @@ func (o *GetEdgeConfigTransfer) GetDoneAt() *float64 {
 type GetEdgeConfigSchema struct {
 }
 
-type GetEdgeConfigPurposeEdgeConfigType string
+type GetEdgeConfigTypeExperimentation string
 
 const (
-	GetEdgeConfigPurposeEdgeConfigTypeExperimentation GetEdgeConfigPurposeEdgeConfigType = "experimentation"
+	GetEdgeConfigTypeExperimentationExperimentation GetEdgeConfigTypeExperimentation = "experimentation"
 )
 
-func (e GetEdgeConfigPurposeEdgeConfigType) ToPointer() *GetEdgeConfigPurposeEdgeConfigType {
+func (e GetEdgeConfigTypeExperimentation) ToPointer() *GetEdgeConfigTypeExperimentation {
 	return &e
 }
-func (e *GetEdgeConfigPurposeEdgeConfigType) UnmarshalJSON(data []byte) error {
+func (e *GetEdgeConfigTypeExperimentation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "experimentation":
-		*e = GetEdgeConfigPurposeEdgeConfigType(v)
+		*e = GetEdgeConfigTypeExperimentation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetEdgeConfigPurposeEdgeConfigType: %v", v)
+		return fmt.Errorf("invalid value for GetEdgeConfigTypeExperimentation: %v", v)
 	}
 }
 
-type GetEdgeConfigPurpose2 struct {
-	Type       GetEdgeConfigPurposeEdgeConfigType `json:"type"`
-	ResourceID string                             `json:"resourceId"`
+type GetEdgeConfigPurposeExperimentation struct {
+	Type       GetEdgeConfigTypeExperimentation `json:"type"`
+	ResourceID string                           `json:"resourceId"`
 }
 
-func (o *GetEdgeConfigPurpose2) GetType() GetEdgeConfigPurposeEdgeConfigType {
+func (o *GetEdgeConfigPurposeExperimentation) GetType() GetEdgeConfigTypeExperimentation {
 	if o == nil {
-		return GetEdgeConfigPurposeEdgeConfigType("")
+		return GetEdgeConfigTypeExperimentation("")
 	}
 	return o.Type
 }
 
-func (o *GetEdgeConfigPurpose2) GetResourceID() string {
+func (o *GetEdgeConfigPurposeExperimentation) GetResourceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ResourceID
 }
 
-type GetEdgeConfigPurposeType string
+type GetEdgeConfigTypeFlags string
 
 const (
-	GetEdgeConfigPurposeTypeFlags GetEdgeConfigPurposeType = "flags"
+	GetEdgeConfigTypeFlagsFlags GetEdgeConfigTypeFlags = "flags"
 )
 
-func (e GetEdgeConfigPurposeType) ToPointer() *GetEdgeConfigPurposeType {
+func (e GetEdgeConfigTypeFlags) ToPointer() *GetEdgeConfigTypeFlags {
 	return &e
 }
-func (e *GetEdgeConfigPurposeType) UnmarshalJSON(data []byte) error {
+func (e *GetEdgeConfigTypeFlags) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags":
-		*e = GetEdgeConfigPurposeType(v)
+		*e = GetEdgeConfigTypeFlags(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetEdgeConfigPurposeType: %v", v)
+		return fmt.Errorf("invalid value for GetEdgeConfigTypeFlags: %v", v)
 	}
 }
 
-type GetEdgeConfigPurpose1 struct {
-	Type      GetEdgeConfigPurposeType `json:"type"`
-	ProjectID string                   `json:"projectId"`
+type GetEdgeConfigPurposeFlags struct {
+	Type      GetEdgeConfigTypeFlags `json:"type"`
+	ProjectID string                 `json:"projectId"`
 }
 
-func (o *GetEdgeConfigPurpose1) GetType() GetEdgeConfigPurposeType {
+func (o *GetEdgeConfigPurposeFlags) GetType() GetEdgeConfigTypeFlags {
 	if o == nil {
-		return GetEdgeConfigPurposeType("")
+		return GetEdgeConfigTypeFlags("")
 	}
 	return o.Type
 }
 
-func (o *GetEdgeConfigPurpose1) GetProjectID() string {
+func (o *GetEdgeConfigPurposeFlags) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
@@ -157,64 +157,64 @@ func (o *GetEdgeConfigPurpose1) GetProjectID() string {
 type GetEdgeConfigPurposeUnionType string
 
 const (
-	GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose1 GetEdgeConfigPurposeUnionType = "getEdgeConfig_purpose_1"
-	GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose2 GetEdgeConfigPurposeUnionType = "getEdgeConfig_purpose_2"
+	GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeFlags           GetEdgeConfigPurposeUnionType = "getEdgeConfig_purpose_Flags"
+	GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeExperimentation GetEdgeConfigPurposeUnionType = "getEdgeConfig_purpose_Experimentation"
 )
 
-type GetEdgeConfigPurpose struct {
-	GetEdgeConfigPurpose1 *GetEdgeConfigPurpose1
-	GetEdgeConfigPurpose2 *GetEdgeConfigPurpose2
+type GetEdgeConfigPurposeUnion struct {
+	GetEdgeConfigPurposeFlags           *GetEdgeConfigPurposeFlags           `queryParam:"inline"`
+	GetEdgeConfigPurposeExperimentation *GetEdgeConfigPurposeExperimentation `queryParam:"inline"`
 
 	Type GetEdgeConfigPurposeUnionType
 }
 
-func CreateGetEdgeConfigPurposeGetEdgeConfigPurpose1(getEdgeConfigPurpose1 GetEdgeConfigPurpose1) GetEdgeConfigPurpose {
-	typ := GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose1
+func CreateGetEdgeConfigPurposeUnionGetEdgeConfigPurposeFlags(getEdgeConfigPurposeFlags GetEdgeConfigPurposeFlags) GetEdgeConfigPurposeUnion {
+	typ := GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeFlags
 
-	return GetEdgeConfigPurpose{
-		GetEdgeConfigPurpose1: &getEdgeConfigPurpose1,
-		Type:                  typ,
+	return GetEdgeConfigPurposeUnion{
+		GetEdgeConfigPurposeFlags: &getEdgeConfigPurposeFlags,
+		Type:                      typ,
 	}
 }
 
-func CreateGetEdgeConfigPurposeGetEdgeConfigPurpose2(getEdgeConfigPurpose2 GetEdgeConfigPurpose2) GetEdgeConfigPurpose {
-	typ := GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose2
+func CreateGetEdgeConfigPurposeUnionGetEdgeConfigPurposeExperimentation(getEdgeConfigPurposeExperimentation GetEdgeConfigPurposeExperimentation) GetEdgeConfigPurposeUnion {
+	typ := GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeExperimentation
 
-	return GetEdgeConfigPurpose{
-		GetEdgeConfigPurpose2: &getEdgeConfigPurpose2,
-		Type:                  typ,
+	return GetEdgeConfigPurposeUnion{
+		GetEdgeConfigPurposeExperimentation: &getEdgeConfigPurposeExperimentation,
+		Type:                                typ,
 	}
 }
 
-func (u *GetEdgeConfigPurpose) UnmarshalJSON(data []byte) error {
+func (u *GetEdgeConfigPurposeUnion) UnmarshalJSON(data []byte) error {
 
-	var getEdgeConfigPurpose1 GetEdgeConfigPurpose1 = GetEdgeConfigPurpose1{}
-	if err := utils.UnmarshalJSON(data, &getEdgeConfigPurpose1, "", true, true); err == nil {
-		u.GetEdgeConfigPurpose1 = &getEdgeConfigPurpose1
-		u.Type = GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose1
+	var getEdgeConfigPurposeFlags GetEdgeConfigPurposeFlags = GetEdgeConfigPurposeFlags{}
+	if err := utils.UnmarshalJSON(data, &getEdgeConfigPurposeFlags, "", true, true); err == nil {
+		u.GetEdgeConfigPurposeFlags = &getEdgeConfigPurposeFlags
+		u.Type = GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeFlags
 		return nil
 	}
 
-	var getEdgeConfigPurpose2 GetEdgeConfigPurpose2 = GetEdgeConfigPurpose2{}
-	if err := utils.UnmarshalJSON(data, &getEdgeConfigPurpose2, "", true, true); err == nil {
-		u.GetEdgeConfigPurpose2 = &getEdgeConfigPurpose2
-		u.Type = GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurpose2
+	var getEdgeConfigPurposeExperimentation GetEdgeConfigPurposeExperimentation = GetEdgeConfigPurposeExperimentation{}
+	if err := utils.UnmarshalJSON(data, &getEdgeConfigPurposeExperimentation, "", true, true); err == nil {
+		u.GetEdgeConfigPurposeExperimentation = &getEdgeConfigPurposeExperimentation
+		u.Type = GetEdgeConfigPurposeUnionTypeGetEdgeConfigPurposeExperimentation
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetEdgeConfigPurpose", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetEdgeConfigPurposeUnion", string(data))
 }
 
-func (u GetEdgeConfigPurpose) MarshalJSON() ([]byte, error) {
-	if u.GetEdgeConfigPurpose1 != nil {
-		return utils.MarshalJSON(u.GetEdgeConfigPurpose1, "", true)
+func (u GetEdgeConfigPurposeUnion) MarshalJSON() ([]byte, error) {
+	if u.GetEdgeConfigPurposeFlags != nil {
+		return utils.MarshalJSON(u.GetEdgeConfigPurposeFlags, "", true)
 	}
 
-	if u.GetEdgeConfigPurpose2 != nil {
-		return utils.MarshalJSON(u.GetEdgeConfigPurpose2, "", true)
+	if u.GetEdgeConfigPurposeExperimentation != nil {
+		return utils.MarshalJSON(u.GetEdgeConfigPurposeExperimentation, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetEdgeConfigPurpose: all fields are null")
+	return nil, errors.New("could not marshal union type GetEdgeConfigPurposeUnion: all fields are null")
 }
 
 // GetEdgeConfigResponseBody - The EdgeConfig.
@@ -227,11 +227,11 @@ type GetEdgeConfigResponseBody struct {
 	OwnerID *string `json:"ownerId,omitempty"`
 	Digest  *string `json:"digest,omitempty"`
 	// Keeps track of the current state of the Edge Config while it gets transferred.
-	Transfer    *GetEdgeConfigTransfer `json:"transfer,omitempty"`
-	Schema      *GetEdgeConfigSchema   `json:"schema,omitempty"`
-	Purpose     *GetEdgeConfigPurpose  `json:"purpose,omitempty"`
-	SizeInBytes float64                `json:"sizeInBytes"`
-	ItemCount   float64                `json:"itemCount"`
+	Transfer    *GetEdgeConfigTransfer     `json:"transfer,omitempty"`
+	Schema      *GetEdgeConfigSchema       `json:"schema,omitempty"`
+	Purpose     *GetEdgeConfigPurposeUnion `json:"purpose,omitempty"`
+	SizeInBytes float64                    `json:"sizeInBytes"`
+	ItemCount   float64                    `json:"itemCount"`
 }
 
 func (o *GetEdgeConfigResponseBody) GetCreatedAt() *float64 {
@@ -290,7 +290,7 @@ func (o *GetEdgeConfigResponseBody) GetSchema() *GetEdgeConfigSchema {
 	return o.Schema
 }
 
-func (o *GetEdgeConfigResponseBody) GetPurpose() *GetEdgeConfigPurpose {
+func (o *GetEdgeConfigResponseBody) GetPurpose() *GetEdgeConfigPurposeUnion {
 	if o == nil {
 		return nil
 	}

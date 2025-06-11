@@ -13,7 +13,7 @@ let value: SeventyNine = {
     deploymentType: "all",
   },
   oldPasswordProtection: {
-    deploymentType: "preview",
+    deploymentType: "all",
   },
 };
 ```

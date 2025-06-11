@@ -15,9 +15,7 @@ const value: models.FilterProjectEnvsResponseBody1 = {};
 
 ```typescript
 const value: models.FilterProjectEnvsResponseBody2 = {
-  envs: [
-    {},
-  ],
+  envs: [],
   pagination: {
     count: 20,
     next: 1540095775951,
@@ -30,9 +28,7 @@ const value: models.FilterProjectEnvsResponseBody2 = {
 
 ```typescript
 const value: models.FilterProjectEnvsResponseBody3 = {
-  envs: [
-    {},
-  ],
+  envs: [],
 };
 ```
 

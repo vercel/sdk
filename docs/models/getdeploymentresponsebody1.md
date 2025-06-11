@@ -9,48 +9,45 @@ import { GetDeploymentResponseBody1 } from "@vercel/sdk/models/getdeploymentop.j
 
 let value: GetDeploymentResponseBody1 = {
   build: {
-    env: [
-      "<value>",
-    ],
+    env: [],
   },
   env: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
-  inspectorUrl: "https://second-traffic.com/",
+  inspectorUrl: "https://guilty-armoire.info/",
   isInConcurrentBuildsQueue: false,
-  isInSystemBuildsQueue: false,
+  isInSystemBuildsQueue: true,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 3486.29,
-  buildingAt: 485.31,
-  buildSkipped: false,
+  bootedAt: 2272.68,
+  buildingAt: 1383.88,
+  buildSkipped: true,
   creator: {
     uid: "<id>",
   },
-  public: false,
+  public: true,
   status: "ERROR",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 7172.74,
-  readyState: "BUILDING",
+  createdAt: 5083.52,
+  readyState: "INITIALIZING",
   meta: {
     "key": "<value>",
   },
   regions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  url: "https://enchanted-chap.biz",
-  version: 4603.41,
+  url: "https://stale-giant.net",
+  version: 3513.65,
   projectId: "<id>",
-  plan: "enterprise",
+  plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
-  routes: [
-    {
-      handle: "miss",
-    },
-  ],
+  routes: [],
 };
 ```
 
@@ -138,3 +135,4 @@ let value: GetDeploymentResponseBody1 = {
 | `flags`                                                                                                                                                                                                                                                                                                        | *models.ResponseBodyFlags*                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |
 | `microfrontends`                                                                                                                                                                                                                                                                                               | *models.ResponseBodyMicrofrontends*                                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |
 | `config`                                                                                                                                                                                                                                                                                                       | [models.ResponseBodyConfig](../models/responsebodyconfig.md)                                                                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured |
+| `checks`                                                                                                                                                                                                                                                                                                       | [models.ResponseBodyChecks](../models/responsebodychecks.md)                                                                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                                             | N/A                                                                                                                                                                                                                                                                                                            |

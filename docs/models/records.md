@@ -12,10 +12,10 @@ let value: Records = {
   type: "HTTPS",
   value: "<value>",
   creator: "<value>",
-  created: 9053.49,
-  updated: 1503.85,
-  createdAt: 8670.24,
-  updatedAt: 7479.37,
+  created: 1503.85,
+  updated: 7479.37,
+  createdAt: null,
+  updatedAt: 2092.25,
 };
 ```
 

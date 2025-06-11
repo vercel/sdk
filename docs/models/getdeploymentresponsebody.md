@@ -11,48 +11,45 @@ The deployment including both public and private information
 ```typescript
 const value: models.GetDeploymentResponseBody1 = {
   build: {
-    env: [
-      "<value>",
-    ],
+    env: [],
   },
   env: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
-  inspectorUrl: "https://minty-department.info",
+  inspectorUrl: "https://guilty-armoire.info/",
   isInConcurrentBuildsQueue: false,
-  isInSystemBuildsQueue: false,
+  isInSystemBuildsQueue: true,
   projectSettings: {},
   aliasAssigned: false,
-  bootedAt: 8640.34,
-  buildingAt: 6840.75,
-  buildSkipped: false,
+  bootedAt: 2272.68,
+  buildingAt: 1383.88,
+  buildSkipped: true,
   creator: {
     uid: "<id>",
   },
-  public: false,
-  status: "BUILDING",
+  public: true,
+  status: "ERROR",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 249.45,
-  readyState: "BUILDING",
+  createdAt: 5083.52,
+  readyState: "INITIALIZING",
   meta: {
     "key": "<value>",
   },
   regions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  url: "https://unique-birdcage.name",
-  version: 5166.73,
+  url: "https://stale-giant.net",
+  version: 3513.65,
   projectId: "<id>",
   plan: "pro",
   createdIn: "<value>",
   ownerId: "<id>",
-  routes: [
-    {
-      handle: "error",
-    },
-  ],
+  routes: [],
 };
 ```
 
@@ -60,28 +57,27 @@ const value: models.GetDeploymentResponseBody1 = {
 
 ```typescript
 const value: models.GetDeploymentResponseBody2 = {
-  aliasAssigned: false,
-  bootedAt: 9734.5,
-  buildingAt: 6774.57,
+  aliasAssigned: true,
+  bootedAt: 1303.95,
+  buildingAt: 4156.67,
   buildSkipped: false,
   creator: {
     uid: "<id>",
   },
   public: false,
-  status: "CANCELED",
+  status: "ERROR",
   id: "<id>",
   name: "<value>",
   type: "LAMBDAS",
-  createdAt: 4900.07,
-  readyState: "INITIALIZING",
-  meta: {
-    "key": "<value>",
-  },
+  createdAt: 9590.27,
+  readyState: "READY",
+  meta: {},
   regions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
-  url: "https://calculating-sock.org",
-  version: 7243.82,
+  url: "https://normal-sonnet.info",
+  version: 2871.74,
 };
 ```
 

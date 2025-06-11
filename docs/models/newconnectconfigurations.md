@@ -8,10 +8,10 @@ import { NewConnectConfigurations } from "@vercel/sdk/models/userevent.js";
 let value: NewConnectConfigurations = {
   envId: "<id>",
   connectConfigurationId: "<id>",
-  passive: false,
+  passive: true,
   buildsEnabled: false,
-  createdAt: 4721.36,
-  updatedAt: 9855.12,
+  createdAt: 5463.76,
+  updatedAt: 2696.76,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { UpdateProjectGitComments } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectGitComments = {
-  onPullRequest: false,
+  onPullRequest: true,
   onCommit: false,
 };
 ```

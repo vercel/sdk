@@ -10,7 +10,9 @@ let value: GetProjectsErl = {
   window: 2518.73,
   limit: 4529.22,
   keys: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

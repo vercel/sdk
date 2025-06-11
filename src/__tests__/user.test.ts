@@ -21,11 +21,16 @@ test("User List User Events", async () => {
     until: "2019-12-09T23:00:38.976Z",
     types: "login,team-member-join,domain-buy",
     userId: "aeIInYVk59zbFF2SxfyxxmuO",
+    principalId: "aeIInYVk59zbFF2SxfyxxmuO",
+    projectIds: "aeIInYVk59zbFF2SxfyxxmuO",
     withPayload: "true",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    events: [],
+  });
 });
 
 test("User Request Delete", async () => {
@@ -39,4 +44,9 @@ test("User Request Delete", async () => {
 
   const result = await vercel.user.requestDelete({});
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    email: "Gilda_Murphy@yahoo.com",
+    message: "Verification email sent",
+  });
 });

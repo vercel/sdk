@@ -180,9 +180,13 @@ export type ListAliasesDefaultApp = {
 };
 
 /**
- * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+ * A list of the deployment routing information for each project.
  */
 export type ListAliasesApplications = {
+  /**
+   * The project ID that should use the below configuration.
+   */
+  projectId: string;
   /**
    * This is always set and is the fallback host to send the request to if there is no deployment ID.
    */
@@ -203,9 +207,9 @@ export type ListAliasesApplications = {
 export type ListAliasesMicrofrontends = {
   defaultApp: ListAliasesDefaultApp;
   /**
-   * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+   * A list of the deployment routing information for each project.
    */
-  applications: { [k: string]: ListAliasesApplications };
+  applications: Array<ListAliasesApplications>;
 };
 
 export type ListAliasesAliases = {
@@ -1016,6 +1020,7 @@ export const ListAliasesApplications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  projectId: z.string(),
   fallbackHost: z.string(),
   deploymentId: z.string().optional(),
   deploymentUrl: z.string().optional(),
@@ -1023,6 +1028,7 @@ export const ListAliasesApplications$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListAliasesApplications$Outbound = {
+  projectId: string;
   fallbackHost: string;
   deploymentId?: string | undefined;
   deploymentUrl?: string | undefined;
@@ -1034,6 +1040,7 @@ export const ListAliasesApplications$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAliasesApplications
 > = z.object({
+  projectId: z.string(),
   fallbackHost: z.string(),
   deploymentId: z.string().optional(),
   deploymentUrl: z.string().optional(),
@@ -1077,13 +1084,13 @@ export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
-  applications: z.record(z.lazy(() => ListAliasesApplications$inboundSchema)),
+  applications: z.array(z.lazy(() => ListAliasesApplications$inboundSchema)),
 });
 
 /** @internal */
 export type ListAliasesMicrofrontends$Outbound = {
   defaultApp: ListAliasesDefaultApp$Outbound;
-  applications: { [k: string]: ListAliasesApplications$Outbound };
+  applications: Array<ListAliasesApplications$Outbound>;
 };
 
 /** @internal */
@@ -1093,7 +1100,7 @@ export const ListAliasesMicrofrontends$outboundSchema: z.ZodType<
   ListAliasesMicrofrontends
 > = z.object({
   defaultApp: z.lazy(() => ListAliasesDefaultApp$outboundSchema),
-  applications: z.record(z.lazy(() => ListAliasesApplications$outboundSchema)),
+  applications: z.array(z.lazy(() => ListAliasesApplications$outboundSchema)),
 });
 
 /**

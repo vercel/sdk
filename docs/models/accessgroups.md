@@ -6,7 +6,7 @@
 import { AccessGroups } from "@vercel/sdk/models/listaccessgroupsop.js";
 
 let value: AccessGroups = {
-  isDsyncManaged: false,
+  isDsyncManaged: true,
   name: "my-access-group",
   createdAt: "1588720733602",
   teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",

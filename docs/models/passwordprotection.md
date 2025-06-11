@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.PasswordProtection1 = {
-  deploymentType: "preview",
+  deploymentType: "all",
 };
 ```
 

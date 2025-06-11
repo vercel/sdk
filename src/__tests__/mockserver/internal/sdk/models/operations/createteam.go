@@ -84,7 +84,7 @@ func (o *Attribution) GetUtm() *Utm {
 	return o.Utm
 }
 
-type CreateTeamRequestBody struct {
+type CreateTeamRequest struct {
 	// The desired slug for the Team
 	Slug string `json:"slug"`
 	// The desired name for the Team. It will be generated from the provided slug if nothing is provided
@@ -93,29 +93,25 @@ type CreateTeamRequestBody struct {
 	Attribution *Attribution `json:"attribution,omitempty"`
 }
 
-func (o *CreateTeamRequestBody) GetSlug() string {
+func (o *CreateTeamRequest) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *CreateTeamRequestBody) GetName() *string {
+func (o *CreateTeamRequest) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *CreateTeamRequestBody) GetAttribution() *Attribution {
+func (o *CreateTeamRequest) GetAttribution() *Attribution {
 	if o == nil {
 		return nil
 	}
 	return o.Attribution
-}
-
-// CreateTeamBilling - IMPORTANT: If extending Billing, particularly with optional fields, make sure you also update `sync-orb-subscription-to-owner.ts` to handle the items when the object is recreated.
-type CreateTeamBilling struct {
 }
 
 // CreateTeamResponseBody - The team was created successfully
@@ -123,8 +119,6 @@ type CreateTeamResponseBody struct {
 	// Id of the created team
 	ID   string `json:"id"`
 	Slug string `json:"slug"`
-	// IMPORTANT: If extending Billing, particularly with optional fields, make sure you also update `sync-orb-subscription-to-owner.ts` to handle the items when the object is recreated.
-	Billing CreateTeamBilling `json:"billing"`
 }
 
 func (o *CreateTeamResponseBody) GetID() string {
@@ -139,13 +133,6 @@ func (o *CreateTeamResponseBody) GetSlug() string {
 		return ""
 	}
 	return o.Slug
-}
-
-func (o *CreateTeamResponseBody) GetBilling() CreateTeamBilling {
-	if o == nil {
-		return CreateTeamBilling{}
-	}
-	return o.Billing
 }
 
 type CreateTeamResponse struct {

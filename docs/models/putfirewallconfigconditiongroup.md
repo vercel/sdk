@@ -9,7 +9,7 @@ let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
       type: "rate_limit_api_id",
-      op: "neq",
+      op: "gt",
     },
   ],
 };

@@ -7,7 +7,7 @@ import { CreateProjectDefaultResourceConfig } from "@vercel/sdk/models/createpro
 
 let value: CreateProjectDefaultResourceConfig = {
   functionDefaultRegions: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

@@ -11,11 +11,11 @@ let value: CreateCheckResponseBody = {
   path: "/api/users",
   status: "completed",
   conclusion: "succeeded",
-  blocking: false,
+  blocking: true,
   integrationId: "<id>",
   deploymentId: "<id>",
-  createdAt: 1030.55,
-  updatedAt: 5556.21,
+  createdAt: 5556.21,
+  updatedAt: 5185.69,
 };
 ```
 

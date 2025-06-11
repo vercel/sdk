@@ -50,7 +50,7 @@ func testImportResourceImportResource0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.ImportResourceResponseBody{
+	var respBody *operations.ImportResourceResponseBody = &operations.ImportResourceResponseBody{
 		Name: "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

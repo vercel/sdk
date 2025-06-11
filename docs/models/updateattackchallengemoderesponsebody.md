@@ -6,8 +6,8 @@
 import { UpdateAttackChallengeModeResponseBody } from "@vercel/sdk/models/updateattackchallengemodeop.js";
 
 let value: UpdateAttackChallengeModeResponseBody = {
-  attackModeEnabled: false,
-  attackModeUpdatedAt: 3657.31,
+  attackModeEnabled: true,
+  attackModeUpdatedAt: 9078.07,
 };
 ```
 

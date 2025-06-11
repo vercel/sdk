@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments1 = {
   type: "github",
-  repoId: 9384.68,
+  repoId: 1809.53,
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.GetDeploymentGitSourceDeployments2 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments3 = {
   type: "github-custom-host",
-  host: "querulous-completion.net",
-  repoId: 41.29,
+  host: "round-cop-out.net",
+  repoId: "<id>",
 };
 ```
 
@@ -37,7 +37,7 @@ const value: models.GetDeploymentGitSourceDeployments3 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments4 = {
   type: "github-custom-host",
-  host: "cumbersome-discourse.org",
+  host: "short-bid.net",
   org: "<value>",
   repo: "<value>",
 };
@@ -48,7 +48,7 @@ const value: models.GetDeploymentGitSourceDeployments4 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments5 = {
   type: "gitlab",
-  projectId: "<id>",
+  projectId: 8837.73,
 };
 ```
 
@@ -78,7 +78,7 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://red-poppy.com/",
+  gitUrl: "https://usable-aftermath.org",
 };
 ```
 
@@ -89,7 +89,7 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4015.87,
+  repoId: 7220.78,
 };
 ```
 
@@ -98,10 +98,10 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments10 = {
   type: "github-custom-host",
-  host: "discrete-lox.biz",
+  host: "overdue-mousse.com",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4293.92,
+  repoId: 1930.67,
 };
 ```
 
@@ -112,7 +112,7 @@ const value: models.GetDeploymentGitSourceDeployments11 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 8206.04,
+  projectId: 3996.33,
 };
 ```
 

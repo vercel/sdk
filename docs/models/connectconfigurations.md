@@ -9,8 +9,8 @@
 const value: models.ConnectConfigurations1 = {
   envId: "<id>",
   connectConfigurationId: "<id>",
-  passive: false,
-  buildsEnabled: false,
+  passive: true,
+  buildsEnabled: true,
 };
 ```
 

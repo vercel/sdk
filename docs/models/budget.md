@@ -11,13 +11,13 @@ let value: Budget = {
   type: "fixed",
   fixedBudget: 268.4,
   previousSpend: [
-    8744.63,
-  ],
-  notifiedAt: [
     2211.33,
+    3066.93,
+    9049.6,
   ],
-  createdAt: 3066.93,
-  isActive: false,
+  notifiedAt: [],
+  createdAt: 2535.69,
+  isActive: true,
   teamId: "<id>",
   id: "<id>",
 };

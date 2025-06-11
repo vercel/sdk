@@ -6,7 +6,7 @@
 import { GetProjectsDataCache } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsDataCache = {
-  userDisabled: false,
+  userDisabled: true,
 };
 ```
 

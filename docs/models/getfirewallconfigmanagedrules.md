@@ -5,17 +5,13 @@
 ```typescript
 import { GetFirewallConfigManagedRules } from "@vercel/sdk/models/getfirewallconfigop.js";
 
-let value: GetFirewallConfigManagedRules = {
-  active: false,
-};
+let value: GetFirewallConfigManagedRules = {};
 ```
 
 ## Fields
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `active`                                                                                               | *boolean*                                                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `action`                                                                                               | [models.GetFirewallConfigSecurityResponseAction](../models/getfirewallconfigsecurityresponseaction.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `updatedAt`                                                                                            | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `userId`                                                                                               | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `username`                                                                                             | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `botProtection`                                    | [models.BotProtection](../models/botprotection.md) | :heavy_minus_sign:                                 | N/A                                                |
+| `aiBots`                                           | [models.AiBots](../models/aibots.md)               | :heavy_minus_sign:                                 | N/A                                                |
+| `owasp`                                            | [models.Owasp](../models/owasp.md)                 | :heavy_minus_sign:                                 | N/A                                                |

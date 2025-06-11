@@ -6,14 +6,7 @@
 import { Link3 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Link3 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://inborn-lotion.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

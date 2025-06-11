@@ -50,121 +50,121 @@ func (o *ArtifactQueryRequest) GetRequestBody() ArtifactQueryRequestBody {
 	return o.RequestBody
 }
 
-type Error struct {
+type ArtifactQueryError struct {
 	Message string `json:"message"`
 }
 
-func (o *Error) GetMessage() string {
+func (o *ArtifactQueryError) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-type ResponseBody2 struct {
-	Error Error `json:"error"`
+type ArtifactQueryResponseBody2 struct {
+	Error ArtifactQueryError `json:"error"`
 }
 
-func (o *ResponseBody2) GetError() Error {
+func (o *ArtifactQueryResponseBody2) GetError() ArtifactQueryError {
 	if o == nil {
-		return Error{}
+		return ArtifactQueryError{}
 	}
 	return o.Error
 }
 
-type ResponseBody1 struct {
+type ArtifactQueryResponseBody1 struct {
 	Size           float64 `json:"size"`
 	TaskDurationMs float64 `json:"taskDurationMs"`
 	Tag            *string `json:"tag,omitempty"`
 }
 
-func (o *ResponseBody1) GetSize() float64 {
+func (o *ArtifactQueryResponseBody1) GetSize() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Size
 }
 
-func (o *ResponseBody1) GetTaskDurationMs() float64 {
+func (o *ArtifactQueryResponseBody1) GetTaskDurationMs() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TaskDurationMs
 }
 
-func (o *ResponseBody1) GetTag() *string {
+func (o *ArtifactQueryResponseBody1) GetTag() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Tag
 }
 
-type ResponseBodyUnionType string
+type ArtifactQueryResponseBodyUnionType string
 
 const (
-	ResponseBodyUnionTypeResponseBody1 ResponseBodyUnionType = "responseBody_1"
-	ResponseBodyUnionTypeResponseBody2 ResponseBodyUnionType = "responseBody_2"
+	ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody1 ArtifactQueryResponseBodyUnionType = "artifactQuery_ResponseBody_1"
+	ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody2 ArtifactQueryResponseBodyUnionType = "artifactQuery_ResponseBody_2"
 )
 
-type ResponseBody struct {
-	ResponseBody1 *ResponseBody1
-	ResponseBody2 *ResponseBody2
+type ArtifactQueryResponseBodyUnion struct {
+	ArtifactQueryResponseBody1 *ArtifactQueryResponseBody1 `queryParam:"inline"`
+	ArtifactQueryResponseBody2 *ArtifactQueryResponseBody2 `queryParam:"inline"`
 
-	Type ResponseBodyUnionType
+	Type ArtifactQueryResponseBodyUnionType
 }
 
-func CreateResponseBodyResponseBody1(responseBody1 ResponseBody1) ResponseBody {
-	typ := ResponseBodyUnionTypeResponseBody1
+func CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody1(artifactQueryResponseBody1 ArtifactQueryResponseBody1) ArtifactQueryResponseBodyUnion {
+	typ := ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody1
 
-	return ResponseBody{
-		ResponseBody1: &responseBody1,
-		Type:          typ,
+	return ArtifactQueryResponseBodyUnion{
+		ArtifactQueryResponseBody1: &artifactQueryResponseBody1,
+		Type:                       typ,
 	}
 }
 
-func CreateResponseBodyResponseBody2(responseBody2 ResponseBody2) ResponseBody {
-	typ := ResponseBodyUnionTypeResponseBody2
+func CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody2(artifactQueryResponseBody2 ArtifactQueryResponseBody2) ArtifactQueryResponseBodyUnion {
+	typ := ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody2
 
-	return ResponseBody{
-		ResponseBody2: &responseBody2,
-		Type:          typ,
+	return ArtifactQueryResponseBodyUnion{
+		ArtifactQueryResponseBody2: &artifactQueryResponseBody2,
+		Type:                       typ,
 	}
 }
 
-func (u *ResponseBody) UnmarshalJSON(data []byte) error {
+func (u *ArtifactQueryResponseBodyUnion) UnmarshalJSON(data []byte) error {
 
-	var responseBody2 ResponseBody2 = ResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &responseBody2, "", true, true); err == nil {
-		u.ResponseBody2 = &responseBody2
-		u.Type = ResponseBodyUnionTypeResponseBody2
+	var artifactQueryResponseBody2 ArtifactQueryResponseBody2 = ArtifactQueryResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody2, "", true, true); err == nil {
+		u.ArtifactQueryResponseBody2 = &artifactQueryResponseBody2
+		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody2
 		return nil
 	}
 
-	var responseBody1 ResponseBody1 = ResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &responseBody1, "", true, true); err == nil {
-		u.ResponseBody1 = &responseBody1
-		u.Type = ResponseBodyUnionTypeResponseBody1
+	var artifactQueryResponseBody1 ArtifactQueryResponseBody1 = ArtifactQueryResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody1, "", true, true); err == nil {
+		u.ArtifactQueryResponseBody1 = &artifactQueryResponseBody1
+		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ResponseBody", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ArtifactQueryResponseBodyUnion", string(data))
 }
 
-func (u ResponseBody) MarshalJSON() ([]byte, error) {
-	if u.ResponseBody1 != nil {
-		return utils.MarshalJSON(u.ResponseBody1, "", true)
+func (u ArtifactQueryResponseBodyUnion) MarshalJSON() ([]byte, error) {
+	if u.ArtifactQueryResponseBody1 != nil {
+		return utils.MarshalJSON(u.ArtifactQueryResponseBody1, "", true)
 	}
 
-	if u.ResponseBody2 != nil {
-		return utils.MarshalJSON(u.ResponseBody2, "", true)
+	if u.ArtifactQueryResponseBody2 != nil {
+		return utils.MarshalJSON(u.ArtifactQueryResponseBody2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ResponseBody: all fields are null")
+	return nil, errors.New("could not marshal union type ArtifactQueryResponseBodyUnion: all fields are null")
 }
 
 type ArtifactQueryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   map[string]*ResponseBody
+	Object   map[string]*ArtifactQueryResponseBodyUnion
 }
 
 func (o *ArtifactQueryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -174,7 +174,7 @@ func (o *ArtifactQueryResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ArtifactQueryResponse) GetObject() map[string]*ResponseBody {
+func (o *ArtifactQueryResponse) GetObject() map[string]*ArtifactQueryResponseBodyUnion {
 	if o == nil {
 		return nil
 	}

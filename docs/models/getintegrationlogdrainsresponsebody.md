@@ -7,7 +7,7 @@ import { GetIntegrationLogDrainsResponseBody } from "@vercel/sdk/models/getinteg
 
 let value: GetIntegrationLogDrainsResponseBody = {
   clientId: "oac_xRhY4LAB7yLhUADD69EvV7ct",
-  configurationId: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+  configurationId: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
   createdAt: 1558531915505,
   id: "ld_nBuA7zCID8g4QZ8g",
   deliveryFormat: "json",
@@ -24,37 +24,7 @@ let value: GetIntegrationLogDrainsResponseBody = {
   ],
   createdFrom: "integration",
   headers: {
-    "0": "{",
-    "1": "\"",
-    "2": "A",
-    "3": "u",
-    "4": "t",
-    "5": "h",
-    "6": "o",
-    "7": "r",
-    "8": "i",
-    "9": "z",
-    "10": "a",
-    "11": "t",
-    "12": "i",
-    "13": "o",
-    "14": "n",
-    "15": "\"",
-    "16": ":",
-    "17": " ",
-    "18": "\"",
-    "19": "B",
-    "20": "e",
-    "21": "a",
-    "22": "r",
-    "23": "e",
-    "24": "r",
-    "25": " ",
-    "26": "1",
-    "27": "2",
-    "28": "3",
-    "29": "\"",
-    "30": "}",
+    "Authorization": "Bearer 123",
   },
   environments: [
     "production",
@@ -69,7 +39,7 @@ let value: GetIntegrationLogDrainsResponseBody = {
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `clientId`                                                                                         | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The oauth2 client application id that created this log drain                                       | oac_xRhY4LAB7yLhUADD69EvV7ct                                                                       |
-| `configurationId`                                                                                  | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The client configuration this log drain was created with                                           | icfg_cuwj0AdCdH3BwWT4LPijCC7t                                                                      |
+| `configurationId`                                                                                  | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The client configuration this log drain was created with                                           | icfg_3bwCLgxL8qt5kjRLcv2Dit7F                                                                      |
 | `createdAt`                                                                                        | *number*                                                                                           | :heavy_check_mark:                                                                                 | A timestamp that tells you when the log drain was created                                          | 1558531915505                                                                                      |
 | `id`                                                                                               | *string*                                                                                           | :heavy_check_mark:                                                                                 | The unique identifier of the log drain. Always prefixed with `ld_`                                 | ld_nBuA7zCID8g4QZ8g                                                                                |
 | `deliveryFormat`                                                                                   | [models.GetIntegrationLogDrainsDeliveryFormat](../models/getintegrationlogdrainsdeliveryformat.md) | :heavy_minus_sign:                                                                                 | The delivery log format                                                                            | json                                                                                               |

@@ -74,27 +74,27 @@ func (o *ListPromoteAliasesRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type ResponseBodyAliases struct {
+type ListPromoteAliasesAlias struct {
 	Status string `json:"status"`
 	Alias  string `json:"alias"`
 	ID     string `json:"id"`
 }
 
-func (o *ResponseBodyAliases) GetStatus() string {
+func (o *ListPromoteAliasesAlias) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
 }
 
-func (o *ResponseBodyAliases) GetAlias() string {
+func (o *ListPromoteAliasesAlias) GetAlias() string {
 	if o == nil {
 		return ""
 	}
 	return o.Alias
 }
 
-func (o *ResponseBodyAliases) GetID() string {
+func (o *ListPromoteAliasesAlias) GetID() string {
 	if o == nil {
 		return ""
 	}
@@ -102,14 +102,14 @@ func (o *ResponseBodyAliases) GetID() string {
 }
 
 type ListPromoteAliasesResponseBody2 struct {
-	Aliases []ResponseBodyAliases `json:"aliases"`
+	Aliases []ListPromoteAliasesAlias `json:"aliases"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *ListPromoteAliasesResponseBody2) GetAliases() []ResponseBodyAliases {
+func (o *ListPromoteAliasesResponseBody2) GetAliases() []ListPromoteAliasesAlias {
 	if o == nil {
-		return []ResponseBodyAliases{}
+		return []ListPromoteAliasesAlias{}
 	}
 	return o.Aliases
 }
@@ -127,13 +127,13 @@ type ListPromoteAliasesResponseBody1 struct {
 type ListPromoteAliasesResponseBodyType string
 
 const (
-	ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody1 ListPromoteAliasesResponseBodyType = "listPromoteAliases_responseBody_1"
-	ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody2 ListPromoteAliasesResponseBodyType = "listPromoteAliases_responseBody_2"
+	ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody1 ListPromoteAliasesResponseBodyType = "listPromoteAliases_ResponseBody_1"
+	ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody2 ListPromoteAliasesResponseBodyType = "listPromoteAliases_ResponseBody_2"
 )
 
 type ListPromoteAliasesResponseBody struct {
-	ListPromoteAliasesResponseBody1 *ListPromoteAliasesResponseBody1
-	ListPromoteAliasesResponseBody2 *ListPromoteAliasesResponseBody2
+	ListPromoteAliasesResponseBody1 *ListPromoteAliasesResponseBody1 `queryParam:"inline"`
+	ListPromoteAliasesResponseBody2 *ListPromoteAliasesResponseBody2 `queryParam:"inline"`
 
 	Type ListPromoteAliasesResponseBodyType
 }

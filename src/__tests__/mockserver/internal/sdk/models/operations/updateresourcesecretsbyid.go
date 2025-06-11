@@ -37,7 +37,7 @@ func (o *UpdateResourceSecretsByIDEnvironmentOverrides) GetProduction() *string 
 	return o.Production
 }
 
-type UpdateResourceSecretsByIDSecrets struct {
+type UpdateResourceSecretsByIDSecret struct {
 	Name   string  `json:"name"`
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
@@ -45,28 +45,28 @@ type UpdateResourceSecretsByIDSecrets struct {
 	EnvironmentOverrides *UpdateResourceSecretsByIDEnvironmentOverrides `json:"environmentOverrides,omitempty"`
 }
 
-func (o *UpdateResourceSecretsByIDSecrets) GetName() string {
+func (o *UpdateResourceSecretsByIDSecret) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateResourceSecretsByIDSecrets) GetValue() string {
+func (o *UpdateResourceSecretsByIDSecret) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UpdateResourceSecretsByIDSecrets) GetPrefix() *string {
+func (o *UpdateResourceSecretsByIDSecret) GetPrefix() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Prefix
 }
 
-func (o *UpdateResourceSecretsByIDSecrets) GetEnvironmentOverrides() *UpdateResourceSecretsByIDEnvironmentOverrides {
+func (o *UpdateResourceSecretsByIDSecret) GetEnvironmentOverrides() *UpdateResourceSecretsByIDEnvironmentOverrides {
 	if o == nil {
 		return nil
 	}
@@ -74,14 +74,14 @@ func (o *UpdateResourceSecretsByIDSecrets) GetEnvironmentOverrides() *UpdateReso
 }
 
 type UpdateResourceSecretsByIDRequestBody struct {
-	Secrets []UpdateResourceSecretsByIDSecrets `json:"secrets"`
+	Secrets []UpdateResourceSecretsByIDSecret `json:"secrets"`
 	// If true, will only overwrite the provided secrets instead of replacing all secrets.
 	Partial *bool `json:"partial,omitempty"`
 }
 
-func (o *UpdateResourceSecretsByIDRequestBody) GetSecrets() []UpdateResourceSecretsByIDSecrets {
+func (o *UpdateResourceSecretsByIDRequestBody) GetSecrets() []UpdateResourceSecretsByIDSecret {
 	if o == nil {
-		return []UpdateResourceSecretsByIDSecrets{}
+		return []UpdateResourceSecretsByIDSecret{}
 	}
 	return o.Secrets
 }

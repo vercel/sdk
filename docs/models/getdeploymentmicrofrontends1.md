@@ -8,7 +8,9 @@ import { GetDeploymentMicrofrontends1 } from "@vercel/sdk/models/getdeploymentop
 let value: GetDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

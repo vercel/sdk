@@ -45,7 +45,7 @@ func testVerifyProjectDomainVerifyProjectDomain0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.VerifyProjectDomainResponseBody{
+	var respBody *operations.VerifyProjectDomainResponseBody = &operations.VerifyProjectDomainResponseBody{
 		Name:      "<value>",
 		ApexName:  "<value>",
 		ProjectID: "<id>",

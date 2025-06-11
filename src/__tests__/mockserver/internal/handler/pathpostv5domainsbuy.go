@@ -50,17 +50,15 @@ func testBuyDomainBuyDomain0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.BuyDomainResponseBody{
-		Domain: operations.BuyDomainDomainsDomain{
+	var respBody *operations.BuyDomainResponseBody1 = &operations.BuyDomainResponseBody1{
+		Domain: operations.BuyDomainDomain1{
 			UID: "<id>",
 			Ns: []string{
-				"<value>",
-				"<value>",
-				"<value>",
+				"<value 1>",
 			},
-			Verified: false,
-			Created:  9374.8,
-			Pending:  false,
+			Verified: true,
+			Created:  6683.9,
+			Pending:  true,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -6,13 +6,22 @@
 import { GetProjectsManagedRules } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsManagedRules = {
-  active: false,
+  botFilter: {
+    active: false,
+  },
+  aiBots: {
+    active: false,
+  },
+  owasp: {
+    active: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `active`                                                   | *boolean*                                                  | :heavy_check_mark:                                         | N/A                                                        |
-| `action`                                                   | [models.GetProjectsAction](../models/getprojectsaction.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `botFilter`                                                      | [models.GetProjectsBotFilter](../models/getprojectsbotfilter.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `aiBots`                                                         | [models.GetProjectsAiBots](../models/getprojectsaibots.md)       | :heavy_check_mark:                                               | N/A                                                              |
+| `owasp`                                                          | [models.GetProjectsOwasp](../models/getprojectsowasp.md)         | :heavy_check_mark:                                               | N/A                                                              |

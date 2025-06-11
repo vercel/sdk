@@ -8,7 +8,7 @@ Generic Attack - Provide broad protection from various undefined or novel attack
 import { Gen } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: Gen = {
-  active: false,
+  active: true,
   action: "deny",
 };
 ```

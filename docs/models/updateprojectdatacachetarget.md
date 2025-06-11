@@ -6,9 +6,7 @@
 ### `models.UpdateProjectDataCacheTarget1[]`
 
 ```typescript
-const value: models.UpdateProjectDataCacheTarget1[] = [
-  "preview",
-];
+const value: models.UpdateProjectDataCacheTarget1[] = [];
 ```
 
 ### `models.UpdateProjectDataCacheTarget2`

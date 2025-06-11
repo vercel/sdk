@@ -8,7 +8,7 @@ HTTP status code range to filter events by.
 ### `number`
 
 ```typescript
-const value: number = 5xx;
+const value: number = 5;
 ```
 
 ### `string`

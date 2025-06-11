@@ -6,13 +6,22 @@
 import { CreateProjectManagedRules } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectManagedRules = {
-  active: false,
+  botFilter: {
+    active: true,
+  },
+  aiBots: {
+    active: false,
+  },
+  owasp: {
+    active: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `active`                                                       | *boolean*                                                      | :heavy_check_mark:                                             | N/A                                                            |
-| `action`                                                       | [models.CreateProjectAction](../models/createprojectaction.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `botFilter`                                                          | [models.CreateProjectBotFilter](../models/createprojectbotfilter.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `aiBots`                                                             | [models.CreateProjectAiBots](../models/createprojectaibots.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `owasp`                                                              | [models.CreateProjectOwasp](../models/createprojectowasp.md)         | :heavy_check_mark:                                                   | N/A                                                                  |

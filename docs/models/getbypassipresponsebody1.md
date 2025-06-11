@@ -6,9 +6,7 @@
 import { GetBypassIpResponseBody1 } from "@vercel/sdk/models/getbypassipop.js";
 
 let value: GetBypassIpResponseBody1 = {
-  result: [
-    {},
-  ],
+  result: [],
   pagination: "<value>",
 };
 ```

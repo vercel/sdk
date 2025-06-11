@@ -10,8 +10,8 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// RequestBody3 - transfer-in
-type RequestBody3 struct {
+// PostDomainsRequestBody3 - transfer-in
+type PostDomainsRequestBody3 struct {
 	// The domain name you want to add.
 	Name string `json:"name"`
 	// The domain operation to perform. It can be either `add` or `transfer-in`.
@@ -22,36 +22,36 @@ type RequestBody3 struct {
 	ExpectedPrice *float64 `json:"expectedPrice,omitempty"`
 }
 
-func (o *RequestBody3) GetName() string {
+func (o *PostDomainsRequestBody3) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RequestBody3) GetMethod() string {
+func (o *PostDomainsRequestBody3) GetMethod() string {
 	if o == nil {
 		return ""
 	}
 	return o.Method
 }
 
-func (o *RequestBody3) GetAuthCode() *string {
+func (o *PostDomainsRequestBody3) GetAuthCode() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AuthCode
 }
 
-func (o *RequestBody3) GetExpectedPrice() *float64 {
+func (o *PostDomainsRequestBody3) GetExpectedPrice() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExpectedPrice
 }
 
-// RequestBody2 - move-in
-type RequestBody2 struct {
+// PostDomainsRequestBody2 - move-in
+type PostDomainsRequestBody2 struct {
 	// The domain name you want to add.
 	Name string `json:"name"`
 	// The domain operation to perform. It can be either `add` or `transfer-in`.
@@ -60,29 +60,29 @@ type RequestBody2 struct {
 	Token *string `json:"token,omitempty"`
 }
 
-func (o *RequestBody2) GetName() string {
+func (o *PostDomainsRequestBody2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RequestBody2) GetMethod() string {
+func (o *PostDomainsRequestBody2) GetMethod() string {
 	if o == nil {
 		return ""
 	}
 	return o.Method
 }
 
-func (o *RequestBody2) GetToken() *string {
+func (o *PostDomainsRequestBody2) GetToken() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Token
 }
 
-// RequestBody1 - add
-type RequestBody1 struct {
+// PostDomainsRequestBody1 - add
+type PostDomainsRequestBody1 struct {
 	// The domain name you want to add.
 	Name string `json:"name"`
 	// Whether the domain has the Vercel Edge Network enabled or not.
@@ -92,117 +92,117 @@ type RequestBody1 struct {
 	Method *string `json:"method,omitempty"`
 }
 
-func (o *RequestBody1) GetName() string {
+func (o *PostDomainsRequestBody1) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RequestBody1) GetCdnEnabled() *bool {
+func (o *PostDomainsRequestBody1) GetCdnEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.CdnEnabled
 }
 
-func (o *RequestBody1) GetZone() *bool {
+func (o *PostDomainsRequestBody1) GetZone() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Zone
 }
 
-func (o *RequestBody1) GetMethod() *string {
+func (o *PostDomainsRequestBody1) GetMethod() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Method
 }
 
-type PostDomainsRequestBodyType string
+type PostDomainsRequestType string
 
 const (
-	PostDomainsRequestBodyTypeRequestBody1 PostDomainsRequestBodyType = "requestBody_1"
-	PostDomainsRequestBodyTypeRequestBody2 PostDomainsRequestBodyType = "requestBody_2"
-	PostDomainsRequestBodyTypeRequestBody3 PostDomainsRequestBodyType = "requestBody_3"
+	PostDomainsRequestTypePostDomainsRequestBody1 PostDomainsRequestType = "post_domains_RequestBody_1"
+	PostDomainsRequestTypePostDomainsRequestBody2 PostDomainsRequestType = "post_domains_RequestBody_2"
+	PostDomainsRequestTypePostDomainsRequestBody3 PostDomainsRequestType = "post_domains_RequestBody_3"
 )
 
-type PostDomainsRequestBody struct {
-	RequestBody1 *RequestBody1
-	RequestBody2 *RequestBody2
-	RequestBody3 *RequestBody3
+type PostDomainsRequest struct {
+	PostDomainsRequestBody1 *PostDomainsRequestBody1 `queryParam:"inline"`
+	PostDomainsRequestBody2 *PostDomainsRequestBody2 `queryParam:"inline"`
+	PostDomainsRequestBody3 *PostDomainsRequestBody3 `queryParam:"inline"`
 
-	Type PostDomainsRequestBodyType
+	Type PostDomainsRequestType
 }
 
-func CreatePostDomainsRequestBodyRequestBody1(requestBody1 RequestBody1) PostDomainsRequestBody {
-	typ := PostDomainsRequestBodyTypeRequestBody1
+func CreatePostDomainsRequestPostDomainsRequestBody1(postDomainsRequestBody1 PostDomainsRequestBody1) PostDomainsRequest {
+	typ := PostDomainsRequestTypePostDomainsRequestBody1
 
-	return PostDomainsRequestBody{
-		RequestBody1: &requestBody1,
-		Type:         typ,
+	return PostDomainsRequest{
+		PostDomainsRequestBody1: &postDomainsRequestBody1,
+		Type:                    typ,
 	}
 }
 
-func CreatePostDomainsRequestBodyRequestBody2(requestBody2 RequestBody2) PostDomainsRequestBody {
-	typ := PostDomainsRequestBodyTypeRequestBody2
+func CreatePostDomainsRequestPostDomainsRequestBody2(postDomainsRequestBody2 PostDomainsRequestBody2) PostDomainsRequest {
+	typ := PostDomainsRequestTypePostDomainsRequestBody2
 
-	return PostDomainsRequestBody{
-		RequestBody2: &requestBody2,
-		Type:         typ,
+	return PostDomainsRequest{
+		PostDomainsRequestBody2: &postDomainsRequestBody2,
+		Type:                    typ,
 	}
 }
 
-func CreatePostDomainsRequestBodyRequestBody3(requestBody3 RequestBody3) PostDomainsRequestBody {
-	typ := PostDomainsRequestBodyTypeRequestBody3
+func CreatePostDomainsRequestPostDomainsRequestBody3(postDomainsRequestBody3 PostDomainsRequestBody3) PostDomainsRequest {
+	typ := PostDomainsRequestTypePostDomainsRequestBody3
 
-	return PostDomainsRequestBody{
-		RequestBody3: &requestBody3,
-		Type:         typ,
+	return PostDomainsRequest{
+		PostDomainsRequestBody3: &postDomainsRequestBody3,
+		Type:                    typ,
 	}
 }
 
-func (u *PostDomainsRequestBody) UnmarshalJSON(data []byte) error {
+func (u *PostDomainsRequest) UnmarshalJSON(data []byte) error {
 
-	var requestBody2 RequestBody2 = RequestBody2{}
-	if err := utils.UnmarshalJSON(data, &requestBody2, "", true, true); err == nil {
-		u.RequestBody2 = &requestBody2
-		u.Type = PostDomainsRequestBodyTypeRequestBody2
+	var postDomainsRequestBody2 PostDomainsRequestBody2 = PostDomainsRequestBody2{}
+	if err := utils.UnmarshalJSON(data, &postDomainsRequestBody2, "", true, true); err == nil {
+		u.PostDomainsRequestBody2 = &postDomainsRequestBody2
+		u.Type = PostDomainsRequestTypePostDomainsRequestBody2
 		return nil
 	}
 
-	var requestBody1 RequestBody1 = RequestBody1{}
-	if err := utils.UnmarshalJSON(data, &requestBody1, "", true, true); err == nil {
-		u.RequestBody1 = &requestBody1
-		u.Type = PostDomainsRequestBodyTypeRequestBody1
+	var postDomainsRequestBody1 PostDomainsRequestBody1 = PostDomainsRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &postDomainsRequestBody1, "", true, true); err == nil {
+		u.PostDomainsRequestBody1 = &postDomainsRequestBody1
+		u.Type = PostDomainsRequestTypePostDomainsRequestBody1
 		return nil
 	}
 
-	var requestBody3 RequestBody3 = RequestBody3{}
-	if err := utils.UnmarshalJSON(data, &requestBody3, "", true, true); err == nil {
-		u.RequestBody3 = &requestBody3
-		u.Type = PostDomainsRequestBodyTypeRequestBody3
+	var postDomainsRequestBody3 PostDomainsRequestBody3 = PostDomainsRequestBody3{}
+	if err := utils.UnmarshalJSON(data, &postDomainsRequestBody3, "", true, true); err == nil {
+		u.PostDomainsRequestBody3 = &postDomainsRequestBody3
+		u.Type = PostDomainsRequestTypePostDomainsRequestBody3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PostDomainsRequestBody", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PostDomainsRequest", string(data))
 }
 
-func (u PostDomainsRequestBody) MarshalJSON() ([]byte, error) {
-	if u.RequestBody1 != nil {
-		return utils.MarshalJSON(u.RequestBody1, "", true)
+func (u PostDomainsRequest) MarshalJSON() ([]byte, error) {
+	if u.PostDomainsRequestBody1 != nil {
+		return utils.MarshalJSON(u.PostDomainsRequestBody1, "", true)
 	}
 
-	if u.RequestBody2 != nil {
-		return utils.MarshalJSON(u.RequestBody2, "", true)
+	if u.PostDomainsRequestBody2 != nil {
+		return utils.MarshalJSON(u.PostDomainsRequestBody2, "", true)
 	}
 
-	if u.RequestBody3 != nil {
-		return utils.MarshalJSON(u.RequestBody3, "", true)
+	if u.PostDomainsRequestBody3 != nil {
+		return utils.MarshalJSON(u.PostDomainsRequestBody3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type PostDomainsRequestBody: all fields are null")
+	return nil, errors.New("could not marshal union type PostDomainsRequest: all fields are null")
 }
 
 // PostDomainsCreator - An object containing information of the domain creator, including the user's id, username, and email.
@@ -249,19 +249,19 @@ func (o *PostDomainsCreator) GetID() string {
 	return o.ID
 }
 
-// ServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
-type ServiceType string
+// PostDomainsServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
+type PostDomainsServiceType string
 
 const (
-	ServiceTypeZeitWorld ServiceType = "zeit.world"
-	ServiceTypeExternal  ServiceType = "external"
-	ServiceTypeNa        ServiceType = "na"
+	PostDomainsServiceTypeZeitWorld PostDomainsServiceType = "zeit.world"
+	PostDomainsServiceTypeExternal  PostDomainsServiceType = "external"
+	PostDomainsServiceTypeNa        PostDomainsServiceType = "na"
 )
 
-func (e ServiceType) ToPointer() *ServiceType {
+func (e PostDomainsServiceType) ToPointer() *PostDomainsServiceType {
 	return &e
 }
-func (e *ServiceType) UnmarshalJSON(data []byte) error {
+func (e *PostDomainsServiceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -272,10 +272,10 @@ func (e *ServiceType) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "na":
-		*e = ServiceType(v)
+		*e = PostDomainsServiceType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ServiceType: %v", v)
+		return fmt.Errorf("invalid value for PostDomainsServiceType: %v", v)
 	}
 }
 
@@ -305,7 +305,7 @@ type PostDomainsDomain struct {
 	// Indicates whether the domain is set to automatically renew.
 	Renew *bool `json:"renew,omitempty"`
 	// The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
-	ServiceType ServiceType `json:"serviceType"`
+	ServiceType PostDomainsServiceType `json:"serviceType"`
 	// Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.
 	TransferredAt *float64 `json:"transferredAt,omitempty"`
 	// If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
@@ -398,9 +398,9 @@ func (o *PostDomainsDomain) GetRenew() *bool {
 	return o.Renew
 }
 
-func (o *PostDomainsDomain) GetServiceType() ServiceType {
+func (o *PostDomainsDomain) GetServiceType() PostDomainsServiceType {
 	if o == nil {
-		return ServiceType("")
+		return PostDomainsServiceType("")
 	}
 	return o.ServiceType
 }

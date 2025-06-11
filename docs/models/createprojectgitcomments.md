@@ -6,8 +6,8 @@
 import { CreateProjectGitComments } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectGitComments = {
-  onPullRequest: false,
-  onCommit: false,
+  onPullRequest: true,
+  onCommit: true,
 };
 ```
 

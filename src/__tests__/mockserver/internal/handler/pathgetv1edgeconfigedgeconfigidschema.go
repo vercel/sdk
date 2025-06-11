@@ -45,7 +45,7 @@ func testGetEdgeConfigSchemaGetEdgeConfigSchema0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetEdgeConfigSchemaResponseBody{}
+	var respBody *operations.GetEdgeConfigSchemaResponseBody = &operations.GetEdgeConfigSchemaResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

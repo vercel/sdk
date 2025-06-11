@@ -50,13 +50,13 @@ func testUpdateRecordUpdateRecord0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateRecordResponseBody{
+	var respBody *operations.UpdateRecordResponseBody = &operations.UpdateRecordResponseBody{
 		Creator:    "<value>",
-		Domain:     "rectangular-peninsula.net",
+		Domain:     "raw-scorpion.net",
 		ID:         "<id>",
 		Name:       "<value>",
-		RecordType: operations.RecordTypeSrv,
-		Type:       operations.UpdateRecordDNSTypeRecordSys,
+		RecordType: operations.RecordTypeAaaa,
+		Type:       operations.UpdateRecordTypeResponseBodyRecord,
 		Value:      "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

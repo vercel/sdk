@@ -9,13 +9,13 @@
 const value: models.AuthUser = {
   createdAt: 1630748523395,
   softBlock: {
-    blockedAt: 3760.13,
-    reason: "UNPAID_INVOICE",
+    blockedAt: 3863.42,
+    reason: "ENTERPRISE_TRIAL_ENDED",
   },
   billing: {},
   resourceConfig: {},
   stagingPrefix: "<value>",
-  hasTrialAvailable: false,
+  hasTrialAvailable: true,
   id: "AEIIDYVk59zbFF2Sxfyxxmua",
   email: "me@example.com",
   name: "John Doe",

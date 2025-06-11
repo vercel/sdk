@@ -11,7 +11,7 @@ let value: MoveProjectDomainResponseBody = {
   name: "<value>",
   apexName: "<value>",
   projectId: "<id>",
-  verified: false,
+  verified: true,
 };
 ```
 

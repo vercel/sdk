@@ -6,9 +6,7 @@
 ### `models.CreateProjectTarget1[]`
 
 ```typescript
-const value: models.CreateProjectTarget1[] = [
-  "preview",
-];
+const value: models.CreateProjectTarget1[] = [];
 ```
 
 ### `models.CreateProjectTarget2`

@@ -38,7 +38,6 @@ import { tool$artifactsStatus } from "./tools/artifactsStatus.js";
 import { tool$artifactsUploadArtifact } from "./tools/artifactsUploadArtifact.js";
 import { tool$authenticationCreateAuthToken } from "./tools/authenticationCreateAuthToken.js";
 import { tool$authenticationDeleteAuthToken } from "./tools/authenticationDeleteAuthToken.js";
-import { tool$authenticationExchangeSsoToken } from "./tools/authenticationExchangeSsoToken.js";
 import { tool$authenticationGetAuthToken } from "./tools/authenticationGetAuthToken.js";
 import { tool$authenticationListAuthTokens } from "./tools/authenticationListAuthTokens.js";
 import { tool$certsGetCertById } from "./tools/certsGetCertById.js";
@@ -99,7 +98,6 @@ import { tool$getProjectsProjectIdLogsPresets } from "./tools/getProjectsProject
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
-import { tool$integrationsUpdateIntegrationDeploymentAction } from "./tools/integrationsUpdateIntegrationDeploymentAction.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
 import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
@@ -191,7 +189,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.7.7",
+    version: "1.8.0",
   });
 
   const client = new VercelCore({
@@ -282,7 +280,6 @@ export function createMCPServer(deps: {
   tool(tool$deploymentsGetDeploymentFileContents);
   tool(tool$deploymentsGetDeployments);
   tool(tool$deploymentsDeleteDeployment);
-  tool(tool$integrationsUpdateIntegrationDeploymentAction);
   tool(tool$integrationsGetConfigurations);
   tool(tool$integrationsGetConfiguration);
   tool(tool$integrationsDeleteConfiguration);
@@ -339,7 +336,6 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);
   tool(tool$marketplaceCreateInstallationIntegrationEdgeConfig);
   tool(tool$marketplaceUpdateInstallationIntegrationEdgeConfig);
-  tool(tool$authenticationExchangeSsoToken);
   tool(tool$authenticationListAuthTokens);
   tool(tool$authenticationCreateAuthToken);
   tool(tool$authenticationGetAuthToken);

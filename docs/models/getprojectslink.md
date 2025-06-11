@@ -7,14 +7,7 @@
 
 ```typescript
 const value: models.GetProjectsLink1 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://unwilling-yak.info/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 
@@ -22,14 +15,7 @@ const value: models.GetProjectsLink1 = {
 
 ```typescript
 const value: models.GetProjectsLink2 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://assured-cemetery.com/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 
@@ -42,7 +28,7 @@ const value: models.GetProjectsLink3 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://sardonic-lift.biz/",
+      url: "https://distant-repeat.com/",
     },
   ],
 };
@@ -52,14 +38,7 @@ const value: models.GetProjectsLink3 = {
 
 ```typescript
 const value: models.GetProjectsLink4 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://austere-encouragement.org/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

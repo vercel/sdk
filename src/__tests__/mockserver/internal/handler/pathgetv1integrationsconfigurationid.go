@@ -46,22 +46,35 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetConfigurationResponseBodyGetConfigurationResponseBody1(
-		operations.GetConfigurationResponseBody1{
+	var respBody *operations.GetConfigurationResponseBody = types.Pointer(operations.CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2(
+		operations.GetConfigurationIntegrationConfiguration2{
+			ProjectSelection: operations.ProjectSelectionAll,
+			TransferRequest: operations.CreateTransferRequestTransferRequestTransferFromMarketplace(
+				operations.TransferRequestTransferFromMarketplace{
+					Kind:       operations.KindTransferFromMarketplaceTransferFromMarketplace,
+					RequestID:  "<id>",
+					TransferID: "<id>",
+					Requester: operations.Requester2{
+						Name: "<value>",
+					},
+					CreatedAt: 7423.49,
+					ExpiresAt: 2957.4,
+				},
+			),
+			Projects: []string{
+				"prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
+			},
 			CompletedAt:   types.Float64(1558531915505),
 			CreatedAt:     1558531915505,
 			ID:            "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
 			IntegrationID: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
 			OwnerID:       "kr1PsOIzqEL5Xg6M4VZcZosf",
-			Projects: []string{
-				"prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
-			},
-			Source:    operations.GetConfigurationResponseBodySourceMarketplace.ToPointer(),
-			Slug:      "slack",
-			TeamID:    types.String("team_nLlpyC6RE1qxydlFKbrxDlud"),
-			Type:      operations.GetConfigurationResponseBodyTypeIntegrationConfiguration,
-			UpdatedAt: 1558531915505,
-			UserID:    "kr1PsOIzqEL5Xg6M4VZcZosf",
+			Source:        operations.GetConfigurationSource2Marketplace.ToPointer(),
+			Slug:          "slack",
+			TeamID:        types.String("team_nLlpyC6RE1qxydlFKbrxDlud"),
+			Type:          operations.GetConfigurationTypeIntegrationConfiguration2IntegrationConfiguration,
+			UpdatedAt:     1558531915505,
+			UserID:        "kr1PsOIzqEL5Xg6M4VZcZosf",
 			Scopes: []string{
 				"read:project",
 				"read-write:log-drain",

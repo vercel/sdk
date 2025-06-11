@@ -36,7 +36,7 @@ const value: models.GitSource3 = {
   ref: "main",
   repo: "next.js",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  host: "unconscious-hyphenation.net",
+  host: "specific-gerbil.com",
   type: "github-custom-host",
 };
 ```

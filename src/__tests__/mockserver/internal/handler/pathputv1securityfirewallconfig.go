@@ -50,146 +50,113 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.PutFirewallConfigResponseBody{
+	var respBody *operations.PutFirewallConfigResponseBody = &operations.PutFirewallConfigResponseBody{
 		Active: operations.Active{
 			OwnerID:         "<id>",
 			ProjectKey:      "<value>",
 			ID:              "<id>",
-			Version:         892.22,
-			UpdatedAt:       "1745792555559",
-			FirewallEnabled: true,
-			Crs: operations.PutFirewallConfigCrs{
-				Sd: operations.PutFirewallConfigSd{
+			Version:         9165.84,
+			UpdatedAt:       "1735603203410",
+			FirewallEnabled: false,
+			Crs: operations.ActiveCrs{
+				Sd: operations.ActiveSd{
 					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdActionLog,
+					Action: operations.ActiveSdActionDeny,
 				},
-				Ma: operations.PutFirewallConfigMa{
+				Ma: operations.ActiveMa{
 					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsMaActionLog,
+					Action: operations.ActiveMaActionDeny,
 				},
-				Lfi: operations.PutFirewallConfigLfi{
-					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsLfiActionDeny,
-				},
-				Rfi: operations.PutFirewallConfigRfi{
-					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActionDeny,
-				},
-				Rce: operations.PutFirewallConfigRce{
+				Lfi: operations.ActiveLfi{
 					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveActionDeny,
+					Action: operations.ActiveLfiActionLog,
 				},
-				Php: operations.PutFirewallConfigPhp{
-					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsActionDeny,
-				},
-				Gen: operations.PutFirewallConfigGen{
-					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenActionDeny,
-				},
-				XSS: operations.PutFirewallConfigXSS{
+				Rfi: operations.ActiveRfi{
 					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXSSActionLog,
+					Action: operations.ActiveRfiActionDeny,
 				},
-				Sqli: operations.PutFirewallConfigSqli{
-					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliActionDeny,
-				},
-				Sf: operations.PutFirewallConfigSf{
-					Active: true,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfActionLog,
-				},
-				Java: operations.PutFirewallConfigJava{
+				Rce: operations.ActiveRce{
 					Active: false,
-					Action: operations.PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaActionDeny,
+					Action: operations.ActiveRceActionLog,
+				},
+				Php: operations.ActivePhp{
+					Active: true,
+					Action: operations.ActivePhpActionLog,
+				},
+				Gen: operations.ActiveGen{
+					Active: true,
+					Action: operations.ActiveGenActionDeny,
+				},
+				XSS: operations.ActiveXSS{
+					Active: true,
+					Action: operations.ActiveXSSActionLog,
+				},
+				Sqli: operations.ActiveSqli{
+					Active: false,
+					Action: operations.ActiveSqliActionDeny,
+				},
+				Sf: operations.ActiveSf{
+					Active: false,
+					Action: operations.ActiveSfActionDeny,
+				},
+				Java: operations.ActiveJava{
+					Active: true,
+					Action: operations.ActiveJavaActionLog,
 				},
 			},
-			Rules: []operations.PutFirewallConfigRules{
-				operations.PutFirewallConfigRules{
+			Rules: []operations.ActiveRule{
+				operations.ActiveRule{
 					ID:     "<id>",
 					Name:   "<value>",
-					Active: false,
-					ConditionGroup: []operations.PutFirewallConfigConditionGroup{
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeGeoCity,
-									Op:   operations.PutFirewallConfigOpPre,
+					Active: true,
+					ConditionGroup: []operations.ActiveConditionGroup{
+						operations.ActiveConditionGroup{
+							Conditions: []operations.ActiveCondition{
+								operations.ActiveCondition{
+									Type: operations.ActiveTypeTargetPath,
+									Op:   operations.ActiveOpPre,
+								},
+							},
+						},
+						operations.ActiveConditionGroup{
+							Conditions: []operations.ActiveCondition{
+								operations.ActiveCondition{
+									Type: operations.ActiveTypeTargetPath,
+									Op:   operations.ActiveOpPre,
 								},
 							},
 						},
 					},
-					Action: operations.PutFirewallConfigSecurityResponseAction{},
+					Action: operations.ActiveRuleAction{},
 				},
-				operations.PutFirewallConfigRules{
-					ID:             "<id>",
-					Name:           "<value>",
-					Active:         false,
-					ConditionGroup: []operations.PutFirewallConfigConditionGroup{},
-					Action:         operations.PutFirewallConfigSecurityResponseAction{},
-				},
-				operations.PutFirewallConfigRules{
+				operations.ActiveRule{
 					ID:     "<id>",
 					Name:   "<value>",
-					Active: false,
-					ConditionGroup: []operations.PutFirewallConfigConditionGroup{
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeIPAddress,
-									Op:   operations.PutFirewallConfigOpSub,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeJa3Digest,
-									Op:   operations.PutFirewallConfigOpSuf,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeProtocol,
-									Op:   operations.PutFirewallConfigOpSub,
+					Active: true,
+					ConditionGroup: []operations.ActiveConditionGroup{
+						operations.ActiveConditionGroup{
+							Conditions: []operations.ActiveCondition{
+								operations.ActiveCondition{
+									Type: operations.ActiveTypeTargetPath,
+									Op:   operations.ActiveOpPre,
 								},
 							},
 						},
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeGeoAsNumber,
-									Op:   operations.PutFirewallConfigOpRe,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeGeoContinent,
-									Op:   operations.PutFirewallConfigOpNex,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeRegion,
-									Op:   operations.PutFirewallConfigOpGt,
-								},
-							},
-						},
-						operations.PutFirewallConfigConditionGroup{
-							Conditions: []operations.PutFirewallConfigConditions{
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeMethod,
-									Op:   operations.PutFirewallConfigOpGte,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeHeader,
-									Op:   operations.PutFirewallConfigOpInc,
-								},
-								operations.PutFirewallConfigConditions{
-									Type: operations.PutFirewallConfigSecurityTypeQuery,
-									Op:   operations.PutFirewallConfigOpEq,
+						operations.ActiveConditionGroup{
+							Conditions: []operations.ActiveCondition{
+								operations.ActiveCondition{
+									Type: operations.ActiveTypeTargetPath,
+									Op:   operations.ActiveOpPre,
 								},
 							},
 						},
 					},
-					Action: operations.PutFirewallConfigSecurityResponseAction{},
+					Action: operations.ActiveRuleAction{},
 				},
 			},
-			Ips: []operations.PutFirewallConfigIps{},
-			Changes: []operations.PutFirewallConfigChanges{
-				operations.PutFirewallConfigChanges{},
-				operations.PutFirewallConfigChanges{},
-				operations.PutFirewallConfigChanges{},
+			Ips: []operations.ActiveIP{},
+			Changes: []operations.PutFirewallConfigChange{
+				operations.PutFirewallConfigChange{},
 			},
 		},
 	}

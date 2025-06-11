@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectDataCacheProjectsBuildMachineType } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheProjectsBuildMachineType = "ultra";
+let value: UpdateProjectDataCacheProjectsBuildMachineType = "turbo";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "ultra"
+"enhanced" | "turbo"
 ```

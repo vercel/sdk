@@ -45,8 +45,8 @@ const value: models.GetConfigurationResponseBody2 = {
     requester: {
       name: "<value>",
     },
-    createdAt: 9970.58,
-    expiresAt: 1729.95,
+    createdAt: 5624.99,
+    expiresAt: 9059.84,
   },
   projects: [
     "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",

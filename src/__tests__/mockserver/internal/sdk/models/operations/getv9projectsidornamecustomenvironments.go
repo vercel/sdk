@@ -89,19 +89,19 @@ func (e *GetV9ProjectsIDOrNameCustomEnvironmentsType) UnmarshalJSON(data []byte)
 	}
 }
 
-// GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType - The type of matching to perform
-type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType string
+// GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType - The type of matching to perform
+type GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType string
 
 const (
-	GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentTypeEndsWith   GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType = "endsWith"
-	GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentTypeStartsWith GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType = "startsWith"
-	GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentTypeEquals     GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType = "equals"
+	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeEndsWith   GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "endsWith"
+	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeStartsWith GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "startsWith"
+	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeEquals     GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "equals"
 )
 
-func (e GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType) ToPointer() *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType {
+func (e GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType) ToPointer() *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType {
 	return &e
 }
-func (e *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType) UnmarshalJSON(data []byte) error {
+func (e *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -112,24 +112,24 @@ func (e *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType) UnmarshalJSON(d
 	case "startsWith":
 		fallthrough
 	case "equals":
-		*e = GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType(v)
+		*e = GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType: %v", v)
+		return fmt.Errorf("invalid value for GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType: %v", v)
 	}
 }
 
 // GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher - Configuration for matching git branches to this environment
 type GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher struct {
 	// The type of matching to perform
-	Type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType `json:"type"`
+	Type GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType `json:"type"`
 	// The pattern to match against branch names
 	Pattern string `json:"pattern"`
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher) GetType() GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher) GetType() GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType {
 	if o == nil {
-		return GetV9ProjectsIDOrNameCustomEnvironmentsEnvironmentType("")
+		return GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType("")
 	}
 	return o.Type
 }
@@ -177,8 +177,8 @@ func (o *GetV9ProjectsIDOrNameCustomEnvironmentsVerification) GetReason() string
 	return o.Reason
 }
 
-// GetV9ProjectsIDOrNameCustomEnvironmentsDomains - List of domains associated with this environment
-type GetV9ProjectsIDOrNameCustomEnvironmentsDomains struct {
+// GetV9ProjectsIDOrNameCustomEnvironmentsDomain - List of domains associated with this environment
+type GetV9ProjectsIDOrNameCustomEnvironmentsDomain struct {
 	Name                string   `json:"name"`
 	ApexName            string   `json:"apexName"`
 	ProjectID           string   `json:"projectId"`
@@ -194,84 +194,84 @@ type GetV9ProjectsIDOrNameCustomEnvironmentsDomains struct {
 	Verification []GetV9ProjectsIDOrNameCustomEnvironmentsVerification `json:"verification,omitempty"`
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetName() string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetApexName() string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetApexName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ApexName
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetProjectID() string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetRedirect() *string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetRedirect() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetRedirectStatusCode() *float64 {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetRedirectStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetGitBranch() *string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetCustomEnvironmentID() *string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetCustomEnvironmentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentID
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetUpdatedAt() *float64 {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetCreatedAt() *float64 {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetVerified() bool {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomains) GetVerification() []GetV9ProjectsIDOrNameCustomEnvironmentsVerification {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsDomain) GetVerification() []GetV9ProjectsIDOrNameCustomEnvironmentsVerification {
 	if o == nil {
 		return nil
 	}
 	return o.Verification
 }
 
-type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments struct {
+type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment struct {
 	// Unique identifier for the custom environment (format: env_*)
 	ID string `json:"id"`
 	// URL-friendly name of the environment
@@ -283,7 +283,7 @@ type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments struct {
 	// Configuration for matching git branches to this environment
 	BranchMatcher *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher `json:"branchMatcher,omitempty"`
 	// List of domains associated with this environment
-	Domains []GetV9ProjectsIDOrNameCustomEnvironmentsDomains `json:"domains,omitempty"`
+	Domains []GetV9ProjectsIDOrNameCustomEnvironmentsDomain `json:"domains,omitempty"`
 	// List of aliases for the current deployment
 	CurrentDeploymentAliases []string `json:"currentDeploymentAliases,omitempty"`
 	// Timestamp when the environment was created
@@ -292,63 +292,63 @@ type GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetID() string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetSlug() string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetType() GetV9ProjectsIDOrNameCustomEnvironmentsType {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetType() GetV9ProjectsIDOrNameCustomEnvironmentsType {
 	if o == nil {
 		return GetV9ProjectsIDOrNameCustomEnvironmentsType("")
 	}
 	return o.Type
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetDescription() *string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetBranchMatcher() *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetBranchMatcher() *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcher {
 	if o == nil {
 		return nil
 	}
 	return o.BranchMatcher
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetDomains() []GetV9ProjectsIDOrNameCustomEnvironmentsDomains {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetDomains() []GetV9ProjectsIDOrNameCustomEnvironmentsDomain {
 	if o == nil {
 		return nil
 	}
 	return o.Domains
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetCurrentDeploymentAliases() []string {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetCurrentDeploymentAliases() []string {
 	if o == nil {
 		return nil
 	}
 	return o.CurrentDeploymentAliases
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetCreatedAt() float64 {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetUpdatedAt() float64 {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -357,8 +357,8 @@ func (o *GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments) GetUpdatedAt() flo
 
 type GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody struct {
 	// The maximum number of custom environments allowed either by the team's plan type or a custom override.
-	AccountLimit AccountLimit                                          `json:"accountLimit"`
-	Environments []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments `json:"environments"`
+	AccountLimit AccountLimit                                         `json:"accountLimit"`
+	Environments []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment `json:"environments"`
 }
 
 func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetAccountLimit() AccountLimit {
@@ -368,9 +368,9 @@ func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetAccountLimit() 
 	return o.AccountLimit
 }
 
-func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetEnvironments() []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments {
+func (o *GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody) GetEnvironments() []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment {
 	if o == nil {
-		return []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments{}
+		return []GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment{}
 	}
 	return o.Environments
 }

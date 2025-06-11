@@ -50,10 +50,10 @@ func testCreateWebhookCreateWebhook0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateWebhookResponseBody{
+	var respBody *operations.CreateWebhookResponseBody = &operations.CreateWebhookResponseBody{
 		Secret: "<value>",
-		Events: []operations.CreateWebhookEvents{
-			operations.CreateWebhookEventsDeploymentCreated,
+		Events: []operations.CreateWebhookEventResponse{
+			operations.CreateWebhookEventResponseDeploymentCreated,
 		},
 		ID:        "account_hook_GflD6EYyo7F4ViYS",
 		URL:       "https://my-webhook.com",

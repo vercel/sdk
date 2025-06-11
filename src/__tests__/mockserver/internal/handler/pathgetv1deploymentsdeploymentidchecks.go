@@ -45,16 +45,16 @@ func testGetAllChecksGetAllChecks0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetAllChecksResponseBody{
-		Checks: []operations.Checks{
-			operations.Checks{
-				CreatedAt:     4203.11,
+	var respBody *operations.GetAllChecksResponseBody = &operations.GetAllChecksResponseBody{
+		Checks: []operations.Check{
+			operations.Check{
+				CreatedAt:     4018.09,
 				ID:            "<id>",
 				IntegrationID: "<id>",
 				Name:          "<value>",
 				Rerequestable: false,
-				Status:        operations.GetAllChecksStatusRegistered,
-				UpdatedAt:     4461.16,
+				Status:        operations.GetAllChecksStatusCompleted,
+				UpdatedAt:     5993.81,
 			},
 		},
 	}

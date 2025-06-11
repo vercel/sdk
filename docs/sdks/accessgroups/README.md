@@ -37,7 +37,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -64,15 +63,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsReadAccessGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -97,7 +93,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## updateAccessGroup
@@ -137,7 +132,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -181,15 +175,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsUpdateAccessGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -214,7 +205,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## deleteAccessGroup
@@ -263,14 +253,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("accessGroupsDeleteAccessGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -295,7 +283,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## listAccessGroupMembers
@@ -319,7 +306,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -347,15 +333,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsListAccessGroupMembers failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -380,7 +363,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## listAccessGroups
@@ -407,7 +389,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -438,15 +419,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsListAccessGroups failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -471,7 +449,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## createAccessGroup
@@ -514,7 +491,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -561,15 +537,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsCreateAccessGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -594,7 +567,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## listAccessGroupProjects
@@ -618,7 +590,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -646,15 +617,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsListAccessGroupProjects failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -679,7 +647,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## createAccessGroupProject
@@ -706,7 +673,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -737,15 +703,12 @@ async function run() {
       role: "ADMIN",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsCreateAccessGroupProject failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -770,7 +733,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## readAccessGroupProject
@@ -794,7 +756,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -822,15 +783,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsReadAccessGroupProject failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -855,7 +813,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## updateAccessGroupProject
@@ -882,7 +839,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -913,15 +869,12 @@ async function run() {
       role: "ADMIN",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsUpdateAccessGroupProject failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -946,7 +899,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## deleteAccessGroupProject
@@ -997,14 +949,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("accessGroupsDeleteAccessGroupProject failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1029,5 +979,4 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |

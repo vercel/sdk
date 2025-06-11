@@ -8,7 +8,7 @@
 ```typescript
 const value: models.UpdateFirewallConfigRedirect1 = {
   location: "<value>",
-  permanent: false,
+  permanent: true,
 };
 ```
 

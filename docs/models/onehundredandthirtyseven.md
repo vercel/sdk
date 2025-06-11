@@ -10,9 +10,7 @@ import { OneHundredAndThirtySeven } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirtySeven = {
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenIds: [
-    "<value>",
-  ],
+  edgeConfigTokenIds: [],
 };
 ```
 

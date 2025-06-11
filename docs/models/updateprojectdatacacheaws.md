@@ -7,7 +7,7 @@ import { UpdateProjectDataCacheAws } from "@vercel/sdk/models/updateprojectdatac
 
 let value: UpdateProjectDataCacheAws = {
   subnetIds: [
-    "<value>",
+    "<value 1>",
   ],
   securityGroupId: "<id>",
 };

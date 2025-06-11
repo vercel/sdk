@@ -7,15 +7,9 @@ import { Backup } from "@vercel/sdk/models/getedgeconfigbackupop.js";
 
 let value: Backup = {
   digest: "<value>",
-  items: {
-    "key": {
-      updatedAt: 3846.84,
-      value: {},
-      createdAt: 4844.83,
-    },
-  },
+  items: {},
   slug: "<value>",
-  updatedAt: 8975.88,
+  updatedAt: 7629.8,
 };
 ```
 

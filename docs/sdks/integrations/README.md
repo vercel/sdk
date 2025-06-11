@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { integrationsUpdateIntegrationDeploymentAction } from "@vercel/sdk/funcs/integrationsUpdateIntegrationDeploymentAction.js";
+import { deploymentsUpdateIntegrationDeploymentAction } from "@vercel/sdk/funcs/deploymentsUpdateIntegrationDeploymentAction.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -52,20 +52,18 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await integrationsUpdateIntegrationDeploymentAction(vercel, {
+  const res = await deploymentsUpdateIntegrationDeploymentAction(vercel, {
     deploymentId: "<id>",
     integrationConfigurationId: "<id>",
     resourceId: "<id>",
     action: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("deploymentsUpdateIntegrationDeploymentAction failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -112,7 +110,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -139,15 +136,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("integrationsGetConfigurations failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -194,7 +188,6 @@ async function run() {
     slug: "my-team-url-slug",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -221,15 +214,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("integrationsGetConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -303,14 +293,12 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("integrationsDeleteConfiguration failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

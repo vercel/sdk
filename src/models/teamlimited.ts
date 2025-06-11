@@ -17,7 +17,7 @@ export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 /**
  * Information for the SAML Single Sign-On configuration.
  */
-export type Connection = {
+export type TeamLimitedConnection = {
   /**
    * The Identity Provider "type", for example Okta.
    */
@@ -43,7 +43,7 @@ export type Connection = {
 /**
  * Information for the Directory Sync configuration.
  */
-export type Directory = {
+export type TeamLimitedDirectory = {
   /**
    * The Identity Provider "type", for example Okta.
    */
@@ -65,31 +65,26 @@ export type Directory = {
 /**
  * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
  */
-export type Saml = {
+export type TeamLimitedSaml = {
   /**
    * Information for the SAML Single Sign-On configuration.
    */
-  connection?: Connection | undefined;
+  connection?: TeamLimitedConnection | undefined;
   /**
    * Information for the Directory Sync configuration.
    */
-  directory?: Directory | undefined;
+  directory?: TeamLimitedDirectory | undefined;
   /**
    * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
    */
   enforced: boolean;
 };
 
-export type Mfa = {
-  enforced: boolean;
-  updatedAt: number;
-};
-
-export type Entitlements = {
+export type TeamLimitedEntitlements = {
   entitlement: string;
 };
 
-export const Role = {
+export const TeamLimitedRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -98,9 +93,9 @@ export const Role = {
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type Role = ClosedEnum<typeof Role>;
+export type TeamLimitedRole = ClosedEnum<typeof TeamLimitedRole>;
 
-export const TeamRoles = {
+export const TeamLimitedTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -109,18 +104,21 @@ export const TeamRoles = {
   Viewer: "VIEWER",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type TeamRoles = ClosedEnum<typeof TeamRoles>;
+export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
-export const TeamPermissions = {
+export const TeamLimitedTeamPermissions = {
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
 } as const;
-export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
+export type TeamLimitedTeamPermissions = ClosedEnum<
+  typeof TeamLimitedTeamPermissions
+>;
 
-export const Origin = {
+export const TeamLimitedOrigin = {
+  Saml: "saml",
   Mail: "mail",
   Link: "link",
   Import: "import",
@@ -128,17 +126,16 @@ export const Origin = {
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
-  Saml: "saml",
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
 } as const;
-export type Origin = ClosedEnum<typeof Origin>;
+export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
 
-export type GitUserId = string | number;
+export type TeamLimitedGitUserId = string | number;
 
-export type JoinedFrom = {
-  origin: Origin;
+export type TeamLimitedJoinedFrom = {
+  origin: TeamLimitedOrigin;
   commitId?: string | undefined;
   repoId?: string | undefined;
   repoPath?: string | undefined;
@@ -154,19 +151,19 @@ export type JoinedFrom = {
 /**
  * The membership of the authenticated User in relation to the Team.
  */
-export type Membership = {
+export type TeamLimitedMembership = {
   uid?: string | undefined;
-  entitlements?: Array<Entitlements> | undefined;
+  entitlements?: Array<TeamLimitedEntitlements> | undefined;
   teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
-  role: Role;
-  teamRoles?: Array<TeamRoles> | undefined;
-  teamPermissions?: Array<TeamPermissions> | undefined;
+  role: TeamLimitedRole;
+  teamRoles?: Array<TeamLimitedTeamRoles> | undefined;
+  teamPermissions?: Array<TeamLimitedTeamPermissions> | undefined;
   createdAt: number;
   created: number;
-  joinedFrom?: JoinedFrom | undefined;
+  joinedFrom?: TeamLimitedJoinedFrom | undefined;
 };
 
 /**
@@ -181,8 +178,7 @@ export type TeamLimited = {
   /**
    * When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.
    */
-  saml?: Saml | undefined;
-  mfa?: Mfa | undefined;
+  saml?: TeamLimitedSaml | undefined;
   /**
    * The Team's unique identifier.
    */
@@ -202,11 +198,7 @@ export type TeamLimited = {
   /**
    * The membership of the authenticated User in relation to the Team.
    */
-  membership: Membership;
-  /**
-   * Will remain undocumented. Remove in v3 API.
-   */
-  created: string;
+  membership: TeamLimitedMembership;
   /**
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
@@ -233,8 +225,8 @@ export namespace LimitedBy$ {
 }
 
 /** @internal */
-export const Connection$inboundSchema: z.ZodType<
-  Connection,
+export const TeamLimitedConnection$inboundSchema: z.ZodType<
+  TeamLimitedConnection,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -246,7 +238,7 @@ export const Connection$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Connection$Outbound = {
+export type TeamLimitedConnection$Outbound = {
   type: string;
   status: string;
   state: string;
@@ -255,10 +247,10 @@ export type Connection$Outbound = {
 };
 
 /** @internal */
-export const Connection$outboundSchema: z.ZodType<
-  Connection$Outbound,
+export const TeamLimitedConnection$outboundSchema: z.ZodType<
+  TeamLimitedConnection$Outbound,
   z.ZodTypeDef,
-  Connection
+  TeamLimitedConnection
 > = z.object({
   type: z.string(),
   status: z.string(),
@@ -271,32 +263,36 @@ export const Connection$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Connection$ {
-  /** @deprecated use `Connection$inboundSchema` instead. */
-  export const inboundSchema = Connection$inboundSchema;
-  /** @deprecated use `Connection$outboundSchema` instead. */
-  export const outboundSchema = Connection$outboundSchema;
-  /** @deprecated use `Connection$Outbound` instead. */
-  export type Outbound = Connection$Outbound;
+export namespace TeamLimitedConnection$ {
+  /** @deprecated use `TeamLimitedConnection$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedConnection$inboundSchema;
+  /** @deprecated use `TeamLimitedConnection$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedConnection$outboundSchema;
+  /** @deprecated use `TeamLimitedConnection$Outbound` instead. */
+  export type Outbound = TeamLimitedConnection$Outbound;
 }
 
-export function connectionToJSON(connection: Connection): string {
-  return JSON.stringify(Connection$outboundSchema.parse(connection));
+export function teamLimitedConnectionToJSON(
+  teamLimitedConnection: TeamLimitedConnection,
+): string {
+  return JSON.stringify(
+    TeamLimitedConnection$outboundSchema.parse(teamLimitedConnection),
+  );
 }
 
-export function connectionFromJSON(
+export function teamLimitedConnectionFromJSON(
   jsonString: string,
-): SafeParseResult<Connection, SDKValidationError> {
+): SafeParseResult<TeamLimitedConnection, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Connection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Connection' from JSON`,
+    (x) => TeamLimitedConnection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedConnection' from JSON`,
   );
 }
 
 /** @internal */
-export const Directory$inboundSchema: z.ZodType<
-  Directory,
+export const TeamLimitedDirectory$inboundSchema: z.ZodType<
+  TeamLimitedDirectory,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -307,7 +303,7 @@ export const Directory$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Directory$Outbound = {
+export type TeamLimitedDirectory$Outbound = {
   type: string;
   state: string;
   connectedAt: number;
@@ -315,10 +311,10 @@ export type Directory$Outbound = {
 };
 
 /** @internal */
-export const Directory$outboundSchema: z.ZodType<
-  Directory$Outbound,
+export const TeamLimitedDirectory$outboundSchema: z.ZodType<
+  TeamLimitedDirectory$Outbound,
   z.ZodTypeDef,
-  Directory
+  TeamLimitedDirectory
 > = z.object({
   type: z.string(),
   state: z.string(),
@@ -330,129 +326,94 @@ export const Directory$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Directory$ {
-  /** @deprecated use `Directory$inboundSchema` instead. */
-  export const inboundSchema = Directory$inboundSchema;
-  /** @deprecated use `Directory$outboundSchema` instead. */
-  export const outboundSchema = Directory$outboundSchema;
-  /** @deprecated use `Directory$Outbound` instead. */
-  export type Outbound = Directory$Outbound;
+export namespace TeamLimitedDirectory$ {
+  /** @deprecated use `TeamLimitedDirectory$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedDirectory$inboundSchema;
+  /** @deprecated use `TeamLimitedDirectory$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedDirectory$outboundSchema;
+  /** @deprecated use `TeamLimitedDirectory$Outbound` instead. */
+  export type Outbound = TeamLimitedDirectory$Outbound;
 }
 
-export function directoryToJSON(directory: Directory): string {
-  return JSON.stringify(Directory$outboundSchema.parse(directory));
+export function teamLimitedDirectoryToJSON(
+  teamLimitedDirectory: TeamLimitedDirectory,
+): string {
+  return JSON.stringify(
+    TeamLimitedDirectory$outboundSchema.parse(teamLimitedDirectory),
+  );
 }
 
-export function directoryFromJSON(
+export function teamLimitedDirectoryFromJSON(
   jsonString: string,
-): SafeParseResult<Directory, SDKValidationError> {
+): SafeParseResult<TeamLimitedDirectory, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Directory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Directory' from JSON`,
+    (x) => TeamLimitedDirectory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedDirectory' from JSON`,
   );
 }
 
 /** @internal */
-export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
-  .object({
-    connection: z.lazy(() => Connection$inboundSchema).optional(),
-    directory: z.lazy(() => Directory$inboundSchema).optional(),
-    enforced: z.boolean(),
-  });
+export const TeamLimitedSaml$inboundSchema: z.ZodType<
+  TeamLimitedSaml,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connection: z.lazy(() => TeamLimitedConnection$inboundSchema).optional(),
+  directory: z.lazy(() => TeamLimitedDirectory$inboundSchema).optional(),
+  enforced: z.boolean(),
+});
 
 /** @internal */
-export type Saml$Outbound = {
-  connection?: Connection$Outbound | undefined;
-  directory?: Directory$Outbound | undefined;
+export type TeamLimitedSaml$Outbound = {
+  connection?: TeamLimitedConnection$Outbound | undefined;
+  directory?: TeamLimitedDirectory$Outbound | undefined;
   enforced: boolean;
 };
 
 /** @internal */
-export const Saml$outboundSchema: z.ZodType<Saml$Outbound, z.ZodTypeDef, Saml> =
-  z.object({
-    connection: z.lazy(() => Connection$outboundSchema).optional(),
-    directory: z.lazy(() => Directory$outboundSchema).optional(),
-    enforced: z.boolean(),
-  });
+export const TeamLimitedSaml$outboundSchema: z.ZodType<
+  TeamLimitedSaml$Outbound,
+  z.ZodTypeDef,
+  TeamLimitedSaml
+> = z.object({
+  connection: z.lazy(() => TeamLimitedConnection$outboundSchema).optional(),
+  directory: z.lazy(() => TeamLimitedDirectory$outboundSchema).optional(),
+  enforced: z.boolean(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Saml$ {
-  /** @deprecated use `Saml$inboundSchema` instead. */
-  export const inboundSchema = Saml$inboundSchema;
-  /** @deprecated use `Saml$outboundSchema` instead. */
-  export const outboundSchema = Saml$outboundSchema;
-  /** @deprecated use `Saml$Outbound` instead. */
-  export type Outbound = Saml$Outbound;
+export namespace TeamLimitedSaml$ {
+  /** @deprecated use `TeamLimitedSaml$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedSaml$inboundSchema;
+  /** @deprecated use `TeamLimitedSaml$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedSaml$outboundSchema;
+  /** @deprecated use `TeamLimitedSaml$Outbound` instead. */
+  export type Outbound = TeamLimitedSaml$Outbound;
 }
 
-export function samlToJSON(saml: Saml): string {
-  return JSON.stringify(Saml$outboundSchema.parse(saml));
+export function teamLimitedSamlToJSON(
+  teamLimitedSaml: TeamLimitedSaml,
+): string {
+  return JSON.stringify(TeamLimitedSaml$outboundSchema.parse(teamLimitedSaml));
 }
 
-export function samlFromJSON(
+export function teamLimitedSamlFromJSON(
   jsonString: string,
-): SafeParseResult<Saml, SDKValidationError> {
+): SafeParseResult<TeamLimitedSaml, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Saml$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Saml' from JSON`,
+    (x) => TeamLimitedSaml$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedSaml' from JSON`,
   );
 }
 
 /** @internal */
-export const Mfa$inboundSchema: z.ZodType<Mfa, z.ZodTypeDef, unknown> = z
-  .object({
-    enforced: z.boolean(),
-    updatedAt: z.number(),
-  });
-
-/** @internal */
-export type Mfa$Outbound = {
-  enforced: boolean;
-  updatedAt: number;
-};
-
-/** @internal */
-export const Mfa$outboundSchema: z.ZodType<Mfa$Outbound, z.ZodTypeDef, Mfa> = z
-  .object({
-    enforced: z.boolean(),
-    updatedAt: z.number(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Mfa$ {
-  /** @deprecated use `Mfa$inboundSchema` instead. */
-  export const inboundSchema = Mfa$inboundSchema;
-  /** @deprecated use `Mfa$outboundSchema` instead. */
-  export const outboundSchema = Mfa$outboundSchema;
-  /** @deprecated use `Mfa$Outbound` instead. */
-  export type Outbound = Mfa$Outbound;
-}
-
-export function mfaToJSON(mfa: Mfa): string {
-  return JSON.stringify(Mfa$outboundSchema.parse(mfa));
-}
-
-export function mfaFromJSON(
-  jsonString: string,
-): SafeParseResult<Mfa, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Mfa$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Mfa' from JSON`,
-  );
-}
-
-/** @internal */
-export const Entitlements$inboundSchema: z.ZodType<
-  Entitlements,
+export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
+  TeamLimitedEntitlements,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -460,15 +421,15 @@ export const Entitlements$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Entitlements$Outbound = {
+export type TeamLimitedEntitlements$Outbound = {
   entitlement: string;
 };
 
 /** @internal */
-export const Entitlements$outboundSchema: z.ZodType<
-  Entitlements$Outbound,
+export const TeamLimitedEntitlements$outboundSchema: z.ZodType<
+  TeamLimitedEntitlements$Outbound,
   z.ZodTypeDef,
-  Entitlements
+  TeamLimitedEntitlements
 > = z.object({
   entitlement: z.string(),
 });
@@ -477,159 +438,172 @@ export const Entitlements$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Entitlements$ {
-  /** @deprecated use `Entitlements$inboundSchema` instead. */
-  export const inboundSchema = Entitlements$inboundSchema;
-  /** @deprecated use `Entitlements$outboundSchema` instead. */
-  export const outboundSchema = Entitlements$outboundSchema;
-  /** @deprecated use `Entitlements$Outbound` instead. */
-  export type Outbound = Entitlements$Outbound;
+export namespace TeamLimitedEntitlements$ {
+  /** @deprecated use `TeamLimitedEntitlements$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedEntitlements$inboundSchema;
+  /** @deprecated use `TeamLimitedEntitlements$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedEntitlements$outboundSchema;
+  /** @deprecated use `TeamLimitedEntitlements$Outbound` instead. */
+  export type Outbound = TeamLimitedEntitlements$Outbound;
 }
 
-export function entitlementsToJSON(entitlements: Entitlements): string {
-  return JSON.stringify(Entitlements$outboundSchema.parse(entitlements));
+export function teamLimitedEntitlementsToJSON(
+  teamLimitedEntitlements: TeamLimitedEntitlements,
+): string {
+  return JSON.stringify(
+    TeamLimitedEntitlements$outboundSchema.parse(teamLimitedEntitlements),
+  );
 }
 
-export function entitlementsFromJSON(
+export function teamLimitedEntitlementsFromJSON(
   jsonString: string,
-): SafeParseResult<Entitlements, SDKValidationError> {
+): SafeParseResult<TeamLimitedEntitlements, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Entitlements$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Entitlements' from JSON`,
+    (x) => TeamLimitedEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedEntitlements' from JSON`,
   );
 }
 
 /** @internal */
-export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
-  Role,
-);
+export const TeamLimitedRole$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedRole
+> = z.nativeEnum(TeamLimitedRole);
 
 /** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
-  Role$inboundSchema;
+export const TeamLimitedRole$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedRole
+> = TeamLimitedRole$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Role$ {
-  /** @deprecated use `Role$inboundSchema` instead. */
-  export const inboundSchema = Role$inboundSchema;
-  /** @deprecated use `Role$outboundSchema` instead. */
-  export const outboundSchema = Role$outboundSchema;
+export namespace TeamLimitedRole$ {
+  /** @deprecated use `TeamLimitedRole$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedRole$inboundSchema;
+  /** @deprecated use `TeamLimitedRole$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedRole$outboundSchema;
 }
 
 /** @internal */
-export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
-  .nativeEnum(TeamRoles);
+export const TeamLimitedTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamRoles
+> = z.nativeEnum(TeamLimitedTeamRoles);
 
 /** @internal */
-export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
-  TeamRoles$inboundSchema;
+export const TeamLimitedTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamRoles
+> = TeamLimitedTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamRoles$ {
-  /** @deprecated use `TeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamRoles$inboundSchema;
-  /** @deprecated use `TeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamRoles$outboundSchema;
+export namespace TeamLimitedTeamRoles$ {
+  /** @deprecated use `TeamLimitedTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedTeamRoles$inboundSchema;
+  /** @deprecated use `TeamLimitedTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = z.nativeEnum(TeamPermissions);
+export const TeamLimitedTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamPermissions
+> = z.nativeEnum(TeamLimitedTeamPermissions);
 
 /** @internal */
-export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = TeamPermissions$inboundSchema;
+export const TeamLimitedTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedTeamPermissions
+> = TeamLimitedTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamPermissions$ {
-  /** @deprecated use `TeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamPermissions$inboundSchema;
-  /** @deprecated use `TeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamPermissions$outboundSchema;
+export namespace TeamLimitedTeamPermissions$ {
+  /** @deprecated use `TeamLimitedTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedTeamPermissions$inboundSchema;
+  /** @deprecated use `TeamLimitedTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedTeamPermissions$outboundSchema;
 }
 
 /** @internal */
-export const Origin$inboundSchema: z.ZodNativeEnum<typeof Origin> = z
-  .nativeEnum(Origin);
+export const TeamLimitedOrigin$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedOrigin
+> = z.nativeEnum(TeamLimitedOrigin);
 
 /** @internal */
-export const Origin$outboundSchema: z.ZodNativeEnum<typeof Origin> =
-  Origin$inboundSchema;
+export const TeamLimitedOrigin$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedOrigin
+> = TeamLimitedOrigin$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Origin$ {
-  /** @deprecated use `Origin$inboundSchema` instead. */
-  export const inboundSchema = Origin$inboundSchema;
-  /** @deprecated use `Origin$outboundSchema` instead. */
-  export const outboundSchema = Origin$outboundSchema;
+export namespace TeamLimitedOrigin$ {
+  /** @deprecated use `TeamLimitedOrigin$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedOrigin$inboundSchema;
+  /** @deprecated use `TeamLimitedOrigin$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedOrigin$outboundSchema;
 }
 
 /** @internal */
-export const GitUserId$inboundSchema: z.ZodType<
-  GitUserId,
+export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
+  TeamLimitedGitUserId,
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GitUserId$Outbound = string | number;
+export type TeamLimitedGitUserId$Outbound = string | number;
 
 /** @internal */
-export const GitUserId$outboundSchema: z.ZodType<
-  GitUserId$Outbound,
+export const TeamLimitedGitUserId$outboundSchema: z.ZodType<
+  TeamLimitedGitUserId$Outbound,
   z.ZodTypeDef,
-  GitUserId
+  TeamLimitedGitUserId
 > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitUserId$ {
-  /** @deprecated use `GitUserId$inboundSchema` instead. */
-  export const inboundSchema = GitUserId$inboundSchema;
-  /** @deprecated use `GitUserId$outboundSchema` instead. */
-  export const outboundSchema = GitUserId$outboundSchema;
-  /** @deprecated use `GitUserId$Outbound` instead. */
-  export type Outbound = GitUserId$Outbound;
+export namespace TeamLimitedGitUserId$ {
+  /** @deprecated use `TeamLimitedGitUserId$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedGitUserId$inboundSchema;
+  /** @deprecated use `TeamLimitedGitUserId$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedGitUserId$outboundSchema;
+  /** @deprecated use `TeamLimitedGitUserId$Outbound` instead. */
+  export type Outbound = TeamLimitedGitUserId$Outbound;
 }
 
-export function gitUserIdToJSON(gitUserId: GitUserId): string {
-  return JSON.stringify(GitUserId$outboundSchema.parse(gitUserId));
+export function teamLimitedGitUserIdToJSON(
+  teamLimitedGitUserId: TeamLimitedGitUserId,
+): string {
+  return JSON.stringify(
+    TeamLimitedGitUserId$outboundSchema.parse(teamLimitedGitUserId),
+  );
 }
 
-export function gitUserIdFromJSON(
+export function teamLimitedGitUserIdFromJSON(
   jsonString: string,
-): SafeParseResult<GitUserId, SDKValidationError> {
+): SafeParseResult<TeamLimitedGitUserId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitUserId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitUserId' from JSON`,
+    (x) => TeamLimitedGitUserId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedGitUserId' from JSON`,
   );
 }
 
 /** @internal */
-export const JoinedFrom$inboundSchema: z.ZodType<
-  JoinedFrom,
+export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
+  TeamLimitedJoinedFrom,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  origin: Origin$inboundSchema,
+  origin: TeamLimitedOrigin$inboundSchema,
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
@@ -643,7 +617,7 @@ export const JoinedFrom$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type JoinedFrom$Outbound = {
+export type TeamLimitedJoinedFrom$Outbound = {
   origin: string;
   commitId?: string | undefined;
   repoId?: string | undefined;
@@ -658,12 +632,12 @@ export type JoinedFrom$Outbound = {
 };
 
 /** @internal */
-export const JoinedFrom$outboundSchema: z.ZodType<
-  JoinedFrom$Outbound,
+export const TeamLimitedJoinedFrom$outboundSchema: z.ZodType<
+  TeamLimitedJoinedFrom$Outbound,
   z.ZodTypeDef,
-  JoinedFrom
+  TeamLimitedJoinedFrom
 > = z.object({
-  origin: Origin$outboundSchema,
+  origin: TeamLimitedOrigin$outboundSchema,
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
@@ -680,53 +654,58 @@ export const JoinedFrom$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JoinedFrom$ {
-  /** @deprecated use `JoinedFrom$inboundSchema` instead. */
-  export const inboundSchema = JoinedFrom$inboundSchema;
-  /** @deprecated use `JoinedFrom$outboundSchema` instead. */
-  export const outboundSchema = JoinedFrom$outboundSchema;
-  /** @deprecated use `JoinedFrom$Outbound` instead. */
-  export type Outbound = JoinedFrom$Outbound;
+export namespace TeamLimitedJoinedFrom$ {
+  /** @deprecated use `TeamLimitedJoinedFrom$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedJoinedFrom$inboundSchema;
+  /** @deprecated use `TeamLimitedJoinedFrom$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedJoinedFrom$outboundSchema;
+  /** @deprecated use `TeamLimitedJoinedFrom$Outbound` instead. */
+  export type Outbound = TeamLimitedJoinedFrom$Outbound;
 }
 
-export function joinedFromToJSON(joinedFrom: JoinedFrom): string {
-  return JSON.stringify(JoinedFrom$outboundSchema.parse(joinedFrom));
+export function teamLimitedJoinedFromToJSON(
+  teamLimitedJoinedFrom: TeamLimitedJoinedFrom,
+): string {
+  return JSON.stringify(
+    TeamLimitedJoinedFrom$outboundSchema.parse(teamLimitedJoinedFrom),
+  );
 }
 
-export function joinedFromFromJSON(
+export function teamLimitedJoinedFromFromJSON(
   jsonString: string,
-): SafeParseResult<JoinedFrom, SDKValidationError> {
+): SafeParseResult<TeamLimitedJoinedFrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => JoinedFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JoinedFrom' from JSON`,
+    (x) => TeamLimitedJoinedFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedJoinedFrom' from JSON`,
   );
 }
 
 /** @internal */
-export const Membership$inboundSchema: z.ZodType<
-  Membership,
+export const TeamLimitedMembership$inboundSchema: z.ZodType<
+  TeamLimitedMembership,
   z.ZodTypeDef,
   unknown
 > = z.object({
   uid: z.string().optional(),
-  entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
+  entitlements: z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema))
+    .optional(),
   teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
-  role: Role$inboundSchema,
-  teamRoles: z.array(TeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
+  role: TeamLimitedRole$inboundSchema,
+  teamRoles: z.array(TeamLimitedTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(TeamLimitedTeamPermissions$inboundSchema).optional(),
   createdAt: z.number(),
   created: z.number(),
-  joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
+  joinedFrom: z.lazy(() => TeamLimitedJoinedFrom$inboundSchema).optional(),
 });
 
 /** @internal */
-export type Membership$Outbound = {
+export type TeamLimitedMembership$Outbound = {
   uid?: string | undefined;
-  entitlements?: Array<Entitlements$Outbound> | undefined;
+  entitlements?: Array<TeamLimitedEntitlements$Outbound> | undefined;
   teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
@@ -736,53 +715,59 @@ export type Membership$Outbound = {
   teamPermissions?: Array<string> | undefined;
   createdAt: number;
   created: number;
-  joinedFrom?: JoinedFrom$Outbound | undefined;
+  joinedFrom?: TeamLimitedJoinedFrom$Outbound | undefined;
 };
 
 /** @internal */
-export const Membership$outboundSchema: z.ZodType<
-  Membership$Outbound,
+export const TeamLimitedMembership$outboundSchema: z.ZodType<
+  TeamLimitedMembership$Outbound,
   z.ZodTypeDef,
-  Membership
+  TeamLimitedMembership
 > = z.object({
   uid: z.string().optional(),
-  entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
+  entitlements: z.array(z.lazy(() => TeamLimitedEntitlements$outboundSchema))
+    .optional(),
   teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
-  role: Role$outboundSchema,
-  teamRoles: z.array(TeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
+  role: TeamLimitedRole$outboundSchema,
+  teamRoles: z.array(TeamLimitedTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(TeamLimitedTeamPermissions$outboundSchema)
+    .optional(),
   createdAt: z.number(),
   created: z.number(),
-  joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),
+  joinedFrom: z.lazy(() => TeamLimitedJoinedFrom$outboundSchema).optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Membership$ {
-  /** @deprecated use `Membership$inboundSchema` instead. */
-  export const inboundSchema = Membership$inboundSchema;
-  /** @deprecated use `Membership$outboundSchema` instead. */
-  export const outboundSchema = Membership$outboundSchema;
-  /** @deprecated use `Membership$Outbound` instead. */
-  export type Outbound = Membership$Outbound;
+export namespace TeamLimitedMembership$ {
+  /** @deprecated use `TeamLimitedMembership$inboundSchema` instead. */
+  export const inboundSchema = TeamLimitedMembership$inboundSchema;
+  /** @deprecated use `TeamLimitedMembership$outboundSchema` instead. */
+  export const outboundSchema = TeamLimitedMembership$outboundSchema;
+  /** @deprecated use `TeamLimitedMembership$Outbound` instead. */
+  export type Outbound = TeamLimitedMembership$Outbound;
 }
 
-export function membershipToJSON(membership: Membership): string {
-  return JSON.stringify(Membership$outboundSchema.parse(membership));
+export function teamLimitedMembershipToJSON(
+  teamLimitedMembership: TeamLimitedMembership,
+): string {
+  return JSON.stringify(
+    TeamLimitedMembership$outboundSchema.parse(teamLimitedMembership),
+  );
 }
 
-export function membershipFromJSON(
+export function teamLimitedMembershipFromJSON(
   jsonString: string,
-): SafeParseResult<Membership, SDKValidationError> {
+): SafeParseResult<TeamLimitedMembership, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Membership$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Membership' from JSON`,
+    (x) => TeamLimitedMembership$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeamLimitedMembership' from JSON`,
   );
 }
 
@@ -794,14 +779,12 @@ export const TeamLimited$inboundSchema: z.ZodType<
 > = z.object({
   limited: z.boolean(),
   limitedBy: z.array(LimitedBy$inboundSchema),
-  saml: z.lazy(() => Saml$inboundSchema).optional(),
-  mfa: z.lazy(() => Mfa$inboundSchema).optional(),
+  saml: z.lazy(() => TeamLimitedSaml$inboundSchema).optional(),
   id: z.string(),
   slug: z.string(),
   name: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
-  membership: z.lazy(() => Membership$inboundSchema),
-  created: z.string(),
+  membership: z.lazy(() => TeamLimitedMembership$inboundSchema),
   createdAt: z.number(),
 });
 
@@ -809,14 +792,12 @@ export const TeamLimited$inboundSchema: z.ZodType<
 export type TeamLimited$Outbound = {
   limited: boolean;
   limitedBy: Array<string>;
-  saml?: Saml$Outbound | undefined;
-  mfa?: Mfa$Outbound | undefined;
+  saml?: TeamLimitedSaml$Outbound | undefined;
   id: string;
   slug: string;
   name: string | null;
   avatar: string | null;
-  membership: Membership$Outbound;
-  created: string;
+  membership: TeamLimitedMembership$Outbound;
   createdAt: number;
 };
 
@@ -828,14 +809,12 @@ export const TeamLimited$outboundSchema: z.ZodType<
 > = z.object({
   limited: z.boolean(),
   limitedBy: z.array(LimitedBy$outboundSchema),
-  saml: z.lazy(() => Saml$outboundSchema).optional(),
-  mfa: z.lazy(() => Mfa$outboundSchema).optional(),
+  saml: z.lazy(() => TeamLimitedSaml$outboundSchema).optional(),
   id: z.string(),
   slug: z.string(),
   name: z.nullable(z.string()),
   avatar: z.nullable(z.string()),
-  membership: z.lazy(() => Membership$outboundSchema),
-  created: z.string(),
+  membership: z.lazy(() => TeamLimitedMembership$outboundSchema),
   createdAt: z.number(),
 });
 

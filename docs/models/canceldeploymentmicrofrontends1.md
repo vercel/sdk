@@ -8,7 +8,7 @@ import { CancelDeploymentMicrofrontends1 } from "@vercel/sdk/models/canceldeploy
 let value: CancelDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
   ],
 };
 ```

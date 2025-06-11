@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndTwelve } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwelve = {
-  enforced: false,
+  enforced: true,
 };
 ```
 

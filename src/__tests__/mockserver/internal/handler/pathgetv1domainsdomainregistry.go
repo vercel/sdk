@@ -45,11 +45,11 @@ func testGetDomainTransferGetDomainTransfer0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetDomainTransferResponseBody{
+	var respBody *operations.GetDomainTransferResponseBody = &operations.GetDomainTransferResponseBody{
 		Transferable:   false,
-		TransferPolicy: operations.TransferPolicyChargeAndRenew.ToPointer(),
+		TransferPolicy: nil,
 		Reason:         "<value>",
-		Status:         operations.GetDomainTransferStatusCompleted,
+		Status:         operations.GetDomainTransferStatusPendingAdmin,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -11,7 +11,7 @@ let value: GetProjectsLink3 = {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://important-countess.net",
+      url: "https://distant-repeat.com/",
     },
   ],
 };

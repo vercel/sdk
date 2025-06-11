@@ -9,15 +9,7 @@ let value: GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {
   accountLimit: {
     total: 8449.23,
   },
-  environments: [
-    {
-      id: "<id>",
-      slug: "<value>",
-      type: "preview",
-      createdAt: 8241.49,
-      updatedAt: 3411.19,
-    },
-  ],
+  environments: [],
 };
 ```
 

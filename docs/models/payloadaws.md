@@ -7,7 +7,7 @@ import { PayloadAws } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadAws = {
   subnetIds: [
-    "<value>",
+    "<value 1>",
   ],
   securityGroupId: "<id>",
 };

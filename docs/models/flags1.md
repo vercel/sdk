@@ -8,9 +8,7 @@ Flags defined in the Build Output API, used by this deployment. Primarily used b
 import { Flags1 } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Flags1 = {
-  definitions: {
-    "key": {},
-  },
+  definitions: {},
 };
 ```
 

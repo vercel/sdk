@@ -7,13 +7,13 @@ import { UpdateFirewallConfigRequestBodyValue } from "@vercel/sdk/models/updatef
 
 let value: UpdateFirewallConfigRequestBodyValue = {
   name: "<value>",
-  active: false,
+  active: true,
   conditionGroup: [
     {
       conditions: [
         {
-          type: "region",
-          op: "sub",
+          type: "protocol",
+          op: "pre",
         },
       ],
     },

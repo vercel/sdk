@@ -8,16 +8,7 @@ import { PutFirewallConfigRules } from "@vercel/sdk/models/putfirewallconfigop.j
 let value: PutFirewallConfigRules = {
   name: "<value>",
   active: false,
-  conditionGroup: [
-    {
-      conditions: [
-        {
-          type: "scheme",
-          op: "ninc",
-        },
-      ],
-    },
-  ],
+  conditionGroup: [],
   action: {},
 };
 ```

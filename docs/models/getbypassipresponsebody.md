@@ -7,9 +7,7 @@
 
 ```typescript
 const value: models.GetBypassIpResponseBody1 = {
-  result: [
-    {},
-  ],
+  result: [],
   pagination: "<value>",
 };
 ```

@@ -8,19 +8,19 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// Role - The project role that will be added to this Access Group. \"null\" will remove this project level role.
-type Role string
+// UpdateAccessGroupRole - The project role that will be added to this Access Group. \"null\" will remove this project level role.
+type UpdateAccessGroupRole string
 
 const (
-	RoleAdmin            Role = "ADMIN"
-	RoleProjectViewer    Role = "PROJECT_VIEWER"
-	RoleProjectDeveloper Role = "PROJECT_DEVELOPER"
+	UpdateAccessGroupRoleAdmin            UpdateAccessGroupRole = "ADMIN"
+	UpdateAccessGroupRoleProjectViewer    UpdateAccessGroupRole = "PROJECT_VIEWER"
+	UpdateAccessGroupRoleProjectDeveloper UpdateAccessGroupRole = "PROJECT_DEVELOPER"
 )
 
-func (e Role) ToPointer() *Role {
+func (e UpdateAccessGroupRole) ToPointer() *UpdateAccessGroupRole {
 	return &e
 }
-func (e *Role) UnmarshalJSON(data []byte) error {
+func (e *UpdateAccessGroupRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,28 +31,28 @@ func (e *Role) UnmarshalJSON(data []byte) error {
 	case "PROJECT_VIEWER":
 		fallthrough
 	case "PROJECT_DEVELOPER":
-		*e = Role(v)
+		*e = UpdateAccessGroupRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Role: %v", v)
+		return fmt.Errorf("invalid value for UpdateAccessGroupRole: %v", v)
 	}
 }
 
-type Projects struct {
+type UpdateAccessGroupProject struct {
 	// The ID of the project.
 	ProjectID string `json:"projectId"`
 	// The project role that will be added to this Access Group. \"null\" will remove this project level role.
-	Role *Role `json:"role"`
+	Role *UpdateAccessGroupRole `json:"role"`
 }
 
-func (o *Projects) GetProjectID() string {
+func (o *UpdateAccessGroupProject) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Projects) GetRole() *Role {
+func (o *UpdateAccessGroupProject) GetRole() *UpdateAccessGroupRole {
 	if o == nil {
 		return nil
 	}
@@ -61,8 +61,8 @@ func (o *Projects) GetRole() *Role {
 
 type UpdateAccessGroupRequestBody struct {
 	// The name of the access group
-	Name     *string    `json:"name,omitempty"`
-	Projects []Projects `json:"projects,omitempty"`
+	Name     *string                    `json:"name,omitempty"`
+	Projects []UpdateAccessGroupProject `json:"projects,omitempty"`
 	// List of members to add to the access group.
 	MembersToAdd []string `json:"membersToAdd,omitempty"`
 	// List of members to remove from the access group.
@@ -76,7 +76,7 @@ func (o *UpdateAccessGroupRequestBody) GetName() *string {
 	return o.Name
 }
 
-func (o *UpdateAccessGroupRequestBody) GetProjects() []Projects {
+func (o *UpdateAccessGroupRequestBody) GetProjects() []UpdateAccessGroupProject {
 	if o == nil {
 		return nil
 	}
@@ -134,31 +134,31 @@ func (o *UpdateAccessGroupRequest) GetRequestBody() UpdateAccessGroupRequestBody
 	return o.RequestBody
 }
 
-type UpdateAccessGroupEntitlements string
+type UpdateAccessGroupEntitlement string
 
 const (
-	UpdateAccessGroupEntitlementsV0 UpdateAccessGroupEntitlements = "v0"
+	UpdateAccessGroupEntitlementV0 UpdateAccessGroupEntitlement = "v0"
 )
 
-func (e UpdateAccessGroupEntitlements) ToPointer() *UpdateAccessGroupEntitlements {
+func (e UpdateAccessGroupEntitlement) ToPointer() *UpdateAccessGroupEntitlement {
 	return &e
 }
-func (e *UpdateAccessGroupEntitlements) UnmarshalJSON(data []byte) error {
+func (e *UpdateAccessGroupEntitlement) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "v0":
-		*e = UpdateAccessGroupEntitlements(v)
+		*e = UpdateAccessGroupEntitlement(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateAccessGroupEntitlements: %v", v)
+		return fmt.Errorf("invalid value for UpdateAccessGroupEntitlement: %v", v)
 	}
 }
 
 type UpdateAccessGroupResponseBody struct {
-	Entitlements []UpdateAccessGroupEntitlements `json:"entitlements,omitempty"`
+	Entitlements []UpdateAccessGroupEntitlement `json:"entitlements,omitempty"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -179,7 +179,7 @@ type UpdateAccessGroupResponseBody struct {
 	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
-func (o *UpdateAccessGroupResponseBody) GetEntitlements() []UpdateAccessGroupEntitlements {
+func (o *UpdateAccessGroupResponseBody) GetEntitlements() []UpdateAccessGroupEntitlement {
 	if o == nil {
 		return nil
 	}

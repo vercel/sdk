@@ -12,16 +12,7 @@ let value: UpdateFirewallConfigRequestBody2 = {
   value: {
     name: "<value>",
     active: false,
-    conditionGroup: [
-      {
-        conditions: [
-          {
-            type: "geo_country",
-            op: "inc",
-          },
-        ],
-      },
-    ],
+    conditionGroup: [],
     action: {},
   },
 };

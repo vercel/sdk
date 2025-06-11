@@ -27,6 +27,9 @@ test("Projectmembers Add Project Member", async () => {
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
 });
 
 test("Projectmembers Remove Project Member", async () => {
@@ -45,4 +48,7 @@ test("Projectmembers Remove Project Member", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
 });

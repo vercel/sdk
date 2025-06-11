@@ -9,7 +9,7 @@ import { Revoke } from "@vercel/sdk/models/updateprojectprotectionbypassop.js";
 
 let value: Revoke = {
   secret: "<value>",
-  regenerate: false,
+  regenerate: true,
 };
 ```
 

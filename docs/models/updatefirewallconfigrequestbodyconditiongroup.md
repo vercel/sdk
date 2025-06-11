@@ -8,8 +8,8 @@ import { UpdateFirewallConfigRequestBodyConditionGroup } from "@vercel/sdk/model
 let value: UpdateFirewallConfigRequestBodyConditionGroup = {
   conditions: [
     {
-      type: "geo_as_number",
-      op: "ninc",
+      type: "protocol",
+      op: "pre",
     },
   ],
 };

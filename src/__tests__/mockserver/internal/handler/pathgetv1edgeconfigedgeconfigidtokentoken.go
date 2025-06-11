@@ -45,12 +45,12 @@ func testGetEdgeConfigTokenGetEdgeConfigToken0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.EdgeConfigToken{
+	var respBody *components.EdgeConfigToken = &components.EdgeConfigToken{
 		Token:        "<value>",
 		Label:        "<value>",
 		ID:           "<id>",
 		EdgeConfigID: "<id>",
-		CreatedAt:    3597.77,
+		CreatedAt:    2212.78,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

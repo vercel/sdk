@@ -7,12 +7,7 @@ import { Outcomes1 } from "@vercel/sdk/models/updateintegrationdeploymentactiono
 
 let value: Outcomes1 = {
   kind: "<value>",
-  secrets: [
-    {
-      name: "<value>",
-      value: "<value>",
-    },
-  ],
+  secrets: [],
 };
 ```
 

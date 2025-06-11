@@ -9,7 +9,7 @@ let value: GetEdgeConfigBackupsResponseBody = {
   backups: [
     {
       id: "<id>",
-      lastModified: 5313.89,
+      lastModified: 19.74,
     },
   ],
   pagination: {

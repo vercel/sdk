@@ -9,12 +9,6 @@ let value: AddProjectMemberRequest = {
   idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    uid: "ndlgr43fadlPyCtREAqxxdyFK",
-    username: "example",
-    email: "entity@example.com",
-    role: "ADMIN",
-  },
 };
 ```
 

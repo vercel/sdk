@@ -19,11 +19,11 @@ const (
 )
 
 type EdgeConfigItemValue struct {
-	Str                        *string
-	Number                     *float64
-	Boolean                    *bool
-	MapOfEdgeConfigItemValue   map[string]*EdgeConfigItemValue
-	ArrayOfEdgeConfigItemValue []*EdgeConfigItemValue
+	Str                        *string                         `queryParam:"inline"`
+	Number                     *float64                        `queryParam:"inline"`
+	Boolean                    *bool                           `queryParam:"inline"`
+	MapOfEdgeConfigItemValue   map[string]*EdgeConfigItemValue `queryParam:"inline"`
+	ArrayOfEdgeConfigItemValue []*EdgeConfigItemValue          `queryParam:"inline"`
 
 	Type EdgeConfigItemValueType
 }

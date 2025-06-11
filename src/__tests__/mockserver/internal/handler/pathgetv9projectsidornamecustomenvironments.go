@@ -45,11 +45,11 @@ func testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvir
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody{
+	var respBody *operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody = &operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody{
 		AccountLimit: operations.AccountLimit{
-			Total: 966.92,
+			Total: 4336.88,
 		},
-		Environments: []operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironments{},
+		Environments: []operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

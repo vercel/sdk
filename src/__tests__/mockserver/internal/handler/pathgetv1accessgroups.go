@@ -46,7 +46,7 @@ func testListAccessGroupsListAccessGroups0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateListAccessGroupsResponseBodyListAccessGroupsResponseBody1(
+	var respBody *operations.ListAccessGroupsResponseBody = types.Pointer(operations.CreateListAccessGroupsResponseBodyListAccessGroupsResponseBody1(
 		operations.ListAccessGroupsResponseBody1{},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

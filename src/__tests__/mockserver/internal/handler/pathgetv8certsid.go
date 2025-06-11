@@ -45,13 +45,14 @@ func testGetCertByIDGetCertById0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetCertByIDResponseBody{
+	var respBody *operations.GetCertByIDResponseBody = &operations.GetCertByIDResponseBody{
 		ID:        "<id>",
-		CreatedAt: 227.12,
-		ExpiresAt: 3995.77,
-		AutoRenew: false,
+		CreatedAt: 6540.28,
+		ExpiresAt: 6456.07,
+		AutoRenew: true,
 		Cns: []string{
-			"<value>",
+			"<value 1>",
+			"<value 2>",
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

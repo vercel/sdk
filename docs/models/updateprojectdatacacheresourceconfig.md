@@ -7,7 +7,9 @@ import { UpdateProjectDataCacheResourceConfig } from "@vercel/sdk/models/updatep
 
 let value: UpdateProjectDataCacheResourceConfig = {
   functionDefaultRegions: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

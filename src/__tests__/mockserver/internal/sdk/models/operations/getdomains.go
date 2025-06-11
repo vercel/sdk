@@ -130,7 +130,7 @@ func (e *GetDomainsServiceType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Domains struct {
+type GetDomainsDomain struct {
 	// If the domain has the ownership verified.
 	Verified bool `json:"verified"`
 	// A list of the current nameservers of the domain.
@@ -165,119 +165,119 @@ type Domains struct {
 	UserID            string   `json:"userId"`
 }
 
-func (o *Domains) GetVerified() bool {
+func (o *GetDomainsDomain) GetVerified() bool {
 	if o == nil {
 		return false
 	}
 	return o.Verified
 }
 
-func (o *Domains) GetNameservers() []string {
+func (o *GetDomainsDomain) GetNameservers() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Nameservers
 }
 
-func (o *Domains) GetIntendedNameservers() []string {
+func (o *GetDomainsDomain) GetIntendedNameservers() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.IntendedNameservers
 }
 
-func (o *Domains) GetCustomNameservers() []string {
+func (o *GetDomainsDomain) GetCustomNameservers() []string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomNameservers
 }
 
-func (o *Domains) GetCreator() GetDomainsCreator {
+func (o *GetDomainsDomain) GetCreator() GetDomainsCreator {
 	if o == nil {
 		return GetDomainsCreator{}
 	}
 	return o.Creator
 }
 
-func (o *Domains) GetTeamID() *string {
+func (o *GetDomainsDomain) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *Domains) GetCreatedAt() float64 {
+func (o *GetDomainsDomain) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *Domains) GetBoughtAt() *float64 {
+func (o *GetDomainsDomain) GetBoughtAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BoughtAt
 }
 
-func (o *Domains) GetExpiresAt() *float64 {
+func (o *GetDomainsDomain) GetExpiresAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExpiresAt
 }
 
-func (o *Domains) GetID() string {
+func (o *GetDomainsDomain) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Domains) GetName() string {
+func (o *GetDomainsDomain) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Domains) GetOrderedAt() *float64 {
+func (o *GetDomainsDomain) GetOrderedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.OrderedAt
 }
 
-func (o *Domains) GetRenew() *bool {
+func (o *GetDomainsDomain) GetRenew() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Renew
 }
 
-func (o *Domains) GetServiceType() GetDomainsServiceType {
+func (o *GetDomainsDomain) GetServiceType() GetDomainsServiceType {
 	if o == nil {
 		return GetDomainsServiceType("")
 	}
 	return o.ServiceType
 }
 
-func (o *Domains) GetTransferredAt() *float64 {
+func (o *GetDomainsDomain) GetTransferredAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TransferredAt
 }
 
-func (o *Domains) GetTransferStartedAt() *float64 {
+func (o *GetDomainsDomain) GetTransferStartedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TransferStartedAt
 }
 
-func (o *Domains) GetUserID() string {
+func (o *GetDomainsDomain) GetUserID() string {
 	if o == nil {
 		return ""
 	}
@@ -286,14 +286,14 @@ func (o *Domains) GetUserID() string {
 
 // GetDomainsResponseBody - Successful response retrieving a list of domains.
 type GetDomainsResponseBody struct {
-	Domains []Domains `json:"domains"`
+	Domains []GetDomainsDomain `json:"domains"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *GetDomainsResponseBody) GetDomains() []Domains {
+func (o *GetDomainsResponseBody) GetDomains() []GetDomainsDomain {
 	if o == nil {
-		return []Domains{}
+		return []GetDomainsDomain{}
 	}
 	return o.Domains
 }

@@ -8,12 +8,6 @@ import { ArtifactQueryRequest } from "@vercel/sdk/models/artifactqueryop.js";
 let value: ArtifactQueryRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    hashes: [
-      "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-      "34HKQaOmR5t5Uy6vasdasdasdasd",
-    ],
-  },
 };
 ```
 

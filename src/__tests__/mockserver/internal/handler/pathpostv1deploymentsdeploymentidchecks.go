@@ -51,7 +51,7 @@ func testCreateCheckCreateCheck0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateCheckResponseBody{
+	var respBody *operations.CreateCheckResponseBody = &operations.CreateCheckResponseBody{
 		ID:            "chk_1a2b3c4d5e6f7g8h9i0j",
 		Name:          "Performance Check",
 		Path:          types.String("/api/users"),
@@ -60,8 +60,8 @@ func testCreateCheckCreateCheck0(w http.ResponseWriter, req *http.Request) {
 		Blocking:      true,
 		IntegrationID: "<id>",
 		DeploymentID:  "<id>",
-		CreatedAt:     9375.78,
-		UpdatedAt:     2396.37,
+		CreatedAt:     6444.33,
+		UpdatedAt:     2432.96,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

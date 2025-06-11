@@ -7,7 +7,7 @@ import { UpdateFirewallConfigRedirectSecurity1 } from "@vercel/sdk/models/update
 
 let value: UpdateFirewallConfigRedirectSecurity1 = {
   location: "<value>",
-  permanent: false,
+  permanent: true,
 };
 ```
 

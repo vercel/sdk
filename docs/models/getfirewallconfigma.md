@@ -8,8 +8,8 @@ Multipart Attack - Block attempts to bypass security controls using multipart/fo
 import { GetFirewallConfigMa } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: GetFirewallConfigMa = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

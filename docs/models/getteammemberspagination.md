@@ -6,7 +6,7 @@
 import { GetTeamMembersPagination } from "@vercel/sdk/models/getteammembersop.js";
 
 let value: GetTeamMembersPagination = {
-  hasNext: false,
+  hasNext: true,
   count: 20,
   next: 1540095775951,
   prev: 1540095775951,

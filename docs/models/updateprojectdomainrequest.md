@@ -10,11 +10,6 @@ let value: UpdateProjectDomainRequest = {
   domain: "www.example.com",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
-  requestBody: {
-    gitBranch: null,
-    redirect: "foobar.com",
-    redirectStatusCode: 307,
-  },
 };
 ```
 

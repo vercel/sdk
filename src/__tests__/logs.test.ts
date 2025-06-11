@@ -22,4 +22,16 @@ test("Logs Get Runtime Logs", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    level: "error",
+    message: "<value>",
+    rowId: "<id>",
+    source: "serverless",
+    timestampInMs: 3529.38,
+    domain: "tragic-larva.biz",
+    messageTruncated: true,
+    requestMethod: "<value>",
+    requestPath: "<value>",
+    responseStatusCode: 5431.32,
+  });
 });

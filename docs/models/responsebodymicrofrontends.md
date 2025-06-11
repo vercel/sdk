@@ -9,7 +9,9 @@
 const value: models.GetDeploymentMicrofrontends1 = {
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```
@@ -21,7 +23,8 @@ const value: models.GetDeploymentMicrofrontends2 = {
   isDefaultApp: false,
   defaultAppProjectName: "<value>",
   groupIds: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

@@ -7,12 +7,7 @@ import { SiftScores } from "@vercel/sdk/models/userevent.js";
 
 let value: SiftScores = {
   score: 9472.34,
-  reasons: [
-    {
-      name: "<value>",
-      value: "<value>",
-    },
-  ],
+  reasons: [],
 };
 ```
 

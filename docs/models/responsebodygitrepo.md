@@ -8,14 +8,14 @@
 ```typescript
 const value: models.GetDeploymentGitRepo1 = {
   namespace: "<value>",
-  projectId: 6226.31,
+  projectId: 4314.42,
   type: "gitlab",
-  url: "https://pleasing-sushi.biz/",
-  path: "/var/tmp",
+  url: "https://crushing-willow.org/",
+  path: "/usr/share",
   defaultBranch: "<value>",
   name: "<value>",
   private: false,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 
@@ -25,13 +25,13 @@ const value: models.GetDeploymentGitRepo1 = {
 const value: models.GetDeploymentGitRepo2 = {
   org: "<value>",
   repo: "<value>",
-  repoId: 8055.6,
+  repoId: 5109.9,
   type: "github",
-  repoOwnerId: 2969.6,
-  path: "/root",
+  repoOwnerId: 8818.8,
+  path: "/etc/defaults",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "user",
 };
 ```
@@ -45,10 +45,10 @@ const value: models.GetDeploymentGitRepo3 = {
   slug: "<value>",
   type: "bitbucket",
   workspaceUuid: "<id>",
-  path: "/opt/include",
+  path: "/usr/include",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "team",
 };
 ```

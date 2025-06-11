@@ -159,9 +159,13 @@ export type DefaultApp = {
 };
 
 /**
- * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+ * A list of the deployment routing information for each project.
  */
 export type Applications = {
+  /**
+   * The project ID that should use the below configuration.
+   */
+  projectId: string;
   /**
    * This is always set and is the fallback host to send the request to if there is no deployment ID.
    */
@@ -182,9 +186,9 @@ export type Applications = {
 export type GetAliasMicrofrontends = {
   defaultApp: DefaultApp;
   /**
-   * A mapping from `projectId` to information that should be used if the path is routed to that particular project.
+   * A list of the deployment routing information for each project.
    */
-  applications: { [k: string]: Applications };
+  applications: Array<Applications>;
 };
 
 /**
@@ -922,6 +926,7 @@ export const Applications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  projectId: z.string(),
   fallbackHost: z.string(),
   deploymentId: z.string().optional(),
   deploymentUrl: z.string().optional(),
@@ -929,6 +934,7 @@ export const Applications$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Applications$Outbound = {
+  projectId: string;
   fallbackHost: string;
   deploymentId?: string | undefined;
   deploymentUrl?: string | undefined;
@@ -940,6 +946,7 @@ export const Applications$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Applications
 > = z.object({
+  projectId: z.string(),
   fallbackHost: z.string(),
   deploymentId: z.string().optional(),
   deploymentUrl: z.string().optional(),
@@ -979,13 +986,13 @@ export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   defaultApp: z.lazy(() => DefaultApp$inboundSchema),
-  applications: z.record(z.lazy(() => Applications$inboundSchema)),
+  applications: z.array(z.lazy(() => Applications$inboundSchema)),
 });
 
 /** @internal */
 export type GetAliasMicrofrontends$Outbound = {
   defaultApp: DefaultApp$Outbound;
-  applications: { [k: string]: Applications$Outbound };
+  applications: Array<Applications$Outbound>;
 };
 
 /** @internal */
@@ -995,7 +1002,7 @@ export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
   GetAliasMicrofrontends
 > = z.object({
   defaultApp: z.lazy(() => DefaultApp$outboundSchema),
-  applications: z.record(z.lazy(() => Applications$outboundSchema)),
+  applications: z.array(z.lazy(() => Applications$outboundSchema)),
 });
 
 /**

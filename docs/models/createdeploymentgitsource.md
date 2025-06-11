@@ -8,7 +8,7 @@
 ```typescript
 const value: models.CreateDeploymentGitSource1 = {
   type: "github",
-  repoId: "<id>",
+  repoId: 9621.35,
 };
 ```
 
@@ -27,8 +27,8 @@ const value: models.CreateDeploymentGitSource2 = {
 ```typescript
 const value: models.CreateDeploymentGitSource3 = {
   type: "github-custom-host",
-  host: "straight-translation.biz",
-  repoId: 6995.39,
+  host: "aching-saw.biz",
+  repoId: "<id>",
 };
 ```
 
@@ -37,7 +37,7 @@ const value: models.CreateDeploymentGitSource3 = {
 ```typescript
 const value: models.CreateDeploymentGitSource4 = {
   type: "github-custom-host",
-  host: "bad-bran.org",
+  host: "second-leading.org",
   org: "<value>",
   repo: "<value>",
 };
@@ -48,7 +48,7 @@ const value: models.CreateDeploymentGitSource4 = {
 ```typescript
 const value: models.CreateDeploymentGitSource5 = {
   type: "gitlab",
-  projectId: 6813.69,
+  projectId: 8037.32,
 };
 ```
 
@@ -78,7 +78,7 @@ const value: models.CreateDeploymentGitSource8 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://jumbo-transparency.com",
+  gitUrl: "https://yellowish-excess.org",
 };
 ```
 
@@ -89,7 +89,7 @@ const value: models.CreateDeploymentGitSource9 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 4239.27,
+  repoId: 3742.69,
 };
 ```
 
@@ -98,10 +98,10 @@ const value: models.CreateDeploymentGitSource9 = {
 ```typescript
 const value: models.CreateDeploymentGitSource10 = {
   type: "github-custom-host",
-  host: "phony-soliloquy.info",
+  host: "svelte-roadway.net",
   ref: "<value>",
   sha: "<value>",
-  repoId: 5177.94,
+  repoId: 8500.24,
 };
 ```
 
@@ -112,7 +112,7 @@ const value: models.CreateDeploymentGitSource11 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 2202.73,
+  projectId: 4115.15,
 };
 ```
 

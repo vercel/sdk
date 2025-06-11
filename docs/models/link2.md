@@ -6,14 +6,7 @@
 import { Link2 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Link2 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://impressive-elver.net/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

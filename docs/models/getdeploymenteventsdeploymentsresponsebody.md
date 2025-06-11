@@ -7,12 +7,12 @@
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBody1 = {
-  type: "stdout",
-  created: 3746.26,
+  type: "fatal",
+  created: 6122.5,
   payload: {
     deploymentId: "<id>",
     id: "<id>",
-    date: 9083.71,
+    date: 9292.08,
     serial: "<value>",
   },
 };
@@ -22,8 +22,8 @@ const value: models.GetDeploymentEventsResponseBody1 = {
 
 ```typescript
 const value: models.GetDeploymentEventsResponseBody2 = {
-  created: 3399.05,
-  date: 2307.15,
+  created: 8534.19,
+  date: 2635.49,
   deploymentId: "<id>",
   id: "<id>",
   info: {
@@ -31,7 +31,7 @@ const value: models.GetDeploymentEventsResponseBody2 = {
     name: "<value>",
   },
   serial: "<value>",
-  type: "exit",
+  type: "middleware",
 };
 ```
 

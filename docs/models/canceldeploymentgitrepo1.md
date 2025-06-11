@@ -13,7 +13,7 @@ let value: CancelDeploymentGitRepo1 = {
   path: "/usr/ports",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
+  private: true,
   ownerType: "team",
 };
 ```

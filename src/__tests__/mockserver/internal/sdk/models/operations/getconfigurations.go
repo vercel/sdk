@@ -36,17 +36,17 @@ func (e *View) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type InstallationType string
+type QueryParamInstallationType string
 
 const (
-	InstallationTypeMarketplace InstallationType = "marketplace"
-	InstallationTypeExternal    InstallationType = "external"
+	QueryParamInstallationTypeMarketplace QueryParamInstallationType = "marketplace"
+	QueryParamInstallationTypeExternal    QueryParamInstallationType = "external"
 )
 
-func (e InstallationType) ToPointer() *InstallationType {
+func (e QueryParamInstallationType) ToPointer() *QueryParamInstallationType {
 	return &e
 }
-func (e *InstallationType) UnmarshalJSON(data []byte) error {
+func (e *QueryParamInstallationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -55,16 +55,16 @@ func (e *InstallationType) UnmarshalJSON(data []byte) error {
 	case "marketplace":
 		fallthrough
 	case "external":
-		*e = InstallationType(v)
+		*e = QueryParamInstallationType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for InstallationType: %v", v)
+		return fmt.Errorf("invalid value for QueryParamInstallationType: %v", v)
 	}
 }
 
 type GetConfigurationsRequest struct {
-	View             View              `queryParam:"style=form,explode=true,name=view"`
-	InstallationType *InstallationType `queryParam:"style=form,explode=true,name=installationType"`
+	View             View                        `queryParam:"style=form,explode=true,name=view"`
+	InstallationType *QueryParamInstallationType `queryParam:"style=form,explode=true,name=installationType"`
 	// ID of the integration
 	IntegrationIDOrSlug *string `queryParam:"style=form,explode=true,name=integrationIdOrSlug"`
 	// The Team identifier to perform the request on behalf of.
@@ -80,7 +80,7 @@ func (o *GetConfigurationsRequest) GetView() View {
 	return o.View
 }
 
-func (o *GetConfigurationsRequest) GetInstallationType() *InstallationType {
+func (o *GetConfigurationsRequest) GetInstallationType() *QueryParamInstallationType {
 	if o == nil {
 		return nil
 	}
@@ -108,36 +108,36 @@ func (o *GetConfigurationsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type TagIds string
+type TagID string
 
 const (
-	TagIdsTagAi              TagIds = "tag_ai"
-	TagIdsTagAnalytics       TagIds = "tag_analytics"
-	TagIdsTagAuthentication  TagIds = "tag_authentication"
-	TagIdsTagCms             TagIds = "tag_cms"
-	TagIdsTagCodeRepository  TagIds = "tag_code_repository"
-	TagIdsTagCommerce        TagIds = "tag_commerce"
-	TagIdsTagDatabases       TagIds = "tag_databases"
-	TagIdsTagDevTools        TagIds = "tag_dev_tools"
-	TagIdsTagExperimentation TagIds = "tag_experimentation"
-	TagIdsTagFlags           TagIds = "tag_flags"
-	TagIdsTagLogging         TagIds = "tag_logging"
-	TagIdsTagMessaging       TagIds = "tag_messaging"
-	TagIdsTagMonitoring      TagIds = "tag_monitoring"
-	TagIdsTagObservability   TagIds = "tag_observability"
-	TagIdsTagPerformance     TagIds = "tag_performance"
-	TagIdsTagProductivity    TagIds = "tag_productivity"
-	TagIdsTagSearching       TagIds = "tag_searching"
-	TagIdsTagSecurity        TagIds = "tag_security"
-	TagIdsTagTesting         TagIds = "tag_testing"
-	TagIdsTagVideo           TagIds = "tag_video"
-	TagIdsTagWorkflow        TagIds = "tag_workflow"
+	TagIDTagAi              TagID = "tag_ai"
+	TagIDTagAnalytics       TagID = "tag_analytics"
+	TagIDTagAuthentication  TagID = "tag_authentication"
+	TagIDTagCms             TagID = "tag_cms"
+	TagIDTagCodeRepository  TagID = "tag_code_repository"
+	TagIDTagCommerce        TagID = "tag_commerce"
+	TagIDTagDatabases       TagID = "tag_databases"
+	TagIDTagDevTools        TagID = "tag_dev_tools"
+	TagIDTagExperimentation TagID = "tag_experimentation"
+	TagIDTagFlags           TagID = "tag_flags"
+	TagIDTagLogging         TagID = "tag_logging"
+	TagIDTagMessaging       TagID = "tag_messaging"
+	TagIDTagMonitoring      TagID = "tag_monitoring"
+	TagIDTagObservability   TagID = "tag_observability"
+	TagIDTagPerformance     TagID = "tag_performance"
+	TagIDTagProductivity    TagID = "tag_productivity"
+	TagIDTagSearching       TagID = "tag_searching"
+	TagIDTagSecurity        TagID = "tag_security"
+	TagIDTagTesting         TagID = "tag_testing"
+	TagIDTagVideo           TagID = "tag_video"
+	TagIDTagWorkflow        TagID = "tag_workflow"
 )
 
-func (e TagIds) ToPointer() *TagIds {
+func (e TagID) ToPointer() *TagID {
 	return &e
 }
-func (e *TagIds) UnmarshalJSON(data []byte) error {
+func (e *TagID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -184,10 +184,10 @@ func (e *TagIds) UnmarshalJSON(data []byte) error {
 	case "tag_video":
 		fallthrough
 	case "tag_workflow":
-		*e = TagIds(v)
+		*e = TagID(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TagIds: %v", v)
+		return fmt.Errorf("invalid value for TagID: %v", v)
 	}
 }
 
@@ -197,7 +197,7 @@ type Integration struct {
 	IsLegacy            bool     `json:"isLegacy"`
 	Flags               []string `json:"flags,omitempty"`
 	AssignedBetaLabelAt *float64 `json:"assignedBetaLabelAt,omitempty"`
-	TagIds              []TagIds `json:"tagIds,omitempty"`
+	TagIds              []TagID  `json:"tagIds,omitempty"`
 }
 
 func (o *Integration) GetName() string {
@@ -235,27 +235,27 @@ func (o *Integration) GetAssignedBetaLabelAt() *float64 {
 	return o.AssignedBetaLabelAt
 }
 
-func (o *Integration) GetTagIds() []TagIds {
+func (o *Integration) GetTagIds() []TagID {
 	if o == nil {
 		return nil
 	}
 	return o.TagIds
 }
 
-// GetConfigurationsResponseBodyIntegrationsSource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationsResponseBodyIntegrationsSource string
+// GetConfigurationsSource2 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationsSource2 string
 
 const (
-	GetConfigurationsResponseBodyIntegrationsSourceMarketplace  GetConfigurationsResponseBodyIntegrationsSource = "marketplace"
-	GetConfigurationsResponseBodyIntegrationsSourceDeployButton GetConfigurationsResponseBodyIntegrationsSource = "deploy-button"
-	GetConfigurationsResponseBodyIntegrationsSourceExternal     GetConfigurationsResponseBodyIntegrationsSource = "external"
-	GetConfigurationsResponseBodyIntegrationsSourceV0           GetConfigurationsResponseBodyIntegrationsSource = "v0"
+	GetConfigurationsSource2Marketplace  GetConfigurationsSource2 = "marketplace"
+	GetConfigurationsSource2DeployButton GetConfigurationsSource2 = "deploy-button"
+	GetConfigurationsSource2External     GetConfigurationsSource2 = "external"
+	GetConfigurationsSource2V0           GetConfigurationsSource2 = "v0"
 )
 
-func (e GetConfigurationsResponseBodyIntegrationsSource) ToPointer() *GetConfigurationsResponseBodyIntegrationsSource {
+func (e GetConfigurationsSource2) ToPointer() *GetConfigurationsSource2 {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyIntegrationsSource) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsSource2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -268,51 +268,51 @@ func (e *GetConfigurationsResponseBodyIntegrationsSource) UnmarshalJSON(data []b
 	case "external":
 		fallthrough
 	case "v0":
-		*e = GetConfigurationsResponseBodyIntegrationsSource(v)
+		*e = GetConfigurationsSource2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyIntegrationsSource: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsSource2: %v", v)
 	}
 }
 
-type GetConfigurationsResponseBodyIntegrationsType string
+type GetConfigurationsType2 string
 
 const (
-	GetConfigurationsResponseBodyIntegrationsTypeIntegrationConfiguration GetConfigurationsResponseBodyIntegrationsType = "integration-configuration"
+	GetConfigurationsType2IntegrationConfiguration GetConfigurationsType2 = "integration-configuration"
 )
 
-func (e GetConfigurationsResponseBodyIntegrationsType) ToPointer() *GetConfigurationsResponseBodyIntegrationsType {
+func (e GetConfigurationsType2) ToPointer() *GetConfigurationsType2 {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyIntegrationsType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-configuration":
-		*e = GetConfigurationsResponseBodyIntegrationsType(v)
+		*e = GetConfigurationsType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyIntegrationsType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsType2: %v", v)
 	}
 }
 
-type ResponseBodyDisabledReason string
+type GetConfigurationsDisabledReason2 string
 
 const (
-	ResponseBodyDisabledReasonDisabledByOwner             ResponseBodyDisabledReason = "disabled-by-owner"
-	ResponseBodyDisabledReasonFeatureNotAvailable         ResponseBodyDisabledReason = "feature-not-available"
-	ResponseBodyDisabledReasonDisabledByAdmin             ResponseBodyDisabledReason = "disabled-by-admin"
-	ResponseBodyDisabledReasonOriginalOwnerLeftTheTeam    ResponseBodyDisabledReason = "original-owner-left-the-team"
-	ResponseBodyDisabledReasonAccountPlanDowngrade        ResponseBodyDisabledReason = "account-plan-downgrade"
-	ResponseBodyDisabledReasonOriginalOwnerRoleDowngraded ResponseBodyDisabledReason = "original-owner-role-downgraded"
+	GetConfigurationsDisabledReason2DisabledByOwner             GetConfigurationsDisabledReason2 = "disabled-by-owner"
+	GetConfigurationsDisabledReason2FeatureNotAvailable         GetConfigurationsDisabledReason2 = "feature-not-available"
+	GetConfigurationsDisabledReason2DisabledByAdmin             GetConfigurationsDisabledReason2 = "disabled-by-admin"
+	GetConfigurationsDisabledReason2OriginalOwnerLeftTheTeam    GetConfigurationsDisabledReason2 = "original-owner-left-the-team"
+	GetConfigurationsDisabledReason2AccountPlanDowngrade        GetConfigurationsDisabledReason2 = "account-plan-downgrade"
+	GetConfigurationsDisabledReason2OriginalOwnerRoleDowngraded GetConfigurationsDisabledReason2 = "original-owner-role-downgraded"
 )
 
-func (e ResponseBodyDisabledReason) ToPointer() *ResponseBodyDisabledReason {
+func (e GetConfigurationsDisabledReason2) ToPointer() *GetConfigurationsDisabledReason2 {
 	return &e
 }
-func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsDisabledReason2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -329,25 +329,25 @@ func (e *ResponseBodyDisabledReason) UnmarshalJSON(data []byte) error {
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = ResponseBodyDisabledReason(v)
+		*e = GetConfigurationsDisabledReason2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyDisabledReason: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsDisabledReason2: %v", v)
 	}
 }
 
-// GetConfigurationsResponseBodyInstallationType - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-type GetConfigurationsResponseBodyInstallationType string
+// GetConfigurationsInstallationTypeResponse2 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+type GetConfigurationsInstallationTypeResponse2 string
 
 const (
-	GetConfigurationsResponseBodyInstallationTypeMarketplace GetConfigurationsResponseBodyInstallationType = "marketplace"
-	GetConfigurationsResponseBodyInstallationTypeExternal    GetConfigurationsResponseBodyInstallationType = "external"
+	GetConfigurationsInstallationTypeResponse2Marketplace GetConfigurationsInstallationTypeResponse2 = "marketplace"
+	GetConfigurationsInstallationTypeResponse2External    GetConfigurationsInstallationTypeResponse2 = "external"
 )
 
-func (e GetConfigurationsResponseBodyInstallationType) ToPointer() *GetConfigurationsResponseBodyInstallationType {
+func (e GetConfigurationsInstallationTypeResponse2) ToPointer() *GetConfigurationsInstallationTypeResponse2 {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyInstallationType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsInstallationTypeResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -356,14 +356,14 @@ func (e *GetConfigurationsResponseBodyInstallationType) UnmarshalJSON(data []byt
 	case "marketplace":
 		fallthrough
 	case "external":
-		*e = GetConfigurationsResponseBodyInstallationType(v)
+		*e = GetConfigurationsInstallationTypeResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyInstallationType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsInstallationTypeResponse2: %v", v)
 	}
 }
 
-type GetConfigurationsResponseBody2 struct {
+type GetConfigurationsIntegrationConfiguration2 struct {
 	Integration Integration `json:"integration"`
 	// A timestamp that tells you when the configuration was installed successfully
 	CompletedAt *float64 `json:"completedAt,omitempty"`
@@ -378,12 +378,12 @@ type GetConfigurationsResponseBody2 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationsResponseBodyIntegrationsSource `json:"source,omitempty"`
+	Source *GetConfigurationsSource2 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                                       `json:"teamId,omitempty"`
-	Type   GetConfigurationsResponseBodyIntegrationsType `json:"type"`
+	TeamID *string                `json:"teamId,omitempty"`
+	Type   GetConfigurationsType2 `json:"type"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The ID of the user that created the configuration.
@@ -395,159 +395,159 @@ type GetConfigurationsResponseBody2 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                    `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *ResponseBodyDisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                          `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationsDisabledReason2 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-	InstallationType *GetConfigurationsResponseBodyInstallationType `json:"installationType,omitempty"`
+	InstallationType *GetConfigurationsInstallationTypeResponse2 `json:"installationType,omitempty"`
 }
 
-func (o *GetConfigurationsResponseBody2) GetIntegration() Integration {
+func (o *GetConfigurationsIntegrationConfiguration2) GetIntegration() Integration {
 	if o == nil {
 		return Integration{}
 	}
 	return o.Integration
 }
 
-func (o *GetConfigurationsResponseBody2) GetCompletedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CompletedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetCreatedAt() float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetID() string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetConfigurationsResponseBody2) GetIntegrationID() string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetConfigurationsResponseBody2) GetOwnerID() string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetOwnerID() string {
 	if o == nil {
 		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *GetConfigurationsResponseBody2) GetProjects() []string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *GetConfigurationsResponseBody2) GetSource() *GetConfigurationsResponseBodyIntegrationsSource {
+func (o *GetConfigurationsIntegrationConfiguration2) GetSource() *GetConfigurationsSource2 {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *GetConfigurationsResponseBody2) GetSlug() string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetConfigurationsResponseBody2) GetTeamID() *string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *GetConfigurationsResponseBody2) GetType() GetConfigurationsResponseBodyIntegrationsType {
+func (o *GetConfigurationsIntegrationConfiguration2) GetType() GetConfigurationsType2 {
 	if o == nil {
-		return GetConfigurationsResponseBodyIntegrationsType("")
+		return GetConfigurationsType2("")
 	}
 	return o.Type
 }
 
-func (o *GetConfigurationsResponseBody2) GetUpdatedAt() float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetUserID() string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetUserID() string {
 	if o == nil {
 		return ""
 	}
 	return o.UserID
 }
 
-func (o *GetConfigurationsResponseBody2) GetScopes() []string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetScopes() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Scopes
 }
 
-func (o *GetConfigurationsResponseBody2) GetDisabledAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetDisabledAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetDeletedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration2) GetDeleteRequestedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody2) GetDisabledReason() *ResponseBodyDisabledReason {
+func (o *GetConfigurationsIntegrationConfiguration2) GetDisabledReason() *GetConfigurationsDisabledReason2 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledReason
 }
 
-func (o *GetConfigurationsResponseBody2) GetInstallationType() *GetConfigurationsResponseBodyInstallationType {
+func (o *GetConfigurationsIntegrationConfiguration2) GetInstallationType() *GetConfigurationsInstallationTypeResponse2 {
 	if o == nil {
 		return nil
 	}
 	return o.InstallationType
 }
 
-// GetConfigurationsResponseBodySource - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationsResponseBodySource string
+// GetConfigurationsSource1 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationsSource1 string
 
 const (
-	GetConfigurationsResponseBodySourceMarketplace  GetConfigurationsResponseBodySource = "marketplace"
-	GetConfigurationsResponseBodySourceDeployButton GetConfigurationsResponseBodySource = "deploy-button"
-	GetConfigurationsResponseBodySourceExternal     GetConfigurationsResponseBodySource = "external"
-	GetConfigurationsResponseBodySourceV0           GetConfigurationsResponseBodySource = "v0"
+	GetConfigurationsSource1Marketplace  GetConfigurationsSource1 = "marketplace"
+	GetConfigurationsSource1DeployButton GetConfigurationsSource1 = "deploy-button"
+	GetConfigurationsSource1External     GetConfigurationsSource1 = "external"
+	GetConfigurationsSource1V0           GetConfigurationsSource1 = "v0"
 )
 
-func (e GetConfigurationsResponseBodySource) ToPointer() *GetConfigurationsResponseBodySource {
+func (e GetConfigurationsSource1) ToPointer() *GetConfigurationsSource1 {
 	return &e
 }
-func (e *GetConfigurationsResponseBodySource) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsSource1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -560,51 +560,51 @@ func (e *GetConfigurationsResponseBodySource) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
-		*e = GetConfigurationsResponseBodySource(v)
+		*e = GetConfigurationsSource1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodySource: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsSource1: %v", v)
 	}
 }
 
-type GetConfigurationsResponseBodyType string
+type GetConfigurationsType1 string
 
 const (
-	GetConfigurationsResponseBodyTypeIntegrationConfiguration GetConfigurationsResponseBodyType = "integration-configuration"
+	GetConfigurationsType1IntegrationConfiguration GetConfigurationsType1 = "integration-configuration"
 )
 
-func (e GetConfigurationsResponseBodyType) ToPointer() *GetConfigurationsResponseBodyType {
+func (e GetConfigurationsType1) ToPointer() *GetConfigurationsType1 {
 	return &e
 }
-func (e *GetConfigurationsResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-configuration":
-		*e = GetConfigurationsResponseBodyType(v)
+		*e = GetConfigurationsType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetConfigurationsResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsType1: %v", v)
 	}
 }
 
-type DisabledReason string
+type GetConfigurationsDisabledReason1 string
 
 const (
-	DisabledReasonDisabledByOwner             DisabledReason = "disabled-by-owner"
-	DisabledReasonFeatureNotAvailable         DisabledReason = "feature-not-available"
-	DisabledReasonDisabledByAdmin             DisabledReason = "disabled-by-admin"
-	DisabledReasonOriginalOwnerLeftTheTeam    DisabledReason = "original-owner-left-the-team"
-	DisabledReasonAccountPlanDowngrade        DisabledReason = "account-plan-downgrade"
-	DisabledReasonOriginalOwnerRoleDowngraded DisabledReason = "original-owner-role-downgraded"
+	GetConfigurationsDisabledReason1DisabledByOwner             GetConfigurationsDisabledReason1 = "disabled-by-owner"
+	GetConfigurationsDisabledReason1FeatureNotAvailable         GetConfigurationsDisabledReason1 = "feature-not-available"
+	GetConfigurationsDisabledReason1DisabledByAdmin             GetConfigurationsDisabledReason1 = "disabled-by-admin"
+	GetConfigurationsDisabledReason1OriginalOwnerLeftTheTeam    GetConfigurationsDisabledReason1 = "original-owner-left-the-team"
+	GetConfigurationsDisabledReason1AccountPlanDowngrade        GetConfigurationsDisabledReason1 = "account-plan-downgrade"
+	GetConfigurationsDisabledReason1OriginalOwnerRoleDowngraded GetConfigurationsDisabledReason1 = "original-owner-role-downgraded"
 )
 
-func (e DisabledReason) ToPointer() *DisabledReason {
+func (e GetConfigurationsDisabledReason1) ToPointer() *GetConfigurationsDisabledReason1 {
 	return &e
 }
-func (e *DisabledReason) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsDisabledReason1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -621,25 +621,25 @@ func (e *DisabledReason) UnmarshalJSON(data []byte) error {
 	case "account-plan-downgrade":
 		fallthrough
 	case "original-owner-role-downgraded":
-		*e = DisabledReason(v)
+		*e = GetConfigurationsDisabledReason1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DisabledReason: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsDisabledReason1: %v", v)
 	}
 }
 
-// ResponseBodyInstallationType - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-type ResponseBodyInstallationType string
+// GetConfigurationsInstallationTypeResponse1 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+type GetConfigurationsInstallationTypeResponse1 string
 
 const (
-	ResponseBodyInstallationTypeMarketplace ResponseBodyInstallationType = "marketplace"
-	ResponseBodyInstallationTypeExternal    ResponseBodyInstallationType = "external"
+	GetConfigurationsInstallationTypeResponse1Marketplace GetConfigurationsInstallationTypeResponse1 = "marketplace"
+	GetConfigurationsInstallationTypeResponse1External    GetConfigurationsInstallationTypeResponse1 = "external"
 )
 
-func (e ResponseBodyInstallationType) ToPointer() *ResponseBodyInstallationType {
+func (e GetConfigurationsInstallationTypeResponse1) ToPointer() *GetConfigurationsInstallationTypeResponse1 {
 	return &e
 }
-func (e *ResponseBodyInstallationType) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationsInstallationTypeResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -648,15 +648,15 @@ func (e *ResponseBodyInstallationType) UnmarshalJSON(data []byte) error {
 	case "marketplace":
 		fallthrough
 	case "external":
-		*e = ResponseBodyInstallationType(v)
+		*e = GetConfigurationsInstallationTypeResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyInstallationType: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationsInstallationTypeResponse1: %v", v)
 	}
 }
 
-// GetConfigurationsResponseBody1 - The list of configurations for the authenticated user
-type GetConfigurationsResponseBody1 struct {
+// GetConfigurationsIntegrationConfiguration1 - The list of configurations for the authenticated user
+type GetConfigurationsIntegrationConfiguration1 struct {
 	// A timestamp that tells you when the configuration was installed successfully
 	CompletedAt *float64 `json:"completedAt,omitempty"`
 	// A timestamp that tells you when the configuration was created
@@ -670,12 +670,12 @@ type GetConfigurationsResponseBody1 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationsResponseBodySource `json:"source,omitempty"`
+	Source *GetConfigurationsSource1 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug *string `json:"slug,omitempty"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                            `json:"teamId,omitempty"`
-	Type   *GetConfigurationsResponseBodyType `json:"type,omitempty"`
+	TeamID *string                 `json:"teamId,omitempty"`
+	Type   *GetConfigurationsType1 `json:"type,omitempty"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
 	// The ID of the user that created the configuration.
@@ -687,184 +687,184 @@ type GetConfigurationsResponseBody1 struct {
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64        `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *DisabledReason `json:"disabledReason,omitempty"`
+	DeleteRequestedAt *float64                          `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationsDisabledReason1 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-	InstallationType *ResponseBodyInstallationType `json:"installationType,omitempty"`
+	InstallationType *GetConfigurationsInstallationTypeResponse1 `json:"installationType,omitempty"`
 }
 
-func (o *GetConfigurationsResponseBody1) GetCompletedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CompletedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetCreatedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetID() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *GetConfigurationsResponseBody1) GetIntegrationID() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetIntegrationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IntegrationID
 }
 
-func (o *GetConfigurationsResponseBody1) GetOwnerID() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetOwnerID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *GetConfigurationsResponseBody1) GetProjects() []string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *GetConfigurationsResponseBody1) GetSource() *GetConfigurationsResponseBodySource {
+func (o *GetConfigurationsIntegrationConfiguration1) GetSource() *GetConfigurationsSource1 {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *GetConfigurationsResponseBody1) GetSlug() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetSlug() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Slug
 }
 
-func (o *GetConfigurationsResponseBody1) GetTeamID() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetTeamID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *GetConfigurationsResponseBody1) GetType() *GetConfigurationsResponseBodyType {
+func (o *GetConfigurationsIntegrationConfiguration1) GetType() *GetConfigurationsType1 {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *GetConfigurationsResponseBody1) GetUpdatedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetUserID() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetUserID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UserID
 }
 
-func (o *GetConfigurationsResponseBody1) GetScopes() []string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetScopes() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Scopes
 }
 
-func (o *GetConfigurationsResponseBody1) GetDisabledAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetDisabledAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetDeletedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationsIntegrationConfiguration1) GetDeleteRequestedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeleteRequestedAt
 }
 
-func (o *GetConfigurationsResponseBody1) GetDisabledReason() *DisabledReason {
+func (o *GetConfigurationsIntegrationConfiguration1) GetDisabledReason() *GetConfigurationsDisabledReason1 {
 	if o == nil {
 		return nil
 	}
 	return o.DisabledReason
 }
 
-func (o *GetConfigurationsResponseBody1) GetInstallationType() *ResponseBodyInstallationType {
+func (o *GetConfigurationsIntegrationConfiguration1) GetInstallationType() *GetConfigurationsInstallationTypeResponse1 {
 	if o == nil {
 		return nil
 	}
 	return o.InstallationType
 }
 
-type GetConfigurationsResponseBodyUnionType string
+type GetConfigurationsResponseBodyType string
 
 const (
-	GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody1 GetConfigurationsResponseBodyUnionType = "arrayOfGetConfigurationsResponseBody1"
-	GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody2 GetConfigurationsResponseBodyUnionType = "arrayOfGetConfigurationsResponseBody2"
+	GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration1 GetConfigurationsResponseBodyType = "arrayOfGetConfigurationsIntegrationConfiguration1"
+	GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration2 GetConfigurationsResponseBodyType = "arrayOfGetConfigurationsIntegrationConfiguration2"
 )
 
 // GetConfigurationsResponseBody - The list of configurations for the authenticated user
 type GetConfigurationsResponseBody struct {
-	ArrayOfGetConfigurationsResponseBody1 []GetConfigurationsResponseBody1
-	ArrayOfGetConfigurationsResponseBody2 []GetConfigurationsResponseBody2
+	ArrayOfGetConfigurationsIntegrationConfiguration1 []GetConfigurationsIntegrationConfiguration1 `queryParam:"inline"`
+	ArrayOfGetConfigurationsIntegrationConfiguration2 []GetConfigurationsIntegrationConfiguration2 `queryParam:"inline"`
 
-	Type GetConfigurationsResponseBodyUnionType
+	Type GetConfigurationsResponseBodyType
 }
 
-func CreateGetConfigurationsResponseBodyArrayOfGetConfigurationsResponseBody1(arrayOfGetConfigurationsResponseBody1 []GetConfigurationsResponseBody1) GetConfigurationsResponseBody {
-	typ := GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody1
+func CreateGetConfigurationsResponseBodyArrayOfGetConfigurationsIntegrationConfiguration1(arrayOfGetConfigurationsIntegrationConfiguration1 []GetConfigurationsIntegrationConfiguration1) GetConfigurationsResponseBody {
+	typ := GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration1
 
 	return GetConfigurationsResponseBody{
-		ArrayOfGetConfigurationsResponseBody1: arrayOfGetConfigurationsResponseBody1,
-		Type:                                  typ,
+		ArrayOfGetConfigurationsIntegrationConfiguration1: arrayOfGetConfigurationsIntegrationConfiguration1,
+		Type: typ,
 	}
 }
 
-func CreateGetConfigurationsResponseBodyArrayOfGetConfigurationsResponseBody2(arrayOfGetConfigurationsResponseBody2 []GetConfigurationsResponseBody2) GetConfigurationsResponseBody {
-	typ := GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody2
+func CreateGetConfigurationsResponseBodyArrayOfGetConfigurationsIntegrationConfiguration2(arrayOfGetConfigurationsIntegrationConfiguration2 []GetConfigurationsIntegrationConfiguration2) GetConfigurationsResponseBody {
+	typ := GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration2
 
 	return GetConfigurationsResponseBody{
-		ArrayOfGetConfigurationsResponseBody2: arrayOfGetConfigurationsResponseBody2,
-		Type:                                  typ,
+		ArrayOfGetConfigurationsIntegrationConfiguration2: arrayOfGetConfigurationsIntegrationConfiguration2,
+		Type: typ,
 	}
 }
 
 func (u *GetConfigurationsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var arrayOfGetConfigurationsResponseBody1 []GetConfigurationsResponseBody1 = []GetConfigurationsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsResponseBody1, "", true, true); err == nil {
-		u.ArrayOfGetConfigurationsResponseBody1 = arrayOfGetConfigurationsResponseBody1
-		u.Type = GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody1
+	var arrayOfGetConfigurationsIntegrationConfiguration1 []GetConfigurationsIntegrationConfiguration1 = []GetConfigurationsIntegrationConfiguration1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration1, "", true, true); err == nil {
+		u.ArrayOfGetConfigurationsIntegrationConfiguration1 = arrayOfGetConfigurationsIntegrationConfiguration1
+		u.Type = GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration1
 		return nil
 	}
 
-	var arrayOfGetConfigurationsResponseBody2 []GetConfigurationsResponseBody2 = []GetConfigurationsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsResponseBody2, "", true, true); err == nil {
-		u.ArrayOfGetConfigurationsResponseBody2 = arrayOfGetConfigurationsResponseBody2
-		u.Type = GetConfigurationsResponseBodyUnionTypeArrayOfGetConfigurationsResponseBody2
+	var arrayOfGetConfigurationsIntegrationConfiguration2 []GetConfigurationsIntegrationConfiguration2 = []GetConfigurationsIntegrationConfiguration2{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration2, "", true, true); err == nil {
+		u.ArrayOfGetConfigurationsIntegrationConfiguration2 = arrayOfGetConfigurationsIntegrationConfiguration2
+		u.Type = GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration2
 		return nil
 	}
 
@@ -872,12 +872,12 @@ func (u *GetConfigurationsResponseBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetConfigurationsResponseBody) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfGetConfigurationsResponseBody1 != nil {
-		return utils.MarshalJSON(u.ArrayOfGetConfigurationsResponseBody1, "", true)
+	if u.ArrayOfGetConfigurationsIntegrationConfiguration1 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetConfigurationsIntegrationConfiguration1, "", true)
 	}
 
-	if u.ArrayOfGetConfigurationsResponseBody2 != nil {
-		return utils.MarshalJSON(u.ArrayOfGetConfigurationsResponseBody2, "", true)
+	if u.ArrayOfGetConfigurationsIntegrationConfiguration2 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetConfigurationsIntegrationConfiguration2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetConfigurationsResponseBody: all fields are null")

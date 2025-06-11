@@ -10,18 +10,18 @@ let value: CreateProjectLatestDeployments = {
   createdAt: 3885.01,
   createdIn: "<value>",
   creator: {
-    email: "Afton_Little5@gmail.com",
+    email: "Archibald.Stanton8@gmail.com",
     uid: "<id>",
-    username: "Barbara_Maggio72",
+    username: "Tiara_Murray",
   },
   deploymentHostname: "<value>",
   name: "<value>",
   plan: "enterprise",
   previewCommentsEnabled: false,
-  private: false,
-  readyState: "INITIALIZING",
+  private: true,
+  readyState: "ERROR",
   type: "LAMBDAS",
-  url: "https://excitable-intent.org/",
+  url: "https://unfortunate-settler.biz/",
   userId: "<id>",
 };
 ```

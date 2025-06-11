@@ -10,171 +10,171 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type CreateEventEventType string
+type TypeResourceUpdated string
 
 const (
-	CreateEventEventTypeResourceUpdated CreateEventEventType = "resource.updated"
+	TypeResourceUpdatedResourceUpdated TypeResourceUpdated = "resource.updated"
 )
 
-func (e CreateEventEventType) ToPointer() *CreateEventEventType {
+func (e TypeResourceUpdated) ToPointer() *TypeResourceUpdated {
 	return &e
 }
-func (e *CreateEventEventType) UnmarshalJSON(data []byte) error {
+func (e *TypeResourceUpdated) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "resource.updated":
-		*e = CreateEventEventType(v)
+		*e = TypeResourceUpdated(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateEventEventType: %v", v)
+		return fmt.Errorf("invalid value for TypeResourceUpdated: %v", v)
 	}
 }
 
-type Event2 struct {
-	Type CreateEventEventType `json:"type"`
+type EventResourceUpdated struct {
+	Type TypeResourceUpdated `json:"type"`
 	// Partner-provided product slug or id
 	ProductID string `json:"productId"`
 	// Partner provided resource ID
 	ResourceID string `json:"resourceId"`
 }
 
-func (o *Event2) GetType() CreateEventEventType {
+func (o *EventResourceUpdated) GetType() TypeResourceUpdated {
 	if o == nil {
-		return CreateEventEventType("")
+		return TypeResourceUpdated("")
 	}
 	return o.Type
 }
 
-func (o *Event2) GetProductID() string {
+func (o *EventResourceUpdated) GetProductID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProductID
 }
 
-func (o *Event2) GetResourceID() string {
+func (o *EventResourceUpdated) GetResourceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ResourceID
 }
 
-type EventType string
+type TypeInstallationUpdated string
 
 const (
-	EventTypeInstallationUpdated EventType = "installation.updated"
+	TypeInstallationUpdatedInstallationUpdated TypeInstallationUpdated = "installation.updated"
 )
 
-func (e EventType) ToPointer() *EventType {
+func (e TypeInstallationUpdated) ToPointer() *TypeInstallationUpdated {
 	return &e
 }
-func (e *EventType) UnmarshalJSON(data []byte) error {
+func (e *TypeInstallationUpdated) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "installation.updated":
-		*e = EventType(v)
+		*e = TypeInstallationUpdated(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EventType: %v", v)
+		return fmt.Errorf("invalid value for TypeInstallationUpdated: %v", v)
 	}
 }
 
-type Event1 struct {
-	Type EventType `json:"type"`
+type EventInstallationUpdated struct {
+	Type TypeInstallationUpdated `json:"type"`
 	// The installation-level billing plan ID
 	BillingPlanID *string `json:"billingPlanId,omitempty"`
 }
 
-func (o *Event1) GetType() EventType {
+func (o *EventInstallationUpdated) GetType() TypeInstallationUpdated {
 	if o == nil {
-		return EventType("")
+		return TypeInstallationUpdated("")
 	}
 	return o.Type
 }
 
-func (o *Event1) GetBillingPlanID() *string {
+func (o *EventInstallationUpdated) GetBillingPlanID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.BillingPlanID
 }
 
-type CreateEventEventUnionType string
+type EventType string
 
 const (
-	CreateEventEventUnionTypeEvent1 CreateEventEventUnionType = "event_1"
-	CreateEventEventUnionTypeEvent2 CreateEventEventUnionType = "event_2"
+	EventTypeEventInstallationUpdated EventType = "event_InstallationUpdated"
+	EventTypeEventResourceUpdated     EventType = "event_ResourceUpdated"
 )
 
-type CreateEventEvent struct {
-	Event1 *Event1
-	Event2 *Event2
+type Event struct {
+	EventInstallationUpdated *EventInstallationUpdated `queryParam:"inline"`
+	EventResourceUpdated     *EventResourceUpdated     `queryParam:"inline"`
 
-	Type CreateEventEventUnionType
+	Type EventType
 }
 
-func CreateCreateEventEventEvent1(event1 Event1) CreateEventEvent {
-	typ := CreateEventEventUnionTypeEvent1
+func CreateEventEventInstallationUpdated(eventInstallationUpdated EventInstallationUpdated) Event {
+	typ := EventTypeEventInstallationUpdated
 
-	return CreateEventEvent{
-		Event1: &event1,
-		Type:   typ,
+	return Event{
+		EventInstallationUpdated: &eventInstallationUpdated,
+		Type:                     typ,
 	}
 }
 
-func CreateCreateEventEventEvent2(event2 Event2) CreateEventEvent {
-	typ := CreateEventEventUnionTypeEvent2
+func CreateEventEventResourceUpdated(eventResourceUpdated EventResourceUpdated) Event {
+	typ := EventTypeEventResourceUpdated
 
-	return CreateEventEvent{
-		Event2: &event2,
-		Type:   typ,
+	return Event{
+		EventResourceUpdated: &eventResourceUpdated,
+		Type:                 typ,
 	}
 }
 
-func (u *CreateEventEvent) UnmarshalJSON(data []byte) error {
+func (u *Event) UnmarshalJSON(data []byte) error {
 
-	var event1 Event1 = Event1{}
-	if err := utils.UnmarshalJSON(data, &event1, "", true, true); err == nil {
-		u.Event1 = &event1
-		u.Type = CreateEventEventUnionTypeEvent1
+	var eventInstallationUpdated EventInstallationUpdated = EventInstallationUpdated{}
+	if err := utils.UnmarshalJSON(data, &eventInstallationUpdated, "", true, true); err == nil {
+		u.EventInstallationUpdated = &eventInstallationUpdated
+		u.Type = EventTypeEventInstallationUpdated
 		return nil
 	}
 
-	var event2 Event2 = Event2{}
-	if err := utils.UnmarshalJSON(data, &event2, "", true, true); err == nil {
-		u.Event2 = &event2
-		u.Type = CreateEventEventUnionTypeEvent2
+	var eventResourceUpdated EventResourceUpdated = EventResourceUpdated{}
+	if err := utils.UnmarshalJSON(data, &eventResourceUpdated, "", true, true); err == nil {
+		u.EventResourceUpdated = &eventResourceUpdated
+		u.Type = EventTypeEventResourceUpdated
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateEventEvent", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Event", string(data))
 }
 
-func (u CreateEventEvent) MarshalJSON() ([]byte, error) {
-	if u.Event1 != nil {
-		return utils.MarshalJSON(u.Event1, "", true)
+func (u Event) MarshalJSON() ([]byte, error) {
+	if u.EventInstallationUpdated != nil {
+		return utils.MarshalJSON(u.EventInstallationUpdated, "", true)
 	}
 
-	if u.Event2 != nil {
-		return utils.MarshalJSON(u.Event2, "", true)
+	if u.EventResourceUpdated != nil {
+		return utils.MarshalJSON(u.EventResourceUpdated, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateEventEvent: all fields are null")
+	return nil, errors.New("could not marshal union type Event: all fields are null")
 }
 
 type CreateEventRequestBody struct {
-	Event CreateEventEvent `json:"event"`
+	Event Event `json:"event"`
 }
 
-func (o *CreateEventRequestBody) GetEvent() CreateEventEvent {
+func (o *CreateEventRequestBody) GetEvent() Event {
 	if o == nil {
-		return CreateEventEvent{}
+		return Event{}
 	}
 	return o.Event
 }

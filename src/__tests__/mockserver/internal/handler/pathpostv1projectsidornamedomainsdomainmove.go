@@ -50,7 +50,7 @@ func testMoveProjectDomainMoveProjectDomain0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.MoveProjectDomainResponseBody{
+	var respBody *operations.MoveProjectDomainResponseBody = &operations.MoveProjectDomainResponseBody{
 		Name:      "<value>",
 		ApexName:  "<value>",
 		ProjectID: "<id>",

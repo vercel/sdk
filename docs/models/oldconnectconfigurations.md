@@ -9,9 +9,9 @@ let value: OldConnectConfigurations = {
   envId: "<id>",
   connectConfigurationId: "<id>",
   passive: false,
-  buildsEnabled: false,
-  createdAt: 7630.36,
-  updatedAt: 1271.11,
+  buildsEnabled: true,
+  createdAt: 9005.75,
+  updatedAt: 8968.35,
 };
 ```
 

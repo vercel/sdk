@@ -9,11 +9,7 @@ import { SeventyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyFive = {
   projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 120.13,
-    enabledAt: 8909.59,
-  },
+  projectAnalytics: null,
   prevProjectAnalytics: {
     id: "<id>",
     disabledAt: 8580.63,

@@ -6,19 +6,7 @@
 import { GetTeamMembersResponseBody } from "@vercel/sdk/models/getteammembersop.js";
 
 let value: GetTeamMembersResponseBody = {
-  members: [
-    {
-      avatar: "123a6c5209bc3778245d011443644c8d27dc2c50",
-      confirmed: true,
-      email: "jane.doe@example.com",
-      role: "OWNER",
-      uid: "zTuNVUXEAvvnNN3IaqinkyMw",
-      username: "jane-doe",
-      name: "Jane Doe",
-      createdAt: 1588720733602,
-      accessRequestedAt: 1588820733602,
-    },
-  ],
+  members: [],
   pagination: {
     hasNext: false,
     count: 20,

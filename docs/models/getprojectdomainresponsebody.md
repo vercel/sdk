@@ -9,7 +9,7 @@ let value: GetProjectDomainResponseBody = {
   name: "<value>",
   apexName: "<value>",
   projectId: "<id>",
-  verified: false,
+  verified: true,
 };
 ```
 

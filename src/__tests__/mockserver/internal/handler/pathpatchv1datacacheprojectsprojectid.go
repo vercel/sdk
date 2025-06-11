@@ -51,118 +51,64 @@ func testUpdateProjectDataCacheUpdateProjectDataCache0(w http.ResponseWriter, re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateProjectDataCacheResponseBody{
+	var respBody *operations.UpdateProjectDataCacheResponseBody = &operations.UpdateProjectDataCacheResponseBody{
 		AccountID: "<id>",
-		Crons: &operations.Crons{
-			EnabledAt:    7135.8,
-			DisabledAt:   types.Float64(2989.85),
-			UpdatedAt:    6226.23,
+		Crons: &operations.UpdateProjectDataCacheCrons{
+			EnabledAt:    4537.72,
+			DisabledAt:   types.Float64(4306.04),
+			UpdatedAt:    4313.17,
 			DeploymentID: types.String("<id>"),
-			Definitions: []operations.Definitions{
-				operations.Definitions{
-					Host:     "vercel.com",
-					Path:     "/api/crons/sync-something?hello=world",
-					Schedule: "0 0 * * *",
-				},
-				operations.Definitions{
-					Host:     "vercel.com",
-					Path:     "/api/crons/sync-something?hello=world",
-					Schedule: "0 0 * * *",
-				},
-				operations.Definitions{
-					Host:     "vercel.com",
-					Path:     "/api/crons/sync-something?hello=world",
-					Schedule: "0 0 * * *",
-				},
-			},
+			Definitions:  []operations.UpdateProjectDataCacheDefinition{},
 		},
-		DirectoryListing: false,
+		DirectoryListing: true,
 		ID:               "<id>",
-		LatestDeployments: []operations.LatestDeployments{
-			operations.LatestDeployments{
+		LatestDeployments: []operations.UpdateProjectDataCacheLatestDeployment{
+			operations.UpdateProjectDataCacheLatestDeployment{
 				ID:        "<id>",
-				CreatedAt: 5719.6,
+				CreatedAt: 1954.03,
 				CreatedIn: "<value>",
-				Creator: &operations.UpdateProjectDataCacheProjectsCreator{
-					Email:    "Braeden15@gmail.com",
+				Creator: &operations.UpdateProjectDataCacheCreator{
+					Email:    "Cleveland_Bruen@gmail.com",
 					UID:      "<id>",
-					Username: "Teresa84",
+					Username: "Frida_Stamm12",
 				},
 				DeploymentHostname:     "<value>",
 				Name:                   "<value>",
-				Plan:                   operations.UpdateProjectDataCacheProjectsPlanPro,
+				Plan:                   operations.UpdateProjectDataCachePlanPro,
 				PreviewCommentsEnabled: types.Bool(false),
 				Private:                false,
-				ReadyState:             operations.UpdateProjectDataCacheProjectsReadyStateBuilding,
-				Type:                   operations.UpdateProjectDataCacheProjectsTypeLambdas,
-				URL:                    "https://unknown-gift.biz",
-				UserID:                 "<id>",
-			},
-			operations.LatestDeployments{
-				ID:        "<id>",
-				CreatedAt: 7644.5,
-				CreatedIn: "<value>",
-				Creator: &operations.UpdateProjectDataCacheProjectsCreator{
-					Email:    "Erich.Mann@hotmail.com",
-					UID:      "<id>",
-					Username: "Genoveva89",
-				},
-				DeploymentHostname:     "<value>",
-				Name:                   "<value>",
-				Plan:                   operations.UpdateProjectDataCacheProjectsPlanHobby,
-				PreviewCommentsEnabled: types.Bool(false),
-				Private:                true,
-				ReadyState:             operations.UpdateProjectDataCacheProjectsReadyStateError,
-				Type:                   operations.UpdateProjectDataCacheProjectsTypeLambdas,
-				URL:                    "https://slimy-tuba.name",
-				UserID:                 "<id>",
-			},
-			operations.LatestDeployments{
-				ID:        "<id>",
-				CreatedAt: 2357.62,
-				CreatedIn: "<value>",
-				Creator: &operations.UpdateProjectDataCacheProjectsCreator{
-					Email:    "Garret.Ferry81@gmail.com",
-					UID:      "<id>",
-					Username: "Vivianne.Gutkowski",
-				},
-				DeploymentHostname:     "<value>",
-				Name:                   "<value>",
-				Plan:                   operations.UpdateProjectDataCacheProjectsPlanPro,
-				PreviewCommentsEnabled: types.Bool(false),
-				Private:                true,
-				ReadyState:             operations.UpdateProjectDataCacheProjectsReadyStateCanceled,
-				Type:                   operations.UpdateProjectDataCacheProjectsTypeLambdas,
-				URL:                    "https://astonishing-cinema.net/",
+				ReadyState:             operations.UpdateProjectDataCacheReadyStateCanceled,
+				Type:                   operations.UpdateProjectDataCacheTypeLambdasLambdas,
+				URL:                    "https://well-worn-handful.biz/",
 				UserID:                 "<id>",
 			},
 		},
 		Name:        "<value>",
-		NodeVersion: operations.UpdateProjectDataCacheNodeVersionTenDotX,
+		NodeVersion: operations.UpdateProjectDataCacheNodeVersionTwentyTwoDotX,
 		ResourceConfig: operations.UpdateProjectDataCacheResourceConfig{
 			FunctionDefaultRegions: []string{},
 		},
-		DefaultResourceConfig: operations.DefaultResourceConfig{
+		DefaultResourceConfig: operations.UpdateProjectDataCacheDefaultResourceConfig{
 			FunctionDefaultRegions: []string{},
 		},
-		Targets: map[string]*operations.Targets{
-			"key": &operations.Targets{
+		Targets: map[string]*operations.UpdateProjectDataCacheTargets{
+			"key": &operations.UpdateProjectDataCacheTargets{
 				ID:        "<id>",
-				CreatedAt: 1048.68,
+				CreatedAt: 5941.68,
 				CreatedIn: "<value>",
 				Creator: &operations.UpdateProjectDataCacheCreator{
-					Email:    "Lillie17@gmail.com",
+					Email:    "Fay_Herman21@yahoo.com",
 					UID:      "<id>",
-					Username: "Herminia_Schowalter50",
+					Username: "Anna.Barrows31",
 				},
 				DeploymentHostname:     "<value>",
 				Name:                   "<value>",
-				Plan:                   operations.UpdateProjectDataCachePlanEnterprise,
+				Plan:                   operations.UpdateProjectDataCachePlanPro,
 				PreviewCommentsEnabled: types.Bool(false),
 				Private:                false,
-				ReadyState:             operations.UpdateProjectDataCacheReadyStateBuilding,
-				Type:                   operations.UpdateProjectDataCacheProjectsResponseTypeLambdas,
-				URL:                    "https://quintessential-bidet.com/",
+				ReadyState:             operations.UpdateProjectDataCacheReadyStateReady,
+				Type:                   operations.UpdateProjectDataCacheTypeLambdasLambdas,
+				URL:                    "https://scaly-epic.com",
 				UserID:                 "<id>",
 			},
 		},

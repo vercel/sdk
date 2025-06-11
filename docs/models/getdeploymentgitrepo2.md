@@ -14,8 +14,8 @@ let value: GetDeploymentGitRepo2 = {
   path: "/etc/defaults",
   defaultBranch: "<value>",
   name: "<value>",
-  private: false,
-  ownerType: "team",
+  private: true,
+  ownerType: "user",
 };
 ```
 

@@ -49,18 +49,18 @@ func (o *GetProjectEnvRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetProjectEnvTargetProjectsResponse2 string
+type GetProjectEnvTargetEnum5 string
 
 const (
-	GetProjectEnvTargetProjectsResponse2Production  GetProjectEnvTargetProjectsResponse2 = "production"
-	GetProjectEnvTargetProjectsResponse2Preview     GetProjectEnvTargetProjectsResponse2 = "preview"
-	GetProjectEnvTargetProjectsResponse2Development GetProjectEnvTargetProjectsResponse2 = "development"
+	GetProjectEnvTargetEnum5Production  GetProjectEnvTargetEnum5 = "production"
+	GetProjectEnvTargetEnum5Preview     GetProjectEnvTargetEnum5 = "preview"
+	GetProjectEnvTargetEnum5Development GetProjectEnvTargetEnum5 = "development"
 )
 
-func (e GetProjectEnvTargetProjectsResponse2) ToPointer() *GetProjectEnvTargetProjectsResponse2 {
+func (e GetProjectEnvTargetEnum5) ToPointer() *GetProjectEnvTargetEnum5 {
 	return &e
 }
-func (e *GetProjectEnvTargetProjectsResponse2) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTargetEnum5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -71,90 +71,90 @@ func (e *GetProjectEnvTargetProjectsResponse2) UnmarshalJSON(data []byte) error 
 	case "preview":
 		fallthrough
 	case "development":
-		*e = GetProjectEnvTargetProjectsResponse2(v)
+		*e = GetProjectEnvTargetEnum5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvTargetProjectsResponse2: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTargetEnum5: %v", v)
 	}
 }
 
-type GetProjectEnvResponseBodyProjectsResponseTargetType string
+type GetProjectEnvTargetUnion3Type string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponseTargetTypeArrayOfStr                           GetProjectEnvResponseBodyProjectsResponseTargetType = "arrayOfStr"
-	GetProjectEnvResponseBodyProjectsResponseTargetTypeGetProjectEnvTargetProjectsResponse2 GetProjectEnvResponseBodyProjectsResponseTargetType = "getProjectEnv_target_projects_response_2"
+	GetProjectEnvTargetUnion3TypeArrayOfStr               GetProjectEnvTargetUnion3Type = "arrayOfStr"
+	GetProjectEnvTargetUnion3TypeGetProjectEnvTargetEnum5 GetProjectEnvTargetUnion3Type = "getProjectEnv_target_enum_5"
 )
 
-type GetProjectEnvResponseBodyProjectsResponseTarget struct {
-	ArrayOfStr                           []string
-	GetProjectEnvTargetProjectsResponse2 *GetProjectEnvTargetProjectsResponse2
+type GetProjectEnvTargetUnion3 struct {
+	ArrayOfStr               []string                  `queryParam:"inline"`
+	GetProjectEnvTargetEnum5 *GetProjectEnvTargetEnum5 `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyProjectsResponseTargetType
+	Type GetProjectEnvTargetUnion3Type
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseTargetArrayOfStr(arrayOfStr []string) GetProjectEnvResponseBodyProjectsResponseTarget {
-	typ := GetProjectEnvResponseBodyProjectsResponseTargetTypeArrayOfStr
+func CreateGetProjectEnvTargetUnion3ArrayOfStr(arrayOfStr []string) GetProjectEnvTargetUnion3 {
+	typ := GetProjectEnvTargetUnion3TypeArrayOfStr
 
-	return GetProjectEnvResponseBodyProjectsResponseTarget{
+	return GetProjectEnvTargetUnion3{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseTargetGetProjectEnvTargetProjectsResponse2(getProjectEnvTargetProjectsResponse2 GetProjectEnvTargetProjectsResponse2) GetProjectEnvResponseBodyProjectsResponseTarget {
-	typ := GetProjectEnvResponseBodyProjectsResponseTargetTypeGetProjectEnvTargetProjectsResponse2
+func CreateGetProjectEnvTargetUnion3GetProjectEnvTargetEnum5(getProjectEnvTargetEnum5 GetProjectEnvTargetEnum5) GetProjectEnvTargetUnion3 {
+	typ := GetProjectEnvTargetUnion3TypeGetProjectEnvTargetEnum5
 
-	return GetProjectEnvResponseBodyProjectsResponseTarget{
-		GetProjectEnvTargetProjectsResponse2: &getProjectEnvTargetProjectsResponse2,
-		Type:                                 typ,
+	return GetProjectEnvTargetUnion3{
+		GetProjectEnvTargetEnum5: &getProjectEnvTargetEnum5,
+		Type:                     typ,
 	}
 }
 
-func (u *GetProjectEnvResponseBodyProjectsResponseTarget) UnmarshalJSON(data []byte) error {
+func (u *GetProjectEnvTargetUnion3) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = GetProjectEnvResponseBodyProjectsResponseTargetTypeArrayOfStr
+		u.Type = GetProjectEnvTargetUnion3TypeArrayOfStr
 		return nil
 	}
 
-	var getProjectEnvTargetProjectsResponse2 GetProjectEnvTargetProjectsResponse2 = GetProjectEnvTargetProjectsResponse2("")
-	if err := utils.UnmarshalJSON(data, &getProjectEnvTargetProjectsResponse2, "", true, true); err == nil {
-		u.GetProjectEnvTargetProjectsResponse2 = &getProjectEnvTargetProjectsResponse2
-		u.Type = GetProjectEnvResponseBodyProjectsResponseTargetTypeGetProjectEnvTargetProjectsResponse2
+	var getProjectEnvTargetEnum5 GetProjectEnvTargetEnum5 = GetProjectEnvTargetEnum5("")
+	if err := utils.UnmarshalJSON(data, &getProjectEnvTargetEnum5, "", true, true); err == nil {
+		u.GetProjectEnvTargetEnum5 = &getProjectEnvTargetEnum5
+		u.Type = GetProjectEnvTargetUnion3TypeGetProjectEnvTargetEnum5
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyProjectsResponseTarget", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvTargetUnion3", string(data))
 }
 
-func (u GetProjectEnvResponseBodyProjectsResponseTarget) MarshalJSON() ([]byte, error) {
+func (u GetProjectEnvTargetUnion3) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.GetProjectEnvTargetProjectsResponse2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvTargetProjectsResponse2, "", true)
+	if u.GetProjectEnvTargetEnum5 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvTargetEnum5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyProjectsResponseTarget: all fields are null")
+	return nil, errors.New("could not marshal union type GetProjectEnvTargetUnion3: all fields are null")
 }
 
-type GetProjectEnvResponseBodyProjectsResponseType string
+type GetProjectEnvType3 string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponseTypeSystem    GetProjectEnvResponseBodyProjectsResponseType = "system"
-	GetProjectEnvResponseBodyProjectsResponseTypeEncrypted GetProjectEnvResponseBodyProjectsResponseType = "encrypted"
-	GetProjectEnvResponseBodyProjectsResponseTypePlain     GetProjectEnvResponseBodyProjectsResponseType = "plain"
-	GetProjectEnvResponseBodyProjectsResponseTypeSensitive GetProjectEnvResponseBodyProjectsResponseType = "sensitive"
-	GetProjectEnvResponseBodyProjectsResponseTypeSecret    GetProjectEnvResponseBodyProjectsResponseType = "secret"
+	GetProjectEnvType3System    GetProjectEnvType3 = "system"
+	GetProjectEnvType3Encrypted GetProjectEnvType3 = "encrypted"
+	GetProjectEnvType3Plain     GetProjectEnvType3 = "plain"
+	GetProjectEnvType3Sensitive GetProjectEnvType3 = "sensitive"
+	GetProjectEnvType3Secret    GetProjectEnvType3 = "secret"
 )
 
-func (e GetProjectEnvResponseBodyProjectsResponseType) ToPointer() *GetProjectEnvResponseBodyProjectsResponseType {
+func (e GetProjectEnvType3) ToPointer() *GetProjectEnvType3 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyProjectsResponseType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvType3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -169,1054 +169,1054 @@ func (e *GetProjectEnvResponseBodyProjectsResponseType) UnmarshalJSON(data []byt
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = GetProjectEnvResponseBodyProjectsResponseType(v)
+		*e = GetProjectEnvType3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyProjectsResponseType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvType3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type string
+type GetProjectEnvTypeFlagsConnectionString3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315TypeFlagsConnectionString GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type = "flags-connection-string"
+	GetProjectEnvTypeFlagsConnectionString3FlagsConnectionString GetProjectEnvTypeFlagsConnectionString3 = "flags-connection-string"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type {
+func (e GetProjectEnvTypeFlagsConnectionString3) ToPointer() *GetProjectEnvTypeFlagsConnectionString3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsConnectionString3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-connection-string":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type(v)
+		*e = GetProjectEnvTypeFlagsConnectionString3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsConnectionString3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse15 struct {
-	Type      GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type `json:"type"`
-	ProjectID string                                                                        `json:"projectId"`
+type GetProjectEnvContentHintFlagsConnectionString3 struct {
+	Type      GetProjectEnvTypeFlagsConnectionString3 `json:"type"`
+	ProjectID string                                  `json:"projectId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse15) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type {
+func (o *GetProjectEnvContentHintFlagsConnectionString3) GetType() GetProjectEnvTypeFlagsConnectionString3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type("")
+		return GetProjectEnvTypeFlagsConnectionString3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse15) GetProjectID() string {
+func (o *GetProjectEnvContentHintFlagsConnectionString3) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type string
+type GetProjectEnvTypeIntegrationStoreSecret3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314TypeIntegrationStoreSecret GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type = "integration-store-secret"
+	GetProjectEnvTypeIntegrationStoreSecret3IntegrationStoreSecret GetProjectEnvTypeIntegrationStoreSecret3 = "integration-store-secret"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type {
+func (e GetProjectEnvTypeIntegrationStoreSecret3) ToPointer() *GetProjectEnvTypeIntegrationStoreSecret3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeIntegrationStoreSecret3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-store-secret":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type(v)
+		*e = GetProjectEnvTypeIntegrationStoreSecret3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeIntegrationStoreSecret3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse14 struct {
-	Type                       GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type `json:"type"`
-	StoreID                    string                                                                        `json:"storeId"`
-	IntegrationID              string                                                                        `json:"integrationId"`
-	IntegrationProductID       string                                                                        `json:"integrationProductId"`
-	IntegrationConfigurationID string                                                                        `json:"integrationConfigurationId"`
+type GetProjectEnvContentHintIntegrationStoreSecret3 struct {
+	Type                       GetProjectEnvTypeIntegrationStoreSecret3 `json:"type"`
+	StoreID                    string                                   `json:"storeId"`
+	IntegrationID              string                                   `json:"integrationId"`
+	IntegrationProductID       string                                   `json:"integrationProductId"`
+	IntegrationConfigurationID string                                   `json:"integrationConfigurationId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse14) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret3) GetType() GetProjectEnvTypeIntegrationStoreSecret3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type("")
+		return GetProjectEnvTypeIntegrationStoreSecret3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse14) GetStoreID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse14) GetIntegrationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret3) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse14) GetIntegrationProductID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret3) GetIntegrationProductID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationProductID
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse14) GetIntegrationConfigurationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret3) GetIntegrationConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationConfigurationID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type string
+type GetProjectEnvTypePostgresURLNoSsl3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313TypePostgresURLNoSsl GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type = "postgres-url-no-ssl"
+	GetProjectEnvTypePostgresURLNoSsl3PostgresURLNoSsl GetProjectEnvTypePostgresURLNoSsl3 = "postgres-url-no-ssl"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type {
+func (e GetProjectEnvTypePostgresURLNoSsl3) ToPointer() *GetProjectEnvTypePostgresURLNoSsl3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNoSsl3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-no-ssl":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type(v)
+		*e = GetProjectEnvTypePostgresURLNoSsl3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNoSsl3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse13 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNoSsl3 struct {
+	Type    GetProjectEnvTypePostgresURLNoSsl3 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse13) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl3) GetType() GetProjectEnvTypePostgresURLNoSsl3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type("")
+		return GetProjectEnvTypePostgresURLNoSsl3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse13) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type string
+type GetProjectEnvTypePostgresDatabase3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312TypePostgresDatabase GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type = "postgres-database"
+	GetProjectEnvTypePostgresDatabase3PostgresDatabase GetProjectEnvTypePostgresDatabase3 = "postgres-database"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type {
+func (e GetProjectEnvTypePostgresDatabase3) ToPointer() *GetProjectEnvTypePostgresDatabase3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresDatabase3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-database":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type(v)
+		*e = GetProjectEnvTypePostgresDatabase3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresDatabase3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse12 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresDatabase3 struct {
+	Type    GetProjectEnvTypePostgresDatabase3 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse12) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type {
+func (o *GetProjectEnvContentHintPostgresDatabase3) GetType() GetProjectEnvTypePostgresDatabase3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type("")
+		return GetProjectEnvTypePostgresDatabase3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse12) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresDatabase3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type string
+type GetProjectEnvTypePostgresPassword3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311TypePostgresPassword GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type = "postgres-password"
+	GetProjectEnvTypePostgresPassword3PostgresPassword GetProjectEnvTypePostgresPassword3 = "postgres-password"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type {
+func (e GetProjectEnvTypePostgresPassword3) ToPointer() *GetProjectEnvTypePostgresPassword3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPassword3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-password":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type(v)
+		*e = GetProjectEnvTypePostgresPassword3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPassword3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse11 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresPassword3 struct {
+	Type    GetProjectEnvTypePostgresPassword3 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse11) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type {
+func (o *GetProjectEnvContentHintPostgresPassword3) GetType() GetProjectEnvTypePostgresPassword3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type("")
+		return GetProjectEnvTypePostgresPassword3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse11) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPassword3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type string
+type GetProjectEnvTypePostgresHost3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310TypePostgresHost GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type = "postgres-host"
+	GetProjectEnvTypePostgresHost3PostgresHost GetProjectEnvTypePostgresHost3 = "postgres-host"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type {
+func (e GetProjectEnvTypePostgresHost3) ToPointer() *GetProjectEnvTypePostgresHost3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresHost3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-host":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type(v)
+		*e = GetProjectEnvTypePostgresHost3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresHost3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse10 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresHost3 struct {
+	Type    GetProjectEnvTypePostgresHost3 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse10) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type {
+func (o *GetProjectEnvContentHintPostgresHost3) GetType() GetProjectEnvTypePostgresHost3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type("")
+		return GetProjectEnvTypePostgresHost3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse10) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresHost3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type string
+type GetProjectEnvTypePostgresUser3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39TypePostgresUser GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type = "postgres-user"
+	GetProjectEnvTypePostgresUser3PostgresUser GetProjectEnvTypePostgresUser3 = "postgres-user"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type {
+func (e GetProjectEnvTypePostgresUser3) ToPointer() *GetProjectEnvTypePostgresUser3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresUser3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-user":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type(v)
+		*e = GetProjectEnvTypePostgresUser3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresUser3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse9 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresUser3 struct {
+	Type    GetProjectEnvTypePostgresUser3 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse9) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type {
+func (o *GetProjectEnvContentHintPostgresUser3) GetType() GetProjectEnvTypePostgresUser3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type("")
+		return GetProjectEnvTypePostgresUser3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse9) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresUser3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type string
+type GetProjectEnvTypePostgresPrismaURL3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38TypePostgresPrismaURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type = "postgres-prisma-url"
+	GetProjectEnvTypePostgresPrismaURL3PostgresPrismaURL GetProjectEnvTypePostgresPrismaURL3 = "postgres-prisma-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type {
+func (e GetProjectEnvTypePostgresPrismaURL3) ToPointer() *GetProjectEnvTypePostgresPrismaURL3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPrismaURL3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-prisma-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type(v)
+		*e = GetProjectEnvTypePostgresPrismaURL3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPrismaURL3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse8 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresPrismaURL3 struct {
+	Type    GetProjectEnvTypePostgresPrismaURL3 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse8) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type {
+func (o *GetProjectEnvContentHintPostgresPrismaURL3) GetType() GetProjectEnvTypePostgresPrismaURL3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type("")
+		return GetProjectEnvTypePostgresPrismaURL3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse8) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPrismaURL3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type string
+type GetProjectEnvTypePostgresURLNonPooling3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37TypePostgresURLNonPooling GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type = "postgres-url-non-pooling"
+	GetProjectEnvTypePostgresURLNonPooling3PostgresURLNonPooling GetProjectEnvTypePostgresURLNonPooling3 = "postgres-url-non-pooling"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type {
+func (e GetProjectEnvTypePostgresURLNonPooling3) ToPointer() *GetProjectEnvTypePostgresURLNonPooling3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNonPooling3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-non-pooling":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type(v)
+		*e = GetProjectEnvTypePostgresURLNonPooling3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNonPooling3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse7 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNonPooling3 struct {
+	Type    GetProjectEnvTypePostgresURLNonPooling3 `json:"type"`
+	StoreID string                                  `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse7) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling3) GetType() GetProjectEnvTypePostgresURLNonPooling3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type("")
+		return GetProjectEnvTypePostgresURLNonPooling3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse7) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type string
+type GetProjectEnvTypePostgresURL3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36TypePostgresURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type = "postgres-url"
+	GetProjectEnvTypePostgresURL3PostgresURL GetProjectEnvTypePostgresURL3 = "postgres-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type {
+func (e GetProjectEnvTypePostgresURL3) ToPointer() *GetProjectEnvTypePostgresURL3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURL3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type(v)
+		*e = GetProjectEnvTypePostgresURL3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURL3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse6 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresURL3 struct {
+	Type    GetProjectEnvTypePostgresURL3 `json:"type"`
+	StoreID string                        `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse6) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type {
+func (o *GetProjectEnvContentHintPostgresURL3) GetType() GetProjectEnvTypePostgresURL3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type("")
+		return GetProjectEnvTypePostgresURL3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse6) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURL3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type string
+type GetProjectEnvTypeBlobReadWriteToken3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35TypeBlobReadWriteToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type = "blob-read-write-token"
+	GetProjectEnvTypeBlobReadWriteToken3BlobReadWriteToken GetProjectEnvTypeBlobReadWriteToken3 = "blob-read-write-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type {
+func (e GetProjectEnvTypeBlobReadWriteToken3) ToPointer() *GetProjectEnvTypeBlobReadWriteToken3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeBlobReadWriteToken3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "blob-read-write-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type(v)
+		*e = GetProjectEnvTypeBlobReadWriteToken3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeBlobReadWriteToken3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse5 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintBlobReadWriteToken3 struct {
+	Type    GetProjectEnvTypeBlobReadWriteToken3 `json:"type"`
+	StoreID string                               `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse5) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type {
+func (o *GetProjectEnvContentHintBlobReadWriteToken3) GetType() GetProjectEnvTypeBlobReadWriteToken3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type("")
+		return GetProjectEnvTypeBlobReadWriteToken3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse5) GetStoreID() string {
+func (o *GetProjectEnvContentHintBlobReadWriteToken3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type string
+type GetProjectEnvTypeRedisRestAPIReadOnlyToken3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type = "redis-rest-api-read-only-token"
+	GetProjectEnvTypeRedisRestAPIReadOnlyToken3RedisRestAPIReadOnlyToken GetProjectEnvTypeRedisRestAPIReadOnlyToken3 = "redis-rest-api-read-only-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type {
+func (e GetProjectEnvTypeRedisRestAPIReadOnlyToken3) ToPointer() *GetProjectEnvTypeRedisRestAPIReadOnlyToken3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIReadOnlyToken3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-read-only-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIReadOnlyToken3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIReadOnlyToken3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse4 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 struct {
+	Type    GetProjectEnvTypeRedisRestAPIReadOnlyToken3 `json:"type"`
+	StoreID string                                      `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse4) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetType() GetProjectEnvTypeRedisRestAPIReadOnlyToken3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type("")
+		return GetProjectEnvTypeRedisRestAPIReadOnlyToken3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse4) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type string
+type GetProjectEnvTypeRedisRestAPIToken3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33TypeRedisRestAPIToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type = "redis-rest-api-token"
+	GetProjectEnvTypeRedisRestAPIToken3RedisRestAPIToken GetProjectEnvTypeRedisRestAPIToken3 = "redis-rest-api-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type {
+func (e GetProjectEnvTypeRedisRestAPIToken3) ToPointer() *GetProjectEnvTypeRedisRestAPIToken3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIToken3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIToken3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIToken3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse3 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIToken3 struct {
+	Type    GetProjectEnvTypeRedisRestAPIToken3 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse3) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type {
+func (o *GetProjectEnvContentHintRedisRestAPIToken3) GetType() GetProjectEnvTypeRedisRestAPIToken3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type("")
+		return GetProjectEnvTypeRedisRestAPIToken3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse3) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIToken3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type string
+type GetProjectEnvTypeRedisRestAPIURL3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32TypeRedisRestAPIURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type = "redis-rest-api-url"
+	GetProjectEnvTypeRedisRestAPIURL3RedisRestAPIURL GetProjectEnvTypeRedisRestAPIURL3 = "redis-rest-api-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type {
+func (e GetProjectEnvTypeRedisRestAPIURL3) ToPointer() *GetProjectEnvTypeRedisRestAPIURL3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIURL3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIURL3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIURL3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse2 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIURL3 struct {
+	Type    GetProjectEnvTypeRedisRestAPIURL3 `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse2) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type {
+func (o *GetProjectEnvContentHintRedisRestAPIURL3) GetType() GetProjectEnvTypeRedisRestAPIURL3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type("")
+		return GetProjectEnvTypeRedisRestAPIURL3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse2) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIURL3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type string
+type GetProjectEnvTypeRedisURL3 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3TypeRedisURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type = "redis-url"
+	GetProjectEnvTypeRedisURL3RedisURL GetProjectEnvTypeRedisURL3 = "redis-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type {
+func (e GetProjectEnvTypeRedisURL3) ToPointer() *GetProjectEnvTypeRedisURL3 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisURL3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type(v)
+		*e = GetProjectEnvTypeRedisURL3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisURL3: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse1 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type `json:"type"`
-	StoreID string                                                                      `json:"storeId"`
+type GetProjectEnvContentHintRedisURL3 struct {
+	Type    GetProjectEnvTypeRedisURL3 `json:"type"`
+	StoreID string                     `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse1) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type {
+func (o *GetProjectEnvContentHintRedisURL3) GetType() GetProjectEnvTypeRedisURL3 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type("")
+		return GetProjectEnvTypeRedisURL3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjectsResponse1) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisURL3) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvResponseBodyProjectsResponseContentHintType string
+type GetProjectEnvContentHintUnion3Type string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse1  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_1"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse2  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_2"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse3  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_3"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse4  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_4"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse5  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_5"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse6  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_6"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse7  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_7"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse8  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_8"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse9  GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_9"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse10 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_10"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse11 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_11"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse12 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_12"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse13 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_13"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse14 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_14"
-	GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse15 GetProjectEnvResponseBodyProjectsResponseContentHintType = "getProjectEnv_contentHint_projects_response_15"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3                  GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisURL_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3           GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIURL_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3         GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIToken_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3        GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_BlobReadWriteToken_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3               GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURL_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3     GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURLNonPooling_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3         GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresPrismaURL_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3              GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresUser_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3              GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresHost_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresPassword_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresDatabase_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURLNoSsl_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3    GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_IntegrationStoreSecret_3"
+	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3     GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_FlagsConnectionString_3"
 )
 
-type GetProjectEnvResponseBodyProjectsResponseContentHint struct {
-	GetProjectEnvContentHintProjectsResponse1  *GetProjectEnvContentHintProjectsResponse1
-	GetProjectEnvContentHintProjectsResponse2  *GetProjectEnvContentHintProjectsResponse2
-	GetProjectEnvContentHintProjectsResponse3  *GetProjectEnvContentHintProjectsResponse3
-	GetProjectEnvContentHintProjectsResponse4  *GetProjectEnvContentHintProjectsResponse4
-	GetProjectEnvContentHintProjectsResponse5  *GetProjectEnvContentHintProjectsResponse5
-	GetProjectEnvContentHintProjectsResponse6  *GetProjectEnvContentHintProjectsResponse6
-	GetProjectEnvContentHintProjectsResponse7  *GetProjectEnvContentHintProjectsResponse7
-	GetProjectEnvContentHintProjectsResponse8  *GetProjectEnvContentHintProjectsResponse8
-	GetProjectEnvContentHintProjectsResponse9  *GetProjectEnvContentHintProjectsResponse9
-	GetProjectEnvContentHintProjectsResponse10 *GetProjectEnvContentHintProjectsResponse10
-	GetProjectEnvContentHintProjectsResponse11 *GetProjectEnvContentHintProjectsResponse11
-	GetProjectEnvContentHintProjectsResponse12 *GetProjectEnvContentHintProjectsResponse12
-	GetProjectEnvContentHintProjectsResponse13 *GetProjectEnvContentHintProjectsResponse13
-	GetProjectEnvContentHintProjectsResponse14 *GetProjectEnvContentHintProjectsResponse14
-	GetProjectEnvContentHintProjectsResponse15 *GetProjectEnvContentHintProjectsResponse15
+type GetProjectEnvContentHintUnion3 struct {
+	GetProjectEnvContentHintRedisURL3                  *GetProjectEnvContentHintRedisURL3                  `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIURL3           *GetProjectEnvContentHintRedisRestAPIURL3           `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIToken3         *GetProjectEnvContentHintRedisRestAPIToken3         `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 *GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 `queryParam:"inline"`
+	GetProjectEnvContentHintBlobReadWriteToken3        *GetProjectEnvContentHintBlobReadWriteToken3        `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURL3               *GetProjectEnvContentHintPostgresURL3               `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNonPooling3     *GetProjectEnvContentHintPostgresURLNonPooling3     `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPrismaURL3         *GetProjectEnvContentHintPostgresPrismaURL3         `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresUser3              *GetProjectEnvContentHintPostgresUser3              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresHost3              *GetProjectEnvContentHintPostgresHost3              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPassword3          *GetProjectEnvContentHintPostgresPassword3          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresDatabase3          *GetProjectEnvContentHintPostgresDatabase3          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNoSsl3          *GetProjectEnvContentHintPostgresURLNoSsl3          `queryParam:"inline"`
+	GetProjectEnvContentHintIntegrationStoreSecret3    *GetProjectEnvContentHintIntegrationStoreSecret3    `queryParam:"inline"`
+	GetProjectEnvContentHintFlagsConnectionString3     *GetProjectEnvContentHintFlagsConnectionString3     `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyProjectsResponseContentHintType
+	Type GetProjectEnvContentHintUnion3Type
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse1(getProjectEnvContentHintProjectsResponse1 GetProjectEnvContentHintProjectsResponse1) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse1
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisURL3(getProjectEnvContentHintRedisURL3 GetProjectEnvContentHintRedisURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse1: &getProjectEnvContentHintProjectsResponse1,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintRedisURL3: &getProjectEnvContentHintRedisURL3,
+		Type:                              typ,
+	}
+}
+
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIURL3(getProjectEnvContentHintRedisRestAPIURL3 GetProjectEnvContentHintRedisRestAPIURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3
+
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintRedisRestAPIURL3: &getProjectEnvContentHintRedisRestAPIURL3,
+		Type:                                     typ,
+	}
+}
+
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIToken3(getProjectEnvContentHintRedisRestAPIToken3 GetProjectEnvContentHintRedisRestAPIToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3
+
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintRedisRestAPIToken3: &getProjectEnvContentHintRedisRestAPIToken3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse2(getProjectEnvContentHintProjectsResponse2 GetProjectEnvContentHintProjectsResponse2) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse2
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIReadOnlyToken3(getProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse2: &getProjectEnvContentHintProjectsResponse2,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken3: &getProjectEnvContentHintRedisRestAPIReadOnlyToken3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse3(getProjectEnvContentHintProjectsResponse3 GetProjectEnvContentHintProjectsResponse3) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse3
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintBlobReadWriteToken3(getProjectEnvContentHintBlobReadWriteToken3 GetProjectEnvContentHintBlobReadWriteToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse3: &getProjectEnvContentHintProjectsResponse3,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintBlobReadWriteToken3: &getProjectEnvContentHintBlobReadWriteToken3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse4(getProjectEnvContentHintProjectsResponse4 GetProjectEnvContentHintProjectsResponse4) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse4
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURL3(getProjectEnvContentHintPostgresURL3 GetProjectEnvContentHintPostgresURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse4: &getProjectEnvContentHintProjectsResponse4,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresURL3: &getProjectEnvContentHintPostgresURL3,
+		Type:                                 typ,
+	}
+}
+
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURLNonPooling3(getProjectEnvContentHintPostgresURLNonPooling3 GetProjectEnvContentHintPostgresURLNonPooling3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3
+
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresURLNonPooling3: &getProjectEnvContentHintPostgresURLNonPooling3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse5(getProjectEnvContentHintProjectsResponse5 GetProjectEnvContentHintProjectsResponse5) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse5
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresPrismaURL3(getProjectEnvContentHintPostgresPrismaURL3 GetProjectEnvContentHintPostgresPrismaURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse5: &getProjectEnvContentHintProjectsResponse5,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresPrismaURL3: &getProjectEnvContentHintPostgresPrismaURL3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse6(getProjectEnvContentHintProjectsResponse6 GetProjectEnvContentHintProjectsResponse6) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse6
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresUser3(getProjectEnvContentHintPostgresUser3 GetProjectEnvContentHintPostgresUser3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse6: &getProjectEnvContentHintProjectsResponse6,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresUser3: &getProjectEnvContentHintPostgresUser3,
+		Type:                                  typ,
+	}
+}
+
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresHost3(getProjectEnvContentHintPostgresHost3 GetProjectEnvContentHintPostgresHost3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3
+
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresHost3: &getProjectEnvContentHintPostgresHost3,
+		Type:                                  typ,
+	}
+}
+
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresPassword3(getProjectEnvContentHintPostgresPassword3 GetProjectEnvContentHintPostgresPassword3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3
+
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresPassword3: &getProjectEnvContentHintPostgresPassword3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse7(getProjectEnvContentHintProjectsResponse7 GetProjectEnvContentHintProjectsResponse7) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse7
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresDatabase3(getProjectEnvContentHintPostgresDatabase3 GetProjectEnvContentHintPostgresDatabase3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse7: &getProjectEnvContentHintProjectsResponse7,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresDatabase3: &getProjectEnvContentHintPostgresDatabase3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse8(getProjectEnvContentHintProjectsResponse8 GetProjectEnvContentHintProjectsResponse8) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse8
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURLNoSsl3(getProjectEnvContentHintPostgresURLNoSsl3 GetProjectEnvContentHintPostgresURLNoSsl3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse8: &getProjectEnvContentHintProjectsResponse8,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintPostgresURLNoSsl3: &getProjectEnvContentHintPostgresURLNoSsl3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse9(getProjectEnvContentHintProjectsResponse9 GetProjectEnvContentHintProjectsResponse9) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse9
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintIntegrationStoreSecret3(getProjectEnvContentHintIntegrationStoreSecret3 GetProjectEnvContentHintIntegrationStoreSecret3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse9: &getProjectEnvContentHintProjectsResponse9,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintIntegrationStoreSecret3: &getProjectEnvContentHintIntegrationStoreSecret3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse10(getProjectEnvContentHintProjectsResponse10 GetProjectEnvContentHintProjectsResponse10) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse10
+func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintFlagsConnectionString3(getProjectEnvContentHintFlagsConnectionString3 GetProjectEnvContentHintFlagsConnectionString3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse10: &getProjectEnvContentHintProjectsResponse10,
+	return GetProjectEnvContentHintUnion3{
+		GetProjectEnvContentHintFlagsConnectionString3: &getProjectEnvContentHintFlagsConnectionString3,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse11(getProjectEnvContentHintProjectsResponse11 GetProjectEnvContentHintProjectsResponse11) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse11
+func (u *GetProjectEnvContentHintUnion3) UnmarshalJSON(data []byte) error {
 
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse11: &getProjectEnvContentHintProjectsResponse11,
-		Type: typ,
+	var getProjectEnvContentHintPostgresURLNonPooling3 GetProjectEnvContentHintPostgresURLNonPooling3 = GetProjectEnvContentHintPostgresURLNonPooling3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNonPooling3 = &getProjectEnvContentHintPostgresURLNonPooling3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3
+		return nil
 	}
+
+	var getProjectEnvContentHintPostgresPassword3 GetProjectEnvContentHintPostgresPassword3 = GetProjectEnvContentHintPostgresPassword3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPassword3 = &getProjectEnvContentHintPostgresPassword3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3
+		return nil
+	}
+
+	var getProjectEnvContentHintRedisRestAPIToken3 GetProjectEnvContentHintRedisRestAPIToken3 = GetProjectEnvContentHintRedisRestAPIToken3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIToken3 = &getProjectEnvContentHintRedisRestAPIToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3
+		return nil
+	}
+
+	var getProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		return nil
+	}
+
+	var getProjectEnvContentHintBlobReadWriteToken3 GetProjectEnvContentHintBlobReadWriteToken3 = GetProjectEnvContentHintBlobReadWriteToken3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintBlobReadWriteToken3 = &getProjectEnvContentHintBlobReadWriteToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresURL3 GetProjectEnvContentHintPostgresURL3 = GetProjectEnvContentHintPostgresURL3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURL3 = &getProjectEnvContentHintPostgresURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3
+		return nil
+	}
+
+	var getProjectEnvContentHintRedisRestAPIURL3 GetProjectEnvContentHintRedisRestAPIURL3 = GetProjectEnvContentHintRedisRestAPIURL3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIURL3 = &getProjectEnvContentHintRedisRestAPIURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresUser3 GetProjectEnvContentHintPostgresUser3 = GetProjectEnvContentHintPostgresUser3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresUser3 = &getProjectEnvContentHintPostgresUser3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3
+		return nil
+	}
+
+	var getProjectEnvContentHintRedisURL3 GetProjectEnvContentHintRedisURL3 = GetProjectEnvContentHintRedisURL3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisURL3 = &getProjectEnvContentHintRedisURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresHost3 GetProjectEnvContentHintPostgresHost3 = GetProjectEnvContentHintPostgresHost3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresHost3 = &getProjectEnvContentHintPostgresHost3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresPrismaURL3 GetProjectEnvContentHintPostgresPrismaURL3 = GetProjectEnvContentHintPostgresPrismaURL3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPrismaURL3 = &getProjectEnvContentHintPostgresPrismaURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresDatabase3 GetProjectEnvContentHintPostgresDatabase3 = GetProjectEnvContentHintPostgresDatabase3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresDatabase3 = &getProjectEnvContentHintPostgresDatabase3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3
+		return nil
+	}
+
+	var getProjectEnvContentHintPostgresURLNoSsl3 GetProjectEnvContentHintPostgresURLNoSsl3 = GetProjectEnvContentHintPostgresURLNoSsl3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNoSsl3 = &getProjectEnvContentHintPostgresURLNoSsl3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3
+		return nil
+	}
+
+	var getProjectEnvContentHintFlagsConnectionString3 GetProjectEnvContentHintFlagsConnectionString3 = GetProjectEnvContentHintFlagsConnectionString3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintFlagsConnectionString3 = &getProjectEnvContentHintFlagsConnectionString3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3
+		return nil
+	}
+
+	var getProjectEnvContentHintIntegrationStoreSecret3 GetProjectEnvContentHintIntegrationStoreSecret3 = GetProjectEnvContentHintIntegrationStoreSecret3{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret3, "", true, true); err == nil {
+		u.GetProjectEnvContentHintIntegrationStoreSecret3 = &getProjectEnvContentHintIntegrationStoreSecret3
+		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvContentHintUnion3", string(data))
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse12(getProjectEnvContentHintProjectsResponse12 GetProjectEnvContentHintProjectsResponse12) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse12
-
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse12: &getProjectEnvContentHintProjectsResponse12,
-		Type: typ,
+func (u GetProjectEnvContentHintUnion3) MarshalJSON() ([]byte, error) {
+	if u.GetProjectEnvContentHintRedisURL3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisURL3, "", true)
 	}
+
+	if u.GetProjectEnvContentHintRedisRestAPIURL3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIURL3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintRedisRestAPIToken3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIToken3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintBlobReadWriteToken3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintBlobReadWriteToken3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresURL3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURL3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresURLNonPooling3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNonPooling3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresPrismaURL3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPrismaURL3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresUser3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresUser3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresHost3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresHost3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresPassword3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPassword3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresDatabase3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresDatabase3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintPostgresURLNoSsl3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNoSsl3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintIntegrationStoreSecret3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintIntegrationStoreSecret3, "", true)
+	}
+
+	if u.GetProjectEnvContentHintFlagsConnectionString3 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintFlagsConnectionString3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectEnvContentHintUnion3: all fields are null")
 }
 
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse13(getProjectEnvContentHintProjectsResponse13 GetProjectEnvContentHintProjectsResponse13) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse13
-
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse13: &getProjectEnvContentHintProjectsResponse13,
-		Type: typ,
-	}
-}
-
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse14(getProjectEnvContentHintProjectsResponse14 GetProjectEnvContentHintProjectsResponse14) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse14
-
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse14: &getProjectEnvContentHintProjectsResponse14,
-		Type: typ,
-	}
-}
-
-func CreateGetProjectEnvResponseBodyProjectsResponseContentHintGetProjectEnvContentHintProjectsResponse15(getProjectEnvContentHintProjectsResponse15 GetProjectEnvContentHintProjectsResponse15) GetProjectEnvResponseBodyProjectsResponseContentHint {
-	typ := GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse15
-
-	return GetProjectEnvResponseBodyProjectsResponseContentHint{
-		GetProjectEnvContentHintProjectsResponse15: &getProjectEnvContentHintProjectsResponse15,
-		Type: typ,
-	}
-}
-
-func (u *GetProjectEnvResponseBodyProjectsResponseContentHint) UnmarshalJSON(data []byte) error {
-
-	var getProjectEnvContentHintProjectsResponse7 GetProjectEnvContentHintProjectsResponse7 = GetProjectEnvContentHintProjectsResponse7{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse7, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse7 = &getProjectEnvContentHintProjectsResponse7
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse7
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse11 GetProjectEnvContentHintProjectsResponse11 = GetProjectEnvContentHintProjectsResponse11{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse11, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse11 = &getProjectEnvContentHintProjectsResponse11
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse11
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse3 GetProjectEnvContentHintProjectsResponse3 = GetProjectEnvContentHintProjectsResponse3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse3, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse3 = &getProjectEnvContentHintProjectsResponse3
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse3
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse4 GetProjectEnvContentHintProjectsResponse4 = GetProjectEnvContentHintProjectsResponse4{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse4, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse4 = &getProjectEnvContentHintProjectsResponse4
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse4
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse5 GetProjectEnvContentHintProjectsResponse5 = GetProjectEnvContentHintProjectsResponse5{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse5, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse5 = &getProjectEnvContentHintProjectsResponse5
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse5
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse6 GetProjectEnvContentHintProjectsResponse6 = GetProjectEnvContentHintProjectsResponse6{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse6, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse6 = &getProjectEnvContentHintProjectsResponse6
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse6
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse2 GetProjectEnvContentHintProjectsResponse2 = GetProjectEnvContentHintProjectsResponse2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse2, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse2 = &getProjectEnvContentHintProjectsResponse2
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse2
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse9 GetProjectEnvContentHintProjectsResponse9 = GetProjectEnvContentHintProjectsResponse9{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse9, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse9 = &getProjectEnvContentHintProjectsResponse9
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse9
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse1 GetProjectEnvContentHintProjectsResponse1 = GetProjectEnvContentHintProjectsResponse1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse1, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse1 = &getProjectEnvContentHintProjectsResponse1
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse1
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse10 GetProjectEnvContentHintProjectsResponse10 = GetProjectEnvContentHintProjectsResponse10{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse10, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse10 = &getProjectEnvContentHintProjectsResponse10
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse10
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse8 GetProjectEnvContentHintProjectsResponse8 = GetProjectEnvContentHintProjectsResponse8{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse8, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse8 = &getProjectEnvContentHintProjectsResponse8
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse8
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse12 GetProjectEnvContentHintProjectsResponse12 = GetProjectEnvContentHintProjectsResponse12{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse12, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse12 = &getProjectEnvContentHintProjectsResponse12
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse12
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse13 GetProjectEnvContentHintProjectsResponse13 = GetProjectEnvContentHintProjectsResponse13{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse13, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse13 = &getProjectEnvContentHintProjectsResponse13
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse13
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse15 GetProjectEnvContentHintProjectsResponse15 = GetProjectEnvContentHintProjectsResponse15{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse15, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse15 = &getProjectEnvContentHintProjectsResponse15
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse15
-		return nil
-	}
-
-	var getProjectEnvContentHintProjectsResponse14 GetProjectEnvContentHintProjectsResponse14 = GetProjectEnvContentHintProjectsResponse14{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjectsResponse14, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjectsResponse14 = &getProjectEnvContentHintProjectsResponse14
-		u.Type = GetProjectEnvResponseBodyProjectsResponseContentHintTypeGetProjectEnvContentHintProjectsResponse14
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyProjectsResponseContentHint", string(data))
-}
-
-func (u GetProjectEnvResponseBodyProjectsResponseContentHint) MarshalJSON() ([]byte, error) {
-	if u.GetProjectEnvContentHintProjectsResponse1 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse1, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse2, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse3 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse3, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse4 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse4, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse5 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse5, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse6 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse6, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse7 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse7, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse8 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse8, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse9 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse9, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse10 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse10, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse11 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse11, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse12 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse12, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse13 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse13, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse14 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse14, "", true)
-	}
-
-	if u.GetProjectEnvContentHintProjectsResponse15 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjectsResponse15, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyProjectsResponseContentHint: all fields are null")
-}
-
-type GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type string
+type GetProjectEnvTypeFlagsSecret3 string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3TypeFlagsSecret GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type = "flags-secret"
+	GetProjectEnvTypeFlagsSecret3FlagsSecret GetProjectEnvTypeFlagsSecret3 = "flags-secret"
 )
 
-func (e GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type) ToPointer() *GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type {
+func (e GetProjectEnvTypeFlagsSecret3) ToPointer() *GetProjectEnvTypeFlagsSecret3 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsSecret3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-secret":
-		*e = GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type(v)
+		*e = GetProjectEnvTypeFlagsSecret3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsSecret3: %v", v)
 	}
 }
 
-// GetProjectEnvResponseBodyProjectsResponseInternalContentHint - Similar to `contentHints`, but should not be exposed to the user.
-type GetProjectEnvResponseBodyProjectsResponseInternalContentHint struct {
-	Type GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type `json:"type"`
+// GetProjectEnvInternalContentHint3 - Similar to `contentHints`, but should not be exposed to the user.
+type GetProjectEnvInternalContentHint3 struct {
+	Type GetProjectEnvTypeFlagsSecret3 `json:"type"`
 	// Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
 	EncryptedValue string `json:"encryptedValue"`
 }
 
-func (o *GetProjectEnvResponseBodyProjectsResponseInternalContentHint) GetType() GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type {
+func (o *GetProjectEnvInternalContentHint3) GetType() GetProjectEnvTypeFlagsSecret3 {
 	if o == nil {
-		return GetProjectEnvResponseBodyProjectsResponse200ApplicationJSON3Type("")
+		return GetProjectEnvTypeFlagsSecret3("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvResponseBodyProjectsResponseInternalContentHint) GetEncryptedValue() string {
+func (o *GetProjectEnvInternalContentHint3) GetEncryptedValue() string {
 	if o == nil {
 		return ""
 	}
@@ -1224,39 +1224,39 @@ func (o *GetProjectEnvResponseBodyProjectsResponseInternalContentHint) GetEncryp
 }
 
 type GetProjectEnvResponseBody3 struct {
-	Target *GetProjectEnvResponseBodyProjectsResponseTarget `json:"target,omitempty"`
-	Type   GetProjectEnvResponseBodyProjectsResponseType    `json:"type"`
+	Target *GetProjectEnvTargetUnion3 `json:"target,omitempty"`
+	Type   GetProjectEnvType3         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                                               `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                                                 `json:"decrypted,omitempty"`
-	Value             string                                                `json:"value"`
-	ID                *string                                               `json:"id,omitempty"`
-	Key               string                                                `json:"key"`
-	ConfigurationID   *string                                               `json:"configurationId,omitempty"`
-	CreatedAt         *float64                                              `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                                              `json:"updatedAt,omitempty"`
-	CreatedBy         *string                                               `json:"createdBy,omitempty"`
-	UpdatedBy         *string                                               `json:"updatedBy,omitempty"`
-	GitBranch         *string                                               `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                                               `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                                               `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *GetProjectEnvResponseBodyProjectsResponseContentHint `json:"contentHint,omitempty"`
+	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                           `json:"decrypted,omitempty"`
+	Value             string                          `json:"value"`
+	ID                *string                         `json:"id,omitempty"`
+	Key               string                          `json:"key"`
+	ConfigurationID   *string                         `json:"configurationId,omitempty"`
+	CreatedAt         *float64                        `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                        `json:"updatedAt,omitempty"`
+	CreatedBy         *string                         `json:"createdBy,omitempty"`
+	UpdatedBy         *string                         `json:"updatedBy,omitempty"`
+	GitBranch         *string                         `json:"gitBranch,omitempty"`
+	EdgeConfigID      *string                         `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                         `json:"edgeConfigTokenId,omitempty"`
+	ContentHint       *GetProjectEnvContentHintUnion3 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *GetProjectEnvResponseBodyProjectsResponseInternalContentHint `json:"internalContentHint,omitempty"`
-	Comment              *string                                                       `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                                                      `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  *GetProjectEnvInternalContentHint3 `json:"internalContentHint,omitempty"`
+	Comment              *string                            `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                           `json:"customEnvironmentIds,omitempty"`
 }
 
-func (o *GetProjectEnvResponseBody3) GetTarget() *GetProjectEnvResponseBodyProjectsResponseTarget {
+func (o *GetProjectEnvResponseBody3) GetTarget() *GetProjectEnvTargetUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *GetProjectEnvResponseBody3) GetType() GetProjectEnvResponseBodyProjectsResponseType {
+func (o *GetProjectEnvResponseBody3) GetType() GetProjectEnvType3 {
 	if o == nil {
-		return GetProjectEnvResponseBodyProjectsResponseType("")
+		return GetProjectEnvType3("")
 	}
 	return o.Type
 }
@@ -1352,14 +1352,14 @@ func (o *GetProjectEnvResponseBody3) GetEdgeConfigTokenID() *string {
 	return o.EdgeConfigTokenID
 }
 
-func (o *GetProjectEnvResponseBody3) GetContentHint() *GetProjectEnvResponseBodyProjectsResponseContentHint {
+func (o *GetProjectEnvResponseBody3) GetContentHint() *GetProjectEnvContentHintUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.ContentHint
 }
 
-func (o *GetProjectEnvResponseBody3) GetInternalContentHint() *GetProjectEnvResponseBodyProjectsResponseInternalContentHint {
+func (o *GetProjectEnvResponseBody3) GetInternalContentHint() *GetProjectEnvInternalContentHint3 {
 	if o == nil {
 		return nil
 	}
@@ -1380,18 +1380,18 @@ func (o *GetProjectEnvResponseBody3) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
-type GetProjectEnvTargetProjects2 string
+type GetProjectEnvTargetEnum4 string
 
 const (
-	GetProjectEnvTargetProjects2Production  GetProjectEnvTargetProjects2 = "production"
-	GetProjectEnvTargetProjects2Preview     GetProjectEnvTargetProjects2 = "preview"
-	GetProjectEnvTargetProjects2Development GetProjectEnvTargetProjects2 = "development"
+	GetProjectEnvTargetEnum4Production  GetProjectEnvTargetEnum4 = "production"
+	GetProjectEnvTargetEnum4Preview     GetProjectEnvTargetEnum4 = "preview"
+	GetProjectEnvTargetEnum4Development GetProjectEnvTargetEnum4 = "development"
 )
 
-func (e GetProjectEnvTargetProjects2) ToPointer() *GetProjectEnvTargetProjects2 {
+func (e GetProjectEnvTargetEnum4) ToPointer() *GetProjectEnvTargetEnum4 {
 	return &e
 }
-func (e *GetProjectEnvTargetProjects2) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTargetEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1402,25 +1402,25 @@ func (e *GetProjectEnvTargetProjects2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = GetProjectEnvTargetProjects2(v)
+		*e = GetProjectEnvTargetEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvTargetProjects2: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTargetEnum4: %v", v)
 	}
 }
 
-type GetProjectEnvTargetProjects1 string
+type GetProjectEnvTargetEnum3 string
 
 const (
-	GetProjectEnvTargetProjects1Production  GetProjectEnvTargetProjects1 = "production"
-	GetProjectEnvTargetProjects1Preview     GetProjectEnvTargetProjects1 = "preview"
-	GetProjectEnvTargetProjects1Development GetProjectEnvTargetProjects1 = "development"
+	GetProjectEnvTargetEnum3Production  GetProjectEnvTargetEnum3 = "production"
+	GetProjectEnvTargetEnum3Preview     GetProjectEnvTargetEnum3 = "preview"
+	GetProjectEnvTargetEnum3Development GetProjectEnvTargetEnum3 = "development"
 )
 
-func (e GetProjectEnvTargetProjects1) ToPointer() *GetProjectEnvTargetProjects1 {
+func (e GetProjectEnvTargetEnum3) ToPointer() *GetProjectEnvTargetEnum3 {
 	return &e
 }
-func (e *GetProjectEnvTargetProjects1) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTargetEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1431,90 +1431,90 @@ func (e *GetProjectEnvTargetProjects1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = GetProjectEnvTargetProjects1(v)
+		*e = GetProjectEnvTargetEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvTargetProjects1: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTargetEnum3: %v", v)
 	}
 }
 
-type GetProjectEnvResponseBodyProjectsTargetType string
+type GetProjectEnvTargetUnion2Type string
 
 const (
-	GetProjectEnvResponseBodyProjectsTargetTypeArrayOfGetProjectEnvTargetProjects1 GetProjectEnvResponseBodyProjectsTargetType = "arrayOfGetProjectEnvTargetProjects1"
-	GetProjectEnvResponseBodyProjectsTargetTypeGetProjectEnvTargetProjects2        GetProjectEnvResponseBodyProjectsTargetType = "getProjectEnv_target_projects_2"
+	GetProjectEnvTargetUnion2TypeArrayOfGetProjectEnvTargetEnum3 GetProjectEnvTargetUnion2Type = "arrayOfGetProjectEnvTargetEnum3"
+	GetProjectEnvTargetUnion2TypeGetProjectEnvTargetEnum4        GetProjectEnvTargetUnion2Type = "getProjectEnv_target_enum_4"
 )
 
-type GetProjectEnvResponseBodyProjectsTarget struct {
-	ArrayOfGetProjectEnvTargetProjects1 []GetProjectEnvTargetProjects1
-	GetProjectEnvTargetProjects2        *GetProjectEnvTargetProjects2
+type GetProjectEnvTargetUnion2 struct {
+	ArrayOfGetProjectEnvTargetEnum3 []GetProjectEnvTargetEnum3 `queryParam:"inline"`
+	GetProjectEnvTargetEnum4        *GetProjectEnvTargetEnum4  `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyProjectsTargetType
+	Type GetProjectEnvTargetUnion2Type
 }
 
-func CreateGetProjectEnvResponseBodyProjectsTargetArrayOfGetProjectEnvTargetProjects1(arrayOfGetProjectEnvTargetProjects1 []GetProjectEnvTargetProjects1) GetProjectEnvResponseBodyProjectsTarget {
-	typ := GetProjectEnvResponseBodyProjectsTargetTypeArrayOfGetProjectEnvTargetProjects1
+func CreateGetProjectEnvTargetUnion2ArrayOfGetProjectEnvTargetEnum3(arrayOfGetProjectEnvTargetEnum3 []GetProjectEnvTargetEnum3) GetProjectEnvTargetUnion2 {
+	typ := GetProjectEnvTargetUnion2TypeArrayOfGetProjectEnvTargetEnum3
 
-	return GetProjectEnvResponseBodyProjectsTarget{
-		ArrayOfGetProjectEnvTargetProjects1: arrayOfGetProjectEnvTargetProjects1,
-		Type:                                typ,
+	return GetProjectEnvTargetUnion2{
+		ArrayOfGetProjectEnvTargetEnum3: arrayOfGetProjectEnvTargetEnum3,
+		Type:                            typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsTargetGetProjectEnvTargetProjects2(getProjectEnvTargetProjects2 GetProjectEnvTargetProjects2) GetProjectEnvResponseBodyProjectsTarget {
-	typ := GetProjectEnvResponseBodyProjectsTargetTypeGetProjectEnvTargetProjects2
+func CreateGetProjectEnvTargetUnion2GetProjectEnvTargetEnum4(getProjectEnvTargetEnum4 GetProjectEnvTargetEnum4) GetProjectEnvTargetUnion2 {
+	typ := GetProjectEnvTargetUnion2TypeGetProjectEnvTargetEnum4
 
-	return GetProjectEnvResponseBodyProjectsTarget{
-		GetProjectEnvTargetProjects2: &getProjectEnvTargetProjects2,
-		Type:                         typ,
+	return GetProjectEnvTargetUnion2{
+		GetProjectEnvTargetEnum4: &getProjectEnvTargetEnum4,
+		Type:                     typ,
 	}
 }
 
-func (u *GetProjectEnvResponseBodyProjectsTarget) UnmarshalJSON(data []byte) error {
+func (u *GetProjectEnvTargetUnion2) UnmarshalJSON(data []byte) error {
 
-	var arrayOfGetProjectEnvTargetProjects1 []GetProjectEnvTargetProjects1 = []GetProjectEnvTargetProjects1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetProjectEnvTargetProjects1, "", true, true); err == nil {
-		u.ArrayOfGetProjectEnvTargetProjects1 = arrayOfGetProjectEnvTargetProjects1
-		u.Type = GetProjectEnvResponseBodyProjectsTargetTypeArrayOfGetProjectEnvTargetProjects1
+	var arrayOfGetProjectEnvTargetEnum3 []GetProjectEnvTargetEnum3 = []GetProjectEnvTargetEnum3{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetProjectEnvTargetEnum3, "", true, true); err == nil {
+		u.ArrayOfGetProjectEnvTargetEnum3 = arrayOfGetProjectEnvTargetEnum3
+		u.Type = GetProjectEnvTargetUnion2TypeArrayOfGetProjectEnvTargetEnum3
 		return nil
 	}
 
-	var getProjectEnvTargetProjects2 GetProjectEnvTargetProjects2 = GetProjectEnvTargetProjects2("")
-	if err := utils.UnmarshalJSON(data, &getProjectEnvTargetProjects2, "", true, true); err == nil {
-		u.GetProjectEnvTargetProjects2 = &getProjectEnvTargetProjects2
-		u.Type = GetProjectEnvResponseBodyProjectsTargetTypeGetProjectEnvTargetProjects2
+	var getProjectEnvTargetEnum4 GetProjectEnvTargetEnum4 = GetProjectEnvTargetEnum4("")
+	if err := utils.UnmarshalJSON(data, &getProjectEnvTargetEnum4, "", true, true); err == nil {
+		u.GetProjectEnvTargetEnum4 = &getProjectEnvTargetEnum4
+		u.Type = GetProjectEnvTargetUnion2TypeGetProjectEnvTargetEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyProjectsTarget", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvTargetUnion2", string(data))
 }
 
-func (u GetProjectEnvResponseBodyProjectsTarget) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfGetProjectEnvTargetProjects1 != nil {
-		return utils.MarshalJSON(u.ArrayOfGetProjectEnvTargetProjects1, "", true)
+func (u GetProjectEnvTargetUnion2) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfGetProjectEnvTargetEnum3 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetProjectEnvTargetEnum3, "", true)
 	}
 
-	if u.GetProjectEnvTargetProjects2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvTargetProjects2, "", true)
+	if u.GetProjectEnvTargetEnum4 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvTargetEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyProjectsTarget: all fields are null")
+	return nil, errors.New("could not marshal union type GetProjectEnvTargetUnion2: all fields are null")
 }
 
-type GetProjectEnvResponseBodyProjectsType string
+type GetProjectEnvType2 string
 
 const (
-	GetProjectEnvResponseBodyProjectsTypeSystem    GetProjectEnvResponseBodyProjectsType = "system"
-	GetProjectEnvResponseBodyProjectsTypeEncrypted GetProjectEnvResponseBodyProjectsType = "encrypted"
-	GetProjectEnvResponseBodyProjectsTypePlain     GetProjectEnvResponseBodyProjectsType = "plain"
-	GetProjectEnvResponseBodyProjectsTypeSensitive GetProjectEnvResponseBodyProjectsType = "sensitive"
-	GetProjectEnvResponseBodyProjectsTypeSecret    GetProjectEnvResponseBodyProjectsType = "secret"
+	GetProjectEnvType2System    GetProjectEnvType2 = "system"
+	GetProjectEnvType2Encrypted GetProjectEnvType2 = "encrypted"
+	GetProjectEnvType2Plain     GetProjectEnvType2 = "plain"
+	GetProjectEnvType2Sensitive GetProjectEnvType2 = "sensitive"
+	GetProjectEnvType2Secret    GetProjectEnvType2 = "secret"
 )
 
-func (e GetProjectEnvResponseBodyProjectsType) ToPointer() *GetProjectEnvResponseBodyProjectsType {
+func (e GetProjectEnvType2) ToPointer() *GetProjectEnvType2 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyProjectsType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1529,1054 +1529,1054 @@ func (e *GetProjectEnvResponseBodyProjectsType) UnmarshalJSON(data []byte) error
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = GetProjectEnvResponseBodyProjectsType(v)
+		*e = GetProjectEnvType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyProjectsType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvType2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type string
+type GetProjectEnvTypeFlagsConnectionString2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215TypeFlagsConnectionString GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type = "flags-connection-string"
+	GetProjectEnvTypeFlagsConnectionString2FlagsConnectionString GetProjectEnvTypeFlagsConnectionString2 = "flags-connection-string"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type {
+func (e GetProjectEnvTypeFlagsConnectionString2) ToPointer() *GetProjectEnvTypeFlagsConnectionString2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsConnectionString2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-connection-string":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type(v)
+		*e = GetProjectEnvTypeFlagsConnectionString2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsConnectionString2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects15 struct {
-	Type      GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type `json:"type"`
-	ProjectID string                                                                        `json:"projectId"`
+type GetProjectEnvContentHintFlagsConnectionString2 struct {
+	Type      GetProjectEnvTypeFlagsConnectionString2 `json:"type"`
+	ProjectID string                                  `json:"projectId"`
 }
 
-func (o *GetProjectEnvContentHintProjects15) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type {
+func (o *GetProjectEnvContentHintFlagsConnectionString2) GetType() GetProjectEnvTypeFlagsConnectionString2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type("")
+		return GetProjectEnvTypeFlagsConnectionString2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects15) GetProjectID() string {
+func (o *GetProjectEnvContentHintFlagsConnectionString2) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type string
+type GetProjectEnvTypeIntegrationStoreSecret2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214TypeIntegrationStoreSecret GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type = "integration-store-secret"
+	GetProjectEnvTypeIntegrationStoreSecret2IntegrationStoreSecret GetProjectEnvTypeIntegrationStoreSecret2 = "integration-store-secret"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type {
+func (e GetProjectEnvTypeIntegrationStoreSecret2) ToPointer() *GetProjectEnvTypeIntegrationStoreSecret2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeIntegrationStoreSecret2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-store-secret":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type(v)
+		*e = GetProjectEnvTypeIntegrationStoreSecret2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeIntegrationStoreSecret2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects14 struct {
-	Type                       GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type `json:"type"`
-	StoreID                    string                                                                        `json:"storeId"`
-	IntegrationID              string                                                                        `json:"integrationId"`
-	IntegrationProductID       string                                                                        `json:"integrationProductId"`
-	IntegrationConfigurationID string                                                                        `json:"integrationConfigurationId"`
+type GetProjectEnvContentHintIntegrationStoreSecret2 struct {
+	Type                       GetProjectEnvTypeIntegrationStoreSecret2 `json:"type"`
+	StoreID                    string                                   `json:"storeId"`
+	IntegrationID              string                                   `json:"integrationId"`
+	IntegrationProductID       string                                   `json:"integrationProductId"`
+	IntegrationConfigurationID string                                   `json:"integrationConfigurationId"`
 }
 
-func (o *GetProjectEnvContentHintProjects14) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret2) GetType() GetProjectEnvTypeIntegrationStoreSecret2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type("")
+		return GetProjectEnvTypeIntegrationStoreSecret2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects14) GetStoreID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-func (o *GetProjectEnvContentHintProjects14) GetIntegrationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret2) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetProjectEnvContentHintProjects14) GetIntegrationProductID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret2) GetIntegrationProductID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationProductID
 }
 
-func (o *GetProjectEnvContentHintProjects14) GetIntegrationConfigurationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret2) GetIntegrationConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationConfigurationID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type string
+type GetProjectEnvTypePostgresURLNoSsl2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213TypePostgresURLNoSsl GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type = "postgres-url-no-ssl"
+	GetProjectEnvTypePostgresURLNoSsl2PostgresURLNoSsl GetProjectEnvTypePostgresURLNoSsl2 = "postgres-url-no-ssl"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type {
+func (e GetProjectEnvTypePostgresURLNoSsl2) ToPointer() *GetProjectEnvTypePostgresURLNoSsl2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNoSsl2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-no-ssl":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type(v)
+		*e = GetProjectEnvTypePostgresURLNoSsl2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNoSsl2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects13 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNoSsl2 struct {
+	Type    GetProjectEnvTypePostgresURLNoSsl2 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects13) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl2) GetType() GetProjectEnvTypePostgresURLNoSsl2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type("")
+		return GetProjectEnvTypePostgresURLNoSsl2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects13) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type string
+type GetProjectEnvTypePostgresDatabase2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212TypePostgresDatabase GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type = "postgres-database"
+	GetProjectEnvTypePostgresDatabase2PostgresDatabase GetProjectEnvTypePostgresDatabase2 = "postgres-database"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type {
+func (e GetProjectEnvTypePostgresDatabase2) ToPointer() *GetProjectEnvTypePostgresDatabase2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresDatabase2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-database":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type(v)
+		*e = GetProjectEnvTypePostgresDatabase2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresDatabase2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects12 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresDatabase2 struct {
+	Type    GetProjectEnvTypePostgresDatabase2 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects12) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type {
+func (o *GetProjectEnvContentHintPostgresDatabase2) GetType() GetProjectEnvTypePostgresDatabase2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type("")
+		return GetProjectEnvTypePostgresDatabase2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects12) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresDatabase2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type string
+type GetProjectEnvTypePostgresPassword2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211TypePostgresPassword GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type = "postgres-password"
+	GetProjectEnvTypePostgresPassword2PostgresPassword GetProjectEnvTypePostgresPassword2 = "postgres-password"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type {
+func (e GetProjectEnvTypePostgresPassword2) ToPointer() *GetProjectEnvTypePostgresPassword2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPassword2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-password":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type(v)
+		*e = GetProjectEnvTypePostgresPassword2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPassword2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects11 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresPassword2 struct {
+	Type    GetProjectEnvTypePostgresPassword2 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects11) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type {
+func (o *GetProjectEnvContentHintPostgresPassword2) GetType() GetProjectEnvTypePostgresPassword2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type("")
+		return GetProjectEnvTypePostgresPassword2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects11) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPassword2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type string
+type GetProjectEnvTypePostgresHost2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210TypePostgresHost GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type = "postgres-host"
+	GetProjectEnvTypePostgresHost2PostgresHost GetProjectEnvTypePostgresHost2 = "postgres-host"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type {
+func (e GetProjectEnvTypePostgresHost2) ToPointer() *GetProjectEnvTypePostgresHost2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresHost2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-host":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type(v)
+		*e = GetProjectEnvTypePostgresHost2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresHost2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects10 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresHost2 struct {
+	Type    GetProjectEnvTypePostgresHost2 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects10) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type {
+func (o *GetProjectEnvContentHintPostgresHost2) GetType() GetProjectEnvTypePostgresHost2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type("")
+		return GetProjectEnvTypePostgresHost2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects10) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresHost2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type string
+type GetProjectEnvTypePostgresUser2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29TypePostgresUser GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type = "postgres-user"
+	GetProjectEnvTypePostgresUser2PostgresUser GetProjectEnvTypePostgresUser2 = "postgres-user"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type {
+func (e GetProjectEnvTypePostgresUser2) ToPointer() *GetProjectEnvTypePostgresUser2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresUser2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-user":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type(v)
+		*e = GetProjectEnvTypePostgresUser2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresUser2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects9 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresUser2 struct {
+	Type    GetProjectEnvTypePostgresUser2 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects9) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type {
+func (o *GetProjectEnvContentHintPostgresUser2) GetType() GetProjectEnvTypePostgresUser2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type("")
+		return GetProjectEnvTypePostgresUser2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects9) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresUser2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type string
+type GetProjectEnvTypePostgresPrismaURL2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28TypePostgresPrismaURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type = "postgres-prisma-url"
+	GetProjectEnvTypePostgresPrismaURL2PostgresPrismaURL GetProjectEnvTypePostgresPrismaURL2 = "postgres-prisma-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type {
+func (e GetProjectEnvTypePostgresPrismaURL2) ToPointer() *GetProjectEnvTypePostgresPrismaURL2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPrismaURL2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-prisma-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type(v)
+		*e = GetProjectEnvTypePostgresPrismaURL2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPrismaURL2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects8 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresPrismaURL2 struct {
+	Type    GetProjectEnvTypePostgresPrismaURL2 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects8) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type {
+func (o *GetProjectEnvContentHintPostgresPrismaURL2) GetType() GetProjectEnvTypePostgresPrismaURL2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type("")
+		return GetProjectEnvTypePostgresPrismaURL2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects8) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPrismaURL2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type string
+type GetProjectEnvTypePostgresURLNonPooling2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27TypePostgresURLNonPooling GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type = "postgres-url-non-pooling"
+	GetProjectEnvTypePostgresURLNonPooling2PostgresURLNonPooling GetProjectEnvTypePostgresURLNonPooling2 = "postgres-url-non-pooling"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type {
+func (e GetProjectEnvTypePostgresURLNonPooling2) ToPointer() *GetProjectEnvTypePostgresURLNonPooling2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNonPooling2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-non-pooling":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type(v)
+		*e = GetProjectEnvTypePostgresURLNonPooling2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNonPooling2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects7 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNonPooling2 struct {
+	Type    GetProjectEnvTypePostgresURLNonPooling2 `json:"type"`
+	StoreID string                                  `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects7) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling2) GetType() GetProjectEnvTypePostgresURLNonPooling2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type("")
+		return GetProjectEnvTypePostgresURLNonPooling2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects7) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type string
+type GetProjectEnvTypePostgresURL2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26TypePostgresURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type = "postgres-url"
+	GetProjectEnvTypePostgresURL2PostgresURL GetProjectEnvTypePostgresURL2 = "postgres-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type {
+func (e GetProjectEnvTypePostgresURL2) ToPointer() *GetProjectEnvTypePostgresURL2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURL2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type(v)
+		*e = GetProjectEnvTypePostgresURL2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURL2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects6 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresURL2 struct {
+	Type    GetProjectEnvTypePostgresURL2 `json:"type"`
+	StoreID string                        `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects6) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type {
+func (o *GetProjectEnvContentHintPostgresURL2) GetType() GetProjectEnvTypePostgresURL2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type("")
+		return GetProjectEnvTypePostgresURL2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects6) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURL2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type string
+type GetProjectEnvTypeBlobReadWriteToken2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25TypeBlobReadWriteToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type = "blob-read-write-token"
+	GetProjectEnvTypeBlobReadWriteToken2BlobReadWriteToken GetProjectEnvTypeBlobReadWriteToken2 = "blob-read-write-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type {
+func (e GetProjectEnvTypeBlobReadWriteToken2) ToPointer() *GetProjectEnvTypeBlobReadWriteToken2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeBlobReadWriteToken2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "blob-read-write-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type(v)
+		*e = GetProjectEnvTypeBlobReadWriteToken2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeBlobReadWriteToken2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects5 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintBlobReadWriteToken2 struct {
+	Type    GetProjectEnvTypeBlobReadWriteToken2 `json:"type"`
+	StoreID string                               `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects5) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type {
+func (o *GetProjectEnvContentHintBlobReadWriteToken2) GetType() GetProjectEnvTypeBlobReadWriteToken2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type("")
+		return GetProjectEnvTypeBlobReadWriteToken2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects5) GetStoreID() string {
+func (o *GetProjectEnvContentHintBlobReadWriteToken2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type string
+type GetProjectEnvTypeRedisRestAPIReadOnlyToken2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type = "redis-rest-api-read-only-token"
+	GetProjectEnvTypeRedisRestAPIReadOnlyToken2RedisRestAPIReadOnlyToken GetProjectEnvTypeRedisRestAPIReadOnlyToken2 = "redis-rest-api-read-only-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type {
+func (e GetProjectEnvTypeRedisRestAPIReadOnlyToken2) ToPointer() *GetProjectEnvTypeRedisRestAPIReadOnlyToken2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIReadOnlyToken2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-read-only-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIReadOnlyToken2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIReadOnlyToken2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects4 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 struct {
+	Type    GetProjectEnvTypeRedisRestAPIReadOnlyToken2 `json:"type"`
+	StoreID string                                      `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects4) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetType() GetProjectEnvTypeRedisRestAPIReadOnlyToken2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type("")
+		return GetProjectEnvTypeRedisRestAPIReadOnlyToken2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects4) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type string
+type GetProjectEnvTypeRedisRestAPIToken2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23TypeRedisRestAPIToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type = "redis-rest-api-token"
+	GetProjectEnvTypeRedisRestAPIToken2RedisRestAPIToken GetProjectEnvTypeRedisRestAPIToken2 = "redis-rest-api-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type {
+func (e GetProjectEnvTypeRedisRestAPIToken2) ToPointer() *GetProjectEnvTypeRedisRestAPIToken2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIToken2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIToken2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIToken2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects3 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIToken2 struct {
+	Type    GetProjectEnvTypeRedisRestAPIToken2 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects3) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type {
+func (o *GetProjectEnvContentHintRedisRestAPIToken2) GetType() GetProjectEnvTypeRedisRestAPIToken2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type("")
+		return GetProjectEnvTypeRedisRestAPIToken2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects3) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIToken2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type string
+type GetProjectEnvTypeRedisRestAPIURL2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22TypeRedisRestAPIURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type = "redis-rest-api-url"
+	GetProjectEnvTypeRedisRestAPIURL2RedisRestAPIURL GetProjectEnvTypeRedisRestAPIURL2 = "redis-rest-api-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type {
+func (e GetProjectEnvTypeRedisRestAPIURL2) ToPointer() *GetProjectEnvTypeRedisRestAPIURL2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIURL2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIURL2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIURL2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects2 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIURL2 struct {
+	Type    GetProjectEnvTypeRedisRestAPIURL2 `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects2) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type {
+func (o *GetProjectEnvContentHintRedisRestAPIURL2) GetType() GetProjectEnvTypeRedisRestAPIURL2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type("")
+		return GetProjectEnvTypeRedisRestAPIURL2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects2) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIURL2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type string
+type GetProjectEnvTypeRedisURL2 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2TypeRedisURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type = "redis-url"
+	GetProjectEnvTypeRedisURL2RedisURL GetProjectEnvTypeRedisURL2 = "redis-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type {
+func (e GetProjectEnvTypeRedisURL2) ToPointer() *GetProjectEnvTypeRedisURL2 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisURL2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type(v)
+		*e = GetProjectEnvTypeRedisURL2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisURL2: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjects1 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type `json:"type"`
-	StoreID string                                                                      `json:"storeId"`
+type GetProjectEnvContentHintRedisURL2 struct {
+	Type    GetProjectEnvTypeRedisURL2 `json:"type"`
+	StoreID string                     `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHintProjects1) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type {
+func (o *GetProjectEnvContentHintRedisURL2) GetType() GetProjectEnvTypeRedisURL2 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type("")
+		return GetProjectEnvTypeRedisURL2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHintProjects1) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisURL2) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvResponseBodyProjectsContentHintType string
+type GetProjectEnvContentHintUnion2Type string
 
 const (
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects1  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_1"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects2  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_2"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects3  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_3"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects4  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_4"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects5  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_5"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects6  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_6"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects7  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_7"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects8  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_8"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects9  GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_9"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects10 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_10"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects11 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_11"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects12 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_12"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects13 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_13"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects14 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_14"
-	GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects15 GetProjectEnvResponseBodyProjectsContentHintType = "getProjectEnv_contentHint_projects_15"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2                  GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisURL_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2           GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIURL_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2         GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIToken_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2        GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_BlobReadWriteToken_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2               GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURL_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2     GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURLNonPooling_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2         GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresPrismaURL_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2              GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresUser_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2              GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresHost_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresPassword_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresDatabase_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURLNoSsl_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2    GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_IntegrationStoreSecret_2"
+	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2     GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_FlagsConnectionString_2"
 )
 
-type GetProjectEnvResponseBodyProjectsContentHint struct {
-	GetProjectEnvContentHintProjects1  *GetProjectEnvContentHintProjects1
-	GetProjectEnvContentHintProjects2  *GetProjectEnvContentHintProjects2
-	GetProjectEnvContentHintProjects3  *GetProjectEnvContentHintProjects3
-	GetProjectEnvContentHintProjects4  *GetProjectEnvContentHintProjects4
-	GetProjectEnvContentHintProjects5  *GetProjectEnvContentHintProjects5
-	GetProjectEnvContentHintProjects6  *GetProjectEnvContentHintProjects6
-	GetProjectEnvContentHintProjects7  *GetProjectEnvContentHintProjects7
-	GetProjectEnvContentHintProjects8  *GetProjectEnvContentHintProjects8
-	GetProjectEnvContentHintProjects9  *GetProjectEnvContentHintProjects9
-	GetProjectEnvContentHintProjects10 *GetProjectEnvContentHintProjects10
-	GetProjectEnvContentHintProjects11 *GetProjectEnvContentHintProjects11
-	GetProjectEnvContentHintProjects12 *GetProjectEnvContentHintProjects12
-	GetProjectEnvContentHintProjects13 *GetProjectEnvContentHintProjects13
-	GetProjectEnvContentHintProjects14 *GetProjectEnvContentHintProjects14
-	GetProjectEnvContentHintProjects15 *GetProjectEnvContentHintProjects15
+type GetProjectEnvContentHintUnion2 struct {
+	GetProjectEnvContentHintRedisURL2                  *GetProjectEnvContentHintRedisURL2                  `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIURL2           *GetProjectEnvContentHintRedisRestAPIURL2           `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIToken2         *GetProjectEnvContentHintRedisRestAPIToken2         `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 *GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 `queryParam:"inline"`
+	GetProjectEnvContentHintBlobReadWriteToken2        *GetProjectEnvContentHintBlobReadWriteToken2        `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURL2               *GetProjectEnvContentHintPostgresURL2               `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNonPooling2     *GetProjectEnvContentHintPostgresURLNonPooling2     `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPrismaURL2         *GetProjectEnvContentHintPostgresPrismaURL2         `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresUser2              *GetProjectEnvContentHintPostgresUser2              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresHost2              *GetProjectEnvContentHintPostgresHost2              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPassword2          *GetProjectEnvContentHintPostgresPassword2          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresDatabase2          *GetProjectEnvContentHintPostgresDatabase2          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNoSsl2          *GetProjectEnvContentHintPostgresURLNoSsl2          `queryParam:"inline"`
+	GetProjectEnvContentHintIntegrationStoreSecret2    *GetProjectEnvContentHintIntegrationStoreSecret2    `queryParam:"inline"`
+	GetProjectEnvContentHintFlagsConnectionString2     *GetProjectEnvContentHintFlagsConnectionString2     `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyProjectsContentHintType
+	Type GetProjectEnvContentHintUnion2Type
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects1(getProjectEnvContentHintProjects1 GetProjectEnvContentHintProjects1) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects1
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisURL2(getProjectEnvContentHintRedisURL2 GetProjectEnvContentHintRedisURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects1: &getProjectEnvContentHintProjects1,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintRedisURL2: &getProjectEnvContentHintRedisURL2,
 		Type:                              typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects2(getProjectEnvContentHintProjects2 GetProjectEnvContentHintProjects2) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects2
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIURL2(getProjectEnvContentHintRedisRestAPIURL2 GetProjectEnvContentHintRedisRestAPIURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects2: &getProjectEnvContentHintProjects2,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintRedisRestAPIURL2: &getProjectEnvContentHintRedisRestAPIURL2,
+		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects3(getProjectEnvContentHintProjects3 GetProjectEnvContentHintProjects3) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects3
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIToken2(getProjectEnvContentHintRedisRestAPIToken2 GetProjectEnvContentHintRedisRestAPIToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects3: &getProjectEnvContentHintProjects3,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintRedisRestAPIToken2: &getProjectEnvContentHintRedisRestAPIToken2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects4(getProjectEnvContentHintProjects4 GetProjectEnvContentHintProjects4) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects4
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIReadOnlyToken2(getProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects4: &getProjectEnvContentHintProjects4,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken2: &getProjectEnvContentHintRedisRestAPIReadOnlyToken2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects5(getProjectEnvContentHintProjects5 GetProjectEnvContentHintProjects5) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects5
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintBlobReadWriteToken2(getProjectEnvContentHintBlobReadWriteToken2 GetProjectEnvContentHintBlobReadWriteToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects5: &getProjectEnvContentHintProjects5,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintBlobReadWriteToken2: &getProjectEnvContentHintBlobReadWriteToken2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects6(getProjectEnvContentHintProjects6 GetProjectEnvContentHintProjects6) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects6
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURL2(getProjectEnvContentHintPostgresURL2 GetProjectEnvContentHintPostgresURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects6: &getProjectEnvContentHintProjects6,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresURL2: &getProjectEnvContentHintPostgresURL2,
+		Type:                                 typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects7(getProjectEnvContentHintProjects7 GetProjectEnvContentHintProjects7) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects7
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURLNonPooling2(getProjectEnvContentHintPostgresURLNonPooling2 GetProjectEnvContentHintPostgresURLNonPooling2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects7: &getProjectEnvContentHintProjects7,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresURLNonPooling2: &getProjectEnvContentHintPostgresURLNonPooling2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects8(getProjectEnvContentHintProjects8 GetProjectEnvContentHintProjects8) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects8
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresPrismaURL2(getProjectEnvContentHintPostgresPrismaURL2 GetProjectEnvContentHintPostgresPrismaURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects8: &getProjectEnvContentHintProjects8,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresPrismaURL2: &getProjectEnvContentHintPostgresPrismaURL2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects9(getProjectEnvContentHintProjects9 GetProjectEnvContentHintProjects9) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects9
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresUser2(getProjectEnvContentHintPostgresUser2 GetProjectEnvContentHintPostgresUser2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects9: &getProjectEnvContentHintProjects9,
-		Type:                              typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresUser2: &getProjectEnvContentHintPostgresUser2,
+		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects10(getProjectEnvContentHintProjects10 GetProjectEnvContentHintProjects10) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects10
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresHost2(getProjectEnvContentHintPostgresHost2 GetProjectEnvContentHintPostgresHost2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects10: &getProjectEnvContentHintProjects10,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresHost2: &getProjectEnvContentHintPostgresHost2,
+		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects11(getProjectEnvContentHintProjects11 GetProjectEnvContentHintProjects11) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects11
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresPassword2(getProjectEnvContentHintPostgresPassword2 GetProjectEnvContentHintPostgresPassword2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects11: &getProjectEnvContentHintProjects11,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresPassword2: &getProjectEnvContentHintPostgresPassword2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects12(getProjectEnvContentHintProjects12 GetProjectEnvContentHintProjects12) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects12
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresDatabase2(getProjectEnvContentHintPostgresDatabase2 GetProjectEnvContentHintPostgresDatabase2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects12: &getProjectEnvContentHintProjects12,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresDatabase2: &getProjectEnvContentHintPostgresDatabase2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects13(getProjectEnvContentHintProjects13 GetProjectEnvContentHintProjects13) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects13
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURLNoSsl2(getProjectEnvContentHintPostgresURLNoSsl2 GetProjectEnvContentHintPostgresURLNoSsl2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects13: &getProjectEnvContentHintProjects13,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintPostgresURLNoSsl2: &getProjectEnvContentHintPostgresURLNoSsl2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects14(getProjectEnvContentHintProjects14 GetProjectEnvContentHintProjects14) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects14
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintIntegrationStoreSecret2(getProjectEnvContentHintIntegrationStoreSecret2 GetProjectEnvContentHintIntegrationStoreSecret2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects14: &getProjectEnvContentHintProjects14,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintIntegrationStoreSecret2: &getProjectEnvContentHintIntegrationStoreSecret2,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyProjectsContentHintGetProjectEnvContentHintProjects15(getProjectEnvContentHintProjects15 GetProjectEnvContentHintProjects15) GetProjectEnvResponseBodyProjectsContentHint {
-	typ := GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects15
+func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintFlagsConnectionString2(getProjectEnvContentHintFlagsConnectionString2 GetProjectEnvContentHintFlagsConnectionString2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2
 
-	return GetProjectEnvResponseBodyProjectsContentHint{
-		GetProjectEnvContentHintProjects15: &getProjectEnvContentHintProjects15,
-		Type:                               typ,
+	return GetProjectEnvContentHintUnion2{
+		GetProjectEnvContentHintFlagsConnectionString2: &getProjectEnvContentHintFlagsConnectionString2,
+		Type: typ,
 	}
 }
 
-func (u *GetProjectEnvResponseBodyProjectsContentHint) UnmarshalJSON(data []byte) error {
+func (u *GetProjectEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 
-	var getProjectEnvContentHintProjects7 GetProjectEnvContentHintProjects7 = GetProjectEnvContentHintProjects7{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects7, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects7 = &getProjectEnvContentHintProjects7
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects7
+	var getProjectEnvContentHintPostgresURLNonPooling2 GetProjectEnvContentHintPostgresURLNonPooling2 = GetProjectEnvContentHintPostgresURLNonPooling2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNonPooling2 = &getProjectEnvContentHintPostgresURLNonPooling2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects11 GetProjectEnvContentHintProjects11 = GetProjectEnvContentHintProjects11{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects11, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects11 = &getProjectEnvContentHintProjects11
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects11
+	var getProjectEnvContentHintPostgresPassword2 GetProjectEnvContentHintPostgresPassword2 = GetProjectEnvContentHintPostgresPassword2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPassword2 = &getProjectEnvContentHintPostgresPassword2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects3 GetProjectEnvContentHintProjects3 = GetProjectEnvContentHintProjects3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects3, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects3 = &getProjectEnvContentHintProjects3
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects3
+	var getProjectEnvContentHintRedisRestAPIToken2 GetProjectEnvContentHintRedisRestAPIToken2 = GetProjectEnvContentHintRedisRestAPIToken2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIToken2 = &getProjectEnvContentHintRedisRestAPIToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects4 GetProjectEnvContentHintProjects4 = GetProjectEnvContentHintProjects4{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects4, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects4 = &getProjectEnvContentHintProjects4
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects4
+	var getProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects5 GetProjectEnvContentHintProjects5 = GetProjectEnvContentHintProjects5{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects5, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects5 = &getProjectEnvContentHintProjects5
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects5
+	var getProjectEnvContentHintBlobReadWriteToken2 GetProjectEnvContentHintBlobReadWriteToken2 = GetProjectEnvContentHintBlobReadWriteToken2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintBlobReadWriteToken2 = &getProjectEnvContentHintBlobReadWriteToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects6 GetProjectEnvContentHintProjects6 = GetProjectEnvContentHintProjects6{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects6, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects6 = &getProjectEnvContentHintProjects6
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects6
+	var getProjectEnvContentHintPostgresURL2 GetProjectEnvContentHintPostgresURL2 = GetProjectEnvContentHintPostgresURL2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURL2 = &getProjectEnvContentHintPostgresURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects2 GetProjectEnvContentHintProjects2 = GetProjectEnvContentHintProjects2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects2, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects2 = &getProjectEnvContentHintProjects2
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects2
+	var getProjectEnvContentHintRedisRestAPIURL2 GetProjectEnvContentHintRedisRestAPIURL2 = GetProjectEnvContentHintRedisRestAPIURL2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIURL2 = &getProjectEnvContentHintRedisRestAPIURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects9 GetProjectEnvContentHintProjects9 = GetProjectEnvContentHintProjects9{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects9, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects9 = &getProjectEnvContentHintProjects9
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects9
+	var getProjectEnvContentHintPostgresUser2 GetProjectEnvContentHintPostgresUser2 = GetProjectEnvContentHintPostgresUser2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresUser2 = &getProjectEnvContentHintPostgresUser2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects1 GetProjectEnvContentHintProjects1 = GetProjectEnvContentHintProjects1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects1, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects1 = &getProjectEnvContentHintProjects1
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects1
+	var getProjectEnvContentHintRedisURL2 GetProjectEnvContentHintRedisURL2 = GetProjectEnvContentHintRedisURL2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisURL2 = &getProjectEnvContentHintRedisURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects10 GetProjectEnvContentHintProjects10 = GetProjectEnvContentHintProjects10{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects10, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects10 = &getProjectEnvContentHintProjects10
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects10
+	var getProjectEnvContentHintPostgresHost2 GetProjectEnvContentHintPostgresHost2 = GetProjectEnvContentHintPostgresHost2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresHost2 = &getProjectEnvContentHintPostgresHost2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects8 GetProjectEnvContentHintProjects8 = GetProjectEnvContentHintProjects8{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects8, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects8 = &getProjectEnvContentHintProjects8
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects8
+	var getProjectEnvContentHintPostgresPrismaURL2 GetProjectEnvContentHintPostgresPrismaURL2 = GetProjectEnvContentHintPostgresPrismaURL2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPrismaURL2 = &getProjectEnvContentHintPostgresPrismaURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects12 GetProjectEnvContentHintProjects12 = GetProjectEnvContentHintProjects12{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects12, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects12 = &getProjectEnvContentHintProjects12
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects12
+	var getProjectEnvContentHintPostgresDatabase2 GetProjectEnvContentHintPostgresDatabase2 = GetProjectEnvContentHintPostgresDatabase2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresDatabase2 = &getProjectEnvContentHintPostgresDatabase2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects13 GetProjectEnvContentHintProjects13 = GetProjectEnvContentHintProjects13{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects13, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects13 = &getProjectEnvContentHintProjects13
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects13
+	var getProjectEnvContentHintPostgresURLNoSsl2 GetProjectEnvContentHintPostgresURLNoSsl2 = GetProjectEnvContentHintPostgresURLNoSsl2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNoSsl2 = &getProjectEnvContentHintPostgresURLNoSsl2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects15 GetProjectEnvContentHintProjects15 = GetProjectEnvContentHintProjects15{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects15, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects15 = &getProjectEnvContentHintProjects15
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects15
+	var getProjectEnvContentHintFlagsConnectionString2 GetProjectEnvContentHintFlagsConnectionString2 = GetProjectEnvContentHintFlagsConnectionString2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintFlagsConnectionString2 = &getProjectEnvContentHintFlagsConnectionString2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2
 		return nil
 	}
 
-	var getProjectEnvContentHintProjects14 GetProjectEnvContentHintProjects14 = GetProjectEnvContentHintProjects14{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintProjects14, "", true, true); err == nil {
-		u.GetProjectEnvContentHintProjects14 = &getProjectEnvContentHintProjects14
-		u.Type = GetProjectEnvResponseBodyProjectsContentHintTypeGetProjectEnvContentHintProjects14
+	var getProjectEnvContentHintIntegrationStoreSecret2 GetProjectEnvContentHintIntegrationStoreSecret2 = GetProjectEnvContentHintIntegrationStoreSecret2{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret2, "", true, true); err == nil {
+		u.GetProjectEnvContentHintIntegrationStoreSecret2 = &getProjectEnvContentHintIntegrationStoreSecret2
+		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyProjectsContentHint", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvContentHintUnion2", string(data))
 }
 
-func (u GetProjectEnvResponseBodyProjectsContentHint) MarshalJSON() ([]byte, error) {
-	if u.GetProjectEnvContentHintProjects1 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects1, "", true)
+func (u GetProjectEnvContentHintUnion2) MarshalJSON() ([]byte, error) {
+	if u.GetProjectEnvContentHintRedisURL2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisURL2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects2, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIURL2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIURL2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects3 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects3, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIToken2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIToken2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects4 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects4, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects5 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects5, "", true)
+	if u.GetProjectEnvContentHintBlobReadWriteToken2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintBlobReadWriteToken2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects6 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects6, "", true)
+	if u.GetProjectEnvContentHintPostgresURL2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURL2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects7 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects7, "", true)
+	if u.GetProjectEnvContentHintPostgresURLNonPooling2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNonPooling2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects8 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects8, "", true)
+	if u.GetProjectEnvContentHintPostgresPrismaURL2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPrismaURL2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects9 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects9, "", true)
+	if u.GetProjectEnvContentHintPostgresUser2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresUser2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects10 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects10, "", true)
+	if u.GetProjectEnvContentHintPostgresHost2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresHost2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects11 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects11, "", true)
+	if u.GetProjectEnvContentHintPostgresPassword2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPassword2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects12 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects12, "", true)
+	if u.GetProjectEnvContentHintPostgresDatabase2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresDatabase2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects13 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects13, "", true)
+	if u.GetProjectEnvContentHintPostgresURLNoSsl2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNoSsl2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects14 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects14, "", true)
+	if u.GetProjectEnvContentHintIntegrationStoreSecret2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintIntegrationStoreSecret2, "", true)
 	}
 
-	if u.GetProjectEnvContentHintProjects15 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHintProjects15, "", true)
+	if u.GetProjectEnvContentHintFlagsConnectionString2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintFlagsConnectionString2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyProjectsContentHint: all fields are null")
+	return nil, errors.New("could not marshal union type GetProjectEnvContentHintUnion2: all fields are null")
 }
 
-type GetProjectEnvResponseBodyProjectsResponse200Type string
+type GetProjectEnvTypeFlagsSecret2 string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponse200TypeFlagsSecret GetProjectEnvResponseBodyProjectsResponse200Type = "flags-secret"
+	GetProjectEnvTypeFlagsSecret2FlagsSecret GetProjectEnvTypeFlagsSecret2 = "flags-secret"
 )
 
-func (e GetProjectEnvResponseBodyProjectsResponse200Type) ToPointer() *GetProjectEnvResponseBodyProjectsResponse200Type {
+func (e GetProjectEnvTypeFlagsSecret2) ToPointer() *GetProjectEnvTypeFlagsSecret2 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyProjectsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsSecret2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-secret":
-		*e = GetProjectEnvResponseBodyProjectsResponse200Type(v)
+		*e = GetProjectEnvTypeFlagsSecret2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyProjectsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsSecret2: %v", v)
 	}
 }
 
-// GetProjectEnvResponseBodyProjectsInternalContentHint - Similar to `contentHints`, but should not be exposed to the user.
-type GetProjectEnvResponseBodyProjectsInternalContentHint struct {
-	Type GetProjectEnvResponseBodyProjectsResponse200Type `json:"type"`
+// GetProjectEnvInternalContentHint2 - Similar to `contentHints`, but should not be exposed to the user.
+type GetProjectEnvInternalContentHint2 struct {
+	Type GetProjectEnvTypeFlagsSecret2 `json:"type"`
 	// Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
 	EncryptedValue string `json:"encryptedValue"`
 }
 
-func (o *GetProjectEnvResponseBodyProjectsInternalContentHint) GetType() GetProjectEnvResponseBodyProjectsResponse200Type {
+func (o *GetProjectEnvInternalContentHint2) GetType() GetProjectEnvTypeFlagsSecret2 {
 	if o == nil {
-		return GetProjectEnvResponseBodyProjectsResponse200Type("")
+		return GetProjectEnvTypeFlagsSecret2("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvResponseBodyProjectsInternalContentHint) GetEncryptedValue() string {
+func (o *GetProjectEnvInternalContentHint2) GetEncryptedValue() string {
 	if o == nil {
 		return ""
 	}
@@ -2584,40 +2584,40 @@ func (o *GetProjectEnvResponseBodyProjectsInternalContentHint) GetEncryptedValue
 }
 
 type GetProjectEnvResponseBody2 struct {
-	Target *GetProjectEnvResponseBodyProjectsTarget `json:"target,omitempty"`
-	Type   GetProjectEnvResponseBodyProjectsType    `json:"type"`
+	Target *GetProjectEnvTargetUnion2 `json:"target,omitempty"`
+	Type   GetProjectEnvType2         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                                       `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                                         `json:"decrypted,omitempty"`
-	Value             string                                        `json:"value"`
-	VsmValue          *string                                       `json:"vsmValue,omitempty"`
-	ID                *string                                       `json:"id,omitempty"`
-	Key               string                                        `json:"key"`
-	ConfigurationID   *string                                       `json:"configurationId,omitempty"`
-	CreatedAt         *float64                                      `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                                      `json:"updatedAt,omitempty"`
-	CreatedBy         *string                                       `json:"createdBy,omitempty"`
-	UpdatedBy         *string                                       `json:"updatedBy,omitempty"`
-	GitBranch         *string                                       `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                                       `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                                       `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *GetProjectEnvResponseBodyProjectsContentHint `json:"contentHint,omitempty"`
+	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
+	Decrypted         *bool                           `json:"decrypted,omitempty"`
+	Value             string                          `json:"value"`
+	VsmValue          *string                         `json:"vsmValue,omitempty"`
+	ID                *string                         `json:"id,omitempty"`
+	Key               string                          `json:"key"`
+	ConfigurationID   *string                         `json:"configurationId,omitempty"`
+	CreatedAt         *float64                        `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                        `json:"updatedAt,omitempty"`
+	CreatedBy         *string                         `json:"createdBy,omitempty"`
+	UpdatedBy         *string                         `json:"updatedBy,omitempty"`
+	GitBranch         *string                         `json:"gitBranch,omitempty"`
+	EdgeConfigID      *string                         `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                         `json:"edgeConfigTokenId,omitempty"`
+	ContentHint       *GetProjectEnvContentHintUnion2 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *GetProjectEnvResponseBodyProjectsInternalContentHint `json:"internalContentHint,omitempty"`
-	Comment              *string                                               `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                                              `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  *GetProjectEnvInternalContentHint2 `json:"internalContentHint,omitempty"`
+	Comment              *string                            `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                           `json:"customEnvironmentIds,omitempty"`
 }
 
-func (o *GetProjectEnvResponseBody2) GetTarget() *GetProjectEnvResponseBodyProjectsTarget {
+func (o *GetProjectEnvResponseBody2) GetTarget() *GetProjectEnvTargetUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *GetProjectEnvResponseBody2) GetType() GetProjectEnvResponseBodyProjectsType {
+func (o *GetProjectEnvResponseBody2) GetType() GetProjectEnvType2 {
 	if o == nil {
-		return GetProjectEnvResponseBodyProjectsType("")
+		return GetProjectEnvType2("")
 	}
 	return o.Type
 }
@@ -2720,14 +2720,14 @@ func (o *GetProjectEnvResponseBody2) GetEdgeConfigTokenID() *string {
 	return o.EdgeConfigTokenID
 }
 
-func (o *GetProjectEnvResponseBody2) GetContentHint() *GetProjectEnvResponseBodyProjectsContentHint {
+func (o *GetProjectEnvResponseBody2) GetContentHint() *GetProjectEnvContentHintUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.ContentHint
 }
 
-func (o *GetProjectEnvResponseBody2) GetInternalContentHint() *GetProjectEnvResponseBodyProjectsInternalContentHint {
+func (o *GetProjectEnvResponseBody2) GetInternalContentHint() *GetProjectEnvInternalContentHint2 {
 	if o == nil {
 		return nil
 	}
@@ -2748,18 +2748,18 @@ func (o *GetProjectEnvResponseBody2) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
-type GetProjectEnvTarget2 string
+type GetProjectEnvTargetEnum2 string
 
 const (
-	GetProjectEnvTarget2Production  GetProjectEnvTarget2 = "production"
-	GetProjectEnvTarget2Preview     GetProjectEnvTarget2 = "preview"
-	GetProjectEnvTarget2Development GetProjectEnvTarget2 = "development"
+	GetProjectEnvTargetEnum2Production  GetProjectEnvTargetEnum2 = "production"
+	GetProjectEnvTargetEnum2Preview     GetProjectEnvTargetEnum2 = "preview"
+	GetProjectEnvTargetEnum2Development GetProjectEnvTargetEnum2 = "development"
 )
 
-func (e GetProjectEnvTarget2) ToPointer() *GetProjectEnvTarget2 {
+func (e GetProjectEnvTargetEnum2) ToPointer() *GetProjectEnvTargetEnum2 {
 	return &e
 }
-func (e *GetProjectEnvTarget2) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTargetEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2770,25 +2770,25 @@ func (e *GetProjectEnvTarget2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = GetProjectEnvTarget2(v)
+		*e = GetProjectEnvTargetEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvTarget2: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTargetEnum2: %v", v)
 	}
 }
 
-type GetProjectEnvTarget1 string
+type GetProjectEnvTargetEnum1 string
 
 const (
-	GetProjectEnvTarget1Production  GetProjectEnvTarget1 = "production"
-	GetProjectEnvTarget1Preview     GetProjectEnvTarget1 = "preview"
-	GetProjectEnvTarget1Development GetProjectEnvTarget1 = "development"
+	GetProjectEnvTargetEnum1Production  GetProjectEnvTargetEnum1 = "production"
+	GetProjectEnvTargetEnum1Preview     GetProjectEnvTargetEnum1 = "preview"
+	GetProjectEnvTargetEnum1Development GetProjectEnvTargetEnum1 = "development"
 )
 
-func (e GetProjectEnvTarget1) ToPointer() *GetProjectEnvTarget1 {
+func (e GetProjectEnvTargetEnum1) ToPointer() *GetProjectEnvTargetEnum1 {
 	return &e
 }
-func (e *GetProjectEnvTarget1) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTargetEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2799,90 +2799,90 @@ func (e *GetProjectEnvTarget1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = GetProjectEnvTarget1(v)
+		*e = GetProjectEnvTargetEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvTarget1: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTargetEnum1: %v", v)
 	}
 }
 
-type GetProjectEnvResponseBodyTargetType string
+type GetProjectEnvTargetUnion1Type string
 
 const (
-	GetProjectEnvResponseBodyTargetTypeArrayOfGetProjectEnvTarget1 GetProjectEnvResponseBodyTargetType = "arrayOfGetProjectEnvTarget1"
-	GetProjectEnvResponseBodyTargetTypeGetProjectEnvTarget2        GetProjectEnvResponseBodyTargetType = "getProjectEnv_target_2"
+	GetProjectEnvTargetUnion1TypeArrayOfGetProjectEnvTargetEnum1 GetProjectEnvTargetUnion1Type = "arrayOfGetProjectEnvTargetEnum1"
+	GetProjectEnvTargetUnion1TypeGetProjectEnvTargetEnum2        GetProjectEnvTargetUnion1Type = "getProjectEnv_target_enum_2"
 )
 
-type GetProjectEnvResponseBodyTarget struct {
-	ArrayOfGetProjectEnvTarget1 []GetProjectEnvTarget1
-	GetProjectEnvTarget2        *GetProjectEnvTarget2
+type GetProjectEnvTargetUnion1 struct {
+	ArrayOfGetProjectEnvTargetEnum1 []GetProjectEnvTargetEnum1 `queryParam:"inline"`
+	GetProjectEnvTargetEnum2        *GetProjectEnvTargetEnum2  `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyTargetType
+	Type GetProjectEnvTargetUnion1Type
 }
 
-func CreateGetProjectEnvResponseBodyTargetArrayOfGetProjectEnvTarget1(arrayOfGetProjectEnvTarget1 []GetProjectEnvTarget1) GetProjectEnvResponseBodyTarget {
-	typ := GetProjectEnvResponseBodyTargetTypeArrayOfGetProjectEnvTarget1
+func CreateGetProjectEnvTargetUnion1ArrayOfGetProjectEnvTargetEnum1(arrayOfGetProjectEnvTargetEnum1 []GetProjectEnvTargetEnum1) GetProjectEnvTargetUnion1 {
+	typ := GetProjectEnvTargetUnion1TypeArrayOfGetProjectEnvTargetEnum1
 
-	return GetProjectEnvResponseBodyTarget{
-		ArrayOfGetProjectEnvTarget1: arrayOfGetProjectEnvTarget1,
-		Type:                        typ,
+	return GetProjectEnvTargetUnion1{
+		ArrayOfGetProjectEnvTargetEnum1: arrayOfGetProjectEnvTargetEnum1,
+		Type:                            typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyTargetGetProjectEnvTarget2(getProjectEnvTarget2 GetProjectEnvTarget2) GetProjectEnvResponseBodyTarget {
-	typ := GetProjectEnvResponseBodyTargetTypeGetProjectEnvTarget2
+func CreateGetProjectEnvTargetUnion1GetProjectEnvTargetEnum2(getProjectEnvTargetEnum2 GetProjectEnvTargetEnum2) GetProjectEnvTargetUnion1 {
+	typ := GetProjectEnvTargetUnion1TypeGetProjectEnvTargetEnum2
 
-	return GetProjectEnvResponseBodyTarget{
-		GetProjectEnvTarget2: &getProjectEnvTarget2,
-		Type:                 typ,
+	return GetProjectEnvTargetUnion1{
+		GetProjectEnvTargetEnum2: &getProjectEnvTargetEnum2,
+		Type:                     typ,
 	}
 }
 
-func (u *GetProjectEnvResponseBodyTarget) UnmarshalJSON(data []byte) error {
+func (u *GetProjectEnvTargetUnion1) UnmarshalJSON(data []byte) error {
 
-	var arrayOfGetProjectEnvTarget1 []GetProjectEnvTarget1 = []GetProjectEnvTarget1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetProjectEnvTarget1, "", true, true); err == nil {
-		u.ArrayOfGetProjectEnvTarget1 = arrayOfGetProjectEnvTarget1
-		u.Type = GetProjectEnvResponseBodyTargetTypeArrayOfGetProjectEnvTarget1
+	var arrayOfGetProjectEnvTargetEnum1 []GetProjectEnvTargetEnum1 = []GetProjectEnvTargetEnum1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetProjectEnvTargetEnum1, "", true, true); err == nil {
+		u.ArrayOfGetProjectEnvTargetEnum1 = arrayOfGetProjectEnvTargetEnum1
+		u.Type = GetProjectEnvTargetUnion1TypeArrayOfGetProjectEnvTargetEnum1
 		return nil
 	}
 
-	var getProjectEnvTarget2 GetProjectEnvTarget2 = GetProjectEnvTarget2("")
-	if err := utils.UnmarshalJSON(data, &getProjectEnvTarget2, "", true, true); err == nil {
-		u.GetProjectEnvTarget2 = &getProjectEnvTarget2
-		u.Type = GetProjectEnvResponseBodyTargetTypeGetProjectEnvTarget2
+	var getProjectEnvTargetEnum2 GetProjectEnvTargetEnum2 = GetProjectEnvTargetEnum2("")
+	if err := utils.UnmarshalJSON(data, &getProjectEnvTargetEnum2, "", true, true); err == nil {
+		u.GetProjectEnvTargetEnum2 = &getProjectEnvTargetEnum2
+		u.Type = GetProjectEnvTargetUnion1TypeGetProjectEnvTargetEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyTarget", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvTargetUnion1", string(data))
 }
 
-func (u GetProjectEnvResponseBodyTarget) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfGetProjectEnvTarget1 != nil {
-		return utils.MarshalJSON(u.ArrayOfGetProjectEnvTarget1, "", true)
+func (u GetProjectEnvTargetUnion1) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfGetProjectEnvTargetEnum1 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetProjectEnvTargetEnum1, "", true)
 	}
 
-	if u.GetProjectEnvTarget2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvTarget2, "", true)
+	if u.GetProjectEnvTargetEnum2 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvTargetEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyTarget: all fields are null")
+	return nil, errors.New("could not marshal union type GetProjectEnvTargetUnion1: all fields are null")
 }
 
-type GetProjectEnvResponseBodyType string
+type GetProjectEnvType1 string
 
 const (
-	GetProjectEnvResponseBodyTypeSystem    GetProjectEnvResponseBodyType = "system"
-	GetProjectEnvResponseBodyTypeEncrypted GetProjectEnvResponseBodyType = "encrypted"
-	GetProjectEnvResponseBodyTypePlain     GetProjectEnvResponseBodyType = "plain"
-	GetProjectEnvResponseBodyTypeSensitive GetProjectEnvResponseBodyType = "sensitive"
-	GetProjectEnvResponseBodyTypeSecret    GetProjectEnvResponseBodyType = "secret"
+	GetProjectEnvType1System    GetProjectEnvType1 = "system"
+	GetProjectEnvType1Encrypted GetProjectEnvType1 = "encrypted"
+	GetProjectEnvType1Plain     GetProjectEnvType1 = "plain"
+	GetProjectEnvType1Sensitive GetProjectEnvType1 = "sensitive"
+	GetProjectEnvType1Secret    GetProjectEnvType1 = "secret"
 )
 
-func (e GetProjectEnvResponseBodyType) ToPointer() *GetProjectEnvResponseBodyType {
+func (e GetProjectEnvType1) ToPointer() *GetProjectEnvType1 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2897,1054 +2897,1054 @@ func (e *GetProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = GetProjectEnvResponseBodyType(v)
+		*e = GetProjectEnvType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvType1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type string
+type GetProjectEnvTypeFlagsConnectionString1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115TypeFlagsConnectionString GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type = "flags-connection-string"
+	GetProjectEnvTypeFlagsConnectionString1FlagsConnectionString GetProjectEnvTypeFlagsConnectionString1 = "flags-connection-string"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type {
+func (e GetProjectEnvTypeFlagsConnectionString1) ToPointer() *GetProjectEnvTypeFlagsConnectionString1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsConnectionString1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-connection-string":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type(v)
+		*e = GetProjectEnvTypeFlagsConnectionString1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsConnectionString1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint15 struct {
-	Type      GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type `json:"type"`
-	ProjectID string                                                                        `json:"projectId"`
+type GetProjectEnvContentHintFlagsConnectionString1 struct {
+	Type      GetProjectEnvTypeFlagsConnectionString1 `json:"type"`
+	ProjectID string                                  `json:"projectId"`
 }
 
-func (o *GetProjectEnvContentHint15) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type {
+func (o *GetProjectEnvContentHintFlagsConnectionString1) GetType() GetProjectEnvTypeFlagsConnectionString1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type("")
+		return GetProjectEnvTypeFlagsConnectionString1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint15) GetProjectID() string {
+func (o *GetProjectEnvContentHintFlagsConnectionString1) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type string
+type GetProjectEnvTypeIntegrationStoreSecret1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114TypeIntegrationStoreSecret GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type = "integration-store-secret"
+	GetProjectEnvTypeIntegrationStoreSecret1IntegrationStoreSecret GetProjectEnvTypeIntegrationStoreSecret1 = "integration-store-secret"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type {
+func (e GetProjectEnvTypeIntegrationStoreSecret1) ToPointer() *GetProjectEnvTypeIntegrationStoreSecret1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeIntegrationStoreSecret1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "integration-store-secret":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type(v)
+		*e = GetProjectEnvTypeIntegrationStoreSecret1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeIntegrationStoreSecret1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint14 struct {
-	Type                       GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type `json:"type"`
-	StoreID                    string                                                                        `json:"storeId"`
-	IntegrationID              string                                                                        `json:"integrationId"`
-	IntegrationProductID       string                                                                        `json:"integrationProductId"`
-	IntegrationConfigurationID string                                                                        `json:"integrationConfigurationId"`
+type GetProjectEnvContentHintIntegrationStoreSecret1 struct {
+	Type                       GetProjectEnvTypeIntegrationStoreSecret1 `json:"type"`
+	StoreID                    string                                   `json:"storeId"`
+	IntegrationID              string                                   `json:"integrationId"`
+	IntegrationProductID       string                                   `json:"integrationProductId"`
+	IntegrationConfigurationID string                                   `json:"integrationConfigurationId"`
 }
 
-func (o *GetProjectEnvContentHint14) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret1) GetType() GetProjectEnvTypeIntegrationStoreSecret1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type("")
+		return GetProjectEnvTypeIntegrationStoreSecret1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint14) GetStoreID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-func (o *GetProjectEnvContentHint14) GetIntegrationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret1) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *GetProjectEnvContentHint14) GetIntegrationProductID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret1) GetIntegrationProductID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationProductID
 }
 
-func (o *GetProjectEnvContentHint14) GetIntegrationConfigurationID() string {
+func (o *GetProjectEnvContentHintIntegrationStoreSecret1) GetIntegrationConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationConfigurationID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type string
+type GetProjectEnvTypePostgresURLNoSsl1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113TypePostgresURLNoSsl GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type = "postgres-url-no-ssl"
+	GetProjectEnvTypePostgresURLNoSsl1PostgresURLNoSsl GetProjectEnvTypePostgresURLNoSsl1 = "postgres-url-no-ssl"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type {
+func (e GetProjectEnvTypePostgresURLNoSsl1) ToPointer() *GetProjectEnvTypePostgresURLNoSsl1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNoSsl1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-no-ssl":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type(v)
+		*e = GetProjectEnvTypePostgresURLNoSsl1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNoSsl1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint13 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNoSsl1 struct {
+	Type    GetProjectEnvTypePostgresURLNoSsl1 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint13) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl1) GetType() GetProjectEnvTypePostgresURLNoSsl1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type("")
+		return GetProjectEnvTypePostgresURLNoSsl1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint13) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNoSsl1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type string
+type GetProjectEnvTypePostgresDatabase1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112TypePostgresDatabase GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type = "postgres-database"
+	GetProjectEnvTypePostgresDatabase1PostgresDatabase GetProjectEnvTypePostgresDatabase1 = "postgres-database"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type {
+func (e GetProjectEnvTypePostgresDatabase1) ToPointer() *GetProjectEnvTypePostgresDatabase1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresDatabase1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-database":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type(v)
+		*e = GetProjectEnvTypePostgresDatabase1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresDatabase1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint12 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresDatabase1 struct {
+	Type    GetProjectEnvTypePostgresDatabase1 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint12) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type {
+func (o *GetProjectEnvContentHintPostgresDatabase1) GetType() GetProjectEnvTypePostgresDatabase1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type("")
+		return GetProjectEnvTypePostgresDatabase1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint12) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresDatabase1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type string
+type GetProjectEnvTypePostgresPassword1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111TypePostgresPassword GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type = "postgres-password"
+	GetProjectEnvTypePostgresPassword1PostgresPassword GetProjectEnvTypePostgresPassword1 = "postgres-password"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type {
+func (e GetProjectEnvTypePostgresPassword1) ToPointer() *GetProjectEnvTypePostgresPassword1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPassword1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-password":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type(v)
+		*e = GetProjectEnvTypePostgresPassword1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPassword1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint11 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresPassword1 struct {
+	Type    GetProjectEnvTypePostgresPassword1 `json:"type"`
+	StoreID string                             `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint11) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type {
+func (o *GetProjectEnvContentHintPostgresPassword1) GetType() GetProjectEnvTypePostgresPassword1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type("")
+		return GetProjectEnvTypePostgresPassword1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint11) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPassword1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type string
+type GetProjectEnvTypePostgresHost1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110TypePostgresHost GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type = "postgres-host"
+	GetProjectEnvTypePostgresHost1PostgresHost GetProjectEnvTypePostgresHost1 = "postgres-host"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type {
+func (e GetProjectEnvTypePostgresHost1) ToPointer() *GetProjectEnvTypePostgresHost1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresHost1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-host":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type(v)
+		*e = GetProjectEnvTypePostgresHost1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresHost1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint10 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type `json:"type"`
-	StoreID string                                                                        `json:"storeId"`
+type GetProjectEnvContentHintPostgresHost1 struct {
+	Type    GetProjectEnvTypePostgresHost1 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint10) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type {
+func (o *GetProjectEnvContentHintPostgresHost1) GetType() GetProjectEnvTypePostgresHost1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type("")
+		return GetProjectEnvTypePostgresHost1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint10) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresHost1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type string
+type GetProjectEnvTypePostgresUser1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19TypePostgresUser GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type = "postgres-user"
+	GetProjectEnvTypePostgresUser1PostgresUser GetProjectEnvTypePostgresUser1 = "postgres-user"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type {
+func (e GetProjectEnvTypePostgresUser1) ToPointer() *GetProjectEnvTypePostgresUser1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresUser1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-user":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type(v)
+		*e = GetProjectEnvTypePostgresUser1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresUser1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint9 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresUser1 struct {
+	Type    GetProjectEnvTypePostgresUser1 `json:"type"`
+	StoreID string                         `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint9) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type {
+func (o *GetProjectEnvContentHintPostgresUser1) GetType() GetProjectEnvTypePostgresUser1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type("")
+		return GetProjectEnvTypePostgresUser1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint9) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresUser1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type string
+type GetProjectEnvTypePostgresPrismaURL1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18TypePostgresPrismaURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type = "postgres-prisma-url"
+	GetProjectEnvTypePostgresPrismaURL1PostgresPrismaURL GetProjectEnvTypePostgresPrismaURL1 = "postgres-prisma-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type {
+func (e GetProjectEnvTypePostgresPrismaURL1) ToPointer() *GetProjectEnvTypePostgresPrismaURL1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresPrismaURL1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-prisma-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type(v)
+		*e = GetProjectEnvTypePostgresPrismaURL1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresPrismaURL1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint8 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type `json:"type"`
-	StoreID string                                                                       `json:"storeId"`
+type GetProjectEnvContentHintPostgresPrismaURL1 struct {
+	Type    GetProjectEnvTypePostgresPrismaURL1 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint8) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type {
+func (o *GetProjectEnvContentHintPostgresPrismaURL1) GetType() GetProjectEnvTypePostgresPrismaURL1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type("")
+		return GetProjectEnvTypePostgresPrismaURL1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint8) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresPrismaURL1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type string
+type GetProjectEnvTypePostgresURLNonPooling1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1TypePostgresURLNonPooling GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type = "postgres-url-non-pooling"
+	GetProjectEnvTypePostgresURLNonPooling1PostgresURLNonPooling GetProjectEnvTypePostgresURLNonPooling1 = "postgres-url-non-pooling"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type {
+func (e GetProjectEnvTypePostgresURLNonPooling1) ToPointer() *GetProjectEnvTypePostgresURLNonPooling1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURLNonPooling1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url-non-pooling":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type(v)
+		*e = GetProjectEnvTypePostgresURLNonPooling1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURLNonPooling1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint7 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type `json:"type"`
-	StoreID string                                                                      `json:"storeId"`
+type GetProjectEnvContentHintPostgresURLNonPooling1 struct {
+	Type    GetProjectEnvTypePostgresURLNonPooling1 `json:"type"`
+	StoreID string                                  `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint7) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling1) GetType() GetProjectEnvTypePostgresURLNonPooling1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type("")
+		return GetProjectEnvTypePostgresURLNonPooling1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint7) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURLNonPooling1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType string
+type GetProjectEnvTypePostgresURL1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyTypePostgresURL GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType = "postgres-url"
+	GetProjectEnvTypePostgresURL1PostgresURL GetProjectEnvTypePostgresURL1 = "postgres-url"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType {
+func (e GetProjectEnvTypePostgresURL1) ToPointer() *GetProjectEnvTypePostgresURL1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypePostgresURL1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "postgres-url":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType(v)
+		*e = GetProjectEnvTypePostgresURL1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypePostgresURL1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint6 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	StoreID string                                                                     `json:"storeId"`
+type GetProjectEnvContentHintPostgresURL1 struct {
+	Type    GetProjectEnvTypePostgresURL1 `json:"type"`
+	StoreID string                        `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint6) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType {
+func (o *GetProjectEnvContentHintPostgresURL1) GetType() GetProjectEnvTypePostgresURL1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType("")
+		return GetProjectEnvTypePostgresURL1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint6) GetStoreID() string {
+func (o *GetProjectEnvContentHintPostgresURL1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200ApplicationJSONType string
+type GetProjectEnvTypeBlobReadWriteToken1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200ApplicationJSONTypeBlobReadWriteToken GetProjectEnvContentHintProjectsResponse200ApplicationJSONType = "blob-read-write-token"
+	GetProjectEnvTypeBlobReadWriteToken1BlobReadWriteToken GetProjectEnvTypeBlobReadWriteToken1 = "blob-read-write-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200ApplicationJSONType) ToPointer() *GetProjectEnvContentHintProjectsResponse200ApplicationJSONType {
+func (e GetProjectEnvTypeBlobReadWriteToken1) ToPointer() *GetProjectEnvTypeBlobReadWriteToken1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeBlobReadWriteToken1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "blob-read-write-token":
-		*e = GetProjectEnvContentHintProjectsResponse200ApplicationJSONType(v)
+		*e = GetProjectEnvTypeBlobReadWriteToken1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeBlobReadWriteToken1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint5 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200ApplicationJSONType `json:"type"`
-	StoreID string                                                         `json:"storeId"`
+type GetProjectEnvContentHintBlobReadWriteToken1 struct {
+	Type    GetProjectEnvTypeBlobReadWriteToken1 `json:"type"`
+	StoreID string                               `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint5) GetType() GetProjectEnvContentHintProjectsResponse200ApplicationJSONType {
+func (o *GetProjectEnvContentHintBlobReadWriteToken1) GetType() GetProjectEnvTypeBlobReadWriteToken1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200ApplicationJSONType("")
+		return GetProjectEnvTypeBlobReadWriteToken1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint5) GetStoreID() string {
+func (o *GetProjectEnvContentHintBlobReadWriteToken1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponse200Type string
+type GetProjectEnvTypeRedisRestAPIReadOnlyToken1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponse200TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintProjectsResponse200Type = "redis-rest-api-read-only-token"
+	GetProjectEnvTypeRedisRestAPIReadOnlyToken1RedisRestAPIReadOnlyToken GetProjectEnvTypeRedisRestAPIReadOnlyToken1 = "redis-rest-api-read-only-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponse200Type) ToPointer() *GetProjectEnvContentHintProjectsResponse200Type {
+func (e GetProjectEnvTypeRedisRestAPIReadOnlyToken1) ToPointer() *GetProjectEnvTypeRedisRestAPIReadOnlyToken1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIReadOnlyToken1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-read-only-token":
-		*e = GetProjectEnvContentHintProjectsResponse200Type(v)
+		*e = GetProjectEnvTypeRedisRestAPIReadOnlyToken1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIReadOnlyToken1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint4 struct {
-	Type    GetProjectEnvContentHintProjectsResponse200Type `json:"type"`
-	StoreID string                                          `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 struct {
+	Type    GetProjectEnvTypeRedisRestAPIReadOnlyToken1 `json:"type"`
+	StoreID string                                      `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint4) GetType() GetProjectEnvContentHintProjectsResponse200Type {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetType() GetProjectEnvTypeRedisRestAPIReadOnlyToken1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponse200Type("")
+		return GetProjectEnvTypeRedisRestAPIReadOnlyToken1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint4) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsResponseType string
+type GetProjectEnvTypeRedisRestAPIToken1 string
 
 const (
-	GetProjectEnvContentHintProjectsResponseTypeRedisRestAPIToken GetProjectEnvContentHintProjectsResponseType = "redis-rest-api-token"
+	GetProjectEnvTypeRedisRestAPIToken1RedisRestAPIToken GetProjectEnvTypeRedisRestAPIToken1 = "redis-rest-api-token"
 )
 
-func (e GetProjectEnvContentHintProjectsResponseType) ToPointer() *GetProjectEnvContentHintProjectsResponseType {
+func (e GetProjectEnvTypeRedisRestAPIToken1) ToPointer() *GetProjectEnvTypeRedisRestAPIToken1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsResponseType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIToken1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-token":
-		*e = GetProjectEnvContentHintProjectsResponseType(v)
+		*e = GetProjectEnvTypeRedisRestAPIToken1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsResponseType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIToken1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint3 struct {
-	Type    GetProjectEnvContentHintProjectsResponseType `json:"type"`
-	StoreID string                                       `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIToken1 struct {
+	Type    GetProjectEnvTypeRedisRestAPIToken1 `json:"type"`
+	StoreID string                              `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint3) GetType() GetProjectEnvContentHintProjectsResponseType {
+func (o *GetProjectEnvContentHintRedisRestAPIToken1) GetType() GetProjectEnvTypeRedisRestAPIToken1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsResponseType("")
+		return GetProjectEnvTypeRedisRestAPIToken1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint3) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIToken1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintProjectsType string
+type GetProjectEnvTypeRedisRestAPIURL1 string
 
 const (
-	GetProjectEnvContentHintProjectsTypeRedisRestAPIURL GetProjectEnvContentHintProjectsType = "redis-rest-api-url"
+	GetProjectEnvTypeRedisRestAPIURL1RedisRestAPIURL GetProjectEnvTypeRedisRestAPIURL1 = "redis-rest-api-url"
 )
 
-func (e GetProjectEnvContentHintProjectsType) ToPointer() *GetProjectEnvContentHintProjectsType {
+func (e GetProjectEnvTypeRedisRestAPIURL1) ToPointer() *GetProjectEnvTypeRedisRestAPIURL1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintProjectsType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisRestAPIURL1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-rest-api-url":
-		*e = GetProjectEnvContentHintProjectsType(v)
+		*e = GetProjectEnvTypeRedisRestAPIURL1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintProjectsType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisRestAPIURL1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint2 struct {
-	Type    GetProjectEnvContentHintProjectsType `json:"type"`
-	StoreID string                               `json:"storeId"`
+type GetProjectEnvContentHintRedisRestAPIURL1 struct {
+	Type    GetProjectEnvTypeRedisRestAPIURL1 `json:"type"`
+	StoreID string                            `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint2) GetType() GetProjectEnvContentHintProjectsType {
+func (o *GetProjectEnvContentHintRedisRestAPIURL1) GetType() GetProjectEnvTypeRedisRestAPIURL1 {
 	if o == nil {
-		return GetProjectEnvContentHintProjectsType("")
+		return GetProjectEnvTypeRedisRestAPIURL1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint2) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisRestAPIURL1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvContentHintType string
+type GetProjectEnvTypeRedisURL1 string
 
 const (
-	GetProjectEnvContentHintTypeRedisURL GetProjectEnvContentHintType = "redis-url"
+	GetProjectEnvTypeRedisURL1RedisURL GetProjectEnvTypeRedisURL1 = "redis-url"
 )
 
-func (e GetProjectEnvContentHintType) ToPointer() *GetProjectEnvContentHintType {
+func (e GetProjectEnvTypeRedisURL1) ToPointer() *GetProjectEnvTypeRedisURL1 {
 	return &e
 }
-func (e *GetProjectEnvContentHintType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeRedisURL1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "redis-url":
-		*e = GetProjectEnvContentHintType(v)
+		*e = GetProjectEnvTypeRedisURL1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvContentHintType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeRedisURL1: %v", v)
 	}
 }
 
-type GetProjectEnvContentHint1 struct {
-	Type    GetProjectEnvContentHintType `json:"type"`
-	StoreID string                       `json:"storeId"`
+type GetProjectEnvContentHintRedisURL1 struct {
+	Type    GetProjectEnvTypeRedisURL1 `json:"type"`
+	StoreID string                     `json:"storeId"`
 }
 
-func (o *GetProjectEnvContentHint1) GetType() GetProjectEnvContentHintType {
+func (o *GetProjectEnvContentHintRedisURL1) GetType() GetProjectEnvTypeRedisURL1 {
 	if o == nil {
-		return GetProjectEnvContentHintType("")
+		return GetProjectEnvTypeRedisURL1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvContentHint1) GetStoreID() string {
+func (o *GetProjectEnvContentHintRedisURL1) GetStoreID() string {
 	if o == nil {
 		return ""
 	}
 	return o.StoreID
 }
 
-type GetProjectEnvResponseBodyContentHintType string
+type GetProjectEnvContentHintUnion1Type string
 
 const (
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint1  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_1"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint2  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_2"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint3  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_3"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint4  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_4"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint5  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_5"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint6  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_6"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint7  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_7"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint8  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_8"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint9  GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_9"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint10 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_10"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint11 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_11"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint12 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_12"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint13 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_13"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint14 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_14"
-	GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint15 GetProjectEnvResponseBodyContentHintType = "getProjectEnv_contentHint_15"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1                  GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisURL_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1           GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIURL_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1         GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIToken_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1        GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_BlobReadWriteToken_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1               GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURL_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1     GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURLNonPooling_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1         GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresPrismaURL_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1              GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresUser_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1              GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresHost_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresPassword_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresDatabase_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURLNoSsl_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1    GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_IntegrationStoreSecret_1"
+	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1     GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_FlagsConnectionString_1"
 )
 
-type GetProjectEnvResponseBodyContentHint struct {
-	GetProjectEnvContentHint1  *GetProjectEnvContentHint1
-	GetProjectEnvContentHint2  *GetProjectEnvContentHint2
-	GetProjectEnvContentHint3  *GetProjectEnvContentHint3
-	GetProjectEnvContentHint4  *GetProjectEnvContentHint4
-	GetProjectEnvContentHint5  *GetProjectEnvContentHint5
-	GetProjectEnvContentHint6  *GetProjectEnvContentHint6
-	GetProjectEnvContentHint7  *GetProjectEnvContentHint7
-	GetProjectEnvContentHint8  *GetProjectEnvContentHint8
-	GetProjectEnvContentHint9  *GetProjectEnvContentHint9
-	GetProjectEnvContentHint10 *GetProjectEnvContentHint10
-	GetProjectEnvContentHint11 *GetProjectEnvContentHint11
-	GetProjectEnvContentHint12 *GetProjectEnvContentHint12
-	GetProjectEnvContentHint13 *GetProjectEnvContentHint13
-	GetProjectEnvContentHint14 *GetProjectEnvContentHint14
-	GetProjectEnvContentHint15 *GetProjectEnvContentHint15
+type GetProjectEnvContentHintUnion1 struct {
+	GetProjectEnvContentHintRedisURL1                  *GetProjectEnvContentHintRedisURL1                  `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIURL1           *GetProjectEnvContentHintRedisRestAPIURL1           `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIToken1         *GetProjectEnvContentHintRedisRestAPIToken1         `queryParam:"inline"`
+	GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 *GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 `queryParam:"inline"`
+	GetProjectEnvContentHintBlobReadWriteToken1        *GetProjectEnvContentHintBlobReadWriteToken1        `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURL1               *GetProjectEnvContentHintPostgresURL1               `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNonPooling1     *GetProjectEnvContentHintPostgresURLNonPooling1     `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPrismaURL1         *GetProjectEnvContentHintPostgresPrismaURL1         `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresUser1              *GetProjectEnvContentHintPostgresUser1              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresHost1              *GetProjectEnvContentHintPostgresHost1              `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresPassword1          *GetProjectEnvContentHintPostgresPassword1          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresDatabase1          *GetProjectEnvContentHintPostgresDatabase1          `queryParam:"inline"`
+	GetProjectEnvContentHintPostgresURLNoSsl1          *GetProjectEnvContentHintPostgresURLNoSsl1          `queryParam:"inline"`
+	GetProjectEnvContentHintIntegrationStoreSecret1    *GetProjectEnvContentHintIntegrationStoreSecret1    `queryParam:"inline"`
+	GetProjectEnvContentHintFlagsConnectionString1     *GetProjectEnvContentHintFlagsConnectionString1     `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyContentHintType
+	Type GetProjectEnvContentHintUnion1Type
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint1(getProjectEnvContentHint1 GetProjectEnvContentHint1) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint1
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisURL1(getProjectEnvContentHintRedisURL1 GetProjectEnvContentHintRedisURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint1: &getProjectEnvContentHint1,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintRedisURL1: &getProjectEnvContentHintRedisURL1,
+		Type:                              typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint2(getProjectEnvContentHint2 GetProjectEnvContentHint2) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint2
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIURL1(getProjectEnvContentHintRedisRestAPIURL1 GetProjectEnvContentHintRedisRestAPIURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint2: &getProjectEnvContentHint2,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintRedisRestAPIURL1: &getProjectEnvContentHintRedisRestAPIURL1,
+		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint3(getProjectEnvContentHint3 GetProjectEnvContentHint3) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint3
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIToken1(getProjectEnvContentHintRedisRestAPIToken1 GetProjectEnvContentHintRedisRestAPIToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint3: &getProjectEnvContentHint3,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintRedisRestAPIToken1: &getProjectEnvContentHintRedisRestAPIToken1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint4(getProjectEnvContentHint4 GetProjectEnvContentHint4) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint4
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIReadOnlyToken1(getProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint4: &getProjectEnvContentHint4,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken1: &getProjectEnvContentHintRedisRestAPIReadOnlyToken1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint5(getProjectEnvContentHint5 GetProjectEnvContentHint5) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint5
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintBlobReadWriteToken1(getProjectEnvContentHintBlobReadWriteToken1 GetProjectEnvContentHintBlobReadWriteToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint5: &getProjectEnvContentHint5,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintBlobReadWriteToken1: &getProjectEnvContentHintBlobReadWriteToken1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint6(getProjectEnvContentHint6 GetProjectEnvContentHint6) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint6
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURL1(getProjectEnvContentHintPostgresURL1 GetProjectEnvContentHintPostgresURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint6: &getProjectEnvContentHint6,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresURL1: &getProjectEnvContentHintPostgresURL1,
+		Type:                                 typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint7(getProjectEnvContentHint7 GetProjectEnvContentHint7) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint7
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURLNonPooling1(getProjectEnvContentHintPostgresURLNonPooling1 GetProjectEnvContentHintPostgresURLNonPooling1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint7: &getProjectEnvContentHint7,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresURLNonPooling1: &getProjectEnvContentHintPostgresURLNonPooling1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint8(getProjectEnvContentHint8 GetProjectEnvContentHint8) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint8
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresPrismaURL1(getProjectEnvContentHintPostgresPrismaURL1 GetProjectEnvContentHintPostgresPrismaURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint8: &getProjectEnvContentHint8,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresPrismaURL1: &getProjectEnvContentHintPostgresPrismaURL1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint9(getProjectEnvContentHint9 GetProjectEnvContentHint9) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint9
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresUser1(getProjectEnvContentHintPostgresUser1 GetProjectEnvContentHintPostgresUser1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint9: &getProjectEnvContentHint9,
-		Type:                      typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresUser1: &getProjectEnvContentHintPostgresUser1,
+		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint10(getProjectEnvContentHint10 GetProjectEnvContentHint10) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint10
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresHost1(getProjectEnvContentHintPostgresHost1 GetProjectEnvContentHintPostgresHost1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint10: &getProjectEnvContentHint10,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresHost1: &getProjectEnvContentHintPostgresHost1,
+		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint11(getProjectEnvContentHint11 GetProjectEnvContentHint11) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint11
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresPassword1(getProjectEnvContentHintPostgresPassword1 GetProjectEnvContentHintPostgresPassword1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint11: &getProjectEnvContentHint11,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresPassword1: &getProjectEnvContentHintPostgresPassword1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint12(getProjectEnvContentHint12 GetProjectEnvContentHint12) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint12
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresDatabase1(getProjectEnvContentHintPostgresDatabase1 GetProjectEnvContentHintPostgresDatabase1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint12: &getProjectEnvContentHint12,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresDatabase1: &getProjectEnvContentHintPostgresDatabase1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint13(getProjectEnvContentHint13 GetProjectEnvContentHint13) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint13
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURLNoSsl1(getProjectEnvContentHintPostgresURLNoSsl1 GetProjectEnvContentHintPostgresURLNoSsl1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint13: &getProjectEnvContentHint13,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintPostgresURLNoSsl1: &getProjectEnvContentHintPostgresURLNoSsl1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint14(getProjectEnvContentHint14 GetProjectEnvContentHint14) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint14
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintIntegrationStoreSecret1(getProjectEnvContentHintIntegrationStoreSecret1 GetProjectEnvContentHintIntegrationStoreSecret1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint14: &getProjectEnvContentHint14,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintIntegrationStoreSecret1: &getProjectEnvContentHintIntegrationStoreSecret1,
+		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvResponseBodyContentHintGetProjectEnvContentHint15(getProjectEnvContentHint15 GetProjectEnvContentHint15) GetProjectEnvResponseBodyContentHint {
-	typ := GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint15
+func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintFlagsConnectionString1(getProjectEnvContentHintFlagsConnectionString1 GetProjectEnvContentHintFlagsConnectionString1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1
 
-	return GetProjectEnvResponseBodyContentHint{
-		GetProjectEnvContentHint15: &getProjectEnvContentHint15,
-		Type:                       typ,
+	return GetProjectEnvContentHintUnion1{
+		GetProjectEnvContentHintFlagsConnectionString1: &getProjectEnvContentHintFlagsConnectionString1,
+		Type: typ,
 	}
 }
 
-func (u *GetProjectEnvResponseBodyContentHint) UnmarshalJSON(data []byte) error {
+func (u *GetProjectEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 
-	var getProjectEnvContentHint7 GetProjectEnvContentHint7 = GetProjectEnvContentHint7{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint7, "", true, true); err == nil {
-		u.GetProjectEnvContentHint7 = &getProjectEnvContentHint7
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint7
+	var getProjectEnvContentHintPostgresURLNonPooling1 GetProjectEnvContentHintPostgresURLNonPooling1 = GetProjectEnvContentHintPostgresURLNonPooling1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNonPooling1 = &getProjectEnvContentHintPostgresURLNonPooling1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1
 		return nil
 	}
 
-	var getProjectEnvContentHint11 GetProjectEnvContentHint11 = GetProjectEnvContentHint11{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint11, "", true, true); err == nil {
-		u.GetProjectEnvContentHint11 = &getProjectEnvContentHint11
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint11
+	var getProjectEnvContentHintPostgresPassword1 GetProjectEnvContentHintPostgresPassword1 = GetProjectEnvContentHintPostgresPassword1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPassword1 = &getProjectEnvContentHintPostgresPassword1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1
 		return nil
 	}
 
-	var getProjectEnvContentHint3 GetProjectEnvContentHint3 = GetProjectEnvContentHint3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint3, "", true, true); err == nil {
-		u.GetProjectEnvContentHint3 = &getProjectEnvContentHint3
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint3
+	var getProjectEnvContentHintRedisRestAPIToken1 GetProjectEnvContentHintRedisRestAPIToken1 = GetProjectEnvContentHintRedisRestAPIToken1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIToken1 = &getProjectEnvContentHintRedisRestAPIToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1
 		return nil
 	}
 
-	var getProjectEnvContentHint4 GetProjectEnvContentHint4 = GetProjectEnvContentHint4{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint4, "", true, true); err == nil {
-		u.GetProjectEnvContentHint4 = &getProjectEnvContentHint4
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint4
+	var getProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1
 		return nil
 	}
 
-	var getProjectEnvContentHint5 GetProjectEnvContentHint5 = GetProjectEnvContentHint5{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint5, "", true, true); err == nil {
-		u.GetProjectEnvContentHint5 = &getProjectEnvContentHint5
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint5
+	var getProjectEnvContentHintBlobReadWriteToken1 GetProjectEnvContentHintBlobReadWriteToken1 = GetProjectEnvContentHintBlobReadWriteToken1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintBlobReadWriteToken1 = &getProjectEnvContentHintBlobReadWriteToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1
 		return nil
 	}
 
-	var getProjectEnvContentHint6 GetProjectEnvContentHint6 = GetProjectEnvContentHint6{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint6, "", true, true); err == nil {
-		u.GetProjectEnvContentHint6 = &getProjectEnvContentHint6
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint6
+	var getProjectEnvContentHintPostgresURL1 GetProjectEnvContentHintPostgresURL1 = GetProjectEnvContentHintPostgresURL1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURL1 = &getProjectEnvContentHintPostgresURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1
 		return nil
 	}
 
-	var getProjectEnvContentHint2 GetProjectEnvContentHint2 = GetProjectEnvContentHint2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint2, "", true, true); err == nil {
-		u.GetProjectEnvContentHint2 = &getProjectEnvContentHint2
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint2
+	var getProjectEnvContentHintRedisRestAPIURL1 GetProjectEnvContentHintRedisRestAPIURL1 = GetProjectEnvContentHintRedisRestAPIURL1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisRestAPIURL1 = &getProjectEnvContentHintRedisRestAPIURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1
 		return nil
 	}
 
-	var getProjectEnvContentHint9 GetProjectEnvContentHint9 = GetProjectEnvContentHint9{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint9, "", true, true); err == nil {
-		u.GetProjectEnvContentHint9 = &getProjectEnvContentHint9
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint9
+	var getProjectEnvContentHintPostgresUser1 GetProjectEnvContentHintPostgresUser1 = GetProjectEnvContentHintPostgresUser1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresUser1 = &getProjectEnvContentHintPostgresUser1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1
 		return nil
 	}
 
-	var getProjectEnvContentHint1 GetProjectEnvContentHint1 = GetProjectEnvContentHint1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint1, "", true, true); err == nil {
-		u.GetProjectEnvContentHint1 = &getProjectEnvContentHint1
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint1
+	var getProjectEnvContentHintRedisURL1 GetProjectEnvContentHintRedisURL1 = GetProjectEnvContentHintRedisURL1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintRedisURL1 = &getProjectEnvContentHintRedisURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1
 		return nil
 	}
 
-	var getProjectEnvContentHint10 GetProjectEnvContentHint10 = GetProjectEnvContentHint10{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint10, "", true, true); err == nil {
-		u.GetProjectEnvContentHint10 = &getProjectEnvContentHint10
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint10
+	var getProjectEnvContentHintPostgresHost1 GetProjectEnvContentHintPostgresHost1 = GetProjectEnvContentHintPostgresHost1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresHost1 = &getProjectEnvContentHintPostgresHost1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1
 		return nil
 	}
 
-	var getProjectEnvContentHint8 GetProjectEnvContentHint8 = GetProjectEnvContentHint8{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint8, "", true, true); err == nil {
-		u.GetProjectEnvContentHint8 = &getProjectEnvContentHint8
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint8
+	var getProjectEnvContentHintPostgresPrismaURL1 GetProjectEnvContentHintPostgresPrismaURL1 = GetProjectEnvContentHintPostgresPrismaURL1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresPrismaURL1 = &getProjectEnvContentHintPostgresPrismaURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1
 		return nil
 	}
 
-	var getProjectEnvContentHint12 GetProjectEnvContentHint12 = GetProjectEnvContentHint12{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint12, "", true, true); err == nil {
-		u.GetProjectEnvContentHint12 = &getProjectEnvContentHint12
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint12
+	var getProjectEnvContentHintPostgresDatabase1 GetProjectEnvContentHintPostgresDatabase1 = GetProjectEnvContentHintPostgresDatabase1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresDatabase1 = &getProjectEnvContentHintPostgresDatabase1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1
 		return nil
 	}
 
-	var getProjectEnvContentHint13 GetProjectEnvContentHint13 = GetProjectEnvContentHint13{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint13, "", true, true); err == nil {
-		u.GetProjectEnvContentHint13 = &getProjectEnvContentHint13
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint13
+	var getProjectEnvContentHintPostgresURLNoSsl1 GetProjectEnvContentHintPostgresURLNoSsl1 = GetProjectEnvContentHintPostgresURLNoSsl1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintPostgresURLNoSsl1 = &getProjectEnvContentHintPostgresURLNoSsl1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1
 		return nil
 	}
 
-	var getProjectEnvContentHint15 GetProjectEnvContentHint15 = GetProjectEnvContentHint15{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint15, "", true, true); err == nil {
-		u.GetProjectEnvContentHint15 = &getProjectEnvContentHint15
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint15
+	var getProjectEnvContentHintFlagsConnectionString1 GetProjectEnvContentHintFlagsConnectionString1 = GetProjectEnvContentHintFlagsConnectionString1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintFlagsConnectionString1 = &getProjectEnvContentHintFlagsConnectionString1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1
 		return nil
 	}
 
-	var getProjectEnvContentHint14 GetProjectEnvContentHint14 = GetProjectEnvContentHint14{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHint14, "", true, true); err == nil {
-		u.GetProjectEnvContentHint14 = &getProjectEnvContentHint14
-		u.Type = GetProjectEnvResponseBodyContentHintTypeGetProjectEnvContentHint14
+	var getProjectEnvContentHintIntegrationStoreSecret1 GetProjectEnvContentHintIntegrationStoreSecret1 = GetProjectEnvContentHintIntegrationStoreSecret1{}
+	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret1, "", true, true); err == nil {
+		u.GetProjectEnvContentHintIntegrationStoreSecret1 = &getProjectEnvContentHintIntegrationStoreSecret1
+		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvResponseBodyContentHint", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectEnvContentHintUnion1", string(data))
 }
 
-func (u GetProjectEnvResponseBodyContentHint) MarshalJSON() ([]byte, error) {
-	if u.GetProjectEnvContentHint1 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint1, "", true)
+func (u GetProjectEnvContentHintUnion1) MarshalJSON() ([]byte, error) {
+	if u.GetProjectEnvContentHintRedisURL1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisURL1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint2 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint2, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIURL1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIURL1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint3 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint3, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIToken1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIToken1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint4 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint4, "", true)
+	if u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint5 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint5, "", true)
+	if u.GetProjectEnvContentHintBlobReadWriteToken1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintBlobReadWriteToken1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint6 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint6, "", true)
+	if u.GetProjectEnvContentHintPostgresURL1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURL1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint7 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint7, "", true)
+	if u.GetProjectEnvContentHintPostgresURLNonPooling1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNonPooling1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint8 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint8, "", true)
+	if u.GetProjectEnvContentHintPostgresPrismaURL1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPrismaURL1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint9 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint9, "", true)
+	if u.GetProjectEnvContentHintPostgresUser1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresUser1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint10 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint10, "", true)
+	if u.GetProjectEnvContentHintPostgresHost1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresHost1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint11 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint11, "", true)
+	if u.GetProjectEnvContentHintPostgresPassword1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresPassword1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint12 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint12, "", true)
+	if u.GetProjectEnvContentHintPostgresDatabase1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresDatabase1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint13 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint13, "", true)
+	if u.GetProjectEnvContentHintPostgresURLNoSsl1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintPostgresURLNoSsl1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint14 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint14, "", true)
+	if u.GetProjectEnvContentHintIntegrationStoreSecret1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintIntegrationStoreSecret1, "", true)
 	}
 
-	if u.GetProjectEnvContentHint15 != nil {
-		return utils.MarshalJSON(u.GetProjectEnvContentHint15, "", true)
+	if u.GetProjectEnvContentHintFlagsConnectionString1 != nil {
+		return utils.MarshalJSON(u.GetProjectEnvContentHintFlagsConnectionString1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectEnvResponseBodyContentHint: all fields are null")
+	return nil, errors.New("could not marshal union type GetProjectEnvContentHintUnion1: all fields are null")
 }
 
-type GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType string
+type GetProjectEnvTypeFlagsSecret1 string
 
 const (
-	GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONTypeFlagsSecret GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType = "flags-secret"
+	GetProjectEnvTypeFlagsSecret1FlagsSecret GetProjectEnvTypeFlagsSecret1 = "flags-secret"
 )
 
-func (e GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType) ToPointer() *GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType {
+func (e GetProjectEnvTypeFlagsSecret1) ToPointer() *GetProjectEnvTypeFlagsSecret1 {
 	return &e
 }
-func (e *GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *GetProjectEnvTypeFlagsSecret1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "flags-secret":
-		*e = GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType(v)
+		*e = GetProjectEnvTypeFlagsSecret1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for GetProjectEnvTypeFlagsSecret1: %v", v)
 	}
 }
 
-// GetProjectEnvResponseBodyInternalContentHint - Similar to `contentHints`, but should not be exposed to the user.
-type GetProjectEnvResponseBodyInternalContentHint struct {
-	Type GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType `json:"type"`
+// GetProjectEnvInternalContentHint1 - Similar to `contentHints`, but should not be exposed to the user.
+type GetProjectEnvInternalContentHint1 struct {
+	Type GetProjectEnvTypeFlagsSecret1 `json:"type"`
 	// Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
 	EncryptedValue string `json:"encryptedValue"`
 }
 
-func (o *GetProjectEnvResponseBodyInternalContentHint) GetType() GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType {
+func (o *GetProjectEnvInternalContentHint1) GetType() GetProjectEnvTypeFlagsSecret1 {
 	if o == nil {
-		return GetProjectEnvResponseBodyProjectsResponse200ApplicationJSONType("")
+		return GetProjectEnvTypeFlagsSecret1("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectEnvResponseBodyInternalContentHint) GetEncryptedValue() string {
+func (o *GetProjectEnvInternalContentHint1) GetEncryptedValue() string {
 	if o == nil {
 		return ""
 	}
@@ -3952,26 +3952,26 @@ func (o *GetProjectEnvResponseBodyInternalContentHint) GetEncryptedValue() strin
 }
 
 type GetProjectEnvResponseBody1 struct {
-	Decrypted bool                             `json:"decrypted"`
-	Target    *GetProjectEnvResponseBodyTarget `json:"target,omitempty"`
-	Type      GetProjectEnvResponseBodyType    `json:"type"`
+	Decrypted bool                       `json:"decrypted"`
+	Target    *GetProjectEnvTargetUnion1 `json:"target,omitempty"`
+	Type      GetProjectEnvType1         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                               `json:"sunsetSecretId,omitempty"`
-	ID                *string                               `json:"id,omitempty"`
-	Key               string                                `json:"key"`
-	ConfigurationID   *string                               `json:"configurationId,omitempty"`
-	CreatedAt         *float64                              `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                              `json:"updatedAt,omitempty"`
-	CreatedBy         *string                               `json:"createdBy,omitempty"`
-	UpdatedBy         *string                               `json:"updatedBy,omitempty"`
-	GitBranch         *string                               `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                               `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                               `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *GetProjectEnvResponseBodyContentHint `json:"contentHint,omitempty"`
+	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
+	ID                *string                         `json:"id,omitempty"`
+	Key               string                          `json:"key"`
+	ConfigurationID   *string                         `json:"configurationId,omitempty"`
+	CreatedAt         *float64                        `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                        `json:"updatedAt,omitempty"`
+	CreatedBy         *string                         `json:"createdBy,omitempty"`
+	UpdatedBy         *string                         `json:"updatedBy,omitempty"`
+	GitBranch         *string                         `json:"gitBranch,omitempty"`
+	EdgeConfigID      *string                         `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                         `json:"edgeConfigTokenId,omitempty"`
+	ContentHint       *GetProjectEnvContentHintUnion1 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *GetProjectEnvResponseBodyInternalContentHint `json:"internalContentHint,omitempty"`
-	Comment              *string                                       `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                                      `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  *GetProjectEnvInternalContentHint1 `json:"internalContentHint,omitempty"`
+	Comment              *string                            `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                           `json:"customEnvironmentIds,omitempty"`
 }
 
 func (o *GetProjectEnvResponseBody1) GetDecrypted() bool {
@@ -3981,16 +3981,16 @@ func (o *GetProjectEnvResponseBody1) GetDecrypted() bool {
 	return o.Decrypted
 }
 
-func (o *GetProjectEnvResponseBody1) GetTarget() *GetProjectEnvResponseBodyTarget {
+func (o *GetProjectEnvResponseBody1) GetTarget() *GetProjectEnvTargetUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *GetProjectEnvResponseBody1) GetType() GetProjectEnvResponseBodyType {
+func (o *GetProjectEnvResponseBody1) GetType() GetProjectEnvType1 {
 	if o == nil {
-		return GetProjectEnvResponseBodyType("")
+		return GetProjectEnvType1("")
 	}
 	return o.Type
 }
@@ -4072,14 +4072,14 @@ func (o *GetProjectEnvResponseBody1) GetEdgeConfigTokenID() *string {
 	return o.EdgeConfigTokenID
 }
 
-func (o *GetProjectEnvResponseBody1) GetContentHint() *GetProjectEnvResponseBodyContentHint {
+func (o *GetProjectEnvResponseBody1) GetContentHint() *GetProjectEnvContentHintUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.ContentHint
 }
 
-func (o *GetProjectEnvResponseBody1) GetInternalContentHint() *GetProjectEnvResponseBodyInternalContentHint {
+func (o *GetProjectEnvResponseBody1) GetInternalContentHint() *GetProjectEnvInternalContentHint1 {
 	if o == nil {
 		return nil
 	}
@@ -4100,24 +4100,24 @@ func (o *GetProjectEnvResponseBody1) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
-type GetProjectEnvResponseBodyUnionType string
+type GetProjectEnvResponseBodyType string
 
 const (
-	GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody1 GetProjectEnvResponseBodyUnionType = "getProjectEnv_responseBody_1"
-	GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody2 GetProjectEnvResponseBodyUnionType = "getProjectEnv_responseBody_2"
-	GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody3 GetProjectEnvResponseBodyUnionType = "getProjectEnv_responseBody_3"
+	GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody1 GetProjectEnvResponseBodyType = "getProjectEnv_ResponseBody_1"
+	GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody2 GetProjectEnvResponseBodyType = "getProjectEnv_ResponseBody_2"
+	GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody3 GetProjectEnvResponseBodyType = "getProjectEnv_ResponseBody_3"
 )
 
 type GetProjectEnvResponseBody struct {
-	GetProjectEnvResponseBody1 *GetProjectEnvResponseBody1
-	GetProjectEnvResponseBody2 *GetProjectEnvResponseBody2
-	GetProjectEnvResponseBody3 *GetProjectEnvResponseBody3
+	GetProjectEnvResponseBody1 *GetProjectEnvResponseBody1 `queryParam:"inline"`
+	GetProjectEnvResponseBody2 *GetProjectEnvResponseBody2 `queryParam:"inline"`
+	GetProjectEnvResponseBody3 *GetProjectEnvResponseBody3 `queryParam:"inline"`
 
-	Type GetProjectEnvResponseBodyUnionType
+	Type GetProjectEnvResponseBodyType
 }
 
 func CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody1(getProjectEnvResponseBody1 GetProjectEnvResponseBody1) GetProjectEnvResponseBody {
-	typ := GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody1
+	typ := GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody1
 
 	return GetProjectEnvResponseBody{
 		GetProjectEnvResponseBody1: &getProjectEnvResponseBody1,
@@ -4126,7 +4126,7 @@ func CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody1(getProjectEnvResp
 }
 
 func CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody2(getProjectEnvResponseBody2 GetProjectEnvResponseBody2) GetProjectEnvResponseBody {
-	typ := GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody2
+	typ := GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody2
 
 	return GetProjectEnvResponseBody{
 		GetProjectEnvResponseBody2: &getProjectEnvResponseBody2,
@@ -4135,7 +4135,7 @@ func CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody2(getProjectEnvResp
 }
 
 func CreateGetProjectEnvResponseBodyGetProjectEnvResponseBody3(getProjectEnvResponseBody3 GetProjectEnvResponseBody3) GetProjectEnvResponseBody {
-	typ := GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody3
+	typ := GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody3
 
 	return GetProjectEnvResponseBody{
 		GetProjectEnvResponseBody3: &getProjectEnvResponseBody3,
@@ -4148,21 +4148,21 @@ func (u *GetProjectEnvResponseBody) UnmarshalJSON(data []byte) error {
 	var getProjectEnvResponseBody1 GetProjectEnvResponseBody1 = GetProjectEnvResponseBody1{}
 	if err := utils.UnmarshalJSON(data, &getProjectEnvResponseBody1, "", true, true); err == nil {
 		u.GetProjectEnvResponseBody1 = &getProjectEnvResponseBody1
-		u.Type = GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody1
+		u.Type = GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody1
 		return nil
 	}
 
 	var getProjectEnvResponseBody3 GetProjectEnvResponseBody3 = GetProjectEnvResponseBody3{}
 	if err := utils.UnmarshalJSON(data, &getProjectEnvResponseBody3, "", true, true); err == nil {
 		u.GetProjectEnvResponseBody3 = &getProjectEnvResponseBody3
-		u.Type = GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody3
+		u.Type = GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody3
 		return nil
 	}
 
 	var getProjectEnvResponseBody2 GetProjectEnvResponseBody2 = GetProjectEnvResponseBody2{}
 	if err := utils.UnmarshalJSON(data, &getProjectEnvResponseBody2, "", true, true); err == nil {
 		u.GetProjectEnvResponseBody2 = &getProjectEnvResponseBody2
-		u.Type = GetProjectEnvResponseBodyUnionTypeGetProjectEnvResponseBody2
+		u.Type = GetProjectEnvResponseBodyTypeGetProjectEnvResponseBody2
 		return nil
 	}
 

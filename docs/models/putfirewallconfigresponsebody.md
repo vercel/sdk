@@ -19,20 +19,20 @@ let value: PutFirewallConfigResponseBody = {
         action: "log",
       },
       ma: {
-        active: false,
-        action: "log",
+        active: true,
+        action: "deny",
       },
       lfi: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       rfi: {
-        active: false,
-        action: "deny",
+        active: true,
+        action: "log",
       },
       rce: {
         active: false,
-        action: "deny",
+        action: "log",
       },
       php: {
         active: false,
@@ -47,15 +47,15 @@ let value: PutFirewallConfigResponseBody = {
         action: "deny",
       },
       sqli: {
-        active: false,
+        active: true,
         action: "log",
       },
       sf: {
-        active: false,
+        active: true,
         action: "log",
       },
       java: {
-        active: false,
+        active: true,
         action: "log",
       },
     },
@@ -64,30 +64,12 @@ let value: PutFirewallConfigResponseBody = {
         id: "<id>",
         name: "<value>",
         active: false,
-        conditionGroup: [
-          {
-            conditions: [
-              {
-                type: "region",
-                op: "ninc",
-              },
-            ],
-          },
-        ],
+        conditionGroup: [],
         action: {},
       },
     ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "menacing-transparency.info",
-        ip: "afca:489d:5dba:d7e4:bf7c:8fd4:0dc9:0bc8",
-        action: "deny",
-      },
-    ],
-    changes: [
-      {},
-    ],
+    ips: [],
+    changes: [],
   },
 };
 ```

@@ -19,7 +19,8 @@ const value: number = 1284.03;
 
 ```typescript
 const value: string[] = [
-  "<value>",
+  "<value 1>",
+  "<value 2>",
 ];
 ```
 

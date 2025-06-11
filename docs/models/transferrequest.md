@@ -13,8 +13,8 @@ const value: models.TransferRequest1 = {
   requester: {
     name: "<value>",
   },
-  createdAt: 6574.85,
-  expiresAt: 6954.95,
+  createdAt: 2542.83,
+  expiresAt: 1531.68,
 };
 ```
 
@@ -28,8 +28,8 @@ const value: models.TransferRequest2 = {
   requester: {
     name: "<value>",
   },
-  createdAt: 3454.37,
-  expiresAt: 1578.18,
+  createdAt: 2316.33,
+  expiresAt: 1385.21,
 };
 ```
 

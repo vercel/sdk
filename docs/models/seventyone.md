@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { SeventyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyOne = {
-  drainUrl: "https://corny-sock.info",
+  drainUrl: "https://superior-gripper.biz/",
 };
 ```
 

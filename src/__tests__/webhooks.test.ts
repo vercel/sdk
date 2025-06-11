@@ -19,11 +19,29 @@ test("Webhooks Create Webhook", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      url: "https://woeful-yin.biz",
-      events: [],
+      url: "https://experienced-sailor.biz/",
+      events: [
+        "deployment.promoted",
+        "deployment.error",
+        "deployment.integration.action.cancel",
+      ],
     },
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    secret: "<value>",
+    events: [
+      "deployment.created",
+    ],
+    id: "account_hook_GflD6EYyo7F4ViYS",
+    url: "https://my-webhook.com",
+    ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
+    createdAt: 1567024758130,
+    updatedAt: 1567024758130,
+    projectIds: [
+      "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    ],
+  });
 });
 
 test("Webhooks Get Webhooks", async () => {
@@ -40,6 +58,47 @@ test("Webhooks Get Webhooks", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual([
+    {
+      events: [
+        "deployment.created",
+      ],
+      id: "account_hook_GflD6EYyo7F4ViYS",
+      url: "https://my-webhook.com",
+      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
+      createdAt: 1567024758130,
+      updatedAt: 1567024758130,
+      projectIds: [
+        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      ],
+    },
+    {
+      events: [
+        "deployment.created",
+      ],
+      id: "account_hook_GflD6EYyo7F4ViYS",
+      url: "https://my-webhook.com",
+      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
+      createdAt: 1567024758130,
+      updatedAt: 1567024758130,
+      projectIds: [
+        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      ],
+    },
+    {
+      events: [
+        "deployment.created",
+      ],
+      id: "account_hook_GflD6EYyo7F4ViYS",
+      url: "https://my-webhook.com",
+      ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
+      createdAt: 1567024758130,
+      updatedAt: 1567024758130,
+      projectIds: [
+        "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      ],
+    },
+  ]);
 });
 
 test("Webhooks Get Webhook", async () => {
@@ -57,6 +116,19 @@ test("Webhooks Get Webhook", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
+  expect(result).toEqual({
+    events: [
+      "deployment.created",
+    ],
+    id: "account_hook_GflD6EYyo7F4ViYS",
+    url: "https://my-webhook.com",
+    ownerId: "ZspSRT4ljIEEmMHgoDwKWDei",
+    createdAt: 1567024758130,
+    updatedAt: 1567024758130,
+    projectIds: [
+      "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    ],
+  });
 });
 
 test("Webhooks Delete Webhook", async () => {

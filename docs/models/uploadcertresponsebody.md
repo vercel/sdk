@@ -11,7 +11,9 @@ let value: UploadCertResponseBody = {
   expiresAt: 2854.17,
   autoRenew: false,
   cns: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

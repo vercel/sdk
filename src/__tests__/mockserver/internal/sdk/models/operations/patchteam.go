@@ -10,33 +10,33 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Roles2 struct {
+type Roles struct {
 	AccessGroupID string `json:"accessGroupId"`
 }
 
-func (o *Roles2) GetAccessGroupID() string {
+func (o *Roles) GetAccessGroupID() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccessGroupID
 }
 
-type Roles1 string
+type RolesEnum string
 
 const (
-	Roles1Owner       Roles1 = "OWNER"
-	Roles1Member      Roles1 = "MEMBER"
-	Roles1Developer   Roles1 = "DEVELOPER"
-	Roles1Security    Roles1 = "SECURITY"
-	Roles1Billing     Roles1 = "BILLING"
-	Roles1Viewer      Roles1 = "VIEWER"
-	Roles1Contributor Roles1 = "CONTRIBUTOR"
+	RolesEnumOwner       RolesEnum = "OWNER"
+	RolesEnumMember      RolesEnum = "MEMBER"
+	RolesEnumDeveloper   RolesEnum = "DEVELOPER"
+	RolesEnumSecurity    RolesEnum = "SECURITY"
+	RolesEnumBilling     RolesEnum = "BILLING"
+	RolesEnumViewer      RolesEnum = "VIEWER"
+	RolesEnumContributor RolesEnum = "CONTRIBUTOR"
 )
 
-func (e Roles1) ToPointer() *Roles1 {
+func (e RolesEnum) ToPointer() *RolesEnum {
 	return &e
 }
-func (e *Roles1) UnmarshalJSON(data []byte) error {
+func (e *RolesEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -55,81 +55,81 @@ func (e *Roles1) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = Roles1(v)
+		*e = RolesEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Roles1: %v", v)
+		return fmt.Errorf("invalid value for RolesEnum: %v", v)
 	}
 }
 
-type RolesType string
+type RolesUnionType string
 
 const (
-	RolesTypeRoles1 RolesType = "roles_1"
-	RolesTypeRoles2 RolesType = "roles_2"
+	RolesUnionTypeRolesEnum RolesUnionType = "roles_enum"
+	RolesUnionTypeRoles     RolesUnionType = "roles"
 )
 
-type Roles struct {
-	Roles1 *Roles1
-	Roles2 *Roles2
+type RolesUnion struct {
+	RolesEnum *RolesEnum `queryParam:"inline"`
+	Roles     *Roles     `queryParam:"inline"`
 
-	Type RolesType
+	Type RolesUnionType
 }
 
-func CreateRolesRoles1(roles1 Roles1) Roles {
-	typ := RolesTypeRoles1
+func CreateRolesUnionRolesEnum(rolesEnum RolesEnum) RolesUnion {
+	typ := RolesUnionTypeRolesEnum
 
-	return Roles{
-		Roles1: &roles1,
-		Type:   typ,
+	return RolesUnion{
+		RolesEnum: &rolesEnum,
+		Type:      typ,
 	}
 }
 
-func CreateRolesRoles2(roles2 Roles2) Roles {
-	typ := RolesTypeRoles2
+func CreateRolesUnionRoles(roles Roles) RolesUnion {
+	typ := RolesUnionTypeRoles
 
-	return Roles{
-		Roles2: &roles2,
-		Type:   typ,
+	return RolesUnion{
+		Roles: &roles,
+		Type:  typ,
 	}
 }
 
-func (u *Roles) UnmarshalJSON(data []byte) error {
+func (u *RolesUnion) UnmarshalJSON(data []byte) error {
 
-	var roles2 Roles2 = Roles2{}
-	if err := utils.UnmarshalJSON(data, &roles2, "", true, true); err == nil {
-		u.Roles2 = &roles2
-		u.Type = RolesTypeRoles2
+	var roles Roles = Roles{}
+	if err := utils.UnmarshalJSON(data, &roles, "", true, true); err == nil {
+		u.Roles = &roles
+		u.Type = RolesUnionTypeRoles
 		return nil
 	}
 
-	var roles1 Roles1 = Roles1("")
-	if err := utils.UnmarshalJSON(data, &roles1, "", true, true); err == nil {
-		u.Roles1 = &roles1
-		u.Type = RolesTypeRoles1
+	var rolesEnum RolesEnum = RolesEnum("")
+	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, true); err == nil {
+		u.RolesEnum = &rolesEnum
+		u.Type = RolesUnionTypeRolesEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Roles", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RolesUnion", string(data))
 }
 
-func (u Roles) MarshalJSON() ([]byte, error) {
-	if u.Roles1 != nil {
-		return utils.MarshalJSON(u.Roles1, "", true)
+func (u RolesUnion) MarshalJSON() ([]byte, error) {
+	if u.RolesEnum != nil {
+		return utils.MarshalJSON(u.RolesEnum, "", true)
 	}
 
-	if u.Roles2 != nil {
-		return utils.MarshalJSON(u.Roles2, "", true)
+	if u.Roles != nil {
+		return utils.MarshalJSON(u.Roles, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Roles: all fields are null")
+	return nil, errors.New("could not marshal union type RolesUnion: all fields are null")
 }
 
 type Saml struct {
 	// Require that members of the team use SAML Single Sign-On.
 	Enforced *bool `json:"enforced,omitempty"`
 	// Directory groups to role or access group mappings.
-	Roles map[string]Roles `json:"roles,omitempty"`
+	Roles map[string]RolesUnion `json:"roles,omitempty"`
 }
 
 func (o *Saml) GetEnforced() *bool {
@@ -139,7 +139,7 @@ func (o *Saml) GetEnforced() *bool {
 	return o.Enforced
 }
 
-func (o *Saml) GetRoles() map[string]Roles {
+func (o *Saml) GetRoles() map[string]RolesUnion {
 	if o == nil {
 		return nil
 	}
@@ -316,8 +316,8 @@ func (o *PatchTeamRequest) GetRequestBody() PatchTeamRequestBody {
 }
 
 type PatchTeamResponse struct {
-	HTTPMeta    components.HTTPMetadata `json:"-"`
-	TeamLimited *components.TeamLimited
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	Team     *components.Team
 }
 
 func (o *PatchTeamResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -327,9 +327,9 @@ func (o *PatchTeamResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *PatchTeamResponse) GetTeamLimited() *components.TeamLimited {
+func (o *PatchTeamResponse) GetTeam() *components.Team {
 	if o == nil {
 		return nil
 	}
-	return o.TeamLimited
+	return o.Team
 }

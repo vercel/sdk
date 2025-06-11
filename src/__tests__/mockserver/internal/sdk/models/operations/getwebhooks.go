@@ -39,64 +39,81 @@ func (o *GetWebhooksRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetWebhooksResponseBodyEvents - The webhooks events
-type GetWebhooksResponseBodyEvents string
+// GetWebhooksEvent2 - The webhooks events
+type GetWebhooksEvent2 string
 
 const (
-	GetWebhooksResponseBodyEventsBudgetReached                                      GetWebhooksResponseBodyEvents = "budget.reached"
-	GetWebhooksResponseBodyEventsBudgetReset                                        GetWebhooksResponseBodyEvents = "budget.reset"
-	GetWebhooksResponseBodyEventsDomainCreated                                      GetWebhooksResponseBodyEvents = "domain.created"
-	GetWebhooksResponseBodyEventsDeploymentCreated                                  GetWebhooksResponseBodyEvents = "deployment.created"
-	GetWebhooksResponseBodyEventsDeploymentError                                    GetWebhooksResponseBodyEvents = "deployment.error"
-	GetWebhooksResponseBodyEventsDeploymentCanceled                                 GetWebhooksResponseBodyEvents = "deployment.canceled"
-	GetWebhooksResponseBodyEventsDeploymentSucceeded                                GetWebhooksResponseBodyEvents = "deployment.succeeded"
-	GetWebhooksResponseBodyEventsDeploymentReady                                    GetWebhooksResponseBodyEvents = "deployment.ready"
-	GetWebhooksResponseBodyEventsDeploymentCheckRerequested                         GetWebhooksResponseBodyEvents = "deployment.check-rerequested"
-	GetWebhooksResponseBodyEventsDeploymentPromoted                                 GetWebhooksResponseBodyEvents = "deployment.promoted"
-	GetWebhooksResponseBodyEventsDeploymentIntegrationActionStart                   GetWebhooksResponseBodyEvents = "deployment.integration.action.start"
-	GetWebhooksResponseBodyEventsDeploymentIntegrationActionCancel                  GetWebhooksResponseBodyEvents = "deployment.integration.action.cancel"
-	GetWebhooksResponseBodyEventsDeploymentIntegrationActionCleanup                 GetWebhooksResponseBodyEvents = "deployment.integration.action.cleanup"
-	GetWebhooksResponseBodyEventsEdgeConfigCreated                                  GetWebhooksResponseBodyEvents = "edge-config.created"
-	GetWebhooksResponseBodyEventsEdgeConfigDeleted                                  GetWebhooksResponseBodyEvents = "edge-config.deleted"
-	GetWebhooksResponseBodyEventsEdgeConfigItemsUpdated                             GetWebhooksResponseBodyEvents = "edge-config.items.updated"
-	GetWebhooksResponseBodyEventsFirewallAttack                                     GetWebhooksResponseBodyEvents = "firewall.attack"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationPermissionUpgraded         GetWebhooksResponseBodyEvents = "integration-configuration.permission-upgraded"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationRemoved                    GetWebhooksResponseBodyEvents = "integration-configuration.removed"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationScopeChangeConfirmed       GetWebhooksResponseBodyEvents = "integration-configuration.scope-change-confirmed"
-	GetWebhooksResponseBodyEventsIntegrationResourceProjectConnected                GetWebhooksResponseBodyEvents = "integration-resource.project-connected"
-	GetWebhooksResponseBodyEventsIntegrationResourceProjectDisconnected             GetWebhooksResponseBodyEvents = "integration-resource.project-disconnected"
-	GetWebhooksResponseBodyEventsProjectCreated                                     GetWebhooksResponseBodyEvents = "project.created"
-	GetWebhooksResponseBodyEventsProjectRemoved                                     GetWebhooksResponseBodyEvents = "project.removed"
-	GetWebhooksResponseBodyEventsProjectDomainVerified                              GetWebhooksResponseBodyEvents = "project.domain.verified"
-	GetWebhooksResponseBodyEventsProjectRollingReleaseStarted                       GetWebhooksResponseBodyEvents = "project.rolling-release.started"
-	GetWebhooksResponseBodyEventsProjectRollingReleaseAborted                       GetWebhooksResponseBodyEvents = "project.rolling-release.aborted"
-	GetWebhooksResponseBodyEventsProjectRollingReleaseCompleted                     GetWebhooksResponseBodyEvents = "project.rolling-release.completed"
-	GetWebhooksResponseBodyEventsProjectRollingReleaseApproved                      GetWebhooksResponseBodyEvents = "project.rolling-release.approved"
-	GetWebhooksResponseBodyEventsDeploymentChecksCompletedLegacy                    GetWebhooksResponseBodyEvents = "deployment-checks-completed"
-	GetWebhooksResponseBodyEventsDeploymentReadyLegacy                              GetWebhooksResponseBodyEvents = "deployment-ready"
-	GetWebhooksResponseBodyEventsDeploymentPreparedLegacy                           GetWebhooksResponseBodyEvents = "deployment-prepared"
-	GetWebhooksResponseBodyEventsDeploymentErrorLegacy                              GetWebhooksResponseBodyEvents = "deployment-error"
-	GetWebhooksResponseBodyEventsDeploymentCheckRerequestedLegacy                   GetWebhooksResponseBodyEvents = "deployment-check-rerequested"
-	GetWebhooksResponseBodyEventsDeploymentCanceledLegacy                           GetWebhooksResponseBodyEvents = "deployment-canceled"
-	GetWebhooksResponseBodyEventsProjectCreatedLegacy                               GetWebhooksResponseBodyEvents = "project-created"
-	GetWebhooksResponseBodyEventsProjectRemovedLegacy                               GetWebhooksResponseBodyEvents = "project-removed"
-	GetWebhooksResponseBodyEventsDomainCreatedLegacy                                GetWebhooksResponseBodyEvents = "domain-created"
-	GetWebhooksResponseBodyEventsDeploymentLegacy                                   GetWebhooksResponseBodyEvents = "deployment"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationPermissionUpdatedLegacy    GetWebhooksResponseBodyEvents = "integration-configuration-permission-updated"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationRemovedLegacy              GetWebhooksResponseBodyEvents = "integration-configuration-removed"
-	GetWebhooksResponseBodyEventsIntegrationConfigurationScopeChangeConfirmedLegacy GetWebhooksResponseBodyEvents = "integration-configuration-scope-change-confirmed"
-	GetWebhooksResponseBodyEventsMarketplaceInvoiceCreated                          GetWebhooksResponseBodyEvents = "marketplace.invoice.created"
-	GetWebhooksResponseBodyEventsMarketplaceInvoicePaid                             GetWebhooksResponseBodyEvents = "marketplace.invoice.paid"
-	GetWebhooksResponseBodyEventsMarketplaceInvoiceNotpaid                          GetWebhooksResponseBodyEvents = "marketplace.invoice.notpaid"
-	GetWebhooksResponseBodyEventsMarketplaceInvoiceRefunded                         GetWebhooksResponseBodyEvents = "marketplace.invoice.refunded"
-	GetWebhooksResponseBodyEventsObservabilityAnomaly                               GetWebhooksResponseBodyEvents = "observability.anomaly"
-	GetWebhooksResponseBodyEventsTestWebhook                                        GetWebhooksResponseBodyEvents = "test-webhook"
+	GetWebhooksEvent2BudgetReached                                      GetWebhooksEvent2 = "budget.reached"
+	GetWebhooksEvent2BudgetReset                                        GetWebhooksEvent2 = "budget.reset"
+	GetWebhooksEvent2DomainCreated                                      GetWebhooksEvent2 = "domain.created"
+	GetWebhooksEvent2DomainDnsRecordsChanged                            GetWebhooksEvent2 = "domain.dns.records.changed"
+	GetWebhooksEvent2DomainTransferInStarted                            GetWebhooksEvent2 = "domain.transfer-in.started"
+	GetWebhooksEvent2DomainTransferInCompleted                          GetWebhooksEvent2 = "domain.transfer-in.completed"
+	GetWebhooksEvent2DomainTransferInFailed                             GetWebhooksEvent2 = "domain.transfer-in.failed"
+	GetWebhooksEvent2DomainCertificateAdd                               GetWebhooksEvent2 = "domain.certificate.add"
+	GetWebhooksEvent2DomainCertificateAddFailed                         GetWebhooksEvent2 = "domain.certificate.add.failed"
+	GetWebhooksEvent2DomainCertificateRenew                             GetWebhooksEvent2 = "domain.certificate.renew"
+	GetWebhooksEvent2DomainCertificateRenewFailed                       GetWebhooksEvent2 = "domain.certificate.renew.failed"
+	GetWebhooksEvent2DomainCertificateDeleted                           GetWebhooksEvent2 = "domain.certificate.deleted"
+	GetWebhooksEvent2DomainRenewal                                      GetWebhooksEvent2 = "domain.renewal"
+	GetWebhooksEvent2DomainRenewalFailed                                GetWebhooksEvent2 = "domain.renewal.failed"
+	GetWebhooksEvent2DomainAutoRenewChanged                             GetWebhooksEvent2 = "domain.auto-renew.changed"
+	GetWebhooksEvent2DeploymentCreated                                  GetWebhooksEvent2 = "deployment.created"
+	GetWebhooksEvent2DeploymentError                                    GetWebhooksEvent2 = "deployment.error"
+	GetWebhooksEvent2DeploymentCanceled                                 GetWebhooksEvent2 = "deployment.canceled"
+	GetWebhooksEvent2DeploymentSucceeded                                GetWebhooksEvent2 = "deployment.succeeded"
+	GetWebhooksEvent2DeploymentReady                                    GetWebhooksEvent2 = "deployment.ready"
+	GetWebhooksEvent2DeploymentCheckRerequested                         GetWebhooksEvent2 = "deployment.check-rerequested"
+	GetWebhooksEvent2DeploymentPromoted                                 GetWebhooksEvent2 = "deployment.promoted"
+	GetWebhooksEvent2DeploymentIntegrationActionStart                   GetWebhooksEvent2 = "deployment.integration.action.start"
+	GetWebhooksEvent2DeploymentIntegrationActionCancel                  GetWebhooksEvent2 = "deployment.integration.action.cancel"
+	GetWebhooksEvent2DeploymentIntegrationActionCleanup                 GetWebhooksEvent2 = "deployment.integration.action.cleanup"
+	GetWebhooksEvent2EdgeConfigCreated                                  GetWebhooksEvent2 = "edge-config.created"
+	GetWebhooksEvent2EdgeConfigDeleted                                  GetWebhooksEvent2 = "edge-config.deleted"
+	GetWebhooksEvent2EdgeConfigItemsUpdated                             GetWebhooksEvent2 = "edge-config.items.updated"
+	GetWebhooksEvent2FirewallAttack                                     GetWebhooksEvent2 = "firewall.attack"
+	GetWebhooksEvent2IntegrationConfigurationPermissionUpgraded         GetWebhooksEvent2 = "integration-configuration.permission-upgraded"
+	GetWebhooksEvent2IntegrationConfigurationRemoved                    GetWebhooksEvent2 = "integration-configuration.removed"
+	GetWebhooksEvent2IntegrationConfigurationScopeChangeConfirmed       GetWebhooksEvent2 = "integration-configuration.scope-change-confirmed"
+	GetWebhooksEvent2IntegrationResourceProjectConnected                GetWebhooksEvent2 = "integration-resource.project-connected"
+	GetWebhooksEvent2IntegrationResourceProjectDisconnected             GetWebhooksEvent2 = "integration-resource.project-disconnected"
+	GetWebhooksEvent2ProjectCreated                                     GetWebhooksEvent2 = "project.created"
+	GetWebhooksEvent2ProjectRemoved                                     GetWebhooksEvent2 = "project.removed"
+	GetWebhooksEvent2ProjectDomainCreated                               GetWebhooksEvent2 = "project.domain.created"
+	GetWebhooksEvent2ProjectDomainUpdated                               GetWebhooksEvent2 = "project.domain.updated"
+	GetWebhooksEvent2ProjectDomainDeleted                               GetWebhooksEvent2 = "project.domain.deleted"
+	GetWebhooksEvent2ProjectDomainVerified                              GetWebhooksEvent2 = "project.domain.verified"
+	GetWebhooksEvent2ProjectDomainUnverified                            GetWebhooksEvent2 = "project.domain.unverified"
+	GetWebhooksEvent2ProjectDomainMoved                                 GetWebhooksEvent2 = "project.domain.moved"
+	GetWebhooksEvent2ProjectRollingReleaseStarted                       GetWebhooksEvent2 = "project.rolling-release.started"
+	GetWebhooksEvent2ProjectRollingReleaseAborted                       GetWebhooksEvent2 = "project.rolling-release.aborted"
+	GetWebhooksEvent2ProjectRollingReleaseCompleted                     GetWebhooksEvent2 = "project.rolling-release.completed"
+	GetWebhooksEvent2ProjectRollingReleaseApproved                      GetWebhooksEvent2 = "project.rolling-release.approved"
+	GetWebhooksEvent2DeploymentChecksCompleted                          GetWebhooksEvent2 = "deployment-checks-completed"
+	GetWebhooksEvent2DeploymentReadyLegacy                              GetWebhooksEvent2 = "deployment-ready"
+	GetWebhooksEvent2DeploymentPrepared                                 GetWebhooksEvent2 = "deployment-prepared"
+	GetWebhooksEvent2DeploymentErrorLegacy                              GetWebhooksEvent2 = "deployment-error"
+	GetWebhooksEvent2DeploymentCheckRerequestedLegacy                   GetWebhooksEvent2 = "deployment-check-rerequested"
+	GetWebhooksEvent2DeploymentCanceledLegacy                           GetWebhooksEvent2 = "deployment-canceled"
+	GetWebhooksEvent2ProjectCreatedLegacy                               GetWebhooksEvent2 = "project-created"
+	GetWebhooksEvent2ProjectRemovedLegacy                               GetWebhooksEvent2 = "project-removed"
+	GetWebhooksEvent2DomainCreatedLegacy                                GetWebhooksEvent2 = "domain-created"
+	GetWebhooksEvent2Deployment                                         GetWebhooksEvent2 = "deployment"
+	GetWebhooksEvent2IntegrationConfigurationPermissionUpdated          GetWebhooksEvent2 = "integration-configuration-permission-updated"
+	GetWebhooksEvent2IntegrationConfigurationRemovedLegacy              GetWebhooksEvent2 = "integration-configuration-removed"
+	GetWebhooksEvent2IntegrationConfigurationScopeChangeConfirmedLegacy GetWebhooksEvent2 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent2MarketplaceInvoiceCreated                          GetWebhooksEvent2 = "marketplace.invoice.created"
+	GetWebhooksEvent2MarketplaceInvoicePaid                             GetWebhooksEvent2 = "marketplace.invoice.paid"
+	GetWebhooksEvent2MarketplaceInvoiceNotpaid                          GetWebhooksEvent2 = "marketplace.invoice.notpaid"
+	GetWebhooksEvent2MarketplaceInvoiceRefunded                         GetWebhooksEvent2 = "marketplace.invoice.refunded"
+	GetWebhooksEvent2ObservabilityAnomaly                               GetWebhooksEvent2 = "observability.anomaly"
+	GetWebhooksEvent2TestWebhook                                        GetWebhooksEvent2 = "test-webhook"
 )
 
-func (e GetWebhooksResponseBodyEvents) ToPointer() *GetWebhooksResponseBodyEvents {
+func (e GetWebhooksEvent2) ToPointer() *GetWebhooksEvent2 {
 	return &e
 }
-func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
+func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -107,6 +124,30 @@ func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "budget.reset":
 		fallthrough
 	case "domain.created":
+		fallthrough
+	case "domain.dns.records.changed":
+		fallthrough
+	case "domain.transfer-in.started":
+		fallthrough
+	case "domain.transfer-in.completed":
+		fallthrough
+	case "domain.transfer-in.failed":
+		fallthrough
+	case "domain.certificate.add":
+		fallthrough
+	case "domain.certificate.add.failed":
+		fallthrough
+	case "domain.certificate.renew":
+		fallthrough
+	case "domain.certificate.renew.failed":
+		fallthrough
+	case "domain.certificate.deleted":
+		fallthrough
+	case "domain.renewal":
+		fallthrough
+	case "domain.renewal.failed":
+		fallthrough
+	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
 		fallthrough
@@ -150,7 +191,17 @@ func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.removed":
 		fallthrough
+	case "project.domain.created":
+		fallthrough
+	case "project.domain.updated":
+		fallthrough
+	case "project.domain.deleted":
+		fallthrough
 	case "project.domain.verified":
+		fallthrough
+	case "project.domain.unverified":
+		fallthrough
+	case "project.domain.moved":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -197,16 +248,16 @@ func (e *GetWebhooksResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "test-webhook":
-		*e = GetWebhooksResponseBodyEvents(v)
+		*e = GetWebhooksEvent2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetWebhooksResponseBodyEvents: %v", v)
+		return fmt.Errorf("invalid value for GetWebhooksEvent2: %v", v)
 	}
 }
 
 type GetWebhooksResponseBody2 struct {
 	// The webhooks events
-	Events []GetWebhooksResponseBodyEvents `json:"events"`
+	Events []GetWebhooksEvent2 `json:"events"`
 	// The webhook id
 	ID string `json:"id"`
 	// A string with the URL of the webhook
@@ -221,9 +272,9 @@ type GetWebhooksResponseBody2 struct {
 	ProjectIds []string `json:"projectIds,omitempty"`
 }
 
-func (o *GetWebhooksResponseBody2) GetEvents() []GetWebhooksResponseBodyEvents {
+func (o *GetWebhooksResponseBody2) GetEvents() []GetWebhooksEvent2 {
 	if o == nil {
-		return []GetWebhooksResponseBodyEvents{}
+		return []GetWebhooksEvent2{}
 	}
 	return o.Events
 }
@@ -270,61 +321,61 @@ func (o *GetWebhooksResponseBody2) GetProjectIds() []string {
 	return o.ProjectIds
 }
 
-type GetWebhooksResponseBodyFramework string
+type GetWebhooksFramework string
 
 const (
-	GetWebhooksResponseBodyFrameworkBlitzjs        GetWebhooksResponseBodyFramework = "blitzjs"
-	GetWebhooksResponseBodyFrameworkNextjs         GetWebhooksResponseBodyFramework = "nextjs"
-	GetWebhooksResponseBodyFrameworkGatsby         GetWebhooksResponseBodyFramework = "gatsby"
-	GetWebhooksResponseBodyFrameworkRemix          GetWebhooksResponseBodyFramework = "remix"
-	GetWebhooksResponseBodyFrameworkReactRouter    GetWebhooksResponseBodyFramework = "react-router"
-	GetWebhooksResponseBodyFrameworkAstro          GetWebhooksResponseBodyFramework = "astro"
-	GetWebhooksResponseBodyFrameworkHexo           GetWebhooksResponseBodyFramework = "hexo"
-	GetWebhooksResponseBodyFrameworkEleventy       GetWebhooksResponseBodyFramework = "eleventy"
-	GetWebhooksResponseBodyFrameworkDocusaurus2    GetWebhooksResponseBodyFramework = "docusaurus-2"
-	GetWebhooksResponseBodyFrameworkDocusaurus     GetWebhooksResponseBodyFramework = "docusaurus"
-	GetWebhooksResponseBodyFrameworkPreact         GetWebhooksResponseBodyFramework = "preact"
-	GetWebhooksResponseBodyFrameworkSolidstart1    GetWebhooksResponseBodyFramework = "solidstart-1"
-	GetWebhooksResponseBodyFrameworkSolidstart     GetWebhooksResponseBodyFramework = "solidstart"
-	GetWebhooksResponseBodyFrameworkDojo           GetWebhooksResponseBodyFramework = "dojo"
-	GetWebhooksResponseBodyFrameworkEmber          GetWebhooksResponseBodyFramework = "ember"
-	GetWebhooksResponseBodyFrameworkVue            GetWebhooksResponseBodyFramework = "vue"
-	GetWebhooksResponseBodyFrameworkScully         GetWebhooksResponseBodyFramework = "scully"
-	GetWebhooksResponseBodyFrameworkIonicAngular   GetWebhooksResponseBodyFramework = "ionic-angular"
-	GetWebhooksResponseBodyFrameworkAngular        GetWebhooksResponseBodyFramework = "angular"
-	GetWebhooksResponseBodyFrameworkPolymer        GetWebhooksResponseBodyFramework = "polymer"
-	GetWebhooksResponseBodyFrameworkSvelte         GetWebhooksResponseBodyFramework = "svelte"
-	GetWebhooksResponseBodyFrameworkSveltekit      GetWebhooksResponseBodyFramework = "sveltekit"
-	GetWebhooksResponseBodyFrameworkSveltekit1     GetWebhooksResponseBodyFramework = "sveltekit-1"
-	GetWebhooksResponseBodyFrameworkIonicReact     GetWebhooksResponseBodyFramework = "ionic-react"
-	GetWebhooksResponseBodyFrameworkCreateReactApp GetWebhooksResponseBodyFramework = "create-react-app"
-	GetWebhooksResponseBodyFrameworkGridsome       GetWebhooksResponseBodyFramework = "gridsome"
-	GetWebhooksResponseBodyFrameworkUmijs          GetWebhooksResponseBodyFramework = "umijs"
-	GetWebhooksResponseBodyFrameworkSapper         GetWebhooksResponseBodyFramework = "sapper"
-	GetWebhooksResponseBodyFrameworkSaber          GetWebhooksResponseBodyFramework = "saber"
-	GetWebhooksResponseBodyFrameworkStencil        GetWebhooksResponseBodyFramework = "stencil"
-	GetWebhooksResponseBodyFrameworkNuxtjs         GetWebhooksResponseBodyFramework = "nuxtjs"
-	GetWebhooksResponseBodyFrameworkRedwoodjs      GetWebhooksResponseBodyFramework = "redwoodjs"
-	GetWebhooksResponseBodyFrameworkHugo           GetWebhooksResponseBodyFramework = "hugo"
-	GetWebhooksResponseBodyFrameworkJekyll         GetWebhooksResponseBodyFramework = "jekyll"
-	GetWebhooksResponseBodyFrameworkBrunch         GetWebhooksResponseBodyFramework = "brunch"
-	GetWebhooksResponseBodyFrameworkMiddleman      GetWebhooksResponseBodyFramework = "middleman"
-	GetWebhooksResponseBodyFrameworkZola           GetWebhooksResponseBodyFramework = "zola"
-	GetWebhooksResponseBodyFrameworkHydrogen       GetWebhooksResponseBodyFramework = "hydrogen"
-	GetWebhooksResponseBodyFrameworkVite           GetWebhooksResponseBodyFramework = "vite"
-	GetWebhooksResponseBodyFrameworkVitepress      GetWebhooksResponseBodyFramework = "vitepress"
-	GetWebhooksResponseBodyFrameworkVuepress       GetWebhooksResponseBodyFramework = "vuepress"
-	GetWebhooksResponseBodyFrameworkParcel         GetWebhooksResponseBodyFramework = "parcel"
-	GetWebhooksResponseBodyFrameworkFasthtml       GetWebhooksResponseBodyFramework = "fasthtml"
-	GetWebhooksResponseBodyFrameworkSanityV3       GetWebhooksResponseBodyFramework = "sanity-v3"
-	GetWebhooksResponseBodyFrameworkSanity         GetWebhooksResponseBodyFramework = "sanity"
-	GetWebhooksResponseBodyFrameworkStorybook      GetWebhooksResponseBodyFramework = "storybook"
+	GetWebhooksFrameworkBlitzjs        GetWebhooksFramework = "blitzjs"
+	GetWebhooksFrameworkNextjs         GetWebhooksFramework = "nextjs"
+	GetWebhooksFrameworkGatsby         GetWebhooksFramework = "gatsby"
+	GetWebhooksFrameworkRemix          GetWebhooksFramework = "remix"
+	GetWebhooksFrameworkReactRouter    GetWebhooksFramework = "react-router"
+	GetWebhooksFrameworkAstro          GetWebhooksFramework = "astro"
+	GetWebhooksFrameworkHexo           GetWebhooksFramework = "hexo"
+	GetWebhooksFrameworkEleventy       GetWebhooksFramework = "eleventy"
+	GetWebhooksFrameworkDocusaurus2    GetWebhooksFramework = "docusaurus-2"
+	GetWebhooksFrameworkDocusaurus     GetWebhooksFramework = "docusaurus"
+	GetWebhooksFrameworkPreact         GetWebhooksFramework = "preact"
+	GetWebhooksFrameworkSolidstart1    GetWebhooksFramework = "solidstart-1"
+	GetWebhooksFrameworkSolidstart     GetWebhooksFramework = "solidstart"
+	GetWebhooksFrameworkDojo           GetWebhooksFramework = "dojo"
+	GetWebhooksFrameworkEmber          GetWebhooksFramework = "ember"
+	GetWebhooksFrameworkVue            GetWebhooksFramework = "vue"
+	GetWebhooksFrameworkScully         GetWebhooksFramework = "scully"
+	GetWebhooksFrameworkIonicAngular   GetWebhooksFramework = "ionic-angular"
+	GetWebhooksFrameworkAngular        GetWebhooksFramework = "angular"
+	GetWebhooksFrameworkPolymer        GetWebhooksFramework = "polymer"
+	GetWebhooksFrameworkSvelte         GetWebhooksFramework = "svelte"
+	GetWebhooksFrameworkSveltekit      GetWebhooksFramework = "sveltekit"
+	GetWebhooksFrameworkSveltekit1     GetWebhooksFramework = "sveltekit-1"
+	GetWebhooksFrameworkIonicReact     GetWebhooksFramework = "ionic-react"
+	GetWebhooksFrameworkCreateReactApp GetWebhooksFramework = "create-react-app"
+	GetWebhooksFrameworkGridsome       GetWebhooksFramework = "gridsome"
+	GetWebhooksFrameworkUmijs          GetWebhooksFramework = "umijs"
+	GetWebhooksFrameworkSapper         GetWebhooksFramework = "sapper"
+	GetWebhooksFrameworkSaber          GetWebhooksFramework = "saber"
+	GetWebhooksFrameworkStencil        GetWebhooksFramework = "stencil"
+	GetWebhooksFrameworkNuxtjs         GetWebhooksFramework = "nuxtjs"
+	GetWebhooksFrameworkRedwoodjs      GetWebhooksFramework = "redwoodjs"
+	GetWebhooksFrameworkHugo           GetWebhooksFramework = "hugo"
+	GetWebhooksFrameworkJekyll         GetWebhooksFramework = "jekyll"
+	GetWebhooksFrameworkBrunch         GetWebhooksFramework = "brunch"
+	GetWebhooksFrameworkMiddleman      GetWebhooksFramework = "middleman"
+	GetWebhooksFrameworkZola           GetWebhooksFramework = "zola"
+	GetWebhooksFrameworkHydrogen       GetWebhooksFramework = "hydrogen"
+	GetWebhooksFrameworkVite           GetWebhooksFramework = "vite"
+	GetWebhooksFrameworkVitepress      GetWebhooksFramework = "vitepress"
+	GetWebhooksFrameworkVuepress       GetWebhooksFramework = "vuepress"
+	GetWebhooksFrameworkParcel         GetWebhooksFramework = "parcel"
+	GetWebhooksFrameworkFasthtml       GetWebhooksFramework = "fasthtml"
+	GetWebhooksFrameworkSanityV3       GetWebhooksFramework = "sanity-v3"
+	GetWebhooksFrameworkSanity         GetWebhooksFramework = "sanity"
+	GetWebhooksFrameworkStorybook      GetWebhooksFramework = "storybook"
 )
 
-func (e GetWebhooksResponseBodyFramework) ToPointer() *GetWebhooksResponseBodyFramework {
+func (e GetWebhooksFramework) ToPointer() *GetWebhooksFramework {
 	return &e
 }
-func (e *GetWebhooksResponseBodyFramework) UnmarshalJSON(data []byte) error {
+func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -421,106 +472,123 @@ func (e *GetWebhooksResponseBodyFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
-		*e = GetWebhooksResponseBodyFramework(v)
+		*e = GetWebhooksFramework(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetWebhooksResponseBodyFramework: %v", v)
+		return fmt.Errorf("invalid value for GetWebhooksFramework: %v", v)
 	}
 }
 
-type ProjectsMetadata struct {
-	ID               string                            `json:"id"`
-	Name             string                            `json:"name"`
-	Framework        *GetWebhooksResponseBodyFramework `json:"framework,omitempty"`
-	LatestDeployment *string                           `json:"latestDeployment,omitempty"`
+type ProjectsMetadatum struct {
+	ID               string                `json:"id"`
+	Name             string                `json:"name"`
+	Framework        *GetWebhooksFramework `json:"framework,omitempty"`
+	LatestDeployment *string               `json:"latestDeployment,omitempty"`
 }
 
-func (o *ProjectsMetadata) GetID() string {
+func (o *ProjectsMetadatum) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectsMetadata) GetName() string {
+func (o *ProjectsMetadatum) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectsMetadata) GetFramework() *GetWebhooksResponseBodyFramework {
+func (o *ProjectsMetadatum) GetFramework() *GetWebhooksFramework {
 	if o == nil {
 		return nil
 	}
 	return o.Framework
 }
 
-func (o *ProjectsMetadata) GetLatestDeployment() *string {
+func (o *ProjectsMetadatum) GetLatestDeployment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LatestDeployment
 }
 
-// ResponseBodyEvents - The webhooks events
-type ResponseBodyEvents string
+// GetWebhooksEvent1 - The webhooks events
+type GetWebhooksEvent1 string
 
 const (
-	ResponseBodyEventsBudgetReached                                      ResponseBodyEvents = "budget.reached"
-	ResponseBodyEventsBudgetReset                                        ResponseBodyEvents = "budget.reset"
-	ResponseBodyEventsDomainCreated                                      ResponseBodyEvents = "domain.created"
-	ResponseBodyEventsDeploymentCreated                                  ResponseBodyEvents = "deployment.created"
-	ResponseBodyEventsDeploymentError                                    ResponseBodyEvents = "deployment.error"
-	ResponseBodyEventsDeploymentCanceled                                 ResponseBodyEvents = "deployment.canceled"
-	ResponseBodyEventsDeploymentSucceeded                                ResponseBodyEvents = "deployment.succeeded"
-	ResponseBodyEventsDeploymentReady                                    ResponseBodyEvents = "deployment.ready"
-	ResponseBodyEventsDeploymentCheckRerequested                         ResponseBodyEvents = "deployment.check-rerequested"
-	ResponseBodyEventsDeploymentPromoted                                 ResponseBodyEvents = "deployment.promoted"
-	ResponseBodyEventsDeploymentIntegrationActionStart                   ResponseBodyEvents = "deployment.integration.action.start"
-	ResponseBodyEventsDeploymentIntegrationActionCancel                  ResponseBodyEvents = "deployment.integration.action.cancel"
-	ResponseBodyEventsDeploymentIntegrationActionCleanup                 ResponseBodyEvents = "deployment.integration.action.cleanup"
-	ResponseBodyEventsEdgeConfigCreated                                  ResponseBodyEvents = "edge-config.created"
-	ResponseBodyEventsEdgeConfigDeleted                                  ResponseBodyEvents = "edge-config.deleted"
-	ResponseBodyEventsEdgeConfigItemsUpdated                             ResponseBodyEvents = "edge-config.items.updated"
-	ResponseBodyEventsFirewallAttack                                     ResponseBodyEvents = "firewall.attack"
-	ResponseBodyEventsIntegrationConfigurationPermissionUpgraded         ResponseBodyEvents = "integration-configuration.permission-upgraded"
-	ResponseBodyEventsIntegrationConfigurationRemoved                    ResponseBodyEvents = "integration-configuration.removed"
-	ResponseBodyEventsIntegrationConfigurationScopeChangeConfirmed       ResponseBodyEvents = "integration-configuration.scope-change-confirmed"
-	ResponseBodyEventsIntegrationResourceProjectConnected                ResponseBodyEvents = "integration-resource.project-connected"
-	ResponseBodyEventsIntegrationResourceProjectDisconnected             ResponseBodyEvents = "integration-resource.project-disconnected"
-	ResponseBodyEventsProjectCreated                                     ResponseBodyEvents = "project.created"
-	ResponseBodyEventsProjectRemoved                                     ResponseBodyEvents = "project.removed"
-	ResponseBodyEventsProjectDomainVerified                              ResponseBodyEvents = "project.domain.verified"
-	ResponseBodyEventsProjectRollingReleaseStarted                       ResponseBodyEvents = "project.rolling-release.started"
-	ResponseBodyEventsProjectRollingReleaseAborted                       ResponseBodyEvents = "project.rolling-release.aborted"
-	ResponseBodyEventsProjectRollingReleaseCompleted                     ResponseBodyEvents = "project.rolling-release.completed"
-	ResponseBodyEventsProjectRollingReleaseApproved                      ResponseBodyEvents = "project.rolling-release.approved"
-	ResponseBodyEventsDeploymentChecksCompletedLegacy                    ResponseBodyEvents = "deployment-checks-completed"
-	ResponseBodyEventsDeploymentReadyLegacy                              ResponseBodyEvents = "deployment-ready"
-	ResponseBodyEventsDeploymentPreparedLegacy                           ResponseBodyEvents = "deployment-prepared"
-	ResponseBodyEventsDeploymentErrorLegacy                              ResponseBodyEvents = "deployment-error"
-	ResponseBodyEventsDeploymentCheckRerequestedLegacy                   ResponseBodyEvents = "deployment-check-rerequested"
-	ResponseBodyEventsDeploymentCanceledLegacy                           ResponseBodyEvents = "deployment-canceled"
-	ResponseBodyEventsProjectCreatedLegacy                               ResponseBodyEvents = "project-created"
-	ResponseBodyEventsProjectRemovedLegacy                               ResponseBodyEvents = "project-removed"
-	ResponseBodyEventsDomainCreatedLegacy                                ResponseBodyEvents = "domain-created"
-	ResponseBodyEventsDeploymentLegacy                                   ResponseBodyEvents = "deployment"
-	ResponseBodyEventsIntegrationConfigurationPermissionUpdatedLegacy    ResponseBodyEvents = "integration-configuration-permission-updated"
-	ResponseBodyEventsIntegrationConfigurationRemovedLegacy              ResponseBodyEvents = "integration-configuration-removed"
-	ResponseBodyEventsIntegrationConfigurationScopeChangeConfirmedLegacy ResponseBodyEvents = "integration-configuration-scope-change-confirmed"
-	ResponseBodyEventsMarketplaceInvoiceCreated                          ResponseBodyEvents = "marketplace.invoice.created"
-	ResponseBodyEventsMarketplaceInvoicePaid                             ResponseBodyEvents = "marketplace.invoice.paid"
-	ResponseBodyEventsMarketplaceInvoiceNotpaid                          ResponseBodyEvents = "marketplace.invoice.notpaid"
-	ResponseBodyEventsMarketplaceInvoiceRefunded                         ResponseBodyEvents = "marketplace.invoice.refunded"
-	ResponseBodyEventsObservabilityAnomaly                               ResponseBodyEvents = "observability.anomaly"
-	ResponseBodyEventsTestWebhook                                        ResponseBodyEvents = "test-webhook"
+	GetWebhooksEvent1BudgetReached                                      GetWebhooksEvent1 = "budget.reached"
+	GetWebhooksEvent1BudgetReset                                        GetWebhooksEvent1 = "budget.reset"
+	GetWebhooksEvent1DomainCreated                                      GetWebhooksEvent1 = "domain.created"
+	GetWebhooksEvent1DomainDnsRecordsChanged                            GetWebhooksEvent1 = "domain.dns.records.changed"
+	GetWebhooksEvent1DomainTransferInStarted                            GetWebhooksEvent1 = "domain.transfer-in.started"
+	GetWebhooksEvent1DomainTransferInCompleted                          GetWebhooksEvent1 = "domain.transfer-in.completed"
+	GetWebhooksEvent1DomainTransferInFailed                             GetWebhooksEvent1 = "domain.transfer-in.failed"
+	GetWebhooksEvent1DomainCertificateAdd                               GetWebhooksEvent1 = "domain.certificate.add"
+	GetWebhooksEvent1DomainCertificateAddFailed                         GetWebhooksEvent1 = "domain.certificate.add.failed"
+	GetWebhooksEvent1DomainCertificateRenew                             GetWebhooksEvent1 = "domain.certificate.renew"
+	GetWebhooksEvent1DomainCertificateRenewFailed                       GetWebhooksEvent1 = "domain.certificate.renew.failed"
+	GetWebhooksEvent1DomainCertificateDeleted                           GetWebhooksEvent1 = "domain.certificate.deleted"
+	GetWebhooksEvent1DomainRenewal                                      GetWebhooksEvent1 = "domain.renewal"
+	GetWebhooksEvent1DomainRenewalFailed                                GetWebhooksEvent1 = "domain.renewal.failed"
+	GetWebhooksEvent1DomainAutoRenewChanged                             GetWebhooksEvent1 = "domain.auto-renew.changed"
+	GetWebhooksEvent1DeploymentCreated                                  GetWebhooksEvent1 = "deployment.created"
+	GetWebhooksEvent1DeploymentError                                    GetWebhooksEvent1 = "deployment.error"
+	GetWebhooksEvent1DeploymentCanceled                                 GetWebhooksEvent1 = "deployment.canceled"
+	GetWebhooksEvent1DeploymentSucceeded                                GetWebhooksEvent1 = "deployment.succeeded"
+	GetWebhooksEvent1DeploymentReady                                    GetWebhooksEvent1 = "deployment.ready"
+	GetWebhooksEvent1DeploymentCheckRerequested                         GetWebhooksEvent1 = "deployment.check-rerequested"
+	GetWebhooksEvent1DeploymentPromoted                                 GetWebhooksEvent1 = "deployment.promoted"
+	GetWebhooksEvent1DeploymentIntegrationActionStart                   GetWebhooksEvent1 = "deployment.integration.action.start"
+	GetWebhooksEvent1DeploymentIntegrationActionCancel                  GetWebhooksEvent1 = "deployment.integration.action.cancel"
+	GetWebhooksEvent1DeploymentIntegrationActionCleanup                 GetWebhooksEvent1 = "deployment.integration.action.cleanup"
+	GetWebhooksEvent1EdgeConfigCreated                                  GetWebhooksEvent1 = "edge-config.created"
+	GetWebhooksEvent1EdgeConfigDeleted                                  GetWebhooksEvent1 = "edge-config.deleted"
+	GetWebhooksEvent1EdgeConfigItemsUpdated                             GetWebhooksEvent1 = "edge-config.items.updated"
+	GetWebhooksEvent1FirewallAttack                                     GetWebhooksEvent1 = "firewall.attack"
+	GetWebhooksEvent1IntegrationConfigurationPermissionUpgraded         GetWebhooksEvent1 = "integration-configuration.permission-upgraded"
+	GetWebhooksEvent1IntegrationConfigurationRemoved                    GetWebhooksEvent1 = "integration-configuration.removed"
+	GetWebhooksEvent1IntegrationConfigurationScopeChangeConfirmed       GetWebhooksEvent1 = "integration-configuration.scope-change-confirmed"
+	GetWebhooksEvent1IntegrationResourceProjectConnected                GetWebhooksEvent1 = "integration-resource.project-connected"
+	GetWebhooksEvent1IntegrationResourceProjectDisconnected             GetWebhooksEvent1 = "integration-resource.project-disconnected"
+	GetWebhooksEvent1ProjectCreated                                     GetWebhooksEvent1 = "project.created"
+	GetWebhooksEvent1ProjectRemoved                                     GetWebhooksEvent1 = "project.removed"
+	GetWebhooksEvent1ProjectDomainCreated                               GetWebhooksEvent1 = "project.domain.created"
+	GetWebhooksEvent1ProjectDomainUpdated                               GetWebhooksEvent1 = "project.domain.updated"
+	GetWebhooksEvent1ProjectDomainDeleted                               GetWebhooksEvent1 = "project.domain.deleted"
+	GetWebhooksEvent1ProjectDomainVerified                              GetWebhooksEvent1 = "project.domain.verified"
+	GetWebhooksEvent1ProjectDomainUnverified                            GetWebhooksEvent1 = "project.domain.unverified"
+	GetWebhooksEvent1ProjectDomainMoved                                 GetWebhooksEvent1 = "project.domain.moved"
+	GetWebhooksEvent1ProjectRollingReleaseStarted                       GetWebhooksEvent1 = "project.rolling-release.started"
+	GetWebhooksEvent1ProjectRollingReleaseAborted                       GetWebhooksEvent1 = "project.rolling-release.aborted"
+	GetWebhooksEvent1ProjectRollingReleaseCompleted                     GetWebhooksEvent1 = "project.rolling-release.completed"
+	GetWebhooksEvent1ProjectRollingReleaseApproved                      GetWebhooksEvent1 = "project.rolling-release.approved"
+	GetWebhooksEvent1DeploymentChecksCompleted                          GetWebhooksEvent1 = "deployment-checks-completed"
+	GetWebhooksEvent1DeploymentReadyLegacy                              GetWebhooksEvent1 = "deployment-ready"
+	GetWebhooksEvent1DeploymentPrepared                                 GetWebhooksEvent1 = "deployment-prepared"
+	GetWebhooksEvent1DeploymentErrorLegacy                              GetWebhooksEvent1 = "deployment-error"
+	GetWebhooksEvent1DeploymentCheckRerequestedLegacy                   GetWebhooksEvent1 = "deployment-check-rerequested"
+	GetWebhooksEvent1DeploymentCanceledLegacy                           GetWebhooksEvent1 = "deployment-canceled"
+	GetWebhooksEvent1ProjectCreatedLegacy                               GetWebhooksEvent1 = "project-created"
+	GetWebhooksEvent1ProjectRemovedLegacy                               GetWebhooksEvent1 = "project-removed"
+	GetWebhooksEvent1DomainCreatedLegacy                                GetWebhooksEvent1 = "domain-created"
+	GetWebhooksEvent1Deployment                                         GetWebhooksEvent1 = "deployment"
+	GetWebhooksEvent1IntegrationConfigurationPermissionUpdated          GetWebhooksEvent1 = "integration-configuration-permission-updated"
+	GetWebhooksEvent1IntegrationConfigurationRemovedLegacy              GetWebhooksEvent1 = "integration-configuration-removed"
+	GetWebhooksEvent1IntegrationConfigurationScopeChangeConfirmedLegacy GetWebhooksEvent1 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent1MarketplaceInvoiceCreated                          GetWebhooksEvent1 = "marketplace.invoice.created"
+	GetWebhooksEvent1MarketplaceInvoicePaid                             GetWebhooksEvent1 = "marketplace.invoice.paid"
+	GetWebhooksEvent1MarketplaceInvoiceNotpaid                          GetWebhooksEvent1 = "marketplace.invoice.notpaid"
+	GetWebhooksEvent1MarketplaceInvoiceRefunded                         GetWebhooksEvent1 = "marketplace.invoice.refunded"
+	GetWebhooksEvent1ObservabilityAnomaly                               GetWebhooksEvent1 = "observability.anomaly"
+	GetWebhooksEvent1TestWebhook                                        GetWebhooksEvent1 = "test-webhook"
 )
 
-func (e ResponseBodyEvents) ToPointer() *ResponseBodyEvents {
+func (e GetWebhooksEvent1) ToPointer() *GetWebhooksEvent1 {
 	return &e
 }
-func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
+func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -531,6 +599,30 @@ func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "budget.reset":
 		fallthrough
 	case "domain.created":
+		fallthrough
+	case "domain.dns.records.changed":
+		fallthrough
+	case "domain.transfer-in.started":
+		fallthrough
+	case "domain.transfer-in.completed":
+		fallthrough
+	case "domain.transfer-in.failed":
+		fallthrough
+	case "domain.certificate.add":
+		fallthrough
+	case "domain.certificate.add.failed":
+		fallthrough
+	case "domain.certificate.renew":
+		fallthrough
+	case "domain.certificate.renew.failed":
+		fallthrough
+	case "domain.certificate.deleted":
+		fallthrough
+	case "domain.renewal":
+		fallthrough
+	case "domain.renewal.failed":
+		fallthrough
+	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
 		fallthrough
@@ -574,7 +666,17 @@ func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.removed":
 		fallthrough
+	case "project.domain.created":
+		fallthrough
+	case "project.domain.updated":
+		fallthrough
+	case "project.domain.deleted":
+		fallthrough
 	case "project.domain.verified":
+		fallthrough
+	case "project.domain.unverified":
+		fallthrough
+	case "project.domain.moved":
 		fallthrough
 	case "project.rolling-release.started":
 		fallthrough
@@ -621,17 +723,17 @@ func (e *ResponseBodyEvents) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "test-webhook":
-		*e = ResponseBodyEvents(v)
+		*e = GetWebhooksEvent1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ResponseBodyEvents: %v", v)
+		return fmt.Errorf("invalid value for GetWebhooksEvent1: %v", v)
 	}
 }
 
 type GetWebhooksResponseBody1 struct {
-	ProjectsMetadata []ProjectsMetadata `json:"projectsMetadata"`
+	ProjectsMetadata []ProjectsMetadatum `json:"projectsMetadata"`
 	// The webhooks events
-	Events []ResponseBodyEvents `json:"events"`
+	Events []GetWebhooksEvent1 `json:"events"`
 	// The webhook id
 	ID string `json:"id"`
 	// A string with the URL of the webhook
@@ -646,16 +748,16 @@ type GetWebhooksResponseBody1 struct {
 	ProjectIds []string `json:"projectIds,omitempty"`
 }
 
-func (o *GetWebhooksResponseBody1) GetProjectsMetadata() []ProjectsMetadata {
+func (o *GetWebhooksResponseBody1) GetProjectsMetadata() []ProjectsMetadatum {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectsMetadata
 }
 
-func (o *GetWebhooksResponseBody1) GetEvents() []ResponseBodyEvents {
+func (o *GetWebhooksResponseBody1) GetEvents() []GetWebhooksEvent1 {
 	if o == nil {
-		return []ResponseBodyEvents{}
+		return []GetWebhooksEvent1{}
 	}
 	return o.Events
 }
@@ -710,8 +812,8 @@ const (
 )
 
 type GetWebhooksResponseBody struct {
-	ArrayOfGetWebhooksResponseBody1 []GetWebhooksResponseBody1
-	ArrayOfGetWebhooksResponseBody2 []GetWebhooksResponseBody2
+	ArrayOfGetWebhooksResponseBody1 []GetWebhooksResponseBody1 `queryParam:"inline"`
+	ArrayOfGetWebhooksResponseBody2 []GetWebhooksResponseBody2 `queryParam:"inline"`
 
 	Type GetWebhooksResponseBodyType
 }

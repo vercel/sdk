@@ -27,6 +27,7 @@ export const BlockedDueToOverageType = {
   BlobTotalGetResponseObjectSizeInBytes:
     "blobTotalGetResponseObjectSizeInBytes",
   BlobTotalSimpleRequests: "blobTotalSimpleRequests",
+  ConnectDataTransfer: "connectDataTransfer",
   DataCacheRead: "dataCacheRead",
   DataCacheWrite: "dataCacheWrite",
   EdgeConfigRead: "edgeConfigRead",
@@ -38,6 +39,8 @@ export const BlockedDueToOverageType = {
   ElasticConcurrencyBuildSlots: "elasticConcurrencyBuildSlots",
   FastDataTransfer: "fastDataTransfer",
   FastOriginTransfer: "fastOriginTransfer",
+  FluidCpuDuration: "fluidCpuDuration",
+  FluidDuration: "fluidDuration",
   FunctionDuration: "functionDuration",
   FunctionInvocation: "functionInvocation",
   ImageOptimizationCacheRead: "imageOptimizationCacheRead",
@@ -47,11 +50,14 @@ export const BlockedDueToOverageType = {
   MonitoringMetric: "monitoringMetric",
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
+  OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
   PostgresComputeTime: "postgresComputeTime",
   PostgresDataStorage: "postgresDataStorage",
   PostgresDataTransfer: "postgresDataTransfer",
   PostgresDatabase: "postgresDatabase",
   PostgresWrittenData: "postgresWrittenData",
+  RuntimeCacheRead: "runtimeCacheRead",
+  RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
   StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
@@ -85,7 +91,7 @@ export type Billing = {};
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
-export type BuildEntitlements = {
+export type AuthUserBuildEntitlements = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -97,7 +103,7 @@ export type BuildEntitlements = {
  */
 export const PurchaseType = {
   Enhanced: "enhanced",
-  Ultra: "ultra",
+  Turbo: "turbo",
 } as const;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -129,7 +135,7 @@ export type BuildMachine = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
-export type ResourceConfig = {
+export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -141,7 +147,7 @@ export type ResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  buildEntitlements?: BuildEntitlements | undefined;
+  buildEntitlements?: AuthUserBuildEntitlements | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -301,7 +307,7 @@ export type FavoriteProjectsAndSpaces = {
 /**
  * remote caching settings
  */
-export type RemoteCaching = {
+export type AuthUserRemoteCaching = {
   enabled?: boolean | undefined;
 };
 
@@ -344,7 +350,7 @@ export type AuthUser = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  resourceConfig: ResourceConfig;
+  resourceConfig: AuthUserResourceConfig;
   /**
    * Prefix that will be used in the URL of "Preview" deployments created by the User account.
    */
@@ -374,7 +380,7 @@ export type AuthUser = {
   /**
    * remote caching settings
    */
-  remoteCaching?: RemoteCaching | undefined;
+  remoteCaching?: AuthUserRemoteCaching | undefined;
   /**
    * data cache settings
    */
@@ -547,8 +553,8 @@ export function billingFromJSON(
 }
 
 /** @internal */
-export const BuildEntitlements$inboundSchema: z.ZodType<
-  BuildEntitlements,
+export const AuthUserBuildEntitlements$inboundSchema: z.ZodType<
+  AuthUserBuildEntitlements,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -556,15 +562,15 @@ export const BuildEntitlements$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type BuildEntitlements$Outbound = {
+export type AuthUserBuildEntitlements$Outbound = {
   enhancedBuilds?: boolean | undefined;
 };
 
 /** @internal */
-export const BuildEntitlements$outboundSchema: z.ZodType<
-  BuildEntitlements$Outbound,
+export const AuthUserBuildEntitlements$outboundSchema: z.ZodType<
+  AuthUserBuildEntitlements$Outbound,
   z.ZodTypeDef,
-  BuildEntitlements
+  AuthUserBuildEntitlements
 > = z.object({
   enhancedBuilds: z.boolean().optional(),
 });
@@ -573,30 +579,30 @@ export const BuildEntitlements$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BuildEntitlements$ {
-  /** @deprecated use `BuildEntitlements$inboundSchema` instead. */
-  export const inboundSchema = BuildEntitlements$inboundSchema;
-  /** @deprecated use `BuildEntitlements$outboundSchema` instead. */
-  export const outboundSchema = BuildEntitlements$outboundSchema;
-  /** @deprecated use `BuildEntitlements$Outbound` instead. */
-  export type Outbound = BuildEntitlements$Outbound;
+export namespace AuthUserBuildEntitlements$ {
+  /** @deprecated use `AuthUserBuildEntitlements$inboundSchema` instead. */
+  export const inboundSchema = AuthUserBuildEntitlements$inboundSchema;
+  /** @deprecated use `AuthUserBuildEntitlements$outboundSchema` instead. */
+  export const outboundSchema = AuthUserBuildEntitlements$outboundSchema;
+  /** @deprecated use `AuthUserBuildEntitlements$Outbound` instead. */
+  export type Outbound = AuthUserBuildEntitlements$Outbound;
 }
 
-export function buildEntitlementsToJSON(
-  buildEntitlements: BuildEntitlements,
+export function authUserBuildEntitlementsToJSON(
+  authUserBuildEntitlements: AuthUserBuildEntitlements,
 ): string {
   return JSON.stringify(
-    BuildEntitlements$outboundSchema.parse(buildEntitlements),
+    AuthUserBuildEntitlements$outboundSchema.parse(authUserBuildEntitlements),
   );
 }
 
-export function buildEntitlementsFromJSON(
+export function authUserBuildEntitlementsFromJSON(
   jsonString: string,
-): SafeParseResult<BuildEntitlements, SDKValidationError> {
+): SafeParseResult<AuthUserBuildEntitlements, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuildEntitlements$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuildEntitlements' from JSON`,
+    (x) => AuthUserBuildEntitlements$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserBuildEntitlements' from JSON`,
   );
 }
 
@@ -679,14 +685,15 @@ export function buildMachineFromJSON(
 }
 
 /** @internal */
-export const ResourceConfig$inboundSchema: z.ZodType<
-  ResourceConfig,
+export const AuthUserResourceConfig$inboundSchema: z.ZodType<
+  AuthUserResourceConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
-  buildEntitlements: z.lazy(() => BuildEntitlements$inboundSchema).optional(),
+  buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$inboundSchema)
+    .optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),
@@ -711,10 +718,10 @@ export const ResourceConfig$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ResourceConfig$Outbound = {
+export type AuthUserResourceConfig$Outbound = {
   nodeType?: string | undefined;
   concurrentBuilds?: number | undefined;
-  buildEntitlements?: BuildEntitlements$Outbound | undefined;
+  buildEntitlements?: AuthUserBuildEntitlements$Outbound | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
   cfZoneName?: string | undefined;
@@ -739,14 +746,15 @@ export type ResourceConfig$Outbound = {
 };
 
 /** @internal */
-export const ResourceConfig$outboundSchema: z.ZodType<
-  ResourceConfig$Outbound,
+export const AuthUserResourceConfig$outboundSchema: z.ZodType<
+  AuthUserResourceConfig$Outbound,
   z.ZodTypeDef,
-  ResourceConfig
+  AuthUserResourceConfig
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
-  buildEntitlements: z.lazy(() => BuildEntitlements$outboundSchema).optional(),
+  buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$outboundSchema)
+    .optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),
@@ -774,26 +782,30 @@ export const ResourceConfig$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResourceConfig$ {
-  /** @deprecated use `ResourceConfig$inboundSchema` instead. */
-  export const inboundSchema = ResourceConfig$inboundSchema;
-  /** @deprecated use `ResourceConfig$outboundSchema` instead. */
-  export const outboundSchema = ResourceConfig$outboundSchema;
-  /** @deprecated use `ResourceConfig$Outbound` instead. */
-  export type Outbound = ResourceConfig$Outbound;
+export namespace AuthUserResourceConfig$ {
+  /** @deprecated use `AuthUserResourceConfig$inboundSchema` instead. */
+  export const inboundSchema = AuthUserResourceConfig$inboundSchema;
+  /** @deprecated use `AuthUserResourceConfig$outboundSchema` instead. */
+  export const outboundSchema = AuthUserResourceConfig$outboundSchema;
+  /** @deprecated use `AuthUserResourceConfig$Outbound` instead. */
+  export type Outbound = AuthUserResourceConfig$Outbound;
 }
 
-export function resourceConfigToJSON(resourceConfig: ResourceConfig): string {
-  return JSON.stringify(ResourceConfig$outboundSchema.parse(resourceConfig));
+export function authUserResourceConfigToJSON(
+  authUserResourceConfig: AuthUserResourceConfig,
+): string {
+  return JSON.stringify(
+    AuthUserResourceConfig$outboundSchema.parse(authUserResourceConfig),
+  );
 }
 
-export function resourceConfigFromJSON(
+export function authUserResourceConfigFromJSON(
   jsonString: string,
-): SafeParseResult<ResourceConfig, SDKValidationError> {
+): SafeParseResult<AuthUserResourceConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResourceConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResourceConfig' from JSON`,
+    (x) => AuthUserResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserResourceConfig' from JSON`,
   );
 }
 
@@ -1313,8 +1325,8 @@ export function favoriteProjectsAndSpacesFromJSON(
 }
 
 /** @internal */
-export const RemoteCaching$inboundSchema: z.ZodType<
-  RemoteCaching,
+export const AuthUserRemoteCaching$inboundSchema: z.ZodType<
+  AuthUserRemoteCaching,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1322,15 +1334,15 @@ export const RemoteCaching$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type RemoteCaching$Outbound = {
+export type AuthUserRemoteCaching$Outbound = {
   enabled?: boolean | undefined;
 };
 
 /** @internal */
-export const RemoteCaching$outboundSchema: z.ZodType<
-  RemoteCaching$Outbound,
+export const AuthUserRemoteCaching$outboundSchema: z.ZodType<
+  AuthUserRemoteCaching$Outbound,
   z.ZodTypeDef,
-  RemoteCaching
+  AuthUserRemoteCaching
 > = z.object({
   enabled: z.boolean().optional(),
 });
@@ -1339,26 +1351,30 @@ export const RemoteCaching$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RemoteCaching$ {
-  /** @deprecated use `RemoteCaching$inboundSchema` instead. */
-  export const inboundSchema = RemoteCaching$inboundSchema;
-  /** @deprecated use `RemoteCaching$outboundSchema` instead. */
-  export const outboundSchema = RemoteCaching$outboundSchema;
-  /** @deprecated use `RemoteCaching$Outbound` instead. */
-  export type Outbound = RemoteCaching$Outbound;
+export namespace AuthUserRemoteCaching$ {
+  /** @deprecated use `AuthUserRemoteCaching$inboundSchema` instead. */
+  export const inboundSchema = AuthUserRemoteCaching$inboundSchema;
+  /** @deprecated use `AuthUserRemoteCaching$outboundSchema` instead. */
+  export const outboundSchema = AuthUserRemoteCaching$outboundSchema;
+  /** @deprecated use `AuthUserRemoteCaching$Outbound` instead. */
+  export type Outbound = AuthUserRemoteCaching$Outbound;
 }
 
-export function remoteCachingToJSON(remoteCaching: RemoteCaching): string {
-  return JSON.stringify(RemoteCaching$outboundSchema.parse(remoteCaching));
+export function authUserRemoteCachingToJSON(
+  authUserRemoteCaching: AuthUserRemoteCaching,
+): string {
+  return JSON.stringify(
+    AuthUserRemoteCaching$outboundSchema.parse(authUserRemoteCaching),
+  );
 }
 
-export function remoteCachingFromJSON(
+export function authUserRemoteCachingFromJSON(
   jsonString: string,
-): SafeParseResult<RemoteCaching, SDKValidationError> {
+): SafeParseResult<AuthUserRemoteCaching, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RemoteCaching$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemoteCaching' from JSON`,
+    (x) => AuthUserRemoteCaching$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserRemoteCaching' from JSON`,
   );
 }
 
@@ -1527,7 +1543,7 @@ export const AuthUser$inboundSchema: z.ZodType<
   createdAt: z.number(),
   softBlock: z.nullable(z.lazy(() => SoftBlock$inboundSchema)),
   billing: z.nullable(z.lazy(() => Billing$inboundSchema)),
-  resourceConfig: z.lazy(() => ResourceConfig$inboundSchema),
+  resourceConfig: z.lazy(() => AuthUserResourceConfig$inboundSchema),
   stagingPrefix: z.string(),
   activeDashboardViews: z.array(
     z.lazy(() => ActiveDashboardViews$inboundSchema),
@@ -1547,7 +1563,7 @@ export const AuthUser$inboundSchema: z.ZodType<
     z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema),
   ).optional(),
   hasTrialAvailable: z.boolean(),
-  remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
+  remoteCaching: z.lazy(() => AuthUserRemoteCaching$inboundSchema).optional(),
   dataCache: z.lazy(() => DataCache$inboundSchema).optional(),
   featureBlocks: z.lazy(() => FeatureBlocks$inboundSchema).optional(),
   id: z.string(),
@@ -1563,7 +1579,7 @@ export type AuthUser$Outbound = {
   createdAt: number;
   softBlock: SoftBlock$Outbound | null;
   billing: Billing$Outbound | null;
-  resourceConfig: ResourceConfig$Outbound;
+  resourceConfig: AuthUserResourceConfig$Outbound;
   stagingPrefix: string;
   activeDashboardViews?: Array<ActiveDashboardViews$Outbound> | undefined;
   importFlowGitNamespace?: string | number | null | undefined;
@@ -1577,7 +1593,7 @@ export type AuthUser$Outbound = {
     | Array<FavoriteProjectsAndSpaces$Outbound>
     | undefined;
   hasTrialAvailable: boolean;
-  remoteCaching?: RemoteCaching$Outbound | undefined;
+  remoteCaching?: AuthUserRemoteCaching$Outbound | undefined;
   dataCache?: DataCache$Outbound | undefined;
   featureBlocks?: FeatureBlocks$Outbound | undefined;
   id: string;
@@ -1597,7 +1613,7 @@ export const AuthUser$outboundSchema: z.ZodType<
   createdAt: z.number(),
   softBlock: z.nullable(z.lazy(() => SoftBlock$outboundSchema)),
   billing: z.nullable(z.lazy(() => Billing$outboundSchema)),
-  resourceConfig: z.lazy(() => ResourceConfig$outboundSchema),
+  resourceConfig: z.lazy(() => AuthUserResourceConfig$outboundSchema),
   stagingPrefix: z.string(),
   activeDashboardViews: z.array(
     z.lazy(() => ActiveDashboardViews$outboundSchema),
@@ -1617,7 +1633,7 @@ export const AuthUser$outboundSchema: z.ZodType<
     z.lazy(() => FavoriteProjectsAndSpaces$outboundSchema),
   ).optional(),
   hasTrialAvailable: z.boolean(),
-  remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
+  remoteCaching: z.lazy(() => AuthUserRemoteCaching$outboundSchema).optional(),
   dataCache: z.lazy(() => DataCache$outboundSchema).optional(),
   featureBlocks: z.lazy(() => FeatureBlocks$outboundSchema).optional(),
   id: z.string(),

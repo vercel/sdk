@@ -50,7 +50,7 @@ func testRemoveProjectDomainRemoveProjectDomain0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveProjectDomainResponseBody{}
+	var respBody *operations.RemoveProjectDomainResponseBody = &operations.RemoveProjectDomainResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

@@ -7,9 +7,7 @@ import { CreateWebhookRequestBody } from "@vercel/sdk/models/createwebhookop.js"
 
 let value: CreateWebhookRequestBody = {
   url: "https://thin-gazebo.name",
-  events: [
-    "budget.reached",
-  ],
+  events: [],
 };
 ```
 

@@ -51,24 +51,23 @@ func testArtifactQueryArtifactQuery0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := map[string]*operations.ResponseBody{
-		"key": types.Pointer(operations.CreateResponseBodyResponseBody2(
-			operations.ResponseBody2{
-				Error: operations.Error{
-					Message: "<value>",
-				},
+	var respBody map[string]*operations.ArtifactQueryResponseBodyUnion = map[string]*operations.ArtifactQueryResponseBodyUnion{
+		"key": types.Pointer(operations.CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody1(
+			operations.ArtifactQueryResponseBody1{
+				Size:           3811.11,
+				TaskDurationMs: 5116.13,
 			},
 		)),
-		"key1": types.Pointer(operations.CreateResponseBodyResponseBody1(
-			operations.ResponseBody1{
-				Size:           9698.01,
-				TaskDurationMs: 1946.74,
+		"key1": types.Pointer(operations.CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody1(
+			operations.ArtifactQueryResponseBody1{
+				Size:           3811.11,
+				TaskDurationMs: 5116.13,
 			},
 		)),
-		"key2": types.Pointer(operations.CreateResponseBodyResponseBody1(
-			operations.ResponseBody1{
-				Size:           1135.95,
-				TaskDurationMs: 5348.41,
+		"key2": types.Pointer(operations.CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody1(
+			operations.ArtifactQueryResponseBody1{
+				Size:           3811.11,
+				TaskDurationMs: 5116.13,
 			},
 		)),
 	}

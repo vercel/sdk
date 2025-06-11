@@ -9,7 +9,7 @@ import { RequestBodyRevoke } from "@vercel/sdk/models/patchurlprotectionbypassop
 
 let value: RequestBodyRevoke = {
   secret: "<value>",
-  regenerate: false,
+  regenerate: true,
 };
 ```
 

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -236,6 +237,34 @@ export type GetDeploymentsChecksConclusion = ClosedEnum<
   typeof GetDeploymentsChecksConclusion
 >;
 
+export const GetDeploymentsDeploymentsState = {
+  Succeeded: "succeeded",
+  Failed: "failed",
+  Pending: "pending",
+} as const;
+export type GetDeploymentsDeploymentsState = ClosedEnum<
+  typeof GetDeploymentsDeploymentsState
+>;
+
+/**
+ * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+ */
+export type GetDeploymentsDeploymentAlias = {
+  state: GetDeploymentsDeploymentsState;
+  startedAt: number;
+  completedAt?: number | undefined;
+};
+
+/**
+ * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+ */
+export type GetDeploymentsChecks = {
+  /**
+   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+   */
+  deploymentAlias: GetDeploymentsDeploymentAlias;
+};
+
 export const GetDeploymentsFramework = {
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
@@ -459,6 +488,10 @@ export type Deployments = {
    * Conclusion for checks
    */
   checksConclusion?: GetDeploymentsChecksConclusion | undefined;
+  /**
+   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
+   */
+  checks?: GetDeploymentsChecks | undefined;
   /**
    * Vercel URL to inspect the deployment.
    */
@@ -943,6 +976,151 @@ export namespace GetDeploymentsChecksConclusion$ {
 }
 
 /** @internal */
+export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsState
+> = z.nativeEnum(GetDeploymentsDeploymentsState);
+
+/** @internal */
+export const GetDeploymentsDeploymentsState$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsState
+> = GetDeploymentsDeploymentsState$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentsDeploymentsState$ {
+  /** @deprecated use `GetDeploymentsDeploymentsState$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentsDeploymentsState$inboundSchema;
+  /** @deprecated use `GetDeploymentsDeploymentsState$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentsDeploymentsState$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
+  GetDeploymentsDeploymentAlias,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  state: GetDeploymentsDeploymentsState$inboundSchema,
+  startedAt: z.number(),
+  completedAt: z.number().optional(),
+});
+
+/** @internal */
+export type GetDeploymentsDeploymentAlias$Outbound = {
+  state: string;
+  startedAt: number;
+  completedAt?: number | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsDeploymentAlias$outboundSchema: z.ZodType<
+  GetDeploymentsDeploymentAlias$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsDeploymentAlias
+> = z.object({
+  state: GetDeploymentsDeploymentsState$outboundSchema,
+  startedAt: z.number(),
+  completedAt: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentsDeploymentAlias$ {
+  /** @deprecated use `GetDeploymentsDeploymentAlias$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentsDeploymentAlias$inboundSchema;
+  /** @deprecated use `GetDeploymentsDeploymentAlias$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentsDeploymentAlias$outboundSchema;
+  /** @deprecated use `GetDeploymentsDeploymentAlias$Outbound` instead. */
+  export type Outbound = GetDeploymentsDeploymentAlias$Outbound;
+}
+
+export function getDeploymentsDeploymentAliasToJSON(
+  getDeploymentsDeploymentAlias: GetDeploymentsDeploymentAlias,
+): string {
+  return JSON.stringify(
+    GetDeploymentsDeploymentAlias$outboundSchema.parse(
+      getDeploymentsDeploymentAlias,
+    ),
+  );
+}
+
+export function getDeploymentsDeploymentAliasFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentAlias, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsDeploymentAlias$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentAlias' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsChecks$inboundSchema: z.ZodType<
+  GetDeploymentsChecks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  "deployment-alias": z.lazy(() => GetDeploymentsDeploymentAlias$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "deployment-alias": "deploymentAlias",
+  });
+});
+
+/** @internal */
+export type GetDeploymentsChecks$Outbound = {
+  "deployment-alias": GetDeploymentsDeploymentAlias$Outbound;
+};
+
+/** @internal */
+export const GetDeploymentsChecks$outboundSchema: z.ZodType<
+  GetDeploymentsChecks$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsChecks
+> = z.object({
+  deploymentAlias: z.lazy(() => GetDeploymentsDeploymentAlias$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    deploymentAlias: "deployment-alias",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentsChecks$ {
+  /** @deprecated use `GetDeploymentsChecks$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentsChecks$inboundSchema;
+  /** @deprecated use `GetDeploymentsChecks$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentsChecks$outboundSchema;
+  /** @deprecated use `GetDeploymentsChecks$Outbound` instead. */
+  export type Outbound = GetDeploymentsChecks$Outbound;
+}
+
+export function getDeploymentsChecksToJSON(
+  getDeploymentsChecks: GetDeploymentsChecks,
+): string {
+  return JSON.stringify(
+    GetDeploymentsChecks$outboundSchema.parse(getDeploymentsChecks),
+  );
+}
+
+export function getDeploymentsChecksFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsChecks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsChecks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsChecks' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsFramework
 > = z.nativeEnum(GetDeploymentsFramework);
@@ -1382,6 +1560,7 @@ export const Deployments$inboundSchema: z.ZodType<
   readySubstate: GetDeploymentsReadySubstate$inboundSchema.optional(),
   checksState: GetDeploymentsChecksState$inboundSchema.optional(),
   checksConclusion: GetDeploymentsChecksConclusion$inboundSchema.optional(),
+  checks: z.lazy(() => GetDeploymentsChecks$inboundSchema).optional(),
   inspectorUrl: z.nullable(z.string()),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$inboundSchema)
@@ -1420,6 +1599,7 @@ export type Deployments$Outbound = {
   readySubstate?: string | undefined;
   checksState?: string | undefined;
   checksConclusion?: string | undefined;
+  checks?: GetDeploymentsChecks$Outbound | undefined;
   inspectorUrl: string | null;
   isRollbackCandidate?: boolean | null | undefined;
   projectSettings?: GetDeploymentsProjectSettings$Outbound | undefined;
@@ -1461,6 +1641,7 @@ export const Deployments$outboundSchema: z.ZodType<
   readySubstate: GetDeploymentsReadySubstate$outboundSchema.optional(),
   checksState: GetDeploymentsChecksState$outboundSchema.optional(),
   checksConclusion: GetDeploymentsChecksConclusion$outboundSchema.optional(),
+  checks: z.lazy(() => GetDeploymentsChecks$outboundSchema).optional(),
   inspectorUrl: z.nullable(z.string()),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$outboundSchema)

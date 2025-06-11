@@ -47,60 +47,8 @@ func testGetTeamsGetTeams0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetTeamsResponseBody{
-		Teams: []operations.Teams{
-			operations.CreateTeamsTeamLimited(
-				components.TeamLimited{
-					Limited: false,
-					LimitedBy: []components.LimitedBy{
-						components.LimitedByMfa,
-					},
-					Saml: &components.Saml{
-						Connection: &components.Connection{
-							Type:                     "OktaSAML",
-							Status:                   "linked",
-							State:                    "active",
-							ConnectedAt:              1611796915677,
-							LastReceivedWebhookEvent: types.Float64(1611796915677),
-						},
-						Directory: &components.Directory{
-							Type:                     "OktaSAML",
-							State:                    "active",
-							ConnectedAt:              1611796915677,
-							LastReceivedWebhookEvent: types.Float64(1611796915677),
-						},
-						Enforced: false,
-					},
-					ID:     "team_nllPyCtREAqxxdyFKbbMDlxd",
-					Slug:   "my-team",
-					Name:   types.String("My Team"),
-					Avatar: types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
-					Membership: components.Membership{
-						Confirmed:   false,
-						ConfirmedAt: 6027.63,
-						Role:        components.RoleSecurity,
-						CreatedAt:   4236.55,
-						Created:     6458.94,
-					},
-					Created:   "<value>",
-					CreatedAt: 1630748523395,
-				},
-			),
-			operations.CreateTeamsTeam(
-				components.Team{
-					ID: "ABCDEFG000011111",
-					Data: components.Data{
-						Query:     "<value>",
-						CreatorID: "<id>",
-						Title:     "<value>",
-						GroupID:   "<id>",
-						OwnerID:   "<id>",
-						ProjectID: "<id>",
-						CreatedAt: 8917.73,
-					},
-				},
-			),
-		},
+	var respBody *operations.GetTeamsResponseBody = &operations.GetTeamsResponseBody{
+		Teams: []operations.GetTeamsTeam{},
 		Pagination: components.Pagination{
 			Count: 20,
 			Next:  types.Float64(1540095775951),

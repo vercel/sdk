@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -51,56 +50,44 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateDeploymentResponseBody{
-		Build: operations.Build{
+	var respBody *operations.CreateDeploymentResponseBody = &operations.CreateDeploymentResponseBody{
+		Build: operations.CreateDeploymentBuild1{
 			Env: []string{
-				"<value>",
-				"<value>",
-				"<value>",
+				"<value 1>",
+				"<value 2>",
+				"<value 3>",
 			},
 		},
-		Env: []string{
-			"<value>",
-			"<value>",
-		},
-		InspectorURL:              types.String("https://firm-casket.name/"),
+		Env:                       []string{},
+		InspectorURL:              nil,
 		IsInConcurrentBuildsQueue: false,
 		IsInSystemBuildsQueue:     false,
-		ProjectSettings:           operations.CreateDeploymentProjectSettings{},
-		AliasAssigned:             true,
-		BootedAt:                  7030.55,
-		BuildingAt:                2916.6,
+		ProjectSettings:           operations.CreateDeploymentProjectSettingsLambdas{},
+		AliasAssigned:             false,
+		BootedAt:                  3619.08,
+		BuildingAt:                1664.36,
 		BuildSkipped:              false,
-		Creator: operations.Creator{
+		Creator: operations.CreateDeploymentCreator{
 			UID: "<id>",
 		},
-		Public:    true,
-		Status:    operations.CreateDeploymentStatusBuilding,
-		Type:      operations.CreateDeploymentTypeLambdas,
-		Name:      "<value>",
-		CreatedAt: 1218,
+		Public:    false,
+		Status:    operations.CreateDeploymentStatusCanceled,
 		ID:        "<id>",
-		Version:   5856.16,
+		Name:      "<value>",
+		CreatedAt: 179.28,
+		Type:      operations.CreateDeploymentTypeLambdasLambdas,
+		Version:   8477.72,
 		Meta: map[string]string{
-			"key":  "<value>",
-			"key1": "<value>",
+			"key": "<value>",
 		},
-		ReadyState: operations.ReadyStateCanceled,
-		Regions: []string{
-			"<value>",
-		},
-		URL:       "https://quiet-formation.name/",
-		Plan:      operations.PlanPro,
-		ProjectID: "<id>",
-		OwnerID:   "<id>",
-		Routes: []operations.Routes{
-			operations.CreateRoutesRoutes1(
-				operations.Routes1{
-					Src: "<value>",
-				},
-			),
-		},
-		CreatedIn: "<value>",
+		ReadyState: operations.CreateDeploymentReadyStateBuilding,
+		Regions:    []string{},
+		URL:        "https://unwritten-viability.org",
+		ProjectID:  "<id>",
+		OwnerID:    "<id>",
+		Routes:     []operations.CreateDeploymentRouteUnion{},
+		Plan:       operations.CreateDeploymentPlanEnterprise,
+		CreatedIn:  "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

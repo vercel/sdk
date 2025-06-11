@@ -45,9 +45,9 @@ func testGetMemberGetMember0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetMemberResponseBody{
+	var respBody *operations.GetMemberResponseBody = &operations.GetMemberResponseBody{
 		ID:   "<id>",
-		Role: operations.GetMemberRoleAdmin,
+		Role: operations.GetMemberRoleUser,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

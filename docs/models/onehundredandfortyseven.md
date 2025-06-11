@@ -10,7 +10,9 @@ import { OneHundredAndFortySeven } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndFortySeven = {
   appName: "<value>",
   nextScopes: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

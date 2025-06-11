@@ -40,7 +40,6 @@ async function run() {
     role: "OWNER",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -68,15 +67,12 @@ async function run() {
     until: 1540095775951,
     role: "OWNER",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsGetTeamMembers failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -123,6 +119,7 @@ async function run() {
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
+      role: "DEVELOPER",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -136,7 +133,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -163,6 +159,7 @@ async function run() {
     requestBody: {
       uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
       email: "john@example.com",
+      role: "DEVELOPER",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -175,15 +172,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsInviteUserToTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -208,7 +202,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## requestAccessToTeam
@@ -239,7 +232,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -274,15 +266,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsRequestAccessToTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -329,7 +318,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -355,15 +343,12 @@ async function run() {
     userId: "<id>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsGetTeamAccessRequest failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -412,7 +397,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -440,15 +424,12 @@ async function run() {
       inviteCode: "fisdh38aejkeivn34nslfore9vjtn4ls",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsJoinTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -495,6 +476,7 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
+      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -512,7 +494,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -539,6 +520,7 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       confirmed: true,
+      role: "[\"MEMBER\",\"VIEWER\"]",
       projects: [
         {
           projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -555,15 +537,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsUpdateTeamMember failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -611,7 +590,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -638,15 +616,12 @@ async function run() {
     newDefaultTeamId: "team_nllPyCtREAqxxdyFKbbMDlxd",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsRemoveTeamMember failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -693,7 +668,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -719,15 +693,12 @@ async function run() {
     slug: "my-team-url-slug",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsGetTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -744,7 +715,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TeamLimited](../../models/teamlimited.md)\>**
+**Promise\<[models.Team](../../models/team.md)\>**
 
 ### Errors
 
@@ -793,7 +764,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -838,15 +808,12 @@ async function run() {
       hideIpAddressesInLogDrains: false,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsPatchTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -863,7 +830,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TeamLimited](../../models/teamlimited.md)\>**
+**Promise\<[models.Team](../../models/team.md)\>**
 
 ### Errors
 
@@ -871,7 +838,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getTeams
@@ -894,7 +860,6 @@ async function run() {
     until: 1540095775951,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -921,15 +886,12 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsGetTeams failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -975,7 +937,6 @@ async function run() {
     name: "A Random Team",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1001,15 +962,12 @@ async function run() {
     slug: "a-random-team",
     name: "A Random Team",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsCreateTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1057,7 +1015,6 @@ async function run() {
     requestBody: {},
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1085,15 +1042,12 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {},
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsDeleteTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1118,7 +1072,6 @@ run();
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## deleteTeamInviteCode
@@ -1140,7 +1093,6 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1166,15 +1118,12 @@ async function run() {
     inviteId: "2wn2hudbr4chb1ecywo9dvzo7g9sscs6mzcz8htdde0txyom4l",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("teamsDeleteTeamInviteCode failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

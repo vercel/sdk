@@ -7,6 +7,7 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
@@ -46,8 +47,26 @@ func testListPromoteAliasesListPromoteAliases0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateListPromoteAliasesResponseBodyListPromoteAliasesResponseBody1(
-		operations.ListPromoteAliasesResponseBody1{},
+	var respBody *operations.ListPromoteAliasesResponseBody = types.Pointer(operations.CreateListPromoteAliasesResponseBodyListPromoteAliasesResponseBody2(
+		operations.ListPromoteAliasesResponseBody2{
+			Aliases: []operations.ListPromoteAliasesAlias{
+				operations.ListPromoteAliasesAlias{
+					Status: "<value>",
+					Alias:  "<value>",
+					ID:     "<id>",
+				},
+				operations.ListPromoteAliasesAlias{
+					Status: "<value>",
+					Alias:  "<value>",
+					ID:     "<id>",
+				},
+			},
+			Pagination: components.Pagination{
+				Count: 20,
+				Next:  types.Float64(1540095775951),
+				Prev:  types.Float64(1540095775951),
+			},
+		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

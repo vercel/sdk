@@ -9,9 +9,7 @@ let value: RateLimit1 = {
   algo: "token_bucket",
   window: 1994.44,
   limit: 7781.4,
-  keys: [
-    "<value>",
-  ],
+  keys: [],
 };
 ```
 

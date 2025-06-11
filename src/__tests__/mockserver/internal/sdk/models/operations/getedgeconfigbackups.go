@@ -94,27 +94,27 @@ func (o *GetEdgeConfigBackupsMetadata) GetItemsBytes() *float64 {
 	return o.ItemsBytes
 }
 
-type Backups struct {
+type GetEdgeConfigBackupsBackup struct {
 	Metadata     *GetEdgeConfigBackupsMetadata `json:"metadata,omitempty"`
 	ID           string                        `json:"id"`
 	LastModified float64                       `json:"lastModified"`
 }
 
-func (o *Backups) GetMetadata() *GetEdgeConfigBackupsMetadata {
+func (o *GetEdgeConfigBackupsBackup) GetMetadata() *GetEdgeConfigBackupsMetadata {
 	if o == nil {
 		return nil
 	}
 	return o.Metadata
 }
 
-func (o *Backups) GetID() string {
+func (o *GetEdgeConfigBackupsBackup) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Backups) GetLastModified() float64 {
+func (o *GetEdgeConfigBackupsBackup) GetLastModified() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -141,13 +141,13 @@ func (o *GetEdgeConfigBackupsPagination) GetNext() *string {
 }
 
 type GetEdgeConfigBackupsResponseBody struct {
-	Backups    []Backups                      `json:"backups"`
+	Backups    []GetEdgeConfigBackupsBackup   `json:"backups"`
 	Pagination GetEdgeConfigBackupsPagination `json:"pagination"`
 }
 
-func (o *GetEdgeConfigBackupsResponseBody) GetBackups() []Backups {
+func (o *GetEdgeConfigBackupsResponseBody) GetBackups() []GetEdgeConfigBackupsBackup {
 	if o == nil {
-		return []Backups{}
+		return []GetEdgeConfigBackupsBackup{}
 	}
 	return o.Backups
 }

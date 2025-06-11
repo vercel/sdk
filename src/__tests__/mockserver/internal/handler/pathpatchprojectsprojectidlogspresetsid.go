@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,22 +46,42 @@ func testPatchProjectsProjectIDLogsPresetsIDPatchProjectsProjectIDLogsPresetsID0
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.Team{
-		ID: "ABCDEFG000011111",
-		Data: components.Data{
-			Query:     "<value>",
-			CreatorID: "<id>",
-			Title:     "<value>",
-			GroupID:   "<id>",
-			OwnerID:   "<id>",
-			ProjectID: "<id>",
-			CreatedAt: 4063.98,
+	var respBody *components.Team = &components.Team{
+		ID:          "team_nllPyCtREAqxxdyFKbbMDlxd",
+		CreatorID:   "R6efeCJQ2HKXywuasPDc0fOWB",
+		UpdatedAt:   1611796915677,
+		EmailDomain: types.String("example.com"),
+		Saml: &components.TeamSaml{
+			Connection: &components.TeamConnection{
+				Status:                   "linked",
+				Type:                     "OktaSAML",
+				State:                    "active",
+				ConnectedAt:              1611796915677,
+				LastReceivedWebhookEvent: types.Float64(1611796915677),
+			},
+			Directory: &components.TeamDirectory{
+				Type:                     "OktaSAML",
+				State:                    "active",
+				ConnectedAt:              1611796915677,
+				LastReceivedWebhookEvent: types.Float64(1611796915677),
+			},
+			Enforced: false,
 		},
-		AdditionalProperties: map[string]any{
-			"key":  "<value>",
-			"key1": "<value>",
-			"key2": "<value>",
+		InviteCode:              types.String("hasihf9e89"),
+		Description:             types.String("Our mission is to make cloud computing accessible to everyone."),
+		StagingPrefix:           "<value>",
+		PreviewDeploymentSuffix: types.String("example.dev"),
+		Slug:                    "my-team",
+		Name:                    types.String("My Team"),
+		Avatar:                  types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
+		Membership: components.TeamMembership{
+			Confirmed:   true,
+			ConfirmedAt: 5697.43,
+			Role:        components.TeamRole2Viewer,
+			CreatedAt:   9741.23,
+			Created:     2482.46,
 		},
+		CreatedAt: 1630748523395,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -50,9 +50,9 @@ func testCreateEdgeConfigCreateEdgeConfig0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateEdgeConfigResponseBody{
-		SizeInBytes: 145.91,
-		ItemCount:   5042.97,
+	var respBody *operations.CreateEdgeConfigResponseBody = &operations.CreateEdgeConfigResponseBody{
+		SizeInBytes: 9972.06,
+		ItemCount:   9113.46,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

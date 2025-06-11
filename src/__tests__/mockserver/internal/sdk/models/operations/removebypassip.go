@@ -98,13 +98,13 @@ func (o *RemoveBypassIPRequestBody1) GetNote() *string {
 type RemoveBypassIPRequestBodyType string
 
 const (
-	RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody1 RemoveBypassIPRequestBodyType = "removeBypassIp_requestBody_1"
-	RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody2 RemoveBypassIPRequestBodyType = "removeBypassIp_requestBody_2"
+	RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody1 RemoveBypassIPRequestBodyType = "removeBypassIp_RequestBody_1"
+	RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody2 RemoveBypassIPRequestBodyType = "removeBypassIp_RequestBody_2"
 )
 
 type RemoveBypassIPRequestBody struct {
-	RemoveBypassIPRequestBody1 *RemoveBypassIPRequestBody1
-	RemoveBypassIPRequestBody2 *RemoveBypassIPRequestBody2
+	RemoveBypassIPRequestBody1 *RemoveBypassIPRequestBody1 `queryParam:"inline"`
+	RemoveBypassIPRequestBody2 *RemoveBypassIPRequestBody2 `queryParam:"inline"`
 
 	Type RemoveBypassIPRequestBodyType
 }

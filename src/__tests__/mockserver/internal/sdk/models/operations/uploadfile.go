@@ -102,15 +102,15 @@ func (o *UploadFileResponseBody1) GetUrls() []string {
 type UploadFileResponseBodyType string
 
 const (
-	UploadFileResponseBodyTypeUploadFileResponseBody1 UploadFileResponseBodyType = "uploadFile_responseBody_1"
-	UploadFileResponseBodyTypeUploadFileResponseBody2 UploadFileResponseBodyType = "uploadFile_responseBody_2"
+	UploadFileResponseBodyTypeUploadFileResponseBody1 UploadFileResponseBodyType = "uploadFile_ResponseBody_1"
+	UploadFileResponseBodyTypeUploadFileResponseBody2 UploadFileResponseBodyType = "uploadFile_ResponseBody_2"
 )
 
 // UploadFileResponseBody - File already uploaded
 // File successfully uploaded
 type UploadFileResponseBody struct {
-	UploadFileResponseBody1 *UploadFileResponseBody1
-	UploadFileResponseBody2 *UploadFileResponseBody2
+	UploadFileResponseBody1 *UploadFileResponseBody1 `queryParam:"inline"`
+	UploadFileResponseBody2 *UploadFileResponseBody2 `queryParam:"inline"`
 
 	Type UploadFileResponseBodyType
 }

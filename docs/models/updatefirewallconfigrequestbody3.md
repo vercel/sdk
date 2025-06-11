@@ -13,16 +13,7 @@ let value: UpdateFirewallConfigRequestBody3 = {
   value: {
     name: "<value>",
     active: false,
-    conditionGroup: [
-      {
-        conditions: [
-          {
-            type: "user_agent",
-            op: "ex",
-          },
-        ],
-      },
-    ],
+    conditionGroup: [],
     action: {},
   },
 };

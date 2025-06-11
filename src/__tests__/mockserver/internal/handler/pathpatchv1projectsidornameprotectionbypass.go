@@ -50,7 +50,7 @@ func testUpdateProjectProtectionBypassUpdateProjectProtectionBypass0(w http.Resp
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UpdateProjectProtectionBypassResponseBody{}
+	var respBody *operations.UpdateProjectProtectionBypassResponseBody = &operations.UpdateProjectProtectionBypassResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

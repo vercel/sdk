@@ -50,13 +50,13 @@ func testCreateAccessGroupProjectCreateAccessGroupProject0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateAccessGroupProjectResponseBody{
+	var respBody *operations.CreateAccessGroupProjectResponseBody = &operations.CreateAccessGroupProjectResponseBody{
 		TeamID:        "<id>",
 		AccessGroupID: "<id>",
 		ProjectID:     "<id>",
-		Role:          operations.CreateAccessGroupProjectAccessGroupsRoleProjectViewer,
-		CreatedAt:     "1726948284257",
-		UpdatedAt:     "1744388503945",
+		Role:          operations.CreateAccessGroupProjectRoleResponseProjectDeveloper,
+		CreatedAt:     "1709685008609",
+		UpdatedAt:     "1735605925345",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

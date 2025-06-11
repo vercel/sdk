@@ -50,12 +50,15 @@ func testIssueCertIssueCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.IssueCertResponseBody{
+	var respBody *operations.IssueCertResponseBody = &operations.IssueCertResponseBody{
 		ID:        "<id>",
-		CreatedAt: 1842.08,
-		ExpiresAt: 8685.42,
+		CreatedAt: 8859.68,
+		ExpiresAt: 8499.2,
 		AutoRenew: true,
-		Cns:       []string{},
+		Cns: []string{
+			"<value 1>",
+			"<value 2>",
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

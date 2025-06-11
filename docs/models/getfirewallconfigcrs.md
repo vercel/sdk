@@ -9,12 +9,12 @@ import { GetFirewallConfigCrs } from "@vercel/sdk/models/getfirewallconfigop.js"
 
 let value: GetFirewallConfigCrs = {
   sd: {
-    active: false,
-    action: "deny",
+    active: true,
+    action: "log",
   },
   ma: {
-    active: false,
-    action: "log",
+    active: true,
+    action: "deny",
   },
   lfi: {
     active: false,
@@ -22,14 +22,14 @@ let value: GetFirewallConfigCrs = {
   },
   rfi: {
     active: false,
-    action: "deny",
+    action: "log",
   },
   rce: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   php: {
-    active: false,
+    active: true,
     action: "deny",
   },
   gen: {
@@ -38,19 +38,19 @@ let value: GetFirewallConfigCrs = {
   },
   xss: {
     active: false,
-    action: "log",
+    action: "deny",
   },
   sqli: {
     active: false,
     action: "log",
   },
   sf: {
-    active: false,
-    action: "deny",
+    active: true,
+    action: "log",
   },
   java: {
     active: false,
-    action: "deny",
+    action: "log",
   },
 };
 ```

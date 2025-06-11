@@ -52,16 +52,13 @@ func testPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperime
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.PutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody{
+	var respBody *operations.PutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody = &operations.PutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody{
 		Items: map[string]*components.EdgeConfigItemValue{
-			"key": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
-				true,
-			)),
-			"key1": types.Pointer(components.CreateEdgeConfigItemValueStr(
+			"key": types.Pointer(components.CreateEdgeConfigItemValueStr(
 				"<value>",
 			)),
 		},
-		UpdatedAt: 8687.23,
+		UpdatedAt: 1217.32,
 		Digest:    "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -45,7 +45,7 @@ func testRemoveCertRemoveCert0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.RemoveCertResponseBody{}
+	var respBody *operations.RemoveCertResponseBody = &operations.RemoveCertResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

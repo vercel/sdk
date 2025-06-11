@@ -12,7 +12,7 @@ let value: RequestBody12 = {
   id: "<id>",
   value: {
     "key": {
-      active: false,
+      active: true,
     },
   },
 };

@@ -52,7 +52,7 @@ func testCreateAuthTokenCreateAuthToken0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.CreateAuthTokenResponseBody{
+	var respBody *operations.CreateAuthTokenResponseBody = &operations.CreateAuthTokenResponseBody{
 		Token: components.AuthToken{
 			ID:        "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
 			Name:      "<value>",

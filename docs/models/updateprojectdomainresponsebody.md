@@ -11,7 +11,7 @@ let value: UpdateProjectDomainResponseBody = {
   name: "<value>",
   apexName: "<value>",
   projectId: "<id>",
-  verified: false,
+  verified: true,
 };
 ```
 

@@ -8,8 +8,8 @@ Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remo
 import { PutFirewallConfigRfi } from "@vercel/sdk/models/putfirewallconfigop.js";
 
 let value: PutFirewallConfigRfi = {
-  active: false,
-  action: "deny",
+  active: true,
+  action: "log",
 };
 ```
 

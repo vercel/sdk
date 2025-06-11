@@ -1,7 +1,5 @@
 # UpdateFirewallConfigRequestBodySecurityType
 
-[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-
 ## Example Usage
 
 ```typescript

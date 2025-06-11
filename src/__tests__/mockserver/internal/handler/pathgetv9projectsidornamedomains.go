@@ -46,17 +46,17 @@ func testGetProjectDomainsGetProjectDomains0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := types.Pointer(operations.CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody1(
+	var respBody *operations.GetProjectDomainsResponseBody = types.Pointer(operations.CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody1(
 		operations.GetProjectDomainsResponseBody1{
-			Domains: []operations.ResponseBodyDomains{
-				operations.ResponseBodyDomains{
+			Domains: []operations.GetProjectDomainsDomain1{
+				operations.GetProjectDomainsDomain1{
 					Name:      "<value>",
 					ApexName:  "<value>",
 					ProjectID: "<id>",
 					Verified:  true,
 				},
 			},
-			Pagination: operations.GetProjectDomainsResponseBodyPagination{
+			Pagination: operations.GetProjectDomainsPagination{
 				Count: 20,
 				Next:  types.Float64(1540095775951),
 				Prev:  types.Float64(1540095775951),

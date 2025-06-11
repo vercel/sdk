@@ -7,10 +7,10 @@
 
 ```typescript
 const value: models.Via1 = {
-  avatar: "https://loremflickr.com/361/3274?lock=1741578807973404",
-  email: "Bernita.Heller86@yahoo.com",
+  avatar: "https://loremflickr.com/1247/1953?lock=4707167245685539",
+  email: "Jamarcus_Nikolaus22@gmail.com",
   uid: "<id>",
-  username: "Haskell12",
+  username: "Rosario.Swaniawski-MacGyver",
 };
 ```
 

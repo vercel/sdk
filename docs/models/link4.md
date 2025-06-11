@@ -6,14 +6,7 @@
 import { Link4 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
 let value: Link4 = {
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://self-reliant-orchid.name/",
-    },
-  ],
+  deployHooks: [],
 };
 ```
 

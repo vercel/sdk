@@ -1,25 +1,25 @@
 # RequestBody3
 
-transfer-in
-
 ## Example Usage
 
 ```typescript
-import { RequestBody3 } from "@vercel/sdk/models/postdomainsop.js";
+import { RequestBody3 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody3 = {
-  name: "example.com",
-  method: "transfer-in",
-  authCode: "fdhfr820ad#@FAdlj$$",
-  expectedPrice: 8,
+  name: "subdomain",
+  type: "MX",
+  ttl: 60,
+  value: "cname.vercel-dns.com",
+  comment: "used to verify ownership of domain",
 };
 ```
 
 ## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `name`                                                                    | *string*                                                                  | :heavy_check_mark:                                                        | The domain name you want to add.                                          | example.com                                                               |
-| `method`                                                                  | *string*                                                                  | :heavy_check_mark:                                                        | The domain operation to perform. It can be either `add` or `transfer-in`. | transfer-in                                                               |
-| `authCode`                                                                | *string*                                                                  | :heavy_minus_sign:                                                        | The authorization code assigned to the domain.                            | fdhfr820ad#@FAdlj$$                                                       |
-| `expectedPrice`                                                           | *number*                                                                  | :heavy_minus_sign:                                                        | The price you expect to be charged for the required 1 year renewal.       | 8                                                                         |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `name`                                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | A subdomain name or an empty string for the root domain.                               | subdomain                                                                              |
+| `type`                                                                                 | [models.CreateRecordRequestBodyDnsType](../models/createrecordrequestbodydnstype.md)   | :heavy_check_mark:                                                                     | The type of record, it could be one of the valid DNS records.                          |                                                                                        |
+| `ttl`                                                                                  | *number*                                                                               | :heavy_minus_sign:                                                                     | The TTL value. Must be a number between 60 and 2147483647. Default value is 60.        | 60                                                                                     |
+| `value`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | An ALIAS virtual record pointing to a hostname resolved to an A record on server side. | cname.vercel-dns.com                                                                   |
+| `comment`                                                                              | *string*                                                                               | :heavy_minus_sign:                                                                     | A comment to add context on what this DNS record is for                                | used to verify ownership of domain                                                     |

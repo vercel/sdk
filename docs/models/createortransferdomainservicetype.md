@@ -1,13 +1,13 @@
-# GetDomainServiceType
+# CreateOrTransferDomainServiceType
 
 The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
 
 ## Example Usage
 
 ```typescript
-import { GetDomainServiceType } from "@vercel/sdk/models/getdomainop.js";
+import { CreateOrTransferDomainServiceType } from "@vercel/sdk/models/createortransferdomainop.js";
 
-let value: GetDomainServiceType = "zeit.world";
+let value: CreateOrTransferDomainServiceType = "zeit.world";
 ```
 
 ## Values

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: d6dff05a8e6378afb0128dab588d0604
+  docChecksum: 1927af4274f7fdaa7ea5a7e6a760361a
   docVersion: 0.0.1
   speakeasyVersion: 1.561.0
   generationVersion: 2.628.0
-  releaseVersion: 1.8.1
-  configChecksum: cd2c4b27a299938d5b6eef7ce7f63c28
+  releaseVersion: 1.8.2
+  configChecksum: 238de0f023161bac9f37cdbaa0797409
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -257,6 +257,7 @@ generatedFiles:
   - docs/models/canceldeploymentmissingdeploymentstype.md
   - docs/models/canceldeploymentmissingtype.md
   - docs/models/canceldeploymentoidctokenclaims.md
+  - docs/models/canceldeploymentoomreport.md
   - docs/models/canceldeploymentoutput.md
   - docs/models/canceldeploymentplan.md
   - docs/models/canceldeploymentproject.md
@@ -473,6 +474,15 @@ generatedFiles:
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
   - docs/models/createlogdrainsources.md
+  - docs/models/createortransferdomaincreator.md
+  - docs/models/createortransferdomaindomain.md
+  - docs/models/createortransferdomainrequest.md
+  - docs/models/createortransferdomainrequestbody.md
+  - docs/models/createortransferdomainrequestbody1.md
+  - docs/models/createortransferdomainrequestbody2.md
+  - docs/models/createortransferdomainrequestbody3.md
+  - docs/models/createortransferdomainresponsebody.md
+  - docs/models/createortransferdomainservicetype.md
   - docs/models/createprojectaction.md
   - docs/models/createprojectaibots.md
   - docs/models/createprojectalgo.md
@@ -733,9 +743,6 @@ generatedFiles:
   - docs/models/createprojectwebanalytics.md
   - docs/models/createrecordrequest.md
   - docs/models/createrecordrequestbody.md
-  - docs/models/createrecordrequestbody1.md
-  - docs/models/createrecordrequestbody2.md
-  - docs/models/createrecordrequestbody3.md
   - docs/models/createrecordrequestbodydnsrequest10type.md
   - docs/models/createrecordrequestbodydnsrequest5type.md
   - docs/models/createrecordrequestbodydnsrequest6type.md
@@ -770,7 +777,6 @@ generatedFiles:
   - docs/models/customenvironments.md
   - docs/models/customenvironmenttype.md
   - docs/models/customenvironmentverification.md
-  - docs/models/data.md
   - docs/models/datacache.md
   - docs/models/datacacheread.md
   - docs/models/datacachewrite.md
@@ -800,7 +806,6 @@ generatedFiles:
   - docs/models/deleteedgeconfigtokensrequestbody.md
   - docs/models/deleteintegrationlogdrainrequest.md
   - docs/models/deleteprojectrequest.md
-  - docs/models/deleteprojectsprojectidlogspresetsidrequest.md
   - docs/models/deleterollingreleaseconfigrequest.md
   - docs/models/deleterollingreleaseconfigresponsebody.md
   - docs/models/deleteteaminvitecoderequest.md
@@ -1305,6 +1310,7 @@ generatedFiles:
   - docs/models/getdeploymentresponsebodygitsource.md
   - docs/models/getdeploymentresponsebodylambdas.md
   - docs/models/getdeploymentresponsebodyoidctokenclaims.md
+  - docs/models/getdeploymentresponsebodyoomreport.md
   - docs/models/getdeploymentresponsebodyoutput.md
   - docs/models/getdeploymentresponsebodyproject.md
   - docs/models/getdeploymentresponsebodyreadystate.md
@@ -1351,7 +1357,6 @@ generatedFiles:
   - docs/models/getdomainrequest.md
   - docs/models/getdomainresponsebody.md
   - docs/models/getdomainscreator.md
-  - docs/models/getdomainservicetype.md
   - docs/models/getdomainsrequest.md
   - docs/models/getdomainsresponsebody.md
   - docs/models/getdomainsservicetype.md
@@ -1675,7 +1680,6 @@ generatedFiles:
   - docs/models/getprojectspaths.md
   - docs/models/getprojectspermissions.md
   - docs/models/getprojectsplan.md
-  - docs/models/getprojectsprojectidlogspresetsrequest.md
   - docs/models/getprojectsprojects.md
   - docs/models/getprojectsprojectsaction.md
   - docs/models/getprojectsprojectsaliasassigned.md
@@ -2102,6 +2106,7 @@ generatedFiles:
   - docs/models/oneoperation.md
   - docs/models/onetarget.md
   - docs/models/onetype.md
+  - docs/models/oomreport.md
   - docs/models/op.md
   - docs/models/operation.md
   - docs/models/options.md
@@ -2140,8 +2145,6 @@ generatedFiles:
   - docs/models/patchedgeconfigschemarequest.md
   - docs/models/patchedgeconfigschemarequestbody.md
   - docs/models/patchedgeconfigschemaresponsebody.md
-  - docs/models/patchprojectsprojectidlogspresetsidrequest.md
-  - docs/models/patchprojectsprojectidlogspresetsidrequestbody.md
   - docs/models/patchteamremotecaching.md
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
@@ -2230,19 +2233,12 @@ generatedFiles:
   - docs/models/permissions.md
   - docs/models/php.md
   - docs/models/plan.md
-  - docs/models/postdomainscreator.md
-  - docs/models/postdomainsdomain.md
-  - docs/models/postdomainsrequestbody.md
-  - docs/models/postdomainsresponsebody.md
   - docs/models/postgres.md
   - docs/models/postgrescomputetime.md
   - docs/models/postgresdatabase.md
   - docs/models/postgresdatastorage.md
   - docs/models/postgresdatatransfer.md
   - docs/models/postgreswrittendata.md
-  - docs/models/postprojectsprojectidlogspresetsgroup.md
-  - docs/models/postprojectsprojectidlogspresetsrequest.md
-  - docs/models/postprojectsprojectidlogspresetsrequestbody.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitems.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequest.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequestbody.md
@@ -2617,6 +2613,7 @@ generatedFiles:
   - docs/models/responsebodymetadata.md
   - docs/models/responsebodymicrofrontends.md
   - docs/models/responsebodyoidctokenclaims.md
+  - docs/models/responsebodyoomreport.md
   - docs/models/responsebodyoutput.md
   - docs/models/responsebodypagination.md
   - docs/models/responsebodypayload.md
@@ -3443,7 +3440,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/doc.go
   - src/__tests__/mockserver/internal/handler/generated_handler.go
   - src/__tests__/mockserver/internal/handler/generated_handlers.go
-  - src/__tests__/mockserver/internal/handler/pathdeleteprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev13deploymentsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1accessgroupsidorname.go
@@ -3471,7 +3467,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathdeletev9projectsidornameenvid.go
-  - src/__tests__/mockserver/internal/handler/pathgetprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/handler/pathgetv10projects.go
   - src/__tests__/mockserver/internal/handler/pathgetv13deploymentsidorurl.go
   - src/__tests__/mockserver/internal/handler/pathgetv1accessgroups.go
@@ -3531,7 +3526,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv9projectsidornamedomainsdomain.go
   - src/__tests__/mockserver/internal/handler/pathheadv8artifactshash.go
   - src/__tests__/mockserver/internal/handler/pathpatchaliasesidprotectionbypass.go
-  - src/__tests__/mockserver/internal/handler/pathpatchprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv12deploymentsidcancel.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1accessgroupsaccessgroupidornameprojectsprojectid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1datacacheprojectsprojectid.go
@@ -3548,9 +3542,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidorname.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamecustomenvironmentsenvironmentslugorid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv9projectsidornamedomainsdomain.go
-  - src/__tests__/mockserver/internal/handler/pathpostdomains.go
   - src/__tests__/mockserver/internal/handler/pathpostprojectsidornametransferrequest.go
-  - src/__tests__/mockserver/internal/handler/pathpostprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornamedomains.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathpostv10projectsprojectidpromotedeploymentid.go
@@ -3653,6 +3645,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfigtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createevent.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createlogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createortransferdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createprojectenv.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createprojecttransferrequest.go
@@ -3672,7 +3665,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/deleteprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
@@ -3720,7 +3712,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectenv.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectmembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/getprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingrelease.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleaseconfig.go
@@ -3750,13 +3741,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/patchdomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchedgeconfigschema.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/patchprojectsprojectidlogspresetsid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchurlprotectionbypass.go
   - src/__tests__/mockserver/internal/sdk/models/operations/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/pauseproject.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/postdomains.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/postprojectsprojectidlogspresets.go
   - src/__tests__/mockserver/internal/sdk/models/operations/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putfirewallconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
@@ -3871,7 +3859,6 @@ generatedFiles:
   - src/funcs/checksGetCheck.ts
   - src/funcs/checksRerequestCheck.ts
   - src/funcs/checksUpdateCheck.ts
-  - src/funcs/deleteProjectsProjectIdLogsPresetsId.ts
   - src/funcs/deploymentsCancelDeployment.ts
   - src/funcs/deploymentsCreateDeployment.ts
   - src/funcs/deploymentsDeleteDeployment.ts
@@ -3889,6 +3876,7 @@ generatedFiles:
   - src/funcs/domainsBuyDomain.ts
   - src/funcs/domainsCheckDomainPrice.ts
   - src/funcs/domainsCheckDomainStatus.ts
+  - src/funcs/domainsCreateOrTransferDomain.ts
   - src/funcs/domainsDeleteDomain.ts
   - src/funcs/domainsGetDomain.ts
   - src/funcs/domainsGetDomainConfig.ts
@@ -3917,7 +3905,6 @@ generatedFiles:
   - src/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
   - src/funcs/environmentRemoveCustomEnvironment.ts
   - src/funcs/environmentUpdateCustomEnvironment.ts
-  - src/funcs/getProjectsProjectIdLogsPresets.ts
   - src/funcs/integrationsDeleteConfiguration.ts
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
@@ -3943,9 +3930,6 @@ generatedFiles:
   - src/funcs/marketplaceUpdateInvoice.ts
   - src/funcs/marketplaceUpdateResourceSecrets.ts
   - src/funcs/marketplaceUpdateResourceSecretsById.ts
-  - src/funcs/patchProjectsProjectIdLogsPresetsId.ts
-  - src/funcs/postDomains.ts
-  - src/funcs/postProjectsProjectIdLogsPresets.ts
   - src/funcs/projectMembersAddProjectMember.ts
   - src/funcs/projectMembersGetProjectMembers.ts
   - src/funcs/projectMembersRemoveProjectMember.ts
@@ -4074,7 +4058,6 @@ generatedFiles:
   - src/mcp-server/tools/checksGetCheck.ts
   - src/mcp-server/tools/checksRerequestCheck.ts
   - src/mcp-server/tools/checksUpdateCheck.ts
-  - src/mcp-server/tools/deleteProjectsProjectIdLogsPresetsId.ts
   - src/mcp-server/tools/deploymentsCancelDeployment.ts
   - src/mcp-server/tools/deploymentsCreateDeployment.ts
   - src/mcp-server/tools/deploymentsDeleteDeployment.ts
@@ -4092,6 +4075,7 @@ generatedFiles:
   - src/mcp-server/tools/domainsBuyDomain.ts
   - src/mcp-server/tools/domainsCheckDomainPrice.ts
   - src/mcp-server/tools/domainsCheckDomainStatus.ts
+  - src/mcp-server/tools/domainsCreateOrTransferDomain.ts
   - src/mcp-server/tools/domainsDeleteDomain.ts
   - src/mcp-server/tools/domainsGetDomain.ts
   - src/mcp-server/tools/domainsGetDomainConfig.ts
@@ -4120,7 +4104,6 @@ generatedFiles:
   - src/mcp-server/tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.ts
   - src/mcp-server/tools/environmentRemoveCustomEnvironment.ts
   - src/mcp-server/tools/environmentUpdateCustomEnvironment.ts
-  - src/mcp-server/tools/getProjectsProjectIdLogsPresets.ts
   - src/mcp-server/tools/integrationsDeleteConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
@@ -4146,9 +4129,6 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceUpdateInvoice.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecrets.ts
   - src/mcp-server/tools/marketplaceUpdateResourceSecretsById.ts
-  - src/mcp-server/tools/patchProjectsProjectIdLogsPresetsId.ts
-  - src/mcp-server/tools/postDomains.ts
-  - src/mcp-server/tools/postProjectsProjectIdLogsPresets.ts
   - src/mcp-server/tools/projectMembersAddProjectMember.ts
   - src/mcp-server/tools/projectMembersGetProjectMembers.ts
   - src/mcp-server/tools/projectMembersRemoveProjectMember.ts
@@ -4237,6 +4217,7 @@ generatedFiles:
   - src/models/createedgeconfigtokenop.ts
   - src/models/createeventop.ts
   - src/models/createlogdrainop.ts
+  - src/models/createortransferdomainop.ts
   - src/models/createprojectenvop.ts
   - src/models/createprojectop.ts
   - src/models/createprojecttransferrequestop.ts
@@ -4256,7 +4237,6 @@ generatedFiles:
   - src/models/deleteedgeconfigtokensop.ts
   - src/models/deleteintegrationlogdrainop.ts
   - src/models/deleteprojectop.ts
-  - src/models/deleteprojectsprojectidlogspresetsidop.ts
   - src/models/deleterollingreleaseconfigop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
@@ -4309,7 +4289,6 @@ generatedFiles:
   - src/models/getprojectenvop.ts
   - src/models/getprojectmembersop.ts
   - src/models/getprojectsop.ts
-  - src/models/getprojectsprojectidlogspresetsop.ts
   - src/models/getrecordsop.ts
   - src/models/getrollingreleaseconfigop.ts
   - src/models/getrollingreleaseop.ts
@@ -4341,13 +4320,10 @@ generatedFiles:
   - src/models/patchdomainop.ts
   - src/models/patchedgeconfigitemsop.ts
   - src/models/patchedgeconfigschemaop.ts
-  - src/models/patchprojectsprojectidlogspresetsidop.ts
   - src/models/patchteamop.ts
   - src/models/patchurlprotectionbypassop.ts
   - src/models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/pauseprojectop.ts
-  - src/models/postdomainsop.ts
-  - src/models/postprojectsprojectidlogspresetsop.ts
   - src/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.ts
   - src/models/putfirewallconfigop.ts
   - src/models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.ts
@@ -6984,7 +6960,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7002,7 +6978,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"id": "team_nllPyCtREAqxxdyFKbbMDlxd", "creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7412,6 +7388,23 @@ examples:
       responses:
         "200":
           application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  createOrTransferDomain:
+    speakeasy-default-create-or-transfer-domain:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      requestBody:
+        application/json: {"name": "example.com", "method": "transfer-in", "token": "fdhfr820ad#@FAdlj$$"}
+      responses:
+        "200":
+          application/json: {"domain": {"verified": true, "nameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "intendedNameservers": ["ns1.vercel-dns.com", "ns2.vercel-dns.com"], "customNameservers": ["ns1.nameserver.net", "ns2.nameserver.net"], "creator": {"username": "vercel_user", "email": "demo@example.com", "id": "ZspSRT4ljIEEmMHgoDwKWDei"}, "name": "example.com", "boughtAt": 1613602938882, "createdAt": 1613602938882, "expiresAt": 1613602938882, "id": "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1", "orderedAt": 1613602938882, "renew": true, "serviceType": "zeit.world", "transferredAt": 1613602938882, "transferStartedAt": 1613602938882, "userId": "<id>", "teamId": "<id>"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

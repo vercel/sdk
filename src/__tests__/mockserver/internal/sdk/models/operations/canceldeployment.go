@@ -1343,6 +1343,29 @@ func (u CancelDeploymentCustomEnvironmentUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentCustomEnvironmentUnion: all fields are null")
 }
 
+type CancelDeploymentOomReport string
+
+const (
+	CancelDeploymentOomReportOutOfMemory CancelDeploymentOomReport = "out-of-memory"
+)
+
+func (e CancelDeploymentOomReport) ToPointer() *CancelDeploymentOomReport {
+	return &e
+}
+func (e *CancelDeploymentOomReport) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "out-of-memory":
+		*e = CancelDeploymentOomReport(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentOomReport: %v", v)
+	}
+}
+
 type CancelDeploymentAliasError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
@@ -4683,6 +4706,7 @@ type CancelDeploymentConfig struct {
 	FunctionTimeout             *float64                           `json:"functionTimeout"`
 	SecureComputePrimaryRegion  *string                            `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                            `json:"secureComputeFallbackRegion"`
+	IsUsingActiveCPU            *bool                              `json:"isUsingActiveCPU,omitempty"`
 }
 
 func (o *CancelDeploymentConfig) GetVersion() *float64 {
@@ -4725,6 +4749,13 @@ func (o *CancelDeploymentConfig) GetSecureComputeFallbackRegion() *string {
 		return nil
 	}
 	return o.SecureComputeFallbackRegion
+}
+
+func (o *CancelDeploymentConfig) GetIsUsingActiveCPU() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsUsingActiveCPU
 }
 
 type CancelDeploymentState string
@@ -4830,6 +4861,7 @@ type CancelDeploymentResponseBody struct {
 	PreviewCommentsEnabled   *bool                                   `json:"previewCommentsEnabled,omitempty"`
 	TtyBuildLogs             *bool                                   `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment        *CancelDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
+	OomReport                *CancelDeploymentOomReport              `json:"oomReport,omitempty"`
 	ID                       string                                  `json:"id"`
 	AliasError               *CancelDeploymentAliasError             `json:"aliasError,omitempty"`
 	AliasFinal               *string                                 `json:"aliasFinal,omitempty"`
@@ -5103,6 +5135,13 @@ func (o *CancelDeploymentResponseBody) GetCustomEnvironment() *CancelDeploymentC
 		return nil
 	}
 	return o.CustomEnvironment
+}
+
+func (o *CancelDeploymentResponseBody) GetOomReport() *CancelDeploymentOomReport {
+	if o == nil {
+		return nil
+	}
+	return o.OomReport
 }
 
 func (o *CancelDeploymentResponseBody) GetID() string {

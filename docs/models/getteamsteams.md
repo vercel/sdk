@@ -7,7 +7,6 @@
 
 ```typescript
 const value: models.Team = {
-  id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
   updatedAt: 1611796915677,
   emailDomain: "example.com",
@@ -31,6 +30,7 @@ const value: models.Team = {
   description: "Our mission is to make cloud computing accessible to everyone.",
   stagingPrefix: "<value>",
   previewDeploymentSuffix: "example.dev",
+  id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   slug: "my-team",
   name: "My Team",
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",

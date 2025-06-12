@@ -1,13 +1,13 @@
-# PostDomainsCreator
+# CreateOrTransferDomainCreator
 
 An object containing information of the domain creator, including the user's id, username, and email.
 
 ## Example Usage
 
 ```typescript
-import { PostDomainsCreator } from "@vercel/sdk/models/postdomainsop.js";
+import { CreateOrTransferDomainCreator } from "@vercel/sdk/models/createortransferdomainop.js";
 
-let value: PostDomainsCreator = {
+let value: CreateOrTransferDomainCreator = {
   username: "vercel_user",
   email: "demo@example.com",
   id: "ZspSRT4ljIEEmMHgoDwKWDei",

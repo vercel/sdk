@@ -397,6 +397,13 @@ export type CancelDeploymentCustomEnvironment =
   | CancelDeploymentCustomEnvironment2
   | CancelDeploymentCustomEnvironment1;
 
+export const CancelDeploymentOomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+export type CancelDeploymentOomReport = ClosedEnum<
+  typeof CancelDeploymentOomReport
+>;
+
 export type CancelDeploymentAliasError = {
   code: string;
   message: string;
@@ -1087,6 +1094,7 @@ export type CancelDeploymentConfig = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 export const CancelDeploymentState = {
@@ -1153,6 +1161,7 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentCustomEnvironment2
     | CancelDeploymentCustomEnvironment1
     | undefined;
+  oomReport?: CancelDeploymentOomReport | undefined;
   id: string;
   aliasError?: CancelDeploymentAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -2887,6 +2896,27 @@ export function cancelDeploymentCustomEnvironmentFromJSON(
     (x) => CancelDeploymentCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CancelDeploymentCustomEnvironment' from JSON`,
   );
+}
+
+/** @internal */
+export const CancelDeploymentOomReport$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentOomReport
+> = z.nativeEnum(CancelDeploymentOomReport);
+
+/** @internal */
+export const CancelDeploymentOomReport$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentOomReport
+> = CancelDeploymentOomReport$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentOomReport$ {
+  /** @deprecated use `CancelDeploymentOomReport$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentOomReport$inboundSchema;
+  /** @deprecated use `CancelDeploymentOomReport$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentOomReport$outboundSchema;
 }
 
 /** @internal */
@@ -6688,6 +6718,7 @@ export const CancelDeploymentConfig$inboundSchema: z.ZodType<
   functionTimeout: z.nullable(z.number()),
   secureComputePrimaryRegion: z.nullable(z.string()),
   secureComputeFallbackRegion: z.nullable(z.string()),
+  isUsingActiveCPU: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6698,6 +6729,7 @@ export type CancelDeploymentConfig$Outbound = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 /** @internal */
@@ -6712,6 +6744,7 @@ export const CancelDeploymentConfig$outboundSchema: z.ZodType<
   functionTimeout: z.nullable(z.number()),
   secureComputePrimaryRegion: z.nullable(z.string()),
   secureComputeFallbackRegion: z.nullable(z.string()),
+  isUsingActiveCPU: z.boolean().optional(),
 });
 
 /**
@@ -6935,6 +6968,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
     z.lazy(() => CancelDeploymentCustomEnvironment1$inboundSchema),
   ]).optional(),
+  oomReport: CancelDeploymentOomReport$inboundSchema.optional(),
   id: z.string(),
   aliasError: z.nullable(z.lazy(() => CancelDeploymentAliasError$inboundSchema))
     .optional(),
@@ -7062,6 +7096,7 @@ export type CancelDeploymentResponseBody$Outbound = {
     | CancelDeploymentCustomEnvironment2$Outbound
     | CancelDeploymentCustomEnvironment1$Outbound
     | undefined;
+  oomReport?: string | undefined;
   id: string;
   aliasError?: CancelDeploymentAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
@@ -7190,6 +7225,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
     z.lazy(() => CancelDeploymentCustomEnvironment1$outboundSchema),
   ]).optional(),
+  oomReport: CancelDeploymentOomReport$outboundSchema.optional(),
   id: z.string(),
   aliasError: z.nullable(
     z.lazy(() => CancelDeploymentAliasError$outboundSchema),

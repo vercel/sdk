@@ -623,6 +623,29 @@ func (u GetDeploymentCustomEnvironmentUnion2) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentCustomEnvironmentUnion2: all fields are null")
 }
 
+type GetDeploymentOomReport2 string
+
+const (
+	GetDeploymentOomReport2OutOfMemory GetDeploymentOomReport2 = "out-of-memory"
+)
+
+func (e GetDeploymentOomReport2) ToPointer() *GetDeploymentOomReport2 {
+	return &e
+}
+func (e *GetDeploymentOomReport2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "out-of-memory":
+		*e = GetDeploymentOomReport2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOomReport2: %v", v)
+	}
+}
+
 type GetDeploymentAliasWarning2 struct {
 	Code    string  `json:"code"`
 	Message string  `json:"message"`
@@ -2359,6 +2382,7 @@ type Lambdas2 struct {
 	PreviewCommentsEnabled   *bool                                 `json:"previewCommentsEnabled,omitempty"`
 	TtyBuildLogs             *bool                                 `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment        *GetDeploymentCustomEnvironmentUnion2 `json:"customEnvironment,omitempty"`
+	OomReport                *GetDeploymentOomReport2              `json:"oomReport,omitempty"`
 	AliasWarning             *GetDeploymentAliasWarning2           `json:"aliasWarning,omitempty"`
 	ID                       string                                `json:"id"`
 	Name                     string                                `json:"name"`
@@ -2523,6 +2547,13 @@ func (o *Lambdas2) GetCustomEnvironment() *GetDeploymentCustomEnvironmentUnion2 
 		return nil
 	}
 	return o.CustomEnvironment
+}
+
+func (o *Lambdas2) GetOomReport() *GetDeploymentOomReport2 {
+	if o == nil {
+		return nil
+	}
+	return o.OomReport
 }
 
 func (o *Lambdas2) GetAliasWarning() *GetDeploymentAliasWarning2 {
@@ -4064,6 +4095,29 @@ func (u GetDeploymentCustomEnvironmentUnion1) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type GetDeploymentCustomEnvironmentUnion1: all fields are null")
+}
+
+type GetDeploymentOomReport1 string
+
+const (
+	GetDeploymentOomReport1OutOfMemory GetDeploymentOomReport1 = "out-of-memory"
+)
+
+func (e GetDeploymentOomReport1) ToPointer() *GetDeploymentOomReport1 {
+	return &e
+}
+func (e *GetDeploymentOomReport1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "out-of-memory":
+		*e = GetDeploymentOomReport1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOomReport1: %v", v)
+	}
 }
 
 type GetDeploymentAliasWarning1 struct {
@@ -7406,6 +7460,7 @@ type GetDeploymentConfig struct {
 	FunctionTimeout             *float64                        `json:"functionTimeout"`
 	SecureComputePrimaryRegion  *string                         `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                         `json:"secureComputeFallbackRegion"`
+	IsUsingActiveCPU            *bool                           `json:"isUsingActiveCPU,omitempty"`
 }
 
 func (o *GetDeploymentConfig) GetVersion() *float64 {
@@ -7448,6 +7503,13 @@ func (o *GetDeploymentConfig) GetSecureComputeFallbackRegion() *string {
 		return nil
 	}
 	return o.SecureComputeFallbackRegion
+}
+
+func (o *GetDeploymentConfig) GetIsUsingActiveCPU() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsUsingActiveCPU
 }
 
 type GetDeploymentState string
@@ -7553,6 +7615,7 @@ type Lambdas1 struct {
 	PreviewCommentsEnabled   *bool                                 `json:"previewCommentsEnabled,omitempty"`
 	TtyBuildLogs             *bool                                 `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment        *GetDeploymentCustomEnvironmentUnion1 `json:"customEnvironment,omitempty"`
+	OomReport                *GetDeploymentOomReport1              `json:"oomReport,omitempty"`
 	AliasWarning             *GetDeploymentAliasWarning1           `json:"aliasWarning,omitempty"`
 	ID                       string                                `json:"id"`
 	Name                     string                                `json:"name"`
@@ -7826,6 +7889,13 @@ func (o *Lambdas1) GetCustomEnvironment() *GetDeploymentCustomEnvironmentUnion1 
 		return nil
 	}
 	return o.CustomEnvironment
+}
+
+func (o *Lambdas1) GetOomReport() *GetDeploymentOomReport1 {
+	if o == nil {
+		return nil
+	}
+	return o.OomReport
 }
 
 func (o *Lambdas1) GetAliasWarning() *GetDeploymentAliasWarning1 {

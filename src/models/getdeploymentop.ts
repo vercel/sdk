@@ -213,6 +213,11 @@ export type ResponseBodyCustomEnvironment =
   | GetDeploymentCustomEnvironment2
   | GetDeploymentCustomEnvironment1;
 
+export const ResponseBodyOomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+export type ResponseBodyOomReport = ClosedEnum<typeof ResponseBodyOomReport>;
+
 export type ResponseBodyAliasWarning = {
   code: string;
   message: string;
@@ -594,6 +599,7 @@ export type GetDeploymentResponseBody2 = {
     | GetDeploymentCustomEnvironment2
     | GetDeploymentCustomEnvironment1
     | undefined;
+  oomReport?: ResponseBodyOomReport | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
   id: string;
   name: string;
@@ -1018,6 +1024,13 @@ export type GetDeploymentCustomEnvironmentDeployments1 = {
 export type GetDeploymentResponseBodyCustomEnvironment =
   | GetDeploymentCustomEnvironmentDeployments2
   | GetDeploymentCustomEnvironmentDeployments1;
+
+export const GetDeploymentResponseBodyOomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+export type GetDeploymentResponseBodyOomReport = ClosedEnum<
+  typeof GetDeploymentResponseBodyOomReport
+>;
 
 export type GetDeploymentResponseBodyAliasWarning = {
   code: string;
@@ -1706,6 +1719,7 @@ export type ResponseBodyConfig = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 export const ResponseBodyState = {
@@ -1772,6 +1786,7 @@ export type GetDeploymentResponseBody1 = {
     | GetDeploymentCustomEnvironmentDeployments2
     | GetDeploymentCustomEnvironmentDeployments1
     | undefined;
+  oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
   id: string;
   name: string;
@@ -2724,6 +2739,27 @@ export function responseBodyCustomEnvironmentFromJSON(
     (x) => ResponseBodyCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyCustomEnvironment' from JSON`,
   );
+}
+
+/** @internal */
+export const ResponseBodyOomReport$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyOomReport
+> = z.nativeEnum(ResponseBodyOomReport);
+
+/** @internal */
+export const ResponseBodyOomReport$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyOomReport
+> = ResponseBodyOomReport$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyOomReport$ {
+  /** @deprecated use `ResponseBodyOomReport$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyOomReport$inboundSchema;
+  /** @deprecated use `ResponseBodyOomReport$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyOomReport$outboundSchema;
 }
 
 /** @internal */
@@ -4632,6 +4668,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironment1$inboundSchema),
   ]).optional(),
+  oomReport: ResponseBodyOomReport$inboundSchema.optional(),
   aliasWarning: z.nullable(z.lazy(() => ResponseBodyAliasWarning$inboundSchema))
     .optional(),
   id: z.string(),
@@ -4712,6 +4749,7 @@ export type GetDeploymentResponseBody2$Outbound = {
     | GetDeploymentCustomEnvironment2$Outbound
     | GetDeploymentCustomEnvironment1$Outbound
     | undefined;
+  oomReport?: string | undefined;
   aliasWarning?: ResponseBodyAliasWarning$Outbound | null | undefined;
   id: string;
   name: string;
@@ -4790,6 +4828,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironment1$outboundSchema),
   ]).optional(),
+  oomReport: ResponseBodyOomReport$outboundSchema.optional(),
   aliasWarning: z.nullable(
     z.lazy(() => ResponseBodyAliasWarning$outboundSchema),
   ).optional(),
@@ -6484,6 +6523,28 @@ export function getDeploymentResponseBodyCustomEnvironmentFromJSON(
       ),
     `Failed to parse 'GetDeploymentResponseBodyCustomEnvironment' from JSON`,
   );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyOomReport$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyOomReport
+> = z.nativeEnum(GetDeploymentResponseBodyOomReport);
+
+/** @internal */
+export const GetDeploymentResponseBodyOomReport$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyOomReport
+> = GetDeploymentResponseBodyOomReport$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentResponseBodyOomReport$ {
+  /** @deprecated use `GetDeploymentResponseBodyOomReport$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentResponseBodyOomReport$inboundSchema;
+  /** @deprecated use `GetDeploymentResponseBodyOomReport$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentResponseBodyOomReport$outboundSchema;
 }
 
 /** @internal */
@@ -10396,6 +10457,7 @@ export const ResponseBodyConfig$inboundSchema: z.ZodType<
   functionTimeout: z.nullable(z.number()),
   secureComputePrimaryRegion: z.nullable(z.string()),
   secureComputeFallbackRegion: z.nullable(z.string()),
+  isUsingActiveCPU: z.boolean().optional(),
 });
 
 /** @internal */
@@ -10406,6 +10468,7 @@ export type ResponseBodyConfig$Outbound = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 /** @internal */
@@ -10420,6 +10483,7 @@ export const ResponseBodyConfig$outboundSchema: z.ZodType<
   functionTimeout: z.nullable(z.number()),
   secureComputePrimaryRegion: z.nullable(z.string()),
   secureComputeFallbackRegion: z.nullable(z.string()),
+  isUsingActiveCPU: z.boolean().optional(),
 });
 
 /**
@@ -10639,6 +10703,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$inboundSchema),
   ]).optional(),
+  oomReport: GetDeploymentResponseBodyOomReport$inboundSchema.optional(),
   aliasWarning: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$inboundSchema),
   ).optional(),
@@ -10766,6 +10831,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | GetDeploymentCustomEnvironmentDeployments2$Outbound
     | GetDeploymentCustomEnvironmentDeployments1$Outbound
     | undefined;
+  oomReport?: string | undefined;
   aliasWarning?:
     | GetDeploymentResponseBodyAliasWarning$Outbound
     | null
@@ -10897,6 +10963,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$outboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$outboundSchema),
   ]).optional(),
+  oomReport: GetDeploymentResponseBodyOomReport$outboundSchema.optional(),
   aliasWarning: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$outboundSchema),
   ).optional(),

@@ -2709,6 +2709,29 @@ func (u CreateDeploymentCustomEnvironmentUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentCustomEnvironmentUnion: all fields are null")
 }
 
+type CreateDeploymentOomReport string
+
+const (
+	CreateDeploymentOomReportOutOfMemory CreateDeploymentOomReport = "out-of-memory"
+)
+
+func (e CreateDeploymentOomReport) ToPointer() *CreateDeploymentOomReport {
+	return &e
+}
+func (e *CreateDeploymentOomReport) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "out-of-memory":
+		*e = CreateDeploymentOomReport(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentOomReport: %v", v)
+	}
+}
+
 type CreateDeploymentTypeLambdas string
 
 const (
@@ -4487,6 +4510,7 @@ type CreateDeploymentConfig struct {
 	FunctionTimeout             *float64                           `json:"functionTimeout"`
 	SecureComputePrimaryRegion  *string                            `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                            `json:"secureComputeFallbackRegion"`
+	IsUsingActiveCPU            *bool                              `json:"isUsingActiveCPU,omitempty"`
 }
 
 func (o *CreateDeploymentConfig) GetVersion() *float64 {
@@ -4529,6 +4553,13 @@ func (o *CreateDeploymentConfig) GetSecureComputeFallbackRegion() *string {
 		return nil
 	}
 	return o.SecureComputeFallbackRegion
+}
+
+func (o *CreateDeploymentConfig) GetIsUsingActiveCPU() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsUsingActiveCPU
 }
 
 type CreateDeploymentArchitecture string
@@ -6196,6 +6227,7 @@ type CreateDeploymentResponseBody struct {
 	PreviewCommentsEnabled   *bool                                   `json:"previewCommentsEnabled,omitempty"`
 	TtyBuildLogs             *bool                                   `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment        *CreateDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
+	OomReport                *CreateDeploymentOomReport              `json:"oomReport,omitempty"`
 	ID                       string                                  `json:"id"`
 	Name                     string                                  `json:"name"`
 	CreatedAt                float64                                 `json:"createdAt"`
@@ -6469,6 +6501,13 @@ func (o *CreateDeploymentResponseBody) GetCustomEnvironment() *CreateDeploymentC
 		return nil
 	}
 	return o.CustomEnvironment
+}
+
+func (o *CreateDeploymentResponseBody) GetOomReport() *CreateDeploymentOomReport {
+	if o == nil {
+		return nil
+	}
+	return o.OomReport
 }
 
 func (o *CreateDeploymentResponseBody) GetID() string {

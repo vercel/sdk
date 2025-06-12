@@ -9,65 +9,6 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Data struct {
-	Query     string  `json:"query"`
-	CreatorID string  `json:"creatorId"`
-	Title     string  `json:"title"`
-	GroupID   string  `json:"groupId"`
-	OwnerID   string  `json:"ownerId"`
-	ProjectID string  `json:"projectId"`
-	CreatedAt float64 `json:"createdAt"`
-}
-
-func (o *Data) GetQuery() string {
-	if o == nil {
-		return ""
-	}
-	return o.Query
-}
-
-func (o *Data) GetCreatorID() string {
-	if o == nil {
-		return ""
-	}
-	return o.CreatorID
-}
-
-func (o *Data) GetTitle() string {
-	if o == nil {
-		return ""
-	}
-	return o.Title
-}
-
-func (o *Data) GetGroupID() string {
-	if o == nil {
-		return ""
-	}
-	return o.GroupID
-}
-
-func (o *Data) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *Data) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *Data) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
 type Connect struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
@@ -976,9 +917,6 @@ func (o *TeamMembership) GetJoinedFrom() *TeamJoinedFrom2 {
 
 // Team - Data representing a Team.
 type Team struct {
-	// The Team's unique identifier.
-	ID      string   `json:"id"`
-	Data    *Data    `json:"data,omitempty"`
 	Connect *Connect `json:"connect,omitempty"`
 	// The ID of the user who created the Team.
 	CreatorID string `json:"creatorId"`
@@ -1010,6 +948,8 @@ type Team struct {
 	// Indicates if IP addresses should be accessible in log drains
 	HideIPAddressesInLogDrains *bool      `json:"hideIpAddressesInLogDrains,omitempty"`
 	IPBuckets                  []IPBucket `json:"ipBuckets,omitempty"`
+	// The Team's unique identifier.
+	ID string `json:"id"`
 	// The Team's slug, which is unique across the Vercel platform.
 	Slug string `json:"slug"`
 	// Name associated with the Team account, or `null` if none has been provided.
@@ -1032,20 +972,6 @@ func (t *Team) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *Team) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Team) GetData() *Data {
-	if o == nil {
-		return nil
-	}
-	return o.Data
 }
 
 func (o *Team) GetConnect() *Connect {
@@ -1165,6 +1091,13 @@ func (o *Team) GetIPBuckets() []IPBucket {
 		return nil
 	}
 	return o.IPBuckets
+}
+
+func (o *Team) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 func (o *Team) GetSlug() string {

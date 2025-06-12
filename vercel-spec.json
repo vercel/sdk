@@ -9803,6 +9803,12 @@
                             }
                           ]
                         },
+                        "oomReport": {
+                          "type": "string",
+                          "enum": [
+                            "out-of-memory"
+                          ]
+                        },
                         "aliasWarning": {
                           "nullable": true,
                           "properties": {
@@ -11117,6 +11123,9 @@
                             "secureComputeFallbackRegion": {
                               "nullable": true,
                               "type": "string"
+                            },
+                            "isUsingActiveCPU": {
+                              "type": "boolean"
                             }
                           },
                           "required": [
@@ -11514,6 +11523,12 @@
                               ],
                               "type": "object"
                             }
+                          ]
+                        },
+                        "oomReport": {
+                          "type": "string",
+                          "enum": [
+                            "out-of-memory"
                           ]
                         },
                         "aliasWarning": {
@@ -12941,6 +12956,12 @@
                         }
                       ]
                     },
+                    "oomReport": {
+                      "type": "string",
+                      "enum": [
+                        "out-of-memory"
+                      ]
+                    },
                     "id": {
                       "type": "string"
                     },
@@ -13641,6 +13662,9 @@
                         "secureComputeFallbackRegion": {
                           "nullable": true,
                           "type": "string"
+                        },
+                        "isUsingActiveCPU": {
+                          "type": "boolean"
                         }
                       },
                       "required": [
@@ -15587,6 +15611,12 @@
                         }
                       ]
                     },
+                    "oomReport": {
+                      "type": "string",
+                      "enum": [
+                        "out-of-memory"
+                      ]
+                    },
                     "id": {
                       "type": "string"
                     },
@@ -16901,6 +16931,9 @@
                         "secureComputeFallbackRegion": {
                           "nullable": true,
                           "type": "string"
+                        },
+                        "isUsingActiveCPU": {
+                          "type": "boolean"
                         }
                       },
                       "required": [
@@ -19579,11 +19612,19 @@
         ]
       }
     },
-    "/domains": {
+    "/v7/domains": {
       "post": {
-        "description": "",
-        "security": [],
-        "tags": [],
+        "description": "This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.",
+        "operationId": "createOrTransferDomain",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Register or transfer-in a new Domain",
+        "tags": [
+          "domains"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -19797,7 +19838,26 @@
             "description": ""
           }
         },
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -26504,298 +26564,6 @@
         ]
       }
     },
-    "/projects/{projectId}/logs-presets": {
-      "get": {
-        "description": "",
-        "security": [],
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/Team"
-                  },
-                  "type": "array"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          }
-        },
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "post": {
-        "description": "",
-        "security": [],
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Team"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          }
-        },
-        "parameters": [
-          {
-            "name": "projectId",
-            "description": "projectId of the preset",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "description": "projectId of the preset",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "query",
-                  "title",
-                  "group"
-                ],
-                "additionalProperties": false,
-                "properties": {
-                  "query": {
-                    "type": "string",
-                    "example": "timeline=past30Minutes\u0026startDate=1690446214407\u0026endDate=1690448014407\u0026levels=info\u0026domains=vercel.com",
-                    "description": "query parameter for saved filter preset",
-                    "maxLength": 1000
-                  },
-                  "title": {
-                    "type": "string",
-                    "example": "Request Path",
-                    "description": "The title of the preset",
-                    "maxLength": 70
-                  },
-                  "group": {
-                    "enum": [
-                      "personal",
-                      "team"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/projects/{projectId}/logs-presets/{id}": {
-      "delete": {
-        "description": "",
-        "security": [],
-        "tags": [],
-        "responses": {
-          "204": {
-            "description": ""
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          }
-        },
-        "parameters": [
-          {
-            "name": "projectId",
-            "description": "projectId of the preset",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "description": "projectId of the preset",
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "description": "id of the preset",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "description": "id of the preset",
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "patch": {
-        "description": "",
-        "security": [],
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Team"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "projectId",
-            "description": "projectId of the preset",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "description": "projectId of the preset",
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "description": "Id of the preset",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "description": "Id of the preset",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "title"
-                ],
-                "additionalProperties": false,
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "example": "Request Path",
-                    "description": "The title of the preset",
-                    "maxLength": 70
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs": {
       "get": {
         "description": "Returns a stream of logs for a given deployment.",
@@ -32587,10 +32355,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -35996,8 +35764,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -36078,8 +35846,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -37066,10 +36834,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -40475,8 +40243,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -40557,8 +40325,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -41215,10 +40983,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -44624,8 +44392,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -44706,8 +44474,8 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "path",
                                         "host",
+                                        "path",
                                         "method",
                                         "header",
                                         "cookie",
@@ -48463,10 +48231,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -48876,10 +48644,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -49301,10 +49069,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -49860,10 +49628,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -50262,10 +50030,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -51043,10 +50811,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -51442,10 +51210,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -51845,10 +51613,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -52345,10 +52113,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -52760,10 +52528,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -53170,10 +52938,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -53688,10 +53456,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -76335,46 +76103,6 @@
       },
       "Team": {
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "The Team's unique identifier.",
-            "example": "team_nllPyCtREAqxxdyFKbbMDlxd"
-          },
-          "data": {
-            "properties": {
-              "query": {
-                "type": "string"
-              },
-              "creatorId": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "groupId": {
-                "type": "string"
-              },
-              "ownerId": {
-                "type": "string"
-              },
-              "projectId": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "query",
-              "creatorId",
-              "title",
-              "groupId",
-              "ownerId",
-              "projectId",
-              "createdAt"
-            ],
-            "type": "object"
-          },
           "connect": {
             "properties": {
               "enabled": {
@@ -76641,6 +76369,11 @@
               "type": "object"
             },
             "type": "array"
+          },
+          "id": {
+            "type": "string",
+            "description": "The Team's unique identifier.",
+            "example": "team_nllPyCtREAqxxdyFKbbMDlxd"
           },
           "slug": {
             "type": "string",

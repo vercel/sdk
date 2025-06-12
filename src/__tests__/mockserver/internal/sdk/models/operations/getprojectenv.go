@@ -145,10 +145,10 @@ type GetProjectEnvType3 string
 
 const (
 	GetProjectEnvType3System    GetProjectEnvType3 = "system"
+	GetProjectEnvType3Secret    GetProjectEnvType3 = "secret"
 	GetProjectEnvType3Encrypted GetProjectEnvType3 = "encrypted"
 	GetProjectEnvType3Plain     GetProjectEnvType3 = "plain"
 	GetProjectEnvType3Sensitive GetProjectEnvType3 = "sensitive"
-	GetProjectEnvType3Secret    GetProjectEnvType3 = "secret"
 )
 
 func (e GetProjectEnvType3) ToPointer() *GetProjectEnvType3 {
@@ -162,13 +162,13 @@ func (e *GetProjectEnvType3) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType3(v)
 		return nil
 	default:
@@ -1505,10 +1505,10 @@ type GetProjectEnvType2 string
 
 const (
 	GetProjectEnvType2System    GetProjectEnvType2 = "system"
+	GetProjectEnvType2Secret    GetProjectEnvType2 = "secret"
 	GetProjectEnvType2Encrypted GetProjectEnvType2 = "encrypted"
 	GetProjectEnvType2Plain     GetProjectEnvType2 = "plain"
 	GetProjectEnvType2Sensitive GetProjectEnvType2 = "sensitive"
-	GetProjectEnvType2Secret    GetProjectEnvType2 = "secret"
 )
 
 func (e GetProjectEnvType2) ToPointer() *GetProjectEnvType2 {
@@ -1522,13 +1522,13 @@ func (e *GetProjectEnvType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType2(v)
 		return nil
 	default:
@@ -2873,10 +2873,10 @@ type GetProjectEnvType1 string
 
 const (
 	GetProjectEnvType1System    GetProjectEnvType1 = "system"
+	GetProjectEnvType1Secret    GetProjectEnvType1 = "secret"
 	GetProjectEnvType1Encrypted GetProjectEnvType1 = "encrypted"
 	GetProjectEnvType1Plain     GetProjectEnvType1 = "plain"
 	GetProjectEnvType1Sensitive GetProjectEnvType1 = "sensitive"
-	GetProjectEnvType1Secret    GetProjectEnvType1 = "secret"
 )
 
 func (e GetProjectEnvType1) ToPointer() *GetProjectEnvType1 {
@@ -2890,13 +2890,13 @@ func (e *GetProjectEnvType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType1(v)
 		return nil
 	default:

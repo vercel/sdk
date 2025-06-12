@@ -198,10 +198,10 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.postDomains({
-    name: "example.com",
-    method: "transfer-in",
-    token: "fdhfr820ad#@FAdlj$$",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -368,6 +368,7 @@ run();
 * [getDomainConfig](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 * [getDomain](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 * [getDomains](docs/sdks/domains/README.md#getdomains) - List all the domains
+* [createOrTransferDomain](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
 * [patchDomain](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 * [deleteDomain](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 
@@ -512,13 +513,6 @@ run();
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
-### [Vercel SDK](docs/sdks/vercel/README.md)
-
-* [postDomains](docs/sdks/vercel/README.md#postdomains)
-* [getProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#getprojectsprojectidlogspresets)
-* [postProjectsProjectIdLogsPresets](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
-* [deleteProjectsProjectIdLogsPresetsId](docs/sdks/vercel/README.md#deleteprojectsprojectidlogspresetsid)
-* [patchProjectsProjectIdLogsPresetsId](docs/sdks/vercel/README.md#patchprojectsprojectidlogspresetsid)
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
@@ -581,7 +575,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksGetCheck`](docs/sdks/checks/README.md#getcheck) - Get a single check
 - [`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
 - [`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck) - Update a check
-- [`deleteProjectsProjectIdLogsPresetsId`](docs/sdks/vercel/README.md#deleteprojectsprojectidlogspresetsid)
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -600,6 +593,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsBuyDomain`](docs/sdks/domains/README.md#buydomain) - Purchase a domain
 - [`domainsCheckDomainPrice`](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain
 - [`domainsCheckDomainStatus`](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability
+- [`domainsCreateOrTransferDomain`](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
 - [`domainsDeleteDomain`](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 - [`domainsGetDomain`](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 - [`domainsGetDomainConfig`](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
@@ -628,7 +622,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
 - [`environmentRemoveCustomEnvironment`](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
-- [`getProjectsProjectIdLogsPresets`](docs/sdks/vercel/README.md#getprojectsprojectidlogspresets)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
@@ -655,9 +648,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-- [`patchProjectsProjectIdLogsPresetsId`](docs/sdks/vercel/README.md#patchprojectsprojectidlogspresetsid)
-- [`postDomains`](docs/sdks/vercel/README.md#postdomains)
-- [`postProjectsProjectIdLogsPresets`](docs/sdks/vercel/README.md#postprojectsprojectidlogspresets)
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -775,13 +765,15 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  const result = await vercel.postDomains({
-    name: "example.com",
-    method: "transfer-in",
-    token: "fdhfr820ad#@FAdlj$$",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   }, {
     retries: {
       strategy: "backoff",
@@ -817,13 +809,14 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.postDomains({
-    name: "example.com",
-    method: "transfer-in",
-    token: "fdhfr820ad#@FAdlj$$",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -854,14 +847,16 @@ import { Vercel } from "@vercel/sdk";
 import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.js";
 import { VercelError } from "@vercel/sdk/models/vercelerror.js.js";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
   try {
-    const result = await vercel.postDomains({
-      name: "example.com",
-      method: "transfer-in",
-      token: "fdhfr820ad#@FAdlj$$",
+    const result = await vercel.accessGroups.readAccessGroup({
+      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+      slug: "my-team-url-slug",
     });
 
     console.log(result);
@@ -904,8 +899,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 100 of 174 methods.*
-* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 174 methods.*
+* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 99 of 170 methods.*
+* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 170 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -924,13 +919,14 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.postDomains({
-    name: "example.com",
-    method: "transfer-in",
-    token: "fdhfr820ad#@FAdlj$$",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);

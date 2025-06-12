@@ -12,16 +12,6 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Data = {
-  query: string;
-  creatorId: string;
-  title: string;
-  groupId: string;
-  ownerId: string;
-  projectId: string;
-  createdAt: number;
-};
-
 export type Connect = {
   enabled?: boolean | undefined;
 };
@@ -297,11 +287,6 @@ export type Membership = {
  * Data representing a Team.
  */
 export type Team = {
-  /**
-   * The Team's unique identifier.
-   */
-  id: string;
-  data?: Data | undefined;
   connect?: Connect | undefined;
   /**
    * The ID of the user who created the Team.
@@ -365,6 +350,10 @@ export type Team = {
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
   /**
+   * The Team's unique identifier.
+   */
+  id: string;
+  /**
    * The Team's slug, which is unique across the Vercel platform.
    */
   slug: string;
@@ -386,68 +375,6 @@ export type Team = {
   createdAt: number;
   additionalProperties?: { [k: string]: any };
 };
-
-/** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    query: z.string(),
-    creatorId: z.string(),
-    title: z.string(),
-    groupId: z.string(),
-    ownerId: z.string(),
-    projectId: z.string(),
-    createdAt: z.number(),
-  });
-
-/** @internal */
-export type Data$Outbound = {
-  query: string;
-  creatorId: string;
-  title: string;
-  groupId: string;
-  ownerId: string;
-  projectId: string;
-  createdAt: number;
-};
-
-/** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    query: z.string(),
-    creatorId: z.string(),
-    title: z.string(),
-    groupId: z.string(),
-    ownerId: z.string(),
-    projectId: z.string(),
-    createdAt: z.number(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
-}
-
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
-}
-
-export function dataFromJSON(
-  jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
-  );
-}
 
 /** @internal */
 export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
@@ -1410,8 +1337,6 @@ export function membershipFromJSON(
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
     z.object({
-      id: z.string(),
-      data: z.lazy(() => Data$inboundSchema).optional(),
       connect: z.lazy(() => Connect$inboundSchema).optional(),
       creatorId: z.string(),
       updatedAt: z.number(),
@@ -1434,6 +1359,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       hideIpAddresses: z.nullable(z.boolean()).optional(),
       hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
       ipBuckets: z.array(z.lazy(() => IpBuckets$inboundSchema)).optional(),
+      id: z.string(),
       slug: z.string(),
       name: z.nullable(z.string()),
       avatar: z.nullable(z.string()),
@@ -1446,8 +1372,6 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Team$Outbound = {
-  id: string;
-  data?: Data$Outbound | undefined;
   connect?: Connect$Outbound | undefined;
   creatorId: string;
   updatedAt: number;
@@ -1465,6 +1389,7 @@ export type Team$Outbound = {
   hideIpAddresses?: boolean | null | undefined;
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
+  id: string;
   slug: string;
   name: string | null;
   avatar: string | null;
@@ -1476,8 +1401,6 @@ export type Team$Outbound = {
 /** @internal */
 export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
   z.object({
-    id: z.string(),
-    data: z.lazy(() => Data$outboundSchema).optional(),
     connect: z.lazy(() => Connect$outboundSchema).optional(),
     creatorId: z.string(),
     updatedAt: z.number(),
@@ -1500,6 +1423,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     hideIpAddresses: z.nullable(z.boolean()).optional(),
     hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
     ipBuckets: z.array(z.lazy(() => IpBuckets$outboundSchema)).optional(),
+    id: z.string(),
     slug: z.string(),
     name: z.nullable(z.string()),
     avatar: z.nullable(z.string()),

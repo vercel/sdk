@@ -1358,10 +1358,10 @@ type CreateProjectEnvType string
 
 const (
 	CreateProjectEnvTypeSystem    CreateProjectEnvType = "system"
+	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 	CreateProjectEnvTypeEncrypted CreateProjectEnvType = "encrypted"
 	CreateProjectEnvTypePlain     CreateProjectEnvType = "plain"
 	CreateProjectEnvTypeSensitive CreateProjectEnvType = "sensitive"
-	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 )
 
 func (e CreateProjectEnvType) ToPointer() *CreateProjectEnvType {
@@ -1375,13 +1375,13 @@ func (e *CreateProjectEnvType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectEnvType(v)
 		return nil
 	default:
@@ -7865,8 +7865,8 @@ func (u CreateProjectSrcUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectHasType string
 
 const (
-	CreateProjectHasTypePath               CreateProjectHasType = "path"
 	CreateProjectHasTypeHost               CreateProjectHasType = "host"
+	CreateProjectHasTypePath               CreateProjectHasType = "path"
 	CreateProjectHasTypeMethod             CreateProjectHasType = "method"
 	CreateProjectHasTypeHeader             CreateProjectHasType = "header"
 	CreateProjectHasTypeCookie             CreateProjectHasType = "cookie"
@@ -7888,9 +7888,9 @@ func (e *CreateProjectHasType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough
@@ -8102,8 +8102,8 @@ func (o *CreateProjectHas) GetValue() *CreateProjectHasValueUnion {
 type CreateProjectMissingType string
 
 const (
-	CreateProjectMissingTypePath               CreateProjectMissingType = "path"
 	CreateProjectMissingTypeHost               CreateProjectMissingType = "host"
+	CreateProjectMissingTypePath               CreateProjectMissingType = "path"
 	CreateProjectMissingTypeMethod             CreateProjectMissingType = "method"
 	CreateProjectMissingTypeHeader             CreateProjectMissingType = "header"
 	CreateProjectMissingTypeCookie             CreateProjectMissingType = "cookie"
@@ -8125,9 +8125,9 @@ func (e *CreateProjectMissingType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "path":
-		fallthrough
 	case "host":
+		fallthrough
+	case "path":
 		fallthrough
 	case "method":
 		fallthrough

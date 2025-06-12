@@ -1,24 +1,25 @@
 # RequestBody1
 
-add
-
 ## Example Usage
 
 ```typescript
-import { RequestBody1 } from "@vercel/sdk/models/postdomainsop.js";
+import { RequestBody1 } from "@vercel/sdk/models/createrecordop.js";
 
 let value: RequestBody1 = {
-  name: "example.com",
-  cdnEnabled: true,
-  method: "transfer-in",
+  name: "subdomain",
+  type: "A",
+  ttl: 60,
+  value: "192.0.2.42",
+  comment: "used to verify ownership of domain",
 };
 ```
 
 ## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `name`                                                                    | *string*                                                                  | :heavy_check_mark:                                                        | The domain name you want to add.                                          | example.com                                                               |
-| `cdnEnabled`                                                              | *boolean*                                                                 | :heavy_minus_sign:                                                        | Whether the domain has the Vercel Edge Network enabled or not.            | true                                                                      |
-| `zone`                                                                    | *boolean*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
-| `method`                                                                  | *string*                                                                  | :heavy_minus_sign:                                                        | The domain operation to perform. It can be either `add` or `transfer-in`. | transfer-in                                                               |
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `name`                                                                          | *string*                                                                        | :heavy_check_mark:                                                              | A subdomain name or an empty string for the root domain.                        | subdomain                                                                       |
+| `type`                                                                          | [models.RequestBodyType](../models/requestbodytype.md)                          | :heavy_check_mark:                                                              | The type of record, it could be one of the valid DNS records.                   |                                                                                 |
+| `ttl`                                                                           | *number*                                                                        | :heavy_minus_sign:                                                              | The TTL value. Must be a number between 60 and 2147483647. Default value is 60. | 60                                                                              |
+| `value`                                                                         | *string*                                                                        | :heavy_check_mark:                                                              | The record value must be a valid IPv4 address.                                  | 192.0.2.42                                                                      |
+| `comment`                                                                       | *string*                                                                        | :heavy_minus_sign:                                                              | A comment to add context on what this DNS record is for                         | used to verify ownership of domain                                              |

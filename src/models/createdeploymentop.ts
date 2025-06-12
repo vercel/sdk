@@ -779,6 +779,11 @@ export type CustomEnvironment1 = {
 
 export type CustomEnvironment = CustomEnvironment2 | CustomEnvironment1;
 
+export const OomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+export type OomReport = ClosedEnum<typeof OomReport>;
+
 export const CreateDeploymentType = {
   Lambdas: "LAMBDAS",
 } as const;
@@ -1134,6 +1139,7 @@ export type Config = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 export const Architecture = {
@@ -1500,6 +1506,7 @@ export type CreateDeploymentResponseBody = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?: CustomEnvironment2 | CustomEnvironment1 | undefined;
+  oomReport?: OomReport | undefined;
   id: string;
   name: string;
   createdAt: number;
@@ -4294,6 +4301,25 @@ export function customEnvironmentFromJSON(
 }
 
 /** @internal */
+export const OomReport$inboundSchema: z.ZodNativeEnum<typeof OomReport> = z
+  .nativeEnum(OomReport);
+
+/** @internal */
+export const OomReport$outboundSchema: z.ZodNativeEnum<typeof OomReport> =
+  OomReport$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OomReport$ {
+  /** @deprecated use `OomReport$inboundSchema` instead. */
+  export const inboundSchema = OomReport$inboundSchema;
+  /** @deprecated use `OomReport$outboundSchema` instead. */
+  export const outboundSchema = OomReport$outboundSchema;
+}
+
+/** @internal */
 export const CreateDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeploymentType
 > = z.nativeEnum(CreateDeploymentType);
@@ -6144,6 +6170,7 @@ export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
     functionTimeout: z.nullable(z.number()),
     secureComputePrimaryRegion: z.nullable(z.string()),
     secureComputeFallbackRegion: z.nullable(z.string()),
+    isUsingActiveCPU: z.boolean().optional(),
   });
 
 /** @internal */
@@ -6154,6 +6181,7 @@ export type Config$Outbound = {
   functionTimeout: number | null;
   secureComputePrimaryRegion: string | null;
   secureComputeFallbackRegion: string | null;
+  isUsingActiveCPU?: boolean | undefined;
 };
 
 /** @internal */
@@ -6168,6 +6196,7 @@ export const Config$outboundSchema: z.ZodType<
   functionTimeout: z.nullable(z.number()),
   secureComputePrimaryRegion: z.nullable(z.string()),
   secureComputeFallbackRegion: z.nullable(z.string()),
+  isUsingActiveCPU: z.boolean().optional(),
 });
 
 /**
@@ -8185,6 +8214,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CustomEnvironment2$inboundSchema),
     z.lazy(() => CustomEnvironment1$inboundSchema),
   ]).optional(),
+  oomReport: OomReport$inboundSchema.optional(),
   id: z.string(),
   name: z.string(),
   createdAt: z.number(),
@@ -8307,6 +8337,7 @@ export type CreateDeploymentResponseBody$Outbound = {
     | CustomEnvironment2$Outbound
     | CustomEnvironment1$Outbound
     | undefined;
+  oomReport?: string | undefined;
   id: string;
   name: string;
   createdAt: number;
@@ -8420,6 +8451,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CustomEnvironment2$outboundSchema),
     z.lazy(() => CustomEnvironment1$outboundSchema),
   ]).optional(),
+  oomReport: OomReport$outboundSchema.optional(),
   id: z.string(),
   name: z.string(),
   createdAt: z.number(),

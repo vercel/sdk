@@ -52,7 +52,6 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *components.Team = &components.Team{
-		ID:          "team_nllPyCtREAqxxdyFKbbMDlxd",
 		CreatorID:   "R6efeCJQ2HKXywuasPDc0fOWB",
 		UpdatedAt:   1611796915677,
 		EmailDomain: types.String("example.com"),
@@ -76,6 +75,7 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		Description:             types.String("Our mission is to make cloud computing accessible to everyone."),
 		StagingPrefix:           "<value>",
 		PreviewDeploymentSuffix: types.String("example.dev"),
+		ID:                      "team_nllPyCtREAqxxdyFKbbMDlxd",
 		Slug:                    "my-team",
 		Name:                    types.String("My Team"),
 		Avatar:                  types.String("6eb07268bcfadd309905ffb1579354084c24655c"),

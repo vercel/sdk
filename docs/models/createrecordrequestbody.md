@@ -3,36 +3,36 @@
 
 ## Supported Types
 
-### `models.CreateRecordRequestBody1`
+### `models.RequestBody1`
 
 ```typescript
-const value: models.CreateRecordRequestBody1 = {
+const value: models.RequestBody1 = {
   name: "subdomain",
-  type: "SRV",
+  type: "A",
   ttl: 60,
   value: "192.0.2.42",
   comment: "used to verify ownership of domain",
 };
 ```
 
-### `models.CreateRecordRequestBody2`
+### `models.RequestBody2`
 
 ```typescript
-const value: models.CreateRecordRequestBody2 = {
+const value: models.RequestBody2 = {
   name: "subdomain",
-  type: "CNAME",
+  type: "A",
   ttl: 60,
   value: "2001:DB8::42",
   comment: "used to verify ownership of domain",
 };
 ```
 
-### `models.CreateRecordRequestBody3`
+### `models.RequestBody3`
 
 ```typescript
-const value: models.CreateRecordRequestBody3 = {
+const value: models.RequestBody3 = {
   name: "subdomain",
-  type: "AAAA",
+  type: "MX",
   ttl: 60,
   value: "cname.vercel-dns.com",
   comment: "used to verify ownership of domain",

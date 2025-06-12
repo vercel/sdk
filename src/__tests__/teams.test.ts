@@ -162,7 +162,6 @@ test("Teams Get Team", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
     creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
     updatedAt: 1611796915677,
     emailDomain: "example.com",
@@ -187,6 +186,7 @@ test("Teams Get Team", async () => {
       "Our mission is to make cloud computing accessible to everyone.",
     stagingPrefix: "<value>",
     previewDeploymentSuffix: "example.dev",
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
     slug: "my-team",
     name: "My Team",
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
@@ -236,7 +236,6 @@ test("Teams Patch Team", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
     creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
     updatedAt: 1611796915677,
     emailDomain: "example.com",
@@ -261,6 +260,7 @@ test("Teams Patch Team", async () => {
       "Our mission is to make cloud computing accessible to everyone.",
     stagingPrefix: "<value>",
     previewDeploymentSuffix: "example.dev",
+    id: "team_nllPyCtREAqxxdyFKbbMDlxd",
     slug: "my-team",
     name: "My Team",
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",

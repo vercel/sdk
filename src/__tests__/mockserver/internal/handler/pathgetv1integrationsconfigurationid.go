@@ -49,6 +49,10 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 	var respBody *operations.GetConfigurationResponseBody = types.Pointer(operations.CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2(
 		operations.GetConfigurationIntegrationConfiguration2{
 			ProjectSelection: operations.ProjectSelectionAll,
+			Notification: operations.GetConfigurationNotification{
+				Level: operations.GetConfigurationLevelWarn,
+				Title: "<value>",
+			},
 			TransferRequest: operations.CreateTransferRequestTransferRequestTransferFromMarketplace(
 				operations.TransferRequestTransferFromMarketplace{
 					Kind:       operations.KindTransferFromMarketplaceTransferFromMarketplace,

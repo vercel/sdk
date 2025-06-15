@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 1927af4274f7fdaa7ea5a7e6a760361a
+  docChecksum: 65dfd720ae218063d7211b321864940b
   docVersion: 0.0.1
-  speakeasyVersion: 1.561.0
-  generationVersion: 2.628.0
-  releaseVersion: 1.8.2
-  configChecksum: 238de0f023161bac9f37cdbaa0797409
+  speakeasyVersion: 1.563.1
+  generationVersion: 2.629.1
+  releaseVersion: 1.8.3
+  configChecksum: db32d769b537067b8da2752fe5e5428e
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -1167,6 +1167,7 @@ generatedFiles:
   - docs/models/getconfigurationresponsebodyintegrationsinstallationtype.md
   - docs/models/getconfigurationresponsebodyintegrationssource.md
   - docs/models/getconfigurationresponsebodyintegrationstype.md
+  - docs/models/getconfigurationresponsebodylevel.md
   - docs/models/getconfigurationresponsebodysource.md
   - docs/models/getconfigurationresponsebodytype.md
   - docs/models/getconfigurationsrequest.md
@@ -2612,6 +2613,7 @@ generatedFiles:
   - docs/models/responsebodymembers.md
   - docs/models/responsebodymetadata.md
   - docs/models/responsebodymicrofrontends.md
+  - docs/models/responsebodynotification.md
   - docs/models/responsebodyoidctokenclaims.md
   - docs/models/responsebodyoomreport.md
   - docs/models/responsebodyoutput.md
@@ -5646,7 +5648,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"projectSelection": "all", "transferRequest": {"kind": "transfer-from-marketplace", "requestId": "<id>", "transferId": "<id>", "requester": {"name": "<value>"}, "createdAt": 7423.49, "expiresAt": 2957.4}, "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}
+          application/json: {"projectSelection": "all", "notification": {"level": "warn", "title": "<value>"}, "transferRequest": {"kind": "transfer-from-marketplace", "requestId": "<id>", "transferId": "<id>", "requester": {"name": "<value>"}, "createdAt": 7423.49, "expiresAt": 2957.4}, "projects": ["prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"], "completedAt": 1558531915505, "createdAt": 1558531915505, "id": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "integrationId": "oac_xzpVzcUOgcB1nrVlirtKhbWV", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "source": "marketplace", "slug": "slack", "teamId": "team_nLlpyC6RE1qxydlFKbrxDlud", "type": "integration-configuration", "updatedAt": 1558531915505, "userId": "kr1PsOIzqEL5Xg6M4VZcZosf", "scopes": ["read:project", "read-write:log-drain"], "disabledAt": 1558531915505, "deletedAt": 1558531915505, "deleteRequestedAt": 1558531915505}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

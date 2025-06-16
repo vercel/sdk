@@ -35,6 +35,22 @@ export const ProjectSelection = {
  */
 export type ProjectSelection = ClosedEnum<typeof ProjectSelection>;
 
+export const GetConfigurationResponseBodyLevel = {
+  Error: "error",
+  Info: "info",
+  Warn: "warn",
+} as const;
+export type GetConfigurationResponseBodyLevel = ClosedEnum<
+  typeof GetConfigurationResponseBodyLevel
+>;
+
+export type ResponseBodyNotification = {
+  level: GetConfigurationResponseBodyLevel;
+  title: string;
+  message?: string | undefined;
+  href?: string | undefined;
+};
+
 export const TransferRequestKind = {
   TransferFromMarketplace: "transfer-from-marketplace",
 } as const;
@@ -162,6 +178,7 @@ export type GetConfigurationResponseBody2 = {
    * A string representing the permission for projects. Possible values are `all` or `selected`.
    */
   projectSelection: ProjectSelection;
+  notification: ResponseBodyNotification;
   transferRequest: TransferRequest2 | TransferRequest1;
   /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
@@ -443,6 +460,91 @@ export namespace ProjectSelection$ {
   export const inboundSchema = ProjectSelection$inboundSchema;
   /** @deprecated use `ProjectSelection$outboundSchema` instead. */
   export const outboundSchema = ProjectSelection$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurationResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyLevel
+> = z.nativeEnum(GetConfigurationResponseBodyLevel);
+
+/** @internal */
+export const GetConfigurationResponseBodyLevel$outboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyLevel
+> = GetConfigurationResponseBodyLevel$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyLevel$ {
+  /** @deprecated use `GetConfigurationResponseBodyLevel$inboundSchema` instead. */
+  export const inboundSchema = GetConfigurationResponseBodyLevel$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyLevel$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationResponseBodyLevel$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyNotification$inboundSchema: z.ZodType<
+  ResponseBodyNotification,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  level: GetConfigurationResponseBodyLevel$inboundSchema,
+  title: z.string(),
+  message: z.string().optional(),
+  href: z.string().optional(),
+});
+
+/** @internal */
+export type ResponseBodyNotification$Outbound = {
+  level: string;
+  title: string;
+  message?: string | undefined;
+  href?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyNotification$outboundSchema: z.ZodType<
+  ResponseBodyNotification$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyNotification
+> = z.object({
+  level: GetConfigurationResponseBodyLevel$outboundSchema,
+  title: z.string(),
+  message: z.string().optional(),
+  href: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyNotification$ {
+  /** @deprecated use `ResponseBodyNotification$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyNotification$inboundSchema;
+  /** @deprecated use `ResponseBodyNotification$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyNotification$outboundSchema;
+  /** @deprecated use `ResponseBodyNotification$Outbound` instead. */
+  export type Outbound = ResponseBodyNotification$Outbound;
+}
+
+export function responseBodyNotificationToJSON(
+  responseBodyNotification: ResponseBodyNotification,
+): string {
+  return JSON.stringify(
+    ResponseBodyNotification$outboundSchema.parse(responseBodyNotification),
+  );
+}
+
+export function responseBodyNotificationFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyNotification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyNotification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyNotification' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1043,6 +1145,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectSelection: ProjectSelection$inboundSchema,
+  notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
   transferRequest: z.union([
     z.lazy(() => TransferRequest2$inboundSchema),
     z.lazy(() => TransferRequest1$inboundSchema),
@@ -1076,6 +1179,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
 /** @internal */
 export type GetConfigurationResponseBody2$Outbound = {
   projectSelection: string;
+  notification: ResponseBodyNotification$Outbound;
   transferRequest: TransferRequest2$Outbound | TransferRequest1$Outbound;
   projects?: Array<string> | undefined;
   completedAt?: number | undefined;
@@ -1105,6 +1209,7 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   GetConfigurationResponseBody2
 > = z.object({
   projectSelection: ProjectSelection$outboundSchema,
+  notification: z.lazy(() => ResponseBodyNotification$outboundSchema),
   transferRequest: z.union([
     z.lazy(() => TransferRequest2$outboundSchema),
     z.lazy(() => TransferRequest1$outboundSchema),

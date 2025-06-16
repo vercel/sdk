@@ -42,10 +42,10 @@ export type GetProjectEnvResponseBodyProjectsResponseTarget =
 
 export const GetProjectEnvResponseBodyProjectsResponseType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectEnvResponseBodyProjectsResponseType = ClosedEnum<
   typeof GetProjectEnvResponseBodyProjectsResponseType
@@ -388,10 +388,10 @@ export type GetProjectEnvResponseBodyProjectsTarget =
 
 export const GetProjectEnvResponseBodyProjectsType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectEnvResponseBodyProjectsType = ClosedEnum<
   typeof GetProjectEnvResponseBodyProjectsType
@@ -732,10 +732,10 @@ export type GetProjectEnvResponseBodyTarget =
 
 export const GetProjectEnvResponseBodyType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type GetProjectEnvResponseBodyType = ClosedEnum<
   typeof GetProjectEnvResponseBodyType

@@ -67,6 +67,70 @@ func (e *ProjectSelection) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetConfigurationLevel string
+
+const (
+	GetConfigurationLevelError GetConfigurationLevel = "error"
+	GetConfigurationLevelInfo  GetConfigurationLevel = "info"
+	GetConfigurationLevelWarn  GetConfigurationLevel = "warn"
+)
+
+func (e GetConfigurationLevel) ToPointer() *GetConfigurationLevel {
+	return &e
+}
+func (e *GetConfigurationLevel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "error":
+		fallthrough
+	case "info":
+		fallthrough
+	case "warn":
+		*e = GetConfigurationLevel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationLevel: %v", v)
+	}
+}
+
+type GetConfigurationNotification struct {
+	Level   GetConfigurationLevel `json:"level"`
+	Title   string                `json:"title"`
+	Message *string               `json:"message,omitempty"`
+	Href    *string               `json:"href,omitempty"`
+}
+
+func (o *GetConfigurationNotification) GetLevel() GetConfigurationLevel {
+	if o == nil {
+		return GetConfigurationLevel("")
+	}
+	return o.Level
+}
+
+func (o *GetConfigurationNotification) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *GetConfigurationNotification) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *GetConfigurationNotification) GetHref() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Href
+}
+
 type KindTransferFromMarketplace string
 
 const (
@@ -646,8 +710,9 @@ func (e *GetConfigurationInstallationType2) UnmarshalJSON(data []byte) error {
 
 type GetConfigurationIntegrationConfiguration2 struct {
 	// A string representing the permission for projects. Possible values are `all` or `selected`.
-	ProjectSelection ProjectSelection `json:"projectSelection"`
-	TransferRequest  TransferRequest  `json:"transferRequest"`
+	ProjectSelection ProjectSelection             `json:"projectSelection"`
+	Notification     GetConfigurationNotification `json:"notification"`
+	TransferRequest  TransferRequest              `json:"transferRequest"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// A timestamp that tells you when the configuration was installed successfully
@@ -690,6 +755,13 @@ func (o *GetConfigurationIntegrationConfiguration2) GetProjectSelection() Projec
 		return ProjectSelection("")
 	}
 	return o.ProjectSelection
+}
+
+func (o *GetConfigurationIntegrationConfiguration2) GetNotification() GetConfigurationNotification {
+	if o == nil {
+		return GetConfigurationNotification{}
+	}
+	return o.Notification
 }
 
 func (o *GetConfigurationIntegrationConfiguration2) GetTransferRequest() TransferRequest {

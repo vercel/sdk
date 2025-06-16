@@ -234,35 +234,35 @@ func (e *ImportResourceLevel) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Notification struct {
+type ImportResourceNotification struct {
 	Level   ImportResourceLevel `json:"level"`
 	Title   string              `json:"title"`
 	Message *string             `json:"message,omitempty"`
 	Href    *string             `json:"href,omitempty"`
 }
 
-func (o *Notification) GetLevel() ImportResourceLevel {
+func (o *ImportResourceNotification) GetLevel() ImportResourceLevel {
 	if o == nil {
 		return ImportResourceLevel("")
 	}
 	return o.Level
 }
 
-func (o *Notification) GetTitle() string {
+func (o *ImportResourceNotification) GetTitle() string {
 	if o == nil {
 		return ""
 	}
 	return o.Title
 }
 
-func (o *Notification) GetMessage() *string {
+func (o *ImportResourceNotification) GetMessage() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Message
 }
 
-func (o *Notification) GetHref() *string {
+func (o *ImportResourceNotification) GetHref() *string {
 	if o == nil {
 		return nil
 	}
@@ -337,13 +337,13 @@ func (o *ImportResourceSecret) GetEnvironmentOverrides() *ImportResourceEnvironm
 }
 
 type ImportResourceRequestBody struct {
-	ProductID    string                     `json:"productId"`
-	Name         string                     `json:"name"`
-	Status       ImportResourceStatus       `json:"status"`
-	Metadata     map[string]any             `json:"metadata,omitempty"`
-	BillingPlan  *ImportResourceBillingPlan `json:"billingPlan,omitempty"`
-	Notification *Notification              `json:"notification,omitempty"`
-	Secrets      []ImportResourceSecret     `json:"secrets,omitempty"`
+	ProductID    string                      `json:"productId"`
+	Name         string                      `json:"name"`
+	Status       ImportResourceStatus        `json:"status"`
+	Metadata     map[string]any              `json:"metadata,omitempty"`
+	BillingPlan  *ImportResourceBillingPlan  `json:"billingPlan,omitempty"`
+	Notification *ImportResourceNotification `json:"notification,omitempty"`
+	Secrets      []ImportResourceSecret      `json:"secrets,omitempty"`
 }
 
 func (o *ImportResourceRequestBody) GetProductID() string {
@@ -381,7 +381,7 @@ func (o *ImportResourceRequestBody) GetBillingPlan() *ImportResourceBillingPlan 
 	return o.BillingPlan
 }
 
-func (o *ImportResourceRequestBody) GetNotification() *Notification {
+func (o *ImportResourceRequestBody) GetNotification() *ImportResourceNotification {
 	if o == nil {
 		return nil
 	}

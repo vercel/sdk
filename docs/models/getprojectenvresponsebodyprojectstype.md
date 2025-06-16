@@ -11,5 +11,5 @@ let value: GetProjectEnvResponseBodyProjectsType = "system";
 ## Values
 
 ```typescript
-"system" | "secret" | "encrypted" | "plain" | "sensitive"
+"system" | "encrypted" | "plain" | "sensitive" | "secret"
 ```

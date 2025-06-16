@@ -239,10 +239,10 @@ type FilterProjectEnvsEnvType2 string
 
 const (
 	FilterProjectEnvsEnvType2System    FilterProjectEnvsEnvType2 = "system"
-	FilterProjectEnvsEnvType2Secret    FilterProjectEnvsEnvType2 = "secret"
 	FilterProjectEnvsEnvType2Encrypted FilterProjectEnvsEnvType2 = "encrypted"
 	FilterProjectEnvsEnvType2Plain     FilterProjectEnvsEnvType2 = "plain"
 	FilterProjectEnvsEnvType2Sensitive FilterProjectEnvsEnvType2 = "sensitive"
+	FilterProjectEnvsEnvType2Secret    FilterProjectEnvsEnvType2 = "secret"
 )
 
 func (e FilterProjectEnvsEnvType2) ToPointer() *FilterProjectEnvsEnvType2 {
@@ -256,13 +256,13 @@ func (e *FilterProjectEnvsEnvType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsEnvType2(v)
 		return nil
 	default:
@@ -1627,10 +1627,10 @@ type FilterProjectEnvsEnvType1 string
 
 const (
 	FilterProjectEnvsEnvType1System    FilterProjectEnvsEnvType1 = "system"
-	FilterProjectEnvsEnvType1Secret    FilterProjectEnvsEnvType1 = "secret"
 	FilterProjectEnvsEnvType1Encrypted FilterProjectEnvsEnvType1 = "encrypted"
 	FilterProjectEnvsEnvType1Plain     FilterProjectEnvsEnvType1 = "plain"
 	FilterProjectEnvsEnvType1Sensitive FilterProjectEnvsEnvType1 = "sensitive"
+	FilterProjectEnvsEnvType1Secret    FilterProjectEnvsEnvType1 = "secret"
 )
 
 func (e FilterProjectEnvsEnvType1) ToPointer() *FilterProjectEnvsEnvType1 {
@@ -1644,13 +1644,13 @@ func (e *FilterProjectEnvsEnvType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsEnvType1(v)
 		return nil
 	default:
@@ -3023,10 +3023,10 @@ type FilterProjectEnvsType string
 
 const (
 	FilterProjectEnvsTypeSystem    FilterProjectEnvsType = "system"
-	FilterProjectEnvsTypeSecret    FilterProjectEnvsType = "secret"
 	FilterProjectEnvsTypeEncrypted FilterProjectEnvsType = "encrypted"
 	FilterProjectEnvsTypePlain     FilterProjectEnvsType = "plain"
 	FilterProjectEnvsTypeSensitive FilterProjectEnvsType = "sensitive"
+	FilterProjectEnvsTypeSecret    FilterProjectEnvsType = "secret"
 )
 
 func (e FilterProjectEnvsType) ToPointer() *FilterProjectEnvsType {
@@ -3040,13 +3040,13 @@ func (e *FilterProjectEnvsType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsType(v)
 		return nil
 	default:

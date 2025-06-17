@@ -19,13 +19,13 @@ import {
 } from "./authuserlimited.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type GetAuthUserUser = AuthUserLimited | AuthUser;
+export type GetAuthUserUser = AuthUser | AuthUserLimited;
 
 /**
  * Successful response.
  */
 export type GetAuthUserResponseBody = {
-  user: AuthUserLimited | AuthUser;
+  user: AuthUser | AuthUserLimited;
 };
 
 /** @internal */
@@ -33,19 +33,19 @@ export const GetAuthUserUser$inboundSchema: z.ZodType<
   GetAuthUserUser,
   z.ZodTypeDef,
   unknown
-> = z.union([AuthUserLimited$inboundSchema, AuthUser$inboundSchema]);
+> = z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
 
 /** @internal */
 export type GetAuthUserUser$Outbound =
-  | AuthUserLimited$Outbound
-  | AuthUser$Outbound;
+  | AuthUser$Outbound
+  | AuthUserLimited$Outbound;
 
 /** @internal */
 export const GetAuthUserUser$outboundSchema: z.ZodType<
   GetAuthUserUser$Outbound,
   z.ZodTypeDef,
   GetAuthUserUser
-> = z.union([AuthUserLimited$outboundSchema, AuthUser$outboundSchema]);
+> = z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]);
 
 /**
  * @internal
@@ -82,12 +82,12 @@ export const GetAuthUserResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  user: z.union([AuthUserLimited$inboundSchema, AuthUser$inboundSchema]),
+  user: z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
 });
 
 /** @internal */
 export type GetAuthUserResponseBody$Outbound = {
-  user: AuthUserLimited$Outbound | AuthUser$Outbound;
+  user: AuthUser$Outbound | AuthUserLimited$Outbound;
 };
 
 /** @internal */
@@ -96,7 +96,7 @@ export const GetAuthUserResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAuthUserResponseBody
 > = z.object({
-  user: z.union([AuthUserLimited$outboundSchema, AuthUser$outboundSchema]),
+  user: z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]),
 });
 
 /**

@@ -153,8 +153,8 @@ export type GetProjectMembersResponseBody1 = {};
  * Paginated list of members for the project.
  */
 export type GetProjectMembersResponseBody =
-  | GetProjectMembersResponseBody1
-  | GetProjectMembersResponseBody2;
+  | GetProjectMembersResponseBody2
+  | GetProjectMembersResponseBody1;
 
 /** @internal */
 export const GetProjectMembersRequest$inboundSchema: z.ZodType<
@@ -563,14 +563,14 @@ export const GetProjectMembersResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
   z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
+  z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type GetProjectMembersResponseBody$Outbound =
-  | GetProjectMembersResponseBody1$Outbound
-  | GetProjectMembersResponseBody2$Outbound;
+  | GetProjectMembersResponseBody2$Outbound
+  | GetProjectMembersResponseBody1$Outbound;
 
 /** @internal */
 export const GetProjectMembersResponseBody$outboundSchema: z.ZodType<
@@ -578,8 +578,8 @@ export const GetProjectMembersResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectMembersResponseBody
 > = z.union([
-  z.lazy(() => GetProjectMembersResponseBody1$outboundSchema),
   z.lazy(() => GetProjectMembersResponseBody2$outboundSchema),
+  z.lazy(() => GetProjectMembersResponseBody1$outboundSchema),
 ]);
 
 /**

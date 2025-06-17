@@ -454,16 +454,16 @@ export type RequestBody1 = {
 };
 
 export type CreateRecordRequestBody =
-  | RequestBody7
-  | RequestBody8
-  | RequestBody10
+  | RequestBody6
   | RequestBody1
   | RequestBody2
   | RequestBody3
   | RequestBody4
   | RequestBody5
+  | RequestBody7
+  | RequestBody8
   | RequestBody9
-  | RequestBody6;
+  | RequestBody10;
 
 export type CreateRecordRequest = {
   /**
@@ -479,16 +479,16 @@ export type CreateRecordRequest = {
    */
   slug?: string | undefined;
   requestBody:
-    | RequestBody7
-    | RequestBody8
-    | RequestBody10
+    | RequestBody6
     | RequestBody1
     | RequestBody2
     | RequestBody3
     | RequestBody4
     | RequestBody5
+    | RequestBody7
+    | RequestBody8
     | RequestBody9
-    | RequestBody6;
+    | RequestBody10;
 };
 
 export type CreateRecordResponseBody2 = {
@@ -507,8 +507,8 @@ export type CreateRecordResponseBody1 = {
  * Successful response showing the uid of the newly created DNS record.
  */
 export type CreateRecordResponseBody =
-  | CreateRecordResponseBody2
-  | CreateRecordResponseBody1;
+  | CreateRecordResponseBody1
+  | CreateRecordResponseBody2;
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest10Type$inboundSchema:
@@ -1479,30 +1479,30 @@ export const CreateRecordRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => RequestBody7$inboundSchema),
-  z.lazy(() => RequestBody8$inboundSchema),
-  z.lazy(() => RequestBody10$inboundSchema),
+  z.lazy(() => RequestBody6$inboundSchema),
   z.lazy(() => RequestBody1$inboundSchema),
   z.lazy(() => RequestBody2$inboundSchema),
   z.lazy(() => RequestBody3$inboundSchema),
   z.lazy(() => RequestBody4$inboundSchema),
   z.lazy(() => RequestBody5$inboundSchema),
+  z.lazy(() => RequestBody7$inboundSchema),
+  z.lazy(() => RequestBody8$inboundSchema),
   z.lazy(() => RequestBody9$inboundSchema),
-  z.lazy(() => RequestBody6$inboundSchema),
+  z.lazy(() => RequestBody10$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateRecordRequestBody$Outbound =
-  | RequestBody7$Outbound
-  | RequestBody8$Outbound
-  | RequestBody10$Outbound
+  | RequestBody6$Outbound
   | RequestBody1$Outbound
   | RequestBody2$Outbound
   | RequestBody3$Outbound
   | RequestBody4$Outbound
   | RequestBody5$Outbound
+  | RequestBody7$Outbound
+  | RequestBody8$Outbound
   | RequestBody9$Outbound
-  | RequestBody6$Outbound;
+  | RequestBody10$Outbound;
 
 /** @internal */
 export const CreateRecordRequestBody$outboundSchema: z.ZodType<
@@ -1510,16 +1510,16 @@ export const CreateRecordRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateRecordRequestBody
 > = z.union([
-  z.lazy(() => RequestBody7$outboundSchema),
-  z.lazy(() => RequestBody8$outboundSchema),
-  z.lazy(() => RequestBody10$outboundSchema),
+  z.lazy(() => RequestBody6$outboundSchema),
   z.lazy(() => RequestBody1$outboundSchema),
   z.lazy(() => RequestBody2$outboundSchema),
   z.lazy(() => RequestBody3$outboundSchema),
   z.lazy(() => RequestBody4$outboundSchema),
   z.lazy(() => RequestBody5$outboundSchema),
+  z.lazy(() => RequestBody7$outboundSchema),
+  z.lazy(() => RequestBody8$outboundSchema),
   z.lazy(() => RequestBody9$outboundSchema),
-  z.lazy(() => RequestBody6$outboundSchema),
+  z.lazy(() => RequestBody10$outboundSchema),
 ]);
 
 /**
@@ -1563,16 +1563,16 @@ export const CreateRecordRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   RequestBody: z.union([
-    z.lazy(() => RequestBody7$inboundSchema),
-    z.lazy(() => RequestBody8$inboundSchema),
-    z.lazy(() => RequestBody10$inboundSchema),
+    z.lazy(() => RequestBody6$inboundSchema),
     z.lazy(() => RequestBody1$inboundSchema),
     z.lazy(() => RequestBody2$inboundSchema),
     z.lazy(() => RequestBody3$inboundSchema),
     z.lazy(() => RequestBody4$inboundSchema),
     z.lazy(() => RequestBody5$inboundSchema),
+    z.lazy(() => RequestBody7$inboundSchema),
+    z.lazy(() => RequestBody8$inboundSchema),
     z.lazy(() => RequestBody9$inboundSchema),
-    z.lazy(() => RequestBody6$inboundSchema),
+    z.lazy(() => RequestBody10$inboundSchema),
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -1586,16 +1586,16 @@ export type CreateRecordRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody:
-    | RequestBody7$Outbound
-    | RequestBody8$Outbound
-    | RequestBody10$Outbound
+    | RequestBody6$Outbound
     | RequestBody1$Outbound
     | RequestBody2$Outbound
     | RequestBody3$Outbound
     | RequestBody4$Outbound
     | RequestBody5$Outbound
+    | RequestBody7$Outbound
+    | RequestBody8$Outbound
     | RequestBody9$Outbound
-    | RequestBody6$Outbound;
+    | RequestBody10$Outbound;
 };
 
 /** @internal */
@@ -1608,16 +1608,16 @@ export const CreateRecordRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.union([
-    z.lazy(() => RequestBody7$outboundSchema),
-    z.lazy(() => RequestBody8$outboundSchema),
-    z.lazy(() => RequestBody10$outboundSchema),
+    z.lazy(() => RequestBody6$outboundSchema),
     z.lazy(() => RequestBody1$outboundSchema),
     z.lazy(() => RequestBody2$outboundSchema),
     z.lazy(() => RequestBody3$outboundSchema),
     z.lazy(() => RequestBody4$outboundSchema),
     z.lazy(() => RequestBody5$outboundSchema),
+    z.lazy(() => RequestBody7$outboundSchema),
+    z.lazy(() => RequestBody8$outboundSchema),
     z.lazy(() => RequestBody9$outboundSchema),
-    z.lazy(() => RequestBody6$outboundSchema),
+    z.lazy(() => RequestBody10$outboundSchema),
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -1773,14 +1773,14 @@ export const CreateRecordResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateRecordResponseBody2$inboundSchema),
   z.lazy(() => CreateRecordResponseBody1$inboundSchema),
+  z.lazy(() => CreateRecordResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateRecordResponseBody$Outbound =
-  | CreateRecordResponseBody2$Outbound
-  | CreateRecordResponseBody1$Outbound;
+  | CreateRecordResponseBody1$Outbound
+  | CreateRecordResponseBody2$Outbound;
 
 /** @internal */
 export const CreateRecordResponseBody$outboundSchema: z.ZodType<
@@ -1788,8 +1788,8 @@ export const CreateRecordResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateRecordResponseBody
 > = z.union([
-  z.lazy(() => CreateRecordResponseBody2$outboundSchema),
   z.lazy(() => CreateRecordResponseBody1$outboundSchema),
+  z.lazy(() => CreateRecordResponseBody2$outboundSchema),
 ]);
 
 /**

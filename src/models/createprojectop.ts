@@ -640,6 +640,7 @@ export type CreateProjectContentHint1 = {
 };
 
 export type CreateProjectContentHint =
+  | CreateProjectContentHint14
   | CreateProjectContentHint1
   | CreateProjectContentHint2
   | CreateProjectContentHint3
@@ -653,8 +654,7 @@ export type CreateProjectContentHint =
   | CreateProjectContentHint11
   | CreateProjectContentHint12
   | CreateProjectContentHint13
-  | CreateProjectContentHint15
-  | CreateProjectContentHint14;
+  | CreateProjectContentHint15;
 
 export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyEnvType =
   {
@@ -697,6 +697,7 @@ export type CreateProjectEnv = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectContentHint14
     | CreateProjectContentHint1
     | CreateProjectContentHint2
     | CreateProjectContentHint3
@@ -711,7 +712,6 @@ export type CreateProjectEnv = {
     | CreateProjectContentHint12
     | CreateProjectContentHint13
     | CreateProjectContentHint15
-    | CreateProjectContentHint14
     | null
     | undefined;
   /**
@@ -1188,9 +1188,9 @@ export type CreateProjectLink1 = {
 
 export type CreateProjectLink =
   | CreateProjectLink1
+  | CreateProjectLink2
   | CreateProjectLink3
-  | CreateProjectLink4
-  | CreateProjectLink2;
+  | CreateProjectLink4;
 
 export type CreateProjectMicrofrontends2 = {
   updatedAt: number;
@@ -1226,8 +1226,8 @@ export type CreateProjectMicrofrontends1 = {
 };
 
 export type CreateProjectMicrofrontends =
-  | CreateProjectMicrofrontends2
-  | CreateProjectMicrofrontends1;
+  | CreateProjectMicrofrontends1
+  | CreateProjectMicrofrontends2;
 
 export const CreateProjectNodeVersion = {
   TwentyTwoDotX: "22.x",
@@ -1811,8 +1811,8 @@ export type CreateProjectProtectionBypass1 = {
 };
 
 export type CreateProjectProtectionBypass =
-  | CreateProjectProtectionBypass2
-  | CreateProjectProtectionBypass1;
+  | CreateProjectProtectionBypass1
+  | CreateProjectProtectionBypass2;
 
 export const CreateProjectTrustedIpsProjectsDeploymentType = {
   Production: "production",
@@ -1858,8 +1858,8 @@ export type CreateProjectTrustedIps1 = {
 };
 
 export type CreateProjectTrustedIps =
-  | CreateProjectTrustedIps2
-  | CreateProjectTrustedIps1;
+  | CreateProjectTrustedIps1
+  | CreateProjectTrustedIps2;
 
 export type CreateProjectGitComments = {
   /**
@@ -2184,13 +2184,13 @@ export type CreateProjectResponseBody = {
   latestDeployments?: Array<CreateProjectLatestDeployments> | undefined;
   link?:
     | CreateProjectLink1
+    | CreateProjectLink2
     | CreateProjectLink3
     | CreateProjectLink4
-    | CreateProjectLink2
     | undefined;
   microfrontends?:
-    | CreateProjectMicrofrontends2
     | CreateProjectMicrofrontends1
+    | CreateProjectMicrofrontends2
     | undefined;
   name: string;
   nodeVersion: CreateProjectNodeVersion;
@@ -2232,13 +2232,13 @@ export type CreateProjectResponseBody = {
   lastAliasRequest?: CreateProjectLastAliasRequest | null | undefined;
   protectionBypass?: {
     [k: string]:
-      | CreateProjectProtectionBypass2
-      | CreateProjectProtectionBypass1;
+      | CreateProjectProtectionBypass1
+      | CreateProjectProtectionBypass2;
   } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
-    | CreateProjectTrustedIps2
     | CreateProjectTrustedIps1
+    | CreateProjectTrustedIps2
     | null
     | undefined;
   gitComments?: CreateProjectGitComments | undefined;
@@ -4902,6 +4902,7 @@ export const CreateProjectContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => CreateProjectContentHint14$inboundSchema),
   z.lazy(() => CreateProjectContentHint1$inboundSchema),
   z.lazy(() => CreateProjectContentHint2$inboundSchema),
   z.lazy(() => CreateProjectContentHint3$inboundSchema),
@@ -4916,11 +4917,11 @@ export const CreateProjectContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectContentHint12$inboundSchema),
   z.lazy(() => CreateProjectContentHint13$inboundSchema),
   z.lazy(() => CreateProjectContentHint15$inboundSchema),
-  z.lazy(() => CreateProjectContentHint14$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectContentHint$Outbound =
+  | CreateProjectContentHint14$Outbound
   | CreateProjectContentHint1$Outbound
   | CreateProjectContentHint2$Outbound
   | CreateProjectContentHint3$Outbound
@@ -4934,8 +4935,7 @@ export type CreateProjectContentHint$Outbound =
   | CreateProjectContentHint11$Outbound
   | CreateProjectContentHint12$Outbound
   | CreateProjectContentHint13$Outbound
-  | CreateProjectContentHint15$Outbound
-  | CreateProjectContentHint14$Outbound;
+  | CreateProjectContentHint15$Outbound;
 
 /** @internal */
 export const CreateProjectContentHint$outboundSchema: z.ZodType<
@@ -4943,6 +4943,7 @@ export const CreateProjectContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectContentHint
 > = z.union([
+  z.lazy(() => CreateProjectContentHint14$outboundSchema),
   z.lazy(() => CreateProjectContentHint1$outboundSchema),
   z.lazy(() => CreateProjectContentHint2$outboundSchema),
   z.lazy(() => CreateProjectContentHint3$outboundSchema),
@@ -4957,7 +4958,6 @@ export const CreateProjectContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectContentHint12$outboundSchema),
   z.lazy(() => CreateProjectContentHint13$outboundSchema),
   z.lazy(() => CreateProjectContentHint15$outboundSchema),
-  z.lazy(() => CreateProjectContentHint14$outboundSchema),
 ]);
 
 /**
@@ -5107,6 +5107,7 @@ export const CreateProjectEnv$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectContentHint14$inboundSchema),
       z.lazy(() => CreateProjectContentHint1$inboundSchema),
       z.lazy(() => CreateProjectContentHint2$inboundSchema),
       z.lazy(() => CreateProjectContentHint3$inboundSchema),
@@ -5121,7 +5122,6 @@ export const CreateProjectEnv$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectContentHint12$inboundSchema),
       z.lazy(() => CreateProjectContentHint13$inboundSchema),
       z.lazy(() => CreateProjectContentHint15$inboundSchema),
-      z.lazy(() => CreateProjectContentHint14$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -5150,6 +5150,7 @@ export type CreateProjectEnv$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectContentHint14$Outbound
     | CreateProjectContentHint1$Outbound
     | CreateProjectContentHint2$Outbound
     | CreateProjectContentHint3$Outbound
@@ -5164,7 +5165,6 @@ export type CreateProjectEnv$Outbound = {
     | CreateProjectContentHint12$Outbound
     | CreateProjectContentHint13$Outbound
     | CreateProjectContentHint15$Outbound
-    | CreateProjectContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -5202,6 +5202,7 @@ export const CreateProjectEnv$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectContentHint14$outboundSchema),
       z.lazy(() => CreateProjectContentHint1$outboundSchema),
       z.lazy(() => CreateProjectContentHint2$outboundSchema),
       z.lazy(() => CreateProjectContentHint3$outboundSchema),
@@ -5216,7 +5217,6 @@ export const CreateProjectEnv$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectContentHint12$outboundSchema),
       z.lazy(() => CreateProjectContentHint13$outboundSchema),
       z.lazy(() => CreateProjectContentHint15$outboundSchema),
-      z.lazy(() => CreateProjectContentHint14$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -7145,17 +7145,17 @@ export const CreateProjectLink$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreateProjectLink1$inboundSchema),
+  z.lazy(() => CreateProjectLink2$inboundSchema),
   z.lazy(() => CreateProjectLink3$inboundSchema),
   z.lazy(() => CreateProjectLink4$inboundSchema),
-  z.lazy(() => CreateProjectLink2$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectLink$Outbound =
   | CreateProjectLink1$Outbound
+  | CreateProjectLink2$Outbound
   | CreateProjectLink3$Outbound
-  | CreateProjectLink4$Outbound
-  | CreateProjectLink2$Outbound;
+  | CreateProjectLink4$Outbound;
 
 /** @internal */
 export const CreateProjectLink$outboundSchema: z.ZodType<
@@ -7164,9 +7164,9 @@ export const CreateProjectLink$outboundSchema: z.ZodType<
   CreateProjectLink
 > = z.union([
   z.lazy(() => CreateProjectLink1$outboundSchema),
+  z.lazy(() => CreateProjectLink2$outboundSchema),
   z.lazy(() => CreateProjectLink3$outboundSchema),
   z.lazy(() => CreateProjectLink4$outboundSchema),
-  z.lazy(() => CreateProjectLink2$outboundSchema),
 ]);
 
 /**
@@ -7339,14 +7339,14 @@ export const CreateProjectMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectMicrofrontends2$inboundSchema),
   z.lazy(() => CreateProjectMicrofrontends1$inboundSchema),
+  z.lazy(() => CreateProjectMicrofrontends2$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectMicrofrontends$Outbound =
-  | CreateProjectMicrofrontends2$Outbound
-  | CreateProjectMicrofrontends1$Outbound;
+  | CreateProjectMicrofrontends1$Outbound
+  | CreateProjectMicrofrontends2$Outbound;
 
 /** @internal */
 export const CreateProjectMicrofrontends$outboundSchema: z.ZodType<
@@ -7354,8 +7354,8 @@ export const CreateProjectMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectMicrofrontends
 > = z.union([
-  z.lazy(() => CreateProjectMicrofrontends2$outboundSchema),
   z.lazy(() => CreateProjectMicrofrontends1$outboundSchema),
+  z.lazy(() => CreateProjectMicrofrontends2$outboundSchema),
 ]);
 
 /**
@@ -9873,14 +9873,14 @@ export const CreateProjectProtectionBypass$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
   z.lazy(() => CreateProjectProtectionBypass1$inboundSchema),
+  z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectProtectionBypass$Outbound =
-  | CreateProjectProtectionBypass2$Outbound
-  | CreateProjectProtectionBypass1$Outbound;
+  | CreateProjectProtectionBypass1$Outbound
+  | CreateProjectProtectionBypass2$Outbound;
 
 /** @internal */
 export const CreateProjectProtectionBypass$outboundSchema: z.ZodType<
@@ -9888,8 +9888,8 @@ export const CreateProjectProtectionBypass$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectProtectionBypass
 > = z.union([
-  z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
   z.lazy(() => CreateProjectProtectionBypass1$outboundSchema),
+  z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
 ]);
 
 /**
@@ -10170,14 +10170,14 @@ export const CreateProjectTrustedIps$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectTrustedIps2$inboundSchema),
   z.lazy(() => CreateProjectTrustedIps1$inboundSchema),
+  z.lazy(() => CreateProjectTrustedIps2$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectTrustedIps$Outbound =
-  | CreateProjectTrustedIps2$Outbound
-  | CreateProjectTrustedIps1$Outbound;
+  | CreateProjectTrustedIps1$Outbound
+  | CreateProjectTrustedIps2$Outbound;
 
 /** @internal */
 export const CreateProjectTrustedIps$outboundSchema: z.ZodType<
@@ -10185,8 +10185,8 @@ export const CreateProjectTrustedIps$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectTrustedIps
 > = z.union([
-  z.lazy(() => CreateProjectTrustedIps2$outboundSchema),
   z.lazy(() => CreateProjectTrustedIps1$outboundSchema),
+  z.lazy(() => CreateProjectTrustedIps2$outboundSchema),
 ]);
 
 /**
@@ -11894,13 +11894,13 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   link: z.union([
     z.lazy(() => CreateProjectLink1$inboundSchema),
+    z.lazy(() => CreateProjectLink2$inboundSchema),
     z.lazy(() => CreateProjectLink3$inboundSchema),
     z.lazy(() => CreateProjectLink4$inboundSchema),
-    z.lazy(() => CreateProjectLink2$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => CreateProjectMicrofrontends2$inboundSchema),
     z.lazy(() => CreateProjectMicrofrontends1$inboundSchema),
+    z.lazy(() => CreateProjectMicrofrontends2$inboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: CreateProjectNodeVersion$inboundSchema,
@@ -11956,15 +11956,15 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
       z.lazy(() => CreateProjectProtectionBypass1$inboundSchema),
+      z.lazy(() => CreateProjectProtectionBypass2$inboundSchema),
     ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectTrustedIps2$inboundSchema),
       z.lazy(() => CreateProjectTrustedIps1$inboundSchema),
+      z.lazy(() => CreateProjectTrustedIps2$inboundSchema),
     ]),
   ).optional(),
   gitComments: z.lazy(() => CreateProjectGitComments$inboundSchema).optional(),
@@ -12024,13 +12024,13 @@ export type CreateProjectResponseBody$Outbound = {
     | undefined;
   link?:
     | CreateProjectLink1$Outbound
+    | CreateProjectLink2$Outbound
     | CreateProjectLink3$Outbound
     | CreateProjectLink4$Outbound
-    | CreateProjectLink2$Outbound
     | undefined;
   microfrontends?:
-    | CreateProjectMicrofrontends2$Outbound
     | CreateProjectMicrofrontends1$Outbound
+    | CreateProjectMicrofrontends2$Outbound
     | undefined;
   name: string;
   nodeVersion: string;
@@ -12072,13 +12072,13 @@ export type CreateProjectResponseBody$Outbound = {
   lastAliasRequest?: CreateProjectLastAliasRequest$Outbound | null | undefined;
   protectionBypass?: {
     [k: string]:
-      | CreateProjectProtectionBypass2$Outbound
-      | CreateProjectProtectionBypass1$Outbound;
+      | CreateProjectProtectionBypass1$Outbound
+      | CreateProjectProtectionBypass2$Outbound;
   } | undefined;
   hasActiveBranches?: boolean | undefined;
   trustedIps?:
-    | CreateProjectTrustedIps2$Outbound
     | CreateProjectTrustedIps1$Outbound
+    | CreateProjectTrustedIps2$Outbound
     | null
     | undefined;
   gitComments?: CreateProjectGitComments$Outbound | undefined;
@@ -12139,13 +12139,13 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   link: z.union([
     z.lazy(() => CreateProjectLink1$outboundSchema),
+    z.lazy(() => CreateProjectLink2$outboundSchema),
     z.lazy(() => CreateProjectLink3$outboundSchema),
     z.lazy(() => CreateProjectLink4$outboundSchema),
-    z.lazy(() => CreateProjectLink2$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => CreateProjectMicrofrontends2$outboundSchema),
     z.lazy(() => CreateProjectMicrofrontends1$outboundSchema),
+    z.lazy(() => CreateProjectMicrofrontends2$outboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: CreateProjectNodeVersion$outboundSchema,
@@ -12201,15 +12201,15 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
       z.lazy(() => CreateProjectProtectionBypass1$outboundSchema),
+      z.lazy(() => CreateProjectProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectTrustedIps2$outboundSchema),
       z.lazy(() => CreateProjectTrustedIps1$outboundSchema),
+      z.lazy(() => CreateProjectTrustedIps2$outboundSchema),
     ]),
   ).optional(),
   gitComments: z.lazy(() => CreateProjectGitComments$outboundSchema).optional(),

@@ -205,8 +205,8 @@ export type InviteUserToTeamResponseBody1 = {
  * The member was successfully added to the team
  */
 export type InviteUserToTeamResponseBody =
-  | InviteUserToTeamResponseBody2
-  | InviteUserToTeamResponseBody1;
+  | InviteUserToTeamResponseBody1
+  | InviteUserToTeamResponseBody2;
 
 /** @internal */
 export const InviteUserToTeamRole$inboundSchema: z.ZodNativeEnum<
@@ -723,14 +723,14 @@ export const InviteUserToTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => InviteUserToTeamResponseBody2$inboundSchema),
   z.lazy(() => InviteUserToTeamResponseBody1$inboundSchema),
+  z.lazy(() => InviteUserToTeamResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type InviteUserToTeamResponseBody$Outbound =
-  | InviteUserToTeamResponseBody2$Outbound
-  | InviteUserToTeamResponseBody1$Outbound;
+  | InviteUserToTeamResponseBody1$Outbound
+  | InviteUserToTeamResponseBody2$Outbound;
 
 /** @internal */
 export const InviteUserToTeamResponseBody$outboundSchema: z.ZodType<
@@ -738,8 +738,8 @@ export const InviteUserToTeamResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InviteUserToTeamResponseBody
 > = z.union([
-  z.lazy(() => InviteUserToTeamResponseBody2$outboundSchema),
   z.lazy(() => InviteUserToTeamResponseBody1$outboundSchema),
+  z.lazy(() => InviteUserToTeamResponseBody2$outboundSchema),
 ]);
 
 /**

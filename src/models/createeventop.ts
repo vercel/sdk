@@ -39,10 +39,10 @@ export type Event1 = {
   billingPlanId?: string | undefined;
 };
 
-export type CreateEventEvent = Event1 | Event2;
+export type CreateEventEvent = Event2 | Event1;
 
 export type CreateEventRequestBody = {
-  event: Event1 | Event2;
+  event: Event2 | Event1;
 };
 
 export type CreateEventRequest = {
@@ -199,12 +199,12 @@ export const CreateEventEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Event1$inboundSchema),
   z.lazy(() => Event2$inboundSchema),
+  z.lazy(() => Event1$inboundSchema),
 ]);
 
 /** @internal */
-export type CreateEventEvent$Outbound = Event1$Outbound | Event2$Outbound;
+export type CreateEventEvent$Outbound = Event2$Outbound | Event1$Outbound;
 
 /** @internal */
 export const CreateEventEvent$outboundSchema: z.ZodType<
@@ -212,8 +212,8 @@ export const CreateEventEvent$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEventEvent
 > = z.union([
-  z.lazy(() => Event1$outboundSchema),
   z.lazy(() => Event2$outboundSchema),
+  z.lazy(() => Event1$outboundSchema),
 ]);
 
 /**
@@ -254,14 +254,14 @@ export const CreateEventRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   event: z.union([
-    z.lazy(() => Event1$inboundSchema),
     z.lazy(() => Event2$inboundSchema),
+    z.lazy(() => Event1$inboundSchema),
   ]),
 });
 
 /** @internal */
 export type CreateEventRequestBody$Outbound = {
-  event: Event1$Outbound | Event2$Outbound;
+  event: Event2$Outbound | Event1$Outbound;
 };
 
 /** @internal */
@@ -271,8 +271,8 @@ export const CreateEventRequestBody$outboundSchema: z.ZodType<
   CreateEventRequestBody
 > = z.object({
   event: z.union([
-    z.lazy(() => Event1$outboundSchema),
     z.lazy(() => Event2$outboundSchema),
+    z.lazy(() => Event1$outboundSchema),
   ]),
 });
 

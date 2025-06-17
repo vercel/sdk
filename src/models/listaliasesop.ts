@@ -170,10 +170,10 @@ export type ListAliasesProtectionBypass1 = {
 };
 
 export type ListAliasesProtectionBypass =
-  | ListAliasesProtectionBypass1
-  | ListAliasesProtectionBypass3
+  | ListAliasesProtectionBypass2
   | ListAliasesProtectionBypass4
-  | ListAliasesProtectionBypass2;
+  | ListAliasesProtectionBypass1
+  | ListAliasesProtectionBypass3;
 
 export type ListAliasesDefaultApp = {
   projectId: string;
@@ -266,10 +266,10 @@ export type ListAliasesAliases = {
    */
   protectionBypass?: {
     [k: string]:
-      | ListAliasesProtectionBypass1
-      | ListAliasesProtectionBypass3
+      | ListAliasesProtectionBypass2
       | ListAliasesProtectionBypass4
-      | ListAliasesProtectionBypass2;
+      | ListAliasesProtectionBypass1
+      | ListAliasesProtectionBypass3;
   } | undefined;
   /**
    * The microfrontends for the alias including the routing configuration
@@ -902,18 +902,18 @@ export const ListAliasesProtectionBypass$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
+  z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
   z.lazy(() => ListAliasesProtectionBypass1$inboundSchema),
   z.lazy(() => ListAliasesProtectionBypass3$inboundSchema),
-  z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
-  z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
 ]);
 
 /** @internal */
 export type ListAliasesProtectionBypass$Outbound =
-  | ListAliasesProtectionBypass1$Outbound
-  | ListAliasesProtectionBypass3$Outbound
+  | ListAliasesProtectionBypass2$Outbound
   | ListAliasesProtectionBypass4$Outbound
-  | ListAliasesProtectionBypass2$Outbound;
+  | ListAliasesProtectionBypass1$Outbound
+  | ListAliasesProtectionBypass3$Outbound;
 
 /** @internal */
 export const ListAliasesProtectionBypass$outboundSchema: z.ZodType<
@@ -921,10 +921,10 @@ export const ListAliasesProtectionBypass$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAliasesProtectionBypass
 > = z.union([
+  z.lazy(() => ListAliasesProtectionBypass2$outboundSchema),
+  z.lazy(() => ListAliasesProtectionBypass4$outboundSchema),
   z.lazy(() => ListAliasesProtectionBypass1$outboundSchema),
   z.lazy(() => ListAliasesProtectionBypass3$outboundSchema),
-  z.lazy(() => ListAliasesProtectionBypass4$outboundSchema),
-  z.lazy(() => ListAliasesProtectionBypass2$outboundSchema),
 ]);
 
 /**
@@ -1154,10 +1154,10 @@ export const ListAliasesAliases$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   protectionBypass: z.record(
     z.union([
+      z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
+      z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
       z.lazy(() => ListAliasesProtectionBypass1$inboundSchema),
       z.lazy(() => ListAliasesProtectionBypass3$inboundSchema),
-      z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
-      z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
     ]),
   ).optional(),
   microfrontends: z.lazy(() => ListAliasesMicrofrontends$inboundSchema)
@@ -1180,10 +1180,10 @@ export type ListAliasesAliases$Outbound = {
   updatedAt?: number | undefined;
   protectionBypass?: {
     [k: string]:
-      | ListAliasesProtectionBypass1$Outbound
-      | ListAliasesProtectionBypass3$Outbound
+      | ListAliasesProtectionBypass2$Outbound
       | ListAliasesProtectionBypass4$Outbound
-      | ListAliasesProtectionBypass2$Outbound;
+      | ListAliasesProtectionBypass1$Outbound
+      | ListAliasesProtectionBypass3$Outbound;
   } | undefined;
   microfrontends?: ListAliasesMicrofrontends$Outbound | undefined;
 };
@@ -1208,10 +1208,10 @@ export const ListAliasesAliases$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   protectionBypass: z.record(
     z.union([
+      z.lazy(() => ListAliasesProtectionBypass2$outboundSchema),
+      z.lazy(() => ListAliasesProtectionBypass4$outboundSchema),
       z.lazy(() => ListAliasesProtectionBypass1$outboundSchema),
       z.lazy(() => ListAliasesProtectionBypass3$outboundSchema),
-      z.lazy(() => ListAliasesProtectionBypass4$outboundSchema),
-      z.lazy(() => ListAliasesProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
   microfrontends: z.lazy(() => ListAliasesMicrofrontends$outboundSchema)

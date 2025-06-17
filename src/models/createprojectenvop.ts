@@ -509,6 +509,7 @@ export type CreateProjectEnvContentHintProjects1 = {
 };
 
 export type CreateProjectEnvCreatedContentHint =
+  | CreateProjectEnvContentHintProjects14
   | CreateProjectEnvContentHintProjects1
   | CreateProjectEnvContentHintProjects2
   | CreateProjectEnvContentHintProjects3
@@ -522,8 +523,7 @@ export type CreateProjectEnvCreatedContentHint =
   | CreateProjectEnvContentHintProjects11
   | CreateProjectEnvContentHintProjects12
   | CreateProjectEnvContentHintProjects13
-  | CreateProjectEnvContentHintProjects15
-  | CreateProjectEnvContentHintProjects14;
+  | CreateProjectEnvContentHintProjects15;
 
 export const CreateProjectEnvCreatedProjectsResponseType = {
   FlagsSecret: "flags-secret",
@@ -564,6 +564,7 @@ export type Created2 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectEnvContentHintProjects14
     | CreateProjectEnvContentHintProjects1
     | CreateProjectEnvContentHintProjects2
     | CreateProjectEnvContentHintProjects3
@@ -578,7 +579,6 @@ export type Created2 = {
     | CreateProjectEnvContentHintProjects12
     | CreateProjectEnvContentHintProjects13
     | CreateProjectEnvContentHintProjects15
-    | CreateProjectEnvContentHintProjects14
     | null
     | undefined;
   /**
@@ -840,6 +840,7 @@ export type CreateProjectEnvContentHint1 = {
 };
 
 export type CreatedContentHint =
+  | CreateProjectEnvContentHint14
   | CreateProjectEnvContentHint1
   | CreateProjectEnvContentHint2
   | CreateProjectEnvContentHint3
@@ -853,8 +854,7 @@ export type CreatedContentHint =
   | CreateProjectEnvContentHint11
   | CreateProjectEnvContentHint12
   | CreateProjectEnvContentHint13
-  | CreateProjectEnvContentHint15
-  | CreateProjectEnvContentHint14;
+  | CreateProjectEnvContentHint15;
 
 export const CreateProjectEnvCreatedProjectsType = {
   FlagsSecret: "flags-secret",
@@ -895,6 +895,7 @@ export type Created1 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectEnvContentHint14
     | CreateProjectEnvContentHint1
     | CreateProjectEnvContentHint2
     | CreateProjectEnvContentHint3
@@ -909,7 +910,6 @@ export type Created1 = {
     | CreateProjectEnvContentHint12
     | CreateProjectEnvContentHint13
     | CreateProjectEnvContentHint15
-    | CreateProjectEnvContentHint14
     | null
     | undefined;
   /**
@@ -3194,6 +3194,7 @@ export const CreateProjectEnvCreatedContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects2$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects3$inboundSchema),
@@ -3208,11 +3209,11 @@ export const CreateProjectEnvCreatedContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHintProjects12$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects13$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects15$inboundSchema),
-  z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateProjectEnvCreatedContentHint$Outbound =
+  | CreateProjectEnvContentHintProjects14$Outbound
   | CreateProjectEnvContentHintProjects1$Outbound
   | CreateProjectEnvContentHintProjects2$Outbound
   | CreateProjectEnvContentHintProjects3$Outbound
@@ -3226,8 +3227,7 @@ export type CreateProjectEnvCreatedContentHint$Outbound =
   | CreateProjectEnvContentHintProjects11$Outbound
   | CreateProjectEnvContentHintProjects12$Outbound
   | CreateProjectEnvContentHintProjects13$Outbound
-  | CreateProjectEnvContentHintProjects15$Outbound
-  | CreateProjectEnvContentHintProjects14$Outbound;
+  | CreateProjectEnvContentHintProjects15$Outbound;
 
 /** @internal */
 export const CreateProjectEnvCreatedContentHint$outboundSchema: z.ZodType<
@@ -3235,6 +3235,7 @@ export const CreateProjectEnvCreatedContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvCreatedContentHint
 > = z.union([
+  z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects1$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects2$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects3$outboundSchema),
@@ -3249,7 +3250,6 @@ export const CreateProjectEnvCreatedContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHintProjects12$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects13$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects15$outboundSchema),
-  z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
 ]);
 
 /**
@@ -3404,6 +3404,7 @@ export const Created2$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects2$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects3$inboundSchema),
@@ -3418,7 +3419,6 @@ export const Created2$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHintProjects12$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects13$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects15$inboundSchema),
-      z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -3448,6 +3448,7 @@ export type Created2$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectEnvContentHintProjects14$Outbound
     | CreateProjectEnvContentHintProjects1$Outbound
     | CreateProjectEnvContentHintProjects2$Outbound
     | CreateProjectEnvContentHintProjects3$Outbound
@@ -3462,7 +3463,6 @@ export type Created2$Outbound = {
     | CreateProjectEnvContentHintProjects12$Outbound
     | CreateProjectEnvContentHintProjects13$Outbound
     | CreateProjectEnvContentHintProjects15$Outbound
-    | CreateProjectEnvContentHintProjects14$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -3501,6 +3501,7 @@ export const Created2$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects1$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects2$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects3$outboundSchema),
@@ -3515,7 +3516,6 @@ export const Created2$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHintProjects12$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects13$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects15$outboundSchema),
-      z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -4984,6 +4984,7 @@ export const CreatedContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint2$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint3$inboundSchema),
@@ -4998,11 +4999,11 @@ export const CreatedContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHint12$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint13$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint15$inboundSchema),
-  z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
 ]);
 
 /** @internal */
 export type CreatedContentHint$Outbound =
+  | CreateProjectEnvContentHint14$Outbound
   | CreateProjectEnvContentHint1$Outbound
   | CreateProjectEnvContentHint2$Outbound
   | CreateProjectEnvContentHint3$Outbound
@@ -5016,8 +5017,7 @@ export type CreatedContentHint$Outbound =
   | CreateProjectEnvContentHint11$Outbound
   | CreateProjectEnvContentHint12$Outbound
   | CreateProjectEnvContentHint13$Outbound
-  | CreateProjectEnvContentHint15$Outbound
-  | CreateProjectEnvContentHint14$Outbound;
+  | CreateProjectEnvContentHint15$Outbound;
 
 /** @internal */
 export const CreatedContentHint$outboundSchema: z.ZodType<
@@ -5025,6 +5025,7 @@ export const CreatedContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatedContentHint
 > = z.union([
+  z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint1$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint2$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint3$outboundSchema),
@@ -5039,7 +5040,6 @@ export const CreatedContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHint12$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint13$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint15$outboundSchema),
-  z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
 ]);
 
 /**
@@ -5180,6 +5180,7 @@ export const Created1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint2$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint3$inboundSchema),
@@ -5194,7 +5195,6 @@ export const Created1$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHint12$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint13$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint15$inboundSchema),
-      z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -5224,6 +5224,7 @@ export type Created1$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | CreateProjectEnvContentHint14$Outbound
     | CreateProjectEnvContentHint1$Outbound
     | CreateProjectEnvContentHint2$Outbound
     | CreateProjectEnvContentHint3$Outbound
@@ -5238,7 +5239,6 @@ export type Created1$Outbound = {
     | CreateProjectEnvContentHint12$Outbound
     | CreateProjectEnvContentHint13$Outbound
     | CreateProjectEnvContentHint15$Outbound
-    | CreateProjectEnvContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?: CreatedInternalContentHint$Outbound | null | undefined;
@@ -5274,6 +5274,7 @@ export const Created1$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint1$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint2$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint3$outboundSchema),
@@ -5288,7 +5289,6 @@ export const Created1$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHint12$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint13$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint15$outboundSchema),
-      z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(

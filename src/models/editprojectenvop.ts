@@ -321,6 +321,7 @@ export type EditProjectEnvContentHint1 = {
 };
 
 export type EditProjectEnvResponseBodyContentHint =
+  | EditProjectEnvContentHint14
   | EditProjectEnvContentHint1
   | EditProjectEnvContentHint2
   | EditProjectEnvContentHint3
@@ -334,8 +335,7 @@ export type EditProjectEnvResponseBodyContentHint =
   | EditProjectEnvContentHint11
   | EditProjectEnvContentHint12
   | EditProjectEnvContentHint13
-  | EditProjectEnvContentHint15
-  | EditProjectEnvContentHint14;
+  | EditProjectEnvContentHint15;
 
 export const EditProjectEnvResponseBodyProjectsType = {
   FlagsSecret: "flags-secret",
@@ -375,6 +375,7 @@ export type EditProjectEnvResponseBody1 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | EditProjectEnvContentHint14
     | EditProjectEnvContentHint1
     | EditProjectEnvContentHint2
     | EditProjectEnvContentHint3
@@ -389,7 +390,6 @@ export type EditProjectEnvResponseBody1 = {
     | EditProjectEnvContentHint12
     | EditProjectEnvContentHint13
     | EditProjectEnvContentHint15
-    | EditProjectEnvContentHint14
     | null
     | undefined;
   /**
@@ -407,8 +407,8 @@ export type EditProjectEnvResponseBody1 = {
  * The environment variable was successfully edited
  */
 export type EditProjectEnvResponseBody =
-  | EditProjectEnvResponseBody2
-  | EditProjectEnvResponseBody1;
+  | EditProjectEnvResponseBody1
+  | EditProjectEnvResponseBody2;
 
 /** @internal */
 export const EditProjectEnvTarget$inboundSchema: z.ZodNativeEnum<
@@ -2043,6 +2043,7 @@ export const EditProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
   z.lazy(() => EditProjectEnvContentHint1$inboundSchema),
   z.lazy(() => EditProjectEnvContentHint2$inboundSchema),
   z.lazy(() => EditProjectEnvContentHint3$inboundSchema),
@@ -2057,11 +2058,11 @@ export const EditProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => EditProjectEnvContentHint12$inboundSchema),
   z.lazy(() => EditProjectEnvContentHint13$inboundSchema),
   z.lazy(() => EditProjectEnvContentHint15$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
 ]);
 
 /** @internal */
 export type EditProjectEnvResponseBodyContentHint$Outbound =
+  | EditProjectEnvContentHint14$Outbound
   | EditProjectEnvContentHint1$Outbound
   | EditProjectEnvContentHint2$Outbound
   | EditProjectEnvContentHint3$Outbound
@@ -2075,8 +2076,7 @@ export type EditProjectEnvResponseBodyContentHint$Outbound =
   | EditProjectEnvContentHint11$Outbound
   | EditProjectEnvContentHint12$Outbound
   | EditProjectEnvContentHint13$Outbound
-  | EditProjectEnvContentHint15$Outbound
-  | EditProjectEnvContentHint14$Outbound;
+  | EditProjectEnvContentHint15$Outbound;
 
 /** @internal */
 export const EditProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
@@ -2084,6 +2084,7 @@ export const EditProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EditProjectEnvResponseBodyContentHint
 > = z.union([
+  z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
   z.lazy(() => EditProjectEnvContentHint1$outboundSchema),
   z.lazy(() => EditProjectEnvContentHint2$outboundSchema),
   z.lazy(() => EditProjectEnvContentHint3$outboundSchema),
@@ -2098,7 +2099,6 @@ export const EditProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
   z.lazy(() => EditProjectEnvContentHint12$outboundSchema),
   z.lazy(() => EditProjectEnvContentHint13$outboundSchema),
   z.lazy(() => EditProjectEnvContentHint15$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
 ]);
 
 /**
@@ -2255,6 +2255,7 @@ export const EditProjectEnvResponseBody1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
       z.lazy(() => EditProjectEnvContentHint1$inboundSchema),
       z.lazy(() => EditProjectEnvContentHint2$inboundSchema),
       z.lazy(() => EditProjectEnvContentHint3$inboundSchema),
@@ -2269,7 +2270,6 @@ export const EditProjectEnvResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => EditProjectEnvContentHint12$inboundSchema),
       z.lazy(() => EditProjectEnvContentHint13$inboundSchema),
       z.lazy(() => EditProjectEnvContentHint15$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -2297,6 +2297,7 @@ export type EditProjectEnvResponseBody1$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | EditProjectEnvContentHint14$Outbound
     | EditProjectEnvContentHint1$Outbound
     | EditProjectEnvContentHint2$Outbound
     | EditProjectEnvContentHint3$Outbound
@@ -2311,7 +2312,6 @@ export type EditProjectEnvResponseBody1$Outbound = {
     | EditProjectEnvContentHint12$Outbound
     | EditProjectEnvContentHint13$Outbound
     | EditProjectEnvContentHint15$Outbound
-    | EditProjectEnvContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?:
@@ -2346,6 +2346,7 @@ export const EditProjectEnvResponseBody1$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
+      z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
       z.lazy(() => EditProjectEnvContentHint1$outboundSchema),
       z.lazy(() => EditProjectEnvContentHint2$outboundSchema),
       z.lazy(() => EditProjectEnvContentHint3$outboundSchema),
@@ -2360,7 +2361,6 @@ export const EditProjectEnvResponseBody1$outboundSchema: z.ZodType<
       z.lazy(() => EditProjectEnvContentHint12$outboundSchema),
       z.lazy(() => EditProjectEnvContentHint13$outboundSchema),
       z.lazy(() => EditProjectEnvContentHint15$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
@@ -2409,14 +2409,14 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EditProjectEnvResponseBody2$inboundSchema),
   z.lazy(() => EditProjectEnvResponseBody1$inboundSchema),
+  z.lazy(() => EditProjectEnvResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type EditProjectEnvResponseBody$Outbound =
-  | EditProjectEnvResponseBody2$Outbound
-  | EditProjectEnvResponseBody1$Outbound;
+  | EditProjectEnvResponseBody1$Outbound
+  | EditProjectEnvResponseBody2$Outbound;
 
 /** @internal */
 export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
@@ -2424,8 +2424,8 @@ export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EditProjectEnvResponseBody
 > = z.union([
-  z.lazy(() => EditProjectEnvResponseBody2$outboundSchema),
   z.lazy(() => EditProjectEnvResponseBody1$outboundSchema),
+  z.lazy(() => EditProjectEnvResponseBody2$outboundSchema),
 ]);
 
 /**

@@ -98,8 +98,8 @@ export type ListAccessGroupsResponseBody2 = {
 export type ListAccessGroupsResponseBody1 = {};
 
 export type ListAccessGroupsResponseBody =
-  | ListAccessGroupsResponseBody1
-  | ListAccessGroupsResponseBody2;
+  | ListAccessGroupsResponseBody2
+  | ListAccessGroupsResponseBody1;
 
 /** @internal */
 export const ListAccessGroupsRequest$inboundSchema: z.ZodType<
@@ -434,14 +434,14 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody2$inboundSchema),
+  z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type ListAccessGroupsResponseBody$Outbound =
-  | ListAccessGroupsResponseBody1$Outbound
-  | ListAccessGroupsResponseBody2$Outbound;
+  | ListAccessGroupsResponseBody2$Outbound
+  | ListAccessGroupsResponseBody1$Outbound;
 
 /** @internal */
 export const ListAccessGroupsResponseBody$outboundSchema: z.ZodType<
@@ -449,8 +449,8 @@ export const ListAccessGroupsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAccessGroupsResponseBody
 > = z.union([
-  z.lazy(() => ListAccessGroupsResponseBody1$outboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody2$outboundSchema),
+  z.lazy(() => ListAccessGroupsResponseBody1$outboundSchema),
 ]);
 
 /**

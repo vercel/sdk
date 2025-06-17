@@ -13631,6 +13631,14 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "plan": {
+                      "type": "string",
+                      "enum": [
+                        "pro",
+                        "enterprise",
+                        "hobby"
+                      ]
+                    },
                     "config": {
                       "properties": {
                         "version": {
@@ -14087,14 +14095,6 @@
                       ],
                       "type": "object"
                     },
-                    "plan": {
-                      "type": "string",
-                      "enum": [
-                        "pro",
-                        "enterprise",
-                        "hobby"
-                      ]
-                    },
                     "connectBuildsEnabled": {
                       "type": "boolean"
                     },
@@ -14349,8 +14349,8 @@
                     "url",
                     "projectId",
                     "ownerId",
-                    "routes",
                     "plan",
+                    "routes",
                     "createdIn"
                   ],
                   "type": "object",
@@ -14380,7 +14380,7 @@
             }
           },
           "402": {
-            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to PRO_CUSTOMERS_MAX_REGIONS regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to `proMaxRegions` regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -21156,11 +21156,14 @@
         ],
         "responses": {
           "200": {
-            "description": "The EdgeConfig.",
+            "description": "List of all Edge Config items.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdgeConfigItem"
+                  "items": {
+                    "$ref": "#/components/schemas/EdgeConfigItem"
+                  },
+                  "type": "array"
                 }
               }
             }
@@ -36178,7 +36181,7 @@
             }
           },
           "402": {
-            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to PRO_CUSTOMERS_MAX_REGIONS regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to `proMaxRegions` regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -44806,7 +44809,7 @@
             }
           },
           "402": {
-            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to PRO_CUSTOMERS_MAX_REGIONS regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated\nPro customers are allowed to deploy Serverless Functions to up to `proMaxRegions` regions, or if the project was created before the limit was introduced.\nDeploying to Serverless Functions to multiple regions requires a plan update"
           },
           "403": {
             "description": "You do not have permission to access this resource."

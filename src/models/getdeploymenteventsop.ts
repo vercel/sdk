@@ -205,8 +205,8 @@ export type GetDeploymentEventsResponseBodyDeployments1 = {
 };
 
 export type GetDeploymentEventsResponseBody =
-  | GetDeploymentEventsResponseBodyDeployments1
-  | GetDeploymentEventsResponseBodyDeployments2;
+  | GetDeploymentEventsResponseBodyDeployments2
+  | GetDeploymentEventsResponseBodyDeployments1;
 
 export type Info = {
   type: string;
@@ -341,15 +341,15 @@ export type GetDeploymentEventsResponseBody1 = {
 };
 
 export type GetDeploymentEventsDeploymentsResponseBody =
-  | GetDeploymentEventsResponseBody1
-  | GetDeploymentEventsResponseBody2;
+  | GetDeploymentEventsResponseBody2
+  | GetDeploymentEventsResponseBody1;
 
 export type GetDeploymentEventsResponse =
   | Array<
-    GetDeploymentEventsResponseBody1 | GetDeploymentEventsResponseBody2 | null
+    GetDeploymentEventsResponseBody2 | GetDeploymentEventsResponseBody1 | null
   >
-  | GetDeploymentEventsResponseBodyDeployments1
-  | GetDeploymentEventsResponseBodyDeployments2;
+  | GetDeploymentEventsResponseBodyDeployments2
+  | GetDeploymentEventsResponseBodyDeployments1;
 
 /** @internal */
 export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
@@ -1116,14 +1116,14 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentEventsResponseBody$Outbound =
-  | GetDeploymentEventsResponseBodyDeployments1$Outbound
-  | GetDeploymentEventsResponseBodyDeployments2$Outbound;
+  | GetDeploymentEventsResponseBodyDeployments2$Outbound
+  | GetDeploymentEventsResponseBodyDeployments1$Outbound;
 
 /** @internal */
 export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
@@ -1131,8 +1131,8 @@ export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentEventsResponseBody
 > = z.union([
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
+  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
 ]);
 
 /**
@@ -1754,14 +1754,14 @@ export function getDeploymentEventsResponseBody1FromJSON(
 export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
   z.ZodType<GetDeploymentEventsDeploymentsResponseBody, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
       z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
+      z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
     ]);
 
 /** @internal */
 export type GetDeploymentEventsDeploymentsResponseBody$Outbound =
-  | GetDeploymentEventsResponseBody1$Outbound
-  | GetDeploymentEventsResponseBody2$Outbound;
+  | GetDeploymentEventsResponseBody2$Outbound
+  | GetDeploymentEventsResponseBody1$Outbound;
 
 /** @internal */
 export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
@@ -1770,8 +1770,8 @@ export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetDeploymentEventsDeploymentsResponseBody
   > = z.union([
-    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
     z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
   ]);
 
 /**
@@ -1823,15 +1823,15 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.array(z.nullable(z.union([
-    z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
     z.lazy(() =>
-      GetDeploymentEventsResponseBody2$inboundSchema
+      GetDeploymentEventsResponseBody1$inboundSchema
     ),
   ]))),
   z.union([
-    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
     z.lazy(() =>
-      GetDeploymentEventsResponseBodyDeployments2$inboundSchema
+      GetDeploymentEventsResponseBodyDeployments1$inboundSchema
     ),
   ]),
 ]);
@@ -1839,12 +1839,12 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentEventsResponse$Outbound =
   | Array<
-    | GetDeploymentEventsResponseBody1$Outbound
     | GetDeploymentEventsResponseBody2$Outbound
+    | GetDeploymentEventsResponseBody1$Outbound
     | null
   >
-  | GetDeploymentEventsResponseBodyDeployments1$Outbound
-  | GetDeploymentEventsResponseBodyDeployments2$Outbound;
+  | GetDeploymentEventsResponseBodyDeployments2$Outbound
+  | GetDeploymentEventsResponseBodyDeployments1$Outbound;
 
 /** @internal */
 export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
@@ -1853,15 +1853,15 @@ export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
   GetDeploymentEventsResponse
 > = z.union([
   z.array(z.nullable(z.union([
-    z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
     z.lazy(() =>
-      GetDeploymentEventsResponseBody2$outboundSchema
+      GetDeploymentEventsResponseBody1$outboundSchema
     ),
   ]))),
   z.union([
-    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
     z.lazy(() =>
-      GetDeploymentEventsResponseBodyDeployments2$outboundSchema
+      GetDeploymentEventsResponseBodyDeployments1$outboundSchema
     ),
   ]),
 ]);

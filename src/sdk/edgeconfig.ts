@@ -166,7 +166,7 @@ export class EdgeConfig extends ClientSDK {
   async getEdgeConfigItems(
     request: GetEdgeConfigItemsRequest,
     options?: RequestOptions,
-  ): Promise<EdgeConfigItem> {
+  ): Promise<Array<EdgeConfigItem>> {
     return unwrapAsync(edgeConfigGetEdgeConfigItems(
       this,
       request,

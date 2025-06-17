@@ -216,12 +216,12 @@ export type GitSource1 = {
  * Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
  */
 export type GitSource =
+  | GitSource3
+  | GitSource2
+  | GitSource6
   | GitSource1
   | GitSource4
-  | GitSource2
-  | GitSource5
-  | GitSource6
-  | GitSource3;
+  | GitSource5;
 
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -367,12 +367,12 @@ export type CreateDeploymentRequestBody = {
    * Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
    */
   gitSource?:
+    | GitSource3
+    | GitSource2
+    | GitSource6
     | GitSource1
     | GitSource4
-    | GitSource2
     | GitSource5
-    | GitSource6
-    | GitSource3
     | undefined;
   /**
    * An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment
@@ -777,7 +777,7 @@ export type CustomEnvironment1 = {
   updatedAt: number;
 };
 
-export type CustomEnvironment = CustomEnvironment2 | CustomEnvironment1;
+export type CustomEnvironment = CustomEnvironment1 | CustomEnvironment2;
 
 export const OomReport = {
   OutOfMemory: "out-of-memory",
@@ -1017,18 +1017,18 @@ export type CreateDeploymentGitSource1 = {
 };
 
 export type CreateDeploymentGitSource =
+  | CreateDeploymentGitSource10
+  | CreateDeploymentGitSource12
+  | CreateDeploymentGitSource4
   | CreateDeploymentGitSource8
+  | CreateDeploymentGitSource9
   | CreateDeploymentGitSource11
-  | CreateDeploymentGitSource1
-  | CreateDeploymentGitSource5
   | CreateDeploymentGitSource2
   | CreateDeploymentGitSource3
-  | CreateDeploymentGitSource6
   | CreateDeploymentGitSource7
-  | CreateDeploymentGitSource9
-  | CreateDeploymentGitSource4
-  | CreateDeploymentGitSource10
-  | CreateDeploymentGitSource12;
+  | CreateDeploymentGitSource1
+  | CreateDeploymentGitSource5
+  | CreateDeploymentGitSource6;
 
 export type CreateDeploymentProject = {
   id: string;
@@ -1115,6 +1115,13 @@ export type OidcTokenClaims = {
   projectId: string;
   environment: string;
 };
+
+export const CreateDeploymentPlan = {
+  Pro: "pro",
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+} as const;
+export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 export const FunctionType = {
   Fluid: "fluid",
@@ -1267,7 +1274,7 @@ export type Routes1 = {
   middleware?: number | undefined;
 };
 
-export type Routes = Routes3 | Routes2 | Routes1;
+export type Routes = Routes3 | Routes1 | Routes2;
 
 export type CreateDeploymentCrons = {
   schedule: string;
@@ -1331,8 +1338,8 @@ export type CreateDeploymentMicrofrontends1 = {
 };
 
 export type CreateDeploymentMicrofrontends =
-  | CreateDeploymentMicrofrontends1
-  | CreateDeploymentMicrofrontends2;
+  | CreateDeploymentMicrofrontends2
+  | CreateDeploymentMicrofrontends1;
 
 export const CreateDeploymentState = {
   Succeeded: "succeeded",
@@ -1356,13 +1363,6 @@ export type CreateDeploymentChecks = {
    */
   deploymentAlias: DeploymentAlias;
 };
-
-export const CreateDeploymentPlan = {
-  Pro: "pro",
-  Enterprise: "enterprise",
-  Hobby: "hobby",
-} as const;
-export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 export const CreateDeploymentGitRepoDeploymentsType = {
   Bitbucket: "bitbucket",
@@ -1441,7 +1441,7 @@ export type GitRepo1 = {
   ownerType: OwnerType;
 };
 
-export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3;
+export type GitRepo = GitRepo2 | GitRepo3 | GitRepo1;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -1505,7 +1505,7 @@ export type CreateDeploymentResponseBody = {
   userAliases?: Array<string> | undefined;
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
-  customEnvironment?: CustomEnvironment2 | CustomEnvironment1 | undefined;
+  customEnvironment?: CustomEnvironment1 | CustomEnvironment2 | undefined;
   oomReport?: OomReport | undefined;
   id: string;
   name: string;
@@ -1518,18 +1518,18 @@ export type CreateDeploymentResponseBody = {
    */
   autoAssignCustomDomains?: boolean | undefined;
   gitSource?:
-    | CreateDeploymentGitSource8
-    | CreateDeploymentGitSource11
-    | CreateDeploymentGitSource1
-    | CreateDeploymentGitSource5
-    | CreateDeploymentGitSource2
-    | CreateDeploymentGitSource3
-    | CreateDeploymentGitSource6
-    | CreateDeploymentGitSource7
-    | CreateDeploymentGitSource9
-    | CreateDeploymentGitSource4
     | CreateDeploymentGitSource10
     | CreateDeploymentGitSource12
+    | CreateDeploymentGitSource4
+    | CreateDeploymentGitSource8
+    | CreateDeploymentGitSource9
+    | CreateDeploymentGitSource11
+    | CreateDeploymentGitSource2
+    | CreateDeploymentGitSource3
+    | CreateDeploymentGitSource7
+    | CreateDeploymentGitSource1
+    | CreateDeploymentGitSource5
+    | CreateDeploymentGitSource6
     | undefined;
   meta: { [k: string]: string };
   project?: CreateDeploymentProject | undefined;
@@ -1569,19 +1569,19 @@ export type CreateDeploymentResponseBody = {
   projectId: string;
   ownerId: string;
   monorepoManager?: string | null | undefined;
+  plan: CreateDeploymentPlan;
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
   config?: Config | undefined;
   functions?: { [k: string]: Functions } | null | undefined;
-  routes: Array<Routes3 | Routes2 | Routes1> | null;
+  routes: Array<Routes3 | Routes1 | Routes2> | null;
   crons?: Array<CreateDeploymentCrons> | undefined;
   microfrontends?:
-    | CreateDeploymentMicrofrontends1
     | CreateDeploymentMicrofrontends2
+    | CreateDeploymentMicrofrontends1
     | undefined;
   checks?: CreateDeploymentChecks | undefined;
-  plan: CreateDeploymentPlan;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -1589,7 +1589,7 @@ export type CreateDeploymentResponseBody = {
    * Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
    */
   passiveConnectConfigurationId?: string | undefined;
-  gitRepo?: GitRepo1 | GitRepo2 | GitRepo3 | null | undefined;
+  gitRepo?: GitRepo2 | GitRepo3 | GitRepo1 | null | undefined;
   flags?: Flags1 | Array<Flags2> | undefined;
 };
 
@@ -2478,22 +2478,22 @@ export const GitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => GitSource3$inboundSchema),
+  z.lazy(() => GitSource2$inboundSchema),
+  z.lazy(() => GitSource6$inboundSchema),
   z.lazy(() => GitSource1$inboundSchema),
   z.lazy(() => GitSource4$inboundSchema),
-  z.lazy(() => GitSource2$inboundSchema),
   z.lazy(() => GitSource5$inboundSchema),
-  z.lazy(() => GitSource6$inboundSchema),
-  z.lazy(() => GitSource3$inboundSchema),
 ]);
 
 /** @internal */
 export type GitSource$Outbound =
+  | GitSource3$Outbound
+  | GitSource2$Outbound
+  | GitSource6$Outbound
   | GitSource1$Outbound
   | GitSource4$Outbound
-  | GitSource2$Outbound
-  | GitSource5$Outbound
-  | GitSource6$Outbound
-  | GitSource3$Outbound;
+  | GitSource5$Outbound;
 
 /** @internal */
 export const GitSource$outboundSchema: z.ZodType<
@@ -2501,12 +2501,12 @@ export const GitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GitSource
 > = z.union([
+  z.lazy(() => GitSource3$outboundSchema),
+  z.lazy(() => GitSource2$outboundSchema),
+  z.lazy(() => GitSource6$outboundSchema),
   z.lazy(() => GitSource1$outboundSchema),
   z.lazy(() => GitSource4$outboundSchema),
-  z.lazy(() => GitSource2$outboundSchema),
   z.lazy(() => GitSource5$outboundSchema),
-  z.lazy(() => GitSource6$outboundSchema),
-  z.lazy(() => GitSource3$outboundSchema),
 ]);
 
 /**
@@ -2672,12 +2672,12 @@ export const CreateDeploymentRequestBody$inboundSchema: z.ZodType<
   ).optional(),
   gitMetadata: z.lazy(() => GitMetadata$inboundSchema).optional(),
   gitSource: z.union([
+    z.lazy(() => GitSource3$inboundSchema),
+    z.lazy(() => GitSource2$inboundSchema),
+    z.lazy(() => GitSource6$inboundSchema),
     z.lazy(() => GitSource1$inboundSchema),
     z.lazy(() => GitSource4$inboundSchema),
-    z.lazy(() => GitSource2$inboundSchema),
     z.lazy(() => GitSource5$inboundSchema),
-    z.lazy(() => GitSource6$inboundSchema),
-    z.lazy(() => GitSource3$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()).optional(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -2695,12 +2695,12 @@ export type CreateDeploymentRequestBody$Outbound = {
   files?: Array<InlinedFile$Outbound | UploadedFile$Outbound> | undefined;
   gitMetadata?: GitMetadata$Outbound | undefined;
   gitSource?:
+    | GitSource3$Outbound
+    | GitSource2$Outbound
+    | GitSource6$Outbound
     | GitSource1$Outbound
     | GitSource4$Outbound
-    | GitSource2$Outbound
     | GitSource5$Outbound
-    | GitSource6$Outbound
-    | GitSource3$Outbound
     | undefined;
   meta?: { [k: string]: string } | undefined;
   monorepoManager?: string | null | undefined;
@@ -2727,12 +2727,12 @@ export const CreateDeploymentRequestBody$outboundSchema: z.ZodType<
   ).optional(),
   gitMetadata: z.lazy(() => GitMetadata$outboundSchema).optional(),
   gitSource: z.union([
+    z.lazy(() => GitSource3$outboundSchema),
+    z.lazy(() => GitSource2$outboundSchema),
+    z.lazy(() => GitSource6$outboundSchema),
     z.lazy(() => GitSource1$outboundSchema),
     z.lazy(() => GitSource4$outboundSchema),
-    z.lazy(() => GitSource2$outboundSchema),
     z.lazy(() => GitSource5$outboundSchema),
-    z.lazy(() => GitSource6$outboundSchema),
-    z.lazy(() => GitSource3$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()).optional(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -4250,14 +4250,14 @@ export const CustomEnvironment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CustomEnvironment2$inboundSchema),
   z.lazy(() => CustomEnvironment1$inboundSchema),
+  z.lazy(() => CustomEnvironment2$inboundSchema),
 ]);
 
 /** @internal */
 export type CustomEnvironment$Outbound =
-  | CustomEnvironment2$Outbound
-  | CustomEnvironment1$Outbound;
+  | CustomEnvironment1$Outbound
+  | CustomEnvironment2$Outbound;
 
 /** @internal */
 export const CustomEnvironment$outboundSchema: z.ZodType<
@@ -4265,8 +4265,8 @@ export const CustomEnvironment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomEnvironment
 > = z.union([
-  z.lazy(() => CustomEnvironment2$outboundSchema),
   z.lazy(() => CustomEnvironment1$outboundSchema),
+  z.lazy(() => CustomEnvironment2$outboundSchema),
 ]);
 
 /**
@@ -5661,34 +5661,34 @@ export const CreateDeploymentGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource11$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
-  z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource10$inboundSchema),
   z.lazy(() => CreateDeploymentGitSource12$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource11$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
+  z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateDeploymentGitSource$Outbound =
+  | CreateDeploymentGitSource10$Outbound
+  | CreateDeploymentGitSource12$Outbound
+  | CreateDeploymentGitSource4$Outbound
   | CreateDeploymentGitSource8$Outbound
+  | CreateDeploymentGitSource9$Outbound
   | CreateDeploymentGitSource11$Outbound
-  | CreateDeploymentGitSource1$Outbound
-  | CreateDeploymentGitSource5$Outbound
   | CreateDeploymentGitSource2$Outbound
   | CreateDeploymentGitSource3$Outbound
-  | CreateDeploymentGitSource6$Outbound
   | CreateDeploymentGitSource7$Outbound
-  | CreateDeploymentGitSource9$Outbound
-  | CreateDeploymentGitSource4$Outbound
-  | CreateDeploymentGitSource10$Outbound
-  | CreateDeploymentGitSource12$Outbound;
+  | CreateDeploymentGitSource1$Outbound
+  | CreateDeploymentGitSource5$Outbound
+  | CreateDeploymentGitSource6$Outbound;
 
 /** @internal */
 export const CreateDeploymentGitSource$outboundSchema: z.ZodType<
@@ -5696,18 +5696,18 @@ export const CreateDeploymentGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentGitSource
 > = z.union([
-  z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource11$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
-  z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource10$outboundSchema),
   z.lazy(() => CreateDeploymentGitSource12$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource11$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
+  z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
 ]);
 
 /**
@@ -6119,6 +6119,27 @@ export function oidcTokenClaimsFromJSON(
     (x) => OidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OidcTokenClaims' from JSON`,
   );
+}
+
+/** @internal */
+export const CreateDeploymentPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentPlan
+> = z.nativeEnum(CreateDeploymentPlan);
+
+/** @internal */
+export const CreateDeploymentPlan$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentPlan
+> = CreateDeploymentPlan$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateDeploymentPlan$ {
+  /** @deprecated use `CreateDeploymentPlan$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentPlan$inboundSchema;
+  /** @deprecated use `CreateDeploymentPlan$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentPlan$outboundSchema;
 }
 
 /** @internal */
@@ -6990,15 +7011,15 @@ export function routes1FromJSON(
 export const Routes$inboundSchema: z.ZodType<Routes, z.ZodTypeDef, unknown> = z
   .union([
     z.lazy(() => Routes3$inboundSchema),
-    z.lazy(() => Routes2$inboundSchema),
     z.lazy(() => Routes1$inboundSchema),
+    z.lazy(() => Routes2$inboundSchema),
   ]);
 
 /** @internal */
 export type Routes$Outbound =
   | Routes3$Outbound
-  | Routes2$Outbound
-  | Routes1$Outbound;
+  | Routes1$Outbound
+  | Routes2$Outbound;
 
 /** @internal */
 export const Routes$outboundSchema: z.ZodType<
@@ -7007,8 +7028,8 @@ export const Routes$outboundSchema: z.ZodType<
   Routes
 > = z.union([
   z.lazy(() => Routes3$outboundSchema),
-  z.lazy(() => Routes2$outboundSchema),
   z.lazy(() => Routes1$outboundSchema),
+  z.lazy(() => Routes2$outboundSchema),
 ]);
 
 /**
@@ -7310,14 +7331,14 @@ export const CreateDeploymentMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
   z.lazy(() => CreateDeploymentMicrofrontends2$inboundSchema),
+  z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateDeploymentMicrofrontends$Outbound =
-  | CreateDeploymentMicrofrontends1$Outbound
-  | CreateDeploymentMicrofrontends2$Outbound;
+  | CreateDeploymentMicrofrontends2$Outbound
+  | CreateDeploymentMicrofrontends1$Outbound;
 
 /** @internal */
 export const CreateDeploymentMicrofrontends$outboundSchema: z.ZodType<
@@ -7325,8 +7346,8 @@ export const CreateDeploymentMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentMicrofrontends
 > = z.union([
-  z.lazy(() => CreateDeploymentMicrofrontends1$outboundSchema),
   z.lazy(() => CreateDeploymentMicrofrontends2$outboundSchema),
+  z.lazy(() => CreateDeploymentMicrofrontends1$outboundSchema),
 ]);
 
 /**
@@ -7501,27 +7522,6 @@ export function createDeploymentChecksFromJSON(
     (x) => CreateDeploymentChecks$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateDeploymentChecks' from JSON`,
   );
-}
-
-/** @internal */
-export const CreateDeploymentPlan$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentPlan
-> = z.nativeEnum(CreateDeploymentPlan);
-
-/** @internal */
-export const CreateDeploymentPlan$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentPlan
-> = CreateDeploymentPlan$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDeploymentPlan$ {
-  /** @deprecated use `CreateDeploymentPlan$inboundSchema` instead. */
-  export const inboundSchema = CreateDeploymentPlan$inboundSchema;
-  /** @deprecated use `CreateDeploymentPlan$outboundSchema` instead. */
-  export const outboundSchema = CreateDeploymentPlan$outboundSchema;
 }
 
 /** @internal */
@@ -7880,16 +7880,16 @@ export function gitRepo1FromJSON(
 /** @internal */
 export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
   z.union([
-    z.lazy(() => GitRepo1$inboundSchema),
     z.lazy(() => GitRepo2$inboundSchema),
     z.lazy(() => GitRepo3$inboundSchema),
+    z.lazy(() => GitRepo1$inboundSchema),
   ]);
 
 /** @internal */
 export type GitRepo$Outbound =
-  | GitRepo1$Outbound
   | GitRepo2$Outbound
-  | GitRepo3$Outbound;
+  | GitRepo3$Outbound
+  | GitRepo1$Outbound;
 
 /** @internal */
 export const GitRepo$outboundSchema: z.ZodType<
@@ -7897,9 +7897,9 @@ export const GitRepo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GitRepo
 > = z.union([
-  z.lazy(() => GitRepo1$outboundSchema),
   z.lazy(() => GitRepo2$outboundSchema),
   z.lazy(() => GitRepo3$outboundSchema),
+  z.lazy(() => GitRepo1$outboundSchema),
 ]);
 
 /**
@@ -8211,8 +8211,8 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => CustomEnvironment2$inboundSchema),
     z.lazy(() => CustomEnvironment1$inboundSchema),
+    z.lazy(() => CustomEnvironment2$inboundSchema),
   ]).optional(),
   oomReport: OomReport$inboundSchema.optional(),
   id: z.string(),
@@ -8223,18 +8223,18 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   version: z.number(),
   autoAssignCustomDomains: z.boolean().optional(),
   gitSource: z.union([
-    z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource11$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
-    z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource10$inboundSchema),
     z.lazy(() => CreateDeploymentGitSource12$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource4$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource8$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource9$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource11$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource2$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource3$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource7$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource1$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource5$inboundSchema),
+    z.lazy(() => CreateDeploymentGitSource6$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   project: z.lazy(() => CreateDeploymentProject$inboundSchema).optional(),
@@ -8265,6 +8265,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   projectId: z.string(),
   ownerId: z.string(),
   monorepoManager: z.nullable(z.string()).optional(),
+  plan: CreateDeploymentPlan$inboundSchema,
   config: z.lazy(() => Config$inboundSchema).optional(),
   functions: z.nullable(z.record(z.lazy(() => Functions$inboundSchema)))
     .optional(),
@@ -8272,27 +8273,26 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => Routes3$inboundSchema),
       z.lazy(() =>
-        Routes2$inboundSchema
+        Routes1$inboundSchema
       ),
-      z.lazy(() => Routes1$inboundSchema),
+      z.lazy(() => Routes2$inboundSchema),
     ])),
   ),
   crons: z.array(z.lazy(() => CreateDeploymentCrons$inboundSchema)).optional(),
   microfrontends: z.union([
-    z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
     z.lazy(() => CreateDeploymentMicrofrontends2$inboundSchema),
+    z.lazy(() => CreateDeploymentMicrofrontends1$inboundSchema),
   ]).optional(),
   checks: z.lazy(() => CreateDeploymentChecks$inboundSchema).optional(),
-  plan: CreateDeploymentPlan$inboundSchema,
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
   passiveConnectConfigurationId: z.string().optional(),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => GitRepo1$inboundSchema),
       z.lazy(() => GitRepo2$inboundSchema),
       z.lazy(() => GitRepo3$inboundSchema),
+      z.lazy(() => GitRepo1$inboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -8334,8 +8334,8 @@ export type CreateDeploymentResponseBody$Outbound = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | CustomEnvironment2$Outbound
     | CustomEnvironment1$Outbound
+    | CustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
   id: string;
@@ -8346,18 +8346,18 @@ export type CreateDeploymentResponseBody$Outbound = {
   version: number;
   autoAssignCustomDomains?: boolean | undefined;
   gitSource?:
-    | CreateDeploymentGitSource8$Outbound
-    | CreateDeploymentGitSource11$Outbound
-    | CreateDeploymentGitSource1$Outbound
-    | CreateDeploymentGitSource5$Outbound
-    | CreateDeploymentGitSource2$Outbound
-    | CreateDeploymentGitSource3$Outbound
-    | CreateDeploymentGitSource6$Outbound
-    | CreateDeploymentGitSource7$Outbound
-    | CreateDeploymentGitSource9$Outbound
-    | CreateDeploymentGitSource4$Outbound
     | CreateDeploymentGitSource10$Outbound
     | CreateDeploymentGitSource12$Outbound
+    | CreateDeploymentGitSource4$Outbound
+    | CreateDeploymentGitSource8$Outbound
+    | CreateDeploymentGitSource9$Outbound
+    | CreateDeploymentGitSource11$Outbound
+    | CreateDeploymentGitSource2$Outbound
+    | CreateDeploymentGitSource3$Outbound
+    | CreateDeploymentGitSource7$Outbound
+    | CreateDeploymentGitSource1$Outbound
+    | CreateDeploymentGitSource5$Outbound
+    | CreateDeploymentGitSource6$Outbound
     | undefined;
   meta: { [k: string]: string };
   project?: CreateDeploymentProject$Outbound | undefined;
@@ -8388,24 +8388,24 @@ export type CreateDeploymentResponseBody$Outbound = {
   projectId: string;
   ownerId: string;
   monorepoManager?: string | null | undefined;
+  plan: string;
   config?: Config$Outbound | undefined;
   functions?: { [k: string]: Functions$Outbound } | null | undefined;
-  routes: Array<Routes3$Outbound | Routes2$Outbound | Routes1$Outbound> | null;
+  routes: Array<Routes3$Outbound | Routes1$Outbound | Routes2$Outbound> | null;
   crons?: Array<CreateDeploymentCrons$Outbound> | undefined;
   microfrontends?:
-    | CreateDeploymentMicrofrontends1$Outbound
     | CreateDeploymentMicrofrontends2$Outbound
+    | CreateDeploymentMicrofrontends1$Outbound
     | undefined;
   checks?: CreateDeploymentChecks$Outbound | undefined;
-  plan: string;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
   passiveConnectConfigurationId?: string | undefined;
   gitRepo?:
-    | GitRepo1$Outbound
     | GitRepo2$Outbound
     | GitRepo3$Outbound
+    | GitRepo1$Outbound
     | null
     | undefined;
   flags?: Flags1$Outbound | Array<Flags2$Outbound> | undefined;
@@ -8448,8 +8448,8 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => CustomEnvironment2$outboundSchema),
     z.lazy(() => CustomEnvironment1$outboundSchema),
+    z.lazy(() => CustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: OomReport$outboundSchema.optional(),
   id: z.string(),
@@ -8460,18 +8460,18 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   version: z.number(),
   autoAssignCustomDomains: z.boolean().optional(),
   gitSource: z.union([
-    z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource11$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
-    z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource10$outboundSchema),
     z.lazy(() => CreateDeploymentGitSource12$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource4$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource8$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource9$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource11$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource2$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource3$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource7$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource1$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource5$outboundSchema),
+    z.lazy(() => CreateDeploymentGitSource6$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   project: z.lazy(() => CreateDeploymentProject$outboundSchema).optional(),
@@ -8503,6 +8503,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   projectId: z.string(),
   ownerId: z.string(),
   monorepoManager: z.nullable(z.string()).optional(),
+  plan: CreateDeploymentPlan$outboundSchema,
   config: z.lazy(() => Config$outboundSchema).optional(),
   functions: z.nullable(z.record(z.lazy(() => Functions$outboundSchema)))
     .optional(),
@@ -8510,27 +8511,26 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => Routes3$outboundSchema),
       z.lazy(() =>
-        Routes2$outboundSchema
+        Routes1$outboundSchema
       ),
-      z.lazy(() => Routes1$outboundSchema),
+      z.lazy(() => Routes2$outboundSchema),
     ])),
   ),
   crons: z.array(z.lazy(() => CreateDeploymentCrons$outboundSchema)).optional(),
   microfrontends: z.union([
-    z.lazy(() => CreateDeploymentMicrofrontends1$outboundSchema),
     z.lazy(() => CreateDeploymentMicrofrontends2$outboundSchema),
+    z.lazy(() => CreateDeploymentMicrofrontends1$outboundSchema),
   ]).optional(),
   checks: z.lazy(() => CreateDeploymentChecks$outboundSchema).optional(),
-  plan: CreateDeploymentPlan$outboundSchema,
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
   passiveConnectConfigurationId: z.string().optional(),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => GitRepo1$outboundSchema),
       z.lazy(() => GitRepo2$outboundSchema),
       z.lazy(() => GitRepo3$outboundSchema),
+      z.lazy(() => GitRepo1$outboundSchema),
     ]),
   ).optional(),
   flags: z.union([

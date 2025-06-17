@@ -131,28 +131,7 @@ test("Edge Config Get Edge Config Items", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    key: "<key>",
-    value: {
-      "key": {
-        "0": false,
-        "1": {
-          "key": {},
-          "key1": {
-            "key": "<value>",
-            "key1": {},
-          },
-          "key2": 7567.91,
-        },
-        "2": "<value>",
-      },
-      "key1": 4645.1,
-      "key2": {},
-    },
-    edgeConfigId: "<id>",
-    createdAt: 70.73,
-    updatedAt: 2714.73,
-  });
+  expect(result).toEqual([]);
 });
 
 test("Edge Config Get Edge Config Schema", async () => {

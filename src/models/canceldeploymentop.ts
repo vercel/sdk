@@ -394,8 +394,8 @@ export type CancelDeploymentCustomEnvironment1 = {
 };
 
 export type CancelDeploymentCustomEnvironment =
-  | CancelDeploymentCustomEnvironment2
-  | CancelDeploymentCustomEnvironment1;
+  | CancelDeploymentCustomEnvironment1
+  | CancelDeploymentCustomEnvironment2;
 
 export const CancelDeploymentOomReport = {
   OutOfMemory: "out-of-memory",
@@ -657,18 +657,18 @@ export type CancelDeploymentGitSource1 = {
 };
 
 export type CancelDeploymentGitSource =
+  | GitSource10
+  | GitSource12
+  | CancelDeploymentGitSource4
   | GitSource8
+  | GitSource9
   | GitSource11
-  | CancelDeploymentGitSource1
-  | CancelDeploymentGitSource5
   | CancelDeploymentGitSource2
   | CancelDeploymentGitSource3
-  | CancelDeploymentGitSource6
   | GitSource7
-  | GitSource9
-  | CancelDeploymentGitSource4
-  | GitSource10
-  | GitSource12;
+  | CancelDeploymentGitSource1
+  | CancelDeploymentGitSource5
+  | CancelDeploymentGitSource6;
 
 export type CancelDeploymentProject = {
   id: string;
@@ -891,8 +891,8 @@ export type CancelDeploymentRoutes1 = {
 
 export type CancelDeploymentRoutes =
   | CancelDeploymentRoutes3
-  | CancelDeploymentRoutes2
-  | CancelDeploymentRoutes1;
+  | CancelDeploymentRoutes1
+  | CancelDeploymentRoutes2;
 
 export const CancelDeploymentGitRepoDeploymentsResponseType = {
   Bitbucket: "bitbucket",
@@ -978,9 +978,9 @@ export type CancelDeploymentGitRepo1 = {
 };
 
 export type CancelDeploymentGitRepo =
-  | CancelDeploymentGitRepo1
   | CancelDeploymentGitRepo2
-  | CancelDeploymentGitRepo3;
+  | CancelDeploymentGitRepo3
+  | CancelDeploymentGitRepo1;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -1064,8 +1064,8 @@ export type CancelDeploymentMicrofrontends1 = {
 };
 
 export type CancelDeploymentMicrofrontends =
-  | CancelDeploymentMicrofrontends1
-  | CancelDeploymentMicrofrontends2;
+  | CancelDeploymentMicrofrontends2
+  | CancelDeploymentMicrofrontends1;
 
 export const CancelDeploymentFunctionType = {
   Fluid: "fluid",
@@ -1158,8 +1158,8 @@ export type CancelDeploymentResponseBody = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | CancelDeploymentCustomEnvironment2
     | CancelDeploymentCustomEnvironment1
+    | CancelDeploymentCustomEnvironment2
     | undefined;
   oomReport?: CancelDeploymentOomReport | undefined;
   id: string;
@@ -1190,18 +1190,18 @@ export type CancelDeploymentResponseBody = {
    */
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GitSource8
-    | GitSource11
-    | CancelDeploymentGitSource1
-    | CancelDeploymentGitSource5
-    | CancelDeploymentGitSource2
-    | CancelDeploymentGitSource3
-    | CancelDeploymentGitSource6
-    | GitSource7
-    | GitSource9
-    | CancelDeploymentGitSource4
     | GitSource10
     | GitSource12
+    | CancelDeploymentGitSource4
+    | GitSource8
+    | GitSource9
+    | GitSource11
+    | CancelDeploymentGitSource2
+    | CancelDeploymentGitSource3
+    | GitSource7
+    | CancelDeploymentGitSource1
+    | CancelDeploymentGitSource5
+    | CancelDeploymentGitSource6
     | undefined;
   name: string;
   meta: { [k: string]: string };
@@ -1237,20 +1237,20 @@ export type CancelDeploymentResponseBody = {
   routes:
     | Array<
       | CancelDeploymentRoutes3
-      | CancelDeploymentRoutes2
       | CancelDeploymentRoutes1
+      | CancelDeploymentRoutes2
     >
     | null;
   gitRepo?:
-    | CancelDeploymentGitRepo1
     | CancelDeploymentGitRepo2
     | CancelDeploymentGitRepo3
+    | CancelDeploymentGitRepo1
     | null
     | undefined;
   flags?: CancelDeploymentFlags1 | Array<CancelDeploymentFlags2> | undefined;
   microfrontends?:
-    | CancelDeploymentMicrofrontends1
     | CancelDeploymentMicrofrontends2
+    | CancelDeploymentMicrofrontends1
     | undefined;
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
@@ -2845,14 +2845,14 @@ export const CancelDeploymentCustomEnvironment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
   z.lazy(() => CancelDeploymentCustomEnvironment1$inboundSchema),
+  z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentCustomEnvironment$Outbound =
-  | CancelDeploymentCustomEnvironment2$Outbound
-  | CancelDeploymentCustomEnvironment1$Outbound;
+  | CancelDeploymentCustomEnvironment1$Outbound
+  | CancelDeploymentCustomEnvironment2$Outbound;
 
 /** @internal */
 export const CancelDeploymentCustomEnvironment$outboundSchema: z.ZodType<
@@ -2860,8 +2860,8 @@ export const CancelDeploymentCustomEnvironment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentCustomEnvironment
 > = z.union([
-  z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
   z.lazy(() => CancelDeploymentCustomEnvironment1$outboundSchema),
+  z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
 ]);
 
 /**
@@ -4376,34 +4376,34 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GitSource8$inboundSchema),
-  z.lazy(() => GitSource11$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
-  z.lazy(() => GitSource7$inboundSchema),
-  z.lazy(() => GitSource9$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
   z.lazy(() => GitSource10$inboundSchema),
   z.lazy(() => GitSource12$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
+  z.lazy(() => GitSource8$inboundSchema),
+  z.lazy(() => GitSource9$inboundSchema),
+  z.lazy(() => GitSource11$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
+  z.lazy(() => GitSource7$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentGitSource$Outbound =
+  | GitSource10$Outbound
+  | GitSource12$Outbound
+  | CancelDeploymentGitSource4$Outbound
   | GitSource8$Outbound
+  | GitSource9$Outbound
   | GitSource11$Outbound
-  | CancelDeploymentGitSource1$Outbound
-  | CancelDeploymentGitSource5$Outbound
   | CancelDeploymentGitSource2$Outbound
   | CancelDeploymentGitSource3$Outbound
-  | CancelDeploymentGitSource6$Outbound
   | GitSource7$Outbound
-  | GitSource9$Outbound
-  | CancelDeploymentGitSource4$Outbound
-  | GitSource10$Outbound
-  | GitSource12$Outbound;
+  | CancelDeploymentGitSource1$Outbound
+  | CancelDeploymentGitSource5$Outbound
+  | CancelDeploymentGitSource6$Outbound;
 
 /** @internal */
 export const CancelDeploymentGitSource$outboundSchema: z.ZodType<
@@ -4411,18 +4411,18 @@ export const CancelDeploymentGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentGitSource
 > = z.union([
-  z.lazy(() => GitSource8$outboundSchema),
-  z.lazy(() => GitSource11$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
-  z.lazy(() => GitSource7$outboundSchema),
-  z.lazy(() => GitSource9$outboundSchema),
-  z.lazy(() => CancelDeploymentGitSource4$outboundSchema),
   z.lazy(() => GitSource10$outboundSchema),
   z.lazy(() => GitSource12$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource4$outboundSchema),
+  z.lazy(() => GitSource8$outboundSchema),
+  z.lazy(() => GitSource9$outboundSchema),
+  z.lazy(() => GitSource11$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
+  z.lazy(() => GitSource7$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
 ]);
 
 /**
@@ -5644,15 +5644,15 @@ export const CancelDeploymentRoutes$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CancelDeploymentRoutes3$inboundSchema),
-  z.lazy(() => CancelDeploymentRoutes2$inboundSchema),
   z.lazy(() => CancelDeploymentRoutes1$inboundSchema),
+  z.lazy(() => CancelDeploymentRoutes2$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentRoutes$Outbound =
   | CancelDeploymentRoutes3$Outbound
-  | CancelDeploymentRoutes2$Outbound
-  | CancelDeploymentRoutes1$Outbound;
+  | CancelDeploymentRoutes1$Outbound
+  | CancelDeploymentRoutes2$Outbound;
 
 /** @internal */
 export const CancelDeploymentRoutes$outboundSchema: z.ZodType<
@@ -5661,8 +5661,8 @@ export const CancelDeploymentRoutes$outboundSchema: z.ZodType<
   CancelDeploymentRoutes
 > = z.union([
   z.lazy(() => CancelDeploymentRoutes3$outboundSchema),
-  z.lazy(() => CancelDeploymentRoutes2$outboundSchema),
   z.lazy(() => CancelDeploymentRoutes1$outboundSchema),
+  z.lazy(() => CancelDeploymentRoutes2$outboundSchema),
 ]);
 
 /**
@@ -6077,16 +6077,16 @@ export const CancelDeploymentGitRepo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
   z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
   z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
+  z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentGitRepo$Outbound =
-  | CancelDeploymentGitRepo1$Outbound
   | CancelDeploymentGitRepo2$Outbound
-  | CancelDeploymentGitRepo3$Outbound;
+  | CancelDeploymentGitRepo3$Outbound
+  | CancelDeploymentGitRepo1$Outbound;
 
 /** @internal */
 export const CancelDeploymentGitRepo$outboundSchema: z.ZodType<
@@ -6094,9 +6094,9 @@ export const CancelDeploymentGitRepo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentGitRepo
 > = z.union([
-  z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
   z.lazy(() => CancelDeploymentGitRepo2$outboundSchema),
   z.lazy(() => CancelDeploymentGitRepo3$outboundSchema),
+  z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
 ]);
 
 /**
@@ -6611,14 +6611,14 @@ export const CancelDeploymentMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
   z.lazy(() => CancelDeploymentMicrofrontends2$inboundSchema),
+  z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentMicrofrontends$Outbound =
-  | CancelDeploymentMicrofrontends1$Outbound
-  | CancelDeploymentMicrofrontends2$Outbound;
+  | CancelDeploymentMicrofrontends2$Outbound
+  | CancelDeploymentMicrofrontends1$Outbound;
 
 /** @internal */
 export const CancelDeploymentMicrofrontends$outboundSchema: z.ZodType<
@@ -6626,8 +6626,8 @@ export const CancelDeploymentMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMicrofrontends
 > = z.union([
-  z.lazy(() => CancelDeploymentMicrofrontends1$outboundSchema),
   z.lazy(() => CancelDeploymentMicrofrontends2$outboundSchema),
+  z.lazy(() => CancelDeploymentMicrofrontends1$outboundSchema),
 ]);
 
 /**
@@ -6965,8 +6965,8 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
     z.lazy(() => CancelDeploymentCustomEnvironment1$inboundSchema),
+    z.lazy(() => CancelDeploymentCustomEnvironment2$inboundSchema),
   ]).optional(),
   oomReport: CancelDeploymentOomReport$inboundSchema.optional(),
   id: z.string(),
@@ -6991,18 +6991,18 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GitSource8$inboundSchema),
-    z.lazy(() => GitSource11$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
-    z.lazy(() => GitSource7$inboundSchema),
-    z.lazy(() => GitSource9$inboundSchema),
-    z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
     z.lazy(() => GitSource10$inboundSchema),
     z.lazy(() => GitSource12$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
+    z.lazy(() => GitSource8$inboundSchema),
+    z.lazy(() => GitSource9$inboundSchema),
+    z.lazy(() => GitSource11$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
+    z.lazy(() => GitSource7$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
   ]).optional(),
   name: z.string(),
   meta: z.record(z.string()),
@@ -7036,16 +7036,16 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => CancelDeploymentRoutes3$inboundSchema),
       z.lazy(() =>
-        CancelDeploymentRoutes2$inboundSchema
+        CancelDeploymentRoutes1$inboundSchema
       ),
-      z.lazy(() => CancelDeploymentRoutes1$inboundSchema),
+      z.lazy(() => CancelDeploymentRoutes2$inboundSchema),
     ])),
   ),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
       z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
       z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
+      z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -7053,8 +7053,8 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.array(z.lazy(() => CancelDeploymentFlags2$inboundSchema)),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
     z.lazy(() => CancelDeploymentMicrofrontends2$inboundSchema),
+    z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
   ]).optional(),
   config: z.lazy(() => CancelDeploymentConfig$inboundSchema).optional(),
   checks: z.lazy(() => CancelDeploymentChecks$inboundSchema).optional(),
@@ -7093,8 +7093,8 @@ export type CancelDeploymentResponseBody$Outbound = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | CancelDeploymentCustomEnvironment2$Outbound
     | CancelDeploymentCustomEnvironment1$Outbound
+    | CancelDeploymentCustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
   id: string;
@@ -7116,18 +7116,18 @@ export type CancelDeploymentResponseBody$Outbound = {
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GitSource8$Outbound
-    | GitSource11$Outbound
-    | CancelDeploymentGitSource1$Outbound
-    | CancelDeploymentGitSource5$Outbound
-    | CancelDeploymentGitSource2$Outbound
-    | CancelDeploymentGitSource3$Outbound
-    | CancelDeploymentGitSource6$Outbound
-    | GitSource7$Outbound
-    | GitSource9$Outbound
-    | CancelDeploymentGitSource4$Outbound
     | GitSource10$Outbound
     | GitSource12$Outbound
+    | CancelDeploymentGitSource4$Outbound
+    | GitSource8$Outbound
+    | GitSource9$Outbound
+    | GitSource11$Outbound
+    | CancelDeploymentGitSource2$Outbound
+    | CancelDeploymentGitSource3$Outbound
+    | GitSource7$Outbound
+    | CancelDeploymentGitSource1$Outbound
+    | CancelDeploymentGitSource5$Outbound
+    | CancelDeploymentGitSource6$Outbound
     | undefined;
   name: string;
   meta: { [k: string]: string };
@@ -7160,14 +7160,14 @@ export type CancelDeploymentResponseBody$Outbound = {
   routes:
     | Array<
       | CancelDeploymentRoutes3$Outbound
-      | CancelDeploymentRoutes2$Outbound
       | CancelDeploymentRoutes1$Outbound
+      | CancelDeploymentRoutes2$Outbound
     >
     | null;
   gitRepo?:
-    | CancelDeploymentGitRepo1$Outbound
     | CancelDeploymentGitRepo2$Outbound
     | CancelDeploymentGitRepo3$Outbound
+    | CancelDeploymentGitRepo1$Outbound
     | null
     | undefined;
   flags?:
@@ -7175,8 +7175,8 @@ export type CancelDeploymentResponseBody$Outbound = {
     | Array<CancelDeploymentFlags2$Outbound>
     | undefined;
   microfrontends?:
-    | CancelDeploymentMicrofrontends1$Outbound
     | CancelDeploymentMicrofrontends2$Outbound
+    | CancelDeploymentMicrofrontends1$Outbound
     | undefined;
   config?: CancelDeploymentConfig$Outbound | undefined;
   checks?: CancelDeploymentChecks$Outbound | undefined;
@@ -7222,8 +7222,8 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
     z.lazy(() => CancelDeploymentCustomEnvironment1$outboundSchema),
+    z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: CancelDeploymentOomReport$outboundSchema.optional(),
   id: z.string(),
@@ -7249,18 +7249,18 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GitSource8$outboundSchema),
-    z.lazy(() => GitSource11$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
-    z.lazy(() => GitSource7$outboundSchema),
-    z.lazy(() => GitSource9$outboundSchema),
-    z.lazy(() => CancelDeploymentGitSource4$outboundSchema),
     z.lazy(() => GitSource10$outboundSchema),
     z.lazy(() => GitSource12$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource4$outboundSchema),
+    z.lazy(() => GitSource8$outboundSchema),
+    z.lazy(() => GitSource9$outboundSchema),
+    z.lazy(() => GitSource11$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
+    z.lazy(() => GitSource7$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
   ]).optional(),
   name: z.string(),
   meta: z.record(z.string()),
@@ -7294,16 +7294,16 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => CancelDeploymentRoutes3$outboundSchema),
       z.lazy(() =>
-        CancelDeploymentRoutes2$outboundSchema
+        CancelDeploymentRoutes1$outboundSchema
       ),
-      z.lazy(() => CancelDeploymentRoutes1$outboundSchema),
+      z.lazy(() => CancelDeploymentRoutes2$outboundSchema),
     ])),
   ),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
       z.lazy(() => CancelDeploymentGitRepo2$outboundSchema),
       z.lazy(() => CancelDeploymentGitRepo3$outboundSchema),
+      z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -7311,8 +7311,8 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.array(z.lazy(() => CancelDeploymentFlags2$outboundSchema)),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => CancelDeploymentMicrofrontends1$outboundSchema),
     z.lazy(() => CancelDeploymentMicrofrontends2$outboundSchema),
+    z.lazy(() => CancelDeploymentMicrofrontends1$outboundSchema),
   ]).optional(),
   config: z.lazy(() => CancelDeploymentConfig$outboundSchema).optional(),
   checks: z.lazy(() => CancelDeploymentChecks$outboundSchema).optional(),

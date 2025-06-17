@@ -119,9 +119,9 @@ export type PatchUrlProtectionBypassRequestBody1 = {
 };
 
 export type PatchUrlProtectionBypassRequestBody =
-  | PatchUrlProtectionBypassRequestBody1
   | PatchUrlProtectionBypassRequestBody2
-  | PatchUrlProtectionBypassRequestBody3;
+  | PatchUrlProtectionBypassRequestBody3
+  | PatchUrlProtectionBypassRequestBody1;
 
 export type PatchUrlProtectionBypassRequest = {
   /**
@@ -137,9 +137,9 @@ export type PatchUrlProtectionBypassRequest = {
    */
   slug?: string | undefined;
   requestBody?:
-    | PatchUrlProtectionBypassRequestBody1
     | PatchUrlProtectionBypassRequestBody2
     | PatchUrlProtectionBypassRequestBody3
+    | PatchUrlProtectionBypassRequestBody1
     | undefined;
 };
 
@@ -677,16 +677,16 @@ export const PatchUrlProtectionBypassRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
+  z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody$Outbound =
-  | PatchUrlProtectionBypassRequestBody1$Outbound
   | PatchUrlProtectionBypassRequestBody2$Outbound
-  | PatchUrlProtectionBypassRequestBody3$Outbound;
+  | PatchUrlProtectionBypassRequestBody3$Outbound
+  | PatchUrlProtectionBypassRequestBody1$Outbound;
 
 /** @internal */
 export const PatchUrlProtectionBypassRequestBody$outboundSchema: z.ZodType<
@@ -694,9 +694,9 @@ export const PatchUrlProtectionBypassRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody
 > = z.union([
-  z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
+  z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
 ]);
 
 /**
@@ -745,9 +745,9 @@ export const PatchUrlProtectionBypassRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   RequestBody: z.union([
-    z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
+    z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -761,9 +761,9 @@ export type PatchUrlProtectionBypassRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?:
-    | PatchUrlProtectionBypassRequestBody1$Outbound
     | PatchUrlProtectionBypassRequestBody2$Outbound
     | PatchUrlProtectionBypassRequestBody3$Outbound
+    | PatchUrlProtectionBypassRequestBody1$Outbound
     | undefined;
 };
 
@@ -777,9 +777,9 @@ export const PatchUrlProtectionBypassRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.union([
-    z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
+    z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {

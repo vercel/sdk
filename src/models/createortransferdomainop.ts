@@ -70,8 +70,8 @@ export type CreateOrTransferDomainRequestBody1 = {
 
 export type CreateOrTransferDomainRequestBody =
   | CreateOrTransferDomainRequestBody2
-  | CreateOrTransferDomainRequestBody1
-  | CreateOrTransferDomainRequestBody3;
+  | CreateOrTransferDomainRequestBody3
+  | CreateOrTransferDomainRequestBody1;
 
 export type CreateOrTransferDomainRequest = {
   /**
@@ -84,8 +84,8 @@ export type CreateOrTransferDomainRequest = {
   slug?: string | undefined;
   requestBody?:
     | CreateOrTransferDomainRequestBody2
-    | CreateOrTransferDomainRequestBody1
     | CreateOrTransferDomainRequestBody3
+    | CreateOrTransferDomainRequestBody1
     | undefined;
 };
 
@@ -389,15 +389,15 @@ export const CreateOrTransferDomainRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody3$inboundSchema),
+  z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type CreateOrTransferDomainRequestBody$Outbound =
   | CreateOrTransferDomainRequestBody2$Outbound
-  | CreateOrTransferDomainRequestBody1$Outbound
-  | CreateOrTransferDomainRequestBody3$Outbound;
+  | CreateOrTransferDomainRequestBody3$Outbound
+  | CreateOrTransferDomainRequestBody1$Outbound;
 
 /** @internal */
 export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
@@ -406,8 +406,8 @@ export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody
 > = z.union([
   z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody3$outboundSchema),
+  z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
 ]);
 
 /**
@@ -454,8 +454,8 @@ export const CreateOrTransferDomainRequest$inboundSchema: z.ZodType<
   slug: z.string().optional(),
   RequestBody: z.union([
     z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
     z.lazy(() => CreateOrTransferDomainRequestBody3$inboundSchema),
+    z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -469,8 +469,8 @@ export type CreateOrTransferDomainRequest$Outbound = {
   slug?: string | undefined;
   RequestBody?:
     | CreateOrTransferDomainRequestBody2$Outbound
-    | CreateOrTransferDomainRequestBody1$Outbound
     | CreateOrTransferDomainRequestBody3$Outbound
+    | CreateOrTransferDomainRequestBody1$Outbound
     | undefined;
 };
 
@@ -484,8 +484,8 @@ export const CreateOrTransferDomainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
   requestBody: z.union([
     z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
     z.lazy(() => CreateOrTransferDomainRequestBody3$outboundSchema),
+    z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
   ]).optional(),
 }).transform((v) => {
   return remap$(v, {

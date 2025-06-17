@@ -103,8 +103,8 @@ export type AddBypassIpResponseBody1 = {
 };
 
 export type AddBypassIpResponseBody =
-  | AddBypassIpResponseBody2
-  | AddBypassIpResponseBody1;
+  | AddBypassIpResponseBody1
+  | AddBypassIpResponseBody2;
 
 /** @internal */
 export const AddBypassIpRequestBody2$inboundSchema: z.ZodType<
@@ -754,14 +754,14 @@ export const AddBypassIpResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
   z.lazy(() => AddBypassIpResponseBody1$inboundSchema),
+  z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type AddBypassIpResponseBody$Outbound =
-  | AddBypassIpResponseBody2$Outbound
-  | AddBypassIpResponseBody1$Outbound;
+  | AddBypassIpResponseBody1$Outbound
+  | AddBypassIpResponseBody2$Outbound;
 
 /** @internal */
 export const AddBypassIpResponseBody$outboundSchema: z.ZodType<
@@ -769,8 +769,8 @@ export const AddBypassIpResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AddBypassIpResponseBody
 > = z.union([
-  z.lazy(() => AddBypassIpResponseBody2$outboundSchema),
   z.lazy(() => AddBypassIpResponseBody1$outboundSchema),
+  z.lazy(() => AddBypassIpResponseBody2$outboundSchema),
 ]);
 
 /**

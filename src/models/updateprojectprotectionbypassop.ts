@@ -88,14 +88,14 @@ export type UpdateProjectProtectionBypassProtectionBypass1 = {
 };
 
 export type UpdateProjectProtectionBypassProtectionBypass =
-  | UpdateProjectProtectionBypassProtectionBypass2
-  | UpdateProjectProtectionBypassProtectionBypass1;
+  | UpdateProjectProtectionBypassProtectionBypass1
+  | UpdateProjectProtectionBypassProtectionBypass2;
 
 export type UpdateProjectProtectionBypassResponseBody = {
   protectionBypass?: {
     [k: string]:
-      | UpdateProjectProtectionBypassProtectionBypass2
-      | UpdateProjectProtectionBypassProtectionBypass1;
+      | UpdateProjectProtectionBypassProtectionBypass1
+      | UpdateProjectProtectionBypassProtectionBypass2;
   } | undefined;
 };
 
@@ -558,14 +558,14 @@ export const UpdateProjectProtectionBypassProtectionBypass$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$inboundSchema),
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
   ]);
 
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass$Outbound =
-  | UpdateProjectProtectionBypassProtectionBypass2$Outbound
-  | UpdateProjectProtectionBypassProtectionBypass1$Outbound;
+  | UpdateProjectProtectionBypassProtectionBypass1$Outbound
+  | UpdateProjectProtectionBypassProtectionBypass2$Outbound;
 
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
@@ -574,8 +574,8 @@ export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
     z.ZodTypeDef,
     UpdateProjectProtectionBypassProtectionBypass
   > = z.union([
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$outboundSchema),
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$outboundSchema),
+    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$outboundSchema),
   ]);
 
 /**
@@ -629,10 +629,10 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
   protectionBypass: z.record(
     z.union([
       z.lazy(() =>
-        UpdateProjectProtectionBypassProtectionBypass2$inboundSchema
+        UpdateProjectProtectionBypassProtectionBypass1$inboundSchema
       ),
       z.lazy(() =>
-        UpdateProjectProtectionBypassProtectionBypass1$inboundSchema
+        UpdateProjectProtectionBypassProtectionBypass2$inboundSchema
       ),
     ]),
   ).optional(),
@@ -642,8 +642,8 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
 export type UpdateProjectProtectionBypassResponseBody$Outbound = {
   protectionBypass?: {
     [k: string]:
-      | UpdateProjectProtectionBypassProtectionBypass2$Outbound
-      | UpdateProjectProtectionBypassProtectionBypass1$Outbound;
+      | UpdateProjectProtectionBypassProtectionBypass1$Outbound
+      | UpdateProjectProtectionBypassProtectionBypass2$Outbound;
   } | undefined;
 };
 
@@ -657,10 +657,10 @@ export const UpdateProjectProtectionBypassResponseBody$outboundSchema:
     protectionBypass: z.record(
       z.union([
         z.lazy(() =>
-          UpdateProjectProtectionBypassProtectionBypass2$outboundSchema
+          UpdateProjectProtectionBypassProtectionBypass1$outboundSchema
         ),
         z.lazy(() =>
-          UpdateProjectProtectionBypassProtectionBypass1$outboundSchema
+          UpdateProjectProtectionBypassProtectionBypass2$outboundSchema
         ),
       ]),
     ).optional(),

@@ -4447,6 +4447,35 @@ func (o *CreateDeploymentOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
+type CreateDeploymentPlan string
+
+const (
+	CreateDeploymentPlanPro        CreateDeploymentPlan = "pro"
+	CreateDeploymentPlanEnterprise CreateDeploymentPlan = "enterprise"
+	CreateDeploymentPlanHobby      CreateDeploymentPlan = "hobby"
+)
+
+func (e CreateDeploymentPlan) ToPointer() *CreateDeploymentPlan {
+	return &e
+}
+func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pro":
+		fallthrough
+	case "enterprise":
+		fallthrough
+	case "hobby":
+		*e = CreateDeploymentPlan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentPlan: %v", v)
+	}
+}
+
 type CreateDeploymentFunctionType string
 
 const (
@@ -5566,35 +5595,6 @@ func (o *CreateDeploymentChecks) GetDeploymentAlias() CreateDeploymentDeployment
 	return o.DeploymentAlias
 }
 
-type CreateDeploymentPlan string
-
-const (
-	CreateDeploymentPlanPro        CreateDeploymentPlan = "pro"
-	CreateDeploymentPlanEnterprise CreateDeploymentPlan = "enterprise"
-	CreateDeploymentPlanHobby      CreateDeploymentPlan = "hobby"
-)
-
-func (e CreateDeploymentPlan) ToPointer() *CreateDeploymentPlan {
-	return &e
-}
-func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pro":
-		fallthrough
-	case "enterprise":
-		fallthrough
-	case "hobby":
-		*e = CreateDeploymentPlan(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentPlan: %v", v)
-	}
-}
-
 type CreateDeploymentGitRepoTypeBitbucket string
 
 const (
@@ -6269,6 +6269,7 @@ type CreateDeploymentResponseBody struct {
 	ProjectID              string                           `json:"projectId"`
 	OwnerID                string                           `json:"ownerId"`
 	MonorepoManager        *string                          `json:"monorepoManager,omitempty"`
+	Plan                   CreateDeploymentPlan             `json:"plan"`
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config                 *CreateDeploymentConfig              `json:"config,omitempty"`
 	Functions              map[string]CreateDeploymentFunctions `json:"functions,omitempty"`
@@ -6276,7 +6277,6 @@ type CreateDeploymentResponseBody struct {
 	Crons                  []CreateDeploymentCron               `json:"crons,omitempty"`
 	Microfrontends         *CreateDeploymentMicrofrontendsUnion `json:"microfrontends,omitempty"`
 	Checks                 *CreateDeploymentChecks              `json:"checks,omitempty"`
-	Plan                   CreateDeploymentPlan                 `json:"plan"`
 	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`
 	ConnectConfigurationID *string                              `json:"connectConfigurationId,omitempty"`
 	CreatedIn              string                               `json:"createdIn"`
@@ -6769,6 +6769,13 @@ func (o *CreateDeploymentResponseBody) GetMonorepoManager() *string {
 	return o.MonorepoManager
 }
 
+func (o *CreateDeploymentResponseBody) GetPlan() CreateDeploymentPlan {
+	if o == nil {
+		return CreateDeploymentPlan("")
+	}
+	return o.Plan
+}
+
 func (o *CreateDeploymentResponseBody) GetConfig() *CreateDeploymentConfig {
 	if o == nil {
 		return nil
@@ -6809,13 +6816,6 @@ func (o *CreateDeploymentResponseBody) GetChecks() *CreateDeploymentChecks {
 		return nil
 	}
 	return o.Checks
-}
-
-func (o *CreateDeploymentResponseBody) GetPlan() CreateDeploymentPlan {
-	if o == nil {
-		return CreateDeploymentPlan("")
-	}
-	return o.Plan
 }
 
 func (o *CreateDeploymentResponseBody) GetConnectBuildsEnabled() *bool {

@@ -41,7 +41,7 @@ export type ResponseBody1 = {
   tag?: string | undefined;
 };
 
-export type ResponseBody = ResponseBody2 | ResponseBody1;
+export type ResponseBody = ResponseBody1 | ResponseBody2;
 
 /** @internal */
 export const ArtifactQueryRequestBody$inboundSchema: z.ZodType<
@@ -331,14 +331,14 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ResponseBody2$inboundSchema),
   z.lazy(() => ResponseBody1$inboundSchema),
+  z.lazy(() => ResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBody$Outbound =
-  | ResponseBody2$Outbound
-  | ResponseBody1$Outbound;
+  | ResponseBody1$Outbound
+  | ResponseBody2$Outbound;
 
 /** @internal */
 export const ResponseBody$outboundSchema: z.ZodType<
@@ -346,8 +346,8 @@ export const ResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBody
 > = z.union([
-  z.lazy(() => ResponseBody2$outboundSchema),
   z.lazy(() => ResponseBody1$outboundSchema),
+  z.lazy(() => ResponseBody2$outboundSchema),
 ]);
 
 /**

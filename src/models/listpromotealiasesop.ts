@@ -58,8 +58,8 @@ export type ListPromoteAliasesResponseBody2 = {
 export type ListPromoteAliasesResponseBody1 = {};
 
 export type ListPromoteAliasesResponseBody =
-  | ListPromoteAliasesResponseBody1
-  | ListPromoteAliasesResponseBody2;
+  | ListPromoteAliasesResponseBody2
+  | ListPromoteAliasesResponseBody1;
 
 /** @internal */
 export const ListPromoteAliasesRequest$inboundSchema: z.ZodType<
@@ -308,14 +308,14 @@ export const ListPromoteAliasesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
+  z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type ListPromoteAliasesResponseBody$Outbound =
-  | ListPromoteAliasesResponseBody1$Outbound
-  | ListPromoteAliasesResponseBody2$Outbound;
+  | ListPromoteAliasesResponseBody2$Outbound
+  | ListPromoteAliasesResponseBody1$Outbound;
 
 /** @internal */
 export const ListPromoteAliasesResponseBody$outboundSchema: z.ZodType<
@@ -323,8 +323,8 @@ export const ListPromoteAliasesResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListPromoteAliasesResponseBody
 > = z.union([
-  z.lazy(() => ListPromoteAliasesResponseBody1$outboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody2$outboundSchema),
+  z.lazy(() => ListPromoteAliasesResponseBody1$outboundSchema),
 ]);
 
 /**

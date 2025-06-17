@@ -123,7 +123,7 @@ export type TransferRequest1 = {
   authorizationId?: string | undefined;
 };
 
-export type TransferRequest = TransferRequest2 | TransferRequest1;
+export type TransferRequest = TransferRequest1 | TransferRequest2;
 
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -179,7 +179,7 @@ export type GetConfigurationResponseBody2 = {
    */
   projectSelection: ProjectSelection;
   notification: ResponseBodyNotification;
-  transferRequest: TransferRequest2 | TransferRequest1;
+  transferRequest: TransferRequest1 | TransferRequest2;
   /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
    */
@@ -378,8 +378,8 @@ export type GetConfigurationResponseBody1 = {
  * The configuration with the provided id
  */
 export type GetConfigurationResponseBody =
-  | GetConfigurationResponseBody1
-  | GetConfigurationResponseBody2;
+  | GetConfigurationResponseBody2
+  | GetConfigurationResponseBody1;
 
 /** @internal */
 export const GetConfigurationRequest$inboundSchema: z.ZodType<
@@ -994,14 +994,14 @@ export const TransferRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TransferRequest2$inboundSchema),
   z.lazy(() => TransferRequest1$inboundSchema),
+  z.lazy(() => TransferRequest2$inboundSchema),
 ]);
 
 /** @internal */
 export type TransferRequest$Outbound =
-  | TransferRequest2$Outbound
-  | TransferRequest1$Outbound;
+  | TransferRequest1$Outbound
+  | TransferRequest2$Outbound;
 
 /** @internal */
 export const TransferRequest$outboundSchema: z.ZodType<
@@ -1009,8 +1009,8 @@ export const TransferRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferRequest
 > = z.union([
-  z.lazy(() => TransferRequest2$outboundSchema),
   z.lazy(() => TransferRequest1$outboundSchema),
+  z.lazy(() => TransferRequest2$outboundSchema),
 ]);
 
 /**
@@ -1147,8 +1147,8 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   projectSelection: ProjectSelection$inboundSchema,
   notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
   transferRequest: z.union([
-    z.lazy(() => TransferRequest2$inboundSchema),
     z.lazy(() => TransferRequest1$inboundSchema),
+    z.lazy(() => TransferRequest2$inboundSchema),
   ]),
   projects: z.array(z.string()).optional(),
   completedAt: z.number().optional(),
@@ -1180,7 +1180,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
 export type GetConfigurationResponseBody2$Outbound = {
   projectSelection: string;
   notification: ResponseBodyNotification$Outbound;
-  transferRequest: TransferRequest2$Outbound | TransferRequest1$Outbound;
+  transferRequest: TransferRequest1$Outbound | TransferRequest2$Outbound;
   projects?: Array<string> | undefined;
   completedAt?: number | undefined;
   createdAt: number;
@@ -1211,8 +1211,8 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   projectSelection: ProjectSelection$outboundSchema,
   notification: z.lazy(() => ResponseBodyNotification$outboundSchema),
   transferRequest: z.union([
-    z.lazy(() => TransferRequest2$outboundSchema),
     z.lazy(() => TransferRequest1$outboundSchema),
+    z.lazy(() => TransferRequest2$outboundSchema),
   ]),
   projects: z.array(z.string()).optional(),
   completedAt: z.number().optional(),
@@ -1479,14 +1479,14 @@ export const GetConfigurationResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
   z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
+  z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type GetConfigurationResponseBody$Outbound =
-  | GetConfigurationResponseBody1$Outbound
-  | GetConfigurationResponseBody2$Outbound;
+  | GetConfigurationResponseBody2$Outbound
+  | GetConfigurationResponseBody1$Outbound;
 
 /** @internal */
 export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
@@ -1494,8 +1494,8 @@ export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationResponseBody
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody1$outboundSchema),
   z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
+  z.lazy(() => GetConfigurationResponseBody1$outboundSchema),
 ]);
 
 /**

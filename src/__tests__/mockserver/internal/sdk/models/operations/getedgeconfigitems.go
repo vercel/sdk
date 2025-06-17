@@ -37,8 +37,8 @@ func (o *GetEdgeConfigItemsRequest) GetSlug() *string {
 
 type GetEdgeConfigItemsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// The EdgeConfig.
-	EdgeConfigItem *components.EdgeConfigItem
+	// List of all Edge Config items.
+	EdgeConfigItems []components.EdgeConfigItem
 }
 
 func (o *GetEdgeConfigItemsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,9 +48,9 @@ func (o *GetEdgeConfigItemsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetEdgeConfigItemsResponse) GetEdgeConfigItem() *components.EdgeConfigItem {
+func (o *GetEdgeConfigItemsResponse) GetEdgeConfigItems() []components.EdgeConfigItem {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigItem
+	return o.EdgeConfigItems
 }

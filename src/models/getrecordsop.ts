@@ -119,8 +119,8 @@ export type GetRecordsResponseBody2 = {
  * Successful response retrieving a list of paginated DNS records.
  */
 export type GetRecordsResponseBody =
-  | GetRecordsResponseBody2
   | ResponseBody3
+  | GetRecordsResponseBody2
   | string;
 
 /** @internal */
@@ -514,15 +514,15 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetRecordsResponseBody2$inboundSchema),
   z.lazy(() => ResponseBody3$inboundSchema),
+  z.lazy(() => GetRecordsResponseBody2$inboundSchema),
   z.string(),
 ]);
 
 /** @internal */
 export type GetRecordsResponseBody$Outbound =
-  | GetRecordsResponseBody2$Outbound
   | ResponseBody3$Outbound
+  | GetRecordsResponseBody2$Outbound
   | string;
 
 /** @internal */
@@ -531,8 +531,8 @@ export const GetRecordsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetRecordsResponseBody
 > = z.union([
-  z.lazy(() => GetRecordsResponseBody2$outboundSchema),
   z.lazy(() => ResponseBody3$outboundSchema),
+  z.lazy(() => GetRecordsResponseBody2$outboundSchema),
   z.string(),
 ]);
 

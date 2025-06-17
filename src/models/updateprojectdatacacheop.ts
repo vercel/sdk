@@ -371,6 +371,7 @@ export type ContentHint1 = {
 };
 
 export type ContentHint =
+  | ContentHint14
   | ContentHint1
   | ContentHint2
   | ContentHint3
@@ -384,8 +385,7 @@ export type ContentHint =
   | ContentHint11
   | ContentHint12
   | ContentHint13
-  | ContentHint15
-  | ContentHint14;
+  | ContentHint15;
 
 export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType =
   {
@@ -432,6 +432,7 @@ export type Env = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | ContentHint14
     | ContentHint1
     | ContentHint2
     | ContentHint3
@@ -446,7 +447,6 @@ export type Env = {
     | ContentHint12
     | ContentHint13
     | ContentHint15
-    | ContentHint14
     | null
     | undefined;
   /**
@@ -925,7 +925,7 @@ export type Link1 = {
   productionBranch?: string | undefined;
 };
 
-export type Link = Link1 | Link3 | Link4 | Link2;
+export type Link = Link1 | Link2 | Link3 | Link4;
 
 export type UpdateProjectDataCacheMicrofrontends2 = {
   updatedAt: number;
@@ -961,8 +961,8 @@ export type UpdateProjectDataCacheMicrofrontends1 = {
 };
 
 export type UpdateProjectDataCacheMicrofrontends =
-  | UpdateProjectDataCacheMicrofrontends2
-  | UpdateProjectDataCacheMicrofrontends1;
+  | UpdateProjectDataCacheMicrofrontends1
+  | UpdateProjectDataCacheMicrofrontends2;
 
 export const UpdateProjectDataCacheNodeVersion = {
   TwentyTwoDotX: "22.x",
@@ -1539,7 +1539,7 @@ export type ProtectionBypass1 = {
   configurationId: string;
 };
 
-export type ProtectionBypass = ProtectionBypass2 | ProtectionBypass1;
+export type ProtectionBypass = ProtectionBypass1 | ProtectionBypass2;
 
 export const UpdateProjectDataCacheTrustedIpsDeploymentType = {
   Production: "production",
@@ -1584,7 +1584,7 @@ export type TrustedIps1 = {
   protectionMode: UpdateProjectDataCacheTrustedIpsProtectionMode;
 };
 
-export type UpdateProjectDataCacheTrustedIps = TrustedIps2 | TrustedIps1;
+export type UpdateProjectDataCacheTrustedIps = TrustedIps1 | TrustedIps2;
 
 export type GitComments = {
   /**
@@ -1911,10 +1911,10 @@ export type UpdateProjectDataCacheResponseBody = {
   id: string;
   ipBuckets?: Array<UpdateProjectDataCacheIpBuckets> | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
-  link?: Link1 | Link3 | Link4 | Link2 | undefined;
+  link?: Link1 | Link2 | Link3 | Link4 | undefined;
   microfrontends?:
-    | UpdateProjectDataCacheMicrofrontends2
     | UpdateProjectDataCacheMicrofrontends1
+    | UpdateProjectDataCacheMicrofrontends2
     | undefined;
   name: string;
   nodeVersion: UpdateProjectDataCacheNodeVersion;
@@ -1958,10 +1958,10 @@ export type UpdateProjectDataCacheResponseBody = {
   lastRollbackTarget?: LastRollbackTarget | null | undefined;
   lastAliasRequest?: LastAliasRequest | null | undefined;
   protectionBypass?:
-    | { [k: string]: ProtectionBypass2 | ProtectionBypass1 }
+    | { [k: string]: ProtectionBypass1 | ProtectionBypass2 }
     | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: TrustedIps2 | TrustedIps1 | null | undefined;
+  trustedIps?: TrustedIps1 | TrustedIps2 | null | undefined;
   gitComments?: GitComments | undefined;
   gitProviderOptions?: GitProviderOptions | undefined;
   paused?: boolean | undefined;
@@ -4046,6 +4046,7 @@ export const ContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => ContentHint14$inboundSchema),
   z.lazy(() => ContentHint1$inboundSchema),
   z.lazy(() => ContentHint2$inboundSchema),
   z.lazy(() => ContentHint3$inboundSchema),
@@ -4060,11 +4061,11 @@ export const ContentHint$inboundSchema: z.ZodType<
   z.lazy(() => ContentHint12$inboundSchema),
   z.lazy(() => ContentHint13$inboundSchema),
   z.lazy(() => ContentHint15$inboundSchema),
-  z.lazy(() => ContentHint14$inboundSchema),
 ]);
 
 /** @internal */
 export type ContentHint$Outbound =
+  | ContentHint14$Outbound
   | ContentHint1$Outbound
   | ContentHint2$Outbound
   | ContentHint3$Outbound
@@ -4078,8 +4079,7 @@ export type ContentHint$Outbound =
   | ContentHint11$Outbound
   | ContentHint12$Outbound
   | ContentHint13$Outbound
-  | ContentHint15$Outbound
-  | ContentHint14$Outbound;
+  | ContentHint15$Outbound;
 
 /** @internal */
 export const ContentHint$outboundSchema: z.ZodType<
@@ -4087,6 +4087,7 @@ export const ContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentHint
 > = z.union([
+  z.lazy(() => ContentHint14$outboundSchema),
   z.lazy(() => ContentHint1$outboundSchema),
   z.lazy(() => ContentHint2$outboundSchema),
   z.lazy(() => ContentHint3$outboundSchema),
@@ -4101,7 +4102,6 @@ export const ContentHint$outboundSchema: z.ZodType<
   z.lazy(() => ContentHint12$outboundSchema),
   z.lazy(() => ContentHint13$outboundSchema),
   z.lazy(() => ContentHint15$outboundSchema),
-  z.lazy(() => ContentHint14$outboundSchema),
 ]);
 
 /**
@@ -4243,6 +4243,7 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
     edgeConfigTokenId: z.nullable(z.string()).optional(),
     contentHint: z.nullable(
       z.union([
+        z.lazy(() => ContentHint14$inboundSchema),
         z.lazy(() => ContentHint1$inboundSchema),
         z.lazy(() => ContentHint2$inboundSchema),
         z.lazy(() => ContentHint3$inboundSchema),
@@ -4257,7 +4258,6 @@ export const Env$inboundSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z
         z.lazy(() => ContentHint12$inboundSchema),
         z.lazy(() => ContentHint13$inboundSchema),
         z.lazy(() => ContentHint15$inboundSchema),
-        z.lazy(() => ContentHint14$inboundSchema),
       ]),
     ).optional(),
     internalContentHint: z.nullable(
@@ -4286,6 +4286,7 @@ export type Env$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
+    | ContentHint14$Outbound
     | ContentHint1$Outbound
     | ContentHint2$Outbound
     | ContentHint3$Outbound
@@ -4300,7 +4301,6 @@ export type Env$Outbound = {
     | ContentHint12$Outbound
     | ContentHint13$Outbound
     | ContentHint15$Outbound
-    | ContentHint14$Outbound
     | null
     | undefined;
   internalContentHint?: InternalContentHint$Outbound | null | undefined;
@@ -4333,6 +4333,7 @@ export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
     edgeConfigTokenId: z.nullable(z.string()).optional(),
     contentHint: z.nullable(
       z.union([
+        z.lazy(() => ContentHint14$outboundSchema),
         z.lazy(() => ContentHint1$outboundSchema),
         z.lazy(() => ContentHint2$outboundSchema),
         z.lazy(() => ContentHint3$outboundSchema),
@@ -4347,7 +4348,6 @@ export const Env$outboundSchema: z.ZodType<Env$Outbound, z.ZodTypeDef, Env> = z
         z.lazy(() => ContentHint12$outboundSchema),
         z.lazy(() => ContentHint13$outboundSchema),
         z.lazy(() => ContentHint15$outboundSchema),
-        z.lazy(() => ContentHint14$outboundSchema),
       ]),
     ).optional(),
     internalContentHint: z.nullable(
@@ -6292,25 +6292,25 @@ export function link1FromJSON(
 export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
   .union([
     z.lazy(() => Link1$inboundSchema),
+    z.lazy(() => Link2$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
     z.lazy(() => Link4$inboundSchema),
-    z.lazy(() => Link2$inboundSchema),
   ]);
 
 /** @internal */
 export type Link$Outbound =
   | Link1$Outbound
+  | Link2$Outbound
   | Link3$Outbound
-  | Link4$Outbound
-  | Link2$Outbound;
+  | Link4$Outbound;
 
 /** @internal */
 export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
   z.union([
     z.lazy(() => Link1$outboundSchema),
+    z.lazy(() => Link2$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
-    z.lazy(() => Link2$outboundSchema),
   ]);
 
 /**
@@ -6485,14 +6485,14 @@ export const UpdateProjectDataCacheMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
   z.lazy(() => UpdateProjectDataCacheMicrofrontends1$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
 ]);
 
 /** @internal */
 export type UpdateProjectDataCacheMicrofrontends$Outbound =
-  | UpdateProjectDataCacheMicrofrontends2$Outbound
-  | UpdateProjectDataCacheMicrofrontends1$Outbound;
+  | UpdateProjectDataCacheMicrofrontends1$Outbound
+  | UpdateProjectDataCacheMicrofrontends2$Outbound;
 
 /** @internal */
 export const UpdateProjectDataCacheMicrofrontends$outboundSchema: z.ZodType<
@@ -6500,8 +6500,8 @@ export const UpdateProjectDataCacheMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDataCacheMicrofrontends
 > = z.union([
-  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
   z.lazy(() => UpdateProjectDataCacheMicrofrontends1$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
 ]);
 
 /**
@@ -9004,14 +9004,14 @@ export const ProtectionBypass$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ProtectionBypass2$inboundSchema),
   z.lazy(() => ProtectionBypass1$inboundSchema),
+  z.lazy(() => ProtectionBypass2$inboundSchema),
 ]);
 
 /** @internal */
 export type ProtectionBypass$Outbound =
-  | ProtectionBypass2$Outbound
-  | ProtectionBypass1$Outbound;
+  | ProtectionBypass1$Outbound
+  | ProtectionBypass2$Outbound;
 
 /** @internal */
 export const ProtectionBypass$outboundSchema: z.ZodType<
@@ -9019,8 +9019,8 @@ export const ProtectionBypass$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ProtectionBypass
 > = z.union([
-  z.lazy(() => ProtectionBypass2$outboundSchema),
   z.lazy(() => ProtectionBypass1$outboundSchema),
+  z.lazy(() => ProtectionBypass2$outboundSchema),
 ]);
 
 /**
@@ -9306,14 +9306,14 @@ export const UpdateProjectDataCacheTrustedIps$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TrustedIps2$inboundSchema),
   z.lazy(() => TrustedIps1$inboundSchema),
+  z.lazy(() => TrustedIps2$inboundSchema),
 ]);
 
 /** @internal */
 export type UpdateProjectDataCacheTrustedIps$Outbound =
-  | TrustedIps2$Outbound
-  | TrustedIps1$Outbound;
+  | TrustedIps1$Outbound
+  | TrustedIps2$Outbound;
 
 /** @internal */
 export const UpdateProjectDataCacheTrustedIps$outboundSchema: z.ZodType<
@@ -9321,8 +9321,8 @@ export const UpdateProjectDataCacheTrustedIps$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDataCacheTrustedIps
 > = z.union([
-  z.lazy(() => TrustedIps2$outboundSchema),
   z.lazy(() => TrustedIps1$outboundSchema),
+  z.lazy(() => TrustedIps2$outboundSchema),
 ]);
 
 /**
@@ -11008,13 +11008,13 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     .optional(),
   link: z.union([
     z.lazy(() => Link1$inboundSchema),
+    z.lazy(() => Link2$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
     z.lazy(() => Link4$inboundSchema),
-    z.lazy(() => Link2$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
     z.lazy(() => UpdateProjectDataCacheMicrofrontends1$inboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$inboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: UpdateProjectDataCacheNodeVersion$inboundSchema,
@@ -11062,15 +11062,15 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     .optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => ProtectionBypass2$inboundSchema),
       z.lazy(() => ProtectionBypass1$inboundSchema),
+      z.lazy(() => ProtectionBypass2$inboundSchema),
     ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([
-      z.lazy(() => TrustedIps2$inboundSchema),
       z.lazy(() => TrustedIps1$inboundSchema),
+      z.lazy(() => TrustedIps2$inboundSchema),
     ]),
   ).optional(),
   gitComments: z.lazy(() => GitComments$inboundSchema).optional(),
@@ -11123,13 +11123,13 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   latestDeployments?: Array<LatestDeployments$Outbound> | undefined;
   link?:
     | Link1$Outbound
+    | Link2$Outbound
     | Link3$Outbound
     | Link4$Outbound
-    | Link2$Outbound
     | undefined;
   microfrontends?:
-    | UpdateProjectDataCacheMicrofrontends2$Outbound
     | UpdateProjectDataCacheMicrofrontends1$Outbound
+    | UpdateProjectDataCacheMicrofrontends2$Outbound
     | undefined;
   name: string;
   nodeVersion: string;
@@ -11173,10 +11173,10 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   lastRollbackTarget?: LastRollbackTarget$Outbound | null | undefined;
   lastAliasRequest?: LastAliasRequest$Outbound | null | undefined;
   protectionBypass?: {
-    [k: string]: ProtectionBypass2$Outbound | ProtectionBypass1$Outbound;
+    [k: string]: ProtectionBypass1$Outbound | ProtectionBypass2$Outbound;
   } | undefined;
   hasActiveBranches?: boolean | undefined;
-  trustedIps?: TrustedIps2$Outbound | TrustedIps1$Outbound | null | undefined;
+  trustedIps?: TrustedIps1$Outbound | TrustedIps2$Outbound | null | undefined;
   gitComments?: GitComments$Outbound | undefined;
   gitProviderOptions?: GitProviderOptions$Outbound | undefined;
   paused?: boolean | undefined;
@@ -11236,13 +11236,13 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     .optional(),
   link: z.union([
     z.lazy(() => Link1$outboundSchema),
+    z.lazy(() => Link2$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
-    z.lazy(() => Link2$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
     z.lazy(() => UpdateProjectDataCacheMicrofrontends1$outboundSchema),
+    z.lazy(() => UpdateProjectDataCacheMicrofrontends2$outboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: UpdateProjectDataCacheNodeVersion$outboundSchema,
@@ -11292,15 +11292,15 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     .optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => ProtectionBypass2$outboundSchema),
       z.lazy(() => ProtectionBypass1$outboundSchema),
+      z.lazy(() => ProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
   hasActiveBranches: z.boolean().optional(),
   trustedIps: z.nullable(
     z.union([
-      z.lazy(() => TrustedIps2$outboundSchema),
       z.lazy(() => TrustedIps1$outboundSchema),
+      z.lazy(() => TrustedIps2$outboundSchema),
     ]),
   ).optional(),
   gitComments: z.lazy(() => GitComments$outboundSchema).optional(),

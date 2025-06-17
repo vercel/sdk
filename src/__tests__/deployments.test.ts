@@ -213,8 +213,8 @@ test("Deployments Create Deployment", async () => {
     url: "https://unwritten-viability.org",
     projectId: "<id>",
     ownerId: "<id>",
-    routes: [],
     plan: "enterprise",
+    routes: [],
     createdIn: "<value>",
   });
 });

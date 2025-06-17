@@ -492,7 +492,7 @@ run();
 
 ### Response
 
-**Promise\<[models.EdgeConfigItem](../../models/edgeconfigitem.md)\>**
+**Promise\<[models.EdgeConfigItem[]](../../models/.md)\>**
 
 ### Errors
 

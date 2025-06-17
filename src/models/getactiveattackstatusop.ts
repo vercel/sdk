@@ -55,8 +55,8 @@ export type GetActiveAttackStatusResponseBody2 = {
 export type GetActiveAttackStatusResponseBody1 = {};
 
 export type GetActiveAttackStatusResponseBody =
-  | GetActiveAttackStatusResponseBody1
-  | GetActiveAttackStatusResponseBody2;
+  | GetActiveAttackStatusResponseBody2
+  | GetActiveAttackStatusResponseBody1;
 
 /** @internal */
 export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
@@ -489,14 +489,14 @@ export const GetActiveAttackStatusResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
+  z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type GetActiveAttackStatusResponseBody$Outbound =
-  | GetActiveAttackStatusResponseBody1$Outbound
-  | GetActiveAttackStatusResponseBody2$Outbound;
+  | GetActiveAttackStatusResponseBody2$Outbound
+  | GetActiveAttackStatusResponseBody1$Outbound;
 
 /** @internal */
 export const GetActiveAttackStatusResponseBody$outboundSchema: z.ZodType<
@@ -504,8 +504,8 @@ export const GetActiveAttackStatusResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetActiveAttackStatusResponseBody
 > = z.union([
-  z.lazy(() => GetActiveAttackStatusResponseBody1$outboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody2$outboundSchema),
+  z.lazy(() => GetActiveAttackStatusResponseBody1$outboundSchema),
 ]);
 
 /**

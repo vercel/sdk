@@ -39,8 +39,8 @@ export type PatchDomainRequestBody1 = {
 };
 
 export type PatchDomainRequestBody =
-  | PatchDomainRequestBody2
-  | PatchDomainRequestBody1;
+  | PatchDomainRequestBody1
+  | PatchDomainRequestBody2;
 
 export type PatchDomainRequest = {
   domain: string;
@@ -52,7 +52,7 @@ export type PatchDomainRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: PatchDomainRequestBody2 | PatchDomainRequestBody1;
+  requestBody: PatchDomainRequestBody1 | PatchDomainRequestBody2;
 };
 
 export type PatchDomainResponseBody3 = {
@@ -71,8 +71,8 @@ export type PatchDomainResponseBody1 = {
 };
 
 export type PatchDomainResponseBody =
-  | PatchDomainResponseBody1
   | PatchDomainResponseBody2
+  | PatchDomainResponseBody1
   | PatchDomainResponseBody3;
 
 /** @internal */
@@ -201,14 +201,14 @@ export const PatchDomainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchDomainRequestBody2$inboundSchema),
   z.lazy(() => PatchDomainRequestBody1$inboundSchema),
+  z.lazy(() => PatchDomainRequestBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type PatchDomainRequestBody$Outbound =
-  | PatchDomainRequestBody2$Outbound
-  | PatchDomainRequestBody1$Outbound;
+  | PatchDomainRequestBody1$Outbound
+  | PatchDomainRequestBody2$Outbound;
 
 /** @internal */
 export const PatchDomainRequestBody$outboundSchema: z.ZodType<
@@ -216,8 +216,8 @@ export const PatchDomainRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchDomainRequestBody
 > = z.union([
-  z.lazy(() => PatchDomainRequestBody2$outboundSchema),
   z.lazy(() => PatchDomainRequestBody1$outboundSchema),
+  z.lazy(() => PatchDomainRequestBody2$outboundSchema),
 ]);
 
 /**
@@ -261,8 +261,8 @@ export const PatchDomainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   RequestBody: z.union([
-    z.lazy(() => PatchDomainRequestBody2$inboundSchema),
     z.lazy(() => PatchDomainRequestBody1$inboundSchema),
+    z.lazy(() => PatchDomainRequestBody2$inboundSchema),
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -276,8 +276,8 @@ export type PatchDomainRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody:
-    | PatchDomainRequestBody2$Outbound
-    | PatchDomainRequestBody1$Outbound;
+    | PatchDomainRequestBody1$Outbound
+    | PatchDomainRequestBody2$Outbound;
 };
 
 /** @internal */
@@ -290,8 +290,8 @@ export const PatchDomainRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.union([
-    z.lazy(() => PatchDomainRequestBody2$outboundSchema),
     z.lazy(() => PatchDomainRequestBody1$outboundSchema),
+    z.lazy(() => PatchDomainRequestBody2$outboundSchema),
   ]),
 }).transform((v) => {
   return remap$(v, {
@@ -507,15 +507,15 @@ export const PatchDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchDomainResponseBody1$inboundSchema),
   z.lazy(() => PatchDomainResponseBody2$inboundSchema),
+  z.lazy(() => PatchDomainResponseBody1$inboundSchema),
   z.lazy(() => PatchDomainResponseBody3$inboundSchema),
 ]);
 
 /** @internal */
 export type PatchDomainResponseBody$Outbound =
-  | PatchDomainResponseBody1$Outbound
   | PatchDomainResponseBody2$Outbound
+  | PatchDomainResponseBody1$Outbound
   | PatchDomainResponseBody3$Outbound;
 
 /** @internal */
@@ -524,8 +524,8 @@ export const PatchDomainResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchDomainResponseBody
 > = z.union([
-  z.lazy(() => PatchDomainResponseBody1$outboundSchema),
   z.lazy(() => PatchDomainResponseBody2$outboundSchema),
+  z.lazy(() => PatchDomainResponseBody1$outboundSchema),
   z.lazy(() => PatchDomainResponseBody3$outboundSchema),
 ]);
 

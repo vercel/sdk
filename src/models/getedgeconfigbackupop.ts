@@ -110,8 +110,8 @@ export type GetEdgeConfigBackupResponseBody1 = {
 };
 
 export type GetEdgeConfigBackupResponseBody =
-  | GetEdgeConfigBackupResponseBody1
-  | GetEdgeConfigBackupResponseBody2;
+  | GetEdgeConfigBackupResponseBody2
+  | GetEdgeConfigBackupResponseBody1;
 
 /** @internal */
 export const GetEdgeConfigBackupRequest$inboundSchema: z.ZodType<
@@ -833,14 +833,14 @@ export const GetEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetEdgeConfigBackupResponseBody1$inboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody2$inboundSchema),
+  z.lazy(() => GetEdgeConfigBackupResponseBody1$inboundSchema),
 ]);
 
 /** @internal */
 export type GetEdgeConfigBackupResponseBody$Outbound =
-  | GetEdgeConfigBackupResponseBody1$Outbound
-  | GetEdgeConfigBackupResponseBody2$Outbound;
+  | GetEdgeConfigBackupResponseBody2$Outbound
+  | GetEdgeConfigBackupResponseBody1$Outbound;
 
 /** @internal */
 export const GetEdgeConfigBackupResponseBody$outboundSchema: z.ZodType<
@@ -848,8 +848,8 @@ export const GetEdgeConfigBackupResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEdgeConfigBackupResponseBody
 > = z.union([
-  z.lazy(() => GetEdgeConfigBackupResponseBody1$outboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody2$outboundSchema),
+  z.lazy(() => GetEdgeConfigBackupResponseBody1$outboundSchema),
 ]);
 
 /**

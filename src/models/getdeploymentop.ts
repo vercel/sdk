@@ -210,8 +210,8 @@ export type GetDeploymentCustomEnvironment1 = {
 };
 
 export type ResponseBodyCustomEnvironment =
-  | GetDeploymentCustomEnvironment2
-  | GetDeploymentCustomEnvironment1;
+  | GetDeploymentCustomEnvironment1
+  | GetDeploymentCustomEnvironment2;
 
 export const ResponseBodyOomReport = {
   OutOfMemory: "out-of-memory",
@@ -503,18 +503,18 @@ export type GetDeploymentGitSource1 = {
 };
 
 export type ResponseBodyGitSource =
+  | GetDeploymentGitSource10
+  | GetDeploymentGitSource12
+  | GetDeploymentGitSource4
   | GetDeploymentGitSource8
+  | GetDeploymentGitSource9
   | GetDeploymentGitSource11
-  | GetDeploymentGitSource1
-  | GetDeploymentGitSource5
   | GetDeploymentGitSource2
   | GetDeploymentGitSource3
-  | GetDeploymentGitSource6
   | GetDeploymentGitSource7
-  | GetDeploymentGitSource9
-  | GetDeploymentGitSource4
-  | GetDeploymentGitSource10
-  | GetDeploymentGitSource12;
+  | GetDeploymentGitSource1
+  | GetDeploymentGitSource5
+  | GetDeploymentGitSource6;
 
 export type GetDeploymentResponseBodyProject = {
   id: string;
@@ -596,8 +596,8 @@ export type GetDeploymentResponseBody2 = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | GetDeploymentCustomEnvironment2
     | GetDeploymentCustomEnvironment1
+    | GetDeploymentCustomEnvironment2
     | undefined;
   oomReport?: ResponseBodyOomReport | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
@@ -631,18 +631,18 @@ export type GetDeploymentResponseBody2 = {
    */
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSource8
-    | GetDeploymentGitSource11
-    | GetDeploymentGitSource1
-    | GetDeploymentGitSource5
-    | GetDeploymentGitSource2
-    | GetDeploymentGitSource3
-    | GetDeploymentGitSource6
-    | GetDeploymentGitSource7
-    | GetDeploymentGitSource9
-    | GetDeploymentGitSource4
     | GetDeploymentGitSource10
     | GetDeploymentGitSource12
+    | GetDeploymentGitSource4
+    | GetDeploymentGitSource8
+    | GetDeploymentGitSource9
+    | GetDeploymentGitSource11
+    | GetDeploymentGitSource2
+    | GetDeploymentGitSource3
+    | GetDeploymentGitSource7
+    | GetDeploymentGitSource1
+    | GetDeploymentGitSource5
+    | GetDeploymentGitSource6
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
@@ -1022,8 +1022,8 @@ export type GetDeploymentCustomEnvironmentDeployments1 = {
 };
 
 export type GetDeploymentResponseBodyCustomEnvironment =
-  | GetDeploymentCustomEnvironmentDeployments2
-  | GetDeploymentCustomEnvironmentDeployments1;
+  | GetDeploymentCustomEnvironmentDeployments1
+  | GetDeploymentCustomEnvironmentDeployments2;
 
 export const GetDeploymentResponseBodyOomReport = {
   OutOfMemory: "out-of-memory",
@@ -1303,18 +1303,18 @@ export type GetDeploymentGitSourceDeployments1 = {
 };
 
 export type GetDeploymentResponseBodyGitSource =
+  | GetDeploymentGitSourceDeployments10
+  | GetDeploymentGitSourceDeployments12
+  | GetDeploymentGitSourceDeployments4
   | GetDeploymentGitSourceDeployments8
+  | GetDeploymentGitSourceDeployments9
   | GetDeploymentGitSourceDeployments11
-  | GetDeploymentGitSourceDeployments1
-  | GetDeploymentGitSourceDeployments5
   | GetDeploymentGitSourceDeployments2
   | GetDeploymentGitSourceDeployments3
-  | GetDeploymentGitSourceDeployments6
   | GetDeploymentGitSourceDeployments7
-  | GetDeploymentGitSourceDeployments9
-  | GetDeploymentGitSourceDeployments4
-  | GetDeploymentGitSourceDeployments10
-  | GetDeploymentGitSourceDeployments12;
+  | GetDeploymentGitSourceDeployments1
+  | GetDeploymentGitSourceDeployments5
+  | GetDeploymentGitSourceDeployments6;
 
 export type ResponseBodyProject = {
   id: string;
@@ -1514,8 +1514,8 @@ export type GetDeploymentRoutes1 = {
 
 export type ResponseBodyRoutes =
   | GetDeploymentRoutes3
-  | GetDeploymentRoutes2
-  | GetDeploymentRoutes1;
+  | GetDeploymentRoutes1
+  | GetDeploymentRoutes2;
 
 export const GetDeploymentGitRepoDeploymentsType = {
   Bitbucket: "bitbucket",
@@ -1601,9 +1601,9 @@ export type GetDeploymentGitRepo1 = {
 };
 
 export type ResponseBodyGitRepo =
-  | GetDeploymentGitRepo1
   | GetDeploymentGitRepo2
-  | GetDeploymentGitRepo3;
+  | GetDeploymentGitRepo3
+  | GetDeploymentGitRepo1;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -1689,8 +1689,8 @@ export type GetDeploymentMicrofrontends1 = {
 };
 
 export type ResponseBodyMicrofrontends =
-  | GetDeploymentMicrofrontends1
-  | GetDeploymentMicrofrontends2;
+  | GetDeploymentMicrofrontends2
+  | GetDeploymentMicrofrontends1;
 
 export const ResponseBodyFunctionType = {
   Fluid: "fluid",
@@ -1783,8 +1783,8 @@ export type GetDeploymentResponseBody1 = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | GetDeploymentCustomEnvironmentDeployments2
     | GetDeploymentCustomEnvironmentDeployments1
+    | GetDeploymentCustomEnvironmentDeployments2
     | undefined;
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
@@ -1818,18 +1818,18 @@ export type GetDeploymentResponseBody1 = {
    */
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSourceDeployments8
-    | GetDeploymentGitSourceDeployments11
-    | GetDeploymentGitSourceDeployments1
-    | GetDeploymentGitSourceDeployments5
-    | GetDeploymentGitSourceDeployments2
-    | GetDeploymentGitSourceDeployments3
-    | GetDeploymentGitSourceDeployments6
-    | GetDeploymentGitSourceDeployments7
-    | GetDeploymentGitSourceDeployments9
-    | GetDeploymentGitSourceDeployments4
     | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSourceDeployments12
+    | GetDeploymentGitSourceDeployments4
+    | GetDeploymentGitSourceDeployments8
+    | GetDeploymentGitSourceDeployments9
+    | GetDeploymentGitSourceDeployments11
+    | GetDeploymentGitSourceDeployments2
+    | GetDeploymentGitSourceDeployments3
+    | GetDeploymentGitSourceDeployments7
+    | GetDeploymentGitSourceDeployments1
+    | GetDeploymentGitSourceDeployments5
+    | GetDeploymentGitSourceDeployments6
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
@@ -1860,18 +1860,18 @@ export type GetDeploymentResponseBody1 = {
    */
   passiveConnectConfigurationId?: string | undefined;
   routes:
-    | Array<GetDeploymentRoutes3 | GetDeploymentRoutes2 | GetDeploymentRoutes1>
+    | Array<GetDeploymentRoutes3 | GetDeploymentRoutes1 | GetDeploymentRoutes2>
     | null;
   gitRepo?:
-    | GetDeploymentGitRepo1
     | GetDeploymentGitRepo2
     | GetDeploymentGitRepo3
+    | GetDeploymentGitRepo1
     | null
     | undefined;
   flags?: GetDeploymentFlags1 | Array<GetDeploymentFlags2> | undefined;
   microfrontends?:
-    | GetDeploymentMicrofrontends1
     | GetDeploymentMicrofrontends2
+    | GetDeploymentMicrofrontends1
     | undefined;
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
@@ -1887,8 +1887,8 @@ export type GetDeploymentResponseBody1 = {
  * The deployment including both public and private information
  */
 export type GetDeploymentResponseBody =
-  | GetDeploymentResponseBody2
-  | GetDeploymentResponseBody1;
+  | GetDeploymentResponseBody1
+  | GetDeploymentResponseBody2;
 
 /** @internal */
 export const GetDeploymentRequest$inboundSchema: z.ZodType<
@@ -2689,14 +2689,14 @@ export const ResponseBodyCustomEnvironment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
   z.lazy(() => GetDeploymentCustomEnvironment1$inboundSchema),
+  z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyCustomEnvironment$Outbound =
-  | GetDeploymentCustomEnvironment2$Outbound
-  | GetDeploymentCustomEnvironment1$Outbound;
+  | GetDeploymentCustomEnvironment1$Outbound
+  | GetDeploymentCustomEnvironment2$Outbound;
 
 /** @internal */
 export const ResponseBodyCustomEnvironment$outboundSchema: z.ZodType<
@@ -2704,8 +2704,8 @@ export const ResponseBodyCustomEnvironment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyCustomEnvironment
 > = z.union([
-  z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
   z.lazy(() => GetDeploymentCustomEnvironment1$outboundSchema),
+  z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
 ]);
 
 /**
@@ -4334,34 +4334,34 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentGitSource8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource11$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource1$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource5$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource2$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource3$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource6$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource7$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource9$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource4$inboundSchema),
   z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource12$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource4$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource8$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource11$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource2$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource3$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource1$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource5$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource6$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyGitSource$Outbound =
+  | GetDeploymentGitSource10$Outbound
+  | GetDeploymentGitSource12$Outbound
+  | GetDeploymentGitSource4$Outbound
   | GetDeploymentGitSource8$Outbound
+  | GetDeploymentGitSource9$Outbound
   | GetDeploymentGitSource11$Outbound
-  | GetDeploymentGitSource1$Outbound
-  | GetDeploymentGitSource5$Outbound
   | GetDeploymentGitSource2$Outbound
   | GetDeploymentGitSource3$Outbound
-  | GetDeploymentGitSource6$Outbound
   | GetDeploymentGitSource7$Outbound
-  | GetDeploymentGitSource9$Outbound
-  | GetDeploymentGitSource4$Outbound
-  | GetDeploymentGitSource10$Outbound
-  | GetDeploymentGitSource12$Outbound;
+  | GetDeploymentGitSource1$Outbound
+  | GetDeploymentGitSource5$Outbound
+  | GetDeploymentGitSource6$Outbound;
 
 /** @internal */
 export const ResponseBodyGitSource$outboundSchema: z.ZodType<
@@ -4369,18 +4369,18 @@ export const ResponseBodyGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyGitSource
 > = z.union([
-  z.lazy(() => GetDeploymentGitSource8$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource11$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource1$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource5$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource2$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource3$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource6$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource7$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource9$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource4$outboundSchema),
   z.lazy(() => GetDeploymentGitSource10$outboundSchema),
   z.lazy(() => GetDeploymentGitSource12$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource4$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource8$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource9$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource11$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource2$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource3$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource1$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource5$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource6$outboundSchema),
 ]);
 
 /**
@@ -4665,8 +4665,8 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironment1$inboundSchema),
+    z.lazy(() => GetDeploymentCustomEnvironment2$inboundSchema),
   ]).optional(),
   oomReport: ResponseBodyOomReport$inboundSchema.optional(),
   aliasWarning: z.nullable(z.lazy(() => ResponseBodyAliasWarning$inboundSchema))
@@ -4695,18 +4695,18 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSource8$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource11$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource1$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource5$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource2$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource3$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource6$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource7$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource9$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource4$inboundSchema),
     z.lazy(() => GetDeploymentGitSource10$inboundSchema),
     z.lazy(() => GetDeploymentGitSource12$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource4$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource8$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource9$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource11$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource2$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource3$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource1$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource5$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource6$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
@@ -4746,8 +4746,8 @@ export type GetDeploymentResponseBody2$Outbound = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | GetDeploymentCustomEnvironment2$Outbound
     | GetDeploymentCustomEnvironment1$Outbound
+    | GetDeploymentCustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
   aliasWarning?: ResponseBodyAliasWarning$Outbound | null | undefined;
@@ -4772,18 +4772,18 @@ export type GetDeploymentResponseBody2$Outbound = {
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSource8$Outbound
-    | GetDeploymentGitSource11$Outbound
-    | GetDeploymentGitSource1$Outbound
-    | GetDeploymentGitSource5$Outbound
-    | GetDeploymentGitSource2$Outbound
-    | GetDeploymentGitSource3$Outbound
-    | GetDeploymentGitSource6$Outbound
-    | GetDeploymentGitSource7$Outbound
-    | GetDeploymentGitSource9$Outbound
-    | GetDeploymentGitSource4$Outbound
     | GetDeploymentGitSource10$Outbound
     | GetDeploymentGitSource12$Outbound
+    | GetDeploymentGitSource4$Outbound
+    | GetDeploymentGitSource8$Outbound
+    | GetDeploymentGitSource9$Outbound
+    | GetDeploymentGitSource11$Outbound
+    | GetDeploymentGitSource2$Outbound
+    | GetDeploymentGitSource3$Outbound
+    | GetDeploymentGitSource7$Outbound
+    | GetDeploymentGitSource1$Outbound
+    | GetDeploymentGitSource5$Outbound
+    | GetDeploymentGitSource6$Outbound
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
@@ -4825,8 +4825,8 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironment1$outboundSchema),
+    z.lazy(() => GetDeploymentCustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: ResponseBodyOomReport$outboundSchema.optional(),
   aliasWarning: z.nullable(
@@ -4856,18 +4856,18 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSource8$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource11$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource1$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource5$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource2$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource3$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource6$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource7$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource9$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource4$outboundSchema),
     z.lazy(() => GetDeploymentGitSource10$outboundSchema),
     z.lazy(() => GetDeploymentGitSource12$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource4$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource8$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource9$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource11$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource2$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource3$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource1$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource5$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource6$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
@@ -6463,14 +6463,14 @@ export function getDeploymentCustomEnvironmentDeployments1FromJSON(
 export const GetDeploymentResponseBodyCustomEnvironment$inboundSchema:
   z.ZodType<GetDeploymentResponseBodyCustomEnvironment, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
       z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$inboundSchema),
+      z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
     ]);
 
 /** @internal */
 export type GetDeploymentResponseBodyCustomEnvironment$Outbound =
-  | GetDeploymentCustomEnvironmentDeployments2$Outbound
-  | GetDeploymentCustomEnvironmentDeployments1$Outbound;
+  | GetDeploymentCustomEnvironmentDeployments1$Outbound
+  | GetDeploymentCustomEnvironmentDeployments2$Outbound;
 
 /** @internal */
 export const GetDeploymentResponseBodyCustomEnvironment$outboundSchema:
@@ -6479,8 +6479,8 @@ export const GetDeploymentResponseBodyCustomEnvironment$outboundSchema:
     z.ZodTypeDef,
     GetDeploymentResponseBodyCustomEnvironment
   > = z.union([
-    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$outboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$outboundSchema),
+    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$outboundSchema),
   ]);
 
 /**
@@ -8141,34 +8141,34 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentResponseBodyGitSource$Outbound =
+  | GetDeploymentGitSourceDeployments10$Outbound
+  | GetDeploymentGitSourceDeployments12$Outbound
+  | GetDeploymentGitSourceDeployments4$Outbound
   | GetDeploymentGitSourceDeployments8$Outbound
+  | GetDeploymentGitSourceDeployments9$Outbound
   | GetDeploymentGitSourceDeployments11$Outbound
-  | GetDeploymentGitSourceDeployments1$Outbound
-  | GetDeploymentGitSourceDeployments5$Outbound
   | GetDeploymentGitSourceDeployments2$Outbound
   | GetDeploymentGitSourceDeployments3$Outbound
-  | GetDeploymentGitSourceDeployments6$Outbound
   | GetDeploymentGitSourceDeployments7$Outbound
-  | GetDeploymentGitSourceDeployments9$Outbound
-  | GetDeploymentGitSourceDeployments4$Outbound
-  | GetDeploymentGitSourceDeployments10$Outbound
-  | GetDeploymentGitSourceDeployments12$Outbound;
+  | GetDeploymentGitSourceDeployments1$Outbound
+  | GetDeploymentGitSourceDeployments5$Outbound
+  | GetDeploymentGitSourceDeployments6$Outbound;
 
 /** @internal */
 export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
@@ -8176,18 +8176,18 @@ export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentResponseBodyGitSource
 > = z.union([
-  z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
 ]);
 
 /**
@@ -9369,15 +9369,15 @@ export const ResponseBodyRoutes$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => GetDeploymentRoutes3$inboundSchema),
-  z.lazy(() => GetDeploymentRoutes2$inboundSchema),
   z.lazy(() => GetDeploymentRoutes1$inboundSchema),
+  z.lazy(() => GetDeploymentRoutes2$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyRoutes$Outbound =
   | GetDeploymentRoutes3$Outbound
-  | GetDeploymentRoutes2$Outbound
-  | GetDeploymentRoutes1$Outbound;
+  | GetDeploymentRoutes1$Outbound
+  | GetDeploymentRoutes2$Outbound;
 
 /** @internal */
 export const ResponseBodyRoutes$outboundSchema: z.ZodType<
@@ -9386,8 +9386,8 @@ export const ResponseBodyRoutes$outboundSchema: z.ZodType<
   ResponseBodyRoutes
 > = z.union([
   z.lazy(() => GetDeploymentRoutes3$outboundSchema),
-  z.lazy(() => GetDeploymentRoutes2$outboundSchema),
   z.lazy(() => GetDeploymentRoutes1$outboundSchema),
+  z.lazy(() => GetDeploymentRoutes2$outboundSchema),
 ]);
 
 /**
@@ -9801,16 +9801,16 @@ export const ResponseBodyGitRepo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
   z.lazy(() => GetDeploymentGitRepo2$inboundSchema),
   z.lazy(() => GetDeploymentGitRepo3$inboundSchema),
+  z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyGitRepo$Outbound =
-  | GetDeploymentGitRepo1$Outbound
   | GetDeploymentGitRepo2$Outbound
-  | GetDeploymentGitRepo3$Outbound;
+  | GetDeploymentGitRepo3$Outbound
+  | GetDeploymentGitRepo1$Outbound;
 
 /** @internal */
 export const ResponseBodyGitRepo$outboundSchema: z.ZodType<
@@ -9818,9 +9818,9 @@ export const ResponseBodyGitRepo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyGitRepo
 > = z.union([
-  z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
   z.lazy(() => GetDeploymentGitRepo2$outboundSchema),
   z.lazy(() => GetDeploymentGitRepo3$outboundSchema),
+  z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
 ]);
 
 /**
@@ -10353,14 +10353,14 @@ export const ResponseBodyMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
   z.lazy(() => GetDeploymentMicrofrontends2$inboundSchema),
+  z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyMicrofrontends$Outbound =
-  | GetDeploymentMicrofrontends1$Outbound
-  | GetDeploymentMicrofrontends2$Outbound;
+  | GetDeploymentMicrofrontends2$Outbound
+  | GetDeploymentMicrofrontends1$Outbound;
 
 /** @internal */
 export const ResponseBodyMicrofrontends$outboundSchema: z.ZodType<
@@ -10368,8 +10368,8 @@ export const ResponseBodyMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyMicrofrontends
 > = z.union([
-  z.lazy(() => GetDeploymentMicrofrontends1$outboundSchema),
   z.lazy(() => GetDeploymentMicrofrontends2$outboundSchema),
+  z.lazy(() => GetDeploymentMicrofrontends1$outboundSchema),
 ]);
 
 /**
@@ -10700,8 +10700,8 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$inboundSchema),
+    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$inboundSchema),
   ]).optional(),
   oomReport: GetDeploymentResponseBodyOomReport$inboundSchema.optional(),
   aliasWarning: z.nullable(
@@ -10729,18 +10729,18 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
@@ -10771,16 +10771,16 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => GetDeploymentRoutes3$inboundSchema),
       z.lazy(() =>
-        GetDeploymentRoutes2$inboundSchema
+        GetDeploymentRoutes1$inboundSchema
       ),
-      z.lazy(() => GetDeploymentRoutes1$inboundSchema),
+      z.lazy(() => GetDeploymentRoutes2$inboundSchema),
     ])),
   ),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
       z.lazy(() => GetDeploymentGitRepo2$inboundSchema),
       z.lazy(() => GetDeploymentGitRepo3$inboundSchema),
+      z.lazy(() => GetDeploymentGitRepo1$inboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -10788,8 +10788,8 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.array(z.lazy(() => GetDeploymentFlags2$inboundSchema)),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
     z.lazy(() => GetDeploymentMicrofrontends2$inboundSchema),
+    z.lazy(() => GetDeploymentMicrofrontends1$inboundSchema),
   ]).optional(),
   config: z.lazy(() => ResponseBodyConfig$inboundSchema).optional(),
   checks: z.lazy(() => ResponseBodyChecks$inboundSchema).optional(),
@@ -10828,8 +10828,8 @@ export type GetDeploymentResponseBody1$Outbound = {
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
-    | GetDeploymentCustomEnvironmentDeployments2$Outbound
     | GetDeploymentCustomEnvironmentDeployments1$Outbound
+    | GetDeploymentCustomEnvironmentDeployments2$Outbound
     | undefined;
   oomReport?: string | undefined;
   aliasWarning?:
@@ -10857,18 +10857,18 @@ export type GetDeploymentResponseBody1$Outbound = {
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSourceDeployments8$Outbound
-    | GetDeploymentGitSourceDeployments11$Outbound
-    | GetDeploymentGitSourceDeployments1$Outbound
-    | GetDeploymentGitSourceDeployments5$Outbound
-    | GetDeploymentGitSourceDeployments2$Outbound
-    | GetDeploymentGitSourceDeployments3$Outbound
-    | GetDeploymentGitSourceDeployments6$Outbound
-    | GetDeploymentGitSourceDeployments7$Outbound
-    | GetDeploymentGitSourceDeployments9$Outbound
-    | GetDeploymentGitSourceDeployments4$Outbound
     | GetDeploymentGitSourceDeployments10$Outbound
     | GetDeploymentGitSourceDeployments12$Outbound
+    | GetDeploymentGitSourceDeployments4$Outbound
+    | GetDeploymentGitSourceDeployments8$Outbound
+    | GetDeploymentGitSourceDeployments9$Outbound
+    | GetDeploymentGitSourceDeployments11$Outbound
+    | GetDeploymentGitSourceDeployments2$Outbound
+    | GetDeploymentGitSourceDeployments3$Outbound
+    | GetDeploymentGitSourceDeployments7$Outbound
+    | GetDeploymentGitSourceDeployments1$Outbound
+    | GetDeploymentGitSourceDeployments5$Outbound
+    | GetDeploymentGitSourceDeployments6$Outbound
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
@@ -10898,14 +10898,14 @@ export type GetDeploymentResponseBody1$Outbound = {
   routes:
     | Array<
       | GetDeploymentRoutes3$Outbound
-      | GetDeploymentRoutes2$Outbound
       | GetDeploymentRoutes1$Outbound
+      | GetDeploymentRoutes2$Outbound
     >
     | null;
   gitRepo?:
-    | GetDeploymentGitRepo1$Outbound
     | GetDeploymentGitRepo2$Outbound
     | GetDeploymentGitRepo3$Outbound
+    | GetDeploymentGitRepo1$Outbound
     | null
     | undefined;
   flags?:
@@ -10913,8 +10913,8 @@ export type GetDeploymentResponseBody1$Outbound = {
     | Array<GetDeploymentFlags2$Outbound>
     | undefined;
   microfrontends?:
-    | GetDeploymentMicrofrontends1$Outbound
     | GetDeploymentMicrofrontends2$Outbound
+    | GetDeploymentMicrofrontends1$Outbound
     | undefined;
   config?: ResponseBodyConfig$Outbound | undefined;
   checks?: ResponseBodyChecks$Outbound | undefined;
@@ -10960,8 +10960,8 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   previewCommentsEnabled: z.boolean().optional(),
   ttyBuildLogs: z.boolean().optional(),
   customEnvironment: z.union([
-    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$outboundSchema),
     z.lazy(() => GetDeploymentCustomEnvironmentDeployments1$outboundSchema),
+    z.lazy(() => GetDeploymentCustomEnvironmentDeployments2$outboundSchema),
   ]).optional(),
   oomReport: GetDeploymentResponseBodyOomReport$outboundSchema.optional(),
   aliasWarning: z.nullable(
@@ -10989,18 +10989,18 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
@@ -11031,16 +11031,16 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.array(z.union([
       z.lazy(() => GetDeploymentRoutes3$outboundSchema),
       z.lazy(() =>
-        GetDeploymentRoutes2$outboundSchema
+        GetDeploymentRoutes1$outboundSchema
       ),
-      z.lazy(() => GetDeploymentRoutes1$outboundSchema),
+      z.lazy(() => GetDeploymentRoutes2$outboundSchema),
     ])),
   ),
   gitRepo: z.nullable(
     z.union([
-      z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
       z.lazy(() => GetDeploymentGitRepo2$outboundSchema),
       z.lazy(() => GetDeploymentGitRepo3$outboundSchema),
+      z.lazy(() => GetDeploymentGitRepo1$outboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -11048,8 +11048,8 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.array(z.lazy(() => GetDeploymentFlags2$outboundSchema)),
   ]).optional(),
   microfrontends: z.union([
-    z.lazy(() => GetDeploymentMicrofrontends1$outboundSchema),
     z.lazy(() => GetDeploymentMicrofrontends2$outboundSchema),
+    z.lazy(() => GetDeploymentMicrofrontends1$outboundSchema),
   ]).optional(),
   config: z.lazy(() => ResponseBodyConfig$outboundSchema).optional(),
   checks: z.lazy(() => ResponseBodyChecks$outboundSchema).optional(),
@@ -11092,14 +11092,14 @@ export const GetDeploymentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentResponseBody2$inboundSchema),
   z.lazy(() => GetDeploymentResponseBody1$inboundSchema),
+  z.lazy(() => GetDeploymentResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentResponseBody$Outbound =
-  | GetDeploymentResponseBody2$Outbound
-  | GetDeploymentResponseBody1$Outbound;
+  | GetDeploymentResponseBody1$Outbound
+  | GetDeploymentResponseBody2$Outbound;
 
 /** @internal */
 export const GetDeploymentResponseBody$outboundSchema: z.ZodType<
@@ -11107,8 +11107,8 @@ export const GetDeploymentResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentResponseBody
 > = z.union([
-  z.lazy(() => GetDeploymentResponseBody2$outboundSchema),
   z.lazy(() => GetDeploymentResponseBody1$outboundSchema),
+  z.lazy(() => GetDeploymentResponseBody2$outboundSchema),
 ]);
 
 /**

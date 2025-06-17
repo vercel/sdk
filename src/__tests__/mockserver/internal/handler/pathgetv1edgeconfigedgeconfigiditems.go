@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -46,52 +45,7 @@ func testGetEdgeConfigItemsGetEdgeConfigItems0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *components.EdgeConfigItem = &components.EdgeConfigItem{
-		Key: "<key>",
-		Value: types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-			map[string]*components.EdgeConfigItemValue{
-				"key": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-					map[string]*components.EdgeConfigItemValue{
-						"0": types.Pointer(components.CreateEdgeConfigItemValueBoolean(
-							false,
-						)),
-						"1": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-							map[string]*components.EdgeConfigItemValue{
-								"key": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-									map[string]*components.EdgeConfigItemValue{},
-								)),
-								"key1": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-									map[string]*components.EdgeConfigItemValue{
-										"key": types.Pointer(components.CreateEdgeConfigItemValueStr(
-											"<value>",
-										)),
-										"key1": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-											map[string]*components.EdgeConfigItemValue{},
-										)),
-									},
-								)),
-								"key2": types.Pointer(components.CreateEdgeConfigItemValueNumber(
-									7567.91,
-								)),
-							},
-						)),
-						"2": types.Pointer(components.CreateEdgeConfigItemValueStr(
-							"<value>",
-						)),
-					},
-				)),
-				"key1": types.Pointer(components.CreateEdgeConfigItemValueNumber(
-					4645.1,
-				)),
-				"key2": types.Pointer(components.CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(
-					map[string]*components.EdgeConfigItemValue{},
-				)),
-			},
-		)),
-		EdgeConfigID: "<id>",
-		CreatedAt:    70.73,
-		UpdatedAt:    2714.73,
-	}
+	var respBody []components.EdgeConfigItem = []components.EdgeConfigItem{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

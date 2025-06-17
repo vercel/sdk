@@ -85,8 +85,8 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 		URL:        "https://unwritten-viability.org",
 		ProjectID:  "<id>",
 		OwnerID:    "<id>",
-		Routes:     []operations.CreateDeploymentRouteUnion{},
 		Plan:       operations.CreateDeploymentPlanEnterprise,
+		Routes:     []operations.CreateDeploymentRouteUnion{},
 		CreatedIn:  "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

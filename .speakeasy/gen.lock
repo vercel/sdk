@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 65dfd720ae218063d7211b321864940b
+  docChecksum: df66c17edb3663abfecb8292f2fce4c6
   docVersion: 0.0.1
-  speakeasyVersion: 1.563.1
-  generationVersion: 2.629.1
-  releaseVersion: 1.8.3
-  configChecksum: db32d769b537067b8da2752fe5e5428e
+  speakeasyVersion: 1.563.4
+  generationVersion: 2.630.6
+  releaseVersion: 1.8.4
+  configChecksum: 9d3a5e661f6d8310a378b1cb0d5f7c29
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -37,7 +37,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.3.0
     tests: 0.16.2
-    unions: 2.85.9
+    unions: 2.85.10
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -5511,7 +5511,7 @@ examples:
         application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "routes": [], "plan": "enterprise", "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6040,7 +6040,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"key": "<key>", "value": {"key": {"0": false, "1": {"key": {}, "key1": {"key": "<value>", "key1": {}}, "key2": 7567.91}, "2": "<value>"}, "key1": 4645.1, "key2": {}}, "edgeConfigId": "<id>", "createdAt": 70.73, "updatedAt": 2714.73}
+          application/json: [{"key": "<key>", "value": {"key": {"0": false, "1": {"key": {}, "key1": {"key": "<value>", "key1": {}}, "key2": 7567.91}, "2": "<value>"}, "key1": 4645.1, "key2": {}}, "edgeConfigId": "<id>", "createdAt": 70.73, "updatedAt": 2714.73}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

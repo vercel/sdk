@@ -91,7 +91,7 @@ export type Scopes1 = {
   expiresAt?: number | undefined;
 };
 
-export type Scopes = Scopes1 | Scopes2;
+export type Scopes = Scopes2 | Scopes1;
 
 /**
  * Authentication token metadata.
@@ -116,7 +116,7 @@ export type AuthToken = {
   /**
    * The access scopes granted to the token.
    */
-  scopes?: Array<Scopes1 | Scopes2> | undefined;
+  scopes?: Array<Scopes2 | Scopes1> | undefined;
   /**
    * Timestamp (in milliseconds) of when the token expires.
    */
@@ -400,12 +400,12 @@ export function scopes1FromJSON(
 /** @internal */
 export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> = z
   .union([
-    z.lazy(() => Scopes1$inboundSchema),
     z.lazy(() => Scopes2$inboundSchema),
+    z.lazy(() => Scopes1$inboundSchema),
   ]);
 
 /** @internal */
-export type Scopes$Outbound = Scopes1$Outbound | Scopes2$Outbound;
+export type Scopes$Outbound = Scopes2$Outbound | Scopes1$Outbound;
 
 /** @internal */
 export const Scopes$outboundSchema: z.ZodType<
@@ -413,8 +413,8 @@ export const Scopes$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Scopes
 > = z.union([
-  z.lazy(() => Scopes1$outboundSchema),
   z.lazy(() => Scopes2$outboundSchema),
+  z.lazy(() => Scopes1$outboundSchema),
 ]);
 
 /**
@@ -456,8 +456,8 @@ export const AuthToken$inboundSchema: z.ZodType<
   origin: z.string().optional(),
   scopes: z.array(
     z.union([
-      z.lazy(() => Scopes1$inboundSchema),
       z.lazy(() => Scopes2$inboundSchema),
+      z.lazy(() => Scopes1$inboundSchema),
     ]),
   ).optional(),
   expiresAt: z.number().optional(),
@@ -471,7 +471,7 @@ export type AuthToken$Outbound = {
   name: string;
   type: string;
   origin?: string | undefined;
-  scopes?: Array<Scopes1$Outbound | Scopes2$Outbound> | undefined;
+  scopes?: Array<Scopes2$Outbound | Scopes1$Outbound> | undefined;
   expiresAt?: number | undefined;
   activeAt: number;
   createdAt: number;
@@ -489,8 +489,8 @@ export const AuthToken$outboundSchema: z.ZodType<
   origin: z.string().optional(),
   scopes: z.array(
     z.union([
-      z.lazy(() => Scopes1$outboundSchema),
       z.lazy(() => Scopes2$outboundSchema),
+      z.lazy(() => Scopes1$outboundSchema),
     ]),
   ).optional(),
   expiresAt: z.number().optional(),

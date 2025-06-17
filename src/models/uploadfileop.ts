@@ -61,8 +61,8 @@ export type UploadFileResponseBody1 = {
  * File successfully uploaded
  */
 export type UploadFileResponseBody =
-  | UploadFileResponseBody2
-  | UploadFileResponseBody1;
+  | UploadFileResponseBody1
+  | UploadFileResponseBody2;
 
 /** @internal */
 export const UploadFileRequest$inboundSchema: z.ZodType<
@@ -280,14 +280,14 @@ export const UploadFileResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UploadFileResponseBody2$inboundSchema),
   z.lazy(() => UploadFileResponseBody1$inboundSchema),
+  z.lazy(() => UploadFileResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type UploadFileResponseBody$Outbound =
-  | UploadFileResponseBody2$Outbound
-  | UploadFileResponseBody1$Outbound;
+  | UploadFileResponseBody1$Outbound
+  | UploadFileResponseBody2$Outbound;
 
 /** @internal */
 export const UploadFileResponseBody$outboundSchema: z.ZodType<
@@ -295,8 +295,8 @@ export const UploadFileResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadFileResponseBody
 > = z.union([
-  z.lazy(() => UploadFileResponseBody2$outboundSchema),
   z.lazy(() => UploadFileResponseBody1$outboundSchema),
+  z.lazy(() => UploadFileResponseBody2$outboundSchema),
 ]);
 
 /**

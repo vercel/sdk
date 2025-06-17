@@ -99,10 +99,10 @@ export type ListDeploymentAliasesProtectionBypass1 = {
 };
 
 export type ListDeploymentAliasesProtectionBypass =
-  | ListDeploymentAliasesProtectionBypass1
-  | ListDeploymentAliasesProtectionBypass3
+  | ListDeploymentAliasesProtectionBypass2
   | ListDeploymentAliasesProtectionBypass4
-  | ListDeploymentAliasesProtectionBypass2;
+  | ListDeploymentAliasesProtectionBypass1
+  | ListDeploymentAliasesProtectionBypass3;
 
 /**
  * A list of the aliases assigned to the deployment
@@ -129,10 +129,10 @@ export type Aliases = {
    */
   protectionBypass?: {
     [k: string]:
-      | ListDeploymentAliasesProtectionBypass1
-      | ListDeploymentAliasesProtectionBypass3
+      | ListDeploymentAliasesProtectionBypass2
       | ListDeploymentAliasesProtectionBypass4
-      | ListDeploymentAliasesProtectionBypass2;
+      | ListDeploymentAliasesProtectionBypass1
+      | ListDeploymentAliasesProtectionBypass3;
   } | undefined;
 };
 
@@ -613,18 +613,18 @@ export const ListDeploymentAliasesProtectionBypass$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
 ]);
 
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass$Outbound =
-  | ListDeploymentAliasesProtectionBypass1$Outbound
-  | ListDeploymentAliasesProtectionBypass3$Outbound
+  | ListDeploymentAliasesProtectionBypass2$Outbound
   | ListDeploymentAliasesProtectionBypass4$Outbound
-  | ListDeploymentAliasesProtectionBypass2$Outbound;
+  | ListDeploymentAliasesProtectionBypass1$Outbound
+  | ListDeploymentAliasesProtectionBypass3$Outbound;
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
@@ -632,10 +632,10 @@ export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListDeploymentAliasesProtectionBypass
 > = z.union([
+  z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
 ]);
 
 /**
@@ -683,10 +683,10 @@ export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
     redirect: z.nullable(z.string()).optional(),
     protectionBypass: z.record(
       z.union([
+        z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
+        z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
         z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
         z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
-        z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
-        z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
       ]),
     ).optional(),
   });
@@ -699,10 +699,10 @@ export type Aliases$Outbound = {
   redirect?: string | null | undefined;
   protectionBypass?: {
     [k: string]:
-      | ListDeploymentAliasesProtectionBypass1$Outbound
-      | ListDeploymentAliasesProtectionBypass3$Outbound
+      | ListDeploymentAliasesProtectionBypass2$Outbound
       | ListDeploymentAliasesProtectionBypass4$Outbound
-      | ListDeploymentAliasesProtectionBypass2$Outbound;
+      | ListDeploymentAliasesProtectionBypass1$Outbound
+      | ListDeploymentAliasesProtectionBypass3$Outbound;
   } | undefined;
 };
 
@@ -718,10 +718,10 @@ export const Aliases$outboundSchema: z.ZodType<
   redirect: z.nullable(z.string()).optional(),
   protectionBypass: z.record(
     z.union([
+      z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
+      z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
       z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
       z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
-      z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
-      z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
     ]),
   ).optional(),
 });

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: df66c17edb3663abfecb8292f2fce4c6
+  docChecksum: 85a639ceba1279270d528da53e7694bb
   docVersion: 0.0.1
-  speakeasyVersion: 1.563.4
-  generationVersion: 2.630.6
-  releaseVersion: 1.8.4
-  configChecksum: 9d3a5e661f6d8310a378b1cb0d5f7c29
+  speakeasyVersion: 1.567.0
+  generationVersion: 2.632.0
+  releaseVersion: 1.8.5
+  configChecksum: bb7716f2292ce06d9e5eb777e05a2d70
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
-    constsAndDefaults: 0.1.11
+    constsAndDefaults: 0.1.12
     core: 3.21.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -244,7 +244,9 @@ generatedFiles:
   - docs/models/canceldeploymenthas1.md
   - docs/models/canceldeploymenthas2.md
   - docs/models/canceldeploymenthasdeploymentstype.md
+  - docs/models/canceldeploymenthasdeploymentsvalue.md
   - docs/models/canceldeploymenthastype.md
+  - docs/models/canceldeploymenthasvalue.md
   - docs/models/canceldeploymentimages.md
   - docs/models/canceldeploymentintegrations.md
   - docs/models/canceldeploymentlambdas.md
@@ -255,7 +257,9 @@ generatedFiles:
   - docs/models/canceldeploymentmissing1.md
   - docs/models/canceldeploymentmissing2.md
   - docs/models/canceldeploymentmissingdeploymentstype.md
+  - docs/models/canceldeploymentmissingdeploymentsvalue.md
   - docs/models/canceldeploymentmissingtype.md
+  - docs/models/canceldeploymentmissingvalue.md
   - docs/models/canceldeploymentoidctokenclaims.md
   - docs/models/canceldeploymentoomreport.md
   - docs/models/canceldeploymentoutput.md
@@ -272,9 +276,11 @@ generatedFiles:
   - docs/models/canceldeploymentroutes1.md
   - docs/models/canceldeploymentroutes2.md
   - docs/models/canceldeploymentroutes3.md
+  - docs/models/canceldeploymentroutesaction.md
   - docs/models/canceldeploymentrouteshandle.md
   - docs/models/canceldeploymentrouteshas.md
   - docs/models/canceldeploymentroutesmissing.md
+  - docs/models/canceldeploymentroutesmitigate.md
   - docs/models/canceldeploymentsource.md
   - docs/models/canceldeploymentspeedinsights.md
   - docs/models/canceldeploymentstate.md
@@ -282,6 +288,14 @@ generatedFiles:
   - docs/models/canceldeploymenttarget.md
   - docs/models/canceldeploymentteam.md
   - docs/models/canceldeploymenttype.md
+  - docs/models/canceldeploymentvalue2.md
+  - docs/models/canceldeploymentvaluedeployments2.md
+  - docs/models/canceldeploymentvaluedeploymentseq.md
+  - docs/models/canceldeploymentvaluedeploymentsresponse2.md
+  - docs/models/canceldeploymentvaluedeploymentsresponse2002.md
+  - docs/models/canceldeploymentvaluedeploymentsresponse200eq.md
+  - docs/models/canceldeploymentvaluedeploymentsresponseeq.md
+  - docs/models/canceldeploymentvalueeq.md
   - docs/models/canceldeploymentwebanalytics.md
   - docs/models/category.md
   - docs/models/changes.md
@@ -427,11 +441,13 @@ generatedFiles:
   - docs/models/createdeploymentgitsourcerepoid.md
   - docs/models/createdeploymentgitsourcetype.md
   - docs/models/createdeploymenthastype.md
+  - docs/models/createdeploymenthasvalue.md
   - docs/models/createdeploymentmicrofrontends.md
   - docs/models/createdeploymentmicrofrontends1.md
   - docs/models/createdeploymentmicrofrontends2.md
   - docs/models/createdeploymentmicrofrontendsapplications.md
   - docs/models/createdeploymentmissingtype.md
+  - docs/models/createdeploymentmissingvalue.md
   - docs/models/createdeploymentoutput.md
   - docs/models/createdeploymentplan.md
   - docs/models/createdeploymentproject.md
@@ -448,6 +464,12 @@ generatedFiles:
   - docs/models/createdeploymenttarget.md
   - docs/models/createdeploymentteam.md
   - docs/models/createdeploymenttype.md
+  - docs/models/createdeploymentvalue2.md
+  - docs/models/createdeploymentvaluedeployments2.md
+  - docs/models/createdeploymentvaluedeploymentseq.md
+  - docs/models/createdeploymentvaluedeploymentsresponse2.md
+  - docs/models/createdeploymentvaluedeploymentsresponse2002.md
+  - docs/models/createdeploymentvalueeq.md
   - docs/models/createdeploymentwebanalytics.md
   - docs/models/createdfrom.md
   - docs/models/createdinternalcontenthint.md
@@ -915,6 +937,7 @@ generatedFiles:
   - docs/models/environments.md
   - docs/models/environmentvariables.md
   - docs/models/envs.md
+  - docs/models/eq.md
   - docs/models/erl.md
   - docs/models/errort.md
   - docs/models/event.md
@@ -1286,14 +1309,18 @@ generatedFiles:
   - docs/models/getdeploymenthas1.md
   - docs/models/getdeploymenthas2.md
   - docs/models/getdeploymenthasdeploymentstype.md
+  - docs/models/getdeploymenthasdeploymentsvalue.md
   - docs/models/getdeploymenthastype.md
+  - docs/models/getdeploymenthasvalue.md
   - docs/models/getdeploymentmicrofrontends1.md
   - docs/models/getdeploymentmicrofrontends2.md
   - docs/models/getdeploymentmicrofrontendsapplications.md
   - docs/models/getdeploymentmissing1.md
   - docs/models/getdeploymentmissing2.md
   - docs/models/getdeploymentmissingdeploymentstype.md
+  - docs/models/getdeploymentmissingdeploymentsvalue.md
   - docs/models/getdeploymentmissingtype.md
+  - docs/models/getdeploymentmissingvalue.md
   - docs/models/getdeploymentrequest.md
   - docs/models/getdeploymentresponsebody.md
   - docs/models/getdeploymentresponsebody1.md
@@ -1324,10 +1351,12 @@ generatedFiles:
   - docs/models/getdeploymentroutes1.md
   - docs/models/getdeploymentroutes2.md
   - docs/models/getdeploymentroutes3.md
+  - docs/models/getdeploymentroutesaction.md
   - docs/models/getdeploymentrouteshandle.md
   - docs/models/getdeploymentrouteshas.md
   - docs/models/getdeploymentrouteslocale.md
   - docs/models/getdeploymentroutesmissing.md
+  - docs/models/getdeploymentroutesmitigate.md
   - docs/models/getdeploymentsaliasassigned.md
   - docs/models/getdeploymentsaliaserror.md
   - docs/models/getdeploymentschecks.md
@@ -1351,6 +1380,14 @@ generatedFiles:
   - docs/models/getdeploymentstarget.md
   - docs/models/getdeploymentstype.md
   - docs/models/getdeploymentswebanalytics.md
+  - docs/models/getdeploymentvalue2.md
+  - docs/models/getdeploymentvaluedeployments2.md
+  - docs/models/getdeploymentvaluedeploymentseq.md
+  - docs/models/getdeploymentvaluedeploymentsresponse2.md
+  - docs/models/getdeploymentvaluedeploymentsresponse2002.md
+  - docs/models/getdeploymentvaluedeploymentsresponse200eq.md
+  - docs/models/getdeploymentvaluedeploymentsresponseeq.md
+  - docs/models/getdeploymentvalueeq.md
   - docs/models/getdomainconfigrequest.md
   - docs/models/getdomainconfigresponsebody.md
   - docs/models/getdomaincreator.md
@@ -1852,6 +1889,7 @@ generatedFiles:
   - docs/models/has1.md
   - docs/models/has2.md
   - docs/models/hastype.md
+  - docs/models/hasvalue.md
   - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md
   - docs/models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md
   - docs/models/heightlighteddetails.md
@@ -1990,6 +2028,7 @@ generatedFiles:
   - docs/models/missing1.md
   - docs/models/missing2.md
   - docs/models/missingtype.md
+  - docs/models/missingvalue.md
   - docs/models/mitigate.md
   - docs/models/monitoring.md
   - docs/models/monitoringmetric.md
@@ -2661,10 +2700,12 @@ generatedFiles:
   - docs/models/routes1.md
   - docs/models/routes2.md
   - docs/models/routes3.md
+  - docs/models/routesaction.md
   - docs/models/routeshandle.md
   - docs/models/routeshas.md
   - docs/models/routeslocale.md
   - docs/models/routesmissing.md
+  - docs/models/routesmitigate.md
   - docs/models/rules.md
   - docs/models/runtimecacheread.md
   - docs/models/runtimecachewrite.md
@@ -3358,6 +3399,7 @@ generatedFiles:
   - docs/models/utm.md
   - docs/models/value.md
   - docs/models/value2.md
+  - docs/models/valueeq.md
   - docs/models/vercelbadrequesterror.md
   - docs/models/vercelcache.md
   - docs/models/vercelforbiddenerror.md

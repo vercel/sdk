@@ -23,7 +23,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.8.4
+  version: 1.8.5
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -32,6 +32,7 @@ typescript:
   author: Speakeasy
   baseErrorName: VercelError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true

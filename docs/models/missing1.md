@@ -7,7 +7,7 @@ import { Missing1 } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Missing1 = {
   type: "host",
-  value: "<value>",
+  value: {},
 };
 ```
 
@@ -16,4 +16,4 @@ let value: Missing1 = {
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | `type`                                         | [models.MissingType](../models/missingtype.md) | :heavy_check_mark:                             | N/A                                            |
-| `value`                                        | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `value`                                        | *models.MissingValue*                          | :heavy_check_mark:                             | N/A                                            |

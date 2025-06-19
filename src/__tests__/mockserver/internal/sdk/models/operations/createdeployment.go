@@ -4797,10 +4797,227 @@ func (e *CreateDeploymentHasType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentHasEq2Type string
+
+const (
+	CreateDeploymentHasEq2TypeStr    CreateDeploymentHasEq2Type = "str"
+	CreateDeploymentHasEq2TypeNumber CreateDeploymentHasEq2Type = "number"
+)
+
+type CreateDeploymentHasEq2 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentHasEq2Type
+}
+
+func CreateCreateDeploymentHasEq2Str(str string) CreateDeploymentHasEq2 {
+	typ := CreateDeploymentHasEq2TypeStr
+
+	return CreateDeploymentHasEq2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentHasEq2Number(number float64) CreateDeploymentHasEq2 {
+	typ := CreateDeploymentHasEq2TypeNumber
+
+	return CreateDeploymentHasEq2{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentHasEq2) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentHasEq2TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentHasEq2TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentHasEq2", string(data))
+}
+
+func (u CreateDeploymentHasEq2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentHasEq2: all fields are null")
+}
+
+type CreateDeploymentHasValue2 struct {
+	Eq   *CreateDeploymentHasEq2 `json:"eq,omitempty"`
+	Neq  *string                 `json:"neq,omitempty"`
+	Inc  []string                `json:"inc,omitempty"`
+	Ninc []string                `json:"ninc,omitempty"`
+	Pre  *string                 `json:"pre,omitempty"`
+	Suf  *string                 `json:"suf,omitempty"`
+	Re   *string                 `json:"re,omitempty"`
+	Gt   *float64                `json:"gt,omitempty"`
+	Gte  *float64                `json:"gte,omitempty"`
+	Lt   *float64                `json:"lt,omitempty"`
+	Lte  *float64                `json:"lte,omitempty"`
+}
+
+func (o *CreateDeploymentHasValue2) GetEq() *CreateDeploymentHasEq2 {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CreateDeploymentHasValue2) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CreateDeploymentHasValue2) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CreateDeploymentHasValue2) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CreateDeploymentHasValue2) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CreateDeploymentHasValue2) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CreateDeploymentHasValue2) GetRe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Re
+}
+
+func (o *CreateDeploymentHasValue2) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateDeploymentHasValue2) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateDeploymentHasValue2) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CreateDeploymentHasValue2) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CreateDeploymentHasValueUnion2Type string
+
+const (
+	CreateDeploymentHasValueUnion2TypeStr                       CreateDeploymentHasValueUnion2Type = "str"
+	CreateDeploymentHasValueUnion2TypeCreateDeploymentHasValue2 CreateDeploymentHasValueUnion2Type = "createDeployment_has_value_2"
+)
+
+type CreateDeploymentHasValueUnion2 struct {
+	Str                       *string                    `queryParam:"inline"`
+	CreateDeploymentHasValue2 *CreateDeploymentHasValue2 `queryParam:"inline"`
+
+	Type CreateDeploymentHasValueUnion2Type
+}
+
+func CreateCreateDeploymentHasValueUnion2Str(str string) CreateDeploymentHasValueUnion2 {
+	typ := CreateDeploymentHasValueUnion2TypeStr
+
+	return CreateDeploymentHasValueUnion2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentHasValueUnion2CreateDeploymentHasValue2(createDeploymentHasValue2 CreateDeploymentHasValue2) CreateDeploymentHasValueUnion2 {
+	typ := CreateDeploymentHasValueUnion2TypeCreateDeploymentHasValue2
+
+	return CreateDeploymentHasValueUnion2{
+		CreateDeploymentHasValue2: &createDeploymentHasValue2,
+		Type:                      typ,
+	}
+}
+
+func (u *CreateDeploymentHasValueUnion2) UnmarshalJSON(data []byte) error {
+
+	var createDeploymentHasValue2 CreateDeploymentHasValue2 = CreateDeploymentHasValue2{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentHasValue2, "", true, true); err == nil {
+		u.CreateDeploymentHasValue2 = &createDeploymentHasValue2
+		u.Type = CreateDeploymentHasValueUnion2TypeCreateDeploymentHasValue2
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentHasValueUnion2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentHasValueUnion2", string(data))
+}
+
+func (u CreateDeploymentHasValueUnion2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateDeploymentHasValue2 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentHasValue2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentHasValueUnion2: all fields are null")
+}
+
 type CreateDeploymentHas struct {
-	Type  CreateDeploymentHasType `json:"type"`
-	Key   string                  `json:"key"`
-	Value *string                 `json:"value,omitempty"`
+	Type  CreateDeploymentHasType         `json:"type"`
+	Key   string                          `json:"key"`
+	Value *CreateDeploymentHasValueUnion2 `json:"value,omitempty"`
 }
 
 func (o *CreateDeploymentHas) GetType() CreateDeploymentHasType {
@@ -4817,7 +5034,7 @@ func (o *CreateDeploymentHas) GetKey() string {
 	return o.Key
 }
 
-func (o *CreateDeploymentHas) GetValue() *string {
+func (o *CreateDeploymentHas) GetValue() *CreateDeploymentHasValueUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -4847,9 +5064,226 @@ func (e *CreateDeploymentHasTypeHost) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentHasEq1Type string
+
+const (
+	CreateDeploymentHasEq1TypeStr    CreateDeploymentHasEq1Type = "str"
+	CreateDeploymentHasEq1TypeNumber CreateDeploymentHasEq1Type = "number"
+)
+
+type CreateDeploymentHasEq1 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentHasEq1Type
+}
+
+func CreateCreateDeploymentHasEq1Str(str string) CreateDeploymentHasEq1 {
+	typ := CreateDeploymentHasEq1TypeStr
+
+	return CreateDeploymentHasEq1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentHasEq1Number(number float64) CreateDeploymentHasEq1 {
+	typ := CreateDeploymentHasEq1TypeNumber
+
+	return CreateDeploymentHasEq1{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentHasEq1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentHasEq1TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentHasEq1TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentHasEq1", string(data))
+}
+
+func (u CreateDeploymentHasEq1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentHasEq1: all fields are null")
+}
+
+type CreateDeploymentHasValue1 struct {
+	Eq   *CreateDeploymentHasEq1 `json:"eq,omitempty"`
+	Neq  *string                 `json:"neq,omitempty"`
+	Inc  []string                `json:"inc,omitempty"`
+	Ninc []string                `json:"ninc,omitempty"`
+	Pre  *string                 `json:"pre,omitempty"`
+	Suf  *string                 `json:"suf,omitempty"`
+	Re   *string                 `json:"re,omitempty"`
+	Gt   *float64                `json:"gt,omitempty"`
+	Gte  *float64                `json:"gte,omitempty"`
+	Lt   *float64                `json:"lt,omitempty"`
+	Lte  *float64                `json:"lte,omitempty"`
+}
+
+func (o *CreateDeploymentHasValue1) GetEq() *CreateDeploymentHasEq1 {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CreateDeploymentHasValue1) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CreateDeploymentHasValue1) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CreateDeploymentHasValue1) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CreateDeploymentHasValue1) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CreateDeploymentHasValue1) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CreateDeploymentHasValue1) GetRe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Re
+}
+
+func (o *CreateDeploymentHasValue1) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateDeploymentHasValue1) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateDeploymentHasValue1) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CreateDeploymentHasValue1) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CreateDeploymentHasValueUnion1Type string
+
+const (
+	CreateDeploymentHasValueUnion1TypeStr                       CreateDeploymentHasValueUnion1Type = "str"
+	CreateDeploymentHasValueUnion1TypeCreateDeploymentHasValue1 CreateDeploymentHasValueUnion1Type = "createDeployment_has_value_1"
+)
+
+type CreateDeploymentHasValueUnion1 struct {
+	Str                       *string                    `queryParam:"inline"`
+	CreateDeploymentHasValue1 *CreateDeploymentHasValue1 `queryParam:"inline"`
+
+	Type CreateDeploymentHasValueUnion1Type
+}
+
+func CreateCreateDeploymentHasValueUnion1Str(str string) CreateDeploymentHasValueUnion1 {
+	typ := CreateDeploymentHasValueUnion1TypeStr
+
+	return CreateDeploymentHasValueUnion1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentHasValueUnion1CreateDeploymentHasValue1(createDeploymentHasValue1 CreateDeploymentHasValue1) CreateDeploymentHasValueUnion1 {
+	typ := CreateDeploymentHasValueUnion1TypeCreateDeploymentHasValue1
+
+	return CreateDeploymentHasValueUnion1{
+		CreateDeploymentHasValue1: &createDeploymentHasValue1,
+		Type:                      typ,
+	}
+}
+
+func (u *CreateDeploymentHasValueUnion1) UnmarshalJSON(data []byte) error {
+
+	var createDeploymentHasValue1 CreateDeploymentHasValue1 = CreateDeploymentHasValue1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentHasValue1, "", true, true); err == nil {
+		u.CreateDeploymentHasValue1 = &createDeploymentHasValue1
+		u.Type = CreateDeploymentHasValueUnion1TypeCreateDeploymentHasValue1
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentHasValueUnion1TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentHasValueUnion1", string(data))
+}
+
+func (u CreateDeploymentHasValueUnion1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateDeploymentHasValue1 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentHasValue1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentHasValueUnion1: all fields are null")
+}
+
 type CreateDeploymentHasHost struct {
-	Type  CreateDeploymentHasTypeHost `json:"type"`
-	Value string                      `json:"value"`
+	Type  CreateDeploymentHasTypeHost    `json:"type"`
+	Value CreateDeploymentHasValueUnion1 `json:"value"`
 }
 
 func (o *CreateDeploymentHasHost) GetType() CreateDeploymentHasTypeHost {
@@ -4859,9 +5293,9 @@ func (o *CreateDeploymentHasHost) GetType() CreateDeploymentHasTypeHost {
 	return o.Type
 }
 
-func (o *CreateDeploymentHasHost) GetValue() string {
+func (o *CreateDeploymentHasHost) GetValue() CreateDeploymentHasValueUnion1 {
 	if o == nil {
-		return ""
+		return CreateDeploymentHasValueUnion1{}
 	}
 	return o.Value
 }
@@ -4958,10 +5392,227 @@ func (e *CreateDeploymentMissingType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentMissingEq2Type string
+
+const (
+	CreateDeploymentMissingEq2TypeStr    CreateDeploymentMissingEq2Type = "str"
+	CreateDeploymentMissingEq2TypeNumber CreateDeploymentMissingEq2Type = "number"
+)
+
+type CreateDeploymentMissingEq2 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingEq2Type
+}
+
+func CreateCreateDeploymentMissingEq2Str(str string) CreateDeploymentMissingEq2 {
+	typ := CreateDeploymentMissingEq2TypeStr
+
+	return CreateDeploymentMissingEq2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingEq2Number(number float64) CreateDeploymentMissingEq2 {
+	typ := CreateDeploymentMissingEq2TypeNumber
+
+	return CreateDeploymentMissingEq2{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentMissingEq2) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingEq2TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentMissingEq2TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingEq2", string(data))
+}
+
+func (u CreateDeploymentMissingEq2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingEq2: all fields are null")
+}
+
+type CreateDeploymentMissingValue2 struct {
+	Eq   *CreateDeploymentMissingEq2 `json:"eq,omitempty"`
+	Neq  *string                     `json:"neq,omitempty"`
+	Inc  []string                    `json:"inc,omitempty"`
+	Ninc []string                    `json:"ninc,omitempty"`
+	Pre  *string                     `json:"pre,omitempty"`
+	Suf  *string                     `json:"suf,omitempty"`
+	Re   *string                     `json:"re,omitempty"`
+	Gt   *float64                    `json:"gt,omitempty"`
+	Gte  *float64                    `json:"gte,omitempty"`
+	Lt   *float64                    `json:"lt,omitempty"`
+	Lte  *float64                    `json:"lte,omitempty"`
+}
+
+func (o *CreateDeploymentMissingValue2) GetEq() *CreateDeploymentMissingEq2 {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CreateDeploymentMissingValue2) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CreateDeploymentMissingValue2) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CreateDeploymentMissingValue2) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CreateDeploymentMissingValue2) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CreateDeploymentMissingValue2) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CreateDeploymentMissingValue2) GetRe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Re
+}
+
+func (o *CreateDeploymentMissingValue2) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateDeploymentMissingValue2) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateDeploymentMissingValue2) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CreateDeploymentMissingValue2) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CreateDeploymentMissingValueUnion2Type string
+
+const (
+	CreateDeploymentMissingValueUnion2TypeStr                           CreateDeploymentMissingValueUnion2Type = "str"
+	CreateDeploymentMissingValueUnion2TypeCreateDeploymentMissingValue2 CreateDeploymentMissingValueUnion2Type = "createDeployment_missing_value_2"
+)
+
+type CreateDeploymentMissingValueUnion2 struct {
+	Str                           *string                        `queryParam:"inline"`
+	CreateDeploymentMissingValue2 *CreateDeploymentMissingValue2 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingValueUnion2Type
+}
+
+func CreateCreateDeploymentMissingValueUnion2Str(str string) CreateDeploymentMissingValueUnion2 {
+	typ := CreateDeploymentMissingValueUnion2TypeStr
+
+	return CreateDeploymentMissingValueUnion2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingValueUnion2CreateDeploymentMissingValue2(createDeploymentMissingValue2 CreateDeploymentMissingValue2) CreateDeploymentMissingValueUnion2 {
+	typ := CreateDeploymentMissingValueUnion2TypeCreateDeploymentMissingValue2
+
+	return CreateDeploymentMissingValueUnion2{
+		CreateDeploymentMissingValue2: &createDeploymentMissingValue2,
+		Type:                          typ,
+	}
+}
+
+func (u *CreateDeploymentMissingValueUnion2) UnmarshalJSON(data []byte) error {
+
+	var createDeploymentMissingValue2 CreateDeploymentMissingValue2 = CreateDeploymentMissingValue2{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentMissingValue2, "", true, true); err == nil {
+		u.CreateDeploymentMissingValue2 = &createDeploymentMissingValue2
+		u.Type = CreateDeploymentMissingValueUnion2TypeCreateDeploymentMissingValue2
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingValueUnion2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingValueUnion2", string(data))
+}
+
+func (u CreateDeploymentMissingValueUnion2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateDeploymentMissingValue2 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentMissingValue2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingValueUnion2: all fields are null")
+}
+
 type CreateDeploymentMissing struct {
-	Type  CreateDeploymentMissingType `json:"type"`
-	Key   string                      `json:"key"`
-	Value *string                     `json:"value,omitempty"`
+	Type  CreateDeploymentMissingType         `json:"type"`
+	Key   string                              `json:"key"`
+	Value *CreateDeploymentMissingValueUnion2 `json:"value,omitempty"`
 }
 
 func (o *CreateDeploymentMissing) GetType() CreateDeploymentMissingType {
@@ -4978,7 +5629,7 @@ func (o *CreateDeploymentMissing) GetKey() string {
 	return o.Key
 }
 
-func (o *CreateDeploymentMissing) GetValue() *string {
+func (o *CreateDeploymentMissing) GetValue() *CreateDeploymentMissingValueUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -5008,9 +5659,226 @@ func (e *CreateDeploymentMissingTypeHost) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentMissingEq1Type string
+
+const (
+	CreateDeploymentMissingEq1TypeStr    CreateDeploymentMissingEq1Type = "str"
+	CreateDeploymentMissingEq1TypeNumber CreateDeploymentMissingEq1Type = "number"
+)
+
+type CreateDeploymentMissingEq1 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingEq1Type
+}
+
+func CreateCreateDeploymentMissingEq1Str(str string) CreateDeploymentMissingEq1 {
+	typ := CreateDeploymentMissingEq1TypeStr
+
+	return CreateDeploymentMissingEq1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingEq1Number(number float64) CreateDeploymentMissingEq1 {
+	typ := CreateDeploymentMissingEq1TypeNumber
+
+	return CreateDeploymentMissingEq1{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentMissingEq1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingEq1TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentMissingEq1TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingEq1", string(data))
+}
+
+func (u CreateDeploymentMissingEq1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingEq1: all fields are null")
+}
+
+type CreateDeploymentMissingValue1 struct {
+	Eq   *CreateDeploymentMissingEq1 `json:"eq,omitempty"`
+	Neq  *string                     `json:"neq,omitempty"`
+	Inc  []string                    `json:"inc,omitempty"`
+	Ninc []string                    `json:"ninc,omitempty"`
+	Pre  *string                     `json:"pre,omitempty"`
+	Suf  *string                     `json:"suf,omitempty"`
+	Re   *string                     `json:"re,omitempty"`
+	Gt   *float64                    `json:"gt,omitempty"`
+	Gte  *float64                    `json:"gte,omitempty"`
+	Lt   *float64                    `json:"lt,omitempty"`
+	Lte  *float64                    `json:"lte,omitempty"`
+}
+
+func (o *CreateDeploymentMissingValue1) GetEq() *CreateDeploymentMissingEq1 {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CreateDeploymentMissingValue1) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CreateDeploymentMissingValue1) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CreateDeploymentMissingValue1) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CreateDeploymentMissingValue1) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CreateDeploymentMissingValue1) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CreateDeploymentMissingValue1) GetRe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Re
+}
+
+func (o *CreateDeploymentMissingValue1) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateDeploymentMissingValue1) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateDeploymentMissingValue1) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CreateDeploymentMissingValue1) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CreateDeploymentMissingValueUnion1Type string
+
+const (
+	CreateDeploymentMissingValueUnion1TypeStr                           CreateDeploymentMissingValueUnion1Type = "str"
+	CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1 CreateDeploymentMissingValueUnion1Type = "createDeployment_missing_value_1"
+)
+
+type CreateDeploymentMissingValueUnion1 struct {
+	Str                           *string                        `queryParam:"inline"`
+	CreateDeploymentMissingValue1 *CreateDeploymentMissingValue1 `queryParam:"inline"`
+
+	Type CreateDeploymentMissingValueUnion1Type
+}
+
+func CreateCreateDeploymentMissingValueUnion1Str(str string) CreateDeploymentMissingValueUnion1 {
+	typ := CreateDeploymentMissingValueUnion1TypeStr
+
+	return CreateDeploymentMissingValueUnion1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentMissingValueUnion1CreateDeploymentMissingValue1(createDeploymentMissingValue1 CreateDeploymentMissingValue1) CreateDeploymentMissingValueUnion1 {
+	typ := CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1
+
+	return CreateDeploymentMissingValueUnion1{
+		CreateDeploymentMissingValue1: &createDeploymentMissingValue1,
+		Type:                          typ,
+	}
+}
+
+func (u *CreateDeploymentMissingValueUnion1) UnmarshalJSON(data []byte) error {
+
+	var createDeploymentMissingValue1 CreateDeploymentMissingValue1 = CreateDeploymentMissingValue1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentMissingValue1, "", true, true); err == nil {
+		u.CreateDeploymentMissingValue1 = &createDeploymentMissingValue1
+		u.Type = CreateDeploymentMissingValueUnion1TypeCreateDeploymentMissingValue1
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentMissingValueUnion1TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentMissingValueUnion1", string(data))
+}
+
+func (u CreateDeploymentMissingValueUnion1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateDeploymentMissingValue1 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentMissingValue1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentMissingValueUnion1: all fields are null")
+}
+
 type CreateDeploymentMissingHost struct {
-	Type  CreateDeploymentMissingTypeHost `json:"type"`
-	Value string                          `json:"value"`
+	Type  CreateDeploymentMissingTypeHost    `json:"type"`
+	Value CreateDeploymentMissingValueUnion1 `json:"value"`
 }
 
 func (o *CreateDeploymentMissingHost) GetType() CreateDeploymentMissingTypeHost {
@@ -5020,9 +5888,9 @@ func (o *CreateDeploymentMissingHost) GetType() CreateDeploymentMissingTypeHost 
 	return o.Type
 }
 
-func (o *CreateDeploymentMissingHost) GetValue() string {
+func (o *CreateDeploymentMissingHost) GetValue() CreateDeploymentMissingValueUnion1 {
 	if o == nil {
-		return ""
+		return CreateDeploymentMissingValueUnion1{}
 	}
 	return o.Value
 }
@@ -5090,6 +5958,43 @@ func (u CreateDeploymentMissingUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentMissingUnion: all fields are null")
 }
 
+type CreateDeploymentAction string
+
+const (
+	CreateDeploymentActionChallenge CreateDeploymentAction = "challenge"
+	CreateDeploymentActionDeny      CreateDeploymentAction = "deny"
+)
+
+func (e CreateDeploymentAction) ToPointer() *CreateDeploymentAction {
+	return &e
+}
+func (e *CreateDeploymentAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "challenge":
+		fallthrough
+	case "deny":
+		*e = CreateDeploymentAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentAction: %v", v)
+	}
+}
+
+type CreateDeploymentMitigate struct {
+	Action CreateDeploymentAction `json:"action"`
+}
+
+func (o *CreateDeploymentMitigate) GetAction() CreateDeploymentAction {
+	if o == nil {
+		return CreateDeploymentAction("")
+	}
+	return o.Action
+}
+
 type CreateDeploymentLocale struct {
 	Redirect map[string]string `json:"redirect,omitempty"`
 	Cookie   *string           `json:"cookie,omitempty"`
@@ -5122,6 +6027,7 @@ type CreateDeploymentRoute1 struct {
 	Status        *float64                       `json:"status,omitempty"`
 	Has           []CreateDeploymentHasUnion     `json:"has,omitempty"`
 	Missing       []CreateDeploymentMissingUnion `json:"missing,omitempty"`
+	Mitigate      *CreateDeploymentMitigate      `json:"mitigate,omitempty"`
 	Locale        *CreateDeploymentLocale        `json:"locale,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
@@ -5213,6 +6119,13 @@ func (o *CreateDeploymentRoute1) GetMissing() []CreateDeploymentMissingUnion {
 		return nil
 	}
 	return o.Missing
+}
+
+func (o *CreateDeploymentRoute1) GetMitigate() *CreateDeploymentMitigate {
+	if o == nil {
+		return nil
+	}
+	return o.Mitigate
 }
 
 func (o *CreateDeploymentRoute1) GetLocale() *CreateDeploymentLocale {

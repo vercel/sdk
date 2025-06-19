@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetDeploymentHas1 = {
   type: "host",
-  value: "<value>",
+  value: {},
 };
 ```
 

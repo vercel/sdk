@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 85a639ceba1279270d528da53e7694bb
+  docChecksum: 4669edc1e91574be413f519fec9a7ce5
   docVersion: 0.0.1
-  speakeasyVersion: 1.567.0
-  generationVersion: 2.632.0
-  releaseVersion: 1.8.5
-  configChecksum: bb7716f2292ce06d9e5eb777e05a2d70
+  speakeasyVersion: 1.567.2
+  generationVersion: 2.632.1
+  releaseVersion: 1.8.6
+  configChecksum: 6e3531a9de92fa79d2b50bfeb58d9a09
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -37,7 +37,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.3.0
     tests: 0.16.2
-    unions: 2.85.10
+    unions: 2.85.11
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md

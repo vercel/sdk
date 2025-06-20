@@ -18209,7 +18209,10 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
-          "500": {
+          "408": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },

@@ -829,6 +829,7 @@ actions:
         - deployment.integration.action.start
         - deployment.integration.action.cancel
         - deployment.integration.action.cleanup
+        - deployment.checkrun.start
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated
@@ -897,6 +898,7 @@ actions:
         - deployment.integration.action.start
         - deployment.integration.action.cancel
         - deployment.integration.action.cleanup
+        - deployment.checkrun.start
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated
@@ -965,6 +967,7 @@ actions:
         - deployment.integration.action.start
         - deployment.integration.action.cancel
         - deployment.integration.action.cleanup
+        - deployment.checkrun.start
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated
@@ -1033,6 +1036,7 @@ actions:
         - deployment.integration.action.start
         - deployment.integration.action.cancel
         - deployment.integration.action.cleanup
+        - deployment.checkrun.start
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated
@@ -1101,6 +1105,7 @@ actions:
         - deployment.integration.action.start
         - deployment.integration.action.cancel
         - deployment.integration.action.cleanup
+        - deployment.checkrun.start
         - edge-config.created
         - edge-config.deleted
         - edge-config.items.updated

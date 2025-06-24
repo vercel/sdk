@@ -8953,6 +8953,7 @@ type UpdateProjectSecurity struct {
 	Ja4Enabled             *bool                        `json:"ja4Enabled,omitempty"`
 	FirewallBypassIps      []string                     `json:"firewallBypassIps,omitempty"`
 	ManagedRules           *UpdateProjectManagedRules   `json:"managedRules,omitempty"`
+	BotIDEnabled           *bool                        `json:"botIdEnabled,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -9037,6 +9038,13 @@ func (o *UpdateProjectSecurity) GetManagedRules() *UpdateProjectManagedRules {
 		return nil
 	}
 	return o.ManagedRules
+}
+
+func (o *UpdateProjectSecurity) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
 }
 
 // UpdateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

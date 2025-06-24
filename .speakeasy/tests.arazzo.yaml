@@ -6119,3 +6119,96 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: rolling-release
+  - workflowId: get-resources
+    steps:
+      - stepId: test
+        operationId: get-resources
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "resources": [
+                  {
+                    "partnerId": "\u003cid\u003e",
+                    "internalId": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "productId": "\u003cid\u003e"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+  - workflowId: get-resource
+    steps:
+      - stepId: test
+        operationId: get-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "internalId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "productId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+  - workflowId: delete-resource
+    steps:
+      - stepId: test
+        operationId: delete-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 204
+    x-speakeasy-test-group: marketplace
+  - workflowId: getRollingReleaseBillingStatus
+    steps:
+      - stepId: test
+        operationId: getRollingReleaseBillingStatus
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "availableSlots": 8974.52,
+                "reason": "no_available_slots",
+                "enabledProjects": [
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e",
+                  "\u003cvalue 3\u003e"
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: rolling-release

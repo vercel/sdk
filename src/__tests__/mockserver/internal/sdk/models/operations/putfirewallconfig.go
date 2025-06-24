@@ -1439,9 +1439,10 @@ type PutFirewallConfigRequestBody struct {
 	FirewallEnabled bool           `json:"firewallEnabled"`
 	ManagedRules    map[string]any `json:"managedRules,omitempty"`
 	// Custom Ruleset
-	Crs   *CrsRequest   `json:"crs,omitempty"`
-	Rules []RuleRequest `json:"rules,omitempty"`
-	Ips   []IPRequest   `json:"ips,omitempty"`
+	Crs          *CrsRequest   `json:"crs,omitempty"`
+	Rules        []RuleRequest `json:"rules,omitempty"`
+	Ips          []IPRequest   `json:"ips,omitempty"`
+	BotIDEnabled *bool         `json:"botIdEnabled,omitempty"`
 }
 
 func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
@@ -1477,6 +1478,13 @@ func (o *PutFirewallConfigRequestBody) GetIps() []IPRequest {
 		return nil
 	}
 	return o.Ips
+}
+
+func (o *PutFirewallConfigRequestBody) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
 }
 
 type PutFirewallConfigRequest struct {
@@ -3009,6 +3017,7 @@ type Active struct {
 	Ips          []ActiveIP                     `json:"ips"`
 	Changes      []PutFirewallConfigChange      `json:"changes"`
 	ManagedRules *PutFirewallConfigManagedRules `json:"managedRules,omitempty"`
+	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
 }
 
 func (o *Active) GetOwnerID() string {
@@ -3086,6 +3095,13 @@ func (o *Active) GetManagedRules() *PutFirewallConfigManagedRules {
 		return nil
 	}
 	return o.ManagedRules
+}
+
+func (o *Active) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
 }
 
 type PutFirewallConfigResponseBody struct {

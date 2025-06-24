@@ -342,3 +342,29 @@ test("Rolling Release Complete Rolling Release", async () => {
     },
   });
 });
+
+test("Rolling Release Get Rolling Release Billing Status", async () => {
+  const testHttpClient = createTestHTTPClient("getRollingReleaseBillingStatus");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.rollingRelease.getRollingReleaseBillingStatus({
+    idOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    availableSlots: 8974.52,
+    reason: "no_available_slots",
+    enabledProjects: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  });
+});

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 85a639ceba1279270d528da53e7694bb
+  docChecksum: e170183215976b8bd1f3ac93a998e66a
   docVersion: 0.0.1
-  speakeasyVersion: 1.567.0
-  generationVersion: 2.632.0
-  releaseVersion: 1.8.5
-  configChecksum: bb7716f2292ce06d9e5eb777e05a2d70
+  speakeasyVersion: 1.568.1
+  generationVersion: 2.634.1
+  releaseVersion: 1.8.6
+  configChecksum: 6e3531a9de92fa79d2b50bfeb58d9a09
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -37,7 +37,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.3.0
     tests: 0.16.2
-    unions: 2.85.10
+    unions: 2.85.11
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -136,6 +136,7 @@ generatedFiles:
   - docs/models/authuserlimited.md
   - docs/models/authuserremotecaching.md
   - docs/models/authuserresourceconfig.md
+  - docs/models/availableslots.md
   - docs/models/aws.md
   - docs/models/backup.md
   - docs/models/backups.md
@@ -225,7 +226,6 @@ generatedFiles:
   - docs/models/canceldeploymentgitsource3.md
   - docs/models/canceldeploymentgitsource4.md
   - docs/models/canceldeploymentgitsource5.md
-  - docs/models/canceldeploymentgitsource6.md
   - docs/models/canceldeploymentgitsourcedeploymentsrepoid.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
@@ -422,7 +422,6 @@ generatedFiles:
   - docs/models/createdeploymentgitsource7.md
   - docs/models/createdeploymentgitsource8.md
   - docs/models/createdeploymentgitsource9.md
-  - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbody1type.md
   - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsrequesttype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
@@ -828,6 +827,7 @@ generatedFiles:
   - docs/models/deleteedgeconfigtokensrequestbody.md
   - docs/models/deleteintegrationlogdrainrequest.md
   - docs/models/deleteprojectrequest.md
+  - docs/models/deleteresourcerequest.md
   - docs/models/deleterollingreleaseconfigrequest.md
   - docs/models/deleterollingreleaseconfigresponsebody.md
   - docs/models/deleteteaminvitecoderequest.md
@@ -948,6 +948,7 @@ generatedFiles:
   - docs/models/exchangessotokengranttype.md
   - docs/models/exchangessotokenrequestbody.md
   - docs/models/exchangessotokenresponsebody.md
+  - docs/models/experimentation.md
   - docs/models/failed.md
   - docs/models/fastdatatransfer.md
   - docs/models/fastorigintransfer.md
@@ -1406,6 +1407,7 @@ generatedFiles:
   - docs/models/getedgeconfigbackupresponsebody1.md
   - docs/models/getedgeconfigbackupresponsebody2.md
   - docs/models/getedgeconfigbackupresponsebodyitems.md
+  - docs/models/getedgeconfigbackupresponsebodymetadata.md
   - docs/models/getedgeconfigbackupresponsebodyuser.md
   - docs/models/getedgeconfigbackupsmetadata.md
   - docs/models/getedgeconfigbackupspagination.md
@@ -1788,6 +1790,27 @@ generatedFiles:
   - docs/models/getrecordsresponsebody2.md
   - docs/models/getrecordsresponsebodydnstype.md
   - docs/models/getrecordsresponsebodytype.md
+  - docs/models/getresourcelevel.md
+  - docs/models/getresourcenotification.md
+  - docs/models/getresourcerequest.md
+  - docs/models/getresourceresponsebody.md
+  - docs/models/getresourcesexperimentation.md
+  - docs/models/getresourceslevel.md
+  - docs/models/getresourcesmetadata.md
+  - docs/models/getresourcesnotification.md
+  - docs/models/getresourcesprotocolsettings.md
+  - docs/models/getresourcesrequest.md
+  - docs/models/getresourcesresponsebody.md
+  - docs/models/getresourcesstatus.md
+  - docs/models/getresourcestatus.md
+  - docs/models/getrollingreleasebillingstatusrequest.md
+  - docs/models/getrollingreleasebillingstatusresponsebody.md
+  - docs/models/getrollingreleasebillingstatusresponsebody1.md
+  - docs/models/getrollingreleasebillingstatusresponsebody2.md
+  - docs/models/getrollingreleasebillingstatusresponsebody3.md
+  - docs/models/getrollingreleasebillingstatusresponsebodyreason.md
+  - docs/models/getrollingreleasebillingstatusresponsebodyrollingreleasereason.md
+  - docs/models/getrollingreleasebillingstatusresponsebodyrollingreleaseresponsereason.md
   - docs/models/getrollingreleaseconfigrequest.md
   - docs/models/getrollingreleaseconfigresponsebody.md
   - docs/models/getrollingreleaseconfigrollingrelease.md
@@ -1903,7 +1926,6 @@ generatedFiles:
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
   - docs/models/importflowgitprovider.md
-  - docs/models/importresourceenvironmentoverrides.md
   - docs/models/importresourcerequest.md
   - docs/models/importresourcerequestbody.md
   - docs/models/importresourceresponsebody.md
@@ -2312,6 +2334,7 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/protocolsettings.md
   - docs/models/proxy.md
   - docs/models/purchasetype.md
   - docs/models/purpose.md
@@ -2573,6 +2596,7 @@ generatedFiles:
   - docs/models/requestbody10.md
   - docs/models/requestbody11.md
   - docs/models/requestbody12.md
+  - docs/models/requestbody13.md
   - docs/models/requestbody2.md
   - docs/models/requestbody3.md
   - docs/models/requestbody4.md
@@ -2604,10 +2628,12 @@ generatedFiles:
   - docs/models/rerequestcheckresponsebody.md
   - docs/models/resourceconfig.md
   - docs/models/resourcelimits.md
+  - docs/models/resources.md
   - docs/models/responsebody.md
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
   - docs/models/responsebody3.md
+  - docs/models/responsebody4.md
   - docs/models/responsebodyaction.md
   - docs/models/responsebodyaliasassignedat.md
   - docs/models/responsebodyaliaserror.md
@@ -2665,6 +2691,7 @@ generatedFiles:
   - docs/models/responsebodyproxy.md
   - docs/models/responsebodyreadystate.md
   - docs/models/responsebodyreadysubstate.md
+  - docs/models/responsebodyreason.md
   - docs/models/responsebodyrecords.md
   - docs/models/responsebodyremotepatterns.md
   - docs/models/responsebodyresult.md
@@ -3294,6 +3321,7 @@ generatedFiles:
   - docs/models/updateresourcesecretsbyidrequest.md
   - docs/models/updateresourcesecretsbyidrequestbody.md
   - docs/models/updateresourcesecretsbyidsecrets.md
+  - docs/models/updateresourcesecretsenvironmentoverrides.md
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
   - docs/models/updateresourcesecretssecrets.md
@@ -3490,6 +3518,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidtokens.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
@@ -3532,9 +3561,12 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidaccount.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresources.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingrelease.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingreleasebilling.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingreleaseconfig.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectiddeploymentsdeploymentidruntimelogs.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsprojectidpromotealiases.go
@@ -3709,6 +3741,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteresource.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
@@ -3757,7 +3790,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectmembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getresource.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getresources.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingrelease.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleasebillingstatus.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getruntimelogs.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getteam.go
@@ -3961,10 +3997,13 @@ generatedFiles:
   - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/funcs/marketplaceDeleteInstallationIntegrationConfiguration.ts
+  - src/funcs/marketplaceDeleteResource.ts
   - src/funcs/marketplaceExchangeSsoToken.ts
   - src/funcs/marketplaceGetAccountInfo.ts
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
+  - src/funcs/marketplaceGetResource.ts
+  - src/funcs/marketplaceGetResources.ts
   - src/funcs/marketplaceImportResource.ts
   - src/funcs/marketplaceSubmitBillingData.ts
   - src/funcs/marketplaceSubmitInvoice.ts
@@ -4005,6 +4044,7 @@ generatedFiles:
   - src/funcs/rollingReleaseCompleteRollingRelease.ts
   - src/funcs/rollingReleaseDeleteRollingReleaseConfig.ts
   - src/funcs/rollingReleaseGetRollingRelease.ts
+  - src/funcs/rollingReleaseGetRollingReleaseBillingStatus.ts
   - src/funcs/rollingReleaseGetRollingReleaseConfig.ts
   - src/funcs/rollingReleaseUpdateRollingReleaseConfig.ts
   - src/funcs/securityAddBypassIp.ts
@@ -4160,10 +4200,13 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceDeleteInstallationIntegrationConfiguration.ts
+  - src/mcp-server/tools/marketplaceDeleteResource.ts
   - src/mcp-server/tools/marketplaceExchangeSsoToken.ts
   - src/mcp-server/tools/marketplaceGetAccountInfo.ts
   - src/mcp-server/tools/marketplaceGetInvoice.ts
   - src/mcp-server/tools/marketplaceGetMember.ts
+  - src/mcp-server/tools/marketplaceGetResource.ts
+  - src/mcp-server/tools/marketplaceGetResources.ts
   - src/mcp-server/tools/marketplaceImportResource.ts
   - src/mcp-server/tools/marketplaceSubmitBillingData.ts
   - src/mcp-server/tools/marketplaceSubmitInvoice.ts
@@ -4204,6 +4247,7 @@ generatedFiles:
   - src/mcp-server/tools/rollingReleaseCompleteRollingRelease.ts
   - src/mcp-server/tools/rollingReleaseDeleteRollingReleaseConfig.ts
   - src/mcp-server/tools/rollingReleaseGetRollingRelease.ts
+  - src/mcp-server/tools/rollingReleaseGetRollingReleaseBillingStatus.ts
   - src/mcp-server/tools/rollingReleaseGetRollingReleaseConfig.ts
   - src/mcp-server/tools/rollingReleaseUpdateRollingReleaseConfig.ts
   - src/mcp-server/tools/securityAddBypassIp.ts
@@ -4281,6 +4325,7 @@ generatedFiles:
   - src/models/deleteedgeconfigtokensop.ts
   - src/models/deleteintegrationlogdrainop.ts
   - src/models/deleteprojectop.ts
+  - src/models/deleteresourceop.ts
   - src/models/deleterollingreleaseconfigop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
@@ -4334,6 +4379,9 @@ generatedFiles:
   - src/models/getprojectmembersop.ts
   - src/models/getprojectsop.ts
   - src/models/getrecordsop.ts
+  - src/models/getresourceop.ts
+  - src/models/getresourcesop.ts
+  - src/models/getrollingreleasebillingstatusop.ts
   - src/models/getrollingreleaseconfigop.ts
   - src/models/getrollingreleaseop.ts
   - src/models/getruntimelogsop.ts
@@ -7455,6 +7503,65 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get-resources:
+    speakeasy-default-get-resources:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+      responses:
+        "200":
+          application/json: {"resources": [{"partnerId": "<id>", "internalId": "<id>", "name": "<value>", "productId": "<id>"}]}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get-resource:
+    speakeasy-default-get-resource:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "internalId": "<id>", "name": "<value>", "productId": "<id>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  delete-resource:
+    speakeasy-default-delete-resource:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  getRollingReleaseBillingStatus:
+    speakeasy-default-get-rolling-release-billing-status:
+      parameters:
+        path:
+          idOrName: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"availableSlots": 8974.52, "reason": "no_available_slots", "enabledProjects": ["<value 1>", "<value 2>", "<value 3>"]}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -7617,3 +7724,7 @@ generatedTests:
   getRollingRelease: "2025-06-11T22:13:13Z"
   approveRollingReleaseStage: "2025-06-11T22:13:13Z"
   completeRollingRelease: "2025-06-11T22:13:13Z"
+  get-resources: "2025-06-24T02:26:35Z"
+  get-resource: "2025-06-24T02:26:35Z"
+  delete-resource: "2025-06-24T02:26:35Z"
+  getRollingReleaseBillingStatus: "2025-06-24T02:26:35Z"

@@ -121,6 +121,7 @@ func (u OutcomeUnion) MarshalJSON() ([]byte, error) {
 type UpdateIntegrationDeploymentActionRequestBody struct {
 	Status     *UpdateIntegrationDeploymentActionStatus `json:"status,omitempty"`
 	StatusText *string                                  `json:"statusText,omitempty"`
+	StatusURL  *string                                  `json:"statusUrl,omitempty"`
 	Outcomes   []OutcomeUnion                           `json:"outcomes,omitempty"`
 }
 
@@ -136,6 +137,13 @@ func (o *UpdateIntegrationDeploymentActionRequestBody) GetStatusText() *string {
 		return nil
 	}
 	return o.StatusText
+}
+
+func (o *UpdateIntegrationDeploymentActionRequestBody) GetStatusURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusURL
 }
 
 func (o *UpdateIntegrationDeploymentActionRequestBody) GetOutcomes() []OutcomeUnion {

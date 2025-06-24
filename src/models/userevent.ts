@@ -2662,6 +2662,10 @@ export type OverageMetadata = {
    * Tracks the last time we sent a increased on-demand email.
    */
   increasedOnDemandEmailSentAt?: number | undefined;
+  /**
+   * Tracks the last time we attempted to send an increased on-demand email. This check is to limit the number of attempts per day.
+   */
+  increasedOnDemandEmailAttemptedAt?: number | undefined;
 };
 
 /**
@@ -21594,6 +21598,7 @@ export const OverageMetadata$inboundSchema: z.ZodType<
   weeklyOverageSummaryEmailSentAt: z.number().optional(),
   overageSummaryExpiresAt: z.number().optional(),
   increasedOnDemandEmailSentAt: z.number().optional(),
+  increasedOnDemandEmailAttemptedAt: z.number().optional(),
 });
 
 /** @internal */
@@ -21603,6 +21608,7 @@ export type OverageMetadata$Outbound = {
   weeklyOverageSummaryEmailSentAt?: number | undefined;
   overageSummaryExpiresAt?: number | undefined;
   increasedOnDemandEmailSentAt?: number | undefined;
+  increasedOnDemandEmailAttemptedAt?: number | undefined;
 };
 
 /** @internal */
@@ -21616,6 +21622,7 @@ export const OverageMetadata$outboundSchema: z.ZodType<
   weeklyOverageSummaryEmailSentAt: z.number().optional(),
   overageSummaryExpiresAt: z.number().optional(),
   increasedOnDemandEmailSentAt: z.number().optional(),
+  increasedOnDemandEmailAttemptedAt: z.number().optional(),
 });
 
 /**

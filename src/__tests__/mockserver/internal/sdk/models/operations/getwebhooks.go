@@ -68,6 +68,7 @@ const (
 	GetWebhooksEvent2DeploymentIntegrationActionStart                   GetWebhooksEvent2 = "deployment.integration.action.start"
 	GetWebhooksEvent2DeploymentIntegrationActionCancel                  GetWebhooksEvent2 = "deployment.integration.action.cancel"
 	GetWebhooksEvent2DeploymentIntegrationActionCleanup                 GetWebhooksEvent2 = "deployment.integration.action.cleanup"
+	GetWebhooksEvent2DeploymentCheckrunStart                            GetWebhooksEvent2 = "deployment.checkrun.start"
 	GetWebhooksEvent2EdgeConfigCreated                                  GetWebhooksEvent2 = "edge-config.created"
 	GetWebhooksEvent2EdgeConfigDeleted                                  GetWebhooksEvent2 = "edge-config.deleted"
 	GetWebhooksEvent2EdgeConfigItemsUpdated                             GetWebhooksEvent2 = "edge-config.items.updated"
@@ -168,6 +169,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "deployment.integration.action.cancel":
 		fallthrough
 	case "deployment.integration.action.cleanup":
+		fallthrough
+	case "deployment.checkrun.start":
 		fallthrough
 	case "edge-config.created":
 		fallthrough
@@ -543,6 +546,7 @@ const (
 	GetWebhooksEvent1DeploymentIntegrationActionStart                   GetWebhooksEvent1 = "deployment.integration.action.start"
 	GetWebhooksEvent1DeploymentIntegrationActionCancel                  GetWebhooksEvent1 = "deployment.integration.action.cancel"
 	GetWebhooksEvent1DeploymentIntegrationActionCleanup                 GetWebhooksEvent1 = "deployment.integration.action.cleanup"
+	GetWebhooksEvent1DeploymentCheckrunStart                            GetWebhooksEvent1 = "deployment.checkrun.start"
 	GetWebhooksEvent1EdgeConfigCreated                                  GetWebhooksEvent1 = "edge-config.created"
 	GetWebhooksEvent1EdgeConfigDeleted                                  GetWebhooksEvent1 = "edge-config.deleted"
 	GetWebhooksEvent1EdgeConfigItemsUpdated                             GetWebhooksEvent1 = "edge-config.items.updated"
@@ -643,6 +647,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "deployment.integration.action.cancel":
 		fallthrough
 	case "deployment.integration.action.cleanup":
+		fallthrough
+	case "deployment.checkrun.start":
 		fallthrough
 	case "edge-config.created":
 		fallthrough

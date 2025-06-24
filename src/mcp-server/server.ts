@@ -107,10 +107,13 @@ import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
 import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
 import { tool$marketplaceCreateInstallationIntegrationEdgeConfig } from "./tools/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 import { tool$marketplaceDeleteInstallationIntegrationConfiguration } from "./tools/marketplaceDeleteInstallationIntegrationConfiguration.js";
+import { tool$marketplaceDeleteResource } from "./tools/marketplaceDeleteResource.js";
 import { tool$marketplaceExchangeSsoToken } from "./tools/marketplaceExchangeSsoToken.js";
 import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInfo.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
+import { tool$marketplaceGetResource } from "./tools/marketplaceGetResource.js";
+import { tool$marketplaceGetResources } from "./tools/marketplaceGetResources.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
@@ -151,6 +154,7 @@ import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingRe
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
 import { tool$rollingReleaseDeleteRollingReleaseConfig } from "./tools/rollingReleaseDeleteRollingReleaseConfig.js";
 import { tool$rollingReleaseGetRollingRelease } from "./tools/rollingReleaseGetRollingRelease.js";
+import { tool$rollingReleaseGetRollingReleaseBillingStatus } from "./tools/rollingReleaseGetRollingReleaseBillingStatus.js";
 import { tool$rollingReleaseGetRollingReleaseConfig } from "./tools/rollingReleaseGetRollingReleaseConfig.js";
 import { tool$rollingReleaseUpdateRollingReleaseConfig } from "./tools/rollingReleaseUpdateRollingReleaseConfig.js";
 import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
@@ -192,7 +196,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.8.5",
+    version: "1.8.6",
   });
 
   const client = new VercelCore({
@@ -322,6 +326,10 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);
   tool(tool$marketplaceCreateEvent);
+  tool(tool$marketplaceGetResources);
+  tool(tool$marketplaceGetResource);
+  tool(tool$marketplaceDeleteResource);
+  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceSubmitBillingData);
   tool(tool$marketplaceSubmitInvoice);
   tool(tool$marketplaceGetInvoice);
@@ -329,7 +337,6 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceSubmitPrepaymentBalances);
   tool(tool$marketplaceUpdateResourceSecrets);
   tool(tool$marketplaceUpdateResourceSecretsById);
-  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
   tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
@@ -349,6 +356,7 @@ export function createMCPServer(deps: {
   tool(tool$environmentGetCustomEnvironment);
   tool(tool$environmentUpdateCustomEnvironment);
   tool(tool$environmentRemoveCustomEnvironment);
+  tool(tool$rollingReleaseGetRollingReleaseBillingStatus);
   tool(tool$rollingReleaseGetRollingReleaseConfig);
   tool(tool$rollingReleaseDeleteRollingReleaseConfig);
   tool(tool$rollingReleaseUpdateRollingReleaseConfig);

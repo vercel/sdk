@@ -9,6 +9,15 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Toggle botID
+ */
+export type RequestBody13 = {
+  action: string;
+  id?: string | undefined;
+  value: boolean;
+};
+
 export const UpdateFirewallConfigRequestBodySecurityRequest12Action = {
   Log: "log",
   Challenge: "challenge",
@@ -564,6 +573,7 @@ export type UpdateFirewallConfigRequestBody =
   | UpdateFirewallConfigRequestBody4
   | UpdateFirewallConfigRequestBody8
   | UpdateFirewallConfigRequestBody10
+  | RequestBody13
   | UpdateFirewallConfigRequestBody7;
 
 export type UpdateFirewallConfigRequest = {
@@ -588,10 +598,67 @@ export type UpdateFirewallConfigRequest = {
     | UpdateFirewallConfigRequestBody4
     | UpdateFirewallConfigRequestBody8
     | UpdateFirewallConfigRequestBody10
+    | RequestBody13
     | UpdateFirewallConfigRequestBody7;
 };
 
 export type UpdateFirewallConfigResponseBody = {};
+
+/** @internal */
+export const RequestBody13$inboundSchema: z.ZodType<
+  RequestBody13,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: z.string(),
+  id: z.string().optional(),
+  value: z.boolean(),
+});
+
+/** @internal */
+export type RequestBody13$Outbound = {
+  action: string;
+  id?: string | undefined;
+  value: boolean;
+};
+
+/** @internal */
+export const RequestBody13$outboundSchema: z.ZodType<
+  RequestBody13$Outbound,
+  z.ZodTypeDef,
+  RequestBody13
+> = z.object({
+  action: z.string(),
+  id: z.string().optional(),
+  value: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestBody13$ {
+  /** @deprecated use `RequestBody13$inboundSchema` instead. */
+  export const inboundSchema = RequestBody13$inboundSchema;
+  /** @deprecated use `RequestBody13$outboundSchema` instead. */
+  export const outboundSchema = RequestBody13$outboundSchema;
+  /** @deprecated use `RequestBody13$Outbound` instead. */
+  export type Outbound = RequestBody13$Outbound;
+}
+
+export function requestBody13ToJSON(requestBody13: RequestBody13): string {
+  return JSON.stringify(RequestBody13$outboundSchema.parse(requestBody13));
+}
+
+export function requestBody13FromJSON(
+  jsonString: string,
+): SafeParseResult<RequestBody13, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestBody13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBody13' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateFirewallConfigRequestBodySecurityRequest12Action$inboundSchema:
@@ -3898,6 +3965,7 @@ export const UpdateFirewallConfigRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => UpdateFirewallConfigRequestBody4$inboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
+  z.lazy(() => RequestBody13$inboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
 ]);
 
@@ -3914,6 +3982,7 @@ export type UpdateFirewallConfigRequestBody$Outbound =
   | UpdateFirewallConfigRequestBody4$Outbound
   | UpdateFirewallConfigRequestBody8$Outbound
   | UpdateFirewallConfigRequestBody10$Outbound
+  | RequestBody13$Outbound
   | UpdateFirewallConfigRequestBody7$Outbound;
 
 /** @internal */
@@ -3933,6 +4002,7 @@ export const UpdateFirewallConfigRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
+  z.lazy(() => RequestBody13$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
 ]);
 
@@ -3990,6 +4060,7 @@ export const UpdateFirewallConfigRequest$inboundSchema: z.ZodType<
     z.lazy(() => UpdateFirewallConfigRequestBody4$inboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
+    z.lazy(() => RequestBody13$inboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
   ]),
 }).transform((v) => {
@@ -4015,6 +4086,7 @@ export type UpdateFirewallConfigRequest$Outbound = {
     | UpdateFirewallConfigRequestBody4$Outbound
     | UpdateFirewallConfigRequestBody8$Outbound
     | UpdateFirewallConfigRequestBody10$Outbound
+    | RequestBody13$Outbound
     | UpdateFirewallConfigRequestBody7$Outbound;
 };
 
@@ -4039,6 +4111,7 @@ export const UpdateFirewallConfigRequest$outboundSchema: z.ZodType<
     z.lazy(() => UpdateFirewallConfigRequestBody4$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
+    z.lazy(() => RequestBody13$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
   ]),
 }).transform((v) => {

@@ -391,6 +391,7 @@ export type PutFirewallConfigRequestBody = {
   crs?: Crs | undefined;
   rules?: Array<PutFirewallConfigRules> | undefined;
   ips?: Array<Ips> | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 export type PutFirewallConfigRequest = {
@@ -894,6 +895,7 @@ export type Active = {
   ips: Array<PutFirewallConfigIps>;
   changes: Array<PutFirewallConfigChanges>;
   managedRules?: PutFirewallConfigManagedRules | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 export type PutFirewallConfigResponseBody = {
@@ -2570,6 +2572,7 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   crs: z.lazy(() => Crs$inboundSchema).optional(),
   rules: z.array(z.lazy(() => PutFirewallConfigRules$inboundSchema)).optional(),
   ips: z.array(z.lazy(() => Ips$inboundSchema)).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -2579,6 +2582,7 @@ export type PutFirewallConfigRequestBody$Outbound = {
   crs?: Crs$Outbound | undefined;
   rules?: Array<PutFirewallConfigRules$Outbound> | undefined;
   ips?: Array<Ips$Outbound> | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -2593,6 +2597,7 @@ export const PutFirewallConfigRequestBody$outboundSchema: z.ZodType<
   rules: z.array(z.lazy(() => PutFirewallConfigRules$outboundSchema))
     .optional(),
   ips: z.array(z.lazy(() => Ips$outboundSchema)).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**
@@ -4889,6 +4894,7 @@ export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
     changes: z.array(z.lazy(() => PutFirewallConfigChanges$inboundSchema)),
     managedRules: z.lazy(() => PutFirewallConfigManagedRules$inboundSchema)
       .optional(),
+    botIdEnabled: z.boolean().optional(),
   });
 
 /** @internal */
@@ -4904,6 +4910,7 @@ export type Active$Outbound = {
   ips: Array<PutFirewallConfigIps$Outbound>;
   changes: Array<PutFirewallConfigChanges$Outbound>;
   managedRules?: PutFirewallConfigManagedRules$Outbound | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -4924,6 +4931,7 @@ export const Active$outboundSchema: z.ZodType<
   changes: z.array(z.lazy(() => PutFirewallConfigChanges$outboundSchema)),
   managedRules: z.lazy(() => PutFirewallConfigManagedRules$outboundSchema)
     .optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**

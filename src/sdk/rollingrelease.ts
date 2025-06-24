@@ -6,6 +6,7 @@ import { rollingReleaseApproveRollingReleaseStage } from "../funcs/rollingReleas
 import { rollingReleaseCompleteRollingRelease } from "../funcs/rollingReleaseCompleteRollingRelease.js";
 import { rollingReleaseDeleteRollingReleaseConfig } from "../funcs/rollingReleaseDeleteRollingReleaseConfig.js";
 import { rollingReleaseGetRollingRelease } from "../funcs/rollingReleaseGetRollingRelease.js";
+import { rollingReleaseGetRollingReleaseBillingStatus } from "../funcs/rollingReleaseGetRollingReleaseBillingStatus.js";
 import { rollingReleaseGetRollingReleaseConfig } from "../funcs/rollingReleaseGetRollingReleaseConfig.js";
 import { rollingReleaseUpdateRollingReleaseConfig } from "../funcs/rollingReleaseUpdateRollingReleaseConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -22,6 +23,10 @@ import {
   DeleteRollingReleaseConfigResponseBody,
 } from "../models/deleterollingreleaseconfigop.js";
 import {
+  GetRollingReleaseBillingStatusRequest,
+  GetRollingReleaseBillingStatusResponseBody,
+} from "../models/getrollingreleasebillingstatusop.js";
+import {
   GetRollingReleaseConfigRequest,
   GetRollingReleaseConfigResponseBody,
 } from "../models/getrollingreleaseconfigop.js";
@@ -36,6 +41,23 @@ import {
 import { unwrapAsync } from "../types/fp.js";
 
 export class RollingRelease extends ClientSDK {
+  /**
+   * Get rolling release billing status
+   *
+   * @remarks
+   * Get the Rolling Releases billing status for a project. The team level billing status is used to determine if the project can be configured for rolling releases.
+   */
+  async getRollingReleaseBillingStatus(
+    request: GetRollingReleaseBillingStatusRequest,
+    options?: RequestOptions,
+  ): Promise<GetRollingReleaseBillingStatusResponseBody> {
+    return unwrapAsync(rollingReleaseGetRollingReleaseBillingStatus(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Get rolling release configuration
    *

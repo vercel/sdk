@@ -10,6 +10,34 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// UpdateFirewallConfigRequestBody2 - Toggle botID
+type UpdateFirewallConfigRequestBody2 struct {
+	Action string  `json:"action"`
+	ID     *string `json:"id,omitempty"`
+	Value  bool    `json:"value"`
+}
+
+func (o *UpdateFirewallConfigRequestBody2) GetAction() string {
+	if o == nil {
+		return ""
+	}
+	return o.Action
+}
+
+func (o *UpdateFirewallConfigRequestBody2) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UpdateFirewallConfigRequestBody2) GetValue() bool {
+	if o == nil {
+		return false
+	}
+	return o.Value
+}
+
 type ValueActionEnum5 string
 
 const (
@@ -58,28 +86,28 @@ func (o *UpdateFirewallConfigValue7) GetAction() *ValueActionEnum5 {
 	return o.Action
 }
 
-// UpdateFirewallConfigRequestBody - Update a managed rule group
-type UpdateFirewallConfigRequestBody struct {
+// UpdateFirewallConfigRequestBody1 - Update a managed rule group
+type UpdateFirewallConfigRequestBody1 struct {
 	Action string                                `json:"action"`
 	ID     string                                `json:"id"`
 	Value  map[string]UpdateFirewallConfigValue7 `json:"value"`
 }
 
-func (o *UpdateFirewallConfigRequestBody) GetAction() string {
+func (o *UpdateFirewallConfigRequestBody1) GetAction() string {
 	if o == nil {
 		return ""
 	}
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody) GetID() string {
+func (o *UpdateFirewallConfigRequestBody1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFirewallConfigRequestBody) GetValue() map[string]UpdateFirewallConfigValue7 {
+func (o *UpdateFirewallConfigRequestBody1) GetValue() map[string]UpdateFirewallConfigValue7 {
 	if o == nil {
 		return map[string]UpdateFirewallConfigValue7{}
 	}
@@ -2389,238 +2417,256 @@ func (o *FirewallEnabled) GetValue() bool {
 	return o.Value
 }
 
-type UpdateFirewallConfigRequestBodyUnionType string
+type UpdateFirewallConfigRequestBodyType string
 
 const (
-	UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled                 UpdateFirewallConfigRequestBodyUnionType = "FirewallEnabled"
-	UpdateFirewallConfigRequestBodyUnionTypeRulesInsert                     UpdateFirewallConfigRequestBodyUnionType = "RulesInsert"
-	UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate                     UpdateFirewallConfigRequestBodyUnionType = "RulesUpdate"
-	UpdateFirewallConfigRequestBodyUnionTypeRulesRemove                     UpdateFirewallConfigRequestBodyUnionType = "RulesRemove"
-	UpdateFirewallConfigRequestBodyUnionTypeRulesPriority                   UpdateFirewallConfigRequestBodyUnionType = "RulesPriority"
-	UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate                       UpdateFirewallConfigRequestBodyUnionType = "CrsUpdate"
-	UpdateFirewallConfigRequestBodyUnionTypeCrsDisable                      UpdateFirewallConfigRequestBodyUnionType = "CrsDisable"
-	UpdateFirewallConfigRequestBodyUnionTypeIPInsert                        UpdateFirewallConfigRequestBodyUnionType = "IPInsert"
-	UpdateFirewallConfigRequestBodyUnionTypeIPUpdate                        UpdateFirewallConfigRequestBodyUnionType = "IPUpdate"
-	UpdateFirewallConfigRequestBodyUnionTypeIPRemove                        UpdateFirewallConfigRequestBodyUnionType = "IPRemove"
-	UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate              UpdateFirewallConfigRequestBodyUnionType = "ManagedRulesUpdate"
-	UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody UpdateFirewallConfigRequestBodyUnionType = "updateFirewallConfig_RequestBody"
+	UpdateFirewallConfigRequestBodyTypeFirewallEnabled                  UpdateFirewallConfigRequestBodyType = "FirewallEnabled"
+	UpdateFirewallConfigRequestBodyTypeRulesInsert                      UpdateFirewallConfigRequestBodyType = "RulesInsert"
+	UpdateFirewallConfigRequestBodyTypeRulesUpdate                      UpdateFirewallConfigRequestBodyType = "RulesUpdate"
+	UpdateFirewallConfigRequestBodyTypeRulesRemove                      UpdateFirewallConfigRequestBodyType = "RulesRemove"
+	UpdateFirewallConfigRequestBodyTypeRulesPriority                    UpdateFirewallConfigRequestBodyType = "RulesPriority"
+	UpdateFirewallConfigRequestBodyTypeCrsUpdate                        UpdateFirewallConfigRequestBodyType = "CrsUpdate"
+	UpdateFirewallConfigRequestBodyTypeCrsDisable                       UpdateFirewallConfigRequestBodyType = "CrsDisable"
+	UpdateFirewallConfigRequestBodyTypeIPInsert                         UpdateFirewallConfigRequestBodyType = "IPInsert"
+	UpdateFirewallConfigRequestBodyTypeIPUpdate                         UpdateFirewallConfigRequestBodyType = "IPUpdate"
+	UpdateFirewallConfigRequestBodyTypeIPRemove                         UpdateFirewallConfigRequestBodyType = "IPRemove"
+	UpdateFirewallConfigRequestBodyTypeManagedRulesUpdate               UpdateFirewallConfigRequestBodyType = "ManagedRulesUpdate"
+	UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBodyType = "updateFirewallConfig_RequestBody_1"
+	UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBodyType = "updateFirewallConfig_RequestBody_2"
 )
 
-type UpdateFirewallConfigRequestBodyUnion struct {
-	FirewallEnabled                 *FirewallEnabled                 `queryParam:"inline"`
-	RulesInsert                     *RulesInsert                     `queryParam:"inline"`
-	RulesUpdate                     *RulesUpdate                     `queryParam:"inline"`
-	RulesRemove                     *RulesRemove                     `queryParam:"inline"`
-	RulesPriority                   *RulesPriority                   `queryParam:"inline"`
-	CrsUpdate                       *CrsUpdate                       `queryParam:"inline"`
-	CrsDisable                      *CrsDisable                      `queryParam:"inline"`
-	IPInsert                        *IPInsert                        `queryParam:"inline"`
-	IPUpdate                        *IPUpdate                        `queryParam:"inline"`
-	IPRemove                        *IPRemove                        `queryParam:"inline"`
-	ManagedRulesUpdate              *ManagedRulesUpdate              `queryParam:"inline"`
-	UpdateFirewallConfigRequestBody *UpdateFirewallConfigRequestBody `queryParam:"inline"`
+type UpdateFirewallConfigRequestBody struct {
+	FirewallEnabled                  *FirewallEnabled                  `queryParam:"inline"`
+	RulesInsert                      *RulesInsert                      `queryParam:"inline"`
+	RulesUpdate                      *RulesUpdate                      `queryParam:"inline"`
+	RulesRemove                      *RulesRemove                      `queryParam:"inline"`
+	RulesPriority                    *RulesPriority                    `queryParam:"inline"`
+	CrsUpdate                        *CrsUpdate                        `queryParam:"inline"`
+	CrsDisable                       *CrsDisable                       `queryParam:"inline"`
+	IPInsert                         *IPInsert                         `queryParam:"inline"`
+	IPUpdate                         *IPUpdate                         `queryParam:"inline"`
+	IPRemove                         *IPRemove                         `queryParam:"inline"`
+	ManagedRulesUpdate               *ManagedRulesUpdate               `queryParam:"inline"`
+	UpdateFirewallConfigRequestBody1 *UpdateFirewallConfigRequestBody1 `queryParam:"inline"`
+	UpdateFirewallConfigRequestBody2 *UpdateFirewallConfigRequestBody2 `queryParam:"inline"`
 
-	Type UpdateFirewallConfigRequestBodyUnionType
+	Type UpdateFirewallConfigRequestBodyType
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionFirewallEnabled(firewallEnabled FirewallEnabled) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled
+func CreateUpdateFirewallConfigRequestBodyFirewallEnabled(firewallEnabled FirewallEnabled) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeFirewallEnabled
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		FirewallEnabled: &firewallEnabled,
 		Type:            typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionRulesInsert(rulesInsert RulesInsert) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesInsert
+func CreateUpdateFirewallConfigRequestBodyRulesInsert(rulesInsert RulesInsert) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeRulesInsert
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		RulesInsert: &rulesInsert,
 		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionRulesUpdate(rulesUpdate RulesUpdate) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate
+func CreateUpdateFirewallConfigRequestBodyRulesUpdate(rulesUpdate RulesUpdate) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeRulesUpdate
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		RulesUpdate: &rulesUpdate,
 		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionRulesRemove(rulesRemove RulesRemove) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesRemove
+func CreateUpdateFirewallConfigRequestBodyRulesRemove(rulesRemove RulesRemove) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeRulesRemove
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		RulesRemove: &rulesRemove,
 		Type:        typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionRulesPriority(rulesPriority RulesPriority) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeRulesPriority
+func CreateUpdateFirewallConfigRequestBodyRulesPriority(rulesPriority RulesPriority) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeRulesPriority
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		RulesPriority: &rulesPriority,
 		Type:          typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionCrsUpdate(crsUpdate CrsUpdate) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate
+func CreateUpdateFirewallConfigRequestBodyCrsUpdate(crsUpdate CrsUpdate) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeCrsUpdate
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		CrsUpdate: &crsUpdate,
 		Type:      typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionCrsDisable(crsDisable CrsDisable) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeCrsDisable
+func CreateUpdateFirewallConfigRequestBodyCrsDisable(crsDisable CrsDisable) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeCrsDisable
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		CrsDisable: &crsDisable,
 		Type:       typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionIPInsert(ipInsert IPInsert) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeIPInsert
+func CreateUpdateFirewallConfigRequestBodyIPInsert(ipInsert IPInsert) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeIPInsert
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		IPInsert: &ipInsert,
 		Type:     typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionIPUpdate(ipUpdate IPUpdate) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeIPUpdate
+func CreateUpdateFirewallConfigRequestBodyIPUpdate(ipUpdate IPUpdate) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeIPUpdate
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		IPUpdate: &ipUpdate,
 		Type:     typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionIPRemove(ipRemove IPRemove) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeIPRemove
+func CreateUpdateFirewallConfigRequestBodyIPRemove(ipRemove IPRemove) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeIPRemove
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		IPRemove: &ipRemove,
 		Type:     typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionManagedRulesUpdate(managedRulesUpdate ManagedRulesUpdate) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate
+func CreateUpdateFirewallConfigRequestBodyManagedRulesUpdate(managedRulesUpdate ManagedRulesUpdate) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeManagedRulesUpdate
 
-	return UpdateFirewallConfigRequestBodyUnion{
+	return UpdateFirewallConfigRequestBody{
 		ManagedRulesUpdate: &managedRulesUpdate,
 		Type:               typ,
 	}
 }
 
-func CreateUpdateFirewallConfigRequestBodyUnionUpdateFirewallConfigRequestBody(updateFirewallConfigRequestBody UpdateFirewallConfigRequestBody) UpdateFirewallConfigRequestBodyUnion {
-	typ := UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody
+func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody1(updateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBody1) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody1
 
-	return UpdateFirewallConfigRequestBodyUnion{
-		UpdateFirewallConfigRequestBody: &updateFirewallConfigRequestBody,
-		Type:                            typ,
+	return UpdateFirewallConfigRequestBody{
+		UpdateFirewallConfigRequestBody1: &updateFirewallConfigRequestBody1,
+		Type:                             typ,
 	}
 }
 
-func (u *UpdateFirewallConfigRequestBodyUnion) UnmarshalJSON(data []byte) error {
+func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody2(updateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBody2) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody2
+
+	return UpdateFirewallConfigRequestBody{
+		UpdateFirewallConfigRequestBody2: &updateFirewallConfigRequestBody2,
+		Type:                             typ,
+	}
+}
+
+func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
 
 	var firewallEnabled FirewallEnabled = FirewallEnabled{}
 	if err := utils.UnmarshalJSON(data, &firewallEnabled, "", true, true); err == nil {
 		u.FirewallEnabled = &firewallEnabled
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeFirewallEnabled
+		u.Type = UpdateFirewallConfigRequestBodyTypeFirewallEnabled
 		return nil
 	}
 
 	var rulesInsert RulesInsert = RulesInsert{}
 	if err := utils.UnmarshalJSON(data, &rulesInsert, "", true, true); err == nil {
 		u.RulesInsert = &rulesInsert
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesInsert
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesInsert
 		return nil
 	}
 
 	var rulesUpdate RulesUpdate = RulesUpdate{}
 	if err := utils.UnmarshalJSON(data, &rulesUpdate, "", true, true); err == nil {
 		u.RulesUpdate = &rulesUpdate
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesUpdate
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesUpdate
 		return nil
 	}
 
 	var rulesRemove RulesRemove = RulesRemove{}
 	if err := utils.UnmarshalJSON(data, &rulesRemove, "", true, true); err == nil {
 		u.RulesRemove = &rulesRemove
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesRemove
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesRemove
 		return nil
 	}
 
 	var rulesPriority RulesPriority = RulesPriority{}
 	if err := utils.UnmarshalJSON(data, &rulesPriority, "", true, true); err == nil {
 		u.RulesPriority = &rulesPriority
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeRulesPriority
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesPriority
 		return nil
 	}
 
 	var crsUpdate CrsUpdate = CrsUpdate{}
 	if err := utils.UnmarshalJSON(data, &crsUpdate, "", true, true); err == nil {
 		u.CrsUpdate = &crsUpdate
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeCrsUpdate
+		u.Type = UpdateFirewallConfigRequestBodyTypeCrsUpdate
 		return nil
 	}
 
 	var crsDisable CrsDisable = CrsDisable{}
 	if err := utils.UnmarshalJSON(data, &crsDisable, "", true, true); err == nil {
 		u.CrsDisable = &crsDisable
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeCrsDisable
+		u.Type = UpdateFirewallConfigRequestBodyTypeCrsDisable
 		return nil
 	}
 
 	var ipInsert IPInsert = IPInsert{}
 	if err := utils.UnmarshalJSON(data, &ipInsert, "", true, true); err == nil {
 		u.IPInsert = &ipInsert
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPInsert
+		u.Type = UpdateFirewallConfigRequestBodyTypeIPInsert
 		return nil
 	}
 
 	var ipUpdate IPUpdate = IPUpdate{}
 	if err := utils.UnmarshalJSON(data, &ipUpdate, "", true, true); err == nil {
 		u.IPUpdate = &ipUpdate
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPUpdate
+		u.Type = UpdateFirewallConfigRequestBodyTypeIPUpdate
 		return nil
 	}
 
 	var ipRemove IPRemove = IPRemove{}
 	if err := utils.UnmarshalJSON(data, &ipRemove, "", true, true); err == nil {
 		u.IPRemove = &ipRemove
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeIPRemove
+		u.Type = UpdateFirewallConfigRequestBodyTypeIPRemove
 		return nil
 	}
 
 	var managedRulesUpdate ManagedRulesUpdate = ManagedRulesUpdate{}
 	if err := utils.UnmarshalJSON(data, &managedRulesUpdate, "", true, true); err == nil {
 		u.ManagedRulesUpdate = &managedRulesUpdate
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeManagedRulesUpdate
+		u.Type = UpdateFirewallConfigRequestBodyTypeManagedRulesUpdate
 		return nil
 	}
 
-	var updateFirewallConfigRequestBody UpdateFirewallConfigRequestBody = UpdateFirewallConfigRequestBody{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody, "", true, true); err == nil {
-		u.UpdateFirewallConfigRequestBody = &updateFirewallConfigRequestBody
-		u.Type = UpdateFirewallConfigRequestBodyUnionTypeUpdateFirewallConfigRequestBody
+	var updateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBody1 = UpdateFirewallConfigRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody1, "", true, true); err == nil {
+		u.UpdateFirewallConfigRequestBody1 = &updateFirewallConfigRequestBody1
+		u.Type = UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBodyUnion", string(data))
+	var updateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBody2 = UpdateFirewallConfigRequestBody2{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody2, "", true, true); err == nil {
+		u.UpdateFirewallConfigRequestBody2 = &updateFirewallConfigRequestBody2
+		u.Type = UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigRequestBody", string(data))
 }
 
-func (u UpdateFirewallConfigRequestBodyUnion) MarshalJSON() ([]byte, error) {
+func (u UpdateFirewallConfigRequestBody) MarshalJSON() ([]byte, error) {
 	if u.FirewallEnabled != nil {
 		return utils.MarshalJSON(u.FirewallEnabled, "", true)
 	}
@@ -2665,11 +2711,15 @@ func (u UpdateFirewallConfigRequestBodyUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ManagedRulesUpdate, "", true)
 	}
 
-	if u.UpdateFirewallConfigRequestBody != nil {
-		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody, "", true)
+	if u.UpdateFirewallConfigRequestBody1 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBodyUnion: all fields are null")
+	if u.UpdateFirewallConfigRequestBody2 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBody: all fields are null")
 }
 
 type UpdateFirewallConfigRequest struct {
@@ -2677,8 +2727,8 @@ type UpdateFirewallConfigRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                              `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateFirewallConfigRequestBodyUnion `request:"mediaType=application/json"`
+	Slug        *string                         `queryParam:"style=form,explode=true,name=slug"`
+	RequestBody UpdateFirewallConfigRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateFirewallConfigRequest) GetProjectID() string {
@@ -2702,9 +2752,9 @@ func (o *UpdateFirewallConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateFirewallConfigRequest) GetRequestBody() UpdateFirewallConfigRequestBodyUnion {
+func (o *UpdateFirewallConfigRequest) GetRequestBody() UpdateFirewallConfigRequestBody {
 	if o == nil {
-		return UpdateFirewallConfigRequestBodyUnion{}
+		return UpdateFirewallConfigRequestBody{}
 	}
 	return o.RequestBody
 }

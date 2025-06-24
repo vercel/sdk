@@ -151,7 +151,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "408", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -180,7 +180,7 @@ async function $do(
     M.json(200, CheckDomainStatusResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([403, "4XX"]),
+    M.fail([403, 408, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {

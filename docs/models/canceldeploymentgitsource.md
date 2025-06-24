@@ -52,10 +52,10 @@ const value: models.CancelDeploymentGitSource5 = {
 };
 ```
 
-### `models.CancelDeploymentGitSource6`
+### `models.GitSource6`
 
 ```typescript
-const value: models.CancelDeploymentGitSource6 = {
+const value: models.GitSource6 = {
   type: "bitbucket",
   repoUuid: "<id>",
 };

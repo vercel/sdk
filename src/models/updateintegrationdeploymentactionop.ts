@@ -33,6 +33,7 @@ export type Outcomes = Outcomes1;
 export type UpdateIntegrationDeploymentActionRequestBody = {
   status?: UpdateIntegrationDeploymentActionStatus | undefined;
   statusText?: string | undefined;
+  statusUrl?: string | undefined;
   outcomes?: Array<Outcomes1> | undefined;
 };
 
@@ -223,6 +224,7 @@ export const UpdateIntegrationDeploymentActionRequestBody$inboundSchema:
   > = z.object({
     status: UpdateIntegrationDeploymentActionStatus$inboundSchema.optional(),
     statusText: z.string().optional(),
+    statusUrl: z.string().optional(),
     outcomes: z.array(z.lazy(() => Outcomes1$inboundSchema)).optional(),
   });
 
@@ -230,6 +232,7 @@ export const UpdateIntegrationDeploymentActionRequestBody$inboundSchema:
 export type UpdateIntegrationDeploymentActionRequestBody$Outbound = {
   status?: string | undefined;
   statusText?: string | undefined;
+  statusUrl?: string | undefined;
   outcomes?: Array<Outcomes1$Outbound> | undefined;
 };
 
@@ -242,6 +245,7 @@ export const UpdateIntegrationDeploymentActionRequestBody$outboundSchema:
   > = z.object({
     status: UpdateIntegrationDeploymentActionStatus$outboundSchema.optional(),
     statusText: z.string().optional(),
+    statusUrl: z.string().optional(),
     outcomes: z.array(z.lazy(() => Outcomes1$outboundSchema)).optional(),
   });
 

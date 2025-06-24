@@ -2109,6 +2109,7 @@ export type CreateProjectSecurity = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: CreateProjectManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /**
@@ -11619,6 +11620,7 @@ export const CreateProjectSecurity$inboundSchema: z.ZodType<
   managedRules: z.nullable(
     z.lazy(() => CreateProjectManagedRules$inboundSchema),
   ).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11635,6 +11637,7 @@ export type CreateProjectSecurity$Outbound = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: CreateProjectManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -11659,6 +11662,7 @@ export const CreateProjectSecurity$outboundSchema: z.ZodType<
   managedRules: z.nullable(
     z.lazy(() => CreateProjectManagedRules$outboundSchema),
   ).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**

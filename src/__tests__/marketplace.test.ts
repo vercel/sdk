@@ -394,3 +394,65 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
     digest: "<value>",
   });
 });
+
+test("Marketplace Get Resources", async () => {
+  const testHttpClient = createTestHTTPClient("get-resources");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.getResources({
+    integrationConfigurationId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    resources: [
+      {
+        partnerId: "<id>",
+        internalId: "<id>",
+        name: "<value>",
+        productId: "<id>",
+      },
+    ],
+  });
+});
+
+test("Marketplace Get Resource", async () => {
+  const testHttpClient = createTestHTTPClient("get-resource");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.getResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    internalId: "<id>",
+    name: "<value>",
+    productId: "<id>",
+  });
+});
+
+test("Marketplace Delete Resource", async () => {
+  const testHttpClient = createTestHTTPClient("delete-resource");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  await vercel.marketplace.deleteResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+});

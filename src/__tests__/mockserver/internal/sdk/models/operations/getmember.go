@@ -27,6 +27,7 @@ func (o *GetMemberRequest) GetMemberID() string {
 	return o.MemberID
 }
 
+// GetMemberRole - "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
 type GetMemberRole string
 
 const (
@@ -54,7 +55,8 @@ func (e *GetMemberRole) UnmarshalJSON(data []byte) error {
 }
 
 type GetMemberResponseBody struct {
-	ID   string        `json:"id"`
+	ID string `json:"id"`
+	// "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
 	Role GetMemberRole `json:"role"`
 }
 

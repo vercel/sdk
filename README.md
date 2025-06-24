@@ -423,6 +423,10 @@ run();
 * [getAccountInfo](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 * [getMember](docs/sdks/marketplace/README.md#getmember) - Get Member Information
 * [createEvent](docs/sdks/marketplace/README.md#createevent) - Create Event
+* [getResources](docs/sdks/marketplace/README.md#getresources) - Get Resources
+* [getResource](docs/sdks/marketplace/README.md#getresource) - Get Resource
+* [deleteResource](docs/sdks/marketplace/README.md#deleteresource) - Delete Resource
+* [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [submitBillingData](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 * [submitInvoice](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
@@ -430,7 +434,6 @@ run();
 * [submitPrepaymentBalances](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
 * [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 * [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-* [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 * [createInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 * [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
@@ -473,6 +476,7 @@ run();
 
 ### [rollingRelease](docs/sdks/rollingrelease/README.md)
 
+* [getRollingReleaseBillingStatus](docs/sdks/rollingrelease/README.md#getrollingreleasebillingstatus) - Get rolling release billing status
 * [getRollingReleaseConfig](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
 * [deleteRollingReleaseConfig](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
 * [updateRollingReleaseConfig](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
@@ -634,11 +638,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceCreateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 - [`marketplaceCreateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceDeleteInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
+- [`marketplaceDeleteResource`](docs/sdks/marketplace/README.md#deleteresource) - Delete Resource
 - [`marketplaceExchangeSsoToken`](docs/sdks/authentication/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
+- [`marketplaceGetResource`](docs/sdks/marketplace/README.md#getresource) - Get Resource
+- [`marketplaceGetResources`](docs/sdks/marketplace/README.md#getresources) - Get Resources
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
@@ -679,6 +686,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 - [`rollingReleaseDeleteRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
 - [`rollingReleaseGetRollingRelease`](docs/sdks/rollingrelease/README.md#getrollingrelease) - Get the active rolling release information for a project
+- [`rollingReleaseGetRollingReleaseBillingStatus`](docs/sdks/rollingrelease/README.md#getrollingreleasebillingstatus) - Get rolling release billing status
 - [`rollingReleaseGetRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
 - [`rollingReleaseUpdateRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
 - [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
@@ -899,8 +907,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 99 of 170 methods.*
-* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 170 methods.*
+* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 103 of 174 methods.*
+* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 174 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

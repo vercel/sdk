@@ -5379,11 +5379,19 @@ func (u CancelDeploymentFlagsUnion) MarshalJSON() ([]byte, error) {
 
 // CancelDeploymentApplications - A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
 type CancelDeploymentApplications struct {
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// This is the production alias, it will always show the most up to date of each application.
 	ProductionHost string `json:"productionHost"`
 	// Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used.
 	DeploymentAlias *string `json:"deploymentAlias,omitempty"`
 	DeploymentHost  *string `json:"deploymentHost,omitempty"`
+}
+
+func (o *CancelDeploymentApplications) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
 }
 
 func (o *CancelDeploymentApplications) GetProductionHost() string {

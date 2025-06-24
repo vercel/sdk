@@ -1,0 +1,19 @@
+# GetRollingReleaseBillingStatusResponseBody2
+
+## Example Usage
+
+```typescript
+import { GetRollingReleaseBillingStatusResponseBody2 } from "@vercel/sdk/models/getrollingreleasebillingstatusop.js";
+
+let value: GetRollingReleaseBillingStatusResponseBody2 = {
+  availableSlots: "unlimited",
+  reason: "unlimited_slots",
+};
+```
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `availableSlots`                                                                                                         | [models.AvailableSlots](../models/availableslots.md)                                                                     | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `reason`                                                                                                                 | [models.GetRollingReleaseBillingStatusResponseBodyReason](../models/getrollingreleasebillingstatusresponsebodyreason.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

@@ -517,6 +517,7 @@ export type GetFirewallConfigResponseBody = {
   ips: Array<GetFirewallConfigIps>;
   changes: Array<Changes>;
   managedRules?: ManagedRules | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -2710,6 +2711,7 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   ips: z.array(z.lazy(() => GetFirewallConfigIps$inboundSchema)),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
   managedRules: z.lazy(() => ManagedRules$inboundSchema).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -2725,6 +2727,7 @@ export type GetFirewallConfigResponseBody$Outbound = {
   ips: Array<GetFirewallConfigIps$Outbound>;
   changes: Array<Changes$Outbound>;
   managedRules?: ManagedRules$Outbound | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -2744,6 +2747,7 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   ips: z.array(z.lazy(() => GetFirewallConfigIps$outboundSchema)),
   changes: z.array(z.lazy(() => Changes$outboundSchema)),
   managedRules: z.lazy(() => ManagedRules$outboundSchema).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**

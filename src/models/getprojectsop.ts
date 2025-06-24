@@ -1867,6 +1867,7 @@ export type GetProjectsSecurity = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: GetProjectsManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /**
@@ -10751,6 +10752,7 @@ export const GetProjectsSecurity$inboundSchema: z.ZodType<
   firewallBypassIps: z.array(z.string()).optional(),
   managedRules: z.nullable(z.lazy(() => GetProjectsManagedRules$inboundSchema))
     .optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -10767,6 +10769,7 @@ export type GetProjectsSecurity$Outbound = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: GetProjectsManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -10790,6 +10793,7 @@ export const GetProjectsSecurity$outboundSchema: z.ZodType<
   firewallBypassIps: z.array(z.string()).optional(),
   managedRules: z.nullable(z.lazy(() => GetProjectsManagedRules$outboundSchema))
     .optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**

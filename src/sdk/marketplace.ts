@@ -6,10 +6,13 @@ import { marketplaceCreateEvent } from "../funcs/marketplaceCreateEvent.js";
 import { marketplaceCreateInstallationIntegrationConfiguration } from "../funcs/marketplaceCreateInstallationIntegrationConfiguration.js";
 import { marketplaceCreateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 import { marketplaceDeleteInstallationIntegrationConfiguration } from "../funcs/marketplaceDeleteInstallationIntegrationConfiguration.js";
+import { marketplaceDeleteResource } from "../funcs/marketplaceDeleteResource.js";
 import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
+import { marketplaceGetResource } from "../funcs/marketplaceGetResource.js";
+import { marketplaceGetResources } from "../funcs/marketplaceGetResources.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
@@ -21,6 +24,7 @@ import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateReso
 import { marketplaceUpdateResourceSecretsById } from "../funcs/marketplaceUpdateResourceSecretsById.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CreateEventRequest } from "../models/createeventop.js";
+import { DeleteResourceRequest } from "../models/deleteresourceop.js";
 import {
   DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
 } from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
@@ -40,6 +44,14 @@ import {
   GetMemberRequest,
   GetMemberResponseBody,
 } from "../models/getmemberop.js";
+import {
+  GetResourceRequest,
+  GetResourceResponseBody,
+} from "../models/getresourceop.js";
+import {
+  GetResourcesRequest,
+  GetResourcesResponseBody,
+} from "../models/getresourcesop.js";
 import {
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -115,6 +127,74 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(marketplaceCreateEvent(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Resources
+   *
+   * @remarks
+   * Get all resources for a given integration configuration ID.
+   */
+  async getResources(
+    request: GetResourcesRequest,
+    options?: RequestOptions,
+  ): Promise<GetResourcesResponseBody> {
+    return unwrapAsync(marketplaceGetResources(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Resource
+   *
+   * @remarks
+   * Get a resource by its partner ID.
+   */
+  async getResource(
+    request: GetResourceRequest,
+    options?: RequestOptions,
+  ): Promise<GetResourceResponseBody> {
+    return unwrapAsync(marketplaceGetResource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Resource
+   *
+   * @remarks
+   * Delete a resource owned by the selected installation ID.
+   */
+  async deleteResource(
+    request: DeleteResourceRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(marketplaceDeleteResource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Import Resource
+   *
+   * @remarks
+   * This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.
+   */
+  async importResource(
+    request: ImportResourceRequest,
+    options?: RequestOptions,
+  ): Promise<ImportResourceResponseBody> {
+    return unwrapAsync(marketplaceImportResource(
       this,
       request,
       options,
@@ -234,23 +314,6 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(marketplaceUpdateResourceSecretsById(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Import Resource
-   *
-   * @remarks
-   * This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.
-   */
-  async importResource(
-    request: ImportResourceRequest,
-    options?: RequestOptions,
-  ): Promise<ImportResourceResponseBody> {
-    return unwrapAsync(marketplaceImportResource(
       this,
       request,
       options,

@@ -1725,6 +1725,7 @@ export type ResponseBodyFlags =
  * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
  */
 export type GetDeploymentMicrofrontendsApplications = {
+  isDefaultApp?: boolean | undefined;
   /**
    * This is the production alias, it will always show the most up to date of each application.
    */
@@ -11134,6 +11135,7 @@ export const GetDeploymentMicrofrontendsApplications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean().optional(),
   productionHost: z.string(),
   deploymentAlias: z.string().optional(),
   deploymentHost: z.string().optional(),
@@ -11141,6 +11143,7 @@ export const GetDeploymentMicrofrontendsApplications$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetDeploymentMicrofrontendsApplications$Outbound = {
+  isDefaultApp?: boolean | undefined;
   productionHost: string;
   deploymentAlias?: string | undefined;
   deploymentHost?: string | undefined;
@@ -11152,6 +11155,7 @@ export const GetDeploymentMicrofrontendsApplications$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMicrofrontendsApplications
 > = z.object({
+  isDefaultApp: z.boolean().optional(),
   productionHost: z.string(),
   deploymentAlias: z.string().optional(),
   deploymentHost: z.string().optional(),

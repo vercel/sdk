@@ -13,14 +13,23 @@ export type GetMemberRequest = {
   memberId: string;
 };
 
+/**
+ * "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
+ */
 export const GetMemberRole = {
   Admin: "ADMIN",
   User: "USER",
 } as const;
+/**
+ * "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
+ */
 export type GetMemberRole = ClosedEnum<typeof GetMemberRole>;
 
 export type GetMemberResponseBody = {
   id: string;
+  /**
+   * "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
+   */
   role: GetMemberRole;
 };
 

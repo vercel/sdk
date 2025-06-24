@@ -8110,6 +8110,9 @@
                             "owasp"
                           ],
                           "type": "object"
+                        },
+                        "botIdEnabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object"
@@ -9082,6 +9085,11 @@
                   },
                   "statusText": {
                     "type": "string"
+                  },
+                  "statusUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https?://|^sso:"
                   },
                   "outcomes": {
                     "type": "array",
@@ -11269,6 +11277,9 @@
                                 "applications": {
                                   "additionalProperties": {
                                     "properties": {
+                                      "isDefaultApp": {
+                                        "type": "boolean"
+                                      },
                                       "productionHost": {
                                         "type": "string",
                                         "description": "This is the production alias, it will always show the most up to date of each application."
@@ -14475,6 +14486,9 @@
                             "applications": {
                               "additionalProperties": {
                                 "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
+                                  },
                                   "productionHost": {
                                     "type": "string",
                                     "description": "This is the production alias, it will always show the most up to date of each application."
@@ -15093,43 +15107,6 @@
                           "ref",
                           "org",
                           "repo"
-                        ],
-                        "type": "object"
-                      },
-                      {
-                        "properties": {
-                          "org": {
-                            "type": "string",
-                            "example": "vercel"
-                          },
-                          "ref": {
-                            "type": "string",
-                            "example": "main"
-                          },
-                          "repo": {
-                            "type": "string",
-                            "example": "next.js"
-                          },
-                          "sha": {
-                            "type": "string",
-                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
-                          },
-                          "host": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "github-custom-host"
-                            ],
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "ref",
-                          "org",
-                          "repo",
-                          "host"
                         ],
                         "type": "object"
                       },
@@ -17547,6 +17524,9 @@
                             "applications": {
                               "additionalProperties": {
                                 "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
+                                  },
                                   "productionHost": {
                                     "type": "string",
                                     "description": "This is the production alias, it will always show the most up to date of each application."
@@ -18208,6 +18188,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "408": {
+            "description": ""
           },
           "500": {
             "description": ""
@@ -23715,7 +23698,8 @@
                       "enum": [
                         "ADMIN",
                         "USER"
-                      ]
+                      ],
+                      "description": "\"The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles.\""
                     }
                   },
                   "required": [
@@ -23905,6 +23889,736 @@
             }
           },
           "required": true
+        }
+      }
+    },
+    "/v1/installations/{integrationConfigurationId}/resources": {
+      "get": {
+        "description": "Get all resources for a given integration configuration ID.",
+        "operationId": "get-resources",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get Resources",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "resources": {
+                      "items": {
+                        "properties": {
+                          "partnerId": {
+                            "type": "string",
+                            "description": "The ID provided by the partner for the given resource"
+                          },
+                          "internalId": {
+                            "type": "string",
+                            "description": "The ID assigned by Vercel for the given resource"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the resource as it is recorded in Vercel"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "ready",
+                              "pending",
+                              "suspended",
+                              "resumed",
+                              "uninstalled",
+                              "error"
+                            ],
+                            "description": "The current status of the resource"
+                          },
+                          "productId": {
+                            "type": "string",
+                            "description": "The ID of the product the resource is derived from"
+                          },
+                          "protocolSettings": {
+                            "properties": {
+                              "experimentation": {
+                                "properties": {
+                                  "edgeConfigSyncingEnabled": {
+                                    "type": "boolean"
+                                  },
+                                  "edgeConfigId": {
+                                    "type": "string"
+                                  },
+                                  "edgeConfigTokenId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object",
+                            "description": "Any settings provided for the resource to support its product's protocols"
+                          },
+                          "notification": {
+                            "properties": {
+                              "level": {
+                                "type": "string",
+                                "enum": [
+                                  "error",
+                                  "info",
+                                  "warn"
+                                ]
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "href": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "level",
+                              "title"
+                            ],
+                            "type": "object",
+                            "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
+                          },
+                          "billingPlanId": {
+                            "type": "string",
+                            "description": "The ID of the billing plan the resource is subscribed to, if applicable"
+                          },
+                          "metadata": {
+                            "additionalProperties": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array",
+                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                                },
+                                {
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "type": "array",
+                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                                }
+                              ]
+                            },
+                            "type": "object",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          }
+                        },
+                        "required": [
+                          "partnerId",
+                          "internalId",
+                          "name",
+                          "productId"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "resources"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
+      "get": {
+        "description": "Get a resource by its partner ID.",
+        "operationId": "get-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The ID provided by the 3rd party provider for the given resource"
+                    },
+                    "internalId": {
+                      "type": "string",
+                      "description": "The ID assigned by Vercel for the given resource"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the resource as it is recorded in Vercel"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ready",
+                        "pending",
+                        "suspended",
+                        "resumed",
+                        "uninstalled",
+                        "error"
+                      ],
+                      "description": "The current status of the resource"
+                    },
+                    "productId": {
+                      "type": "string",
+                      "description": "The ID of the product the resource is derived from"
+                    },
+                    "protocolSettings": {
+                      "properties": {
+                        "experimentation": {
+                          "properties": {
+                            "edgeConfigSyncingEnabled": {
+                              "type": "boolean"
+                            },
+                            "edgeConfigId": {
+                              "type": "string"
+                            },
+                            "edgeConfigTokenId": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object",
+                      "description": "Any settings provided for the resource to support its product's protocols"
+                    },
+                    "notification": {
+                      "properties": {
+                        "level": {
+                          "type": "string",
+                          "enum": [
+                            "error",
+                            "info",
+                            "warn"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "level",
+                        "title"
+                      ],
+                      "type": "object",
+                      "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
+                    },
+                    "billingPlanId": {
+                      "type": "string",
+                      "description": "The ID of the billing plan the resource is subscribed to, if applicable"
+                    },
+                    "metadata": {
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          },
+                          {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          }
+                        ]
+                      },
+                      "type": "object",
+                      "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "internalId",
+                    "name",
+                    "productId"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "description": "The ID of the integration configuration (installation) the resource belongs to",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the integration configuration (installation) the resource belongs to"
+            }
+          },
+          {
+            "name": "resourceId",
+            "description": "The ID provided by the 3rd party provider for the given resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID provided by the 3rd party provider for the given resource"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "description": "Delete a resource owned by the selected installation ID.",
+        "operationId": "delete-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "describe": "The external provider's ID of the resource to delete"
+            }
+          }
+        ]
+      },
+      "put": {
+        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
+        "operationId": "import-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Import Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "productId",
+                  "name",
+                  "status"
+                ],
+                "properties": {
+                  "productId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ready",
+                      "pending",
+                      "suspended",
+                      "resumed",
+                      "uninstalled",
+                      "error"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "billingPlan": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type",
+                      "name"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "prepayment",
+                          "subscription"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "paymentMethodRequired": {
+                        "type": "boolean"
+                      },
+                      "cost": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "heightlightedDetails": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "effectiveDate": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": true
+                  },
+                  "notification": {
+                    "type": "object",
+                    "required": [
+                      "level",
+                      "title"
+                    ],
+                    "properties": {
+                      "level": {
+                        "type": "string",
+                        "enum": [
+                          "info",
+                          "warn",
+                          "error"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "href": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  },
+                  "secrets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "value"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "prefix": {
+                          "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
+                          "properties": {
+                            "development": {
+                              "type": "string",
+                              "description": "Value used for development environment."
+                            },
+                            "preview": {
+                              "type": "string",
+                              "description": "Value used for preview environment."
+                            },
+                            "production": {
+                              "type": "string",
+                              "description": "Value used for production environment."
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
         }
       }
     },
@@ -25243,269 +25957,6 @@
                   "partial": {
                     "type": "boolean",
                     "description": "If true, will only overwrite the provided secrets instead of replacing all secrets."
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
-      "put": {
-        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
-        "operationId": "import-resource",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Import Resource",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resourceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "productId",
-                  "name",
-                  "status"
-                ],
-                "properties": {
-                  "productId": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "status": {
-                    "type": "string",
-                    "enum": [
-                      "ready",
-                      "pending",
-                      "suspended",
-                      "resumed",
-                      "uninstalled",
-                      "error"
-                    ]
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": true
-                  },
-                  "billingPlan": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "type",
-                      "name"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "prepayment",
-                          "subscription"
-                        ]
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "paymentMethodRequired": {
-                        "type": "boolean"
-                      },
-                      "cost": {
-                        "type": "string"
-                      },
-                      "details": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "heightlightedDetails": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "effectiveDate": {
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": true
-                  },
-                  "notification": {
-                    "type": "object",
-                    "required": [
-                      "level",
-                      "title"
-                    ],
-                    "properties": {
-                      "level": {
-                        "type": "string",
-                        "enum": [
-                          "info",
-                          "warn",
-                          "error"
-                        ]
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "href": {
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  },
-                  "secrets": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required": [
-                        "name",
-                        "value"
-                      ],
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "value": {
-                          "type": "string"
-                        },
-                        "prefix": {
-                          "type": "string"
-                        },
-                        "environmentOverrides": {
-                          "type": "object",
-                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
-                          "properties": {
-                            "development": {
-                              "type": "string",
-                              "description": "Value used for development environment."
-                            },
-                            "preview": {
-                              "type": "string",
-                              "description": "Value used for preview environment."
-                            },
-                            "production": {
-                              "type": "string",
-                              "description": "Value used for production environment."
-                            }
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
                   }
                 },
                 "additionalProperties": false
@@ -32553,6 +33004,9 @@
                                   "owasp"
                                 ],
                                 "type": "object"
+                              },
+                              "botIdEnabled": {
+                                "type": "boolean"
                               }
                             },
                             "type": "object"
@@ -36813,6 +37267,9 @@
                             "owasp"
                           ],
                           "type": "object"
+                        },
+                        "botIdEnabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object"
@@ -41292,6 +41749,9 @@
                             "owasp"
                           ],
                           "type": "object"
+                        },
+                        "botIdEnabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object"
@@ -45441,6 +45901,9 @@
                             "owasp"
                           ],
                           "type": "object"
+                        },
+                        "botIdEnabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object"
@@ -54717,6 +55180,185 @@
         "x-speakeasy-test": false
       }
     },
+    "/v1/projects/{idOrName}/rolling-release/billing": {
+      "get": {
+        "description": "Get the Rolling Releases billing status for a project. The team level billing status is used to determine if the project can be configured for rolling releases.",
+        "operationId": "getRollingReleaseBillingStatus",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get rolling release billing status",
+        "tags": [
+          "rolling-release"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "availableSlots": {
+                          "type": "number"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "available_slots"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "availableSlots",
+                        "reason"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "availableSlots": {
+                          "type": "string",
+                          "enum": [
+                            "unlimited"
+                          ]
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "unlimited_slots"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "availableSlots",
+                        "reason"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "availableSlots": {
+                          "type": "number",
+                          "enum": [
+                            0
+                          ]
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "plan_not_supported"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "availableSlots",
+                        "reason"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "availableSlots": {
+                          "type": "number",
+                          "enum": [
+                            0
+                          ]
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "no_available_slots"
+                          ]
+                        },
+                        "enabledProjects": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "availableSlots",
+                        "reason",
+                        "enabledProjects"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "Project ID or project name (URL-encoded)",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "Project ID or project name (URL-encoded)",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v1/projects/{idOrName}/rolling-release/config": {
       "get": {
         "description": "Get the Rolling Releases configuration for a project. The project-level config is simply a template that will be used for any future rolling release, and not the configuration for any active rolling release.",
@@ -58169,6 +58811,9 @@
                             }
                           },
                           "type": "object"
+                        },
+                        "botIdEnabled": {
+                          "type": "boolean"
                         }
                       },
                       "required": [
@@ -58783,6 +59428,9 @@
                       ],
                       "additionalProperties": false
                     }
+                  },
+                  "botIdEnabled": {
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -59735,6 +60383,26 @@
                       "value"
                     ],
                     "additionalProperties": false
+                  },
+                  {
+                    "description": "Toggle botID",
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "value"
+                    ],
+                    "additionalProperties": false
                   }
                 ]
               }
@@ -60358,6 +61026,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "botIdEnabled": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -64377,6 +65048,7 @@
                           "deployment.integration.action.start",
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
+                          "deployment.checkrun.start",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -64446,6 +65118,7 @@
                           "deployment.integration.action.start",
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
+                          "deployment.checkrun.start",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -64633,6 +65306,7 @@
                         "deployment.integration.action.start",
                         "deployment.integration.action.cancel",
                         "deployment.integration.action.cleanup",
+                        "deployment.checkrun.start",
                         "edge-config.created",
                         "edge-config.deleted",
                         "edge-config.items.updated",
@@ -64700,6 +65374,7 @@
                         "deployment.integration.action.start",
                         "deployment.integration.action.cancel",
                         "deployment.integration.action.cleanup",
+                        "deployment.checkrun.start",
                         "edge-config.created",
                         "edge-config.deleted",
                         "edge-config.items.updated",
@@ -64884,6 +65559,7 @@
                                 "deployment.integration.action.start",
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
+                                "deployment.checkrun.start",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -64953,6 +65629,7 @@
                                 "deployment.integration.action.start",
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
+                                "deployment.checkrun.start",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65080,6 +65757,7 @@
                                 "deployment.integration.action.start",
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
+                                "deployment.checkrun.start",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65149,6 +65827,7 @@
                                 "deployment.integration.action.start",
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
+                                "deployment.checkrun.start",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65351,6 +66030,7 @@
                           "deployment.integration.action.start",
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
+                          "deployment.checkrun.start",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -65420,6 +66100,7 @@
                           "deployment.integration.action.start",
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
+                          "deployment.checkrun.start",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -73022,6 +73703,10 @@
                           "increasedOnDemandEmailSentAt": {
                             "type": "number",
                             "description": "Tracks the last time we sent a increased on-demand email."
+                          },
+                          "increasedOnDemandEmailAttemptedAt": {
+                            "type": "number",
+                            "description": "Tracks the last time we attempted to send an increased on-demand email. This check is to limit the number of attempts per day."
                           }
                         },
                         "type": "object",

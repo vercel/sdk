@@ -1544,6 +1544,7 @@ type GetFirewallConfigResponseBody struct {
 	Ips          []GetFirewallConfigIP          `json:"ips"`
 	Changes      []GetFirewallConfigChange      `json:"changes"`
 	ManagedRules *GetFirewallConfigManagedRules `json:"managedRules,omitempty"`
+	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
 }
 
 func (o *GetFirewallConfigResponseBody) GetOwnerID() string {
@@ -1621,6 +1622,13 @@ func (o *GetFirewallConfigResponseBody) GetManagedRules() *GetFirewallConfigMana
 		return nil
 	}
 	return o.ManagedRules
+}
+
+func (o *GetFirewallConfigResponseBody) GetBotIDEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BotIDEnabled
 }
 
 type GetFirewallConfigResponse struct {

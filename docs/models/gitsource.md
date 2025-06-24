@@ -32,19 +32,6 @@ const value: models.GitSource2 = {
 
 ```typescript
 const value: models.GitSource3 = {
-  org: "vercel",
-  ref: "main",
-  repo: "next.js",
-  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-  host: "specific-gerbil.com",
-  type: "github-custom-host",
-};
-```
-
-### `models.GitSource4`
-
-```typescript
-const value: models.GitSource4 = {
   projectId: 987654321,
   ref: "main",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
@@ -52,10 +39,10 @@ const value: models.GitSource4 = {
 };
 ```
 
-### `models.GitSource5`
+### `models.GitSource4`
 
 ```typescript
-const value: models.GitSource5 = {
+const value: models.GitSource4 = {
   ref: "main",
   repoUuid: "123e4567-e89b-12d3-a456-426614174000",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
@@ -64,10 +51,10 @@ const value: models.GitSource5 = {
 };
 ```
 
-### `models.GitSource6`
+### `models.GitSource5`
 
 ```typescript
-const value: models.GitSource6 = {
+const value: models.GitSource5 = {
   owner: "bitbucket_user",
   ref: "main",
   sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",

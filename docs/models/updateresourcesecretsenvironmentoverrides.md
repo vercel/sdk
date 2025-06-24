@@ -1,13 +1,13 @@
-# ImportResourceEnvironmentOverrides
+# UpdateResourceSecretsEnvironmentOverrides
 
 A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
 
 ## Example Usage
 
 ```typescript
-import { ImportResourceEnvironmentOverrides } from "@vercel/sdk/models/importresourceop.js";
+import { UpdateResourceSecretsEnvironmentOverrides } from "@vercel/sdk/models/updateresourcesecretsop.js";
 
-let value: ImportResourceEnvironmentOverrides = {};
+let value: UpdateResourceSecretsEnvironmentOverrides = {};
 ```
 
 ## Fields

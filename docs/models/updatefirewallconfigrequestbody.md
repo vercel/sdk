@@ -143,3 +143,12 @@ const value: models.RequestBody12 = {
 };
 ```
 
+### `models.RequestBody13`
+
+```typescript
+const value: models.RequestBody13 = {
+  action: "<value>",
+  value: false,
+};
+```
+

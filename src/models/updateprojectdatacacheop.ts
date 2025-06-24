@@ -1839,6 +1839,7 @@ export type UpdateProjectDataCacheSecurity = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: UpdateProjectDataCacheManagedRules | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /**
@@ -10732,6 +10733,7 @@ export const UpdateProjectDataCacheSecurity$inboundSchema: z.ZodType<
   managedRules: z.nullable(
     z.lazy(() => UpdateProjectDataCacheManagedRules$inboundSchema),
   ).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -10748,6 +10750,7 @@ export type UpdateProjectDataCacheSecurity$Outbound = {
   ja4Enabled?: boolean | undefined;
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: UpdateProjectDataCacheManagedRules$Outbound | null | undefined;
+  botIdEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -10771,6 +10774,7 @@ export const UpdateProjectDataCacheSecurity$outboundSchema: z.ZodType<
   managedRules: z.nullable(
     z.lazy(() => UpdateProjectDataCacheManagedRules$outboundSchema),
   ).optional(),
+  botIdEnabled: z.boolean().optional(),
 });
 
 /**

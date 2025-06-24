@@ -10504,6 +10504,8 @@ type OverageMetadata struct {
 	OverageSummaryExpiresAt *float64 `json:"overageSummaryExpiresAt,omitempty"`
 	// Tracks the last time we sent a increased on-demand email.
 	IncreasedOnDemandEmailSentAt *float64 `json:"increasedOnDemandEmailSentAt,omitempty"`
+	// Tracks the last time we attempted to send an increased on-demand email. This check is to limit the number of attempts per day.
+	IncreasedOnDemandEmailAttemptedAt *float64 `json:"increasedOnDemandEmailAttemptedAt,omitempty"`
 }
 
 func (o *OverageMetadata) GetFirstTimeOnDemandNotificationSentAt() *float64 {
@@ -10539,6 +10541,13 @@ func (o *OverageMetadata) GetIncreasedOnDemandEmailSentAt() *float64 {
 		return nil
 	}
 	return o.IncreasedOnDemandEmailSentAt
+}
+
+func (o *OverageMetadata) GetIncreasedOnDemandEmailAttemptedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IncreasedOnDemandEmailAttemptedAt
 }
 
 // UserEventEnablePreviewFeedback - Whether the Vercel Toolbar is enabled for preview deployments.

@@ -20,7 +20,11 @@ actions:
     remove: true    
   # Removing any instances in the request body that have "private": true as this break the mintlify linting when generating the docs
   - target: $.paths..requestBody..[?(@.private == true)].private
-    remove: true  
+    remove: true 
+  # Type "null" is not valid and breaks speakeasy generation 
   - target: '$..[?(@.type == "null")]'
     update:
       type: "string"  
+  # Property describe is not valid in openapi spec and breaks mintlify generation
+  - target: '$..[?(@.describe)]'
+    remove: true      

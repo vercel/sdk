@@ -1356,6 +1356,7 @@ export type Permissions = {
   notificationMonitoringAlert?: Array<ACLAction> | undefined;
   notificationPaymentFailed?: Array<ACLAction> | undefined;
   notificationUsageAlert?: Array<ACLAction> | undefined;
+  notificationPreferences?: Array<ACLAction> | undefined;
   notificationCustomerBudget?: Array<ACLAction> | undefined;
   notificationStatementOfReasons?: Array<ACLAction> | undefined;
   observabilityConfiguration?: Array<ACLAction> | undefined;
@@ -8078,6 +8079,7 @@ export const Permissions$inboundSchema: z.ZodType<
   NotificationMonitoringAlert: z.array(ACLAction$inboundSchema).optional(),
   notificationPaymentFailed: z.array(ACLAction$inboundSchema).optional(),
   notificationUsageAlert: z.array(ACLAction$inboundSchema).optional(),
+  notificationPreferences: z.array(ACLAction$inboundSchema).optional(),
   notificationCustomerBudget: z.array(ACLAction$inboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$inboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$inboundSchema).optional(),
@@ -8293,6 +8295,7 @@ export type Permissions$Outbound = {
   NotificationMonitoringAlert?: Array<string> | undefined;
   notificationPaymentFailed?: Array<string> | undefined;
   notificationUsageAlert?: Array<string> | undefined;
+  notificationPreferences?: Array<string> | undefined;
   notificationCustomerBudget?: Array<string> | undefined;
   notificationStatementOfReasons?: Array<string> | undefined;
   observabilityConfiguration?: Array<string> | undefined;
@@ -8509,6 +8512,7 @@ export const Permissions$outboundSchema: z.ZodType<
   notificationMonitoringAlert: z.array(ACLAction$outboundSchema).optional(),
   notificationPaymentFailed: z.array(ACLAction$outboundSchema).optional(),
   notificationUsageAlert: z.array(ACLAction$outboundSchema).optional(),
+  notificationPreferences: z.array(ACLAction$outboundSchema).optional(),
   notificationCustomerBudget: z.array(ACLAction$outboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$outboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$outboundSchema).optional(),

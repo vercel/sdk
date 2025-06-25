@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: e170183215976b8bd1f3ac93a998e66a
+  docChecksum: fc742adb36165209b7bf0a47e2915abb
   docVersion: 0.0.1
-  speakeasyVersion: 1.568.1
-  generationVersion: 2.634.1
-  releaseVersion: 1.8.6
-  configChecksum: 6e3531a9de92fa79d2b50bfeb58d9a09
+  speakeasyVersion: 1.569.0
+  generationVersion: 2.636.0
+  releaseVersion: 1.9.0
+  configChecksum: 27431accff4f5364bf9292effbddebf1
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -36,7 +36,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    tests: 0.16.2
+    tests: 0.17.0
     unions: 2.85.11
     uploadStreams: 0.1.0
 generatedFiles:
@@ -88,6 +88,7 @@ generatedFiles:
   - docs/models/addprojectmemberrequestbodyrole.md
   - docs/models/addprojectmemberresponsebody.md
   - docs/models/addresses.md
+  - docs/models/advancementtype.md
   - docs/models/affectedhostmap.md
   - docs/models/aibots.md
   - docs/models/algo.md
@@ -102,6 +103,7 @@ generatedFiles:
   - docs/models/anomalyalerts.md
   - docs/models/applications.md
   - docs/models/approverollingreleasestageactivestage.md
+  - docs/models/approverollingreleasestageadvancementtype.md
   - docs/models/approverollingreleasestagecanarydeployment.md
   - docs/models/approverollingreleasestagecurrentdeployment.md
   - docs/models/approverollingreleasestagenextstage.md
@@ -309,6 +311,7 @@ generatedFiles:
   - docs/models/city.md
   - docs/models/cls.md
   - docs/models/completerollingreleaseactivestage.md
+  - docs/models/completerollingreleaseadvancementtype.md
   - docs/models/completerollingreleasecanarydeployment.md
   - docs/models/completerollingreleasecurrentdeployment.md
   - docs/models/completerollingreleasenextstage.md
@@ -827,7 +830,6 @@ generatedFiles:
   - docs/models/deleteedgeconfigtokensrequestbody.md
   - docs/models/deleteintegrationlogdrainrequest.md
   - docs/models/deleteprojectrequest.md
-  - docs/models/deleteresourcerequest.md
   - docs/models/deleterollingreleaseconfigrequest.md
   - docs/models/deleterollingreleaseconfigresponsebody.md
   - docs/models/deleteteaminvitecoderequest.md
@@ -948,7 +950,6 @@ generatedFiles:
   - docs/models/exchangessotokengranttype.md
   - docs/models/exchangessotokenrequestbody.md
   - docs/models/exchangessotokenresponsebody.md
-  - docs/models/experimentation.md
   - docs/models/failed.md
   - docs/models/fastdatatransfer.md
   - docs/models/fastorigintransfer.md
@@ -1407,7 +1408,6 @@ generatedFiles:
   - docs/models/getedgeconfigbackupresponsebody1.md
   - docs/models/getedgeconfigbackupresponsebody2.md
   - docs/models/getedgeconfigbackupresponsebodyitems.md
-  - docs/models/getedgeconfigbackupresponsebodymetadata.md
   - docs/models/getedgeconfigbackupresponsebodyuser.md
   - docs/models/getedgeconfigbackupsmetadata.md
   - docs/models/getedgeconfigbackupspagination.md
@@ -1790,19 +1790,6 @@ generatedFiles:
   - docs/models/getrecordsresponsebody2.md
   - docs/models/getrecordsresponsebodydnstype.md
   - docs/models/getrecordsresponsebodytype.md
-  - docs/models/getresourcelevel.md
-  - docs/models/getresourcenotification.md
-  - docs/models/getresourcerequest.md
-  - docs/models/getresourceresponsebody.md
-  - docs/models/getresourcesexperimentation.md
-  - docs/models/getresourceslevel.md
-  - docs/models/getresourcesmetadata.md
-  - docs/models/getresourcesnotification.md
-  - docs/models/getresourcesprotocolsettings.md
-  - docs/models/getresourcesrequest.md
-  - docs/models/getresourcesresponsebody.md
-  - docs/models/getresourcesstatus.md
-  - docs/models/getresourcestatus.md
   - docs/models/getrollingreleasebillingstatusrequest.md
   - docs/models/getrollingreleasebillingstatusresponsebody.md
   - docs/models/getrollingreleasebillingstatusresponsebody1.md
@@ -1926,6 +1913,7 @@ generatedFiles:
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
   - docs/models/importflowgitprovider.md
+  - docs/models/importresourceenvironmentoverrides.md
   - docs/models/importresourcerequest.md
   - docs/models/importresourcerequestbody.md
   - docs/models/importresourceresponsebody.md
@@ -2334,7 +2322,6 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
-  - docs/models/protocolsettings.md
   - docs/models/proxy.md
   - docs/models/purchasetype.md
   - docs/models/purpose.md
@@ -2628,7 +2615,6 @@ generatedFiles:
   - docs/models/rerequestcheckresponsebody.md
   - docs/models/resourceconfig.md
   - docs/models/resourcelimits.md
-  - docs/models/resources.md
   - docs/models/responsebody.md
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
@@ -3321,7 +3307,6 @@ generatedFiles:
   - docs/models/updateresourcesecretsbyidrequest.md
   - docs/models/updateresourcesecretsbyidrequestbody.md
   - docs/models/updateresourcesecretsbyidsecrets.md
-  - docs/models/updateresourcesecretsenvironmentoverrides.md
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
   - docs/models/updateresourcesecretssecrets.md
@@ -3518,7 +3503,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1edgeconfigedgeconfigidtokens.go
-  - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
@@ -3561,8 +3545,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidaccount.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
-  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresources.go
-  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingrelease.go
@@ -3741,7 +3723,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/deleteresource.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteaminvitecode.go
@@ -3790,8 +3771,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectmembers.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojects.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrecords.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/getresource.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/getresources.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingrelease.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleasebillingstatus.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getrollingreleaseconfig.go
@@ -3997,13 +3976,10 @@ generatedFiles:
   - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/funcs/marketplaceDeleteInstallationIntegrationConfiguration.ts
-  - src/funcs/marketplaceDeleteResource.ts
   - src/funcs/marketplaceExchangeSsoToken.ts
   - src/funcs/marketplaceGetAccountInfo.ts
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
-  - src/funcs/marketplaceGetResource.ts
-  - src/funcs/marketplaceGetResources.ts
   - src/funcs/marketplaceImportResource.ts
   - src/funcs/marketplaceSubmitBillingData.ts
   - src/funcs/marketplaceSubmitInvoice.ts
@@ -4200,13 +4176,10 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceDeleteInstallationIntegrationConfiguration.ts
-  - src/mcp-server/tools/marketplaceDeleteResource.ts
   - src/mcp-server/tools/marketplaceExchangeSsoToken.ts
   - src/mcp-server/tools/marketplaceGetAccountInfo.ts
   - src/mcp-server/tools/marketplaceGetInvoice.ts
   - src/mcp-server/tools/marketplaceGetMember.ts
-  - src/mcp-server/tools/marketplaceGetResource.ts
-  - src/mcp-server/tools/marketplaceGetResources.ts
   - src/mcp-server/tools/marketplaceImportResource.ts
   - src/mcp-server/tools/marketplaceSubmitBillingData.ts
   - src/mcp-server/tools/marketplaceSubmitInvoice.ts
@@ -4325,7 +4298,6 @@ generatedFiles:
   - src/models/deleteedgeconfigtokensop.ts
   - src/models/deleteintegrationlogdrainop.ts
   - src/models/deleteprojectop.ts
-  - src/models/deleteresourceop.ts
   - src/models/deleterollingreleaseconfigop.ts
   - src/models/deleteteaminvitecodeop.ts
   - src/models/deleteteamop.ts
@@ -4379,8 +4351,6 @@ generatedFiles:
   - src/models/getprojectmembersop.ts
   - src/models/getprojectsop.ts
   - src/models/getrecordsop.ts
-  - src/models/getresourceop.ts
-  - src/models/getresourcesop.ts
   - src/models/getrollingreleasebillingstatusop.ts
   - src/models/getrollingreleaseconfigop.ts
   - src/models/getrollingreleaseop.ts
@@ -7445,7 +7415,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "advancementType": "manual-approval", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7462,7 +7432,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "advancementType": "manual-approval", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7479,7 +7449,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
+          application/json: {"rollingRelease": {"state": "ACTIVE", "currentDeployment": {"id": "dpl_abc123", "name": "my-shop@main", "url": "my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716206500000, "readyState": "READY", "readyStateAt": 1716206800000}, "canaryDeployment": {"id": "dpl_def456", "name": "my-shop@9c7e2f4", "url": "9c7e2f4-my-shop.vercel.app", "target": "production", "source": "git", "createdAt": 1716210100000, "readyState": "READY", "readyStateAt": 1716210400000}, "queuedDeploymentId": "dpl_ghi789", "advancementType": "manual-approval", "stages": [{"index": 0, "isFinalStage": false, "targetPercentage": 5, "requireApproval": true, "duration": null}, {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, {"index": 3, "isFinalStage": true, "targetPercentage": 100, "requireApproval": false, "duration": null}], "activeStage": {"index": 1, "isFinalStage": false, "targetPercentage": 25, "requireApproval": true, "duration": null}, "nextStage": {"index": 2, "isFinalStage": false, "targetPercentage": 60, "requireApproval": true, "duration": null}, "startedAt": 1716210500000, "updatedAt": 1716210600000}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

@@ -1,42 +1,18 @@
 # Metadata
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "<value>";
+import { Metadata } from "@vercel/sdk/models/getedgeconfigbackupop.js";
+
+let value: Metadata = {};
 ```
 
-### `number`
+## Fields
 
-```typescript
-const value: number = 1284.03;
-```
-
-### `boolean`
-
-```typescript
-const value: boolean = true;
-```
-
-### `string[]`
-
-```typescript
-const value: string[] = [
-  "<value 1>",
-  "<value 2>",
-];
-```
-
-### `number[]`
-
-```typescript
-const value: number[] = [
-  3390.48,
-  1336.21,
-  9437.99,
-];
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `updatedAt`        | *string*           | :heavy_minus_sign: | N/A                |
+| `updatedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| `itemsCount`       | *number*           | :heavy_minus_sign: | N/A                |
+| `itemsBytes`       | *number*           | :heavy_minus_sign: | N/A                |

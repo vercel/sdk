@@ -5,7 +5,7 @@ A map of environments to override values for the secret, used for setting differ
 ## Example Usage
 
 ```typescript
-import { EnvironmentOverrides } from "@vercel/sdk/models/importresourceop.js";
+import { EnvironmentOverrides } from "@vercel/sdk/models/updateresourcesecretsop.js";
 
 let value: EnvironmentOverrides = {};
 ```

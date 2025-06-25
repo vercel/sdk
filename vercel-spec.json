@@ -6732,6 +6732,12 @@
                           },
                           "type": "array"
                         },
+                        "notificationPreferences": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "notificationCustomerBudget": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -23892,736 +23898,6 @@
         }
       }
     },
-    "/v1/installations/{integrationConfigurationId}/resources": {
-      "get": {
-        "description": "Get all resources for a given integration configuration ID.",
-        "operationId": "get-resources",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Get Resources",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "resources": {
-                      "items": {
-                        "properties": {
-                          "partnerId": {
-                            "type": "string",
-                            "description": "The ID provided by the partner for the given resource"
-                          },
-                          "internalId": {
-                            "type": "string",
-                            "description": "The ID assigned by Vercel for the given resource"
-                          },
-                          "name": {
-                            "type": "string",
-                            "description": "The name of the resource as it is recorded in Vercel"
-                          },
-                          "status": {
-                            "type": "string",
-                            "enum": [
-                              "ready",
-                              "pending",
-                              "suspended",
-                              "resumed",
-                              "uninstalled",
-                              "error"
-                            ],
-                            "description": "The current status of the resource"
-                          },
-                          "productId": {
-                            "type": "string",
-                            "description": "The ID of the product the resource is derived from"
-                          },
-                          "protocolSettings": {
-                            "properties": {
-                              "experimentation": {
-                                "properties": {
-                                  "edgeConfigSyncingEnabled": {
-                                    "type": "boolean"
-                                  },
-                                  "edgeConfigId": {
-                                    "type": "string"
-                                  },
-                                  "edgeConfigTokenId": {
-                                    "type": "string"
-                                  }
-                                },
-                                "type": "object"
-                              }
-                            },
-                            "type": "object",
-                            "description": "Any settings provided for the resource to support its product's protocols"
-                          },
-                          "notification": {
-                            "properties": {
-                              "level": {
-                                "type": "string",
-                                "enum": [
-                                  "error",
-                                  "info",
-                                  "warn"
-                                ]
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "message": {
-                                "type": "string"
-                              },
-                              "href": {
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "level",
-                              "title"
-                            ],
-                            "type": "object",
-                            "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
-                          },
-                          "billingPlanId": {
-                            "type": "string",
-                            "description": "The ID of the billing plan the resource is subscribed to, if applicable"
-                          },
-                          "metadata": {
-                            "additionalProperties": {
-                              "oneOf": [
-                                {
-                                  "type": "string"
-                                },
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "boolean"
-                                },
-                                {
-                                  "items": {
-                                    "type": "string"
-                                  },
-                                  "type": "array",
-                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                                },
-                                {
-                                  "items": {
-                                    "type": "number"
-                                  },
-                                  "type": "array",
-                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                                }
-                              ]
-                            },
-                            "type": "object",
-                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                          }
-                        },
-                        "required": [
-                          "partnerId",
-                          "internalId",
-                          "name",
-                          "productId"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "resources"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
-      "get": {
-        "description": "Get a resource by its partner ID.",
-        "operationId": "get-resource",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Get Resource",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "description": "The ID provided by the 3rd party provider for the given resource"
-                    },
-                    "internalId": {
-                      "type": "string",
-                      "description": "The ID assigned by Vercel for the given resource"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the resource as it is recorded in Vercel"
-                    },
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "ready",
-                        "pending",
-                        "suspended",
-                        "resumed",
-                        "uninstalled",
-                        "error"
-                      ],
-                      "description": "The current status of the resource"
-                    },
-                    "productId": {
-                      "type": "string",
-                      "description": "The ID of the product the resource is derived from"
-                    },
-                    "protocolSettings": {
-                      "properties": {
-                        "experimentation": {
-                          "properties": {
-                            "edgeConfigSyncingEnabled": {
-                              "type": "boolean"
-                            },
-                            "edgeConfigId": {
-                              "type": "string"
-                            },
-                            "edgeConfigTokenId": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      },
-                      "type": "object",
-                      "description": "Any settings provided for the resource to support its product's protocols"
-                    },
-                    "notification": {
-                      "properties": {
-                        "level": {
-                          "type": "string",
-                          "enum": [
-                            "error",
-                            "info",
-                            "warn"
-                          ]
-                        },
-                        "title": {
-                          "type": "string"
-                        },
-                        "message": {
-                          "type": "string"
-                        },
-                        "href": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "level",
-                        "title"
-                      ],
-                      "type": "object",
-                      "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
-                    },
-                    "billingPlanId": {
-                      "type": "string",
-                      "description": "The ID of the billing plan the resource is subscribed to, if applicable"
-                    },
-                    "metadata": {
-                      "additionalProperties": {
-                        "oneOf": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "number"
-                          },
-                          {
-                            "type": "boolean"
-                          },
-                          {
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array",
-                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                          },
-                          {
-                            "items": {
-                              "type": "number"
-                            },
-                            "type": "array",
-                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                          }
-                        ]
-                      },
-                      "type": "object",
-                      "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "internalId",
-                    "name",
-                    "productId"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "description": "The ID of the integration configuration (installation) the resource belongs to",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The ID of the integration configuration (installation) the resource belongs to"
-            }
-          },
-          {
-            "name": "resourceId",
-            "description": "The ID provided by the 3rd party provider for the given resource",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The ID provided by the 3rd party provider for the given resource"
-            }
-          }
-        ]
-      },
-      "delete": {
-        "description": "Delete a resource owned by the selected installation ID.",
-        "operationId": "delete-resource",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Delete Resource",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "204": {
-            "description": ""
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resourceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "describe": "The external provider's ID of the resource to delete"
-            }
-          }
-        ]
-      },
-      "put": {
-        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
-        "operationId": "import-resource",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Import Resource",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resourceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "productId",
-                  "name",
-                  "status"
-                ],
-                "properties": {
-                  "productId": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "status": {
-                    "type": "string",
-                    "enum": [
-                      "ready",
-                      "pending",
-                      "suspended",
-                      "resumed",
-                      "uninstalled",
-                      "error"
-                    ]
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": true
-                  },
-                  "billingPlan": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "type",
-                      "name"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "prepayment",
-                          "subscription"
-                        ]
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "paymentMethodRequired": {
-                        "type": "boolean"
-                      },
-                      "cost": {
-                        "type": "string"
-                      },
-                      "details": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "heightlightedDetails": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "effectiveDate": {
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": true
-                  },
-                  "notification": {
-                    "type": "object",
-                    "required": [
-                      "level",
-                      "title"
-                    ],
-                    "properties": {
-                      "level": {
-                        "type": "string",
-                        "enum": [
-                          "info",
-                          "warn",
-                          "error"
-                        ]
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "href": {
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  },
-                  "secrets": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required": [
-                        "name",
-                        "value"
-                      ],
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "value": {
-                          "type": "string"
-                        },
-                        "prefix": {
-                          "type": "string"
-                        },
-                        "environmentOverrides": {
-                          "type": "object",
-                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
-                          "properties": {
-                            "development": {
-                              "type": "string",
-                              "description": "Value used for development environment."
-                            },
-                            "preview": {
-                              "type": "string",
-                              "description": "Value used for preview environment."
-                            },
-                            "production": {
-                              "type": "string",
-                              "description": "Value used for production environment."
-                            }
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/installations/{integrationConfigurationId}/billing": {
       "post": {
         "description": "Sends the billing and usage data. The partner should do this at least once a day and ideally once per hour. \u003cbr/\u003e Use the `credentials.access_token` we provided in the [Upsert Installation](#upsert-installation) body to authorize this request.",
@@ -25957,6 +25233,269 @@
                   "partial": {
                     "type": "boolean",
                     "description": "If true, will only overwrite the provided secrets instead of replacing all secrets."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
+      "put": {
+        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
+        "operationId": "import-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Import Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "productId",
+                  "name",
+                  "status"
+                ],
+                "properties": {
+                  "productId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ready",
+                      "pending",
+                      "suspended",
+                      "resumed",
+                      "uninstalled",
+                      "error"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "billingPlan": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type",
+                      "name"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "prepayment",
+                          "subscription"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "paymentMethodRequired": {
+                        "type": "boolean"
+                      },
+                      "cost": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "heightlightedDetails": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "effectiveDate": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": true
+                  },
+                  "notification": {
+                    "type": "object",
+                    "required": [
+                      "level",
+                      "title"
+                    ],
+                    "properties": {
+                      "level": {
+                        "type": "string",
+                        "enum": [
+                          "info",
+                          "warn",
+                          "error"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "href": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  },
+                  "secrets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "value"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "prefix": {
+                          "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
+                          "properties": {
+                            "development": {
+                              "type": "string",
+                              "description": "Value used for development environment."
+                            },
+                            "preview": {
+                              "type": "string",
+                              "description": "Value used for preview environment."
+                            },
+                            "production": {
+                              "type": "string",
+                              "description": "Value used for production environment."
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 "additionalProperties": false
@@ -32010,6 +31549,12 @@
                                 },
                                 "type": "array"
                               },
+                              "notificationPreferences": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "notificationCustomerBudget": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -36273,6 +35818,12 @@
                           },
                           "type": "array"
                         },
+                        "notificationPreferences": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "notificationCustomerBudget": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -40366,6 +39917,12 @@
                           "type": "array"
                         },
                         "notificationUsageAlert": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "notificationPreferences": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -44907,6 +44464,12 @@
                           },
                           "type": "array"
                         },
+                        "notificationPreferences": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "notificationCustomerBudget": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -46899,9 +46462,9 @@
                               "type": {
                                 "type": "string",
                                 "enum": [
-                                  "endsWith",
                                   "startsWith",
-                                  "equals"
+                                  "equals",
+                                  "endsWith"
                                 ],
                                 "description": "The type of matching to perform"
                               },
@@ -55922,6 +55485,15 @@
                           "description": "The ID of a deployment queued for the next rolling release",
                           "example": "dpl_ghi789"
                         },
+                        "advancementType": {
+                          "type": "string",
+                          "enum": [
+                            "automatic",
+                            "manual-approval"
+                          ],
+                          "description": "The advancement type of the rolling release",
+                          "example": "manual-approval"
+                        },
                         "stages": {
                           "items": {
                             "properties": {
@@ -55942,8 +55514,7 @@
                               },
                               "requireApproval": {
                                 "type": "boolean",
-                                "description": "Whether or not this stage requires manual approval to proceed",
-                                "example": true
+                                "description": "Whether or not this stage requires manual approval to proceed"
                               },
                               "duration": {
                                 "nullable": true,
@@ -56045,8 +55616,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -56092,8 +55662,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -56135,6 +55704,7 @@
                         "currentDeployment",
                         "canaryDeployment",
                         "queuedDeploymentId",
+                        "advancementType",
                         "stages",
                         "activeStage",
                         "nextStage",
@@ -56416,6 +55986,15 @@
                           "description": "The ID of a deployment queued for the next rolling release",
                           "example": "dpl_ghi789"
                         },
+                        "advancementType": {
+                          "type": "string",
+                          "enum": [
+                            "automatic",
+                            "manual-approval"
+                          ],
+                          "description": "The advancement type of the rolling release",
+                          "example": "manual-approval"
+                        },
                         "stages": {
                           "items": {
                             "properties": {
@@ -56436,8 +56015,7 @@
                               },
                               "requireApproval": {
                                 "type": "boolean",
-                                "description": "Whether or not this stage requires manual approval to proceed",
-                                "example": true
+                                "description": "Whether or not this stage requires manual approval to proceed"
                               },
                               "duration": {
                                 "nullable": true,
@@ -56539,8 +56117,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -56586,8 +56163,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -56629,6 +56205,7 @@
                         "currentDeployment",
                         "canaryDeployment",
                         "queuedDeploymentId",
+                        "advancementType",
                         "stages",
                         "activeStage",
                         "nextStage",
@@ -56921,6 +56498,15 @@
                           "description": "The ID of a deployment queued for the next rolling release",
                           "example": "dpl_ghi789"
                         },
+                        "advancementType": {
+                          "type": "string",
+                          "enum": [
+                            "automatic",
+                            "manual-approval"
+                          ],
+                          "description": "The advancement type of the rolling release",
+                          "example": "manual-approval"
+                        },
                         "stages": {
                           "items": {
                             "properties": {
@@ -56941,8 +56527,7 @@
                               },
                               "requireApproval": {
                                 "type": "boolean",
-                                "description": "Whether or not this stage requires manual approval to proceed",
-                                "example": true
+                                "description": "Whether or not this stage requires manual approval to proceed"
                               },
                               "duration": {
                                 "nullable": true,
@@ -57044,8 +56629,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -57091,8 +56675,7 @@
                             },
                             "requireApproval": {
                               "type": "boolean",
-                              "description": "Whether or not this stage requires manual approval to proceed",
-                              "example": true
+                              "description": "Whether or not this stage requires manual approval to proceed"
                             },
                             "duration": {
                               "nullable": true,
@@ -57134,6 +56717,7 @@
                         "currentDeployment",
                         "canaryDeployment",
                         "queuedDeploymentId",
+                        "advancementType",
                         "stages",
                         "activeStage",
                         "nextStage",

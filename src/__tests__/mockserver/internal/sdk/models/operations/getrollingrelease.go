@@ -459,6 +459,33 @@ func (o *GetRollingReleaseCanaryDeployment) GetReadyStateAt() *float64 {
 	return o.ReadyStateAt
 }
 
+// GetRollingReleaseAdvancementType - The advancement type of the rolling release
+type GetRollingReleaseAdvancementType string
+
+const (
+	GetRollingReleaseAdvancementTypeAutomatic      GetRollingReleaseAdvancementType = "automatic"
+	GetRollingReleaseAdvancementTypeManualApproval GetRollingReleaseAdvancementType = "manual-approval"
+)
+
+func (e GetRollingReleaseAdvancementType) ToPointer() *GetRollingReleaseAdvancementType {
+	return &e
+}
+func (e *GetRollingReleaseAdvancementType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "automatic":
+		fallthrough
+	case "manual-approval":
+		*e = GetRollingReleaseAdvancementType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRollingReleaseAdvancementType: %v", v)
+	}
+}
+
 // GetRollingReleaseStage - All stages configured for this rolling release
 type GetRollingReleaseStage struct {
 	// The zero-based index of the stage
@@ -616,6 +643,8 @@ type GetRollingReleaseRollingRelease struct {
 	CanaryDeployment *GetRollingReleaseCanaryDeployment `json:"canaryDeployment"`
 	// The ID of a deployment queued for the next rolling release
 	QueuedDeploymentID *string `json:"queuedDeploymentId"`
+	// The advancement type of the rolling release
+	AdvancementType GetRollingReleaseAdvancementType `json:"advancementType"`
 	// All stages configured for this rolling release
 	Stages []GetRollingReleaseStage `json:"stages"`
 	// The currently active stage, null if the rollout is aborted
@@ -654,6 +683,13 @@ func (o *GetRollingReleaseRollingRelease) GetQueuedDeploymentID() *string {
 		return nil
 	}
 	return o.QueuedDeploymentID
+}
+
+func (o *GetRollingReleaseRollingRelease) GetAdvancementType() GetRollingReleaseAdvancementType {
+	if o == nil {
+		return GetRollingReleaseAdvancementType("")
+	}
+	return o.AdvancementType
 }
 
 func (o *GetRollingReleaseRollingRelease) GetStages() []GetRollingReleaseStage {

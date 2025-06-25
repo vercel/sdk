@@ -4803,6 +4803,7 @@ type UpdateProjectDataCachePermissions struct {
 	NotificationMonitoringAlert              []components.ACLAction `json:"NotificationMonitoringAlert,omitempty"`
 	NotificationPaymentFailed                []components.ACLAction `json:"notificationPaymentFailed,omitempty"`
 	NotificationUsageAlert                   []components.ACLAction `json:"notificationUsageAlert,omitempty"`
+	NotificationPreferences                  []components.ACLAction `json:"notificationPreferences,omitempty"`
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
@@ -5480,6 +5481,13 @@ func (o *UpdateProjectDataCachePermissions) GetNotificationUsageAlert() []compon
 		return nil
 	}
 	return o.NotificationUsageAlert
+}
+
+func (o *UpdateProjectDataCachePermissions) GetNotificationPreferences() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.NotificationPreferences
 }
 
 func (o *UpdateProjectDataCachePermissions) GetNotificationCustomerBudget() []components.ACLAction {

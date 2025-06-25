@@ -20,10 +20,11 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
   tests:
+    generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.8.6
+  version: 1.9.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

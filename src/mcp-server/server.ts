@@ -107,13 +107,10 @@ import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
 import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
 import { tool$marketplaceCreateInstallationIntegrationEdgeConfig } from "./tools/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 import { tool$marketplaceDeleteInstallationIntegrationConfiguration } from "./tools/marketplaceDeleteInstallationIntegrationConfiguration.js";
-import { tool$marketplaceDeleteResource } from "./tools/marketplaceDeleteResource.js";
 import { tool$marketplaceExchangeSsoToken } from "./tools/marketplaceExchangeSsoToken.js";
 import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInfo.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
-import { tool$marketplaceGetResource } from "./tools/marketplaceGetResource.js";
-import { tool$marketplaceGetResources } from "./tools/marketplaceGetResources.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
@@ -196,7 +193,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.8.6",
+    version: "1.9.0",
   });
 
   const client = new VercelCore({
@@ -326,10 +323,6 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);
   tool(tool$marketplaceCreateEvent);
-  tool(tool$marketplaceGetResources);
-  tool(tool$marketplaceGetResource);
-  tool(tool$marketplaceDeleteResource);
-  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceSubmitBillingData);
   tool(tool$marketplaceSubmitInvoice);
   tool(tool$marketplaceGetInvoice);
@@ -337,6 +330,7 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceSubmitPrepaymentBalances);
   tool(tool$marketplaceUpdateResourceSecrets);
   tool(tool$marketplaceUpdateResourceSecretsById);
+  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
   tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);

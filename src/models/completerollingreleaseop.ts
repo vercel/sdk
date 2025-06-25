@@ -144,6 +144,20 @@ export type CompleteRollingReleaseCanaryDeployment = {
 };
 
 /**
+ * The advancement type of the rolling release
+ */
+export const CompleteRollingReleaseAdvancementType = {
+  Automatic: "automatic",
+  ManualApproval: "manual-approval",
+} as const;
+/**
+ * The advancement type of the rolling release
+ */
+export type CompleteRollingReleaseAdvancementType = ClosedEnum<
+  typeof CompleteRollingReleaseAdvancementType
+>;
+
+/**
  * All stages configured for this rolling release
  */
 export type CompleteRollingReleaseStages = {
@@ -241,6 +255,10 @@ export type CompleteRollingReleaseRollingRelease = {
    * The ID of a deployment queued for the next rolling release
    */
   queuedDeploymentId: string | null;
+  /**
+   * The advancement type of the rolling release
+   */
+  advancementType: CompleteRollingReleaseAdvancementType;
   /**
    * All stages configured for this rolling release
    */
@@ -728,6 +746,30 @@ export function completeRollingReleaseCanaryDeploymentFromJSON(
 }
 
 /** @internal */
+export const CompleteRollingReleaseAdvancementType$inboundSchema:
+  z.ZodNativeEnum<typeof CompleteRollingReleaseAdvancementType> = z.nativeEnum(
+    CompleteRollingReleaseAdvancementType,
+  );
+
+/** @internal */
+export const CompleteRollingReleaseAdvancementType$outboundSchema:
+  z.ZodNativeEnum<typeof CompleteRollingReleaseAdvancementType> =
+    CompleteRollingReleaseAdvancementType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteRollingReleaseAdvancementType$ {
+  /** @deprecated use `CompleteRollingReleaseAdvancementType$inboundSchema` instead. */
+  export const inboundSchema =
+    CompleteRollingReleaseAdvancementType$inboundSchema;
+  /** @deprecated use `CompleteRollingReleaseAdvancementType$outboundSchema` instead. */
+  export const outboundSchema =
+    CompleteRollingReleaseAdvancementType$outboundSchema;
+}
+
+/** @internal */
 export const CompleteRollingReleaseStages$inboundSchema: z.ZodType<
   CompleteRollingReleaseStages,
   z.ZodTypeDef,
@@ -946,6 +988,7 @@ export const CompleteRollingReleaseRollingRelease$inboundSchema: z.ZodType<
     z.lazy(() => CompleteRollingReleaseCanaryDeployment$inboundSchema),
   ),
   queuedDeploymentId: z.nullable(z.string()),
+  advancementType: CompleteRollingReleaseAdvancementType$inboundSchema,
   stages: z.array(z.lazy(() => CompleteRollingReleaseStages$inboundSchema)),
   activeStage: z.nullable(
     z.lazy(() => CompleteRollingReleaseActiveStage$inboundSchema),
@@ -963,6 +1006,7 @@ export type CompleteRollingReleaseRollingRelease$Outbound = {
   currentDeployment: CompleteRollingReleaseCurrentDeployment$Outbound | null;
   canaryDeployment: CompleteRollingReleaseCanaryDeployment$Outbound | null;
   queuedDeploymentId: string | null;
+  advancementType: string;
   stages: Array<CompleteRollingReleaseStages$Outbound>;
   activeStage: CompleteRollingReleaseActiveStage$Outbound | null;
   nextStage: CompleteRollingReleaseNextStage$Outbound | null;
@@ -984,6 +1028,7 @@ export const CompleteRollingReleaseRollingRelease$outboundSchema: z.ZodType<
     z.lazy(() => CompleteRollingReleaseCanaryDeployment$outboundSchema),
   ),
   queuedDeploymentId: z.nullable(z.string()),
+  advancementType: CompleteRollingReleaseAdvancementType$outboundSchema,
   stages: z.array(z.lazy(() => CompleteRollingReleaseStages$outboundSchema)),
   activeStage: z.nullable(
     z.lazy(() => CompleteRollingReleaseActiveStage$outboundSchema),

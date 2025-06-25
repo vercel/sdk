@@ -11,7 +11,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
  */
-export type UpdateResourceSecretsEnvironmentOverrides = {
+export type EnvironmentOverrides = {
   /**
    * Value used for development environment.
    */
@@ -33,7 +33,7 @@ export type UpdateResourceSecretsSecrets = {
   /**
    * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
    */
-  environmentOverrides?: UpdateResourceSecretsEnvironmentOverrides | undefined;
+  environmentOverrides?: EnvironmentOverrides | undefined;
 };
 
 export type UpdateResourceSecretsRequestBody = {
@@ -52,8 +52,8 @@ export type UpdateResourceSecretsRequest = {
 };
 
 /** @internal */
-export const UpdateResourceSecretsEnvironmentOverrides$inboundSchema: z.ZodType<
-  UpdateResourceSecretsEnvironmentOverrides,
+export const EnvironmentOverrides$inboundSchema: z.ZodType<
+  EnvironmentOverrides,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -63,63 +63,51 @@ export const UpdateResourceSecretsEnvironmentOverrides$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UpdateResourceSecretsEnvironmentOverrides$Outbound = {
+export type EnvironmentOverrides$Outbound = {
   development?: string | undefined;
   preview?: string | undefined;
   production?: string | undefined;
 };
 
 /** @internal */
-export const UpdateResourceSecretsEnvironmentOverrides$outboundSchema:
-  z.ZodType<
-    UpdateResourceSecretsEnvironmentOverrides$Outbound,
-    z.ZodTypeDef,
-    UpdateResourceSecretsEnvironmentOverrides
-  > = z.object({
-    development: z.string().optional(),
-    preview: z.string().optional(),
-    production: z.string().optional(),
-  });
+export const EnvironmentOverrides$outboundSchema: z.ZodType<
+  EnvironmentOverrides$Outbound,
+  z.ZodTypeDef,
+  EnvironmentOverrides
+> = z.object({
+  development: z.string().optional(),
+  preview: z.string().optional(),
+  production: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateResourceSecretsEnvironmentOverrides$ {
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateResourceSecretsEnvironmentOverrides$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateResourceSecretsEnvironmentOverrides$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsEnvironmentOverrides$Outbound;
+export namespace EnvironmentOverrides$ {
+  /** @deprecated use `EnvironmentOverrides$inboundSchema` instead. */
+  export const inboundSchema = EnvironmentOverrides$inboundSchema;
+  /** @deprecated use `EnvironmentOverrides$outboundSchema` instead. */
+  export const outboundSchema = EnvironmentOverrides$outboundSchema;
+  /** @deprecated use `EnvironmentOverrides$Outbound` instead. */
+  export type Outbound = EnvironmentOverrides$Outbound;
 }
 
-export function updateResourceSecretsEnvironmentOverridesToJSON(
-  updateResourceSecretsEnvironmentOverrides:
-    UpdateResourceSecretsEnvironmentOverrides,
+export function environmentOverridesToJSON(
+  environmentOverrides: EnvironmentOverrides,
 ): string {
   return JSON.stringify(
-    UpdateResourceSecretsEnvironmentOverrides$outboundSchema.parse(
-      updateResourceSecretsEnvironmentOverrides,
-    ),
+    EnvironmentOverrides$outboundSchema.parse(environmentOverrides),
   );
 }
 
-export function updateResourceSecretsEnvironmentOverridesFromJSON(
+export function environmentOverridesFromJSON(
   jsonString: string,
-): SafeParseResult<
-  UpdateResourceSecretsEnvironmentOverrides,
-  SDKValidationError
-> {
+): SafeParseResult<EnvironmentOverrides, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      UpdateResourceSecretsEnvironmentOverrides$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateResourceSecretsEnvironmentOverrides' from JSON`,
+    (x) => EnvironmentOverrides$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnvironmentOverrides' from JSON`,
   );
 }
 
@@ -132,9 +120,8 @@ export const UpdateResourceSecretsSecrets$inboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsEnvironmentOverrides$inboundSchema
-  ).optional(),
+  environmentOverrides: z.lazy(() => EnvironmentOverrides$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -142,9 +129,7 @@ export type UpdateResourceSecretsSecrets$Outbound = {
   name: string;
   value: string;
   prefix?: string | undefined;
-  environmentOverrides?:
-    | UpdateResourceSecretsEnvironmentOverrides$Outbound
-    | undefined;
+  environmentOverrides?: EnvironmentOverrides$Outbound | undefined;
 };
 
 /** @internal */
@@ -156,9 +141,8 @@ export const UpdateResourceSecretsSecrets$outboundSchema: z.ZodType<
   name: z.string(),
   value: z.string(),
   prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsEnvironmentOverrides$outboundSchema
-  ).optional(),
+  environmentOverrides: z.lazy(() => EnvironmentOverrides$outboundSchema)
+    .optional(),
 });
 
 /**

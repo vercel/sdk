@@ -4963,6 +4963,7 @@ type GetProjectsPermissions struct {
 	NotificationMonitoringAlert              []components.ACLAction `json:"NotificationMonitoringAlert,omitempty"`
 	NotificationPaymentFailed                []components.ACLAction `json:"notificationPaymentFailed,omitempty"`
 	NotificationUsageAlert                   []components.ACLAction `json:"notificationUsageAlert,omitempty"`
+	NotificationPreferences                  []components.ACLAction `json:"notificationPreferences,omitempty"`
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
@@ -6024,6 +6025,13 @@ func (o *GetProjectsPermissions) GetNotificationUsageAlert() []components.ACLAct
 		return nil
 	}
 	return o.NotificationUsageAlert
+}
+
+func (o *GetProjectsPermissions) GetNotificationPreferences() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.NotificationPreferences
 }
 
 func (o *GetProjectsPermissions) GetNotificationCustomerBudget() []components.ACLAction {

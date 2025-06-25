@@ -440,6 +440,33 @@ func (o *CompleteRollingReleaseCanaryDeployment) GetReadyStateAt() *float64 {
 	return o.ReadyStateAt
 }
 
+// CompleteRollingReleaseAdvancementType - The advancement type of the rolling release
+type CompleteRollingReleaseAdvancementType string
+
+const (
+	CompleteRollingReleaseAdvancementTypeAutomatic      CompleteRollingReleaseAdvancementType = "automatic"
+	CompleteRollingReleaseAdvancementTypeManualApproval CompleteRollingReleaseAdvancementType = "manual-approval"
+)
+
+func (e CompleteRollingReleaseAdvancementType) ToPointer() *CompleteRollingReleaseAdvancementType {
+	return &e
+}
+func (e *CompleteRollingReleaseAdvancementType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "automatic":
+		fallthrough
+	case "manual-approval":
+		*e = CompleteRollingReleaseAdvancementType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CompleteRollingReleaseAdvancementType: %v", v)
+	}
+}
+
 // CompleteRollingReleaseStage - All stages configured for this rolling release
 type CompleteRollingReleaseStage struct {
 	// The zero-based index of the stage
@@ -597,6 +624,8 @@ type CompleteRollingReleaseRollingRelease struct {
 	CanaryDeployment *CompleteRollingReleaseCanaryDeployment `json:"canaryDeployment"`
 	// The ID of a deployment queued for the next rolling release
 	QueuedDeploymentID *string `json:"queuedDeploymentId"`
+	// The advancement type of the rolling release
+	AdvancementType CompleteRollingReleaseAdvancementType `json:"advancementType"`
 	// All stages configured for this rolling release
 	Stages []CompleteRollingReleaseStage `json:"stages"`
 	// The currently active stage, null if the rollout is aborted
@@ -635,6 +664,13 @@ func (o *CompleteRollingReleaseRollingRelease) GetQueuedDeploymentID() *string {
 		return nil
 	}
 	return o.QueuedDeploymentID
+}
+
+func (o *CompleteRollingReleaseRollingRelease) GetAdvancementType() CompleteRollingReleaseAdvancementType {
+	if o == nil {
+		return CompleteRollingReleaseAdvancementType("")
+	}
+	return o.AdvancementType
 }
 
 func (o *CompleteRollingReleaseRollingRelease) GetStages() []CompleteRollingReleaseStage {

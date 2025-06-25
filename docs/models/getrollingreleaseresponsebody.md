@@ -31,6 +31,7 @@ let value: GetRollingReleaseResponseBody = {
       readyStateAt: 1716210400000,
     },
     queuedDeploymentId: "dpl_ghi789",
+    advancementType: "manual-approval",
     stages: [
       {
         index: 0,

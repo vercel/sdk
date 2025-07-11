@@ -26,5 +26,5 @@ actions:
     update:
       type: "string"  
   # Property describe is not valid in openapi spec and breaks mintlify generation
-  - target: '$..[?(@.describe)]'
+  - target: "$..schema.describe"
     remove: true      

@@ -279,6 +279,8 @@ func (o *TeamBuildEntitlements) GetEnhancedBuilds() *bool {
 type TeamResourceConfig struct {
 	// The total amount of concurrent builds that can be used.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
+	// Whether every build for this team / user has elastic concurrency enabled automatically.
+	ElasticConcurrencyEnabled *bool `json:"elasticConcurrencyEnabled,omitempty"`
 	// The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
 	EdgeConfigSize *float64 `json:"edgeConfigSize,omitempty"`
 	// The maximum number of edge configs an account can create.
@@ -297,6 +299,13 @@ func (o *TeamResourceConfig) GetConcurrentBuilds() *float64 {
 		return nil
 	}
 	return o.ConcurrentBuilds
+}
+
+func (o *TeamResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *TeamResourceConfig) GetEdgeConfigSize() *float64 {
@@ -611,9 +620,9 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamOrigin2 string
 
 const (
+	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Saml              TeamOrigin2 = "saml"
 	TeamOrigin2Mail              TeamOrigin2 = "mail"
-	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Import            TeamOrigin2 = "import"
 	TeamOrigin2Teams             TeamOrigin2 = "teams"
 	TeamOrigin2Github            TeamOrigin2 = "github"
@@ -633,11 +642,11 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "link":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
-		fallthrough
-	case "link":
 		fallthrough
 	case "import":
 		fallthrough

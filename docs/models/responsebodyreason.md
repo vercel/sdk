@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyReason } from "@vercel/sdk/models/getrollingreleasebillingstatusop.js";
 
-let value: ResponseBodyReason = "available_slots";
+let value: ResponseBodyReason = "plan_not_supported";
 ```
 
 ## Values
 
 ```typescript
-"available_slots"
+"plan_not_supported"
 ```

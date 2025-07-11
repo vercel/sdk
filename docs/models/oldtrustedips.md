@@ -11,5 +11,5 @@ let value: OldTrustedIps = "all";
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "production"
+"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains" | "production"
 ```

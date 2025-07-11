@@ -64,6 +64,7 @@ export const UpdateProjectFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -158,6 +159,7 @@ export const UpdateProjectDeploymentType = {
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 /**
  * Specify if the password will apply to every Deployment Target or just Preview
@@ -187,6 +189,7 @@ export const UpdateProjectProjectsDeploymentType = {
   All: "all",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 /**
  * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
@@ -213,6 +216,7 @@ export const UpdateProjectProjectsRequestDeploymentType = {
   Preview: "preview",
   Production: "production",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 /**
  * Specify if the Trusted IPs will apply to every Deployment Target or just Preview
@@ -1004,6 +1008,7 @@ export const UpdateProjectProjectsFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
   typeof UpdateProjectProjectsFramework
@@ -1486,6 +1491,7 @@ export const UpdateProjectProjectsResponseDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type UpdateProjectProjectsResponseDeploymentType = ClosedEnum<
   typeof UpdateProjectProjectsResponseDeploymentType
@@ -1929,6 +1935,7 @@ export const UpdateProjectTrustedIpsProjectsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type UpdateProjectTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsProjectsDeploymentType
@@ -1943,6 +1950,7 @@ export const UpdateProjectTrustedIpsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type UpdateProjectTrustedIpsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsDeploymentType
@@ -2324,7 +2332,6 @@ export type UpdateProjectResponseBody = {
   rollingRelease?: UpdateProjectRollingRelease | null | undefined;
   defaultResourceConfig: UpdateProjectDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -12427,7 +12434,6 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     UpdateProjectDefaultResourceConfig$inboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
@@ -12552,7 +12558,6 @@ export type UpdateProjectResponseBody$Outbound = {
   rollingRelease?: UpdateProjectRollingRelease$Outbound | null | undefined;
   defaultResourceConfig: UpdateProjectDefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -12679,7 +12684,6 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     UpdateProjectDefaultResourceConfig$outboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),

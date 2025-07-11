@@ -8,20 +8,16 @@ The payload of the event, if requested.
 import { SixtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyThree = {
-  configurations: [
-    {
-      integrationId: "<id>",
-      configurationId: "<id>",
-      integrationSlug: "<value>",
-    },
-  ],
-  ownerId: "<id>",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |

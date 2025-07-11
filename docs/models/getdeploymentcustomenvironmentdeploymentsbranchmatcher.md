@@ -8,7 +8,7 @@ Configuration for matching git branches to this environment
 import { GetDeploymentCustomEnvironmentDeploymentsBranchMatcher } from "@vercel/sdk/models/getdeploymentop.js";
 
 let value: GetDeploymentCustomEnvironmentDeploymentsBranchMatcher = {
-  type: "startsWith",
+  type: "endsWith",
   pattern: "<value>",
 };
 ```

@@ -8,6 +8,7 @@ import { GetRollingReleaseBillingStatusResponseBody2 } from "@vercel/sdk/models/
 let value: GetRollingReleaseBillingStatusResponseBody2 = {
   availableSlots: "unlimited",
   reason: "unlimited_slots",
+  message: "<value>",
 };
 ```
 
@@ -17,3 +18,4 @@ let value: GetRollingReleaseBillingStatusResponseBody2 = {
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `availableSlots`                                                                                                         | [models.AvailableSlots](../models/availableslots.md)                                                                     | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 | `reason`                                                                                                                 | [models.GetRollingReleaseBillingStatusResponseBodyReason](../models/getrollingreleasebillingstatusresponsebodyreason.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `message`                                                                                                                | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

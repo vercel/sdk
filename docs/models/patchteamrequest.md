@@ -8,6 +8,26 @@ import { PatchTeamRequest } from "@vercel/sdk/models/patchteamop.js";
 let value: PatchTeamRequest = {
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
+  requestBody: {
+    description:
+      "Our mission is to make cloud computing accessible to everyone",
+    emailDomain: "example.com",
+    name: "My Team",
+    previewDeploymentSuffix: "example.dev",
+    regenerateInviteCode: true,
+    saml: {
+      enforced: true,
+    },
+    slug: "my-team",
+    enablePreviewFeedback: "on",
+    enableProductionFeedback: "on",
+    sensitiveEnvironmentVariablePolicy: "on",
+    remoteCaching: {
+      enabled: true,
+    },
+    hideIpAddresses: false,
+    hideIpAddressesInLogDrains: false,
+  },
 };
 ```
 

@@ -8,7 +8,7 @@ Configuration for matching git branches to this environment
 import { GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher } from "@vercel/sdk/models/getv9projectsidornamecustomenvironmentsop.js";
 
 let value: GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher = {
-  type: "startsWith",
+  type: "endsWith",
   pattern: "<value>",
 };
 ```

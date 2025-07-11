@@ -77,8 +77,8 @@ export const RequestAccessToTeamTeamsOrigin = {
   Bitbucket: "bitbucket",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
-  Mail: "mail",
   Link: "link",
+  Mail: "mail",
   Saml: "saml",
   Dsync: "dsync",
 } as const;

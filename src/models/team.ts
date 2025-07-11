@@ -116,6 +116,10 @@ export type ResourceConfig = {
    */
   concurrentBuilds?: number | undefined;
   /**
+   * Whether every build for this team / user has elastic concurrency enabled automatically.
+   */
+  elasticConcurrencyEnabled?: boolean | undefined;
+  /**
    * The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set.
    */
   edgeConfigSize?: number | undefined;
@@ -235,9 +239,9 @@ export const TeamPermissions = {
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 
 export const Origin = {
+  Link: "link",
   Saml: "saml",
   Mail: "mail",
-  Link: "link",
   Import: "import",
   Teams: "teams",
   Github: "github",
@@ -769,6 +773,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   concurrentBuilds: z.number().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   edgeConfigSize: z.number().optional(),
   edgeConfigs: z.number().optional(),
   kvDatabases: z.number().optional(),
@@ -780,6 +785,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
 /** @internal */
 export type ResourceConfig$Outbound = {
   concurrentBuilds?: number | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   edgeConfigSize?: number | undefined;
   edgeConfigs?: number | undefined;
   kvDatabases?: number | undefined;
@@ -795,6 +801,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   ResourceConfig
 > = z.object({
   concurrentBuilds: z.number().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   edgeConfigSize: z.number().optional(),
   edgeConfigs: z.number().optional(),
   kvDatabases: z.number().optional(),

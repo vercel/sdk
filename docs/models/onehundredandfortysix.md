@@ -8,17 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndFortySix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortySix = {
-  appName: "<value>",
-  scopes: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  tier: "plus",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `appName`          | *string*           | :heavy_check_mark: | N/A                |
-| `scopes`           | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |

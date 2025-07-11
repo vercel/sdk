@@ -2293,6 +2293,7 @@ const (
 	GetProjectsFrameworkSanityV3       GetProjectsFramework = "sanity-v3"
 	GetProjectsFrameworkSanity         GetProjectsFramework = "sanity"
 	GetProjectsFrameworkStorybook      GetProjectsFramework = "storybook"
+	GetProjectsFrameworkNitro          GetProjectsFramework = "nitro"
 )
 
 func (e GetProjectsFramework) ToPointer() *GetProjectsFramework {
@@ -2395,6 +2396,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = GetProjectsFramework(v)
 		return nil
 	default:
@@ -4035,6 +4038,7 @@ const (
 	GetProjectsSsoProtectionDeploymentTypePreview                          GetProjectsSsoProtectionDeploymentType = "preview"
 	GetProjectsSsoProtectionDeploymentTypeAll                              GetProjectsSsoProtectionDeploymentType = "all"
 	GetProjectsSsoProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews GetProjectsSsoProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	GetProjectsSsoProtectionDeploymentTypeAllExceptCustomDomains           GetProjectsSsoProtectionDeploymentType = "all_except_custom_domains"
 )
 
 func (e GetProjectsSsoProtectionDeploymentType) ToPointer() *GetProjectsSsoProtectionDeploymentType {
@@ -4051,6 +4055,8 @@ func (e *GetProjectsSsoProtectionDeploymentType) UnmarshalJSON(data []byte) erro
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = GetProjectsSsoProtectionDeploymentType(v)
 		return nil
 	default:
@@ -6756,6 +6762,7 @@ const (
 	GetProjectsTrustedIpsDeploymentType2Preview                          GetProjectsTrustedIpsDeploymentType2 = "preview"
 	GetProjectsTrustedIpsDeploymentType2All                              GetProjectsTrustedIpsDeploymentType2 = "all"
 	GetProjectsTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
+	GetProjectsTrustedIpsDeploymentType2AllExceptCustomDomains           GetProjectsTrustedIpsDeploymentType2 = "all_except_custom_domains"
 )
 
 func (e GetProjectsTrustedIpsDeploymentType2) ToPointer() *GetProjectsTrustedIpsDeploymentType2 {
@@ -6774,6 +6781,8 @@ func (e *GetProjectsTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) error 
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = GetProjectsTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -6799,6 +6808,7 @@ const (
 	GetProjectsTrustedIpsDeploymentType1Preview                          GetProjectsTrustedIpsDeploymentType1 = "preview"
 	GetProjectsTrustedIpsDeploymentType1All                              GetProjectsTrustedIpsDeploymentType1 = "all"
 	GetProjectsTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
+	GetProjectsTrustedIpsDeploymentType1AllExceptCustomDomains           GetProjectsTrustedIpsDeploymentType1 = "all_except_custom_domains"
 )
 
 func (e GetProjectsTrustedIpsDeploymentType1) ToPointer() *GetProjectsTrustedIpsDeploymentType1 {
@@ -6817,6 +6827,8 @@ func (e *GetProjectsTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) error 
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = GetProjectsTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -8320,7 +8332,6 @@ type GetProjectsProject struct {
 	RollingRelease                       *GetProjectsRollingRelease                  `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                GetProjectsDefaultResourceConfig            `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                     `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                     `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                       `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                    `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                    `json:"skewProtectionMaxAge,omitempty"`
@@ -8646,13 +8657,6 @@ func (o *GetProjectsProject) GetRootDirectory() *string {
 		return nil
 	}
 	return o.RootDirectory
-}
-
-func (o *GetProjectsProject) GetServerlessFunctionRegion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionRegion
 }
 
 func (o *GetProjectsProject) GetServerlessFunctionZeroConfigFailover() *bool {

@@ -6,11 +6,11 @@
 import { GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason } from "@vercel/sdk/models/getrollingreleasebillingstatusop.js";
 
 let value: GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason =
-  "plan_not_supported";
+  "no_available_slots";
 ```
 
 ## Values
 
 ```typescript
-"plan_not_supported"
+"no_available_slots"
 ```

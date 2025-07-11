@@ -83,7 +83,7 @@ export type Backup = {
   updatedAt: number;
 };
 
-export type Metadata = {
+export type GetEdgeConfigBackupResponseBodyMetadata = {
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
   itemsCount?: number | undefined;
@@ -105,7 +105,7 @@ export type GetEdgeConfigBackupResponseBody1 = {
   id: string;
   lastModified: number;
   backup: Backup;
-  metadata: Metadata;
+  metadata: GetEdgeConfigBackupResponseBodyMetadata;
   user?: GetEdgeConfigBackupResponseBodyUser | undefined;
 };
 
@@ -628,8 +628,8 @@ export function backupFromJSON(
 }
 
 /** @internal */
-export const Metadata$inboundSchema: z.ZodType<
-  Metadata,
+export const GetEdgeConfigBackupResponseBodyMetadata$inboundSchema: z.ZodType<
+  GetEdgeConfigBackupResponseBodyMetadata,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -640,7 +640,7 @@ export const Metadata$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Metadata$Outbound = {
+export type GetEdgeConfigBackupResponseBodyMetadata$Outbound = {
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
   itemsCount?: number | undefined;
@@ -648,10 +648,10 @@ export type Metadata$Outbound = {
 };
 
 /** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
+export const GetEdgeConfigBackupResponseBodyMetadata$outboundSchema: z.ZodType<
+  GetEdgeConfigBackupResponseBodyMetadata$Outbound,
   z.ZodTypeDef,
-  Metadata
+  GetEdgeConfigBackupResponseBodyMetadata
 > = z.object({
   updatedAt: z.string().optional(),
   updatedBy: z.string().optional(),
@@ -663,26 +663,41 @@ export const Metadata$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
+export namespace GetEdgeConfigBackupResponseBodyMetadata$ {
+  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    GetEdgeConfigBackupResponseBodyMetadata$inboundSchema;
+  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema;
+  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$Outbound` instead. */
+  export type Outbound = GetEdgeConfigBackupResponseBodyMetadata$Outbound;
 }
 
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+export function getEdgeConfigBackupResponseBodyMetadataToJSON(
+  getEdgeConfigBackupResponseBodyMetadata:
+    GetEdgeConfigBackupResponseBodyMetadata,
+): string {
+  return JSON.stringify(
+    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema.parse(
+      getEdgeConfigBackupResponseBodyMetadata,
+    ),
+  );
 }
 
-export function metadataFromJSON(
+export function getEdgeConfigBackupResponseBodyMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<Metadata, SDKValidationError> {
+): SafeParseResult<
+  GetEdgeConfigBackupResponseBodyMetadata,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Metadata' from JSON`,
+    (x) =>
+      GetEdgeConfigBackupResponseBodyMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetEdgeConfigBackupResponseBodyMetadata' from JSON`,
   );
 }
 
@@ -766,7 +781,7 @@ export const GetEdgeConfigBackupResponseBody1$inboundSchema: z.ZodType<
   id: z.string(),
   lastModified: z.number(),
   backup: z.lazy(() => Backup$inboundSchema),
-  metadata: z.lazy(() => Metadata$inboundSchema),
+  metadata: z.lazy(() => GetEdgeConfigBackupResponseBodyMetadata$inboundSchema),
   user: z.lazy(() => GetEdgeConfigBackupResponseBodyUser$inboundSchema)
     .optional(),
 });
@@ -776,7 +791,7 @@ export type GetEdgeConfigBackupResponseBody1$Outbound = {
   id: string;
   lastModified: number;
   backup: Backup$Outbound;
-  metadata: Metadata$Outbound;
+  metadata: GetEdgeConfigBackupResponseBodyMetadata$Outbound;
   user?: GetEdgeConfigBackupResponseBodyUser$Outbound | undefined;
 };
 
@@ -789,7 +804,9 @@ export const GetEdgeConfigBackupResponseBody1$outboundSchema: z.ZodType<
   id: z.string(),
   lastModified: z.number(),
   backup: z.lazy(() => Backup$outboundSchema),
-  metadata: z.lazy(() => Metadata$outboundSchema),
+  metadata: z.lazy(() =>
+    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema
+  ),
   user: z.lazy(() => GetEdgeConfigBackupResponseBodyUser$outboundSchema)
     .optional(),
 });

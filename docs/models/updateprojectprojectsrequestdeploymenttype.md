@@ -13,5 +13,5 @@ let value: UpdateProjectProjectsRequestDeploymentType = "preview";
 ## Values
 
 ```typescript
-"all" | "preview" | "production" | "prod_deployment_urls_and_all_previews"
+"all" | "preview" | "production" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
 ```

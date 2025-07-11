@@ -7,21 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSixteen } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSixteen = {
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
-  next: {
-    enabled: false,
-    totpVerified: false,
-  },
-};
+let value: OneHundredAndSixteen = {};
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `slug`             | *string*           | :heavy_minus_sign: | N/A                |

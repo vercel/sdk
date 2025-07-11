@@ -99,7 +99,6 @@ import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDelete
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
-import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
 import { tool$logDrainsGetIntegrationLogDrains } from "./tools/logDrainsGetIntegrationLogDrains.js";
 import { tool$logsGetRuntimeLogs } from "./tools/logsGetRuntimeLogs.js";
@@ -107,8 +106,11 @@ import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
 import { tool$marketplaceCreateInstallationIntegrationConfiguration } from "./tools/marketplaceCreateInstallationIntegrationConfiguration.js";
 import { tool$marketplaceCreateInstallationIntegrationEdgeConfig } from "./tools/marketplaceCreateInstallationIntegrationEdgeConfig.js";
 import { tool$marketplaceDeleteInstallationIntegrationConfiguration } from "./tools/marketplaceDeleteInstallationIntegrationConfiguration.js";
+import { tool$marketplaceDeleteIntegrationResource } from "./tools/marketplaceDeleteIntegrationResource.js";
 import { tool$marketplaceExchangeSsoToken } from "./tools/marketplaceExchangeSsoToken.js";
 import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInfo.js";
+import { tool$marketplaceGetIntegrationResource } from "./tools/marketplaceGetIntegrationResource.js";
+import { tool$marketplaceGetIntegrationResources } from "./tools/marketplaceGetIntegrationResources.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
@@ -193,7 +195,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.9.0",
+    version: "1.10.0",
   });
 
   const client = new VercelCore({
@@ -296,10 +298,6 @@ export function createMCPServer(deps: {
   tool(tool$dnsCreateRecord);
   tool(tool$dnsUpdateRecord);
   tool(tool$dnsRemoveRecord);
-  tool(tool$logDrainsDeleteConfigurableLogDrain);
-  tool(tool$logDrainsGetIntegrationLogDrains);
-  tool(tool$logDrainsCreateLogDrain);
-  tool(tool$logDrainsDeleteIntegrationLogDrain);
   tool(tool$edgeConfigGetEdgeConfigs);
   tool(tool$edgeConfigCreateEdgeConfig);
   tool(tool$edgeConfigGetEdgeConfig);
@@ -323,6 +321,10 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);
   tool(tool$marketplaceCreateEvent);
+  tool(tool$marketplaceGetIntegrationResources);
+  tool(tool$marketplaceGetIntegrationResource);
+  tool(tool$marketplaceDeleteIntegrationResource);
+  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceSubmitBillingData);
   tool(tool$marketplaceSubmitInvoice);
   tool(tool$marketplaceGetInvoice);
@@ -330,7 +332,6 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceSubmitPrepaymentBalances);
   tool(tool$marketplaceUpdateResourceSecrets);
   tool(tool$marketplaceUpdateResourceSecretsById);
-  tool(tool$marketplaceImportResource);
   tool(tool$marketplaceExchangeSsoToken);
   tool(tool$marketplaceCreateInstallationIntegrationConfiguration);
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
@@ -341,6 +342,9 @@ export function createMCPServer(deps: {
   tool(tool$authenticationCreateAuthToken);
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
+  tool(tool$logDrainsGetIntegrationLogDrains);
+  tool(tool$logDrainsCreateLogDrain);
+  tool(tool$logDrainsDeleteIntegrationLogDrain);
   tool(tool$logsGetRuntimeLogs);
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);

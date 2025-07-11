@@ -50,54 +50,45 @@ func (e *AuthUserReason) UnmarshalJSON(data []byte) error {
 type AuthUserBlockedDueToOverageType string
 
 const (
-	AuthUserBlockedDueToOverageTypeAnalyticsUsage                          AuthUserBlockedDueToOverageType = "analyticsUsage"
-	AuthUserBlockedDueToOverageTypeArtifacts                               AuthUserBlockedDueToOverageType = "artifacts"
-	AuthUserBlockedDueToOverageTypeBandwidth                               AuthUserBlockedDueToOverageType = "bandwidth"
-	AuthUserBlockedDueToOverageTypeBlobTotalAdvancedRequests               AuthUserBlockedDueToOverageType = "blobTotalAdvancedRequests"
-	AuthUserBlockedDueToOverageTypeBlobTotalAvgSizeInBytes                 AuthUserBlockedDueToOverageType = "blobTotalAvgSizeInBytes"
-	AuthUserBlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes   AuthUserBlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
-	AuthUserBlockedDueToOverageTypeBlobTotalSimpleRequests                 AuthUserBlockedDueToOverageType = "blobTotalSimpleRequests"
-	AuthUserBlockedDueToOverageTypeConnectDataTransfer                     AuthUserBlockedDueToOverageType = "connectDataTransfer"
-	AuthUserBlockedDueToOverageTypeDataCacheRead                           AuthUserBlockedDueToOverageType = "dataCacheRead"
-	AuthUserBlockedDueToOverageTypeDataCacheWrite                          AuthUserBlockedDueToOverageType = "dataCacheWrite"
-	AuthUserBlockedDueToOverageTypeEdgeConfigRead                          AuthUserBlockedDueToOverageType = "edgeConfigRead"
-	AuthUserBlockedDueToOverageTypeEdgeConfigWrite                         AuthUserBlockedDueToOverageType = "edgeConfigWrite"
-	AuthUserBlockedDueToOverageTypeEdgeFunctionExecutionUnits              AuthUserBlockedDueToOverageType = "edgeFunctionExecutionUnits"
-	AuthUserBlockedDueToOverageTypeEdgeMiddlewareInvocations               AuthUserBlockedDueToOverageType = "edgeMiddlewareInvocations"
-	AuthUserBlockedDueToOverageTypeEdgeRequestAdditionalCPUDuration        AuthUserBlockedDueToOverageType = "edgeRequestAdditionalCpuDuration"
-	AuthUserBlockedDueToOverageTypeEdgeRequest                             AuthUserBlockedDueToOverageType = "edgeRequest"
-	AuthUserBlockedDueToOverageTypeElasticConcurrencyBuildSlots            AuthUserBlockedDueToOverageType = "elasticConcurrencyBuildSlots"
-	AuthUserBlockedDueToOverageTypeFastDataTransfer                        AuthUserBlockedDueToOverageType = "fastDataTransfer"
-	AuthUserBlockedDueToOverageTypeFastOriginTransfer                      AuthUserBlockedDueToOverageType = "fastOriginTransfer"
-	AuthUserBlockedDueToOverageTypeFluidCPUDuration                        AuthUserBlockedDueToOverageType = "fluidCpuDuration"
-	AuthUserBlockedDueToOverageTypeFluidDuration                           AuthUserBlockedDueToOverageType = "fluidDuration"
-	AuthUserBlockedDueToOverageTypeFunctionDuration                        AuthUserBlockedDueToOverageType = "functionDuration"
-	AuthUserBlockedDueToOverageTypeFunctionInvocation                      AuthUserBlockedDueToOverageType = "functionInvocation"
-	AuthUserBlockedDueToOverageTypeImageOptimizationCacheRead              AuthUserBlockedDueToOverageType = "imageOptimizationCacheRead"
-	AuthUserBlockedDueToOverageTypeImageOptimizationCacheWrite             AuthUserBlockedDueToOverageType = "imageOptimizationCacheWrite"
-	AuthUserBlockedDueToOverageTypeImageOptimizationTransformation         AuthUserBlockedDueToOverageType = "imageOptimizationTransformation"
-	AuthUserBlockedDueToOverageTypeLogDrainsVolume                         AuthUserBlockedDueToOverageType = "logDrainsVolume"
-	AuthUserBlockedDueToOverageTypeMonitoringMetric                        AuthUserBlockedDueToOverageType = "monitoringMetric"
-	AuthUserBlockedDueToOverageTypeBlobDataTransfer                        AuthUserBlockedDueToOverageType = "blobDataTransfer"
-	AuthUserBlockedDueToOverageTypeObservabilityEvent                      AuthUserBlockedDueToOverageType = "observabilityEvent"
-	AuthUserBlockedDueToOverageTypeOnDemandConcurrencyMinutes              AuthUserBlockedDueToOverageType = "onDemandConcurrencyMinutes"
-	AuthUserBlockedDueToOverageTypePostgresComputeTime                     AuthUserBlockedDueToOverageType = "postgresComputeTime"
-	AuthUserBlockedDueToOverageTypePostgresDataStorage                     AuthUserBlockedDueToOverageType = "postgresDataStorage"
-	AuthUserBlockedDueToOverageTypePostgresDataTransfer                    AuthUserBlockedDueToOverageType = "postgresDataTransfer"
-	AuthUserBlockedDueToOverageTypePostgresDatabase                        AuthUserBlockedDueToOverageType = "postgresDatabase"
-	AuthUserBlockedDueToOverageTypePostgresWrittenData                     AuthUserBlockedDueToOverageType = "postgresWrittenData"
-	AuthUserBlockedDueToOverageTypeRuntimeCacheRead                        AuthUserBlockedDueToOverageType = "runtimeCacheRead"
-	AuthUserBlockedDueToOverageTypeRuntimeCacheWrite                       AuthUserBlockedDueToOverageType = "runtimeCacheWrite"
-	AuthUserBlockedDueToOverageTypeServerlessFunctionExecution             AuthUserBlockedDueToOverageType = "serverlessFunctionExecution"
-	AuthUserBlockedDueToOverageTypeSourceImages                            AuthUserBlockedDueToOverageType = "sourceImages"
-	AuthUserBlockedDueToOverageTypeStorageRedisTotalBandwidthInBytes       AuthUserBlockedDueToOverageType = "storageRedisTotalBandwidthInBytes"
-	AuthUserBlockedDueToOverageTypeStorageRedisTotalCommands               AuthUserBlockedDueToOverageType = "storageRedisTotalCommands"
-	AuthUserBlockedDueToOverageTypeStorageRedisTotalDailyAvgStorageInBytes AuthUserBlockedDueToOverageType = "storageRedisTotalDailyAvgStorageInBytes"
-	AuthUserBlockedDueToOverageTypeStorageRedisTotalDatabases              AuthUserBlockedDueToOverageType = "storageRedisTotalDatabases"
-	AuthUserBlockedDueToOverageTypeWafOwaspExcessBytes                     AuthUserBlockedDueToOverageType = "wafOwaspExcessBytes"
-	AuthUserBlockedDueToOverageTypeWafOwaspRequests                        AuthUserBlockedDueToOverageType = "wafOwaspRequests"
-	AuthUserBlockedDueToOverageTypeWafRateLimitRequest                     AuthUserBlockedDueToOverageType = "wafRateLimitRequest"
-	AuthUserBlockedDueToOverageTypeWebAnalyticsEvent                       AuthUserBlockedDueToOverageType = "webAnalyticsEvent"
+	AuthUserBlockedDueToOverageTypeAnalyticsUsage                        AuthUserBlockedDueToOverageType = "analyticsUsage"
+	AuthUserBlockedDueToOverageTypeArtifacts                             AuthUserBlockedDueToOverageType = "artifacts"
+	AuthUserBlockedDueToOverageTypeBandwidth                             AuthUserBlockedDueToOverageType = "bandwidth"
+	AuthUserBlockedDueToOverageTypeBlobTotalAdvancedRequests             AuthUserBlockedDueToOverageType = "blobTotalAdvancedRequests"
+	AuthUserBlockedDueToOverageTypeBlobTotalAvgSizeInBytes               AuthUserBlockedDueToOverageType = "blobTotalAvgSizeInBytes"
+	AuthUserBlockedDueToOverageTypeBlobTotalGetResponseObjectSizeInBytes AuthUserBlockedDueToOverageType = "blobTotalGetResponseObjectSizeInBytes"
+	AuthUserBlockedDueToOverageTypeBlobTotalSimpleRequests               AuthUserBlockedDueToOverageType = "blobTotalSimpleRequests"
+	AuthUserBlockedDueToOverageTypeConnectDataTransfer                   AuthUserBlockedDueToOverageType = "connectDataTransfer"
+	AuthUserBlockedDueToOverageTypeDataCacheRead                         AuthUserBlockedDueToOverageType = "dataCacheRead"
+	AuthUserBlockedDueToOverageTypeDataCacheWrite                        AuthUserBlockedDueToOverageType = "dataCacheWrite"
+	AuthUserBlockedDueToOverageTypeEdgeConfigRead                        AuthUserBlockedDueToOverageType = "edgeConfigRead"
+	AuthUserBlockedDueToOverageTypeEdgeConfigWrite                       AuthUserBlockedDueToOverageType = "edgeConfigWrite"
+	AuthUserBlockedDueToOverageTypeEdgeFunctionExecutionUnits            AuthUserBlockedDueToOverageType = "edgeFunctionExecutionUnits"
+	AuthUserBlockedDueToOverageTypeEdgeMiddlewareInvocations             AuthUserBlockedDueToOverageType = "edgeMiddlewareInvocations"
+	AuthUserBlockedDueToOverageTypeEdgeRequestAdditionalCPUDuration      AuthUserBlockedDueToOverageType = "edgeRequestAdditionalCpuDuration"
+	AuthUserBlockedDueToOverageTypeEdgeRequest                           AuthUserBlockedDueToOverageType = "edgeRequest"
+	AuthUserBlockedDueToOverageTypeElasticConcurrencyBuildSlots          AuthUserBlockedDueToOverageType = "elasticConcurrencyBuildSlots"
+	AuthUserBlockedDueToOverageTypeFastDataTransfer                      AuthUserBlockedDueToOverageType = "fastDataTransfer"
+	AuthUserBlockedDueToOverageTypeFastOriginTransfer                    AuthUserBlockedDueToOverageType = "fastOriginTransfer"
+	AuthUserBlockedDueToOverageTypeFluidCPUDuration                      AuthUserBlockedDueToOverageType = "fluidCpuDuration"
+	AuthUserBlockedDueToOverageTypeFluidDuration                         AuthUserBlockedDueToOverageType = "fluidDuration"
+	AuthUserBlockedDueToOverageTypeFunctionDuration                      AuthUserBlockedDueToOverageType = "functionDuration"
+	AuthUserBlockedDueToOverageTypeFunctionInvocation                    AuthUserBlockedDueToOverageType = "functionInvocation"
+	AuthUserBlockedDueToOverageTypeImageOptimizationCacheRead            AuthUserBlockedDueToOverageType = "imageOptimizationCacheRead"
+	AuthUserBlockedDueToOverageTypeImageOptimizationCacheWrite           AuthUserBlockedDueToOverageType = "imageOptimizationCacheWrite"
+	AuthUserBlockedDueToOverageTypeImageOptimizationTransformation       AuthUserBlockedDueToOverageType = "imageOptimizationTransformation"
+	AuthUserBlockedDueToOverageTypeLogDrainsVolume                       AuthUserBlockedDueToOverageType = "logDrainsVolume"
+	AuthUserBlockedDueToOverageTypeMonitoringMetric                      AuthUserBlockedDueToOverageType = "monitoringMetric"
+	AuthUserBlockedDueToOverageTypeBlobDataTransfer                      AuthUserBlockedDueToOverageType = "blobDataTransfer"
+	AuthUserBlockedDueToOverageTypeObservabilityEvent                    AuthUserBlockedDueToOverageType = "observabilityEvent"
+	AuthUserBlockedDueToOverageTypeOnDemandConcurrencyMinutes            AuthUserBlockedDueToOverageType = "onDemandConcurrencyMinutes"
+	AuthUserBlockedDueToOverageTypeRuntimeCacheRead                      AuthUserBlockedDueToOverageType = "runtimeCacheRead"
+	AuthUserBlockedDueToOverageTypeRuntimeCacheWrite                     AuthUserBlockedDueToOverageType = "runtimeCacheWrite"
+	AuthUserBlockedDueToOverageTypeServerlessFunctionExecution           AuthUserBlockedDueToOverageType = "serverlessFunctionExecution"
+	AuthUserBlockedDueToOverageTypeSourceImages                          AuthUserBlockedDueToOverageType = "sourceImages"
+	AuthUserBlockedDueToOverageTypeWafOwaspExcessBytes                   AuthUserBlockedDueToOverageType = "wafOwaspExcessBytes"
+	AuthUserBlockedDueToOverageTypeWafOwaspRequests                      AuthUserBlockedDueToOverageType = "wafOwaspRequests"
+	AuthUserBlockedDueToOverageTypeWafRateLimitRequest                   AuthUserBlockedDueToOverageType = "wafRateLimitRequest"
+	AuthUserBlockedDueToOverageTypeWebAnalyticsEvent                     AuthUserBlockedDueToOverageType = "webAnalyticsEvent"
 )
 
 func (e AuthUserBlockedDueToOverageType) ToPointer() *AuthUserBlockedDueToOverageType {
@@ -171,16 +162,6 @@ func (e *AuthUserBlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "onDemandConcurrencyMinutes":
 		fallthrough
-	case "postgresComputeTime":
-		fallthrough
-	case "postgresDataStorage":
-		fallthrough
-	case "postgresDataTransfer":
-		fallthrough
-	case "postgresDatabase":
-		fallthrough
-	case "postgresWrittenData":
-		fallthrough
 	case "runtimeCacheRead":
 		fallthrough
 	case "runtimeCacheWrite":
@@ -188,14 +169,6 @@ func (e *AuthUserBlockedDueToOverageType) UnmarshalJSON(data []byte) error {
 	case "serverlessFunctionExecution":
 		fallthrough
 	case "sourceImages":
-		fallthrough
-	case "storageRedisTotalBandwidthInBytes":
-		fallthrough
-	case "storageRedisTotalCommands":
-		fallthrough
-	case "storageRedisTotalDailyAvgStorageInBytes":
-		fallthrough
-	case "storageRedisTotalDatabases":
 		fallthrough
 	case "wafOwaspExcessBytes":
 		fallthrough
@@ -330,6 +303,8 @@ type AuthUserResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	ElasticConcurrencyEnabled *bool `json:"elasticConcurrencyEnabled,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	BuildEntitlements *AuthUserBuildEntitlements `json:"buildEntitlements,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	AwsAccountType *string `json:"awsAccountType,omitempty"`
@@ -387,6 +362,13 @@ func (o *AuthUserResourceConfig) GetConcurrentBuilds() *float64 {
 		return nil
 	}
 	return o.ConcurrentBuilds
+}
+
+func (o *AuthUserResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *AuthUserResourceConfig) GetBuildEntitlements() *AuthUserBuildEntitlements {

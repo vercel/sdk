@@ -7,11 +7,11 @@ import { GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason 
 
 let value:
   GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason =
-    "no_available_slots";
+    "available_slots";
 ```
 
 ## Values
 
 ```typescript
-"no_available_slots"
+"available_slots"
 ```

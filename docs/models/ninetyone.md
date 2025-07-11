@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { NinetyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyOne = {
-  email: "Lenora.Rutherford94@gmail.com",
+  instances: 1265.96,
+  url: "https://warlike-saloon.biz",
 };
 ```
 
@@ -16,4 +17,5 @@ let value: NinetyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `instances`        | *number*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

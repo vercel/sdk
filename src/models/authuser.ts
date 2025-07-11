@@ -51,20 +51,10 @@ export const BlockedDueToOverageType = {
   BlobDataTransfer: "blobDataTransfer",
   ObservabilityEvent: "observabilityEvent",
   OnDemandConcurrencyMinutes: "onDemandConcurrencyMinutes",
-  PostgresComputeTime: "postgresComputeTime",
-  PostgresDataStorage: "postgresDataStorage",
-  PostgresDataTransfer: "postgresDataTransfer",
-  PostgresDatabase: "postgresDatabase",
-  PostgresWrittenData: "postgresWrittenData",
   RuntimeCacheRead: "runtimeCacheRead",
   RuntimeCacheWrite: "runtimeCacheWrite",
   ServerlessFunctionExecution: "serverlessFunctionExecution",
   SourceImages: "sourceImages",
-  StorageRedisTotalBandwidthInBytes: "storageRedisTotalBandwidthInBytes",
-  StorageRedisTotalCommands: "storageRedisTotalCommands",
-  StorageRedisTotalDailyAvgStorageInBytes:
-    "storageRedisTotalDailyAvgStorageInBytes",
-  StorageRedisTotalDatabases: "storageRedisTotalDatabases",
   WafOwaspExcessBytes: "wafOwaspExcessBytes",
   WafOwaspRequests: "wafOwaspRequests",
   WafRateLimitRequest: "wafRateLimitRequest",
@@ -144,6 +134,10 @@ export type AuthUserResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   concurrentBuilds?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  elasticConcurrencyEnabled?: boolean | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -692,6 +686,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$inboundSchema)
     .optional(),
   awsAccountType: z.string().optional(),
@@ -721,6 +716,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
 export type AuthUserResourceConfig$Outbound = {
   nodeType?: string | undefined;
   concurrentBuilds?: number | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   buildEntitlements?: AuthUserBuildEntitlements$Outbound | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
@@ -753,6 +749,7 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
 > = z.object({
   nodeType: z.string().optional(),
   concurrentBuilds: z.number().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$outboundSchema)
     .optional(),
   awsAccountType: z.string().optional(),

@@ -8,18 +8,26 @@ The payload of the event, if requested.
 import { OneHundredAndOne } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndOne = {
-  id: "<id>",
-  type: "postgres",
+  budget: {
+    type: "fixed",
+    fixedBudget: 2985.01,
+    previousSpend: [
+      4223.38,
+      2292.94,
+    ],
+    notifiedAt: [
+      3599.57,
+    ],
+    createdAt: 8328.14,
+    isActive: false,
+    teamId: "<id>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `name`                                                           | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `computeUnitsMax`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `computeUnitsMin`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `suspendTimeoutSeconds`                                          | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.Budget](../models/budget.md)                                    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

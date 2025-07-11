@@ -266,6 +266,7 @@ const (
 	CreateProjectFrameworkRequestSanityV3       CreateProjectFrameworkRequest = "sanity-v3"
 	CreateProjectFrameworkRequestSanity         CreateProjectFrameworkRequest = "sanity"
 	CreateProjectFrameworkRequestStorybook      CreateProjectFrameworkRequest = "storybook"
+	CreateProjectFrameworkRequestNitro          CreateProjectFrameworkRequest = "nitro"
 )
 
 func (e CreateProjectFrameworkRequest) ToPointer() *CreateProjectFrameworkRequest {
@@ -368,6 +369,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = CreateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -425,6 +428,50 @@ func (o *GitRepository) GetType() GitRepositoryType {
 		return GitRepositoryType("")
 	}
 	return o.Type
+}
+
+type CreateProjectDeploymentTypeRequest string
+
+const (
+	CreateProjectDeploymentTypeRequestAll                              CreateProjectDeploymentTypeRequest = "all"
+	CreateProjectDeploymentTypeRequestPreview                          CreateProjectDeploymentTypeRequest = "preview"
+	CreateProjectDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews CreateProjectDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
+	CreateProjectDeploymentTypeRequestAllExceptCustomDomains           CreateProjectDeploymentTypeRequest = "all_except_custom_domains"
+)
+
+func (e CreateProjectDeploymentTypeRequest) ToPointer() *CreateProjectDeploymentTypeRequest {
+	return &e
+}
+func (e *CreateProjectDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = CreateProjectDeploymentTypeRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectDeploymentTypeRequest: %v", v)
+	}
+}
+
+// CreateProjectSsoProtectionRequest - The Vercel Auth setting for the project (historically named \"SSO Protection\")
+type CreateProjectSsoProtectionRequest struct {
+	DeploymentType CreateProjectDeploymentTypeRequest `json:"deploymentType"`
+}
+
+func (o *CreateProjectSsoProtectionRequest) GetDeploymentType() CreateProjectDeploymentTypeRequest {
+	if o == nil {
+		return CreateProjectDeploymentTypeRequest("")
+	}
+	return o.DeploymentType
 }
 
 // CreateProjectIssuerModeRequest - team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
@@ -630,6 +677,8 @@ type CreateProjectRequestBody struct {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	SkipGitConnectDuringLink *bool `json:"skipGitConnectDuringLink,omitempty"`
+	// The Vercel Auth setting for the project (historically named \"SSO Protection\")
+	SsoProtection *CreateProjectSsoProtectionRequest `json:"ssoProtection,omitempty"`
 	// The output directory of the project. When `null` is used this value will be automatically detected
 	OutputDirectory *string `json:"outputDirectory,omitempty"`
 	// Specifies whether the source code and logs of the deployments for this project should be public or not
@@ -723,6 +772,13 @@ func (o *CreateProjectRequestBody) GetSkipGitConnectDuringLink() *bool {
 		return nil
 	}
 	return o.SkipGitConnectDuringLink
+}
+
+func (o *CreateProjectRequestBody) GetSsoProtection() *CreateProjectSsoProtectionRequest {
+	if o == nil {
+		return nil
+	}
+	return o.SsoProtection
 }
 
 func (o *CreateProjectRequestBody) GetOutputDirectory() *string {
@@ -2947,6 +3003,7 @@ const (
 	CreateProjectFrameworkResponseBodySanityV3       CreateProjectFrameworkResponseBody = "sanity-v3"
 	CreateProjectFrameworkResponseBodySanity         CreateProjectFrameworkResponseBody = "sanity"
 	CreateProjectFrameworkResponseBodyStorybook      CreateProjectFrameworkResponseBody = "storybook"
+	CreateProjectFrameworkResponseBodyNitro          CreateProjectFrameworkResponseBody = "nitro"
 )
 
 func (e CreateProjectFrameworkResponseBody) ToPointer() *CreateProjectFrameworkResponseBody {
@@ -3049,6 +3106,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = CreateProjectFrameworkResponseBody(v)
 		return nil
 	default:
@@ -4683,18 +4742,19 @@ func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjec
 	return o.BuildMachineType
 }
 
-type CreateProjectSsoProtectionDeploymentType string
+type CreateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
-	CreateProjectSsoProtectionDeploymentTypePreview                          CreateProjectSsoProtectionDeploymentType = "preview"
-	CreateProjectSsoProtectionDeploymentTypeAll                              CreateProjectSsoProtectionDeploymentType = "all"
-	CreateProjectSsoProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews CreateProjectSsoProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
+	CreateProjectSsoProtectionDeploymentTypeResponseAll                              CreateProjectSsoProtectionDeploymentTypeResponse = "all"
+	CreateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews CreateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
+	CreateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           CreateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
 
-func (e CreateProjectSsoProtectionDeploymentType) ToPointer() *CreateProjectSsoProtectionDeploymentType {
+func (e CreateProjectSsoProtectionDeploymentTypeResponse) ToPointer() *CreateProjectSsoProtectionDeploymentTypeResponse {
 	return &e
 }
-func (e *CreateProjectSsoProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4705,20 +4765,22 @@ func (e *CreateProjectSsoProtectionDeploymentType) UnmarshalJSON(data []byte) er
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = CreateProjectSsoProtectionDeploymentType(v)
+		fallthrough
+	case "all_except_custom_domains":
+		*e = CreateProjectSsoProtectionDeploymentTypeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateProjectSsoProtectionDeploymentType: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectSsoProtectionDeploymentTypeResponse: %v", v)
 	}
 }
 
-type CreateProjectSsoProtection struct {
-	DeploymentType CreateProjectSsoProtectionDeploymentType `json:"deploymentType"`
+type CreateProjectSsoProtectionResponse struct {
+	DeploymentType CreateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
 }
 
-func (o *CreateProjectSsoProtection) GetDeploymentType() CreateProjectSsoProtectionDeploymentType {
+func (o *CreateProjectSsoProtectionResponse) GetDeploymentType() CreateProjectSsoProtectionDeploymentTypeResponse {
 	if o == nil {
-		return CreateProjectSsoProtectionDeploymentType("")
+		return CreateProjectSsoProtectionDeploymentTypeResponse("")
 	}
 	return o.DeploymentType
 }
@@ -7410,6 +7472,7 @@ const (
 	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
 	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
 	CreateProjectTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
+	CreateProjectTrustedIpsDeploymentType2AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType2 = "all_except_custom_domains"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType2) ToPointer() *CreateProjectTrustedIpsDeploymentType2 {
@@ -7428,6 +7491,8 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = CreateProjectTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -7453,6 +7518,7 @@ const (
 	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
 	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
 	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
+	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType1) ToPointer() *CreateProjectTrustedIpsDeploymentType1 {
@@ -7471,6 +7537,8 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = CreateProjectTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -8975,14 +9043,13 @@ type CreateProjectResponseBody struct {
 	RollingRelease                       *CreateProjectRollingRelease                  `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                CreateProjectDefaultResourceConfig            `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                       `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                       `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
 	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                         `json:"enableAffectedProjectsDeployments,omitempty"`
-	SsoProtection                        *CreateProjectSsoProtection                   `json:"ssoProtection,omitempty"`
+	SsoProtection                        *CreateProjectSsoProtectionResponse           `json:"ssoProtection,omitempty"`
 	Targets                              map[string]*CreateProjectTargets              `json:"targets,omitempty"`
 	TransferCompletedAt                  *float64                                      `json:"transferCompletedAt,omitempty"`
 	TransferStartedAt                    *float64                                      `json:"transferStartedAt,omitempty"`
@@ -9303,13 +9370,6 @@ func (o *CreateProjectResponseBody) GetRootDirectory() *string {
 	return o.RootDirectory
 }
 
-func (o *CreateProjectResponseBody) GetServerlessFunctionRegion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionRegion
-}
-
 func (o *CreateProjectResponseBody) GetServerlessFunctionZeroConfigFailover() *bool {
 	if o == nil {
 		return nil
@@ -9352,7 +9412,7 @@ func (o *CreateProjectResponseBody) GetEnableAffectedProjectsDeployments() *bool
 	return o.EnableAffectedProjectsDeployments
 }
 
-func (o *CreateProjectResponseBody) GetSsoProtection() *CreateProjectSsoProtection {
+func (o *CreateProjectResponseBody) GetSsoProtection() *CreateProjectSsoProtectionResponse {
 	if o == nil {
 		return nil
 	}

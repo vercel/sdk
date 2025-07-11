@@ -8,18 +8,12 @@ The payload of the event, if requested.
 import { NinetyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyThree = {
-  team: {
-    id: "<id>",
-  },
-  previousRule: {
-    email: "Toby70@gmail.com",
-  },
+  email: "Toby70@gmail.com",
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `team`                                                               | [models.UserEventPayload93Team](../models/usereventpayload93team.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `previousRule`                                                       | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |

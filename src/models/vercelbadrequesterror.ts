@@ -27,9 +27,8 @@ export class VercelBadRequestError extends VercelError {
     err: VercelBadRequestErrorData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
+    const message = err.error?.message
+      || `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
     this.error = err.error;

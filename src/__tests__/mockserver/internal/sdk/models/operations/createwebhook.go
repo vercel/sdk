@@ -37,6 +37,7 @@ const (
 	CreateWebhookEventRequestDeploymentIntegrationActionCancel                  CreateWebhookEventRequest = "deployment.integration.action.cancel"
 	CreateWebhookEventRequestDeploymentIntegrationActionCleanup                 CreateWebhookEventRequest = "deployment.integration.action.cleanup"
 	CreateWebhookEventRequestDeploymentCheckrunStart                            CreateWebhookEventRequest = "deployment.checkrun.start"
+	CreateWebhookEventRequestDeploymentCheckrunCancel                           CreateWebhookEventRequest = "deployment.checkrun.cancel"
 	CreateWebhookEventRequestEdgeConfigCreated                                  CreateWebhookEventRequest = "edge-config.created"
 	CreateWebhookEventRequestEdgeConfigDeleted                                  CreateWebhookEventRequest = "edge-config.deleted"
 	CreateWebhookEventRequestEdgeConfigItemsUpdated                             CreateWebhookEventRequest = "edge-config.items.updated"
@@ -139,6 +140,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "deployment.integration.action.cleanup":
 		fallthrough
 	case "deployment.checkrun.start":
+		fallthrough
+	case "deployment.checkrun.cancel":
 		fallthrough
 	case "edge-config.created":
 		fallthrough
@@ -312,6 +315,7 @@ const (
 	CreateWebhookEventResponseDeploymentIntegrationActionCancel                  CreateWebhookEventResponse = "deployment.integration.action.cancel"
 	CreateWebhookEventResponseDeploymentIntegrationActionCleanup                 CreateWebhookEventResponse = "deployment.integration.action.cleanup"
 	CreateWebhookEventResponseDeploymentCheckrunStart                            CreateWebhookEventResponse = "deployment.checkrun.start"
+	CreateWebhookEventResponseDeploymentCheckrunCancel                           CreateWebhookEventResponse = "deployment.checkrun.cancel"
 	CreateWebhookEventResponseEdgeConfigCreated                                  CreateWebhookEventResponse = "edge-config.created"
 	CreateWebhookEventResponseEdgeConfigDeleted                                  CreateWebhookEventResponse = "edge-config.deleted"
 	CreateWebhookEventResponseEdgeConfigItemsUpdated                             CreateWebhookEventResponse = "edge-config.items.updated"
@@ -414,6 +418,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "deployment.integration.action.cleanup":
 		fallthrough
 	case "deployment.checkrun.start":
+		fallthrough
+	case "deployment.checkrun.cancel":
 		fallthrough
 	case "edge-config.created":
 		fallthrough

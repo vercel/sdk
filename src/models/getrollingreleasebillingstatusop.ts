@@ -25,7 +25,7 @@ export type GetRollingReleaseBillingStatusRequest = {
 
 export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason =
   {
-    NoAvailableSlots: "no_available_slots",
+    AvailableSlots: "available_slots",
   } as const;
 export type GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason =
   ClosedEnum<
@@ -36,11 +36,11 @@ export type ResponseBody4 = {
   availableSlots: number;
   reason:
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason;
-  enabledProjects: Array<string>;
+  message: string;
 };
 
 export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason = {
-  PlanNotSupported: "plan_not_supported",
+  NoAvailableSlots: "no_available_slots",
 } as const;
 export type GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason =
   ClosedEnum<
@@ -50,6 +50,8 @@ export type GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason =
 export type GetRollingReleaseBillingStatusResponseBody3 = {
   availableSlots: number;
   reason: GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason;
+  message: string;
+  enabledProjects: Array<string>;
 };
 
 export const AvailableSlots = {
@@ -67,23 +69,25 @@ export type GetRollingReleaseBillingStatusResponseBodyReason = ClosedEnum<
 export type GetRollingReleaseBillingStatusResponseBody2 = {
   availableSlots: AvailableSlots;
   reason: GetRollingReleaseBillingStatusResponseBodyReason;
+  message: string;
 };
 
 export const ResponseBodyReason = {
-  AvailableSlots: "available_slots",
+  PlanNotSupported: "plan_not_supported",
 } as const;
 export type ResponseBodyReason = ClosedEnum<typeof ResponseBodyReason>;
 
 export type GetRollingReleaseBillingStatusResponseBody1 = {
   availableSlots: number;
   reason: ResponseBodyReason;
+  message: string;
 };
 
 export type GetRollingReleaseBillingStatusResponseBody =
-  | ResponseBody4
+  | GetRollingReleaseBillingStatusResponseBody3
   | GetRollingReleaseBillingStatusResponseBody1
   | GetRollingReleaseBillingStatusResponseBody2
-  | GetRollingReleaseBillingStatusResponseBody3;
+  | ResponseBody4;
 
 /** @internal */
 export const GetRollingReleaseBillingStatusRequest$inboundSchema: z.ZodType<
@@ -187,14 +191,14 @@ export const ResponseBody4$inboundSchema: z.ZodType<
   availableSlots: z.number(),
   reason:
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$inboundSchema,
-  enabledProjects: z.array(z.string()),
+  message: z.string(),
 });
 
 /** @internal */
 export type ResponseBody4$Outbound = {
   availableSlots: number;
   reason: string;
-  enabledProjects: Array<string>;
+  message: string;
 };
 
 /** @internal */
@@ -206,7 +210,7 @@ export const ResponseBody4$outboundSchema: z.ZodType<
   availableSlots: z.number(),
   reason:
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$outboundSchema,
-  enabledProjects: z.array(z.string()),
+  message: z.string(),
 });
 
 /**
@@ -274,12 +278,16 @@ export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
     availableSlots: z.number(),
     reason:
       GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$inboundSchema,
+    message: z.string(),
+    enabledProjects: z.array(z.string()),
   });
 
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody3$Outbound = {
   availableSlots: number;
   reason: string;
+  message: string;
+  enabledProjects: Array<string>;
 };
 
 /** @internal */
@@ -292,6 +300,8 @@ export const GetRollingReleaseBillingStatusResponseBody3$outboundSchema:
     availableSlots: z.number(),
     reason:
       GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$outboundSchema,
+    message: z.string(),
+    enabledProjects: z.array(z.string()),
   });
 
 /**
@@ -389,12 +399,14 @@ export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
   > = z.object({
     availableSlots: AvailableSlots$inboundSchema,
     reason: GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema,
+    message: z.string(),
   });
 
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody2$Outbound = {
   availableSlots: string;
   reason: string;
+  message: string;
 };
 
 /** @internal */
@@ -406,6 +418,7 @@ export const GetRollingReleaseBillingStatusResponseBody2$outboundSchema:
   > = z.object({
     availableSlots: AvailableSlots$outboundSchema,
     reason: GetRollingReleaseBillingStatusResponseBodyReason$outboundSchema,
+    message: z.string(),
   });
 
 /**
@@ -480,12 +493,14 @@ export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
   > = z.object({
     availableSlots: z.number(),
     reason: ResponseBodyReason$inboundSchema,
+    message: z.string(),
   });
 
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody1$Outbound = {
   availableSlots: number;
   reason: string;
+  message: string;
 };
 
 /** @internal */
@@ -497,6 +512,7 @@ export const GetRollingReleaseBillingStatusResponseBody1$outboundSchema:
   > = z.object({
     availableSlots: z.number(),
     reason: ResponseBodyReason$outboundSchema,
+    message: z.string(),
   });
 
 /**
@@ -545,18 +561,18 @@ export function getRollingReleaseBillingStatusResponseBody1FromJSON(
 export const GetRollingReleaseBillingStatusResponseBody$inboundSchema:
   z.ZodType<GetRollingReleaseBillingStatusResponseBody, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => ResponseBody4$inboundSchema),
+      z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$inboundSchema),
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$inboundSchema),
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$inboundSchema),
-      z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$inboundSchema),
+      z.lazy(() => ResponseBody4$inboundSchema),
     ]);
 
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody$Outbound =
-  | ResponseBody4$Outbound
+  | GetRollingReleaseBillingStatusResponseBody3$Outbound
   | GetRollingReleaseBillingStatusResponseBody1$Outbound
   | GetRollingReleaseBillingStatusResponseBody2$Outbound
-  | GetRollingReleaseBillingStatusResponseBody3$Outbound;
+  | ResponseBody4$Outbound;
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody$outboundSchema:
@@ -565,10 +581,10 @@ export const GetRollingReleaseBillingStatusResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetRollingReleaseBillingStatusResponseBody
   > = z.union([
-    z.lazy(() => ResponseBody4$outboundSchema),
+    z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$outboundSchema),
     z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$outboundSchema),
     z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$outboundSchema),
-    z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$outboundSchema),
+    z.lazy(() => ResponseBody4$outboundSchema),
   ]);
 
 /**

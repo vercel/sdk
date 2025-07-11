@@ -118,9 +118,9 @@ export type TeamLimitedTeamPermissions = ClosedEnum<
 >;
 
 export const TeamLimitedOrigin = {
+  Link: "link",
   Saml: "saml",
   Mail: "mail",
-  Link: "link",
   Import: "import",
   Teams: "teams",
   Github: "github",

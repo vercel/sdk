@@ -286,9 +286,9 @@ func (e *TeamLimitedTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamLimitedOrigin string
 
 const (
+	TeamLimitedOriginLink              TeamLimitedOrigin = "link"
 	TeamLimitedOriginSaml              TeamLimitedOrigin = "saml"
 	TeamLimitedOriginMail              TeamLimitedOrigin = "mail"
-	TeamLimitedOriginLink              TeamLimitedOrigin = "link"
 	TeamLimitedOriginImport            TeamLimitedOrigin = "import"
 	TeamLimitedOriginTeams             TeamLimitedOrigin = "teams"
 	TeamLimitedOriginGithub            TeamLimitedOrigin = "github"
@@ -308,11 +308,11 @@ func (e *TeamLimitedOrigin) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "link":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
-		fallthrough
-	case "link":
 		fallthrough
 	case "import":
 		fallthrough

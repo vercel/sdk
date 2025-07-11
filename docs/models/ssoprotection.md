@@ -14,6 +14,6 @@ const value: models.SsoProtection1 = {
 ### `models.SsoProtection2`
 
 ```typescript
-const value: models.SsoProtection2 = "preview";
+const value: models.SsoProtection2 = "prod_deployment_urls_and_all_previews";
 ```
 

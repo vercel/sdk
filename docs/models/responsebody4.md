@@ -7,12 +7,8 @@ import { ResponseBody4 } from "@vercel/sdk/models/getrollingreleasebillingstatus
 
 let value: ResponseBody4 = {
   availableSlots: 1850.51,
-  reason: "no_available_slots",
-  enabledProjects: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  reason: "available_slots",
+  message: "<value>",
 };
 ```
 
@@ -22,4 +18,4 @@ let value: ResponseBody4 = {
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `availableSlots`                                                                                                                                                     | *number*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
 | `reason`                                                                                                                                                             | [models.GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason](../models/getrollingreleasebillingstatusresponsebodyrollingreleaseresponsereason.md) | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
-| `enabledProjects`                                                                                                                                                    | *string*[]                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `message`                                                                                                                                                            | *string*                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |

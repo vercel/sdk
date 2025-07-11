@@ -190,6 +190,7 @@ const (
 	CancelDeploymentFrameworkSanityV3       CancelDeploymentFramework = "sanity-v3"
 	CancelDeploymentFrameworkSanity         CancelDeploymentFramework = "sanity"
 	CancelDeploymentFrameworkStorybook      CancelDeploymentFramework = "storybook"
+	CancelDeploymentFrameworkNitro          CancelDeploymentFramework = "nitro"
 )
 
 func (e CancelDeploymentFramework) ToPointer() *CancelDeploymentFramework {
@@ -292,6 +293,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = CancelDeploymentFramework(v)
 		return nil
 	default:
@@ -463,10 +466,10 @@ func (o *CancelDeploymentProjectSettings) GetWebAnalytics() *CancelDeploymentWeb
 type CancelDeploymentIntegrationsStatus string
 
 const (
-	CancelDeploymentIntegrationsStatusError   CancelDeploymentIntegrationsStatus = "error"
 	CancelDeploymentIntegrationsStatusSkipped CancelDeploymentIntegrationsStatus = "skipped"
 	CancelDeploymentIntegrationsStatusPending CancelDeploymentIntegrationsStatus = "pending"
 	CancelDeploymentIntegrationsStatusReady   CancelDeploymentIntegrationsStatus = "ready"
+	CancelDeploymentIntegrationsStatusError   CancelDeploymentIntegrationsStatus = "error"
 	CancelDeploymentIntegrationsStatusTimeout CancelDeploymentIntegrationsStatus = "timeout"
 )
 
@@ -479,13 +482,13 @@ func (e *CancelDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "skipped":
 		fallthrough
 	case "pending":
 		fallthrough
 	case "ready":
+		fallthrough
+	case "error":
 		fallthrough
 	case "timeout":
 		*e = CancelDeploymentIntegrationsStatus(v)
@@ -1017,9 +1020,9 @@ func (e *CancelDeploymentCustomEnvironmentType) UnmarshalJSON(data []byte) error
 type CancelDeploymentBranchMatcherType string
 
 const (
+	CancelDeploymentBranchMatcherTypeEndsWith   CancelDeploymentBranchMatcherType = "endsWith"
 	CancelDeploymentBranchMatcherTypeStartsWith CancelDeploymentBranchMatcherType = "startsWith"
 	CancelDeploymentBranchMatcherTypeEquals     CancelDeploymentBranchMatcherType = "equals"
-	CancelDeploymentBranchMatcherTypeEndsWith   CancelDeploymentBranchMatcherType = "endsWith"
 )
 
 func (e CancelDeploymentBranchMatcherType) ToPointer() *CancelDeploymentBranchMatcherType {
@@ -1031,11 +1034,11 @@ func (e *CancelDeploymentBranchMatcherType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "endsWith":
+		fallthrough
 	case "startsWith":
 		fallthrough
 	case "equals":
-		fallthrough
-	case "endsWith":
 		*e = CancelDeploymentBranchMatcherType(v)
 		return nil
 	default:
@@ -2957,17 +2960,17 @@ func (e *CancelDeploymentSource) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CancelDeploymentTarget string
+type CancelDeploymentTargetEnum string
 
 const (
-	CancelDeploymentTargetStaging    CancelDeploymentTarget = "staging"
-	CancelDeploymentTargetProduction CancelDeploymentTarget = "production"
+	CancelDeploymentTargetEnumStaging    CancelDeploymentTargetEnum = "staging"
+	CancelDeploymentTargetEnumProduction CancelDeploymentTargetEnum = "production"
 )
 
-func (e CancelDeploymentTarget) ToPointer() *CancelDeploymentTarget {
+func (e CancelDeploymentTargetEnum) ToPointer() *CancelDeploymentTargetEnum {
 	return &e
 }
-func (e *CancelDeploymentTarget) UnmarshalJSON(data []byte) error {
+func (e *CancelDeploymentTargetEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2976,10 +2979,10 @@ func (e *CancelDeploymentTarget) UnmarshalJSON(data []byte) error {
 	case "staging":
 		fallthrough
 	case "production":
-		*e = CancelDeploymentTarget(v)
+		*e = CancelDeploymentTargetEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CancelDeploymentTarget: %v", v)
+		return fmt.Errorf("invalid value for CancelDeploymentTargetEnum: %v", v)
 	}
 }
 
@@ -3126,13 +3129,96 @@ func (e *CancelDeploymentArchitecture) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentFunctionsType - Event type - must be "queue/v1beta" (REQUIRED)
+type CancelDeploymentFunctionsType string
+
+const (
+	CancelDeploymentFunctionsTypeQueueV1beta CancelDeploymentFunctionsType = "queue/v1beta"
+)
+
+func (e CancelDeploymentFunctionsType) ToPointer() *CancelDeploymentFunctionsType {
+	return &e
+}
+func (e *CancelDeploymentFunctionsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "queue/v1beta":
+		*e = CancelDeploymentFunctionsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentFunctionsType: %v", v)
+	}
+}
+
+// CancelDeploymentExperimentalTrigger - Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
+type CancelDeploymentExperimentalTrigger struct {
+	// Event type - must be "queue/v1beta" (REQUIRED)
+	Type CancelDeploymentFunctionsType `json:"type"`
+	// Name of the queue topic to consume from (REQUIRED)
+	Topic string `json:"topic"`
+	// Name of the consumer group for this trigger (REQUIRED)
+	Consumer string `json:"consumer"`
+	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
+	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
+	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetType() CancelDeploymentFunctionsType {
+	if o == nil {
+		return CancelDeploymentFunctionsType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetTopic() string {
+	if o == nil {
+		return ""
+	}
+	return o.Topic
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetConsumer() string {
+	if o == nil {
+		return ""
+	}
+	return o.Consumer
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetMaxDeliveries() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDeliveries
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetRetryAfterSeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RetryAfterSeconds
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.InitialDelaySeconds
+}
+
 type CancelDeploymentFunctions struct {
-	Architecture *CancelDeploymentArchitecture `json:"architecture,omitempty"`
-	Memory       *float64                      `json:"memory,omitempty"`
-	MaxDuration  *float64                      `json:"maxDuration,omitempty"`
-	Runtime      *string                       `json:"runtime,omitempty"`
-	IncludeFiles *string                       `json:"includeFiles,omitempty"`
-	ExcludeFiles *string                       `json:"excludeFiles,omitempty"`
+	Architecture         *CancelDeploymentArchitecture         `json:"architecture,omitempty"`
+	Memory               *float64                              `json:"memory,omitempty"`
+	MaxDuration          *float64                              `json:"maxDuration,omitempty"`
+	Runtime              *string                               `json:"runtime,omitempty"`
+	IncludeFiles         *string                               `json:"includeFiles,omitempty"`
+	ExcludeFiles         *string                               `json:"excludeFiles,omitempty"`
+	ExperimentalTriggers []CancelDeploymentExperimentalTrigger `json:"experimentalTriggers,omitempty"`
 }
 
 func (o *CancelDeploymentFunctions) GetArchitecture() *CancelDeploymentArchitecture {
@@ -3175,6 +3261,13 @@ func (o *CancelDeploymentFunctions) GetExcludeFiles() *string {
 		return nil
 	}
 	return o.ExcludeFiles
+}
+
+func (o *CancelDeploymentFunctions) GetExperimentalTriggers() []CancelDeploymentExperimentalTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.ExperimentalTriggers
 }
 
 type CancelDeploymentPlan string
@@ -4533,6 +4626,382 @@ func (o *CancelDeploymentMitigate) GetAction() CancelDeploymentAction {
 	return o.Action
 }
 
+type CancelDeploymentTransformType string
+
+const (
+	CancelDeploymentTransformTypeRequestHeaders  CancelDeploymentTransformType = "request.headers"
+	CancelDeploymentTransformTypeRequestQuery    CancelDeploymentTransformType = "request.query"
+	CancelDeploymentTransformTypeResponseHeaders CancelDeploymentTransformType = "response.headers"
+)
+
+func (e CancelDeploymentTransformType) ToPointer() *CancelDeploymentTransformType {
+	return &e
+}
+func (e *CancelDeploymentTransformType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "request.headers":
+		fallthrough
+	case "request.query":
+		fallthrough
+	case "response.headers":
+		*e = CancelDeploymentTransformType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTransformType: %v", v)
+	}
+}
+
+type CancelDeploymentOp string
+
+const (
+	CancelDeploymentOpAppend CancelDeploymentOp = "append"
+	CancelDeploymentOpSet    CancelDeploymentOp = "set"
+	CancelDeploymentOpDelete CancelDeploymentOp = "delete"
+)
+
+func (e CancelDeploymentOp) ToPointer() *CancelDeploymentOp {
+	return &e
+}
+func (e *CancelDeploymentOp) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "append":
+		fallthrough
+	case "set":
+		fallthrough
+	case "delete":
+		*e = CancelDeploymentOp(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentOp: %v", v)
+	}
+}
+
+type CancelDeploymentKeyEqType string
+
+const (
+	CancelDeploymentKeyEqTypeStr    CancelDeploymentKeyEqType = "str"
+	CancelDeploymentKeyEqTypeNumber CancelDeploymentKeyEqType = "number"
+)
+
+type CancelDeploymentKeyEq struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CancelDeploymentKeyEqType
+}
+
+func CreateCancelDeploymentKeyEqStr(str string) CancelDeploymentKeyEq {
+	typ := CancelDeploymentKeyEqTypeStr
+
+	return CancelDeploymentKeyEq{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentKeyEqNumber(number float64) CancelDeploymentKeyEq {
+	typ := CancelDeploymentKeyEqTypeNumber
+
+	return CancelDeploymentKeyEq{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CancelDeploymentKeyEq) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentKeyEqTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentKeyEqTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentKeyEq", string(data))
+}
+
+func (u CancelDeploymentKeyEq) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentKeyEq: all fields are null")
+}
+
+type CancelDeploymentKey struct {
+	Eq   *CancelDeploymentKeyEq `json:"eq,omitempty"`
+	Neq  *string                `json:"neq,omitempty"`
+	Inc  []string               `json:"inc,omitempty"`
+	Ninc []string               `json:"ninc,omitempty"`
+	Pre  *string                `json:"pre,omitempty"`
+	Suf  *string                `json:"suf,omitempty"`
+	Gt   *float64               `json:"gt,omitempty"`
+	Gte  *float64               `json:"gte,omitempty"`
+	Lt   *float64               `json:"lt,omitempty"`
+	Lte  *float64               `json:"lte,omitempty"`
+}
+
+func (o *CancelDeploymentKey) GetEq() *CancelDeploymentKeyEq {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *CancelDeploymentKey) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *CancelDeploymentKey) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *CancelDeploymentKey) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *CancelDeploymentKey) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *CancelDeploymentKey) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *CancelDeploymentKey) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CancelDeploymentKey) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CancelDeploymentKey) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *CancelDeploymentKey) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type CancelDeploymentKeyUnionType string
+
+const (
+	CancelDeploymentKeyUnionTypeStr                 CancelDeploymentKeyUnionType = "str"
+	CancelDeploymentKeyUnionTypeCancelDeploymentKey CancelDeploymentKeyUnionType = "cancelDeployment_key"
+)
+
+type CancelDeploymentKeyUnion struct {
+	Str                 *string              `queryParam:"inline"`
+	CancelDeploymentKey *CancelDeploymentKey `queryParam:"inline"`
+
+	Type CancelDeploymentKeyUnionType
+}
+
+func CreateCancelDeploymentKeyUnionStr(str string) CancelDeploymentKeyUnion {
+	typ := CancelDeploymentKeyUnionTypeStr
+
+	return CancelDeploymentKeyUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentKeyUnionCancelDeploymentKey(cancelDeploymentKey CancelDeploymentKey) CancelDeploymentKeyUnion {
+	typ := CancelDeploymentKeyUnionTypeCancelDeploymentKey
+
+	return CancelDeploymentKeyUnion{
+		CancelDeploymentKey: &cancelDeploymentKey,
+		Type:                typ,
+	}
+}
+
+func (u *CancelDeploymentKeyUnion) UnmarshalJSON(data []byte) error {
+
+	var cancelDeploymentKey CancelDeploymentKey = CancelDeploymentKey{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentKey, "", true, true); err == nil {
+		u.CancelDeploymentKey = &cancelDeploymentKey
+		u.Type = CancelDeploymentKeyUnionTypeCancelDeploymentKey
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentKeyUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentKeyUnion", string(data))
+}
+
+func (u CancelDeploymentKeyUnion) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CancelDeploymentKey != nil {
+		return utils.MarshalJSON(u.CancelDeploymentKey, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentKeyUnion: all fields are null")
+}
+
+type CancelDeploymentRouteTarget struct {
+	Key CancelDeploymentKeyUnion `json:"key"`
+}
+
+func (o *CancelDeploymentRouteTarget) GetKey() CancelDeploymentKeyUnion {
+	if o == nil {
+		return CancelDeploymentKeyUnion{}
+	}
+	return o.Key
+}
+
+type CancelDeploymentArgsType string
+
+const (
+	CancelDeploymentArgsTypeStr        CancelDeploymentArgsType = "str"
+	CancelDeploymentArgsTypeArrayOfStr CancelDeploymentArgsType = "arrayOfStr"
+)
+
+type CancelDeploymentArgs struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type CancelDeploymentArgsType
+}
+
+func CreateCancelDeploymentArgsStr(str string) CancelDeploymentArgs {
+	typ := CancelDeploymentArgsTypeStr
+
+	return CancelDeploymentArgs{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentArgsArrayOfStr(arrayOfStr []string) CancelDeploymentArgs {
+	typ := CancelDeploymentArgsTypeArrayOfStr
+
+	return CancelDeploymentArgs{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *CancelDeploymentArgs) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentArgsTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = CancelDeploymentArgsTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentArgs", string(data))
+}
+
+func (u CancelDeploymentArgs) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentArgs: all fields are null")
+}
+
+type CancelDeploymentTransform struct {
+	Type   CancelDeploymentTransformType `json:"type"`
+	Op     CancelDeploymentOp            `json:"op"`
+	Target CancelDeploymentRouteTarget   `json:"target"`
+	Args   *CancelDeploymentArgs         `json:"args,omitempty"`
+}
+
+func (o *CancelDeploymentTransform) GetType() CancelDeploymentTransformType {
+	if o == nil {
+		return CancelDeploymentTransformType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentTransform) GetOp() CancelDeploymentOp {
+	if o == nil {
+		return CancelDeploymentOp("")
+	}
+	return o.Op
+}
+
+func (o *CancelDeploymentTransform) GetTarget() CancelDeploymentRouteTarget {
+	if o == nil {
+		return CancelDeploymentRouteTarget{}
+	}
+	return o.Target
+}
+
+func (o *CancelDeploymentTransform) GetArgs() *CancelDeploymentArgs {
+	if o == nil {
+		return nil
+	}
+	return o.Args
+}
+
 type CancelDeploymentLocale struct {
 	Redirect map[string]string `json:"redirect,omitempty"`
 	Cookie   *string           `json:"cookie,omitempty"`
@@ -4566,6 +5035,7 @@ type CancelDeploymentRoute1 struct {
 	Has           []CancelDeploymentHasUnion     `json:"has,omitempty"`
 	Missing       []CancelDeploymentMissingUnion `json:"missing,omitempty"`
 	Mitigate      *CancelDeploymentMitigate      `json:"mitigate,omitempty"`
+	Transforms    []CancelDeploymentTransform    `json:"transforms,omitempty"`
 	Locale        *CancelDeploymentLocale        `json:"locale,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
@@ -4664,6 +5134,13 @@ func (o *CancelDeploymentRoute1) GetMitigate() *CancelDeploymentMitigate {
 		return nil
 	}
 	return o.Mitigate
+}
+
+func (o *CancelDeploymentRoute1) GetTransforms() []CancelDeploymentTransform {
+	if o == nil {
+		return nil
+	}
+	return o.Transforms
 }
 
 func (o *CancelDeploymentRoute1) GetLocale() *CancelDeploymentLocale {
@@ -5425,6 +5902,10 @@ type CancelDeploymentMicrofrontends2 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
+	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
+	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
 }
 
 func (o *CancelDeploymentMicrofrontends2) GetApplications() map[string]CancelDeploymentApplications {
@@ -5462,6 +5943,20 @@ func (o *CancelDeploymentMicrofrontends2) GetGroupIds() []string {
 	return o.GroupIds
 }
 
+func (o *CancelDeploymentMicrofrontends2) GetMicrofrontendsAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasEnabled
+}
+
+func (o *CancelDeploymentMicrofrontends2) GetPreviewEnvAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewEnvAliasEnabled
+}
+
 type CancelDeploymentMicrofrontends1 struct {
 	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
@@ -5471,6 +5966,10 @@ type CancelDeploymentMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
+	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
+	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
 }
 
 func (o *CancelDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
@@ -5499,6 +5998,20 @@ func (o *CancelDeploymentMicrofrontends1) GetGroupIds() []string {
 		return []string{}
 	}
 	return o.GroupIds
+}
+
+func (o *CancelDeploymentMicrofrontends1) GetMicrofrontendsAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasEnabled
+}
+
+func (o *CancelDeploymentMicrofrontends1) GetPreviewEnvAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewEnvAliasEnabled
 }
 
 type CancelDeploymentMicrofrontendsUnionType string
@@ -5815,7 +6328,7 @@ type CancelDeploymentResponseBody struct {
 	Regions                []string                             `json:"regions"`
 	SoftDeletedByRetention *bool                                `json:"softDeletedByRetention,omitempty"`
 	Source                 *CancelDeploymentSource              `json:"source,omitempty"`
-	Target                 *CancelDeploymentTarget              `json:"target,omitempty"`
+	Target                 *CancelDeploymentTargetEnum          `json:"target,omitempty"`
 	Type                   CancelDeploymentType                 `json:"type"`
 	UndeletedAt            *float64                             `json:"undeletedAt,omitempty"`
 	URL                    string                               `json:"url"`
@@ -6261,7 +6774,7 @@ func (o *CancelDeploymentResponseBody) GetSource() *CancelDeploymentSource {
 	return o.Source
 }
 
-func (o *CancelDeploymentResponseBody) GetTarget() *CancelDeploymentTarget {
+func (o *CancelDeploymentResponseBody) GetTarget() *CancelDeploymentTargetEnum {
 	if o == nil {
 		return nil
 	}

@@ -8,26 +8,18 @@ The payload of the event, if requested.
 import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 4084.8,
-    previousSpend: [
-      4620.84,
-      2521.87,
-    ],
-    notifiedAt: [
-      332.38,
-    ],
-    createdAt: 7600.65,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  scalingRules: {},
+  min: 5082.46,
+  max: 4620.84,
+  url: "https://gruesome-almighty.net/",
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.Budget](../models/budget.md)                                    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
+| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

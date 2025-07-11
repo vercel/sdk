@@ -8,30 +8,14 @@ The payload of the event, if requested.
 import { EightyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyFour = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [],
-    newConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: true,
-        buildsEnabled: false,
-        createdAt: 5463.76,
-        updatedAt: 2696.76,
-      },
-    ],
-  },
+  projectName: "<value>",
+  action: "enabled",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `team`                                                                     | [models.UserEventPayload84Team](../models/usereventpayload84team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload84Project](../models/usereventpayload84project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload84Action](../models/usereventpayload84action.md) | :heavy_check_mark:                                                       | N/A                                                                      |

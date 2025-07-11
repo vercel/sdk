@@ -50,6 +50,7 @@ export const GetWebhookEvents = {
   DeploymentIntegrationActionCancel: "deployment.integration.action.cancel",
   DeploymentIntegrationActionCleanup: "deployment.integration.action.cleanup",
   DeploymentCheckrunStart: "deployment.checkrun.start",
+  DeploymentCheckrunCancel: "deployment.checkrun.cancel",
   EdgeConfigCreated: "edge-config.created",
   EdgeConfigDeleted: "edge-config.deleted",
   EdgeConfigItemsUpdated: "edge-config.items.updated",

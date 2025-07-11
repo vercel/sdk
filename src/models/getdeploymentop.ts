@@ -109,9 +109,9 @@ export type GetDeploymentCustomEnvironmentType = ClosedEnum<
  * The type of matching to perform
  */
 export const GetDeploymentCustomEnvironmentDeploymentsResponseType = {
+  EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
-  EndsWith: "endsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -720,6 +720,7 @@ export const ResponseBodyFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
 
@@ -752,10 +753,10 @@ export type ResponseBodyProjectSettings = {
 };
 
 export const GetDeploymentResponseBodyDeploymentsStatus = {
-  Error: "error",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
   Timeout: "timeout",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsStatus = ClosedEnum<
@@ -918,9 +919,9 @@ export type GetDeploymentCustomEnvironmentDeploymentsType = ClosedEnum<
  * The type of matching to perform
  */
 export const GetDeploymentCustomEnvironmentDeploymentsResponse200Type = {
+  EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
-  EndsWith: "endsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -1387,6 +1388,49 @@ export type ResponseBodyArchitecture = ClosedEnum<
   typeof ResponseBodyArchitecture
 >;
 
+/**
+ * Event type - must be "queue/v1beta" (REQUIRED)
+ */
+export const GetDeploymentResponseBodyDeploymentsResponseType = {
+  QueueV1beta: "queue/v1beta",
+} as const;
+/**
+ * Event type - must be "queue/v1beta" (REQUIRED)
+ */
+export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsResponseType
+>;
+
+/**
+ * Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
+ */
+export type ResponseBodyExperimentalTriggers = {
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: GetDeploymentResponseBodyDeploymentsResponseType;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+};
+
 export type ResponseBodyFunctions = {
   architecture?: ResponseBodyArchitecture | undefined;
   memory?: number | undefined;
@@ -1394,6 +1438,7 @@ export type ResponseBodyFunctions = {
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
+  experimentalTriggers?: Array<ResponseBodyExperimentalTriggers> | undefined;
 };
 
 export type GetDeploymentRoutes3 = {
@@ -1567,6 +1612,52 @@ export type GetDeploymentRoutesMitigate = {
   action: GetDeploymentRoutesAction;
 };
 
+export const GetDeploymentRoutesType = {
+  RequestHeaders: "request.headers",
+  RequestQuery: "request.query",
+  ResponseHeaders: "response.headers",
+} as const;
+export type GetDeploymentRoutesType = ClosedEnum<
+  typeof GetDeploymentRoutesType
+>;
+
+export const GetDeploymentRoutesOp = {
+  Append: "append",
+  Set: "set",
+  Delete: "delete",
+} as const;
+export type GetDeploymentRoutesOp = ClosedEnum<typeof GetDeploymentRoutesOp>;
+
+export type GetDeploymentKeyEq = string | number;
+
+export type GetDeploymentKey2 = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
+
+export type GetDeploymentRoutesKey = GetDeploymentKey2 | string;
+
+export type GetDeploymentRoutesTarget = {
+  key: GetDeploymentKey2 | string;
+};
+
+export type GetDeploymentRoutesArgs = string | Array<string>;
+
+export type GetDeploymentRoutesTransforms = {
+  type: GetDeploymentRoutesType;
+  op: GetDeploymentRoutesOp;
+  target: GetDeploymentRoutesTarget;
+  args?: string | Array<string> | undefined;
+};
+
 export type GetDeploymentRoutesLocale = {
   redirect?: { [k: string]: string } | undefined;
   cookie?: string | undefined;
@@ -1586,6 +1677,7 @@ export type GetDeploymentRoutes1 = {
   has?: Array<GetDeploymentHas1 | GetDeploymentHas2> | undefined;
   missing?: Array<GetDeploymentMissing1 | GetDeploymentMissing2> | undefined;
   mitigate?: GetDeploymentRoutesMitigate | undefined;
+  transforms?: Array<GetDeploymentRoutesTransforms> | undefined;
   locale?: GetDeploymentRoutesLocale | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1757,6 +1849,14 @@ export type GetDeploymentMicrofrontends2 = {
    * The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
    */
   groupIds: Array<string>;
+  /**
+   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   */
+  microfrontendsAliasEnabled?: boolean | undefined;
+  /**
+   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+   */
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 export type GetDeploymentMicrofrontends1 = {
@@ -1776,6 +1876,14 @@ export type GetDeploymentMicrofrontends1 = {
    * The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
    */
   groupIds: Array<string>;
+  /**
+   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   */
+  microfrontendsAliasEnabled?: boolean | undefined;
+  /**
+   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+   */
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 export type ResponseBodyMicrofrontends =
@@ -8628,6 +8736,100 @@ export namespace ResponseBodyArchitecture$ {
 }
 
 /** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
+    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentResponseBodyDeploymentsResponseType$ {
+  /** @deprecated use `GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
+  /** @deprecated use `GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema;
+}
+
+/** @internal */
+export const ResponseBodyExperimentalTriggers$inboundSchema: z.ZodType<
+  ResponseBodyExperimentalTriggers,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
+  topic: z.string(),
+  consumer: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+});
+
+/** @internal */
+export type ResponseBodyExperimentalTriggers$Outbound = {
+  type: string;
+  topic: string;
+  consumer: string;
+  maxDeliveries?: number | undefined;
+  retryAfterSeconds?: number | undefined;
+  initialDelaySeconds?: number | undefined;
+};
+
+/** @internal */
+export const ResponseBodyExperimentalTriggers$outboundSchema: z.ZodType<
+  ResponseBodyExperimentalTriggers$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyExperimentalTriggers
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema,
+  topic: z.string(),
+  consumer: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyExperimentalTriggers$ {
+  /** @deprecated use `ResponseBodyExperimentalTriggers$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyExperimentalTriggers$inboundSchema;
+  /** @deprecated use `ResponseBodyExperimentalTriggers$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyExperimentalTriggers$outboundSchema;
+  /** @deprecated use `ResponseBodyExperimentalTriggers$Outbound` instead. */
+  export type Outbound = ResponseBodyExperimentalTriggers$Outbound;
+}
+
+export function responseBodyExperimentalTriggersToJSON(
+  responseBodyExperimentalTriggers: ResponseBodyExperimentalTriggers,
+): string {
+  return JSON.stringify(
+    ResponseBodyExperimentalTriggers$outboundSchema.parse(
+      responseBodyExperimentalTriggers,
+    ),
+  );
+}
+
+export function responseBodyExperimentalTriggersFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyExperimentalTriggers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyExperimentalTriggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyExperimentalTriggers' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   ResponseBodyFunctions,
   z.ZodTypeDef,
@@ -8639,6 +8841,9 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
+  experimentalTriggers: z.array(
+    z.lazy(() => ResponseBodyExperimentalTriggers$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
@@ -8649,6 +8854,9 @@ export type ResponseBodyFunctions$Outbound = {
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
+  experimentalTriggers?:
+    | Array<ResponseBodyExperimentalTriggers$Outbound>
+    | undefined;
 };
 
 /** @internal */
@@ -8663,6 +8871,9 @@ export const ResponseBodyFunctions$outboundSchema: z.ZodType<
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
+  experimentalTriggers: z.array(
+    z.lazy(() => ResponseBodyExperimentalTriggers$outboundSchema),
+  ).optional(),
 });
 
 /**
@@ -10172,6 +10383,394 @@ export function getDeploymentRoutesMitigateFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentRoutesType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentRoutesType
+> = z.nativeEnum(GetDeploymentRoutesType);
+
+/** @internal */
+export const GetDeploymentRoutesType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentRoutesType
+> = GetDeploymentRoutesType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesType$ {
+  /** @deprecated use `GetDeploymentRoutesType$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesType$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesType$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesType$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentRoutesOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentRoutesOp
+> = z.nativeEnum(GetDeploymentRoutesOp);
+
+/** @internal */
+export const GetDeploymentRoutesOp$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentRoutesOp
+> = GetDeploymentRoutesOp$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesOp$ {
+  /** @deprecated use `GetDeploymentRoutesOp$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesOp$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesOp$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesOp$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentKeyEq$inboundSchema: z.ZodType<
+  GetDeploymentKeyEq,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number()]);
+
+/** @internal */
+export type GetDeploymentKeyEq$Outbound = string | number;
+
+/** @internal */
+export const GetDeploymentKeyEq$outboundSchema: z.ZodType<
+  GetDeploymentKeyEq$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentKeyEq
+> = z.union([z.string(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentKeyEq$ {
+  /** @deprecated use `GetDeploymentKeyEq$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentKeyEq$inboundSchema;
+  /** @deprecated use `GetDeploymentKeyEq$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentKeyEq$outboundSchema;
+  /** @deprecated use `GetDeploymentKeyEq$Outbound` instead. */
+  export type Outbound = GetDeploymentKeyEq$Outbound;
+}
+
+export function getDeploymentKeyEqToJSON(
+  getDeploymentKeyEq: GetDeploymentKeyEq,
+): string {
+  return JSON.stringify(
+    GetDeploymentKeyEq$outboundSchema.parse(getDeploymentKeyEq),
+  );
+}
+
+export function getDeploymentKeyEqFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentKeyEq, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentKeyEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentKeyEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentKey2$inboundSchema: z.ZodType<
+  GetDeploymentKey2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: z.union([z.string(), z.number()]).optional(),
+  neq: z.string().optional(),
+  inc: z.array(z.string()).optional(),
+  ninc: z.array(z.string()).optional(),
+  pre: z.string().optional(),
+  suf: z.string().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+});
+
+/** @internal */
+export type GetDeploymentKey2$Outbound = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
+
+/** @internal */
+export const GetDeploymentKey2$outboundSchema: z.ZodType<
+  GetDeploymentKey2$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentKey2
+> = z.object({
+  eq: z.union([z.string(), z.number()]).optional(),
+  neq: z.string().optional(),
+  inc: z.array(z.string()).optional(),
+  ninc: z.array(z.string()).optional(),
+  pre: z.string().optional(),
+  suf: z.string().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentKey2$ {
+  /** @deprecated use `GetDeploymentKey2$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentKey2$inboundSchema;
+  /** @deprecated use `GetDeploymentKey2$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentKey2$outboundSchema;
+  /** @deprecated use `GetDeploymentKey2$Outbound` instead. */
+  export type Outbound = GetDeploymentKey2$Outbound;
+}
+
+export function getDeploymentKey2ToJSON(
+  getDeploymentKey2: GetDeploymentKey2,
+): string {
+  return JSON.stringify(
+    GetDeploymentKey2$outboundSchema.parse(getDeploymentKey2),
+  );
+}
+
+export function getDeploymentKey2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentKey2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentKey2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentKey2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesKey$inboundSchema: z.ZodType<
+  GetDeploymentRoutesKey,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => GetDeploymentKey2$inboundSchema), z.string()]);
+
+/** @internal */
+export type GetDeploymentRoutesKey$Outbound =
+  | GetDeploymentKey2$Outbound
+  | string;
+
+/** @internal */
+export const GetDeploymentRoutesKey$outboundSchema: z.ZodType<
+  GetDeploymentRoutesKey$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentRoutesKey
+> = z.union([z.lazy(() => GetDeploymentKey2$outboundSchema), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesKey$ {
+  /** @deprecated use `GetDeploymentRoutesKey$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesKey$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesKey$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesKey$outboundSchema;
+  /** @deprecated use `GetDeploymentRoutesKey$Outbound` instead. */
+  export type Outbound = GetDeploymentRoutesKey$Outbound;
+}
+
+export function getDeploymentRoutesKeyToJSON(
+  getDeploymentRoutesKey: GetDeploymentRoutesKey,
+): string {
+  return JSON.stringify(
+    GetDeploymentRoutesKey$outboundSchema.parse(getDeploymentRoutesKey),
+  );
+}
+
+export function getDeploymentRoutesKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesKey, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesTarget$inboundSchema: z.ZodType<
+  GetDeploymentRoutesTarget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.union([z.lazy(() => GetDeploymentKey2$inboundSchema), z.string()]),
+});
+
+/** @internal */
+export type GetDeploymentRoutesTarget$Outbound = {
+  key: GetDeploymentKey2$Outbound | string;
+};
+
+/** @internal */
+export const GetDeploymentRoutesTarget$outboundSchema: z.ZodType<
+  GetDeploymentRoutesTarget$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentRoutesTarget
+> = z.object({
+  key: z.union([z.lazy(() => GetDeploymentKey2$outboundSchema), z.string()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesTarget$ {
+  /** @deprecated use `GetDeploymentRoutesTarget$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesTarget$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesTarget$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesTarget$outboundSchema;
+  /** @deprecated use `GetDeploymentRoutesTarget$Outbound` instead. */
+  export type Outbound = GetDeploymentRoutesTarget$Outbound;
+}
+
+export function getDeploymentRoutesTargetToJSON(
+  getDeploymentRoutesTarget: GetDeploymentRoutesTarget,
+): string {
+  return JSON.stringify(
+    GetDeploymentRoutesTarget$outboundSchema.parse(getDeploymentRoutesTarget),
+  );
+}
+
+export function getDeploymentRoutesTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesArgs$inboundSchema: z.ZodType<
+  GetDeploymentRoutesArgs,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type GetDeploymentRoutesArgs$Outbound = string | Array<string>;
+
+/** @internal */
+export const GetDeploymentRoutesArgs$outboundSchema: z.ZodType<
+  GetDeploymentRoutesArgs$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentRoutesArgs
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesArgs$ {
+  /** @deprecated use `GetDeploymentRoutesArgs$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesArgs$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesArgs$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesArgs$outboundSchema;
+  /** @deprecated use `GetDeploymentRoutesArgs$Outbound` instead. */
+  export type Outbound = GetDeploymentRoutesArgs$Outbound;
+}
+
+export function getDeploymentRoutesArgsToJSON(
+  getDeploymentRoutesArgs: GetDeploymentRoutesArgs,
+): string {
+  return JSON.stringify(
+    GetDeploymentRoutesArgs$outboundSchema.parse(getDeploymentRoutesArgs),
+  );
+}
+
+export function getDeploymentRoutesArgsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesArgs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentRoutesTransforms$inboundSchema: z.ZodType<
+  GetDeploymentRoutesTransforms,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentRoutesType$inboundSchema,
+  op: GetDeploymentRoutesOp$inboundSchema,
+  target: z.lazy(() => GetDeploymentRoutesTarget$inboundSchema),
+  args: z.union([z.string(), z.array(z.string())]).optional(),
+});
+
+/** @internal */
+export type GetDeploymentRoutesTransforms$Outbound = {
+  type: string;
+  op: string;
+  target: GetDeploymentRoutesTarget$Outbound;
+  args?: string | Array<string> | undefined;
+};
+
+/** @internal */
+export const GetDeploymentRoutesTransforms$outboundSchema: z.ZodType<
+  GetDeploymentRoutesTransforms$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentRoutesTransforms
+> = z.object({
+  type: GetDeploymentRoutesType$outboundSchema,
+  op: GetDeploymentRoutesOp$outboundSchema,
+  target: z.lazy(() => GetDeploymentRoutesTarget$outboundSchema),
+  args: z.union([z.string(), z.array(z.string())]).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentRoutesTransforms$ {
+  /** @deprecated use `GetDeploymentRoutesTransforms$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentRoutesTransforms$inboundSchema;
+  /** @deprecated use `GetDeploymentRoutesTransforms$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentRoutesTransforms$outboundSchema;
+  /** @deprecated use `GetDeploymentRoutesTransforms$Outbound` instead. */
+  export type Outbound = GetDeploymentRoutesTransforms$Outbound;
+}
+
+export function getDeploymentRoutesTransformsToJSON(
+  getDeploymentRoutesTransforms: GetDeploymentRoutesTransforms,
+): string {
+  return JSON.stringify(
+    GetDeploymentRoutesTransforms$outboundSchema.parse(
+      getDeploymentRoutesTransforms,
+    ),
+  );
+}
+
+export function getDeploymentRoutesTransformsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentRoutesTransforms, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentRoutesTransforms$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentRoutesTransforms' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentRoutesLocale$inboundSchema: z.ZodType<
   GetDeploymentRoutesLocale,
   z.ZodTypeDef,
@@ -10257,6 +10856,8 @@ export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   mitigate: z.lazy(() => GetDeploymentRoutesMitigate$inboundSchema).optional(),
+  transforms: z.array(z.lazy(() => GetDeploymentRoutesTransforms$inboundSchema))
+    .optional(),
   locale: z.lazy(() => GetDeploymentRoutesLocale$inboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -10282,6 +10883,7 @@ export type GetDeploymentRoutes1$Outbound = {
     | Array<GetDeploymentMissing1$Outbound | GetDeploymentMissing2$Outbound>
     | undefined;
   mitigate?: GetDeploymentRoutesMitigate$Outbound | undefined;
+  transforms?: Array<GetDeploymentRoutesTransforms$Outbound> | undefined;
   locale?: GetDeploymentRoutesLocale$Outbound | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
@@ -10317,6 +10919,9 @@ export const GetDeploymentRoutes1$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   mitigate: z.lazy(() => GetDeploymentRoutesMitigate$outboundSchema).optional(),
+  transforms: z.array(
+    z.lazy(() => GetDeploymentRoutesTransforms$outboundSchema),
+  ).optional(),
   locale: z.lazy(() => GetDeploymentRoutesLocale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -11216,6 +11821,8 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11227,6 +11834,8 @@ export type GetDeploymentMicrofrontends2$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
+  microfrontendsAliasEnabled?: boolean | undefined;
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -11242,6 +11851,8 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /**
@@ -11287,6 +11898,8 @@ export const GetDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11295,6 +11908,8 @@ export type GetDeploymentMicrofrontends1$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
+  microfrontendsAliasEnabled?: boolean | undefined;
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -11307,6 +11922,8 @@ export const GetDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /**

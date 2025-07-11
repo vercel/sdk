@@ -7,11 +7,12 @@ The type of matching to perform
 ```typescript
 import { GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType } from "@vercel/sdk/models/getv9projectsidornamecustomenvironmentsop.js";
 
-let value: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType = "equals";
+let value: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType =
+  "startsWith";
 ```
 
 ## Values
 
 ```typescript
-"startsWith" | "equals" | "endsWith"
+"endsWith" | "startsWith" | "equals"
 ```

@@ -9,6 +9,23 @@ let value: UpdateRecordRequest = {
   recordId: "rec_2qn7pzrx89yxy34vezpd31y9",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
+  requestBody: {
+    name: "example-1",
+    value: "google.com",
+    type: "A",
+    ttl: 60,
+    srv: {
+      target: "example2.com.",
+      weight: 402103,
+      port: 616799,
+      priority: 492965,
+    },
+    https: {
+      priority: 731873,
+      target: "example2.com.",
+    },
+    comment: "used to verify ownership of domain",
+  },
 };
 ```
 

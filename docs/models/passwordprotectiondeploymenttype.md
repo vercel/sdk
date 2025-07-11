@@ -5,12 +5,11 @@
 ```typescript
 import { PasswordProtectionDeploymentType } from "@vercel/sdk/models/userevent.js";
 
-let value: PasswordProtectionDeploymentType =
-  "prod_deployment_urls_and_all_previews";
+let value: PasswordProtectionDeploymentType = "all_except_custom_domains";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews"
+"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
 ```

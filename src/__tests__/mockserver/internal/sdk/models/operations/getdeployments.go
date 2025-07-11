@@ -672,6 +672,7 @@ const (
 	GetDeploymentsFrameworkSanityV3       GetDeploymentsFramework = "sanity-v3"
 	GetDeploymentsFrameworkSanity         GetDeploymentsFramework = "sanity"
 	GetDeploymentsFrameworkStorybook      GetDeploymentsFramework = "storybook"
+	GetDeploymentsFrameworkNitro          GetDeploymentsFramework = "nitro"
 )
 
 func (e GetDeploymentsFramework) ToPointer() *GetDeploymentsFramework {
@@ -774,6 +775,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = GetDeploymentsFramework(v)
 		return nil
 	default:
@@ -954,7 +957,6 @@ type GetDeploymentsProjectSettings struct {
 	OutputDirectory                 *string                      `json:"outputDirectory,omitempty"`
 	PublicSource                    *bool                        `json:"publicSource,omitempty"`
 	RootDirectory                   *string                      `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion        *string                      `json:"serverlessFunctionRegion,omitempty"`
 	SourceFilesOutsideRootDirectory *bool                        `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	CommandForIgnoringBuildStep     *string                      `json:"commandForIgnoringBuildStep,omitempty"`
 	CreatedAt                       *float64                     `json:"createdAt,omitempty"`
@@ -1042,13 +1044,6 @@ func (o *GetDeploymentsProjectSettings) GetRootDirectory() *string {
 	return o.RootDirectory
 }
 
-func (o *GetDeploymentsProjectSettings) GetServerlessFunctionRegion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionRegion
-}
-
 func (o *GetDeploymentsProjectSettings) GetSourceFilesOutsideRootDirectory() *bool {
 	if o == nil {
 		return nil
@@ -1123,6 +1118,8 @@ type GetDeploymentsDeployment struct {
 	UID string `json:"uid"`
 	// The name of the deployment.
 	Name string `json:"name"`
+	// The project ID of the deployment
+	ProjectID string `json:"projectId"`
 	// The URL of the deployment.
 	URL string `json:"url"`
 	// Timestamp of when the deployment got created.
@@ -1198,6 +1195,13 @@ func (o *GetDeploymentsDeployment) GetName() string {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *GetDeploymentsDeployment) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
 }
 
 func (o *GetDeploymentsDeployment) GetURL() string {

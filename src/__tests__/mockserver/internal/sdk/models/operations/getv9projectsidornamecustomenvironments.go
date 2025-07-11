@@ -93,9 +93,9 @@ func (e *GetV9ProjectsIDOrNameCustomEnvironmentsType) UnmarshalJSON(data []byte)
 type GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType string
 
 const (
+	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeEndsWith   GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "endsWith"
 	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeStartsWith GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "startsWith"
 	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeEquals     GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "equals"
-	GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherTypeEndsWith   GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType = "endsWith"
 )
 
 func (e GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType) ToPointer() *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType {
@@ -107,11 +107,11 @@ func (e *GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType) UnmarshalJSON
 		return err
 	}
 	switch v {
+	case "endsWith":
+		fallthrough
 	case "startsWith":
 		fallthrough
 	case "equals":
-		fallthrough
-	case "endsWith":
 		*e = GetV9ProjectsIDOrNameCustomEnvironmentsBranchMatcherType(v)
 		return nil
 	default:

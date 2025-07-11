@@ -8,25 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndFortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyTwo = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  id: "<id>",
+  slug: "<value>",
+  name: "<value>",
   prev: {
-    project: {},
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
     name: "<value>",
+    slug: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload142Project](../models/usereventpayload142project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_check_mark:               | N/A                              |
+| `name`                           | *string*                         | :heavy_check_mark:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |

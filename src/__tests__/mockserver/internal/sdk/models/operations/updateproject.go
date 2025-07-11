@@ -60,6 +60,7 @@ const (
 	UpdateProjectFrameworkRequestSanityV3       UpdateProjectFrameworkRequest = "sanity-v3"
 	UpdateProjectFrameworkRequestSanity         UpdateProjectFrameworkRequest = "sanity"
 	UpdateProjectFrameworkRequestStorybook      UpdateProjectFrameworkRequest = "storybook"
+	UpdateProjectFrameworkRequestNitro          UpdateProjectFrameworkRequest = "nitro"
 )
 
 func (e UpdateProjectFrameworkRequest) ToPointer() *UpdateProjectFrameworkRequest {
@@ -162,6 +163,8 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = UpdateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -396,6 +399,7 @@ const (
 	PasswordProtectionDeploymentTypeAll                              PasswordProtectionDeploymentType = "all"
 	PasswordProtectionDeploymentTypePreview                          PasswordProtectionDeploymentType = "preview"
 	PasswordProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews PasswordProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	PasswordProtectionDeploymentTypeAllExceptCustomDomains           PasswordProtectionDeploymentType = "all_except_custom_domains"
 )
 
 func (e PasswordProtectionDeploymentType) ToPointer() *PasswordProtectionDeploymentType {
@@ -412,6 +416,8 @@ func (e *PasswordProtectionDeploymentType) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = PasswordProtectionDeploymentType(v)
 		return nil
 	default:
@@ -441,19 +447,20 @@ func (o *PasswordProtectionRequest) GetPassword() *string {
 	return o.Password
 }
 
-// SsoProtectionDeploymentTypeRequest - Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-type SsoProtectionDeploymentTypeRequest string
+// UpdateProjectSsoProtectionDeploymentTypeRequest - Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+type UpdateProjectSsoProtectionDeploymentTypeRequest string
 
 const (
-	SsoProtectionDeploymentTypeRequestAll                              SsoProtectionDeploymentTypeRequest = "all"
-	SsoProtectionDeploymentTypeRequestPreview                          SsoProtectionDeploymentTypeRequest = "preview"
-	SsoProtectionDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews SsoProtectionDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
+	UpdateProjectSsoProtectionDeploymentTypeRequestAll                              UpdateProjectSsoProtectionDeploymentTypeRequest = "all"
+	UpdateProjectSsoProtectionDeploymentTypeRequestPreview                          UpdateProjectSsoProtectionDeploymentTypeRequest = "preview"
+	UpdateProjectSsoProtectionDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews UpdateProjectSsoProtectionDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
+	UpdateProjectSsoProtectionDeploymentTypeRequestAllExceptCustomDomains           UpdateProjectSsoProtectionDeploymentTypeRequest = "all_except_custom_domains"
 )
 
-func (e SsoProtectionDeploymentTypeRequest) ToPointer() *SsoProtectionDeploymentTypeRequest {
+func (e UpdateProjectSsoProtectionDeploymentTypeRequest) ToPointer() *UpdateProjectSsoProtectionDeploymentTypeRequest {
 	return &e
 }
-func (e *SsoProtectionDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectSsoProtectionDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -464,31 +471,33 @@ func (e *SsoProtectionDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
-		*e = SsoProtectionDeploymentTypeRequest(v)
+		fallthrough
+	case "all_except_custom_domains":
+		*e = UpdateProjectSsoProtectionDeploymentTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SsoProtectionDeploymentTypeRequest: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectSsoProtectionDeploymentTypeRequest: %v", v)
 	}
 }
 
-// SsoProtectionRequest - Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
-type SsoProtectionRequest struct {
+// UpdateProjectSsoProtectionRequest - Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+type UpdateProjectSsoProtectionRequest struct {
 	// Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-	DeploymentType *SsoProtectionDeploymentTypeRequest `default:"preview" json:"deploymentType"`
+	DeploymentType *UpdateProjectSsoProtectionDeploymentTypeRequest `default:"preview" json:"deploymentType"`
 }
 
-func (s SsoProtectionRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (u UpdateProjectSsoProtectionRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (s *SsoProtectionRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+func (u *UpdateProjectSsoProtectionRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SsoProtectionRequest) GetDeploymentType() *SsoProtectionDeploymentTypeRequest {
+func (o *UpdateProjectSsoProtectionRequest) GetDeploymentType() *UpdateProjectSsoProtectionDeploymentTypeRequest {
 	if o == nil {
 		return nil
 	}
@@ -503,6 +512,7 @@ const (
 	TrustedIpsDeploymentTypeRequestPreview                          TrustedIpsDeploymentTypeRequest = "preview"
 	TrustedIpsDeploymentTypeRequestProduction                       TrustedIpsDeploymentTypeRequest = "production"
 	TrustedIpsDeploymentTypeRequestProdDeploymentUrlsAndAllPreviews TrustedIpsDeploymentTypeRequest = "prod_deployment_urls_and_all_previews"
+	TrustedIpsDeploymentTypeRequestAllExceptCustomDomains           TrustedIpsDeploymentTypeRequest = "all_except_custom_domains"
 )
 
 func (e TrustedIpsDeploymentTypeRequest) ToPointer() *TrustedIpsDeploymentTypeRequest {
@@ -521,6 +531,8 @@ func (e *TrustedIpsDeploymentTypeRequest) UnmarshalJSON(data []byte) error {
 	case "production":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = TrustedIpsDeploymentTypeRequest(v)
 		return nil
 	default:
@@ -768,7 +780,7 @@ type UpdateProjectRequestBody struct {
 	// Allows to protect project deployments with a password
 	PasswordProtection *PasswordProtectionRequest `json:"passwordProtection,omitempty"`
 	// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
-	SsoProtection *SsoProtectionRequest `json:"ssoProtection,omitempty"`
+	SsoProtection *UpdateProjectSsoProtectionRequest `json:"ssoProtection,omitempty"`
 	// Restricts access to deployments based on the incoming request IP address
 	TrustedIps *TrustedIpsRequest `json:"trustedIps,omitempty"`
 	// Specify a list of paths that should not be protected by Deployment Protection to enable Cors preflight requests
@@ -987,7 +999,7 @@ func (o *UpdateProjectRequestBody) GetPasswordProtection() *PasswordProtectionRe
 	return o.PasswordProtection
 }
 
-func (o *UpdateProjectRequestBody) GetSsoProtection() *SsoProtectionRequest {
+func (o *UpdateProjectRequestBody) GetSsoProtection() *UpdateProjectSsoProtectionRequest {
 	if o == nil {
 		return nil
 	}
@@ -3161,6 +3173,7 @@ const (
 	UpdateProjectFrameworkResponseBodySanityV3       UpdateProjectFrameworkResponseBody = "sanity-v3"
 	UpdateProjectFrameworkResponseBodySanity         UpdateProjectFrameworkResponseBody = "sanity"
 	UpdateProjectFrameworkResponseBodyStorybook      UpdateProjectFrameworkResponseBody = "storybook"
+	UpdateProjectFrameworkResponseBodyNitro          UpdateProjectFrameworkResponseBody = "nitro"
 )
 
 func (e UpdateProjectFrameworkResponseBody) ToPointer() *UpdateProjectFrameworkResponseBody {
@@ -3263,6 +3276,8 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = UpdateProjectFrameworkResponseBody(v)
 		return nil
 	default:
@@ -4903,6 +4918,7 @@ const (
 	UpdateProjectSsoProtectionDeploymentTypeResponsePreview                          UpdateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	UpdateProjectSsoProtectionDeploymentTypeResponseAll                              UpdateProjectSsoProtectionDeploymentTypeResponse = "all"
 	UpdateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews UpdateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
+	UpdateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           UpdateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
 
 func (e UpdateProjectSsoProtectionDeploymentTypeResponse) ToPointer() *UpdateProjectSsoProtectionDeploymentTypeResponse {
@@ -4919,6 +4935,8 @@ func (e *UpdateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectSsoProtectionDeploymentTypeResponse(v)
 		return nil
 	default:
@@ -7624,6 +7642,7 @@ const (
 	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2All                              UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse2 = "prod_deployment_urls_and_all_previews"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all_except_custom_domains"
 )
 
 func (e UpdateProjectTrustedIpsDeploymentTypeResponse2) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse2 {
@@ -7642,6 +7661,8 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse2) UnmarshalJSON(data []by
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectTrustedIpsDeploymentTypeResponse2(v)
 		return nil
 	default:
@@ -7667,6 +7688,7 @@ const (
 	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1All                              UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse1 = "prod_deployment_urls_and_all_previews"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all_except_custom_domains"
 )
 
 func (e UpdateProjectTrustedIpsDeploymentTypeResponse1) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse1 {
@@ -7685,6 +7707,8 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse1) UnmarshalJSON(data []by
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectTrustedIpsDeploymentTypeResponse1(v)
 		return nil
 	default:
@@ -9189,7 +9213,6 @@ type UpdateProjectResponseBody struct {
 	RollingRelease                       *UpdateProjectRollingRelease                  `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                UpdateProjectDefaultResourceConfig            `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                       `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                       `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
@@ -9515,13 +9538,6 @@ func (o *UpdateProjectResponseBody) GetRootDirectory() *string {
 		return nil
 	}
 	return o.RootDirectory
-}
-
-func (o *UpdateProjectResponseBody) GetServerlessFunctionRegion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionRegion
 }
 
 func (o *UpdateProjectResponseBody) GetServerlessFunctionZeroConfigFailover() *bool {

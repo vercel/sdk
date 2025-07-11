@@ -15,6 +15,7 @@ let value: GetDeploymentsResponseBody = {
     {
       uid: "dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa",
       name: "docs",
+      projectId: "<id>",
       url: "docs-9jaeg38me.vercel.app",
       created: 1609492210000,
       defaultRoute: "/docs",

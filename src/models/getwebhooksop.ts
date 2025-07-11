@@ -50,6 +50,7 @@ export const GetWebhooksResponseBodyEvents = {
   DeploymentIntegrationActionCancel: "deployment.integration.action.cancel",
   DeploymentIntegrationActionCleanup: "deployment.integration.action.cleanup",
   DeploymentCheckrunStart: "deployment.checkrun.start",
+  DeploymentCheckrunCancel: "deployment.checkrun.cancel",
   EdgeConfigCreated: "edge-config.created",
   EdgeConfigDeleted: "edge-config.deleted",
   EdgeConfigItemsUpdated: "edge-config.items.updated",
@@ -181,6 +182,7 @@ export const GetWebhooksResponseBodyFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type GetWebhooksResponseBodyFramework = ClosedEnum<
   typeof GetWebhooksResponseBodyFramework
@@ -223,6 +225,7 @@ export const ResponseBodyEvents = {
   DeploymentIntegrationActionCancel: "deployment.integration.action.cancel",
   DeploymentIntegrationActionCleanup: "deployment.integration.action.cleanup",
   DeploymentCheckrunStart: "deployment.checkrun.start",
+  DeploymentCheckrunCancel: "deployment.checkrun.cancel",
   EdgeConfigCreated: "edge-config.created",
   EdgeConfigDeleted: "edge-config.deleted",
   EdgeConfigItemsUpdated: "edge-config.items.updated",

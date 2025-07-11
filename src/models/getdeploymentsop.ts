@@ -312,6 +312,7 @@ export const GetDeploymentsFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework
@@ -377,7 +378,6 @@ export type GetDeploymentsProjectSettings = {
   outputDirectory?: string | null | undefined;
   publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
   createdAt?: number | undefined;
@@ -407,6 +407,10 @@ export type Deployments = {
    * The name of the deployment.
    */
   name: string;
+  /**
+   * The project ID of the deployment
+   */
+  projectId: string;
   /**
    * The URL of the deployment.
    */
@@ -1373,7 +1377,6 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(z.string()).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
@@ -1398,7 +1401,6 @@ export type GetDeploymentsProjectSettings$Outbound = {
   outputDirectory?: string | null | undefined;
   publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   commandForIgnoringBuildStep?: string | null | undefined;
   createdAt?: number | undefined;
@@ -1425,7 +1427,6 @@ export const GetDeploymentsProjectSettings$outboundSchema: z.ZodType<
   outputDirectory: z.nullable(z.string()).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
@@ -1538,6 +1539,7 @@ export const Deployments$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string(),
   name: z.string(),
+  projectId: z.string(),
   url: z.string(),
   created: z.number(),
   defaultRoute: z.string().optional(),
@@ -1578,6 +1580,7 @@ export const Deployments$inboundSchema: z.ZodType<
 export type Deployments$Outbound = {
   uid: string;
   name: string;
+  projectId: string;
   url: string;
   created: number;
   defaultRoute?: string | undefined;
@@ -1619,6 +1622,7 @@ export const Deployments$outboundSchema: z.ZodType<
 > = z.object({
   uid: z.string(),
   name: z.string(),
+  projectId: z.string(),
   url: z.string(),
   created: z.number(),
   defaultRoute: z.string().optional(),

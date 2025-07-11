@@ -70,6 +70,7 @@ func testGetRollingReleaseGetRollingRelease0(w http.ResponseWriter, req *http.Re
 				ReadyStateAt: types.Float64(1716210400000),
 			},
 			QueuedDeploymentID: types.String("dpl_ghi789"),
+			AdvancementType:    operations.GetRollingReleaseAdvancementTypeManualApproval,
 			Stages: []operations.GetRollingReleaseStage{
 				operations.GetRollingReleaseStage{
 					Index:            0,

@@ -213,8 +213,8 @@ const (
 	RequestAccessToTeamOriginResponseBitbucket         RequestAccessToTeamOriginResponse = "bitbucket"
 	RequestAccessToTeamOriginResponseFeedback          RequestAccessToTeamOriginResponse = "feedback"
 	RequestAccessToTeamOriginResponseOrganizationTeams RequestAccessToTeamOriginResponse = "organization-teams"
-	RequestAccessToTeamOriginResponseMail              RequestAccessToTeamOriginResponse = "mail"
 	RequestAccessToTeamOriginResponseLink              RequestAccessToTeamOriginResponse = "link"
+	RequestAccessToTeamOriginResponseMail              RequestAccessToTeamOriginResponse = "mail"
 	RequestAccessToTeamOriginResponseSaml              RequestAccessToTeamOriginResponse = "saml"
 	RequestAccessToTeamOriginResponseDsync             RequestAccessToTeamOriginResponse = "dsync"
 )
@@ -242,9 +242,9 @@ func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "organization-teams":
 		fallthrough
-	case "mail":
-		fallthrough
 	case "link":
+		fallthrough
+	case "mail":
 		fallthrough
 	case "saml":
 		fallthrough

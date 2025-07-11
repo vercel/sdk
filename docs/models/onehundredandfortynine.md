@@ -8,26 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFortyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyNine = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  appName: "<value>",
+  nextScopes: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload149Team](../models/usereventpayload149team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload149Configuration](../models/usereventpayload149configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `appName`          | *string*           | :heavy_check_mark: | N/A                |
+| `nextScopes`       | *string*[]         | :heavy_check_mark: | N/A                |

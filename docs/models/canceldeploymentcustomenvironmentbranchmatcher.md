@@ -8,7 +8,7 @@ Configuration for matching git branches to this environment
 import { CancelDeploymentCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentCustomEnvironmentBranchMatcher = {
-  type: "endsWith",
+  type: "equals",
   pattern: "<value>",
 };
 ```

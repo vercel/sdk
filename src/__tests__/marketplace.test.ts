@@ -412,3 +412,50 @@ it.skip("Marketplace Delete Resource", async () => {
     "incomplete test found please make sure to address the following errors: [`workflow step delete-resource.test referencing operation delete-resource not found in document`]",
   );
 });
+
+test("Marketplace Get Integration Resources", async () => {
+  const testHttpClient = createTestHTTPClient("get-integration-resources");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.getIntegrationResources({
+    integrationConfigurationId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    resources: [
+      {
+        partnerId: "<id>",
+        internalId: "<id>",
+        name: "<value>",
+        productId: "<id>",
+      },
+    ],
+  });
+});
+
+test("Marketplace Get Integration Resource", async () => {
+  const testHttpClient = createTestHTTPClient("get-integration-resource");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.getIntegrationResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+    internalId: "<id>",
+    name: "<value>",
+    productId: "<id>",
+  });
+});

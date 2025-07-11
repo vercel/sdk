@@ -53,9 +53,9 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsType = ClosedEnum<
  * The type of matching to perform
  */
 export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType = {
+  EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
-  EndsWith: "endsWith",
 } as const;
 /**
  * The type of matching to perform

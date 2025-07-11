@@ -4,6 +4,7 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
+import { BuyDomainResponseBody } from "../models/buydomainop.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Domains Buy Domain", async () => {
@@ -35,7 +36,7 @@ test("Domains Buy Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
+  expect(result as BuyDomainResponseBody).toEqual({
     domain: {
       uid: "<id>",
       ns: [

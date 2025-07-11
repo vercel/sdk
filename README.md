@@ -409,7 +409,6 @@ run();
 
 ### [logDrains](docs/sdks/logdrains/README.md)
 
-* [deleteConfigurableLogDrain](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
 * [getIntegrationLogDrains](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 * [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
 * [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
@@ -423,6 +422,10 @@ run();
 * [getAccountInfo](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 * [getMember](docs/sdks/marketplace/README.md#getmember) - Get Member Information
 * [createEvent](docs/sdks/marketplace/README.md#createevent) - Create Event
+* [getIntegrationResources](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
+* [getIntegrationResource](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
+* [deleteIntegrationResource](docs/sdks/marketplace/README.md#deleteintegrationresource) - Delete Integration Resource
+* [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [submitBillingData](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 * [submitInvoice](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
@@ -430,7 +433,6 @@ run();
 * [submitPrepaymentBalances](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
 * [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 * [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-* [importResource](docs/sdks/marketplace/README.md#importresource) - Import Resource
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 * [createInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 * [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
@@ -627,7 +629,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 - [`logDrainsCreateLogDrain`](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
-- [`logDrainsDeleteConfigurableLogDrain`](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
 - [`logDrainsDeleteIntegrationLogDrain`](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
 - [`logDrainsGetIntegrationLogDrains`](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 - [`logsGetRuntimeLogs`](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
@@ -635,9 +636,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceCreateInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
 - [`marketplaceCreateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceDeleteInstallationIntegrationConfiguration`](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
+- [`marketplaceDeleteIntegrationResource`](docs/sdks/marketplace/README.md#deleteintegrationresource) - Delete Integration Resource
 - [`marketplaceExchangeSsoToken`](docs/sdks/authentication/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
+- [`marketplaceGetIntegrationResource`](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
+- [`marketplaceGetIntegrationResources`](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
@@ -885,8 +889,8 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
-  * [`VercelBadRequestError`](docs/models/vercelbadrequesterror.md): Status code `400`. *
-  * [`VercelForbiddenError`](docs/models/vercelforbiddenerror.md): Status code `401`. *
+  * [`VercelBadRequestError`](./src/models/vercelbadrequesterror.ts): Status code `400`. *
+  * [`VercelForbiddenError`](./src/models/vercelforbiddenerror.ts): Status code `401`. *
 
 <details><summary>Less common errors (8)</summary>
 
@@ -901,8 +905,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](docs/models/vercelnotfounderror.md): Status code `404`. Applicable to 100 of 171 methods.*
-* [`VercelRateLimitError`](docs/models/vercelratelimiterror.md): . Status code `429`. Applicable to 1 of 171 methods.*
+* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 102 of 173 methods.*
+* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 1 of 173 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

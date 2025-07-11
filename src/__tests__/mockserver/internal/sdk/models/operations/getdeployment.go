@@ -297,9 +297,9 @@ func (e *GetDeploymentCustomEnvironmentType2) UnmarshalJSON(data []byte) error {
 type GetDeploymentBranchMatcherType2 string
 
 const (
+	GetDeploymentBranchMatcherType2EndsWith   GetDeploymentBranchMatcherType2 = "endsWith"
 	GetDeploymentBranchMatcherType2StartsWith GetDeploymentBranchMatcherType2 = "startsWith"
 	GetDeploymentBranchMatcherType2Equals     GetDeploymentBranchMatcherType2 = "equals"
-	GetDeploymentBranchMatcherType2EndsWith   GetDeploymentBranchMatcherType2 = "endsWith"
 )
 
 func (e GetDeploymentBranchMatcherType2) ToPointer() *GetDeploymentBranchMatcherType2 {
@@ -311,11 +311,11 @@ func (e *GetDeploymentBranchMatcherType2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "endsWith":
+		fallthrough
 	case "startsWith":
 		fallthrough
 	case "equals":
-		fallthrough
-	case "endsWith":
 		*e = GetDeploymentBranchMatcherType2(v)
 		return nil
 	default:
@@ -2260,17 +2260,17 @@ func (e *GetDeploymentSource2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetDeploymentTarget2 string
+type GetDeploymentTargetEnum2 string
 
 const (
-	GetDeploymentTarget2Staging    GetDeploymentTarget2 = "staging"
-	GetDeploymentTarget2Production GetDeploymentTarget2 = "production"
+	GetDeploymentTargetEnum2Staging    GetDeploymentTargetEnum2 = "staging"
+	GetDeploymentTargetEnum2Production GetDeploymentTargetEnum2 = "production"
 )
 
-func (e GetDeploymentTarget2) ToPointer() *GetDeploymentTarget2 {
+func (e GetDeploymentTargetEnum2) ToPointer() *GetDeploymentTargetEnum2 {
 	return &e
 }
-func (e *GetDeploymentTarget2) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentTargetEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2279,10 +2279,10 @@ func (e *GetDeploymentTarget2) UnmarshalJSON(data []byte) error {
 	case "staging":
 		fallthrough
 	case "production":
-		*e = GetDeploymentTarget2(v)
+		*e = GetDeploymentTargetEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentTarget2: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentTargetEnum2: %v", v)
 	}
 }
 
@@ -2416,7 +2416,7 @@ type Lambdas2 struct {
 	Regions                []string                       `json:"regions"`
 	SoftDeletedByRetention *bool                          `json:"softDeletedByRetention,omitempty"`
 	Source                 *GetDeploymentSource2          `json:"source,omitempty"`
-	Target                 *GetDeploymentTarget2          `json:"target,omitempty"`
+	Target                 *GetDeploymentTargetEnum2      `json:"target,omitempty"`
 	UndeletedAt            *float64                       `json:"undeletedAt,omitempty"`
 	URL                    string                         `json:"url"`
 	Version                float64                        `json:"version"`
@@ -2759,7 +2759,7 @@ func (o *Lambdas2) GetSource() *GetDeploymentSource2 {
 	return o.Source
 }
 
-func (o *Lambdas2) GetTarget() *GetDeploymentTarget2 {
+func (o *Lambdas2) GetTarget() *GetDeploymentTargetEnum2 {
 	if o == nil {
 		return nil
 	}
@@ -2944,6 +2944,7 @@ const (
 	GetDeploymentFrameworkSanityV3       GetDeploymentFramework = "sanity-v3"
 	GetDeploymentFrameworkSanity         GetDeploymentFramework = "sanity"
 	GetDeploymentFrameworkStorybook      GetDeploymentFramework = "storybook"
+	GetDeploymentFrameworkNitro          GetDeploymentFramework = "nitro"
 )
 
 func (e GetDeploymentFramework) ToPointer() *GetDeploymentFramework {
@@ -3046,6 +3047,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = GetDeploymentFramework(v)
 		return nil
 	default:
@@ -3217,10 +3220,10 @@ func (o *GetDeploymentProjectSettings) GetWebAnalytics() *GetDeploymentWebAnalyt
 type GetDeploymentIntegrationsStatus string
 
 const (
-	GetDeploymentIntegrationsStatusError   GetDeploymentIntegrationsStatus = "error"
 	GetDeploymentIntegrationsStatusSkipped GetDeploymentIntegrationsStatus = "skipped"
 	GetDeploymentIntegrationsStatusPending GetDeploymentIntegrationsStatus = "pending"
 	GetDeploymentIntegrationsStatusReady   GetDeploymentIntegrationsStatus = "ready"
+	GetDeploymentIntegrationsStatusError   GetDeploymentIntegrationsStatus = "error"
 	GetDeploymentIntegrationsStatusTimeout GetDeploymentIntegrationsStatus = "timeout"
 )
 
@@ -3233,13 +3236,13 @@ func (e *GetDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "skipped":
 		fallthrough
 	case "pending":
 		fallthrough
 	case "ready":
+		fallthrough
+	case "error":
 		fallthrough
 	case "timeout":
 		*e = GetDeploymentIntegrationsStatus(v)
@@ -3771,9 +3774,9 @@ func (e *GetDeploymentCustomEnvironmentType1) UnmarshalJSON(data []byte) error {
 type GetDeploymentBranchMatcherType1 string
 
 const (
+	GetDeploymentBranchMatcherType1EndsWith   GetDeploymentBranchMatcherType1 = "endsWith"
 	GetDeploymentBranchMatcherType1StartsWith GetDeploymentBranchMatcherType1 = "startsWith"
 	GetDeploymentBranchMatcherType1Equals     GetDeploymentBranchMatcherType1 = "equals"
-	GetDeploymentBranchMatcherType1EndsWith   GetDeploymentBranchMatcherType1 = "endsWith"
 )
 
 func (e GetDeploymentBranchMatcherType1) ToPointer() *GetDeploymentBranchMatcherType1 {
@@ -3785,11 +3788,11 @@ func (e *GetDeploymentBranchMatcherType1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "endsWith":
+		fallthrough
 	case "startsWith":
 		fallthrough
 	case "equals":
-		fallthrough
-	case "endsWith":
 		*e = GetDeploymentBranchMatcherType1(v)
 		return nil
 	default:
@@ -5734,17 +5737,17 @@ func (e *GetDeploymentSource1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetDeploymentTarget1 string
+type GetDeploymentTargetEnum1 string
 
 const (
-	GetDeploymentTarget1Staging    GetDeploymentTarget1 = "staging"
-	GetDeploymentTarget1Production GetDeploymentTarget1 = "production"
+	GetDeploymentTargetEnum1Staging    GetDeploymentTargetEnum1 = "staging"
+	GetDeploymentTargetEnum1Production GetDeploymentTargetEnum1 = "production"
 )
 
-func (e GetDeploymentTarget1) ToPointer() *GetDeploymentTarget1 {
+func (e GetDeploymentTargetEnum1) ToPointer() *GetDeploymentTargetEnum1 {
 	return &e
 }
-func (e *GetDeploymentTarget1) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentTargetEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5753,10 +5756,10 @@ func (e *GetDeploymentTarget1) UnmarshalJSON(data []byte) error {
 	case "staging":
 		fallthrough
 	case "production":
-		*e = GetDeploymentTarget1(v)
+		*e = GetDeploymentTargetEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentTarget1: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentTargetEnum1: %v", v)
 	}
 }
 
@@ -5909,13 +5912,96 @@ func (e *GetDeploymentArchitecture) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetDeploymentFunctionsType - Event type - must be "queue/v1beta" (REQUIRED)
+type GetDeploymentFunctionsType string
+
+const (
+	GetDeploymentFunctionsTypeQueueV1beta GetDeploymentFunctionsType = "queue/v1beta"
+)
+
+func (e GetDeploymentFunctionsType) ToPointer() *GetDeploymentFunctionsType {
+	return &e
+}
+func (e *GetDeploymentFunctionsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "queue/v1beta":
+		*e = GetDeploymentFunctionsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentFunctionsType: %v", v)
+	}
+}
+
+// GetDeploymentExperimentalTrigger - Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
+type GetDeploymentExperimentalTrigger struct {
+	// Event type - must be "queue/v1beta" (REQUIRED)
+	Type GetDeploymentFunctionsType `json:"type"`
+	// Name of the queue topic to consume from (REQUIRED)
+	Topic string `json:"topic"`
+	// Name of the consumer group for this trigger (REQUIRED)
+	Consumer string `json:"consumer"`
+	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
+	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
+	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetType() GetDeploymentFunctionsType {
+	if o == nil {
+		return GetDeploymentFunctionsType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetTopic() string {
+	if o == nil {
+		return ""
+	}
+	return o.Topic
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetConsumer() string {
+	if o == nil {
+		return ""
+	}
+	return o.Consumer
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetMaxDeliveries() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDeliveries
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetRetryAfterSeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RetryAfterSeconds
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.InitialDelaySeconds
+}
+
 type GetDeploymentFunctions struct {
-	Architecture *GetDeploymentArchitecture `json:"architecture,omitempty"`
-	Memory       *float64                   `json:"memory,omitempty"`
-	MaxDuration  *float64                   `json:"maxDuration,omitempty"`
-	Runtime      *string                    `json:"runtime,omitempty"`
-	IncludeFiles *string                    `json:"includeFiles,omitempty"`
-	ExcludeFiles *string                    `json:"excludeFiles,omitempty"`
+	Architecture         *GetDeploymentArchitecture         `json:"architecture,omitempty"`
+	Memory               *float64                           `json:"memory,omitempty"`
+	MaxDuration          *float64                           `json:"maxDuration,omitempty"`
+	Runtime              *string                            `json:"runtime,omitempty"`
+	IncludeFiles         *string                            `json:"includeFiles,omitempty"`
+	ExcludeFiles         *string                            `json:"excludeFiles,omitempty"`
+	ExperimentalTriggers []GetDeploymentExperimentalTrigger `json:"experimentalTriggers,omitempty"`
 }
 
 func (o *GetDeploymentFunctions) GetArchitecture() *GetDeploymentArchitecture {
@@ -5958,6 +6044,13 @@ func (o *GetDeploymentFunctions) GetExcludeFiles() *string {
 		return nil
 	}
 	return o.ExcludeFiles
+}
+
+func (o *GetDeploymentFunctions) GetExperimentalTriggers() []GetDeploymentExperimentalTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.ExperimentalTriggers
 }
 
 type GetDeploymentRoute3 struct {
@@ -7287,6 +7380,382 @@ func (o *GetDeploymentMitigate) GetAction() GetDeploymentAction {
 	return o.Action
 }
 
+type GetDeploymentTransformType string
+
+const (
+	GetDeploymentTransformTypeRequestHeaders  GetDeploymentTransformType = "request.headers"
+	GetDeploymentTransformTypeRequestQuery    GetDeploymentTransformType = "request.query"
+	GetDeploymentTransformTypeResponseHeaders GetDeploymentTransformType = "response.headers"
+)
+
+func (e GetDeploymentTransformType) ToPointer() *GetDeploymentTransformType {
+	return &e
+}
+func (e *GetDeploymentTransformType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "request.headers":
+		fallthrough
+	case "request.query":
+		fallthrough
+	case "response.headers":
+		*e = GetDeploymentTransformType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentTransformType: %v", v)
+	}
+}
+
+type GetDeploymentOp string
+
+const (
+	GetDeploymentOpAppend GetDeploymentOp = "append"
+	GetDeploymentOpSet    GetDeploymentOp = "set"
+	GetDeploymentOpDelete GetDeploymentOp = "delete"
+)
+
+func (e GetDeploymentOp) ToPointer() *GetDeploymentOp {
+	return &e
+}
+func (e *GetDeploymentOp) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "append":
+		fallthrough
+	case "set":
+		fallthrough
+	case "delete":
+		*e = GetDeploymentOp(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOp: %v", v)
+	}
+}
+
+type GetDeploymentKeyEqType string
+
+const (
+	GetDeploymentKeyEqTypeStr    GetDeploymentKeyEqType = "str"
+	GetDeploymentKeyEqTypeNumber GetDeploymentKeyEqType = "number"
+)
+
+type GetDeploymentKeyEq struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type GetDeploymentKeyEqType
+}
+
+func CreateGetDeploymentKeyEqStr(str string) GetDeploymentKeyEq {
+	typ := GetDeploymentKeyEqTypeStr
+
+	return GetDeploymentKeyEq{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentKeyEqNumber(number float64) GetDeploymentKeyEq {
+	typ := GetDeploymentKeyEqTypeNumber
+
+	return GetDeploymentKeyEq{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *GetDeploymentKeyEq) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentKeyEqTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = GetDeploymentKeyEqTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentKeyEq", string(data))
+}
+
+func (u GetDeploymentKeyEq) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentKeyEq: all fields are null")
+}
+
+type GetDeploymentKey struct {
+	Eq   *GetDeploymentKeyEq `json:"eq,omitempty"`
+	Neq  *string             `json:"neq,omitempty"`
+	Inc  []string            `json:"inc,omitempty"`
+	Ninc []string            `json:"ninc,omitempty"`
+	Pre  *string             `json:"pre,omitempty"`
+	Suf  *string             `json:"suf,omitempty"`
+	Gt   *float64            `json:"gt,omitempty"`
+	Gte  *float64            `json:"gte,omitempty"`
+	Lt   *float64            `json:"lt,omitempty"`
+	Lte  *float64            `json:"lte,omitempty"`
+}
+
+func (o *GetDeploymentKey) GetEq() *GetDeploymentKeyEq {
+	if o == nil {
+		return nil
+	}
+	return o.Eq
+}
+
+func (o *GetDeploymentKey) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
+
+func (o *GetDeploymentKey) GetInc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Inc
+}
+
+func (o *GetDeploymentKey) GetNinc() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ninc
+}
+
+func (o *GetDeploymentKey) GetPre() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pre
+}
+
+func (o *GetDeploymentKey) GetSuf() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suf
+}
+
+func (o *GetDeploymentKey) GetGt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetDeploymentKey) GetGte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetDeploymentKey) GetLt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lt
+}
+
+func (o *GetDeploymentKey) GetLte() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
+type GetDeploymentKeyUnionType string
+
+const (
+	GetDeploymentKeyUnionTypeStr              GetDeploymentKeyUnionType = "str"
+	GetDeploymentKeyUnionTypeGetDeploymentKey GetDeploymentKeyUnionType = "getDeployment_key"
+)
+
+type GetDeploymentKeyUnion struct {
+	Str              *string           `queryParam:"inline"`
+	GetDeploymentKey *GetDeploymentKey `queryParam:"inline"`
+
+	Type GetDeploymentKeyUnionType
+}
+
+func CreateGetDeploymentKeyUnionStr(str string) GetDeploymentKeyUnion {
+	typ := GetDeploymentKeyUnionTypeStr
+
+	return GetDeploymentKeyUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentKeyUnionGetDeploymentKey(getDeploymentKey GetDeploymentKey) GetDeploymentKeyUnion {
+	typ := GetDeploymentKeyUnionTypeGetDeploymentKey
+
+	return GetDeploymentKeyUnion{
+		GetDeploymentKey: &getDeploymentKey,
+		Type:             typ,
+	}
+}
+
+func (u *GetDeploymentKeyUnion) UnmarshalJSON(data []byte) error {
+
+	var getDeploymentKey GetDeploymentKey = GetDeploymentKey{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentKey, "", true, true); err == nil {
+		u.GetDeploymentKey = &getDeploymentKey
+		u.Type = GetDeploymentKeyUnionTypeGetDeploymentKey
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentKeyUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentKeyUnion", string(data))
+}
+
+func (u GetDeploymentKeyUnion) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetDeploymentKey != nil {
+		return utils.MarshalJSON(u.GetDeploymentKey, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentKeyUnion: all fields are null")
+}
+
+type GetDeploymentRouteTarget struct {
+	Key GetDeploymentKeyUnion `json:"key"`
+}
+
+func (o *GetDeploymentRouteTarget) GetKey() GetDeploymentKeyUnion {
+	if o == nil {
+		return GetDeploymentKeyUnion{}
+	}
+	return o.Key
+}
+
+type GetDeploymentArgsType string
+
+const (
+	GetDeploymentArgsTypeStr        GetDeploymentArgsType = "str"
+	GetDeploymentArgsTypeArrayOfStr GetDeploymentArgsType = "arrayOfStr"
+)
+
+type GetDeploymentArgs struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type GetDeploymentArgsType
+}
+
+func CreateGetDeploymentArgsStr(str string) GetDeploymentArgs {
+	typ := GetDeploymentArgsTypeStr
+
+	return GetDeploymentArgs{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetDeploymentArgsArrayOfStr(arrayOfStr []string) GetDeploymentArgs {
+	typ := GetDeploymentArgsTypeArrayOfStr
+
+	return GetDeploymentArgs{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *GetDeploymentArgs) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = GetDeploymentArgsTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetDeploymentArgsTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentArgs", string(data))
+}
+
+func (u GetDeploymentArgs) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDeploymentArgs: all fields are null")
+}
+
+type GetDeploymentTransform struct {
+	Type   GetDeploymentTransformType `json:"type"`
+	Op     GetDeploymentOp            `json:"op"`
+	Target GetDeploymentRouteTarget   `json:"target"`
+	Args   *GetDeploymentArgs         `json:"args,omitempty"`
+}
+
+func (o *GetDeploymentTransform) GetType() GetDeploymentTransformType {
+	if o == nil {
+		return GetDeploymentTransformType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentTransform) GetOp() GetDeploymentOp {
+	if o == nil {
+		return GetDeploymentOp("")
+	}
+	return o.Op
+}
+
+func (o *GetDeploymentTransform) GetTarget() GetDeploymentRouteTarget {
+	if o == nil {
+		return GetDeploymentRouteTarget{}
+	}
+	return o.Target
+}
+
+func (o *GetDeploymentTransform) GetArgs() *GetDeploymentArgs {
+	if o == nil {
+		return nil
+	}
+	return o.Args
+}
+
 type GetDeploymentLocale struct {
 	Redirect map[string]string `json:"redirect,omitempty"`
 	Cookie   *string           `json:"cookie,omitempty"`
@@ -7320,6 +7789,7 @@ type GetDeploymentRoute1 struct {
 	Has           []GetDeploymentHasUnion     `json:"has,omitempty"`
 	Missing       []GetDeploymentMissingUnion `json:"missing,omitempty"`
 	Mitigate      *GetDeploymentMitigate      `json:"mitigate,omitempty"`
+	Transforms    []GetDeploymentTransform    `json:"transforms,omitempty"`
 	Locale        *GetDeploymentLocale        `json:"locale,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
@@ -7418,6 +7888,13 @@ func (o *GetDeploymentRoute1) GetMitigate() *GetDeploymentMitigate {
 		return nil
 	}
 	return o.Mitigate
+}
+
+func (o *GetDeploymentRoute1) GetTransforms() []GetDeploymentTransform {
+	if o == nil {
+		return nil
+	}
+	return o.Transforms
 }
 
 func (o *GetDeploymentRoute1) GetLocale() *GetDeploymentLocale {
@@ -8179,6 +8656,10 @@ type GetDeploymentMicrofrontends2 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
+	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
+	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
 }
 
 func (o *GetDeploymentMicrofrontends2) GetApplications() map[string]GetDeploymentApplications {
@@ -8216,6 +8697,20 @@ func (o *GetDeploymentMicrofrontends2) GetGroupIds() []string {
 	return o.GroupIds
 }
 
+func (o *GetDeploymentMicrofrontends2) GetMicrofrontendsAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasEnabled
+}
+
+func (o *GetDeploymentMicrofrontends2) GetPreviewEnvAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewEnvAliasEnabled
+}
+
 type GetDeploymentMicrofrontends1 struct {
 	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
@@ -8225,6 +8720,10 @@ type GetDeploymentMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
+	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
+	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
 }
 
 func (o *GetDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
@@ -8253,6 +8752,20 @@ func (o *GetDeploymentMicrofrontends1) GetGroupIds() []string {
 		return []string{}
 	}
 	return o.GroupIds
+}
+
+func (o *GetDeploymentMicrofrontends1) GetMicrofrontendsAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasEnabled
+}
+
+func (o *GetDeploymentMicrofrontends1) GetPreviewEnvAliasEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewEnvAliasEnabled
 }
 
 type GetDeploymentMicrofrontendsUnionType string
@@ -8570,7 +9083,7 @@ type Lambdas1 struct {
 	Regions                []string                          `json:"regions"`
 	SoftDeletedByRetention *bool                             `json:"softDeletedByRetention,omitempty"`
 	Source                 *GetDeploymentSource1             `json:"source,omitempty"`
-	Target                 *GetDeploymentTarget1             `json:"target,omitempty"`
+	Target                 *GetDeploymentTargetEnum1         `json:"target,omitempty"`
 	UndeletedAt            *float64                          `json:"undeletedAt,omitempty"`
 	URL                    string                            `json:"url"`
 	Version                float64                           `json:"version"`
@@ -9022,7 +9535,7 @@ func (o *Lambdas1) GetSource() *GetDeploymentSource1 {
 	return o.Source
 }
 
-func (o *Lambdas1) GetTarget() *GetDeploymentTarget1 {
+func (o *Lambdas1) GetTarget() *GetDeploymentTargetEnum1 {
 	if o == nil {
 		return nil
 	}

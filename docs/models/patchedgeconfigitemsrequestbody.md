@@ -8,9 +8,9 @@ import { PatchEdgeConfigItemsRequestBody } from "@vercel/sdk/models/patchedgecon
 let value: PatchEdgeConfigItemsRequestBody = {
   items: [
     {
-      operation: "update",
+      operation: "delete",
       key: "<key>",
-      description: "briskly beside whoever ugh soon perfectly per defensive",
+      value: "<value>",
     },
   ],
   definition: "<value>",

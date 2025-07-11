@@ -8,7 +8,7 @@ import { GetConfigurationResponseBody2 } from "@vercel/sdk/models/getconfigurati
 let value: GetConfigurationResponseBody2 = {
   projectSelection: "all",
   notification: {
-    level: "error",
+    level: "info",
     title: "<value>",
   },
   transferRequest: {

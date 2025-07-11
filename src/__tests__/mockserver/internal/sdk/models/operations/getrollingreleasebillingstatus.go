@@ -40,6 +40,56 @@ func (o *GetRollingReleaseBillingStatusRequest) GetSlug() *string {
 	return o.Slug
 }
 
+type ReasonAvailableSlots string
+
+const (
+	ReasonAvailableSlotsAvailableSlots ReasonAvailableSlots = "available_slots"
+)
+
+func (e ReasonAvailableSlots) ToPointer() *ReasonAvailableSlots {
+	return &e
+}
+func (e *ReasonAvailableSlots) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available_slots":
+		*e = ReasonAvailableSlots(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ReasonAvailableSlots: %v", v)
+	}
+}
+
+type AvailableSlots struct {
+	AvailableSlots float64              `json:"availableSlots"`
+	Reason         ReasonAvailableSlots `json:"reason"`
+	Message        string               `json:"message"`
+}
+
+func (o *AvailableSlots) GetAvailableSlots() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.AvailableSlots
+}
+
+func (o *AvailableSlots) GetReason() ReasonAvailableSlots {
+	if o == nil {
+		return ReasonAvailableSlots("")
+	}
+	return o.Reason
+}
+
+func (o *AvailableSlots) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
 type ReasonNoAvailableSlots string
 
 const (
@@ -66,6 +116,7 @@ func (e *ReasonNoAvailableSlots) UnmarshalJSON(data []byte) error {
 type NoAvailableSlots struct {
 	AvailableSlots  float64                `json:"availableSlots"`
 	Reason          ReasonNoAvailableSlots `json:"reason"`
+	Message         string                 `json:"message"`
 	EnabledProjects []string               `json:"enabledProjects"`
 }
 
@@ -83,53 +134,18 @@ func (o *NoAvailableSlots) GetReason() ReasonNoAvailableSlots {
 	return o.Reason
 }
 
+func (o *NoAvailableSlots) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
 func (o *NoAvailableSlots) GetEnabledProjects() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.EnabledProjects
-}
-
-type ReasonPlanNotSupported string
-
-const (
-	ReasonPlanNotSupportedPlanNotSupported ReasonPlanNotSupported = "plan_not_supported"
-)
-
-func (e ReasonPlanNotSupported) ToPointer() *ReasonPlanNotSupported {
-	return &e
-}
-func (e *ReasonPlanNotSupported) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "plan_not_supported":
-		*e = ReasonPlanNotSupported(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ReasonPlanNotSupported: %v", v)
-	}
-}
-
-type PlanNotSupported struct {
-	AvailableSlots float64                `json:"availableSlots"`
-	Reason         ReasonPlanNotSupported `json:"reason"`
-}
-
-func (o *PlanNotSupported) GetAvailableSlots() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.AvailableSlots
-}
-
-func (o *PlanNotSupported) GetReason() ReasonPlanNotSupported {
-	if o == nil {
-		return ReasonPlanNotSupported("")
-	}
-	return o.Reason
 }
 
 type AvailableSlotsEnum string
@@ -181,6 +197,7 @@ func (e *ReasonUnlimitedSlots) UnmarshalJSON(data []byte) error {
 type UnlimitedSlots struct {
 	AvailableSlots AvailableSlotsEnum   `json:"availableSlots"`
 	Reason         ReasonUnlimitedSlots `json:"reason"`
+	Message        string               `json:"message"`
 }
 
 func (o *UnlimitedSlots) GetAvailableSlots() AvailableSlotsEnum {
@@ -197,72 +214,87 @@ func (o *UnlimitedSlots) GetReason() ReasonUnlimitedSlots {
 	return o.Reason
 }
 
-type ReasonAvailableSlots string
+func (o *UnlimitedSlots) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+type ReasonPlanNotSupported string
 
 const (
-	ReasonAvailableSlotsAvailableSlots ReasonAvailableSlots = "available_slots"
+	ReasonPlanNotSupportedPlanNotSupported ReasonPlanNotSupported = "plan_not_supported"
 )
 
-func (e ReasonAvailableSlots) ToPointer() *ReasonAvailableSlots {
+func (e ReasonPlanNotSupported) ToPointer() *ReasonPlanNotSupported {
 	return &e
 }
-func (e *ReasonAvailableSlots) UnmarshalJSON(data []byte) error {
+func (e *ReasonPlanNotSupported) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "available_slots":
-		*e = ReasonAvailableSlots(v)
+	case "plan_not_supported":
+		*e = ReasonPlanNotSupported(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ReasonAvailableSlots: %v", v)
+		return fmt.Errorf("invalid value for ReasonPlanNotSupported: %v", v)
 	}
 }
 
-type AvailableSlots struct {
-	AvailableSlots float64              `json:"availableSlots"`
-	Reason         ReasonAvailableSlots `json:"reason"`
+type PlanNotSupported struct {
+	AvailableSlots float64                `json:"availableSlots"`
+	Reason         ReasonPlanNotSupported `json:"reason"`
+	Message        string                 `json:"message"`
 }
 
-func (o *AvailableSlots) GetAvailableSlots() float64 {
+func (o *PlanNotSupported) GetAvailableSlots() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.AvailableSlots
 }
 
-func (o *AvailableSlots) GetReason() ReasonAvailableSlots {
+func (o *PlanNotSupported) GetReason() ReasonPlanNotSupported {
 	if o == nil {
-		return ReasonAvailableSlots("")
+		return ReasonPlanNotSupported("")
 	}
 	return o.Reason
+}
+
+func (o *PlanNotSupported) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
 }
 
 type GetRollingReleaseBillingStatusResponseBodyType string
 
 const (
-	GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots   GetRollingReleaseBillingStatusResponseBodyType = "AvailableSlots"
-	GetRollingReleaseBillingStatusResponseBodyTypeUnlimitedSlots   GetRollingReleaseBillingStatusResponseBodyType = "UnlimitedSlots"
 	GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported GetRollingReleaseBillingStatusResponseBodyType = "PlanNotSupported"
+	GetRollingReleaseBillingStatusResponseBodyTypeUnlimitedSlots   GetRollingReleaseBillingStatusResponseBodyType = "UnlimitedSlots"
 	GetRollingReleaseBillingStatusResponseBodyTypeNoAvailableSlots GetRollingReleaseBillingStatusResponseBodyType = "NoAvailableSlots"
+	GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots   GetRollingReleaseBillingStatusResponseBodyType = "AvailableSlots"
 )
 
 type GetRollingReleaseBillingStatusResponseBody struct {
-	AvailableSlots   *AvailableSlots   `queryParam:"inline"`
-	UnlimitedSlots   *UnlimitedSlots   `queryParam:"inline"`
 	PlanNotSupported *PlanNotSupported `queryParam:"inline"`
+	UnlimitedSlots   *UnlimitedSlots   `queryParam:"inline"`
 	NoAvailableSlots *NoAvailableSlots `queryParam:"inline"`
+	AvailableSlots   *AvailableSlots   `queryParam:"inline"`
 
 	Type GetRollingReleaseBillingStatusResponseBodyType
 }
 
-func CreateGetRollingReleaseBillingStatusResponseBodyAvailableSlots(availableSlots AvailableSlots) GetRollingReleaseBillingStatusResponseBody {
-	typ := GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots
+func CreateGetRollingReleaseBillingStatusResponseBodyPlanNotSupported(planNotSupported PlanNotSupported) GetRollingReleaseBillingStatusResponseBody {
+	typ := GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported
 
 	return GetRollingReleaseBillingStatusResponseBody{
-		AvailableSlots: &availableSlots,
-		Type:           typ,
+		PlanNotSupported: &planNotSupported,
+		Type:             typ,
 	}
 }
 
@@ -275,15 +307,6 @@ func CreateGetRollingReleaseBillingStatusResponseBodyUnlimitedSlots(unlimitedSlo
 	}
 }
 
-func CreateGetRollingReleaseBillingStatusResponseBodyPlanNotSupported(planNotSupported PlanNotSupported) GetRollingReleaseBillingStatusResponseBody {
-	typ := GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported
-
-	return GetRollingReleaseBillingStatusResponseBody{
-		PlanNotSupported: &planNotSupported,
-		Type:             typ,
-	}
-}
-
 func CreateGetRollingReleaseBillingStatusResponseBodyNoAvailableSlots(noAvailableSlots NoAvailableSlots) GetRollingReleaseBillingStatusResponseBody {
 	typ := GetRollingReleaseBillingStatusResponseBodyTypeNoAvailableSlots
 
@@ -293,12 +316,21 @@ func CreateGetRollingReleaseBillingStatusResponseBodyNoAvailableSlots(noAvailabl
 	}
 }
 
+func CreateGetRollingReleaseBillingStatusResponseBodyAvailableSlots(availableSlots AvailableSlots) GetRollingReleaseBillingStatusResponseBody {
+	typ := GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots
+
+	return GetRollingReleaseBillingStatusResponseBody{
+		AvailableSlots: &availableSlots,
+		Type:           typ,
+	}
+}
+
 func (u *GetRollingReleaseBillingStatusResponseBody) UnmarshalJSON(data []byte) error {
 
-	var availableSlots AvailableSlots = AvailableSlots{}
-	if err := utils.UnmarshalJSON(data, &availableSlots, "", true, true); err == nil {
-		u.AvailableSlots = &availableSlots
-		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots
+	var planNotSupported PlanNotSupported = PlanNotSupported{}
+	if err := utils.UnmarshalJSON(data, &planNotSupported, "", true, true); err == nil {
+		u.PlanNotSupported = &planNotSupported
+		u.Type = GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported
 		return nil
 	}
 
@@ -309,10 +341,10 @@ func (u *GetRollingReleaseBillingStatusResponseBody) UnmarshalJSON(data []byte) 
 		return nil
 	}
 
-	var planNotSupported PlanNotSupported = PlanNotSupported{}
-	if err := utils.UnmarshalJSON(data, &planNotSupported, "", true, true); err == nil {
-		u.PlanNotSupported = &planNotSupported
-		u.Type = GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported
+	var availableSlots AvailableSlots = AvailableSlots{}
+	if err := utils.UnmarshalJSON(data, &availableSlots, "", true, true); err == nil {
+		u.AvailableSlots = &availableSlots
+		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots
 		return nil
 	}
 
@@ -327,20 +359,20 @@ func (u *GetRollingReleaseBillingStatusResponseBody) UnmarshalJSON(data []byte) 
 }
 
 func (u GetRollingReleaseBillingStatusResponseBody) MarshalJSON() ([]byte, error) {
-	if u.AvailableSlots != nil {
-		return utils.MarshalJSON(u.AvailableSlots, "", true)
+	if u.PlanNotSupported != nil {
+		return utils.MarshalJSON(u.PlanNotSupported, "", true)
 	}
 
 	if u.UnlimitedSlots != nil {
 		return utils.MarshalJSON(u.UnlimitedSlots, "", true)
 	}
 
-	if u.PlanNotSupported != nil {
-		return utils.MarshalJSON(u.PlanNotSupported, "", true)
-	}
-
 	if u.NoAvailableSlots != nil {
 		return utils.MarshalJSON(u.NoAvailableSlots, "", true)
+	}
+
+	if u.AvailableSlots != nil {
+		return utils.MarshalJSON(u.AvailableSlots, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetRollingReleaseBillingStatusResponseBody: all fields are null")

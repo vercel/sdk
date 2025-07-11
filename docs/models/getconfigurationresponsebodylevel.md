@@ -5,11 +5,11 @@
 ```typescript
 import { GetConfigurationResponseBodyLevel } from "@vercel/sdk/models/getconfigurationop.js";
 
-let value: GetConfigurationResponseBodyLevel = "info";
+let value: GetConfigurationResponseBodyLevel = "warn";
 ```
 
 ## Values
 
 ```typescript
-"error" | "info" | "warn"
+"info" | "warn" | "error"
 ```

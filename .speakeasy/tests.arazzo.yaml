@@ -6212,3 +6212,54 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: rolling-release
+  - workflowId: get-integration-resources
+    steps:
+      - stepId: test
+        operationId: get-integration-resources
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "resources": [
+                  {
+                    "partnerId": "\u003cid\u003e",
+                    "internalId": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "productId": "\u003cid\u003e"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true
+  - workflowId: get-integration-resource
+    steps:
+      - stepId: test
+        operationId: get-integration-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "internalId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "productId": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true

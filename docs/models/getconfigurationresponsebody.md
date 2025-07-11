@@ -39,7 +39,7 @@ const value: models.GetConfigurationResponseBody1 = {
 const value: models.GetConfigurationResponseBody2 = {
   projectSelection: "all",
   notification: {
-    level: "error",
+    level: "info",
     title: "<value>",
   },
   transferRequest: {

@@ -662,6 +662,7 @@ export const GetProjectsFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type GetProjectsFramework = ClosedEnum<typeof GetProjectsFramework>;
 
@@ -1134,6 +1135,7 @@ export const GetProjectsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type GetProjectsDeploymentType = ClosedEnum<
   typeof GetProjectsDeploymentType
@@ -1577,6 +1579,7 @@ export const GetProjectsTrustedIpsProjectsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type GetProjectsTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof GetProjectsTrustedIpsProjectsDeploymentType
@@ -1591,6 +1594,7 @@ export const GetProjectsTrustedIpsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type GetProjectsTrustedIpsDeploymentType = ClosedEnum<
   typeof GetProjectsTrustedIpsDeploymentType
@@ -1965,7 +1969,6 @@ export type GetProjectsProjects = {
   rollingRelease?: GetProjectsRollingRelease | null | undefined;
   defaultResourceConfig: GetProjectsDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -11060,7 +11063,6 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
     GetProjectsDefaultResourceConfig$inboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
@@ -11176,7 +11178,6 @@ export type GetProjectsProjects$Outbound = {
   rollingRelease?: GetProjectsRollingRelease$Outbound | null | undefined;
   defaultResourceConfig: GetProjectsDefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -11297,7 +11298,6 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
     GetProjectsDefaultResourceConfig$outboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),

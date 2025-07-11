@@ -8,14 +8,30 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  projectId: "<id>",
-  projectName: "<value>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: [
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: true,
+        createdAt: 9005.75,
+        updatedAt: 8968.35,
+      },
+    ],
+    newConnectConfigurations: [],
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `team`                                                                     | [models.UserEventPayload86Team](../models/usereventpayload86team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
+| `project`                                                                  | [models.UserEventPayload86Project](../models/usereventpayload86project.md) | :heavy_check_mark:                                                         | N/A                                                                        |

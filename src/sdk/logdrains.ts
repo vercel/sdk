@@ -3,7 +3,6 @@
  */
 
 import { logDrainsCreateLogDrain } from "../funcs/logDrainsCreateLogDrain.js";
-import { logDrainsDeleteConfigurableLogDrain } from "../funcs/logDrainsDeleteConfigurableLogDrain.js";
 import { logDrainsDeleteIntegrationLogDrain } from "../funcs/logDrainsDeleteIntegrationLogDrain.js";
 import { logDrainsGetIntegrationLogDrains } from "../funcs/logDrainsGetIntegrationLogDrains.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -11,7 +10,6 @@ import {
   CreateLogDrainRequest,
   CreateLogDrainResponseBody,
 } from "../models/createlogdrainop.js";
-import { DeleteConfigurableLogDrainRequest } from "../models/deleteconfigurablelogdrainop.js";
 import { DeleteIntegrationLogDrainRequest } from "../models/deleteintegrationlogdrainop.js";
 import {
   GetIntegrationLogDrainsRequest,
@@ -20,23 +18,6 @@ import {
 import { unwrapAsync } from "../types/fp.js";
 
 export class LogDrains extends ClientSDK {
-  /**
-   * Deletes a Configurable Log Drain
-   *
-   * @remarks
-   * Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.
-   */
-  async deleteConfigurableLogDrain(
-    request: DeleteConfigurableLogDrainRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(logDrainsDeleteConfigurableLogDrain(
-      this,
-      request,
-      options,
-    ));
-  }
-
   /**
    * Retrieves a list of Integration log drains
    *

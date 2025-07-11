@@ -6,7 +6,7 @@
 import { OldSsoProtection1 } from "@vercel/sdk/models/userevent.js";
 
 let value: OldSsoProtection1 = {
-  deploymentType: "preview",
+  deploymentType: "prod_deployment_urls_and_all_previews",
 };
 ```
 

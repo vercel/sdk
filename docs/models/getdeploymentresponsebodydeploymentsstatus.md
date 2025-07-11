@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentResponseBodyDeploymentsStatus } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentResponseBodyDeploymentsStatus = "skipped";
+let value: GetDeploymentResponseBodyDeploymentsStatus = "pending";
 ```
 
 ## Values
 
 ```typescript
-"error" | "skipped" | "pending" | "ready" | "timeout"
+"skipped" | "pending" | "ready" | "error" | "timeout"
 ```

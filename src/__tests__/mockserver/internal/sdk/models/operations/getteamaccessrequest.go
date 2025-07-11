@@ -32,8 +32,8 @@ func (o *GetTeamAccessRequestRequest) GetTeamID() string {
 type GetTeamAccessRequestOrigin string
 
 const (
-	GetTeamAccessRequestOriginMail              GetTeamAccessRequestOrigin = "mail"
 	GetTeamAccessRequestOriginLink              GetTeamAccessRequestOrigin = "link"
+	GetTeamAccessRequestOriginMail              GetTeamAccessRequestOrigin = "mail"
 	GetTeamAccessRequestOriginImport            GetTeamAccessRequestOrigin = "import"
 	GetTeamAccessRequestOriginTeams             GetTeamAccessRequestOrigin = "teams"
 	GetTeamAccessRequestOriginGithub            GetTeamAccessRequestOrigin = "github"
@@ -54,9 +54,9 @@ func (e *GetTeamAccessRequestOrigin) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "mail":
-		fallthrough
 	case "link":
+		fallthrough
+	case "mail":
 		fallthrough
 	case "import":
 		fallthrough

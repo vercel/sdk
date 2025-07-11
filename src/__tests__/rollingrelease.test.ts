@@ -115,6 +115,7 @@ test("Rolling Release Get Rolling Release", async () => {
         readyStateAt: 1716210400000,
       },
       queuedDeploymentId: "dpl_ghi789",
+      advancementType: "manual-approval",
       stages: [
         {
           index: 0,
@@ -204,6 +205,7 @@ test("Rolling Release Approve Rolling Release Stage", async () => {
         readyStateAt: 1716210400000,
       },
       queuedDeploymentId: "dpl_ghi789",
+      advancementType: "manual-approval",
       stages: [
         {
           index: 0,
@@ -293,6 +295,7 @@ test("Rolling Release Complete Rolling Release", async () => {
         readyStateAt: 1716210400000,
       },
       queuedDeploymentId: "dpl_ghi789",
+      advancementType: "manual-approval",
       stages: [
         {
           index: 0,
@@ -359,12 +362,12 @@ test("Rolling Release Get Rolling Release Billing Status", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    availableSlots: 8974.52,
+    availableSlots: 7151.9,
     reason: "no_available_slots",
+    message: "<value>",
     enabledProjects: [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
     ],
   });
 });

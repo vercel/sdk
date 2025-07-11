@@ -70,9 +70,9 @@ func (e *ProjectSelection) UnmarshalJSON(data []byte) error {
 type GetConfigurationLevel string
 
 const (
-	GetConfigurationLevelError GetConfigurationLevel = "error"
 	GetConfigurationLevelInfo  GetConfigurationLevel = "info"
 	GetConfigurationLevelWarn  GetConfigurationLevel = "warn"
+	GetConfigurationLevelError GetConfigurationLevel = "error"
 )
 
 func (e GetConfigurationLevel) ToPointer() *GetConfigurationLevel {
@@ -84,11 +84,11 @@ func (e *GetConfigurationLevel) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "info":
 		fallthrough
 	case "warn":
+		fallthrough
+	case "error":
 		*e = GetConfigurationLevel(v)
 		return nil
 	default:

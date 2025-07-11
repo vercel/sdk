@@ -2197,6 +2197,7 @@ const (
 	UpdateProjectDataCacheFrameworkSanityV3       UpdateProjectDataCacheFramework = "sanity-v3"
 	UpdateProjectDataCacheFrameworkSanity         UpdateProjectDataCacheFramework = "sanity"
 	UpdateProjectDataCacheFrameworkStorybook      UpdateProjectDataCacheFramework = "storybook"
+	UpdateProjectDataCacheFrameworkNitro          UpdateProjectDataCacheFramework = "nitro"
 )
 
 func (e UpdateProjectDataCacheFramework) ToPointer() *UpdateProjectDataCacheFramework {
@@ -2299,6 +2300,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "sanity":
 		fallthrough
 	case "storybook":
+		fallthrough
+	case "nitro":
 		*e = UpdateProjectDataCacheFramework(v)
 		return nil
 	default:
@@ -3939,6 +3942,7 @@ const (
 	UpdateProjectDataCacheSsoProtectionDeploymentTypePreview                          UpdateProjectDataCacheSsoProtectionDeploymentType = "preview"
 	UpdateProjectDataCacheSsoProtectionDeploymentTypeAll                              UpdateProjectDataCacheSsoProtectionDeploymentType = "all"
 	UpdateProjectDataCacheSsoProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheSsoProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	UpdateProjectDataCacheSsoProtectionDeploymentTypeAllExceptCustomDomains           UpdateProjectDataCacheSsoProtectionDeploymentType = "all_except_custom_domains"
 )
 
 func (e UpdateProjectDataCacheSsoProtectionDeploymentType) ToPointer() *UpdateProjectDataCacheSsoProtectionDeploymentType {
@@ -3955,6 +3959,8 @@ func (e *UpdateProjectDataCacheSsoProtectionDeploymentType) UnmarshalJSON(data [
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectDataCacheSsoProtectionDeploymentType(v)
 		return nil
 	default:
@@ -6660,6 +6666,7 @@ const (
 	UpdateProjectDataCacheTrustedIpsDeploymentType2Preview                          UpdateProjectDataCacheTrustedIpsDeploymentType2 = "preview"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2All                              UpdateProjectDataCacheTrustedIpsDeploymentType2 = "all"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
+	UpdateProjectDataCacheTrustedIpsDeploymentType2AllExceptCustomDomains           UpdateProjectDataCacheTrustedIpsDeploymentType2 = "all_except_custom_domains"
 )
 
 func (e UpdateProjectDataCacheTrustedIpsDeploymentType2) ToPointer() *UpdateProjectDataCacheTrustedIpsDeploymentType2 {
@@ -6678,6 +6685,8 @@ func (e *UpdateProjectDataCacheTrustedIpsDeploymentType2) UnmarshalJSON(data []b
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectDataCacheTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -6703,6 +6712,7 @@ const (
 	UpdateProjectDataCacheTrustedIpsDeploymentType1Preview                          UpdateProjectDataCacheTrustedIpsDeploymentType1 = "preview"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1All                              UpdateProjectDataCacheTrustedIpsDeploymentType1 = "all"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
+	UpdateProjectDataCacheTrustedIpsDeploymentType1AllExceptCustomDomains           UpdateProjectDataCacheTrustedIpsDeploymentType1 = "all_except_custom_domains"
 )
 
 func (e UpdateProjectDataCacheTrustedIpsDeploymentType1) ToPointer() *UpdateProjectDataCacheTrustedIpsDeploymentType1 {
@@ -6721,6 +6731,8 @@ func (e *UpdateProjectDataCacheTrustedIpsDeploymentType1) UnmarshalJSON(data []b
 	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
 		*e = UpdateProjectDataCacheTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -8224,7 +8236,6 @@ type UpdateProjectDataCacheResponseBody struct {
 	RollingRelease                       *UpdateProjectDataCacheRollingRelease                  `json:"rollingRelease,omitempty"`
 	DefaultResourceConfig                UpdateProjectDataCacheDefaultResourceConfig            `json:"defaultResourceConfig"`
 	RootDirectory                        *string                                                `json:"rootDirectory,omitempty"`
-	ServerlessFunctionRegion             *string                                                `json:"serverlessFunctionRegion,omitempty"`
 	ServerlessFunctionZeroConfigFailover *bool                                                  `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                               `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                               `json:"skewProtectionMaxAge,omitempty"`
@@ -8550,13 +8561,6 @@ func (o *UpdateProjectDataCacheResponseBody) GetRootDirectory() *string {
 		return nil
 	}
 	return o.RootDirectory
-}
-
-func (o *UpdateProjectDataCacheResponseBody) GetServerlessFunctionRegion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ServerlessFunctionRegion
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetServerlessFunctionZeroConfigFailover() *bool {

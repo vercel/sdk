@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload62Action } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload62Action = "hard-blocked";
+let value: UserEventPayload62Action = "log";
 ```
 
 ## Values
 
 ```typescript
-"hard-blocked" | "soft-blocked" | "unblocked"
+"log" | "challenge" | "deny"
 ```

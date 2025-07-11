@@ -628,6 +628,7 @@ export const UpdateProjectDataCacheFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type UpdateProjectDataCacheFramework = ClosedEnum<
   typeof UpdateProjectDataCacheFramework
@@ -1107,6 +1108,7 @@ export const UpdateProjectDataCacheDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type UpdateProjectDataCacheDeploymentType = ClosedEnum<
   typeof UpdateProjectDataCacheDeploymentType
@@ -1547,6 +1549,7 @@ export const UpdateProjectDataCacheTrustedIpsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type UpdateProjectDataCacheTrustedIpsDeploymentType = ClosedEnum<
   typeof UpdateProjectDataCacheTrustedIpsDeploymentType
@@ -1561,6 +1564,7 @@ export const TrustedIpsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type TrustedIpsDeploymentType = ClosedEnum<
   typeof TrustedIpsDeploymentType
@@ -1939,7 +1943,6 @@ export type UpdateProjectDataCacheResponseBody = {
   rollingRelease?: RollingRelease | null | undefined;
   defaultResourceConfig: DefaultResourceConfig;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -11044,7 +11047,6 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     .optional(),
   defaultResourceConfig: z.lazy(() => DefaultResourceConfig$inboundSchema),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
@@ -11157,7 +11159,6 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   rollingRelease?: RollingRelease$Outbound | null | undefined;
   defaultResourceConfig: DefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
@@ -11272,7 +11273,6 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     .optional(),
   defaultResourceConfig: z.lazy(() => DefaultResourceConfig$outboundSchema),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),

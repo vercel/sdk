@@ -4977,7 +4977,8 @@
                         "fasthtml",
                         "sanity-v3",
                         "sanity",
-                        "storybook"
+                        "storybook",
+                        "nitro"
                       ]
                     },
                     "gitForkProtection": {
@@ -5893,10 +5894,6 @@
                       "nullable": true,
                       "type": "string"
                     },
-                    "serverlessFunctionRegion": {
-                      "nullable": true,
-                      "type": "string"
-                    },
                     "serverlessFunctionZeroConfigFailover": {
                       "type": "boolean"
                     },
@@ -5923,7 +5920,8 @@
                           "enum": [
                             "preview",
                             "all",
-                            "prod_deployment_urls_and_all_previews"
+                            "prod_deployment_urls_and_all_previews",
+                            "all_except_custom_domains"
                           ]
                         }
                       },
@@ -7605,7 +7603,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -7648,7 +7647,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -9296,7 +9296,8 @@
                                 "fasthtml",
                                 "sanity-v3",
                                 "sanity",
-                                "storybook"
+                                "storybook",
+                                "nitro"
                               ]
                             },
                             "commandForIgnoringBuildStep": {
@@ -9371,10 +9372,10 @@
                             "status": {
                               "type": "string",
                               "enum": [
-                                "error",
                                 "skipped",
                                 "pending",
                                 "ready",
+                                "error",
                                 "timeout"
                               ]
                             },
@@ -9675,9 +9676,9 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
+                                        "endsWith",
                                         "startsWith",
-                                        "equals",
-                                        "endsWith"
+                                        "equals"
                                       ],
                                       "description": "The type of matching to perform"
                                     },
@@ -10545,6 +10546,47 @@
                               },
                               "excludeFiles": {
                                 "type": "string"
+                              },
+                              "experimentalTriggers": {
+                                "items": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "queue/v1beta"
+                                      ],
+                                      "description": "Event type - must be \"queue/v1beta\" (REQUIRED)"
+                                    },
+                                    "topic": {
+                                      "type": "string",
+                                      "description": "Name of the queue topic to consume from (REQUIRED)"
+                                    },
+                                    "consumer": {
+                                      "type": "string",
+                                      "description": "Name of the consumer group for this trigger (REQUIRED)"
+                                    },
+                                    "maxDeliveries": {
+                                      "type": "number",
+                                      "description": "Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration."
+                                    },
+                                    "retryAfterSeconds": {
+                                      "type": "number",
+                                      "description": "Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration."
+                                    },
+                                    "initialDelaySeconds": {
+                                      "type": "number",
+                                      "description": "Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration."
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "topic",
+                                    "consumer"
+                                  ],
+                                  "type": "object",
+                                  "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
+                                },
+                                "type": "array"
                               }
                             },
                             "type": "object"
@@ -10935,6 +10977,111 @@
                                     ],
                                     "type": "object"
                                   },
+                                  "transforms": {
+                                    "items": {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "request.headers",
+                                            "request.query",
+                                            "response.headers"
+                                          ]
+                                        },
+                                        "op": {
+                                          "type": "string",
+                                          "enum": [
+                                            "append",
+                                            "set",
+                                            "delete"
+                                          ]
+                                        },
+                                        "target": {
+                                          "properties": {
+                                            "key": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "properties": {
+                                                    "eq": {
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "string"
+                                                        },
+                                                        {
+                                                          "type": "number"
+                                                        }
+                                                      ]
+                                                    },
+                                                    "neq": {
+                                                      "type": "string"
+                                                    },
+                                                    "inc": {
+                                                      "items": {
+                                                        "type": "string"
+                                                      },
+                                                      "type": "array"
+                                                    },
+                                                    "ninc": {
+                                                      "items": {
+                                                        "type": "string"
+                                                      },
+                                                      "type": "array"
+                                                    },
+                                                    "pre": {
+                                                      "type": "string"
+                                                    },
+                                                    "suf": {
+                                                      "type": "string"
+                                                    },
+                                                    "gt": {
+                                                      "type": "number"
+                                                    },
+                                                    "gte": {
+                                                      "type": "number"
+                                                    },
+                                                    "lt": {
+                                                      "type": "number"
+                                                    },
+                                                    "lte": {
+                                                      "type": "number"
+                                                    }
+                                                  },
+                                                  "type": "object"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "key"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "args": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "type": "array"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "op",
+                                        "target"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
                                   "locale": {
                                     "properties": {
                                       "redirect": {
@@ -11270,6 +11417,14 @@
                                   "minItems": 2,
                                   "type": "array",
                                   "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                                },
+                                "microfrontendsAliasEnabled": {
+                                  "type": "boolean",
+                                  "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                                },
+                                "previewEnvAliasEnabled": {
+                                  "type": "boolean",
+                                  "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                                 }
                               },
                               "required": [
@@ -11333,6 +11488,14 @@
                                   "minItems": 2,
                                   "type": "array",
                                   "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                                },
+                                "microfrontendsAliasEnabled": {
+                                  "type": "boolean",
+                                  "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                                },
+                                "previewEnvAliasEnabled": {
+                                  "type": "boolean",
+                                  "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                                 }
                               },
                               "required": [
@@ -11635,9 +11798,9 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
+                                        "endsWith",
                                         "startsWith",
-                                        "equals",
-                                        "endsWith"
+                                        "equals"
                                       ],
                                       "description": "The type of matching to perform"
                                     },
@@ -12691,7 +12854,8 @@
                             "fasthtml",
                             "sanity-v3",
                             "sanity",
-                            "storybook"
+                            "storybook",
+                            "nitro"
                           ]
                         },
                         "installCommand": {
@@ -12762,10 +12926,10 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
                             "skipped",
                             "pending",
                             "ready",
+                            "error",
                             "timeout"
                           ]
                         },
@@ -13066,9 +13230,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "endsWith",
                                     "startsWith",
-                                    "equals",
-                                    "endsWith"
+                                    "equals"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -13708,6 +13872,10 @@
                         "staging"
                       ]
                     },
+                    "errorMessage": {
+                      "nullable": true,
+                      "type": "string"
+                    },
                     "passiveRegions": {
                       "items": {
                         "type": "string"
@@ -13720,10 +13888,6 @@
                         "type": "string"
                       },
                       "type": "array"
-                    },
-                    "errorMessage": {
-                      "nullable": true,
-                      "type": "string"
                     },
                     "aliasWarning": {
                       "nullable": true,
@@ -13962,6 +14126,47 @@
                           },
                           "excludeFiles": {
                             "type": "string"
+                          },
+                          "experimentalTriggers": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "queue/v1beta"
+                                  ],
+                                  "description": "Event type - must be \"queue/v1beta\" (REQUIRED)"
+                                },
+                                "topic": {
+                                  "type": "string",
+                                  "description": "Name of the queue topic to consume from (REQUIRED)"
+                                },
+                                "consumer": {
+                                  "type": "string",
+                                  "description": "Name of the consumer group for this trigger (REQUIRED)"
+                                },
+                                "maxDeliveries": {
+                                  "type": "number",
+                                  "description": "Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration."
+                                },
+                                "retryAfterSeconds": {
+                                  "type": "number",
+                                  "description": "Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration."
+                                },
+                                "initialDelaySeconds": {
+                                  "type": "number",
+                                  "description": "Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration."
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "topic",
+                                "consumer"
+                              ],
+                              "type": "object",
+                              "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
+                            },
+                            "type": "array"
                           }
                         },
                         "type": "object"
@@ -14341,6 +14546,111 @@
                                 ],
                                 "type": "object"
                               },
+                              "transforms": {
+                                "items": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "request.headers",
+                                        "request.query",
+                                        "response.headers"
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "append",
+                                        "set",
+                                        "delete"
+                                      ]
+                                    },
+                                    "target": {
+                                      "properties": {
+                                        "key": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "eq": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string"
+                                                    },
+                                                    {
+                                                      "type": "number"
+                                                    }
+                                                  ]
+                                                },
+                                                "neq": {
+                                                  "type": "string"
+                                                },
+                                                "inc": {
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "type": "array"
+                                                },
+                                                "ninc": {
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "type": "array"
+                                                },
+                                                "pre": {
+                                                  "type": "string"
+                                                },
+                                                "suf": {
+                                                  "type": "string"
+                                                },
+                                                "gt": {
+                                                  "type": "number"
+                                                },
+                                                "gte": {
+                                                  "type": "number"
+                                                },
+                                                "lt": {
+                                                  "type": "number"
+                                                },
+                                                "lte": {
+                                                  "type": "number"
+                                                }
+                                              },
+                                              "type": "object"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "key"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "args": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "op",
+                                    "target"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
                               "locale": {
                                 "properties": {
                                   "redirect": {
@@ -14448,6 +14758,38 @@
                       },
                       "type": "array"
                     },
+                    "checks": {
+                      "properties": {
+                        "deployment-alias": {
+                          "properties": {
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "succeeded",
+                                "failed",
+                                "pending"
+                              ]
+                            },
+                            "startedAt": {
+                              "type": "number"
+                            },
+                            "completedAt": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "state",
+                            "startedAt"
+                          ],
+                          "type": "object",
+                          "description": "Condensed check data. Retrieve individual check and check run data using api-checks v2 routes."
+                        }
+                      },
+                      "required": [
+                        "deployment-alias"
+                      ],
+                      "type": "object"
+                    },
                     "microfrontends": {
                       "oneOf": [
                         {
@@ -14479,6 +14821,14 @@
                               "minItems": 2,
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "microfrontendsAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                            },
+                            "previewEnvAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                             }
                           },
                           "required": [
@@ -14542,6 +14892,14 @@
                               "minItems": 2,
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "microfrontendsAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                            },
+                            "previewEnvAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                             }
                           },
                           "required": [
@@ -14552,38 +14910,6 @@
                           "type": "object"
                         }
                       ]
-                    },
-                    "checks": {
-                      "properties": {
-                        "deployment-alias": {
-                          "properties": {
-                            "state": {
-                              "type": "string",
-                              "enum": [
-                                "succeeded",
-                                "failed",
-                                "pending"
-                              ]
-                            },
-                            "startedAt": {
-                              "type": "number"
-                            },
-                            "completedAt": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "state",
-                            "startedAt"
-                          ],
-                          "type": "object",
-                          "description": "Condensed check data. Retrieve individual check and check run data using api-checks v2 routes."
-                        }
-                      },
-                      "required": [
-                        "deployment-alias"
-                      ],
-                      "type": "object"
                     },
                     "connectBuildsEnabled": {
                       "type": "boolean"
@@ -14887,6 +15213,9 @@
           },
           "409": {
             "description": "The deployment project is being transferred"
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -15022,6 +15351,11 @@
                         "type": "string",
                         "description": "The name of the author of the commit",
                         "example": "kyliau"
+                      },
+                      "commitAuthorEmail": {
+                        "type": "string",
+                        "description": "The email of the author of the commit",
+                        "example": "kyliau@example.com"
                       },
                       "commitMessage": {
                         "type": "string",
@@ -15317,7 +15651,8 @@
                           "fasthtml",
                           "sanity-v3",
                           "sanity",
-                          "storybook"
+                          "storybook",
+                          "nitro"
                         ],
                         "nullable": true
                       },
@@ -15543,7 +15878,8 @@
                             "fasthtml",
                             "sanity-v3",
                             "sanity",
-                            "storybook"
+                            "storybook",
+                            "nitro"
                           ]
                         },
                         "commandForIgnoringBuildStep": {
@@ -15618,10 +15954,10 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
                             "skipped",
                             "pending",
                             "ready",
+                            "error",
                             "timeout"
                           ]
                         },
@@ -15922,9 +16258,9 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "endsWith",
                                     "startsWith",
-                                    "equals",
-                                    "endsWith"
+                                    "equals"
                                   ],
                                   "description": "The type of matching to perform"
                                 },
@@ -16781,6 +17117,47 @@
                           },
                           "excludeFiles": {
                             "type": "string"
+                          },
+                          "experimentalTriggers": {
+                            "items": {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "queue/v1beta"
+                                  ],
+                                  "description": "Event type - must be \"queue/v1beta\" (REQUIRED)"
+                                },
+                                "topic": {
+                                  "type": "string",
+                                  "description": "Name of the queue topic to consume from (REQUIRED)"
+                                },
+                                "consumer": {
+                                  "type": "string",
+                                  "description": "Name of the consumer group for this trigger (REQUIRED)"
+                                },
+                                "maxDeliveries": {
+                                  "type": "number",
+                                  "description": "Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration."
+                                },
+                                "retryAfterSeconds": {
+                                  "type": "number",
+                                  "description": "Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration."
+                                },
+                                "initialDelaySeconds": {
+                                  "type": "number",
+                                  "description": "Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration."
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "topic",
+                                "consumer"
+                              ],
+                              "type": "object",
+                              "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
+                            },
+                            "type": "array"
                           }
                         },
                         "type": "object"
@@ -17182,6 +17559,111 @@
                                 ],
                                 "type": "object"
                               },
+                              "transforms": {
+                                "items": {
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "request.headers",
+                                        "request.query",
+                                        "response.headers"
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "append",
+                                        "set",
+                                        "delete"
+                                      ]
+                                    },
+                                    "target": {
+                                      "properties": {
+                                        "key": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "eq": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string"
+                                                    },
+                                                    {
+                                                      "type": "number"
+                                                    }
+                                                  ]
+                                                },
+                                                "neq": {
+                                                  "type": "string"
+                                                },
+                                                "inc": {
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "type": "array"
+                                                },
+                                                "ninc": {
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "type": "array"
+                                                },
+                                                "pre": {
+                                                  "type": "string"
+                                                },
+                                                "suf": {
+                                                  "type": "string"
+                                                },
+                                                "gt": {
+                                                  "type": "number"
+                                                },
+                                                "gte": {
+                                                  "type": "number"
+                                                },
+                                                "lt": {
+                                                  "type": "number"
+                                                },
+                                                "lte": {
+                                                  "type": "number"
+                                                }
+                                              },
+                                              "type": "object"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "key"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "args": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "op",
+                                    "target"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
                               "locale": {
                                 "properties": {
                                   "redirect": {
@@ -17517,6 +17999,14 @@
                               "minItems": 2,
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "microfrontendsAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                            },
+                            "previewEnvAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                             }
                           },
                           "required": [
@@ -17580,6 +18070,14 @@
                               "minItems": 2,
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "microfrontendsAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
+                            },
+                            "previewEnvAliasEnabled": {
+                              "type": "boolean",
+                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
                             }
                           },
                           "required": [
@@ -18052,6 +18550,11 @@
                     },
                     "period": {
                       "type": "number",
+                      "enum": [
+                        1,
+                        2,
+                        10
+                      ],
                       "description": "The number of years the domain could be held before paying again.",
                       "example": 1
                     }
@@ -20949,87 +21452,6 @@
         ]
       }
     },
-    "/v1/log-drains/{id}": {
-      "delete": {
-        "description": "Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.",
-        "operationId": "deleteConfigurableLogDrain",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Deletes a Configurable Log Drain",
-        "tags": [
-          "logDrains"
-        ],
-        "responses": {
-          "204": {
-            "description": ""
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ]
-      }
-    },
     "/v1/edge-config": {
       "get": {
         "description": "Returns all Edge Configs.",
@@ -23898,6 +24320,735 @@
         }
       }
     },
+    "/v1/installations/{integrationConfigurationId}/resources": {
+      "get": {
+        "description": "Get all resources for a given installation ID.",
+        "operationId": "get-integration-resources",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get Integration Resources",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "resources": {
+                      "items": {
+                        "properties": {
+                          "partnerId": {
+                            "type": "string",
+                            "description": "The ID provided by the partner for the given resource"
+                          },
+                          "internalId": {
+                            "type": "string",
+                            "description": "The ID assigned by Vercel for the given resource"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the resource as it is recorded in Vercel"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "ready",
+                              "pending",
+                              "suspended",
+                              "resumed",
+                              "uninstalled",
+                              "error"
+                            ],
+                            "description": "The current status of the resource"
+                          },
+                          "productId": {
+                            "type": "string",
+                            "description": "The ID of the product the resource is derived from"
+                          },
+                          "protocolSettings": {
+                            "properties": {
+                              "experimentation": {
+                                "properties": {
+                                  "edgeConfigSyncingEnabled": {
+                                    "type": "boolean"
+                                  },
+                                  "edgeConfigId": {
+                                    "type": "string"
+                                  },
+                                  "edgeConfigTokenId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object",
+                            "description": "Any settings provided for the resource to support its product's protocols"
+                          },
+                          "notification": {
+                            "properties": {
+                              "level": {
+                                "type": "string",
+                                "enum": [
+                                  "error",
+                                  "info",
+                                  "warn"
+                                ]
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "href": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "level",
+                              "title"
+                            ],
+                            "type": "object",
+                            "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
+                          },
+                          "billingPlanId": {
+                            "type": "string",
+                            "description": "The ID of the billing plan the resource is subscribed to, if applicable"
+                          },
+                          "metadata": {
+                            "additionalProperties": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array",
+                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                                },
+                                {
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "type": "array",
+                                  "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                                }
+                              ]
+                            },
+                            "type": "object",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          }
+                        },
+                        "required": [
+                          "partnerId",
+                          "internalId",
+                          "name",
+                          "productId"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "resources"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
+      "get": {
+        "description": "Get a resource by its partner ID.",
+        "operationId": "get-integration-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get Integration Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The ID provided by the 3rd party provider for the given resource"
+                    },
+                    "internalId": {
+                      "type": "string",
+                      "description": "The ID assigned by Vercel for the given resource"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the resource as it is recorded in Vercel"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ready",
+                        "pending",
+                        "suspended",
+                        "resumed",
+                        "uninstalled",
+                        "error"
+                      ],
+                      "description": "The current status of the resource"
+                    },
+                    "productId": {
+                      "type": "string",
+                      "description": "The ID of the product the resource is derived from"
+                    },
+                    "protocolSettings": {
+                      "properties": {
+                        "experimentation": {
+                          "properties": {
+                            "edgeConfigSyncingEnabled": {
+                              "type": "boolean"
+                            },
+                            "edgeConfigId": {
+                              "type": "string"
+                            },
+                            "edgeConfigTokenId": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object",
+                      "description": "Any settings provided for the resource to support its product's protocols"
+                    },
+                    "notification": {
+                      "properties": {
+                        "level": {
+                          "type": "string",
+                          "enum": [
+                            "error",
+                            "info",
+                            "warn"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "level",
+                        "title"
+                      ],
+                      "type": "object",
+                      "description": "The notification, if set, displayed to the user when viewing the resource in Vercel"
+                    },
+                    "billingPlanId": {
+                      "type": "string",
+                      "description": "The ID of the billing plan the resource is subscribed to, if applicable"
+                    },
+                    "metadata": {
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          },
+                          {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                          }
+                        ]
+                      },
+                      "type": "object",
+                      "description": "The configured metadata for the resource as defined by its product's Metadata Schema"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "internalId",
+                    "name",
+                    "productId"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "description": "The ID of the integration configuration (installation) the resource belongs to",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the integration configuration (installation) the resource belongs to"
+            }
+          },
+          {
+            "name": "resourceId",
+            "description": "The ID provided by the 3rd party provider for the given resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID provided by the 3rd party provider for the given resource"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "description": "Delete a resource owned by the selected installation ID.",
+        "operationId": "delete-integration-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete Integration Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
+        "operationId": "import-resource",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Import Resource",
+        "tags": [
+          "marketplace"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationConfigurationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "productId",
+                  "name",
+                  "status"
+                ],
+                "properties": {
+                  "productId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ready",
+                      "pending",
+                      "suspended",
+                      "resumed",
+                      "uninstalled",
+                      "error"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "billingPlan": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type",
+                      "name"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "prepayment",
+                          "subscription"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "paymentMethodRequired": {
+                        "type": "boolean"
+                      },
+                      "cost": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "heightlightedDetails": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "effectiveDate": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": true
+                  },
+                  "notification": {
+                    "type": "object",
+                    "required": [
+                      "level",
+                      "title"
+                    ],
+                    "properties": {
+                      "level": {
+                        "type": "string",
+                        "enum": [
+                          "info",
+                          "warn",
+                          "error"
+                        ]
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "href": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  },
+                  "secrets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "value"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "prefix": {
+                          "type": "string"
+                        },
+                        "environmentOverrides": {
+                          "type": "object",
+                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
+                          "properties": {
+                            "development": {
+                              "type": "string",
+                              "description": "Value used for development environment."
+                            },
+                            "preview": {
+                              "type": "string",
+                              "description": "Value used for preview environment."
+                            },
+                            "production": {
+                              "type": "string",
+                              "description": "Value used for production environment."
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/installations/{integrationConfigurationId}/billing": {
       "post": {
         "description": "Sends the billing and usage data. The partner should do this at least once a day and ideally once per hour. \u003cbr/\u003e Use the `credentials.access_token` we provided in the [Upsert Installation](#upsert-installation) body to authorize this request.",
@@ -25242,269 +26393,6 @@
         }
       }
     },
-    "/v1/installations/{integrationConfigurationId}/resources/{resourceId}": {
-      "put": {
-        "description": "This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel.",
-        "operationId": "import-resource",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Import Resource",
-        "tags": [
-          "marketplace"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelBadRequestError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelForbiddenError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VercelNotFoundError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "integrationConfigurationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resourceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "productId",
-                  "name",
-                  "status"
-                ],
-                "properties": {
-                  "productId": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "status": {
-                    "type": "string",
-                    "enum": [
-                      "ready",
-                      "pending",
-                      "suspended",
-                      "resumed",
-                      "uninstalled",
-                      "error"
-                    ]
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": true
-                  },
-                  "billingPlan": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "type",
-                      "name"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "prepayment",
-                          "subscription"
-                        ]
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "paymentMethodRequired": {
-                        "type": "boolean"
-                      },
-                      "cost": {
-                        "type": "string"
-                      },
-                      "details": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "heightlightedDetails": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "label": {
-                              "type": "string"
-                            },
-                            "value": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "label"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "effectiveDate": {
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": true
-                  },
-                  "notification": {
-                    "type": "object",
-                    "required": [
-                      "level",
-                      "title"
-                    ],
-                    "properties": {
-                      "level": {
-                        "type": "string",
-                        "enum": [
-                          "info",
-                          "warn",
-                          "error"
-                        ]
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "href": {
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  },
-                  "secrets": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required": [
-                        "name",
-                        "value"
-                      ],
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "value": {
-                          "type": "string"
-                        },
-                        "prefix": {
-                          "type": "string"
-                        },
-                        "environmentOverrides": {
-                          "type": "object",
-                          "description": "A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.",
-                          "properties": {
-                            "development": {
-                              "type": "string",
-                              "description": "Value used for development environment."
-                            },
-                            "preview": {
-                              "type": "string",
-                              "description": "Value used for preview environment."
-                            },
-                            "production": {
-                              "type": "string",
-                              "description": "Value used for production environment."
-                            }
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/integrations/configurations": {
       "get": {
         "description": "Allows to retrieve all configurations for an authenticated integration. When the `project` view is used, configurations generated for the authorization flow will be filtered out of the results.",
@@ -26111,9 +26999,9 @@
                             "level": {
                               "type": "string",
                               "enum": [
-                                "error",
                                 "info",
-                                "warn"
+                                "warn",
+                                "error"
                               ]
                             },
                             "title": {
@@ -29410,7 +30298,8 @@
                               "fasthtml",
                               "sanity-v3",
                               "sanity",
-                              "storybook"
+                              "storybook",
+                              "nitro"
                             ]
                           },
                           "gitForkProtection": {
@@ -30326,10 +31215,6 @@
                             "nullable": true,
                             "type": "string"
                           },
-                          "serverlessFunctionRegion": {
-                            "nullable": true,
-                            "type": "string"
-                          },
                           "serverlessFunctionZeroConfigFailover": {
                             "type": "boolean"
                           },
@@ -30356,7 +31241,8 @@
                                 "enum": [
                                   "preview",
                                   "all",
-                                  "prod_deployment_urls_and_all_previews"
+                                  "prod_deployment_urls_and_all_previews",
+                                  "all_except_custom_domains"
                                 ]
                               }
                             },
@@ -32038,7 +32924,8 @@
                                       "production",
                                       "preview",
                                       "all",
-                                      "prod_deployment_urls_and_all_previews"
+                                      "prod_deployment_urls_and_all_previews",
+                                      "all_except_custom_domains"
                                     ]
                                   },
                                   "addresses": {
@@ -32081,7 +32968,8 @@
                                       "production",
                                       "preview",
                                       "all",
-                                      "prod_deployment_urls_and_all_previews"
+                                      "prod_deployment_urls_and_all_previews",
+                                      "all_except_custom_domains"
                                     ]
                                   }
                                 },
@@ -33679,7 +34567,8 @@
                         "fasthtml",
                         "sanity-v3",
                         "sanity",
-                        "storybook"
+                        "storybook",
+                        "nitro"
                       ]
                     },
                     "gitForkProtection": {
@@ -34595,10 +35484,6 @@
                       "nullable": true,
                       "type": "string"
                     },
-                    "serverlessFunctionRegion": {
-                      "nullable": true,
-                      "type": "string"
-                    },
                     "serverlessFunctionZeroConfigFailover": {
                       "type": "boolean"
                     },
@@ -34625,7 +35510,8 @@
                           "enum": [
                             "preview",
                             "all",
-                            "prod_deployment_urls_and_all_previews"
+                            "prod_deployment_urls_and_all_previews",
+                            "all_except_custom_domains"
                           ]
                         }
                       },
@@ -36307,7 +37193,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -36350,7 +37237,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -37065,7 +37953,8 @@
                       "fasthtml",
                       "sanity-v3",
                       "sanity",
-                      "storybook"
+                      "storybook",
+                      "nitro"
                     ]
                   },
                   "gitRepository": {
@@ -37106,6 +37995,25 @@
                     "description": "Opts-out of the message prompting a CLI user to connect a Git repository in `vercel link`.",
                     "type": "boolean",
                     "deprecated": true
+                  },
+                  "ssoProtection": {
+                    "description": "The Vercel Auth setting for the project (historically named \\\"SSO Protection\\\")",
+                    "type": "object",
+                    "properties": {
+                      "deploymentType": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "preview",
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "deploymentType"
+                    ],
+                    "nullable": true
                   },
                   "outputDirectory": {
                     "description": "The output directory of the project. When `null` is used this value will be automatically detected",
@@ -38167,7 +39075,8 @@
                         "fasthtml",
                         "sanity-v3",
                         "sanity",
-                        "storybook"
+                        "storybook",
+                        "nitro"
                       ]
                     },
                     "gitForkProtection": {
@@ -39083,10 +39992,6 @@
                       "nullable": true,
                       "type": "string"
                     },
-                    "serverlessFunctionRegion": {
-                      "nullable": true,
-                      "type": "string"
-                    },
                     "serverlessFunctionZeroConfigFailover": {
                       "type": "boolean"
                     },
@@ -39113,7 +40018,8 @@
                           "enum": [
                             "preview",
                             "all",
-                            "prod_deployment_urls_and_all_previews"
+                            "prod_deployment_urls_and_all_previews",
+                            "all_except_custom_domains"
                           ]
                         }
                       },
@@ -40795,7 +41701,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -40838,7 +41745,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -42325,7 +43233,8 @@
                         "fasthtml",
                         "sanity-v3",
                         "sanity",
-                        "storybook"
+                        "storybook",
+                        "nitro"
                       ]
                     },
                     "gitForkProtection": {
@@ -43241,10 +44150,6 @@
                       "nullable": true,
                       "type": "string"
                     },
-                    "serverlessFunctionRegion": {
-                      "nullable": true,
-                      "type": "string"
-                    },
                     "serverlessFunctionZeroConfigFailover": {
                       "type": "boolean"
                     },
@@ -43271,7 +44176,8 @@
                           "enum": [
                             "preview",
                             "all",
-                            "prod_deployment_urls_and_all_previews"
+                            "prod_deployment_urls_and_all_previews",
+                            "all_except_custom_domains"
                           ]
                         }
                       },
@@ -44953,7 +45859,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -44996,7 +45903,8 @@
                                 "production",
                                 "preview",
                                 "all",
-                                "prod_deployment_urls_and_all_previews"
+                                "prod_deployment_urls_and_all_previews",
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -45681,7 +46589,8 @@
                       "fasthtml",
                       "sanity-v3",
                       "sanity",
-                      "storybook"
+                      "storybook",
+                      "nitro"
                     ],
                     "type": "string",
                     "nullable": true
@@ -45868,7 +46777,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ],
                         "type": "string"
                       },
@@ -45895,7 +46805,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ],
                         "type": "string"
                       }
@@ -45916,7 +46827,8 @@
                           "all",
                           "preview",
                           "production",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ],
                         "type": "string"
                       },
@@ -46462,9 +47374,9 @@
                               "type": {
                                 "type": "string",
                                 "enum": [
+                                  "endsWith",
                                   "startsWith",
-                                  "equals",
-                                  "endsWith"
+                                  "equals"
                                 ],
                                 "description": "The type of matching to perform"
                               },
@@ -54766,18 +55678,25 @@
                     {
                       "properties": {
                         "availableSlots": {
-                          "type": "number"
+                          "type": "number",
+                          "enum": [
+                            0
+                          ]
                         },
                         "reason": {
                           "type": "string",
                           "enum": [
-                            "available_slots"
+                            "plan_not_supported"
                           ]
+                        },
+                        "message": {
+                          "type": "string"
                         }
                       },
                       "required": [
                         "availableSlots",
-                        "reason"
+                        "reason",
+                        "message"
                       ],
                       "type": "object"
                     },
@@ -54794,32 +55713,15 @@
                           "enum": [
                             "unlimited_slots"
                           ]
-                        }
-                      },
-                      "required": [
-                        "availableSlots",
-                        "reason"
-                      ],
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "availableSlots": {
-                          "type": "number",
-                          "enum": [
-                            0
-                          ]
                         },
-                        "reason": {
-                          "type": "string",
-                          "enum": [
-                            "plan_not_supported"
-                          ]
+                        "message": {
+                          "type": "string"
                         }
                       },
                       "required": [
                         "availableSlots",
-                        "reason"
+                        "reason",
+                        "message"
                       ],
                       "type": "object"
                     },
@@ -54837,6 +55739,9 @@
                             "no_available_slots"
                           ]
                         },
+                        "message": {
+                          "type": "string"
+                        },
                         "enabledProjects": {
                           "items": {
                             "type": "string"
@@ -54847,7 +55752,30 @@
                       "required": [
                         "availableSlots",
                         "reason",
+                        "message",
                         "enabledProjects"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "availableSlots": {
+                          "type": "number"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "available_slots"
+                          ]
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "availableSlots",
+                        "reason",
+                        "message"
                       ],
                       "type": "object"
                     }
@@ -62340,8 +63268,8 @@
                             "bitbucket",
                             "feedback",
                             "organization-teams",
-                            "mail",
                             "link",
+                            "mail",
                             "saml",
                             "dsync"
                           ]
@@ -62594,8 +63522,8 @@
                         "origin": {
                           "type": "string",
                           "enum": [
-                            "mail",
                             "link",
+                            "mail",
                             "import",
                             "teams",
                             "github",
@@ -63274,7 +64202,7 @@
             }
           },
           "402": {
-            "description": ""
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
           },
           "403": {
             "description": "You do not have permission to access this resource.\nNot authorized to update the team. Must be an OWNER."
@@ -64633,6 +65561,7 @@
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
                           "deployment.checkrun.start",
+                          "deployment.checkrun.cancel",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -64703,6 +65632,7 @@
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
                           "deployment.checkrun.start",
+                          "deployment.checkrun.cancel",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -64891,6 +65821,7 @@
                         "deployment.integration.action.cancel",
                         "deployment.integration.action.cleanup",
                         "deployment.checkrun.start",
+                        "deployment.checkrun.cancel",
                         "edge-config.created",
                         "edge-config.deleted",
                         "edge-config.items.updated",
@@ -64959,6 +65890,7 @@
                         "deployment.integration.action.cancel",
                         "deployment.integration.action.cleanup",
                         "deployment.checkrun.start",
+                        "deployment.checkrun.cancel",
                         "edge-config.created",
                         "edge-config.deleted",
                         "edge-config.items.updated",
@@ -65099,7 +66031,8 @@
                                     "fasthtml",
                                     "sanity-v3",
                                     "sanity",
-                                    "storybook"
+                                    "storybook",
+                                    "nitro"
                                   ]
                                 },
                                 "latestDeployment": {
@@ -65144,6 +66077,7 @@
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
                                 "deployment.checkrun.start",
+                                "deployment.checkrun.cancel",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65214,6 +66148,7 @@
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
                                 "deployment.checkrun.start",
+                                "deployment.checkrun.cancel",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65342,6 +66277,7 @@
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
                                 "deployment.checkrun.start",
+                                "deployment.checkrun.cancel",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65412,6 +66348,7 @@
                                 "deployment.integration.action.cancel",
                                 "deployment.integration.action.cleanup",
                                 "deployment.checkrun.start",
+                                "deployment.checkrun.cancel",
                                 "edge-config.created",
                                 "edge-config.deleted",
                                 "edge-config.items.updated",
@@ -65615,6 +66552,7 @@
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
                           "deployment.checkrun.start",
+                          "deployment.checkrun.cancel",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -65685,6 +66623,7 @@
                           "deployment.integration.action.cancel",
                           "deployment.integration.action.cleanup",
                           "deployment.checkrun.start",
+                          "deployment.checkrun.cancel",
                           "edge-config.created",
                           "edge-config.deleted",
                           "edge-config.items.updated",
@@ -68211,6 +69150,10 @@
                             "description": "The name of the deployment.",
                             "example": "docs"
                           },
+                          "projectId": {
+                            "type": "string",
+                            "description": "The project ID of the deployment"
+                          },
                           "url": {
                             "type": "string",
                             "description": "The URL of the deployment.",
@@ -68510,7 +69453,8 @@
                                   "fasthtml",
                                   "sanity-v3",
                                   "sanity",
-                                  "storybook"
+                                  "storybook",
+                                  "nitro"
                                 ]
                               },
                               "gitForkProtection": {
@@ -68556,10 +69500,6 @@
                                 "type": "boolean"
                               },
                               "rootDirectory": {
-                                "nullable": true,
-                                "type": "string"
-                              },
-                              "serverlessFunctionRegion": {
                                 "nullable": true,
                                 "type": "string"
                               },
@@ -68686,6 +69626,7 @@
                         "required": [
                           "uid",
                           "name",
+                          "projectId",
                           "url",
                           "created",
                           "type",
@@ -71395,6 +72336,73 @@
               },
               {
                 "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "rulesetName": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "log",
+                      "challenge",
+                      "deny"
+                    ]
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "rulesetName",
+                  "active"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "rulesetName": {
+                    "type": "string"
+                  },
+                  "ruleGroups": {
+                    "additionalProperties": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "log",
+                            "challenge",
+                            "deny"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "active"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "rulesetName",
+                  "ruleGroups"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "integrationId": {
                     "type": "string"
                   },
@@ -71857,6 +72865,9 @@
                           "concurrentBuilds": {
                             "type": "number"
                           },
+                          "elasticConcurrencyEnabled": {
+                            "type": "boolean"
+                          },
                           "buildEntitlements": {
                             "properties": {
                               "enhancedBuilds": {
@@ -72150,19 +73161,10 @@
                               "blobDataTransfer",
                               "observabilityEvent",
                               "onDemandConcurrencyMinutes",
-                              "postgresComputeTime",
-                              "postgresDataStorage",
-                              "postgresDataTransfer",
-                              "postgresDatabase",
-                              "postgresWrittenData",
                               "runtimeCacheRead",
                               "runtimeCacheWrite",
                               "serverlessFunctionExecution",
                               "sourceImages",
-                              "storageRedisTotalBandwidthInBytes",
-                              "storageRedisTotalCommands",
-                              "storageRedisTotalDailyAvgStorageInBytes",
-                              "storageRedisTotalDatabases",
                               "wafOwaspExcessBytes",
                               "wafOwaspRequests",
                               "wafRateLimitRequest",
@@ -72250,11 +73252,11 @@
                                   "enum": [
                                     "teams",
                                     "saml",
+                                    "link",
                                     "github",
                                     "gitlab",
                                     "bitbucket",
                                     "mail",
-                                    "link",
                                     "import",
                                     "dsync",
                                     "feedback",
@@ -72940,101 +73942,6 @@
                             ],
                             "type": "object"
                           },
-                          "postgresComputeTime": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "postgresDataStorage": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "postgresDataTransfer": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "postgresDatabase": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "postgresWrittenData": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
                           "runtimeCacheRead": {
                             "properties": {
                               "currentThreshold": {
@@ -73093,82 +74000,6 @@
                             "type": "object"
                           },
                           "sourceImages": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "storageRedisTotalBandwidthInBytes": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "storageRedisTotalCommands": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "storageRedisTotalDailyAvgStorageInBytes": {
-                            "properties": {
-                              "currentThreshold": {
-                                "type": "number"
-                              },
-                              "warningAt": {
-                                "nullable": true,
-                                "type": "number"
-                              },
-                              "blockedAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "currentThreshold"
-                            ],
-                            "type": "object"
-                          },
-                          "storageRedisTotalDatabases": {
                             "properties": {
                               "currentThreshold": {
                                 "type": "number"
@@ -73530,19 +74361,10 @@
                                   "blobDataTransfer",
                                   "observabilityEvent",
                                   "onDemandConcurrencyMinutes",
-                                  "postgresComputeTime",
-                                  "postgresDataStorage",
-                                  "postgresDataTransfer",
-                                  "postgresDatabase",
-                                  "postgresWrittenData",
                                   "runtimeCacheRead",
                                   "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
-                                  "storageRedisTotalBandwidthInBytes",
-                                  "storageRedisTotalCommands",
-                                  "storageRedisTotalDailyAvgStorageInBytes",
-                                  "storageRedisTotalDatabases",
                                   "wafOwaspExcessBytes",
                                   "wafOwaspRequests",
                                   "wafRateLimitRequest",
@@ -73607,19 +74429,10 @@
                                   "blobDataTransfer",
                                   "observabilityEvent",
                                   "onDemandConcurrencyMinutes",
-                                  "postgresComputeTime",
-                                  "postgresDataStorage",
-                                  "postgresDataTransfer",
-                                  "postgresDatabase",
-                                  "postgresWrittenData",
                                   "runtimeCacheRead",
                                   "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
-                                  "storageRedisTotalBandwidthInBytes",
-                                  "storageRedisTotalCommands",
-                                  "storageRedisTotalDailyAvgStorageInBytes",
-                                  "storageRedisTotalDatabases",
                                   "wafOwaspExcessBytes",
                                   "wafOwaspRequests",
                                   "wafRateLimitRequest",
@@ -73684,19 +74497,10 @@
                                   "blobDataTransfer",
                                   "observabilityEvent",
                                   "onDemandConcurrencyMinutes",
-                                  "postgresComputeTime",
-                                  "postgresDataStorage",
-                                  "postgresDataTransfer",
-                                  "postgresDatabase",
-                                  "postgresWrittenData",
                                   "runtimeCacheRead",
                                   "runtimeCacheWrite",
                                   "serverlessFunctionExecution",
                                   "sourceImages",
-                                  "storageRedisTotalBandwidthInBytes",
-                                  "storageRedisTotalCommands",
-                                  "storageRedisTotalDailyAvgStorageInBytes",
-                                  "storageRedisTotalDatabases",
                                   "wafOwaspExcessBytes",
                                   "wafOwaspRequests",
                                   "wafRateLimitRequest",
@@ -74298,11 +75102,11 @@
                               "enum": [
                                 "teams",
                                 "saml",
+                                "link",
                                 "github",
                                 "gitlab",
                                 "bitbucket",
                                 "mail",
-                                "link",
                                 "import",
                                 "dsync",
                                 "feedback",
@@ -74524,7 +75328,8 @@
                             "enum": [
                               "all",
                               "preview",
-                              "prod_deployment_urls_and_all_previews"
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
                             ]
                           }
                         },
@@ -74538,7 +75343,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ]
                       }
                     ]
@@ -74553,7 +75359,8 @@
                             "enum": [
                               "all",
                               "preview",
-                              "prod_deployment_urls_and_all_previews"
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
                             ]
                           }
                         },
@@ -74567,7 +75374,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ]
                       }
                     ]
@@ -74596,7 +75404,8 @@
                             "enum": [
                               "all",
                               "preview",
-                              "prod_deployment_urls_and_all_previews"
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
                             ]
                           }
                         },
@@ -74610,7 +75419,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ]
                       }
                     ]
@@ -74625,7 +75435,8 @@
                             "enum": [
                               "all",
                               "preview",
-                              "prod_deployment_urls_and_all_previews"
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
                             ]
                           }
                         },
@@ -74639,7 +75450,8 @@
                         "enum": [
                           "all",
                           "preview",
-                          "prod_deployment_urls_and_all_previews"
+                          "prod_deployment_urls_and_all_previews",
+                          "all_except_custom_domains"
                         ]
                       }
                     ]
@@ -74665,6 +75477,7 @@
                       "all",
                       "preview",
                       "prod_deployment_urls_and_all_previews",
+                      "all_except_custom_domains",
                       "production"
                     ]
                   },
@@ -74675,6 +75488,7 @@
                       "all",
                       "preview",
                       "prod_deployment_urls_and_all_previews",
+                      "all_except_custom_domains",
                       "production"
                     ]
                   },
@@ -77265,6 +78079,10 @@
                 "type": "number",
                 "description": "The total amount of concurrent builds that can be used."
               },
+              "elasticConcurrencyEnabled": {
+                "type": "boolean",
+                "description": "Whether every build for this team / user has elastic concurrency enabled automatically."
+              },
               "edgeConfigSize": {
                 "type": "number",
                 "description": "The maximum size in kilobytes of an Edge Config. Only specified if a custom limit is set."
@@ -77478,9 +78296,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
+                      "link",
                       "saml",
                       "mail",
-                      "link",
                       "import",
                       "teams",
                       "github",
@@ -77768,9 +78586,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
+                      "link",
                       "saml",
                       "mail",
-                      "link",
                       "import",
                       "teams",
                       "github",
@@ -78070,19 +78888,10 @@
                   "blobDataTransfer",
                   "observabilityEvent",
                   "onDemandConcurrencyMinutes",
-                  "postgresComputeTime",
-                  "postgresDataStorage",
-                  "postgresDataTransfer",
-                  "postgresDatabase",
-                  "postgresWrittenData",
                   "runtimeCacheRead",
                   "runtimeCacheWrite",
                   "serverlessFunctionExecution",
                   "sourceImages",
-                  "storageRedisTotalBandwidthInBytes",
-                  "storageRedisTotalCommands",
-                  "storageRedisTotalDailyAvgStorageInBytes",
-                  "storageRedisTotalDatabases",
                   "wafOwaspExcessBytes",
                   "wafOwaspRequests",
                   "wafRateLimitRequest",
@@ -78110,6 +78919,10 @@
               },
               "concurrentBuilds": {
                 "type": "number",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "elasticConcurrencyEnabled": {
+                "type": "boolean",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               },
               "buildEntitlements": {

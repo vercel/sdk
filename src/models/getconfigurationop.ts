@@ -36,9 +36,9 @@ export const ProjectSelection = {
 export type ProjectSelection = ClosedEnum<typeof ProjectSelection>;
 
 export const GetConfigurationResponseBodyLevel = {
-  Error: "error",
   Info: "info",
   Warn: "warn",
+  Error: "error",
 } as const;
 export type GetConfigurationResponseBodyLevel = ClosedEnum<
   typeof GetConfigurationResponseBodyLevel

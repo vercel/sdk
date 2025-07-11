@@ -11,5 +11,5 @@ let value: UserEventPayloadOrigin = "feedback";
 ## Values
 
 ```typescript
-"teams" | "saml" | "github" | "gitlab" | "bitbucket" | "mail" | "link" | "import" | "dsync" | "feedback" | "organization-teams"
+"teams" | "saml" | "link" | "github" | "gitlab" | "bitbucket" | "mail" | "import" | "dsync" | "feedback" | "organization-teams"
 ```

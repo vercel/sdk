@@ -8,7 +8,8 @@
 ```typescript
 const value: models.GetRollingReleaseBillingStatusResponseBody1 = {
   availableSlots: 8978.48,
-  reason: "available_slots",
+  reason: "plan_not_supported",
+  message: "<value>",
 };
 ```
 
@@ -18,6 +19,7 @@ const value: models.GetRollingReleaseBillingStatusResponseBody1 = {
 const value: models.GetRollingReleaseBillingStatusResponseBody2 = {
   availableSlots: "unlimited",
   reason: "unlimited_slots",
+  message: "<value>",
 };
 ```
 
@@ -26,7 +28,12 @@ const value: models.GetRollingReleaseBillingStatusResponseBody2 = {
 ```typescript
 const value: models.GetRollingReleaseBillingStatusResponseBody3 = {
   availableSlots: 9031.84,
-  reason: "plan_not_supported",
+  reason: "no_available_slots",
+  message: "<value>",
+  enabledProjects: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
@@ -35,12 +42,8 @@ const value: models.GetRollingReleaseBillingStatusResponseBody3 = {
 ```typescript
 const value: models.ResponseBody4 = {
   availableSlots: 1850.51,
-  reason: "no_available_slots",
-  enabledProjects: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  reason: "available_slots",
+  message: "<value>",
 };
 ```
 

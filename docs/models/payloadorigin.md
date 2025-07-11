@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadOrigin } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadOrigin = "link";
+let value: PayloadOrigin = "mail";
 ```
 
 ## Values
 
 ```typescript
-"teams" | "saml" | "github" | "gitlab" | "bitbucket" | "mail" | "link" | "import" | "dsync" | "feedback" | "organization-teams"
+"teams" | "saml" | "link" | "github" | "gitlab" | "bitbucket" | "mail" | "import" | "dsync" | "feedback" | "organization-teams"
 ```

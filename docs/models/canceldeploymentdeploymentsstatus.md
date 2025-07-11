@@ -11,5 +11,5 @@ let value: CancelDeploymentDeploymentsStatus = "timeout";
 ## Values
 
 ```typescript
-"error" | "skipped" | "pending" | "ready" | "timeout"
+"skipped" | "pending" | "ready" | "error" | "timeout"
 ```

@@ -21,7 +21,7 @@ const value: models.GetProjectsTrustedIps1 = {
 
 ```typescript
 const value: models.GetProjectsTrustedIps2 = {
-  deploymentType: "all",
+  deploymentType: "prod_deployment_urls_and_all_previews",
 };
 ```
 

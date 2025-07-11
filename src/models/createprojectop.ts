@@ -121,6 +121,7 @@ export const CreateProjectFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -154,6 +155,23 @@ export type GitRepository = {
    * The Git Provider of the repository
    */
   type: CreateProjectProjectsType;
+};
+
+export const CreateProjectDeploymentType = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type CreateProjectDeploymentType = ClosedEnum<
+  typeof CreateProjectDeploymentType
+>;
+
+/**
+ * The Vercel Auth setting for the project (historically named \"SSO Protection\")
+ */
+export type CreateProjectSsoProtection = {
+  deploymentType: CreateProjectDeploymentType;
 };
 
 /**
@@ -262,6 +280,10 @@ export type CreateProjectRequestBody = {
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   skipGitConnectDuringLink?: boolean | undefined;
+  /**
+   * The Vercel Auth setting for the project (historically named \"SSO Protection\")
+   */
+  ssoProtection?: CreateProjectSsoProtection | null | undefined;
   /**
    * The output directory of the project. When `null` is used this value will be automatically detected
    */
@@ -891,6 +913,7 @@ export const CreateProjectProjectsFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type CreateProjectProjectsFramework = ClosedEnum<
   typeof CreateProjectProjectsFramework
@@ -1369,17 +1392,18 @@ export type CreateProjectDefaultResourceConfig = {
   buildMachineType?: CreateProjectProjectsBuildMachineType | undefined;
 };
 
-export const CreateProjectDeploymentType = {
+export const CreateProjectProjectsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
-export type CreateProjectDeploymentType = ClosedEnum<
-  typeof CreateProjectDeploymentType
+export type CreateProjectProjectsDeploymentType = ClosedEnum<
+  typeof CreateProjectProjectsDeploymentType
 >;
 
-export type CreateProjectSsoProtection = {
-  deploymentType: CreateProjectDeploymentType;
+export type CreateProjectProjectsSsoProtection = {
+  deploymentType: CreateProjectProjectsDeploymentType;
 };
 
 export type CreateProjectProjectsAliasAssigned = number | boolean;
@@ -1820,6 +1844,7 @@ export const CreateProjectTrustedIpsProjectsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type CreateProjectTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof CreateProjectTrustedIpsProjectsDeploymentType
@@ -1834,6 +1859,7 @@ export const CreateProjectTrustedIpsDeploymentType = {
   Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
 export type CreateProjectTrustedIpsDeploymentType = ClosedEnum<
   typeof CreateProjectTrustedIpsDeploymentType
@@ -2212,14 +2238,13 @@ export type CreateProjectResponseBody = {
   rollingRelease?: CreateProjectRollingRelease | null | undefined;
   defaultResourceConfig: CreateProjectDefaultResourceConfig;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
-  ssoProtection?: CreateProjectSsoProtection | null | undefined;
+  ssoProtection?: CreateProjectProjectsSsoProtection | null | undefined;
   targets?: { [k: string]: CreateProjectTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
@@ -2523,6 +2548,81 @@ export function gitRepositoryFromJSON(
 }
 
 /** @internal */
+export const CreateProjectDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectDeploymentType
+> = z.nativeEnum(CreateProjectDeploymentType);
+
+/** @internal */
+export const CreateProjectDeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectDeploymentType
+> = CreateProjectDeploymentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectDeploymentType$ {
+  /** @deprecated use `CreateProjectDeploymentType$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectDeploymentType$inboundSchema;
+  /** @deprecated use `CreateProjectDeploymentType$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectDeploymentType$outboundSchema;
+}
+
+/** @internal */
+export const CreateProjectSsoProtection$inboundSchema: z.ZodType<
+  CreateProjectSsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: CreateProjectDeploymentType$inboundSchema,
+});
+
+/** @internal */
+export type CreateProjectSsoProtection$Outbound = {
+  deploymentType: string;
+};
+
+/** @internal */
+export const CreateProjectSsoProtection$outboundSchema: z.ZodType<
+  CreateProjectSsoProtection$Outbound,
+  z.ZodTypeDef,
+  CreateProjectSsoProtection
+> = z.object({
+  deploymentType: CreateProjectDeploymentType$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateProjectSsoProtection$ {
+  /** @deprecated use `CreateProjectSsoProtection$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectSsoProtection$inboundSchema;
+  /** @deprecated use `CreateProjectSsoProtection$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectSsoProtection$outboundSchema;
+  /** @deprecated use `CreateProjectSsoProtection$Outbound` instead. */
+  export type Outbound = CreateProjectSsoProtection$Outbound;
+}
+
+export function createProjectSsoProtectionToJSON(
+  createProjectSsoProtection: CreateProjectSsoProtection,
+): string {
+  return JSON.stringify(
+    CreateProjectSsoProtection$outboundSchema.parse(createProjectSsoProtection),
+  );
+}
+
+export function createProjectSsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectSsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectSsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
 export const IssuerMode$inboundSchema: z.ZodNativeEnum<typeof IssuerMode> = z
   .nativeEnum(IssuerMode);
 
@@ -2732,6 +2832,9 @@ export const CreateProjectRequestBody$inboundSchema: z.ZodType<
   installCommand: z.nullable(z.string()).optional(),
   name: z.string(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  ssoProtection: z.nullable(
+    z.lazy(() => CreateProjectSsoProtection$inboundSchema),
+  ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
@@ -2756,6 +2859,7 @@ export type CreateProjectRequestBody$Outbound = {
   installCommand?: string | null | undefined;
   name: string;
   skipGitConnectDuringLink?: boolean | undefined;
+  ssoProtection?: CreateProjectSsoProtection$Outbound | null | undefined;
   outputDirectory?: string | null | undefined;
   publicSource?: boolean | null | undefined;
   rootDirectory?: string | null | undefined;
@@ -2785,6 +2889,9 @@ export const CreateProjectRequestBody$outboundSchema: z.ZodType<
   installCommand: z.nullable(z.string()).optional(),
   name: z.string(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  ssoProtection: z.nullable(
+    z.lazy(() => CreateProjectSsoProtection$outboundSchema),
+  ).optional(),
   outputDirectory: z.nullable(z.string()).optional(),
   publicSource: z.nullable(z.boolean()).optional(),
   rootDirectory: z.nullable(z.string()).optional(),
@@ -8015,77 +8122,83 @@ export function createProjectDefaultResourceConfigFromJSON(
 }
 
 /** @internal */
-export const CreateProjectDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectDeploymentType
-> = z.nativeEnum(CreateProjectDeploymentType);
+export const CreateProjectProjectsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsDeploymentType
+> = z.nativeEnum(CreateProjectProjectsDeploymentType);
 
 /** @internal */
-export const CreateProjectDeploymentType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectDeploymentType
-> = CreateProjectDeploymentType$inboundSchema;
+export const CreateProjectProjectsDeploymentType$outboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectProjectsDeploymentType> =
+    CreateProjectProjectsDeploymentType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateProjectDeploymentType$ {
-  /** @deprecated use `CreateProjectDeploymentType$inboundSchema` instead. */
-  export const inboundSchema = CreateProjectDeploymentType$inboundSchema;
-  /** @deprecated use `CreateProjectDeploymentType$outboundSchema` instead. */
-  export const outboundSchema = CreateProjectDeploymentType$outboundSchema;
+export namespace CreateProjectProjectsDeploymentType$ {
+  /** @deprecated use `CreateProjectProjectsDeploymentType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateProjectProjectsDeploymentType$inboundSchema;
+  /** @deprecated use `CreateProjectProjectsDeploymentType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProjectsDeploymentType$outboundSchema;
 }
 
 /** @internal */
-export const CreateProjectSsoProtection$inboundSchema: z.ZodType<
-  CreateProjectSsoProtection,
+export const CreateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
+  CreateProjectProjectsSsoProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentType: CreateProjectDeploymentType$inboundSchema,
+  deploymentType: CreateProjectProjectsDeploymentType$inboundSchema,
 });
 
 /** @internal */
-export type CreateProjectSsoProtection$Outbound = {
+export type CreateProjectProjectsSsoProtection$Outbound = {
   deploymentType: string;
 };
 
 /** @internal */
-export const CreateProjectSsoProtection$outboundSchema: z.ZodType<
-  CreateProjectSsoProtection$Outbound,
+export const CreateProjectProjectsSsoProtection$outboundSchema: z.ZodType<
+  CreateProjectProjectsSsoProtection$Outbound,
   z.ZodTypeDef,
-  CreateProjectSsoProtection
+  CreateProjectProjectsSsoProtection
 > = z.object({
-  deploymentType: CreateProjectDeploymentType$outboundSchema,
+  deploymentType: CreateProjectProjectsDeploymentType$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateProjectSsoProtection$ {
-  /** @deprecated use `CreateProjectSsoProtection$inboundSchema` instead. */
-  export const inboundSchema = CreateProjectSsoProtection$inboundSchema;
-  /** @deprecated use `CreateProjectSsoProtection$outboundSchema` instead. */
-  export const outboundSchema = CreateProjectSsoProtection$outboundSchema;
-  /** @deprecated use `CreateProjectSsoProtection$Outbound` instead. */
-  export type Outbound = CreateProjectSsoProtection$Outbound;
+export namespace CreateProjectProjectsSsoProtection$ {
+  /** @deprecated use `CreateProjectProjectsSsoProtection$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectProjectsSsoProtection$inboundSchema;
+  /** @deprecated use `CreateProjectProjectsSsoProtection$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateProjectProjectsSsoProtection$outboundSchema;
+  /** @deprecated use `CreateProjectProjectsSsoProtection$Outbound` instead. */
+  export type Outbound = CreateProjectProjectsSsoProtection$Outbound;
 }
 
-export function createProjectSsoProtectionToJSON(
-  createProjectSsoProtection: CreateProjectSsoProtection,
+export function createProjectProjectsSsoProtectionToJSON(
+  createProjectProjectsSsoProtection: CreateProjectProjectsSsoProtection,
 ): string {
   return JSON.stringify(
-    CreateProjectSsoProtection$outboundSchema.parse(createProjectSsoProtection),
+    CreateProjectProjectsSsoProtection$outboundSchema.parse(
+      createProjectProjectsSsoProtection,
+    ),
   );
 }
 
-export function createProjectSsoProtectionFromJSON(
+export function createProjectProjectsSsoProtectionFromJSON(
   jsonString: string,
-): SafeParseResult<CreateProjectSsoProtection, SDKValidationError> {
+): SafeParseResult<CreateProjectProjectsSsoProtection, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateProjectSsoProtection$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateProjectSsoProtection' from JSON`,
+    (x) =>
+      CreateProjectProjectsSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectProjectsSsoProtection' from JSON`,
   );
 }
 
@@ -11934,7 +12047,6 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     CreateProjectDefaultResourceConfig$inboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
@@ -11942,7 +12054,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
-    z.lazy(() => CreateProjectSsoProtection$inboundSchema),
+    z.lazy(() => CreateProjectProjectsSsoProtection$inboundSchema),
   ).optional(),
   targets: z.record(
     z.nullable(z.lazy(() => CreateProjectTargets$inboundSchema)),
@@ -12055,14 +12167,16 @@ export type CreateProjectResponseBody$Outbound = {
   rollingRelease?: CreateProjectRollingRelease$Outbound | null | undefined;
   defaultResourceConfig: CreateProjectDefaultResourceConfig$Outbound;
   rootDirectory?: string | null | undefined;
-  serverlessFunctionRegion?: string | null | undefined;
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
-  ssoProtection?: CreateProjectSsoProtection$Outbound | null | undefined;
+  ssoProtection?:
+    | CreateProjectProjectsSsoProtection$Outbound
+    | null
+    | undefined;
   targets?: { [k: string]: CreateProjectTargets$Outbound | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
@@ -12179,7 +12293,6 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
     CreateProjectDefaultResourceConfig$outboundSchema
   ),
   rootDirectory: z.nullable(z.string()).optional(),
-  serverlessFunctionRegion: z.nullable(z.string()).optional(),
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
@@ -12187,7 +12300,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
-    z.lazy(() => CreateProjectSsoProtection$outboundSchema),
+    z.lazy(() => CreateProjectProjectsSsoProtection$outboundSchema),
   ).optional(),
   targets: z.record(
     z.nullable(z.lazy(() => CreateProjectTargets$outboundSchema)),

@@ -4,6 +4,7 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
+import { GetDeploymentEventsDeploymentsResponseBody } from "../models/getdeploymenteventsop.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Deployments Get Deployment Events", async () => {
@@ -30,7 +31,7 @@ test("Deployments Get Deployment Events", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
+  expect(result as GetDeploymentEventsDeploymentsResponseBody[]).toEqual([
     {
       created: 9364.53,
       date: 65.47,

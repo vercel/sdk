@@ -89,6 +89,7 @@ export const CancelDeploymentFramework = {
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
+  Nitro: "nitro",
 } as const;
 export type CancelDeploymentFramework = ClosedEnum<
   typeof CancelDeploymentFramework
@@ -123,10 +124,10 @@ export type CancelDeploymentProjectSettings = {
 };
 
 export const CancelDeploymentDeploymentsStatus = {
-  Error: "error",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
   Timeout: "timeout",
 } as const;
 export type CancelDeploymentDeploymentsStatus = ClosedEnum<
@@ -291,9 +292,9 @@ export type CancelDeploymentCustomEnvironmentType = ClosedEnum<
  * The type of matching to perform
  */
 export const CancelDeploymentCustomEnvironmentDeploymentsType = {
+  EndsWith: "endsWith",
   StartsWith: "startsWith",
   Equals: "equals",
-  EndsWith: "endsWith",
 } as const;
 /**
  * The type of matching to perform
@@ -751,6 +752,49 @@ export type CancelDeploymentArchitecture = ClosedEnum<
   typeof CancelDeploymentArchitecture
 >;
 
+/**
+ * Event type - must be "queue/v1beta" (REQUIRED)
+ */
+export const CancelDeploymentDeploymentsType = {
+  QueueV1beta: "queue/v1beta",
+} as const;
+/**
+ * Event type - must be "queue/v1beta" (REQUIRED)
+ */
+export type CancelDeploymentDeploymentsType = ClosedEnum<
+  typeof CancelDeploymentDeploymentsType
+>;
+
+/**
+ * Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
+ */
+export type CancelDeploymentExperimentalTriggers = {
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: CancelDeploymentDeploymentsType;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+};
+
 export type CancelDeploymentFunctions = {
   architecture?: CancelDeploymentArchitecture | undefined;
   memory?: number | undefined;
@@ -758,6 +802,9 @@ export type CancelDeploymentFunctions = {
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
+  experimentalTriggers?:
+    | Array<CancelDeploymentExperimentalTriggers>
+    | undefined;
 };
 
 export const CancelDeploymentPlan = {
@@ -944,6 +991,52 @@ export type CancelDeploymentRoutesMitigate = {
   action: CancelDeploymentRoutesAction;
 };
 
+export const CancelDeploymentRoutesType = {
+  RequestHeaders: "request.headers",
+  RequestQuery: "request.query",
+  ResponseHeaders: "response.headers",
+} as const;
+export type CancelDeploymentRoutesType = ClosedEnum<
+  typeof CancelDeploymentRoutesType
+>;
+
+export const RoutesOp = {
+  Append: "append",
+  Set: "set",
+  Delete: "delete",
+} as const;
+export type RoutesOp = ClosedEnum<typeof RoutesOp>;
+
+export type CancelDeploymentKeyEq = string | number;
+
+export type CancelDeploymentKey2 = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
+
+export type RoutesKey = CancelDeploymentKey2 | string;
+
+export type CancelDeploymentRoutesTarget = {
+  key: CancelDeploymentKey2 | string;
+};
+
+export type RoutesArgs = string | Array<string>;
+
+export type RoutesTransforms = {
+  type: CancelDeploymentRoutesType;
+  op: RoutesOp;
+  target: CancelDeploymentRoutesTarget;
+  args?: string | Array<string> | undefined;
+};
+
 export type RoutesLocale = {
   redirect?: { [k: string]: string } | undefined;
   cookie?: string | undefined;
@@ -965,6 +1058,7 @@ export type CancelDeploymentRoutes1 = {
     | Array<CancelDeploymentMissing1 | CancelDeploymentMissing2>
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate | undefined;
+  transforms?: Array<RoutesTransforms> | undefined;
   locale?: RoutesLocale | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1134,6 +1228,14 @@ export type CancelDeploymentMicrofrontends2 = {
    * The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
    */
   groupIds: Array<string>;
+  /**
+   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   */
+  microfrontendsAliasEnabled?: boolean | undefined;
+  /**
+   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+   */
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends1 = {
@@ -1153,6 +1255,14 @@ export type CancelDeploymentMicrofrontends1 = {
    * The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
    */
   groupIds: Array<string>;
+  /**
+   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   */
+  microfrontendsAliasEnabled?: boolean | undefined;
+  /**
+   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
+   */
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends =
@@ -4878,6 +4988,101 @@ export namespace CancelDeploymentArchitecture$ {
 }
 
 /** @internal */
+export const CancelDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDeploymentsType
+> = z.nativeEnum(CancelDeploymentDeploymentsType);
+
+/** @internal */
+export const CancelDeploymentDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDeploymentsType
+> = CancelDeploymentDeploymentsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentDeploymentsType$ {
+  /** @deprecated use `CancelDeploymentDeploymentsType$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentDeploymentsType$inboundSchema;
+  /** @deprecated use `CancelDeploymentDeploymentsType$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentDeploymentsType$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers$inboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentDeploymentsType$inboundSchema,
+  topic: z.string(),
+  consumer: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+});
+
+/** @internal */
+export type CancelDeploymentExperimentalTriggers$Outbound = {
+  type: string;
+  topic: string;
+  consumer: string;
+  maxDeliveries?: number | undefined;
+  retryAfterSeconds?: number | undefined;
+  initialDelaySeconds?: number | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers$outboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentExperimentalTriggers
+> = z.object({
+  type: CancelDeploymentDeploymentsType$outboundSchema,
+  topic: z.string(),
+  consumer: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentExperimentalTriggers$ {
+  /** @deprecated use `CancelDeploymentExperimentalTriggers$inboundSchema` instead. */
+  export const inboundSchema =
+    CancelDeploymentExperimentalTriggers$inboundSchema;
+  /** @deprecated use `CancelDeploymentExperimentalTriggers$outboundSchema` instead. */
+  export const outboundSchema =
+    CancelDeploymentExperimentalTriggers$outboundSchema;
+  /** @deprecated use `CancelDeploymentExperimentalTriggers$Outbound` instead. */
+  export type Outbound = CancelDeploymentExperimentalTriggers$Outbound;
+}
+
+export function cancelDeploymentExperimentalTriggersToJSON(
+  cancelDeploymentExperimentalTriggers: CancelDeploymentExperimentalTriggers,
+): string {
+  return JSON.stringify(
+    CancelDeploymentExperimentalTriggers$outboundSchema.parse(
+      cancelDeploymentExperimentalTriggers,
+    ),
+  );
+}
+
+export function cancelDeploymentExperimentalTriggersFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentExperimentalTriggers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggers' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   CancelDeploymentFunctions,
   z.ZodTypeDef,
@@ -4889,6 +5094,9 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
+  experimentalTriggers: z.array(
+    z.lazy(() => CancelDeploymentExperimentalTriggers$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
@@ -4899,6 +5107,9 @@ export type CancelDeploymentFunctions$Outbound = {
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
+  experimentalTriggers?:
+    | Array<CancelDeploymentExperimentalTriggers$Outbound>
+    | undefined;
 };
 
 /** @internal */
@@ -4913,6 +5124,9 @@ export const CancelDeploymentFunctions$outboundSchema: z.ZodType<
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
+  experimentalTriggers: z.array(
+    z.lazy(() => CancelDeploymentExperimentalTriggers$outboundSchema),
+  ).optional(),
 });
 
 /**
@@ -6475,6 +6689,382 @@ export function cancelDeploymentRoutesMitigateFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentRoutesType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentRoutesType
+> = z.nativeEnum(CancelDeploymentRoutesType);
+
+/** @internal */
+export const CancelDeploymentRoutesType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentRoutesType
+> = CancelDeploymentRoutesType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentRoutesType$ {
+  /** @deprecated use `CancelDeploymentRoutesType$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRoutesType$inboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesType$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRoutesType$outboundSchema;
+}
+
+/** @internal */
+export const RoutesOp$inboundSchema: z.ZodNativeEnum<typeof RoutesOp> = z
+  .nativeEnum(RoutesOp);
+
+/** @internal */
+export const RoutesOp$outboundSchema: z.ZodNativeEnum<typeof RoutesOp> =
+  RoutesOp$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoutesOp$ {
+  /** @deprecated use `RoutesOp$inboundSchema` instead. */
+  export const inboundSchema = RoutesOp$inboundSchema;
+  /** @deprecated use `RoutesOp$outboundSchema` instead. */
+  export const outboundSchema = RoutesOp$outboundSchema;
+}
+
+/** @internal */
+export const CancelDeploymentKeyEq$inboundSchema: z.ZodType<
+  CancelDeploymentKeyEq,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number()]);
+
+/** @internal */
+export type CancelDeploymentKeyEq$Outbound = string | number;
+
+/** @internal */
+export const CancelDeploymentKeyEq$outboundSchema: z.ZodType<
+  CancelDeploymentKeyEq$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentKeyEq
+> = z.union([z.string(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentKeyEq$ {
+  /** @deprecated use `CancelDeploymentKeyEq$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentKeyEq$inboundSchema;
+  /** @deprecated use `CancelDeploymentKeyEq$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentKeyEq$outboundSchema;
+  /** @deprecated use `CancelDeploymentKeyEq$Outbound` instead. */
+  export type Outbound = CancelDeploymentKeyEq$Outbound;
+}
+
+export function cancelDeploymentKeyEqToJSON(
+  cancelDeploymentKeyEq: CancelDeploymentKeyEq,
+): string {
+  return JSON.stringify(
+    CancelDeploymentKeyEq$outboundSchema.parse(cancelDeploymentKeyEq),
+  );
+}
+
+export function cancelDeploymentKeyEqFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentKeyEq, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentKeyEq$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentKeyEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentKey2$inboundSchema: z.ZodType<
+  CancelDeploymentKey2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: z.union([z.string(), z.number()]).optional(),
+  neq: z.string().optional(),
+  inc: z.array(z.string()).optional(),
+  ninc: z.array(z.string()).optional(),
+  pre: z.string().optional(),
+  suf: z.string().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+});
+
+/** @internal */
+export type CancelDeploymentKey2$Outbound = {
+  eq?: string | number | undefined;
+  neq?: string | undefined;
+  inc?: Array<string> | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  suf?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentKey2$outboundSchema: z.ZodType<
+  CancelDeploymentKey2$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentKey2
+> = z.object({
+  eq: z.union([z.string(), z.number()]).optional(),
+  neq: z.string().optional(),
+  inc: z.array(z.string()).optional(),
+  ninc: z.array(z.string()).optional(),
+  pre: z.string().optional(),
+  suf: z.string().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentKey2$ {
+  /** @deprecated use `CancelDeploymentKey2$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentKey2$inboundSchema;
+  /** @deprecated use `CancelDeploymentKey2$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentKey2$outboundSchema;
+  /** @deprecated use `CancelDeploymentKey2$Outbound` instead. */
+  export type Outbound = CancelDeploymentKey2$Outbound;
+}
+
+export function cancelDeploymentKey2ToJSON(
+  cancelDeploymentKey2: CancelDeploymentKey2,
+): string {
+  return JSON.stringify(
+    CancelDeploymentKey2$outboundSchema.parse(cancelDeploymentKey2),
+  );
+}
+
+export function cancelDeploymentKey2FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentKey2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentKey2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentKey2' from JSON`,
+  );
+}
+
+/** @internal */
+export const RoutesKey$inboundSchema: z.ZodType<
+  RoutesKey,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => CancelDeploymentKey2$inboundSchema), z.string()]);
+
+/** @internal */
+export type RoutesKey$Outbound = CancelDeploymentKey2$Outbound | string;
+
+/** @internal */
+export const RoutesKey$outboundSchema: z.ZodType<
+  RoutesKey$Outbound,
+  z.ZodTypeDef,
+  RoutesKey
+> = z.union([z.lazy(() => CancelDeploymentKey2$outboundSchema), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoutesKey$ {
+  /** @deprecated use `RoutesKey$inboundSchema` instead. */
+  export const inboundSchema = RoutesKey$inboundSchema;
+  /** @deprecated use `RoutesKey$outboundSchema` instead. */
+  export const outboundSchema = RoutesKey$outboundSchema;
+  /** @deprecated use `RoutesKey$Outbound` instead. */
+  export type Outbound = RoutesKey$Outbound;
+}
+
+export function routesKeyToJSON(routesKey: RoutesKey): string {
+  return JSON.stringify(RoutesKey$outboundSchema.parse(routesKey));
+}
+
+export function routesKeyFromJSON(
+  jsonString: string,
+): SafeParseResult<RoutesKey, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesKey' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentRoutesTarget$inboundSchema: z.ZodType<
+  CancelDeploymentRoutesTarget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.union([z.lazy(() => CancelDeploymentKey2$inboundSchema), z.string()]),
+});
+
+/** @internal */
+export type CancelDeploymentRoutesTarget$Outbound = {
+  key: CancelDeploymentKey2$Outbound | string;
+};
+
+/** @internal */
+export const CancelDeploymentRoutesTarget$outboundSchema: z.ZodType<
+  CancelDeploymentRoutesTarget$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentRoutesTarget
+> = z.object({
+  key: z.union([z.lazy(() => CancelDeploymentKey2$outboundSchema), z.string()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelDeploymentRoutesTarget$ {
+  /** @deprecated use `CancelDeploymentRoutesTarget$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRoutesTarget$inboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesTarget$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRoutesTarget$outboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesTarget$Outbound` instead. */
+  export type Outbound = CancelDeploymentRoutesTarget$Outbound;
+}
+
+export function cancelDeploymentRoutesTargetToJSON(
+  cancelDeploymentRoutesTarget: CancelDeploymentRoutesTarget,
+): string {
+  return JSON.stringify(
+    CancelDeploymentRoutesTarget$outboundSchema.parse(
+      cancelDeploymentRoutesTarget,
+    ),
+  );
+}
+
+export function cancelDeploymentRoutesTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentRoutesTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentRoutesTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRoutesTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const RoutesArgs$inboundSchema: z.ZodType<
+  RoutesArgs,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type RoutesArgs$Outbound = string | Array<string>;
+
+/** @internal */
+export const RoutesArgs$outboundSchema: z.ZodType<
+  RoutesArgs$Outbound,
+  z.ZodTypeDef,
+  RoutesArgs
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoutesArgs$ {
+  /** @deprecated use `RoutesArgs$inboundSchema` instead. */
+  export const inboundSchema = RoutesArgs$inboundSchema;
+  /** @deprecated use `RoutesArgs$outboundSchema` instead. */
+  export const outboundSchema = RoutesArgs$outboundSchema;
+  /** @deprecated use `RoutesArgs$Outbound` instead. */
+  export type Outbound = RoutesArgs$Outbound;
+}
+
+export function routesArgsToJSON(routesArgs: RoutesArgs): string {
+  return JSON.stringify(RoutesArgs$outboundSchema.parse(routesArgs));
+}
+
+export function routesArgsFromJSON(
+  jsonString: string,
+): SafeParseResult<RoutesArgs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoutesArgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesArgs' from JSON`,
+  );
+}
+
+/** @internal */
+export const RoutesTransforms$inboundSchema: z.ZodType<
+  RoutesTransforms,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentRoutesType$inboundSchema,
+  op: RoutesOp$inboundSchema,
+  target: z.lazy(() => CancelDeploymentRoutesTarget$inboundSchema),
+  args: z.union([z.string(), z.array(z.string())]).optional(),
+});
+
+/** @internal */
+export type RoutesTransforms$Outbound = {
+  type: string;
+  op: string;
+  target: CancelDeploymentRoutesTarget$Outbound;
+  args?: string | Array<string> | undefined;
+};
+
+/** @internal */
+export const RoutesTransforms$outboundSchema: z.ZodType<
+  RoutesTransforms$Outbound,
+  z.ZodTypeDef,
+  RoutesTransforms
+> = z.object({
+  type: CancelDeploymentRoutesType$outboundSchema,
+  op: RoutesOp$outboundSchema,
+  target: z.lazy(() => CancelDeploymentRoutesTarget$outboundSchema),
+  args: z.union([z.string(), z.array(z.string())]).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RoutesTransforms$ {
+  /** @deprecated use `RoutesTransforms$inboundSchema` instead. */
+  export const inboundSchema = RoutesTransforms$inboundSchema;
+  /** @deprecated use `RoutesTransforms$outboundSchema` instead. */
+  export const outboundSchema = RoutesTransforms$outboundSchema;
+  /** @deprecated use `RoutesTransforms$Outbound` instead. */
+  export type Outbound = RoutesTransforms$Outbound;
+}
+
+export function routesTransformsToJSON(
+  routesTransforms: RoutesTransforms,
+): string {
+  return JSON.stringify(
+    RoutesTransforms$outboundSchema.parse(routesTransforms),
+  );
+}
+
+export function routesTransformsFromJSON(
+  jsonString: string,
+): SafeParseResult<RoutesTransforms, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoutesTransforms$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesTransforms' from JSON`,
+  );
+}
+
+/** @internal */
 export const RoutesLocale$inboundSchema: z.ZodType<
   RoutesLocale,
   z.ZodTypeDef,
@@ -6557,6 +7147,7 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   ).optional(),
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$inboundSchema)
     .optional(),
+  transforms: z.array(z.lazy(() => RoutesTransforms$inboundSchema)).optional(),
   locale: z.lazy(() => RoutesLocale$inboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -6584,6 +7175,7 @@ export type CancelDeploymentRoutes1$Outbound = {
     >
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate$Outbound | undefined;
+  transforms?: Array<RoutesTransforms$Outbound> | undefined;
   locale?: RoutesLocale$Outbound | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
@@ -6620,6 +7212,7 @@ export const CancelDeploymentRoutes1$outboundSchema: z.ZodType<
   ).optional(),
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$outboundSchema)
     .optional(),
+  transforms: z.array(z.lazy(() => RoutesTransforms$outboundSchema)).optional(),
   locale: z.lazy(() => RoutesLocale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -7502,6 +8095,8 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -7513,6 +8108,8 @@ export type CancelDeploymentMicrofrontends2$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
+  microfrontendsAliasEnabled?: boolean | undefined;
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -7528,6 +8125,8 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /**
@@ -7573,6 +8172,8 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -7581,6 +8182,8 @@ export type CancelDeploymentMicrofrontends1$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
+  microfrontendsAliasEnabled?: boolean | undefined;
+  previewEnvAliasEnabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -7593,6 +8196,8 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
+  microfrontendsAliasEnabled: z.boolean().optional(),
+  previewEnvAliasEnabled: z.boolean().optional(),
 });
 
 /**

@@ -6,7 +6,7 @@
 import { GetProjectsTrustedIps2 } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsTrustedIps2 = {
-  deploymentType: "all",
+  deploymentType: "prod_deployment_urls_and_all_previews",
 };
 ```
 

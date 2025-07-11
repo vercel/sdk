@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: fc742adb36165209b7bf0a47e2915abb
+  docChecksum: ee4477fcb9a95b72d7f2b80b7e3ba05b
   docVersion: 0.0.1
-  speakeasyVersion: 1.569.0
-  generationVersion: 2.636.0
-  releaseVersion: 1.9.0
-  configChecksum: 27431accff4f5364bf9292effbddebf1
+  speakeasyVersion: 1.581.0
+  generationVersion: 2.656.5
+  releaseVersion: 1.10.0
+  configChecksum: 782d943732a36ae38a9febd967c979b1
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.12
-    core: 3.21.11
+    core: 3.21.14
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -24,19 +24,19 @@ features:
     enumUnions: 0.1.0
     enums: 2.82.1
     envVarSecurityUsage: 0.1.2
-    examples: 2.81.5
+    examples: 2.82.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
-    mcpServer: 0.9.2
-    mockServer: 0.1.0
+    mcpServer: 0.9.3
+    mockServer: 0.1.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    tests: 0.17.0
+    tests: 0.17.1
     unions: 2.85.11
     uploadStreams: 0.1.0
 generatedFiles:
@@ -120,6 +120,7 @@ generatedFiles:
   - docs/models/approverollingreleasestagestate.md
   - docs/models/approverollingreleasestagetarget.md
   - docs/models/architecture.md
+  - docs/models/args.md
   - docs/models/artifactexistsrequest.md
   - docs/models/artifactqueryrequest.md
   - docs/models/artifactqueryrequestbody.md
@@ -203,6 +204,8 @@ generatedFiles:
   - docs/models/canceldeploymentdeploymentalias.md
   - docs/models/canceldeploymentdeploymentsreadystate.md
   - docs/models/canceldeploymentdeploymentsstatus.md
+  - docs/models/canceldeploymentdeploymentstype.md
+  - docs/models/canceldeploymentexperimentaltriggers.md
   - docs/models/canceldeploymentflags.md
   - docs/models/canceldeploymentflags1.md
   - docs/models/canceldeploymentflags2.md
@@ -251,6 +254,8 @@ generatedFiles:
   - docs/models/canceldeploymenthasvalue.md
   - docs/models/canceldeploymentimages.md
   - docs/models/canceldeploymentintegrations.md
+  - docs/models/canceldeploymentkey2.md
+  - docs/models/canceldeploymentkeyeq.md
   - docs/models/canceldeploymentlambdas.md
   - docs/models/canceldeploymentlocalpatterns.md
   - docs/models/canceldeploymentmicrofrontends.md
@@ -283,6 +288,8 @@ generatedFiles:
   - docs/models/canceldeploymentrouteshas.md
   - docs/models/canceldeploymentroutesmissing.md
   - docs/models/canceldeploymentroutesmitigate.md
+  - docs/models/canceldeploymentroutestarget.md
+  - docs/models/canceldeploymentroutestype.md
   - docs/models/canceldeploymentsource.md
   - docs/models/canceldeploymentspeedinsights.md
   - docs/models/canceldeploymentstate.md
@@ -408,6 +415,7 @@ generatedFiles:
   - docs/models/createdeploymentcrons.md
   - docs/models/createdeploymentcustomenvironmenttype.md
   - docs/models/createdeploymentdeploymentsstatus.md
+  - docs/models/createdeploymentdeploymentstype.md
   - docs/models/createdeploymentframework.md
   - docs/models/createdeploymentgitrepodeploymentstype.md
   - docs/models/createdeploymentgitrepoownertype.md
@@ -458,6 +466,7 @@ generatedFiles:
   - docs/models/createdeploymentrequest.md
   - docs/models/createdeploymentrequestbody.md
   - docs/models/createdeploymentresponsebody.md
+  - docs/models/createdeploymentroutesop.md
   - docs/models/createdeployments.md
   - docs/models/createdeploymentsource.md
   - docs/models/createdeploymentspeedinsights.md
@@ -703,6 +712,7 @@ generatedFiles:
   - docs/models/createprojectprojectschecksconclusion.md
   - docs/models/createprojectprojectschecksstate.md
   - docs/models/createprojectprojectscreator.md
+  - docs/models/createprojectprojectsdeploymenttype.md
   - docs/models/createprojectprojectsframework.md
   - docs/models/createprojectprojectsfunctiondefaultmemorytype.md
   - docs/models/createprojectprojectsoidctokenclaims.md
@@ -724,6 +734,7 @@ generatedFiles:
   - docs/models/createprojectprojectsresponseaction.md
   - docs/models/createprojectprojectsresponsebranchmatcher.md
   - docs/models/createprojectprojectsresponsetype.md
+  - docs/models/createprojectprojectsssoprotection.md
   - docs/models/createprojectprojectstarget.md
   - docs/models/createprojectprojectstype.md
   - docs/models/createprojectprojectsvalue.md
@@ -816,7 +827,6 @@ generatedFiles:
   - docs/models/deletealiasstatus.md
   - docs/models/deleteauthtokenrequest.md
   - docs/models/deleteauthtokenresponsebody.md
-  - docs/models/deleteconfigurablelogdrainrequest.md
   - docs/models/deleteconfigurationrequest.md
   - docs/models/deletedeploymentrequest.md
   - docs/models/deletedeploymentresponsebody.md
@@ -829,6 +839,7 @@ generatedFiles:
   - docs/models/deleteedgeconfigtokensrequest.md
   - docs/models/deleteedgeconfigtokensrequestbody.md
   - docs/models/deleteintegrationlogdrainrequest.md
+  - docs/models/deleteintegrationresourcerequest.md
   - docs/models/deleteprojectrequest.md
   - docs/models/deleterollingreleaseconfigrequest.md
   - docs/models/deleterollingreleaseconfigresponsebody.md
@@ -950,6 +961,8 @@ generatedFiles:
   - docs/models/exchangessotokengranttype.md
   - docs/models/exchangessotokenrequestbody.md
   - docs/models/exchangessotokenresponsebody.md
+  - docs/models/experimentaltriggers.md
+  - docs/models/experimentation.md
   - docs/models/failed.md
   - docs/models/fastdatatransfer.md
   - docs/models/fastorigintransfer.md
@@ -1314,6 +1327,8 @@ generatedFiles:
   - docs/models/getdeploymenthasdeploymentsvalue.md
   - docs/models/getdeploymenthastype.md
   - docs/models/getdeploymenthasvalue.md
+  - docs/models/getdeploymentkey2.md
+  - docs/models/getdeploymentkeyeq.md
   - docs/models/getdeploymentmicrofrontends1.md
   - docs/models/getdeploymentmicrofrontends2.md
   - docs/models/getdeploymentmicrofrontendsapplications.md
@@ -1335,6 +1350,7 @@ generatedFiles:
   - docs/models/getdeploymentresponsebodycustomenvironment.md
   - docs/models/getdeploymentresponsebodydeploymentsreadystate.md
   - docs/models/getdeploymentresponsebodydeploymentsresponsereadystate.md
+  - docs/models/getdeploymentresponsebodydeploymentsresponsetype.md
   - docs/models/getdeploymentresponsebodydeploymentsstatus.md
   - docs/models/getdeploymentresponsebodydeploymentstype.md
   - docs/models/getdeploymentresponsebodygitsource.md
@@ -1354,11 +1370,17 @@ generatedFiles:
   - docs/models/getdeploymentroutes2.md
   - docs/models/getdeploymentroutes3.md
   - docs/models/getdeploymentroutesaction.md
+  - docs/models/getdeploymentroutesargs.md
   - docs/models/getdeploymentrouteshandle.md
   - docs/models/getdeploymentrouteshas.md
+  - docs/models/getdeploymentrouteskey.md
   - docs/models/getdeploymentrouteslocale.md
   - docs/models/getdeploymentroutesmissing.md
   - docs/models/getdeploymentroutesmitigate.md
+  - docs/models/getdeploymentroutesop.md
+  - docs/models/getdeploymentroutestarget.md
+  - docs/models/getdeploymentroutestransforms.md
+  - docs/models/getdeploymentroutestype.md
   - docs/models/getdeploymentsaliasassigned.md
   - docs/models/getdeploymentsaliaserror.md
   - docs/models/getdeploymentschecks.md
@@ -1408,6 +1430,7 @@ generatedFiles:
   - docs/models/getedgeconfigbackupresponsebody1.md
   - docs/models/getedgeconfigbackupresponsebody2.md
   - docs/models/getedgeconfigbackupresponsebodyitems.md
+  - docs/models/getedgeconfigbackupresponsebodymetadata.md
   - docs/models/getedgeconfigbackupresponsebodyuser.md
   - docs/models/getedgeconfigbackupsmetadata.md
   - docs/models/getedgeconfigbackupspagination.md
@@ -1479,6 +1502,19 @@ generatedFiles:
   - docs/models/getintegrationlogdrainsrequest.md
   - docs/models/getintegrationlogdrainsresponsebody.md
   - docs/models/getintegrationlogdrainssources.md
+  - docs/models/getintegrationresourcelevel.md
+  - docs/models/getintegrationresourcenotification.md
+  - docs/models/getintegrationresourcerequest.md
+  - docs/models/getintegrationresourceresponsebody.md
+  - docs/models/getintegrationresourcesexperimentation.md
+  - docs/models/getintegrationresourceslevel.md
+  - docs/models/getintegrationresourcesmetadata.md
+  - docs/models/getintegrationresourcesnotification.md
+  - docs/models/getintegrationresourcesprotocolsettings.md
+  - docs/models/getintegrationresourcesrequest.md
+  - docs/models/getintegrationresourcesresponsebody.md
+  - docs/models/getintegrationresourcesstatus.md
+  - docs/models/getintegrationresourcestatus.md
   - docs/models/getinvoicediscounts.md
   - docs/models/getinvoiceitems.md
   - docs/models/getinvoiceperiod.md
@@ -1913,7 +1949,6 @@ generatedFiles:
   - docs/models/importflowgitnamespace.md
   - docs/models/importflowgitnamespaceid.md
   - docs/models/importflowgitprovider.md
-  - docs/models/importresourceenvironmentoverrides.md
   - docs/models/importresourcerequest.md
   - docs/models/importresourcerequestbody.md
   - docs/models/importresourceresponsebody.md
@@ -1953,6 +1988,9 @@ generatedFiles:
   - docs/models/jointeamrequest.md
   - docs/models/jointeamrequestbody.md
   - docs/models/jointeamresponsebody.md
+  - docs/models/key.md
+  - docs/models/key2.md
+  - docs/models/keyeq.md
   - docs/models/kind.md
   - docs/models/lambdas.md
   - docs/models/lastaliasrequest.md
@@ -2106,7 +2144,9 @@ generatedFiles:
   - docs/models/onehundredandeleven.md
   - docs/models/onehundredandfifteen.md
   - docs/models/onehundredandfifty.md
+  - docs/models/onehundredandfiftyfour.md
   - docs/models/onehundredandfiftyone.md
+  - docs/models/onehundredandfiftythree.md
   - docs/models/onehundredandfiftytwo.md
   - docs/models/onehundredandfive.md
   - docs/models/onehundredandforty.md
@@ -2284,11 +2324,6 @@ generatedFiles:
   - docs/models/php.md
   - docs/models/plan.md
   - docs/models/postgres.md
-  - docs/models/postgrescomputetime.md
-  - docs/models/postgresdatabase.md
-  - docs/models/postgresdatastorage.md
-  - docs/models/postgresdatatransfer.md
-  - docs/models/postgreswrittendata.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitems.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequest.md
   - docs/models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsrequestbody.md
@@ -2322,6 +2357,7 @@ generatedFiles:
   - docs/models/protectionbypassscope.md
   - docs/models/protectionmode.md
   - docs/models/protocol.md
+  - docs/models/protocolsettings.md
   - docs/models/proxy.md
   - docs/models/purchasetype.md
   - docs/models/purpose.md
@@ -2615,6 +2651,7 @@ generatedFiles:
   - docs/models/rerequestcheckresponsebody.md
   - docs/models/resourceconfig.md
   - docs/models/resourcelimits.md
+  - docs/models/resources.md
   - docs/models/responsebody.md
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
@@ -2644,6 +2681,7 @@ generatedFiles:
   - docs/models/responsebodyenvs.md
   - docs/models/responsebodyerror.md
   - docs/models/responsebodyevents.md
+  - docs/models/responsebodyexperimentaltriggers.md
   - docs/models/responsebodyflags.md
   - docs/models/responsebodyformats.md
   - docs/models/responsebodyframework.md
@@ -2714,11 +2752,18 @@ generatedFiles:
   - docs/models/routes2.md
   - docs/models/routes3.md
   - docs/models/routesaction.md
+  - docs/models/routesargs.md
   - docs/models/routeshandle.md
   - docs/models/routeshas.md
+  - docs/models/routeskey.md
   - docs/models/routeslocale.md
   - docs/models/routesmissing.md
   - docs/models/routesmitigate.md
+  - docs/models/routesop.md
+  - docs/models/routestarget.md
+  - docs/models/routestransforms.md
+  - docs/models/routestype.md
+  - docs/models/rulegroups.md
   - docs/models/rules.md
   - docs/models/runtimecacheread.md
   - docs/models/runtimecachewrite.md
@@ -2788,10 +2833,6 @@ generatedFiles:
   - docs/models/statusrequest.md
   - docs/models/statusresponsebody.md
   - docs/models/statusstatus.md
-  - docs/models/storageredistotalbandwidthinbytes.md
-  - docs/models/storageredistotalcommands.md
-  - docs/models/storageredistotaldailyavgstorageinbytes.md
-  - docs/models/storageredistotaldatabases.md
   - docs/models/store.md
   - docs/models/storetype.md
   - docs/models/strict.md
@@ -2857,6 +2898,7 @@ generatedFiles:
   - docs/models/transferrequestrequester.md
   - docs/models/transferrequestscope.md
   - docs/models/transferrequesttype.md
+  - docs/models/transforms.md
   - docs/models/trustedips.md
   - docs/models/trustedips1.md
   - docs/models/trustedips2.md
@@ -3307,6 +3349,7 @@ generatedFiles:
   - docs/models/updateresourcesecretsbyidrequest.md
   - docs/models/updateresourcesecretsbyidrequestbody.md
   - docs/models/updateresourcesecretsbyidsecrets.md
+  - docs/models/updateresourcesecretsenvironmentoverrides.md
   - docs/models/updateresourcesecretsrequest.md
   - docs/models/updateresourcesecretsrequestbody.md
   - docs/models/updateresourcesecretssecrets.md
@@ -3339,24 +3382,25 @@ generatedFiles:
   - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
-  - docs/models/usereventpayload100type.md
-  - docs/models/usereventpayload111user.md
-  - docs/models/usereventpayload131project.md
-  - docs/models/usereventpayload132project.md
+  - docs/models/usereventpayload101type.md
+  - docs/models/usereventpayload102type.md
+  - docs/models/usereventpayload113user.md
   - docs/models/usereventpayload133project.md
-  - docs/models/usereventpayload133role.md
   - docs/models/usereventpayload134project.md
-  - docs/models/usereventpayload134role.md
-  - docs/models/usereventpayload138action.md
-  - docs/models/usereventpayload141project.md
-  - docs/models/usereventpayload142prevproject.md
-  - docs/models/usereventpayload142project.md
-  - docs/models/usereventpayload149configuration.md
-  - docs/models/usereventpayload149team.md
-  - docs/models/usereventpayload150configuration.md
-  - docs/models/usereventpayload150team.md
+  - docs/models/usereventpayload135project.md
+  - docs/models/usereventpayload135role.md
+  - docs/models/usereventpayload136project.md
+  - docs/models/usereventpayload136role.md
+  - docs/models/usereventpayload140action.md
+  - docs/models/usereventpayload143project.md
+  - docs/models/usereventpayload144prevproject.md
+  - docs/models/usereventpayload144project.md
   - docs/models/usereventpayload151configuration.md
   - docs/models/usereventpayload151team.md
+  - docs/models/usereventpayload152configuration.md
+  - docs/models/usereventpayload152team.md
+  - docs/models/usereventpayload153configuration.md
+  - docs/models/usereventpayload153team.md
   - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
@@ -3368,22 +3412,23 @@ generatedFiles:
   - docs/models/usereventpayload58target.md
   - docs/models/usereventpayload58type.md
   - docs/models/usereventpayload62action.md
-  - docs/models/usereventpayload62blockreason.md
-  - docs/models/usereventpayload62name.md
-  - docs/models/usereventpayload62newownerblockreason.md
-  - docs/models/usereventpayload62newownerfeatureblocksblobblockreason.md
-  - docs/models/usereventpayload62newownerfeatureblocksblockreason.md
-  - docs/models/usereventpayload62newownerfeatureblockspostgresblockreason.md
-  - docs/models/usereventpayload62newownerfeatureblocksredisblockreason.md
-  - docs/models/usereventpayload62role.md
-  - docs/models/usereventpayload62type.md
+  - docs/models/usereventpayload64action.md
+  - docs/models/usereventpayload64blockreason.md
+  - docs/models/usereventpayload64name.md
+  - docs/models/usereventpayload64newownerblockreason.md
+  - docs/models/usereventpayload64newownerfeatureblocksblobblockreason.md
+  - docs/models/usereventpayload64newownerfeatureblocksblockreason.md
+  - docs/models/usereventpayload64newownerfeatureblockspostgresblockreason.md
+  - docs/models/usereventpayload64newownerfeatureblocksredisblockreason.md
+  - docs/models/usereventpayload64role.md
+  - docs/models/usereventpayload64type.md
   - docs/models/usereventpayload6accessgroup.md
-  - docs/models/usereventpayload74role.md
-  - docs/models/usereventpayload84project.md
-  - docs/models/usereventpayload84team.md
-  - docs/models/usereventpayload92team.md
-  - docs/models/usereventpayload93team.md
-  - docs/models/usereventpayload99type.md
+  - docs/models/usereventpayload76role.md
+  - docs/models/usereventpayload84action.md
+  - docs/models/usereventpayload86project.md
+  - docs/models/usereventpayload86team.md
+  - docs/models/usereventpayload94team.md
+  - docs/models/usereventpayload95team.md
   - docs/models/usereventpayloadaccessgroup.md
   - docs/models/usereventpayloadaction.md
   - docs/models/usereventpayloadblockreason.md
@@ -3464,6 +3509,10 @@ generatedFiles:
   - docs/sdks/vercel/README.md
   - docs/sdks/webhooks/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/package.json
+  - examples/projectsUpdateProject.example.ts
   - jsr.json
   - package.json
   - src/__tests__/accessgroups.test.ts
@@ -3506,7 +3555,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
-  - src/__tests__/mockserver/internal/handler/pathdeletev1logdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamemembersuid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamerollingreleaseconfig.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1securityfirewallbypass.go
@@ -3545,6 +3593,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidaccount.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidbillinginvoicesinvoiceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidmembermemberid.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresources.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingrelease.go
@@ -3714,7 +3764,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletealias.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteauthtoken.go
-  - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfiguration.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletedeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletedomain.go
@@ -3722,6 +3771,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationlogdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteintegrationresource.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleterollingreleaseconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteteam.go
@@ -3763,6 +3813,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigtokens.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getfirewallconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getintegrationlogdrains.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getintegrationresource.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getintegrationresources.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getinvoice.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getmember.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getprojectdomain.go
@@ -3968,7 +4020,6 @@ generatedFiles:
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurations.ts
   - src/funcs/logDrainsCreateLogDrain.ts
-  - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
   - src/funcs/logDrainsDeleteIntegrationLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
   - src/funcs/logsGetRuntimeLogs.ts
@@ -3976,8 +4027,11 @@ generatedFiles:
   - src/funcs/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/funcs/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/funcs/marketplaceDeleteInstallationIntegrationConfiguration.ts
+  - src/funcs/marketplaceDeleteIntegrationResource.ts
   - src/funcs/marketplaceExchangeSsoToken.ts
   - src/funcs/marketplaceGetAccountInfo.ts
+  - src/funcs/marketplaceGetIntegrationResource.ts
+  - src/funcs/marketplaceGetIntegrationResources.ts
   - src/funcs/marketplaceGetInvoice.ts
   - src/funcs/marketplaceGetMember.ts
   - src/funcs/marketplaceImportResource.ts
@@ -4168,7 +4222,6 @@ generatedFiles:
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
   - src/mcp-server/tools/logDrainsCreateLogDrain.ts
-  - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
   - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
   - src/mcp-server/tools/logsGetRuntimeLogs.ts
@@ -4176,8 +4229,11 @@ generatedFiles:
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationConfiguration.ts
   - src/mcp-server/tools/marketplaceCreateInstallationIntegrationEdgeConfig.ts
   - src/mcp-server/tools/marketplaceDeleteInstallationIntegrationConfiguration.ts
+  - src/mcp-server/tools/marketplaceDeleteIntegrationResource.ts
   - src/mcp-server/tools/marketplaceExchangeSsoToken.ts
   - src/mcp-server/tools/marketplaceGetAccountInfo.ts
+  - src/mcp-server/tools/marketplaceGetIntegrationResource.ts
+  - src/mcp-server/tools/marketplaceGetIntegrationResources.ts
   - src/mcp-server/tools/marketplaceGetInvoice.ts
   - src/mcp-server/tools/marketplaceGetMember.ts
   - src/mcp-server/tools/marketplaceImportResource.ts
@@ -4289,7 +4345,6 @@ generatedFiles:
   - src/models/deleteaccessgroupprojectop.ts
   - src/models/deletealiasop.ts
   - src/models/deleteauthtokenop.ts
-  - src/models/deleteconfigurablelogdrainop.ts
   - src/models/deleteconfigurationop.ts
   - src/models/deletedeploymentop.ts
   - src/models/deletedomainop.ts
@@ -4297,6 +4352,7 @@ generatedFiles:
   - src/models/deleteedgeconfigschemaop.ts
   - src/models/deleteedgeconfigtokensop.ts
   - src/models/deleteintegrationlogdrainop.ts
+  - src/models/deleteintegrationresourceop.ts
   - src/models/deleteprojectop.ts
   - src/models/deleterollingreleaseconfigop.ts
   - src/models/deleteteaminvitecodeop.ts
@@ -4343,6 +4399,8 @@ generatedFiles:
   - src/models/getedgeconfigtokensop.ts
   - src/models/getfirewallconfigop.ts
   - src/models/getintegrationlogdrainsop.ts
+  - src/models/getintegrationresourceop.ts
+  - src/models/getintegrationresourcesop.ts
   - src/models/getinvoiceop.ts
   - src/models/getmemberop.ts
   - src/models/getprojectdomainop.ts
@@ -5568,7 +5626,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
+        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitAuthorEmail": "kyliau@example.com", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
           application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
@@ -7525,7 +7583,49 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"availableSlots": 8974.52, "reason": "no_available_slots", "enabledProjects": ["<value 1>", "<value 2>", "<value 3>"]}
+          application/json: {"availableSlots": 8974.52, "reason": "available_slots", "message": "<value>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get-integration-resources:
+    speakeasy-default-get-integration-resources:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+      responses:
+        "200":
+          application/json: {"resources": [{"partnerId": "<id>", "internalId": "<id>", "name": "<value>", "productId": "<id>"}]}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  get-integration-resource:
+    speakeasy-default-get-integration-resource:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "internalId": "<id>", "name": "<value>", "productId": "<id>"}
+        "400":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "401":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+        "404":
+          application/json: {"error": {"code": "<value>", "message": "<value>"}}
+  delete-integration-resource:
+    speakeasy-default-delete-integration-resource:
+      parameters:
+        path:
+          integrationConfigurationId: "<id>"
+          resourceId: "<id>"
+      responses:
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7698,3 +7798,5 @@ generatedTests:
   get-resource: "2025-06-24T02:26:35Z"
   delete-resource: "2025-06-24T02:26:35Z"
   getRollingReleaseBillingStatus: "2025-06-24T02:26:35Z"
+  get-integration-resources: "2025-07-11T17:15:09Z"
+  get-integration-resource: "2025-07-11T17:15:09Z"

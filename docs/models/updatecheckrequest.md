@@ -10,6 +10,41 @@ let value: UpdateCheckRequest = {
   checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
+  requestBody: {
+    name: "Performance Check",
+    path: "/",
+    detailsUrl: "https://example.com/check/run/1234abc",
+    output: {
+      metrics: {
+        fcp: {
+          value: 1200,
+          previousValue: 900,
+          source: "web-vitals",
+        },
+        lcp: {
+          value: 1200,
+          previousValue: 1000,
+          source: "web-vitals",
+        },
+        cls: {
+          value: 4,
+          previousValue: 2,
+          source: "web-vitals",
+        },
+        tbt: {
+          value: 3000,
+          previousValue: 3500,
+          source: "web-vitals",
+        },
+        virtualExperienceScore: {
+          value: 30,
+          previousValue: 35,
+          source: "web-vitals",
+        },
+      },
+    },
+    externalId: "1234abc",
+  },
 };
 ```
 

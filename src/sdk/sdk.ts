@@ -67,11 +67,6 @@ export class Vercel extends ClientSDK {
     return (this._dns ??= new Dns(this._options));
   }
 
-  private _logDrains?: LogDrains;
-  get logDrains(): LogDrains {
-    return (this._logDrains ??= new LogDrains(this._options));
-  }
-
   private _edgeConfig?: EdgeConfig;
   get edgeConfig(): EdgeConfig {
     return (this._edgeConfig ??= new EdgeConfig(this._options));
@@ -90,6 +85,11 @@ export class Vercel extends ClientSDK {
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
+  }
+
+  private _logDrains?: LogDrains;
+  get logDrains(): LogDrains {
+    return (this._logDrains ??= new LogDrains(this._options));
   }
 
   private _logs?: Logs;

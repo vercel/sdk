@@ -852,6 +852,8 @@ actions:
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
+        - deployment-checks-failed
+        - deployment-checks-succeeded
         - deployment-checks-completed
         - deployment-ready-legacy
         - deployment-prepared
@@ -922,6 +924,8 @@ actions:
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
+        - deployment-checks-failed
+        - deployment-checks-succeeded        
         - deployment-checks-completed
         - deployment-ready-legacy
         - deployment-prepared
@@ -992,6 +996,8 @@ actions:
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
+        - deployment-checks-failed
+        - deployment-checks-succeeded        
         - deployment-checks-completed
         - deployment-ready-legacy
         - deployment-prepared
@@ -1062,6 +1068,8 @@ actions:
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
+        - deployment-checks-failed
+        - deployment-checks-succeeded        
         - deployment-checks-completed
         - deployment-ready-legacy
         - deployment-prepared
@@ -1132,6 +1140,8 @@ actions:
         - project.rolling-release.aborted
         - project.rolling-release.completed
         - project.rolling-release.approved
+        - deployment-checks-failed
+        - deployment-checks-succeeded        
         - deployment-checks-completed
         - deployment-ready-legacy
         - deployment-prepared
